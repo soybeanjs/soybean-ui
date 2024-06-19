@@ -1,6 +1,6 @@
 {
   "name": "@su/utils",
-  "version": "1.2.5",
+  "version": "0.0.1",
   "exports": {
     ".": "./src/index.ts"
   },

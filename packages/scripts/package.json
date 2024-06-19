@@ -1,6 +1,6 @@
 {
   "name": "@su/scripts",
-  "version": "1.2.5",
+  "version": "0.0.1",
   "bin": {
     "sa": "./bin.ts"
   },

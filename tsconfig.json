@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"],
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "@ui/*": ["packages/shadcn-ui/src/*"]
     },
     "resolveJsonModule": true,
     "types": ["vite/client", "node", "unplugin-icons/types/vue", "naive-ui/volar"],

@@ -1,0 +1,28 @@
+{
+  "name": "@su/shadcn-ui",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./src/*"]
+    }
+  },
+  "dependencies": {
+    "@radix-icons/vue": "1.0.0",
+    "@vee-validate/zod": "4.13.1",
+    "@vueuse/core": "10.11.0",
+    "class-variance-authority": "0.7.0",
+    "clsx": "2.1.1",
+    "embla-carousel-vue": "8.1.5",
+    "lucide-vue-next": "0.395.0",
+    "radix-vue": "1.8.4",
+    "tailwind-merge": "2.3.0",
+    "v-calendar": "3.1.2",
+    "vaul-vue": "0.2.0",
+    "vee-validate": "4.13.1",
+    "vue-sonner": "1.1.2",
+    "zod": "3.23.8"
+  }
+}

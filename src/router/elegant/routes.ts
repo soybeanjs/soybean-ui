@@ -331,6 +331,17 @@ export const generatedRoutes: GeneratedRoute[] = [
     ]
   },
   {
+    name: 'ui',
+    path: '/ui',
+    component: 'layout.base$view.ui',
+    meta: {
+      title: 'ui',
+      i18nKey: 'route.ui',
+      icon: 'majesticons:color-swatch-line',
+      order: 20
+    }
+  },
+  {
     name: 'user-center',
     path: '/user-center',
     component: 'layout.base$view.user-center',

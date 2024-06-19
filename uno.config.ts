@@ -4,6 +4,7 @@ import transformerVariantGroup from '@unocss/transformer-variant-group';
 import presetUno from '@unocss/preset-uno';
 import type { Theme } from '@unocss/preset-uno';
 import { presetSoybeanAdmin } from '@su/uno-preset';
+import presetShadcn from '@su/uno-shadcn';
 import { themeVars } from './src/theme/vars';
 
 export default defineConfig<Theme>({
@@ -26,5 +27,5 @@ export default defineConfig<Theme>({
     'card-wrapper': 'rd-8px shadow-sm'
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetUno({ dark: 'class' }), presetSoybeanAdmin()]
+  presets: [presetUno({ dark: 'class' }), presetSoybeanAdmin(), presetShadcn()]
 });
