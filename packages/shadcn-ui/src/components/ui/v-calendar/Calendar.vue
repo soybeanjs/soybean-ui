@@ -145,7 +145,7 @@ const vCalendarSlots = computed(() => {
   @apply text-muted-foreground bg-muted;
 }
 .vc-popover-content-wrapper .vc-nav-items .vc-nav-item.is-active {
-  @apply bg-primary text-primary-foreground;
+  @apply bg-maincolor text-maincolor-foreground;
 }
 .calendar .vc-pane-header-wrapper {
   @apply hidden;
@@ -166,7 +166,7 @@ const vCalendarSlots = computed(() => {
   @apply first:rounded-l-md last:rounded-r-md;
 }
 .calendar .vc-day.is-today:not(:has(.vc-day-layer)) .vc-day-content {
-  @apply bg-secondary text-primary rounded-md;
+  @apply bg-secondary text-maincolor rounded-md;
 }
 .calendar .vc-day:has(.vc-highlight-base-start) {
   @apply rounded-l-md;
@@ -192,7 +192,7 @@ const vCalendarSlots = computed(() => {
 }
 .calendar .vc-highlight-content-solid,
 .calendar .vc-highlight-content-outline {
-  @apply bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground;
+  @apply bg-maincolor text-maincolor-foreground hover:bg-maincolor hover:text-maincolor-foreground focus:bg-maincolor focus:text-maincolor-foreground;
 }
 .calendar .vc-highlight-content-light {
   @apply bg-accent text-accent-foreground;
@@ -306,22 +306,22 @@ const vCalendarSlots = computed(() => {
   @apply flex items-center text-sm font-semibold uppercase mt-1 px-1 leading-6;
 }
 .vc-time-select-group {
-  @apply inline-flex items-center px-1 rounded-md bg-primary-foreground border border-solid border-secondary;
+  @apply inline-flex items-center px-1 rounded-md bg-maincolor-foreground border border-solid border-secondary;
 }
 .vc-time-select-group .vc-base-icon {
-  @apply mr-1 text-primary stroke-primary;
+  @apply mr-1 text-maincolor stroke-maincolor;
 }
 .vc-time-select-group select {
-  @apply bg-primary-foreground p-1 appearance-none outline-none text-center;
+  @apply bg-maincolor-foreground p-1 appearance-none outline-none text-center;
 }
 .vc-time-weekday {
   @apply text-muted-foreground tracking-wide;
 }
 .vc-time-month {
-  @apply text-primary ml-2;
+  @apply text-maincolor ml-2;
 }
 .vc-time-day {
-  @apply text-primary ml-1;
+  @apply text-maincolor ml-1;
 }
 .vc-time-year {
   @apply text-muted-foreground ml-2;

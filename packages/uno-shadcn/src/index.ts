@@ -137,7 +137,7 @@ export function presetShadcn(_options: PresetShadcnOptions = {}): Preset<Theme> 
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        primary: {
+        maincolor: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
         },

@@ -1,45 +1,51 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue';
 import type { Component } from 'vue';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@su/shadcn-ui';
-import AccordionDemo from './accordion.vue';
-import AlertDemo from './alert.vue';
 
 defineOptions({
   name: 'UiPage'
 });
 
-type TabKey = 'accordion' | 'alert';
-
 interface TabConfig {
-  key: TabKey;
+  key: string;
   label: string;
   component: Component;
 }
 
-const tabs: TabConfig[] = [
-  {
-    key: 'accordion',
-    label: 'Accordion',
-    component: AccordionDemo
-  },
-  {
-    key: 'alert',
-    label: 'Alert',
-    component: AlertDemo
-  }
-];
+function getTabs() {
+  const tabs: TabConfig[] = [];
+
+  const files = import.meta.glob('./modules/*.vue');
+  Object.entries(files).forEach(item => {
+    const [filePath, value] = item;
+    const key = filePath.replace('./modules/', '').replace('.vue', '');
+
+    tabs.push({
+      key,
+      label: key,
+      component: defineAsyncComponent(value as any)
+    });
+  });
+
+  return tabs;
+}
+
+const tabs = getTabs();
 </script>
 
 <template>
   <div>
-    <NCard title="UI示例" :bordered="false" size="small" class="card-wrapper">
-      <div class="text-center text-18px fw-700">SoybeanUnify</div>
+    <NCard title="UI示例" :bordered="false" size="small" class="h-full card-wrapper">
+      <div class="pb-16px text-center text-18px fw-700">SoybeanUnify</div>
       <Tabs default-value="accordion" class="w-full">
-        <TabsList>
-          <TabsTrigger v-for="tab in tabs" :key="tab.key" :value="tab.key">{{ tab.label }}</TabsTrigger>
+        <TabsList class="h-auto flex-wrap justify-start gap-y-8px">
+          <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">{{ tab.label }}</TabsTrigger>
         </TabsList>
         <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key">
-          <component :is="tab.component" />
+          <div class="pt-18px">
+            <component :is="tab.component" />
+          </div>
         </TabsContent>
       </Tabs>
     </NCard>
