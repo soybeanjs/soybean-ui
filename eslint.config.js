@@ -8,18 +8,10 @@ export default defineConfig(
       'vue/multi-word-component-names': [
         'warn',
         {
-          ignores: ['index', 'App', 'Register', '[id]', '[url]']
+          ignores: ['index', 'App']
         }
       ],
       'vue/return-in-computed-property': 'off',
-      'vue/component-name-in-template-casing': [
-        'warn',
-        'PascalCase',
-        {
-          registeredComponentsOnly: false,
-          ignores: ['/^icon-/']
-        }
-      ],
       'vue/no-undef-properties': ['error', { ignores: ['as', 'asChild'] }],
       'unocss/order-attributify': 'off'
     }

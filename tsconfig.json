@@ -13,7 +13,7 @@
       "@ui/*": ["packages/shadcn-ui/src/*"]
     },
     "resolveJsonModule": true,
-    "types": ["vite/client", "node", "unplugin-icons/types/vue", "naive-ui/volar"],
+    "types": ["vite/client", "node"],
     "strict": true,
     "strictNullChecks": true,
     "noUnusedLocals": false,

@@ -27,7 +27,7 @@ defineOptions({
       Please wait
     </Button>
     <Button as-child>
-      <a href="/login">Login</a>
+      <a>Login</a>
     </Button>
   </div>
 </template>

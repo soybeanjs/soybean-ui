@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 import type { Component } from 'vue';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@su/shadcn-ui';
+import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from '@su/shadcn-ui';
 
 defineOptions({
   name: 'UiPage'
@@ -35,20 +35,27 @@ const tabs = getTabs();
 </script>
 
 <template>
-  <div>
-    <NCard title="UI示例" :bordered="false" size="small" class="h-full card-wrapper">
-      <div class="pb-16px text-center text-18px fw-700">SoybeanUnify</div>
-      <Tabs default-value="accordion" class="w-full">
-        <TabsList class="h-auto flex-wrap justify-start gap-y-8px">
-          <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">{{ tab.label }}</TabsTrigger>
-        </TabsList>
-        <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key">
-          <div class="pt-18px">
-            <component :is="tab.component" />
-          </div>
-        </TabsContent>
-      </Tabs>
-    </NCard>
+  <div class="p-16px">
+    <Card>
+      <CardHeader>
+        <CardTitle>UI Components</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div class="pb-16px text-center text-18px fw-700">SoybeanUnify</div>
+        <Tabs default-value="accordion" class="w-full">
+          <TabsList class="h-auto flex-wrap justify-start gap-y-8px">
+            <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">
+              {{ tab.label }}
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key">
+            <div class="pt-18px">
+              <component :is="tab.component" />
+            </div>
+          </TabsContent>
+        </Tabs>
+      </CardContent>
+    </Card>
   </div>
 </template>
 
