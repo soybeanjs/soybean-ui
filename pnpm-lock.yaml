@@ -27,9 +27,9 @@ importers:
       '@soybeanjs/unocss-preset':
         specifier: 0.0.2
         version: 0.0.2
-      '@su/uno-shadcn':
-        specifier: workspace:*
-        version: link:packages/uno-shadcn
+      '@su/unocss-preset':
+        specifier: workspace:^
+        version: link:packages/unocss-preset
       '@unocss/eslint-config':
         specifier: 0.61.0
         version: 0.61.0(eslint@9.5.0)(typescript@5.5.2)
@@ -225,6 +225,18 @@ importers:
   packages/uno-preset: {}
 
   packages/uno-shadcn: {}
+
+  packages/unocss-preset:
+    dependencies:
+      '@soybeanjs/color-palette':
+        specifier: 0.1.1
+        version: 0.1.1
+      '@unocss/core':
+        specifier: 0.61.0
+        version: 0.61.0
+      colord:
+        specifier: 2.9.3
+        version: 2.9.3
 
   packages/utils:
     dependencies:
@@ -886,6 +898,9 @@ packages:
   '@soybeanjs/cli@1.0.19':
     resolution: {integrity: sha512-lCxbg2uD6aadQrfcUS8VTLMLvCQL3bWmSSn3vKM4d45see4B0iwwuHcXmwjC+stBVVHHAeUMQFL5VDeQ5EJ/iA==}
     hasBin: true
+
+  '@soybeanjs/color-palette@0.1.1':
+    resolution: {integrity: sha512-+CpOUi1aN2NfddHWBmfhnrbydIFmCj2F6oZF7k2RWbYUQ9aQPAvF9KUu551Deu/+acjbskDIyeuJOr1zqIkvyw==}
 
   '@soybeanjs/eslint-config@1.3.7':
     resolution: {integrity: sha512-+VyWKjM5McbzBKA3ptqoWgHKDtE/UuXqU7GhciZS2x8YT4ORDFfqGvEgCGaGMVE6jMuh0i8aEskZjnnv3GtT8A==}
@@ -4612,6 +4627,10 @@ snapshots:
       - supports-color
       - typescript
       - vue-eslint-parser
+
+  '@soybeanjs/color-palette@0.1.1':
+    dependencies:
+      colord: 2.9.3
 
   '@soybeanjs/eslint-config@1.3.7(@unocss/eslint-config@0.61.0(eslint@9.5.0)(typescript@5.5.2))(eslint-plugin-vue@9.26.0(eslint@9.5.0))(eslint@9.5.0)(typescript@5.5.2)(vue-eslint-parser@9.4.3(eslint@9.5.0))':
     dependencies:

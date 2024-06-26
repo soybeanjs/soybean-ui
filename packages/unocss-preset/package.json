@@ -1,0 +1,17 @@
+{
+  "name": "@su/unocss-preset",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./src/*"]
+    }
+  },
+  "dependencies": {
+    "@soybeanjs/color-palette": "0.1.1",
+    "@unocss/core": "0.61.0",
+    "colord": "2.9.3"
+  }
+}

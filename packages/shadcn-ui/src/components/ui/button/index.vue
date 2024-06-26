@@ -5,21 +5,21 @@ import { cn } from '@ui/lib/utils';
 import { type ButtonVariants, buttonVariants } from './class';
 
 export interface ButtonProps extends PrimitiveProps {
-  variant?: ButtonVariants['variant'];
+  color?: ButtonVariants['color'];
   size?: ButtonVariants['size'];
   class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
-  variant: 'default',
-  size: 'default',
+  color: 'primary',
+  size: 'md',
   class: ''
 });
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(buttonVariants({ variant, size }), props.class)">
+  <Primitive :as="as" :as-child="asChild" :class="cn(buttonVariants({ color, size }), props.class)">
     <slot />
   </Primitive>
 </template>

@@ -42,7 +42,7 @@ const tabs = getTabs();
       </CardHeader>
       <CardContent>
         <div class="pb-16px text-center text-18px fw-700">SoybeanUnify</div>
-        <Tabs default-value="accordion" class="w-full">
+        <Tabs default-value="button" class="w-full">
           <TabsList class="h-auto flex-wrap justify-start gap-y-8px">
             <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">
               {{ tab.label }}

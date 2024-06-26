@@ -42,7 +42,7 @@
     "@soybeanjs/cli": "^1.0.19",
     "@soybeanjs/eslint-config": "1.3.7",
     "@soybeanjs/unocss-preset": "0.0.2",
-    "@su/uno-shadcn": "workspace:*",
+    "@su/unocss-preset": "workspace:^",
     "@unocss/eslint-config": "0.61.0",
     "@unocss/preset-icons": "0.61.0",
     "@unocss/preset-uno": "0.61.0",
