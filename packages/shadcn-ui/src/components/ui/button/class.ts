@@ -6,11 +6,11 @@ export const buttonVariants = cva(
   {
     variants: {
       color: {
-        primary: `tc-#646cff`,
-        info: `tc-#2080f0`,
-        success: `tc-#52c41a`,
-        warning: `tc-#faad14`,
-        error: `tc-#f5222d`
+        primary: 'theme-primary',
+        info: 'theme-info',
+        success: 'theme-success',
+        warning: 'theme-warning',
+        error: 'theme-error'
       },
       size: {
         sm: `px-10px py-4px text-xs`,
