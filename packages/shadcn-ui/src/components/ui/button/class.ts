@@ -1,25 +1,29 @@
 // @unocss-include
+
 import { type VariantProps, cva } from 'class-variance-authority';
 
 export const buttonVariants = cva(
-  `relative border i-flex-center bg-theme-color active:bg-theme-color-600 hover:bg-theme-color-400 touch-manipulation select-none whitespace-nowrap rd-md focus-visible:(outline-none ring-2 ring-theme-color ring-offset-1) disabled:(cursor-not-allowed opacity-50 ring-offset-background ring-offset-background)`,
+  'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
-      color: {
-        primary: 'theme-primary',
-        info: 'theme-info',
-        success: 'theme-success',
-        warning: 'theme-warning',
-        error: 'theme-error'
+      variant: {
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
+        outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
+        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        link: 'text-primary underline-offset-4 hover:underline'
       },
       size: {
-        sm: `px-10px py-4px text-xs`,
-        md: `px-15px py-5px text-sm`,
-        lg: `px-20px py-6px text-lg`
+        default: 'h-10 px-4 py-2',
+        sm: 'h-9 rounded-md px-3',
+        lg: 'h-11 rounded-md px-8',
+        icon: 'h-10 w-10'
       }
     },
     defaultVariants: {
-      size: 'md'
+      variant: 'default',
+      size: 'default'
     }
   }
 );

@@ -3,8 +3,8 @@ import transformerDirectives from '@unocss/transformer-directives';
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 import presetUno from '@unocss/preset-uno';
 import type { Theme } from '@unocss/preset-uno';
-import { presetSoybeanJS } from '@soybeanjs/unocss-preset';
-import { presetSoybeanUnify } from '@su/unocss-preset';
+import { presetAnimations } from 'unocss-preset-animations';
+import { presetShadcn } from 'unocss-preset-shadcn';
 
 export default defineConfig<Theme>({
   content: {
@@ -13,5 +13,5 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetUno({ dark: 'class' }), presetSoybeanJS(), presetSoybeanUnify()]
+  presets: [presetUno({ dark: 'class' }), presetAnimations(), presetShadcn({ color: 'violet' })]
 });

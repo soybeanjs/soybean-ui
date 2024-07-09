@@ -1,3 +1,5 @@
+// @unocss-include
+
 import { type VariantProps, cva } from 'class-variance-authority';
 
 export { default as Avatar } from './Avatar.vue';

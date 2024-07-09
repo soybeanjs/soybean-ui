@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { ChevronRightIcon, EnvelopeOpenIcon, ReloadIcon } from '@radix-icons/vue';
 import { Button } from '@su/shadcn-ui';
 
 defineOptions({
