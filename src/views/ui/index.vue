@@ -1,7 +1,16 @@
 <script setup lang="ts">
 import { defineAsyncComponent } from 'vue';
 import type { Component } from 'vue';
-import { Card, CardContent, CardHeader, CardTitle, Tabs, TabsContent, TabsList, TabsTrigger } from '@su/shadcn-ui';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'UiPage'

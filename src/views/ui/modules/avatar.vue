@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@su/shadcn-ui';
+import { Avatar, AvatarFallback, AvatarImage } from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'AvatarDemo'

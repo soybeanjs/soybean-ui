@@ -12,7 +12,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@su/shadcn-ui';
+} from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'BreadcrumbDemo'

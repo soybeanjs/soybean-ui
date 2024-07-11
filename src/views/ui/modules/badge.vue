@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Badge } from '@su/shadcn-ui';
+import { Badge } from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'BadgeDemo'

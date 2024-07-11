@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@su/shadcn-ui';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'AccordionDemo'

@@ -10,7 +10,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button
-} from '@su/shadcn-ui';
+} from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'AlertDialog'

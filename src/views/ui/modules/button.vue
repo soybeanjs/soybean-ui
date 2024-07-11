@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from '@su/shadcn-ui';
+import { Button } from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'ButtonDemo'

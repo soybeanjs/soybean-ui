@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AspectRatio } from '@su/shadcn-ui';
+import { AspectRatio } from '@soybean-unify/shadcn-ui';
 </script>
 
 <template>

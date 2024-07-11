@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ExclamationTriangleIcon, RocketIcon } from '@radix-icons/vue';
-import { Alert, AlertDescription, AlertTitle } from '@su/shadcn-ui';
+import { Alert, AlertDescription, AlertTitle } from '@soybean-unify/shadcn-ui';
 
 defineOptions({
   name: 'AlertDemo'
