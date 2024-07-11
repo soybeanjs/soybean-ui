@@ -2,6 +2,15 @@ import type { DeepPartial } from '@unocss/core';
 
 export type HslColorString = `${number} ${number}% ${number}%`;
 
+export type FeedbackColorCssVars = {
+  success: HslColorString;
+  'success-foreground': HslColorString;
+  warning: HslColorString;
+  'warning-foreground': HslColorString;
+  info: HslColorString;
+  'info-foreground': HslColorString;
+};
+
 export type ThemeCSSVars = {
   background: HslColorString;
   foreground: HslColorString;
