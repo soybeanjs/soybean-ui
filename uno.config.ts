@@ -14,5 +14,5 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetUno({ dark: 'class' }), presetAnimations(), presetSoybeanUnify(), presetShadcn({ color: 'violet' })]
+  presets: [presetUno({ dark: 'class' }), presetAnimations(), presetSoybeanUnify(), presetShadcn()]
 });

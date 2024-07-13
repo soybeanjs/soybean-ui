@@ -88,6 +88,15 @@ importers:
         specifier: 2.0.26
         version: 2.0.26(typescript@5.5.3)
 
+  packages/color:
+    dependencies:
+      '@unocss/core':
+        specifier: 0.61.3
+        version: 0.61.3
+      colord:
+        specifier: 2.9.3
+        version: 2.9.3
+
   packages/shadcn-ui:
     dependencies:
       '@radix-icons/vue':
@@ -141,6 +150,9 @@ importers:
 
   packages/unocss-shadcn:
     dependencies:
+      '@soybean-unify/color':
+        specifier: workspace:^
+        version: link:../color
       '@unocss/core':
         specifier: 0.61.3
         version: 0.61.3
@@ -1443,6 +1455,9 @@ packages:
   color-support@1.1.3:
     resolution: {integrity: sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==}
     hasBin: true
+
+  colord@2.9.3:
+    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
 
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
@@ -5120,6 +5135,8 @@ snapshots:
   color-name@1.1.4: {}
 
   color-support@1.1.3: {}
+
+  colord@2.9.3: {}
 
   colorette@2.0.20: {}
 

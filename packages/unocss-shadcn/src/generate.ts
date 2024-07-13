@@ -1,4 +1,5 @@
 import { mergeDeep } from '@unocss/core';
+import { colord, generateColorPalette } from '@soybean-unify/color';
 import themes from './theme.json';
 import type {
   ColorOptions,
@@ -12,7 +13,9 @@ import type {
   ThemeConfig
 } from './types';
 
-const themeCSSVarKeys: (ThemeCSSVarKey | FeedbackColorOfThemeCssVarKey)[] = [
+type CSSVarKey = ThemeCSSVarKey | FeedbackColorOfThemeCssVarKey;
+
+const themeCSSVarKeys: CSSVarKey[] = [
   'background',
   'foreground',
   'card',
@@ -40,14 +43,32 @@ const themeCSSVarKeys: (ThemeCSSVarKey | FeedbackColorOfThemeCssVarKey)[] = [
   'ring'
 ];
 
+const themeColorKeys: CSSVarKey[] = ['primary', 'secondary', 'destructive', 'success', 'warning', 'info'];
+
 function getColorCSSVars(color: ThemeCSSVars & FeedbackColorOfThemeCssVars) {
   const cssVars = Object.entries(color)
-    .map(([key, value]) => {
-      if (!themeCSSVarKeys.includes(key as ThemeCSSVarKey)) {
+    .map(([item, value]) => {
+      const key = item as CSSVarKey;
+
+      if (!themeCSSVarKeys.includes(key)) {
         return '';
       }
 
-      return `  --${key}: ${value};`;
+      let css = `  --${key}: ${value};`;
+
+      if (themeColorKeys.includes(key)) {
+        const hsl = `hsl(${value.split(' ').join(', ')})`;
+
+        const colorPalette = generateColorPalette(hsl);
+
+        for (const [num, hex] of Object.entries(colorPalette)) {
+          const { h, s, l } = colord(hex).toHsl();
+
+          css += `\n  --${key}-${num}: ${h} ${s}% ${l}%;`;
+        }
+      }
+
+      return css;
     })
     .filter(Boolean)
     .join('\n');
@@ -118,7 +139,7 @@ function getBuiltInTheme(name: string): ThemeCSSVarsVariant {
   };
 }
 
-function getColorTheme(color: ColorOptions) {
+function getColorTheme(color: ColorOptions): ThemeCSSVarsVariant {
   let light: ThemeCSSVars;
   let dark: ThemeCSSVars;
   let name: string;
@@ -139,20 +160,20 @@ function getColorTheme(color: ColorOptions) {
 function createBuiltinFeedbackColorTheme() {
   const feedbackColor: FeedbackColorOfThemeCssVarsVariant = {
     light: {
-      success: '146 85% 56%',
-      'success-foreground': '146 85% 16%',
-      warning: '42 85% 56%',
-      'warning-foreground': '42 85% 16%',
-      info: '214 85% 56%',
+      success: '140 79% 45%',
+      'success-foreground': '0 0% 100%',
+      warning: '37 91% 55%',
+      'warning-foreground': '0 0% 100%',
+      info: '217 88% 52%',
       'info-foreground': '0 0% 100%'
     },
     dark: {
-      success: '156 85% 19%',
-      'success-foreground': '156 85% 79%',
-      warning: '20 85% 19%',
-      'warning-foreground': '20 85% 79%',
-      info: '236 85% 19%',
-      'info-foreground': '236 85% 79%'
+      success: '157 79% 17%',
+      'success-foreground': '0 0% 100%',
+      warning: '25 91% 35%',
+      'warning-foreground': '0 0% 100%',
+      info: '212 75% 18%',
+      'info-foreground': '0 0% 100%'
     }
   };
 
@@ -165,7 +186,7 @@ export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): str
   }
 
   const {
-    color = 'zinc',
+    color = 'default',
     radius = 0.5,
     darkSelector = '.dark',
     feedbackColor = createBuiltinFeedbackColorTheme()

@@ -49,6 +49,7 @@ export interface FeedbackColorOfThemeCssVarsVariant {
 }
 
 export type ThemeConfigColor =
+  | 'default'
   | 'zinc'
   | 'slate'
   | 'stone'
@@ -84,7 +85,7 @@ export interface ThemeOptions {
   /**
    * theme color options
    *
-   * @default 'zinc'
+   * @default 'default'
    */
   color?: ColorOptions | false;
   /** feedback color */
