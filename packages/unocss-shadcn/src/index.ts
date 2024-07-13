@@ -63,27 +63,93 @@ export function presetShadcn(options: PresetShadcnOptions = {}, globals = true):
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))'
+          foreground: 'hsl(var(--primary-foreground))',
+          50: 'hsl(var(--primary-50))',
+          100: 'hsl(var(--primary-100))',
+          200: 'hsl(var(--primary-200))',
+          300: 'hsl(var(--primary-300))',
+          400: 'hsl(var(--primary-400))',
+          500: 'hsl(var(--primary-500))',
+          600: 'hsl(var(--primary-600))',
+          700: 'hsl(var(--primary-700))',
+          800: 'hsl(var(--primary-800))',
+          900: 'hsl(var(--primary-900))',
+          950: 'hsl(var(--primary-950))'
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))'
+          foreground: 'hsl(var(--secondary-foreground))',
+          50: 'hsl(var(--secondary-50))',
+          100: 'hsl(var(--secondary-100))',
+          200: 'hsl(var(--secondary-200))',
+          300: 'hsl(var(--secondary-300))',
+          400: 'hsl(var(--secondary-400))',
+          500: 'hsl(var(--secondary-500))',
+          600: 'hsl(var(--secondary-600))',
+          700: 'hsl(var(--secondary-700))',
+          800: 'hsl(var(--secondary-800))',
+          900: 'hsl(var(--secondary-900))',
+          950: 'hsl(var(--secondary-950))'
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+          foreground: 'hsl(var(--destructive-foreground))',
+          50: 'hsl(var(--destructive-50))',
+          100: 'hsl(var(--destructive-100))',
+          200: 'hsl(var(--destructive-200))',
+          300: 'hsl(var(--destructive-300))',
+          400: 'hsl(var(--destructive-400))',
+          500: 'hsl(var(--destructive-500))',
+          600: 'hsl(var(--destructive-600))',
+          700: 'hsl(var(--destructive-700))',
+          800: 'hsl(var(--destructive-800))',
+          900: 'hsl(var(--destructive-900))',
+          950: 'hsl(var(--destructive-950))'
         },
         success: {
           DEFAULT: 'hsl(var(--success))',
-          foreground: 'hsl(var(--success-foreground))'
+          foreground: 'hsl(var(--success-foreground))',
+          50: 'hsl(var(--success-50))',
+          100: 'hsl(var(--success-100))',
+          200: 'hsl(var(--success-200))',
+          300: 'hsl(var(--success-300))',
+          400: 'hsl(var(--success-400))',
+          500: 'hsl(var(--success-500))',
+          600: 'hsl(var(--success-600))',
+          700: 'hsl(var(--success-700))',
+          800: 'hsl(var(--success-800))',
+          900: 'hsl(var(--success-900))',
+          950: 'hsl(var(--success-950))'
         },
         warning: {
           DEFAULT: 'hsl(var(--warning))',
-          foreground: 'hsl(var(--warning-foreground))'
+          foreground: 'hsl(var(--warning-foreground))',
+          50: 'hsl(var(--warning-50))',
+          100: 'hsl(var(--warning-100))',
+          200: 'hsl(var(--warning-200))',
+          300: 'hsl(var(--warning-300))',
+          400: 'hsl(var(--warning-400))',
+          500: 'hsl(var(--warning-500))',
+          600: 'hsl(var(--warning-600))',
+          700: 'hsl(var(--warning-700))',
+          800: 'hsl(var(--warning-800))',
+          900: 'hsl(var(--warning-900))',
+          950: 'hsl(var(--warning-950))'
         },
         info: {
           DEFAULT: 'hsl(var(--info))',
-          foreground: 'hsl(var(--info-foreground))'
+          foreground: 'hsl(var(--info-foreground))',
+          50: 'hsl(var(--info-50))',
+          100: 'hsl(var(--info-100))',
+          200: 'hsl(var(--info-200))',
+          300: 'hsl(var(--info-300))',
+          400: 'hsl(var(--info-400))',
+          500: 'hsl(var(--info-500))',
+          600: 'hsl(var(--info-600))',
+          700: 'hsl(var(--info-700))',
+          800: 'hsl(var(--info-800))',
+          900: 'hsl(var(--info-900))',
+          950: 'hsl(var(--info-950))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',

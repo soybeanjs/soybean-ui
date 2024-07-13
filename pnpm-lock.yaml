@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@soybean-unify/shadcn-ui':
+        specifier: workspace:^
+        version: link:packages/shadcn-ui
       '@unocss/reset':
         specifier: 0.61.3
         version: 0.61.3
@@ -151,7 +154,7 @@ importers:
   packages/unocss-shadcn:
     dependencies:
       '@soybean-unify/color':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../color
       '@unocss/core':
         specifier: 0.61.3

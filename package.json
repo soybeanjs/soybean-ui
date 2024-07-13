@@ -34,6 +34,7 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
+    "@soybean-unify/shadcn-ui": "workspace:*",
     "@unocss/reset": "0.61.3",
     "vue": "3.4.31"
   },

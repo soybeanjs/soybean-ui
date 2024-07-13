@@ -1,105 +1,150 @@
 // @unocss-include
 
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
-export const buttonVariants = cva(
+export type ButtonColor = 'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'secondary';
+
+export type ButtonVariant = 'solid' | 'pure' | 'outline' | 'text' | 'ghost' | 'link';
+
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'icon';
+
+type Variants = {
+  color: Record<ButtonColor, string>;
+  variant: Record<ButtonVariant, string>;
+  size: Record<ButtonSize, string>;
+};
+
+type SingleOrArray<T> = T | T[];
+
+type CompoundVariants = {
+  [key in keyof Variants]?: SingleOrArray<keyof Variants[key]>;
+} & {
+  class: string;
+};
+
+const colorKeys: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary'];
+
+export const buttonVariants = cva<Variants>(
   'inline-flex items-center justify-center rd-md text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
   {
     variants: {
       color: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary',
-        destructive: `bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:outline-destructive`,
-        success: 'bg-success text-success-foreground hover:bg-success/90 focus-visible:outline-success',
-        warning: 'bg-warning text-warning-foreground hover:bg-warning/90 focus-visible:outline-warning',
-        info: 'bg-info text-info-foreground hover:bg-info/90 focus-visible:outline-info',
-        secondary: `bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:outline-secondary-foreground`
+        primary: `focus-visible:outline-primary`,
+        destructive: `focus-visible:outline-destructive`,
+        success: `focus-visible:outline-success`,
+        warning: `focus-visible:outline-warning`,
+        info: `focus-visible:outline-info`,
+        secondary: `focus-visible:outline-secondary-foreground`
       },
       variant: {
-        outline: 'border bg-background hover:bg-background',
-        ghost: 'bg-transparent hover:bg-accent text-accent-foreground',
-        link: 'bg-transparent hover:bg-transparent underline-offset-4 hover:underline'
+        solid: '',
+        pure: 'border border-border bg-background text-foreground',
+        outline: 'border bg-background',
+        ghost: '',
+        text: 'bg-transparent',
+        link: 'bg-transparent underline-offset-4 hover:underline'
       },
       size: {
-        xs: 'h-6 px-1.5 text-xs',
-        sm: 'h-7 px-2',
-        md: 'h-8 px-4 py-2',
-        lg: 'h-10 px-6',
+        xs: 'h-6 px-1.5 text-xs gap-1',
+        sm: 'h-7 px-2 gap-2',
+        md: 'h-8 px-4 gap-3',
+        lg: 'h-10 px-6 gap-4',
         icon: 'h-8 w-8'
       }
     },
+    compoundVariants: [
+      ...createSolidVariant(),
+      ...createTextColorVariant(),
+      ...createBgVariant(),
+      ...createPureVariant(),
+      ...createOutlineVariant(),
+      ...createGhostVariant()
+    ],
     defaultVariants: {
       color: 'primary',
+      variant: 'solid',
       size: 'md'
-    },
-    compoundVariants: [
-      {
-        color: 'primary',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-primary'
-      },
-      {
-        color: 'secondary',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-secondary-foreground'
-      },
-      {
-        color: 'destructive',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-destructive'
-      },
-      {
-        color: 'success',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-success'
-      },
-      {
-        color: 'warning',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-warning'
-      },
-      {
-        color: 'info',
-        variant: ['outline', 'ghost', 'link'],
-        class: 'text-info'
-      },
-      {
-        color: 'primary',
-        variant: 'outline',
-        class: 'border-primary'
-      },
-      {
-        color: 'secondary',
-        variant: 'outline',
-        class: 'border-secondary-foreground'
-      },
-      {
-        color: 'destructive',
-        variant: 'outline',
-        class: 'border-destructive'
-      },
-      {
-        color: 'success',
-        variant: 'outline',
-        class: 'border-success'
-      },
-      {
-        color: 'warning',
-        variant: 'outline',
-        class: 'border-warning'
-      },
-      {
-        color: 'info',
-        variant: 'outline',
-        class: 'border-info'
-      }
-    ]
+    }
   }
 );
 
-type ButtonVariants = VariantProps<typeof buttonVariants>;
+function createSolidVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: 'solid',
+      class: `bg-${color} text-${color}-foreground hover:bg-${color}/80 active:bg-${color}-600`
+    };
 
-export type ButtonColor = NonNullable<ButtonVariants['color']>;
+    return v;
+  });
+}
 
-export type ButtonSize = NonNullable<ButtonVariants['size']>;
+function createTextColorVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: ['outline', 'text', 'ghost', 'link'],
+      class: color === 'secondary' ? 'text-secondary-foreground' : `text-${color}`
+    };
 
-export type ButtonVariant = NonNullable<ButtonVariants['variant']>;
+    return v;
+  });
+}
+
+function createBgVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: ['pure', 'outline', 'text'],
+      class:
+        color === 'secondary'
+          ? `hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20`
+          : `hover:bg-${color}/10 active:bg-${color}/20`
+    };
+
+    return v;
+  });
+}
+
+function createPureVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: 'pure',
+      class:
+        color === 'secondary'
+          ? 'hover:border-secondary-foreground hover:text-secondary-foreground'
+          : `hover:border-${color} hover:text-${color}`
+    };
+
+    return v;
+  });
+}
+
+function createOutlineVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: 'outline',
+      class: color === 'secondary' ? 'border-secondary-foreground' : `border-${color}`
+    };
+
+    return v;
+  });
+}
+
+function createGhostVariant() {
+  return colorKeys.map(color => {
+    const v: CompoundVariants = {
+      color,
+      variant: 'ghost',
+      class:
+        color === 'secondary'
+          ? 'bg-secondary-foreground/10 hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+          : `bg-${color}/10 hover:bg-${color}/10 active:bg-${color}/20`
+    };
+
+    return v;
+  });
+}

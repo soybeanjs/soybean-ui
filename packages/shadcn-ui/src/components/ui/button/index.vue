@@ -6,17 +6,18 @@ import { buttonVariants } from './variants';
 import type { ButtonColor, ButtonSize, ButtonVariant } from './variants';
 
 export interface ButtonProps extends PrimitiveProps {
+  class?: HTMLAttributes['class'];
   color?: ButtonColor;
   variant?: ButtonVariant;
   size?: ButtonSize;
-  class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
+  class: '',
   as: 'button',
+  variant: 'solid',
   color: 'primary',
-  size: 'md',
-  class: ''
+  size: 'md'
 });
 </script>
 
