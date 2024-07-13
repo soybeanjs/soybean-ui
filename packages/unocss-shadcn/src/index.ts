@@ -2,7 +2,7 @@ import type { Preset } from '@unocss/core';
 import type { Theme } from 'unocss/preset-mini';
 import { generateCSSVars, generateGlobalStyles } from './generate';
 import themes from './theme.json';
-import type { PresetShadcnOptions } from './types';
+import type { PresetShadcnOptions, ThemeColorKey } from './types';
 
 export const builtinColors = themes.map(theme => theme.name);
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const;
@@ -73,6 +73,18 @@ export function presetShadcn(options: PresetShadcnOptions = {}, globals = true):
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))'
         },
+        success: {
+          DEFAULT: 'hsl(var(--success))',
+          foreground: 'hsl(var(--success-foreground))'
+        },
+        warning: {
+          DEFAULT: 'hsl(var(--warning))',
+          foreground: 'hsl(var(--warning-foreground))'
+        },
+        info: {
+          DEFAULT: 'hsl(var(--info))',
+          foreground: 'hsl(var(--info-foreground))'
+        },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))'
@@ -101,3 +113,5 @@ export function presetShadcn(options: PresetShadcnOptions = {}, globals = true):
 }
 
 export default presetShadcn;
+
+export type { ThemeColorKey };

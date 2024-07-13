@@ -2,24 +2,26 @@
 import type { HTMLAttributes } from 'vue';
 import { Primitive, type PrimitiveProps } from 'radix-vue';
 import { cn } from '@ui/lib/utils';
-import { type ButtonVariants, buttonVariants } from './class';
+import { buttonVariants } from './variants';
+import type { ButtonColor, ButtonSize, ButtonVariant } from './variants';
 
 export interface ButtonProps extends PrimitiveProps {
-  variant?: ButtonVariants['variant'];
-  size?: ButtonVariants['size'];
+  color?: ButtonColor;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
   class?: HTMLAttributes['class'];
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: 'button',
-  variant: 'default',
-  size: 'default',
+  color: 'primary',
+  size: 'md',
   class: ''
 });
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(buttonVariants({ variant, size }), props.class)">
+  <Primitive :as="as" :as-child="asChild" :class="cn(buttonVariants({ color, variant, size }), props.class)">
     <slot />
   </Primitive>
 </template>

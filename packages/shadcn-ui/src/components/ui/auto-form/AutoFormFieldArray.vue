@@ -75,7 +75,7 @@ provide(FieldContextKey, fieldContext);
                   />
 
                   <div class="flex justify-end !my-4">
-                    <Button type="button" size="icon" variant="secondary" @click="remove(index)">
+                    <Button type="button" size="icon" color="secondary" @click="remove(index)">
                       <TrashIcon :size="16" />
                     </Button>
                   </div>
@@ -83,7 +83,7 @@ provide(FieldContextKey, fieldContext);
                 </div>
               </template>
 
-              <Button type="button" variant="secondary" class="mt-4 flex items-center" @click="push(null)">
+              <Button type="button" color="secondary" class="mt-4 flex items-center" @click="push(null)">
                 <PlusIcon class="mr-2" :size="16" />
                 Add
               </Button>

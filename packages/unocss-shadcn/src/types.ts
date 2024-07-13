@@ -2,15 +2,6 @@ import type { DeepPartial } from '@unocss/core';
 
 export type HslColorString = `${number} ${number}% ${number}%`;
 
-export type FeedbackColorCssVars = {
-  success: HslColorString;
-  'success-foreground': HslColorString;
-  warning: HslColorString;
-  'warning-foreground': HslColorString;
-  info: HslColorString;
-  'info-foreground': HslColorString;
-};
-
 export type ThemeCSSVars = {
   background: HslColorString;
   foreground: HslColorString;
@@ -35,13 +26,29 @@ export type ThemeCSSVars = {
 
 export type ThemeCSSVarKey = keyof ThemeCSSVars;
 
+export type FeedbackColorOfThemeCssVars = {
+  success: HslColorString;
+  'success-foreground': HslColorString;
+  warning: HslColorString;
+  'warning-foreground': HslColorString;
+  info: HslColorString;
+  'info-foreground': HslColorString;
+};
+
+export type FeedbackColorOfThemeCssVarKey = keyof FeedbackColorOfThemeCssVars;
+
 export interface ThemeCSSVarsVariant {
   name: string;
   light: ThemeCSSVars;
   dark: ThemeCSSVars;
 }
 
-export type ThemeColor =
+export interface FeedbackColorOfThemeCssVarsVariant {
+  light: FeedbackColorOfThemeCssVars;
+  dark: FeedbackColorOfThemeCssVars;
+}
+
+export type ThemeConfigColor =
   | 'zinc'
   | 'slate'
   | 'stone'
@@ -55,7 +62,7 @@ export type ThemeColor =
   | 'yellow'
   | 'violet';
 
-export type ThemeConfig<T extends ThemeColor = ThemeColor> = {
+export type ThemeConfig<T extends ThemeConfigColor = ThemeConfigColor> = {
   name: T;
   label: string;
   activeColor: {
@@ -68,15 +75,36 @@ export type ThemeConfig<T extends ThemeColor = ThemeColor> = {
   };
 };
 
-export type ColorOptions = ThemeColor | ThemeCSSVarsVariant | ({ base: ThemeColor } & DeepPartial<ThemeCSSVarsVariant>);
+export type ColorOptions =
+  | ThemeConfigColor
+  | ThemeCSSVarsVariant
+  | ({ base: ThemeConfigColor } & DeepPartial<ThemeCSSVarsVariant>);
 
 export interface ThemeOptions {
-  /** @default 'zinc' */
+  /**
+   * theme color options
+   *
+   * @default 'zinc'
+   */
   color?: ColorOptions | false;
-  /** @default 0.5 */
+  /** feedback color */
+  feedbackColor?: FeedbackColorOfThemeCssVarsVariant;
+  /**
+   * theme radius
+   *
+   * @default 0.5
+   */
   radius?: number | false;
-  /** @default '.dark' */
+  /**
+   * dark theme selector
+   *
+   * @default '.dark'
+   */
   darkSelector?: string;
 }
 
 export type PresetShadcnOptions = ThemeOptions | ThemeOptions[];
+
+export type ThemeColorKey =
+  | Extract<ThemeCSSVarKey, 'primary' | 'secondary' | 'destructive'>
+  | Extract<FeedbackColorOfThemeCssVarKey, 'success' | 'warning' | 'info'>;

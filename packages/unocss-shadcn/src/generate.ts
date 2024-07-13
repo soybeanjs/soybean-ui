@@ -2,6 +2,9 @@ import { mergeDeep } from '@unocss/core';
 import themes from './theme.json';
 import type {
   ColorOptions,
+  FeedbackColorOfThemeCssVarKey,
+  FeedbackColorOfThemeCssVars,
+  FeedbackColorOfThemeCssVarsVariant,
   PresetShadcnOptions,
   ThemeCSSVarKey,
   ThemeCSSVars,
@@ -9,7 +12,7 @@ import type {
   ThemeConfig
 } from './types';
 
-const themeCSSVarKeys: ThemeCSSVarKey[] = [
+const themeCSSVarKeys: (ThemeCSSVarKey | FeedbackColorOfThemeCssVarKey)[] = [
   'background',
   'foreground',
   'card',
@@ -26,12 +29,18 @@ const themeCSSVarKeys: ThemeCSSVarKey[] = [
   'accent-foreground',
   'destructive',
   'destructive-foreground',
+  'success',
+  'success-foreground',
+  'warning',
+  'warning-foreground',
+  'info',
+  'info-foreground',
   'border',
   'input',
   'ring'
 ];
 
-function getColorCSSVars(color: ThemeCSSVars) {
+function getColorCSSVars(color: ThemeCSSVars & FeedbackColorOfThemeCssVars) {
   const cssVars = Object.entries(color)
     .map(([key, value]) => {
       if (!themeCSSVarKeys.includes(key as ThemeCSSVarKey)) {
@@ -127,10 +136,40 @@ function getColorTheme(color: ColorOptions) {
   return { light, dark, name };
 }
 
-export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): string {
-  if (Array.isArray(theme)) return theme.map(t => generateCSSVars(t, false)).join('\n');
+function createBuiltinFeedbackColorTheme() {
+  const feedbackColor: FeedbackColorOfThemeCssVarsVariant = {
+    light: {
+      success: '146 85% 56%',
+      'success-foreground': '146 85% 16%',
+      warning: '42 85% 56%',
+      'warning-foreground': '42 85% 16%',
+      info: '214 85% 56%',
+      'info-foreground': '0 0% 100%'
+    },
+    dark: {
+      success: '156 85% 19%',
+      'success-foreground': '156 85% 79%',
+      warning: '20 85% 19%',
+      'warning-foreground': '20 85% 79%',
+      info: '236 85% 19%',
+      'info-foreground': '236 85% 79%'
+    }
+  };
 
-  const { color = 'zinc', radius = 0.5, darkSelector = '.dark' } = theme;
+  return feedbackColor;
+}
+
+export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): string {
+  if (Array.isArray(theme)) {
+    return theme.map(t => generateCSSVars(t, false)).join('\n');
+  }
+
+  const {
+    color = 'zinc',
+    radius = 0.5,
+    darkSelector = '.dark',
+    feedbackColor = createBuiltinFeedbackColorTheme()
+  } = theme;
 
   let cssStyle = '';
 
@@ -140,8 +179,8 @@ export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): str
     }
   } else {
     const { light, dark, name } = getColorTheme(color);
-    const lightVars = getColorCSSVars(light);
-    const darkVars = getColorCSSVars(dark);
+    const lightVars = getColorCSSVars({ ...light, ...feedbackColor.light });
+    const darkVars = getColorCSSVars({ ...dark, ...feedbackColor.dark });
 
     cssStyle += getColorCSSVarsStyles(lightVars, darkVars, { radius, themeName: !onlyOne && name, darkSelector });
   }
