@@ -9,7 +9,10 @@
       "*": ["./src/*"]
     }
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@unocss/core": ">=0.60.0"
+  },
+  "devDependencies": {
     "@unocss/core": "0.61.3"
   }
 }

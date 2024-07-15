@@ -164,7 +164,7 @@ function createBuiltinFeedbackColorTheme() {
       'success-foreground': '0 0% 100%',
       warning: '37 91% 55%',
       'warning-foreground': '0 0% 100%',
-      info: '217 88% 52%',
+      info: '207 90% 61%',
       'info-foreground': '0 0% 100%'
     },
     dark: {

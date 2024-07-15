@@ -3,7 +3,7 @@ import type { Preset } from '@unocss/core';
 
 export function presetSoybeanUnify(): Preset {
   return {
-    name: 'preset-soybean',
+    name: 'preset-soybean-unify',
     shortcuts: [
       {
         'flex-center': 'flex justify-center items-center',
