@@ -74,8 +74,18 @@ defineOptions({
     <SuButton color="destructive" variant="pure" size="sm">Small</SuButton>
     <SuButton color="success" variant="outline" size="md">Medium</SuButton>
     <SuButton color="warning" variant="ghost" size="lg">Large</SuButton>
-    <SuButton color="info" variant="outline" size="icon">
-      <Airplay />
+  </div>
+  <div class="py-12px text-18px">Shape</div>
+  <div class="flex flex-wrap gap-12px">
+    <SuButton color="primary" variant="outline" size="md" shape="rounded">Rounded</SuButton>
+    <SuButton color="destructive" variant="outline" size="md" shape="square">
+      <Airplay :size="16" />
+    </SuButton>
+    <SuButton color="success" variant="outline" size="md" shape="circle">
+      <Airplay :size="16" />
+    </SuButton>
+    <SuButton color="info" variant="text" size="md" shape="square">
+      <Airplay :size="16" />
     </SuButton>
   </div>
 </template>

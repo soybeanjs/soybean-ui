@@ -8,14 +8,17 @@ export type ButtonVariant = 'solid' | 'pure' | 'outline' | 'text' | 'ghost' | 'l
 
 export type ButtonSize = ThemeSize;
 
+export type ButtonShape = 'auto' | 'rounded' | 'circle' | 'square';
+
 type Variants = {
   color: Record<ButtonColor, string>;
   variant: Record<ButtonVariant, string>;
   size: Record<ButtonSize, string>;
+  shape: Record<ButtonShape, string>;
 };
 
 export const buttonVariants = cva<Variants>(
-  'inline-flex items-center justify-center rd-md text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
+  'inline-flex items-center justify-center text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
   {
     variants: {
       color: {
@@ -27,10 +30,10 @@ export const buttonVariants = cva<Variants>(
         secondary: `focus-visible:outline-secondary-foreground`
       },
       variant: {
-        solid: '',
+        solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
         pure: 'border border-border bg-background text-foreground',
         outline: 'border bg-background',
-        ghost: '',
+        ghost: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
         text: 'bg-transparent',
         link: 'bg-transparent underline-offset-4 hover:underline'
       },
@@ -38,16 +41,16 @@ export const buttonVariants = cva<Variants>(
         xs: 'h-6 px-1.5 text-xs gap-1',
         sm: 'h-7 px-2 gap-2',
         md: 'h-8 px-4 gap-3',
-        lg: 'h-10 px-6 gap-4',
-        icon: 'h-8 w-8'
+        lg: 'h-10 px-6 gap-4'
+      },
+      shape: {
+        auto: 'rd-md',
+        rounded: 'rd-full',
+        square: 'h-8 w-8 p-0 gap-0 rd-md',
+        circle: 'h-8 w-8 p-0 gap-0 rd-full'
       }
     },
     compoundVariants: [
-      {
-        color: 'primary',
-        variant: 'solid',
-        class: `bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600`
-      },
       {
         color: 'destructive',
         variant: 'solid',
@@ -194,11 +197,6 @@ export const buttonVariants = cva<Variants>(
         class: 'border-secondary-foreground'
       },
       {
-        color: 'primary',
-        variant: 'ghost',
-        class: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20'
-      },
-      {
         color: 'destructive',
         variant: 'ghost',
         class: 'bg-destructive/10 hover:bg-destructive/10 active:bg-destructive/20'
@@ -222,12 +220,28 @@ export const buttonVariants = cva<Variants>(
         color: 'secondary',
         variant: 'ghost',
         class: 'bg-secondary-foreground/10 hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+      },
+      {
+        size: 'xs',
+        shape: ['square', 'circle'],
+        class: 'h-6 w-6'
+      },
+      {
+        size: 'sm',
+        shape: ['square', 'circle'],
+        class: 'h-7 w-7'
+      },
+      {
+        size: 'lg',
+        shape: ['square', 'circle'],
+        class: 'h-10 w-10'
       }
     ],
     defaultVariants: {
       color: 'primary',
       variant: 'solid',
-      size: 'md'
+      size: 'md',
+      shape: 'auto'
     }
   }
 );
