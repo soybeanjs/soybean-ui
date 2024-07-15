@@ -1,101 +1,49 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { SuButton } from '@soybean-unify/ui';
-import { Airplay, Loader } from 'lucide-vue-next';
+import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
+import { Airplay, Loader, LoaderCircle } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'SuButtonDemo'
+  name: 'UiButton'
 });
 
-const loading = ref(false);
+const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary'];
+const variants: ButtonVariant[] = ['solid', 'pure', 'outline', 'dashed', 'ghost', 'text', 'link'];
+const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
 </script>
 
 <template>
   <div class="py-12px text-18px">Color</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary">Primary</SuButton>
-    <SuButton color="destructive">Destructive</SuButton>
-    <SuButton color="success">Success</SuButton>
-    <SuButton color="warning">Warning</SuButton>
-    <SuButton color="info">Info</SuButton>
-    <SuButton color="secondary">Secondary</SuButton>
+    <SuButton v-for="color in colors" :key="color" :color="color">{{ color }}</SuButton>
   </div>
   <div class="py-12px text-18px">Variant</div>
   <div class="flex-col-stretch gap-12px">
-    <div class="flex flex-wrap gap-12px">
-      <SuButton variant="solid">Solid</SuButton>
-      <SuButton variant="pure">Pure</SuButton>
-      <SuButton variant="outline">Outlined</SuButton>
-      <SuButton variant="dashed">Dashed</SuButton>
-      <SuButton variant="ghost">Ghost</SuButton>
-      <SuButton variant="text">Text</SuButton>
-      <SuButton variant="link">Link</SuButton>
-    </div>
-    <div class="flex flex-wrap gap-12px">
-      <SuButton color="destructive" variant="solid">Solid</SuButton>
-      <SuButton color="destructive" variant="pure">Pure</SuButton>
-      <SuButton color="destructive" variant="outline">Outlined</SuButton>
-      <SuButton color="destructive" variant="dashed">Dashed</SuButton>
-      <SuButton color="destructive" variant="ghost">Ghost</SuButton>
-      <SuButton color="destructive" variant="text">Text</SuButton>
-      <SuButton color="destructive" variant="link">Link</SuButton>
-    </div>
-    <div class="flex flex-wrap gap-12px">
-      <SuButton color="success" variant="solid">Solid</SuButton>
-      <SuButton color="success" variant="pure">Pure</SuButton>
-      <SuButton color="success" variant="outline">Outlined</SuButton>
-      <SuButton color="success" variant="dashed">Dashed</SuButton>
-      <SuButton color="success" variant="ghost">Ghost</SuButton>
-      <SuButton color="success" variant="text">Text</SuButton>
-      <SuButton color="success" variant="link">Link</SuButton>
-    </div>
-    <div class="flex flex-wrap gap-12px">
-      <SuButton color="warning" variant="solid">Solid</SuButton>
-      <SuButton color="warning" variant="pure">Pure</SuButton>
-      <SuButton color="warning" variant="outline">Outlined</SuButton>
-      <SuButton color="warning" variant="dashed">Dashed</SuButton>
-      <SuButton color="warning" variant="ghost">Ghost</SuButton>
-      <SuButton color="warning" variant="text">Text</SuButton>
-      <SuButton color="warning" variant="link">Link</SuButton>
-    </div>
-    <div class="flex flex-wrap gap-12px">
-      <SuButton color="info" variant="solid">Solid</SuButton>
-      <SuButton color="info" variant="pure">Pure</SuButton>
-      <SuButton color="info" variant="outline">Outlined</SuButton>
-      <SuButton color="info" variant="dashed">Dashed</SuButton>
-      <SuButton color="info" variant="ghost">Ghost</SuButton>
-      <SuButton color="info" variant="text">Text</SuButton>
-      <SuButton color="info" variant="link">Link</SuButton>
-    </div>
-    <div class="flex flex-wrap gap-12px">
-      <SuButton color="secondary" variant="solid">Solid</SuButton>
-      <SuButton color="secondary" variant="pure">Pure</SuButton>
-      <SuButton color="secondary" variant="outline">Outlined</SuButton>
-      <SuButton color="secondary" variant="dashed">Dashed</SuButton>
-      <SuButton color="secondary" variant="ghost">Ghost</SuButton>
-      <SuButton color="secondary" variant="text">Text</SuButton>
-      <SuButton color="secondary" variant="link">Link</SuButton>
+    <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
+      <SuButton v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SuButton>
     </div>
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton size="xs" class="w-48px">xs</SuButton>
-    <SuButton color="destructive" variant="pure" size="sm">Small</SuButton>
-    <SuButton color="success" variant="outline" size="md">Medium</SuButton>
-    <SuButton color="warning" variant="ghost" size="lg">Large</SuButton>
+    <SuButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" :variant="variants[index]" :size="size">
+      {{ size }}
+    </SuButton>
   </div>
   <div class="py-12px text-18px">Shape</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary" variant="outline" shape="rounded">Rounded</SuButton>
-    <SuButton color="destructive" variant="outline" shape="square">
-      <Airplay :size="16" />
-    </SuButton>
-    <SuButton color="success" variant="outline" shape="circle">
-      <Airplay :size="16" />
-    </SuButton>
-    <SuButton color="info" variant="text" shape="square">
-      <Airplay :size="16" />
-    </SuButton>
+    <SuButton color="primary" variant="outline" shape="rounded">rounded</SuButton>
+    <div class="flex-col-center">
+      <SuButton color="destructive" variant="dashed" shape="square">
+        <Airplay :size="16" />
+      </SuButton>
+      <div class="text-12px text-#666">square</div>
+    </div>
+    <div class="flex-col-center">
+      <SuButton color="success" variant="ghost" shape="circle">
+        <Airplay :size="16" />
+      </SuButton>
+      <div class="text-12px text-#666">circle</div>
+    </div>
   </div>
   <div class="py-12px text-18px">Slot</div>
   <div class="flex flex-wrap gap-12px">
@@ -123,26 +71,23 @@ const loading = ref(false);
   </div>
   <div class="py-12px text-18px">Disabled</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="destructive" variant="solid" :disabled="true">Disabled</SuButton>
-    <SuButton color="success" variant="outline" :disabled="true">Disabled</SuButton>
-    <SuButton color="warning" variant="dashed" :disabled="true">Disabled</SuButton>
+    <SuButton color="destructive" variant="solid" disabled>disabled</SuButton>
+    <SuButton color="success" variant="outline" disabled>disabled</SuButton>
+    <SuButton color="warning" variant="dashed" disabled>disabled</SuButton>
   </div>
   <div class="py-12px text-18px">Loading</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="success" variant="solid" :loading="loading">
+    <SuButton color="success" variant="solid" disabled>
       <template #before>
-        <Airplay :size="16" />
+        <LoaderCircle :size="16" class="animate-spin" />
       </template>
-      Loading
+      Loading...
     </SuButton>
-    <SuButton color="warning" variant="outline" :loading="loading">
+    <SuButton color="warning" variant="outline" disabled>
       <template #loading>
-        <Loader :size="16" />
+        <Loader :size="16" class="animate-spin" />
       </template>
-      Loading
-    </SuButton>
-    <SuButton color="info" variant="dashed" @click="loading = !loading">
-      {{ loading ? 'End' : 'Start' }}
+      Loading...
     </SuButton>
   </div>
 </template>

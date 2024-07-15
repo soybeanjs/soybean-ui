@@ -1,14 +1,24 @@
 <script setup lang="ts">
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@soybean-unify/shadcn-ui';
+import { SuAccordion } from '@soybean-unify/ui';
 
 defineOptions({
-  name: 'AccordionDemo'
+  name: 'UiAccordion'
 });
 
 const defaultValue = 'item-1';
 
-const accordionItems = [
-  { value: 'item-1', title: 'Is it accessible?', content: 'Yes. It adheres to the WAI-ARIA design pattern.' },
+type AccordionItems = {
+  value: string;
+  title: string;
+  content: string;
+};
+
+const items: AccordionItems[] = [
+  {
+    value: 'item-1',
+    title: 'Is it accessible?',
+    content: 'Yes. It adheres to the WAI-ARIA design pattern.'
+  },
   {
     value: 'item-2',
     title: 'Is it unstyled?',
@@ -23,18 +33,7 @@ const accordionItems = [
 </script>
 
 <template>
-  <div>
-    <div class="text-14px fw-500">Accordion</div>
-
-    <Accordion type="single" class="w-full" collapsible :default-value="defaultValue">
-      <AccordionItem v-for="item in accordionItems" :key="item.value" :value="item.value">
-        <AccordionTrigger>{{ item.title }}</AccordionTrigger>
-        <AccordionContent>
-          {{ item.content }}
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  </div>
+  <SuAccordion type="single" class="w-full" collapsible :default-value="defaultValue" :items="items" />
 </template>
 
 <style scoped></style>

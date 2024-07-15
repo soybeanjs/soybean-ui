@@ -12,6 +12,7 @@
   "dependencies": {
     "@soybean-unify/ui-variants": "workspace:*",
     "clsx": "2.1.1",
+    "lucide-vue-next": "0.408.0",
     "radix-vue": "1.9.1",
     "tailwind-merge": "2.4.0"
   }
