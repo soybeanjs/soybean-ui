@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { SuButton } from '@soybean-unify/ui';
-import { Airplay, Loader, LoaderCircle } from 'lucide-vue-next';
+import { Airplay, Loader } from 'lucide-vue-next';
 
 defineOptions({
   name: 'SuButtonDemo'
 });
+
+const loading = ref(false);
 </script>
 
 <template>
@@ -120,23 +123,26 @@ defineOptions({
   </div>
   <div class="py-12px text-18px">Disabled</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary" variant="solid" disabled>Disabled</SuButton>
-    <SuButton color="destructive" variant="outline" disabled>Disabled</SuButton>
-    <SuButton color="success" variant="dashed" disabled>Disabled</SuButton>
+    <SuButton color="destructive" variant="solid" :disabled="true">Disabled</SuButton>
+    <SuButton color="success" variant="outline" :disabled="true">Disabled</SuButton>
+    <SuButton color="warning" variant="dashed" :disabled="true">Disabled</SuButton>
   </div>
   <div class="py-12px text-18px">Loading</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary" variant="solid" disabled>
+    <SuButton color="success" variant="solid" :loading="loading">
       <template #before>
-        <Loader :size="16" class="animate-spin" />
+        <Airplay :size="16" />
       </template>
-      Loading...
+      Loading
     </SuButton>
-    <SuButton color="destructive" variant="outline" disabled>
-      <template #before>
-        <LoaderCircle :size="16" class="animate-spin" />
+    <SuButton color="warning" variant="outline" :loading="loading">
+      <template #loading>
+        <Loader :size="16" />
       </template>
-      Loading...
+      Loading
+    </SuButton>
+    <SuButton color="info" variant="dashed" @click="loading = !loading">
+      {{ loading ? 'End' : 'Start' }}
     </SuButton>
   </div>
 </template>

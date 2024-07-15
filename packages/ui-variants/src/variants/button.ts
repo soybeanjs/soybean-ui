@@ -18,7 +18,7 @@ type Variants = {
 };
 
 export const buttonVariants = cva<Variants>(
-  'inline-flex items-center justify-center text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none select-none opacity-50)',
+  'inline-flex items-center justify-center text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
   {
     variants: {
       color: {
