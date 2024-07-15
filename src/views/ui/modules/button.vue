@@ -84,7 +84,7 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
       Loading...
     </SuButton>
     <SuButton color="warning" variant="outline" disabled>
-      <template #loading>
+      <template #before>
         <Loader :size="16" class="animate-spin" />
       </template>
       Loading...
