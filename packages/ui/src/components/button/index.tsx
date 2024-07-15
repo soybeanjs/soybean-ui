@@ -12,6 +12,7 @@ export interface ButtonProps extends PrimitiveProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   shape?: ButtonShape;
+  disabled?: boolean;
 }
 
 type Slots = SlotsType<{
@@ -26,6 +27,7 @@ export const SuButton = defineComponent<ButtonProps, {}, string, Slots>(
       <Primitive
         as={props.as || 'button'}
         asChild={props.asChild}
+        disabled={props.disabled}
         class={cn(
           buttonVariants({ color: props.color, variant: props.variant, size: props.size, shape: props.shape }),
           props.class

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SuButton } from '@soybean-unify/ui';
-import { Airplay } from 'lucide-vue-next';
+import { Airplay, Loader, LoaderCircle } from 'lucide-vue-next';
 
 defineOptions({
   name: 'SuButtonDemo'
@@ -83,15 +83,60 @@ defineOptions({
   </div>
   <div class="py-12px text-18px">Shape</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary" variant="outline" size="md" shape="rounded">Rounded</SuButton>
-    <SuButton color="destructive" variant="outline" size="md" shape="square">
+    <SuButton color="primary" variant="outline" shape="rounded">Rounded</SuButton>
+    <SuButton color="destructive" variant="outline" shape="square">
       <Airplay :size="16" />
     </SuButton>
-    <SuButton color="success" variant="outline" size="md" shape="circle">
+    <SuButton color="success" variant="outline" shape="circle">
       <Airplay :size="16" />
     </SuButton>
-    <SuButton color="info" variant="text" size="md" shape="square">
+    <SuButton color="info" variant="text" shape="square">
       <Airplay :size="16" />
+    </SuButton>
+  </div>
+  <div class="py-12px text-18px">Slot</div>
+  <div class="flex flex-wrap gap-12px">
+    <SuButton color="primary">
+      <template #before>
+        <Airplay :size="16" />
+      </template>
+      Before
+    </SuButton>
+    <SuButton color="destructive" variant="outline">
+      After
+      <template #after>
+        <Airplay :size="16" />
+      </template>
+    </SuButton>
+    <SuButton color="success" variant="dashed">
+      <template #before>
+        <Airplay :size="16" />
+      </template>
+      Both
+      <template #after>
+        <Airplay :size="16" />
+      </template>
+    </SuButton>
+  </div>
+  <div class="py-12px text-18px">Disabled</div>
+  <div class="flex flex-wrap gap-12px">
+    <SuButton color="primary" variant="solid" disabled>Disabled</SuButton>
+    <SuButton color="destructive" variant="outline" disabled>Disabled</SuButton>
+    <SuButton color="success" variant="dashed" disabled>Disabled</SuButton>
+  </div>
+  <div class="py-12px text-18px">Loading</div>
+  <div class="flex flex-wrap gap-12px">
+    <SuButton color="primary" variant="solid" disabled>
+      <template #before>
+        <Loader :size="16" class="animate-spin" />
+      </template>
+      Loading...
+    </SuButton>
+    <SuButton color="destructive" variant="outline" disabled>
+      <template #before>
+        <LoaderCircle :size="16" class="animate-spin" />
+      </template>
+      Loading...
     </SuButton>
   </div>
 </template>
