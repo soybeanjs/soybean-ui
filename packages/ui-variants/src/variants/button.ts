@@ -4,7 +4,7 @@ import type { ThemeColor, ThemeSize } from '../types/theme';
 
 export type ButtonColor = ThemeColor;
 
-export type ButtonVariant = 'solid' | 'pure' | 'outline' | 'text' | 'ghost' | 'link';
+export type ButtonVariant = 'solid' | 'pure' | 'outline' | 'dashed' | 'text' | 'ghost' | 'link';
 
 export type ButtonSize = ThemeSize;
 
@@ -33,6 +33,7 @@ export const buttonVariants = cva<Variants>(
         solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
         pure: 'border border-border bg-background text-foreground',
         outline: 'border bg-background',
+        dashed: 'border border-dashed bg-background',
         ghost: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
         text: 'bg-transparent',
         link: 'bg-transparent underline-offset-4 hover:underline'
@@ -78,62 +79,62 @@ export const buttonVariants = cva<Variants>(
       },
       {
         color: 'primary',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-primary'
       },
       {
         color: 'destructive',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-destructive'
       },
       {
         color: 'success',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-success'
       },
       {
         color: 'warning',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-warning'
       },
       {
         color: 'info',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-info'
       },
       {
         color: 'secondary',
-        variant: ['outline', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
         class: 'text-secondary-foreground'
       },
       {
         color: 'primary',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-primary/10 active:bg-primary/20'
       },
       {
         color: 'destructive',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-destructive/10 active:bg-destructive/20'
       },
       {
         color: 'success',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-success/10 active:bg-success/20'
       },
       {
         color: 'warning',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-warning/10 active:bg-warning/20'
       },
       {
         color: 'info',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-info/10 active:bg-info/20'
       },
       {
         color: 'secondary',
-        variant: ['pure', 'outline', 'text'],
+        variant: ['pure', 'outline', 'dashed', 'text'],
         class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
       },
       {
@@ -168,32 +169,32 @@ export const buttonVariants = cva<Variants>(
       },
       {
         color: 'primary',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-primary'
       },
       {
         color: 'destructive',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-destructive'
       },
       {
         color: 'success',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-success'
       },
       {
         color: 'warning',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-warning'
       },
       {
         color: 'info',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-info'
       },
       {
         color: 'secondary',
-        variant: 'outline',
+        variant: ['outline', 'dashed'],
         class: 'border-secondary-foreground'
       },
       {

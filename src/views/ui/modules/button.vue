@@ -23,6 +23,7 @@ defineOptions({
       <SuButton variant="solid">Solid</SuButton>
       <SuButton variant="pure">Pure</SuButton>
       <SuButton variant="outline">Outlined</SuButton>
+      <SuButton variant="dashed">Dashed</SuButton>
       <SuButton variant="ghost">Ghost</SuButton>
       <SuButton variant="text">Text</SuButton>
       <SuButton variant="link">Link</SuButton>
@@ -31,6 +32,7 @@ defineOptions({
       <SuButton color="destructive" variant="solid">Solid</SuButton>
       <SuButton color="destructive" variant="pure">Pure</SuButton>
       <SuButton color="destructive" variant="outline">Outlined</SuButton>
+      <SuButton color="destructive" variant="dashed">Dashed</SuButton>
       <SuButton color="destructive" variant="ghost">Ghost</SuButton>
       <SuButton color="destructive" variant="text">Text</SuButton>
       <SuButton color="destructive" variant="link">Link</SuButton>
@@ -39,6 +41,7 @@ defineOptions({
       <SuButton color="success" variant="solid">Solid</SuButton>
       <SuButton color="success" variant="pure">Pure</SuButton>
       <SuButton color="success" variant="outline">Outlined</SuButton>
+      <SuButton color="success" variant="dashed">Dashed</SuButton>
       <SuButton color="success" variant="ghost">Ghost</SuButton>
       <SuButton color="success" variant="text">Text</SuButton>
       <SuButton color="success" variant="link">Link</SuButton>
@@ -47,6 +50,7 @@ defineOptions({
       <SuButton color="warning" variant="solid">Solid</SuButton>
       <SuButton color="warning" variant="pure">Pure</SuButton>
       <SuButton color="warning" variant="outline">Outlined</SuButton>
+      <SuButton color="warning" variant="dashed">Dashed</SuButton>
       <SuButton color="warning" variant="ghost">Ghost</SuButton>
       <SuButton color="warning" variant="text">Text</SuButton>
       <SuButton color="warning" variant="link">Link</SuButton>
@@ -55,6 +59,7 @@ defineOptions({
       <SuButton color="info" variant="solid">Solid</SuButton>
       <SuButton color="info" variant="pure">Pure</SuButton>
       <SuButton color="info" variant="outline">Outlined</SuButton>
+      <SuButton color="info" variant="dashed">Dashed</SuButton>
       <SuButton color="info" variant="ghost">Ghost</SuButton>
       <SuButton color="info" variant="text">Text</SuButton>
       <SuButton color="info" variant="link">Link</SuButton>
@@ -63,6 +68,7 @@ defineOptions({
       <SuButton color="secondary" variant="solid">Solid</SuButton>
       <SuButton color="secondary" variant="pure">Pure</SuButton>
       <SuButton color="secondary" variant="outline">Outlined</SuButton>
+      <SuButton color="secondary" variant="dashed">Dashed</SuButton>
       <SuButton color="secondary" variant="ghost">Ghost</SuButton>
       <SuButton color="secondary" variant="text">Text</SuButton>
       <SuButton color="secondary" variant="link">Link</SuButton>
