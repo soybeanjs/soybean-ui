@@ -11,6 +11,9 @@ importers:
       '@soybean-unify/shadcn-ui':
         specifier: workspace:*
         version: link:packages/shadcn-ui
+      '@soybean-unify/ui':
+        specifier: workspace:*
+        version: link:packages/ui
       '@unocss/reset':
         specifier: 0.61.3
         version: 0.61.3
@@ -145,11 +148,30 @@ importers:
         specifier: 3.23.8
         version: 3.23.8
 
-  packages/ui: {}
+  packages/ui:
+    dependencies:
+      '@soybean-unify/ui-variants':
+        specifier: workspace:*
+        version: link:../ui-variants
+      clsx:
+        specifier: 2.1.1
+        version: 2.1.1
+      radix-vue:
+        specifier: 1.9.1
+        version: 1.9.1(vue@3.4.31(typescript@5.5.3))
+      tailwind-merge:
+        specifier: 2.4.0
+        version: 2.4.0
 
   packages/ui-market: {}
 
   packages/ui-pro: {}
+
+  packages/ui-variants:
+    dependencies:
+      class-variance-authority:
+        specifier: 0.7.0
+        version: 0.7.0
 
   packages/unocss-preset:
     dependencies:

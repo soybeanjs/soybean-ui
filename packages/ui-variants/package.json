@@ -1,5 +1,5 @@
 {
-  "name": "@soybean-unify/ui",
+  "name": "@soybean-unify/ui-variants",
   "version": "0.0.1",
   "exports": {
     ".": "./src/index.ts"
@@ -10,9 +10,6 @@
     }
   },
   "dependencies": {
-    "@soybean-unify/ui-variants": "workspace:*",
-    "clsx": "2.1.1",
-    "radix-vue": "1.9.1",
-    "tailwind-merge": "2.4.0"
+    "class-variance-authority": "0.7.0"
   }
 }
