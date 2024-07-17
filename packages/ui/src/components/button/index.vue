@@ -7,7 +7,7 @@ import type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant } from '@soybe
 import { cn } from '../../shared';
 
 defineOptions({
-  name: 'SuButton'
+  name: 'SButton'
 });
 
 export interface ButtonProps extends PrimitiveProps {

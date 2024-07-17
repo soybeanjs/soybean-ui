@@ -6,7 +6,7 @@ import type { AccordionContentProps } from 'radix-vue';
 import { cn } from '../../shared';
 
 defineOptions({
-  name: 'SuAccordionContent'
+  name: 'SAccordionContent'
 });
 
 const props = defineProps<AccordionContentProps & { class?: HTMLAttributes['class'] }>();

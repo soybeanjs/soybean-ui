@@ -7,7 +7,7 @@ import { ChevronDown } from 'lucide-vue-next';
 import { cn } from '../../shared';
 
 defineOptions({
-  name: 'SuAccordionTrigger'
+  name: 'SAccordionTrigger'
 });
 
 const props = defineProps<AccordionTriggerProps & { class?: HTMLAttributes['class'] }>();

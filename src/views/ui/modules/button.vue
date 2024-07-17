@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SuButton } from '@soybean-unify/ui';
+import { SButton } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
 import { Airplay, Loader, LoaderCircle } from 'lucide-vue-next';
 
@@ -15,51 +15,51 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
 <template>
   <div class="py-12px text-18px">Color</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton v-for="color in colors" :key="color" :color="color">{{ color }}</SuButton>
+    <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
   </div>
   <div class="py-12px text-18px">Variant</div>
   <div class="flex-col-stretch gap-12px">
     <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
-      <SuButton v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SuButton>
+      <SButton v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SButton>
     </div>
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" :variant="variants[index]" :size="size">
+    <SButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" :variant="variants[index]" :size="size">
       {{ size }}
-    </SuButton>
+    </SButton>
   </div>
   <div class="py-12px text-18px">Shape</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary" variant="outline" shape="rounded">rounded</SuButton>
+    <SButton color="primary" variant="outline" shape="rounded">rounded</SButton>
     <div class="flex-col-center">
-      <SuButton color="destructive" variant="dashed" shape="square">
+      <SButton color="destructive" variant="dashed" shape="square">
         <Airplay :size="16" />
-      </SuButton>
+      </SButton>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
-      <SuButton color="success" variant="ghost" shape="circle">
+      <SButton color="success" variant="ghost" shape="circle">
         <Airplay :size="16" />
-      </SuButton>
+      </SButton>
       <div class="text-12px text-#666">circle</div>
     </div>
   </div>
   <div class="py-12px text-18px">Slot</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="primary">
+    <SButton color="primary">
       <template #before>
         <Airplay :size="16" />
       </template>
       Before
-    </SuButton>
-    <SuButton color="destructive" variant="outline">
+    </SButton>
+    <SButton color="destructive" variant="outline">
       After
       <template #after>
         <Airplay :size="16" />
       </template>
-    </SuButton>
-    <SuButton color="success" variant="dashed">
+    </SButton>
+    <SButton color="success" variant="dashed">
       <template #before>
         <Airplay :size="16" />
       </template>
@@ -67,27 +67,27 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
       <template #after>
         <Airplay :size="16" />
       </template>
-    </SuButton>
+    </SButton>
   </div>
   <div class="py-12px text-18px">Disabled</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="destructive" variant="solid" disabled>disabled</SuButton>
-    <SuButton color="success" variant="outline" disabled>disabled</SuButton>
-    <SuButton color="warning" variant="dashed" disabled>disabled</SuButton>
+    <SButton color="destructive" variant="solid" disabled>disabled</SButton>
+    <SButton color="success" variant="outline" disabled>disabled</SButton>
+    <SButton color="warning" variant="dashed" disabled>disabled</SButton>
   </div>
   <div class="py-12px text-18px">Loading</div>
   <div class="flex flex-wrap gap-12px">
-    <SuButton color="success" variant="solid" disabled>
+    <SButton color="success" variant="solid" disabled>
       <template #before>
         <LoaderCircle :size="16" class="animate-spin" />
       </template>
       Loading...
-    </SuButton>
-    <SuButton color="warning" variant="outline" disabled>
+    </SButton>
+    <SButton color="warning" variant="outline" disabled>
       <template #before>
         <Loader :size="16" class="animate-spin" />
       </template>
       Loading...
-    </SuButton>
+    </SButton>
   </div>
 </template>

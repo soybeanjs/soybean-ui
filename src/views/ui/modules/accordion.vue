@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SuAccordion } from '@soybean-unify/ui';
+import { SAccordion } from '@soybean-unify/ui';
 
 defineOptions({
   name: 'UiAccordion'
@@ -33,7 +33,7 @@ const items: AccordionItems[] = [
 </script>
 
 <template>
-  <SuAccordion type="single" class="w-full" collapsible :default-value="defaultValue" :items="items" />
+  <SAccordion type="single" class="w-full" collapsible :default-value="defaultValue" :items="items" />
 </template>
 
 <style scoped></style>

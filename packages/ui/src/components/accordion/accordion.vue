@@ -2,9 +2,9 @@
 import { computed } from 'vue';
 import { AccordionRoot, useForwardPropsEmits } from 'radix-vue';
 import type { AccordionRootEmits, AccordionRootProps } from 'radix-vue';
-import SuAccordionItem from './accordion-item.vue';
-import SuAccordionTrigger from './accordion-trigger.vue';
-import SuAccordionContent from './accordion-content.vue';
+import SAccordionItem from './accordion-item.vue';
+import SAccordionTrigger from './accordion-trigger.vue';
+import SAccordionContent from './accordion-content.vue';
 import type { AccordionItemData } from './types';
 
 interface AccordionProps extends AccordionRootProps {
@@ -23,20 +23,20 @@ const delegatedProps = computed(() => {
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 defineOptions({
-  name: 'SuAccordion'
+  name: 'SAccordion'
 });
 </script>
 
 <template>
   <AccordionRoot v-bind="forwarded">
-    <SuAccordionItem v-for="item in items" :key="item.value" v-bind="item">
-      <SuAccordionTrigger>
+    <SAccordionItem v-for="item in items" :key="item.value" v-bind="item">
+      <SAccordionTrigger>
         <slot name="trigger" :item="item">{{ item.title }}</slot>
-      </SuAccordionTrigger>
-      <SuAccordionContent>
+      </SAccordionTrigger>
+      <SAccordionContent>
         <slot name="trigger" :item="item">{{ item.content }}</slot>
-      </SuAccordionContent>
-    </SuAccordionItem>
+      </SAccordionContent>
+    </SAccordionItem>
   </AccordionRoot>
 </template>
 
