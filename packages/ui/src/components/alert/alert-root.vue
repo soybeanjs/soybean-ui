@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue';
-import type { AlertColor } from '@soybean-unify/ui-variants';
+import { reactiveOmit } from '@vueuse/core';
+import { Primitive } from 'radix-vue';
 import { alertVariants } from '@soybean-unify/ui-variants';
 import { cn } from '../../shared';
+import type { AlertRootProps } from './types';
 
 defineOptions({
   name: 'SAlertRoot'
 });
 
-interface Props {
-  class?: HTMLAttributes['class'];
-  color?: AlertColor;
-}
+const props = withDefaults(defineProps<AlertRootProps>(), {
+  as: 'div'
+});
 
-const props = defineProps<Props>();
+const delegatedProps = reactiveOmit(props, ['class']);
 </script>
 
 <template>
-  <div :class="cn(alertVariants({ color }), props.class)" role="alert">
+  <Primitive v-bind="delegatedProps" :class="cn(alertVariants({ color }), props.class)" role="alert">
     <slot />
-  </div>
+  </Primitive>
 </template>
 
 <style scoped></style>

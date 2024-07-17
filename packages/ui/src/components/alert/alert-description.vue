@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue';
+import { reactiveOmit } from '@vueuse/core';
+import { Primitive } from 'radix-vue';
 import { cn } from '../../shared';
+import type { PrimitivePropsWithClass } from '../../types';
 
 defineOptions({
   name: 'SAlertDescription'
 });
 
-interface Props {
-  class?: HTMLAttributes['class'];
-}
+const props = withDefaults(defineProps<PrimitivePropsWithClass>(), {
+  as: 'div'
+});
 
-const props = defineProps<Props>();
+const delegatedProps = reactiveOmit(props, ['class']);
 </script>
 
 <template>
-  <div :class="cn('text-sm [&_p]:leading-relaxed', props.class)">
+  <Primitive v-bind="delegatedProps" :class="cn('text-sm [&_p]:leading-relaxed', props.class)">
     <slot />
-  </div>
+  </Primitive>
 </template>
 
 <style scoped></style>

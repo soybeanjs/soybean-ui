@@ -13,7 +13,6 @@ export default defineConfig(
       ],
       'vue/require-default-prop': 'off',
       'vue/return-in-computed-property': 'off',
-      'vue/no-undef-properties': ['error', { ignores: ['as', 'asChild'] }],
       'unocss/order-attributify': 'off'
     }
   }

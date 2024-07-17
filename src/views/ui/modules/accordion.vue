@@ -5,7 +5,7 @@ defineOptions({
   name: 'UiAccordion'
 });
 
-const defaultValue = 'item-1';
+const defaultValue: string = 'item-1';
 
 type AccordionItems = {
   value: string;

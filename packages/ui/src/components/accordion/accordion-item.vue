@@ -1,21 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import type { HTMLAttributes } from 'vue';
+import { reactiveOmit } from '@vueuse/core';
 import { AccordionItem, useForwardProps } from 'radix-vue';
-import type { AccordionItemProps } from 'radix-vue';
 import { cn } from '../../shared';
+import type { AccordionItemProps } from './types';
 
 defineOptions({
   name: 'SAccordionItem'
 });
 
-const props = defineProps<AccordionItemProps & { class?: HTMLAttributes['class'] }>();
+const props = defineProps<AccordionItemProps>();
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props;
-
-  return delegated;
-});
+const delegatedProps = reactiveOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 </script>

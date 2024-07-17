@@ -1,12 +1,11 @@
-import type { SlotsType } from 'vue';
+import type { PrimitiveProps } from 'radix-vue';
 
-export type DefaultSlots = SlotsType<{
-  default: () => any;
-}>;
+export type ClassNameValue = string | Record<string, boolean> | ClassNameValue[];
 
-export type ShortEmitsToObject<E> =
-  E extends Record<string, any[]>
-    ? {
-        [K in keyof E]: (...args: E[K]) => any;
-      }
-    : E;
+export interface PrimitivePropsWithClass extends PrimitiveProps {
+  class?: ClassNameValue;
+}
+
+export type PropsWithClass<T> = T & {
+  class?: ClassNameValue;
+};

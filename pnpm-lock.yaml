@@ -138,6 +138,9 @@ importers:
       '@soybean-unify/ui-variants':
         specifier: workspace:*
         version: link:../ui-variants
+      '@vueuse/core':
+        specifier: 10.11.0
+        version: 10.11.0(vue@3.4.31(typescript@5.5.3))
       clsx:
         specifier: 2.1.1
         version: 2.1.1
