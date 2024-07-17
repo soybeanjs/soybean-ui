@@ -6,17 +6,24 @@ import type {
   AccordionRootProps
 } from 'radix-vue';
 import type { SingleOrMultipleType } from 'radix-vue/dist/shared/types';
-import type { ClassNameValue, PropsWithClass } from '../../types';
+import type { ClassNameValue } from '../../types';
 
-export type AccordionItemProps = PropsWithClass<$AccordionItemProps>;
+export type AccordionItemProps = $AccordionItemProps & {
+  class?: ClassNameValue;
+};
 
-export type AccordionContentProps = PropsWithClass<$AccordionContentProps> & {
+export type AccordionContentProps = $AccordionContentProps & {
+  class?: ClassNameValue;
   bodyClass?: ClassNameValue;
 };
 
-export type AccordionHeaderProps = PropsWithClass<$AccordionHeaderProps>;
+export type AccordionHeaderProps = $AccordionHeaderProps & {
+  class?: ClassNameValue;
+};
 
-export type AccordionTriggerProps = PropsWithClass<$AccordionTriggerProps>;
+export type AccordionTriggerProps = $AccordionTriggerProps & {
+  class?: ClassNameValue;
+};
 
 export type AccordionItemData = Pick<AccordionItemProps, 'disabled' | 'value'> & {
   title?: string;
