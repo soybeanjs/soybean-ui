@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SButton } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
-import { Airplay, Loader, LoaderCircle } from 'lucide-vue-next';
+import { Loader, LoaderCircle, Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiButton'
@@ -34,13 +34,25 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
     <SButton color="primary" variant="outline" shape="rounded">rounded</SButton>
     <div class="flex-col-center">
       <SButton color="destructive" variant="dashed" shape="square">
-        <Airplay :size="16" />
+        <Minus :size="16" />
       </SButton>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
       <SButton color="success" variant="ghost" shape="circle">
-        <Airplay :size="16" />
+        <Plus :size="16" />
+      </SButton>
+      <div class="text-12px text-#666">circle</div>
+    </div>
+    <div class="flex-col-center">
+      <SButton color="secondary" variant="text" shape="square">
+        <Plus :size="16" />
+      </SButton>
+      <div class="text-12px text-#666">square</div>
+    </div>
+    <div class="flex-col-center">
+      <SButton color="secondary" variant="text" shape="circle">
+        <Minus :size="16" />
       </SButton>
       <div class="text-12px text-#666">circle</div>
     </div>
@@ -49,23 +61,23 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
   <div class="flex flex-wrap gap-12px">
     <SButton color="primary">
       <template #before>
-        <Airplay :size="16" />
+        <Plus :size="16" />
       </template>
       Before
     </SButton>
     <SButton color="destructive" variant="outline">
       After
       <template #after>
-        <Airplay :size="16" />
+        <Minus :size="16" />
       </template>
     </SButton>
     <SButton color="success" variant="dashed">
       <template #before>
-        <Airplay :size="16" />
+        <Plus :size="16" />
       </template>
       Both
       <template #after>
-        <Airplay :size="16" />
+        <Minus :size="16" />
       </template>
     </SButton>
   </div>
