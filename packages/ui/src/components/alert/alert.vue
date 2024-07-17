@@ -12,16 +12,18 @@ defineOptions({
 
 const props = defineProps<AlertProps>();
 
-const delegatedProps = reactiveOmit(props, ['title', 'titleProps', 'description', 'descriptionProps']);
+const delegatedProps = reactiveOmit(props, ['title', 'titleProps', 'description', 'descriptionProps', 'icon']);
 
 const forwarded = useForwardProps(delegatedProps);
 </script>
 
 <template>
   <SAlertRoot v-bind="forwarded">
-    <slot name="icon"></slot>
+    <slot name="icon">
+      <component :is="icon" v-if="icon" />
+    </slot>
     <SAlertTitle v-bind="titleProps">
-      <slot name="title">{{ title }}</slot>
+      <slot>{{ title }}</slot>
     </SAlertTitle>
     <SAlertDescription v-bind="descriptionProps">
       <slot name="description">{{ description }}</slot>

@@ -17,7 +17,7 @@ const delegatedProps = reactiveOmit(props, ['class']);
 </script>
 
 <template>
-  <Primitive v-bind="delegatedProps" :class="cn(alertVariants({ color }), props.class)" role="alert">
+  <Primitive v-bind="delegatedProps" :class="cn(alertVariants({ color, variant }), props.class)" role="alert">
     <slot />
   </Primitive>
 </template>

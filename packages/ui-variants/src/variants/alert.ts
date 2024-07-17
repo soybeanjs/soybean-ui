@@ -2,28 +2,68 @@
 import { cva } from 'class-variance-authority';
 import type { ThemeColor } from '../types/theme';
 
-export type AlertColor = 'none' | ThemeColor;
+export type AlertColor = ThemeColor;
+
+export type AlertVariant = 'clean' | 'ghost' | 'pure';
 
 type Variants = {
   color: Record<AlertColor, string>;
+  variant: Record<AlertVariant, string>;
 };
 
 export const alertVariants = cva<Variants>(
-  'relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground [&>svg~*]:pl-7',
+  'relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3 [&>svg]:text-foreground [&>svg~*]:pl-7',
   {
     variants: {
       color: {
-        none: 'bg-background text-foreground',
-        primary: 'border-primary/50 text-primary dark:border-primary [&>svg]:text-primary',
-        destructive: 'border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive',
-        success: 'border-success/50 text-success dark:border-success [&>svg]:text-success',
-        warning: 'border-warning/50 text-warning dark:border-warning [&>svg]:text-warning',
-        info: 'border-info/50 text-info dark:border-info [&>svg]:text-info',
-        secondary: 'border-secondary/50 text-secondary dark:border-secondary [&>svg]:text-secondary'
+        primary: 'border-primary text-primary [&>svg]:text-primary',
+        destructive: 'border-destructive text-destructive [&>svg]:text-destructive',
+        success: 'border-success text-success [&>svg]:text-success',
+        warning: 'border-warning text-warning [&>svg]:text-warning',
+        info: 'border-info text-info dark:border-info [&>svg]:text-info',
+        secondary: 'border-secondary-foreground text-secondary-foreground [&>svg]:text-secondary'
+      },
+      variant: {
+        clean: 'bg-background',
+        ghost: 'text-foreground',
+        pure: 'bg-background text-foreground border-border'
       }
     },
+    compoundVariants: [
+      {
+        color: 'primary',
+        variant: 'ghost',
+        class: 'bg-primary/10'
+      },
+      {
+        color: 'destructive',
+        variant: 'ghost',
+        class: 'bg-destructive/10'
+      },
+      {
+        color: 'success',
+        variant: 'ghost',
+        class: 'bg-success/10'
+      },
+      {
+        color: 'warning',
+        variant: 'ghost',
+        class: 'bg-warning/10'
+      },
+      {
+        color: 'info',
+        variant: 'ghost',
+        class: 'bg-info/10'
+      },
+      {
+        color: 'secondary',
+        variant: 'ghost',
+        class: 'bg-secondary-foreground/10'
+      }
+    ],
     defaultVariants: {
-      color: 'none'
+      color: 'primary',
+      variant: 'ghost'
     }
   }
 );

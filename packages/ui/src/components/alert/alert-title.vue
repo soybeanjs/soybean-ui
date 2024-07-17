@@ -16,7 +16,7 @@ const delegatedProps = reactiveOmit(props, ['class']);
 </script>
 
 <template>
-  <Primitive v-bind="delegatedProps" :class="cn('mb-1 font-medium leading-none tracking-tight', props.class)">
+  <Primitive v-bind="delegatedProps" :class="cn('font-medium leading-none tracking-tight', props.class)">
     <slot />
   </Primitive>
 </template>

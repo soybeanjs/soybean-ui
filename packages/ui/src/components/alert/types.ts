@@ -1,4 +1,5 @@
-import type { AlertColor } from '@soybean-unify/ui-variants';
+import type { Component } from 'vue';
+import type { AlertColor, AlertVariant } from '@soybean-unify/ui-variants';
 import type { PrimitivePropsWithClass } from '../../types';
 
 export type AlertTitleProps = PrimitivePropsWithClass;
@@ -7,6 +8,7 @@ export type AlertDescriptionProps = PrimitivePropsWithClass;
 
 export interface AlertRootProps extends PrimitivePropsWithClass {
   color?: AlertColor;
+  variant?: AlertVariant;
 }
 
 export interface AlertProps extends AlertRootProps {
@@ -14,4 +16,7 @@ export interface AlertProps extends AlertRootProps {
   titleProps?: PrimitivePropsWithClass;
   description?: string;
   descriptionProps?: PrimitivePropsWithClass;
+  icon?: Component;
 }
+
+export type { AlertColor, AlertVariant };
