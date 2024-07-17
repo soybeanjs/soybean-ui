@@ -1,6 +1,6 @@
 import type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant } from '@soybean-unify/ui-variants';
-import type { ButtonProps } from './index.vue';
-import SButton from './index.vue';
+import type { ButtonProps } from './button.vue';
+import SButton from './button.vue';
 
 export { SButton };
 
