@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
 import type { Component } from 'vue';
 import {
   Card,
@@ -11,6 +10,9 @@ import {
   TabsList,
   TabsTrigger
 } from '@soybean-unify/shadcn-ui';
+import UiButton from './modules/button.vue';
+import UiAccordion from './modules/accordion.vue';
+import UiAlert from './modules/alert.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -22,25 +24,23 @@ interface TabConfig {
   component: Component;
 }
 
-function getTabs() {
-  const tabs: TabConfig[] = [];
-
-  const files = import.meta.glob('./modules/*.vue');
-  Object.entries(files).forEach(item => {
-    const [filePath, value] = item;
-    const key = filePath.replace('./modules/', '').replace('.vue', '');
-
-    tabs.push({
-      key,
-      label: key,
-      component: defineAsyncComponent(value as any)
-    });
-  });
-
-  return tabs;
-}
-
-const tabs = getTabs();
+const tabs: TabConfig[] = [
+  {
+    key: 'button',
+    label: 'Button',
+    component: UiButton
+  },
+  {
+    key: 'accordion',
+    label: 'Accordion',
+    component: UiAccordion
+  },
+  {
+    key: 'alert',
+    label: 'Alert',
+    component: UiAlert
+  }
+];
 </script>
 
 <template>
