@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
 import SAlertRoot from './alert-root.vue';
@@ -12,9 +13,21 @@ defineOptions({
 
 const props = defineProps<AlertProps>();
 
+type Slots = {
+  default: () => any;
+  icon: () => any;
+  description: () => any;
+};
+
+const slots = defineSlots<Slots>();
+
 const delegatedProps = reactiveOmit(props, ['title', 'titleProps', 'description', 'descriptionProps', 'icon']);
 
 const forwarded = useForwardProps(delegatedProps);
+
+const showDescription = computed(() => {
+  return Boolean(slots.description || props.description);
+});
 </script>
 
 <template>
@@ -25,7 +38,7 @@ const forwarded = useForwardProps(delegatedProps);
     <SAlertTitle v-bind="titleProps">
       <slot>{{ title }}</slot>
     </SAlertTitle>
-    <SAlertDescription v-bind="descriptionProps">
+    <SAlertDescription v-if="showDescription" v-bind="descriptionProps">
       <slot name="description">{{ description }}</slot>
     </SAlertDescription>
   </SAlertRoot>
