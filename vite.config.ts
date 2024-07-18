@@ -3,6 +3,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import unocss from 'unocss/vite';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   resolve: {
@@ -20,7 +21,8 @@ export default defineConfig({
       }
     }),
     vueJsx(),
-    unocss()
+    unocss(),
+    dts({ rollupTypes: true, include: 'packages/ui/src/**/*' })
   ],
   server: {
     host: '0.0.0.0',
@@ -38,6 +40,20 @@ export default defineConfig({
     sourcemap: false,
     commonjsOptions: {
       ignoreTryCatch: false
+    },
+    lib: {
+      entry: fileURLToPath(new URL('./packages/ui/src/index.ts', import.meta.url)),
+      name: 'soybean-ui',
+      fileName: 'index',
+      formats: ['es', 'cjs']
+    },
+    rollupOptions: {
+      external: ['vue', 'radix-vue'],
+      output: {
+        globals: {
+          vue: 'Vue'
+        }
+      }
     }
   }
 });
