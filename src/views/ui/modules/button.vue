@@ -8,8 +8,8 @@ defineOptions({
 });
 
 const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary'];
-const variants: ButtonVariant[] = ['solid', 'pure', 'outline', 'dashed', 'ghost', 'text', 'link'];
-const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
+const variants: ButtonVariant[] = ['solid', 'plain', 'outline', 'dashed', 'ghost', 'text', 'link'];
+const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
@@ -25,33 +25,33 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex flex-wrap gap-12px">
-    <SButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" :variant="variants[index]" :size="size">
+    <SButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" variant="outline" :size="size">
       {{ size }}
     </SButton>
   </div>
   <div class="py-12px text-18px">Shape</div>
   <div class="flex flex-wrap gap-12px">
-    <SButton color="primary" variant="outline" shape="rounded">rounded</SButton>
+    <SButton color="primary" variant="solid" shape="rounded">rounded</SButton>
     <div class="flex-col-center">
-      <SButton color="destructive" variant="dashed" shape="square">
+      <SButton color="destructive" variant="plain" shape="square">
         <Minus :size="16" />
       </SButton>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="success" variant="ghost" shape="circle">
+      <SButton color="success" variant="outline" shape="circle">
         <Plus :size="16" />
       </SButton>
       <div class="text-12px text-#666">circle</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="secondary" variant="text" shape="square">
+      <SButton color="warning" variant="dashed" shape="square">
         <Plus :size="16" />
       </SButton>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="secondary" variant="text" shape="circle">
+      <SButton color="secondary" variant="ghost" shape="circle">
         <Minus :size="16" />
       </SButton>
       <div class="text-12px text-#666">circle</div>

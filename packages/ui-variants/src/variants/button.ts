@@ -4,7 +4,7 @@ import type { ThemeColor, ThemeSize } from '../types/theme';
 
 export type ButtonColor = ThemeColor;
 
-export type ButtonVariant = 'solid' | 'pure' | 'outline' | 'dashed' | 'text' | 'ghost' | 'link';
+export type ButtonVariant = 'solid' | 'plain' | 'outline' | 'dashed' | 'text' | 'ghost' | 'link';
 
 export type ButtonSize = ThemeSize;
 
@@ -31,7 +31,7 @@ export const buttonVariants = cva<Variants>(
       },
       variant: {
         solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
-        pure: 'border border-border bg-background text-foreground',
+        plain: 'border border-border bg-background text-foreground',
         outline: 'border bg-background',
         dashed: 'border border-dashed bg-background',
         ghost: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
@@ -42,7 +42,9 @@ export const buttonVariants = cva<Variants>(
         xs: 'h-6 px-1.5 text-xs gap-1',
         sm: 'h-7 px-2 gap-2',
         md: 'h-8 px-4 gap-3',
-        lg: 'h-10 px-6 gap-4'
+        lg: 'h-9 px-6 gap-4',
+        xl: 'h-10 px-8 gap-5',
+        xxl: 'h-12 px-10 gap-6'
       },
       shape: {
         auto: 'rd-md',
@@ -109,62 +111,62 @@ export const buttonVariants = cva<Variants>(
       },
       {
         color: 'primary',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-primary/10 active:bg-primary/20'
       },
       {
         color: 'destructive',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-destructive/10 active:bg-destructive/20'
       },
       {
         color: 'success',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-success/10 active:bg-success/20'
       },
       {
         color: 'warning',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-warning/10 active:bg-warning/20'
       },
       {
         color: 'info',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-info/10 active:bg-info/20'
       },
       {
         color: 'secondary',
-        variant: ['pure', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'text'],
         class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
       },
       {
         color: 'primary',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-primary hover:text-primary'
       },
       {
         color: 'destructive',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-destructive hover:text-destructive'
       },
       {
         color: 'success',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-success hover:text-success'
       },
       {
         color: 'warning',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-warning hover:text-warning'
       },
       {
         color: 'info',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-info hover:text-info'
       },
       {
         color: 'secondary',
-        variant: 'pure',
+        variant: 'plain',
         class: 'hover:border-secondary-foreground hover:text-secondary-foreground'
       },
       {
@@ -235,7 +237,17 @@ export const buttonVariants = cva<Variants>(
       {
         size: 'lg',
         shape: ['square', 'circle'],
+        class: 'h-9 w-9'
+      },
+      {
+        size: 'xl',
+        shape: ['square', 'circle'],
         class: 'h-10 w-10'
+      },
+      {
+        size: 'xxl',
+        shape: ['square', 'circle'],
+        class: 'h-12 w-12'
       }
     ],
     defaultVariants: {
