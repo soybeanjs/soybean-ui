@@ -5,8 +5,9 @@ import type {
   AccordionTriggerProps as $AccordionTriggerProps,
   AccordionRootProps
 } from 'radix-vue';
-import type { SingleOrMultipleType } from 'radix-vue/dist/shared/types';
 import type { ClassNameValue } from '../../types';
+
+type SingleOrMultipleType = 'single' | 'multiple';
 
 export type AccordionItemProps = $AccordionItemProps & {
   class?: ClassNameValue;
