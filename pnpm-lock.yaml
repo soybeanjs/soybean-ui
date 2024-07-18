@@ -17,6 +17,9 @@ importers:
       '@unocss/reset':
         specifier: 0.61.5
         version: 0.61.5
+      '@vueuse/core':
+        specifier: 10.11.0
+        version: 10.11.0(vue@3.4.32(typescript@5.5.3))
       lucide-vue-next:
         specifier: 0.408.0
         version: 0.408.0(vue@3.4.32(typescript@5.5.3))

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
+import { useDark } from '@vueuse/core';
 import {
   Card,
   CardContent,
@@ -10,6 +11,8 @@ import {
   TabsList,
   TabsTrigger
 } from '@soybean-unify/shadcn-ui';
+import { SButton } from '@soybean-unify/ui';
+import { Moon, Sun } from 'lucide-vue-next';
 import UiButton from './modules/button.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
@@ -17,6 +20,12 @@ import UiAlert from './modules/alert.vue';
 defineOptions({
   name: 'UiPage'
 });
+
+const isDark = useDark();
+
+function toggleDark() {
+  isDark.value = !isDark.value;
+}
 
 interface TabConfig {
   key: string;
@@ -46,8 +55,12 @@ const tabs: TabConfig[] = [
 <template>
   <div class="h-full p-16px">
     <Card class="h-full flex-col-stretch">
-      <CardHeader>
+      <CardHeader class="flex flex-row justify-between">
         <CardTitle>UI Components</CardTitle>
+        <SButton color="secondary" variant="text" shape="square" size="xl" @click="toggleDark">
+          <Sun v-if="isDark" :size="20" />
+          <Moon v-else :size="20" />
+        </SButton>
       </CardHeader>
       <CardContent class="flex-1-hidden">
         <Tabs default-value="button" class="h-full flex-col-stretch">

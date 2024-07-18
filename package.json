@@ -37,6 +37,7 @@
     "@soybean-unify/shadcn-ui": "workspace:*",
     "@soybean-unify/ui": "workspace:*",
     "@unocss/reset": "0.61.5",
+    "@vueuse/core": "10.11.0",
     "lucide-vue-next": "0.408.0",
     "vue": "3.4.32"
   },
