@@ -10,4 +10,14 @@ defineOptions({
   <UiPage />
 </template>
 
-<style scoped></style>
+<style>
+html,
+body,
+#app {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+</style>

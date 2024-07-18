@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion } from '@soybean-unify/ui';
+import {
+  SAccordion,
+  SAccordionContent,
+  SAccordionHeader,
+  SAccordionItem,
+  SAccordionRoot,
+  SAccordionTrigger
+} from '@soybean-unify/ui';
+import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiAccordion'
 });
 
 const single = ref('');
-
+const single2 = ref('');
+const single3 = ref('');
 const multi = ref<string[]>([]);
+const multi2 = ref<string[]>([]);
 
 type AccordionItems = {
   value: string;
@@ -36,10 +46,41 @@ const items: AccordionItems[] = [
 </script>
 
 <template>
-  <div class="py-12px text-18px">Single</div>
-  <SAccordion v-model="single" type="single" class="w-full" collapsible :items="items" />
-  <div class="pb-12px pt-32px text-18px">Multi</div>
-  <SAccordion v-model="multi" type="multiple" class="w-full" collapsible :items="items" />
+  <div class="py-12px text-18px">Single Collapse</div>
+  <SAccordion v-model="single" type="single" collapsible :items="items" />
+  <div class="pb-12px pt-32px text-18px">Multi Collapse</div>
+  <SAccordion v-model="multi" type="multiple" :items="items" />
+  <div class="py-12px pt-32px text-18px">Single Collapse: alwayse open one</div>
+  <SAccordion v-model="single2" type="single" :items="items" />
+  <div class="pb-12px pt-32px text-18px">Custom styling</div>
+  <SAccordionRoot v-model="single3" collapsible type="single">
+    <template v-for="item in items" :key="item.value">
+      <SAccordionItem v-slot="{ open }" :value="item.value" class="border-b-0">
+        <SAccordionHeader>
+          <SAccordionTrigger
+            class="mb-2 rounded-md px-3 text-left text-sm underline-offset-2 hover:bg-muted hover:no-underline"
+            :class="[
+              open
+                ? 'bg-secondary-foreground/20 hover:bg-secondary-foreground/20 underline hover:underline!'
+                : 'bg-muted/50 no-underline'
+            ]"
+          >
+            {{ item.title }}
+          </SAccordionTrigger>
+        </SAccordionHeader>
+        <SAccordionContent body-class="px-3 leading-8">
+          {{ item.content }}
+        </SAccordionContent>
+      </SAccordionItem>
+    </template>
+  </SAccordionRoot>
+  <div class="py-12px pt-32px text-18px">Custom Icon</div>
+  <SAccordion v-model="multi2" type="multiple" :items="items">
+    <template #icon="{ open }">
+      <Minus v-if="open" :size="16" />
+      <Plus v-else :size="16" />
+    </template>
+  </SAccordion>
 </template>
 
 <style scoped></style>

@@ -44,21 +44,20 @@ const tabs: TabConfig[] = [
 </script>
 
 <template>
-  <div class="p-16px">
-    <Card>
+  <div class="h-full p-16px">
+    <Card class="h-full flex-col-stretch">
       <CardHeader>
         <CardTitle>UI Components</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div class="pb-16px text-center text-18px fw-700">SoybeanUnify</div>
-        <Tabs default-value="button" class="w-full">
-          <TabsList class="h-auto flex-wrap justify-start gap-y-8px">
+      <CardContent class="flex-1-hidden">
+        <Tabs default-value="button" class="h-full flex-col-stretch">
+          <TabsList class="w-fit flex-wrap justify-start gap-y-8px">
             <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">
               {{ tab.label }}
             </TabsTrigger>
           </TabsList>
-          <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key">
-            <div class="pt-18px">
+          <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
+            <div class="h-full overflow-auto px-12px py-18px">
               <component :is="tab.component" />
             </div>
           </TabsContent>

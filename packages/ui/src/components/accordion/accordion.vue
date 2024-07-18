@@ -29,26 +29,22 @@ defineOptions({
 </script>
 
 <template>
-  <AccordionRoot v-bind="forwarded">
-    <SAccordionItem
-      v-for="item in items"
-      :key="item.value"
-      :disabled="item.disabled"
-      :value="item.value"
-      v-bind="itemProps"
-    >
-      <SAccordionHeader v-bind="headerProps">
-        <SAccordionTrigger v-bind="triggerProps">
-          <slot name="trigger" :item="item">{{ item.title }}</slot>
-          <template #icon>
-            <slot name="icon" />
-          </template>
-        </SAccordionTrigger>
-      </SAccordionHeader>
-      <SAccordionContent v-bind="contentProps">
-        <slot name="content" :item="item">{{ item.content }}</slot>
-      </SAccordionContent>
-    </SAccordionItem>
+  <AccordionRoot v-slot="rootSlotProps" v-bind="forwarded">
+    <template v-for="item in items" :key="item.value">
+      <SAccordionItem v-slot="itemSlotProps" :disabled="item.disabled" :value="item.value" v-bind="itemProps">
+        <SAccordionHeader v-bind="headerProps">
+          <SAccordionTrigger v-bind="triggerProps">
+            <slot name="trigger" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.title }}</slot>
+            <template #icon>
+              <slot name="icon" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }" />
+            </template>
+          </SAccordionTrigger>
+        </SAccordionHeader>
+        <SAccordionContent v-bind="contentProps">
+          <slot name="content" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.content }}</slot>
+        </SAccordionContent>
+      </SAccordionItem>
+    </template>
   </AccordionRoot>
 </template>
 
