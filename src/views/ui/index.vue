@@ -16,6 +16,7 @@ import { Moon, Sun } from 'lucide-vue-next';
 import UiButton from './modules/button.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
+import UiCard from './modules/card.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -48,6 +49,11 @@ const tabs: TabConfig[] = [
     key: 'alert',
     label: 'Alert',
     component: UiAlert
+  },
+  {
+    key: 'card',
+    label: 'Card',
+    component: UiCard
   }
 ];
 </script>
