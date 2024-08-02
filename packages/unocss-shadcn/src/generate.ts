@@ -24,12 +24,6 @@ const themeCSSVarKeys: CSSVarKey[] = [
   'popover-foreground',
   'primary',
   'primary-foreground',
-  'secondary',
-  'secondary-foreground',
-  'muted',
-  'muted-foreground',
-  'accent',
-  'accent-foreground',
   'destructive',
   'destructive-foreground',
   'success',
@@ -38,12 +32,18 @@ const themeCSSVarKeys: CSSVarKey[] = [
   'warning-foreground',
   'info',
   'info-foreground',
+  'secondary',
+  'secondary-foreground',
+  'muted',
+  'muted-foreground',
+  'accent',
+  'accent-foreground',
   'border',
   'input',
   'ring'
 ];
 
-const themeColorKeys: CSSVarKey[] = ['primary', 'secondary', 'destructive', 'success', 'warning', 'info'];
+const themeColorKeys: CSSVarKey[] = ['primary', 'destructive', 'success', 'warning', 'info'];
 
 function getColorCSSVars(color: ThemeCSSVars & FeedbackColorOfThemeCssVars) {
   const cssVars = Object.entries(color)

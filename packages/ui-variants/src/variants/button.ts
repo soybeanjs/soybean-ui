@@ -4,7 +4,7 @@ import type { ThemeColor, ThemeSize } from '../types/theme';
 
 export type ButtonColor = ThemeColor;
 
-export type ButtonVariant = 'solid' | 'plain' | 'outline' | 'dashed' | 'text' | 'ghost' | 'link';
+export type ButtonVariant = 'solid' | 'plain' | 'outline' | 'dashed' | 'soft' | 'ghost' | 'link';
 
 export type ButtonSize = ThemeSize;
 
@@ -27,15 +27,16 @@ export const buttonVariants = cva<Variants>(
         success: `focus-visible:outline-success`,
         warning: `focus-visible:outline-warning`,
         info: `focus-visible:outline-info`,
-        secondary: `focus-visible:outline-secondary-foreground`
+        secondary: `focus-visible:outline-secondary-foreground`,
+        accent: `focus-visible:outline-accent-foreground`
       },
       variant: {
         solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
         plain: 'border border-border bg-background text-foreground',
         outline: 'border bg-background',
         dashed: 'border border-dashed bg-background',
-        ghost: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
-        text: 'bg-transparent',
+        soft: 'bg-primary/10 hover:bg-primary/10 active:bg-primary/20',
+        ghost: 'bg-transparent',
         link: 'bg-transparent underline-offset-4 hover:underline'
       },
       size: {
@@ -77,67 +78,82 @@ export const buttonVariants = cva<Variants>(
       {
         color: 'secondary',
         variant: 'solid',
-        class: `bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary-600`
+        class: `bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary-foreground/20`
+      },
+      {
+        color: 'accent',
+        variant: 'solid',
+        class: `bg-accent text-accent-foreground hover:bg-accent/80 active:bg-accent-foreground/20`
       },
       {
         color: 'primary',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-primary'
       },
       {
         color: 'destructive',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-destructive'
       },
       {
         color: 'success',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-success'
       },
       {
         color: 'warning',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-warning'
       },
       {
         color: 'info',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-info'
       },
       {
         color: 'secondary',
-        variant: ['outline', 'dashed', 'text', 'ghost', 'link'],
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
         class: 'text-secondary-foreground'
       },
       {
+        color: 'accent',
+        variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
+        class: 'text-accent-foreground'
+      },
+      {
         color: 'primary',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-primary/10 active:bg-primary/20'
       },
       {
         color: 'destructive',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-destructive/10 active:bg-destructive/20'
       },
       {
         color: 'success',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-success/10 active:bg-success/20'
       },
       {
         color: 'warning',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-warning/10 active:bg-warning/20'
       },
       {
         color: 'info',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-info/10 active:bg-info/20'
       },
       {
         color: 'secondary',
-        variant: ['plain', 'outline', 'dashed', 'text'],
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
         class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+      },
+      {
+        color: 'accent',
+        variant: ['plain', 'outline', 'dashed', 'ghost'],
+        class: 'hover:bg-accent-foreground/10 active:bg-accent-foreground/20'
       },
       {
         color: 'primary',
@@ -170,6 +186,11 @@ export const buttonVariants = cva<Variants>(
         class: 'hover:border-secondary-foreground hover:text-secondary-foreground'
       },
       {
+        color: 'accent',
+        variant: 'plain',
+        class: 'hover:border-accent-foreground hover:text-accent-foreground'
+      },
+      {
         color: 'primary',
         variant: ['outline', 'dashed'],
         class: 'border-primary'
@@ -200,29 +221,39 @@ export const buttonVariants = cva<Variants>(
         class: 'border-secondary-foreground'
       },
       {
+        color: 'accent',
+        variant: ['outline', 'dashed'],
+        class: 'border-accent-foreground'
+      },
+      {
         color: 'destructive',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-destructive/10 hover:bg-destructive/10 active:bg-destructive/20'
       },
       {
         color: 'success',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-success/10 hover:bg-success/10 active:bg-success/20'
       },
       {
         color: 'warning',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-warning/10 hover:bg-warning/10 active:bg-warning/20'
       },
       {
         color: 'info',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-info/10 hover:bg-info/10 active:bg-info/20'
       },
       {
         color: 'secondary',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-secondary-foreground/10 hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
+      },
+      {
+        color: 'accent',
+        variant: 'soft',
+        class: 'bg-accent-foreground/10 hover:bg-accent-foreground/10 active:bg-accent-foreground/20'
       },
       {
         size: 'xs',

@@ -21,7 +21,8 @@ export const alertVariants = cva<Variants>(
         success: 'border-success text-success [&>svg]:text-success',
         warning: 'border-warning text-warning [&>svg]:text-warning',
         info: 'border-info text-info dark:border-info [&>svg]:text-info',
-        secondary: 'border-secondary-foreground text-secondary-foreground [&>svg]:text-secondary'
+        secondary: 'border-secondary-foreground text-secondary-foreground [&>svg]:text-secondary',
+        accent: 'border-accent-foreground text-accent-foreground [&>svg]:text-accent'
       },
       variant: {
         clean: 'bg-background',

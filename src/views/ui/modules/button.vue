@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton } from '@soybean-unify/ui';
+import { SButton, SButtonIcon } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
 import { Loader, LoaderCircle, Minus, Plus } from 'lucide-vue-next';
 
@@ -7,8 +7,8 @@ defineOptions({
   name: 'UiButton'
 });
 
-const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary'];
-const variants: ButtonVariant[] = ['solid', 'plain', 'outline', 'dashed', 'ghost', 'text', 'link'];
+const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const variants: ButtonVariant[] = ['solid', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
 const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
@@ -33,9 +33,9 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   <div class="flex flex-wrap gap-12px">
     <SButton color="primary" variant="solid" shape="rounded">rounded</SButton>
     <div class="flex-col-center">
-      <SButton color="destructive" variant="plain" shape="square">
-        <Minus :size="16" />
-      </SButton>
+      <SButtonIcon color="destructive" variant="plain" shape="square">
+        <Minus />
+      </SButtonIcon>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">

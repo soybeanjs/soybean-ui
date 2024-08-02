@@ -11,7 +11,7 @@ import {
   TabsList,
   TabsTrigger
 } from '@soybean-unify/shadcn-ui';
-import { SButton } from '@soybean-unify/ui';
+import { SButtonIcon } from '@soybean-unify/ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiButton from './modules/button.vue';
 import UiAccordion from './modules/accordion.vue';
@@ -63,10 +63,10 @@ const tabs: TabConfig[] = [
     <Card class="h-full flex-col-stretch">
       <CardHeader class="flex flex-row justify-between">
         <CardTitle>UI Components</CardTitle>
-        <SButton color="secondary" variant="text" shape="square" size="lg" @click="toggleDark">
+        <SButtonIcon size="lg" @click="toggleDark">
           <Sun v-if="isDark" :size="18" />
           <Moon v-else :size="18" />
-        </SButton>
+        </SButtonIcon>
       </CardHeader>
       <CardContent class="flex-1-hidden">
         <Tabs default-value="button" class="h-full flex-col-stretch">

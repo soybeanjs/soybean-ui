@@ -10,7 +10,7 @@ defineOptions({
 <template>
   <SCard title="Create project" description="Deploy your new project in one-click." class="mb-24px w-400px">
     <template #extra>
-      <SButton color="secondary" variant="text" shape="square">
+      <SButton color="secondary" variant="ghost" shape="square">
         <Moon :size="16" />
       </SButton>
     </template>
@@ -23,7 +23,7 @@ defineOptions({
   </SCard>
   <SCard title="Create project" class="mb-24px h-360px w-400px">
     <template #extra>
-      <SButton color="secondary" variant="text" shape="square">
+      <SButton color="secondary" variant="ghost" shape="square">
         <Moon :size="16" />
       </SButton>
     </template>
