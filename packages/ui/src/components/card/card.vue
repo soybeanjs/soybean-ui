@@ -15,7 +15,10 @@ defineOptions({
   name: 'SCard'
 });
 
-const props = defineProps<CardProps>();
+const props = withDefaults(defineProps<CardProps>(), {
+  size: 'md',
+  split: 'none'
+});
 
 type Slots = {
   default: () => any;
@@ -31,6 +34,8 @@ const slots = defineSlots<Slots>();
 const delegatedProps = reactiveOmit(props, [
   'title',
   'description',
+  'size',
+  'split',
   'headerProps',
   'titleRootProps',
   'titleProps',
@@ -57,14 +62,60 @@ const showHeader = computed(() => {
   return Boolean(showTitleRoot.value || slots.extra);
 });
 
+const headerComputedProps = computed(() => {
+  const config = { ...props.headerProps };
+
+  if (!config.size) {
+    config.size = props.size;
+  }
+
+  if (config.split === undefined) {
+    config.split = props.split === 'header' || props.split === 'all';
+  }
+
+  return config;
+});
+
 const showFooter = computed(() => {
   return Boolean(slots.footer);
+});
+
+const footerComputedProps = computed(() => {
+  const config = { ...props.footerProps };
+
+  if (!config.size) {
+    config.size = props.size;
+  }
+
+  if (!config.split) {
+    config.split = props.split === 'footer' || props.split === 'all';
+  }
+
+  return config;
+});
+
+const contentComputedProps = computed(() => {
+  const config = { ...props.contentProps };
+
+  if (!config.size) {
+    config.size = props.size;
+  }
+
+  if (config.topGap === undefined) {
+    config.topGap = !showHeader.value || headerComputedProps.value.split;
+  }
+
+  if (config.bottomGap === undefined) {
+    config.bottomGap = !showFooter.value || footerComputedProps.value.split;
+  }
+
+  return config;
 });
 </script>
 
 <template>
   <SCardRoot v-bind="forwardedProps">
-    <SCardHeader v-if="showHeader" v-bind="headerProps">
+    <SCardHeader v-if="showHeader" v-bind="headerComputedProps">
       <slot name="header">
         <SCardTitleRoot v-if="showTitleRoot" v-bind="titleRootProps">
           <SCardTitle v-if="showTitle" v-bind="titleProps">
@@ -77,10 +128,10 @@ const showFooter = computed(() => {
         <slot name="extra"></slot>
       </slot>
     </SCardHeader>
-    <SCardContent v-bind="contentProps">
+    <SCardContent v-bind="contentComputedProps">
       <slot />
     </SCardContent>
-    <SCardFooter v-if="showFooter" v-bind="footerProps">
+    <SCardFooter v-if="showFooter" v-bind="footerComputedProps">
       <slot name="footer"></slot>
     </SCardFooter>
   </SCardRoot>

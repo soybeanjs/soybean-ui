@@ -4,7 +4,7 @@ import type { ThemeColor } from '../types/theme';
 
 export type AlertColor = ThemeColor;
 
-export type AlertVariant = 'clean' | 'ghost' | 'pure';
+export type AlertVariant = 'outline' | 'plain' | 'soft';
 
 type Variants = {
   color: Record<AlertColor, string>;
@@ -25,46 +25,51 @@ export const alertVariants = cva<Variants>(
         accent: 'border-accent-foreground text-accent-foreground [&>svg]:text-accent'
       },
       variant: {
-        clean: 'bg-background',
-        ghost: 'text-foreground',
-        pure: 'bg-background text-foreground border-border'
+        outline: 'bg-background',
+        plain: 'bg-background text-foreground border-border',
+        soft: 'text-foreground'
       }
     },
     compoundVariants: [
       {
         color: 'primary',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-primary/10'
       },
       {
         color: 'destructive',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-destructive/10'
       },
       {
         color: 'success',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-success/10'
       },
       {
         color: 'warning',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-warning/10'
       },
       {
         color: 'info',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-info/10'
       },
       {
         color: 'secondary',
-        variant: 'ghost',
+        variant: 'soft',
         class: 'bg-secondary-foreground/10'
+      },
+      {
+        color: 'accent',
+        variant: 'soft',
+        class: 'bg-accent-foreground/10'
       }
     ],
     defaultVariants: {
       color: 'primary',
-      variant: 'ghost'
+      variant: 'soft'
     }
   }
 );

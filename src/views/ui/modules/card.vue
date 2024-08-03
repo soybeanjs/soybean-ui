@@ -36,10 +36,60 @@ defineOptions({
       <SButton class="w-full">Create</SButton>
     </template>
   </SCard>
-  <SCard class="w-400px">
+  <SCard class="mb-24px w-400px">
     <p class="text-gray-500 dark:text-neutral-400">
       With supporting text below as a natural lead-in to additional content.
     </p>
+  </SCard>
+  <SCard title="Size xs" size="xs" split="all" class="mb-24px w-400px">
+    <template #extra>
+      <SButton color="secondary" variant="ghost" shape="square">
+        <Moon :size="16" />
+      </SButton>
+    </template>
+    <p class="text-gray-500 dark:text-neutral-400">content</p>
+    <template #footer>
+      <SButton class="w-full">Create</SButton>
+    </template>
+  </SCard>
+  <SCard title="Size sm" size="sm" split="all" class="mb-24px w-400px">
+    <template #extra>
+      <SButton color="secondary" variant="ghost" shape="square">
+        <Moon :size="16" />
+      </SButton>
+    </template>
+    <p class="text-gray-500 dark:text-neutral-400">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <template #footer>
+      <SButton class="w-full">Create</SButton>
+    </template>
+  </SCard>
+  <SCard title="Size md" split="all" class="mb-24px w-400px">
+    <template #extra>
+      <SButton color="secondary" variant="ghost" shape="square">
+        <Moon :size="16" />
+      </SButton>
+    </template>
+    <p class="text-gray-500 dark:text-neutral-400">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <template #footer>
+      <SButton class="w-full">Create</SButton>
+    </template>
+  </SCard>
+  <SCard title="Size lg" size="lg" split="all" class="mb-24px w-400px">
+    <template #extra>
+      <SButton color="secondary" variant="ghost" shape="square">
+        <Moon :size="16" />
+      </SButton>
+    </template>
+    <p class="text-gray-500 dark:text-neutral-400">
+      With supporting text below as a natural lead-in to additional content.
+    </p>
+    <template #footer>
+      <SButton class="w-full">Create</SButton>
+    </template>
   </SCard>
 </template>
 

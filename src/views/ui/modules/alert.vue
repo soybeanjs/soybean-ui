@@ -4,7 +4,7 @@ import { SAlert } from '@soybean-unify/ui';
 import type { AlertColor, AlertVariant } from '@soybean-unify/ui';
 
 const colors: AlertColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
-const variants: AlertVariant[] = ['clean', 'pure', 'ghost'];
+const variants: AlertVariant[] = ['outline', 'plain', 'soft'];
 
 defineOptions({
   name: 'AlertDemo'
@@ -23,9 +23,9 @@ defineOptions({
     </SAlert>
   </div>
   <div class="py-12px text-18px">With description</div>
-  <SAlert variant="pure" title="Heads up!" description="You can add components to your app using the cli." />
+  <SAlert variant="plain" title="Heads up!" description="You can add components to your app using the cli." />
   <div class="py-12px text-18px">With Icon</div>
-  <SAlert color="success" variant="clean" title="Flighting !!!">
+  <SAlert color="success" variant="outline" title="Flighting !!!">
     <template #icon>
       <RocketIcon :size="16" />
     </template>
