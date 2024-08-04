@@ -13,6 +13,6 @@
     "@unocss/core": ">=0.60.0"
   },
   "devDependencies": {
-    "@unocss/core": "0.61.5"
+    "@unocss/core": "0.61.9"
   }
 }
