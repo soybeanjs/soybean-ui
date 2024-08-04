@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
+import { cardVariants, cn } from '@soybean-unify/ui-variants';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
 import SCardTitleRoot from './card-title-root.vue';
@@ -9,7 +10,7 @@ import SCardTitle from './card-title.vue';
 import SCardDescription from './card-description.vue';
 import SCardContent from './card-content.vue';
 import SCardFooter from './card-footer.vue';
-import type { CardProps } from './types';
+import type { CardProps, CardSplit } from './types';
 
 defineOptions({
   name: 'SCard'
@@ -95,22 +96,40 @@ const footerComputedProps = computed(() => {
 });
 
 const contentComputedProps = computed(() => {
+  const split = getSplit(props.split, showHeader.value, showFooter.value);
+
+  const { content } = cardVariants({ size: props.size, split });
+
   const config = { ...props.contentProps };
 
   if (!config.size) {
     config.size = props.size;
   }
 
-  if (config.topGap === undefined) {
-    config.topGap = !showHeader.value || headerComputedProps.value.split;
-  }
-
-  if (config.bottomGap === undefined) {
-    config.bottomGap = !showFooter.value || footerComputedProps.value.split;
-  }
+  config.class = cn(content(), config.class);
 
   return config;
 });
+
+function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?: boolean) {
+  if (initSplit === 'all') {
+    return 'all';
+  }
+
+  if (!headerVisible && !footerVisible) {
+    return 'all';
+  }
+
+  if (!headerVisible) {
+    return initSplit === 'footer' ? 'all' : 'header';
+  }
+
+  if (!footerVisible) {
+    return initSplit === 'header' ? 'all' : 'footer';
+  }
+
+  return initSplit;
+}
 </script>
 
 <template>

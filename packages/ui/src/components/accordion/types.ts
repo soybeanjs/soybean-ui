@@ -5,25 +5,25 @@ import type {
   AccordionTriggerProps as $AccordionTriggerProps,
   AccordionRootProps
 } from 'radix-vue';
-import type { ClassNameValue } from '../../types';
+import type { ClassValue } from '@soybean-unify/ui-variants';
 
 type SingleOrMultipleType = 'single' | 'multiple';
 
 export type AccordionItemProps = $AccordionItemProps & {
-  class?: ClassNameValue;
+  class?: ClassValue;
 };
 
 export type AccordionContentProps = $AccordionContentProps & {
-  class?: ClassNameValue;
-  bodyClass?: ClassNameValue;
+  class?: ClassValue;
+  bodyClass?: ClassValue;
 };
 
 export type AccordionHeaderProps = $AccordionHeaderProps & {
-  class?: ClassNameValue;
+  class?: ClassValue;
 };
 
 export type AccordionTriggerProps = $AccordionTriggerProps & {
-  class?: ClassNameValue;
+  class?: ClassValue;
 };
 
 export type AccordionItemData = Pick<AccordionItemProps, 'disabled' | 'value'> & {

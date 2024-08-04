@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
-import { cn } from '../../shared';
+import { cardVariants, cn } from '@soybean-unify/ui-variants';
 import type { CardTitleRootProps } from './types';
 
 defineOptions({
@@ -10,10 +11,16 @@ defineOptions({
 const props = withDefaults(defineProps<CardTitleRootProps>(), {
   as: 'div'
 });
+
+const cls = computed(() => {
+  const { titleRoot } = cardVariants({ size: props.size });
+
+  return cn(titleRoot(), props.class);
+});
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn('flex-col gap-y-1.5', props.class)">
+  <Primitive :as="as" :as-child="asChild" :class="cls">
     <slot />
   </Primitive>
 </template>

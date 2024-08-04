@@ -2,7 +2,7 @@
 import { reactiveOmit } from '@vueuse/core';
 import { AccordionTrigger, useForwardProps } from 'radix-vue';
 import { ChevronDown } from 'lucide-vue-next';
-import { cn } from '../../shared';
+import { cn } from '@soybean-unify/ui-variants';
 import type { AccordionTriggerProps } from './types';
 
 defineOptions({

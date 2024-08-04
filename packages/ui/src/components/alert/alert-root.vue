@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core';
 import { Primitive } from 'radix-vue';
-import { alertVariants } from '@soybean-unify/ui-variants';
-import { cn } from '../../shared';
+import { alertVariants, cn } from '@soybean-unify/ui-variants';
 import type { AlertRootProps } from './types';
 
 defineOptions({

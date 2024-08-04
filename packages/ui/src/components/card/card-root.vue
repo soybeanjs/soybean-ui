@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { cn } from '../../shared';
+import { cardVariants, cn } from '@soybean-unify/ui-variants';
 import type { CardRootProps } from './types';
 
 defineOptions({
@@ -10,14 +10,12 @@ defineOptions({
 const props = withDefaults(defineProps<CardRootProps>(), {
   as: 'div'
 });
+
+const { root } = cardVariants();
 </script>
 
 <template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
-    :class="cn('flex-col-stretch rounded-md border bg-card text-card-foreground shadow-sm', props.class)"
-  >
+  <Primitive :as="as" :as-child="asChild" :class="cn(root(), props.class)">
     <slot />
   </Primitive>
 </template>

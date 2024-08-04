@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButton, SCard } from '@soybean-unify/ui';
-import { Moon } from 'lucide-vue-next';
+import { Settings } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCard'
@@ -8,88 +8,62 @@ defineOptions({
 </script>
 
 <template>
-  <SCard title="Create project" description="Deploy your new project in one-click." class="mb-24px w-400px">
+  <div class="py-12px text-18px">Default Card</div>
+  <SCard title="Title" description="Description" class="w-400px">
     <template #extra>
+      <span>extra</span>
       <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
+        <Settings :size="16" />
       </SButton>
     </template>
-    <p class="text-gray-500 dark:text-neutral-400">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
+    <template #footer>Footer</template>
   </SCard>
-  <SCard title="Create project" class="mb-24px h-360px w-400px">
+  <div class="py-12px text-18px">Split Card</div>
+  <SCard title="Title" split="all" class="w-400px">
     <template #extra>
+      <span>extra</span>
       <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
+        <Settings :size="16" />
       </SButton>
     </template>
-    <div class="h-full overflow-auto">
-      <p v-for="i in 10" :key="i" class="text-gray-500 dark:text-neutral-400">
-        With supporting text below as a natural lead-in to additional content.
-      </p>
-    </div>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
+    <template #footer>Footer</template>
   </SCard>
-  <SCard class="mb-24px w-400px">
-    <p class="text-gray-500 dark:text-neutral-400">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-  </SCard>
-  <SCard title="Size xs" size="xs" split="all" class="mb-24px w-400px">
+  <div class="py-12px text-18px">Small size Card</div>
+  <SCard title="Title" split="all" size="sm" class="w-400px">
     <template #extra>
+      <span>extra</span>
       <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
+        <Settings :size="16" />
       </SButton>
     </template>
-    <p class="text-gray-500 dark:text-neutral-400">content</p>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
+    <template #footer>Footer</template>
   </SCard>
-  <SCard title="Size sm" size="sm" split="all" class="mb-24px w-400px">
+  <div class="py-12px text-18px">Xs size Card</div>
+  <SCard title="Title" split="all" size="xs" class="w-400px">
     <template #extra>
+      <span>extra</span>
       <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
+        <Settings :size="16" />
       </SButton>
     </template>
-    <p class="text-gray-500 dark:text-neutral-400">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
   </SCard>
-  <SCard title="Size md" split="all" class="mb-24px w-400px">
+  <div class="py-12px text-18px">Large size Card</div>
+  <SCard title="Title" split="all" size="lg" class="w-400px">
     <template #extra>
+      <span>extra</span>
       <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
+        <Settings :size="16" />
       </SButton>
     </template>
-    <p class="text-gray-500 dark:text-neutral-400">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
   </SCard>
-  <SCard title="Size lg" size="lg" split="all" class="mb-24px w-400px">
-    <template #extra>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Moon :size="16" />
-      </SButton>
-    </template>
-    <p class="text-gray-500 dark:text-neutral-400">
-      With supporting text below as a natural lead-in to additional content.
-    </p>
-    <template #footer>
-      <SButton class="w-full">Create</SButton>
-    </template>
+  <div class="py-12px text-18px">Only Content Card</div>
+  <SCard class="w-400px">
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
   </SCard>
 </template>
 

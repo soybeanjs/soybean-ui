@@ -1,8 +1,7 @@
 // @vue-ignore
 import type { PrimitiveProps } from 'radix-vue';
-
-export type ClassNameValue = string | Record<string, boolean> | ClassNameValue[];
+import type { ClassValue } from '@soybean-unify/ui-variants';
 
 export interface PrimitivePropsWithClass extends PrimitiveProps {
-  class?: ClassNameValue;
+  class?: ClassValue;
 }

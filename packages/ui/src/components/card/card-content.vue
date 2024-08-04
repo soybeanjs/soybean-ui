@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
-import { cardVariants } from '@soybean-unify/ui-variants';
-import { cn } from '../../shared';
+import { cardVariants, cn } from '@soybean-unify/ui-variants';
 import type { CardContentProps } from './types';
 
 defineOptions({
@@ -10,20 +9,14 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CardContentProps>(), {
-  as: 'div',
-  topGap: true,
-  bottomGap: true
+  as: 'div'
 });
 
-const cls = computed(() =>
-  cn(
-    'flex-grow overflow-hidden',
-    cardVariants({ size: props.size, split: 'none' }),
-    props.topGap ? '' : 'pt-0',
-    props.bottomGap ? '' : 'pb-0',
-    props.class
-  )
-);
+const cls = computed(() => {
+  const { content } = cardVariants({ size: props.size });
+
+  return cn(content(), props.class);
+});
 </script>
 
 <template>

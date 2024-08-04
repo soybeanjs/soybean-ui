@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core';
 import { AccordionItem, useForwardProps } from 'radix-vue';
-import { cn } from '../../shared';
+import { cn } from '@soybean-unify/ui-variants';
 import type { AccordionItemProps } from './types';
 
 defineOptions({

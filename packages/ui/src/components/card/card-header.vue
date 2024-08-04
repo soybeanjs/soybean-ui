@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
-import { type CardSplit, cardVariants } from '@soybean-unify/ui-variants';
-import { cn } from '../../shared';
+import { cardVariants, cn } from '@soybean-unify/ui-variants';
+import type { CardSplit } from '@soybean-unify/ui-variants';
 import type { CardHeaderProps } from './types';
 
 defineOptions({
@@ -14,11 +14,13 @@ const props = withDefaults(defineProps<CardHeaderProps>(), {
   split: false
 });
 
-const cardSplit = computed<CardSplit>(() => (props.split ? 'header' : 'none'));
+const cls = computed(() => {
+  const split: CardSplit = props.split ? 'header' : 'none';
 
-const cls = computed(() =>
-  cn('flex-y-center justify-between', cardVariants({ size: props.size, split: cardSplit.value }), props.class)
-);
+  const { header } = cardVariants({ size: props.size, split });
+
+  return cn(header(), props.class);
+});
 </script>
 
 <template>
