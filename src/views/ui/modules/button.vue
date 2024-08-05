@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon } from '@soybean-unify/ui';
+import { SButton, SButtonIcon, SLoadingButton } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
-import { Loader, LoaderCircle, Minus, Plus } from 'lucide-vue-next';
+import { Loader, Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiButton'
@@ -89,17 +89,12 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   </div>
   <div class="py-12px text-18px">Loading</div>
   <div class="flex flex-wrap gap-12px">
-    <SButton color="success" variant="solid" disabled>
-      <template #before>
-        <LoaderCircle :size="16" class="animate-spin" />
+    <SLoadingButton color="success" variant="solid" loading>Loading...</SLoadingButton>
+    <SLoadingButton color="warning" variant="outline" loading>
+      <template #loading>
+        <Loader class="animate-spin" />
       </template>
       Loading...
-    </SButton>
-    <SButton color="warning" variant="outline" disabled>
-      <template #before>
-        <Loader :size="16" class="animate-spin" />
-      </template>
-      Loading...
-    </SButton>
+    </SLoadingButton>
   </div>
 </template>

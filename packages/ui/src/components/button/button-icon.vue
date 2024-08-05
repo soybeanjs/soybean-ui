@@ -18,7 +18,7 @@ const forwarded = useForwardProps(props);
 
 <template>
   <SButton v-bind="forwarded">
-    <slot class="h-1.25em w-1.25em"></slot>
+    <slot></slot>
   </SButton>
 </template>
 

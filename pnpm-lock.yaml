@@ -141,6 +141,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@lucide/lab':
+        specifier: ^0.1.2
+        version: 0.1.2
       '@soybean-unify/ui-variants':
         specifier: workspace:*
         version: link:../ui-variants
@@ -747,6 +750,9 @@ packages:
   '@jsdevtools/ez-spawn@3.0.4':
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
+
+  '@lucide/lab@0.1.2':
+    resolution: {integrity: sha512-VprF2BJa7ZuTGOhUd5cf8tHJXyL63wdxcGieAiVVoR9hO0YmPsnZO0AGqDiX2/br+/MC6n8BoJcmPilltOXIJA==}
 
   '@microsoft/api-extractor-model@7.29.4':
     resolution: {integrity: sha512-LHOMxmT8/tU1IiiiHOdHFF83Qsi+V8d0kLfscG4EvQE9cafiR8blOYr8SfkQKWB1wgEilQgXJX3MIA4vetDLZw==}
@@ -3800,6 +3806,8 @@ snapshots:
       cross-spawn: 7.0.3
       string-argv: 0.3.2
       type-detect: 4.1.0
+
+  '@lucide/lab@0.1.2': {}
 
   '@microsoft/api-extractor-model@7.29.4(@types/node@22.1.0)':
     dependencies:

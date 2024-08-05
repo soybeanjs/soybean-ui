@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const buttonVariants = tv({
-  base: 'inline-flex items-center justify-center text-sm font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
+  base: 'inline-flex items-center justify-center font-medium focus-visible:(outline outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
   variants: {
     color: {
       primary: `focus-visible:outline-primary`,
@@ -24,12 +24,12 @@ export const buttonVariants = tv({
       link: 'bg-transparent underline-offset-4 hover:underline'
     },
     size: {
-      xs: 'h-6 px-1.5 text-xs gap-1',
-      sm: 'h-7 px-2 gap-2',
-      md: 'h-8 px-4 gap-3',
-      lg: 'h-9 px-6 gap-4',
-      xl: 'h-10 px-8 gap-5',
-      xxl: 'h-12 px-10 gap-6'
+      xs: 'h-6 px-1.5 text-xs gap-1 text-xs',
+      sm: 'h-7 px-2 gap-2 text-sm',
+      md: 'h-8 px-4 gap-3 text-sm',
+      lg: 'h-9 px-6 gap-4 text-base',
+      xl: 'h-10 px-8 gap-5 text-base',
+      xxl: 'h-12 px-10 gap-6 text-lg'
     },
     shape: {
       auto: 'rd-md',

@@ -64,8 +64,11 @@ const tabs: TabConfig[] = [
       <CardHeader class="flex flex-row justify-between">
         <CardTitle>UI Components</CardTitle>
         <SButtonIcon size="lg" @click="toggleDark">
-          <Sun v-if="isDark" :size="18" />
-          <Moon v-else :size="18" />
+          <Sun v-if="isDark" />
+          <Moon v-else />
+        </SButtonIcon>
+        <SButtonIcon>
+          <Moon />
         </SButtonIcon>
       </CardHeader>
       <CardContent class="flex-1-hidden">

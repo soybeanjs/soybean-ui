@@ -9,4 +9,8 @@ export type ButtonProps = PrimitivePropsWithClass & {
   disabled?: boolean;
 };
 
+export type LoadingButtonProps = ButtonProps & {
+  loading?: boolean;
+};
+
 export type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant };

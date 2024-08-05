@@ -14,6 +14,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@lucide/lab": "0.1.2",
     "@soybean-unify/ui-variants": "workspace:*",
     "@vueuse/core": "10.11.0",
     "lucide-vue-next": "0.424.0",
