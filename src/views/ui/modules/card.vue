@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@soybean-unify/ui';
+import { SButtonIcon, SCard } from '@soybean-unify/ui';
 import { Settings } from 'lucide-vue-next';
 
 defineOptions({
@@ -12,9 +12,9 @@ defineOptions({
   <SCard title="Title" description="Description" class="w-400px">
     <template #extra>
       <span>extra</span>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Settings :size="16" />
-      </SButton>
+      <SButtonIcon>
+        <Settings />
+      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>
@@ -22,10 +22,9 @@ defineOptions({
   <div class="py-12px text-18px">Split Card</div>
   <SCard title="Title" split="all" class="w-400px">
     <template #extra>
-      <span>extra</span>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Settings :size="16" />
-      </SButton>
+      <SButtonIcon>
+        <Settings />
+      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>
@@ -33,10 +32,9 @@ defineOptions({
   <div class="py-12px text-18px">Small size Card</div>
   <SCard title="Title" split="all" size="sm" class="w-400px">
     <template #extra>
-      <span>extra</span>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Settings :size="16" />
-      </SButton>
+      <SButtonIcon>
+        <Settings />
+      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>
@@ -44,20 +42,18 @@ defineOptions({
   <div class="py-12px text-18px">Xs size Card</div>
   <SCard title="Title" split="all" size="xs" class="w-400px">
     <template #extra>
-      <span>extra</span>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Settings :size="16" />
-      </SButton>
+      <SButtonIcon>
+        <Settings />
+      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
   </SCard>
   <div class="py-12px text-18px">Large size Card</div>
   <SCard title="Title" split="all" size="lg" class="w-400px">
     <template #extra>
-      <span>extra</span>
-      <SButton color="secondary" variant="ghost" shape="square">
-        <Settings :size="16" />
-      </SButton>
+      <SButtonIcon>
+        <Settings />
+      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
   </SCard>

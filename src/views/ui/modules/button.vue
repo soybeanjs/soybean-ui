@@ -39,21 +39,21 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="success" variant="outline" shape="circle">
-        <Plus :size="16" />
-      </SButton>
+      <SButtonIcon color="success" variant="outline" shape="circle">
+        <Plus />
+      </SButtonIcon>
       <div class="text-12px text-#666">circle</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="warning" variant="dashed" shape="square">
-        <Plus :size="16" />
-      </SButton>
+      <SButtonIcon color="warning" variant="dashed" shape="square">
+        <Plus />
+      </SButtonIcon>
       <div class="text-12px text-#666">square</div>
     </div>
     <div class="flex-col-center">
-      <SButton color="secondary" variant="ghost" shape="circle">
-        <Minus :size="16" />
-      </SButton>
+      <SButtonIcon shape="circle">
+        <Minus />
+      </SButtonIcon>
       <div class="text-12px text-#666">circle</div>
     </div>
   </div>
@@ -61,23 +61,23 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   <div class="flex flex-wrap gap-12px">
     <SButton color="primary">
       <template #before>
-        <Plus :size="16" />
+        <Plus />
       </template>
       Before
     </SButton>
     <SButton color="destructive" variant="outline">
       After
       <template #after>
-        <Minus :size="16" />
+        <Minus />
       </template>
     </SButton>
     <SButton color="success" variant="dashed">
       <template #before>
-        <Plus :size="16" />
+        <Plus />
       </template>
       Both
       <template #after>
-        <Minus :size="16" />
+        <Minus />
       </template>
     </SButton>
   </div>

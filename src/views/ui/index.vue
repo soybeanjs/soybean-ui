@@ -67,9 +67,6 @@ const tabs: TabConfig[] = [
           <Sun v-if="isDark" />
           <Moon v-else />
         </SButtonIcon>
-        <SButtonIcon>
-          <Moon />
-        </SButtonIcon>
       </CardHeader>
       <CardContent class="flex-1-hidden">
         <Tabs default-value="button" class="h-full flex-col-stretch">
