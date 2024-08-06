@@ -142,7 +142,7 @@ importers:
   packages/ui:
     dependencies:
       '@lucide/lab':
-        specifier: ^0.1.2
+        specifier: 0.1.2
         version: 0.1.2
       '@soybean-unify/ui-variants':
         specifier: workspace:*

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SButton, SButtonIcon, SLoadingButton } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
-import { Loader, Minus, Plus } from 'lucide-vue-next';
+import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiButton'
@@ -96,5 +96,19 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
       </template>
       Loading...
     </SLoadingButton>
+  </div>
+  <div class="py-12px text-18px">Button Group</div>
+  <div class="flex flex-wrap gap-12px">
+    <div class="flex [&>button]:relative">
+      <SButton>
+        <SkipBack />
+      </SButton>
+      <SButton>
+        <Pause />
+      </SButton>
+      <SButton>
+        <SkipForward />
+      </SButton>
+    </div>
   </div>
 </template>
