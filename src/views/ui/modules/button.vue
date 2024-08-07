@@ -119,4 +119,18 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
       </SButton>
     </SButtonGroup>
   </div>
+  <div class="py-12px text-18px">Button Group vertical</div>
+  <div class="w-100px">
+    <SButtonGroup direction="vertical">
+      <SButton variant="dashed">
+        <SkipBack />
+      </SButton>
+      <SButton variant="dashed">
+        <Pause />
+      </SButton>
+      <SButton variant="dashed">
+        <SkipForward />
+      </SButton>
+    </SButtonGroup>
+  </div>
 </template>
