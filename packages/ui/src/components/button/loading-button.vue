@@ -23,15 +23,15 @@ const disabled = computed(() => props.loading || props.disabled);
 
 <template>
   <SButton v-bind="forwarded" :disabled="disabled">
-    <template #before>
+    <template #leading>
       <slot v-if="loading" name="loading">
         <LoaderCircle class="animate-spin" />
       </slot>
-      <slot v-else name="before" />
+      <slot v-else name="leading" />
     </template>
     <slot />
-    <template #after>
-      <slot name="after" />
+    <template #trailing>
+      <slot name="trailing" />
     </template>
   </SButton>
 </template>

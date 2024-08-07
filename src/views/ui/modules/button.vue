@@ -60,23 +60,23 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   <div class="py-12px text-18px">Slot</div>
   <div class="flex flex-wrap gap-12px">
     <SButton color="primary">
-      <template #before>
+      <template #leading>
         <Plus />
       </template>
-      Before
+      leading
     </SButton>
     <SButton color="destructive" variant="outline">
       After
-      <template #after>
+      <template #trailing>
         <Minus />
       </template>
     </SButton>
     <SButton color="success" variant="dashed">
-      <template #before>
+      <template #leading>
         <Plus />
       </template>
       Both
-      <template #after>
+      <template #trailing>
         <Minus />
       </template>
     </SButton>

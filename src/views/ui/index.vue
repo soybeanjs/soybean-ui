@@ -13,9 +13,10 @@ import {
 } from '@soybean-unify/shadcn-ui';
 import { SButtonIcon } from '@soybean-unify/ui';
 import { Moon, Sun } from 'lucide-vue-next';
-import UiButton from './modules/button.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
+import UiAspectRatio from './modules/aspect-ratio.vue';
+import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 
 defineOptions({
@@ -36,11 +37,6 @@ interface TabConfig {
 
 const tabs: TabConfig[] = [
   {
-    key: 'button',
-    label: 'Button',
-    component: UiButton
-  },
-  {
     key: 'accordion',
     label: 'Accordion',
     component: UiAccordion
@@ -49,6 +45,16 @@ const tabs: TabConfig[] = [
     key: 'alert',
     label: 'Alert',
     component: UiAlert
+  },
+  {
+    key: 'aspect-ratio',
+    label: 'AspectRatio',
+    component: UiAspectRatio
+  },
+  {
+    key: 'button',
+    label: 'Button',
+    component: UiButton
   },
   {
     key: 'card',

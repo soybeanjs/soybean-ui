@@ -17,9 +17,9 @@ const delegatedProps = reactiveOmit(props, ['class', 'color', 'variant', 'size',
 
 <template>
   <Primitive v-bind="delegatedProps" :class="cn(buttonVariants({ color, variant, size, shape }), props.class)">
-    <slot name="before" />
+    <slot name="leading" />
     <slot />
-    <slot name="after" />
+    <slot name="trailing" />
   </Primitive>
 </template>
 
