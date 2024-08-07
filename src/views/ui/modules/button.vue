@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon, SLoadingButton } from '@soybean-unify/ui';
+import { SButton, SButtonGroup, SButtonIcon, SLoadingButton } from '@soybean-unify/ui';
 import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
@@ -99,16 +99,24 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   </div>
   <div class="py-12px text-18px">Button Group</div>
   <div class="flex flex-wrap gap-12px">
-    <div class="flex [&>button]:relative">
-      <SButton>
+    <SButtonGroup>
+      <SButton variant="outline">
         <SkipBack />
       </SButton>
-      <SButton>
+      <SButton variant="outline">
         <Pause />
       </SButton>
-      <SButton>
+      <SButton variant="outline">
         <SkipForward />
       </SButton>
-    </div>
+    </SButtonGroup>
+    <SButtonGroup>
+      <SButton color="destructive" variant="outline">
+        <SkipBack />
+      </SButton>
+      <SButton color="destructive" variant="outline">
+        <SkipForward />
+      </SButton>
+    </SButtonGroup>
   </div>
 </template>
