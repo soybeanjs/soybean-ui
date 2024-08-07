@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  ScrollArea,
   Tabs,
   TabsContent,
   TabsList,
@@ -82,9 +83,9 @@ const tabs: TabConfig[] = [
             </TabsTrigger>
           </TabsList>
           <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
-            <div class="h-full overflow-auto px-12px py-18px">
+            <ScrollArea class="h-full p-18px">
               <component :is="tab.component" />
-            </div>
+            </ScrollArea>
           </TabsContent>
         </Tabs>
       </CardContent>
