@@ -169,15 +169,19 @@ function createBuiltinFeedbackColorTheme() {
       'success-foreground': '0 0% 100%',
       warning: '37 91% 55%',
       'warning-foreground': '0 0% 100%',
-      info: '207 90% 61%',
+      info: '215 100% 54%',
+      // info: '207 90% 61%',
       'info-foreground': '0 0% 100%'
     },
     dark: {
-      success: '157 79% 17%',
+      // success: '157 79% 17%',
+      success: '140 79% 45%',
       'success-foreground': '0 0% 100%',
-      warning: '25 91% 35%',
+      warning: '37 91% 55%',
+      // warning: '25 91% 35%',
       'warning-foreground': '0 0% 100%',
-      info: '212 75% 18%',
+      info: '215 100% 54%',
+      // info: '212 75% 18%',
       'info-foreground': '0 0% 100%'
     }
   };

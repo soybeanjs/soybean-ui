@@ -83,8 +83,10 @@ const tabs: TabConfig[] = [
             </TabsTrigger>
           </TabsList>
           <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
-            <ScrollArea class="h-full p-18px">
-              <component :is="tab.component" />
+            <ScrollArea class="h-full">
+              <div class="p-18px">
+                <component :is="tab.component" />
+              </div>
             </ScrollArea>
           </TabsContent>
         </Tabs>
