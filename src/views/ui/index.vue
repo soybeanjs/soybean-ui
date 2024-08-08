@@ -77,8 +77,8 @@ const tabs: TabConfig[] = [
       </CardHeader>
       <CardContent class="flex-1-hidden">
         <Tabs default-value="button" class="h-full flex-col-stretch">
-          <TabsList class="w-fit flex-wrap justify-start gap-y-8px">
-            <TabsTrigger v-for="tab in tabs" :key="tab.key" class="w-120px" :value="tab.key">
+          <TabsList class="h-auto w-full flex-wrap justify-start gap-y-8px">
+            <TabsTrigger v-for="tab in tabs" :key="tab.key" class="max-w-120px w-1/3" :value="tab.key">
               {{ tab.label }}
             </TabsTrigger>
           </TabsList>
