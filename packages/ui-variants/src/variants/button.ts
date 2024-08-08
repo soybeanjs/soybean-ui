@@ -36,6 +36,12 @@ export const buttonVariants = tv({
       rounded: 'rd-full',
       square: 'h-8 w-8 p-0 gap-0 rd-md',
       circle: 'h-8 w-8 p-0 gap-0 rd-full'
+    },
+    shadow: {
+      none: 'shadow-none',
+      sm: 'shadow-sm',
+      md: 'shadow-md',
+      lg: 'shadow-lg'
     }
   },
   compoundVariants: [
@@ -263,13 +269,19 @@ export const buttonVariants = tv({
       size: 'xxl',
       shape: ['square', 'circle'],
       class: 'h-12 w-12'
+    },
+    {
+      variant: ['ghost', 'link'],
+      shadow: ['sm', 'md', 'lg'],
+      class: 'shadow-none'
     }
   ],
   defaultVariants: {
     color: 'primary',
     variant: 'solid',
     size: 'md',
-    shape: 'auto'
+    shape: 'auto',
+    shadow: 'sm'
   }
 });
 
@@ -282,3 +294,5 @@ export type ButtonVariant = NonNullable<ButtonVariants['variant']>;
 export type ButtonSize = NonNullable<ButtonVariants['size']>;
 
 export type ButtonShape = NonNullable<ButtonVariants['shape']>;
+
+export type ButtonShadow = NonNullable<ButtonVariants['shadow']>;

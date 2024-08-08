@@ -1,6 +1,7 @@
 import type {
   ButtonColor,
   ButtonGroupDirection,
+  ButtonShadow,
   ButtonShape,
   ButtonSize,
   ButtonVariant
@@ -13,9 +14,10 @@ export type ButtonProps = PrimitivePropsWithClass & {
   size?: ButtonSize;
   shape?: ButtonShape;
   disabled?: boolean;
+  shadow?: ButtonShadow;
 };
 
-export type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant };
+export type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant, ButtonShadow };
 
 export type LoadingButtonProps = ButtonProps & {
   loading?: boolean;

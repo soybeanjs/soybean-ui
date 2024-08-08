@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButton, SButtonGroup, SButtonIcon, SLoadingButton } from '@soybean-unify/ui';
-import type { ButtonColor, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
+import type { ButtonColor, ButtonShadow, ButtonSize, ButtonVariant } from '@soybean-unify/ui';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
 defineOptions({
@@ -10,6 +10,7 @@ defineOptions({
 const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 const variants: ButtonVariant[] = ['solid', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
 const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>
 
 <template>
@@ -56,6 +57,12 @@ const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
       </SButtonIcon>
       <div class="text-12px text-#666">circle</div>
     </div>
+  </div>
+  <div class="py-12px text-18px">Shadow</div>
+  <div class="flex flex-wrap gap-12px">
+    <SButton v-for="(item, index) in shadows" :key="item" :color="colors[index]" variant="plain" :shadow="item">
+      {{ item }}
+    </SButton>
   </div>
   <div class="py-12px text-18px">Slot</div>
   <div class="flex flex-wrap gap-12px">
