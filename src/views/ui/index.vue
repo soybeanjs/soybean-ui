@@ -69,7 +69,7 @@ const tabs: TabConfig[] = [
   <div class="h-full p-16px">
     <Card class="h-full flex-col-stretch">
       <CardHeader class="flex flex-row justify-between">
-        <CardTitle>UI Components</CardTitle>
+        <CardTitle>Soybean UI Components</CardTitle>
         <SButtonIcon size="lg" @click="toggleDark">
           <Sun v-if="isDark" />
           <Moon v-else />
