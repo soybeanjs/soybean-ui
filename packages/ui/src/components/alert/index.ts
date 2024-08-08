@@ -4,4 +4,5 @@ import SAlertDescription from './alert-description.vue';
 import SAlert from './alert.vue';
 
 export { SAlertRoot, SAlertTitle, SAlertDescription, SAlert };
+
 export * from './types';

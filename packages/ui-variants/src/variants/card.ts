@@ -72,8 +72,8 @@ export const cardVariants = tv({
   }
 });
 
-type CardVariantProps = VariantProps<typeof cardVariants>;
+type CardVariants = VariantProps<typeof cardVariants>;
 
-export type CardSize = NonNullable<CardVariantProps['size']>;
+export type CardSize = NonNullable<CardVariants['size']>;
 
-export type CardSplit = NonNullable<CardVariantProps['split']>;
+export type CardSplit = NonNullable<CardVariants['split']>;

@@ -17,6 +17,7 @@ import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
 import UiAspectRatio from './modules/aspect-ratio.vue';
+import UiAvatar from './modules/avatar.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 
@@ -51,6 +52,11 @@ const tabs: TabConfig[] = [
     key: 'aspect-ratio',
     label: 'AspectRatio',
     component: UiAspectRatio
+  },
+  {
+    key: 'avatar',
+    label: 'Avatar',
+    component: UiAvatar
   },
   {
     key: 'button',

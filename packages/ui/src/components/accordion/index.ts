@@ -6,4 +6,5 @@ import SAccordionContent from './accordion-content.vue';
 import SAccordion from './accordion.vue';
 
 export { SAccordionRoot, SAccordionItem, SAccordionHeader, SAccordionTrigger, SAccordionContent, SAccordion };
+
 export * from './types';
