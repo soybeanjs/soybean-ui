@@ -50,7 +50,7 @@ const items: AccordionItems[] = [
   <SAccordion v-model="single" type="single" collapsible :items="items" />
   <div class="pb-12px pt-32px text-18px">Multi Collapse</div>
   <SAccordion v-model="multi" type="multiple" :items="items" />
-  <div class="py-12px pt-32px text-18px">Single Collapse: alwayse open one</div>
+  <div class="py-12px pt-32px text-18px">Single Collapse: always open one</div>
   <SAccordion v-model="single2" type="single" :items="items" />
   <div class="pb-12px pt-32px text-18px">Custom styling</div>
   <SAccordionRoot v-model="single3" collapsible type="single">
