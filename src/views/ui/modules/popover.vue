@@ -1,18 +1,29 @@
 <script setup lang="ts">
 import { SButton, SPopover } from '@soybean-unify/ui';
+import type { PopoverAlign, PopoverSide } from '@soybean-unify/ui';
 
 defineOptions({
   name: 'UiPopover'
 });
+
+const sides: PopoverSide[] = ['top', 'right', 'bottom', 'left'];
+
+const aligns: PopoverAlign[] = ['start', 'center', 'end'];
 </script>
 
 <template>
-  <SPopover>
-    <template #trigger>
-      <SButton>Open Popover</SButton>
-    </template>
-    <p>Popover content</p>
-  </SPopover>
+  <div class="py-12px text-18px">Popover Position</div>
+  <div v-for="side in sides" :key="side">
+    <div class="py-12px text-18px">Side: {{ side }}</div>
+    <div class="flex flex-wrap gap-12px">
+      <SPopover v-for="align in aligns" :key="align" :content-props="{ side, align }">
+        <template #trigger>
+          <SButton variant="plain">align: {{ align }}</SButton>
+        </template>
+        <p>Popover content</p>
+      </SPopover>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>

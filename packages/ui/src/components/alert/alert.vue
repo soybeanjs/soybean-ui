@@ -15,8 +15,8 @@ const props = defineProps<AlertProps>();
 
 type Slots = {
   default: () => any;
-  icon: () => any;
-  description: () => any;
+  icon?: () => any;
+  description?: () => any;
 };
 
 const slots = defineSlots<Slots>();

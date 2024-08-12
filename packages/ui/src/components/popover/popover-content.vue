@@ -11,7 +11,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<PopoverContentProps>(), {
   side: 'bottom',
-  sideOffset: 8,
+  sideOffset: 6,
   align: 'center',
   avoidCollisions: true,
   collisionPadding: 0,
