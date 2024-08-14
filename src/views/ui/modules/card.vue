@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButtonIcon, SCard } from '@soybean-unify/ui';
-import { Settings } from 'lucide-vue-next';
+import { CircleX, Expand, Settings, X } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCard'
@@ -12,9 +12,6 @@ defineOptions({
   <SCard title="Title" description="Description" class="w-400px">
     <template #extra>
       <span>extra</span>
-      <SButtonIcon>
-        <Settings />
-      </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>
@@ -23,7 +20,7 @@ defineOptions({
   <SCard title="Title" split="all" class="w-400px">
     <template #extra>
       <SButtonIcon>
-        <Settings />
+        <X />
       </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
@@ -33,7 +30,7 @@ defineOptions({
   <SCard title="Title" split="all" size="sm" class="w-400px">
     <template #extra>
       <SButtonIcon>
-        <Settings />
+        <CircleX />
       </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
@@ -43,7 +40,7 @@ defineOptions({
   <SCard title="Title" split="all" size="xs" class="w-400px">
     <template #extra>
       <SButtonIcon>
-        <Settings />
+        <Expand />
       </SButtonIcon>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
