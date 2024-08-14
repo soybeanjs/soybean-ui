@@ -19,7 +19,7 @@ defineOptions({
   <div class="py-12px text-18px">Split Card</div>
   <SCard title="Title" split="all" class="w-400px">
     <template #extra>
-      <SButtonIcon>
+      <SButtonIcon class="text-[18px]">
         <X />
       </SButtonIcon>
     </template>
@@ -39,7 +39,7 @@ defineOptions({
   <div class="py-12px text-18px">Xs size Card</div>
   <SCard title="Title" split="all" size="xs" class="w-400px">
     <template #extra>
-      <SButtonIcon>
+      <SButtonIcon size="xs">
         <Expand />
       </SButtonIcon>
     </template>
