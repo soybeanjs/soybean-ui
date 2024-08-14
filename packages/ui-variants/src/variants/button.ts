@@ -112,37 +112,37 @@ export const buttonVariants = tv({
     },
     {
       color: 'primary',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-primary/10 active:bg-primary/20'
     },
     {
       color: 'destructive',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-destructive/10 active:bg-destructive/20'
     },
     {
       color: 'success',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-success/10 active:bg-success/20'
     },
     {
       color: 'warning',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-warning/10 active:bg-warning/20'
     },
     {
       color: 'info',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-info/10 active:bg-info/20'
     },
     {
       color: 'secondary',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
     },
     {
       color: 'accent',
-      variant: ['plain', 'outline', 'dashed', 'ghost'],
+      variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-accent-foreground/10 active:bg-accent-foreground/20'
     },
     {
