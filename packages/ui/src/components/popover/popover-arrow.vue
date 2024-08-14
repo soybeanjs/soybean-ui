@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core';
 import { PopoverArrow, useForwardProps } from 'radix-vue';
-import { cn } from '@soybean-unify/ui-variants';
+import { cn, popoverVariants } from '@soybean-unify/ui-variants';
 import type { PopoverArrowProps } from './types';
 
 defineOptions({
   name: 'SPopoverArrow'
 });
 
-const props = withDefaults(defineProps<PopoverArrowProps>(), {
-  width: 12,
-  height: 6
-});
+const props = defineProps<PopoverArrowProps>();
 
 const delegatedProps = reactiveOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
+
+const { arrow } = popoverVariants();
 </script>
 
 <template>
-  <PopoverArrow v-bind="forwardedProps" :class="cn('fill-border', props.class)" />
+  <PopoverArrow v-bind="forwardedProps" as-child>
+    <div :class="cn(arrow(), props.class)"></div>
+  </PopoverArrow>
 </template>
 
 <style scoped></style>

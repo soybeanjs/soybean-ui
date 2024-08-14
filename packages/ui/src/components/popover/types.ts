@@ -1,5 +1,4 @@
 import type {
-  PopoverArrowProps as $PopoverArrowProps,
   PopoverContentProps as $PopoverContentProps,
   PopoverAnchorProps,
   PopoverCloseProps,
@@ -13,7 +12,7 @@ export type PopoverContentProps = $PopoverContentProps & {
   class?: ClassValue;
 };
 
-export type PopoverArrowProps = $PopoverArrowProps & {
+export type PopoverArrowProps = {
   class?: ClassValue;
 };
 

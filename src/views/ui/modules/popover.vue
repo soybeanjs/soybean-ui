@@ -24,6 +24,13 @@ const aligns: PopoverAlign[] = ['start', 'center', 'end'];
       </SPopover>
     </div>
   </div>
+  <div class="py-12px text-18px">Popover Arrow</div>
+  <SPopover show-arrow>
+    <template #trigger>
+      <SButton variant="plain">with arrow</SButton>
+    </template>
+    <p>Popover content</p>
+  </SPopover>
 </template>
 
 <style scoped></style>

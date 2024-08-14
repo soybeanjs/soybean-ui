@@ -11,7 +11,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<PopoverContentProps>(), {
   side: 'bottom',
-  sideOffset: 6,
+  sideOffset: 8,
   align: 'center',
   avoidCollisions: true,
   collisionPadding: 0,
@@ -23,10 +23,12 @@ const delegatedProps = reactiveOmit(props, ['class']);
 const emit = defineEmits<PopoverContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
+
+const { content } = popoverVariants();
 </script>
 
 <template>
-  <PopoverContent v-bind="forwarded" :class="cn(popoverVariants(), props.class)">
+  <PopoverContent v-bind="forwarded" :class="cn(content(), props.class)">
     <slot />
   </PopoverContent>
 </template>
