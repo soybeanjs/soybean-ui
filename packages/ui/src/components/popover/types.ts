@@ -25,8 +25,8 @@ export type PopoverProps = PopoverRootProps & {
   closeProps?: PopoverCloseProps;
 };
 
-export type { PopoverAnchorProps, PopoverCloseProps, PopoverPortalProps, PopoverRootProps, PopoverTriggerProps };
-
 export type PopoverSide = NonNullable<PopoverContentProps['side']>;
 
 export type PopoverAlign = NonNullable<PopoverContentProps['align']>;
+
+export type { PopoverAnchorProps, PopoverCloseProps, PopoverPortalProps, PopoverRootProps, PopoverTriggerProps };
