@@ -20,6 +20,7 @@ import UiAspectRatio from './modules/aspect-ratio.vue';
 import UiAvatar from './modules/avatar.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
+import UiDialog from './modules/dialog.vue';
 import UiPopover from './modules/popover.vue';
 
 defineOptions({
@@ -68,6 +69,11 @@ const tabs: TabConfig[] = [
     key: 'card',
     label: 'Card',
     component: UiCard
+  },
+  {
+    key: 'dialog',
+    label: 'Dialog',
+    component: UiDialog
   },
   {
     key: 'popover',

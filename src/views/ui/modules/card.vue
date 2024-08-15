@@ -16,6 +16,14 @@ defineOptions({
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>
   </SCard>
+  <div class="py-12px text-18px">Card without description</div>
+  <SCard title="Title" class="w-400px">
+    <template #extra>
+      <SButtonIcon size="xs" color="info" variant="link" class="text-[14px]">more</SButtonIcon>
+    </template>
+    <p class="text-gray-500 dark:text-neutral-400">Content</p>
+    <template #footer>Footer</template>
+  </SCard>
   <div class="py-12px text-18px">Split Card</div>
   <SCard title="Title" split="all" class="w-400px">
     <template #extra>

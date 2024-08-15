@@ -22,21 +22,14 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedProps = reactiveOmit(props, [
-  'portalProps',
-  'triggerProps',
-  'contentProps',
-  'showArrow',
-  'arrowProps',
-  'closeProps'
-]);
+const delegatedProps = reactiveOmit(props, ['portalProps', 'contentProps', 'showArrow', 'arrowProps']);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
   <PopoverRoot v-bind="forwarded">
-    <PopoverTrigger as-child v-bind="triggerProps">
+    <PopoverTrigger as-child>
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal v-bind="portalProps">
