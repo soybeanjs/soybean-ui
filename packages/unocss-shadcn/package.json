@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "@soybean-unify/color": "workspace:*",
-    "@unocss/core": "0.62.1"
+    "@unocss/core": "0.62.2"
   }
 }

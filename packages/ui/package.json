@@ -16,13 +16,13 @@
   "dependencies": {
     "@lucide/lab": "0.1.2",
     "@soybean-unify/ui-variants": "workspace:*",
-    "@vueuse/core": "10.11.1",
-    "lucide-vue-next": "0.427.0",
-    "radix-vue": "1.9.3"
+    "@vueuse/core": "11.0.0",
+    "lucide-vue-next": "0.428.0",
+    "radix-vue": "1.9.4"
   },
   "devDependencies": {
     "typescript": "5.5.4",
-    "vite": "5.4.0",
-    "vite-plugin-dts": "4.0.2"
+    "vite": "5.4.1",
+    "vite-plugin-dts": "4.0.3"
   }
 }
