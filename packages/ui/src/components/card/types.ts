@@ -19,10 +19,6 @@ export type CardTitleProps = PrimitivePropsWithClass & {
   size?: CardSize;
 };
 
-export type CardDescriptionProps = PrimitivePropsWithClass & {
-  size?: CardSize;
-};
-
 export type CardContentProps = PrimitivePropsWithClass & {
   size?: CardSize;
 };
@@ -41,7 +37,6 @@ export type CardProps = CardRootProps & {
   headerProps?: CardHeaderProps;
   titleRootProps?: CardTitleRootProps;
   titleProps?: CardTitleProps;
-  descriptionProps?: CardDescriptionProps;
   contentProps?: CardContentProps;
   footerProps?: CardFooterProps;
 };

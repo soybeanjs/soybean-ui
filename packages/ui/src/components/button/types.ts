@@ -1,6 +1,6 @@
 import type {
   ButtonColor,
-  ButtonGroupDirection,
+  ButtonGroupOrientation,
   ButtonShadow,
   ButtonShape,
   ButtonSize,
@@ -17,12 +17,16 @@ export type ButtonProps = PrimitivePropsWithClass & {
   shadow?: ButtonShadow;
 };
 
+export type ButtonIconProps = ButtonProps & {
+  fitContent?: boolean;
+};
+
 export type LoadingButtonProps = ButtonProps & {
   loading?: boolean;
 };
 
 export type ButtonGroupProps = PrimitivePropsWithClass & {
-  direction?: ButtonGroupDirection;
+  orientation?: ButtonGroupOrientation;
 };
 
 export type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant, ButtonShadow };

@@ -6,45 +6,35 @@ export const cardVariants = tv({
   slots: {
     root: 'flex-col-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex-y-center justify-between',
-    titleRoot: 'flex-1-hidden flex-col',
     title: 'font-semibold leading-none tracking-tight',
-    description: 'text-muted-foreground',
     content: 'flex-grow overflow-hidden',
     footer: 'flex-y-center justify-between'
   },
   variants: {
     size: {
-      xs: {
-        header: 'px-3 py-1',
-        titleRoot: 'gap-y-1',
-        title: 'text-sm',
-        description: 'text-xs',
-        content: 'px-3 py-1',
-        footer: 'px-3 py-1'
-      },
       sm: {
-        header: 'px-4 py-2',
-        titleRoot: 'gap-y-1.5',
+        header: 'px-3 py-2',
         title: 'text-sm',
-        description: 'text-sm',
-        content: 'px-4 py-2',
-        footer: 'px-4 py-2'
+        content: 'px-3 py-2',
+        footer: 'px-3 py-2'
       },
       md: {
-        header: 'px-6 py-3',
-        titleRoot: 'gap-y-1.5',
-        title: 'text-base',
-        description: 'text-sm',
-        content: 'px-6 py-3',
-        footer: 'px-6 py-3'
+        header: 'px-4 py-3',
+        title: 'text-sm',
+        content: 'px-4 py-3',
+        footer: 'px-4 py-3'
       },
       lg: {
-        header: 'px-6 py-5',
-        titleRoot: 'gap-y-2',
+        header: 'px-6 py-4',
+        title: 'text-base',
+        content: 'px-6 py-4',
+        footer: 'px-6 py-4'
+      },
+      xl: {
+        header: 'px-8 py-6',
         title: 'text-lg',
-        description: 'text-sm',
-        content: 'px-6 py-5',
-        footer: 'px-6 py-5'
+        content: 'px-8 py-6',
+        footer: 'px-8 py-6'
       }
     },
     split: {

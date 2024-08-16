@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(buttonGroupVariants({ direction }), props.class)">
+  <Primitive :as="as" :as-child="asChild" :class="cn(buttonGroupVariants({ orientation }), props.class)">
     <slot />
   </Primitive>
 </template>

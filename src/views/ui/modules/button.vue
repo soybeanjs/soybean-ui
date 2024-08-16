@@ -128,7 +128,7 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
   </div>
   <div class="py-12px text-18px">Button Group vertical</div>
   <div class="w-100px">
-    <SButtonGroup direction="vertical">
+    <SButtonGroup orientation="vertical">
       <SButton variant="dashed">
         <SkipBack />
       </SButton>
