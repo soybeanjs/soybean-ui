@@ -5,6 +5,7 @@ import { useForwardProps } from 'radix-vue';
 import { cardVariants, cn } from '@soybean-unify/ui-variants';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
+import SCardTitleRoot from './card-title-root.vue';
 import SCardTitle from './card-title.vue';
 import SCardContent from './card-content.vue';
 import SCardFooter from './card-footer.vue';
@@ -23,6 +24,8 @@ type Slots = {
   default: () => any;
   header: () => any;
   title: () => any;
+  'title-leading': () => any;
+  'title-trailing': () => any;
   extra: () => any;
   footer: () => any;
 };
@@ -35,6 +38,7 @@ const delegatedProps = reactiveOmit(props, [
   'split',
   'headerProps',
   'titleProps',
+  'titleRootProps',
   'contentProps',
   'footerProps'
 ]);
@@ -129,7 +133,11 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
     <SCardHeader v-if="showHeader" v-bind="headerComputedProps">
       <slot name="header">
         <slot name="title">
-          <SCardTitle v-bind="titleComputedProps">{{ props.title }}</SCardTitle>
+          <SCardTitleRoot>
+            <slot name="title-leading" />
+            <SCardTitle v-bind="titleComputedProps">{{ props.title }}</SCardTitle>
+            <slot name="title-trailing" />
+          </SCardTitleRoot>
         </slot>
         <slot name="extra"></slot>
       </slot>
