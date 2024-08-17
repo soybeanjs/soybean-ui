@@ -100,7 +100,7 @@ const tabs: TabConfig[] = [
         </SButtonIcon>
       </CardHeader>
       <CardContent class="flex-1-hidden">
-        <Tabs default-value="button" class="h-full flex-col-stretch">
+        <Tabs default-value="accordion" class="h-full flex-col-stretch">
           <TabsList class="h-auto w-full flex-wrap justify-start gap-y-8px">
             <TabsTrigger v-for="tab in tabs" :key="tab.key" class="max-w-120px w-1/3" :value="tab.key">
               {{ tab.label }}
