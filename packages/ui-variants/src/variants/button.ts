@@ -274,6 +274,21 @@ export const buttonVariants = tv({
       variant: ['ghost', 'link'],
       shadow: ['sm', 'md', 'lg'],
       class: 'shadow-none'
+    },
+    {
+      variant: 'plain',
+      shadow: 'sm',
+      class: 'active:shadow-md'
+    },
+    {
+      variant: 'plain',
+      shadow: 'md',
+      class: 'active:shadow-lg'
+    },
+    {
+      variant: 'plain',
+      shadow: 'lg',
+      class: 'active:shadow-xl'
     }
   ],
   defaultVariants: {
