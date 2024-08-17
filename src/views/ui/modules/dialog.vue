@@ -17,14 +17,14 @@ function closeDialog() {
   <div class="py-12px text-18px">Default</div>
   <SDialog title="Dialog Title">
     <template #trigger>
-      <SButton>Open</SButton>
+      <SButton variant="outline">Open</SButton>
     </template>
     <div>Dialog Content</div>
   </SDialog>
   <div class="py-12px text-18px">With Footer</div>
   <SDialog title="Dialog Title">
     <template #trigger>
-      <SButton>Open</SButton>
+      <SButton variant="outline">Open</SButton>
     </template>
     <div>Dialog Content</div>
     <template #footer>
@@ -37,7 +37,7 @@ function closeDialog() {
   <div class="py-12px text-18px">Control Open State</div>
   <SDialog v-model:open="open" title="Dialog Title">
     <template #trigger>
-      <SButton>Open</SButton>
+      <SButton variant="outline">Open</SButton>
     </template>
     <div>Dialog Content</div>
     <template #footer>
@@ -52,7 +52,7 @@ function closeDialog() {
     @escape-key-down="e => e.preventDefault()"
   >
     <template #trigger>
-      <SButton>Open</SButton>
+      <SButton variant="outline">Open</SButton>
     </template>
     <div>Dialog Content</div>
     <template #footer>

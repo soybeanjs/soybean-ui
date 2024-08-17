@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButtonIcon, SCard } from '@soybean-unify/ui';
-import { CircleX, Expand, Settings, X } from 'lucide-vue-next';
+import { SButton, SButtonIcon, SCard } from '@soybean-unify/ui';
+import { Expand, Settings, X } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCard'
@@ -29,9 +29,7 @@ defineOptions({
   <div class="py-12px text-18px">Small size Card</div>
   <SCard title="Title" split="all" size="sm" class="w-400px">
     <template #extra>
-      <SButtonIcon fit-content>
-        <CircleX />
-      </SButtonIcon>
+      <SButton variant="link" class="size-fit">more</SButton>
     </template>
     <p class="text-gray-500 dark:text-neutral-400">Content</p>
     <template #footer>Footer</template>

@@ -1,35 +1,34 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { reactiveOmit, reactivePick } from '@vueuse/core';
-import type { DialogContentEmits } from 'radix-vue';
+import type { AlertDialogContentEmits } from 'radix-vue';
 import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
   VisuallyHidden,
   useForwardProps,
   useForwardPropsEmits
 } from 'radix-vue';
-import { X } from 'lucide-vue-next';
 import { cn, dialogVariants } from '@soybean-unify/ui-variants';
 import SCard from '../card/card.vue';
-import SButtonIcon from '../button/button-icon.vue';
-import type { DialogContentProps } from './types';
+import type { AlertDialogContentProps } from './types';
 
 defineOptions({
-  name: 'SDialogContent'
+  name: 'SAlertDialogContent'
 });
 
-const props = withDefaults(defineProps<DialogContentProps>(), {
-  showClose: true
-});
+const props = defineProps<AlertDialogContentProps>();
 
-const emit = defineEmits<DialogContentEmits>();
+const emit = defineEmits<AlertDialogContentEmits>();
 
-const delegatedDialogContentProps = reactivePick(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const delegatedAlertDialogContentProps = reactivePick(props, [
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
+]);
 
-const forwardedDialogContentProps = useForwardPropsEmits(delegatedDialogContentProps, emit);
+const forwardedAlertDialogContentProps = useForwardPropsEmits(delegatedAlertDialogContentProps, emit);
 
 const delegatedCardProps = reactiveOmit(props, [
   'asChild',
@@ -55,11 +54,11 @@ const footerProps = computed(() => {
 </script>
 
 <template>
-  <DialogContent as-child v-bind="forwardedDialogContentProps">
+  <AlertDialogContent as-child v-bind="forwardedAlertDialogContentProps">
     <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-props="footerProps">
       <VisuallyHidden>
-        <DialogTitle />
-        <DialogDescription />
+        <AlertDialogTitle />
+        <AlertDialogDescription />
       </VisuallyHidden>
       <template #header>
         <slot name="header" />
@@ -68,22 +67,14 @@ const footerProps = computed(() => {
         <slot name="title" />
       </template>
       <template #extra>
-        <slot name="extra">
-          <DialogClose v-if="showClose" as-child>
-            <slot name="close">
-              <SButtonIcon size="sm">
-                <X />
-              </SButtonIcon>
-            </slot>
-          </DialogClose>
-        </slot>
+        <slot name="extra" />
       </template>
       <slot />
-      <template v-if="$slots.footer" #footer>
+      <template #footer>
         <slot name="footer" />
       </template>
     </SCard>
-  </DialogContent>
+  </AlertDialogContent>
 </template>
 
 <style scoped></style>

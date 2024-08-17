@@ -1,40 +1,25 @@
 <script setup lang="ts">
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  Button
-} from '@soybean-unify/shadcn-ui';
+import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from '@soybean-unify/ui';
 
 defineOptions({
-  name: 'AlertDialog'
+  name: 'UiAlertDialog'
 });
+
+function handleAction() {
+  console.log('1');
+}
 </script>
 
 <template>
-  <AlertDialog>
-    <AlertDialogTrigger as-child>
-      <Button variant="outline">Show Dialog</Button>
-    </AlertDialogTrigger>
-    <AlertDialogContent>
-      <AlertDialogHeader>
-        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-        <AlertDialogDescription>
-          This action cannot be undone. This will permanently delete your account and remove your data from our servers.
-        </AlertDialogDescription>
-      </AlertDialogHeader>
-      <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <AlertDialogAction>Continue</AlertDialogAction>
-      </AlertDialogFooter>
-    </AlertDialogContent>
-  </AlertDialog>
+  <SAlertDialog title="Are you absolutely sure?">
+    <template #trigger>
+      <SButton variant="outline">Show Dialog</SButton>
+    </template>
+    <template #footer>
+      <SAlertDialogCancel />
+      <SAlertDialogAction @click="handleAction" />
+    </template>
+  </SAlertDialog>
 </template>
 
 <style scoped></style>

@@ -20,19 +20,19 @@ export const cardVariants = tv({
       },
       md: {
         header: 'px-4 py-3',
-        title: 'text-sm',
+        title: 'text-base',
         content: 'px-4 py-3',
         footer: 'px-4 py-3'
       },
       lg: {
         header: 'px-6 py-4',
-        title: 'text-base',
+        title: 'text-lg',
         content: 'px-6 py-4',
         footer: 'px-6 py-4'
       },
       xl: {
         header: 'px-8 py-6',
-        title: 'text-lg',
+        title: 'text-xl',
         content: 'px-8 py-6',
         footer: 'px-8 py-6'
       }

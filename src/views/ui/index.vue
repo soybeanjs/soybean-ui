@@ -16,6 +16,7 @@ import { SButtonIcon } from '@soybean-unify/ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
+import UiAlertDialog from './modules/alert-dialog.vue';
 import UiAspectRatio from './modules/aspect-ratio.vue';
 import UiAvatar from './modules/avatar.vue';
 import UiButton from './modules/button.vue';
@@ -49,6 +50,11 @@ const tabs: TabConfig[] = [
     key: 'alert',
     label: 'Alert',
     component: UiAlert
+  },
+  {
+    key: 'alert-dialog',
+    label: 'AlertDialog',
+    component: UiAlertDialog
   },
   {
     key: 'aspect-ratio',

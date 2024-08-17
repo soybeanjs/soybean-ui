@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
 import { cn } from '@soybean-unify/ui-variants';
-import { computed } from 'vue';
 import SButton from './button.vue';
 import type { ButtonIconProps } from './types';
 

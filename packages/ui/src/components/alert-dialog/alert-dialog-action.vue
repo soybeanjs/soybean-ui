@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { AlertDialogAction, useForwardProps } from 'radix-vue';
+import SButton from '../button/button.vue';
+import type { ButtonProps } from '../button/types';
+
+defineOptions({
+  name: 'SAlertDialogAction'
+});
+
+const props = defineProps<ButtonProps>();
+
+const forwarded = useForwardProps(props);
+</script>
+
+<template>
+  <AlertDialogAction as-child>
+    <SButton v-bind="forwarded">
+      <slot>Confirm</slot>
+    </SButton>
+  </AlertDialogAction>
+</template>
+
+<style scoped></style>

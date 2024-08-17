@@ -11,7 +11,10 @@ export type DialogOverlayProps = $DialogOverlayProps & {
   class?: ClassValue;
 };
 
-export type DialogContentProps = $DialogContentProps & CardProps;
+export type DialogContentProps = $DialogContentProps &
+  CardProps & {
+    showClose?: boolean;
+  };
 
 export type DialogProps = DialogRootProps &
   DialogContentProps & {
