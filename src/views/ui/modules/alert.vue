@@ -18,7 +18,7 @@ defineOptions({
   </div>
   <div class="py-12px text-18px">Variant</div>
   <div class="flex flex-col-stretch gap-12px">
-    <SAlert v-for="(variant, index) in variants" :key="variant" :color="colors[index]" :variant="variant">
+    <SAlert v-for="(variant, index) in variants" :key="variant" :color="colors[index]" :variant="variant" closable>
       {{ variant }}
     </SAlert>
   </div>
@@ -26,14 +26,14 @@ defineOptions({
   <SAlert variant="plain" title="Heads up!" description="You can add components to your app using the cli." />
   <div class="py-12px text-18px">With Icon</div>
   <SAlert color="success" variant="outline" title="Flighting !!!">
-    <template #icon>
-      <RocketIcon :size="16" />
+    <template #icon="slotProps">
+      <RocketIcon v-bind="slotProps" />
     </template>
   </SAlert>
   <div class="py-12px text-18px">With description and icon</div>
   <SAlert color="destructive" title="Error" description="Your session has expired. Please log in again.">
-    <template #icon>
-      <ExclamationTriangleIcon :size="16" />
+    <template #icon="slotProps">
+      <ExclamationTriangleIcon v-bind="slotProps" />
     </template>
   </SAlert>
   <div class="py-12px text-18px">Closable</div>

@@ -3,58 +3,105 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const alertVariants = tv({
-  base: 'relative w-full rounded-lg border px-4 py-3 text-sm [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3 [&>svg]:text-foreground [&>svg~*]:pl-7',
+  slots: {
+    root: 'relative w-full rounded-lg border px-4 py-3 text-sm',
+    header: 'flex-y-center justify-between',
+    titleRoot: 'flex-y-center gap-2',
+    title: 'font-medium leading-none tracking-tight',
+    description: 'mt-1 text-sm [&_p]:leading-relaxed'
+  },
   variants: {
     color: {
-      primary: 'border-primary text-primary [&>svg]:text-primary',
-      destructive: 'border-destructive text-destructive [&>svg]:text-destructive',
-      success: 'border-success text-success [&>svg]:text-success',
-      warning: 'border-warning text-warning [&>svg]:text-warning',
-      info: 'border-info text-info dark:border-info [&>svg]:text-info',
-      secondary: 'border-secondary-foreground text-secondary-foreground [&>svg]:text-secondary',
-      accent: 'border-accent-foreground text-accent-foreground [&>svg]:text-accent'
+      primary: {
+        root: 'border-primary text-primary',
+        titleRoot: '[&>svg]:text-primary'
+      },
+      destructive: {
+        root: 'border-destructive text-destructive',
+        titleRoot: '[&>svg]:text-destructive'
+      },
+      success: {
+        root: 'border-success text-success',
+        titleRoot: '[&>svg]:text-success'
+      },
+      warning: {
+        root: 'border-warning text-warning',
+        titleRoot: '[&>svg]:text-warning'
+      },
+      info: {
+        root: 'border-info text-info dark:border-info',
+        titleRoot: '[&>svg]:text-info'
+      },
+      secondary: {
+        root: 'border-secondary-foreground text-secondary-foreground',
+        titleRoot: '[&>svg]:text-secondary-foreground'
+      },
+      accent: {
+        root: 'border-accent-foreground text-accent-foreground',
+        titleRoot: '[&>svg]:text-accent-foreground'
+      }
     },
     variant: {
-      outline: 'bg-background',
-      plain: 'bg-background text-foreground border-border',
-      soft: 'text-foreground'
+      outline: {
+        root: 'bg-background'
+      },
+      plain: {
+        root: 'bg-background text-foreground border-border'
+      },
+      soft: {
+        root: 'text-foreground'
+      }
     }
   },
   compoundVariants: [
     {
       color: 'primary',
       variant: 'soft',
-      class: 'bg-primary/10'
+      class: {
+        root: 'bg-primary/10'
+      }
     },
     {
       color: 'destructive',
       variant: 'soft',
-      class: 'bg-destructive/10'
+      class: {
+        root: 'bg-destructive/10'
+      }
     },
     {
       color: 'success',
       variant: 'soft',
-      class: 'bg-success/10'
+      class: {
+        root: 'bg-success/10'
+      }
     },
     {
       color: 'warning',
       variant: 'soft',
-      class: 'bg-warning/10'
+      class: {
+        root: 'bg-warning/10'
+      }
     },
     {
       color: 'info',
       variant: 'soft',
-      class: 'bg-info/10'
+      class: {
+        root: 'bg-info/10'
+      }
     },
     {
       color: 'secondary',
       variant: 'soft',
-      class: 'bg-secondary-foreground/10'
+      class: {
+        root: 'bg-secondary-foreground/10'
+      }
     },
     {
       color: 'accent',
       variant: 'soft',
-      class: 'bg-accent-foreground/10'
+      class: {
+        root: 'bg-accent-foreground/10'
+      }
     }
   ],
   defaultVariants: {

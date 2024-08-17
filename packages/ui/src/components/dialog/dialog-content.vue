@@ -32,6 +32,7 @@ const delegatedDialogContentProps = reactivePick(props, ['forceMount', 'trapFocu
 const forwardedDialogContentProps = useForwardPropsEmits(delegatedDialogContentProps, emit);
 
 const delegatedCardProps = reactiveOmit(props, [
+  'as',
   'asChild',
   'class',
   'forceMount',

@@ -18,7 +18,15 @@ const delegatedRootProps = reactivePick(props, ['open', 'defaultOpen', 'modal'])
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = reactiveOmit(props, ['open', 'defaultOpen', 'modal', 'portalProps', 'overlayProps']);
+const delegatedContentProps = reactiveOmit(props, [
+  'as',
+  'asChild',
+  'open',
+  'defaultOpen',
+  'modal',
+  'portalProps',
+  'overlayProps'
+]);
 
 const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
 </script>

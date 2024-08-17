@@ -2,23 +2,23 @@
 import { reactiveOmit } from '@vueuse/core';
 import { Primitive } from 'radix-vue';
 import { alertVariants, cn } from '@soybean-unify/ui-variants';
-import type { AlertDescriptionProps } from './types';
+import type { AlertTitleRootProps } from './types';
 
 defineOptions({
-  name: 'SAlertDescription'
+  name: 'SAlertTitleRoot'
 });
 
-const props = withDefaults(defineProps<AlertDescriptionProps>(), {
+const props = withDefaults(defineProps<AlertTitleRootProps>(), {
   as: 'div'
 });
 
 const delegatedProps = reactiveOmit(props, ['class']);
 
-const { description } = alertVariants();
+const { titleRoot } = alertVariants();
 </script>
 
 <template>
-  <Primitive v-bind="delegatedProps" :class="cn(description(), props.class)">
+  <Primitive v-bind="delegatedProps" :class="cn(titleRoot(), props.class)">
     <slot />
   </Primitive>
 </template>

@@ -137,7 +137,7 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
           <SCardTitleRoot>
             <slot name="title-leading" />
             <SCardTitle v-bind="titleComputedProps">
-              <slot name="title">{{ props.title }}</slot>
+              <slot name="title">{{ title }}</slot>
             </SCardTitle>
             <slot name="title-trailing" />
           </SCardTitleRoot>

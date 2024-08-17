@@ -34,6 +34,7 @@ const delegatedAlertDialogContentProps = reactivePick(props, [
 const forwardedAlertDialogContentProps = useForwardPropsEmits(delegatedAlertDialogContentProps, emit);
 
 const delegatedCardProps = reactiveOmit(props, [
+  'as',
   'asChild',
   'class',
   'forceMount',

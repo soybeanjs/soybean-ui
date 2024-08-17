@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { Primitive } from 'radix-vue';
 import { alertVariants, cn } from '@soybean-unify/ui-variants';
@@ -13,10 +14,18 @@ const props = withDefaults(defineProps<AlertRootProps>(), {
 });
 
 const delegatedProps = reactiveOmit(props, ['class']);
+
+const cls = computed(() => {
+  const { color, variant } = props;
+
+  const { root } = alertVariants({ color, variant });
+
+  return cn(root(), props.class);
+});
 </script>
 
 <template>
-  <Primitive v-bind="delegatedProps" :class="cn(alertVariants({ color, variant }), props.class)" role="alert">
+  <Primitive v-bind="delegatedProps" :class="cls" role="alert">
     <slot />
   </Primitive>
 </template>

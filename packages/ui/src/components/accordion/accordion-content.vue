@@ -25,7 +25,7 @@ const forwardedProps = useForwardProps(delegatedProps);
       )
     "
   >
-    <div :class="cn('pb-4 pt-0', props.bodyClass)">
+    <div :class="cn('pb-4 pt-0', bodyClass)">
       <slot />
     </div>
   </AccordionContent>
