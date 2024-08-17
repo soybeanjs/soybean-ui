@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { FunctionalComponent } from 'vue';
 import { reactiveOmit, reactivePick } from '@vueuse/core';
 import type { AlertDialogContentEmits } from 'radix-vue';
 import {
@@ -11,8 +12,10 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
+import type { LucideProps } from 'lucide-vue-next';
 import SCard from '../card/card.vue';
-import type { AlertDialogContentProps } from './types';
+import type { AlertDialogContentProps, AlertType } from './types';
 
 defineOptions({
   name: 'SAlertDialogContent'
@@ -51,6 +54,33 @@ const footerProps = computed(() => {
     ...rest
   };
 });
+
+const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
+  destructive: {
+    icon: CircleX,
+    class: 'text-destructive'
+  },
+  success: {
+    icon: CircleCheck,
+    class: 'text-success'
+  },
+  warning: {
+    icon: CircleAlert,
+    class: 'text-warning'
+  },
+  info: {
+    icon: Info,
+    class: 'text-info'
+  }
+};
+
+const iconProps = computed(() => {
+  if (!props.type) {
+    return null;
+  }
+
+  return iconRecord[props.type];
+});
 </script>
 
 <template>
@@ -63,8 +93,21 @@ const footerProps = computed(() => {
       <template #header>
         <slot name="header" />
       </template>
+      <template #title-root>
+        <slot name="title-root" />
+      </template>
       <template #title>
-        <slot name="title" />
+        <slot name="title">{{ props.title }}</slot>
+      </template>
+      <template #title-leading>
+        <slot name="title-leading">
+          <template v-if="iconProps">
+            <component :is="iconProps.icon" :class="iconProps.class" />
+          </template>
+        </slot>
+      </template>
+      <template #title-trailing>
+        <slot name="title-trailing" />
       </template>
       <template #extra>
         <slot name="extra" />

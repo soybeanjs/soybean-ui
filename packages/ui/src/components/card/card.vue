@@ -23,6 +23,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 type Slots = {
   default: () => any;
   header: () => any;
+  'title-root': () => any;
   title: () => any;
   'title-leading': () => any;
   'title-trailing': () => any;
@@ -132,10 +133,12 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
   <SCardRoot v-bind="forwardedProps">
     <SCardHeader v-if="showHeader" v-bind="headerComputedProps">
       <slot name="header">
-        <slot name="title">
+        <slot name="title-root">
           <SCardTitleRoot>
             <slot name="title-leading" />
-            <SCardTitle v-bind="titleComputedProps">{{ props.title }}</SCardTitle>
+            <SCardTitle v-bind="titleComputedProps">
+              <slot name="title">{{ props.title }}</slot>
+            </SCardTitle>
             <slot name="title-trailing" />
           </SCardTitleRoot>
         </slot>

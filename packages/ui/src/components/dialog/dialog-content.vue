@@ -64,8 +64,17 @@ const footerProps = computed(() => {
       <template #header>
         <slot name="header" />
       </template>
+      <template #title-root>
+        <slot name="title-root" />
+      </template>
       <template #title>
-        <slot name="title" />
+        <slot name="title">{{ props.title }}</slot>
+      </template>
+      <template #title-leading>
+        <slot name="title-leading" />
+      </template>
+      <template #title-trailing>
+        <slot name="title-trailing" />
       </template>
       <template #extra>
         <slot name="extra">

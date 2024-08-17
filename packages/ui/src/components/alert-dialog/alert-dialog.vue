@@ -40,8 +40,17 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
         <template #header>
           <slot name="header" />
         </template>
+        <template #title-root>
+          <slot name="title-root" />
+        </template>
         <template #title>
           <slot name="title" />
+        </template>
+        <template #title-leading>
+          <slot name="title-leading" />
+        </template>
+        <template #title-trailing>
+          <slot name="title-trailing" />
         </template>
         <template #extra>
           <slot name="extra" />
