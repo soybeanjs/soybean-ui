@@ -36,4 +36,6 @@ defineOptions({
       <ExclamationTriangleIcon :size="16" />
     </template>
   </SAlert>
+  <div class="py-12px text-18px">Closable</div>
+  <SAlert variant="outline" title="Closable" description="You can click close icon to close alert." closable />
 </template>

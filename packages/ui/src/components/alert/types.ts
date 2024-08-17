@@ -17,6 +17,7 @@ export interface AlertProps extends AlertRootProps {
   description?: string;
   descriptionProps?: PrimitivePropsWithClass;
   icon?: Component;
+  closable?: boolean;
 }
 
 export type { AlertColor, AlertVariant };
