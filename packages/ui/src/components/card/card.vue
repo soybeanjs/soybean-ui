@@ -31,7 +31,6 @@ const slots = defineSlots<Slots>();
 
 const delegatedProps = reactiveOmit(props, [
   'title',
-  'description',
   'size',
   'split',
   'headerProps',

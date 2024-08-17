@@ -31,7 +31,6 @@ export type CardFooterProps = PrimitivePropsWithClass & {
 
 export type CardProps = CardRootProps & {
   title?: string;
-  description?: string;
   size?: CardSize;
   split?: CardSplit;
   headerProps?: CardHeaderProps;

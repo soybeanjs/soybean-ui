@@ -37,9 +37,6 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
         <template #title>
           <slot name="title" />
         </template>
-        <template #description>
-          <slot name="description" />
-        </template>
         <template #extra>
           <slot name="extra" />
         </template>
