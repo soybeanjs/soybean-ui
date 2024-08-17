@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { AvatarFallback, useForwardProps } from 'radix-vue';
 import { avatarVariants, cn } from '@soybean-unify/ui-variants';
@@ -15,15 +14,11 @@ const delegatedProps = reactiveOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const cls = computed(() => {
-  const { fallback } = avatarVariants();
-
-  return cn(fallback(), props.class);
-});
+const { fallback } = avatarVariants();
 </script>
 
 <template>
-  <AvatarFallback v-bind="forwardedProps" :class="cls">
+  <AvatarFallback v-bind="forwardedProps" :class="cn(fallback(), props.class)">
     <slot>{{ label }}</slot>
   </AvatarFallback>
 </template>

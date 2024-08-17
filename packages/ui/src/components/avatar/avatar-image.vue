@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { AvatarImage, useForwardPropsEmits } from 'radix-vue';
 import type { AvatarImageEmits } from 'radix-vue';
@@ -18,15 +17,11 @@ const emit = defineEmits<AvatarImageEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { image } = avatarVariants();
-
-  return cn(image(), props.class);
-});
+const { image } = avatarVariants();
 </script>
 
 <template>
-  <AvatarImage v-bind="forwarded" :class="cls" />
+  <AvatarImage v-bind="forwarded" :class="cn(image(), props.class)" />
 </template>
 
 <style scoped></style>
