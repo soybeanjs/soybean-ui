@@ -34,7 +34,6 @@ const delegatedProps = reactiveOmit(props, [
   'size',
   'split',
   'headerProps',
-  'titleRootProps',
   'titleProps',
   'contentProps',
   'footerProps'

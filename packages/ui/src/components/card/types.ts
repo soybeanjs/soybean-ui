@@ -11,10 +11,6 @@ export type CardHeaderProps = PrimitivePropsWithClass & {
   split?: boolean;
 };
 
-export type CardTitleRootProps = PrimitivePropsWithClass & {
-  size?: CardSize;
-};
-
 export type CardTitleProps = PrimitivePropsWithClass & {
   size?: CardSize;
 };
@@ -34,7 +30,6 @@ export type CardProps = CardRootProps & {
   size?: CardSize;
   split?: CardSplit;
   headerProps?: CardHeaderProps;
-  titleRootProps?: CardTitleRootProps;
   titleProps?: CardTitleProps;
   contentProps?: CardContentProps;
   footerProps?: CardFooterProps;
