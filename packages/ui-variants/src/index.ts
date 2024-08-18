@@ -1,3 +1,4 @@
+export * from './variants/accordion';
 export * from './variants/alert';
 export * from './variants/avatar';
 export * from './variants/badge';

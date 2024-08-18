@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactiveOmit } from '@vueuse/core';
 import { AccordionContent, useForwardProps } from 'radix-vue';
-import { cn } from '@soybean-unify/ui-variants';
+import { accordionVariants, cn } from '@soybean-unify/ui-variants';
 import type { AccordionContentProps } from './types';
 
 defineOptions({
@@ -13,19 +13,13 @@ const props = defineProps<AccordionContentProps>();
 const delegatedProps = reactiveOmit(props, ['class', 'bodyClass']);
 
 const forwardedProps = useForwardProps(delegatedProps);
+
+const { content, contentBody } = accordionVariants();
 </script>
 
 <template>
-  <AccordionContent
-    v-bind="forwardedProps"
-    :class="
-      cn(
-        'overflow-hidden text-sm data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up',
-        props.class
-      )
-    "
-  >
-    <div :class="cn('pb-4 pt-0', bodyClass)">
+  <AccordionContent v-bind="forwardedProps" :class="cn(content(), props.class)">
+    <div :class="cn(contentBody(), bodyClass)">
       <slot />
     </div>
   </AccordionContent>
