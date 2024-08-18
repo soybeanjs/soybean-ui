@@ -22,6 +22,7 @@ import UiAvatar from './modules/avatar.vue';
 import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
+import UiCheckbox from './modules/checkbox.vue';
 import UiDialog from './modules/dialog.vue';
 import UiPopover from './modules/popover.vue';
 
@@ -81,6 +82,11 @@ const tabs: TabConfig[] = [
     key: 'card',
     label: 'Card',
     component: UiCard
+  },
+  {
+    key: 'checkbox',
+    label: 'Checkbox',
+    component: UiCheckbox
   },
   {
     key: 'dialog',
