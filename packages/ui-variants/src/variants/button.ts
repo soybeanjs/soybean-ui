@@ -11,8 +11,8 @@ export const buttonVariants = tv({
       success: `focus-visible:outline-success`,
       warning: `focus-visible:outline-warning`,
       info: `focus-visible:outline-info`,
-      secondary: `focus-visible:outline-secondary-foreground`,
-      accent: `focus-visible:outline-accent-foreground`
+      secondary: `focus-visible:outline-secondary-foreground/20`,
+      accent: `focus-visible:outline-accent-foreground/20`
     },
     variant: {
       solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',

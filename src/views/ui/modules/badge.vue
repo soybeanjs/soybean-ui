@@ -1,16 +1,26 @@
 <script setup lang="ts">
-import { Badge } from '@soybean-unify/shadcn-ui';
+import { SBadge } from '@soybean-unify/ui';
+import type { BadgeColor, BadgeVariant } from '@soybean-unify/ui';
 
 defineOptions({
-  name: 'BadgeDemo'
+  name: 'UiBadge'
 });
+
+const colors: BadgeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const variants: BadgeVariant[] = ['solid', 'plain', 'outline'];
 </script>
 
 <template>
-  <div class="flex gap-12px">
-    <Badge>Badge</Badge>
-    <Badge variant="secondary">Secondary</Badge>
-    <Badge variant="outline">Outline</Badge>
-    <Badge variant="destructive">Destructive</Badge>
+  <div class="py-12px text-18px">Color</div>
+  <div class="flex flex-wrap gap-12px">
+    <SBadge v-for="color in colors" :key="color" :color="color">{{ color }}</SBadge>
   </div>
+  <div class="py-12px text-18px">Variant</div>
+  <div class="flex-col-stretch gap-12px">
+    <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
+      <SBadge v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SBadge>
+    </div>
+  </div>
+  <div class="py-12px text-18px">Closable</div>
+  <SBadge variant="outline" color="primary" closable>closable</SBadge>
 </template>

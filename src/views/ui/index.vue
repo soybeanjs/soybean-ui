@@ -19,6 +19,7 @@ import UiAlert from './modules/alert.vue';
 import UiAlertDialog from './modules/alert-dialog.vue';
 import UiAspectRatio from './modules/aspect-ratio.vue';
 import UiAvatar from './modules/avatar.vue';
+import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 import UiDialog from './modules/dialog.vue';
@@ -65,6 +66,11 @@ const tabs: TabConfig[] = [
     key: 'avatar',
     label: 'Avatar',
     component: UiAvatar
+  },
+  {
+    key: 'badge',
+    label: 'Badge',
+    component: UiBadge
   },
   {
     key: 'button',

@@ -18,7 +18,7 @@ defineOptions({
 
 const props = defineProps<AlertProps>();
 
-const open = defineModel<boolean>('open', { default: true });
+const close = defineModel<boolean>('close', { default: false });
 
 const delegatedProps = reactiveOmit(props, [
   'title',
@@ -44,12 +44,12 @@ const titleRootProps = computed(() => {
 });
 
 function closeAlert() {
-  open.value = false;
+  close.value = true;
 }
 </script>
 
 <template>
-  <SAlertRoot v-show="open" v-bind="forwarded">
+  <SAlertRoot v-show="!close" v-bind="forwarded">
     <SAlertHeader>
       <SAlertTitleRoot v-bind="titleRootProps">
         <slot name="icon"></slot>
