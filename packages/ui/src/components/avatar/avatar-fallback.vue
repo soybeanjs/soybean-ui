@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<AvatarFallbackProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = reactiveOmit(props, ['class', 'label']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 

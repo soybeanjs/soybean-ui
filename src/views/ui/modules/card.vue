@@ -30,7 +30,7 @@ defineOptions({
     <div class="py-12px text-18px">Small size Card</div>
     <SCard title="Title" split="all" size="sm">
       <template #extra>
-        <SButton variant="link" class="size-fit">more</SButton>
+        <SButton variant="link" fit-content class="size-fit">more</SButton>
       </template>
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
       <template #footer>Footer</template>

@@ -1,8 +1,8 @@
 import type {
   AlertDialogContentProps as $AlertDialogContentProps,
   AlertDialogOverlayProps as $AlertDialogOverlayProps,
-  AlertDialogProps as $AlertDialogProps,
-  AlertDialogPortalProps
+  AlertDialogPortalProps,
+  AlertDialogProps as AlertDialogRootProps
 } from 'radix-vue';
 import type { ClassValue, ThemeColor } from '@soybean-unify/ui-variants';
 import type { CardProps } from '../card/types';
@@ -18,10 +18,14 @@ export type AlertDialogContentProps = $AlertDialogContentProps &
     type?: AlertType;
   };
 
-export type AlertDialogProps = $AlertDialogProps &
-  AlertDialogContentProps & {
-    portalProps?: AlertDialogPortalProps;
-    overlayProps?: AlertDialogOverlayProps;
+export type AlertDialogProps = AlertDialogRootProps &
+  Omit<AlertDialogContentProps, 'as' | 'asChild'> &
+  Pick<AlertDialogPortalProps, 'to'> & {
+    disabledPortal?: boolean;
+    portalForceMount?: boolean;
+  } & {
+    overlayClass?: ClassValue;
+    overlayForceMount?: boolean;
   };
 
 export type { AlertDialogPortalProps };

@@ -22,5 +22,12 @@ const variants: BadgeVariant[] = ['solid', 'plain', 'outline'];
     </div>
   </div>
   <div class="py-12px text-18px">Closable</div>
-  <SBadge variant="outline" color="primary" closable>closable</SBadge>
+  <div class="flex flex-wrap gap-12px">
+    <SBadge variant="solid" color="primary" closable>closable</SBadge>
+    <SBadge variant="plain" color="primary" closable>closable</SBadge>
+    <SBadge variant="outline" color="primary" closable>closable</SBadge>
+    <SBadge variant="solid" color="destructive" closable>closable</SBadge>
+    <SBadge variant="plain" color="destructive" closable>closable</SBadge>
+    <SBadge variant="outline" color="destructive" closable>closable</SBadge>
+  </div>
 </template>

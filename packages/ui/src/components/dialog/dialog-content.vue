@@ -38,26 +38,19 @@ const delegatedCardProps = reactiveOmit(props, [
   'forceMount',
   'trapFocus',
   'disableOutsidePointerEvents',
-  'footerProps'
+  'footerClass'
 ]);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
 const { content } = dialogVariants();
 
-const footerProps = computed(() => {
-  const { class: cls, ...rest } = props.footerProps || {};
-
-  return {
-    class: cn('justify-end gap-3', cls),
-    ...rest
-  };
-});
+const footerCls = computed(() => cn('justify-end gap-3', props.footerClass));
 </script>
 
 <template>
   <DialogContent as-child v-bind="forwardedDialogContentProps">
-    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-props="footerProps">
+    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-class="footerCls">
       <VisuallyHidden>
         <DialogTitle />
         <DialogDescription />

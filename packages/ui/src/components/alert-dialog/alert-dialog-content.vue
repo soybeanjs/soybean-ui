@@ -40,21 +40,14 @@ const delegatedCardProps = reactiveOmit(props, [
   'forceMount',
   'trapFocus',
   'disableOutsidePointerEvents',
-  'footerProps'
+  'footerClass'
 ]);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
 const { content } = dialogVariants();
 
-const footerProps = computed(() => {
-  const { class: cls, ...rest } = props.footerProps || {};
-
-  return {
-    class: cn('justify-end gap-3', cls),
-    ...rest
-  };
-});
+const footerCls = computed(() => cn('justify-end gap-3', props.footerClass));
 
 const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
   destructive: {
@@ -86,7 +79,7 @@ const iconProps = computed(() => {
 
 <template>
   <AlertDialogContent as-child v-bind="forwardedAlertDialogContentProps">
-    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-props="footerProps">
+    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-class="footerCls">
       <VisuallyHidden>
         <AlertDialogTitle />
         <AlertDialogDescription />

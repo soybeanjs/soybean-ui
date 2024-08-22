@@ -129,7 +129,7 @@ export const badgeVariants = tv({
   defaultVariants: {
     color: 'primary',
     variant: 'solid',
-    shape: 'auto'
+    shape: 'rounded'
   }
 });
 

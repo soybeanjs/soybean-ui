@@ -140,4 +140,28 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
       </SButton>
     </SButtonGroup>
   </div>
+  <div class="py-12px text-18px">Button Icon</div>
+  <div class="flex flex-wrap gap-12px">
+    <SButtonIcon>
+      <SkipBack />
+    </SButtonIcon>
+    <SButtonIcon>
+      <SkipForward />
+    </SButtonIcon>
+    <SButtonIcon>
+      <Pause />
+    </SButtonIcon>
+  </div>
+  <div class="py-12px text-18px">Button Icon: fitContent</div>
+  <div class="flex flex-wrap gap-12px">
+    <SButtonIcon fit-content class="p-0.5 text-xl">
+      <SkipBack />
+    </SButtonIcon>
+    <SButtonIcon fit-content class="p-0.5 text-xl">
+      <SkipForward />
+    </SButtonIcon>
+    <SButtonIcon fit-content class="p-0.5 text-xl">
+      <Pause />
+    </SButtonIcon>
+  </div>
 </template>

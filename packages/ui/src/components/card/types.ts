@@ -1,9 +1,9 @@
-import type { CardSplit as $CardSplit, CardSize } from '@soybean-unify/ui-variants';
+import type { CardSplit as $CardSplit, CardSize, ClassValue } from '@soybean-unify/ui-variants';
 import type { PrimitivePropsWithClass } from '../../types';
 
 export type CardRootProps = PrimitivePropsWithClass;
 
-export type CardSplit = $CardSplit | 'all';
+export type CardSplit = $CardSplit;
 
 export type CardHeaderProps = PrimitivePropsWithClass & {
   size?: CardSize;
@@ -31,11 +31,11 @@ export type CardProps = CardRootProps & {
   title?: string;
   size?: CardSize;
   split?: CardSplit;
-  headerProps?: CardHeaderProps;
-  titleRootProps?: CardTitleRootProps;
-  titleProps?: CardTitleProps;
-  contentProps?: CardContentProps;
-  footerProps?: CardFooterProps;
+  headerClass?: ClassValue;
+  titleRootClass?: ClassValue;
+  titleClass?: ClassValue;
+  contentClass?: ClassValue;
+  footerClass?: ClassValue;
 };
 
 export type { CardSize };

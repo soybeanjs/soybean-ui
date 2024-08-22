@@ -37,11 +37,11 @@ const delegatedProps = reactiveOmit(props, [
   'title',
   'size',
   'split',
-  'headerProps',
-  'titleProps',
-  'titleRootProps',
-  'contentProps',
-  'footerProps'
+  'headerClass',
+  'titleClass',
+  'titleRootClass',
+  'contentClass',
+  'footerClass'
 ]);
 
 const forwardedProps = useForwardProps(delegatedProps);
@@ -50,62 +50,18 @@ const showHeader = computed(() => {
   return Boolean(slots.header || slots.title || props.title || slots.extra);
 });
 
-const headerComputedProps = computed(() => {
-  const config = { ...props.headerProps };
+const headerSplit = computed(() => props.split === 'header' || props.split === 'all');
 
-  if (!config.size) {
-    config.size = props.size;
-  }
+const showFooter = computed(() => Boolean(slots.footer));
 
-  if (config.split === undefined) {
-    config.split = props.split === 'header' || props.split === 'all';
-  }
+const footerSplit = computed(() => props.split === 'footer' || props.split === 'all');
 
-  return config;
-});
-
-const titleComputedProps = computed(() => {
-  const config = { ...props.titleProps };
-
-  if (!config.size) {
-    config.size = props.size;
-  }
-
-  return config;
-});
-
-const showFooter = computed(() => {
-  return Boolean(slots.footer);
-});
-
-const footerComputedProps = computed(() => {
-  const config = { ...props.footerProps };
-
-  if (!config.size) {
-    config.size = props.size;
-  }
-
-  if (config.split === undefined) {
-    config.split = props.split === 'footer' || props.split === 'all';
-  }
-
-  return config;
-});
-
-const contentComputedProps = computed(() => {
+const contentCls = computed(() => {
   const split = getSplit(props.split, showHeader.value, showFooter.value);
 
   const { content } = cardVariants({ size: props.size, split });
 
-  const config = { ...props.contentProps };
-
-  if (!config.size) {
-    config.size = props.size;
-  }
-
-  config.class = cn(content(), config.class);
-
-  return config;
+  return cn(content(), props.contentClass);
 });
 
 function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?: boolean) {
@@ -131,12 +87,12 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
 
 <template>
   <SCardRoot v-bind="forwardedProps">
-    <SCardHeader v-if="showHeader" v-bind="headerComputedProps">
+    <SCardHeader v-if="showHeader" :size="size" :split="headerSplit" :class="headerClass">
       <slot name="header">
         <slot name="title-root">
-          <SCardTitleRoot>
+          <SCardTitleRoot :class="titleRootClass">
             <slot name="title-leading" />
-            <SCardTitle v-bind="titleComputedProps">
+            <SCardTitle :size="size" :class="titleClass">
               <slot name="title">{{ title }}</slot>
             </SCardTitle>
             <slot name="title-trailing" />
@@ -145,10 +101,10 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
         <slot name="extra"></slot>
       </slot>
     </SCardHeader>
-    <SCardContent v-bind="contentComputedProps">
+    <SCardContent :size="size" :class="contentCls">
       <slot />
     </SCardContent>
-    <SCardFooter v-if="showFooter" v-bind="footerComputedProps">
+    <SCardFooter v-if="showFooter" :size="size" :split="footerSplit" :class="footerClass">
       <slot name="footer"></slot>
     </SCardFooter>
   </SCardRoot>

@@ -13,12 +13,9 @@ export type ButtonProps = PrimitivePropsWithClass & {
   variant?: ButtonVariant;
   size?: ButtonSize;
   shape?: ButtonShape;
+  fitContent?: boolean;
   disabled?: boolean;
   shadow?: ButtonShadow;
-};
-
-export type ButtonIconProps = ButtonProps & {
-  fitContent?: boolean;
 };
 
 export type LoadingButtonProps = ButtonProps & {

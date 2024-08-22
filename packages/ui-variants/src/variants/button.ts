@@ -42,6 +42,9 @@ export const buttonVariants = tv({
       sm: 'shadow-sm',
       md: 'shadow-md',
       lg: 'shadow-lg'
+    },
+    fitContent: {
+      true: 'size-fit! p-0.5'
     }
   },
   compoundVariants: [
@@ -296,7 +299,8 @@ export const buttonVariants = tv({
     variant: 'solid',
     size: 'md',
     shape: 'auto',
-    shadow: 'sm'
+    shadow: 'sm',
+    fitContent: false
   }
 });
 

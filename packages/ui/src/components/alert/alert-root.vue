@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<AlertRootProps>(), {
   as: 'div'
 });
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = reactiveOmit(props, ['class', 'color', 'variant']);
 
 const cls = computed(() => {
   const { color, variant } = props;

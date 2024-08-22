@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<LoadingButtonProps>(), {
   loading: false
 });
 
-const delegatedProps = reactiveOmit(props, ['disabled']);
+const delegatedProps = reactiveOmit(props, ['disabled', 'loading']);
 
 const forwarded = useForwardProps(delegatedProps);
 

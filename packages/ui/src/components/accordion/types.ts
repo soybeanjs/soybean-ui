@@ -7,7 +7,7 @@ import type {
 } from 'radix-vue';
 import type { ClassValue } from '@soybean-unify/ui-variants';
 
-type SingleOrMultipleType = 'single' | 'multiple';
+export type SingleOrMultipleType = 'single' | 'multiple';
 
 export type AccordionItemProps = $AccordionItemProps & {
   class?: ClassValue;
@@ -43,4 +43,4 @@ export type AccordionProps<
   contentProps?: AccordionContentProps;
 };
 
-export type { AccordionRootProps, SingleOrMultipleType };
+export type { AccordionRootProps };
