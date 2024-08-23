@@ -17,9 +17,12 @@ export type DialogContentProps = $DialogContentProps &
   };
 
 export type DialogProps = DialogRootProps &
-  DialogContentProps & {
-    portalProps?: DialogPortalProps;
-    overlayProps?: DialogOverlayProps;
+  Omit<DialogContentProps, 'as' | 'asChild'> &
+  Pick<DialogPortalProps, 'to'> & {
+    disabledPortal?: boolean;
+    forceMountPortal?: boolean;
+    overlayClass?: ClassValue;
+    forceMountOverlay?: boolean;
   };
 
 export type { DialogRootProps, DialogPortalProps };

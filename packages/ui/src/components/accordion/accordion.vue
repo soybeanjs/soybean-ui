@@ -19,7 +19,14 @@ import type { AccordionItemData, AccordionProps, SingleOrMultipleType } from './
 const props = defineProps<AccordionProps<T, V, E>>();
 const emit = defineEmits<AccordionRootEmits>();
 
-const delegatedProps = reactiveOmit(props, ['items', 'itemProps', 'headerProps', 'triggerProps', 'contentProps']);
+const delegatedProps = reactiveOmit(props, [
+  'items',
+  'itemProps',
+  'headerClass',
+  'triggerClass',
+  'contentClass',
+  'contentBodyClass'
+]);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
@@ -32,15 +39,15 @@ defineOptions({
   <AccordionRoot v-slot="rootSlotProps" v-bind="forwarded">
     <template v-for="item in items" :key="item.value">
       <SAccordionItem v-slot="itemSlotProps" :disabled="item.disabled" :value="item.value" v-bind="itemProps">
-        <SAccordionHeader v-bind="headerProps">
-          <SAccordionTrigger v-bind="triggerProps">
+        <SAccordionHeader :class="headerClass">
+          <SAccordionTrigger :class="triggerClass">
             <slot name="trigger" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.title }}</slot>
             <template #icon>
               <slot name="icon" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }" />
             </template>
           </SAccordionTrigger>
         </SAccordionHeader>
-        <SAccordionContent v-bind="contentProps">
+        <SAccordionContent :class="contentClass" :body-class="contentBodyClass">
           <slot name="content" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.content }}</slot>
         </SAccordionContent>
       </SAccordionItem>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAvatar, SAvatarFallback, SAvatarImage } from '@soybean-unify/ui';
+import { SAvatar } from '@soybean-unify/ui';
 import type { AvatarSize } from '@soybean-unify/ui';
 
 defineOptions({
@@ -16,23 +16,15 @@ const sizes: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 <template>
   <div class="py-12px text-18px">Default</div>
   <div class="flex gap-12px">
-    <SAvatar :image-props="{ src: radixVueRsc, alt: 'RadixVue' }" :fallback-props="{ label: 'CN' }" />
-    <SAvatar :image-props="{ src: radixVueRsc, alt: 'RadixVue' }">
+    <SAvatar :src="radixVueRsc" alt="RadixVue" fallback-label="CN" />
+    <SAvatar :src="radixVueRsc" alt="RadixVue">
       <template #fallback>Radix</template>
-    </SAvatar>
-    <SAvatar>
-      <SAvatarImage :src="radixVueRsc" alt="RadixVue" />
-      <SAvatarFallback>Radix</SAvatarFallback>
     </SAvatar>
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex gap-12px">
     <div v-for="size in sizes" :key="size" class="flex-col-center">
-      <SAvatar
-        :size="size"
-        :image-props="{ src: soybeanSrc, alt: 'SoybeanAdmin' }"
-        :fallback-props="{ label: 'SOY' }"
-      />
+      <SAvatar :size="size" :src="soybeanSrc" alt="SoybeanAdmin" fallback-label="SOY" />
       <p>{{ size }}</p>
     </div>
   </div>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
-import { useForwardProps } from 'radix-vue';
+import { useEmitAsProps } from 'radix-vue';
 import type { AvatarImageEmits } from 'radix-vue';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
@@ -13,25 +12,19 @@ defineOptions({
 
 const props = defineProps<AvatarProps>();
 
-const delegatedProps = reactiveOmit(props, ['imageProps', 'fallbackProps']);
-
-const forwardedProps = useForwardProps(delegatedProps);
-
 const emit = defineEmits<AvatarImageEmits>();
+
+const emitAsProps = useEmitAsProps(emit);
 </script>
 
 <template>
-  <SAvatarRoot v-bind="forwardedProps">
+  <SAvatarRoot :as="as" :as-child="asChild" :size="size" :class="props.class">
     <slot>
       <slot name="image">
-        <SAvatarImage
-          v-if="imageProps"
-          v-bind="imageProps"
-          @loading-status-change="emit('loadingStatusChange', $event)"
-        />
+        <SAvatarImage :class="imageClass" :src="src" :alt="alt" :delay-ms="delayMs" v-bind="emitAsProps" />
       </slot>
-      <SAvatarFallback v-bind="fallbackProps">
-        <slot name="fallback" />
+      <SAvatarFallback :class="fallbackClass">
+        <slot name="fallback">{{ fallbackLabel }}</slot>
       </SAvatarFallback>
     </slot>
   </SAvatarRoot>

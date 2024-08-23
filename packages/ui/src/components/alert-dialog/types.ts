@@ -22,10 +22,9 @@ export type AlertDialogProps = AlertDialogRootProps &
   Omit<AlertDialogContentProps, 'as' | 'asChild'> &
   Pick<AlertDialogPortalProps, 'to'> & {
     disabledPortal?: boolean;
-    portalForceMount?: boolean;
-  } & {
+    forceMountPortal?: boolean;
     overlayClass?: ClassValue;
-    overlayForceMount?: boolean;
+    forceMountOverlay?: boolean;
   };
 
-export type { AlertDialogPortalProps };
+export type { AlertDialogRootProps, AlertDialogPortalProps };

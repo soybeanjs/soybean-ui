@@ -28,9 +28,9 @@ const delegatedContentProps = reactiveOmit(props, [
   'open',
   'defaultOpen',
   'disabledPortal',
-  'portalForceMount',
+  'forceMountPortal',
   'overlayClass',
-  'overlayForceMount'
+  'forceMountOverlay'
 ]);
 
 const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
@@ -41,8 +41,8 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
     <AlertDialogTrigger as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
-    <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="portalForceMount">
-      <SAlertDialogOverlay :force-mount="overlayForceMount" :class="overlayClass" />
+    <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <SAlertDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SAlertDialogContent v-bind="forwardedContent">
         <template #header>
           <slot name="header" />

@@ -37,7 +37,7 @@ function closeAlert() {
   <SAlertRoot v-show="!close" v-bind="forwarded">
     <SAlertHeader :class="headerClass">
       <SAlertTitleRoot :class="titleRootCls">
-        <slot name="icon"></slot>
+        <slot name="icon" />
         <SAlertTitle :class="titleClass">
           <slot>{{ title }}</slot>
         </SAlertTitle>

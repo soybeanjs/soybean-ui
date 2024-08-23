@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCheckbox } from '@soybean-unify/ui';
+import { SButton, SCheckbox } from '@soybean-unify/ui';
 import { ref } from 'vue';
 
 defineOptions({
@@ -14,8 +14,13 @@ function setTndeterminate() {
 </script>
 
 <template>
-  <SCheckbox v-model:checked="checked">checkbox</SCheckbox>
-  <button @click="setTndeterminate">indeterminate</button>
+  <div class="py-12px text-18px">Default Checkbox</div>
+  <SCheckbox label="checkbox" />
+  <div class="py-12px text-18px">Indeterminate Checkbox</div>
+  <div class="flex gap-12px">
+    <SCheckbox v-model:checked="checked" label="checkbox" />
+    <SButton variant="plain" @click="setTndeterminate">indeterminate</SButton>
+  </div>
 </template>
 
 <style scoped></style>

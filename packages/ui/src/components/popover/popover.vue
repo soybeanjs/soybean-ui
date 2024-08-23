@@ -1,6 +1,13 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
-import { PopoverClose, PopoverPortal, PopoverRoot, PopoverTrigger, useForwardPropsEmits } from 'radix-vue';
+import { reactiveOmit, reactivePick } from '@vueuse/core';
+import {
+  PopoverClose,
+  PopoverPortal,
+  PopoverRoot,
+  PopoverTrigger,
+  useForwardProps,
+  useForwardPropsEmits
+} from 'radix-vue';
 import type { PopoverRootEmits } from 'radix-vue';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
@@ -22,9 +29,26 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedProps = reactiveOmit(props, ['portalProps', 'contentProps', 'showArrow', 'arrowProps']);
+const delegatedRootProps = reactivePick(props, ['defaultOpen', 'open', 'modal']);
 
-const forwarded = useForwardPropsEmits(delegatedProps, emit);
+const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
+
+const delegatedContentProps = reactiveOmit(props, [
+  'defaultOpen',
+  'open',
+  'modal',
+  'to',
+  'disabledPortal',
+  'forceMountPortal',
+  'contentClass',
+  'forceMountContent',
+  'showArrow',
+  'arrowClass',
+  'arrowWidth',
+  'arrowHeight'
+]);
+
+const contentProps = useForwardProps(delegatedContentProps);
 </script>
 
 <template>
@@ -32,10 +56,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
     <PopoverTrigger as-child>
       <slot name="trigger" />
     </PopoverTrigger>
-    <PopoverPortal v-bind="portalProps">
+    <PopoverPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SPopoverContent v-bind="contentProps">
         <slot />
-        <SPopoverArrow v-if="showArrow" v-bind="arrowProps" />
+        <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
         <PopoverClose v-if="slots.close" as-child>
           <slot name="close" />
         </PopoverClose>

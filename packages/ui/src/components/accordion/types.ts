@@ -1,11 +1,6 @@
-import type {
-  AccordionContentProps as $AccordionContentProps,
-  AccordionHeaderProps as $AccordionHeaderProps,
-  AccordionItemProps as $AccordionItemProps,
-  AccordionTriggerProps as $AccordionTriggerProps,
-  AccordionRootProps
-} from 'radix-vue';
+import type { AccordionItemProps as $AccordionItemProps, AccordionRootProps } from 'radix-vue';
 import type { ClassValue } from '@soybean-unify/ui-variants';
+import type { PrimitivePropsWithClass } from '../../types';
 
 export type SingleOrMultipleType = 'single' | 'multiple';
 
@@ -13,18 +8,13 @@ export type AccordionItemProps = $AccordionItemProps & {
   class?: ClassValue;
 };
 
-export type AccordionContentProps = $AccordionContentProps & {
-  class?: ClassValue;
+export type AccordionContentProps = PrimitivePropsWithClass & {
   bodyClass?: ClassValue;
 };
 
-export type AccordionHeaderProps = $AccordionHeaderProps & {
-  class?: ClassValue;
-};
+export type AccordionHeaderProps = PrimitivePropsWithClass;
 
-export type AccordionTriggerProps = $AccordionTriggerProps & {
-  class?: ClassValue;
-};
+export type AccordionTriggerProps = PrimitivePropsWithClass;
 
 export type AccordionItemData = Pick<AccordionItemProps, 'disabled' | 'value'> & {
   title?: string;
@@ -38,9 +28,10 @@ export type AccordionProps<
 > = AccordionRootProps<ValidValue, ExplicitType> & {
   items: T[];
   itemProps?: Omit<AccordionItemProps, 'disabled' | 'value'>;
-  headerProps?: AccordionHeaderProps;
-  triggerProps?: AccordionTriggerProps;
-  contentProps?: AccordionContentProps;
+  headerClass?: ClassValue;
+  triggerClass?: ClassValue;
+  contentClass?: ClassValue;
+  contentBodyClass?: ClassValue;
 };
 
 export type { AccordionRootProps };

@@ -8,7 +8,9 @@ defineOptions({
   name: 'SPopoverArrow'
 });
 
-const props = defineProps<PopoverArrowProps>();
+const props = withDefaults(defineProps<PopoverArrowProps>(), {
+  asChild: true
+});
 
 const delegatedProps = reactiveOmit(props, ['class']);
 
@@ -18,7 +20,7 @@ const { arrow } = popoverVariants();
 </script>
 
 <template>
-  <PopoverArrow v-bind="forwardedProps" as-child>
+  <PopoverArrow v-bind="forwardedProps">
     <div :class="cn(arrow(), props.class)"></div>
   </PopoverArrow>
 </template>

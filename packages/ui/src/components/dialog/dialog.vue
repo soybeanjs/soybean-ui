@@ -19,13 +19,13 @@ const delegatedRootProps = reactivePick(props, ['open', 'defaultOpen', 'modal'])
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
 const delegatedContentProps = reactiveOmit(props, [
-  'as',
-  'asChild',
   'open',
   'defaultOpen',
   'modal',
-  'portalProps',
-  'overlayProps'
+  'disabledPortal',
+  'forceMountPortal',
+  'overlayClass',
+  'forceMountOverlay'
 ]);
 
 const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
@@ -36,8 +36,8 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
     <DialogTrigger as-child>
       <slot name="trigger" />
     </DialogTrigger>
-    <DialogPortal v-bind="portalProps">
-      <SDialogOverlay v-bind="overlayProps" />
+    <DialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SDialogContent v-bind="forwardedContent">
         <template #header>
           <slot name="header" />

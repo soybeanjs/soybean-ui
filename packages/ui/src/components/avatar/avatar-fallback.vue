@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<AvatarFallbackProps>();
 
-const delegatedProps = reactiveOmit(props, ['class', 'label']);
+const delegatedProps = reactiveOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 
@@ -19,7 +19,7 @@ const { fallback } = avatarVariants();
 
 <template>
   <AvatarFallback v-bind="forwardedProps" :class="cn(fallback(), props.class)">
-    <slot>{{ label }}</slot>
+    <slot></slot>
   </AvatarFallback>
 </template>
 

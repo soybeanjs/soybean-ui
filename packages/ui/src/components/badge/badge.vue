@@ -25,17 +25,19 @@ function closeAlert() {
 <template>
   <Primitive v-show="!close" :as="as" :as-child="asChild" :class="cn(badgeVariants({ color, variant }), props.class)">
     <slot />
-    <SButtonIcon
-      v-if="closable"
-      :color="color"
-      :variant="variant"
-      size="xs"
-      fit-content
-      class="border-0 bg-transparent -mr-1.5"
-      @click="closeAlert"
-    >
-      <X />
-    </SButtonIcon>
+    <slot name="trailing" :close-alert="closeAlert">
+      <SButtonIcon
+        v-if="closable"
+        :color="color"
+        :variant="variant"
+        size="xs"
+        fit-content
+        :class="cn('border-0 bg-transparent -mr-1.5', closeClass)"
+        @click="closeAlert"
+      >
+        <X />
+      </SButtonIcon>
+    </slot>
   </Primitive>
 </template>
 

@@ -17,12 +17,14 @@ export type AvatarImageProps = $AvatarImageProps & {
 
 export type AvatarFallbackProps = $AvatarFallbackProps & {
   class?: ClassValue;
-  label?: string;
 };
 
-export type AvatarProps = AvatarRootProps & {
-  imageProps?: AvatarImageProps;
-  fallbackProps?: AvatarFallbackProps;
-};
+export type AvatarProps = AvatarRootProps &
+  Pick<AvatarImageProps, 'src' | 'alt'> &
+  Pick<AvatarFallbackProps, 'delayMs'> & {
+    imageClass?: ClassValue;
+    fallbackLabel?: string;
+    fallbackClass?: ClassValue;
+  };
 
 export type { AvatarSize };

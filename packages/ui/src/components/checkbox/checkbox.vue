@@ -4,10 +4,10 @@ import { reactiveOmit } from '@vueuse/core';
 import { useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
 import { Check, Minus } from 'lucide-vue-next';
-import SCheckboxWrapper from './checkbox-wrapper.vue';
+import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';
+import SCheckboxControl from './checkbox-control.vue';
 import SCheckboxIndicator from './checkbox-indicator.vue';
-import SCheckboxLabel from './checkbox-label.vue';
 import type { CheckboxCheckedState, CheckboxProps } from './types';
 
 defineOptions({
@@ -18,7 +18,15 @@ const props = defineProps<CheckboxProps>();
 
 const emit = defineEmits<CheckboxRootEmits>();
 
-const delegatedProps = reactiveOmit(props, ['checked', 'rootClass', 'class', 'label', 'labelClass', 'indicatorProps']);
+const delegatedProps = reactiveOmit(props, [
+  'class',
+  'checked',
+  'controlClass',
+  'indicatorClass',
+  'forceMountIndicator',
+  'label',
+  'labelClass'
+]);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
@@ -32,19 +40,19 @@ const isIndeterminate = computed(() => checked.value === 'indeterminate');
 </script>
 
 <template>
-  <SCheckboxWrapper :class="props.class">
-    <SCheckboxRoot v-bind="forwarded" v-model:checked="checked" :class="rootClass">
+  <SCheckboxRoot :class="props.class">
+    <SCheckboxControl v-bind="forwarded" v-model:checked="checked" :class="controlClass">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
-        <SCheckboxIndicator v-bind="indicatorProps">
+        <SCheckboxIndicator :class="indicatorClass" :force-mount="forceMountIndicator">
           <Minus v-if="isIndeterminate" class="size-full" />
           <Check v-else class="size-full" />
         </SCheckboxIndicator>
       </Transition>
-    </SCheckboxRoot>
-    <SCheckboxLabel @click="clickLabel">
+    </SCheckboxControl>
+    <SCheckboxLabel :class="labelClass" @click="clickLabel">
       <slot>{{ label }}</slot>
     </SCheckboxLabel>
-  </SCheckboxWrapper>
+  </SCheckboxRoot>
 </template>
 
 <style scoped></style>
