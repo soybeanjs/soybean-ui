@@ -16,7 +16,7 @@ const aligns: PopoverAlign[] = ['start', 'center', 'end'];
   <div v-for="side in sides" :key="side">
     <div class="py-12px text-18px">Side: {{ side }}</div>
     <div class="flex flex-wrap gap-12px">
-      <SPopover v-for="align in aligns" :key="align" :content-props="{ side, align }">
+      <SPopover v-for="align in aligns" :key="align" :side="side" :align="align">
         <template #trigger>
           <SButton variant="plain">align: {{ align }}</SButton>
         </template>
