@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { reactiveOmit } from '@vueuse/core';
 import { CheckboxRoot, useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
@@ -17,11 +18,15 @@ const emit = defineEmits<CheckboxRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { control } = checkboxVariants();
+const cls = computed(() => {
+  const { control } = checkboxVariants({ color: props.color });
+
+  return cn(control(), props.class);
+});
 </script>
 
 <template>
-  <CheckboxRoot v-bind="forwarded" :class="cn(control(), props.class)">
+  <CheckboxRoot v-bind="forwarded" :class="cls">
     <slot />
   </CheckboxRoot>
 </template>

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { SCheckbox, SCheckboxGroup } from '@soybean-unify/ui';
-import type { CheckboxCheckedState, CheckboxGroupItem } from '@soybean-unify/ui';
+import type { CheckboxCheckedState, CheckboxColor, CheckboxGroupItem } from '@soybean-unify/ui';
 
 defineOptions({
   name: 'UiCheckbox'
 });
+
+const colors: CheckboxColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 
 const checks = ref<string[]>(['1']);
 const items = createCheckboxItems();
@@ -40,6 +42,10 @@ function createCheckboxItems(): CheckboxGroupItem[] {
 <template>
   <div class="py-12px text-18px">Default Checkbox</div>
   <SCheckbox label="checkbox" />
+  <div class="py-12px text-18px">Checkbox Color</div>
+  <div class="flex flex-wrap gap-12px">
+    <SCheckbox v-for="color in colors" :key="color" :color="color" label="checkbox" />
+  </div>
   <div class="py-12px text-18px">Checkbox Group</div>
   <SCheckboxGroup v-model:values="checks" :items="items" />
   <div class="py-12px text-18px">Checkbox Group Vertical</div>

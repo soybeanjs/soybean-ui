@@ -50,6 +50,7 @@ function handleUpdateCheckItem(value: string, checked: boolean) {
       :key="item.value"
       v-bind="item"
       :checked="checks.includes(item.value)"
+      :color="color"
       :disabled="disabled || item.disabled"
       @update:checked="handleUpdateCheckItem(item.value, $event)"
     />
