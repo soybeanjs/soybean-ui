@@ -15,12 +15,12 @@
   },
   "dependencies": {
     "@soybean-unify/ui-variants": "workspace:*",
-    "lucide-vue-next": "0.428.0",
+    "lucide-vue-next": "0.435.0",
     "radix-vue": "1.9.4"
   },
   "devDependencies": {
     "typescript": "5.5.4",
-    "vite": "5.4.1",
+    "vite": "5.4.2",
     "vite-plugin-dts": "4.0.3"
   }
 }
