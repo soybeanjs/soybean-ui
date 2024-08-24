@@ -7,9 +7,9 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
-import { reactiveOmit } from '@vueuse/core';
 import { AccordionRoot, useForwardPropsEmits } from 'radix-vue';
 import type { AccordionRootEmits } from 'radix-vue';
+import { computedPick } from '../../shared';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';
@@ -19,7 +19,7 @@ import type { AccordionItemData, AccordionProps, SingleOrMultipleType } from './
 const props = defineProps<AccordionProps<T, V, E>>();
 const emit = defineEmits<AccordionRootEmits>();
 
-const delegatedProps = reactiveOmit(props, [
+const delegatedProps = computedPick(props, [
   'items',
   'itemProps',
   'headerClass',

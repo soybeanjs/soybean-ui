@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { reactiveOmit } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
 import { cardVariants, cn } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
 import SCardTitleRoot from './card-title-root.vue';
@@ -33,7 +33,7 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedProps = reactiveOmit(props, [
+const delegatedProps = computedOmit(props, [
   'title',
   'size',
   'split',

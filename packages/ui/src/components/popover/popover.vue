@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { reactiveOmit, reactivePick } from '@vueuse/core';
 import {
   PopoverClose,
   PopoverPortal,
@@ -9,6 +8,7 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 import type { PopoverRootEmits } from 'radix-vue';
+import { computedOmit, computedPick } from '../../shared';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
 import type { PopoverProps } from './types';
@@ -29,11 +29,11 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedRootProps = reactivePick(props, ['defaultOpen', 'open', 'modal']);
+const delegatedRootProps = computedPick(props, ['defaultOpen', 'open', 'modal']);
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
-const delegatedContentProps = reactiveOmit(props, [
+const delegatedContentProps = computedOmit(props, [
   'defaultOpen',
   'open',
   'modal',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { AvatarImage, useForwardPropsEmits } from 'radix-vue';
 import type { AvatarImageEmits } from 'radix-vue';
 import { avatarVariants, cn } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { AvatarImageProps } from './types';
 
 defineOptions({
@@ -11,7 +11,7 @@ defineOptions({
 
 const props = defineProps<AvatarImageProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const emit = defineEmits<AvatarImageEmits>();
 

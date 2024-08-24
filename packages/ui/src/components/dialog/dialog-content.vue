@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { reactiveOmit, reactivePick } from '@vueuse/core';
 import type { DialogContentEmits } from 'radix-vue';
 import {
   DialogClose,
@@ -13,6 +12,7 @@ import {
 } from 'radix-vue';
 import { X } from 'lucide-vue-next';
 import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';
 import type { DialogContentProps } from './types';
@@ -27,11 +27,11 @@ const props = withDefaults(defineProps<DialogContentProps>(), {
 
 const emit = defineEmits<DialogContentEmits>();
 
-const delegatedDialogContentProps = reactivePick(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const delegatedDialogContentProps = computedPick(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedDialogContentProps = useForwardPropsEmits(delegatedDialogContentProps, emit);
 
-const delegatedCardProps = reactiveOmit(props, [
+const delegatedCardProps = computedOmit(props, [
   'as',
   'asChild',
   'class',

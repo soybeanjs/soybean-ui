@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
 import { LoaderCircle } from 'lucide-vue-next';
 import { computed } from 'vue';
+import { computedOmit } from '../../shared';
 import type { LoadingButtonProps } from './types';
 import SButton from './button.vue';
 
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<LoadingButtonProps>(), {
   loading: false
 });
 
-const delegatedProps = reactiveOmit(props, ['disabled', 'loading']);
+const delegatedProps = computedOmit(props, ['disabled', 'loading']);
 
 const forwarded = useForwardProps(delegatedProps);
 

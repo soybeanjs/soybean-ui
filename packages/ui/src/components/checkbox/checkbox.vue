@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { reactiveOmit } from '@vueuse/core';
 import { useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
 import { Check, Minus } from 'lucide-vue-next';
+import { computedOmit } from '../../shared';
 import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';
 import SCheckboxControl from './checkbox-control.vue';
@@ -18,7 +18,7 @@ const props = defineProps<CheckboxProps>();
 
 const emit = defineEmits<CheckboxRootEmits>();
 
-const delegatedProps = reactiveOmit(props, [
+const delegatedProps = computedOmit(props, [
   'class',
   'checked',
   'controlClass',

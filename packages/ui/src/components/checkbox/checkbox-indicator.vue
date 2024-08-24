@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { CheckboxIndicator, useForwardProps } from 'radix-vue';
 import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { CheckboxIndicatorProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<CheckboxIndicatorProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardProps(delegatedProps);
 

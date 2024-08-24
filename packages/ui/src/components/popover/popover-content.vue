@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { PopoverContent, useForwardPropsEmits } from 'radix-vue';
 import type { PopoverContentEmits } from 'radix-vue';
 import { cn, popoverVariants } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { PopoverContentProps } from './types';
 
 defineOptions({
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<PopoverContentProps>(), {
   sticky: 'partial'
 });
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const emit = defineEmits<PopoverContentEmits>();
 

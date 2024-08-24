@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { reactiveOmit, reactivePick } from '@vueuse/core';
 import {
   AlertDialogPortal,
   AlertDialogRoot,
@@ -8,6 +7,7 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 import type { AlertDialogContentEmits, AlertDialogEmits } from 'radix-vue';
+import { computedOmit, computedPick } from '../../shared';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import type { AlertDialogProps } from './types';
@@ -20,11 +20,11 @@ const props = defineProps<AlertDialogProps>();
 
 const emit = defineEmits<AlertDialogEmits & AlertDialogContentEmits>();
 
-const delegatedRootProps = reactivePick(props, ['open', 'defaultOpen']);
+const delegatedRootProps = computedPick(props, ['open', 'defaultOpen']);
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = reactiveOmit(props, [
+const delegatedContentProps = computedOmit(props, [
   'open',
   'defaultOpen',
   'disabledPortal',

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { reactiveOmit } from '@vueuse/core';
 import { CheckboxRoot, useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
 import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { CheckboxControlProps } from './types';
 
 defineOptions({
@@ -12,7 +12,7 @@ defineOptions({
 
 const props = defineProps<CheckboxControlProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const emit = defineEmits<CheckboxRootEmits>();
 

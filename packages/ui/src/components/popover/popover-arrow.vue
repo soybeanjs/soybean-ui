@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { PopoverArrow, useForwardProps } from 'radix-vue';
 import { cn, popoverVariants } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { PopoverArrowProps } from './types';
 
 defineOptions({
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<PopoverArrowProps>(), {
   asChild: true
 });
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 

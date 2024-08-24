@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { AvatarFallback, useForwardProps } from 'radix-vue';
 import { avatarVariants, cn } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { AvatarFallbackProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<AvatarFallbackProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 

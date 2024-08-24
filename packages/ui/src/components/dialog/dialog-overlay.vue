@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/core';
 import { DialogOverlay, useForwardProps } from 'radix-vue';
 import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { computedOmit } from '../../shared';
 import type { DialogOverlayProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<DialogOverlayProps>();
 
-const delegatedProps = reactiveOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 

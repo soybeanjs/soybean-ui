@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { reactivePick } from '@vueuse/core';
 import { useForwardProps } from 'radix-vue';
 import { alertVariants, cn } from '@soybean-unify/ui-variants';
 import { X } from 'lucide-vue-next';
+import { computedPick } from '../../shared';
 import SButtonIcon from '../button/button-icon.vue';
 import SAlertRoot from './alert-root.vue';
 import SAlertHeader from './alert-header.vue';
@@ -20,7 +20,7 @@ const props = defineProps<AlertProps>();
 
 const close = defineModel<boolean>('close', { default: false });
 
-const delegatedProps = reactivePick(props, ['as', 'asChild', 'color', 'variant', 'class']);
+const delegatedProps = computedPick(props, ['as', 'asChild', 'color', 'variant', 'class']);
 
 const forwarded = useForwardProps(delegatedProps);
 

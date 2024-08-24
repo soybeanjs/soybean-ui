@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { FunctionalComponent } from 'vue';
-import { reactiveOmit, reactivePick } from '@vueuse/core';
 import type { AlertDialogContentEmits } from 'radix-vue';
 import {
   AlertDialogContent,
@@ -14,6 +13,7 @@ import {
 import { cn, dialogVariants } from '@soybean-unify/ui-variants';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
+import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import type { AlertDialogContentProps, AlertType } from './types';
 
@@ -25,7 +25,7 @@ const props = defineProps<AlertDialogContentProps>();
 
 const emit = defineEmits<AlertDialogContentEmits>();
 
-const delegatedAlertDialogContentProps = reactivePick(props, [
+const delegatedAlertDialogContentProps = computedPick(props, [
   'forceMount',
   'trapFocus',
   'disableOutsidePointerEvents'
@@ -33,7 +33,7 @@ const delegatedAlertDialogContentProps = reactivePick(props, [
 
 const forwardedAlertDialogContentProps = useForwardPropsEmits(delegatedAlertDialogContentProps, emit);
 
-const delegatedCardProps = reactiveOmit(props, [
+const delegatedCardProps = computedOmit(props, [
   'as',
   'asChild',
   'class',
