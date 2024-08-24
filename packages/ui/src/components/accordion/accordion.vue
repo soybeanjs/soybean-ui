@@ -9,7 +9,7 @@
 >
 import { AccordionRoot, useForwardPropsEmits } from 'radix-vue';
 import type { AccordionRootEmits } from 'radix-vue';
-import { computedPick } from '../../shared';
+import { computedOmit } from '../../shared';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';
@@ -19,7 +19,7 @@ import type { AccordionItemData, AccordionProps, SingleOrMultipleType } from './
 const props = defineProps<AccordionProps<T, V, E>>();
 const emit = defineEmits<AccordionRootEmits>();
 
-const delegatedProps = computedPick(props, [
+const delegatedProps = computedOmit(props, [
   'items',
   'itemProps',
   'headerClass',
