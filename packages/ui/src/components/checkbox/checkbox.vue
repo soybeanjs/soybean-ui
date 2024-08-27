@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
 import { Check, Minus } from 'lucide-vue-next';
+import { nanoid } from 'nanoid';
 import { computedOmit } from '../../shared';
 import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';
@@ -19,6 +20,7 @@ const props = defineProps<CheckboxProps>();
 const emit = defineEmits<CheckboxRootEmits>();
 
 const delegatedProps = computedOmit(props, [
+  'id',
   'class',
   'checked',
   'controlClass',
@@ -30,18 +32,16 @@ const delegatedProps = computedOmit(props, [
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const checked = defineModel<CheckboxCheckedState>('checked', { default: false });
+const checkboxId = computed(() => props.id || `checkbox-${nanoid(8)}`);
 
-function clickLabel() {
-  checked.value = !checked.value;
-}
+const checked = defineModel<CheckboxCheckedState>('checked', { default: false });
 
 const isIndeterminate = computed(() => checked.value === 'indeterminate');
 </script>
 
 <template>
   <SCheckboxRoot :class="props.class">
-    <SCheckboxControl v-bind="forwarded" v-model:checked="checked" :class="controlClass">
+    <SCheckboxControl v-bind="forwarded" :id="checkboxId" v-model:checked="checked" :class="controlClass">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
         <SCheckboxIndicator :class="indicatorClass" :force-mount="forceMountIndicator">
           <Minus v-if="isIndeterminate" class="size-full" />
@@ -49,8 +49,8 @@ const isIndeterminate = computed(() => checked.value === 'indeterminate');
         </SCheckboxIndicator>
       </Transition>
     </SCheckboxControl>
-    <SCheckboxLabel :class="labelClass" @click="clickLabel">
-      <slot>{{ label }}</slot>
+    <SCheckboxLabel :class="labelClass" :for="checkboxId">
+      <slot :id="checkboxId">{{ label }}</slot>
     </SCheckboxLabel>
   </SCheckboxRoot>
 </template>

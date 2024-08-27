@@ -44,7 +44,7 @@ const radioId = computed(() => props.id || `radio-${nanoid(8)}`);
       </Transition>
     </SRadioControl>
     <SRadioLabel :class="labelClass" :for="radioId">
-      <slot>{{ label }}</slot>
+      <slot :id="radioId">{{ label }}</slot>
     </SRadioLabel>
   </SRadioRoot>
 </template>
