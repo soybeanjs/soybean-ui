@@ -9,6 +9,7 @@ export * from './variants/checkbox';
 export * from './variants/dialog';
 export * from './variants/label';
 export * from './variants/popover';
+export * from './variants/radio';
 
 export * from './shared';
 

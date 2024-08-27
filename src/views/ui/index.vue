@@ -25,6 +25,7 @@ import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiDialog from './modules/dialog.vue';
 import UiPopover from './modules/popover.vue';
+import UiRadio from './modules/radio.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -97,6 +98,11 @@ const tabs: TabConfig[] = [
     key: 'popover',
     label: 'Popover',
     component: UiPopover
+  },
+  {
+    key: 'radio',
+    label: 'Radio',
+    component: UiRadio
   }
 ];
 </script>

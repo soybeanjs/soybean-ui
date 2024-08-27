@@ -43,4 +43,4 @@ export type CheckboxGroupProps = PrimitivePropsWithClass & {
   orientation?: CheckboxOrientation;
 };
 
-export { CheckboxCheckedState, CheckboxColor, CheckboxOrientation };
+export type { CheckboxCheckedState, CheckboxColor, CheckboxOrientation };

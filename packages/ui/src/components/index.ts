@@ -9,3 +9,4 @@ export * from './card';
 export * from './checkbox';
 export * from './dialog';
 export * from './popover';
+export * from './radio';
