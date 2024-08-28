@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "@soybean-unify/ui-variants": "workspace:*",
-    "lucide-vue-next": "0.435.0",
+    "lucide-vue-next": "0.436.0",
     "nanoid": "5.0.7",
-    "radix-vue": "1.9.4"
+    "radix-vue": "1.9.5"
   },
   "devDependencies": {
     "typescript": "5.5.4",
