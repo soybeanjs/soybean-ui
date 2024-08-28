@@ -23,6 +23,7 @@ import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
+import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiPopover from './modules/popover.vue';
 import UiRadio from './modules/radio.vue';
@@ -88,6 +89,11 @@ const tabs: TabConfig[] = [
     key: 'checkbox',
     label: 'Checkbox',
     component: UiCheckbox
+  },
+  {
+    key: 'collapsible',
+    label: 'Collapsible',
+    component: UiCollapsible
   },
   {
     key: 'dialog',
