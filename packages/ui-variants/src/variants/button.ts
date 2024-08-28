@@ -32,10 +32,10 @@ export const buttonVariants = tv({
       xxl: 'h-12 px-10 gap-6 text-lg'
     },
     shape: {
-      auto: 'rd-md',
-      rounded: 'rd-full',
-      square: 'h-8 w-8 p-0 gap-0 rd-md',
-      circle: 'h-8 w-8 p-0 gap-0 rd-full'
+      auto: 'rounded-md',
+      rounded: 'rounded-full',
+      square: 'h-8 w-8 p-0 gap-0 rounded-md',
+      circle: 'h-8 w-8 p-0 gap-0 rounded-full'
     },
     shadow: {
       none: 'shadow-none',

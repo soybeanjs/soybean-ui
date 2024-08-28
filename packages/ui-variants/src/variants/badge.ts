@@ -20,8 +20,8 @@ export const badgeVariants = tv({
       outline: 'border bg-background'
     },
     shape: {
-      auto: 'rd-md',
-      rounded: 'rd-full'
+      auto: 'rounded-md',
+      rounded: 'rounded-full'
     }
   },
   compoundVariants: [
