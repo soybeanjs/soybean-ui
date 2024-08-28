@@ -24,7 +24,7 @@ export const buttonVariants = tv({
       link: 'bg-transparent underline-offset-4 hover:underline'
     },
     size: {
-      xs: 'h-6 px-1.5 text-xs gap-1 text-xs',
+      xs: 'h-6 px-1.5 gap-1 text-xs',
       sm: 'h-7 px-2 gap-2 text-sm',
       md: 'h-8 px-4 gap-3 text-sm',
       lg: 'h-9 px-6 gap-4 text-base',

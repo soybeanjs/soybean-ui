@@ -25,6 +25,7 @@ import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
+import UiInput from './modules/input.vue';
 import UiPopover from './modules/popover.vue';
 import UiRadio from './modules/radio.vue';
 
@@ -99,6 +100,11 @@ const tabs: TabConfig[] = [
     key: 'dialog',
     label: 'Dialog',
     component: UiDialog
+  },
+  {
+    key: 'input',
+    label: 'Input',
+    component: UiInput
   },
   {
     key: 'popover',
