@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const avatarVariants = tv({
   slots: {
     root: 'relative flex shrink-0 overflow-hidden rounded-full',
-    fallback: 'flex-center size-full rounded-full bg-muted font-medium',
+    fallback: 'flex justify-center items-center size-full rounded-full bg-muted font-medium',
     image: 'aspect-square size-full object-cover'
   },
   variants: {
