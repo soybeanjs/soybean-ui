@@ -9,7 +9,7 @@ export const radioVariants = tv({
       'peer size-4 shrink-0 rounded-full border shadow',
       'focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
-    indicator: 'flex justify-center items-center',
+    indicator: 'flex justify-center items-center size-full',
     group: 'flex gap-2',
     icon: 'size-2.5 fill-current'
   },

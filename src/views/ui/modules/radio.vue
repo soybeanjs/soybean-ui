@@ -28,9 +28,9 @@ function createRadioGroupItems(): RadioGroupItemProps[] {
   </div>
   <div class="py-12px text-18px">Radio Group Vertical</div>
   <SRadioGroup orientation="vertical" :items="items" />
-  <div class="py-12px text-18px">Checkbox Group Disabled All</div>
+  <div class="py-12px text-18px">Radio Group Disabled All</div>
   <SRadioGroup :items="items" disabled />
-  <div class="py-12px text-18px">Checkbox Group Disabled Item</div>
+  <div class="py-12px text-18px">Radio Group Disabled Item</div>
   <SRadioGroup>
     <SRadio v-for="item in items" :key="item.value" v-bind="item" :disabled="item.value === '2'" />
   </SRadioGroup>
