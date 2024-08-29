@@ -1,1 +1,46 @@
 # soybean-ui
+
+## 开发组件流程
+
+### 启动项目
+
+在根目录安装完依赖直接启动项目
+```bash
+pnpm install
+pnpm dev
+```
+
+### 新增组件
+
+- 在 `packages/ui/src/components` 下新增组件文件夹，以 kebab-case(小写+短横线) 方式命名，如 `card`。
+> 组件参照 `https://www.shadcn-vue.com/`。
+
+- 组件文件夹结构如下：
+
+以`card`组件为例
+
+```
+card
+├── card-content.vue
+├── card-footer.vue
+├── card-header.vue
+├── card-root.vue
+├── card-title-root.vue
+├── card-title.vue
+├── card.vue // 完整组件(api式，上面的组件均为组件的各个组成部分)
+├── index.ts // 导出组件
+└── types.ts // 组件类型定义
+```
+
+> 注意统一在 `packages/ui/src/components/index.ts` 中导出新增的组件。
+
+### 组件样式
+
+在 `packages/ui-variants/src/variants/` 下新增组件样式文件，如 `card.ts`。
+
+> 注意统一在 `packages/ui-variants/src/index.ts` 中导出新增的组件样式。
+
+### 组件示例
+
+- 在 `src/views/ui/modules` 下新增组件示例文件，如 `card.vue`。
+- 在 `src/views/ui/index.vue` 中引入组件示例文件，并添加对应的tab配置。
