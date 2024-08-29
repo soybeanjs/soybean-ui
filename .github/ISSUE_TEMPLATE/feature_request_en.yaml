@@ -10,9 +10,9 @@ body:
     attributes:
       value: |
         **Thanks :heart: for taking the time to fill out this feature request report!**
-        We kindly ask that you search to see if an issue [already exists](https://github.com/soybeanjs/soybean-unify/issues?q=is%3Aissue+sort%3Acreated-desc+) for your feature.
+        We kindly ask that you search to see if an issue [already exists](https://github.com/soybeanjs/soybean-ui/issues?q=is%3Aissue+sort%3Acreated-desc+) for your feature.
 
-        We are also happy to accept contributions from our users. For more details see [here](https://github.com/soybeanjs/soybean-unify/blob/main/README.md#how-to-contribute).
+        We are also happy to accept contributions from our users. For more details see [here](https://github.com/soybeanjs/soybean-ui/blob/main/README.md#how-to-contribute).
 
   - type: textarea
     attributes:

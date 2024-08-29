@@ -8,10 +8,10 @@ importers:
 
   .:
     dependencies:
-      '@soybean-unify/shadcn-ui':
+      '@soybean-ui/shadcn-ui':
         specifier: workspace:*
         version: link:packages/shadcn-ui
-      '@soybean-unify/ui':
+      soybean-ui:
         specifier: workspace:*
         version: link:packages/ui
       '@unocss/reset':
@@ -27,10 +27,10 @@ importers:
         specifier: 3.4.38
         version: 3.4.38(typescript@5.5.4)
     devDependencies:
-      '@soybean-unify/unocss-preset':
+      '@soybean-ui/unocss-preset':
         specifier: workspace:*
         version: link:packages/unocss-preset
-      '@soybean-unify/unocss-preset-shadcn':
+      '@soybean-ui/unocss-preset-shadcn':
         specifier: workspace:*
         version: link:packages/unocss-shadcn
       '@soybeanjs/cli':
@@ -141,7 +141,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@soybean-unify/ui-variants':
+      '@soybean-ui/variants':
         specifier: workspace:*
         version: link:../ui-variants
       lucide-vue-next:
@@ -188,7 +188,7 @@ importers:
 
   packages/unocss-shadcn:
     dependencies:
-      '@soybean-unify/color':
+      '@soybean-ui/color':
         specifier: workspace:*
         version: link:../color
       '@unocss/core':
@@ -1220,14 +1220,14 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
 
-  '@volar/language-core@2.4.0':
-    resolution: {integrity: sha512-FTla+khE+sYK0qJP+6hwPAAUwiNHVMph4RUXpxf/FIPKUP61NFrVZorml4mjFShnueR2y9/j8/vnh09YwVdH7A==}
+  '@volar/language-core@2.4.1':
+    resolution: {integrity: sha512-9AKhC7Qn2mQYxj7Dz3bVxeOk7gGJladhWixUYKef/o0o7Bm4an+A3XvmcTHVqZ8stE6lBVH++g050tBtJ4TZPQ==}
 
-  '@volar/source-map@2.4.0':
-    resolution: {integrity: sha512-2ceY8/NEZvN6F44TXw2qRP6AQsvCYhV2bxaBPWxV9HqIfkbRydSksTFObCF1DBDNBfKiZTS8G/4vqV6cvjdOIQ==}
+  '@volar/source-map@2.4.1':
+    resolution: {integrity: sha512-Xq6ep3OZg9xUqN90jEgB9ztX5SsTz1yiV8wiQbcYNjWkek+Ie3dc8l7AVt3EhDm9mSIR58oWczHkzM2H6HIsmQ==}
 
-  '@volar/typescript@2.4.0':
-    resolution: {integrity: sha512-9zx3lQWgHmVd+JRRAHUSRiEhe4TlzL7U7e6ulWXOxHH/WNYxzKwCvZD7WYWEZFdw4dHfTD9vUR0yPQO6GilCaQ==}
+  '@volar/typescript@2.4.1':
+    resolution: {integrity: sha512-UoRzC0PXcwajFQTu8XxKSYNsWNBtVja6Y9gC8eLv7kYm+UEKJCcZ8g7dialsOYA0HKs3Vpg57MeCsawFLC6m9Q==}
 
   '@vue/babel-helper-vue-transform-on@1.2.2':
     resolution: {integrity: sha512-nOttamHUR3YzdEqdM/XXDyCSdxMA9VizUKoroLX6yTyRtggzQMHXcmwh8a7ZErcJttIBIc9s68a1B8GZ+Dmvsw==}
@@ -3081,8 +3081,8 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  type-fest@4.25.0:
-    resolution: {integrity: sha512-bRkIGlXsnGBRBQRAY56UXBm//9qH4bmJfFvq83gSz41N282df+fjy8ofcEgc1sM8geNt5cl6mC2g9Fht1cs8Aw==}
+  type-fest@4.26.0:
+    resolution: {integrity: sha512-OduNjVJsFbifKb57UqZ2EMP1i4u64Xwow3NYXUtBbD4vIwJdQd4+xl8YDou1dlm4DVrtwT/7Ky8z8WyCULVfxw==}
     engines: {node: '>=16'}
 
   typescript@5.4.2:
@@ -4416,7 +4416,7 @@ snapshots:
 
   '@vee-validate/zod@4.13.2(vue@3.4.38(typescript@5.5.4))':
     dependencies:
-      type-fest: 4.25.0
+      type-fest: 4.26.0
       vee-validate: 4.13.2(vue@3.4.38(typescript@5.5.4))
       zod: 3.23.8
     transitivePeerDependencies:
@@ -4437,15 +4437,15 @@ snapshots:
       vite: 5.4.2(@types/node@22.5.1)
       vue: 3.4.38(typescript@5.5.4)
 
-  '@volar/language-core@2.4.0':
+  '@volar/language-core@2.4.1':
     dependencies:
-      '@volar/source-map': 2.4.0
+      '@volar/source-map': 2.4.1
 
-  '@volar/source-map@2.4.0': {}
+  '@volar/source-map@2.4.1': {}
 
-  '@volar/typescript@2.4.0':
+  '@volar/typescript@2.4.1':
     dependencies:
-      '@volar/language-core': 2.4.0
+      '@volar/language-core': 2.4.1
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
@@ -4543,7 +4543,7 @@ snapshots:
 
   '@vue/language-core@2.0.29(typescript@5.5.4)':
     dependencies:
-      '@volar/language-core': 2.4.0
+      '@volar/language-core': 2.4.1
       '@vue/compiler-dom': 3.4.38
       '@vue/compiler-vue2': 2.7.16
       '@vue/shared': 3.4.38
@@ -6478,7 +6478,7 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  type-fest@4.25.0: {}
+  type-fest@4.26.0: {}
 
   typescript@5.4.2: {}
 
@@ -6577,7 +6577,7 @@ snapshots:
   vee-validate@4.13.2(vue@3.4.38(typescript@5.5.4)):
     dependencies:
       '@vue/devtools-api': 6.6.3
-      type-fest: 4.25.0
+      type-fest: 4.26.0
       vue: 3.4.38(typescript@5.5.4)
 
   vite-hot-client@0.2.3(vite@5.4.2(@types/node@22.5.1)):
@@ -6588,7 +6588,7 @@ snapshots:
     dependencies:
       '@microsoft/api-extractor': 7.47.4(@types/node@22.5.1)
       '@rollup/pluginutils': 5.1.0(rollup@4.21.1)
-      '@volar/typescript': 2.4.0
+      '@volar/typescript': 2.4.1
       '@vue/language-core': 2.0.29(typescript@5.5.4)
       compare-versions: 6.1.1
       debug: 4.3.6
@@ -6687,7 +6687,7 @@ snapshots:
 
   vue-tsc@2.0.29(typescript@5.5.4):
     dependencies:
-      '@volar/typescript': 2.4.0
+      '@volar/typescript': 2.4.1
       '@vue/language-core': 2.0.29(typescript@5.5.4)
       semver: 7.6.3
       typescript: 5.5.4

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ExclamationTriangleIcon, RocketIcon } from '@radix-icons/vue';
-import { SAlert } from '@soybean-unify/ui';
-import type { AlertColor, AlertVariant } from '@soybean-unify/ui';
+import { SAlert } from 'soybean-ui';
+import type { AlertColor, AlertVariant } from 'soybean-ui';
 
 const colors: AlertColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 const variants: AlertVariant[] = ['outline', 'plain', 'soft'];

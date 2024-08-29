@@ -11,7 +11,7 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 import { X } from 'lucide-vue-next';
-import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';

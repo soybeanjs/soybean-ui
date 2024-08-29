@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { InputSize } from '@soybean-unify/ui';
-import { SInput } from '@soybean-unify/ui';
+import type { InputSize } from 'soybean-ui';
+import { SInput } from 'soybean-ui';
 
 defineOptions({
   name: 'UiInput'

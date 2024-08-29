@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SPopover } from '@soybean-unify/ui';
-import type { PopoverAlign, PopoverSide } from '@soybean-unify/ui';
+import { SButton, SPopover } from 'soybean-ui';
+import type { PopoverAlign, PopoverSide } from 'soybean-ui';
 
 defineOptions({
   name: 'UiPopover'

@@ -1,4 +1,4 @@
-import type { AlertColor, AlertVariant, ClassValue } from '@soybean-unify/ui-variants';
+import type { AlertColor, AlertVariant, ClassValue } from '@soybean-ui/variants';
 import type { PrimitivePropsWithClass } from '../../types';
 
 export interface AlertRootProps extends PrimitivePropsWithClass {

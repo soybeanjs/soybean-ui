@@ -1,5 +1,5 @@
 import { mergeDeep } from '@unocss/core';
-import { colord, generateColorPalette } from '@soybean-unify/color';
+import { colord, generateColorPalette } from '@soybean-ui/color';
 import themes from './theme.json';
 import type {
   ColorOptions,

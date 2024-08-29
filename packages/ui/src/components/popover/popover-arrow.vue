@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { PopoverArrow, useForwardProps } from 'radix-vue';
-import { cn, popoverVariants } from '@soybean-unify/ui-variants';
+import { cn, popoverVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { PopoverArrowProps } from './types';
 

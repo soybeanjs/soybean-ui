@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { AccordionTrigger } from 'radix-vue';
 import { ChevronDown } from 'lucide-vue-next';
-import { accordionVariants, cn } from '@soybean-unify/ui-variants';
+import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionTriggerProps } from './types';
 
 defineOptions({

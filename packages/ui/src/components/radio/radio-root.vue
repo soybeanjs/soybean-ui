@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { cn, radioVariants } from '@soybean-unify/ui-variants';
+import { cn, radioVariants } from '@soybean-ui/variants';
 import type { RadioRootProps } from './types';
 
 defineOptions({

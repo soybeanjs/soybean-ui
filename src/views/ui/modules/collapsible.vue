@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButtonIcon, SCollapsible, SCollapsibleTrigger } from '@soybean-unify/ui';
+import { SButtonIcon, SCollapsible, SCollapsibleTrigger } from 'soybean-ui';
 import { ChevronsUpDown } from 'lucide-vue-next';
 
 defineOptions({

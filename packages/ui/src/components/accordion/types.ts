@@ -1,5 +1,5 @@
 import type { AccordionItemProps as $AccordionItemProps, AccordionRootProps } from 'radix-vue';
-import type { ClassValue } from '@soybean-unify/ui-variants';
+import type { ClassValue } from '@soybean-ui/variants';
 import type { PrimitivePropsWithClass } from '../../types';
 
 export type SingleOrMultipleType = 'single' | 'multiple';

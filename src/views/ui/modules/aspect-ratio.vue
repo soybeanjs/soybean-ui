@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAspectRatio } from '@soybean-unify/ui';
+import { SAspectRatio } from 'soybean-ui';
 
 defineOptions({
   name: 'UiAspectRatio'

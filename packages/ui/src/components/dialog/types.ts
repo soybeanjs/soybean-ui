@@ -4,7 +4,7 @@ import type {
   DialogPortalProps,
   DialogRootProps
 } from 'radix-vue';
-import type { ClassValue } from '@soybean-unify/ui-variants';
+import type { ClassValue } from '@soybean-ui/variants';
 import type { CardProps } from '../card/types';
 
 export type DialogOverlayProps = $DialogOverlayProps & {

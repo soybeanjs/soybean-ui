@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SAvatar } from '@soybean-unify/ui';
-import type { AvatarSize } from '@soybean-unify/ui';
+import { SAvatar } from 'soybean-ui';
+import type { AvatarSize } from 'soybean-ui';
 
 defineOptions({
   name: 'AvatarDemo'

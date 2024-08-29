@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CollapsibleContent, useForwardProps } from 'radix-vue';
-import { cn, collapsibleVariants } from '@soybean-unify/ui-variants';
+import { cn, collapsibleVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { CollapsibleContentProps } from './types';
 

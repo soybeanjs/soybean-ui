@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxRootProps } from './types';
 
 defineOptions({

@@ -1,5 +1,5 @@
 {
-  "name": "@soybean-unify/unocss-preset-shadcn",
+  "name": "@soybean-ui/unocss-preset-shadcn",
   "version": "0.0.1",
   "exports": {
     ".": "./src/index.ts"
@@ -10,7 +10,7 @@
     }
   },
   "dependencies": {
-    "@soybean-unify/color": "workspace:*",
+    "@soybean-ui/color": "workspace:*",
     "@unocss/core": "0.62.3"
   }
 }

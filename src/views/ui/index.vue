@@ -11,8 +11,8 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger
-} from '@soybean-unify/shadcn-ui';
-import { SButtonIcon } from '@soybean-unify/ui';
+} from '@soybean-ui/shadcn-ui';
+import { SButtonIcon } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';

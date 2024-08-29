@@ -7,7 +7,7 @@ import {
   SAccordionItem,
   SAccordionRoot,
   SAccordionTrigger
-} from '@soybean-unify/ui';
+} from 'soybean-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({

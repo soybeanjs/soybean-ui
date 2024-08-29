@@ -10,7 +10,7 @@ import {
   useForwardProps,
   useForwardPropsEmits
 } from 'radix-vue';
-import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
 import { computedOmit, computedPick } from '../../shared';

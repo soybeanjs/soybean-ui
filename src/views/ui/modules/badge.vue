@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBadge } from '@soybean-unify/ui';
-import type { BadgeColor, BadgeVariant } from '@soybean-unify/ui';
+import { SBadge } from 'soybean-ui';
+import type { BadgeColor, BadgeVariant } from 'soybean-ui';
 
 defineOptions({
   name: 'UiBadge'

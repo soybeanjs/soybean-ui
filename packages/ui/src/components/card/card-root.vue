@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { cardVariants, cn } from '@soybean-unify/ui-variants';
+import { cardVariants, cn } from '@soybean-ui/variants';
 import type { CardRootProps } from './types';
 
 defineOptions({

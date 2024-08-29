@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
-import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxGroupProps } from './types';
 import SCheckbox from './checkbox.vue';
 

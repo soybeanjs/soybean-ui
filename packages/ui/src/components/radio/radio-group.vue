@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { RadioGroupRoot, useForwardPropsEmits } from 'radix-vue';
 import type { RadioGroupRootEmits } from 'radix-vue';
-import { cn, radioVariants } from '@soybean-unify/ui-variants';
+import { cn, radioVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { RadioGroupProps } from './types';
 import SRadio from './radio.vue';

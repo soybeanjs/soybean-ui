@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn, inputVariants } from '@soybean-unify/ui-variants';
+import { cn, inputVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { InputProps } from './types';
 

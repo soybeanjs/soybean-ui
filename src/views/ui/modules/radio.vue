@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SRadio, SRadioGroup } from '@soybean-unify/ui';
-import type { RadioColor, RadioGroupItemProps } from '@soybean-unify/ui';
+import { SRadio, SRadioGroup } from 'soybean-ui';
+import type { RadioColor, RadioGroupItemProps } from 'soybean-ui';
 
 defineOptions({
   name: 'UiRadio'

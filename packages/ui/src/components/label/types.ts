@@ -1,5 +1,5 @@
 import type { LabelProps as $LabelProps } from 'radix-vue';
-import type { ClassValue } from '@soybean-unify/ui-variants';
+import type { ClassValue } from '@soybean-ui/variants';
 
 export type LabelProps = $LabelProps & {
   class?: ClassValue;

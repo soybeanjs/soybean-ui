@@ -1,4 +1,4 @@
-import type { ClassValue, InputSize } from '@soybean-unify/ui-variants';
+import type { ClassValue, InputSize } from '@soybean-ui/variants';
 
 export interface InputProps {
   class?: ClassValue;

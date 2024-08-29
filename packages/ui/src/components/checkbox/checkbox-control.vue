@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { CheckboxRoot, useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
-import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { checkboxVariants, cn } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { CheckboxControlProps } from './types';
 

@@ -1,20 +1,20 @@
 {
-  "name": "soybean-unify",
+  "name": "@soybean-ui/example",
   "type": "module",
   "version": "0.0.1",
-  "description": "SoybeanUnify is a ui library for Vue3, which is based on shadcn-vue and UnoCSS.",
+  "description": "soybean-ui is an ui library for Vue3, which is based on radix-vue and UnoCSS.",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/soybeanjs/soybean-unify",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
   "repository": {
-    "url": "https://github.com/soybeanjs/soybean-unify.git"
+    "url": "https://github.com/soybeanjs/soybean-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-unify/issues"
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
   "keywords": ["UI", "UnoCSS"],
   "engines": {
@@ -34,16 +34,16 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
-    "@soybean-unify/shadcn-ui": "workspace:*",
-    "@soybean-unify/ui": "workspace:*",
+    "@soybean-ui/shadcn-ui": "workspace:*",
     "@unocss/reset": "0.62.3",
     "@vueuse/core": "11.0.3",
     "lucide-vue-next": "0.436.0",
+    "soybean-ui": "workspace:*",
     "vue": "3.4.38"
   },
   "devDependencies": {
-    "@soybean-unify/unocss-preset": "workspace:*",
-    "@soybean-unify/unocss-preset-shadcn": "workspace:*",
+    "@soybean-ui/unocss-preset": "workspace:*",
+    "@soybean-ui/unocss-preset-shadcn": "workspace:*",
     "@soybeanjs/cli": "1.1.0",
     "@soybeanjs/eslint-config": "1.4.0",
     "@types/node": "22.5.1",

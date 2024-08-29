@@ -1,4 +1,4 @@
-import type { CardSplit as $CardSplit, CardSize, ClassValue } from '@soybean-unify/ui-variants';
+import type { CardSplit as $CardSplit, CardSize, ClassValue } from '@soybean-ui/variants';
 import type { PrimitivePropsWithClass } from '../../types';
 
 export type CardRootProps = PrimitivePropsWithClass;

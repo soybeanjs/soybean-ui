@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AvatarRoot } from 'radix-vue';
-import { avatarVariants, cn } from '@soybean-unify/ui-variants';
+import { avatarVariants, cn } from '@soybean-ui/variants';
 import type { AvatarRootProps } from './types';
 
 defineOptions({

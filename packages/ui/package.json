@@ -1,5 +1,5 @@
 {
-  "name": "@soybean-unify/ui",
+  "name": "soybean-ui",
   "type": "module",
   "version": "0.0.1",
   "exports": {
@@ -14,7 +14,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@soybean-unify/ui-variants": "workspace:*",
+    "@soybean-ui/variants": "workspace:*",
     "lucide-vue-next": "0.436.0",
     "nanoid": "5.0.7",
     "radix-vue": "1.9.5"

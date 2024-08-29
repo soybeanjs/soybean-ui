@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { RadioGroupItem, useForwardProps } from 'radix-vue';
-import { cn, radioVariants } from '@soybean-unify/ui-variants';
+import { cn, radioVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { RadioControlProps } from './types';
 

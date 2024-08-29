@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon, SCard } from '@soybean-unify/ui';
+import { SButton, SButtonIcon, SCard } from 'soybean-ui';
 import { Expand, Settings, X } from 'lucide-vue-next';
 
 defineOptions({

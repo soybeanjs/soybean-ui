@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Label } from 'radix-vue';
-import { cn, labelVariants } from '@soybean-unify/ui-variants';
+import { cn, labelVariants } from '@soybean-ui/variants';
 import type { LabelProps } from './types';
 
 defineOptions({

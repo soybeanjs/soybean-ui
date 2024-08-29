@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CheckboxIndicator, useForwardProps } from 'radix-vue';
-import { checkboxVariants, cn } from '@soybean-unify/ui-variants';
+import { checkboxVariants, cn } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { CheckboxIndicatorProps } from './types';
 

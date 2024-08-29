@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
-import { alertVariants, cn } from '@soybean-unify/ui-variants';
+import { alertVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
 import { computedPick } from '../../shared';
 import SButtonIcon from '../button/button-icon.vue';

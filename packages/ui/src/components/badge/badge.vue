@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { badgeVariants, cn } from '@soybean-unify/ui-variants';
+import { badgeVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
 import SButtonIcon from '../button/button-icon.vue';
 import type { BadgeProps } from './types';

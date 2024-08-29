@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AlertDialogOverlay, useForwardProps } from 'radix-vue';
-import { cn, dialogVariants } from '@soybean-unify/ui-variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { AlertDialogOverlayProps } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AvatarFallback, useForwardProps } from 'radix-vue';
-import { avatarVariants, cn } from '@soybean-unify/ui-variants';
+import { avatarVariants, cn } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { AvatarFallbackProps } from './types';
 

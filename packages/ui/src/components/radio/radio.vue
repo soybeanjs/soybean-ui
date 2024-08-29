@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
 import { Circle } from 'lucide-vue-next';
 import { nanoid } from 'nanoid';
-import { radioVariants } from '@soybean-unify/ui-variants';
+import { radioVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';

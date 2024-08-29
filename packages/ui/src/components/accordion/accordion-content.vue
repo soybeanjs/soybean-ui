@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AccordionContent } from 'radix-vue';
-import { accordionVariants, cn } from '@soybean-unify/ui-variants';
+import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionContentProps } from './types';
 
 defineOptions({

@@ -3,7 +3,7 @@ import type {
   CollapsibleRootProps,
   CollapsibleTriggerProps
 } from 'radix-vue';
-import type { ClassValue } from '@soybean-unify/ui-variants';
+import type { ClassValue } from '@soybean-ui/variants';
 
 export type CollapsibleContentProps = $CollapsibleContentProps & {
   class?: ClassValue;

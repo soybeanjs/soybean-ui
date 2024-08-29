@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SDialog, SDialogClose } from '@soybean-unify/ui';
+import { SButton, SDialog, SDialogClose } from 'soybean-ui';
 
 defineOptions({
   name: 'UiDialog'

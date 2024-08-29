@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AccordionItem, useForwardProps } from 'radix-vue';
-import { accordionVariants, cn } from '@soybean-unify/ui-variants';
+import { accordionVariants, cn } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { AccordionItemProps } from './types';
 

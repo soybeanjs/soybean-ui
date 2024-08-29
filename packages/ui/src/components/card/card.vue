@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
-import { cardVariants, cn } from '@soybean-unify/ui-variants';
+import { cardVariants, cn } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AccordionHeader } from 'radix-vue';
-import { accordionVariants, cn } from '@soybean-unify/ui-variants';
+import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionHeaderProps } from './types';
 
 defineOptions({

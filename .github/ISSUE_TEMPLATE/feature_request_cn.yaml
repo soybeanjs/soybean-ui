@@ -10,9 +10,9 @@ body:
     attributes:
       value: |
         **感谢 :heart: 您花时间填写此功能请求报告！**
-        我们恳请您搜索看看您的功能是否[已经存在](https://github.com/soybeanjs/soybean-unify/issues?q=is%3Aissue+sort%3Acreated-desc+)。
+        我们恳请您搜索看看您的功能是否[已经存在](https://github.com/soybeanjs/soybean-ui/issues?q=is%3Aissue+sort%3Acreated-desc+)。
 
-        我们也很乐意接受用户的贡献。有关更多详细信息，请参阅[此处](https://github.com/soybeanjs/soybean-unify/blob/main/README.zh_CN.md#%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE)。
+        我们也很乐意接受用户的贡献。有关更多详细信息，请参阅[此处](https://github.com/soybeanjs/soybean-ui/blob/main/README.zh_CN.md#%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE)。
 
   - type: textarea
     attributes:

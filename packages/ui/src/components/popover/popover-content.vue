@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PopoverContent, useForwardPropsEmits } from 'radix-vue';
 import type { PopoverContentEmits } from 'radix-vue';
-import { cn, popoverVariants } from '@soybean-unify/ui-variants';
+import { cn, popoverVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { PopoverContentProps } from './types';
 

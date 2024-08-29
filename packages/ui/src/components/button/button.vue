@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from 'radix-vue';
-import { buttonVariants, cn } from '@soybean-unify/ui-variants';
+import { buttonVariants, cn } from '@soybean-ui/variants';
 import type { ButtonProps } from './types';
 
 defineOptions({
