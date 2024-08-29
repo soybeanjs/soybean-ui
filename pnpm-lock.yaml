@@ -11,9 +11,6 @@ importers:
       '@soybean-ui/shadcn-ui':
         specifier: workspace:*
         version: link:packages/shadcn-ui
-      soybean-ui:
-        specifier: workspace:*
-        version: link:packages/ui
       '@unocss/reset':
         specifier: 0.62.3
         version: 0.62.3
@@ -23,6 +20,9 @@ importers:
       lucide-vue-next:
         specifier: 0.436.0
         version: 0.436.0(vue@3.4.38(typescript@5.5.4))
+      soybean-ui:
+        specifier: workspace:*
+        version: link:packages/ui
       vue:
         specifier: 3.4.38
         version: 3.4.38(typescript@5.5.4)
@@ -85,8 +85,8 @@ importers:
         specifier: 9.4.3
         version: 9.4.3(eslint@9.9.1(jiti@1.21.6))
       vue-tsc:
-        specifier: 2.0.29
-        version: 2.0.29(typescript@5.5.4)
+        specifier: 2.1.0
+        version: 2.1.0(typescript@5.5.4)
 
   packages/color:
     dependencies:
@@ -1276,6 +1276,14 @@ packages:
 
   '@vue/language-core@2.0.29':
     resolution: {integrity: sha512-o2qz9JPjhdoVj8D2+9bDXbaI4q2uZTHQA/dbyZT4Bj1FR9viZxDJnLcKVHfxdn6wsOzRgpqIzJEEmSSvgMvDTQ==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@vue/language-core@2.1.0':
+    resolution: {integrity: sha512-S7uUdQXn4aA7QloQeAIhKDkP243nCEktQu1Kxur1fJFfedf+izBTb9bAR2tHe0V7xhFYhIwkNCtQl2AlKFaW3w==}
     peerDependencies:
       typescript: '*'
     peerDependenciesMeta:
@@ -3266,6 +3274,12 @@ packages:
     peerDependencies:
       typescript: '>=5.0.0'
 
+  vue-tsc@2.1.0:
+    resolution: {integrity: sha512-N6kelLgHPLiDzkeWfsfrfR79POitZ59M/2HaRWk4BW0ED40FlyQaVhGUvjg8VRPPJWic1M974cRTGIBR6zfgwQ==}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=5.0.0'
+
   vue@3.4.38:
     resolution: {integrity: sha512-f0ZgN+mZ5KFgVv9wz0f4OgVKukoXtS3nwET4c2vLBGQR50aI8G0cqbFtLlX9Yiyg3LFGBitruPHt2PxwTduJEw==}
     peerDependencies:
@@ -4542,6 +4556,19 @@ snapshots:
       rfdc: 1.4.1
 
   '@vue/language-core@2.0.29(typescript@5.5.4)':
+    dependencies:
+      '@volar/language-core': 2.4.1
+      '@vue/compiler-dom': 3.4.38
+      '@vue/compiler-vue2': 2.7.16
+      '@vue/shared': 3.4.38
+      computeds: 0.0.1
+      minimatch: 9.0.5
+      muggle-string: 0.4.1
+      path-browserify: 1.0.1
+    optionalDependencies:
+      typescript: 5.5.4
+
+  '@vue/language-core@2.1.0(typescript@5.5.4)':
     dependencies:
       '@volar/language-core': 2.4.1
       '@vue/compiler-dom': 3.4.38
@@ -6689,6 +6716,13 @@ snapshots:
     dependencies:
       '@volar/typescript': 2.4.1
       '@vue/language-core': 2.0.29(typescript@5.5.4)
+      semver: 7.6.3
+      typescript: 5.5.4
+
+  vue-tsc@2.1.0(typescript@5.5.4):
+    dependencies:
+      '@volar/typescript': 2.4.1
+      '@vue/language-core': 2.1.0(typescript@5.5.4)
       semver: 7.6.3
       typescript: 5.5.4
 
