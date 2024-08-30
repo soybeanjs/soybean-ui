@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButtonIcon, SCollapsible, SCollapsibleTrigger } from 'soybean-ui';
-import { ChevronsUpDown } from 'lucide-vue-next';
+import { ChevronsDownUp, ChevronsUpDown } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCollapsible'
@@ -9,15 +9,18 @@ defineOptions({
 
 <template>
   <SCollapsible class="w-350px lt-sm:w-auto space-y-2" content-class="space-y-2">
-    <div class="flex-y-center justify-between px-2 space-x-4">
-      <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
-      <SCollapsibleTrigger as-child>
-        <SButtonIcon>
-          <ChevronsUpDown />
-        </SButtonIcon>
-      </SCollapsibleTrigger>
-    </div>
-    <div class="border rounded-md px-4 py-3 text-sm font-mono">@radix-ui/primitives</div>
+    <template #default="{ open }">
+      <div class="flex-y-center justify-between px-2 space-x-4">
+        <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
+        <SCollapsibleTrigger as-child>
+          <SButtonIcon>
+            <ChevronsDownUp v-if="open" />
+            <ChevronsUpDown v-else />
+          </SButtonIcon>
+        </SCollapsibleTrigger>
+      </div>
+      <div class="border rounded-md px-4 py-3 text-sm font-mono">@radix-ui/primitives</div>
+    </template>
     <template #content>
       <div class="border rounded-md px-4 py-3 text-sm font-mono">@radix-ui/colors</div>
       <div class="border rounded-md px-4 py-3 text-sm font-mono">@stitches/react</div>

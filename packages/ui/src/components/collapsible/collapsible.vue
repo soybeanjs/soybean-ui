@@ -19,10 +19,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <CollapsibleRoot v-bind="forwarded">
-    <slot></slot>
+  <CollapsibleRoot v-slot="slotProps" v-bind="forwarded">
+    <slot v-bind="slotProps"></slot>
     <SCollapsibleContent :class="contentClass" :force-mount="forceMountContent">
-      <slot name="content" />
+      <slot name="content" v-bind="slotProps" />
     </SCollapsibleContent>
   </CollapsibleRoot>
 </template>
