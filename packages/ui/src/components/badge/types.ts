@@ -6,6 +6,7 @@ export type BadgeProps = PrimitivePropsWithClass & {
   variant?: BadgeVariant;
   closable?: boolean;
   closeClass?: ClassValue;
+  close?: boolean;
 };
 
 export { BadgeColor, BadgeVariant };

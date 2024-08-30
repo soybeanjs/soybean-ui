@@ -3,6 +3,7 @@ import type { ClassValue, InputSize } from '@soybean-ui/variants';
 export interface InputProps {
   class?: ClassValue;
   defaultValue?: string;
+  modelValue?: string;
   size?: InputSize;
   id?: string;
   name?: string;

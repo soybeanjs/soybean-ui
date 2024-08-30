@@ -22,6 +22,7 @@ export interface AlertProps extends AlertRootProps {
   description?: string;
   descriptionClass?: ClassValue;
   closable?: boolean;
+  close?: boolean;
 }
 
 export type { AlertColor, AlertVariant };
