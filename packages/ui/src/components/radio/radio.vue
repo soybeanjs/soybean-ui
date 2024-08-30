@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
-import { Circle } from 'lucide-vue-next';
 import { nanoid } from 'nanoid';
-import { radioVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';
@@ -29,8 +27,6 @@ const delegatedProps = computedOmit(props, [
 
 const forwarded = useForwardProps(delegatedProps);
 
-const { icon } = radioVariants();
-
 const radioId = computed(() => props.id || `radio-${nanoid(8)}`);
 </script>
 
@@ -38,9 +34,7 @@ const radioId = computed(() => props.id || `radio-${nanoid(8)}`);
   <SRadioRoot :class="props.class">
     <SRadioControl v-bind="forwarded" :id="radioId" :class="controlClass">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
-        <SRadioIndicator :class="indicatorClass" :force-mount="forceMountIndicator">
-          <Circle :class="icon()" />
-        </SRadioIndicator>
+        <SRadioIndicator :class="indicatorClass" :color="color" :force-mount="forceMountIndicator" />
       </Transition>
     </SRadioControl>
     <SRadioLabel :class="labelClass" :for="radioId">

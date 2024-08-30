@@ -6,35 +6,41 @@ export const radioVariants = tv({
   slots: {
     root: 'flex items-center gap-2',
     control: [
-      'peer size-4 shrink-0 rounded-full border shadow',
+      'peer flex justify-center items-center size-4 shrink-0 rounded-full border shadow',
       'focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
-    indicator: 'flex justify-center items-center size-full',
-    group: 'flex gap-2',
-    icon: 'size-2.5 fill-current'
+    indicator: 'size-2.5 rounded-full',
+    group: 'flex gap-2'
   },
   variants: {
     color: {
       primary: {
-        control: `border-primary text-primary`
+        control: `border-primary`,
+        indicator: `bg-primary`
       },
       destructive: {
-        control: `border-destructive text-destructive`
+        control: `border-destructive`,
+        indicator: `bg-destructive`
       },
       success: {
-        control: `border-success text-success`
+        control: `border-success`,
+        indicator: `bg-success`
       },
       warning: {
-        control: `border-warning text-warning`
+        control: `border-warning`,
+        indicator: `bg-warning`
       },
       info: {
-        control: `border-info text-info`
+        control: `border-info`,
+        indicator: `bg-info`
       },
       secondary: {
-        control: `border-secondary-foreground text-secondary-foreground`
+        control: `border-secondary-foreground`,
+        indicator: `bg-secondary-foreground`
       },
       accent: {
-        control: `border-accent-foreground text-accent-foreground`
+        control: `border-accent-foreground`,
+        indicator: `bg-accent-foreground`
       }
     },
     orientation: {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { RadioGroupIndicator, useForwardProps } from 'radix-vue';
 import { cn, radioVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
@@ -14,13 +15,14 @@ const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardProps(delegatedProps);
 
-const { indicator } = radioVariants();
+const cls = computed(() => {
+  const { indicator } = radioVariants();
+  return cn(indicator({ color: props.color }), props.class);
+});
 </script>
 
 <template>
-  <RadioGroupIndicator v-bind="forwarded" :class="cn(indicator(), props.class)">
-    <slot />
-  </RadioGroupIndicator>
+  <RadioGroupIndicator v-bind="forwarded" :class="cls" />
 </template>
 
 <style scoped></style>

@@ -8,6 +8,7 @@ import type { PrimitivePropsWithClass } from '../../types';
 
 export type RadioIndicatorProps = RadioGroupIndicatorProps & {
   class?: ClassValue;
+  color?: RadioColor;
 };
 
 export type RadioControlProps = $RadioControlProps & {
