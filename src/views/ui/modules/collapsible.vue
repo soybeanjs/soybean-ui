@@ -8,7 +8,7 @@ defineOptions({
 </script>
 
 <template>
-  <SCollapsible class="w-350px space-y-2" content-class="space-y-2">
+  <SCollapsible class="w-350px lt-sm:w-auto space-y-2" content-class="space-y-2">
     <div class="flex-y-center justify-between px-2 space-x-4">
       <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
       <SCollapsibleTrigger as-child>
