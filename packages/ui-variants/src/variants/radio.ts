@@ -36,11 +36,11 @@ export const radioVariants = tv({
       },
       secondary: {
         control: `border-secondary-foreground focus-visible:outline-secondary-foreground/20`,
-        indicator: `bg-secondary-foreground/50`
+        indicator: `bg-secondary-foreground/60`
       },
       accent: {
         control: `border-accent-foreground focus-visible:outline-accent-foreground/20`,
-        indicator: `bg-accent-foreground/50`
+        indicator: `bg-accent-foreground/60`
       }
     },
     orientation: {
