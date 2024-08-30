@@ -8,7 +8,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ButtonProps>(), {
-  as: 'button'
+  as: 'button',
+  disabled: false
 });
 </script>
 
@@ -16,6 +17,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   <Primitive
     :as="as"
     :as-child="asChild"
+    :disabled="disabled"
     :class="cn(buttonVariants({ color, variant, size, shape, shadow, fitContent }), props.class)"
   >
     <slot name="leading" />
