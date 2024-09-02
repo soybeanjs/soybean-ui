@@ -1,32 +1,26 @@
 <script setup lang="ts">
-import { ProgressIndicator, ProgressRoot } from 'radix-vue';
-import { cn, progressVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
+import SProgressRoot from './progress-root.vue';
+import SProgressIndicator from './progress-indicator.vue';
 import type { ProgressProps } from './types';
 
 defineOptions({
   name: 'SProgress'
 });
 
-const props = withDefaults(defineProps<ProgressProps>(), {
-  modelValue: 0
-});
-
-const { root, indicator } = progressVariants({
-  color: props.color,
-  size: props.size
-});
+const props = defineProps<ProgressProps>();
 
 const delegatedProps = computedOmit(props, ['class', 'indicatorClass', 'modelValue']);
+
+const modelValue = defineModel<number>({
+  default: 0
+});
 </script>
 
 <template>
-  <ProgressRoot v-bind="delegatedProps" :class="cn(root(), props.class)">
-    <ProgressIndicator
-      :class="cn(indicator(), props.indicatorClass)"
-      :style="`transform: translateX(-${100 - (props.modelValue ?? 0)}%);`"
-    />
-  </ProgressRoot>
+  <SProgressRoot v-bind="delegatedProps" :class="props.class">
+    <SProgressIndicator v-model="modelValue" :class="indicatorClass" :color="color" />
+  </SProgressRoot>
 </template>
 
 <style scoped></style>
