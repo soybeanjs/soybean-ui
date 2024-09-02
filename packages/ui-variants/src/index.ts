@@ -13,6 +13,7 @@ export * from './variants/label';
 export * from './variants/popover';
 export * from './variants/radio';
 export * from './variants/select';
+export * from './variants/progress';
 
 export * from './shared';
 

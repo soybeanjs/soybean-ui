@@ -13,3 +13,4 @@ export * from './input';
 export * from './popover';
 export * from './radio';
 export * from './select';
+export * from './progress';
