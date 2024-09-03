@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "@soybean-ui/variants": "workspace:*",
-    "lucide-vue-next": "0.436.0",
+    "lucide-vue-next": "0.438.0",
     "nanoid": "5.0.7",
     "radix-vue": "1.9.5"
   },
   "devDependencies": {
     "typescript": "5.5.4",
     "vite": "5.4.2",
-    "vite-plugin-dts": "4.0.3"
+    "vite-plugin-dts": "4.1.0"
   }
 }
