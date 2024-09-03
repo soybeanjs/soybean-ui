@@ -12,7 +12,7 @@ export * from './variants/input';
 export * from './variants/label';
 export * from './variants/popover';
 export * from './variants/radio';
-
+export * from './variants/switch';
 export * from './shared';
 
 export * from './types';
