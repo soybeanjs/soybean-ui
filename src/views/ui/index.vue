@@ -28,6 +28,7 @@ import UiDialog from './modules/dialog.vue';
 import UiInput from './modules/input.vue';
 import UiPopover from './modules/popover.vue';
 import UiRadio from './modules/radio.vue';
+import UiSelect from './modules/select.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -115,6 +116,11 @@ const tabs: TabConfig[] = [
     key: 'radio',
     label: 'Radio',
     component: UiRadio
+  },
+  {
+    key: 'select',
+    label: 'Select',
+    component: UiSelect
   }
 ];
 </script>
