@@ -44,11 +44,11 @@ export type SelectScrollUpButtonProps = PrimitivePropsWithClass;
 
 export type SelectScrollDownButtonProps = PrimitivePropsWithClass;
 
-export type SelectOption = Pick<$SelectItemProps, 'value' | 'disabled'> & {
+export type SelectOption = Pick<$SelectItemProps, 'value' | 'disabled' | 'textValue'> & {
   /**
    * The label to display in the dropdown.
    *
-   * equal to `textValue` in `SelectItemProps`
+   * if `textValue` is not provided, this will be as the `textValue`.
    */
   label: string;
   /** whether to show a separator above this option */
@@ -59,7 +59,7 @@ export type SelectGroupOption = {
   label: string;
   options: SelectOption[];
   groupId?: string;
-};
+} & Pick<SelectOption, 'separator'>;
 
 export type SelectProps = SelectRootProps &
   Pick<SelectPortalProps, 'to'> &
@@ -68,6 +68,7 @@ export type SelectProps = SelectRootProps &
     options: (SelectOption | SelectGroupOption)[];
     size?: SelectSize;
     placeholder?: string;
+    separator?: boolean;
     triggerClass?: ClassValue;
     triggerIconClass?: ClassValue;
     disabledPortal?: boolean;
@@ -83,3 +84,7 @@ export type SelectProps = SelectRootProps &
     groupClass?: ClassValue;
     groupLabelClass?: ClassValue;
   };
+
+export type SelectItemOptionProps = {
+  option: SelectOption;
+} & Pick<SelectProps, 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;

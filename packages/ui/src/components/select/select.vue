@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { SelectGroup, SelectItemText, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'radix-vue';
+import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'radix-vue';
 import type { SelectRootEmits } from 'radix-vue';
 import { computedPick } from '../../shared';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
 import SSelectViewport from './select-viewport.vue';
-import SSelectItem from './select-item.vue';
-import SSelectItemIndicator from './select-item-indicator.vue';
 import SSelectIcon from './select-icon.vue';
 import SSelectSeparator from './select-separator.vue';
 import SSelectLabel from './select-label.vue';
 import SSelectScrollUpButton from './select-scroll-up-button.vue';
 import SSelectScrollDownButton from './select-scroll-down-button.vue';
+import SSelectItemOption from './select-item-option.vue';
 import type { SelectGroupOption, SelectOption, SelectProps } from './types';
 
 defineOptions({
@@ -72,31 +71,41 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
         <SSelectViewport :nonce="nonce" :position="position">
-          <template v-for="opt in options">
+          <template v-for="(opt, index) in options">
             <template v-if="isGroup(opt)">
               <SSelectLabel :key="`groupLabel_${opt.label}`" :class="groupLabelClass">{{ opt.label }}</SSelectLabel>
+              <SSelectSeparator
+                v-if="separator || opt.separator"
+                :key="`separator_${opt.label}`"
+                :class="separatorClass"
+              />
               <SelectGroup :key="`group_${opt.label}`" :class="groupClass">
-                <SSelectItem
-                  v-for="(option, index) in opt.options"
-                  :key="index"
-                  :value="option.value"
-                  :disabled="option.disabled"
-                >
-                  <SelectItemText>{{ option.label }}</SelectItemText>
-                  <SSelectItemIndicator>
+                <template v-for="(item, itemIndex) in opt.options" :key="itemIndex">
+                  <SSelectItemOption
+                    :option="item"
+                    :item-class="itemClass"
+                    :item-text-class="itemTextClass"
+                    :item-indicator-class="itemIndicatorClass"
+                    :separator="itemIndex !== opt.options.length - 1 && (separator || item.separator)"
+                    :separator-class="separatorClass"
+                  >
                     <slot name="itemIndicatorIcon" />
-                  </SSelectItemIndicator>
-                </SSelectItem>
+                  </SSelectItemOption>
+                </template>
               </SelectGroup>
             </template>
             <template v-else>
-              <SSelectItem :key="opt.value" :value="opt.value" :text-value="opt.label" :class="itemClass">
-                <SelectItemText :class="itemTextClass">{{ opt.label }}</SelectItemText>
-                <SSelectItemIndicator :class="itemIndicatorClass">
-                  <slot name="itemIndicatorIcon" />
-                </SSelectItemIndicator>
-              </SSelectItem>
-              <SSelectSeparator v-if="opt.separator" :key="`separator_${opt.value}`" :class="separatorClass" />
+              <SSelectItemOption
+                :key="opt.value"
+                :option="opt"
+                :item-class="itemClass"
+                :item-text-class="itemTextClass"
+                :item-indicator-class="itemIndicatorClass"
+                :separator="index !== options.length - 1 && (separator || opt.separator)"
+                :separator-class="separatorClass"
+              >
+                <slot name="itemIndicatorIcon" />
+              </SSelectItemOption>
             </template>
           </template>
         </SSelectViewport>
