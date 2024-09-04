@@ -8,7 +8,7 @@ defineOptions({
 
 <template>
   <div class="w-200px lt-sm:w-auto">
-    <SSelect />
+    <SSelect :options="[]" />
   </div>
 </template>
 

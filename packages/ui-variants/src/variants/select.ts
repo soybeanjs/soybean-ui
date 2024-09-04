@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const selectVariants = tv({
   slots: {
     content: [
-      `relative z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md`,
+      `relative z-50 min-w-32 max-h-96 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md`,
       `data-[state=open]:(animate-in fade-in-0 zoom-in-95)`,
       `data-[state=closed]:(animate-out fade-out-0 zoom-out-95)`,
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
@@ -22,7 +22,11 @@ export const selectVariants = tv({
       `focus:(bg-accent text-accent-foreground)`,
       `data-[disabled]:(pointer-events-none opacity-50)`
     ],
-    separator: `-mx-1 my-1 h-px bg-muted`
+    itemIndicator: `absolute right-2 text-xs`,
+    separator: `-mx-1 my-1 h-px bg-muted`,
+    label: `px-2 py-1.5 text-sm font-semibold`,
+    scrollUpButton: `flex items-center justify-center py-1 text-xs cursor-default`,
+    scrollDownButton: `flex items-center justify-center py-1 text-xs cursor-default`
   },
   variants: {
     position: {
