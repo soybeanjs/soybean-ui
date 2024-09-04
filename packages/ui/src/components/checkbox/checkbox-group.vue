@@ -52,8 +52,9 @@ function handleUpdateCheckItem(value: string, checked: boolean) {
       :checked="checks.includes(item.value)"
       :color="color"
       :disabled="disabled || item.disabled"
-      @update:checked="handleUpdateCheckItem(item.value, $event)"
+      @update:checked="handleUpdateCheckItem(item.value, $event as boolean)"
     />
+    <!-- BUG: Vue 3.5 @update:checked type error -->
   </Primitive>
 </template>
 
