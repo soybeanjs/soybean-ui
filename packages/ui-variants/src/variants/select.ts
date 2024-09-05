@@ -79,8 +79,8 @@ export const selectVariants = tv({
         item: 'py-2 pl-3 pr-10 text-base',
         itemIndicator: 'text-base right-3',
         label: 'py-2 px-3 text-base',
-        scrollUpButton: 'py-1.5 text-base',
-        scrollDownButton: 'py-1.5 text-base'
+        scrollUpButton: 'py-1.25 text-base',
+        scrollDownButton: 'py-1.25 text-base'
       },
       xxl: {
         trigger: 'h-12 px-4.5 text-lg',
@@ -88,8 +88,8 @@ export const selectVariants = tv({
         item: 'py-2.5 pl-3.5 pr-12 text-lg',
         itemIndicator: 'text-lg right-3.5',
         label: 'py-2.5 px-3.5 text-lg',
-        scrollUpButton: 'py-2 text-lg',
-        scrollDownButton: 'py-2 text-lg'
+        scrollUpButton: 'py-1.25 text-lg',
+        scrollDownButton: 'py-1.25 text-lg'
       }
     }
   },
