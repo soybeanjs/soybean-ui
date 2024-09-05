@@ -6,26 +6,26 @@ defineOptions({
   name: 'UiSelect'
 });
 
-const fruits: SelectOption[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'cherry', label: 'Cherry' },
-  { value: 'date', label: 'Date' }
-];
+const fruits: SelectOption[] = createFruitOptions();
 
-const fruits2: SelectOption[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana', separator: true },
-  { value: 'cherry', label: 'Cherry' },
-  { value: 'date', label: 'Date' }
-];
+const fruits2: SelectOption[] = fruits.map(fruit => ({ ...fruit, separator: fruit.value === 'orange' }));
 
-const fruits3: SelectOption[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana', disabled: true },
-  { value: 'cherry', label: 'Cherry' },
-  { value: 'date', label: 'Date' }
-];
+const fruits3: SelectOption[] = fruits.map(fruit => ({ ...fruit, disabled: fruit.value === 'banana' }));
+
+function createFruitOptions() {
+  const opts: SelectOption[] = [
+    { value: 'apple', label: 'Apple' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'cherry', label: 'Cherry' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'pear', label: 'Pear' },
+    { value: 'plum', label: 'Plum' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'watermelon', label: 'Watermelon' }
+  ];
+
+  return opts;
+}
 
 const options: (SelectOption | SelectGroupOption)[] = [
   {

@@ -67,13 +67,15 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
     </SSelectTrigger>
     <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent :class="contentClass" v-bind="delegatedContentProps">
-        <SSelectScrollUpButton :class="scrollUpButtonClass">
+        <SSelectScrollUpButton :size="size" :class="scrollUpButtonClass">
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
         <SSelectViewport :nonce="nonce" :position="position">
           <template v-for="(opt, index) in options">
             <template v-if="isGroup(opt)">
-              <SSelectLabel :key="`groupLabel_${opt.label}`" :class="groupLabelClass">{{ opt.label }}</SSelectLabel>
+              <SSelectLabel :key="`groupLabel_${opt.label}`" :size="size" :class="groupLabelClass">
+                {{ opt.label }}
+              </SSelectLabel>
               <SSelectSeparator
                 v-if="separator || opt.separator"
                 :key="`separator_${opt.label}`"
@@ -111,7 +113,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
             </template>
           </template>
         </SSelectViewport>
-        <SSelectScrollDownButton>
+        <SSelectScrollDownButton :size="size">
           <slot name="scrollDownIcon" />
         </SSelectScrollDownButton>
       </SSelectContent>

@@ -29,7 +29,9 @@ export type SelectItemProps = $SelectItemProps & {
   size?: SelectSize;
 };
 
-export type SelectItemIndicatorProps = PrimitivePropsWithClass;
+export type SelectItemIndicatorProps = PrimitivePropsWithClass & {
+  size?: SelectSize;
+};
 
 export type SelectIconProps = PrimitivePropsWithClass & {
   size?: SelectSize;
@@ -39,11 +41,16 @@ export type SelectSeparatorProps = PrimitivePropsWithClass;
 
 export type SelectLabelProps = $SelectLabelProps & {
   class?: ClassValue;
+  size?: SelectSize;
 };
 
-export type SelectScrollUpButtonProps = PrimitivePropsWithClass;
+export type SelectScrollUpButtonProps = PrimitivePropsWithClass & {
+  size?: SelectSize;
+};
 
-export type SelectScrollDownButtonProps = PrimitivePropsWithClass;
+export type SelectScrollDownButtonProps = PrimitivePropsWithClass & {
+  size?: SelectSize;
+};
 
 export type SelectOption = Pick<$SelectItemProps, 'value' | 'disabled' | 'textValue'> & {
   /**

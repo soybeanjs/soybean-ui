@@ -22,11 +22,11 @@ export const selectVariants = tv({
       `focus:(bg-accent text-accent-foreground)`,
       `data-[disabled]:(pointer-events-none opacity-50)`
     ],
-    itemIndicator: `absolute right-2 text-xs`,
+    itemIndicator: `absolute`,
     separator: `-mx-1 my-1 h-px bg-muted`,
-    label: `px-2 py-1.5 text-sm font-semibold`,
-    scrollUpButton: `flex items-center justify-center py-1 text-xs cursor-default`,
-    scrollDownButton: `flex items-center justify-center py-1 text-xs cursor-default`
+    label: `font-semibold`,
+    scrollUpButton: `flex items-center justify-center cursor-default`,
+    scrollDownButton: `flex items-center justify-center cursor-default`
   },
   variants: {
     position: {
@@ -41,37 +41,55 @@ export const selectVariants = tv({
         trigger: 'h-6 px-1.5 text-xs',
         icon: 'text-xs',
         item: 'py-1 pl-1 pr-6 text-xs',
-        label: 'py-1 px-1 text-xs'
+        itemIndicator: 'text-xs right-1',
+        label: 'py-1 px-1 text-xs',
+        scrollUpButton: 'py-0.75 text-xs',
+        scrollDownButton: 'py-0.75 text-xs'
       },
       sm: {
         trigger: 'h-7 px-2 text-sm',
         icon: 'text-xs',
         item: 'py-1 pl-1.5 pr-7 text-sm',
-        label: 'py-1 px-1.5 text-sm'
+        itemIndicator: 'text-sm right-1.5',
+        label: 'py-1 px-1.5 text-sm',
+        scrollUpButton: 'py-0.75 text-sm',
+        scrollDownButton: 'py-0.75 text-sm'
       },
       md: {
         trigger: 'h-8 px-3 text-sm',
         icon: 'text-xs',
         item: 'py-1.5 pl-2 pr-8 text-sm',
-        label: 'py-1.5 px-2 text-sm'
+        itemIndicator: 'text-sm right-2',
+        label: 'py-1.5 px-2 text-sm',
+        scrollUpButton: 'py-1 text-sm',
+        scrollDownButton: 'py-1 text-sm'
       },
       lg: {
-        trigger: 'h-9 px-4 text-base',
+        trigger: 'h-9 px-3.5 text-base',
         icon: 'text-sm',
         item: 'py-1.5 pl-2.5 pr-9 text-base',
-        label: 'py-1.5 px-2.5 text-base'
+        itemIndicator: 'text-base right-2.5',
+        label: 'py-1.5 px-2.5 text-base',
+        scrollUpButton: 'py-1 text-base',
+        scrollDownButton: 'py-1 text-base'
       },
       xl: {
-        trigger: 'h-10 px-5 text-base',
+        trigger: 'h-10 px-4 text-base',
         icon: 'text-sm',
         item: 'py-2 pl-3 pr-10 text-base',
-        label: 'py-2 px-3 text-base'
+        itemIndicator: 'text-base right-3',
+        label: 'py-2 px-3 text-base',
+        scrollUpButton: 'py-1.5 text-base',
+        scrollDownButton: 'py-1.5 text-base'
       },
       xxl: {
-        trigger: 'h-12 px-6 text-lg',
+        trigger: 'h-12 px-4.5 text-lg',
         icon: 'text-base',
         item: 'py-2.5 pl-3.5 pr-12 text-lg',
-        label: 'py-2.5 px-3.5 text-lg'
+        itemIndicator: 'text-lg right-3.5',
+        label: 'py-2.5 px-3.5 text-lg',
+        scrollUpButton: 'py-2 text-lg',
+        scrollDownButton: 'py-2 text-lg'
       }
     }
   },

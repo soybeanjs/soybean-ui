@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { SelectScrollDownButton, useForwardProps } from 'radix-vue';
 import { ChevronDown } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
@@ -15,11 +16,15 @@ const delegatedProps = computedOmit(props, ['class']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const { scrollDownButton } = selectVariants();
+const cls = computed(() => {
+  const { scrollDownButton } = selectVariants({ size: props.size });
+
+  return cn(scrollDownButton(), props.class);
+});
 </script>
 
 <template>
-  <SelectScrollDownButton v-bind="forwardedProps" :class="cn(scrollDownButton(), props.class)">
+  <SelectScrollDownButton v-bind="forwardedProps" :class="cls">
     <slot>
       <ChevronDown />
     </slot>

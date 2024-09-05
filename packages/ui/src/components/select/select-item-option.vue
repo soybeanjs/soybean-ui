@@ -22,7 +22,7 @@ defineProps<SelectItemOptionProps>();
     :class="itemClass"
   >
     <SelectItemText :class="itemTextClass">{{ option.label }}</SelectItemText>
-    <SSelectItemIndicator :class="itemIndicatorClass">
+    <SSelectItemIndicator :class="itemIndicatorClass" :size="size">
       <slot name="itemIndicatorIcon" />
     </SSelectItemIndicator>
   </SSelectItem>
