@@ -16,6 +16,7 @@ defineProps<SelectItemOptionProps>();
   <SSelectItem
     :key="option.value"
     :value="option.value"
+    :size="size"
     :text-value="option.label"
     :disabled="option.disabled"
     :class="itemClass"

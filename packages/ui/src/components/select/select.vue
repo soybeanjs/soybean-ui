@@ -59,9 +59,9 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
 
 <template>
   <SelectRoot v-bind="forwarded">
-    <SSelectTrigger :class="triggerClass">
+    <SSelectTrigger :class="triggerClass" :size="size">
       <SelectValue :placeholder="placeholder" />
-      <SSelectIcon :class="triggerIconClass">
+      <SSelectIcon :class="triggerIconClass" :size="size">
         <slot name="triggerIcon" />
       </SSelectIcon>
     </SSelectTrigger>
@@ -83,6 +83,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
                 <template v-for="(item, itemIndex) in opt.options" :key="itemIndex">
                   <SSelectItemOption
                     :option="item"
+                    :size="size"
                     :item-class="itemClass"
                     :item-text-class="itemTextClass"
                     :item-indicator-class="itemIndicatorClass"
@@ -98,6 +99,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
               <SSelectItemOption
                 :key="opt.value"
                 :option="opt"
+                :size="size"
                 :item-class="itemClass"
                 :item-text-class="itemTextClass"
                 :item-indicator-class="itemIndicatorClass"

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { SSelect } from 'soybean-ui';
-import type { SelectGroupOption, SelectOption } from 'soybean-ui';
+import type { SelectGroupOption, SelectOption, SelectSize } from 'soybean-ui';
+
+defineOptions({
+  name: 'UiSelect'
+});
 
 const fruits: SelectOption[] = [
   { value: 'apple', label: 'Apple' },
@@ -40,9 +44,7 @@ const options: (SelectOption | SelectGroupOption)[] = [
   }
 ];
 
-defineOptions({
-  name: 'UiSelect'
-});
+const sizes: SelectSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
@@ -61,6 +63,10 @@ defineOptions({
     <SSelect :options="fruits3" placeholder="Please select a fruit" />
     <div class="py-12px text-18px">Group Option</div>
     <SSelect :options="options" placeholder="Please Select" />
+    <div class="py-12px text-18px">Size</div>
+    <div class="flex flex-wrap gap-12px">
+      <SSelect v-for="size in sizes" :key="size" :options="fruits" placeholder="Please select a fruit" :size="size" />
+    </div>
   </div>
 </template>
 

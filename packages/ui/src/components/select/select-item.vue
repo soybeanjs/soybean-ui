@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { SelectItem, useForwardProps } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
@@ -10,15 +11,19 @@ defineOptions({
 
 const props = defineProps<SelectItemProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const delegatedProps = computedOmit(props, ['class', 'size']);
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const { item } = selectVariants();
+const cls = computed(() => {
+  const { item } = selectVariants({ size: props.size });
+
+  return cn(item(), props.class);
+});
 </script>
 
 <template>
-  <SelectItem v-bind="forwardedProps" :class="cn(item(), props.class)">
+  <SelectItem v-bind="forwardedProps" :class="cls">
     <slot />
   </SelectItem>
 </template>

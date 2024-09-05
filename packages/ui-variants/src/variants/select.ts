@@ -18,7 +18,7 @@ export const selectVariants = tv({
     icon: `shrink-0 text-muted-foreground opacity-70`,
     viewport: 'p-1',
     item: [
-      `relative flex items-center w-full rounded-sm py-1.5 pl-2 pr-8 text-sm outline-none cursor-pointer select-none`,
+      `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground)`,
       `data-[disabled]:(pointer-events-none opacity-50)`
     ],
@@ -39,27 +39,39 @@ export const selectVariants = tv({
     size: {
       xs: {
         trigger: 'h-6 px-1.5 text-xs',
-        icon: 'text-xs'
+        icon: 'text-xs',
+        item: 'py-1 pl-1 pr-6 text-xs',
+        label: 'py-1 px-1 text-xs'
       },
       sm: {
         trigger: 'h-7 px-2 text-sm',
-        icon: 'text-xs'
+        icon: 'text-xs',
+        item: 'py-1 pl-1.5 pr-7 text-sm',
+        label: 'py-1 px-1.5 text-sm'
       },
       md: {
         trigger: 'h-8 px-3 text-sm',
-        icon: 'text-xs'
+        icon: 'text-xs',
+        item: 'py-1.5 pl-2 pr-8 text-sm',
+        label: 'py-1.5 px-2 text-sm'
       },
       lg: {
         trigger: 'h-9 px-4 text-base',
-        icon: 'text-sm'
+        icon: 'text-sm',
+        item: 'py-1.5 pl-2.5 pr-9 text-base',
+        label: 'py-1.5 px-2.5 text-base'
       },
       xl: {
         trigger: 'h-10 px-5 text-base',
-        icon: 'text-sm'
+        icon: 'text-sm',
+        item: 'py-2 pl-3 pr-10 text-base',
+        label: 'py-2 px-3 text-base'
       },
       xxl: {
         trigger: 'h-12 px-6 text-lg',
-        icon: 'text-base'
+        icon: 'text-base',
+        item: 'py-2.5 pl-3.5 pr-12 text-lg',
+        label: 'py-2.5 px-3.5 text-lg'
       }
     }
   },

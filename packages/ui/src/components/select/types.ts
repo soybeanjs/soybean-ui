@@ -26,6 +26,7 @@ export type SelectViewportProps = $SelectViewportProps & {
 
 export type SelectItemProps = $SelectItemProps & {
   class?: ClassValue;
+  size?: SelectSize;
 };
 
 export type SelectItemIndicatorProps = PrimitivePropsWithClass;
@@ -87,4 +88,6 @@ export type SelectProps = SelectRootProps &
 
 export type SelectItemOptionProps = {
   option: SelectOption;
-} & Pick<SelectProps, 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;
+} & Pick<SelectProps, 'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;
+
+export type { SelectPosition, SelectSize };
