@@ -10,7 +10,9 @@ defineOptions({
   name: 'SSelectContent'
 });
 
-const props = defineProps<SelectContentProps>();
+const props = withDefaults(defineProps<SelectContentProps>(), {
+  position: 'popper'
+});
 
 const emit = defineEmits<SelectContentEmits>();
 

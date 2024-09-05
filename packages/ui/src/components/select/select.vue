@@ -17,7 +17,9 @@ defineOptions({
   name: 'SSelect'
 });
 
-const props = defineProps<SelectProps>();
+const props = withDefaults(defineProps<SelectProps>(), {
+  avoidCollisions: true
+});
 
 const emit = defineEmits<SelectRootEmits>();
 
@@ -66,7 +68,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
       </SSelectIcon>
     </SSelectTrigger>
     <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SSelectContent :class="contentClass" v-bind="delegatedContentProps">
+      <SSelectContent :class="contentClass" v-bind="delegatedContentProps" :force-mount="forceMountContent">
         <SSelectScrollUpButton :size="size" :class="scrollUpButtonClass">
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>

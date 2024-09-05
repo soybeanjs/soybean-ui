@@ -94,7 +94,7 @@ export const selectVariants = tv({
     }
   },
   defaultVariants: {
-    position: 'item-aligned',
+    position: 'popper',
     size: 'md'
   }
 });
