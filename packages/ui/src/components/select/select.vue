@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'radix-vue';
-import type { SelectRootEmits } from 'radix-vue';
+import type { SelectContentEmits, SelectRootEmits } from 'radix-vue';
 import { computedPick } from '../../shared';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
@@ -18,10 +18,11 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SelectProps>(), {
-  avoidCollisions: true
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
-const emit = defineEmits<SelectRootEmits>();
+const emit = defineEmits<SelectRootEmits & SelectContentEmits>();
 
 const delegatedRootProps = computedPick(props, [
   'defaultOpen',
@@ -68,7 +69,14 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
       </SSelectIcon>
     </SSelectTrigger>
     <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SSelectContent :class="contentClass" v-bind="delegatedContentProps" :force-mount="forceMountContent">
+      <SSelectContent
+        :class="contentClass"
+        v-bind="delegatedContentProps"
+        :force-mount="forceMountContent"
+        @close-auto-focus="emit('closeAutoFocus', $event)"
+        @escape-key-down="emit('escapeKeyDown', $event)"
+        @pointer-down-outside="emit('pointerDownOutside', $event)"
+      >
         <SSelectScrollUpButton :size="size" :class="scrollUpButtonClass">
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
