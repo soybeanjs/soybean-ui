@@ -12,16 +12,7 @@ export default defineConfig({
       '@ui': fileURLToPath(new URL('./packages/shadcn-ui/src', import.meta.url))
     }
   },
-
-  plugins: [
-    vue({
-      script: {
-        defineModel: true
-      }
-    }),
-    vueJsx(),
-    unocss()
-  ],
+  plugins: [vue({ include: ['**/*.vue', 'packages/**/*.vue'] }), vueJsx(), unocss()],
   server: {
     host: '0.0.0.0',
     port: 1997,
