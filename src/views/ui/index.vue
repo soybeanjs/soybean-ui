@@ -30,6 +30,7 @@ import UiPopover from './modules/popover.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
 
+import UiSwitch from './modules/switch.vue';
 defineOptions({
   name: 'UiPage'
 });
@@ -121,6 +122,11 @@ const tabs: TabConfig[] = [
     key: 'select',
     label: 'Select',
     component: UiSelect
+  },
+  {
+    key: 'switch',
+    label: 'Switch',
+    component: UiSwitch
   }
 ];
 </script>
