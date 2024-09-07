@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ProgressRoot } from 'radix-vue';
 import { cn, progressVariants } from '@soybean-ui/variants';
+import { computed } from 'vue';
+import { computedOmit } from '../../shared';
 import type { ProgressRootProps } from './types';
 
 defineOptions({
@@ -11,11 +13,17 @@ const props = withDefaults(defineProps<ProgressRootProps>(), {
   as: 'div'
 });
 
-const { root } = progressVariants({ size: props.size });
+const delegatedProps = computedOmit(props, ['class']);
+
+const cls = computed(() => {
+  const { root } = progressVariants({ size: props.size });
+
+  return cn(root(), props.class);
+});
 </script>
 
 <template>
-  <ProgressRoot :as="as" :as-child="asChild" :class="cn(root(), props.class)">
+  <ProgressRoot v-bind="delegatedProps" :class="cls">
     <slot />
   </ProgressRoot>
 </template>
