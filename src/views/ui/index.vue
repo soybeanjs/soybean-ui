@@ -14,6 +14,7 @@ import {
 } from '@soybean-ui/shadcn-ui';
 import { SButtonIcon } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
+import UiTextarea from '@/views/ui/modules/textarea.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
 import UiAlertDialog from './modules/alert-dialog.vue';
@@ -121,6 +122,11 @@ const tabs: TabConfig[] = [
     key: 'select',
     label: 'Select',
     component: UiSelect
+  },
+  {
+    key: 'textarea',
+    label: 'Textarea',
+    component: UiTextarea
   }
 ];
 </script>
