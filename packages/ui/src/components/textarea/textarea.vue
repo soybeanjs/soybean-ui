@@ -33,5 +33,5 @@ function handleInput(event: InputEvent) {
 </script>
 
 <template>
-  <textarea v-bind="forwardedProps" :value="modelValue || defaultValue" :class="cls" @input="handleInput"></textarea>
+  <textarea v-bind="forwardedProps" :value="modelValue || defaultValue" :class="cls" @input="handleInput" />
 </template>

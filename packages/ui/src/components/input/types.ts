@@ -1,16 +1,11 @@
+import type { InputHTMLAttributes } from 'vue';
 import type { ClassValue, InputSize } from '@soybean-ui/variants';
 
-export interface InputProps {
+export type InputProps = {
   class?: ClassValue;
   defaultValue?: string;
   modelValue?: string;
   size?: InputSize;
-  id?: string;
-  name?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  required?: boolean;
-  type?: string;
-}
+} & /* @vue-ignore */ InputHTMLAttributes;
 
 export type { InputSize };
