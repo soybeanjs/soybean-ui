@@ -10,9 +10,7 @@ defineOptions({
   name: 'SLoadingButton'
 });
 
-const props = withDefaults(defineProps<LoadingButtonProps>(), {
-  loading: false
-});
+const props = defineProps<LoadingButtonProps>();
 
 const delegatedProps = computedOmit(props, ['disabled', 'loading']);
 

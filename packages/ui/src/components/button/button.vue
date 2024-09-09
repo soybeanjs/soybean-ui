@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { Primitive } from 'radix-vue';
+import { useForwardProps } from 'radix-vue';
 import { buttonVariants, cn } from '@soybean-ui/variants';
+import { computedOmit } from '../../shared';
 import type { ButtonProps } from './types';
 
 defineOptions({
   name: 'SButton'
 });
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  as: 'button',
-  disabled: false
-});
+const props = defineProps<ButtonProps>();
+
+const delegatedProps = computedOmit(props, ['class', 'color', 'variant', 'size', 'shape', 'fitContent', 'shadow']);
+
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
-    :disabled="disabled"
+  <button
+    v-bind="forwardedProps"
     :class="cn(buttonVariants({ color, variant, size, shape, shadow, fitContent }), props.class)"
   >
     <slot name="leading" />
     <slot />
     <slot name="trailing" />
-  </Primitive>
+  </button>
 </template>
 
 <style scoped></style>
