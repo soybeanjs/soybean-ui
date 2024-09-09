@@ -32,3 +32,7 @@ export function computedPick<T extends Record<string, any>, K extends keyof T>(o
 export function computedOmit<T extends Record<string, any>, K extends keyof T>(props: T, keys: K[]) {
   return computed(() => omit(props, keys));
 }
+
+export function isBlankString(value: unknown | undefined) {
+  return typeof value === 'string' && value === '';
+}

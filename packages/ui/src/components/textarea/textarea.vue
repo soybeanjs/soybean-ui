@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useForwardProps } from 'radix-vue';
 import { cn, textareaVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
+import { computedOmit, isBlankString } from '../../shared';
 import type { TextareaProps } from './types';
 
 defineOptions({
@@ -15,7 +17,15 @@ type Emits = {
 
 const emit = defineEmits<Emits>();
 
-const delegatedProps = computedOmit(props, ['class', 'size', 'modelValue', 'defaultValue']);
+const delegatedProps = computedOmit(props, ['class', 'size', 'resize', 'modelValue', 'defaultValue']);
+
+const forwardedProps = useForwardProps(delegatedProps);
+
+const cls = computed(() => {
+  const resize = isBlankString(props.resize) ? true : props.resize;
+
+  return cn(textareaVariants({ size: props.size, resize }), props.class);
+});
 
 function handleInput(event: InputEvent) {
   emit('update:modelValue', (event.target as HTMLTextAreaElement).value);
@@ -23,10 +33,5 @@ function handleInput(event: InputEvent) {
 </script>
 
 <template>
-  <textarea
-    v-bind="delegatedProps"
-    :value="modelValue || defaultValue"
-    :class="cn(textareaVariants({ size }), props.class)"
-    @input="handleInput"
-  ></textarea>
+  <textarea v-bind="forwardedProps" :value="modelValue || defaultValue" :class="cls" @input="handleInput"></textarea>
 </template>

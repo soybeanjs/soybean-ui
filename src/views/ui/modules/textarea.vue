@@ -44,10 +44,10 @@ const rows: number[] = [1, 2, 3, 4];
     <STextarea model-value="the Textarea is disabled" disabled placeholder="Please Input Textarea" />
     <div class="py-12px text-18px">Resize</div>
     <div class="flex flex-col gap-6">
-      <STextarea model-value="Resize None" class="resize-none" />
-      <STextarea model-value="Resize Y" class="resize-y" />
-      <STextarea model-value="Resize X" class="resize-x" />
-      <STextarea model-value="Resize Both" class="resize" />
+      <STextarea model-value="Resize None" :resize="false" />
+      <STextarea model-value="Resize Vertical" resize="vertical" />
+      <STextarea model-value="Resize Horizontal" resize="horizontal" />
+      <STextarea model-value="Resize Both" resize />
     </div>
   </div>
 </template>

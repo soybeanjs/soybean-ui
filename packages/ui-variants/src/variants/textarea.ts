@@ -16,13 +16,22 @@ export const textareaVariants = tv({
       lg: 'px-3 py-1.25 text-base',
       xl: 'px-3.5 py-1.75 text-base',
       xxl: 'px-4 py-2.25 text-lg'
+    },
+    resize: {
+      true: 'resize',
+      false: 'resize-none',
+      vertical: 'resize-y',
+      horizontal: 'resize-x'
     }
   },
   defaultVariants: {
-    size: 'md'
+    size: 'md',
+    resize: 'vertical'
   }
 });
 
 type TextareaVariants = VariantProps<typeof textareaVariants>;
 
 export type TextareaSize = NonNullable<TextareaVariants['size']>;
+
+export type TextareaResize = NonNullable<TextareaVariants['resize']>;
