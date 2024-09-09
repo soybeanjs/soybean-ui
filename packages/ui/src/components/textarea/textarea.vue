@@ -7,19 +7,26 @@ defineOptions({
   name: 'STextarea'
 });
 
-const props = withDefaults(defineProps<TextareaProps>(), {
-  disabled: false
-});
+const props = defineProps<TextareaProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'size']);
+type Emits = {
+  'update:modelValue': [value: string];
+};
 
-const modelValue = defineModel<string>();
+const emit = defineEmits<Emits>();
+
+const delegatedProps = computedOmit(props, ['class', 'size', 'modelValue', 'defaultValue']);
+
+function handleInput(event: InputEvent) {
+  emit('update:modelValue', (event.target as HTMLTextAreaElement).value);
+}
 </script>
 
 <template>
   <textarea
     v-bind="delegatedProps"
-    v-model="modelValue"
+    :value="modelValue || defaultValue"
     :class="cn(textareaVariants({ size }), props.class)"
+    @input="handleInput"
   ></textarea>
 </template>

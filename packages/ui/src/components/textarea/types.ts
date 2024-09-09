@@ -1,17 +1,11 @@
+import type { TextareaHTMLAttributes } from 'vue';
 import type { ClassValue, TextareaSize } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
 
-export type TextareaProps = PrimitivePropsWithClass & {
+export type TextareaProps = {
   class?: ClassValue;
-  defaultValue?: string;
   modelValue?: string;
+  defaultValue?: string;
   size?: TextareaSize;
-  id?: string;
-  name?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  required?: boolean;
-  type?: string;
-};
+} & /* @vue-ignore */ TextareaHTMLAttributes;
 
 export type { TextareaSize };
