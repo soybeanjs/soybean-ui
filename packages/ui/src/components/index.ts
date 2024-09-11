@@ -15,3 +15,4 @@ export * from './radio';
 export * from './select';
 export * from './textarea';
 export * from './switch';
+export * from './progress';

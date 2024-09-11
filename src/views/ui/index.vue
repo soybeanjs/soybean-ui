@@ -31,6 +31,7 @@ import UiPopover from './modules/popover.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
 import UiSwitch from './modules/switch.vue';
+import UiProgress from './modules/progress.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -133,6 +134,11 @@ const tabs: TabConfig[] = [
     key: 'switch',
     label: 'Switch',
     component: UiSwitch
+  },
+  {
+    key: 'progress',
+    label: 'Progress',
+    component: UiProgress
   }
 ];
 </script>
