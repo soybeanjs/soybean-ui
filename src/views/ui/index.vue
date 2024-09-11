@@ -28,9 +28,9 @@ import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiInput from './modules/input.vue';
 import UiPopover from './modules/popover.vue';
+import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
-import UiProgress from './modules/progress.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -115,6 +115,11 @@ const tabs: TabConfig[] = [
     component: UiPopover
   },
   {
+    key: 'progress',
+    label: 'Progress',
+    component: UiProgress
+  },
+  {
     key: 'radio',
     label: 'Radio',
     component: UiRadio
@@ -128,11 +133,6 @@ const tabs: TabConfig[] = [
     key: 'textarea',
     label: 'Textarea',
     component: UiTextarea
-  },
-  {
-    key: 'progress',
-    label: 'Progress',
-    component: UiProgress
   }
 ];
 </script>
