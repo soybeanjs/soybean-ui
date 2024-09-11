@@ -11,10 +11,10 @@ export * from './variants/dialog';
 export * from './variants/input';
 export * from './variants/label';
 export * from './variants/popover';
+export * from './variants/progress';
 export * from './variants/radio';
 export * from './variants/select';
 export * from './variants/textarea';
-export * from './variants/progress';
 
 export * from './shared';
 

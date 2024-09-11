@@ -11,7 +11,7 @@ export * from './collapsible';
 export * from './dialog';
 export * from './input';
 export * from './popover';
+export * from './progress';
 export * from './radio';
 export * from './select';
 export * from './textarea';
-export * from './progress';
