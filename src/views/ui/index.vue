@@ -31,6 +31,7 @@ import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
+import UiToggle from './modules/toggle.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -133,6 +134,11 @@ const tabs: TabConfig[] = [
     key: 'textarea',
     label: 'Textarea',
     component: UiTextarea
+  },
+  {
+    key: 'toggle',
+    label: 'Toggle',
+    component: UiToggle
   }
 ];
 </script>
