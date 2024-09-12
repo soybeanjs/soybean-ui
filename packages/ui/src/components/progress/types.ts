@@ -1,9 +1,10 @@
-import type { ClassValue, ProgressColor, ProgressSize } from '@soybean-ui/variants';
 import type { ProgressRootProps as $ProgressRootProps } from 'radix-vue';
+import type { ClassValue, ProgressColor, ProgressSize } from '@soybean-ui/variants';
 
 export type ProgressRootProps = $ProgressRootProps & {
   class?: ClassValue;
   size?: ProgressSize;
+  color?: ProgressColor;
 };
 
 export type ProgressIndicatorProps = {
@@ -12,11 +13,8 @@ export type ProgressIndicatorProps = {
   color?: ProgressColor;
 };
 
-export type ProgressProps = $ProgressRootProps & {
-  class?: ClassValue;
+export type ProgressProps = ProgressRootProps & {
   indicatorClass?: ClassValue;
-  color?: ProgressColor;
-  size?: ProgressSize;
 };
 
 export type { ProgressColor, ProgressSize };
