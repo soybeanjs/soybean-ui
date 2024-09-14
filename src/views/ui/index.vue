@@ -14,7 +14,6 @@ import {
 } from '@soybean-ui/shadcn-ui';
 import { SButtonIcon } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
-import UiTextarea from '@/views/ui/modules/textarea.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
 import UiAlertDialog from './modules/alert-dialog.vue';
@@ -31,6 +30,7 @@ import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
+import UiTextarea from './modules/textarea.vue';
 
 defineOptions({
   name: 'UiPage'
