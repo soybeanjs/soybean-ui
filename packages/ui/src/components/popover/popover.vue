@@ -8,7 +8,7 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 import type { PopoverRootEmits } from 'radix-vue';
-import { computedOmit, computedPick } from '../../shared';
+import { computedPick } from '../../shared';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
 import type { PopoverProps } from './types';
@@ -17,7 +17,10 @@ defineOptions({
   name: 'SPopover'
 });
 
-const props = defineProps<PopoverProps>();
+const props = withDefaults(defineProps<PopoverProps>(), {
+  avoidCollisions: true,
+  prioritizePosition: true
+});
 
 const emit = defineEmits<PopoverRootEmits>();
 
@@ -33,19 +36,20 @@ const delegatedRootProps = computedPick(props, ['defaultOpen', 'open', 'modal'])
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
-const delegatedContentProps = computedOmit(props, [
-  'defaultOpen',
-  'open',
-  'modal',
-  'to',
-  'disabledPortal',
-  'forceMountPortal',
-  'contentClass',
-  'forceMountContent',
-  'showArrow',
-  'arrowClass',
-  'arrowWidth',
-  'arrowHeight'
+const delegatedContentProps = computedPick(props, [
+  'trapFocus',
+  'side',
+  'sideOffset',
+  'align',
+  'alignOffset',
+  'avoidCollisions',
+  'collisionBoundary',
+  'collisionPadding',
+  'arrowPadding',
+  'sticky',
+  'hideWhenDetached',
+  'updatePositionStrategy',
+  'prioritizePosition'
 ]);
 
 const contentProps = useForwardProps(delegatedContentProps);
@@ -57,7 +61,7 @@ const contentProps = useForwardProps(delegatedContentProps);
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SPopoverContent v-bind="contentProps">
+      <SPopoverContent :class="contentClass" :force-mount="forceMountContent" v-bind="contentProps">
         <slot />
         <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
         <PopoverClose v-if="slots.close" as-child>
