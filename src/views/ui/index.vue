@@ -31,6 +31,7 @@ import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
 import UiTextarea from './modules/textarea.vue';
+import UITooltip from './modules/tooltip.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -133,6 +134,11 @@ const tabs: TabConfig[] = [
     key: 'textarea',
     label: 'Textarea',
     component: UiTextarea
+  },
+  {
+    key: 'tooltip',
+    label: 'Tooltip',
+    component: UITooltip
   }
 ];
 </script>

@@ -15,6 +15,7 @@ export * from './variants/progress';
 export * from './variants/radio';
 export * from './variants/select';
 export * from './variants/textarea';
+export * from './variants/tooltip';
 
 export * from './shared';
 
