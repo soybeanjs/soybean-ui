@@ -30,6 +30,7 @@ import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
+import UiSwitch from './modules/switch.vue';
 import UiTextarea from './modules/textarea.vue';
 import UITooltip from './modules/tooltip.vue';
 
@@ -129,6 +130,11 @@ const tabs: TabConfig[] = [
     key: 'select',
     label: 'Select',
     component: UiSelect
+  },
+  {
+    key: 'switch',
+    label: 'Switch',
+    component: UiSwitch
   },
   {
     key: 'textarea',
