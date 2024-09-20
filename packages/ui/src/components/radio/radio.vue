@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import { useForwardProps } from 'radix-vue';
-import { nanoid } from 'nanoid';
 import { computedOmit } from '../../shared';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';
@@ -27,7 +26,9 @@ const delegatedProps = computedOmit(props, [
 
 const forwarded = useForwardProps(delegatedProps);
 
-const radioId = computed(() => props.id || `radio-${nanoid(8)}`);
+const defaultId = useId();
+
+const radioId = computed(() => props.id || `radio-${defaultId}`);
 </script>
 
 <template>
