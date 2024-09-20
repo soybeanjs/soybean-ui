@@ -11,9 +11,7 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = withDefaults(defineProps<RadioGroupProps>(), {
-  as: 'div'
-});
+const props = defineProps<RadioGroupProps>();
 
 const delegatedProps = computedOmit(props, ['class', 'color', 'items']);
 

@@ -7,8 +7,8 @@ import type {
   SelectPortalProps,
   SelectRootProps
 } from 'radix-vue';
-import type { ClassValue, SelectPosition, SelectSize } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
+import type { SelectPosition, SelectSize } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
 export type SelectContentProps = $SelectContentProps & {
   class?: ClassValue;
@@ -29,26 +29,32 @@ export type SelectItemProps = $SelectItemProps & {
   size?: SelectSize;
 };
 
-export type SelectItemIndicatorProps = PrimitivePropsWithClass & {
+export type SelectItemIndicatorProps = {
+  class?: ClassValue;
   size?: SelectSize;
 };
 
-export type SelectIconProps = PrimitivePropsWithClass & {
+export type SelectIconProps = {
+  class?: ClassValue;
   size?: SelectSize;
 };
 
-export type SelectSeparatorProps = PrimitivePropsWithClass;
+export type SelectSeparatorProps = {
+  class?: ClassValue;
+};
 
 export type SelectLabelProps = $SelectLabelProps & {
   class?: ClassValue;
   size?: SelectSize;
 };
 
-export type SelectScrollUpButtonProps = PrimitivePropsWithClass & {
+export type SelectScrollUpButtonProps = {
+  class?: ClassValue;
   size?: SelectSize;
 };
 
-export type SelectScrollDownButtonProps = PrimitivePropsWithClass & {
+export type SelectScrollDownButtonProps = {
+  class?: ClassValue;
   size?: SelectSize;
 };
 

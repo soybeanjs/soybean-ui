@@ -3,7 +3,8 @@ import type {
   AvatarImageProps as $AvatarImageProps,
   AvatarRootProps as $AvatarRootProps
 } from 'radix-vue';
-import type { AvatarSize, ClassValue } from '@soybean-ui/variants';
+import type { AvatarSize } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
 export type AvatarRootProps = $AvatarRootProps & {
   class?: ClassValue;

@@ -1,27 +1,35 @@
-import type { CardSplit as $CardSplit, CardSize, ClassValue } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
+import type { CardSplit as $CardSplit, CardSize } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
-export type CardRootProps = PrimitivePropsWithClass;
+export type CardRootProps = {
+  class?: ClassValue;
+};
 
 export type CardSplit = $CardSplit;
 
-export type CardHeaderProps = PrimitivePropsWithClass & {
+export type CardHeaderProps = {
+  class?: ClassValue;
   size?: CardSize;
   /** show a divider between the header and the content */
   split?: boolean;
 };
 
-export type CardTitleRootProps = PrimitivePropsWithClass;
+export type CardTitleRootProps = {
+  class?: ClassValue;
+};
 
-export type CardTitleProps = PrimitivePropsWithClass & {
+export type CardTitleProps = {
+  class?: ClassValue;
   size?: CardSize;
 };
 
-export type CardContentProps = PrimitivePropsWithClass & {
+export type CardContentProps = {
+  class?: ClassValue;
   size?: CardSize;
 };
 
-export type CardFooterProps = PrimitivePropsWithClass & {
+export type CardFooterProps = {
+  class?: ClassValue;
   size?: CardSize;
   /** show a divider between the footer and the content */
   split?: boolean;

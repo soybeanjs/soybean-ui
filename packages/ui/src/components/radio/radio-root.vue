@@ -7,15 +7,13 @@ defineOptions({
   name: 'SRadioRoot'
 });
 
-const props = withDefaults(defineProps<RadioRootProps>(), {
-  as: 'div'
-});
+const props = defineProps<RadioRootProps>();
 
 const { root } = radioVariants();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(root(), props.class)">
+  <Primitive as="div" :class="cn(root(), props.class)">
     <slot />
   </Primitive>
 </template>

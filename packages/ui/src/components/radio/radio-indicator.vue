@@ -17,6 +17,7 @@ const forwarded = useForwardProps(delegatedProps);
 
 const cls = computed(() => {
   const { indicator } = radioVariants();
+
   return cn(indicator({ color: props.color }), props.class);
 });
 </script>

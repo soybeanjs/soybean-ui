@@ -1,14 +1,12 @@
-import type { ButtonHTMLAttributes } from 'vue';
 import type {
   ButtonColor,
   ButtonGroupOrientation,
   ButtonShadow,
   ButtonShape,
   ButtonSize,
-  ButtonVariant,
-  ClassValue
+  ButtonVariant
 } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
+import type { ClassValue } from '../../types';
 
 export type ButtonProps = {
   class?: ClassValue;
@@ -18,14 +16,26 @@ export type ButtonProps = {
   shape?: ButtonShape;
   fitContent?: boolean;
   shadow?: ButtonShadow;
+  // from ButtonHTMLAttributes
+  autofocus?: boolean;
   disabled?: boolean;
-} & /* @vue-ignore */ ButtonHTMLAttributes;
+  form?: string;
+  formaction?: string;
+  formenctype?: string;
+  formmethod?: string;
+  formnovalidate?: boolean;
+  formtarget?: string;
+  name?: string;
+  type?: 'submit' | 'reset' | 'button';
+  value?: string | ReadonlyArray<string> | number;
+};
 
 export type LoadingButtonProps = ButtonProps & {
   loading?: boolean;
 };
 
-export type ButtonGroupProps = PrimitivePropsWithClass & {
+export type ButtonGroupProps = {
+  class?: ClassValue;
   orientation?: ButtonGroupOrientation;
 };
 

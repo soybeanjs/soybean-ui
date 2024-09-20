@@ -3,10 +3,12 @@ import type {
   CheckboxIndicatorProps as $CheckboxIndicatorProps,
   CheckboxCheckedState
 } from 'radix-vue';
-import type { CheckboxColor, CheckboxOrientation, ClassValue } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
+import type { CheckboxColor, CheckboxOrientation } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
-export type CheckboxRootProps = PrimitivePropsWithClass;
+export type CheckboxRootProps = {
+  class?: ClassValue;
+};
 
 export type CheckboxControlProps = $CheckboxControlProps & {
   class?: ClassValue;
@@ -17,7 +19,9 @@ export type CheckboxIndicatorProps = $CheckboxIndicatorProps & {
   class?: ClassValue;
 };
 
-export type CheckboxLabelProps = PrimitivePropsWithClass;
+export type CheckboxLabelProps = {
+  class?: ClassValue;
+};
 
 export type CheckboxProps = $CheckboxControlProps & {
   class?: ClassValue;
@@ -34,7 +38,8 @@ export type CheckboxGroupItem = CheckboxProps & {
   value: string;
 };
 
-export type CheckboxGroupProps = PrimitivePropsWithClass & {
+export type CheckboxGroupProps = {
+  class?: ClassValue;
   defaultValues?: string[];
   values?: string[];
   items?: CheckboxGroupItem[];

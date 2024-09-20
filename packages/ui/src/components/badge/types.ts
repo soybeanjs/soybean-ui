@@ -1,7 +1,8 @@
-import type { BadgeColor, BadgeVariant, ClassValue } from '@soybean-ui/variants';
-import type { PrimitivePropsWithClass } from '../../types';
+import type { BadgeColor, BadgeVariant } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
-export type BadgeProps = PrimitivePropsWithClass & {
+export type BadgeProps = {
+  class?: ClassValue;
   color?: BadgeColor;
   variant?: BadgeVariant;
   closable?: boolean;

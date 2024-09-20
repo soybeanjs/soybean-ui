@@ -9,13 +9,11 @@ defineOptions({
 
 const props = defineProps<AccordionContentProps>();
 
-const { content, contentBody } = accordionVariants();
+const { content } = accordionVariants();
 </script>
 
 <template>
-  <AccordionContent :as="as" :as-child="asChild" :class="cn(content(), props.class)">
-    <div :class="cn(contentBody(), bodyClass)">
-      <slot />
-    </div>
+  <AccordionContent :class="cn(content(), props.class)">
+    <slot />
   </AccordionContent>
 </template>

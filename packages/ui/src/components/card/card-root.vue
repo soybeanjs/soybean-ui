@@ -7,15 +7,13 @@ defineOptions({
   name: 'SCardRoot'
 });
 
-const props = withDefaults(defineProps<CardRootProps>(), {
-  as: 'div'
-});
+const props = defineProps<CardRootProps>();
 
 const { root } = cardVariants();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(root(), props.class)">
+  <Primitive as="div" :class="cn(root(), props.class)">
     <slot />
   </Primitive>
 </template>

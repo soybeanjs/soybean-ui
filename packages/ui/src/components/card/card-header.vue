@@ -9,10 +9,7 @@ defineOptions({
   name: 'SCardHeader'
 });
 
-const props = withDefaults(defineProps<CardHeaderProps>(), {
-  as: 'div',
-  split: false
-});
+const props = defineProps<CardHeaderProps>();
 
 const cls = computed(() => {
   const split: CardSplit = props.split ? 'header' : 'none';
@@ -24,7 +21,7 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls">
+  <Primitive as="div" :class="cls">
     <slot />
   </Primitive>
 </template>

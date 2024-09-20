@@ -147,9 +147,6 @@ importers:
       lucide-vue-next:
         specifier: 0.438.0
         version: 0.438.0(vue@3.5.1(typescript@5.5.4))
-      nanoid:
-        specifier: 5.0.7
-        version: 5.0.7
       radix-vue:
         specifier: 1.9.5
         version: 1.9.5(vue@3.5.1(typescript@5.5.4))

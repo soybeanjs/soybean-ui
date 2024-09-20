@@ -14,14 +14,20 @@ import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';
 import SAccordionContent from './accordion-content.vue';
+import SAccordionContentBody from './accordion-content-body.vue';
 import type { AccordionItemData, AccordionProps, SingleOrMultipleType } from './types';
 
+defineOptions({
+  name: 'SAccordion'
+});
+
 const props = defineProps<AccordionProps<T, V, E>>();
+
 const emit = defineEmits<AccordionRootEmits>();
 
 const delegatedProps = computedOmit(props, [
   'items',
-  'itemProps',
+  'itemClass',
   'headerClass',
   'triggerClass',
   'contentClass',
@@ -29,26 +35,26 @@ const delegatedProps = computedOmit(props, [
 ]);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
-
-defineOptions({
-  name: 'SAccordion'
-});
 </script>
 
 <template>
-  <AccordionRoot v-slot="rootSlotProps" v-bind="forwarded">
+  <AccordionRoot v-slot="{ modelValue }" v-bind="forwarded">
     <template v-for="item in items" :key="item.value">
-      <SAccordionItem v-slot="itemSlotProps" :disabled="item.disabled" :value="item.value" v-bind="itemProps">
+      <SAccordionItem v-slot="{ open }" :value="item.value" :disabled="item.disabled">
         <SAccordionHeader :class="headerClass">
-          <SAccordionTrigger :class="triggerClass">
-            <slot name="trigger" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.title }}</slot>
-            <template #icon>
-              <slot name="icon" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }" />
-            </template>
-          </SAccordionTrigger>
+          <slot name="trigger" v-bind="{ modelValue, open, item }">
+            <SAccordionTrigger :class="triggerClass">
+              <slot name="triggerContent" v-bind="{ modelValue, open, item }">{{ item.title }}</slot>
+              <template #icon>
+                <slot name="triggerIcon" v-bind="{ modelValue, open, item }" />
+              </template>
+            </SAccordionTrigger>
+          </slot>
         </SAccordionHeader>
-        <SAccordionContent :class="contentClass" :body-class="contentBodyClass">
-          <slot name="content" v-bind="{ ...rootSlotProps, ...itemSlotProps, items, item }">{{ item.content }}</slot>
+        <SAccordionContent :class="contentClass">
+          <SAccordionContentBody :class="contentBodyClass">
+            <slot name="content" v-bind="{ modelValue, open, item }">{{ item.content }}</slot>
+          </SAccordionContentBody>
         </SAccordionContent>
       </SAccordionItem>
     </template>

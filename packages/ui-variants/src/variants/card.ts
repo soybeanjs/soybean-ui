@@ -7,6 +7,7 @@ export const cardVariants = tv({
     root: 'flex-col-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex-y-center justify-between',
     title: 'font-semibold leading-none tracking-tight',
+    titleRoot: 'flex-y-center gap-2',
     content: 'flex-grow overflow-hidden',
     footer: 'flex-y-center justify-between'
   },

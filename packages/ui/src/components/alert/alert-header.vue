@@ -7,15 +7,13 @@ defineOptions({
   name: 'SAlertHeader'
 });
 
-const props = withDefaults(defineProps<AlertHeaderProps>(), {
-  as: 'div'
-});
+const props = defineProps<AlertHeaderProps>();
 
 const { header } = alertVariants();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(header(), props.class)" role="alert">
+  <Primitive as="div" :class="cn(header(), props.class)" role="alert">
     <slot />
   </Primitive>
 </template>

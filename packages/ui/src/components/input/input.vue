@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue';
+import { Primitive, useForwardProps } from 'radix-vue';
 import { cn, inputVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
 import type { InputProps } from './types';
@@ -22,13 +22,14 @@ const forwardedProps = useForwardProps(delegatedProps);
 
 const modelValue = defineModel<string>();
 
-function handleInput(event: InputEvent) {
+function handleInput(event: Event) {
   emit('update:modelValue', (event.target as HTMLInputElement).value);
 }
 </script>
 
 <template>
-  <input
+  <Primitive
+    as="input"
     v-bind="forwardedProps"
     :value="modelValue || defaultValue"
     :class="cn(inputVariants({ size }), props.class)"

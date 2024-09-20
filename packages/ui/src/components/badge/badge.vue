@@ -9,9 +9,7 @@ defineOptions({
   name: 'SBadge'
 });
 
-const props = withDefaults(defineProps<BadgeProps>(), {
-  as: 'div'
-});
+const props = defineProps<BadgeProps>();
 
 const close = defineModel<boolean>('close', {
   default: false
@@ -23,7 +21,7 @@ function closeAlert() {
 </script>
 
 <template>
-  <Primitive v-show="!close" :as="as" :as-child="asChild" :class="cn(badgeVariants({ color, variant }), props.class)">
+  <Primitive v-show="!close" as="div" :class="cn(badgeVariants({ color, variant }), props.class)">
     <slot />
     <slot name="trailing" :close-alert="closeAlert">
       <SButtonIcon

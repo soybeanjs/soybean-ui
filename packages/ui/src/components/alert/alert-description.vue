@@ -7,15 +7,13 @@ defineOptions({
   name: 'SAlertDescription'
 });
 
-const props = withDefaults(defineProps<AlertDescriptionProps>(), {
-  as: 'div'
-});
+const props = defineProps<AlertDescriptionProps>();
 
 const { description } = alertVariants();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(description(), props.class)">
+  <Primitive as="div" :class="cn(description(), props.class)">
     <slot />
   </Primitive>
 </template>

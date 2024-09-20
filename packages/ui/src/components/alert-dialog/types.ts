@@ -4,7 +4,8 @@ import type {
   AlertDialogPortalProps,
   AlertDialogProps as AlertDialogRootProps
 } from 'radix-vue';
-import type { ClassValue, ThemeColor } from '@soybean-ui/variants';
+import type { ThemeColor } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 import type { CardProps } from '../card/types';
 
 export type AlertDialogOverlayProps = $AlertDialogOverlayProps & {

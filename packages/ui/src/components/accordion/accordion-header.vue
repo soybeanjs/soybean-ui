@@ -13,7 +13,7 @@ const { header } = accordionVariants();
 </script>
 
 <template>
-  <AccordionHeader :as="as" :as-child="asChild" :class="cn(header(), props.class)">
+  <AccordionHeader :class="cn(header(), props.class)">
     <slot />
   </AccordionHeader>
 </template>

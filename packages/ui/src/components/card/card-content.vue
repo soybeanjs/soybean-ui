@@ -8,9 +8,7 @@ defineOptions({
   name: 'SCardContent'
 });
 
-const props = withDefaults(defineProps<CardContentProps>(), {
-  as: 'div'
-});
+const props = defineProps<CardContentProps>();
 
 const cls = computed(() => {
   const { content } = cardVariants({ size: props.size });
@@ -20,10 +18,8 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls">
-    <div class="h-full">
-      <slot />
-    </div>
+  <Primitive as="div" :class="cls">
+    <slot />
   </Primitive>
 </template>
 

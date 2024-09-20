@@ -14,10 +14,10 @@ const { trigger, triggerIcon } = accordionVariants();
 </script>
 
 <template>
-  <AccordionTrigger :as="as" :as-child="asChild" :class="cn(trigger(), props.class)">
+  <AccordionTrigger :class="cn(trigger(), props.class)">
     <slot />
     <slot name="icon">
-      <ChevronDown :size="16" :class="cn(triggerIcon())" />
+      <ChevronDown :class="cn(triggerIcon())" />
     </slot>
   </AccordionTrigger>
 </template>

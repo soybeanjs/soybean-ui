@@ -7,13 +7,11 @@ defineOptions({
   name: 'SButtonGroup'
 });
 
-const props = withDefaults(defineProps<ButtonGroupProps>(), {
-  as: 'div'
-});
+const props = defineProps<ButtonGroupProps>();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(buttonGroupVariants({ orientation }), props.class)">
+  <Primitive as="div" :class="cn(buttonGroupVariants({ orientation }), props.class)">
     <slot />
   </Primitive>
 </template>

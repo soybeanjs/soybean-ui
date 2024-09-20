@@ -11,7 +11,7 @@ const props = defineProps<LabelProps>();
 </script>
 
 <template>
-  <Label :as="as" :as-child="asChild" :for="props.for" :class="cn(labelVariants(), props.class)">
+  <Label :for="props.for" :class="cn(labelVariants({ size }), props.class)">
     <slot />
   </Label>
 </template>

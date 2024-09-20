@@ -9,10 +9,7 @@ defineOptions({
   name: 'SCardFooter'
 });
 
-const props = withDefaults(defineProps<CardFooterProps>(), {
-  as: 'div',
-  split: false
-});
+const props = defineProps<CardFooterProps>();
 
 const cls = computed(() => {
   const split: CardSplit = props.split ? 'footer' : 'none';
@@ -24,7 +21,7 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls">
+  <Primitive as="div" :class="cls">
     <slot />
   </Primitive>
 </template>

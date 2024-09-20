@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardProps } from 'radix-vue';
+import { Primitive, useForwardProps } from 'radix-vue';
 import { cn, textareaVariants } from '@soybean-ui/variants';
 import { computedOmit, isBlankString } from '../../shared';
 import type { TextareaProps } from './types';
@@ -27,11 +27,17 @@ const cls = computed(() => {
   return cn(textareaVariants({ size: props.size, resize }), props.class);
 });
 
-function handleInput(event: InputEvent) {
+function handleInput(event: Event) {
   emit('update:modelValue', (event.target as HTMLTextAreaElement).value);
 }
 </script>
 
 <template>
-  <textarea v-bind="forwardedProps" :value="modelValue || defaultValue" :class="cls" @input="handleInput" />
+  <Primitive
+    as="textarea"
+    v-bind="forwardedProps"
+    :value="modelValue || defaultValue"
+    :class="cls"
+    @input="handleInput"
+  />
 </template>

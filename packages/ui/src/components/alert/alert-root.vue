@@ -8,9 +8,7 @@ defineOptions({
   name: 'SAlertRoot'
 });
 
-const props = withDefaults(defineProps<AlertRootProps>(), {
-  as: 'div'
-});
+const props = defineProps<AlertRootProps>();
 
 const cls = computed(() => {
   const { color, variant } = props;
@@ -22,7 +20,7 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" role="alert">
+  <Primitive as="div" :class="cls" role="alert">
     <slot />
   </Primitive>
 </template>

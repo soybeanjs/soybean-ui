@@ -20,7 +20,7 @@ const props = defineProps<AlertProps>();
 
 const close = defineModel<boolean>('close', { default: false });
 
-const delegatedProps = computedPick(props, ['as', 'asChild', 'color', 'variant', 'class']);
+const delegatedProps = computedPick(props, ['color', 'variant', 'class']);
 
 const forwarded = useForwardProps(delegatedProps);
 

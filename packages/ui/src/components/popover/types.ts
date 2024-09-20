@@ -5,7 +5,7 @@ import type {
   PopoverPortalProps,
   PopoverRootProps
 } from 'radix-vue';
-import type { ClassValue } from '@soybean-ui/variants';
+import type { ClassValue } from '../../types';
 
 export type PopoverContentProps = $PopoverContentProps & {
   class?: ClassValue;

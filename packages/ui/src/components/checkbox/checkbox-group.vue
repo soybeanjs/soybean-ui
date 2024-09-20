@@ -9,9 +9,7 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = withDefaults(defineProps<CheckboxGroupProps>(), {
-  as: 'div'
-});
+const props = defineProps<CheckboxGroupProps>();
 
 type Emits = {
   'update:values': [values: string[]];
@@ -44,7 +42,7 @@ function handleUpdateCheckItem(value: string, checked: boolean) {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls">
+  <Primitive as="div" :class="cls">
     <SCheckbox
       v-for="item in items"
       :key="item.value"

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import { useForwardPropsEmits } from 'radix-vue';
 import type { CheckboxRootEmits } from 'radix-vue';
 import { Check, Minus } from 'lucide-vue-next';
-import { nanoid } from 'nanoid';
 import { computedOmit } from '../../shared';
 import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';
@@ -32,7 +31,9 @@ const delegatedProps = computedOmit(props, [
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const checkboxId = computed(() => props.id || `checkbox-${nanoid(8)}`);
+const defaultId = useId();
+
+const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
 
 const checked = defineModel<CheckboxCheckedState>('checked', { default: false });
 

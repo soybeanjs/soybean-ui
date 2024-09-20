@@ -7,15 +7,13 @@ defineOptions({
   name: 'SCheckboxRoot'
 });
 
-const props = withDefaults(defineProps<CheckboxRootProps>(), {
-  as: 'div'
-});
+const props = defineProps<CheckboxRootProps>();
 
 const { root } = checkboxVariants();
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cn(root(), props.class)">
+  <Primitive as="div" :class="cn(root(), props.class)">
     <slot />
   </Primitive>
 </template>
