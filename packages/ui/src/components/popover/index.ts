@@ -7,7 +7,17 @@ import {
 } from 'radix-vue';
 import SPopover from './popover.vue';
 import SPopoverArrow from './popover-arrow.vue';
+import SPopoverContent from './popover-content.vue';
 
-export { SPopover, SPopoverRoot, SPopoverTrigger, SPopoverPortal, SPopoverAnchor, SPopoverArrow, SPopoverClose };
+export {
+  SPopover,
+  SPopoverRoot,
+  SPopoverTrigger,
+  SPopoverContent,
+  SPopoverPortal,
+  SPopoverAnchor,
+  SPopoverArrow,
+  SPopoverClose
+};
 
 export * from './types';
