@@ -13,7 +13,7 @@ defineOptions({
 
 const props = defineProps<RadioGroupProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'color', 'items']);
+const delegatedProps = computedOmit(props, ['class', 'color', 'size', 'items']);
 
 const emit = defineEmits<RadioGroupRootEmits>();
 
@@ -29,7 +29,7 @@ const cls = computed(() => {
 <template>
   <RadioGroupRoot v-bind="forwarded" :class="cls">
     <slot>
-      <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" />
+      <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" :size="size" />
     </slot>
   </RadioGroupRoot>
 </template>

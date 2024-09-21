@@ -16,7 +16,7 @@ const delegatedProps = computedOmit(props, ['class']);
 const forwarded = useForwardProps(delegatedProps);
 
 const cls = computed(() => {
-  const { control } = radioVariants({ color: props.color });
+  const { control } = radioVariants({ color: props.color, size: props.size });
 
   return cn(control(), props.class);
 });

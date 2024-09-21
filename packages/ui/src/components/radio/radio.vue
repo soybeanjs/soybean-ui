@@ -38,7 +38,7 @@ const radioId = computed(() => props.id || `radio-${defaultId}`);
         <SRadioIndicator :class="indicatorClass" :color="color" :force-mount="forceMountIndicator" />
       </Transition>
     </SRadioControl>
-    <SRadioLabel :class="labelClass" :for="radioId">
+    <SRadioLabel :class="labelClass" :for="radioId" :size="size">
       <slot :id="radioId">{{ label }}</slot>
     </SRadioLabel>
   </SRadioRoot>

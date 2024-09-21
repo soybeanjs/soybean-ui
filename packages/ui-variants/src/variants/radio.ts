@@ -5,10 +5,10 @@ export const radioVariants = tv({
   slots: {
     root: 'flex items-center gap-2',
     control: [
-      'peer flex justify-center items-center size-4 shrink-0 rounded-full border shadow',
+      'peer flex justify-center items-center shrink-0 rounded-full border shadow',
       'focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
-    indicator: 'size-2 rounded-full',
+    indicator: 'size-1/2 rounded-full',
     group: 'flex gap-2'
   },
   variants: {
@@ -42,6 +42,26 @@ export const radioVariants = tv({
         indicator: `bg-accent-foreground/60`
       }
     },
+    size: {
+      xs: {
+        control: 'size-3'
+      },
+      sm: {
+        control: 'size-3.5'
+      },
+      md: {
+        control: 'size-4'
+      },
+      lg: {
+        control: 'size-4.5'
+      },
+      xl: {
+        control: 'size-5'
+      },
+      xxl: {
+        control: 'size-6'
+      }
+    },
     orientation: {
       horizontal: {
         group: 'items-center'
@@ -53,6 +73,7 @@ export const radioVariants = tv({
   },
   defaultVariants: {
     color: 'primary',
+    size: 'md',
     orientation: 'horizontal'
   }
 });
