@@ -50,7 +50,7 @@ const isIndeterminate = computed(() => checked.value === 'indeterminate');
         </SCheckboxIndicator>
       </Transition>
     </SCheckboxControl>
-    <SCheckboxLabel :class="labelClass" :for="checkboxId">
+    <SCheckboxLabel :class="labelClass" :for="checkboxId" :size="size">
       <slot :id="checkboxId">{{ label }}</slot>
     </SCheckboxLabel>
   </SCheckboxRoot>

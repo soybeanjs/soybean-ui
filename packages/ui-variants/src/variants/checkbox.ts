@@ -6,7 +6,7 @@ export const checkboxVariants = tv({
   slots: {
     root: 'flex items-center gap-2',
     control: [
-      'peer size-4 shrink-0 rounded-sm border shadow',
+      'peer shrink-0 rounded-sm border shadow',
       'focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
@@ -36,6 +36,26 @@ export const checkboxVariants = tv({
         control: `border-accent-foreground focus-visible:outline-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/10 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/10 text-accent-foreground)`
       }
     },
+    size: {
+      xs: {
+        control: 'size-3'
+      },
+      sm: {
+        control: 'size-3.5'
+      },
+      md: {
+        control: 'size-4'
+      },
+      lg: {
+        control: 'size-4.5'
+      },
+      xl: {
+        control: 'size-5'
+      },
+      xxl: {
+        control: 'size-6'
+      }
+    },
     orientation: {
       horizontal: {
         group: 'items-center'
@@ -47,6 +67,7 @@ export const checkboxVariants = tv({
   },
   defaultVariants: {
     color: 'primary',
+    size: 'md',
     orientation: 'horizontal'
   }
 });
@@ -54,5 +75,7 @@ export const checkboxVariants = tv({
 type CheckboxVariants = VariantProps<typeof checkboxVariants>;
 
 export type CheckboxColor = NonNullable<CheckboxVariants['color']>;
+
+export type CheckboxSize = NonNullable<CheckboxVariants['size']>;
 
 export type CheckboxOrientation = NonNullable<CheckboxVariants['orientation']>;

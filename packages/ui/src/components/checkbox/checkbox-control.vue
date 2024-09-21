@@ -19,7 +19,7 @@ const emit = defineEmits<CheckboxRootEmits>();
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const cls = computed(() => {
-  const { control } = checkboxVariants({ color: props.color });
+  const { control } = checkboxVariants({ color: props.color, size: props.size });
 
   return cn(control(), props.class);
 });
