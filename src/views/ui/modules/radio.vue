@@ -21,8 +21,6 @@ function createRadioGroupItems(): RadioGroupItemProps[] {
 </script>
 
 <template>
-  <div class="py-12px text-18px">Default</div>
-  <SRadioGroup :items="items" />
   <div class="py-12px text-18px">Color</div>
   <div class="flex-col gap-12px">
     <SRadioGroup v-for="color in colors" :key="color" :color="color" :items="items" />

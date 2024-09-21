@@ -11,17 +11,15 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
-  <div class="py-12px text-18px">Size</div>
-  <div class="flex gap-12px">
-    <SToggle v-for="size in sizes" :key="size" :size="size">
-      {{ size }}
-    </SToggle>
-  </div>
   <div class="py-12px text-18px">Variant</div>
   <div class="flex gap-12px">
-    <div v-for="size in sizes" :key="size" class="flex flex-wrap gap-12px">
-      <SToggle v-for="variant in variants" :key="variant" :size="size" :variant="variant">{{ variant }}</SToggle>
-    </div>
+    <SToggle v-for="variant in variants" :key="variant" :variant="variant">{{ variant }}</SToggle>
+  </div>
+  <div class="py-12px text-18px">Size</div>
+  <div class="flex gap-12px">
+    <SToggle v-for="size in sizes" :key="size" variant="outline" :size="size">
+      {{ size }}
+    </SToggle>
   </div>
   <div class="py-12px text-18px">Disabled</div>
   <div class="flex flex-wrap gap-12px">

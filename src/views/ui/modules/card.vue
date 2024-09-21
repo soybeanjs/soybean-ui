@@ -35,7 +35,7 @@ const splits: CardSplit[] = ['all', 'header', 'footer'];
     </div>
   </div>
   <div class="w-400px lt-sm:w-full">
-    <div class="py-12px text-18px">Split Card</div>
+    <div class="py-12px text-18px">Split</div>
     <SCard v-for="split in splits" :key="split" :title="`Split: ${split}`" :split="split" class="mb-12px">
       <template #extra>
         <SButtonIcon fit-content>
@@ -45,7 +45,7 @@ const splits: CardSplit[] = ['all', 'header', 'footer'];
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
       <template #footer>Footer</template>
     </SCard>
-    <div class="py-12px text-18px">Part Card</div>
+    <div class="py-12px text-18px">More</div>
     <SCard class="mb-12px">
       <p class="text-gray-500 dark:text-neutral-400">Only Content</p>
     </SCard>

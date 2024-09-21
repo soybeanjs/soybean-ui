@@ -42,24 +42,22 @@ function createCheckboxItems(): CheckboxGroupItem[] {
 </script>
 
 <template>
-  <div class="py-12px text-18px">Default Checkbox</div>
-  <SCheckbox label="checkbox" />
-  <div class="py-12px text-18px">Checkbox Color</div>
+  <div class="py-12px text-18px">Color</div>
   <div class="flex flex-wrap gap-12px">
     <SCheckbox v-for="color in colors" :key="color" :color="color" :label="color" />
   </div>
-  <div class="py-12px text-18px">Checkbox Size</div>
+  <div class="py-12px text-18px">Size</div>
   <div class="flex flex-wrap gap-12px">
     <SCheckbox v-for="size in sizes" :key="size" :size="size" :label="size" />
   </div>
-  <div class="py-12px text-18px">Checkbox Group</div>
+  <div class="py-12px text-18px">Group</div>
   <SCheckboxGroup v-model:values="checks" :items="items" />
-  <div class="py-12px text-18px">Checkbox Group Vertical</div>
+  <div class="py-12px text-18px">Orientation: Vertical</div>
   <SCheckboxGroup v-model:values="checks2" orientation="vertical" :items="items2" />
-  <div class="py-12px text-18px">Indeterminate Checkbox</div>
+  <div class="py-12px text-18px">Indeterminate</div>
   <SCheckbox v-model:checked="checked" label="Check All" />
   <SCheckboxGroup v-model:values="checks3" :items="items3" class="mt-12px" />
-  <div class="py-12px text-18px">Checkbox Group Disabled</div>
+  <div class="py-12px text-18px">Disabled</div>
   <SCheckboxGroup :default-values="['2']" :items="items" disabled />
 </template>
 
