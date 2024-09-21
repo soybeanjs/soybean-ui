@@ -32,6 +32,7 @@ import UiRadio from './modules/radio.vue';
 import UiSelect from './modules/select.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTextarea from './modules/textarea.vue';
+import UiToggle from './modules/toggle.vue';
 import UITooltip from './modules/tooltip.vue';
 
 defineOptions({
@@ -140,6 +141,11 @@ const tabs: TabConfig[] = [
     key: 'textarea',
     label: 'Textarea',
     component: UiTextarea
+  },
+  {
+    key: 'toggle',
+    label: 'Toggle',
+    component: UiToggle
   },
   {
     key: 'tooltip',
