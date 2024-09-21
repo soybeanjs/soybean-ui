@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const labelVariants = tv({
-  base: 'font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+  base: 'font-medium leading-none peer-disabled:(cursor-not-allowed opacity-70)',
   variants: {
     size: {
       xs: 'text-xs',

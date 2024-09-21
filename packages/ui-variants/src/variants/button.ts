@@ -151,37 +151,37 @@ export const buttonVariants = tv({
     {
       color: 'primary',
       variant: 'plain',
-      class: 'hover:border-primary hover:text-primary'
+      class: 'hover:(border-primary text-primary)'
     },
     {
       color: 'destructive',
       variant: 'plain',
-      class: 'hover:border-destructive hover:text-destructive'
+      class: 'hover:(border-destructive text-destructive)'
     },
     {
       color: 'success',
       variant: 'plain',
-      class: 'hover:border-success hover:text-success'
+      class: 'hover:(border-success text-success)'
     },
     {
       color: 'warning',
       variant: 'plain',
-      class: 'hover:border-warning hover:text-warning'
+      class: 'hover:(border-warning text-warning)'
     },
     {
       color: 'info',
       variant: 'plain',
-      class: 'hover:border-info hover:text-info'
+      class: 'hover:(border-info text-info)'
     },
     {
       color: 'secondary',
       variant: 'plain',
-      class: 'hover:border-secondary-foreground hover:text-secondary-foreground'
+      class: 'hover:(border-secondary-foreground text-secondary-foreground)'
     },
     {
       color: 'accent',
       variant: 'plain',
-      class: 'hover:border-accent-foreground hover:text-accent-foreground'
+      class: 'hover:(border-accent-foreground text-accent-foreground)'
     },
     {
       color: 'primary',
