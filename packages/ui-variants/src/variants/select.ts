@@ -102,5 +102,3 @@ export const selectVariants = tv({
 type SelectVariants = VariantProps<typeof selectVariants>;
 
 export type SelectPosition = NonNullable<SelectVariants['position']>;
-
-export type SelectSize = NonNullable<SelectVariants['size']>;

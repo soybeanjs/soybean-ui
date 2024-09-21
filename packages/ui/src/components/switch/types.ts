@@ -1,20 +1,18 @@
 import type { SwitchRootProps as $SwitchRootProps } from 'radix-vue';
-import type { SwitchColor, SwitchSize } from '@soybean-ui/variants';
+import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type SwitchRootProps = $SwitchRootProps & {
   class?: ClassValue;
-  color?: SwitchColor;
-  size?: SwitchSize;
+  color?: ThemeColor;
+  size?: ThemeSize;
 };
 
 export type SwitchThumbProps = {
   class?: ClassValue;
-  size?: SwitchSize;
+  size?: ThemeSize;
 };
 
 export type SwitchProps = SwitchRootProps & {
   thumbClass?: ClassValue;
 };
-
-export type { SwitchColor, SwitchSize };

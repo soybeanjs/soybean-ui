@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const checkboxVariants = tv({
   slots: {
@@ -71,11 +70,3 @@ export const checkboxVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-type CheckboxVariants = VariantProps<typeof checkboxVariants>;
-
-export type CheckboxColor = NonNullable<CheckboxVariants['color']>;
-
-export type CheckboxSize = NonNullable<CheckboxVariants['size']>;
-
-export type CheckboxOrientation = NonNullable<CheckboxVariants['orientation']>;

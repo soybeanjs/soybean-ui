@@ -3,17 +3,17 @@ import type {
   RadioGroupIndicatorProps,
   RadioGroupRootProps
 } from 'radix-vue';
-import type { RadioColor, RadioOrientation } from '@soybean-ui/variants';
+import type { ThemeColor } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type RadioIndicatorProps = RadioGroupIndicatorProps & {
   class?: ClassValue;
-  color?: RadioColor;
+  color?: ThemeColor;
 };
 
 export type RadioControlProps = $RadioControlProps & {
   class?: ClassValue;
-  color?: RadioColor;
+  color?: ThemeColor;
 };
 
 export type RadioRootProps = {
@@ -31,7 +31,7 @@ export type RadioProps = $RadioControlProps & {
   forceMountIndicator?: boolean;
   labelClass?: ClassValue;
   label?: string;
-  color?: RadioColor;
+  color?: ThemeColor;
 };
 
 export type RadioGroupItemProps = RadioProps & {
@@ -42,7 +42,5 @@ export type RadioGroupItemProps = RadioProps & {
 export type RadioGroupProps = RadioGroupRootProps & {
   class?: ClassValue;
   items?: RadioGroupItemProps[];
-  color?: RadioColor;
+  color?: ThemeColor;
 };
-
-export type { RadioColor, RadioOrientation };

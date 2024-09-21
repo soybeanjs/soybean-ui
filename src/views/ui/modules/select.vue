@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SSelect } from 'soybean-ui';
-import type { SelectGroupOption, SelectOption, SelectSize } from 'soybean-ui';
+import type { SelectGroupOption, SelectOption, ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiSelect'
@@ -44,7 +44,7 @@ const options: (SelectOption | SelectGroupOption)[] = [
   }
 ];
 
-const sizes: SelectSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>

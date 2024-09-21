@@ -56,5 +56,3 @@ export const toggleVariants = tv({
 type ToggleVariants = VariantProps<typeof toggleVariants>;
 
 export type ToggleVariant = NonNullable<ToggleVariants['variant']>;
-
-export type ToggleSize = NonNullable<ToggleVariants['size']>;

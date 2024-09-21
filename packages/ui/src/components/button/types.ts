@@ -1,18 +1,18 @@
 import type {
-  ButtonColor,
-  ButtonGroupOrientation,
   ButtonShadow,
   ButtonShape,
-  ButtonSize,
-  ButtonVariant
+  ButtonVariant,
+  ThemeColor,
+  ThemeOrientation,
+  ThemeSize
 } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type ButtonProps = {
   class?: ClassValue;
-  color?: ButtonColor;
+  color?: ThemeColor;
   variant?: ButtonVariant;
-  size?: ButtonSize;
+  size?: ThemeSize;
   shape?: ButtonShape;
   fitContent?: boolean;
   shadow?: ButtonShadow;
@@ -36,7 +36,7 @@ export type LoadingButtonProps = ButtonProps & {
 
 export type ButtonGroupProps = {
   class?: ClassValue;
-  orientation?: ButtonGroupOrientation;
+  orientation?: ThemeOrientation;
 };
 
-export type { ButtonColor, ButtonShape, ButtonSize, ButtonVariant, ButtonShadow };
+export type { ButtonShape, ButtonVariant, ButtonShadow };

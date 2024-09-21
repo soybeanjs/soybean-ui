@@ -112,6 +112,4 @@ export const alertVariants = tv({
 
 type AlertVariants = VariantProps<typeof alertVariants>;
 
-export type AlertColor = NonNullable<AlertVariants['color']>;
-
 export type AlertVariant = NonNullable<AlertVariants['variant']>;

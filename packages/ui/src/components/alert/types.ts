@@ -1,9 +1,9 @@
-import type { AlertColor, AlertVariant } from '@soybean-ui/variants';
+import type { AlertVariant, ThemeColor } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export interface AlertRootProps {
   class?: ClassValue;
-  color?: AlertColor;
+  color?: ThemeColor;
   variant?: AlertVariant;
 }
 
@@ -34,4 +34,4 @@ export interface AlertProps extends AlertRootProps {
   close?: boolean;
 }
 
-export type { AlertColor, AlertVariant };
+export type { AlertVariant };

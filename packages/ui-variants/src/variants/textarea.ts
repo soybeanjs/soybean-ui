@@ -32,6 +32,4 @@ export const textareaVariants = tv({
 
 type TextareaVariants = VariantProps<typeof textareaVariants>;
 
-export type TextareaSize = NonNullable<TextareaVariants['size']>;
-
 export type TextareaResize = NonNullable<TextareaVariants['resize']>;

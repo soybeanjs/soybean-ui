@@ -83,6 +83,4 @@ export const cardVariants = tv({
 
 type CardVariants = VariantProps<typeof cardVariants>;
 
-export type CardSize = NonNullable<CardVariants['size']>;
-
 export type CardSplit = NonNullable<CardVariants['split']>;

@@ -7,7 +7,7 @@ import type {
   SelectPortalProps,
   SelectRootProps
 } from 'radix-vue';
-import type { SelectPosition, SelectSize } from '@soybean-ui/variants';
+import type { SelectPosition, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type SelectContentProps = $SelectContentProps & {
@@ -16,7 +16,7 @@ export type SelectContentProps = $SelectContentProps & {
 
 export type SelectTriggerProps = $SelectTriggerProps & {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectViewportProps = $SelectViewportProps & {
@@ -26,17 +26,17 @@ export type SelectViewportProps = $SelectViewportProps & {
 
 export type SelectItemProps = $SelectItemProps & {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectItemIndicatorProps = {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectIconProps = {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectSeparatorProps = {
@@ -45,17 +45,17 @@ export type SelectSeparatorProps = {
 
 export type SelectLabelProps = $SelectLabelProps & {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectScrollUpButtonProps = {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectScrollDownButtonProps = {
   class?: ClassValue;
-  size?: SelectSize;
+  size?: ThemeSize;
 };
 
 export type SelectOption = Pick<$SelectItemProps, 'value' | 'disabled' | 'textValue'> & {
@@ -80,7 +80,7 @@ export type SelectProps = SelectRootProps &
   Omit<SelectContentProps, 'as' | 'asChild' | 'forceMount' | 'class'> &
   Pick<SelectViewportProps, 'nonce'> & {
     options: (SelectOption | SelectGroupOption)[];
-    size?: SelectSize;
+    size?: ThemeSize;
     placeholder?: string;
     separator?: boolean;
     triggerClass?: ClassValue;
@@ -103,4 +103,4 @@ export type SelectItemOptionProps = {
   option: SelectOption;
 } & Pick<SelectProps, 'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;
 
-export type { SelectPosition, SelectSize };
+export type { SelectPosition, ThemeSize };

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { SBadge } from 'soybean-ui';
-import type { BadgeColor, BadgeVariant } from 'soybean-ui';
+import type { BadgeVariant, ThemeColor } from 'soybean-ui';
 
 defineOptions({
   name: 'UiBadge'
 });
 
-const colors: BadgeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 const variants: BadgeVariant[] = ['solid', 'plain', 'outline'];
 </script>
 

@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const inputVariants = tv({
   base: [
@@ -23,7 +22,3 @@ export const inputVariants = tv({
     size: 'md'
   }
 });
-
-type InputVariants = VariantProps<typeof inputVariants>;
-
-export type InputSize = NonNullable<InputVariants['size']>;

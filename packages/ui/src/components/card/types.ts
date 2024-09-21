@@ -1,16 +1,16 @@
-import type { CardSplit as $CardSplit, CardSize } from '@soybean-ui/variants';
+import type { CardSplit as $CardSplit, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type CardRootProps = {
   class?: ClassValue;
-  size?: CardSize;
+  size?: ThemeSize;
 };
 
 export type CardSplit = $CardSplit;
 
 export type CardHeaderProps = {
   class?: ClassValue;
-  size?: CardSize;
+  size?: ThemeSize;
   /** show a divider between the header and the content */
   split?: boolean;
 };
@@ -21,24 +21,24 @@ export type CardTitleRootProps = {
 
 export type CardTitleProps = {
   class?: ClassValue;
-  size?: CardSize;
+  size?: ThemeSize;
 };
 
 export type CardContentProps = {
   class?: ClassValue;
-  size?: CardSize;
+  size?: ThemeSize;
 };
 
 export type CardFooterProps = {
   class?: ClassValue;
-  size?: CardSize;
+  size?: ThemeSize;
   /** show a divider between the footer and the content */
   split?: boolean;
 };
 
 export type CardProps = CardRootProps & {
   title?: string;
-  size?: CardSize;
+  size?: ThemeSize;
   split?: CardSplit;
   headerClass?: ClassValue;
   titleRootClass?: ClassValue;
@@ -46,5 +46,3 @@ export type CardProps = CardRootProps & {
   contentClass?: ClassValue;
   footerClass?: ClassValue;
 };
-
-export type { CardSize };

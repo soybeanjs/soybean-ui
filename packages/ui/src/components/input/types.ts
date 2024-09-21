@@ -1,11 +1,11 @@
-import type { InputSize } from '@soybean-ui/variants';
+import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type InputProps = {
   class?: ClassValue;
   defaultValue?: string;
   modelValue?: string;
-  size?: InputSize;
+  size?: ThemeSize;
   id?: string;
   // from InputHTMLAttributes
   accept?: string;
@@ -67,5 +67,3 @@ export type InputTypeHTMLAttribute =
   | 'url'
   | 'week'
   | (string & {});
-
-export type { InputSize };

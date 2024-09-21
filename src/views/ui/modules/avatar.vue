@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SAvatar } from 'soybean-ui';
-import type { AvatarSize } from 'soybean-ui';
+import type { ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'AvatarDemo'
@@ -10,7 +10,7 @@ const radixVueRsc = 'https://github.com/radix-vue.png';
 
 const soybeanSrc = 'https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png';
 
-const sizes: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>

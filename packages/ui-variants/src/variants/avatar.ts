@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const avatarVariants = tv({
   slots: {
@@ -34,7 +33,3 @@ export const avatarVariants = tv({
     size: 'md'
   }
 });
-
-type AvatarVariants = VariantProps<typeof avatarVariants>;
-
-export type AvatarSize = NonNullable<AvatarVariants['size']>;

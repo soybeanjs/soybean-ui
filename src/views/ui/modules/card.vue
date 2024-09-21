@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { SButtonIcon, SCard } from 'soybean-ui';
-import type { CardSize, CardSplit } from 'soybean-ui';
+import type { CardSplit, ThemeSize } from 'soybean-ui';
 import { X } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCard'
 });
 
-const sizes: CardSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const splits: CardSplit[] = ['all', 'header', 'footer'];
 </script>

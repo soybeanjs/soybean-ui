@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const labelVariants = tv({
   base: 'font-medium leading-none peer-disabled:(cursor-not-allowed opacity-70)',
@@ -18,7 +17,3 @@ export const labelVariants = tv({
     size: 'md'
   }
 });
-
-type LabelVariants = VariantProps<typeof labelVariants>;
-
-export type LabelSize = NonNullable<LabelVariants['size']>;

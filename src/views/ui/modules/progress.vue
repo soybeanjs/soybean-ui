@@ -2,14 +2,14 @@
 import { onMounted, ref } from 'vue';
 import { TransitionPresets, useTransition } from '@vueuse/core';
 import { SProgress } from 'soybean-ui';
-import type { ProgressColor, ProgressSize } from 'soybean-ui';
+import type { ThemeColor, ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiProgress'
 });
 
-const colors: ProgressColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
-const sizes: ProgressSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const progress = ref(0);
 

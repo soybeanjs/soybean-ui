@@ -136,5 +136,3 @@ export const badgeVariants = tv({
 type BadgeVariants = VariantProps<typeof badgeVariants>;
 
 export type BadgeVariant = NonNullable<BadgeVariants['variant']>;
-
-export type BadgeColor = NonNullable<BadgeVariants['color']>;

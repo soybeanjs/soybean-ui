@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { SToggle } from 'soybean-ui';
-import type { ToggleSize, ToggleVariant } from 'soybean-ui';
+import type { ThemeSize, ToggleVariant } from 'soybean-ui';
 
 defineOptions({
   name: 'UiToggle'
 });
 
 const variants: ToggleVariant[] = ['ghost', 'outline'];
-const sizes: ToggleSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>

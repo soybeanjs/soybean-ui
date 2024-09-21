@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { SSwitch } from 'soybean-ui';
-import type { SwitchColor, SwitchSize } from 'soybean-ui';
+import type { ThemeColor, ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiSwitch'
 });
-const colors: SwitchColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
-const sizes: SwitchSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>

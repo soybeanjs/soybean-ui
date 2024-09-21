@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { SRadio, SRadioGroup } from 'soybean-ui';
-import type { RadioColor, RadioGroupItemProps } from 'soybean-ui';
+import type { RadioGroupItemProps, ThemeColor } from 'soybean-ui';
 
 defineOptions({
   name: 'UiRadio'
 });
 
-const colors: RadioColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 
 const items = createRadioGroupItems();
 

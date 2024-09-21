@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { SButton, SButtonGroup, SButtonIcon, SLoadingButton } from 'soybean-ui';
-import type { ButtonColor, ButtonShadow, ButtonSize, ButtonVariant } from 'soybean-ui';
+import type { ButtonShadow, ButtonVariant, ThemeColor, ThemeSize } from 'soybean-ui';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiButton'
 });
 
-const colors: ButtonColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 const variants: ButtonVariant[] = ['solid', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
-const sizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>
 

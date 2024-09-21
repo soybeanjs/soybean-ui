@@ -1,11 +1,11 @@
-import type { TextareaResize, TextareaSize } from '@soybean-ui/variants';
+import type { TextareaResize, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue } from '../../types';
 
 export type TextareaProps = {
   class?: ClassValue;
   modelValue?: string;
   defaultValue?: string;
-  size?: TextareaSize;
+  size?: ThemeSize;
   resize?: TextareaResize;
   id?: string;
   // from TextareaHTMLAttributes
@@ -25,5 +25,3 @@ export type TextareaProps = {
   value?: string | ReadonlyArray<string> | number | null;
   wrap?: string;
 };
-
-export type { TextareaSize };

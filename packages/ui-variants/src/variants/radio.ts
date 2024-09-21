@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const radioVariants = tv({
   slots: {
@@ -57,9 +56,3 @@ export const radioVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-type RadioVariants = VariantProps<typeof radioVariants>;
-
-export type RadioColor = NonNullable<RadioVariants['color']>;
-
-export type RadioOrientation = NonNullable<RadioVariants['orientation']>;

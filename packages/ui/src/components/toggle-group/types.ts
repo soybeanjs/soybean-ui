@@ -2,7 +2,7 @@ import type {
   ToggleGroupItemProps as $ToggleGroupItemProps,
   ToggleGroupRootProps as $ToggleGroupRootProps
 } from 'radix-vue';
-import type { ToggleSize, ToggleVariant } from '@soybean-ui/variants';
+import type { ThemeSize, ToggleVariant } from '@soybean-ui/variants';
 import type { ClassValue, SingleOrMultipleType } from '../../types';
 
 export type ToggleGroupRootProps<
@@ -10,13 +10,13 @@ export type ToggleGroupRootProps<
   ExplicitType = SingleOrMultipleType
 > = $ToggleGroupRootProps<ValidValue, ExplicitType> & {
   class?: ClassValue;
-  size?: ToggleSize;
+  size?: ThemeSize;
 };
 
 export type ToggleGroupItemProps = $ToggleGroupItemProps & {
   class?: ClassValue;
   variant?: ToggleVariant;
-  size?: ToggleSize;
+  size?: ThemeSize;
 };
 
 export type ToggleGroupItemData = Pick<ToggleGroupItemProps, 'value' | 'disabled'>;
@@ -29,5 +29,5 @@ export type ToggleGroupProps<
   items: T[];
   class?: ClassValue;
   variant?: ToggleVariant;
-  size?: ToggleSize;
+  size?: ThemeSize;
 };

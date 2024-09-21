@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { STextarea } from 'soybean-ui';
-import type { TextareaSize } from 'soybean-ui';
+import type { ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiTextarea'
 });
 
-const sizes: TextareaSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const modelValue = ref<string>('');
 

@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const switchVariants = tv({
   base: [],
@@ -67,9 +66,3 @@ export const switchVariants = tv({
     size: 'md'
   }
 });
-
-type SwitchVariants = VariantProps<typeof switchVariants>;
-
-export type SwitchColor = NonNullable<SwitchVariants['color']>;
-
-export type SwitchSize = NonNullable<SwitchVariants['size']>;

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { SCheckbox, SCheckboxGroup } from 'soybean-ui';
-import type { CheckboxCheckedState, CheckboxColor, CheckboxGroupItem, CheckboxSize } from 'soybean-ui';
+import type { CheckboxCheckedState, CheckboxGroupItem, ThemeColor, ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiCheckbox'
 });
 
-const colors: CheckboxColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
 
-const sizes: CheckboxSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const checks = ref<string[]>(['1']);
 const items = createCheckboxItems();

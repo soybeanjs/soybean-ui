@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const buttonGroupVariants = tv({
   base: `[&>button]:relative focus-visible:[&>button]:z-2 not-first:not-last:[&>button]:rd-0`,
@@ -14,7 +13,3 @@ export const buttonGroupVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-type ButtonGroupVariants = VariantProps<typeof buttonGroupVariants>;
-
-export type ButtonGroupOrientation = NonNullable<ButtonGroupVariants['orientation']>;

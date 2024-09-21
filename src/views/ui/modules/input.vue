@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SInput } from 'soybean-ui';
-import type { InputSize } from 'soybean-ui';
+import type { ThemeSize } from 'soybean-ui';
 
 defineOptions({
   name: 'UiInput'
 });
 
-const sizes: InputSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const modelValue = ref<string>('');
 </script>

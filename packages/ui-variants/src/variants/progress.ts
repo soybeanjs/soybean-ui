@@ -1,6 +1,5 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const progressVariants = tv({
   slots: {
@@ -64,9 +63,3 @@ export const progressVariants = tv({
     size: 'md'
   }
 });
-
-type ProgressVariants = VariantProps<typeof progressVariants>;
-
-export type ProgressColor = NonNullable<ProgressVariants['color']>;
-
-export type ProgressSize = NonNullable<ProgressVariants['size']>;
