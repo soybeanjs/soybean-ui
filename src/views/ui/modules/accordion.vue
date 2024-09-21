@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion } from 'soybean-ui';
+import {
+  SAccordion,
+  SAccordionContent,
+  SAccordionContentBody,
+  SAccordionHeader,
+  SAccordionItem,
+  SAccordionRoot,
+  SAccordionTrigger
+} from 'soybean-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
@@ -46,17 +54,8 @@ const items: AccordionItems[] = [
   <div class="py-12px pt-32px text-18px">Single Collapse: always open one</div>
   <SAccordion v-model="single2" type="single" :items="items" />
   <div class="pb-12px pt-32px text-18px">Custom styling</div>
-  <SAccordion
-    v-model="single3"
-    type="single"
-    collapsible
-    :items="items"
-    item-class="border-b-0"
-    trigger-class="mb-2 rounded-md px-3 text-left text-sm underline-offset-2 hover:bg-muted hover:no-underline"
-    content-body-class="px-3 leading-8"
-  >
-    <!--
- <template v-for="item in items" :key="item.value">
+  <SAccordionRoot v-model="single3" type="single" collapsible>
+    <template v-for="item in items" :key="item.value">
       <SAccordionItem v-slot="{ open }" :value="item.value" class="border-b-0">
         <SAccordionHeader>
           <SAccordionTrigger
@@ -70,13 +69,14 @@ const items: AccordionItems[] = [
             {{ item.title }}
           </SAccordionTrigger>
         </SAccordionHeader>
-        <SAccordionContent body-class="px-3 leading-8">
-          {{ item.content }}
+        <SAccordionContent>
+          <SAccordionContentBody class="px-3 leading-8">
+            {{ item.content }}
+          </SAccordionContentBody>
         </SAccordionContent>
       </SAccordionItem>
     </template>
--->
-  </SAccordion>
+  </SAccordionRoot>
   <div class="py-12px pt-32px text-18px">Custom Icon</div>
   <SAccordion v-model="multi2" type="multiple" :items="items">
     <template #triggerIcon="{ open }">

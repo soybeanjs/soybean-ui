@@ -41,7 +41,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 <template>
   <AccordionRoot v-slot="{ modelValue }" v-bind="forwarded">
     <template v-for="item in items" :key="item.value">
-      <SAccordionItem v-slot="{ open }" :value="item.value" :disabled="item.disabled">
+      <SAccordionItem v-slot="{ open }" :value="item.value" :disabled="item.disabled" :class="itemClass">
         <SAccordionHeader :class="headerClass">
           <slot name="trigger" v-bind="{ modelValue, open, item }">
             <SAccordionTrigger :class="triggerClass">
