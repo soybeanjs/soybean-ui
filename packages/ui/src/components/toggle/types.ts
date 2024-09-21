@@ -4,8 +4,8 @@ import type { ClassValue } from '../../types';
 
 export type ToggleProps = $ToggleProps & {
   class?: ClassValue;
-  size?: ToggleSize;
   variant?: ToggleVariant;
+  size?: ToggleSize;
 };
 
 export type { ToggleSize, ToggleVariant };

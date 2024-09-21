@@ -33,6 +33,7 @@ import UiSelect from './modules/select.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTextarea from './modules/textarea.vue';
 import UiToggle from './modules/toggle.vue';
+import UiToggleGroup from './modules/toggle-group.vue';
 import UITooltip from './modules/tooltip.vue';
 
 defineOptions({
@@ -146,6 +147,11 @@ const tabs: TabConfig[] = [
     key: 'toggle',
     label: 'Toggle',
     component: UiToggle
+  },
+  {
+    key: 'toggle-group',
+    label: 'ToggleGroup',
+    component: UiToggleGroup
   },
   {
     key: 'tooltip',
