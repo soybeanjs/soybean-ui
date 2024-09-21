@@ -1,24 +1,42 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon, SCard } from 'soybean-ui';
-import { Expand, Settings, X } from 'lucide-vue-next';
+import { SButtonIcon, SCard } from 'soybean-ui';
+import type { CardSize, CardSplit } from 'soybean-ui';
+import { X } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCard'
 });
+
+const sizes: CardSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+
+const splits: CardSplit[] = ['all', 'header', 'footer'];
 </script>
 
 <template>
+  <div class="w-800px lt-sm:w-full">
+    <div class="py-12px text-18px">Size</div>
+    <div class="w-1/2 i-flex-col pr-10px lt-sm:(w-full pr-0)">
+      <SCard v-for="size in sizes" :key="size" :title="`Size: ${size}`" :size="size" class="mb-12px">
+        <template #extra>
+          <span>extra</span>
+        </template>
+        <p class="text-gray-500 dark:text-neutral-400">Content</p>
+        <template #footer>Footer</template>
+      </SCard>
+    </div>
+    <div class="w-1/2 i-flex-col pl-10px lt-sm:(w-full pl-0)">
+      <SCard v-for="size in sizes" :key="size" :title="`Size: ${size}`" :size="size" split="all" class="mb-12px">
+        <template #extra>
+          <span>extra</span>
+        </template>
+        <p class="text-gray-500 dark:text-neutral-400">Content</p>
+        <template #footer>Footer</template>
+      </SCard>
+    </div>
+  </div>
   <div class="w-400px lt-sm:w-full">
-    <div class="py-12px text-18px">Default Card</div>
-    <SCard title="Title">
-      <template #extra>
-        <span>extra</span>
-      </template>
-      <p class="text-gray-500 dark:text-neutral-400">Content</p>
-      <template #footer>Footer</template>
-    </SCard>
     <div class="py-12px text-18px">Split Card</div>
-    <SCard title="Title" split="all">
+    <SCard v-for="split in splits" :key="split" :title="`Split: ${split}`" :split="split" class="mb-12px">
       <template #extra>
         <SButtonIcon fit-content>
           <X />
@@ -27,35 +45,16 @@ defineOptions({
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
       <template #footer>Footer</template>
     </SCard>
-    <div class="py-12px text-18px">Small size Card</div>
-    <SCard title="Title" split="all" size="sm">
-      <template #extra>
-        <SButton variant="link" fit-content class="size-fit">more</SButton>
-      </template>
+    <div class="py-12px text-18px">Part Card</div>
+    <SCard class="mb-12px">
+      <p class="text-gray-500 dark:text-neutral-400">Only Content</p>
+    </SCard>
+    <SCard title="Title" split="header" class="mb-12px">
+      <p class="text-gray-500 dark:text-neutral-400">Content</p>
+    </SCard>
+    <SCard split="footer">
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
       <template #footer>Footer</template>
-    </SCard>
-    <div class="py-12px text-18px">Large size Card</div>
-    <SCard title="Title" split="all" size="lg">
-      <template #extra>
-        <SButtonIcon fit-content>
-          <Settings />
-        </SButtonIcon>
-      </template>
-      <p class="text-gray-500 dark:text-neutral-400">Content</p>
-    </SCard>
-    <div class="py-12px text-18px">Extra Large size Card</div>
-    <SCard title="Title" size="xl">
-      <template #extra>
-        <SButtonIcon fit-content>
-          <Expand />
-        </SButtonIcon>
-      </template>
-      <p class="text-gray-500 dark:text-neutral-400">Content</p>
-    </SCard>
-    <div class="py-12px text-18px">Only Content Card</div>
-    <SCard>
-      <p class="text-gray-500 dark:text-neutral-400">Content</p>
     </SCard>
   </div>
 </template>

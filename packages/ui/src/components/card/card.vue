@@ -35,7 +35,6 @@ const slots = defineSlots<Slots>();
 
 const delegatedProps = computedOmit(props, [
   'title',
-  'size',
   'split',
   'headerClass',
   'titleClass',

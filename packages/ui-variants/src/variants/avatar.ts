@@ -24,6 +24,9 @@ export const avatarVariants = tv({
       },
       xl: {
         root: 'size-14'
+      },
+      xxl: {
+        root: 'size-16'
       }
     }
   },

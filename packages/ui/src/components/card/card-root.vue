@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { cardVariants, cn } from '@soybean-ui/variants';
 import type { CardRootProps } from './types';
@@ -9,11 +10,15 @@ defineOptions({
 
 const props = defineProps<CardRootProps>();
 
-const { root } = cardVariants();
+const cls = computed(() => {
+  const { root } = cardVariants({ size: props.size });
+
+  return cn(root(), props.class);
+});
 </script>
 
 <template>
-  <Primitive as="div" :class="cn(root(), props.class)">
+  <Primitive as="div" :class="cls">
     <slot />
   </Primitive>
 </template>

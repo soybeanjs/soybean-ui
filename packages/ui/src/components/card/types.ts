@@ -3,6 +3,7 @@ import type { ClassValue } from '../../types';
 
 export type CardRootProps = {
   class?: ClassValue;
+  size?: CardSize;
 };
 
 export type CardSplit = $CardSplit;

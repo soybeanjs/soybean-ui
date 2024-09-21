@@ -10,7 +10,7 @@ const radixVueRsc = 'https://github.com/radix-vue.png';
 
 const soybeanSrc = 'https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png';
 
-const sizes: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+const sizes: AvatarSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
