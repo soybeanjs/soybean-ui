@@ -23,16 +23,6 @@ const props = withDefaults(defineProps<TooltipProps>(), {
   prioritizePosition: true
 });
 
-const delegatedProviderProps = computedPick(props, [
-  'delayDuration',
-  'disableHoverableContent',
-  'disableClosingTrigger',
-  'disabled',
-  'ignoreNonKeyboardFocus'
-]);
-
-const providerProps = useForwardProps(delegatedProviderProps);
-
 const delegatedRootProps = computedPick(props, [
   'defaultOpen',
   'open',
@@ -65,7 +55,7 @@ const contentProps = useForwardProps(delegatedContentProps);
 </script>
 
 <template>
-  <TooltipProvider v-bind="providerProps">
+  <TooltipProvider>
     <TooltipRoot v-bind="forwarded">
       <TooltipTrigger as-child>
         <slot name="trigger" />

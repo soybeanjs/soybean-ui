@@ -18,9 +18,9 @@ const props = withDefaults(defineProps<PopoverContentProps>(), {
   sticky: 'partial'
 });
 
-const delegatedProps = computedOmit(props, ['class']);
-
 const emit = defineEmits<PopoverContentEmits>();
+
+const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 

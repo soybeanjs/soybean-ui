@@ -1,32 +1,34 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue';
-import { TooltipContent, TooltipPortal, useForwardPropsEmits } from 'radix-vue';
-import type { TooltipContentEmits, TooltipContentProps } from 'radix-vue';
+import { TooltipContent, useForwardPropsEmits } from 'radix-vue';
+import type { TooltipContentEmits } from 'radix-vue';
 import { cn, tooltipVariants } from '@soybean-ui/variants';
 import { computedOmit } from '../../shared';
+import type { TooltipContentProps } from './types';
 
 defineOptions({
-  name: 'STooltipContent',
-  inheritAttrs: false
+  name: 'STooltipContent'
 });
 
-const props = withDefaults(defineProps<TooltipContentProps & { class?: HTMLAttributes['class'] }>(), {
-  sideOffset: 8
+const props = withDefaults(defineProps<TooltipContentProps>(), {
+  side: 'bottom',
+  sideOffset: 8,
+  align: 'center',
+  avoidCollisions: true,
+  collisionPadding: 0,
+  sticky: 'partial'
 });
 
 const emit = defineEmits<TooltipContentEmits>();
 
-const { content } = tooltipVariants();
-
 const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
+
+const { content } = tooltipVariants();
 </script>
 
 <template>
-  <TooltipPortal>
-    <TooltipContent v-bind="forwarded" :class="cn(content(), props.class)">
-      <slot />
-    </TooltipContent>
-  </TooltipPortal>
+  <TooltipContent v-bind="forwarded" :class="cn(content(), props.class)">
+    <slot />
+  </TooltipContent>
 </template>
