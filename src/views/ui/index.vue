@@ -25,6 +25,7 @@ import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
+import UiDropdownMenu from './modules/dropdown-menu.vue';
 import UiInput from './modules/input.vue';
 import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
@@ -107,6 +108,11 @@ const tabs: TabConfig[] = [
     key: 'dialog',
     label: 'Dialog',
     component: UiDialog
+  },
+  {
+    key: 'dropdown-menu',
+    label: 'DropdownMenu',
+    component: UiDropdownMenu
   },
   {
     key: 'input',

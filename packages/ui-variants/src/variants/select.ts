@@ -19,8 +19,7 @@ export const selectVariants = tv({
     viewport: 'p-1',
     item: [
       `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none`,
-      `focus:(bg-accent text-accent-foreground)`,
-      `data-[disabled]:(pointer-events-none opacity-50)`
+      `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemIndicator: `absolute`,
     separator: `-mx-1 my-1 h-px bg-muted`,

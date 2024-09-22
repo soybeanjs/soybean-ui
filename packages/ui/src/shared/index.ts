@@ -1,4 +1,4 @@
-import { computed } from 'vue';
+import { camelize, computed, toHandlerKey } from 'vue';
 
 export function pick<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
   const result = {} as Pick<T, K>;
@@ -35,4 +35,16 @@ export function computedOmit<T extends Record<string, any>, K extends keyof T>(p
 
 export function isBlankString(value: unknown | undefined) {
   return typeof value === 'string' && value === '';
+}
+
+export function computedPickEmits<T extends Record<string, any>, K extends keyof T>(emits: T, keys: K[]) {
+  const formattedKeys = keys.map(key => toHandlerKey(camelize(key as string)));
+
+  return computedPick(emits, formattedKeys);
+}
+
+export function computedOmitEmits<T extends Record<string, any>, K extends keyof T>(emits: T, keys: K[]) {
+  const formattedKeys = keys.map(key => toHandlerKey(camelize(key as string)));
+
+  return computedOmit(emits, formattedKeys);
 }

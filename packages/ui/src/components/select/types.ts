@@ -83,6 +83,7 @@ export type SelectProps = SelectRootProps &
     size?: ThemeSize;
     placeholder?: string;
     separator?: boolean;
+    separatorClass?: ClassValue;
     triggerClass?: ClassValue;
     triggerIconClass?: ClassValue;
     disabledPortal?: boolean;
@@ -94,7 +95,6 @@ export type SelectProps = SelectRootProps &
     itemClass?: ClassValue;
     itemTextClass?: ClassValue;
     itemIndicatorClass?: ClassValue;
-    separatorClass?: ClassValue;
     groupClass?: ClassValue;
     groupLabelClass?: ClassValue;
   };
@@ -103,4 +103,4 @@ export type SelectItemOptionProps = {
   option: SelectOption;
 } & Pick<SelectProps, 'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;
 
-export type { SelectPosition, ThemeSize };
+export type { SelectPosition };
