@@ -1,18 +1,8 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  ScrollArea,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger
-} from '@soybean-ui/shadcn-ui';
-import { SButtonIcon } from 'soybean-ui';
+import { ScrollArea, Tabs, TabsContent, TabsList, TabsTrigger } from '@soybean-ui/shadcn-ui';
+import { SButtonIcon, SCard } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
@@ -175,31 +165,28 @@ const tabs: TabConfig[] = [
 
 <template>
   <div class="h-full p-16px">
-    <Card class="h-full flex-col-stretch">
-      <CardHeader class="flex flex-row justify-between">
-        <CardTitle>Soybean UI Components</CardTitle>
+    <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
+      <template #extra>
         <SButtonIcon size="lg" @click="toggleDark">
           <Sun v-if="isDark" />
           <Moon v-else />
         </SButtonIcon>
-      </CardHeader>
-      <CardContent class="flex-1-hidden">
-        <Tabs default-value="accordion" class="h-full flex-col-stretch">
-          <TabsList class="h-auto w-full flex-wrap justify-start gap-y-8px">
-            <TabsTrigger v-for="tab in tabs" :key="tab.key" class="max-w-120px w-1/3" :value="tab.key">
-              {{ tab.label }}
-            </TabsTrigger>
-          </TabsList>
-          <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
-            <ScrollArea class="h-full">
-              <div class="p-18px">
-                <component :is="tab.component" />
-              </div>
-            </ScrollArea>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
-    </Card>
+      </template>
+      <Tabs default-value="accordion" class="h-full flex-col-stretch">
+        <TabsList class="h-auto w-full flex-wrap justify-start gap-y-8px">
+          <TabsTrigger v-for="tab in tabs" :key="tab.key" class="max-w-120px w-1/3" :value="tab.key">
+            {{ tab.label }}
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
+          <ScrollArea class="h-full">
+            <div class="p-18px">
+              <component :is="tab.component" />
+            </div>
+          </ScrollArea>
+        </TabsContent>
+      </Tabs>
+    </SCard>
   </div>
 </template>
 
