@@ -150,6 +150,9 @@ importers:
       radix-vue:
         specifier: 1.9.5
         version: 1.9.5(vue@3.5.1(typescript@5.5.4))
+      vaul-vue:
+        specifier: 0.2.0
+        version: 0.2.0(radix-vue@1.9.5(vue@3.5.1(typescript@5.5.4)))(vue@3.5.1(typescript@5.5.4))
     devDependencies:
       typescript:
         specifier: 5.5.4
