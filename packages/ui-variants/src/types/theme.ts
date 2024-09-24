@@ -3,3 +3,5 @@ export type ThemeColor = 'primary' | 'destructive' | 'success' | 'warning' | 'in
 export type ThemeSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type ThemeOrientation = 'horizontal' | 'vertical';
+
+export type ThemeAlign = 'start' | 'center' | 'end';

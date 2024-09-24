@@ -20,6 +20,7 @@ export * from './variants/switch';
 export * from './variants/textarea';
 export * from './variants/toggle';
 export * from './variants/tooltip';
+export * from './variants/separator';
 
 export * from './shared';
 
