@@ -52,6 +52,7 @@
     "@vitejs/plugin-vue-jsx": "4.0.1",
     "eslint": "9.11.0",
     "eslint-plugin-vue": "9.28.0",
+    "grapheme-splitter": "^1.0.4",
     "lint-staged": "15.2.10",
     "simple-git-hooks": "2.11.1",
     "tsx": "4.19.1",
