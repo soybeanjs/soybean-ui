@@ -3,11 +3,12 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const textareaVariants = tv({
-  base: [
-    `flex w-full rounded-md border border-input bg-background`,
-    `focus-visible:(outline outline-2 outline-primary outline-offset-2)`,
-    `disabled:(cursor-not-allowed opacity-50)`
-  ],
+  slots: {
+    root: 'relative',
+    textarea:
+      'flex w-full rounded-md border border-input bg-background focus-visible:(outline outline-2 outline-primary outline-offset-2) disabled:(cursor-not-allowed opacity-50)',
+    count: 'absolute bottom-0 right-4 text-sm text-slate-400'
+  },
   variants: {
     size: {
       xs: 'px-1.5 py-0.75 text-xs',

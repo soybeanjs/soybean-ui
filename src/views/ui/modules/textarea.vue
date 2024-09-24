@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { STextarea } from 'soybean-ui';
 import type { ThemeSize } from 'soybean-ui';
+import GraphemeSplitter from 'grapheme-splitter';
 
 defineOptions({
   name: 'UiTextarea'
@@ -12,10 +13,31 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 const modelValue = ref<string>('');
 
 const rows: number[] = [1, 2, 3, 4];
+
+const wordCount = ref('soybean-ui');
+const maxlengthWord = ref('1234');
+
+const splitter = new GraphemeSplitter();
+const countGraphemes = (text: string) => splitter.countGraphemes(text);
+const countGraphemesWord = ref('🌷🏳️‍🌈');
 </script>
 
 <template>
   <div class="w-320px lt-sm:w-auto">
+    <div class="py-12px text-18px">word count</div>
+    <STextarea v-model="wordCount" show-count />
+    <div class="py-12px text-18px">word count with maxlength</div>
+    <STextarea v-model="maxlengthWord" show-count maxlength="6" />
+    <div class="py-12px text-18px">Count graphemes</div>
+    <STextarea v-model="countGraphemesWord" :count-graphemes="countGraphemes" show-count />
+    <div class="py-12px text-18px">count slot</div>
+    <STextarea default-value="soybean-ui" show-count count-class="text-xl text-red right-6" />
+    <div class="py-12px text-18px">count slot</div>
+    <STextarea default-value="soybean-ui" show-count>
+      <template #count="{ value }">
+        <span>value is {{ value }}</span>
+      </template>
+    </STextarea>
     <div class="py-12px text-18px">Size</div>
     <div class="flex-col-stretch gap-3">
       <STextarea
