@@ -27,6 +27,7 @@ import UiTextarea from './modules/textarea.vue';
 import UiToggle from './modules/toggle.vue';
 import UiToggleGroup from './modules/toggle-group.vue';
 import UITooltip from './modules/tooltip.vue';
+import UiSeparator from './modules/separator.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -134,6 +135,11 @@ const tabs: TabConfig[] = [
     key: 'select',
     label: 'Select',
     component: UiSelect
+  },
+  {
+    key: 'separator',
+    label: 'Separator',
+    component: UiSeparator
   },
   {
     key: 'switch',
