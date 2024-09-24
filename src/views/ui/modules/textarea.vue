@@ -23,7 +23,7 @@ const countGraphemesWord = ref('🌷🏳️‍🌈');
 </script>
 
 <template>
-  <div class="w-320px lt-sm:w-auto">
+  <div class="w-620px lt-sm:w-auto">
     <div class="py-12px text-18px">word count</div>
     <STextarea v-model="wordCount" show-count />
     <div class="py-12px text-18px">word count with maxlength</div>
@@ -39,14 +39,32 @@ const countGraphemesWord = ref('🌷🏳️‍🌈');
       </template>
     </STextarea>
     <div class="py-12px text-18px">Size</div>
-    <div class="flex-col-stretch gap-3">
-      <STextarea
-        v-for="size in sizes"
-        :key="size"
-        :default-value="`size: ${size}`"
-        :size="size"
-        placeholder="Please Input Textarea"
-      />
+    <div class="flex justify-around gap-6">
+      <div class="w-full">
+        <div class="py-12px text-18px">Size</div>
+        <div class="flex-col-stretch gap-3">
+          <STextarea
+            v-for="size in sizes"
+            :key="size"
+            :default-value="`size: ${size}`"
+            :size="size"
+            placeholder="Please Input Textarea"
+          />
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="py-12px text-18px">show count with size</div>
+        <div class="flex-col-stretch gap-3">
+          <STextarea
+            v-for="size in sizes"
+            :key="size"
+            :default-value="`size: ${size}`"
+            :size="size"
+            show-count
+            placeholder="Please Input Textarea"
+          />
+        </div>
+      </div>
     </div>
     <div class="py-12px text-18px">Rows</div>
     <div class="flex-col-stretch gap-3">

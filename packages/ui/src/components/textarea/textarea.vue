@@ -63,6 +63,7 @@ defineExpose({ STextareaRef });
       :class="countClass"
       :maxlength="maxlength"
       :count-graphemes="countGraphemes"
+      :size="size"
     >
       <slot name="count" :value="modelValue || defaultValue" />
     </TextareaWordCount>

@@ -11,9 +11,9 @@ defineOptions({
 const props = defineProps<TextareaWordCountProps>();
 
 const cls = computed(() => {
-  const { count } = textareaVariants();
+  const { count } = textareaVariants({ size: props.size });
 
-  return cn(count(), props.class);
+  return cn(count({ size: props.size }), props.class);
 });
 
 const countInfo = computed(() => {

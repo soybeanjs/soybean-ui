@@ -8,6 +8,7 @@ export type TextareaRootProps = {
 export type TextareaWordCountProps = {
   value?: string;
   class?: ClassValue;
+  size?: ThemeSize;
   maxlength?: number | string;
   countGraphemes?: (input: string) => number;
 };

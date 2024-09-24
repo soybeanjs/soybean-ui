@@ -7,22 +7,52 @@ export const textareaVariants = tv({
     root: 'relative',
     textarea:
       'flex w-full rounded-md border border-input bg-background focus-visible:(outline outline-2 outline-primary outline-offset-2) disabled:(cursor-not-allowed opacity-50)',
-    count: 'absolute bottom-0 right-4 text-sm text-slate-400'
+    count: 'absolute text-slate-400'
   },
   variants: {
     size: {
-      xs: 'px-1.5 py-0.75 text-xs',
-      sm: 'px-2 py-0.75 text-sm',
-      md: 'px-2.5 py-1.25 text-sm',
-      lg: 'px-3 py-1.25 text-base',
-      xl: 'px-3.5 py-1.75 text-base',
-      xxl: 'px-4 py-2.25 text-lg'
+      xs: {
+        textarea: 'px-1.5 py-0.75 text-xs',
+        count: 'bottom-1 right-3 text-xs'
+      },
+      sm: {
+        textarea: 'px-2 py-0.75 text-sm',
+        count: 'bottom-1 right-3 text-sm'
+      },
+      md: {
+        textarea: 'px-2.5 py-1.25 text-sm',
+        count: 'bottom-1 right-3 text-sm'
+      },
+      lg: {
+        textarea: 'px-3 py-1.25 text-base',
+        count: 'bottom-1 right-3 text-base'
+      },
+      xl: {
+        textarea: 'px-3.5 py-1.75 text-base',
+        count: 'bottom-1 right-3 text-base'
+      },
+      xxl: {
+        textarea: 'px-4 py-2.25 text-lg',
+        count: 'bottom-0.5 right-3 text-lg'
+      }
     },
     resize: {
-      true: 'resize',
-      false: 'resize-none',
-      vertical: 'resize-y',
-      horizontal: 'resize-x'
+      true: {
+        textarea: 'resize',
+        count: ''
+      },
+      false: {
+        textarea: 'resize-none',
+        count: ''
+      },
+      vertical: {
+        textarea: 'resize-y',
+        count: ''
+      },
+      horizontal: {
+        textarea: 'resize-x',
+        count: ''
+      }
     }
   },
   defaultVariants: {
