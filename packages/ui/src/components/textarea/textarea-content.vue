@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { Primitive, useForwardProps } from 'radix-vue';
+import { cn, textareaVariants } from '@soybean-ui/variants';
+import { computedOmit, isBlankString } from '../../shared';
+import type { TextareaContentEmits, TextareaContentProps } from './types';
+
+defineOptions({
+  name: 'STextareaContent'
+});
+
+const props = defineProps<TextareaContentProps>();
+
+const emit = defineEmits<TextareaContentEmits>();
+
+const delegatedProps = computedOmit(props, ['class', 'size', 'resize', 'modelValue', 'defaultValue']);
+
+const forwardedProps = useForwardProps(delegatedProps);
+
+const cls = computed(() => {
+  const resize = isBlankString(props.resize) ? true : props.resize;
+
+  const { content } = textareaVariants({ size: props.size, resize });
+
+  return cn(content(), props.class);
+});
+
+function handleInput(event: Event) {
+  emit('update:modelValue', (event.target as HTMLTextAreaElement).value);
+}
+</script>
+
+<template>
+  <Primitive
+    as="textarea"
+    v-bind="forwardedProps"
+    :value="modelValue || defaultValue"
+    :class="cls"
+    @input="handleInput"
+  />
+</template>

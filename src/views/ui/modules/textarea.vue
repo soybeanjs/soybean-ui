@@ -15,6 +15,8 @@ const modelValue = ref<string>('');
 const rows: number[] = [1, 2, 3, 4];
 
 const wordCount = ref('soybean-ui');
+const wordCount2 = ref('soybean-ui');
+const wordCount3 = ref('soybean-ui');
 const maxlengthWord = ref('1234');
 
 const splitter = new GraphemeSplitter();
@@ -31,11 +33,11 @@ const countGraphemesWord = ref('🌷🏳️‍🌈');
     <div class="py-12px text-18px">Count graphemes</div>
     <STextarea v-model="countGraphemesWord" :count-graphemes="countGraphemes" show-count />
     <div class="py-12px text-18px">count slot</div>
-    <STextarea default-value="soybean-ui" show-count count-class="text-xl text-red right-6" />
+    <STextarea v-model="wordCount2" show-count count-class="text-xl text-red right-6" />
     <div class="py-12px text-18px">count slot</div>
-    <STextarea default-value="soybean-ui" show-count>
-      <template #count="{ value }">
-        <span>value is {{ value }}</span>
+    <STextarea v-model="wordCount3" show-count>
+      <template #count="{ count }">
+        <span>count is {{ count }}</span>
       </template>
     </STextarea>
     <div class="py-12px text-18px">Size</div>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { Primitive, useForwardProps } from 'radix-vue';
-import { cn, textareaVariants } from '@soybean-ui/variants';
-import { computedOmit, isBlankString } from '../../shared';
-import type { TextareaProps } from './types';
-import TextareaWordCount from './textarea-word-count.vue';
+import { computed } from 'vue';
+import { useForwardExpose, useForwardPropsEmits } from 'radix-vue';
+import { computedOmit } from '../../shared';
 import TextareaRoot from './textarea-root.vue';
+import STextareaContent from './textarea-content.vue';
+import STextareaCount from './textarea-count.vue';
+import type { TextareaContentEmits, TextareaProps } from './types';
 
 defineOptions({
   name: 'STextarea'
@@ -13,59 +13,36 @@ defineOptions({
 
 const props = defineProps<TextareaProps>();
 
-type Emits = {
-  'update:modelValue': [value: string];
-};
+const emit = defineEmits<TextareaContentEmits>();
 
-const emit = defineEmits<Emits>();
+const { forwardRef } = useForwardExpose();
 
-const delegatedProps = computedOmit(props, [
+const delegatedContentProps = computedOmit(props, [
   'class',
-  'size',
-  'resize',
-  'modelValue',
-  'defaultValue',
+  'contentClass',
+  'showCount',
   'countClass',
   'countGraphemes'
 ]);
 
-const forwardedProps = useForwardProps(delegatedProps);
+const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
 
-const cls = computed(() => {
-  const resize = isBlankString(props.resize) ? true : props.resize;
-
-  const { textarea } = textareaVariants({ size: props.size, resize });
-
-  return cn(textarea({ size: props.size, resize }), props.class);
-});
-
-function handleInput(event: Event) {
-  emit('update:modelValue', (event.target as HTMLTextAreaElement).value);
-}
-
-const STextareaRef = ref<HTMLTextAreaElement | null>(null);
-defineExpose({ STextareaRef });
+const value = computed(() => props.modelValue || props.defaultValue);
 </script>
 
 <template>
-  <TextareaRoot>
-    <Primitive
-      ref="STextareaRef"
-      as="textarea"
-      v-bind="forwardedProps"
-      :value="modelValue || defaultValue"
-      :class="cls"
-      @input="handleInput"
-    ></Primitive>
-    <TextareaWordCount
+  <TextareaRoot :class="props.class">
+    <STextareaContent :ref="forwardRef" v-bind="forwardedContent" :class="contentClass" />
+    <STextareaCount
       v-if="showCount"
-      :value="modelValue || defaultValue"
+      v-slot="{ count }"
       :class="countClass"
+      :size="size"
+      :value="value"
       :maxlength="maxlength"
       :count-graphemes="countGraphemes"
-      :size="size"
     >
-      <slot name="count" :value="modelValue || defaultValue" />
-    </TextareaWordCount>
+      <slot name="count" :count="count" :value="count" />
+    </STextareaCount>
   </TextareaRoot>
 </template>
