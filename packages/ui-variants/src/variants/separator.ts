@@ -20,13 +20,13 @@ export const separatorVariants = tv({
     },
     align: {
       start: {
-        label: 'left-1/20'
+        label: 'left-1/16 lt-sm:left-1/8 lt-md:left-1/10 lt-lg:left-1/12'
       },
       center: {
         label: 'left-1/2'
       },
       end: {
-        label: 'right-1/20'
+        label: 'left-15/16 lt-sm:left-7/8 lt-md:left-9/10 lt-lg:left-11/12'
       }
     },
     border: {
