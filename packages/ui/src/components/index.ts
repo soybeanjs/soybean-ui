@@ -15,6 +15,7 @@ export * from './input';
 export * from './popover';
 export * from './progress';
 export * from './radio';
+export * from './scroll-area';
 export * from './select';
 export * from './separator';
 export * from './switch';

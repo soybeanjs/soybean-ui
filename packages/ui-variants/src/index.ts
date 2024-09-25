@@ -15,6 +15,7 @@ export * from './variants/label';
 export * from './variants/popover';
 export * from './variants/progress';
 export * from './variants/radio';
+export * from './variants/scroll-area';
 export * from './variants/select';
 export * from './variants/separator';
 export * from './variants/switch';
