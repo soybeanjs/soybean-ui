@@ -1,6 +1,7 @@
+import SSeparatorRoot from './separator-root.vue';
+import SSeparatorLabel from './separator-label.vue';
 import SSeparator from './separator.vue';
-import SeparatorLabel from './separator-label.vue';
 
-export { SSeparator, SeparatorLabel };
+export { SSeparatorRoot, SSeparatorLabel, SSeparator };
 
 export * from './types';

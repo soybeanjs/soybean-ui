@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Separator } from 'radix-vue';
-import { cn, separatorVariants } from '@soybean-ui/variants';
+import { useForwardProps } from 'radix-vue';
 import { computedOmit } from '../../shared';
+import SSeparatorRoot from './separator-root.vue';
+import SSeparatorLabel from './separator-label.vue';
 import type { SeparatorProps } from './types';
-import SeparatorLabel from './separator-label.vue';
 
 defineOptions({
   name: 'SSeparator'
@@ -12,29 +11,17 @@ defineOptions({
 
 const props = defineProps<SeparatorProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'labelClass', 'dashed', 'plain', 'orientation', 'align']);
+const delegatedRootProps = computedOmit(props, ['align', 'label', 'labelClass']);
 
-const cls = computed(() => {
-  const { align, orientation, dashed } = props;
-
-  const { separator } = separatorVariants({ align, dashed, orientation });
-
-  return cn(separator(), props.class);
-});
+const forwardedRootProps = useForwardProps(delegatedRootProps);
 </script>
 
 <template>
-  <Separator v-bind="delegatedProps" :class="cls">
-    <SeparatorLabel
-      v-if="label || $slots.label"
-      :class="labelClass"
-      :orientation="orientation"
-      :plain="plain"
-      :align="align"
-    >
-      <slot name="label">
-        {{ props.label }}
-      </slot>
-    </SeparatorLabel>
-  </Separator>
+  <SSeparatorRoot v-bind="forwardedRootProps">
+    <slot name="leading" />
+    <SSeparatorLabel v-if="label || $slots.default" :class="labelClass" :orientation="orientation" :align="align">
+      <slot>{{ label }}</slot>
+    </SSeparatorLabel>
+    <slot name="trailing" />
+  </SSeparatorRoot>
 </template>

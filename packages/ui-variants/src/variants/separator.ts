@@ -1,12 +1,23 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
+import type { VariantProps } from 'tailwind-variants';
 
 export const separatorVariants = tv({
   slots: {
-    separator: `shrink-0 relative border-border`,
-    label: `text-muted-foreground bg-background  top-1/2  absolute -translate-x-1/2 -translate-y-1/2 flex justify-center items-center`
+    root: `relative shrink-0 border-border`,
+    label: `absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-xs text-muted-foreground bg-background`
   },
   variants: {
+    orientation: {
+      vertical: {
+        root: 'h-full border-l',
+        label: 'w-px px-1 py-2'
+      },
+      horizontal: {
+        root: 'w-full border-t',
+        label: 'h-1px px-2 py-1'
+      }
+    },
     align: {
       start: {
         label: 'left-1/20'
@@ -18,37 +29,25 @@ export const separatorVariants = tv({
         label: 'right-1/20'
       }
     },
-    dashed: {
-      true: {
-        separator: 'border-dashed'
+    border: {
+      solid: {
+        root: 'border-solid'
       },
-      false: {
-        separator: 'border-solid'
-      }
-    },
-    plain: {
-      true: {
-        label: 'text-lg fw-500 text-#000'
+      dashed: {
+        root: 'border-dashed'
       },
-      false: {
-        label: 'text-sm fw-400'
-      }
-    },
-    orientation: {
-      vertical: {
-        separator: 'h-full border-l',
-        label: 'w-[1px] px-1 py-2'
-      },
-      horizontal: {
-        separator: 'w-full  border-t ',
-        label: 'h-[1px] px-2 py-1'
+      dotted: {
+        root: 'border-dotted'
       }
     }
   },
   defaultVariants: {
     orientation: 'horizontal',
     align: 'center',
-    dashed: false,
-    plain: false
+    border: 'solid'
   }
 });
+
+type SeparatorVariants = VariantProps<typeof separatorVariants>;
+
+export type SeparatorBorder = NonNullable<SeparatorVariants['border']>;

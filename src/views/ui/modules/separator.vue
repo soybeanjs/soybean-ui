@@ -1,38 +1,35 @@
 <script setup lang="ts">
 import { SSeparator } from 'soybean-ui';
-import type { ThemeAlign } from '@soybean-ui/variants';
+import type { SeparatorBorder, ThemeAlign } from 'soybean-ui';
 
 defineOptions({
   name: 'UiSeparator'
 });
 
-const align: ThemeAlign[] = ['center', 'start', 'end'];
+const aligns: ThemeAlign[] = ['start', 'center', 'end'];
+
+const borders: SeparatorBorder[] = ['solid', 'dashed', 'dotted'];
 </script>
 
 <template>
   <div class="py-12px text-18px">Horizontal</div>
-  <SSeparator class="my-4" label="Horizontal" />
-
+  <SSeparator class="mb-6">Horizontal</SSeparator>
   <div class="py-12px text-18px">Vertical</div>
-  <div class="h-5 flex-center text-sm space-x-4">
+  <div class="h-5 flex-center space-x-4">
     <div>Soybean</div>
     <SSeparator orientation="vertical" />
-    <div>Ui</div>
+    <div>UI</div>
     <SSeparator orientation="vertical" />
     <div>Vue</div>
   </div>
-
-  <div class="py-12px text-18px">Dashed</div>
-  <SSeparator class="my-4" dashed label="Dashed" />
-
-  <div class="py-12px text-18px">Orientation</div>
-  <SSeparator v-for="item in align" :key="item" class="my-4" :align="item" :label="`${item}-text`" />
-
-  <div class="py-12px text-18px">orientationMargin</div>
-  <SSeparator class="my-4" align="start" label-class="left-0" label="Left 0" />
-
-  <div class="py-12px text-18px">Plain</div>
-  <SSeparator class="my-4" plain label="Plain" />
+  <div class="py-12px text-18px">Align</div>
+  <SSeparator v-for="align in aligns" :key="align" :align="align" class="mb-6">{{ align }}</SSeparator>
+  <div class="py-12px text-18px">Custom Align</div>
+  <SSeparator class="mb-6" label-class="left-1/3">Custom Align</SSeparator>
+  <div class="py-12px text-18px">Border</div>
+  <SSeparator v-for="border in borders" :key="border" :border="border" class="mb-6">{{ border }}</SSeparator>
+  <div class="py-12px text-18px">Border Width</div>
+  <SSeparator border="solid" class="mb-6 border-2px">2 px</SSeparator>
 </template>
 
 <style scoped></style>
