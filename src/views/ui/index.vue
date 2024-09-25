@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
-import { ScrollArea, Tabs, TabsContent, TabsList, TabsTrigger } from '@soybean-ui/shadcn-ui';
-import { SButtonIcon, SCard } from 'soybean-ui';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@soybean-ui/shadcn-ui';
+import { SButtonIcon, SCard, SScrollArea } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
@@ -191,11 +191,11 @@ const tabs: TabConfig[] = [
           </TabsTrigger>
         </TabsList>
         <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
-          <ScrollArea class="h-full">
+          <SScrollArea class="h-full">
             <div class="p-18px">
               <component :is="tab.component" />
             </div>
-          </ScrollArea>
+          </SScrollArea>
         </TabsContent>
       </Tabs>
     </SCard>
