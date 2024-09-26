@@ -18,6 +18,7 @@ import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
 import UiInput from './modules/input.vue';
+import UiPinInput from './modules/pin-input.vue';
 import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
@@ -121,6 +122,11 @@ const tabs: TabConfig[] = [
     key: 'popover',
     label: 'Popover',
     component: UiPopover
+  },
+  {
+    key: 'pin-input',
+    label: 'PinInput',
+    component: UiPinInput
   },
   {
     key: 'progress',

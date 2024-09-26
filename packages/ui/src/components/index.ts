@@ -12,6 +12,7 @@ export * from './dialog';
 export * from './drawer';
 export * from './dropdown-menu';
 export * from './input';
+export * from './pin-input';
 export * from './popover';
 export * from './progress';
 export * from './radio';
