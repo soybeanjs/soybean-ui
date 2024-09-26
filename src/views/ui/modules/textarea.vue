@@ -21,7 +21,7 @@ const maxlengthWord = ref('1234');
 
 const splitter = new GraphemeSplitter();
 const countGraphemes = (text: string) => splitter.countGraphemes(text);
-const countGraphemesWord = ref('🌷🏳️‍🌈');
+const countGraphemesWord = ref('🌷🇨🇳');
 </script>
 
 <template>
