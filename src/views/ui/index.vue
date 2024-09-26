@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@soybean-ui/shadcn-ui';
-import { SButtonIcon, SCard, SScrollArea } from 'soybean-ui';
+import { SButtonIcon, SCard, SScrollArea, Stabs } from 'soybean-ui';
+import type { TabsOption } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
@@ -42,149 +42,147 @@ function toggleDark() {
   isDark.value = !isDark.value;
 }
 
-interface TabConfig {
-  key: string;
-  label: string;
+interface TabConfig extends TabsOption {
   component: Component;
 }
 
 const tabs: TabConfig[] = [
   {
-    key: 'accordion',
+    value: 'accordion',
     label: 'Accordion',
     component: UiAccordion
   },
   {
-    key: 'alert',
+    value: 'alert',
     label: 'Alert',
     component: UiAlert
   },
   {
-    key: 'alert-dialog',
+    value: 'alert-dialog',
     label: 'AlertDialog',
     component: UiAlertDialog
   },
   {
-    key: 'aspect-ratio',
+    value: 'aspect-ratio',
     label: 'AspectRatio',
     component: UiAspectRatio
   },
   {
-    key: 'avatar',
+    value: 'avatar',
     label: 'Avatar',
     component: UiAvatar
   },
   {
-    key: 'badge',
+    value: 'badge',
     label: 'Badge',
     component: UiBadge
   },
   {
-    key: 'button',
+    value: 'button',
     label: 'Button',
     component: UiButton
   },
   {
-    key: 'card',
+    value: 'card',
     label: 'Card',
     component: UiCard
   },
   {
-    key: 'checkbox',
+    value: 'checkbox',
     label: 'Checkbox',
     component: UiCheckbox
   },
   {
-    key: 'collapsible',
+    value: 'collapsible',
     label: 'Collapsible',
     component: UiCollapsible
   },
   {
-    key: 'dialog',
+    value: 'dialog',
     label: 'Dialog',
     component: UiDialog
   },
   {
-    key: 'drawer',
+    value: 'drawer',
     label: 'Drawer',
     component: UiDrawer
   },
   {
-    key: 'dropdown-menu',
+    value: 'dropdown-menu',
     label: 'DropdownMenu',
     component: UiDropdownMenu
   },
   {
-    key: 'input',
+    value: 'input',
     label: 'Input',
     component: UiInput
   },
   {
-    key: 'popover',
+    value: 'popover',
     label: 'Popover',
     component: UiPopover
   },
   {
-    key: 'pin-input',
+    value: 'pin-input',
     label: 'PinInput',
     component: UiPinInput
   },
   {
-    key: 'progress',
+    value: 'progress',
     label: 'Progress',
     component: UiProgress
   },
   {
-    key: 'radio',
+    value: 'radio',
     label: 'Radio',
     component: UiRadio
   },
   {
-    key: 'scroll-area',
+    value: 'scroll-area',
     label: 'ScrollArea',
     component: UiScrollArea
   },
   {
-    key: 'select',
+    value: 'select',
     label: 'Select',
     component: UiSelect
   },
   {
-    key: 'separator',
+    value: 'separator',
     label: 'Separator',
     component: UiSeparator
   },
   {
-    key: 'switch',
+    value: 'switch',
     label: 'Switch',
     component: UiSwitch
   },
   {
-    key: 'tabs',
+    value: 'tabs',
     label: 'Tabs',
     component: UiTabs
   },
   {
-    key: 'textarea',
+    value: 'textarea',
     label: 'Textarea',
     component: UiTextarea
   },
   {
-    key: 'toggle',
+    value: 'toggle',
     label: 'Toggle',
     component: UiToggle
   },
   {
-    key: 'toggle-group',
+    value: 'toggle-group',
     label: 'ToggleGroup',
     component: UiToggleGroup
   },
   {
-    key: 'tooltip',
+    value: 'tooltip',
     label: 'Tooltip',
     component: UITooltip
   }
-];
+] satisfies TabConfig[];
 </script>
 
 <template>
@@ -196,20 +194,22 @@ const tabs: TabConfig[] = [
           <Moon v-else />
         </SButtonIcon>
       </template>
-      <Tabs default-value="accordion" class="h-full flex-col-stretch">
-        <TabsList class="h-auto w-full flex-wrap justify-start gap-y-8px">
-          <TabsTrigger v-for="tab in tabs" :key="tab.key" class="max-w-120px w-1/3" :value="tab.key">
-            {{ tab.label }}
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent v-for="tab in tabs" :key="tab.key" :value="tab.key" class="flex-1-hidden">
+      <Stabs
+        default-value="accordion"
+        :options="tabs"
+        :enable-indicator="false"
+        class="h-full"
+        list-class="flex-wrap justify-start"
+        trigger-class="flex-none max-w-120px w-1/3"
+      >
+        <template #content="{ component }">
           <SScrollArea class="h-full">
             <div class="p-18px">
-              <component :is="tab.component" />
+              <component :is="component" />
             </div>
           </SScrollArea>
-        </TabsContent>
-      </Tabs>
+        </template>
+      </Stabs>
     </SCard>
   </div>
 </template>

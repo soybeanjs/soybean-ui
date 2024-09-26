@@ -16,6 +16,7 @@ export type TabsListProps = Omit<$TabsListProps, 'as' | 'asChild'> & {
 
 export type TabsTriggerProps = Omit<$TabsTriggerProps, 'as' | 'asChild'> & {
   class?: ClassValue;
+  enableIndicator?: boolean;
 };
 
 export type TabsIndicatorProps = {
@@ -40,6 +41,7 @@ export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
     options: T[];
     listClass?: ClassValue;
     triggerClass?: ClassValue;
+    enableIndicator?: boolean;
     indicatorClass?: ClassValue;
     indicatorSlotClass?: ClassValue;
     forceMountContent?: boolean;

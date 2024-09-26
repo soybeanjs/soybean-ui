@@ -13,5 +13,15 @@ export const tabsVariants = tv({
     indicator: `absolute bottom-0 left-0 z-1 h-full w-[--radix-tabs-indicator-size] py-1 translate-x-[--radix-tabs-indicator-position] transition-[width,transform] duration-300`,
     indicatorSlot: `size-full rounded-md bg-background shadow`,
     content: `flex-grow overflow-hidden mt-2 focus-visible:(outline outline-2 outline-primary outline-offset-2)`
+  },
+  variants: {
+    enableIndicator: {
+      false: {
+        trigger: `data-[state=active]:(bg-background text-foreground shadow)`
+      }
+    }
+  },
+  defaultVariants: {
+    enableIndicator: true
   }
 });

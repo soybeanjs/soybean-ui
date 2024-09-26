@@ -18,6 +18,7 @@ const {
   options,
   listClass,
   triggerClass,
+  enableIndicator = true,
   indicatorClass,
   indicatorSlotClass,
   forceMountContent,
@@ -39,10 +40,11 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
         :value="item.value"
         :disabled="item.disabled"
         :class="triggerClass"
+        :enable-indicator="enableIndicator"
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicator :class="indicatorClass">
+      <STabsIndicator v-if="enableIndicator" :class="indicatorClass">
         <slot name="indicator">
           <STabsIndicatorSlot :class="indicatorSlotClass" />
         </slot>
