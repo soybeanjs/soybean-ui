@@ -34,7 +34,6 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
-    "@soybean-ui/shadcn-ui": "workspace:*",
     "@unocss/reset": "0.62.4",
     "@vueuse/core": "11.1.0",
     "lucide-vue-next": "0.445.0",

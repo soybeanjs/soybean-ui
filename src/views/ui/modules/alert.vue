@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ExclamationTriangleIcon, RocketIcon } from '@radix-icons/vue';
+import { Rocket, TriangleAlert } from 'lucide-vue-next';
 import { SAlert } from 'soybean-ui';
 import type { AlertVariant, ThemeColor } from 'soybean-ui';
 
@@ -27,13 +27,13 @@ defineOptions({
   <div class="py-12px text-18px">With Icon</div>
   <SAlert color="success" variant="outline" title="Flighting !!!">
     <template #icon="slotProps">
-      <RocketIcon v-bind="slotProps" />
+      <Rocket v-bind="slotProps" />
     </template>
   </SAlert>
   <div class="py-12px text-18px">With description and icon</div>
   <SAlert color="destructive" title="Error" description="Your session has expired. Please log in again.">
     <template #icon="slotProps">
-      <ExclamationTriangleIcon v-bind="slotProps" />
+      <TriangleAlert v-bind="slotProps" />
     </template>
   </SAlert>
   <div class="py-12px text-18px">Closable</div>
