@@ -26,6 +26,7 @@ import UiScrollArea from './modules/scroll-area.vue';
 import UiSelect from './modules/select.vue';
 import UiSeparator from './modules/separator.vue';
 import UiSwitch from './modules/switch.vue';
+import UiTabs from './modules/tabs.vue';
 import UiTextarea from './modules/textarea.vue';
 import UiToggle from './modules/toggle.vue';
 import UiToggleGroup from './modules/toggle-group.vue';
@@ -157,6 +158,11 @@ const tabs: TabConfig[] = [
     key: 'switch',
     label: 'Switch',
     component: UiSwitch
+  },
+  {
+    key: 'tabs',
+    label: 'Tabs',
+    component: UiTabs
   },
   {
     key: 'textarea',

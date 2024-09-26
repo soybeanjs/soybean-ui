@@ -20,6 +20,7 @@ export * from './variants/scroll-area';
 export * from './variants/select';
 export * from './variants/separator';
 export * from './variants/switch';
+export * from './variants/tabs';
 export * from './variants/textarea';
 export * from './variants/toggle';
 export * from './variants/tooltip';
