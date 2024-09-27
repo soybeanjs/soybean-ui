@@ -4,8 +4,8 @@ import type { TabsRootEmits } from 'radix-vue';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';
+import STabsIndicatorRoot from './tabs-indicator-root.vue';
 import STabsIndicator from './tabs-indicator.vue';
-import STabsIndicatorSlot from './tabs-indicator-slot.vue';
 import STabsContent from './tabs-content.vue';
 import type { TabsOption, TabsProps } from './types';
 
@@ -19,8 +19,8 @@ const {
   listClass,
   triggerClass,
   enableIndicator = true,
+  indicatorRootClass,
   indicatorClass,
-  indicatorSlotClass,
   forceMountContent,
   contentClass,
   ...delegatedRootProps
@@ -33,7 +33,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
 <template>
   <STabsRoot v-bind="forwarded">
-    <STabsList :loop="loop" :class="listClass">
+    <STabsList :class="listClass" :loop="loop" :orientation="orientation">
       <STabsTrigger
         v-for="item in options"
         :key="item.value"
@@ -44,11 +44,11 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicator v-if="enableIndicator" :class="indicatorClass">
+      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation="orientation">
         <slot name="indicator">
-          <STabsIndicatorSlot :class="indicatorSlotClass" />
+          <STabsIndicator :class="indicatorClass" :orientation="orientation" />
         </slot>
-      </STabsIndicator>
+      </STabsIndicatorRoot>
     </STabsList>
     <STabsContent
       v-for="item in options"
@@ -56,6 +56,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       :value="item.value"
       :force-mount="forceMountContent"
       :class="contentClass"
+      :orientation="orientation"
     >
       <slot name="content" v-bind="{ ...item, active: item.value === modelValue }" />
     </STabsContent>

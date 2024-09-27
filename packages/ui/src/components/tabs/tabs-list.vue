@@ -8,12 +8,12 @@ defineOptions({
   name: 'STabsList'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<TabsListProps>();
+const { class: cls, orientation, ...delegatedProps } = defineProps<TabsListProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { list } = tabsVariants();
+  const { list } = tabsVariants({ orientation });
 
   return cn(list(), cls);
 });

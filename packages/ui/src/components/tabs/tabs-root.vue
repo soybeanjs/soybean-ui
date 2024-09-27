@@ -7,7 +7,7 @@ import type { StringOrNumber } from '../../types';
 import type { TabsRootProps } from './types';
 
 defineOptions({
-  name: 'TabsRoot'
+  name: 'STabsRoot'
 });
 
 const { class: cls, ...delegatedProps } = defineProps<TabsRootProps<T>>();
@@ -17,7 +17,7 @@ const emit = defineEmits<TabsRootEmits<T>>();
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { root } = tabsVariants();
+  const { root } = tabsVariants({ orientation: delegatedProps.orientation });
 
   return cn(root(), cls);
 });

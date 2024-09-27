@@ -4,7 +4,7 @@ import type {
   TabsRootProps as $TabsRootProps,
   TabsTriggerProps as $TabsTriggerProps
 } from 'radix-vue';
-import type { ClassValue, StringOrNumber } from '../../types';
+import type { ClassValue, StringOrNumber, ThemeOrientation } from '../../types';
 
 export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = Omit<$TabsRootProps<T>, 'as' | 'asChild'> & {
   class?: ClassValue;
@@ -12,23 +12,28 @@ export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = Omit<$Tab
 
 export type TabsListProps = Omit<$TabsListProps, 'as' | 'asChild'> & {
   class?: ClassValue;
+  orientation?: ThemeOrientation;
 };
 
 export type TabsTriggerProps = Omit<$TabsTriggerProps, 'as' | 'asChild'> & {
   class?: ClassValue;
+  orientation?: ThemeOrientation;
   enableIndicator?: boolean;
+};
+
+export type TabsIndicatorRootProps = {
+  class?: ClassValue;
+  orientation?: ThemeOrientation;
 };
 
 export type TabsIndicatorProps = {
   class?: ClassValue;
-};
-
-export type TabsIndicatorSlotProps = {
-  class?: ClassValue;
+  orientation?: ThemeOrientation;
 };
 
 export type TabsContentProps = Omit<$TabsContentProps, 'as' | 'asChild'> & {
   class?: ClassValue;
+  orientation?: ThemeOrientation;
 };
 
 export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTriggerProps, 'disabled'> & {
@@ -42,8 +47,8 @@ export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
     listClass?: ClassValue;
     triggerClass?: ClassValue;
     enableIndicator?: boolean;
+    indicatorRootClass?: ClassValue;
     indicatorClass?: ClassValue;
-    indicatorSlotClass?: ClassValue;
     forceMountContent?: boolean;
     contentClass?: ClassValue;
   };

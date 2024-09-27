@@ -8,12 +8,12 @@ defineOptions({
   name: 'STabsContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<TabsContentProps>();
+const { class: cls, orientation, ...delegatedProps } = defineProps<TabsContentProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { content } = tabsVariants();
+  const { content } = tabsVariants({ orientation });
 
   return cn(content(), cls);
 });
