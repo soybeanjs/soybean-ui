@@ -23,6 +23,7 @@ import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
 import UiScrollArea from './modules/scroll-area.vue';
+import UiSegment from './modules/segment.vue';
 import UiSelect from './modules/select.vue';
 import UiSeparator from './modules/separator.vue';
 import UiSwitch from './modules/switch.vue';
@@ -141,6 +142,11 @@ const tabs: TabConfig[] = [
     value: 'scroll-area',
     label: 'ScrollArea',
     component: UiScrollArea
+  },
+  {
+    value: 'segment',
+    label: 'Segment',
+    component: UiSegment
   },
   {
     value: 'select',
