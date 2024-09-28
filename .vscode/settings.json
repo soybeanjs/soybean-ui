@@ -6,12 +6,12 @@
   "eslint.useFlatConfig": true,
   "editor.formatOnSave": false,
   "eslint.validate": ["html", "css", "scss", "json", "jsonc"],
-  "i18n-ally.displayLanguage": "zh-cn",
-  "i18n-ally.enabledParsers": ["ts"],
-  "i18n-ally.enabledFrameworks": ["vue"],
-  "i18n-ally.editor.preferEditor": true,
-  "i18n-ally.keystyle": "nested",
-  "i18n-ally.localesPaths": ["src/locales/langs"],
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/.hg/store/**": true
+  },
   "prettier.enable": false,
   "typescript.tsdk": "node_modules/typescript/lib",
   "unocss.root": ["./"],
