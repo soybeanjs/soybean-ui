@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { DialogPortal, DialogRoot, DialogTrigger, useForwardProps, useForwardPropsEmits } from 'radix-vue';
-import type { DialogContentEmits, DialogRootEmits } from 'radix-vue';
-import { computedOmit, computedPick } from '../../shared';
+import { computed } from 'vue';
+import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
+import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SDialogContent from './dialog-content.vue';
 import SDialogOverlay from './dialog-overlay.vue';
-import type { DialogProps } from './types';
+import type { DialogEmits, DialogProps } from './types';
 
 defineOptions({
   name: 'SDialog'
@@ -12,7 +12,22 @@ defineOptions({
 
 const props = defineProps<DialogProps>();
 
-const emit = defineEmits<DialogRootEmits & DialogContentEmits>();
+const emit = defineEmits<DialogEmits>();
+
+type Slots = {
+  trigger: () => any;
+  default: () => any;
+  header: () => any;
+  'title-root': () => any;
+  title: () => any;
+  'title-leading': () => any;
+  'title-trailing': () => any;
+  extra: () => any;
+  close: () => any;
+  footer: () => any;
+};
+
+const slots = defineSlots<Slots>();
 
 const delegatedRootProps = computedPick(props, ['open', 'defaultOpen', 'modal']);
 
@@ -22,13 +37,25 @@ const delegatedContentProps = computedOmit(props, [
   'open',
   'defaultOpen',
   'modal',
+  'to',
   'disabledPortal',
   'forceMountPortal',
   'overlayClass',
   'forceMountOverlay'
 ]);
 
-const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+const forwardedContentProps = useForwardProps(delegatedContentProps);
+
+const forwardedEmits = useEmitAsProps(emit) as Record<keyof DialogEmits, any>;
+
+const forwardedContentEmits = computedOmitEmits(forwardedEmits, ['update:open']);
+
+const forwardedContent = computed(() => ({
+  ...forwardedContentProps.value,
+  ...forwardedContentEmits.value
+}));
+
+const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>
 
 <template>
@@ -39,30 +66,8 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
     <DialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SDialogContent v-bind="forwardedContent">
-        <template #header>
-          <slot name="header" />
-        </template>
-        <template #title-root>
-          <slot name="title-root" />
-        </template>
-        <template #title>
-          <slot name="title" />
-        </template>
-        <template #title-leading>
-          <slot name="title-leading" />
-        </template>
-        <template #title-trailing>
-          <slot name="title-trailing" />
-        </template>
-        <template #extra>
-          <slot name="extra" />
-        </template>
-        <template #close>
-          <slot name="close" />
-        </template>
-        <slot />
-        <template v-if="$slots.footer" #footer>
-          <slot name="footer" />
+        <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>
+          <slot :name="slotKey" />
         </template>
       </SDialogContent>
     </DialogPortal>

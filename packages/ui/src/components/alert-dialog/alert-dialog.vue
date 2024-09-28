@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import {
-  AlertDialogPortal,
-  AlertDialogRoot,
-  AlertDialogTrigger,
-  useForwardProps,
-  useForwardPropsEmits
-} from 'radix-vue';
-import type { AlertDialogContentEmits, AlertDialogEmits } from 'radix-vue';
-import { computedOmit, computedPick } from '../../shared';
+import { computed } from 'vue';
+import { AlertDialogPortal, AlertDialogRoot, AlertDialogTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
+import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
-import type { AlertDialogProps } from './types';
+import type { AlertDialogEmits, AlertDialogProps } from './types';
 
 defineOptions({
   name: 'SAlertDialog'
@@ -18,7 +12,22 @@ defineOptions({
 
 const props = defineProps<AlertDialogProps>();
 
-const emit = defineEmits<AlertDialogEmits & AlertDialogContentEmits>();
+const emit = defineEmits<AlertDialogEmits>();
+
+type Slots = {
+  trigger: () => any;
+  default: () => any;
+  header: () => any;
+  'title-root': () => any;
+  title: () => any;
+  'title-leading': () => any;
+  'title-trailing': () => any;
+  extra: () => any;
+  close: () => any;
+  footer: () => any;
+};
+
+const slots = defineSlots<Slots>();
 
 const delegatedRootProps = computedPick(props, ['open', 'defaultOpen']);
 
@@ -27,13 +36,25 @@ const forwardedRootProps = useForwardProps(delegatedRootProps);
 const delegatedContentProps = computedOmit(props, [
   'open',
   'defaultOpen',
+  'to',
   'disabledPortal',
   'forceMountPortal',
   'overlayClass',
   'forceMountOverlay'
 ]);
 
-const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+const forwardedContentProps = useForwardProps(delegatedContentProps);
+
+const forwardedEmits = useEmitAsProps(emit) as Record<keyof AlertDialogEmits, any>;
+
+const forwardedContentEmits = computedOmitEmits(forwardedEmits, ['update:open']);
+
+const forwardedContent = computed(() => ({
+  ...forwardedContentProps.value,
+  ...forwardedContentEmits.value
+}));
+
+const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>
 
 <template>
@@ -44,30 +65,8 @@ const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
     <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SAlertDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SAlertDialogContent v-bind="forwardedContent">
-        <template #header>
-          <slot name="header" />
-        </template>
-        <template #title-root>
-          <slot name="title-root" />
-        </template>
-        <template #title>
-          <slot name="title" />
-        </template>
-        <template #title-leading>
-          <slot name="title-leading" />
-        </template>
-        <template #title-trailing>
-          <slot name="title-trailing" />
-        </template>
-        <template #extra>
-          <slot name="extra" />
-        </template>
-        <template #close>
-          <slot name="close" />
-        </template>
-        <slot />
-        <template #footer>
-          <slot name="footer" />
+        <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>
+          <slot :name="slotKey" />
         </template>
       </SAlertDialogContent>
     </AlertDialogPortal>

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { AlertDialogOverlay, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { AlertDialogOverlay } from 'radix-vue';
 import { cn, dialogVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { AlertDialogOverlayProps } from './types';
 
 defineOptions({
   name: 'SAlertDialogOverlay'
 });
 
-const props = defineProps<AlertDialogOverlayProps>();
+const { class: cls, forceMount } = defineProps<AlertDialogOverlayProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const mergedCls = computed(() => {
+  const { overlay } = dialogVariants();
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const { overlay } = dialogVariants();
+  return cn(overlay(), cls);
+});
 </script>
 
 <template>
-  <AlertDialogOverlay v-bind="forwardedProps" :class="cn(overlay(), props.class)" />
+  <AlertDialogOverlay :class="mergedCls" :force-mount />
 </template>
 
 <style scoped></style>

@@ -7,16 +7,14 @@ defineOptions({
   name: 'SAlertDialogCancel'
 });
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  variant: 'plain'
-});
+const { variant = 'plain', ...delegatedProps } = defineProps<ButtonProps>();
 
-const forwarded = useForwardProps(props);
+const forwarded = useForwardProps(delegatedProps);
 </script>
 
 <template>
   <AlertDialogCancel as-child>
-    <SButton v-bind="forwarded">
+    <SButton v-bind="forwarded" :variant>
       <slot>Cancel</slot>
     </SButton>
   </AlertDialogCancel>

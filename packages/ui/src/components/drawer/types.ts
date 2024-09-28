@@ -1,12 +1,16 @@
-import type { DrawerPortalProps, DrawerRootProps } from 'vaul-vue';
+import type { DrawerPortalProps, DrawerRootEmits, DrawerRootProps } from 'vaul-vue';
 import type { ClassValue } from '../../types';
+import type { CardProps } from '../card/types';
 
 export type DrawerOverlayProps = {
   class?: ClassValue;
 };
 
-export type DrawerContentProps = {
+export type DrawerContentProps = CardProps & {
   class?: ClassValue;
+  cardClass?: ClassValue;
+  showClose?: boolean;
+  closeClass?: ClassValue;
 };
 export type DrawerTitleProps = {
   class?: ClassValue;
@@ -20,11 +24,13 @@ export type DrawerKnobProps = {
 };
 
 export type DrawerProps = DrawerRootProps &
+  DrawerContentProps &
   Pick<DrawerPortalProps, 'to'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;
-    contentClass?: ClassValue;
   };
 
-export type { DrawerRootProps, DrawerPortalProps };
+export type DrawerEmits = DrawerRootEmits;
+
+export type { DrawerRootProps, DrawerPortalProps, DrawerRootEmits };

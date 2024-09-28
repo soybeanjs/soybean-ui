@@ -38,7 +38,6 @@ export type CardFooterProps = {
 
 export type CardProps = CardRootProps & {
   title?: string;
-  size?: ThemeSize;
   split?: CardSplit;
   headerClass?: ClassValue;
   titleRootClass?: ClassValue;

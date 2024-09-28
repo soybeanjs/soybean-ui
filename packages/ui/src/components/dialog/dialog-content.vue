@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { DialogContentEmits } from 'radix-vue';
 import {
   DialogClose,
   DialogContent,
@@ -15,75 +14,77 @@ import { cn, dialogVariants } from '@soybean-ui/variants';
 import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';
-import type { DialogContentProps } from './types';
+import type { DialogContentEmits, DialogContentProps } from './types';
 
 defineOptions({
   name: 'SDialogContent'
 });
 
-const props = withDefaults(defineProps<DialogContentProps>(), {
-  showClose: true
-});
+const { class: cls, showClose = true, footerClass, ...delegatedProps } = defineProps<DialogContentProps>();
 
 const emit = defineEmits<DialogContentEmits>();
 
-const delegatedDialogContentProps = computedPick(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+type Slots = {
+  default: () => any;
+  header: () => any;
+  'title-root': () => any;
+  title: () => any;
+  'title-leading': () => any;
+  'title-trailing': () => any;
+  extra: () => any;
+  close: () => any;
+  footer: () => any;
+};
 
-const forwardedDialogContentProps = useForwardPropsEmits(delegatedDialogContentProps, emit);
+const slots = defineSlots<Slots>();
 
-const delegatedCardProps = computedOmit(props, [
-  'as',
-  'asChild',
-  'class',
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents',
-  'footerClass'
-]);
+const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+
+const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+
+const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
-const { content } = dialogVariants();
+const slotKeys = computed(() => {
+  const allKeys = Object.keys(slots) as (keyof Slots)[];
 
-const footerCls = computed(() => cn('justify-end gap-3', props.footerClass));
+  const remainingKeys = allKeys.filter(key => key !== 'default' && key !== 'close');
+
+  if (showClose && !remainingKeys.includes('extra')) {
+    remainingKeys.push('extra');
+  }
+
+  return remainingKeys;
+});
+
+const { content, cardFooter } = dialogVariants();
+
+const mergedCls = computed(() => cn(content(), cls));
+
+const mergedFooterCls = computed(() => cn(cardFooter(), footerClass));
 </script>
 
 <template>
-  <DialogContent as-child v-bind="forwardedDialogContentProps">
-    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-class="footerCls">
+  <DialogContent as-child v-bind="forwardedContent">
+    <SCard v-bind="forwardedCardProps" :class="mergedCls" :footer-class="mergedFooterCls">
       <VisuallyHidden>
         <DialogTitle />
         <DialogDescription />
       </VisuallyHidden>
-      <template #header>
-        <slot name="header" />
-      </template>
-      <template #title-root>
-        <slot name="title-root" />
-      </template>
-      <template #title>
-        <slot name="title">{{ props.title }}</slot>
-      </template>
-      <template #title-leading>
-        <slot name="title-leading" />
-      </template>
-      <template #title-trailing>
-        <slot name="title-trailing" />
-      </template>
-      <template #extra>
-        <slot name="extra">
-          <DialogClose v-if="showClose" as-child>
-            <slot name="close">
-              <SButtonIcon size="sm">
-                <X />
-              </SButtonIcon>
-            </slot>
-          </DialogClose>
-        </slot>
-      </template>
       <slot />
-      <template v-if="$slots.footer" #footer>
-        <slot name="footer" />
+      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]>
+        <slot :name="slotKey">
+          <template v-if="slotKey === 'extra'">
+            <DialogClose v-if="showClose" as-child>
+              <slot name="close">
+                <SButtonIcon size="sm">
+                  <X />
+                </SButtonIcon>
+              </slot>
+            </DialogClose>
+          </template>
+        </slot>
       </template>
     </SCard>
   </DialogContent>

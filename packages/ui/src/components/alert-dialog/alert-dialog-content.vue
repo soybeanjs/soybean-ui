@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { FunctionalComponent } from 'vue';
-import type { AlertDialogContentEmits } from 'radix-vue';
 import {
   AlertDialogContent,
   AlertDialogDescription,
@@ -15,39 +14,50 @@ import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
 import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
-import type { AlertDialogContentProps, AlertType } from './types';
+import type { AlertDialogContentEmits, AlertDialogContentProps, AlertType } from './types';
 
 defineOptions({
   name: 'SAlertDialogContent'
 });
 
-const props = defineProps<AlertDialogContentProps>();
+const { class: cls, type, footerClass, ...delegatedProps } = defineProps<AlertDialogContentProps>();
 
 const emit = defineEmits<AlertDialogContentEmits>();
 
-const delegatedAlertDialogContentProps = computedPick(props, [
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents'
-]);
+type Slots = {
+  default: () => any;
+  header: () => any;
+  'title-root': () => any;
+  title: () => any;
+  'title-leading': () => any;
+  'title-trailing': () => any;
+  extra: () => any;
+  footer: () => any;
+};
 
-const forwardedAlertDialogContentProps = useForwardPropsEmits(delegatedAlertDialogContentProps, emit);
+const slots = defineSlots<Slots>();
 
-const delegatedCardProps = computedOmit(props, [
-  'as',
-  'asChild',
-  'class',
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents',
-  'footerClass'
-]);
+const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+
+const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+
+const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
-const { content } = dialogVariants();
+const slotKeys = computed(() => {
+  const allKeys = Object.keys(slots) as (keyof Slots)[];
 
-const footerCls = computed(() => cn('justify-end gap-3', props.footerClass));
+  const remainingKeys = allKeys.filter(key => key !== 'default');
+
+  return remainingKeys;
+});
+
+const { content, cardFooter } = dialogVariants();
+
+const mergedCls = computed(() => cn(content(), cls));
+
+const mergedFooterCls = computed(() => cn(cardFooter(), footerClass));
 
 const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
   destructive: {
@@ -69,46 +79,28 @@ const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; cl
 };
 
 const iconProps = computed(() => {
-  if (!props.type) {
+  if (!type) {
     return null;
   }
 
-  return iconRecord[props.type];
+  return iconRecord[type];
 });
 </script>
 
 <template>
-  <AlertDialogContent as-child v-bind="forwardedAlertDialogContentProps">
-    <SCard v-bind="forwardedCardProps" :class="cn(content(), props.class)" :footer-class="footerCls">
+  <AlertDialogContent as-child v-bind="forwardedContent">
+    <SCard v-bind="forwardedCardProps" :class="mergedCls" :footer-class="mergedFooterCls">
       <VisuallyHidden>
         <AlertDialogTitle />
         <AlertDialogDescription />
       </VisuallyHidden>
-      <template #header>
-        <slot name="header" />
-      </template>
-      <template #title-root>
-        <slot name="title-root" />
-      </template>
-      <template #title>
-        <slot name="title">{{ props.title }}</slot>
-      </template>
-      <template #title-leading>
-        <slot name="title-leading">
-          <template v-if="iconProps">
-            <component :is="iconProps.icon" :class="iconProps.class" />
+      <slot />
+      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]>
+        <slot :name="slotKey">
+          <template v-if="slotKey === 'title-leading'">
+            <component :is="iconProps.icon" v-if="iconProps" :class="iconProps.class" />
           </template>
         </slot>
-      </template>
-      <template #title-trailing>
-        <slot name="title-trailing" />
-      </template>
-      <template #extra>
-        <slot name="extra" />
-      </template>
-      <slot />
-      <template #footer>
-        <slot name="footer" />
       </template>
     </SCard>
   </AlertDialogContent>

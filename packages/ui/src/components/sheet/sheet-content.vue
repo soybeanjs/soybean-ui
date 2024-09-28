@@ -11,7 +11,7 @@ import {
 } from 'radix-vue';
 import { X } from 'lucide-vue-next';
 import { cn, sheetVariants } from '@soybean-ui/variants';
-import { computedPick } from '../../shared';
+import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';
 import type { SheetContentEmits, SheetContentProps } from './types';
@@ -20,7 +20,7 @@ defineOptions({
   name: 'SSheetContent'
 });
 
-const { class: cls, side, showClose = true, footerClass, ...delegatedCardProps } = defineProps<SheetContentProps>();
+const { class: cls, side, showClose = true, footerClass, ...delegatedProps } = defineProps<SheetContentProps>();
 
 const emit = defineEmits<SheetContentEmits>();
 
@@ -38,20 +38,18 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedContentProps = computedPick(delegatedCardProps, [
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents'
-]);
+const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+
+const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
 const slotKeys = computed(() => {
   const allKeys = Object.keys(slots) as (keyof Slots)[];
 
-  const remainingKeys = allKeys.filter(key => key !== 'default');
+  const remainingKeys = allKeys.filter(key => key !== 'default' && key !== 'close');
 
   if (showClose && !remainingKeys.includes('extra')) {
     remainingKeys.push('extra');

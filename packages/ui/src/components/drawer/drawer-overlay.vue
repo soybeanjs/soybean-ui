@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { DrawerOverlay } from 'vaul-vue';
 import { cn, drawerVariants } from '@soybean-ui/variants';
 import type { DrawerOverlayProps } from './types';
@@ -7,13 +8,17 @@ defineOptions({
   name: 'SDrawerOverlay'
 });
 
-const props = defineProps<DrawerOverlayProps>();
+const { class: cls } = defineProps<DrawerOverlayProps>();
 
-const { overlay } = drawerVariants();
+const mergedCls = computed(() => {
+  const { overlay } = drawerVariants();
+
+  return cn(overlay(), cls);
+});
 </script>
 
 <template>
-  <DrawerOverlay :class="cn(overlay(), props.class)" />
+  <DrawerOverlay :class="mergedCls" />
 </template>
 
 <style scoped></style>

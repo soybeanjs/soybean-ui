@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
 import { computed } from 'vue';
+import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
 import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SSheetOverlay from './sheet-overlay.vue';
 import SSheetContent from './sheet-content.vue';
