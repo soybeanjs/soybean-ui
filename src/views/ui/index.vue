@@ -26,6 +26,7 @@ import UiScrollArea from './modules/scroll-area.vue';
 import UiSegment from './modules/segment.vue';
 import UiSelect from './modules/select.vue';
 import UiSeparator from './modules/separator.vue';
+import UiSheet from './modules/sheet.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTabs from './modules/tabs.vue';
 import UiTextarea from './modules/textarea.vue';
@@ -157,6 +158,11 @@ const tabs: TabConfig[] = [
     value: 'separator',
     label: 'Separator',
     component: UiSeparator
+  },
+  {
+    value: 'sheet',
+    label: 'Sheet',
+    component: UiSheet
   },
   {
     value: 'switch',
