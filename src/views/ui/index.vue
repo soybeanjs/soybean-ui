@@ -33,6 +33,7 @@ import UiTextarea from './modules/textarea.vue';
 import UiToggle from './modules/toggle.vue';
 import UiToggleGroup from './modules/toggle-group.vue';
 import UITooltip from './modules/tooltip.vue';
+import UISChip from './modules/chip.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -193,6 +194,11 @@ const tabs: TabConfig[] = [
     value: 'tooltip',
     label: 'Tooltip',
     component: UITooltip
+  },
+  {
+    value: 'chip',
+    label: 'Chip',
+    component: UISChip
   }
 ] satisfies TabConfig[];
 </script>
