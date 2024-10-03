@@ -1,23 +1,20 @@
 import type {
-  ToggleGroupItemProps as $ToggleGroupItemProps,
-  ToggleGroupRootProps as $ToggleGroupRootProps
+  ToggleGroupItemProps as _ToggleGroupItemProps,
+  ToggleGroupRootProps as _ToggleGroupRootProps
 } from 'radix-vue';
-import type { ThemeSize, ToggleVariant } from '@soybean-ui/variants';
-import type { ClassValue, SingleOrMultipleType } from '../../types';
+import type { ToggleVariant } from '@soybean-ui/variants';
+import type { ClassValueProp, SingleOrMultipleType, ThemeSize } from '../../types';
 
-export type ToggleGroupRootProps<
-  ValidValue = string | string[],
-  ExplicitType = SingleOrMultipleType
-> = $ToggleGroupRootProps<ValidValue, ExplicitType> & {
-  class?: ClassValue;
-  size?: ThemeSize;
-};
+export type ToggleGroupRootProps<ValidValue = string | string[], ExplicitType = SingleOrMultipleType> = ClassValueProp &
+  Omit<_ToggleGroupRootProps<ValidValue, ExplicitType>, 'as' | 'asChild'> & {
+    size?: ThemeSize;
+  };
 
-export type ToggleGroupItemProps = $ToggleGroupItemProps & {
-  class?: ClassValue;
-  variant?: ToggleVariant;
-  size?: ThemeSize;
-};
+export type ToggleGroupItemProps = ClassValueProp &
+  Omit<_ToggleGroupItemProps, 'as' | 'asChild'> & {
+    variant?: ToggleVariant;
+    size?: ThemeSize;
+  };
 
 export type ToggleGroupItemData = Pick<ToggleGroupItemProps, 'value' | 'disabled'>;
 
@@ -25,9 +22,13 @@ export type ToggleGroupProps<
   T extends ToggleGroupItemData = ToggleGroupItemData,
   ValidValue = string | string[],
   ExplicitType = SingleOrMultipleType
-> = $ToggleGroupRootProps<ValidValue, ExplicitType> & {
+> = ToggleGroupRootProps<ValidValue, ExplicitType> & {
   items: T[];
-  class?: ClassValue;
   variant?: ToggleVariant;
-  size?: ThemeSize;
 };
+
+export type ToggleGroupRootEmits<ValidValue = string | string[]> = {
+  'update:modelValue': [payload: ValidValue];
+};
+
+export type ToggleGroupEmits<ValidValue = string | string[]> = ToggleGroupRootEmits<ValidValue>;

@@ -7,17 +7,13 @@ defineOptions({
   name: 'SButtonIcon'
 });
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  color: 'accent',
-  variant: 'ghost',
-  shape: 'square'
-});
+const { color = 'accent', variant = 'ghost', shape = 'square', ...delegatedProps } = defineProps<ButtonProps>();
 
-const forwarded = useForwardProps(props);
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <SButton v-bind="forwarded">
+  <SButton v-bind="forwardedProps" :color :variant :shape>
     <slot></slot>
   </SButton>
 </template>

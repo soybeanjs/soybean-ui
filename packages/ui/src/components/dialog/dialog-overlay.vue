@@ -10,11 +10,9 @@ defineOptions({
 
 const { class: cls, forceMount } = defineProps<DialogOverlayProps>();
 
-const mergedCls = computed(() => {
-  const { overlay } = dialogVariants();
+const { overlay } = dialogVariants();
 
-  return cn(overlay(), cls);
-});
+const mergedCls = computed(() => cn(overlay(), cls));
 </script>
 
 <template>

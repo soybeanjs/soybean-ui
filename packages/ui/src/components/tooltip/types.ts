@@ -1,22 +1,20 @@
 import type {
-  TooltipArrowProps as $TooltipArrowProps,
-  TooltipContentProps as $TooltipContentProps,
+  TooltipContentEmits,
   TooltipPortalProps,
-  TooltipRootProps
+  TooltipRootEmits,
+  TooltipRootProps,
+  TooltipArrowProps as _TooltipArrowProps,
+  TooltipContentProps as _TooltipContentProps
 } from 'radix-vue';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type TooltipArrowProps = $TooltipArrowProps & {
-  class?: ClassValue;
-};
+export type TooltipArrowProps = ClassValueProp & Pick<_TooltipArrowProps, 'width' | 'height'>;
 
-export type TooltipContentProps = $TooltipContentProps & {
-  class?: ClassValue;
-};
+export type TooltipContentProps = ClassValueProp & Omit<_TooltipContentProps, 'as' | 'asChild'>;
 
 export type TooltipProps = TooltipRootProps &
   Pick<TooltipPortalProps, 'to'> &
-  Omit<TooltipContentProps, 'as' | 'asChild' | 'forceMount' | 'class'> & {
+  Omit<TooltipContentProps, 'class' | 'forceMount'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     contentClass?: ClassValue;
@@ -31,4 +29,6 @@ export type TooltipSide = NonNullable<TooltipContentProps['side']>;
 
 export type TooltipAlign = NonNullable<TooltipContentProps['align']>;
 
-export { TooltipPortalProps };
+export type TooltipEmits = TooltipRootEmits & TooltipContentEmits;
+
+export { TooltipPortalProps, TooltipRootEmits, TooltipContentEmits };

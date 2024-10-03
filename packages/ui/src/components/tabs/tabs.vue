@@ -1,13 +1,12 @@
 <script setup lang="ts" generic="T extends TabsOption = TabsOption">
 import { useForwardPropsEmits } from 'radix-vue';
-import type { TabsRootEmits } from 'radix-vue';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';
 import STabsIndicatorRoot from './tabs-indicator-root.vue';
 import STabsIndicator from './tabs-indicator.vue';
 import STabsContent from './tabs-content.vue';
-import type { TabsOption, TabsProps } from './types';
+import type { TabsEmits, TabsOption, TabsProps } from './types';
 
 defineOptions({
   name: 'STabs'
@@ -26,27 +25,27 @@ const {
   ...delegatedRootProps
 } = defineProps<TabsProps<T>>();
 
-const emit = defineEmits<TabsRootEmits<T['value']>>();
+const emit = defineEmits<TabsEmits<T['value']>>();
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
   <STabsRoot v-bind="forwarded">
-    <STabsList :class="listClass" :loop="loop" :orientation="orientation">
+    <STabsList :class="listClass" :loop :orientation>
       <STabsTrigger
         v-for="item in options"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled"
         :class="triggerClass"
-        :enable-indicator="enableIndicator"
+        :enable-indicator
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation="orientation">
+      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation>
         <slot name="indicator">
-          <STabsIndicator :class="indicatorClass" :orientation="orientation" />
+          <STabsIndicator :class="indicatorClass" :orientation />
         </slot>
       </STabsIndicatorRoot>
     </STabsList>
@@ -56,7 +55,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       :value="item.value"
       :force-mount="forceMountContent"
       :class="contentClass"
-      :orientation="orientation"
+      :orientation
     >
       <slot name="content" v-bind="{ ...item, active: item.value === modelValue }" />
     </STabsContent>

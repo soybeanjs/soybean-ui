@@ -8,17 +8,17 @@ defineOptions({
   name: 'SCardTitle'
 });
 
-const props = defineProps<CardTitleProps>();
+const { class: cls, size } = defineProps<CardTitleProps>();
 
-const cls = computed(() => {
-  const { title } = cardVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { title } = cardVariants({ size });
 
-  return cn(title(), props.class);
+  return cn(title(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

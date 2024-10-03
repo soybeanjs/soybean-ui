@@ -1,25 +1,16 @@
 import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from 'radix-vue';
-import type { ClassValue, StringOrNumber } from '../../types';
+import type { ClassValue, ClassValueProp, StringOrNumber } from '../../types';
 
-export type SegmentRootProps<T extends StringOrNumber = StringOrNumber> = Omit<TabsRootProps<T>, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type SegmentRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &
+  Omit<TabsRootProps<T>, 'as' | 'asChild'>;
 
-export type SegmentTriggerRootProps = Omit<TabsListProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type SegmentTriggerRootProps = ClassValueProp & Pick<TabsListProps, 'loop'>;
 
-export type SegmentTriggerProps = Omit<TabsTriggerProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type SegmentTriggerProps = ClassValueProp & Pick<TabsTriggerProps, 'value' | 'disabled'>;
 
-export type SegmentIndicatorRootProps = {
-  class?: ClassValue;
-};
+export type SegmentIndicatorRootProps = ClassValueProp;
 
-export type SegmentIndicatorProps = {
-  class?: ClassValue;
-};
+export type SegmentIndicatorProps = ClassValueProp;
 
 export type SegmentOption<T extends StringOrNumber = StringOrNumber> = Pick<SegmentTriggerProps, 'disabled'> & {
   value: T;
@@ -34,5 +25,7 @@ export type SegmentProps<T extends SegmentOption> = SegmentRootProps<T['value']>
     indicatorRootClass?: ClassValue;
     indicatorClass?: ClassValue;
   };
+
+export type SegmentEmits<T extends StringOrNumber = StringOrNumber> = SegmentRootEmits<T>;
 
 export type { SegmentRootEmits };

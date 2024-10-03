@@ -19,7 +19,7 @@ const {
   closeClass,
   cardClass,
   footerClass,
-  ...delegatedProps
+  ...delegatedCardProps
 } = defineProps<DrawerContentProps>();
 
 type Slots = {
@@ -36,7 +36,7 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const forwardedCardProps = useForwardProps(delegatedProps);
+const forwardedCardProps = useForwardProps(delegatedCardProps);
 
 const slotKeys = computed(() => {
   const allKeys = Object.keys(slots) as (keyof Slots)[];

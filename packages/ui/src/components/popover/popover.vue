@@ -1,28 +1,18 @@
 <script setup lang="ts">
-import {
-  PopoverClose,
-  PopoverPortal,
-  PopoverRoot,
-  PopoverTrigger,
-  useForwardProps,
-  useForwardPropsEmits
-} from 'radix-vue';
-import type { PopoverRootEmits } from 'radix-vue';
-import { computedPick } from '../../shared';
+import { computed } from 'vue';
+import { PopoverClose, PopoverPortal, PopoverRoot, PopoverTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
+import { computedOmitEmits, computedPick } from '../../shared';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
-import type { PopoverProps } from './types';
+import type { PopoverEmits, PopoverProps } from './types';
 
 defineOptions({
   name: 'SPopover'
 });
 
-const props = withDefaults(defineProps<PopoverProps>(), {
-  avoidCollisions: true,
-  prioritizePosition: true
-});
+const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } = defineProps<PopoverProps>();
 
-const emit = defineEmits<PopoverRootEmits>();
+const emit = defineEmits<PopoverEmits>();
 
 type Slots = {
   default: () => any;
@@ -32,36 +22,49 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedRootProps = computedPick(props, ['defaultOpen', 'open', 'modal']);
+const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'modal']);
 
-const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
+const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = computedPick(props, [
+const delegatedContentProps = computedPick(delegatedProps, [
   'trapFocus',
   'side',
   'sideOffset',
   'align',
   'alignOffset',
-  'avoidCollisions',
   'collisionBoundary',
   'collisionPadding',
   'arrowPadding',
   'sticky',
   'hideWhenDetached',
-  'updatePositionStrategy',
-  'prioritizePosition'
+  'updatePositionStrategy'
 ]);
 
-const contentProps = useForwardProps(delegatedContentProps);
+const emits = useEmitAsProps(emit) as Record<keyof PopoverEmits, any>;
+
+const forwardedContentProps = useForwardProps(delegatedContentProps);
+
+const forwardedContentEmits = computedOmitEmits(emits, ['update:open']);
+
+const forwardedContent = computed(() => ({
+  ...forwardedContentProps.value,
+  ...forwardedContentEmits.value
+}));
 </script>
 
 <template>
-  <PopoverRoot v-bind="forwarded">
+  <PopoverRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <PopoverTrigger as-child>
       <slot name="trigger" />
     </PopoverTrigger>
-    <PopoverPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SPopoverContent :class="contentClass" :force-mount="forceMountContent" v-bind="contentProps">
+    <PopoverPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <SPopoverContent
+        v-bind="forwardedContent"
+        :class="contentClass"
+        :avoid-collisions
+        :prioritize-position
+        :force-mount="forceMountContent"
+      >
         <slot />
         <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
         <PopoverClose v-if="slots.close" as-child>

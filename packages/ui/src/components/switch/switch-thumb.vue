@@ -8,17 +8,17 @@ defineOptions({
   name: 'SSwitchThumb'
 });
 
-const props = defineProps<SwitchThumbProps>();
+const { class: cls, size } = defineProps<SwitchThumbProps>();
 
-const cls = computed(() => {
-  const { thumb } = switchVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { thumb } = switchVariants({ size });
 
-  return cn(thumb(), props.class);
+  return cn(thumb(), cls);
 });
 </script>
 
 <template>
-  <SwitchThumb :class="cls">
+  <SwitchThumb :class="mergedCls">
     <slot />
   </SwitchThumb>
 </template>

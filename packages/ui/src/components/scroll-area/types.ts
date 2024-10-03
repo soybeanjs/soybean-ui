@@ -1,25 +1,17 @@
 import type {
-  ScrollAreaRootProps as $ScrollAreaRootProps,
-  ScrollAreaScrollbarProps as $ScrollAreaScrollbarProps,
-  ScrollAreaViewportProps as $ScrollAreaViewportProps
+  ScrollAreaRootProps as _ScrollAreaRootProps,
+  ScrollAreaScrollbarProps as _ScrollAreaScrollbarProps,
+  ScrollAreaViewportProps as _ScrollAreaViewportProps
 } from 'radix-vue';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type ScrollAreaRootProps = Omit<$ScrollAreaRootProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type ScrollAreaRootProps = ClassValueProp & Omit<_ScrollAreaRootProps, 'as' | 'asChild'>;
 
-export type ScrollAreaViewportProps = Omit<$ScrollAreaViewportProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type ScrollAreaViewportProps = ClassValueProp & Pick<_ScrollAreaViewportProps, 'nonce'>;
 
-export type ScrollAreaScrollbarProps = Omit<$ScrollAreaScrollbarProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type ScrollAreaScrollbarProps = ClassValueProp & Pick<_ScrollAreaScrollbarProps, 'orientation' | 'forceMount'>;
 
-export type ScrollAreaThumbProps = {
-  class?: ClassValue;
-};
+export type ScrollAreaThumbProps = ClassValueProp;
 
 export type ScrollAreaProps = ScrollAreaRootProps &
   ScrollAreaViewportProps &

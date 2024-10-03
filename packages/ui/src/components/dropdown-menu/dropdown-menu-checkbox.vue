@@ -12,8 +12,7 @@ import type {
   CheckAction,
   DropdownMenuCheckboxEmits,
   DropdownMenuCheckboxOption,
-  DropdownMenuCheckboxProps,
-  DropdownMenuWrapperEmits
+  DropdownMenuCheckboxProps
 } from './types';
 
 defineOptions({
@@ -22,11 +21,9 @@ defineOptions({
 
 const props = defineProps<DropdownMenuCheckboxProps<T>>();
 
-type Emits = DropdownMenuWrapperEmits & DropdownMenuCheckboxEmits;
+const emit = defineEmits<DropdownMenuCheckboxEmits>();
 
-const emit = defineEmits<Emits>();
-
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof Emits, any>;
+const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuCheckboxEmits, any>;
 
 const delegatedWrapperProps = computedOmit(props, [
   'separator',

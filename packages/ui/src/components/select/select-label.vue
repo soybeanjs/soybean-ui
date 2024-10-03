@@ -1,29 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectLabel, useForwardProps } from 'radix-vue';
+import { SelectLabel } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectLabelProps } from './types';
 
 defineOptions({
   name: 'SSelectLabel'
 });
 
-const props = defineProps<SelectLabelProps>();
+const { class: cls, size, for: id } = defineProps<SelectLabelProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const mergedCls = computed(() => {
+  const { label } = selectVariants({ size });
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { label } = selectVariants({ size: props.size });
-
-  return cn(label(), props.class);
+  return cn(label(), cls);
 });
 </script>
 
 <template>
-  <SelectLabel v-bind="forwardedProps" :class="cls">
+  <SelectLabel :class="mergedCls" :for="id">
     <slot />
   </SelectLabel>
 </template>

@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { CheckboxIndicator, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { CheckboxIndicator } from 'radix-vue';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { CheckboxIndicatorProps } from './types';
 
 defineOptions({
   name: 'SCheckboxIndicator'
 });
 
-const props = defineProps<CheckboxIndicatorProps>();
-
-const delegatedProps = computedOmit(props, ['class']);
-
-const forwarded = useForwardProps(delegatedProps);
+const { class: cls, forceMount } = defineProps<CheckboxIndicatorProps>();
 
 const { indicator } = checkboxVariants();
+
+const mergedCls = computed(() => cn(indicator(), cls));
 </script>
 
 <template>
-  <CheckboxIndicator v-bind="forwarded" :class="cn(indicator(), props.class)">
+  <CheckboxIndicator :class="mergedCls" :force-mount>
     <slot />
   </CheckboxIndicator>
 </template>

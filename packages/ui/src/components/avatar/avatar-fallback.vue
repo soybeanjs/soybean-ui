@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { AvatarFallback, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { AvatarFallback } from 'radix-vue';
 import { avatarVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { AvatarFallbackProps } from './types';
 
 defineOptions({
   name: 'SAvatarFallback'
 });
 
-const props = defineProps<AvatarFallbackProps>();
-
-const delegatedProps = computedOmit(props, ['class']);
-
-const forwardedProps = useForwardProps(delegatedProps);
+const { class: cls, delayMs } = defineProps<AvatarFallbackProps>();
 
 const { fallback } = avatarVariants();
+
+const mergedCls = computed(() => cn(fallback(), cls));
 </script>
 
 <template>
-  <AvatarFallback v-bind="forwardedProps" :class="cn(fallback(), props.class)">
+  <AvatarFallback :delay-ms :class="mergedCls">
     <slot></slot>
   </AvatarFallback>
 </template>

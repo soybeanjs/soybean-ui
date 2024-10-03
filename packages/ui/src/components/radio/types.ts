@@ -1,39 +1,33 @@
 import type {
-  RadioGroupItemProps as $RadioControlProps,
   RadioGroupIndicatorProps,
-  RadioGroupRootProps
+  RadioGroupRootProps,
+  RadioGroupItemProps as _RadioControlProps
 } from 'radix-vue';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type RadioIndicatorProps = RadioGroupIndicatorProps & {
-  class?: ClassValue;
-  color?: ThemeColor;
-};
+export type RadioIndicatorProps = ClassValueProp &
+  Pick<RadioGroupIndicatorProps, 'forceMount'> & {
+    color?: ThemeColor;
+  };
 
-export type RadioControlProps = $RadioControlProps & {
-  class?: ClassValue;
-  color?: ThemeColor;
-  size?: ThemeSize;
-};
+export type RadioControlProps = ClassValueProp &
+  Omit<_RadioControlProps, 'as' | 'asChild'> & {
+    color?: ThemeColor;
+    size?: ThemeSize;
+  };
 
-export type RadioRootProps = {
-  class?: ClassValue;
-};
+export type RadioRootProps = ClassValueProp;
 
-export type RadioLabelProps = {
-  class?: ClassValue;
-};
+export type RadioLabelProps = ClassValueProp;
 
-export type RadioProps = $RadioControlProps & {
-  class?: ClassValue;
+export type RadioProps = RadioControlProps & {
   controlClass?: ClassValue;
   indicatorClass?: ClassValue;
   forceMountIndicator?: boolean;
   labelClass?: ClassValue;
   label?: string;
   color?: ThemeColor;
-  size?: ThemeSize;
 };
 
 export type RadioGroupItemProps = RadioProps & {
@@ -41,7 +35,7 @@ export type RadioGroupItemProps = RadioProps & {
   value: string;
 };
 
-export type RadioGroupProps = RadioGroupRootProps & {
+export type RadioGroupProps = Omit<RadioGroupRootProps, 'as' | 'asChild'> & {
   class?: ClassValue;
   items?: RadioGroupItemProps[];
   color?: ThemeColor;

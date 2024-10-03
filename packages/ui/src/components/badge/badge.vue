@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { badgeVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
@@ -9,7 +10,11 @@ defineOptions({
   name: 'SBadge'
 });
 
-const props = defineProps<BadgeProps>();
+const { class: cls, closeClass, color, variant } = defineProps<BadgeProps>();
+
+const mergedCls = computed(() => cn(badgeVariants({ color, variant }), cls));
+
+const mergedCloseCls = computed(() => cn('border-0 bg-transparent -mr-1.5', closeClass));
 
 const close = defineModel<boolean>('close', {
   default: false
@@ -21,18 +26,10 @@ function closeAlert() {
 </script>
 
 <template>
-  <Primitive v-show="!close" as="div" :class="cn(badgeVariants({ color, variant }), props.class)">
+  <Primitive v-show="!close" as="div" :class="mergedCls">
     <slot />
     <slot name="trailing" :close-alert="closeAlert">
-      <SButtonIcon
-        v-if="closable"
-        :color="color"
-        :variant="variant"
-        size="xs"
-        fit-content
-        :class="cn('border-0 bg-transparent -mr-1.5', closeClass)"
-        @click="closeAlert"
-      >
+      <SButtonIcon v-if="closable" :color :variant size="xs" fit-content :class="mergedCloseCls" @click="closeAlert">
         <X />
       </SButtonIcon>
     </slot>

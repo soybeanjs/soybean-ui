@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useForwardProps } from 'radix-vue';
-import { computedOmit } from '../../shared';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';
 import SRadioControl from './radio-control.vue';
@@ -12,33 +11,32 @@ defineOptions({
   name: 'SRadio'
 });
 
-const props = defineProps<RadioProps>();
+const {
+  class: rootCls,
+  id,
+  controlClass,
+  indicatorClass,
+  forceMountIndicator,
+  label,
+  labelClass,
+  ...delegatedProps
+} = defineProps<RadioProps>();
 
-const delegatedProps = computedOmit(props, [
-  'id',
-  'class',
-  'controlClass',
-  'indicatorClass',
-  'forceMountIndicator',
-  'label',
-  'labelClass'
-]);
-
-const forwarded = useForwardProps(delegatedProps);
+const forwardedProps = useForwardProps(delegatedProps);
 
 const defaultId = useId();
 
-const radioId = computed(() => props.id || `radio-${defaultId}`);
+const radioId = computed(() => id || `radio-${defaultId}`);
 </script>
 
 <template>
-  <SRadioRoot :class="props.class">
-    <SRadioControl v-bind="forwarded" :id="radioId" :class="controlClass">
+  <SRadioRoot :class="rootCls">
+    <SRadioControl v-bind="forwardedProps" :id="radioId" :class="controlClass">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
-        <SRadioIndicator :class="indicatorClass" :color="color" :force-mount="forceMountIndicator" />
+        <SRadioIndicator :class="indicatorClass" :color :force-mount="forceMountIndicator" />
       </Transition>
     </SRadioControl>
-    <SRadioLabel :class="labelClass" :for="radioId" :size="size">
+    <SRadioLabel :class="labelClass" :for="radioId" :size>
       <slot :id="radioId">{{ label }}</slot>
     </SRadioLabel>
   </SRadioRoot>

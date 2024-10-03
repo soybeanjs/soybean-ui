@@ -1,8 +1,7 @@
 import type { BadgeVariant, ThemeColor } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type BadgeProps = {
-  class?: ClassValue;
+export type BadgeProps = ClassValueProp & {
   color?: ThemeColor;
   variant?: BadgeVariant;
   closable?: boolean;

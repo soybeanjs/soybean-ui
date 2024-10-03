@@ -1,14 +1,13 @@
 <script setup lang="ts" generic="T extends DropdownMenuRadioOption = DropdownMenuRadioOption">
 import { computed } from 'vue';
 import { DropdownMenuRadioGroup, useEmitAsProps, useForwardProps } from 'radix-vue';
-import type { DropdownMenuRadioGroupEmits } from 'radix-vue';
 import { computedOmit, computedOmitEmits } from '../../shared';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';
 import SDropdownMenuRadioItem from './dropdown-menu-radio-item.vue';
 import SDropdownMenuShortcut from './dropdown-menu-shortcut.vue';
 import SDropdownMenuSeparator from './dropdown-menu-separator.vue';
-import type { DropdownMenuRadioOption, DropdownMenuRadioProps, DropdownMenuWrapperEmits } from './types';
+import type { DropdownMenuRadioEmits, DropdownMenuRadioOption, DropdownMenuRadioProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuRadio'
@@ -16,11 +15,9 @@ defineOptions({
 
 const props = defineProps<DropdownMenuRadioProps<T>>();
 
-type Emits = DropdownMenuWrapperEmits & DropdownMenuRadioGroupEmits;
+const emit = defineEmits<DropdownMenuRadioEmits>();
 
-const emit = defineEmits<Emits>();
-
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof Emits, any>;
+const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuRadioEmits, any>;
 
 const delegatedWrapperProps = computedOmit(props, [
   'separator',
@@ -33,7 +30,10 @@ const delegatedWrapperProps = computedOmit(props, [
   'modelValue',
   'defaultValue',
   'groupLabel',
-  'groupSeparator'
+  'groupSeparator',
+  'indicatorClass',
+  'indicatorIconRootClass',
+  'indicatorIconClass'
 ]);
 
 const forwardedWrapperProps = useForwardProps(delegatedWrapperProps);
@@ -72,6 +72,9 @@ const radioValue = computed({
           :disabled="item.disabled"
           :text-value="item.textValue || item.label"
           :value="item.value"
+          :indicator-class
+          :indicator-icon-root-class
+          :indicator-icon-class
         >
           <template #indicatorIcon>
             <slot name="indicatorIcon" />

@@ -2,28 +2,25 @@
 import { computed } from 'vue';
 import { RadioGroupItem, useForwardProps } from 'radix-vue';
 import { cn, radioVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { RadioControlProps } from './types';
 
 defineOptions({
   name: 'SRadioControl'
 });
 
-const props = defineProps<RadioControlProps>();
+const { class: cls, color, size, ...delegatedProps } = defineProps<RadioControlProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const forwardedProps = useForwardProps(delegatedProps);
 
-const forwarded = useForwardProps(delegatedProps);
+const mergedCls = computed(() => {
+  const { control } = radioVariants({ color, size });
 
-const cls = computed(() => {
-  const { control } = radioVariants({ color: props.color, size: props.size });
-
-  return cn(control(), props.class);
+  return cn(control(), cls);
 });
 </script>
 
 <template>
-  <RadioGroupItem v-bind="forwarded" :class="cls">
+  <RadioGroupItem v-bind="forwardedProps" :class="mergedCls">
     <slot />
   </RadioGroupItem>
 </template>

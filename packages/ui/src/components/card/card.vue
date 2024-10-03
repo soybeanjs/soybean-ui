@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardProps } from 'radix-vue';
 import { cardVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
 import SCardTitleRoot from './card-title-root.vue';
@@ -15,10 +13,17 @@ defineOptions({
   name: 'SCard'
 });
 
-const props = withDefaults(defineProps<CardProps>(), {
-  size: 'md',
-  split: 'none'
-});
+const {
+  class: rootCls,
+  size,
+  split,
+  title,
+  headerClass,
+  titleClass,
+  titleRootClass,
+  contentClass,
+  footerClass
+} = defineProps<CardProps>();
 
 type Slots = {
   default: () => any;
@@ -33,34 +38,22 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedProps = computedOmit(props, [
-  'title',
-  'split',
-  'headerClass',
-  'titleClass',
-  'titleRootClass',
-  'contentClass',
-  'footerClass'
-]);
-
-const forwardedProps = useForwardProps(delegatedProps);
-
 const showHeader = computed(() => {
-  return Boolean(slots.header || slots.title || props.title || slots.extra);
+  return Boolean(slots.header || slots.title || title || slots.extra);
 });
 
-const headerSplit = computed(() => props.split === 'header' || props.split === 'all');
+const headerSplit = computed(() => split === 'header' || split === 'all');
 
 const showFooter = computed(() => Boolean(slots.footer));
 
-const footerSplit = computed(() => props.split === 'footer' || props.split === 'all');
+const footerSplit = computed(() => split === 'footer' || split === 'all');
 
 const contentCls = computed(() => {
-  const split = getSplit(props.split, showHeader.value, showFooter.value);
+  const contentSplit = getSplit(split, showHeader.value, showFooter.value);
 
-  const { content } = cardVariants({ size: props.size, split });
+  const { content } = cardVariants({ size, split: contentSplit });
 
-  return cn(content(), props.contentClass);
+  return cn(content(), contentClass);
 });
 
 function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?: boolean) {
@@ -85,13 +78,13 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
 </script>
 
 <template>
-  <SCardRoot v-bind="forwardedProps">
-    <SCardHeader v-if="showHeader" :size="size" :split="headerSplit" :class="headerClass">
+  <SCardRoot :class="rootCls" :size>
+    <SCardHeader v-if="showHeader" :class="headerClass" :size :split="headerSplit">
       <slot name="header">
         <slot name="title-root">
           <SCardTitleRoot :class="titleRootClass">
             <slot name="title-leading" />
-            <SCardTitle :size="size" :class="titleClass">
+            <SCardTitle :class="titleClass" :size>
               <slot name="title">{{ title }}</slot>
             </SCardTitle>
             <slot name="title-trailing" />
@@ -100,10 +93,10 @@ function getSplit(initSplit?: CardSplit, headerVisible?: boolean, footerVisible?
         <slot name="extra"></slot>
       </slot>
     </SCardHeader>
-    <SCardContent :size="size" :class="contentCls">
+    <SCardContent :class="contentCls" :size>
       <slot />
     </SCardContent>
-    <SCardFooter v-if="showFooter" :size="size" :split="footerSplit" :class="footerClass">
+    <SCardFooter v-if="showFooter" :class="footerClass" :size :split="footerSplit">
       <slot name="footer"></slot>
     </SCardFooter>
   </SCardRoot>

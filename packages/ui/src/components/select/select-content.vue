@@ -1,36 +1,34 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { SelectContent, useForwardPropsEmits } from 'radix-vue';
-import type { SelectContentEmits } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { SelectContentProps } from './types';
+import type { SelectContentEmits, SelectContentProps } from './types';
 
 defineOptions({
   name: 'SSelectContent'
 });
 
-const props = withDefaults(defineProps<SelectContentProps>(), {
-  avoidCollisions: true,
-  prioritizePosition: true,
-  position: 'popper'
-});
+const {
+  class: cls,
+  avoidCollisions = true,
+  prioritizePosition = true,
+  position = 'popper',
+  ...delegatedProps
+} = defineProps<SelectContentProps>();
 
 const emit = defineEmits<SelectContentEmits>();
 
-const delegatedProps = computedOmit(props, ['class']);
-
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { content } = selectVariants({ position: props.position });
+const mergedCls = computed(() => {
+  const { content } = selectVariants({ position });
 
-  return cn(content(), props.class);
+  return cn(content(), cls);
 });
 </script>
 
 <template>
-  <SelectContent v-bind="forwarded" :class="cls">
+  <SelectContent v-bind="forwarded" :class="mergedCls" :avoid-collisions :prioritize-position :position>
     <slot />
   </SelectContent>
 </template>

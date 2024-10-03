@@ -64,11 +64,9 @@ const mergedCls = computed(() => {
   return cn(content(), cls);
 });
 
-const mergedFooterCls = computed(() => {
-  const { cardFooter } = sheetVariants();
+const { cardFooter } = sheetVariants();
 
-  return cn(cardFooter(), footerClass);
-});
+const mergedFooterCls = computed(() => cn(cardFooter(), footerClass));
 </script>
 
 <template>

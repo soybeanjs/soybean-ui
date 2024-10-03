@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { alertVariants, cn } from '@soybean-ui/variants';
 import type { AlertDescriptionProps } from './types';
@@ -7,13 +8,15 @@ defineOptions({
   name: 'SAlertDescription'
 });
 
-const props = defineProps<AlertDescriptionProps>();
+const { class: cls } = defineProps<AlertDescriptionProps>();
 
 const { description } = alertVariants();
+
+const mergedCls = computed(() => cn(description(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="cn(description(), props.class)">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

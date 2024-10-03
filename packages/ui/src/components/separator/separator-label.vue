@@ -8,19 +8,17 @@ defineOptions({
   name: 'SSeparatorLabel'
 });
 
-const props = defineProps<SeparatorLabelProps>();
+const { class: cls, align, orientation } = defineProps<SeparatorLabelProps>();
 
-const cls = computed(() => {
-  const { align, orientation } = props;
-
+const mergedCls = computed(() => {
   const { label } = separatorVariants({ align, orientation });
 
-  return cn(label(), props.class);
+  return cn(label(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="span" :class="cls">
+  <Primitive as="span" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

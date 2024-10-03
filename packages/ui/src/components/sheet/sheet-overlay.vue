@@ -10,11 +10,9 @@ defineOptions({
 
 const { class: cls, forceMount } = defineProps<SheetOverlayProps>();
 
-const mergedCls = computed(() => {
-  const { overlay } = sheetVariants();
+const { overlay } = sheetVariants();
 
-  return cn(overlay(), cls);
-});
+const mergedCls = computed(() => cn(overlay(), cls));
 </script>
 
 <template>

@@ -1,12 +1,11 @@
 <script setup lang="ts" generic="T extends SegmentOption = SegmentOption">
 import { useForwardPropsEmits } from 'radix-vue';
-import type { TabsRootEmits } from 'radix-vue';
 import SSegmentRoot from './segment-root.vue';
 import SSegmentTriggerRoot from './segment-trigger-root.vue';
 import SSegmentTrigger from './segment-trigger.vue';
 import SSegmentIndicatorRoot from './segment-indicator-root.vue';
 import SSegmentIndicator from './segment-indicator.vue';
-import type { SegmentOption, SegmentProps } from './types';
+import type { SegmentEmits, SegmentOption, SegmentProps } from './types';
 
 defineOptions({
   name: 'SSegment'
@@ -23,14 +22,14 @@ const {
   //
 } = defineProps<SegmentProps<T>>();
 
-const emit = defineEmits<TabsRootEmits<T['value']>>();
+const emit = defineEmits<SegmentEmits<T['value']>>();
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
   <SSegmentRoot v-bind="forwarded">
-    <SSegmentTriggerRoot :class="triggerRootClass" :loop="loop">
+    <SSegmentTriggerRoot :class="triggerRootClass" :loop>
       <SSegmentTrigger
         v-for="item in options"
         :key="item.value"
@@ -40,9 +39,9 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </SSegmentTrigger>
-      <SSegmentIndicatorRoot :class="indicatorRootClass" :orientation="orientation">
+      <SSegmentIndicatorRoot :class="indicatorRootClass" :orientation>
         <slot name="indicator">
-          <SSegmentIndicator :class="indicatorClass" :orientation="orientation" />
+          <SSegmentIndicator :class="indicatorClass" :orientation />
         </slot>
       </SSegmentIndicatorRoot>
     </SSegmentTriggerRoot>

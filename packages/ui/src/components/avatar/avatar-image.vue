@@ -1,27 +1,24 @@
 <script setup lang="ts">
-import { AvatarImage, useForwardPropsEmits } from 'radix-vue';
-import type { AvatarImageEmits } from 'radix-vue';
+import { computed } from 'vue';
+import { AvatarImage } from 'radix-vue';
 import { avatarVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { AvatarImageProps } from './types';
+import type { AvatarImageEmits, AvatarImageProps } from './types';
 
 defineOptions({
   name: 'SAvatarImage'
 });
 
-const props = defineProps<AvatarImageProps>();
-
-const delegatedProps = computedOmit(props, ['class']);
+const { class: cls, src, alt } = defineProps<AvatarImageProps>();
 
 const emit = defineEmits<AvatarImageEmits>();
 
-const forwarded = useForwardPropsEmits(delegatedProps, emit);
-
 const { image } = avatarVariants();
+
+const mergedCls = computed(() => cn(image(), cls));
 </script>
 
 <template>
-  <AvatarImage v-bind="forwarded" :class="cn(image(), props.class)" />
+  <AvatarImage :src :alt :class="mergedCls" @loading-status-change="emit('loadingStatusChange', $event)" />
 </template>
 
 <style scoped></style>

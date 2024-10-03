@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import { PopoverArrow, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { PopoverArrow } from 'radix-vue';
 import { cn, popoverVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { PopoverArrowProps } from './types';
 
 defineOptions({
   name: 'SPopoverArrow'
 });
 
-const props = defineProps<PopoverArrowProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'asChild']);
-
-const forwardedProps = useForwardProps(delegatedProps);
+const { class: cls, width, height } = defineProps<PopoverArrowProps>();
 
 const { arrow } = popoverVariants();
+
+const mergedCls = computed(() => cn(arrow(), cls));
 </script>
 
 <template>
-  <PopoverArrow as-child v-bind="forwardedProps">
-    <div :class="cn(arrow(), props.class)"></div>
+  <PopoverArrow as-child :width :height>
+    <div :class="mergedCls"></div>
   </PopoverArrow>
 </template>
 

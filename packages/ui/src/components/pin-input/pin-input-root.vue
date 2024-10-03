@@ -1,29 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { PinInputRoot, useForwardPropsEmits } from 'radix-vue';
-import type { PinInputRootEmits } from 'radix-vue';
 import { cn, pinInputVariants } from '@soybean-ui/variants';
-import type { PinInputRootProps } from './types';
+import type { PinInputRootEmits, PinInputRootProps } from './types';
 
 defineOptions({
   name: 'SPinInputRoot'
 });
 
-const { class: rootCls, separate, ...delegatedProps } = defineProps<PinInputRootProps>();
+const { class: cls, separate, ...delegatedProps } = defineProps<PinInputRootProps>();
 
 const emit = defineEmits<PinInputRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
+const mergedCls = computed(() => {
   const { root } = pinInputVariants({ separate });
 
-  return cn(root(), rootCls);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <PinInputRoot v-bind="forwarded" :class="cls">
+  <PinInputRoot v-bind="forwarded" :class="mergedCls">
     <slot />
   </PinInputRoot>
 </template>

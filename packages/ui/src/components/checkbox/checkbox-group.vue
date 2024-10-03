@@ -2,30 +2,26 @@
 import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
-import type { CheckboxGroupProps } from './types';
 import SCheckbox from './checkbox.vue';
+import type { CheckboxGroupEmits, CheckboxGroupProps } from './types';
 
 defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = defineProps<CheckboxGroupProps>();
+const { class: cls, orientation, values, defaultValues } = defineProps<CheckboxGroupProps>();
 
-type Emits = {
-  'update:values': [values: string[]];
-};
+const emit = defineEmits<CheckboxGroupEmits>();
 
-const emit = defineEmits<Emits>();
+const mergedCls = computed(() => {
+  const { group } = checkboxVariants({ orientation });
 
-const cls = computed(() => {
-  const { group } = checkboxVariants({ orientation: props.orientation });
-
-  return cn(group(), props.class);
+  return cn(group(), cls);
 });
 
 const checks = computed({
   get() {
-    return props.values || props.defaultValues || [];
+    return values || defaultValues || [];
   },
   set(value: string[]) {
     emit('update:values', value);
@@ -42,17 +38,17 @@ function handleUpdateCheckItem(value: string, checked: boolean) {
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <SCheckbox
       v-for="item in items"
       :key="item.value"
       v-bind="item"
       :checked="checks.includes(item.value)"
-      :color="color"
+      :color
+      :size
       :disabled="disabled || item.disabled"
-      @update:checked="handleUpdateCheckItem(item.value, $event as boolean)"
+      @update:checked="handleUpdateCheckItem(item.value, $event)"
     />
-    <!-- BUG: Vue 3.5 @update:checked type error -->
   </Primitive>
 </template>
 

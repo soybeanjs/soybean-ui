@@ -1,29 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectViewport, useForwardProps } from 'radix-vue';
+import { SelectViewport } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectViewportProps } from './types';
 
 defineOptions({
   name: 'SSelectViewport'
 });
 
-const props = defineProps<SelectViewportProps>();
+const { class: cls, position, nonce } = defineProps<SelectViewportProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'position']);
+const mergedCls = computed(() => {
+  const { viewport } = selectVariants({ position });
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { viewport } = selectVariants({ position: props.position });
-
-  return cn(viewport(), props.class);
+  return cn(viewport(), cls);
 });
 </script>
 
 <template>
-  <SelectViewport v-bind="forwardedProps" :class="cls">
+  <SelectViewport :class="mergedCls" :nonce>
     <slot />
   </SelectViewport>
 </template>

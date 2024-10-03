@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { cardVariants, cn } from '@soybean-ui/variants';
 import type { CardTitleRootProps } from './types';
@@ -7,13 +8,15 @@ defineOptions({
   name: 'SCardTitleRoot'
 });
 
-const props = defineProps<CardTitleRootProps>();
+const { class: cls } = defineProps<CardTitleRootProps>();
 
 const { titleRoot } = cardVariants();
+
+const mergedCls = computed(() => cn(titleRoot(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="cn(titleRoot(), props.class)">
+  <Primitive as="div" :class="mergedCls">
     <slot name="leading" />
     <slot />
     <slot name="trailing" />

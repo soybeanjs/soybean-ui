@@ -11,11 +11,11 @@ const { activationMode = 'manual', ...delegatedProps } = defineProps<SegmentRoot
 
 const emit = defineEmits<SegmentRootEmits<T>>();
 
-const forwardedProps = useForwardPropsEmits(delegatedProps, emit);
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" :activation-mode="activationMode">
+  <TabsRoot v-bind="forwarded" :activation-mode>
     <slot />
   </TabsRoot>
 </template>

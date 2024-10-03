@@ -62,7 +62,7 @@ const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (k
     <AlertDialogTrigger as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
-    <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <AlertDialogPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SAlertDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SAlertDialogContent v-bind="forwardedContent">
         <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>

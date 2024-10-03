@@ -1,28 +1,27 @@
 <script setup lang="ts">
-import { CollapsibleRoot, useForwardPropsEmits } from 'radix-vue';
-import type { CollapsibleRootEmits } from 'radix-vue';
-import { computedOmit } from '../../shared';
+import { CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from 'radix-vue';
 import SCollapsibleContent from './collapsible-content.vue';
-import type { CollapsibleProps } from './types';
+import type { CollapsibleEmits, CollapsibleProps } from './types';
 
 defineOptions({
   name: 'SCollapsible'
 });
 
-const props = defineProps<CollapsibleProps>();
+const { contentClass, forceMountContent, ...delegatedProps } = defineProps<CollapsibleProps>();
 
-const emit = defineEmits<CollapsibleRootEmits>();
-
-const delegatedProps = computedOmit(props, ['contentClass', 'forceMountContent']);
+const emit = defineEmits<CollapsibleEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <CollapsibleRoot v-slot="slotProps" v-bind="forwarded">
-    <slot v-bind="slotProps"></slot>
+  <CollapsibleRoot v-slot="{ open }" v-bind="forwarded">
+    <CollapsibleTrigger v-if="$slots.trigger" as-child>
+      <slot name="trigger" v-bind="{ open }" />
+    </CollapsibleTrigger>
+    <slot v-bind="{ open }"></slot>
     <SCollapsibleContent :class="contentClass" :force-mount="forceMountContent">
-      <slot name="content" v-bind="slotProps" />
+      <slot name="content" v-bind="{ open }" />
     </SCollapsibleContent>
   </CollapsibleRoot>
 </template>

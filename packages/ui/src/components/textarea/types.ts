@@ -1,12 +1,9 @@
 import type { TextareaResize, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type TextareaRootProps = {
-  class?: ClassValue;
-};
+export type TextareaRootProps = ClassValueProp;
 
-export type TextareaContentProps = {
-  class?: ClassValue;
+export type TextareaContentProps = ClassValueProp & {
   modelValue?: string;
   defaultValue?: string;
   size?: ThemeSize;
@@ -34,10 +31,7 @@ export type TextareaContentEmits = {
   'update:modelValue': [value: string];
 };
 
-export type TextareaCountProps = {
-  class?: ClassValue;
-  size?: ThemeSize;
-  maxlength?: number | string;
+export type TextareaCountProps = Pick<TextareaContentProps, 'class' | 'size' | 'maxlength'> & {
   value?: string;
   countGraphemes?: (input: string) => number;
 };

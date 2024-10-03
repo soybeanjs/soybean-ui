@@ -9,19 +9,19 @@ defineOptions({
   name: 'SCardFooter'
 });
 
-const props = defineProps<CardFooterProps>();
+const { class: cls, size, split } = defineProps<CardFooterProps>();
 
-const cls = computed(() => {
-  const split: CardSplit = props.split ? 'footer' : 'none';
+const mergedCls = computed(() => {
+  const footerSplit: CardSplit = split ? 'footer' : 'none';
 
-  const { footer } = cardVariants({ size: props.size, split });
+  const { footer } = cardVariants({ size, split: footerSplit });
 
-  return cn(footer(), props.class);
+  return cn(footer(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

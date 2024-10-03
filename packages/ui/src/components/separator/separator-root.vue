@@ -1,31 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Separator, useForwardProps } from 'radix-vue';
+import { Separator } from 'radix-vue';
 import { cn, separatorVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SeparatorRootProps } from './types';
 
 defineOptions({
   name: 'SSeparatorRoot'
 });
 
-const props = defineProps<SeparatorRootProps>();
+const { class: cls, border, decorative, orientation } = defineProps<SeparatorRootProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'border']);
-
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { orientation, border } = props;
-
+const mergedCls = computed(() => {
   const { root } = separatorVariants({ orientation, border });
 
-  return cn(root(), props.class);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <Separator v-bind="forwardedProps" :class="cls">
+  <Separator :class="mergedCls" :decorative :orientation>
     <slot />
   </Separator>
 </template>

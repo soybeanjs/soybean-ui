@@ -1,25 +1,17 @@
-import type { AccordionItemProps as $AccordionItemProps, AccordionRootProps } from 'radix-vue';
-import type { ClassValue, SingleOrMultipleType } from '../../types';
+import type { AccordionRootEmits, AccordionRootProps, AccordionItemProps as _AccordionItemProps } from 'radix-vue';
+import type { ClassValue, ClassValueProp, SingleOrMultipleType } from '../../types';
 
-export type AccordionItemProps = $AccordionItemProps & {
-  class?: ClassValue;
+export type AccordionItemProps = ClassValueProp & Pick<_AccordionItemProps, 'disabled' | 'value'>;
+
+export type AccordionHeaderProps = ClassValueProp;
+
+export type AccordionTriggerProps = ClassValueProp & {
+  triggerIconClass?: ClassValue;
 };
 
-export type AccordionContentProps = {
-  class?: ClassValue;
-};
+export type AccordionContentProps = ClassValueProp;
 
-export type AccordionContentBodyProps = {
-  class?: ClassValue;
-};
-
-export type AccordionHeaderProps = {
-  class?: ClassValue;
-};
-
-export type AccordionTriggerProps = {
-  class?: ClassValue;
-};
+export type AccordionContentBodyProps = ClassValueProp;
 
 export type AccordionItemData = Pick<AccordionItemProps, 'value' | 'disabled'> & {
   title?: string;
@@ -35,8 +27,11 @@ export type AccordionProps<
   itemClass?: ClassValue;
   headerClass?: ClassValue;
   triggerClass?: ClassValue;
+  triggerIconClass?: ClassValue;
   contentClass?: ClassValue;
   contentBodyClass?: ClassValue;
 };
 
-export type { AccordionRootProps };
+export type AccordionEmits = AccordionRootEmits;
+
+export type { AccordionRootProps, AccordionRootEmits };

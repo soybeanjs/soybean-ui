@@ -8,7 +8,6 @@
   "
 >
 import { AccordionRoot, useForwardPropsEmits } from 'radix-vue';
-import type { AccordionRootEmits } from 'radix-vue';
 import { computedOmit } from '../../shared';
 import type { SingleOrMultipleType } from '../../types';
 import SAccordionItem from './accordion-item.vue';
@@ -16,7 +15,7 @@ import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';
 import SAccordionContent from './accordion-content.vue';
 import SAccordionContentBody from './accordion-content-body.vue';
-import type { AccordionItemData, AccordionProps } from './types';
+import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
 
 defineOptions({
   name: 'SAccordion'
@@ -24,7 +23,7 @@ defineOptions({
 
 const props = defineProps<AccordionProps<T, V, E>>();
 
-const emit = defineEmits<AccordionRootEmits>();
+const emit = defineEmits<AccordionEmits>();
 
 const delegatedProps = computedOmit(props, [
   'items',

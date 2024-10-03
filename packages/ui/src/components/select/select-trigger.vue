@@ -1,29 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectTrigger, useForwardProps } from 'radix-vue';
+import { SelectTrigger } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectTriggerProps } from './types';
 
 defineOptions({
   name: 'SSelectTrigger'
 });
 
-const props = defineProps<SelectTriggerProps>();
+const { class: cls, size, disabled } = defineProps<SelectTriggerProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'size']);
+const mergedCls = computed(() => {
+  const { trigger } = selectVariants({ size });
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { trigger } = selectVariants({ size: props.size });
-
-  return cn(trigger(), props.class);
+  return cn(trigger(), cls);
 });
 </script>
 
 <template>
-  <SelectTrigger v-bind="forwardedProps" :class="cls">
+  <SelectTrigger :class="mergedCls" :disabled>
     <slot />
   </SelectTrigger>
 </template>

@@ -5,33 +5,29 @@
 >
 import { computed } from 'vue';
 import { ToggleGroupRoot, useForwardPropsEmits } from 'radix-vue';
-import type { ToggleGroupRootEmits } from 'radix-vue';
 import { cn, toggleVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SingleOrMultipleType } from '../../types';
-import type { ToggleGroupRootProps } from './types';
+import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';
 
 defineOptions({
   name: 'SToggleGroupRoot'
 });
 
-const props = defineProps<ToggleGroupRootProps<V, E>>();
+const { class: cls, size, ...delegatedProps } = defineProps<ToggleGroupRootProps<V, E>>();
 
-const emit = defineEmits<ToggleGroupRootEmits>();
-
-const delegatedProps = computedOmit(props, ['class']);
+const emit = defineEmits<ToggleGroupRootEmits<V>>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { groupRoot } = toggleVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { groupRoot } = toggleVariants({ size });
 
-  return cn(groupRoot(), props.class);
+  return cn(groupRoot(), cls);
 });
 </script>
 
 <template>
-  <ToggleGroupRoot v-bind="forwarded" :class="cls">
+  <ToggleGroupRoot v-bind="forwarded" :class="mergedCls">
     <slot />
   </ToggleGroupRoot>
 </template>

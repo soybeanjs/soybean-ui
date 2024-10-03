@@ -1,35 +1,31 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { DropdownMenuCheckboxItem, useForwardPropsEmits } from 'radix-vue';
-import type { DropdownMenuCheckboxItemEmits } from 'radix-vue';
 import { Check } from 'lucide-vue-next';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
-import { computed } from 'vue';
-import { computedOmit } from '../../shared';
-import type { DropdownMenuCheckboxItemProps } from './types';
 import SDropdownMenuItemIndicator from './dropdown-menu-indicator.vue';
+import type { DropdownMenuCheckboxItemEmits, DropdownMenuCheckboxItemProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuCheckboxItem'
 });
 
-const props = defineProps<DropdownMenuCheckboxItemProps>();
+const { class: cls, size, indicatorClass, ...delegatedProps } = defineProps<DropdownMenuCheckboxItemProps>();
 
 const emit = defineEmits<DropdownMenuCheckboxItemEmits>();
 
-const delegatedProps = computedOmit(props, ['class', 'size']);
-
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { checkboxItem } = dropdownMenuVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { checkboxItem } = dropdownMenuVariants({ size });
 
-  return cn(checkboxItem(), props.class);
+  return cn(checkboxItem(), cls);
 });
 </script>
 
 <template>
-  <DropdownMenuCheckboxItem v-bind="forwarded" :class="cls">
-    <SDropdownMenuItemIndicator :size="size">
+  <DropdownMenuCheckboxItem v-bind="forwarded" :class="mergedCls">
+    <SDropdownMenuItemIndicator :class="indicatorClass" :size>
       <slot name="indicatorIcon">
         <Check />
       </slot>

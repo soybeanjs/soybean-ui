@@ -1,25 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
 import { buttonVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { ButtonProps } from './types';
 
 defineOptions({
   name: 'SButton'
 });
 
-const props = defineProps<ButtonProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'color', 'variant', 'size', 'shape', 'fitContent', 'shadow']);
+const { class: cls, color, variant, size, shape, shadow, fitContent, ...delegatedProps } = defineProps<ButtonProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
+
+const mergedCls = computed(() => cn(buttonVariants({ color, variant, size, shape, shadow, fitContent }), cls));
 </script>
 
 <template>
-  <button
-    v-bind="forwardedProps"
-    :class="cn(buttonVariants({ color, variant, size, shape, shadow, fitContent }), props.class)"
-  >
+  <button v-bind="forwardedProps" :class="mergedCls">
     <slot name="leading" />
     <slot />
     <slot name="trailing" />

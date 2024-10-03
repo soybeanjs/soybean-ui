@@ -1,22 +1,21 @@
-import type { SeparatorProps as $SeparatorProps } from 'radix-vue';
+import type { SeparatorProps as _SeparatorProps } from 'radix-vue';
 import type { SeparatorBorder } from '@soybean-ui/variants';
-import type { ClassValue, ThemeAlign, ThemeOrientation } from '../../types';
+import type { ClassValue, ClassValueProp, ThemeAlign, ThemeOrientation } from '../../types';
 
-export type SeparatorRootProps = Pick<$SeparatorProps, 'orientation' | 'decorative'> & {
-  class?: ClassValue;
-  border?: SeparatorBorder;
-};
+export type SeparatorRootProps = ClassValueProp &
+  Pick<_SeparatorProps, 'orientation' | 'decorative'> & {
+    border?: SeparatorBorder;
+  };
 
-export type SeparatorLabelProps = {
-  class?: ClassValue;
+export type SeparatorLabelProps = ClassValueProp & {
   orientation?: ThemeOrientation;
   align?: ThemeAlign;
 };
 
-export type SeparatorProps = SeparatorRootProps & {
-  align?: ThemeAlign;
-  label?: string;
-  labelClass?: ClassValue;
-};
+export type SeparatorProps = SeparatorRootProps &
+  SeparatorLabelProps & {
+    label?: string;
+    labelClass?: ClassValue;
+  };
 
 export type { SeparatorBorder };

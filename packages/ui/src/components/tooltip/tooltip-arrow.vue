@@ -1,25 +1,23 @@
 <script setup lang="ts">
-import { TooltipArrow, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { TooltipArrow } from 'radix-vue';
 import { cn, tooltipVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { TooltipArrowProps } from './types';
 
 defineOptions({
   name: 'STooltipArrow'
 });
 
-const props = defineProps<TooltipArrowProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'asChild']);
-
-const forwardedProps = useForwardProps(delegatedProps);
+const { class: cls, width, height } = defineProps<TooltipArrowProps>();
 
 const { arrow } = tooltipVariants();
+
+const mergedCls = computed(() => cn(cls, arrow()));
 </script>
 
 <template>
-  <TooltipArrow as-child v-bind="forwardedProps">
-    <div :class="cn(arrow(), props.class)"></div>
+  <TooltipArrow as-child :width :height>
+    <div :class="mergedCls"></div>
   </TooltipArrow>
 </template>
 

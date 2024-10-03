@@ -1,20 +1,18 @@
 import type {
-  DialogContentProps as $DialogContentProps,
-  DialogOverlayProps as $DialogOverlayProps,
   DialogContentEmits,
   DialogPortalProps,
   DialogRootEmits,
-  DialogRootProps
+  DialogRootProps,
+  DialogContentProps as _DialogContentProps,
+  DialogOverlayProps as _DialogOverlayProps
 } from 'radix-vue';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
 
-export type DialogOverlayProps = Pick<$DialogOverlayProps, 'forceMount'> & {
-  class?: ClassValue;
-};
+export type DialogOverlayProps = ClassValueProp & Pick<_DialogOverlayProps, 'forceMount'>;
 
-export type DialogContentProps = Pick<$DialogContentProps, 'forceMount' | 'trapFocus' | 'disableOutsidePointerEvents'> &
-  CardProps & {
+export type DialogContentProps = CardProps &
+  Pick<_DialogContentProps, 'forceMount' | 'trapFocus' | 'disableOutsidePointerEvents'> & {
     showClose?: boolean;
   };
 

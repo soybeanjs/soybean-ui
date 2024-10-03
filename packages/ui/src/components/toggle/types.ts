@@ -1,11 +1,11 @@
-import type { ToggleProps as $ToggleProps } from 'radix-vue';
+import type { ToggleEmits, ToggleProps as _ToggleProps } from 'radix-vue';
 import type { ThemeSize, ToggleVariant } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValueProp } from '../../types';
 
-export type ToggleProps = $ToggleProps & {
-  class?: ClassValue;
-  variant?: ToggleVariant;
-  size?: ThemeSize;
-};
+export type ToggleProps = ClassValueProp &
+  Omit<_ToggleProps, 'as' | 'asChild'> & {
+    variant?: ToggleVariant;
+    size?: ThemeSize;
+  };
 
-export type { ToggleVariant };
+export type { ToggleEmits, ToggleVariant };
