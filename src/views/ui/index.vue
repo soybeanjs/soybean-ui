@@ -13,6 +13,7 @@ import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
+import UIChip from './modules/chip.vue';
 import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
@@ -93,6 +94,11 @@ const tabs: TabConfig[] = [
     value: 'checkbox',
     label: 'Checkbox',
     component: UiCheckbox
+  },
+  {
+    value: 'chip',
+    label: 'Chip',
+    component: UIChip
   },
   {
     value: 'collapsible',
