@@ -8,17 +8,17 @@ defineOptions({
   name: 'SDropdownMenuLabel'
 });
 
-const props = defineProps<DropdownMenuLabelProps>();
+const { class: cls, size } = defineProps<DropdownMenuLabelProps>();
 
-const cls = computed(() => {
-  const { label } = dropdownMenuVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { label } = dropdownMenuVariants({ size });
 
-  return cn(label(), props.class);
+  return cn(label(), cls);
 });
 </script>
 
 <template>
-  <DropdownMenuLabel :class="cls">
+  <DropdownMenuLabel :class="mergedCls">
     <slot />
   </DropdownMenuLabel>
 </template>

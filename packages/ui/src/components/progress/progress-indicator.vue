@@ -8,19 +8,19 @@ defineOptions({
   name: 'SProgressIndicator'
 });
 
-const props = defineProps<ProgressIndicatorProps>();
+const { class: cls, color, modelValue } = defineProps<ProgressIndicatorProps>();
 
-const cls = computed(() => {
+const mergedCls = computed(() => {
   const { indicator } = progressVariants();
 
-  return cn(indicator({ color: props.color }), props.class);
+  return cn(indicator({ color }), cls);
 });
 
-const style = computed(() => `transform: translateX(-${100 - (props.modelValue || 0)}%);`);
+const style = computed(() => `transform: translateX(-${100 - (modelValue || 0)}%);`);
 </script>
 
 <template>
-  <ProgressIndicator :class="cls" :style="style" />
+  <ProgressIndicator :class="mergedCls" :style="style" />
 </template>
 
 <style scoped></style>

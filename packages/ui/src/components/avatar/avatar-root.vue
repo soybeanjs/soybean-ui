@@ -8,17 +8,17 @@ defineOptions({
   name: 'SAvatarRoot'
 });
 
-const props = defineProps<AvatarRootProps>();
+const { class: cls, size } = defineProps<AvatarRootProps>();
 
-const cls = computed(() => {
-  const { root } = avatarVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { root } = avatarVariants({ size });
 
-  return cn(root(), props.class);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <AvatarRoot :as="as" :as-child="asChild" :class="cls">
+  <AvatarRoot :class="mergedCls">
     <slot />
   </AvatarRoot>
 </template>

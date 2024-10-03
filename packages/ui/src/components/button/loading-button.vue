@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useForwardProps } from 'radix-vue';
 import { LoaderCircle } from 'lucide-vue-next';
-import { computed } from 'vue';
-import { computedOmit } from '../../shared';
 import type { LoadingButtonProps } from './types';
 import SButton from './button.vue';
 
@@ -10,17 +9,15 @@ defineOptions({
   name: 'SLoadingButton'
 });
 
-const props = defineProps<LoadingButtonProps>();
+const { disabled, loading, ...delegatedProps } = defineProps<LoadingButtonProps>();
 
-const delegatedProps = computedOmit(props, ['disabled', 'loading']);
+const forwardedProps = useForwardProps(delegatedProps);
 
-const forwarded = useForwardProps(delegatedProps);
-
-const disabled = computed(() => props.loading || props.disabled);
+const isDisabled = computed(() => loading || disabled);
 </script>
 
 <template>
-  <SButton v-bind="forwarded" :disabled="disabled">
+  <SButton v-bind="forwardedProps" :disabled="isDisabled">
     <template #leading>
       <slot v-if="loading" name="loading">
         <LoaderCircle class="animate-spin" />

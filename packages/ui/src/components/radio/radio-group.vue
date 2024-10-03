@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { RadioGroupRoot, useForwardPropsEmits } from 'radix-vue';
 import type { RadioGroupRootEmits } from 'radix-vue';
 import { cn, radioVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { RadioGroupProps } from './types';
 import SRadio from './radio.vue';
 
@@ -11,23 +10,21 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = defineProps<RadioGroupProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'color', 'size', 'items']);
+const { class: cls, color, size, items, orientation, ...delegatedProps } = defineProps<RadioGroupProps>();
 
 const emit = defineEmits<RadioGroupRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { group } = radioVariants({ orientation: props.orientation });
+const mergedCls = computed(() => {
+  const { group } = radioVariants({ orientation });
 
-  return cn(group(), props.class);
+  return cn(group(), cls);
 });
 </script>
 
 <template>
-  <RadioGroupRoot v-bind="forwarded" :class="cls">
+  <RadioGroupRoot v-bind="forwarded" :class="mergedCls" :orientation>
     <slot>
       <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" :size="size" />
     </slot>

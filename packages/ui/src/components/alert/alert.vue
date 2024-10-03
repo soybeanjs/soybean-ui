@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useForwardProps } from 'radix-vue';
-import { alertVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
-import { computedPick } from '../../shared';
 import SButtonIcon from '../button/button-icon.vue';
 import SAlertRoot from './alert-root.vue';
 import SAlertHeader from './alert-header.vue';
@@ -16,17 +12,9 @@ defineOptions({
   name: 'SAlert'
 });
 
-const props = defineProps<AlertProps>();
+const { class: rootCls, color, variant } = defineProps<AlertProps>();
 
 const close = defineModel<boolean>('close', { default: false });
-
-const delegatedProps = computedPick(props, ['color', 'variant', 'class']);
-
-const forwarded = useForwardProps(delegatedProps);
-
-const { titleRoot } = alertVariants();
-
-const titleRootCls = computed(() => cn(titleRoot({ color: props.color }), props.titleRootClass));
 
 function closeAlert() {
   close.value = true;
@@ -34,15 +22,15 @@ function closeAlert() {
 </script>
 
 <template>
-  <SAlertRoot v-show="!close" v-bind="forwarded">
+  <SAlertRoot v-show="!close" :class="rootCls" :color :variant>
     <SAlertHeader :class="headerClass">
-      <SAlertTitleRoot :class="titleRootCls">
+      <SAlertTitleRoot :class="titleRootClass" :color>
         <slot name="icon" />
         <SAlertTitle :class="titleClass">
           <slot>{{ title }}</slot>
         </SAlertTitle>
       </SAlertTitleRoot>
-      <slot name="extra" :closable="closable">
+      <slot name="extra" :closable>
         <SButtonIcon v-if="closable" size="xs" fit-content @click="closeAlert">
           <X />
         </SButtonIcon>

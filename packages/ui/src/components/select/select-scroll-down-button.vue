@@ -1,30 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectScrollDownButton, useForwardProps } from 'radix-vue';
+import { SelectScrollDownButton } from 'radix-vue';
 import { ChevronDown } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectScrollDownButtonProps } from './types';
 
 defineOptions({
   name: 'SSelectScrollDownButton'
 });
 
-const props = defineProps<SelectScrollDownButtonProps>();
+const { class: cls, size } = defineProps<SelectScrollDownButtonProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const mergedCls = computed(() => {
+  const { scrollDownButton } = selectVariants({ size });
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { scrollDownButton } = selectVariants({ size: props.size });
-
-  return cn(scrollDownButton(), props.class);
+  return cn(scrollDownButton(), cls);
 });
 </script>
 
 <template>
-  <SelectScrollDownButton v-bind="forwardedProps" :class="cls">
+  <SelectScrollDownButton :class="mergedCls">
     <slot>
       <ChevronDown />
     </slot>

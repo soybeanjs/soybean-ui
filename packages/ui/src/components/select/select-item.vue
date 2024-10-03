@@ -2,28 +2,25 @@
 import { computed } from 'vue';
 import { SelectItem, useForwardProps } from 'radix-vue';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectItemProps } from './types';
 
 defineOptions({
   name: 'SSelectItem'
 });
 
-const props = defineProps<SelectItemProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'size']);
+const { class: cls, size, ...delegatedProps } = defineProps<SelectItemProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const cls = computed(() => {
-  const { item } = selectVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { item } = selectVariants({ size });
 
-  return cn(item(), props.class);
+  return cn(item(), cls);
 });
 </script>
 
 <template>
-  <SelectItem v-bind="forwardedProps" :class="cls">
+  <SelectItem v-bind="forwardedProps" :class="mergedCls">
     <slot />
   </SelectItem>
 </template>

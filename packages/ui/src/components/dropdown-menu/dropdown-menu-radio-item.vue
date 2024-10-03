@@ -1,37 +1,43 @@
 <script setup lang="ts">
-import { DropdownMenuRadioItem, useForwardPropsEmits } from 'radix-vue';
-import type { DropdownMenuRadioItemEmits } from 'radix-vue';
-import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import { computed } from 'vue';
-import { computedOmit } from '../../shared';
-import type { DropdownMenuRadioItemProps } from './types';
+import { DropdownMenuRadioItem, useForwardPropsEmits } from 'radix-vue';
+import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import SDropdownMenuItemIndicator from './dropdown-menu-indicator.vue';
+import SDropdownMenuRadioIndicatorIconRoot from './dropdown-menu-radio-indicator-icon-root.vue';
 import SDropdownMenuRadioIndicatorIcon from './dropdown-menu-radio-indicator-icon.vue';
+import type { DropdownMenuRadioItemEmits, DropdownMenuRadioItemProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuRadioItem'
 });
 
-const props = defineProps<DropdownMenuRadioItemProps>();
+const {
+  class: cls,
+  size,
+  indicatorClass,
+  indicatorIconRootClass,
+  indicatorIconClass,
+  ...delegatedProps
+} = defineProps<DropdownMenuRadioItemProps>();
 
 const emit = defineEmits<DropdownMenuRadioItemEmits>();
 
-const delegatedProps = computedOmit(props, ['class', 'size']);
-
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { radioItem } = dropdownMenuVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { radioItem } = dropdownMenuVariants({ size });
 
-  return cn(radioItem(), props.class);
+  return cn(radioItem(), cls);
 });
 </script>
 
 <template>
-  <DropdownMenuRadioItem v-bind="forwarded" :class="cls">
-    <SDropdownMenuItemIndicator :size="size">
+  <DropdownMenuRadioItem v-bind="forwarded" :class="mergedCls">
+    <SDropdownMenuItemIndicator :class="indicatorClass" :size="size">
       <slot name="indicatorIcon">
-        <SDropdownMenuRadioIndicatorIcon />
+        <SDropdownMenuRadioIndicatorIconRoot :class="indicatorIconRootClass">
+          <SDropdownMenuRadioIndicatorIcon :class="indicatorIconClass" />
+        </SDropdownMenuRadioIndicatorIconRoot>
       </slot>
     </SDropdownMenuItemIndicator>
     <slot></slot>

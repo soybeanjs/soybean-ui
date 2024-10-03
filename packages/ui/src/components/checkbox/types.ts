@@ -1,34 +1,28 @@
 import type {
-  CheckboxRootProps as $CheckboxControlProps,
-  CheckboxIndicatorProps as $CheckboxIndicatorProps,
-  CheckboxCheckedState
+  CheckboxCheckedState,
+  CheckboxRootEmits as CheckboxControlEmits,
+  CheckboxRootProps as _CheckboxControlProps,
+  CheckboxIndicatorProps as _CheckboxIndicatorProps
 } from 'radix-vue';
 import type { ThemeColor, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type CheckboxRootProps = {
-  class?: ClassValue;
-};
+export type CheckboxRootProps = ClassValueProp;
 
-export type CheckboxControlProps = $CheckboxControlProps & {
-  class?: ClassValue;
-  color?: ThemeColor;
-  size?: ThemeSize;
-};
+export type CheckboxControlProps = ClassValueProp &
+  Omit<_CheckboxControlProps, 'as' | 'asChild'> & {
+    color?: ThemeColor;
+    size?: ThemeSize;
+  };
 
-export type CheckboxIndicatorProps = $CheckboxIndicatorProps & {
-  class?: ClassValue;
-};
+export type CheckboxIndicatorProps = ClassValueProp & Pick<_CheckboxIndicatorProps, 'forceMount'>;
 
-export type CheckboxProps = $CheckboxControlProps & {
-  class?: ClassValue;
+export type CheckboxProps = CheckboxControlProps & {
   controlClass?: ClassValue;
   indicatorClass?: ClassValue;
   forceMountIndicator?: boolean;
   labelClass?: ClassValue;
   label?: string;
-  color?: ThemeColor;
-  size?: ThemeSize;
 };
 
 export type CheckboxGroupItem = CheckboxProps & {
@@ -36,14 +30,18 @@ export type CheckboxGroupItem = CheckboxProps & {
   value: string;
 };
 
-export type CheckboxGroupProps = {
-  class?: ClassValue;
-  defaultValues?: string[];
-  values?: string[];
-  items?: CheckboxGroupItem[];
-  disabled?: boolean;
-  color?: ThemeColor;
-  orientation?: ThemeOrientation;
+export type CheckboxGroupProps = ClassValueProp &
+  Pick<CheckboxProps, 'color' | 'size' | 'disabled'> & {
+    defaultValues?: string[];
+    values?: string[];
+    items?: CheckboxGroupItem[];
+    orientation?: ThemeOrientation;
+  };
+
+export type CheckboxGroupEmits = {
+  'update:values': [values: string[]];
 };
 
-export type { CheckboxCheckedState };
+export type CheckboxEmits = CheckboxControlEmits;
+
+export type { CheckboxControlEmits, CheckboxCheckedState };

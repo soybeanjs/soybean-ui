@@ -1,29 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { DropdownMenuContent, useForwardPropsEmits } from 'radix-vue';
-import type { DropdownMenuContentEmits } from 'radix-vue';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { DropdownMenuContentProps } from './types';
+import type { DropdownMenuContentEmits, DropdownMenuContentProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuContent'
 });
 
-const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
-  sideOffset: 8
-});
+const { class: cls, sideOffset = 8, ...delegatedProps } = defineProps<DropdownMenuContentProps>();
 
 const emit = defineEmits<DropdownMenuContentEmits>();
-
-const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const { content } = dropdownMenuVariants();
+
+const mergedCls = computed(() => cn(content(), cls));
 </script>
 
 <template>
-  <DropdownMenuContent v-bind="forwarded" :class="cn(content(), props.class)">
+  <DropdownMenuContent v-bind="forwarded" :class="mergedCls" :side-offset>
     <slot />
   </DropdownMenuContent>
 </template>

@@ -27,12 +27,13 @@ export const dropdownMenuVariants = tv({
       `relative flex items-center gap-3 rounded-sm outline-none outline-offset-2 transition-colors cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
-    checkboxItemIndicator: `absolute flex items-center justify-center text-primary`,
+    itemIndicator: `absolute flex items-center justify-center text-primary`,
     radioItem: [
       `relative flex items-center gap-3 rounded-sm outline-none transition-colors cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
-    radioItemIndicator: `absolute flex items-center justify-center text-primary`,
+    radioIndicatorIconRoot: `size-1.25em flex items-center justify-center`,
+    radioIndicatorIcon: `size-1/2 rounded-full bg-primary`,
     arrow: 'absolute size-8px rotate-45 border-b border-r border-border bg-popover -top-4px rounded-1px'
   },
   variants: {

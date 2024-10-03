@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { AccordionItem, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { AccordionItem } from 'radix-vue';
 import { accordionVariants, cn } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { AccordionItemProps } from './types';
 
 defineOptions({
   name: 'SAccordionItem'
 });
 
-const props = defineProps<AccordionItemProps>();
-
-const delegatedProps = computedOmit(props, ['class']);
-
-const forwardedProps = useForwardProps(delegatedProps);
+const { class: cls, value, disabled } = defineProps<AccordionItemProps>();
 
 const { item } = accordionVariants();
+
+const mergedCls = computed(() => cn(item(), cls));
 </script>
 
 <template>
-  <AccordionItem v-slot="slotProps" v-bind="forwardedProps" :class="cn(item(), props.class)">
+  <AccordionItem v-slot="slotProps" :class="mergedCls" :value :disabled>
     <slot v-bind="slotProps"></slot>
   </AccordionItem>
 </template>

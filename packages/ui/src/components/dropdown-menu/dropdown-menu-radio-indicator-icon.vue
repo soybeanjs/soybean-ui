@@ -1,13 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { Primitive } from 'radix-vue';
+import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
+import type { DropdownMenuRadioIndicatorIconProps } from './types';
+
 defineOptions({
   name: 'SDropdownMenuRadioIndicatorIcon'
+});
+
+const { class: cls } = defineProps<DropdownMenuRadioIndicatorIconProps>();
+
+const { radioIndicatorIcon } = dropdownMenuVariants();
+
+const mergedCls = computed(() => {
+  return cn(radioIndicatorIcon(), cls);
 });
 </script>
 
 <template>
-  <div class="size-1.25em flex items-center justify-center">
-    <div class="size-1/2 rounded-full bg-primary"></div>
-  </div>
+  <Primitive as="div" :class="mergedCls" />
 </template>
 
 <style scoped></style>

@@ -6,12 +6,11 @@ import {
   DialogDescription,
   DialogTitle,
   VisuallyHidden,
-  useForwardProps,
-  useForwardPropsEmits
+  useEmitAsProps,
+  useForwardProps
 } from 'radix-vue';
 import { X } from 'lucide-vue-next';
 import { cn, dialogVariants } from '@soybean-ui/variants';
-import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';
 import type { DialogContentEmits, DialogContentProps } from './types';
@@ -20,7 +19,15 @@ defineOptions({
   name: 'SDialogContent'
 });
 
-const { class: cls, showClose = true, footerClass, ...delegatedProps } = defineProps<DialogContentProps>();
+const {
+  class: cls,
+  showClose = true,
+  footerClass,
+  forceMount,
+  trapFocus,
+  disableOutsidePointerEvents,
+  ...delegatedCardProps
+} = defineProps<DialogContentProps>();
 
 const emit = defineEmits<DialogContentEmits>();
 
@@ -38,11 +45,7 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
-
-const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
-
-const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const forwardedContentEmits = useEmitAsProps(emit);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 
@@ -66,7 +69,7 @@ const mergedFooterCls = computed(() => cn(cardFooter(), footerClass));
 </script>
 
 <template>
-  <DialogContent as-child v-bind="forwardedContent">
+  <DialogContent v-bind="forwardedContentEmits" as-child :force-mount :trap-focus :disable-outside-pointer-events>
     <SCard v-bind="forwardedCardProps" :class="mergedCls" :footer-class="mergedFooterCls">
       <VisuallyHidden>
         <DialogTitle />

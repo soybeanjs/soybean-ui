@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'radix-vue';
-import type { SelectContentEmits, SelectRootEmits } from 'radix-vue';
 import { computedPick } from '../../shared';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
@@ -11,20 +10,17 @@ import SSelectLabel from './select-label.vue';
 import SSelectScrollUpButton from './select-scroll-up-button.vue';
 import SSelectScrollDownButton from './select-scroll-down-button.vue';
 import SSelectItemOption from './select-item-option.vue';
-import type { SelectGroupOption, SelectOption, SelectProps } from './types';
+import type { SelectEmits, SelectGroupOption, SelectOption, SelectProps } from './types';
 
 defineOptions({
   name: 'SSelect'
 });
 
-const props = withDefaults(defineProps<SelectProps>(), {
-  avoidCollisions: true,
-  prioritizePosition: true
-});
+const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } = defineProps<SelectProps>();
 
-const emit = defineEmits<SelectRootEmits & SelectContentEmits>();
+const emit = defineEmits<SelectEmits>();
 
-const delegatedRootProps = computedPick(props, [
+const delegatedRootProps = computedPick(delegatedProps, [
   'defaultOpen',
   'open',
   'defaultValue',
@@ -38,21 +34,19 @@ const delegatedRootProps = computedPick(props, [
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
-const delegatedContentProps = computedPick(props, [
+const delegatedContentProps = computedPick(delegatedProps, [
   'position',
   'bodyLock',
   'side',
   'sideOffset',
   'align',
   'alignOffset',
-  'avoidCollisions',
   'collisionBoundary',
   'collisionPadding',
   'arrowPadding',
   'sticky',
   'hideWhenDetached',
-  'updatePositionStrategy',
-  'prioritizePosition'
+  'updatePositionStrategy'
 ]);
 
 function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOption {
@@ -62,28 +56,30 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
 
 <template>
   <SelectRoot v-bind="forwarded">
-    <SSelectTrigger :class="triggerClass" :size="size">
-      <SelectValue :placeholder="placeholder" />
-      <SSelectIcon :class="triggerIconClass" :size="size">
+    <SSelectTrigger :class="triggerClass" :size>
+      <SelectValue :placeholder />
+      <SSelectIcon :class="triggerIconClass" :size>
         <slot name="triggerIcon" />
       </SSelectIcon>
     </SSelectTrigger>
-    <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <SelectPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent
         :class="contentClass"
         v-bind="delegatedContentProps"
         :force-mount="forceMountContent"
+        :avoid-collisions
+        :prioritize-position
         @close-auto-focus="emit('closeAutoFocus', $event)"
         @escape-key-down="emit('escapeKeyDown', $event)"
         @pointer-down-outside="emit('pointerDownOutside', $event)"
       >
-        <SSelectScrollUpButton :size="size" :class="scrollUpButtonClass">
+        <SSelectScrollUpButton :size :class="scrollUpButtonClass">
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
-        <SSelectViewport :nonce="nonce" :position="position">
+        <SSelectViewport :nonce :position>
           <template v-for="(opt, index) in options">
             <template v-if="isGroup(opt)">
-              <SSelectLabel :key="`groupLabel_${opt.label}`" :size="size" :class="groupLabelClass">
+              <SSelectLabel :key="`groupLabel_${opt.label}`" :size :class="groupLabelClass">
                 {{ opt.label }}
               </SSelectLabel>
               <SSelectSeparator
@@ -95,12 +91,12 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
                 <template v-for="(item, itemIndex) in opt.options" :key="itemIndex">
                   <SSelectItemOption
                     :option="item"
-                    :size="size"
-                    :item-class="itemClass"
-                    :item-text-class="itemTextClass"
-                    :item-indicator-class="itemIndicatorClass"
+                    :size
+                    :item-class
+                    :item-text-class
+                    :item-indicator-class
                     :separator="itemIndex !== opt.options.length - 1 && (separator || item.separator)"
-                    :separator-class="separatorClass"
+                    :separator-class
                   >
                     <slot name="itemIndicatorIcon" />
                   </SSelectItemOption>
@@ -112,18 +108,18 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
                 :key="opt.value"
                 :option="opt"
                 :size="size"
-                :item-class="itemClass"
-                :item-text-class="itemTextClass"
-                :item-indicator-class="itemIndicatorClass"
+                :item-class
+                :item-text-class
+                :item-indicator-class
                 :separator="index !== options.length - 1 && (separator || opt.separator)"
-                :separator-class="separatorClass"
+                :separator-class
               >
                 <slot name="itemIndicatorIcon" />
               </SSelectItemOption>
             </template>
           </template>
         </SSelectViewport>
-        <SSelectScrollDownButton :size="size">
+        <SSelectScrollDownButton :size>
           <slot name="scrollDownIcon" />
         </SSelectScrollDownButton>
       </SSelectContent>

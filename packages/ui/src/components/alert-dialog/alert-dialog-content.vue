@@ -50,6 +50,10 @@ const slotKeys = computed(() => {
 
   const remainingKeys = allKeys.filter(key => key !== 'default');
 
+  if (!remainingKeys.includes('title-leading')) {
+    remainingKeys.unshift('title-leading');
+  }
+
   return remainingKeys;
 });
 

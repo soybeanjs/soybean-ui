@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useForwardProps } from 'radix-vue';
-import { computedOmit } from '../../shared';
 import SSeparatorRoot from './separator-root.vue';
 import SSeparatorLabel from './separator-label.vue';
 import type { SeparatorProps } from './types';
@@ -9,17 +8,15 @@ defineOptions({
   name: 'SSeparator'
 });
 
-const props = defineProps<SeparatorProps>();
+const { align, label, labelClass, ...delegatedProps } = defineProps<SeparatorProps>();
 
-const delegatedRootProps = computedOmit(props, ['align', 'label', 'labelClass']);
-
-const forwardedRootProps = useForwardProps(delegatedRootProps);
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <SSeparatorRoot v-bind="forwardedRootProps">
+  <SSeparatorRoot v-bind="forwardedProps">
     <slot name="leading" />
-    <SSeparatorLabel v-if="label || $slots.default" :class="labelClass" :orientation="orientation" :align="align">
+    <SSeparatorLabel v-if="label || $slots.default" :class="labelClass" :align :orientation>
       <slot>{{ label }}</slot>
     </SSeparatorLabel>
     <slot name="trailing" />

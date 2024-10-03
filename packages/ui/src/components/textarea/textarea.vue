@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardExpose, useForwardPropsEmits } from 'radix-vue';
-import { computedOmit } from '../../shared';
 import TextareaRoot from './textarea-root.vue';
 import STextareaContent from './textarea-content.vue';
 import STextareaCount from './textarea-count.vue';
@@ -11,38 +10,29 @@ defineOptions({
   name: 'STextarea'
 });
 
-const props = defineProps<TextareaProps>();
+const {
+  class: rootCls,
+  contentClass,
+  showCount,
+  countClass,
+  countGraphemes,
+  ...delegatedContentProps
+} = defineProps<TextareaProps>();
 
 const emit = defineEmits<TextareaContentEmits>();
 
 const { forwardRef } = useForwardExpose();
 
-const delegatedContentProps = computedOmit(props, [
-  'class',
-  'contentClass',
-  'showCount',
-  'countClass',
-  'countGraphemes'
-]);
-
 const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
 
-const value = computed(() => props.modelValue || props.defaultValue);
+const value = computed(() => delegatedContentProps.modelValue || delegatedContentProps.defaultValue);
 </script>
 
 <template>
-  <TextareaRoot :class="props.class">
-    <STextareaContent :ref="forwardRef" v-bind="forwardedContent" :class="contentClass" />
-    <STextareaCount
-      v-if="showCount"
-      v-slot="{ count }"
-      :class="countClass"
-      :size="size"
-      :value="value"
-      :maxlength="maxlength"
-      :count-graphemes="countGraphemes"
-    >
-      <slot name="count" :count="count" :value="count" />
+  <TextareaRoot :class="rootCls">
+    <STextareaContent v-bind="forwardedContent" :ref="forwardRef" :class="contentClass" />
+    <STextareaCount v-if="showCount" v-slot="{ count }" :class="countClass" :size :value :maxlength :count-graphemes>
+      <slot name="count" :count :value />
     </STextareaCount>
   </TextareaRoot>
 </template>

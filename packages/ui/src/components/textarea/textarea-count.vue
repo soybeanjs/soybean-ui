@@ -8,25 +8,25 @@ defineOptions({
   name: 'STextareaCount'
 });
 
-const props = defineProps<TextareaCountProps>();
+const { class: cls, size, value, maxlength, countGraphemes } = defineProps<TextareaCountProps>();
 
-const cls = computed(() => {
-  const { count } = textareaVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { count } = textareaVariants({ size });
 
-  return cn(count(), props.class);
+  return cn(count(), cls);
 });
 
 const count = computed(() => {
-  if (!props.value) {
+  if (!value) {
     return 0;
   }
 
-  return props.countGraphemes?.(props.value) || String(props.value).length;
+  return countGraphemes?.(value) || String(value).length;
 });
 
 const countWithMaxLength = computed(() => {
-  if (props.maxlength) {
-    return `${count.value} / ${props.maxlength}`;
+  if (maxlength) {
+    return `${count.value} / ${maxlength}`;
   }
 
   return count.value;
@@ -34,7 +34,7 @@ const countWithMaxLength = computed(() => {
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot :count="count">{{ countWithMaxLength }}</slot>
   </Primitive>
 </template>

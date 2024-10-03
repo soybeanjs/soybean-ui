@@ -1,40 +1,38 @@
 import type {
-  TabsContentProps as $TabsContentProps,
-  TabsListProps as $TabsListProps,
-  TabsRootProps as $TabsRootProps,
-  TabsTriggerProps as $TabsTriggerProps
+  TabsRootEmits,
+  TabsContentProps as _TabsContentProps,
+  TabsListProps as _TabsListProps,
+  TabsRootProps as _TabsRootProps,
+  TabsTriggerProps as _TabsTriggerProps
 } from 'radix-vue';
-import type { ClassValue, StringOrNumber, ThemeOrientation } from '../../types';
+import type { ClassValue, ClassValueProp, StringOrNumber, ThemeOrientation } from '../../types';
 
-export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = Omit<$TabsRootProps<T>, 'as' | 'asChild'> & {
-  class?: ClassValue;
-};
+export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &
+  Omit<_TabsRootProps<T>, 'as' | 'asChild'>;
 
-export type TabsListProps = Omit<$TabsListProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
+export type TabsListProps = ClassValueProp &
+  Pick<_TabsListProps, 'loop'> & {
+    orientation?: ThemeOrientation;
+  };
+
+export type TabsTriggerProps = ClassValueProp &
+  Pick<_TabsTriggerProps, 'value' | 'disabled'> & {
+    orientation?: ThemeOrientation;
+    enableIndicator?: boolean;
+  };
+
+export type TabsIndicatorRootProps = ClassValueProp & {
   orientation?: ThemeOrientation;
 };
 
-export type TabsTriggerProps = Omit<$TabsTriggerProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-  orientation?: ThemeOrientation;
-  enableIndicator?: boolean;
-};
-
-export type TabsIndicatorRootProps = {
-  class?: ClassValue;
+export type TabsIndicatorProps = ClassValueProp & {
   orientation?: ThemeOrientation;
 };
 
-export type TabsIndicatorProps = {
-  class?: ClassValue;
-  orientation?: ThemeOrientation;
-};
-
-export type TabsContentProps = Omit<$TabsContentProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
-  orientation?: ThemeOrientation;
-};
+export type TabsContentProps = ClassValueProp &
+  Pick<_TabsContentProps, 'value' | 'forceMount'> & {
+    orientation?: ThemeOrientation;
+  };
 
 export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTriggerProps, 'disabled'> & {
   value: T;
@@ -52,3 +50,7 @@ export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
     forceMountContent?: boolean;
     contentClass?: ClassValue;
   };
+
+export type TabsEmits<T extends StringOrNumber = StringOrNumber> = TabsRootEmits<T>;
+
+export type { TabsRootEmits };

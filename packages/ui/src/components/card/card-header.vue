@@ -9,19 +9,19 @@ defineOptions({
   name: 'SCardHeader'
 });
 
-const props = defineProps<CardHeaderProps>();
+const { class: cls, size, split } = defineProps<CardHeaderProps>();
 
-const cls = computed(() => {
-  const split: CardSplit = props.split ? 'header' : 'none';
+const mergedCls = computed(() => {
+  const headerSplit: CardSplit = split ? 'header' : 'none';
 
-  const { header } = cardVariants({ size: props.size, split });
+  const { header } = cardVariants({ size, split: headerSplit });
 
-  return cn(header(), props.class);
+  return cn(header(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

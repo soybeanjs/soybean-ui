@@ -1,32 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Toggle, useForwardPropsEmits } from 'radix-vue';
-import type { ToggleEmits } from 'radix-vue';
 import { cn, toggleVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { ToggleProps } from './types';
+import type { ToggleEmits, ToggleProps } from './types';
 
 defineOptions({
   name: 'SToggle'
 });
 
-const props = defineProps<ToggleProps>();
+const { class: cls, variant, size, ...delegatedProps } = defineProps<ToggleProps>();
 
 const emit = defineEmits<ToggleEmits>();
 
-const delegatedProps = computedOmit(props, ['class', 'variant', 'size']);
-
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { toggle } = toggleVariants({ variant: props.variant, size: props.size });
+const mergedCls = computed(() => {
+  const { toggle } = toggleVariants({ variant, size });
 
-  return cn(toggle(), props.class);
+  return cn(toggle(), cls);
 });
 </script>
 
 <template>
-  <Toggle v-bind="forwarded" :class="cls">
+  <Toggle v-bind="forwarded" :class="mergedCls">
     <slot />
   </Toggle>
 </template>

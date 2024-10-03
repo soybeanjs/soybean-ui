@@ -1,34 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { TooltipContent, useForwardPropsEmits } from 'radix-vue';
-import type { TooltipContentEmits } from 'radix-vue';
 import { cn, tooltipVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { TooltipContentProps } from './types';
+import type { TooltipContentEmits, TooltipContentProps } from './types';
 
 defineOptions({
   name: 'STooltipContent'
 });
 
-const props = withDefaults(defineProps<TooltipContentProps>(), {
-  side: 'bottom',
-  sideOffset: 8,
-  align: 'center',
-  avoidCollisions: true,
-  collisionPadding: 0,
-  sticky: 'partial'
-});
+const { class: cls, sideOffset = 8, avoidCollisions = true, ...delegatedProps } = defineProps<TooltipContentProps>();
 
 const emit = defineEmits<TooltipContentEmits>();
-
-const delegatedProps = computedOmit(props, ['class']);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const { content } = tooltipVariants();
+
+const mergedCls = computed(() => cn(cls, content()));
 </script>
 
 <template>
-  <TooltipContent v-bind="forwarded" :class="cn(content(), props.class)">
+  <TooltipContent v-bind="forwarded" :class="mergedCls" :side-offset :avoid-collisions>
     <slot />
   </TooltipContent>
 </template>

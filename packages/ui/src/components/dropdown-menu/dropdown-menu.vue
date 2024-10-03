@@ -5,12 +5,7 @@ import { computedOmit, computedOmitEmits, computedPick, computedPickEmits } from
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuOption from './dropdown-menu-option.vue';
 import { createOptionKey } from './shared';
-import type {
-  DropdownMenuItemOption,
-  DropdownMenuOptionEmits,
-  DropdownMenuProps,
-  DropdownMenuWrapperEmits
-} from './types';
+import type { DropdownMenuEmits, DropdownMenuItemOption, DropdownMenuProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenu'
@@ -18,7 +13,7 @@ defineOptions({
 
 const props = defineProps<DropdownMenuProps<T>>();
 
-type Emits = DropdownMenuWrapperEmits & DropdownMenuOptionEmits<T>;
+type Emits = DropdownMenuEmits<T>;
 
 const emit = defineEmits<Emits>();
 

@@ -5,20 +5,20 @@ import { cn, pinInputVariants } from '@soybean-ui/variants';
 import type { PinInputItemProps } from './types';
 
 defineOptions({
-  name: 'SPinInputItem'
+  name: 'SPinInputInput'
 });
 
-const { class: itemCls, size, separate, ...delegatedProps } = defineProps<PinInputItemProps>();
+const { class: cls, size, separate, ...delegatedProps } = defineProps<PinInputItemProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const cls = computed(() => {
+const mergedCls = computed(() => {
   const { input } = pinInputVariants({ separate, size });
 
-  return cn(input(), itemCls);
+  return cn(input(), cls);
 });
 </script>
 
 <template>
-  <PinInputInput v-bind="forwardedProps" :class="cls" />
+  <PinInputInput v-bind="forwardedProps" :class="mergedCls" />
 </template>

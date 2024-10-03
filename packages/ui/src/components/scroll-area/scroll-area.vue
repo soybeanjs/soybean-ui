@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ScrollAreaCorner } from 'radix-vue';
+import { ScrollAreaCorner, useForwardProps } from 'radix-vue';
 import SScrollAreaRoot from './scroll-area-root.vue';
 import SScrollAreaViewport from './scroll-area-viewport.vue';
 import SScrollAreaScrollbar from './scroll-area-scrollbar.vue';
@@ -10,26 +10,18 @@ defineOptions({
   name: 'SScrollArea'
 });
 
-const {
-  class: rootClass,
-  type,
-  dir,
-  scrollHideDelay,
-  viewportClass,
-  nonce,
-  scrollbarClass,
-  orientation,
-  forceMount,
-  thumbClass
-} = defineProps<ScrollAreaProps>();
+const { viewportClass, nonce, scrollbarClass, orientation, forceMount, thumbClass, ...delegatedProps } =
+  defineProps<ScrollAreaProps>();
+
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <SScrollAreaRoot :class="rootClass" :type="type" :dir="dir" :scroll-hide-delay="scrollHideDelay">
-    <SScrollAreaViewport :class="viewportClass" :nonce="nonce">
+  <SScrollAreaRoot v-bind="forwardedProps">
+    <SScrollAreaViewport :class="viewportClass" :nonce>
       <slot />
     </SScrollAreaViewport>
-    <SScrollAreaScrollbar :class="scrollbarClass" :orientation="orientation" :force-mount="forceMount">
+    <SScrollAreaScrollbar :class="scrollbarClass" :orientation :force-mount>
       <SScrollAreaThumb :class="thumbClass" />
     </SScrollAreaScrollbar>
     <ScrollAreaCorner />

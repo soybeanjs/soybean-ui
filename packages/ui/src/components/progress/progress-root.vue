@@ -1,34 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ProgressRoot, useForwardPropsEmits } from 'radix-vue';
-import type { ProgressRootEmits } from 'radix-vue';
 import { cn, progressVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { ProgressRootProps } from './types';
+import type { ProgressRootEmits, ProgressRootProps } from './types';
 
 defineOptions({
   name: 'SProgressRoot'
 });
 
-const props = withDefaults(defineProps<ProgressRootProps>(), {
-  as: 'div'
-});
+const { class: cls, color, size, ...delegatedProps } = defineProps<ProgressRootProps>();
 
 const emit = defineEmits<ProgressRootEmits>();
 
-const delegatedProps = computedOmit(props, ['class', 'color', 'size']);
-
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { root } = progressVariants({ color: props.color, size: props.size });
+const mergedCls = computed(() => {
+  const { root } = progressVariants({ color, size });
 
-  return cn(root(), props.class);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <ProgressRoot v-bind="forwarded" :class="cls">
+  <ProgressRoot v-bind="forwarded" :class="mergedCls">
     <slot />
   </ProgressRoot>
 </template>

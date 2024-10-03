@@ -8,19 +8,19 @@ defineOptions({
   name: 'SPinInputSeparator'
 });
 
-const { class: separatorClass, size } = defineProps<PinInputSeparatorProps>();
+const { class: cls, size } = defineProps<PinInputSeparatorProps>();
 
-const cls = computed(() => {
+const mergedCls = computed(() => {
   const { separator } = pinInputVariants({ size });
 
-  return cn(separator(), separatorClass);
+  return cn(separator(), cls);
 });
 
 const BLANK = ' ';
 </script>
 
 <template>
-  <Primitive as="span" :class="cls">
+  <Primitive as="span" :class="mergedCls">
     <slot>{{ BLANK }}</slot>
   </Primitive>
 </template>

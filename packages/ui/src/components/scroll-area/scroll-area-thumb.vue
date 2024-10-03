@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { ScrollAreaThumb } from 'radix-vue';
 import { cn, scrollAreaVariants } from '@soybean-ui/variants';
 import type { ScrollAreaThumbProps } from './types';
@@ -10,10 +11,12 @@ defineOptions({
 const { class: cls } = defineProps<ScrollAreaThumbProps>();
 
 const { thumb } = scrollAreaVariants();
+
+const mergedCls = computed(() => cn(thumb(), cls));
 </script>
 
 <template>
-  <ScrollAreaThumb :class="cn(thumb(), cls)">
+  <ScrollAreaThumb :class="mergedCls">
     <slot />
   </ScrollAreaThumb>
 </template>

@@ -12,11 +12,9 @@ const { class: cls, ...delegatedProps } = defineProps<SegmentTriggerRootProps>()
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const mergedCls = computed(() => {
-  const { triggerRoot } = segmentVariants();
+const { triggerRoot } = segmentVariants();
 
-  return cn(triggerRoot(), cls);
-});
+const mergedCls = computed(() => cn(triggerRoot(), cls));
 </script>
 
 <template>

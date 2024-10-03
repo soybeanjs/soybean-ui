@@ -1,17 +1,19 @@
 import type {
-  CollapsibleContentProps as $CollapsibleContentProps,
-  CollapsibleRootProps,
-  CollapsibleTriggerProps
+  CollapsibleRootEmits,
+  CollapsibleContentProps as _CollapsibleContentProps,
+  CollapsibleRootProps as _CollapsibleRootProps
 } from 'radix-vue';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type CollapsibleContentProps = $CollapsibleContentProps & {
-  class?: ClassValue;
-};
+export type CollapsibleRootProps = ClassValueProp & Pick<_CollapsibleRootProps, 'open' | 'defaultOpen' | 'disabled'>;
+
+export type CollapsibleContentProps = Pick<_CollapsibleContentProps, 'forceMount'> & ClassValueProp;
 
 export type CollapsibleProps = CollapsibleRootProps & {
   contentClass?: ClassValue;
   forceMountContent?: boolean;
 };
 
-export type { CollapsibleRootProps, CollapsibleTriggerProps };
+export type CollapsibleEmits = CollapsibleRootEmits;
+
+export type { CollapsibleRootEmits };

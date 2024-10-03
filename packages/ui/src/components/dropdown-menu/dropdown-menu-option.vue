@@ -15,9 +15,7 @@ defineOptions({
 
 defineProps<DropdownMenuOptionProps<T>>();
 
-type Emits = DropdownMenuOptionEmits<T>;
-
-const emit = defineEmits<Emits>();
+const emit = defineEmits<DropdownMenuOptionEmits<T>>();
 
 const forwardedEmits = useEmitAsProps(emit);
 </script>

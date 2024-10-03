@@ -3,30 +3,27 @@ import { computed } from 'vue';
 import { SwitchRoot, useForwardPropsEmits } from 'radix-vue';
 import type { SwitchRootEmits } from 'radix-vue';
 import { cn, switchVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SwitchRootProps } from './types';
 
 defineOptions({
   name: 'SSwitchRoot'
 });
 
-const props = defineProps<SwitchRootProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'color', 'size']);
+const { class: cls, color, size, ...delegatedProps } = defineProps<SwitchRootProps>();
 
 const emit = defineEmits<SwitchRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const cls = computed(() => {
-  const { root } = switchVariants({ color: props.color, size: props.size });
+const mergedCls = computed(() => {
+  const { root } = switchVariants({ color, size });
 
-  return cn(root(), props.class);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <SwitchRoot :class="cls" v-bind="forwarded">
+  <SwitchRoot v-bind="forwarded" :class="mergedCls">
     <slot />
   </SwitchRoot>
 </template>

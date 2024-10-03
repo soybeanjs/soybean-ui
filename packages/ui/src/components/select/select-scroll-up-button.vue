@@ -1,30 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectScrollUpButton, useForwardProps } from 'radix-vue';
+import { SelectScrollUpButton } from 'radix-vue';
 import { ChevronUp } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { SelectScrollUpButtonProps } from './types';
 
 defineOptions({
   name: 'SSelectScrollUpButton'
 });
 
-const props = defineProps<SelectScrollUpButtonProps>();
+const { class: cls, size } = defineProps<SelectScrollUpButtonProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const mergedCls = computed(() => {
+  const { scrollUpButton } = selectVariants({ size });
 
-const forwardedProps = useForwardProps(delegatedProps);
-
-const cls = computed(() => {
-  const { scrollUpButton } = selectVariants({ size: props.size });
-
-  return cn(scrollUpButton(), props.class);
+  return cn(scrollUpButton(), cls);
 });
 </script>
 
 <template>
-  <SelectScrollUpButton v-bind="forwardedProps" :class="cls">
+  <SelectScrollUpButton :class="mergedCls">
     <slot>
       <ChevronUp />
     </slot>

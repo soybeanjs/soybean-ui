@@ -2,28 +2,23 @@
 import { computed } from 'vue';
 import { RadioGroupIndicator, useForwardProps } from 'radix-vue';
 import { cn, radioVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { RadioIndicatorProps } from './types';
 
 defineOptions({
   name: 'SRadioIndicator'
 });
 
-const props = defineProps<RadioIndicatorProps>();
+const { class: cls, color, ...delegatedProps } = defineProps<RadioIndicatorProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
+const forwardedProps = useForwardProps(delegatedProps);
 
-const forwarded = useForwardProps(delegatedProps);
+const { indicator } = radioVariants();
 
-const cls = computed(() => {
-  const { indicator } = radioVariants();
-
-  return cn(indicator({ color: props.color }), props.class);
-});
+const mergedCls = computed(() => cn(indicator({ color }), cls));
 </script>
 
 <template>
-  <RadioGroupIndicator v-bind="forwarded" :class="cls" />
+  <RadioGroupIndicator v-bind="forwardedProps" :class="mergedCls" />
 </template>
 
 <style scoped></style>

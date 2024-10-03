@@ -8,19 +8,17 @@ defineOptions({
   name: 'SAlertRoot'
 });
 
-const props = defineProps<AlertRootProps>();
+const { class: cls, color, variant } = defineProps<AlertRootProps>();
 
-const cls = computed(() => {
-  const { color, variant } = props;
-
+const mergedCls = computed(() => {
   const { root } = alertVariants({ color, variant });
 
-  return cn(root(), props.class);
+  return cn(root(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="div" :class="cls" role="alert">
+  <Primitive as="div" :class="mergedCls" role="alert">
     <slot />
   </Primitive>
 </template>

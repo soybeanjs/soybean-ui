@@ -9,12 +9,12 @@ defineOptions({
 
 const props = defineProps<ButtonProps>();
 
-const forwarded = useForwardProps(props);
+const forwardedProps = useForwardProps(props);
 </script>
 
 <template>
   <AlertDialogAction as-child>
-    <SButton v-bind="forwarded">
+    <SButton v-bind="forwardedProps">
       <slot>Confirm</slot>
     </SButton>
   </AlertDialogAction>

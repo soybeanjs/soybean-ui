@@ -1,29 +1,30 @@
 import type {
-  AvatarFallbackProps as $AvatarFallbackProps,
-  AvatarImageProps as $AvatarImageProps,
-  AvatarRootProps as $AvatarRootProps
+  AvatarImageEmits,
+  AvatarFallbackProps as _AvatarFallbackProps,
+  AvatarImageProps as _AvatarImageProps
 } from 'radix-vue';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type AvatarRootProps = $AvatarRootProps & {
-  class?: ClassValue;
+export type AvatarRootProps = ClassValueProp & {
   size?: ThemeSize;
 };
 
-export type AvatarImageProps = $AvatarImageProps & {
-  class?: ClassValue;
-  alt?: string;
-};
+export type AvatarImageProps = ClassValueProp &
+  Pick<_AvatarImageProps, 'src'> & {
+    alt?: string;
+  };
 
-export type AvatarFallbackProps = $AvatarFallbackProps & {
-  class?: ClassValue;
-};
+export type AvatarFallbackProps = ClassValueProp & Pick<_AvatarFallbackProps, 'delayMs'>;
 
 export type AvatarProps = AvatarRootProps &
-  Pick<AvatarImageProps, 'src' | 'alt'> &
-  Pick<AvatarFallbackProps, 'delayMs'> & {
+  AvatarImageProps &
+  AvatarFallbackProps & {
     imageClass?: ClassValue;
     fallbackLabel?: string;
     fallbackClass?: ClassValue;
   };
+
+export type AvatarEmits = AvatarImageEmits;
+
+export type { AvatarImageEmits };

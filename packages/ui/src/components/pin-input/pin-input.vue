@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import { useForwardPropsEmits } from 'radix-vue';
-import type { PinInputRootEmits } from 'radix-vue';
 import PinInputRoot from './pin-input-root.vue';
-import PinInputItem from './pin-input-item.vue';
+import PinInputItem from './pin-input-input.vue';
 import PinInputSeparator from './pin-input-separator.vue';
-import type { PinInputProps } from './types';
+import type { PinInputEmits, PinInputProps } from './types';
 
 defineOptions({
   name: 'SPinInput'
@@ -20,15 +19,13 @@ const {
   ...delegatedRootProps
 } = defineProps<PinInputProps>();
 
-const emit = defineEmits<PinInputRootEmits>();
+const emit = defineEmits<PinInputEmits>();
 
 const slots = useSlots();
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
-const hasSeparator = computed(() => {
-  return separate || Boolean(slots.separator);
-});
+const hasSeparator = computed(() => separate || Boolean(slots.separator));
 </script>
 
 <template>

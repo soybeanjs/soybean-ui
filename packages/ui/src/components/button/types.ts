@@ -6,10 +6,9 @@ import type {
   ThemeOrientation,
   ThemeSize
 } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValueProp } from '../../types';
 
-export type ButtonProps = {
-  class?: ClassValue;
+export type ButtonProps = ClassValueProp & {
   color?: ThemeColor;
   variant?: ButtonVariant;
   size?: ThemeSize;
@@ -26,16 +25,17 @@ export type ButtonProps = {
   formnovalidate?: boolean;
   formtarget?: string;
   name?: string;
-  type?: 'submit' | 'reset' | 'button';
+  type?: ButtonType;
   value?: string | ReadonlyArray<string> | number;
 };
+
+export type ButtonType = 'submit' | 'reset' | 'button';
 
 export type LoadingButtonProps = ButtonProps & {
   loading?: boolean;
 };
 
-export type ButtonGroupProps = {
-  class?: ClassValue;
+export type ButtonGroupProps = ClassValueProp & {
   orientation?: ThemeOrientation;
 };
 

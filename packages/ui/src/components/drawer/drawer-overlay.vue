@@ -10,11 +10,9 @@ defineOptions({
 
 const { class: cls } = defineProps<DrawerOverlayProps>();
 
-const mergedCls = computed(() => {
-  const { overlay } = drawerVariants();
+const { overlay } = drawerVariants();
 
-  return cn(overlay(), cls);
-});
+const mergedCls = computed(() => cn(overlay(), cls));
 </script>
 
 <template>

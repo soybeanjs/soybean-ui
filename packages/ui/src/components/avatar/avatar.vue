@@ -1,27 +1,29 @@
 <script setup lang="ts">
-import { useEmitAsProps } from 'radix-vue';
-import type { AvatarImageEmits } from 'radix-vue';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';
-import type { AvatarProps } from './types';
+import type { AvatarEmits, AvatarProps } from './types';
 
 defineOptions({
   name: 'SAvatar'
 });
 
-const props = defineProps<AvatarProps>();
+const { class: rootClass } = defineProps<AvatarProps>();
 
-const emit = defineEmits<AvatarImageEmits>();
-
-const emitAsProps = useEmitAsProps(emit);
+const emit = defineEmits<AvatarEmits>();
 </script>
 
 <template>
-  <SAvatarRoot :as="as" :as-child="asChild" :size="size" :class="props.class">
+  <SAvatarRoot :size :class="rootClass">
     <slot>
       <slot name="image">
-        <SAvatarImage :class="imageClass" :src="src" :alt="alt" :delay-ms="delayMs" v-bind="emitAsProps" />
+        <SAvatarImage
+          :class="imageClass"
+          :src
+          :alt
+          :delay-ms
+          @loading-status-change="emit('loadingStatusChange', $event)"
+        />
       </slot>
       <SAvatarFallback :class="fallbackClass">
         <slot name="fallback">{{ fallbackLabel }}</slot>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsContent, useForwardProps } from 'radix-vue';
+import { TabsContent } from 'radix-vue';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsContentProps } from './types';
 
@@ -8,9 +8,7 @@ defineOptions({
   name: 'STabsContent'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<TabsContentProps>();
-
-const forwardedProps = useForwardProps(delegatedProps);
+const { class: cls, orientation, value, forceMount } = defineProps<TabsContentProps>();
 
 const mergedCls = computed(() => {
   const { content } = tabsVariants({ orientation });
@@ -20,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <TabsContent v-bind="forwardedProps" :class="mergedCls">
+  <TabsContent :class="mergedCls" :value :force-mount>
     <slot />
   </TabsContent>
 </template>

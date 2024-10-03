@@ -16,13 +16,13 @@ defineProps<SelectItemOptionProps>();
   <SSelectItem
     :key="option.value"
     :value="option.value"
-    :size="size"
+    :size
     :text-value="option.label"
     :disabled="option.disabled"
     :class="itemClass"
   >
     <SelectItemText :class="itemTextClass">{{ option.label }}</SelectItemText>
-    <SSelectItemIndicator :class="itemIndicatorClass" :size="size">
+    <SSelectItemIndicator :class="itemIndicatorClass" :size>
       <slot name="itemIndicatorIcon" />
     </SSelectItemIndicator>
   </SSelectItem>

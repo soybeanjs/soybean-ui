@@ -8,19 +8,19 @@ defineOptions({
   name: 'SScrollAreaThumb'
 });
 
-const { class: scrollbarCls, ...delegatedProps } = defineProps<ScrollAreaScrollbarProps>();
-
-const cls = computed(() => {
-  const { scrollbar } = scrollAreaVariants({ orientation: delegatedProps.orientation });
-
-  return cn(scrollbar(), scrollbarCls);
-});
+const { class: cls, ...delegatedProps } = defineProps<ScrollAreaScrollbarProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
+
+const mergedCls = computed(() => {
+  const { scrollbar } = scrollAreaVariants({ orientation: delegatedProps.orientation });
+
+  return cn(scrollbar(), cls);
+});
 </script>
 
 <template>
-  <ScrollAreaScrollbar :class="cls" v-bind="forwardedProps">
+  <ScrollAreaScrollbar v-bind="forwardedProps" :class="mergedCls">
     <slot />
   </ScrollAreaScrollbar>
 </template>

@@ -2,28 +2,25 @@
 import { computed } from 'vue';
 import { DropdownMenuItemIndicator, useForwardProps } from 'radix-vue';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { DropdownMenuItemIndicatorProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuItemIndicator'
 });
 
-const props = defineProps<DropdownMenuItemIndicatorProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<DropdownMenuItemIndicatorProps>();
 
-const delegatedProps = computedOmit(props, ['class', 'size']);
+const forwardedProps = useForwardProps(delegatedProps);
 
-const forwarded = useForwardProps(delegatedProps);
+const mergedCls = computed(() => {
+  const { itemIndicator } = dropdownMenuVariants({ size });
 
-const cls = computed(() => {
-  const { checkboxItemIndicator } = dropdownMenuVariants({ size: props.size });
-
-  return cn(checkboxItemIndicator(), props.class);
+  return cn(itemIndicator(), cls);
 });
 </script>
 
 <template>
-  <DropdownMenuItemIndicator :class="cls" v-bind="forwarded">
+  <DropdownMenuItemIndicator v-bind="forwardedProps" :class="mergedCls">
     <slot></slot>
   </DropdownMenuItemIndicator>
 </template>

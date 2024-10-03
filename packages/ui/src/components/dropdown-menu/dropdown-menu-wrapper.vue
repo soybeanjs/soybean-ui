@@ -10,33 +10,32 @@ defineOptions({
   name: 'SDropdownMenuWrapper'
 });
 
-const props = withDefaults(defineProps<DropdownMenuWrapperProps>(), {
-  avoidCollisions: true,
-  prioritizePosition: true
-});
+const {
+  avoidCollisions = true,
+  prioritizePosition = true,
+  ...delegatedProps
+} = defineProps<DropdownMenuWrapperProps>();
 
 const emit = defineEmits<DropdownMenuWrapperEmits>();
 
 const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuWrapperEmits, any>;
 
-const delegatedRootProps = computedPick(props, ['defaultOpen', 'open', 'dir', 'modal']);
+const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'dir', 'modal']);
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = computedPick(props, [
+const delegatedContentProps = computedPick(delegatedProps, [
   'loop',
   'side',
   'sideOffset',
   'align',
   'alignOffset',
-  'avoidCollisions',
   'collisionBoundary',
   'collisionPadding',
   'arrowPadding',
   'sticky',
   'hideWhenDetached',
-  'updatePositionStrategy',
-  'prioritizePosition'
+  'updatePositionStrategy'
 ]);
 
 const forwardedContentProps = useForwardProps(delegatedContentProps);
@@ -54,8 +53,14 @@ const forwardedContent = computed(() => ({
     <DropdownMenuTrigger as-child>
       <slot name="trigger" />
     </DropdownMenuTrigger>
-    <DropdownMenuPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal"></DropdownMenuPortal>
-    <SDropdownMenuContent v-bind="forwardedContent" :class="contentClass" :force-mount="forceMountContent">
+    <DropdownMenuPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal" />
+    <SDropdownMenuContent
+      v-bind="forwardedContent"
+      :class="contentClass"
+      :avoid-collisions
+      :prioritize-position
+      :force-mount="forceMountContent"
+    >
       <slot />
       <SDropdownMenuArrow v-if="showArrow" />
     </SDropdownMenuContent>

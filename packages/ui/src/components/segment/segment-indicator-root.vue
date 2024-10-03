@@ -10,11 +10,9 @@ defineOptions({
 
 const { class: cls } = defineProps<SegmentIndicatorRootProps>();
 
-const mergedCls = computed(() => {
-  const { indicatorRoot } = segmentVariants();
+const { indicatorRoot } = segmentVariants();
 
-  return cn(indicatorRoot(), cls);
-});
+const mergedCls = computed(() => cn(indicatorRoot(), cls));
 </script>
 
 <template>

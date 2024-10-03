@@ -2,28 +2,25 @@
 import { computed } from 'vue';
 import { ToggleGroupItem, useForwardProps } from 'radix-vue';
 import { cn, toggleVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { ToggleGroupItemProps } from './types';
 
 defineOptions({
   name: 'SToggleGroupItem'
 });
 
-const props = defineProps<ToggleGroupItemProps>();
-
-const delegatedProps = computedOmit(props, ['class', 'variant', 'size']);
+const { class: cls, variant, size, ...delegatedProps } = defineProps<ToggleGroupItemProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const cls = computed(() => {
-  const { toggle } = toggleVariants({ variant: props.variant, size: props.size });
+const mergedCls = computed(() => {
+  const { toggle } = toggleVariants({ variant, size });
 
-  return cn(toggle(), props.class);
+  return cn(toggle(), cls);
 });
 </script>
 
 <template>
-  <ToggleGroupItem v-bind="forwardedProps" :class="cls">
+  <ToggleGroupItem v-bind="forwardedProps" :class="mergedCls">
     <slot />
   </ToggleGroupItem>
 </template>

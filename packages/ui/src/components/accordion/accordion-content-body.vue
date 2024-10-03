@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from 'radix-vue';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionContentBodyProps } from './types';
@@ -7,13 +8,15 @@ defineOptions({
   name: 'SAccordionContentBody'
 });
 
-const props = defineProps<AccordionContentBodyProps>();
+const { class: cls } = defineProps<AccordionContentBodyProps>();
 
 const { contentBody } = accordionVariants();
+
+const mergedCls = computed(() => cn(contentBody(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="cn(contentBody(), props.class)">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

@@ -1,8 +1,7 @@
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue } from '../../types';
+import type { ClassValueProp } from '../../types';
 
-export type InputProps = {
-  class?: ClassValue;
+export type InputProps = ClassValueProp & {
   defaultValue?: string;
   modelValue?: string;
   size?: ThemeSize;
@@ -16,7 +15,7 @@ export type InputProps = {
   checked?: boolean | any[] | Set<any>;
   crossorigin?: string;
   disabled?: boolean;
-  enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
+  enterKeyHint?: EnterKeyHint;
   form?: string;
   formaction?: string;
   formenctype?: string;
@@ -38,12 +37,16 @@ export type InputProps = {
   required?: boolean;
   src?: string;
   step?: number;
-  type?: InputTypeHTMLAttribute;
+  type?: InputType;
   value?: any;
   width?: number;
 };
 
-export type InputTypeHTMLAttribute =
+export type InputEmits = {
+  'update:modelValue': [value: string];
+};
+
+export type InputType =
   | 'button'
   | 'checkbox'
   | 'color'
@@ -67,3 +70,5 @@ export type InputTypeHTMLAttribute =
   | 'url'
   | 'week'
   | (string & {});
+
+export type EnterKeyHint = 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';

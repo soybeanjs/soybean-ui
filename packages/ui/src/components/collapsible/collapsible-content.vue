@@ -1,22 +1,20 @@
 <script setup lang="ts">
-import { CollapsibleContent, useForwardProps } from 'radix-vue';
+import { computed } from 'vue';
+import { CollapsibleContent } from 'radix-vue';
 import { cn, collapsibleVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
 import type { CollapsibleContentProps } from './types';
 
 defineOptions({
   name: 'SCollapsibleContent'
 });
 
-const props = defineProps<CollapsibleContentProps>();
+const { class: cls, forceMount } = defineProps<CollapsibleContentProps>();
 
-const delegatedProps = computedOmit(props, ['class']);
-
-const forwardedProps = useForwardProps(delegatedProps);
+const mergedCls = computed(() => cn(collapsibleVariants(), cls));
 </script>
 
 <template>
-  <CollapsibleContent v-bind="forwardedProps" :class="cn(collapsibleVariants(), props.class)">
+  <CollapsibleContent :class="mergedCls" :force-mount>
     <slot />
   </CollapsibleContent>
 </template>

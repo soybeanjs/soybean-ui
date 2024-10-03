@@ -1,26 +1,20 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive, useForwardProps } from 'radix-vue';
 import { cn, inputVariants } from '@soybean-ui/variants';
-import { computedOmit } from '../../shared';
-import type { InputProps } from './types';
+import type { InputEmits, InputProps } from './types';
 
 defineOptions({
   name: 'SInput'
 });
 
-const props = defineProps<InputProps>();
+const { class: cls, size, modelValue, defaultValue, ...delegatedProps } = defineProps<InputProps>();
 
-type Emits = {
-  'update:modelValue': [value: string];
-};
-
-const emit = defineEmits<Emits>();
-
-const delegatedProps = computedOmit(props, ['class', 'size', 'modelValue', 'defaultValue']);
+const emit = defineEmits<InputEmits>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const modelValue = defineModel<string>();
+const mergedCls = computed(() => cn(inputVariants({ size }), cls));
 
 function handleInput(event: Event) {
   emit('update:modelValue', (event.target as HTMLInputElement).value);
@@ -32,7 +26,7 @@ function handleInput(event: Event) {
     as="input"
     v-bind="forwardedProps"
     :value="modelValue || defaultValue"
-    :class="cn(inputVariants({ size }), props.class)"
+    :class="mergedCls"
     @input="handleInput"
   />
 </template>

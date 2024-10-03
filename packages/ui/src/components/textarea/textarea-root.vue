@@ -8,17 +8,15 @@ defineOptions({
   name: 'STextareaRoot'
 });
 
-const props = defineProps<TextareaRootProps>();
+const { class: cls } = defineProps<TextareaRootProps>();
 
-const cls = computed(() => {
-  const { root } = textareaVariants();
+const { root } = textareaVariants();
 
-  return cn(root(), props.class);
-});
+const mergedCls = computed(() => cn(root(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

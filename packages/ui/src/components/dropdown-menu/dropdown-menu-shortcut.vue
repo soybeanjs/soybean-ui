@@ -8,17 +8,17 @@ defineOptions({
   name: 'SDropdownMenuShortcut'
 });
 
-const props = defineProps<DropdownMenuShortcutProps>();
+const { class: cls, size } = defineProps<DropdownMenuShortcutProps>();
 
-const cls = computed(() => {
-  const { shortcut } = dropdownMenuVariants({ size: props.size });
+const mergedCls = computed(() => {
+  const { shortcut } = dropdownMenuVariants({ size });
 
-  return cn(shortcut(), props.class);
+  return cn(shortcut(), cls);
 });
 </script>
 
 <template>
-  <Primitive as="div" :class="cls">
+  <Primitive as="div" :class="mergedCls">
     <slot />
   </Primitive>
 </template>

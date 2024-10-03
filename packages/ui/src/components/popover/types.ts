@@ -1,23 +1,21 @@
 import type {
-  PopoverArrowProps as $PopoverArrowProps,
-  PopoverContentProps as $PopoverContentProps,
   PopoverAnchorProps,
+  PopoverContentEmits,
   PopoverPortalProps,
-  PopoverRootProps
+  PopoverRootEmits,
+  PopoverRootProps,
+  PopoverArrowProps as _PopoverArrowProps,
+  PopoverContentProps as _PopoverContentProps
 } from 'radix-vue';
-import type { ClassValue } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
-export type PopoverContentProps = $PopoverContentProps & {
-  class?: ClassValue;
-};
+export type PopoverContentProps = ClassValueProp & Omit<_PopoverContentProps, 'as' | 'asChild'>;
 
-export type PopoverArrowProps = $PopoverArrowProps & {
-  class?: ClassValue;
-};
+export type PopoverArrowProps = ClassValueProp & Pick<_PopoverArrowProps, 'width' | 'height'>;
 
 export type PopoverProps = PopoverRootProps &
   Pick<PopoverPortalProps, 'to'> &
-  Omit<PopoverContentProps, 'as' | 'asChild' | 'forceMount' | 'class'> & {
+  Omit<PopoverContentProps, 'forceMount' | 'class'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     contentClass?: ClassValue;
@@ -28,8 +26,10 @@ export type PopoverProps = PopoverRootProps &
     arrowHeight?: number;
   };
 
+export type PopoverEmits = PopoverRootEmits & PopoverContentEmits;
+
 export type PopoverSide = NonNullable<PopoverContentProps['side']>;
 
 export type PopoverAlign = NonNullable<PopoverContentProps['align']>;
 
-export type { PopoverAnchorProps, PopoverPortalProps, PopoverRootProps };
+export type { PopoverAnchorProps, PopoverPortalProps, PopoverRootProps, PopoverRootEmits, PopoverContentEmits };
