@@ -1,0 +1,29 @@
+<script setup lang="ts">
+import { SPagination } from 'soybean-ui';
+import type { ThemeSize } from 'soybean-ui';
+
+defineOptions({
+  name: 'UiPagination'
+});
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+</script>
+
+<template>
+  <div class="py-12px text-18px">Variant</div>
+  <div class="py-12px text-18px">plain</div>
+  <SPagination show-edges :total="200" />
+  <div class="py-12px text-18px">ghost</div>
+  <SPagination variant="ghost" show-edges :total="200" />
+  <div class="py-12px text-18px">Disabled</div>
+  <SPagination disabled :total="200" />
+  <div class="py-12px text-18px">Size</div>
+  <div class="flex-col-stretch gap-3">
+    <div v-for="size in sizes" :key="size">
+      <div>{{ size }}</div>
+      <SPagination :size="size" show-edges :total="200" />
+    </div>
+  </div>
+</template>
+
+<style scoped></style>
