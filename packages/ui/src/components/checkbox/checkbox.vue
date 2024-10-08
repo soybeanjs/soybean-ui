@@ -15,7 +15,6 @@ defineOptions({
 const {
   class: rootCls,
   id,
-  checked,
   controlClass,
   indicatorClass,
   forceMountIndicator,
@@ -32,7 +31,7 @@ const defaultId = useId();
 
 const checkboxId = computed(() => id || `checkbox-${defaultId}`);
 
-const isIndeterminate = computed(() => checked === 'indeterminate');
+const isIndeterminate = computed(() => delegatedProps.checked === 'indeterminate');
 </script>
 
 <template>
