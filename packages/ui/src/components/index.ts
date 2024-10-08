@@ -13,6 +13,7 @@ export * from './dialog';
 export * from './drawer';
 export * from './dropdown-menu';
 export * from './input';
+export * from './pagination';
 export * from './pin-input';
 export * from './popover';
 export * from './progress';

@@ -13,6 +13,7 @@ export * from './variants/drawer';
 export * from './variants/dropdown-menu';
 export * from './variants/input';
 export * from './variants/label';
+export * from './variants/pagination';
 export * from './variants/pin-input';
 export * from './variants/popover';
 export * from './variants/progress';

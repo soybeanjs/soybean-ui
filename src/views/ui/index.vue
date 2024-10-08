@@ -19,6 +19,7 @@ import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
 import UiInput from './modules/input.vue';
+import UiPagination from './modules/pagination.vue';
 import UiPinInput from './modules/pin-input.vue';
 import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
@@ -129,6 +130,11 @@ const tabs: TabConfig[] = [
     value: 'popover',
     label: 'Popover',
     component: UiPopover
+  },
+  {
+    value: 'pagination',
+    label: 'Pagination',
+    component: UiPagination
   },
   {
     value: 'pin-input',

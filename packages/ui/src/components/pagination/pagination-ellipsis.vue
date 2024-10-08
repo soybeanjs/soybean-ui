@@ -1,0 +1,27 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { PaginationEllipsis } from 'radix-vue';
+import { MoreHorizontal } from 'lucide-vue-next';
+import { cn, paginationVariants } from '@soybean-ui/variants';
+import type { PaginationEllipsisProps } from './types';
+
+defineOptions({
+  name: 'SPaginationEllipsis'
+});
+
+const { class: cls, size } = defineProps<PaginationEllipsisProps>();
+
+const mergedCls = computed(() => {
+  const { ellipsis } = paginationVariants({ size });
+
+  return cn(ellipsis(), cls);
+});
+</script>
+
+<template>
+  <PaginationEllipsis :class="mergedCls">
+    <slot>
+      <MoreHorizontal />
+    </slot>
+  </PaginationEllipsis>
+</template>
