@@ -1,28 +1,24 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { PaginationPrev } from 'radix-vue';
+import { PaginationPrev, useForwardProps } from 'radix-vue';
 import { ChevronLeft } from 'lucide-vue-next';
-import { cn, paginationVariants } from '@soybean-ui/variants';
-import { SButton } from '../button';
+import SPaginationButton from './pagination-button.vue';
 import type { PaginationPrevProps } from './types';
 
 defineOptions({
   name: 'SPaginationPrev'
 });
 
-const { class: cls, size, variant } = defineProps<PaginationPrevProps>();
+const props = defineProps<PaginationPrevProps>();
 
-const { button } = paginationVariants();
-
-const mergedCls = computed(() => cn(button(), cls));
+const forwardedProps = useForwardProps(props);
 </script>
 
 <template>
   <PaginationPrev as-child>
     <slot>
-      <SButton :class="mergedCls" :size :variant color="accent" shape="square">
+      <SPaginationButton v-bind="forwardedProps">
         <ChevronLeft />
-      </SButton>
+      </SPaginationButton>
     </slot>
   </PaginationPrev>
 </template>

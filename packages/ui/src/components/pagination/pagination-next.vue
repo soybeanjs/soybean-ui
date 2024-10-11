@@ -1,28 +1,24 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { PaginationNext } from 'radix-vue';
+import { PaginationNext, useForwardProps } from 'radix-vue';
 import { ChevronRight } from 'lucide-vue-next';
-import { cn, paginationVariants } from '@soybean-ui/variants';
-import { SButton } from '../button';
+import SPaginationButton from './pagination-button.vue';
 import type { PaginationNextProps } from './types';
 
 defineOptions({
   name: 'SPaginationNext'
 });
 
-const { class: cls, size, variant } = defineProps<PaginationNextProps>();
+const props = defineProps<PaginationNextProps>();
 
-const { button } = paginationVariants();
-
-const mergedCls = computed(() => cn(button(), cls));
+const forwardedProps = useForwardProps(props);
 </script>
 
 <template>
   <PaginationNext as-child>
     <slot>
-      <SButton :class="mergedCls" :size :variant color="accent" shape="square">
+      <SPaginationButton v-bind="forwardedProps">
         <ChevronRight />
-      </SButton>
+      </SPaginationButton>
     </slot>
   </PaginationNext>
 </template>

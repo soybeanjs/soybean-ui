@@ -16,7 +16,7 @@ defineOptions({
 const {
   class: listCls,
   size,
-  variant = 'outline',
+  variant = 'plain',
   listItemClass,
   firstClass,
   lastClass,
@@ -32,7 +32,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <PaginationRoot v-slot="{ page }" v-bind="forwarded">
+  <PaginationRoot v-bind="forwarded">
     <SPaginationList v-slot="{ items }" :class="listCls" :size>
       <SPaginationFirst :class="firstClass" :size :variant>
         <slot name="first" />
@@ -41,14 +41,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
         <slot name="prev" />
       </SPaginationPrev>
       <template v-for="(item, index) in items" :key="index">
-        <SPaginationListItem
-          v-if="item.type === 'page'"
-          :class="listItemClass"
-          :size
-          :variant
-          :value="item.value"
-          :active="item.value === page"
-        >
+        <SPaginationListItem v-if="item.type === 'page'" :class="listItemClass" :size :variant :value="item.value">
           <slot />
         </SPaginationListItem>
         <SPaginationEllipsis v-else-if="item.type === 'ellipsis'" :class="ellipsisClass" :size>

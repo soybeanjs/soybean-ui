@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { Primitive } from 'radix-vue';
+import { cn, paginationVariants } from '@soybean-ui/variants';
+import type { PaginationButtonProps } from './types';
+
+defineOptions({
+  name: 'SPaginationButton'
+});
+
+const { class: cls, size, variant } = defineProps<PaginationButtonProps>();
+
+const mergedCls = computed(() => {
+  const { button } = paginationVariants({ size, variant });
+
+  return cn(button(), cls);
+});
+</script>
+
+<template>
+  <Primitive as="button" :class="mergedCls">
+    <slot />
+  </Primitive>
+</template>
+
+<style scoped></style>

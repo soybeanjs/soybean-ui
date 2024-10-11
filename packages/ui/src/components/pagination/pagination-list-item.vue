@@ -1,38 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { PaginationListItem } from 'radix-vue';
-import { cn, paginationVariants } from '@soybean-ui/variants';
-import { SButton } from '../button';
-import type { ThemeColor } from '../../types';
+import { PaginationListItem, useForwardProps } from 'radix-vue';
+import SPaginationButton from './pagination-button.vue';
 import type { PaginationListItemProps } from './types';
 
 defineOptions({
   name: 'SPaginationListItem'
 });
 
-const { class: cls, size, variant, value, active } = defineProps<PaginationListItemProps>();
+const props = defineProps<PaginationListItemProps>();
 
-const { button } = paginationVariants();
-
-const mergedCls = computed(() => (active ? cls : cn(button(), cls)));
-
-const buttonColor = computed<ThemeColor>(() => (active ? 'primary' : 'accent'));
-
-const btnVariant = computed(() => {
-  if (!active) {
-    return variant;
-  }
-
-  return variant === 'outline' ? 'solid' : 'outline';
-});
+const forwardedProps = useForwardProps(props);
 </script>
 
 <template>
   <PaginationListItem as-child :value>
     <slot>
-      <SButton :class="mergedCls" :size :color="buttonColor" :variant="btnVariant" shape="square">
+      <SPaginationButton v-bind="forwardedProps">
         {{ value }}
-      </SButton>
+      </SPaginationButton>
     </slot>
   </PaginationListItem>
 </template>

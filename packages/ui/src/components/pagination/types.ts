@@ -11,7 +11,7 @@ export type PaginationListProps = ClassValueProp & {
   size?: ThemeSize;
 };
 
-export type PaginationButtonVariant = Extract<ButtonVariant, 'outline' | 'ghost'>;
+export type PaginationButtonVariant = Extract<ButtonVariant, 'plain' | 'ghost'>;
 
 export type PaginationButtonProps = ClassValueProp & {
   size?: ThemeSize;
@@ -22,10 +22,7 @@ export type PaginationEllipsisProps = ClassValueProp & {
   size?: ThemeSize;
 };
 
-export type PaginationListItemProps = PaginationButtonProps &
-  Pick<_PaginationListItemProps, 'value'> & {
-    active?: boolean;
-  };
+export type PaginationListItemProps = PaginationButtonProps & Pick<_PaginationListItemProps, 'value'>;
 
 export type PaginationFirstProps = PaginationButtonProps;
 
