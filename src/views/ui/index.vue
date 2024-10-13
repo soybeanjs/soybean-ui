@@ -18,6 +18,7 @@ import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
+import UiHoverCard from './modules/hover-card.vue';
 import UiInput from './modules/input.vue';
 import UiPagination from './modules/pagination.vue';
 import UiPinInput from './modules/pin-input.vue';
@@ -120,6 +121,11 @@ const tabs: TabConfig[] = [
     value: 'dropdown-menu',
     label: 'DropdownMenu',
     component: UiDropdownMenu
+  },
+  {
+    value: 'hover-card',
+    label: 'HoverCard',
+    component: UiHoverCard
   },
   {
     value: 'input',

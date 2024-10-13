@@ -11,6 +11,7 @@ export * from './variants/collapsible';
 export * from './variants/dialog';
 export * from './variants/drawer';
 export * from './variants/dropdown-menu';
+export * from './variants/hover-card';
 export * from './variants/input';
 export * from './variants/label';
 export * from './variants/pagination';
