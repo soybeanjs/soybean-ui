@@ -14,14 +14,6 @@ const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } =
 
 const emit = defineEmits<PopoverEmits>();
 
-type Slots = {
-  default: () => any;
-  trigger?: () => any;
-  close?: () => any;
-};
-
-const slots = defineSlots<Slots>();
-
 const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'modal']);
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
@@ -37,7 +29,8 @@ const delegatedContentProps = computedPick(delegatedProps, [
   'arrowPadding',
   'sticky',
   'hideWhenDetached',
-  'updatePositionStrategy'
+  'updatePositionStrategy',
+  'disableOutsidePointerEvents'
 ]);
 
 const emits = useEmitAsProps(emit) as Record<keyof PopoverEmits, any>;
@@ -61,13 +54,13 @@ const forwardedContent = computed(() => ({
       <SPopoverContent
         v-bind="forwardedContent"
         :class="contentClass"
+        :force-mount="forceMountContent"
         :avoid-collisions
         :prioritize-position
-        :force-mount="forceMountContent"
       >
         <slot />
         <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
-        <PopoverClose v-if="slots.close" as-child>
+        <PopoverClose v-if="$slots.close" as-child>
           <slot name="close" />
         </PopoverClose>
       </SPopoverContent>
