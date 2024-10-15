@@ -13,7 +13,7 @@ import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
-import UIChip from './modules/chip.vue';
+import UiChip from './modules/chip.vue';
 import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
@@ -35,7 +35,7 @@ import UiTabs from './modules/tabs.vue';
 import UiTextarea from './modules/textarea.vue';
 import UiToggle from './modules/toggle.vue';
 import UiToggleGroup from './modules/toggle-group.vue';
-import UITooltip from './modules/tooltip.vue';
+import UiTooltip from './modules/tooltip.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -100,7 +100,7 @@ const tabs: TabConfig[] = [
   {
     value: 'chip',
     label: 'Chip',
-    component: UIChip
+    component: UiChip
   },
   {
     value: 'collapsible',
@@ -210,7 +210,7 @@ const tabs: TabConfig[] = [
   {
     value: 'tooltip',
     label: 'Tooltip',
-    component: UITooltip
+    component: UiTooltip
   }
 ] satisfies TabConfig[];
 </script>
