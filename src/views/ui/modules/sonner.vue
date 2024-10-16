@@ -1,0 +1,85 @@
+<script setup lang="ts">
+import { SButton, SSelect, SSonnerProvider, toast } from 'soybean-ui';
+import type { SelectOption, SonnerProps } from 'soybean-ui';
+import { ref } from 'vue';
+
+defineOptions({
+  name: 'UiSonner'
+});
+
+function openDefaultToast() {
+  toast('Event has been created');
+}
+
+function openInfoToast() {
+  toast.info('Event has been created');
+}
+
+function openSuccessToast() {
+  toast.success('Event has been created');
+}
+
+function openWarningToast() {
+  toast.warning('Event has been created');
+}
+
+function openErrorToast() {
+  toast.error('Event has been created');
+}
+
+function openToastWithDescription() {
+  toast('Event has been created', {
+    description: 'You can now view the event details'
+  });
+}
+
+function openToastWithAction() {
+  toast('Event has been created', {
+    action: {
+      label: 'Confirm',
+      onClick: () => {
+        console.log('View event');
+      }
+    },
+    cancel: {
+      label: 'Cancel',
+      onClick: () => {
+        console.log('Cancel');
+      }
+    }
+  });
+}
+
+const position = ref<SonnerProps['position']>('bottom-right');
+
+const positionOptions: SelectOption[] = [
+  { label: 'Top Left', value: 'top-left' },
+  { label: 'Top Center', value: 'top-center' },
+  { label: 'Top Right', value: 'top-right' },
+  { label: 'Bottom Left', value: 'bottom-left' },
+  { label: 'Bottom Center', value: 'bottom-center' },
+  { label: 'Bottom Right', value: 'bottom-right' }
+];
+</script>
+
+<template>
+  <div>
+    <SSonnerProvider :position />
+    <div class="py-12px text-18px">Type</div>
+    <div class="flex gap-12px">
+      <SButton variant="outline" @click="openDefaultToast">Default</SButton>
+      <SButton variant="outline" @click="openInfoToast">Info</SButton>
+      <SButton variant="outline" @click="openSuccessToast">Success</SButton>
+      <SButton variant="outline" @click="openWarningToast">Warning</SButton>
+      <SButton variant="outline" @click="openErrorToast">Error</SButton>
+    </div>
+    <div class="py-12px text-18px">With Description</div>
+    <SButton variant="outline" @click="openToastWithDescription">open</SButton>
+    <div class="py-12px text-18px">With Action</div>
+    <SButton variant="outline" @click="openToastWithAction">open</SButton>
+    <div class="py-12px text-18px">Position</div>
+    <div class="w-160px">
+      <SSelect v-model="position" :options="positionOptions" />
+    </div>
+  </div>
+</template>
