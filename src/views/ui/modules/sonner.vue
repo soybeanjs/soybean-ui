@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { SButton, SSelect, SSonnerProvider, toast } from 'soybean-ui';
-import type { SelectOption, SonnerProps } from 'soybean-ui';
 import { ref } from 'vue';
+import { SButton, SSelect, SonnerToaster, toast } from 'soybean-ui';
+import type { SelectOption, SonnerProps } from 'soybean-ui';
 
 defineOptions({
   name: 'UiSonner'
@@ -64,7 +64,7 @@ const positionOptions: SelectOption[] = [
 
 <template>
   <div>
-    <SSonnerProvider :position />
+    <SonnerToaster :position />
     <div class="py-12px text-18px">Type</div>
     <div class="flex gap-12px">
       <SButton variant="outline" @click="openDefaultToast">Default</SButton>
