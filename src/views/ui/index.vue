@@ -20,6 +20,7 @@ import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
 import UiHoverCard from './modules/hover-card.vue';
 import UiInput from './modules/input.vue';
+import UiKeyboardKey from './modules/keyboard-key.vue';
 import UiPagination from './modules/pagination.vue';
 import UiPinInput from './modules/pin-input.vue';
 import UiPopover from './modules/popover.vue';
@@ -132,6 +133,11 @@ const tabs: TabConfig[] = [
     value: 'input',
     label: 'Input',
     component: UiInput
+  },
+  {
+    value: 'keyboard-key',
+    label: 'KeyboardKey',
+    component: UiKeyboardKey
   },
   {
     value: 'popover',
