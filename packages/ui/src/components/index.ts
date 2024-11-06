@@ -14,6 +14,7 @@ export * from './drawer';
 export * from './dropdown-menu';
 export * from './hover-card';
 export * from './input';
+export * from './keyboard-key';
 export * from './pagination';
 export * from './pin-input';
 export * from './popover';
