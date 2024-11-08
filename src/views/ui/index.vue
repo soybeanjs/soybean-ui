@@ -11,6 +11,7 @@ import UiAspectRatio from './modules/aspect-ratio.vue';
 import UiAvatar from './modules/avatar.vue';
 import UiBadge from './modules/badge.vue';
 import UiButton from './modules/button.vue';
+import UiBreadcrumb from './modules/breadcrumb.vue';
 import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiChip from './modules/chip.vue';
@@ -83,6 +84,11 @@ const tabs: TabConfig[] = [
     value: 'badge',
     label: 'Badge',
     component: UiBadge
+  },
+  {
+    value: 'breadcrumb',
+    label: 'Breadcrumb',
+    component: UiBreadcrumb
   },
   {
     value: 'button',
