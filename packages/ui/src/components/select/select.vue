@@ -107,7 +107,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
               <SSelectItemOption
                 :key="opt.value"
                 :option="opt"
-                :size="size"
+                :size
                 :item-class
                 :item-text-class
                 :item-indicator-class
