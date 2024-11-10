@@ -28,7 +28,7 @@ const user = z.object({
   username: requiredString('Username is required'),
   gender: z.enum(['male', 'female'], { required_error: 'Gender is required' }),
   remember: z.boolean({ required_error: 'Remember is required' }),
-  hobbies: z.array(z.string()).min(1, { message: 'Hobbies is required' }),
+  hobbies: z.array(z.string()),
   city: requiredString('City is required'),
   social: z.array(z.object({ name: z.string(), url: z.string() }), { required_error: 'Social is required' })
 });
@@ -71,7 +71,7 @@ watch(values, v => {
 <template>
   <form class="w-480px space-y-4" @submit="onSubmit">
     <SFormField name="username" label="Username">
-      <SInput placeholder="shadcn" />
+      <SInput placeholder="Please input username" />
     </SFormField>
     <SFormField name="gender" label="Gender">
       <SRadioGroup :items="genderItems" />
