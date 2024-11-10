@@ -3,7 +3,8 @@ import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type SwitchRootProps = ClassValueProp &
-  Omit<_SwitchRootProps, 'as' | 'asChild'> & {
+  Omit<_SwitchRootProps, 'as' | 'asChild' | 'checked'> & {
+    modelValue?: boolean;
     color?: ThemeColor;
     size?: ThemeSize;
   };
@@ -15,3 +16,9 @@ export type SwitchThumbProps = ClassValueProp & {
 export type SwitchProps = SwitchRootProps & {
   thumbClass?: ClassValue;
 };
+
+export type SwitchRootEmits = {
+  'update:modelValue': [value: boolean];
+};
+
+export type SwitchEmits = SwitchRootEmits;

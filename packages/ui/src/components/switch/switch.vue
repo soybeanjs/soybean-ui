@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useForwardPropsEmits } from 'radix-vue';
-import type { SwitchRootEmits } from 'radix-vue';
 import SSwitchRoot from './switch-root.vue';
 import SSwitchThumb from './switch-thumb.vue';
-import type { SwitchProps } from './types';
+import type { SwitchEmits, SwitchProps } from './types';
 
 defineOptions({
   name: 'SSwitch'
@@ -12,7 +11,7 @@ defineOptions({
 
 const { id, thumbClass, ...delegatedProps } = defineProps<SwitchProps>();
 
-const emit = defineEmits<SwitchRootEmits>();
+const emit = defineEmits<SwitchEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
