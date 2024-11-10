@@ -51,14 +51,14 @@ function createCheckboxItems(): CheckboxGroupItem[] {
     <SCheckbox v-for="size in sizes" :key="size" :size="size" :label="size" />
   </div>
   <div class="py-12px text-18px">Group</div>
-  <SCheckboxGroup v-model:values="checks" :items="items" />
+  <SCheckboxGroup v-model="checks" :items="items" />
   <div class="py-12px text-18px">Orientation: Vertical</div>
-  <SCheckboxGroup v-model:values="checks2" orientation="vertical" :items="items2" />
+  <SCheckboxGroup v-model="checks2" orientation="vertical" :items="items2" />
   <div class="py-12px text-18px">Indeterminate</div>
-  <SCheckbox v-model:checked="checked" label="Check All" />
-  <SCheckboxGroup v-model:values="checks3" :items="items3" class="mt-12px" />
+  <SCheckbox v-model="checked" label="Check All" />
+  <SCheckboxGroup v-model="checks3" :items="items3" class="mt-12px" />
   <div class="py-12px text-18px">Disabled</div>
-  <SCheckboxGroup :default-values="['2']" :items="items" disabled />
+  <SCheckboxGroup :default-value="['2']" :items="items" disabled />
 </template>
 
 <style scoped></style>

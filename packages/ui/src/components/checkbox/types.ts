@@ -1,6 +1,5 @@
 import type {
   CheckboxCheckedState,
-  CheckboxRootEmits as CheckboxControlEmits,
   CheckboxRootProps as _CheckboxControlProps,
   CheckboxIndicatorProps as _CheckboxIndicatorProps
 } from 'radix-vue';
@@ -10,9 +9,11 @@ import type { ClassValue, ClassValueProp } from '../../types';
 export type CheckboxRootProps = ClassValueProp;
 
 export type CheckboxControlProps = ClassValueProp &
-  Omit<_CheckboxControlProps, 'as' | 'asChild'> & {
+  Omit<_CheckboxControlProps, 'as' | 'asChild' | 'defaultChecked' | 'checked'> & {
     color?: ThemeColor;
     size?: ThemeSize;
+    modelValue?: CheckboxCheckedState;
+    defaultValue?: boolean;
   };
 
 export type CheckboxIndicatorProps = ClassValueProp & Pick<_CheckboxIndicatorProps, 'forceMount'>;
@@ -32,16 +33,20 @@ export type CheckboxGroupItem = CheckboxProps & {
 
 export type CheckboxGroupProps = ClassValueProp &
   Pick<CheckboxProps, 'color' | 'size' | 'disabled'> & {
-    defaultValues?: string[];
-    values?: string[];
+    modelValue?: string[];
+    defaultValue?: string[];
     items?: CheckboxGroupItem[];
     orientation?: ThemeOrientation;
   };
 
 export type CheckboxGroupEmits = {
-  'update:values': [values: string[]];
+  'update:modelValue': [values: string[]];
+};
+
+export type CheckboxControlEmits = {
+  'update:modelValue': [value: boolean];
 };
 
 export type CheckboxEmits = CheckboxControlEmits;
 
-export type { CheckboxControlEmits, CheckboxCheckedState };
+export type { CheckboxCheckedState };

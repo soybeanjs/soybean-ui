@@ -9,7 +9,7 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const { class: cls, orientation, values, defaultValues } = defineProps<CheckboxGroupProps>();
+const { class: cls, orientation, modelValue, defaultValue } = defineProps<CheckboxGroupProps>();
 
 const emit = defineEmits<CheckboxGroupEmits>();
 
@@ -21,10 +21,10 @@ const mergedCls = computed(() => {
 
 const checks = computed({
   get() {
-    return values || defaultValues || [];
+    return modelValue || defaultValue || [];
   },
   set(value: string[]) {
-    emit('update:values', value);
+    emit('update:modelValue', value);
   }
 });
 
@@ -47,7 +47,7 @@ function handleUpdateCheckItem(value: string, checked: boolean) {
       :color
       :size
       :disabled="disabled || item.disabled"
-      @update:checked="handleUpdateCheckItem(item.value, $event)"
+      @update:model-value="handleUpdateCheckItem(item.value, $event)"
     />
   </Primitive>
 </template>

@@ -31,7 +31,7 @@ const defaultId = useId();
 
 const checkboxId = computed(() => id || `checkbox-${defaultId}`);
 
-const isIndeterminate = computed(() => delegatedProps.checked === 'indeterminate');
+const isIndeterminate = computed(() => delegatedProps.modelValue === 'indeterminate');
 </script>
 
 <template>
