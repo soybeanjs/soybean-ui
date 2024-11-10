@@ -46,14 +46,29 @@ export type ButtonProps = ClassValueProp & Omit<_ButtonProps, 'as' | 'asChild'>;
 ```
 
 ### 2.4 样式规范
-- 使用 computed 处理需要动态计算的样式
 - 使用 `cn` 函数合并样式类名
+  ```typescript
+  const { root } = cardVariants();
+  const mergedCls = cn(root(), cls);
+  ```
+- 使用 computed 处理需要动态计算的样式
+  ```typescript
+  const computedStyle = computed(() => {
+    const { header } = cardVariants({ size });
+
+    return cn(header(), cls);
+  });
+  ```
 - 样式变体统一使用 `@soybean-ui/variants` 中定义的工具函数
 
 ### 2.5 Props 规范
 - 必须为所有 props 定义类型
 - 可选的 props 使用可选操作符 `?`
 - 使用 `ClassValueProp` 类型定义样式类名属性
+- 属性有默认值时直接使用属性结构
+  ```typescript
+  const { prop1 = 'default', prop2 = 1 } = defineProps<Props>();
+  ```
 
 ### 2.6 组件结构规范
 按照以下顺序组织组件代码:
