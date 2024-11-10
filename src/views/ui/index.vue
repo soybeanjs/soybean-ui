@@ -19,6 +19,7 @@ import UiCollapsible from './modules/collapsible.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
+import UiForm from './modules/form.vue';
 import UiHoverCard from './modules/hover-card.vue';
 import UiInput from './modules/input.vue';
 import UiKeyboardKey from './modules/keyboard-key.vue';
@@ -129,6 +130,11 @@ const tabs: TabConfig[] = [
     value: 'dropdown-menu',
     label: 'DropdownMenu',
     component: UiDropdownMenu
+  },
+  {
+    value: 'form',
+    label: 'Form',
+    component: UiForm
   },
   {
     value: 'hover-card',

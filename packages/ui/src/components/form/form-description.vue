@@ -1,0 +1,27 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { Primitive } from 'radix-vue';
+import { cn, formVariants } from '@soybean-ui/variants';
+import { useFormField } from './hooks';
+import type { FormDescriptionProps } from './types';
+
+defineOptions({
+  name: 'SFormDescription'
+});
+
+const { class: cls } = defineProps<FormDescriptionProps>();
+
+const { formDescriptionId } = useFormField();
+
+const { description } = formVariants();
+
+const mergedCls = computed(() => cn(description(), cls));
+</script>
+
+<template>
+  <Primitive :id="formDescriptionId" as="p" :class="mergedCls">
+    <slot />
+  </Primitive>
+</template>
+
+<style scoped></style>

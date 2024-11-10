@@ -11,6 +11,9 @@ importers:
       '@unocss/reset':
         specifier: 0.63.6
         version: 0.63.6
+      '@vee-validate/zod':
+        specifier: 4.14.7
+        version: 4.14.7(vue@3.5.12(typescript@5.6.3))
       '@vueuse/core':
         specifier: 11.2.0
         version: 11.2.0(vue@3.5.12(typescript@5.6.3))
@@ -23,6 +26,9 @@ importers:
       vue:
         specifier: 3.5.12
         version: 3.5.12(typescript@5.6.3)
+      zod:
+        specifier: 3.23.8
+        version: 3.23.8
     devDependencies:
       '@soybean-ui/unocss-preset':
         specifier: workspace:*
@@ -96,6 +102,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@formkit/auto-animate':
+        specifier: ^0.8.2
+        version: 0.8.2
       '@soybean-ui/variants':
         specifier: workspace:*
         version: link:../ui-variants
@@ -108,6 +117,9 @@ importers:
       vaul-vue:
         specifier: 0.2.0
         version: 0.2.0(radix-vue@1.9.8(vue@3.5.12(typescript@5.6.3)))(vue@3.5.12(typescript@5.6.3))
+      vee-validate:
+        specifier: 4.14.7
+        version: 4.14.7(vue@3.5.12(typescript@5.6.3))
       vue-sonner:
         specifier: 1.2.5
         version: 1.2.5
@@ -653,6 +665,9 @@ packages:
   '@floating-ui/vue@1.1.5':
     resolution: {integrity: sha512-ynL1p5Z+woPVSwgMGqeDrx6HrJfGIDzFyESFkyqJKilGW1+h/8yVY29Khn0LaU6wHBRwZ13ntG6reiHWK6jyzw==}
 
+  '@formkit/auto-animate@0.8.2':
+    resolution: {integrity: sha512-SwPWfeRa5veb1hOIBMdzI+73te5puUBHmqqaF1Bu7FjvxlYSz/kJcZKSa9Cg60zL0uRNeJL2SbRxV6Jp6Q1nFQ==}
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -1154,6 +1169,9 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
 
+  '@vee-validate/zod@4.14.7':
+    resolution: {integrity: sha512-UD0Tfyz1cKKd7BinnUztqKL+oeMjg/T4ZEguN/uZV4DsR9z7gdrD0lOuOU7aVl9UpVK6NM7MhDka35Lj7b/DTw==}
+
   '@vitejs/plugin-vue-jsx@4.0.1':
     resolution: {integrity: sha512-7mg9HFGnFHMEwCdB6AY83cVK4A6sCqnrjFYF4WIlebYAQVVJ/sC/CiTruVdrRlhrFoeZ8rlMxY9wYpPTIRhhAg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -1208,6 +1226,9 @@ packages:
   '@vue/compiler-vue2@2.7.16':
     resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
 
+  '@vue/devtools-api@7.6.3':
+    resolution: {integrity: sha512-H2TRzFA9hNezdtM6I0y3RCMhIg5T3gib/p9qI2IAS8gB9tvkAv4JZHAZZl5BZHhO7btuHkvHzU5qpO/vdsjYMg==}
+
   '@vue/devtools-core@7.6.2':
     resolution: {integrity: sha512-hJfjNR3ai94Mb6i0PB42kxUPkPreS6Dl07FUaHAcw+umtkUX55jTXe7+mhsHx9NI6NFT+1WMFREIy8O81KLYyA==}
     peerDependencies:
@@ -1216,8 +1237,14 @@ packages:
   '@vue/devtools-kit@7.6.2':
     resolution: {integrity: sha512-k61BxHRmcTtIQZFouF9QWt9nCCNtSdw12lhg8VNtHq5/XOBGD+ewiK27a40UJ8UPYoCJvi80hbvbYr5E/Zeu1g==}
 
+  '@vue/devtools-kit@7.6.3':
+    resolution: {integrity: sha512-ETsFc8GlOp04rSFN79tB2TpVloWfsSx9BoCSElV3w3CaJTSBfz42KsIi5Ka+dNTJs1jY7QVLTDeoBmUGgA9h2A==}
+
   '@vue/devtools-shared@7.6.2':
     resolution: {integrity: sha512-lcjyJ7hCC0W0kNwnCGMLVTMvDLoZgjcq9BvboPgS+6jQyDul7fpzRSKTGtGhCHoxrDox7qBAKGbAl2Rcf7GE1A==}
+
+  '@vue/devtools-shared@7.6.3':
+    resolution: {integrity: sha512-wJW5QF27i16+sNQIaes8QoEZg1eqEgF83GkiPUlEQe9k7ZoHXHV7PRrnrxOKem42sIHPU813J2V/ZK1uqTJe6g==}
 
   '@vue/language-core@2.1.10':
     resolution: {integrity: sha512-DAI289d0K3AB5TUG3xDp9OuQ71CnrujQwJrQnfuZDwo6eGNf0UoRlPuaVNO+Zrn65PC3j0oB2i7mNmVPggeGeQ==}
@@ -2958,6 +2985,10 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
+  type-fest@4.26.1:
+    resolution: {integrity: sha512-yOGpmOAL7CkKe/91I5O3gPICmJNLJ1G4zFYVAsRHg7M64biSnPtRj0WNQt++bRkjYOqjWXrhnUw1utzmVErAdg==}
+    engines: {node: '>=16'}
+
   typescript@5.4.2:
     resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
     engines: {node: '>=14.17'}
@@ -3026,6 +3057,11 @@ packages:
     peerDependencies:
       radix-vue: ^1.4.0
       vue: ^3.3.0
+
+  vee-validate@4.14.7:
+    resolution: {integrity: sha512-XVb1gBFJR57equ11HEI8uxNqFJkwvCP/b+p+saDPQYaW7k45cdF5jsYPEJud1o29GD6h2y7Awm7Qfm89yKi74A==}
+    peerDependencies:
+      vue: ^3.4.26
 
   vite-hot-client@0.2.3:
     resolution: {integrity: sha512-rOGAV7rUlUHX89fP2p2v0A2WWvV3QMX2UYq0fRqsWSvFvev4atHWqjwGoKaZT1VTKyLGk533ecu3eyd0o59CAg==}
@@ -3182,6 +3218,9 @@ packages:
   yoctocolors@2.1.1:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
+
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
 snapshots:
 
@@ -3595,6 +3634,8 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  '@formkit/auto-animate@0.8.2': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -4238,6 +4279,14 @@ snapshots:
       - supports-color
       - typescript
 
+  '@vee-validate/zod@4.14.7(vue@3.5.12(typescript@5.6.3))':
+    dependencies:
+      type-fest: 4.26.1
+      vee-validate: 4.14.7(vue@3.5.12(typescript@5.6.3))
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - vue
+
   '@vitejs/plugin-vue-jsx@4.0.1(vite@5.4.10(@types/node@22.8.7))(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       '@babel/core': 7.26.0
@@ -4330,6 +4379,10 @@ snapshots:
       de-indent: 1.0.2
       he: 1.2.0
 
+  '@vue/devtools-api@7.6.3':
+    dependencies:
+      '@vue/devtools-kit': 7.6.3
+
   '@vue/devtools-core@7.6.2(vite@5.4.10(@types/node@22.8.7))(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       '@vue/devtools-kit': 7.6.2
@@ -4352,7 +4405,21 @@ snapshots:
       speakingurl: 14.0.1
       superjson: 2.2.1
 
+  '@vue/devtools-kit@7.6.3':
+    dependencies:
+      '@vue/devtools-shared': 7.6.3
+      birpc: 0.2.19
+      hookable: 5.5.3
+      mitt: 3.0.1
+      perfect-debounce: 1.0.0
+      speakingurl: 14.0.1
+      superjson: 2.2.1
+
   '@vue/devtools-shared@7.6.2':
+    dependencies:
+      rfdc: 1.4.1
+
+  '@vue/devtools-shared@7.6.3':
     dependencies:
       rfdc: 1.4.1
 
@@ -6247,6 +6314,8 @@ snapshots:
 
   type-fest@0.8.1: {}
 
+  type-fest@4.26.1: {}
+
   typescript@5.4.2: {}
 
   typescript@5.6.3: {}
@@ -6327,6 +6396,12 @@ snapshots:
       vue: 3.5.12(typescript@5.6.3)
     transitivePeerDependencies:
       - '@vue/composition-api'
+
+  vee-validate@4.14.7(vue@3.5.12(typescript@5.6.3)):
+    dependencies:
+      '@vue/devtools-api': 7.6.3
+      type-fest: 4.26.1
+      vue: 3.5.12(typescript@5.6.3)
 
   vite-hot-client@0.2.3(vite@5.4.10(@types/node@22.8.7)):
     dependencies:
@@ -6488,3 +6563,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors@2.1.1: {}
+
+  zod@3.23.8: {}
