@@ -34,10 +34,10 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
-    "@unocss/reset": "0.63.6",
+    "@unocss/reset": "0.64.0",
     "@vee-validate/zod": "4.14.7",
     "@vueuse/core": "11.2.0",
-    "lucide-vue-next": "0.454.0",
+    "lucide-vue-next": "0.456.0",
     "soybean-ui": "workspace:*",
     "vue": "3.5.12",
     "zod": "3.23.8"
@@ -47,8 +47,8 @@
     "@soybean-ui/unocss-preset-shadcn": "workspace:*",
     "@soybeanjs/cli": "1.1.1",
     "@soybeanjs/eslint-config": "1.4.2",
-    "@types/node": "22.8.7",
-    "@unocss/eslint-config": "^0.63.6",
+    "@types/node": "22.9.0",
+    "@unocss/eslint-config": "^0.64.0",
     "@vitejs/plugin-vue": "5.1.4",
     "@vitejs/plugin-vue-jsx": "4.0.1",
     "eslint": "9.14.0",
@@ -58,10 +58,10 @@
     "simple-git-hooks": "2.11.1",
     "tsx": "4.19.2",
     "typescript": "5.6.3",
-    "unocss": "0.63.6",
+    "unocss": "0.64.0",
     "unocss-preset-animations": "1.1.0",
     "vite": "5.4.10",
-    "vite-plugin-vue-devtools": "7.6.2",
+    "vite-plugin-vue-devtools": "7.6.3",
     "vue-eslint-parser": "9.4.3",
     "vue-tsc": "2.1.10"
   },
