@@ -33,7 +33,7 @@ const mergedCls = computed(() => {
 
 <template>
   <DropdownMenuRadioItem v-bind="forwarded" :class="mergedCls">
-    <SDropdownMenuItemIndicator :class="indicatorClass" :size="size">
+    <SDropdownMenuItemIndicator :class="indicatorClass" :size>
       <slot name="indicatorIcon">
         <SDropdownMenuRadioIndicatorIconRoot :class="indicatorIconRootClass">
           <SDropdownMenuRadioIndicatorIcon :class="indicatorIconClass" />

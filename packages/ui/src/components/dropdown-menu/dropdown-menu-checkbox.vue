@@ -85,8 +85,8 @@ watch(
         :size="size"
         :disabled="item.disabled"
         :text-value="item.textValue || item.label"
-        :checked="checkValue.includes(item.value)"
-        @update:checked="handleUpdateChecked(item, $event)"
+        :model-value="checkValue.includes(item.value)"
+        @update:model-value="handleUpdateChecked(item, $event)"
       >
         <template #indicatorIcon>
           <slot name="indicatorIcon" />
