@@ -6,7 +6,7 @@ export const pinInputVariants = tv({
     root: `flex items-center`,
     input: [
       `relative flex-center text-center border-y border-r border-input bg-background transition-all`,
-      `focus-visible:(outline outline-2 outline-primary z-10) disabled:(cursor-not-allowed opacity-50) first:(rounded-l-md border-l) last:rounded-r-md`
+      `focus-visible:(outline outline-2 outline-primary z-10) disabled:(cursor-not-allowed opacity-50)`
     ],
     separator: `text-muted-foreground`
   },
@@ -15,6 +15,9 @@ export const pinInputVariants = tv({
       true: {
         root: `gap-1`,
         input: `rounded-md border`
+      },
+      false: {
+        root: `[&>:first-child]:(rounded-l-md border-l) [&>:nth-last-child(2)]:(rounded-r-md)`
       }
     },
     size: {
