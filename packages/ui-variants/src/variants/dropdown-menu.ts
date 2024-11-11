@@ -44,9 +44,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-1 px-1 text-xs',
         shortcut: 'text-xs',
         checkboxItem: 'py-1 pl-6 pr-1 text-xs',
-        checkboxItemIndicator: 'left-1',
-        radioItem: 'py-1 pl-6 pr-1 text-xs',
-        radioItemIndicator: 'left-1'
+        itemIndicator: 'left-1',
+        radioItem: 'py-1 pl-6 pr-1 text-xs'
       },
       sm: {
         label: 'py-1 px-1.5 text-sm',
@@ -54,9 +53,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-1 px-1.5 text-sm',
         shortcut: 'text-xs',
         checkboxItem: 'py-1 pl-7 pr-1.5 text-sm',
-        checkboxItemIndicator: 'left-1.5',
-        radioItem: 'py-1 pl-7 pr-1.5 text-sm',
-        radioItemIndicator: 'left-1.5'
+        itemIndicator: 'left-1.5',
+        radioItem: 'py-1 pl-7 pr-1.5 text-sm'
       },
       md: {
         label: 'py-1.5 px-2 text-sm',
@@ -64,9 +62,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-1.5 px-2 text-sm',
         shortcut: 'text-xs',
         checkboxItem: 'py-1.5 pl-8 pr-2 text-sm',
-        checkboxItemIndicator: 'left-2',
-        radioItem: 'py-1.5 pl-8 pr-2 text-sm',
-        radioItemIndicator: 'left-2'
+        itemIndicator: 'left-2',
+        radioItem: 'py-1.5 pl-8 pr-2 text-sm'
       },
       lg: {
         label: 'py-1.5 px-2.5 text-base',
@@ -74,9 +71,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-1.5 px-2.5 text-base',
         shortcut: 'text-sm',
         checkboxItem: 'py-1.5 pl-9 pr-2.5 text-base',
-        checkboxItemIndicator: 'left-2.5',
-        radioItem: 'py-1.5 pl-9 pr-2.5 text-base',
-        radioItemIndicator: 'left-2.5'
+        itemIndicator: 'left-2.5',
+        radioItem: 'py-1.5 pl-9 pr-2.5 text-base'
       },
       xl: {
         label: 'py-2 px-3 text-base',
@@ -84,9 +80,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-2 px-3 text-base',
         shortcut: 'text-sm',
         checkboxItem: 'py-2 pl-10 pr-3 text-base',
-        checkboxItemIndicator: 'left-3',
-        radioItem: 'py-2 pl-10 pr-3 text-base',
-        radioItemIndicator: 'left-3'
+        itemIndicator: 'left-3',
+        radioItem: 'py-2 pl-10 pr-3 text-base'
       },
       xxl: {
         label: 'py-2.5 px-3.5 text-lg',
@@ -94,9 +89,8 @@ export const dropdownMenuVariants = tv({
         subTrigger: 'py-2.5 px-3.5 text-lg',
         shortcut: 'text-base',
         checkboxItem: 'py-2.5 pl-12 pr-3.5 text-lg',
-        checkboxItemIndicator: 'left-3.5',
-        radioItem: 'py-2.5 pl-12 pr-3.5 text-lg',
-        radioItemIndicator: 'left-3.5'
+        itemIndicator: 'left-3.5',
+        radioItem: 'py-2.5 pl-12 pr-3.5 text-lg'
       }
     }
   },

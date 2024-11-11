@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuContent, useForwardPropsEmits } from 'radix-vue';
+import { DropdownMenuContent, useForwardPropsEmits } from 'reka-ui';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuContentEmits, DropdownMenuContentProps } from './types';
 

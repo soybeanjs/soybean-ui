@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends DropdownMenuCheckboxOption = DropdownMenuCheckboxOption">
 import { computed, ref, watch } from 'vue';
 import type { Ref } from 'vue';
-import { useEmitAsProps, useForwardProps } from 'radix-vue';
+import { useEmitAsProps, useForwardProps } from 'reka-ui';
 import { computedOmit, computedOmitEmits } from '../../shared';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';
@@ -85,8 +85,8 @@ watch(
         :size="size"
         :disabled="item.disabled"
         :text-value="item.textValue || item.label"
-        :checked="checkValue.includes(item.value)"
-        @update:checked="handleUpdateChecked(item, $event)"
+        :model-value="checkValue.includes(item.value)"
+        @update:model-value="handleUpdateChecked(item, $event)"
       >
         <template #indicatorIcon>
           <slot name="indicatorIcon" />

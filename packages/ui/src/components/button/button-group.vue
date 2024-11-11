@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from 'radix-vue';
+import { Primitive } from 'reka-ui';
 import { buttonGroupVariants, cn } from '@soybean-ui/variants';
 import type { ButtonGroupProps } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Separator } from 'radix-vue';
+import { Separator } from 'reka-ui';
 import { cn, separatorVariants } from '@soybean-ui/variants';
 import type { SeparatorRootProps } from './types';
 

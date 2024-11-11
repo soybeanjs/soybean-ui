@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectLabel } from 'radix-vue';
+import { SelectLabel } from 'reka-ui';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectLabelProps } from './types';
 

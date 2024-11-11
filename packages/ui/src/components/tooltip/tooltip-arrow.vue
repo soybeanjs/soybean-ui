@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TooltipArrow } from 'radix-vue';
+import { TooltipArrow } from 'reka-ui';
 import { cn, tooltipVariants } from '@soybean-ui/variants';
 import type { TooltipArrowProps } from './types';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertDialogAction, useForwardProps } from 'radix-vue';
+import { AlertDialogAction, useForwardProps } from 'reka-ui';
 import SButton from '../button/button.vue';
 import type { ButtonProps } from '../button/types';
 

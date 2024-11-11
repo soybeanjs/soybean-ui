@@ -5,7 +5,7 @@ import type {
   TooltipRootProps,
   TooltipArrowProps as _TooltipArrowProps,
   TooltipContentProps as _TooltipContentProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type TooltipArrowProps = ClassValueProp & Pick<_TooltipArrowProps, 'width' | 'height'>;

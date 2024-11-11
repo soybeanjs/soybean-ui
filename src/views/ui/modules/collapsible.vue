@@ -19,10 +19,10 @@ defineOptions({
           </SButtonIcon>
         </SCollapsibleTrigger>
       </div>
-      <div class="border rounded-md px-4 py-3 text-sm font-mono">@radix-ui/primitives</div>
+      <div class="border rounded-md px-4 py-3 text-sm font-mono">@reka-ui/primitives</div>
     </template>
     <template #content>
-      <div class="border rounded-md px-4 py-3 text-sm font-mono">@radix-ui/colors</div>
+      <div class="border rounded-md px-4 py-3 text-sm font-mono">@reka-ui/colors</div>
       <div class="border rounded-md px-4 py-3 text-sm font-mono">@stitches/react</div>
     </template>
   </SCollapsible>

@@ -6,7 +6,7 @@ import {
   DropdownMenuRoot as SDropdownMenuRoot,
   DropdownMenuSub as SDropdownMenuSub,
   DropdownMenuTrigger as SDropdownMenuTrigger
-} from 'radix-vue';
+} from 'reka-ui';
 import SDropdownMenuContent from './dropdown-menu-content.vue';
 import SDropdownMenuItem from './dropdown-menu-item.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';

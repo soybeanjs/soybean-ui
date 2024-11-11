@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { SBreadcrumb, SBreadcrumbEllipsis, SBreadcrumbPage, SDropdownMenu } from 'soybean-ui';
 import type { BreadcrumbItem, DropdownMenuItemOption, ThemeSize } from 'soybean-ui';
-import { Component, Dock, Home, Slash } from 'lucide-vue-next';
+import { Component, Dock, Home } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiBreadcrumb'
@@ -40,9 +40,9 @@ const items2: BreadcrumbItem[] = [
     target: '_blank'
   },
   {
-    label: 'RadixVue',
-    value: 'radix-vue',
-    href: 'https://www.radix-vue.com',
+    label: 'RekaUI',
+    value: 'reka-ui',
+    href: 'https://reka-ui.com',
     target: '_blank'
   }
 ];
@@ -110,9 +110,7 @@ function handleClick(item: BreadcrumbItem) {
   <SBreadcrumb :items @click="handleClick" />
   <div class="py-12px text-18px">Custom Separator</div>
   <SBreadcrumb :items>
-    <template #separator>
-      <Slash />
-    </template>
+    <template #separator>&nbsp;/&nbsp;</template>
   </SBreadcrumb>
   <div class="py-12px text-18px">Link</div>
   <SBreadcrumb :items="items2" />
@@ -121,7 +119,7 @@ function handleClick(item: BreadcrumbItem) {
   <div class="py-12px text-18px">Item Dropdown</div>
   <SBreadcrumb :items="dropdownItems">
     <template #default="{ item }">
-      <SDropdownMenu v-if="item.items" :options="item.items">
+      <SDropdownMenu v-if="item.items" :options="item.items" :modal="false">
         <template #trigger>
           <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
         </template>
@@ -132,7 +130,7 @@ function handleClick(item: BreadcrumbItem) {
   <div class="py-12px text-18px">Ellipsis Dropdown</div>
   <SBreadcrumb :items="items3" ellipsis>
     <template #ellipsis="{ ellipsisItems }">
-      <SDropdownMenu :options="ellipsisItems">
+      <SDropdownMenu :options="ellipsisItems" :modal="false">
         <template #trigger>
           <SBreadcrumbEllipsis class="cursor-pointer" />
         </template>

@@ -4,7 +4,7 @@
   generic="V extends string | string[] = string | string[], E extends SingleOrMultipleType = SingleOrMultipleType"
 >
 import { computed } from 'vue';
-import { ToggleGroupRoot, useForwardPropsEmits } from 'radix-vue';
+import { ToggleGroupRoot, useForwardPropsEmits } from 'reka-ui';
 import { cn, toggleVariants } from '@soybean-ui/variants';
 import type { SingleOrMultipleType } from '../../types';
 import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';

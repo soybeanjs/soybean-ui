@@ -4,7 +4,7 @@ import type {
   HoverCardRootProps,
   HoverCardArrowProps as _HoverCardArrowProps,
   HoverCardContentProps as _HoverCardContentProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type HoverCardContentProps = ClassValueProp & Omit<_HoverCardContentProps, 'as' | 'asChild'>;

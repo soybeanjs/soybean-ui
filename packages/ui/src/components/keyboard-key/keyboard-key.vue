@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from 'radix-vue';
+import { Primitive } from 'reka-ui';
 import { cn, keyboardKeyVariants } from '@soybean-ui/variants';
 import type { KeyboardKeyProps } from './types';
 

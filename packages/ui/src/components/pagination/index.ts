@@ -1,4 +1,4 @@
-import { PaginationRoot as SPaginationRoot } from 'radix-vue';
+import { PaginationRoot as SPaginationRoot } from 'reka-ui';
 import SPaginationList from './pagination-list.vue';
 import SPaginationListItem from './pagination-list-item.vue';
 import SPaginationFirst from './pagination-first.vue';

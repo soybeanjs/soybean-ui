@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardProps } from 'radix-vue';
+import { useForwardProps } from 'reka-ui';
 import { buttonVariants, cn } from '@soybean-ui/variants';
 import type { ButtonProps } from './types';
 

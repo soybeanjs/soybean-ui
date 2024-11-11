@@ -1,4 +1,4 @@
-import type { SeparatorProps as _SeparatorProps } from 'radix-vue';
+import type { SeparatorProps as _SeparatorProps } from 'reka-ui';
 import type { SeparatorBorder } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp, ThemeAlign, ThemeOrientation } from '../../types';
 

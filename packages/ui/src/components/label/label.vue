@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Label } from 'radix-vue';
+import { Label } from 'reka-ui';
 import { cn, labelVariants } from '@soybean-ui/variants';
 import type { LabelProps } from './types';
 

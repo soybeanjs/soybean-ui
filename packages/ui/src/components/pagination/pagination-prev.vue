@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PaginationPrev, useForwardProps } from 'radix-vue';
+import { PaginationPrev, useForwardProps } from 'reka-ui';
 import { ChevronLeft } from 'lucide-vue-next';
 import SPaginationButton from './pagination-button.vue';
 import type { PaginationPrevProps } from './types';

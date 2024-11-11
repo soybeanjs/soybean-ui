@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CollapsibleContent } from 'radix-vue';
+import { CollapsibleContent } from 'reka-ui';
 import { cn, collapsibleVariants } from '@soybean-ui/variants';
 import type { CollapsibleContentProps } from './types';
 

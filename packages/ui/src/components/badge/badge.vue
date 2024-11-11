@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from 'radix-vue';
+import { Primitive } from 'reka-ui';
 import { badgeVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
 import SButtonIcon from '../button/button-icon.vue';

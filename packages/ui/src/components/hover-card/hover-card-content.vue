@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HoverCardContent, useForwardProps } from 'radix-vue';
+import { HoverCardContent, useForwardProps } from 'reka-ui';
 import { cn, hoverCardVariants } from '@soybean-ui/variants';
 import type { HoverCardContentProps } from './types';
 

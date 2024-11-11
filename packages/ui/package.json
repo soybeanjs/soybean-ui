@@ -17,7 +17,7 @@
     "@formkit/auto-animate": "0.8.2",
     "@soybean-ui/variants": "workspace:*",
     "lucide-vue-next": "0.456.0",
-    "radix-vue": "1.9.9",
+    "reka-ui": "1.0.0-alpha.4",
     "vaul-vue": "0.2.0",
     "vee-validate": "4.14.7",
     "vue-sonner": "1.2.5"

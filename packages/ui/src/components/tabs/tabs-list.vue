@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsList } from 'radix-vue';
+import { TabsList } from 'reka-ui';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsListProps } from './types';
 

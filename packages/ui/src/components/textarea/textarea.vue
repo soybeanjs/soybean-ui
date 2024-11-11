@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardExpose, useForwardPropsEmits } from 'radix-vue';
+import { useForwardExpose, useForwardPropsEmits } from 'reka-ui';
 import TextareaRoot from './textarea-root.vue';
 import STextareaContent from './textarea-content.vue';
 import STextareaCount from './textarea-count.vue';

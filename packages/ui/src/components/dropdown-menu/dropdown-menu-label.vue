@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuLabel } from 'radix-vue';
+import { DropdownMenuLabel } from 'reka-ui';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuLabelProps } from './types';
 

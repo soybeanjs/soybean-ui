@@ -2,7 +2,7 @@ import type {
   AvatarImageEmits,
   AvatarFallbackProps as _AvatarFallbackProps,
   AvatarImageProps as _AvatarImageProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

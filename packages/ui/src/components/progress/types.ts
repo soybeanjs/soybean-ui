@@ -1,4 +1,4 @@
-import type { ProgressRootEmits, ProgressRootProps as _ProgressRootProps } from 'radix-vue';
+import type { ProgressRootEmits, ProgressRootProps as _ProgressRootProps } from 'reka-ui';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

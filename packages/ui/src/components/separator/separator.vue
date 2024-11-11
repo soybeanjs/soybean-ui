@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue';
+import { useForwardProps } from 'reka-ui';
 import SSeparatorRoot from './separator-root.vue';
 import SSeparatorLabel from './separator-label.vue';
 import type { SeparatorProps } from './types';

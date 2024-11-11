@@ -8,7 +8,7 @@ import {
   VisuallyHidden,
   useEmitAsProps,
   useForwardProps
-} from 'radix-vue';
+} from 'reka-ui';
 import { X } from 'lucide-vue-next';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import SCard from '../card/card.vue';

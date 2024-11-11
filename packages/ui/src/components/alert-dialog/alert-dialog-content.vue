@@ -8,7 +8,7 @@ import {
   VisuallyHidden,
   useForwardProps,
   useForwardPropsEmits
-} from 'radix-vue';
+} from 'reka-ui';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';

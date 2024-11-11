@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarFallback } from 'radix-vue';
+import { AvatarFallback } from 'reka-ui';
 import { avatarVariants, cn } from '@soybean-ui/variants';
 import type { AvatarFallbackProps } from './types';
 

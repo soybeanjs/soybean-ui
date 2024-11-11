@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ScrollAreaCorner, useForwardProps } from 'radix-vue';
+import { ScrollAreaCorner, useForwardProps } from 'reka-ui';
 import SScrollAreaRoot from './scroll-area-root.vue';
 import SScrollAreaViewport from './scroll-area-viewport.vue';
 import SScrollAreaScrollbar from './scroll-area-scrollbar.vue';

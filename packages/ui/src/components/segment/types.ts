@@ -1,4 +1,4 @@
-import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from 'radix-vue';
+import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from 'reka-ui';
 import type { ClassValue, ClassValueProp, StringOrNumber } from '../../types';
 
 export type SegmentRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &

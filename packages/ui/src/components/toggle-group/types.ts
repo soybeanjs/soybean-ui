@@ -1,7 +1,7 @@
 import type {
   ToggleGroupItemProps as _ToggleGroupItemProps,
   ToggleGroupRootProps as _ToggleGroupRootProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ToggleVariant } from '@soybean-ui/variants';
 import type { ClassValueProp, SingleOrMultipleType, ThemeSize } from '../../types';
 

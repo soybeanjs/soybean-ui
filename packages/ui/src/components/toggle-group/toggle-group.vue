@@ -7,7 +7,7 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
-import { useForwardPropsEmits } from 'radix-vue';
+import { useForwardPropsEmits } from 'reka-ui';
 import type { SingleOrMultipleType } from '../../types';
 import SToggleGroupRoot from './toggle-group-root.vue';
 import SToggleGroupItem from './toggle-group-item.vue';
@@ -26,7 +26,7 @@ const forwarded = useForwardPropsEmits(props, emit);
 
 <template>
   <SToggleGroupRoot v-bind="forwarded">
-    <SToggleGroupItem v-for="item in items" :key="item.value" :value="item.value" :disabled="item.disabled">
+    <SToggleGroupItem v-for="(item, index) in items" :key="index" :value="item.value" :disabled="item.disabled">
       <slot name="item" v-bind="item" />
     </SToggleGroupItem>
   </SToggleGroupRoot>

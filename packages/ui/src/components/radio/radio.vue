@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { useForwardProps } from 'radix-vue';
+import { useForwardProps } from 'reka-ui';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';
 import SRadioControl from './radio-control.vue';

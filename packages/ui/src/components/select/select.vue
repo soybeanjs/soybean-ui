@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'radix-vue';
+import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'reka-ui';
 import { computedPick } from '../../shared';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
@@ -105,7 +105,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
             </template>
             <template v-else>
               <SSelectItemOption
-                :key="opt.value"
+                :key="index"
                 :option="opt"
                 :size
                 :item-class

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverContent, useForwardPropsEmits } from 'radix-vue';
+import { PopoverContent, useForwardPropsEmits } from 'reka-ui';
 import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { PopoverContentEmits, PopoverContentProps } from './types';
 

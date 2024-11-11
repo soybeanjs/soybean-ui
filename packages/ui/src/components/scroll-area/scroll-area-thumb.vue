@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ScrollAreaThumb } from 'radix-vue';
+import { ScrollAreaThumb } from 'reka-ui';
 import { cn, scrollAreaVariants } from '@soybean-ui/variants';
 import type { ScrollAreaThumbProps } from './types';
 

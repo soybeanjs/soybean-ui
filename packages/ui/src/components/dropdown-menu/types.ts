@@ -15,10 +15,9 @@ import type {
   DropdownMenuRadioItemProps as _DropdownMenuRadioItemProps,
   DropdownMenuSubContentProps as _DropdownMenuSubContentProps,
   DropdownMenuSubTriggerProps as _DropdownMenuSubTriggerProps
-} from 'radix-vue';
-import type { MenuItemProps } from 'radix-vue/dist/Menu';
+} from 'reka-ui';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp, FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import type { ClassValue, ClassValueProp } from '../../types';
 
 export type DropdownMenuLabelProps = ClassValueProp & {
   size?: ThemeSize;
@@ -28,7 +27,7 @@ export type DropdownMenuContentProps = ClassValueProp & Omit<_DropdownMenuConten
 
 export type DropdownMenuSubContentProps = ClassValueProp & Omit<_DropdownMenuSubContentProps, 'as' | 'asChild'>;
 
-type MenuItemImplProps = Pick<MenuItemProps, 'disabled' | 'textValue'>;
+type MenuItemImplProps = Pick<_DropdownMenuItemProps, 'disabled' | 'textValue'>;
 
 type MenuItemImplWithClassProps = ClassValueProp & MenuItemImplProps;
 
@@ -146,6 +145,14 @@ export type DropdownMenuSubEmits<T extends DropdownMenuItemOption = DropdownMenu
   'update:subOpen': [payload: boolean, item: DropdownMenuSubOption<T>];
 };
 
+type FocusOutsideEvent = CustomEvent<{
+  originalEvent: FocusEvent;
+}>;
+
+type PointerDownOutsideEvent = CustomEvent<{
+  originalEvent: PointerEvent;
+}>;
+
 export type DropdownMenuSubContentEmits<T extends DropdownMenuItemOption = DropdownMenuItemOption> = {
   closeAutoFocusSub: [event: Event, item: DropdownMenuSubOption<T>];
   entryFocusSub: [event: Event, item: DropdownMenuSubOption<T>];
@@ -167,7 +174,7 @@ export type DropdownMenuEmits<T extends DropdownMenuItemOption = DropdownMenuIte
   DropdownMenuOptionEmits<T>;
 
 export type DropdownMenuCheckboxItemProps = MenuItemImplWithClassProps &
-  Pick<_DropdownMenuCheckboxItemProps, 'checked'> & {
+  Pick<_DropdownMenuCheckboxItemProps, 'modelValue'> & {
     size?: ThemeSize;
     indicatorClass?: ClassValue;
   };

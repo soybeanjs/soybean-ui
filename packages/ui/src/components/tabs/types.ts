@@ -4,7 +4,7 @@ import type {
   TabsListProps as _TabsListProps,
   TabsRootProps as _TabsRootProps,
   TabsTriggerProps as _TabsTriggerProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ClassValue, ClassValueProp, StringOrNumber, ThemeOrientation } from '../../types';
 
 export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &

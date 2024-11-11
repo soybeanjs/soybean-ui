@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogOverlay } from 'radix-vue';
+import { DialogOverlay } from 'reka-ui';
 import { cn, sheetVariants } from '@soybean-ui/variants';
 import type { SheetOverlayProps } from './types';
 

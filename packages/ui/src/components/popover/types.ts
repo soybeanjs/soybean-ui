@@ -6,7 +6,7 @@ import type {
   PopoverRootProps,
   PopoverArrowProps as _PopoverArrowProps,
   PopoverContentProps as _PopoverContentProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type PopoverContentProps = ClassValueProp & Omit<_PopoverContentProps, 'as' | 'asChild'>;
