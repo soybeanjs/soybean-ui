@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
+import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SScrollArea, Stabs } from 'soybean-ui';
 import type { TabsOption } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
@@ -44,6 +45,8 @@ import UiTooltip from './modules/tooltip.vue';
 defineOptions({
   name: 'UiPage'
 });
+
+const activeTab = useRouteQuery('tab', 'accordion' as string);
 
 const isDark = useDark();
 
@@ -249,7 +252,7 @@ const tabs: TabConfig[] = [
         </SButtonIcon>
       </template>
       <Stabs
-        default-value="accordion"
+        v-model="activeTab"
         :options="tabs"
         :enable-indicator="false"
         class="h-full"

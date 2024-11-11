@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import UiPage from './views/ui/index.vue';
+import { RouterView } from 'vue-router';
 
 defineOptions({
   name: 'App'
@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <UiPage />
+  <RouterView />
 </template>
 
 <style>
