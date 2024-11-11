@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AspectRatio, useForwardProps } from 'radix-vue';
+import { AspectRatio, useForwardProps } from 'reka-ui';
 import type { AspectRatioProps } from './types';
 
 defineOptions({

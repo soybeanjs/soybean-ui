@@ -29,7 +29,7 @@ export default defineConfig({
       formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['vue', 'radix-vue'],
+      external: ['vue', 'reka-ui'],
       output: {
         globals: {
           vue: 'Vue'

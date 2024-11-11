@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HoverCardPortal, HoverCardRoot, HoverCardTrigger, useForwardProps, useForwardPropsEmits } from 'radix-vue';
+import { HoverCardPortal, HoverCardRoot, HoverCardTrigger, useForwardProps, useForwardPropsEmits } from 'reka-ui';
 import { computedPick } from '../../shared';
 import SHoverCardContent from './hover-card-content.vue';
 import SHoverCardArrow from './hover-card-arrow.vue';

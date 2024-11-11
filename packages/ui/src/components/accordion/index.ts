@@ -1,4 +1,4 @@
-import { AccordionRoot as SAccordionRoot } from 'radix-vue';
+import { AccordionRoot as SAccordionRoot } from 'reka-ui';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';

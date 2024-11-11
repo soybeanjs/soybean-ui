@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuSeparator } from 'radix-vue';
+import { DropdownMenuSeparator } from 'reka-ui';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuSeparatorProps } from './types';
 

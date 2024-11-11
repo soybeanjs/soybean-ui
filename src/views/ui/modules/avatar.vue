@@ -6,7 +6,7 @@ defineOptions({
   name: 'AvatarDemo'
 });
 
-const radixVueRsc = 'https://github.com/radix-vue.png';
+const rekaUiRsc = 'https://reka-ui.com/logo.svg';
 
 const soybeanSrc = 'https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png';
 
@@ -16,9 +16,9 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 <template>
   <div class="py-12px text-18px">Default</div>
   <div class="flex gap-12px">
-    <SAvatar :src="radixVueRsc" alt="RadixVue" fallback-label="CN" />
-    <SAvatar :src="radixVueRsc" alt="RadixVue">
-      <template #fallback>Radix</template>
+    <SAvatar :src="rekaUiRsc" alt="RekaUI" fallback-label="CN" />
+    <SAvatar :src="rekaUiRsc" alt="RekaUI">
+      <template #fallback>RekaUI</template>
     </SAvatar>
   </div>
   <div class="py-12px text-18px">Size</div>

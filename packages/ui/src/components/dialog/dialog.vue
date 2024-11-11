@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'radix-vue';
+import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'reka-ui';
 import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SDialogContent from './dialog-content.vue';
 import SDialogOverlay from './dialog-overlay.vue';

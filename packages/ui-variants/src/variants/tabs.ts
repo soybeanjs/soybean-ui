@@ -18,12 +18,12 @@ export const tabsVariants = tv({
     orientation: {
       horizontal: {
         root: `flex-col`,
-        indicatorRoot: `h-full w-[--radix-tabs-indicator-size] py-1 translate-x-[--radix-tabs-indicator-position]`,
+        indicatorRoot: `h-full w-[--reka-tabs-indicator-size] py-1 translate-x-[--reka-tabs-indicator-position]`,
         content: `mt-2`
       },
       vertical: {
         list: `flex-col`,
-        indicatorRoot: `w-full h-[--radix-tabs-indicator-size] px-1 translate-y-[--radix-tabs-indicator-position]`,
+        indicatorRoot: `w-full h-[--reka-tabs-indicator-size] px-1 translate-y-[--reka-tabs-indicator-position]`,
         content: `ml-2`
       }
     },

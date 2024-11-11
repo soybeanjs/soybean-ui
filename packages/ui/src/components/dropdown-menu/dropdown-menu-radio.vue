@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DropdownMenuRadioOption = DropdownMenuRadioOption">
 import { computed } from 'vue';
-import { DropdownMenuRadioGroup, useEmitAsProps, useForwardProps } from 'radix-vue';
+import { DropdownMenuRadioGroup, useEmitAsProps, useForwardProps } from 'reka-ui';
 import { computedOmit, computedOmitEmits } from '../../shared';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';

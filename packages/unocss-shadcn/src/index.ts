@@ -17,10 +17,10 @@ export function presetShadcn(options: PresetShadcnOptions = {}, globals = true):
     preflights: [
       {
         getCSS: () => `
-          @keyframes shadcn-down { from{ height: 0 } to { height: var(--radix-accordion-content-height)} }
-          @keyframes shadcn-up { from{ height: var(--radix-accordion-content-height)} to { height: 0 } }
-          @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--radix-collapsible-content-height)} }
-          @keyframes shadcn-collapsible-up { from{ height: var(--radix-collapsible-content-height)} to { height: 0 } }
+          @keyframes shadcn-down { from{ height: 0 } to { height: var(--reka-accordion-content-height)} }
+          @keyframes shadcn-up { from{ height: var(--reka-accordion-content-height)} to { height: 0 } }
+          @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--reka-collapsible-content-height)} }
+          @keyframes shadcn-collapsible-up { from{ height: var(--reka-collapsible-content-height)} to { height: 0 } }
 
           ${generateCSSVars(options)}
 

@@ -7,7 +7,11 @@ defineOptions({
   name: 'UiCheckbox'
 });
 
+const colorChecked = ref<CheckboxCheckedState>(false);
+
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+
+const sizeChecked = ref<CheckboxCheckedState>('indeterminate');
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
@@ -32,23 +36,23 @@ const checked = computed<CheckboxCheckedState>({
   }
 });
 
-function createCheckboxItems(): CheckboxGroupItem[] {
+function createCheckboxItems() {
   return [
     { label: 'A', value: '1' },
     { label: 'B', value: '2' },
     { label: 'C', value: '3' }
-  ];
+  ] satisfies CheckboxGroupItem[];
 }
 </script>
 
 <template>
   <div class="py-12px text-18px">Color</div>
   <div class="flex flex-wrap gap-12px">
-    <SCheckbox v-for="color in colors" :key="color" :color="color" :label="color" />
+    <SCheckbox v-for="color in colors" :key="color" v-model="colorChecked" :color="color" :label="color" />
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex flex-wrap gap-12px">
-    <SCheckbox v-for="size in sizes" :key="size" :size="size" :label="size" />
+    <SCheckbox v-for="size in sizes" :key="size" v-model="sizeChecked" :size="size" :label="size" />
   </div>
   <div class="py-12px text-18px">Group</div>
   <SCheckboxGroup v-model="checks" :items="items" />

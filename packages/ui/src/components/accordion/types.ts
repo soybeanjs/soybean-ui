@@ -1,7 +1,7 @@
-import type { AccordionRootEmits, AccordionRootProps, AccordionItemProps as _AccordionItemProps } from 'radix-vue';
+import type { AccordionRootEmits, AccordionRootProps, AccordionItemProps as _AccordionItemProps } from 'reka-ui';
 import type { ClassValue, ClassValueProp, SingleOrMultipleType } from '../../types';
 
-export type AccordionItemProps = ClassValueProp & Pick<_AccordionItemProps, 'disabled' | 'value'>;
+export type AccordionItemProps = ClassValueProp & Pick<_AccordionItemProps, 'disabled' | 'value' | 'unmountOnHide'>;
 
 export type AccordionHeaderProps = ClassValueProp;
 

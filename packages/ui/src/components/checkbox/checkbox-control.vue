@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CheckboxRoot, useForwardProps } from 'radix-vue';
+import { CheckboxRoot, useForwardPropsEmits } from 'reka-ui';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxControlEmits, CheckboxControlProps } from './types';
 
@@ -8,11 +8,11 @@ defineOptions({
   name: 'SCheckboxControl'
 });
 
-const { class: cls, color, size, modelValue, defaultValue, ...delegatedProps } = defineProps<CheckboxControlProps>();
+const { class: cls, color, size, ...delegatedProps } = defineProps<CheckboxControlProps>();
 
 const emit = defineEmits<CheckboxControlEmits>();
 
-const forwarded = useForwardProps(delegatedProps);
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
   const { control } = checkboxVariants({ color, size });
@@ -22,13 +22,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <CheckboxRoot
-    v-bind="forwarded"
-    :checked="modelValue"
-    :default-checked="defaultValue"
-    :class="mergedCls"
-    @update:checked="emit('update:modelValue', $event)"
-  >
+  <CheckboxRoot v-bind="forwarded" :class="mergedCls">
     <slot />
   </CheckboxRoot>
 </template>

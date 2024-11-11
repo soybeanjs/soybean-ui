@@ -1,4 +1,4 @@
-import type { SwitchRootProps as _SwitchRootProps } from 'radix-vue';
+import type { SwitchRootProps as _SwitchRootProps } from 'reka-ui';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

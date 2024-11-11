@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SelectItemText } from 'radix-vue';
+import { SelectItemText } from 'reka-ui';
 import SSelectItem from './select-item.vue';
 import SSelectItemIndicator from './select-item-indicator.vue';
 import SSelectSeparator from './select-separator.vue';
@@ -13,14 +13,7 @@ defineProps<SelectItemOptionProps>();
 </script>
 
 <template>
-  <SSelectItem
-    :key="option.value"
-    :value="option.value"
-    :size
-    :text-value="option.label"
-    :disabled="option.disabled"
-    :class="itemClass"
-  >
+  <SSelectItem :value="option.value" :size :text-value="option.label" :disabled="option.disabled" :class="itemClass">
     <SelectItemText :class="itemTextClass">{{ option.label }}</SelectItemText>
     <SSelectItemIndicator :class="itemIndicatorClass" :size>
       <slot name="itemIndicatorIcon" />

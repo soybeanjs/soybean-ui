@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PaginationList } from 'radix-vue';
+import { PaginationList } from 'reka-ui';
 import { cn, paginationVariants } from '@soybean-ui/variants';
 import type { PaginationListProps } from './types';
 

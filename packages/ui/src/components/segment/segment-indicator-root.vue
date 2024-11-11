@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsIndicator } from 'radix-vue';
+import { TabsIndicator } from 'reka-ui';
 import { cn, segmentVariants } from '@soybean-ui/variants';
 import type { SegmentIndicatorRootProps } from './types';
 

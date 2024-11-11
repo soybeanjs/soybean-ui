@@ -7,7 +7,7 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
-import { AccordionRoot, useForwardPropsEmits } from 'radix-vue';
+import { AccordionRoot, useForwardPropsEmits } from 'reka-ui';
 import { computedOmit } from '../../shared';
 import type { SingleOrMultipleType } from '../../types';
 import SAccordionItem from './accordion-item.vue';

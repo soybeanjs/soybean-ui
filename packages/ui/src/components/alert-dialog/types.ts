@@ -5,7 +5,7 @@ import type {
   AlertDialogEmits as _AlertDialogEmits,
   AlertDialogOverlayProps as _AlertDialogOverlayProps,
   AlertDialogProps as _AlertDialogProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ThemeColor } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';

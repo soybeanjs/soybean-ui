@@ -9,7 +9,7 @@ export const segmentVariants = tv({
       `focus-visible:(outline outline-2 outline-primary outline-offset-2)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
-    indicatorRoot: `absolute top-0 left-0 z-1 h-full w-[--radix-tabs-indicator-size] py-1 translate-x-[--radix-tabs-indicator-position] transition-[width,height,transform] duration-300`,
+    indicatorRoot: `absolute top-0 left-0 z-1 h-full w-[--reka-tabs-indicator-size] py-1 translate-x-[--reka-tabs-indicator-position] transition-[width,height,transform] duration-300`,
     indicator: `size-full rounded-md bg-background shadow`
   }
 });

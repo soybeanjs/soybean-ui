@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends StringOrNumber = StringOrNumber">
 import { computed } from 'vue';
-import { TabsRoot, useForwardPropsEmits } from 'radix-vue';
+import { TabsRoot, useForwardPropsEmits } from 'reka-ui';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { StringOrNumber } from '../../types';
 import type { TabsRootEmits, TabsRootProps } from './types';

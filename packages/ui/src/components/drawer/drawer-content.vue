@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { VisuallyHidden, useForwardProps } from 'radix-vue';
+import { VisuallyHidden, useForwardProps } from 'reka-ui';
 import { DrawerClose, DrawerContent, DrawerDescription, DrawerTitle } from 'vaul-vue';
 import { X } from 'lucide-vue-next';
 import { cn, drawerVariants } from '@soybean-ui/variants';

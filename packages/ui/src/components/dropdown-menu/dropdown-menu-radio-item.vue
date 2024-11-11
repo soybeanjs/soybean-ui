@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuRadioItem, useForwardPropsEmits } from 'radix-vue';
+import { DropdownMenuRadioItem, useForwardPropsEmits } from 'reka-ui';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import SDropdownMenuItemIndicator from './dropdown-menu-indicator.vue';
 import SDropdownMenuRadioIndicatorIconRoot from './dropdown-menu-radio-indicator-icon-root.vue';

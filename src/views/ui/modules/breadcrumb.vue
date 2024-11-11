@@ -40,9 +40,9 @@ const items2: BreadcrumbItem[] = [
     target: '_blank'
   },
   {
-    label: 'RadixVue',
-    value: 'radix-vue',
-    href: 'https://www.radix-vue.com',
+    label: 'RekaUI',
+    value: 'reka-ui',
+    href: 'https://reka-ui.com',
     target: '_blank'
   }
 ];

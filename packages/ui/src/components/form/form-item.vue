@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { provide, useId } from 'vue';
-import { Primitive } from 'radix-vue';
+import { Primitive } from 'reka-ui';
 import { cn, formVariants } from '@soybean-ui/variants';
 import { FORM_ITEM_INJECTION_KEY } from './hooks';
 import type { FormItemProps } from './types';

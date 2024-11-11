@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsContent } from 'radix-vue';
+import { TabsContent } from 'reka-ui';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsContentProps } from './types';
 

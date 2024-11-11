@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardProps } from 'radix-vue';
+import { useForwardProps } from 'reka-ui';
 import { LoaderCircle } from 'lucide-vue-next';
 import type { LoadingButtonProps } from './types';
 import SButton from './button.vue';

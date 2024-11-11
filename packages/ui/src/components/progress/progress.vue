@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from 'radix-vue';
+import { useForwardPropsEmits } from 'reka-ui';
 import SProgressRoot from './progress-root.vue';
 import SProgressIndicator from './progress-indicator.vue';
 import type { ProgressEmits, ProgressProps } from './types';

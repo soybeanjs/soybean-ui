@@ -5,7 +5,7 @@ import type {
   DialogRootProps,
   DialogContentProps as _DialogContentProps,
   DialogOverlayProps as _DialogOverlayProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
 

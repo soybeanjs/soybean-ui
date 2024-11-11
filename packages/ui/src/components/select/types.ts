@@ -8,7 +8,7 @@ import type {
   SelectLabelProps as _SelectLabelProps,
   SelectTriggerProps as _SelectTriggerProps,
   SelectViewportProps as _SelectViewportProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { SelectPosition, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

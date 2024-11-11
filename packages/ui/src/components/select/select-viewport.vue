@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectViewport } from 'radix-vue';
+import { SelectViewport } from 'reka-ui';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectViewportProps } from './types';
 

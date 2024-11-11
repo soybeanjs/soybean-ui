@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SwitchThumb } from 'radix-vue';
+import { SwitchThumb } from 'reka-ui';
 import { cn, switchVariants } from '@soybean-ui/variants';
 import type { SwitchThumbProps } from './types';
 

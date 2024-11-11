@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from 'radix-vue';
+import { Primitive, useForwardProps } from 'reka-ui';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbLinkProps } from './types';
 

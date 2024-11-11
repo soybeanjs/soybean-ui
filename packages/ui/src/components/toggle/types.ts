@@ -1,4 +1,4 @@
-import type { ToggleEmits, ToggleProps as _ToggleProps } from 'radix-vue';
+import type { ToggleEmits, ToggleProps as _ToggleProps } from 'reka-ui';
 import type { ThemeSize, ToggleVariant } from '@soybean-ui/variants';
 import type { ClassValueProp } from '../../types';
 

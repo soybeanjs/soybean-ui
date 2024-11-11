@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PinInputRoot, useForwardPropsEmits } from 'radix-vue';
+import { PinInputRoot, useForwardPropsEmits } from 'reka-ui';
 import { cn, pinInputVariants } from '@soybean-ui/variants';
 import type { PinInputRootEmits, PinInputRootProps } from './types';
 

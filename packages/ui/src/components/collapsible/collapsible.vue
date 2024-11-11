@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from 'radix-vue';
+import { CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from 'reka-ui';
 import SCollapsibleContent from './collapsible-content.vue';
 import type { CollapsibleEmits, CollapsibleProps } from './types';
 

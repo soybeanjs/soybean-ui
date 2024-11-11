@@ -1,8 +1,4 @@
-import type {
-  RadioGroupIndicatorProps,
-  RadioGroupRootProps,
-  RadioGroupItemProps as _RadioControlProps
-} from 'radix-vue';
+import type { RadioGroupIndicatorProps, RadioGroupRootProps, RadioGroupItemProps as _RadioControlProps } from 'reka-ui';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

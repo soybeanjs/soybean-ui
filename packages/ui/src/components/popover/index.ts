@@ -4,7 +4,7 @@ import {
   PopoverPortal as SPopoverPortal,
   PopoverRoot as SPopoverRoot,
   PopoverTrigger as SPopoverTrigger
-} from 'radix-vue';
+} from 'reka-ui';
 import SPopover from './popover.vue';
 import SPopoverArrow from './popover-arrow.vue';
 import SPopoverContent from './popover-content.vue';

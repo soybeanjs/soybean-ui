@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuItemIndicator, useForwardProps } from 'radix-vue';
+import { DropdownMenuItemIndicator, useForwardProps } from 'reka-ui';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuItemIndicatorProps } from './types';
 

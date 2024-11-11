@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { useForwardPropsEmits } from 'radix-vue';
+import { useForwardPropsEmits } from 'reka-ui';
 import PinInputRoot from './pin-input-root.vue';
 import PinInputItem from './pin-input-input.vue';
 import PinInputSeparator from './pin-input-separator.vue';

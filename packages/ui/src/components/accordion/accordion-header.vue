@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionHeader } from 'radix-vue';
+import { AccordionHeader } from 'reka-ui';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionHeaderProps } from './types';
 

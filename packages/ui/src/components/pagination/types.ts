@@ -2,7 +2,7 @@ import type {
   PaginationRootEmits,
   PaginationRootProps,
   PaginationListItemProps as _PaginationListItemProps
-} from 'radix-vue';
+} from 'reka-ui';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { ButtonVariant } from '../button/types';

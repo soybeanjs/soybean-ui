@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuSubTrigger, useForwardProps } from 'radix-vue';
+import { DropdownMenuSubTrigger, useForwardProps } from 'reka-ui';
 import { ChevronRight } from 'lucide-vue-next';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuSubTriggerProps } from './types';

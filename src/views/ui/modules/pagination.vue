@@ -12,16 +12,16 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 <template>
   <div class="py-12px text-18px">Variant</div>
   <div class="py-12px text-18px">plain</div>
-  <SPagination show-edges :total="200" />
+  <SPagination show-edges :items-per-page="10" :total="200" />
   <div class="py-12px text-18px">ghost</div>
-  <SPagination variant="ghost" show-edges :total="200" />
+  <SPagination variant="ghost" show-edges :items-per-page="10" :total="200" />
   <div class="py-12px text-18px">Disabled</div>
-  <SPagination disabled :total="200" />
+  <SPagination disabled :items-per-page="10" :total="200" />
   <div class="py-12px text-18px">Size</div>
   <div class="flex-col-stretch gap-3">
     <div v-for="size in sizes" :key="size">
       <div>{{ size }}</div>
-      <SPagination :size="size" show-edges :total="200" />
+      <SPagination :size="size" show-edges :items-per-page="10" :total="200" />
     </div>
   </div>
 </template>

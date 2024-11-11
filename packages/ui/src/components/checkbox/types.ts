@@ -1,19 +1,20 @@
 import type {
+  AcceptableValue,
   CheckboxCheckedState,
+  CheckboxGroupRootEmits,
   CheckboxRootProps as _CheckboxControlProps,
+  CheckboxGroupRootProps as _CheckboxGroupRootProps,
   CheckboxIndicatorProps as _CheckboxIndicatorProps
-} from 'radix-vue';
-import type { ThemeColor, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
+} from 'reka-ui';
+import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type CheckboxRootProps = ClassValueProp;
 
 export type CheckboxControlProps = ClassValueProp &
-  Omit<_CheckboxControlProps, 'as' | 'asChild' | 'defaultChecked' | 'checked'> & {
+  Omit<_CheckboxControlProps, 'as' | 'asChild'> & {
     color?: ThemeColor;
     size?: ThemeSize;
-    modelValue?: CheckboxCheckedState;
-    defaultValue?: boolean;
   };
 
 export type CheckboxIndicatorProps = ClassValueProp & Pick<_CheckboxIndicatorProps, 'forceMount'>;
@@ -26,27 +27,25 @@ export type CheckboxProps = CheckboxControlProps & {
   label?: string;
 };
 
-export type CheckboxGroupItem = CheckboxProps & {
+export type CheckboxGroupItem<T = AcceptableValue> = CheckboxProps & {
   label: string;
-  value: string;
+  value: T;
 };
 
-export type CheckboxGroupProps = ClassValueProp &
-  Pick<CheckboxProps, 'color' | 'size' | 'disabled'> & {
-    modelValue?: string[];
-    defaultValue?: string[];
-    items?: CheckboxGroupItem[];
-    orientation?: ThemeOrientation;
+export type CheckboxGroupRootProps<T = AcceptableValue> = ClassValueProp &
+  Omit<_CheckboxGroupRootProps<T>, 'as' | 'asChild'>;
+
+export type CheckboxGroupProps<T = AcceptableValue> = CheckboxGroupRootProps<T> &
+  Pick<CheckboxProps, 'color' | 'size'> & {
+    items?: CheckboxGroupItem<T>[];
   };
 
-export type CheckboxGroupEmits = {
-  'update:modelValue': [values: string[]];
-};
-
 export type CheckboxControlEmits = {
-  'update:modelValue': [value: boolean];
+  'update:modelValue': [value: CheckboxCheckedState];
 };
 
 export type CheckboxEmits = CheckboxControlEmits;
 
-export type { CheckboxCheckedState };
+export type CheckboxGroupEmits<T = AcceptableValue> = CheckboxGroupRootEmits<T>;
+
+export type { CheckboxGroupRootEmits, CheckboxCheckedState };
