@@ -21,6 +21,15 @@ defineOptions({
   name: 'UiForm'
 });
 
+interface User {
+  username: string;
+  gender: 'male' | 'female';
+  remember: boolean;
+  hobbies: string[];
+  city: string;
+  social: { name: string; url: string }[];
+}
+
 const requiredString = (message: string = 'Required!') =>
   z.string({ required_error: message }).trim().min(1, { message });
 
@@ -31,9 +40,7 @@ const user = z.object({
   hobbies: z.array(z.string()),
   city: requiredString('City is required'),
   social: z.array(z.object({ name: z.string(), url: z.string() }), { required_error: 'Social is required' })
-});
-
-// type User = z.infer<typeof user>;
+} satisfies Record<keyof User, z.ZodTypeAny>);
 
 const formSchema = toTypedSchema(user);
 
