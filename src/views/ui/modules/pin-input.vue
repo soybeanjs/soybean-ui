@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SPinInput } from 'soybean-ui';
+import { SPinInput, SonnerToaster, toast } from 'soybean-ui';
 import type { ThemeSize } from 'soybean-ui';
 
 defineOptions({
@@ -9,8 +9,9 @@ defineOptions({
 
 const numberValue = ref<string[]>([]);
 
-// eslint-disable-next-line no-alert
-const handleComplete = (value: string[]) => alert(value.join(''));
+const handleComplete = (value: string[]) => {
+  toast.info(`the input value is ${value.join('')}`);
+};
 
 const upperCaseValue = ref<string[]>([]);
 
@@ -22,8 +23,9 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
+  <SonnerToaster position="top-center" />
   <div class="py-12px text-18px">Default</div>
-  <SPinInput v-model="numberValue" type="number" placeholder="o" @complete="handleComplete" />
+  <SPinInput v-model="numberValue" type="number" placeholder="○" @complete="handleComplete" />
   <div class="py-12px text-18px">Custom Input Count</div>
   <SPinInput :input-count="8" placeholder="○" />
   <div class="py-12px text-18px">UpperCase</div>
@@ -37,7 +39,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
     <template #separator>-</template>
   </SPinInput>
   <div class="py-12px text-18px">Password</div>
-  <SPinInput placeholder="o" type="text" mask />
+  <SPinInput placeholder="○" type="text" mask />
   <div class="py-12px text-18px">Size</div>
   <div class="flex-col-stretch gap-3">
     <div v-for="size in sizes" :key="size">

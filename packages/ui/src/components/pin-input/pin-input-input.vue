@@ -2,13 +2,13 @@
 import { computed } from 'vue';
 import { PinInputInput, useForwardProps } from 'reka-ui';
 import { cn, pinInputVariants } from '@soybean-ui/variants';
-import type { PinInputItemProps } from './types';
+import type { PinInputInputProps } from './types';
 
 defineOptions({
   name: 'SPinInputInput'
 });
 
-const { class: cls, size, separate, ...delegatedProps } = defineProps<PinInputItemProps>();
+const { class: cls, size, separate, ...delegatedProps } = defineProps<PinInputInputProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
