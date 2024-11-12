@@ -15,121 +15,91 @@ export const badgeVariants = tv({
       accent: ''
     },
     variant: {
-      solid: 'bg-primary text-primary-foreground',
+      solid: '',
       plain: 'border border-border bg-background text-foreground',
-      outline: 'border bg-background'
+      outline: 'border'
     },
     shape: {
-      auto: 'rounded-md',
+      auto: 'rounded-lg',
       rounded: 'rounded-full'
     }
   },
   compoundVariants: [
     {
+      color: 'primary',
+      variant: 'solid',
+      class: `bg-primary border-primary text-primary-foreground`
+    },
+    {
       color: 'destructive',
       variant: 'solid',
-      class: `bg-destructive text-destructive-foreground`
+      class: `bg-destructive border-destructive text-destructive-foreground`
     },
     {
       color: 'success',
       variant: 'solid',
-      class: `bg-success text-success-foreground`
+      class: `bg-success border-success text-success-foreground`
     },
     {
       color: 'warning',
       variant: 'solid',
-      class: `bg-warning text-warning-foreground`
+      class: `bg-warning border-warning text-warning-foreground`
     },
     {
       color: 'info',
       variant: 'solid',
-      class: `bg-info text-info-foreground`
+      class: `bg-info border-info text-info-foreground`
     },
     {
       color: 'secondary',
       variant: 'solid',
-      class: `bg-secondary text-secondary-foreground`
+      class: `bg-secondary border-secondary text-secondary-foreground`
     },
     {
       color: 'accent',
       variant: 'solid',
-      class: `bg-accent text-accent-foreground`
+      class: `bg-accent border-accent text-accent-foreground`
     },
     {
       color: 'primary',
       variant: 'outline',
-      class: 'text-primary'
+      class: 'border-primary bg-primary/10 text-primary'
     },
     {
       color: 'destructive',
       variant: 'outline',
-      class: 'text-destructive'
+      class: 'border-destructive bg-destructive/10 text-destructive'
     },
     {
       color: 'success',
       variant: 'outline',
-      class: 'text-success'
+      class: 'border-success bg-success/10 text-success'
     },
     {
       color: 'warning',
       variant: 'outline',
-      class: 'text-warning'
+      class: 'border-warning bg-warning/10 text-warning'
     },
     {
       color: 'info',
       variant: 'outline',
-      class: 'text-info'
+      class: 'border-info bg-info/10 text-info'
     },
     {
       color: 'secondary',
       variant: 'outline',
-      class: 'text-secondary-foreground'
+      class: 'border-secondary-foreground/20 bg-secondary-foreground/5'
     },
     {
       color: 'accent',
       variant: 'outline',
-      class: 'text-accent-foreground'
-    },
-    {
-      color: 'primary',
-      variant: 'outline',
-      class: 'border-primary bg-primary/10'
-    },
-    {
-      color: 'destructive',
-      variant: 'outline',
-      class: 'border-destructive bg-destructive/10'
-    },
-    {
-      color: 'success',
-      variant: 'outline',
-      class: 'border-success bg-success/10'
-    },
-    {
-      color: 'warning',
-      variant: 'outline',
-      class: 'border-warning bg-warning/10'
-    },
-    {
-      color: 'info',
-      variant: 'outline',
-      class: 'border-info bg-info/10'
-    },
-    {
-      color: 'secondary',
-      variant: 'outline',
-      class: 'border-secondary-foreground bg-secondary-foreground/10'
-    },
-    {
-      color: 'accent',
-      variant: 'outline',
-      class: 'border-accent-foreground bg-accent-foreground/10'
+      class: 'border-accent-foreground/20 bg-accent-foreground/5'
     }
   ],
   defaultVariants: {
     color: 'primary',
     variant: 'solid',
-    shape: 'rounded'
+    shape: 'auto'
   }
 });
 
