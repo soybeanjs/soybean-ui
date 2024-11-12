@@ -29,10 +29,10 @@ export const checkboxVariants = tv({
         control: `border-info focus-visible:outline-info data-[state=checked]:(bg-info text-info-foreground) data-[state=indeterminate]:(bg-info text-info-foreground)`
       },
       secondary: {
-        control: `border-secondary-foreground focus-visible:outline-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/10 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/10 text-secondary-foreground)`
+        control: `border-secondary-foreground/50 focus-visible:outline-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/5 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/5 text-secondary-foreground)`
       },
       accent: {
-        control: `border-accent-foreground focus-visible:outline-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/10 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/10 text-accent-foreground)`
+        control: `border-accent-foreground/50 focus-visible:outline-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/5 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/5 text-accent-foreground)`
       }
     },
     size: {

@@ -33,11 +33,11 @@ export const alertVariants = tv({
         titleRoot: '[&>svg]:text-info'
       },
       secondary: {
-        root: 'border-secondary-foreground text-secondary-foreground',
+        root: 'border-secondary-foreground/50 text-secondary-foreground',
         titleRoot: '[&>svg]:text-secondary-foreground'
       },
       accent: {
-        root: 'border-accent-foreground text-accent-foreground',
+        root: 'border-accent-foreground/50 text-accent-foreground',
         titleRoot: '[&>svg]:text-accent-foreground'
       }
     },
@@ -93,14 +93,14 @@ export const alertVariants = tv({
       color: 'secondary',
       variant: 'soft',
       class: {
-        root: 'bg-secondary-foreground/10'
+        root: 'bg-secondary-foreground/5'
       }
     },
     {
       color: 'accent',
       variant: 'soft',
       class: {
-        root: 'bg-accent-foreground/10'
+        root: 'bg-accent-foreground/5'
       }
     }
   ],
