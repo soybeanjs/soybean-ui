@@ -64,7 +64,7 @@ defineOptions({
       </template>
     </Stabs>
     <Stabs
-      default-value="2"
+      v-model="tabValue3"
       :options="tabs"
       orientation="vertical"
       class="mt-24px"
