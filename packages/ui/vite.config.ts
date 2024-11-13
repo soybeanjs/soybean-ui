@@ -3,38 +3,22 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import dts from 'vite-plugin-dts';
-import unocss from 'unocss/vite';
+import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
-  plugins: [
-    vue({
-      script: {
-        defineModel: true
-      }
-    }),
-    vueJsx(),
-    unocss(),
-    dts({ rollupTypes: true, include: 'src/**/*' })
-  ],
+  plugins: [vue(), vueJsx(), dts({ cleanVueFileName: true, rollupTypes: true, include: 'src/**/*' }), UnoCSS({})],
   build: {
-    reportCompressedSize: false,
-    sourcemap: false,
-    commonjsOptions: {
-      ignoreTryCatch: false
-    },
     lib: {
-      entry: fileURLToPath(new URL('src/index.ts', import.meta.url)),
       name: 'soybean-ui',
-      fileName: 'index',
-      formats: ['es', 'cjs']
+      entry: {
+        index: fileURLToPath(new URL('src/index.ts', import.meta.url))
+      },
+      fileName: (format, name) => {
+        return `${name}.${format === 'es' ? 'js' : 'cjs'}`;
+      }
     },
     rollupOptions: {
-      external: ['vue', 'reka-ui'],
-      output: {
-        globals: {
-          vue: 'Vue'
-        }
-      }
+      external: ['vue', 'reka-ui']
     }
   }
 });
