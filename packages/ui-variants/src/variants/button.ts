@@ -16,6 +16,7 @@ export const buttonVariants = tv({
     },
     variant: {
       solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
+      pure: 'border border-border bg-background text-accent-foreground hover:bg-accent/80 active:bg-accent',
       plain: 'border border-border bg-background text-foreground',
       outline: 'border bg-background',
       dashed: 'border border-dashed bg-background',
@@ -292,6 +293,21 @@ export const buttonVariants = tv({
       variant: 'plain',
       shadow: 'lg',
       class: 'active:shadow-xl'
+    },
+    {
+      variant: 'pure',
+      shadow: 'sm',
+      class: 'active:shadow-sm'
+    },
+    {
+      variant: 'pure',
+      shadow: 'md',
+      class: 'active:shadow-md'
+    },
+    {
+      variant: 'pure',
+      shadow: 'lg',
+      class: 'active:shadow-lg'
     }
   ],
   defaultVariants: {
