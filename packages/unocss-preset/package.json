@@ -9,10 +9,8 @@
       "*": ["./src/*"]
     }
   },
-  "peerDependencies": {
-    "@unocss/core": ">=0.60.0"
-  },
-  "devDependencies": {
+  "dependencies": {
+    "@soybean-ui/color": "workspace:*",
     "@unocss/core": "0.64.0"
   }
 }

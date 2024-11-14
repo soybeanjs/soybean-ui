@@ -3,6 +3,7 @@ import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SScrollArea, Stabs } from 'soybean-ui';
+import 'soybean-ui/style.css';
 import type { TabsOption } from 'soybean-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';

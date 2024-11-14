@@ -1,8 +1,8 @@
 import { defineConfig, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss';
 import type { Theme } from 'unocss/preset-mini';
+import { presetSoybeanJS } from '@soybeanjs/unocss-preset';
 import { presetAnimations } from 'unocss-preset-animations';
-import { presetShadcn } from '@soybean-ui/unocss-preset-shadcn';
-import { presetSoybeanUnify } from '@soybean-ui/unocss-preset';
+import { presetSoybeanUI } from '@soybean-ui/unocss-preset';
 
 export default defineConfig<Theme>({
   content: {
@@ -11,5 +11,5 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetUno({ dark: 'class' }), presetAnimations(), presetSoybeanUnify(), presetShadcn()]
+  presets: [presetUno({ dark: 'class' }), presetAnimations(), presetSoybeanJS(), presetSoybeanUI()]
 });

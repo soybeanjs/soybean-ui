@@ -23,6 +23,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "build-pkg": "pnpm -r --filter='./packages/*' run build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
@@ -46,9 +47,9 @@
   },
   "devDependencies": {
     "@soybean-ui/unocss-preset": "workspace:*",
-    "@soybean-ui/unocss-preset-shadcn": "workspace:*",
     "@soybeanjs/cli": "1.1.1",
     "@soybeanjs/eslint-config": "1.4.2",
+    "@soybeanjs/unocss-preset": "0.0.3",
     "@types/node": "22.9.0",
     "@unocss/eslint-config": "^0.64.0",
     "@vitejs/plugin-vue": "5.2.0",

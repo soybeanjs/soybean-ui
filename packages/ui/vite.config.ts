@@ -13,12 +13,11 @@ export default defineConfig({
       entry: {
         index: fileURLToPath(new URL('src/index.ts', import.meta.url))
       },
-      fileName: (format, name) => {
-        return `${name}.${format === 'es' ? 'js' : 'cjs'}`;
-      }
+      fileName: 'index',
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['vue', 'reka-ui']
+      external: ['vue']
     }
   }
 });
