@@ -8,7 +8,7 @@ export default defineConfig(
       'vue/multi-word-component-names': [
         'warn',
         {
-          ignores: ['index', 'App', 'Docs', 'Navbar']
+          ignores: ['index', 'App', 'Docs', 'Navbar', 'Home']
         }
       ],
       'vue/require-default-prop': 'off',

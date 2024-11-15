@@ -2,6 +2,7 @@
 import { toRefs } from 'vue';
 import { useData } from 'vitepress';
 import { useScroll } from '@vueuse/core';
+import Home from './components/home.vue';
 import Navbar from './components/navbar.vue';
 
 const { site, theme, frontmatter } = useData();
@@ -13,7 +14,7 @@ const { top } = toRefs(arrivedState);
 <template>
   <div class="h-full flex-col items-center">
     <header
-      class="sticky top-0 z-10 h-68px w-full py-4 transition-all duration-500 md:h-full"
+      class="sticky top-0 z-10 h-68px w-full py-4 transition-all duration-500"
       :class="[
         top
           ? 'bg-transparent backdrop-blur-0'
@@ -34,7 +35,8 @@ const { top } = toRefs(arrivedState);
     </header>
 
     <div v-if="frontmatter.layout === 'home'" class="size-full flex-col flex-1 justify-between">
-      <div>Home</div>
+      <Home />
+      <div></div>
     </div>
 
     <div v-else class="size-full max-w-1440px flex-grow">
