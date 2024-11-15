@@ -4,6 +4,7 @@ import { useData } from 'vitepress';
 import { useScroll } from '@vueuse/core';
 import Home from './components/home.vue';
 import Navbar from './components/navbar.vue';
+import Docs from './components/docs.vue';
 
 const { site, theme, frontmatter } = useData();
 
@@ -40,7 +41,7 @@ const { top } = toRefs(arrivedState);
     </div>
 
     <div v-else class="size-full max-w-1440px flex-grow">
-      <!-- <Docs /> -->
+      <Docs />
     </div>
   </div>
 </template>
