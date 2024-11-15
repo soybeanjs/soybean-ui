@@ -8,7 +8,7 @@ export const switchVariants = tv({
       `peer shrink-0 inline-flex items-center border-2 rounded-full border-transparent shadow-sm transition-colors`,
       `focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
     ],
-    thumb: `block rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
+    thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
   },
   variants: {
     color: {
@@ -28,10 +28,10 @@ export const switchVariants = tv({
         root: `data-[state=checked]:bg-info focus-visible:outline-info`
       },
       secondary: {
-        root: `data-[state=checked]:bg-secondary-foreground focus-visible:outline-secondary-foreground/20`
+        root: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:outline-secondary-foreground/20`
       },
       accent: {
-        root: `data-[state=checked]:bg-accent-foreground focus-visible:outline-accent-foreground/20`
+        root: `data-[state=checked]:bg-accent-foreground/20 focus-visible:outline-accent-foreground/20`
       }
     },
     size: {

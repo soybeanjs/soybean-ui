@@ -3,8 +3,7 @@ import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type SwitchRootProps = ClassValueProp &
-  Omit<_SwitchRootProps, 'as' | 'asChild' | 'checked'> & {
-    modelValue?: boolean;
+  Omit<_SwitchRootProps, 'as' | 'asChild'> & {
     color?: ThemeColor;
     size?: ThemeSize;
   };
