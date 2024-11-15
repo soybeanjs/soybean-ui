@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@vueuse/core": "11.2.0",
-    "lucide-vue-next": "0.456.0",
+    "lucide-vue-next": "0.460.0",
     "soybean-ui": "workspace:*",
-    "vue": "3.5.12"
+    "vue": "3.5.13"
   },
   "devDependencies": {
-    "@iconify/vue": "^4.1.2",
+    "@iconify/vue": "4.1.2",
     "vitepress": "1.5.0"
   }
 }
