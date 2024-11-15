@@ -1,0 +1,19 @@
+{
+  "name": "@soybean-ui/docs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The documentation of soybean-ui",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "scripts": {
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "1.5.0"
+  }
+}
