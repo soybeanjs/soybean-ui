@@ -5,10 +5,10 @@ export const switchVariants = tv({
   base: [],
   slots: {
     root: [
-      `peer shrink-0 inline-flex items-center border-2 rounded-full border-transparent shadow-sm transition-colors`,
+      `peer shrink-0 inline-flex items-center border rounded-full border-transparent shadow-sm transition-colors`,
       `focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
     ],
-    thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
+    thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0.5`
   },
   variants: {
     color: {
