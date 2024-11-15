@@ -25,7 +25,7 @@ const forwardedEmits = useEmitAsProps(emit);
     <SDropdownMenuLabel :class="groupLabelClass" :size="size">{{ option.label }}</SDropdownMenuLabel>
     <SDropdownMenuSeparator v-if="separator || option.separator" :class="separatorClass" />
     <SDropdownMenuOption
-      v-for="item in option.options"
+      v-for="item in option.items"
       :key="createOptionKey(item)"
       :option="item"
       :to="to"
@@ -81,7 +81,7 @@ const forwardedEmits = useEmitAsProps(emit);
         @pointer-down-outside="emit('pointerDownOutsideSub', $event, option)"
       >
         <SDropdownMenuOption
-          v-for="item in option.options"
+          v-for="item in option.items"
           :key="createOptionKey(item)"
           :option="item"
           :to="to"

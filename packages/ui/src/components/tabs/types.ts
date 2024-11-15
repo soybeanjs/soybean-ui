@@ -41,7 +41,7 @@ export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTri
 
 export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
   TabsListProps & {
-    options: T[];
+    items: T[];
     listClass?: ClassValue;
     triggerClass?: ClassValue;
     enableIndicator?: boolean;

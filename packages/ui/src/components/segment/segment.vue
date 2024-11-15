@@ -13,7 +13,7 @@ defineOptions({
 
 const {
   loop,
-  options,
+  items,
   triggerRootClass,
   triggerClass,
   indicatorRootClass,
@@ -31,7 +31,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
   <SSegmentRoot v-bind="forwarded">
     <SSegmentTriggerRoot :class="triggerRootClass" :loop>
       <SSegmentTrigger
-        v-for="item in options"
+        v-for="item in items"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled"

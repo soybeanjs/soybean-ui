@@ -79,7 +79,7 @@ const positionOptions: SelectOption[] = [
     <SButton variant="outline" @click="openToastWithAction">open</SButton>
     <div class="py-12px text-18px">Position</div>
     <div class="w-160px">
-      <SSelect v-model="position" :options="positionOptions" />
+      <SSelect v-model="position" :items="positionOptions" />
     </div>
   </div>
 </template>

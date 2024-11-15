@@ -92,8 +92,8 @@ export type DropdownMenuItemOption = DropdownMenuOptionCommon & {
 export type DropdownMenuSubOption<T extends DropdownMenuItemOption = DropdownMenuItemOption> =
   DropdownMenuOptionCommon &
     Pick<DropdownMenuSubProps, 'defaultOpen' | 'open'> & {
-      /** The options to display in the sub-menu. */
-      options: (DropdownMenuSubOption<T> | T)[];
+      /** The items to display in the sub-menu. */
+      items: (DropdownMenuSubOption<T> | T)[];
     };
 
 export type DropdownMenuGroupOption<T extends DropdownMenuItemOption = DropdownMenuItemOption> = Pick<
@@ -101,7 +101,7 @@ export type DropdownMenuGroupOption<T extends DropdownMenuItemOption = DropdownM
   'label' | 'separator'
 > & {
   groupId: string;
-  options: (DropdownMenuSubOption<T> | T)[];
+  items: (DropdownMenuSubOption<T> | T)[];
 };
 
 export type DropdownMenuOptionType<T extends DropdownMenuItemOption = DropdownMenuItemOption> =
@@ -111,7 +111,7 @@ export type DropdownMenuOptionType<T extends DropdownMenuItemOption = DropdownMe
 
 export type DropdownMenuProps<T extends DropdownMenuItemOption = DropdownMenuItemOption> = DropdownMenuWrapperProps &
   DropdownMenuCommonProps & {
-    options: DropdownMenuOptionType<T>[];
+    items: DropdownMenuOptionType<T>[];
     groupClass?: ClassValue;
     subTriggerClass?: ClassValue;
     subTriggerIconClass?: ClassValue;

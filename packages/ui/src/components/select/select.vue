@@ -50,7 +50,7 @@ const delegatedContentProps = computedPick(delegatedProps, [
 ]);
 
 function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOption {
-  return (opt as SelectGroupOption).options !== undefined;
+  return (opt as SelectGroupOption).items !== undefined;
 }
 </script>
 
@@ -77,7 +77,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
         <SSelectViewport :nonce :position>
-          <template v-for="(opt, index) in options">
+          <template v-for="(opt, index) in items">
             <template v-if="isGroup(opt)">
               <SSelectLabel :key="`groupLabel_${opt.label}`" :size :class="groupLabelClass">
                 {{ opt.label }}
@@ -88,14 +88,14 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
                 :class="separatorClass"
               />
               <SelectGroup :key="`group_${opt.label}`" :class="groupClass">
-                <template v-for="(item, itemIndex) in opt.options" :key="itemIndex">
+                <template v-for="(item, itemIndex) in opt.items" :key="itemIndex">
                   <SSelectItemOption
                     :option="item"
                     :size
                     :item-class
                     :item-text-class
                     :item-indicator-class
-                    :separator="itemIndex !== opt.options.length - 1 && (separator || item.separator)"
+                    :separator="itemIndex !== opt.items.length - 1 && (separator || item.separator)"
                     :separator-class
                   >
                     <slot name="itemIndicatorIcon" />
@@ -111,7 +111,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
                 :item-class
                 :item-text-class
                 :item-indicator-class
-                :separator="index !== options.length - 1 && (separator || opt.separator)"
+                :separator="index !== items.length - 1 && (separator || opt.separator)"
                 :separator-class
               >
                 <slot name="itemIndicatorIcon" />

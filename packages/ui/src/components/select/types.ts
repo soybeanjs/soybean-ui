@@ -65,7 +65,7 @@ export type SelectOption = Pick<SelectItemProps, 'value' | 'disabled' | 'textVal
 
 export type SelectGroupOption = {
   label: string;
-  options: SelectOption[];
+  items: SelectOption[];
   groupId?: string;
 } & Pick<SelectOption, 'separator'>;
 
@@ -73,7 +73,7 @@ export type SelectProps = SelectRootProps &
   Pick<SelectPortalProps, 'to'> &
   Omit<SelectContentProps, 'class' | 'forceMount'> &
   Pick<SelectViewportProps, 'nonce'> & {
-    options: (SelectOption | SelectGroupOption)[];
+    items: (SelectOption | SelectGroupOption)[];
     size?: ThemeSize;
     placeholder?: string;
     separator?: boolean;

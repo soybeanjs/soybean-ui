@@ -30,7 +30,7 @@ const menus: DropdownMenuOptionType[] = [
     groupId: 'myAccount',
     label: 'My Account',
     separator: true,
-    options: [
+    items: [
       { value: '01', label: 'Profile', icon: User, shortcut: '⇧⌘P' },
       { value: '02', label: 'Billing', icon: CreditCard, shortcut: '⌘B' },
       { value: '03', label: 'Settings', icon: Settings, shortcut: '⌘S' },
@@ -42,7 +42,7 @@ const menus: DropdownMenuOptionType[] = [
     label: 'Invite Users',
     icon: UserPlus,
     separator: true,
-    options: [
+    items: [
       { value: '06', label: 'Email', icon: Mail, shortcut: '⇧⌘E' },
       { value: '07', label: 'Facebook', icon: Facebook, shortcut: '⇧⌘F' },
       { value: '08', label: 'Twitter', icon: Twitter, shortcut: '⇧⌘T', separator: true },
@@ -89,14 +89,14 @@ const placements = [
 <template>
   <div class="py-12px text-18px">Size</div>
   <div class="w-fit flex-col gap-12px">
-    <SDropdownMenu v-for="size in sizes" :key="size" :size="size" :options="menus" @select="handleSelect">
+    <SDropdownMenu v-for="size in sizes" :key="size" :size="size" :items="menus" @select="handleSelect">
       <template #trigger>
         <SButton variant="outline" :size="size">{{ size }} Dropdown</SButton>
       </template>
     </SDropdownMenu>
   </div>
   <div class="py-12px text-18px">With Arrow</div>
-  <SDropdownMenu :options="menus" show-arrow>
+  <SDropdownMenu :items="menus" show-arrow>
     <template #trigger>
       <SButton variant="outline">Open Dropdown</SButton>
     </template>

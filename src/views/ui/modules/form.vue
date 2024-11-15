@@ -90,7 +90,7 @@ watch(values, v => {
       <SCheckboxGroup :items="hobbies" />
     </SFormField>
     <SFormField name="city" label="City">
-      <SSelect :options="cities" />
+      <SSelect :items="cities" />
     </SFormField>
     <div class="flex-y-center gap-4px">
       <SLabel>Social</SLabel>

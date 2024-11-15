@@ -14,7 +14,7 @@ defineOptions({
 
 const {
   loop,
-  options,
+  items,
   listClass,
   triggerClass,
   enableIndicator = true,
@@ -34,7 +34,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
   <STabsRoot v-bind="forwarded">
     <STabsList :class="listClass" :loop :orientation>
       <STabsTrigger
-        v-for="item in options"
+        v-for="item in items"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled"
@@ -50,7 +50,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       </STabsIndicatorRoot>
     </STabsList>
     <STabsContent
-      v-for="item in options"
+      v-for="item in items"
       :key="item.value"
       :value="item.value"
       :force-mount="forceMountContent"

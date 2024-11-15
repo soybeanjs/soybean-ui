@@ -26,7 +26,7 @@ const delegatedWrapperProps = computedOmit(props, [
   'itemIconClass',
   'separatorClass',
   'shortcutClass',
-  'options',
+  'items',
   'groupClass',
   'subTriggerClass',
   'subTriggerIconClass',
@@ -85,7 +85,7 @@ const forwardedOptionEmits = computedPickEmits(forwardedEmits, optionEmitKeys);
       <slot name="trigger" :size="size" />
     </template>
     <SDropdownMenuOption
-      v-for="item in options"
+      v-for="item in items"
       :key="createOptionKey(item)"
       :option="item"
       :to="to"

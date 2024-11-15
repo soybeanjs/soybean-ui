@@ -254,7 +254,7 @@ const tabs: TabConfig[] = [
       </template>
       <Stabs
         v-model="activeTab"
-        :options="tabs"
+        :items="tabs"
         :enable-indicator="false"
         class="h-full"
         list-class="flex-wrap justify-start"

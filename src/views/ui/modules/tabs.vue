@@ -30,18 +30,13 @@ defineOptions({
 <template>
   <div class="w-320px lt-sm:w-auto">
     <div class="py-12px text-18px">Horizontal</div>
-    <Stabs v-model="tabValue" :options="tabs" content-class="p-4 border border-border rounded-1">
+    <Stabs v-model="tabValue" :items="tabs" content-class="p-4 border border-border rounded-1">
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
     </Stabs>
     <div class="py-12px text-18px">Vertical</div>
-    <Stabs
-      v-model="tabValue2"
-      :options="tabs"
-      orientation="vertical"
-      content-class="p-4 border border-border rounded-1"
-    >
+    <Stabs v-model="tabValue2" :items="tabs" orientation="vertical" content-class="p-4 border border-border rounded-1">
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
@@ -49,7 +44,7 @@ defineOptions({
     <div class="py-12px text-18px">Custom Style</div>
     <Stabs
       v-model="tabValue3"
-      :options="tabs"
+      :items="tabs"
       list-class="border-border border-b bg-transparent rounded-none"
       content-class="p-4 border border-border rounded-1"
     >
@@ -65,7 +60,7 @@ defineOptions({
     </Stabs>
     <Stabs
       v-model="tabValue3"
-      :options="tabs"
+      :items="tabs"
       orientation="vertical"
       class="mt-24px"
       list-class="border-border border-l bg-transparent rounded-none"

@@ -19,7 +19,7 @@ export type SegmentOption<T extends StringOrNumber = StringOrNumber> = Pick<Segm
 
 export type SegmentProps<T extends SegmentOption> = SegmentRootProps<T['value']> &
   SegmentTriggerRootProps & {
-    options: T[];
+    items: T[];
     triggerRootClass?: ClassValue;
     triggerClass?: ClassValue;
     indicatorRootClass?: ClassValue;

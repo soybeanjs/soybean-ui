@@ -14,7 +14,7 @@ export function isGroupOption<T extends DropdownMenuItemOption>(
 export function isSubOption<T extends DropdownMenuItemOption>(
   option: DropdownMenuOptionType<T>
 ): option is DropdownMenuSubOption<T> {
-  return !isGroupOption(option) && (option as DropdownMenuSubOption<T>).options?.length > 0;
+  return !isGroupOption(option) && (option as DropdownMenuSubOption<T>).items?.length > 0;
 }
 
 export function createOptionKey<T extends DropdownMenuItemOption>(item: DropdownMenuOptionType<T>, index?: number) {

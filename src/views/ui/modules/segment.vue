@@ -42,7 +42,7 @@ defineOptions({
 </script>
 
 <template>
-  <SSegment v-model="day" :options="weekends" />
+  <SSegment v-model="day" :items="weekends" />
 </template>
 
 <style scoped></style>
