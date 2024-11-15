@@ -18,7 +18,7 @@ importers:
         specifier: 11.2.0
         version: 11.2.0(vue@3.5.12(typescript@5.6.3))
       '@vueuse/router':
-        specifier: ^11.2.0
+        specifier: 11.2.0
         version: 11.2.0(vue-router@4.4.5(vue@3.5.12(typescript@5.6.3)))(vue@3.5.12(typescript@5.6.3))
       lucide-vue-next:
         specifier: 0.456.0
@@ -101,7 +101,23 @@ importers:
         version: 2.1.10(typescript@5.6.3)
 
   docs:
+    dependencies:
+      '@vueuse/core':
+        specifier: 11.2.0
+        version: 11.2.0(vue@3.5.12(typescript@5.6.3))
+      lucide-vue-next:
+        specifier: 0.456.0
+        version: 0.456.0(vue@3.5.12(typescript@5.6.3))
+      soybean-ui:
+        specifier: workspace:*
+        version: link:../packages/ui
+      vue:
+        specifier: 3.5.12
+        version: 3.5.12(typescript@5.6.3)
     devDependencies:
+      '@iconify/vue':
+        specifier: ^4.1.2
+        version: 4.1.2(vue@3.5.12(typescript@5.6.3))
       vitepress:
         specifier: 1.5.0
         version: 1.5.0(@algolia/client-search@5.14.0)(@types/node@22.9.0)(postcss@8.4.49)(search-insights@2.17.2)(typescript@5.6.3)
@@ -793,6 +809,11 @@ packages:
 
   '@iconify/utils@2.1.33':
     resolution: {integrity: sha512-jP9h6v/g0BIZx0p7XGJJVtkVnydtbgTgt9mVNcGDYwaa7UhdHdI9dvoq+gKj9sijMSJKxUPEG2JyjsgXjxL7Kw==}
+
+  '@iconify/vue@4.1.2':
+    resolution: {integrity: sha512-CQnYqLiQD5LOAaXhBrmj1mdL2/NCJvwcC4jtW2Z8ukhThiFkLDkutarTOV2trfc9EXqUqRs0KqXOL9pZ/IyysA==}
+    peerDependencies:
+      vue: '>=3'
 
   '@internationalized/date@3.5.6':
     resolution: {integrity: sha512-jLxQjefH9VI5P9UQuqB6qNKnvFt1Ky1TPIzHGsIlCi7sZZoMR8SdYbBGRvM0y+Jtb+ez4ieBzmiAUcpmPYpyOw==}
@@ -4087,6 +4108,11 @@ snapshots:
       mlly: 1.7.3
     transitivePeerDependencies:
       - supports-color
+
+  '@iconify/vue@4.1.2(vue@3.5.12(typescript@5.6.3))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.12(typescript@5.6.3)
 
   '@internationalized/date@3.5.6':
     dependencies:

@@ -1,0 +1,10 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.iconify {
+  width: 1.25em;
+  height: 1.25em;
+}

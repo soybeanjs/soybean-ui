@@ -1,5 +1,6 @@
 {
   "name": "@soybean-ui/docs",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
   "description": "The documentation of soybean-ui",
@@ -9,11 +10,18 @@
     "url": "https://github.com/soybeanjs"
   },
   "scripts": {
-    "docs:build": "vitepress build docs",
-    "docs:dev": "vitepress dev docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:build": "vitepress build",
+    "docs:dev": "vitepress dev",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "11.2.0",
+    "lucide-vue-next": "0.456.0",
+    "soybean-ui": "workspace:*",
+    "vue": "3.5.12"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.1.2",
     "vitepress": "1.5.0"
   }
 }

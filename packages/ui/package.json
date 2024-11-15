@@ -3,16 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
+    ".": "./src/index.ts",
     "./style.css": "./dist/style.css"
   },
   "typesVersions": {
     "*": {
-      "*": ["./dist/*"]
+      "*": ["./src/*"]
     }
   },
   "scripts": {

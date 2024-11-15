@@ -1,10 +1,11 @@
-import { defineConfig } from 'vitepress';
+import { defineConfigWithTheme } from 'vitepress';
+import unocss from 'unocss/vite';
 import { version } from '../package.json';
+import type { CustomThemeConfig } from './types';
 
-export default defineConfig({
-  title: 'Soybean',
+export default defineConfigWithTheme<CustomThemeConfig>({
+  title: 'Soybean UI',
   description: 'an elegant and powerful ui library like shadcn based on reka-ui',
-  titleTemplate: 'Soybean UI',
   head: [
     ['meta', { name: 'author', content: 'Soybean' }],
     [
@@ -34,11 +35,18 @@ export default defineConfig({
       level: [2, 3]
     },
     nav: [
-      { text: 'Docs', link: '/docs/overview/getting-started' },
-      { text: 'Examples', link: '/examples/checkbox-group' },
+      { value: 'docs', label: 'Docs', link: '/docs/overview/getting-started' },
+      { value: 'examples', label: 'Examples', link: '/examples/checkbox-group' },
       {
-        text: `v${version}`,
-        items: [{ text: 'Release Notes ', link: 'https://github.com/soybeanjs/soybean-ui/releases' }]
+        value: 'version',
+        label: `v${version}`,
+        items: [
+          {
+            value: 'release-notes',
+            label: 'Release Notes',
+            link: 'https://github.com/soybeanjs/soybean-ui/releases'
+          }
+        ]
       }
     ],
     sidebar: [
@@ -130,5 +138,8 @@ export default defineConfig({
         ]
       }
     ]
+  },
+  vite: {
+    plugins: [unocss()]
   }
 });

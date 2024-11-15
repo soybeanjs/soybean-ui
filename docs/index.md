@@ -1,4 +1,4 @@
 ---
 layout: home
-title: Reka UI - Unstyled, fully accessible UI library
+title: Soybean UI - An elegant and powerful ui library like shadcn based on reka-ui
 ---
