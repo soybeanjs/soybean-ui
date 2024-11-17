@@ -10,8 +10,6 @@ defineOptions({
 });
 
 const {
-  as,
-  asChild,
   class: className,
   defaultOpen = false,
   unmountOnHide = true,
@@ -33,7 +31,7 @@ defineExpose({ open });
 </script>
 
 <template>
-  <Primitive :as :as-child :data-state :data-disabled :class="className">
+  <Primitive :class="className" :as :as-child :data-state :data-disabled>
     <slot :open />
   </Primitive>
 </template>
