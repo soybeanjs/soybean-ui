@@ -8,7 +8,7 @@ defineOptions({
   name: 'Separator'
 });
 
-const { orientation = 'horizontal', decorative = false } = defineProps<SeparatorPropsWithPrimitive>();
+const { class: className, orientation = 'horizontal', decorative = false } = defineProps<SeparatorPropsWithPrimitive>();
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 
@@ -27,7 +27,7 @@ function isValidOrientation(_orientation: any): _orientation is DataOrientation 
 </script>
 
 <template>
-  <Primitive :as :as-child :data-orientation="computedOrientation" v-bind="semanticProps">
+  <Primitive :class="className" :as :as-child :data-orientation="computedOrientation" v-bind="semanticProps">
     <slot />
   </Primitive>
 </template>
