@@ -1,28 +1,27 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
+import { injectSwitchRootContext } from './context';
+import type { SwitchThumbPropsWithPrimitive } from './types';
 
-<script setup lang="ts">
-import { injectSwitchRootContext } from './switch-root.vue';
+defineOptions({
+  name: 'SwitchThumb'
+});
 
-export interface SwitchThumbProps extends PrimitiveProps {}
+const { class: className, as = 'span' } = defineProps<SwitchThumbPropsWithPrimitive>();
 
-withDefaults(defineProps<SwitchThumbProps>(), { as: 'span' });
+const { modelValue, disabled } = injectSwitchRootContext();
 
-const rootContext = injectSwitchRootContext();
+const dataState = computed(() => (modelValue?.value ? 'checked' : 'unchecked'));
+
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 
 useForwardExpose();
 </script>
 
 <template>
-  <Primitive
-    :data-state="rootContext.modelValue?.value ? 'checked' : 'unchecked'"
-    :data-disabled="rootContext.disabled.value ? '' : undefined"
-    :as
-    :as-child
-  >
+  <Primitive :class="className" :as :as-child :data-state :data-disabled>
     <slot />
   </Primitive>
 </template>
