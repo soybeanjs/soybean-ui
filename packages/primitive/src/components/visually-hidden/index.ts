@@ -1,2 +1,5 @@
-export { default as VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.vue';
-export { default as VisuallyHiddenInput } from './visually-hidden-input.vue';
+import VisuallyHidden from './visually-hidden.vue';
+import VisuallyHiddenInput from './visually-hidden-input.vue';
+
+export { VisuallyHidden, VisuallyHiddenInput };
+export * from './types';

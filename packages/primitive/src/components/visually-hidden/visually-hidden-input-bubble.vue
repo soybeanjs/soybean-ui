@@ -1,31 +1,26 @@
-<script lang="ts"></script>
-
 <script setup lang="ts" generic="T">
 import { computed, watch } from 'vue';
-import { usePrimitiveElement } from '../primitive';
-import VisuallyHidden, { type VisuallyHiddenProps } from './visually-hidden.vue';
-export interface VisuallyHiddenInputBubbleProps<T> {
-  name: string;
-  value: T;
-  checked?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  feature?: VisuallyHiddenProps['feature'];
-}
+import { usePrimitiveElement } from '../../composables';
+import VisuallyHidden from './visually-hidden.vue';
+import type { VisuallyHiddenInputBubbleProps } from './types';
 
 defineOptions({
+  name: 'VisuallyHiddenInputBubble',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<VisuallyHiddenInputBubbleProps<T>>(), {
-  feature: 'fully-hidden',
-  checked: undefined
-});
+const {
+  class: className,
+  feature = 'fully-hidden',
+  checked = undefined,
+  value
+} = defineProps<VisuallyHiddenInputBubbleProps<T>>();
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
-const valueState = computed(() => props.checked ?? props.value);
 
-watch(valueState, (cur, prev) => {
+const valueState = computed(() => checked ?? value);
+
+function handleOnStateChange(cur: T | boolean, prev: T | boolean) {
   if (!currentElement.value) return;
 
   const input = currentElement.value as HTMLInputElement;
@@ -39,9 +34,13 @@ watch(valueState, (cur, prev) => {
     input.dispatchEvent(inputEvent);
     input.dispatchEvent(changeEvent);
   }
+}
+
+watch(valueState, (cur, prev) => {
+  handleOnStateChange(cur, prev);
 });
 </script>
 
 <template>
-  <VisuallyHidden ref="primitiveElement" v-bind="{ ...props, ...$attrs }" as="input" />
+  <VisuallyHidden ref="primitiveElement" v-bind="$attrs" :class="className" as="input" :as-child :feature />
 </template>

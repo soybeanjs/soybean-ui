@@ -1,15 +1,14 @@
 <script setup lang="ts" generic="T">
 import { computed } from 'vue';
-import VisuallyHiddenInputBubble, { type VisuallyHiddenInputBubbleProps } from './visually-hidden-input-bubble.vue';
+import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
+import type { VisuallyHiddenInputBubbleProps } from './types';
 
 defineOptions({
+  name: 'VisuallyHiddenInput',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<VisuallyHiddenInputBubbleProps<T>>(), {
-  feature: 'fully-hidden',
-  checked: undefined
-});
+const props = defineProps<VisuallyHiddenInputBubbleProps<T>>();
 
 const parsedValue = computed(() => {
   // if primitive value
