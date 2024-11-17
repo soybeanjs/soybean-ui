@@ -1,31 +1,28 @@
-<script lang="ts">
-import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import { useForwardExpose } from '../../composables';
-import { useNonce } from '../../_shared/use-nonce';
-</script>
-
 <script setup lang="ts">
-export interface ViewportProps extends PrimitiveProps {
-  /**
-   * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
-   * globally from `ConfigProvider`.
-   */
-  nonce?: string;
-}
+import { toRef } from 'vue';
+import { Primitive } from '../primitive';
+import { useForwardExpose, useNonce } from '../../composables';
+import type { ViewportPropsWithPrimitive } from './types';
 
-const props = defineProps<ViewportProps>();
+defineOptions({
+  name: 'PrimitiveViewport',
+  inheritAttrs: false
+});
+
+const { class: className, nonce, ...delegatedProps } = defineProps<ViewportPropsWithPrimitive>();
+
 const { forwardRef } = useForwardExpose();
 
-const { nonce: propNonce } = toRefs(props);
-const nonce = useNonce(propNonce);
+const propNonce = useNonce(toRef(() => nonce));
 </script>
 
 <template>
   <Primitive
-    v-bind="{ ...$attrs, ...props }"
+    v-bind="{ ...$attrs, ...delegatedProps }"
     :ref="forwardRef"
+    :class="className"
+    :as
+    :as-child
     data-soybean-viewport
     role="presentation"
     :style="{
@@ -39,7 +36,7 @@ const nonce = useNonce(propNonce);
   >
     <slot />
   </Primitive>
-  <Primitive as="style" :nonce="nonce">
+  <Primitive as="style" :nonce="propNonce">
     /* Hide scrollbars cross-browser and enable momentum scroll for touch devices */ [data-soybean-viewport] {
     scrollbar-width:none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; }
     [data-soybean-viewport]::-webkit-scrollbar { display: none; }

@@ -1,1 +1,5 @@
-export { default as Viewport, type ViewportProps } from './viewport.vue';
+import Viewport from './viewport.vue';
+
+export { Viewport };
+
+export * from './types';
