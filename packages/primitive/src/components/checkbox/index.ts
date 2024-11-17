@@ -1,14 +1,8 @@
-export {
-  injectCheckboxGroupRootContext,
-  default as CheckboxGroupRoot,
-  type CheckboxGroupRootProps,
-  type CheckboxGroupRootEmits
-} from './CheckboxGroupRoot.vue';
-export {
-  injectCheckboxRootContext,
-  default as CheckboxRoot,
-  type CheckboxRootProps,
-  type CheckboxRootEmits
-} from './CheckboxRoot.vue';
-export { default as CheckboxIndicator, type CheckboxIndicatorProps } from './CheckboxIndicator.vue';
-export type { CheckedState as CheckboxCheckedState } from './utils';
+import CheckboxGroupRoot from './checkbox-group-root.vue';
+import CheckboxRoot from './checkbox-root.vue';
+import CheckboxIndicator from './checkbox-indicator.vue';
+
+export { CheckboxGroupRoot, CheckboxRoot, CheckboxIndicator };
+export { injectCheckboxGroupRootContext, injectCheckboxRootContext } from './context';
+
+export * from './types';

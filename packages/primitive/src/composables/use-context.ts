@@ -27,7 +27,7 @@ export function useContext<T extends (...args: any[]) => any>(contextName: strin
 
 /** Create context */
 function createContext<T>(contextName: string) {
-  const injectKey: InjectionKey<T> = Symbol(contextName);
+  const injectKey: InjectionKey<T | null> = Symbol(contextName);
 
   function useProvide(context: T) {
     provide(injectKey, context);
@@ -35,8 +35,12 @@ function createContext<T>(contextName: string) {
     return context;
   }
 
-  function useInject(defaultValue?: T) {
+  function useInject<S extends T | null | undefined = T>(defaultValue?: S): S extends null ? T | null : T {
     const context = inject(injectKey, defaultValue);
+
+    if (context === null) {
+      return context as any;
+    }
 
     if (!context) {
       throw new Error(`${contextName} is not provided`);

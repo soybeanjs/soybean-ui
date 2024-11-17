@@ -1,116 +1,75 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
+<script setup lang="ts">
 import { computed } from 'vue';
 import isEqual from 'fast-deep-equal';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, isValueEqualOrExist, useFormControl, useForwardExpose } from '../../_shared';
-import type { AcceptableValue, FormFieldProps } from '../../_shared/types';
+import { useFormControl, useForwardExpose } from '../../composables';
+import { isValueEqualOrExist } from '../../shared';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { CheckedState } from './utils';
-import { injectCheckboxGroupRootContext } from './checkbox-group-root.vue';
-</script>
-
-<script setup lang="ts">
-import { getState, isIndeterminate } from './utils';
-
-export interface CheckboxRootProps extends PrimitiveProps, FormFieldProps {
-  /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
-  defaultValue?: boolean | 'indeterminate';
-  /** The controlled value of the checkbox. Can be bound with v-model. */
-  modelValue?: boolean | 'indeterminate';
-  /** When `true`, prevents the user from interacting with the checkbox */
-  disabled?: boolean;
-  /**
-   * The value given as data when submitted with a `name`.
-   *
-   * @defaultValue 'on'
-   */
-  value?: AcceptableValue;
-  /** Id of the element */
-  id?: string;
-}
-
-export type CheckboxRootEmits = {
-  /** Event handler called when the value of the checkbox changes. */
-  'update:modelValue': [value: AcceptableValue];
-};
-
-interface CheckboxRootContext {
-  disabled: Ref<boolean>;
-  state: Ref<CheckedState>;
-}
-
-export const [injectCheckboxRootContext, provideCheckboxRootContext] =
-  createContext<CheckboxRootContext>('CheckboxRoot');
+import { injectCheckboxGroupRootContext, provideCheckboxRootContext } from './context';
+import { getState, isIndeterminate } from './shared';
+import type { CheckboxRootPropsWithPrimitive, CheckedState } from './types';
 
 defineOptions({
+  name: 'CheckboxRoot',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<CheckboxRootProps>(), {
-  defaultValue: false,
-  value: 'on',
-  as: 'button'
-});
-const emits = defineEmits<CheckboxRootEmits>();
+const {
+  class: className,
+  as = 'button',
+  defaultValue = false,
+  value = 'on',
+  id,
+  ...delegatedProps
+} = defineProps<CheckboxRootPropsWithPrimitive>();
 
-defineSlots<{
-  default: (props: {
-    /** Current value */
-    modelValue: typeof modelValue.value;
-    /** Current state */
-    state: typeof checkboxState.value;
-  }) => any;
-}>();
+const modelValue = defineModel<CheckedState>('modelValue', { default: defaultValue });
 
 const { forwardRef, currentElement } = useForwardExpose();
-
 const checkboxGroupContext = injectCheckboxGroupRootContext(null);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.defaultValue,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<CheckedState>;
+const isFormControl = useFormControl(currentElement);
 
-const disabled = computed(() => checkboxGroupContext?.disabled.value || props.disabled);
+const ariaLabel = computed(() => {
+  if (!id || !currentElement.value) {
+    return undefined;
+  }
+
+  return (document.querySelector(`[for="${id}"]`) as HTMLLabelElement)?.textContent;
+});
+
+const tag = computed(() => (as === 'button' ? 'button' : undefined));
+
+const disabled = computed(() => checkboxGroupContext?.disabled.value || delegatedProps.disabled);
 
 const checkboxState = computed<CheckedState>(() => {
   if (checkboxGroupContext?.modelValue.value) {
-    return isValueEqualOrExist(checkboxGroupContext.modelValue.value, props.value);
+    return isValueEqualOrExist(checkboxGroupContext.modelValue.value, value);
   }
 
   return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
 });
 
-function handleClick() {
-  if (checkboxGroupContext?.modelValue.value) {
-    const modelValueArray = [...(checkboxGroupContext.modelValue.value || [])];
-    if (isValueEqualOrExist(modelValueArray, props.value)) {
-      const index = modelValueArray.findIndex(i => isEqual(i, props.value));
-      modelValueArray.splice(index, 1);
-    } else {
-      modelValueArray.push(props.value);
-    }
-    checkboxGroupContext.modelValue.value = modelValueArray;
-  } else {
-    return (modelValue.value = isIndeterminate(modelValue.value) ? true : !modelValue.value);
-  }
-}
-
-const isFormControl = useFormControl(currentElement);
-const ariaLabel = computed(() =>
-  props.id && currentElement.value
-    ? (document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.innerText
-    : undefined
-);
-
 provideCheckboxRootContext({
   disabled,
   state: checkboxState
 });
+
+function handleClick() {
+  if (checkboxGroupContext?.modelValue.value) {
+    const modelValueArray = [...(checkboxGroupContext.modelValue.value || [])];
+    if (isValueEqualOrExist(modelValueArray, value)) {
+      const index = modelValueArray.findIndex(i => isEqual(i, value));
+      modelValueArray.splice(index, 1);
+    } else {
+      modelValueArray.push(value);
+    }
+    checkboxGroupContext.updateModelValue(modelValueArray);
+  } else {
+    modelValue.value = isIndeterminate(modelValue.value) ? true : !modelValue.value;
+  }
+}
 </script>
 
 <template>
@@ -119,10 +78,11 @@ provideCheckboxRootContext({
     :is="checkboxGroupContext?.rovingFocus.value ? RovingFocusItem : Primitive"
     :id="id"
     :ref="forwardRef"
+    :class="className"
     role="checkbox"
     :as
     :as-child
-    :type="as === 'button' ? 'button' : undefined"
+    :type="tag"
     :aria-checked="isIndeterminate(checkboxState) ? 'mixed' : checkboxState"
     :aria-required="required"
     :aria-label="$attrs['aria-label'] || ariaLabel"
@@ -143,10 +103,10 @@ provideCheckboxRootContext({
       v-if="isFormControl && name && !checkboxGroupContext"
       type="checkbox"
       :checked="!!checkboxState"
-      :name="name"
-      :value="value"
-      :disabled="disabled"
-      :required="required"
+      :name
+      :value
+      :disabled
+      :required
     />
   </component>
 </template>

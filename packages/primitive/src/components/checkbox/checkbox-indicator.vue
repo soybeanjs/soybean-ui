@@ -1,36 +1,39 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
-import { useForwardExpose } from '../../composables';
-</script>
-
 <script setup lang="ts">
-import { injectCheckboxRootContext } from './checkbox-root.vue';
-import { getState, isIndeterminate } from './utils';
+import { computed } from 'vue';
+import { useForwardExpose } from '../../composables';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
+import { injectCheckboxRootContext } from './context';
+import { getState, isIndeterminate } from './shared';
+import type { CheckboxIndicatorPropsWithPrimitive } from './types';
 
-export interface CheckboxIndicatorProps extends PrimitiveProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-withDefaults(defineProps<CheckboxIndicatorProps>(), {
-  as: 'span'
+defineOptions({
+  name: 'CheckboxIndicator',
+  inheritAttrs: false
 });
+
+const { class: className, as = 'span', forceMount } = defineProps<CheckboxIndicatorPropsWithPrimitive>();
 const { forwardRef } = useForwardExpose();
 
-const rootContext = injectCheckboxRootContext();
+const { state, disabled } = injectCheckboxRootContext();
+
+const present = computed(() => forceMount || isIndeterminate(state.value) || state.value === true);
+
+const dataState = computed(() => getState(state.value));
+
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 </script>
 
 <template>
-  <Presence :present="forceMount || isIndeterminate(rootContext.state.value) || rootContext.state.value === true">
+  <Presence :present>
     <Primitive
       :ref="forwardRef"
-      :data-state="getState(rootContext.state.value)"
-      :data-disabled="rootContext.disabled.value ? '' : undefined"
-      :style="{ pointerEvents: 'none' }"
-      :as-child
+      :class="className"
       :as
+      :as-child
+      :data-state
+      :data-disabled
+      :style="{ pointerEvents: 'none' }"
       v-bind="$attrs"
     >
       <slot />
