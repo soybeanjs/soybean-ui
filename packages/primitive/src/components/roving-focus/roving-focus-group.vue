@@ -10,19 +10,20 @@ defineOptions({
   name: 'RovingFocusGroup'
 });
 
-const props = withDefaults(defineProps<RovingFocusGroupPropsWithPrimitive>(), {
-  loop: false,
-  orientation: undefined,
-  preventScrollOnEntryFocus: false
-});
+const {
+  class: className,
+  preventScrollOnEntryFocus = false,
+  defaultCurrentTabStopId,
+  ...delegatedProps
+} = defineProps<RovingFocusGroupPropsWithPrimitive>();
 
 const emit = defineEmits<RovingFocusGroupEmits>();
 
-const currentTabStopId = defineModel<string | null>('currentTabStopId', { default: props.defaultCurrentTabStopId });
+const currentTabStopId = defineModel<string | null>('currentTabStopId', { default: defaultCurrentTabStopId });
 
 const { getItems, CollectionSlot } = useCollection({ isProvider: true });
 
-const { loop, orientation, dir: propDir } = toRefs(props);
+const { loop, orientation, dir: propDir } = toRefs(delegatedProps);
 const dir = useDirection(propDir);
 
 const isTabbingBackOut = ref(false);
@@ -58,7 +59,7 @@ function handleFocus(event: FocusEvent) {
   const currentItem = items.find(item => item.id === currentTabStopId.value);
   const candidateItems = [activeItem, currentItem, ...items].filter(Boolean) as typeof items;
 
-  focusFirst(candidateItems, props.preventScrollOnEntryFocus);
+  focusFirst(candidateItems, preventScrollOnEntryFocus);
 }
 
 function handleMouseUp() {
@@ -93,10 +94,11 @@ defineExpose({
 <template>
   <CollectionSlot>
     <Primitive
-      :tabindex="isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0"
-      :data-orientation="orientation"
+      :class="className"
       :as
       :as-child
+      :tabindex="isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0"
+      :data-orientation="orientation"
       :dir
       style="outline: none"
       @mousedown="handleMouseDown"

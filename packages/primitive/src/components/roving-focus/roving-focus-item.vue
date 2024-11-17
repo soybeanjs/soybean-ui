@@ -12,6 +12,7 @@ defineOptions({
 });
 
 const {
+  class: className,
   as = 'span',
   focusable = true,
   active = true,
@@ -104,6 +105,7 @@ onUnmounted(() => {
   <CollectionItem>
     <Primitive
       ref="primitiveElement"
+      :class="className"
       :as
       :as-child
       :tabindex="isCurrentTabStop ? 0 : -1"
