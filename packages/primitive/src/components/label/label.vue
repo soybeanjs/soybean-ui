@@ -1,32 +1,26 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
+<script setup lang="ts">
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
+import type { LabelPropsWithPrimitive } from './types';
 
-<script setup lang="ts">
-export interface LabelProps extends PrimitiveProps {
-  /** The id of the element the label is associated with. */
-  for?: string;
-}
-
-const props = withDefaults(defineProps<LabelProps>(), {
-  as: 'label'
+defineOptions({
+  name: 'PrimitiveLabel'
 });
+
+const { class: className, as = 'label', ...delegatedProps } = defineProps<LabelPropsWithPrimitive>();
+
+function handleMouseDown(event: MouseEvent) {
+  // prevent text selection when double clicking label
+  if (!event.defaultPrevented && event.detail > 1) {
+    event.preventDefault();
+  }
+}
 
 useForwardExpose();
 </script>
 
 <template>
-  <Primitive
-    v-bind="props"
-    @mousedown="
-      event => {
-        // prevent text selection when double clicking label
-        if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
-      }
-    "
-  >
+  <Primitive v-bind="delegatedProps" :class="className" :as="as" @mousedown="handleMouseDown">
     <slot />
   </Primitive>
 </template>
