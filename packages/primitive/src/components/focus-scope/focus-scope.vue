@@ -15,7 +15,11 @@ import {
 import { createFocusScopesStack, removeLinks } from './stack';
 import type { FocusScopeEmits, FocusScopePropsWithPrimitive } from './types';
 
-const { loop = false, trapped = false } = defineProps<FocusScopePropsWithPrimitive>();
+defineOptions({
+  name: 'FocusScope'
+});
+
+const { class: className, loop = false, trapped = false } = defineProps<FocusScopePropsWithPrimitive>();
 
 const emit = defineEmits<FocusScopeEmits>();
 
@@ -177,7 +181,7 @@ watchEffect(async cleanupFn => {
 </script>
 
 <template>
-  <Primitive ref="currentRef" tabindex="-1" :as :as-child @keydown="handleKeyDown">
+  <Primitive ref="currentRef" tabindex="-1" :class="className" :as :as-child @keydown="handleKeyDown">
     <slot />
   </Primitive>
 </template>
