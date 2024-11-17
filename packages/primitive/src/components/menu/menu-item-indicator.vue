@@ -1,0 +1,45 @@
+<script lang="ts">
+import type { Ref } from 'vue';
+import { ref } from 'vue';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
+import { Presence } from '../presence';
+import { createContext } from '../../_shared';
+import type { CheckedState } from './utils';
+</script>
+
+<script setup lang="ts">
+import { getCheckedState, isIndeterminate } from './utils';
+
+interface MenuItemIndicatorContext {
+  modelValue: Ref<CheckedState>;
+}
+
+export interface MenuItemIndicatorProps extends PrimitiveProps {
+  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
+  forceMount?: boolean;
+}
+
+export const [injectMenuItemIndicatorContext, provideMenuItemIndicatorContext] =
+  createContext<MenuItemIndicatorContext>(['MenuCheckboxItem', 'MenuRadioItem'], 'MenuItemIndicatorContext');
+
+withDefaults(defineProps<MenuItemIndicatorProps>(), {
+  as: 'span'
+});
+
+const indicatorContext = injectMenuItemIndicatorContext({
+  modelValue: ref(false)
+});
+</script>
+
+<template>
+  <Presence
+    :present="
+      forceMount || isIndeterminate(indicatorContext.modelValue.value) || indicatorContext.modelValue.value === true
+    "
+  >
+    <Primitive :as :as-child :data-state="getCheckedState(indicatorContext.modelValue.value)">
+      <slot />
+    </Primitive>
+  </Presence>
+</template>

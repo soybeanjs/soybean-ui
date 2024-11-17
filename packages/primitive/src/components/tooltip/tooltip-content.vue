@@ -1,0 +1,39 @@
+<script lang="ts">
+import { Presence } from '../presence';
+import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
+import type { TooltipContentImplEmits, TooltipContentImplProps } from './tooltip-content-impl.vue';
+</script>
+
+<script setup lang="ts">
+import TooltipContentImpl from './tooltip-content-impl.vue';
+import TooltipContentHoverable from './tooltip-content-hoverable.vue';
+import { injectTooltipRootContext } from './tooltip-root.vue';
+
+export type TooltipContentEmits = TooltipContentImplEmits;
+
+export interface TooltipContentProps extends TooltipContentImplProps {
+  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
+  forceMount?: boolean;
+}
+
+const props = withDefaults(defineProps<TooltipContentProps>(), {
+  side: 'top'
+});
+const emits = defineEmits<TooltipContentEmits>();
+
+const rootContext = injectTooltipRootContext();
+const forwarded = useForwardPropsEmits(props, emits);
+const { forwardRef } = useForwardExpose();
+</script>
+
+<template>
+  <Presence :present="forceMount || rootContext.open.value">
+    <component
+      :is="rootContext.disableHoverableContent.value ? TooltipContentImpl : TooltipContentHoverable"
+      :ref="forwardRef"
+      v-bind="forwarded"
+    >
+      <slot />
+    </component>
+  </Presence>
+</template>

@@ -1,0 +1,21 @@
+<script lang="ts">
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
+import { useForwardExpose } from '../../composables';
+</script>
+
+<script setup lang="ts">
+import { injectStepperItemContext } from './stepper-item.vue';
+
+export interface StepperIndicatorProps extends PrimitiveProps {}
+
+const props = defineProps<StepperIndicatorProps>();
+const itemContext = injectStepperItemContext();
+useForwardExpose();
+</script>
+
+<template>
+  <Primitive v-bind="props">
+    <slot>Step {{ itemContext.step.value }}</slot>
+  </Primitive>
+</template>
