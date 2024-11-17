@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import { useFocusGuards } from '../../_shared';
+import { useFocusGuards } from '../../composables';
+
+defineOptions({
+  name: 'FocusGuards'
+});
 
 useFocusGuards();
 </script>

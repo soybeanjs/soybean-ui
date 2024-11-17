@@ -1,1 +1,3 @@
-export { default as FocusGuards } from './focus-guards.vue';
+import FocusGuards from './focus-guards.vue';
+
+export { FocusGuards };
