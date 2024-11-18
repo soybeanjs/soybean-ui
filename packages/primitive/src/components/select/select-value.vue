@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import type { AcceptableValue } from '../../composables/types';
 
 import { useForwardExpose } from '../../composables';

@@ -1,4 +1,4 @@
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 
 export interface AspectRatioProps {
   /** The desired ratio. Eg: 16/9 */

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ComputedRef, Ref } from 'vue';
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import type {
   AcceptableValue,
@@ -64,7 +64,7 @@ const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
   rovingFocus: true,
   disabled: false
 });
-const emits = defineEmits<ToggleGroupRootEmits>();
+const emit = defineEmits<ToggleGroupRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -77,7 +77,7 @@ const { loop, rovingFocus, disabled, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 const { forwardRef, currentElement } = useForwardExpose();
 
-const { modelValue, changeModelValue, isSingle } = useSingleOrMultipleValue(props, emits);
+const { modelValue, changeModelValue, isSingle } = useSingleOrMultipleValue(props, emit);
 const isFormControl = useFormControl(currentElement);
 
 provideToggleGroupRootContext({

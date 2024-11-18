@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { PopperArrowProps } from '../popper';
+import PopperArrow from '../popper/popper-arrow.vue';
+import type { MenuArrowPropsWithPrimitive } from './types';
 
-import { PopperArrow } from '../popper';
+defineOptions({
+  name: 'MenuArrow'
+});
 
-export interface MenuArrowProps extends PopperArrowProps {}
-
-const props = defineProps<MenuArrowProps>();
+const props = defineProps<MenuArrowPropsWithPrimitive>();
 </script>
 
 <template>

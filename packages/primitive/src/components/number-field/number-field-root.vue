@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { type HTMLAttributes, type Ref, computed, ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import {
   clamp,
   createContext,
@@ -73,10 +73,10 @@ const props = withDefaults(defineProps<NumberFieldRootProps>(), {
   defaultValue: undefined,
   step: 1
 });
-const emits = defineEmits<NumberFieldRootEmits>();
+const emit = defineEmits<NumberFieldRootEmits>();
 const { disabled, min, max, step, formatOptions, id, locale: propLocale } = toRefs(props);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 }) as Ref<number>;

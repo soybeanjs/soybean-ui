@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { createContext, useCollection, useForwardExpose, useId } from '../../composables';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import type { AcceptableValue } from '../../composables/types';
 
 import { injectSelectRootContext } from './select-root.vue';

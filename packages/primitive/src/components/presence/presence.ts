@@ -65,3 +65,5 @@ export const Presence = defineComponent<PresenceProps, {}, string, PresenceSlots
     slots: {}
   }
 );
+
+export default Presence;

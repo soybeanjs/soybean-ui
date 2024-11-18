@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose, useId } from '../../composables';
-import { injectComboboxGroupContext } from './combobox-group.vue';
+import { injectComboboxGroupContext } from './context';
+import type { ComboboxLabelPropsWithPrimitive } from './types';
 
-export interface ComboboxLabelProps extends PrimitiveProps {
-  for?: string;
-}
-
-const props = withDefaults(defineProps<ComboboxLabelProps>(), {
+const props = withDefaults(defineProps<ComboboxLabelPropsWithPrimitive>(), {
   as: 'div'
 });
 

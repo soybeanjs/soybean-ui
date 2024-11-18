@@ -9,14 +9,14 @@ export type MenubarCheckboxItemEmits = MenuCheckboxItemEmits;
 export interface MenubarCheckboxItemProps extends MenuCheckboxItemProps {}
 
 const props = defineProps<MenubarCheckboxItemProps>();
-const emits = defineEmits<MenubarCheckboxItemEmits>();
+const emit = defineEmits<MenubarCheckboxItemEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuCheckboxItem v-bind="{ ...props, ...emitsAsProps }">
+  <MenuCheckboxItem v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuCheckboxItem>
 </template>

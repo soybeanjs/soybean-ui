@@ -1,25 +1,18 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
 import { useForwardExpose } from '../../composables';
-import type { MenuItemImplProps } from './menu-item-impl.vue';
-
 import MenuItemImpl from './menu-item-impl.vue';
-import { injectMenuRootContext } from './menu-root.vue';
-import { injectMenuContentContext } from './menu-content-impl.vue';
-import { ITEM_SELECT, SELECTION_KEYS } from './utils';
+import { injectMenuContentContext, injectMenuRootContext } from './context';
+import { ITEM_SELECT, SELECTION_KEYS } from './shared';
+import type { MenuItemEmits, MenuItemPropsWithPrimitive } from './types';
 
-export type MenuItemEmits = {
-  /**
-   * Event handler called when the user selects an item (via mouse or keyboard). <br> Calling `event.preventDefault` in
-   * this handler will prevent the menu from closing when selecting that item.
-   */
-  select: [event: Event];
-};
+defineOptions({
+  name: 'MenuItem'
+});
 
-export interface MenuItemProps extends MenuItemImplProps {}
+const props = defineProps<MenuItemPropsWithPrimitive>();
 
-const props = defineProps<MenuItemProps>();
-const emits = defineEmits<MenuItemEmits>();
+const emit = defineEmits<MenuItemEmits>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 const rootContext = injectMenuRootContext();
@@ -34,11 +27,39 @@ async function handleSelect() {
       bubbles: true,
       cancelable: true
     });
-    emits('select', itemSelectEvent);
+    emit('select', itemSelectEvent);
     // let select event finish
     await nextTick();
     if (itemSelectEvent.defaultPrevented) isPointerDownRef.value = false;
     else rootContext.onClose();
+  }
+}
+
+function handlePointerDown() {
+  isPointerDownRef.value = true;
+}
+
+async function handlePointerUp(event: PointerEvent) {
+  await nextTick();
+  if (event.defaultPrevented) return;
+  // Pointer down can move to a different menu item which should activate it on pointer up.
+  // We dispatch a click for selection to allow composition with click based triggers and to
+  // prevent Firefox from getting stuck in text selection mode when the menu closes.
+  if (!isPointerDownRef.value) (event.currentTarget as HTMLElement)?.click();
+}
+
+async function handleKeyDown(event: KeyboardEvent) {
+  const isTypingAhead = contentContext.searchRef.value !== '';
+  if (props.disabled || (isTypingAhead && event.key === ' ')) return;
+  if (SELECTION_KEYS.includes(event.key)) {
+    (event.currentTarget as HTMLElement)?.click();
+    /**
+     * We prevent default browser behaviour for selection keys as they should trigger a selection only:
+     *
+     * - prevents space from scrolling the page.
+     * - if keydown causes focus to move, prevents keydown from firing on the new target.
+     */
+    event.preventDefault();
   }
 }
 </script>
@@ -48,37 +69,9 @@ async function handleSelect() {
     v-bind="props"
     :ref="forwardRef"
     @click="handleSelect"
-    @pointerdown="
-      () => {
-        isPointerDownRef = true;
-      }
-    "
-    @pointerup="
-      async event => {
-        await nextTick();
-        if (event.defaultPrevented) return;
-        // Pointer down can move to a different menu item which should activate it on pointer up.
-        // We dispatch a click for selection to allow composition with click based triggers and to
-        // prevent Firefox from getting stuck in text selection mode when the menu closes.
-        if (!isPointerDownRef) event.currentTarget?.click();
-      }
-    "
-    @keydown="
-      async event => {
-        const isTypingAhead = contentContext.searchRef.value !== '';
-        if (disabled || (isTypingAhead && event.key === ' ')) return;
-        if (SELECTION_KEYS.includes(event.key)) {
-          event.currentTarget.click();
-          /**
-           * We prevent default browser behaviour for selection keys as they should trigger
-           * a selection only:
-           * - prevents space from scrolling the page.
-           * - if keydown causes focus to move, prevents keydown from firing on the new target.
-           */
-          event.preventDefault();
-        }
-      }
-    "
+    @pointerdown="handlePointerDown"
+    @pointerup="handlePointerUp"
+    @keydown="handleKeyDown"
   >
     <slot />
   </MenuItemImpl>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { useForwardExpose } from '../../composables';
 
 import { injectSelectContentContext } from './select-content-impl.vue';

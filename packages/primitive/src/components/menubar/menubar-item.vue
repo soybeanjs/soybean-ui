@@ -9,14 +9,14 @@ export type MenubarItemEmits = MenuItemEmits;
 export interface MenubarItemProps extends MenuItemProps {}
 
 const props = defineProps<MenubarItemProps>();
-const emits = defineEmits<MenubarItemEmits>();
+const emit = defineEmits<MenubarItemEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuItem v-bind="{ ...props, ...emitsAsProps }">
+  <MenuItem v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuItem>
 </template>

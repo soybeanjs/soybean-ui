@@ -9,14 +9,14 @@ export type ContextMenuItemEmits = MenuItemEmits;
 export interface ContextMenuItemProps extends MenuItemProps {}
 
 const props = defineProps<MenuItemProps>();
-const emits = defineEmits<MenuItemEmits>();
+const emit = defineEmits<MenuItemEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuItem v-bind="{ ...props, ...emitsAsProps }">
+  <MenuItem v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuItem>
 </template>

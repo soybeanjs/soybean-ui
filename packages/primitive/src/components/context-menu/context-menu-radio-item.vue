@@ -9,14 +9,14 @@ export type ContextMenuRadioItemEmits = MenuItemEmits;
 export interface ContextMenuRadioItemProps extends MenuRadioItemProps {}
 
 const props = defineProps<ContextMenuRadioItemProps>();
-const emits = defineEmits<ContextMenuRadioItemEmits>();
+const emit = defineEmits<ContextMenuRadioItemEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuRadioItem v-bind="{ ...props, ...emitsAsProps }">
+  <MenuRadioItem v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuRadioItem>
 </template>

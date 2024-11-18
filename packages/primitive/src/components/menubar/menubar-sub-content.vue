@@ -12,8 +12,8 @@ export type MenubarSubContentEmits = MenuSubContentEmits;
 export interface MenubarSubContentProps extends MenuSubContentProps {}
 
 const props = defineProps<MenubarSubContentProps>();
-const emits = defineEmits<MenubarSubContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<MenubarSubContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 
 const { getItems } = useCollection({ key: 'Menubar' });

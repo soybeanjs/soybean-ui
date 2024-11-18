@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../composables';
-import MenuContentImpl, { type MenuContentImplEmits, type MenuRootContentTypeProps } from './menu-content-impl.vue';
-import { injectMenuContext } from './menu-root.vue';
+import MenuContentImpl from './menu-content-impl.vue';
+import { injectMenuContext } from './context';
+import type { MenuRootContentModalEmits, MenuRootContentModalPropsWithPrimitive } from './types';
 
-const props = defineProps<MenuRootContentModalProps>();
-const emits = defineEmits<MenuRootContentModalEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+defineOptions({
+  name: 'MenuRootContentModal'
+});
+
+const props = defineProps<MenuRootContentModalPropsWithPrimitive>();
+
+const emit = defineEmits<MenuRootContentModalEmits>();
+
+const forwarded = useForwardPropsEmits(props, emit);
 
 const menuContext = injectMenuContext();
 
-interface MenuRootContentModalProps extends MenuRootContentTypeProps {}
-type MenuRootContentModalEmits = MenuContentImplEmits;
-
 const { forwardRef, currentElement } = useForwardExpose();
+
 useHideOthers(currentElement);
 </script>
 
@@ -24,7 +29,7 @@ useHideOthers(currentElement);
     :disable-outside-pointer-events="menuContext.open.value"
     :disable-outside-scroll="true"
     @dismiss="menuContext.onOpenChange(false)"
-    @focus-outside.prevent="emits('focusOutside', $event)"
+    @focus-outside.prevent="emit('focusOutside', $event)"
   >
     <slot />
   </MenuContentImpl>

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import type { MenuGroupPropsWithPrimitive } from './types';
 
-import { Primitive } from '../primitive';
+defineOptions({
+  name: 'MenuGroup'
+});
 
-export interface MenuGroupProps extends PrimitiveProps {}
-
-const props = defineProps<MenuGroupProps>();
+const props = defineProps<MenuGroupPropsWithPrimitive>();
 </script>
 
 <template>

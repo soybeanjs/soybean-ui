@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { useCollection, useForwardExpose, useId, useTypeahead } from '../../composables';
-import { Primitive } from '../primitive';
+import { useCollection, useForwardExpose, useId, useTypeAhead } from '../../composables';
+import Primitive from '../primitive/primitive';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';
 import { injectSelectRootContext } from './SelectRoot.vue';
 import { OPEN_KEYS } from './utils';
@@ -24,7 +24,7 @@ onMounted(() => {
 });
 
 const { getItems } = useCollection();
-const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
+const { search, handleTypeaheadSearch, resetTypeahead } = useTypeAhead();
 function handleOpen() {
   if (!isDisabled.value) {
     rootContext.onOpenChange(true);

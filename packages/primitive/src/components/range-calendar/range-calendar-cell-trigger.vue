@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { type DateValue, getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
 import { computed, nextTick } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { isBetweenInclusive, toDate } from '../../date';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useKbd, usePrimitiveElement } from '../../composables';
 import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
 

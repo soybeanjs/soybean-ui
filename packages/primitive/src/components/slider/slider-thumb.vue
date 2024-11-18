@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { useCollection, useForwardExpose } from '../../composables';
 
 import SliderThumbImpl from './slider-thumb-impl.vue';

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { PopperArrowProps } from '../popper';
-
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
-import { injectComboboxRootContext } from './combobox-root.vue';
-import { injectComboboxContentContext } from './combobox-content-impl.vue';
+import { injectComboboxContentContext, injectComboboxRootContext } from './context';
+import type { ComboboxArrowPropsWithPrimitive } from './types';
 
-export interface ComboboxArrowProps extends PopperArrowProps {}
+defineOptions({
+  name: 'ComboboxArrow'
+});
 
-const props = withDefaults(defineProps<ComboboxArrowProps>(), {
+const props = withDefaults(defineProps<ComboboxArrowPropsWithPrimitive>(), {
   width: 10,
   height: 5,
   as: 'svg'

@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import type { PopperArrowProps } from '../popper';
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
+import type { PopoverArrowPropsWithPrimitive } from './types';
 
-export interface PopoverArrowProps extends PopperArrowProps {}
+defineOptions({
+  name: 'PopoverArrow'
+});
 
-const props = withDefaults(defineProps<PopoverArrowProps>(), {
+const props = withDefaults(defineProps<PopoverArrowPropsWithPrimitive>(), {
   width: 10,
   height: 5,
   as: 'svg'
 });
+
 useForwardExpose();
 </script>
 

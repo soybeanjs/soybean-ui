@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose, useId } from '../../composables';
 

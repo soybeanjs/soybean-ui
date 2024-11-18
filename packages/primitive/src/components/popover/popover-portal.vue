@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
-
 import { TeleportPrimitive } from '../teleport';
+import type { PopoverPortalProps } from './types';
 
-export interface PopoverPortalProps extends TeleportProps {}
+defineOptions({
+  name: 'PopoverPortal'
+});
 
 const props = defineProps<PopoverPortalProps>();
 </script>

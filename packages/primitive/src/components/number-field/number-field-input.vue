@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { usePrimitiveElement } from '../../composables';
 import { injectNumberFieldRootContext } from './number-field-root.vue';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { isBrowser, useForwardExpose, useId } from '../../composables';
 import { useWindowSplitterResizeHandlerBehavior } from './utils/composables/use-window-splitter-behavior';
 
@@ -33,7 +33,7 @@ export type SplitterResizeHandleEmits = {
 const props = withDefaults(defineProps<SplitterResizeHandleProps>(), {
   tabindex: 0
 });
-const emits = defineEmits<SplitterResizeHandleEmits>();
+const emit = defineEmits<SplitterResizeHandleEmits>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 const { disabled } = toRefs(props);
@@ -82,7 +82,7 @@ watchEffect(onCleanup => {
           state.value = 'drag';
 
           startDragging(resizeHandleId, event);
-          emits('dragging', true);
+          emit('dragging', true);
           break;
         }
         case 'move': {
@@ -95,7 +95,7 @@ watchEffect(onCleanup => {
           state.value = 'hover';
 
           stopDragging();
-          emits('dragging', false);
+          emit('dragging', false);
           break;
         }
       }

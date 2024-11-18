@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { PopperAnchor, type PopperAnchorProps } from '../popper';
+import PopperAnchor from '../popper/popper-anchor.vue';
+import type { MenuAnchorPropsWithPrimitive } from './types';
 
-interface MenuAnchorProps extends PopperAnchorProps {}
+defineOptions({
+  name: 'MenuAnchor'
+});
 
-const props = defineProps<MenuAnchorProps>();
+const props = defineProps<MenuAnchorPropsWithPrimitive>();
 </script>
 
 <template>

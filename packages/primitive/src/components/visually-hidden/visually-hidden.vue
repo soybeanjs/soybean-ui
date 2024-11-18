@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import type { VisuallyHiddenPropsWithPrimitive } from './types';
 
 defineOptions({

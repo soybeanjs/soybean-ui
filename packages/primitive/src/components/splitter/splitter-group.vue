@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type CSSProperties, type Ref, computed, ref, toRefs, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { areEqual, createContext, useDirection, useForwardExpose, useId } from '../../composables';
 import { initializeDefaultStorage, loadPanelGroupState, savePanelGroupState } from './utils/storage';
 import { useWindowSplitterPanelGroupBehavior } from './utils/composables/use-window-splitter-panel-group-behavior';
@@ -91,7 +91,7 @@ const props = withDefaults(defineProps<SplitterGroupProps>(), {
   keyboardResizeBy: 10,
   storage: () => defaultStorage
 });
-const emits = defineEmits<SplitterGroupEmits>();
+const emit = defineEmits<SplitterGroupEmits>();
 
 defineSlots<{
   default: (props: {
@@ -249,7 +249,7 @@ watch(
         setLayout(nextLayout);
 
         eagerValuesRef.value.layout = nextLayout;
-        emits('layout', nextLayout);
+        emit('layout', nextLayout);
 
         callPanelCallbacks(panelDataArray, nextLayout, panelIdToLastNotifiedSizeMapRef.value);
       }
@@ -323,7 +323,7 @@ function registerResizeHandle(dragHandleId: string) {
       setLayout(nextLayout);
 
       eagerValuesRef.value.layout = nextLayout;
-      emits('layout', nextLayout);
+      emit('layout', nextLayout);
 
       callPanelCallbacks(panelDataArray, nextLayout, panelIdToLastNotifiedSizeMapRef.value);
     }
@@ -354,7 +354,7 @@ function resizePanel(panelData: PanelData, unsafePanelSize: number) {
     setLayout(nextLayout);
 
     eagerValuesRef.value.layout = nextLayout;
-    emits('layout', nextLayout);
+    emit('layout', nextLayout);
 
     callPanelCallbacks(panelDataArray, nextLayout, panelIdToLastNotifiedSizeMapRef.value);
   }
@@ -462,7 +462,7 @@ function collapsePanel(panelData: PanelData) {
 
         eagerValuesRef.value.layout = nextLayout;
 
-        emits('layout', nextLayout);
+        emit('layout', nextLayout);
 
         callPanelCallbacks(panelDataArray, nextLayout, panelIdToLastNotifiedSizeMapRef.value);
       }
@@ -505,7 +505,7 @@ function expandPanel(panelData: PanelData) {
 
         eagerValuesRef.value.layout = nextLayout;
 
-        emits('layout', nextLayout);
+        emit('layout', nextLayout);
 
         callPanelCallbacks(panelDataArray, nextLayout, panelIdToLastNotifiedSizeMapRef.value);
       }

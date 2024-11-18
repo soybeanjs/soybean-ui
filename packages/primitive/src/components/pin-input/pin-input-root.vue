@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { type ComputedRef, type Ref, computed, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
 import type { Direction, FormFieldProps } from '../../composables/types';
 
@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<PinInputRootProps>(), {
   placeholder: '',
   type: 'text'
 });
-const emits = defineEmits<PinInputRootEmits>();
+const emit = defineEmits<PinInputRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -76,7 +76,7 @@ const { mask, otp, placeholder, type, disabled, dir: propDir } = toRefs(props);
 const { forwardRef } = useForwardExpose();
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? [],
   passive: (props.modelValue === undefined) as false
 }) as Ref<string[]>;
@@ -94,7 +94,7 @@ const isCompleted = computed(() => {
 watch(
   modelValue,
   () => {
-    if (isCompleted.value) emits('complete', modelValue.value);
+    if (isCompleted.value) emit('complete', modelValue.value);
   },
   { deep: true }
 );

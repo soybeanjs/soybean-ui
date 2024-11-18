@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import type { MenuItemEmits, MenuItemProps } from './MenuItem.vue';
-
-import { getCheckedState } from './utils';
+import { getCheckedState } from '../checkbox/shared';
 import MenuItem from './menu-item.vue';
-import { injectMenuRadioGroupContext } from './menu-radio-group.vue';
-import { provideMenuItemIndicatorContext } from './menu-item-indicator.vue';
+import { injectMenuRadioGroupContext, provideMenuItemIndicatorContext } from './context';
+import type { MenuRadioItemEmits, MenuRadioItemPropsWithPrimitive } from './types';
 
-export type MenuRadioItemEmits = MenuItemEmits;
+defineOptions({
+  name: 'MenuRadioItem'
+});
 
-export interface MenuRadioItemProps extends MenuItemProps {
-  /** The unique value of the item. */
-  value: string;
-}
-
-const props = defineProps<MenuRadioItemProps>();
-const emits = defineEmits<MenuRadioItemEmits>();
+const props = defineProps<MenuRadioItemPropsWithPrimitive>();
+const emit = defineEmits<MenuRadioItemEmits>();
 
 const { value } = toRefs(props);
 const radioGroupContext = injectMenuRadioGroupContext();
 const modelValue = computed(() => radioGroupContext.modelValue.value === value?.value);
+
+function onSelect(event: Event) {
+  emit('select', event);
+  radioGroupContext.onValueChange(value.value);
+}
 
 provideMenuItemIndicatorContext({ modelValue });
 </script>
@@ -30,12 +30,7 @@ provideMenuItemIndicatorContext({ modelValue });
     v-bind="props"
     :aria-checked="modelValue"
     :data-state="getCheckedState(modelValue)"
-    @select="
-      async event => {
-        emits('select', event);
-        radioGroupContext.onValueChange(value);
-      }
-    "
+    @select="onSelect"
   >
     <slot />
   </MenuItem>

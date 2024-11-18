@@ -9,14 +9,14 @@ export type DropdownMenuCheckboxItemEmits = MenuCheckboxItemEmits;
 export interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {}
 
 const props = defineProps<DropdownMenuCheckboxItemProps>();
-const emits = defineEmits<DropdownMenuCheckboxItemEmits>();
+const emit = defineEmits<DropdownMenuCheckboxItemEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuCheckboxItem v-bind="{ ...props, ...emitsAsProps }">
+  <MenuCheckboxItem v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuCheckboxItem>
 </template>

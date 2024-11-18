@@ -23,7 +23,7 @@ export type NavigationMenuContentImplEmits = DismissableLayerEmits;
 export interface NavigationMenuContentImplProps extends DismissableLayerProps {}
 
 const props = defineProps<NavigationMenuContentImplProps>();
-const emits = defineEmits<NavigationMenuContentImplEmits>();
+const emit = defineEmits<NavigationMenuContentImplEmits>();
 
 const { getItems } = useCollection({ key: 'NavigationMenu' });
 const { forwardRef, currentElement } = useForwardExpose();
@@ -66,8 +66,8 @@ const motionAttribute = computed(() => {
 });
 
 function handleFocusOutside(ev: FocusOutsideEvent) {
-  emits('focusOutside', ev);
-  emits('interactOutside', ev);
+  emit('focusOutside', ev);
+  emit('interactOutside', ev);
 
   const target = ev.detail.originalEvent.target as HTMLElement;
   if (target.hasAttribute('data-navigation-menu-trigger')) ev.preventDefault();
@@ -82,7 +82,7 @@ function handleFocusOutside(ev: FocusOutsideEvent) {
 }
 
 function handlePointerDownOutside(ev: PointerDownOutsideEvent) {
-  emits('pointerDownOutside', ev);
+  emit('pointerDownOutside', ev);
 
   if (!ev.defaultPrevented) {
     const target = ev.target as HTMLElement;
@@ -109,7 +109,7 @@ watchEffect(cleanupFn => {
 });
 
 function handleEscapeKeyDown(ev: KeyboardEvent) {
-  emits('escapeKeyDown', ev);
+  emit('escapeKeyDown', ev);
 
   if (!ev.defaultPrevented) {
     menuContext.onItemDismiss();

@@ -1,114 +1,37 @@
-<script setup lang="ts">
-import { type EventHook, createEventHook, useVModel } from '@vueuse/core';
-import { type Ref, nextTick, ref, toRefs, watch } from 'vue';
-import { type PrimitiveProps, usePrimitiveElement } from '../primitive';
-import { getFocusIntent } from '../roving-focus/shared';
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { nextTick, ref, toRefs, watch } from 'vue';
+import { createEventHook } from '@vueuse/core';
 import {
-  createContext,
-  findValuesBetween,
   useCollection,
   useDirection,
   useFormControl,
   useKbd,
-  useTypeahead
+  usePrimitiveElement,
+  useTypeAhead
 } from '../../composables';
+import { findValuesBetween } from '../../shared';
+import type { AcceptableValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { Primitive } from '..';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../composables/types';
-</script>
+import Primitive from '../primitive/primitive';
+import { getFocusIntent } from '../roving-focus/shared';
+import { compare } from './shared';
+import { provideListboxRootContext } from './context';
+import type { ListboxRootContext, ListboxRootEmits, ListboxRootPropsWithPrimitive } from './types';
 
-<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { compare } from './utils';
+defineOptions({
+  name: 'ListboxRoot'
+});
 
-type ListboxRootContext<T> = {
-  modelValue: Ref<T | Array<T> | undefined>;
-  onValueChange: (val: T) => void;
-  multiple: Ref<boolean>;
-  orientation: Ref<DataOrientation>;
-  dir: Ref<Direction>;
-  disabled: Ref<boolean>;
-  highlightOnHover: Ref<boolean>;
-  highlightedElement: Ref<HTMLElement | null>;
-  isVirtual: Ref<boolean>;
-  virtualFocusHook: EventHook<Event | null | undefined>;
-  virtualKeydownHook: EventHook<KeyboardEvent>;
-  virtualHighlightHook: EventHook<any>;
-  by?: string | ((a: T, b: T) => boolean);
-  firstValue?: Ref<T | undefined>;
-  selectionBehavior?: Ref<'toggle' | 'replace'>;
-
-  focusable: Ref<boolean>;
-
-  onLeave: (event: Event) => void;
-  onEnter: (event: Event) => void;
-  changeHighlight: (el: HTMLElement, scrollIntoView?: boolean) => void;
-  onKeydownNavigation: (event: KeyboardEvent) => void;
-  onKeydownEnter: (event: KeyboardEvent) => void;
-  onKeydownTypeAhead: (event: KeyboardEvent) => void;
-  highlightFirstItem: (event: InputEvent) => void;
-};
-
-export const [injectListboxRootContext, provideListboxRootContext] =
-  createContext<ListboxRootContext<AcceptableValue>>('ListboxRoot');
-
-export interface ListboxRootProps<T = AcceptableValue> extends PrimitiveProps, FormFieldProps {
-  /** The controlled value of the listbox. Can be bound-with with `v-model`. */
-  modelValue?: T | Array<T>;
-  /** The value of the listbox when initially rendered. Use when you do not need to control the state of the Listbox */
-  defaultValue?: T | Array<T>;
-  /** Whether multiple options can be selected or not. */
-  multiple?: boolean;
-  /** The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
-  orientation?: DataOrientation;
-  /**
-   * The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** When `true`, prevents the user from interacting with listbox */
-  disabled?: boolean;
-  /**
-   * How multiple selection should behave in the collection.
-   *
-   * @defaultValue 'toggle'
-   */
-  selectionBehavior?: 'toggle' | 'replace';
-  /** When `true`, hover over item will trigger highlight */
-  highlightOnHover?: boolean;
-  /**
-   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over
-   * how objects are compared.
-   */
-  by?: string | ((a: T, b: T) => boolean);
-}
-
-export type ListboxRootEmits<T = AcceptableValue> = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [value: T];
-  /** Event handler when highlighted element changes. */
-  highlight: [payload: { ref: HTMLElement; value: T } | undefined];
-  /** Event handler called when container is being focused. Can be prevented. */
-  entryFocus: [event: CustomEvent];
-  /** Event handler called when the mouse leave the container */
-  leave: [event: Event];
-};
-
-const props = withDefaults(defineProps<ListboxRootProps>(), {
+const props = withDefaults(defineProps<ListboxRootPropsWithPrimitive<T>>(), {
   selectionBehavior: 'toggle',
   orientation: 'vertical'
 });
-const emits = defineEmits<ListboxRootEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current active value */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const emit = defineEmits<ListboxRootEmits>();
 
 const { multiple, highlightOnHover, orientation, disabled, selectionBehavior, dir: propDir } = toRefs(props);
 const { getItems } = useCollection<{ value: T }>({ isProvider: true });
-const { handleTypeaheadSearch } = useTypeahead();
+const { handleTypeAheadSearch } = useTypeAhead();
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const kbd = useKbd();
 const dir = useDirection(propDir);
@@ -118,11 +41,10 @@ const isFormControl = useFormControl(currentElement);
 const firstValue = ref<T>();
 const isUserAction = ref(false);
 const focusable = ref(true);
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-  passive: (props.modelValue === undefined) as false,
-  deep: true
-}) as Ref<T | T[] | undefined>;
+
+const modelValue = defineModel<T | T[] | undefined>('modelValue', {
+  default: props.defaultValue ?? (multiple.value ? [] : undefined)
+});
 
 function onValueChange(val: T) {
   isUserAction.value = true;
@@ -130,7 +52,12 @@ function onValueChange(val: T) {
     const index = modelValue.value.findIndex(i => compare(i, val, props.by));
     if (props.selectionBehavior === 'toggle') {
       const modelArray = [...modelValue.value];
-      index === -1 ? modelArray.push(val) : modelArray.splice(index, 1);
+      // index === -1 ? modelArray.push(val) : modelArray.splice(index, 1);
+      if (index === -1) {
+        modelArray.push(val);
+      } else {
+        modelArray.splice(index, 1);
+      }
       modelValue.value = modelArray;
     } else {
       modelValue.value = [val];
@@ -168,7 +95,7 @@ function changeHighlight(el: HTMLElement, scrollIntoView = true) {
   if (scrollIntoView) highlightedElement.value.scrollIntoView({ block: 'nearest' });
 
   const highlightedItem = getItems().find(i => i.ref === el);
-  emits('highlight', highlightedItem);
+  emit('highlight', highlightedItem);
 }
 
 function highlightItem(value: T) {
@@ -206,7 +133,7 @@ function onKeydownTypeAhead(event: KeyboardEvent) {
       event.preventDefault();
       changeHighlight(collection[collection.length - 1].ref);
     } else if (!isMetaKey) {
-      const el = handleTypeaheadSearch(event.key, getCollectionItem());
+      const el = handleTypeAheadSearch(event.key, getCollectionItem());
       if (el) changeHighlight(el);
     }
   }
@@ -230,13 +157,13 @@ function onLeave(event: Event) {
   }
 
   highlightedElement.value = null;
-  emits('leave', event);
+  emit('leave', event);
 }
 
 function onEnter(event: Event) {
   const entryFocusEvent = new CustomEvent('listbox.entryFocus', { bubbles: false, cancelable: true });
   event.currentTarget?.dispatchEvent(entryFocusEvent);
-  emits('entryFocus', entryFocusEvent);
+  emit('entryFocus', entryFocusEvent);
 
   if (entryFocusEvent.defaultPrevented) return;
 
@@ -310,6 +237,16 @@ async function highlightSelected(event?: Event) {
   }
 }
 
+async function onFocusout(event: FocusEvent) {
+  const target = (event.relatedTarget || event.target) as HTMLElement | null;
+
+  await nextTick();
+
+  if (highlightedElement.value && currentElement.value && !currentElement.value.contains(target)) {
+    onLeave(event);
+  }
+}
+
 // watch for only programmatic changes
 watch(
   modelValue,
@@ -333,7 +270,6 @@ defineExpose({
 
 provideListboxRootContext({
   modelValue,
-  // @ts-expect-error ignoring
   onValueChange,
   multiple,
   orientation,
@@ -348,7 +284,6 @@ provideListboxRootContext({
   by: props.by,
   firstValue,
   selectionBehavior,
-
   focusable,
   onLeave,
   onEnter,
@@ -357,26 +292,19 @@ provideListboxRootContext({
   onKeydownNavigation,
   onKeydownTypeAhead,
   highlightFirstItem
-});
+} as ListboxRootContext<AcceptableValue>);
 </script>
 
 <template>
   <Primitive
     ref="primitiveElement"
+    :class="props.class"
     :as
     :as-child
-    :dir="dir"
+    :dir
     :data-disabled="disabled ? '' : undefined"
     @pointerleave="onLeave"
-    @focusout="
-      async (event: FocusEvent) => {
-        const target = (event.relatedTarget || event.target) as HTMLElement | null;
-        await nextTick();
-        if (highlightedElement && currentElement && !currentElement.contains(target)) {
-          onLeave(event);
-        }
-      }
-    "
+    @focusout="onFocusout"
   >
     <slot :model-value="modelValue" />
 

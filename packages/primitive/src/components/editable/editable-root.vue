@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { type Ref, computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { useFocusOutside, usePointerDownOutside } from '../dismissable-layer';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { createContext, useDirection, useFormControl, usePrimitiveElement } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import type { Direction, FormFieldProps } from '../../composables/types';
@@ -92,7 +92,7 @@ const props = withDefaults(defineProps<EditableRootProps>(), {
   required: false
 });
 
-const emits = defineEmits<EditableRootEmits>();
+const emit = defineEmits<EditableRootEmits>();
 defineSlots<{
   default: (props: {
     /** Whether the editable field is in edit mode */
@@ -131,7 +131,7 @@ const inputRef = ref<HTMLInputElement | undefined>();
 const dir = useDirection(propDir);
 const isEditing = ref(startWithEditMode.value ?? false);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: defaultValue.value ?? '',
   passive: (props.modelValue === undefined) as false
 });
@@ -151,20 +151,20 @@ const previousValue = ref(modelValue.value);
 function cancel() {
   modelValue.value = previousValue.value;
   isEditing.value = false;
-  emits('update:state', 'cancel');
+  emit('update:state', 'cancel');
 }
 
 function edit() {
   isEditing.value = true;
-  emits('update:state', 'edit');
+  emit('update:state', 'edit');
 }
 
 function submit() {
   previousValue.value = modelValue.value;
   isEditing.value = false;
 
-  emits('update:state', 'submit');
-  emits('submit', modelValue.value);
+  emit('update:state', 'submit');
+  emit('submit', modelValue.value);
 }
 
 function handleDismiss() {

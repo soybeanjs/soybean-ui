@@ -1,85 +1,25 @@
-<script setup lang="ts">
-import type { Ref } from 'vue';
-import { computed, nextTick, reactive, ref, toRefs, watch } from 'vue';
-import { type EventHookOn, createEventHook, useVModel } from '@vueuse/core';
-import type { ListboxRootProps } from '../listbox';
-import { usePrimitiveElement } from '../primitive';
-</script>
-
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed, nextTick, reactive, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+import { createEventHook, useVModel } from '@vueuse/core';
+import { useDirection, useFilter, usePrimitiveElement } from '../../composables';
 import { PopperRoot } from '../popper';
 import { ListboxRoot } from '../listbox';
-import type { AcceptableValue } from '../../composables/types';
-import { createContext, useDirection, useFilter } from '../../composables';
+import type { AcceptableValue, GenericComponentInstance } from '../../types';
+import { provideComboboxRootContext } from './context';
+import type { ComboboxRootEmits, ComboboxRootPropsWithPrimitive } from './types';
 
-type ComboboxRootContext<T> = {
-  modelValue: Ref<T | Array<T>>;
-  multiple: Ref<boolean>;
-  disabled: Ref<boolean>;
-  open: Ref<boolean>;
-  onOpenChange: (value: boolean) => void;
-  isUserInputted: Ref<boolean>;
-  isVirtual: Ref<boolean>;
-  contentId: string;
-  inputElement: Ref<HTMLInputElement | undefined>;
-  onInputElementChange: (el: HTMLInputElement) => void;
-  highlightedElement: Ref<HTMLElement | undefined>;
-  parentElement: Ref<HTMLElement | undefined>;
-  onResetSearchTerm: EventHookOn;
-  allItems: Ref<Map<string, string>>;
-  allGroups: Ref<Map<string, Set<string>>>;
-  filterState: {
-    search: string;
-    filtered: { count: number; items: Map<string, number>; groups: Set<string> };
-  };
-  ignoreFilter: Ref<boolean>;
-};
+defineOptions({
+  name: 'ComboboxRoot',
+  inheritAttrs: false
+});
 
-export const [injectComboboxRootContext, provideComboboxRootContext] =
-  createContext<ComboboxRootContext<AcceptableValue>>('ComboboxRoot');
-
-export type ComboboxRootEmits<T = AcceptableValue> = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [value: T];
-  /** Event handler when highlighted element changes. */
-  highlight: [payload: { ref: HTMLElement; value: T } | undefined];
-  /** Event handler called when the open state of the combobox changes. */
-  'update:open': [value: boolean];
-};
-
-export interface ComboboxRootProps<T = AcceptableValue>
-  extends Omit<ListboxRootProps<T>, 'orientation' | 'selectionBehavior'> {
-  /** The controlled open state of the Combobox. Can be bound-with with `v-model:open`. */
-  open?: boolean;
-  /**
-   * The open state of the combobox when it is initially rendered. <br> Use when you do not need to control its open
-   * state.
-   */
-  defaultOpen?: boolean;
-  /**
-   * Whether to reset the searchTerm when the Combobox input blurred
-   *
-   * @defaultValue `true`
-   */
-  resetSearchTermOnBlur?: boolean;
-  /** When `true`, disable the default filters */
-  ignoreFilter?: boolean;
-}
-
-const props = withDefaults(defineProps<ComboboxRootProps<T>>(), {
+const props = withDefaults(defineProps<ComboboxRootPropsWithPrimitive<T>>(), {
   open: undefined,
   resetSearchTermOnBlur: true
 });
-const emits = defineEmits<ComboboxRootEmits<T>>();
 
-defineSlots<{
-  default: (props: {
-    /** Current open state */
-    open: typeof open.value;
-    /** Current active value */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const emit = defineEmits<ComboboxRootEmits<T>>();
 
 const { primitiveElement, currentElement: parentElement } =
   usePrimitiveElement<GenericComponentInstance<typeof ListboxRoot>>();
@@ -87,17 +27,38 @@ const { multiple, disabled, ignoreFilter, dir: propDir } = toRefs(props);
 
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
-  // @ts-expect-error ignore the type error here
-  defaultValue: (props.defaultValue ?? multiple.value) ? [] : undefined,
-  passive: (props.modelValue === undefined) as false,
-  deep: true
-}) as Ref<T | T[]>;
+const modelValue = defineModel<T | T[]>('modelValue', {
+  default: (props.defaultValue ?? multiple.value) ? [] : undefined
+});
 
-const open = useVModel(props, 'open', emits, {
+const open = useVModel(props, 'open', emit, {
   defaultValue: props.defaultOpen,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;
+
+const resetSearchTerm = createEventHook();
+const isUserInputted = ref(false);
+const isVirtual = ref(false);
+const inputElement = ref<HTMLInputElement>();
+
+const highlightedElement = computed(() => primitiveElement.value?.highlightedElement ?? undefined);
+
+const allItems = ref<Map<string, string>>(new Map());
+const allGroups = ref<Map<string, Set<string>>>(new Map());
+
+const { contains } = useFilter({ sensitivity: 'base' });
+
+const filterState = reactive({
+  search: '',
+  filtered: {
+    /** The count of all visible items. */
+    count: 0,
+    /** Map from visible item id to its search score. */
+    items: new Map() as Map<string, number>,
+    /** Set of groups with at least one visible item. */
+    groups: new Set() as Set<string>
+  }
+});
 
 async function onOpenChange(val: boolean) {
   open.value = val;
@@ -115,29 +76,6 @@ async function onOpenChange(val: boolean) {
     if (!val && props.resetSearchTermOnBlur) resetSearchTerm.trigger();
   }, 1);
 }
-
-const resetSearchTerm = createEventHook();
-const isUserInputted = ref(false);
-const isVirtual = ref(false);
-const inputElement = ref<HTMLInputElement>();
-
-const highlightedElement = computed(() => primitiveElement.value?.highlightedElement ?? undefined);
-
-const allItems = ref<Map<string, string>>(new Map());
-const allGroups = ref<Map<string, Set<string>>>(new Map());
-
-const { contains } = useFilter({ sensitivity: 'base' });
-const filterState = reactive({
-  search: '',
-  filtered: {
-    /** The count of all visible items. */
-    count: 0,
-    /** Map from visible item id to its search score. */
-    items: new Map() as Map<string, number>,
-    /** Set of groups with at least one visible item. */
-    groups: new Set() as Set<string>
-  }
-});
 
 function filterItems() {
   if (!filterState.search || props.ignoreFilter || isVirtual.value) {
@@ -233,7 +171,7 @@ provideComboboxRootContext({
       :name="name"
       :required="required"
       :disabled="disabled"
-      @highlight="emits('highlight', $event as any)"
+      @highlight="emit('highlight', $event as any)"
     >
       <slot :open="open" :model-value="modelValue" />
     </ListboxRoot>

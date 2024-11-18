@@ -2,7 +2,7 @@
 import type { Ref } from 'vue';
 import { ref, toRaw, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { clamp, createContext, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import type { DataOrientation, Direction, FormFieldProps } from '../../composables/types';
@@ -82,7 +82,7 @@ const props = withDefaults(defineProps<SliderRootProps>(), {
   defaultValue: () => [0],
   inverted: false
 });
-const emits = defineEmits<SliderRootEmits>();
+const emit = defineEmits<SliderRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -98,7 +98,7 @@ const isFormControl = useFormControl(currentElement);
 
 const { CollectionSlot } = useCollection({ isProvider: true });
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 }) as Ref<number[]>;
@@ -119,7 +119,7 @@ function handleSlideEnd() {
   const prevValue = valuesBeforeSlideStartRef.value[valueIndexToChangeRef.value];
   const nextValue = modelValue.value[valueIndexToChangeRef.value];
   const hasChanged = nextValue !== prevValue;
-  if (hasChanged) emits('valueCommit', toRaw(modelValue.value));
+  if (hasChanged) emit('valueCommit', toRaw(modelValue.value));
 }
 
 function updateValues(value: number, atIndex: number, { commit } = { commit: false }) {
@@ -132,7 +132,7 @@ function updateValues(value: number, atIndex: number, { commit } = { commit: fal
   if (hasMinStepsBetweenValues(nextValues, minStepsBetweenThumbs.value * step.value)) {
     valueIndexToChangeRef.value = nextValues.indexOf(nextValue);
     const hasChanged = String(nextValues) !== String(modelValue.value);
-    if (hasChanged && commit) emits('valueCommit', nextValues);
+    if (hasChanged && commit) emit('valueCommit', nextValues);
 
     if (hasChanged) {
       thumbElements.value[valueIndexToChangeRef.value]?.focus();

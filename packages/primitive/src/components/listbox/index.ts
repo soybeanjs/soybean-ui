@@ -1,17 +1,20 @@
+import ListboxRoot from './listbox-root.vue';
+import ListboxContent from './listbox-content.vue';
+import ListboxFilter from './listbox-filter.vue';
+import ListboxItem from './listbox-item.vue';
+import ListboxItemIndicator from './listbox-item-indicator.vue';
+import ListboxGroup from './listbox-group.vue';
+import listboxVirtualizer from './listbox-virtualizer.vue';
+
 export {
-  injectListboxRootContext,
-  default as ListboxRoot,
-  type ListboxRootProps,
-  type ListboxRootEmits
-} from './ListboxRoot.vue';
-export {
-  default as ListboxContent,
-  type ListboxContentProps
-  // type ListboxContentEmits,
-} from './ListboxContent.vue';
-export { default as ListboxFilter, type ListboxFilterProps, type ListboxFilterEmits } from './ListboxFilter.vue';
-export { default as ListboxItem, type ListboxItemProps, type ListboxItemEmits } from './ListboxItem.vue';
-export { default as ListboxItemIndicator, type ListboxItemIndicatorProps } from './ListboxItemIndicator.vue';
-export { default as ListboxVirtualizer, type ListboxVirtualizerProps } from './ListboxVirtualizer.vue';
-export { default as ListboxGroup, type ListboxGroupProps } from './ListboxGroup.vue';
-export { default as ListboxGroupLabel, type ListboxGroupLabelProps } from './listbox-group-label.vue';
+  ListboxRoot,
+  ListboxContent,
+  ListboxFilter,
+  ListboxItem,
+  ListboxItemIndicator,
+  ListboxGroup,
+  listboxVirtualizer
+};
+export { injectListboxRootContext, injectListboxItemContext, injectListboxGroupContext } from './context';
+
+export * from './types';

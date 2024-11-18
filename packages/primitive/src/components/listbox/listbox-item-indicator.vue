@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
+import { injectListboxItemContext } from './context';
+import type { ListboxItemIndicatorPropsWithPrimitive } from './types';
 
-import { injectListboxItemContext } from './listbox-item.vue';
+defineOptions({
+  name: 'ListboxItemIndicator'
+});
 
-export interface ListboxItemIndicatorProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<ListboxItemIndicatorProps>(), {
+const props = withDefaults(defineProps<ListboxItemIndicatorPropsWithPrimitive>(), {
   as: 'span'
 });
 

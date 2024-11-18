@@ -1,5 +1,5 @@
 import type { ComputedRef, Ref, VNodeRef } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import type { CollapsibleContentProps, CollapsibleRootProps } from '../collapsible';
 import type {
   AcceptableValue,

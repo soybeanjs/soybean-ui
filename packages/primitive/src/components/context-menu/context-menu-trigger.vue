@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs } from 'vue';
-import type { Point } from '../menu/utils';
-import type { PrimitiveProps } from '../primitive';
+import type { Point } from '../menu/shared';
+import type { PrimitiveProps } from '../primitive/types';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose } from '../../composables';
 import { injectContextMenuRootContext } from './context-menu-root.vue';

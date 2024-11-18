@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { toRef } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose, useNonce } from '../../composables';
 import type { ViewportPropsWithPrimitive } from './types';
 

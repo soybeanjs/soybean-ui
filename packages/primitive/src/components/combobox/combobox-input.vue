@@ -1,37 +1,24 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core';
 import { nextTick, onMounted, watch } from 'vue';
-import { usePrimitiveElement } from '../primitive';
-import type { ListboxFilterEmits, ListboxFilterProps } from '../listbox';
+import { usePrimitiveElement } from '../../composables';
+import { ListboxFilter, injectListboxRootContext } from '../listbox';
+import type { ComboboxInputPropsWithPrimitive } from './types';
+import { injectComboboxRootContext } from './context';
 
-import { injectListboxRootContext } from '../listbox/listbox-root.vue';
-import { ListboxFilter } from '../listbox';
-import { injectComboboxRootContext } from './combobox-root.vue';
+defineOptions({
+  name: 'ComboboxInput'
+});
 
-export type ComboboxInputEmits = ListboxFilterEmits;
-export interface ComboboxInputProps extends ListboxFilterProps {
-  /** The display value of input for selected item. Does not work with `multiple`. */
-  displayValue?: (val: any) => string;
-}
-
-const props = withDefaults(defineProps<ComboboxInputProps>(), {
+const props = withDefaults(defineProps<ComboboxInputPropsWithPrimitive>(), {
   as: 'input'
 });
-const emits = defineEmits<ComboboxInputEmits>();
-
 const rootContext = injectComboboxRootContext();
 const listboxContext = injectListboxRootContext();
 const { primitiveElement, currentElement } = usePrimitiveElement();
 
-const modelValue = useVModel(props, 'modelValue', emits, {
-  passive: (props.modelValue === undefined) as false
-});
+const modelValue = defineModel<string>('modelValue');
 
-onMounted(() => {
-  if (currentElement.value) rootContext.onInputElementChange(currentElement.value as HTMLInputElement);
-});
-
-function handleKeyDown(ev: KeyboardEvent) {
+function handleKeyDown(_ev: KeyboardEvent) {
   if (!rootContext.open.value) rootContext.onOpenChange(true);
 }
 
@@ -80,12 +67,17 @@ watch(
   },
   { immediate: true, deep: true }
 );
+
+onMounted(() => {
+  if (currentElement.value) rootContext.onInputElementChange(currentElement.value as HTMLInputElement);
+});
 </script>
 
 <template>
   <ListboxFilter
     ref="primitiveElement"
     v-model="modelValue"
+    :class="props.class"
     :as
     :as-child
     :auto-focus="autoFocus"

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import type { MenuSeparatorPropsWithPrimitive } from './types';
 
-import { Primitive } from '../primitive';
+defineOptions({
+  name: 'MenuSeparator'
+});
 
-export interface MenuSeparatorProps extends PrimitiveProps {}
-
-const props = defineProps<MenuSeparatorProps>();
+const props = defineProps<MenuSeparatorPropsWithPrimitive>();
 </script>
 
 <template>

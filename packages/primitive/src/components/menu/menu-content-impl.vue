@@ -1,84 +1,28 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { onUnmounted, ref, toRefs, watch } from 'vue';
-import type { FocusScopeProps } from '../focus-scope';
-import type { RovingFocusGroupEmits } from '../roving-focus';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../DismissableLayer';
-import type { PopperContentProps } from '../popper';
-
+import { onUnmounted, ref, toRefs, useTemplateRef, watch } from 'vue';
+import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
+import { useArrowNavigation, useFocusGuards, useForwardExpose, useTypeAhead } from '../../composables';
+import type { GraceIntent, HorizontalSide } from '../../types';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
-import { PopperContent, PopperContentPropsDefaultValue } from '../Popper';
+import PopperContent from '../popper/popper-content.vue';
+import { createPopperContentPropsDefaultValue } from '../popper/shared';
 import { RovingFocusGroup } from '../roving-focus';
-import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import { createContext, useArrowNavigation, useFocusGuards, useForwardExpose, useTypeahead } from '../../composables';
-import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
-import type { GraceIntent, Side } from './utils';
-import { FIRST_LAST_KEYS, LAST_KEYS, focusFirst, getOpenState, isMouseEvent, isPointerInGraceArea } from './utils';
+import { injectMenuContext, injectMenuRootContext, provideMenuContentContext } from './context';
+import { FIRST_LAST_KEYS, LAST_KEYS, focusFirst, getOpenState, isMouseEvent, isPointerInGraceArea } from './shared';
+import type { MenuContentImplPrivateEmits, MenuContentImplPropsWithPrimitive } from './types';
 
-export interface MenuContentContext {
-  onItemEnter: (event: PointerEvent) => boolean;
-  onItemLeave: (event: PointerEvent) => void;
-  onTriggerLeave: (event: PointerEvent) => boolean;
-  searchRef: Ref<string>;
-  pointerGraceTimerRef: Ref<number>;
-  onPointerGraceIntentChange: (intent: GraceIntent | null) => void;
-}
-
-export const [injectMenuContentContext, provideMenuContentContext] = createContext<MenuContentContext>('MenuContent');
-
-export interface MenuContentImplPrivateProps {
-  /**
-   * When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will
-   * need to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to
-   * trigger the element.
-   */
-  disableOutsidePointerEvents?: DismissableLayerProps['disableOutsidePointerEvents'];
-  /**
-   * Whether scrolling outside the `MenuContent` should be prevented
-   *
-   * @defaultValue false
-   */
-  disableOutsideScroll?: boolean;
-
-  /**
-   * Whether focus should be trapped within the `MenuContent`
-   *
-   * @defaultValue also
-   */
-  trapFocus?: FocusScopeProps['trapped'];
-}
-
-export type MenuContentImplEmits = DismissableLayerEmits &
-  Omit<RovingFocusGroupEmits, 'update:currentTabStopId'> & {
-    openAutoFocus: [event: Event];
-    /** Event handler called when auto-focusing on close. Can be prevented. */
-    closeAutoFocus: [event: Event];
-  };
-
-type MenuContentImplPrivateEmits = MenuContentImplEmits & {
-  /** Handler called when the `DismissableLayer` should be dismissed */
-  dismiss: [];
-};
-
-export interface MenuContentImplProps extends MenuContentImplPrivateProps, Omit<PopperContentProps, 'dir'> {
-  /**
-   * When `true`, keyboard navigation will loop from last item to first, and vice versa.
-   *
-   * @defaultValue false
-   */
-  loop?: boolean;
-}
-
-export interface MenuRootContentTypeProps
-  extends Omit<MenuContentImplProps, 'disableOutsidePointerEvents' | 'disableOutsideScroll' | 'trapFocus'> {}
-
-const props = withDefaults(defineProps<MenuContentImplProps>(), {
-  ...PopperContentPropsDefaultValue
+defineOptions({
+  name: 'MenuContentImpl'
 });
-const emits = defineEmits<MenuContentImplPrivateEmits>();
-const menuContext = injectMenuContext();
+
+const props = withDefaults(defineProps<MenuContentImplPropsWithPrimitive>(), createPopperContentPropsDefaultValue());
+
+const emit = defineEmits<MenuContentImplPrivateEmits>();
+
 const rootContext = injectMenuRootContext();
+
+const menuContext = injectMenuContext();
 
 const { trapFocus, disableOutsidePointerEvents, loop } = toRefs(props);
 
@@ -89,13 +33,13 @@ const searchRef = ref('');
 const timerRef = ref(0);
 const pointerGraceTimerRef = ref(0);
 const pointerGraceIntentRef = ref<GraceIntent | null>(null);
-const pointerDirRef = ref<Side>('right');
+const pointerDirRef = ref<HorizontalSide>('right');
 const lastPointerXRef = ref(0);
 const currentItemId = ref<string | null>(null);
 
-const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
+const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
-const { handleTypeaheadSearch } = useTypeahead();
+const { handleTypeAheadSearch } = useTypeAhead();
 
 watch(contentElement, el => {
   menuContext!.onContentChange(el);
@@ -112,7 +56,7 @@ function isPointerMovingToSubmenu(event: PointerEvent) {
 }
 
 async function handleMountAutoFocus(event: Event) {
-  emits('openAutoFocus', event);
+  emit('openAutoFocus', event);
   if (event.defaultPrevented) return;
   // when opening, explicitly focus the content area only and leave
   // `onEntryFocus` in  control of focusing first item
@@ -147,7 +91,7 @@ function handleKeyDown(event: KeyboardEvent) {
   if (isKeyDownInside) {
     // menus should not be navigated using tab key so we prevent it
     if (event.key === 'Tab') event.preventDefault();
-    if (!isModifierKey && isCharacterKey) handleTypeaheadSearch(event.key, collectionItems);
+    if (!isModifierKey && isCharacterKey) handleTypeAheadSearch(event.key, collectionItems);
   }
 
   // focus first/last item based on key pressed
@@ -211,16 +155,16 @@ provideMenuContentContext({
     as-child
     :trapped="trapFocus"
     @mount-auto-focus="handleMountAutoFocus"
-    @unmount-auto-focus="emits('closeAutoFocus', $event)"
+    @unmount-auto-focus="emit('closeAutoFocus', $event)"
   >
     <DismissableLayer
       as-child
       :disable-outside-pointer-events="disableOutsidePointerEvents"
-      @escape-key-down="emits('escapeKeyDown', $event)"
-      @pointer-down-outside="emits('pointerDownOutside', $event)"
-      @focus-outside="emits('focusOutside', $event)"
-      @interact-outside="emits('interactOutside', $event)"
-      @dismiss="emits('dismiss')"
+      @escape-key-down="emit('escapeKeyDown', $event)"
+      @pointer-down-outside="emit('pointerDownOutside', $event)"
+      @focus-outside="emit('focusOutside', $event)"
+      @interact-outside="emit('interactOutside', $event)"
+      @dismiss="emit('dismiss')"
     >
       <RovingFocusGroup
         ref="rovingFocusGroupRef"
@@ -231,7 +175,7 @@ provideMenuContentContext({
         :loop="loop"
         @entry-focus="
           event => {
-            emits('entryFocus', event);
+            emit('entryFocus', event);
             // only focus first item when using keyboard
             if (!rootContext.isUsingKeyboardRef.value) event.preventDefault();
           }
@@ -240,6 +184,7 @@ provideMenuContentContext({
         <PopperContent
           :ref="forwardRef"
           role="menu"
+          :class="props.class"
           :as
           :as-child
           aria-orientation="vertical"

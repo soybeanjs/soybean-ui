@@ -1,34 +1,28 @@
 <script setup lang="ts">
-import type { ReferenceElement } from '@floating-ui/vue';
 import { watchPostEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import Primitive from '../primitive/primitive';
+import { injectPopperRootContext } from './context';
+import type { PopperAnchorPropsWithPrimitive } from './types';
 
-import { injectPopperRootContext } from './popper-root.vue';
+defineOptions({
+  name: 'PopperAnchor',
+  inheritAttrs: false
+});
 
-export interface PopperAnchorProps extends PrimitiveProps {
-  /**
-   * The reference (or anchor) element that is being referred to for positioning.
-   *
-   * If not provided will use the current component as anchor.
-   */
-  reference?: ReferenceElement;
-}
-
-const props = defineProps<PopperAnchorProps>();
+const { class: className, reference } = defineProps<PopperAnchorPropsWithPrimitive>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 
 const rootContext = injectPopperRootContext();
 
 watchPostEffect(() => {
-  rootContext.onAnchorChange(props.reference ?? currentElement.value);
+  rootContext.onAnchorChange(reference ?? currentElement.value);
 });
 </script>
 
 <template>
-  <Primitive :ref="forwardRef" :as :as-child>
+  <Primitive :ref="forwardRef" :class="className" :as :as-child>
     <slot />
   </Primitive>
 </template>

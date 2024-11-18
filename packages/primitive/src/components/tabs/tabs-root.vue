@@ -2,8 +2,8 @@
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import type { DataOrientation, Direction, StringOrNumber } from '../../composables/types';
 import { createContext, useDirection, useForwardExpose, useId } from '../../composables';
 </script>
@@ -64,7 +64,7 @@ const props = withDefaults(defineProps<TabsRootProps<T>>(), {
   activationMode: 'automatic',
   unmountOnHide: true
 });
-const emits = defineEmits<TabsRootEmits<T>>();
+const emit = defineEmits<TabsRootEmits<T>>();
 
 defineSlots<{
   default: (props: {
@@ -77,7 +77,7 @@ const { orientation, unmountOnHide, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 useForwardExpose();
 
-const modelValue = useVModel<TabsRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emits, {
+const modelValue = useVModel<TabsRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 });

@@ -25,9 +25,9 @@ defineOptions({
 });
 
 const props = defineProps<NavigationMenuContentProps>();
-const emits = defineEmits<NavigationMenuContentEmits>();
+const emit = defineEmits<NavigationMenuContentEmits>();
 
-const forwarded = useForwardPropsEmits(reactiveOmit(props, 'forceMount'), emits);
+const forwarded = useForwardPropsEmits(reactiveOmit(props, 'forceMount'), emit);
 const { forwardRef } = useForwardExpose();
 
 const menuContext = injectNavigationMenuContext();
@@ -66,9 +66,9 @@ const isLastActiveValue = computed(() => {
         :hidden="!present"
         @pointerenter="menuContext.onContentEnter(itemContext.value)"
         @pointerleave="whenMouse(() => menuContext.onContentLeave())($event)"
-        @pointer-down-outside="emits('pointerDownOutside', $event)"
-        @focus-outside="emits('focusOutside', $event)"
-        @interact-outside="emits('interactOutside', $event)"
+        @pointer-down-outside="emit('pointerDownOutside', $event)"
+        @focus-outside="emit('focusOutside', $event)"
+        @interact-outside="emit('interactOutside', $event)"
       >
         <slot />
       </NavigationMenuContentImpl>

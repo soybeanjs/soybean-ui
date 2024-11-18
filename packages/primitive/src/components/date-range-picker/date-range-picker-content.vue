@@ -11,9 +11,9 @@ export interface DateRangePickerContentProps extends PopoverContentProps {}
 export interface DateRangePickerContentEmits extends PopoverContentEmits {}
 
 const props = defineProps<DateRangePickerContentProps>();
-const emits = defineEmits<DateRangePickerContentEmits>();
+const emit = defineEmits<DateRangePickerContentEmits>();
 
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
 </script>
 
 <template>

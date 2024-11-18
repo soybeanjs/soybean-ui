@@ -1,31 +1,25 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
-import type { ListboxGroupProps } from '../listbox';
 import { ListboxGroup } from '../listbox';
-import { createContext, useId } from '../../composables';
-import { injectComboboxRootContext } from './combobox-root.vue';
+import { useId } from '../../composables';
+import type { ComboboxGroupPropsWithPrimitive } from './types';
+import { injectComboboxRootContext, provideComboboxGroupContext } from './context';
 
-export interface ComboboxGroupProps extends ListboxGroupProps {}
+defineOptions({
+  name: 'ComboboxGroup'
+});
 
-type ComboboxGroupContext = {
-  id: string;
-  labelId: string;
-};
-
-export const [injectComboboxGroupContext, provideComboboxGroupContext] =
-  createContext<ComboboxGroupContext>('ComboboxGroup');
-
-const props = defineProps<ComboboxGroupProps>();
+const props = defineProps<ComboboxGroupPropsWithPrimitive>();
 const id = useId(undefined, 'soybean-combobox-group');
 const rootContext = injectComboboxRootContext();
 
-const isRender = computed(() =>
-  rootContext.ignoreFilter.value
-    ? true
-    : !rootContext.filterState.search
-      ? true
-      : rootContext.filterState.filtered.groups.has(id)
-);
+const isRender = computed(() => {
+  const { ignoreFilter, filterState } = rootContext;
+  if (ignoreFilter.value) return true;
+  if (!filterState.search) return true;
+
+  return filterState.filtered.groups.has(id);
+});
 
 const context = provideComboboxGroupContext({
   id,

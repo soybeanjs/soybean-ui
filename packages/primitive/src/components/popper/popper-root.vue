@@ -1,22 +1,10 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import type { ReferenceElement } from '@floating-ui/vue';
-
 import { ref } from 'vue';
-import { createContext } from '../../composables';
-
-export interface Measurable {
-  getBoundingClientRect: () => DOMRect;
-}
-
-interface PopperRootContext {
-  anchor: Ref<ReferenceElement | undefined>;
-  onAnchorChange: (element: ReferenceElement | undefined) => void;
-}
-
-export const [injectPopperRootContext, providePopperRootContext] = createContext<PopperRootContext>('PopperRoot');
+import type { ReferenceElement } from '@floating-ui/vue';
+import { providePopperRootContext } from './context';
 
 defineOptions({
+  name: 'PopperRoot',
   inheritAttrs: false
 });
 

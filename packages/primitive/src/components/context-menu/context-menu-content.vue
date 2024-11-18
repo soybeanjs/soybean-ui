@@ -19,8 +19,8 @@ const props = withDefaults(defineProps<ContextMenuContentProps>(), {
   sticky: 'partial',
   hideWhenDetached: false
 });
-const emits = defineEmits<ContextMenuContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<ContextMenuContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 
 useForwardExpose();
 const rootContext = injectContextMenuRootContext();

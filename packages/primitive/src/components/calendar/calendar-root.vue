@@ -4,7 +4,7 @@ import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
 import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { provideCalendarRootContext } from './context';
 import type { CalendarRootPropsWithPrimitive } from './types';
 

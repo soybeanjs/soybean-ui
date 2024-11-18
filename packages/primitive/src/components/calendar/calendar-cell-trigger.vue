@@ -4,7 +4,7 @@ import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationa
 import type { DateValue } from '@internationalized/date';
 import { toDate } from '../../date';
 import { useKbd, usePrimitiveElement } from '../../composables';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { injectCalendarRootContext } from './context';
 import type { CalendarCellTriggerPropsWithPrimitive } from './types';
 

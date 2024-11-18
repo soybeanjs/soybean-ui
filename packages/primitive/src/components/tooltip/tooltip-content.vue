@@ -17,10 +17,10 @@ export interface TooltipContentProps extends TooltipContentImplProps {
 const props = withDefaults(defineProps<TooltipContentProps>(), {
   side: 'top'
 });
-const emits = defineEmits<TooltipContentEmits>();
+const emit = defineEmits<TooltipContentEmits>();
 
 const rootContext = injectTooltipRootContext();
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
 const { forwardRef } = useForwardExpose();
 </script>
 

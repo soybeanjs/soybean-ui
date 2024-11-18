@@ -93,7 +93,7 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined
 });
-const emits = defineEmits<DatePickerRootEmits & PopoverRootEmits>();
+const emit = defineEmits<DatePickerRootEmits & PopoverRootEmits>();
 const {
   locale,
   disabled,
@@ -122,7 +122,7 @@ const {
 
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: defaultValue.value,
   passive: (props.modelValue === undefined) as false
 }) as Ref<DateValue | undefined>;
@@ -135,12 +135,12 @@ const defaultDate = computed(() =>
   })
 );
 
-const placeholder = useVModel(props, 'placeholder', emits, {
+const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.value.copy(),
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;
 
-const open = useVModel(props, 'open', emits, {
+const open = useVModel(props, 'open', emit, {
   defaultValue: defaultOpen.value,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;

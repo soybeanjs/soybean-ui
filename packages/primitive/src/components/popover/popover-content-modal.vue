@@ -2,22 +2,45 @@
 import { ref } from 'vue';
 import { useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../composables';
 import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import PopoverContentImpl, {
-  type PopoverContentImplEmits,
-  type PopoverContentImplProps
-} from './popover-content-impl.vue';
-import { injectPopoverRootContext } from './popover-root.vue';
+import type { PointerDownOutsideEvent } from '../../types';
+import PopoverContentImpl from './popover-content-impl.vue';
+import type { PopoverContentImplEmits, PopoverContentImplPropsWithPrimitive } from './types';
+import { injectPopoverRootContext } from './context';
 
-const props = defineProps<PopoverContentImplProps>();
-const emits = defineEmits<PopoverContentImplEmits>();
+defineOptions({
+  name: 'PopoverContentModal'
+});
+
+const props = defineProps<PopoverContentImplPropsWithPrimitive>();
+
+const emit = defineEmits<PopoverContentImplEmits>();
+
 const rootContext = injectPopoverRootContext();
 const isRightClickOutsideRef = ref(false);
 
-useBodyScrollLock(true);
-
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
 
 const { forwardRef, currentElement } = useForwardExpose();
+
+function onCloseAutoFocus(event: Event) {
+  emit('closeAutoFocus', event);
+
+  if (!isRightClickOutsideRef.value) {
+    rootContext.triggerElement.value?.focus();
+  }
+}
+
+function onPointerDownOutside(event: PointerDownOutsideEvent) {
+  emit('pointerDownOutside', event);
+
+  const originalEvent = event.detail.originalEvent;
+  const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+  const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+
+  isRightClickOutsideRef.value = isRightClick;
+}
+
+useBodyScrollLock(true);
 useHideOthers(currentElement);
 </script>
 
@@ -27,24 +50,8 @@ useHideOthers(currentElement);
     :ref="forwardRef"
     :trap-focus="rootContext.open.value"
     disable-outside-pointer-events
-    @close-auto-focus.prevent="
-      event => {
-        emits('closeAutoFocus', event);
-
-        if (!isRightClickOutsideRef) rootContext.triggerElement.value?.focus();
-      }
-    "
-    @pointer-down-outside="
-      event => {
-        emits('pointerDownOutside', event);
-
-        const originalEvent = event.detail.originalEvent;
-        const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-        const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-
-        isRightClickOutsideRef = isRightClick;
-      }
-    "
+    @close-auto-focus.prevent="onCloseAutoFocus"
+    @pointer-down-outside="onPointerDownOutside"
     @focus-outside.prevent
   >
     <slot />

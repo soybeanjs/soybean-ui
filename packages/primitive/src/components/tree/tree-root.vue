@@ -4,7 +4,7 @@ import { type Ref, computed, nextTick, ref, toRefs } from 'vue';
 import { Primitive, type PrimitiveProps } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { createContext, useDirection, useSelectionBehavior, useTypeahead } from '../../composables';
+import { createContext, useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
 import type { Direction } from '../../composables/types';
 import { flatten } from './utils';
 export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
@@ -87,7 +87,7 @@ const props = withDefaults(defineProps<TreeRootProps<T, U>>(), {
   selectionBehavior: 'toggle',
   getChildren: (val: T) => val.children
 });
-const emits = defineEmits<TreeRootEmits<U>>();
+const emit = defineEmits<TreeRootEmits<U>>();
 
 defineSlots<{
   default: (props: {
@@ -98,7 +98,7 @@ defineSlots<{
 }>();
 
 const { items, multiple, disabled, propagateSelect, dir: propDir } = toRefs(props);
-const { handleTypeaheadSearch } = useTypeahead();
+const { handleTypeaheadSearch } = useTypeAhead();
 const dir = useDirection(propDir);
 const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 
@@ -106,14 +106,14 @@ const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 const isVirtual = ref(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   // @ts-expect-error idk
   defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
   passive: (props.modelValue === undefined) as false,
   deep: true
 }) as Ref<U | U[]>;
 
-const expanded = useVModel(props, 'expanded', emits, {
+const expanded = useVModel(props, 'expanded', emit, {
   // @ts-expect-error idk
   defaultValue: props.defaultExpanded ?? [],
   passive: (props.expanded === undefined) as false,

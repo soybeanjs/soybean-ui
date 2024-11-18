@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<ToastRootProps>(), {
   as: 'li'
 });
 
-const emits = defineEmits<ToastRootEmits>();
+const emit = defineEmits<ToastRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -40,7 +40,7 @@ defineSlots<{
 }>();
 
 const { forwardRef } = useForwardExpose();
-const open = useVModel(props, 'open', emits, {
+const open = useVModel(props, 'open', emit, {
   defaultValue: props.defaultOpen,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;
@@ -58,12 +58,12 @@ const open = useVModel(props, 'open', emits, {
       :duration="duration"
       v-bind="$attrs"
       @close="open = false"
-      @pause="emits('pause')"
-      @resume="emits('resume')"
-      @escape-key-down="emits('escapeKeyDown', $event)"
+      @pause="emit('pause')"
+      @resume="emit('resume')"
+      @escape-key-down="emit('escapeKeyDown', $event)"
       @swipe-start="
         event => {
-          emits('swipeStart', event);
+          emit('swipeStart', event);
           (event.currentTarget as HTMLElement).setAttribute('data-swipe', 'start');
         }
       "

@@ -1,49 +1,32 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { computed, toRefs } from 'vue';
-import type { PopperContentProps } from '../popper';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
-import { DismissableLayer } from '../dismissable-layer';
-import { PopperContent } from '../popper';
-import { Primitive } from '../primitive';
-import { ListboxContent } from '../listbox';
-import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import { createContext, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
-import { injectComboboxRootContext } from './combobox-root.vue';
+import type { CSSProperties } from 'vue';
+import DismissableLayer from '../dismissable-layer/dismissable-layer.vue';
+import PopperContent from '../popper/popper-content.vue';
+import Primitive from '../primitive/primitive';
+import ListboxContent from '../listbox/listbox-content.vue';
+import { useBodyScrollLock, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
+import type { FocusOutsideEvent } from '../../types';
+import { injectComboboxRootContext, provideComboboxContentContext } from './context';
+import type { ComboboxContentImplEmits, ComboboxContentImplPropsWithPrimitive } from './types';
 
-export type ComboboxContentImplEmits = DismissableLayerEmits;
+defineOptions({
+  name: 'ComboboxContentImpl',
+  inheritAttrs: false
+});
 
-export interface ComboboxContentImplProps extends PopperContentProps, DismissableLayerProps {
-  /**
-   * The positioning mode to use, <br> `inline` is the default and you can control the position using CSS. <br> `popper`
-   * positions content in the same way as our other primitives, for example `Popover` or `DropdownMenu`.
-   */
-  position?: 'inline' | 'popper';
-  /** The document.body will be lock, and scrolling will be disabled. */
-  bodyLock?: boolean;
-  /**
-   * Allow component to be dismissableLayer.
-   *
-   * @deprecated (Will be removed in version 2.0, use `Listbox` instead)
-   */
-  dismissable?: boolean;
-}
-
-export const [injectComboboxContentContext, provideComboboxContentContext] = createContext<{
-  position: Ref<'inline' | 'popper'>;
-}>('ComboboxContent');
-
-const props = withDefaults(defineProps<ComboboxContentImplProps>(), {
+const props = withDefaults(defineProps<ComboboxContentImplPropsWithPrimitive>(), {
   position: 'inline',
   dismissable: true
 });
-const emits = defineEmits<ComboboxContentImplEmits>();
+
+const emit = defineEmits<ComboboxContentImplEmits>();
 
 const { position } = toRefs(props);
 const rootContext = injectComboboxRootContext();
 
-const { forwardRef, currentElement } = useForwardExpose();
+const { forwardRef } = useForwardExpose();
+
 useBodyScrollLock(props.bodyLock);
 useHideOthers(rootContext.parentElement);
 
@@ -54,7 +37,7 @@ const pickedProps = computed(() => {
 
 const forwardedProps = useForwardProps(pickedProps.value);
 
-const popperStyle = {
+const popperStyle: CSSProperties = {
   // Ensure border-box for floating-ui calculations
   boxSizing: 'border-box',
   '--soybean-combobox-content-transform-origin': 'var(--soybean-popper-transform-origin)',
@@ -63,6 +46,12 @@ const popperStyle = {
   '--soybean-combobox-trigger-width': 'var(--soybean-popper-anchor-width)',
   '--soybean-combobox-trigger-height': 'var(--soybean-popper-anchor-height)'
 };
+
+function onFocusOutside(ev: FocusOutsideEvent) {
+  // if clicking inside the combobox, prevent dismiss
+  if (rootContext.parentElement.value?.contains(ev.target as Node)) ev.preventDefault();
+  emit('focusOutside', ev);
+}
 
 provideComboboxContentContext({ position });
 </script>
@@ -73,20 +62,14 @@ provideComboboxContentContext({ position });
       as-child
       :disable-outside-pointer-events="disableOutsidePointerEvents"
       @dismiss="rootContext.onOpenChange(false)"
-      @focus-outside="
-        ev => {
-          // if clicking inside the combobox, prevent dismiss
-          if (rootContext.parentElement.value?.contains(ev.target as Node)) ev.preventDefault();
-          emits('focusOutside', ev);
-        }
-      "
-      @interact-outside="emits('interactOutside', $event)"
-      @escape-key-down="emits('escapeKeyDown', $event)"
+      @focus-outside="onFocusOutside"
+      @interact-outside="emit('interactOutside', $event)"
+      @escape-key-down="emit('escapeKeyDown', $event)"
       @pointer-down-outside="
         ev => {
           // if clicking inside the combobox, prevent dismiss
           if (rootContext.parentElement.value?.contains(ev.target as Node)) ev.preventDefault();
-          emits('pointerDownOutside', ev);
+          emit('pointerDownOutside', ev);
         }
       "
     >

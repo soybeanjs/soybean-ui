@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<SelectRootProps>(), {
   modelValue: undefined,
   open: undefined
 });
-const emits = defineEmits<SelectRootEmits>();
+const emit = defineEmits<SelectRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -98,13 +98,13 @@ defineSlots<{
 
 const { required, disabled, multiple, dir: propDir } = toRefs(props);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
   passive: (props.modelValue === undefined) as false,
   deep: true
 }) as Ref<T | T[] | undefined>;
 
-const open = useVModel(props, 'open', emits, {
+const open = useVModel(props, 'open', emit, {
   defaultValue: props.defaultOpen,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;

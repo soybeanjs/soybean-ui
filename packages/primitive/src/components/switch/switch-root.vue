@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, toRef } from 'vue';
 import type { Ref } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { provideSwitchRootContext } from './context';

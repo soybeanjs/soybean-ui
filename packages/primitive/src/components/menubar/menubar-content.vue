@@ -15,8 +15,8 @@ export interface MenubarContentProps extends MenuContentProps {}
 const props = withDefaults(defineProps<MenubarContentProps>(), {
   align: 'start'
 });
-const emits = defineEmits<MenubarContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<MenubarContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 
 const rootContext = injectMenubarRootContext();

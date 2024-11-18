@@ -1,35 +1,28 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core';
-import type { CheckedState } from './utils';
-import type { MenuItemEmits, MenuItemProps } from './MenuItem.vue';
-
-import { getCheckedState, isIndeterminate } from './utils';
+import { getCheckedState, isIndeterminate } from '../checkbox/shared';
 import MenuItem from './menu-item.vue';
-import { provideMenuItemIndicatorContext } from './menu-item-indicator.vue';
+import { provideMenuItemIndicatorContext } from './context';
+import type { MenuCheckboxItemEmits, MenuCheckboxItemPropsWithPrimitive } from './types';
 
-export type MenuCheckboxItemEmits = MenuItemEmits & {
-  /** Event handler called when the checked state changes. */
-  'update:modelValue': [payload: boolean];
-};
-
-export interface MenuCheckboxItemProps extends MenuItemProps {
-  /** The controlled checked state of the item. Can be used as `v-model`. */
-  modelValue?: CheckedState;
-}
-
-const props = withDefaults(defineProps<MenuCheckboxItemProps>(), {
-  modelValue: false
+defineOptions({
+  name: 'MenuCheckboxItem'
 });
-const emits = defineEmits<MenuCheckboxItemEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current modelValue state */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const props = defineProps<MenuCheckboxItemPropsWithPrimitive>();
 
-const modelValue = useVModel(props, 'modelValue', emits);
+const emit = defineEmits<MenuCheckboxItemEmits>();
+
+const modelValue = defineModel<boolean>({ default: false });
+
+function onSelect(event: Event) {
+  emit('select', event);
+
+  if (isIndeterminate(modelValue.value)) {
+    modelValue.value = true;
+  } else {
+    modelValue.value = !modelValue.value;
+  }
+}
 
 provideMenuItemIndicatorContext({ modelValue });
 </script>
@@ -40,16 +33,7 @@ provideMenuItemIndicatorContext({ modelValue });
     v-bind="props"
     :aria-checked="isIndeterminate(modelValue) ? 'mixed' : modelValue"
     :data-state="getCheckedState(modelValue)"
-    @select="
-      async event => {
-        emits('select', event);
-        if (isIndeterminate(modelValue)) {
-          modelValue = true;
-        } else {
-          modelValue = !modelValue;
-        }
-      }
-    "
+    @select="onSelect"
   >
     <slot :model-value="modelValue" />
   </MenuItem>

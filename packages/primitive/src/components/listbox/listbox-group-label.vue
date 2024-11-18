@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import { injectListboxGroupContext } from './context';
+import type { ListboxGroupLabelPropsWithPrimitive } from './types';
 
-import { Primitive } from '../primitive';
-import { injectListboxGroupContext } from './listbox-group.vue';
+defineOptions({
+  name: 'ListboxGroupLabel'
+});
 
-export interface ListboxGroupLabelProps extends PrimitiveProps {
-  for?: string;
-}
-
-const props = withDefaults(defineProps<ListboxGroupLabelProps>(), {
+const props = withDefaults(defineProps<ListboxGroupLabelPropsWithPrimitive>(), {
   as: 'div'
 });
 

@@ -4,7 +4,7 @@ export function isIndeterminate(checked?: CheckedState): checked is 'indetermina
   return checked === 'indeterminate';
 }
 
-export function getState(checked: CheckedState) {
+export function getCheckedState(checked: CheckedState) {
   if (isIndeterminate(checked)) {
     return 'indeterminate';
   }

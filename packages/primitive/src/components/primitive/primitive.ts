@@ -27,3 +27,5 @@ export const Primitive = defineComponent<PrimitiveProps, {}, string, DefaultSlot
     slots: {}
   }
 );
+
+export default Primitive;

@@ -26,7 +26,7 @@ defineOptions({
 const props = withDefaults(defineProps<ContextMenuRootProps>(), {
   modal: true
 });
-const emits = defineEmits<ContextMenuRootEmits>();
+const emit = defineEmits<ContextMenuRootEmits>();
 const { dir: propDir, modal } = toRefs(props);
 useForwardExpose();
 const dir = useDirection(propDir);
@@ -43,7 +43,7 @@ provideContextMenuRootContext({
 });
 
 watch(open, value => {
-  emits('update:open', value);
+  emit('update:open', value);
 });
 </script>
 

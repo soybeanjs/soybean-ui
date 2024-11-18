@@ -9,14 +9,14 @@ export type DropdownMenuRadioGroupEmits = MenuRadioGroupEmits;
 export interface DropdownMenuRadioGroupProps extends MenuRadioGroupProps {}
 
 const props = defineProps<MenuRadioGroupProps>();
-const emits = defineEmits<MenuRadioGroupEmits>();
+const emit = defineEmits<MenuRadioGroupEmits>();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuRadioGroup v-bind="{ ...props, ...emitsAsProps }">
+  <MenuRadioGroup v-bind="{ ...props, ...emitAsProps }">
     <slot />
   </MenuRadioGroup>
 </template>

@@ -1,25 +1,23 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import type { PopoverContentImplEmits, PopoverContentImplProps } from './PopoverContentImpl.vue';
-
+import type { PopoverContentEmits, PopoverContentPropsWithPrimitive } from './types';
+import { injectPopoverRootContext } from './context';
 import PopoverContentModal from './popover-content-modal.vue';
 import PopoverContentNonModal from './popover-content-non-modal.vue';
-import { injectPopoverRootContext } from './popover-root.vue';
 
-export type PopoverContentEmits = PopoverContentImplEmits;
+defineOptions({
+  name: 'PopoverContent'
+});
 
-export interface PopoverContentProps extends PopoverContentImplProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+const props = defineProps<PopoverContentPropsWithPrimitive>();
 
-const props = defineProps<PopoverContentProps>();
-const emits = defineEmits<PopoverContentEmits>();
+const emit = defineEmits<PopoverContentEmits>();
 
 const rootContext = injectPopoverRootContext();
 
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
+
 const { forwardRef } = useForwardExpose();
 
 rootContext.contentId ||= useId(undefined, 'soybean-popover-content');

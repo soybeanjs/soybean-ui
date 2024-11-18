@@ -1,35 +1,20 @@
 <script setup lang="ts">
-import { reactiveOmit } from '@vueuse/shared';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../DismissableLayer';
-import type { FocusScopeProps } from '../focus-scope';
-import type { PopperContentProps } from '../popper';
-
 import { PopperContent } from '../popper';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
 import { useFocusGuards, useForwardExpose, useForwardProps } from '../../composables';
-import { injectPopoverRootContext } from './popover-root.vue';
+import { injectPopoverRootContext } from './context';
+import type { PopoverContentImplEmits, PopoverContentImplPropsWithPrimitive } from './types';
 
-export type PopoverContentImplEmits = DismissableLayerEmits & {
-  /** Event handler called when auto-focusing on open. Can be prevented. */
-  openAutoFocus: [event: Event];
-  /** Event handler called when auto-focusing on close. Can be prevented. */
-  closeAutoFocus: [event: Event];
-};
+defineOptions({
+  name: 'PopoverContentImpl'
+});
 
-export interface PopoverContentImplProps extends PopperContentProps, DismissableLayerProps {
-  /**
-   * Whether focus should be trapped within the `MenuContent`
-   *
-   * @defaultValue false
-   */
-  trapFocus?: FocusScopeProps['trapped'];
-}
+const props = defineProps<PopoverContentImplPropsWithPrimitive>();
 
-const props = defineProps<PopoverContentImplProps>();
-const emits = defineEmits<PopoverContentImplEmits>();
+const emit = defineEmits<PopoverContentImplEmits>();
 
-const forwarded = useForwardProps(reactiveOmit(props, 'trapFocus', 'disableOutsidePointerEvents'));
+const forwarded = useForwardProps(props, ['trapFocus', 'disableOutsidePointerEvents'], 'omit');
 const { forwardRef } = useForwardExpose();
 
 const rootContext = injectPopoverRootContext();
@@ -41,22 +26,23 @@ useFocusGuards();
     as-child
     loop
     :trapped="trapFocus"
-    @mount-auto-focus="emits('openAutoFocus', $event)"
-    @unmount-auto-focus="emits('closeAutoFocus', $event)"
+    @mount-auto-focus="emit('openAutoFocus', $event)"
+    @unmount-auto-focus="emit('closeAutoFocus', $event)"
   >
     <DismissableLayer
       as-child
       :disable-outside-pointer-events="disableOutsidePointerEvents"
-      @pointer-down-outside="emits('pointerDownOutside', $event)"
-      @interact-outside="emits('interactOutside', $event)"
-      @escape-key-down="emits('escapeKeyDown', $event)"
-      @focus-outside="emits('focusOutside', $event)"
+      @pointer-down-outside="emit('pointerDownOutside', $event)"
+      @interact-outside="emit('interactOutside', $event)"
+      @escape-key-down="emit('escapeKeyDown', $event)"
+      @focus-outside="emit('focusOutside', $event)"
       @dismiss="rootContext.onOpenChange(false)"
     >
       <PopperContent
         v-bind="forwarded"
         :id="rootContext.contentId"
         :ref="forwardRef"
+        role="dialog"
         :data-state="rootContext.open.value ? 'open' : 'closed'"
         :aria-labelledby="rootContext.triggerId"
         :style="{
@@ -66,7 +52,6 @@ useFocusGuards();
           '--soybean-popover-trigger-width': 'var(--soybean-popper-anchor-width)',
           '--soybean-popover-trigger-height': 'var(--soybean-popper-anchor-height)'
         }"
-        role="dialog"
       >
         <slot />
       </PopperContent>

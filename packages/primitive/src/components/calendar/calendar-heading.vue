@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { injectCalendarRootContext } from './context';
 import type { CalendarHeadingPropsWithPrimitive } from './types';
 

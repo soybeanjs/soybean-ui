@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import type { AcceptableValue, FormFieldProps } from '../../composables/types';
 import { useFormControl, useForwardExpose } from '../../composables';
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<RadioProps>(), {
   checked: undefined,
   as: 'button'
 });
-const emits = defineEmits<RadioEmits>();
+const emit = defineEmits<RadioEmits>();
 
 defineSlots<{
   default: (props: {
@@ -37,7 +37,7 @@ defineSlots<{
   }) => any;
 }>();
 
-const checked = useVModel(props, 'checked', emits, {
+const checked = useVModel(props, 'checked', emit, {
   passive: (props.checked === undefined) as false
 });
 
@@ -53,7 +53,7 @@ const ariaLabel = computed(() =>
 
 function handleClick(event: MouseEvent) {
   handleSelect(event, props.value, ev => {
-    emits('select', ev);
+    emit('select', ev);
     if (ev?.defaultPrevented) return;
 
     checked.value = true;

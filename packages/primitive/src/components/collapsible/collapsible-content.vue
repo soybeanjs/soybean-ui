@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import { useForwardExpose } from '../../composables';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { Presence } from '../presence';
 import { injectCollapsibleRootContext } from './context';
 import type { CollapsibleContentEmits, CollapsibleContentPropsWithPrimitive } from './types';

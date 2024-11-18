@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { useCollection, useForwardExpose } from '../../composables';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './utils';
 
 export type NavigationMenuLinkEmits = {
@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<NavigationMenuLinkProps>(), {
   as: 'a'
 });
 
-const emits = defineEmits<NavigationMenuLinkEmits>();
+const emit = defineEmits<NavigationMenuLinkEmits>();
 
 const { CollectionItem } = useCollection({ key: 'NavigationMenu' });
 useForwardExpose();
@@ -36,7 +36,7 @@ async function handleClick(ev: MouseEvent) {
       originalEvent: ev
     }
   });
-  emits('select', linkSelectEvent);
+  emit('select', linkSelectEvent);
 
   if (!linkSelectEvent.defaultPrevented && !ev.metaKey) {
     const rootContentDismissEvent = new CustomEvent(EVENT_ROOT_CONTENT_DISMISS, {

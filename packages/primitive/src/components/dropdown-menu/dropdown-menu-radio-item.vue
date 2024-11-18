@@ -8,9 +8,9 @@ export type DropdownMenuRadioItemEmits = MenuRadioItemEmits;
 export interface DropdownMenuRadioItemProps extends MenuRadioItemProps {}
 
 const props = defineProps<DropdownMenuRadioItemProps>();
-const emits = defineEmits<DropdownMenuRadioItemEmits>();
+const emit = defineEmits<DropdownMenuRadioItemEmits>();
 
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 

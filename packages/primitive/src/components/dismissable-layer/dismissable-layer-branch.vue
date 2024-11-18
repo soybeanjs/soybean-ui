@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
 import { useDismissableLayerState } from './state';
 import type { DismissableLayerBranchPropsWithPrimitive } from './types';

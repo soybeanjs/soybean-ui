@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { type Ref, ref, toRefs } from 'vue';
 import { useFocusWithin, useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 </script>
 
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import {
   createContext,
   useArrowNavigation,
@@ -94,7 +94,7 @@ const props = withDefaults(defineProps<TagsInputRootProps<T>>(), {
   max: 0,
   displayValue: (value: T) => value.toString()
 });
-const emits = defineEmits<TagsInputRootEmits<T>>();
+const emit = defineEmits<TagsInputRootEmits<T>>();
 
 defineSlots<{
   default: (props: {
@@ -106,7 +106,7 @@ defineSlots<{
 const { addOnPaste, disabled, delimiter, max, id, dir: propDir, addOnBlur, addOnTab } = toRefs(props);
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: true,
   deep: true
@@ -125,7 +125,7 @@ function handleRemoveTag(index: number) {
   if (index !== -1) {
     const collection = getItems().filter(i => i.ref.dataset.disabled !== '');
     modelValue.value.splice(index, 1);
-    emits('removeTag', collection[index].value);
+    emit('removeTag', collection[index].value);
   }
 }
 
@@ -142,24 +142,24 @@ provideTagsInputRootContext({
     const payload = props.convertValue ? props.convertValue(_payload) : (_payload as T);
 
     if (modelValue.value.length >= max.value && Boolean(max.value)) {
-      emits('invalid', payload);
+      emit('invalid', payload);
       return false;
     }
 
     if (props.duplicate) {
       modelValue.value.push(payload);
-      emits('addTag', payload);
+      emit('addTag', payload);
       return true;
     }
     const exist = modelValue.value.includes(payload);
     if (!exist) {
       modelValue.value.push(payload);
-      emits('addTag', payload);
+      emit('addTag', payload);
       return true;
     }
     isInvalidInput.value = true;
 
-    emits('invalid', payload);
+    emit('invalid', payload);
     return false;
   },
   onRemoveValue: handleRemoveTag,

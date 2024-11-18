@@ -1,32 +1,25 @@
-<script setup lang="ts"></script>
-
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { type VirtualItem, type Virtualizer, useVirtualizer } from '@tanstack/vue-virtual';
-import { Fragment, type Ref, type VNode, cloneVNode, computed, useSlots } from 'vue';
-import { refAutoReset } from '@vueuse/shared';
+import { Fragment, cloneVNode, computed, useSlots } from 'vue';
+import type { Ref, VNode } from 'vue';
+import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useParentElement } from '@vueuse/core';
+import { refAutoReset } from '@vueuse/shared';
+import { useCollection } from '../../composables';
+import { findValuesBetween } from '../../shared';
+import { getNextMatch } from '../../composables/use-type-ahead';
+import type { AcceptableValue, NavigationKeys } from '../../types';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { findValuesBetween, useCollection } from '../../composables';
-import { getNextMatch } from '../../composables/use-typeahead';
-import type { AcceptableValue } from '../../composables/types';
-import { compare, queryCheckedElement } from './utils';
-import { injectListboxRootContext } from './listbox-root.vue';
-export interface ListboxVirtualizerProps<T extends AcceptableValue = AcceptableValue> {
-  /** List of items */
-  options: T[];
-  /** Number of items rendered outside the visible area */
-  overscan?: number;
-  /** Estimated size (in px) of each item */
-  estimateSize?: number;
-  /** Text content for each item to achieve type-ahead feature */
-  textContent?: (option: T) => string;
-}
+import { compare, queryCheckedElement } from './shared';
+import { injectListboxRootContext } from './context';
+import type { ListboxVirtualizerProps, ListboxVirtualizerSlots } from './types';
+
+defineOptions({
+  name: 'ListboxVirtualizer'
+});
 
 const props = defineProps<ListboxVirtualizerProps<T>>();
 
-defineSlots<{
-  default: (props: { option: T; virtualizer: Virtualizer<Element | Window, Element>; virtualItem: VirtualItem }) => any;
-}>();
+defineSlots<ListboxVirtualizerSlots<T>>();
 
 const slots = useSlots();
 const rootContext = injectListboxRootContext();
@@ -150,7 +143,7 @@ const optionsWithMetadata = computed(() => {
   }));
 });
 
-function handleMultipleReplace(event: Event, intent: 'first' | 'last' | 'prev' | 'next') {
+function handleMultipleReplace(_event: Event, intent: 'first' | 'last' | 'prev' | 'next') {
   if (!rootContext.firstValue?.value || !rootContext.multiple.value || !Array.isArray(rootContext.modelValue.value))
     return;
 
@@ -159,6 +152,7 @@ function handleMultipleReplace(event: Event, intent: 'first' | 'last' | 'prev' |
   if (!lastValue) return;
 
   let value: T[] | null = null;
+  // eslint-disable-next-line default-case
   switch (intent) {
     case 'prev':
     case 'next': {
@@ -186,7 +180,7 @@ rootContext.virtualKeydownHook.on(event => {
   const isTabKey = event.key === 'Tab' && !isMetaKey;
   if (isTabKey) return;
 
-  let intent = MAP_KEY_TO_FOCUS_INTENT[event.key];
+  let intent = MAP_KEY_TO_FOCUS_INTENT[event.key as NavigationKeys];
 
   // Meta + A, select all feature
   if (isMetaKey && event.key === 'a' && rootContext.multiple.value) {

@@ -1,5 +1,4 @@
-export type CheckedState = boolean | 'indeterminate';
-export type Direction = 'ltr' | 'rtl';
+import type { Direction, DisclosureState, Point, Polygon } from '../../types';
 
 export const ITEM_NAME = 'MenuItem';
 export const ITEM_SELECT = 'menu.itemSelect';
@@ -16,16 +15,8 @@ export const SUB_CLOSE_KEYS: Record<Direction, string[]> = {
   rtl: ['ArrowRight']
 };
 
-export function getOpenState(open: boolean) {
+export function getOpenState(open: boolean): DisclosureState {
   return open ? 'open' : 'closed';
-}
-
-export function isIndeterminate(checked?: CheckedState): checked is 'indeterminate' {
-  return checked === 'indeterminate';
-}
-
-export function getCheckedState(checked: CheckedState) {
-  return isIndeterminate(checked) ? 'indeterminate' : checked ? 'checked' : 'unchecked';
 }
 
 export function focusFirst(candidates: HTMLElement[]) {
@@ -36,17 +27,6 @@ export function focusFirst(candidates: HTMLElement[]) {
     candidate.focus();
     if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
   }
-}
-
-export interface Point {
-  x: number;
-  y: number;
-}
-export type Polygon = Point[];
-export type Side = 'left' | 'right';
-export interface GraceIntent {
-  area: Polygon;
-  side: Side;
 }
 
 // Determine if a point is inside of a polygon.

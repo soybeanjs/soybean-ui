@@ -1,38 +1,20 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core';
 import { computed, onMounted } from 'vue';
-import { usePrimitiveElement } from '../primitive';
-import { Primitive, type PrimitiveProps } from '..';
-import { injectListboxRootContext } from './listbox-root.vue';
+import Primitive from '../primitive/primitive';
+import { usePrimitiveElement } from '../../composables';
+import { injectListboxRootContext } from './context';
+import type { ListboxFilterPropsWithPrimitive } from './types';
 
-export interface ListboxFilterProps extends PrimitiveProps {
-  /** The controlled value of the filter. Can be bound-with with v-model. */
-  modelValue?: string;
-  /** Focus on element when mounted. */
-  autoFocus?: boolean;
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'ListboxFilter'
+});
 
-export type ListboxFilterEmits = {
-  'update:modelValue': [string];
-};
-
-const props = withDefaults(defineProps<ListboxFilterProps>(), {
+const props = withDefaults(defineProps<ListboxFilterPropsWithPrimitive>(), {
   as: 'input'
 });
-const emits = defineEmits<ListboxFilterEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
-
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: '',
-  passive: (props.modelValue === undefined) as false
+const modelValue = defineModel<string>({
+  default: ''
 });
 
 const rootContext = injectListboxRootContext();
@@ -40,6 +22,11 @@ rootContext.focusable.value = false;
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const disabled = computed(() => props.disabled || rootContext.disabled.value || false);
+
+function onInput(event: InputEvent) {
+  modelValue.value = (event.target as HTMLInputElement).value;
+  rootContext.highlightFirstItem(event);
+}
 
 onMounted(() => {
   setTimeout(() => {
@@ -52,6 +39,7 @@ onMounted(() => {
 <template>
   <Primitive
     ref="primitiveElement"
+    :class="props.class"
     :as
     :as-child
     :value="modelValue"
@@ -61,12 +49,7 @@ onMounted(() => {
     type="text"
     @keydown.down.up.home.end.prevent="rootContext.onKeydownNavigation"
     @keydown.enter="rootContext.onKeydownEnter"
-    @input="
-      (event: InputEvent) => {
-        modelValue = (event.target as HTMLInputElement).value;
-        rootContext.highlightFirstItem(event);
-      }
-    "
+    @input="onInput"
   >
     <slot :model-value="modelValue" />
   </Primitive>

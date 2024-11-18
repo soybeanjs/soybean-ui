@@ -1,7 +1,6 @@
-import type { SlotsType } from 'vue';
+import type { DefineComponent, SlotsType } from 'vue';
 
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
-
 export type ClassValueProp = {
   class?: ClassValue;
 };
@@ -22,6 +21,19 @@ export type NavigationKeys =
   | 'Home'
   | 'PageDown'
   | 'PageUp';
+export type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
+export type SplitType = 'pick' | 'omit';
+
+export interface Point {
+  x: number;
+  y: number;
+}
+export type Polygon = Point[];
+export type HorizontalSide = 'left' | 'right';
+export interface GraceIntent {
+  area: Polygon;
+  side: HorizontalSide;
+}
 
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)
@@ -37,6 +49,16 @@ export type ScrollBodyOption = {
 export type AcceptableValue = string | number | Record<string, any>;
 export type ArrayOrWrapped<T> = T extends any[] ? T : Array<T>;
 export type StringOrNumber = string | number;
+
+export type GenericComponentInstance<T> = T extends new (...args: any[]) => infer R
+  ? R
+  : T extends (...args: any[]) => infer R
+    ? R extends { __ctx?: infer K }
+      ? Exclude<K, void> extends { expose: (...args: infer Y) => void }
+        ? Y[0] & InstanceType<DefineComponent>
+        : any
+      : any
+    : any;
 
 export interface SingleOrMultipleProps<
   ValidValue = AcceptableValue | AcceptableValue[],
@@ -90,6 +112,8 @@ export type PointerDownOutsideEvent = CustomEvent<{
 
 export type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
 
-export type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
-
-export type SplitType = 'pick' | 'omit';
+export type InferDefaults<T> = {
+  [K in keyof T]?: InferDefault<T, T[K]>;
+};
+type NativeType = null | number | string | boolean | symbol | Function;
+type InferDefault<P, T> = ((props: P) => T & {}) | (T extends NativeType ? T : never);

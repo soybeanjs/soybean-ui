@@ -1,29 +1,16 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { Presence } from '../presence';
-import { createContext } from '../../composables';
-import type { CheckedState } from './utils';
+import { getCheckedState, isIndeterminate } from '../checkbox/shared';
+import { injectMenuItemIndicatorContext } from './context';
+import type { MenuItemIndicatorPropsWithPrimitive } from './types';
 
-import { getCheckedState, isIndeterminate } from './utils';
-
-interface MenuItemIndicatorContext {
-  modelValue: Ref<CheckedState>;
-}
-
-export interface MenuItemIndicatorProps extends PrimitiveProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-export const [injectMenuItemIndicatorContext, provideMenuItemIndicatorContext] =
-  createContext<MenuItemIndicatorContext>(['MenuCheckboxItem', 'MenuRadioItem'], 'MenuItemIndicatorContext');
-
-withDefaults(defineProps<MenuItemIndicatorProps>(), {
-  as: 'span'
+defineOptions({
+  name: 'MenuItemIndicator'
 });
+
+const { class: className, as = 'span', forceMount } = defineProps<MenuItemIndicatorPropsWithPrimitive>();
 
 const indicatorContext = injectMenuItemIndicatorContext({
   modelValue: ref(false)
@@ -36,7 +23,7 @@ const indicatorContext = injectMenuItemIndicatorContext({
       forceMount || isIndeterminate(indicatorContext.modelValue.value) || indicatorContext.modelValue.value === true
     "
   >
-    <Primitive :as :as-child :data-state="getCheckedState(indicatorContext.modelValue.value)">
+    <Primitive :class="className" :as="as" :as-child :data-state="getCheckedState(indicatorContext.modelValue.value)">
       <slot />
     </Primitive>
   </Presence>

@@ -2,9 +2,9 @@
 import type { Ref } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { nextTick, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { clamp, createContext, useCollection, useForwardExpose } from '../../composables';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';
@@ -26,7 +26,7 @@ defineOptions({
 });
 
 const props = defineProps<SelectItemAlignedPositionProps>();
-const emits = defineEmits<{
+const emit = defineEmits<{
   placed: [];
 }>();
 
@@ -152,7 +152,7 @@ function position() {
     contentWrapperElement.value.style.maxHeight = `${availableHeight}px`;
     // -----------------------------------------------------------------------------------------
 
-    emits('placed');
+    emit('placed');
 
     // we don't want the initial scroll position adjustment to trigger "expand on scroll"
     // so we explicitly turn it on only after they've registered.

@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
-import { injectComboboxRootContext } from './combobox-root.vue';
+import { injectComboboxRootContext } from './context';
+import type { ComboboxTriggerPropsWithPrimitive } from './types';
 
-export interface ComboboxTriggerProps extends PrimitiveProps {
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'ComboboxTrigger',
+  inheritAttrs: false
+});
 
-const props = withDefaults(defineProps<ComboboxTriggerProps>(), {
+const props = withDefaults(defineProps<ComboboxTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 

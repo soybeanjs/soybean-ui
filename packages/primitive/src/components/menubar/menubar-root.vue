@@ -3,7 +3,7 @@ import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { createContext, useCollection, useDirection, useForwardExpose } from '../../composables';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import type { Direction } from '../../composables/types';
 

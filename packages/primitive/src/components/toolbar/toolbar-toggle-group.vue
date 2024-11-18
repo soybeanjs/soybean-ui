@@ -10,17 +10,17 @@ export type ToolbarToggleGroupEmits = ToggleGroupRootEmits;
 export interface ToolbarToggleGroupProps extends ToggleGroupRootProps {}
 
 const props = defineProps<ToolbarToggleGroupProps>();
-const emits = defineEmits<ToolbarToggleGroupEmits>();
+const emit = defineEmits<ToolbarToggleGroupEmits>();
 
 const rootContext = injectToolbarRootContext();
 
-const emitsAsProps = useEmitAsProps(emits);
+const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
   <ToggleGroupRoot
-    v-bind="{ ...props, ...emitsAsProps }"
+    v-bind="{ ...props, ...emitAsProps }"
     :data-orientation="rootContext.orientation.value"
     :dir="rootContext.dir.value"
     :roving-focus="false"

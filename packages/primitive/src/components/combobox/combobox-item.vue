@@ -1,35 +1,17 @@
-<script setup lang="ts">
-import { type Ref, computed, onMounted, onUnmounted } from 'vue';
-import type { ListboxItemEmits, ListboxItemProps } from '../listbox';
-import { usePrimitiveElement } from '../primitive';
-import { ListboxItem } from '../listbox';
-import { createContext, useId } from '../../composables';
-import type { AcceptableValue } from '../../composables/types';
-import { injectComboboxRootContext } from './combobox-root.vue';
-import { injectComboboxGroupContext } from './combobox-group.vue';
-</script>
-
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-interface ComboboxItemContext {
-  isSelected: Ref<boolean>;
-}
+import { computed, onMounted, onUnmounted } from 'vue';
+import { useId, usePrimitiveElement } from '../../composables';
+import { ListboxItem } from '../listbox';
+import type { AcceptableValue } from '../../types';
+import { injectComboboxGroupContext, injectComboboxRootContext } from './context';
+import type { ComboboxItemEmits, ComboboxItemPropsWithPrimitive } from './types';
 
-export const [injectComboboxItemContext, provideComboboxItemContext] =
-  createContext<ComboboxItemContext>('ComboboxItem');
+defineOptions({
+  name: 'ComboboxItem'
+});
 
-export type ComboboxItemEmits<T = AcceptableValue> = ListboxItemEmits<T>;
-export interface ComboboxItemProps<T = AcceptableValue> extends ListboxItemProps<T> {
-  /**
-   * A string representation of the item contents.
-   *
-   * If the children are not plain text, then the `textValue` prop must also be set to a plain text representation,
-   * which will be used for autocomplete in the ComboBox.
-   */
-  textValue?: string;
-}
-
-const props = defineProps<ComboboxItemProps<T>>();
-const emits = defineEmits<ComboboxItemEmits<T>>();
+const props = defineProps<ComboboxItemPropsWithPrimitive<T>>();
+const emit = defineEmits<ComboboxItemEmits<T>>();
 
 const id = useId(undefined, 'soybean-combobox-item');
 const rootContext = injectComboboxRootContext();
@@ -48,10 +30,22 @@ const isRender = computed(() => {
   return rootContext.filterState.filtered.items.get(id)! > 0;
 });
 
+function onSelect(event: Event) {
+  emit('select', event as any);
+
+  if (event.defaultPrevented) return;
+  if (rootContext.multiple.value) return;
+
+  event.preventDefault();
+  rootContext.onOpenChange(false);
+  rootContext.modelValue.value = props.value;
+}
+
 onMounted(() => {
   // textValue to perform filter
   rootContext.allItems.value.set(
     id,
+    // eslint-disable-next-line unicorn/prefer-dom-node-text-content
     props.textValue || currentElement.value.textContent || currentElement.value.innerText
   );
 
@@ -64,30 +58,14 @@ onMounted(() => {
     }
   }
 });
+
 onUnmounted(() => {
   rootContext.allItems.value.delete(id);
 });
 </script>
 
 <template>
-  <ListboxItem
-    v-if="isRender"
-    v-bind="props"
-    :id="id"
-    ref="primitiveElement"
-    @select="
-      event => {
-        emits('select', event as any);
-        if (event.defaultPrevented) return;
-
-        if (!rootContext.multiple.value) {
-          event.preventDefault();
-          rootContext.onOpenChange(false);
-          rootContext.modelValue.value = props.value;
-        }
-      }
-    "
-  >
+  <ListboxItem v-if="isRender" v-bind="props" :id="id" ref="primitiveElement" @select="onSelect">
     <slot>{{ value }}</slot>
   </ListboxItem>
 </template>

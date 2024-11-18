@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
 

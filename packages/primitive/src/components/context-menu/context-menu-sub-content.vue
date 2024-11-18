@@ -9,8 +9,8 @@ export interface ContextMenuSubContentProps extends MenuSubContentProps {}
 
 const props = defineProps<ContextMenuSubContentProps>();
 
-const emits = defineEmits<ContextMenuSubContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<ContextMenuSubContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 

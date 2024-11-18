@@ -2,7 +2,7 @@
 import { VisuallyHidden } from '../visually-hidden';
 import { injectToastProviderContext } from './toast-provider.vue';
 
-const emits = defineEmits<{
+const emit = defineEmits<{
   focusFromOutsideViewport: [void];
 }>();
 
@@ -18,7 +18,7 @@ const providerContext = injectToastProviderContext();
       (event: FocusEvent) => {
         const prevFocusedElement = event.relatedTarget as HTMLElement | null;
         const isFocusFromOutsideViewport = !providerContext.viewport.value?.contains(prevFocusedElement);
-        if (isFocusFromOutsideViewport) emits('focusFromOutsideViewport');
+        if (isFocusFromOutsideViewport) emit('focusFromOutsideViewport');
       }
     "
   >

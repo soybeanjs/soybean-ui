@@ -3,8 +3,8 @@ import type { Ref } from 'vue';
 
 import { toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<RadioGroupRootProps>(), {
   loop: true
 });
 
-const emits = defineEmits<RadioGroupRootEmits>();
+const emit = defineEmits<RadioGroupRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -66,7 +66,7 @@ defineSlots<{
 }>();
 
 const { forwardRef, currentElement } = useForwardExpose();
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 });

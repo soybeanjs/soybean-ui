@@ -101,7 +101,7 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   isDateUnavailable: undefined,
   allowNonContiguousRanges: false
 });
-const emits = defineEmits<DateRangePickerRootEmits & PopoverRootEmits>();
+const emit = defineEmits<DateRangePickerRootEmits & PopoverRootEmits>();
 const {
   locale,
   disabled,
@@ -130,7 +130,7 @@ const {
 
 const dir = useDirection(propsDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
   passive: (props.modelValue === undefined) as false
 }) as Ref<DateRange>;
@@ -141,12 +141,12 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = useVModel(props, 'placeholder', emits, {
+const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;
 
-const open = useVModel(props, 'open', emits, {
+const open = useVModel(props, 'open', emit, {
   defaultValue: defaultOpen.value,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;
@@ -182,7 +182,7 @@ provideDateRangePickerRootContext({
   dateFieldRef,
   dir,
   onStartValueChange(date: DateValue | undefined) {
-    emits('update:startValue', date);
+    emit('update:startValue', date);
   },
   onDateChange(date: DateRange) {
     modelValue.value = { start: date.start?.copy(), end: date.end?.copy() };

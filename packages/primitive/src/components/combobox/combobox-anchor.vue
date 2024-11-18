@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
-import { PopperAnchor, type PopperAnchorProps } from '../popper';
+import Primitive from '../primitive/primitive';
+import PopperAnchor from '../popper/popper-anchor.vue';
 import { useForwardExpose } from '../../composables';
-export interface ComboboxAnchorProps extends PopperAnchorProps {}
+import type { ComboboxAnchorPropsWithPrimitive } from './types';
 
-defineProps<ComboboxAnchorProps>();
+defineOptions({
+  name: 'ComboboxAnchor',
+  inheritAttrs: false
+});
+
+const { class: className } = defineProps<ComboboxAnchorPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
 </script>
 
 <template>
   <PopperAnchor as-child :reference="reference">
-    <Primitive :ref="forwardRef" :as :as-child v-bind="$attrs">
+    <Primitive :ref="forwardRef" :class="className" :as :as-child v-bind="$attrs">
       <slot />
     </Primitive>
   </PopperAnchor>

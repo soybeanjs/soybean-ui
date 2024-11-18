@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<RadioGroupItemProps>(), {
   disabled: false,
   as: 'button'
 });
-const emits = defineEmits<RadioGroupItemEmits>();
+const emit = defineEmits<RadioGroupItemEmits>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 
@@ -74,7 +74,7 @@ function handleFocus() {
       :required="required"
       :disabled="disabled"
       @update:checked="rootContext.changeModelValue(value)"
-      @select="emits('select', $event)"
+      @select="emit('select', $event)"
       @keydown.enter.prevent
       @focus="handleFocus"
     >

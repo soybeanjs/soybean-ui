@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import { injectComboboxRootContext } from './context';
+import type { ComboboxEmptyPropsWithPrimitive } from './types';
 
-import { Primitive } from '../primitive';
-import { injectComboboxRootContext } from './combobox-root.vue';
+defineOptions({
+  name: 'ComboboxEmpty'
+});
 
-export interface ComboboxEmptyProps extends PrimitiveProps {}
-
-const props = defineProps<ComboboxEmptyProps>();
+const props = defineProps<ComboboxEmptyPropsWithPrimitive>();
 const rootContext = injectComboboxRootContext();
 
 const isRender = computed(() =>

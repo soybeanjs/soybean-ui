@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
+import type { TeleportProps } from '../teleport/types';
 
 import { TeleportPrimitive } from '../teleport';
 

@@ -9,9 +9,9 @@ export type MenubarRadioItemEmits = MenuRadioItemEmits;
 export interface MenubarRadioItemProps extends MenuRadioItemProps {}
 
 const props = defineProps<MenuRadioItemProps>();
-const emits = defineEmits<MenuRadioItemEmits>();
+const emit = defineEmits<MenuRadioItemEmits>();
 
-const forwarded = useForwardPropsEmits(props, emits);
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 

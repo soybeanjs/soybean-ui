@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { injectSelectGroupContext } from './select-group.vue';
 
 export interface SelectLabelProps extends PrimitiveProps {

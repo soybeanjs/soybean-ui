@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
+import type { PopoverClosePropsWithPrimitive } from './types';
+import { injectPopoverRootContext } from './context';
 
-import { injectPopoverRootContext } from './popover-root.vue';
+defineOptions({
+  name: 'PopoverClose'
+});
 
-export interface PopoverCloseProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<PopoverCloseProps>(), {
+const props = withDefaults(defineProps<PopoverClosePropsWithPrimitive>(), {
   as: 'button'
 });
 

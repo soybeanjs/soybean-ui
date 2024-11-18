@@ -1,68 +1,27 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { useIsUsingKeyboard } from '../../composables/use-is-using-keyboard';
-import { createContext, useDirection } from '../../composables';
-import type { Direction } from './utils';
+import { useDirection } from '../../composables';
+import { provideMenuContext, provideMenuRootContext } from './context';
+import type { MenuRootProps } from './types';
 
-export interface MenuContext {
-  open: Ref<boolean>;
-  onOpenChange: (open: boolean) => void;
-  content: Ref<HTMLElement | undefined>;
-  onContentChange: (content: HTMLElement | undefined) => void;
-}
+defineOptions({
+  name: 'MenuRoot'
+});
 
-export interface MenuRootContext {
-  onClose: () => void;
-  dir: Ref<Direction>;
-  isUsingKeyboardRef: Ref<boolean>;
-  modal: Ref<boolean>;
-}
-
-export interface MenuProps {
-  /** The controlled open state of the menu. Can be used as `v-model:open`. */
-  open?: boolean;
-  /**
-   * The reading direction of the combobox when applicable.
-   *
-   * If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /**
-   * The modality of the dropdown menu.
-   *
-   * When set to `true`, interaction with outside elements will be disabled and only menu content will be visible to
-   * screen readers.
-   */
-  modal?: boolean;
-}
-
-export type MenuEmits = {
-  'update:open': [payload: boolean];
-};
-
-export const [injectMenuContext, provideMenuContext] = createContext<MenuContext>(
-  ['MenuRoot', 'MenuSub'],
-  'MenuContext'
-);
-
-export const [injectMenuRootContext, provideMenuRootContext] = createContext<MenuRootContext>('MenuRoot');
-
-const props = withDefaults(defineProps<MenuProps>(), {
+const props = withDefaults(defineProps<MenuRootProps>(), {
   open: false,
   modal: true
 });
-const emits = defineEmits<MenuEmits>();
+
+const open = defineModel<boolean>('open', { default: false });
+const isUsingKeyboardRef = useIsUsingKeyboard();
+
 const { modal, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 
-const open = useVModel(props, 'open', emits);
-
 const content = ref<HTMLElement>();
-const isUsingKeyboardRef = useIsUsingKeyboard();
 
 provideMenuContext({
   open,

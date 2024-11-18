@@ -2,10 +2,10 @@
 import type { ComponentPublicInstance } from 'vue';
 import { computed, onMounted, ref, toRefs, watchEffect } from 'vue';
 import { onKeyStroke, unrefElement } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { useCollection } from '../collection';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { focusFirst, getTabbableCandidates } from '../focus-scope/utils';
 import { DismissableLayerBranch } from '../dismissable-layer';
 import { useForwardExpose } from '../../composables';

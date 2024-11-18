@@ -2,7 +2,7 @@
 import type { VNode } from 'vue';
 import { Comment, computed, onMounted, useSlots } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import type { PopperContentProps } from '../popper';
 import { PopperContent } from '../popper';
 import { VisuallyHidden } from '../visually-hidden';
@@ -60,7 +60,7 @@ const props = withDefaults(defineProps<TooltipContentImplProps>(), {
   sticky: 'partial',
   hideWhenDetached: false
 });
-const emits = defineEmits<TooltipContentImplEmits>();
+const emit = defineEmits<TooltipContentImplEmits>();
 
 const rootContext = injectTooltipRootContext();
 
@@ -100,13 +100,13 @@ onMounted(() => {
   <DismissableLayer
     as-child
     :disable-outside-pointer-events="false"
-    @escape-key-down="emits('escapeKeyDown', $event)"
+    @escape-key-down="emit('escapeKeyDown', $event)"
     @pointer-down-outside="
       event => {
         if (rootContext.disableClosingTrigger.value && rootContext.trigger.value?.contains(event.target as HTMLElement))
           event.preventDefault();
 
-        emits('pointerDownOutside', event);
+        emit('pointerDownOutside', event);
       }
     "
     @focus-outside.prevent

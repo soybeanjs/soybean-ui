@@ -4,7 +4,7 @@ import { onMounted } from 'vue';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
 import { useForwardExpose } from '../../composables';
-import { getOpenState } from '../menu/utils';
+import { getOpenState } from '../menu/shared';
 import { injectDialogRootContext } from './context';
 import { useWarning } from './shared';
 import type { DialogContentImplEmits, DialogContentImplPropsWithPrimitive } from './types';

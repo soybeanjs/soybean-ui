@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { type Ref, computed, nextTick, ref, toRefs, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import type { DataOrientation, Direction } from '../../composables/types';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
 
@@ -50,7 +50,7 @@ const props = withDefaults(defineProps<StepperRootProps>(), {
   linear: true,
   defaultValue: 1
 });
-const emits = defineEmits<StepperRootEmits>();
+const emit = defineEmits<StepperRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -81,7 +81,7 @@ useForwardExpose();
 
 const totalStepperItems = ref<Set<HTMLElement>>(new Set());
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 });

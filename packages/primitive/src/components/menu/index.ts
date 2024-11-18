@@ -1,26 +1,39 @@
-export { default as MenuAnchor } from './menu-anchor.vue';
-export { default as MenuArrow, type MenuArrowProps } from './menu-arrow.vue';
+import MenuRoot from './menu-root.vue';
+import MenuPortal from './menu-portal.vue';
+import MenuContent from './menu-content.vue';
+import MenuSub from './menu-sub.vue';
+import MenuSubContent from './menu-sub-content.vue';
+import MenuSubTrigger from './menu-sub-trigger.vue';
+import MenuGroup from './menu-group.vue';
+import MenuItem from './menu-item.vue';
+import MenuItemIndicator from './menu-item-indicator.vue';
+import MenuLabel from './menu-label.vue';
+import MenuSeparator from './menu-separator.vue';
+import MenuCheckboxItem from './menu-checkbox-item.vue';
+import MenuRadioGroup from './menu-radio-group.vue';
+import MenuRadioItem from './menu-radio-item.vue';
+import MenuAnchor from './menu-anchor.vue';
+import MenuArrow from './menu-arrow.vue';
+
 export {
-  default as MenuCheckboxItem,
-  type MenuCheckboxItemProps,
-  type MenuCheckboxItemEmits
-} from './MenuCheckboxItem.vue';
-export { default as MenuContent, type MenuContentEmits, type MenuContentProps } from './MenuContent.vue';
-export { default as MenuGroup, type MenuGroupProps } from './menu-group.vue';
-export { default as MenuItem, type MenuItemProps, type MenuItemEmits } from './MenuItem.vue';
-export { default as MenuItemIndicator, type MenuItemIndicatorProps } from './MenuItemIndicator.vue';
-export { default as MenuLabel, type MenuLabelProps } from './menu-label.vue';
-export { default as MenuPortal, type MenuPortalProps } from './menu-portal.vue';
-export { default as MenuRadioGroup, type MenuRadioGroupProps, type MenuRadioGroupEmits } from './MenuRadioGroup.vue';
-export { default as MenuRadioItem, type MenuRadioItemProps, type MenuRadioItemEmits } from './MenuRadioItem.vue';
-export {
-  injectMenuContext,
-  injectMenuRootContext,
-  default as MenuRoot,
-  type MenuProps,
-  type MenuEmits
-} from './MenuRoot.vue';
-export { default as MenuSeparator, type MenuSeparatorProps } from './MenuSeparator.vue';
-export { default as MenuSub, type MenuSubProps, type MenuSubEmits } from './MenuSub.vue';
-export { default as MenuSubContent, type MenuSubContentProps, type MenuSubContentEmits } from './MenuSubContent.vue';
-export { default as MenuSubTrigger, type MenuSubTriggerProps } from './menu-sub-trigger.vue';
+  MenuRoot,
+  MenuPortal,
+  MenuContent,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
+  MenuGroup,
+  MenuItem,
+  MenuItemIndicator,
+  MenuLabel,
+  MenuSeparator,
+  MenuCheckboxItem,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuAnchor,
+  MenuArrow
+};
+
+export { injectMenuContext, injectMenuRootContext } from './context';
+
+export * from './types';

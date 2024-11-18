@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardPropsEmits } from '../../composables';
-import type { MenuContentImplEmits, MenuRootContentTypeProps } from './MenuContentImpl.vue';
-
 import MenuRootContentModal from './menu-root-content-modal.vue';
 import MenuRootContentNonModal from './menu-root-content-non-modal.vue';
-import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
+import { injectMenuContext, injectMenuRootContext } from './context';
+import type { MenuContentImplEmits, MenuContentPropsWithPrimitive } from './types';
 
-export type MenuContentEmits = Omit<MenuContentImplEmits, 'entryFocus' | 'openAutoFocus'>;
+defineOptions({
+  name: 'MenuContent',
+  inheritAttrs: false
+});
 
-export interface MenuContentProps extends MenuRootContentTypeProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+const props = defineProps<MenuContentPropsWithPrimitive>();
 
-const props = defineProps<MenuContentProps>();
-const emits = defineEmits<MenuContentImplEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<MenuContentImplEmits>();
+
+const forwarded = useForwardPropsEmits(props, emit);
 
 const menuContext = injectMenuContext();
+
 const rootContext = injectMenuRootContext();
 </script>
 

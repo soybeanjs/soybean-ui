@@ -2,8 +2,8 @@
 import type { DateValue } from '@internationalized/date';
 
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
 
 export interface RangeCalendarNextProps extends PrimitiveProps {

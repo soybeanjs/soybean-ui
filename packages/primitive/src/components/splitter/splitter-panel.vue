@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { useId } from '../../composables';
 import { PRECISION } from './utils/constants';
 
@@ -61,7 +61,7 @@ export type PanelData = {
 };
 
 const props = defineProps<SplitterPanelProps>();
-const emits = defineEmits<SplitterPanelEmits>();
+const emit = defineEmits<SplitterPanelEmits>();
 
 defineSlots<{
   default: (props: {
@@ -95,9 +95,9 @@ const panelDataRef = computed(
   () =>
     ({
       callbacks: {
-        onCollapse: () => emits('collapse'),
-        onExpand: () => emits('expand'),
-        onResize: (...args) => emits('resize', ...args)
+        onCollapse: () => emit('collapse'),
+        onExpand: () => emit('expand'),
+        onResize: (...args) => emit('resize', ...args)
       },
       constraints: {
         collapsedSize: props.collapsedSize && Number.parseFloat(props.collapsedSize.toFixed(PRECISION)),

@@ -4,8 +4,8 @@ import type { Ref } from 'vue';
 import { computed, ref, toRefs, watchEffect } from 'vue';
 import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
 import { createContext, useCollection, useDirection, useForwardExpose, useId } from '../../composables';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import type { Direction, Orientation } from './utils';
 
 export interface NavigationMenuRootProps extends PrimitiveProps {
@@ -108,7 +108,7 @@ const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
   unmountOnHide: true,
   as: 'nav'
 });
-const emits = defineEmits<NavigationMenuRootEmits>();
+const emit = defineEmits<NavigationMenuRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -117,7 +117,7 @@ defineSlots<{
   }) => any;
 }>();
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? '',
   passive: (props.modelValue === undefined) as false
 }) as Ref<string>;

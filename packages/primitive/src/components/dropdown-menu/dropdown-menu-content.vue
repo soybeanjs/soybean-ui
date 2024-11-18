@@ -10,8 +10,8 @@ export type DropdownMenuContentEmits = MenuContentEmits;
 export interface DropdownMenuContentProps extends MenuContentProps {}
 
 const props = defineProps<DropdownMenuContentProps>();
-const emits = defineEmits<DropdownMenuContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<DropdownMenuContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 
 const rootContext = injectDropdownMenuRootContext();

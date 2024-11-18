@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { injectSliderRootContext } from './slider-root.vue';
 import { ARROW_KEYS, PAGE_KEYS } from './utils';
 
@@ -19,7 +19,7 @@ export interface SliderImplProps extends PrimitiveProps {}
 const props = withDefaults(defineProps<SliderImplProps>(), {
   as: 'span'
 });
-const emits = defineEmits<SliderImplEmits>();
+const emit = defineEmits<SliderImplEmits>();
 const rootContext = injectSliderRootContext();
 </script>
 
@@ -30,15 +30,15 @@ const rootContext = injectSliderRootContext();
     @keydown="
       event => {
         if (event.key === 'Home') {
-          emits('homeKeyDown', event);
+          emit('homeKeyDown', event);
           // Prevent scrolling to page start
           event.preventDefault();
         } else if (event.key === 'End') {
-          emits('endKeyDown', event);
+          emit('endKeyDown', event);
           // Prevent scrolling to page end
           event.preventDefault();
         } else if (PAGE_KEYS.concat(ARROW_KEYS).includes(event.key)) {
-          emits('stepKeyDown', event);
+          emit('stepKeyDown', event);
           // Prevent scrolling for directional key presses
           event.preventDefault();
         }
@@ -55,14 +55,14 @@ const rootContext = injectSliderRootContext();
         if (rootContext.thumbElements.value.includes(target)) {
           target.focus();
         } else {
-          emits('slideStart', event);
+          emit('slideStart', event);
         }
       }
     "
     @pointermove="
       event => {
         const target = event.target as HTMLElement;
-        if (target.hasPointerCapture(event.pointerId)) emits('slideMove', event);
+        if (target.hasPointerCapture(event.pointerId)) emit('slideMove', event);
       }
     "
     @pointerup="
@@ -70,7 +70,7 @@ const rootContext = injectSliderRootContext();
         const target = event.target as HTMLElement;
         if (target.hasPointerCapture(event.pointerId)) {
           target.releasePointerCapture(event.pointerId);
-          emits('slideEnd', event);
+          emit('slideEnd', event);
         }
       }
     "

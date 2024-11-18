@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue';
 import { watchOnce } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
 import { addUnlinkedScrollListener } from './utils';
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';

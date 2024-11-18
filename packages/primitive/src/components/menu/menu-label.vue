@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import type { MenuLabelPropsWithPrimitive } from './types';
 
-import { Primitive } from '../primitive';
-
-export interface MenuLabelProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<MenuLabelProps>(), {
-  as: 'div'
+defineOptions({
+  name: 'MenuLabel'
 });
+
+const { class: className, as = 'div' } = defineProps<MenuLabelPropsWithPrimitive>();
 </script>
 
 <template>
-  <Primitive v-bind="props">
+  <Primitive :class="className" :as :as-child>
     <slot />
   </Primitive>
 </template>

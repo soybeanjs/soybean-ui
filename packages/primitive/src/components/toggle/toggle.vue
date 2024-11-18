@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { type Ref, computed } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { injectToggleGroupRootContext } from '../toggle-group/toggle-group-root.vue';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import type { FormFieldProps } from '../../composables/types';
 import { useFormControl, useForwardExpose } from '../../composables';
 
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<ToggleProps>(), {
   as: 'button'
 });
 
-const emits = defineEmits<ToggleEmits>();
+const emit = defineEmits<ToggleEmits>();
 
 defineSlots<{
   default: (props: {
@@ -43,7 +43,7 @@ defineSlots<{
 const { forwardRef, currentElement } = useForwardExpose();
 const toggleGroupContext = injectToggleGroupRootContext(null);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
 }) as Ref<boolean>;

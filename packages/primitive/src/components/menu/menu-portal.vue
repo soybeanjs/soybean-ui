@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
-
 import { TeleportPrimitive } from '../teleport';
+import type { MenuPortalProps } from './types';
 
-export interface MenuPortalProps extends TeleportProps {}
+defineOptions({
+  name: 'MenuPortal'
+});
 
 const props = defineProps<MenuPortalProps>();
 </script>

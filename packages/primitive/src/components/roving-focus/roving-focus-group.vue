@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useCollection, useDirection } from '../../composables';
 import { ENTRY_FOCUS, EVENT_OPTIONS, focusFirst } from './shared';
 import { provideRovingFocusGroupContext } from './context';

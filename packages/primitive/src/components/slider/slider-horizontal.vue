@@ -10,7 +10,7 @@ interface SliderHorizontalProps extends SliderOrientationPrivateProps {
 }
 
 const props = defineProps<SliderHorizontalProps>();
-const emits = defineEmits<SliderOrientationPrivateEmits>();
+const emit = defineEmits<SliderOrientationPrivateEmits>();
 const { max, min, dir, inverted } = toRefs(props);
 
 const { forwardRef, currentElement: sliderElement } = useForwardExpose();
@@ -49,30 +49,30 @@ provideSliderOrientationContext({
     @slide-start="
       event => {
         const value = getValueFromPointer(event.clientX);
-        emits('slideStart', value);
+        emit('slideStart', value);
       }
     "
     @slide-move="
       event => {
         const value = getValueFromPointer(event.clientX);
-        emits('slideMove', value);
+        emit('slideMove', value);
       }
     "
     @slide-end="
       () => {
         rectRef = undefined;
-        emits('slideEnd');
+        emit('slideEnd');
       }
     "
     @step-key-down="
       event => {
         const slideDirection = isSlidingFromLeft ? 'from-left' : 'from-right';
         const isBackKey = BACK_KEYS[slideDirection].includes(event.key);
-        emits('stepKeyDown', event, isBackKey ? -1 : 1);
+        emit('stepKeyDown', event, isBackKey ? -1 : 1);
       }
     "
-    @end-key-down="emits('endKeyDown', $event)"
-    @home-key-down="emits('homeKeyDown', $event)"
+    @end-key-down="emit('endKeyDown', $event)"
+    @home-key-down="emit('homeKeyDown', $event)"
   >
     <slot />
   </SliderImpl>

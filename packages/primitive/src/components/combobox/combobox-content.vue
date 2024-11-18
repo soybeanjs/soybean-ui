@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import type { ComboboxContentImplEmits, ComboboxContentImplProps } from './combobox-content-impl.vue';
-
-import { injectComboboxRootContext } from './combobox-root.vue';
+import type { ComboboxContentEmits, ComboboxContentPropsWithPrimitive } from './types';
+import { injectComboboxRootContext } from './context';
 import ComboboxContentImpl from './combobox-content-impl.vue';
 
-export type ComboboxContentEmits = ComboboxContentImplEmits;
-export interface ComboboxContentProps extends ComboboxContentImplProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+defineOptions({
+  name: 'ComboboxContent',
+  inheritAttrs: false
+});
 
-const props = defineProps<ComboboxContentProps>();
-const emits = defineEmits<ComboboxContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const props = defineProps<ComboboxContentPropsWithPrimitive>();
+
+const emit = defineEmits<ComboboxContentEmits>();
+
+const forwarded = useForwardPropsEmits(props, emit);
+
 const { forwardRef } = useForwardExpose();
 
 const rootContext = injectComboboxRootContext();

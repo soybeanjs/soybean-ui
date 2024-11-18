@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
-
 import { TeleportPrimitive } from '../teleport';
+import type { ComboboxPortalProps } from './types';
 
-export interface ComboboxPortalProps extends TeleportProps {}
+defineOptions({
+  name: 'ComboboxPortal'
+});
 
 const props = defineProps<ComboboxPortalProps>();
 </script>

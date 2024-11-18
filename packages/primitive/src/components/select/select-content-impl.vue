@@ -4,13 +4,13 @@ import { computed, ref, watch, watchEffect } from 'vue';
 import { unrefElement } from '@vueuse/core';
 import type { PopperContentProps } from '../popper';
 import type { PointerDownOutsideEvent } from '../dismissable-layer';
-import { createContext, useFocusGuards, useForwardProps, useHideOthers, useTypeahead } from '../../composables';
+import { createContext, useFocusGuards, useForwardProps, useHideOthers, useTypeAhead } from '../../composables';
 import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
 import type { AcceptableValue } from '../../composables/types';
 import { useCollection } from '../collection';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
-import { focusFirst } from '../menu/utils';
+import { focusFirst } from '../menu/shared';
 import { valueComparator } from './utils';
 
 import { injectSelectRootContext } from './select-root.vue';
@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<SelectContentImplProps>(), {
   position: 'item-aligned',
   bodyLock: true
 });
-const emits = defineEmits<SelectContentImplEmits>();
+const emit = defineEmits<SelectContentImplEmits>();
 
 const rootContext = injectSelectRootContext();
 
@@ -82,13 +82,18 @@ const { CollectionSlot, getItems } = useCollection();
 const content = ref<HTMLElement>();
 useHideOthers(content);
 
-const { search, handleTypeaheadSearch } = useTypeahead();
+const { search, handleTypeaheadSearch } = useTypeAhead();
 
 const viewport = ref<HTMLElement>();
 const selectedItem = ref<HTMLElement>();
 const selectedItemText = ref<HTMLElement>();
 const isPositioned = ref(false);
 const firstValidItemFoundRef = ref(false);
+
+function refTrigger(vnode: ComponentPublicInstance) {
+  content.value = unrefElement(vnode) as HTMLElement;
+  return undefined;
+}
 
 function focusSelectedItem() {
   if (selectedItem.value && content.value) focusFirst([selectedItem.value, content.value]);
@@ -219,7 +224,7 @@ provideSelectContentContext({
       @mount-auto-focus.prevent
       @unmount-auto-focus="
         event => {
-          emits('closeAutoFocus', event);
+          emit('closeAutoFocus', event);
           if (event.defaultPrevented) return;
           rootContext.triggerElement.value?.focus({ preventScroll: true });
           event.preventDefault();
@@ -231,19 +236,14 @@ provideSelectContentContext({
         disable-outside-pointer-events
         @focus-outside.prevent
         @dismiss="rootContext.onOpenChange(false)"
-        @escape-key-down="emits('escapeKeyDown', $event)"
-        @pointer-down-outside="emits('pointerDownOutside', $event)"
+        @escape-key-down="emit('escapeKeyDown', $event)"
+        @pointer-down-outside="emit('pointerDownOutside', $event)"
       >
         <component
           :is="position === 'popper' ? SelectPopperPosition : SelectItemAlignedPosition"
           v-bind="{ ...$attrs, ...forwardedProps }"
           :id="rootContext.contentId"
-          :ref="
-            (vnode: ComponentPublicInstance) => {
-              content = unrefElement(vnode) as HTMLElement;
-              return undefined;
-            }
-          "
+          :ref="refTrigger"
           role="listbox"
           :data-state="rootContext.open.value ? 'open' : 'closed'"
           :dir="rootContext.dir.value"

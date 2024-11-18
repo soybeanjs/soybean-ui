@@ -1,25 +1,38 @@
+import ComboboxRoot from './combobox-root.vue';
+import ComboboxInput from './combobox-input.vue';
+import ComboboxAnchor from './combobox-anchor.vue';
+import ComboboxEmpty from './combobox-empty.vue';
+import ComboboxTrigger from './combobox-trigger.vue';
+import ComboboxCancel from './combobox-cancel.vue';
+import ComboboxGroup from './combobox-group.vue';
+import ComboboxLabel from './combobox-label.vue';
+import ComboboxContent from './combobox-content.vue';
+import ComboboxViewport from './combobox-viewport.vue';
+import ComboboxVirtualizer from './combobox-virtualizer.vue';
+import ComboboxItem from './combobox-item.vue';
+import ComboboxItemIndicator from './combobox-item-indicator.vue';
+import ComboboxSeparator from './combobox-separator.vue';
+import ComboboxArrow from './combobox-arrow.vue';
+import ComboboxPortal from './combobox-portal.vue';
+
 export {
-  injectComboboxRootContext,
-  default as ComboboxRoot,
-  type ComboboxRootProps,
-  type ComboboxRootEmits
-} from './ComboboxRoot.vue';
-export { default as ComboboxInput, type ComboboxInputProps } from './ComboboxInput.vue';
-export { default as ComboboxAnchor, type ComboboxAnchorProps } from './ComboboxAnchor.vue';
-export { default as ComboboxEmpty, type ComboboxEmptyProps } from './ComboboxEmpty.vue';
-export { default as ComboboxTrigger, type ComboboxTriggerProps } from './ComboboxTrigger.vue';
-export { default as ComboboxCancel, type ComboboxCancelProps } from './ComboboxCancel.vue';
-export { default as ComboboxGroup, type ComboboxGroupProps } from './ComboboxGroup.vue';
-export { default as ComboboxLabel, type ComboboxLabelProps } from './ComboboxLabel.vue';
-export {
-  default as ComboboxContent,
-  type ComboboxContentProps,
-  type ComboboxContentEmits
-} from './ComboboxContent.vue';
-export { default as ComboboxViewport, type ComboboxViewportProps } from './ComboboxViewport.vue';
-export { default as ComboboxVirtualizer, type ComboboxVirtualizerProps } from './ComboboxVirtualizer.vue';
-export { default as ComboboxItem, type ComboboxItemProps, type ComboboxItemEmits } from './ComboboxItem.vue';
-export { default as ComboboxItemIndicator, type ComboboxItemIndicatorProps } from './ComboboxItemIndicator.vue';
-export { default as ComboboxSeparator, type ComboboxSeparatorProps } from './ComboboxSeparator.vue';
-export { default as ComboboxArrow, type ComboboxArrowProps } from './ComboboxArrow.vue';
-export { default as ComboboxPortal, type ComboboxPortalProps } from './combobox-portal.vue';
+  ComboboxRoot,
+  ComboboxInput,
+  ComboboxAnchor,
+  ComboboxEmpty,
+  ComboboxTrigger,
+  ComboboxCancel,
+  ComboboxGroup,
+  ComboboxLabel,
+  ComboboxContent,
+  ComboboxViewport,
+  ComboboxVirtualizer,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxSeparator,
+  ComboboxArrow,
+  ComboboxPortal
+};
+export { injectComboboxRootContext } from './context';
+
+export * from './types';

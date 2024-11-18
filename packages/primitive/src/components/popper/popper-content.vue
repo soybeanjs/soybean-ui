@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import type { Middleware, Placement, ReferenceElement } from '@floating-ui/vue';
 import { computed, ref, watchEffect, watchPostEffect } from 'vue';
 import { computedEager, useThrottleFn } from '@vueuse/core';
 import {
@@ -14,161 +12,26 @@ import {
   size,
   useFloating
 } from '@floating-ui/vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import { createContext, useForwardExpose, useSize } from '../../composables';
-import type { Align, Side } from './utils';
-
-import { injectPopperRootContext } from './popper-root.vue';
-import { getSideAndAlignFromPlacement, isNotNull, transformOrigin } from './utils';
-
-export const PopperContentPropsDefaultValue = {
-  side: 'bottom' as Side,
-  sideOffset: 0,
-  align: 'center' as Align,
-  alignOffset: 0,
-  arrowPadding: 0,
-  avoidCollisions: true,
-  collisionBoundary: () => [],
-  collisionPadding: 0,
-  sticky: 'partial' as 'partial' | 'always',
-  hideWhenDetached: false,
-  positionStrategy: 'fixed' as 'absolute' | 'fixed',
-  updatePositionStrategy: 'optimized' as 'optimized' | 'always',
-  prioritizePosition: false
-};
-
-export interface PopperContentProps extends PrimitiveProps {
-  /**
-   * The preferred side of the trigger to render against when open. Will be reversed when collisions occur and
-   * avoidCollisions is enabled.
-   *
-   * @defaultValue 'top'
-   */
-  side?: Side;
-
-  /**
-   * The distance in pixels from the trigger.
-   *
-   * @defaultValue 0
-   */
-  sideOffset?: number;
-
-  /**
-   * The preferred alignment against the trigger. May change when collisions occur.
-   *
-   * @defaultValue 'center'
-   */
-  align?: Align;
-
-  /**
-   * An offset in pixels from the `start` or `end` alignment options.
-   *
-   * @defaultValue 0
-   */
-  alignOffset?: number;
-
-  /**
-   * When `true`, overrides the side and align preferences to prevent collisions with boundary edges.
-   *
-   * @defaultValue true
-   */
-  avoidCollisions?: boolean;
-
-  /**
-   * The element used as the collision boundary. By default this is the viewport, though you can provide additional
-   * element(s) to be included in this check.
-   *
-   * @defaultValue [ ]
-   */
-  collisionBoundary?: Element | null | Array<Element | null>;
-
-  /**
-   * The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for
-   * all sides), or a partial padding object, for example: { top: 20, left: 20 }.
-   *
-   * @defaultValue 0
-   */
-  collisionPadding?: number | Partial<Record<Side, number>>;
-
-  /**
-   * The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it
-   * from overflowing the corners.
-   *
-   * @defaultValue 0
-   */
-  arrowPadding?: number;
-
-  /**
-   * The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at
-   * least partially in the boundary whilst "always" will keep the content in the boundary regardless.
-   *
-   * @defaultValue 'partial'
-   */
-  sticky?: 'partial' | 'always';
-
-  /**
-   * Whether to hide the content when the trigger becomes fully occluded.
-   *
-   * @defaultValue false
-   */
-  hideWhenDetached?: boolean;
-
-  /** The type of CSS position property to use. */
-  positionStrategy?: 'absolute' | 'fixed';
-
-  /**
-   * Strategy to update the position of the floating element on every animation frame.
-   *
-   * @defaultValue 'optimized'
-   */
-  updatePositionStrategy?: 'optimized' | 'always';
-
-  /**
-   * Whether to disable the update position for the content when the layout shifted.
-   *
-   * @defaultValue false
-   */
-  disableUpdateOnLayoutShift?: boolean;
-
-  /**
-   * Force content to be position within the viewport.
-   *
-   * Might overlap the reference element, which may not be desired.
-   *
-   * @defaultValue false
-   */
-  prioritizePosition?: boolean;
-
-  /**
-   * The custom element or virtual element that will be set as the reference to position the floating element.
-   *
-   * If provided, it will replace the default anchor element.
-   */
-  reference?: ReferenceElement;
-}
-
-export interface PopperContentContext {
-  placedSide: Ref<Side>;
-  onArrowChange: (arrow: HTMLElement | undefined) => void;
-  arrowX?: Ref<number>;
-  arrowY?: Ref<number>;
-  shouldHideArrow: Ref<boolean>;
-}
-
-export const [injectPopperContentContext, providePopperContentContext] =
-  createContext<PopperContentContext>('PopperContent');
+import type { Middleware, Placement } from '@floating-ui/vue';
+import { useForwardExpose, useSize } from '../../composables';
+import Primitive from '../primitive/primitive';
+import { injectPopperRootContext, providePopperContentContext } from './context';
+import {
+  createPopperContentPropsDefaultValue,
+  getSideAndAlignFromPlacement,
+  isNotNull,
+  transformOrigin
+} from './shared';
+import type { PopperContentEmits, PopperContentPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'PopperContent',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<PopperContentProps>(), {
-  ...PopperContentPropsDefaultValue
-});
-const emits = defineEmits<{
-  placed: [void];
-}>();
+const props = withDefaults(defineProps<PopperContentPropsWithPrimitive>(), createPopperContentPropsDefaultValue());
+
+const emit = defineEmits<PopperContentEmits>();
 
 const rootContext = injectPopperRootContext();
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
@@ -264,7 +127,7 @@ const placedSide = computed(() => getSideAndAlignFromPlacement(placement.value)[
 const placedAlign = computed(() => getSideAndAlignFromPlacement(placement.value)[1]);
 
 watchPostEffect(() => {
-  if (isPositioned.value) emits('placed');
+  if (isPositioned.value) emit('placed');
 });
 
 // update position automatically when `boundingClientRect` changes
@@ -320,6 +183,7 @@ providePopperContentContext({
     <Primitive
       :ref="forwardRef"
       v-bind="$attrs"
+      :class="props.class"
       :as-child="props.asChild"
       :as
       :data-side="placedSide"

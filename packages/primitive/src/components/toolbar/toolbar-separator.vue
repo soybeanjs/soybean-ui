@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 
 import { useForwardExpose } from '../../composables';
 import BaseSeparator from '../../composables/component/base-separator.vue';

@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import { createContext, useId } from '../../composables';
+import Primitive from '../primitive/primitive';
+import { useId } from '../../composables';
+import { provideListboxGroupContext } from './context';
+import type { ListboxGroupPropsWithPrimitive } from './types';
 
-export interface ListboxGroupProps extends PrimitiveProps {}
+defineOptions({
+  name: 'ListboxGroup'
+});
 
-interface ListboxGroupContext {
-  id: string;
-}
-
-export const [injectListboxGroupContext, provideListboxGroupContext] =
-  createContext<ListboxGroupContext>('ListboxGroup');
-
-const props = defineProps<ListboxGroupProps>();
+const props = defineProps<ListboxGroupPropsWithPrimitive>();
 
 const id = useId(undefined, 'soybean-listbox-group');
 provideListboxGroupContext({ id });

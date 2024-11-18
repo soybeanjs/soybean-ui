@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
-import { injectComboboxRootContext } from './combobox-root.vue';
+import { injectComboboxRootContext } from './context';
+import type { ComboboxCancelPropsWithPrimitive } from './types';
 
-export interface ComboboxCancelProps extends PrimitiveProps {}
+defineOptions({
+  name: 'ComboboxCancel'
+});
 
-const props = withDefaults(defineProps<ComboboxCancelProps>(), {
+const props = withDefaults(defineProps<ComboboxCancelPropsWithPrimitive>(), {
   as: 'button'
 });
 
 useForwardExpose();
+
 const rootContext = injectComboboxRootContext();
 
 function handleClick() {

@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
 import { useNonce } from '../../composables/use-nonce';
-import { injectComboboxRootContext } from './combobox-root.vue';
+import { injectComboboxRootContext } from './context';
+import type { ComboboxViewportPropsWithPrimitive } from './types';
 
-export interface ComboboxViewportProps extends PrimitiveProps {
-  /**
-   * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
-   * globally from `ConfigProvider`.
-   */
-  nonce?: string;
-}
+defineOptions({
+  name: 'ComboboxViewport',
+  inheritAttrs: false
+});
 
-const props = defineProps<ComboboxViewportProps>();
+const props = defineProps<ComboboxViewportPropsWithPrimitive>();
 const { forwardRef } = useForwardExpose();
 
 const { nonce: propNonce } = toRefs(props);

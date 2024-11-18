@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import type { ArrowProps } from '../../composables/component/Arrow.vue';
-
+import type { ComponentPublicInstance } from 'vue';
 import { useForwardExpose } from '../../composables';
-import Arrow from '../../composables/component/Arrow.vue';
-import { injectPopperContentContext } from './popper-content.vue';
-import type { Side } from './utils';
+import type { Side } from '../../types';
+import Arrow from '../arrow/arrow.vue';
+import { injectPopperContentContext } from './context';
+import type { PopperArrowPropsWithPrimitive } from './types';
+
+defineOptions({
+  name: 'PopperArrow',
+  inheritAttrs: false
+});
+
+const props = defineProps<PopperArrowPropsWithPrimitive>();
+
+const { forwardRef } = useForwardExpose();
+const contentContext = injectPopperContentContext();
+
+function refTrigger(vnode: ComponentPublicInstance) {
+  contentContext.onArrowChange(vnode?.$el);
+  return undefined;
+}
 
 const OPPOSITE_SIDE: Record<Side, Side> = {
   top: 'bottom',
@@ -15,28 +29,12 @@ const OPPOSITE_SIDE: Record<Side, Side> = {
   left: 'right'
 };
 
-export interface PopperArrowProps extends ArrowProps, PrimitiveProps {}
-
-defineOptions({
-  inheritAttrs: false
-});
-
-withDefaults(defineProps<PopperArrowProps>(), { as: 'svg' });
-
-const { forwardRef } = useForwardExpose();
-const contentContext = injectPopperContentContext();
-
 const baseSide = computed(() => OPPOSITE_SIDE[contentContext.placedSide.value]);
 </script>
 
 <template>
   <span
-    :ref="
-      (el: HTMLElement) => {
-        contentContext.onArrowChange(el);
-        return undefined;
-      }
-    "
+    :ref="refTrigger"
     :style="{
       position: 'absolute',
       left: contentContext.arrowX?.value ? `${contentContext.arrowX?.value}px` : undefined,
@@ -60,14 +58,15 @@ const baseSide = computed(() => OPPOSITE_SIDE[contentContext.placedSide.value]);
     <Arrow
       v-bind="$attrs"
       :ref="forwardRef"
-      :style="{
-        display: 'block'
-      }"
+      :class="props.class"
       :as
       :as-child
       :rounded="rounded"
       :width="width"
       :height="height"
+      :style="{
+        display: 'block'
+      }"
     >
       <slot />
     </Arrow>

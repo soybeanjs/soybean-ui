@@ -2,8 +2,8 @@
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { computed, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
+import Primitive from '../primitive/primitive';
 import { createContext, useForwardExpose } from '../../composables';
 
 type PaginationRootContext = {
@@ -51,7 +51,7 @@ const props = withDefaults(defineProps<PaginationRootProps>(), {
   defaultPage: 1,
   showEdges: false
 });
-const emits = defineEmits<PaginationRootEmits>();
+const emit = defineEmits<PaginationRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -65,7 +65,7 @@ defineSlots<{
 const { siblingCount, disabled, showEdges } = toRefs(props);
 
 useForwardExpose();
-const page = useVModel(props, 'page', emits, {
+const page = useVModel(props, 'page', emit, {
   defaultValue: props.defaultPage,
   passive: (props.page === undefined) as false
 }) as Ref<number>;

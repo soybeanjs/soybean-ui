@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<TreeItemProps<T>>(), {
   as: 'li'
 });
 
-const emits = defineEmits<TreeItemEmits<T>>();
+const emit = defineEmits<TreeItemEmits<T>>();
 
 defineSlots<{
   default: (props: {
@@ -123,13 +123,13 @@ function handleKeydownLeft(ev: KeyboardEvent) {
 }
 
 async function handleSelect(ev: SelectEvent<T>) {
-  emits('select', ev);
+  emit('select', ev);
   if (ev?.defaultPrevented) return;
 
   rootContext.onSelect(props.value);
 }
 async function handleToggle(ev: ToggleEvent<T>) {
-  emits('toggle', ev);
+  emit('toggle', ev);
   if (ev?.defaultPrevented) return;
 
   rootContext.onToggle(props.value);

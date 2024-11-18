@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { onBeforeMount, onUnmounted } from 'vue';
-import type { PopperAnchorProps } from '../popper';
 import { PopperAnchor } from '../popper';
 import { useForwardExpose } from '../../composables';
+import { injectPopoverRootContext } from './context';
+import type { PopoverAnchorPropsWithPrimitive } from './types';
 
-import { injectPopoverRootContext } from './popover-root.vue';
+defineOptions({
+  name: 'PopoverAnchor'
+});
 
-export interface PopoverAnchorProps extends PopperAnchorProps {}
-
-const props = defineProps<PopoverAnchorProps>();
+const props = defineProps<PopoverAnchorPropsWithPrimitive>();
 
 useForwardExpose();
 const rootContext = injectPopoverRootContext();

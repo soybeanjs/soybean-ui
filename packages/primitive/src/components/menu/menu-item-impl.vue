@@ -1,26 +1,17 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-import { injectMenuContentContext } from './menu-content-impl.vue';
-import { isMouseEvent } from './utils';
-
-export interface MenuItemImplProps extends PrimitiveProps {
-  /** When `true`, prevents the user from interacting with the item. */
-  disabled?: boolean;
-  /**
-   * Optional text used for typeahead purposes. By default the typeahead behavior will use the `.textContent` of the
-   * item. <br> Use this when the content is complex, or you have non-textual content inside.
-   */
-  textValue?: string;
-}
+import { injectMenuContentContext } from './context';
+import { isMouseEvent } from './shared';
+import type { MenuItemImplPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'MenuItemImpl',
   inheritAttrs: false
 });
 
-const props = defineProps<MenuItemImplProps>();
+const props = defineProps<MenuItemImplPropsWithPrimitive>();
 
 const contentContext = injectMenuContentContext();
 const { forwardRef } = useForwardExpose();
@@ -50,6 +41,18 @@ async function handlePointerLeave(event: PointerEvent) {
 
   contentContext.onItemLeave(event);
 }
+
+async function handleFocus(event: FocusEvent) {
+  await nextTick();
+  if (event.defaultPrevented || props.disabled) return;
+  isFocused.value = true;
+}
+
+async function handleBlur(event: FocusEvent) {
+  await nextTick();
+  if (event.defaultPrevented) return;
+  isFocused.value = false;
+}
 </script>
 
 <template>
@@ -67,20 +70,8 @@ async function handlePointerLeave(event: PointerEvent) {
       :data-highlighted="isFocused ? '' : undefined"
       @pointermove="handlePointerMove"
       @pointerleave="handlePointerLeave"
-      @focus="
-        async event => {
-          await nextTick();
-          if (event.defaultPrevented || disabled) return;
-          isFocused = true;
-        }
-      "
-      @blur="
-        async event => {
-          await nextTick();
-          if (event.defaultPrevented) return;
-          isFocused = false;
-        }
-      "
+      @focus="handleFocus"
+      @blur="handleBlur"
     >
       <slot />
     </Primitive>

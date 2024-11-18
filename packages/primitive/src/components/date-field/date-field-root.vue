@@ -4,9 +4,9 @@ import { type DateValue, isEqualDay } from '@internationalized/date';
 import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { type Matcher, hasTime, isBefore } from '../../date';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { usePrimitiveElement } from '../../composables';
 import { VisuallyHidden } from '../visually-hidden';
 import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
@@ -106,7 +106,7 @@ const props = withDefaults(defineProps<DateFieldRootProps>(), {
   placeholder: undefined,
   isDateUnavailable: undefined
 });
-const emits = defineEmits<DateFieldRootEmits>();
+const emit = defineEmits<DateFieldRootEmits>();
 defineSlots<{
   default: (props: {
     /** The current date of the field */
@@ -138,7 +138,7 @@ onMounted(() => {
   getSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: defaultValue.value,
   passive: (props.modelValue === undefined) as false
 }) as Ref<DateValue>;
@@ -149,7 +149,7 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value
 });
 
-const placeholder = useVModel(props, 'placeholder', emits, {
+const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;

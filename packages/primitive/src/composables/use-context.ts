@@ -10,7 +10,7 @@ import type { InjectionKey } from 'vue';
 export function useContext<T extends (...args: any[]) => any>(contextName: string, fn: T) {
   type Context = ReturnType<T>;
 
-  const { useProvide, useInject: injectContext } = createContext<Context>(contextName);
+  const [useProvide, injectContext] = createContext<Context>(contextName);
 
   function provideContext(...args: Parameters<T>) {
     const context: Context = fn(...args);
@@ -25,8 +25,12 @@ export function useContext<T extends (...args: any[]) => any>(contextName: strin
   ] as const;
 }
 
-/** Create context */
-function createContext<T>(contextName: string) {
+/**
+ * Create context
+ *
+ * @param contextName Context name
+ */
+export function createContext<T>(contextName: string) {
   const injectKey: InjectionKey<T | null> = Symbol(contextName);
 
   function useProvide(context: T) {
@@ -49,8 +53,5 @@ function createContext<T>(contextName: string) {
     return context;
   }
 
-  return {
-    useProvide,
-    useInject
-  };
+  return [useProvide, useInject] as const;
 }

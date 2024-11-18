@@ -2,9 +2,9 @@
 import { computed } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { Presence } from '../presence';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { injectCheckboxRootContext } from './context';
-import { getState, isIndeterminate } from './shared';
+import { getCheckedState, isIndeterminate } from './shared';
 import type { CheckboxIndicatorPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -19,7 +19,7 @@ const { state, disabled } = injectCheckboxRootContext();
 
 const present = computed(() => forceMount || isIndeterminate(state.value) || state.value === true);
 
-const dataState = computed(() => getState(state.value));
+const dataState = computed(() => getCheckedState(state.value));
 
 const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 </script>

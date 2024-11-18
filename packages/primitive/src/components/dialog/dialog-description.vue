@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { useForwardExpose } from '../../composables';
 import { injectDialogRootContext } from './context';
 import type { DialogDescriptionPropsWithPrimitive } from './types';

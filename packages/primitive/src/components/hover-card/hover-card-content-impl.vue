@@ -15,7 +15,7 @@ export type HoverCardContentImplEmits = DismissableLayerEmits;
 export interface HoverCardContentImplProps extends PopperContentProps {}
 
 const props = defineProps<HoverCardContentImplProps>();
-const emits = defineEmits<HoverCardContentImplEmits>();
+const emit = defineEmits<HoverCardContentImplEmits>();
 const forwarded = useForwardProps(props);
 
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
@@ -78,9 +78,9 @@ onUnmounted(() => {
   <DismissableLayer
     as-child
     :disable-outside-pointer-events="false"
-    @escape-key-down="emits('escapeKeyDown', $event)"
-    @pointer-down-outside="emits('pointerDownOutside', $event)"
-    @focus-outside.prevent="emits('focusOutside', $event)"
+    @escape-key-down="emit('escapeKeyDown', $event)"
+    @pointer-down-outside="emit('pointerDownOutside', $event)"
+    @focus-outside.prevent="emit('focusOutside', $event)"
     @dismiss="rootContext.onDismiss"
   >
     <PopperContent

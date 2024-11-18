@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, onUnmounted, toRefs, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { createContext, useForwardExpose } from '../../composables';
 
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';

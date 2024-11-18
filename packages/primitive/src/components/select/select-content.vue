@@ -21,8 +21,8 @@ defineOptions({
 
 const props = defineProps<SelectContentProps>();
 
-const emits = defineEmits<SelectContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<SelectContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 
 const rootContext = injectSelectRootContext();
 

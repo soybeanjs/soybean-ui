@@ -4,10 +4,10 @@ import { type DateValue, isEqualDay } from '@internationalized/date';
 import type { Ref } from 'vue';
 import { onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { type Grid, type Matcher, type WeekDayFormat, isBefore } from '../../date';
 import { useCalendar } from '../calendar/use-calendar';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { usePrimitiveElement } from '../../composables';
 import { type Formatter, createContext, useDirection, useLocale } from '../../composables';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../composables/date';
@@ -153,7 +153,7 @@ const props = withDefaults(defineProps<RangeCalendarRootProps>(), {
   isDateUnavailable: undefined,
   allowNonContiguousRanges: false
 });
-const emits = defineEmits<RangeCalendarRootEmits>();
+const emit = defineEmits<RangeCalendarRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -201,7 +201,7 @@ const locale = useLocale(propLocale);
 const lastPressedDateValue = ref() as Ref<DateValue | undefined>;
 const focusedValue = ref() as Ref<DateValue | undefined>;
 
-const modelValue = useVModel(props, 'modelValue', emits, {
+const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
   passive: (props.modelValue === undefined) as false
 }) as Ref<DateRange>;
@@ -214,7 +214,7 @@ const defaultDate = getDefaultDate({
 const startValue = ref(modelValue.value.start) as Ref<DateValue | undefined>;
 const endValue = ref(modelValue.value.end) as Ref<DateValue | undefined>;
 
-const placeholder = useVModel(props, 'placeholder', emits, {
+const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;
@@ -284,7 +284,7 @@ watch(modelValue, _modelValue => {
 watch(startValue, _startValue => {
   if (_startValue && !isEqualDay(_startValue, placeholder.value)) onPlaceholderChange(_startValue);
 
-  emits('update:startValue', _startValue);
+  emit('update:startValue', _startValue);
 });
 
 watch([startValue, endValue], ([_startValue, _endValue]) => {

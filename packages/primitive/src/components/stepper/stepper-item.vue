@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { type Ref, computed, toRefs } from 'vue';
 
-import { Primitive } from '../primitive';
-import type { PrimitiveProps } from '../primitive';
+import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { createContext, useForwardExpose, useId } from '../../composables';
 import { injectStepperRootContext } from './stepper-root.vue';
 

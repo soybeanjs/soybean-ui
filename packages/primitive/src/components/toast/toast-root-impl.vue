@@ -2,10 +2,10 @@
 import { isClient } from '@vueuse/shared';
 import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../primitive/types';
 import { createContext, useCollection, useForwardExpose } from '../../composables';
 
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import type { SwipeEvent } from './utils';
 import { injectToastProviderContext } from './toast-provider.vue';
 import {
@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<ToastRootImplProps>(), {
   as: 'li'
 });
 
-const emits = defineEmits<ToastRootImplEmits>();
+const emit = defineEmits<ToastRootImplEmits>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 const { CollectionItem } = useCollection();
@@ -111,7 +111,7 @@ function handleClose() {
 
   // when manually close the toast, we reset isClosePausedRef
   providerContext.isClosePausedRef.value = false;
-  emits('close');
+  emit('close');
 }
 
 const announceTextContent = computed(() =>
@@ -129,14 +129,14 @@ watchEffect(cleanupFn => {
     const handleResume = () => {
       startTimer(closeTimerRemainingTimeRef.value);
       remainingRaf.resume();
-      emits('resume');
+      emit('resume');
     };
     const handlePause = () => {
       const elapsedTime = new Date().getTime() - closeTimerStartTimeRef.value;
       closeTimerRemainingTimeRef.value -= elapsedTime;
       window.clearTimeout(closeTimerRef.value);
       remainingRaf.pause();
-      emits('pause');
+      emit('pause');
     };
     viewport.addEventListener(VIEWPORT_PAUSE, handlePause);
     viewport.addEventListener(VIEWPORT_RESUME, handleResume);
@@ -162,7 +162,7 @@ watch(
 );
 
 onKeyStroke('Escape', event => {
-  emits('escapeKeyDown', event);
+  emit('escapeKeyDown', event);
   if (!event.defaultPrevented) {
     providerContext.isFocusedToastEscapeKeyDownRef.value = true;
     handleClose();
@@ -223,10 +223,10 @@ provideToastRootContext({ onClose: handleClose });
             const eventDetail = { originalEvent: event, delta };
             if (hasSwipeMoveStarted) {
               swipeDeltaRef = delta;
-              handleAndDispatchCustomEvent(TOAST_SWIPE_MOVE, (ev: SwipeEvent) => emits('swipeMove', ev), eventDetail);
+              handleAndDispatchCustomEvent(TOAST_SWIPE_MOVE, (ev: SwipeEvent) => emit('swipeMove', ev), eventDetail);
             } else if (isDeltaInDirection(delta, providerContext.swipeDirection.value, moveStartBuffer)) {
               swipeDeltaRef = delta;
-              handleAndDispatchCustomEvent(TOAST_SWIPE_START, (ev: SwipeEvent) => emits('swipeStart', ev), eventDetail);
+              handleAndDispatchCustomEvent(TOAST_SWIPE_START, (ev: SwipeEvent) => emit('swipeStart', ev), eventDetail);
               (event.target as HTMLElement).setPointerCapture(event.pointerId);
             } else if (Math.abs(x) > moveStartBuffer || Math.abs(y) > moveStartBuffer) {
               // User is swiping in wrong direction so we disable swipe gesture
@@ -250,11 +250,11 @@ provideToastRootContext({ onClose: handleClose });
               if (
                 isDeltaInDirection(delta, providerContext.swipeDirection.value, providerContext.swipeThreshold.value)
               ) {
-                handleAndDispatchCustomEvent(TOAST_SWIPE_END, (ev: SwipeEvent) => emits('swipeEnd', ev), eventDetail);
+                handleAndDispatchCustomEvent(TOAST_SWIPE_END, (ev: SwipeEvent) => emit('swipeEnd', ev), eventDetail);
               } else {
                 handleAndDispatchCustomEvent(
                   TOAST_SWIPE_CANCEL,
-                  (ev: SwipeEvent) => emits('swipeCancel', ev),
+                  (ev: SwipeEvent) => emit('swipeCancel', ev),
                   eventDetail
                 );
               }

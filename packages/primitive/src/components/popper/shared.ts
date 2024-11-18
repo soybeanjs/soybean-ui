@@ -1,10 +1,9 @@
 import type { Middleware, Placement } from '@floating-ui/vue';
+import type { Align, InferDefaults, Side } from '../../types';
+import type { PopperContentProps } from './types';
 
-const SIDE_OPTIONS = ['top', 'right', 'bottom', 'left'] as const;
-const ALIGN_OPTIONS = ['start', 'center', 'end'] as const;
-
-export type Side = (typeof SIDE_OPTIONS)[number];
-export type Align = (typeof ALIGN_OPTIONS)[number];
+export const SIDE_OPTIONS: Side[] = ['top', 'right', 'bottom', 'left'];
+export const ALIGN_OPTIONS: Align[] = ['start', 'center', 'end'];
 
 export function isNotNull<T>(value: T | null): value is T {
   return value !== null;
@@ -52,4 +51,24 @@ export function transformOrigin(options: { arrowWidth: number; arrowHeight: numb
 export function getSideAndAlignFromPlacement(placement: Placement) {
   const [side, align = 'center'] = placement.split('-');
   return [side as Side, align as Align] as const;
+}
+
+export function createPopperContentPropsDefaultValue() {
+  const props: InferDefaults<PopperContentProps> = {
+    side: 'bottom',
+    sideOffset: 0,
+    align: 'center',
+    alignOffset: 0,
+    arrowPadding: 0,
+    avoidCollisions: true,
+    collisionPadding: 0,
+    collisionBoundary: () => [],
+    sticky: 'partial',
+    hideWhenDetached: false,
+    positionStrategy: 'fixed',
+    updatePositionStrategy: 'optimized',
+    prioritizePosition: false
+  };
+
+  return props;
 }

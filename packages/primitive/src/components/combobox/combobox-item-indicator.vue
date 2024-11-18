@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { ListboxItemIndicatorProps } from '../listbox';
-
 import { ListboxItemIndicator } from '../listbox';
+import type { ComboboxItemIndicatorPropsWithPrimitive } from './types';
 
-export interface ComboboxItemIndicatorProps extends ListboxItemIndicatorProps {}
+defineOptions({
+  name: 'ComboboxItemIndicator'
+});
 
-const props = withDefaults(defineProps<ComboboxItemIndicatorProps>(), {
+const props = withDefaults(defineProps<ComboboxItemIndicatorPropsWithPrimitive>(), {
   as: 'span'
 });
 </script>

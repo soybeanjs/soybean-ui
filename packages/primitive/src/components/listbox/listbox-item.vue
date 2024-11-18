@@ -1,39 +1,23 @@
-<script setup lang="ts">
-import { type Ref, computed } from 'vue';
-import { createContext, handleAndDispatchCustomEvent, useCollection, useForwardExpose, useId } from '../../composables';
-</script>
-
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { Primitive, type PrimitiveProps } from '..';
-import type { AcceptableValue } from '../../composables/types';
-import { injectListboxRootContext } from './listbox-root.vue';
-import { valueComparator } from './utils';
+import { computed } from 'vue';
+import { useCollection, useForwardExpose, useId } from '../../composables';
+import { handleAndDispatchCustomEvent } from '../../shared';
+import Primitive from '../primitive/primitive';
+import type { AcceptableValue } from '../../types';
+import { injectListboxRootContext, provideListboxItemContext } from './context';
+import { valueComparator } from './shared';
+import type { ListboxItemEmits, ListboxItemPropsWithPrimitive, SelectEvent } from './types';
 
-export interface ListboxItemProps<T = AcceptableValue> extends PrimitiveProps {
-  /** The value given as data when submitted with a `name`. */
-  value: T;
-  /** When `true`, prevents the user from interacting with the item. */
-  disabled?: boolean;
-}
-export type SelectEvent<T> = CustomEvent<{ originalEvent: PointerEvent; value?: T }>;
-
-export type ListboxItemEmits<T = AcceptableValue> = {
-  /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
-  select: [event: SelectEvent<T>];
-};
+defineOptions({
+  name: 'ListboxItem'
+});
 
 const LISTBOX_SELECT = 'listbox.select';
 
-interface ListboxItemContext {
-  isSelected: Ref<boolean>;
-}
-
-export const [injectListboxItemContext, provideListboxItemContext] = createContext<ListboxItemContext>('ListboxItem');
-
-const props = withDefaults(defineProps<ListboxItemProps<T>>(), {
+const props = withDefaults(defineProps<ListboxItemPropsWithPrimitive<T>>(), {
   as: 'div'
 });
-const emits = defineEmits<ListboxItemEmits<T>>();
+const emit = defineEmits<ListboxItemEmits<T>>();
 
 const id = useId(undefined, 'soybean-listbox-item');
 const { CollectionItem } = useCollection();
@@ -46,7 +30,7 @@ const isSelected = computed(() => valueComparator(rootContext.modelValue.value, 
 const disabled = computed(() => rootContext.disabled.value || props.disabled);
 
 async function handleSelect(ev: SelectEvent<T>) {
-  emits('select', ev);
+  emit('select', ev);
   if (ev?.defaultPrevented) return;
 
   if (!disabled.value && ev) {
@@ -60,6 +44,16 @@ function handleSelectCustomEvent(ev: PointerEvent) {
   handleAndDispatchCustomEvent(LISTBOX_SELECT, handleSelect, eventDetail);
 }
 
+function onPointermove() {
+  if (rootContext.highlightedElement.value === currentElement.value) return;
+
+  if (rootContext.highlightOnHover.value) {
+    rootContext.changeHighlight(currentElement.value, false);
+  } else if (!rootContext.focusable.value) {
+    rootContext.changeHighlight(currentElement.value, false);
+  }
+}
+
 provideListboxItemContext({
   isSelected
 });
@@ -68,29 +62,23 @@ provideListboxItemContext({
 <template>
   <CollectionItem :value="value">
     <Primitive
-      :id="id"
       v-bind="$attrs"
+      :id="id"
       :ref="forwardRef"
       v-memo="[isHighlighted, isSelected]"
+      :class="props.class"
+      :as
+      :as-child
       role="option"
       :tabindex="rootContext.focusable.value ? (isHighlighted ? '0' : '-1') : -1"
       :aria-selected="isSelected"
-      :as
-      :as-child
       :disabled="disabled ? '' : undefined"
       :data-disabled="disabled ? '' : undefined"
       :data-highlighted="isHighlighted ? '' : undefined"
       :data-state="isSelected ? 'checked' : 'unchecked'"
       @click="handleSelectCustomEvent"
       @keydown.space.prevent="handleSelectCustomEvent"
-      @pointermove="
-        event => {
-          if (rootContext.highlightedElement.value === currentElement) return;
-
-          if (rootContext.highlightOnHover.value) rootContext.changeHighlight(currentElement, false);
-          else rootContext.focusable.value ? undefined : rootContext.changeHighlight(currentElement, false);
-        }
-      "
+      @pointermove="onPointermove"
     >
       <slot />
     </Primitive>

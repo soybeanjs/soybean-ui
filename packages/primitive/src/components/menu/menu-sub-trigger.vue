@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { type ComponentPublicInstance, nextTick, onUnmounted, ref } from 'vue';
 import { useId } from '../../composables';
-import type { MenuItemImplProps } from './menu-item-impl.vue';
-import type { Side } from './utils';
-
+import type { HorizontalSide } from '../../types';
 import MenuItemImpl from './menu-item-impl.vue';
-import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
-import { injectMenuSubContext } from './menu-sub.vue';
-import { injectMenuContentContext } from './menu-content-impl.vue';
-import { SUB_OPEN_KEYS, getOpenState, isMouseEvent } from './utils';
+import { injectMenuContentContext, injectMenuContext, injectMenuRootContext, injectMenuSubContext } from './context';
+import { SUB_OPEN_KEYS, getOpenState, isMouseEvent } from './shared';
 import MenuAnchor from './menu-anchor.vue';
+import type { MenuSubTriggerPropsWithPrimitive } from './types';
 
-export interface MenuSubTriggerProps extends MenuItemImplProps {}
+defineOptions({
+  name: 'MenuSubTrigger'
+});
 
-const props = defineProps<MenuSubTriggerProps>();
+const props = defineProps<MenuSubTriggerPropsWithPrimitive>();
 
 const menuContext = injectMenuContext();
 const rootContext = injectMenuRootContext();
@@ -22,16 +21,17 @@ const contentContext = injectMenuContentContext();
 
 const openTimerRef = ref<number | null>(null);
 
+function refTrigger(vnode: ComponentPublicInstance) {
+  subContext.onTriggerChange(vnode?.$el);
+  return undefined;
+}
+
 subContext.triggerId ||= useId(undefined, 'soybean-menu-sub-trigger');
 
 function clearOpenTimer() {
   if (openTimerRef.value) window.clearTimeout(openTimerRef.value);
   openTimerRef.value = null;
 }
-
-onUnmounted(() => {
-  clearOpenTimer();
-});
 
 function handlePointerMove(event: PointerEvent) {
   if (!isMouseEvent(event)) return;
@@ -55,7 +55,7 @@ async function handlePointerLeave(event: PointerEvent) {
   if (contentRect?.width) {
     // TODO (Radix UI): make sure to update this when we change positioning logic
     // https://github.com/radix-ui/primitives/blob/main/packages/react/menu/src/Menu.tsx#L1088
-    const side = menuContext.content.value?.dataset.side as Side;
+    const side = menuContext.content.value?.dataset.side as HorizontalSide;
 
     const rightSide = side === 'right';
     const bleed = rightSide ? -5 : +5;
@@ -103,6 +103,22 @@ async function handleKeyDown(event: KeyboardEvent) {
     event.preventDefault();
   }
 }
+
+async function onClick(event: MouseEvent) {
+  if (props.disabled || event.defaultPrevented) return;
+  /**
+   * We manually focus because iOS Safari doesn't always focus on click (e.g. buttons) and we rely heavily on
+   * `onFocusOutside` for submenus to close when switching between separate submenus.
+   */
+  (event.currentTarget as HTMLElement).focus();
+  if (!menuContext.open.value) {
+    menuContext.onOpenChange(true);
+  }
+}
+
+onUnmounted(() => {
+  clearOpenTimer();
+});
 </script>
 
 <template>
@@ -110,29 +126,12 @@ async function handleKeyDown(event: KeyboardEvent) {
     <MenuItemImpl
       v-bind="props"
       :id="subContext.triggerId"
-      :ref="
-        (vnode: ComponentPublicInstance) => {
-          // @ts-ignore
-          subContext?.onTriggerChange(vnode?.$el);
-          return undefined;
-        }
-      "
+      :ref="refTrigger"
       aria-haspopup="menu"
       :aria-expanded="menuContext.open.value"
       :aria-controls="subContext.contentId"
       :data-state="getOpenState(menuContext.open.value)"
-      @click="
-        async event => {
-          if (props.disabled || event.defaultPrevented) return;
-          /**
-           * We manually focus because iOS Safari doesn't always focus on click (e.g. buttons)
-           * and we rely heavily on `onFocusOutside` for submenus to close when switching
-           * between separate submenus.
-           */
-          event.currentTarget.focus();
-          if (!menuContext.open.value) menuContext.onOpenChange(true);
-        }
-      "
+      @click="onClick"
       @pointermove="handlePointerMove"
       @pointerleave="handlePointerLeave"
       @keydown="handleKeyDown"

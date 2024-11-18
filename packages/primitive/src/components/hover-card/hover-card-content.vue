@@ -15,8 +15,8 @@ export interface HoverCardContentProps extends HoverCardContentImplProps {
 }
 
 const props = defineProps<HoverCardContentProps>();
-const emits = defineEmits<HoverCardContentEmits>();
-const forwarded = useForwardPropsEmits(props, emits);
+const emit = defineEmits<HoverCardContentEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 const { forwardRef } = useForwardExpose();
 
 const rootContext = injectHoverCardRootContext();

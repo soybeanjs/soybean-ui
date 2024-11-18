@@ -3,11 +3,11 @@ import { computed } from 'vue';
 import isEqual from 'fast-deep-equal';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { isValueEqualOrExist } from '../../shared';
-import { Primitive } from '../primitive';
+import Primitive from '../primitive/primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { injectCheckboxGroupRootContext, provideCheckboxRootContext } from './context';
-import { getState, isIndeterminate } from './shared';
+import { getCheckedState, isIndeterminate } from './shared';
 import type { CheckboxRootPropsWithPrimitive, CheckedState } from './types';
 
 defineOptions({
@@ -86,7 +86,7 @@ function handleClick() {
     :aria-checked="isIndeterminate(checkboxState) ? 'mixed' : checkboxState"
     :aria-required="required"
     :aria-label="$attrs['aria-label'] || ariaLabel"
-    :data-state="getState(checkboxState)"
+    :data-state="getCheckedState(checkboxState)"
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
     :focusable="checkboxGroupContext?.rovingFocus.value ? !disabled : undefined"
