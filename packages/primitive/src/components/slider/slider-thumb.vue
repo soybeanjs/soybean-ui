@@ -1,11 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
-import { useForwardExpose } from '../../composables';
-</script>
+import { useCollection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 import SliderThumbImpl from './slider-thumb-impl.vue';
 
 export interface SliderThumbProps extends PrimitiveProps {}

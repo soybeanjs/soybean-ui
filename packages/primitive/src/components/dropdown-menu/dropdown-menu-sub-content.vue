@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
 import { MenuSubContent } from '../menu';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { useForwardPropsEmits } from '..';
 
 export type DropdownMenuSubContentEmits = MenuSubContentEmits;

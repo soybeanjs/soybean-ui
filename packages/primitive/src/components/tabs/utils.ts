@@ -1,4 +1,4 @@
-import type { StringOrNumber } from '../../_shared/types';
+import type { StringOrNumber } from '../../composables/types';
 
 export function makeTriggerId(baseId: string, value: StringOrNumber) {
   return `${baseId}-trigger-${value}`;

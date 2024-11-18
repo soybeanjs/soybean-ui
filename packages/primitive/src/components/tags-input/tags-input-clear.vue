@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectTagsInputRootContext } from './tags-input-root.vue';
-</script>
 
-<script setup lang="ts">
 export interface TagsInputClearProps extends PrimitiveProps {}
 
 const props = withDefaults(defineProps<TagsInputClearProps>(), {

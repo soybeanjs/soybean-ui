@@ -1,12 +1,10 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
-import { createContext, useForwardExpose } from '../../_shared';
+import { createContext, useForwardExpose } from '../../composables';
 
 export interface HoverCardRootProps {
   /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */

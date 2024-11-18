@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import type { PrimitiveProps } from '../primitive';
+
 import { Primitive } from '../primitive';
 import { injectSliderRootContext } from './slider-root.vue';
 import { ARROW_KEYS, PAGE_KEYS } from './utils';

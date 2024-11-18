@@ -1,142 +1,18 @@
-<script lang="ts">
-import { type DateValue, isEqualDay, isSameDay } from '@internationalized/date';
-
-import type { Ref } from 'vue';
-import { onMounted, toRefs, watch } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import type { Grid, Matcher, WeekDayFormat } from '../date';
-import { Primitive, usePrimitiveElement } from '../primitive';
-import { type Formatter, createContext, useDirection, useLocale } from '../../_shared';
-
-import { getDefaultDate, handleCalendarInitialFocus } from '../../_shared/date';
-import type { Direction } from '../../_shared/types';
-import { useCalendar, useCalendarState } from './use-calendar';
-</script>
-
 <script setup lang="ts">
-type CalendarRootContext = {
-  locale: Ref<string>;
-  modelValue: Ref<DateValue | DateValue[] | undefined>;
-  placeholder: Ref<DateValue>;
-  pagedNavigation: Ref<boolean>;
-  preventDeselect: Ref<boolean>;
-  weekStartsOn: Ref<0 | 1 | 2 | 3 | 4 | 5 | 6>;
-  weekdayFormat: Ref<WeekDayFormat>;
-  fixedWeeks: Ref<boolean>;
-  multiple: Ref<boolean>;
-  numberOfMonths: Ref<number>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  initialFocus: Ref<boolean>;
-  onDateChange: (date: DateValue) => void;
-  onPlaceholderChange: (date: DateValue) => void;
-  fullCalendarLabel: Ref<string>;
-  parentElement: Ref<HTMLElement | undefined>;
-  headingValue: Ref<string>;
-  isInvalid: Ref<boolean>;
-  isDateDisabled: Matcher;
-  isDateSelected: Matcher;
-  isDateUnavailable?: Matcher;
-  isOutsideVisibleView: (date: DateValue) => boolean;
-  prevPage: (prevPageFunc?: (date: DateValue) => DateValue) => void;
-  nextPage: (nextPageFunc?: (date: DateValue) => DateValue) => void;
-  isNextButtonDisabled: (nextPageFunc?: (date: DateValue) => DateValue) => boolean;
-  isPrevButtonDisabled: (prevPageFunc?: (date: DateValue) => DateValue) => boolean;
-  formatter: Formatter;
-  dir: Ref<Direction>;
-};
+import { onMounted, toRefs, watch } from 'vue';
+import { isEqualDay, isSameDay } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
+import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
+import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
+import { Primitive } from '../primitive';
+import { provideCalendarRootContext } from './context';
+import type { CalendarRootPropsWithPrimitive } from './types';
 
-interface BaseCalendarRootProps extends PrimitiveProps {
-  /** The default value for the calendar */
-  defaultValue?: DateValue;
-  /** The default placeholder date */
-  defaultPlaceholder?: DateValue;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as
-   * the user navigates the calendar and can be used to programmatically control the calendar view
-   */
-  placeholder?: DateValue;
-  /**
-   * This property causes the previous and next buttons to navigate by the number of months displayed at once, rather
-   * than one month
-   */
-  pagedNavigation?: boolean;
-  /** Whether or not to prevent the user from deselecting a date without selecting another date first */
-  preventDeselect?: boolean;
-  /** The day of the week to start the calendar on */
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  /** The format to use for the weekday strings provided via the weekdays slot prop */
-  weekdayFormat?: WeekDayFormat;
-  /** The accessible label for the calendar */
-  calendarLabel?: string;
-  /** Whether or not to always display 6 weeks in the calendar */
-  fixedWeeks?: boolean;
-  /** The maximum date that can be selected */
-  maxValue?: DateValue;
-  /** The minimum date that can be selected */
-  minValue?: DateValue;
-  /** The locale to use for formatting dates */
-  locale?: string;
-  /** The number of months to display at once */
-  numberOfMonths?: number;
-  /** Whether or not the calendar is disabled */
-  disabled?: boolean;
-  /** Whether or not the calendar is readonly */
-  readonly?: boolean;
-  /**
-   * If true, the calendar will focus the selected day, today, or the first day of the month depending on what is
-   * visible when the calendar is mounted
-   */
-  initialFocus?: boolean;
-  /** A function that returns whether or not a date is disabled */
-  isDateDisabled?: Matcher;
-  /** A function that returns whether or not a date is unavailable */
-  isDateUnavailable?: Matcher;
-  /**
-   * The reading direction of the calendar when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /**
-   * A function that returns the next page of the calendar. It receives the current placeholder as an argument inside
-   * the component.
-   */
-  nextPage?: (placeholder: DateValue) => DateValue;
-  /**
-   * A function that returns the previous page of the calendar. It receives the current placeholder as an argument
-   * inside the component.
-   */
-  prevPage?: (placeholder: DateValue) => DateValue;
-}
+defineOptions({
+  name: 'CalendarRoot'
+});
 
-export interface MultipleCalendarRootProps extends BaseCalendarRootProps {
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateValue[] | undefined;
-  /** Whether or not multiple dates can be selected */
-  multiple: true;
-}
-
-export interface SingleCalendarRootProps extends BaseCalendarRootProps {
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateValue | undefined;
-  /** Whether or not multiple dates can be selected */
-  multiple?: false;
-}
-
-export type CalendarRootProps = MultipleCalendarRootProps | SingleCalendarRootProps;
-
-export type CalendarRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [date: DateValue | undefined];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: DateValue];
-};
-
-export const [injectCalendarRootContext, provideCalendarRootContext] =
-  createContext<CalendarRootContext>('CalendarRoot');
-
-const props = withDefaults(defineProps<CalendarRootProps>(), {
+const props = withDefaults(defineProps<CalendarRootPropsWithPrimitive>(), {
   defaultValue: undefined,
   as: 'div',
   pagedNavigation: false,
@@ -153,23 +29,8 @@ const props = withDefaults(defineProps<CalendarRootProps>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined
 });
-const emits = defineEmits<CalendarRootEmits>();
-defineSlots<{
-  default: (props: {
-    /** The current date of the placeholder */
-    date: DateValue;
-    /** The grid of dates */
-    grid: Grid<DateValue>[];
-    /** The days of the week */
-    weekDays: string[];
-    /** The start of the week */
-    weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-    /** The calendar locale */
-    locale: string;
-    /** Whether or not to always display 6 weeks in the calendar */
-    fixedWeeks: boolean;
-  }) => any;
-}>();
+
+const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 
 const {
   disabled,
@@ -194,24 +55,21 @@ const {
   locale: propLocale
 } = toRefs(props);
 
-const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emits, {
-  defaultValue: defaultValue.value,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<DateValue | DateValue[] | undefined>;
+const modelValue = defineModel<DateValue | DateValue[] | undefined>('modelValue', {
+  default: defaultValue.value
+});
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
   defaultValue: modelValue.value
 });
 
-const placeholder = useVModel(props, 'placeholder', emits, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<DateValue>;
+const placeholder = defineModel<DateValue>('placeholder', {
+  default: props.defaultPlaceholder ?? defaultDate.copy()
+});
 
 function onPlaceholderChange(value: DateValue) {
   placeholder.value = value.copy();
@@ -254,15 +112,6 @@ const { isInvalid, isDateSelected } = useCalendarState({
   isDateUnavailable
 });
 
-watch(modelValue, _modelValue => {
-  if (Array.isArray(_modelValue) && _modelValue.length) {
-    const lastValue = _modelValue[_modelValue.length - 1];
-    if (lastValue && !isEqualDay(placeholder.value, lastValue)) onPlaceholderChange(lastValue);
-  } else if (!Array.isArray(_modelValue) && _modelValue && !isEqualDay(placeholder.value, _modelValue)) {
-    onPlaceholderChange(_modelValue);
-  }
-});
-
 function onDateChange(value: DateValue) {
   if (!multiple.value) {
     if (!modelValue.value) {
@@ -293,6 +142,15 @@ function onDateChange(value: DateValue) {
     }
   }
 }
+
+watch(modelValue, _modelValue => {
+  if (Array.isArray(_modelValue) && _modelValue.length) {
+    const lastValue = _modelValue[_modelValue.length - 1];
+    if (lastValue && !isEqualDay(placeholder.value, lastValue)) onPlaceholderChange(lastValue);
+  } else if (!Array.isArray(_modelValue) && _modelValue && !isEqualDay(placeholder.value, _modelValue)) {
+    onPlaceholderChange(_modelValue);
+  }
+});
 
 onMounted(() => {
   if (initialFocus.value) handleCalendarInitialFocus(parentElement.value);
@@ -334,6 +192,7 @@ provideCalendarRootContext({
 <template>
   <Primitive
     ref="primitiveElement"
+    :class="props.class"
     :as
     :as-child
     role="application"

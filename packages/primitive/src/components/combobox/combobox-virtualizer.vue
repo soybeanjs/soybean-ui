@@ -1,9 +1,9 @@
-<script lang="ts"></script>
+<script setup lang="ts"></script>
 
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import ListboxVirtualizer, { type ListboxVirtualizerProps } from '../listbox/listbox-virtualizer.vue';
-import type { AcceptableValue } from '../../_shared/types';
+import type { AcceptableValue } from '../../composables/types';
 import { injectComboboxRootContext } from './combobox-root.vue';
 export interface ComboboxVirtualizerProps<T extends AcceptableValue = AcceptableValue>
   extends ListboxVirtualizerProps<T> {}

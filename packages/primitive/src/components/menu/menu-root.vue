@@ -1,13 +1,11 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
-import { useIsUsingKeyboard } from '../../_shared/use-is-using-keyboard';
-import { createContext, useDirection } from '../../_shared';
+import { useIsUsingKeyboard } from '../../composables/use-is-using-keyboard';
+import { createContext, useDirection } from '../../composables';
 import type { Direction } from './utils';
 
 export interface MenuContext {

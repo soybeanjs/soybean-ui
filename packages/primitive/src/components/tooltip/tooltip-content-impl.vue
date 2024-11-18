@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { VNode } from 'vue';
 import { Comment, computed, onMounted, useSlots } from 'vue';
 import { useEventListener } from '@vueuse/core';
@@ -7,10 +7,8 @@ import type { PopperContentProps } from '../popper';
 import { PopperContent } from '../popper';
 import { VisuallyHidden } from '../visually-hidden';
 import { DismissableLayer } from '../dismissable-layer';
-import { useForwardExpose } from '../../_shared'
-</script>
+import { useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 import { TOOLTIP_OPEN } from './utils';
 import { injectTooltipRootContext } from './tooltip-root.vue';
 

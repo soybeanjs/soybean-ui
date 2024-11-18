@@ -1,4 +1,4 @@
-<script lang="ts"></script>
+<script setup lang="ts"></script>
 
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { type VirtualItem, type Virtualizer, useVirtualizer } from '@tanstack/vue-virtual';
@@ -6,10 +6,9 @@ import { Fragment, type Ref, type VNode, cloneVNode, computed, useSlots } from '
 import { refAutoReset } from '@vueuse/shared';
 import { useParentElement } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { useCollection } from '../../composables';
-import { findValuesBetween } from '../../_shared';
-import { getNextMatch } from '../../_shared/use-typeahead';
-import type { AcceptableValue } from '../../_shared/types';
+import { findValuesBetween, useCollection } from '../../composables';
+import { getNextMatch } from '../../composables/use-typeahead';
+import type { AcceptableValue } from '../../composables/types';
 import { compare, queryCheckedElement } from './utils';
 import { injectListboxRootContext } from './listbox-root.vue';
 export interface ListboxVirtualizerProps<T extends AcceptableValue = AcceptableValue> {

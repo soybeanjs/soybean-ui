@@ -1,5 +1,3 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';

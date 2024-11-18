@@ -1,32 +1,31 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type DateValue, isEqualDay } from '@internationalized/date';
 
 import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { type Matcher, hasTime, isBefore } from '../date';
-import { Primitive, usePrimitiveElement } from '../primitive';
+import { type Matcher, hasTime, isBefore } from '../../date';
+import { Primitive } from '../primitive';
+import { usePrimitiveElement } from '../../composables';
 import { VisuallyHidden } from '../visually-hidden';
-import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../_shared';
+import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
 import {
   type Granularity,
   type HourCycle,
   type SegmentPart,
   type SegmentValueObj,
   getDefaultDate
-} from '../../_shared/date';
+} from '../../composables/date';
 import {
   createContent,
   getSegmentElements,
   initializeSegmentValues,
   isSegmentNavigationKey,
   syncSegmentValues
-} from '../../_shared/date';
-import type { Direction, FormFieldProps } from '../../_shared/types';
-</script>
+} from '../../composables/date';
+import type { Direction, FormFieldProps } from '../../composables/types';
 
-<script setup lang="ts">
 type DateFieldRootContext = {
   locale: Ref<string>;
   modelValue: Ref<DateValue | undefined>;

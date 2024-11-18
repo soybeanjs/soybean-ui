@@ -1,9 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-</script>
 
-<script setup lang="ts">
 import { Primitive } from '../primitive';
 import { injectComboboxRootContext } from './combobox-root.vue';
 

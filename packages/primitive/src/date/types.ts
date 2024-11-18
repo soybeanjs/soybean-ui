@@ -84,3 +84,24 @@ export type TimeSegmentObj = {
 export type DateAndTimeSegmentObj = DateSegmentObj & TimeSegmentObj;
 export type SegmentValueObj = DateSegmentObj | DateAndTimeSegmentObj;
 export type SegmentContentObj = Record<EditableSegmentPart, string>;
+
+export type WeekDayFormat = 'narrow' | 'short' | 'long';
+
+export type CreateSelectProps = {
+  /** The date object representing the date (usually the first day of the month/year). */
+  dateObj: DateValue;
+};
+
+export type CreateMonthProps = {
+  /** The date object representing the month's date (usually the first day of the month). */
+  dateObj: DateValue;
+
+  /** The day of the week to start the calendar on (0 for Sunday, 1 for Monday, etc.). */
+  weekStartsOn: number;
+
+  /** Whether to always render 6 weeks in the calendar, even if the month doesn't span 6 weeks. */
+  fixedWeeks: boolean;
+
+  /** The locale to use when creating the calendar month. */
+  locale: string;
+};

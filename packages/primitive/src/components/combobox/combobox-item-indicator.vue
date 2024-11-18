@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { ListboxItemIndicatorProps } from '../listbox';
-</script>
-
 <script setup lang="ts">
+import type { ListboxItemIndicatorProps } from '../listbox';
+
 import { ListboxItemIndicator } from '../listbox';
 
 export interface ComboboxItemIndicatorProps extends ListboxItemIndicatorProps {}

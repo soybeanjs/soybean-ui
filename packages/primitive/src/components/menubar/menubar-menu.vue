@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { MenuRoot } from '../menu';
-import { createContext, useForwardExpose, useId } from '../../_shared';
-</script>
+import { createContext, useForwardExpose, useId } from '../../composables';
 
-<script setup lang="ts">
 import { injectMenubarRootContext } from './menubar-root.vue';
 
 export interface MenubarMenuProps {

@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import type { AcceptableValue } from '../../_shared/types';
-</script>
+import type { AcceptableValue } from '../../composables/types';
 
-<script setup lang="ts">
 import { useForwardExpose } from '../../composables';
 import { injectSelectRootContext } from './select-root.vue';
 

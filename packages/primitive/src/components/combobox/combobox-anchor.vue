@@ -1,5 +1,3 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { Primitive } from '../primitive';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';

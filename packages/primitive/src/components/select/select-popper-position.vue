@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { PopperContentProps } from '../popper';
-</script>
-
 <script setup lang="ts">
+import type { PopperContentProps } from '../popper';
+
 import { PopperContent } from '../popper';
 import { useForwardProps } from '..';
 import { CONTENT_MARGIN } from './utils';

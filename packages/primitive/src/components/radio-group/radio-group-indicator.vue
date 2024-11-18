@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectRadioGroupItemContext } from './radio-group-item.vue';
 
 export interface RadioGroupIndicatorProps extends PrimitiveProps {

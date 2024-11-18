@@ -1,29 +1,24 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { injectCalendarRootContext } from './calendar-root.vue';
+import { injectCalendarRootContext } from './context';
+import type { CalendarHeadingPropsWithPrimitive } from './types';
 
-export interface CalendarHeadingProps extends PrimitiveProps {}
+defineOptions({
+  name: 'CalendarHeading'
+});
 
-const props = withDefaults(defineProps<CalendarHeadingProps>(), { as: 'div' });
+const { class: className, as = 'div' } = defineProps<CalendarHeadingPropsWithPrimitive>();
 
-defineSlots<{
-  default: (props: {
-    /** Current month and year */
-    headingValue: string;
-  }) => any;
-}>();
+const { headingValue, disabled } = injectCalendarRootContext();
 
-const rootContext = injectCalendarRootContext();
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 </script>
 
 <template>
-  <Primitive v-bind="props" :data-disabled="rootContext.disabled.value ? '' : undefined">
-    <slot :heading-value="rootContext.headingValue.value">
-      {{ rootContext.headingValue.value }}
+  <Primitive :class="className" :as :as-child :data-disabled>
+    <slot :heading-value="headingValue">
+      {{ headingValue }}
     </slot>
   </Primitive>
 </template>

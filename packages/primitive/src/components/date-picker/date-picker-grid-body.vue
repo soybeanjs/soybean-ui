@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { CalendarGridBody, type CalendarGridBodyProps } from '..';
 
 export interface DatePickerGridBodyProps extends CalendarGridBodyProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerGridBodyProps>();
 </script>
 

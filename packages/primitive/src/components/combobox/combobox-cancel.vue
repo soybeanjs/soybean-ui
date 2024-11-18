@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import type { PrimitiveProps } from '../primitive';
+
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectComboboxRootContext } from './combobox-root.vue';

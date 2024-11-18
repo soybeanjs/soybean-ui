@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { MenuRadioGroupEmits, MenuRadioGroupProps } from '../Menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuRadioGroupEmits, MenuRadioGroupProps } from '../Menu';
+
 import { MenuRadioGroup } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../_shared';
+import { useEmitAsProps, useForwardExpose } from '../../composables';
 
 export type MenubarRadioGroupEmits = MenuRadioGroupEmits;
 

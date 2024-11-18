@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, nextTick, reactive, ref, toRefs, watch } from 'vue';
 import { type EventHookOn, createEventHook, useVModel } from '@vueuse/core';
@@ -9,8 +9,8 @@ import { usePrimitiveElement } from '../primitive';
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { PopperRoot } from '../popper';
 import { ListboxRoot } from '../listbox';
-import type { AcceptableValue } from '../../_shared/types';
-import { createContext, useDirection, useFilter } from '../../_shared';
+import type { AcceptableValue } from '../../composables/types';
+import { createContext, useDirection, useFilter } from '../../composables';
 
 type ComboboxRootContext<T> = {
   modelValue: Ref<T | Array<T>>;

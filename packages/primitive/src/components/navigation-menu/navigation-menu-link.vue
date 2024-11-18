@@ -1,11 +1,8 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
-</script>
-
 <script setup lang="ts">
+import type { PrimitiveProps } from '../primitive';
+import { useCollection, useForwardExpose } from '../../composables';
+
 import { Primitive } from '../primitive';
-import { useForwardExpose } from '../../composables';
 import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './utils';
 
 export type NavigationMenuLinkEmits = {

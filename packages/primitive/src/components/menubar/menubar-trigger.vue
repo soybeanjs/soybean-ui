@@ -1,14 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
-</script>
+import { useCollection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
-import { Primitive } from '../Primitive';
+import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { RovingFocusItem } from '../roving-focus';
-import { useForwardExpose } from '../../composables';
 import { injectMenubarMenuContext } from './menubar-menu.vue';
 import { injectMenubarRootContext } from './menubar-root.vue';
 

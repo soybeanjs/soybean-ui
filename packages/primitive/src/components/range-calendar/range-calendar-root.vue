@@ -1,21 +1,20 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type DateValue, isEqualDay } from '@internationalized/date';
 
 import type { Ref } from 'vue';
 import { onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { type Grid, type Matcher, type WeekDayFormat, isBefore } from '../date';
+import { type Grid, type Matcher, type WeekDayFormat, isBefore } from '../../date';
 import { useCalendar } from '../calendar/use-calendar';
-import { Primitive, usePrimitiveElement } from '../primitive';
-import { type Formatter, createContext, useDirection, useLocale } from '../../_shared';
-import { getDefaultDate, handleCalendarInitialFocus } from '../../_shared/date';
-import type { DateRange } from '../../_shared/date';
-import type { Direction } from '../../_shared/types';
+import { Primitive } from '../primitive';
+import { usePrimitiveElement } from '../../composables';
+import { type Formatter, createContext, useDirection, useLocale } from '../../composables';
+import { getDefaultDate, handleCalendarInitialFocus } from '../../composables/date';
+import type { DateRange } from '../../composables/date';
+import type { Direction } from '../../composables/types';
 import { useRangeCalendarState } from './use-range-calendar';
-</script>
 
-<script setup lang="ts">
 type RangeCalendarRootContext = {
   modelValue: Ref<DateRange>;
   startValue: Ref<DateValue | undefined>;

@@ -1,11 +1,9 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { useTimeoutFn } from '@vueuse/shared';
 import { ref, toRefs } from 'vue';
-import { createContext, useForwardExpose } from '../../_shared';
+import { createContext, useForwardExpose } from '../../composables';
 
 interface TooltipProviderContext {
   isOpenDelayed: Ref<boolean>;

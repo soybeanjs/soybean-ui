@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { MenuSeparatorProps } from '../menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuSeparatorProps } from '../menu';
+
 import { MenuSeparator } from '../menu';
 import { useForwardExpose } from '../../composables';
 

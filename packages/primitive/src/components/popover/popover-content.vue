@@ -1,10 +1,8 @@
-<script lang="ts">
-import { Presence } from '../presence';
-import { useForwardExpose, useForwardPropsEmits, useId } from '../../_shared';
-import type { PopoverContentImplEmits, PopoverContentImplProps } from './PopoverContentImpl.vue';
-</script>
-
 <script setup lang="ts">
+import { Presence } from '../presence';
+import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
+import type { PopoverContentImplEmits, PopoverContentImplProps } from './PopoverContentImpl.vue';
+
 import PopoverContentModal from './popover-content-modal.vue';
 import PopoverContentNonModal from './popover-content-non-modal.vue';
 import { injectPopoverRootContext } from './popover-root.vue';

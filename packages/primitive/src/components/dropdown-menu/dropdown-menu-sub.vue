@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { useVModel } from '@vueuse/core';
 import type { MenuSubEmits, MenuSubProps } from '../menu';
 import { MenuSub } from '../menu';

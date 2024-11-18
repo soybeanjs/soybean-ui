@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { nextTick, onMounted } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
+import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
-import { useForwardExpose, useId } from '../../_shared';
-</script>
+import { useForwardExpose, useId } from '../../composables';
 
-<script setup lang="ts">
 import { injectDropdownMenuRootContext } from './dropdown-menu-root.vue';
 
 export interface DropdownMenuTriggerProps extends PrimitiveProps {

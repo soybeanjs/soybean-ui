@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, useId } from '../../_shared';
-</script>
+import { createContext, useId } from '../../composables';
 
-<script setup lang="ts">
 export interface SelectGroupProps extends PrimitiveProps {}
 
 interface SelectGroupContext {

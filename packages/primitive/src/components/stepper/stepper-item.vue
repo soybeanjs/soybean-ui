@@ -1,9 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type Ref, computed, toRefs } from 'vue';
 
 import { Primitive } from '../primitive';
 import type { PrimitiveProps } from '../primitive';
-import { createContext, useForwardExpose, useId } from '../../_shared';
+import { createContext, useForwardExpose, useId } from '../../composables';
 import { injectStepperRootContext } from './stepper-root.vue';
 
 export const [injectStepperItemContext, provideStepperItemContext] = createContext<StepperItemContext>('StepperItem');
@@ -27,9 +27,7 @@ export interface StepperItemProps extends PrimitiveProps {
   /** Shows whether the step is completed. */
   completed?: boolean;
 }
-</script>
 
-<script setup lang="ts">
 const props = withDefaults(defineProps<StepperItemProps>(), {
   completed: false,
   disabled: false

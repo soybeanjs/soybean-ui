@@ -1,30 +1,34 @@
-<script lang="ts">
-import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { injectCalendarRootContext } from './calendar-root.vue';
+import { injectCalendarRootContext } from './context';
+import type { CalendarGridPropsWithPrimitive } from './types';
 
-export interface CalendarGridProps extends PrimitiveProps {}
+defineOptions({
+  name: 'CalendarGrid'
+});
 
-const props = withDefaults(defineProps<CalendarGridProps>(), { as: 'table' });
+const { class: className, as = 'table' } = defineProps<CalendarGridPropsWithPrimitive>();
 
-const rootContext = injectCalendarRootContext();
-const disabled = computed(() => (rootContext.disabled.value ? true : undefined));
-const readonly = computed(() => (rootContext.readonly.value ? true : undefined));
+const { disabled, readonly } = injectCalendarRootContext();
+
+const ariaReadonly = computed(() => (readonly.value ? true : undefined));
+const ariaDisabled = computed(() => (disabled.value ? true : undefined));
+const dataReadonly = computed(() => (readonly.value ? '' : undefined));
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 </script>
 
 <template>
   <Primitive
-    v-bind="props"
-    tabindex="-1"
+    :class="className"
     role="grid"
-    :aria-readonly="readonly"
-    :aria-disabled="disabled"
-    :data-readonly="readonly && ''"
-    :data-disabled="disabled && ''"
+    :as
+    :as-child
+    tabindex="-1"
+    :aria-readonly
+    :aria-disabled
+    :data-readonly
+    :data-disabled
   >
     <slot />
   </Primitive>

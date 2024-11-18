@@ -1,11 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { ref, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import type { DataOrientation, Direction, StringOrNumber } from '../../_shared/types';
-import { createContext, useDirection, useForwardExpose, useId } from '../../_shared';
+import type { DataOrientation, Direction, StringOrNumber } from '../../composables/types';
+import { createContext, useDirection, useForwardExpose, useId } from '../../composables';
 </script>
 
 <script setup lang="ts" generic="T extends StringOrNumber = StringOrNumber">

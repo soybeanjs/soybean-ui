@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { MenuItemEmits, MenuItemProps } from '../menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuItemEmits, MenuItemProps } from '../menu';
+
 import { MenuItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../_shared';
+import { useEmitAsProps, useForwardExpose } from '../../composables';
 
 export type ContextMenuItemEmits = MenuItemEmits;
 

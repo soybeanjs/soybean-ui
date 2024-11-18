@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { MenuPortalProps } from '../menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuPortalProps } from '../menu';
+
 import { MenuPortal } from '../menu';
 
 export interface MenubarPortalProps extends MenuPortalProps {}

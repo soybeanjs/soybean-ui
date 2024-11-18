@@ -1,10 +1,8 @@
-<script lang="ts">
-import { Presence } from '../presence';
-import { useForwardPropsEmits } from '../../_shared';
-import type { MenuContentImplEmits, MenuRootContentTypeProps } from './MenuContentImpl.vue';
-</script>
-
 <script setup lang="ts">
+import { Presence } from '../presence';
+import { useForwardPropsEmits } from '../../composables';
+import type { MenuContentImplEmits, MenuRootContentTypeProps } from './MenuContentImpl.vue';
+
 import MenuRootContentModal from './menu-root-content-modal.vue';
 import MenuRootContentNonModal from './menu-root-content-non-modal.vue';
 import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';

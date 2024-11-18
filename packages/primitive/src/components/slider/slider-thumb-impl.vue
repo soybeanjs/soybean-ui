@@ -1,12 +1,9 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
 import { useMounted } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { useCollection } from '../../composables';
-import { useForwardExpose, useSize } from '../../_shared';
+import { useCollection, useForwardExpose, useSize } from '../../composables';
 import { injectSliderRootContext } from './slider-root.vue';
 import { convertValueToPercentage, getLabel, getThumbInBoundsOffset, injectSliderOrientationContext } from './utils';
 

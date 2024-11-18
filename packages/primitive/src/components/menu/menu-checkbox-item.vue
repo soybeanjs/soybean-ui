@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import type { CheckedState } from './utils';
 import type { MenuItemEmits, MenuItemProps } from './MenuItem.vue';
-</script>
 
-<script setup lang="ts">
 import { getCheckedState, isIndeterminate } from './utils';
 import MenuItem from './menu-item.vue';
 import { provideMenuItemIndicatorContext } from './menu-item-indicator.vue';

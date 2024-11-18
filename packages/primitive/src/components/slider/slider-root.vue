@@ -1,15 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRaw, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
+import { clamp, createContext, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { DataOrientation, Direction, FormFieldProps } from '../../_shared/types';
-import { clamp, createContext, useDirection, useFormControl, useForwardExpose } from '../../_shared';
-</script>
+import type { DataOrientation, Direction, FormFieldProps } from '../../composables/types';
 
-<script setup lang="ts">
 import SliderHorizontal from './slider-horizontal.vue';
 import SliderVertical from './slider-vertical.vue';
 import {

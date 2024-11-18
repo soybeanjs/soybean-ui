@@ -1,10 +1,8 @@
-<script lang="ts">
-import { Presence } from '../presence';
-import { useForwardExpose, useForwardPropsEmits, useId } from '../../_shared';
-import type { ComboboxContentImplEmits, ComboboxContentImplProps } from './combobox-content-impl.vue';
-</script>
-
 <script setup lang="ts">
+import { Presence } from '../presence';
+import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
+import type { ComboboxContentImplEmits, ComboboxContentImplProps } from './combobox-content-impl.vue';
+
 import { injectComboboxRootContext } from './combobox-root.vue';
 import ComboboxContentImpl from './combobox-content-impl.vue';
 

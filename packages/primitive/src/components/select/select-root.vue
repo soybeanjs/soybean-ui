@@ -1,11 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { useCollection } from '../../composables';
+import { createContext, isNullish, useCollection, useDirection, useFormControl } from '../../composables';
 import { PopperRoot } from '../popper';
-import type { AcceptableValue, Direction, FormFieldProps } from '../../_shared/types';
-import { createContext, isNullish, useDirection, useFormControl } from '../../_shared';
+import type { AcceptableValue, Direction, FormFieldProps } from '../../composables/types';
 import { compare } from './utils';
 </script>
 

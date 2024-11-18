@@ -1,11 +1,8 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { useCollection } from '../../composables';
+import { useCollection, useForwardExpose, useId, useTypeahead } from '../../composables';
 import { Primitive } from '../primitive';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';
-import { useForwardExpose, useId, useTypeahead } from '../../_shared';
 import { injectSelectRootContext } from './SelectRoot.vue';
 import { OPEN_KEYS } from './utils';
 

@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { ref, watch, watchEffect } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectSelectContentContext } from './select-content-impl.vue';
 import { injectSelectItemAlignedPositionContext } from './select-item-aligned-position.vue';
 import SelectScrollButtonImpl from './select-scroll-button-impl.vue';

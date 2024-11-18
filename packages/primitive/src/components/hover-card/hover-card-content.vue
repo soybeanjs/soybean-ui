@@ -1,10 +1,8 @@
-<script lang="ts">
-import { Presence } from '../presence';
-import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
-import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './hover-card-content-impl.vue';
-</script>
-
 <script setup lang="ts">
+import { Presence } from '../presence';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './hover-card-content-impl.vue';
+
 import { injectHoverCardRootContext } from './hover-card-root.vue';
 import { excludeTouch } from './utils';
 import HoverCardContentImpl from './hover-card-content-impl.vue';

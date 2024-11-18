@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { onUnmounted, ref, toRefs, watch } from 'vue';
 import type { FocusScopeProps } from '../focus-scope';
@@ -6,16 +6,13 @@ import type { RovingFocusGroupEmits } from '../roving-focus';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../DismissableLayer';
 import type { PopperContentProps } from '../popper';
 
-</script>
-
-<script setup lang="ts">
-import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
 import { PopperContent, PopperContentPropsDefaultValue } from '../Popper';
 import { RovingFocusGroup } from '../roving-focus';
-import { useBodyScrollLock } from '../../_shared/use-body-scroll-lock'
-import { createContext, useArrowNavigation, useFocusGuards, useForwardExpose, useTypeahead } from '../../_shared';
+import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
+import { createContext, useArrowNavigation, useFocusGuards, useForwardExpose, useTypeahead } from '../../composables';
+import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
 import type { GraceIntent, Side } from './utils';
 import { FIRST_LAST_KEYS, LAST_KEYS, focusFirst, getOpenState, isMouseEvent, isPointerInGraceArea } from './utils';
 

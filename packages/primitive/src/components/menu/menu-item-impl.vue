@@ -1,11 +1,8 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
-import { useCollection } from '../../composables';
-import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
+import { useCollection, useForwardExpose } from '../../composables';
 import { injectMenuContentContext } from './menu-content-impl.vue';
 import { isMouseEvent } from './utils';
 

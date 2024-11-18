@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { CalendarHeader, type CalendarHeaderProps } from '..';
 
 export interface DatePickerHeaderProps extends CalendarHeaderProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerHeaderProps>();
 </script>
 

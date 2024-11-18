@@ -1,15 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { useCollection } from '../../composables';
+import { createContext, useCollection, useDirection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
-import type { Direction } from '../../_shared/types';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
-</script>
+import type { Direction } from '../../composables/types';
 
-<script setup lang="ts">
 export interface MenubarRootProps {
   /** The controlled value of the menu to open. Can be used as `v-model`. */
   modelValue?: string;

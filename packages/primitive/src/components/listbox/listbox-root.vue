@@ -1,13 +1,20 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type EventHook, createEventHook, useVModel } from '@vueuse/core';
 import { type Ref, nextTick, ref, toRefs, watch } from 'vue';
 import { type PrimitiveProps, usePrimitiveElement } from '../primitive';
 import { getFocusIntent } from '../roving-focus/shared';
-import { useCollection } from '../../composables';
+import {
+  createContext,
+  findValuesBetween,
+  useCollection,
+  useDirection,
+  useFormControl,
+  useKbd,
+  useTypeahead
+} from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { createContext, findValuesBetween, useDirection, useFormControl, useKbd, useTypeahead } from '../../_shared'
-import { Primitive } from '..'
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../_shared/types';
+import { Primitive } from '..';
+import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../composables/types';
 </script>
 
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">

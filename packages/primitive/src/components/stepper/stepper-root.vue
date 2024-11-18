@@ -1,10 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { type Ref, computed, nextTick, ref, toRefs, watch } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import type { DataOrientation, Direction } from '../../_shared/types';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
+import type { DataOrientation, Direction } from '../../composables/types';
+import { createContext, useDirection, useForwardExpose } from '../../composables';
 
 export interface StepperRootContext {
   modelValue: Ref<number | undefined>;
@@ -44,9 +44,7 @@ export type StepperRootEmits = {
 };
 
 export const [injectStepperRootContext, provideStepperRootContext] = createContext<StepperRootContext>('StepperRoot');
-</script>
 
-<script setup lang="ts">
 const props = withDefaults(defineProps<StepperRootProps>(), {
   orientation: 'horizontal',
   linear: true,

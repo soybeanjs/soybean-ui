@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, nextTick, onMounted, watch } from 'vue';
 import { Primitive, type PrimitiveProps, usePrimitiveElement } from '../primitive';
-</script>
 
-<script setup lang="ts">
-import { useKbd } from '../../_shared';
+import { useKbd } from '../../composables';
 import { injectEditableRootContext } from './editable-root.vue';
 
 export interface EditableInputProps extends PrimitiveProps {}

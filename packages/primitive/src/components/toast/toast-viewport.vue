@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { ComponentPublicInstance } from 'vue';
 import { computed, onMounted, ref, toRefs, watchEffect } from 'vue';
 import { onKeyStroke, unrefElement } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive'
-import { useCollection } from '../collection'
-</script>
+import type { PrimitiveProps } from '../primitive';
+import { useCollection } from '../collection';
 
-<script setup lang="ts">
 import { Primitive } from '../primitive';
 import { focusFirst, getTabbableCandidates } from '../focus-scope/utils';
 import { DismissableLayerBranch } from '../dismissable-layer';

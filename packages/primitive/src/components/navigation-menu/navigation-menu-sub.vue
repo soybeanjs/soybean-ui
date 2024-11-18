@@ -1,14 +1,11 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { useCollection } from '../../composables';
+import { useCollection, useForwardExpose } from '../../composables';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
-import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuContext, provideNavigationMenuContext } from './navigation-menu-root.vue';
 import type { Orientation } from './utils';
 

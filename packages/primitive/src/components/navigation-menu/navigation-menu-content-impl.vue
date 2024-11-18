@@ -1,13 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import type { DismissableLayerEmits, DismissableLayerProps, FocusOutsideEvent } from '../DismissableLayer';
 import type { PointerDownOutsideEvent } from '../dismissable-layer/utils';
-import { useCollection } from '../../composables';
-</script>
+import { useArrowNavigation, useCollection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 import { DismissableLayer } from '../dismissable-layer';
-import { useArrowNavigation, useForwardExpose } from '../../_shared';
 import { injectNavigationMenuContext } from './navigation-menu-root.vue';
 import {
   EVENT_ROOT_CONTENT_DISMISS,

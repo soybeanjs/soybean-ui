@@ -1,17 +1,16 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
 import { Primitive } from '../primitive';
+import type { CalendarHeaderPropsWithPrimitive } from './types';
 
-export interface CalendarHeaderProps extends PrimitiveProps {}
+defineOptions({
+  name: 'CalendarHeader'
+});
 
-const props = withDefaults(defineProps<CalendarHeaderProps>(), { as: 'div' });
+const { class: className, as = 'div' } = defineProps<CalendarHeaderPropsWithPrimitive>();
 </script>
 
 <template>
-  <Primitive v-bind="props">
+  <Primitive :class="className" :as :as-child>
     <slot />
   </Primitive>
 </template>

@@ -1,12 +1,10 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref, watchEffect } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
-import { createContext } from '../../_shared';
+import { createContext } from '../../composables';
 import { injectMenuContext, provideMenuContext } from './menu-root.vue';
 import type { MenuContext } from './menu-root.vue';
 

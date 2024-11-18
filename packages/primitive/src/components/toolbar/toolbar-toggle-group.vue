@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { ToggleGroupRootEmits, ToggleGroupRootProps } from '../ToggleGroup';
-</script>
-
 <script setup lang="ts">
+import type { ToggleGroupRootEmits, ToggleGroupRootProps } from '../ToggleGroup';
+
 import { ToggleGroupRoot } from '../toggle-group';
-import { useEmitAsProps, useForwardExpose } from '../../_shared';
+import { useEmitAsProps, useForwardExpose } from '../../composables';
 import { injectToolbarRootContext } from './toolbar-root.vue';
 
 export type ToolbarToggleGroupEmits = ToggleGroupRootEmits;

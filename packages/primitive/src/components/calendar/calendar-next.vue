@@ -1,34 +1,35 @@
-<script lang="ts">
-import type { DateValue } from '@internationalized/date';
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { injectCalendarRootContext } from './calendar-root.vue';
+import { injectCalendarRootContext } from './context';
+import type { CalendarNextPropsWithPrimitive } from './types';
 
-export interface CalendarNextProps extends PrimitiveProps {
-  /** The function to be used for the next page. Overwrites the `nextPage` function set on the `CalendarRoot`. */
-  nextPage?: (placeholder: DateValue) => DateValue;
+defineOptions({
+  name: 'CalendarNext'
+});
+
+const { class: className, as = 'button', nextPage } = defineProps<CalendarNextPropsWithPrimitive>();
+
+const { disabled, nextPage: nextPageFn, isNextButtonDisabled } = injectCalendarRootContext();
+
+const dataDisabled = computed(() => disabled.value || isNextButtonDisabled(nextPage));
+
+function handleClick() {
+  nextPageFn(nextPage);
 }
-
-const props = withDefaults(defineProps<CalendarNextProps>(), { as: 'button', step: 'month' });
-const disabled = computed(() => rootContext.disabled.value || rootContext.isNextButtonDisabled(props.nextPage));
-
-const rootContext = injectCalendarRootContext();
 </script>
 
 <template>
   <Primitive
-    :as="props.as"
-    :as-child="props.asChild"
+    :class="className"
+    :as
+    :as-child
     aria-label="Next page"
     :type="as === 'button' ? 'button' : undefined"
     :aria-disabled="disabled || undefined"
-    :data-disabled="disabled || undefined"
+    :data-disabled="dataDisabled || undefined"
     :disabled="disabled"
-    @click="rootContext.nextPage(props.nextPage)"
+    @click="handleClick"
   >
     <slot>Next page</slot>
   </Primitive>

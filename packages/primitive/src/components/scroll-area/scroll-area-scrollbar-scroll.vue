@@ -1,10 +1,8 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { watchEffect } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import { Presence } from '../presence';
-import { useStateMachine } from '../../_shared/use-state-machine';
+import { useStateMachine } from '../../composables/use-state-machine';
 import { useForwardExpose } from '../../composables';
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';
 import { injectScrollAreaScrollbarContext } from './scroll-area-scrollbar.vue';

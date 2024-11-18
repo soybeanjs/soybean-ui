@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
+
 import { MenuSubContent } from '../menu';
-import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
 
 export type ContextMenuSubContentEmits = MenuSubContentEmits;
 export interface ContextMenuSubContentProps extends MenuSubContentProps {}

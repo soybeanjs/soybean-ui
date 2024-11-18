@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { useArrowNavigation, useForwardExpose, useKbd } from '../../_shared';
-</script>
+import { useArrowNavigation, useForwardExpose, useKbd } from '../../composables';
 
-<script setup lang="ts">
 import { injectStepperRootContext } from './stepper-root.vue';
 import { injectStepperItemContext } from './stepper-item.vue';
 

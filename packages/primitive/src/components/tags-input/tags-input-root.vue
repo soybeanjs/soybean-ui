@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type Ref, ref, toRefs } from 'vue';
 import { useFocusWithin, useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
@@ -6,10 +6,16 @@ import type { PrimitiveProps } from '../primitive';
 
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
 import { Primitive } from '../primitive';
-import { useCollection } from '../../composables';
+import {
+  createContext,
+  useArrowNavigation,
+  useCollection,
+  useDirection,
+  useFormControl,
+  useForwardExpose
+} from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { Direction, FormFieldProps } from '../../_shared/types';
-import { createContext, useArrowNavigation, useDirection, useFormControl, useForwardExpose } from '../../_shared';
+import type { Direction, FormFieldProps } from '../../composables/types';
 
 export type AcceptableInputValue = string | Record<string, any>;
 

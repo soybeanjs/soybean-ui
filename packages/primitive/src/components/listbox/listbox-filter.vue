@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { computed, onMounted } from 'vue';
 import { usePrimitiveElement } from '../primitive';
@@ -17,9 +17,7 @@ export interface ListboxFilterProps extends PrimitiveProps {
 export type ListboxFilterEmits = {
   'update:modelValue': [string];
 };
-</script>
 
-<script setup lang="ts">
 const props = withDefaults(defineProps<ListboxFilterProps>(), {
   as: 'input'
 });

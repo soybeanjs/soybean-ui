@@ -1,14 +1,15 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type DateValue, Time, getLocalTimeZone, isEqualDay, toCalendarDateTime, today } from '@internationalized/date';
 
 import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { isBefore } from '../date';
-import { Primitive, usePrimitiveElement } from '../primitive';
+import { isBefore } from '../../date';
+import { Primitive } from '../primitive';
+import { usePrimitiveElement } from '../../composables';
 import { VisuallyHidden } from '../visually-hidden';
-import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../_shared';
+import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
 import {
   type HourCycle,
   type SegmentPart,
@@ -20,11 +21,9 @@ import {
   initializeTimeSegmentValues,
   isSegmentNavigationKey,
   syncTimeSegmentValues
-} from '../../_shared/date';
-import type { Direction, FormFieldProps } from '../../_shared/types';
-</script>
+} from '../../composables/date';
+import type { Direction, FormFieldProps } from '../../composables/types';
 
-<script setup lang="ts">
 type TimeFieldRootContext = {
   locale: Ref<string>;
   modelValue: Ref<DateValue | undefined>;

@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type CSSProperties, type Ref, computed, ref, toRefs, watch, watchEffect } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { areEqual, createContext, useDirection, useForwardExpose, useId } from '../../_shared';
+import { areEqual, createContext, useDirection, useForwardExpose, useId } from '../../composables';
 import { initializeDefaultStorage, loadPanelGroupState, savePanelGroupState } from './utils/storage';
 import { useWindowSplitterPanelGroupBehavior } from './utils/composables/use-window-splitter-panel-group-behavior';
-</script>
 
-<script setup lang="ts">
 import type { PanelConstraints, PanelData } from './splitter-panel.vue';
 import type { Direction, DragState, ResizeEvent, ResizeHandler } from './utils/types';
 import {

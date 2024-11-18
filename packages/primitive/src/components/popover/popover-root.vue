@@ -1,12 +1,10 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
-import { createContext } from '../../_shared';
+import { createContext } from '../../composables';
 
 export interface PopoverRootProps {
   /** The open state of the popover when it is initially rendered. Use when you do not need to control its open state. */

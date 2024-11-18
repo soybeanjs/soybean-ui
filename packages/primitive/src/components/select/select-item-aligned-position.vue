@@ -1,14 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { nextTick, onMounted, ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
+import { clamp, createContext, useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import { clamp, createContext, useForwardExpose } from '../../_shared';
-</script>
 
-<script setup lang="ts">
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';
 import { CONTENT_MARGIN } from './utils';

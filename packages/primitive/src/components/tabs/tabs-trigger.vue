@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
-import type { StringOrNumber } from '../../_shared/types';
-</script>
+import type { StringOrNumber } from '../../composables/types';
 
-<script setup lang="ts">
 import { injectTabsRootContext } from './tabs-root.vue';
 import { makeContentId, makeTriggerId } from './utils';
 

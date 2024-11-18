@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { useId } from '../../_shared';
+import { useId } from '../../composables';
 import { PRECISION } from './utils/constants';
-</script>
 
-<script setup lang="ts">
 import { injectPanelGroupContext } from './splitter-group.vue';
 
 export interface SplitterPanelProps extends PrimitiveProps {

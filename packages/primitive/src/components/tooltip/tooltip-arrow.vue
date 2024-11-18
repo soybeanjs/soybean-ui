@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PrimitiveProps } from '../primitive';
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 export interface TooltipArrowProps extends PrimitiveProps {
   /**
    * The width of the arrow in pixels.

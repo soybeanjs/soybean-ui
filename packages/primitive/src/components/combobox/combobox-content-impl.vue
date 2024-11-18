@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { computed, toRefs } from 'vue';
 import type { PopperContentProps } from '../popper';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
@@ -10,8 +8,8 @@ import { DismissableLayer } from '../dismissable-layer';
 import { PopperContent } from '../popper';
 import { Primitive } from '../primitive';
 import { ListboxContent } from '../listbox';
-import { useBodyScrollLock } from '../../_shared/use-body-scroll-lock';
-import { createContext, useForwardExpose, useForwardProps, useHideOthers } from '../../_shared';
+import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
+import { createContext, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
 import { injectComboboxRootContext } from './combobox-root.vue';
 
 export type ComboboxContentImplEmits = DismissableLayerEmits;

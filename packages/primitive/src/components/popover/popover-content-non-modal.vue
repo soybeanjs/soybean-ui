@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useForwardPropsEmits } from '../../_shared';
+import { useForwardPropsEmits } from '../../composables';
 import PopoverContentImpl, {
   type PopoverContentImplEmits,
   type PopoverContentImplProps

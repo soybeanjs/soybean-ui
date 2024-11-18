@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PopperArrowProps } from '../popper';
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 export interface PopoverArrowProps extends PopperArrowProps {}
 
 const props = withDefaults(defineProps<PopoverArrowProps>(), {

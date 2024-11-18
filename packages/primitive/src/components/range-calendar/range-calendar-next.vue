@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { DateValue } from '@internationalized/date';
-</script>
-
 <script setup lang="ts">
+import type { DateValue } from '@internationalized/date';
+
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';

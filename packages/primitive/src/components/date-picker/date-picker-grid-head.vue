@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { CalendarGridHead, type CalendarGridHeadProps } from '..';
 
 export interface DatePickerGridHeadProps extends CalendarGridHeadProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerGridHeadProps>();
 </script>
 

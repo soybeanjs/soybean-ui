@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
-</script>
 
-<script setup lang="ts">
 import { ref } from 'vue';
-import { createContext } from '../../_shared';
+import { createContext } from '../../composables';
 
 export interface Measurable {
   getBoundingClientRect: () => DOMRect;

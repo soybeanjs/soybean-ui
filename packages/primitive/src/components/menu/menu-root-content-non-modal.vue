@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '../../_shared';
+import { useForwardPropsEmits } from '../../composables';
 import MenuContentImpl, { type MenuContentImplEmits, type MenuRootContentTypeProps } from './menu-content-impl.vue';
 import { injectMenuContext } from './menu-root.vue';
 

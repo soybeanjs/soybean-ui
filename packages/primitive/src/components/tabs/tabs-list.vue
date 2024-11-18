@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectTabsRootContext } from './tabs-root.vue';
 
 export interface TabsListProps extends PrimitiveProps {
@@ -27,13 +25,7 @@ context.tabsList = currentElement;
 
 <template>
   <RovingFocusGroup as-child :orientation="context.orientation.value" :dir="context.dir.value" :loop="loop">
-    <Primitive
-      :ref="forwardRef"
-      role="tablist"
-      :as-child
-      :as
-      :aria-orientation="context.orientation.value"
-    >
+    <Primitive :ref="forwardRef" role="tablist" :as-child :as :aria-orientation="context.orientation.value">
       <slot />
     </Primitive>
   </RovingFocusGroup>

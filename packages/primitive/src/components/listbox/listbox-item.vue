@@ -1,12 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type Ref, computed } from 'vue';
-import { useCollection } from '../../composables';
-import { createContext, handleAndDispatchCustomEvent, useForwardExpose, useId } from '../../_shared';
+import { createContext, handleAndDispatchCustomEvent, useCollection, useForwardExpose, useId } from '../../composables';
 </script>
 
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { Primitive, type PrimitiveProps } from '..';
-import type { AcceptableValue } from '../../_shared/types';
+import type { AcceptableValue } from '../../composables/types';
 import { injectListboxRootContext } from './listbox-root.vue';
 import { valueComparator } from './utils';
 

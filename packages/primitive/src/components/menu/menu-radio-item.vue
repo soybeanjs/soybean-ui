@@ -1,9 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import type { MenuItemEmits, MenuItemProps } from './MenuItem.vue';
-</script>
 
-<script setup lang="ts">
 import { getCheckedState } from './utils';
 import MenuItem from './menu-item.vue';
 import { injectMenuRadioGroupContext } from './menu-radio-group.vue';

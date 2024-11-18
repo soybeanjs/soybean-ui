@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import type { PrimitiveProps } from '../primitive';
+
 import { Primitive } from '../primitive';
 
 export interface RangeCalendarGridHeadProps extends PrimitiveProps {}

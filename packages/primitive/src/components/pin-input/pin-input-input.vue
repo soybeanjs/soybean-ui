@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { Primitive, type PrimitiveProps, usePrimitiveElement } from '../primitive';
-import { useArrowNavigation } from '../../_shared';
+import { useArrowNavigation } from '../../composables';
 import { injectPinInputRootContext } from './pin-input-root.vue';
-</script>
 
-<script setup lang="ts">
 export interface PinInputInputProps extends PrimitiveProps {
   /** Position of the value this input binds to. */
   index: number;

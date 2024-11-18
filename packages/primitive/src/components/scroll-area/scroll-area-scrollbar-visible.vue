@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, ref } from 'vue';
-import { createContext, useForwardExpose } from '../../_shared';
+import { createContext, useForwardExpose } from '../../composables';
 import type { Direction, Sizes } from './types';
-</script>
 
-<script setup lang="ts">
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';
 import { injectScrollAreaScrollbarContext } from './scroll-area-scrollbar.vue';
 import ScrollAreaScrollbarX from './scroll-area-scrollbar-x.vue';

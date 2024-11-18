@@ -1,16 +1,14 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { createContext, useDirection, useFormControl, useForwardExpose } from '../../_shared';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../_shared/types';
+import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
+import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../composables/types';
 
 export interface RadioGroupRootProps extends PrimitiveProps, FormFieldProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */

@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRefs, watch } from 'vue';
 import type { MenuEmits, MenuProps } from '../menu';
 import { MenuRoot } from '../menu';
-import type { Direction } from '../../_shared/types';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
-</script>
+import type { Direction } from '../../composables/types';
+import { createContext, useDirection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 type ContextMenuRootContext = {
   open: Ref<boolean>;
   onOpenChange: (open: boolean) => void;

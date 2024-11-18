@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type ComponentPublicInstance, nextTick, onUnmounted, ref } from 'vue';
-import { useId } from '../../_shared';
+import { useId } from '../../composables';
 import type { MenuItemImplProps } from './menu-item-impl.vue';
 import type { Side } from './utils';
-</script>
 
-<script setup lang="ts">
 import MenuItemImpl from './menu-item-impl.vue';
 import { injectMenuContext, injectMenuRootContext } from './menu-root.vue';
 import { injectMenuSubContext } from './menu-sub.vue';

@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { nextTick, ref } from 'vue';
 import { useForwardExpose } from '../../composables';
 import type { MenuItemImplProps } from './menu-item-impl.vue';
-</script>
 
-<script setup lang="ts">
 import MenuItemImpl from './menu-item-impl.vue';
 import { injectMenuRootContext } from './menu-root.vue';
 import { injectMenuContentContext } from './menu-content-impl.vue';

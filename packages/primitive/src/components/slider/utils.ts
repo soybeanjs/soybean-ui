@@ -1,4 +1,4 @@
-import { clamp, createContext } from '../../_shared';
+import { clamp, createContext } from '../../composables';
 
 export interface SliderOrientationPrivateProps {
   min: number;

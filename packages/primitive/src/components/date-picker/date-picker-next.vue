@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { CalendarNext, type CalendarNextProps } from '..';
 
 export interface DatePickerNextProps extends CalendarNextProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerNextProps>();
 </script>
 

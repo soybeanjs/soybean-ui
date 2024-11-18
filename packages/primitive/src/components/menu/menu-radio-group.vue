@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { createContext } from '../../_shared';
+import { createContext } from '../../composables';
 import type { MenuGroupProps } from './menu-group.vue';
-</script>
 
-<script setup lang="ts">
 import MenuGroup from './menu-group.vue';
 
 interface MenuRadioGroupContext {

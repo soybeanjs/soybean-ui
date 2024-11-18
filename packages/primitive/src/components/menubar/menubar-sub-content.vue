@@ -1,12 +1,9 @@
-<script lang="ts">
-import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
-import { useCollection } from '../../composables';
-</script>
-
 <script setup lang="ts">
+import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
+import { useCollection, useForwardExpose, useForwardPropsEmits } from '../../composables';
+
 import { MenuSubContent } from '../menu';
-import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
-import { wrapArray } from '../../_shared/use-typeahead';
+import { wrapArray } from '../../composables/use-typeahead';
 import { injectMenubarMenuContext } from './menubar-menu.vue';
 import { injectMenubarRootContext } from './menubar-root.vue';
 

@@ -1,15 +1,13 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type Ref, computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
 import { useFocusOutside, usePointerDownOutside } from '../dismissable-layer';
-</script>
 
-<script setup lang="ts">
-import { Primitive, usePrimitiveElement } from '../primitive';
+import { Primitive } from '../primitive';
+import { createContext, useDirection, useFormControl, usePrimitiveElement } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { Direction, FormFieldProps } from '../../_shared/types';
-import { createContext, useDirection, useFormControl } from '../../_shared';
+import type { Direction, FormFieldProps } from '../../composables/types';
 
 type ActivationMode = 'focus' | 'dblclick' | 'none';
 type SubmitMode = 'blur' | 'enter' | 'none' | 'both';

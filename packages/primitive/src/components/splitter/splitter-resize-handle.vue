@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { ref, toRefs, watch, watchEffect } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { isBrowser, useForwardExpose, useId } from '../../_shared';
+import { isBrowser, useForwardExpose, useId } from '../../composables';
 import { useWindowSplitterResizeHandlerBehavior } from './utils/composables/use-window-splitter-behavior';
-</script>
 
-<script setup lang="ts">
 import { injectPanelGroupContext } from './splitter-group.vue';
 import type { ResizeEvent, ResizeHandler } from './utils/types';
 import type { PointerHitAreaMargins, ResizeHandlerAction } from './utils/registry';

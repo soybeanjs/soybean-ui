@@ -1,14 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { isClient } from '@vueuse/shared';
 import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
-</script>
+import { createContext, useCollection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 import { Primitive } from '../primitive';
-import { createContext, useForwardExpose } from '../../_shared';
 import type { SwipeEvent } from './utils';
 import { injectToastProviderContext } from './toast-provider.vue';
 import {

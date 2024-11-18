@@ -1,14 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
+import { createContext, useCollection, useForwardExpose, useId } from '../../composables';
 import { Primitive } from '../primitive';
-import { createContext, useForwardExpose, useId } from '../../_shared';
-import type { AcceptableValue } from '../../_shared/types';
-</script>
+import type { AcceptableValue } from '../../composables/types';
 
-<script setup lang="ts">
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';
 import { SELECTION_KEYS, valueComparator } from './utils';

@@ -1,13 +1,11 @@
-<script lang="ts">
-import type { ComputedRef, Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { ComputedRef, Ref } from 'vue';
+
 import { useVModel } from '@vueuse/core';
 import { computed, nextTick, watch } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, isNullish, useForwardExpose } from '../../_shared';
+import { createContext, isNullish, useForwardExpose } from '../../composables';
 
 export type ProgressRootEmits = {
   /** Event handler called when the progress value changes */

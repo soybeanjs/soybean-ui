@@ -1,5 +1,3 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue';
 import { watchOnce } from '@vueuse/core';

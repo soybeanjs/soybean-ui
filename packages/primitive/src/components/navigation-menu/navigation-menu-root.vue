@@ -1,14 +1,11 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { computed, ref, toRefs, watchEffect } from 'vue';
 import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
-import { useCollection } from '../../composables';
+import { createContext, useCollection, useDirection, useForwardExpose, useId } from '../../composables';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
-import { createContext, useDirection, useForwardExpose, useId } from '../../_shared';
+import { Primitive } from '../primitive';
 import type { Direction, Orientation } from './utils';
 
 export interface NavigationMenuRootProps extends PrimitiveProps {

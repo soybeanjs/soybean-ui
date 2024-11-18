@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { TeleportProps } from '../teleport';
-</script>
-
 <script setup lang="ts">
+import type { TeleportProps } from '../teleport';
+
 import { TeleportPrimitive } from '../teleport';
 
 export interface PopoverPortalProps extends TeleportProps {}

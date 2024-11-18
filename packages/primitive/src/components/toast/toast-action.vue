@@ -1,9 +1,7 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useForwardExpose } from '../../composables';
 import type { ToastCloseProps } from './toast-close.vue';
-</script>
 
-<script setup lang="ts">
 import ToastAnnounceExclude from './toast-announce-exclude.vue';
 import ToastClose from './toast-close.vue';
 

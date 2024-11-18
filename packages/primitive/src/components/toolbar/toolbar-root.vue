@@ -1,14 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
-import type { DataOrientation, Direction } from '../../_shared/types';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
-</script>
+import type { DataOrientation, Direction } from '../../composables/types';
+import { createContext, useDirection, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 export interface ToolbarRootProps extends PrimitiveProps {
   /** The orientation of the toolbar */
   orientation?: DataOrientation;

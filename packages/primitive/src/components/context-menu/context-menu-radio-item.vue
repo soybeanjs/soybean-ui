@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { MenuItemEmits, MenuRadioItemProps } from '../Menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuItemEmits, MenuRadioItemProps } from '../Menu';
+
 import { MenuRadioItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../_shared';
+import { useEmitAsProps, useForwardExpose } from '../../composables';
 
 export type ContextMenuRadioItemEmits = MenuItemEmits;
 

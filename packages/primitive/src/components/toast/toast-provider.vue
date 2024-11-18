@@ -1,12 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
-import { useCollection } from '../../composables';
-import { createContext } from '../../_shared';
+import { createContext, useCollection } from '../../composables';
 import type { SwipeDirection } from './utils';
-</script>
 
-<script setup lang="ts">
 type ToastProviderContext = {
   label: Ref<string>;
   duration: Ref<number>;

@@ -1,17 +1,16 @@
-<script lang="ts">
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
 import { Primitive } from '../primitive';
+import type { CalendarGridBodyPropsWithPrimitive } from './types';
 
-export interface CalendarGridBodyProps extends PrimitiveProps {}
+defineOptions({
+  name: 'CalendarGridBody'
+});
 
-const props = withDefaults(defineProps<CalendarGridBodyProps>(), { as: 'tbody' });
+const { class: className, as = 'tbody' } = defineProps<CalendarGridBodyPropsWithPrimitive>();
 </script>
 
 <template>
-  <Primitive v-bind="props">
+  <Primitive :class="className" :as :as-child>
     <slot />
   </Primitive>
 </template>

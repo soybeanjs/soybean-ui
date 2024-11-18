@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, nextTick, ref, toRefs } from 'vue';
 import type { Point } from '../menu/utils';
 import type { PrimitiveProps } from '../primitive';
-</script>
 
-<script setup lang="ts">
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose } from '../../composables';

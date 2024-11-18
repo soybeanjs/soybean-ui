@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { CalendarCell, type CalendarCellProps } from '..';
 
 export interface DatePickerCellProps extends CalendarCellProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerCellProps>();
 </script>
 

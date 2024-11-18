@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
+import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectNavigationMenuContext } from './navigation-menu-root.vue';
 import { getOpenState, whenMouse } from './utils';
 

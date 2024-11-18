@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import type { ArrowProps } from '../../_shared/component/Arrow.vue';
-</script>
+import type { ArrowProps } from '../../composables/component/Arrow.vue';
 
-<script setup lang="ts">
 import { useForwardExpose } from '../../composables';
-import Arrow from '../../_shared/component/Arrow.vue';
+import Arrow from '../../composables/component/Arrow.vue';
 import { injectPopperContentContext } from './popper-content.vue';
 import type { Side } from './utils';
 

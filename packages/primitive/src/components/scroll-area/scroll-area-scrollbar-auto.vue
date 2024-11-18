@@ -1,5 +1,3 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useDebounceFn, useResizeObserver } from '@vueuse/core';

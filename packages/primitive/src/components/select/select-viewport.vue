@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { onMounted, ref, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { useNonce } from '../../_shared/use-nonce';
-</script>
+import { useNonce } from '../../composables/use-nonce';
 
-<script setup lang="ts">
 import { injectSelectContentContext } from './select-content-impl.vue';
 import { CONTENT_MARGIN } from './utils';
 import { injectSelectItemAlignedPositionContext } from './select-item-aligned-position.vue';

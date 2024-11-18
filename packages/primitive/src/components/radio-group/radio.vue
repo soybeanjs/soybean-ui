@@ -1,13 +1,11 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { AcceptableValue, FormFieldProps } from '../../_shared/types';
-import { useFormControl, useForwardExpose } from '../../_shared';
+import type { AcceptableValue, FormFieldProps } from '../../composables/types';
+import { useFormControl, useForwardExpose } from '../../composables';
 import type { SelectEvent } from './utils';
 import { handleSelect } from './utils';
 

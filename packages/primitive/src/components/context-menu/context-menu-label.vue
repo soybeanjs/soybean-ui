@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { MenuLabelProps } from '../menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuLabelProps } from '../menu';
+
 import { MenuLabel } from '../menu';
 import { useForwardExpose } from '../../composables';
 

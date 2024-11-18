@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { AcceptableValue } from '../../_shared/types';
+import type { AcceptableValue } from '../../composables/types';
 import type { SelectRootContext } from './select-root.vue';
 import { provideSelectRootContext } from './select-root.vue';
 import { SelectContentDefaultContextValue, provideSelectContentContext } from './select-content-impl.vue';

@@ -1,14 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import { syncRef } from '@vueuse/shared';
 import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue';
 import type { PopperContentProps } from '../popper';
 import type { DismissableLayerEmits } from '../dismissable-layer';
 import { PopperContent } from '../popper';
 import { DismissableLayer } from '../dismissable-layer';
-import { useForwardExpose, useGraceArea } from '../../_shared';
-</script>
+import { useForwardExpose, useGraceArea } from '../../composables';
 
-<script setup lang="ts">
 import { useForwardProps } from '..';
 import { injectHoverCardRootContext } from './hover-card-root.vue';
 import { getTabbableNodes } from './utils';

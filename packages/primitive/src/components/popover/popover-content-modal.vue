@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../_shared';
-import { useBodyScrollLock } from '../../_shared/use-body-scroll-lock';
+import { useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../composables';
+import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
 import PopoverContentImpl, {
   type PopoverContentImplEmits,
   type PopoverContentImplProps

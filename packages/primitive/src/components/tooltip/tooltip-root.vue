@@ -1,12 +1,10 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { useTimeoutFn, useVModel } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
 import { PopperRoot } from '../popper';
-import { createContext, useForwardExpose } from '../../_shared';
+import { createContext, useForwardExpose } from '../../composables';
 import { TOOLTIP_OPEN } from './utils';
 import { injectTooltipProviderContext } from './tooltip-provider.vue';
 

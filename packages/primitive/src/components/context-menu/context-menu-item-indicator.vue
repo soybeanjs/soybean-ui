@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { MenuItemIndicatorProps } from '../menu';
 import { MenuItemIndicator } from '../menu';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 export interface ContextMenuItemIndicatorProps extends MenuItemIndicatorProps {}
 
 const props = defineProps<ContextMenuItemIndicatorProps>();

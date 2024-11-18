@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import {
   PopoverContent,
   type PopoverContentEmits,
@@ -9,9 +9,7 @@ import {
 
 export interface DateRangePickerContentProps extends PopoverContentProps {}
 export interface DateRangePickerContentEmits extends PopoverContentEmits {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DateRangePickerContentProps>();
 const emits = defineEmits<DateRangePickerContentEmits>();
 

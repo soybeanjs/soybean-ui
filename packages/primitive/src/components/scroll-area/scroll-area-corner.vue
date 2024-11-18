@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';
 import ScrollAreaCornerImpl from './scroll-area-corner-impl.vue';
 

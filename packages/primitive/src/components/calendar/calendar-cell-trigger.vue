@@ -1,37 +1,23 @@
-<script lang="ts">
-import { type DateValue, getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
-import { computed, nextTick } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { toDate } from '../date';
-</script>
-
 <script setup lang="ts">
-import { Primitive, usePrimitiveElement } from '../primitive';
-import { useKbd } from '../../_shared';
-import { injectCalendarRootContext } from './calendar-root.vue';
+import { computed, nextTick } from 'vue';
+import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
+import type { DateValue } from '@internationalized/date';
+import { toDate } from '../../date';
+import { useKbd, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
+import { injectCalendarRootContext } from './context';
+import type { CalendarCellTriggerPropsWithPrimitive } from './types';
 
-export interface CalendarCellTriggerProps extends PrimitiveProps {
-  /** The date value provided to the cell trigger */
-  day: DateValue;
-  /** The month in which the cell is rendered */
-  month: DateValue;
-}
-
-const props = withDefaults(defineProps<CalendarCellTriggerProps>(), {
-  as: 'div'
+defineOptions({
+  name: 'CalendarCellTrigger'
 });
 
-defineSlots<{
-  default: (props: {
-    /** Current day */
-    dayValue: string;
-  }) => any;
-}>();
+const props = defineProps<CalendarCellTriggerPropsWithPrimitive>();
 
 const kbd = useKbd();
-const rootContext = injectCalendarRootContext();
-
 const { primitiveElement, currentElement } = usePrimitiveElement();
+
+const rootContext = injectCalendarRootContext();
 
 const dayValue = computed(() => props.day.day.toLocaleString(rootContext.locale.value));
 

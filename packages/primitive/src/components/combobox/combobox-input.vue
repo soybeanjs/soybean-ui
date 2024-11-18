@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { nextTick, onMounted, watch } from 'vue';
 import { usePrimitiveElement } from '../primitive';
 import type { ListboxFilterEmits, ListboxFilterProps } from '../listbox';
-</script>
 
-<script setup lang="ts">
 import { injectListboxRootContext } from '../listbox/listbox-root.vue';
 import { ListboxFilter } from '../listbox';
 import { injectComboboxRootContext } from './combobox-root.vue';

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import type { Middleware, Placement, ReferenceElement } from '@floating-ui/vue';
 import { computed, ref, watchEffect, watchPostEffect } from 'vue';
@@ -15,12 +15,10 @@ import {
   useFloating
 } from '@floating-ui/vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
-import { createContext, useForwardExpose, useSize } from '../../_shared';
+import { Primitive } from '../primitive';
+import { createContext, useForwardExpose, useSize } from '../../composables';
 import type { Align, Side } from './utils';
-</script>
 
-<script setup lang="ts">
 import { injectPopperRootContext } from './popper-root.vue';
 import { getSideAndAlignFromPlacement, isNotNull, transformOrigin } from './utils';
 

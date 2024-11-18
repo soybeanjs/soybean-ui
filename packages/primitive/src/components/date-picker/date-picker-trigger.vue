@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { PopoverTrigger, type PopoverTriggerProps } from '..';
 import { injectDatePickerRootContext } from './date-picker-root.vue';
 
 export interface DatePickerTriggerProps extends PopoverTriggerProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DatePickerTriggerProps>();
 const rootContext = injectDatePickerRootContext();
 </script>

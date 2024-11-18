@@ -1,12 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { ReferenceElement } from '@floating-ui/vue';
 import { watchPostEffect } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../Primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectPopperRootContext } from './popper-root.vue';
 
 export interface PopperAnchorProps extends PrimitiveProps {

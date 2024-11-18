@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { Presence } from '../presence';
-import { useForwardPropsEmits } from '../../_shared';
+import { useForwardPropsEmits } from '../../composables';
 import type { SelectContentImplEmits, SelectContentImplProps } from './SelectContentImpl.vue';
-</script>
 
-<script setup lang="ts">
 import SelectContentImpl from './select-content-impl.vue';
 import { injectSelectRootContext } from './select-root.vue';
 import SelectProvider from './select-provider.vue';

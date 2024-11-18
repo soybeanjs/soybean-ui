@@ -1,10 +1,8 @@
-<script lang="ts">
-import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from '../Menu';
-</script>
-
 <script setup lang="ts">
+import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from '../Menu';
+
 import { MenuCheckboxItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../_shared';
+import { useEmitAsProps, useForwardExpose } from '../../composables';
 
 export type ContextMenuCheckboxItemEmits = MenuCheckboxItemEmits;
 

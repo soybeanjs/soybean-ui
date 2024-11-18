@@ -1,15 +1,13 @@
-<script lang="ts">
+<script setup lang="ts">
 import { reactiveOmit } from '@vueuse/shared';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../DismissableLayer';
 import type { FocusScopeProps } from '../focus-scope';
 import type { PopperContentProps } from '../popper';
-</script>
 
-<script setup lang="ts">
 import { PopperContent } from '../popper';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
-import { useFocusGuards, useForwardExpose, useForwardProps } from '../../_shared';
+import { useFocusGuards, useForwardExpose, useForwardProps } from '../../composables';
 import { injectPopoverRootContext } from './popover-root.vue';
 
 export type PopoverContentImplEmits = DismissableLayerEmits & {

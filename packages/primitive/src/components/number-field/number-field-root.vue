@@ -1,14 +1,19 @@
-<script lang="ts">
+<script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { type HTMLAttributes, type Ref, computed, ref, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { Primitive, usePrimitiveElement } from '../primitive';
+import { Primitive } from '../primitive';
+import {
+  clamp,
+  createContext,
+  snapValueToStep,
+  useFormControl,
+  useLocale,
+  usePrimitiveElement
+} from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { clamp, createContext, snapValueToStep, useFormControl, useLocale } from '../../_shared';
-import type { FormFieldProps } from '../../_shared/types';
-</script>
+import type { FormFieldProps } from '../../composables/types';
 
-<script setup lang="ts">
 import { handleDecimalOperation, useNumberFormatter, useNumberParser } from './utils';
 
 export interface NumberFieldRootProps extends PrimitiveProps, FormFieldProps {

@@ -1,14 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
-import { createContext } from '../../_shared';
+import { createContext } from '../../composables';
 import type { CheckedState } from './utils';
-</script>
 
-<script setup lang="ts">
 import { getCheckedState, isIndeterminate } from './utils';
 
 interface MenuItemIndicatorContext {

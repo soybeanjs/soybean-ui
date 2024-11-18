@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
 import type { ScrollAreaScrollbarAutoProps } from './scroll-area-scrollbar-auto.vue';
-</script>
 
-<script setup lang="ts">
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';
 import ScrollAreaScrollbarAuto from './scroll-area-scrollbar-auto.vue';
 

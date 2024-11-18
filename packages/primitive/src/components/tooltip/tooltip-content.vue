@@ -1,10 +1,8 @@
-<script lang="ts">
-import { Presence } from '../presence';
-import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
-import type { TooltipContentImplEmits, TooltipContentImplProps } from './tooltip-content-impl.vue';
-</script>
-
 <script setup lang="ts">
+import { Presence } from '../presence';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { TooltipContentImplEmits, TooltipContentImplProps } from './tooltip-content-impl.vue';
+
 import TooltipContentImpl from './tooltip-content-impl.vue';
 import TooltipContentHoverable from './tooltip-content-hoverable.vue';
 import { injectTooltipRootContext } from './tooltip-root.vue';

@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { computed, onUnmounted, toRefs, watch } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import { createContext, useForwardExpose } from '../../_shared';
-</script>
+import { createContext, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 import { injectScrollAreaRootContext } from './scroll-area-root.vue';
 import ScrollAreaScrollbarHover from './scroll-area-scrollbar-hover.vue';
 import ScrollAreaScrollbarScroll from './scroll-area-scrollbar-scroll.vue';

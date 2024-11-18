@@ -2,29 +2,11 @@
  * Implementation ported from https://github.com/melt-ui/melt-ui/blob/develop/src/lib/internal/helpers/date/formatter.ts
  */
 
+import { ref } from 'vue';
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
 import type { DateValue, ZonedDateTime } from '@internationalized/date';
-import { ref } from 'vue';
 import { hasTime, isZonedDateTime, toDate } from '../date';
-
-export interface DateFormatterOptions extends Intl.DateTimeFormatOptions {
-  calendar?: string;
-}
-
-export type Formatter = {
-  getLocale: () => string;
-  setLocale: (newLocale: string) => void;
-  custom: (date: Date, options: DateFormatterOptions) => string;
-  selectedDate: (date: DateValue, includeTime?: boolean) => string;
-  dayOfWeek: (date: Date, length?: DateFormatterOptions['weekday']) => string;
-  fullMonthAndYear: (date: Date, options?: DateFormatterOptions) => string;
-  fullMonth: (date: Date, options?: DateFormatterOptions) => string;
-  fullYear: (date: Date, options?: DateFormatterOptions) => string;
-  dayPeriod: (date: Date) => string;
-  part: (dateObj: DateValue, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string;
-  toParts: (date: DateValue, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[];
-  getMonths: () => { label: string; value: number }[];
-};
+import type { DateFormatterOptions, DateFormatter as Formatter } from '../date';
 
 /**
  * Creates a wrapper around the `DateFormatter`, which is an improved version of the {@link Intl.DateTimeFormat} API,

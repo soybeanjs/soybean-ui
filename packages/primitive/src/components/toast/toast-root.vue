@@ -1,8 +1,6 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { useVModel } from '@vueuse/core';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';

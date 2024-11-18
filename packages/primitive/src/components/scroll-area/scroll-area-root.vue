@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
+import { createContext, useDirection, useForwardExpose } from '../../composables';
 import type { Direction, ScrollType } from './types';
-</script>
 
-<script setup lang="ts">
 export interface ScrollAreaRootContext {
   type: Ref<ScrollType>;
   dir: Ref<Direction>;

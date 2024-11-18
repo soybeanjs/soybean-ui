@@ -1,14 +1,12 @@
-<script lang="ts">
-import type { Ref } from 'vue';
-</script>
-
 <script setup lang="ts">
+import type { Ref } from 'vue';
+
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { MenuEmits, MenuProps } from '../menu';
 import { MenuRoot } from '../menu';
-import { createContext, useDirection, useForwardExpose } from '../../_shared';
-import type { Direction } from '../../_shared/types';
+import { createContext, useDirection, useForwardExpose } from '../../composables';
+import type { Direction } from '../../composables/types';
 
 export interface DropdownMenuRootProps extends MenuProps {
   /**

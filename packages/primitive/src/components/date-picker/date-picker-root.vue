@@ -1,12 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type DateValue, isEqualDay, isSameDay } from '@internationalized/date';
 
 import type { Ref } from 'vue';
 import { computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { Matcher, WeekDayFormat } from '../date';
-import { createContext, useDirection } from '../../_shared';
-import { type Granularity, type HourCycle, getDefaultDate } from '../../_shared/date';
+import type { Matcher, WeekDayFormat } from '../../date';
+import { createContext, useDirection } from '../../composables';
+import { type Granularity, type HourCycle, getDefaultDate } from '../../composables/date';
 import {
   type CalendarRootProps,
   type DateFieldRoot,
@@ -15,10 +15,8 @@ import {
   type PopoverRootEmits,
   type PopoverRootProps
 } from '..';
-import type { Direction } from '../../_shared/types';
-</script>
+import type { Direction } from '../../composables/types';
 
-<script setup lang="ts">
 type DatePickerRootContext = {
   id: Ref<string | undefined>;
   name: Ref<string | undefined>;

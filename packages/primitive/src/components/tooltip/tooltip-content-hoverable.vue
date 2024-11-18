@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardExpose, useForwardProps, useGraceArea } from '../../_shared';
+import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
 import TooltipContentImpl, { type TooltipContentImplProps } from './tooltip-content-impl.vue';
 import { injectTooltipRootContext } from './tooltip-root.vue';
 import { injectTooltipProviderContext } from './tooltip-provider.vue';

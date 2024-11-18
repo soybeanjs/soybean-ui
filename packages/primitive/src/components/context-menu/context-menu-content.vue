@@ -1,11 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { ref } from 'vue';
 import type { MenuContentEmits, MenuContentProps } from '../Menu';
 import { MenuContent } from '../menu';
-import { useForwardExpose, useForwardPropsEmits } from '../../_shared';
-</script>
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
 
-<script setup lang="ts">
 import { injectContextMenuRootContext } from './context-menu-root.vue';
 
 export type ContextMenuContentEmits = MenuContentEmits;

@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import { toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { useNonce } from '../../_shared/use-nonce';
+import { useNonce } from '../../composables/use-nonce';
 import { injectComboboxRootContext } from './combobox-root.vue';
-</script>
 
-<script setup lang="ts">
 export interface ComboboxViewportProps extends PrimitiveProps {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits

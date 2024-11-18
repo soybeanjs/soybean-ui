@@ -4,31 +4,9 @@
 
 import { endOfMonth, endOfYear, startOfMonth, startOfYear } from '@internationalized/date';
 import type { DateValue } from '@internationalized/date';
-import type { DateRange } from '../_shared';
-import type { Grid } from './types';
+import type { CreateMonthProps, CreateSelectProps, DateRange, Grid } from './types';
 import { chunk } from './utils';
 import { getDaysInMonth, getLastFirstDayOfWeek, getNextLastDayOfWeek } from './comparators';
-
-export type WeekDayFormat = 'narrow' | 'short' | 'long';
-
-export type CreateSelectProps = {
-  /** The date object representing the date (usually the first day of the month/year). */
-  dateObj: DateValue;
-};
-
-export type CreateMonthProps = {
-  /** The date object representing the month's date (usually the first day of the month). */
-  dateObj: DateValue;
-
-  /** The day of the week to start the calendar on (0 for Sunday, 1 for Monday, etc.). */
-  weekStartsOn: number;
-
-  /** Whether to always render 6 weeks in the calendar, even if the month doesn't span 6 weeks. */
-  fixedWeeks: boolean;
-
-  /** The locale to use when creating the calendar month. */
-  locale: string;
-};
 
 /** Retrieves an array of date values representing the days between the provided start and end dates. */
 export function getDaysBetween(start: DateValue, end: DateValue) {

@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import ToastAnnounceExclude from './toast-announce-exclude.vue';
 import { injectToastRootContext } from './toast-root-impl.vue';
 

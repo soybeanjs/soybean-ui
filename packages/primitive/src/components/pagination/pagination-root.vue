@@ -1,13 +1,11 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { computed, toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, useForwardExpose } from '../../_shared';
-</script>
+import { createContext, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
 type PaginationRootContext = {
   page: Ref<number>;
   onPageChange: (value: number) => void;

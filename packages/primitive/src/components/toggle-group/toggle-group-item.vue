@@ -1,14 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { ToggleProps } from '../toggle';
 import { Toggle } from '../toggle';
 import { RovingFocusItem } from '../roving-focus';
 import { Primitive } from '../primitive';
-import { isValueEqualOrExist, useForwardExpose } from '../../_shared';
-import type { AcceptableValue } from '../../_shared/types';
-</script>
+import { isValueEqualOrExist, useForwardExpose } from '../../composables';
+import type { AcceptableValue } from '../../composables/types';
 
-<script setup lang="ts">
 import { injectToggleGroupRootContext } from './toggle-group-root.vue';
 
 export interface ToggleGroupItemProps extends Omit<ToggleProps, 'name' | 'required'> {

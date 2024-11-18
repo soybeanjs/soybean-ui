@@ -1,15 +1,12 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { VNode } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 import { refAutoReset, unrefElement } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../../composables';
-import { Primitive } from '../Primitive';
+import { useCollection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-import { useForwardExpose } from '../../composables';
-</script>
 
-<script setup lang="ts">
 import { injectNavigationMenuContext } from './navigation-menu-root.vue';
 import { injectNavigationMenuItemContext } from './navigation-menu-item.vue';
 import { getOpenState, makeContentId, makeTriggerId } from './utils';

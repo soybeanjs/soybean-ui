@@ -1,30 +1,24 @@
-<script lang="ts">
-import type { DateValue } from '@internationalized/date';
-import type { PrimitiveProps } from '../primitive';
-</script>
-
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { injectCalendarRootContext } from './calendar-root.vue';
+import { injectCalendarRootContext } from './context';
+import type { CalendarCellPropsWithPrimitive } from './types';
 
-export interface CalendarCellProps extends PrimitiveProps {
-  /** The date value for the cell */
-  date: DateValue;
-}
+defineOptions({
+  name: 'CalendarCell'
+});
 
-withDefaults(defineProps<CalendarCellProps>(), { as: 'td' });
-const rootContext = injectCalendarRootContext();
+const { class: className, as = 'td', date } = defineProps<CalendarCellPropsWithPrimitive>();
+
+const { isDateSelected, isDateDisabled, isDateUnavailable } = injectCalendarRootContext();
+
+const ariaSelected = computed(() => (isDateSelected(date) ? true : undefined));
+const ariaDisabled = computed(() => isDateDisabled(date) || isDateUnavailable?.(date));
+const dataDisabled = computed(() => (isDateDisabled(date) ? '' : undefined));
 </script>
 
 <template>
-  <Primitive
-    :as
-    :as-child
-    role="gridcell"
-    :aria-selected="rootContext.isDateSelected(date) ? true : undefined"
-    :aria-disabled="rootContext.isDateDisabled(date) || rootContext.isDateUnavailable?.(date)"
-    :data-disabled="rootContext.isDateDisabled(date) ? '' : undefined"
-  >
+  <Primitive :class="className" :as :as-child role="gridcell" :aria-selected :aria-disabled :data-disabled>
     <slot />
   </Primitive>
 </template>

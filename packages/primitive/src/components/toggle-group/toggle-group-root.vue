@@ -1,4 +1,4 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { ComputedRef, Ref } from 'vue';
 import { toRefs } from 'vue';
 import type { PrimitiveProps } from '../primitive';
@@ -12,12 +12,10 @@ import type {
   FormFieldProps,
   SingleOrMultipleProps,
   SingleOrMultipleType
-} from '../../_shared/types';
-import { createContext, useDirection, useFormControl, useForwardExpose } from '../../_shared';
-</script>
+} from '../../composables/types';
+import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
 
-<script setup lang="ts">
-import { useSingleOrMultipleValue } from '../../_shared/use-single-or-multiple-value';
+import { useSingleOrMultipleValue } from '../../composables/use-single-or-multiple-value';
 
 export interface ToggleGroupRootProps<
   ValidValue = AcceptableValue | AcceptableValue[],

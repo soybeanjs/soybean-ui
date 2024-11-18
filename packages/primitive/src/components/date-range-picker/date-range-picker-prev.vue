@@ -1,10 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import { RangeCalendarPrev, type RangeCalendarPrevProps } from '..';
 
 export interface DateRangePickerPrevProps extends RangeCalendarPrevProps {}
-</script>
 
-<script setup lang="ts">
 const props = defineProps<DateRangePickerPrevProps>();
 </script>
 

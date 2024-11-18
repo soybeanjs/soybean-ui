@@ -1,11 +1,10 @@
-<script lang="ts"></script>
+<script setup lang="ts"></script>
 
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
 import { Primitive, type PrimitiveProps } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { useCollection } from '../../composables';
-import { handleAndDispatchCustomEvent } from '../../_shared';
+import { handleAndDispatchCustomEvent, useCollection } from '../../composables';
 import { injectTreeRootContext } from './tree-root.vue';
 import { flatten } from './utils';
 export interface TreeItemProps<T> extends PrimitiveProps {

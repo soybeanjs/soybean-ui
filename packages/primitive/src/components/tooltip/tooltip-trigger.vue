@@ -1,10 +1,8 @@
-<script lang="ts"></script>
-
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';
-import { Primitive } from '../Primitive';
-import { useForwardExpose, useId } from '../../_shared';
+import { Primitive } from '../primitive';
+import { useForwardExpose, useId } from '../../composables';
 import { injectTooltipRootContext } from './tooltip-root.vue';
 import { injectTooltipProviderContext } from './tooltip-provider.vue';
 

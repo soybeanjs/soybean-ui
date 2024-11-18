@@ -1,15 +1,13 @@
-<script lang="ts">
+<script setup lang="ts">
 import type { ComputedRef } from 'vue';
 import { computed, ref } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import isEqual from 'fast-deep-equal';
 import { RovingFocusItem } from '../roving-focus';
-import { createContext, useForwardExpose } from '../../_shared'
-import type { RadioProps } from './radio.vue'
+import { createContext, useForwardExpose } from '../../composables';
+import type { RadioProps } from './radio.vue';
 import type { SelectEvent } from './utils';
-</script>
 
-<script setup lang="ts">
 import Radio from './radio.vue';
 import { injectRadioGroupRootContext } from './radio-group-root.vue';
 

@@ -1,4 +1,4 @@
-import { clamp } from '../../_shared';
+import { clamp } from '../../composables';
 import type { Direction, Sizes } from './types';
 
 // https://github.com/tmcw-up-for-adoption/simple-linear-scale/blob/master/index.js
