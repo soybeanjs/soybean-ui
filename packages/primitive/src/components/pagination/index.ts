@@ -1,13 +1,22 @@
+import PaginationRoot from './pagination-root.vue';
+import PaginationEllipsis from './pagination-ellipsis.vue';
+import PaginationFirst from './pagination-first.vue';
+import PaginationLast from './pagination-last.vue';
+import PaginationList from './pagination-list.vue';
+import PaginationListItem from './pagination-list-item.vue';
+import PaginationNext from './pagination-next.vue';
+import PaginationPrev from './pagination-prev.vue';
+
 export {
-  injectPaginationRootContext,
-  default as PaginationRoot,
-  type PaginationRootProps,
-  type PaginationRootEmits
-} from './pagination-root.vue';
-export { default as PaginationEllipsis, type PaginationEllipsisProps } from './pagination-ellipsis.vue';
-export { default as PaginationFirst, type PaginationFirstProps } from './pagination-first.vue';
-export { default as PaginationLast, type PaginationLastProps } from './pagination-last.vue';
-export { default as PaginationList, type PaginationListProps } from './pagination-list.vue';
-export { default as PaginationListItem, type PaginationListItemProps } from './pagination-list-item.vue';
-export { default as PaginationNext, type PaginationNextProps } from './pagination-next.vue';
-export { default as PaginationPrev, type PaginationPrevProps } from './pagination-prev.vue';
+  PaginationRoot,
+  PaginationEllipsis,
+  PaginationFirst,
+  PaginationLast,
+  PaginationList,
+  PaginationListItem,
+  PaginationNext,
+  PaginationPrev
+};
+
+export { injectPaginationRootContext } from './context';
+export * from './types';

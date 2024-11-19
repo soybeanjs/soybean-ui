@@ -1,74 +1,29 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
 import { computed, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, useForwardExpose } from '../../composables';
+import { useForwardExpose } from '../../composables';
+import type { PaginationRootPropsWithPrimitive } from './types';
+import { providePaginationRootContext } from './context';
 
-type PaginationRootContext = {
-  page: Ref<number>;
-  onPageChange: (value: number) => void;
-  pageCount: Ref<number>;
-  siblingCount: Ref<number>;
-  disabled: Ref<boolean>;
-  showEdges: Ref<boolean>;
-};
+defineOptions({
+  name: 'PaginationRoot'
+});
 
-export interface PaginationRootProps extends PrimitiveProps {
-  /** The controlled value of the current page. Can be bound as `v-model:page`. */
-  page?: number;
-  /**
-   * The value of the page that should be active when initially rendered.
-   *
-   * Use when you do not need to control the value state.
-   */
-  defaultPage?: number;
-  /** Number of items per page */
-  itemsPerPage: number;
-  /** Number of items in your list */
-  total?: number;
-  /** Number of sibling should be shown around the current page */
-  siblingCount?: number;
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-  /** When `true`, always show first page, last page, and ellipsis */
-  showEdges?: boolean;
-}
-
-export type PaginationRootEmits = {
-  /** Event handler called when the page value changes */
-  'update:page': [value: number];
-};
-
-export const [injectPaginationRootContext, providePaginationRootContext] =
-  createContext<PaginationRootContext>('PaginationRoot');
-
-const props = withDefaults(defineProps<PaginationRootProps>(), {
+const props = withDefaults(defineProps<PaginationRootPropsWithPrimitive>(), {
   as: 'nav',
   total: 0,
   siblingCount: 2,
   defaultPage: 1,
   showEdges: false
 });
-const emit = defineEmits<PaginationRootEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current page state */
-    page: typeof page.value;
-    /** Number of pages */
-    pageCount: typeof pageCount.value;
-  }) => any;
-}>();
 
 const { siblingCount, disabled, showEdges } = toRefs(props);
 
 useForwardExpose();
-const page = useVModel(props, 'page', emit, {
-  defaultValue: props.defaultPage,
-  passive: (props.page === undefined) as false
-}) as Ref<number>;
+
+const page = defineModel<number>('page', {
+  default: props.defaultPage
+});
 
 const pageCount = computed(() => Math.max(1, Math.ceil(props.total / (props.itemsPerPage || 1))));
 

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import type { PaginationEllipsisPropsWithPrimitive } from './types';
 
-export interface PaginationEllipsisProps extends PrimitiveProps {}
+defineOptions({
+  name: 'PaginationEllipsis'
+});
 
-const props = defineProps<PaginationEllipsisProps>();
+const props = defineProps<PaginationEllipsisPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

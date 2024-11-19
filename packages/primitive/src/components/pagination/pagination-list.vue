@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-
-import { injectPaginationRootContext } from './pagination-root.vue';
+import { injectPaginationRootContext } from './context';
 import { getRange, transform } from './utils';
+import type { PaginationListPropsWithPrimitive } from './types';
 
-export interface PaginationListProps extends PrimitiveProps {}
+defineOptions({
+  name: 'PaginationList'
+});
 
-const props = defineProps<PaginationListProps>();
+const props = defineProps<PaginationListPropsWithPrimitive>();
 
 defineSlots<{
   default: (props: {

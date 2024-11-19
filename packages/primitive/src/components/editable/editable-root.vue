@@ -14,7 +14,8 @@ import type { EditableRootEmits, EditableRootPropsWithPrimitive } from './types'
 import { provideEditableRootContext } from './context';
 
 defineOptions({
-  name: 'EditableRoot'
+  name: 'EditableRoot',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<EditableRootPropsWithPrimitive>(), {

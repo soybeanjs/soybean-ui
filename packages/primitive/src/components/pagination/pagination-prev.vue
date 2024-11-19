@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { injectPaginationRootContext } from './context';
+import type { PaginationPrevPropsWithPrimitive } from './types';
 
-import { injectPaginationRootContext } from './pagination-root.vue';
+defineOptions({
+  name: 'PaginationPrev'
+});
 
-export interface PaginationPrevProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<PaginationPrevProps>(), { as: 'button' });
+const props = withDefaults(defineProps<PaginationPrevPropsWithPrimitive>(), { as: 'button' });
 
 useForwardExpose();
 const rootContext = injectPaginationRootContext();

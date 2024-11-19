@@ -3,7 +3,7 @@ import type { PrimitiveProps } from '../primitive';
 import type { ActivationMode, Direction, FormFieldProps, SubmitMode } from '../../types';
 
 // EditableRoot types
-export interface EditableRootProps {
+export interface EditableRootProps extends FormFieldProps {
   /** The default value of the editable field */
   defaultValue?: string;
   /** The value of the editable field */
@@ -35,7 +35,7 @@ export interface EditableRootProps {
   id?: string;
 }
 
-export type EditableRootPropsWithPrimitive = EditableRootProps & PrimitiveProps & FormFieldProps;
+export type EditableRootPropsWithPrimitive = EditableRootProps & PrimitiveProps;
 
 export interface EditableRootEmits {
   /** Event handler called whenever the model value changes */
@@ -54,8 +54,8 @@ export interface EditableRootContext {
   modelValue: Ref<string | undefined>;
   placeholder: Ref<{ edit: string; preview: string }>;
   isEditing: Ref<boolean>;
-  submitMode: Ref<'blur' | 'enter' | 'none' | 'both'>;
-  activationMode: Ref<'focus' | 'dblclick' | 'none'>;
+  submitMode: Ref<SubmitMode>;
+  activationMode: Ref<ActivationMode>;
   selectOnFocus: Ref<boolean>;
   edit: () => void;
   cancel: () => void;
