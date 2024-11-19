@@ -1,73 +1,18 @@
 <script setup lang="ts">
-import type { ComputedRef, Ref } from 'vue';
-
 import { useVModel } from '@vueuse/core';
 import { computed, nextTick, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, isNullish, useForwardExpose } from '../../composables';
+import { useForwardExpose } from '../../composables';
+import { isNullish } from '../../shared';
+import { provideProgressRootContext } from './context';
+import { DEFAULT_MAX, isNumber, validateMax, validateValue } from './shared';
+import type { ProgressRootEmits, ProgressRootPropsWithPrimitive, ProgressState } from './types';
 
-export type ProgressRootEmits = {
-  /** Event handler called when the progress value changes */
-  'update:modelValue': [value: string[] | undefined];
-  /** Event handler called when the max value changes */
-  'update:max': [value: number];
-};
+defineOptions({
+  name: 'ProgressRoot'
+});
 
-export interface ProgressRootProps extends PrimitiveProps {
-  /** The progress value. Can be bind as `v-model`. */
-  modelValue?: number | null;
-  /** The maximum progress value. */
-  max?: number;
-  /**
-   * A function to get the accessible label text representing the current value in a human-readable format.
-   *
-   * If not provided, the value label will be read as the numeric value as a percentage of the max value.
-   */
-  getValueLabel?: (value: number, max: number) => string;
-}
-
-const DEFAULT_MAX = 100;
-
-interface ProgressRootContext {
-  modelValue?: Readonly<Ref<ProgressRootProps['modelValue']>>;
-  max: Readonly<Ref<number>>;
-  progressState: ComputedRef<ProgressState>;
-}
-
-export const [injectProgressRootContext, provideProgressRootContext] =
-  createContext<ProgressRootContext>('ProgressRoot');
-
-export type ProgressState = 'indeterminate' | 'loading' | 'complete';
-
-const isNumber = (v: any): v is number => typeof v === 'number';
-
-function validateValue(value: any, max: number): number | null {
-  const isValidValueError = isNullish(value) || (isNumber(value) && !Number.isNaN(value) && value <= max && value >= 0);
-
-  if (isValidValueError) return value;
-
-  console.error(`Invalid prop \`value\` of value \`${value}\` supplied to \`ProgressRoot\`. The \`value\` prop must be:
-  - a positive number
-  - less than the value passed to \`max\` (or ${DEFAULT_MAX} if no \`max\` prop is set)
-  - \`null\`  or \`undefined\` if the progress is indeterminate.
-
-Defaulting to \`null\`.`);
-  return null;
-}
-
-function validateMax(max: number): number {
-  const isValidMaxError = isNumber(max) && !Number.isNaN(max) && max > 0;
-
-  if (isValidMaxError) return max;
-
-  console.error(
-    `Invalid prop \`max\` of value \`${max}\` supplied to \`ProgressRoot\`. Only numbers greater than 0 are valid max values. Defaulting to \`${DEFAULT_MAX}\`.`
-  );
-  return DEFAULT_MAX;
-}
-
-const props = withDefaults(defineProps<ProgressRootProps>(), {
+const props = withDefaults(defineProps<ProgressRootPropsWithPrimitive>(), {
   max: DEFAULT_MAX,
   getValueLabel: (value: number, max: number) => `${Math.round((value / max) * DEFAULT_MAX)}%`
 });

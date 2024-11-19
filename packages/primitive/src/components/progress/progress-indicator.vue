@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { injectProgressRootContext } from './context';
+import type { ProgressIndicatorPropsWithPrimitive } from './types';
 
-import { injectProgressRootContext } from './progress-root.vue';
+defineOptions({
+  name: 'ProgressIndicator'
+});
 
-export interface ProgressIndicatorProps extends PrimitiveProps {}
-
-const props = defineProps<ProgressIndicatorProps>();
+const props = defineProps<ProgressIndicatorPropsWithPrimitive>();
 
 const rootContext = injectProgressRootContext();
 useForwardExpose();
