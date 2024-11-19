@@ -1,7 +1,7 @@
-export {
-  injectPinInputRootContext,
-  default as PinInputRoot,
-  type PinInputRootProps,
-  type PinInputRootEmits
-} from './pin-input-root.vue';
-export { default as PinInputInput, type PinInputInputProps } from './pin-input-input.vue';
+import PinInputRoot from './pin-input-root.vue';
+import PinInputInput from './pin-input-input.vue';
+
+export { PinInputRoot, PinInputInput };
+export { injectPinInputRootContext } from './context';
+
+export * from './types';

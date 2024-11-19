@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
-import { Primitive, type PrimitiveProps, usePrimitiveElement } from '../primitive';
-import { useArrowNavigation } from '../../composables';
-import { injectPinInputRootContext } from './pin-input-root.vue';
+import { Primitive } from '../primitive';
+import { useArrowNavigation, usePrimitiveElement } from '../../composables';
+import { injectPinInputRootContext } from './context';
+import type { PinInputInputPropsWithPrimitive } from './types';
 
-export interface PinInputInputProps extends PrimitiveProps {
-  /** Position of the value this input binds to. */
-  index: number;
-  /** When `true`, prevents the user from interacting with the pin input */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'PinInputInput'
+});
 
-const props = withDefaults(defineProps<PinInputInputProps>(), {
+const props = withDefaults(defineProps<PinInputInputPropsWithPrimitive>(), {
   as: 'input'
 });
 
@@ -107,6 +105,7 @@ function handleMultipleCharacter(values: string) {
   for (let i = initialIndex; i < lastIndex; i++) {
     const input = inputElements.value[i];
     const value = values[i - initialIndex];
+    // eslint-disable-next-line no-continue
     if (isNumericMode.value && !/^\d*$/.test(value)) continue;
 
     tempModelValue[i] = value;
