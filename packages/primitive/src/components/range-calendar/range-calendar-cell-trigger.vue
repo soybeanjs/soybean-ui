@@ -1,25 +1,20 @@
 <script setup lang="ts">
 import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
 import { computed, nextTick } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { isBetweenInclusive, toDate } from '../../date';
-import type { DateValue } from '../../date';
 import { Primitive } from '../primitive';
 import { useKbd, usePrimitiveElement } from '../../composables';
-import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
+import { isBetweenInclusive, toDate } from '../../date';
+import type { DateValue } from '../../date';
+import type { RangeCalendarCellTriggerPropsWithPrimitive } from './types';
+import { injectRangeCalendarRootContext } from './context';
 
-export interface RangeCalendarCellTriggerProps extends PrimitiveProps {
-  day: DateValue;
-  month: DateValue;
-}
+defineOptions({
+  name: 'RangeCalendarCellTrigger'
+});
 
-const props = withDefaults(defineProps<RangeCalendarCellTriggerProps>(), { as: 'div' });
-defineSlots<{
-  default: (props: {
-    /** Current day */
-    dayValue: string;
-  }) => any;
-}>();
+const props = withDefaults(defineProps<RangeCalendarCellTriggerPropsWithPrimitive>(), {
+  as: 'div'
+});
 
 const rootContext = injectRangeCalendarRootContext();
 
@@ -66,6 +61,7 @@ const isFocusedDate = computed(() => {
   return !rootContext.disabled.value && isSameDay(props.day, rootContext.placeholder.value);
 });
 
+// eslint-disable-next-line complexity
 function changeDate(e: MouseEvent | KeyboardEvent, date: DateValue) {
   if (rootContext.readonly.value) return;
   if (rootContext.isDateDisabled(date) || rootContext.isDateUnavailable?.(date)) return;

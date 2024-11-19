@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
+import type { RangeCalendarHeaderPropsWithPrimitive } from './types';
 
-export interface RangeCalendarHeaderProps extends PrimitiveProps {}
+defineOptions({
+  name: 'RangeCalendarHeader'
+});
 
-const props = withDefaults(defineProps<RangeCalendarHeaderProps>(), { as: 'div' });
+const props = withDefaults(defineProps<RangeCalendarHeaderPropsWithPrimitive>(), {
+  as: 'div'
+});
 </script>
 
 <template>

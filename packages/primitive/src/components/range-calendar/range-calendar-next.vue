@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { DateValue } from '../../date';
-
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
+import type { RangeCalendarNextPropsWithPrimitive } from './types';
+import { injectRangeCalendarRootContext } from './context';
 
-export interface RangeCalendarNextProps extends PrimitiveProps {
-  /** The function to be used for the next page. Overwrites the `nextPage` function set on the `RangeCalendarRoot`. */
-  nextPage?: (placeholder: DateValue) => DateValue;
-}
+defineOptions({
+  name: 'RangeCalendarNext'
+});
 
-const props = withDefaults(defineProps<RangeCalendarNextProps>(), { as: 'button' });
-const disabled = computed(() => rootContext.disabled.value || rootContext.isNextButtonDisabled(props.nextPage));
+const props = withDefaults(defineProps<RangeCalendarNextPropsWithPrimitive>(), {
+  as: 'button'
+});
 
 const rootContext = injectRangeCalendarRootContext();
+const disabled = computed(() => rootContext.disabled.value || rootContext.isNextButtonDisabled(props.nextPage));
 </script>
 
 <template>

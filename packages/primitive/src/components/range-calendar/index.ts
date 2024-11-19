@@ -1,26 +1,30 @@
-export {
-  injectRangeCalendarRootContext,
-  default as RangeCalendarRoot,
-  type RangeCalendarRootProps,
-  type RangeCalendarRootEmits
-} from './range-calendar-root.vue';
-
-export { default as RangeCalendarHeader, type RangeCalendarHeaderProps } from './range-calendar-header.vue';
-export { default as RangeCalendarHeading, type RangeCalendarHeadingProps } from './range-calendar-heading.vue';
-
-export { default as RangeCalendarGrid, type RangeCalendarGridProps } from './range-calendar-grid.vue';
-
-export { default as RangeCalendarCell, type RangeCalendarCellProps } from './range-calendar-cell.vue';
-export { default as RangeCalendarHeadCell, type RangeCalendarHeadCellProps } from './range-calendar-head-cell.vue';
-
-export { default as RangeCalendarNext, type RangeCalendarNextProps } from './range-calendar-next.vue';
-export { default as RangeCalendarPrev, type RangeCalendarPrevProps } from './range-calendar-prev.vue';
-
-export { default as RangeCalendarGridHead, type RangeCalendarGridHeadProps } from './range-calendar-grid-head.vue';
-export { default as RangeCalendarGridBody, type RangeCalendarGridBodyProps } from './range-calendar-grid-body.vue';
-export { default as RangeCalendarGridRow, type RangeCalendarGridRowProps } from './range-calendar-grid-row.vue';
+import RangeCalendarRoot from './range-calendar-root.vue';
+import RangeCalendarGrid from './range-calendar-grid.vue';
+import RangeCalendarGridHead from './range-calendar-grid-head.vue';
+import RangeCalendarGridBody from './range-calendar-grid-body.vue';
+import RangeCalendarGridRow from './range-calendar-grid-row.vue';
+import RangeCalendarHeader from './range-calendar-header.vue';
+import RangeCalendarHeading from './range-calendar-heading.vue';
+import RangeCalendarCell from './range-calendar-cell.vue';
+import RangeCalendarCellTrigger from './range-calendar-cell-trigger.vue';
+import RangeCalendarNext from './range-calendar-next.vue';
+import RangeCalendarPrev from './range-calendar-prev.vue';
+import RangeCalendarHeadCell from './range-calendar-head-cell.vue';
 
 export {
-  default as RangeCalendarCellTrigger,
-  type RangeCalendarCellTriggerProps
-} from './range-calendar-cell-trigger.vue';
+  RangeCalendarRoot,
+  RangeCalendarGrid,
+  RangeCalendarGridHead,
+  RangeCalendarGridBody,
+  RangeCalendarGridRow,
+  RangeCalendarHeader,
+  RangeCalendarHeading,
+  RangeCalendarCell,
+  RangeCalendarCellTrigger,
+  RangeCalendarNext,
+  RangeCalendarPrev,
+  RangeCalendarHeadCell
+};
+export { injectRangeCalendarRootContext } from './context';
+
+export * from './types';

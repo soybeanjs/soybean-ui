@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import type { DateValue } from '../../date';
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
+import { injectRangeCalendarRootContext } from './context';
+import type { RangeCalendarCellPropsWithPrimitive } from './types';
 
-export interface RangeCalendarCellProps extends PrimitiveProps {
-  date: DateValue;
-}
+defineOptions({
+  name: 'RangeCalendarCell'
+});
 
-withDefaults(defineProps<RangeCalendarCellProps>(), { as: 'td' });
+withDefaults(defineProps<RangeCalendarCellPropsWithPrimitive>(), {
+  as: 'td'
+});
+
 const rootContext = injectRangeCalendarRootContext();
 </script>
 

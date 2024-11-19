@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
+import { injectRangeCalendarRootContext } from './context';
+import type { RangeCalendarHeadingPropsWithPrimitive } from './types';
 
-export interface RangeCalendarHeadingProps extends PrimitiveProps {}
+defineOptions({
+  name: 'RangeCalendarHeading'
+});
 
-const props = withDefaults(defineProps<RangeCalendarHeadingProps>(), { as: 'div' });
-defineSlots<{
-  default: (props: {
-    /** Current month and year */
-    headingValue: string;
-  }) => any;
-}>();
+const props = withDefaults(defineProps<RangeCalendarHeadingPropsWithPrimitive>(), {
+  as: 'div'
+});
+
 const rootContext = injectRangeCalendarRootContext();
 </script>
 

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
+import { injectRangeCalendarRootContext } from './context';
+import type { RangeCalendarGridPropsWithPrimitive } from './types';
 
-export interface RangeCalendarGridProps extends PrimitiveProps {}
+defineOptions({
+  name: 'RangeCalendarGrid'
+});
 
-const props = withDefaults(defineProps<RangeCalendarGridProps>(), { as: 'table' });
+const props = withDefaults(defineProps<RangeCalendarGridPropsWithPrimitive>(), { as: 'table' });
 
 const rootContext = injectRangeCalendarRootContext();
 
