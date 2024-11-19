@@ -1,15 +1,8 @@
-export {
-  injectTreeRootContext,
-  default as TreeRoot,
-  type TreeRootProps,
-  type TreeRootEmits,
-  type FlattenedItem
-} from './TreeRoot.vue';
-export {
-  default as TreeItem,
-  type TreeItemProps,
-  type TreeItemEmits,
-  type SelectEvent as TreeItemSelectEvent,
-  type ToggleEvent as TreeItemToggleEvent
-} from './TreeItem.vue';
-export { default as TreeVirtualizer, type TreeVirtualizerProps } from './tree-virtualizer.vue';
+import TreeRoot from './tree-root.vue';
+import TreeItem from './tree-item.vue';
+import TreeVirtualizer from './tree-virtualizer.vue';
+
+export { TreeRoot, TreeItem, TreeVirtualizer };
+export { injectTreeRootContext } from './context';
+
+export * from './types';

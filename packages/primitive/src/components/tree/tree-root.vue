@@ -1,106 +1,27 @@
 <script setup lang="ts" generic="T extends Record<string, any>, U extends Record<string, any>">
-import { createEventHook, useVModel } from '@vueuse/core';
-import type { EventHook } from '@vueuse/core';
 import { computed, nextTick, ref, toRefs } from 'vue';
-import type { Ref } from 'vue';
-import { Primitive, type PrimitiveProps } from '../primitive';
+import { createEventHook } from '@vueuse/core';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { createContext, useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
-import type { Direction } from '../../types';
+import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
+import type { NavigationKeys } from '../../types';
+import type { FlattenedItem, TreeRootProps } from './types';
+import { provideTreeRootContext } from './context';
 import { flatten } from './utils';
-export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
-  extends PrimitiveProps {
-  /** The controlled value of the tree. Can be bound-with with `v-model`. */
-  modelValue?: U | U[];
-  /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
-  defaultValue?: U | U[];
-  /** List of items */
-  items?: T[];
-  /** The controlled value of the expanded item. Can be bound-with with `v-model`. */
-  expanded?: string[];
-  /**
-   * The value of the expanded tree when initially rendered. Use when you do not need to control the state of the
-   * expanded tree
-   */
-  defaultExpanded?: string[];
-  /** This function is passed the index of each item and should return a unique key for that item */
-  getKey: (val: T) => string;
-  /** This function is passed the index of each item and should return a list of children for that item */
-  getChildren?: (val: T) => T[] | undefined;
-  /** How multiple selection should behave in the collection. */
-  selectionBehavior?: 'toggle' | 'replace';
-  /** Whether multiple options can be selected or not. */
-  multiple?: boolean;
-  /**
-   * The reading direction of the listbox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** When `true`, prevents the user from interacting with tree */
-  disabled?: boolean;
-  /** When `true`, selecting parent will select the descendants. */
-  propagateSelect?: boolean;
-}
 
-export type TreeRootEmits<T = Record<string, any>> = {
-  'update:modelValue': [val: T];
-  'update:expanded': [val: string[]];
-};
-
-interface TreeRootContext<T = Record<string, any>> {
-  modelValue: Ref<T | T[]>;
-  selectedKeys: Ref<string[]>;
-  onSelect: (val: T) => void;
-  expanded: Ref<string[]>;
-  onToggle: (val: T) => void;
-  items: Ref<T[]>;
-  expandedItems: Ref<T[]>;
-  getKey: (val: T) => string;
-  getChildren: (val: T) => T[] | undefined;
-  multiple: Ref<boolean>;
-  disabled: Ref<boolean>;
-  dir: Ref<Direction>;
-  propagateSelect: Ref<boolean>;
-  isVirtual: Ref<boolean>;
-  virtualKeydownHook: EventHook<KeyboardEvent>;
-
-  handleMultipleReplace: ReturnType<typeof useSelectionBehavior>['handleMultipleReplace'];
-}
-
-export type FlattenedItem<T> = {
-  _id: string;
-  index: number;
-  value: T;
-  level: number;
-  hasChildren: boolean;
-  parentItem?: T;
-  bind: {
-    value: T;
-    level: number;
-    [key: string]: any;
-  };
-};
-
-export const [injectTreeRootContext, provideTreeRootContext] = createContext<TreeRootContext<any>>('TreeRoot');
+defineOptions({
+  name: 'TreeRoot'
+});
 
 const props = withDefaults(defineProps<TreeRootProps<T, U>>(), {
   as: 'ul',
   selectionBehavior: 'toggle',
   getChildren: (val: T) => val.children
 });
-const emit = defineEmits<TreeRootEmits<U>>();
-
-defineSlots<{
-  default: (props: {
-    flattenItems: FlattenedItem<T>[];
-    modelValue: typeof modelValue.value;
-    expanded: typeof expanded.value;
-  }) => any;
-}>();
 
 const { items, multiple, disabled, propagateSelect, dir: propDir } = toRefs(props);
-const { handleTypeaheadSearch } = useTypeAhead();
+const { handleTypeAheadSearch } = useTypeAhead();
 const dir = useDirection(propDir);
 const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 
@@ -108,19 +29,9 @@ const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 const isVirtual = ref(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  // @ts-expect-error idk
-  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-  passive: (props.modelValue === undefined) as false,
-  deep: true
-}) as Ref<U | U[]>;
+const modelValue = defineModel<U | U[]>({ default: props.defaultValue ?? (multiple.value ? [] : undefined) });
 
-const expanded = useVModel(props, 'expanded', emit, {
-  // @ts-expect-error idk
-  defaultValue: props.defaultExpanded ?? [],
-  passive: (props.expanded === undefined) as false,
-  deep: true
-}) as Ref<string[]>;
+const expanded = defineModel<string[]>({ default: props.defaultExpanded ?? [] });
 
 const { onSelectItem, handleMultipleReplace } = useSelectionBehavior(modelValue, props);
 
@@ -129,8 +40,9 @@ const selectedKeys = computed(() => {
   return [props.getKey((modelValue.value as any) ?? {})];
 });
 
-function flattenItems(items: T[], level: number = 1, parentItem?: T): FlattenedItem<T>[] {
-  return items.reduce((acc: FlattenedItem<T>[], item: T, index: number) => {
+// eslint-disable-next-line default-param-last
+function flattenItems(_items: T[], level: number = 1, parentItem?: T): FlattenedItem<T>[] {
+  return _items.reduce((acc: FlattenedItem<T>[], item: T, index: number) => {
     const key = props.getKey(item);
     const children = props.getChildren(item);
     const isExpanded = expanded.value.includes(key);
@@ -145,7 +57,7 @@ function flattenItems(items: T[], level: number = 1, parentItem?: T): FlattenedI
       bind: {
         value: item,
         level,
-        'aria-setsize': items.length,
+        'aria-setsize': _items.length,
         'aria-posinset': index + 1
       }
     };
@@ -158,9 +70,8 @@ function flattenItems(items: T[], level: number = 1, parentItem?: T): FlattenedI
 }
 
 const expandedItems = computed(() => {
-  const items = props.items;
-  const expandedKeys = expanded.value.map(i => i);
-  return flattenItems(items ?? []);
+  const _items = props.items;
+  return flattenItems(_items ?? []);
 });
 
 function handleKeydown(event: KeyboardEvent) {
@@ -168,14 +79,14 @@ function handleKeydown(event: KeyboardEvent) {
     virtualKeydownHook.trigger(event);
   } else {
     const collections = rovingFocusGroupRef.value?.getItems().map(i => i.ref);
-    handleTypeaheadSearch(event.key, collections);
+    handleTypeAheadSearch(event.key, collections);
   }
 }
 
 function handleKeydownNavigation(event: KeyboardEvent) {
   if (isVirtual.value) return;
 
-  const intent = MAP_KEY_TO_FOCUS_INTENT[event.key];
+  const intent = MAP_KEY_TO_FOCUS_INTENT[event.key as NavigationKeys];
   nextTick(() => {
     handleMultipleReplace(
       intent,

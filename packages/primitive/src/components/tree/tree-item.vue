@@ -1,43 +1,15 @@
-<script setup lang="ts"></script>
-
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
-import { Primitive, type PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { handleAndDispatchCustomEvent, useCollection } from '../../composables';
-import { injectTreeRootContext } from './tree-root.vue';
+import { useCollection } from '../../composables';
+import { handleAndDispatchCustomEvent } from '../../shared';
+import type { SelectEvent, ToggleEvent, TreeItemEmits, TreeItemProps } from './types';
+import { injectTreeRootContext } from './context';
 import { flatten } from './utils';
-export interface TreeItemProps<T> extends PrimitiveProps {
-  /** Value given to this item */
-  value: T;
-  /** Level of depth */
-  level: number;
-}
-
-export type SelectEvent<T> = CustomEvent<{
-  originalEvent: PointerEvent | KeyboardEvent;
-  value?: T;
-  isExpanded: boolean;
-  isSelected: boolean;
-}>;
-export type ToggleEvent<T> = CustomEvent<{
-  originalEvent: PointerEvent | KeyboardEvent;
-  value?: T;
-  isExpanded: boolean;
-  isSelected: boolean;
-}>;
-
-export type TreeItemEmits<T> = {
-  /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
-  select: [event: SelectEvent<T>];
-  /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
-  toggle: [event: ToggleEvent<T>];
-};
-
-const TREE_SELECT = 'tree.select';
-const TREE_TOGGLE = 'tree.toggle';
 
 defineOptions({
+  name: 'TreeItem',
   inheritAttrs: false
 });
 
@@ -134,6 +106,9 @@ async function handleToggle(ev: ToggleEvent<T>) {
 
   rootContext.onToggle(props.value);
 }
+
+const TREE_SELECT = 'tree.select';
+const TREE_TOGGLE = 'tree.toggle';
 
 async function handleSelectCustomEvent(ev?: PointerEvent | KeyboardEvent) {
   if (!ev) return;

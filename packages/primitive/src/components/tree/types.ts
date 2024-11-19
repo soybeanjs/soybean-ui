@@ -1,0 +1,110 @@
+import type { Ref } from 'vue';
+import type { EventHook } from '@vueuse/core';
+import type { PrimitiveProps } from '../primitive';
+import type { Direction } from '../../types';
+
+// Root
+export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
+  extends PrimitiveProps {
+  /** The controlled value of the tree. Can be bound-with with `v-model`. */
+  modelValue?: U | U[];
+  /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
+  defaultValue?: U | U[];
+  /** List of items */
+  items?: T[];
+  /** The controlled value of the expanded item. Can be bound-with with `v-model`. */
+  expanded?: string[];
+  /** The value of the expanded tree when initially rendered. */
+  defaultExpanded?: string[];
+  /** This function is passed the index of each item and should return a unique key for that item */
+  getKey: (val: T) => string;
+  /** This function is passed the index of each item and should return a list of children for that item */
+  getChildren?: (val: T) => T[] | undefined;
+  /** How multiple selection should behave in the collection. */
+  selectionBehavior?: 'toggle' | 'replace';
+  /** Whether multiple options can be selected or not. */
+  multiple?: boolean;
+  /** The reading direction. */
+  dir?: Direction;
+  /** When `true`, prevents the user from interacting with tree */
+  disabled?: boolean;
+  /** When `true`, selecting parent will select the descendants. */
+  propagateSelect?: boolean;
+}
+
+export type TreeRootEmits<T = Record<string, any>> = {
+  'update:modelValue': [val: T];
+  'update:expanded': [val: string[]];
+};
+
+export interface TreeRootContext<T = Record<string, any>> {
+  modelValue: Ref<T | T[]>;
+  selectedKeys: Ref<string[]>;
+  onSelect: (val: T) => void;
+  expanded: Ref<string[]>;
+  onToggle: (val: T) => void;
+  items: Ref<T[]>;
+  expandedItems: Ref<FlattenedItem<T>[]>;
+  getKey: (val: T) => string;
+  getChildren: (val: T) => T[] | undefined;
+  multiple: Ref<boolean>;
+  disabled: Ref<boolean>;
+  dir: Ref<Direction>;
+  propagateSelect: Ref<boolean>;
+  isVirtual: Ref<boolean>;
+  virtualKeydownHook: EventHook<KeyboardEvent>;
+  handleMultipleReplace: any;
+}
+
+// Item
+export interface TreeItemProps<T> extends PrimitiveProps {
+  /** Value given to this item */
+  value: T;
+  /** Level of depth */
+  level: number;
+}
+
+export type SelectEvent<T> = CustomEvent<{
+  originalEvent: PointerEvent | KeyboardEvent;
+  value?: T;
+  isExpanded: boolean;
+  isSelected: boolean;
+}>;
+
+export type ToggleEvent<T> = CustomEvent<{
+  originalEvent: PointerEvent | KeyboardEvent;
+  value?: T;
+  isExpanded: boolean;
+  isSelected: boolean;
+}>;
+
+export type TreeItemEmits<T> = {
+  /** Event handler called when selecting item. */
+  select: [event: SelectEvent<T>];
+  /** Event handler called when toggling item. */
+  toggle: [event: ToggleEvent<T>];
+};
+
+// Virtualizer
+export interface TreeVirtualizerProps {
+  /** Number of items rendered outside the visible area */
+  overscan?: number;
+  /** Estimated size (in px) of each item */
+  estimateSize?: number;
+  /** Text content for each item to achieve type-ahead feature */
+  textContent?: (item: Record<string, any>) => string;
+}
+
+export type FlattenedItem<T> = {
+  _id: string;
+  index: number;
+  value: T;
+  level: number;
+  hasChildren: boolean;
+  parentItem?: T;
+  bind: {
+    value: T;
+    level: number;
+    [key: string]: any;
+  };
+};

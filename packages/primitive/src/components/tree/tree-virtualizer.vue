@@ -1,31 +1,20 @@
 <script setup lang="ts">
-import { useVirtualizer } from '@tanstack/vue-virtual';
-import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
-import { cloneVNode, computed, nextTick, useSlots } from 'vue';
 import type { Ref } from 'vue';
+import { useVirtualizer } from '@tanstack/vue-virtual';
+import { cloneVNode, computed, nextTick, useSlots } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { getNextMatch } from '../../shared';
 import { useCollection } from '../../composables';
-import { type FlattenedItem, injectTreeRootContext } from './tree-root.vue';
-export interface TreeVirtualizerProps {
-  /** Number of items rendered outside the visible area */
-  overscan?: number;
-  /** Estimated size (in px) of each item */
-  estimateSize?: number;
-  /** Text content for each item to achieve type-ahead feature */
-  textContent?: (item: Record<string, any>) => string;
-}
+import type { NavigationKeys } from '../../types';
+import type { TreeVirtualizerProps } from './types';
+import { injectTreeRootContext } from './context';
+
+defineOptions({
+  name: 'TreeVirtualizer'
+});
 
 const props = defineProps<TreeVirtualizerProps>();
-
-defineSlots<{
-  default: (props: {
-    item: FlattenedItem<Record<string, any>>;
-    virtualizer: Virtualizer<Element | Window, Element>;
-    virtualItem: VirtualItem;
-  }) => any;
-}>();
 
 const slots = useSlots();
 const rootContext = injectTreeRootContext();
@@ -125,7 +114,7 @@ rootContext.virtualKeydownHook.on(event => {
   const isTabKey = event.key === 'Tab' && !isMetaKey;
   if (isTabKey) return;
 
-  const intent = MAP_KEY_TO_FOCUS_INTENT[event.key];
+  const intent = MAP_KEY_TO_FOCUS_INTENT[event.key as NavigationKeys];
 
   if (['first', 'last'].includes(intent)) {
     event.preventDefault();
