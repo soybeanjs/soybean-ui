@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
-
 import { TeleportPrimitive } from '../teleport';
+import type { HoverCardPortalProps } from './types';
 
-export interface HoverCardPortalProps extends TeleportProps {}
+defineOptions({
+  name: 'HoverCardPortal'
+});
 
 const props = defineProps<HoverCardPortalProps>();
 </script>

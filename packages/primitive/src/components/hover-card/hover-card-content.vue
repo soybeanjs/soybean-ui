@@ -1,21 +1,19 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './hover-card-content-impl.vue';
-
-import { injectHoverCardRootContext } from './hover-card-root.vue';
-import { excludeTouch } from './utils';
+import type { HoverCardContentEmits, HoverCardContentProps } from './types';
+import { injectHoverCardRootContext } from './context';
+import { excludeTouch } from './shared';
 import HoverCardContentImpl from './hover-card-content-impl.vue';
 
-export type HoverCardContentEmits = HoverCardContentImplEmits;
-
-export interface HoverCardContentProps extends HoverCardContentImplProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+defineOptions({
+  name: 'HoverCardContent'
+});
 
 const props = defineProps<HoverCardContentProps>();
+
 const emit = defineEmits<HoverCardContentEmits>();
+
 const forwarded = useForwardPropsEmits(props, emit);
 const { forwardRef } = useForwardExpose();
 

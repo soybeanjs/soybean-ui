@@ -1,10 +1,10 @@
-export {
-  injectHoverCardRootContext,
-  default as HoverCardRoot,
-  type HoverCardRootProps,
-  type HoverCardRootEmits
-} from './HoverCardRoot.vue';
-export { default as HoverCardTrigger, type HoverCardTriggerProps } from './HoverCardTrigger.vue';
-export { default as HoverCardPortal, type HoverCardPortalProps } from './HoverCardPortal.vue';
-export { default as HoverCardContent, type HoverCardContentProps } from './HoverCardContent.vue';
-export { default as HoverCardArrow, type HoverCardArrowProps } from './hover-card-arrow.vue';
+import HoverCardRoot from './hover-card-root.vue';
+import HoverCardTrigger from './hover-card-trigger.vue';
+import HoverCardPortal from './hover-card-portal.vue';
+import HoverCardContent from './hover-card-content.vue';
+import HoverCardArrow from './hover-card-arrow.vue';
+
+export { HoverCardRoot, HoverCardTrigger, HoverCardPortal, HoverCardContent, HoverCardArrow };
+export { injectHoverCardRootContext } from './context';
+
+export * from './types';

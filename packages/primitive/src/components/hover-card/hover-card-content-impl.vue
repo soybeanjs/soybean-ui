@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { syncRef } from '@vueuse/shared';
 import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue';
-import type { PopperContentProps } from '../popper';
-import type { DismissableLayerEmits } from '../dismissable-layer';
 import { PopperContent } from '../popper';
 import { DismissableLayer } from '../dismissable-layer';
-import { useForwardExpose, useGraceArea } from '../../composables';
+import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
+import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './types';
+import { injectHoverCardRootContext } from './context';
+import { getTabbableNodes } from './shared';
 
-import { useForwardProps } from '..';
-import { injectHoverCardRootContext } from './hover-card-root.vue';
-import { getTabbableNodes } from './utils';
-
-export type HoverCardContentImplEmits = DismissableLayerEmits;
-export interface HoverCardContentImplProps extends PopperContentProps {}
+defineOptions({
+  name: 'HoverCardContentImpl'
+});
 
 const props = defineProps<HoverCardContentImplProps>();
 const emit = defineEmits<HoverCardContentImplEmits>();

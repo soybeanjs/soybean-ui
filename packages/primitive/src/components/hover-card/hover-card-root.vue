@@ -1,40 +1,13 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
-import { createContext, useForwardExpose } from '../../composables';
+import { useForwardExpose } from '../../composables';
+import type { HoverCardRootProps } from './types';
+import { provideHoverCardRootContext } from './context';
 
-export interface HoverCardRootProps {
-  /** The open state of the hover card when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: false;
-  /** The controlled open state of the hover card. Can be bound as `v-model:open`. */
-  open?: boolean;
-  /** The duration from when the mouse enters the trigger until the hover card opens. */
-  openDelay?: number;
-  /** The duration from when the mouse leaves the trigger or content until the hover card closes. */
-  closeDelay?: number;
-}
-export type HoverCardRootEmits = {
-  /** Event handler called when the open state of the hover card changes. */
-  'update:open': [value: boolean];
-};
-
-export interface HoverCardRootContext {
-  open: Ref<boolean>;
-  onOpenChange: (open: boolean) => void;
-  onOpen: () => void;
-  onClose: () => void;
-  onDismiss: () => void;
-  hasSelectionRef: Ref<boolean>;
-  isPointerDownOnContentRef: Ref<boolean>;
-  isPointerInTransitRef: Ref<boolean>;
-  triggerElement: Ref<HTMLElement | undefined>;
-}
-
-export const [injectHoverCardRootContext, provideHoverCardRootContext] =
-  createContext<HoverCardRootContext>('HoverCardRoot');
+defineOptions({
+  name: 'HoverCardRoot'
+});
 
 const props = withDefaults(defineProps<HoverCardRootProps>(), {
   defaultOpen: false,
@@ -42,22 +15,14 @@ const props = withDefaults(defineProps<HoverCardRootProps>(), {
   openDelay: 700,
   closeDelay: 300
 });
-const emit = defineEmits<HoverCardRootEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current open state */
-    open: typeof open.value;
-  }) => any;
-}>();
 
 const { openDelay, closeDelay } = toRefs(props);
 
+const open = defineModel<boolean>('open', {
+  default: props.defaultOpen
+});
+
 useForwardExpose();
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
 
 const openTimerRef = ref(0);
 const closeTimerRef = ref(0);
@@ -83,7 +48,7 @@ function handleDismiss() {
 
 provideHoverCardRootContext({
   open,
-  onOpenChange(value) {
+  onOpenChange(value: boolean) {
     open.value = value;
   },
   onOpen: handleOpen,

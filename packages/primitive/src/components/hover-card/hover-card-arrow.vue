@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import type { PopperArrowProps } from '../popper';
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
+import type { HoverCardArrowProps } from './types';
 
-export interface HoverCardArrowProps extends PopperArrowProps {}
+defineOptions({
+  name: 'HoverCardArrow'
+});
 
 const props = withDefaults(defineProps<HoverCardArrowProps>(), {
   width: 10,
