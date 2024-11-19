@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import PopoverArrow from '../popover/popover-arrow.vue';
-import type { PopoverArrowProps } from '../popover';
+import { PopoverArrow } from '../popover';
+import type { DateRangePickerArrowPropsWithPrimitive } from './types';
 
-export interface DateRangePickerArrowProps extends PopoverArrowProps {}
+defineOptions({
+  name: 'DateRangePickerArrow'
+});
 
-const props = defineProps<DateRangePickerArrowProps>();
+const props = defineProps<DateRangePickerArrowPropsWithPrimitive>();
 </script>
 
 <template>

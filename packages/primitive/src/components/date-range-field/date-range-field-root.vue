@@ -41,6 +41,7 @@ const {
   dir: propDir,
   locale: propLocale
 } = toRefs(props);
+
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
 
@@ -62,7 +63,7 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = defineModel<DateValue>({
+const placeholder = defineModel<DateValue>('placeholder', {
   default: () => props.defaultPlaceholder ?? defaultDate.copy()
 });
 

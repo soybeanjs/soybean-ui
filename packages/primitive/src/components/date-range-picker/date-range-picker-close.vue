@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { PopoverClose, type PopoverCloseProps } from '..';
+import { PopoverClose } from '../popover';
+import type { DateRangePickerClosePropsWithPrimitive } from './types';
 
-export interface DateRangePickerCloseProps extends PopoverCloseProps {}
+defineOptions({
+  name: 'DateRangePickerClose'
+});
 
-const props = defineProps<DateRangePickerCloseProps>();
+const props = defineProps<DateRangePickerClosePropsWithPrimitive>();
 </script>
 
 <template>

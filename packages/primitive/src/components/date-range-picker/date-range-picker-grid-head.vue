@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RangeCalendarGridHead, type RangeCalendarGridHeadProps } from '..';
+import { RangeCalendarGridHead } from '../range-calendar';
+import type { DateRangePickerGridHeadPropsWithPrimitive } from './types';
 
-export interface DateRangePickerGridHeadProps extends RangeCalendarGridHeadProps {}
+defineOptions({
+  name: 'DateRangePickerGridHead'
+});
 
-const props = defineProps<DateRangePickerGridHeadProps>();
+const props = defineProps<DateRangePickerGridHeadPropsWithPrimitive>();
 </script>
 
 <template>

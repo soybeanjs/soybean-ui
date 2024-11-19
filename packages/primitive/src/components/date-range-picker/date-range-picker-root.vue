@@ -1,84 +1,17 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
 import { getDefaultDate } from '../../date';
-import type { DateRange, DateValue, Granularity, HourCycle, Matcher, WeekDayFormat } from '../../date';
-import { createContext, useDirection } from '../../composables';
-
-import {
-  type DateRangeFieldRoot,
-  type DateRangeFieldRootProps,
-  PopoverRoot,
-  type PopoverRootEmits,
-  type PopoverRootProps,
-  type RangeCalendarRootProps
-} from '..';
-import type { Direction } from '../../types';
-
-type DateRangePickerRootContext = {
-  id: Ref<string | undefined>;
-  name: Ref<string | undefined>;
-  minValue: Ref<DateValue | undefined>;
-  maxValue: Ref<DateValue | undefined>;
-  hourCycle: Ref<HourCycle | undefined>;
-  granularity: Ref<Granularity | undefined>;
-  hideTimeZone: Ref<boolean>;
-  required: Ref<boolean>;
-  locale: Ref<string>;
-  dateFieldRef: Ref<InstanceType<typeof DateRangeFieldRoot> | undefined>;
-  modelValue: Ref<{ start: DateValue | undefined; end: DateValue | undefined }>;
-  placeholder: Ref<DateValue>;
-  pagedNavigation: Ref<boolean>;
-  preventDeselect: Ref<boolean>;
-  weekStartsOn: Ref<0 | 1 | 2 | 3 | 4 | 5 | 6>;
-  weekdayFormat: Ref<WeekDayFormat>;
-  fixedWeeks: Ref<boolean>;
-  numberOfMonths: Ref<number>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  isDateDisabled?: Matcher;
-  isDateUnavailable?: Matcher;
-  defaultOpen: Ref<boolean>;
-  open: Ref<boolean>;
-  modal: Ref<boolean>;
-  onDateChange: (date: DateRange) => void;
-  onPlaceholderChange: (date: DateValue) => void;
-  onStartValueChange: (date: DateValue | undefined) => void;
-  dir: Ref<Direction>;
-  allowNonContiguousRanges: Ref<boolean>;
-};
-
-export type DateRangePickerRootProps = DateRangeFieldRootProps &
-  PopoverRootProps &
-  Pick<
-    RangeCalendarRootProps,
-    | 'isDateDisabled'
-    | 'pagedNavigation'
-    | 'weekStartsOn'
-    | 'weekdayFormat'
-    | 'fixedWeeks'
-    | 'numberOfMonths'
-    | 'preventDeselect'
-    | 'isDateUnavailable'
-    | 'allowNonContiguousRanges'
-  >;
-
-export type DateRangePickerRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [date: DateRange];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: DateValue];
-  /** Event handler called whenever the start value changes */
-  'update:startValue': [date: DateValue | undefined];
-};
-
-export const [injectDateRangePickerRootContext, provideDateRangePickerRootContext] =
-  createContext<DateRangePickerRootContext>('DateRangePickerRoot');
+import type { DateRange, DateValue } from '../../date';
+import { useDirection } from '../../composables';
+import { PopoverRoot } from '../popover';
+import { provideDateRangePickerRootContext } from './context';
+import type { DateRangeFieldRootInstance, DateRangePickerRootEmits, DateRangePickerRootProps } from './types';
 
 defineOptions({
+  name: 'DateRangePickerRoot',
   inheritAttrs: false
 });
+
 const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   defaultValue: () => ({ start: undefined, end: undefined }),
   defaultOpen: false,
@@ -99,7 +32,9 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   isDateUnavailable: undefined,
   allowNonContiguousRanges: false
 });
-const emit = defineEmits<DateRangePickerRootEmits & PopoverRootEmits>();
+
+const emit = defineEmits<DateRangePickerRootEmits>();
+
 const {
   locale,
   disabled,
@@ -128,10 +63,9 @@ const {
 
 const dir = useDirection(propsDir);
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
-  passive: (props.modelValue === undefined) as false
-}) as Ref<DateRange>;
+const modelValue = defineModel<DateRange>('modelValue', {
+  default: () => props.defaultValue ?? { start: undefined, end: undefined }
+});
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
@@ -139,17 +73,15 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = useVModel(props, 'placeholder', emit, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<DateValue>;
+const placeholder = defineModel<DateValue>('placeholder', {
+  default: () => props.defaultPlaceholder ?? defaultDate.copy()
+});
 
-const open = useVModel(props, 'open', emit, {
-  defaultValue: defaultOpen.value,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
+const open = defineModel<boolean>('open', {
+  default: defaultOpen.value
+});
 
-const dateFieldRef = ref<InstanceType<typeof DateRangeFieldRoot> | undefined>();
+const dateFieldRef = ref<DateRangeFieldRootInstance | undefined>();
 
 provideDateRangePickerRootContext({
   allowNonContiguousRanges,

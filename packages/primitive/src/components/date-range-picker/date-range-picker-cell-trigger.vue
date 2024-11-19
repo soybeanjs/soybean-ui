@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RangeCalendarCellTrigger, type RangeCalendarCellTriggerProps } from '..';
+import { RangeCalendarCellTrigger } from '../range-calendar';
+import type { DateRangePickerCellTriggerPropsWithPrimitive } from './types';
 
-export interface DateRangePickerCellTriggerProps extends RangeCalendarCellTriggerProps {}
+defineOptions({
+  name: 'DateRangePickerCellTrigger'
+});
 
-const props = defineProps<DateRangePickerCellTriggerProps>();
+const props = defineProps<DateRangePickerCellTriggerPropsWithPrimitive>();
 </script>
 
 <template>

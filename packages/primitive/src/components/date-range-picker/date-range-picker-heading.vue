@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import { RangeCalendarHeading, type RangeCalendarHeadingProps } from '..';
+import { RangeCalendarHeading } from '../range-calendar';
+import type { DateRangePickerHeadingPropsWithPrimitive } from './types';
 
-export interface DateRangePickerHeadingProps extends RangeCalendarHeadingProps {}
+defineOptions({
+  name: 'DateRangePickerHeading'
+});
 
-const props = defineProps<DateRangePickerHeadingProps>();
-defineSlots<{
-  default: (props: {
-    /** Current month and year */
-    headingValue: string;
-  }) => any;
-}>();
+const props = defineProps<DateRangePickerHeadingPropsWithPrimitive>();
 </script>
 
 <template>

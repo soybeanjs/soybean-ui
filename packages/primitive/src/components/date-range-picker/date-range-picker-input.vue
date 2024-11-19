@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { DateRangeFieldInput, type DateRangeFieldInputProps } from '..';
+import { DateRangeFieldInput } from '../date-range-field';
+import type { DateRangePickerInputPropsWithPrimitive } from './types';
 
-export interface DateRangePickerInputProps extends DateRangeFieldInputProps {}
+defineOptions({
+  name: 'DateRangePickerInput'
+});
 
-const props = defineProps<DateRangePickerInputProps>();
+const props = defineProps<DateRangePickerInputPropsWithPrimitive>();
 </script>
 
 <template>

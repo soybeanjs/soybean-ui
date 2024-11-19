@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RangeCalendarCell, type RangeCalendarCellProps } from '..';
+import { RangeCalendarCell } from '../range-calendar';
+import type { DateRangePickerCellPropsWithPrimitive } from './types';
 
-export interface DateRangePickerCellProps extends RangeCalendarCellProps {}
+defineOptions({
+  name: 'DateRangePickerCell'
+});
 
-const props = defineProps<DateRangePickerCellProps>();
+const props = defineProps<DateRangePickerCellPropsWithPrimitive>();
 </script>
 
 <template>

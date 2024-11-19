@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { RangeCalendarPrev, type RangeCalendarPrevProps } from '..';
+import { RangeCalendarPrev } from '../range-calendar';
+import type { DateRangePickerPrevPropsWithPrimitive } from './types';
 
-export interface DateRangePickerPrevProps extends RangeCalendarPrevProps {}
+defineOptions({
+  name: 'DateRangePickerPrev'
+});
 
-const props = defineProps<DateRangePickerPrevProps>();
+const props = defineProps<DateRangePickerPrevPropsWithPrimitive>();
 </script>
 
 <template>

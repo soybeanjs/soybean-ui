@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { isEqualDay } from '@internationalized/date';
-import { DateRangeFieldRoot } from '..';
-import { injectDateRangePickerRootContext } from './date-range-picker-root.vue';
+import { DateRangeFieldRoot } from '../date-range-field';
+import { injectDateRangePickerRootContext } from './context';
 
 const rootContext = injectDateRangePickerRootContext();
 </script>

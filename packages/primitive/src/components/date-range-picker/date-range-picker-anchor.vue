@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { PopoverAnchor, type PopoverAnchorProps } from '..';
+import { PopoverAnchor } from '../popover';
+import type { DateRangePickerAnchorPropsWithPrimitive } from './types';
 
-export interface DateRangePickerAnchorProps extends PopoverAnchorProps {}
+defineOptions({
+  name: 'DateRangePickerAnchor'
+});
 
-const props = defineProps<DateRangePickerAnchorProps>();
+const props = defineProps<DateRangePickerAnchorPropsWithPrimitive>();
 </script>
 
 <template>
