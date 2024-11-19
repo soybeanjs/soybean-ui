@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { usePrimitiveElement } from '../../composables';
-import { injectNumberFieldRootContext } from './number-field-root.vue';
+import type { NumberFieldInputPropsWithPrimitive } from './types';
+import { injectNumberFieldRootContext } from './context';
 
-export interface NumberFieldInputProps extends PrimitiveProps {}
+defineOptions({
+  name: 'NumberFieldInput'
+});
 
-const props = withDefaults(defineProps<NumberFieldInputProps>(), {
+const props = withDefaults(defineProps<NumberFieldInputPropsWithPrimitive>(), {
   as: 'input'
 });
 

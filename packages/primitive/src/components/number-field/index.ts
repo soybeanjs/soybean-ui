@@ -1,9 +1,9 @@
-export {
-  injectNumberFieldRootContext,
-  default as NumberFieldRoot,
-  type NumberFieldRootProps,
-  type NumberFieldRootEmits
-} from './number-field-root.vue';
-export { default as NumberFieldInput, type NumberFieldInputProps } from './number-field-input.vue';
-export { default as NumberFieldIncrement, type NumberFieldIncrementProps } from './number-field-increment.vue';
-export { default as NumberFieldDecrement, type NumberFieldDecrementProps } from './number-field-decrement.vue';
+import NumberFieldRoot from './number-field-root.vue';
+import NumberFieldInput from './number-field-input.vue';
+import NumberFieldIncrement from './number-field-increment.vue';
+import NumberFieldDecrement from './number-field-decrement.vue';
+
+export { NumberFieldRoot, NumberFieldInput, NumberFieldIncrement, NumberFieldDecrement };
+export { injectNumberFieldRootContext } from './context';
+
+export * from './types';
