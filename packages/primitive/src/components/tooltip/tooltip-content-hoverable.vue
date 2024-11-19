@@ -1,19 +1,22 @@
 <script setup lang="ts">
 import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
-import TooltipContentImpl, { type TooltipContentImplProps } from './tooltip-content-impl.vue';
-import { injectTooltipRootContext } from './tooltip-root.vue';
-import { injectTooltipProviderContext } from './tooltip-provider.vue';
+import type { TooltipContentPropsWithPrimitive } from './types';
+import { injectTooltipProviderContext, injectTooltipRootContext } from './context';
+import TooltipContentImpl from './tooltip-content-impl.vue';
 
-const props = defineProps<TooltipContentImplProps>();
+defineOptions({
+  name: 'TooltipContentHoverable'
+});
+
+const props = defineProps<TooltipContentPropsWithPrimitive>();
 const forwardedProps = useForwardProps(props);
 const { forwardRef, currentElement } = useForwardExpose();
 
 const { trigger, onClose } = injectTooltipRootContext();
 const providerContext = injectTooltipProviderContext();
-
 const { isPointerInTransit, onPointerExit } = useGraceArea(trigger, currentElement);
-
 providerContext.isPointerInTransitRef = isPointerInTransit;
+
 onPointerExit(() => {
   onClose();
 });

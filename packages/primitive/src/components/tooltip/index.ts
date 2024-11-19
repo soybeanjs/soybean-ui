@@ -1,15 +1,11 @@
-export {
-  injectTooltipRootContext,
-  default as TooltipRoot,
-  type TooltipRootProps,
-  type TooltipRootEmits
-} from './TooltipRoot.vue';
-export { default as TooltipTrigger, type TooltipTriggerProps } from './TooltipTrigger.vue';
-export { default as TooltipContent, type TooltipContentProps, type TooltipContentEmits } from './TooltipContent.vue';
-export { default as TooltipArrow, type TooltipArrowProps } from './TooltipArrow.vue';
-export { default as TooltipPortal, type TooltipPortalProps } from './TooltipPortal.vue';
-export {
-  injectTooltipProviderContext,
-  default as TooltipProvider,
-  type TooltipProviderProps
-} from './tooltip-provider.vue';
+import TooltipRoot from './tooltip-root.vue';
+import TooltipTrigger from './tooltip-trigger.vue';
+import TooltipContent from './tooltip-content.vue';
+import TooltipArrow from './tooltip-arrow.vue';
+import TooltipPortal from './tooltip-portal.vue';
+import TooltipProvider from './tooltip-provider.vue';
+
+export { TooltipRoot, TooltipTrigger, TooltipContent, TooltipArrow, TooltipPortal, TooltipProvider };
+export { injectTooltipProviderContext, injectTooltipRootContext } from './context';
+
+export * from './types';

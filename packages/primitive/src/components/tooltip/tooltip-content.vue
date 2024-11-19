@@ -1,22 +1,19 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type { TooltipContentImplEmits, TooltipContentImplProps } from './tooltip-content-impl.vue';
-
+import { injectTooltipRootContext } from './context';
 import TooltipContentImpl from './tooltip-content-impl.vue';
 import TooltipContentHoverable from './tooltip-content-hoverable.vue';
-import { injectTooltipRootContext } from './tooltip-root.vue';
+import type { TooltipContentEmits, TooltipContentPropsWithPrimitive } from './types';
 
-export type TooltipContentEmits = TooltipContentImplEmits;
+defineOptions({
+  name: 'TooltipContent'
+});
 
-export interface TooltipContentProps extends TooltipContentImplProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-const props = withDefaults(defineProps<TooltipContentProps>(), {
+const props = withDefaults(defineProps<TooltipContentPropsWithPrimitive>(), {
   side: 'top'
 });
+
 const emit = defineEmits<TooltipContentEmits>();
 
 const rootContext = injectTooltipRootContext();

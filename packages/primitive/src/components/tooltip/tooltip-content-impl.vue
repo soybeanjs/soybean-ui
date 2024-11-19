@@ -2,54 +2,19 @@
 import type { VNode } from 'vue';
 import { Comment, computed, onMounted, useSlots } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import type { PopperContentProps } from '../popper';
 import { PopperContent } from '../popper';
 import { VisuallyHidden } from '../visually-hidden';
 import { DismissableLayer } from '../dismissable-layer';
 import { useForwardExpose } from '../../composables';
-
+import { injectTooltipRootContext } from './context';
 import { TOOLTIP_OPEN } from './utils';
-import { injectTooltipRootContext } from './tooltip-root.vue';
+import type { TooltipContentEmits, TooltipContentPropsWithPrimitive } from './types';
 
-export type TooltipContentImplEmits = {
-  /**
-   * Event handler called when focus moves to the destructive action after opening. It can be prevented by calling
-   * `event.preventDefault`
-   */
-  escapeKeyDown: [event: KeyboardEvent];
-  /**
-   * Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by
-   * calling `event.preventDefault`.
-   */
-  pointerDownOutside: [event: Event];
-};
+defineOptions({
+  name: 'TooltipContentImpl'
+});
 
-export interface TooltipContentImplProps
-  extends PrimitiveProps,
-    Pick<
-      PopperContentProps,
-      | 'side'
-      | 'sideOffset'
-      | 'align'
-      | 'alignOffset'
-      | 'avoidCollisions'
-      | 'collisionBoundary'
-      | 'collisionPadding'
-      | 'arrowPadding'
-      | 'sticky'
-      | 'hideWhenDetached'
-    > {
-  /**
-   * By default, screenreaders will announce the content inside the component. If this is not descriptive enough, or you
-   * have content that cannot be announced, use aria-label as a more descriptive label.
-   *
-   * @defaultValue String
-   */
-  ariaLabel?: string;
-}
-
-const props = withDefaults(defineProps<TooltipContentImplProps>(), {
+const props = withDefaults(defineProps<TooltipContentPropsWithPrimitive>(), {
   side: 'top',
   sideOffset: 0,
   align: 'center',
@@ -60,13 +25,14 @@ const props = withDefaults(defineProps<TooltipContentImplProps>(), {
   sticky: 'partial',
   hideWhenDetached: false
 });
-const emit = defineEmits<TooltipContentImplEmits>();
+
+const emit = defineEmits<TooltipContentEmits>();
 
 const rootContext = injectTooltipRootContext();
 
 const { forwardRef } = useForwardExpose();
-const slot = useSlots();
-const defaultSlot = computed(() => slot.default?.());
+const slots = useSlots();
+const defaultSlot = computed(() => slots.default?.());
 const ariaLabel = computed(() => {
   if (props.ariaLabel) return props.ariaLabel;
   let content = '';

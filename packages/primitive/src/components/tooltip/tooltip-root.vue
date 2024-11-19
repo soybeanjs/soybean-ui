@@ -1,75 +1,17 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
-import { useTimeoutFn, useVModel } from '@vueuse/core';
+import { useTimeoutFn } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
 import { PopperRoot } from '../popper';
-import { createContext, useForwardExpose } from '../../composables';
+import { useForwardExpose } from '../../composables';
+import type { TooltipRootPropsWithPrimitive } from './types';
+import { injectTooltipProviderContext, provideTooltipRootContext } from './context';
 import { TOOLTIP_OPEN } from './utils';
-import { injectTooltipProviderContext } from './tooltip-provider.vue';
 
-export interface TooltipRootProps {
-  /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: boolean;
-  /** The controlled open state of the tooltip. */
-  open?: boolean;
-  /**
-   * Override the duration given to the `Provider` to customise the open delay for a specific tooltip.
-   *
-   * @defaultValue 700
-   */
-  delayDuration?: number;
-  /**
-   * Prevents Tooltip.Content from remaining open when hovering. Disabling this has accessibility consequences. Inherits
-   * from Tooltip.Provider.
-   */
-  disableHoverableContent?: boolean;
-  /**
-   * When `true`, clicking on trigger will not close the content.
-   *
-   * @defaultValue false
-   */
-  disableClosingTrigger?: boolean;
-  /**
-   * When `true`, disable tooltip
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
-  /**
-   * Prevent the tooltip from opening if the focus did not come from the keyboard by matching against the
-   * `:focus-visible` selector. This is useful if you want to avoid opening it when switching browser tabs or closing a
-   * dialog.
-   *
-   * @defaultValue false
-   */
-  ignoreNonKeyboardFocus?: boolean;
-}
+defineOptions({
+  name: 'TooltipRoot'
+});
 
-export type TooltipRootEmits = {
-  /** Event handler called when the open state of the tooltip changes. */
-  'update:open': [value: boolean];
-};
-
-export interface TooltipContext {
-  contentId: string;
-  open: Ref<boolean>;
-  stateAttribute: Ref<'closed' | 'delayed-open' | 'instant-open'>;
-  trigger: Ref<HTMLElement | undefined>;
-  onTriggerChange: (trigger: HTMLElement | undefined) => void;
-  onTriggerEnter: () => void;
-  onTriggerLeave: () => void;
-  onOpen: () => void;
-  onClose: () => void;
-  disableHoverableContent: Ref<boolean>;
-  disableClosingTrigger: Ref<boolean>;
-  disabled: Ref<boolean>;
-  ignoreNonKeyboardFocus: Ref<boolean>;
-}
-
-export const [injectTooltipRootContext, provideTooltipRootContext] = createContext<TooltipContext>('TooltipRoot');
-
-const props = withDefaults(defineProps<TooltipRootProps>(), {
+const props = withDefaults(defineProps<TooltipRootPropsWithPrimitive>(), {
   defaultOpen: false,
   open: undefined,
   delayDuration: undefined,
@@ -78,15 +20,6 @@ const props = withDefaults(defineProps<TooltipRootProps>(), {
   disabled: undefined,
   ignoreNonKeyboardFocus: undefined
 });
-
-const emit = defineEmits<TooltipRootEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current open state */
-    open: typeof open.value;
-  }) => any;
-}>();
 
 useForwardExpose();
 const providerContext = injectTooltipProviderContext();
@@ -104,10 +37,7 @@ const ignoreNonKeyboardFocus = computed(
   () => props.ignoreNonKeyboardFocus ?? providerContext.ignoreNonKeyboardFocus.value
 );
 
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
+const open = defineModel<boolean>('open', { default: props.defaultOpen });
 
 watch(open, isOpen => {
   if (!providerContext.onClose) return;
