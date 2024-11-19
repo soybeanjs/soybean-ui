@@ -1,114 +1,31 @@
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
 import { ref, toRefs } from 'vue';
-import type { Ref } from 'vue';
-import { useFocusWithin, useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
+import { useFocusWithin } from '@vueuse/core';
+import { useArrowNavigation, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import {
-  createContext,
-  useArrowNavigation,
-  useCollection,
-  useDirection,
-  useFormControl,
-  useForwardExpose
-} from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { Direction, FormFieldProps } from '../../types';
+import { provideTagsInputRootContext } from './context';
+import type { AcceptableInputValue, TagsInputRootEmits, TagsInputRootPropsWithPrimitive } from './types';
 
-export type AcceptableInputValue = string | Record<string, any>;
+defineOptions({
+  name: 'TagsInputRoot'
+});
 
-export interface TagsInputRootProps<T = AcceptableInputValue> extends PrimitiveProps, FormFieldProps {
-  /** The controlled value of the tags input. Can be bind as `v-model`. */
-  modelValue?: Array<T>;
-  /** The value of the tags that should be added. Use when you do not need to control the state of the tags input */
-  defaultValue?: Array<T>;
-  /** When `true`, allow adding tags on paste. Work in conjunction with delimiter prop. */
-  addOnPaste?: boolean;
-  /** When `true` allow adding tags on tab keydown */
-  addOnTab?: boolean;
-  /** When `true` allow adding tags blur input */
-  addOnBlur?: boolean;
-  /** When `true`, allow duplicated tags. */
-  duplicate?: boolean;
-  /** When `true`, prevents the user from interacting with the tags input. */
-  disabled?: boolean;
-  /**
-   * The character or regular expression to trigger the addition of a new tag. Also used to split tags for `@paste`
-   * event
-   */
-  delimiter?: string | RegExp;
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** Maximum number of tags. */
-  max?: number;
-  id?: string;
-  /** Convert the input value to the desired type. Mandatory when using objects as values and using `TagsInputInput` */
-  convertValue?: (value: string) => T;
-  /**
-   * Display the value of the tag. Useful when you want to apply modifications to the value like adding a suffix or when
-   * using object as values
-   */
-  displayValue?: (value: T) => string;
-}
-
-export type TagsInputRootEmits<T = AcceptableInputValue> = {
-  /** Event handler called when the value changes */
-  'update:modelValue': [payload: Array<T>];
-  /** Event handler called when the value is invalid */
-  invalid: [payload: T];
-  /** Event handler called when tag is added */
-  addTag: [payload: T];
-  /** Event handler called when tag is removed */
-  removeTag: [payload: T];
-};
-
-export interface TagsInputRootContext<T = AcceptableInputValue> {
-  modelValue: Ref<Array<T>>;
-  onAddValue: (payload: string) => boolean;
-  onRemoveValue: (index: number) => void;
-  onInputKeydown: (event: KeyboardEvent) => void;
-  selectedElement: Ref<HTMLElement | undefined>;
-  isInvalidInput: Ref<boolean>;
-  addOnPaste: Ref<boolean>;
-  addOnTab: Ref<boolean>;
-  addOnBlur: Ref<boolean>;
-  disabled: Ref<boolean>;
-  delimiter: Ref<string | RegExp>;
-  dir: Ref<Direction>;
-  max: Ref<number>;
-  id: Ref<string | undefined> | undefined;
-  displayValue: (value: T) => string;
-}
-
-export const [injectTagsInputRootContext, provideTagsInputRootContext] =
-  createContext<TagsInputRootContext>('TagsInputRoot');
-
-const props = withDefaults(defineProps<TagsInputRootProps<T>>(), {
+const props = withDefaults(defineProps<TagsInputRootPropsWithPrimitive<T>>(), {
   defaultValue: () => [],
   delimiter: ',',
   max: 0,
   displayValue: (value: T) => value.toString()
 });
-const emit = defineEmits<TagsInputRootEmits<T>>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const emit = defineEmits<TagsInputRootEmits<T>>();
 
 const { addOnPaste, disabled, delimiter, max, id, dir: propDir, addOnBlur, addOnTab } = toRefs(props);
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue,
-  passive: true,
-  deep: true
-}) as Ref<Array<AcceptableInputValue>>;
+const modelValue = defineModel<Array<T>>({
+  default: props.defaultValue
+});
 
 const { forwardRef, currentElement } = useForwardExpose();
 const { focused } = useFocusWithin(currentElement);
@@ -161,6 +78,7 @@ provideTagsInputRootContext({
     return false;
   },
   onRemoveValue: handleRemoveTag,
+  // eslint-disable-next-line complexity
   onInputKeydown: event => {
     const target = event.target as HTMLInputElement;
     const collection = getItems()

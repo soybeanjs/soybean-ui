@@ -1,31 +1,15 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import type { ComputedRef, Ref } from 'vue';
-
-import type { PrimitiveProps } from '../primitive';
+import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import { createContext, useCollection, useForwardExpose } from '../../composables';
-import { type AcceptableInputValue, injectTagsInputRootContext } from './tags-input-root.vue';
+import { injectTagsInputRootContext, provideTagsInputItemContext } from './context';
+import type { TagsInputItemPropsWithPrimitive } from './types';
 
-export interface TagsInputItemProps extends PrimitiveProps {
-  /** Value associated with the tags */
-  value: AcceptableInputValue;
-  /** When `true`, prevents the user from interacting with the tags input. */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'TagsInputItem'
+});
 
-export interface TagsInputItemContext {
-  value: Ref<AcceptableInputValue>;
-  displayValue: ComputedRef<string>;
-  isSelected: Ref<boolean>;
-  disabled?: Ref<boolean>;
-  textId: string;
-}
-
-export const [injectTagsInputItemContext, provideTagsInputItemContext] =
-  createContext<TagsInputItemContext>('TagsInputItem');
-
-const props = defineProps<TagsInputItemProps>();
+const props = defineProps<TagsInputItemPropsWithPrimitive>();
 const { value } = toRefs(props);
 
 const context = injectTagsInputRootContext();
@@ -33,7 +17,6 @@ const { forwardRef, currentElement } = useForwardExpose();
 const { CollectionItem } = useCollection();
 
 const isSelected = computed(() => context.selectedElement.value === currentElement.value);
-
 const disabled = computed(() => props.disabled || context.disabled.value);
 
 const itemContext = provideTagsInputItemContext({

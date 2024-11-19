@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose, useId } from '../../composables';
-import { injectTagsInputItemContext } from './tags-input-item.vue';
+import { injectTagsInputItemContext } from './context';
+import type { TagsInputItemTextPropsWithPrimitive } from './types';
 
-export interface TagsInputItemTextProps extends PrimitiveProps {}
+defineOptions({
+  name: 'TagsInputItemText'
+});
 
-const props = withDefaults(defineProps<TagsInputItemTextProps>(), {
+const props = withDefaults(defineProps<TagsInputItemTextPropsWithPrimitive>(), {
   as: 'span'
 });
 

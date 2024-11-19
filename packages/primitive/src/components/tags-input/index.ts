@@ -1,12 +1,11 @@
-export {
-  injectTagsInputRootContext,
-  default as TagsInputRoot,
-  type TagsInputRootProps,
-  type TagsInputRootEmits,
-  type AcceptableInputValue
-} from './tags-input-root.vue';
-export { default as TagsInputInput, type TagsInputInputProps } from './tags-input-input.vue';
-export { default as TagsInputItem, type TagsInputItemProps } from './tags-input-item.vue';
-export { default as TagsInputItemText, type TagsInputItemTextProps } from './tags-input-item-text.vue';
-export { default as TagsInputItemDelete, type TagsInputItemDeleteProps } from './tags-input-item-delete.vue';
-export { default as TagsInputClear, type TagsInputClearProps } from './tags-input-clear.vue';
+import TagsInputRoot from './tags-input-root.vue';
+import TagsInputInput from './tags-input-input.vue';
+import TagsInputItem from './tags-input-item.vue';
+import TagsInputItemText from './tags-input-item-text.vue';
+import TagsInputItemDelete from './tags-input-item-delete.vue';
+import TagsInputClear from './tags-input-clear.vue';
+
+export { TagsInputRoot, TagsInputInput, TagsInputItem, TagsInputItemText, TagsInputItemDelete, TagsInputClear };
+export { injectTagsInputRootContext } from './context';
+
+export * from './types';

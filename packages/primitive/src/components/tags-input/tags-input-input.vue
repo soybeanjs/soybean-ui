@@ -1,21 +1,15 @@
 <script setup lang="ts">
 import { nextTick, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { injectTagsInputRootContext } from './context';
+import type { TagsInputInputPropsWithPrimitive } from './types';
 
-import { injectTagsInputRootContext } from './tags-input-root.vue';
+defineOptions({
+  name: 'TagsInputInput'
+});
 
-export interface TagsInputInputProps extends PrimitiveProps {
-  /** The placeholder character to use for empty tags input. */
-  placeholder?: string;
-  /** Focus on element when mounted. */
-  autoFocus?: boolean;
-  /** Maximum number of character allowed. */
-  maxLength?: number;
-}
-
-const props = withDefaults(defineProps<TagsInputInputProps>(), {
+const props = withDefaults(defineProps<TagsInputInputPropsWithPrimitive>(), {
   as: 'input'
 });
 

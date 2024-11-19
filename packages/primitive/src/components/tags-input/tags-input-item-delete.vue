@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { injectTagsInputItemContext } from './tags-input-item.vue';
-import { injectTagsInputRootContext } from './tags-input-root.vue';
+import { injectTagsInputItemContext, injectTagsInputRootContext } from './context';
+import type { TagsInputItemDeletePropsWithPrimitive } from './types';
 
-export interface TagsInputItemDeleteProps extends PrimitiveProps {}
+defineOptions({
+  name: 'TagsInputItemDelete'
+});
 
-const props = withDefaults(defineProps<TagsInputItemDeleteProps>(), {
+const props = withDefaults(defineProps<TagsInputItemDeletePropsWithPrimitive>(), {
   as: 'button'
 });
 
