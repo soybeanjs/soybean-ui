@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useCollection } from '../../composables';
 import { injectSelectContentContext } from './select-content-impl.vue';
 

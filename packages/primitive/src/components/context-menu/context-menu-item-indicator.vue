@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuItemIndicatorProps } from '../menu';
 import { MenuItemIndicator } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { ContextMenuItemIndicatorPropsWithPrimitive } from './types';
 
-export interface ContextMenuItemIndicatorProps extends MenuItemIndicatorProps {}
+defineOptions({
+  name: 'ContextMenuItemIndicator'
+});
 
-const props = defineProps<ContextMenuItemIndicatorProps>();
+const props = defineProps<ContextMenuItemIndicatorPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

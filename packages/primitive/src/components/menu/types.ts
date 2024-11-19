@@ -1,12 +1,12 @@
 import type { Ref } from 'vue';
 import type { Direction, GraceIntent } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { TeleportProps } from '../teleport/types';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer/types';
-import type { FocusScopeProps } from '../focus-scope/types';
-import type { RovingFocusGroupEmits } from '../roving-focus/types';
-import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper/types';
-import type { CheckedState } from '../checkbox/types';
+import type { PrimitiveProps } from '../primitive';
+import type { TeleportProps } from '../teleport';
+import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
+import type { FocusScopeProps } from '../focus-scope';
+import type { RovingFocusGroupEmits } from '../roving-focus';
+import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
+import type { CheckedState } from '../checkbox';
 
 // MenuRoot
 export interface MenuRootProps {

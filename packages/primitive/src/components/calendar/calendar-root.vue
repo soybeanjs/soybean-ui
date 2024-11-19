@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, toRefs, watch } from 'vue';
 import { isEqualDay, isSameDay } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
+import type { DateValue } from '../../date';
 import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { provideCalendarRootContext } from './context';
 import type { CalendarRootPropsWithPrimitive } from './types';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectComboboxRootContext } from './context';
 import type { ComboboxCancelPropsWithPrimitive } from './types';

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { ComputedRef, Ref } from 'vue';
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import type {
   AcceptableValue,
@@ -12,7 +12,7 @@ import type {
   FormFieldProps,
   SingleOrMultipleProps,
   SingleOrMultipleType
-} from '../../composables/types';
+} from '../../types';
 import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
 
 import { useSingleOrMultipleValue } from '../../composables/use-single-or-multiple-value';

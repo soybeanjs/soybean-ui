@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { type Ref, computed, nextTick, ref, toRefs, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
-import type { DataOrientation, Direction } from '../../composables/types';
+import { computed, nextTick, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
+import type { DataOrientation, Direction } from '../../types';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
 
 export interface StepperRootContext {

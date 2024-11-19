@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { CalendarGridRow, type CalendarGridRowProps } from '..';
+import CalendarGridRow from '../calendar/calendar-grid-row.vue';
+import type { CalendarGridRowProps } from '../calendar';
+
+defineOptions({
+  name: 'DatePickerGridRow'
+});
 
 export interface DatePickerGridRowProps extends CalendarGridRowProps {}
 

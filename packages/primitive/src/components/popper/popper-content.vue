@@ -14,7 +14,7 @@ import {
 } from '@floating-ui/vue';
 import type { Middleware, Placement } from '@floating-ui/vue';
 import { useForwardExpose, useSize } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectPopperRootContext, providePopperContentContext } from './context';
 import {
   createPopperContentPropsDefaultValue,

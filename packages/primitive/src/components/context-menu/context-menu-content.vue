@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { MenuContentEmits, MenuContentProps } from '../Menu';
 import { MenuContent } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { injectContextMenuRootContext } from './context';
+import type { ContextMenuContentEmits, ContextMenuContentPropsWithPrimitive } from './types';
 
-import { injectContextMenuRootContext } from './context-menu-root.vue';
+defineOptions({
+  name: 'ContextMenuContent'
+});
 
-export type ContextMenuContentEmits = MenuContentEmits;
-
-export interface ContextMenuContentProps
-  extends Omit<MenuContentProps, 'side' | 'sideOffset' | 'align' | 'arrowPadding' | 'updatePositionStrategy'> {}
-
-const props = withDefaults(defineProps<ContextMenuContentProps>(), {
+const props = withDefaults(defineProps<ContextMenuContentPropsWithPrimitive>(), {
   alignOffset: 0,
   avoidCollisions: true,
   collisionBoundary: () => [],
@@ -19,10 +17,13 @@ const props = withDefaults(defineProps<ContextMenuContentProps>(), {
   sticky: 'partial',
   hideWhenDetached: false
 });
+
 const emit = defineEmits<ContextMenuContentEmits>();
+
 const forwarded = useForwardPropsEmits(props, emit);
 
 useForwardExpose();
+
 const rootContext = injectContextMenuRootContext();
 const hasInteractedOutside = ref(false);
 </script>

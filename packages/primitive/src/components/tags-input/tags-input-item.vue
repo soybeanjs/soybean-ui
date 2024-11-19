@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { type ComputedRef, type Ref, computed, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import { computed, toRefs } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
+
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { createContext, useCollection, useForwardExpose } from '../../composables';
 import { type AcceptableInputValue, injectTagsInputRootContext } from './tags-input-root.vue';
 

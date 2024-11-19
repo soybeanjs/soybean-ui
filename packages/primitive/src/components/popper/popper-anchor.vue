@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watchPostEffect } from 'vue';
 import { useForwardExpose } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectPopperRootContext } from './context';
 import type { PopperAnchorPropsWithPrimitive } from './types';
 

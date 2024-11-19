@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from '../Menu';
-
 import { MenuCheckboxItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { ContextMenuCheckboxItemEmits, ContextMenuCheckboxItemPropsWithPrimitive } from './types';
 
-export type ContextMenuCheckboxItemEmits = MenuCheckboxItemEmits;
+defineOptions({
+  name: 'ContextMenuCheckboxItem'
+});
 
-export interface ContextMenuCheckboxItemProps extends MenuCheckboxItemProps {}
-
-const props = defineProps<ContextMenuCheckboxItemProps>();
+const props = defineProps<ContextMenuCheckboxItemPropsWithPrimitive>();
 const emit = defineEmits<ContextMenuCheckboxItemEmits>();
 
-const emitAsProps = useEmitAsProps(emit);
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuCheckboxItem v-bind="{ ...props, ...emitAsProps }">
+  <MenuCheckboxItem v-bind="forwarded">
     <slot />
   </MenuCheckboxItem>
 </template>

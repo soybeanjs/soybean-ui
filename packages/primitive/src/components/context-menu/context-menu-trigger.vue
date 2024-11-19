@@ -1,28 +1,20 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs } from 'vue';
-import type { Point } from '../menu/shared';
-import type { PrimitiveProps } from '../primitive/types';
+import type { Point } from '../../types';
 
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose } from '../../composables';
-import { injectContextMenuRootContext } from './context-menu-root.vue';
-import { isTouchOrPen } from './utils';
-
-export interface ContextMenuTriggerProps extends PrimitiveProps {
-  /**
-   * When `true`, the context menu would not open when right-clicking.
-   *
-   * Note that this will also restore the native context menu.
-   */
-  disabled?: boolean;
-}
+import { injectContextMenuRootContext } from './context';
+import { isTouchOrPen } from './shared';
+import type { ContextMenuTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'ContextMenuTrigger',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ContextMenuTriggerProps>(), {
+const props = withDefaults(defineProps<ContextMenuTriggerPropsWithPrimitive>(), {
   as: 'span',
   disabled: false
 });

@@ -2,8 +2,8 @@
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { computed, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { createContext, useForwardExpose } from '../../composables';
 
 type PaginationRootContext = {

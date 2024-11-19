@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';
 import { useForwardExpose } from '../../composables';
 import { injectHoverCardRootContext } from './hover-card-root.vue';

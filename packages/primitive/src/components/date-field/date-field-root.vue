@@ -1,122 +1,39 @@
 <script setup lang="ts">
-import { type DateValue, isEqualDay } from '@internationalized/date';
-
-import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import { type Matcher, hasTime, isBefore } from '../../date';
-import Primitive from '../primitive/primitive';
-import { usePrimitiveElement } from '../../composables';
-import { VisuallyHidden } from '../visually-hidden';
-import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
-import {
-  type Granularity,
-  type HourCycle,
-  type SegmentPart,
-  type SegmentValueObj,
-  getDefaultDate
-} from '../../composables/date';
+import { isEqualDay } from '@internationalized/date';
 import {
   createContent,
+  getDefaultDate,
   getSegmentElements,
+  hasTime,
   initializeSegmentValues,
+  isBefore,
   isSegmentNavigationKey,
   syncSegmentValues
-} from '../../composables/date';
-import type { Direction, FormFieldProps } from '../../composables/types';
-
-type DateFieldRootContext = {
-  locale: Ref<string>;
-  modelValue: Ref<DateValue | undefined>;
-  placeholder: Ref<DateValue>;
-  isDateUnavailable?: Matcher;
-  isInvalid: Ref<boolean>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  formatter: Formatter;
-  hourCycle: HourCycle;
-  segmentValues: Ref<SegmentValueObj>;
-  segmentContents: Ref<{ part: SegmentPart; value: string }[]>;
-  elements: Ref<Set<HTMLElement>>;
-  focusNext: () => void;
-  setFocusedElement: (el: HTMLElement) => void;
-};
-
-export interface DateFieldRootProps extends PrimitiveProps, FormFieldProps {
-  /** The default value for the calendar */
-  defaultValue?: DateValue;
-  /** The default placeholder date */
-  defaultPlaceholder?: DateValue;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as
-   * the user navigates the calendar and can be used to programmatically control the calendar view
-   */
-  placeholder?: DateValue;
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateValue | undefined;
-  /** The hour cycle used for formatting times. Defaults to the local preference */
-  hourCycle?: HourCycle;
-  /**
-   * The granularity to use for formatting times. Defaults to day if a CalendarDate is provided, otherwise defaults to
-   * minute. The field will render segments for each part of the date up to and including the specified granularity
-   */
-  granularity?: Granularity;
-  /** Whether or not to hide the time zone segment of the field */
-  hideTimeZone?: boolean;
-  /** The maximum date that can be selected */
-  maxValue?: DateValue;
-  /** The minimum date that can be selected */
-  minValue?: DateValue;
-  /** The locale to use for formatting dates */
-  locale?: string;
-  /** Whether or not the date field is disabled */
-  disabled?: boolean;
-  /** Whether or not the date field is readonly */
-  readonly?: boolean;
-  /** A function that returns whether or not a date is unavailable */
-  isDateUnavailable?: Matcher;
-  /** Id of the element */
-  id?: string;
-  /**
-   * The reading direction of the date field when applicable. <br> If omitted, inherits globally from `ConfigProvider`
-   * or assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-}
-
-export type DateFieldRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [date: DateValue | undefined];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: DateValue];
-};
-
-export const [injectDateFieldRootContext, provideDateFieldRootContext] =
-  createContext<DateFieldRootContext>('DateFieldRoot');
+} from '../../date';
+import type { DateValue, SegmentValueObj } from '../../date';
+import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
+import { VisuallyHidden } from '../visually-hidden';
+import { provideDateFieldRootContext } from './context';
+import type { DateFieldRootEmits, DateFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'DateFieldRoot',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<DateFieldRootProps>(), {
+const props = withDefaults(defineProps<DateFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
   disabled: false,
   readonly: false,
   placeholder: undefined,
   isDateUnavailable: undefined
 });
+
 const emit = defineEmits<DateFieldRootEmits>();
-defineSlots<{
-  default: (props: {
-    /** The current date of the field */
-    modelValue: DateValue | undefined;
-    /** The date field segment contents */
-    segments: { part: SegmentPart; value: string }[];
-    /** Value if the input is invalid */
-    isInvalid: boolean;
-  }) => any;
-}>();
 
 const {
   disabled,
@@ -138,10 +55,7 @@ onMounted(() => {
   getSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: defaultValue.value,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<DateValue>;
+const modelValue = defineModel<DateValue>({ default: defaultValue.value });
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,

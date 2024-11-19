@@ -2,9 +2,11 @@
  * Adapted from https://github.com/melt-ui/melt-ui/blob/develop/src/lib/builders/range-calendar/create.ts
  */
 
-import { type DateValue, isSameDay } from '@internationalized/date';
-import { type Ref, computed } from 'vue';
-import { type Matcher, areAllDaysBetweenValid, isBefore, isBetween } from '../../date';
+import { computed } from 'vue';
+import type { Ref } from 'vue';
+import { isSameDay } from '@internationalized/date';
+import { areAllDaysBetweenValid, isBefore, isBetween } from '../date';
+import type { DateValue, Matcher } from '../date';
 
 export type UseRangeCalendarProps = {
   start: Ref<DateValue | undefined>;

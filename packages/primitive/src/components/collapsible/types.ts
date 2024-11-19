@@ -1,5 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import type { DisclosureState } from '../../types';
 
 export interface CollapsibleRootProps {

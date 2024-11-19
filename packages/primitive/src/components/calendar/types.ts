@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
-import type { DateValue } from '@internationalized/date';
-import type { PrimitiveProps } from '../primitive/types';
+import type { DateValue } from '../../date';
+import type { PrimitiveProps } from '../primitive';
 import type { DateFormatter, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
 import type { Direction } from '../../types';
 

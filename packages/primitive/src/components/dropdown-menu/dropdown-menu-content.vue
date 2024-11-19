@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { MenuContentEmits, MenuContentProps } from '../Menu';
+import type { MenuContentEmits, MenuContentProps } from '../menu';
 import { MenuContent } from '../menu';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
 import { injectDropdownMenuRootContext } from './dropdown-menu-root.vue';

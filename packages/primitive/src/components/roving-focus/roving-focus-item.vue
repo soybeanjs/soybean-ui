@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useCollection, useId, usePrimitiveElement } from '../../composables';
 import { wrapArray } from '../../shared';
 import { focusFirst, getFocusIntent } from './shared';

@@ -12,7 +12,7 @@ import {
 import { findValuesBetween } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { getFocusIntent } from '../roving-focus/shared';
 import { compare } from './shared';
 import { provideListboxRootContext } from './context';

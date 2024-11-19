@@ -2,9 +2,9 @@
 import type { VNode } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 import { refAutoReset, unrefElement } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 
 import { injectNavigationMenuContext } from './navigation-menu-root.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue | AcceptableValue[], S extends SingleOrMultipleType">
 import { toRef, toRefs } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose, useSingleOrMultipleValue } from '../../composables';
 import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { provideAccordionRootContext } from './context';

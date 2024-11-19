@@ -1,114 +1,39 @@
 <script setup lang="ts">
-import { type DateValue, isEqualDay } from '@internationalized/date';
-
-import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import { type Matcher, areAllDaysBetweenValid, hasTime, isBefore, isBeforeOrSame } from '../../date';
-import Primitive from '../primitive/primitive';
-import { usePrimitiveElement } from '../../composables';
-import { VisuallyHidden } from '../visually-hidden';
-import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
+import type { Ref } from 'vue';
+import { isEqualDay } from '@internationalized/date';
+import type { DateRange, DateValue, SegmentValueObj } from '../../date';
 import {
-  type DateRange,
-  type Granularity,
-  type HourCycle,
-  type SegmentPart,
-  type SegmentValueObj,
+  areAllDaysBetweenValid,
   createContent,
   getDefaultDate,
   getSegmentElements,
+  hasTime,
   initializeSegmentValues,
+  isBefore,
+  isBeforeOrSame,
   isSegmentNavigationKey,
   syncSegmentValues
-} from '../../composables/date';
-import type { Direction, FormFieldProps } from '../../composables/types';
-
-export type DateRangeType = 'start' | 'end';
-
-type DateRangeFieldRootContext = {
-  locale: Ref<string>;
-  startValue: Ref<DateValue | undefined>;
-  endValue: Ref<DateValue | undefined>;
-  placeholder: Ref<DateValue>;
-  isDateUnavailable?: Matcher;
-  isInvalid: Ref<boolean>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  formatter: Formatter;
-  hourCycle: HourCycle;
-  segmentValues: Record<DateRangeType, Ref<SegmentValueObj>>;
-  segmentContents: Ref<{ start: { part: SegmentPart; value: string }[]; end: { part: SegmentPart; value: string }[] }>;
-  elements: Ref<Set<HTMLElement>>;
-  focusNext: () => void;
-  setFocusedElement: (el: HTMLElement) => void;
-};
-
-export interface DateRangeFieldRootProps extends PrimitiveProps, FormFieldProps {
-  /** The default value for the calendar */
-  defaultValue?: DateRange;
-  /** The default placeholder date */
-  defaultPlaceholder?: DateValue;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as
-   * the user navigates the calendar and can be used to programmatically control the calendar view
-   */
-  placeholder?: DateValue;
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateRange;
-  /** The hour cycle used for formatting times. Defaults to the local preference */
-  hourCycle?: HourCycle;
-  /**
-   * The granularity to use for formatting times. Defaults to day if a CalendarDate is provided, otherwise defaults to
-   * minute. The field will render segments for each part of the date up to and including the specified granularity
-   */
-  granularity?: Granularity;
-  /** Whether or not to hide the time zone segment of the field */
-  hideTimeZone?: boolean;
-  /** The maximum date that can be selected */
-  maxValue?: DateValue;
-  /** The minimum date that can be selected */
-  minValue?: DateValue;
-  /** The locale to use for formatting dates */
-  locale?: string;
-  /** Whether or not the date field is disabled */
-  disabled?: boolean;
-  /** Whether or not the date field is readonly */
-  readonly?: boolean;
-  /** A function that returns whether or not a date is unavailable */
-  isDateUnavailable?: Matcher;
-  /** Id of the element */
-  id?: string;
-  /**
-   * The reading direction of the date field when applicable. <br> If omitted, inherits globally from `ConfigProvider`
-   * or assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-}
-
-export type DateRangeFieldRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [DateRange];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: DateValue];
-};
-
-export const [injectDateRangeFieldRootContext, provideDateRangeFieldRootContext] =
-  createContext<DateRangeFieldRootContext>('DateRangeFieldRoot');
+} from '../../date';
+import { Primitive } from '../primitive';
+import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
+import { VisuallyHidden } from '../visually-hidden';
+import { provideDateRangeFieldRootContext } from './context';
+import type { DateRangeFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'DateRangeFieldRoot',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<DateRangeFieldRootProps>(), {
+const props = withDefaults(defineProps<DateRangeFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
   disabled: false,
   readonly: false,
   placeholder: undefined,
   isDateUnavailable: undefined
 });
-const emit = defineEmits<DateRangeFieldRootEmits>();
+
 const {
   disabled,
   readonly,
@@ -127,10 +52,9 @@ onMounted(() => {
   getSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
-  passive: (props.modelValue === undefined) as false
-}) as Ref<DateRange>;
+const modelValue = defineModel<DateRange>({
+  default: () => props.defaultValue ?? { start: undefined, end: undefined }
+});
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
@@ -138,10 +62,9 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = useVModel(props, 'placeholder', emit, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<DateValue>;
+const placeholder = defineModel<DateValue>({
+  default: () => props.defaultPlaceholder ?? defaultDate.copy()
+});
 
 const inferredGranularity = computed(() => {
   if (props.granularity) return !hasTime(placeholder.value) ? 'day' : props.granularity;

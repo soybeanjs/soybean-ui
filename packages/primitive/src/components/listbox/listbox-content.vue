@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { refAutoReset } from '@vueuse/shared';
 import { useCollection } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectListboxRootContext } from './context';
 import type { ListboxContentPropsWithPrimitive } from './types';
 

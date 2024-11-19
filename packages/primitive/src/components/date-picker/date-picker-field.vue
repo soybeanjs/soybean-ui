@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { type DateValue, isEqualDay } from '@internationalized/date';
-import { DateFieldRoot } from '..';
+import { isEqualDay } from '@internationalized/date';
+import type { DateValue } from '../../date';
+import DateFieldRoot from '../date-field/date-field-root.vue';
 import { injectDatePickerRootContext } from './date-picker-root.vue';
+
+defineOptions({
+  name: 'DatePickerField'
+});
 
 const rootContext = injectDatePickerRootContext();
 </script>

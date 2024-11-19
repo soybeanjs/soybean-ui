@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectListboxItemContext } from './context';
 import type { ListboxItemIndicatorPropsWithPrimitive } from './types';

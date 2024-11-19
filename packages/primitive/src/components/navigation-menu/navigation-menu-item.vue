@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { createContext, useArrowNavigation, useCollection, useForwardExpose, useId } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 
 import { injectNavigationMenuContext } from './navigation-menu-root.vue';
 import { focusFirst, getTabbableCandidates, makeContentId, removeFromTabOrder } from './utils';

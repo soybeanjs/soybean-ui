@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import {
-  PopoverContent,
-  type PopoverContentEmits,
-  type PopoverContentProps,
-  PopoverPortal,
-  useForwardPropsEmits
-} from '..';
+import { useForwardPropsEmits } from '../../composables';
+import { type PopoverContentEmits, type PopoverContentProps } from '../popover';
+import PopoverContent from '../popover/popover-content.vue';
+import PopoverPortal from '../popover/popover-portal.vue';
+
+defineOptions({
+  name: 'DatePickerContent'
+});
 
 export interface DatePickerContentProps extends PopoverContentProps {}
 export interface DatePickerContentEmits extends PopoverContentEmits {}

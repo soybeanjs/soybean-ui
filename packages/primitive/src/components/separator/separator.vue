@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import type { DataOrientation } from '../../types';
 import type { SeparatorPropsWithPrimitive } from './types';
 

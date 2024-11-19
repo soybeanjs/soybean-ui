@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { DateValue } from '@internationalized/date';
+import type { DateValue } from '../../date';
 
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { injectRangeCalendarRootContext } from './range-calendar-root.vue';
 
 export interface RangeCalendarNextProps extends PrimitiveProps {

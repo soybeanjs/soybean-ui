@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectListboxGroupContext } from './context';
 import type { ListboxGroupLabelPropsWithPrimitive } from './types';
 

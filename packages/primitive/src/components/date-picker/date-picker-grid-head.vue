@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { CalendarGridHead, type CalendarGridHeadProps } from '..';
+import CalendarGridHead from '../calendar/calendar-grid-head.vue';
+import type { CalendarGridHeadProps } from '../calendar';
+
+defineOptions({
+  name: 'DatePickerGridHead'
+});
 
 export interface DatePickerGridHeadProps extends CalendarGridHeadProps {}
 

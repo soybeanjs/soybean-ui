@@ -1,11 +1,13 @@
 <script setup lang="ts" generic="T extends Record<string, any>, U extends Record<string, any>">
-import { type EventHook, createEventHook, useVModel } from '@vueuse/core';
-import { type Ref, computed, nextTick, ref, toRefs } from 'vue';
+import { createEventHook, useVModel } from '@vueuse/core';
+import type { EventHook } from '@vueuse/core';
+import { computed, nextTick, ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
 import { Primitive, type PrimitiveProps } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { createContext, useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
-import type { Direction } from '../../composables/types';
+import type { Direction } from '../../types';
 import { flatten } from './utils';
 export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
   extends PrimitiveProps {

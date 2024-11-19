@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
 import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
+import type { DateValue } from '../../date';
 import { toDate } from '../../date';
 import { useKbd, usePrimitiveElement } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectCalendarRootContext } from './context';
 import type { CalendarCellTriggerPropsWithPrimitive } from './types';
 

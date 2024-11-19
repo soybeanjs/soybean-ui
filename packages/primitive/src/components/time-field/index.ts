@@ -1,2 +1,7 @@
-export { type TimeFieldInputProps, default as TimeFieldInput } from './time-field-input.vue';
-export { type TimeFieldRootProps, default as TimeFieldRoot } from './time-field-root.vue';
+import TimeFieldRoot from './time-field-root.vue';
+import TimeFieldInput from './time-field-input.vue';
+
+export { TimeFieldRoot, TimeFieldInput };
+export { injectTimeFieldRootContext } from './context';
+
+export * from './types';

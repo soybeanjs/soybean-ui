@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getCheckedState, isIndeterminate } from '../checkbox/shared';
+import type { CheckedState } from '../checkbox';
 import MenuItem from './menu-item.vue';
 import { provideMenuItemIndicatorContext } from './context';
 import type { MenuCheckboxItemEmits, MenuCheckboxItemPropsWithPrimitive } from './types';
@@ -12,7 +13,7 @@ const props = defineProps<MenuCheckboxItemPropsWithPrimitive>();
 
 const emit = defineEmits<MenuCheckboxItemEmits>();
 
-const modelValue = defineModel<boolean>({ default: false });
+const modelValue = defineModel<CheckedState>({ default: false });
 
 function onSelect(event: Event) {
   emit('select', event);

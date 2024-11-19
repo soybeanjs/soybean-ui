@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { MenuSubContentEmits, MenuSubContentProps } from '../Menu';
+import type { MenuSubContentEmits, MenuSubContentProps } from '../menu';
 import { useCollection, useForwardExpose, useForwardPropsEmits } from '../../composables';
 
 import { MenuSubContent } from '../menu';

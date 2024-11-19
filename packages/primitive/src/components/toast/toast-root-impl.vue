@@ -2,10 +2,10 @@
 import { isClient } from '@vueuse/shared';
 import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { createContext, useCollection, useForwardExpose } from '../../composables';
 
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import type { SwipeEvent } from './utils';
 import { injectToastProviderContext } from './toast-provider.vue';
 import {

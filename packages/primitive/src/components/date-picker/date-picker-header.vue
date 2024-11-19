@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { CalendarHeader, type CalendarHeaderProps } from '..';
+import CalendarHeader from '../calendar/calendar-header.vue';
+import type { CalendarHeaderProps } from '../calendar';
+
+defineOptions({
+  name: 'DatePickerHeader'
+});
 
 export interface DatePickerHeaderProps extends CalendarHeaderProps {}
 

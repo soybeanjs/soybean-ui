@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import type {
   DialogContentEmits,
   DialogContentProps,

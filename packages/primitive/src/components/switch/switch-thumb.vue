@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectSwitchRootContext } from './context';
 import type { SwitchThumbPropsWithPrimitive } from './types';

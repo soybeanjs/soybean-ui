@@ -1,6 +1,6 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import type { TeleportProps } from '../teleport/types';
+import type { PrimitiveProps } from '../primitive';
+import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type { DisclosureState } from '../../types';
 

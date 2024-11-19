@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
-import type { DataOrientation, Direction } from '../../composables/types';
+import type { DataOrientation, Direction } from '../../types';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
 
 export interface ToolbarRootProps extends PrimitiveProps {

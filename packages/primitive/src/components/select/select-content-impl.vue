@@ -6,7 +6,7 @@ import type { PopperContentProps } from '../popper';
 import type { PointerDownOutsideEvent } from '../dismissable-layer';
 import { createContext, useFocusGuards, useForwardProps, useHideOthers, useTypeAhead } from '../../composables';
 import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import type { AcceptableValue } from '../../composables/types';
+import type { AcceptableValue } from '../../types';
 import { useCollection } from '../collection';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';

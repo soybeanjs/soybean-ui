@@ -1,11 +1,9 @@
-<script setup lang="ts">
-import { type Ref, ref, toRefs } from 'vue';
-import { useFocusWithin, useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-</script>
-
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
-import Primitive from '../primitive/primitive';
+import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useFocusWithin, useVModel } from '@vueuse/core';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import {
   createContext,
   useArrowNavigation,
@@ -15,7 +13,7 @@ import {
   useForwardExpose
 } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { Direction, FormFieldProps } from '../../composables/types';
+import type { Direction, FormFieldProps } from '../../types';
 
 export type AcceptableInputValue = string | Record<string, any>;
 

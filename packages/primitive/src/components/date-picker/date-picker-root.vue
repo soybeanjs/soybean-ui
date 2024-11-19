@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { type DateValue, isEqualDay, isSameDay } from '@internationalized/date';
-
+import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { Ref } from 'vue';
 import { computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { Matcher, WeekDayFormat } from '../../date';
+import type { DateValue, Granularity, HourCycle, Matcher, WeekDayFormat, getDefaultDate } from '../../date';
 import { createContext, useDirection } from '../../composables';
-import { type Granularity, type HourCycle, getDefaultDate } from '../../composables/date';
-import {
-  type CalendarRootProps,
-  type DateFieldRoot,
-  type DateFieldRootProps,
-  PopoverRoot,
-  type PopoverRootEmits,
-  type PopoverRootProps
-} from '..';
-import type { Direction } from '../../composables/types';
+import type { CalendarRootProps } from '../calendar';
+import type { DateFieldRootProps } from '../date-field';
+import type { PopoverRootEmits, PopoverRootProps } from '../popover';
+import PopoverRoot from '../popover/popover-root.vue';
+import type { Direction } from '../../types';
+
+defineOptions({
+  name: 'DatePickerRoot',
+  inheritAttrs: false
+});
 
 type DatePickerRootContext = {
   id: Ref<string | undefined>;
@@ -71,9 +70,6 @@ export type DatePickerRootEmits = {
 export const [injectDatePickerRootContext, provideDatePickerRootContext] =
   createContext<DatePickerRootContext>('DatePickerRoot');
 
-defineOptions({
-  inheritAttrs: false
-});
 const props = withDefaults(defineProps<DatePickerRootProps>(), {
   defaultValue: undefined,
   defaultOpen: false,

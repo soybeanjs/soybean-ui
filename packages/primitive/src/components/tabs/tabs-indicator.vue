@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectTabsRootContext } from './tabs-root.vue';
 

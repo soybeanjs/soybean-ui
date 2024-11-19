@@ -3,12 +3,12 @@ import type { Ref } from 'vue';
 
 import { toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../composables/types';
+import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../types';
 
 export interface RadioGroupRootProps extends PrimitiveProps, FormFieldProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */

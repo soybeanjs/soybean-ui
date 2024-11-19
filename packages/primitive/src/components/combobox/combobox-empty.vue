@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectComboboxRootContext } from './context';
 import type { ComboboxEmptyPropsWithPrimitive } from './types';
 

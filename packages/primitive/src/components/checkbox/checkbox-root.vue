@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import isEqual from 'fast-deep-equal';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { isValueEqualOrExist } from '../../shared';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { injectCheckboxGroupRootContext, provideCheckboxRootContext } from './context';

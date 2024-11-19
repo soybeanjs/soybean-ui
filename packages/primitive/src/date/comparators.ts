@@ -10,8 +10,7 @@ import {
   parseZonedDateTime,
   toCalendar
 } from '@internationalized/date';
-import type { DateValue } from '@internationalized/date';
-import type { Granularity, Matcher, TimeValue } from './types';
+import type { DateValue, Granularity, Matcher, TimeValue } from './types';
 
 /**
  * Given a date string and a reference `DateValue` object, parse the string to the same type as the reference object.

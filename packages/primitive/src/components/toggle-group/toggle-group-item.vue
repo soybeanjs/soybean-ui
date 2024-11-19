@@ -3,9 +3,9 @@ import { computed } from 'vue';
 import type { ToggleProps } from '../toggle';
 import { Toggle } from '../toggle';
 import { RovingFocusItem } from '../roving-focus';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { isValueEqualOrExist, useForwardExpose } from '../../composables';
-import type { AcceptableValue } from '../../composables/types';
+import type { AcceptableValue } from '../../types';
 
 import { injectToggleGroupRootContext } from './toggle-group-root.vue';
 

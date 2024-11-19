@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import type { MenuItemEmits, MenuItemProps } from '../menu';
-
 import { MenuItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { ContextMenuItemEmits, ContextMenuItemPropsWithPrimitive } from './types';
 
-export type ContextMenuItemEmits = MenuItemEmits;
+defineOptions({
+  name: 'ContextMenuItem'
+});
 
-export interface ContextMenuItemProps extends MenuItemProps {}
+const props = defineProps<ContextMenuItemPropsWithPrimitive>();
+const emit = defineEmits<ContextMenuItemEmits>();
 
-const props = defineProps<MenuItemProps>();
-const emit = defineEmits<MenuItemEmits>();
+const forwarded = useForwardPropsEmits(props, emit);
 
-const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuItem v-bind="{ ...props, ...emitAsProps }">
+  <MenuItem v-bind="forwarded">
     <slot />
   </MenuItem>
 </template>

@@ -1,94 +1,26 @@
 <script setup lang="ts">
-import { type DateValue, Time, getLocalTimeZone, isEqualDay, toCalendarDateTime, today } from '@internationalized/date';
-
-import type { Ref } from 'vue';
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import { isBefore } from '../../date';
-import Primitive from '../primitive/primitive';
-import { usePrimitiveElement } from '../../composables';
-import { VisuallyHidden } from '../visually-hidden';
-import { type Formatter, createContext, useDateFormatter, useDirection, useKbd, useLocale } from '../../composables';
+import { Time, getLocalTimeZone, isEqualDay, toCalendarDateTime, today } from '@internationalized/date';
 import {
-  type HourCycle,
-  type SegmentPart,
-  type SegmentValueObj,
-  type TimeValue,
   createContent,
   getDefaultTime,
   getTimeFieldSegmentElements,
   initializeTimeSegmentValues,
+  isBefore,
   isSegmentNavigationKey,
   syncTimeSegmentValues
-} from '../../composables/date';
-import type { Direction, FormFieldProps } from '../../composables/types';
+} from '../../date';
+import type { DateValue, SegmentValueObj, TimeValue } from '../../date';
+import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
+import { VisuallyHidden } from '../visually-hidden';
+import { provideTimeFieldRootContext } from './context';
+import type { TimeFieldRootPropsWithPrimitive } from './types';
 
-type TimeFieldRootContext = {
-  locale: Ref<string>;
-  modelValue: Ref<DateValue | undefined>;
-  placeholder: Ref<DateValue>;
-  isInvalid: Ref<boolean>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  formatter: Formatter;
-  hourCycle: HourCycle;
-  segmentValues: Ref<SegmentValueObj>;
-  segmentContents: Ref<{ part: SegmentPart; value: string }[]>;
-  elements: Ref<Set<HTMLElement>>;
-  focusNext: () => void;
-  setFocusedElement: (el: HTMLElement) => void;
-};
-
-export interface TimeFieldRootProps extends PrimitiveProps, FormFieldProps {
-  /** The default value for the calendar */
-  defaultValue?: TimeValue;
-  /** The default placeholder date */
-  defaultPlaceholder?: TimeValue;
-  /**
-   * The placeholder date, which is used to determine what time to display when no time is selected. This updates as the
-   * user navigates the field
-   */
-  placeholder?: TimeValue;
-  /** The controlled checked state of the field. Can be bound as `v-model`. */
-  modelValue?: TimeValue | undefined;
-  /** The hour cycle used for formatting times. Defaults to the local preference */
-  hourCycle?: HourCycle;
-  /**
-   * The granularity to use for formatting times. Defaults to minute if a Time is provided, otherwise defaults to
-   * minute. The field will render segments for each part of the date up to and including the specified granularity
-   */
-  granularity?: 'hour' | 'minute' | 'second';
-  /** Whether or not to hide the time zone segment of the field */
-  hideTimeZone?: boolean;
-  /** The maximum date that can be selected */
-  maxValue?: TimeValue;
-  /** The minimum date that can be selected */
-  minValue?: TimeValue;
-  /** The locale to use for formatting dates */
-  locale?: string;
-  /** Whether or not the time field is disabled */
-  disabled?: boolean;
-  /** Whether or not the time field is readonly */
-  readonly?: boolean;
-  /** Id of the element */
-  id?: string;
-  /**
-   * The reading direction of the time field when applicable. <br> If omitted, inherits globally from `ConfigProvider`
-   * or assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-}
-
-export type TimeFieldRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [date: TimeValue | undefined];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: TimeValue];
-};
-
-export const [injectTimeFieldRootContext, provideTimeFieldRootContext] =
-  createContext<TimeFieldRootContext>('TimeFieldRoot');
+defineOptions({
+  name: 'TimeFieldRoot',
+  inheritAttrs: false
+});
 
 function convertValue(value: TimeValue, date: DateValue = today(getLocalTimeZone())) {
   if (value && 'day' in value) {
@@ -98,28 +30,13 @@ function convertValue(value: TimeValue, date: DateValue = today(getLocalTimeZone
   return toCalendarDateTime(date, value);
 }
 
-defineOptions({
-  inheritAttrs: false
-});
-
-const props = withDefaults(defineProps<TimeFieldRootProps>(), {
+const props = withDefaults(defineProps<TimeFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
   disabled: false,
   readonly: false,
   placeholder: undefined,
   isDateUnavailable: undefined
 });
-const emit = defineEmits<TimeFieldRootEmits>();
-defineSlots<{
-  default: (props: {
-    /** The current time of the field */
-    modelValue: TimeValue | undefined;
-    /** The time field segment contents */
-    segments: { part: SegmentPart; value: string }[];
-    /** Value if the input is invalid */
-    isInvalid: boolean;
-  }) => any;
-}>();
 
 const {
   disabled,
@@ -145,10 +62,9 @@ onMounted(() => {
   getTimeFieldSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: defaultValue.value,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<TimeValue>;
+const modelValue = defineModel<TimeValue>({
+  default: defaultValue.value
+});
 
 const convertedModelValue = computed({
   get() {
@@ -170,10 +86,9 @@ const defaultDate = getDefaultTime({
   defaultValue: modelValue.value
 });
 
-const placeholder = useVModel(props, 'placeholder', emit, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<TimeValue>;
+const placeholder = defineModel<TimeValue>({
+  default: props.placeholder ?? defaultDate.copy()
+});
 
 const convertedPlaceholder = computed({
   get() {

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { CalendarHeading, type CalendarHeadingProps } from '..';
 
+defineOptions({
+  name: 'DatePickerHeading'
+});
+
 export interface DatePickerHeadingProps extends CalendarHeadingProps {}
 
 const props = defineProps<DatePickerHeadingProps>();

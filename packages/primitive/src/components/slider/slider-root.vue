@@ -2,10 +2,10 @@
 import type { Ref } from 'vue';
 import { ref, toRaw, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { clamp, createContext, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { DataOrientation, Direction, FormFieldProps } from '../../composables/types';
+import type { DataOrientation, Direction, FormFieldProps } from '../../types';
 
 import SliderHorizontal from './slider-horizontal.vue';
 import SliderVertical from './slider-vertical.vue';

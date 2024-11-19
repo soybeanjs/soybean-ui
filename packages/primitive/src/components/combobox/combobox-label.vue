@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useForwardExpose, useId } from '../../composables';
 import { injectComboboxGroupContext } from './context';
 import type { ComboboxLabelPropsWithPrimitive } from './types';

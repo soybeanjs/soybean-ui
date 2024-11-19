@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { type ComputedRef, type Ref, computed, ref, toRefs, watch } from 'vue';
+import { computed, ref, toRefs, watch } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
-import type { Direction, FormFieldProps } from '../../composables/types';
+import type { Direction, FormFieldProps } from '../../types';
 
 export type PinInputRootEmits = {
   'update:modelValue': [value: string[]];

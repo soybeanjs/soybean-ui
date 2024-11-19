@@ -4,8 +4,8 @@ import type { Ref } from 'vue';
 import { computed, ref, toRefs, watchEffect } from 'vue';
 import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
 import { createContext, useCollection, useDirection, useForwardExpose, useId } from '../../composables';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import type { Direction, Orientation } from './utils';
 
 export interface NavigationMenuRootProps extends PrimitiveProps {

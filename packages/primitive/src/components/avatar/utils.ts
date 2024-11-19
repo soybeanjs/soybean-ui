@@ -1,4 +1,5 @@
-import { type Ref, onMounted, onUnmounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
+import type { Ref } from 'vue';
 
 export type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
 

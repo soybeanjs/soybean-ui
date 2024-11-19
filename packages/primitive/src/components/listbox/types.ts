@@ -2,7 +2,7 @@ import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import type { LabelProps, LabelPropsWithPrimitive } from '../label/types';
 
 export interface ListboxRootProps<T = AcceptableValue> extends FormFieldProps {

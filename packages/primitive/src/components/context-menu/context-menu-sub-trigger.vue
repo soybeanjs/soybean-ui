@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { MenuSubTriggerProps } from '../menu';
-
 import { MenuSubTrigger } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { ContextMenuSubTriggerPropsWithPrimitive } from './types';
 
-export interface ContextMenuSubTriggerProps extends MenuSubTriggerProps {}
+defineOptions({
+  name: 'ContextMenuSubTrigger'
+});
 
-const props = defineProps<ContextMenuSubTriggerProps>();
+const props = defineProps<ContextMenuSubTriggerPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { type Ref, computed } from 'vue';
+import { computed } from 'vue';
+import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { injectToggleGroupRootContext } from '../toggle-group/toggle-group-root.vue';
 
-import Primitive from '../primitive/primitive';
-import type { FormFieldProps } from '../../composables/types';
+import { Primitive } from '../primitive';
+import type { FormFieldProps } from '../../types';
 import { useFormControl, useForwardExpose } from '../../composables';
 
 export type ToggleEmits = {

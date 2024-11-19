@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { PopoverArrow, type PopoverArrowProps } from '..';
+import PopoverArrow from '../popover/popover-arrow.vue';
+import type { PopoverArrowProps } from '../popover';
+
+defineOptions({
+  name: 'DatePickerArrow'
+});
 
 export interface DatePickerArrowProps extends PopoverArrowProps {}
 

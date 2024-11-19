@@ -3,7 +3,7 @@ import { computed, toRefs } from 'vue';
 import type { CSSProperties } from 'vue';
 import DismissableLayer from '../dismissable-layer/dismissable-layer.vue';
 import PopperContent from '../popper/popper-content.vue';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import ListboxContent from '../listbox/listbox-content.vue';
 import { useBodyScrollLock, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';

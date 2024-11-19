@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useCollection, useForwardExpose, useId } from '../../composables';
 import { handleAndDispatchCustomEvent } from '../../shared';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import type { AcceptableValue } from '../../types';
 import { injectListboxRootContext, provideListboxItemContext } from './context';
 import { valueComparator } from './shared';

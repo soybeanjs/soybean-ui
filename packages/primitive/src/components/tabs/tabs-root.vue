@@ -2,9 +2,9 @@
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
-import type { DataOrientation, Direction, StringOrNumber } from '../../composables/types';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
+import type { DataOrientation, Direction, StringOrNumber } from '../../types';
 import { createContext, useDirection, useForwardExpose, useId } from '../../composables';
 </script>
 

@@ -4,8 +4,8 @@ import type { Ref } from 'vue';
 import { ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuContext, provideNavigationMenuContext } from './navigation-menu-root.vue';
 import type { Orientation } from './utils';
 

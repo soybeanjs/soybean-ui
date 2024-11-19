@@ -1,5 +1,5 @@
 import { handleAndDispatchCustomEvent } from '../../composables';
-import type { AcceptableValue } from '../../composables/types';
+import type { AcceptableValue } from '../../types';
 
 export type SelectEvent = CustomEvent<{ originalEvent: MouseEvent; value?: AcceptableValue }>;
 export const RADIO_SELECT = 'radio.select';

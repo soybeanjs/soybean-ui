@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { type DateValue, isEqualDay } from '@internationalized/date';
-
+import { isEqualDay } from '@internationalized/date';
 import type { Ref } from 'vue';
 import { onMounted, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive/types';
-import { type Grid, type Matcher, type WeekDayFormat, isBefore } from '../../date';
-import { useCalendar } from '../calendar/use-calendar';
-import Primitive from '../primitive/primitive';
-import { usePrimitiveElement } from '../../composables';
-import { type Formatter, createContext, useDirection, useLocale } from '../../composables';
-import { getDefaultDate, handleCalendarInitialFocus } from '../../composables/date';
-import type { DateRange } from '../../composables/date';
-import type { Direction } from '../../composables/types';
-import { useRangeCalendarState } from './use-range-calendar';
+import type { PrimitiveProps } from '../primitive';
+import type { DateFormatter, DateRange, DateValue, Grid, Matcher, WeekDayFormat } from '../../date';
+import {
+  createContext,
+  useCalendar,
+  useDirection,
+  useLocale,
+  usePrimitiveElement,
+  useRangeCalendarState
+} from '../../composables';
+import { Primitive } from '../primitive';
+import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
+import type { Direction } from '../../types';
 
 type RangeCalendarRootContext = {
   modelValue: Ref<DateRange>;
@@ -50,7 +52,7 @@ type RangeCalendarRootContext = {
   nextPage: (nextPageFunc?: (date: DateValue) => DateValue) => void;
   isNextButtonDisabled: (nextPageFunc?: (date: DateValue) => DateValue) => boolean;
   isPrevButtonDisabled: (prevPageFunc?: (date: DateValue) => DateValue) => boolean;
-  formatter: Formatter;
+  formatter: DateFormatter;
   dir: Ref<Direction>;
 };
 

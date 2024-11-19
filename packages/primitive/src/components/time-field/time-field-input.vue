@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Primitive, type PrimitiveProps } from '../primitive';
-import type { SegmentPart } from '../../composables/date';
-import { useDateField } from '../../composables/date/use-date-field';
-import { injectTimeFieldRootContext } from './time-field-root.vue';
+import { Primitive } from '../primitive';
+import { useDateField } from '../../composables';
+import type { TimeFieldInputPropsWithPrimitive } from './types';
+import { injectTimeFieldRootContext } from './context';
 
-export interface TimeFieldInputProps extends PrimitiveProps {
-  /** The part of the date to render */
-  part: SegmentPart;
-}
+defineOptions({
+  name: 'TimeFieldInput'
+});
 
-const props = defineProps<TimeFieldInputProps>();
+const props = defineProps<TimeFieldInputPropsWithPrimitive>();
 
 const rootContext = injectTimeFieldRootContext();
 

@@ -25,6 +25,7 @@ export * from './use-locale';
 export * from './use-nonce';
 export * from './use-presence';
 export * from './use-primitive-element';
+export * from './use-range-calendar';
 export * from './use-selection-behavior';
 export * from './use-single-or-multiple-value';
 export * from './use-size';

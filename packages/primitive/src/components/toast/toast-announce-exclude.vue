@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 
 export interface ToastAnnounceExcludeProps extends PrimitiveProps {
   altText?: string;

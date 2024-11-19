@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { StringOrNumber } from '../../composables/types';
+import type { StringOrNumber } from '../../types';
 
 import { injectTabsRootContext } from './tabs-root.vue';
 import { makeContentId, makeTriggerId } from './utils';

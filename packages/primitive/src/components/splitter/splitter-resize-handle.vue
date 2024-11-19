@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { isBrowser, useForwardExpose, useId } from '../../composables';
 import { useWindowSplitterResizeHandlerBehavior } from './utils/composables/use-window-splitter-behavior';
 

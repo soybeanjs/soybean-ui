@@ -1,8 +1,8 @@
 import type { Ref } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
 import type { Align, Side } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { ArrowProps } from '../arrow/types';
+import type { PrimitiveProps } from '../primitive';
+import type { ArrowProps } from '../arrow';
 
 export interface Measurable {
   getBoundingClientRect: () => DOMRect;

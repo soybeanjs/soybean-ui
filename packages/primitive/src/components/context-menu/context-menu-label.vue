@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { MenuLabelProps } from '../menu';
-
 import { MenuLabel } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { ContextMenuLabelPropsWithPrimitive } from './types';
 
-export interface ContextMenuLabelProps extends MenuLabelProps {}
+defineOptions({
+  name: 'ContextMenuLabel'
+});
 
-const props = defineProps<ContextMenuLabelProps>();
+const props = defineProps<ContextMenuLabelPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

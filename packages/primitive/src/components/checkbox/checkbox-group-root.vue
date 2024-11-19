@@ -2,7 +2,7 @@
 import { computed, toRef, toRefs } from 'vue';
 import { useDirection, useFormControl, usePrimitiveElement } from '../../composables';
 import type { AcceptableValue } from '../../types';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import type { CheckboxGroupRootPropsWithPrimitive } from './types';

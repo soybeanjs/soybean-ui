@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { Presence } from '../presence';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { injectCheckboxRootContext } from './context';
 import { getCheckedState, isIndeterminate } from './shared';
 import type { CheckboxIndicatorPropsWithPrimitive } from './types';

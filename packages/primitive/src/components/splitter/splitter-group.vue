@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { type CSSProperties, type Ref, computed, ref, toRefs, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import { computed, ref, toRefs, watch, watchEffect } from 'vue';
+import type { CSSProperties, Ref } from 'vue';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import { areEqual, createContext, useDirection, useForwardExpose, useId } from '../../composables';
 import { initializeDefaultStorage, loadPanelGroupState, savePanelGroupState } from './utils/storage';
 import { useWindowSplitterPanelGroupBehavior } from './utils/composables/use-window-splitter-panel-group-behavior';

@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import type { MenuItemEmits, MenuRadioItemProps } from '../Menu';
-
 import { MenuRadioItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { ContextMenuRadioItemEmits, ContextMenuRadioItemPropsWithPrimitive } from './types';
 
-export type ContextMenuRadioItemEmits = MenuItemEmits;
+defineOptions({
+  name: 'ContextMenuRadioItem'
+});
 
-export interface ContextMenuRadioItemProps extends MenuRadioItemProps {}
-
-const props = defineProps<ContextMenuRadioItemProps>();
+const props = defineProps<ContextMenuRadioItemPropsWithPrimitive>();
 const emit = defineEmits<ContextMenuRadioItemEmits>();
 
-const emitAsProps = useEmitAsProps(emit);
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuRadioItem v-bind="{ ...props, ...emitAsProps }">
+  <MenuRadioItem v-bind="forwarded">
     <slot />
   </MenuRadioItem>
 </template>

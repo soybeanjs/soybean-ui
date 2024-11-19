@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { type VirtualItem, type Virtualizer, useVirtualizer } from '@tanstack/vue-virtual';
-import { type Ref, cloneVNode, computed, nextTick, useSlots } from 'vue';
+import { useVirtualizer } from '@tanstack/vue-virtual';
+import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
+import { cloneVNode, computed, nextTick, useSlots } from 'vue';
+import type { Ref } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { useCollection } from '../../composables';
-import { getNextMatch } from '../../composables/use-typeahead';
+import { getNextMatch, useCollection } from '../../composables';
 import { type FlattenedItem, injectTreeRootContext } from './tree-root.vue';
 export interface TreeVirtualizerProps {
   /** Number of items rendered outside the visible area */

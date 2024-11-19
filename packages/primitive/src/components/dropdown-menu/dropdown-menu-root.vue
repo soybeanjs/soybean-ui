@@ -6,7 +6,7 @@ import { useVModel } from '@vueuse/core';
 import type { MenuEmits, MenuProps } from '../menu';
 import { MenuRoot } from '../menu';
 import { createContext, useDirection, useForwardExpose } from '../../composables';
-import type { Direction } from '../../composables/types';
+import type { Direction } from '../../types';
 
 export interface DropdownMenuRootProps extends MenuProps {
   /**

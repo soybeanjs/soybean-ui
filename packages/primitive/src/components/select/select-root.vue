@@ -4,7 +4,7 @@ import { computed, ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { createContext, isNullish, useCollection, useDirection, useFormControl } from '../../composables';
 import { PopperRoot } from '../popper';
-import type { AcceptableValue, Direction, FormFieldProps } from '../../composables/types';
+import type { AcceptableValue, Direction, FormFieldProps } from '../../types';
 import { compare } from './utils';
 </script>
 

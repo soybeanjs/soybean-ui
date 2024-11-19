@@ -1,5 +1,5 @@
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 
 export interface DismissableLayerProps {
   /**

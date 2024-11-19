@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { type HTMLAttributes, type Ref, computed, ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import Primitive from '../primitive/primitive';
+import { computed, ref, toRefs } from 'vue';
+import type { HTMLAttributes, Ref } from 'vue';
+import type { PrimitiveProps } from '../primitive';
+import { Primitive } from '../primitive';
 import {
   clamp,
   createContext,
@@ -12,7 +13,7 @@ import {
   usePrimitiveElement
 } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { FormFieldProps } from '../../composables/types';
+import type { FormFieldProps } from '../../types';
 
 import { handleDecimalOperation, useNumberFormatter, useNumberParser } from './utils';
 

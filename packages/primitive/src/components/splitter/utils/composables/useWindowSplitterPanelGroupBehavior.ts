@@ -1,4 +1,5 @@
-import { type Ref, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
+import type { Ref } from 'vue';
 import type { PanelData } from '../../splitter-panel.vue';
 import { adjustLayoutByDelta } from '../layout';
 import { assert } from '../assert';

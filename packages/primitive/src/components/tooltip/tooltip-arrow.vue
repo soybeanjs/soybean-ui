@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
 

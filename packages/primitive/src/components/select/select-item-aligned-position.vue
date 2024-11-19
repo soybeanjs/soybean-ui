@@ -2,9 +2,9 @@
 import type { Ref } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { nextTick, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 import { clamp, createContext, useCollection, useForwardExpose } from '../../composables';
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';

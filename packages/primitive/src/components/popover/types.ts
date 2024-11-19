@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive/types';
-import type { TeleportProps } from '../teleport/types';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer/types';
-import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper/types';
-import type { FocusScopeProps } from '../focus-scope/types';
+import type { PrimitiveProps } from '../primitive';
+import type { TeleportProps } from '../teleport';
+import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
+import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
+import type { FocusScopeProps } from '../focus-scope';
 
 export interface PopoverRootProps {
   /** The open state of the popover when it is initially rendered. Use when you do not need to control its open state. */
@@ -69,3 +69,6 @@ export type PopoverArrowPropsWithPrimitive = PopoverArrowProps & PrimitiveProps;
 
 export interface PopoverAnchorProps extends PopperAnchorProps {}
 export type PopoverAnchorPropsWithPrimitive = PopoverAnchorProps & PrimitiveProps;
+
+export interface PopoverTriggerProps {}
+export type PopoverTriggerPropsWithPrimitive = PopoverTriggerProps & PrimitiveProps;

@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Primitive, type PrimitiveProps } from '../primitive';
-import type { SegmentPart } from '../../composables/date';
-import { useDateField } from '../../composables/date/use-date-field';
-import { type DateRangeType, injectDateRangeFieldRootContext } from './date-range-field-root.vue';
+import { Primitive } from '../primitive';
+import { useDateField } from '../../composables';
+import { injectDateRangeFieldRootContext } from './context';
+import type { DateRangeFieldInputPropsWithPrimitive } from './types';
 
-export interface DateRangeFieldInputProps extends PrimitiveProps {
-  /** The part of the date to render */
-  part: SegmentPart;
-  /** The type of field to render (start or end) */
-  type: DateRangeType;
-}
+defineOptions({
+  name: 'DateRangeFieldInput'
+});
 
-const props = defineProps<DateRangeFieldInputProps>();
+const props = defineProps<DateRangeFieldInputPropsWithPrimitive>();
 
 const rootContext = injectDateRangeFieldRootContext();
 

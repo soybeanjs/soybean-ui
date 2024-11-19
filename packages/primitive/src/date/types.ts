@@ -63,6 +63,7 @@ export type DateRange = {
   start: DateValue | undefined;
   end: DateValue | undefined;
 };
+export type DateRangeType = keyof DateRange;
 
 export type HourCycle = 12 | 24 | undefined;
 
@@ -105,3 +106,5 @@ export type CreateMonthProps = {
   /** The locale to use when creating the calendar month. */
   locale: string;
 };
+
+export type { DateValue };

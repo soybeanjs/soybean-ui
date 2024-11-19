@@ -1,4 +1,4 @@
-import type { PrimitiveProps } from '../primitive/types';
+import type { PrimitiveProps } from '../primitive';
 
 export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
 

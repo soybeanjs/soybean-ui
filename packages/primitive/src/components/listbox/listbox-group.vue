@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Primitive from '../primitive/primitive';
+import { Primitive } from '../primitive';
 import { useId } from '../../composables';
 import { provideListboxGroupContext } from './context';
 import type { ListboxGroupPropsWithPrimitive } from './types';

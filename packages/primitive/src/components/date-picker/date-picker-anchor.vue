@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { PopoverAnchor, type PopoverAnchorProps } from '..';
+import PopoverAnchor from '../popover/popover-anchor.vue';
+import type { PopoverAnchorProps } from '../popover';
+
+defineOptions({
+  name: 'DatePickerAnchor'
+});
 
 export interface DatePickerAnchorProps extends PopoverAnchorProps {}
 

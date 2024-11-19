@@ -1,10 +1,10 @@
 import type { Ref } from 'vue';
 import type { EventHookOn } from '@vueuse/core';
 import type { AcceptableValue } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { TeleportProps } from '../teleport/types';
-import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper/types';
-import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer/types';
+import type { PrimitiveProps } from '../primitive';
+import type { TeleportProps } from '../teleport';
+import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
+import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type {
   ListboxFilterProps,
   ListboxItemEmits,
