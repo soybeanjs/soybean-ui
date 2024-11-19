@@ -1,74 +1,17 @@
 <script setup lang="ts">
-import { isEqualDay, isSameDay } from '@internationalized/date';
-import type { Ref } from 'vue';
 import { computed, ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { DateValue, Granularity, HourCycle, Matcher, WeekDayFormat, getDefaultDate } from '../../date';
-import { createContext, useDirection } from '../../composables';
-import type { CalendarRootProps } from '../calendar';
-import type { DateFieldRootProps } from '../date-field';
-import type { PopoverRootEmits, PopoverRootProps } from '../popover';
+import { isEqualDay, isSameDay } from '@internationalized/date';
+import { getDefaultDate } from '../../date';
+import type { DateValue } from '../../date';
+import { useDirection } from '../../composables';
 import PopoverRoot from '../popover/popover-root.vue';
-import type { Direction } from '../../types';
+import { provideDatePickerRootContext } from './context';
+import type { DateFieldInstance, DatePickerRootProps } from './types';
 
 defineOptions({
   name: 'DatePickerRoot',
   inheritAttrs: false
 });
-
-type DatePickerRootContext = {
-  id: Ref<string | undefined>;
-  name: Ref<string | undefined>;
-  minValue: Ref<DateValue | undefined>;
-  maxValue: Ref<DateValue | undefined>;
-  hourCycle: Ref<HourCycle | undefined>;
-  granularity: Ref<Granularity | undefined>;
-  hideTimeZone: Ref<boolean>;
-  required: Ref<boolean>;
-  locale: Ref<string>;
-  dateFieldRef: Ref<InstanceType<typeof DateFieldRoot> | undefined>;
-  modelValue: Ref<DateValue | undefined>;
-  placeholder: Ref<DateValue>;
-  pagedNavigation: Ref<boolean>;
-  preventDeselect: Ref<boolean>;
-  weekStartsOn: Ref<0 | 1 | 2 | 3 | 4 | 5 | 6>;
-  weekdayFormat: Ref<WeekDayFormat>;
-  fixedWeeks: Ref<boolean>;
-  numberOfMonths: Ref<number>;
-  disabled: Ref<boolean>;
-  readonly: Ref<boolean>;
-  isDateDisabled?: Matcher;
-  isDateUnavailable?: Matcher;
-  defaultOpen: Ref<boolean>;
-  open: Ref<boolean>;
-  modal: Ref<boolean>;
-  onDateChange: (date: DateValue | undefined) => void;
-  onPlaceholderChange: (date: DateValue) => void;
-  dir: Ref<Direction>;
-};
-
-export type DatePickerRootProps = DateFieldRootProps &
-  PopoverRootProps &
-  Pick<
-    CalendarRootProps,
-    | 'isDateDisabled'
-    | 'pagedNavigation'
-    | 'weekStartsOn'
-    | 'weekdayFormat'
-    | 'fixedWeeks'
-    | 'numberOfMonths'
-    | 'preventDeselect'
-  >;
-
-export type DatePickerRootEmits = {
-  /** Event handler called whenever the model value changes */
-  'update:modelValue': [date: DateValue | undefined];
-  /** Event handler called whenever the placeholder value changes */
-  'update:placeholder': [date: DateValue];
-};
-
-export const [injectDatePickerRootContext, provideDatePickerRootContext] =
-  createContext<DatePickerRootContext>('DatePickerRoot');
 
 const props = withDefaults(defineProps<DatePickerRootProps>(), {
   defaultValue: undefined,
@@ -89,7 +32,7 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined
 });
-const emit = defineEmits<DatePickerRootEmits & PopoverRootEmits>();
+
 const {
   locale,
   disabled,
@@ -118,10 +61,9 @@ const {
 
 const dir = useDirection(propDir);
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: defaultValue.value,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<DateValue | undefined>;
+const modelValue = defineModel<DateValue | undefined>('modelValue', {
+  default: defaultValue.value
+});
 
 const defaultDate = computed(() =>
   getDefaultDate({
@@ -131,17 +73,15 @@ const defaultDate = computed(() =>
   })
 );
 
-const placeholder = useVModel(props, 'placeholder', emit, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.value.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<DateValue>;
+const placeholder = defineModel<DateValue>('placeholder', {
+  default: () => props.defaultPlaceholder ?? defaultDate.value.copy()
+});
 
-const open = useVModel(props, 'open', emit, {
-  defaultValue: defaultOpen.value,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
+const open = defineModel<boolean>('open', {
+  default: defaultOpen.value
+});
 
-const dateFieldRef = ref<InstanceType<typeof DateFieldRoot> | undefined>();
+const dateFieldRef = ref<DateFieldInstance | undefined>();
 
 provideDatePickerRootContext({
   isDateUnavailable: propsIsDateUnavailable.value,

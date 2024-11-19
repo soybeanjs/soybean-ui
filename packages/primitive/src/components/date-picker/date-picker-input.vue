@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import DateFieldInput from '../date-field/date-field-input.vue';
-import type { DateFieldInputProps } from '../date-field';
+import type { DatePickerInputPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerInput'
 });
 
-export interface DatePickerInputProps extends DateFieldInputProps {}
-
-const props = defineProps<DatePickerInputProps>();
+const props = defineProps<DatePickerInputPropsWithPrimitive>();
 </script>
 
 <template>

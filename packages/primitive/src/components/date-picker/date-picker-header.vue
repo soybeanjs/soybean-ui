@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import CalendarHeader from '../calendar/calendar-header.vue';
-import type { CalendarHeaderProps } from '../calendar';
+import { CalendarHeader } from '../calendar';
+import type { DatePickerHeaderPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerHeader'
 });
 
-export interface DatePickerHeaderProps extends CalendarHeaderProps {}
-
-const props = defineProps<DatePickerHeaderProps>();
+const props = defineProps<DatePickerHeaderPropsWithPrimitive>();
 </script>
 
 <template>

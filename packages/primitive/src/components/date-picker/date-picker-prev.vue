@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import CalendarPrev from '../calendar/calendar-prev.vue';
-import type { CalendarPrevProps } from '../calendar';
+import { CalendarPrev } from '../calendar';
+import type { DatePickerPrevPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerPrev'
 });
 
-export interface DatePickerPrevProps extends CalendarPrevProps {}
-
-const props = defineProps<DatePickerPrevProps>();
+const props = defineProps<DatePickerPrevPropsWithPrimitive>();
 </script>
 
 <template>

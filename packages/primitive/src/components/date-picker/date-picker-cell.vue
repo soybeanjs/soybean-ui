@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import CalendarCell from '../calendar/calendar-cell.vue';
-import type { CalendarCellProps } from '../calendar';
+import { CalendarCell } from '../calendar';
+import type { DatePickerCellPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerCell'
 });
 
-export interface DatePickerCellProps extends CalendarCellProps {}
-
-const props = defineProps<DatePickerCellProps>();
+const props = defineProps<DatePickerCellPropsWithPrimitive>();
 </script>
 
 <template>

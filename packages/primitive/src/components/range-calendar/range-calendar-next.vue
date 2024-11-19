@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import type { DateValue } from '../../date';
 
-import { computed } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { injectRangeCalendarRootContext } from './range-calendar-root.vue';

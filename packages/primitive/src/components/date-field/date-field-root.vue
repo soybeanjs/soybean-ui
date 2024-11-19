@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
-import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
 import {
   createContent,
@@ -18,7 +16,7 @@ import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement 
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideDateFieldRootContext } from './context';
-import type { DateFieldRootEmits, DateFieldRootPropsWithPrimitive } from './types';
+import type { DateFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DateFieldRoot',
@@ -33,8 +31,6 @@ const props = withDefaults(defineProps<DateFieldRootPropsWithPrimitive>(), {
   isDateUnavailable: undefined
 });
 
-const emit = defineEmits<DateFieldRootEmits>();
-
 const {
   disabled,
   readonly,
@@ -44,8 +40,21 @@ const {
   dir: propDir,
   locale: propLocale
 } = toRefs(props);
+
+const modelValue = defineModel<DateValue>({ default: defaultValue.value });
+
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
+
+const defaultDate = getDefaultDate({
+  defaultPlaceholder: props.placeholder,
+  granularity: granularity.value,
+  defaultValue: modelValue.value
+});
+
+const placeholder = defineModel<DateValue>('placeholder', {
+  default: () => props.defaultPlaceholder ?? defaultDate.copy()
+});
 
 const formatter = useDateFormatter(locale.value);
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
@@ -54,19 +63,6 @@ const segmentElements = ref<Set<HTMLElement>>(new Set());
 onMounted(() => {
   getSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
-
-const modelValue = defineModel<DateValue>({ default: defaultValue.value });
-
-const defaultDate = getDefaultDate({
-  defaultPlaceholder: props.placeholder,
-  granularity: granularity.value,
-  defaultValue: modelValue.value
-});
-
-const placeholder = useVModel(props, 'placeholder', emit, {
-  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
-  passive: (props.placeholder === undefined) as false
-}) as Ref<DateValue>;
 
 const inferredGranularity = computed(() => {
   if (props.granularity) return !hasTime(placeholder.value) ? 'day' : props.granularity;

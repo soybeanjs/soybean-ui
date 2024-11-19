@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import CalendarNext from '../calendar/calendar-next.vue';
-import type { CalendarNextProps } from '../calendar';
+import { CalendarNext } from '../calendar';
+import type { DatePickerNextPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerNext'
 });
 
-export interface DatePickerNextProps extends CalendarNextProps {}
-
-const props = defineProps<DatePickerNextProps>();
+const props = defineProps<DatePickerNextPropsWithPrimitive>();
 </script>
 
 <template>

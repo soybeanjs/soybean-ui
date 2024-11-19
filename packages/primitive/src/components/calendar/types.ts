@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
-import type { DateValue } from '../../date';
+import type { DateFormatter, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
 import type { PrimitiveProps } from '../primitive';
-import type { DateFormatter, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
 import type { Direction } from '../../types';
 
 export interface BaseCalendarRootProps {

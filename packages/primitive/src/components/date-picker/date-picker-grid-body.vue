@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import CalendarGridBody from '../calendar/calendar-grid-body.vue';
-import type { CalendarGridBodyProps } from '../calendar';
+import type { DatePickerGridBodyPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerGridBody'
 });
 
-export interface DatePickerGridBodyProps extends CalendarGridBodyProps {}
-
-const props = defineProps<DatePickerGridBodyProps>();
+const props = defineProps<DatePickerGridBodyPropsWithPrimitive>();
 </script>
 
 <template>

@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { useForwardPropsEmits } from '../../composables';
-import { type PopoverContentEmits, type PopoverContentProps } from '../popover';
 import PopoverContent from '../popover/popover-content.vue';
 import PopoverPortal from '../popover/popover-portal.vue';
+import type { DatePickerContentEmits, DatePickerContentPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'DatePickerContent'
+  name: 'DatePickerContent',
+  inheritAttrs: false
 });
 
-export interface DatePickerContentProps extends PopoverContentProps {}
-export interface DatePickerContentEmits extends PopoverContentEmits {}
+const props = defineProps<DatePickerContentPropsWithPrimitive>();
 
-const props = defineProps<DatePickerContentProps>();
 const emit = defineEmits<DatePickerContentEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);

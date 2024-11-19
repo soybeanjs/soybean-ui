@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import PopoverClose from '../popover/popover-close.vue';
-import type { PopoverCloseProps } from '../popover';
+import type { DatePickerClosePropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DatePickerClose'
 });
 
-export interface DatePickerCloseProps extends PopoverCloseProps {}
-
-const props = defineProps<DatePickerCloseProps>();
+const props = defineProps<DatePickerClosePropsWithPrimitive>();
 </script>
 
 <template>
