@@ -11,6 +11,7 @@ export type SingleOrMultipleType = 'single' | 'multiple';
 export type Side = 'bottom' | 'left' | 'right' | 'top';
 export type Align = 'center' | 'end' | 'start';
 export type DisclosureState = 'open' | 'closed';
+export type DataState = 'on' | 'off';
 export type FocusIntent = 'first' | 'last' | 'prev' | 'next';
 export type NavigationKeys =
   | 'ArrowDown'

@@ -1,77 +1,22 @@
 <script setup lang="ts">
-import type { ComputedRef, Ref } from 'vue';
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
+import { useDirection, useFormControl, useForwardExpose, useSingleOrMultipleValue } from '../../composables';
 import { Primitive } from '../primitive';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { RovingFocusGroup } from '../roving-focus';
-import type {
-  AcceptableValue,
-  DataOrientation,
-  Direction,
-  FormFieldProps,
-  SingleOrMultipleProps,
-  SingleOrMultipleType
-} from '../../types';
-import { createContext, useDirection, useFormControl, useForwardExpose } from '../../composables';
+import { provideToggleGroupRootContext } from './context';
+import type { ToggleGroupRootEmits, ToggleGroupRootPropsWithPrimitive } from './types';
 
-import { useSingleOrMultipleValue } from '../../composables/use-single-or-multiple-value';
+defineOptions({
+  name: 'ToggleGroupRoot'
+});
 
-export interface ToggleGroupRootProps<
-  ValidValue = AcceptableValue | AcceptableValue[],
-  ExplicitType = SingleOrMultipleType
-> extends PrimitiveProps,
-    FormFieldProps,
-    SingleOrMultipleProps<ValidValue, ExplicitType> {
-  /** When `false`, navigating through the items using arrow keys will be disabled. */
-  rovingFocus?: boolean;
-  /** When `true`, prevents the user from interacting with the toggle group and all its items. */
-  disabled?: boolean;
-  /**
-   * The orientation of the component, which determines how focus moves: `horizontal` for left/right arrows and
-   * `vertical` for up/down arrows.
-   */
-  orientation?: DataOrientation;
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** When `loop` and `rovingFocus` is `true`, keyboard navigation will loop from last item to first, and vice versa. */
-  loop?: boolean;
-}
-export type ToggleGroupRootEmits = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [payload: AcceptableValue | AcceptableValue[]];
-};
-
-interface ToggleGroupRootContext {
-  isSingle: ComputedRef<boolean>;
-  modelValue: Ref<AcceptableValue | AcceptableValue[] | undefined>;
-  changeModelValue: (value: AcceptableValue) => void;
-  dir?: Ref<Direction>;
-  orientation?: DataOrientation;
-  loop: Ref<boolean>;
-  rovingFocus: Ref<boolean>;
-  disabled?: Ref<boolean>;
-}
-
-export const [injectToggleGroupRootContext, provideToggleGroupRootContext] =
-  createContext<ToggleGroupRootContext>('ToggleGroupRoot');
-
-const props = withDefaults(defineProps<ToggleGroupRootProps>(), {
+const props = withDefaults(defineProps<ToggleGroupRootPropsWithPrimitive>(), {
   loop: true,
   rovingFocus: true,
   disabled: false
 });
 const emit = defineEmits<ToggleGroupRootEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current toggle values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
 
 const { loop, rovingFocus, disabled, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);

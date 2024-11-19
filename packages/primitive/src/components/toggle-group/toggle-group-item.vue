@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { ToggleProps } from '../toggle';
 import { Toggle } from '../toggle';
 import { RovingFocusItem } from '../roving-focus';
 import { Primitive } from '../primitive';
-import { isValueEqualOrExist, useForwardExpose } from '../../composables';
-import type { AcceptableValue } from '../../types';
+import { useForwardExpose } from '../../composables';
+import { isValueEqualOrExist } from '../../shared';
+import { injectToggleGroupRootContext } from './context';
+import type { ToggleGroupItemPropsWithPrimitive } from './types';
 
-import { injectToggleGroupRootContext } from './toggle-group-root.vue';
-
-export interface ToggleGroupItemProps extends Omit<ToggleProps, 'name' | 'required'> {
-  /** A string value for the toggle group item. All items within a toggle group should use a unique value. */
-  value: AcceptableValue;
-}
-
-const props = withDefaults(defineProps<ToggleGroupItemProps>(), {
+const props = withDefaults(defineProps<ToggleGroupItemPropsWithPrimitive>(), {
   as: 'button'
 });
 

@@ -1,7 +1,7 @@
-export {
-  injectToggleGroupRootContext,
-  default as ToggleGroupRoot,
-  type ToggleGroupRootProps,
-  type ToggleGroupRootEmits
-} from './ToggleGroupRoot.vue';
-export { default as ToggleGroupItem, type ToggleGroupItemProps } from './toggle-group-item.vue';
+import ToggleGroupRoot from './toggle-group-root.vue';
+import ToggleGroupItem from './toggle-group-item.vue';
+
+export { ToggleGroupRoot, ToggleGroupItem };
+export { injectToggleGroupRootContext } from './context';
+
+export * from './types';

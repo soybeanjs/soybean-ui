@@ -1,53 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { injectToggleGroupRootContext } from '../toggle-group/toggle-group-root.vue';
-
+import { injectToggleGroupRootContext } from '../toggle-group/context';
 import { Primitive } from '../primitive';
-import type { FormFieldProps } from '../../types';
 import { useFormControl, useForwardExpose } from '../../composables';
+import type { DataState } from '../../types';
+import type { TogglePropsWithPrimitive } from './types';
 
-export type ToggleEmits = {
-  /** Event handler called when the value of the toggle changes. */
-  'update:modelValue': [value: boolean];
-};
-
-export type DataState = 'on' | 'off';
-
-export interface ToggleProps extends PrimitiveProps, FormFieldProps {
-  /** The pressed state of the toggle when it is initially rendered. Use when you do not need to control its open state. */
-  defaultValue?: boolean;
-  /** The controlled pressed state of the toggle. Can be bind as `v-model`. */
-  modelValue?: boolean;
-  /** When `true`, prevents the user from interacting with the toggle. */
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<ToggleProps>(), {
+const props = withDefaults(defineProps<TogglePropsWithPrimitive>(), {
   modelValue: undefined,
   disabled: false,
   as: 'button'
 });
 
-const emit = defineEmits<ToggleEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current pressed state */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
-
 const { forwardRef, currentElement } = useForwardExpose();
 const toggleGroupContext = injectToggleGroupRootContext(null);
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue,
-  passive: (props.modelValue === undefined) as false
-}) as Ref<boolean>;
+const modelValue = defineModel<boolean>({
+  default: props.defaultValue
+});
 
 function togglePressed() {
   modelValue.value = !modelValue.value;
