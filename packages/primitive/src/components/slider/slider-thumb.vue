@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-
 import SliderThumbImpl from './slider-thumb-impl.vue';
+import type { SliderThumbPropsWithPrimitive } from './types';
 
-export interface SliderThumbProps extends PrimitiveProps {}
+defineOptions({
+  name: 'SliderThumb'
+});
 
-const props = defineProps<SliderThumbProps>();
+const props = defineProps<SliderThumbPropsWithPrimitive>();
+
 const { getItems } = useCollection();
 
 const { forwardRef, currentElement: thumbElement } = useForwardExpose();

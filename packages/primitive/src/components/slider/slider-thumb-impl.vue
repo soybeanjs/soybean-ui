@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
 import { useMounted } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose, useSize } from '../../composables';
-import { injectSliderRootContext } from './slider-root.vue';
-import { convertValueToPercentage, getLabel, getThumbInBoundsOffset, injectSliderOrientationContext } from './utils';
-
-export interface SliderThumbImplProps extends PrimitiveProps {
-  index: number;
-}
+import { injectSliderOrientationContext, injectSliderRootContext } from './context';
+import { convertValueToPercentage, getLabel, getThumbInBoundsOffset } from './shared';
+import type { SliderThumbImplPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'SliderThumbImpl',
   inheritAttrs: false
 });
 
-const props = defineProps<SliderThumbImplProps>();
+const props = defineProps<SliderThumbImplPropsWithPrimitive>();
 
 const rootContext = injectSliderRootContext();
 const orientation = injectSliderOrientationContext();
@@ -41,7 +38,7 @@ onMounted(() => {
   rootContext.thumbElements.value.push(thumbElement.value);
 });
 onUnmounted(() => {
-  const i = rootContext.thumbElements.value.findIndex(i => i === thumbElement.value) ?? -1;
+  const i = rootContext.thumbElements.value.findIndex(item => item === thumbElement.value) ?? -1;
   rootContext.thumbElements.value.splice(i, 1);
 });
 </script>

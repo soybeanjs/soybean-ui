@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectSliderRootContext } from './slider-root.vue';
-import { ARROW_KEYS, PAGE_KEYS } from './utils';
+import { injectSliderRootContext } from './context';
+import { ARROW_KEYS, PAGE_KEYS } from './shared';
+import type { SliderImplEmits, SliderImplPropsWithPrimitive } from './types';
 
-export type SliderImplEmits = {
-  slideStart: [event: PointerEvent];
-  slideMove: [event: PointerEvent];
-  slideEnd: [event: PointerEvent];
-  homeKeyDown: [event: KeyboardEvent];
-  endKeyDown: [event: KeyboardEvent];
-  stepKeyDown: [event: KeyboardEvent];
-};
+defineOptions({
+  name: 'SliderImpl'
+});
 
-export interface SliderImplProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<SliderImplProps>(), {
+const props = withDefaults(defineProps<SliderImplPropsWithPrimitive>(), {
   as: 'span'
 });
+
 const emit = defineEmits<SliderImplEmits>();
 const rootContext = injectSliderRootContext();
 </script>

@@ -5,7 +5,7 @@ import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
 import type { TabsTriggerPropsWithPrimitive } from './types';
 import { injectTabsRootContext } from './context';
-import { makeContentId, makeTriggerId } from './utils';
+import { makeContentId, makeTriggerId } from './shared';
 
 defineOptions({
   name: 'SoybeanTabsTrigger'

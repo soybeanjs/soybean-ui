@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { injectSliderOrientationContext, injectSliderRootContext } from './context';
+import { convertValueToPercentage } from './shared';
+import type { SliderRangePropsWithPrimitive } from './types';
 
-import { injectSliderRootContext } from './slider-root.vue';
-import { convertValueToPercentage, injectSliderOrientationContext } from './utils';
+defineOptions({
+  name: 'SliderRange'
+});
 
-export interface SliderRangeProps extends PrimitiveProps {}
+withDefaults(defineProps<SliderRangePropsWithPrimitive>(), {
+  as: 'span'
+});
 
-withDefaults(defineProps<SliderRangeProps>(), { as: 'span' });
 const rootContext = injectSliderRootContext();
 const orientation = injectSliderOrientationContext();
 

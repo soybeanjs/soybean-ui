@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
 import { useForwardExpose } from '../../composables';
+import { provideSliderOrientationContext } from './context';
+import { BACK_KEYS, linearScale } from './shared';
 import SliderImpl from './slider-impl.vue';
-import type { Direction, SliderOrientationPrivateEmits, SliderOrientationPrivateProps } from './utils';
-import { BACK_KEYS, linearScale, provideSliderOrientationContext } from './utils';
+import type { SliderHorizontalProps, SliderOrientationPrivateEmits } from './types';
 
-interface SliderHorizontalProps extends SliderOrientationPrivateProps {
-  dir?: Direction;
-}
+defineOptions({
+  name: 'SliderHorizontal'
+});
 
 const props = defineProps<SliderHorizontalProps>();
 const emit = defineEmits<SliderOrientationPrivateEmits>();

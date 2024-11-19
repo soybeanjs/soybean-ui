@@ -1,9 +1,9 @@
-export {
-  injectSliderRootContext,
-  default as SliderRoot,
-  type SliderRootProps,
-  type SliderRootEmits
-} from './SliderRoot.vue';
-export { default as SliderThumb, type SliderThumbProps } from './SliderThumb.vue';
-export { default as SliderTrack, type SliderTrackProps } from './SliderTrack.vue';
-export { default as SliderRange, type SliderRangeProps } from './slider-range.vue';
+import SliderRoot from './slider-root.vue';
+import SliderThumb from './slider-thumb.vue';
+import SliderTrack from './slider-track.vue';
+import SliderRange from './slider-range.vue';
+
+export { SliderRoot, SliderThumb, SliderTrack, SliderRange };
+export { injectSliderRootContext } from './context';
+
+export * from './types';

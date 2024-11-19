@@ -1,13 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
 import { useForwardExpose } from '../../composables';
+import { provideSliderOrientationContext } from './context';
+import { BACK_KEYS, linearScale } from './shared';
 import SliderImpl from './slider-impl.vue';
-import type { SliderOrientationPrivateEmits, SliderOrientationPrivateProps } from './utils';
-import { BACK_KEYS, linearScale, provideSliderOrientationContext } from './utils';
+import type { SliderOrientationPrivateEmits, SliderVerticalProps } from './types';
 
-interface SliderVerticalProps extends SliderOrientationPrivateProps {}
+defineOptions({
+  name: 'SliderVertical'
+});
+
 const props = defineProps<SliderVerticalProps>();
+
 const emit = defineEmits<SliderOrientationPrivateEmits>();
+
 const { max, min, inverted } = toRefs(props);
 
 const { forwardRef, currentElement: sliderElement } = useForwardExpose();

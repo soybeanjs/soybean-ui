@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import { makeContentId, makeTriggerId } from './utils';
+import { makeContentId, makeTriggerId } from './shared';
 import { injectTabsRootContext } from './context';
 import type { TabsContentPropsWithPrimitive } from './types';
 
