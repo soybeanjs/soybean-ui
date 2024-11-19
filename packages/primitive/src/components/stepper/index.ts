@@ -1,13 +1,20 @@
-export {
-  injectStepperRootContext,
-  default as StepperRoot,
-  type StepperRootProps,
-  type StepperRootEmits
-} from './stepper-root.vue';
+import StepperRoot from './stepper-root.vue';
+import StepperItem from './stepper-item.vue';
+import StepperTrigger from './stepper-trigger.vue';
+import StepperDescription from './stepper-description.vue';
+import StepperTitle from './stepper-title.vue';
+import StepperIndicator from './stepper-indicator.vue';
+import StepperSeparator from './stepper-separator.vue';
 
-export { default as StepperItem, type StepperItemProps } from './stepper-item.vue';
-export { default as StepperTrigger, type StepperTriggerProps } from './stepper-trigger.vue';
-export { default as StepperDescription, type StepperDescriptionProps } from './stepper-description.vue';
-export { default as StepperTitle, type StepperTitleProps } from './stepper-title.vue';
-export { default as StepperIndicator, type StepperIndicatorProps } from './stepper-indicator.vue';
-export { default as StepperSeparator, type StepperSeparatorProps } from './stepper-separator.vue';
+export {
+  StepperRoot,
+  StepperItem,
+  StepperTrigger,
+  StepperDescription,
+  StepperTitle,
+  StepperIndicator,
+  StepperSeparator
+};
+export { injectStepperRootContext } from './context';
+
+export * from './types';

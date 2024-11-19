@@ -1,81 +1,19 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core';
 import { computed, nextTick, ref, toRefs, watch } from 'vue';
-import type { Ref } from 'vue';
-
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import type { DataOrientation, Direction } from '../../types';
-import { createContext, useDirection, useForwardExpose } from '../../composables';
+import { useDirection, useForwardExpose } from '../../composables';
+import type { StepperRootPropsWithPrimitive } from './types';
+import { provideStepperRootContext } from './context';
 
-export interface StepperRootContext {
-  modelValue: Ref<number | undefined>;
-  changeModelValue: (value: number) => void;
-  orientation: Ref<DataOrientation>;
-  dir: Ref<Direction>;
-  linear: Ref<boolean>;
-  totalStepperItems: Ref<Set<HTMLElement>>;
-}
+defineOptions({
+  name: 'StepperRoot'
+});
 
-export interface StepperRootProps extends PrimitiveProps {
-  /**
-   * The value of the step that should be active when initially rendered. Use when you do not need to control the state
-   * of the steps.
-   */
-  defaultValue?: number;
-  /**
-   * The orientation the steps are laid out. Mainly so arrow navigation is done accordingly (left & right vs. up &
-   * down).
-   *
-   * @defaultValue horizontal
-   */
-  orientation?: DataOrientation;
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** The controlled value of the step to activate. Can be bound as `v-model`. */
-  modelValue?: number;
-  /** Whether or not the steps must be completed in order. */
-  linear?: boolean;
-}
-export type StepperRootEmits = {
-  /** Event handler called when the value changes */
-  'update:modelValue': [payload: number | undefined];
-};
-
-export const [injectStepperRootContext, provideStepperRootContext] = createContext<StepperRootContext>('StepperRoot');
-
-const props = withDefaults(defineProps<StepperRootProps>(), {
+const props = withDefaults(defineProps<StepperRootPropsWithPrimitive>(), {
   orientation: 'horizontal',
   linear: true,
   defaultValue: 1
 });
-const emit = defineEmits<StepperRootEmits>();
-
-defineSlots<{
-  default: (props: {
-    /** Current step */
-    modelValue: number | undefined;
-    /** Total number of steps */
-    totalSteps: number;
-    /** Whether or not the next step is disabled */
-    isNextDisabled: boolean;
-    /** Whether or not the previous step is disabled */
-    isPrevDisabled: boolean;
-    /** Whether or not the first step is active */
-    isFirstStep: boolean;
-    /** Whether or not the last step is active */
-    isLastStep: boolean;
-    /** Go to a specific step */
-    goToStep: (step: number) => void;
-    /** Go to the next step */
-    nextStep: () => void;
-    /** Go to the previous step */
-    prevStep: () => void;
-  }) => any;
-}>();
 
 const { dir: propDir, orientation: propOrientation, linear } = toRefs(props);
 const dir = useDirection(propDir);
@@ -83,10 +21,7 @@ useForwardExpose();
 
 const totalStepperItems = ref<Set<HTMLElement>>(new Set());
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue,
-  passive: (props.modelValue === undefined) as false
-});
+const modelValue = defineModel<number>({ default: props.defaultValue });
 
 const totalStepperItemsArray = computed(() => Array.from(totalStepperItems.value));
 

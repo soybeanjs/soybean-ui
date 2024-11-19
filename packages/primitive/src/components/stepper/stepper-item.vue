@@ -1,45 +1,18 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import type { Ref } from 'vue';
-
 import { Primitive } from '../primitive';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, useForwardExpose, useId } from '../../composables';
-import { injectStepperRootContext } from './stepper-root.vue';
+import { useForwardExpose, useId } from '../../composables';
+import { injectStepperRootContext, provideStepperItemContext } from './context';
+import type { StepperItemProps } from './types';
 
-export const [injectStepperItemContext, provideStepperItemContext] = createContext<StepperItemContext>('StepperItem');
-
-export type StepperState = 'completed' | 'active' | 'inactive';
-
-export interface StepperItemContext {
-  titleId: string;
-  descriptionId: string;
-  step: Ref<number>;
-  state: Ref<StepperState>;
-  disabled: Ref<boolean>;
-  isFocusable: Ref<boolean>;
-}
-
-export interface StepperItemProps extends PrimitiveProps {
-  /** A unique value that associates the stepper item with an index */
-  step: number;
-  /** When `true`, prevents the user from interacting with the step. */
-  disabled?: boolean;
-  /** Shows whether the step is completed. */
-  completed?: boolean;
-}
+defineOptions({
+  name: 'StepperItem'
+});
 
 const props = withDefaults(defineProps<StepperItemProps>(), {
   completed: false,
   disabled: false
 });
-
-defineSlots<{
-  default: (props: {
-    /** The current state of the stepper item */
-    state: StepperState;
-  }) => any;
-}>();
 
 const { disabled, step, completed } = toRefs(props);
 

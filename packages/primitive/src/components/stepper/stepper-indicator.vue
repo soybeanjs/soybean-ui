@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { injectStepperItemContext } from './context';
+import type { StepperIndicatorPropsWithPrimitive } from './types';
 
-import { injectStepperItemContext } from './stepper-item.vue';
+defineOptions({
+  name: 'StepperIndicator'
+});
 
-export interface StepperIndicatorProps extends PrimitiveProps {}
+const props = defineProps<StepperIndicatorPropsWithPrimitive>();
 
-const props = defineProps<StepperIndicatorProps>();
-const itemContext = injectStepperItemContext();
 useForwardExpose();
+const itemContext = injectStepperItemContext();
 </script>
 
 <template>

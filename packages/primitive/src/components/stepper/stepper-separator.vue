@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import { Separator, type SeparatorProps } from '../separator';
+import { Separator } from '../separator';
 import { useForwardExpose } from '../../composables';
-import { injectStepperRootContext } from './stepper-root.vue';
-import { injectStepperItemContext } from './stepper-item.vue';
+import { injectStepperItemContext, injectStepperRootContext } from './context';
+import type { StepperSeparatorPropsWithPrimitive } from './types';
 
-export interface StepperSeparatorProps extends SeparatorProps {}
+defineOptions({
+  name: 'StepperSeparator'
+});
 
-const props = withDefaults(defineProps<StepperSeparatorProps>(), {});
-
-const rootContext = injectStepperRootContext();
-const itemContext = injectStepperItemContext();
+const props = withDefaults(defineProps<StepperSeparatorPropsWithPrimitive>(), {});
 
 useForwardExpose();
+const rootContext = injectStepperRootContext();
+const itemContext = injectStepperItemContext();
 </script>
 
 <template>
