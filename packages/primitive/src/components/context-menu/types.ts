@@ -7,6 +7,7 @@ import type {
   MenuCheckboxItemProps,
   MenuContentEmits,
   MenuContentProps,
+  MenuGroupProps,
   MenuItemEmits,
   MenuItemIndicatorProps,
   MenuItemProps,
@@ -73,6 +74,10 @@ export interface ContextMenuTriggerProps {
   disabled?: boolean;
 }
 export type ContextMenuTriggerPropsWithPrimitive = ContextMenuTriggerProps & PrimitiveProps;
+
+// ContextMenuGroup
+export interface ContextMenuGroupProps extends MenuGroupProps {}
+export type ContextMenuGroupPropsWithPrimitive = ContextMenuGroupProps & PrimitiveProps;
 
 // ContextMenuItem
 export interface ContextMenuItemProps extends MenuItemProps {}

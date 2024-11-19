@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { MenuPortalProps } from '../menu';
-
 import { MenuPortal } from '../menu';
+import type { DropdownMenuPortalProps } from './types';
 
-export interface DropdownMenuPortalProps extends MenuPortalProps {}
+defineOptions({
+  name: 'DropdownMenuPortal'
+});
 
 const props = defineProps<DropdownMenuPortalProps>();
 </script>

@@ -1,41 +1,18 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { MenuEmits, MenuProps } from '../menu';
 import { MenuRoot } from '../menu';
-import { createContext, useDirection, useForwardExpose } from '../../composables';
-import type { Direction } from '../../types';
+import { useDirection, useForwardExpose } from '../../composables';
+import { provideDropdownMenuRootContext } from './context';
+import type { DropdownMenuRootProps } from './types';
 
-export interface DropdownMenuRootProps extends MenuProps {
-  /**
-   * The open state of the dropdown menu when it is initially rendered. Use when you do not need to control its open
-   * state.
-   */
-  defaultOpen?: boolean;
-}
-export type DropdownMenuRootEmits = MenuEmits;
-
-export interface DropdownMenuRootContext {
-  open: Readonly<Ref<boolean>>;
-  onOpenChange: (open: boolean) => void;
-  onOpenToggle: () => void;
-  triggerId: string;
-  triggerElement: Ref<HTMLElement | undefined>;
-  contentId: string;
-  modal: Ref<boolean>;
-  dir: Ref<Direction>;
-}
-
-export const [injectDropdownMenuRootContext, provideDropdownMenuRootContext] =
-  createContext<DropdownMenuRootContext>('DropdownMenuRoot');
+defineOptions({
+  name: 'DropdownMenuRoot'
+});
 
 const props = withDefaults(defineProps<DropdownMenuRootProps>(), {
   modal: true,
   open: undefined
 });
-const emit = defineEmits<DropdownMenuRootEmits>();
 
 defineSlots<{
   default: (props: {
@@ -45,15 +22,16 @@ defineSlots<{
 }>();
 
 useForwardExpose();
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
+
+const open = defineModel<boolean>('open', {
+  default: props.defaultOpen
+});
 
 const triggerElement = ref<HTMLElement>();
 
 const { modal, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
+
 provideDropdownMenuRootContext({
   open,
   onOpenChange: value => {

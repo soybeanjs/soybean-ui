@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuGroupProps } from '../menu';
 import { MenuGroup } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { DropdownMenuGroupPropsWithPrimitive } from './types';
 
-export interface DropdownMenuGroupProps extends MenuGroupProps {}
+defineOptions({
+  name: 'DropdownMenuGroup'
+});
 
-const props = defineProps<DropdownMenuGroupProps>();
+const props = defineProps<DropdownMenuGroupPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

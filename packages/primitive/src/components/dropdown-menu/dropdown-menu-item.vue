@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { MenuItemEmits, MenuItemProps } from '../menu';
-
 import { MenuItem } from '../menu';
 import { useEmitAsProps, useForwardExpose } from '../../composables';
+import type { DropdownMenuItemEmits, DropdownMenuItemPropsWithPrimitive } from './types';
 
-export type DropdownMenuItemEmits = MenuItemEmits;
+defineOptions({
+  name: 'DropdownMenuItem'
+});
 
-export interface DropdownMenuItemProps extends MenuItemProps {}
-
-const props = defineProps<DropdownMenuItemProps>();
+const props = defineProps<DropdownMenuItemPropsWithPrimitive>();
 const emit = defineEmits<DropdownMenuItemEmits>();
 
 const emitAsProps = useEmitAsProps(emit);

@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { nextTick, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose, useId } from '../../composables';
+import { injectDropdownMenuRootContext } from './context';
+import type { DropdownMenuTriggerPropsWithPrimitive } from './types';
 
-import { injectDropdownMenuRootContext } from './dropdown-menu-root.vue';
+defineOptions({
+  name: 'DropdownMenuTrigger'
+});
 
-export interface DropdownMenuTriggerProps extends PrimitiveProps {
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
+const props = withDefaults(defineProps<DropdownMenuTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 

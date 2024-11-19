@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { MenuContentEmits, MenuContentProps } from '../menu';
 import { MenuContent } from '../menu';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import { injectDropdownMenuRootContext } from './dropdown-menu-root.vue';
+import { injectDropdownMenuRootContext } from './context';
+import type { DropdownMenuContentEmits, DropdownMenuContentPropsWithPrimitive } from './types';
 
-export type DropdownMenuContentEmits = MenuContentEmits;
+defineOptions({
+  name: 'DropdownMenuContent'
+});
 
-export interface DropdownMenuContentProps extends MenuContentProps {}
-
-const props = defineProps<DropdownMenuContentProps>();
+const props = defineProps<DropdownMenuContentPropsWithPrimitive>();
 const emit = defineEmits<DropdownMenuContentEmits>();
+
 const forwarded = useForwardPropsEmits(props, emit);
+
 useForwardExpose();
 
 const rootContext = injectDropdownMenuRootContext();

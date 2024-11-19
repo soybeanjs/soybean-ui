@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type { MenuRadioGroupEmits, MenuRadioGroupProps } from '../menu';
-
 import { MenuRadioGroup } from '../menu';
 import { useEmitAsProps, useForwardExpose } from '../../composables';
+import type { DropdownMenuRadioGroupEmits, DropdownMenuRadioGroupPropsWithPrimitive } from './types';
 
-export type DropdownMenuRadioGroupEmits = MenuRadioGroupEmits;
+defineOptions({
+  name: 'DropdownMenuRadioGroup'
+});
 
-export interface DropdownMenuRadioGroupProps extends MenuRadioGroupProps {}
-
-const props = defineProps<MenuRadioGroupProps>();
-const emit = defineEmits<MenuRadioGroupEmits>();
+const props = defineProps<DropdownMenuRadioGroupPropsWithPrimitive>();
+const emit = defineEmits<DropdownMenuRadioGroupEmits>();
 
 const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();

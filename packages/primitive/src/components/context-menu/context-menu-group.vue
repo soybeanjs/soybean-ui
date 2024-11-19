@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { MenuGroup } from '../menu';
 import { useForwardExpose } from '../../composables';
-import type { ContextMenuRadioGroupPropsWithPrimitive } from './types';
+import type { ContextMenuGroupPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ContextMenuGroup'
 });
 
-const props = defineProps<ContextMenuRadioGroupPropsWithPrimitive>();
+const props = defineProps<ContextMenuGroupPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

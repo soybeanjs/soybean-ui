@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import type { MenuSubContentEmits, MenuSubContentProps } from '../menu';
 import { MenuSubContent } from '../menu';
-import { useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { DropdownMenuSubContentEmits, DropdownMenuSubContentPropsWithPrimitive } from './types';
 
-import { useForwardPropsEmits } from '..';
+defineOptions({
+  name: 'DropdownMenuSubContent'
+});
 
-export type DropdownMenuSubContentEmits = MenuSubContentEmits;
+const props = defineProps<DropdownMenuSubContentPropsWithPrimitive>();
 
-export interface DropdownMenuSubContentProps extends MenuSubContentProps {}
-
-const props = defineProps<DropdownMenuSubContentProps>();
 const emit = defineEmits<DropdownMenuSubContentEmits>();
+
 const forwarded = useForwardPropsEmits(props, emit);
+
 useForwardExpose();
 </script>
 
