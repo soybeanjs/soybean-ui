@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuArrowProps } from '../menu';
 import { MenuArrow } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { MenubarArrowPropsWithPrimitive } from './types';
 
-export interface MenubarArrowProps extends MenuArrowProps {}
+defineOptions({
+  name: 'MenubarArrow'
+});
 
-const props = withDefaults(defineProps<MenubarArrowProps>(), {
+const props = withDefaults(defineProps<MenubarArrowPropsWithPrimitive>(), {
   width: 10,
   height: 5,
   as: 'svg'

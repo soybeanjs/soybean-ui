@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuLabelProps } from '../menu';
 import { MenuLabel } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { MenubarLabelPropsWithPrimitive } from './types';
 
-export interface MenubarLabelProps extends MenuLabelProps {}
+defineOptions({
+  name: 'MenubarLabel'
+});
 
-const props = defineProps<MenubarLabelProps>();
+const props = defineProps<MenubarLabelPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

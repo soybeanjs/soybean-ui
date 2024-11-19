@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { MenuItemEmits, MenuItemProps } from '../menu';
-
 import { MenuItem } from '../menu';
 import { useEmitAsProps, useForwardExpose } from '../../composables';
+import type { MenubarItemEmits, MenubarItemPropsWithPrimitive } from './types';
 
-export type MenubarItemEmits = MenuItemEmits;
+defineOptions({
+  name: 'MenubarItem'
+});
 
-export interface MenubarItemProps extends MenuItemProps {}
-
-const props = defineProps<MenubarItemProps>();
+const props = defineProps<MenubarItemPropsWithPrimitive>();
 const emit = defineEmits<MenubarItemEmits>();
 
 const emitAsProps = useEmitAsProps(emit);

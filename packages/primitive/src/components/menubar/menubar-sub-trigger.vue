@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import type { MenuSubTriggerProps } from '../menu';
 import { MenuSubTrigger } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { MenubarSubTriggerPropsWithPrimitive } from './types';
 
-export interface MenubarSubTriggerProps extends MenuSubTriggerProps {}
+defineOptions({
+  name: 'MenubarSubTrigger'
+});
 
-const props = defineProps<MenubarSubTriggerProps>();
+const props = defineProps<MenubarSubTriggerPropsWithPrimitive>();
 useForwardExpose();
 </script>
 
 <template>
-  <MenuSubTrigger v-bind="props" data-soybean-menubar-subtrigger="">
+  <MenuSubTrigger v-bind="props" data-soybean-menubar-sub-trigger="">
     <slot />
   </MenuSubTrigger>
 </template>

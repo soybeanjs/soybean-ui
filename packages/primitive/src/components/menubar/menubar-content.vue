@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { MenuContentEmits, MenuContentProps } from '../menu';
 import { useCollection, useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-
 import { MenuContent } from '../menu';
-import { wrapArray } from '../../composables/use-typeahead';
-import { injectMenubarMenuContext } from './menubar-menu.vue';
-import { injectMenubarRootContext } from './menubar-root.vue';
+import { wrapArray } from '../../shared';
+import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
+import type { MenubarContentEmits, MenubarContentPropsWithPrimitive } from './types';
 
-export type MenubarContentEmits = MenuContentEmits;
+defineOptions({
+  name: 'MenubarContent'
+});
 
-export interface MenubarContentProps extends MenuContentProps {}
-
-const props = withDefaults(defineProps<MenubarContentProps>(), {
+const props = withDefaults(defineProps<MenubarContentPropsWithPrimitive>(), {
   align: 'start'
 });
 const emit = defineEmits<MenubarContentEmits>();
@@ -30,7 +28,7 @@ const hasInteractedOutsideRef = ref(false);
 
 function handleArrowNavigation(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
-  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-subtrigger');
+  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-sub-trigger');
 
   const prevMenuKey = rootContext.dir.value === 'rtl' ? 'ArrowRight' : 'ArrowLeft';
   const isPrevKey = prevMenuKey === event.key;

@@ -1,38 +1,41 @@
+import MenubarRoot from './menubar-root.vue';
+import MenubarTrigger from './menubar-trigger.vue';
+import MenubarPortal from './menubar-portal.vue';
+import MenubarContent from './menubar-content.vue';
+import MenubarArrow from './menubar-arrow.vue';
+import MenubarItem from './menubar-item.vue';
+import MenubarGroup from './menubar-group.vue';
+import MenubarSeparator from './menubar-separator.vue';
+import MenubarCheckboxItem from './menubar-checkbox-item.vue';
+import MenubarItemIndicator from './menubar-item-indicator.vue';
+import MenubarLabel from './menubar-label.vue';
+import MenubarRadioGroup from './menubar-radio-group.vue';
+import MenubarRadioItem from './menubar-radio-item.vue';
+import MenubarSub from './menubar-sub.vue';
+import MenubarSubContent from './menubar-sub-content.vue';
+import MenubarSubTrigger from './menubar-sub-trigger.vue';
+import MenubarMenu from './menubar-menu.vue';
+
 export {
-  injectMenubarRootContext,
-  default as MenubarRoot,
-  type MenubarRootProps,
-  type MenubarRootEmits
-} from './MenubarRoot.vue';
-export { default as MenubarTrigger, type MenubarTriggerProps } from './MenubarTrigger.vue';
-export { default as MenubarPortal, type MenubarPortalProps } from './MenubarPortal.vue';
-export { default as MenubarContent, type MenubarContentProps } from './MenubarContent.vue';
-export { default as MenubarArrow, type MenubarArrowProps } from './MenubarArrow.vue';
-export { default as MenubarItem, type MenubarItemProps, type MenubarItemEmits } from './MenubarItem.vue';
-export { default as MenubarGroup, type MenubarGroupProps } from './MenubarGroup.vue';
-export { default as MenubarSeparator, type MenubarSeparatorProps } from './MenubarSeparator.vue';
-export {
-  default as MenubarCheckboxItem,
-  type MenubarCheckboxItemProps,
-  type MenubarCheckboxItemEmits
-} from './MenubarCheckboxItem.vue';
-export { default as MenubarItemIndicator, type MenubarItemIndicatorProps } from './MenubarItemIndicator.vue';
-export { default as MenubarLabel, type MenubarLabelProps } from './MenubarLabel.vue';
-export {
-  default as MenubarRadioGroup,
-  type MenubarRadioGroupProps,
-  type MenubarRadioGroupEmits
-} from './MenubarRadioGroup.vue';
-export {
-  default as MenubarRadioItem,
-  type MenubarRadioItemProps,
-  type MenubarRadioItemEmits
-} from './MenubarRadioItem.vue';
-export { default as MenubarSub, type MenubarSubProps, type MenubarSubEmits } from './MenubarSub.vue';
-export {
-  default as MenubarSubContent,
-  type MenubarSubContentProps,
-  type MenubarSubContentEmits
-} from './MenubarSubContent.vue';
-export { default as MenubarSubTrigger, type MenubarSubTriggerProps } from './MenubarSubTrigger.vue';
-export { default as MenubarMenu, type MenubarMenuProps } from './menubar-menu.vue';
+  MenubarRoot,
+  MenubarTrigger,
+  MenubarPortal,
+  MenubarContent,
+  MenubarArrow,
+  MenubarItem,
+  MenubarGroup,
+  MenubarSeparator,
+  MenubarCheckboxItem,
+  MenubarItemIndicator,
+  MenubarLabel,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarMenu
+};
+
+export { injectMenubarRootContext } from './context';
+
+export * from './types';

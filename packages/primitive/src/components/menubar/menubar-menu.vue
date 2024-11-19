@@ -1,29 +1,13 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { computed, ref, watch } from 'vue';
 import { MenuRoot } from '../menu';
-import { createContext, useForwardExpose, useId } from '../../composables';
+import { useForwardExpose, useId } from '../../composables';
+import { injectMenubarRootContext, provideMenubarMenuContext } from './context';
+import type { MenubarMenuProps } from './types';
 
-import { injectMenubarRootContext } from './menubar-root.vue';
-
-export interface MenubarMenuProps {
-  /**
-   * A unique value that associates the item with an active value when the navigation menu is controlled.
-   *
-   * This prop is managed automatically when uncontrolled.
-   */
-  value?: string;
-}
-
-type MenubarMenuContext = {
-  value: string;
-  triggerId: string;
-  triggerElement: Ref<HTMLElement | undefined>;
-  contentId: string;
-  wasKeyboardTriggerOpenRef: Ref<boolean>;
-};
-
-export const [injectMenubarMenuContext, provideMenubarMenuContext] = createContext<MenubarMenuContext>('MenubarMenu');
+defineOptions({
+  name: 'MenubarMenu'
+});
 
 const props = defineProps<MenubarMenuProps>();
 

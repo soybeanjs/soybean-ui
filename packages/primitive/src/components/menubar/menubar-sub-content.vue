@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import type { MenuSubContentEmits, MenuSubContentProps } from '../menu';
 import { useCollection, useForwardExpose, useForwardPropsEmits } from '../../composables';
-
 import { MenuSubContent } from '../menu';
-import { wrapArray } from '../../composables/use-typeahead';
-import { injectMenubarMenuContext } from './menubar-menu.vue';
-import { injectMenubarRootContext } from './menubar-root.vue';
+import { wrapArray } from '../../shared';
+import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
+import type { MenubarSubContentEmits, MenubarSubContentPropsWithPrimitive } from './types';
 
-export type MenubarSubContentEmits = MenuSubContentEmits;
+defineOptions({
+  name: 'MenubarSubContent'
+});
 
-export interface MenubarSubContentProps extends MenuSubContentProps {}
-
-const props = defineProps<MenubarSubContentProps>();
+const props = defineProps<MenubarSubContentPropsWithPrimitive>();
 const emit = defineEmits<MenubarSubContentEmits>();
 const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
@@ -23,7 +21,7 @@ const menuContext = injectMenubarMenuContext();
 
 function handleArrowNavigation(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
-  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-subtrigger');
+  const targetIsSubTrigger = target.hasAttribute('data-soybean-menubar-sub-trigger');
 
   // Prevent navigation when we're opening a submenu
   if (targetIsSubTrigger) return;

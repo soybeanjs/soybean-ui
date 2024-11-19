@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { RovingFocusItem } from '../roving-focus';
-import { injectMenubarMenuContext } from './menubar-menu.vue';
-import { injectMenubarRootContext } from './menubar-root.vue';
+import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
+import type { MenubarTriggerPropsWithPrimitive } from './types';
 
-export interface MenubarTriggerProps extends PrimitiveProps {
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'MenubarTrigger'
+});
 
-withDefaults(defineProps<MenubarTriggerProps>(), {
+withDefaults(defineProps<MenubarTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 const rootContext = injectMenubarRootContext();

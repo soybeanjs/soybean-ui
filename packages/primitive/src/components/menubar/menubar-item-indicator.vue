@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuItemIndicatorProps } from '../menu';
 import { MenuItemIndicator } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { MenubarItemIndicatorPropsWithPrimitive } from './types';
 
-export interface MenubarItemIndicatorProps extends MenuItemIndicatorProps {}
+defineOptions({
+  name: 'MenubarItemIndicator'
+});
 
-const props = defineProps<MenubarItemIndicatorProps>();
+const props = defineProps<MenubarItemIndicatorPropsWithPrimitive>();
 useForwardExpose();
 </script>
 

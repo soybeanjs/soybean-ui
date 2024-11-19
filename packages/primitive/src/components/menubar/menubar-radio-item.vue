@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type { MenuRadioItemEmits, MenuRadioItemProps } from '../menu';
-
 import { MenuRadioItem } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { MenubarRadioItemEmits, MenubarRadioItemPropsWithPrimitive } from './types';
 
-export type MenubarRadioItemEmits = MenuRadioItemEmits;
+defineOptions({
+  name: 'MenubarRadioItem'
+});
 
-export interface MenubarRadioItemProps extends MenuRadioItemProps {}
-
-const props = defineProps<MenuRadioItemProps>();
-const emit = defineEmits<MenuRadioItemEmits>();
+const props = defineProps<MenubarRadioItemPropsWithPrimitive>();
+const emit = defineEmits<MenubarRadioItemEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();

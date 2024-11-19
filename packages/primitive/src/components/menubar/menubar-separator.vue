@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { MenuSeparatorProps } from '../menu';
 import { MenuSeparator } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { MenubarSeparatorPropsWithPrimitive } from './types';
 
-export interface MenubarSeparatorProps extends MenuSeparatorProps {}
+defineOptions({
+  name: 'MenubarSeparator'
+});
 
-const props = defineProps<MenubarSeparatorProps>();
+const props = defineProps<MenubarSeparatorPropsWithPrimitive>();
 useForwardExpose();
 </script>
 
