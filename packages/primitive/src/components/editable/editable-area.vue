@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { injectEditableRootContext } from './editable-root.vue';
+import type { EditableAreaPropsWithPrimitive } from './types';
+import { injectEditableRootContext } from './context';
 
-export interface EditableAreaProps extends PrimitiveProps {}
+defineOptions({
+  name: 'EditableArea'
+});
 
-const props = withDefaults(defineProps<EditableAreaProps>(), { as: 'div' });
+const props = withDefaults(defineProps<EditableAreaPropsWithPrimitive>(), { as: 'div' });
 
 const context = injectEditableRootContext();
 </script>

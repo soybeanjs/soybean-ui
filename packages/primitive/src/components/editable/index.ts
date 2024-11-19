@@ -1,13 +1,20 @@
-export {
-  injectEditableRootContext,
-  default as EditableRoot,
-  type EditableRootProps,
-  type EditableRootEmits
-} from './EditableRoot.vue';
-export { default as EditableArea, type EditableAreaProps } from './EditableArea.vue';
-export { default as EditableInput, type EditableInputProps } from './EditableInput.vue';
-export { default as EditablePreview, type EditablePreviewProps } from './EditablePreview.vue';
-export { default as EditableSubmitTrigger, type EditableSubmitTriggerProps } from './EditableSubmitTrigger.vue';
-export { default as EditableCancelTrigger, type EditableCancelTriggerProps } from './EditableCancelTrigger.vue';
+import EditableRoot from './editable-root.vue';
+import EditableArea from './editable-area.vue';
+import EditableInput from './editable-input.vue';
+import EditablePreview from './editable-preview.vue';
+import EditableSubmitTrigger from './editable-submit-trigger.vue';
+import EditableCancelTrigger from './editable-cancel-trigger.vue';
+import EditableEditTrigger from './editable-edit-trigger.vue';
 
-export { default as EditableEditTrigger, type EditableEditTriggerProps } from './editable-edit-trigger.vue';
+export {
+  EditableRoot,
+  EditableArea,
+  EditableInput,
+  EditablePreview,
+  EditableSubmitTrigger,
+  EditableCancelTrigger,
+  EditableEditTrigger
+};
+
+export { injectEditableRootContext } from './context';
+export * from './types';

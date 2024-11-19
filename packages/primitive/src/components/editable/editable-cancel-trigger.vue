@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectEditableRootContext } from './editable-root.vue';
+import { injectEditableRootContext } from './context';
+import type { EditableCancelTriggerPropsWithPrimitive } from './types';
 
-export interface EditableCancelTriggerProps extends PrimitiveProps {}
+defineOptions({
+  name: 'EditableCancelTrigger'
+});
 
-const props = withDefaults(defineProps<EditableCancelTriggerProps>(), { as: 'button' });
+const props = withDefaults(defineProps<EditableCancelTriggerPropsWithPrimitive>(), { as: 'button' });
 
 const context = injectEditableRootContext();
 </script>

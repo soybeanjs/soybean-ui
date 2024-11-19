@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectEditableRootContext } from './editable-root.vue';
+import { injectEditableRootContext } from './context';
+import type { EditableEditTriggerPropsWithPrimitive } from './types';
 
-export interface EditableEditTriggerProps extends PrimitiveProps {}
+defineOptions({
+  name: 'EditableEditTrigger'
+});
 
-const props = withDefaults(defineProps<EditableEditTriggerProps>(), { as: 'button' });
+const props = withDefaults(defineProps<EditableEditTriggerPropsWithPrimitive>(), { as: 'button' });
 
 const context = injectEditableRootContext();
 </script>

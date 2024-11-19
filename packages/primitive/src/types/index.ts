@@ -24,6 +24,8 @@ export type NavigationKeys =
   | 'PageUp';
 export type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
 export type SplitType = 'pick' | 'omit';
+export type ActivationMode = 'focus' | 'dblclick' | 'none';
+export type SubmitMode = 'blur' | 'enter' | 'none' | 'both';
 
 export interface Point {
   x: number;

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { injectEditableRootContext } from './editable-root.vue';
+import type { EditablePreviewPropsWithPrimitive } from './types';
+import { injectEditableRootContext } from './context';
 
-export interface EditablePreviewProps extends PrimitiveProps {}
+defineOptions({
+  name: 'EditablePreview'
+});
 
-const props = withDefaults(defineProps<EditablePreviewProps>(), { as: 'span' });
+const props = withDefaults(defineProps<EditablePreviewPropsWithPrimitive>(), { as: 'span' });
 
 const context = injectEditableRootContext();
 

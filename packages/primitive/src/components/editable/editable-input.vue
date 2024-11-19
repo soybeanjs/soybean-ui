@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, watch } from 'vue';
-import { Primitive, type PrimitiveProps, usePrimitiveElement } from '../primitive';
+import { Primitive } from '../primitive';
+import { useKbd, usePrimitiveElement } from '../../composables';
+import { injectEditableRootContext } from './context';
+import type { EditableInputPropsWithPrimitive } from './types';
 
-import { useKbd } from '../../composables';
-import { injectEditableRootContext } from './editable-root.vue';
+defineOptions({
+  name: 'EditableInput'
+});
 
-export interface EditableInputProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<EditableInputProps>(), {
+const props = withDefaults(defineProps<EditableInputPropsWithPrimitive>(), {
   as: 'input'
 });
 
