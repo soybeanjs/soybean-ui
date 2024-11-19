@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
+import { injectTabsRootContext } from './context';
+import type { TabsListPropsWithPrimitive } from './types';
 
-import { injectTabsRootContext } from './tabs-root.vue';
+defineOptions({
+  name: 'SoybeanTabsList'
+});
 
-export interface TabsListProps extends PrimitiveProps {
-  /** When `true`, keyboard navigation will loop from last tab to first, and vice versa. */
-  loop?: boolean;
-}
-
-const props = withDefaults(defineProps<TabsListProps>(), {
+const props = withDefaults(defineProps<TabsListPropsWithPrimitive>(), {
   loop: true
 });
+
 const { loop } = toRefs(props);
 
 const { forwardRef, currentElement } = useForwardExpose();

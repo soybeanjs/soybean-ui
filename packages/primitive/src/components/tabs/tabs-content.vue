@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { StringOrNumber } from '../../types';
-
-import { injectTabsRootContext } from './tabs-root.vue';
 import { makeContentId, makeTriggerId } from './utils';
+import { injectTabsRootContext } from './context';
+import type { TabsContentPropsWithPrimitive } from './types';
 
-export interface TabsContentProps extends PrimitiveProps {
-  /** A unique value that associates the content with a trigger. */
-  value: StringOrNumber;
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+defineOptions({
+  name: 'SoybeanTabsContent'
+});
 
-const props = defineProps<TabsContentProps>();
+const props = defineProps<TabsContentPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
 const rootContext = injectTabsRootContext();

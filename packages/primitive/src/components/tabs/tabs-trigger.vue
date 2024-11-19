@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
-import type { StringOrNumber } from '../../types';
-
-import { injectTabsRootContext } from './tabs-root.vue';
+import type { TabsTriggerPropsWithPrimitive } from './types';
+import { injectTabsRootContext } from './context';
 import { makeContentId, makeTriggerId } from './utils';
 
-export interface TabsTriggerProps extends PrimitiveProps {
-  /** A unique value that associates the trigger with a content. */
-  value: StringOrNumber;
-  /** When `true`, prevents the user from interacting with the tab. */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'SoybeanTabsTrigger'
+});
 
-const props = withDefaults(defineProps<TabsTriggerProps>(), {
+const props = withDefaults(defineProps<TabsTriggerPropsWithPrimitive>(), {
   disabled: false,
   as: 'button'
 });

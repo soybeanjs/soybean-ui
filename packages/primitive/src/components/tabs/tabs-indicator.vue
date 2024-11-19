@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { nextTick, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { injectTabsRootContext } from './tabs-root.vue';
+import { injectTabsRootContext } from './context';
+import type { TabsIndicatorPropsWithPrimitive } from './types';
 
-export interface TabsIndicatorProps extends PrimitiveProps {}
+defineOptions({
+  name: 'SoybeanTabsIndicator'
+});
 
-const props = defineProps<TabsIndicatorProps>();
+const props = defineProps<TabsIndicatorPropsWithPrimitive>();
+
 const context = injectTabsRootContext();
 useForwardExpose();
 

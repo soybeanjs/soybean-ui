@@ -1,86 +1,26 @@
-<script setup lang="ts">
-import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
-import { ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import type { DataOrientation, Direction, StringOrNumber } from '../../types';
-import { createContext, useDirection, useForwardExpose, useId } from '../../composables';
-</script>
-
 <script setup lang="ts" generic="T extends StringOrNumber = StringOrNumber">
-export interface TabsRootContext {
-  modelValue: Ref<StringOrNumber | undefined>;
-  changeModelValue: (value: StringOrNumber) => void;
-  orientation: Ref<DataOrientation>;
-  dir: Ref<Direction>;
-  unmountOnHide: Ref<boolean>;
-  activationMode: 'automatic' | 'manual';
-  baseId: string;
-  tabsList: Ref<HTMLElement | undefined>;
-}
+import { ref, toRefs } from 'vue';
+import { Primitive } from '../primitive';
+import { useDirection, useForwardExpose, useId } from '../../composables';
+import type { StringOrNumber } from '../../types';
+import { provideTabsRootContext } from './context';
+import type { TabsRootPropsWithPrimitive } from './types';
 
-export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> extends PrimitiveProps {
-  /**
-   * The value of the tab that should be active when initially rendered. Use when you do not need to control the state
-   * of the tabs
-   */
-  defaultValue?: T;
-  /**
-   * The orientation the tabs are laid out. Mainly so arrow navigation is done accordingly (left & right vs. up & down)
-   *
-   * @defaultValue horizontal
-   */
-  orientation?: DataOrientation;
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /**
-   * Whether a tab is activated automatically (on focus) or manually (on click).
-   *
-   * @defaultValue automatic
-   */
-  activationMode?: 'automatic' | 'manual';
-  /** The controlled value of the tab to activate. Can be bind as `v-model`. */
-  modelValue?: T;
-  /**
-   * When `true`, the element will be unmounted on closed state.
-   *
-   * @defaultValue `true`
-   */
-  unmountOnHide?: boolean;
-}
-export type TabsRootEmits<T extends StringOrNumber = StringOrNumber> = {
-  /** Event handler called when the value changes */
-  'update:modelValue': [payload: T];
-};
+defineOptions({
+  name: 'SoybeanTabsRoot'
+});
 
-export const [injectTabsRootContext, provideTabsRootContext] = createContext<TabsRootContext>('TabsRoot');
-
-const props = withDefaults(defineProps<TabsRootProps<T>>(), {
+const props = withDefaults(defineProps<TabsRootPropsWithPrimitive<T>>(), {
   orientation: 'horizontal',
   activationMode: 'automatic',
   unmountOnHide: true
 });
-const emit = defineEmits<TabsRootEmits<T>>();
-
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
 
 const { orientation, unmountOnHide, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 useForwardExpose();
 
-const modelValue = useVModel<TabsRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue,
-  passive: (props.modelValue === undefined) as false
-});
+const modelValue = defineModel<T>({ default: () => props.defaultValue });
 
 const tabsList = ref<HTMLElement>();
 

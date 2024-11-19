@@ -1,5 +1,10 @@
-export { injectTabsRootContext, default as TabsRoot, type TabsRootProps, type TabsRootEmits } from './TabsRoot.vue';
-export { default as TabsList, type TabsListProps } from './TabsList.vue';
-export { default as TabsContent, type TabsContentProps } from './TabsContent.vue';
-export { default as TabsTrigger, type TabsTriggerProps } from './TabsTrigger.vue';
-export { default as TabsIndicator, type TabsIndicatorProps } from './tabs-indicator.vue';
+import TabsRoot from './tabs-root.vue';
+import TabsList from './tabs-list.vue';
+import TabsContent from './tabs-content.vue';
+import TabsTrigger from './tabs-trigger.vue';
+import TabsIndicator from './tabs-indicator.vue';
+
+export { TabsRoot, TabsList, TabsContent, TabsTrigger, TabsIndicator };
+export { injectTabsRootContext } from './context';
+
+export * from './types';
