@@ -1,30 +1,15 @@
 <script setup lang="ts">
-import type { ComputedRef } from 'vue';
 import { computed, ref } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import isEqual from 'fast-deep-equal';
 import { RovingFocusItem } from '../roving-focus';
-import { createContext, useForwardExpose } from '../../composables';
-import type { RadioProps } from './radio.vue';
-import type { SelectEvent } from './utils';
-
+import { useForwardExpose } from '../../composables';
+import type { RadioGroupItemEmits, RadioGroupItemProps } from './types';
 import Radio from './radio.vue';
-import { injectRadioGroupRootContext } from './radio-group-root.vue';
-
-export interface RadioGroupItemProps extends Omit<RadioProps, 'checked'> {}
-export type RadioGroupItemEmits = {
-  select: [event: SelectEvent];
-};
-
-interface RadioGroupItemContext {
-  disabled: ComputedRef<boolean>;
-  checked: ComputedRef<boolean>;
-}
-
-export const [injectRadioGroupItemContext, provideRadiogroupItemContext] =
-  createContext<RadioGroupItemContext>('RadioGroupItem');
+import { injectRadioGroupRootContext, provideRadioGroupItemContext } from './context';
 
 defineOptions({
+  name: 'RadioGroupItem',
   inheritAttrs: false
 });
 
@@ -42,7 +27,7 @@ const disabled = computed(() => rootContext.disabled.value || props.disabled);
 const required = computed(() => rootContext.required.value || props.required);
 const checked = computed(() => isEqual(rootContext.modelValue?.value, props.value));
 
-provideRadiogroupItemContext({ disabled, checked });
+provideRadioGroupItemContext({ disabled, checked });
 
 const isArrowKeyPressed = ref(false);
 const ARROW_KEYS = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];

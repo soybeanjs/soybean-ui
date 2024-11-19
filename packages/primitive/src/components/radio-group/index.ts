@@ -1,8 +1,8 @@
-export {
-  injectRadioGroupRootContext,
-  default as RadioGroupRoot,
-  type RadioGroupRootProps,
-  type RadioGroupRootEmits
-} from './RadioGroupRoot.vue';
-export { default as RadioGroupItem, type RadioGroupItemProps } from './RadioGroupItem.vue';
-export { default as RadioGroupIndicator, type RadioGroupIndicatorProps } from './radio-group-indicator.vue';
+import RadioGroupRoot from './radio-group-root.vue';
+import RadioGroupItem from './radio-group-item.vue';
+import RadioGroupIndicator from './radio-group-indicator.vue';
+
+export { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator };
+export { injectRadioGroupRootContext } from './context';
+
+export * from './types';

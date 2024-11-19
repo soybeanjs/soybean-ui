@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
+import type { RadioGroupIndicatorPropsWithPrimitive } from './types';
+import { injectRadioGroupItemContext } from './context';
 
-import { injectRadioGroupItemContext } from './radio-group-item.vue';
+defineOptions({
+  name: 'RadioGroupIndicator',
+  inheritAttrs: false
+});
 
-export interface RadioGroupIndicatorProps extends PrimitiveProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-withDefaults(defineProps<RadioGroupIndicatorProps>(), {
+withDefaults(defineProps<RadioGroupIndicatorPropsWithPrimitive>(), {
   as: 'span'
 });
 

@@ -109,6 +109,8 @@ export type DefaultSlots = SlotsType<{
   default: (props?: Record<string, unknown>) => any;
 }>;
 
+export type SelectEvent = CustomEvent<{ originalEvent: MouseEvent; value?: AcceptableValue }>;
+
 export type PointerDownOutsideEvent = CustomEvent<{
   originalEvent: PointerEvent;
 }>;

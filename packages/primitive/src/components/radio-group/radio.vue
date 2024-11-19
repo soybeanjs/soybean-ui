@@ -1,45 +1,25 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { AcceptableValue, FormFieldProps } from '../../types';
 import { useFormControl, useForwardExpose } from '../../composables';
-import type { SelectEvent } from './utils';
-import { handleSelect } from './utils';
+import type { RadioEmits, RadioPropsWithPrimitive } from './types';
+import { handleSelect } from './shared';
 
-export type RadioEmits = {
-  'update:checked': [value: boolean];
-  select: [SelectEvent];
-};
+defineOptions({
+  name: 'Radio',
+  inheritAttrs: false
+});
 
-export interface RadioProps extends PrimitiveProps, FormFieldProps {
-  id?: string;
-  /** The value given as data when submitted with a `name`. */
-  value?: AcceptableValue;
-  /** When `true`, prevents the user from interacting with the radio item. */
-  disabled?: boolean;
-  checked?: boolean;
-}
-
-const props = withDefaults(defineProps<RadioProps>(), {
+const props = withDefaults(defineProps<RadioPropsWithPrimitive>(), {
   disabled: false,
   checked: undefined,
   as: 'button'
 });
+
 const emit = defineEmits<RadioEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current checked state */
-    checked: typeof checked.value;
-  }) => any;
-}>();
-
-const checked = useVModel(props, 'checked', emit, {
-  passive: (props.checked === undefined) as false
-});
+const checked = defineModel<boolean>('checked');
 
 const { value } = toRefs(props);
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();
@@ -47,7 +27,7 @@ const isFormControl = useFormControl(triggerElement);
 
 const ariaLabel = computed(() =>
   props.id && triggerElement.value
-    ? ((document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.innerText ?? props.value)
+    ? ((document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.textContent ?? props.value)
     : undefined
 );
 

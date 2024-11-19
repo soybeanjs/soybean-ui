@@ -1,4 +1,4 @@
-import { handleAndDispatchCustomEvent } from '../../composables';
+import { handleAndDispatchCustomEvent } from '../../shared';
 import type { AcceptableValue } from '../../types';
 
 export type SelectEvent = CustomEvent<{ originalEvent: MouseEvent; value?: AcceptableValue }>;
