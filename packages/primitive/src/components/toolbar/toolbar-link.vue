@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
+import type { ToolbarLinkPropsWithPrimitive } from './types';
 
-export interface ToolbarLinkProps extends PrimitiveProps {}
+defineOptions({
+  name: 'ToolbarLink'
+});
 
-const props = withDefaults(defineProps<ToolbarLinkProps>(), { as: 'a' });
+const props = withDefaults(defineProps<ToolbarLinkPropsWithPrimitive>(), {
+  as: 'a'
+});
+
 const { forwardRef } = useForwardExpose();
 </script>
 

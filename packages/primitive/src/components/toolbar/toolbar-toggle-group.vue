@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import type { ToggleGroupRootEmits, ToggleGroupRootProps } from '../ToggleGroup';
-
 import { ToggleGroupRoot } from '../toggle-group';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
-import { injectToolbarRootContext } from './toolbar-root.vue';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import type { ToolbarToggleGroupEmits, ToolbarToggleGroupPropsWithPrimitive } from './types';
+import { injectToolbarRootContext } from './context';
 
-export type ToolbarToggleGroupEmits = ToggleGroupRootEmits;
+defineOptions({
+  name: 'ToolbarToggleGroup'
+});
 
-export interface ToolbarToggleGroupProps extends ToggleGroupRootProps {}
+const props = defineProps<ToolbarToggleGroupPropsWithPrimitive>();
 
-const props = defineProps<ToolbarToggleGroupProps>();
 const emit = defineEmits<ToolbarToggleGroupEmits>();
+
+const forwarded = useForwardPropsEmits(props, emit);
 
 const rootContext = injectToolbarRootContext();
 
-const emitAsProps = useEmitAsProps(emit);
 useForwardExpose();
 </script>
 
 <template>
   <ToggleGroupRoot
-    v-bind="{ ...props, ...emitAsProps }"
+    v-bind="forwarded"
     :data-orientation="rootContext.orientation.value"
     :dir="rootContext.dir.value"
     :roving-focus="false"

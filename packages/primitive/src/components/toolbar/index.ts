@@ -1,10 +1,11 @@
-export { injectToolbarRootContext, default as ToolbarRoot, type ToolbarRootProps } from './ToolbarRoot.vue';
-export { default as ToolbarButton, type ToolbarButtonProps } from './ToolbarButton.vue';
-export { default as ToolbarLink, type ToolbarLinkProps } from './ToolbarLink.vue';
-export {
-  default as ToolbarToggleGroup,
-  type ToolbarToggleGroupProps,
-  type ToolbarToggleGroupEmits
-} from './ToolbarToggleGroup.vue';
-export { default as ToolbarToggleItem, type ToolbarToggleItemProps } from './ToolbarToggleItem.vue';
-export { default as ToolbarSeparator, type ToolbarSeparatorProps } from './toolbar-separator.vue';
+import ToolbarRoot from './toolbar-root.vue';
+import ToolbarButton from './toolbar-button.vue';
+import ToolbarLink from './toolbar-link.vue';
+import ToolbarToggleGroup from './toolbar-toggle-group.vue';
+import ToolbarToggleItem from './toolbar-toggle-item.vue';
+import ToolbarSeparator from './toolbar-separator.vue';
+
+export { ToolbarRoot, ToolbarButton, ToolbarLink, ToolbarToggleGroup, ToolbarToggleItem, ToolbarSeparator };
+export { injectToolbarRootContext } from './context';
+
+export * from './types';

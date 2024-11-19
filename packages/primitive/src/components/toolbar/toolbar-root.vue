@@ -1,34 +1,19 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
-import type { DataOrientation, Direction } from '../../types';
-import { createContext, useDirection, useForwardExpose } from '../../composables';
+import { useDirection, useForwardExpose } from '../../composables';
+import { provideToolbarRootContext } from './context';
+import type { ToolbarRootPropsWithPrimitive } from './types';
 
-export interface ToolbarRootProps extends PrimitiveProps {
-  /** The orientation of the toolbar */
-  orientation?: DataOrientation;
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** When `true`, keyboard navigation will loop from last tab to first, and vice versa. */
-  loop?: boolean;
-}
+defineOptions({
+  name: 'ToolbarRoot'
+});
 
-export interface ToolbarRootContext {
-  orientation: Ref<DataOrientation>;
-  dir: Ref<Direction>;
-}
-
-export const [injectToolbarRootContext, provideToolbarRootContext] = createContext<ToolbarRootContext>('ToolbarRoot');
-
-const props = withDefaults(defineProps<ToolbarRootProps>(), {
+const props = withDefaults(defineProps<ToolbarRootPropsWithPrimitive>(), {
   orientation: 'horizontal'
 });
+
 const { orientation, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 const { forwardRef } = useForwardExpose();

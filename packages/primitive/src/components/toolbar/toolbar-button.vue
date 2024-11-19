@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
+import type { ToolbarButtonPropsWithPrimitive } from './types';
 
-export interface ToolbarButtonProps extends PrimitiveProps {
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'ToolbarButton'
+});
 
-const props = withDefaults(defineProps<ToolbarButtonProps>(), { as: 'button' });
+const props = withDefaults(defineProps<ToolbarButtonPropsWithPrimitive>(), {
+  as: 'button'
+});
+
 const { forwardRef } = useForwardExpose();
 </script>
 
