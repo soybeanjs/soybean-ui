@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
-import type { DismissableLayerEmits, DismissableLayerProps, FocusOutsideEvent } from '../DismissableLayer';
-import type { PointerDownOutsideEvent } from '../dismissable-layer/utils';
-import { useArrowNavigation, useCollection, useForwardExpose } from '../../composables';
-
 import { DismissableLayer } from '../dismissable-layer';
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
+import { useArrowNavigation, useCollection, useForwardExpose } from '../../composables';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import type {
+  MotionAttribute,
+  NavigationMenuContentImplEmits,
+  NavigationMenuContentImplPropsWithPrimitive
+} from './types';
+import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
 import {
   EVENT_ROOT_CONTENT_DISMISS,
   focusFirst,
@@ -13,22 +16,20 @@ import {
   getTabbableCandidates,
   makeContentId,
   makeTriggerId
-} from './utils';
-import { injectNavigationMenuItemContext } from './navigation-menu-item.vue';
+} from './shared';
 
-type MotionAttribute = 'to-start' | 'to-end' | 'from-start' | 'from-end';
+defineOptions({
+  name: 'NavigationMenuContentImpl',
+  inheritAttrs: false
+});
 
-export type NavigationMenuContentImplEmits = DismissableLayerEmits;
-
-export interface NavigationMenuContentImplProps extends DismissableLayerProps {}
-
-const props = defineProps<NavigationMenuContentImplProps>();
+const props = defineProps<NavigationMenuContentImplPropsWithPrimitive>();
 const emit = defineEmits<NavigationMenuContentImplEmits>();
 
 const { getItems } = useCollection({ key: 'NavigationMenu' });
 const { forwardRef, currentElement } = useForwardExpose();
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const itemContext = injectNavigationMenuItemContext();
 
 const triggerId = makeTriggerId(menuContext.baseId, itemContext.value);
@@ -75,9 +76,9 @@ function handleFocusOutside(ev: FocusOutsideEvent) {
   if (!ev.defaultPrevented) {
     itemContext.onContentFocusOutside();
 
-    const target = ev.target as HTMLElement;
+    const _target = ev.target as HTMLElement;
     // Only dismiss content when focus moves outside of the menu
-    if (menuContext.rootNavigationMenu?.value?.contains(target)) ev.preventDefault();
+    if (menuContext.rootNavigationMenu?.value?.contains(_target)) ev.preventDefault();
   }
 }
 

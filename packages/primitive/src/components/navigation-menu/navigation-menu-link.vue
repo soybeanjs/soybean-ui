@@ -1,25 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { useCollection, useForwardExpose } from '../../composables';
-
 import { Primitive } from '../primitive';
-import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './utils';
+import { useCollection, useForwardExpose } from '../../composables';
+import type { NavigationMenuLinkEmits, NavigationMenuLinkPropsWithPrimitive } from './types';
+import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './shared';
 
-export type NavigationMenuLinkEmits = {
-  /**
-   * Event handler called when the user selects a link (via mouse or keyboard).
-   *
-   * Calling `event.preventDefault` in this handler will prevent the navigation menu from closing when selecting that
-   * link.
-   */
-  select: [payload: CustomEvent<{ originalEvent: Event }>];
-};
-export interface NavigationMenuLinkProps extends PrimitiveProps {
-  /** Used to identify the link as the currently active page. */
-  active?: boolean;
-}
+defineOptions({
+  name: 'NavigationMenuLink'
+});
 
-const props = withDefaults(defineProps<NavigationMenuLinkProps>(), {
+const props = withDefaults(defineProps<NavigationMenuLinkPropsWithPrimitive>(), {
   as: 'a'
 });
 

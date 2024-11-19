@@ -1,51 +1,23 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { ref } from 'vue';
-import { useVModel } from '@vueuse/core';
-import { useCollection, useForwardExpose } from '../../composables';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { injectNavigationMenuContext, provideNavigationMenuContext } from './navigation-menu-root.vue';
-import type { Orientation } from './utils';
+import { useCollection, useForwardExpose } from '../../composables';
+import type { NavigationMenuSubPropsWithPrimitive } from './types';
+import { injectNavigationMenuRootContext, provideNavigationMenuRootContext } from './context';
 
-export type NavigationMenuSubEmits = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [value: string];
-};
+defineOptions({
+  name: 'NavigationMenuSub'
+});
 
-export interface NavigationMenuSubProps extends PrimitiveProps {
-  /** The controlled value of the sub menu item to activate. Can be used as `v-model`. */
-  modelValue?: string;
-  /**
-   * The value of the menu item that should be active when initially rendered.
-   *
-   * Use when you do not need to control the value state.
-   */
-  defaultValue?: string;
-  /** The orientation of the menu. */
-  orientation?: Orientation;
-}
-
-const props = withDefaults(defineProps<NavigationMenuSubProps>(), {
+const props = withDefaults(defineProps<NavigationMenuSubPropsWithPrimitive>(), {
   orientation: 'horizontal'
 });
-const emit = defineEmits<NavigationMenuSubEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const modelValue = defineModel<string>({ default: props.defaultValue ?? '' });
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? '',
-  passive: (props.modelValue === undefined) as false
-}) as Ref<string>;
 const previousValue = ref('');
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const { forwardRef, currentElement } = useForwardExpose();
 
 const indicatorTrack = ref<HTMLElement>();
@@ -53,7 +25,7 @@ const viewport = ref<HTMLElement>();
 
 const { CollectionSlot } = useCollection({ key: 'NavigationMenu', isProvider: true });
 
-provideNavigationMenuContext({
+provideNavigationMenuRootContext({
   ...menuContext,
   isRootMenu: false,
   modelValue,

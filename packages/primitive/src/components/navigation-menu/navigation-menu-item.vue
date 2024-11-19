@@ -1,45 +1,23 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, useArrowNavigation, useCollection, useForwardExpose, useId } from '../../composables';
 import { Primitive } from '../primitive';
+import { useArrowNavigation, useCollection, useForwardExpose, useId } from '../../composables';
+import type { NavigationMenuItemPropsWithPrimitive } from './types';
+import { injectNavigationMenuRootContext, provideNavigationMenuItemContext } from './context';
+import { focusFirst, getTabbableCandidates, makeContentId, removeFromTabOrder } from './shared';
 
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-import { focusFirst, getTabbableCandidates, makeContentId, removeFromTabOrder } from './utils';
+defineOptions({
+  name: 'NavigationMenuItem'
+});
 
-export interface NavigationMenuItemProps extends PrimitiveProps {
-  /**
-   * A unique value that associates the item with an active value when the navigation menu is controlled.
-   *
-   * This prop is managed automatically when uncontrolled.
-   */
-  value?: string;
-}
-
-export type NavigationMenuItemContext = {
-  value: string;
-  contentId: string;
-  triggerRef: Ref<HTMLElement | undefined>;
-  focusProxyRef: Ref<HTMLElement | undefined>;
-  wasEscapeCloseRef: Ref<boolean>;
-  onEntryKeyDown: () => void;
-  onFocusProxyEnter: (side: 'start' | 'end') => void;
-  onContentFocusOutside: () => void;
-  onRootContentClose: () => void;
-};
-
-export const [injectNavigationMenuItemContext, provideNavigationMenuItemContext] =
-  createContext<NavigationMenuItemContext>('NavigationMenuItem');
-
-const props = withDefaults(defineProps<NavigationMenuItemProps>(), {
+const props = withDefaults(defineProps<NavigationMenuItemPropsWithPrimitive>(), {
   as: 'li'
 });
 
 useForwardExpose();
 const { getItems } = useCollection({ key: 'NavigationMenu' });
 
-const context = injectNavigationMenuContext();
+const context = injectNavigationMenuRootContext();
 
 const value = useId(props.value);
 const triggerRef = ref<HTMLElement>();

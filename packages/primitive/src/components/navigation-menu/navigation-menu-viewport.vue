@@ -1,37 +1,25 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-import { getOpenState, whenMouse } from './utils';
-
-export interface NavigationMenuViewportProps extends PrimitiveProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-  /**
-   * Placement of the viewport for css variables `(--soybean-navigation-menu-viewport-left,
-   * --soybean-navigation-menu-viewport-top)`.
-   *
-   * @defaultValue 'center'
-   */
-  align?: 'start' | 'center' | 'end';
-}
+import type { NavigationMenuViewportPropsWithPrimitive } from './types';
+import { injectNavigationMenuRootContext } from './context';
+import { getOpenState, whenMouse } from './shared';
 
 defineOptions({
+  name: 'NavigationMenuViewport',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<NavigationMenuViewportProps>(), {
+const props = withDefaults(defineProps<NavigationMenuViewportPropsWithPrimitive>(), {
   align: 'center'
 });
 
 const { forwardRef, currentElement } = useForwardExpose();
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const { activeTrigger, rootNavigationMenu, modelValue } = menuContext;
 
 const size = ref<{ width: number; height: number }>();

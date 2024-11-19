@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-
-export interface NavigationMenuListProps extends PrimitiveProps {}
+import { injectNavigationMenuRootContext } from './context';
+import type { NavigationMenuListPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'NavigationMenuList',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<NavigationMenuListProps>(), {
+const props = withDefaults(defineProps<NavigationMenuListPropsWithPrimitive>(), {
   as: 'ul'
 });
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const { forwardRef, currentElement } = useForwardExpose();
 
 onMounted(() => {

@@ -1,126 +1,28 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
 import { computed, ref, toRefs, watchEffect } from 'vue';
-import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
-import { createContext, useCollection, useDirection, useForwardExpose, useId } from '../../composables';
-import type { PrimitiveProps } from '../primitive';
+import { refAutoReset, useDebounceFn } from '@vueuse/core';
 import { Primitive } from '../primitive';
-import type { Direction, Orientation } from './utils';
+import { useCollection, useDirection, useForwardExpose, useId } from '../../composables';
+import { provideNavigationMenuRootContext } from './context';
+import type { NavigationMenuRootPropsWithPrimitive } from './types';
 
-export interface NavigationMenuRootProps extends PrimitiveProps {
-  /** The controlled value of the menu item to activate. Can be used as `v-model`. */
-  modelValue?: string;
-  /**
-   * The value of the menu item that should be active when initially rendered.
-   *
-   * Use when you do not need to control the value state.
-   */
-  defaultValue?: string;
-  /**
-   * The reading direction of the combobox when applicable.
-   *
-   * If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** The orientation of the menu. */
-  orientation?: Orientation;
-  /**
-   * The duration from when the pointer enters the trigger until the tooltip gets opened.
-   *
-   * @defaultValue 200
-   */
-  delayDuration?: number;
-  /**
-   * How much time a user has to enter another trigger without incurring a delay again.
-   *
-   * @defaultValue 300
-   */
-  skipDelayDuration?: number;
+defineOptions({
+  name: 'NavigationMenuRoot'
+});
 
-  /**
-   * If `true`, menu cannot be open by click on trigger
-   *
-   * @defaultValue false
-   */
-  disableClickTrigger?: boolean;
-  /**
-   * If `true`, menu cannot be open by hover on trigger
-   *
-   * @defaultValue false
-   */
-  disableHoverTrigger?: boolean;
-  /**
-   * If `true`, menu will not close during pointer leave event
-   *
-   * @defaultValue false
-   */
-  disablePointerLeaveClose?: boolean;
-
-  /**
-   * When `true`, the element will be unmounted on closed state.
-   *
-   * @defaultValue `true`
-   */
-  unmountOnHide?: boolean;
-}
-export type NavigationMenuRootEmits = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [value: string];
-};
-
-export interface NavigationMenuContext {
-  isRootMenu: boolean;
-  modelValue: Ref<string>;
-  previousValue: Ref<string>;
-  baseId: string;
-  dir: Ref<Direction>;
-  orientation: Orientation;
-  disableClickTrigger: Ref<boolean>;
-  disableHoverTrigger: Ref<boolean>;
-  unmountOnHide: Ref<boolean>;
-  rootNavigationMenu: Ref<HTMLElement | undefined>;
-  activeTrigger: Ref<HTMLElement | undefined>;
-  indicatorTrack: Ref<HTMLElement | undefined>;
-  onIndicatorTrackChange: (indicatorTrack: HTMLElement | undefined) => void;
-  viewport: Ref<HTMLElement | undefined>;
-  onViewportChange: (viewport: HTMLElement | undefined) => void;
-  onTriggerEnter: (itemValue: string) => void;
-  onTriggerLeave: () => void;
-  onContentEnter: (itemValue: string) => void;
-  onContentLeave: () => void;
-  onItemSelect: (itemValue: string) => void;
-  onItemDismiss: () => void;
-}
-
-export const [injectNavigationMenuContext, provideNavigationMenuContext] = createContext<NavigationMenuContext>(
-  ['NavigationMenuRoot', 'NavigationMenuSub'],
-  'NavigationMenuContext'
-);
-
-const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
+const props = withDefaults(defineProps<NavigationMenuRootPropsWithPrimitive>(), {
+  as: 'nav',
   modelValue: undefined,
   delayDuration: 200,
   skipDelayDuration: 300,
   orientation: 'horizontal',
   disableClickTrigger: false,
   disableHoverTrigger: false,
-  unmountOnHide: true,
-  as: 'nav'
+  unmountOnHide: true
 });
-const emit = defineEmits<NavigationMenuRootEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
+const modelValue = defineModel<string>({ default: props.defaultValue ?? '' });
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? '',
-  passive: (props.modelValue === undefined) as false
-}) as Ref<string>;
 const previousValue = ref('');
 
 const { forwardRef, currentElement: rootNavigationMenu } = useForwardExpose();
@@ -163,7 +65,7 @@ watchEffect(() => {
   activeTrigger.value = items.find(item => item.id.includes(modelValue.value));
 });
 
-provideNavigationMenuContext({
+provideNavigationMenuRootContext({
   isRootMenu: true,
   modelValue,
   previousValue,

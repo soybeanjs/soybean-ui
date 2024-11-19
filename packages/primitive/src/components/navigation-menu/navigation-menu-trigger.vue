@@ -1,30 +1,24 @@
 <script setup lang="ts">
-import type { VNode } from 'vue';
 import { computed, onMounted, ref } from 'vue';
+import type { VNode } from 'vue';
 import { refAutoReset, unrefElement } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
+import { useCollection, useForwardExpose } from '../../composables';
 import { VisuallyHidden } from '../visually-hidden';
-
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-import { injectNavigationMenuItemContext } from './navigation-menu-item.vue';
-import { getOpenState, makeContentId, makeTriggerId } from './utils';
-
-export interface NavigationMenuTriggerProps extends PrimitiveProps {
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
-}
+import type { NavigationMenuTriggerPropsWithPrimitive } from './types';
+import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
+import { getOpenState, makeContentId, makeTriggerId } from './shared';
 
 defineOptions({
+  name: 'NavigationMenuTrigger',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
+const props = withDefaults(defineProps<NavigationMenuTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const itemContext = injectNavigationMenuItemContext();
 
 const { CollectionItem } = useCollection({ key: 'NavigationMenu' });

@@ -3,34 +3,23 @@ import { computed } from 'vue';
 import { isClient, reactiveOmit } from '@vueuse/shared';
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type {
-  NavigationMenuContentImplEmits,
-  NavigationMenuContentImplProps
-} from './navigation-menu-content-impl.vue';
-
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-import { injectNavigationMenuItemContext } from './navigation-menu-item.vue';
-import { getOpenState, whenMouse } from './utils';
+import type { NavigationMenuContentEmits, NavigationMenuContentPropsWithPrimitive } from './types';
+import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
+import { getOpenState, whenMouse } from './shared';
 import NavigationMenuContentImpl from './navigation-menu-content-impl.vue';
 
-export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
-
-export interface NavigationMenuContentProps extends NavigationMenuContentImplProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
 defineOptions({
+  name: 'NavigationMenuContent',
   inheritAttrs: false
 });
 
-const props = defineProps<NavigationMenuContentProps>();
+const props = defineProps<NavigationMenuContentPropsWithPrimitive>();
 const emit = defineEmits<NavigationMenuContentEmits>();
 
 const forwarded = useForwardPropsEmits(reactiveOmit(props, 'forceMount'), emit);
 const { forwardRef } = useForwardExpose();
 
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 const itemContext = injectNavigationMenuItemContext();
 
 const open = computed(() => itemContext.value === menuContext.modelValue.value);

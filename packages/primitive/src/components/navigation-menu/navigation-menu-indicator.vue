@@ -1,25 +1,21 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import { injectNavigationMenuContext } from './navigation-menu-root.vue';
-
-export interface NavigationMenuIndicatorProps extends PrimitiveProps {
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
+import type { NavigationMenuIndicatorPropsWithPrimitive } from './types';
+import { injectNavigationMenuRootContext } from './context';
 
 defineOptions({
+  name: 'NavigationMenuIndicator',
   inheritAttrs: false
 });
 
-const props = defineProps<NavigationMenuIndicatorProps>();
+const props = defineProps<NavigationMenuIndicatorPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
-const menuContext = injectNavigationMenuContext();
+const menuContext = injectNavigationMenuRootContext();
 
 const position = ref<{ size: number; offset: number }>();
 const isHorizontal = computed(() => menuContext.orientation === 'horizontal');
