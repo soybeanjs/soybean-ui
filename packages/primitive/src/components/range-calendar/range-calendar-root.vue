@@ -30,7 +30,8 @@ const props = withDefaults(defineProps<RangeCalendarRootPropsWithPrimitive>(), {
   isDateUnavailable: undefined,
   allowNonContiguousRanges: false
 });
-const emit = defineEmits<RangeCalendarRootEmits>();
+
+const emit = defineEmits<Pick<RangeCalendarRootEmits, 'update:startValue'>>();
 
 const {
   disabled,
@@ -61,8 +62,8 @@ const locale = useLocale(propLocale);
 const lastPressedDateValue = ref() as Ref<DateValue | undefined>;
 const focusedValue = ref() as Ref<DateValue | undefined>;
 
-const modelValue = defineModel<DateRange>('modelValue', {
-  default: props.defaultValue ?? { start: undefined, end: undefined }
+const modelValue = defineModel<DateRange>({
+  default: () => props.defaultValue ?? { start: undefined, end: undefined }
 });
 
 const defaultDate = getDefaultDate({

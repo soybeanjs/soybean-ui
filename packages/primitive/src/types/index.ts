@@ -9,6 +9,7 @@ export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';
 export type SingleOrMultipleType = 'single' | 'multiple';
 export type Side = 'bottom' | 'left' | 'right' | 'top';
+export type SlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 'from-top';
 export type Align = 'center' | 'end' | 'start';
 export type DisclosureState = 'open' | 'closed';
 export type DataState = 'on' | 'off';

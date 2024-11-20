@@ -1,1 +1,5 @@
-export { default as FocusScope, type FocusScopeEmits, type FocusScopeProps } from './focus-scope.vue';
+import FocusScope from './focus-scope.vue';
+
+export { FocusScope };
+
+export * from './types';

@@ -1,4 +1,5 @@
-import { clamp, createContext } from '../../composables';
+import { clamp } from '../../shared';
+import type { SlideDirection } from '../../types';
 
 export interface SliderOrientationPrivateProps {
   min: number;
@@ -15,7 +16,7 @@ export type SliderOrientationPrivateEmits = {
   stepKeyDown: [event: KeyboardEvent, direction: number];
 };
 
-export function getNextSortedValues(prevValues: number[] = [], nextValue: number, atIndex: number) {
+export function getNextSortedValues(prevValues: number[], nextValue: number, atIndex: number) {
   const nextValues = [...prevValues];
   nextValues[atIndex] = nextValue;
   return nextValues.sort((a, b) => a - b);
@@ -111,28 +112,12 @@ export function roundValue(value: number, decimalCount: number) {
   return Math.round(value * rounder) / rounder;
 }
 
-export type Direction = 'ltr' | 'rtl';
-
 export const PAGE_KEYS = ['PageUp', 'PageDown'];
 export const ARROW_KEYS = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 
-type SlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 'from-top';
 export const BACK_KEYS: Record<SlideDirection, string[]> = {
   'from-left': ['Home', 'PageDown', 'ArrowDown', 'ArrowLeft'],
   'from-right': ['Home', 'PageDown', 'ArrowDown', 'ArrowRight'],
   'from-bottom': ['Home', 'PageDown', 'ArrowDown', 'ArrowLeft'],
   'from-top': ['Home', 'PageDown', 'ArrowUp', 'ArrowLeft']
 };
-
-type Side = 'top' | 'right' | 'bottom' | 'left';
-interface SliderOrientation {
-  startEdge: Side;
-  endEdge: Side;
-  size: 'width' | 'height';
-  direction: number;
-}
-
-export const [injectSliderOrientationContext, provideSliderOrientationContext] = createContext<SliderOrientation>([
-  'SliderVertical',
-  'SliderHorizontal'
-]);

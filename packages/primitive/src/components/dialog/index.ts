@@ -1,13 +1,22 @@
+import DialogRoot from './dialog-root.vue';
+import DialogTrigger from './dialog-trigger.vue';
+import DialogPortal from './dialog-portal.vue';
+import DialogContent from './dialog-content.vue';
+import DialogOverlay from './dialog-overlay.vue';
+import DialogClose from './dialog-close.vue';
+import DialogTitle from './dialog-title.vue';
+import DialogDescription from './dialog-description.vue';
+
 export {
-  injectDialogRootContext,
-  default as DialogRoot,
-  type DialogRootProps,
-  type DialogRootEmits
-} from './DialogRoot.vue';
-export { default as DialogTrigger, type DialogTriggerProps } from './DialogTrigger.vue';
-export { default as DialogPortal, type DialogPortalProps } from './DialogPortal.vue';
-export { default as DialogContent, type DialogContentProps, type DialogContentEmits } from './DialogContent.vue';
-export { default as DialogOverlay, type DialogOverlayProps } from './DialogOverlay.vue';
-export { default as DialogClose, type DialogCloseProps } from './DialogClose.vue';
-export { default as DialogTitle, type DialogTitleProps } from './DialogTitle.vue';
-export { default as DialogDescription, type DialogDescriptionProps } from './dialog-description.vue';
+  DialogRoot,
+  DialogTrigger,
+  DialogPortal,
+  DialogContent,
+  DialogOverlay,
+  DialogClose,
+  DialogTitle,
+  DialogDescription
+};
+export { injectDialogRootContext } from './context';
+
+export * from './types';

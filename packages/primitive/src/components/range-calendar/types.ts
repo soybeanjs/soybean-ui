@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
-import type { DateFormatter, DateRange, DateValue, Matcher, WeekDayFormat } from '../../date';
+import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
 import type { Direction } from '../../types';
 
 // Root
@@ -29,7 +29,7 @@ export interface RangeCalendarRootProps {
   /** Whether or not to prevent the user from deselecting a date without selecting another date first */
   preventDeselect?: boolean;
   /** The day of the week to start the calendar on */
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  weekStartsOn?: DaysOfWeekNumber;
   /** The format to use for the weekday strings provided via the weekdays slot prop */
   weekdayFormat?: WeekDayFormat;
   /** The accessible label for the calendar */

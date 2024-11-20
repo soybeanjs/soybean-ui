@@ -20,11 +20,11 @@ export function useCollection<ItemData = {}>(options: { key?: string; isProvider
   if (isProvider) {
     context = {
       collectionRef: ref<HTMLElement>(),
-      itemMap: ref<Map<HTMLElement, { ref: HTMLElement } & ItemData>>(new Map())
+      itemMap: ref(new Map()) as Ref<Map<HTMLElement, { ref: HTMLElement } & ItemData>>
     };
     provide<CollectionContext<ItemData>>(injectionKey, context);
   } else {
-    context = inject<CollectionContext<ItemData>>(injectionKey);
+    context = inject<CollectionContext<ItemData>>(injectionKey)!;
   }
 
   function getItems(includeDisabledItem = false) {

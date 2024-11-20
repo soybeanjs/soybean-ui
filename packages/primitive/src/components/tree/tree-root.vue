@@ -7,7 +7,7 @@ import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
 import type { NavigationKeys } from '../../types';
 import { flatten } from '../../shared';
-import type { FlattenedItem, TreeRootProps } from './types';
+import type { FlattenedItem, TreeRootContext, TreeRootProps } from './types';
 import { provideTreeRootContext } from './context';
 
 defineOptions({
@@ -91,7 +91,7 @@ function handleKeydownNavigation(event: KeyboardEvent) {
     handleMultipleReplace(
       intent,
       document.activeElement,
-      rovingFocusGroupRef.value?.getItems!,
+      rovingFocusGroupRef.value?.getItems as () => { ref: HTMLElement; value?: any }[],
       expandedItems.value.map(i => i.value)
     );
   });
@@ -101,13 +101,13 @@ provideTreeRootContext({
   modelValue,
   selectedKeys,
   onSelect: val => {
-    const condition = (baseValue: U) => props.getKey((baseValue as any) ?? {}) === props.getKey(val);
+    const condition = (baseValue: U) => props.getKey((baseValue as any) ?? {}) === props.getKey(val as T);
     const exist =
       props.multiple && Array.isArray(modelValue.value) ? modelValue.value?.findIndex(condition) !== -1 : undefined;
-    onSelectItem(val, condition);
+    onSelectItem(val as U, condition);
 
     if (props.propagateSelect && props.multiple && Array.isArray(modelValue.value)) {
-      const children = flatten<U, any>(props.getChildren(val) ?? []);
+      const children = flatten<U, any>(props.getChildren(val as T) ?? []);
       if (exist) {
         // remove all child
         modelValue.value = [...modelValue.value].filter(
@@ -121,11 +121,11 @@ provideTreeRootContext({
   },
   expanded,
   onToggle(val) {
-    const children = val ? props.getChildren(val) : undefined;
+    const children = val ? props.getChildren(val as T) : undefined;
     if (!children) return;
 
-    const key = props.getKey(val) ?? val;
-    if (expanded.value.includes(key)) expanded.value = expanded.value.filter(val => val !== key);
+    const key = props.getKey(val as T) ?? val;
+    if (expanded.value.includes(key)) expanded.value = expanded.value.filter(v => v !== key);
     else expanded.value.push(key);
   },
   getKey: props.getKey,
@@ -136,11 +136,10 @@ provideTreeRootContext({
   multiple,
   dir,
   propagateSelect,
-
   isVirtual,
   virtualKeydownHook,
   handleMultipleReplace
-});
+} as TreeRootContext);
 </script>
 
 <template>
