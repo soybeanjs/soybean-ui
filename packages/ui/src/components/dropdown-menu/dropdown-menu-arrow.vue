@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuArrow } from 'reka-ui';
+import { DropdownMenuArrow } from '@soybean-ui/primitive';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuArrowProps } from './types';
 

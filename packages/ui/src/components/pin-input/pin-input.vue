@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { useForwardPropsEmits } from 'reka-ui';
+import { useForwardPropsEmits } from '@soybean-ui/primitive';
 import PinInputRoot from './pin-input-root.vue';
 import PinInputInputRoot from './pin-input-input-root.vue';
 import PinInputInput from './pin-input-input.vue';

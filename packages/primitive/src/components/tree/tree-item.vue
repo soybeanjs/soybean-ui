@@ -4,7 +4,8 @@ import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useCollection } from '../../composables';
 import { flatten, handleAndDispatchCustomEvent } from '../../shared';
-import type { SelectEvent, ToggleEvent, TreeItemEmits, TreeItemProps } from './types';
+import type { TreeSelectEvent, TreeToggleEvent } from '../../types';
+import type { TreeItemEmits, TreeItemProps } from './types';
 import { injectTreeRootContext } from './context';
 
 defineOptions({
@@ -93,13 +94,13 @@ function handleKeydownLeft(ev: KeyboardEvent) {
   }
 }
 
-async function handleSelect(ev: SelectEvent<T>) {
+async function handleSelect(ev: TreeSelectEvent<T>) {
   emit('select', ev);
   if (ev?.defaultPrevented) return;
 
   rootContext.onSelect(props.value);
 }
-async function handleToggle(ev: ToggleEvent<T>) {
+async function handleToggle(ev: TreeToggleEvent<T>) {
   emit('toggle', ev);
   if (ev?.defaultPrevented) return;
 

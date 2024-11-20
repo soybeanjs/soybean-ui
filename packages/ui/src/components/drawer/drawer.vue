@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps, useForwardPropsEmits } from 'reka-ui';
+import { useForwardProps, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { DrawerPortal, DrawerRoot, DrawerTrigger } from 'vaul-vue';
 import { computedOmit, computedPick } from '../../shared';
 import type { CardProps } from '../card/types';

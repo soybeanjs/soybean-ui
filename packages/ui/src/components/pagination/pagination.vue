@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PaginationRoot, useForwardPropsEmits } from 'reka-ui';
+import { PaginationRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
 import SPaginationList from './pagination-list.vue';
 import SPaginationListItem from './pagination-list-item.vue';
 import SPaginationFirst from './pagination-first.vue';

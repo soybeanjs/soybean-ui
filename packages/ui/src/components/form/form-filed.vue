@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from 'reka-ui';
+import { useForwardProps } from '@soybean-ui/primitive';
 import { Field } from 'vee-validate';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import SFormItem from './form-item.vue';

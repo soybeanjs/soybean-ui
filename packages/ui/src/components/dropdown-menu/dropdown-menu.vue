@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DropdownMenuItemOption = DropdownMenuItemOption">
 import { computed } from 'vue';
-import { useEmitAsProps, useForwardProps } from 'reka-ui';
+import { useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
 import { computedOmit, computedOmitEmits, computedPick, computedPickEmits } from '../../shared';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuOption from './dropdown-menu-option.vue';

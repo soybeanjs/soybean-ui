@@ -1,4 +1,4 @@
-import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from 'reka-ui';
+import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from '@soybean-ui/primitive';
 import type { ClassValue, ClassValueProp, StringOrNumber } from '../../types';
 
 export type SegmentRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &

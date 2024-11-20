@@ -5,7 +5,7 @@ import type {
   TooltipRootProps,
   TooltipArrowProps as _TooltipArrowProps,
   TooltipContentProps as _TooltipContentProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type TooltipArrowProps = ClassValueProp & Pick<_TooltipArrowProps, 'width' | 'height'>;

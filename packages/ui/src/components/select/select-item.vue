@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectItem, useForwardProps } from 'reka-ui';
+import { SelectItem, useForwardProps } from '@soybean-ui/primitive';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectItemProps } from './types';
 

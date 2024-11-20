@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressRoot, useForwardPropsEmits } from 'reka-ui';
+import { ProgressRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { cn, progressVariants } from '@soybean-ui/variants';
 import type { ProgressRootEmits, ProgressRootProps } from './types';
 

@@ -6,7 +6,7 @@ import {
   DropdownMenuRoot as SDropdownMenuRoot,
   DropdownMenuSub as SDropdownMenuSub,
   DropdownMenuTrigger as SDropdownMenuTrigger
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import SDropdownMenuContent from './dropdown-menu-content.vue';
 import SDropdownMenuItem from './dropdown-menu-item.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';

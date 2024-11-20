@@ -8,7 +8,7 @@ import {
   VisuallyHidden,
   useForwardProps,
   useForwardPropsEmits
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import { X } from 'lucide-vue-next';
 import { cn, sheetVariants } from '@soybean-ui/variants';
 import { computedOmit, computedPick } from '../../shared';

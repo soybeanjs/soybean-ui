@@ -7,7 +7,7 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
-import { useForwardPropsEmits } from 'reka-ui';
+import { useForwardPropsEmits } from '@soybean-ui/primitive';
 import type { SingleOrMultipleType } from '../../types';
 import SToggleGroupRoot from './toggle-group-root.vue';
 import SToggleGroupItem from './toggle-group-item.vue';

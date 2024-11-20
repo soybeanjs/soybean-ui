@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends SegmentOption = SegmentOption">
-import { useForwardPropsEmits } from 'reka-ui';
+import { useForwardPropsEmits } from '@soybean-ui/primitive';
 import SSegmentRoot from './segment-root.vue';
 import SSegmentTriggerRoot from './segment-trigger-root.vue';
 import SSegmentTrigger from './segment-trigger.vue';

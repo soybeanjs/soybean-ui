@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
-import { CheckboxGroupRoot, useForwardPropsEmits } from 'reka-ui';
-import type { AcceptableValue } from 'reka-ui';
+import { CheckboxGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import type { AcceptableValue } from '@soybean-ui/primitive';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxGroupRootEmits, CheckboxGroupRootProps } from './types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionItem } from 'reka-ui';
+import { AccordionItem } from '@soybean-ui/primitive';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionItemProps } from './types';
 

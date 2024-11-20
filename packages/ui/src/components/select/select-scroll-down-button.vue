@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectScrollDownButton } from 'reka-ui';
+import { SelectScrollDownButton } from '@soybean-ui/primitive';
 import { ChevronDown } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectScrollDownButtonProps } from './types';

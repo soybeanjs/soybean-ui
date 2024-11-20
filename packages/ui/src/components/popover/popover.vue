@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverClose, PopoverPortal, PopoverRoot, PopoverTrigger, useEmitAsProps, useForwardProps } from 'reka-ui';
+import { PopoverClose, PopoverPortal, PopoverRoot, PopoverTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
 import { computedOmitEmits, computedPick } from '../../shared';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';

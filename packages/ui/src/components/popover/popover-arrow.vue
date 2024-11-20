@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverArrow } from 'reka-ui';
+import { PopoverArrow } from '@soybean-ui/primitive';
 import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { PopoverArrowProps } from './types';
 

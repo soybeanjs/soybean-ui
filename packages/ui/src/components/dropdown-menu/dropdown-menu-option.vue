@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends DropdownMenuItemOption = DropdownMenuItemOption">
-import { DropdownMenuGroup, DropdownMenuPortal, DropdownMenuSub, useEmitAsProps } from 'reka-ui';
+import { DropdownMenuGroup, DropdownMenuPortal, DropdownMenuSub, useEmitAsProps } from '@soybean-ui/primitive';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';
 import SDropdownMenuSeparator from './dropdown-menu-separator.vue';
 import SDropdownMenuItem from './dropdown-menu-item.vue';

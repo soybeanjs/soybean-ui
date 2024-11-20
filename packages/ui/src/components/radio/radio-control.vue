@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RadioGroupItem, useForwardProps } from 'reka-ui';
+import { RadioGroupItem, useForwardProps } from '@soybean-ui/primitive';
 import { cn, radioVariants } from '@soybean-ui/variants';
 import type { RadioControlProps } from './types';
 

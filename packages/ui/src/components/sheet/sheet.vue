@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from 'reka-ui';
+import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
 import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SSheetOverlay from './sheet-overlay.vue';
 import SSheetContent from './sheet-content.vue';

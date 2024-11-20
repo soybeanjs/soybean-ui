@@ -1,11 +1,11 @@
 import type {
   AcceptableValue,
-  CheckboxCheckedState,
   CheckboxGroupRootEmits,
+  CheckedState,
   CheckboxRootProps as _CheckboxControlProps,
   CheckboxGroupRootProps as _CheckboxGroupRootProps,
   CheckboxIndicatorProps as _CheckboxIndicatorProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 
@@ -41,11 +41,11 @@ export type CheckboxGroupProps<T = AcceptableValue> = CheckboxGroupRootProps<T> 
   };
 
 export type CheckboxControlEmits = {
-  'update:modelValue': [value: CheckboxCheckedState];
+  'update:modelValue': [value: CheckedState];
 };
 
 export type CheckboxEmits = CheckboxControlEmits;
 
 export type CheckboxGroupEmits<T = AcceptableValue> = CheckboxGroupRootEmits<T>;
 
-export type { CheckboxGroupRootEmits, CheckboxCheckedState };
+export type { CheckboxGroupRootEmits, CheckedState };

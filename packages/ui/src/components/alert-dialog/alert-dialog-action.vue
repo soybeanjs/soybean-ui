@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertDialogAction, useForwardProps } from 'reka-ui';
+import { AlertDialogAction, useForwardProps } from '@soybean-ui/primitive';
 import SButton from '../button/button.vue';
 import type { ButtonProps } from '../button/types';
 

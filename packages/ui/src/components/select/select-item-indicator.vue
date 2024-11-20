@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectItemIndicator } from 'reka-ui';
+import { SelectItemIndicator } from '@soybean-ui/primitive';
 import { Check } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectItemIndicatorProps } from './types';

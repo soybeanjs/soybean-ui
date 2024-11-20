@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { useForwardPropsEmits } from 'reka-ui';
+import { useForwardPropsEmits } from '@soybean-ui/primitive';
 import { Check, Minus } from 'lucide-vue-next';
 import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';

@@ -77,7 +77,7 @@ export type AccordionRootContext = {
 };
 
 // AccordionItem
-export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
+export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountOnHide'> {
   /**
    * Whether or not an accordion item is disabled from user interaction. When `true`, prevents the user from interacting
    * with the item.

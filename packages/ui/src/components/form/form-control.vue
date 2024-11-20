@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Slot } from 'reka-ui';
+import { Slot } from '@soybean-ui/primitive';
 import { useFormField } from './hooks';
 
 const { error, formItemId, formDescriptionId, formMessageId } = useFormField();

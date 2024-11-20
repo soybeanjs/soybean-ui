@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsTrigger, useForwardProps } from 'reka-ui';
+import { TabsTrigger, useForwardProps } from '@soybean-ui/primitive';
 import { cn, segmentVariants } from '@soybean-ui/variants';
 import type { SegmentTriggerProps } from './types';
 

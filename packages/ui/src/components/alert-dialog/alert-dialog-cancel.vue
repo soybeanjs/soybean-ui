@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AlertDialogCancel, useForwardProps } from 'reka-ui';
+import { AlertDialogCancel, useForwardProps } from '@soybean-ui/primitive';
 import SButton from '../button/button.vue';
 import type { ButtonProps } from '../button/types';
 

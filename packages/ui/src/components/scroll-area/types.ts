@@ -2,7 +2,7 @@ import type {
   ScrollAreaRootProps as _ScrollAreaRootProps,
   ScrollAreaScrollbarProps as _ScrollAreaScrollbarProps,
   ScrollAreaViewportProps as _ScrollAreaViewportProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type ScrollAreaRootProps = ClassValueProp & Omit<_ScrollAreaRootProps, 'as' | 'asChild'>;

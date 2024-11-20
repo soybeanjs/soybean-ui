@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SwitchRoot, useForwardPropsEmits } from 'reka-ui';
+import { SwitchRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { cn, switchVariants } from '@soybean-ui/variants';
 import type { SwitchRootEmits, SwitchRootProps } from './types';
 

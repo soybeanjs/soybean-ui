@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ScrollAreaViewport, useForwardProps } from 'reka-ui';
+import { ScrollAreaViewport, useForwardProps } from '@soybean-ui/primitive';
 import { cn, scrollAreaVariants } from '@soybean-ui/variants';
 import type { ScrollAreaViewportProps } from './types';
 

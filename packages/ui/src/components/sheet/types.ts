@@ -5,7 +5,7 @@ import type {
   DialogPortalProps,
   DialogRootEmits,
   DialogRootProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { SheetSide } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';

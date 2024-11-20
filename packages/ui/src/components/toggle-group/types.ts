@@ -1,7 +1,7 @@
 import type {
   ToggleGroupItemProps as _ToggleGroupItemProps,
   ToggleGroupRootProps as _ToggleGroupRootProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ToggleVariant } from '@soybean-ui/variants';
 import type { ClassValueProp, SingleOrMultipleType, ThemeSize } from '../../types';
 

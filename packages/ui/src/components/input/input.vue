@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from 'reka-ui';
+import { Primitive, useForwardProps } from '@soybean-ui/primitive';
 import { cn, inputVariants } from '@soybean-ui/variants';
 import type { InputEmits, InputProps } from './types';
 

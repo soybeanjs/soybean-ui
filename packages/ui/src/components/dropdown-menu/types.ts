@@ -15,7 +15,7 @@ import type {
   DropdownMenuRadioItemProps as _DropdownMenuRadioItemProps,
   DropdownMenuSubContentProps as _DropdownMenuSubContentProps,
   DropdownMenuSubTriggerProps as _DropdownMenuSubTriggerProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

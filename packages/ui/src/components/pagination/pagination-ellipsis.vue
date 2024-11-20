@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PaginationEllipsis } from 'reka-ui';
+import { PaginationEllipsis } from '@soybean-ui/primitive';
 import { MoreHorizontal } from 'lucide-vue-next';
 import { cn, paginationVariants } from '@soybean-ui/variants';
 import type { PaginationEllipsisProps } from './types';

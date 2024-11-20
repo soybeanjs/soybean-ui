@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectSeparator } from 'reka-ui';
+import { SelectSeparator } from '@soybean-ui/primitive';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectSeparatorProps } from './types';
 

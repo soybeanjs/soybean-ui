@@ -1,4 +1,4 @@
-import type { RadioGroupIndicatorProps, RadioGroupRootProps, RadioGroupItemProps as _RadioControlProps } from 'reka-ui';
+import type { RadioGroupIndicatorProps, RadioGroupRootProps, RadioGroupItemProps as _RadioControlProps } from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

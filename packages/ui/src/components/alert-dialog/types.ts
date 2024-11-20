@@ -2,10 +2,10 @@ import type {
   AlertDialogContentEmits,
   AlertDialogPortalProps,
   AlertDialogContentProps as _AlertDialogContentProps,
-  AlertDialogEmits as _AlertDialogEmits,
   AlertDialogOverlayProps as _AlertDialogOverlayProps,
-  AlertDialogProps as _AlertDialogProps
-} from 'reka-ui';
+  AlertDialogRootEmits as _AlertDialogRootEmits,
+  AlertDialogRootProps as _AlertDialogRootProps
+} from '@soybean-ui/primitive';
 import type { ThemeColor } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
@@ -19,7 +19,7 @@ export type AlertDialogContentProps = CardProps &
     type?: AlertType;
   };
 
-export type AlertDialogRootProps = Pick<_AlertDialogProps, 'open' | 'defaultOpen'>;
+export type AlertDialogRootProps = Pick<_AlertDialogRootProps, 'open' | 'defaultOpen'>;
 
 export type AlertDialogProps = AlertDialogRootProps &
   AlertDialogContentProps &
@@ -30,7 +30,7 @@ export type AlertDialogProps = AlertDialogRootProps &
     forceMountOverlay?: boolean;
   };
 
-export type AlertDialogRootEmits = _AlertDialogEmits;
+export type AlertDialogRootEmits = _AlertDialogRootEmits;
 
 export type AlertDialogEmits = AlertDialogRootEmits & AlertDialogContentEmits;
 

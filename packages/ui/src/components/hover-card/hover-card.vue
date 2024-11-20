@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HoverCardPortal, HoverCardRoot, HoverCardTrigger, useForwardProps, useForwardPropsEmits } from 'reka-ui';
+import { HoverCardPortal, HoverCardRoot, HoverCardTrigger, useForwardProps, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { computedPick } from '../../shared';
 import SHoverCardContent from './hover-card-content.vue';
 import SHoverCardArrow from './hover-card-arrow.vue';

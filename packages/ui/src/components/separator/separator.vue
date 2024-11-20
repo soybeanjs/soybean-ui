@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from 'reka-ui';
+import { useForwardProps } from '@soybean-ui/primitive';
 import SSeparatorRoot from './separator-root.vue';
 import SSeparatorLabel from './separator-label.vue';
 import type { SeparatorProps } from './types';

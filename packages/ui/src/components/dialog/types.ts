@@ -5,7 +5,7 @@ import type {
   DialogRootProps,
   DialogContentProps as _DialogContentProps,
   DialogOverlayProps as _DialogOverlayProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
 

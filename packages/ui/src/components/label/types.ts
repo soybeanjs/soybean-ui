@@ -1,4 +1,4 @@
-import type { LabelProps as _LabelProps } from 'reka-ui';
+import type { LabelProps as _LabelProps } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValueProp } from '../../types';
 

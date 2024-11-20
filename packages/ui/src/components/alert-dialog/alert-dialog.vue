@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertDialogPortal, AlertDialogRoot, AlertDialogTrigger, useEmitAsProps, useForwardProps } from 'reka-ui';
+import {
+  AlertDialogPortal,
+  AlertDialogRoot,
+  AlertDialogTrigger,
+  useEmitAsProps,
+  useForwardProps
+} from '@soybean-ui/primitive';
 import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';

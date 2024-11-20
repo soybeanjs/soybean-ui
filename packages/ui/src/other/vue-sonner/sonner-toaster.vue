@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useForwardProps } from 'reka-ui';
+import { useForwardProps } from '@soybean-ui/primitive';
 import { Toaster } from 'vue-sonner';
 import type { SonnerProps } from './types';
 

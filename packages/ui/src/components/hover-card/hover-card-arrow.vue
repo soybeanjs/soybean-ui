@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HoverCardArrow } from 'reka-ui';
+import { HoverCardArrow } from '@soybean-ui/primitive';
 import { cn, hoverCardVariants } from '@soybean-ui/variants';
 import type { HoverCardArrowProps } from './types';
 

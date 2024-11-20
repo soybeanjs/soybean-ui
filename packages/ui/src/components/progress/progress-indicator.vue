@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressIndicator } from 'reka-ui';
+import { ProgressIndicator } from '@soybean-ui/primitive';
 import { cn, progressVariants } from '@soybean-ui/variants';
 import type { ProgressIndicatorProps } from './types';
 

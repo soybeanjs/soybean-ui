@@ -1,8 +1,7 @@
 import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction } from '../../types';
-
+import type { Direction, TreeSelectEvent, TreeToggleEvent } from '../../types';
 // Root
 export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
   extends PrimitiveProps {
@@ -64,25 +63,11 @@ export interface TreeItemProps<T> extends PrimitiveProps {
   level: number;
 }
 
-export type SelectEvent<T> = CustomEvent<{
-  originalEvent: PointerEvent | KeyboardEvent;
-  value?: T;
-  isExpanded: boolean;
-  isSelected: boolean;
-}>;
-
-export type ToggleEvent<T> = CustomEvent<{
-  originalEvent: PointerEvent | KeyboardEvent;
-  value?: T;
-  isExpanded: boolean;
-  isSelected: boolean;
-}>;
-
 export type TreeItemEmits<T> = {
   /** Event handler called when selecting item. */
-  select: [event: SelectEvent<T>];
+  select: [event: TreeSelectEvent<T>];
   /** Event handler called when toggling item. */
-  toggle: [event: ToggleEvent<T>];
+  toggle: [event: TreeToggleEvent<T>];
 };
 
 // Virtualizer

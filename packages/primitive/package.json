@@ -1,7 +1,15 @@
 {
-  "name": "soybean-primitive",
+  "name": "@soybean-ui/primitive",
   "type": "module",
   "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./src/*"]
+    }
+  },
   "scripts": {
     "build": "vite build"
   },

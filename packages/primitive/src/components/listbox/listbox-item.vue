@@ -3,10 +3,10 @@ import { computed } from 'vue';
 import { useCollection, useForwardExpose, useId } from '../../composables';
 import { handleAndDispatchCustomEvent } from '../../shared';
 import { Primitive } from '../primitive';
-import type { AcceptableValue } from '../../types';
+import type { AcceptableValue, SelectEvent } from '../../types';
 import { injectListboxRootContext, provideListboxItemContext } from './context';
 import { valueComparator } from './shared';
-import type { ListboxItemEmits, ListboxItemPropsWithPrimitive, SelectEvent } from './types';
+import type { ListboxItemEmits, ListboxItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ListboxItem',

@@ -111,7 +111,7 @@ export type DefaultSlots = SlotsType<{
   default: (props?: Record<string, unknown>) => any;
 }>;
 
-export type SelectEvent = CustomEvent<{ originalEvent: MouseEvent; value?: AcceptableValue }>;
+export type SelectEvent<T = AcceptableValue> = CustomEvent<{ originalEvent: MouseEvent; value?: T }>;
 
 export type PointerDownOutsideEvent = CustomEvent<{
   originalEvent: PointerEvent;
@@ -123,6 +123,20 @@ export type SwipeEvent = { currentTarget: EventTarget & HTMLElement } & Omit<
   CustomEvent<{ originalEvent: PointerEvent; delta: { x: number; y: number } }>,
   'currentTarget'
 >;
+
+export type TreeSelectEvent<T = AcceptableValue> = CustomEvent<{
+  originalEvent: PointerEvent | KeyboardEvent;
+  value?: T;
+  isExpanded: boolean;
+  isSelected: boolean;
+}>;
+
+export type TreeToggleEvent<T> = CustomEvent<{
+  originalEvent: PointerEvent | KeyboardEvent;
+  value?: T;
+  isExpanded: boolean;
+  isSelected: boolean;
+}>;
 
 export type InferDefaults<T> = {
   [K in keyof T]?: InferDefault<T, T[K]>;

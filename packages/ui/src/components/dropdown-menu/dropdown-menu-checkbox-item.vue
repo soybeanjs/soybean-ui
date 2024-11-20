@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuCheckboxItem, useForwardPropsEmits } from 'reka-ui';
+import { DropdownMenuCheckboxItem, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { Check } from 'lucide-vue-next';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import SDropdownMenuItemIndicator from './dropdown-menu-indicator.vue';

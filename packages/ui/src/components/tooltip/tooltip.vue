@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger, useForwardProps } from 'reka-ui';
+import { TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger, useForwardProps } from '@soybean-ui/primitive';
 import { computedPick } from '../../shared';
 import STooltipContent from './tooltip-content.vue';
 import STooltipArrow from './tooltip-arrow.vue';

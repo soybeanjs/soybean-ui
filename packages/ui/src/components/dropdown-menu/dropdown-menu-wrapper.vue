@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuPortal, DropdownMenuRoot, DropdownMenuTrigger, useEmitAsProps, useForwardProps } from 'reka-ui';
+import { DropdownMenuPortal, DropdownMenuRoot, DropdownMenuTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
 import { computedOmitEmits, computedPick } from '../../shared';
 import SDropdownMenuContent from './dropdown-menu-content.vue';
 import SDropdownMenuArrow from './dropdown-menu-arrow.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionTrigger } from 'reka-ui';
+import { AccordionTrigger } from '@soybean-ui/primitive';
 import { ChevronDown } from 'lucide-vue-next';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionTriggerProps } from './types';

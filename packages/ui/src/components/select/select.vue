@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from 'reka-ui';
+import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { computedPick } from '../../shared';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';

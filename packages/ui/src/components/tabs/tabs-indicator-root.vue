@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsIndicator } from 'reka-ui';
+import { TabsIndicator } from '@soybean-ui/primitive';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsIndicatorRootProps } from './types';
 

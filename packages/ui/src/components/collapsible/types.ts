@@ -2,7 +2,7 @@ import type {
   CollapsibleRootEmits,
   CollapsibleContentProps as _CollapsibleContentProps,
   CollapsibleRootProps as _CollapsibleRootProps
-} from 'reka-ui';
+} from '@soybean-ui/primitive';
 import type { ClassValue, ClassValueProp } from '../../types';
 
 export type CollapsibleRootProps = ClassValueProp & Omit<_CollapsibleRootProps, 'as' | 'asChild'>;

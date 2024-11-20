@@ -9,11 +9,11 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, value = 1 } = defineProps<AspectRatioPropsWithPrimitive>();
+const { class: className, ratio = 1 } = defineProps<AspectRatioPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
 
-const aspect = computed(() => (1 / value) * 100);
+const aspect = computed(() => (1 / ratio) * 100);
 </script>
 
 <template>

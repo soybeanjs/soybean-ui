@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps } from '../../types';
+import type { AcceptableValue, DataOrientation, Direction, FormFieldProps, SelectEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { LabelProps, LabelPropsWithPrimitive } from '../label/types';
 
@@ -81,8 +81,6 @@ export interface ListboxItemProps<T = AcceptableValue> {
   disabled?: boolean;
 }
 export type ListboxItemPropsWithPrimitive<T = AcceptableValue> = ListboxItemProps<T> & PrimitiveProps;
-
-export type SelectEvent<T> = CustomEvent<{ originalEvent: PointerEvent; value?: T }>;
 
 export type ListboxItemEmits<T = AcceptableValue> = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */

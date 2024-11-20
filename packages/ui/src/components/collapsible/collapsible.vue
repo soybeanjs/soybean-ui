@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from 'reka-ui';
+import { CollapsibleRoot, CollapsibleTrigger, useForwardPropsEmits } from '@soybean-ui/primitive';
 import SCollapsibleContent from './collapsible-content.vue';
 import type { CollapsibleEmits, CollapsibleProps } from './types';
 

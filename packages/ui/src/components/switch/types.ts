@@ -1,4 +1,4 @@
-import type { SwitchRootProps as _SwitchRootProps } from 'reka-ui';
+import type { SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '../../types';
 

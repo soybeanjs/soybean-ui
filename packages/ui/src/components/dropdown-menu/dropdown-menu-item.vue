@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DropdownMenuItem, useForwardPropsEmits } from 'reka-ui';
-import type { DropdownMenuItemEmits } from 'reka-ui';
+import { DropdownMenuItem, useForwardPropsEmits } from '@soybean-ui/primitive';
+import type { DropdownMenuItemEmits } from '@soybean-ui/primitive';
 import { cn, dropdownMenuVariants } from '@soybean-ui/variants';
 import type { DropdownMenuItemProps } from './types';
 

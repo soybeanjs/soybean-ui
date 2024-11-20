@@ -1,4 +1,4 @@
-import { CollapsibleRoot as SCollapsibleRoot, CollapsibleTrigger as SCollapsibleTrigger } from 'reka-ui';
+import { CollapsibleRoot as SCollapsibleRoot, CollapsibleTrigger as SCollapsibleTrigger } from '@soybean-ui/primitive';
 import SCollapsibleContent from './collapsible-content.vue';
 import SCollapsible from './collapsible.vue';
 

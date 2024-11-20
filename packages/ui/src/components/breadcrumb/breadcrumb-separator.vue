@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from 'reka-ui';
+import { Primitive } from '@soybean-ui/primitive';
 import { ChevronRight } from 'lucide-vue-next';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbSeparatorProps } from './types';

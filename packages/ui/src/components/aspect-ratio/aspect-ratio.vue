@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AspectRatio, useForwardProps } from 'reka-ui';
+import { AspectRatio, useForwardProps } from '@soybean-ui/primitive';
 import type { AspectRatioProps } from './types';
 
 defineOptions({

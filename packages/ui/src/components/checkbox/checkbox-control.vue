@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CheckboxRoot, useForwardPropsEmits } from 'reka-ui';
+import { CheckboxRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxControlEmits, CheckboxControlProps } from './types';
 
