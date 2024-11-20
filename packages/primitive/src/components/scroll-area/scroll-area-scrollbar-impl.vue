@@ -3,22 +3,21 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
-import { injectScrollAreaScrollbarVisibleContext } from './scroll-area-scrollbar-visible.vue';
-import { injectScrollAreaScrollbarContext } from './scroll-area-scrollbar.vue';
-import { toInt } from './utils';
-type ScrollbarAreaScrollbarImplEmits = {
-  onDragScroll: [payload: { x: number; y: number }];
-  onWheelScroll: [payload: { x: number; y: number }];
-  onThumbPointerDown: [payload: { x: number; y: number }];
-};
+import {
+  injectScrollAreaRootContext,
+  injectScrollAreaScrollbarContext,
+  injectScrollAreaScrollbarVisibleContext
+} from './context';
+import { toInt } from './shared';
+import type { ScrollAreaScrollbarImplProps, ScrollbarAreaScrollbarImplEmits } from './types';
 
-export interface ScrollAreaScrollbarImplProps {
-  isHorizontal: boolean;
-}
+defineOptions({
+  name: 'ScrollAreaScrollbarImpl'
+});
 
 const props = defineProps<ScrollAreaScrollbarImplProps>();
 const emit = defineEmits<ScrollbarAreaScrollbarImplEmits>();
+
 const rootContext = injectScrollAreaRootContext();
 const scrollbarVisibleContext = injectScrollAreaScrollbarVisibleContext();
 const scrollbarContext = injectScrollAreaScrollbarContext();

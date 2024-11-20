@@ -1,25 +1,17 @@
 <script setup lang="ts">
 import { onMounted, ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { useNonce } from '../../composables/use-nonce';
-
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
-
-export interface ScrollAreaViewportProps extends PrimitiveProps {
-  /**
-   * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
-   * globally from `ConfigProvider`.
-   */
-  nonce?: string;
-}
+import type { ScrollAreaViewportPropsWithPrimitive } from './types';
+import { injectScrollAreaRootContext } from './context';
 
 defineOptions({
+  name: 'ScrollAreaViewport',
   inheritAttrs: false
 });
 
-const props = defineProps<ScrollAreaViewportProps>();
+const props = defineProps<ScrollAreaViewportPropsWithPrimitive>();
 
 const { nonce: propNonce } = toRefs(props);
 const nonce = useNonce(propNonce);
@@ -27,6 +19,8 @@ const nonce = useNonce(propNonce);
 const rootContext = injectScrollAreaRootContext();
 
 const viewportElement = ref<HTMLElement>();
+
+const { forwardRef, currentElement: contentElement } = useForwardExpose();
 
 onMounted(() => {
   rootContext.onViewportChange(viewportElement.value!);
@@ -36,7 +30,6 @@ onMounted(() => {
 defineExpose({
   viewportElement
 });
-const { forwardRef, currentElement: contentElement } = useForwardExpose();
 </script>
 
 <template>

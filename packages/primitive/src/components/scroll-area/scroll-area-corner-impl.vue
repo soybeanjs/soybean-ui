@@ -2,7 +2,14 @@
 import { computed, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
+import { injectScrollAreaRootContext } from './context';
+import type { ScrollAreaCornerPropsWithPrimitive } from './types';
+
+defineOptions({
+  name: 'ScrollAreaCornerImpl'
+});
+
+defineProps<ScrollAreaCornerPropsWithPrimitive>();
 
 const rootContext = injectScrollAreaRootContext();
 
@@ -16,6 +23,7 @@ function setCornerHeight() {
   rootContext.onCornerHeightChange(offsetHeight);
   height.value = offsetHeight;
 }
+
 function setCornerWidth() {
   const offsetWidth = rootContext.scrollbarY.value?.offsetWidth || 0;
   rootContext.onCornerWidthChange(offsetWidth);

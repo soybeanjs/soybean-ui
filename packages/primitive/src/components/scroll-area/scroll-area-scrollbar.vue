@@ -1,38 +1,19 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { computed, onUnmounted, toRefs, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, useForwardExpose } from '../../composables';
-
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
+import { useForwardExpose } from '../../composables';
+import { injectScrollAreaRootContext, provideScrollAreaScrollbarContext } from './context';
 import ScrollAreaScrollbarHover from './scroll-area-scrollbar-hover.vue';
 import ScrollAreaScrollbarScroll from './scroll-area-scrollbar-scroll.vue';
 import ScrollAreaScrollbarAuto from './scroll-area-scrollbar-auto.vue';
 import ScrollAreaScrollbarVisible from './scroll-area-scrollbar-visible.vue';
-
-export interface ScrollAreaScrollbarProps extends PrimitiveProps {
-  /** The orientation of the scrollbar */
-  orientation?: 'vertical' | 'horizontal';
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-export interface ScrollAreaScollbarContext {
-  as: Ref<PrimitiveProps['as']>;
-  orientation: Ref<'vertical' | 'horizontal'>;
-  forceMount?: Ref<boolean>;
-  isHorizontal: Ref<boolean>;
-  asChild: Ref<boolean>;
-}
-
-export const [injectScrollAreaScrollbarContext, provideScrollAreaScrollbarContext] =
-  createContext<ScrollAreaScollbarContext>('ScrollAreaScrollbar');
+import type { ScrollAreaScrollbarPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'ScrollAreaScrollbar',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ScrollAreaScrollbarProps>(), {
+const props = withDefaults(defineProps<ScrollAreaScrollbarPropsWithPrimitive>(), {
   orientation: 'vertical',
   as: 'div'
 });

@@ -1,5 +1,6 @@
-import { clamp } from '../../composables';
-import type { Direction, Sizes } from './types';
+import { clamp } from '../../shared';
+import type { Direction } from '../../types';
+import type { ScrollAreaSizes } from './types';
 
 // https://github.com/tmcw-up-for-adoption/simple-linear-scale/blob/master/index.js
 function linearScale(input: readonly [number, number], output: readonly [number, number]) {
@@ -10,7 +11,7 @@ function linearScale(input: readonly [number, number], output: readonly [number,
   };
 }
 
-export function getThumbSize(sizes: Sizes) {
+export function getThumbSize(sizes: ScrollAreaSizes) {
   const ratio = getThumbRatio(sizes.viewport, sizes.content);
   const scrollbarPadding = sizes.scrollbar.paddingStart + sizes.scrollbar.paddingEnd;
   const thumbSize = (sizes.scrollbar.size - scrollbarPadding) * ratio;
@@ -39,7 +40,7 @@ export function addUnlinkedScrollListener(node: HTMLElement, handler = () => {})
   return () => window.cancelAnimationFrame(rAF);
 }
 
-export function getThumbOffsetFromScroll(scrollPos: number, sizes: Sizes, dir: Direction = 'ltr') {
+export function getThumbOffsetFromScroll(scrollPos: number, sizes: ScrollAreaSizes, dir: Direction = 'ltr') {
   const thumbSizePx = getThumbSize(sizes);
   const scrollbarPadding = sizes.scrollbar.paddingStart + sizes.scrollbar.paddingEnd;
   const scrollbar = sizes.scrollbar.size - scrollbarPadding;
@@ -58,7 +59,7 @@ export function toInt(value?: string) {
 export function getScrollPositionFromPointer(
   pointerPos: number,
   pointerOffset: number,
-  sizes: Sizes,
+  sizes: ScrollAreaSizes,
   dir: Direction = 'ltr'
 ) {
   const thumbSizePx = getThumbSize(sizes);

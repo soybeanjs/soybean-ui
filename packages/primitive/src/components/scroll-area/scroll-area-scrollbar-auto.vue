@@ -3,12 +3,14 @@ import { onMounted, ref } from 'vue';
 import { useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
-import { injectScrollAreaScrollbarContext } from './scroll-area-scrollbar.vue';
+import { injectScrollAreaRootContext, injectScrollAreaScrollbarContext } from './context';
 import ScrollAreaScrollbarVisible from './scroll-area-scrollbar-visible.vue';
-export interface ScrollAreaScrollbarAutoProps {
-  forceMount?: boolean;
-}
+import type { ScrollAreaScrollbarAutoProps } from './types';
+
+defineOptions({
+  name: 'ScrollAreaScrollbarAuto',
+  inheritAttrs: false
+});
 
 defineProps<ScrollAreaScrollbarAutoProps>();
 

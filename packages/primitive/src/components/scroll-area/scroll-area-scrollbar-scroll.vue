@@ -4,12 +4,14 @@ import { useDebounceFn } from '@vueuse/core';
 import { Presence } from '../presence';
 import { useStateMachine } from '../../composables/use-state-machine';
 import { useForwardExpose } from '../../composables';
-import { injectScrollAreaRootContext } from './scroll-area-root.vue';
-import { injectScrollAreaScrollbarContext } from './scroll-area-scrollbar.vue';
+import { injectScrollAreaRootContext, injectScrollAreaScrollbarContext } from './context';
 import ScrollAreaScrollbarVisible from './scroll-area-scrollbar-visible.vue';
-export interface ScrollAreaScrollbarScrollProps {
-  forceMount?: boolean;
-}
+import type { ScrollAreaScrollbarScrollProps } from './types';
+
+defineOptions({
+  name: 'ScrollAreaScrollbarScroll',
+  inheritAttrs: false
+});
 
 defineProps<ScrollAreaScrollbarScrollProps>();
 
