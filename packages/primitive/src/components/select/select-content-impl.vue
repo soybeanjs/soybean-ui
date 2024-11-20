@@ -1,77 +1,35 @@
 <script setup lang="ts">
-import type { ComponentPublicInstance, Ref } from 'vue';
 import { computed, ref, watch, watchEffect } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 import { unrefElement } from '@vueuse/core';
-import type { PopperContentProps } from '../popper';
-import type { PointerDownOutsideEvent } from '../dismissable-layer';
-import { createContext, useFocusGuards, useForwardProps, useHideOthers, useTypeAhead } from '../../composables';
-import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import type { AcceptableValue } from '../../types';
-import { useCollection } from '../collection';
+import {
+  useBodyScrollLock,
+  useCollection,
+  useFocusGuards,
+  useForwardProps,
+  useHideOthers,
+  useTypeAhead
+} from '../../composables';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
 import { focusFirst } from '../menu/shared';
 import { valueComparator } from './shared';
-
-import { injectSelectRootContext } from './select-root.vue';
+import { injectSelectRootContext, provideSelectContentContext } from './context';
 import SelectItemAlignedPosition from './select-item-aligned-position.vue';
 import SelectPopperPosition from './select-popper-position.vue';
+import type { SelectContentEmits, SelectContentPropsWithPrimitive } from './types';
 
-export interface SelectContentContext {
-  content?: Ref<HTMLElement | undefined>;
-  viewport?: Ref<HTMLElement | undefined>;
-  onViewportChange: (node: HTMLElement | undefined) => void;
-  itemRefCallback: (node: HTMLElement | undefined, value: AcceptableValue, disabled: boolean) => void;
-  selectedItem?: Ref<HTMLElement | undefined>;
-  onItemLeave?: () => void;
-  itemTextRefCallback: (node: HTMLElement | undefined, value: AcceptableValue, disabled: boolean) => void;
-  focusSelectedItem?: () => void;
-  selectedItemText?: Ref<HTMLElement | undefined>;
-  position?: 'item-aligned' | 'popper';
-  isPositioned?: Ref<boolean>;
-  searchRef?: Ref<string>;
-}
+defineOptions({
+  name: 'SelectContentImpl'
+});
 
-export const SelectContentDefaultContextValue: SelectContentContext = {
-  onViewportChange: () => {},
-  itemTextRefCallback: () => {},
-  itemRefCallback: () => {}
-};
-
-export type SelectContentImplEmits = {
-  closeAutoFocus: [event: Event];
-  /** Event handler called when the escape key is down. Can be prevented. */
-  escapeKeyDown: [event: KeyboardEvent];
-  /** Event handler called when the a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. */
-  pointerDownOutside: [event: PointerDownOutsideEvent];
-};
-
-export interface SelectContentImplProps extends PopperContentProps {
-  /**
-   * The positioning mode to use
-   *
-   * `item-aligned (default)` - behaves similarly to a native MacOS menu by positioning content relative to the active
-   * item. <br> `popper` - positions content in the same way as our other primitives, for example `Popover` or
-   * `DropdownMenu`.
-   */
-  position?: 'item-aligned' | 'popper';
-  /**
-   * The document.body will be lock, and scrolling will be disabled.
-   *
-   * @defaultValue true
-   */
-  bodyLock?: boolean;
-}
-
-export const [injectSelectContentContext, provideSelectContentContext] =
-  createContext<SelectContentContext>('SelectContent');
-
-const props = withDefaults(defineProps<SelectContentImplProps>(), {
+const props = withDefaults(defineProps<SelectContentPropsWithPrimitive>(), {
   align: 'start',
   position: 'item-aligned',
   bodyLock: true
 });
-const emit = defineEmits<SelectContentImplEmits>();
+
+const emit = defineEmits<SelectContentEmits>();
 
 const rootContext = injectSelectRootContext();
 
@@ -82,7 +40,7 @@ const { CollectionSlot, getItems } = useCollection();
 const content = ref<HTMLElement>();
 useHideOthers(content);
 
-const { search, handleTypeaheadSearch } = useTypeAhead();
+const { search, handleTypeAheadSearch } = useTypeAhead();
 
 const viewport = ref<HTMLElement>();
 const selectedItem = ref<HTMLElement>();
@@ -124,10 +82,12 @@ watchEffect(cleanupFn => {
     // If the pointer hasn't moved by a certain threshold then we prevent selecting item on `pointerup`.
     if (pointerMoveDelta.x <= 10 && pointerMoveDelta.y <= 10) {
       event.preventDefault();
-    } else {
-      // otherwise, if the event was outside the content, close.
-      if (!content.value?.contains(event.target as HTMLElement)) onOpenChange(false);
     }
+    // otherwise, if the event was outside the content, close.
+    else if (!content.value?.contains(event.target as HTMLElement)) {
+      onOpenChange(false);
+    }
+
     document.removeEventListener('pointermove', handlePointerMove);
     triggerPointerDownPosRef.value = null;
   };
@@ -155,7 +115,7 @@ function handleKeyDown(event: KeyboardEvent) {
   if (event.key === 'Tab') event.preventDefault();
 
   const collectionItems = getItems().map(i => i.ref);
-  if (!isModifierKey && event.key.length === 1) handleTypeaheadSearch(event.key, collectionItems);
+  if (!isModifierKey && event.key.length === 1) handleTypeAheadSearch(event.key, collectionItems);
 
   if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
     let candidateNodes = [...collectionItems];

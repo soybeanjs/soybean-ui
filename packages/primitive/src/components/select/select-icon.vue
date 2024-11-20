@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
+import type { SelectIconPropsWithPrimitive } from './types';
 
-export interface SelectIconProps extends PrimitiveProps {}
+defineOptions({
+  name: 'SelectIcon'
+});
 
-withDefaults(defineProps<SelectIconProps>(), {
+withDefaults(defineProps<SelectIconPropsWithPrimitive>(), {
   as: 'span'
 });
 </script>

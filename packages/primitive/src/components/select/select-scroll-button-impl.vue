@@ -2,13 +2,15 @@
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
 import { Primitive } from '../primitive';
 import { useCollection } from '../../composables';
-import { injectSelectContentContext } from './select-content-impl.vue';
+import { injectSelectContentContext } from './context';
+import type { SelectScrollButtonImplEmits } from './types';
 
-export type SelectScrollButtonImplEmits = {
-  autoScroll: [];
-};
+defineOptions({
+  name: 'SelectScrollButtonImpl'
+});
 
 const emit = defineEmits<SelectScrollButtonImplEmits>();
+
 const { getItems } = useCollection();
 
 const contentContext = injectSelectContentContext();

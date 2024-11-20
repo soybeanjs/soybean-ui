@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type { TeleportProps } from '../teleport';
-
 import { TeleportPrimitive } from '../teleport';
+import type { SelectPortalProps } from './types';
 
-export interface SelectPortalProps extends TeleportProps {}
+defineOptions({
+  name: 'SelectPortal'
+});
 
 const props = defineProps<SelectPortalProps>();
 </script>

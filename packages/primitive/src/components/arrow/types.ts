@@ -20,5 +20,4 @@ export interface ArrowProps {
    */
   rounded?: boolean;
 }
-
 export type ArrowPropsWithPrimitive = ArrowProps & PrimitiveProps;

@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import type { PopperContentProps } from '../popper';
-
 import { PopperContent } from '../popper';
-import { useForwardProps } from '..';
+import { useForwardProps } from '../../composables';
 import { CONTENT_MARGIN } from './shared';
+import type { SelectPopperPositionPropsWithPrimitive } from './types';
 
-export interface SelectPopperPositionProps extends PopperContentProps {}
+defineOptions({
+  name: 'SelectPopperPosition'
+});
 
-const props = withDefaults(defineProps<SelectPopperPositionProps>(), {
+const props = withDefaults(defineProps<SelectPopperPositionPropsWithPrimitive>(), {
   align: 'start',
   collisionPadding: CONTENT_MARGIN
 });
+
 const forwarded = useForwardProps(props);
 </script>
 

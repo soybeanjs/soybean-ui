@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { createContext, useId } from '../../composables';
+import { useId } from '../../composables';
+import { provideSelectGroupContext } from './context';
+import type { SelectGroupPropsWithPrimitive } from './types';
 
-export interface SelectGroupProps extends PrimitiveProps {}
+defineOptions({
+  name: 'SelectGroup'
+});
 
-interface SelectGroupContext {
-  id: string;
-}
-
-export const [injectSelectGroupContext, provideSelectGroupContext] = createContext<SelectGroupContext>('SelectGroup');
-
-const props = defineProps<SelectGroupProps>();
+const props = defineProps<SelectGroupPropsWithPrimitive>();
 
 const id = useId(undefined, 'soybean-select-group');
 provideSelectGroupContext({ id });

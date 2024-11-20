@@ -1,20 +1,14 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { VisuallyHidden } from '../visually-hidden';
+import type { BubbleSelectProps } from './types';
 
-interface BubbleSelectProps {
-  autocomplete?: string;
-  autofocus?: boolean;
-  disabled?: boolean;
-  form?: string;
-  multiple?: boolean;
-  name?: string;
-  required?: boolean;
-  size?: number;
-  value?: any;
-}
+defineOptions({
+  name: 'BubbleSelect'
+});
 
 const props = defineProps<BubbleSelectProps>();
+
 const selectElement = ref<HTMLElement>();
 
 // This would bubble "change" event to form, with the target as Select element.

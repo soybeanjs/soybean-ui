@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import type { AcceptableValue } from '../../types';
-import type { SelectRootContext } from './select-root.vue';
-import { provideSelectRootContext } from './select-root.vue';
-import { SelectContentDefaultContextValue, provideSelectContentContext } from './select-content-impl.vue';
+import type { SelectProviderProps } from './types';
+import { provideSelectContentContext, provideSelectRootContext } from './context';
 
 defineOptions({
+  name: 'SelectProvider',
   inheritAttrs: false
 });
 
-const props = defineProps<{
-  context: SelectRootContext<AcceptableValue>;
-}>();
+const props = defineProps<SelectProviderProps>();
 
 provideSelectRootContext(props.context);
-provideSelectContentContext(SelectContentDefaultContextValue);
+provideSelectContentContext({
+  onViewportChange: () => {},
+  itemTextRefCallback: () => {},
+  itemRefCallback: () => {}
+});
 </script>
 
 <template>

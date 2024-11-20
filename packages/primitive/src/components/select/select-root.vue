@@ -1,113 +1,33 @@
-<script setup lang="ts">
-import type { Ref } from 'vue';
-import { computed, ref, toRefs } from 'vue';
-import { useVModel } from '@vueuse/core';
-import { createContext, isNullish, useCollection, useDirection, useFormControl } from '../../composables';
-import { PopperRoot } from '../popper';
-import type { AcceptableValue, Direction, FormFieldProps } from '../../types';
-import { compare } from './shared';
-</script>
-
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed, ref, toRefs } from 'vue';
+import { useCollection, useDirection, useFormControl } from '../../composables';
+import { PopperRoot } from '../popper';
+import type { AcceptableValue } from '../../types';
+import { isNullish } from '../../shared';
+import { compare } from './shared';
 import BubbleSelect from './bubble-select.vue';
-
-export interface SelectRootProps<T = AcceptableValue> extends FormFieldProps {
-  /** The controlled open state of the Select. Can be bind as `v-model:open`. */
-  open?: boolean;
-  /** The open state of the select when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: boolean;
-  /** The value of the select when initially rendered. Use when you do not need to control the state of the Select */
-  defaultValue?: T | Array<T>;
-  /** The controlled value of the Select. Can be bind as `v-model`. */
-  modelValue?: T | Array<T>;
-  /**
-   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over
-   * how objects are compared.
-   */
-  by?: string | ((a: T, b: T) => boolean);
-  /**
-   * The reading direction of the combobox when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
-   * assumes LTR (left-to-right) reading mode.
-   */
-  dir?: Direction;
-  /** Whether multiple options can be selected or not. */
-  multiple?: boolean;
-  /** Native html input `autocomplete` attribute. */
-  autocomplete?: string;
-  /** When `true`, prevents the user from interacting with Select */
-  disabled?: boolean;
-}
-
-export type SelectRootEmits<T = AcceptableValue> = {
-  /** Event handler called when the value changes. */
-  'update:modelValue': [value: T];
-  /** Event handler called when the open state of the context menu changes. */
-  'update:open': [value: boolean];
-};
-
-export interface SelectRootContext<T> {
-  triggerElement: Ref<HTMLElement | undefined>;
-  onTriggerChange: (node: HTMLElement | undefined) => void;
-  valueElement: Ref<HTMLElement | undefined>;
-  onValueElementChange: (node: HTMLElement) => void;
-  contentId: string;
-  modelValue: Ref<T | Array<T> | undefined>;
-  onValueChange: (value: T) => void;
-  open: Ref<boolean>;
-  multiple: Ref<boolean>;
-  required?: Ref<boolean>;
-  by?: string | ((a: T, b: T) => boolean);
-  onOpenChange: (open: boolean) => void;
-  dir: Ref<Direction>;
-  triggerPointerDownPosRef: Ref<{ x: number; y: number } | null>;
-  isEmptyModelValue: Ref<boolean>;
-  disabled?: Ref<boolean>;
-
-  optionsSet: Ref<Set<SelectOption>>;
-  onOptionAdd: (option: SelectOption) => void;
-  onOptionRemove: (option: SelectOption) => void;
-}
-
-export const [injectSelectRootContext, provideSelectRootContext] =
-  createContext<SelectRootContext<AcceptableValue>>('SelectRoot');
-
-interface SelectOption {
-  value: any;
-  disabled?: boolean;
-  textContent: string;
-}
+import type { SelectOption, SelectRootContext, SelectRootProps } from './types';
+import { provideSelectRootContext } from './context';
 
 defineOptions({
+  name: 'SelectRoot',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<SelectRootProps>(), {
+const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   modelValue: undefined,
   open: undefined
 });
-const emit = defineEmits<SelectRootEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-    /** Current open state */
-    open: typeof open.value;
-  }) => any;
-}>();
+const modelValue = defineModel<T | T[] | undefined>({
+  default: props.defaultValue ?? (props.multiple ? [] : undefined)
+});
+
+const open = defineModel<boolean>('open', {
+  default: props.defaultOpen
+});
 
 const { required, disabled, multiple, dir: propDir } = toRefs(props);
-
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-  passive: (props.modelValue === undefined) as false,
-  deep: true
-}) as Ref<T | T[] | undefined>;
-
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
 
 const triggerElement = ref<HTMLElement>();
 const valueElement = ref<HTMLElement>();
@@ -141,7 +61,11 @@ const nativeSelectKey = computed(() => {
 function handleValueChange(value: T) {
   if (multiple.value && Array.isArray(modelValue.value)) {
     const index = modelValue.value.findIndex(i => compare(i, value, props.by));
-    index === -1 ? modelValue.value.push(value) : modelValue.value.splice(index, 1);
+    if (index === -1) {
+      modelValue.value.push(value);
+    } else {
+      modelValue.value.splice(index, 1);
+    }
   } else {
     modelValue.value = value;
   }
@@ -158,7 +82,6 @@ provideSelectRootContext({
   },
   contentId: '',
   modelValue,
-  // @ts-expect-error Missing infer for AcceptableValue
   onValueChange: handleValueChange,
   by: props.by,
   open,
@@ -171,11 +94,10 @@ provideSelectRootContext({
   triggerPointerDownPosRef,
   disabled,
   isEmptyModelValue,
-
   optionsSet,
   onOptionAdd: option => optionsSet.value.add(option),
   onOptionRemove: option => optionsSet.value.delete(option)
-});
+} as SelectRootContext<AcceptableValue>);
 </script>
 
 <template>

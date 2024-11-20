@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import type { PopperArrowProps } from '../popper';
-
 import { PopperArrow } from '../popper';
-import { injectSelectRootContext } from './select-root.vue';
-import { SelectContentDefaultContextValue, injectSelectContentContext } from './select-content-impl.vue';
+import { injectSelectContentContext, injectSelectRootContext } from './context';
+import type { SelectArrowPropsWithPrimitive } from './types';
 
-export interface SelectArrowProps extends PopperArrowProps {}
+defineOptions({
+  name: 'SelectArrow'
+});
 
-const props = withDefaults(defineProps<SelectArrowProps>(), {
+const props = withDefaults(defineProps<SelectArrowPropsWithPrimitive>(), {
   width: 10,
   height: 5,
   as: 'svg'
 });
+
 const rootContext = injectSelectRootContext();
-const contentContext = injectSelectContentContext(SelectContentDefaultContextValue);
+const contentContext = injectSelectContentContext();
 </script>
 
 <template>

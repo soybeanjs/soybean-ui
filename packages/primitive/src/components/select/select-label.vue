@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
-import { injectSelectGroupContext } from './select-group.vue';
+import { injectSelectGroupContext } from './context';
+import type { SelectLabelPropsWithPrimitive } from './types';
 
-export interface SelectLabelProps extends PrimitiveProps {
-  for?: string;
-}
+defineOptions({
+  name: 'SelectLabel'
+});
 
-const props = withDefaults(defineProps<SelectLabelProps>(), {
+const props = withDefaults(defineProps<SelectLabelPropsWithPrimitive>(), {
   as: 'div'
 });
 

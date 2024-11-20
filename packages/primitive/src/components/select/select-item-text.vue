@@ -1,20 +1,16 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import { injectSelectRootContext } from './select-root.vue';
-
-import { injectSelectContentContext } from './select-content-impl.vue';
-import { injectSelectItemContext } from './select-item.vue';
-
-export interface SelectItemTextProps extends PrimitiveProps {}
+import { injectSelectContentContext, injectSelectItemContext, injectSelectRootContext } from './context';
+import type { SelectItemTextPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'SelectItemText',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<SelectItemTextProps>(), {
+const props = withDefaults(defineProps<SelectItemTextPropsWithPrimitive>(), {
   as: 'span'
 });
 

@@ -1,34 +1,24 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { useResizeObserver } from '@vueuse/core';
 import { nextTick, onMounted, ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { clamp, createContext, useCollection, useForwardExpose } from '../../composables';
+import { useResizeObserver } from '@vueuse/core';
+import { useCollection, useForwardExpose } from '../../composables';
+import { clamp } from '../../shared';
 import { Primitive } from '../primitive';
-
-import { injectSelectRootContext } from './select-root.vue';
-import { injectSelectContentContext } from './select-content-impl.vue';
+import {
+  injectSelectContentContext,
+  injectSelectRootContext,
+  provideSelectItemAlignedPositionContext
+} from './context';
 import { CONTENT_MARGIN } from './shared';
-
-interface SelectItemAlignedPositionContext {
-  contentWrapper?: Ref<HTMLElement | undefined>;
-  shouldExpandOnScrollRef?: Ref<boolean>;
-  onScrollButtonChange: (node: HTMLElement | undefined) => void;
-}
-
-export interface SelectItemAlignedPositionProps extends PrimitiveProps {}
-
-export const [injectSelectItemAlignedPositionContext, provideSelectItemAlignedPositionContext] =
-  createContext<SelectItemAlignedPositionContext>('SelectItemAlignedPosition');
+import type { SelectItemAlignedPositionEmits, SelectItemAlignedPositionPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'SelectItemAlignedPosition',
   inheritAttrs: false
 });
 
-const props = defineProps<SelectItemAlignedPositionProps>();
-const emit = defineEmits<{
-  placed: [];
-}>();
+const props = defineProps<SelectItemAlignedPositionPropsWithPrimitive>();
+const emit = defineEmits<SelectItemAlignedPositionEmits>();
 
 const { getItems } = useCollection();
 const rootContext = injectSelectRootContext();

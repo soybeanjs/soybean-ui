@@ -1,24 +1,21 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
-import type { AcceptableValue } from '../../types';
-
 import { useForwardExpose } from '../../composables';
-import { injectSelectRootContext } from './select-root.vue';
+import type { AcceptableValue } from '../../types';
+import { Primitive } from '../primitive';
+import { injectSelectRootContext } from './context';
+import type { SelectValuePropsWithPrimitive } from './types';
 
-export interface SelectValueProps extends PrimitiveProps {
-  /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
-  placeholder?: string;
-}
+defineOptions({
+  name: 'SelectValue'
+});
 
-const props = withDefaults(defineProps<SelectValueProps>(), {
+const props = withDefaults(defineProps<SelectValuePropsWithPrimitive>(), {
   as: 'span',
   placeholder: ''
 });
 
 const { forwardRef, currentElement } = useForwardExpose();
-
 const rootContext = injectSelectRootContext();
 
 onMounted(() => {

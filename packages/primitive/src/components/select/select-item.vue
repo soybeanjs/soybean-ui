@@ -1,41 +1,17 @@
-<script setup lang="ts">
-import type { Ref } from 'vue';
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed, nextTick, onMounted, ref, toRefs } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, useCollection, useForwardExpose, useId } from '../../composables';
-import { Primitive } from '../primitive';
+import { useCollection, useForwardExpose, useId } from '../../composables';
 import type { AcceptableValue } from '../../types';
-
-import { injectSelectRootContext } from './select-root.vue';
-import { injectSelectContentContext } from './select-content-impl.vue';
+import { Primitive } from '../primitive';
+import { injectSelectContentContext, injectSelectRootContext, provideSelectItemContext } from './context';
 import { SELECTION_KEYS, valueComparator } from './shared';
+import type { SelectItemPropsWithPrimitive } from './types';
 
-interface SelectItemContext<T = AcceptableValue> {
-  value: T;
-  textId: string;
-  disabled: Ref<boolean>;
-  isSelected: Ref<boolean>;
-  onItemTextChange: (node: HTMLElement | undefined) => void;
-}
+defineOptions({
+  name: 'SelectItem'
+});
 
-export const [injectSelectItemContext, provideSelectItemContext] = createContext<SelectItemContext>('SelectItem');
-
-export interface SelectItemProps<T = AcceptableValue> extends PrimitiveProps {
-  /** The value given as data when submitted with a `name`. */
-  value: T;
-  /** When `true`, prevents the user from interacting with the item. */
-  disabled?: boolean;
-  /**
-   * Optional text used for typeahead purposes.
-   *
-   * By default the typeahead behavior will use the `.textContent` of the `SelectItemText` part.
-   *
-   * Use this when the content is complex, or you have non-textual content inside.
-   */
-  textValue?: string;
-}
-
-const props = defineProps<SelectItemProps>();
+const props = defineProps<SelectItemPropsWithPrimitive<T>>();
 const { disabled } = toRefs(props);
 
 const rootContext = injectSelectRootContext();

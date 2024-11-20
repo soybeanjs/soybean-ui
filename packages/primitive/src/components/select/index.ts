@@ -1,21 +1,39 @@
+import SelectRoot from './select-root.vue';
+import SelectPortal from './select-portal.vue';
+import SelectContent from './select-content.vue';
+import SelectTrigger from './select-trigger.vue';
+import SelectValue from './select-value.vue';
+import SelectIcon from './select-icon.vue';
+import SelectGroup from './select-group.vue';
+import SelectLabel from './select-label.vue';
+import SelectItem from './select-item.vue';
+import SelectItemText from './select-item-text.vue';
+import SelectItemIndicator from './select-item-indicator.vue';
+import SelectViewport from './select-viewport.vue';
+import SelectScrollUpButton from './select-scroll-up-button.vue';
+import SelectScrollDownButton from './select-scroll-down-button.vue';
+import SelectArrow from './select-arrow.vue';
+import SelectSeparator from './select-separator.vue';
+
 export {
-  injectSelectRootContext,
-  default as SelectRoot,
-  type SelectRootProps,
-  type SelectRootEmits
-} from './SelectRoot.vue';
-export { default as SelectTrigger, type SelectTriggerProps } from './SelectTrigger.vue';
-export { default as SelectPortal, type SelectPortalProps } from './SelectPortal.vue';
-export { default as SelectContent, type SelectContentProps, type SelectContentEmits } from './SelectContent.vue';
-export { default as SelectArrow, type SelectArrowProps } from './SelectArrow.vue';
-export { default as SelectSeparator, type SelectSeparatorProps } from './SelectSeparator.vue';
-export { default as SelectItemIndicator, type SelectItemIndicatorProps } from './SelectItemIndicator.vue';
-export { default as SelectLabel, type SelectLabelProps } from './SelectLabel.vue';
-export { injectSelectGroupContext, default as SelectGroup, type SelectGroupProps } from './SelectGroup.vue';
-export { default as SelectItem, type SelectItemProps } from './select-item.vue';
-export { default as SelectItemText, type SelectItemTextProps } from './SelectItemText.vue';
-export { default as SelectViewport, type SelectViewportProps } from './SelectViewport.vue';
-export { default as SelectScrollUpButton, type SelectScrollUpButtonProps } from './SelectScrollUpButton.vue';
-export { default as SelectScrollDownButton, type SelectScrollDownButtonProps } from './SelectScrollDownButton.vue';
-export { default as SelectValue, type SelectValueProps } from './SelectValue.vue';
-export { default as SelectIcon, type SelectIconProps } from './select-icon.vue';
+  SelectRoot,
+  SelectPortal,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectIcon,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+  SelectViewport,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+  SelectArrow,
+  SelectSeparator
+};
+
+export { injectSelectGroupContext, injectSelectRootContext } from './context';
+
+export * from './types';

@@ -2,17 +2,19 @@
 import { computed, onMounted } from 'vue';
 import { useCollection, useForwardExpose, useId, useTypeAhead } from '../../composables';
 import { Primitive } from '../primitive';
-import { PopperAnchor, type PopperAnchorProps } from '../popper';
-import { injectSelectRootContext } from './SelectRoot.vue';
+import { PopperAnchor } from '../popper';
+import { injectSelectRootContext } from './context';
 import { OPEN_KEYS } from './shared';
+import type { SelectTriggerPropsWithPrimitive } from './types';
 
-export interface SelectTriggerProps extends PopperAnchorProps {
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'SelectTrigger'
+});
 
-const props = withDefaults(defineProps<SelectTriggerProps>(), {
+const props = withDefaults(defineProps<SelectTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
+
 const rootContext = injectSelectRootContext();
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();
 
@@ -24,12 +26,13 @@ onMounted(() => {
 });
 
 const { getItems } = useCollection();
-const { search, handleTypeaheadSearch, resetTypeahead } = useTypeAhead();
+const { search, handleTypeAheadSearch, resetTypeAhead } = useTypeAhead();
+
 function handleOpen() {
   if (!isDisabled.value) {
     rootContext.onOpenChange(true);
     // reset typeahead when we open
-    resetTypeahead();
+    resetTypeAhead();
   }
 }
 
@@ -105,7 +108,7 @@ function handlePointerOpen(event: PointerEvent) {
           if (!isModifierKey && event.key.length === 1) if (isTypingAhead && event.key === ' ') return;
 
           const collectionItems = getItems().map(i => i.ref);
-          handleTypeaheadSearch(event.key, collectionItems);
+          handleTypeAheadSearch(event.key, collectionItems);
           if (OPEN_KEYS.includes(event.key)) {
             handleOpen();
             event.preventDefault();
