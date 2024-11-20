@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
+import { injectToastRootContext } from './context';
+import type { ToastClosePropsWithPrimitive } from './types';
 
-import ToastAnnounceExclude from './toast-announce-exclude.vue';
-import { injectToastRootContext } from './toast-root-impl.vue';
+defineOptions({
+  name: 'ToastClose',
+  inheritAttrs: false
+});
 
-export interface ToastCloseProps extends PrimitiveProps {}
-
-const props = withDefaults(defineProps<ToastCloseProps>(), {
+const props = withDefaults(defineProps<ToastClosePropsWithPrimitive>(), {
   as: 'button'
 });
 

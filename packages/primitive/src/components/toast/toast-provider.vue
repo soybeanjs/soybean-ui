@@ -1,55 +1,11 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { ref, toRefs } from 'vue';
-import { createContext, useCollection } from '../../composables';
-import type { SwipeDirection } from './utils';
-
-type ToastProviderContext = {
-  label: Ref<string>;
-  duration: Ref<number>;
-  swipeDirection: Ref<SwipeDirection>;
-  swipeThreshold: Ref<number>;
-  toastCount: Ref<number>;
-  viewport: Ref<HTMLElement | undefined>;
-  onViewportChange: (viewport: HTMLElement) => void;
-  onToastAdd: () => void;
-  onToastRemove: () => void;
-  isFocusedToastEscapeKeyDownRef: Ref<boolean>;
-  isClosePausedRef: Ref<boolean>;
-};
-
-export interface ToastProviderProps {
-  /**
-   * An author-localized label for each toast. Used to help screen reader users associate the interruption with a toast.
-   *
-   * @defaultValue 'Notification'
-   */
-  label?: string;
-  /**
-   * Time in milliseconds that each toast should remain visible for.
-   *
-   * @defaultValue 5000
-   */
-  duration?: number;
-  /**
-   * Direction of pointer swipe that should close the toast.
-   *
-   * @defaultValue 'right'
-   */
-  swipeDirection?: SwipeDirection;
-  /**
-   * Distance in pixels that the swipe must pass before a close is triggered.
-   *
-   * @defaultValue 50
-   */
-  swipeThreshold?: number;
-}
-
-export const [injectToastProviderContext, provideToastProviderContext] =
-  createContext<ToastProviderContext>('ToastProvider');
+import { useCollection } from '../../composables';
+import type { ToastProviderProps } from './types';
+import { provideToastProviderContext } from './context';
 
 defineOptions({
-  inheritAttrs: false
+  name: 'ToastProvider'
 });
 
 const props = withDefaults(defineProps<ToastProviderProps>(), {
@@ -58,6 +14,7 @@ const props = withDefaults(defineProps<ToastProviderProps>(), {
   swipeDirection: 'right',
   swipeThreshold: 50
 });
+
 const { label, duration, swipeDirection, swipeThreshold } = toRefs(props);
 useCollection({ isProvider: true });
 

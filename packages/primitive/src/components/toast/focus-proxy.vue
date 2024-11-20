@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { VisuallyHidden } from '../visually-hidden';
-import { injectToastProviderContext } from './toast-provider.vue';
+import { injectToastProviderContext } from './context';
+import type { ToastFocusProxyEmits } from './types';
 
-const emit = defineEmits<{
-  focusFromOutsideViewport: [void];
-}>();
+defineOptions({
+  name: 'ToastFocusProxy'
+});
+
+const emit = defineEmits<ToastFocusProxyEmits>();
 
 const providerContext = injectToastProviderContext();
 </script>

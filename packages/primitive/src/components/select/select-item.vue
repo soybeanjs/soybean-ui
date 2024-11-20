@@ -8,7 +8,7 @@ import type { AcceptableValue } from '../../types';
 
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';
-import { SELECTION_KEYS, valueComparator } from './utils';
+import { SELECTION_KEYS, valueComparator } from './shared';
 
 interface SelectItemContext<T = AcceptableValue> {
   value: T;

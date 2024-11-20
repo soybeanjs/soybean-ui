@@ -26,6 +26,7 @@ export type ImageLoadingStatus = 'idle' | 'loading' | 'loaded' | 'error';
 export type SplitType = 'pick' | 'omit';
 export type ActivationMode = 'focus' | 'dblclick' | 'none';
 export type SubmitMode = 'blur' | 'enter' | 'none' | 'both';
+export type SwipeDirection = 'up' | 'down' | 'left' | 'right';
 
 export interface Point {
   x: number;
@@ -116,6 +117,11 @@ export type PointerDownOutsideEvent = CustomEvent<{
 }>;
 
 export type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
+
+export type SwipeEvent = { currentTarget: EventTarget & HTMLElement } & Omit<
+  CustomEvent<{ originalEvent: PointerEvent; delta: { x: number; y: number } }>,
+  'currentTarget'
+>;
 
 export type InferDefaults<T> = {
   [K in keyof T]?: InferDefault<T, T[K]>;

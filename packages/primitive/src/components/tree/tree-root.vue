@@ -6,9 +6,9 @@ import { RovingFocusGroup } from '../roving-focus';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
 import type { NavigationKeys } from '../../types';
+import { flatten } from '../../shared';
 import type { FlattenedItem, TreeRootProps } from './types';
 import { provideTreeRootContext } from './context';
-import { flatten } from './utils';
 
 defineOptions({
   name: 'TreeRoot'

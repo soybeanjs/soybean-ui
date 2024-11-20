@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-
 import { Primitive } from '../primitive';
+import type { ToastAnnounceExcludePropsWithPrimitive } from './types';
 
-export interface ToastAnnounceExcludeProps extends PrimitiveProps {
-  altText?: string;
-}
+defineOptions({
+  name: 'ToastAnnounceExclude'
+});
 
-defineProps<ToastAnnounceExcludeProps>();
+defineProps<ToastAnnounceExcludePropsWithPrimitive>();
 </script>
 
 <template>

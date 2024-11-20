@@ -3,7 +3,11 @@ import { ref } from 'vue';
 import { useTimeout } from '@vueuse/shared';
 import { useRafFn } from '@vueuse/core';
 import { VisuallyHidden } from '../visually-hidden';
-import { injectToastProviderContext } from './toast-provider.vue';
+import { injectToastProviderContext } from './context';
+
+defineOptions({
+  name: 'ToastAnnounce'
+});
 
 const providerContext = injectToastProviderContext();
 

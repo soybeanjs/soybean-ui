@@ -11,7 +11,7 @@ import { useCollection } from '../collection';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
 import { focusFirst } from '../menu/shared';
-import { valueComparator } from './utils';
+import { valueComparator } from './shared';
 
 import { injectSelectRootContext } from './select-root.vue';
 import SelectItemAlignedPosition from './select-item-aligned-position.vue';

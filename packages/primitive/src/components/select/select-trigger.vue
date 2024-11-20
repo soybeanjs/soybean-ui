@@ -4,7 +4,7 @@ import { useCollection, useForwardExpose, useId, useTypeAhead } from '../../comp
 import { Primitive } from '../primitive';
 import { PopperAnchor, type PopperAnchorProps } from '../popper';
 import { injectSelectRootContext } from './SelectRoot.vue';
-import { OPEN_KEYS } from './utils';
+import { OPEN_KEYS } from './shared';
 
 export interface SelectTriggerProps extends PopperAnchorProps {
   disabled?: boolean;

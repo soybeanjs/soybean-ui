@@ -1,3 +1,5 @@
+import type { SwipeDirection } from '../../types';
+
 export const TOAST_SWIPE_START = 'toast.swipeStart';
 export const TOAST_SWIPE_MOVE = 'toast.swipeMove';
 export const TOAST_SWIPE_CANCEL = 'toast.swipeCancel';
@@ -7,13 +9,6 @@ export const VIEWPORT_NAME = 'ToastViewport';
 export const VIEWPORT_DEFAULT_HOTKEY = ['F8'];
 export const VIEWPORT_PAUSE = 'toast.viewportPause';
 export const VIEWPORT_RESUME = 'toast.viewportResume';
-
-export type SwipeDirection = 'up' | 'down' | 'left' | 'right';
-
-export type SwipeEvent = { currentTarget: EventTarget & HTMLElement } & Omit<
-  CustomEvent<{ originalEvent: PointerEvent; delta: { x: number; y: number } }>,
-  'currentTarget'
->;
 
 export function handleAndDispatchCustomEvent<E extends CustomEvent, OriginalEvent extends Event>(
   name: string,

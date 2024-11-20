@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
+import type { ToastTitlePropsWithPrimitive } from './types';
 
-export interface ToastTitleProps extends PrimitiveProps {}
+defineOptions({
+  name: 'ToastTitle'
+});
 
-const props = defineProps<ToastTitleProps>();
+const props = withDefaults(defineProps<ToastTitlePropsWithPrimitive>(), {
+  as: 'div'
+});
+
 useForwardExpose();
 </script>
 

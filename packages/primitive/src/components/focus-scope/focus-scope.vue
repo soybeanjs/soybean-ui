@@ -11,7 +11,7 @@ import {
   focusFirst,
   getTabbableCandidates,
   getTabbableEdges
-} from './utils';
+} from './shared';
 import { createFocusScopesStack, removeLinks } from './stack';
 import type { FocusScopeEmits, FocusScopePropsWithPrimitive } from './types';
 

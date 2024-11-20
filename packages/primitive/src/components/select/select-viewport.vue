@@ -6,7 +6,7 @@ import { useForwardExpose } from '../../composables';
 import { useNonce } from '../../composables/use-nonce';
 
 import { injectSelectContentContext } from './select-content-impl.vue';
-import { CONTENT_MARGIN } from './utils';
+import { CONTENT_MARGIN } from './shared';
 import { injectSelectItemAlignedPositionContext } from './select-item-aligned-position.vue';
 
 export interface SelectViewportProps extends PrimitiveProps {

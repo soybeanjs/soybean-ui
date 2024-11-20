@@ -5,7 +5,7 @@ import { useVModel } from '@vueuse/core';
 import { createContext, isNullish, useCollection, useDirection, useFormControl } from '../../composables';
 import { PopperRoot } from '../popper';
 import type { AcceptableValue, Direction, FormFieldProps } from '../../types';
-import { compare } from './utils';
+import { compare } from './shared';
 </script>
 
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">

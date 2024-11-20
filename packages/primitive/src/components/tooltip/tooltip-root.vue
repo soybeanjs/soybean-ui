@@ -5,7 +5,7 @@ import { PopperRoot } from '../popper';
 import { useForwardExpose } from '../../composables';
 import type { TooltipRootPropsWithPrimitive } from './types';
 import { injectTooltipProviderContext, provideTooltipRootContext } from './context';
-import { TOOLTIP_OPEN } from './utils';
+import { TOOLTIP_OPEN } from './shared';
 
 defineOptions({
   name: 'TooltipRoot'

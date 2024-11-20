@@ -1,27 +1,20 @@
 <script setup lang="ts">
 import { useForwardExpose } from '../../composables';
-import type { ToastCloseProps } from './toast-close.vue';
-
+import type { ToastActionPropsWithPrimitive } from './types';
 import ToastAnnounceExclude from './toast-announce-exclude.vue';
 import ToastClose from './toast-close.vue';
 
-export interface ToastActionProps extends ToastCloseProps {
-  /**
-   * A short description for an alternate way to carry out the action. For screen reader users who will not be able to
-   * navigate to the button easily/quickly.
-   *
-   * @example
-   *   <ToastAction altText="Goto account settings to upgrade">Upgrade</ToastAction>;
-   *
-   * @example
-   *   <ToastAction altText="Undo (Alt+U)">Undo</ToastAction>;
-   */
-  altText: string;
+defineOptions({
+  name: 'ToastAction'
+});
+
+const props = withDefaults(defineProps<ToastActionPropsWithPrimitive>(), {
+  as: 'button'
+});
+
+if (!props.altText) {
+  throw new Error('Missing prop `altText` expected on `ToastAction`');
 }
-
-const props = defineProps<ToastActionProps>();
-
-if (!props.altText) throw new Error('Missing prop `altText` expected on `ToastAction`');
 
 const { forwardRef } = useForwardExpose();
 </script>

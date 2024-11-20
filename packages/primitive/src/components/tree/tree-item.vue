@@ -3,10 +3,9 @@ import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useCollection } from '../../composables';
-import { handleAndDispatchCustomEvent } from '../../shared';
+import { flatten, handleAndDispatchCustomEvent } from '../../shared';
 import type { SelectEvent, ToggleEvent, TreeItemEmits, TreeItemProps } from './types';
 import { injectTreeRootContext } from './context';
-import { flatten } from './utils';
 
 defineOptions({
   name: 'TreeItem',

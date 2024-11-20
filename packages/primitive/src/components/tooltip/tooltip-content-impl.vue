@@ -7,7 +7,7 @@ import { VisuallyHidden } from '../visually-hidden';
 import { DismissableLayer } from '../dismissable-layer';
 import { useForwardExpose } from '../../composables';
 import { injectTooltipRootContext } from './context';
-import { TOOLTIP_OPEN } from './utils';
+import { TOOLTIP_OPEN } from './shared';
 import type { TooltipContentEmits, TooltipContentPropsWithPrimitive } from './types';
 
 defineOptions({

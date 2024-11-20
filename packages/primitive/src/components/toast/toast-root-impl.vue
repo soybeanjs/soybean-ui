@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { isClient } from '@vueuse/shared';
 import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { createContext, useCollection, useForwardExpose } from '../../composables';
-
+import { isClient } from '@vueuse/shared';
+import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import type { SwipeEvent } from './utils';
-import { injectToastProviderContext } from './toast-provider.vue';
+import type { SwipeEvent } from '../../types';
+import { injectToastProviderContext, provideToastRootContext } from './context';
 import {
   TOAST_SWIPE_CANCEL,
   TOAST_SWIPE_END,
@@ -18,53 +16,16 @@ import {
   getAnnounceTextContent,
   handleAndDispatchCustomEvent,
   isDeltaInDirection
-} from './utils';
+} from './shared';
 import ToastAnnounce from './toast-announce.vue';
-
-export type ToastRootImplEmits = {
-  close: [];
-  /** Event handler called when the escape key is down. It can be prevented by calling `event.preventDefault`. */
-  escapeKeyDown: [event: KeyboardEvent];
-  /**
-   * Event handler called when the dismiss timer is paused. This occurs when the pointer is moved over the viewport, the
-   * viewport is focused or when the window is blurred.
-   */
-  pause: [];
-  /**
-   * Event handler called when the dismiss timer is resumed. This occurs when the pointer is moved away from the
-   * viewport, the viewport is blurred or when the window is focused.
-   */
-  resume: [];
-  /** Event handler called when starting a swipe interaction. It can be prevented by calling `event.preventDefault`. */
-  swipeStart: [event: SwipeEvent];
-  /** Event handler called during a swipe interaction. It can be prevented by calling `event.preventDefault`. */
-  swipeMove: [event: SwipeEvent];
-  swipeCancel: [event: SwipeEvent];
-  /** Event handler called at the end of a swipe interaction. It can be prevented by calling `event.preventDefault`. */
-  swipeEnd: [event: SwipeEvent];
-};
-
-export interface ToastRootImplProps extends PrimitiveProps {
-  /**
-   * Control the sensitivity of the toast for accessibility purposes.
-   *
-   * For toasts that are the result of a user action, choose `foreground`. Toasts generated from background tasks should
-   * use `background`.
-   */
-  type?: 'foreground' | 'background';
-  /** The controlled open state of the dialog. Can be bind as `v-model:open`. */
-  open?: boolean;
-  /** Time in milliseconds that toast should remain visible for. Overrides value given to `ToastProvider`. */
-  duration?: number;
-}
-
-export const [injectToastRootContext, provideToastRootContext] = createContext<{ onClose: () => void }>('ToastRoot');
+import type { ToastRootImplEmits, ToastRootImplPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'ToastRootImpl',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ToastRootImplProps>(), {
+const props = withDefaults(defineProps<ToastRootImplPropsWithPrimitive>(), {
   open: false,
   as: 'li'
 });
@@ -92,15 +53,15 @@ const remainingRaf = useRafFn(
   { fpsLimit: 60 }
 );
 
-function startTimer(duration: number) {
-  if (!duration || duration === Number.POSITIVE_INFINITY) return;
+function startTimer(_duration: number) {
+  if (!_duration || _duration === Number.POSITIVE_INFINITY) return;
   // startTimer is used inside a watch with immediate set to true.
   // This results in code execution during SSR.
   // Ensure this code only runs in a browser environment
   if (!isClient) return;
   window.clearTimeout(closeTimerRef.value);
   closeTimerStartTimeRef.value = new Date().getTime();
-  closeTimerRef.value = window.setTimeout(handleClose, duration);
+  closeTimerRef.value = window.setTimeout(handleClose, _duration);
 }
 
 function handleClose() {
@@ -123,7 +84,7 @@ if (props.type && !['foreground', 'background'].includes(props.type)) {
   throw new Error(error);
 }
 
-watchEffect(cleanupFn => {
+watchEffect(_cleanupFn => {
   const viewport = providerContext.viewport.value;
   if (viewport) {
     const handleResume = () => {

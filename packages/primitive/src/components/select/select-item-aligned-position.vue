@@ -8,7 +8,7 @@ import { Primitive } from '../primitive';
 
 import { injectSelectRootContext } from './select-root.vue';
 import { injectSelectContentContext } from './select-content-impl.vue';
-import { CONTENT_MARGIN } from './utils';
+import { CONTENT_MARGIN } from './shared';
 
 interface SelectItemAlignedPositionContext {
   contentWrapper?: Ref<HTMLElement | undefined>;

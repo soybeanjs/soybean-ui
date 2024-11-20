@@ -2,39 +2,21 @@
 import type { ComponentPublicInstance } from 'vue';
 import { computed, onMounted, ref, toRefs, watchEffect } from 'vue';
 import { onKeyStroke, unrefElement } from '@vueuse/core';
-import type { PrimitiveProps } from '../primitive';
-import { useCollection } from '../collection';
-
+import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import { focusFirst, getTabbableCandidates } from '../focus-scope/utils';
+import { focusFirst, getTabbableCandidates } from '../focus-scope/shared';
 import { DismissableLayerBranch } from '../dismissable-layer';
-import { useForwardExpose } from '../../composables';
-import { injectToastProviderContext } from './toast-provider.vue';
 import FocusProxy from './focus-proxy.vue';
-import { VIEWPORT_PAUSE, VIEWPORT_RESUME } from './utils';
-
-export interface ToastViewportProps extends PrimitiveProps {
-  /**
-   * The keys to use as the keyboard shortcut that will move focus to the toast viewport.
-   *
-   * @defaultValue ['F8']
-   */
-  hotkey?: string[];
-  /**
-   * An author-localized label for the toast viewport to provide context for screen reader users when navigating page
-   * landmarks. The available `{hotkey}` placeholder will be replaced for you. Alternatively, you can pass in a custom
-   * function to generate the label.
-   *
-   * @defaultValue 'Notifications ({hotkey})'
-   */
-  label?: string | ((hotkey: string) => string);
-}
+import { injectToastProviderContext } from './context';
+import { VIEWPORT_PAUSE, VIEWPORT_RESUME } from './shared';
+import type { ToastViewportPropsWithPrimitive } from './types';
 
 defineOptions({
+  name: 'ToastViewport',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<ToastViewportProps>(), {
+const props = withDefaults(defineProps<ToastViewportPropsWithPrimitive>(), {
   hotkey: () => ['F8'], // from VIEWPORT_DEFAULT_HOTKEY
   label: 'Notifications ({hotkey})',
   as: 'ol'
@@ -111,11 +93,15 @@ watchEffect(cleanupFn => {
         const index = sortedCandidates.findIndex(candidate => candidate === focusedElement);
         if (focusFirst(sortedCandidates.slice(index + 1))) {
           event.preventDefault();
+          return;
+        }
+        // If we can't focus that means we're at the edges so we
+        // proxy to the corresponding exit point and let the browser handle
+        // tab/shift+tab keypress and implicitly pass focus to the next valid element in the document
+        if (isTabbingBackwards) {
+          headFocusProxyRef.value?.focus();
         } else {
-          // If we can't focus that means we're at the edges so we
-          // proxy to the corresponding exit point and let the browser handle
-          // tab/shift+tab keypress and implicitly pass focus to the next valid element in the document
-          isTabbingBackwards ? headFocusProxyRef.value?.focus() : tailFocusProxyRef.value?.focus();
+          tailFocusProxyRef.value?.focus();
         }
       }
     };

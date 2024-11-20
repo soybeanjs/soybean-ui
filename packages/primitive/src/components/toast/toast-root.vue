@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-
-import { useVModel } from '@vueuse/core';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { ToastRootImplEmits, ToastRootImplProps } from './toast-root-impl.vue';
 import ToastRootImpl from './toast-root-impl.vue';
+import type { ToastRootEmits, ToastRootPropsWithPrimitive } from './types';
 
-export type ToastRootEmits = Omit<ToastRootImplEmits, 'close'> & {
-  /** Event handler called when the open state changes */
-  'update:open': [value: boolean];
-};
+defineOptions({
+  name: 'ToastRoot',
+  inheritAttrs: false
+});
 
-export interface ToastRootProps extends ToastRootImplProps {
-  /** The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: boolean;
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
-}
-
-const props = withDefaults(defineProps<ToastRootProps>(), {
+const props = withDefaults(defineProps<ToastRootPropsWithPrimitive>(), {
   type: 'foreground',
   open: undefined,
   defaultOpen: true,
@@ -28,22 +18,9 @@ const props = withDefaults(defineProps<ToastRootProps>(), {
 
 const emit = defineEmits<ToastRootEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current open state */
-    open: typeof open.value;
-    /** Remaining time (in ms) */
-    remaining: number;
-    /** Total time the toast will remain visible for (in ms) */
-    duration: number;
-  }) => any;
-}>();
-
 const { forwardRef } = useForwardExpose();
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: (props.open === undefined) as false
-}) as Ref<boolean>;
+
+const open = defineModel<boolean>('open', { default: props.defaultOpen });
 </script>
 
 <template>
