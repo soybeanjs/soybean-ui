@@ -1,24 +1,16 @@
 import type { Ref } from 'vue';
-import type { Direction, ResizeEvent } from './types';
+import type { DataOrientation } from '../../../types';
+import type {
+  PointerHitAreaMargins,
+  ResizeEvent,
+  ResizeHandlerAction,
+  ResizeHandlerData,
+  SetResizeHandlerState
+} from '../types';
 import { resetGlobalCursorStyle, setGlobalCursorStyle } from './style';
 import { getResizeEventCoordinates } from './events';
 import { intersects } from './rects';
 import { compare } from './stacking-order';
-
-export type ResizeHandlerAction = 'down' | 'move' | 'up';
-export type SetResizeHandlerState = (action: ResizeHandlerAction, isActive: boolean, event: ResizeEvent) => void;
-
-export type PointerHitAreaMargins = {
-  coarse: number;
-  fine: number;
-};
-
-export type ResizeHandlerData = {
-  direction: Ref<Direction>;
-  element: HTMLElement;
-  hitAreaMargins: PointerHitAreaMargins;
-  setResizeHandlerState: SetResizeHandlerState;
-};
 
 export const EXCEEDED_HORIZONTAL_MIN = 0b0001;
 export const EXCEEDED_HORIZONTAL_MAX = 0b0010;
@@ -41,7 +33,7 @@ const registeredResizeHandlers = new Set<ResizeHandlerData>();
 export function registerResizeHandle(
   resizeHandleId: string,
   element: HTMLElement,
-  direction: Ref<Direction>,
+  direction: Ref<DataOrientation>,
   hitAreaMargins: PointerHitAreaMargins,
   setResizeHandlerState: SetResizeHandlerState
 ) {
@@ -65,13 +57,13 @@ export function registerResizeHandle(
     panelConstraintFlags.delete(resizeHandleId);
     registeredResizeHandlers.delete(data);
 
-    const count = ownerDocumentCounts.get(ownerDocument) ?? 1;
-    ownerDocumentCounts.set(ownerDocument, count - 1);
+    const _count = ownerDocumentCounts.get(ownerDocument) ?? 1;
+    ownerDocumentCounts.set(ownerDocument, _count - 1);
 
     updateListeners();
     resetGlobalCursorStyle();
 
-    if (count === 1) ownerDocumentCounts.delete(ownerDocument);
+    if (_count === 1) ownerDocumentCounts.delete(ownerDocument);
   };
 }
 
@@ -204,6 +196,7 @@ function updateCursor() {
 
   let constraintFlags = 0;
   panelConstraintFlags.forEach(flag => {
+    // eslint-disable-next-line no-bitwise
     constraintFlags |= flag;
   });
 

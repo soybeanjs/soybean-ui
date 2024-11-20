@@ -1,4 +1,5 @@
-import type { PanelConstraints } from '../splitter-panel.vue';
+import { isNullish } from '../../../shared';
+import type { PanelConstraints } from '../types';
 import { PRECISION } from './constants';
 import { assert } from './assert';
 import { fuzzyCompareNumbers } from './compare';
@@ -7,14 +8,15 @@ import { fuzzyCompareNumbers } from './compare';
 export function resizePanel({
   panelConstraints: panelConstraintsArray,
   panelIndex,
-  size
+  size: _size
 }: {
   panelConstraints: PanelConstraints[];
   panelIndex: number;
   size: number;
 }) {
+  let size = _size;
   const panelConstraints = panelConstraintsArray[panelIndex];
-  assert(panelConstraints != null);
+  assert(!isNullish(panelConstraints));
 
   const { collapsedSize = 0, collapsible, maxSize = 100, minSize = 0 } = panelConstraints;
 

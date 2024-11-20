@@ -1,6 +1,7 @@
+/* eslint-disable no-bitwise */
 import type { CSSProperties } from 'vue';
-import type { PanelData } from '../splitter-panel.vue';
-import type { DragState } from './types';
+import { isNullish } from '../../../shared';
+import type { DragState, PanelData } from '../types';
 import {
   EXCEEDED_HORIZONTAL_MAX,
   EXCEEDED_HORIZONTAL_MIN,
@@ -35,6 +36,7 @@ export function getCursorStyle(state: CursorState, constraintFlags: number): str
     }
   }
 
+  // eslint-disable-next-line default-case
   switch (state) {
     case 'horizontal':
       return 'ew-resize';
@@ -89,7 +91,7 @@ export function computePanelFlexBoxStyle({
   const size = layout[panelIndex];
 
   let flexGrow;
-  if (size == null) {
+  if (isNullish(size)) {
     // Initial render (before panels have registered themselves)
     // In order to support server rendering, fall back to default size if provided
     flexGrow = defaultSize !== undefined ? defaultSize.toPrecision(precision) : '1';

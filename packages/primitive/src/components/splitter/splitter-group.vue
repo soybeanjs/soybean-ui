@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, toRefs, watch, watchEffect } from 'vue';
-import type { CSSProperties, Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import { useDirection, useForwardExpose, useId } from '../../composables';
+import { areEqual, isNullish } from '../../shared';
+import type { DataOrientation } from '../../types';
 import { Primitive } from '../primitive';
-import { areEqual, createContext, useDirection, useForwardExpose, useId } from '../../composables';
-import { initializeDefaultStorage, loadPanelGroupState, savePanelGroupState } from './utils/storage';
-import { useWindowSplitterPanelGroupBehavior } from './utils/composables/use-window-splitter-panel-group-behavior';
-
-import type { PanelConstraints, PanelData } from './splitter-panel.vue';
-import type { Direction, DragState, ResizeEvent, ResizeHandler } from './utils/types';
+import { provideSplitterGroupContext } from './context';
+import { useWindowSplitterPanelGroupBehavior } from './composables';
 import {
   EXCEEDED_HORIZONTAL_MAX,
   EXCEEDED_HORIZONTAL_MIN,
@@ -16,6 +13,7 @@ import {
   EXCEEDED_VERTICAL_MIN,
   reportConstraintsViolation
 } from './utils/registry';
+import { initializeDefaultStorage, loadPanelGroupState, savePanelGroupState } from './utils/storage';
 import { adjustLayoutByDelta, compareLayouts } from './utils/layout';
 import { assert } from './utils/assert';
 import { calculateDeltaPercentage, calculateUnsafeDefaultLayout } from './utils/calculate';
@@ -26,31 +24,20 @@ import { determinePivotIndices } from './utils/pivot';
 import { getResizeHandleElement } from './utils/dom';
 import { getResizeEventCursorPosition, isKeyDown, isMouseEvent, isTouchEvent } from './utils/events';
 import { validatePanelGroupLayout } from './utils/validation';
+import type {
+  DragState,
+  EagerValuesRef,
+  PanelConstraints,
+  PanelData,
+  PanelGroupStorage,
+  ResizeEvent,
+  SplitterGroupEmits,
+  SplitterGroupPropsWithPrimitive
+} from './types';
 
-export interface SplitterGroupProps extends PrimitiveProps {
-  /** Group id; falls back to `useId` when not provided. */
-  id?: string | null;
-  /** Unique id used to auto-save group arrangement via `localStorage`. */
-  autoSaveId?: string | null;
-  /** The group orientation of splitter. */
-  direction: Direction;
-  /** Step size when arrow key was pressed. */
-  keyboardResizeBy?: number | null;
-  /** Custom storage API; defaults to localStorage */
-  storage?: PanelGroupStorage;
-}
-
-export type SplitterGroupEmits = {
-  /** Event handler called when group layout changes */
-  layout: [val: number[]];
-};
-
-const LOCAL_STORAGE_DEBOUNCE_INTERVAL = 100;
-
-export type PanelGroupStorage = {
-  getItem: (name: string) => string | null;
-  setItem: (name: string, value: string) => void;
-};
+defineOptions({
+  name: 'SplitterGroup'
+});
 
 const defaultStorage: PanelGroupStorage = {
   getItem: (name: string) => {
@@ -63,43 +50,15 @@ const defaultStorage: PanelGroupStorage = {
   }
 };
 
-export type PanelGroupContext = {
-  direction: Ref<Direction>;
-  dragState: DragState | null;
-  groupId: string;
-  reevaluatePanelConstraints: (panelData: PanelData, prevConstraints: PanelConstraints) => void;
-  registerPanel: (panelData: PanelData) => void;
-  registerResizeHandle: (dragHandleId: string) => ResizeHandler;
-  resizePanel: (panelData: PanelData, size: number) => void;
-  startDragging: (dragHandleId: string, event: ResizeEvent) => void;
-  stopDragging: () => void;
-  unregisterPanel: (panelData: PanelData) => void;
-  panelGroupElement: Ref<ParentNode | null>;
-
-  // Exposed function for child component
-  collapsePanel: (panelData: PanelData) => void;
-  expandPanel: (panelData: PanelData) => void;
-  isPanelCollapsed: (panelData: PanelData) => boolean;
-  isPanelExpanded: (panelData: PanelData) => boolean;
-  getPanelSize: (panelData: PanelData) => number;
-  getPanelStyle: (panelData: PanelData, defaultSize: number | undefined) => CSSProperties;
-};
-
-export const [injectPanelGroupContext, providePanelGroupContext] = createContext<PanelGroupContext>('PanelGroup');
-
-const props = withDefaults(defineProps<SplitterGroupProps>(), {
+const props = withDefaults(defineProps<SplitterGroupPropsWithPrimitive>(), {
   autoSaveId: null,
   keyboardResizeBy: 10,
   storage: () => defaultStorage
 });
+
 const emit = defineEmits<SplitterGroupEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current size of layout */
-    layout: typeof layout.value;
-  }) => any;
-}>();
+const LOCAL_STORAGE_DEBOUNCE_INTERVAL = 100;
 
 const debounceMap: {
   [key: string]: typeof savePanelGroupState;
@@ -127,7 +86,7 @@ const committedValuesRef = computed(
       storage: props.storage
     }) satisfies {
       autoSaveId: string | null;
-      direction: Direction;
+      direction: DataOrientation;
       dragState: DragState | null;
       id: string;
       keyboardResizeBy: number | null;
@@ -135,11 +94,7 @@ const committedValuesRef = computed(
     }
 );
 
-const eagerValuesRef = ref<{
-  layout: number[];
-  panelDataArray: PanelData[];
-  panelDataArrayChanged: boolean;
-}>({
+const eagerValuesRef = ref<EagerValuesRef>({
   layout: layout.value,
   panelDataArray: [],
   panelDataArrayChanged: false
@@ -202,9 +157,10 @@ function registerPanel(panelData: PanelData) {
   panelDataArray.sort((panelA, panelB) => {
     const orderA = panelA.order;
     const orderB = panelB.order;
-    if (orderA == null && orderB == null) return 0;
-    else if (orderA == null) return -1;
-    else if (orderB == null) return 1;
+
+    if (isNullish(orderA) && isNullish(orderB)) return 0;
+    if (isNullish(orderA)) return -1;
+    if (isNullish(orderB)) return 1;
     return orderA - orderB;
   });
 
@@ -264,25 +220,25 @@ function registerResizeHandle(dragHandleId: string) {
     const panelGroupElement = panelGroupElementRef.value;
     if (!panelGroupElement) return () => null;
 
-    const { direction, dragState, id: groupId, keyboardResizeBy } = committedValuesRef.value;
+    const { direction: _direction, dragState: _dragState, id: _groupId, keyboardResizeBy } = committedValuesRef.value;
     const { layout: prevLayout, panelDataArray } = eagerValuesRef.value;
 
-    const { initialLayout } = dragState ?? {};
+    const { initialLayout } = _dragState ?? {};
 
-    const pivotIndices = determinePivotIndices(groupId, dragHandleId, panelGroupElement);
+    const pivotIndices = determinePivotIndices(_groupId, dragHandleId, panelGroupElement);
 
     let delta = calculateDeltaPercentage(
       event,
       dragHandleId,
-      direction,
-      dragState,
+      _direction,
+      _dragState,
       keyboardResizeBy,
       panelGroupElement
     );
     if (delta === 0) return;
 
     // Support RTL layouts
-    const isHorizontal = direction === 'horizontal';
+    const isHorizontal = _direction === 'horizontal';
     if (dir.value === 'rtl' && isHorizontal) delta = -delta;
 
     const panelConstraints = panelDataArray.map(panelData => panelData.constraints);
@@ -334,11 +290,11 @@ function registerResizeHandle(dragHandleId: string) {
 function resizePanel(panelData: PanelData, unsafePanelSize: number) {
   const { layout: prevLayout, panelDataArray } = eagerValuesRef.value;
 
-  const panelConstraintsArray = panelDataArray.map(panelData => panelData.constraints);
+  const panelConstraintsArray = panelDataArray.map(item => item.constraints);
 
   const { panelSize, pivotIndices } = panelDataHelper(panelDataArray, panelData, prevLayout);
 
-  assert(panelSize != null);
+  assert(!isNullish(panelSize));
 
   const isLastPanel = findPanelDataIndex(panelDataArray, panelData) === panelDataArray.length - 1;
   const delta = isLastPanel ? panelSize - unsafePanelSize : unsafePanelSize - panelSize;
@@ -362,7 +318,7 @@ function resizePanel(panelData: PanelData, unsafePanelSize: number) {
 }
 
 function reevaluatePanelConstraints(panelData: PanelData, prevConstraints: PanelConstraints) {
-  const { layout, panelDataArray } = eagerValuesRef.value;
+  const { layout: _layout, panelDataArray } = eagerValuesRef.value;
   const index = findPanelDataIndex(panelDataArray, panelData);
   panelDataArray[index] = panelData;
   eagerValuesRef.value.panelDataArrayChanged = true;
@@ -375,8 +331,8 @@ function reevaluatePanelConstraints(panelData: PanelData, prevConstraints: Panel
     minSize: nextMinSize = 0
   } = panelData.constraints;
 
-  const { panelSize: prevPanelSize } = panelDataHelper(panelDataArray, panelData, layout);
-  if (prevPanelSize === null) {
+  const { panelSize: prevPanelSize } = panelDataHelper(panelDataArray, panelData, _layout);
+  if (isNullish(prevPanelSize)) {
     // It's possible that the panels in this group have changed since the last render
     return;
   }
@@ -395,30 +351,30 @@ function reevaluatePanelConstraints(panelData: PanelData, prevConstraints: Panel
 }
 
 function startDragging(dragHandleId: string, event: ResizeEvent) {
-  const { direction } = committedValuesRef.value;
-  const { layout } = eagerValuesRef.value;
+  const { direction: _direction } = committedValuesRef.value;
+  const { layout: _layout } = eagerValuesRef.value;
   if (!panelGroupElementRef.value) return;
 
   const handleElement = getResizeHandleElement(dragHandleId, panelGroupElementRef.value);
   assert(handleElement);
 
-  const initialCursorPosition = getResizeEventCursorPosition(direction, event);
+  const initialCursorPosition = getResizeEventCursorPosition(_direction, event);
 
   dragState.value = {
     dragHandleId,
     dragHandleRect: handleElement.getBoundingClientRect(),
     initialCursorPosition,
-    initialLayout: layout
+    initialLayout: _layout
   };
 }
 function stopDragging() {
   dragState.value = null;
 }
 
-function unregisterPanel(panelData: PanelData) {
+function unregisterPanel(item: PanelData) {
   const { panelDataArray } = eagerValuesRef.value;
 
-  const index = findPanelDataIndex(panelDataArray, panelData);
+  const index = findPanelDataIndex(panelDataArray, item);
   if (index >= 0) {
     panelDataArray.splice(index, 1);
 
@@ -426,28 +382,29 @@ function unregisterPanel(panelData: PanelData) {
     // When a panel is removed from the group, we should delete the most recent prev-size entry for it.
     // If we don't do this, then a conditionally rendered panel might not call onResize when it's re-mounted.
     // Strict effects mode makes this tricky though because all panels will be registered, unregistered, then re-registered on mount.
-    delete panelIdToLastNotifiedSizeMapRef.value[panelData.id];
+    // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+    delete panelIdToLastNotifiedSizeMapRef.value[item.id];
 
     eagerValuesRef.value.panelDataArrayChanged = true;
   }
 }
 
-function collapsePanel(panelData: PanelData) {
+function collapsePanel(item: PanelData) {
   const { layout: prevLayout, panelDataArray } = eagerValuesRef.value;
 
-  if (panelData.constraints.collapsible) {
+  if (item.constraints.collapsible) {
     const panelConstraintsArray = panelDataArray.map(panelData => panelData.constraints);
 
-    const { collapsedSize = 0, panelSize, pivotIndices } = panelDataHelper(panelDataArray, panelData, prevLayout);
+    const { collapsedSize = 0, panelSize, pivotIndices } = panelDataHelper(panelDataArray, item, prevLayout);
 
-    assert(panelSize != null, `Panel size not found for panel "${panelData.id}"`);
+    assert(!isNullish(panelSize), `Panel size not found for panel "${item.id}"`);
 
     if (panelSize !== collapsedSize) {
       // Store size before collapse;
       // This is the size that gets restored if the expand() API is used.
-      panelSizeBeforeCollapseRef.value.set(panelData.id, panelSize);
+      panelSizeBeforeCollapseRef.value.set(item.id, panelSize);
 
-      const isLastPanel = findPanelDataIndex(panelDataArray, panelData) === panelDataArray.length - 1;
+      const isLastPanel = findPanelDataIndex(panelDataArray, item) === panelDataArray.length - 1;
       const delta = isLastPanel ? panelSize - collapsedSize : collapsedSize - panelSize;
 
       const nextLayout = adjustLayoutByDelta({
@@ -471,10 +428,10 @@ function collapsePanel(panelData: PanelData) {
   }
 }
 
-function expandPanel(panelData: PanelData) {
+function expandPanel(item: PanelData) {
   const { layout: prevLayout, panelDataArray } = eagerValuesRef.value;
 
-  if (panelData.constraints.collapsible) {
+  if (item.constraints.collapsible) {
     const panelConstraintsArray = panelDataArray.map(panelData => panelData.constraints);
 
     const {
@@ -482,15 +439,15 @@ function expandPanel(panelData: PanelData) {
       panelSize,
       minSize = 0,
       pivotIndices
-    } = panelDataHelper(panelDataArray, panelData, prevLayout);
+    } = panelDataHelper(panelDataArray, item, prevLayout);
 
     if (panelSize === collapsedSize) {
       // Restore this panel to the size it was before it was collapsed, if possible.
-      const prevPanelSize = panelSizeBeforeCollapseRef.value.get(panelData.id);
+      const prevPanelSize = panelSizeBeforeCollapseRef.value.get(item.id);
 
-      const baseSize = prevPanelSize != null && prevPanelSize >= minSize ? prevPanelSize : minSize;
+      const baseSize = !isNullish(prevPanelSize) && prevPanelSize >= minSize ? prevPanelSize : minSize;
 
-      const isLastPanel = findPanelDataIndex(panelDataArray, panelData) === panelDataArray.length - 1;
+      const isLastPanel = findPanelDataIndex(panelDataArray, item) === panelDataArray.length - 1;
       const delta = isLastPanel ? panelSize - baseSize : baseSize - panelSize;
 
       const nextLayout = adjustLayoutByDelta({
@@ -514,35 +471,35 @@ function expandPanel(panelData: PanelData) {
   }
 }
 
-function getPanelSize(panelData: PanelData) {
-  const { layout, panelDataArray } = eagerValuesRef.value;
+function getPanelSize(item: PanelData) {
+  const { layout: _layout, panelDataArray } = eagerValuesRef.value;
 
-  const { panelSize } = panelDataHelper(panelDataArray, panelData, layout);
+  const { panelSize } = panelDataHelper(panelDataArray, item, _layout);
 
-  assert(panelSize != null, `Panel size not found for panel "${panelData.id}"`);
+  assert(!isNullish(panelSize), `Panel size not found for panel "${item.id}"`);
 
   return panelSize;
 }
 
-function isPanelCollapsed(panelData: PanelData) {
-  const { layout, panelDataArray } = eagerValuesRef.value;
+function isPanelCollapsed(item: PanelData) {
+  const { layout: _layout, panelDataArray } = eagerValuesRef.value;
 
-  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, panelData, layout);
+  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, item, _layout);
 
   return collapsible === true && panelSize === collapsedSize;
 }
 
-function isPanelExpanded(panelData: PanelData) {
-  const { layout, panelDataArray } = eagerValuesRef.value;
+function isPanelExpanded(item: PanelData) {
+  const { layout: _layout, panelDataArray } = eagerValuesRef.value;
 
-  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, panelData, layout);
+  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, item, _layout);
 
-  assert(panelSize != null, `Panel size not found for panel "${panelData.id}"`);
+  assert(!isNullish(panelSize), `Panel size not found for panel "${item.id}"`);
 
   return !collapsible || panelSize > collapsedSize;
 }
 
-providePanelGroupContext({
+provideSplitterGroupContext({
   direction,
   dragState: dragState.value,
   groupId,
@@ -567,13 +524,13 @@ function findPanelDataIndex(panelDataArray: PanelData[], panelData: PanelData) {
   return panelDataArray.findIndex(prevPanelData => prevPanelData === panelData || prevPanelData.id === panelData.id);
 }
 
-function panelDataHelper(panelDataArray: PanelData[], panelData: PanelData, layout: number[]) {
+function panelDataHelper(panelDataArray: PanelData[], panelData: PanelData, _layout: number[]) {
   const panelIndex = findPanelDataIndex(panelDataArray, panelData);
 
   const isLastPanel = panelIndex === panelDataArray.length - 1;
   const pivotIndices = isLastPanel ? [panelIndex - 1, panelIndex] : [panelIndex, panelIndex + 1];
 
-  const panelSize = layout[panelIndex];
+  const panelSize = _layout[panelIndex];
 
   return {
     ...panelData.constraints,

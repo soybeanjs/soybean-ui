@@ -1,5 +1,6 @@
-import type { PanelData } from '../splitter-panel.vue';
-import type { Direction, DragState, ResizeEvent } from './types';
+import { isNullish } from '../../../shared';
+import type { DataOrientation, NavigationKeys } from '../../../types';
+import type { DragState, PanelData, ResizeEvent } from '../types';
 import { assert } from './assert';
 import { getPanelGroupElement, getResizeHandleElement } from './dom';
 import { getResizeEventCursorPosition, isKeyDown } from './events';
@@ -7,7 +8,7 @@ import { getResizeEventCursorPosition, isKeyDown } from './events';
 export function calculateDragOffsetPercentage(
   event: ResizeEvent,
   dragHandleId: string,
-  direction: Direction,
+  direction: DataOrientation,
   initialDragState: DragState,
   panelGroupElement: HTMLElement
 ): number {
@@ -36,10 +37,11 @@ export function calculateDragOffsetPercentage(
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/movementX
+// eslint-disable-next-line max-params
 export function calculateDeltaPercentage(
   event: ResizeEvent,
   dragHandleId: string,
-  direction: Direction,
+  direction: DataOrientation,
   initialDragState: DragState | null,
   keyboardResizeBy: number | null,
   panelGroupElement: HTMLElement
@@ -52,31 +54,24 @@ export function calculateDeltaPercentage(
     else delta = keyboardResizeBy ?? 10;
 
     let movement = 0;
-    switch (event.key) {
-      case 'ArrowDown':
-        movement = isHorizontal ? 0 : delta;
-        break;
-      case 'ArrowLeft':
-        movement = isHorizontal ? -delta : 0;
-        break;
-      case 'ArrowRight':
-        movement = isHorizontal ? delta : 0;
-        break;
-      case 'ArrowUp':
-        movement = isHorizontal ? 0 : -delta;
-        break;
-      case 'End':
-        movement = 100;
-        break;
-      case 'Home':
-        movement = -100;
-        break;
-    }
+
+    const mapValue: Partial<Record<NavigationKeys, number>> = {
+      ArrowDown: isHorizontal ? 0 : delta,
+      ArrowLeft: isHorizontal ? -delta : 0,
+      ArrowRight: isHorizontal ? delta : 0,
+      ArrowUp: isHorizontal ? 0 : -delta,
+      End: 100,
+      Home: -100
+    };
+
+    movement = mapValue[event.key as NavigationKeys] ?? 0;
 
     return movement;
   }
 
-  if (initialDragState == null) return 0;
+  if (isNullish(initialDragState)) {
+    return 0;
+  }
 
   return calculateDragOffsetPercentage(event, dragHandleId, direction, initialDragState, panelGroupElement);
 }
@@ -96,7 +91,7 @@ export function calculateAriaValues({
   let totalMaxSize = 0;
 
   const firstIndex = pivotIndices[0];
-  assert(firstIndex != null);
+  assert(!isNullish(firstIndex));
 
   // A panel's effective min/max sizes also need to account for other panel's sizes.
   panelsArray.forEach((panelData, index) => {
@@ -138,7 +133,7 @@ export function calculateUnsafeDefaultLayout({ panelDataArray }: { panelDataArra
     assert(panelConstraints);
     const { defaultSize } = panelConstraints;
 
-    if (defaultSize != null) {
+    if (!isNullish(defaultSize)) {
       numPanelsWithSizes++;
       layout[index] = defaultSize;
       remainingSize -= defaultSize;
@@ -151,14 +146,14 @@ export function calculateUnsafeDefaultLayout({ panelDataArray }: { panelDataArra
     assert(panelConstraints);
     const { defaultSize } = panelConstraints;
 
-    if (defaultSize != null) continue;
+    if (isNullish(defaultSize)) {
+      const numRemainingPanels = panelDataArray.length - numPanelsWithSizes;
+      const size = remainingSize / numRemainingPanels;
 
-    const numRemainingPanels = panelDataArray.length - numPanelsWithSizes;
-    const size = remainingSize / numRemainingPanels;
-
-    numPanelsWithSizes++;
-    layout[index] = size;
-    remainingSize -= size;
+      numPanelsWithSizes++;
+      layout[index] = size;
+      remainingSize -= size;
+    }
   }
 
   return layout;

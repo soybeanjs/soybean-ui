@@ -1,5 +1,5 @@
-import type { PanelGroupStorage } from '../splitter-group.vue';
-import type { PanelData } from '../splitter-panel.vue';
+import { isNullish } from '../../../shared';
+import type { PanelData, PanelGroupStorage } from '../types';
 
 // PanelGroup might be rendering in a server-side environment where localStorage is not available
 // or on a browser with cookies/storage disabled.
@@ -67,9 +67,9 @@ function loadSerializedPanelGroupState(
     const serialized = storage.getItem(panelGroupKey);
     if (serialized) {
       const parsed = JSON.parse(serialized);
-      if (typeof parsed === 'object' && parsed != null) return parsed as SerializedPanelGroupState;
+      if (typeof parsed === 'object' && !isNullish(parsed)) return parsed as SerializedPanelGroupState;
     }
-  } catch (error) {}
+  } catch {}
 
   return null;
 }

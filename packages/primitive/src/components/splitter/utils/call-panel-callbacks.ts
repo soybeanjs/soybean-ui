@@ -1,4 +1,5 @@
-import type { PanelData } from '../splitter-panel.vue';
+import { isNullish } from '../../../shared';
+import type { PanelData } from '../types';
 import { assert } from './assert';
 
 // Layout should be pre-converted into percentages
@@ -15,7 +16,7 @@ export function callPanelCallbacks(
     const { collapsedSize = 0, collapsible } = constraints;
 
     const lastNotifiedSize = panelIdToLastNotifiedSizeMap[panelId];
-    if (lastNotifiedSize == null || size !== lastNotifiedSize) {
+    if (isNullish(lastNotifiedSize) || size !== lastNotifiedSize) {
       panelIdToLastNotifiedSizeMap[panelId] = size;
 
       const { onCollapse, onExpand, onResize } = callbacks;
@@ -23,11 +24,15 @@ export function callPanelCallbacks(
       if (onResize) onResize(size, lastNotifiedSize);
 
       if (collapsible && (onCollapse || onExpand)) {
-        if (onExpand && (lastNotifiedSize == null || lastNotifiedSize === collapsedSize) && size !== collapsedSize) {
+        if (onExpand && (isNullish(lastNotifiedSize) || lastNotifiedSize === collapsedSize) && size !== collapsedSize) {
           onExpand();
         }
 
-        if (onCollapse && (lastNotifiedSize == null || lastNotifiedSize !== collapsedSize) && size === collapsedSize) {
+        if (
+          onCollapse &&
+          (isNullish(lastNotifiedSize) || lastNotifiedSize !== collapsedSize) &&
+          size === collapsedSize
+        ) {
           onCollapse();
         }
       }

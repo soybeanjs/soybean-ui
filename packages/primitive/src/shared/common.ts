@@ -1,6 +1,6 @@
 import isEqual from 'fast-deep-equal';
 
-export function isNullish(value: any): boolean {
+export function isNullish<T>(value: T | null | undefined): value is null | undefined {
   return value === null || value === undefined;
 }
 

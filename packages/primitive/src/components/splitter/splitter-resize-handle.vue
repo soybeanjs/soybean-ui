@@ -1,36 +1,26 @@
 <script setup lang="ts">
 import { ref, toRefs, watch, watchEffect } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import { Primitive } from '../primitive';
-import { isBrowser, useForwardExpose, useId } from '../../composables';
-import { useWindowSplitterResizeHandlerBehavior } from './utils/composables/use-window-splitter-behavior';
-
-import { injectPanelGroupContext } from './splitter-group.vue';
-import type { ResizeEvent, ResizeHandler } from './utils/types';
-import type { PointerHitAreaMargins, ResizeHandlerAction } from './utils/registry';
+import { useForwardExpose, useId } from '../../composables';
+import { isBrowser } from '../../shared';
+import { useWindowSplitterResizeHandlerBehavior } from './composables';
+import { injectSplitterGroupContext } from './context';
 import { registerResizeHandle } from './utils/registry';
 import { assert } from './utils/assert';
+import type {
+  ResizeEvent,
+  ResizeHandler,
+  ResizeHandlerAction,
+  ResizeHandlerState,
+  SplitterResizeHandleEmits,
+  SplitterResizeHandlePropsWithPrimitive
+} from './types';
 
-export interface SplitterResizeHandleProps extends PrimitiveProps {
-  /** Resize handle id (unique within group); falls back to `useId` when not provided */
-  id?: string;
-  /** Allow this much margin when determining resizable handle hit detection */
-  hitAreaMargins?: PointerHitAreaMargins;
-  /** Tabindex for the handle */
-  tabindex?: number;
-  /** Disable drag handle */
-  disabled?: boolean;
-}
+defineOptions({
+  name: 'SplitterResizeHandle'
+});
 
-export type PanelResizeHandleOnDragging = (isDragging: boolean) => void;
-export type ResizeHandlerState = 'drag' | 'hover' | 'inactive';
-
-export type SplitterResizeHandleEmits = {
-  /** Event handler called when dragging the handler. */
-  dragging: [isDragging: boolean];
-};
-
-const props = withDefaults(defineProps<SplitterResizeHandleProps>(), {
+const props = withDefaults(defineProps<SplitterResizeHandlePropsWithPrimitive>(), {
   tabindex: 0
 });
 const emit = defineEmits<SplitterResizeHandleEmits>();
@@ -38,7 +28,7 @@ const emit = defineEmits<SplitterResizeHandleEmits>();
 const { forwardRef, currentElement } = useForwardExpose();
 const { disabled } = toRefs(props);
 
-const panelGroupContext = injectPanelGroupContext();
+const panelGroupContext = injectSplitterGroupContext();
 if (panelGroupContext === null) {
   throw new Error('PanelResizeHandle components must be rendered within a PanelGroup container');
 }
@@ -77,6 +67,7 @@ watchEffect(onCleanup => {
 
   const setResizeHandlerState = (action: ResizeHandlerAction, isActive: boolean, event: ResizeEvent) => {
     if (isActive) {
+      // eslint-disable-next-line default-case
       switch (action) {
         case 'down': {
           state.value = 'drag';

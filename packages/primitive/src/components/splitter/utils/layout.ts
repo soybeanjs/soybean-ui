@@ -1,5 +1,5 @@
-/* eslint-disable no-lone-blocks */
-import type { PanelConstraints } from '../splitter-panel.vue';
+import { isNullish } from '../../../shared';
+import type { PanelConstraints } from '../types';
 import { assert } from './assert';
 import { fuzzyCompareNumbers, fuzzyNumbersEqual } from './compare';
 import { resizePanel } from './resize-panel';
@@ -17,8 +17,9 @@ export function compareLayouts(a: number[], b: number[]) {
 }
 
 // All units must be in percentages; pixel values should be pre-converted
+// eslint-disable-next-line complexity
 export function adjustLayoutByDelta({
-  delta,
+  delta: _delta,
   layout: prevLayout,
   panelConstraints: panelConstraintsArray,
   pivotIndices,
@@ -30,15 +31,16 @@ export function adjustLayoutByDelta({
   pivotIndices: number[];
   trigger: 'imperative-api' | 'keyboard' | 'mouse-or-touch';
 }): number[] {
-  if (fuzzyNumbersEqual(delta, 0)) return prevLayout;
+  if (fuzzyNumbersEqual(_delta, 0)) return prevLayout;
 
   const nextLayout = [...prevLayout];
 
   const [firstPivotIndex, secondPivotIndex] = pivotIndices;
-  assert(firstPivotIndex != null);
-  assert(secondPivotIndex != null);
+  assert(!isNullish(firstPivotIndex));
+  assert(!isNullish(secondPivotIndex));
 
   let deltaApplied = 0;
+  let delta = _delta;
 
   // const DEBUG = [];
   // DEBUG.push(`adjustLayoutByDelta() ${prevLayout.join(", ")}`);
@@ -55,65 +57,63 @@ export function adjustLayoutByDelta({
   // A positive delta means the panel(s) immediately before the resize handle should "expand".
   // This is accomplished by shrinking/contracting (and shifting) one or more of the panels after the resize handle.
 
-  {
-    // If this is a resize triggered by a keyboard event, our logic for expanding/collapsing is different.
-    // We no longer check the halfway threshold because this may prevent the panel from expanding at all.
-    if (trigger === 'keyboard') {
-      {
-        // Check if we should expand a collapsed panel
-        const index = delta < 0 ? secondPivotIndex : firstPivotIndex;
-        const panelConstraints = panelConstraintsArray[index];
-        assert(panelConstraints);
+  // If this is a resize triggered by a keyboard event, our logic for expanding/collapsing is different.
+  // We no longer check the halfway threshold because this may prevent the panel from expanding at all.
+  if (trigger === 'keyboard') {
+    {
+      // Check if we should expand a collapsed panel
+      const index = delta < 0 ? secondPivotIndex : firstPivotIndex;
+      const panelConstraints = panelConstraintsArray[index];
+      assert(panelConstraints);
 
-        // DEBUG.push(`edge case check 1: ${index}`);
-        // DEBUG.push(`  -> collapsible? ${constraints.collapsible}`);
-        if (panelConstraints.collapsible) {
-          const prevSize = prevLayout[index];
-          assert(prevSize != null);
+      // DEBUG.push(`edge case check 1: ${index}`);
+      // DEBUG.push(`  -> collapsible? ${constraints.collapsible}`);
+      if (panelConstraints.collapsible) {
+        const prevSize = prevLayout[index];
+        assert(!isNullish(prevSize));
 
-          const panelConstraints = panelConstraintsArray[index];
-          assert(panelConstraints);
-          const { collapsedSize = 0, minSize = 0 } = panelConstraints;
+        const _panelConstraints = panelConstraintsArray[index];
+        assert(_panelConstraints);
+        const { collapsedSize = 0, minSize = 0 } = _panelConstraints;
 
-          if (fuzzyNumbersEqual(prevSize, collapsedSize)) {
-            const localDelta = minSize - prevSize;
-            // DEBUG.push(`  -> expand delta: ${localDelta}`);
+        if (fuzzyNumbersEqual(prevSize, collapsedSize)) {
+          const localDelta = minSize - prevSize;
+          // DEBUG.push(`  -> expand delta: ${localDelta}`);
 
-            if (fuzzyCompareNumbers(localDelta, Math.abs(delta)) > 0) delta = delta < 0 ? 0 - localDelta : localDelta;
-            // DEBUG.push(`  -> delta: ${delta}`);
-          }
-        }
-      }
-
-      {
-        // Check if we should collapse a panel at its minimum size
-        const index = delta < 0 ? firstPivotIndex : secondPivotIndex;
-        const panelConstraints = panelConstraintsArray[index];
-        assert(panelConstraints);
-        const { collapsible } = panelConstraints;
-
-        // DEBUG.push(`edge case check 2: ${index}`);
-        // DEBUG.push(`  -> collapsible? ${collapsible}`);
-        if (collapsible) {
-          const prevSize = prevLayout[index];
-          assert(prevSize != null);
-
-          const panelConstraints = panelConstraintsArray[index];
-          assert(panelConstraints);
-          const { collapsedSize = 0, minSize = 0 } = panelConstraints;
-
-          if (fuzzyNumbersEqual(prevSize, minSize)) {
-            const localDelta = prevSize - collapsedSize;
-            // DEBUG.push(`  -> expand delta: ${localDelta}`);
-
-            if (fuzzyCompareNumbers(localDelta, Math.abs(delta)) > 0) delta = delta < 0 ? 0 - localDelta : localDelta;
-            // DEBUG.push(`  -> delta: ${delta}`);
-          }
+          if (fuzzyCompareNumbers(localDelta, Math.abs(delta)) > 0) delta = delta < 0 ? 0 - localDelta : localDelta;
+          // DEBUG.push(`  -> delta: ${delta}`);
         }
       }
     }
-    // DEBUG.push("");
+
+    {
+      // Check if we should collapse a panel at its minimum size
+      const index = delta < 0 ? firstPivotIndex : secondPivotIndex;
+      const panelConstraints = panelConstraintsArray[index];
+      assert(panelConstraints);
+      const { collapsible } = panelConstraints;
+
+      // DEBUG.push(`edge case check 2: ${index}`);
+      // DEBUG.push(`  -> collapsible? ${collapsible}`);
+      if (collapsible) {
+        const prevSize = prevLayout[index];
+        assert(!isNullish(prevSize));
+
+        const _panelConstraints = panelConstraintsArray[index];
+        assert(_panelConstraints);
+        const { collapsedSize = 0, minSize = 0 } = _panelConstraints;
+
+        if (fuzzyNumbersEqual(prevSize, minSize)) {
+          const localDelta = prevSize - collapsedSize;
+          // DEBUG.push(`  -> expand delta: ${localDelta}`);
+
+          if (fuzzyCompareNumbers(localDelta, Math.abs(delta)) > 0) delta = delta < 0 ? 0 - localDelta : localDelta;
+          // DEBUG.push(`  -> delta: ${delta}`);
+        }
+      }
+    }
   }
+  // DEBUG.push("");
 
   {
     // Pre-calculate max available delta in the opposite direction of our pivot.
@@ -130,17 +130,17 @@ export function adjustLayoutByDelta({
     // DEBUG.push("pre calc...");
     while (true) {
       const prevSize = prevLayout[index];
-      assert(prevSize != null);
+      assert(!isNullish(prevSize));
 
       const maxSafeSize = resizePanel({
         panelConstraints: panelConstraintsArray,
         panelIndex: index,
         size: 100
       });
-      const delta = maxSafeSize - prevSize;
+      const deltaValue = maxSafeSize - prevSize;
       // DEBUG.push(`  ${index}: ${prevSize} -> ${maxSafeSize}`);
 
-      maxAvailableDelta += delta;
+      maxAvailableDelta += deltaValue;
       index += increment;
 
       if (index < 0 || index >= panelConstraintsArray.length) break;
@@ -162,7 +162,7 @@ export function adjustLayoutByDelta({
       const deltaRemaining = Math.abs(delta) - Math.abs(deltaApplied);
 
       const prevSize = prevLayout[index];
-      assert(prevSize != null);
+      assert(!isNullish(prevSize));
 
       const unsafeSize = prevSize - deltaRemaining;
       const safeSize = resizePanel({
@@ -205,7 +205,7 @@ export function adjustLayoutByDelta({
     const pivotIndex = delta < 0 ? secondPivotIndex : firstPivotIndex;
 
     const prevSize = prevLayout[pivotIndex];
-    assert(prevSize != null);
+    assert(!isNullish(prevSize));
 
     const unsafeSize = prevSize + deltaApplied;
     const safeSize = resizePanel({
@@ -221,23 +221,22 @@ export function adjustLayoutByDelta({
     if (!fuzzyNumbersEqual(safeSize, unsafeSize)) {
       let deltaRemaining = unsafeSize - safeSize;
 
-      const pivotIndex = delta < 0 ? secondPivotIndex : firstPivotIndex;
-      let index = pivotIndex;
+      let index = delta < 0 ? secondPivotIndex : firstPivotIndex;
       while (index >= 0 && index < panelConstraintsArray.length) {
-        const prevSize = nextLayout[index];
-        assert(prevSize != null);
+        const _prevSize = nextLayout[index];
+        assert(!isNullish(_prevSize));
 
-        const unsafeSize = prevSize + deltaRemaining;
-        const safeSize = resizePanel({
+        const _unsafeSize = _prevSize + deltaRemaining;
+        const _safeSize = resizePanel({
           panelConstraints: panelConstraintsArray,
           panelIndex: index,
-          size: unsafeSize
+          size: _unsafeSize
         });
 
-        if (!fuzzyNumbersEqual(prevSize, safeSize)) {
-          deltaRemaining -= safeSize - prevSize;
+        if (!fuzzyNumbersEqual(_prevSize, _safeSize)) {
+          deltaRemaining -= _safeSize - _prevSize;
 
-          nextLayout[index] = safeSize;
+          nextLayout[index] = _safeSize;
         }
 
         if (fuzzyNumbersEqual(deltaRemaining, 0)) break;

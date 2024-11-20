@@ -1,78 +1,21 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, watch } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import { Primitive } from '../primitive';
 import { useId } from '../../composables';
+import { Primitive } from '../primitive';
+import { injectSplitterGroupContext } from './context';
 import { PRECISION } from './utils/constants';
+import type { PanelData, SplitterPanelEmits, SplitterPanelPropsWithPrimitive } from './types';
 
-import { injectPanelGroupContext } from './splitter-group.vue';
+defineOptions({
+  name: 'SplitterPanel'
+});
 
-export interface SplitterPanelProps extends PrimitiveProps {
-  /** The size of panel when it is collapsed. */
-  collapsedSize?: number;
-  /** Should panel collapse when resized beyond its `minSize`. When `true`, it will be collapsed to `collapsedSize`. */
-  collapsible?: boolean;
-  /** Initial size of panel (numeric value between 1-100) */
-  defaultSize?: number;
-  /** Panel id (unique within group); falls back to `useId` when not provided */
-  id?: string;
-  /** The maximum allowable size of panel (numeric value between 1-100); defaults to `100` */
-  maxSize?: number;
-  /** The minimum allowable size of panel (numeric value between 1-100); defaults to `10` */
-  minSize?: number;
-  /** The order of panel within group; required for groups with conditionally rendered panels */
-  order?: number;
-}
+const props = defineProps<SplitterPanelPropsWithPrimitive>();
 
-export type SplitterPanelEmits = {
-  /** Event handler called when panel is collapsed. */
-  collapse: [];
-  /** Event handler called when panel is expanded. */
-  expand: [];
-  /** Event handler called when panel is resized; size parameter is a numeric value between 1-100. */
-  resize: [size: number, prevSize: number | undefined];
-};
-
-export type PanelOnCollapse = () => void;
-export type PanelOnExpand = () => void;
-export type PanelOnResize = (size: number, prevSize: number | undefined) => void;
-
-export type PanelCallbacks = {
-  onCollapse?: PanelOnCollapse;
-  onExpand?: PanelOnExpand;
-  onResize?: PanelOnResize;
-};
-
-export type PanelConstraints = {
-  collapsedSize?: number | undefined;
-  collapsible?: boolean | undefined;
-  defaultSize?: number | undefined;
-  /** Panel id (unique within group); falls back to useId when not provided */
-  maxSize?: number | undefined;
-  minSize?: number | undefined;
-};
-
-export type PanelData = {
-  callbacks: PanelCallbacks;
-  constraints: PanelConstraints;
-  id: string;
-  idIsFromProps: boolean;
-  order: number | undefined;
-};
-
-const props = defineProps<SplitterPanelProps>();
 const emit = defineEmits<SplitterPanelEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Is the panel collapsed */
-    isCollapsed: typeof isCollapsed.value;
-    /** Is the panel expanded */
-    isExpanded: typeof isExpanded.value;
-  }) => any;
-}>();
+const panelGroupContext = injectSplitterGroupContext();
 
-const panelGroupContext = injectPanelGroupContext();
 if (panelGroupContext === null) {
   throw new Error('SplitterPanel components must be rendered within a SplitterGroup container');
 }

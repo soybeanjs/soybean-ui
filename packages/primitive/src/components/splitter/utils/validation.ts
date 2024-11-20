@@ -1,4 +1,5 @@
-import type { PanelConstraints } from '../splitter-panel.vue';
+import { isNullish } from '../../../shared';
+import type { PanelConstraints } from '../types';
 import { assert } from './assert';
 import { fuzzyNumbersEqual } from './compare';
 import { resizePanel } from './resize-panel';
@@ -23,6 +24,7 @@ export function validatePanelGroupLayout({
     // This is not ideal so we should warn about it, but it may be recoverable in some cases
     // (especially if the amount is small)
 
+    // eslint-disable-next-line no-constant-condition
     if (true) {
       console.warn(
         `WARNING: Invalid layout total size: ${nextLayout
@@ -32,7 +34,7 @@ export function validatePanelGroupLayout({
     }
     for (let index = 0; index < panelConstraints.length; index++) {
       const unsafeSize = nextLayout[index];
-      assert(unsafeSize != null);
+      assert(!isNullish(unsafeSize));
       const safeSize = (100 / nextLayoutTotalSize) * unsafeSize;
       nextLayout[index] = safeSize;
     }
@@ -43,7 +45,7 @@ export function validatePanelGroupLayout({
   // First pass: Validate the proposed layout given each panel's constraints
   for (let index = 0; index < panelConstraints.length; index++) {
     const unsafeSize = nextLayout[index];
-    assert(unsafeSize != null);
+    assert(!isNullish(unsafeSize));
 
     const safeSize = resizePanel({
       panelConstraints,
@@ -63,7 +65,7 @@ export function validatePanelGroupLayout({
   if (!fuzzyNumbersEqual(remainingSize, 0)) {
     for (let index = 0; index < panelConstraints.length; index++) {
       const prevSize = nextLayout[index];
-      assert(prevSize != null);
+      assert(!isNullish(prevSize));
       const unsafeSize = prevSize + remainingSize;
       const safeSize = resizePanel({
         panelConstraints,
@@ -105,7 +107,7 @@ export function validatePanelConstraints({
       warnings.push(`min size (${minSize}%) should not be greater than max size (${maxSize}%)`);
     }
 
-    if (defaultSize != null) {
+    if (!isNullish(defaultSize)) {
       if (defaultSize < 0) {
         warnings.push('default size should not be less than 0');
       } else if (defaultSize < minSize && (!collapsible || defaultSize !== collapsedSize)) {
@@ -119,7 +121,7 @@ export function validatePanelConstraints({
     if (collapsedSize > minSize) warnings.push('collapsed size should not be greater than min size');
 
     if (warnings.length > 0) {
-      const name = panelId != null ? `Panel "${panelId}"` : 'Panel';
+      const name = !isNullish(panelId) ? `Panel "${panelId}"` : 'Panel';
       console.warn(`${name} has an invalid configuration:\n\n${warnings.join('\n')}`);
 
       return false;

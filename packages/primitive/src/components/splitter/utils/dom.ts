@@ -1,5 +1,5 @@
-import { isBrowser } from '../../shared';
-import type { PanelData } from '../splitter-panel.vue';
+import { isBrowser } from '../../../shared';
+import type { PanelData } from '../types';
 
 export function getPanelElement(id: string, scope: ParentNode | HTMLElement = document): HTMLElement | null {
   if (!isBrowser) return null;

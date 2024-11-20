@@ -1,3 +1,4 @@
+import { isNullish } from '../../../shared';
 import { getResizeHandleElementIndex } from './dom';
 
 export function determinePivotIndices(
@@ -7,5 +8,5 @@ export function determinePivotIndices(
 ): [indexBefore: number, indexAfter: number] {
   const index = getResizeHandleElementIndex(groupId, dragHandleId, panelGroupElement);
 
-  return index != null ? [index, index + 1] : [-1, -1];
+  return !isNullish(index) ? [index, index + 1] : [-1, -1];
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // Forked from NPM stacking-order@2.0.0
 // Background at https://github.com/Rich-Harris/stacking-order/issues/3
 
@@ -75,7 +76,7 @@ function createsStackingContext(node: HTMLElement) {
   if (style.zIndex !== 'auto' && (style.position !== 'static' || isFlexItem(node))) {
     return true;
   }
-  if (+style.opacity < 1) return true;
+  if (Number(style.opacity) < 1) return true;
   if ('transform' in style && style.transform !== 'none') return true;
   if ('webkitTransform' in style && style.webkitTransform !== 'none') return true;
   if ('mixBlendMode' in style && style.mixBlendMode !== 'normal') return true;
@@ -109,11 +110,13 @@ function getZIndex(node: HTMLElement | null) {
 
 /** @param {HTMLElement} node */
 function getAncestors(node: HTMLElement) {
+  let _node = node;
+
   const ancestors = [];
 
-  while (node) {
-    ancestors.push(node);
-    node = getParent(node);
+  while (_node) {
+    ancestors.push(_node);
+    _node = getParent(_node);
   }
 
   return ancestors; // [ node, ... <body>, <html>, document ]
