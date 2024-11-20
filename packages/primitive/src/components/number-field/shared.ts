@@ -1,8 +1,9 @@
-import { NumberFormatter, NumberParser } from '@internationalized/number';
-import { type MaybeComputedElementRef, unrefElement, useEventListener } from '@vueuse/core';
-import { createEventHook, isClient, reactiveComputed } from '@vueuse/shared';
 import { computed, ref } from 'vue';
 import type { Ref } from 'vue';
+import { NumberFormatter, NumberParser } from '@internationalized/number';
+import { unrefElement, useEventListener } from '@vueuse/core';
+import type { MaybeComputedElementRef } from '@vueuse/core';
+import { createEventHook, isClient, reactiveComputed } from '@vueuse/shared';
 
 export function usePressedHold(options: { target?: MaybeComputedElementRef; disabled: Ref<boolean> }) {
   const { disabled } = options;
@@ -68,22 +69,25 @@ export function useNumberParser(locale: Ref<string>, options: Ref<Intl.NumberFor
 }
 
 export function handleDecimalOperation(operator: '-' | '+', value1: number, value2: number): number {
-  let result = operator === '+' ? value1 + value2 : value1 - value2;
+  let v1 = value1;
+  let v2 = value2;
+
+  let result = operator === '+' ? v1 + v2 : v1 - v2;
 
   // Check if we have decimals
-  if (value1 % 1 !== 0 || value2 % 1 !== 0) {
-    const value1Decimal = value1.toString().split('.');
-    const value2Decimal = value2.toString().split('.');
-    const value1DecimalLength = (value1Decimal[1] && value1Decimal[1].length) || 0;
-    const value2DecimalLength = (value2Decimal[1] && value2Decimal[1].length) || 0;
-    const multiplier = 10 ** Math.max(value1DecimalLength, value2DecimalLength);
+  if (v1 % 1 !== 0 || v2 % 1 !== 0) {
+    const v1Decimal = v1.toString().split('.');
+    const v2Decimal = v2.toString().split('.');
+    const v1DecimalLength = (v1Decimal[1] && v1Decimal[1].length) || 0;
+    const v2DecimalLength = (v2Decimal[1] && v2Decimal[1].length) || 0;
+    const multiplier = 10 ** Math.max(v1DecimalLength, v2DecimalLength);
 
     // Transform the decimals to integers based on the precision
-    value1 = Math.round(value1 * multiplier);
-    value2 = Math.round(value2 * multiplier);
+    v1 = Math.round(v1 * multiplier);
+    v2 = Math.round(v2 * multiplier);
 
     // Perform the operation on integers values to make sure we don't get a fancy decimal value
-    result = operator === '+' ? value1 + value2 : value1 - value2;
+    result = operator === '+' ? v1 + v2 : v1 - v2;
 
     // Transform the integer result back to decimal
     result /= multiplier;

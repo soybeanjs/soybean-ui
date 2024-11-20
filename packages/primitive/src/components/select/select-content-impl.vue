@@ -20,7 +20,8 @@ import SelectPopperPosition from './select-popper-position.vue';
 import type { SelectContentEmits, SelectContentPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SelectContentImpl'
+  name: 'SelectContentImpl',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<SelectContentPropsWithPrimitive>(), {

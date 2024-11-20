@@ -9,7 +9,8 @@ import { injectHoverCardRootContext } from './context';
 import { getTabbableNodes } from './shared';
 
 defineOptions({
-  name: 'HoverCardContentImpl'
+  name: 'HoverCardContentImpl',
+  inheritAttrs: false
 });
 
 const props = defineProps<HoverCardContentImplProps>();

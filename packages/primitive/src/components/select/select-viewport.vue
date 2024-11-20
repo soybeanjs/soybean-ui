@@ -7,7 +7,8 @@ import { CONTENT_MARGIN } from './shared';
 import type { SelectViewportPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SelectViewport'
+  name: 'SelectViewport',
+  inheritAttrs: false
 });
 
 const props = defineProps<SelectViewportPropsWithPrimitive>();

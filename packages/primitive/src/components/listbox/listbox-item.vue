@@ -9,7 +9,8 @@ import { valueComparator } from './shared';
 import type { ListboxItemEmits, ListboxItemPropsWithPrimitive, SelectEvent } from './types';
 
 defineOptions({
-  name: 'ListboxItem'
+  name: 'ListboxItem',
+  inheritAttrs: false
 });
 
 const LISTBOX_SELECT = 'listbox.select';

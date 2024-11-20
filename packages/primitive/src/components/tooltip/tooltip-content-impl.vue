@@ -11,7 +11,8 @@ import { TOOLTIP_OPEN } from './shared';
 import type { TooltipContentEmits, TooltipContentPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'TooltipContentImpl'
+  name: 'TooltipContentImpl',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<TooltipContentPropsWithPrimitive>(), {
