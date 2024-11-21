@@ -31,7 +31,7 @@ export const selectVariants = tv({
     position: {
       popper: {
         content: `data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1`,
-        viewport: `h-[--reka-select-trigger-height] w-full min-w-[--reka-select-trigger-width]`
+        viewport: `h-[--soybean-select-trigger-height] w-full min-w-[--soybean-select-trigger-width]`
       },
       'item-aligned': ''
     },

@@ -8,7 +8,7 @@ import { provideTabsRootContext } from './context';
 import type { TabsRootEmits, TabsRootPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SoybeanTabsRoot'
+  name: 'TabsRoot'
 });
 
 const props = withDefaults(defineProps<TabsRootPropsWithPrimitive<T>>(), {
@@ -50,7 +50,7 @@ provideTabsRootContext({
 </script>
 
 <template>
-  <Primitive :dir="dir" :data-orientation="orientation" :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :dir="dir" :data-orientation="orientation">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

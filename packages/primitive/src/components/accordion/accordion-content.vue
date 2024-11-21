@@ -8,7 +8,7 @@ defineOptions({
   name: 'AccordionContent'
 });
 
-const { class: className } = defineProps<AccordionContentPropsWithPrimitive>();
+const props = defineProps<AccordionContentPropsWithPrimitive>();
 
 const { orientation, changeModelValue } = injectAccordionRootContext();
 const { triggerId, dataState, dataDisabled, value } = injectAccordionItemContext();
@@ -23,14 +23,13 @@ useForwardExpose();
 <template>
   <CollapsibleContent
     role="region"
-    :class="className"
-    :as
-    :as-child
-    :force-mount
+    :class="props.class"
+    :as-child="asChild"
+    :force-mount="forceMount"
     :aria-labelledby="triggerId"
+    :data-state="dataState"
+    :data-disabled="dataDisabled"
     :data-orientation="orientation"
-    :data-state
-    :data-disabled
     style="
       --soybean-accordion-content-width: var(--soybean-collapsible-content-width);
       --soybean-accordion-content-height: var(--soybean-collapsible-content-height);

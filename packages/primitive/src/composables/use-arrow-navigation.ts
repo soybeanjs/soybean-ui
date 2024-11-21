@@ -13,7 +13,7 @@ interface ArrowNavigationOptions {
   /**
    * The attribute name to find the collection items in the parent element.
    *
-   * @defaultValue 'data-reka-collection-item'
+   * @defaultValue 'data-soybean-collection-item'
    */
   attributeName?: string;
 
@@ -66,7 +66,7 @@ interface ArrowNavigationOptions {
 const ignoredElement = ['INPUT', 'TEXTAREA'];
 
 /**
- * Allow arrow navigation for every html element with data-reka-collection-item tag
+ * Allow arrow navigation for every html element with data-soybean-collection-item tag
  *
  * @param e Keyboard event
  * @param currentElement Event initiator element or any element that wants to handle the navigation

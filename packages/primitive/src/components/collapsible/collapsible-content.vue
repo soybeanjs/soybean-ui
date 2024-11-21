@@ -22,8 +22,6 @@ const { contentId, open, dataDisabled, dataState, unmountOnHide, initContentId, 
   injectCollapsibleRootContext();
 initContentId();
 
-const present = computed(() => forceMount || open.value);
-
 const width = ref(0);
 const height = ref(0);
 
@@ -33,14 +31,10 @@ const isOpen = computed(() => open.value);
 const isMountAnimationPrevented = ref(isOpen.value);
 const currentStyle = ref<Record<string, string>>();
 
-const hidden = computed(() => {
-  if (present.value) return undefined;
+const presentPresent = computed(() => forceMount || open.value);
 
-  if (unmountOnHide.value) return '';
-
-  return 'until-found';
-});
 const skipAnimation = computed(() => isMountAnimationPrevented.value && open.value);
+
 const dataStateValue = computed(() => (skipAnimation.value ? undefined : dataState.value));
 
 async function handleAnimation() {
@@ -86,23 +80,23 @@ useEventListener(currentElement, 'beforematch', () => {
 </script>
 
 <template>
-  <Presence ref="presentRef" :present force-mount>
+  <Presence ref="presentRef" v-slot="{ present }" :present="presentPresent" :force-mount="true">
     <Primitive
       v-bind="$attrs"
       :id="contentId"
       :ref="forwardRef"
       :class="className"
-      :as-child
-      :as
-      :hidden
+      :as="as"
+      :as-child="asChild"
+      :hidden="!present ? (unmountOnHide ? '' : 'until-found') : undefined"
       :data-state="dataStateValue"
-      :data-disabled
+      :data-disabled="dataDisabled"
       :style="{
         [`--soybean-collapsible-content-height`]: `${height}px`,
         [`--soybean-collapsible-content-width`]: `${width}px`
       }"
     >
-      <slot />
+      <slot v-if="unmountOnHide ? present : true" />
     </Primitive>
   </Presence>
 </template>

@@ -9,28 +9,20 @@ defineOptions({
   name: 'AccordionItem'
 });
 
-const { class: className, value, disabled } = defineProps<AccordionItemPropsWithPrimitive>();
+const props = defineProps<AccordionItemPropsWithPrimitive>();
 
-const {
-  isSingle,
-  modelValue,
-  disabled: rootDisabled,
-  parentElement,
-  collapsible,
-  orientation,
-  direction,
-  unmountOnHide
-} = injectAccordionRootContext();
 const { currentRef, currentElement } = useForwardExpose();
+const { isSingle, modelValue, disabled, parentElement, collapsible, orientation, direction, unmountOnHide } =
+  injectAccordionRootContext();
 
 const open = computed(() => {
   return isSingle.value
-    ? value === modelValue.value
-    : Array.isArray(modelValue.value) && modelValue.value.includes(value);
+    ? props.value === modelValue.value
+    : Array.isArray(modelValue.value) && modelValue.value.includes(props.value);
 });
 
 const propDisabled = computed(() => {
-  return rootDisabled.value || disabled || (isSingle.value && open.value && !collapsible.value);
+  return disabled.value || props.disabled || (isSingle.value && open.value && !collapsible.value);
 });
 
 function handleArrowKey(e: KeyboardEvent) {
@@ -46,7 +38,7 @@ const { dataState, dataDisabled } = provideAccordionItemContext({
   disabled: propDisabled,
   currentRef,
   currentElement,
-  value: computed(() => value)
+  value: computed(() => props.value)
 });
 
 defineExpose({ open, dataDisabled });
@@ -54,14 +46,14 @@ defineExpose({ open, dataDisabled });
 
 <template>
   <CollapsibleRoot
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :disabled="propDisabled"
-    :open
+    :open="open"
+    :data-state="dataState"
+    :data-disabled="dataDisabled"
     :data-orientation="orientation"
-    :data-state
-    :data-disabled
     :unmount-on-hide="unmountOnHide"
     @keydown.up.down.left.right.home.end="handleArrowKey"
   >

@@ -1,11 +1,19 @@
-import { getCurrentInstance } from 'vue';
+import { computed, getCurrentInstance, ref } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
-import { usePrimitiveElement } from './use-primitive-element';
+import { unrefElement } from '@vueuse/core';
+import type { MaybeComputedElementRef, MaybeElement } from '@vueuse/core';
 
 export function useForwardExpose<T extends ComponentPublicInstance>() {
   const instance = getCurrentInstance()!;
 
-  const { primitiveElement: currentRef, currentElement } = usePrimitiveElement<T | Element | null>();
+  const currentRef = ref<Element | T | null>();
+  const currentElement = computed<HTMLElement>(() => {
+    // $el could be text/comment for non-single root normal or text root, thus we retrieve the nextElementSibling
+
+    return ['#text', '#comment'].includes((currentRef.value as ComponentPublicInstance)?.$el.nodeName)
+      ? (currentRef.value as ComponentPublicInstance)?.$el.nextElementSibling
+      : unrefElement(currentRef as MaybeComputedElementRef<MaybeElement>);
+  });
 
   // Do give us credit if you reference our code
   // localExpose should only be assigned once else will create infinite loop

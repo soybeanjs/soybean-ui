@@ -7,7 +7,7 @@ import { injectTabsRootContext } from './context';
 import type { TabsIndicatorPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SoybeanTabsIndicator'
+  name: 'TabsIndicator'
 });
 
 const props = defineProps<TabsIndicatorPropsWithPrimitive>();

@@ -8,7 +8,9 @@ defineOptions({
   name: 'AccordionHeader'
 });
 
-const { class: className, as = 'h3' } = defineProps<AccordionHeaderPropsWithPrimitive>();
+const props = withDefaults(defineProps<AccordionHeaderPropsWithPrimitive>(), {
+  as: 'h3'
+});
 
 const { orientation } = injectAccordionRootContext();
 const { dataState, dataDisabled } = injectAccordionItemContext();
@@ -17,7 +19,14 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-orientation="orientation" :data-state :data-disabled>
+  <Primitive
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :data-orientation="orientation"
+    :data-state="dataState"
+    :data-disabled="dataDisabled"
+  >
     <slot />
   </Primitive>
 </template>

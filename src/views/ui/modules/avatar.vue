@@ -6,7 +6,7 @@ defineOptions({
   name: 'AvatarDemo'
 });
 
-const rekaUiRsc = 'https://reka-ui.com/logo.svg';
+const soybeanUiRsc = 'https://soybean-ui.com/logo.svg';
 
 const soybeanSrc = 'https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png';
 
@@ -16,8 +16,8 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 <template>
   <div class="py-12px text-18px">Default</div>
   <div class="flex gap-12px">
-    <SAvatar :src="rekaUiRsc" alt="RekaUI" fallback-label="CN" />
-    <SAvatar :src="rekaUiRsc" alt="RekaUI">
+    <SAvatar :src="soybeanUiRsc" alt="RekaUI" fallback-label="CN" />
+    <SAvatar :src="soybeanUiRsc" alt="RekaUI">
       <template #fallback>RekaUI</template>
     </SAvatar>
   </div>

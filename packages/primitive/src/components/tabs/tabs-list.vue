@@ -7,7 +7,7 @@ import { injectTabsRootContext } from './context';
 import type { TabsListPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SoybeanTabsList'
+  name: 'TabsList'
 });
 
 const props = withDefaults(defineProps<TabsListPropsWithPrimitive>(), {
@@ -24,7 +24,14 @@ context.tabsList = currentElement;
 
 <template>
   <RovingFocusGroup as-child :orientation="context.orientation.value" :dir="context.dir.value" :loop="loop">
-    <Primitive :ref="forwardRef" role="tablist" :as-child :as :aria-orientation="context.orientation.value">
+    <Primitive
+      :ref="forwardRef"
+      :class="props.class"
+      role="tablist"
+      :as="as"
+      :as-child="asChild"
+      :aria-orientation="context.orientation.value"
+    >
       <slot />
     </Primitive>
   </RovingFocusGroup>

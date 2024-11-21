@@ -39,21 +39,23 @@ defineOptions({
   name: 'SplitterGroup'
 });
 
-const defaultStorage: PanelGroupStorage = {
-  getItem: (name: string) => {
-    initializeDefaultStorage(defaultStorage);
-    return defaultStorage.getItem(name);
-  },
-  setItem: (name: string, value: string) => {
-    initializeDefaultStorage(defaultStorage);
-    defaultStorage.setItem(name, value);
-  }
-};
-
 const props = withDefaults(defineProps<SplitterGroupPropsWithPrimitive>(), {
   autoSaveId: null,
   keyboardResizeBy: 10,
-  storage: () => defaultStorage
+  storage: () => {
+    const defaultStorage: PanelGroupStorage = {
+      getItem: (name: string) => {
+        initializeDefaultStorage(defaultStorage);
+        return defaultStorage.getItem(name);
+      },
+      setItem: (name: string, value: string) => {
+        initializeDefaultStorage(defaultStorage);
+        defaultStorage.setItem(name, value);
+      }
+    };
+
+    return defaultStorage;
+  }
 });
 
 const emit = defineEmits<SplitterGroupEmits>();

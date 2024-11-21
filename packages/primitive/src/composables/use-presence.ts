@@ -33,7 +33,7 @@ export function usePresence(present: Ref<boolean>, node: Ref<HTMLElement | undef
     if (!isClient) return;
 
     // We only dispatch this event because CustomEvent is not available in Node18
-    // https://github.com/unovue/reka-ui/issues/930
+    // https://github.com/unovue/radix-vue/issues/930
     const customEvent = new CustomEvent(name, { bubbles: false, cancelable: false });
     node.value?.dispatchEvent(customEvent);
   }

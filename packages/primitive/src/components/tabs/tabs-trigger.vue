@@ -8,7 +8,7 @@ import { injectTabsRootContext } from './context';
 import { makeContentId, makeTriggerId } from './shared';
 
 defineOptions({
-  name: 'SoybeanTabsTrigger'
+  name: 'TabsTrigger'
 });
 
 const props = withDefaults(defineProps<TabsTriggerPropsWithPrimitive>(), {
@@ -30,10 +30,11 @@ const isSelected = computed(() => props.value === rootContext.modelValue.value);
     <Primitive
       :id="triggerId"
       :ref="forwardRef"
+      :class="props.class"
       role="tab"
+      :as="as"
+      :as-child="asChild"
       :type="as === 'button' ? 'button' : undefined"
-      :as
-      :as-child
       :aria-selected="isSelected ? 'true' : 'false'"
       :aria-controls="contentId"
       :data-state="isSelected ? 'active' : 'inactive'"

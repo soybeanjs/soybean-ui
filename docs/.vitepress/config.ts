@@ -5,7 +5,7 @@ import type { CustomThemeConfig } from './types';
 
 export default defineConfigWithTheme<CustomThemeConfig>({
   title: 'Soybean UI',
-  description: 'an elegant and powerful ui library like shadcn based on reka-ui',
+  description: 'an elegant and powerful ui library like shadcn',
   head: [
     ['meta', { name: 'author', content: 'Soybean' }],
     [

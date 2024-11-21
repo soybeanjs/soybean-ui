@@ -56,6 +56,9 @@ defineExpose({
   >
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :style="{
         /**
          * When horizontal scrollbar is visible: this element should be at least
@@ -66,8 +69,6 @@ defineExpose({
          */
         minWidth: rootContext.scrollbarXEnabled.value ? 'fit-content' : undefined
       }"
-      :as-child="props.asChild"
-      :as
     >
       <slot />
     </Primitive>

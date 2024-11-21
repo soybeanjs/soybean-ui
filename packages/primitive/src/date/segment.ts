@@ -32,13 +32,13 @@ export function isAcceptableSegmentKey(key: string) {
 }
 
 export function getSegmentElements(parentElement: HTMLElement): Element[] {
-  return Array.from(parentElement.querySelectorAll('[data-reka-date-field-segment]')).filter(
-    item => item.getAttribute('data-reka-date-field-segment') !== 'literal'
+  return Array.from(parentElement.querySelectorAll('[data-soybean-date-field-segment]')).filter(
+    item => item.getAttribute('data-soybean-date-field-segment') !== 'literal'
   );
 }
 
 export function getTimeFieldSegmentElements(parentElement: HTMLElement): Element[] {
-  return Array.from(parentElement.querySelectorAll('[data-reka-time-field-segment]')).filter(
-    item => item.getAttribute('data-reka-time-field-segment') !== 'literal'
+  return Array.from(parentElement.querySelectorAll('[data-soybean-time-field-segment]')).filter(
+    item => item.getAttribute('data-soybean-time-field-segment') !== 'literal'
   );
 }

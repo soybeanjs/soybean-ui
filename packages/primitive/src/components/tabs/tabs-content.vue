@@ -8,7 +8,7 @@ import { injectTabsRootContext } from './context';
 import type { TabsContentPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'SoybeanTabsContent'
+  name: 'TabsContent'
 });
 
 const props = defineProps<TabsContentPropsWithPrimitive>();
@@ -34,9 +34,10 @@ onMounted(() => {
     <Primitive
       :id="contentId"
       :ref="forwardRef"
-      :as-child
-      :as
+      :class="props.class"
       role="tabpanel"
+      :as="as"
+      :as-child="asChild"
       :data-state="isSelected ? 'active' : 'inactive'"
       :data-orientation="rootContext.orientation.value"
       :aria-labelledby="triggerId"

@@ -2,7 +2,7 @@
   "name": "@soybean-ui/example",
   "type": "module",
   "version": "0.0.1",
-  "description": "soybean-ui is an ui library for Vue3, which is based on reka-ui and UnoCSS.",
+  "description": "soybean-ui is an ui library like shadcn for Vue3.",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",

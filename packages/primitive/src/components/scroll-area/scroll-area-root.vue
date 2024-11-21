@@ -92,8 +92,8 @@ provideScrollAreaRootContext({
 <template>
   <Primitive
     :ref="forwardRef"
-    :as-child="props.asChild"
-    :as
+    :as="as"
+    :as-child="asChild"
     :dir="dir"
     :style="{
       position: 'relative',

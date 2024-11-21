@@ -28,11 +28,11 @@ button/
 - 样式变体定义统一在 `packages/ui-variants/src/variants` 目录下
 
 ### 2.2 组件封装规范
-根据 reka-ui 组件的使用场景，分为两种封装方式:
+根据 soybean-ui 组件的使用场景，分为两种封装方式:
 
 1. 直接导出:
 - 当不需要修改原组件的样式和行为时
-- 在 `index.ts` 中直接从 reka-ui 导出
+- 在 `index.ts` 中直接从 soybean-ui 导出
 
 2. 二次封装:
 - 需要修改样式或添加新属性时
@@ -40,7 +40,7 @@ button/
 - 使用 `useForwardProps` 或 `useForwardPropsEmits` 继承原组件属性
 
 ### 2.3 类型规范
-- 继承 reka-ui 组件类型时需要排除 `as` 和 `asChild` 属性:
+- 继承 soybean-ui 组件类型时需要排除 `as` 和 `asChild` 属性:
 ```typescript
 export type ButtonProps = ClassValueProp & Omit<_ButtonProps, 'as' | 'asChild'>;
 ```

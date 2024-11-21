@@ -7,9 +7,10 @@ defineOptions({
   name: 'AccordionTrigger'
 });
 
-const { class: className } = defineProps<AccordionTriggerPropsWithPrimitive>();
+const props = defineProps<AccordionTriggerPropsWithPrimitive>();
 
 const { orientation, changeModelValue } = injectAccordionRootContext();
+
 const { dataState, dataDisabled, value, triggerId, currentRef, disabled, open, initTriggerId } =
   injectAccordionItemContext();
 initTriggerId();
@@ -25,15 +26,15 @@ function changeItem() {
   <CollapsibleTrigger
     :id="triggerId"
     :ref="currentRef"
-    :class="className"
-    :as
-    :as-child
-    data-soybean-accordion-trigger
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-disabled="disabled || undefined"
     :aria-expanded="open || false"
+    :data-state="dataState"
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
-    :data-state="dataState"
+    data-soybean-accordion-trigger
     :disabled="disabled"
     @click="changeItem"
   >

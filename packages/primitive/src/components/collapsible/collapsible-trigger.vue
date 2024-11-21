@@ -9,26 +9,28 @@ defineOptions({
   name: 'CollapsibleTrigger'
 });
 
-const { class: className, as = 'button' } = defineProps<CollapsibleTriggerPropsWithPrimitive>();
+const props = withDefaults(defineProps<CollapsibleTriggerPropsWithPrimitive>(), {
+  as: 'button'
+});
 
 const { contentId, open, disabled, dataState, dataDisabled, onOpenToggle } = injectCollapsibleRootContext();
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 useForwardExpose();
 </script>
 
 <template>
   <Primitive
-    :class="className"
+    :class="props.class"
     :type="tag"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     :aria-controls="contentId"
     :aria-expanded="open"
-    :data-state
-    :data-disabled
-    :disabled
+    :data-state="dataState"
+    :data-disabled="dataDisabled"
+    :disabled="disabled"
     @click="onOpenToggle"
   >
     <slot />
