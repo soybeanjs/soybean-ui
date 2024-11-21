@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { providePopoverRootContext } from './context';
-import type { PopoverRootProps } from './types';
+import type { PopoverRootEmits, PopoverRootProps } from './types';
 
 defineOptions({
   name: 'PopoverRoot'
@@ -14,11 +16,14 @@ const props = withDefaults(defineProps<PopoverRootProps>(), {
   modal: false
 });
 
+const emit = defineEmits<PopoverRootEmits>();
+
 const { modal } = toRefs(props);
 
-const open = defineModel<boolean>('open', {
-  default: props.defaultOpen
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const triggerElement = ref<HTMLElement>();
 const hasCustomAnchor = ref(false);

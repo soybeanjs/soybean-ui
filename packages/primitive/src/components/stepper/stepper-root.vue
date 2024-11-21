@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs, watch } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose } from '../../composables';
-import type { StepperRootPropsWithPrimitive } from './types';
 import { provideStepperRootContext } from './context';
+import type { StepperRootEmits, StepperRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'StepperRoot'
@@ -15,13 +16,18 @@ const props = withDefaults(defineProps<StepperRootPropsWithPrimitive>(), {
   defaultValue: 1
 });
 
+const emit = defineEmits<StepperRootEmits>();
+
 const { dir: propDir, orientation: propOrientation, linear } = toRefs(props);
 const dir = useDirection(propDir);
 useForwardExpose();
 
 const totalStepperItems = ref<Set<HTMLElement>>(new Set());
 
-const modelValue = defineModel<number>({ default: props.defaultValue });
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+});
 
 const totalStepperItemsArray = computed(() => Array.from(totalStepperItems.value));
 

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes, Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useFormControl, useLocale, usePrimitiveElement } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { clamp, snapValueToStep } from '../../shared';
 import { handleDecimalOperation, useNumberFormatter, useNumberParser } from './shared';
-import type { NumberFieldRootPropsWithPrimitive } from './types';
 import { provideNumberFieldRootContext } from './context';
+import type { NumberFieldRootEmits, NumberFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NumberFieldRoot',
@@ -19,9 +20,15 @@ const props = withDefaults(defineProps<NumberFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
   step: 1
 });
+
+const emit = defineEmits<NumberFieldRootEmits>();
+
 const { disabled, min, max, step, formatOptions, id, locale: propLocale } = toRefs(props);
 
-const modelValue = defineModel<number>({ default: props.defaultValue });
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<number>;
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 

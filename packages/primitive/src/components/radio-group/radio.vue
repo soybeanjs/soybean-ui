@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { useFormControl, useForwardExpose } from '../../composables';
@@ -19,7 +20,9 @@ const props = withDefaults(defineProps<RadioPropsWithPrimitive>(), {
 
 const emit = defineEmits<RadioEmits>();
 
-const checked = defineModel<boolean>('checked');
+const checked = useVModel(props, 'checked', emit, {
+  passive: (props.checked === undefined) as false
+});
 
 const { value } = toRefs(props);
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();

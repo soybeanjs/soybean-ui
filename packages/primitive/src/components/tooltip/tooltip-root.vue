@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core';
 import { computed, ref, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useTimeoutFn, useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { useForwardExpose } from '../../composables';
-import type { TooltipRootPropsWithPrimitive } from './types';
+import type { TooltipRootEmits, TooltipRootPropsWithPrimitive } from './types';
 import { injectTooltipProviderContext, provideTooltipRootContext } from './context';
 import { TOOLTIP_OPEN } from './shared';
 
@@ -21,6 +22,8 @@ const props = withDefaults(defineProps<TooltipRootPropsWithPrimitive>(), {
   ignoreNonKeyboardFocus: undefined
 });
 
+const emit = defineEmits<TooltipRootEmits>();
+
 useForwardExpose();
 const providerContext = injectTooltipProviderContext();
 
@@ -37,7 +40,10 @@ const ignoreNonKeyboardFocus = computed(
   () => props.ignoreNonKeyboardFocus ?? providerContext.ignoreNonKeyboardFocus.value
 );
 
-const open = defineModel<boolean>('open', { default: props.defaultOpen });
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 watch(open, isOpen => {
   if (!providerContext.onClose) return;

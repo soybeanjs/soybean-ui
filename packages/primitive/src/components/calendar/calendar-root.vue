@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted, toRefs, watch } from 'vue';
+import type { WritableComputedRef } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { isEqualDay, isSameDay } from '@internationalized/date';
 import type { DateValue } from '../../date';
 import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
 import { Primitive } from '../primitive';
 import { provideCalendarRootContext } from './context';
-import type { CalendarRootPropsWithPrimitive } from './types';
+import type { CalendarRootEmits, CalendarRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'CalendarRoot'
@@ -29,6 +31,8 @@ const props = withDefaults(defineProps<CalendarRootPropsWithPrimitive>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined
 });
+
+const emit = defineEmits<CalendarRootEmits>();
 
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 
@@ -58,8 +62,9 @@ const {
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
 
-const modelValue = defineModel<DateValue | DateValue[] | undefined>('modelValue', {
-  default: defaultValue.value
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: defaultValue.value,
+  passive: (props.modelValue === undefined) as false
 });
 
 const defaultDate = getDefaultDate({
@@ -67,9 +72,10 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value
 });
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: props.defaultPlaceholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as WritableComputedRef<DateValue>;
 
 function onPlaceholderChange(value: DateValue) {
   placeholder.value = value.copy();

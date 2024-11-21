@@ -1,13 +1,14 @@
 <script setup lang="ts" generic="T extends Record<string, any>, U extends Record<string, any>">
 import { computed, nextTick, ref, toRefs } from 'vue';
-import { createEventHook } from '@vueuse/core';
+import type { Ref } from 'vue';
+import { createEventHook, useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
 import type { NavigationKeys } from '../../types';
 import { flatten } from '../../shared';
-import type { FlattenedItem, TreeRootContext, TreeRootProps } from './types';
+import type { FlattenedItem, TreeRootContext, TreeRootEmits, TreeRootProps } from './types';
 import { provideTreeRootContext } from './context';
 
 defineOptions({
@@ -20,6 +21,8 @@ const props = withDefaults(defineProps<TreeRootProps<T, U>>(), {
   getChildren: (val: T) => val.children
 });
 
+const emit = defineEmits<TreeRootEmits>();
+
 const { items, multiple, disabled, propagateSelect, dir: propDir } = toRefs(props);
 const { handleTypeAheadSearch } = useTypeAhead();
 const dir = useDirection(propDir);
@@ -29,10 +32,17 @@ const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 const isVirtual = ref(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
-const modelValue = defineModel<U | U[]>({ default: props.defaultValue ?? (multiple.value ? [] : undefined) });
+const modelValue = useVModel<TreeRootProps<T, U>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
+  passive: (props.modelValue === undefined) as false,
+  deep: true
+}) as Ref<U | U[]>;
 
-const expanded = defineModel<string[]>({ default: props.defaultExpanded ?? [] });
-
+const expanded = useVModel<TreeRootProps<T, U>, 'expanded', 'update:expanded'>(props, 'expanded', emit, {
+  defaultValue: props.defaultExpanded ?? [],
+  passive: (props.expanded === undefined) as false,
+  deep: true
+}) as Ref<string[]>;
 const { onSelectItem, handleMultipleReplace } = useSelectionBehavior(modelValue, props);
 
 const selectedKeys = computed(() => {

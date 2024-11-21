@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { usePrimitiveElement } from '../../composables';
 import { injectListboxRootContext } from './context';
-import type { ListboxFilterPropsWithPrimitive } from './types';
+import type { ListboxFilterEmits, ListboxFilterPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ListboxFilter'
@@ -13,8 +14,10 @@ const props = withDefaults(defineProps<ListboxFilterPropsWithPrimitive>(), {
   as: 'input'
 });
 
-const modelValue = defineModel<string>({
-  default: ''
+const emit = defineEmits<ListboxFilterEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  passive: (props.modelValue === undefined) as false
 });
 
 const rootContext = injectListboxRootContext();

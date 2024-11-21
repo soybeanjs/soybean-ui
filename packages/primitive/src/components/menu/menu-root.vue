@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { useIsUsingKeyboard } from '../../composables/use-is-using-keyboard';
 import { useDirection } from '../../composables';
 import { provideMenuContext, provideMenuRootContext } from './context';
-import type { MenuRootProps } from './types';
+import type { MenuRootEmits, MenuRootProps } from './types';
 
 defineOptions({
   name: 'MenuRoot'
@@ -15,7 +16,10 @@ const props = withDefaults(defineProps<MenuRootProps>(), {
   modal: true
 });
 
-const open = defineModel<boolean>('open', { default: false });
+const emit = defineEmits<MenuRootEmits>();
+
+const open = useVModel(props, 'open', emit);
+
 const isUsingKeyboardRef = useIsUsingKeyboard();
 
 const { modal, dir: propDir } = toRefs(props);

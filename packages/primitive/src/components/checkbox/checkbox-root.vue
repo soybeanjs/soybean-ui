@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import type { Ref } from 'vue';
 import { computed } from 'vue';
+import { useVModel } from '@vueuse/core';
 import isEqual from 'fast-deep-equal';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { isValueEqualOrExist } from '../../shared';
@@ -8,23 +10,25 @@ import { RovingFocusItem } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { injectCheckboxGroupRootContext, provideCheckboxRootContext } from './context';
 import { getCheckedState, isIndeterminate } from './shared';
-import type { CheckboxRootPropsWithPrimitive, CheckedState } from './types';
+import type { CheckboxRootEmits, CheckboxRootPropsWithPrimitive, CheckedState } from './types';
 
 defineOptions({
   name: 'CheckboxRoot',
   inheritAttrs: false
 });
 
-const {
-  class: className,
-  as = 'button',
-  defaultValue = false,
-  value = 'on',
-  id,
-  ...delegatedProps
-} = defineProps<CheckboxRootPropsWithPrimitive>();
+const props = withDefaults(defineProps<CheckboxRootPropsWithPrimitive>(), {
+  defaultValue: false,
+  value: 'on',
+  as: 'button'
+});
 
-const modelValue = defineModel<CheckedState>('modelValue', { default: defaultValue });
+const emit = defineEmits<CheckboxRootEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? false,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<CheckedState>;
 
 const { forwardRef, currentElement } = useForwardExpose();
 const checkboxGroupContext = injectCheckboxGroupRootContext(null);
@@ -32,20 +36,20 @@ const checkboxGroupContext = injectCheckboxGroupRootContext(null);
 const isFormControl = useFormControl(currentElement);
 
 const ariaLabel = computed(() => {
-  if (!id || !currentElement.value) {
+  if (!props.id || !currentElement.value) {
     return undefined;
   }
 
-  return (document.querySelector(`[for="${id}"]`) as HTMLLabelElement)?.textContent;
+  return (document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.textContent;
 });
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
-const disabled = computed(() => checkboxGroupContext?.disabled.value || delegatedProps.disabled);
+const disabled = computed(() => checkboxGroupContext?.disabled.value || props.disabled);
 
 const checkboxState = computed<CheckedState>(() => {
   if (checkboxGroupContext?.modelValue.value) {
-    return isValueEqualOrExist(checkboxGroupContext.modelValue.value, value);
+    return isValueEqualOrExist(checkboxGroupContext.modelValue.value, props.value);
   }
 
   return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
@@ -59,11 +63,11 @@ provideCheckboxRootContext({
 function handleClick() {
   if (checkboxGroupContext?.modelValue.value) {
     const modelValueArray = [...(checkboxGroupContext.modelValue.value || [])];
-    if (isValueEqualOrExist(modelValueArray, value)) {
-      const index = modelValueArray.findIndex(i => isEqual(i, value));
+    if (isValueEqualOrExist(modelValueArray, props.value)) {
+      const index = modelValueArray.findIndex(i => isEqual(i, props.value));
       modelValueArray.splice(index, 1);
     } else {
-      modelValueArray.push(value);
+      modelValueArray.push(props.value);
     }
     checkboxGroupContext.updateModelValue(modelValueArray);
   } else {
@@ -78,7 +82,7 @@ function handleClick() {
     :is="checkboxGroupContext?.rovingFocus.value ? RovingFocusItem : Primitive"
     :id="id"
     :ref="forwardRef"
-    :class="className"
+    :class="props.class"
     role="checkbox"
     :as
     :as-child

@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, toRefs, watchEffect } from 'vue';
-import { refAutoReset, useDebounceFn } from '@vueuse/core';
+import type { Ref } from 'vue';
+import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useCollection, useDirection, useForwardExpose, useId } from '../../composables';
 import { provideNavigationMenuRootContext } from './context';
-import type { NavigationMenuRootPropsWithPrimitive } from './types';
+import type { NavigationMenuRootEmits, NavigationMenuRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuRoot'
@@ -13,6 +14,7 @@ defineOptions({
 const props = withDefaults(defineProps<NavigationMenuRootPropsWithPrimitive>(), {
   as: 'nav',
   modelValue: undefined,
+  defaultValue: '',
   delayDuration: 200,
   skipDelayDuration: 300,
   orientation: 'horizontal',
@@ -21,7 +23,12 @@ const props = withDefaults(defineProps<NavigationMenuRootPropsWithPrimitive>(), 
   unmountOnHide: true
 });
 
-const modelValue = defineModel<string>({ default: props.defaultValue ?? '' });
+const emit = defineEmits<NavigationMenuRootEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<string>;
 
 const previousValue = ref('');
 

@@ -1,15 +1,20 @@
 <script setup lang="ts">
+import { useVModel } from '@vueuse/core';
 import MenuGroup from './menu-group.vue';
 import { provideMenuRadioGroupContext } from './context';
-import type { MenuRadioGroupPropsWithPrimitive } from './types';
+import type { MenuRadioGroupEmits, MenuRadioGroupPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'MenuRadioGroup'
 });
 
-const props = defineProps<MenuRadioGroupPropsWithPrimitive>();
+const props = withDefaults(defineProps<MenuRadioGroupPropsWithPrimitive>(), {
+  modelValue: ''
+});
 
-const modelValue = defineModel<string>('modelValue', { default: '' });
+const emit = defineEmits<MenuRadioGroupEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit);
 
 provideMenuRadioGroupContext({
   modelValue,

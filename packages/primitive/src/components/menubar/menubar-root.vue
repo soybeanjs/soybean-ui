@@ -1,23 +1,31 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { provideMenubarRootContext } from './context';
-import type { MenubarRootProps } from './types';
+import type { MenubarRootEmits, MenubarRootProps } from './types';
 
 defineOptions({
   name: 'MenubarRoot'
 });
 
 const props = withDefaults(defineProps<MenubarRootProps>(), {
+  defaultValue: '',
   loop: false
 });
+
+const emit = defineEmits<MenubarRootEmits>();
 
 const { forwardRef } = useForwardExpose();
 const { CollectionSlot } = useCollection({ key: 'Menubar', isProvider: true });
 
-const modelValue = defineModel<string>({ default: props.defaultValue ?? '' });
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<string>;
 
 const currentTabStopId = ref<string | null>(null);
 

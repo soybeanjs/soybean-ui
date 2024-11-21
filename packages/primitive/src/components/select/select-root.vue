@@ -1,12 +1,14 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed, ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useFormControl } from '../../composables';
 import { PopperRoot } from '../popper';
 import type { AcceptableValue } from '../../types';
 import { isNullish } from '../../shared';
 import { compare } from './shared';
 import BubbleSelect from './bubble-select.vue';
-import type { SelectOption, SelectRootContext, SelectRootProps } from './types';
+import type { SelectOption, SelectRootContext, SelectRootEmits, SelectRootProps } from './types';
 import { provideSelectRootContext } from './context';
 
 defineOptions({
@@ -19,13 +21,18 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   open: undefined
 });
 
-const modelValue = defineModel<T | T[] | undefined>({
-  default: props.defaultValue ?? (props.multiple ? [] : undefined)
+const emit = defineEmits<SelectRootEmits>();
+
+const modelValue = useVModel<SelectRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? (props.multiple ? [] : undefined),
+  passive: (props.modelValue === undefined) as false,
+  deep: true
 });
 
-const open = defineModel<boolean>('open', {
-  default: props.defaultOpen
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const { required, disabled, multiple, dir: propDir } = toRefs(props);
 

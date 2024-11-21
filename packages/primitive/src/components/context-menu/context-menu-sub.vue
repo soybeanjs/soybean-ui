@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { useVModel } from '@vueuse/core';
 import { MenuSub } from '../menu';
 import { useForwardExpose } from '../../composables';
-import type { ContextMenuSubProps } from './types';
+import type { ContextMenuSubEmits, ContextMenuSubProps } from './types';
 
 defineOptions({
   name: 'ContextMenuSub'
@@ -9,9 +10,13 @@ defineOptions({
 
 const props = defineProps<ContextMenuSubProps>();
 
-const open = defineModel<boolean>('open', {
-  default: props.defaultOpen
+const emit = defineEmits<ContextMenuSubEmits>();
+
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
 });
+
 useForwardExpose();
 </script>
 

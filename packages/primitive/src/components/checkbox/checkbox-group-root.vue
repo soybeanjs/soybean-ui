@@ -1,41 +1,43 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { computed, toRef, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { computed, toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { useDirection, useFormControl, usePrimitiveElement } from '../../composables';
 import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { CheckboxGroupRootPropsWithPrimitive } from './types';
+import type { CheckboxGroupRootPropsWithPrimitive, CheckboxRootEmits } from './types';
 import { provideCheckboxGroupRootContext } from './context';
 
 defineOptions({
   name: 'CheckboxGroupRoot'
 });
 
-const {
-  class: className,
-  rovingFocus = true,
-  defaultValue,
-  ...delegatedProps
-} = defineProps<CheckboxGroupRootPropsWithPrimitive<T>>();
-
-const modelValue = defineModel<T[]>('modelValue', {
-  default: defaultValue
+const props = withDefaults(defineProps<CheckboxGroupRootPropsWithPrimitive<T>>(), {
+  rovingFocus: true
 });
+
+const emit = defineEmits<CheckboxRootEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? [],
+  passive: (props.modelValue === undefined) as false
+}) as Ref<T[]>;
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const isFormControl = useFormControl(currentElement);
 
-const { disabled, dir: propDir } = toRefs(delegatedProps);
+const { disabled, dir: propDir, rovingFocus } = toRefs(props);
 const dir = useDirection(propDir);
 
 const rovingFocusProps = computed(() => {
-  return rovingFocus ? { loop: delegatedProps.loop, dir: dir.value, orientation: delegatedProps.orientation } : {};
+  return props.rovingFocus ? { loop: props.loop, dir: dir.value, orientation: props.orientation } : {};
 });
 
 provideCheckboxGroupRootContext({
   modelValue,
-  rovingFocus: toRef(rovingFocus),
+  rovingFocus,
   disabled
 });
 </script>
@@ -45,7 +47,7 @@ provideCheckboxGroupRootContext({
     :is="rovingFocus ? RovingFocusGroup : Primitive"
     v-bind="rovingFocusProps"
     ref="primitiveElement"
-    :class="className"
+    :class="props.class"
     :as
     :as-child
   >

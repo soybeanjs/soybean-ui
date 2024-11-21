@@ -1,29 +1,35 @@
 <script setup lang="ts">
-import { toRef } from 'vue';
+import { toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { provideCollapsibleRootContext } from './context';
-import type { CollapsibleRootPropsWithPrimitive } from './types';
+import type { CollapsibleRootEmits, CollapsibleRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'CollapsibleRoot'
 });
 
-const {
-  class: className,
-  defaultOpen = false,
-  unmountOnHide = true,
-  disabled
-} = defineProps<CollapsibleRootPropsWithPrimitive>();
-
-const open = defineModel<boolean>('open', {
-  default: defaultOpen
+const props = withDefaults(defineProps<CollapsibleRootPropsWithPrimitive>(), {
+  open: undefined,
+  defaultOpen: false,
+  unmountOnHide: true
 });
+
+const emit = defineEmits<CollapsibleRootEmits>();
+
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
+
+const { disabled, unmountOnHide } = toRefs(props);
 
 const { dataState, dataDisabled } = provideCollapsibleRootContext({
   open,
-  unmountOnHide: toRef(() => unmountOnHide),
-  disabled: toRef(() => disabled)
+  unmountOnHide,
+  disabled
 });
 
 useForwardExpose();
@@ -31,7 +37,7 @@ defineExpose({ open });
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-state :data-disabled>
+  <Primitive :class="props.class" :as :as-child :data-state :data-disabled>
     <slot :open />
   </Primitive>
 </template>

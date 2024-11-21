@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
 import { ref, toRefs } from 'vue';
-import { useFocusWithin } from '@vueuse/core';
+import type { Ref } from 'vue';
+import { useFocusWithin, useVModel } from '@vueuse/core';
 import { useArrowNavigation, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -23,9 +24,11 @@ const emit = defineEmits<TagsInputRootEmits<T>>();
 const { addOnPaste, disabled, delimiter, max, id, dir: propDir, addOnBlur, addOnTab } = toRefs(props);
 const dir = useDirection(propDir);
 
-const modelValue = defineModel<Array<T>>({
-  default: props.defaultValue
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: true,
+  deep: true
+}) as Ref<AcceptableInputValue[]>;
 
 const { forwardRef, currentElement } = useForwardExpose();
 const { focused } = useFocusWithin(currentElement);

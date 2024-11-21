@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { nextTick, ref, toRefs, watch } from 'vue';
-import { createEventHook } from '@vueuse/core';
+import { createEventHook, useVModel } from '@vueuse/core';
 import {
   useCollection,
   useDirection,
@@ -42,9 +42,15 @@ const firstValue = ref<T>();
 const isUserAction = ref(false);
 const focusable = ref(true);
 
-const modelValue = defineModel<T | T[] | undefined>('modelValue', {
-  default: props.defaultValue ?? (multiple.value ? [] : undefined)
-});
+const modelValue = useVModel<ListboxRootPropsWithPrimitive<T>, 'modelValue', 'update:modelValue'>(
+  props,
+  'modelValue',
+  emit,
+  {
+    defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
+    passive: (props.modelValue === undefined) as false
+  }
+);
 
 function onValueChange(val: T) {
   isUserAction.value = true;

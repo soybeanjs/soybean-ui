@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Time, getLocalTimeZone, isEqualDay, toCalendarDateTime, today } from '@internationalized/date';
 import {
   createContent,
@@ -15,20 +17,12 @@ import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement 
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideTimeFieldRootContext } from './context';
-import type { TimeFieldRootPropsWithPrimitive } from './types';
+import type { TimeFieldRootEmits, TimeFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TimeFieldRoot',
   inheritAttrs: false
 });
-
-function convertValue(value: TimeValue, date: DateValue = today(getLocalTimeZone())) {
-  if (value && 'day' in value) {
-    return value;
-  }
-
-  return toCalendarDateTime(date, value);
-}
 
 const props = withDefaults(defineProps<TimeFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
@@ -37,6 +31,8 @@ const props = withDefaults(defineProps<TimeFieldRootPropsWithPrimitive>(), {
   placeholder: undefined,
   isDateUnavailable: undefined
 });
+
+const emit = defineEmits<TimeFieldRootEmits>();
 
 const {
   disabled,
@@ -55,6 +51,13 @@ const formatter = useDateFormatter(locale.value);
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 const segmentElements = ref<Set<HTMLElement>>(new Set());
 
+function convertValue(value: TimeValue, date: DateValue = today(getLocalTimeZone())) {
+  if (value && 'day' in value) {
+    return value;
+  }
+
+  return toCalendarDateTime(date, value);
+}
 const convertedMinValue = computed(() => (minValue.value ? convertValue(minValue.value) : undefined));
 const convertedMaxValue = computed(() => (maxValue.value ? convertValue(maxValue.value) : undefined));
 
@@ -62,9 +65,10 @@ onMounted(() => {
   getTimeFieldSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = defineModel<TimeValue>({
-  default: defaultValue.value
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: defaultValue.value,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<TimeValue>;
 
 const convertedModelValue = computed({
   get() {
@@ -86,9 +90,10 @@ const defaultDate = getDefaultTime({
   defaultValue: modelValue.value
 });
 
-const placeholder = defineModel<TimeValue>({
-  default: props.placeholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<TimeValue>;
 
 const convertedPlaceholder = computed({
   get() {

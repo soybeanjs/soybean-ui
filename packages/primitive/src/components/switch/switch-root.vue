@@ -1,31 +1,35 @@
 <script setup lang="ts">
 import { computed, toRef } from 'vue';
 import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { provideSwitchRootContext } from './context';
-import type { SwitchRootPropsWithPrimitive } from './types';
+import type { SwitchRootEmits, SwitchRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'SwitchRoot',
   inheritAttrs: false
 });
 
-const {
-  class: className,
-  as = 'button',
-  value = 'on',
-  id,
-  ...delegatedProps
-} = defineProps<SwitchRootPropsWithPrimitive>();
+const props = withDefaults(defineProps<SwitchRootPropsWithPrimitive>(), {
+  as: 'button',
+  modelValue: undefined,
+  value: 'on'
+});
 
-const modelValue = defineModel<boolean>('modelValue');
+const emit = defineEmits<SwitchRootEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<boolean>;
 
 const { forwardRef, currentElement } = useForwardExpose();
 const isFormControl = useFormControl(currentElement);
 
-const disabled = toRef(() => delegatedProps.disabled);
+const disabled = toRef(() => props.disabled);
 
 function toggleCheck() {
   if (disabled.value) return;
@@ -34,14 +38,14 @@ function toggleCheck() {
 }
 
 const ariaLabel = computed(() => {
-  if (!id || !currentElement.value) {
+  if (!props.id || !currentElement.value) {
     return undefined;
   }
 
-  return (document.querySelector(`[for="${id}"]`) as HTMLLabelElement)?.textContent;
+  return (document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.textContent;
 });
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 provideSwitchRootContext({
   modelValue: modelValue as Ref<boolean>,
@@ -55,11 +59,11 @@ provideSwitchRootContext({
     :id="id"
     :ref="forwardRef"
     role="switch"
-    :class="className"
+    :class="props.class"
     :type="tag"
-    :as="as"
+    :as
     :as-child="as === 'button'"
-    :value="value"
+    :value
     :aria-label="$attrs['aria-label'] || ariaLabel"
     :aria-checked="modelValue"
     :aria-required="required"

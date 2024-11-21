@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { nextTick, onMounted, watch } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { usePrimitiveElement } from '../../composables';
 import { ListboxFilter, injectListboxRootContext } from '../listbox';
-import type { ComboboxInputPropsWithPrimitive } from './types';
 import { injectComboboxRootContext } from './context';
+import type { ComboboxInputEmits, ComboboxInputPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ComboboxInput'
@@ -12,11 +13,16 @@ defineOptions({
 const props = withDefaults(defineProps<ComboboxInputPropsWithPrimitive>(), {
   as: 'input'
 });
+
+const emit = defineEmits<ComboboxInputEmits>();
+
 const rootContext = injectComboboxRootContext();
 const listboxContext = injectListboxRootContext();
 const { primitiveElement, currentElement } = usePrimitiveElement();
 
-const modelValue = defineModel<string>('modelValue');
+const modelValue = useVModel(props, 'modelValue', emit, {
+  passive: (props.modelValue === undefined) as false
+});
 
 function handleKeyDown(_ev: KeyboardEvent) {
   if (!rootContext.open.value) rootContext.onOpenChange(true);

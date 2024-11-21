@@ -27,9 +27,15 @@ const { multiple, disabled, ignoreFilter, dir: propDir } = toRefs(props);
 
 const dir = useDirection(propDir);
 
-const modelValue = defineModel<T | T[]>('modelValue', {
-  default: (props.defaultValue ?? multiple.value) ? [] : undefined
-});
+const modelValue = useVModel<ComboboxRootPropsWithPrimitive<T>, 'modelValue', 'update:modelValue'>(
+  props,
+  'modelValue',
+  emit,
+  {
+    defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
+    passive: (props.modelValue === undefined) as false
+  }
+);
 
 const open = useVModel(props, 'open', emit, {
   defaultValue: props.defaultOpen,

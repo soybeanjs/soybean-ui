@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
 import type { DateRange, DateValue } from '../../date';
 import { useCalendar, useDirection, useLocale, usePrimitiveElement, useRangeCalendarState } from '../../composables';
@@ -31,7 +32,7 @@ const props = withDefaults(defineProps<RangeCalendarRootPropsWithPrimitive>(), {
   allowNonContiguousRanges: false
 });
 
-const emit = defineEmits<Pick<RangeCalendarRootEmits, 'update:startValue'>>();
+const emit = defineEmits<RangeCalendarRootEmits>();
 
 const {
   disabled,
@@ -62,9 +63,10 @@ const locale = useLocale(propLocale);
 const lastPressedDateValue = ref() as Ref<DateValue | undefined>;
 const focusedValue = ref() as Ref<DateValue | undefined>;
 
-const modelValue = defineModel<DateRange>({
-  default: () => props.defaultValue ?? { start: undefined, end: undefined }
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<DateRange>;
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
@@ -74,9 +76,10 @@ const defaultDate = getDefaultDate({
 const startValue = ref(modelValue.value.start) as Ref<DateValue | undefined>;
 const endValue = ref(modelValue.value.end) as Ref<DateValue | undefined>;
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: props.defaultPlaceholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<DateValue>;
 
 function onPlaceholderChange(value: DateValue) {
   placeholder.value = value.copy();

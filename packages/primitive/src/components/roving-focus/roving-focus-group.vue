@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useCollection, useDirection } from '../../composables';
 import { ENTRY_FOCUS, EVENT_OPTIONS, focusFirst } from './shared';
@@ -10,20 +11,18 @@ defineOptions({
   name: 'RovingFocusGroup'
 });
 
-const {
-  class: className,
-  preventScrollOnEntryFocus = false,
-  defaultCurrentTabStopId,
-  ...delegatedProps
-} = defineProps<RovingFocusGroupPropsWithPrimitive>();
+const props = defineProps<RovingFocusGroupPropsWithPrimitive>();
 
 const emit = defineEmits<RovingFocusGroupEmits>();
 
-const currentTabStopId = defineModel<string | null>('currentTabStopId', { default: defaultCurrentTabStopId });
+const currentTabStopId = useVModel(props, 'currentTabStopId', emit, {
+  defaultValue: props.defaultCurrentTabStopId,
+  passive: (props.currentTabStopId === undefined) as false
+});
 
 const { getItems, CollectionSlot } = useCollection({ isProvider: true });
 
-const { loop, orientation, dir: propDir } = toRefs(delegatedProps);
+const { loop, orientation, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 
 const isTabbingBackOut = ref(false);
@@ -59,7 +58,7 @@ function handleFocus(event: FocusEvent) {
   const currentItem = items.find(item => item.id === currentTabStopId.value);
   const candidateItems = [activeItem, currentItem, ...items].filter(Boolean) as typeof items;
 
-  focusFirst(candidateItems, preventScrollOnEntryFocus);
+  focusFirst(candidateItems, props.preventScrollOnEntryFocus);
 }
 
 function handleMouseUp() {
@@ -94,7 +93,7 @@ defineExpose({
 <template>
   <CollectionSlot>
     <Primitive
-      :class="className"
+      :class="props.class"
       :as
       :as-child
       :tabindex="isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0"

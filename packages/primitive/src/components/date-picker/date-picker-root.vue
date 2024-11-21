@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { isEqualDay, isSameDay } from '@internationalized/date';
 import { getDefaultDate } from '../../date';
 import type { DateValue } from '../../date';
 import { useDirection } from '../../composables';
 import PopoverRoot from '../popover/popover-root.vue';
 import { provideDatePickerRootContext } from './context';
-import type { DateFieldInstance, DatePickerRootProps } from './types';
+import type { DateFieldInstance, DatePickerRootEmits, DatePickerRootProps } from './types';
 
 defineOptions({
   name: 'DatePickerRoot',
@@ -32,6 +34,8 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined
 });
+
+const emit = defineEmits<DatePickerRootEmits>();
 
 const {
   locale,
@@ -61,8 +65,9 @@ const {
 
 const dir = useDirection(propDir);
 
-const modelValue = defineModel<DateValue | undefined>('modelValue', {
-  default: defaultValue.value
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: defaultValue.value,
+  passive: (props.modelValue === undefined) as false
 });
 
 const defaultDate = computed(() =>
@@ -73,13 +78,15 @@ const defaultDate = computed(() =>
   })
 );
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: () => props.defaultPlaceholder ?? defaultDate.value.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.value.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<DateValue>;
 
-const open = defineModel<boolean>('open', {
-  default: defaultOpen.value
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: defaultOpen.value,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const dateFieldRef = ref<DateFieldInstance | undefined>();
 

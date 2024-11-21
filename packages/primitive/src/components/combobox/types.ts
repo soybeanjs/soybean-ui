@@ -6,13 +6,14 @@ import type { TeleportProps } from '../teleport';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type {
+  ListboxFilterEmits,
   ListboxFilterProps,
   ListboxItemEmits,
   ListboxItemIndicatorProps,
   ListboxItemProps,
   ListboxRootProps,
   ListboxVirtualizerProps
-} from '../listbox/types';
+} from '../listbox';
 import type { LabelProps, LabelPropsWithPrimitive } from '../label';
 
 export interface ComboboxRootProps<T = AcceptableValue>
@@ -91,6 +92,7 @@ export interface ComboboxInputProps extends ListboxFilterProps {
   displayValue?: (val: any) => string;
 }
 export type ComboboxInputPropsWithPrimitive = ComboboxInputProps & PrimitiveProps;
+export type ComboboxInputEmits = ListboxFilterEmits;
 
 // ComboboxContentImpl
 export type ComboboxContentPosition = 'inline' | 'popper';

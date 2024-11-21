@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { useDirection, useFormControl, useForwardExpose } from '../../composables';
-import type { AcceptableValue } from '../../types';
-import type { RadioGroupRootPropsWithPrimitive } from './types';
 import { provideRadioGroupRootContext } from './context';
+import type { RadioGroupRootEmits, RadioGroupRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'RadioGroupRoot'
@@ -19,9 +19,14 @@ const props = withDefaults(defineProps<RadioGroupRootPropsWithPrimitive>(), {
   loop: true
 });
 
+const emit = defineEmits<RadioGroupRootEmits>();
+
 const { forwardRef, currentElement } = useForwardExpose();
 
-const modelValue = defineModel<AcceptableValue | undefined>({ default: props.defaultValue });
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+});
 
 const { disabled, loop, orientation, name, required, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);

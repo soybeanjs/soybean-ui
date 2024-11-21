@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
 import {
   createContent,
@@ -16,7 +18,7 @@ import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement 
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideDateFieldRootContext } from './context';
-import type { DateFieldRootPropsWithPrimitive } from './types';
+import type { DateFieldRootEmits, DateFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DateFieldRoot',
@@ -31,6 +33,8 @@ const props = withDefaults(defineProps<DateFieldRootPropsWithPrimitive>(), {
   isDateUnavailable: undefined
 });
 
+const emit = defineEmits<DateFieldRootEmits>();
+
 const {
   disabled,
   readonly,
@@ -41,7 +45,10 @@ const {
   locale: propLocale
 } = toRefs(props);
 
-const modelValue = defineModel<DateValue>({ default: defaultValue.value });
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: defaultValue.value,
+  passive: (props.modelValue === undefined) as false
+});
 
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
@@ -52,9 +59,10 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value
 });
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: () => props.defaultPlaceholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<DateValue>;
 
 const formatter = useDateFormatter(locale.value);
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();

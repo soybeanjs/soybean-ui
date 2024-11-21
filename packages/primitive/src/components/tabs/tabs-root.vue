@@ -1,10 +1,11 @@
 <script setup lang="ts" generic="T extends StringOrNumber = StringOrNumber">
 import { ref, toRefs } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose, useId } from '../../composables';
 import type { StringOrNumber } from '../../types';
 import { provideTabsRootContext } from './context';
-import type { TabsRootPropsWithPrimitive } from './types';
+import type { TabsRootEmits, TabsRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'SoybeanTabsRoot'
@@ -16,11 +17,21 @@ const props = withDefaults(defineProps<TabsRootPropsWithPrimitive<T>>(), {
   unmountOnHide: true
 });
 
+const emit = defineEmits<TabsRootEmits>();
+
 const { orientation, unmountOnHide, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 useForwardExpose();
 
-const modelValue = defineModel<T>({ default: () => props.defaultValue });
+const modelValue = useVModel<TabsRootPropsWithPrimitive<T>, 'modelValue', 'update:modelValue'>(
+  props,
+  'modelValue',
+  emit,
+  {
+    defaultValue: props.defaultValue,
+    passive: (props.modelValue === undefined) as false
+  }
+);
 
 const tabsList = ref<HTMLElement>();
 

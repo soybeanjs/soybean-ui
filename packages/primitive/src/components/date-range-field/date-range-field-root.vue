@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
 import type { DateRange, DateValue, SegmentValueObj } from '../../date';
 import {
@@ -19,7 +20,7 @@ import { Primitive } from '../primitive';
 import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideDateRangeFieldRootContext } from './context';
-import type { DateRangeFieldRootPropsWithPrimitive } from './types';
+import type { DateRangeFieldRootEmits, DateRangeFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'DateRangeFieldRoot',
@@ -33,6 +34,8 @@ const props = withDefaults(defineProps<DateRangeFieldRootPropsWithPrimitive>(), 
   placeholder: undefined,
   isDateUnavailable: undefined
 });
+
+const emit = defineEmits<DateRangeFieldRootEmits>();
 
 const {
   disabled,
@@ -53,9 +56,10 @@ onMounted(() => {
   getSegmentElements(parentElement.value).forEach(item => segmentElements.value.add(item as HTMLElement));
 });
 
-const modelValue = defineModel<DateRange>({
-  default: () => props.defaultValue ?? { start: undefined, end: undefined }
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
+  passive: (props.modelValue === undefined) as false
+}) as Ref<DateRange>;
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
@@ -63,9 +67,10 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: () => props.defaultPlaceholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<DateValue>;
 
 const inferredGranularity = computed(() => {
   if (props.granularity) return !hasTime(placeholder.value) ? 'day' : props.granularity;

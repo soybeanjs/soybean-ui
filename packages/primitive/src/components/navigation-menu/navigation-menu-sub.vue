@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-import type { NavigationMenuSubPropsWithPrimitive } from './types';
 import { injectNavigationMenuRootContext, provideNavigationMenuRootContext } from './context';
+import type { NavigationMenuSubEmits, NavigationMenuSubPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuSub'
 });
 
 const props = withDefaults(defineProps<NavigationMenuSubPropsWithPrimitive>(), {
-  orientation: 'horizontal'
+  orientation: 'horizontal',
+  defaultValue: ''
 });
 
-const modelValue = defineModel<string>({ default: props.defaultValue ?? '' });
+const emit = defineEmits<NavigationMenuSubEmits>();
+
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<string>;
 
 const previousValue = ref('');
 

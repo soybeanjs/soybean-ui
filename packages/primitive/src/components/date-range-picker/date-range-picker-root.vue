@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { getDefaultDate } from '../../date';
 import type { DateRange, DateValue } from '../../date';
 import { useDirection } from '../../composables';
@@ -63,9 +65,10 @@ const {
 
 const dir = useDirection(propsDir);
 
-const modelValue = defineModel<DateRange>('modelValue', {
-  default: () => props.defaultValue ?? { start: undefined, end: undefined }
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
+  passive: (props.modelValue === undefined) as false
+}) as Ref<DateRange>;
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
@@ -73,13 +76,15 @@ const defaultDate = getDefaultDate({
   defaultValue: modelValue.value.start
 });
 
-const placeholder = defineModel<DateValue>('placeholder', {
-  default: () => props.defaultPlaceholder ?? defaultDate.copy()
-});
+const placeholder = useVModel(props, 'placeholder', emit, {
+  defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
+  passive: (props.placeholder === undefined) as false
+}) as Ref<DateValue>;
 
-const open = defineModel<boolean>('open', {
-  default: defaultOpen.value
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: defaultOpen.value,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const dateFieldRef = ref<DateRangeFieldRootInstance | undefined>();
 

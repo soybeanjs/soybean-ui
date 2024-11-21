@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { MenuRoot } from '../menu';
 import { useDirection, useForwardExpose } from '../../composables';
 import { provideDropdownMenuRootContext } from './context';
-import type { DropdownMenuRootProps } from './types';
+import type { DropdownMenuRootEmits, DropdownMenuRootProps } from './types';
 
 defineOptions({
   name: 'DropdownMenuRoot'
@@ -14,18 +16,14 @@ const props = withDefaults(defineProps<DropdownMenuRootProps>(), {
   open: undefined
 });
 
-defineSlots<{
-  default: (props: {
-    /** Current open state */
-    open: typeof open.value;
-  }) => any;
-}>();
+const emit = defineEmits<DropdownMenuRootEmits>();
 
 useForwardExpose();
 
-const open = defineModel<boolean>('open', {
-  default: props.defaultOpen
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.open,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const triggerElement = ref<HTMLElement>();
 

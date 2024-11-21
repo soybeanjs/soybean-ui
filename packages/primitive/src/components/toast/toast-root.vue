@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
 import ToastRootImpl from './toast-root-impl.vue';
@@ -20,7 +22,10 @@ const emit = defineEmits<ToastRootEmits>();
 
 const { forwardRef } = useForwardExpose();
 
-const open = defineModel<boolean>('open', { default: props.defaultOpen });
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.defaultOpen,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 </script>
 
 <template>

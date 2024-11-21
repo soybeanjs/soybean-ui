@@ -1,16 +1,25 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { injectMenuContext, provideMenuContext, provideMenuSubContext } from './context';
-import type { MenuSubProps } from './types';
+import type { MenuSubEmits, MenuSubProps } from './types';
 
 defineOptions({
   name: 'MenuSub'
 });
 
-defineProps<MenuSubProps>();
+const props = withDefaults(defineProps<MenuSubProps>(), {
+  open: undefined
+});
 
-const open = defineModel<boolean>('open', { default: false });
+const emit = defineEmits<MenuSubEmits>();
+
+const open = useVModel(props, 'open', emit, {
+  defaultValue: false,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 const parentMenuContext = injectMenuContext();
 const trigger = ref<HTMLElement>();

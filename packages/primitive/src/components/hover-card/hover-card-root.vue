@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { PopperRoot } from '../popper';
 import { useForwardExpose } from '../../composables';
-import type { HoverCardRootProps } from './types';
+import type { HoverCardRootEmits, HoverCardRootProps } from './types';
 import { provideHoverCardRootContext } from './context';
 
 defineOptions({
@@ -16,11 +18,14 @@ const props = withDefaults(defineProps<HoverCardRootProps>(), {
   closeDelay: 300
 });
 
+const emit = defineEmits<HoverCardRootEmits>();
+
 const { openDelay, closeDelay } = toRefs(props);
 
-const open = defineModel<boolean>('open', {
-  default: props.defaultOpen
-});
+const open = useVModel(props, 'open', emit, {
+  defaultValue: props.open,
+  passive: (props.open === undefined) as false
+}) as Ref<boolean>;
 
 useForwardExpose();
 

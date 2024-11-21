@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose } from '../../composables';
 import { providePinInputRootContext } from './context';
-
 import type { PinInputRootEmits, PinInputRootPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -22,9 +23,10 @@ const { mask, otp, placeholder, type, disabled, dir: propDir } = toRefs(props);
 const { forwardRef } = useForwardExpose();
 const dir = useDirection(propDir);
 
-const modelValue = defineModel<string[]>({
-  default: () => props.defaultValue ?? []
-});
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue ?? [],
+  passive: (props.modelValue === undefined) as false
+}) as Ref<string[]>;
 
 const inputElements = ref<Set<HTMLInputElement>>(new Set());
 function onInputElementChange(el: HTMLInputElement) {

@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, toRaw, toRefs } from 'vue';
+import type { Ref } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { clamp } from '../../shared';
@@ -35,14 +37,17 @@ const props = withDefaults(defineProps<SliderRootPropsWithPrimitive>(), {
 
 const emit = defineEmits<SliderRootEmits>();
 
+const modelValue = useVModel(props, 'modelValue', emit, {
+  defaultValue: props.defaultValue,
+  passive: (props.modelValue === undefined) as false
+}) as Ref<number[]>;
+
 const { min, max, step, minStepsBetweenThumbs, orientation, disabled, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 const { forwardRef, currentElement } = useForwardExpose();
 const isFormControl = useFormControl(currentElement);
 
 const { CollectionSlot } = useCollection({ isProvider: true });
-
-const modelValue = defineModel<number[]>({ default: props.defaultValue });
 
 const valueIndexToChangeRef = ref(0);
 const valuesBeforeSlideStartRef = ref(modelValue.value);
