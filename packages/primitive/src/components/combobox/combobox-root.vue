@@ -15,6 +15,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ComboboxRootPropsWithPrimitive<T>>(), {
+  modelValue: undefined,
   open: undefined,
   resetSearchTermOnBlur: true
 });
@@ -35,7 +36,7 @@ const modelValue = useVModel<ComboboxRootPropsWithPrimitive<T>, 'modelValue', 'u
     defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
     passive: (props.modelValue === undefined) as false
   }
-);
+) as Ref<T | T[]>;
 
 const open = useVModel(props, 'open', emit, {
   defaultValue: props.defaultOpen,

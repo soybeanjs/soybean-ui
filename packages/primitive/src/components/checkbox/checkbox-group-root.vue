@@ -15,6 +15,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CheckboxGroupRootPropsWithPrimitive<T>>(), {
+  modelValue: undefined,
   rovingFocus: true
 });
 

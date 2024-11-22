@@ -17,6 +17,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<DatePickerRootProps>(), {
   defaultValue: undefined,
+  modelValue: undefined,
   defaultOpen: false,
   open: undefined,
   modal: false,

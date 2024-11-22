@@ -23,6 +23,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ListboxRootPropsWithPrimitive<T>>(), {
+  modelValue: undefined,
   selectionBehavior: 'toggle',
   orientation: 'vertical'
 });

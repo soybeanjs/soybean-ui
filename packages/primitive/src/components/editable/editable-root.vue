@@ -20,6 +20,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<EditableRootPropsWithPrimitive>(), {
   as: 'div',
+  modelValue: undefined,
   disabled: false,
   submitMode: 'blur',
   activationMode: 'focus',

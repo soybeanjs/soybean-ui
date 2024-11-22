@@ -11,6 +11,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ComboboxInputPropsWithPrimitive>(), {
+  modelValue: undefined,
   as: 'input'
 });
 

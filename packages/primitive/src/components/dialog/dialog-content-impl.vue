@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import process from 'node:process';
 import { onMounted } from 'vue';
 import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';

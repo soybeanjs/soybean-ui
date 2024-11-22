@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
 import { computed } from 'vue';
+import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import isEqual from 'fast-deep-equal';
 import { useFormControl, useForwardExpose } from '../../composables';
@@ -18,6 +18,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CheckboxRootPropsWithPrimitive>(), {
+  modelValue: undefined,
   defaultValue: false,
   value: 'on',
   as: 'button'
@@ -26,7 +27,7 @@ const props = withDefaults(defineProps<CheckboxRootPropsWithPrimitive>(), {
 const emit = defineEmits<CheckboxRootEmits>();
 
 const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? false,
+  defaultValue: props.defaultValue ?? undefined,
   passive: (props.modelValue === undefined) as false
 }) as Ref<CheckedState>;
 
@@ -94,11 +95,7 @@ function handleClick() {
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
     :focusable="checkboxGroupContext?.rovingFocus.value ? !disabled : undefined"
-    @keydown.enter.prevent="
-      () => {
-        // According to WAI ARIA, Checkboxes don't activate on enter keypress
-      }
-    "
+    @keydown.enter.prevent
     @click="handleClick"
   >
     <slot :model-value="modelValue" :state="checkboxState" />

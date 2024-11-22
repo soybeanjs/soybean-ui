@@ -12,6 +12,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<HoverCardRootProps>(), {
+  modelValue: undefined,
   defaultOpen: false,
   open: undefined,
   openDelay: 700,

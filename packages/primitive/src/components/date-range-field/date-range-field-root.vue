@@ -29,6 +29,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<DateRangeFieldRootPropsWithPrimitive>(), {
   defaultValue: undefined,
+  modelValue: undefined,
   disabled: false,
   readonly: false,
   placeholder: undefined,

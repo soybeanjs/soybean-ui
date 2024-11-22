@@ -27,6 +27,7 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 <template>
   <Presence :present>
     <Primitive
+      v-bind="$attrs"
       :ref="forwardRef"
       :class="className"
       :as
@@ -34,7 +35,6 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
       :data-state
       :data-disabled
       :style="{ pointerEvents: 'none' }"
-      v-bind="$attrs"
     >
       <slot />
     </Primitive>

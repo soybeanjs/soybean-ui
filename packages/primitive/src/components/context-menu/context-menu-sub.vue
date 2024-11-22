@@ -8,7 +8,9 @@ defineOptions({
   name: 'ContextMenuSub'
 });
 
-const props = defineProps<ContextMenuSubProps>();
+const props = withDefaults(defineProps<ContextMenuSubProps>(), {
+  open: undefined
+});
 
 const emit = defineEmits<ContextMenuSubEmits>();
 

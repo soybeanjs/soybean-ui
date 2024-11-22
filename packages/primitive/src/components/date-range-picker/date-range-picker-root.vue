@@ -16,6 +16,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   defaultValue: () => ({ start: undefined, end: undefined }),
+  modelValue: undefined,
   defaultOpen: false,
   open: undefined,
   modal: false,

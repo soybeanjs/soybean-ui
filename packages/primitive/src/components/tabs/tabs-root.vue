@@ -12,6 +12,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TabsRootPropsWithPrimitive<T>>(), {
+  modelValue: undefined,
   orientation: 'horizontal',
   activationMode: 'automatic',
   unmountOnHide: true

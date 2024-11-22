@@ -13,6 +13,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TooltipRootPropsWithPrimitive>(), {
+  modelValue: undefined,
   defaultOpen: false,
   open: undefined,
   delayDuration: undefined,

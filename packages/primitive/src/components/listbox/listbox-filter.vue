@@ -11,6 +11,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ListboxFilterPropsWithPrimitive>(), {
+  modelValue: undefined,
   as: 'input'
 });
 

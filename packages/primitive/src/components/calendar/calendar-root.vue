@@ -15,8 +15,9 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CalendarRootPropsWithPrimitive>(), {
-  defaultValue: undefined,
   as: 'div',
+  defaultValue: undefined,
+  modelValue: undefined,
   pagedNavigation: false,
   preventDeselect: false,
   weekStartsOn: 0,

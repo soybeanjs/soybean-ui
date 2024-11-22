@@ -20,5 +20,11 @@ export default defineConfig(
       'vue/require-default-prop': 'off',
       'vue/return-in-computed-property': 'off'
     }
+  },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'n/prefer-global/process': 'off'
+    }
   }
 );
