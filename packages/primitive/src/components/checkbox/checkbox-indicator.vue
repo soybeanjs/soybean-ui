@@ -12,16 +12,19 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, as = 'span', forceMount } = defineProps<CheckboxIndicatorPropsWithPrimitive>();
+const props = withDefaults(defineProps<CheckboxIndicatorPropsWithPrimitive>(), {
+  as: 'span'
+});
+
 const { forwardRef } = useForwardExpose();
 
-const { state, disabled } = injectCheckboxRootContext();
+const { disabled, state } = injectCheckboxRootContext();
 
-const present = computed(() => forceMount || isIndeterminate(state.value) || state.value === true);
-
-const dataState = computed(() => getCheckedState(state.value));
+const present = computed(() => props.forceMount || isIndeterminate(state.value) || state.value === true);
 
 const dataDisabled = computed(() => (disabled.value ? '' : undefined));
+
+const dataState = computed(() => getCheckedState(state.value));
 </script>
 
 <template>
@@ -29,11 +32,11 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"
-      :class="className"
-      :as
-      :as-child
-      :data-state
-      :data-disabled
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :data-disabled="dataDisabled"
+      :data-state="dataState"
       :style="{ pointerEvents: 'none' }"
     >
       <slot />

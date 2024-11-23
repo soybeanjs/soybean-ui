@@ -10,7 +10,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-withDefaults(defineProps<RadioGroupIndicatorPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<RadioGroupIndicatorPropsWithPrimitive>(), {
   as: 'span'
 });
 
@@ -21,12 +21,13 @@ const itemContext = injectRadioGroupItemContext();
 <template>
   <Presence :present="forceMount || itemContext.checked.value">
     <Primitive
+      v-bind="$attrs"
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-state="itemContext.checked.value ? 'checked' : 'unchecked'"
       :data-disabled="itemContext.disabled.value ? '' : undefined"
-      :as-child
-      :as
-      v-bind="$attrs"
     >
       <slot />
     </Primitive>

@@ -35,7 +35,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <ListboxGroup :id="id" :aria-labelledby="context.labelId" v-bind="props" :hidden="isRender ? undefined : true">
+  <ListboxGroup v-bind="props" :id="id" :aria-labelledby="context.labelId" :hidden="isRender ? undefined : true">
     <slot />
   </ListboxGroup>
 </template>

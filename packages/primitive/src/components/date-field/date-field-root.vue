@@ -211,6 +211,7 @@ defineExpose({
   <Primitive
     v-bind="$attrs"
     ref="primitiveElement"
+    :class="props.class"
     role="group"
     :aria-disabled="disabled ? true : undefined"
     :data-disabled="disabled ? '' : undefined"

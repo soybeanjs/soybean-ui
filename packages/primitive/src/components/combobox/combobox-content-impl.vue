@@ -6,7 +6,7 @@ import PopperContent from '../popper/popper-content.vue';
 import { Primitive } from '../primitive';
 import ListboxContent from '../listbox/listbox-content.vue';
 import { useBodyScrollLock, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
-import type { FocusOutsideEvent } from '../../types';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { injectComboboxRootContext, provideComboboxContentContext } from './context';
 import type { ComboboxContentImplEmits, ComboboxContentImplPropsWithPrimitive } from './types';
 
@@ -53,6 +53,14 @@ function onFocusOutside(ev: FocusOutsideEvent) {
   emit('focusOutside', ev);
 }
 
+function onPointerDownOutside(ev: PointerDownOutsideEvent) {
+  // if clicking inside the combobox, prevent dismiss
+  if (rootContext.parentElement.value?.contains(ev.target as Node)) {
+    ev.preventDefault();
+  }
+  emit('pointerDownOutside', ev);
+}
+
 provideComboboxContentContext({ position });
 </script>
 
@@ -65,13 +73,7 @@ provideComboboxContentContext({ position });
       @focus-outside="onFocusOutside"
       @interact-outside="emit('interactOutside', $event)"
       @escape-key-down="emit('escapeKeyDown', $event)"
-      @pointer-down-outside="
-        ev => {
-          // if clicking inside the combobox, prevent dismiss
-          if (rootContext.parentElement.value?.contains(ev.target as Node)) ev.preventDefault();
-          emit('pointerDownOutside', ev);
-        }
-      "
+      @pointer-down-outside="onPointerDownOutside"
     >
       <component
         :is="position === 'popper' ? PopperContent : Primitive"

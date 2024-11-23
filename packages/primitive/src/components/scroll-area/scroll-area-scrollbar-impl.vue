@@ -20,7 +20,7 @@ const emit = defineEmits<ScrollbarAreaScrollbarImplEmits>();
 
 const rootContext = injectScrollAreaRootContext();
 const scrollbarVisibleContext = injectScrollAreaScrollbarVisibleContext();
-const scrollbarContext = injectScrollAreaScrollbarContext();
+const { class: className, as, asChild } = injectScrollAreaScrollbarContext();
 
 const { forwardRef, currentElement: scrollbar } = useForwardExpose();
 const prevWebkitUserSelectRef = ref('');
@@ -111,10 +111,11 @@ useResizeObserver(rootContext.content, handleSizeChange);
 <template>
   <Primitive
     :ref="forwardRef"
-    style="position: absolute"
+    :class="className"
+    :as="as"
+    :as-child="asChild"
     data-scrollbarimpl
-    :as="scrollbarContext.as.value"
-    :as-child="scrollbarContext.asChild.value"
+    style="position: absolute"
     @pointerdown="handlePointerDown"
     @pointermove="handlePointerMove"
     @pointerup="handlePointerUp"

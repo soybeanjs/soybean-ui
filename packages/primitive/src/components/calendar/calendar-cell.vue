@@ -8,17 +8,27 @@ defineOptions({
   name: 'CalendarCell'
 });
 
-const { class: className, as = 'td', date } = defineProps<CalendarCellPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarCellPropsWithPrimitive>(), {
+  as: 'td'
+});
 
 const { isDateSelected, isDateDisabled, isDateUnavailable } = injectCalendarRootContext();
 
-const ariaSelected = computed(() => (isDateSelected(date) ? true : undefined));
-const ariaDisabled = computed(() => isDateDisabled(date) || isDateUnavailable?.(date));
-const dataDisabled = computed(() => (isDateDisabled(date) ? '' : undefined));
+const ariaSelected = computed(() => (isDateSelected(props.date) ? true : undefined));
+const ariaDisabled = computed(() => isDateDisabled(props.date) || isDateUnavailable?.(props.date));
+const dataDisabled = computed(() => (isDateDisabled(props.date) ? '' : undefined));
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child role="gridcell" :aria-selected :aria-disabled :data-disabled>
+  <Primitive
+    :class="props.class"
+    role="gridcell"
+    :as="as"
+    :as-child="asChild"
+    :aria-disabled="ariaDisabled"
+    :aria-selected="ariaSelected"
+    :data-disabled="dataDisabled"
+  >
     <slot />
   </Primitive>
 </template>

@@ -8,7 +8,9 @@ defineOptions({
   name: 'CalendarHeading'
 });
 
-const { class: className, as = 'div' } = defineProps<CalendarHeadingPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarHeadingPropsWithPrimitive>(), {
+  as: 'div'
+});
 
 const { headingValue, disabled } = injectCalendarRootContext();
 
@@ -16,7 +18,7 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-disabled>
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-disabled="dataDisabled">
     <slot :heading-value="headingValue">
       {{ headingValue }}
     </slot>

@@ -10,7 +10,9 @@ defineOptions({
   name: 'MenuItemIndicator'
 });
 
-const { class: className, as = 'span', forceMount } = defineProps<MenuItemIndicatorPropsWithPrimitive>();
+const props = withDefaults(defineProps<MenuItemIndicatorPropsWithPrimitive>(), {
+  as: 'span'
+});
 
 const indicatorContext = injectMenuItemIndicatorContext({
   modelValue: ref(false)
@@ -23,7 +25,12 @@ const indicatorContext = injectMenuItemIndicatorContext({
       forceMount || isIndeterminate(indicatorContext.modelValue.value) || indicatorContext.modelValue.value === true
     "
   >
-    <Primitive :class="className" :as="as" :as-child :data-state="getCheckedState(indicatorContext.modelValue.value)">
+    <Primitive
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :data-state="getCheckedState(indicatorContext.modelValue.value)"
+    >
       <slot />
     </Primitive>
   </Presence>

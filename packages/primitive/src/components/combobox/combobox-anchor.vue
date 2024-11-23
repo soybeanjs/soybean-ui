@@ -9,14 +9,14 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className } = defineProps<ComboboxAnchorPropsWithPrimitive>();
+const props = defineProps<ComboboxAnchorPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
 </script>
 
 <template>
   <PopperAnchor as-child :reference="reference">
-    <Primitive :ref="forwardRef" :class="className" :as :as-child v-bind="$attrs">
+    <Primitive v-bind="$attrs" :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild">
       <slot />
     </Primitive>
   </PopperAnchor>

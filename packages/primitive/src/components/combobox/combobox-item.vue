@@ -11,6 +11,7 @@ defineOptions({
 });
 
 const props = defineProps<ComboboxItemPropsWithPrimitive<T>>();
+
 const emit = defineEmits<ComboboxItemEmits<T>>();
 
 const id = useId(undefined, 'soybean-combobox-item');

@@ -12,7 +12,8 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, forceMount } = defineProps<CollapsibleContentPropsWithPrimitive>();
+const props = defineProps<CollapsibleContentPropsWithPrimitive>();
+
 const emit = defineEmits<CollapsibleContentEmits>();
 
 const presentRef = useTemplateRef('presentRef');
@@ -31,7 +32,7 @@ const isOpen = computed(() => open.value);
 const isMountAnimationPrevented = ref(isOpen.value);
 const currentStyle = ref<Record<string, string>>();
 
-const presentPresent = computed(() => forceMount || open.value);
+const presentPresent = computed(() => props.forceMount || open.value);
 
 const skipAnimation = computed(() => isMountAnimationPrevented.value && open.value);
 
@@ -85,7 +86,7 @@ useEventListener(currentElement, 'beforematch', () => {
       v-bind="$attrs"
       :id="contentId"
       :ref="forwardRef"
-      :class="className"
+      :class="props.class"
       :as="as"
       :as-child="asChild"
       :hidden="!present ? (unmountOnHide ? '' : 'until-found') : undefined"

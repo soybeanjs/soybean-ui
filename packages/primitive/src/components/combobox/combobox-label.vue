@@ -8,10 +8,10 @@ const props = withDefaults(defineProps<ComboboxLabelPropsWithPrimitive>(), {
   as: 'div'
 });
 
-useForwardExpose();
 const groupContext = injectComboboxGroupContext({ id: '', labelId: '' });
-
 groupContext.labelId ||= useId(undefined, 'soybean-combobox-group-label');
+
+useForwardExpose();
 </script>
 
 <template>

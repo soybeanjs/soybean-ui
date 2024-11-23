@@ -49,10 +49,11 @@ provideRadioGroupRootContext({
   <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"
-      :as-child
-      :as
       :aria-orientation="orientation"
       :aria-required="required"
       :dir="dir"

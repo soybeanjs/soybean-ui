@@ -8,28 +8,32 @@ defineOptions({
   name: 'CalendarPrev'
 });
 
-const { class: className, as = 'button', prevPage } = defineProps<CalendarPrevPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarPrevPropsWithPrimitive>(), {
+  as: 'button'
+});
 
-const { disabled, prevPage: prevPageFn, isPrevButtonDisabled } = injectCalendarRootContext();
+const { disabled: ctxDisabled, prevPage, isPrevButtonDisabled } = injectCalendarRootContext();
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
-const dataDisabled = computed(() => disabled.value || isPrevButtonDisabled(prevPage));
+const disabled = computed(() => ctxDisabled.value || isPrevButtonDisabled(props.prevPage));
+
+const ariaDisabled = computed(() => disabled.value || undefined);
 
 function handleClick() {
-  prevPageFn(prevPage);
+  prevPage(props.prevPage);
 }
 </script>
 
 <template>
   <Primitive
-    aria-label="Previous page"
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :type="tag"
-    :aria-disabled="disabled || undefined"
-    :data-disabled="dataDisabled || undefined"
+    :aria-disabled="ariaDisabled"
+    aria-label="Previous page"
+    :data-disabled="ariaDisabled"
     :disabled="disabled"
     @click="handleClick"
   >

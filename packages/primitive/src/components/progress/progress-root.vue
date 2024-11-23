@@ -73,8 +73,9 @@ provideProgressRootContext({
 
 <template>
   <Primitive
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-valuemax="max"
     :aria-valuemin="0"
     :aria-valuenow="isNumber(modelValue) ? modelValue : undefined"

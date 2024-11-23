@@ -70,8 +70,9 @@ onUnmounted(() => {
       width: 'var(--soybean-scroll-area-thumb-width)',
       height: 'var(--soybean-scroll-area-thumb-height)'
     }"
-    :as-child="props.asChild"
-    :as
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     @pointerdown="handlePointerDown"
     @pointerup="handlePointerUp"
   >

@@ -9,7 +9,9 @@ defineOptions({
   name: 'DialogTrigger'
 });
 
-const { class: className, as = 'button' } = defineProps<DialogTriggerPropsWithPrimitive>();
+const props = withDefaults(defineProps<DialogTriggerPropsWithPrimitive>(), {
+  as: 'button'
+});
 
 const {
   open,
@@ -24,7 +26,7 @@ initContentId();
 
 const { forwardRef, currentElement } = useForwardExpose();
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 onMounted(() => {
   triggerElement.value = currentElement.value;
@@ -34,9 +36,9 @@ onMounted(() => {
 <template>
   <Primitive
     :ref="forwardRef"
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"

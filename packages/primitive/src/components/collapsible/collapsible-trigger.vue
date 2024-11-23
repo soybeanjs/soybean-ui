@@ -23,13 +23,13 @@ useForwardExpose();
 <template>
   <Primitive
     :class="props.class"
-    :type="tag"
     :as="as"
     :as-child="asChild"
+    :type="tag"
     :aria-controls="contentId"
+    :data-disabled="dataDisabled"
     :aria-expanded="open"
     :data-state="dataState"
-    :data-disabled="dataDisabled"
     :disabled="disabled"
     @click="onOpenToggle"
   >

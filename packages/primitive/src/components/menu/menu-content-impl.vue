@@ -185,8 +185,8 @@ provideMenuContentContext({
           :ref="forwardRef"
           role="menu"
           :class="props.class"
-          :as
-          :as-child
+          :as="as"
+          :as-child="asChild"
           aria-orientation="vertical"
           data-soybean-menu-content
           :data-state="getOpenState(menuContext.open.value)"

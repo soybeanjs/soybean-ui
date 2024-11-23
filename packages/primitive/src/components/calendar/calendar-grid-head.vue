@@ -6,11 +6,13 @@ defineOptions({
   name: 'CalendarGridHead'
 });
 
-const { class: className, as = 'thead' } = defineProps<CalendarGridHeadPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarGridHeadPropsWithPrimitive>(), {
+  as: 'thead'
+});
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child aria-hidden="true">
+  <Primitive :class="props.class" :as="as" :as-child="asChild" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

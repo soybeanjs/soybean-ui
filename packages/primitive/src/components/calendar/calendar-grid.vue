@@ -8,7 +8,9 @@ defineOptions({
   name: 'CalendarGrid'
 });
 
-const { class: className, as = 'table' } = defineProps<CalendarGridPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarGridPropsWithPrimitive>(), {
+  as: 'table'
+});
 
 const { disabled, readonly } = injectCalendarRootContext();
 
@@ -20,15 +22,15 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 
 <template>
   <Primitive
-    :class="className"
+    :class="props.class"
     role="grid"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     tabindex="-1"
-    :aria-readonly
-    :aria-disabled
-    :data-readonly
-    :data-disabled
+    :aria-disabled="ariaDisabled"
+    :aria-readonly="ariaReadonly"
+    :data-disabled="dataDisabled"
+    :data-readonly="dataReadonly"
   >
     <slot />
   </Primitive>

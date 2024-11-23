@@ -85,8 +85,8 @@ onMounted(() => {
     ref="primitiveElement"
     v-model="modelValue"
     :class="props.class"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     :auto-focus="autoFocus"
     :aria-expanded="rootContext.open.value"
     :aria-controls="rootContext.contentId"

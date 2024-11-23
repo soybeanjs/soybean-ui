@@ -11,18 +11,20 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, forceMount = false } = defineProps<DialogOverlayPropsWithPrimitive>();
+const props = withDefaults(defineProps<DialogOverlayPropsWithPrimitive>(), {
+  forceMount: false
+});
 
 const { modal, open } = injectDialogRootContext();
 
-const present = computed(() => forceMount || open.value);
+const present = computed(() => props.forceMount || open.value);
 
 const { forwardRef } = useForwardExpose();
 </script>
 
 <template>
-  <Presence v-if="modal" :present>
-    <DialogOverlayImpl v-bind="$attrs" :ref="forwardRef" :class="className" :as :as-child>
+  <Presence v-if="modal" :present="present">
+    <DialogOverlayImpl v-bind="$attrs" :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild">
       <slot />
     </DialogOverlayImpl>
   </Presence>

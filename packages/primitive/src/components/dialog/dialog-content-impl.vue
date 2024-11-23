@@ -13,7 +13,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className } = defineProps<DialogContentImplPropsWithPrimitive>();
+const props = defineProps<DialogContentImplPropsWithPrimitive>();
 
 const emit = defineEmits<DialogContentImplEmits>();
 
@@ -55,10 +55,10 @@ if (process.env.NODE_ENV !== 'production') {
     <DismissableLayer
       :id="rootContext.contentId"
       :ref="forwardRef"
-      :class="className"
-      :as
-      :as-child
-      :disable-outside-pointer-events
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :disable-outside-pointer-events="disableOutsidePointerEvents"
       role="dialog"
       :aria-describedby="rootContext.descriptionId"
       :aria-labelledby="rootContext.titleId"

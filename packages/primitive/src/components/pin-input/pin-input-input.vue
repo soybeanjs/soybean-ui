@@ -144,8 +144,9 @@ onUnmounted(() => {
   <Primitive
     ref="primitiveElement"
     autocapitalize="none"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :autocomplete="isOtpMode ? 'one-time-code' : 'false'"
     :type="isPasswordMode ? 'password' : 'text'"
     :inputmode="isNumericMode ? 'numeric' : 'text'"

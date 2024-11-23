@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import type { ImageLoadingStatus } from '../../types';
+import { Primitive } from '../primitive';
 import { injectAvatarRootContext } from './context';
 import type { AvatarFallbackPropsWithPrimitive } from './types';
 
@@ -10,7 +10,10 @@ defineOptions({
   name: 'AvatarFallback'
 });
 
-const { class: className, as = 'span', delayMs = 0 } = defineProps<AvatarFallbackPropsWithPrimitive>();
+const props = withDefaults(defineProps<AvatarFallbackPropsWithPrimitive>(), {
+  as: 'span',
+  delayMs: 0
+});
 
 const { imageLoadingStatus } = injectAvatarRootContext();
 
@@ -23,18 +26,16 @@ let timeout: ReturnType<typeof setTimeout>;
 function onImageLoadingStatusChange(newStatus: ImageLoadingStatus) {
   if (newStatus === 'loading') {
     canRender.value = false;
-    if (delayMs) {
+    if (props.delayMs) {
       timeout = setTimeout(() => {
         canRender.value = true;
         clearTimeout(timeout);
-      }, delayMs);
+      }, props.delayMs);
     } else {
       canRender.value = true;
     }
   }
 }
-
-useForwardExpose();
 
 watch(
   imageLoadingStatus,
@@ -43,10 +44,12 @@ watch(
   },
   { immediate: true }
 );
+
+useForwardExpose();
 </script>
 
 <template>
-  <Primitive v-if="visible" :class="className" :as :as-child>
+  <Primitive v-if="visible" :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<ComboboxArrowPropsWithPrimitive>(), {
   height: 5,
   as: 'svg'
 });
+
 const rootContext = injectComboboxRootContext();
 const contentContext = injectComboboxContentContext();
 

@@ -85,8 +85,8 @@ function handleClick() {
     :ref="forwardRef"
     :class="props.class"
     role="checkbox"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     :type="tag"
     :aria-checked="isIndeterminate(checkboxState) ? 'mixed' : checkboxState"
     :aria-required="required"

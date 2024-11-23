@@ -58,30 +58,29 @@ provideSwitchRootContext({
     v-bind="$attrs"
     :id="id"
     :ref="forwardRef"
-    role="switch"
     :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :type="tag"
-    :as
-    :as-child="as === 'button'"
-    :value
+    role="switch"
+    :value="value"
     :aria-label="$attrs['aria-label'] || ariaLabel"
     :aria-checked="modelValue"
     :aria-required="required"
     :data-state="modelValue ? 'checked' : 'unchecked'"
     :data-disabled="disabled ? '' : undefined"
-    :disabled
+    :disabled="disabled"
     @click="toggleCheck"
     @keydown.enter.prevent="toggleCheck"
   >
     <slot :model-value="modelValue" />
-
     <VisuallyHiddenInput
       v-if="isFormControl && name"
       type="checkbox"
-      :name
-      :disabled
-      :required
-      :value
+      :name="name"
+      :disabled="disabled"
+      :required="required"
+      :value="value"
       :checked="!!modelValue"
     />
   </Primitive>

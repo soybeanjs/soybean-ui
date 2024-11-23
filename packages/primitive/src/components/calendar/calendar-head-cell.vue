@@ -6,11 +6,13 @@ defineOptions({
   name: 'CalendarHeadCell'
 });
 
-const { class: className, as = 'th' } = defineProps<CalendarHeadCellPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarHeadCellPropsWithPrimitive>(), {
+  as: 'th'
+});
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

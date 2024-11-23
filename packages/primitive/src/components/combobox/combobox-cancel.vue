@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectComboboxRootContext } from './context';
@@ -12,20 +13,22 @@ const props = withDefaults(defineProps<ComboboxCancelPropsWithPrimitive>(), {
   as: 'button'
 });
 
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
 useForwardExpose();
 
-const rootContext = injectComboboxRootContext();
+const { inputElement } = injectComboboxRootContext();
 
 function handleClick() {
-  if (rootContext.inputElement.value) {
-    rootContext.inputElement.value.value = '';
-    rootContext.inputElement.value.focus();
+  if (inputElement.value) {
+    inputElement.value.value = '';
+    inputElement.value.focus();
   }
 }
 </script>
 
 <template>
-  <Primitive :type="as === 'button' ? 'button' : undefined" v-bind="props" tabindex="-1" @click="handleClick">
+  <Primitive v-bind="props" :type="tag" tabindex="-1" @click="handleClick">
     <slot />
   </Primitive>
 </template>

@@ -85,11 +85,12 @@ export interface ScrollAreaScrollbarProps {
 export type ScrollAreaScrollbarPropsWithPrimitive = ScrollAreaScrollbarProps & PrimitiveProps;
 
 export interface ScrollAreaScollbarContext {
+  class: Ref<PrimitiveProps['class']>;
   as: Ref<PrimitiveProps['as']>;
+  asChild: Ref<boolean>;
   orientation: Ref<'vertical' | 'horizontal'>;
   forceMount?: Ref<boolean>;
   isHorizontal: Ref<boolean>;
-  asChild: Ref<boolean>;
 }
 
 // ScrollAreaScrollbarVisible

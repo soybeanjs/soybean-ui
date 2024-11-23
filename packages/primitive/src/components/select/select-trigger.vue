@@ -49,6 +49,9 @@ function handlePointerOpen(event: PointerEvent) {
   <PopperAnchor as-child :reference="reference">
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="combobox"
       :type="as === 'button' ? 'button' : undefined"
       :aria-controls="rootContext.contentId"
@@ -60,8 +63,6 @@ function handlePointerOpen(event: PointerEvent) {
       :data-state="rootContext?.open.value ? 'open' : 'closed'"
       :data-disabled="isDisabled ? '' : undefined"
       :data-placeholder="rootContext.modelValue?.value ? undefined : ''"
-      :as-child
-      :as
       @click="
         (event: MouseEvent) => {
           // Whilst browsers generally have no issue focusing the trigger when clicking

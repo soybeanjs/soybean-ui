@@ -81,15 +81,16 @@ async function handlePointerEvent(event: PointerEvent) {
   <MenuAnchor as="template" :reference="virtualEl" />
 
   <Primitive
+    v-bind="$attrs"
     :ref="forwardRef"
-    :as
-    :as-child
-    :data-state="rootContext.open.value ? 'open' : 'closed'"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-disabled="disabled ? '' : undefined"
+    :data-state="rootContext.open.value ? 'open' : 'closed'"
     :style="{
       WebkitTouchCallout: 'none'
     }"
-    v-bind="$attrs"
     @contextmenu="handleContextMenu"
     @pointerdown="handlePointerDown"
     @pointermove="handlePointerEvent"

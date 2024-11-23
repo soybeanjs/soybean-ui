@@ -6,11 +6,13 @@ defineOptions({
   name: 'CalendarGridRow'
 });
 
-const { class: className, as = 'tr' } = defineProps<CalendarGridRowPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarGridRowPropsWithPrimitive>(), {
+  as: 'tr'
+});
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

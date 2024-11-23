@@ -8,7 +8,7 @@ defineOptions({
   name: 'DialogOverlayImpl'
 });
 
-const { class: className } = defineProps<DialogOverlayImplPropsWithPrimitive>();
+const props = defineProps<DialogOverlayImplPropsWithPrimitive>();
 
 const { dataState } = injectDialogRootContext();
 
@@ -17,7 +17,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-state style="pointer-events: auto">
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-state="dataState" style="pointer-events: auto">
     <slot />
   </Primitive>
 </template>

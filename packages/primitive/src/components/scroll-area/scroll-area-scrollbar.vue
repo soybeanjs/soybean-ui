@@ -37,8 +37,9 @@ onUnmounted(() => {
   rootContext.onScrollbarYEnabledChange(false);
 });
 
-const { orientation, forceMount, asChild, as } = toRefs(props);
+const { orientation, forceMount, asChild, as, class: className } = toRefs(props);
 provideScrollAreaScrollbarContext({
+  class: className,
   orientation,
   forceMount,
   isHorizontal,

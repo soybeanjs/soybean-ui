@@ -14,15 +14,19 @@ const props = withDefaults(defineProps<ComboboxTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 
-useForwardExpose();
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
 const rootContext = injectComboboxRootContext();
+
 const disabled = computed(() => props.disabled || rootContext.disabled.value || false);
+
+useForwardExpose();
 </script>
 
 <template>
   <Primitive
     v-bind="props"
-    :type="as === 'button' ? 'button' : undefined"
+    :type="tag"
     tabindex="-1"
     aria-label="Show popup"
     aria-haspopup="listbox"

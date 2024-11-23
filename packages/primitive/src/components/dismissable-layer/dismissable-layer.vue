@@ -12,7 +12,9 @@ defineOptions({
 
 const state = useDismissableLayerState();
 
-const { class: className, disableOutsidePointerEvents = false } = defineProps<DismissableLayerPropsWithPrimitive>();
+const props = withDefaults(defineProps<DismissableLayerPropsWithPrimitive>(), {
+  disableOutsidePointerEvents: false
+});
 
 const emit = defineEmits<DismissableLayerPrivateEmits>();
 
@@ -79,7 +81,7 @@ let originalBodyPointerEvents: string;
 
 watchEffect(cleanupFn => {
   if (!layerElement.value) return;
-  if (disableOutsidePointerEvents) {
+  if (props.disableOutsidePointerEvents) {
     if (state.layersWithOutsidePointerEventsDisabled.size === 0) {
       originalBodyPointerEvents = ownerDocument.value.body.style.pointerEvents;
       ownerDocument.value.body.style.pointerEvents = 'none';
@@ -89,7 +91,7 @@ watchEffect(cleanupFn => {
   layers.value.add(layerElement.value);
 
   cleanupFn(() => {
-    if (disableOutsidePointerEvents && state.layersWithOutsidePointerEventsDisabled.size === 1) {
+    if (props.disableOutsidePointerEvents && state.layersWithOutsidePointerEventsDisabled.size === 1) {
       ownerDocument.value.body.style.pointerEvents = originalBodyPointerEvents;
     }
   });
@@ -107,9 +109,9 @@ watchEffect(cleanupFn => {
 <template>
   <Primitive
     :ref="forwardRef"
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     data-dismissable-layer
     :style="{
       pointerEvents: isBodyPointerEventsDisabled ? (isPointerEventsEnabled ? 'auto' : 'none') : undefined

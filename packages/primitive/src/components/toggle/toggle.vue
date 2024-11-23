@@ -39,9 +39,10 @@ const isFormControl = useFormControl(currentElement);
 <template>
   <Primitive
     :ref="forwardRef"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :type="as === 'button' ? 'button' : undefined"
-    :as-child="props.asChild"
-    :as
     :aria-pressed="modelValue"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"

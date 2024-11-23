@@ -9,17 +9,19 @@ defineOptions({
   name: 'DialogClose'
 });
 
-const { class: className, as = 'button' } = defineProps<DialogClosePropsWithPrimitive>();
+const props = withDefaults(defineProps<DialogClosePropsWithPrimitive>(), {
+  as: 'button'
+});
 
 const { onOpenChange } = injectDialogRootContext();
 
-const tag = computed(() => (as === 'button' ? 'button' : undefined));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :type="tag" @click="onOpenChange(false)">
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :type="tag" @click="onOpenChange(false)">
     <slot />
   </Primitive>
 </template>

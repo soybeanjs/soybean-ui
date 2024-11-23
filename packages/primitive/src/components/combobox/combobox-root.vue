@@ -165,19 +165,20 @@ provideComboboxRootContext({
 <template>
   <PopperRoot>
     <ListboxRoot
-      ref="primitiveElement"
       v-bind="$attrs"
+      ref="primitiveElement"
       v-model="modelValue"
-      :style="{
-        pointerEvents: open ? 'auto' : undefined
-      }"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :dir="dir"
+      :disabled="disabled"
       :multiple="multiple"
       :name="name"
       :required="required"
-      :disabled="disabled"
+      :style="{
+        pointerEvents: open ? 'auto' : undefined
+      }"
       @highlight="emit('highlight', $event as any)"
     >
       <slot :open="open" :model-value="modelValue" />

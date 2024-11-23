@@ -11,7 +11,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className } = defineProps<AvatarRootPropsWithPrimitive>();
+const props = defineProps<AvatarRootPropsWithPrimitive>();
 
 provideAvatarRootContext({
   imageLoadingStatus: ref<ImageLoadingStatus>('loading')
@@ -21,7 +21,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

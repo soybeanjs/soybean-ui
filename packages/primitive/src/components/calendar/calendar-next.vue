@@ -8,26 +8,32 @@ defineOptions({
   name: 'CalendarNext'
 });
 
-const { class: className, as = 'button', nextPage } = defineProps<CalendarNextPropsWithPrimitive>();
+const props = withDefaults(defineProps<CalendarNextPropsWithPrimitive>(), {
+  as: 'button'
+});
 
-const { disabled, nextPage: nextPageFn, isNextButtonDisabled } = injectCalendarRootContext();
+const { disabled: ctxDisabled, nextPage, isNextButtonDisabled } = injectCalendarRootContext();
 
-const dataDisabled = computed(() => disabled.value || isNextButtonDisabled(nextPage));
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const disabled = computed(() => ctxDisabled.value || isNextButtonDisabled(props.nextPage));
+
+const ariaDisabled = computed(() => disabled.value || undefined);
 
 function handleClick() {
-  nextPageFn(nextPage);
+  nextPage(props.nextPage);
 }
 </script>
 
 <template>
   <Primitive
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :type="tag"
+    :aria-disabled="ariaDisabled"
     aria-label="Next page"
-    :type="as === 'button' ? 'button' : undefined"
-    :aria-disabled="disabled || undefined"
-    :data-disabled="dataDisabled || undefined"
+    :data-disabled="ariaDisabled"
     :disabled="disabled"
     @click="handleClick"
   >

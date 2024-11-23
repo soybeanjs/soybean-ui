@@ -9,7 +9,9 @@ defineOptions({
   name: 'SwitchThumb'
 });
 
-const { class: className, as = 'span' } = defineProps<SwitchThumbPropsWithPrimitive>();
+const props = withDefaults(defineProps<SwitchThumbPropsWithPrimitive>(), {
+  as: 'span'
+});
 
 const { modelValue, disabled } = injectSwitchRootContext();
 
@@ -21,7 +23,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-state :data-disabled>
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-state="dataState" :data-disabled="dataDisabled">
     <slot />
   </Primitive>
 </template>

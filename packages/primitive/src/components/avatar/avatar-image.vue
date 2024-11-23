@@ -11,13 +11,15 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, as = 'img', src } = defineProps<AvatarImagePropsWithPrimitive>();
+const props = withDefaults(defineProps<AvatarImagePropsWithPrimitive>(), {
+  as: 'img'
+});
 
 const emit = defineEmits<AvatarImageEmits>();
 
 const context = injectAvatarRootContext();
 
-const imageLoadingStatus = useImageLoadingStatus(toRef(() => src));
+const imageLoadingStatus = useImageLoadingStatus(toRef(() => props.src));
 
 function handleLoadingStatusChange(newStatus: ImageLoadingStatus) {
   emit('loadingStatusChange', newStatus);
@@ -27,8 +29,6 @@ function handleLoadingStatusChange(newStatus: ImageLoadingStatus) {
   }
 }
 
-useForwardExpose();
-
 watch(
   imageLoadingStatus,
   newStatus => {
@@ -36,8 +36,18 @@ watch(
   },
   { immediate: true }
 );
+
+useForwardExpose();
 </script>
 
 <template>
-  <Primitive v-show="imageLoadingStatus === 'loaded'" :class="className" role="img" :as :as-child :src :alt />
+  <Primitive
+    v-show="imageLoadingStatus === 'loaded'"
+    :class="props.class"
+    role="img"
+    :as="as"
+    :as-child="asChild"
+    :src="src"
+    :alt="alt"
+  />
 </template>

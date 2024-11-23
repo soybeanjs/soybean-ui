@@ -3,9 +3,9 @@ import { onMounted, toRefs, watch } from 'vue';
 import type { WritableComputedRef } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { isEqualDay, isSameDay } from '@internationalized/date';
-import type { DateValue } from '../../date';
 import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
+import type { DateValue } from '../../date';
 import { Primitive } from '../primitive';
 import { provideCalendarRootContext } from './context';
 import type { CalendarRootEmits, CalendarRootPropsWithPrimitive } from './types';
@@ -200,8 +200,8 @@ provideCalendarRootContext({
   <Primitive
     ref="primitiveElement"
     :class="props.class"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     role="application"
     :aria-label="fullCalendarLabel"
     :data-readonly="readonly ? '' : undefined"

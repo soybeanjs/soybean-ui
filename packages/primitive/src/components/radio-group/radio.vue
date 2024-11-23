@@ -55,12 +55,13 @@ function handleClick(event: MouseEvent) {
     v-bind="$attrs"
     :id="id"
     :ref="forwardRef"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     role="radio"
     :type="as === 'button' ? 'button' : undefined"
-    :as
     :aria-checked="checked"
     :aria-label="ariaLabel"
-    :as-child
     :disabled="disabled ? '' : undefined"
     :data-state="checked ? 'checked' : 'unchecked'"
     :data-disabled="disabled ? '' : undefined"

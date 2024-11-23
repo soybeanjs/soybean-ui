@@ -40,6 +40,7 @@ provideToggleGroupRootContext({
 <template>
   <component
     :is="rovingFocus ? RovingFocusGroup : Primitive"
+    :class="props.class"
     as-child
     :orientation="rovingFocus ? orientation : undefined"
     :dir="dir"

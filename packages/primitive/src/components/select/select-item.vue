@@ -88,6 +88,9 @@ provideSelectItemContext({
   <CollectionItem>
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="option"
       :aria-labelledby="textId"
       :data-highlighted="isFocused ? '' : undefined"
@@ -96,8 +99,6 @@ provideSelectItemContext({
       :aria-disabled="disabled || undefined"
       :data-disabled="disabled ? '' : undefined"
       :tabindex="disabled ? undefined : -1"
-      :as
-      :as-child
       @focus="isFocused = true"
       @blur="isFocused = false"
       @pointerup="handleSelect"

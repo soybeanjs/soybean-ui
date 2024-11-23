@@ -58,12 +58,13 @@ async function handleBlur(event: FocusEvent) {
 <template>
   <CollectionItem>
     <Primitive
+      v-bind="$attrs"
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="menuitem"
       tabindex="-1"
-      v-bind="$attrs"
-      :as
-      :as-child
       data-soybean-collection-item
       :aria-disabled="disabled || undefined"
       :data-disabled="disabled ? '' : undefined"

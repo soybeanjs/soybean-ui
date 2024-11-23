@@ -9,24 +9,26 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, ratio = 1 } = defineProps<AspectRatioPropsWithPrimitive>();
+const props = withDefaults(defineProps<AspectRatioPropsWithPrimitive>(), {
+  ratio: 1
+});
 
 const { forwardRef } = useForwardExpose();
 
-const aspect = computed(() => (1 / ratio) * 100);
+const aspect = computed(() => (1 / props.ratio) * 100);
 </script>
 
 <template>
-  <div :style="`position: relative; width: 100%; padding-bottom: ${aspect}%`" data-soybean-aspect-ratio-wrapper>
+  <div data-soybean-aspect-ratio-wrapper :style="`position: relative; width: 100%; padding-bottom: ${aspect}%`">
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"
-      :class="className"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       style="position: absolute; inset: 0px"
     >
-      <slot :aspect />
+      <slot :aspect="aspect" />
     </Primitive>
   </div>
 </template>

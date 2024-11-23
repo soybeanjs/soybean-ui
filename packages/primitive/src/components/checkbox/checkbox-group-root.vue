@@ -49,11 +49,10 @@ provideCheckboxGroupRootContext({
     v-bind="rovingFocusProps"
     ref="primitiveElement"
     :class="props.class"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
   >
     <slot />
-
     <VisuallyHiddenInput v-if="isFormControl && name" :name :value="modelValue" :required />
   </component>
 </template>

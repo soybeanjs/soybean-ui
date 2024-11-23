@@ -8,7 +8,9 @@ defineOptions({
   name: 'DialogTitle'
 });
 
-const { class: className, as = 'h2' } = defineProps<DialogTitlePropsWithPrimitive>();
+const props = withDefaults(defineProps<DialogTitlePropsWithPrimitive>(), {
+  as: 'h2'
+});
 
 const { titleId } = injectDialogRootContext();
 
@@ -16,7 +18,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :id="titleId" :class="className" :as :as-child>
+  <Primitive :id="titleId" :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

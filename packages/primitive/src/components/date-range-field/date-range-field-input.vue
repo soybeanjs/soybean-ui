@@ -37,9 +37,10 @@ const isInvalid = computed(() => rootContext.isInvalid.value);
 
 <template>
   <Primitive
-    :as
-    :as-child
     v-bind="attributes"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :contenteditable="disabled || readonly ? false : part !== 'literal'"
     :data-soybean-date-field-segment="part"
     :aria-disabled="disabled ? true : undefined"

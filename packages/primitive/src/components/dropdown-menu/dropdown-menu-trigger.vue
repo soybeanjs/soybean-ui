@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted } from 'vue';
+import { computed, nextTick, onMounted } from 'vue';
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
 import { useForwardExpose, useId } from '../../composables';
@@ -15,14 +15,36 @@ const props = withDefaults(defineProps<DropdownMenuTriggerPropsWithPrimitive>(),
 });
 
 const rootContext = injectDropdownMenuRootContext();
+rootContext.triggerId ||= useId(undefined, 'soybean-dropdown-menu-trigger');
+
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();
+
+async function onClick(event: MouseEvent) {
+  // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
+  // but not when the control key is pressed (avoiding MacOS right click)
+  if (!props.disabled && event.button === 0 && event.ctrlKey === false) {
+    rootContext?.onOpenToggle();
+    await nextTick();
+    // prevent trigger focusing when opening
+    // this allows the content to be given focus without competition
+    if (rootContext.open.value) event.preventDefault();
+  }
+}
+
+function onKeyDown(event: KeyboardEvent) {
+  if (props.disabled) return;
+  if (['Enter', ' '].includes(event.key)) rootContext.onOpenToggle();
+  if (event.key === 'ArrowDown') rootContext.onOpenChange(true);
+  // prevent keydown from scrolling window / first focused item to execute
+  // that keydown (inadvertently closing the menu)
+  if (['Enter', ' ', 'ArrowDown'].includes(event.key)) event.preventDefault();
+}
 
 onMounted(() => {
   rootContext.triggerElement = triggerElement;
 });
-
-rootContext.triggerId ||= useId(undefined, 'soybean-dropdown-menu-trigger');
 </script>
 
 <template>
@@ -30,38 +52,18 @@ rootContext.triggerId ||= useId(undefined, 'soybean-dropdown-menu-trigger');
     <Primitive
       :id="rootContext.triggerId"
       :ref="forwardRef"
-      :type="as === 'button' ? 'button' : undefined"
-      :as-child="props.asChild"
-      :as
-      aria-haspopup="menu"
-      :aria-expanded="rootContext.open.value"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :type="tag"
       :aria-controls="rootContext.open.value ? rootContext.contentId : undefined"
+      :aria-expanded="rootContext.open.value"
+      aria-haspopup="menu"
       :data-disabled="disabled ? '' : undefined"
-      :disabled="disabled"
       :data-state="rootContext.open.value ? 'open' : 'closed'"
-      @click="
-        async event => {
-          // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
-          // but not when the control key is pressed (avoiding MacOS right click)
-          if (!disabled && event.button === 0 && event.ctrlKey === false) {
-            rootContext?.onOpenToggle();
-            await nextTick();
-            // prevent trigger focusing when opening
-            // this allows the content to be given focus without competition
-            if (rootContext.open.value) event.preventDefault();
-          }
-        }
-      "
-      @keydown.enter.space.arrow-down="
-        event => {
-          if (disabled) return;
-          if (['Enter', ' '].includes(event.key)) rootContext.onOpenToggle();
-          if (event.key === 'ArrowDown') rootContext.onOpenChange(true);
-          // prevent keydown from scrolling window / first focused item to execute
-          // that keydown (inadvertently closing the menu)
-          if (['Enter', ' ', 'ArrowDown'].includes(event.key)) event.preventDefault();
-        }
-      "
+      :disabled="disabled"
+      @click="onClick"
+      @keydown.enter.space.arrow-down="onKeyDown"
     >
       <slot />
     </Primitive>

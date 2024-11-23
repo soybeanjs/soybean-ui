@@ -9,6 +9,10 @@ defineOptions({
 
 const props = defineProps<DateRangePickerTriggerPropsWithPrimitive>();
 const rootContext = injectDateRangePickerRootContext();
+
+function onFocusin(e: FocusEvent) {
+  rootContext.dateFieldRef.value?.setFocusedElement(e.target as HTMLElement);
+}
 </script>
 
 <template>
@@ -16,11 +20,7 @@ const rootContext = injectDateRangePickerRootContext();
     data-soybean-date-field-segment="trigger"
     v-bind="props"
     :disabled="rootContext.disabled.value"
-    @focusin="
-      (e: FocusEvent) => {
-        rootContext.dateFieldRef.value?.setFocusedElement(e.target as HTMLElement);
-      }
-    "
+    @focusin="onFocusin"
   >
     <slot />
   </PopoverTrigger>
