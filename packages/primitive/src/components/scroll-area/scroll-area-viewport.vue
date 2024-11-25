@@ -20,15 +20,13 @@ const rootContext = injectScrollAreaRootContext();
 
 const viewportElement = ref<HTMLElement>();
 
+defineExpose({ viewportElement });
+
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
 
 onMounted(() => {
   rootContext.onViewportChange(viewportElement.value!);
   rootContext.onContentChange(contentElement.value!);
-});
-
-defineExpose({
-  viewportElement
 });
 </script>
 

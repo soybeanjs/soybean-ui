@@ -119,7 +119,7 @@ function handleClick(item: BreadcrumbItem) {
   <div class="py-12px text-18px">Item Dropdown</div>
   <SBreadcrumb :items="dropdownItems">
     <template #default="{ item }">
-      <SDropdownMenu v-if="item.items" :options="item.items" :modal="false">
+      <SDropdownMenu v-if="item.items" :items="item.items" :modal="false">
         <template #trigger>
           <SBreadcrumbPage class="cursor-pointer">{{ item.label }}</SBreadcrumbPage>
         </template>
@@ -130,7 +130,7 @@ function handleClick(item: BreadcrumbItem) {
   <div class="py-12px text-18px">Ellipsis Dropdown</div>
   <SBreadcrumb :items="items3" ellipsis>
     <template #ellipsis="{ ellipsisItems }">
-      <SDropdownMenu :options="ellipsisItems" :modal="false">
+      <SDropdownMenu :items="ellipsisItems" :modal="false">
         <template #trigger>
           <SBreadcrumbEllipsis class="cursor-pointer" />
         </template>

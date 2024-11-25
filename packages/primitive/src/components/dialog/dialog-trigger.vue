@@ -13,15 +13,7 @@ const props = withDefaults(defineProps<DialogTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 
-const {
-  open,
-  contentId,
-  onOpenToggle,
-  triggerElement,
-  dataState,
-  initContentId
-  //
-} = injectDialogRootContext();
+const { open, contentId, onOpenToggle, triggerElement, dataState, initContentId } = injectDialogRootContext();
 initContentId();
 
 const { forwardRef, currentElement } = useForwardExpose();

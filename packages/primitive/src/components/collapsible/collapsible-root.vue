@@ -32,8 +32,8 @@ const { dataState, dataDisabled } = provideCollapsibleRootContext({
   disabled
 });
 
-useForwardExpose();
 defineExpose({ open });
+useForwardExpose();
 </script>
 
 <template>

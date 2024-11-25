@@ -11,9 +11,16 @@ defineOptions({
 
 const props = defineProps<AccordionItemPropsWithPrimitive>();
 
-const { currentRef, currentElement } = useForwardExpose();
-const { isSingle, modelValue, disabled, parentElement, collapsible, orientation, direction, unmountOnHide } =
-  injectAccordionRootContext();
+const {
+  isSingle,
+  modelValue,
+  disabled: ctxDisabled,
+  parentElement,
+  collapsible,
+  orientation,
+  direction,
+  unmountOnHide
+} = injectAccordionRootContext();
 
 const open = computed(() => {
   return isSingle.value
@@ -21,9 +28,15 @@ const open = computed(() => {
     : Array.isArray(modelValue.value) && modelValue.value.includes(props.value);
 });
 
-const propDisabled = computed(() => {
-  return disabled.value || props.disabled || (isSingle.value && open.value && !collapsible.value);
+const disabled = computed(() => {
+  return ctxDisabled.value || props.disabled || (isSingle.value && open.value && !collapsible.value);
 });
+
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
+
+defineExpose({ open, dataDisabled });
+
+const { currentRef, currentElement } = useForwardExpose();
 
 function handleArrowKey(e: KeyboardEvent) {
   useArrowNavigation(e, currentElement.value, parentElement.value!, {
@@ -33,15 +46,13 @@ function handleArrowKey(e: KeyboardEvent) {
   });
 }
 
-const { dataState, dataDisabled } = provideAccordionItemContext({
+const { dataState } = provideAccordionItemContext({
   open,
-  disabled: propDisabled,
+  disabled,
   currentRef,
   currentElement,
   value: computed(() => props.value)
 });
-
-defineExpose({ open, dataDisabled });
 </script>
 
 <template>
@@ -49,7 +60,7 @@ defineExpose({ open, dataDisabled });
     :class="props.class"
     :as="as"
     :as-child="asChild"
-    :disabled="propDisabled"
+    :disabled="disabled"
     :open="open"
     :data-state="dataState"
     :data-disabled="dataDisabled"
