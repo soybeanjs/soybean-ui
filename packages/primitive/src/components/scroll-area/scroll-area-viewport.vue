@@ -36,6 +36,7 @@ defineExpose({
   <div
     ref="viewportElement"
     data-soybean-scroll-area-viewport=""
+    :class="props.class"
     :style="{
       /**
        * We don't support `visible` because the intention is to have at least one scrollbar
@@ -56,7 +57,6 @@ defineExpose({
   >
     <Primitive
       :ref="forwardRef"
-      :class="props.class"
       :as="as"
       :as-child="asChild"
       :style="{
