@@ -48,11 +48,12 @@ useResizeObserver(menuContext.indicatorTrack, handlePositionChange);
     <Presence :present="(forceMount || isVisible) && !!position?.size">
       <Primitive
         :ref="forwardRef"
+        :class="props.class"
+        :as="as"
+        :as-child="asChild"
         aria-hidden="true"
         :data-state="isVisible ? 'visible' : 'hidden'"
         :data-orientation="menuContext.orientation"
-        :as-child="props.asChild"
-        :as
         :style="{
           position: 'absolute',
           ...(isHorizontal

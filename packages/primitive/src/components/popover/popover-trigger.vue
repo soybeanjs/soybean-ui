@@ -29,13 +29,14 @@ onMounted(() => {
     <Primitive
       :id="rootContext.triggerId"
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :type="as === 'button' ? 'button' : undefined"
       aria-haspopup="dialog"
       :aria-expanded="rootContext.open.value"
       :aria-controls="rootContext.contentId"
       :data-state="rootContext.open.value ? 'open' : 'closed'"
-      :as
-      :as-child="props.asChild"
       @click="rootContext.onOpenToggle"
     >
       <slot />

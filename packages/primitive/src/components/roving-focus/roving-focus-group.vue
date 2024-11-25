@@ -94,8 +94,8 @@ defineExpose({
   <CollectionSlot>
     <Primitive
       :class="props.class"
-      :as
-      :as-child
+      :as="as"
+      :as-child="asChild"
       :tabindex="isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0"
       :data-orientation="orientation"
       :dir

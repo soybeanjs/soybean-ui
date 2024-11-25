@@ -32,9 +32,9 @@ function onKeydownNavigation(event: KeyboardEvent) {
   <CollectionSlot>
     <Primitive
       :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="listbox"
-      :as
-      :as-child
       :tabindex="rootContext.focusable.value ? (rootContext.highlightedElement.value ? '-1' : '0') : undefined"
       :aria-orientation="rootContext.orientation.value"
       :aria-multiselectable="!!rootContext.multiple.value"

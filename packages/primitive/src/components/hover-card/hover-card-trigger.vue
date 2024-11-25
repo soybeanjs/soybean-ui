@@ -10,7 +10,7 @@ defineOptions({
   name: 'HoverCardTrigger'
 });
 
-withDefaults(defineProps<HoverCardTriggerPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<HoverCardTriggerPropsWithPrimitive>(), {
   as: 'a'
 });
 
@@ -31,8 +31,9 @@ function handleLeave() {
   <PopperAnchor as-child :reference="reference">
     <Primitive
       :ref="forwardRef"
-      :as-child
-      :as
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-state="rootContext.open.value ? 'open' : 'closed'"
       data-grace-area-trigger
       @pointerenter="excludeTouch(rootContext.onOpen)($event)"

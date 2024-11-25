@@ -42,10 +42,11 @@ const slotText = computed(() => {
 <template>
   <Primitive
     :ref="forwardRef"
-    :as
-    :as-child
-    :style="{ pointerEvents: 'none' }"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-placeholder="selectedLabel.length ? undefined : props.placeholder"
+    :style="{ pointerEvents: 'none' }"
   >
     <slot :selected-label="selectedLabel">
       {{ slotText }}

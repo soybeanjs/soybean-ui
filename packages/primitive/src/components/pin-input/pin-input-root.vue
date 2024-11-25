@@ -64,6 +64,9 @@ providePinInputRootContext({
   <Primitive
     v-bind="$attrs"
     :ref="forwardRef"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :dir="dir"
     :data-complete="isCompleted ? '' : undefined"
     :data-disabled="disabled ? '' : undefined"

@@ -51,13 +51,14 @@ provideStepperItemContext({
 <template>
   <Primitive
     :ref="forwardRef"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-current="itemState === 'active' ? 'true' : undefined"
-    :data-state="itemState"
-    :disabled="disabled || !isFocusable ? '' : undefined"
     :data-disabled="disabled || !isFocusable ? '' : undefined"
     :data-orientation="rootContext.orientation.value"
+    :data-state="itemState"
+    :disabled="disabled || !isFocusable ? '' : undefined"
   >
     <slot :state="itemState" />
   </Primitive>

@@ -26,8 +26,8 @@ provideMenuItemIndicatorContext({ modelValue });
 
 <template>
   <MenuItem
-    role="menuitemradio"
     v-bind="props"
+    role="menuitemradio"
     :aria-checked="modelValue"
     :data-state="getCheckedState(modelValue)"
     @select="onSelect"

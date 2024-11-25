@@ -9,6 +9,7 @@ defineOptions({
 });
 
 const props = defineProps<ToolbarToggleItemPropsWithPrimitive>();
+
 const { forwardRef } = useForwardExpose();
 </script>
 

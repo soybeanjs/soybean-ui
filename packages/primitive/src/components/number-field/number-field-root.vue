@@ -147,9 +147,10 @@ provideNumberFieldRootContext({
   <Primitive
     v-bind="$attrs"
     ref="primitiveElement"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     role="group"
-    :as
-    :as-child
     :data-disabled="disabled ? '' : undefined"
   >
     <slot :model-value="modelValue" :text-value="textValue" />

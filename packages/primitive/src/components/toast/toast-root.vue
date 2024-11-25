@@ -32,13 +32,14 @@ const open = useVModel(props, 'open', emit, {
   <Presence :present="forceMount || open">
     <ToastRootImpl
       :ref="forwardRef"
+      v-bind="$attrs"
       v-slot="{ remaining, duration: _duration }"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :duration="duration"
       :open="open"
       :type="type"
-      :as
-      :as-child
-      :duration="duration"
-      v-bind="$attrs"
       @close="open = false"
       @pause="emit('pause')"
       @resume="emit('resume')"

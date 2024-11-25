@@ -48,6 +48,9 @@ onUnmounted(() => {
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       role="slider"
       data-soybean-collection-item
       :tabindex="rootContext.disabled.value ? undefined : 0"
@@ -58,8 +61,6 @@ onUnmounted(() => {
       :aria-valuemin="rootContext.min.value"
       :aria-valuemax="rootContext.max.value"
       :aria-orientation="rootContext.orientation.value"
-      :as-child
-      :as
       :style="{
         transform: 'var(--soybean-slider-thumb-transform)',
         position: 'absolute',

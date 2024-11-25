@@ -10,7 +10,7 @@ defineOptions({
   name: 'SliderRange'
 });
 
-withDefaults(defineProps<SliderRangePropsWithPrimitive>(), {
+const props = withDefaults(defineProps<SliderRangePropsWithPrimitive>(), {
   as: 'span'
 });
 
@@ -30,10 +30,11 @@ const offsetEnd = computed(() => 100 - Math.max(...percentages.value!));
 
 <template>
   <Primitive
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-disabled="rootContext.disabled.value ? '' : undefined"
     :data-orientation="rootContext.orientation.value"
-    :as
-    :as-child
     :style="{
       [orientation!.startEdge]: `${offsetStart}%`,
       [orientation!.endEdge]: `${offsetEnd}%`

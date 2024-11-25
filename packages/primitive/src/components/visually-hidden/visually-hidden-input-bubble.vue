@@ -9,16 +9,14 @@ defineOptions({
   inheritAttrs: false
 });
 
-const {
-  class: className,
-  feature = 'fully-hidden',
-  checked = undefined,
-  value
-} = defineProps<VisuallyHiddenInputBubbleProps<T>>();
+const props = withDefaults(defineProps<VisuallyHiddenInputBubbleProps<T>>(), {
+  feature: 'fully-hidden',
+  checked: undefined
+});
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 
-const valueState = computed(() => checked ?? value);
+const valueState = computed(() => props.checked ?? props.value);
 
 function handleOnStateChange(cur: T | boolean, prev: T | boolean) {
   if (!currentElement.value) return;
@@ -42,5 +40,12 @@ watch(valueState, (cur, prev) => {
 </script>
 
 <template>
-  <VisuallyHidden ref="primitiveElement" v-bind="$attrs" :class="className" as="input" :as-child :feature />
+  <VisuallyHidden
+    ref="primitiveElement"
+    v-bind="$attrs"
+    :class="props.class"
+    as="input"
+    :as-child="asChild"
+    :feature="feature"
+  />
 </template>

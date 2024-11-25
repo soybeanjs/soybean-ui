@@ -11,7 +11,9 @@ defineOptions({
 });
 
 const props = defineProps<SliderHorizontalProps>();
+
 const emit = defineEmits<SliderOrientationPrivateEmits>();
+
 const { max, min, dir, inverted } = toRefs(props);
 
 const { forwardRef, currentElement: sliderElement } = useForwardExpose();
@@ -31,6 +33,27 @@ function getValueFromPointer(pointerPosition: number) {
   return value(pointerPosition - rect.left);
 }
 
+function onSlideStart(event: PointerEvent) {
+  const value = getValueFromPointer(event.clientX);
+  emit('slideStart', value);
+}
+
+function onSlideMove(event: PointerEvent) {
+  const value = getValueFromPointer(event.clientX);
+  emit('slideMove', value);
+}
+
+function onSlideEnd() {
+  rectRef.value = undefined;
+  emit('slideEnd');
+}
+
+function onStepKeyDown(event: KeyboardEvent) {
+  const slideDirection = isSlidingFromLeft.value ? 'from-left' : 'from-right';
+  const isBackKey = BACK_KEYS[slideDirection].includes(event.key);
+  emit('stepKeyDown', event, isBackKey ? -1 : 1);
+}
+
 provideSliderOrientationContext({
   startEdge: isSlidingFromLeft.value ? 'left' : 'right',
   endEdge: isSlidingFromLeft.value ? 'right' : 'left',
@@ -42,36 +65,15 @@ provideSliderOrientationContext({
 <template>
   <SliderImpl
     :ref="forwardRef"
-    :dir="dir"
     data-orientation="horizontal"
+    :dir="dir"
     :style="{
       ['--soybean-slider-thumb-transform' as any]: 'translateX(-50%)'
     }"
-    @slide-start="
-      event => {
-        const value = getValueFromPointer(event.clientX);
-        emit('slideStart', value);
-      }
-    "
-    @slide-move="
-      event => {
-        const value = getValueFromPointer(event.clientX);
-        emit('slideMove', value);
-      }
-    "
-    @slide-end="
-      () => {
-        rectRef = undefined;
-        emit('slideEnd');
-      }
-    "
-    @step-key-down="
-      event => {
-        const slideDirection = isSlidingFromLeft ? 'from-left' : 'from-right';
-        const isBackKey = BACK_KEYS[slideDirection].includes(event.key);
-        emit('stepKeyDown', event, isBackKey ? -1 : 1);
-      }
-    "
+    @slide-start="onSlideStart"
+    @slide-move="onSlideMove"
+    @slide-end="onSlideEnd"
+    @step-key-down="onStepKeyDown"
     @end-key-down="emit('endKeyDown', $event)"
     @home-key-down="emit('homeKeyDown', $event)"
   >

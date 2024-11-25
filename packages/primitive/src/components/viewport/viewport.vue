@@ -9,20 +9,20 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, nonce, ...delegatedProps } = defineProps<ViewportPropsWithPrimitive>();
+const props = defineProps<ViewportPropsWithPrimitive>();
 
 const { forwardRef } = useForwardExpose();
 
-const propNonce = useNonce(toRef(() => nonce));
+const propNonce = useNonce(toRef(() => props.nonce));
 </script>
 
 <template>
   <Primitive
-    v-bind="{ ...$attrs, ...delegatedProps }"
+    v-bind="{ ...$attrs, ...props }"
     :ref="forwardRef"
-    :class="className"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     data-soybean-viewport
     role="presentation"
     :style="{

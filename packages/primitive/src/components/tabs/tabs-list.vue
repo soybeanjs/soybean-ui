@@ -27,10 +27,10 @@ context.tabsList = currentElement;
     <Primitive
       :ref="forwardRef"
       :class="props.class"
-      role="tablist"
       :as="as"
       :as-child="asChild"
       :aria-orientation="context.orientation.value"
+      role="tablist"
     >
       <slot />
     </Primitive>

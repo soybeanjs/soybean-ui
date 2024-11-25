@@ -85,10 +85,11 @@ function handleClick() {
   <PopperAnchor as-child :reference="reference">
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :aria-describedby="rootContext.open.value ? rootContext.contentId : undefined"
       :data-state="rootContext.stateAttribute.value"
-      :as
-      :as-child="props.asChild"
       data-grace-area-trigger
       v-on="tooltipListeners"
     >

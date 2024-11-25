@@ -8,14 +8,14 @@ import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
 import type { NavigationKeys } from '../../types';
 import { flatten } from '../../shared';
-import type { FlattenedItem, TreeRootContext, TreeRootEmits, TreeRootProps } from './types';
 import { provideTreeRootContext } from './context';
+import type { FlattenedItem, TreeRootContext, TreeRootEmits, TreeRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TreeRoot'
 });
 
-const props = withDefaults(defineProps<TreeRootProps<T, U>>(), {
+const props = withDefaults(defineProps<TreeRootPropsWithPrimitive<T, U>>(), {
   as: 'ul',
   selectionBehavior: 'toggle',
   getChildren: (val: T) => val.children
@@ -32,13 +32,18 @@ const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 const isVirtual = ref(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
-const modelValue = useVModel<TreeRootProps<T, U>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-  passive: (props.modelValue === undefined) as false,
-  deep: true
-}) as Ref<U | U[]>;
+const modelValue = useVModel<TreeRootPropsWithPrimitive<T, U>, 'modelValue', 'update:modelValue'>(
+  props,
+  'modelValue',
+  emit,
+  {
+    defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
+    passive: (props.modelValue === undefined) as false,
+    deep: true
+  }
+) as Ref<U | U[]>;
 
-const expanded = useVModel<TreeRootProps<T, U>, 'expanded', 'update:expanded'>(props, 'expanded', emit, {
+const expanded = useVModel<TreeRootPropsWithPrimitive<T, U>, 'expanded', 'update:expanded'>(props, 'expanded', emit, {
   defaultValue: props.defaultExpanded ?? [],
   passive: (props.expanded === undefined) as false,
   deep: true
@@ -155,10 +160,11 @@ provideTreeRootContext({
 <template>
   <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir">
     <Primitive
-      role="tree"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :aria-multiselectable="multiple ? true : undefined"
+      role="tree"
       @keydown="handleKeydown"
       @keydown.up.down.shift="handleKeydownNavigation"
     >

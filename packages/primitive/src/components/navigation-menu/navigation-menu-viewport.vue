@@ -155,8 +155,9 @@ useResizeObserver([globalThis.document?.body, rootNavigationMenu], () => {
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-state="getOpenState(open)"
       :data-orientation="menuContext.orientation"
       :style="{

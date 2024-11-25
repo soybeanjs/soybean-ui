@@ -45,7 +45,7 @@ providePaginationRootContext({
 </script>
 
 <template>
-  <Primitive :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild">
     <slot :page="page" :page-count="pageCount" />
   </Primitive>
 </template>

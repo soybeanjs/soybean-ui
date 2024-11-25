@@ -14,18 +14,13 @@ const emit = defineEmits<ToolbarToggleGroupEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);
 
-const rootContext = injectToolbarRootContext();
+const { orientation, dir } = injectToolbarRootContext();
 
 useForwardExpose();
 </script>
 
 <template>
-  <ToggleGroupRoot
-    v-bind="forwarded"
-    :data-orientation="rootContext.orientation.value"
-    :dir="rootContext.dir.value"
-    :roving-focus="false"
-  >
+  <ToggleGroupRoot v-bind="forwarded" :data-orientation="orientation" :dir="dir" :roving-focus="false">
     <slot />
   </ToggleGroupRoot>
 </template>

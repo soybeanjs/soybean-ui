@@ -7,7 +7,7 @@ defineOptions({
   name: 'RangeCalendarCell'
 });
 
-withDefaults(defineProps<RangeCalendarCellPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<RangeCalendarCellPropsWithPrimitive>(), {
   as: 'td'
 });
 
@@ -16,8 +16,9 @@ const rootContext = injectRangeCalendarRootContext();
 
 <template>
   <Primitive
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     role="gridcell"
     :aria-selected="rootContext.isSelected(date) ? true : undefined"
     :aria-disabled="rootContext.isDateDisabled(date) || rootContext.isDateUnavailable?.(date)"

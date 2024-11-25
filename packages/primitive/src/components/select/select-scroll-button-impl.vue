@@ -52,11 +52,11 @@ onBeforeUnmount(() => clearAutoScrollTimer());
 
 <template>
   <Primitive
+    v-bind="$parent?.$props"
     aria-hidden="true"
     :style="{
       flexShrink: 0
     }"
-    v-bind="$parent?.$props"
     @pointerdown="handlePointerDown"
     @pointermove="handlePointerMove"
     @pointerleave="

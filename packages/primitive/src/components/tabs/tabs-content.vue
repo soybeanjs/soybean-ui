@@ -35,13 +35,13 @@ onMounted(() => {
       :id="contentId"
       :ref="forwardRef"
       :class="props.class"
-      role="tabpanel"
       :as="as"
       :as-child="asChild"
-      :data-state="isSelected ? 'active' : 'inactive'"
-      :data-orientation="rootContext.orientation.value"
       :aria-labelledby="triggerId"
+      :data-orientation="rootContext.orientation.value"
+      :data-state="isSelected ? 'active' : 'inactive'"
       :hidden="!present"
+      role="tabpanel"
       tabindex="0"
       :style="{
         animationDuration: isMountAnimationPreventedRef ? '0s' : undefined

@@ -19,14 +19,6 @@ const props = withDefaults(defineProps<ProgressRootPropsWithPrimitive>(), {
 
 const emit = defineEmits<ProgressRootEmits>();
 
-defineSlots<{
-  default: (props: {
-    /** Current input values */
-    modelValue: typeof modelValue.value;
-  }) => any;
-}>();
-
-useForwardExpose();
 const modelValue = useVModel(props, 'modelValue', emit, {
   passive: (props.modelValue === undefined) as false
 });
@@ -69,6 +61,8 @@ provideProgressRootContext({
   max,
   progressState
 });
+
+useForwardExpose();
 </script>
 
 <template>

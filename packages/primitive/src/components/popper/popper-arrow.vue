@@ -59,8 +59,8 @@ const baseSide = computed(() => OPPOSITE_SIDE[contentContext.placedSide.value]);
       v-bind="$attrs"
       :ref="forwardRef"
       :class="props.class"
-      :as
-      :as-child
+      :as="as"
+      :as-child="asChild"
       :rounded="rounded"
       :width="width"
       :height="height"

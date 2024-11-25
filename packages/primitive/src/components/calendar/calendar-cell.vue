@@ -22,12 +22,12 @@ const dataDisabled = computed(() => (isDateDisabled(props.date) ? '' : undefined
 <template>
   <Primitive
     :class="props.class"
-    role="gridcell"
     :as="as"
     :as-child="asChild"
     :aria-disabled="ariaDisabled"
     :aria-selected="ariaSelected"
     :data-disabled="dataDisabled"
+    role="gridcell"
   >
     <slot />
   </Primitive>

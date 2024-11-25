@@ -97,16 +97,17 @@ onMounted(() => {
   <Primitive
     :id="context.id?.value"
     :ref="forwardRef"
-    type="text"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    autocapitalize="off"
     autocomplete="off"
     autocorrect="off"
-    autocapitalize="off"
-    :as
-    :as-child
     :maxlength="maxLength"
     :placeholder="placeholder"
     :disabled="context.disabled.value"
     :data-invalid="context.isInvalidInput.value ? '' : undefined"
+    type="text"
     @input="handleInput"
     @keydown.enter="handleCustomKeydown"
     @keydown.tab="handleTab"

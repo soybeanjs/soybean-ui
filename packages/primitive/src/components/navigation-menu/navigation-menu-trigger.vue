@@ -117,14 +117,15 @@ function handleVisuallyHiddenFocus(ev: FocusEvent) {
     <Primitive
       :id="triggerId"
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :disabled="disabled"
       :data-disabled="disabled ? '' : undefined"
       :data-state="getOpenState(open)"
       data-navigation-menu-trigger
       :aria-expanded="open"
       :aria-controls="contentId"
-      :as-child="props.asChild"
-      :as
       v-bind="$attrs"
       @pointerenter="handlePointerEnter"
       @pointermove="handlePointerMove"

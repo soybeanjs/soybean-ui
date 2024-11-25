@@ -32,10 +32,11 @@ const itemContext = provideTagsInputItemContext({
   <CollectionItem :value="value">
     <Primitive
       :ref="forwardRef"
-      :as
-      :as-child
-      :aria-labelledby="itemContext.textId"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :aria-current="isSelected"
+      :aria-labelledby="itemContext.textId"
       :data-disabled="disabled ? '' : undefined"
       :data-state="isSelected ? 'active' : 'inactive'"
     >

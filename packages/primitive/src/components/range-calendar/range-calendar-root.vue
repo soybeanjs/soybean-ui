@@ -231,8 +231,9 @@ onMounted(() => {
 <template>
   <Primitive
     ref="primitiveElement"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     role="application"
     :aria-label="fullCalendarLabel"
     :data-readonly="readonly ? '' : undefined"

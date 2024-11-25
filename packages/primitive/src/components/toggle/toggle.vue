@@ -25,6 +25,8 @@ const modelValue = useVModel(props, 'modelValue', emit, {
   passive: (props.modelValue === undefined) as false
 }) as Ref<boolean>;
 
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
 function togglePressed() {
   modelValue.value = !modelValue.value;
 }
@@ -42,7 +44,7 @@ const isFormControl = useFormControl(currentElement);
     :class="props.class"
     :as="as"
     :as-child="asChild"
-    :type="as === 'button' ? 'button' : undefined"
+    :type="tag"
     :aria-pressed="modelValue"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"

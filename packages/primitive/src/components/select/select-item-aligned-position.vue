@@ -194,6 +194,7 @@ provideSelectItemAlignedPositionContext({
     }"
   >
     <Primitive
+      v-bind="{ ...$attrs, ...props }"
       :ref="forwardRef"
       :style="{
         // When we get the height of the content, it includes borders. If we were to set
@@ -202,7 +203,6 @@ provideSelectItemAlignedPositionContext({
         // We need to ensure the content doesn't get taller than the wrapper
         maxHeight: '100%'
       }"
-      v-bind="{ ...$attrs, ...props }"
     >
       <slot />
     </Primitive>

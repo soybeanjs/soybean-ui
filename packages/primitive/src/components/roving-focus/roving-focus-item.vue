@@ -11,14 +11,11 @@ defineOptions({
   name: 'RovingFocusItem'
 });
 
-const {
-  class: className,
-  as = 'span',
-  focusable = true,
-  active = true,
-  tabStopId,
-  allowShiftKey
-} = defineProps<RovingFocusItemPropsWithPrimitive>();
+const props = withDefaults(defineProps<RovingFocusItemPropsWithPrimitive>(), {
+  as: 'span',
+  focusable: true,
+  active: true
+});
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const { getItems, CollectionItem } = useCollection();
@@ -35,7 +32,7 @@ const {
 } = injectRovingFocusGroupContext();
 
 const rootNode = computed(() => currentElement.value?.getRootNode() as Document | ShadowRoot);
-const id = computed(() => tabStopId || useId());
+const id = computed(() => props.tabStopId || useId());
 const isCurrentTabStop = computed(() => currentTabStopId.value === id.value);
 
 function handleKeydown(event: KeyboardEvent) {
@@ -49,7 +46,7 @@ function handleKeydown(event: KeyboardEvent) {
   const focusIntent = getFocusIntent(event, orientation.value, dir.value);
 
   if (focusIntent !== undefined) {
-    if (event.metaKey || event.ctrlKey || event.altKey || (allowShiftKey ? false : event.shiftKey)) return;
+    if (event.metaKey || event.ctrlKey || event.altKey || (props.allowShiftKey ? false : event.shiftKey)) return;
     event.preventDefault();
     let candidateNodes = [
       ...getItems()
@@ -75,7 +72,7 @@ function handleKeydown(event: KeyboardEvent) {
 function handleMousedown(event: MouseEvent) {
   // We prevent focusing non-focusable items on `mousedown`.
   // Even though the item has tabIndex={-1}, that only means take it out of the tab order.
-  if (!focusable) {
+  if (!props.focusable) {
     event.preventDefault();
     return;
   }
@@ -89,13 +86,13 @@ function handleFocus() {
 }
 
 onMounted(() => {
-  if (focusable) {
+  if (props.focusable) {
     onFocusableItemAdd();
   }
 });
 
 onUnmounted(() => {
-  if (focusable) {
+  if (props.focusable) {
     onFocusableItemRemove();
   }
 });
@@ -105,9 +102,9 @@ onUnmounted(() => {
   <CollectionItem>
     <Primitive
       ref="primitiveElement"
-      :class="className"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :tabindex="isCurrentTabStop ? 0 : -1"
       :data-orientation="orientation"
       :data-active="active"

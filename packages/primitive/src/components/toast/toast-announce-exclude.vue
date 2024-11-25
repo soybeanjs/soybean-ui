@@ -6,15 +6,16 @@ defineOptions({
   name: 'ToastAnnounceExclude'
 });
 
-defineProps<ToastAnnounceExcludePropsWithPrimitive>();
+const props = defineProps<ToastAnnounceExcludePropsWithPrimitive>();
 </script>
 
 <template>
   <Primitive
-    :as
-    :as-child
-    data-soybean-toast-announce-exclude=""
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-soybean-toast-announce-alt="altText || undefined"
+    data-soybean-toast-announce-exclude=""
   >
     <slot />
   </Primitive>

@@ -115,15 +115,16 @@ defineExpose({
 <template>
   <Primitive
     :id="panelId"
-    :style="style"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     data-panel=""
     :data-panel-collapsible="collapsible || undefined"
     :data-panel-group-id="groupId"
     :data-panel-id="panelId"
     :data-panel-size="Number.parseFloat(`${style.flexGrow}`).toFixed(1)"
     :data-state="collapsible ? (isCollapsed ? 'collapsed' : 'expanded') : undefined"
+    :style="style"
   >
     <slot :is-collapsed="isCollapsed" :is-expanded="isExpanded" />
   </Primitive>

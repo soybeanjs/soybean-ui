@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MenuRadioGroup } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
 import type { MenubarRadioGroupEmits, MenubarRadioGroupPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -10,12 +10,12 @@ defineOptions({
 const props = defineProps<MenubarRadioGroupPropsWithPrimitive>();
 const emit = defineEmits<MenubarRadioGroupEmits>();
 
-const emitAsProps = useEmitAsProps(emit);
+const forwarded = useForwardPropsEmits(props, emit);
 useForwardExpose();
 </script>
 
 <template>
-  <MenuRadioGroup v-bind="{ ...props, ...emitAsProps }">
+  <MenuRadioGroup v-bind="forwarded">
     <slot />
   </MenuRadioGroup>
 </template>

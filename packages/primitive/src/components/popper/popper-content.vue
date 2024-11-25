@@ -184,8 +184,8 @@ providePopperContentContext({
       :ref="forwardRef"
       v-bind="$attrs"
       :class="props.class"
-      :as-child="props.asChild"
-      :as
+      :as="as"
+      :as-child="asChild"
       :data-side="placedSide"
       :data-align="placedAlign"
       :style="{

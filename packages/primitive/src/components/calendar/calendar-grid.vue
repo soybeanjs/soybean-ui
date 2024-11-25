@@ -23,9 +23,9 @@ const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 <template>
   <Primitive
     :class="props.class"
-    role="grid"
     :as="as"
     :as-child="asChild"
+    role="grid"
     tabindex="-1"
     :aria-disabled="ariaDisabled"
     :aria-readonly="ariaReadonly"

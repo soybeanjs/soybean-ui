@@ -306,10 +306,10 @@ provideListboxRootContext({
   <Primitive
     ref="primitiveElement"
     :class="props.class"
-    :as
-    :as-child
-    :dir
+    :as="as"
+    :as-child="asChild"
     :data-disabled="disabled ? '' : undefined"
+    :dir="dir"
     @pointerleave="onLeave"
     @focusout="onFocusout"
   >

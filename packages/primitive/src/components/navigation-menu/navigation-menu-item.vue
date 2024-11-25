@@ -96,7 +96,13 @@ function handleKeydown(ev: KeyboardEvent) {
 </script>
 
 <template>
-  <Primitive :as :as-child data-menu-item @keydown.up.down.left.right.home.end.space="handleKeydown">
+  <Primitive
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    data-menu-item
+    @keydown.up.down.left.right.home.end.space="handleKeydown"
+  >
     <slot />
   </Primitive>
 </template>

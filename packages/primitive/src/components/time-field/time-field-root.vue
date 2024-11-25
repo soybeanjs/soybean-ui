@@ -247,12 +247,15 @@ defineExpose({
   <Primitive
     v-bind="$attrs"
     ref="primitiveElement"
-    role="group"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-disabled="disabled ? true : undefined"
     :data-disabled="disabled ? '' : undefined"
     :data-readonly="readonly ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
     :dir="dir"
+    role="group"
     @keydown.left.right="handleKeydown"
   >
     <slot :model-value="modelValue" :segments="segmentContents" :is-invalid="isInvalid" />

@@ -15,7 +15,7 @@ const itemContext = injectSelectItemContext();
 </script>
 
 <template>
-  <Primitive v-if="itemContext.isSelected.value" aria-hidden="true" v-bind="props">
+  <Primitive v-if="itemContext.isSelected.value" v-bind="props" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

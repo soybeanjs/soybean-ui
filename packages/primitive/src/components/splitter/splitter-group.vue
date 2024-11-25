@@ -545,8 +545,12 @@ function panelDataHelper(panelDataArray: PanelData[], panelData: PanelData, _lay
 <template>
   <Primitive
     :ref="forwardRef"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :data-orientation="direction"
+    data-panel-group=""
+    :data-panel-group-id="groupId"
     :style="{
       display: 'flex',
       flexDirection: direction === 'horizontal' ? 'row' : 'column',
@@ -554,9 +558,6 @@ function panelDataHelper(panelDataArray: PanelData[], panelData: PanelData, _lay
       overflow: 'hidden',
       width: '100%'
     }"
-    data-panel-group=""
-    :data-orientation="direction"
-    :data-panel-group-id="groupId"
   >
     <slot :layout="layout" />
   </Primitive>

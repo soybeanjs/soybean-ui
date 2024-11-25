@@ -21,15 +21,14 @@ const props = withDefaults(defineProps<ToastViewportPropsWithPrimitive>(), {
   label: 'Notifications ({hotkey})',
   as: 'ol'
 });
-const { hotkey, label } = toRefs(props);
 
 const { forwardRef, currentElement } = useForwardExpose();
-const { CollectionSlot, getItems } = useCollection();
 const providerContext = injectToastProviderContext();
+const { CollectionSlot, getItems } = useCollection();
 const hasToasts = computed(() => providerContext.toastCount.value > 0);
 const headFocusProxyRef = ref<HTMLElement>();
 const tailFocusProxyRef = ref<HTMLElement>();
-
+const { hotkey, label } = toRefs(props);
 const hotkeyMessage = computed(() => hotkey.value.join('+').replace(/Key/g, '').replace(/Digit/g, ''));
 
 onKeyStroke(hotkey.value, () => {
@@ -165,7 +164,7 @@ function getSortedTabbableCandidates({ tabbingDirection }: { tabbingDirection: '
       "
     />
     <CollectionSlot>
-      <Primitive :ref="forwardRef" tabindex="-1" :as :as-child v-bind="$attrs">
+      <Primitive :ref="forwardRef" v-bind="$attrs" :class="props.class" :as="as" :as-child="asChild" tabindex="-1">
         <slot />
       </Primitive>
     </CollectionSlot>

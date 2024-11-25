@@ -7,15 +7,19 @@ defineOptions({
   name: 'TeleportPrimitive'
 });
 
-const { forceMount = false, to = 'body', disabled = false } = defineProps<TeleportProps>();
+const props = withDefaults(defineProps<TeleportProps>(), {
+  forceMount: false,
+  to: 'body',
+  disabled: false
+});
 
 const isMounted = useMounted();
 
-const showTeleport = computed(() => isMounted.value || forceMount);
+const showTeleport = computed(() => isMounted.value || props.forceMount);
 </script>
 
 <template>
-  <Teleport v-if="showTeleport" :to :disabled>
+  <Teleport v-if="showTeleport" :disabled="disabled" :to="to">
     <slot />
   </Teleport>
 </template>

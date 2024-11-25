@@ -8,11 +8,14 @@ defineOptions({
   name: 'VisuallyHidden'
 });
 
-const { class: className, as = 'span', feature = 'focusable' } = defineProps<VisuallyHiddenPropsWithPrimitive>();
+const props = withDefaults(defineProps<VisuallyHiddenPropsWithPrimitive>(), {
+  as: 'span',
+  feature: 'focusable'
+});
 
-const ariaHidden = computed(() => (feature === 'focusable' ? 'true' : undefined));
-const dataHidden = computed(() => (feature === 'fully-hidden' ? '' : undefined));
-const tabindex = computed(() => (feature === 'fully-hidden' ? '-1' : undefined));
+const ariaHidden = computed(() => (props.feature === 'focusable' ? 'true' : undefined));
+const dataHidden = computed(() => (props.feature === 'fully-hidden' ? '' : undefined));
+const tabindex = computed(() => (props.feature === 'fully-hidden' ? '-1' : undefined));
 
 // See: https://github.com/twbs/bootstrap/blob/master/scss/mixins/_screen-reader.scss
 const style: CSSProperties = {
@@ -31,7 +34,15 @@ const style: CSSProperties = {
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :aria-hidden :data-hidden :tabindex :style>
+  <Primitive
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :aria-hidden="ariaHidden"
+    :data-hidden="dataHidden"
+    :tabindex="tabindex"
+    :style="style"
+  >
     <slot />
   </Primitive>
 </template>

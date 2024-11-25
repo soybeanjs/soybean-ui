@@ -65,14 +65,14 @@ onUnmounted(() => {
 <template>
   <Primitive
     :ref="forwardRef"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-state="scrollbarContextVisible.hasThumb ? 'visible' : 'hidden'"
     :style="{
       width: 'var(--soybean-scroll-area-thumb-width)',
       height: 'var(--soybean-scroll-area-thumb-height)'
     }"
-    :class="props.class"
-    :as="as"
-    :as-child="asChild"
     @pointerdown="handlePointerDown"
     @pointerup="handlePointerUp"
   >

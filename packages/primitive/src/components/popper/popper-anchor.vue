@@ -10,19 +10,19 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: className, reference } = defineProps<PopperAnchorPropsWithPrimitive>();
+const props = defineProps<PopperAnchorPropsWithPrimitive>();
 
 const { forwardRef, currentElement } = useForwardExpose();
 
 const rootContext = injectPopperRootContext();
 
 watchPostEffect(() => {
-  rootContext.onAnchorChange(reference ?? currentElement.value);
+  rootContext.onAnchorChange(props.reference ?? currentElement.value);
 });
 </script>
 
 <template>
-  <Primitive :ref="forwardRef" :class="className" :as :as-child>
+  <Primitive :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild">
     <slot />
   </Primitive>
 </template>

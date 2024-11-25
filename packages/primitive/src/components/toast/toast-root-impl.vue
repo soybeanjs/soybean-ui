@@ -154,15 +154,16 @@ provideToastRootContext({ onClose: handleClose });
     <CollectionItem>
       <Primitive
         :ref="forwardRef"
-        role="status"
-        aria-live="off"
-        aria-atomic
-        tabindex="0"
         v-bind="$attrs"
-        :as
-        :as-child
-        :data-state="open ? 'open' : 'closed'"
+        :class="props.class"
+        :as="as"
+        :as-child="asChild"
+        aria-atomic
+        aria-live="off"
         :data-swipe-direction="providerContext.swipeDirection.value"
+        :data-state="open ? 'open' : 'closed'"
+        role="status"
+        tabindex="0"
         :style="{ userSelect: 'none', touchAction: 'none' }"
         @pointerdown.left="
           (event: PointerEvent) => {

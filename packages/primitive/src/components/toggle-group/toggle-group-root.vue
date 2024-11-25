@@ -40,15 +40,13 @@ provideToggleGroupRootContext({
 <template>
   <component
     :is="rovingFocus ? RovingFocusGroup : Primitive"
-    :class="props.class"
     as-child
-    :orientation="rovingFocus ? orientation : undefined"
     :dir="dir"
     :loop="rovingFocus ? loop : undefined"
+    :orientation="rovingFocus ? orientation : undefined"
   >
-    <Primitive :ref="forwardRef" role="group" :as :as-child>
+    <Primitive :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild" role="group">
       <slot :model-value="modelValue" />
-
       <VisuallyHiddenInput v-if="isFormControl && name" :name="name" :required="required" :value="modelValue" />
     </Primitive>
   </component>

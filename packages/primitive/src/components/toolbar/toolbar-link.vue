@@ -13,19 +13,17 @@ const props = withDefaults(defineProps<ToolbarLinkPropsWithPrimitive>(), {
 });
 
 const { forwardRef } = useForwardExpose();
+
+function onKeyDown(event: KeyboardEvent) {
+  if (event.key === ' ') {
+    (event.currentTarget as HTMLElement)?.click();
+  }
+}
 </script>
 
 <template>
   <RovingFocusItem as-child focusable>
-    <Primitive
-      v-bind="props"
-      :ref="forwardRef"
-      @keydown="
-        (event: KeyboardEvent) => {
-          if (event.key === ' ') (event.currentTarget as HTMLElement)?.click();
-        }
-      "
-    >
+    <Primitive v-bind="props" :ref="forwardRef" @keydown="onKeyDown">
       <slot />
     </Primitive>
   </RovingFocusItem>

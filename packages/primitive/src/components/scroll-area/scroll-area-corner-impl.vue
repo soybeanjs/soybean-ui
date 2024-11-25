@@ -41,6 +41,7 @@ watch(() => rootContext.scrollbarY.value, setCornerWidth);
 <template>
   <Primitive
     v-if="hasSize"
+    v-bind="$parent?.$props"
     :style="{
       width: `${width}px`,
       height: `${height}px`,
@@ -49,7 +50,6 @@ watch(() => rootContext.scrollbarY.value, setCornerWidth);
       left: rootContext.dir.value === 'rtl' ? 0 : undefined,
       bottom: 0
     }"
-    v-bind="$parent?.$props"
   >
     <slot />
   </Primitive>

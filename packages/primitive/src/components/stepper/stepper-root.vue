@@ -104,8 +104,9 @@ provideStepperRootContext({
   <Primitive
     role="group"
     aria-label="progress"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :data-linear="linear ? '' : undefined"
     :data-orientation="orientation"
   >

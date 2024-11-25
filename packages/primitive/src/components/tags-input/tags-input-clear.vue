@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectTagsInputRootContext } from './context';
@@ -12,22 +13,22 @@ const props = withDefaults(defineProps<TagsInputClearPropsWithPrimitive>(), {
   as: 'button'
 });
 
-useForwardExpose();
-const context = injectTagsInputRootContext();
+const { disabled, modelValue } = injectTagsInputRootContext();
+
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
+
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 function handleCancel() {
-  if (context.disabled.value) return;
-  context.modelValue.value = [];
+  if (disabled.value) return;
+  modelValue.value = [];
 }
+
+useForwardExpose();
 </script>
 
 <template>
-  <Primitive
-    v-bind="props"
-    :type="as === 'button' ? 'button' : undefined"
-    :data-disabled="context.disabled.value ? '' : undefined"
-    @click="handleCancel"
-  >
+  <Primitive v-bind="props" :data-disabled="dataDisabled" :type="tag" @click="handleCancel">
     <slot />
   </Primitive>
 </template>

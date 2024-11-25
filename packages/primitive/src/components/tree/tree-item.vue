@@ -5,15 +5,15 @@ import { RovingFocusItem } from '../roving-focus';
 import { useCollection } from '../../composables';
 import { flatten, handleAndDispatchCustomEvent } from '../../shared';
 import type { TreeSelectEvent, TreeToggleEvent } from '../../types';
-import type { TreeItemEmits, TreeItemProps } from './types';
 import { injectTreeRootContext } from './context';
+import type { TreeItemEmits, TreeItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TreeItem',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<TreeItemProps<T>>(), {
+const props = withDefaults(defineProps<TreeItemPropsWithPrimitive<T>>(), {
   as: 'li'
 });
 
@@ -147,15 +147,16 @@ defineExpose({
   <RovingFocusItem as-child :value="value" allow-shift-key>
     <Primitive
       v-bind="$attrs"
-      role="treeitem"
-      :as
-      :as-child
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :aria-selected="isSelected"
       :aria-expanded="hasChildren ? isExpanded : undefined"
       :aria-level="level"
       :data-indent="level"
       :data-selected="isSelected ? '' : undefined"
       :data-expanded="isExpanded ? '' : undefined"
+      role="treeitem"
       @keydown.enter.space.self.prevent="handleSelectCustomEvent"
       @keydown.right.prevent="ev => (rootContext.dir.value === 'ltr' ? handleKeydownRight(ev) : handleKeydownLeft(ev))"
       @keydown.left.prevent="ev => (rootContext.dir.value === 'ltr' ? handleKeydownLeft(ev) : handleKeydownRight(ev))"

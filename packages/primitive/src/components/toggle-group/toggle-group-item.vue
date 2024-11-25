@@ -22,7 +22,6 @@ const { forwardRef } = useForwardExpose();
 <template>
   <component
     :is="rootContext.rovingFocus.value ? RovingFocusItem : Primitive"
-    :class="props.class"
     as-child
     :focusable="!disabled"
     :active="pressed"

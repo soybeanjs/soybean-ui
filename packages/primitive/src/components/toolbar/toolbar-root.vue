@@ -23,7 +23,14 @@ provideToolbarRootContext({ orientation, dir });
 
 <template>
   <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
-    <Primitive :ref="forwardRef" role="toolbar" :aria-orientation="orientation" :as :as-child>
+    <Primitive
+      :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :aria-orientation="orientation"
+      role="toolbar"
+    >
       <slot />
     </Primitive>
   </RovingFocusGroup>

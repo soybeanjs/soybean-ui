@@ -8,7 +8,10 @@ defineOptions({
   name: 'Separator'
 });
 
-const { class: className, orientation = 'horizontal', decorative = false } = defineProps<SeparatorPropsWithPrimitive>();
+const props = withDefaults(defineProps<SeparatorPropsWithPrimitive>(), {
+  orientation: 'horizontal',
+  decorative: false
+});
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 
@@ -18,7 +21,7 @@ const computedOrientation = computed(() => (isValidOrientation(orientation) ? or
 const ariaOrientation = computed(() => (computedOrientation.value === 'vertical' ? orientation : undefined));
 
 const semanticProps = computed(() =>
-  decorative ? { role: 'none' } : { 'aria-orientation': ariaOrientation.value, role: 'separator' }
+  props.decorative ? { role: 'none' } : { 'aria-orientation': ariaOrientation.value, role: 'separator' }
 );
 
 function isValidOrientation(_orientation: any): _orientation is DataOrientation {
@@ -27,7 +30,13 @@ function isValidOrientation(_orientation: any): _orientation is DataOrientation 
 </script>
 
 <template>
-  <Primitive :class="className" :as :as-child :data-orientation="computedOrientation" v-bind="semanticProps">
+  <Primitive
+    v-bind="semanticProps"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :data-orientation="computedOrientation"
+  >
     <slot />
   </Primitive>
 </template>

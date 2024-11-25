@@ -24,7 +24,13 @@ onMounted(() => {
 
 <template>
   <Primitive :ref="forwardRef" style="position: relative">
-    <Primitive v-bind="$attrs" :as-child="props.asChild" :as :data-orientation="menuContext.orientation">
+    <Primitive
+      v-bind="$attrs"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
+      :data-orientation="menuContext.orientation"
+    >
       <slot />
     </Primitive>
   </Primitive>

@@ -21,7 +21,7 @@ const { forwardRef } = useForwardExpose();
 
 <template>
   <ToastAnnounceExclude v-if="altText" :alt-text="altText" as-child>
-    <ToastClose :ref="forwardRef" :as :as-child>
+    <ToastClose :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild">
       <slot />
     </ToastClose>
   </ToastAnnounceExclude>

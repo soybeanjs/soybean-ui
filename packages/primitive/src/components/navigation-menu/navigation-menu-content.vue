@@ -46,12 +46,12 @@ const isLastActiveValue = computed(() => {
       :force-mount="!menuContext.unmountOnHide.value"
     >
       <NavigationMenuContentImpl
+        v-bind="{ ...$attrs, ...forwarded }"
         :ref="forwardRef"
         :data-state="getOpenState(open)"
         :style="{
           pointerEvents: !open && menuContext.isRootMenu ? 'none' : undefined
         }"
-        v-bind="{ ...$attrs, ...forwarded }"
         :hidden="!present"
         @pointerenter="menuContext.onContentEnter(itemContext.value)"
         @pointerleave="whenMouse(() => menuContext.onContentLeave())($event)"

@@ -123,23 +123,24 @@ useWindowSplitterResizeHandlerBehavior({
   <Primitive
     :id="resizeHandleId"
     :ref="forwardRef"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
+    :data-disabled="disabled ? '' : undefined"
+    :data-orientation="direction"
+    :data-panel-group-id="groupId"
+    :data-panel-resize-handle-enabled="!disabled"
+    :data-panel-resize-handle-id="resizeHandleId"
+    data-resize-handle=""
+    :data-resize-handle-active="state === 'drag' ? 'pointer' : isFocused ? 'keyboard' : undefined"
+    :data-resize-handle-state="state"
+    :data-state="state"
+    role="separator"
     :style="{
       touchAction: 'none',
       userSelect: 'none'
     }"
-    :as
-    :as-child
-    role="separator"
-    data-resize-handle=""
     :tabindex="tabindex"
-    :data-state="state"
-    :data-disabled="disabled ? '' : undefined"
-    :data-orientation="direction"
-    :data-panel-group-id="groupId"
-    :data-resize-handle-active="state === 'drag' ? 'pointer' : isFocused ? 'keyboard' : undefined"
-    :data-resize-handle-state="state"
-    :data-panel-resize-handle-enabled="!disabled"
-    :data-panel-resize-handle-id="resizeHandleId"
     @blur="isFocused = false"
     @focus="isFocused = false"
   >

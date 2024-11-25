@@ -40,10 +40,11 @@ async function handleClick(ev: MouseEvent) {
 <template>
   <CollectionItem>
     <Primitive
-      :as
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-active="active ? '' : undefined"
       :aria-current="active ? 'page' : undefined"
-      :as-child="props.asChild"
       @click="handleClick"
     >
       <slot />

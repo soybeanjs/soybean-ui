@@ -3,8 +3,7 @@ import type { EventHook } from '@vueuse/core';
 import type { PrimitiveProps } from '../primitive';
 import type { Direction, TreeSelectEvent, TreeToggleEvent } from '../../types';
 // Root
-export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
-  extends PrimitiveProps {
+export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>> {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U | U[];
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
@@ -30,6 +29,10 @@ export interface TreeRootProps<T = Record<string, any>, U extends Record<string,
   /** When `true`, selecting parent will select the descendants. */
   propagateSelect?: boolean;
 }
+export type TreeRootPropsWithPrimitive<
+  T = Record<string, any>,
+  U extends Record<string, any> = Record<string, any>
+> = TreeRootProps<T, U> & PrimitiveProps;
 
 export type TreeRootEmits<T = Record<string, any>> = {
   'update:modelValue': [val: T];
@@ -56,12 +59,13 @@ export interface TreeRootContext<T = Record<string, any>> {
 }
 
 // Item
-export interface TreeItemProps<T> extends PrimitiveProps {
+export interface TreeItemProps<T> {
   /** Value given to this item */
   value: T;
   /** Level of depth */
   level: number;
 }
+export type TreeItemPropsWithPrimitive<T> = TreeItemProps<T> & PrimitiveProps;
 
 export type TreeItemEmits<T> = {
   /** Event handler called when selecting item. */

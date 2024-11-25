@@ -135,8 +135,9 @@ provideEditableRootContext({
   <Primitive
     v-bind="$attrs"
     ref="primitiveElement"
-    :as
-    :as-child
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :dir="dir"
     @focus.capture="focusOutside.onFocusCapture"
     @blur.capture="focusOutside.onBlurCapture"

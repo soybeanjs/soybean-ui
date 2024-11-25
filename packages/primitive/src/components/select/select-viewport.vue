@@ -60,9 +60,9 @@ function handleScroll(event: WheelEvent) {
 <template>
   <Primitive
     :ref="forwardRef"
+    v-bind="{ ...$attrs, ...props }"
     data-soybean-select-viewport
     role="presentation"
-    v-bind="{ ...$attrs, ...props }"
     :style="{
       // we use position: 'relative' here on the `viewport` so that when we call
       // `selectedItem.offsetTop` in calculations, the offset is relative to the viewport

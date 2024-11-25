@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MenuItem } from '../menu';
-import { useEmitAsProps, useForwardExpose } from '../../composables';
+import { useForwardExpose, useForwardPropsEmits } from '../../composables';
 import type { MenubarItemEmits, MenubarItemPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -10,12 +10,13 @@ defineOptions({
 const props = defineProps<MenubarItemPropsWithPrimitive>();
 const emit = defineEmits<MenubarItemEmits>();
 
-const emitAsProps = useEmitAsProps(emit);
+const forwarded = useForwardPropsEmits(props, emit);
+
 useForwardExpose();
 </script>
 
 <template>
-  <MenuItem v-bind="{ ...props, ...emitAsProps }">
+  <MenuItem v-bind="forwarded">
     <slot />
   </MenuItem>
 </template>

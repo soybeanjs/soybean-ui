@@ -9,7 +9,7 @@ defineOptions({
   name: 'StepperTrigger'
 });
 
-withDefaults(defineProps<StepperTriggerPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<StepperTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 
@@ -73,16 +73,17 @@ onUnmounted(() => {
 <template>
   <Primitive
     :ref="forwardRef"
-    :type="as === 'button' ? 'button' : undefined"
-    :as
-    :as-child
-    :data-state="itemContext.state.value"
-    :disabled="itemContext.disabled.value || !itemContext.isFocusable.value ? '' : undefined"
-    :data-disabled="itemContext.disabled.value || !itemContext.isFocusable.value ? '' : undefined"
-    :data-orientation="rootContext.orientation.value"
-    :tabindex="itemContext.isFocusable.value ? 0 : -1"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-describedby="itemContext.descriptionId"
     :aria-labelledby="itemContext.titleId"
+    :data-disabled="itemContext.disabled.value || !itemContext.isFocusable.value ? '' : undefined"
+    :data-orientation="rootContext.orientation.value"
+    :data-state="itemContext.state.value"
+    :disabled="itemContext.disabled.value || !itemContext.isFocusable.value ? '' : undefined"
+    :tabindex="itemContext.isFocusable.value ? 0 : -1"
+    :type="as === 'button' ? 'button' : undefined"
     @mousedown.left="handleMouseDown"
     @keydown.enter.space.left.right.up.down="handleKeyDown"
   >

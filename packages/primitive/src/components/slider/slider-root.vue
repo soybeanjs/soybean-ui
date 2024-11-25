@@ -106,8 +106,9 @@ provideSliderRootContext({
       :is="orientation === 'horizontal' ? SliderHorizontal : SliderVertical"
       v-bind="$attrs"
       :ref="forwardRef"
-      :as-child
-      :as
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :min="min"
       :max="max"
       :dir="dir"

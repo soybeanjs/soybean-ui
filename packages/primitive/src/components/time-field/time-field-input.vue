@@ -33,34 +33,38 @@ const { handleSegmentClick, handleSegmentKeydown, attributes } = useDateField({
 const disabled = computed(() => rootContext.disabled.value);
 const readonly = computed(() => rootContext.readonly.value);
 const isInvalid = computed(() => rootContext.isInvalid.value);
+
+const onEvents = computed(() => {
+  if (props.part !== 'literal') {
+    return {
+      mousedown: handleSegmentClick,
+      keydown: handleSegmentKeydown,
+      focusout: () => {
+        hasLeftFocus.value = true;
+      },
+      focusin: (e: FocusEvent) => {
+        rootContext.setFocusedElement(e.target as HTMLElement);
+      }
+    };
+  }
+  return {};
+});
 </script>
 
 <template>
   <Primitive
-    :as
-    :as-child
     v-bind="attributes"
-    :contenteditable="disabled || readonly ? false : part !== 'literal'"
-    :data-soybean-time-field-segment="part"
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :aria-disabled="disabled ? true : undefined"
+    :aria-invalid="isInvalid ? true : undefined"
     :aria-readonly="readonly ? true : undefined"
     :data-disabled="disabled ? '' : undefined"
     :data-invalid="isInvalid ? '' : undefined"
-    :aria-invalid="isInvalid ? true : undefined"
-    v-on="
-      part !== 'literal'
-        ? {
-            mousedown: handleSegmentClick,
-            keydown: handleSegmentKeydown,
-            focusout: () => {
-              hasLeftFocus = true;
-            },
-            focusin: (e: FocusEvent) => {
-              rootContext.setFocusedElement(e.target as HTMLElement);
-            }
-          }
-        : {}
-    "
+    :contenteditable="disabled || readonly ? false : part !== 'literal'"
+    :data-soybean-time-field-segment="part"
+    v-on="onEvents"
   >
     <slot />
   </Primitive>

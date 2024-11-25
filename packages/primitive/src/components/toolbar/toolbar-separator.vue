@@ -8,14 +8,15 @@ defineOptions({
   name: 'ToolbarSeparator'
 });
 
-defineProps<ToolbarSeparatorPropsWithPrimitive>();
+const props = defineProps<ToolbarSeparatorPropsWithPrimitive>();
 
-const rootContext = injectToolbarRootContext();
+const { orientation } = injectToolbarRootContext();
+
 useForwardExpose();
 </script>
 
 <template>
-  <Separator :orientation="rootContext.orientation.value" :as-child="asChild" :as="as">
+  <Separator :class="props.class" :as="as" :as-child="asChild" :orientation="orientation">
     <slot />
   </Separator>
 </template>

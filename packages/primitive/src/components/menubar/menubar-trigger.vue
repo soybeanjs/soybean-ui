@@ -11,7 +11,7 @@ defineOptions({
   name: 'MenubarTrigger'
 });
 
-withDefaults(defineProps<MenubarTriggerPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<MenubarTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 const rootContext = injectMenubarRootContext();
@@ -36,7 +36,9 @@ onMounted(() => {
         <Primitive
           :id="menuContext.triggerId"
           :ref="forwardRef"
-          :as
+          :class="props.class"
+          :as="as"
+          :as-child="asChild"
           :type="as === 'button' ? 'button' : undefined"
           role="menuitem"
           aria-haspopup="menu"

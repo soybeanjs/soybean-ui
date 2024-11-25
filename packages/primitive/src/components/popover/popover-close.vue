@@ -18,9 +18,10 @@ const rootContext = injectPopoverRootContext();
 
 <template>
   <Primitive
+    :class="props.class"
+    :as="as"
+    :as-child="asChild"
     :type="as === 'button' ? 'button' : undefined"
-    :as
-    :as-child="props.asChild"
     @click="rootContext.onOpenChange(false)"
   >
     <slot />

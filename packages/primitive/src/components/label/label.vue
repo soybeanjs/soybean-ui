@@ -7,7 +7,9 @@ defineOptions({
   name: 'PrimitiveLabel'
 });
 
-const { class: className, as = 'label', ...delegatedProps } = defineProps<LabelPropsWithPrimitive>();
+const props = withDefaults(defineProps<LabelPropsWithPrimitive>(), {
+  as: 'label'
+});
 
 function handleMouseDown(event: MouseEvent) {
   // prevent text selection when double clicking label
@@ -20,7 +22,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive v-bind="delegatedProps" :class="className" :as="as" @mousedown="handleMouseDown">
+  <Primitive v-bind="props" @mousedown="handleMouseDown">
     <slot />
   </Primitive>
 </template>

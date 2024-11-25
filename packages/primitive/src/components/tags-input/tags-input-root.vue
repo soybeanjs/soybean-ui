@@ -164,12 +164,13 @@ provideTagsInputRootContext({
   <CollectionSlot>
     <Primitive
       :ref="forwardRef"
-      :dir="dir"
-      :as
-      :as-child
-      :data-invalid="isInvalidInput ? '' : undefined"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-disabled="disabled ? '' : undefined"
       :data-focused="focused ? '' : undefined"
+      :data-invalid="isInvalidInput ? '' : undefined"
+      :dir="dir"
     >
       <slot :model-value="modelValue" />
 

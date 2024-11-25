@@ -6,13 +6,13 @@ defineOptions({
   name: 'SelectIcon'
 });
 
-withDefaults(defineProps<SelectIconPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<SelectIconPropsWithPrimitive>(), {
   as: 'span'
 });
 </script>
 
 <template>
-  <Primitive aria-hidden="true" :as :as-child>
+  <Primitive :class="props.class" :as="as" :as-child="asChild" aria-hidden="true">
     <slot>▼</slot>
   </Primitive>
 </template>

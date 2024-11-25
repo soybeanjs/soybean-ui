@@ -44,10 +44,10 @@ useForwardExpose();
   <Primitive
     v-show="imageLoadingStatus === 'loaded'"
     :class="props.class"
-    role="img"
     :as="as"
     :as-child="asChild"
-    :src="src"
     :alt="alt"
+    role="img"
+    :src="src"
   />
 </template>

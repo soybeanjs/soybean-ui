@@ -74,9 +74,10 @@ provideNavigationMenuRootContext({
   <CollectionSlot>
     <Primitive
       :ref="forwardRef"
+      :class="props.class"
+      :as="as"
+      :as-child="asChild"
       :data-orientation="orientation"
-      :as-child="props.asChild"
-      :as
       data-soybean-navigation-menu
     >
       <slot :model-value="modelValue" />

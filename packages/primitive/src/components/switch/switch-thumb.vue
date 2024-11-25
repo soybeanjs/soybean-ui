@@ -23,7 +23,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-state="dataState" :data-disabled="dataDisabled">
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-disabled="dataDisabled" :data-state="dataState">
     <slot />
   </Primitive>
 </template>

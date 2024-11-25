@@ -51,7 +51,7 @@ provideTabsRootContext({
 </script>
 
 <template>
-  <Primitive :class="props.class" :as="as" :as-child="asChild" :dir="dir" :data-orientation="orientation">
+  <Primitive :class="props.class" :as="as" :as-child="asChild" :data-orientation="orientation" :dir="dir">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

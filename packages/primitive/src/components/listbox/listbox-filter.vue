@@ -44,8 +44,8 @@ onMounted(() => {
   <Primitive
     ref="primitiveElement"
     :class="props.class"
-    :as
-    :as-child
+    :as="as"
+    :as-child="asChild"
     :value="modelValue"
     :disabled="disabled ? '' : undefined"
     :data-disabled="disabled ? '' : undefined"

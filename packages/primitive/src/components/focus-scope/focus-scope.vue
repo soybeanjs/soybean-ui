@@ -19,7 +19,10 @@ defineOptions({
   name: 'FocusScope'
 });
 
-const { class: className, loop = false, trapped = false } = defineProps<FocusScopePropsWithPrimitive>();
+const props = withDefaults(defineProps<FocusScopePropsWithPrimitive>(), {
+  loop: false,
+  trapped: false
+});
 
 const emit = defineEmits<FocusScopeEmits>();
 
@@ -39,7 +42,7 @@ const focusScope = reactive({
 });
 
 function handleKeyDown(event: KeyboardEvent) {
-  if (!loop && !trapped) return;
+  if (!props.loop && !props.trapped) return;
   if (focusScope.paused) return;
 
   const container = currentElement.value;
@@ -56,10 +59,10 @@ function handleKeyDown(event: KeyboardEvent) {
       if (focusedElement === container) event.preventDefault();
     } else if (!event.shiftKey && focusedElement === last) {
       event.preventDefault();
-      if (loop) focus(first, { select: true });
+      if (props.loop) focus(first, { select: true });
     } else if (event.shiftKey && focusedElement === first) {
       event.preventDefault();
-      if (loop) focus(last, { select: true });
+      if (props.loop) focus(last, { select: true });
     }
   }
 }
@@ -67,7 +70,7 @@ function handleKeyDown(event: KeyboardEvent) {
 watchEffect(cleanupFn => {
   if (!isClient) return;
   const container = currentElement.value;
-  if (!trapped) return;
+  if (!props.trapped) return;
 
   function handleFocusIn(event: FocusEvent) {
     if (focusScope.paused || !container) return;
@@ -181,7 +184,7 @@ watchEffect(async cleanupFn => {
 </script>
 
 <template>
-  <Primitive ref="currentRef" tabindex="-1" :class="className" :as :as-child @keydown="handleKeyDown">
+  <Primitive ref="currentRef" :class="props.class" :as="as" :as-child="asChild" tabindex="-1" @keydown="handleKeyDown">
     <slot />
   </Primitive>
 </template>
