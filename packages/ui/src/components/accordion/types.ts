@@ -1,37 +1,33 @@
-import type { AccordionRootEmits, AccordionRootProps, AccordionItemProps as _AccordionItemProps } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp, SingleOrMultipleType } from '../../types';
+import type {
+  AcceptableValue,
+  AccordionContentProps,
+  AccordionHeaderProps,
+  AccordionItemData,
+  AccordionItemProps,
+  AccordionRootEmits,
+  AccordionRootProps,
+  ClassValue,
+  SingleOrMultipleType,
+  AccordionTriggerProps as _AccordionTriggerProps
+} from '@soybean-ui/primitive';
 
-export type AccordionItemProps = ClassValueProp & Pick<_AccordionItemProps, 'disabled' | 'value' | 'unmountOnHide'>;
-
-export type AccordionHeaderProps = ClassValueProp;
-
-export type AccordionTriggerProps = ClassValueProp & {
+export type AccordionTriggerProps = _AccordionTriggerProps & {
   triggerIconClass?: ClassValue;
-};
-
-export type AccordionContentProps = ClassValueProp;
-
-export type AccordionContentBodyProps = ClassValueProp;
-
-export type AccordionItemData = Pick<AccordionItemProps, 'value' | 'disabled'> & {
-  title?: string;
-  content?: string;
 };
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
-  ValidValue = string | string[],
-  ExplicitType = SingleOrMultipleType
-> = AccordionRootProps<ValidValue, ExplicitType> & {
+  V = AcceptableValue | AcceptableValue[],
+  E = SingleOrMultipleType
+> = AccordionRootProps<V, E> & {
   items: T[];
   itemClass?: ClassValue;
   headerClass?: ClassValue;
   triggerClass?: ClassValue;
   triggerIconClass?: ClassValue;
   contentClass?: ClassValue;
-  contentBodyClass?: ClassValue;
 };
 
-export type AccordionEmits = AccordionRootEmits;
+export type AccordionEmits<E extends SingleOrMultipleType = SingleOrMultipleType> = AccordionRootEmits<E>;
 
-export type { AccordionRootProps, AccordionRootEmits };
+export type { AccordionItemProps, AccordionHeaderProps, AccordionContentProps, AccordionItemData };

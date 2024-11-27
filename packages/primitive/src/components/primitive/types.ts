@@ -36,3 +36,7 @@ export interface PrimitiveProps {
    */
   as?: AsTag | Component;
 }
+
+export interface PrimitivePropsWithClass extends PrimitiveProps {
+  class?: ClassValue;
+}

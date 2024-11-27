@@ -27,7 +27,7 @@ export function useForwardPropsEmits<T extends Record<string, any>, Name extends
   }));
 }
 
-export function useCombinedForwardPropsEmits<T extends Record<string, any>, Name extends string>(
+export function useCombinedPropsEmits<T extends Record<string, any>, Name extends string>(
   props: ComputedRef<T>,
   emit?: (name: Name, ...args: any[]) => void
 ) {

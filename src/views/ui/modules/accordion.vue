@@ -52,7 +52,7 @@ const items: AccordionItems[] = [
     collapsible
     :items="items"
     item-class="border-b-0"
-    content-body-class="px-3 leading-8"
+    content-class="px-3 leading-8"
   >
     <template #trigger="{ item, open }">
       <SAccordionTrigger

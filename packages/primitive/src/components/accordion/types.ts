@@ -1,5 +1,5 @@
 import type { ComputedRef, Ref, VNodeRef } from 'vue';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitivePropsWithClass } from '../primitive';
 import type { CollapsibleContentProps, CollapsibleRootProps } from '../collapsible';
 import type {
   AcceptableValue,
@@ -51,12 +51,7 @@ export type AccordionRootProps<
    * @defaultValue `true`
    */
   unmountOnHide?: boolean;
-};
-
-export type AccordionRootPropsWithPrimitive<
-  V = AcceptableValue | AcceptableValue[],
-  E = SingleOrMultipleType
-> = AccordionRootProps<V, E> & PrimitiveProps;
+} & PrimitivePropsWithClass;
 
 export type AccordionRootEmits<T extends SingleOrMultipleType = SingleOrMultipleType> = {
   /** Event handler called when the expanded state of an item changes */
@@ -64,7 +59,7 @@ export type AccordionRootEmits<T extends SingleOrMultipleType = SingleOrMultiple
 };
 
 // AccordionRootContext
-export type AccordionRootContext = {
+export interface AccordionRootContext {
   disabled: Ref<boolean>;
   direction: Ref<Direction>;
   orientation: Ref<DataOrientation>;
@@ -74,10 +69,10 @@ export type AccordionRootContext = {
   modelValue: Ref<AcceptableValue | AcceptableValue[] | undefined>;
   collapsible: Ref<boolean>;
   unmountOnHide: Ref<boolean>;
-};
+}
 
 // AccordionItem
-export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountOnHide'> {
+export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountOnHide'>, PrimitivePropsWithClass {
   /**
    * Whether or not an accordion item is disabled from user interaction. When `true`, prevents the user from interacting
    * with the item.
@@ -88,8 +83,6 @@ export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountO
   /** A string value for the accordion item. All items within an accordion should use a unique value. */
   value: string;
 }
-
-export type AccordionItemPropsWithPrimitive = AccordionItemProps & PrimitiveProps;
 
 // AccordionItemContext
 export interface AccordionItemContextParams {
@@ -108,28 +101,25 @@ export interface AccordionItemContext extends AccordionItemContextParams {
 }
 
 // AccordionHeader
-export interface AccordionHeaderProps {}
-export type AccordionHeaderPropsWithPrimitive = AccordionHeaderProps & PrimitiveProps;
+export interface AccordionHeaderProps extends PrimitivePropsWithClass {}
 
 // AccordionContent
-export interface AccordionContentProps extends CollapsibleContentProps {}
-export type AccordionContentPropsWithPrimitive = AccordionContentProps & PrimitiveProps;
+export interface AccordionContentProps extends CollapsibleContentProps, PrimitivePropsWithClass {}
 
 // AccordionTrigger
-export interface AccordionTriggerProps {}
-export type AccordionTriggerPropsWithPrimitive = AccordionTriggerProps & PrimitiveProps;
+export interface AccordionTriggerProps extends PrimitivePropsWithClass {}
 
 // Accordion
-export type AccordionItemData = Pick<AccordionItemProps, 'value' | 'disabled'> & {
+export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   title?: string;
   content?: string;
-};
+}
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
   V = AcceptableValue | AcceptableValue[],
   E = SingleOrMultipleType
-> = AccordionRootPropsWithPrimitive<V, E> & {
+> = AccordionRootProps<V, E> & {
   items: T[];
   itemClass?: ClassValue;
   headerClass?: ClassValue;

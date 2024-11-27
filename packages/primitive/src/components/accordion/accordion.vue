@@ -7,8 +7,9 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
-import { useCombinedForwardPropsEmits, useOmitForwardProps } from '../../composables';
+import { useCombinedPropsEmits, useOmitForwardProps } from '../../composables';
 import type { AcceptableValue, SingleOrMultipleType } from '../../types';
+import { Slot } from '../primitive';
 import AccordionRoot from './accordion-root.vue';
 import AccordionItem from './accordion-item.vue';
 import AccordionHeader from './accordion-header.vue';
@@ -29,10 +30,11 @@ const forwardedRootProps = useOmitForwardProps(props, [
   'itemClass',
   'headerClass',
   'triggerClass',
+  'triggerIconClass',
   'contentClass'
 ]);
 
-const forwardedRoot = useCombinedForwardPropsEmits(forwardedRootProps, emit);
+const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, emit);
 </script>
 
 <template>
@@ -45,7 +47,9 @@ const forwardedRoot = useCombinedForwardPropsEmits(forwardedRootProps, emit);
               <AccordionTrigger :class="triggerClass">
                 <slot name="triggerContent" v-bind="{ modelValue, open, item }">{{ item.title }}</slot>
                 <template #icon>
-                  <slot name="triggerIcon" v-bind="{ modelValue, open, item }" />
+                  <Slot :class="triggerIconClass">
+                    <slot name="triggerIcon" v-bind="{ modelValue, open, item }" />
+                  </Slot>
                 </template>
               </AccordionTrigger>
             </slot>

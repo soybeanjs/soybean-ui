@@ -2,13 +2,13 @@
 import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { injectAccordionItemContext, injectAccordionRootContext } from './context';
-import type { AccordionHeaderPropsWithPrimitive } from './types';
+import type { AccordionHeaderProps } from './types';
 
 defineOptions({
   name: 'AccordionHeader'
 });
 
-const props = withDefaults(defineProps<AccordionHeaderPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<AccordionHeaderProps>(), {
   as: 'h3'
 });
 
