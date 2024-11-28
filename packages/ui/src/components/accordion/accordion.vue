@@ -12,6 +12,7 @@ import type { AcceptableValue, SingleOrMultipleType } from '@soybean-ui/primitiv
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionContent from './accordion-content.vue';
+import SAccordionContentBody from './accordion-content-body.vue';
 import SAccordionTrigger from './accordion-trigger.vue';
 import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
 
@@ -29,7 +30,8 @@ const forwardedRootProps = useOmitForwardProps(props, [
   'headerClass',
   'triggerClass',
   'triggerIconClass',
-  'contentClass'
+  'contentClass',
+  'contentBodyClass'
 ]);
 
 const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, emit);
@@ -51,7 +53,9 @@ const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, emit);
             </slot>
           </SAccordionHeader>
           <SAccordionContent :class="contentClass">
-            <slot name="content" v-bind="{ modelValue, open, item }">{{ item.content }}</slot>
+            <SAccordionContentBody :class="contentBodyClass">
+              <slot name="content" v-bind="{ modelValue, open, item }">{{ item.content }}</slot>
+            </SAccordionContentBody>
           </SAccordionContent>
         </SAccordionItem>
       </slot>

@@ -8,7 +8,7 @@ defineOptions({
   name: 'SAccordionContentBody'
 });
 
-const { class: cls } = defineProps<AccordionContentBodyProps>();
+const { class: cls, as = 'div' } = defineProps<AccordionContentBodyProps>();
 
 const { contentBody } = accordionVariants();
 
@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(contentBody(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <Primitive :class="mergedCls" :as="as">
     <slot />
   </Primitive>
 </template>
