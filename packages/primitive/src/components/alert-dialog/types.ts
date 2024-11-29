@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import type {
+  DialogCloseProps,
   DialogContentEmits,
   DialogContentProps,
   DialogDescriptionProps,
@@ -14,7 +15,6 @@ import type {
 
 // AlertDialogRoot
 export interface AlertDialogRootProps extends Omit<DialogRootProps, 'modal'> {}
-export type AlertDialogRootPropsWithPrimitive = AlertDialogRootProps & PrimitiveProps;
 export type AlertDialogRootEmits = DialogRootEmits;
 
 // AlertDialogTrigger
@@ -50,9 +50,9 @@ export interface AlertDialogDescriptionProps extends DialogDescriptionProps {}
 export type AlertDialogDescriptionPropsWithPrimitive = AlertDialogDescriptionProps & PrimitiveProps;
 
 // AlertDialogCancel
-export interface AlertDialogCancelProps {}
+export interface AlertDialogCancelProps extends DialogCloseProps {}
 export type AlertDialogCancelPropsWithPrimitive = AlertDialogCancelProps & PrimitiveProps;
 
 // AlertDialogAction
-export interface AlertDialogActionProps {}
+export interface AlertDialogActionProps extends DialogCloseProps {}
 export type AlertDialogActionPropsWithPrimitive = AlertDialogActionProps & PrimitiveProps;

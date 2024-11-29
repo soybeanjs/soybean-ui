@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { DialogRoot } from '../dialog';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type { AlertDialogRootEmits, AlertDialogRootPropsWithPrimitive } from './types';
+import type { AlertDialogRootEmits, AlertDialogRootProps } from './types';
 
 defineOptions({
   name: 'AlertDialogRoot'
 });
 
-const props = defineProps<AlertDialogRootPropsWithPrimitive>();
+const props = defineProps<AlertDialogRootProps>();
 
 const emit = defineEmits<AlertDialogRootEmits>();
 

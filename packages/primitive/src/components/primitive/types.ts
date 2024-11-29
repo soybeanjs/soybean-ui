@@ -1,5 +1,4 @@
 import type { Component } from 'vue';
-import type { ClassValue } from '../../types';
 
 export type AsTag =
   | 'a'
@@ -22,7 +21,6 @@ export type AsTag =
   | ({} & string);
 
 export interface PrimitiveProps {
-  class?: ClassValue;
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    *
@@ -35,8 +33,4 @@ export interface PrimitiveProps {
    * @defaultValue 'div'
    */
   as?: AsTag | Component;
-}
-
-export interface PrimitivePropsWithClass extends PrimitiveProps {
-  class?: ClassValue;
 }

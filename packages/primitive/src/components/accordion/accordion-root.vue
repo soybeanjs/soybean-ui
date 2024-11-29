@@ -4,13 +4,13 @@ import { useDirection, useForwardExpose, useSingleOrMultipleValue } from '../../
 import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { Primitive } from '../primitive';
 import { provideAccordionRootContext } from './context';
-import type { AccordionRootEmits, AccordionRootProps } from './types';
+import type { AccordionRootEmits, AccordionRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'AccordionRoot'
 });
 
-const props = withDefaults(defineProps<AccordionRootProps<T, S>>(), {
+const props = withDefaults(defineProps<AccordionRootPropsWithPrimitive<T, S>>(), {
   disabled: false,
   orientation: 'vertical',
   collapsible: false,

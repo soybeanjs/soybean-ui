@@ -2,7 +2,7 @@ import type { ComputedRef, Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
-import type { DisclosureState } from '../../types';
+import type { ClassValueProp, DisclosureState } from '../../types';
 
 export interface DialogRootProps {
   /** The controlled open state of the dialog. Can be bound as `v-model:open`. */
@@ -41,19 +41,16 @@ export interface DialogRootContext extends DialogRootContextParams {
   initContentId: () => void;
 }
 
-export interface DialogTriggerProps {}
-
+export interface DialogTriggerProps extends ClassValueProp {}
 export type DialogTriggerPropsWithPrimitive = DialogTriggerProps & PrimitiveProps;
 
-export interface DialogOverlayImplProps {}
-
+export interface DialogOverlayImplProps extends ClassValueProp {}
 export type DialogOverlayImplPropsWithPrimitive = DialogOverlayImplProps & PrimitiveProps;
 
 export interface DialogOverlayProps extends DialogOverlayImplProps {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type DialogOverlayPropsWithPrimitive = DialogOverlayProps & PrimitiveProps;
 
 export interface DialogPortalProps extends TeleportProps {}
@@ -71,7 +68,6 @@ export interface DialogContentImplProps extends DismissableLayerProps {
    */
   trapFocus?: boolean;
 }
-
 export type DialogContentImplPropsWithPrimitive = DialogContentImplProps & PrimitiveProps;
 
 export type DialogContentImplEmits = DismissableLayerEmits & {
@@ -85,19 +81,15 @@ export interface DialogContentProps extends DialogContentImplProps {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type DialogContentPropsWithPrimitive = DialogContentProps & PrimitiveProps;
 
 export type DialogContentEmits = DialogContentImplEmits;
 
-export interface DialogTitleProps {}
-
+export interface DialogTitleProps extends ClassValueProp {}
 export type DialogTitlePropsWithPrimitive = DialogTitleProps & PrimitiveProps;
 
-export interface DialogDescriptionProps {}
-
+export interface DialogDescriptionProps extends ClassValueProp {}
 export type DialogDescriptionPropsWithPrimitive = DialogDescriptionProps & PrimitiveProps;
 
-export interface DialogCloseProps {}
-
+export interface DialogCloseProps extends ClassValueProp {}
 export type DialogClosePropsWithPrimitive = DialogCloseProps & PrimitiveProps;

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { CollapsibleTrigger } from '../collapsible';
 import { injectAccordionItemContext, injectAccordionRootContext } from './context';
-import type { AccordionTriggerProps } from './types';
+import type { AccordionTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'AccordionTrigger'
 });
 
-const props = defineProps<AccordionTriggerProps>();
+const props = defineProps<AccordionTriggerPropsWithPrimitive>();
 
 const { orientation, changeModelValue } = injectAccordionRootContext();
 

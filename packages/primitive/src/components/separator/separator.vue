@@ -15,10 +15,10 @@ const props = withDefaults(defineProps<SeparatorPropsWithPrimitive>(), {
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 
-const computedOrientation = computed(() => (isValidOrientation(orientation) ? orientation : 'horizontal'));
+const computedOrientation = computed(() => (isValidOrientation(props.orientation) ? props.orientation : 'horizontal'));
 
 // `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical
-const ariaOrientation = computed(() => (computedOrientation.value === 'vertical' ? orientation : undefined));
+const ariaOrientation = computed(() => (computedOrientation.value === 'vertical' ? props.orientation : undefined));
 
 const semanticProps = computed(() =>
   props.decorative ? { role: 'none' } : { 'aria-orientation': ariaOrientation.value, role: 'separator' }

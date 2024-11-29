@@ -3,13 +3,13 @@ import { computed } from 'vue';
 import { CollapsibleRoot } from '../collapsible';
 import { useArrowNavigation, useForwardExpose } from '../../composables';
 import { injectAccordionRootContext, provideAccordionItemContext } from './context';
-import type { AccordionItemProps } from './types';
+import type { AccordionItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'AccordionItem'
 });
 
-const props = defineProps<AccordionItemProps>();
+const props = defineProps<AccordionItemPropsWithPrimitive>();
 
 const {
   isSingle,

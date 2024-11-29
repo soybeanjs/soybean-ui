@@ -11,6 +11,7 @@ defineOptions({
 });
 
 const props = defineProps<DialogContentImplPropsWithPrimitive>();
+
 const emit = defineEmits<DialogContentImplEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);

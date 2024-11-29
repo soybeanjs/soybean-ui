@@ -12,11 +12,13 @@ defineOptions({
 });
 
 const props = defineProps<DialogContentPropsWithPrimitive>();
+
 const emit = defineEmits<DialogContentEmits>();
+
+const forwarded = useForwardPropsEmits(props, emit);
 
 const { open, modal } = injectDialogRootContext();
 
-const forwarded = useForwardPropsEmits(props, emit);
 const { forwardRef } = useForwardExpose();
 
 const present = computed(() => props.forceMount || open.value);

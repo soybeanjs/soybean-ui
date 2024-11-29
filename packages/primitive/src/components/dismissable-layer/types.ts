@@ -1,7 +1,7 @@
-import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import type { ClassValueProp, FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface DismissableLayerProps {
+export interface DismissableLayerProps extends ClassValueProp {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will
    * need to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to
@@ -9,7 +9,6 @@ export interface DismissableLayerProps {
    */
   disableOutsidePointerEvents?: boolean;
 }
-
 export type DismissableLayerPropsWithPrimitive = DismissableLayerProps & PrimitiveProps;
 
 export type DismissableLayerEmits = {
@@ -31,8 +30,7 @@ export type DismissableLayerPrivateEmits = DismissableLayerEmits & {
   dismiss: [];
 };
 
-export interface DismissableLayerBranchProps {}
-
+export interface DismissableLayerBranchProps extends ClassValueProp {}
 export type DismissableLayerBranchPropsWithPrimitive = DismissableLayerBranchProps & PrimitiveProps;
 
 export interface DismissableLayerState {
