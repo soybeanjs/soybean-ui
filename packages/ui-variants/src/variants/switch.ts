@@ -5,10 +5,10 @@ export const switchVariants = tv({
   base: [],
   slots: {
     root: [
-      `peer shrink-0 inline-flex items-center border rounded-full border-transparent shadow-sm transition-colors`,
+      `peer shrink-0 inline-flex items-center rounded-full border-transparent shadow-sm transition-colors`,
       `focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
     ],
-    thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0.5`
+    thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
   },
   variants: {
     color: {
@@ -36,27 +36,27 @@ export const switchVariants = tv({
     },
     size: {
       xs: {
-        root: 'h-4 w-7',
+        root: 'h-3.75 w-6.75 border-1.5',
         thumb: 'size-3 data-[state=checked]:translate-x-3 text-xs'
       },
       sm: {
-        root: 'h-4.5 w-8',
+        root: 'h-4.5 w-8 border-2',
         thumb: 'size-3.5 data-[state=checked]:translate-x-3.5 text-xs'
       },
       md: {
-        root: 'h-5 w-9',
+        root: 'h-5.25 w-9.25 border-2.5',
         thumb: 'size-4 data-[state=checked]:translate-x-4 text-sm'
       },
       lg: {
-        root: 'h-5.5 w-10',
+        root: 'h-5.75 w-10.25 border-2.5',
         thumb: 'size-4.5 data-[state=checked]:translate-x-4.5 text-sm'
       },
       xl: {
-        root: 'h-6 w-11',
+        root: 'h-6.5 w-11.5 border-3',
         thumb: 'size-5 data-[state=checked]:translate-x-5 text-base'
       },
       xxl: {
-        root: 'h-7 w-13',
+        root: 'h-7.5 w-13.5 border-3',
         thumb: 'size-6 data-[state=checked]:translate-x-6 text-base'
       }
     }
