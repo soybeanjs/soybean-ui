@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { PopperAnchor } from '../popper';
-import { useForwardExpose } from '../../composables';
 import { injectHoverCardRootContext } from './context';
 import { excludeTouch } from './shared';
 import type { HoverCardTriggerPropsWithPrimitive } from './types';

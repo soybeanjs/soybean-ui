@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { onUnmounted, ref, toRefs, useTemplateRef, watch } from 'vue';
-import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
-import { useArrowNavigation, useFocusGuards, useForwardExpose, useTypeAhead } from '../../composables';
+import {
+  useArrowNavigation,
+  useBodyScrollLock,
+  useFocusGuards,
+  useForwardExpose,
+  useTypeAhead
+} from '../../composables';
 import type { GraceIntent, HorizontalSide } from '../../types';
-import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
-import PopperContent from '../popper/popper-content.vue';
+import { FocusScope } from '../focus-scope';
+import { PopperContent } from '../popper';
 import { createPopperContentPropsDefaultValue } from '../popper/shared';
 import { RovingFocusGroup } from '../roving-focus';
 import { injectMenuContext, injectMenuRootContext, provideMenuContentContext } from './context';

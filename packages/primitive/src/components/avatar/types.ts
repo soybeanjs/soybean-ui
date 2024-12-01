@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, ImageLoadingStatus } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { ImageLoadingStatus } from '../../types';
 
 // AvatarRoot
-export interface AvatarRootProps {}
+export interface AvatarRootProps extends ClassValueProp {}
 export type AvatarRootPropsWithPrimitive = AvatarRootProps & PrimitiveProps;
 
 // AvatarRootContext
@@ -15,7 +15,7 @@ export interface AvatarRootContext extends AvatarRootContextParams {
 }
 
 // AvatarImage
-export interface AvatarImageProps {
+export interface AvatarImageProps extends ClassValueProp {
   /** The image source to display */
   src: string;
   /** The image alt text */
@@ -28,7 +28,7 @@ export interface AvatarImageEmits {
 }
 
 // AvatarFallback
-export interface AvatarFallbackProps {
+export interface AvatarFallbackProps extends ClassValueProp {
   /** Time to wait before showing fallback in milliseconds */
   delayMs?: number;
 }

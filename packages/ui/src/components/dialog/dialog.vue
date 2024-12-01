@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { DialogPortal, DialogRoot, DialogTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
+import {
+  DialogPortal,
+  DialogRoot,
+  DialogTrigger,
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  useOmitForwardProps,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import SDialogContent from './dialog-content.vue';
 import SDialogOverlay from './dialog-overlay.vue';
 import type { DialogEmits, DialogProps } from './types';
@@ -29,11 +35,9 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedRootProps = computedPick(props, ['open', 'defaultOpen', 'modal']);
+const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen', 'modal']);
 
-const forwardedRootProps = useForwardProps(delegatedRootProps);
-
-const delegatedContentProps = computedOmit(props, [
+const forwardedContentProps = useOmitForwardProps(props, [
   'open',
   'defaultOpen',
   'modal',
@@ -44,16 +48,9 @@ const delegatedContentProps = computedOmit(props, [
   'forceMountOverlay'
 ]);
 
-const forwardedContentProps = useForwardProps(delegatedContentProps);
+const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof DialogEmits, any>;
-
-const forwardedContentEmits = computedOmitEmits(forwardedEmits, ['update:open']);
-
-const forwardedContent = computed(() => ({
-  ...forwardedContentProps.value,
-  ...forwardedContentEmits.value
-}));
+const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 
 const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useForwardExpose } from '../../composables';
-import type { ToastActionPropsWithPrimitive } from './types';
 import ToastAnnounceExclude from './toast-announce-exclude.vue';
 import ToastClose from './toast-close.vue';
+import type { ToastActionPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ToastAction'

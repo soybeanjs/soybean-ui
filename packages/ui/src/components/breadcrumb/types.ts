@@ -1,33 +1,34 @@
 import type { Component } from 'vue';
-import type { ClassValue, ClassValueProp, ThemeSize } from '../../types';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { ThemeSize } from '@soybean-ui/variants';
 
-export type BreadcrumbRootProps = ClassValueProp & {
+export interface BreadcrumbRootProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type BreadcrumbListProps = ClassValueProp;
+export interface BreadcrumbListProps extends ClassValueProp {}
 
-export type BreadcrumbItemProps = ClassValueProp;
+export interface BreadcrumbItemProps extends ClassValueProp {}
 
-export type BreadcrumbPageProps = ClassValueProp;
+export interface BreadcrumbPageProps extends ClassValueProp {}
 
 export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
 
-export type BreadcrumbLinkProps = ClassValueProp & {
+export interface BreadcrumbLinkProps extends ClassValueProp {
   disabled?: boolean;
   href?: string;
   target?: AnchorTarget;
-};
+}
 
-export type BreadcrumbEllipsisProps = ClassValueProp;
+export interface BreadcrumbEllipsisProps extends ClassValueProp {}
 
-export type BreadcrumbSeparatorProps = ClassValueProp;
+export interface BreadcrumbSeparatorProps extends ClassValueProp {}
 
-export type BreadcrumbItem = Omit<BreadcrumbLinkProps, 'class'> & {
+export interface BreadcrumbItem extends Omit<BreadcrumbLinkProps, 'class'> {
   label: string;
   value: string;
   icon?: Component;
-};
+}
 
 export type BreadcrumbProps<T extends BreadcrumbItem> = BreadcrumbRootProps & {
   items: T[];

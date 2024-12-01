@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
 import { computed, nextTick } from 'vue';
-import { Primitive } from '../primitive';
-import { useKbd, usePrimitiveElement } from '../../composables';
 import { isBetweenInclusive, toDate } from '../../date';
 import type { DateValue } from '../../date';
-import type { RangeCalendarCellTriggerPropsWithPrimitive } from './types';
+import { useKbd, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectRangeCalendarRootContext } from './context';
+import type { RangeCalendarCellTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'RangeCalendarCellTrigger'

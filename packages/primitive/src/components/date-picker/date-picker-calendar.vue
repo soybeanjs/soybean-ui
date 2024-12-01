@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { isEqualDay } from '@internationalized/date';
-import CalendarRoot from '../calendar/calendar-root.vue';
 import type { DateValue } from '../../date';
+import { CalendarRoot } from '../calendar';
 import { injectDatePickerRootContext } from './context';
 
 defineOptions({

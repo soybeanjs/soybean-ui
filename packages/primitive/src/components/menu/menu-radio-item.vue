@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import { getCheckedState } from '../checkbox/shared';
-import MenuItem from './menu-item.vue';
 import { injectMenuRadioGroupContext, provideMenuItemIndicatorContext } from './context';
+import MenuItem from './menu-item.vue';
 import type { MenuRadioItemEmits, MenuRadioItemPropsWithPrimitive } from './types';
 
 defineOptions({

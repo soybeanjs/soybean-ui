@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useCollection, useForwardExpose, useId } from '../../composables';
 import { handleAndDispatchCustomEvent } from '../../shared';
-import { Primitive } from '../primitive';
 import type { AcceptableValue, SelectEvent } from '../../types';
+import { Primitive } from '../primitive';
 import { injectListboxRootContext, provideListboxItemContext } from './context';
 import { valueComparator } from './shared';
 import type { ListboxItemEmits, ListboxItemPropsWithPrimitive } from './types';

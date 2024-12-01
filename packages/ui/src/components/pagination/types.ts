@@ -1,46 +1,50 @@
 import type {
+  ClassValue,
+  ClassValueProp,
   PaginationRootEmits,
   PaginationRootProps,
-  PaginationListItemProps as _PaginationListItemProps
+  PaginationEllipsisProps as _PaginationEllipsisProps,
+  PaginationFirstProps as _PaginationFirstProps,
+  PaginationLastProps as _PaginationLastProps,
+  PaginationListItemProps as _PaginationListItemProps,
+  PaginationNextProps as _PaginationNextProps,
+  PaginationPrevProps as _PaginationPrevProps
 } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 import type { ButtonVariant } from '../button/types';
 
-export type PaginationListProps = ClassValueProp & {
+export interface PaginationListProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
 export type PaginationButtonVariant = Extract<ButtonVariant, 'plain' | 'ghost'>;
 
-export type PaginationButtonProps = ClassValueProp & {
+export interface PaginationButtonProps extends ClassValueProp {
   size?: ThemeSize;
   variant?: PaginationButtonVariant;
-};
+}
 
-export type PaginationEllipsisProps = ClassValueProp & {
+export interface PaginationEllipsisProps extends _PaginationEllipsisProps {
   size?: ThemeSize;
-};
+}
 
-export type PaginationListItemProps = PaginationButtonProps & Pick<_PaginationListItemProps, 'value'>;
+export interface PaginationListItemProps extends PaginationButtonProps, _PaginationListItemProps {}
 
-export type PaginationFirstProps = PaginationButtonProps;
+export interface PaginationFirstProps extends PaginationButtonProps, _PaginationFirstProps {}
 
-export type PaginationLastProps = PaginationButtonProps;
+export interface PaginationLastProps extends PaginationButtonProps, _PaginationLastProps {}
 
-export type PaginationNextProps = PaginationButtonProps;
+export interface PaginationNextProps extends PaginationButtonProps, _PaginationNextProps {}
 
-export type PaginationPrevProps = PaginationButtonProps;
+export interface PaginationPrevProps extends PaginationButtonProps, _PaginationPrevProps {}
 
-export type PaginationProps = Omit<PaginationRootProps, 'as' | 'asChild'> &
-  PaginationListProps &
-  PaginationButtonProps & {
-    listItemClass?: ClassValue;
-    firstClass?: ClassValue;
-    lastClass?: ClassValue;
-    nextClass?: ClassValue;
-    prevClass?: ClassValue;
-    ellipsisClass?: ClassValue;
-  };
+export interface PaginationProps extends PaginationRootProps, PaginationListProps, PaginationButtonProps {
+  listItemClass?: ClassValue;
+  firstClass?: ClassValue;
+  lastClass?: ClassValue;
+  nextClass?: ClassValue;
+  prevClass?: ClassValue;
+  ellipsisClass?: ClassValue;
+}
 
 export type PaginationEmits = PaginationRootEmits;

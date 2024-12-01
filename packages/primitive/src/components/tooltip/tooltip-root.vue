@@ -2,8 +2,8 @@
 import { computed, ref, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useTimeoutFn, useVModel } from '@vueuse/core';
-import { PopperRoot } from '../popper';
 import { useForwardExpose } from '../../composables';
+import { PopperRoot } from '../popper';
 import type { TooltipRootEmits, TooltipRootPropsWithPrimitive } from './types';
 import { injectTooltipProviderContext, provideTooltipRootContext } from './context';
 import { TOOLTIP_OPEN } from './shared';

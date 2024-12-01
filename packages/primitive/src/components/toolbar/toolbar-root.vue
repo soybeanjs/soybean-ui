@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
+import { useDirection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
-import { useDirection, useForwardExpose } from '../../composables';
 import { provideToolbarRootContext } from './context';
 import type { ToolbarRootPropsWithPrimitive } from './types';
 

@@ -1,9 +1,9 @@
 import type { HTMLAttributes, Ref } from 'vue';
+import type { ClassValueProp, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { FormFieldProps } from '../../types';
 
 // Root
-export interface NumberFieldRootProps {
+export interface NumberFieldRootProps extends ClassValueProp {
   defaultValue?: number;
   modelValue?: number;
   /** The smallest value allowed for the input. */
@@ -24,7 +24,6 @@ export interface NumberFieldRootProps {
   /** Id of the element */
   id?: string;
 }
-
 export type NumberFieldRootPropsWithPrimitive = NumberFieldRootProps & PrimitiveProps & FormFieldProps;
 
 export type NumberFieldRootEmits = {
@@ -51,20 +50,17 @@ export interface NumberFieldRootContext {
 }
 
 // Input
-export interface NumberFieldInputProps {}
-
+export interface NumberFieldInputProps extends ClassValueProp {}
 export type NumberFieldInputPropsWithPrimitive = NumberFieldInputProps & PrimitiveProps;
 
 // Increment
-export interface NumberFieldIncrementProps {
+export interface NumberFieldIncrementProps extends ClassValueProp {
   disabled?: boolean;
 }
-
 export type NumberFieldIncrementPropsWithPrimitive = NumberFieldIncrementProps & PrimitiveProps;
 
 // Decrement
-export interface NumberFieldDecrementProps {
+export interface NumberFieldDecrementProps extends ClassValueProp {
   disabled?: boolean;
 }
-
 export type NumberFieldDecrementPropsWithPrimitive = NumberFieldDecrementProps & PrimitiveProps;

@@ -1,21 +1,15 @@
 import type {
+  AvatarFallbackProps,
   AvatarImageEmits,
-  AvatarFallbackProps as _AvatarFallbackProps,
-  AvatarImageProps as _AvatarImageProps
+  AvatarImageProps,
+  ClassValue,
+  AvatarRootProps as _AvatarRootProps
 } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type AvatarRootProps = ClassValueProp & {
+export type AvatarRootProps = _AvatarRootProps & {
   size?: ThemeSize;
 };
-
-export type AvatarImageProps = ClassValueProp &
-  Pick<_AvatarImageProps, 'src'> & {
-    alt?: string;
-  };
-
-export type AvatarFallbackProps = ClassValueProp & Pick<_AvatarFallbackProps, 'delayMs'>;
 
 export type AvatarProps = AvatarRootProps &
   AvatarImageProps &
@@ -27,4 +21,4 @@ export type AvatarProps = AvatarRootProps &
 
 export type AvatarEmits = AvatarImageEmits;
 
-export type { AvatarImageEmits };
+export type { AvatarFallbackProps, AvatarImageProps, AvatarImageEmits };

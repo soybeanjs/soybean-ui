@@ -1,21 +1,24 @@
-import type { ProgressRootEmits, ProgressRootProps as _ProgressRootProps } from '@soybean-ui/primitive';
+import type {
+  ClassValue,
+  ClassValueProp,
+  ProgressRootEmits,
+  ProgressRootProps as _ProgressRootProps
+} from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type ProgressRootProps = ClassValueProp &
-  Omit<_ProgressRootProps, 'as' | 'asChild'> & {
-    color?: ThemeColor;
-    size?: ThemeSize;
-  };
+export interface ProgressRootProps extends _ProgressRootProps {
+  color?: ThemeColor;
+  size?: ThemeSize;
+}
 
-export type ProgressIndicatorProps = ClassValueProp & {
+export interface ProgressIndicatorProps extends ClassValueProp {
   modelValue?: number | null;
   color?: ThemeColor;
-};
+}
 
-export type ProgressProps = ProgressRootProps & {
+export interface ProgressProps extends ProgressRootProps {
   indicatorClass?: ClassValue;
-};
+}
 
 export type ProgressEmits = ProgressRootEmits;
 

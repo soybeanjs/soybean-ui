@@ -1,9 +1,16 @@
 import type { ComputedRef, Ref } from 'vue';
+import type {
+  AcceptableValue,
+  ClassValueProp,
+  DataOrientation,
+  Direction,
+  FormFieldProps,
+  SelectEvent
+} from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps, SelectEvent } from '../../types';
 
 // Root
-export interface RadioGroupRootProps extends FormFieldProps {
+export interface RadioGroupRootProps extends ClassValueProp, FormFieldProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: AcceptableValue;
   /**
@@ -23,7 +30,6 @@ export interface RadioGroupRootProps extends FormFieldProps {
   /** When `true`, keyboard navigation will loop from last item to first, and vice versa. */
   loop?: boolean;
 }
-
 export type RadioGroupRootPropsWithPrimitive = RadioGroupRootProps & PrimitiveProps;
 
 export type RadioGroupRootEmits = {
@@ -54,15 +60,14 @@ export type RadioGroupItemContext = {
 };
 
 // Indicator
-export interface RadioGroupIndicatorProps {
+export interface RadioGroupIndicatorProps extends ClassValueProp {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type RadioGroupIndicatorPropsWithPrimitive = RadioGroupIndicatorProps & PrimitiveProps;
 
 // Radio
-export interface RadioProps extends FormFieldProps {
+export interface RadioProps extends ClassValueProp, FormFieldProps {
   id?: string;
   /** The value given as data when submitted with a `name`. */
   value?: AcceptableValue;
@@ -70,7 +75,6 @@ export interface RadioProps extends FormFieldProps {
   disabled?: boolean;
   checked?: boolean;
 }
-
 export type RadioPropsWithPrimitive = RadioProps & PrimitiveProps;
 
 export type RadioEmits = {

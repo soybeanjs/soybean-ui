@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watchEffect } from 'vue';
-import { Primitive } from '../primitive';
 import { useCollection } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectSelectContentContext } from './context';
 import type { SelectScrollButtonImplEmits } from './types';
 

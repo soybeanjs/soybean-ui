@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Primitive } from '../primitive';
 import { useDateField } from '../../composables';
-import type { TimeFieldInputPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectTimeFieldRootContext } from './context';
+import type { TimeFieldInputPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TimeFieldInput'

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Primitive } from '../primitive';
 import { useArrowNavigation, useCollection, useForwardExpose, useId } from '../../composables';
-import type { NavigationMenuItemPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext, provideNavigationMenuItemContext } from './context';
 import { focusFirst, getTabbableCandidates, makeContentId, removeFromTabOrder } from './shared';
+import type { NavigationMenuItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuItem'

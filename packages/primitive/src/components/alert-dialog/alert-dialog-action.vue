@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogClose } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogClose } from '../dialog';
 import type { AlertDialogActionPropsWithPrimitive } from './types';
 
 defineOptions({

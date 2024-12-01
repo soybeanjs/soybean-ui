@@ -1,12 +1,12 @@
-import type { TabsRootEmits as SegmentRootEmits, TabsListProps, TabsRootProps, TabsTriggerProps } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp, StringOrNumber } from '../../types';
-
-export type SegmentRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &
-  Omit<TabsRootProps<T>, 'as' | 'asChild'>;
-
-export type SegmentTriggerRootProps = ClassValueProp & Pick<TabsListProps, 'loop'>;
-
-export type SegmentTriggerProps = ClassValueProp & Pick<TabsTriggerProps, 'value' | 'disabled'>;
+import type {
+  ClassValue,
+  ClassValueProp,
+  TabsRootEmits as SegmentRootEmits,
+  TabsRootProps as SegmentRootProps,
+  TabsTriggerProps as SegmentTriggerProps,
+  TabsListProps as SegmentTriggerRootProps
+} from '@soybean-ui/primitive';
+import type { StringOrNumber } from '../../types';
 
 export type SegmentIndicatorRootProps = ClassValueProp;
 
@@ -28,4 +28,4 @@ export type SegmentProps<T extends SegmentOption> = SegmentRootProps<T['value']>
 
 export type SegmentEmits<T extends StringOrNumber = StringOrNumber> = SegmentRootEmits<T>;
 
-export type { SegmentRootEmits };
+export type { SegmentRootProps, SegmentRootEmits, SegmentTriggerRootProps, SegmentTriggerProps };

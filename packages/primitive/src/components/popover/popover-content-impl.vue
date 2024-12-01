@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { PopperContent } from '../popper';
+import { useFocusGuards, useForwardExpose, useForwardProps } from '../../composables';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
-import { useFocusGuards, useForwardExpose, useForwardProps } from '../../composables';
+import { PopperContent } from '../popper';
 import { injectPopoverRootContext } from './context';
 import type { PopoverContentImplEmits, PopoverContentImplPropsWithPrimitive } from './types';
 

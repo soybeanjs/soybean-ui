@@ -1,8 +1,9 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 // Root
-export interface PaginationRootProps {
+export interface PaginationRootProps extends ClassValueProp {
   /** The controlled value of the current page. Can be bound as `v-model:page`. */
   page?: number;
   /**
@@ -21,7 +22,6 @@ export interface PaginationRootProps {
   /** When `true`, always show first page, last page, and ellipsis */
   showEdges?: boolean;
 }
-
 export type PaginationRootPropsWithPrimitive = PaginationRootProps & PrimitiveProps;
 
 export type PaginationRootEmits = {
@@ -39,32 +39,32 @@ export type PaginationRootContext = {
 };
 
 // List
-export interface PaginationListProps {}
+export interface PaginationListProps extends ClassValueProp {}
 export type PaginationListPropsWithPrimitive = PaginationListProps & PrimitiveProps;
 
 // List Item
-export interface PaginationListItemProps {
+export interface PaginationListItemProps extends ClassValueProp {
   /** Value for the page */
   value: number;
 }
 export type PaginationListItemPropsWithPrimitive = PaginationListItemProps & PrimitiveProps;
 
 // First
-export interface PaginationFirstProps {}
+export interface PaginationFirstProps extends ClassValueProp {}
 export type PaginationFirstPropsWithPrimitive = PaginationFirstProps & PrimitiveProps;
 
 // Last
-export interface PaginationLastProps {}
+export interface PaginationLastProps extends ClassValueProp {}
 export type PaginationLastPropsWithPrimitive = PaginationLastProps & PrimitiveProps;
 
 // Next
-export interface PaginationNextProps {}
+export interface PaginationNextProps extends ClassValueProp {}
 export type PaginationNextPropsWithPrimitive = PaginationNextProps & PrimitiveProps;
 
 // Previous
-export interface PaginationPrevProps {}
+export interface PaginationPrevProps extends ClassValueProp {}
 export type PaginationPrevPropsWithPrimitive = PaginationPrevProps & PrimitiveProps;
 
 // Ellipsis
-export interface PaginationEllipsisProps {}
+export interface PaginationEllipsisProps extends ClassValueProp {}
 export type PaginationEllipsisPropsWithPrimitive = PaginationEllipsisProps & PrimitiveProps;

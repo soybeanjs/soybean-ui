@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
+import { PopperArrow } from '../popper';
 import type { PopoverArrowPropsWithPrimitive } from './types';
 
 defineOptions({

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Toggle } from '../toggle';
-import { RovingFocusItem } from '../roving-focus';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { isValueEqualOrExist } from '../../shared';
+import { Primitive } from '../primitive';
+import { RovingFocusItem } from '../roving-focus';
+import { Toggle } from '../toggle';
 import { injectToggleGroupRootContext } from './context';
 import type { ToggleGroupItemPropsWithPrimitive } from './types';
 

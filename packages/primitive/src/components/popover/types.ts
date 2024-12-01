@@ -1,4 +1,5 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
@@ -61,7 +62,7 @@ export type PopoverContentPropsWithPrimitive = PopoverContentProps & PrimitivePr
 
 export type PopoverContentEmits = PopoverContentImplEmits;
 
-export interface PopoverCloseProps extends PrimitiveProps {}
+export interface PopoverCloseProps extends ClassValueProp {}
 export type PopoverClosePropsWithPrimitive = PopoverCloseProps & PrimitiveProps;
 
 export interface PopoverArrowProps extends PopperArrowProps {}
@@ -70,5 +71,5 @@ export type PopoverArrowPropsWithPrimitive = PopoverArrowProps & PrimitiveProps;
 export interface PopoverAnchorProps extends PopperAnchorProps {}
 export type PopoverAnchorPropsWithPrimitive = PopoverAnchorProps & PrimitiveProps;
 
-export interface PopoverTriggerProps {}
+export interface PopoverTriggerProps extends ClassValueProp {}
 export type PopoverTriggerPropsWithPrimitive = PopoverTriggerProps & PrimitiveProps;

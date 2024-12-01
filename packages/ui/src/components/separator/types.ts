@@ -1,21 +1,19 @@
-import type { SeparatorProps as _SeparatorProps } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp, SeparatorProps as _SeparatorProps } from '@soybean-ui/primitive';
 import type { SeparatorBorder } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp, ThemeAlign, ThemeOrientation } from '../../types';
+import type { ThemeAlign, ThemeOrientation } from '../../types';
 
-export type SeparatorRootProps = ClassValueProp &
-  Pick<_SeparatorProps, 'orientation' | 'decorative'> & {
-    border?: SeparatorBorder;
-  };
+export interface SeparatorRootProps extends _SeparatorProps {
+  border?: SeparatorBorder;
+}
 
-export type SeparatorLabelProps = ClassValueProp & {
+export interface SeparatorLabelProps extends ClassValueProp {
   orientation?: ThemeOrientation;
   align?: ThemeAlign;
-};
+}
 
-export type SeparatorProps = SeparatorRootProps &
-  SeparatorLabelProps & {
-    label?: string;
-    labelClass?: ClassValue;
-  };
+export interface SeparatorProps extends SeparatorRootProps, SeparatorLabelProps {
+  label?: string;
+  labelClass?: ClassValue;
+}
 
 export type { SeparatorBorder };

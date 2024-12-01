@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { RadioGroupIndicatorPropsWithPrimitive } from './types';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
 import { injectRadioGroupItemContext } from './context';
+import type { RadioGroupIndicatorPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'RadioGroupIndicator',

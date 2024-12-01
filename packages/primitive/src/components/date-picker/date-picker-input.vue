@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DateFieldInput from '../date-field/date-field-input.vue';
+import { DateFieldInput } from '../date-field';
 import type { DatePickerInputPropsWithPrimitive } from './types';
 
 defineOptions({

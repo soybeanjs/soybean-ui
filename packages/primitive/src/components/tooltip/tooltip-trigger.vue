@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import { useForwardExpose, useId } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
-import { useForwardExpose, useId } from '../../composables';
-import type { TooltipTriggerPropsWithPrimitive } from './types';
 import { injectTooltipProviderContext, injectTooltipRootContext } from './context';
+import type { TooltipTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TooltipTrigger'

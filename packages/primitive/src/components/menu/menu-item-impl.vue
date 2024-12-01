@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
-import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectMenuContentContext } from './context';
 import { isMouseEvent } from './shared';
 import type { MenuItemImplPropsWithPrimitive } from './types';

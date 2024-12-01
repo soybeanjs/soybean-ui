@@ -2,8 +2,8 @@
 import { ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { MenuRoot } from '../menu';
 import { useDirection, useForwardExpose } from '../../composables';
+import { MenuRoot } from '../menu';
 import { provideDropdownMenuRootContext } from './context';
 import type { DropdownMenuRootEmits, DropdownMenuRootProps } from './types';
 

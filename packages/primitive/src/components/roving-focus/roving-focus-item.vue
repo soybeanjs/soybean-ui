@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useCollection, useId, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
 import { wrapArray } from '../../shared';
-import { focusFirst, getFocusIntent } from './shared';
 import { injectRovingFocusGroupContext } from './context';
+import { focusFirst, getFocusIntent } from './shared';
 import type { RovingFocusItemPropsWithPrimitive } from './types';
 
 defineOptions({

@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { ActivationMode, ClassValueProp, Direction, FormFieldProps, SubmitMode } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { ActivationMode, Direction, FormFieldProps, SubmitMode } from '../../types';
 
 // EditableRoot types
-export interface EditableRootProps extends FormFieldProps {
+export interface EditableRootProps extends ClassValueProp, FormFieldProps {
   /** The default value of the editable field */
   defaultValue?: string;
   /** The value of the editable field */
@@ -34,7 +34,6 @@ export interface EditableRootProps extends FormFieldProps {
   /** The id of the field */
   id?: string;
 }
-
 export type EditableRootPropsWithPrimitive = EditableRootProps & PrimitiveProps;
 
 export interface EditableRootEmits {
@@ -68,25 +67,25 @@ export interface EditableRootContext {
 }
 
 // EditableArea types
-export interface EditableAreaProps {}
+export interface EditableAreaProps extends ClassValueProp {}
 export type EditableAreaPropsWithPrimitive = EditableAreaProps & PrimitiveProps;
 
 // EditableInput types
-export interface EditableInputProps {}
+export interface EditableInputProps extends ClassValueProp {}
 export type EditableInputPropsWithPrimitive = EditableInputProps & PrimitiveProps;
 
 // EditablePreview types
-export interface EditablePreviewProps {}
+export interface EditablePreviewProps extends ClassValueProp {}
 export type EditablePreviewPropsWithPrimitive = EditablePreviewProps & PrimitiveProps;
 
 // EditableSubmitTrigger types
-export interface EditableSubmitTriggerProps {}
+export interface EditableSubmitTriggerProps extends ClassValueProp {}
 export type EditableSubmitTriggerPropsWithPrimitive = EditableSubmitTriggerProps & PrimitiveProps;
 
 // EditableCancelTrigger types
-export interface EditableCancelTriggerProps {}
+export interface EditableCancelTriggerProps extends ClassValueProp {}
 export type EditableCancelTriggerPropsWithPrimitive = EditableCancelTriggerProps & PrimitiveProps;
 
 // EditableEditTrigger types
-export interface EditableEditTriggerProps {}
+export interface EditableEditTriggerProps extends ClassValueProp {}
 export type EditableEditTriggerPropsWithPrimitive = EditableEditTriggerProps & PrimitiveProps;

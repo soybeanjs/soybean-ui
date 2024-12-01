@@ -60,17 +60,25 @@ export function useForwardProps<T extends Record<string, any>, K extends keyof T
     let propKeys = Object.keys({ ...defaultProps, ...preservedProps }) as (keyof T)[];
 
     if (splitKeys.length > 0) {
-      propKeys = type === 'pick' ? splitKeys : propKeys.filter(key => !splitKeys.includes(key as K));
+      propKeys = propKeys.filter(key => {
+        if (type === 'pick') {
+          return splitKeys.includes(key as K);
+        }
+
+        return !splitKeys.includes(key as K);
+      });
     }
 
     // Only return value from the props parameter
-    return propKeys.reduce((prev, curr) => {
+    const result = propKeys.reduce((prev, curr) => {
       if (refProps.value[curr] !== undefined) {
         prev[curr as keyof T] = refProps.value[curr];
       }
 
       return prev;
     }, {} as T);
+
+    return result;
   });
 }
 

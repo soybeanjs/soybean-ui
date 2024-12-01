@@ -11,11 +11,11 @@ import {
 } from '../../composables';
 import { findValuesBetween } from '../../shared';
 import type { AcceptableValue } from '../../types';
-import { VisuallyHiddenInput } from '../visually-hidden';
 import { Primitive } from '../primitive';
 import { getFocusIntent } from '../roving-focus/shared';
-import { compare } from './shared';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideListboxRootContext } from './context';
+import { compare } from './shared';
 import type { ListboxRootContext, ListboxRootEmits, ListboxRootPropsWithPrimitive } from './types';
 
 defineOptions({

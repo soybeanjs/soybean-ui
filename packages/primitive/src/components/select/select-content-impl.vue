@@ -10,11 +10,11 @@ import {
   useHideOthers,
   useTypeAhead
 } from '../../composables';
-import { FocusScope } from '../focus-scope';
 import { DismissableLayer } from '../dismissable-layer';
+import { FocusScope } from '../focus-scope';
 import { focusFirst } from '../menu/shared';
-import { valueComparator } from './shared';
 import { injectSelectRootContext, provideSelectContentContext } from './context';
+import { valueComparator } from './shared';
 import SelectItemAlignedPosition from './select-item-aligned-position.vue';
 import SelectPopperPosition from './select-popper-position.vue';
 import type { SelectContentEmits, SelectContentPropsWithPrimitive } from './types';

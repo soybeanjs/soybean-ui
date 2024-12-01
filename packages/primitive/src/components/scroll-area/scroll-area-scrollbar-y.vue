@@ -2,8 +2,8 @@
 import { computed, onMounted } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { injectScrollAreaRootContext, injectScrollAreaScrollbarVisibleContext } from './context';
-import ScrollAreaScrollbarImpl from './scroll-area-scrollbar-impl.vue';
 import { getThumbSize } from './shared';
+import ScrollAreaScrollbarImpl from './scroll-area-scrollbar-impl.vue';
 
 defineOptions({
   name: 'ScrollAreaScrollbarY'

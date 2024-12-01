@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useForwardPropsEmits } from '../../composables';
-import MenuContentImpl from './menu-content-impl.vue';
 import { injectMenuContext } from './context';
+import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuRootContentNonModalEmits, MenuRootContentNonModalPropsWithPrimitive } from './types';
 
 defineOptions({

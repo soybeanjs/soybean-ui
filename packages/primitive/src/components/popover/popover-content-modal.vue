@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../composables';
-import { useBodyScrollLock } from '../../composables/use-body-scroll-lock';
+import { useBodyScrollLock, useForwardExpose, useForwardPropsEmits, useHideOthers } from '../../composables';
 import type { PointerDownOutsideEvent } from '../../types';
+import { injectPopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
 import type { PopoverContentImplEmits, PopoverContentImplPropsWithPrimitive } from './types';
-import { injectPopoverRootContext } from './context';
 
 defineOptions({
   name: 'PopoverContentModal'

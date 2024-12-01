@@ -1,36 +1,33 @@
 import type {
+  ClassValue,
+  ClassValueProp,
   PinInputRootEmits,
-  PinInputInputProps as _PinInputInputProps,
-  PinInputRootProps as _PinInputRootProps
+  PinInputRootProps,
+  PinInputInputProps as _PinInputInputProps
 } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type PinInputRootProps = ClassValueProp & Omit<_PinInputRootProps, 'as' | 'asChild'>;
-
-export type PinInputInputRootProps = ClassValueProp & {
+export interface PinInputInputRootProps extends ClassValueProp {
   separate?: boolean;
-};
+}
 
-export type PinInputSeparatorProps = ClassValueProp & {
+export interface PinInputSeparatorProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type PinInputInputProps = ClassValueProp &
-  Pick<_PinInputInputProps, 'disabled' | 'index'> & {
-    size?: ThemeSize;
-    separate?: boolean;
-  };
+export interface PinInputInputProps extends _PinInputInputProps {
+  size?: ThemeSize;
+  separate?: boolean;
+}
 
-export type PinInputProps = PinInputRootProps &
-  PinInputInputRootProps & {
-    inputRootClass?: ClassValue;
-    size?: ThemeSize;
-    inputCount?: number;
-    itemClass?: ClassValue;
-    separatorClass?: ClassValue;
-  };
+export interface PinInputProps extends PinInputRootProps, PinInputInputRootProps, PinInputSeparatorProps {
+  inputRootClass?: ClassValue;
+  size?: ThemeSize;
+  inputCount?: number;
+  itemClass?: ClassValue;
+  separatorClass?: ClassValue;
+}
 
 export type PinInputEmits = PinInputRootEmits;
 
-export type { PinInputRootEmits };
+export type { PinInputRootProps, PinInputRootEmits };

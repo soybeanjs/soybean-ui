@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref, toRefs } from 'vue';
+import { useForwardExpose, useNonce } from '../../composables';
 import { Primitive } from '../primitive';
-import { useForwardExpose } from '../../composables';
-import { useNonce } from '../../composables/use-nonce';
-import type { ScrollAreaViewportPropsWithPrimitive } from './types';
 import { injectScrollAreaRootContext } from './context';
+import type { ScrollAreaViewportPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ScrollAreaViewport',

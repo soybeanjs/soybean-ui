@@ -1,11 +1,11 @@
 import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction, FormFieldProps } from '../../types';
 
 export type AcceptableInputValue = string | Record<string, any>;
 
 // Root
-export interface TagsInputRootProps<T = AcceptableInputValue> extends FormFieldProps {
+export interface TagsInputRootProps<T = AcceptableInputValue> extends ClassValueProp, FormFieldProps {
   /** The controlled value of the tags input. Can be bind as `v-model`. */
   modelValue?: Array<T>;
   /** The value of the tags that should be added. Use when you do not need to control the state of the tags input */
@@ -41,7 +41,6 @@ export interface TagsInputRootProps<T = AcceptableInputValue> extends FormFieldP
    */
   displayValue?: (value: T) => string;
 }
-
 export type TagsInputRootPropsWithPrimitive<T = AcceptableInputValue> = TagsInputRootProps<T> & PrimitiveProps;
 
 export type TagsInputRootEmits<T = AcceptableInputValue> = {
@@ -74,13 +73,12 @@ export type TagsInputRootContext<T = AcceptableInputValue> = {
 };
 
 // Item
-export interface TagsInputItemProps {
+export interface TagsInputItemProps extends ClassValueProp {
   /** Value associated with the tags */
   value: AcceptableInputValue;
   /** When `true`, prevents the user from interacting with the tags input. */
   disabled?: boolean;
 }
-
 export type TagsInputItemPropsWithPrimitive = TagsInputItemProps & PrimitiveProps;
 
 export interface TagsInputItemContext {
@@ -92,7 +90,7 @@ export interface TagsInputItemContext {
 }
 
 // Input
-export interface TagsInputInputProps {
+export interface TagsInputInputProps extends ClassValueProp {
   /** The placeholder character to use for empty tags input. */
   placeholder?: string;
   /** Focus on element when mounted. */
@@ -100,17 +98,16 @@ export interface TagsInputInputProps {
   /** Maximum number of character allowed. */
   maxLength?: number;
 }
-
 export type TagsInputInputPropsWithPrimitive = TagsInputInputProps & PrimitiveProps;
 
 // ItemText
-export interface TagsInputItemTextProps {}
+export interface TagsInputItemTextProps extends ClassValueProp {}
 export type TagsInputItemTextPropsWithPrimitive = TagsInputItemTextProps & PrimitiveProps;
 
 // ItemDelete
-export interface TagsInputItemDeleteProps {}
+export interface TagsInputItemDeleteProps extends ClassValueProp {}
 export type TagsInputItemDeletePropsWithPrimitive = TagsInputItemDeleteProps & PrimitiveProps;
 
 // Clear
-export interface TagsInputClearProps {}
+export interface TagsInputClearProps extends ClassValueProp {}
 export type TagsInputClearPropsWithPrimitive = TagsInputClearProps & PrimitiveProps;

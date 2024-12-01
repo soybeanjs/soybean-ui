@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import type { ComponentPublicInstance } from 'vue';
 import { useForwardExpose } from '../../composables';
 import type { Side } from '../../types';
-import Arrow from '../arrow/arrow.vue';
+import { Arrow } from '../arrow';
 import { injectPopperContentContext } from './context';
 import type { PopperArrowPropsWithPrimitive } from './types';
 

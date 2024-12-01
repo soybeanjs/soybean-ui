@@ -1,10 +1,12 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
+import type { ArrowProps } from '../arrow';
 import type { PopperAnchorProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';
 
 // Root
-export interface TooltipRootProps {
+export interface TooltipRootProps extends ClassValueProp {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */
@@ -39,7 +41,6 @@ export interface TooltipRootProps {
    */
   ignoreNonKeyboardFocus?: boolean;
 }
-
 export type TooltipRootPropsWithPrimitive = TooltipRootProps & PrimitiveProps;
 
 export type TooltipRootEmits = {
@@ -117,19 +118,20 @@ export type TooltipProviderContext = {
 
 // Content
 export interface TooltipContentProps
-  extends Pick<
-    PopperContentProps,
-    | 'side'
-    | 'sideOffset'
-    | 'align'
-    | 'alignOffset'
-    | 'avoidCollisions'
-    | 'collisionBoundary'
-    | 'collisionPadding'
-    | 'arrowPadding'
-    | 'sticky'
-    | 'hideWhenDetached'
-  > {
+  extends ClassValueProp,
+    Pick<
+      PopperContentProps,
+      | 'side'
+      | 'sideOffset'
+      | 'align'
+      | 'alignOffset'
+      | 'avoidCollisions'
+      | 'collisionBoundary'
+      | 'collisionPadding'
+      | 'arrowPadding'
+      | 'sticky'
+      | 'hideWhenDetached'
+    > {
   /** Used to force mounting when more control is needed. */
   forceMount?: boolean;
   /**
@@ -138,7 +140,6 @@ export interface TooltipContentProps
    */
   ariaLabel?: string;
 }
-
 export type TooltipContentPropsWithPrimitive = TooltipContentProps & PrimitiveProps;
 
 export type TooltipContentEmits = {
@@ -147,12 +148,8 @@ export type TooltipContentEmits = {
 };
 
 // Arrow
-export interface TooltipArrowProps extends PrimitiveProps {
-  /** The width of the arrow in pixels. */
-  width?: number;
-  /** The height of the arrow in pixels. */
-  height?: number;
-}
+export interface TooltipArrowProps extends ArrowProps {}
+export type TooltipArrowPropsWithPrimitive = TooltipArrowProps & PrimitiveProps;
 
 // Portal
 export type TooltipPortalProps = TeleportProps;

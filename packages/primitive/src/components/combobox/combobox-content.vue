@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import type { ComboboxContentEmits, ComboboxContentPropsWithPrimitive } from './types';
 import { injectComboboxRootContext } from './context';
 import ComboboxContentImpl from './combobox-content-impl.vue';
+import type { ComboboxContentEmits, ComboboxContentPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ComboboxContent',

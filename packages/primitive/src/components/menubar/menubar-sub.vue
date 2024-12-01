@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { MenuSub } from '../menu';
 import { useForwardExpose } from '../../composables';
-import type { MenubarSubEmits, MenubarSubPropsWithPrimitive } from './types';
+import { MenuSub } from '../menu';
+import type { MenubarSubEmits, MenubarSubProps } from './types';
 
 defineOptions({
   name: 'MenubarSub'
 });
 
-const props = withDefaults(defineProps<MenubarSubPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<MenubarSubProps>(), {
   defaultOpen: false
 });
 

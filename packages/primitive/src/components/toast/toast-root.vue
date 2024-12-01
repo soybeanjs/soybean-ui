@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
+import { Presence } from '../presence';
 import ToastRootImpl from './toast-root-impl.vue';
 import type { ToastRootEmits, ToastRootPropsWithPrimitive } from './types';
 

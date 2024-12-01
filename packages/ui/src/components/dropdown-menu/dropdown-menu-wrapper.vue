@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { DropdownMenuPortal, DropdownMenuRoot, DropdownMenuTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmitEmits, computedPick } from '../../shared';
+import {
+  DropdownMenuPortal,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import SDropdownMenuContent from './dropdown-menu-content.vue';
 import SDropdownMenuArrow from './dropdown-menu-arrow.vue';
 import type { DropdownMenuWrapperEmits, DropdownMenuWrapperProps } from './types';
@@ -18,13 +23,9 @@ const {
 
 const emit = defineEmits<DropdownMenuWrapperEmits>();
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuWrapperEmits, any>;
+const forwardedRootProps = usePickForwardProps(delegatedProps, ['defaultOpen', 'open', 'dir', 'modal']);
 
-const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'dir', 'modal']);
-
-const forwardedRootProps = useForwardProps(delegatedRootProps);
-
-const delegatedContentProps = computedPick(delegatedProps, [
+const forwardedContentProps = usePickForwardProps(delegatedProps, [
   'loop',
   'side',
   'sideOffset',
@@ -38,14 +39,9 @@ const delegatedContentProps = computedPick(delegatedProps, [
   'updatePositionStrategy'
 ]);
 
-const forwardedContentProps = useForwardProps(delegatedContentProps);
+const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
-const forwardedContentEmits = computedOmitEmits(forwardedEmits, ['update:open']);
-
-const forwardedContent = computed(() => ({
-  ...forwardedContentProps.value,
-  ...forwardedContentEmits.value
-}));
+const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 </script>
 
 <template>

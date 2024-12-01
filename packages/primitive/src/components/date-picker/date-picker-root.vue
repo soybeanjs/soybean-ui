@@ -6,7 +6,7 @@ import { isEqualDay, isSameDay } from '@internationalized/date';
 import { getDefaultDate } from '../../date';
 import type { DateValue } from '../../date';
 import { useDirection } from '../../composables';
-import PopoverRoot from '../popover/popover-root.vue';
+import { PopoverRoot } from '../popover';
 import { provideDatePickerRootContext } from './context';
 import type { DateFieldInstance, DatePickerRootEmits, DatePickerRootProps } from './types';
 

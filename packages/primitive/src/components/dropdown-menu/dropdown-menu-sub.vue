@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
-import { MenuSub } from '../menu';
 import { useForwardExpose } from '../../composables';
+import { MenuSub } from '../menu';
 import type { DropdownMenuSubEmits, DropdownMenuSubProps } from './types';
 
 defineOptions({

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { Presence } from '../presence';
+import { injectDialogRootContext } from './context';
 import DialogContentModal from './dialog-content-modal.vue';
 import DialogContentNonModal from './dialog-content-non-modal.vue';
-import { injectDialogRootContext } from './context';
 import type { DialogContentEmits, DialogContentPropsWithPrimitive } from './types';
 
 defineOptions({

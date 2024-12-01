@@ -3,9 +3,9 @@ import { computed, nextTick, reactive, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
 import { useDirection, useFilter, usePrimitiveElement } from '../../composables';
-import { PopperRoot } from '../popper';
-import { ListboxRoot } from '../listbox';
 import type { AcceptableValue, GenericComponentInstance } from '../../types';
+import { ListboxRoot } from '../listbox';
+import { PopperRoot } from '../popper';
 import { provideComboboxRootContext } from './context';
 import type { ComboboxRootEmits, ComboboxRootPropsWithPrimitive } from './types';
 

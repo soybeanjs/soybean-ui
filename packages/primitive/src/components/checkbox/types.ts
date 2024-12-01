@@ -1,12 +1,12 @@
 import type { Ref } from 'vue';
-import type { AcceptableValue, FormFieldProps } from '../../types';
+import type { AcceptableValue, ClassValueProp, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { RovingFocusGroupProps } from '../roving-focus';
 
 export type CheckedState = boolean | 'indeterminate';
 
 // Checkbox Root
-export interface CheckboxRootProps extends FormFieldProps {
+export interface CheckboxRootProps extends ClassValueProp, FormFieldProps {
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
   defaultValue?: CheckedState;
   /** The controlled value of the checkbox. Can be bound with v-model. */
@@ -37,7 +37,7 @@ export interface CheckboxRootContext {
 }
 
 // Checkbox Indicator
-export interface CheckboxIndicatorProps {
+export interface CheckboxIndicatorProps extends ClassValueProp {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
@@ -45,7 +45,8 @@ export interface CheckboxIndicatorProps {
 export type CheckboxIndicatorPropsWithPrimitive = CheckboxIndicatorProps & PrimitiveProps;
 
 // Checkbox Group Root
-export type CheckboxGroupRootProps<T = AcceptableValue> = FormFieldProps &
+export type CheckboxGroupRootProps<T = AcceptableValue> = ClassValueProp &
+  FormFieldProps &
   Pick<RovingFocusGroupProps, 'dir' | 'orientation' | 'loop'> & {
     /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
     defaultValue?: T[];

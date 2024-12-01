@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { AcceptableValue, ClassValueProp, Direction, FormFieldProps, PointerDownOutsideEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';
-import type { LabelProps, LabelPropsWithPrimitive } from '../label/types';
-import type { AcceptableValue, Direction, FormFieldProps, PointerDownOutsideEvent } from '../../types';
+import type { LabelProps } from '../label';
 
 // SelectRoot
 export interface SelectRootProps<T = AcceptableValue> extends FormFieldProps {
@@ -129,7 +129,7 @@ export interface SelectContentContext {
 }
 
 // Viewport
-export interface SelectViewportProps {
+export interface SelectViewportProps extends ClassValueProp {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
    * globally from `ConfigProvider`.
@@ -143,7 +143,7 @@ export interface SelectPopperPositionProps extends PopperContentProps {}
 export type SelectPopperPositionPropsWithPrimitive = SelectPopperPositionProps & PrimitiveProps;
 
 // SelectGroup
-export interface SelectGroupProps {}
+export interface SelectGroupProps extends ClassValueProp {}
 export type SelectGroupPropsWithPrimitive = SelectGroupProps & PrimitiveProps;
 
 export interface SelectGroupContext {
@@ -157,7 +157,7 @@ export interface SelectTriggerProps extends PopperAnchorProps {
 export type SelectTriggerPropsWithPrimitive = SelectTriggerProps & PrimitiveProps;
 
 // SelectItem
-export interface SelectItemProps<T = AcceptableValue> {
+export interface SelectItemProps<T = AcceptableValue> extends ClassValueProp {
   /** The value given as data when submitted with a `name`. */
   value: T;
   /** When `true`, prevents the user from interacting with the item. */
@@ -179,19 +179,19 @@ export interface SelectItemContext<T = AcceptableValue> {
 }
 
 // SelectLabel
-export type SelectLabelProps = LabelProps;
-export type SelectLabelPropsWithPrimitive = LabelPropsWithPrimitive;
+export interface SelectLabelProps extends LabelProps {}
+export type SelectLabelPropsWithPrimitive = SelectLabelProps & PrimitiveProps;
 
 // SelectItemText
-export interface SelectItemTextProps {}
+export interface SelectItemTextProps extends ClassValueProp {}
 export type SelectItemTextPropsWithPrimitive = SelectItemTextProps & PrimitiveProps;
 
 // SelectItemIndicator
-export interface SelectItemIndicatorProps {}
+export interface SelectItemIndicatorProps extends ClassValueProp {}
 export type SelectItemIndicatorPropsWithPrimitive = SelectItemIndicatorProps & PrimitiveProps;
 
 // SelectItemAlignedPosition
-export interface SelectItemAlignedPositionProps {}
+export interface SelectItemAlignedPositionProps extends ClassValueProp {}
 export type SelectItemAlignedPositionPropsWithPrimitive = SelectItemAlignedPositionProps & PrimitiveProps;
 
 export type SelectItemAlignedPositionEmits = {
@@ -205,18 +205,18 @@ export interface SelectItemAlignedPositionContext {
 }
 
 // SelectValue
-export interface SelectValueProps {
+export interface SelectValueProps extends ClassValueProp {
   /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
   placeholder?: string;
 }
 export type SelectValuePropsWithPrimitive = SelectValueProps & PrimitiveProps;
 
 // SelectIcon
-export interface SelectIconProps {}
+export interface SelectIconProps extends ClassValueProp {}
 export type SelectIconPropsWithPrimitive = SelectIconProps & PrimitiveProps;
 
 // SelectSeparator
-export interface SelectSeparatorProps {}
+export interface SelectSeparatorProps extends ClassValueProp {}
 export type SelectSeparatorPropsWithPrimitive = SelectSeparatorProps & PrimitiveProps;
 
 // SelectArrow
@@ -229,11 +229,11 @@ export type SelectScrollButtonImplEmits = {
 };
 
 // SelectScrollDownButton
-export interface SelectScrollDownButtonProps {}
+export interface SelectScrollDownButtonProps extends ClassValueProp {}
 export type SelectScrollDownButtonPropsWithPrimitive = SelectScrollDownButtonProps & PrimitiveProps;
 
 // SelectScrollUpButton
-export interface SelectScrollUpButtonProps {}
+export interface SelectScrollUpButtonProps extends ClassValueProp {}
 export type SelectScrollUpButtonPropsWithPrimitive = SelectScrollUpButtonProps & PrimitiveProps;
 
 // BubbleSelect

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose, useId } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectTagsInputItemContext } from './context';
 import type { TagsInputItemTextPropsWithPrimitive } from './types';
 

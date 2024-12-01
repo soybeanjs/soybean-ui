@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Direction } from '../../types';
+import type { ClassValueProp, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type {
   MenuArrowProps,
@@ -51,7 +51,7 @@ export interface DropdownMenuRootContext {
 export interface DropdownMenuPortalProps extends MenuPortalProps {}
 
 // DropdownMenuContent
-export type DropdownMenuContentProps = MenuContentProps;
+export interface DropdownMenuContentProps extends MenuContentProps {}
 export type DropdownMenuContentPropsWithPrimitive = DropdownMenuContentProps & PrimitiveProps;
 export type DropdownMenuContentEmits = MenuContentEmits;
 
@@ -72,7 +72,7 @@ export interface DropdownMenuSubTriggerProps extends MenuSubTriggerProps {}
 export type DropdownMenuSubTriggerPropsWithPrimitive = DropdownMenuSubTriggerProps & PrimitiveProps;
 
 // DropdownMenuTrigger
-export interface DropdownMenuTriggerProps {
+export interface DropdownMenuTriggerProps extends ClassValueProp {
   /**
    * When `true`, the context menu would not open when right-clicking.
    *

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import { useCollection, useForwardExpose } from '../../composables';
-import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
+import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
 import type { MenubarTriggerPropsWithPrimitive } from './types';

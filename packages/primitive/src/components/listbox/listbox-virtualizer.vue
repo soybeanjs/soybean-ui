@@ -8,8 +8,8 @@ import { useCollection } from '../../composables';
 import { findValuesBetween, getNextMatch } from '../../shared';
 import type { AcceptableValue, NavigationKeys } from '../../types';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { compare, queryCheckedElement } from './shared';
 import { injectListboxRootContext } from './context';
+import { compare, queryCheckedElement } from './shared';
 import type { ListboxVirtualizerProps, ListboxVirtualizerSlots } from './types';
 
 defineOptions({

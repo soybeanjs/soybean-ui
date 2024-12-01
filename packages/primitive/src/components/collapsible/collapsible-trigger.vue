@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectCollapsibleRootContext } from './context';
 import type { CollapsibleTriggerPropsWithPrimitive } from './types';
 

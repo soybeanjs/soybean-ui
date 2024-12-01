@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { Ref } from 'vue';
-import { useVirtualizer } from '@tanstack/vue-virtual';
 import { cloneVNode, computed, nextTick, useSlots } from 'vue';
+import type { Ref } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
-import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
-import { getNextMatch } from '../../shared';
+import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useCollection } from '../../composables';
+import { getNextMatch } from '../../shared';
 import type { NavigationKeys } from '../../types';
-import type { TreeVirtualizerProps } from './types';
+import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { injectTreeRootContext } from './context';
+import type { TreeVirtualizerProps } from './types';
 
 defineOptions({
   name: 'TreeVirtualizer'

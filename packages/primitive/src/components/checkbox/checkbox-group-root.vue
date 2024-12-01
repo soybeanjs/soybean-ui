@@ -7,8 +7,8 @@ import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { CheckboxGroupRootPropsWithPrimitive, CheckboxRootEmits } from './types';
 import { provideCheckboxGroupRootContext } from './context';
+import type { CheckboxGroupRootPropsWithPrimitive, CheckboxRootEmits } from './types';
 
 defineOptions({
   name: 'CheckboxGroupRoot'

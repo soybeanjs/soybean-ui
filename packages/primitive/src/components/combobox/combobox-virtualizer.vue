@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import ListboxVirtualizer from '../listbox/listbox-virtualizer.vue';
 import type { AcceptableValue } from '../../types';
+import { ListboxVirtualizer } from '../listbox';
 import { injectComboboxRootContext } from './context';
 import type { ComboboxVirtualizerProps } from './types';
 

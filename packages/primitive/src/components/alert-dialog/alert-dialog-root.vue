@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogRoot } from '../dialog';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { DialogRoot } from '../dialog';
 import type { AlertDialogRootEmits, AlertDialogRootProps } from './types';
 
 defineOptions({

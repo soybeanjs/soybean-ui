@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
+import { useDirection, useIsUsingKeyboard } from '../../composables';
 import { PopperRoot } from '../popper';
-import { useIsUsingKeyboard } from '../../composables/use-is-using-keyboard';
-import { useDirection } from '../../composables';
 import { provideMenuContext, provideMenuRootContext } from './context';
 import type { MenuRootEmits, MenuRootProps } from './types';
 

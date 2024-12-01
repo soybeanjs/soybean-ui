@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import type { ComboboxSeparatorPropsWithPrimitive } from './types';
 
 defineOptions({

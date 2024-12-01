@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectSelectContentContext, injectSelectItemContext, injectSelectRootContext } from './context';
 import type { SelectItemTextPropsWithPrimitive } from './types';
 

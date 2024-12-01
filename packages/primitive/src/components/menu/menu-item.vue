@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
 import { useForwardExpose } from '../../composables';
-import MenuItemImpl from './menu-item-impl.vue';
 import { injectMenuContentContext, injectMenuRootContext } from './context';
 import { ITEM_SELECT, SELECTION_KEYS } from './shared';
+import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuItemEmits, MenuItemPropsWithPrimitive } from './types';
 
 defineOptions({

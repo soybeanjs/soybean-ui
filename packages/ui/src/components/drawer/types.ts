@@ -1,21 +1,20 @@
 import type { DrawerPortalProps, DrawerRootEmits, DrawerRootProps } from 'vaul-vue';
-import type { ClassValue, ClassValueProp } from '../../types';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
 import type { CardProps } from '../card/types';
 
-export type DrawerOverlayProps = ClassValueProp;
+export interface DrawerOverlayProps extends ClassValueProp {}
 
-export type DrawerContentProps = ClassValueProp &
-  CardProps & {
-    cardClass?: ClassValue;
-    showClose?: boolean;
-    closeClass?: ClassValue;
-  };
+export interface DrawerContentProps extends CardProps {
+  cardClass?: ClassValue;
+  showClose?: boolean;
+  closeClass?: ClassValue;
+}
 
-export type DrawerTitleProps = ClassValueProp;
+export interface DrawerTitleProps extends ClassValueProp {}
 
-export type DrawerDescriptionProps = ClassValueProp;
+export interface DrawerDescriptionProps extends ClassValueProp {}
 
-export type DrawerKnobProps = ClassValueProp;
+export interface DrawerKnobProps extends ClassValueProp {}
 
 export type DrawerProps = DrawerRootProps &
   DrawerContentProps &

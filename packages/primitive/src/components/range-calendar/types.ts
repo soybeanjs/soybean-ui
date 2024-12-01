@@ -1,10 +1,10 @@
 import type { Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
 import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
-import type { Direction } from '../../types';
+import type { ClassValueProp, Direction } from '../../types';
+import type { PrimitiveProps } from '../primitive';
 
 // Root
-export interface RangeCalendarRootProps {
+export interface RangeCalendarRootProps extends ClassValueProp {
   /** The default placeholder date */
   defaultPlaceholder?: DateValue;
   /** The default value for the calendar */
@@ -123,54 +123,54 @@ export type RangeCalendarRootContext = {
   dir: Ref<Direction>;
 };
 // Grid
-export interface RangeCalendarGridProps {}
+export interface RangeCalendarGridProps extends ClassValueProp {}
 export type RangeCalendarGridPropsWithPrimitive = RangeCalendarGridProps & PrimitiveProps;
 
 // Grid Head
-export interface RangeCalendarGridHeadProps {}
+export interface RangeCalendarGridHeadProps extends ClassValueProp {}
 export type RangeCalendarGridHeadPropsWithPrimitive = RangeCalendarGridHeadProps & PrimitiveProps;
 
 // Grid Body
-export interface RangeCalendarGridBodyProps {}
+export interface RangeCalendarGridBodyProps extends ClassValueProp {}
 export type RangeCalendarGridBodyPropsWithPrimitive = RangeCalendarGridBodyProps & PrimitiveProps;
 
 // Grid Row
-export interface RangeCalendarGridRowProps {}
+export interface RangeCalendarGridRowProps extends ClassValueProp {}
 export type RangeCalendarGridRowPropsWithPrimitive = RangeCalendarGridRowProps & PrimitiveProps;
 
 // Header
-export interface RangeCalendarHeaderProps {}
+export interface RangeCalendarHeaderProps extends ClassValueProp {}
 export type RangeCalendarHeaderPropsWithPrimitive = RangeCalendarHeaderProps & PrimitiveProps;
 
 // Heading
-export interface RangeCalendarHeadingProps {}
+export interface RangeCalendarHeadingProps extends ClassValueProp {}
 export type RangeCalendarHeadingPropsWithPrimitive = RangeCalendarHeadingProps & PrimitiveProps;
 
 // Head Cell
-export interface RangeCalendarHeadCellProps {}
+export interface RangeCalendarHeadCellProps extends ClassValueProp {}
 export type RangeCalendarHeadCellPropsWithPrimitive = RangeCalendarHeadCellProps & PrimitiveProps;
 
 // Cell
-export interface RangeCalendarCellProps {
+export interface RangeCalendarCellProps extends ClassValueProp {
   date: DateValue;
 }
 export type RangeCalendarCellPropsWithPrimitive = RangeCalendarCellProps & PrimitiveProps;
 
 // Cell Trigger
-export interface RangeCalendarCellTriggerProps {
+export interface RangeCalendarCellTriggerProps extends ClassValueProp {
   day: DateValue;
   month: DateValue;
 }
 export type RangeCalendarCellTriggerPropsWithPrimitive = RangeCalendarCellTriggerProps & PrimitiveProps;
 
 // Next
-export interface RangeCalendarNextProps {
+export interface RangeCalendarNextProps extends ClassValueProp {
   /** The function to be used for the next page. Overwrites the `nextPage` function set on the `RangeCalendarRoot`. */
   nextPage?: (placeholder: DateValue) => DateValue;
 }
 export type RangeCalendarNextPropsWithPrimitive = RangeCalendarNextProps & PrimitiveProps;
 // Prev
-export interface RangeCalendarPrevProps {
+export interface RangeCalendarPrevProps extends ClassValueProp {
   /** The function to be used for the prev page. Overwrites the `prevPage` function set on the `RangeCalendarRoot`. */
   prevPage?: (placeholder: DateValue) => DateValue;
 }

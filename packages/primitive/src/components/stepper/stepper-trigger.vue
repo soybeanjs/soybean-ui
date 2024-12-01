@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useArrowNavigation, useForwardExpose, useKbd } from '../../composables';
-import type { StepperTriggerPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectStepperItemContext, injectStepperRootContext } from './context';
+import type { StepperTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'StepperTrigger'

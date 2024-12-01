@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogTrigger } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogTrigger } from '../dialog';
 import type { AlertDialogTriggerPropsWithPrimitive } from './types';
 
 defineOptions({

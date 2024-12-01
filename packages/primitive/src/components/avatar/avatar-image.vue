@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { toRef, watch } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose, useImageLoadingStatus } from '../../composables';
 import type { ImageLoadingStatus } from '../../types';
+import { Primitive } from '../primitive';
 import { injectAvatarRootContext } from './context';
 import type { AvatarImageEmits, AvatarImagePropsWithPrimitive } from './types';
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
 import { useMounted } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose, useSize } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectSliderOrientationContext, injectSliderRootContext } from './context';
 import { convertValueToPercentage, getLabel, getThumbInBoundsOffset } from './shared';
 import type { SliderThumbImplPropsWithPrimitive } from './types';

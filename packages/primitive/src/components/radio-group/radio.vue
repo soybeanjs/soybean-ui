@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
+import { useFormControl, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { useFormControl, useForwardExpose } from '../../composables';
-import type { RadioEmits, RadioPropsWithPrimitive } from './types';
 import { handleSelect } from './shared';
+import type { RadioEmits, RadioPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'Radio',

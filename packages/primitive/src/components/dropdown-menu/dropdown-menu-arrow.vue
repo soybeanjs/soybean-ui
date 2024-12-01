@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuArrow } from '../menu';
 import { useForwardExpose } from '../../composables';
+import { MenuArrow } from '../menu';
 import type { DropdownMenuArrowPropsWithPrimitive } from './types';
 
 defineOptions({

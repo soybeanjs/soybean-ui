@@ -1,30 +1,25 @@
 import type {
+  ClassValue,
   DialogContentEmits,
+  DialogOverlayProps,
   DialogPortalProps,
   DialogRootEmits,
   DialogRootProps,
-  DialogContentProps as _DialogContentProps,
-  DialogOverlayProps as _DialogOverlayProps
+  DialogContentProps as _DialogContentProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
 
-export type DialogOverlayProps = ClassValueProp & Pick<_DialogOverlayProps, 'forceMount'>;
+export interface DialogContentProps extends CardProps, _DialogContentProps {
+  showClose?: boolean;
+}
 
-export type DialogContentProps = CardProps &
-  Pick<_DialogContentProps, 'forceMount' | 'trapFocus' | 'disableOutsidePointerEvents'> & {
-    showClose?: boolean;
-  };
+export interface DialogProps extends DialogRootProps, DialogContentProps, Pick<DialogPortalProps, 'to'> {
+  disabledPortal?: boolean;
+  forceMountPortal?: boolean;
+  overlayClass?: ClassValue;
+  forceMountOverlay?: boolean;
+}
 
-export type DialogProps = DialogRootProps &
-  DialogContentProps &
-  Pick<DialogPortalProps, 'to'> & {
-    disabledPortal?: boolean;
-    forceMountPortal?: boolean;
-    overlayClass?: ClassValue;
-    forceMountOverlay?: boolean;
-  };
+export interface DialogEmits extends DialogRootEmits, DialogContentEmits {}
 
-export type DialogEmits = DialogRootEmits & DialogContentEmits;
-
-export type { DialogRootProps, DialogPortalProps, DialogRootEmits, DialogContentEmits };
+export type { DialogRootProps, DialogPortalProps, DialogRootEmits, DialogContentEmits, DialogOverlayProps };

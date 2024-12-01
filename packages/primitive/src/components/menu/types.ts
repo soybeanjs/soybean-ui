@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Direction, GraceIntent } from '../../types';
+import type { ClassValueProp, Direction, GraceIntent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
@@ -64,7 +64,10 @@ export type MenuContentImplPrivateProps = Pick<DismissableLayerProps, 'disableOu
   trapFocus?: FocusScopeProps['trapped'];
 };
 
-export interface MenuContentImplProps extends MenuContentImplPrivateProps, Omit<PopperContentProps, 'dir'> {
+export interface MenuContentImplProps
+  extends ClassValueProp,
+    MenuContentImplPrivateProps,
+    Omit<PopperContentProps, 'dir'> {
   /**
    * When `true`, keyboard navigation will loop from last item to first, and vice versa.
    *
@@ -94,7 +97,7 @@ export type MenuRootContentTypeProps = Omit<
 export type MenuRootContentTypePropsWithPrimitive = MenuRootContentTypeProps & PrimitiveProps;
 
 // MenuContent
-export interface MenuContentProps extends MenuRootContentTypeProps {
+export interface MenuContentProps extends ClassValueProp, MenuRootContentTypeProps {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
@@ -116,7 +119,7 @@ export type MenuRootContentModalPropsWithPrimitive = MenuRootContentModalProps &
 export type MenuRootContentModalEmits = MenuContentImplEmits;
 
 // MenuRootContentNonModal
-export type MenuRootContentNonModalProps = MenuRootContentTypeProps;
+export interface MenuRootContentNonModalProps extends MenuRootContentTypeProps {}
 export type MenuRootContentNonModalPropsWithPrimitive = MenuRootContentNonModalProps & PrimitiveProps;
 export type MenuRootContentNonModalEmits = MenuContentImplEmits;
 
@@ -152,7 +155,7 @@ export interface MenuSubTriggerProps extends MenuItemImplProps {}
 export type MenuSubTriggerPropsWithPrimitive = MenuSubTriggerProps & PrimitiveProps;
 
 // MenuItemImpl
-export interface MenuItemImplProps {
+export interface MenuItemImplProps extends ClassValueProp {
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
   /**
@@ -176,7 +179,7 @@ export type MenuItemEmits = {
 };
 
 // MenuItemIndicator
-export interface MenuItemIndicatorProps {
+export interface MenuItemIndicatorProps extends ClassValueProp {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
@@ -187,11 +190,11 @@ export interface MenuItemIndicatorContext {
 }
 
 // MenuGroup
-export interface MenuGroupProps {}
+export interface MenuGroupProps extends ClassValueProp {}
 export type MenuGroupPropsWithPrimitive = MenuGroupProps & PrimitiveProps;
 
 // MenuLabel
-export interface MenuLabelProps {}
+export interface MenuLabelProps extends ClassValueProp {}
 export type MenuLabelPropsWithPrimitive = MenuLabelProps & PrimitiveProps;
 
 // MenuArrow
@@ -203,7 +206,7 @@ export interface MenuAnchorProps extends PopperAnchorProps {}
 export type MenuAnchorPropsWithPrimitive = MenuAnchorProps & PrimitiveProps;
 
 // MenuSeparator
-export interface MenuSeparatorProps {}
+export interface MenuSeparatorProps extends ClassValueProp {}
 export type MenuSeparatorPropsWithPrimitive = MenuSeparatorProps & PrimitiveProps;
 
 // MenuCheckboxItem

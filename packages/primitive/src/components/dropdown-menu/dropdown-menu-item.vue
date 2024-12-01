@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuItem } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { MenuItem } from '../menu';
 import type { DropdownMenuItemEmits, DropdownMenuItemPropsWithPrimitive } from './types';
 
 defineOptions({

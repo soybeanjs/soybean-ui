@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import {
   injectScrollAreaRootContext,
   injectScrollAreaScrollbarContext,

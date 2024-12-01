@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuRadioGroup } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { MenuRadioGroup } from '../menu';
 import type { DropdownMenuRadioGroupEmits, DropdownMenuRadioGroupPropsWithPrimitive } from './types';
 
 defineOptions({

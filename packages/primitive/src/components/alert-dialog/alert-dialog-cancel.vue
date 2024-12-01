@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { DialogClose } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogClose } from '../dialog';
 import { injectAlertDialogContentContext } from './context';
 import type { AlertDialogCancelPropsWithPrimitive } from './types';
 

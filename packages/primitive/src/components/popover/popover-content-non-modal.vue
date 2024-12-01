@@ -2,9 +2,9 @@
 import { ref } from 'vue';
 import { useForwardPropsEmits } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import { injectPopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
 import type { PopoverContentImplEmits, PopoverContentImplPropsWithPrimitive } from './types';
-import { injectPopoverRootContext } from './context';
 
 defineOptions({
   name: 'PopoverContentNonModal'

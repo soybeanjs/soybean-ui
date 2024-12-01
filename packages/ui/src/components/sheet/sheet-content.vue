@@ -6,12 +6,12 @@ import {
   DialogDescription,
   DialogTitle,
   VisuallyHidden,
-  useForwardProps,
-  useForwardPropsEmits
+  useForwardPropsEmits,
+  useOmitForwardProps,
+  usePickForwardProps
 } from '@soybean-ui/primitive';
 import { X } from 'lucide-vue-next';
 import { cn, sheetVariants } from '@soybean-ui/variants';
-import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import SButtonIcon from '../button/button-icon.vue';
 import type { SheetContentEmits, SheetContentProps } from './types';
@@ -38,13 +38,19 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const forwardedContentProps = usePickForwardProps(delegatedProps, [
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
+]);
 
-const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+const forwardedContent = useForwardPropsEmits(forwardedContentProps, emit);
 
-const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
-
-const forwardedCardProps = useForwardProps(delegatedCardProps);
+const forwardedCardProps = useOmitForwardProps(delegatedProps, [
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
+]);
 
 const slotKeys = computed(() => {
   const allKeys = Object.keys(slots) as (keyof Slots)[];

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
-import type { TooltipContentPropsWithPrimitive } from './types';
 import { injectTooltipProviderContext, injectTooltipRootContext } from './context';
 import TooltipContentImpl from './tooltip-content-impl.vue';
+import type { TooltipContentPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TooltipContentHoverable'

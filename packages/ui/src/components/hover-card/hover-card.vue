@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { HoverCardPortal, HoverCardRoot, HoverCardTrigger, useForwardProps, useForwardPropsEmits } from '@soybean-ui/primitive';
-import { computedPick } from '../../shared';
+import {
+  HoverCardPortal,
+  HoverCardRoot,
+  HoverCardTrigger,
+  useForwardProps,
+  useForwardPropsEmits,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import SHoverCardContent from './hover-card-content.vue';
 import SHoverCardArrow from './hover-card-arrow.vue';
 import type { HoverCardEmits, HoverCardProps } from './types';
@@ -13,9 +19,9 @@ const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } =
 
 const emit = defineEmits<HoverCardEmits>();
 
-const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'openDelay', 'closeDelay']);
+const delegatedRootProps = usePickForwardProps(delegatedProps, ['defaultOpen', 'open', 'openDelay', 'closeDelay']);
 
-const delegatedContentProps = computedPick(delegatedProps, [
+const delegatedContentProps = usePickForwardProps(delegatedProps, [
   'side',
   'sideOffset',
   'align',

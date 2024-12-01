@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose, useId } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectStepperRootContext, provideStepperItemContext } from './context';
-import type { StepperItemProps } from './types';
+import type { StepperItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'StepperItem'
 });
 
-const props = withDefaults(defineProps<StepperItemProps>(), {
+const props = withDefaults(defineProps<StepperItemPropsWithPrimitive>(), {
   completed: false,
   disabled: false
 });

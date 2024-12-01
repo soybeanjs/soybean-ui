@@ -29,9 +29,15 @@ export function useForwardPropsEmits<T extends Record<string, any>, Name extends
 
 export function useCombinedPropsEmits<T extends Record<string, any>, Name extends string>(
   props: ComputedRef<T>,
-  emit?: (name: Name, ...args: any[]) => void
+  emit?: ((name: Name, ...args: any[]) => void) | Record<string, any>
 ) {
-  const emitsAsProps = emit ? useEmitAsProps(emit) : {};
+  let emitsAsProps = {};
+
+  if (typeof emit === 'function') {
+    emitsAsProps = useEmitAsProps(emit as (name: Name, ...args: any[]) => void);
+  } else if (typeof emit === 'object') {
+    emitsAsProps = emit;
+  }
 
   return computed(() => ({
     ...props.value,

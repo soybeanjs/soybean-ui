@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { SelectGroup, SelectPortal, SelectRoot, SelectValue, useForwardPropsEmits } from '@soybean-ui/primitive';
-import { computedPick } from '../../shared';
+import {
+  SelectGroup,
+  SelectPortal,
+  SelectRoot,
+  SelectValue,
+  useForwardPropsEmits,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
 import SSelectViewport from './select-viewport.vue';
@@ -20,7 +26,7 @@ const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } =
 
 const emit = defineEmits<SelectEmits>();
 
-const delegatedRootProps = computedPick(delegatedProps, [
+const forwardedRootProps = usePickForwardProps(delegatedProps, [
   'defaultOpen',
   'open',
   'defaultValue',
@@ -32,9 +38,9 @@ const delegatedRootProps = computedPick(delegatedProps, [
   'required'
 ]);
 
-const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
+const forwarded = useForwardPropsEmits(forwardedRootProps, emit);
 
-const delegatedContentProps = computedPick(delegatedProps, [
+const forwardedContentProps = usePickForwardProps(delegatedProps, [
   'position',
   'bodyLock',
   'side',
@@ -65,7 +71,7 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
     <SelectPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent
         :class="contentClass"
-        v-bind="delegatedContentProps"
+        v-bind="forwardedContentProps"
         :force-mount="forceMountContent"
         :avoid-collisions
         :prioritize-position

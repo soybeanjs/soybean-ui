@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends DropdownMenuCheckboxOption = DropdownMenuCheckboxOption">
-import { computed, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import type { Ref } from 'vue';
-import { useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmit, computedOmitEmits } from '../../shared';
+import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitive';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';
 import SDropdownMenuCheckboxItem from './dropdown-menu-checkbox-item.vue';
@@ -23,9 +22,7 @@ const props = defineProps<DropdownMenuCheckboxProps<T>>();
 
 const emit = defineEmits<DropdownMenuCheckboxEmits>();
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuCheckboxEmits, any>;
-
-const delegatedWrapperProps = computedOmit(props, [
+const forwardedWrapperProps = useOmitForwardProps(props, [
   'separator',
   'groupLabelClass',
   'itemClass',
@@ -39,14 +36,9 @@ const delegatedWrapperProps = computedOmit(props, [
   'groupSeparator'
 ]);
 
-const forwardedWrapperProps = useForwardProps(delegatedWrapperProps);
+const forwardedWrapperEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
 
-const forwardedWrapperEmits = computedOmitEmits(forwardedEmits, ['update:modelValue']);
-
-const forwardedWrapper = computed(() => ({
-  ...forwardedWrapperProps.value,
-  ...forwardedWrapperEmits.value
-}));
+const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
 
 const checkValue = ref(props.modelValue || props.defaultValue || []) as Ref<string[]>;
 

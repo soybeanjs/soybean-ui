@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
+import { Presence } from '../presence';
 import DialogOverlayImpl from './dialog-overlay-impl.vue';
 import { injectDialogRootContext } from './context';
 import type { DialogOverlayPropsWithPrimitive } from './types';

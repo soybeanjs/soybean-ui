@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import type { PopoverClosePropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectPopoverRootContext } from './context';
+import type { PopoverClosePropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'PopoverClose'

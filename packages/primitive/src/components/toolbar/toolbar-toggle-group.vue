@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ToggleGroupRoot } from '../toggle-group';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type { ToolbarToggleGroupEmits, ToolbarToggleGroupPropsWithPrimitive } from './types';
+import { ToggleGroupRoot } from '../toggle-group';
 import { injectToolbarRootContext } from './context';
+import type { ToolbarToggleGroupEmits, ToolbarToggleGroupPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ToolbarToggleGroup'

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue';
 import { watchOnce } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { addUnlinkedScrollListener } from './shared';
 import { injectScrollAreaRootContext, injectScrollAreaScrollbarVisibleContext } from './context';
 import type { ScrollAreaThumbPropsWithPrimitive } from './types';

@@ -2,14 +2,14 @@
 import { computed, watch } from 'vue';
 import { usePrimitiveElement } from '../../composables';
 import VisuallyHidden from './visually-hidden.vue';
-import type { VisuallyHiddenInputBubbleProps } from './types';
+import type { VisuallyHiddenInputBubblePropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'VisuallyHiddenInputBubble',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<VisuallyHiddenInputBubbleProps<T>>(), {
+const props = withDefaults(defineProps<VisuallyHiddenInputBubblePropsWithPrimitive<T>>(), {
   feature: 'fully-hidden',
   checked: undefined
 });

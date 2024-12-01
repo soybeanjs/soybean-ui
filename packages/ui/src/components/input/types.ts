@@ -1,7 +1,7 @@
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValueProp } from '../../types';
+import type { ClassValueProp } from '@soybean-ui/primitive';
 
-export type InputProps = ClassValueProp & {
+export interface InputProps extends ClassValueProp {
   defaultValue?: string;
   modelValue?: string;
   size?: ThemeSize;
@@ -40,7 +40,7 @@ export type InputProps = ClassValueProp & {
   type?: InputType;
   value?: any;
   width?: number;
-};
+}
 
 export type InputEmits = {
   'update:modelValue': [value: string];

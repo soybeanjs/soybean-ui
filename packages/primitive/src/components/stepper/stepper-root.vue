@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { provideStepperRootContext } from './context';
 import type { StepperRootEmits, StepperRootPropsWithPrimitive } from './types';
 

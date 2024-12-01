@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PopperAnchor from '../popper/popper-anchor.vue';
+import { PopperAnchor } from '../popper';
 import type { MenuAnchorPropsWithPrimitive } from './types';
 
 defineOptions({

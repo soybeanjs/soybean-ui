@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
+import { useForwardExpose, useNonce } from '../../composables';
 import { Primitive } from '../primitive';
-import { useForwardExpose } from '../../composables';
-import { useNonce } from '../../composables/use-nonce';
 import { injectComboboxRootContext } from './context';
 import type { ComboboxViewportPropsWithPrimitive } from './types';
 

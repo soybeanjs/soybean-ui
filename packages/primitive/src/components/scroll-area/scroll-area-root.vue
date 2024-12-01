@@ -2,8 +2,8 @@
 import { ref, toRefs } from 'vue';
 import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose } from '../../composables';
-import type { ScrollAreaRootPropsWithPrimitive } from './types';
 import { provideScrollAreaRootContext } from './context';
+import type { ScrollAreaRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ScrollAreaRoot',

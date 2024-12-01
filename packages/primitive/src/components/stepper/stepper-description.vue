@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import type { StepperDescriptionPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectStepperItemContext } from './context';
+import type { StepperDescriptionPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'StepperDescription'

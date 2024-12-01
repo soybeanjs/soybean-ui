@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { useForwardExpose } from '../../composables';
-import type { TabsTriggerPropsWithPrimitive } from './types';
 import { injectTabsRootContext } from './context';
 import { makeContentId, makeTriggerId } from './shared';
+import type { TabsTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'TabsTrigger'

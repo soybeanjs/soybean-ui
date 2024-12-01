@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction } from '../../types';
 
 // RovingFocusGroup
-export interface RovingFocusGroupProps {
+export interface RovingFocusGroupProps extends ClassValueProp {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /** The direction of navigation between items. */
@@ -44,11 +44,10 @@ export interface RovingFocusGroupContext extends RovingFocusGroupContextParams {
 }
 
 // RovingFocusItem
-export interface RovingFocusItemProps {
+export interface RovingFocusItemProps extends ClassValueProp {
   tabStopId?: string;
   focusable?: boolean;
   active?: boolean;
   allowShiftKey?: boolean;
 }
-
 export type RovingFocusItemPropsWithPrimitive = RovingFocusItemProps & PrimitiveProps;

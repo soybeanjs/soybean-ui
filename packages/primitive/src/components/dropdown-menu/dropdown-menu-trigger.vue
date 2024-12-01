@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue';
-import { Primitive } from '../primitive';
-import { MenuAnchor } from '../menu';
 import { useForwardExpose, useId } from '../../composables';
+import { MenuAnchor } from '../menu';
+import { Primitive } from '../primitive';
 import { injectDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerPropsWithPrimitive } from './types';
 

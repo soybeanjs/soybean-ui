@@ -1,13 +1,13 @@
 import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction, FormFieldProps } from '../../types';
 
 export type PinInputRootEmits = {
   'update:modelValue': [value: string[]];
   complete: [value: string[]];
 };
 
-export interface PinInputRootProps extends FormFieldProps {
+export interface PinInputRootProps extends ClassValueProp, FormFieldProps {
   /** The controlled checked state of the pin input. Can be bound as `v-model`. */
   modelValue?: string[];
   /**
@@ -33,7 +33,6 @@ export interface PinInputRootProps extends FormFieldProps {
   /** Id of the element */
   id?: string;
 }
-
 export type PinInputRootPropsWithPrimitive = PinInputRootProps & PrimitiveProps;
 
 export interface PinInputRootContext {
@@ -49,11 +48,10 @@ export interface PinInputRootContext {
   onInputElementChange: (el: HTMLInputElement) => void;
 }
 
-export interface PinInputInputProps {
+export interface PinInputInputProps extends ClassValueProp {
   /** Position of the value this input binds to. */
   index: number;
   /** When `true`, prevents the user from interacting with the pin input */
   disabled?: boolean;
 }
-
 export type PinInputInputPropsWithPrimitive = PinInputInputProps & PrimitiveProps;

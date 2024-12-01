@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { FocusScope } from '../focus-scope';
-import { DismissableLayer } from '../dismissable-layer';
 import { useForwardExpose } from '../../composables';
+import { DismissableLayer } from '../dismissable-layer';
+import { FocusScope } from '../focus-scope';
 import { getOpenState } from '../menu/shared';
 import { injectDialogRootContext } from './context';
 import { useWarning } from './shared';

@@ -1,9 +1,9 @@
 import type { TextareaResize, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
 
-export type TextareaRootProps = ClassValueProp;
+export interface TextareaRootProps extends ClassValueProp {}
 
-export type TextareaContentProps = ClassValueProp & {
+export interface TextareaContentProps extends ClassValueProp {
   modelValue?: string;
   defaultValue?: string;
   size?: ThemeSize;
@@ -25,21 +25,22 @@ export type TextareaContentProps = ClassValueProp & {
   rows?: number;
   value?: string | ReadonlyArray<string> | number | null;
   wrap?: string;
-};
+}
 
 export type TextareaContentEmits = {
   'update:modelValue': [value: string];
 };
 
-export type TextareaCountProps = Pick<TextareaContentProps, 'class' | 'size' | 'maxlength'> & {
+export interface TextareaCountProps extends Pick<TextareaContentProps, 'class' | 'size' | 'maxlength'> {
   value?: string;
   countGraphemes?: (input: string) => number;
-};
+}
 
-export type TextareaProps = TextareaRootProps &
-  TextareaContentProps &
-  Pick<TextareaCountProps, 'countGraphemes'> & {
-    showCount?: boolean;
-    contentClass?: ClassValue;
-    countClass?: ClassValue;
-  };
+export interface TextareaProps
+  extends TextareaRootProps,
+    TextareaContentProps,
+    Pick<TextareaCountProps, 'countGraphemes'> {
+  showCount?: boolean;
+  contentClass?: ClassValue;
+  countClass?: ClassValue;
+}

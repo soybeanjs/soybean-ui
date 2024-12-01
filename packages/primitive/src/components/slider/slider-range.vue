@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectSliderOrientationContext, injectSliderRootContext } from './context';
 import { convertValueToPercentage } from './shared';
 import type { SliderRangePropsWithPrimitive } from './types';

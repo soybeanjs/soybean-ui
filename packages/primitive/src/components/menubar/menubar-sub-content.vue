@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCollection, useForwardExpose, useForwardPropsEmits } from '../../composables';
-import { MenuSubContent } from '../menu';
 import { wrapArray } from '../../shared';
+import { MenuSubContent } from '../menu';
 import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
 import type { MenubarSubContentEmits, MenubarSubContentPropsWithPrimitive } from './types';
 

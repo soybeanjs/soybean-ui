@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { NavigationMenuIndicatorPropsWithPrimitive } from './types';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext } from './context';
+import type { NavigationMenuIndicatorPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuIndicator',

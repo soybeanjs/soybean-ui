@@ -1,20 +1,18 @@
-import type { SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp, SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type SwitchRootProps = ClassValueProp &
-  Omit<_SwitchRootProps, 'as' | 'asChild'> & {
-    color?: ThemeColor;
-    size?: ThemeSize;
-  };
-
-export type SwitchThumbProps = ClassValueProp & {
+export interface SwitchRootProps extends _SwitchRootProps {
+  color?: ThemeColor;
   size?: ThemeSize;
-};
+}
 
-export type SwitchProps = SwitchRootProps & {
+export interface SwitchThumbProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export interface SwitchProps extends SwitchRootProps {
   thumbClass?: ClassValue;
-};
+}
 
 export type SwitchRootEmits = {
   'update:modelValue': [value: boolean];

@@ -1,8 +1,8 @@
 import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp, DisclosureState } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DisclosureState } from '../../types';
 
-export interface CollapsibleRootProps {
+export interface CollapsibleRootProps extends ClassValueProp {
   /**
    * The open state of the collapsible when it is initially rendered. <br> Use when you do not need to control its open
    * state.
@@ -27,18 +27,17 @@ export type CollapsibleRootSlots = {
   default: (props: Pick<CollapsibleRootProps, 'open'>) => any;
 };
 
-export interface CollapsibleContentProps {
+export interface CollapsibleContentProps extends ClassValueProp {
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type CollapsibleContentPropsWithPrimitive = CollapsibleContentProps & PrimitiveProps;
 
 export type CollapsibleContentEmits = {
   contentFound: [void];
 };
 
-export interface CollapsibleTriggerProps {}
+export interface CollapsibleTriggerProps extends ClassValueProp {}
 
 export type CollapsibleTriggerPropsWithPrimitive = CollapsibleTriggerProps & PrimitiveProps;
 

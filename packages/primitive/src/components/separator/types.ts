@@ -1,7 +1,7 @@
-import type { DataOrientation } from '../../types';
+import type { ClassValueProp, DataOrientation } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface SeparatorProps {
+export interface SeparatorProps extends ClassValueProp {
   /**
    * Orientation of the component.
    *
@@ -14,5 +14,4 @@ export interface SeparatorProps {
    */
   decorative?: boolean;
 }
-
 export type SeparatorPropsWithPrimitive = SeparatorProps & PrimitiveProps;

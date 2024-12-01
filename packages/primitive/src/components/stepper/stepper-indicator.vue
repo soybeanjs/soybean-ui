@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectStepperItemContext } from './context';
 import type { StepperIndicatorPropsWithPrimitive } from './types';
 

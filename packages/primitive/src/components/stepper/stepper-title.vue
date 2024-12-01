@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import type { StepperTitlePropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectStepperItemContext } from './context';
+import type { StepperTitlePropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'StepperTitle'

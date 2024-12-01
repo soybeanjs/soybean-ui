@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction, StringOrNumber } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction, StringOrNumber } from '../../types';
 
 // Root
-export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> {
+export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> extends ClassValueProp {
   /**
    * The value of the tab that should be active when initially rendered. Use when you do not need to control the state
    * of the tabs
@@ -35,7 +35,6 @@ export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> {
    */
   unmountOnHide?: boolean;
 }
-
 export type TabsRootPropsWithPrimitive<T extends StringOrNumber = StringOrNumber> = TabsRootProps<T> & PrimitiveProps;
 
 export type TabsRootEmits<T extends StringOrNumber = StringOrNumber> = {
@@ -55,34 +54,30 @@ export type TabsRootContext<T extends StringOrNumber = StringOrNumber> = {
 };
 
 // List
-export interface TabsListProps {
+export interface TabsListProps extends ClassValueProp {
   /** When `true`, keyboard navigation will loop from last tab to first, and vice versa. */
   loop?: boolean;
 }
-
 export type TabsListPropsWithPrimitive = TabsListProps & PrimitiveProps;
 
 // Content
-export interface TabsContentProps {
+export interface TabsContentProps extends ClassValueProp {
   /** A unique value that associates the content with a trigger. */
   value: StringOrNumber;
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type TabsContentPropsWithPrimitive = TabsContentProps & PrimitiveProps;
 
 // Trigger
-export interface TabsTriggerProps {
+export interface TabsTriggerProps extends ClassValueProp {
   /** A unique value that associates the trigger with a content. */
   value: StringOrNumber;
   /** When `true`, prevents the user from interacting with the tab. */
   disabled?: boolean;
 }
-
 export type TabsTriggerPropsWithPrimitive = TabsTriggerProps & PrimitiveProps;
 
 // Indicator
-export interface TabsIndicatorProps {}
-
+export interface TabsIndicatorProps extends ClassValueProp {}
 export type TabsIndicatorPropsWithPrimitive = TabsIndicatorProps & PrimitiveProps;

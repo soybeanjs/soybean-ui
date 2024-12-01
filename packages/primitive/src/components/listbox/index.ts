@@ -4,7 +4,7 @@ import ListboxFilter from './listbox-filter.vue';
 import ListboxItem from './listbox-item.vue';
 import ListboxItemIndicator from './listbox-item-indicator.vue';
 import ListboxGroup from './listbox-group.vue';
-import listboxVirtualizer from './listbox-virtualizer.vue';
+import ListboxVirtualizer from './listbox-virtualizer.vue';
 
 export {
   ListboxRoot,
@@ -13,7 +13,7 @@ export {
   ListboxItem,
   ListboxItemIndicator,
   ListboxGroup,
-  listboxVirtualizer
+  ListboxVirtualizer
 };
 export { injectListboxRootContext, injectListboxItemContext, injectListboxGroupContext } from './context';
 

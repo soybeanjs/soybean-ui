@@ -2,10 +2,10 @@
 import { type ComponentPublicInstance, nextTick, onUnmounted, ref } from 'vue';
 import { useId } from '../../composables';
 import type { HorizontalSide } from '../../types';
-import MenuItemImpl from './menu-item-impl.vue';
 import { injectMenuContentContext, injectMenuContext, injectMenuRootContext, injectMenuSubContext } from './context';
 import { SUB_OPEN_KEYS, getOpenState, isMouseEvent } from './shared';
 import MenuAnchor from './menu-anchor.vue';
+import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerPropsWithPrimitive } from './types';
 
 defineOptions({

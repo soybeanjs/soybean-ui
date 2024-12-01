@@ -7,14 +7,14 @@ import {
   injectScrollAreaScrollbarContext,
   provideScrollAreaScrollbarVisibleContext
 } from './context';
-import ScrollAreaScrollbarX from './scroll-area-scrollbar-x.vue';
-import ScrollAreaScrollbarY from './scroll-area-scrollbar-y.vue';
 import {
   getScrollPositionFromPointer,
   getThumbOffsetFromScroll,
   getThumbRatio,
   isScrollingWithinScrollbarBounds
 } from './shared';
+import ScrollAreaScrollbarX from './scroll-area-scrollbar-x.vue';
+import ScrollAreaScrollbarY from './scroll-area-scrollbar-y.vue';
 import type { ScrollAreaSizes } from './types';
 
 defineOptions({

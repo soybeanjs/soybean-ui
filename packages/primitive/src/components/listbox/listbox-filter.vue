@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectListboxRootContext } from './context';
 import type { ListboxFilterEmits, ListboxFilterPropsWithPrimitive } from './types';
 

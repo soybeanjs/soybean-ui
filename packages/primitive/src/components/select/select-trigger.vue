@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { useCollection, useForwardExpose, useId, useTypeAhead } from '../../composables';
-import { Primitive } from '../primitive';
 import { PopperAnchor } from '../popper';
+import { Primitive } from '../primitive';
 import { injectSelectRootContext } from './context';
 import { OPEN_KEYS } from './shared';
 import type { SelectTriggerPropsWithPrimitive } from './types';

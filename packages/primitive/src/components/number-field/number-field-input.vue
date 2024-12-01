@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { Primitive } from '../primitive';
 import { usePrimitiveElement } from '../../composables';
-import type { NumberFieldInputPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectNumberFieldRootContext } from './context';
+import type { NumberFieldInputPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NumberFieldInput'

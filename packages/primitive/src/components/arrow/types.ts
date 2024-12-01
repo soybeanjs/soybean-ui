@@ -1,6 +1,7 @@
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface ArrowProps {
+export interface ArrowProps extends ClassValueProp {
   /**
    * The width of the arrow in pixels.
    *

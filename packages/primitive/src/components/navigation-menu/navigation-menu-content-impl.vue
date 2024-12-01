@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
-import { DismissableLayer } from '../dismissable-layer';
 import { useArrowNavigation, useCollection, useForwardExpose } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import type {
-  MotionAttribute,
-  NavigationMenuContentImplEmits,
-  NavigationMenuContentImplPropsWithPrimitive
-} from './types';
+import { DismissableLayer } from '../dismissable-layer';
 import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
 import {
   EVENT_ROOT_CONTENT_DISMISS,
@@ -17,6 +12,11 @@ import {
   makeContentId,
   makeTriggerId
 } from './shared';
+import type {
+  MotionAttribute,
+  NavigationMenuContentImplEmits,
+  NavigationMenuContentImplPropsWithPrimitive
+} from './types';
 
 defineOptions({
   name: 'NavigationMenuContentImpl',

@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction, FormFieldProps, Side } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction, FormFieldProps, Side } from '../../types';
 
 // Root
-export interface SliderRootProps extends FormFieldProps {
+export interface SliderRootProps extends ClassValueProp, FormFieldProps {
   /** The value of the slider when initially rendered. Use when you do not need to control the state of the slider. */
   defaultValue?: number[];
   /** The controlled value of the slider. Can be bind as `v-model`. */
@@ -28,7 +28,6 @@ export interface SliderRootProps extends FormFieldProps {
   /** The minimum permitted steps between multiple thumbs. */
   minStepsBetweenThumbs?: number;
 }
-
 export type SliderRootPropsWithPrimitive = SliderRootProps & PrimitiveProps;
 
 export type SliderRootEmits = {
@@ -52,25 +51,25 @@ export type SliderRootContext = {
 };
 
 // Thumb
-export interface SliderThumbProps {}
+export interface SliderThumbProps extends ClassValueProp {}
 export type SliderThumbPropsWithPrimitive = SliderThumbProps & PrimitiveProps;
 
 // ThumbImpl
-export interface SliderThumbImplProps {
+export interface SliderThumbImplProps extends ClassValueProp {
   index: number;
 }
 export type SliderThumbImplPropsWithPrimitive = SliderThumbImplProps & PrimitiveProps;
 
 // Track
-export interface SliderTrackProps {}
+export interface SliderTrackProps extends ClassValueProp {}
 export type SliderTrackPropsWithPrimitive = SliderTrackProps & PrimitiveProps;
 
 // Range
-export interface SliderRangeProps {}
+export interface SliderRangeProps extends ClassValueProp {}
 export type SliderRangePropsWithPrimitive = SliderRangeProps & PrimitiveProps;
 
 // Impl
-export interface SliderImplProps {}
+export interface SliderImplProps extends ClassValueProp {}
 export type SliderImplPropsWithPrimitive = SliderImplProps & PrimitiveProps;
 
 export type SliderImplEmits = {

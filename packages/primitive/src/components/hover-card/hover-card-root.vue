@@ -2,10 +2,10 @@
 import { ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { PopperRoot } from '../popper';
 import { useForwardExpose } from '../../composables';
-import type { HoverCardRootEmits, HoverCardRootProps } from './types';
+import { PopperRoot } from '../popper';
 import { provideHoverCardRootContext } from './context';
+import type { HoverCardRootEmits, HoverCardRootProps } from './types';
 
 defineOptions({
   name: 'HoverCardRoot'

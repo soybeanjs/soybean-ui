@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { watchEffect } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
+import { useForwardExpose, useStateMachine } from '../../composables';
 import { Presence } from '../presence';
-import { useStateMachine } from '../../composables/use-state-machine';
-import { useForwardExpose } from '../../composables';
 import { injectScrollAreaRootContext, injectScrollAreaScrollbarContext } from './context';
 import ScrollAreaScrollbarVisible from './scroll-area-scrollbar-visible.vue';
 import type { ScrollAreaScrollbarScrollProps } from './types';

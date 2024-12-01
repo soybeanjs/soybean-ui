@@ -10,10 +10,10 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { Direction, FormFieldProps } from '../../types';
+import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface DateRangeFieldRootProps extends FormFieldProps {
+export interface DateRangeFieldRootProps extends ClassValueProp, FormFieldProps {
   /** The default value for the calendar */
   defaultValue?: DateRange;
   /** The default placeholder date */
@@ -81,7 +81,7 @@ export type DateRangeFieldRootContext = {
   setFocusedElement: (el: HTMLElement) => void;
 };
 
-export interface DateRangeFieldInputProps {
+export interface DateRangeFieldInputProps extends ClassValueProp {
   /** The part of the date to render */
   part: SegmentPart;
   /** The type of field to render (start or end) */

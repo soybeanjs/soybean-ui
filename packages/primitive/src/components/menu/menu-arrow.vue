@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PopperArrow from '../popper/popper-arrow.vue';
+import { PopperArrow } from '../popper';
 import type { MenuArrowPropsWithPrimitive } from './types';
 
 defineOptions({

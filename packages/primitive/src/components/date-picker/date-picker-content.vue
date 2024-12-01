@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useForwardPropsEmits } from '../../composables';
-import PopoverContent from '../popover/popover-content.vue';
-import PopoverPortal from '../popover/popover-portal.vue';
+import { PopoverContent, PopoverPortal } from '../popover';
 import type { DatePickerContentEmits, DatePickerContentPropsWithPrimitive } from './types';
 
 defineOptions({

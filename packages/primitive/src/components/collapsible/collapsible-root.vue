@@ -2,8 +2,8 @@
 import { toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext } from './context';
 import type { CollapsibleRootEmits, CollapsibleRootPropsWithPrimitive } from './types';
 

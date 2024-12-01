@@ -3,9 +3,8 @@ import { ref, toRaw, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
-import { VisuallyHiddenInput } from '../visually-hidden';
 import { clamp } from '../../shared';
-import type { SliderRootEmits, SliderRootPropsWithPrimitive } from './types';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSliderRootContext } from './context';
 import {
   ARROW_KEYS,
@@ -18,6 +17,7 @@ import {
 } from './shared';
 import SliderHorizontal from './slider-horizontal.vue';
 import SliderVertical from './slider-vertical.vue';
+import type { SliderRootEmits, SliderRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'SliderRoot',

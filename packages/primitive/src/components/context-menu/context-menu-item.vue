@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuItem } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { MenuItem } from '../menu';
 import type { ContextMenuItemEmits, ContextMenuItemPropsWithPrimitive } from './types';
 
 defineOptions({

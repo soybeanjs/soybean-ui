@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
-import type { Align, Side } from '../../types';
+import type { Align, ClassValueProp, Side } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { ArrowProps } from '../arrow';
 
@@ -13,7 +13,7 @@ export interface PopperRootContext {
   onAnchorChange: (element: ReferenceElement | undefined) => void;
 }
 
-export interface PopperContentProps {
+export interface PopperContentProps extends ClassValueProp {
   /**
    * The preferred side of the trigger to render against when open. Will be reversed when collisions occur and
    * avoidCollisions is enabled.
@@ -139,7 +139,7 @@ export interface PopperContentContext {
 export interface PopperArrowProps extends ArrowProps {}
 export type PopperArrowPropsWithPrimitive = PopperArrowProps & PrimitiveProps;
 
-export interface PopperAnchorProps {
+export interface PopperAnchorProps extends ClassValueProp {
   /**
    * The reference (or anchor) element that is being referred to for positioning.
    *

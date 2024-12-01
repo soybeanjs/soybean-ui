@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Primitive } from '../primitive';
 import { useDateField } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectDateRangeFieldRootContext } from './context';
 import type { DateRangeFieldInputPropsWithPrimitive } from './types';
 

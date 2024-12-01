@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, onMounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectTagsInputRootContext } from './context';
 import type { TagsInputInputPropsWithPrimitive } from './types';
 

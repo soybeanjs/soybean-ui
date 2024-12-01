@@ -2,11 +2,11 @@
 import { computed, ref } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import isEqual from 'fast-deep-equal';
-import { RovingFocusItem } from '../roving-focus';
 import { useForwardExpose } from '../../composables';
-import type { RadioGroupItemEmits, RadioGroupItemProps } from './types';
-import Radio from './radio.vue';
+import { RovingFocusItem } from '../roving-focus';
 import { injectRadioGroupRootContext, provideRadioGroupItemContext } from './context';
+import Radio from './radio.vue';
+import type { RadioGroupItemEmits, RadioGroupItemProps } from './types';
 
 defineOptions({
   name: 'RadioGroupItem',

@@ -2,9 +2,9 @@
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
-import MenuContentImpl from './menu-content-impl.vue';
 import { injectMenuContext, injectMenuRootContext, injectMenuSubContext } from './context';
 import { SUB_CLOSE_KEYS } from './shared';
+import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuSubContentEmits, MenuSubContentPropsWithPrimitive } from './types';
 
 defineOptions({

@@ -2,10 +2,10 @@
 import { computed, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
-import type { PaginationRootEmits, PaginationRootPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { providePaginationRootContext } from './context';
+import type { PaginationRootEmits, PaginationRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'PaginationRoot'

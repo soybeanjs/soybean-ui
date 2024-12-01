@@ -2,10 +2,10 @@
 import { Comment, computed, onMounted, useSlots } from 'vue';
 import type { VNode } from 'vue';
 import { useEventListener } from '@vueuse/core';
+import { useForwardExpose } from '../../composables';
+import { DismissableLayer } from '../dismissable-layer';
 import { PopperContent } from '../popper';
 import { VisuallyHidden } from '../visually-hidden';
-import { DismissableLayer } from '../dismissable-layer';
-import { useForwardExpose } from '../../composables';
 import { injectTooltipRootContext } from './context';
 import { TOOLTIP_OPEN } from './shared';
 import type { TooltipContentEmits, TooltipContentPropsWithPrimitive } from './types';

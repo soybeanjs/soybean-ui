@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { NavigationMenuViewportPropsWithPrimitive } from './types';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext } from './context';
 import { getOpenState, whenMouse } from './shared';
+import type { NavigationMenuViewportPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuViewport',

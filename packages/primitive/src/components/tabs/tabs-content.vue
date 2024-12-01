@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import { makeContentId, makeTriggerId } from './shared';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
 import { injectTabsRootContext } from './context';
+import { makeContentId, makeTriggerId } from './shared';
 import type { TabsContentPropsWithPrimitive } from './types';
 
 defineOptions({

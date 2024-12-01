@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { syncRef } from '@vueuse/shared';
 import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue';
-import { PopperContent } from '../popper';
-import { DismissableLayer } from '../dismissable-layer';
 import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
-import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './types';
+import { DismissableLayer } from '../dismissable-layer';
+import { PopperContent } from '../popper';
 import { injectHoverCardRootContext } from './context';
 import { getTabbableNodes } from './shared';
+import type { HoverCardContentImplEmits, HoverCardContentImplProps } from './types';
 
 defineOptions({
   name: 'HoverCardContentImpl',
@@ -14,7 +14,9 @@ defineOptions({
 });
 
 const props = defineProps<HoverCardContentImplProps>();
+
 const emit = defineEmits<HoverCardContentImplEmits>();
+
 const forwarded = useForwardProps(props);
 
 const { forwardRef, currentElement: contentElement } = useForwardExpose();

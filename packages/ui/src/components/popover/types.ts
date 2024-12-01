@@ -1,17 +1,15 @@
 import type {
+  Align,
+  ClassValue,
   PopoverAnchorProps,
+  PopoverArrowProps,
   PopoverContentEmits,
+  PopoverContentProps,
   PopoverPortalProps,
   PopoverRootEmits,
   PopoverRootProps,
-  PopoverArrowProps as _PopoverArrowProps,
-  PopoverContentProps as _PopoverContentProps
+  Side
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
-
-export type PopoverContentProps = ClassValueProp & Omit<_PopoverContentProps, 'as' | 'asChild'>;
-
-export type PopoverArrowProps = ClassValueProp & Pick<_PopoverArrowProps, 'width' | 'height'>;
 
 export type PopoverProps = PopoverRootProps &
   Pick<PopoverPortalProps, 'to'> &
@@ -28,8 +26,16 @@ export type PopoverProps = PopoverRootProps &
 
 export type PopoverEmits = PopoverRootEmits & PopoverContentEmits;
 
-export type PopoverSide = NonNullable<PopoverContentProps['side']>;
+export type PopoverSide = Side;
 
-export type PopoverAlign = NonNullable<PopoverContentProps['align']>;
+export type PopoverAlign = Align;
 
-export type { PopoverAnchorProps, PopoverPortalProps, PopoverRootProps, PopoverRootEmits, PopoverContentEmits };
+export type {
+  PopoverAnchorProps,
+  PopoverPortalProps,
+  PopoverRootProps,
+  PopoverRootEmits,
+  PopoverContentEmits,
+  PopoverArrowProps,
+  PopoverContentProps
+};

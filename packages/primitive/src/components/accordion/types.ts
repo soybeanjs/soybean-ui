@@ -1,6 +1,4 @@
 import type { ComputedRef, Ref, VNodeRef } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import type { CollapsibleContentProps, CollapsibleRootProps } from '../collapsible';
 import type {
   AcceptableValue,
   ClassValueProp,
@@ -10,6 +8,8 @@ import type {
   SingleOrMultipleProps,
   SingleOrMultipleType
 } from '../../types';
+import type { PrimitiveProps } from '../primitive';
+import type { CollapsibleContentProps, CollapsibleRootProps } from '../collapsible';
 
 // AccordionRoot
 export type AccordionRootProps<

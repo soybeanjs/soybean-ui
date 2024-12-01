@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { PopperArrow } from '../popper';
 import { useForwardExpose } from '../../composables';
-import type { HoverCardArrowProps } from './types';
+import { PopperArrow } from '../popper';
+import type { HoverCardArrowPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'HoverCardArrow'
 });
 
-const props = withDefaults(defineProps<HoverCardArrowProps>(), {
+const props = withDefaults(defineProps<HoverCardArrowPropsWithPrimitive>(), {
   width: 10,
   height: 5,
   as: 'svg'

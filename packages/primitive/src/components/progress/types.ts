@@ -1,8 +1,9 @@
 import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 // Root
-export interface ProgressRootProps {
+export interface ProgressRootProps extends ClassValueProp {
   /** The progress value. Can be bind as `v-model`. */
   modelValue?: number | null;
   /** The maximum progress value. */
@@ -14,7 +15,6 @@ export interface ProgressRootProps {
    */
   getValueLabel?: (value: number, max: number) => string;
 }
-
 export type ProgressRootPropsWithPrimitive = ProgressRootProps & PrimitiveProps;
 
 export type ProgressRootEmits = {
@@ -33,5 +33,5 @@ export type ProgressRootContext = {
 };
 
 // Indicator
-export interface ProgressIndicatorProps {}
+export interface ProgressIndicatorProps extends ClassValueProp {}
 export type ProgressIndicatorPropsWithPrimitive = ProgressIndicatorProps & PrimitiveProps;

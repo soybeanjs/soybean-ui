@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
-import type { NavigationMenuLinkEmits, NavigationMenuLinkPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './shared';
+import type { NavigationMenuLinkEmits, NavigationMenuLinkPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuLink'

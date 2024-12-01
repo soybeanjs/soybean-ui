@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
-import { ListboxGroup } from '../listbox';
 import { useId } from '../../composables';
-import type { ComboboxGroupPropsWithPrimitive } from './types';
+import { ListboxGroup } from '../listbox';
 import { injectComboboxRootContext, provideComboboxGroupContext } from './context';
+import type { ComboboxGroupPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ComboboxGroup'

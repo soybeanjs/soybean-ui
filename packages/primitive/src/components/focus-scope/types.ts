@@ -1,6 +1,7 @@
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface FocusScopeProps {
+export interface FocusScopeProps extends ClassValueProp {
   /**
    * When `true`, tabbing from last item will focus first tabbable and shift+tab from first item will focus last
    * tabbable.

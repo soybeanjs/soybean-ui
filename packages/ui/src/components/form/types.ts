@@ -1,14 +1,14 @@
 import type { RuleExpression } from 'vee-validate';
-import type { ClassValueProp } from '../../types';
-import type { LabelProps } from '../label/types';
+import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { LabelProps } from '../label';
 
-export type FormItemProps = ClassValueProp;
+export interface FormItemProps extends ClassValueProp {}
 
-export type FormLabelProps = LabelProps;
+export interface FormLabelProps extends LabelProps {}
 
-export type FormMessageProps = ClassValueProp;
+export interface FormMessageProps extends ClassValueProp {}
 
-export type FormDescriptionProps = ClassValueProp;
+export interface FormDescriptionProps extends ClassValueProp {}
 
 export type FieldProps<T = unknown> = {
   name: string;

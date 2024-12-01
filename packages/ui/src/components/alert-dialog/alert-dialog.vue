@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import {
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTrigger,
-  useEmitAsProps,
-  useForwardProps
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  useOmitForwardProps,
+  usePickForwardProps
 } from '@soybean-ui/primitive';
-import { computedOmit, computedOmitEmits, computedPick } from '../../shared';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import type { AlertDialogEmits, AlertDialogProps } from './types';
@@ -35,11 +35,9 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedRootProps = computedPick(props, ['open', 'defaultOpen']);
+const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen']);
 
-const forwardedRootProps = useForwardProps(delegatedRootProps);
-
-const delegatedContentProps = computedOmit(props, [
+const forwardedContentProps = useOmitForwardProps(props, [
   'open',
   'defaultOpen',
   'to',
@@ -49,16 +47,9 @@ const delegatedContentProps = computedOmit(props, [
   'forceMountOverlay'
 ]);
 
-const forwardedContentProps = useForwardProps(delegatedContentProps);
+const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof AlertDialogEmits, any>;
-
-const forwardedContentEmits = computedOmitEmits(forwardedEmits, ['update:open']);
-
-const forwardedContent = computed(() => ({
-  ...forwardedContentProps.value,
-  ...forwardedContentEmits.value
-}));
+const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 
 const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { isClient, reactiveOmit } from '@vueuse/shared';
-import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
-import type { NavigationMenuContentEmits, NavigationMenuContentPropsWithPrimitive } from './types';
+import { Presence } from '../presence';
 import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
 import { getOpenState, whenMouse } from './shared';
 import NavigationMenuContentImpl from './navigation-menu-content-impl.vue';
+import type { NavigationMenuContentEmits, NavigationMenuContentPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuContent',

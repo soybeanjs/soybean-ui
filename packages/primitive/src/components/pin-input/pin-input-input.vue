@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useArrowNavigation, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectPinInputRootContext } from './context';
 import type { PinInputInputPropsWithPrimitive } from './types';
 

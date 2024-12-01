@@ -1,19 +1,21 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { PrimitiveProps } from '../primitive';
-import type { ToggleProps } from '../toggle';
 import type {
   AcceptableValue,
+  ClassValueProp,
   DataOrientation,
   Direction,
   FormFieldProps,
   SingleOrMultipleProps,
   SingleOrMultipleType
 } from '../../types';
+import type { PrimitiveProps } from '../primitive';
+import type { ToggleProps } from '../toggle';
 
 export interface ToggleGroupRootProps<
   ValidValue = AcceptableValue | AcceptableValue[],
   ExplicitType = SingleOrMultipleType
-> extends FormFieldProps,
+> extends ClassValueProp,
+    FormFieldProps,
     SingleOrMultipleProps<ValidValue, ExplicitType> {
   /** When `false`, navigating through the items using arrow keys will be disabled. */
   rovingFocus?: boolean;

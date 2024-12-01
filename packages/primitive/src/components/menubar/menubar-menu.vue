@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { MenuRoot } from '../menu';
 import { useForwardExpose, useId } from '../../composables';
+import { MenuRoot } from '../menu';
 import { injectMenubarRootContext, provideMenubarMenuContext } from './context';
 import type { MenubarMenuProps } from './types';
 

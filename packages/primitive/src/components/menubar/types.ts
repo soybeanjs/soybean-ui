@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Direction } from '../../types';
+import type { ClassValueProp, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type {
   MenuArrowProps,
@@ -78,7 +78,7 @@ export type MenubarMenuContext = {
 export interface MenubarPortalProps extends MenuPortalProps {}
 
 // MenubarContent
-export type MenubarContentProps = MenuContentProps;
+export interface MenubarContentProps extends MenuContentProps {}
 export type MenubarContentPropsWithPrimitive = MenubarContentProps & PrimitiveProps;
 export type MenubarContentEmits = MenuContentEmits;
 
@@ -87,7 +87,6 @@ export interface MenubarSubProps extends MenuSubProps {
   /** The open state of the submenu when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
 }
-export type MenubarSubPropsWithPrimitive = MenubarSubProps & PrimitiveProps;
 export type MenubarSubEmits = MenuSubEmits;
 
 // MenubarSubContent
@@ -100,7 +99,7 @@ export interface MenubarSubTriggerProps extends MenuSubTriggerProps {}
 export type MenubarSubTriggerPropsWithPrimitive = MenubarSubTriggerProps & PrimitiveProps;
 
 // MenubarTrigger
-export interface MenubarTriggerProps {
+export interface MenubarTriggerProps extends ClassValueProp {
   /**
    * When `true`, the context menu would not open when right-clicking.
    *

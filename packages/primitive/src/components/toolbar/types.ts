@@ -1,10 +1,10 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction } from '../../types';
 import type { ToggleGroupItemProps, ToggleGroupRootEmits, ToggleGroupRootProps } from '../toggle-group';
 
 // Root
-export interface ToolbarRootProps {
+export interface ToolbarRootProps extends ClassValueProp {
   /** The orientation of the toolbar */
   orientation?: DataOrientation;
   /**
@@ -15,7 +15,6 @@ export interface ToolbarRootProps {
   /** When `true`, keyboard navigation will loop from last tab to first, and vice versa. */
   loop?: boolean;
 }
-
 export type ToolbarRootPropsWithPrimitive = ToolbarRootProps & PrimitiveProps;
 
 export type ToolbarRootContext = {
@@ -24,18 +23,17 @@ export type ToolbarRootContext = {
 };
 
 // Button
-export interface ToolbarButtonProps {
+export interface ToolbarButtonProps extends ClassValueProp {
   disabled?: boolean;
 }
-
 export type ToolbarButtonPropsWithPrimitive = ToolbarButtonProps & PrimitiveProps;
 
 // Link
-export interface ToolbarLinkProps {}
+export interface ToolbarLinkProps extends ClassValueProp {}
 export type ToolbarLinkPropsWithPrimitive = ToolbarLinkProps & PrimitiveProps;
 
 // Separator
-export interface ToolbarSeparatorProps {}
+export interface ToolbarSeparatorProps extends ClassValueProp {}
 export type ToolbarSeparatorPropsWithPrimitive = ToolbarSeparatorProps & PrimitiveProps;
 
 // Toggle Group

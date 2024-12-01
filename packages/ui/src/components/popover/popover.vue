@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { PopoverClose, PopoverPortal, PopoverRoot, PopoverTrigger, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmitEmits, computedPick } from '../../shared';
+import {
+  PopoverClose,
+  PopoverPortal,
+  PopoverRoot,
+  PopoverTrigger,
+  useCombinedPropsEmits,
+  useForwardProps,
+  useOmitEmitAsProps,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
 import type { PopoverEmits, PopoverProps } from './types';
@@ -14,11 +21,11 @@ const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } =
 
 const emit = defineEmits<PopoverEmits>();
 
-const delegatedRootProps = computedPick(delegatedProps, ['defaultOpen', 'open', 'modal']);
+const delegatedRootProps = usePickForwardProps(delegatedProps, ['defaultOpen', 'open', 'modal']);
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = computedPick(delegatedProps, [
+const delegatedContentProps = usePickForwardProps(delegatedProps, [
   'trapFocus',
   'side',
   'sideOffset',
@@ -33,16 +40,11 @@ const delegatedContentProps = computedPick(delegatedProps, [
   'disableOutsidePointerEvents'
 ]);
 
-const emits = useEmitAsProps(emit) as Record<keyof PopoverEmits, any>;
-
 const forwardedContentProps = useForwardProps(delegatedContentProps);
 
-const forwardedContentEmits = computedOmitEmits(emits, ['update:open']);
+const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
-const forwardedContent = computed(() => ({
-  ...forwardedContentProps.value,
-  ...forwardedContentEmits.value
-}));
+const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 </script>
 
 <template>

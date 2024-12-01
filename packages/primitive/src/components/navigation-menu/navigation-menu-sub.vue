@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext, provideNavigationMenuRootContext } from './context';
 import type { NavigationMenuSubEmits, NavigationMenuSubPropsWithPrimitive } from './types';
 

@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { TooltipPortal, TooltipProvider, TooltipRoot, TooltipTrigger, useForwardProps } from '@soybean-ui/primitive';
-import { computedPick } from '../../shared';
+import {
+  TooltipPortal,
+  TooltipProvider,
+  TooltipRoot,
+  TooltipTrigger,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
 import STooltipContent from './tooltip-content.vue';
 import STooltipArrow from './tooltip-arrow.vue';
 import type { TooltipEmits, TooltipProps } from './types';
@@ -13,7 +18,7 @@ const { delayDuration = 200, avoidCollisions = true, ...delegatedProps } = defin
 
 const emit = defineEmits<TooltipEmits>();
 
-const delegatedRootProps = computedPick(delegatedProps, [
+const forwardedRootProps = usePickForwardProps(delegatedProps, [
   'defaultOpen',
   'open',
   'disableHoverableContent',
@@ -22,9 +27,7 @@ const delegatedRootProps = computedPick(delegatedProps, [
   'ignoreNonKeyboardFocus'
 ]);
 
-const forwardedRootProps = useForwardProps(delegatedRootProps);
-
-const delegatedContentProps = computedPick(delegatedProps, [
+const forwardedContentProps = usePickForwardProps(delegatedProps, [
   'ariaLabel',
   'side',
   'sideOffset',
@@ -36,8 +39,6 @@ const delegatedContentProps = computedPick(delegatedProps, [
   'sticky',
   'hideWhenDetached'
 ]);
-
-const forwardedContentProps = useForwardProps(delegatedContentProps);
 </script>
 
 <template>

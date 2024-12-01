@@ -3,13 +3,13 @@ import { computed, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useFormControl } from '../../composables';
-import { PopperRoot } from '../popper';
-import type { AcceptableValue } from '../../types';
 import { isNullish } from '../../shared';
+import type { AcceptableValue } from '../../types';
+import { PopperRoot } from '../popper';
+import { provideSelectRootContext } from './context';
 import { compare } from './shared';
 import BubbleSelect from './bubble-select.vue';
 import type { SelectOption, SelectRootContext, SelectRootEmits, SelectRootProps } from './types';
-import { provideSelectRootContext } from './context';
 
 defineOptions({
   name: 'SelectRoot',

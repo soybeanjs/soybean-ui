@@ -4,11 +4,11 @@ import { computed, onMounted, ref, toRefs, watchEffect } from 'vue';
 import { onKeyStroke, unrefElement } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
-import { focusFirst, getTabbableCandidates } from '../focus-scope/shared';
 import { DismissableLayerBranch } from '../dismissable-layer';
-import FocusProxy from './focus-proxy.vue';
+import { focusFirst, getTabbableCandidates } from '../focus-scope/shared';
 import { injectToastProviderContext } from './context';
 import { VIEWPORT_PAUSE, VIEWPORT_RESUME } from './shared';
+import FocusProxy from './focus-proxy.vue';
 import type { ToastViewportPropsWithPrimitive } from './types';
 
 defineOptions({

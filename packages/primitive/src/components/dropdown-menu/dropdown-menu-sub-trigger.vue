@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuSubTrigger } from '../menu';
 import { useForwardExpose } from '../../composables';
+import { MenuSubTrigger } from '../menu';
 import type { DropdownMenuSubTriggerPropsWithPrimitive } from './types';
 
 defineOptions({

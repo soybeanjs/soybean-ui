@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useCollection, useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import { MenuContent } from '../menu';
 import { wrapArray } from '../../shared';
+import { MenuContent } from '../menu';
 import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
 import type { MenubarContentEmits, MenubarContentPropsWithPrimitive } from './types';
 

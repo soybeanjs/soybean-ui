@@ -1,10 +1,10 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction } from '../../types';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 
 // Root
-export interface NavigationMenuRootProps {
+export interface NavigationMenuRootProps extends ClassValueProp {
   /** The controlled value of the menu item to activate. Can be used as `v-model`. */
   modelValue?: string;
   /**
@@ -91,10 +91,10 @@ export interface NavigationMenuRootContext {
 }
 
 // List
-export interface NavigationMenuListProps {}
+export interface NavigationMenuListProps extends ClassValueProp {}
 export type NavigationMenuListPropsWithPrimitive = NavigationMenuListProps & PrimitiveProps;
 // Item
-export interface NavigationMenuItemProps {
+export interface NavigationMenuItemProps extends ClassValueProp {
   value?: string;
 }
 export type NavigationMenuItemPropsWithPrimitive = NavigationMenuItemProps & PrimitiveProps;
@@ -111,7 +111,7 @@ export type NavigationMenuItemContext = {
   onRootContentClose: () => void;
 };
 // Link
-export interface NavigationMenuLinkProps {
+export interface NavigationMenuLinkProps extends ClassValueProp {
   /** Used to identify the link as the currently active page. */
   active?: boolean;
 }
@@ -127,7 +127,7 @@ export type NavigationMenuContentImplPropsWithPrimitive = NavigationMenuContentI
 export type NavigationMenuContentImplEmits = DismissableLayerEmits;
 
 // Content
-export interface NavigationMenuContentProps {
+export interface NavigationMenuContentProps extends ClassValueProp {
   forceMount?: boolean;
 }
 export type NavigationMenuContentPropsWithPrimitive = NavigationMenuContentProps & PrimitiveProps;
@@ -135,23 +135,23 @@ export type NavigationMenuContentPropsWithPrimitive = NavigationMenuContentProps
 export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 
 // Trigger
-export interface NavigationMenuTriggerProps {
+export interface NavigationMenuTriggerProps extends ClassValueProp {
   disabled?: boolean;
 }
 export type NavigationMenuTriggerPropsWithPrimitive = NavigationMenuTriggerProps & PrimitiveProps;
 // Viewport
-export interface NavigationMenuViewportProps {
+export interface NavigationMenuViewportProps extends ClassValueProp {
   forceMount?: boolean;
   align?: 'start' | 'center' | 'end';
 }
 export type NavigationMenuViewportPropsWithPrimitive = NavigationMenuViewportProps & PrimitiveProps;
 // Indicator
-export interface NavigationMenuIndicatorProps {
+export interface NavigationMenuIndicatorProps extends ClassValueProp {
   forceMount?: boolean;
 }
 export type NavigationMenuIndicatorPropsWithPrimitive = NavigationMenuIndicatorProps & PrimitiveProps;
 // Sub
-export interface NavigationMenuSubProps {
+export interface NavigationMenuSubProps extends ClassValueProp {
   modelValue?: string;
   defaultValue?: string;
   orientation?: DataOrientation;

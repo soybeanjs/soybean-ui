@@ -1,8 +1,8 @@
 import type { Ref } from 'vue';
-import type { FormFieldProps } from '../../types';
+import type { ClassValueProp, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface SwitchRootProps extends FormFieldProps {
+export interface SwitchRootProps extends ClassValueProp, FormFieldProps {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: boolean;
   /** The controlled state of the switch. Can be bind as `v-model`. */
@@ -13,7 +13,6 @@ export interface SwitchRootProps extends FormFieldProps {
   /** The value given as data when submitted with a `name`. */
   value?: string;
 }
-
 export type SwitchRootPropsWithPrimitive = SwitchRootProps & PrimitiveProps;
 
 export type SwitchRootEmits = {
@@ -30,5 +29,5 @@ export interface SwitchRootContext extends SwitchRootContextParams {
   toggleCheck: () => void;
 }
 
-export interface SwitchThumbProps {}
+export interface SwitchThumbProps extends ClassValueProp {}
 export type SwitchThumbPropsWithPrimitive = SwitchThumbProps & PrimitiveProps;

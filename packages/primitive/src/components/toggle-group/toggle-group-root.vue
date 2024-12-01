@@ -2,8 +2,8 @@
 import { toRefs } from 'vue';
 import { useDirection, useFormControl, useForwardExpose, useSingleOrMultipleValue } from '../../composables';
 import { Primitive } from '../primitive';
-import { VisuallyHiddenInput } from '../visually-hidden';
 import { RovingFocusGroup } from '../roving-focus';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideToggleGroupRootContext } from './context';
 import type { ToggleGroupRootEmits, ToggleGroupRootPropsWithPrimitive } from './types';
 

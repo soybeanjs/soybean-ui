@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core';
 import { computed, nextTick, watch } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
 import { isNullish } from '../../shared';
+import { Primitive } from '../primitive';
 import { provideProgressRootContext } from './context';
 import { DEFAULT_MAX, isNumber, validateMax, validateValue } from './shared';
 import type { ProgressRootEmits, ProgressRootPropsWithPrimitive, ProgressState } from './types';

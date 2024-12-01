@@ -1,16 +1,14 @@
 import type {
+  Align,
+  ClassValue,
+  Side,
+  TooltipArrowProps,
   TooltipContentEmits,
+  TooltipContentProps,
   TooltipPortalProps,
   TooltipRootEmits,
-  TooltipRootProps,
-  TooltipArrowProps as _TooltipArrowProps,
-  TooltipContentProps as _TooltipContentProps
+  TooltipRootProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
-
-export type TooltipArrowProps = ClassValueProp & Pick<_TooltipArrowProps, 'width' | 'height'>;
-
-export type TooltipContentProps = ClassValueProp & Omit<_TooltipContentProps, 'as' | 'asChild'>;
 
 export type TooltipProps = TooltipRootProps &
   Pick<TooltipPortalProps, 'to'> &
@@ -25,10 +23,10 @@ export type TooltipProps = TooltipRootProps &
     arrowHeight?: number;
   };
 
-export type TooltipSide = NonNullable<TooltipContentProps['side']>;
+export type TooltipSide = Side;
 
-export type TooltipAlign = NonNullable<TooltipContentProps['align']>;
+export type TooltipAlign = Align;
 
 export type TooltipEmits = TooltipRootEmits & TooltipContentEmits;
 
-export { TooltipPortalProps, TooltipRootEmits, TooltipContentEmits };
+export type { TooltipPortalProps, TooltipRootEmits, TooltipContentProps, TooltipContentEmits, TooltipArrowProps };

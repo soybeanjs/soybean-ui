@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useForwardProps, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { useForwardPropsEmits, useOmitForwardProps, usePickForwardProps } from '@soybean-ui/primitive';
 import { DrawerPortal, DrawerRoot, DrawerTrigger } from 'vaul-vue';
-import { computedOmit, computedPick } from '../../shared';
 import type { CardProps } from '../card/types';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';
@@ -30,7 +29,7 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const cardPropKeys: (keyof CardProps)[] = [
+const cardPropKeys = [
   'class',
   'size',
   'title',
@@ -40,9 +39,9 @@ const cardPropKeys: (keyof CardProps)[] = [
   'titleClass',
   'contentClass',
   'footerClass'
-];
+] satisfies (keyof CardProps)[];
 
-const delegatedRootProps = computedOmit(props, [
+const forwardedRootProps = useOmitForwardProps(props, [
   'to',
   'disabledPortal',
   'forceMountPortal',
@@ -53,11 +52,9 @@ const delegatedRootProps = computedOmit(props, [
   ...cardPropKeys
 ]);
 
-const forwardedRoot = useForwardPropsEmits(delegatedRootProps, emit);
+const forwardedRoot = useForwardPropsEmits(forwardedRootProps, emit);
 
-const delegatedContentProps = computedPick(props, [...cardPropKeys, 'showClose', 'closeClass', 'cardClass']);
-
-const forwardedContentProps = useForwardProps(delegatedContentProps);
+const forwardedContentProps = usePickForwardProps(props, [...cardPropKeys, 'showClose', 'closeClass', 'cardClass']);
 
 const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>

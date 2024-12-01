@@ -1,19 +1,15 @@
 import type {
+  ClassValue,
+  CollapsibleContentProps,
   CollapsibleRootEmits,
-  CollapsibleContentProps as _CollapsibleContentProps,
-  CollapsibleRootProps as _CollapsibleRootProps
+  CollapsibleRootProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type CollapsibleRootProps = ClassValueProp & Omit<_CollapsibleRootProps, 'as' | 'asChild'>;
-
-export type CollapsibleContentProps = Pick<_CollapsibleContentProps, 'forceMount'> & ClassValueProp;
-
-export type CollapsibleProps = CollapsibleRootProps & {
+export interface CollapsibleProps extends CollapsibleRootProps {
   contentClass?: ClassValue;
   forceMountContent?: boolean;
-};
+}
 
 export type CollapsibleEmits = CollapsibleRootEmits;
 
-export type { CollapsibleRootEmits };
+export type { CollapsibleRootProps, CollapsibleRootEmits, CollapsibleContentProps };

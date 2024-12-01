@@ -1,23 +1,21 @@
 import type {
   AcceptableValue,
   CheckboxGroupRootEmits,
+  CheckboxGroupRootProps,
+  CheckboxIndicatorProps,
   CheckedState,
-  CheckboxRootProps as _CheckboxControlProps,
-  CheckboxGroupRootProps as _CheckboxGroupRootProps,
-  CheckboxIndicatorProps as _CheckboxIndicatorProps
+  ClassValue,
+  ClassValueProp,
+  CheckboxRootProps as _CheckboxControlProps
 } from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type CheckboxRootProps = ClassValueProp;
+export interface CheckboxRootProps extends ClassValueProp {}
 
-export type CheckboxControlProps = ClassValueProp &
-  Omit<_CheckboxControlProps, 'as' | 'asChild'> & {
-    color?: ThemeColor;
-    size?: ThemeSize;
-  };
-
-export type CheckboxIndicatorProps = ClassValueProp & Pick<_CheckboxIndicatorProps, 'forceMount'>;
+export interface CheckboxControlProps extends _CheckboxControlProps {
+  color?: ThemeColor;
+  size?: ThemeSize;
+}
 
 export type CheckboxProps = CheckboxControlProps & {
   controlClass?: ClassValue;
@@ -32,9 +30,6 @@ export type CheckboxGroupItem<T = AcceptableValue> = CheckboxProps & {
   value: T;
 };
 
-export type CheckboxGroupRootProps<T = AcceptableValue> = ClassValueProp &
-  Omit<_CheckboxGroupRootProps<T>, 'as' | 'asChild'>;
-
 export type CheckboxGroupProps<T = AcceptableValue> = CheckboxGroupRootProps<T> &
   Pick<CheckboxProps, 'color' | 'size'> & {
     items?: CheckboxGroupItem<T>[];
@@ -48,4 +43,4 @@ export type CheckboxEmits = CheckboxControlEmits;
 
 export type CheckboxGroupEmits<T = AcceptableValue> = CheckboxGroupRootEmits<T>;
 
-export type { CheckboxGroupRootEmits, CheckedState };
+export type { CheckboxGroupRootEmits, CheckedState, CheckboxIndicatorProps, CheckboxGroupRootProps };

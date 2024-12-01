@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { usePrimitiveElement } from '../../composables';
-import type { NumberFieldDecrementPropsWithPrimitive } from './types';
+import { Primitive } from '../primitive';
 import { injectNumberFieldRootContext } from './context';
 import { usePressedHold } from './shared';
+import type { NumberFieldDecrementPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NumberFieldDecrement'

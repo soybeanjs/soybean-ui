@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeMount, onUnmounted } from 'vue';
-import { PopperAnchor } from '../popper';
 import { useForwardExpose } from '../../composables';
+import { PopperAnchor } from '../popper';
 import { injectPopoverRootContext } from './context';
 import type { PopoverAnchorPropsWithPrimitive } from './types';
 

@@ -44,15 +44,15 @@ export function useEmitAsProps<Name extends string>(
   return result;
 }
 
-export function usePickEmitAsProps<Name extends string>(
-  emit: (name: Name, ...args: any[]) => void,
+export function usePickEmitAsProps<Name extends string, E extends (name: Name, ...args: any[]) => void>(
+  emit: E,
   splitEvents: Name[]
 ) {
   return useEmitAsProps(emit, splitEvents, 'pick');
 }
 
-export function useOmitEmitAsProps<Name extends string>(
-  emit: (name: Name, ...args: any[]) => void,
+export function useOmitEmitAsProps<Name extends string, E extends (name: Name, ...args: any[]) => void>(
+  emit: E,
   splitEvents: Name[]
 ) {
   return useEmitAsProps(emit, splitEvents, 'omit');

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useForwardExpose, useId } from '../../composables';
-import { Primitive } from '../primitive';
 import { PopperAnchor } from '../popper';
+import { Primitive } from '../primitive';
 import { injectPopoverRootContext } from './context';
 import type { PopoverTriggerPropsWithPrimitive } from './types';
 

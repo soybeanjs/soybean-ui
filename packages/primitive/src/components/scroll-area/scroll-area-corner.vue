@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardExpose } from '../../composables';
-import type { ScrollAreaCornerPropsWithPrimitive } from './types';
 import { injectScrollAreaRootContext } from './context';
 import ScrollAreaCornerImpl from './scroll-area-corner-impl.vue';
+import type { ScrollAreaCornerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'ScrollAreaCorner'

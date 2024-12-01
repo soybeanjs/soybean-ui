@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { SwipeDirection, SwipeEvent } from '../../types';
+import type { ClassValueProp, SwipeDirection, SwipeEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 // ToastProvider
@@ -45,7 +45,7 @@ export interface ToastProviderContext {
 }
 
 // ToastRootImpl
-export interface ToastRootImplProps {
+export interface ToastRootImplProps extends ClassValueProp {
   /**
    * Control the sensitivity of the toast for accessibility purposes.
    *
@@ -102,7 +102,7 @@ export interface ToastRootContext {
 }
 
 // ToastViewport
-export interface ToastViewportProps {
+export interface ToastViewportProps extends ClassValueProp {
   /**
    * The keys to use as the keyboard shortcut that will move focus to the toast viewport.
    *
@@ -118,40 +118,34 @@ export interface ToastViewportProps {
    */
   label?: string | ((hotkey: string) => string);
 }
-
 export type ToastViewportPropsWithPrimitive = ToastViewportProps & PrimitiveProps;
 
 // ToastAction
-export interface ToastActionProps {
+export interface ToastActionProps extends ClassValueProp {
   /**
    * A short description for an alternate way to carry out the action. For screen reader users who will not be able to
    * navigate to the button easily/quickly.
    */
   altText: string;
 }
-
 export type ToastActionPropsWithPrimitive = ToastActionProps & PrimitiveProps;
 
 // ToastClose
-export interface ToastCloseProps {}
-
+export interface ToastCloseProps extends ClassValueProp {}
 export type ToastClosePropsWithPrimitive = ToastCloseProps & PrimitiveProps;
 
 // ToastTitle
-export interface ToastTitleProps {}
-
+export interface ToastTitleProps extends ClassValueProp {}
 export type ToastTitlePropsWithPrimitive = ToastTitleProps & PrimitiveProps;
 
 // ToastDescription
-export interface ToastDescriptionProps {}
-
+export interface ToastDescriptionProps extends ClassValueProp {}
 export type ToastDescriptionPropsWithPrimitive = ToastDescriptionProps & PrimitiveProps;
 
 // ToastAnnounceExclude
-export interface ToastAnnounceExcludeProps {
+export interface ToastAnnounceExcludeProps extends ClassValueProp {
   altText?: string;
 }
-
 export type ToastAnnounceExcludePropsWithPrimitive = ToastAnnounceExcludeProps & PrimitiveProps;
 
 export type ToastFocusProxyEmits = {

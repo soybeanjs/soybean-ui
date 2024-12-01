@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogOverlay } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogOverlay } from '../dialog';
 import type { AlertDialogOverlayPropsWithPrimitive } from './types';
 
 defineOptions({

@@ -1,39 +1,42 @@
-import type { RadioGroupIndicatorProps, RadioGroupRootProps, RadioGroupItemProps as _RadioControlProps } from '@soybean-ui/primitive';
+import type {
+  ClassValue,
+  ClassValueProp,
+  LabelProps,
+  RadioGroupIndicatorProps,
+  RadioGroupRootProps,
+  RadioGroupItemProps as _RadioControlProps
+} from '@soybean-ui/primitive';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type RadioIndicatorProps = ClassValueProp &
-  Pick<RadioGroupIndicatorProps, 'forceMount'> & {
-    color?: ThemeColor;
-  };
+export interface RadioIndicatorProps extends RadioGroupIndicatorProps {
+  color?: ThemeColor;
+}
 
-export type RadioControlProps = ClassValueProp &
-  Omit<_RadioControlProps, 'as' | 'asChild'> & {
-    color?: ThemeColor;
-    size?: ThemeSize;
-  };
+export interface RadioControlProps extends _RadioControlProps {
+  color?: ThemeColor;
+  size?: ThemeSize;
+}
 
-export type RadioRootProps = ClassValueProp;
+export interface RadioRootProps extends ClassValueProp {}
 
-export type RadioLabelProps = ClassValueProp;
+export interface RadioLabelProps extends LabelProps {}
 
-export type RadioProps = RadioControlProps & {
+export interface RadioProps extends RadioControlProps {
   controlClass?: ClassValue;
   indicatorClass?: ClassValue;
   forceMountIndicator?: boolean;
   labelClass?: ClassValue;
   label?: string;
   color?: ThemeColor;
-};
+}
 
-export type RadioGroupItemProps = RadioProps & {
+export interface RadioGroupItemProps extends RadioProps {
   label: string;
   value: string;
-};
+}
 
-export type RadioGroupProps = Omit<RadioGroupRootProps, 'as' | 'asChild'> & {
-  class?: ClassValue;
+export interface RadioGroupProps extends RadioGroupRootProps {
   items?: RadioGroupItemProps[];
   color?: ThemeColor;
   size?: ThemeSize;
-};
+}

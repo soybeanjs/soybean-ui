@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useBodyScrollLock, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectDialogRootContext } from './context';
 import type { DialogOverlayImplPropsWithPrimitive } from './types';
 

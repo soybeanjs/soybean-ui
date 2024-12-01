@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
-import type { ScrollAreaScrollbarHoverProps } from './types';
+import { Presence } from '../presence';
 import { injectScrollAreaRootContext } from './context';
 import ScrollAreaScrollbarAuto from './scroll-area-scrollbar-auto.vue';
+import type { ScrollAreaScrollbarHoverProps } from './types';
 
 defineOptions({
   name: 'ScrollAreaScrollbarHover',

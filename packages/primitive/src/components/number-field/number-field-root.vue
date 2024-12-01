@@ -2,12 +2,12 @@
 import { computed, ref, toRefs } from 'vue';
 import type { HTMLAttributes, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useFormControl, useLocale, usePrimitiveElement } from '../../composables';
-import { VisuallyHiddenInput } from '../visually-hidden';
 import { clamp, snapValueToStep } from '../../shared';
-import { handleDecimalOperation, useNumberFormatter, useNumberParser } from './shared';
+import { Primitive } from '../primitive';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideNumberFieldRootContext } from './context';
+import { handleDecimalOperation, useNumberFormatter, useNumberParser } from './shared';
 import type { NumberFieldRootEmits, NumberFieldRootPropsWithPrimitive } from './types';
 
 defineOptions({

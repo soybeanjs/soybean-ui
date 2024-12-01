@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
-import { RovingFocusItem } from '../roving-focus';
 import { useCollection } from '../../composables';
 import { flatten, handleAndDispatchCustomEvent } from '../../shared';
 import type { TreeSelectEvent, TreeToggleEvent } from '../../types';
+import { Primitive } from '../primitive';
+import { RovingFocusItem } from '../roving-focus';
 import { injectTreeRootContext } from './context';
 import type { TreeItemEmits, TreeItemPropsWithPrimitive } from './types';
 

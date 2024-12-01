@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { nextTick, reactive, ref, watchEffect } from 'vue';
 import { isClient } from '@vueuse/shared';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import {
   AUTOFOCUS_ON_MOUNT,
   AUTOFOCUS_ON_UNMOUNT,

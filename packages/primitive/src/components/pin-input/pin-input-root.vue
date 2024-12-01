@@ -2,9 +2,9 @@
 import { computed, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { VisuallyHiddenInput } from '../visually-hidden';
-import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { providePinInputRootContext } from './context';
 import type { PinInputRootEmits, PinInputRootPropsWithPrimitive } from './types';
 

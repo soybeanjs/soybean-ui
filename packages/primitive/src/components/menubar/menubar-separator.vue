@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuSeparator } from '../menu';
 import { useForwardExpose } from '../../composables';
+import { MenuSeparator } from '../menu';
 import type { MenubarSeparatorPropsWithPrimitive } from './types';
 
 defineOptions({

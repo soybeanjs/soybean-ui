@@ -1,33 +1,33 @@
 import type { CardSplit, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
 
-export type CardRootProps = ClassValueProp & {
+export interface CardRootProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type CardHeaderProps = ClassValueProp & {
+export interface CardHeaderProps extends ClassValueProp {
   size?: ThemeSize;
   /** show a divider between the header and the content */
   split?: boolean;
-};
+}
 
-export type CardTitleRootProps = ClassValueProp;
+export interface CardTitleRootProps extends ClassValueProp {}
 
-export type CardTitleProps = ClassValueProp & {
+export interface CardTitleProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type CardContentProps = ClassValueProp & {
+export interface CardContentProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type CardFooterProps = ClassValueProp & {
+export interface CardFooterProps extends ClassValueProp {
   size?: ThemeSize;
   /** show a divider between the footer and the content */
   split?: boolean;
-};
+}
 
-export type CardProps = CardRootProps & {
+export interface CardProps extends CardRootProps {
   title?: string;
   split?: CardSplit;
   headerClass?: ClassValue;
@@ -35,6 +35,6 @@ export type CardProps = CardRootProps & {
   titleClass?: ClassValue;
   contentClass?: ClassValue;
   footerClass?: ClassValue;
-};
+}
 
 export type { CardSplit };

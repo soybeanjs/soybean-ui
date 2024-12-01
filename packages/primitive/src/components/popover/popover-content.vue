@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
-import type { PopoverContentEmits, PopoverContentPropsWithPrimitive } from './types';
 import { injectPopoverRootContext } from './context';
 import PopoverContentModal from './popover-content-modal.vue';
 import PopoverContentNonModal from './popover-content-non-modal.vue';
+import type { PopoverContentEmits, PopoverContentPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'PopoverContent'

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, watchEffect } from 'vue';
 import { onKeyStroke } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useFocusOutside, useForwardExpose, usePointerDownOutside } from '../../composables';
+import { Primitive } from '../primitive';
 import { useDismissableLayerState } from './state';
 import type { DismissableLayerPrivateEmits, DismissableLayerPropsWithPrimitive } from './types';
 

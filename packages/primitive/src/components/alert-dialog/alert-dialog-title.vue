@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogTitle } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogTitle } from '../dialog';
 import type { AlertDialogTitlePropsWithPrimitive } from './types';
 
 defineOptions({

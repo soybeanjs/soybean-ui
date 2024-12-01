@@ -2,9 +2,9 @@
 import { computed, toRef } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
+import { useFormControl, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { useFormControl, useForwardExpose } from '../../composables';
 import { provideSwitchRootContext } from './context';
 import type { SwitchRootEmits, SwitchRootPropsWithPrimitive } from './types';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CalendarGridBody from '../calendar/calendar-grid-body.vue';
+import { CalendarGridBody } from '../calendar';
 import type { DatePickerGridBodyPropsWithPrimitive } from './types';
 
 defineOptions({

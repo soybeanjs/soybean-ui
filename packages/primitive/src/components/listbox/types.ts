@@ -1,11 +1,18 @@
 import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
-import type { AcceptableValue, DataOrientation, Direction, FormFieldProps, SelectEvent } from '../../types';
+import type {
+  AcceptableValue,
+  ClassValueProp,
+  DataOrientation,
+  Direction,
+  FormFieldProps,
+  SelectEvent
+} from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { LabelProps, LabelPropsWithPrimitive } from '../label/types';
+import type { LabelProps } from '../label';
 
-export interface ListboxRootProps<T = AcceptableValue> extends FormFieldProps {
+export interface ListboxRootProps<T = AcceptableValue> extends ClassValueProp, FormFieldProps {
   /** The controlled value of the listbox. Can be bound-with with `v-model`. */
   modelValue?: T | Array<T>;
   /** The value of the listbox when initially rendered. Use when you do not need to control the state of the Listbox */
@@ -74,7 +81,7 @@ export type ListboxRootContext<T = AcceptableValue> = {
   highlightFirstItem: (event: InputEvent) => void;
 };
 
-export interface ListboxItemProps<T = AcceptableValue> {
+export interface ListboxItemProps<T = AcceptableValue> extends ClassValueProp {
   /** The value given as data when submitted with a `name`. */
   value: T;
   /** When `true`, prevents the user from interacting with the item. */
@@ -91,20 +98,20 @@ export interface ListboxItemContext {
   isSelected: Ref<boolean>;
 }
 
-export interface ListboxItemIndicatorProps {}
+export interface ListboxItemIndicatorProps extends ClassValueProp {}
 export type ListboxItemIndicatorPropsWithPrimitive = ListboxItemIndicatorProps & PrimitiveProps;
 
-export interface ListboxGroupProps {}
+export interface ListboxGroupProps extends ClassValueProp {}
 export type ListboxGroupPropsWithPrimitive = ListboxGroupProps & PrimitiveProps;
 
 export interface ListboxGroupContext {
   id: string;
 }
 
-export type ListboxGroupLabelProps = LabelProps;
-export type ListboxGroupLabelPropsWithPrimitive = LabelPropsWithPrimitive;
+export interface ListboxGroupLabelProps extends LabelProps {}
+export type ListboxGroupLabelPropsWithPrimitive = ListboxGroupLabelProps & PrimitiveProps;
 
-export interface ListboxFilterProps {
+export interface ListboxFilterProps extends ClassValueProp {
   /** The controlled value of the filter. Can be bound-with with v-model. */
   modelValue?: string;
   /** Focus on element when mounted. */
@@ -118,7 +125,7 @@ export type ListboxFilterEmits = {
   'update:modelValue': [string];
 };
 
-export interface ListboxContentProps {}
+export interface ListboxContentProps extends ClassValueProp {}
 export type ListboxContentPropsWithPrimitive = ListboxContentProps & PrimitiveProps;
 
 export interface ListboxVirtualizerProps<T extends AcceptableValue = AcceptableValue> {

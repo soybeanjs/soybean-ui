@@ -1,51 +1,47 @@
 import type { Component } from 'vue';
 import type {
+  ClassValue,
+  ClassValueProp,
+  DropdownMenuArrowProps,
   DropdownMenuCheckboxItemEmits,
   DropdownMenuContentEmits,
+  DropdownMenuContentProps,
   DropdownMenuPortalProps,
   DropdownMenuRadioGroupEmits,
   DropdownMenuRadioItemEmits,
   DropdownMenuRootEmits,
   DropdownMenuRootProps,
+  DropdownMenuSubContentProps,
   DropdownMenuSubProps,
+  MenuItemImplProps,
   DropdownMenuCheckboxItemProps as _DropdownMenuCheckboxItemProps,
-  DropdownMenuContentProps as _DropdownMenuContentProps,
   DropdownMenuItemIndicatorProps as _DropdownMenuItemIndicatorProps,
   DropdownMenuItemProps as _DropdownMenuItemProps,
+  DropdownMenuLabelProps as _DropdownMenuLabelProps,
   DropdownMenuRadioItemProps as _DropdownMenuRadioItemProps,
-  DropdownMenuSubContentProps as _DropdownMenuSubContentProps,
   DropdownMenuSubTriggerProps as _DropdownMenuSubTriggerProps
 } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type DropdownMenuLabelProps = ClassValueProp & {
+export interface DropdownMenuLabelProps extends _DropdownMenuLabelProps {
   size?: ThemeSize;
-};
+}
 
-export type DropdownMenuContentProps = ClassValueProp & Omit<_DropdownMenuContentProps, 'as' | 'asChild'>;
-
-export type DropdownMenuSubContentProps = ClassValueProp & Omit<_DropdownMenuSubContentProps, 'as' | 'asChild'>;
-
-type MenuItemImplProps = Pick<_DropdownMenuItemProps, 'disabled' | 'textValue'>;
-
-type MenuItemImplWithClassProps = ClassValueProp & MenuItemImplProps;
-
-export type DropdownMenuItemProps = MenuItemImplWithClassProps & {
+export interface DropdownMenuItemProps extends MenuItemImplProps {
   size?: ThemeSize;
   iconClass?: ClassValue;
-};
+}
 
-export type DropdownMenuSubTriggerProps = MenuItemImplWithClassProps & {
+export interface DropdownMenuSubTriggerProps extends _DropdownMenuSubTriggerProps {
   size?: ThemeSize;
   triggerIconClass?: ClassValue;
-};
+}
 
-export type DropdownMenuShortcutProps = ClassValueProp & {
+export interface DropdownMenuShortcutProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type DropdownMenuSeparatorProps = ClassValueProp;
+export interface DropdownMenuSeparatorProps extends ClassValueProp {}
 
 export type DropdownMenuWrapperProps = DropdownMenuRootProps &
   Pick<DropdownMenuPortalProps, 'to'> &
@@ -69,7 +65,7 @@ export type DropdownMenuCommonProps = {
   shortcutClass?: ClassValue;
 };
 
-type DropdownMenuOptionCommon = MenuItemImplProps & {
+export interface DropdownMenuOptionCommon extends Omit<MenuItemImplProps, 'class'> {
   /**
    * The label to display in the dropdown.
    *
@@ -80,7 +76,7 @@ type DropdownMenuOptionCommon = MenuItemImplProps & {
   separator?: boolean;
   /** The icon to display prepended to the label. */
   icon?: Component;
-};
+}
 
 export type DropdownMenuItemOption = DropdownMenuOptionCommon & {
   /** The identifier for the option. */
@@ -117,7 +113,7 @@ export type DropdownMenuProps<T extends DropdownMenuItemOption = DropdownMenuIte
     subTriggerIconClass?: ClassValue;
     subContentClass?: ClassValue;
     /** if not provided, it will extend from `DropdownMenuContentProps` */
-    subContentProps?: _DropdownMenuSubContentProps;
+    subContentProps?: DropdownMenuSubContentProps;
   };
 
 export type DropdownMenuOptionProps<T extends DropdownMenuItemOption = DropdownMenuItemOption> = {
@@ -173,16 +169,14 @@ export type DropdownMenuOptionEmits<T extends DropdownMenuItemOption = DropdownM
 export type DropdownMenuEmits<T extends DropdownMenuItemOption = DropdownMenuItemOption> = DropdownMenuWrapperEmits &
   DropdownMenuOptionEmits<T>;
 
-export type DropdownMenuCheckboxItemProps = MenuItemImplWithClassProps &
-  Pick<_DropdownMenuCheckboxItemProps, 'modelValue'> & {
-    size?: ThemeSize;
-    indicatorClass?: ClassValue;
-  };
+export interface DropdownMenuCheckboxItemProps extends _DropdownMenuCheckboxItemProps {
+  size?: ThemeSize;
+  indicatorClass?: ClassValue;
+}
 
-export type DropdownMenuItemIndicatorProps = ClassValueProp &
-  Pick<_DropdownMenuItemIndicatorProps, 'forceMount'> & {
-    size?: ThemeSize;
-  };
+export interface DropdownMenuItemIndicatorProps extends _DropdownMenuItemIndicatorProps {
+  size?: ThemeSize;
+}
 
 export type DropdownMenuCheckboxOption = DropdownMenuOptionCommon & {
   value: string;
@@ -208,23 +202,22 @@ export type DropdownMenuCheckboxGroupEmits = {
 
 export type DropdownMenuCheckboxEmits = DropdownMenuWrapperEmits & DropdownMenuCheckboxGroupEmits;
 
-export type DropdownMenuRadioItemProps = MenuItemImplWithClassProps &
-  Pick<_DropdownMenuRadioItemProps, 'value'> & {
-    size?: ThemeSize;
-    indicatorClass?: ClassValue;
-    indicatorIconRootClass?: ClassValue;
-    indicatorIconClass?: ClassValue;
-  };
+export interface DropdownMenuRadioItemProps extends _DropdownMenuRadioItemProps {
+  size?: ThemeSize;
+  indicatorClass?: ClassValue;
+  indicatorIconRootClass?: ClassValue;
+  indicatorIconClass?: ClassValue;
+}
 
-export type DropdownMenuRadioIndicatorIconRootProps = ClassValueProp;
+export interface DropdownMenuRadioIndicatorIconRootProps extends ClassValueProp {}
 
-export type DropdownMenuRadioIndicatorIconProps = ClassValueProp;
+export interface DropdownMenuRadioIndicatorIconProps extends ClassValueProp {}
 
-export type DropdownMenuRadioOption = DropdownMenuOptionCommon & {
+export interface DropdownMenuRadioOption extends DropdownMenuOptionCommon {
   value: string;
   /** The shortcut to display next to the label. */
   shortcut?: string;
-};
+}
 
 export type DropdownMenuRadioProps<T extends DropdownMenuRadioOption = DropdownMenuRadioOption> =
   DropdownMenuWrapperProps &
@@ -241,11 +234,12 @@ export type DropdownMenuRadioProps<T extends DropdownMenuRadioOption = DropdownM
 
 export type DropdownMenuRadioEmits = DropdownMenuWrapperEmits & DropdownMenuRadioGroupEmits;
 
-export type DropdownMenuArrowProps = ClassValueProp;
-
 export type {
   DropdownMenuContentEmits,
   DropdownMenuCheckboxItemEmits,
   DropdownMenuRadioGroupEmits,
-  DropdownMenuRadioItemEmits
+  DropdownMenuRadioItemEmits,
+  DropdownMenuContentProps,
+  DropdownMenuSubContentProps,
+  DropdownMenuArrowProps
 };

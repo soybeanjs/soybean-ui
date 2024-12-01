@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends StringOrNumber = StringOrNumber">
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useDirection, useForwardExpose, useId } from '../../composables';
 import type { StringOrNumber } from '../../types';
+import { Primitive } from '../primitive';
 import { provideTabsRootContext } from './context';
 import type { TabsRootEmits, TabsRootPropsWithPrimitive } from './types';
 

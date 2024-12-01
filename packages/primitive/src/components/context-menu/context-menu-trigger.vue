@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, toRefs } from 'vue';
-import type { Point } from '../../types';
-
-import { Primitive } from '../primitive';
-import { MenuAnchor } from '../menu';
 import { useForwardExpose } from '../../composables';
+import type { Point } from '../../types';
+import { MenuAnchor } from '../menu';
+import { Primitive } from '../primitive';
 import { injectContextMenuRootContext } from './context';
 import { isTouchOrPen } from './shared';
 import type { ContextMenuTriggerPropsWithPrimitive } from './types';

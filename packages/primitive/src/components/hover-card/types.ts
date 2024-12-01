@@ -35,6 +35,7 @@ export interface HoverCardRootContext {
 
 // HoverCardArrow
 export interface HoverCardArrowProps extends PopperArrowProps {}
+export type HoverCardArrowPropsWithPrimitive = HoverCardArrowProps & PrimitiveProps;
 
 // HoverCardPortal
 export interface HoverCardPortalProps extends TeleportProps {}

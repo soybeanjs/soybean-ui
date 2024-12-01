@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ToggleGroupItem } from '../toggle-group';
 import { useForwardExpose } from '../../composables';
+import { ToggleGroupItem } from '../toggle-group';
 import ToolbarButton from './toolbar-button.vue';
 import type { ToolbarToggleItemPropsWithPrimitive } from './types';
 

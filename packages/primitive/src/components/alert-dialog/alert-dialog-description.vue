@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { DialogDescription } from '../dialog';
 import { useForwardExpose } from '../../composables';
+import { DialogDescription } from '../dialog';
 import type { AlertDialogDescriptionPropsWithPrimitive } from './types';
 
 defineOptions({

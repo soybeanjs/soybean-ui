@@ -1,26 +1,19 @@
 import type {
-  DialogContentEmits,
+  ClassValue,
   DialogContentProps,
-  DialogOverlayProps,
-  DialogPortalProps,
-  DialogRootEmits,
-  DialogRootProps
+  DialogContentEmits as SheetContentEmits,
+  DialogOverlayProps as SheetOverlayProps,
+  DialogPortalProps as SheetPortalProps,
+  DialogRootEmits as SheetRootEmits,
+  DialogRootProps as SheetRootProps
 } from '@soybean-ui/primitive';
 import type { SheetSide } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 import type { CardProps } from '../card/types';
 
-export type SheetRootProps = DialogRootProps;
-
-export type SheetPortalProps = DialogPortalProps;
-
-export type SheetOverlayProps = ClassValueProp & Pick<DialogOverlayProps, 'forceMount'>;
-
-export type SheetContentProps = CardProps &
-  Pick<DialogContentProps, 'forceMount' | 'trapFocus' | 'disableOutsidePointerEvents'> & {
-    side?: SheetSide;
-    showClose?: boolean;
-  };
+export interface SheetContentProps extends CardProps, DialogContentProps {
+  side?: SheetSide;
+  showClose?: boolean;
+}
 
 export type SheetProps = SheetRootProps &
   SheetContentProps &
@@ -31,10 +24,6 @@ export type SheetProps = SheetRootProps &
     forceMountOverlay?: boolean;
   };
 
-export type SheetRootEmits = DialogRootEmits;
-
-export type SheetContentEmits = DialogContentEmits;
-
 export type SheetEmits = SheetRootEmits & SheetContentEmits;
 
-export type { SheetSide };
+export type { SheetRootProps, SheetPortalProps, SheetOverlayProps, SheetContentEmits, SheetSide };

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useId } from '../../composables';
+import { Primitive } from '../primitive';
 import { provideSelectGroupContext } from './context';
 import type { SelectGroupPropsWithPrimitive } from './types';
 

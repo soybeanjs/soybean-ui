@@ -2,11 +2,11 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { injectToggleGroupRootContext } from '../toggle-group/context';
-import { Primitive } from '../primitive';
 import { useFormControl, useForwardExpose } from '../../composables';
 import type { DataState } from '../../types';
+import { Primitive } from '../primitive';
+import { injectToggleGroupRootContext } from '../toggle-group/context';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import type { ToggleEmits, TogglePropsWithPrimitive } from './types';
 
 const props = withDefaults(defineProps<TogglePropsWithPrimitive>(), {

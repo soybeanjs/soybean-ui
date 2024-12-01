@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
 import type { DateFormatter, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
+import type { ClassValueProp, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction } from '../../types';
 
-export interface BaseCalendarRootProps {
+export interface BaseCalendarRootProps extends ClassValueProp {
   /** The default value for the calendar */
   defaultValue?: DateValue;
   /** The default placeholder date */
@@ -84,14 +84,14 @@ export type CalendarRootProps = MultipleCalendarRootProps | SingleCalendarRootPr
 export type CalendarRootPropsWithPrimitive = CalendarRootProps & PrimitiveProps;
 
 // Calendar Cell
-export interface CalendarCellProps {
+export interface CalendarCellProps extends ClassValueProp {
   /** The date value for the cell */
   date: DateValue;
 }
 export type CalendarCellPropsWithPrimitive = CalendarCellProps & PrimitiveProps;
 
 // Calendar Cell Trigger
-export interface CalendarCellTriggerProps {
+export interface CalendarCellTriggerProps extends ClassValueProp {
   /** The date value provided to the cell trigger */
   day: DateValue;
   /** The month in which the cell is rendered */
@@ -100,36 +100,36 @@ export interface CalendarCellTriggerProps {
 export type CalendarCellTriggerPropsWithPrimitive = CalendarCellTriggerProps & PrimitiveProps;
 
 // Calendar Grid
-export interface CalendarGridProps {}
+export interface CalendarGridProps extends ClassValueProp {}
 export type CalendarGridPropsWithPrimitive = CalendarGridProps & PrimitiveProps;
 
-export interface CalendarGridBodyProps {}
+export interface CalendarGridBodyProps extends ClassValueProp {}
 export type CalendarGridBodyPropsWithPrimitive = CalendarGridBodyProps & PrimitiveProps;
 
-export interface CalendarGridHeadProps {}
+export interface CalendarGridHeadProps extends ClassValueProp {}
 export type CalendarGridHeadPropsWithPrimitive = CalendarGridHeadProps & PrimitiveProps;
 
-export interface CalendarGridRowProps {}
+export interface CalendarGridRowProps extends ClassValueProp {}
 export type CalendarGridRowPropsWithPrimitive = CalendarGridRowProps & PrimitiveProps;
 
 // Calendar Head
-export interface CalendarHeadCellProps {}
+export interface CalendarHeadCellProps extends ClassValueProp {}
 export type CalendarHeadCellPropsWithPrimitive = CalendarHeadCellProps & PrimitiveProps;
 
-export interface CalendarHeaderProps {}
+export interface CalendarHeaderProps extends ClassValueProp {}
 export type CalendarHeaderPropsWithPrimitive = CalendarHeaderProps & PrimitiveProps;
 
-export interface CalendarHeadingProps {}
+export interface CalendarHeadingProps extends ClassValueProp {}
 export type CalendarHeadingPropsWithPrimitive = CalendarHeadingProps & PrimitiveProps;
 
 // Navigation
-export interface CalendarNextProps {
+export interface CalendarNextProps extends ClassValueProp {
   /** The function to be used for the next page. Overwrites the `nextPage` function set on the `CalendarRoot`. */
   nextPage?: (placeholder: DateValue) => DateValue;
 }
 export type CalendarNextPropsWithPrimitive = CalendarNextProps & PrimitiveProps;
 
-export interface CalendarPrevProps {
+export interface CalendarPrevProps extends ClassValueProp {
   /** The function to be used for the prev page. Overwrites the `prevPage` function set on the `CalendarRoot`. */
   prevPage?: (placeholder: DateValue) => DateValue;
 }

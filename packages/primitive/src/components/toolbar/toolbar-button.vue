@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { useForwardExpose } from '../../composables';
 import type { ToolbarButtonPropsWithPrimitive } from './types';
 
 defineOptions({

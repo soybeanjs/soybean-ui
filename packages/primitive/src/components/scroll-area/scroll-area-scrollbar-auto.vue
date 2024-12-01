@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useDebounceFn, useResizeObserver } from '@vueuse/core';
-import { Presence } from '../presence';
 import { useForwardExpose } from '../../composables';
+import { Presence } from '../presence';
 import { injectScrollAreaRootContext, injectScrollAreaScrollbarContext } from './context';
 import ScrollAreaScrollbarVisible from './scroll-area-scrollbar-visible.vue';
 import type { ScrollAreaScrollbarAutoProps } from './types';

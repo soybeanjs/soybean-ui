@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed, onMounted, onUnmounted } from 'vue';
 import { useId, usePrimitiveElement } from '../../composables';
-import { ListboxItem } from '../listbox';
 import type { AcceptableValue } from '../../types';
+import { ListboxItem } from '../listbox';
 import { injectComboboxGroupContext, injectComboboxRootContext } from './context';
 import type { ComboboxItemEmits, ComboboxItemPropsWithPrimitive } from './types';
 

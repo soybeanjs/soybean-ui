@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PopperContent } from '../popper';
 import { useForwardProps } from '../../composables';
+import { PopperContent } from '../popper';
 import { CONTENT_MARGIN } from './shared';
 import type { SelectPopperPositionPropsWithPrimitive } from './types';
 

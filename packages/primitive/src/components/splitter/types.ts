@@ -1,8 +1,8 @@
 import type { CSSProperties, Ref } from 'vue';
-import type { DataOrientation } from '../../types';
+import type { ClassValueProp, DataOrientation } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface SplitterGroupProps {
+export interface SplitterGroupProps extends ClassValueProp {
   /** Group id; falls back to `useId` when not provided. */
   id?: string | null;
   /** Unique id used to auto-save group arrangement via `localStorage`. */
@@ -48,7 +48,7 @@ export type PanelGroupContext = {
   getPanelStyle: (panelData: PanelData, defaultSize: number | undefined) => CSSProperties;
 };
 
-export interface SplitterPanelProps {
+export interface SplitterPanelProps extends ClassValueProp {
   /** The size of panel when it is collapsed. */
   collapsedSize?: number;
   /** Should panel collapse when resized beyond its `minSize`. When `true`, it will be collapsed to `collapsedSize`. */
@@ -75,7 +75,7 @@ export type SplitterPanelEmits = {
   resize: [size: number, prevSize: number | undefined];
 };
 
-export interface SplitterResizeHandleProps {
+export interface SplitterResizeHandleProps extends ClassValueProp {
   /** Resize handle id (unique within group); falls back to `useId` when not provided */
   id?: string;
   /** Allow this much margin when determining resizable handle hit detection */

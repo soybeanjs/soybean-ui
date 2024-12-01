@@ -9,7 +9,7 @@ defineOptions({
   name: 'SFormLabel'
 });
 
-const { for: _, class: cls, size } = defineProps<FormLabelProps>();
+const { class: cls, size } = defineProps<FormLabelProps>();
 
 const { error, formItemId } = useFormField();
 

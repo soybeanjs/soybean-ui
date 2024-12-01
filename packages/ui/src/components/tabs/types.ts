@@ -1,38 +1,34 @@
 import type {
+  ClassValue,
+  ClassValueProp,
   TabsRootEmits,
+  TabsRootProps,
   TabsContentProps as _TabsContentProps,
   TabsListProps as _TabsListProps,
-  TabsRootProps as _TabsRootProps,
   TabsTriggerProps as _TabsTriggerProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp, StringOrNumber, ThemeOrientation } from '../../types';
+import type { StringOrNumber, ThemeOrientation } from '../../types';
 
-export type TabsRootProps<T extends StringOrNumber = StringOrNumber> = ClassValueProp &
-  Omit<_TabsRootProps<T>, 'as' | 'asChild'>;
-
-export type TabsListProps = ClassValueProp &
-  Pick<_TabsListProps, 'loop'> & {
-    orientation?: ThemeOrientation;
-  };
-
-export type TabsTriggerProps = ClassValueProp &
-  Pick<_TabsTriggerProps, 'value' | 'disabled'> & {
-    orientation?: ThemeOrientation;
-    enableIndicator?: boolean;
-  };
-
-export type TabsIndicatorRootProps = ClassValueProp & {
+export interface TabsListProps extends _TabsListProps {
   orientation?: ThemeOrientation;
-};
+}
 
-export type TabsIndicatorProps = ClassValueProp & {
+export interface TabsTriggerProps extends _TabsTriggerProps {
   orientation?: ThemeOrientation;
-};
+  enableIndicator?: boolean;
+}
 
-export type TabsContentProps = ClassValueProp &
-  Pick<_TabsContentProps, 'value' | 'forceMount'> & {
-    orientation?: ThemeOrientation;
-  };
+export interface TabsIndicatorRootProps extends ClassValueProp {
+  orientation?: ThemeOrientation;
+}
+
+export interface TabsIndicatorProps extends ClassValueProp {
+  orientation?: ThemeOrientation;
+}
+
+export interface TabsContentProps extends _TabsContentProps {
+  orientation?: ThemeOrientation;
+}
 
 export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTriggerProps, 'disabled'> & {
   value: T;
@@ -53,4 +49,4 @@ export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
 
 export type TabsEmits<T extends StringOrNumber = StringOrNumber> = TabsRootEmits<T>;
 
-export type { TabsRootEmits };
+export type { TabsRootProps, TabsRootEmits };

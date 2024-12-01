@@ -1,8 +1,8 @@
 import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp, DisclosureState } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
-import type { ClassValueProp, DisclosureState } from '../../types';
 
 export interface DialogRootProps {
   /** The controlled open state of the dialog. Can be bound as `v-model:open`. */

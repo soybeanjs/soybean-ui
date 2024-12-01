@@ -1,10 +1,15 @@
 <script setup lang="ts" generic="T extends DropdownMenuItemOption = DropdownMenuItemOption">
 import { computed } from 'vue';
-import { useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmit, computedOmitEmits, computedPick, computedPickEmits } from '../../shared';
+import {
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  useOmitForwardProps,
+  usePickEmitAsProps,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
+import { createOptionKey } from './shared';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuOption from './dropdown-menu-option.vue';
-import { createOptionKey } from './shared';
 import type { DropdownMenuEmits, DropdownMenuItemOption, DropdownMenuProps } from './types';
 
 defineOptions({
@@ -17,9 +22,7 @@ type Emits = DropdownMenuEmits<T>;
 
 const emit = defineEmits<Emits>();
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof Emits, any>;
-
-const delegatedWrapperProps = computedOmit(props, [
+const forwardedWrapperProps = useOmitForwardProps(props, [
   'separator',
   'groupLabelClass',
   'itemClass',
@@ -34,8 +37,6 @@ const delegatedWrapperProps = computedOmit(props, [
   'subContentProps'
 ]);
 
-const forwardedWrapperProps = useForwardProps(delegatedWrapperProps);
-
 const optionEmitKeys: (keyof Emits)[] = [
   'select',
   'update:subOpen',
@@ -48,14 +49,12 @@ const optionEmitKeys: (keyof Emits)[] = [
   'pointerDownOutsideSub'
 ];
 
-const forwardedWrapperEmits = computedOmitEmits(forwardedEmits, optionEmitKeys);
+// @ts-expect-error ignore type
+const forwardedWrapperEmits = useOmitEmitAsProps(emit, optionEmitKeys);
 
-const forwardedWrapper = computed(() => ({
-  ...forwardedWrapperProps.value,
-  ...forwardedWrapperEmits.value
-}));
+const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
 
-const delegatedSubContentProps = computedPick(props, [
+const forwardedSubContentProps = usePickForwardProps(props, [
   'loop',
   'sideOffset',
   'alignOffset',
@@ -70,13 +69,12 @@ const delegatedSubContentProps = computedPick(props, [
 ]);
 
 const combinedSubContentProps = computed(() => ({
-  ...delegatedSubContentProps.value,
+  ...forwardedSubContentProps.value,
   ...props.subContentProps
 }));
 
-const forwardedSubContentProps = useForwardProps(combinedSubContentProps);
-
-const forwardedOptionEmits = computedPickEmits(forwardedEmits, optionEmitKeys);
+// @ts-expect-error ignore type
+const forwardedOptionEmits = usePickEmitAsProps(emit, optionEmitKeys);
 </script>
 
 <template>
@@ -97,7 +95,7 @@ const forwardedOptionEmits = computedPickEmits(forwardedEmits, optionEmitKeys);
       :group-label-class="groupLabelClass"
       :sub-trigger-class="subTriggerClass"
       :sub-content-class="subContentClass"
-      :sub-content-props="forwardedSubContentProps"
+      :sub-content-props="combinedSubContentProps"
       :item-class="itemClass"
       :separator-class="separatorClass"
       :shortcut-class="shortcutClass"

@@ -1,7 +1,8 @@
-import type { ClassValueProp, ThemeSize } from '../../types';
+import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { ThemeSize } from '@soybean-ui/variants';
 
-export type KeyboardKeyProps = ClassValueProp & {
+export interface KeyboardKeyProps extends ClassValueProp {
   size?: ThemeSize;
   keys?: string[];
   separator?: string;
-};
+}

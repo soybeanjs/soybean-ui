@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuRadioItem } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { MenuRadioItem } from '../menu';
 import type { DropdownMenuRadioItemEmits, DropdownMenuRadioItemPropsWithPrimitive } from './types';
 
 defineOptions({

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
 import type { CSSProperties } from 'vue';
-import DismissableLayer from '../dismissable-layer/dismissable-layer.vue';
-import PopperContent from '../popper/popper-content.vue';
-import { Primitive } from '../primitive';
-import ListboxContent from '../listbox/listbox-content.vue';
 import { useBodyScrollLock, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import { DismissableLayer } from '../dismissable-layer';
+import { ListboxContent } from '../listbox';
+import { PopperContent } from '../popper';
+import { Primitive } from '../primitive';
 import { injectComboboxRootContext, provideComboboxContentContext } from './context';
 import type { ComboboxContentImplEmits, ComboboxContentImplPropsWithPrimitive } from './types';
 

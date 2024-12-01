@@ -1,6 +1,7 @@
+import type { ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface ViewportProps {
+export interface ViewportProps extends ClassValueProp {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
    * globally from `ConfigProvider`.

@@ -1,20 +1,22 @@
 import type {
+  SingleOrMultipleType,
   ToggleGroupItemProps as _ToggleGroupItemProps,
   ToggleGroupRootProps as _ToggleGroupRootProps
 } from '@soybean-ui/primitive';
 import type { ToggleVariant } from '@soybean-ui/variants';
-import type { ClassValueProp, SingleOrMultipleType, ThemeSize } from '../../types';
+import type { ThemeSize } from '../../types';
 
-export type ToggleGroupRootProps<ValidValue = string | string[], ExplicitType = SingleOrMultipleType> = ClassValueProp &
-  Omit<_ToggleGroupRootProps<ValidValue, ExplicitType>, 'as' | 'asChild'> & {
-    size?: ThemeSize;
-  };
+export type ToggleGroupRootProps<
+  ValidValue = string | string[],
+  ExplicitType = SingleOrMultipleType
+> = _ToggleGroupRootProps<ValidValue, ExplicitType> & {
+  size?: ThemeSize;
+};
 
-export type ToggleGroupItemProps = ClassValueProp &
-  Omit<_ToggleGroupItemProps, 'as' | 'asChild'> & {
-    variant?: ToggleVariant;
-    size?: ThemeSize;
-  };
+export interface ToggleGroupItemProps extends _ToggleGroupItemProps {
+  variant?: ToggleVariant;
+  size?: ThemeSize;
+}
 
 export type ToggleGroupItemData = Pick<ToggleGroupItemProps, 'value' | 'disabled'>;
 

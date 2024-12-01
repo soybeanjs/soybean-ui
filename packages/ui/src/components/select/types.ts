@@ -1,58 +1,53 @@
 import type {
+  ClassValue,
+  ClassValueProp,
   SelectContentEmits,
+  SelectContentProps,
   SelectPortalProps,
   SelectRootEmits,
   SelectRootProps,
-  SelectContentProps as _SelectContentProps,
   SelectItemProps as _SelectItemProps,
   SelectLabelProps as _SelectLabelProps,
   SelectTriggerProps as _SelectTriggerProps,
   SelectViewportProps as _SelectViewportProps
 } from '@soybean-ui/primitive';
 import type { SelectPosition, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type SelectContentProps = ClassValueProp & Omit<_SelectContentProps, 'as' | 'asChild'>;
-
-export type SelectTriggerProps = ClassValueProp &
-  Pick<_SelectTriggerProps, 'disabled'> & {
-    size?: ThemeSize;
-  };
-
-export type SelectViewportProps = ClassValueProp &
-  Pick<_SelectViewportProps, 'nonce'> & {
-    position?: SelectPosition;
-  };
-
-export type SelectItemProps = ClassValueProp &
-  Omit<_SelectItemProps, 'as' | 'asChild'> & {
-    size?: ThemeSize;
-  };
-
-export type SelectItemIndicatorProps = ClassValueProp & {
+export interface SelectTriggerProps extends _SelectTriggerProps {
   size?: ThemeSize;
-};
+}
 
-export type SelectIconProps = ClassValueProp & {
+export interface SelectViewportProps extends _SelectViewportProps {
+  position?: SelectPosition;
+}
+
+export interface SelectItemProps extends _SelectItemProps {
   size?: ThemeSize;
-};
+}
 
-export type SelectSeparatorProps = ClassValueProp;
-
-export type SelectLabelProps = ClassValueProp &
-  Pick<_SelectLabelProps, 'for'> & {
-    size?: ThemeSize;
-  };
-
-export type SelectScrollUpButtonProps = ClassValueProp & {
+export interface SelectItemIndicatorProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type SelectScrollDownButtonProps = ClassValueProp & {
+export interface SelectIconProps extends ClassValueProp {
   size?: ThemeSize;
-};
+}
 
-export type SelectOption = Pick<SelectItemProps, 'value' | 'disabled' | 'textValue'> & {
+export interface SelectSeparatorProps extends ClassValueProp {}
+
+export interface SelectLabelProps extends _SelectLabelProps {
+  size?: ThemeSize;
+}
+
+export interface SelectScrollUpButtonProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export interface SelectScrollDownButtonProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export interface SelectOption extends Pick<SelectItemProps, 'value' | 'disabled' | 'textValue'> {
   /**
    * The label to display in the dropdown.
    *
@@ -61,13 +56,13 @@ export type SelectOption = Pick<SelectItemProps, 'value' | 'disabled' | 'textVal
   label: string;
   /** whether to show a separator above this option */
   separator?: boolean;
-};
+}
 
-export type SelectGroupOption = {
+export interface SelectGroupOption extends Pick<SelectOption, 'separator'> {
   label: string;
   items: SelectOption[];
   groupId?: string;
-} & Pick<SelectOption, 'separator'>;
+}
 
 export type SelectProps = SelectRootProps &
   Pick<SelectPortalProps, 'to'> &
@@ -93,10 +88,14 @@ export type SelectProps = SelectRootProps &
     groupLabelClass?: ClassValue;
   };
 
-export type SelectItemOptionProps = {
+export interface SelectItemOptionProps
+  extends Pick<
+    SelectProps,
+    'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'
+  > {
   option: SelectOption;
-} & Pick<SelectProps, 'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'>;
+}
 
 export type SelectEmits = SelectRootEmits & SelectContentEmits;
 
-export type { SelectPosition, SelectContentEmits };
+export type { SelectContentProps, SelectPosition, SelectContentEmits };

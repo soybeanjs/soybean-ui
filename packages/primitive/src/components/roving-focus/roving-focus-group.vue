@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useCollection, useDirection } from '../../composables';
+import { Primitive } from '../primitive';
 import { ENTRY_FOCUS, EVENT_OPTIONS, focusFirst } from './shared';
 import { provideRovingFocusGroupContext } from './context';
 import type { RovingFocusGroupEmits, RovingFocusGroupPropsWithPrimitive } from './types';

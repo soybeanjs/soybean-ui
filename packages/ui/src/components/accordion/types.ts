@@ -7,7 +7,7 @@ import type {
   AccordionRootEmits,
   AccordionRootProps,
   ClassValue,
-  PrimitivePropsWithClass,
+  ClassValueProp,
   SingleOrMultipleType,
   AccordionTriggerProps as _AccordionTriggerProps
 } from '@soybean-ui/primitive';
@@ -16,7 +16,7 @@ export interface AccordionTriggerProps extends _AccordionTriggerProps {
   triggerIconClass?: ClassValue;
 }
 
-export interface AccordionContentBodyProps extends PrimitivePropsWithClass {}
+export interface AccordionContentBodyProps extends ClassValueProp {}
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
@@ -34,4 +34,11 @@ export type AccordionProps<
 
 export type AccordionEmits<E extends SingleOrMultipleType = SingleOrMultipleType> = AccordionRootEmits<E>;
 
-export type { AccordionItemProps, AccordionHeaderProps, AccordionContentProps, AccordionItemData };
+export type {
+  AccordionRootProps,
+  AccordionRootEmits,
+  AccordionItemProps,
+  AccordionHeaderProps,
+  AccordionContentProps,
+  AccordionItemData
+};

@@ -3,12 +3,12 @@ import { onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
+import { getDefaultDate, handleCalendarInitialFocus, isBefore } from '../../date';
 import type { DateRange, DateValue } from '../../date';
 import { useCalendar, useDirection, useLocale, usePrimitiveElement, useRangeCalendarState } from '../../composables';
 import { Primitive } from '../primitive';
-import { getDefaultDate, handleCalendarInitialFocus, isBefore } from '../../date';
-import type { RangeCalendarRootEmits, RangeCalendarRootPropsWithPrimitive } from './types';
 import { provideRangeCalendarRootContext } from './context';
+import type { RangeCalendarRootEmits, RangeCalendarRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'RangeCalendarRoot'

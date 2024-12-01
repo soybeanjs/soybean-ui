@@ -2,8 +2,8 @@
 import { computed, ref, toRefs, watchEffect } from 'vue';
 import type { Ref } from 'vue';
 import { refAutoReset, useDebounceFn, useVModel } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useCollection, useDirection, useForwardExpose, useId } from '../../composables';
+import { Primitive } from '../primitive';
 import { provideNavigationMenuRootContext } from './context';
 import type { NavigationMenuRootEmits, NavigationMenuRootPropsWithPrimitive } from './types';
 

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { toRefs } from 'vue';
 import { useVModel } from '@vueuse/core';
+import { useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { useDirection, useFormControl, useForwardExpose } from '../../composables';
 import { provideRadioGroupRootContext } from './context';
 import type { RadioGroupRootEmits, RadioGroupRootPropsWithPrimitive } from './types';
 

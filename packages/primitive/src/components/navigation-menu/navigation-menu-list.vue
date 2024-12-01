@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { Primitive } from '../primitive';
 import { useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext } from './context';
 import type { NavigationMenuListPropsWithPrimitive } from './types';
 

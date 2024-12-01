@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 import type { EventHookOn } from '@vueuse/core';
-import type { AcceptableValue } from '../../types';
+import type { AcceptableValue, ClassValueProp } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
@@ -14,26 +14,26 @@ import type {
   ListboxRootProps,
   ListboxVirtualizerProps
 } from '../listbox';
-import type { LabelProps, LabelPropsWithPrimitive } from '../label';
+import type { LabelProps } from '../label';
 
-export interface ComboboxRootProps<T = AcceptableValue>
-  extends Omit<ListboxRootProps<T>, 'orientation' | 'selectionBehavior'> {
-  /** The controlled open state of the Combobox. Can be bound-with with `v-model:open`. */
-  open?: boolean;
-  /**
-   * The open state of the combobox when it is initially rendered. <br> Use when you do not need to control its open
-   * state.
-   */
-  defaultOpen?: boolean;
-  /**
-   * Whether to reset the searchTerm when the Combobox input blurred
-   *
-   * @defaultValue `true`
-   */
-  resetSearchTermOnBlur?: boolean;
-  /** When `true`, disable the default filters */
-  ignoreFilter?: boolean;
-}
+export type ComboboxRootProps<T = AcceptableValue> = ClassValueProp &
+  Omit<ListboxRootProps<T>, 'orientation' | 'selectionBehavior'> & {
+    /** The controlled open state of the Combobox. Can be bound-with with `v-model:open`. */
+    open?: boolean;
+    /**
+     * The open state of the combobox when it is initially rendered. <br> Use when you do not need to control its open
+     * state.
+     */
+    defaultOpen?: boolean;
+    /**
+     * Whether to reset the searchTerm when the Combobox input blurred
+     *
+     * @defaultValue `true`
+     */
+    resetSearchTermOnBlur?: boolean;
+    /** When `true`, disable the default filters */
+    ignoreFilter?: boolean;
+  };
 
 export type ComboboxRootPropsWithPrimitive<T = AcceptableValue> = ComboboxRootProps<T> & PrimitiveProps;
 
@@ -70,7 +70,7 @@ export type ComboboxRootEmits<T = AcceptableValue> = {
 };
 
 // ComboboxItem
-export interface ComboboxItemProps<T = AcceptableValue> extends ListboxItemProps<T> {
+export interface ComboboxItemProps<T = AcceptableValue> extends ClassValueProp, ListboxItemProps<T> {
   /**
    * A string representation of the item contents.
    *
@@ -83,11 +83,11 @@ export type ComboboxItemPropsWithPrimitive<T = AcceptableValue> = ComboboxItemPr
 export type ComboboxItemEmits<T = AcceptableValue> = ListboxItemEmits<T>;
 
 // ComboboxGroup
-export interface ComboboxGroupProps {}
+export interface ComboboxGroupProps extends ClassValueProp {}
 export type ComboboxGroupPropsWithPrimitive = ComboboxGroupProps & PrimitiveProps;
 
 // ComboboxInput
-export interface ComboboxInputProps extends ListboxFilterProps {
+export interface ComboboxInputProps extends ClassValueProp, ListboxFilterProps {
   /** The display value of input for selected item. Does not work with `multiple`. */
   displayValue?: (val: any) => string;
 }
@@ -138,7 +138,7 @@ export interface ComboboxGroupContext {
 
 export type ComboboxVirtualizerProps<T extends AcceptableValue = AcceptableValue> = ListboxVirtualizerProps<T>;
 
-export interface ComboboxViewportProps {
+export interface ComboboxViewportProps extends ClassValueProp {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
    * globally from `ConfigProvider`.
@@ -147,27 +147,27 @@ export interface ComboboxViewportProps {
 }
 export type ComboboxViewportPropsWithPrimitive = ComboboxViewportProps & PrimitiveProps;
 
-export interface ComboboxTriggerProps {
+export interface ComboboxTriggerProps extends ClassValueProp {
   /** When `true`, prevents the user from interacting with item */
   disabled?: boolean;
 }
 export type ComboboxTriggerPropsWithPrimitive = ComboboxTriggerProps & PrimitiveProps;
 
-export interface ComboboxSeparatorProps {}
+export interface ComboboxSeparatorProps extends ClassValueProp {}
 export type ComboboxSeparatorPropsWithPrimitive = ComboboxSeparatorProps & PrimitiveProps;
 
 export interface ComboboxPortalProps extends TeleportProps {}
 
-export type ComboboxLabelProps = LabelProps;
-export type ComboboxLabelPropsWithPrimitive = LabelPropsWithPrimitive;
+export interface ComboboxLabelProps extends LabelProps {}
+export type ComboboxLabelPropsWithPrimitive = ComboboxLabelProps & PrimitiveProps;
 
 export interface ComboboxItemIndicatorProps extends ListboxItemIndicatorProps {}
 export type ComboboxItemIndicatorPropsWithPrimitive = ComboboxItemIndicatorProps & PrimitiveProps;
 
-export interface ComboboxEmptyProps {}
+export interface ComboboxEmptyProps extends ClassValueProp {}
 export type ComboboxEmptyPropsWithPrimitive = ComboboxEmptyProps & PrimitiveProps;
 
-export interface ComboboxCancelProps {}
+export interface ComboboxCancelProps extends ClassValueProp {}
 export type ComboboxCancelPropsWithPrimitive = ComboboxCancelProps & PrimitiveProps;
 
 export interface ComboboxArrowProps extends PopperArrowProps {}

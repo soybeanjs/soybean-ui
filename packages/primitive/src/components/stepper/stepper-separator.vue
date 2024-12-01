@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Separator } from '../separator';
 import { useForwardExpose } from '../../composables';
+import { Separator } from '../separator';
 import { injectStepperItemContext, injectStepperRootContext } from './context';
 import type { StepperSeparatorPropsWithPrimitive } from './types';
 

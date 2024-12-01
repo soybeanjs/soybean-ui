@@ -1,22 +1,17 @@
 import type {
-  ScrollAreaRootProps as _ScrollAreaRootProps,
-  ScrollAreaScrollbarProps as _ScrollAreaScrollbarProps,
-  ScrollAreaViewportProps as _ScrollAreaViewportProps
+  ClassValue,
+  ClassValueProp,
+  ScrollAreaRootProps,
+  ScrollAreaScrollbarProps,
+  ScrollAreaViewportProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
 
-export type ScrollAreaRootProps = ClassValueProp & Omit<_ScrollAreaRootProps, 'as' | 'asChild'>;
+export interface ScrollAreaThumbProps extends ClassValueProp {}
 
-export type ScrollAreaViewportProps = ClassValueProp & Pick<_ScrollAreaViewportProps, 'nonce'>;
+export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaViewportProps, ScrollAreaScrollbarProps {
+  viewportClass?: ClassValue;
+  scrollbarClass?: ClassValue;
+  thumbClass?: ClassValue;
+}
 
-export type ScrollAreaScrollbarProps = ClassValueProp & Pick<_ScrollAreaScrollbarProps, 'orientation' | 'forceMount'>;
-
-export type ScrollAreaThumbProps = ClassValueProp;
-
-export type ScrollAreaProps = ScrollAreaRootProps &
-  ScrollAreaViewportProps &
-  ScrollAreaScrollbarProps & {
-    viewportClass?: ClassValue;
-    scrollbarClass?: ClassValue;
-    thumbClass?: ClassValue;
-  };
+export type { ScrollAreaRootProps, ScrollAreaScrollbarProps, ScrollAreaViewportProps };

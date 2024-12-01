@@ -3,8 +3,8 @@ import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
 import { isClient } from '@vueuse/shared';
 import { useCollection, useForwardExpose } from '../../composables';
-import { Primitive } from '../primitive';
 import type { SwipeEvent } from '../../types';
+import { Primitive } from '../primitive';
 import { injectToastProviderContext, provideToastRootContext } from './context';
 import {
   TOAST_SWIPE_CANCEL,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { useForwardExpose } from '../../composables';
 import type { ToolbarLinkPropsWithPrimitive } from './types';
 
 defineOptions({

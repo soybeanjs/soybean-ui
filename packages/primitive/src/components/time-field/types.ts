@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
 import type { DateFormatter, DateValue, HourCycle, SegmentPart, SegmentValueObj, TimeValue } from '../../date';
-import type { Direction, FormFieldProps } from '../../types';
+import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface TimeFieldRootProps extends FormFieldProps {
+export interface TimeFieldRootProps extends ClassValueProp, FormFieldProps {
   /** The default value for the calendar */
   defaultValue?: TimeValue;
   /** The default placeholder date */
@@ -67,7 +67,7 @@ export type TimeFieldRootContext = {
   setFocusedElement: (el: HTMLElement) => void;
 };
 
-export interface TimeFieldInputProps {
+export interface TimeFieldInputProps extends ClassValueProp {
   /** The part of the date to render */
   part: SegmentPart;
 }

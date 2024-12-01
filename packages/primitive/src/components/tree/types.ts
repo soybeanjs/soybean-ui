@@ -1,9 +1,10 @@
 import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
+import type { ClassValueProp, Direction, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction, TreeSelectEvent, TreeToggleEvent } from '../../types';
 // Root
-export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>> {
+export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
+  extends ClassValueProp {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U | U[];
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
@@ -59,7 +60,7 @@ export interface TreeRootContext<T = Record<string, any>> {
 }
 
 // Item
-export interface TreeItemProps<T> {
+export interface TreeItemProps<T> extends ClassValueProp {
   /** Value given to this item */
   value: T;
   /** Level of depth */

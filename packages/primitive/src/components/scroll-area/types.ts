@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
+import type { ClassValue, ClassValueProp, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { Direction } from '../../types';
 
 export interface ScrollAreaSizes {
   content: number;
@@ -15,7 +15,7 @@ export interface ScrollAreaSizes {
 export type ScrollType = 'auto' | 'always' | 'scroll' | 'hover';
 
 // ScrollAreaRoot
-export interface ScrollAreaRootProps {
+export interface ScrollAreaRootProps extends ClassValueProp {
   /**
    * Describes the nature of scrollbar visibility, similar to how the scrollbar preferences in MacOS control visibility
    * of native scrollbars.
@@ -39,7 +39,6 @@ export interface ScrollAreaRootProps {
    */
   scrollHideDelay?: number;
 }
-
 export type ScrollAreaRootPropsWithPrimitive = ScrollAreaRootProps & PrimitiveProps;
 
 export interface ScrollAreaRootContext {
@@ -64,28 +63,26 @@ export interface ScrollAreaRootContext {
 }
 
 // ScrollAreaViewport
-export interface ScrollAreaViewportProps {
+export interface ScrollAreaViewportProps extends ClassValueProp {
   /**
    * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits
    * globally from `ConfigProvider`.
    */
   nonce?: string;
 }
-
 export type ScrollAreaViewportPropsWithPrimitive = ScrollAreaViewportProps & PrimitiveProps;
 
 // ScrollAreaScrollbar
-export interface ScrollAreaScrollbarProps {
+export interface ScrollAreaScrollbarProps extends ClassValueProp {
   /** The orientation of the scrollbar */
   orientation?: 'vertical' | 'horizontal';
   /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
   forceMount?: boolean;
 }
-
 export type ScrollAreaScrollbarPropsWithPrimitive = ScrollAreaScrollbarProps & PrimitiveProps;
 
 export interface ScrollAreaScollbarContext {
-  class: Ref<PrimitiveProps['class']>;
+  class: Ref<ClassValue>;
   as: Ref<PrimitiveProps['as']>;
   asChild: Ref<boolean>;
   orientation: Ref<'vertical' | 'horizontal'>;
@@ -107,13 +104,11 @@ export interface ScrollAreaScrollbarVisibleContext {
 }
 
 // ScrollAreaThumb
-export interface ScrollAreaThumbProps {}
-
+export interface ScrollAreaThumbProps extends ClassValueProp {}
 export type ScrollAreaThumbPropsWithPrimitive = ScrollAreaThumbProps & PrimitiveProps;
 
 // ScrollAreaCorner
-export interface ScrollAreaCornerProps {}
-
+export interface ScrollAreaCornerProps extends ClassValueProp {}
 export type ScrollAreaCornerPropsWithPrimitive = ScrollAreaCornerProps & PrimitiveProps;
 
 // ScrollAreaScrollbarAuto

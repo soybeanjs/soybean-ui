@@ -1,10 +1,10 @@
 import type { Ref } from 'vue';
+import type { ClassValueProp, DataOrientation, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
-import type { DataOrientation, Direction } from '../../types';
 import type { SeparatorProps } from '../separator';
 
 // Root
-export interface StepperRootProps extends PrimitiveProps {
+export interface StepperRootProps extends ClassValueProp {
   /**
    * The value of the step that should be active when initially rendered. Use when you do not need to control the state
    * of the steps.
@@ -27,7 +27,6 @@ export interface StepperRootProps extends PrimitiveProps {
   /** Whether or not the steps must be completed in order. */
   linear?: boolean;
 }
-
 export type StepperRootPropsWithPrimitive = StepperRootProps & PrimitiveProps;
 
 export type StepperRootEmits = {
@@ -47,7 +46,7 @@ export type StepperRootContext = {
 // Item
 export type StepperState = 'completed' | 'active' | 'inactive';
 
-export interface StepperItemProps extends PrimitiveProps {
+export interface StepperItemProps extends ClassValueProp {
   /** A unique value that associates the stepper item with an index */
   step: number;
   /** When `true`, prevents the user from interacting with the step. */
@@ -55,6 +54,7 @@ export interface StepperItemProps extends PrimitiveProps {
   /** Shows whether the step is completed. */
   completed?: boolean;
 }
+export type StepperItemPropsWithPrimitive = StepperItemProps & PrimitiveProps;
 
 export type StepperItemContext = {
   titleId: string;
@@ -66,19 +66,19 @@ export type StepperItemContext = {
 };
 
 // Description
-export interface StepperDescriptionProps extends PrimitiveProps {}
+export interface StepperDescriptionProps extends ClassValueProp {}
 export type StepperDescriptionPropsWithPrimitive = StepperDescriptionProps & PrimitiveProps;
 
 // Title
-export interface StepperTitleProps extends PrimitiveProps {}
+export interface StepperTitleProps extends ClassValueProp {}
 export type StepperTitlePropsWithPrimitive = StepperTitleProps & PrimitiveProps;
 
 // Indicator
-export interface StepperIndicatorProps extends PrimitiveProps {}
+export interface StepperIndicatorProps extends ClassValueProp {}
 export type StepperIndicatorPropsWithPrimitive = StepperIndicatorProps & PrimitiveProps;
 
 // Trigger
-export interface StepperTriggerProps extends PrimitiveProps {}
+export interface StepperTriggerProps extends ClassValueProp {}
 export type StepperTriggerPropsWithPrimitive = StepperTriggerProps & PrimitiveProps;
 
 // Separator

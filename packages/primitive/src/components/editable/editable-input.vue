@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, watch } from 'vue';
-import { Primitive } from '../primitive';
 import { useKbd, usePrimitiveElement } from '../../composables';
+import { Primitive } from '../primitive';
 import { injectEditableRootContext } from './context';
 import type { EditableInputPropsWithPrimitive } from './types';
 

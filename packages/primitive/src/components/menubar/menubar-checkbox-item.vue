@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MenuCheckboxItem } from '../menu';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { MenuCheckboxItem } from '../menu';
 import type { MenubarCheckboxItemEmits, MenubarCheckboxItemPropsWithPrimitive } from './types';
 
 defineOptions({

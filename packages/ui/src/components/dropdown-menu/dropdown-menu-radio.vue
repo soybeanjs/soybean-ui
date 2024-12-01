@@ -1,7 +1,11 @@
 <script setup lang="ts" generic="T extends DropdownMenuRadioOption = DropdownMenuRadioOption">
 import { computed } from 'vue';
-import { DropdownMenuRadioGroup, useEmitAsProps, useForwardProps } from '@soybean-ui/primitive';
-import { computedOmit, computedOmitEmits } from '../../shared';
+import {
+  DropdownMenuRadioGroup,
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  useOmitForwardProps
+} from '@soybean-ui/primitive';
 import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
 import SDropdownMenuLabel from './dropdown-menu-label.vue';
 import SDropdownMenuRadioItem from './dropdown-menu-radio-item.vue';
@@ -17,9 +21,7 @@ const props = defineProps<DropdownMenuRadioProps<T>>();
 
 const emit = defineEmits<DropdownMenuRadioEmits>();
 
-const forwardedEmits = useEmitAsProps(emit) as Record<keyof DropdownMenuRadioEmits, any>;
-
-const delegatedWrapperProps = computedOmit(props, [
+const forwardedWrapperProps = useOmitForwardProps(props, [
   'separator',
   'groupLabelClass',
   'itemClass',
@@ -36,14 +38,9 @@ const delegatedWrapperProps = computedOmit(props, [
   'indicatorIconClass'
 ]);
 
-const forwardedWrapperProps = useForwardProps(delegatedWrapperProps);
+const forwardedWrapperEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
 
-const forwardedWrapperEmits = computedOmitEmits(forwardedEmits, ['update:modelValue']);
-
-const forwardedWrapper = computed(() => ({
-  ...forwardedWrapperProps.value,
-  ...forwardedWrapperEmits.value
-}));
+const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
 
 const radioValue = computed({
   get() {

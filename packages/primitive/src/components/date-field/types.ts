@@ -8,11 +8,11 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { Direction, FormFieldProps } from '../../types';
+import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 // DateFieldRoot
-export interface DateFieldRootProps extends FormFieldProps {
+export interface DateFieldRootProps extends ClassValueProp, FormFieldProps {
   /** The default value for the calendar */
   defaultValue?: DateValue;
   /** The default placeholder date */
@@ -53,7 +53,6 @@ export interface DateFieldRootProps extends FormFieldProps {
    */
   dir?: Direction;
 }
-
 export type DateFieldRootPropsWithPrimitive = DateFieldRootProps & PrimitiveProps;
 
 export type DateFieldRootEmits = {
@@ -81,7 +80,7 @@ export type DateFieldRootContext = {
 };
 
 // DateFieldInput
-export interface DateFieldInputProps {
+export interface DateFieldInputProps extends ClassValueProp {
   /** The part of the date to render */
   part: SegmentPart;
 }

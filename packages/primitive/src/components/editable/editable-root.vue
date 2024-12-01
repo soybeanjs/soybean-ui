@@ -10,8 +10,8 @@ import {
 } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import type { EditableRootEmits, EditableRootPropsWithPrimitive } from './types';
 import { provideEditableRootContext } from './context';
+import type { EditableRootEmits, EditableRootPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'EditableRoot',

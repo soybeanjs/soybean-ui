@@ -7,12 +7,13 @@ import {
   AlertDialogTitle,
   VisuallyHidden,
   useForwardProps,
-  useForwardPropsEmits
+  useForwardPropsEmits,
+  useOmitForwardProps,
+  usePickForwardProps
 } from '@soybean-ui/primitive';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
-import { computedOmit, computedPick } from '../../shared';
 import SCard from '../card/card.vue';
 import type { AlertDialogContentEmits, AlertDialogContentProps, AlertType } from './types';
 
@@ -37,11 +38,19 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const delegatedContentProps = computedPick(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const forwardedContentProps = usePickForwardProps(delegatedProps, [
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
+]);
 
-const forwardedContent = useForwardPropsEmits(delegatedContentProps, emit);
+const forwardedContent = useForwardPropsEmits(forwardedContentProps, emit);
 
-const delegatedCardProps = computedOmit(delegatedProps, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
+const delegatedCardProps = useOmitForwardProps(delegatedProps, [
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
+]);
 
 const forwardedCardProps = useForwardProps(delegatedCardProps);
 

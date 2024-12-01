@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue';
-import { DialogContent } from '../dialog';
 import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { DialogContent } from '../dialog';
 import { provideAlertDialogContentContext } from './context';
 import type { AlertDialogContentEmits, AlertDialogContentPropsWithPrimitive } from './types';
 

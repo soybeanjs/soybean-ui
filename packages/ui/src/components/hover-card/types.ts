@@ -1,15 +1,11 @@
 import type {
+  ClassValue,
+  HoverCardArrowProps,
+  HoverCardContentProps,
   HoverCardPortalProps,
   HoverCardRootEmits,
-  HoverCardRootProps,
-  HoverCardArrowProps as _HoverCardArrowProps,
-  HoverCardContentProps as _HoverCardContentProps
+  HoverCardRootProps
 } from '@soybean-ui/primitive';
-import type { ClassValue, ClassValueProp } from '../../types';
-
-export type HoverCardContentProps = ClassValueProp & Omit<_HoverCardContentProps, 'as' | 'asChild'>;
-
-export type HoverCardArrowProps = ClassValueProp & Pick<_HoverCardArrowProps, 'width' | 'height'>;
 
 export type HoverCardProps = HoverCardRootProps &
   Pick<HoverCardPortalProps, 'to'> &
@@ -26,4 +22,4 @@ export type HoverCardProps = HoverCardRootProps &
 
 export type HoverCardEmits = HoverCardRootEmits;
 
-export type { HoverCardRootProps };
+export type { HoverCardRootProps, HoverCardContentProps, HoverCardArrowProps };

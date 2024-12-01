@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { Direction } from '../../types';
+import type { ClassValueProp, Direction } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type {
   MenuArrowProps,
@@ -65,7 +65,7 @@ export interface ContextMenuSubTriggerProps extends MenuSubTriggerProps {}
 export type ContextMenuSubTriggerPropsWithPrimitive = ContextMenuSubTriggerProps & PrimitiveProps;
 
 // ContextMenuTrigger
-export interface ContextMenuTriggerProps {
+export interface ContextMenuTriggerProps extends ClassValueProp {
   /**
    * When `true`, the context menu would not open when right-clicking.
    *

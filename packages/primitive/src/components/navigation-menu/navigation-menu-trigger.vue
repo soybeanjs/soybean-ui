@@ -2,12 +2,12 @@
 import { computed, onMounted, ref } from 'vue';
 import type { VNode } from 'vue';
 import { refAutoReset, unrefElement } from '@vueuse/core';
-import { Primitive } from '../primitive';
 import { useCollection, useForwardExpose } from '../../composables';
+import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
-import type { NavigationMenuTriggerPropsWithPrimitive } from './types';
 import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
 import { getOpenState, makeContentId, makeTriggerId } from './shared';
+import type { NavigationMenuTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'NavigationMenuTrigger',

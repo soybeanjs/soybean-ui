@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Primitive } from '../primitive';
-import { Presence } from '../presence';
 import { getCheckedState, isIndeterminate } from '../checkbox/shared';
+import { Presence } from '../presence';
+import { Primitive } from '../primitive';
 import { injectMenuItemIndicatorContext } from './context';
 import type { MenuItemIndicatorPropsWithPrimitive } from './types';
 

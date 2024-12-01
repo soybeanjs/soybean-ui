@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Presence } from '../presence';
 import { useForwardPropsEmits } from '../../composables';
+import { Presence } from '../presence';
 import MenuRootContentModal from './menu-root-content-modal.vue';
 import MenuRootContentNonModal from './menu-root-content-non-modal.vue';
 import { injectMenuContext, injectMenuRootContext } from './context';
