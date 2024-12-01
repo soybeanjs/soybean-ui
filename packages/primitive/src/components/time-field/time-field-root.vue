@@ -125,7 +125,7 @@ const isInvalid = computed(() => {
   return false;
 });
 
-const initialSegments = initializeTimeSegmentValues();
+const initialSegments = initializeTimeSegmentValues(inferredGranularity.value);
 
 const segmentValues = ref<SegmentValueObj>(
   modelValue.value

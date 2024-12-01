@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectComboboxRootContext } from './context';
@@ -20,12 +20,19 @@ const rootContext = injectComboboxRootContext();
 
 const disabled = computed(() => props.disabled || rootContext.disabled.value || false);
 
-useForwardExpose();
+const { forwardRef, currentElement } = useForwardExpose();
+
+onMounted(() => {
+  if (currentElement.value) {
+    rootContext.onTriggerElementChange(currentElement.value);
+  }
+});
 </script>
 
 <template>
   <Primitive
     v-bind="props"
+    :ref="forwardRef"
     :type="tag"
     tabindex="-1"
     aria-label="Show popup"

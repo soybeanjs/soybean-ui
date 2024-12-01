@@ -20,15 +20,26 @@ const groupContext = injectComboboxGroupContext(null);
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 
-if (!props.value) {
+if (props.value === '') {
   throw new Error(
     'A <ComboboxItem /> must have a value prop that is not an empty string. This is because the Combobox value can be set to an empty string to clear the selection and show the placeholder.'
   );
 }
 
 const isRender = computed(() => {
-  if (rootContext.isVirtual.value || rootContext.ignoreFilter.value || !rootContext.filterState.search) return true;
-  return rootContext.filterState.filtered.items.get(id)! > 0;
+  if (rootContext.isVirtual.value || rootContext.ignoreFilter.value || !rootContext.filterState.search) {
+    return true;
+  }
+
+  const filteredCurrentItem = rootContext.filterState.filtered.items.get(id);
+  // If the filtered items is undefined means not in the all times map yet
+  // Do the first render to add into the map
+  if (filteredCurrentItem === undefined) {
+    return true;
+  }
+
+  // Check with filter
+  return filteredCurrentItem > 0;
 });
 
 function onSelect(event: Event) {

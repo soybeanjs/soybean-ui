@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref, watchSyncEffect } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
@@ -27,6 +27,11 @@ rootContext.focusable.value = false;
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const disabled = computed(() => props.disabled || rootContext.disabled.value || false);
 
+const activedescendant = ref<string | undefined>();
+watchSyncEffect(() => {
+  activedescendant.value = rootContext.highlightedElement.value?.id;
+});
+
 function onInput(event: InputEvent) {
   modelValue.value = (event.target as HTMLInputElement).value;
   rootContext.highlightFirstItem(event);
@@ -49,6 +54,7 @@ onMounted(() => {
     :value="modelValue"
     :disabled="disabled ? '' : undefined"
     :data-disabled="disabled ? '' : undefined"
+    :aria-activedescendant="activedescendant"
     :aria-disabled="disabled ?? undefined"
     type="text"
     @keydown.down.up.home.end.prevent="rootContext.onKeydownNavigation"

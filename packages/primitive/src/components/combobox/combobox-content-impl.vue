@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed, onMounted, onUnmounted, ref, toRefs } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useBodyScrollLock, useForwardExpose, useForwardProps, useHideOthers } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
@@ -16,8 +16,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ComboboxContentImplPropsWithPrimitive>(), {
-  position: 'inline',
-  dismissable: true
+  position: 'inline'
 });
 
 const emit = defineEmits<ComboboxContentImplEmits>();
@@ -25,7 +24,7 @@ const emit = defineEmits<ComboboxContentImplEmits>();
 const { position } = toRefs(props);
 const rootContext = injectComboboxRootContext();
 
-const { forwardRef } = useForwardExpose();
+const { forwardRef, currentElement } = useForwardExpose();
 
 useBodyScrollLock(props.bodyLock);
 useHideOthers(rootContext.parentElement);
@@ -62,6 +61,23 @@ function onPointerDownOutside(ev: PointerDownOutsideEvent) {
 }
 
 provideComboboxContentContext({ position });
+
+// Handle case where input position within the content
+const isInputWithinContent = ref(false);
+onMounted(() => {
+  if (rootContext.inputElement.value) {
+    isInputWithinContent.value = currentElement.value.contains(rootContext.inputElement.value);
+    if (isInputWithinContent.value) {
+      rootContext.inputElement.value.focus();
+    }
+  }
+});
+
+onUnmounted(() => {
+  if (isInputWithinContent.value) {
+    rootContext.triggerElement.value?.focus();
+  }
+});
 </script>
 
 <template>

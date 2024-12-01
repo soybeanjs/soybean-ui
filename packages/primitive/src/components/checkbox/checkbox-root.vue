@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import isEqual from 'fast-deep-equal';
+import { isEqual } from 'ohash';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { isValueEqualOrExist } from '../../shared';
 import { Primitive } from '../primitive';
@@ -19,7 +19,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<CheckboxRootPropsWithPrimitive>(), {
   modelValue: undefined,
-  defaultValue: false,
   value: 'on',
   as: 'button'
 });

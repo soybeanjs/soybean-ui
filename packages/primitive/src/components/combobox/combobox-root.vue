@@ -47,6 +47,7 @@ const resetSearchTerm = createEventHook();
 const isUserInputted = ref(false);
 const isVirtual = ref(false);
 const inputElement = ref<HTMLInputElement>();
+const triggerElement = ref<HTMLElement>();
 
 const highlightedElement = computed(() => primitiveElement.value?.highlightedElement ?? undefined);
 
@@ -116,7 +117,7 @@ function filterItems() {
 }
 
 watch(
-  () => filterState.search,
+  [() => filterState.search, () => allItems.value.size],
   () => {
     filterItems();
   },
@@ -135,6 +136,7 @@ watch(
 );
 
 defineExpose({
+  filtered: computed(() => filterState.filtered),
   highlightedElement,
   highlightItem: primitiveElement.value?.highlightItem,
   highlightFirstItem: primitiveElement.value?.highlightFirstItem,
@@ -152,7 +154,13 @@ provideComboboxRootContext({
   isVirtual,
   inputElement,
   highlightedElement,
-  onInputElementChange: val => (inputElement.value = val),
+  onInputElementChange: val => {
+    inputElement.value = val;
+  },
+  triggerElement,
+  onTriggerElementChange: val => {
+    triggerElement.value = val;
+  },
   parentElement,
   onResetSearchTerm: resetSearchTerm.on,
   allItems,
@@ -176,6 +184,7 @@ provideComboboxRootContext({
       :multiple="multiple"
       :name="name"
       :required="required"
+      highlight-on-hover
       :style="{
         pointerEvents: open ? 'auto' : undefined
       }"

@@ -48,6 +48,8 @@ export interface ComboboxRootContext<T> {
   contentId: string;
   inputElement: Ref<HTMLInputElement | undefined>;
   onInputElementChange: (el: HTMLInputElement) => void;
+  triggerElement: Ref<HTMLElement | undefined>;
+  onTriggerElementChange: (el: HTMLElement) => void;
   highlightedElement: Ref<HTMLElement | undefined>;
   parentElement: Ref<HTMLElement | undefined>;
   onResetSearchTerm: EventHookOn;
@@ -104,12 +106,6 @@ export interface ComboboxContentImplProps extends PopperContentProps, Dismissabl
   position?: ComboboxContentPosition;
   /** The document.body will be lock, and scrolling will be disabled. */
   bodyLock?: boolean;
-  /**
-   * Allow component to be dismissableLayer.
-   *
-   * @deprecated (Will be removed in version 2.0, use `Listbox` instead)
-   */
-  dismissable?: boolean;
 }
 export type ComboboxContentImplPropsWithPrimitive = ComboboxContentImplProps & PrimitiveProps;
 export type ComboboxContentImplEmits = DismissableLayerEmits;
