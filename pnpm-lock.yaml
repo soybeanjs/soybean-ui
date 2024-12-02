@@ -3482,8 +3482,8 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  type-fest@4.29.0:
-    resolution: {integrity: sha512-RPYt6dKyemXJe7I6oNstcH24myUGSReicxcHTvCLgzm4e0n8y05dGvcGB15/SoPRBmhlMthWQ9pvKyL81ko8nQ==}
+  type-fest@4.29.1:
+    resolution: {integrity: sha512-Y1zUveI92UYM/vo1EFlQSsNf74+hfKH+7saZJslF0Fw92FRaiTAnHPIvo9d7SLxXt/gAYqA4RXyDTioMQCCp0A==}
     engines: {node: '>=16'}
 
   typescript@5.4.2:
@@ -5127,7 +5127,7 @@ snapshots:
 
   '@vee-validate/zod@4.14.7(vue@3.5.13(typescript@5.7.2))':
     dependencies:
-      type-fest: 4.29.0
+      type-fest: 4.29.1
       vee-validate: 4.14.7(vue@3.5.13(typescript@5.7.2))
       zod: 3.23.8
     transitivePeerDependencies:
@@ -7341,7 +7341,7 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  type-fest@4.29.0: {}
+  type-fest@4.29.1: {}
 
   typescript@5.4.2: {}
 
@@ -7450,7 +7450,7 @@ snapshots:
   vee-validate@4.14.7(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       '@vue/devtools-api': 7.6.7
-      type-fest: 4.29.0
+      type-fest: 4.29.1
       vue: 3.5.13(typescript@5.7.2)
 
   vfile-message@4.0.2:
