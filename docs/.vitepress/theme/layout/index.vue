@@ -9,6 +9,7 @@ import Docs from './components/docs.vue';
 const { site, theme, frontmatter } = useData();
 
 const { arrivedState } = useScroll(globalThis.window);
+
 const { top } = toRefs(arrivedState);
 </script>
 

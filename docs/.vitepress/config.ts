@@ -65,7 +65,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
         items: [{ text: 'Styling', link: '/docs/guides/styling' }]
       },
       {
-        text: 'Components',
+        label: 'Components',
         icon: 'lucide:box',
         link: '/docs/components/',
         items: [
@@ -140,6 +140,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
     ]
   },
   vite: {
+    // @ts-expect-error ignore type
     plugins: [unocss()]
   }
 });
