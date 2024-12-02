@@ -61,12 +61,12 @@ watch(path, () => {
         <template #trigger>
           <NavItem :label="nav.label">
             <span>{{ nav.label }}</span>
-            <Icon icon="akar-icons:chevron-down" class="ml-2 text-base" />
+            <Icon icon="akar-icons:chevron-down" class="ml-2 text-sm" />
           </NavItem>
         </template>
         <template #item="item">
           <span>{{ item.label }}</span>
-          <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-base" />
+          <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
         </template>
       </SDropdownMenu>
     </template>
@@ -106,12 +106,12 @@ watch(path, () => {
             <template #trigger>
               <NavMenuItem :label="nav.label">
                 <span>{{ nav.label }}</span>
-                <Icon icon="akar-icons:chevron-down" class="ml-2 text-base" />
+                <Icon icon="akar-icons:chevron-down" class="ml-2 text-sm" />
               </NavMenuItem>
             </template>
             <template #item="item">
               <span>{{ item.label }}</span>
-              <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-base" />
+              <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
             </template>
           </SDropdownMenu>
         </template>

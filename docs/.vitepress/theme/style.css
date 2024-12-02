@@ -4,6 +4,10 @@ body,
   height: 100%;
 }
 
+* {
+  border-color: hsl(var(--border));
+}
+
 .iconify {
   width: 1.25em;
   height: 1.25em;
