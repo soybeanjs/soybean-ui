@@ -5,7 +5,7 @@ import { createReusableTemplate } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
 import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from 'soybean-ui';
 import { isNavItemWithLink } from '../../../shared';
-import type { CustomNavItem, CustomThemeConfig } from '../../../types';
+import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';
 
 defineOptions({
@@ -25,7 +25,7 @@ const [DefineNavMenuItem, NavMenuItem] = createReusableTemplate<NavItemProps>();
 
 const isPopoverOpen = ref(false);
 
-function handleSelect(nav: CustomNavItem) {
+function handleSelect(nav: NavItemType) {
   if (!nav.link) return;
 
   openLink(nav.link);

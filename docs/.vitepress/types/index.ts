@@ -1,10 +1,15 @@
 import type { DefaultTheme } from 'vitepress';
 import type { DropdownMenuItemOption, DropdownMenuOptionType } from 'soybean-ui';
 
-export interface CustomNavItem extends DropdownMenuItemOption {
+export interface NavItem extends DropdownMenuItemOption {
   link?: string;
 }
 
-export interface CustomThemeConfig extends Omit<DefaultTheme.Config, 'nav'> {
-  nav: DropdownMenuOptionType<CustomNavItem>[];
+export interface SidebarItem extends DefaultTheme.SidebarItem {
+  icon?: string;
+}
+
+export interface CustomThemeConfig extends Omit<DefaultTheme.Config, 'nav' | 'sidebar'> {
+  nav: DropdownMenuOptionType<NavItem>[];
+  sidebar: SidebarItem[];
 }

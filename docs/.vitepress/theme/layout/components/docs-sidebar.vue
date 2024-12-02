@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { DefaultTheme } from 'vitepress/theme';
-import { SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger } from 'soybean-ui';
+import { SCollapsible, SCollapsibleTrigger } from 'soybean-ui';
 import { Icon } from '@iconify/vue';
+import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';
 
 defineOptions({
@@ -9,7 +9,7 @@ defineOptions({
 });
 
 interface Props {
-  items: DefaultTheme.SidebarItem[];
+  items: SidebarItem[];
 }
 
 defineProps<Props>();
@@ -17,21 +17,21 @@ defineProps<Props>();
 
 <template>
   <div v-for="item in items" :key="item.text">
-    <SCollapsibleRoot v-if="item.items?.length" v-slot="{ open }" class="mb-6" :default-open="true">
-      <SCollapsibleTrigger
-        class="group w-full inline-flex items-center justify-between pb-2 pl-4 pr-4 text-sm font-bold"
-      >
-        <span>{{ item.text }}</span>
-        <Icon
-          icon="lucide:chevron-down"
-          class="text-lg text-muted-foreground transition group-hover:text-foreground"
-          :class="{ '-rotate-90': !open }"
-        />
-      </SCollapsibleTrigger>
-      <SCollapsibleContent>
+    <SCollapsible v-if="item.items?.length" class="mb-6" :default-open="true">
+      <template #default="{ open }">
+        <SCollapsibleTrigger class="group w-full i-flex-y-center justify-between pb-2 pl-4 pr-4 text-sm font-bold">
+          <span>{{ item.text }}</span>
+          <Icon
+            icon="lucide:chevron-down"
+            class="text-muted-foreground transition group-hover:text-foreground"
+            :class="{ '-rotate-90': !open }"
+          />
+        </SCollapsibleTrigger>
+      </template>
+      <template #content>
         <DocSidebarItem v-for="subitem in item.items" :key="subitem.text" :item="subitem" />
-      </SCollapsibleContent>
-    </SCollapsibleRoot>
+      </template>
+    </SCollapsible>
     <DocSidebarItem v-else :item="item" />
   </div>
 </template>

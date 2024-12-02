@@ -65,76 +65,45 @@ export default defineConfigWithTheme<CustomThemeConfig>({
         items: [{ text: 'Styling', link: '/docs/guides/styling' }]
       },
       {
-        label: 'Components',
+        text: 'Components',
         icon: 'lucide:box',
-        link: '/docs/components/',
         items: [
-          {
-            text: 'Basic Components',
-            items: [{ text: 'Button', link: '/components/button' }]
-          },
-          {
-            text: 'Layout Components',
-            items: [
-              { text: 'Separator', link: '/components/separator' },
-              { text: 'AspectRatio', link: '/components/aspect-ratio' },
-              { text: 'ScrollArea', link: '/components/scroll-area' }
-            ]
-          },
-          {
-            text: 'Display Components',
-            items: [{ text: 'Card', link: '/components/card' }]
-          },
-          {
-            text: 'Data Display Components',
-            items: [
-              { text: 'Avatar', link: '/components/avatar' },
-              { text: 'Badge', link: '/components/badge' },
-              { text: 'Chip', link: '/components/chip' },
-              { text: 'KeyboardKey', link: '/components/keyboard-key' }
-            ]
-          },
-          {
-            text: 'Navigation Components',
-            items: [
-              { text: 'Breadcrumb', link: '/components/breadcrumb' },
-              { text: 'Pagination', link: '/components/pagination' },
-              { text: 'Tabs', link: '/components/tabs' }
-            ]
-          },
-          {
-            text: 'Feedback Components',
-            items: [
-              { text: 'Alert', link: '/components/alert' },
-              { text: 'Progress', link: '/components/progress' },
-              { text: 'Sonner', link: '/components/sonner' }
-            ]
-          },
-          {
-            text: 'Popup & Overlay',
-            items: [
-              { text: 'AlertDialog', link: '/components/alert-dialog' },
-              { text: 'Dialog', link: '/components/dialog' },
-              { text: 'Drawer', link: '/components/drawer' },
-              { text: 'DropdownMenu', link: '/components/dropdown-menu' }
-            ]
-          },
-          {
-            text: 'Form',
-            items: [
-              { text: 'Checkbox', link: '/components/checkbox' },
-              { text: 'Form', link: '/components/form' },
-              { text: 'Input', link: '/components/input' },
-              { text: 'PinInput', link: '/components/pin-input' },
-              { text: 'Radio', link: '/components/radio' },
-              { text: 'Select', link: '/components/select' },
-              { text: 'Segment', link: '/components/segment' },
-              { text: 'Switch', link: '/components/switch' },
-              { text: 'Textarea', link: '/components/textarea' },
-              { text: 'Toggle', link: '/components/toggle' },
-              { text: 'ToggleGroup', link: '/components/toggle-group' }
-            ]
-          }
+          { text: 'Accordion', link: '/docs/components/accordion' },
+          { text: 'Alert', link: '/docs/components/alert' },
+          { text: 'AlertDialog', link: '/docs/components/alert-dialog' },
+          { text: 'AspectRatio', link: '/docs/components/aspect-ratio' },
+          { text: 'Avatar', link: '/docs/components/avatar' },
+          { text: 'Badge', link: '/docs/components/badge' },
+          { text: 'Breadcrumb', link: '/docs/components/breadcrumb' },
+          { text: 'Button', link: '/docs/components/button' },
+          { text: 'Card', link: '/docs/components/card' },
+          { text: 'Checkbox', link: '/docs/components/checkbox' },
+          { text: 'Chip', link: '/docs/components/chip' },
+          { text: 'Collapsible', link: '/docs/components/collapsible' },
+          { text: 'Dialog', link: '/docs/components/dialog' },
+          { text: 'Drawer', link: '/docs/components/drawer' },
+          { text: 'DropdownMenu', link: '/docs/components/dropdown-menu' },
+          { text: 'Form', link: '/docs/components/form' },
+          { text: 'HoverCard', link: '/docs/components/hover-card' },
+          { text: 'Input', link: '/docs/components/input' },
+          { text: 'KeyboardKey', link: '/docs/components/keyboard-key' },
+          { text: 'Label', link: '/docs/components/label' },
+          { text: 'Pagination', link: '/docs/components/pagination' },
+          { text: 'PinInput', link: '/docs/components/pin-input' },
+          { text: 'Popover', link: '/docs/components/popover' },
+          { text: 'Progress', link: '/docs/components/progress' },
+          { text: 'Radio', link: '/docs/components/radio' },
+          { text: 'ScrollArea', link: '/docs/components/scroll-area' },
+          { text: 'Segment', link: '/docs/components/segment' },
+          { text: 'Select', link: '/docs/components/select' },
+          { text: 'Separator', link: '/docs/components/separator' },
+          { text: 'Sheet', link: '/docs/components/sheet' },
+          { text: 'Sonner', link: '/docs/components/sonner' },
+          { text: 'Switch', link: '/docs/components/switch' },
+          { text: 'Tabs', link: '/docs/components/tabs' },
+          { text: 'Textarea', link: '/docs/components/textarea' },
+          { text: 'Toggle', link: '/docs/components/toggle' },
+          { text: 'ToggleGroup', link: '/docs/components/toggle-group' }
         ]
       }
     ]

@@ -1,8 +1,8 @@
 import type { DropdownMenuOptionType } from 'soybean-ui';
-import type { CustomNavItem } from '../types';
+import type { NavItem } from '../types';
 
-export function isNavItemWithLink(item: DropdownMenuOptionType<CustomNavItem>): item is CustomNavItem {
-  return Boolean((item as CustomNavItem).link);
+export function isNavItemWithLink(item: DropdownMenuOptionType<NavItem>): item is NavItem {
+  return Boolean((item as NavItem).link);
 }
 
 export function isNullish(value: unknown): value is null | undefined {

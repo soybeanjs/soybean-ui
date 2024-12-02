@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, toRefs } from 'vue';
-import { useData, useRoute } from 'vitepress';
+import { Content, useData, useRoute } from 'vitepress';
 import type { DefaultTheme } from 'vitepress/theme';
 import { SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger } from 'soybean-ui';
 import { flatten } from '../../../shared';
+import DocsTopbar from './docs-topbar.vue';
 import DocsSidebar from './docs-sidebar.vue';
 
 defineOptions({
@@ -31,7 +32,7 @@ const activeSection = computed(() =>
       </div>
     </div>
 
-    <!-- <DocTopbar /> -->
+    <DocsTopbar />
 
     <main class="flex">
       <aside
@@ -62,7 +63,7 @@ const activeSection = computed(() =>
           {{ activeSection?.text }}
         </div>
         <article class="prose prose-stone dark:prose-invert max-w-none w-full">
-          <!-- <Content /> -->
+          <Content />
         </article>
 
         <!-- <DocFooter v-if="!isExamplePage" /> -->
