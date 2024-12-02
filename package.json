@@ -18,8 +18,8 @@
   },
   "keywords": ["UI", "UnoCSS"],
   "engines": {
-    "node": ">=18.12.0",
-    "pnpm": ">=8.7.0"
+    "node": ">=18.19.0",
+    "pnpm": ">=9.14.0"
   },
   "scripts": {
     "build": "vite build",
