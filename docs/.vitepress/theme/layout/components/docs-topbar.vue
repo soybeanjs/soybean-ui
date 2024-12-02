@@ -3,7 +3,7 @@ import { useScroll } from '@vueuse/core';
 import { useData, useRoute } from 'vitepress';
 import { computed, ref, toRefs, watch } from 'vue';
 import { Icon } from '@iconify/vue';
-import { SButton, SDialog } from 'soybean-ui';
+import { SButton, SSheet } from 'soybean-ui';
 import { flatten } from '../../../shared';
 import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';
@@ -76,9 +76,9 @@ watch(path, () => {
     </div>
 
     <div class="h-full flex items-center justify-between md:hidden">
-      <SDialog v-model:open="isSidebarOpen" title="Sidebar menu">
+      <SSheet v-model:open="isSidebarOpen" title="Sidebar menu" side="left">
         <template #trigger>
-          <SButton>
+          <SButton color="accent" variant="ghost">
             <template #leading>
               <Icon icon="lucide:menu" />
             </template>
@@ -105,7 +105,7 @@ watch(path, () => {
           </div>
           <div class="h-12 w-full" />
         </div>
-      </SDialog>
+      </SSheet>
 
       <div class="h-full flex items-center">
         <a
