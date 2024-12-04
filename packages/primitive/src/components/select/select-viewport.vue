@@ -69,7 +69,7 @@ function handleScroll(event: WheelEvent) {
       // (independent of the scrollUpButton).
       position: 'relative',
       flex: 1,
-      overflow: 'auto'
+      overflow: 'hidden auto'
     }"
     @scroll="handleScroll"
   >

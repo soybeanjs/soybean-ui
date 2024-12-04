@@ -1,12 +1,16 @@
 import { computed, nextTick, onUnmounted, ref, watch } from 'vue';
 import type { Ref } from 'vue';
+import { defaultWindow } from '@vueuse/core';
 import { isClient } from '@vueuse/shared';
 import { useStateMachine } from './use-state-machine';
 
 export function usePresence(present: Ref<boolean>, node: Ref<HTMLElement | undefined>) {
   const stylesRef = ref<CSSStyleDeclaration>({} as any);
   const prevAnimationNameRef = ref<string>('none');
+  const prevPresentRef = ref(present);
   const initialState = present.value ? 'mounted' : 'unmounted';
+  let timeoutId: number | undefined;
+  const ownerWindow = node.value?.ownerDocument.defaultView ?? defaultWindow;
 
   const { state, dispatch } = useStateMachine(initialState, {
     mounted: {
@@ -97,6 +101,20 @@ export function usePresence(present: Ref<boolean>, node: Ref<HTMLElement | undef
     if (event.target === node.value && isCurrentAnimation) {
       dispatchCustomEvent(`after-${directionName}`);
       dispatch('ANIMATION_END');
+
+      if (!prevPresentRef.value) {
+        const currentFillMode = node.value.style.animationFillMode;
+        node.value.style.animationFillMode = 'forwards';
+        // Reset the style after the node had time to unmount (for cases
+        // where the component chooses not to unmount). Doing this any
+        // sooner than `setTimeout` (e.g. with `requestAnimationFrame`)
+        // still causes a flash.
+        timeoutId = ownerWindow?.setTimeout(() => {
+          if (node.value?.style.animationFillMode === 'forwards') {
+            node.value.style.animationFillMode = currentFillMode;
+          }
+        });
+      }
     }
 
     // if no animation, immediately trigger 'ANIMATION_END'
@@ -116,6 +134,7 @@ export function usePresence(present: Ref<boolean>, node: Ref<HTMLElement | undef
       // We avoid doing so during cleanup as the node may change but still exist.
       dispatch('ANIMATION_END');
 
+      ownerWindow?.clearTimeout(timeoutId);
       oldNode?.removeEventListener('animationstart', handleAnimationStart);
       oldNode?.removeEventListener('animationcancel', handleAnimationEnd);
       oldNode?.removeEventListener('animationend', handleAnimationEnd);

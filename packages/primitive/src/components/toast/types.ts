@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
 import type { ClassValueProp, SwipeDirection, SwipeEvent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
+import type { TeleportProps } from '../teleport';
 
 // ToastProvider
 export interface ToastProviderProps {
@@ -100,6 +101,9 @@ export type ToastRootEmits = Omit<ToastRootImplEmits, 'close'> & {
 export interface ToastRootContext {
   onClose: () => void;
 }
+
+// ToastPortal
+export interface ToastPortalProps extends TeleportProps {}
 
 // ToastViewport
 export interface ToastViewportProps extends ClassValueProp {
