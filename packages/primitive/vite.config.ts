@@ -22,7 +22,7 @@ export default defineConfig({
       formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['vue', '@vue/shared', ...Object.keys(pkg.dependencies)]
+      external: ['vue', ...Object.keys(pkg.dependencies)]
     }
   }
 });

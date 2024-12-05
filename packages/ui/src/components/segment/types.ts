@@ -4,9 +4,9 @@ import type {
   TabsRootEmits as SegmentRootEmits,
   TabsRootProps as SegmentRootProps,
   TabsTriggerProps as SegmentTriggerProps,
-  TabsListProps as SegmentTriggerRootProps
+  TabsListProps as SegmentTriggerRootProps,
+  StringOrNumber
 } from '@soybean-ui/primitive';
-import type { StringOrNumber } from '../../types';
 
 export type SegmentIndicatorRootProps = ClassValueProp;
 

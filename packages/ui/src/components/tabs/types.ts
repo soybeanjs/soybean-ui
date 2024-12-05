@@ -1,13 +1,14 @@
 import type {
   ClassValue,
   ClassValueProp,
+  StringOrNumber,
   TabsRootEmits,
   TabsRootProps,
   TabsContentProps as _TabsContentProps,
   TabsListProps as _TabsListProps,
   TabsTriggerProps as _TabsTriggerProps
 } from '@soybean-ui/primitive';
-import type { StringOrNumber, ThemeOrientation } from '../../types';
+import type { ThemeOrientation } from '../../types';
 
 export interface TabsListProps extends _TabsListProps {
   orientation?: ThemeOrientation;

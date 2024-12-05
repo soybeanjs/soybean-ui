@@ -1,15 +1,25 @@
 {
   "name": "@soybean-ui/primitive",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.0",
+  "sideEffects": false,
   "exports": {
-    ".": "./src/index.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "*": ["./src/*"]
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./date": {
+      "types": "./dist/date.d.ts",
+      "import": "./dist/date.mjs",
+      "require": "./dist/date.cjs"
     }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": ["./dist"],
   "scripts": {
     "build": "vite build"
   },

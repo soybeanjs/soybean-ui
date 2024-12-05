@@ -1,7 +1,8 @@
 {
   "name": "@soybean-ui/example",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.0",
+  "private": true,
   "packageManager": "pnpm@9.14.4",
   "description": "soybean-ui is an ui library like shadcn for Vue3.",
   "author": {
@@ -17,10 +18,7 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": [
-    "UI",
-    "UnoCSS"
-  ],
+  "keywords": ["UI", "UnoCSS"],
   "scripts": {
     "build": "vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",

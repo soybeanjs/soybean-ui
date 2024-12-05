@@ -5,8 +5,8 @@
 >
 import { computed } from 'vue';
 import { ToggleGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import type { SingleOrMultipleType } from '@soybean-ui/primitive';
 import { cn, toggleVariants } from '@soybean-ui/variants';
-import type { SingleOrMultipleType } from '../../types';
 import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';
 
 defineOptions({

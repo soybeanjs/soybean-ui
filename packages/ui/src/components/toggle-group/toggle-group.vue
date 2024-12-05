@@ -8,7 +8,7 @@
   "
 >
 import { useForwardPropsEmits } from '@soybean-ui/primitive';
-import type { SingleOrMultipleType } from '../../types';
+import type { SingleOrMultipleType } from '@soybean-ui/primitive';
 import SToggleGroupRoot from './toggle-group-root.vue';
 import SToggleGroupItem from './toggle-group-item.vue';
 import type { ToggleGroupEmits, ToggleGroupItemData, ToggleGroupProps } from './types';

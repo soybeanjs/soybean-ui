@@ -1,6 +1,7 @@
 {
   "name": "@soybean-ui/unocss-preset",
-  "version": "0.0.1",
+  "version": "0.0.1-beta.0",
+  "private": true,
   "exports": {
     ".": "./src/index.ts"
   },
