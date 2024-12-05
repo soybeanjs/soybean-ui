@@ -20,7 +20,7 @@
   },
   "keywords": ["UI", "UnoCSS"],
   "scripts": {
-    "build": "vite build",
+    "build": "pnpm stub && vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",
     "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
     "build:ui": "pnpm -r --filter='./packages/ui' run build",
@@ -28,9 +28,10 @@
     "commit": "soy git-commit",
     "dev": "vite",
     "lint": "eslint . --fix",
-    "prepare": "simple-git-hooks && pnpm build:primitive && pnpm build:ui",
+    "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "release": "soy release",
+    "stub": "pnpm build:primitive && pnpm build:ui",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "update-pkg": "soy update-pkg"
   },
