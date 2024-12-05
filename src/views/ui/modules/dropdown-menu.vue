@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { SButton, SDropdownMenu, SDropdownMenuCheckbox, SDropdownMenuRadio } from '@soybean-ui/vue';
-import type { DropdownMenuCheckboxOption, DropdownMenuItemOption, DropdownMenuOptionType, ThemeSize } from '@soybean-ui/vue';
+import type {
+  DropdownMenuCheckboxOption,
+  DropdownMenuItemOption,
+  DropdownMenuOptionType,
+  ThemeSize
+} from '@soybean-ui/vue';
 import {
   CirclePlus,
   Cloud,
