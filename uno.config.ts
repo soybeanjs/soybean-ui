@@ -9,8 +9,8 @@ export default defineConfig<Theme>({
     pipeline: {
       include: [
         /\.vue($|\?)/,
-        'packages/ui/dist/index.js',
-        '../packages/ui/dist/index.js' // for docs
+        'packages/ui/dist/index.mjs',
+        '../packages/ui/dist/index.mjs' // for docs
       ]
     }
   },
