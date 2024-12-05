@@ -22,9 +22,7 @@
   "scripts": {
     "build": "pnpm build:pkg && vite build",
     "build:docs": "pnpm build:pkg && pnpm -r --filter='./docs' run docs:build",
-    "build:pkg": "pnpm build:primitive && pnpm build:ui",
-    "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
-    "build:ui": "pnpm -r --filter='./packages/ui' run build",
+    "build:pkg": "pnpm -r --filter='./packages/**' run build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
@@ -32,6 +30,7 @@
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
+    "publish-pkg": "pnpm -r publish --access public",
     "release": "soy release",
     "restore": "tsx scripts/restore.ts",
     "stub": "tsx scripts/stub.ts",

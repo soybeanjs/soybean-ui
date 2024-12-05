@@ -96,6 +96,9 @@ export async function handleRestore(pkgName: string, pkgPath: string) {
 export function getPkgs() {
   const pkgs = {
     primitive: 'packages/primitive',
+    'ui-variants': 'packages/ui-variants',
+    color: 'packages/color',
+    'unocss-preset': 'packages/unocss-preset',
     ui: 'packages/ui'
   };
 

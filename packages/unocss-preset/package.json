@@ -1,17 +1,30 @@
 {
   "name": "@soybean-ui/unocss-preset",
   "version": "0.0.1-beta.1",
-  "private": true,
-  "exports": {
-    ".": "./src/index.ts"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
-  "typesVersions": {
-    "*": {
-      "*": ["./src/*"]
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": ["./dist"],
+  "scripts": {
+    "build": "tsup"
   },
   "dependencies": {
     "@soybean-ui/color": "workspace:*",
     "@unocss/core": "0.65.1"
+  },
+  "devDependencies": {
+    "tsup": "8.3.5"
   }
 }

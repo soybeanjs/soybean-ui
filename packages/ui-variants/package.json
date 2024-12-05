@@ -1,18 +1,31 @@
 {
   "name": "@soybean-ui/variants",
   "version": "0.0.1-beta.1",
-  "private": true,
-  "exports": {
-    ".": "./src/index.ts"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
-  "typesVersions": {
-    "*": {
-      "*": ["./src/*"]
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
+  "files": ["./dist"],
+  "scripts": {
+    "build": "tsup"
   },
   "dependencies": {
     "clsx": "2.1.1",
     "tailwind-merge": "2.5.5",
     "tailwind-variants": "0.3.0"
+  },
+  "devDependencies": {
+    "tsup": "8.3.5"
   }
 }
