@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDark } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
-import { SSwitch } from 'soybean-ui';
+import { SSwitch } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'ThemeToggle'

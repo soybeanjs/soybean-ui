@@ -2,7 +2,7 @@
 import { computed, toRefs } from 'vue';
 import { Content, useData, useRoute } from 'vitepress';
 import type { DefaultTheme } from 'vitepress/theme';
-import { SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger } from 'soybean-ui';
+import { SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger } from '@soybean-ui/vue';
 import { flatten } from '../../../shared';
 import DocsTopbar from './docs-topbar.vue';
 import DocsSidebar from './docs-sidebar.vue';

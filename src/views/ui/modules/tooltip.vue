@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, STooltip } from 'soybean-ui';
-import type { TooltipAlign, TooltipSide } from 'soybean-ui';
+import { SButton, STooltip } from '@soybean-ui/vue';
+import type { TooltipAlign, TooltipSide } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiTooltip'

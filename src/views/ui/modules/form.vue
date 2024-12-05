@@ -13,8 +13,8 @@ import {
   SRadioGroup,
   SSelect,
   SSwitch
-} from 'soybean-ui';
-import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from 'soybean-ui';
+} from '@soybean-ui/vue';
+import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from '@soybean-ui/vue';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({

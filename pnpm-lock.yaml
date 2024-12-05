@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@soybean-ui/vue':
+        specifier: workspace:*
+        version: link:packages/ui
       '@unocss/reset':
         specifier: 0.65.1
         version: 0.65.1
@@ -21,11 +24,8 @@ importers:
         specifier: 12.0.0
         version: 12.0.0(typescript@5.7.2)(vue-router@4.5.0(vue@3.5.13(typescript@5.7.2)))
       lucide-vue-next:
-        specifier: 0.465.0
-        version: 0.465.0(vue@3.5.13(typescript@5.7.2))
-      soybean-ui:
-        specifier: workspace:*
-        version: link:packages/ui
+        specifier: 0.468.0
+        version: 0.468.0(vue@3.5.13(typescript@5.7.2))
       vue:
         specifier: 3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -105,15 +105,15 @@ importers:
 
   docs:
     dependencies:
+      '@soybean-ui/vue':
+        specifier: workspace:*
+        version: link:../packages/ui
       '@vueuse/core':
         specifier: 12.0.0
         version: 12.0.0(typescript@5.7.2)
       lucide-vue-next:
-        specifier: 0.465.0
-        version: 0.465.0(vue@3.5.13(typescript@5.7.2))
-      soybean-ui:
-        specifier: workspace:*
-        version: link:../packages/ui
+        specifier: 0.468.0
+        version: 0.468.0(vue@3.5.13(typescript@5.7.2))
       vue:
         specifier: 3.5.13
         version: 3.5.13(typescript@5.7.2)
@@ -219,8 +219,8 @@ importers:
         specifier: 6.1.4
         version: 6.1.4
       lucide-vue-next:
-        specifier: 0.465.0
-        version: 0.465.0(vue@3.5.13(typescript@5.7.2))
+        specifier: 0.468.0
+        version: 0.468.0(vue@3.5.13(typescript@5.7.2))
       ohash:
         specifier: 1.1.4
         version: 1.1.4
@@ -2731,8 +2731,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  lucide-vue-next@0.465.0:
-    resolution: {integrity: sha512-rI41gZkpicXHCt0KQyZ9C+u2fEc3yp53mrxxRO6cwdA0j5Qv4OX3kQHRBjHXhrKzrfideBCBKOME4ALvq9j46g==}
+  lucide-vue-next@0.468.0:
+    resolution: {integrity: sha512-quV/6T8YB1XK0VOEnebg3Byd8Rsan5/m95cvjnuHV4vcS3qEnLAybkrSh0hk3ppavx+V7R1PjNW+mGDvcBdz4A==}
     peerDependencies:
       vue: '>=3.0.1'
 
@@ -6475,7 +6475,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  lucide-vue-next@0.465.0(vue@3.5.13(typescript@5.7.2)):
+  lucide-vue-next@0.468.0(vue@3.5.13(typescript@5.7.2)):
     dependencies:
       vue: 3.5.13(typescript@5.7.2)
 

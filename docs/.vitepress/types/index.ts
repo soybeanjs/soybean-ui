@@ -1,5 +1,5 @@
 import type { DefaultTheme } from 'vitepress';
-import type { DropdownMenuItemOption, DropdownMenuOptionType } from 'soybean-ui';
+import type { DropdownMenuItemOption, DropdownMenuOptionType } from '@soybean-ui/vue';
 
 export interface NavItem extends DropdownMenuItemOption {
   link?: string;

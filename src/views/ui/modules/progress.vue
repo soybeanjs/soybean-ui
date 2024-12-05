@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { TransitionPresets, useTransition } from '@vueuse/core';
-import { SProgress } from 'soybean-ui';
-import type { ThemeColor, ThemeSize } from 'soybean-ui';
+import { SProgress } from '@soybean-ui/vue';
+import type { ThemeColor, ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiProgress'

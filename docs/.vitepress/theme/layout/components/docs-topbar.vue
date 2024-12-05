@@ -3,7 +3,7 @@ import { useScroll } from '@vueuse/core';
 import { useData, useRoute } from 'vitepress';
 import { computed, ref, toRefs, watch } from 'vue';
 import { Icon } from '@iconify/vue';
-import { SButton, SSheet } from 'soybean-ui';
+import { SButton, SSheet } from '@soybean-ui/vue';
 import { flatten } from '../../../shared';
 import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';

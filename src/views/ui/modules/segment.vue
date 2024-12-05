@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SSegment } from 'soybean-ui';
-import type { SegmentOption } from 'soybean-ui';
+import { SSegment } from '@soybean-ui/vue';
+import type { SegmentOption } from '@soybean-ui/vue';
 
 const day = ref('monday');
 

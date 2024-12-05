@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SAvatar } from 'soybean-ui';
-import type { ThemeSize } from 'soybean-ui';
+import { SAvatar } from '@soybean-ui/vue';
+import type { ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'AvatarDemo'

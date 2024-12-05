@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SPinInput, SonnerToaster, toast } from 'soybean-ui';
-import type { ThemeSize } from 'soybean-ui';
+import { SPinInput, SonnerToaster, toast } from '@soybean-ui/vue';
+import type { ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiPinInput'

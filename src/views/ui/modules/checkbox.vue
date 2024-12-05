@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SCheckbox, SCheckboxGroup } from 'soybean-ui';
-import type { CheckboxGroupItem, CheckedState, ThemeColor, ThemeSize } from 'soybean-ui';
+import { SCheckbox, SCheckboxGroup } from '@soybean-ui/vue';
+import type { CheckboxGroupItem, CheckedState, ThemeColor, ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiCheckbox'

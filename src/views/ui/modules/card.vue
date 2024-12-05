@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButtonIcon, SCard } from 'soybean-ui';
-import type { CardSplit, ThemeSize } from 'soybean-ui';
+import { SButtonIcon, SCard } from '@soybean-ui/vue';
+import type { CardSplit, ThemeSize } from '@soybean-ui/vue';
 import { X } from 'lucide-vue-next';
 
 defineOptions({

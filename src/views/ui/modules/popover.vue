@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SPopover } from 'soybean-ui';
-import type { PopoverAlign, PopoverSide } from 'soybean-ui';
+import { SButton, SPopover } from '@soybean-ui/vue';
+import type { PopoverAlign, PopoverSide } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiPopover'

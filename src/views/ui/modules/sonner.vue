@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SSelect, SonnerToaster, toast } from 'soybean-ui';
-import type { SelectOption, SonnerProps } from 'soybean-ui';
+import { SButton, SSelect, SonnerToaster, toast } from '@soybean-ui/vue';
+import type { SelectOption, SonnerProps } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiSonner'

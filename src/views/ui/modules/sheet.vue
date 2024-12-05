@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SSheet } from 'soybean-ui';
-import type { SheetSide } from 'soybean-ui';
+import { SButton, SSheet } from '@soybean-ui/vue';
+import type { SheetSide } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiSheet'

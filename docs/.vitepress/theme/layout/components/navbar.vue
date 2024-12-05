@@ -3,7 +3,7 @@ import { ref, toRefs, watch } from 'vue';
 import { useData, useRoute } from 'vitepress';
 import { createReusableTemplate } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
-import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from 'soybean-ui';
+import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from '@soybean-ui/vue';
 import { isNavItemWithLink } from '../../../shared';
 import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';

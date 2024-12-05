@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSelect } from 'soybean-ui';
-import type { SelectGroupOption, SelectOption, ThemeSize } from 'soybean-ui';
+import { SSelect } from '@soybean-ui/vue';
+import type { SelectGroupOption, SelectOption, ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiSelect'

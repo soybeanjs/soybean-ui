@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from 'soybean-ui';
+import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiAlertDialog'

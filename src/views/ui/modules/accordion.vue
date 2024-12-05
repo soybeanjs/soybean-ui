@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion, SAccordionTrigger } from 'soybean-ui';
+import { SAccordion, SAccordionTrigger } from '@soybean-ui/vue';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({

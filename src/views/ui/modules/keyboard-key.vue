@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ThemeSize } from 'soybean-ui';
-import { SKeyboardKey } from 'soybean-ui';
+import type { ThemeSize } from '@soybean-ui/vue';
+import { SKeyboardKey } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiKeyboardKey'

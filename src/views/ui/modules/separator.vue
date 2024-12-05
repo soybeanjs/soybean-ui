@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSeparator } from 'soybean-ui';
-import type { SeparatorBorder, ThemeAlign } from 'soybean-ui';
+import { SSeparator } from '@soybean-ui/vue';
+import type { SeparatorBorder, ThemeAlign } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiSeparator'

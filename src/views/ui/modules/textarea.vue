@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STextarea } from 'soybean-ui';
-import type { ThemeSize } from 'soybean-ui';
+import { STextarea } from '@soybean-ui/vue';
+import type { ThemeSize } from '@soybean-ui/vue';
 import GraphemeSplitter from 'grapheme-splitter';
 
 defineOptions({

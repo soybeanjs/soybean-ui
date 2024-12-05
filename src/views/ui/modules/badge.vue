@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBadge } from 'soybean-ui';
-import type { BadgeVariant, ThemeColor } from 'soybean-ui';
+import { SBadge } from '@soybean-ui/vue';
+import type { BadgeVariant, ThemeColor } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiBadge'

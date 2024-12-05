@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SChip, SInput, SSwitch } from 'soybean-ui';
-import type { ChipPosition, ThemeColor, ThemeSize } from 'soybean-ui';
+import { SButton, SChip, SInput, SSwitch } from '@soybean-ui/vue';
+import type { ChipPosition, ThemeColor, ThemeSize } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'UiChip'
