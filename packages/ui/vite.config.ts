@@ -21,7 +21,11 @@ export default defineConfig({
       entry: {
         index: fileURLToPath(new URL('src/index.ts', import.meta.url))
       },
-      fileName: 'index',
+      fileName: (format, entryName) => {
+        const ext = format === 'es' ? 'mjs' : 'cjs';
+
+        return `${entryName}.${ext}`;
+      },
       formats: ['es', 'cjs']
     },
     rollupOptions: {

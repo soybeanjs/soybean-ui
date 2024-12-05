@@ -19,10 +19,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 1997,
-    open: true,
-    fs: {
-      cachedChecks: false
-    }
+    open: true
   },
   preview: {
     port: 9725

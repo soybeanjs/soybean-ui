@@ -18,13 +18,11 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": [
-    "UI",
-    "UnoCSS"
-  ],
+  "keywords": ["UI", "UnoCSS"],
   "scripts": {
-    "build": "pnpm stub && vite build",
+    "build": "pnpm build:pkg && vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",
+    "build:pkg": "pnpm build:primitive && pnpm build:ui",
     "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
     "build:ui": "pnpm -r --filter='./packages/ui' run build",
     "cleanup": "soy cleanup",
@@ -34,7 +32,7 @@
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "release": "soy release",
-    "stub": "pnpm build:primitive && pnpm build:ui",
+    "stub": "pnpm -r --filter='./packages/*' run stub",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "update-pkg": "soy update-pkg"
   },
