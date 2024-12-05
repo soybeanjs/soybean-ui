@@ -3,7 +3,7 @@ import { useScroll } from '@vueuse/core';
 import { useData, useRoute } from 'vitepress';
 import { computed, ref, toRefs, watch } from 'vue';
 import { Icon } from '@iconify/vue';
-import { SButton, SSheet } from '@soybean-ui/vue';
+import { SButton, SScrollArea, SSheet } from '@soybean-ui/vue';
 import { flatten } from '../../../shared';
 import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';
@@ -85,7 +85,7 @@ watch(path, () => {
             Menu
           </SButton>
         </template>
-        <div class="h-full overflow-y-auto px-4 pt-8">
+        <SScrollArea class="h-full px-4 pt-8">
           <div v-for="group in theme.sidebar" :key="group.text" class="mb-4">
             <div class="mb-2 flex items-center">
               <Icon v-if="group.icon" :icon="group.icon" class="mx-2 text-lg" />
@@ -104,7 +104,7 @@ watch(path, () => {
             </template>
           </div>
           <div class="h-12 w-full" />
-        </div>
+        </SScrollArea>
       </SSheet>
 
       <div class="h-full flex items-center">

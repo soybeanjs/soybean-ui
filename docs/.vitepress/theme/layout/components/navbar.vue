@@ -60,7 +60,7 @@ watch(path, () => {
       <SDropdownMenu v-else :label="nav.label" :items="nav.items" @select="handleSelect">
         <template #trigger>
           <NavItem :label="nav.label">
-            <span>{{ nav.label }}</span>
+            <span class="whitespace-nowrap">{{ nav.label }}</span>
             <Icon icon="akar-icons:chevron-down" class="ml-2 text-sm" />
           </NavItem>
         </template>
@@ -105,7 +105,7 @@ watch(path, () => {
           <SDropdownMenu v-else :label="nav.label" :items="nav.items" align="end" @select="handleSelect">
             <template #trigger>
               <NavMenuItem :label="nav.label">
-                <span>{{ nav.label }}</span>
+                <span class="whitespace-nowrap">{{ nav.label }}</span>
                 <Icon icon="akar-icons:chevron-down" class="ml-2 text-sm" />
               </NavMenuItem>
             </template>

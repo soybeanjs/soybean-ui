@@ -41,13 +41,13 @@ defineOptions({
     </div>
     <div class="mb-12 max-w-[calc(100%-2rem)] flex flex-wrap items-center justify-center gap-4 md:mb-20">
       <a
-        class="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-2.5 text-primary-foreground font-semibold hover:bg-primary/90"
+        class="flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-2.5 text-primary-foreground font-semibold hover:bg-primary/90 focus-visible:(outline-2 outline-primary outline-offset-2 outline)"
         href="/docs/overview/getting-started"
       >
         Get started
       </a>
       <a
-        class="group flex items-center justify-center gap-2 whitespace-nowrap border border-muted rounded-lg bg-muted/50 px-5 py-2.5 text-foreground/70 font-semibold hover:bg-card hover:text-foreground"
+        class="group flex items-center justify-center gap-2 whitespace-nowrap border border-muted rounded-lg bg-muted/50 px-5 py-2.5 text-foreground/70 font-semibold hover:bg-card hover:text-foreground focus-visible:(outline-2 outline-primary outline-offset-2 outline)"
         href="/docs/components/checkbox"
       >
         Explore components

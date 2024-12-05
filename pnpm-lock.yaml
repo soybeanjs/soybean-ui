@@ -51,6 +51,9 @@ importers:
       '@types/node':
         specifier: 22.10.1
         version: 22.10.1
+      '@types/picomatch':
+        specifier: ^3.0.1
+        version: 3.0.1
       '@unocss/eslint-config':
         specifier: 0.65.1
         version: 0.65.1(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
@@ -1370,6 +1373,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/picomatch@3.0.1':
+    resolution: {integrity: sha512-1MRgzpzY0hOp9pW/kLRxeQhUWwil6gnrUYd3oEpeYBqp/FexhaCPv3F8LsYr47gtUU45fO2cm1dbwkSrHEo8Uw==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -4840,6 +4846,8 @@ snapshots:
       undici-types: 6.20.0
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/picomatch@3.0.1': {}
 
   '@types/unist@3.0.3': {}
 

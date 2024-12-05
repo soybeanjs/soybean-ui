@@ -110,6 +110,6 @@ export default defineConfigWithTheme<CustomThemeConfig>({
   },
   vite: {
     // @ts-expect-error ignore type
-    plugins: [unocss()]
+    plugins: [unocss({ configFile: '../uno.config.ts' })]
   }
 });

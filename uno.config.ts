@@ -7,7 +7,11 @@ import { presetSoybeanUI } from '@soybean-ui/unocss-preset';
 export default defineConfig<Theme>({
   content: {
     pipeline: {
-      exclude: ['node_modules', 'dist']
+      include: [
+        /\.vue($|\?)/,
+        'packages/ui/dist/index.js',
+        '../packages/ui/dist/index.js' // for docs
+      ]
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
