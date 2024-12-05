@@ -49,17 +49,18 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     <DropdownMenuTrigger as-child>
       <slot name="trigger" />
     </DropdownMenuTrigger>
-    <DropdownMenuPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal" />
-    <SDropdownMenuContent
-      v-bind="forwardedContent"
-      :class="contentClass"
-      :avoid-collisions
-      :prioritize-position
-      :force-mount="forceMountContent"
-    >
-      <slot />
-      <SDropdownMenuArrow v-if="showArrow" />
-    </SDropdownMenuContent>
+    <DropdownMenuPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <SDropdownMenuContent
+        v-bind="forwardedContent"
+        :class="contentClass"
+        :avoid-collisions
+        :prioritize-position
+        :force-mount="forceMountContent"
+      >
+        <slot />
+        <SDropdownMenuArrow v-if="showArrow" />
+      </SDropdownMenuContent>
+    </DropdownMenuPortal>
   </DropdownMenuRoot>
 </template>
 
