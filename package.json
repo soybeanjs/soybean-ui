@@ -20,8 +20,8 @@
   },
   "keywords": ["UI", "UnoCSS"],
   "scripts": {
-    "build": "pnpm restore && pnpm build:pkg && vite build",
-    "build:docs": "pnpm -r --filter='./docs' run docs:build",
+    "build": "pnpm build:pkg && vite build",
+    "build:docs": "pnpm build:pkg && pnpm -r --filter='./docs' run docs:build",
     "build:pkg": "pnpm build:primitive && pnpm build:ui",
     "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
     "build:ui": "pnpm -r --filter='./packages/ui' run build",
