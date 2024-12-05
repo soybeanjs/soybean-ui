@@ -8,7 +8,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./index.css": "./dist/index.css"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
