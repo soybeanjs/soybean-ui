@@ -1,4 +1,5 @@
-import type { ClassValueProp, PrimitiveProps } from '@soybean-ui/primitive';
+import type { ClassValueProp } from '../../types';
+import type { PrimitiveProps } from '../primitive';
 
 export interface AspectRatioProps extends ClassValueProp {
   /** The desired ratio. Eg: 16/9 */

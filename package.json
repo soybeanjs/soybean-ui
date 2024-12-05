@@ -22,7 +22,8 @@
   "scripts": {
     "build": "vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",
-    "build:pkg": "pnpm -r --filter='./packages/*' run build",
+    "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
+    "build:ui": "pnpm -r --filter='./packages/ui' run build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
