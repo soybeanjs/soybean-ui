@@ -1,5 +1,5 @@
 {
-  "name": "soybean-ui",
+  "name": "@soybean-ui/vue",
   "type": "module",
   "version": "0.0.1-beta.1",
   "publishConfig": {
