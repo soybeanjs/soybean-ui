@@ -34,3 +34,5 @@ yarn.lock
 
 .VSCodeCounter
 **/.vitepress/cache
+
+scripts/.json/*

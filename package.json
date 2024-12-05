@@ -20,7 +20,7 @@
   },
   "keywords": ["UI", "UnoCSS"],
   "scripts": {
-    "build": "pnpm build:pkg && vite build",
+    "build": "pnpm restore && pnpm build:pkg && vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",
     "build:pkg": "pnpm build:primitive && pnpm build:ui",
     "build:primitive": "pnpm -r --filter='./packages/primitive' run build",
@@ -28,11 +28,13 @@
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
+    "dev:docs": "pnpm -r --filter='./docs' run docs:dev",
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "release": "soy release",
-    "stub": "pnpm -r --filter='./packages/*' run stub",
+    "restore": "tsx scripts/restore.ts",
+    "stub": "tsx scripts/stub.ts",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "update-pkg": "soy update-pkg"
   },

@@ -4,10 +4,22 @@
 
 ### 启动项目
 
-在根目录安装完依赖直接启动项目
+安装依赖
 ```bash
-pnpm install
+pnpm i
+```
+
+执行`stub`命令
+```bash
+pnpm stub
+```
+启动项目
+```bash
 pnpm dev
+```
+启动文档
+```bash
+pnpm dev:docs
 ```
 
 ### 新增组件
