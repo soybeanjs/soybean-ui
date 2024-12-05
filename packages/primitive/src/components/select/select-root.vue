@@ -23,6 +23,12 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
 
 const emit = defineEmits<SelectRootEmits>();
 
+type Slots = {
+  default: (props: { modelValue: T | T[] | undefined; open: boolean }) => any;
+};
+
+defineSlots<Slots>();
+
 const modelValue = useVModel<SelectRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? (props.multiple ? [] : undefined),
   passive: (props.modelValue === undefined) as false,

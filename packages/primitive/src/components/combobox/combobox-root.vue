@@ -22,6 +22,12 @@ const props = withDefaults(defineProps<ComboboxRootPropsWithPrimitive<T>>(), {
 
 const emit = defineEmits<ComboboxRootEmits<T>>();
 
+type Slots = {
+  default: (props: { modelValue: T | T[] | undefined; open: boolean }) => any;
+};
+
+defineSlots<Slots>();
+
 const { primitiveElement, currentElement: parentElement } =
   usePrimitiveElement<GenericComponentInstance<typeof ListboxRoot>>();
 const { multiple, disabled, ignoreFilter, dir: propDir } = toRefs(props);

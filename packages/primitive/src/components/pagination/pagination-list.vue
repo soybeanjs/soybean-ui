@@ -12,13 +12,6 @@ defineOptions({
 
 const props = defineProps<PaginationListPropsWithPrimitive>();
 
-defineSlots<{
-  default: (props: {
-    /** Pages item */
-    items: typeof transformedRange.value;
-  }) => any;
-}>();
-
 useForwardExpose();
 const rootContext = injectPaginationRootContext();
 

@@ -30,6 +30,12 @@ const props = withDefaults(defineProps<ListboxRootPropsWithPrimitive<T>>(), {
 
 const emit = defineEmits<ListboxRootEmits>();
 
+type Slots = {
+  default: (props: { modelValue: T | T[] | undefined }) => any;
+};
+
+defineSlots<Slots>();
+
 const { multiple, highlightOnHover, orientation, disabled, selectionBehavior, dir: propDir } = toRefs(props);
 const { getItems } = useCollection<{ value: T }>({ isProvider: true });
 const { handleTypeAheadSearch } = useTypeAhead();

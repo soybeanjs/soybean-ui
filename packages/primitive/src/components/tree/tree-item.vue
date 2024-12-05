@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<TreeItemPropsWithPrimitive<T>>(), {
 
 const emit = defineEmits<TreeItemEmits<T>>();
 
-defineSlots<{
+type Slots = {
   default: (props: {
     isExpanded: boolean;
     isSelected: boolean;
@@ -27,7 +27,10 @@ defineSlots<{
     handleToggle: () => void;
     handleSelect: () => void;
   }) => any;
-}>();
+};
+
+defineSlots<Slots>();
+
 const rootContext = injectTreeRootContext();
 const { getItems } = useCollection();
 

@@ -17,7 +17,10 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": ["UI", "UnoCSS"],
+  "keywords": [
+    "UI",
+    "UnoCSS"
+  ],
   "scripts": {
     "build": "vite build",
     "build:docs": "pnpm -r --filter='./docs' run docs:build",
@@ -52,6 +55,7 @@
     "@unocss/eslint-config": "0.65.1",
     "@vitejs/plugin-vue": "5.2.1",
     "@vitejs/plugin-vue-jsx": "4.1.1",
+    "@vue/shared": "3.5.13",
     "eslint": "9.16.0",
     "eslint-plugin-vue": "9.32.0",
     "grapheme-splitter": "1.0.4",

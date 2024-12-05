@@ -20,6 +20,12 @@ const props = withDefaults(defineProps<TabsRootPropsWithPrimitive<T>>(), {
 
 const emit = defineEmits<TabsRootEmits>();
 
+type Slots = {
+  default: (props: { modelValue: T | undefined }) => any;
+};
+
+defineSlots<Slots>();
+
 const { orientation, unmountOnHide, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 useForwardExpose();
