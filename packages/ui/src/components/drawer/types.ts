@@ -1,5 +1,10 @@
-import type { DrawerPortalProps, DrawerRootEmits, DrawerRootProps } from 'vaul-vue';
-import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type {
+  ClassValue,
+  ClassValueProp,
+  DialogPortalProps as DrawerPortalProps,
+  DrawerRootEmits,
+  DrawerRootProps
+} from '@soybean-ui/primitive';
 import type { CardProps } from '../card/types';
 
 export interface DrawerOverlayProps extends ClassValueProp {}

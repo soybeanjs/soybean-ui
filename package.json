@@ -28,7 +28,7 @@
     "commit": "soy git-commit",
     "dev": "vite",
     "lint": "eslint . --fix",
-    "prepare": "simple-git-hooks",
+    "prepare": "simple-git-hooks && pnpm build:primitive && pnpm build:ui",
     "preview": "vite preview",
     "release": "soy release",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",

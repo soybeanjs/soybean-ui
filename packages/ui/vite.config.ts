@@ -6,7 +6,17 @@ import dts from 'vite-plugin-dts';
 import UnoCSS from 'unocss/vite';
 
 export default defineConfig({
-  plugins: [vue(), vueJsx(), dts({ cleanVueFileName: true, rollupTypes: true, include: 'src/**/*' }), UnoCSS({})],
+  plugins: [
+    vue(),
+    vueJsx(),
+    dts({
+      cleanVueFileName: true,
+      bundledPackages: ['@soybean-ui/primitive'],
+      rollupTypes: true,
+      include: 'src/**/*'
+    }),
+    UnoCSS({})
+  ],
   build: {
     lib: {
       name: 'soybean-ui',
