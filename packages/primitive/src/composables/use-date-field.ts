@@ -208,6 +208,24 @@ function timeZoneSegmentAttrs(props: SegmentAttrProps) {
   };
 }
 
+function eraSegmentAttrs(props: SegmentAttrProps) {
+  const { segmentValues, placeholder } = props;
+
+  const valueMin = 0;
+  const valueMax = 0;
+  const valueNow = 0;
+  const valueText = 'era' in segmentValues ? segmentValues.era : placeholder.era;
+
+  return {
+    ...commonSegmentAttrs(props),
+    'aria-label': 'era',
+    'aria-valuemin': valueMin,
+    'aria-valuemax': valueMax,
+    'aria-valuenow': valueNow,
+    'aria-valuetext': valueText
+  };
+}
+
 export const segmentBuilders = {
   day: {
     attrs: daySegmentAttrs
@@ -235,6 +253,9 @@ export const segmentBuilders = {
   },
   timeZoneName: {
     attrs: timeZoneSegmentAttrs
+  },
+  era: {
+    attrs: eraSegmentAttrs
   }
 };
 
@@ -547,14 +568,15 @@ export function useDateField(props: UseDateFieldProps) {
     return { value: int, moveToNext };
   }
 
-  const attributes = computed(() =>
-    segmentBuilders[props.part].attrs({
-      disabled: props.disabled.value,
-      placeholder: props.placeholder.value,
-      hourCycle: props.hourCycle,
-      segmentValues: props.segmentValues.value,
-      formatter: props.formatter
-    })
+  const attributes = computed(
+    () =>
+      segmentBuilders[props.part]?.attrs({
+        disabled: props.disabled.value,
+        placeholder: props.placeholder.value,
+        hourCycle: props.hourCycle,
+        segmentValues: props.segmentValues.value,
+        formatter: props.formatter
+      }) ?? {}
   );
 
   function handleDaySegmentKeydown(e: KeyboardEvent) {

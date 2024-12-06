@@ -14,6 +14,7 @@ import {
   syncSegmentValues
 } from '../../date';
 import type { DateValue, SegmentValueObj } from '../../date';
+import { isNullish } from '../../shared';
 import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -57,7 +58,8 @@ const dir = useDirection(propDir);
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
   granularity: granularity.value,
-  defaultValue: modelValue.value
+  defaultValue: modelValue.value,
+  locale: props.locale
 });
 
 const placeholder = useVModel(props, 'placeholder', emit, {
@@ -127,14 +129,14 @@ watch(locale, value => {
 
 watch(modelValue, _modelValue => {
   if (
-    _modelValue !== undefined &&
+    !isNullish(_modelValue) &&
     (!isEqualDay(placeholder.value, _modelValue) || placeholder.value.compare(_modelValue) !== 0)
   )
     placeholder.value = _modelValue.copy();
 });
 
 watch([modelValue, locale], ([_modelValue]) => {
-  if (_modelValue !== undefined) {
+  if (!isNullish(_modelValue)) {
     segmentValues.value = { ...syncSegmentValues({ value: _modelValue, formatter }) };
   } else if (Object.values(segmentValues.value).every(value => value === null) || _modelValue === undefined) {
     segmentValues.value = { ...initialSegments };

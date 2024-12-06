@@ -75,7 +75,8 @@ const defaultDate = computed(() =>
   getDefaultDate({
     defaultPlaceholder: props.placeholder,
     granularity: props.granularity,
-    defaultValue: modelValue.value
+    defaultValue: modelValue.value,
+    locale: props.locale
   })
 );
 

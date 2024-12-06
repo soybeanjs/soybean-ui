@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, ImageLoadingStatus } from '../../types';
+import type { ClassValueProp, HTMLAttributeReferrerPolicy, ImageLoadingStatus } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
 // AvatarRoot
@@ -20,6 +20,8 @@ export interface AvatarImageProps extends ClassValueProp {
   src: string;
   /** The image alt text */
   alt?: string;
+  /** The image referrer policy */
+  referrerPolicy?: HTMLAttributeReferrerPolicy;
 }
 export type AvatarImagePropsWithPrimitive = AvatarImageProps & PrimitiveProps;
 

@@ -29,6 +29,16 @@ export type SplitType = 'pick' | 'omit';
 export type ActivationMode = 'focus' | 'dblclick' | 'none';
 export type SubmitMode = 'blur' | 'enter' | 'none' | 'both';
 export type SwipeDirection = 'up' | 'down' | 'left' | 'right';
+export type HTMLAttributeReferrerPolicy =
+  | ''
+  | 'no-referrer'
+  | 'no-referrer-when-downgrade'
+  | 'origin'
+  | 'origin-when-cross-origin'
+  | 'same-origin'
+  | 'strict-origin'
+  | 'strict-origin-when-cross-origin'
+  | 'unsafe-url';
 
 export interface Point {
   x: number;

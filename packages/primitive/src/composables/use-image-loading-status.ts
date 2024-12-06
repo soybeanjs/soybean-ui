@@ -1,8 +1,8 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 import type { Ref, WatchHandle } from 'vue';
-import type { ImageLoadingStatus } from '../types';
+import type { HTMLAttributeReferrerPolicy, ImageLoadingStatus } from '../types';
 
-export function useImageLoadingStatus(src: Ref<string>) {
+export function useImageLoadingStatus(src: Ref<string>, referrerPolicy?: Ref<HTMLAttributeReferrerPolicy>) {
   const loadingStatus = ref<ImageLoadingStatus>('idle');
   const isMounted = ref(false);
 
@@ -20,16 +20,19 @@ export function useImageLoadingStatus(src: Ref<string>) {
     isMounted.value = true;
 
     watchHandle = watch(
-      src,
-      value => {
-        if (!value) {
+      [() => src.value, () => referrerPolicy?.value],
+      ([srcValue, referrerValue]) => {
+        if (!srcValue) {
           loadingStatus.value = 'error';
         } else {
           const image = new window.Image();
           loadingStatus.value = 'loading';
           image.onload = updateStatus('loaded');
           image.onerror = updateStatus('error');
-          image.src = value;
+          image.src = srcValue;
+          if (referrerValue) {
+            image.referrerPolicy = referrerValue;
+          }
         }
       },
       { immediate: true }

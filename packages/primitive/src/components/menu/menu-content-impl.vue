@@ -206,6 +206,7 @@ provideMenuContentContext({
           :arrow-padding="arrowPadding"
           :position-strategy="positionStrategy"
           :prioritize-position="prioritizePosition"
+          :reference="reference"
           :sticky="sticky"
           :hide-when-detached="hideWhenDetached"
           @keydown="handleKeyDown"

@@ -70,7 +70,8 @@ const modelValue = useVModel(props, 'modelValue', emit, {
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start
+  defaultValue: modelValue.value.start,
+  locale: props.locale
 });
 
 const startValue = ref(modelValue.value.start) as Ref<DateValue | undefined>;

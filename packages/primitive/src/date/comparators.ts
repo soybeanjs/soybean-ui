@@ -1,8 +1,10 @@
 import {
   CalendarDate,
   CalendarDateTime,
+  DateFormatter,
   Time,
   ZonedDateTime,
+  createCalendar,
   getDayOfWeek,
   getLocalTimeZone,
   parseDate,
@@ -189,6 +191,7 @@ type GetDefaultDateProps = {
   defaultValue?: DateValue | DateValue[] | undefined;
   defaultPlaceholder?: DateValue | undefined;
   granularity?: Granularity;
+  locale?: string;
 };
 
 /**
@@ -199,7 +202,7 @@ type GetDefaultDateProps = {
  * behavior the user expects based on the props they've provided.
  */
 export function getDefaultDate(props: GetDefaultDateProps): DateValue {
-  const { defaultValue, defaultPlaceholder, granularity = 'day' } = props;
+  const { defaultValue, defaultPlaceholder, granularity = 'day', locale = 'en' } = props;
 
   if (Array.isArray(defaultValue) && defaultValue.length) return defaultValue.at(-1)!.copy();
 
@@ -213,10 +216,13 @@ export function getDefaultDate(props: GetDefaultDateProps): DateValue {
   const day = date.getDate();
   const calendarDateTimeGranularities = ['hour', 'minute', 'second'];
 
-  if (calendarDateTimeGranularities.includes(granularity ?? 'day'))
-    return new CalendarDateTime(year, month, day, 0, 0, 0);
+  const defaultFormatter = new DateFormatter(locale);
+  const calendar = createCalendar(defaultFormatter.resolvedOptions().calendar);
 
-  return new CalendarDate(year, month, day);
+  if (calendarDateTimeGranularities.includes(granularity ?? 'day'))
+    return toCalendar(new CalendarDateTime(year, month, day, 0, 0, 0), calendar);
+
+  return toCalendar(new CalendarDate(year, month, day), calendar);
 }
 
 type GetDefaultTimeProps = {
