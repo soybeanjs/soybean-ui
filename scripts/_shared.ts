@@ -1,7 +1,7 @@
 import process from 'node:process';
 import path from 'node:path';
 import { existsSync } from 'node:fs';
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import type { Options } from 'execa';
 
 export async function execCommand(cmd: string, args: string[], options?: Options) {
@@ -69,6 +69,16 @@ async function writeDevPkgJson(pkgName: string, pkgPath: string) {
   const pkgJsonPath = getPkgJsonPath(pkgPath);
 
   await writeFile(pkgJsonPath, JSON.stringify(pkgJson, null, 2));
+}
+
+export async function ensureBackupDir() {
+  const backupDir = path.join(cwd, BACKUP_DIR);
+
+  const existDir = existsSync(backupDir);
+
+  if (!existDir) {
+    await mkdir(backupDir);
+  }
 }
 
 export async function handleStub(pkgName: string, pkgPath: string) {

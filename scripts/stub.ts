@@ -1,7 +1,13 @@
-import { getPkgs, handleStub } from './_shared';
+import { ensureBackupDir, getPkgs, handleStub } from './_shared';
 
 const pkgs = getPkgs();
 
-pkgs.forEach(({ pkgName, pkgPath }) => {
-  handleStub(pkgName, pkgPath);
-});
+async function start() {
+  await ensureBackupDir();
+
+  pkgs.forEach(({ pkgName, pkgPath }) => {
+    handleStub(pkgName, pkgPath);
+  });
+}
+
+start();
