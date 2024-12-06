@@ -46,8 +46,8 @@ importers:
         specifier: 1.4.3
         version: 1.4.3(@unocss/eslint-config@0.65.1(eslint@9.16.0(jiti@2.4.1))(typescript@5.7.2))(eslint-plugin-vue@9.32.0(eslint@9.16.0(jiti@2.4.1)))(eslint@9.16.0(jiti@2.4.1))(typescript@5.7.2)(vue-eslint-parser@9.4.3(eslint@9.16.0(jiti@2.4.1)))
       '@soybeanjs/unocss-preset':
-        specifier: 0.0.6
-        version: 0.0.6
+        specifier: 0.1.0
+        version: 0.1.0
       '@types/node':
         specifier: 22.10.1
         version: 22.10.1
@@ -1336,8 +1336,8 @@ packages:
       vue-eslint-parser:
         optional: true
 
-  '@soybeanjs/unocss-preset@0.0.6':
-    resolution: {integrity: sha512-vt4cMsv5jAmADPSnIt65LTh5tc7V748UeuZhdBp9w2SYJwLcwFaax68rH7tdnJOlDW5XlqsincIdZ+GDRSeD5g==}
+  '@soybeanjs/unocss-preset@0.1.0':
+    resolution: {integrity: sha512-1y/7t9Ibo5nDdDRAmN6JYsVbfSX5lAvC5xW7tSUTxRJPUBuPZsRy4Npe2J4fb1S6kRjRE8bI5cjSREHFZ+aVCg==}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -4883,7 +4883,7 @@ snapshots:
       - '@types/eslint'
       - supports-color
 
-  '@soybeanjs/unocss-preset@0.0.6':
+  '@soybeanjs/unocss-preset@0.1.0':
     dependencies:
       '@unocss/core': 0.65.1
 

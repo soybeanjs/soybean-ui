@@ -99,7 +99,7 @@ watch(path, () => {
           <Icon icon="lucide:ellipsis" />
         </SButtonIcon>
       </template>
-      <nav class="flex flex-col">
+      <nav class="flex-c">
         <template v-for="(nav, index) in theme.nav" :key="index">
           <NavMenuItem v-if="isNavItemWithLink(nav)" :label="nav.label" :link="nav.link" />
           <SDropdownMenu v-else :label="nav.label" :items="nav.items" align="end" @select="handleSelect">

@@ -44,7 +44,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
     <div class="flex justify-around gap-6">
       <div class="w-full">
         <div class="py-12px text-18px">Size</div>
-        <div class="flex-col-stretch gap-3">
+        <div class="flex-c-stretch gap-3">
           <STextarea
             v-for="size in sizes"
             :key="size"
@@ -56,7 +56,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
       </div>
       <div class="w-full">
         <div class="py-12px text-18px">show count with size</div>
-        <div class="flex-col-stretch gap-3">
+        <div class="flex-c-stretch gap-3">
           <STextarea
             v-for="size in sizes"
             :key="size"
@@ -69,7 +69,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
       </div>
     </div>
     <div class="py-12px text-18px">Rows</div>
-    <div class="flex-col-stretch gap-3">
+    <div class="flex-c-stretch gap-3">
       <STextarea
         v-for="row in rows"
         :key="row"
@@ -85,7 +85,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
     <div class="py-12px text-18px">Disabled</div>
     <STextarea model-value="the Textarea is disabled" disabled placeholder="Please Input Textarea" />
     <div class="py-12px text-18px">Resize</div>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-c gap-6">
       <STextarea model-value="Resize None" :resize="false" />
       <STextarea model-value="Resize Vertical" resize="vertical" />
       <STextarea model-value="Resize Horizontal" resize="horizontal" />

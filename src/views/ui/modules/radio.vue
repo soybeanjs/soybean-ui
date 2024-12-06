@@ -22,11 +22,11 @@ function createRadioGroupItems(): RadioGroupItemProps[] {
 
 <template>
   <div class="py-12px text-18px">Color</div>
-  <div class="flex-col gap-12px">
+  <div class="flex-c gap-12px">
     <SRadioGroup v-for="color in colors" :key="color" :color="color" :items="items" />
   </div>
   <div class="py-12px text-18px">Size</div>
-  <div class="flex-col gap-12px">
+  <div class="flex-c gap-12px">
     <SRadioGroup v-for="size in sizes" :key="size" :size="size" :items="items" />
   </div>
   <div class="py-12px text-18px">Orientation: Vertical</div>

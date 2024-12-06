@@ -93,7 +93,7 @@ const placements = [
 
 <template>
   <div class="py-12px text-18px">Size</div>
-  <div class="w-fit flex-col gap-12px">
+  <div class="w-fit flex-c gap-12px">
     <SDropdownMenu v-for="size in sizes" :key="size" :size="size" :items="menus" @select="handleSelect">
       <template #trigger>
         <SButton variant="outline" :size="size">{{ size }} Dropdown</SButton>

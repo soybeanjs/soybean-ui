@@ -19,7 +19,7 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
     <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
   </div>
   <div class="py-12px text-18px">Variant</div>
-  <div class="flex-col-stretch gap-12px">
+  <div class="flex-c-stretch gap-12px">
     <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
       <SButton v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SButton>
     </div>
@@ -33,25 +33,25 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
   <div class="py-12px text-18px">Shape</div>
   <div class="flex flex-wrap gap-12px">
     <SButton color="primary" variant="solid" shape="rounded">rounded</SButton>
-    <div class="flex-col-center">
+    <div class="flex-c-center">
       <SButtonIcon color="destructive" variant="plain" shape="square">
         <Minus />
       </SButtonIcon>
       <div class="text-12px text-#666">square</div>
     </div>
-    <div class="flex-col-center">
+    <div class="flex-c-center">
       <SButtonIcon color="success" variant="outline" shape="circle">
         <Plus />
       </SButtonIcon>
       <div class="text-12px text-#666">circle</div>
     </div>
-    <div class="flex-col-center">
+    <div class="flex-c-center">
       <SButtonIcon color="warning" variant="dashed" shape="square">
         <Plus />
       </SButtonIcon>
       <div class="text-12px text-#666">square</div>
     </div>
-    <div class="flex-col-center">
+    <div class="flex-c-center">
       <SButtonIcon shape="circle">
         <Minus />
       </SButtonIcon>

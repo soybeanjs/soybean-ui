@@ -15,7 +15,7 @@ const splits: CardSplit[] = ['all', 'header', 'footer'];
 <template>
   <div class="w-800px lt-sm:w-full">
     <div class="py-12px text-18px">Size</div>
-    <div class="w-1/2 i-flex-col pr-10px lt-sm:(w-full pr-0)">
+    <div class="w-1/2 i-flex-c pr-10px lt-sm:(w-full pr-0)">
       <SCard v-for="size in sizes" :key="size" :title="`Size: ${size}`" :size="size" class="mb-12px">
         <template #extra>
           <span>extra</span>
@@ -24,7 +24,7 @@ const splits: CardSplit[] = ['all', 'header', 'footer'];
         <template #footer>Footer</template>
       </SCard>
     </div>
-    <div class="w-1/2 i-flex-col pl-10px lt-sm:(w-full pl-0)">
+    <div class="w-1/2 i-flex-c pl-10px lt-sm:(w-full pl-0)">
       <SCard v-for="size in sizes" :key="size" :title="`Size: ${size}`" :size="size" split="all" class="mb-12px">
         <template #extra>
           <span>extra</span>

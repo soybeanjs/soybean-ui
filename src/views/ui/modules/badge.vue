@@ -16,7 +16,7 @@ const variants: BadgeVariant[] = ['solid', 'plain', 'outline'];
     <SBadge v-for="color in colors" :key="color" :color="color">{{ color }}</SBadge>
   </div>
   <div class="py-12px text-18px">Variant</div>
-  <div class="flex-col-stretch gap-12px">
+  <div class="flex-c-stretch gap-12px">
     <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
       <SBadge v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SBadge>
     </div>

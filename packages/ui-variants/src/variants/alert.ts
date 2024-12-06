@@ -5,8 +5,8 @@ import type { VariantProps } from 'tailwind-variants';
 export const alertVariants = tv({
   slots: {
     root: 'relative w-full rounded-lg border px-4 py-3 text-sm',
-    header: 'flex-y-center justify-between',
-    titleRoot: 'flex-y-center gap-2',
+    header: 'flex items-center justify-between',
+    titleRoot: 'flex items-center gap-2',
     title: 'font-medium leading-none tracking-tight',
     description: 'mt-1 text-sm [&_p]:leading-relaxed'
   },

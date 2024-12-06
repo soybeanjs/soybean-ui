@@ -15,7 +15,7 @@ const modelValue = ref<string>('');
 <template>
   <div class="w-320px lt-sm:w-auto">
     <div class="py-12px text-18px">Input Size</div>
-    <div class="flex-col-stretch gap-3">
+    <div class="flex-c-stretch gap-3">
       <div v-for="size in sizes" :key="size">
         <div>{{ size }}</div>
         <SInput :size="size" placeholder="Please input" />

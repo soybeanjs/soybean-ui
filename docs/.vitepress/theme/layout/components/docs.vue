@@ -72,7 +72,7 @@ const activeSection = computed(() =>
       <!--
  <div
         v-if="!isExamplePage"
-        class="hidden xl:flex w-64 flex-shrink-0 py-12 pl-2 sticky top-[7.25rem] overflow-y-auto md:overflow-x-hidden h-[calc(100vh-7.25rem)] flex-col space-y-6 no-scrollbar"
+        class="hidden xl:flex w-64 flex-shrink-0 py-12 pl-2 sticky top-[7.25rem] overflow-y-auto md:overflow-x-hidden h-[calc(100vh-7.25rem)] flex-c space-y-6 no-scrollbar"
       >
         <DocOutline />
         <DocCommunity />

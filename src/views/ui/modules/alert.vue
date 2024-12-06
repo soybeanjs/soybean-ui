@@ -13,11 +13,11 @@ defineOptions({
 
 <template>
   <div class="py-12px text-18px">Color</div>
-  <div class="flex flex-col-stretch gap-12px">
+  <div class="flex flex-c-stretch gap-12px">
     <SAlert v-for="color in colors" :key="color" :color="color">{{ color }}</SAlert>
   </div>
   <div class="py-12px text-18px">Variant</div>
-  <div class="flex flex-col-stretch gap-12px">
+  <div class="flex flex-c-stretch gap-12px">
     <SAlert v-for="(variant, index) in variants" :key="variant" :color="colors[index]" :variant="variant" closable>
       {{ variant }}
     </SAlert>

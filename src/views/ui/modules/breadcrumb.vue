@@ -138,7 +138,7 @@ function handleClick(item: BreadcrumbItem) {
     </template>
   </SBreadcrumb>
   <div class="py-12px text-18px">Size</div>
-  <div class="flex-col-stretch gap-12px">
+  <div class="flex-c-stretch gap-12px">
     <div v-for="size in sizes" :key="size" class="flex gap-12px">
       <span class="w-36px text-right">{{ size }}:</span>
       <SBreadcrumb :items :size="size" />

@@ -5,7 +5,7 @@ export const pinInputVariants = tv({
   slots: {
     inputRoot: `flex items-center`,
     input: [
-      `relative flex-center text-center border-y border-r border-input bg-background transition-all`,
+      `relative flex items-center justify-center text-center border-y border-r border-input bg-background transition-all`,
       `focus-visible:(outline outline-2 outline-primary z-10) disabled:(cursor-not-allowed opacity-50)`
     ],
     separator: `text-muted-foreground`

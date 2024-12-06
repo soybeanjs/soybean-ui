@@ -30,11 +30,11 @@ onMounted(() => {
 <template>
   <div class="w-320px lt-sm:w-auto">
     <div class="py-12px text-18px">Color</div>
-    <div class="flex flex-col gap-12px">
+    <div class="flex flex-c gap-12px">
       <SProgress v-for="color in colors" :key="color" :model-value="outputValue" :color="color" />
     </div>
     <div class="py-12px text-18px">Size</div>
-    <div class="flex flex-col gap-12px">
+    <div class="flex flex-c gap-12px">
       <SProgress
         v-for="(size, index) in sizes"
         :key="size"

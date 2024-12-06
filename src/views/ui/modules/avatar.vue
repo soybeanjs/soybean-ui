@@ -23,7 +23,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   </div>
   <div class="py-12px text-18px">Size</div>
   <div class="flex gap-12px">
-    <div v-for="size in sizes" :key="size" class="flex-col-center">
+    <div v-for="size in sizes" :key="size" class="flex-c-center">
       <SAvatar :size="size" :src="soybeanSrc" alt="SoybeanAdmin" fallback-label="SOY" />
       <p>{{ size }}</p>
     </div>

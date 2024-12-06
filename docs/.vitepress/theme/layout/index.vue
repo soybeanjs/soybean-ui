@@ -14,7 +14,7 @@ const { top } = toRefs(arrivedState);
 </script>
 
 <template>
-  <div class="h-full flex-col items-center">
+  <div class="h-full flex-c items-center">
     <header
       class="sticky top-0 z-10 h-68px w-full py-4 transition-all duration-500"
       :class="[
@@ -36,7 +36,7 @@ const { top } = toRefs(arrivedState);
       </div>
     </header>
 
-    <div v-if="frontmatter.layout === 'home'" class="size-full flex-col flex-1 justify-between">
+    <div v-if="frontmatter.layout === 'home'" class="size-full flex-c flex-1 justify-between">
       <Home />
       <div></div>
     </div>

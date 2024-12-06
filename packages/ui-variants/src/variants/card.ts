@@ -4,12 +4,12 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const cardVariants = tv({
   slots: {
-    root: 'flex-col-stretch rounded-md border bg-card text-card-foreground shadow-sm',
-    header: 'flex-y-center justify-between',
+    root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
+    header: 'flex items-center justify-between',
     title: 'font-semibold leading-none tracking-tight',
-    titleRoot: 'flex-y-center gap-2',
+    titleRoot: 'flex items-center gap-2',
     content: 'flex-grow overflow-hidden',
-    footer: 'flex-y-center justify-between'
+    footer: 'flex items-center justify-between'
   },
   variants: {
     size: {
