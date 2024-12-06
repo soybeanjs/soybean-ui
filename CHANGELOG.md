@@ -1,6 +1,53 @@
 # Changelog
 
 
+## [v0.0.1-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.1...v0.0.1-beta.2) (2024-12-07)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**:
+  - ui: fix dropdown portal &nbsp;-&nbsp; by @soybeanjs [<samp>(214d6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/214d6b7)
+  - ui: fix style &nbsp;-&nbsp; by @soybeanjs [<samp>(8a6bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8a6bbb7)
+- **projects**:
+  - fix ui path in unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(07851)</samp>](https://github.com/soybeanjs/soybean-ui/commit/07851fb)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **projects**:
+  - optimize code &nbsp;-&nbsp; by @soybeanjs [<samp>(0839b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0839bb1)
+  - optimize unocss class &nbsp;-&nbsp; by @soybeanjs [<samp>(0f895)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0f895dd)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: add CHANGELOG &nbsp;-&nbsp; by @soybeanjs [<samp>(91cc1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/91cc1c7)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(71c9d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/71c9d2d)
+- **project**:
+  - update config &nbsp;-&nbsp; by @soybeanjs [<samp>(1619a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1619a53)
+- **projects**:
+  - update package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(f5a0b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5a0bcb)
+  - update scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(47c15)</samp>](https://github.com/soybeanjs/soybean-ui/commit/47c15e0)
+  - rename package name &nbsp;-&nbsp; by @soybeanjs [<samp>(885c1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/885c18e)
+  - update package name &nbsp;-&nbsp; by @soybeanjs [<samp>(3ffe5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3ffe5d0)
+  - rename package name &nbsp;-&nbsp; by @soybeanjs [<samp>(6c56a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6c56a5e)
+  - update package config &nbsp;-&nbsp; by @soybeanjs [<samp>(70e19)</samp>](https://github.com/soybeanjs/soybean-ui/commit/70e191d)
+  - support stub packages &nbsp;-&nbsp; by @soybeanjs [<samp>(5a234)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5a234c6)
+  - update scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(d902d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d902d53)
+  - build packages &nbsp;-&nbsp; by @soybeanjs [<samp>(f27f9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f27f959)
+  - optimize scripts stub and restore &nbsp;-&nbsp; by @soybeanjs [<samp>(e6ae7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e6ae719)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(464b8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/464b8fd)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: scrollbar style &nbsp;-&nbsp; by @soybeanjs [<samp>(39555)</samp>](https://github.com/soybeanjs/soybean-ui/commit/39555f4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.1](https://github.com/soybeanjs/soybean-ui/commit/8ccc5424a4b9eb39c3476ed946274288673ed6af) (2024-12-05)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
