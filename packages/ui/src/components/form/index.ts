@@ -7,3 +7,4 @@ import SFormField from './form-filed.vue';
 import { FORM_ITEM_INJECTION_KEY } from './hooks';
 
 export { SFormControl, SFormItem, SFormLabel, SFormDescription, SFormMessage, SFormField, FORM_ITEM_INJECTION_KEY };
+export * from 'vee-validate';

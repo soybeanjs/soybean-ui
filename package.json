@@ -21,6 +21,7 @@
   "keywords": ["UI", "UnoCSS"],
   "scripts": {
     "build": "pnpm build:pkg && vite build",
+    "build-only": "vite build",
     "build:docs": "pnpm build:pkg && pnpm -r --filter='./docs' run docs:build",
     "build:pkg": "pnpm -r --filter='./packages/**' run build",
     "cleanup": "soy cleanup",

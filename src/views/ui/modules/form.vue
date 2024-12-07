@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { FieldArray, useForm } from 'vee-validate';
-import { toTypedSchema } from '@vee-validate/zod';
-import z from 'zod';
 import {
+  FieldArray,
   SButton,
   SButtonIcon,
   SCheckboxGroup,
@@ -12,8 +10,11 @@ import {
   SLabel,
   SRadioGroup,
   SSelect,
-  SSwitch
+  SSwitch,
+  useForm
 } from '@soybean-ui/vue';
+import { toTypedSchema } from '@vee-validate/zod';
+import z from 'zod';
 import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from '@soybean-ui/vue';
 import { Minus, Plus } from 'lucide-vue-next';
 
@@ -37,7 +38,7 @@ const user = z.object({
   username: requiredString('Username is required'),
   gender: z.enum(['male', 'female'], { required_error: 'Gender is required' }),
   remember: z.boolean({ required_error: 'Remember is required' }),
-  hobbies: z.array(z.string()),
+  hobbies: z.array(z.string(), { required_error: 'Hobbies is required' }).min(1, { message: 'Hobbies is required' }),
   city: requiredString('City is required'),
   social: z.array(z.object({ name: z.string(), url: z.string() }), { required_error: 'Social is required' })
 } satisfies Record<keyof User, z.ZodTypeAny>);

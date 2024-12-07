@@ -24,7 +24,13 @@ const forwardedProps = useForwardProps(delegatedProps);
       <SFormLabel>
         <slot name="label">{{ label }}</slot>
       </SFormLabel>
-      <SFormControl v-bind="componentField">
+      <SFormControl
+        :model-value="componentField.modelValue"
+        @update:model-value="componentField['onUpdate:modelValue']"
+        @change="componentField['onChange']"
+        @blur="componentField['onBlur']"
+        @input="componentField['onInput']"
+      >
         <slot />
       </SFormControl>
       <SFormDescription v-if="description">
