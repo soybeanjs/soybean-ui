@@ -33,6 +33,14 @@ function openToastWithDescription() {
   });
 }
 
+function openLoadingToast() {
+  const id = toast.loading('Event has been created');
+
+  setTimeout(() => {
+    toast.dismiss(id);
+  }, 2000);
+}
+
 function openToastWithAction() {
   toast('Event has been created', {
     action: {
@@ -50,7 +58,7 @@ function openToastWithAction() {
   });
 }
 
-const position = ref<SonnerProps['position']>('bottom-right');
+const position = ref<SonnerProps['position']>('top-right');
 
 const positionOptions: SelectOption[] = [
   { label: 'Top Left', value: 'top-left' },
@@ -64,7 +72,7 @@ const positionOptions: SelectOption[] = [
 
 <template>
   <div>
-    <SonnerToaster :position />
+    <SonnerToaster :position close-button />
     <div class="py-12px text-18px">Type</div>
     <div class="flex gap-12px">
       <SButton variant="outline" @click="openDefaultToast">Default</SButton>
@@ -72,6 +80,7 @@ const positionOptions: SelectOption[] = [
       <SButton variant="outline" @click="openSuccessToast">Success</SButton>
       <SButton variant="outline" @click="openWarningToast">Warning</SButton>
       <SButton variant="outline" @click="openErrorToast">Error</SButton>
+      <SButton variant="outline" @click="openLoadingToast">Loading</SButton>
     </div>
     <div class="py-12px text-18px">With Description</div>
     <SButton variant="outline" @click="openToastWithDescription">open</SButton>

@@ -8,7 +8,9 @@ export {
   useForwardPropsEmits,
   useOmitForwardProps,
   usePickForwardProps,
-  useCombinedPropsEmits
+  useCombinedPropsEmits,
+  createContext,
+  useContext
 } from './composables';
 
 export * from './types';

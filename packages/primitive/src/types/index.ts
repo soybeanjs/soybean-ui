@@ -1,10 +1,11 @@
-import type { DefineComponent, SlotsType } from 'vue';
+import type { DefineComponent, SlotsType, VNode } from 'vue';
 
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
 export type ClassValueProp = {
   /** class name */
   class?: ClassValue;
 };
+export type StringOrVNode = string | VNode | (() => VNode);
 
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';

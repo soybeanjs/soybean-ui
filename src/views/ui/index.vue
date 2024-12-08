@@ -2,7 +2,7 @@
 import { type Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
-import { SButtonIcon, SCard, SScrollArea, Stabs } from '@soybean-ui/vue';
+import { SButtonIcon, SCard, SScrollArea, SToastProvider, Stabs } from '@soybean-ui/vue';
 import type { TabsOption } from '@soybean-ui/vue';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
@@ -38,6 +38,7 @@ import UiSonner from './modules/sonner.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTabs from './modules/tabs.vue';
 import UiTextarea from './modules/textarea.vue';
+import UiToast from './modules/toast.vue';
 import UiToggle from './modules/toggle.vue';
 import UiToggleGroup from './modules/toggle-group.vue';
 import UiTooltip from './modules/tooltip.vue';
@@ -230,6 +231,11 @@ const tabs: TabConfig[] = [
     component: UiToggle
   },
   {
+    value: 'toast',
+    label: 'Toast',
+    component: UiToast
+  },
+  {
     value: 'toggle-group',
     label: 'ToggleGroup',
     component: UiToggleGroup
@@ -243,32 +249,34 @@ const tabs: TabConfig[] = [
 </script>
 
 <template>
-  <div class="h-full p-16px">
-    <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
-      <template #extra>
-        <SButtonIcon size="lg" @click="toggleDark">
-          <Sun v-if="isDark" />
-          <Moon v-else />
-        </SButtonIcon>
-      </template>
-      <Stabs
-        v-model="activeTab"
-        :items="tabs"
-        :enable-indicator="false"
-        class="h-full"
-        list-class="flex-wrap justify-start"
-        trigger-class="flex-none max-w-120px w-1/3"
-      >
-        <template #content="{ component }">
-          <SScrollArea class="h-full">
-            <div class="p-18px">
-              <component :is="component" />
-            </div>
-          </SScrollArea>
+  <SToastProvider>
+    <div class="h-full p-16px">
+      <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
+        <template #extra>
+          <SButtonIcon size="lg" @click="toggleDark">
+            <Sun v-if="isDark" />
+            <Moon v-else />
+          </SButtonIcon>
         </template>
-      </Stabs>
-    </SCard>
-  </div>
+        <Stabs
+          v-model="activeTab"
+          :items="tabs"
+          :enable-indicator="false"
+          class="h-full"
+          list-class="flex-wrap justify-start"
+          trigger-class="flex-none max-w-120px w-1/3"
+        >
+          <template #content="{ component }">
+            <SScrollArea class="h-full">
+              <div class="p-18px">
+                <component :is="component" />
+              </div>
+            </SScrollArea>
+          </template>
+        </Stabs>
+      </SCard>
+    </div>
+  </SToastProvider>
 </template>
 
 <style scoped></style>

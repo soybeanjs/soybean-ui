@@ -1,0 +1,30 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { ToastRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { cn, toastVariants } from '@soybean-ui/variants';
+import type { ToastRootEmits, ToastRootProps } from './types';
+
+defineOptions({
+  name: 'SToastRoot'
+});
+
+const { class: cls, color, ...delegatedProps } = defineProps<ToastRootProps>();
+
+const emit = defineEmits<ToastRootEmits>();
+
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
+
+const mergedCls = computed(() => {
+  const { root } = toastVariants({ color });
+
+  return cn(root(), cls);
+});
+</script>
+
+<template>
+  <ToastRoot v-bind="forwarded" :class="mergedCls">
+    <slot />
+  </ToastRoot>
+</template>
+
+<style scoped></style>

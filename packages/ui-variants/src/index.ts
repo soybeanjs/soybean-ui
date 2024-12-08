@@ -30,6 +30,7 @@ export * from './variants/sheet';
 export * from './variants/switch';
 export * from './variants/tabs';
 export * from './variants/textarea';
+export * from './variants/toast';
 export * from './variants/toggle';
 export * from './variants/tooltip';
 

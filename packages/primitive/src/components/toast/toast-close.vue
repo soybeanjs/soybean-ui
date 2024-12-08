@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectToastRootContext } from './context';
+import ToastAnnounceExclude from './toast-announce-exclude.vue';
 import type { ToastClosePropsWithPrimitive } from './types';
 
 defineOptions({
