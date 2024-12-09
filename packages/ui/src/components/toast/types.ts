@@ -1,16 +1,17 @@
 import type { Component, ComputedRef, Ref } from 'vue';
 import type {
   StringOrVNode,
-  ToastActionProps,
   ToastCloseProps,
   ToastDescriptionProps,
   ToastRootEmits,
   ToastTitleProps,
   ToastViewportProps,
+  ToastActionProps as _ToastActionProps,
   ToastProviderProps as _ToastProviderProps,
   ToastRootProps as _ToastRootProps
 } from '@soybean-ui/primitive';
 import type { ThemeColor } from '../../types';
+import type { ButtonProps } from '../button';
 
 export interface ToastProviderProps extends _ToastProviderProps {
   /**
@@ -30,6 +31,8 @@ export interface ToastProviderProps extends _ToastProviderProps {
 export interface ToastRootProps extends _ToastRootProps {
   color?: ThemeColor;
 }
+
+export interface ToastActionProps extends _ToastActionProps, ButtonProps {}
 
 export interface ToastState extends ToastRootProps {
   id: string;
@@ -75,11 +78,4 @@ export interface ToastContext {
   toast(props: Omit<ToastState, 'id'>): ToastReturn;
 }
 
-export type {
-  ToastViewportProps,
-  ToastTitleProps,
-  ToastDescriptionProps,
-  ToastCloseProps,
-  ToastActionProps,
-  ToastRootEmits
-};
+export type { ToastViewportProps, ToastTitleProps, ToastDescriptionProps, ToastCloseProps, ToastRootEmits };
