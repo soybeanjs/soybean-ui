@@ -17,7 +17,9 @@ const mergedCls = computed(() => cn(title(), cls));
 
 <template>
   <ToastTitle :class="mergedCls">
+    <slot name="title-leading" />
     <slot />
+    <slot name="title-trailing" />
   </ToastTitle>
 </template>
 

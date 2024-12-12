@@ -10,41 +10,52 @@ const { toast } = useToast();
 function openToast() {
   toast({
     title: 'Hello',
-    description: 'This is a toast',
-    duration: 100 * 1000
+    description: 'This is a toast'
   });
 }
 
-function openToast2() {
+function openToastWithSuccessIcon() {
   toast({
-    title: 'Hello',
-    description: 'This is a toast',
-    color: 'destructive'
+    title: 'Success Icon',
+    description: 'This is a toast with success icon',
+    iconType: 'success'
   });
 }
 
-function openToast3() {
+function openDestructiveToast() {
   toast({
-    title: 'Hello',
-    description: 'This is a toast',
-    color: 'success'
+    title: 'Destructive',
+    description: 'This is a toast with destructive color',
+    richColor: 'destructive'
+  });
+}
+
+function openToastWithWarningColorAndIcon() {
+  toast({
+    title: 'Warning Icon',
+    description: 'This is a toast with warning icon',
+    iconType: 'warning',
+    richColor: 'warning'
   });
 }
 
 function openToastWithAction() {
   toast({
-    title: 'Hello',
-    description: 'This is a toast',
+    title: 'Action',
+    description: 'This is a toast with action',
     action: <SToastAction altText="Click me">Click me</SToastAction>
   });
 }
 </script>
 
 <template>
-  <SButton @click="openToast">open</SButton>
-  <SButton @click="openToast2">open2</SButton>
-  <SButton @click="openToast3">open3</SButton>
-  <SButton @click="openToastWithAction">openWithAction</SButton>
+  <div class="flex gap-2">
+    <SButton variant="outline" @click="openToast">Default</SButton>
+    <SButton variant="outline" @click="openDestructiveToast">Destructive</SButton>
+    <SButton variant="outline" @click="openToastWithSuccessIcon">Success Icon</SButton>
+    <SButton variant="outline" @click="openToastWithAction">With Action</SButton>
+    <SButton variant="outline" @click="openToastWithWarningColorAndIcon">Warning Color And Icon</SButton>
+  </div>
 </template>
 
 <style scoped></style>

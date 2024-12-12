@@ -28,8 +28,11 @@ export interface ToastProviderProps extends _ToastProviderProps {
   toastRemoveDelay?: number;
 }
 
+export type ToastIconType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
+
 export interface ToastRootProps extends _ToastRootProps {
-  color?: ThemeColor;
+  iconType?: ToastIconType;
+  richColor?: ThemeColor;
 }
 
 export interface ToastActionProps extends _ToastActionProps, ButtonProps {}

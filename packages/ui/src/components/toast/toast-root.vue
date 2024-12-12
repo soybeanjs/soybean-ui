@@ -8,14 +8,14 @@ defineOptions({
   name: 'SToastRoot'
 });
 
-const { class: cls, color, ...delegatedProps } = defineProps<ToastRootProps>();
+const { class: cls, iconType: _iconType, richColor, ...delegatedProps } = defineProps<ToastRootProps>();
 
 const emit = defineEmits<ToastRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { root } = toastVariants({ color });
+  const { root } = toastVariants({ richColor });
 
   return cn(root(), cls);
 });

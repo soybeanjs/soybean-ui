@@ -13,15 +13,16 @@ export const toastVariants = tv({
     ],
     viewport: [
       `fixed top-0 z-100 flex max-h-screen w-full flex-col-reverse p-4`,
+      `focus-visible:outline-none`,
       `sm:(bottom-0 right-0 top-auto flex-col) md:max-w-420px`
     ],
-    title: `text-sm font-semibold [&+div]:text-xs`,
+    title: `flex items-center gap-2 text-sm font-semibold [&+div]:text-xs`,
     description: `text-sm opacity-90`,
     close: `absolute right-1 top-1 opacity-0 transition-opacity group-hover:opacity-100`,
     action: ''
   },
   variants: {
-    color: {
+    richColor: {
       primary: {
         root: 'border-primary bg-primary/10 text-primary'
       },
