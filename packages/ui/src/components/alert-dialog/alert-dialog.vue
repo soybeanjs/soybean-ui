@@ -1,16 +1,23 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import type { FunctionalComponent } from 'vue';
+import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
+import type { LucideProps } from 'lucide-vue-next';
 import {
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTrigger,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
-  useOmitForwardProps,
   usePickForwardProps
 } from '@soybean-ui/primitive';
-import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
-import type { AlertDialogEmits, AlertDialogProps } from './types';
+import SAlertDialogContent from './alert-dialog-content.vue';
+import SAlertDialogHeader from './alert-dialog-header.vue';
+import SAlertDialogTitle from './alert-dialog-title.vue';
+import SAlertDialogDescription from './alert-dialog-description.vue';
+import SAlertDialogFooter from './alert-dialog-footer.vue';
+import type { AlertDialogEmits, AlertDialogProps, AlertType } from './types';
 
 defineOptions({
   name: 'SAlertDialog'
@@ -20,38 +27,45 @@ const props = defineProps<AlertDialogProps>();
 
 const emit = defineEmits<AlertDialogEmits>();
 
-type Slots = {
-  trigger: () => any;
-  default: () => any;
-  header: () => any;
-  'title-root': () => any;
-  title: () => any;
-  'title-leading': () => any;
-  'title-trailing': () => any;
-  extra: () => any;
-  close: () => any;
-  footer: () => any;
-};
-
-const slots = defineSlots<Slots>();
-
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen']);
 
-const forwardedContentProps = useOmitForwardProps(props, [
-  'open',
-  'defaultOpen',
-  'to',
-  'disabledPortal',
-  'forceMountPortal',
-  'overlayClass',
-  'forceMountOverlay'
+const forwardedContentProps = usePickForwardProps(props, [
+  'class',
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
 ]);
 
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
 const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 
-const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
+const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
+  destructive: {
+    icon: CircleX,
+    class: 'text-destructive'
+  },
+  success: {
+    icon: CircleCheck,
+    class: 'text-success'
+  },
+  warning: {
+    icon: CircleAlert,
+    class: 'text-warning'
+  },
+  info: {
+    icon: Info,
+    class: 'text-info'
+  }
+};
+
+const iconProps = computed(() => {
+  if (!props.type) {
+    return null;
+  }
+
+  return iconRecord[props.type];
+});
 </script>
 
 <template>
@@ -59,12 +73,22 @@ const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (k
     <AlertDialogTrigger as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
-    <AlertDialogPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SAlertDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
+    <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <SAlertDialogOverlay :class="overlayClass" :force-mount="forceMountOverlay" />
       <SAlertDialogContent v-bind="forwardedContent">
-        <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" />
-        </template>
+        <SAlertDialogHeader :class="headerClass">
+          <SAlertDialogTitle :class="titleClass">
+            <component :is="iconProps.icon" v-if="iconProps" :class="iconProps.class" />
+            <slot name="title">{{ title }}</slot>
+          </SAlertDialogTitle>
+          <SAlertDialogDescription :class="descriptionClass">
+            <slot name="description">{{ description }}</slot>
+          </SAlertDialogDescription>
+        </SAlertDialogHeader>
+        <slot />
+        <SAlertDialogFooter :class="footerClass">
+          <slot name="footer" />
+        </SAlertDialogFooter>
       </SAlertDialogContent>
     </AlertDialogPortal>
   </AlertDialogRoot>

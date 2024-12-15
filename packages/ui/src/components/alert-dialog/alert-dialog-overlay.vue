@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertDialogOverlay } from '@soybean-ui/primitive';
-import { cn, dialogVariants } from '@soybean-ui/variants';
+import { alertDialogVariants, cn } from '@soybean-ui/variants';
 import type { AlertDialogOverlayProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 
 const { class: cls, forceMount } = defineProps<AlertDialogOverlayProps>();
 
-const { overlay } = dialogVariants();
+const { overlay } = alertDialogVariants();
 
 const mergedCls = computed(() => cn(overlay(), cls));
 </script>

@@ -17,6 +17,7 @@ import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiChip from './modules/chip.vue';
 import UiCollapsible from './modules/collapsible.vue';
+import UiCommand from './modules/command.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
@@ -119,6 +120,11 @@ const tabs: TabConfig[] = [
     value: 'collapsible',
     label: 'Collapsible',
     component: UiCollapsible
+  },
+  {
+    value: 'command',
+    label: 'Command',
+    component: UiCommand
   },
   {
     value: 'dialog',

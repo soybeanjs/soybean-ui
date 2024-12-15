@@ -1,5 +1,6 @@
 export * from './variants/accordion';
 export * from './variants/alert';
+export * from './variants/alert-dialog';
 export * from './variants/avatar';
 export * from './variants/badge';
 export * from './variants/breadcrumb';
@@ -9,6 +10,7 @@ export * from './variants/card';
 export * from './variants/checkbox';
 export * from './variants/chip';
 export * from './variants/collapsible';
+export * from './variants/command';
 export * from './variants/dialog';
 export * from './variants/drawer';
 export * from './variants/dropdown-menu';
