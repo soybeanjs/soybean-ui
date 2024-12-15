@@ -22,9 +22,9 @@ import type {
 } from '@soybean-ui/primitive';
 import type { InputProps } from '../input';
 
-export interface CommandRootProps<T extends AcceptableValue> extends ComboboxRootProps<T> {}
+export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ComboboxRootProps<T> {}
 
-export type CommandRootEmits<T extends AcceptableValue> = ComboboxRootEmits<T>;
+export type CommandRootEmits<T extends AcceptableValue = AcceptableValue> = ComboboxRootEmits<T>;
 
 export interface CommandInputWrapperProps extends ClassValueProp {}
 
@@ -42,9 +42,9 @@ export interface CommandGroupProps extends ComboboxGroupProps {}
 
 export interface CommandGroupHeadingProps extends ClassValueProp {}
 
-export interface CommandItemProps<T extends AcceptableValue> extends ComboboxItemProps<T> {}
+export interface CommandItemProps<T extends AcceptableValue = AcceptableValue> extends ComboboxItemProps<T> {}
 
-export type CommandItemEmits<T extends AcceptableValue> = ComboboxItemEmits<T>;
+export type CommandItemEmits<T extends AcceptableValue = AcceptableValue> = ComboboxItemEmits<T>;
 
 export interface CommandSeparatorProps extends ComboboxSeparatorProps {}
 
@@ -79,7 +79,10 @@ export type CommandItemOption<T extends AcceptableValue = AcceptableValue> =
   | CommandItemSingleOption<T>
   | CommandItemGroupOption<T>;
 
-export interface CommandProps<T extends AcceptableValue, S extends CommandItemOption<T>> extends CommandRootProps<T> {
+export interface CommandProps<
+  T extends AcceptableValue = AcceptableValue,
+  S extends CommandItemOption<T> = CommandItemOption<T>
+> extends CommandRootProps<T> {
   items: S[];
   inputWrapperClass?: ClassValue;
   inputClass?: ClassValue;
@@ -97,10 +100,10 @@ export interface CommandProps<T extends AcceptableValue, S extends CommandItemOp
   shortcutClass?: ClassValue;
 }
 
-export type CommandItemOptionEmits<T extends AcceptableValue> = {
+export type CommandItemOptionEmits<T extends AcceptableValue = AcceptableValue> = {
   select: [item: CommandItemSingleOption<T>, event: SelectEvent<T>];
 };
 
-export type CommandEmits<T extends AcceptableValue> = ComboboxRootEmits<T> &
+export type CommandEmits<T extends AcceptableValue = AcceptableValue> = ComboboxRootEmits<T> &
   CommandListEmits &
   CommandItemOptionEmits<T>;
