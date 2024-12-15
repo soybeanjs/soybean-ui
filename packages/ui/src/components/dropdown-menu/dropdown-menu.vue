@@ -49,7 +49,6 @@ const optionEmitKeys: (keyof Emits)[] = [
   'pointerDownOutsideSub'
 ];
 
-// @ts-expect-error ignore type
 const forwardedWrapperEmits = useOmitEmitAsProps(emit, optionEmitKeys);
 
 const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
@@ -73,7 +72,6 @@ const combinedSubContentProps = computed(() => ({
   ...props.subContentProps
 }));
 
-// @ts-expect-error ignore type
 const forwardedOptionEmits = usePickEmitAsProps(emit, optionEmitKeys);
 </script>
 

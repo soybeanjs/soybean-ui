@@ -11,7 +11,7 @@ defineOptions({
 
 const { class: cls, ...delegatedProps } = defineProps<CommandItemProps<T>>();
 
-const emit = defineEmits<CommandItemEmits>();
+const emit = defineEmits<CommandItemEmits<T>>();
 
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit);
 

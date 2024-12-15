@@ -44,16 +44,16 @@ export function useEmitAsProps<Name extends string>(
   return result;
 }
 
-export function usePickEmitAsProps<Name extends string, E extends (name: Name, ...args: any[]) => void>(
-  emit: E,
-  splitEvents: Name[]
+export function usePickEmitAsProps<T extends Record<string, any>>(
+  emit: (...args: any[]) => void,
+  splitEvents: (keyof T)[]
 ) {
   return useEmitAsProps(emit, splitEvents, 'pick');
 }
 
-export function useOmitEmitAsProps<Name extends string, E extends (name: Name, ...args: any[]) => void>(
-  emit: E,
-  splitEvents: Name[]
+export function useOmitEmitAsProps<T extends Record<string, any>>(
+  emit: (...args: any[]) => void,
+  splitEvents: (keyof T)[]
 ) {
   return useEmitAsProps(emit, splitEvents, 'omit');
 }

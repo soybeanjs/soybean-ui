@@ -1,33 +1,48 @@
 import type {
   AlertDialogContentEmits,
+  AlertDialogContentProps,
+  AlertDialogDescriptionProps,
   AlertDialogOverlayProps,
   AlertDialogPortalProps,
+  AlertDialogRootEmits,
   AlertDialogRootProps,
+  AlertDialogTitleProps,
   ClassValue,
-  AlertDialogContentProps as _AlertDialogContentProps,
-  AlertDialogRootEmits as _AlertDialogRootEmits
+  ClassValueProp
 } from '@soybean-ui/primitive';
 import type { ThemeColor } from '@soybean-ui/variants';
-import type { CardProps } from '../card/types';
 
 export type AlertType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
-export type AlertDialogContentProps = CardProps &
-  _AlertDialogContentProps & {
-    type?: AlertType;
-  };
+export interface AlertDialogHeaderProps extends ClassValueProp {}
+
+export interface AlertDialogFooterProps extends ClassValueProp {}
 
 export type AlertDialogProps = AlertDialogRootProps &
   AlertDialogContentProps &
   Pick<AlertDialogPortalProps, 'to'> & {
+    type?: AlertType;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;
     forceMountOverlay?: boolean;
+    headerClass?: ClassValue;
+    title?: string;
+    titleClass?: ClassValue;
+    description?: string;
+    descriptionClass?: ClassValue;
+    footerClass?: ClassValue;
   };
-
-export type AlertDialogRootEmits = _AlertDialogRootEmits;
 
 export type AlertDialogEmits = AlertDialogRootEmits & AlertDialogContentEmits;
 
-export type { AlertDialogPortalProps, AlertDialogContentEmits, AlertDialogOverlayProps };
+export type {
+  AlertDialogRootProps,
+  AlertDialogRootEmits,
+  AlertDialogPortalProps,
+  AlertDialogContentProps,
+  AlertDialogContentEmits,
+  AlertDialogOverlayProps,
+  AlertDialogTitleProps,
+  AlertDialogDescriptionProps
+};

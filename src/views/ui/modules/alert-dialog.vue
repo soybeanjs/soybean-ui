@@ -21,7 +21,7 @@ defineOptions({
   <div class="py-12px text-18px">Success</div>
   <SAlertDialog title="Congratulations" type="success">
     <template #trigger>
-      <SButton variant="outline">Show Dialog</SButton>
+      <SButton color="success" variant="outline">Show Dialog</SButton>
     </template>
     <p>You have successfully completed the task</p>
     <template #footer>
