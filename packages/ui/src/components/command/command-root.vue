@@ -9,7 +9,7 @@ defineOptions({
   name: 'SCommandRoot'
 });
 
-const { open = true, modelValue, class: cls, ...delegatedProps } = defineProps<CommandRootProps<T>>();
+const { open = true, class: cls, ...delegatedProps } = defineProps<CommandRootProps<T>>();
 
 const emit = defineEmits<CommandRootEmits<T>>();
 
@@ -21,7 +21,7 @@ const mergedCls = computed(() => cn(root(), cls));
 </script>
 
 <template>
-  <ComboboxRoot v-bind="forwarded" :class="mergedCls" :open="open" :model-value="modelValue">
+  <ComboboxRoot v-bind="forwarded" :class="mergedCls" :open="open">
     <slot />
   </ComboboxRoot>
 </template>
