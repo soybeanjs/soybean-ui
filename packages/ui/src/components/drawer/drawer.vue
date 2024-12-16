@@ -5,12 +5,14 @@ import {
   DrawerRoot,
   DrawerTrigger,
   useForwardPropsEmits,
-  useOmitForwardProps,
-  usePickForwardProps
+  useOmitForwardProps
 } from '@soybean-ui/primitive';
-import type { CardProps } from '../card/types';
+import { SDialogClose, SDialogDescription, SDialogHeader, SDialogTitle } from '../dialog';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';
+import SDrawerContentBody from './drawer-content-body.vue';
+import SDrawerKnob from './drawer-knob.vue';
+import SDrawerFooter from './drawer-footer.vue';
 import type { DrawerEmits, DrawerProps } from './types';
 
 defineOptions({
@@ -21,49 +23,23 @@ const props = defineProps<DrawerProps>();
 
 const emit = defineEmits<DrawerEmits>();
 
-type Slots = {
-  trigger: () => any;
-  default: () => any;
-  header: () => any;
-  'title-root': () => any;
-  title: () => any;
-  'title-leading': () => any;
-  'title-trailing': () => any;
-  extra: () => any;
-  close: () => any;
-  footer: () => any;
-};
-
-const slots = defineSlots<Slots>();
-
-const cardPropKeys = [
-  'class',
-  'size',
-  'title',
-  'split',
-  'headerClass',
-  'titleRootClass',
-  'titleClass',
-  'contentClass',
-  'footerClass'
-] satisfies (keyof CardProps)[];
-
 const forwardedRootProps = useOmitForwardProps(props, [
+  'class',
   'to',
   'disabledPortal',
   'forceMountPortal',
   'overlayClass',
+  'headerClass',
+  'title',
+  'titleClass',
+  'description',
+  'descriptionClass',
   'showClose',
   'closeClass',
-  'cardClass',
-  ...cardPropKeys
+  'footerClass'
 ]);
 
 const forwardedRoot = useForwardPropsEmits(forwardedRootProps, emit);
-
-const forwardedContentProps = usePickForwardProps(props, [...cardPropKeys, 'showClose', 'closeClass', 'cardClass']);
-
-const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 
 const css = `
 [soybean-drawer] {
@@ -179,10 +155,23 @@ useStyleTag(css, { id: 'soybean-drawer-style' });
     </DrawerTrigger>
     <DrawerPortal>
       <SDrawerOverlay :class="overlayClass" />
-      <SDrawerContent v-bind="forwardedContentProps">
-        <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" />
-        </template>
+      <SDrawerContent :class="props.class">
+        <SDrawerKnob />
+        <SDrawerContentBody :class="contentBodyClass">
+          <SDialogHeader :class="headerClass">
+            <SDialogTitle :class="titleClass">
+              <slot name="title">{{ title }}</slot>
+            </SDialogTitle>
+            <SDialogDescription :class="descriptionClass">
+              <slot name="description">{{ description }}</slot>
+            </SDialogDescription>
+          </SDialogHeader>
+          <SDialogClose :class="closeClass" />
+          <slot />
+          <SDrawerFooter :class="footerClass">
+            <slot name="footer" />
+          </SDrawerFooter>
+        </SDrawerContentBody>
       </SDrawerContent>
     </DrawerPortal>
   </DrawerRoot>

@@ -1,25 +1,28 @@
 import type {
   ClassValue,
   ClassValueProp,
-  DialogPortalProps as DrawerPortalProps,
+  DialogDescriptionProps,
+  DialogPortalProps,
+  DialogTitleProps,
   DrawerRootEmits,
   DrawerRootProps
 } from '@soybean-ui/primitive';
-import type { CardProps } from '../card/types';
 
 export interface DrawerOverlayProps extends ClassValueProp {}
 
-export interface DrawerContentProps extends CardProps {
-  cardClass?: ClassValue;
-  showClose?: boolean;
-  closeClass?: ClassValue;
-}
+export interface DrawerPortalProps extends DialogPortalProps {}
 
-export interface DrawerTitleProps extends ClassValueProp {}
+export interface DrawerContentProps extends ClassValueProp {}
 
-export interface DrawerDescriptionProps extends ClassValueProp {}
+export interface DrawerContentBodyProps extends ClassValueProp {}
+
+export interface DrawerTitleProps extends DialogTitleProps {}
+
+export interface DrawerDescriptionProps extends DialogDescriptionProps {}
 
 export interface DrawerKnobProps extends ClassValueProp {}
+
+export interface DrawerFooterProps extends ClassValueProp {}
 
 export type DrawerProps = DrawerRootProps &
   DrawerContentProps &
@@ -27,8 +30,17 @@ export type DrawerProps = DrawerRootProps &
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;
+    contentBodyClass?: ClassValue;
+    headerClass?: ClassValue;
+    title?: string;
+    titleClass?: ClassValue;
+    description?: string;
+    descriptionClass?: ClassValue;
+    showClose?: boolean;
+    closeClass?: ClassValue;
+    footerClass?: ClassValue;
   };
 
 export type DrawerEmits = DrawerRootEmits;
 
-export type { DrawerRootProps, DrawerPortalProps, DrawerRootEmits };
+export type { DrawerRootProps, DrawerRootEmits };

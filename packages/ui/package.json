@@ -29,7 +29,7 @@
     "@internationalized/number": "3.6.0",
     "@soybean-ui/primitive": "workspace:*",
     "@soybean-ui/variants": "workspace:*",
-    "@tanstack/vue-virtual": "3.11.1",
+    "@tanstack/vue-virtual": "3.10.9",
     "@vueuse/core": "12.0.0",
     "@vueuse/shared": "12.0.0",
     "aria-hidden": "1.2.4",
