@@ -2,7 +2,7 @@
 import { tv } from 'tailwind-variants';
 
 export const keyboardKeyVariants = tv({
-  base: 'font-medium leading-none border border-border bg-muted rounded-sm inline-flex',
+  base: 'inline-flex font-medium leading-none border border-border bg-muted rounded-md',
   variants: {
     size: {
       xs: 'text-xs px-1 py-0.5',
