@@ -38,15 +38,11 @@ function getPkgJsonPath(pkgPath: string) {
 async function backupPkgJson(pkgName: string, pkgPath: string) {
   const backupPath = getBackupPath(pkgName);
 
-  const isExist = existsSync(backupPath);
+  const pkgJsonPath = getPkgJsonPath(pkgPath);
 
-  if (!isExist) {
-    const pkgJsonPath = getPkgJsonPath(pkgPath);
+  const originalPkgJson = await readFile(pkgJsonPath, 'utf-8');
 
-    const originalPkgJson = await readFile(pkgJsonPath, 'utf-8');
-
-    await writeFile(backupPath, originalPkgJson);
-  }
+  await writeFile(backupPath, originalPkgJson);
 }
 
 async function writeDevPkgJson(pkgName: string, pkgPath: string) {
