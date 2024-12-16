@@ -48,7 +48,7 @@ const slotText = computed(() => {
     :data-placeholder="selectedLabel.length ? undefined : props.placeholder"
     :style="{ pointerEvents: 'none' }"
   >
-    <slot :selected-label="selectedLabel">
+    <slot :model-value="rootContext.modelValue.value" :selected-label="selectedLabel">
       {{ slotText }}
     </slot>
   </Primitive>

@@ -17,23 +17,25 @@ const props = defineProps<NavigationMenuIndicatorPropsWithPrimitive>();
 const { forwardRef } = useForwardExpose();
 const menuContext = injectNavigationMenuRootContext();
 
-const position = ref<{ size: number; offset: number }>();
+const indicatorStyle = ref<{ size: number; position: number }>();
 const isHorizontal = computed(() => menuContext.orientation === 'horizontal');
 const isVisible = computed(() => Boolean(menuContext.modelValue.value));
 const { activeTrigger } = menuContext;
 
 function handlePositionChange() {
-  if (activeTrigger.value) {
-    position.value = {
-      size: isHorizontal.value ? activeTrigger.value.offsetWidth : activeTrigger.value.offsetHeight,
-      offset: isHorizontal.value ? activeTrigger.value.offsetLeft : activeTrigger.value.offsetTop
-    };
+  if (!activeTrigger.value) {
+    return;
   }
+
+  indicatorStyle.value = {
+    size: isHorizontal.value ? activeTrigger.value.offsetWidth : activeTrigger.value.offsetHeight,
+    position: isHorizontal.value ? activeTrigger.value.offsetLeft : activeTrigger.value.offsetTop
+  };
 }
 
 watchEffect(() => {
   if (!menuContext.modelValue.value) {
-    position.value = undefined;
+    indicatorStyle.value = undefined;
     return;
   }
   handlePositionChange();
@@ -45,8 +47,9 @@ useResizeObserver(menuContext.indicatorTrack, handlePositionChange);
 
 <template>
   <Teleport v-if="menuContext.indicatorTrack.value" :to="menuContext.indicatorTrack.value">
-    <Presence :present="(forceMount || isVisible) && !!position?.size">
+    <Presence :present="(forceMount || isVisible) && !!indicatorStyle?.size">
       <Primitive
+        v-bind="$attrs"
         :ref="forwardRef"
         :class="props.class"
         :as="as"
@@ -55,20 +58,13 @@ useResizeObserver(menuContext.indicatorTrack, handlePositionChange);
         :data-state="isVisible ? 'visible' : 'hidden'"
         :data-orientation="menuContext.orientation"
         :style="{
-          position: 'absolute',
-          ...(isHorizontal
+          ...(indicatorStyle
             ? {
-                left: 0,
-                width: `${position?.size}px`,
-                transform: `translateX(${position?.offset}px)`
+                '--reka-navigation-menu-indicator-size': `${indicatorStyle.size}px`,
+                '--reka-navigation-menu-indicator-position': `${indicatorStyle.position}px`
               }
-            : {
-                top: 0,
-                height: `${position?.size}px`,
-                transform: `translateY(${position?.offset}px)`
-              })
+            : {})
         }"
-        v-bind="$attrs"
       >
         <slot />
       </Primitive>
