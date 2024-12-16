@@ -1,4 +1,5 @@
 import { computed, ref } from 'vue';
+import type { Ref } from 'vue';
 import { useContext, useId } from '../../composables';
 import type { DialogRootContext, DialogRootContextParams } from './types';
 
@@ -28,6 +29,9 @@ export const [provideDialogRootContext, injectDialogRootContext] = useContext(
       contentId: ref(''),
       initContentId: () => {
         context.contentId.value ||= useId(undefined, 'soybean-dialog-content');
+      },
+      setContentElement: (element: Ref<HTMLElement | undefined>) => {
+        context.contentElement = element;
       }
     };
 

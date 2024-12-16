@@ -17,18 +17,29 @@ const props = defineProps<DialogContentImplPropsWithPrimitive>();
 
 const emit = defineEmits<DialogContentImplEmits>();
 
-const rootContext = injectDialogRootContext();
-rootContext.initTitleId();
-rootContext.initDescriptionId();
+const {
+  initTitleId,
+  initDescriptionId,
+  setContentElement,
+  triggerElement,
+  contentId,
+  titleId,
+  descriptionId,
+  open,
+  onOpenChange
+} = injectDialogRootContext();
+
+initTitleId();
+initDescriptionId();
 
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
 
 onMounted(() => {
-  rootContext.contentElement = contentElement;
+  setContentElement(contentElement);
 
   // Preserve the `DialogTrigger` element in case it was triggered programmatically
   if (document.activeElement !== document.body) {
-    rootContext.triggerElement.value = document.activeElement as HTMLElement;
+    triggerElement.value = document.activeElement as HTMLElement;
   }
 });
 
@@ -37,8 +48,8 @@ if (process.env.NODE_ENV !== 'production') {
     titleName: 'DialogTitle',
     contentName: 'DialogContent',
     componentLink: 'dialog.html#title',
-    titleId: rootContext.titleId.value,
-    descriptionId: rootContext.descriptionId.value,
+    titleId: titleId.value,
+    descriptionId: descriptionId.value,
     contentElement
   });
 }
@@ -53,18 +64,18 @@ if (process.env.NODE_ENV !== 'production') {
     @unmount-auto-focus="emit('closeAutoFocus', $event)"
   >
     <DismissableLayer
-      :id="rootContext.contentId"
+      :id="contentId"
       :ref="forwardRef"
       :class="props.class"
       :as="as"
       :as-child="asChild"
       :disable-outside-pointer-events="disableOutsidePointerEvents"
       role="dialog"
-      :aria-describedby="rootContext.descriptionId"
-      :aria-labelledby="rootContext.titleId"
-      :data-state="getOpenState(rootContext.open.value)"
+      :aria-describedby="descriptionId"
+      :aria-labelledby="titleId"
+      :data-state="getOpenState(open)"
       v-bind="$attrs"
-      @dismiss="rootContext.onOpenChange(false)"
+      @dismiss="onOpenChange(false)"
       @escape-key-down="emit('escapeKeyDown', $event)"
       @focus-outside="emit('focusOutside', $event)"
       @interact-outside="emit('interactOutside', $event)"

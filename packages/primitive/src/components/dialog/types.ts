@@ -39,6 +39,7 @@ export interface DialogRootContext extends DialogRootContextParams {
   initDescriptionId: () => void;
   contentId: Ref<string>;
   initContentId: () => void;
+  setContentElement: (element: Ref<HTMLElement | undefined>) => void;
 }
 
 export interface DialogTriggerProps extends ClassValueProp {}
