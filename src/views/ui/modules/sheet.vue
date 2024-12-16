@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SSheet } from '@soybean-ui/vue';
+import { SButton, SScrollArea, SSheet } from '@soybean-ui/vue';
 import type { SheetSide } from '@soybean-ui/vue';
 
 defineOptions({
@@ -22,6 +22,18 @@ const sides: SheetSide[] = ['left', 'right', 'top', 'bottom'];
       </template>
     </SSheet>
   </div>
+  <div class="py-12px text-18px">Content Scrollable</div>
+  <SSheet title="Sheet Title">
+    <template #trigger>
+      <SButton variant="outline">Scrollable</SButton>
+    </template>
+    <SScrollArea>
+      <div v-for="i in 100" :key="i">Sheet Content</div>
+    </SScrollArea>
+    <template #footer>
+      <SButton>Confirm</SButton>
+    </template>
+  </SSheet>
 </template>
 
 <style scoped></style>

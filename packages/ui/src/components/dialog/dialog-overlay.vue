@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(overlay(), cls));
 </script>
 
 <template>
-  <DialogOverlay :class="mergedCls" :force-mount />
+  <DialogOverlay :class="mergedCls" :force-mount="forceMount" />
 </template>
 
 <style scoped></style>

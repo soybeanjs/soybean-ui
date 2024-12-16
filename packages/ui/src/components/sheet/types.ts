@@ -8,11 +8,9 @@ import type {
   DialogRootProps as SheetRootProps
 } from '@soybean-ui/primitive';
 import type { SheetSide } from '@soybean-ui/variants';
-import type { CardProps } from '../card/types';
 
-export interface SheetContentProps extends CardProps, DialogContentProps {
+export interface SheetContentProps extends DialogContentProps {
   side?: SheetSide;
-  showClose?: boolean;
 }
 
 export type SheetProps = SheetRootProps &
@@ -22,6 +20,14 @@ export type SheetProps = SheetRootProps &
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;
     forceMountOverlay?: boolean;
+    headerClass?: ClassValue;
+    title?: string;
+    titleClass?: ClassValue;
+    description?: string;
+    descriptionClass?: ClassValue;
+    showClose?: boolean;
+    closeClass?: ClassValue;
+    footerClass?: ClassValue;
   };
 
 export type SheetEmits = SheetRootEmits & SheetContentEmits;

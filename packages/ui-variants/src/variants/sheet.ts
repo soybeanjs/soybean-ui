@@ -4,17 +4,11 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const sheetVariants = tv({
   slots: {
-    overlay: [
-      `fixed inset-0 z-50 bg-black/80`,
-      `data-[state=open]:(animate-in fade-in-0)`,
-      `data-[state=closed]:(animate-out fade-out-0)`
-    ],
     content: [
-      `fixed z-50 transition ease-in-out`,
+      `fixed z-50 flex flex-col justify-between items-stretch border bg-background px-5 py-4 rounded-md transition ease-in-out`,
       `data-[state=open]:(animate-in duration-500)`,
       `data-[state=closed]:(animate-out duration-300)`
-    ],
-    cardFooter: `justify-end gap-3`
+    ]
   },
   variants: {
     side: {

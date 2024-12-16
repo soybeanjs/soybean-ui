@@ -3,12 +3,19 @@ import {
   DialogPortal,
   DialogRoot,
   DialogTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
-  useOmitForwardProps,
   usePickForwardProps
 } from '@soybean-ui/primitive';
-import SSheetOverlay from './sheet-overlay.vue';
+import {
+  SDialogClose,
+  SDialogDescription,
+  SDialogFooter,
+  SDialogHeader,
+  SDialogOverlay,
+  SDialogTitle
+} from '../dialog';
 import SSheetContent from './sheet-content.vue';
 import type { SheetEmits, SheetProps } from './types';
 
@@ -20,39 +27,19 @@ const props = defineProps<SheetProps>();
 
 const emit = defineEmits<SheetEmits>();
 
-type Slots = {
-  trigger: () => any;
-  default: () => any;
-  header: () => any;
-  'title-root': () => any;
-  title: () => any;
-  'title-leading': () => any;
-  'title-trailing': () => any;
-  extra: () => any;
-  close: () => any;
-  footer: () => any;
-};
-
-const slots = defineSlots<Slots>();
-
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen', 'modal']);
 
-const forwardedContentProps = useOmitForwardProps(props, [
-  'open',
-  'defaultOpen',
-  'modal',
-  'to',
-  'disabledPortal',
-  'forceMountPortal',
-  'overlayClass',
-  'forceMountOverlay'
+const forwardedContentProps = usePickForwardProps(props, [
+  'class',
+  'side',
+  'forceMount',
+  'trapFocus',
+  'disableOutsidePointerEvents'
 ]);
 
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
 const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
-
-const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (keyof Slots)[];
 </script>
 
 <template>
@@ -61,11 +48,23 @@ const cardSlotKeys = Object.keys(slots).filter(slot => slot !== 'trigger') as (k
       <slot name="trigger" />
     </DialogTrigger>
     <DialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SSheetOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
+      <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SSheetContent v-bind="forwardedContent">
-        <template v-for="slotKey in cardSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" />
-        </template>
+        <SDialogHeader :class="headerClass">
+          <SDialogTitle :class="titleClass">
+            <slot name="title">{{ title }}</slot>
+          </SDialogTitle>
+          <SDialogDescription :class="descriptionClass">
+            <slot name="description">{{ description }}</slot>
+          </SDialogDescription>
+        </SDialogHeader>
+        <SDialogClose :class="closeClass" />
+        <Slot class="flex-grow overflow-hidden">
+          <slot />
+        </Slot>
+        <SDialogFooter :class="footerClass">
+          <slot name="footer" />
+        </SDialogFooter>
       </SSheetContent>
     </DialogPortal>
   </DialogRoot>
