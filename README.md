@@ -49,9 +49,9 @@ card
 
 ### 组件样式
 
-在 `packages/ui-variants/src/variants/` 下新增组件样式文件，如 `card.ts`。
+在 `packages/variants/src/variants/` 下新增组件样式文件，如 `card.ts`。
 
-> 注意统一在 `packages/ui-variants/src/index.ts` 中导出新增的组件样式。
+> 注意统一在 `packages/variants/src/index.ts` 中导出新增的组件样式。
 
 ### 组件示例
 

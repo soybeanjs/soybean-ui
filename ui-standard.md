@@ -17,7 +17,7 @@ button/
 ### 1.2 组件导出规范
 - 在 `index.ts` 中统一导出组件和类型
 - 所有组件都需要在 `packages/ui/src/components/index.ts` 中导出
-- 所有样式变体都需要在 `packages/ui-variants/src/index.ts` 中导出
+- 所有样式变体都需要在 `packages/variants/src/index.ts` 中导出
 
 ## 2. 组件开发规范
 
@@ -25,7 +25,7 @@ button/
 - 组件必须使用 `defineOptions` 定义组件名称
 - 组件名称以 `S` 开头，如 `SButton`
 - Props 类型定义统一在 `types.ts` 文件中
-- 样式变体定义统一在 `packages/ui-variants/src/variants` 目录下
+- 样式变体定义统一在 `packages/variants/src/variants` 目录下
 
 ### 2.2 组件封装规范
 根据 soybean-ui 组件的使用场景，分为两种封装方式:
@@ -133,7 +133,7 @@ const { loading, startLoading, endLoading } = useLoading();
 ## 3. 样式开发规范
 
 ### 3.1 变体定义
-- 在 `packages/ui-variants/src/variants` 下定义组件样式
+- 在 `packages/variants/src/variants` 下定义组件样式
 - 使用 `tailwind-variants` 定义样式变体
 - 遵循 shadcn-ui 的设计风格
 
