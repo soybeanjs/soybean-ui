@@ -36,6 +36,7 @@ import UiSelect from './modules/select.vue';
 import UiSeparator from './modules/separator.vue';
 import UiSheet from './modules/sheet.vue';
 import UiSkeleton from './modules/skeleton.vue';
+import UiSlider from './modules/slider.vue';
 import UiSonner from './modules/sonner.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTabs from './modules/tabs.vue';
@@ -216,6 +217,11 @@ const tabs: TabConfig[] = [
     value: 'skeleton',
     label: 'Skeleton',
     component: UiSkeleton
+  },
+  {
+    value: 'slider',
+    label: 'Slider',
+    component: UiSlider
   },
   {
     value: 'sonner',

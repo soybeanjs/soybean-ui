@@ -30,6 +30,7 @@ export * from './variants/select';
 export * from './variants/separator';
 export * from './variants/sheet';
 export * from './variants/skeleton';
+export * from './variants/slider';
 export * from './variants/switch';
 export * from './variants/tabs';
 export * from './variants/textarea';
