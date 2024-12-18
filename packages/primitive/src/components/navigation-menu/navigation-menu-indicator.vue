@@ -60,8 +60,8 @@ useResizeObserver(menuContext.indicatorTrack, handlePositionChange);
         :style="{
           ...(indicatorStyle
             ? {
-                '--reka-navigation-menu-indicator-size': `${indicatorStyle.size}px`,
-                '--reka-navigation-menu-indicator-position': `${indicatorStyle.position}px`
+                '--soybean-navigation-menu-indicator-size': `${indicatorStyle.size}px`,
+                '--soybean-navigation-menu-indicator-position': `${indicatorStyle.position}px`
               }
             : {})
         }"

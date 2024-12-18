@@ -2,6 +2,7 @@ import type { RouterLinkProps } from 'vue-router';
 import type {
   AnchorRel,
   AnchorTarget,
+  ClassValueProp,
   HTMLAttributeReferrerPolicy,
   MaybeArray,
   PrimitiveProps
@@ -18,6 +19,6 @@ export interface AnchorLinkProps {
   isExternal?: boolean;
 }
 
-export interface LinkProps extends AnchorLinkProps, Partial<RouterLinkProps> {}
+export interface LinkProps extends ClassValueProp, AnchorLinkProps, Partial<RouterLinkProps> {}
 
 export type LinkPropsWithPrimitive = LinkProps & PrimitiveProps;

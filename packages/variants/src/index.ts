@@ -19,6 +19,7 @@ export * from './variants/hover-card';
 export * from './variants/input';
 export * from './variants/keyboard-key';
 export * from './variants/label';
+export * from './variants/navigation-menu';
 export * from './variants/pagination';
 export * from './variants/pin-input';
 export * from './variants/popover';
