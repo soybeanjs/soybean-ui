@@ -6,7 +6,7 @@ import type {
   ThemeOrientation,
   ThemeSize
 } from '@soybean-ui/variants';
-import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValueProp, HTMLAttributeReferrerPolicy, PrimitiveProps } from '@soybean-ui/primitive';
 
 export interface ButtonProps extends ClassValueProp {
   color?: ThemeColor;
@@ -29,10 +29,23 @@ export interface ButtonProps extends ClassValueProp {
   value?: string | ReadonlyArray<string> | number;
 }
 
+export interface ButtonPropsWithPrimitive extends ButtonProps, PrimitiveProps {}
+
 export type ButtonType = 'submit' | 'reset' | 'button';
 
 export interface LoadingButtonProps extends ButtonProps {
   loading?: boolean;
+}
+
+export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
+
+export type AnchorRel = 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
+
+export interface ButtonLinkProps extends ButtonProps {
+  href?: string;
+  target?: AnchorTarget;
+  rel?: AnchorRel;
+  referrerPolicy?: HTMLAttributeReferrerPolicy;
 }
 
 export interface ButtonGroupProps extends ClassValueProp {

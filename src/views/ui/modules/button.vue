@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SButtonGroup, SButtonIcon, SLoadingButton } from '@soybean-ui/vue';
+import { SButton, SButtonGroup, SButtonIcon, SButtonLink, SLoadingButton } from '@soybean-ui/vue';
 import type { ButtonShadow, ButtonVariant, ThemeColor, ThemeSize } from '@soybean-ui/vue';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
@@ -103,6 +103,10 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
       </template>
       Loading...
     </SLoadingButton>
+  </div>
+  <div class="py-12px text-18px">Link</div>
+  <div class="flex flex-wrap gap-12px">
+    <SButtonLink href="https://soybeanjs.cn">soybeanjs.cn</SButtonLink>
   </div>
   <div class="py-12px text-18px">Button Group</div>
   <div class="flex flex-wrap gap-12px">

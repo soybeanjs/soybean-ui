@@ -1,14 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardProps } from '@soybean-ui/primitive';
+import { Primitive, useForwardProps } from '@soybean-ui/primitive';
 import { buttonVariants, cn } from '@soybean-ui/variants';
-import type { ButtonProps } from './types';
+import type { ButtonPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'SButton'
 });
 
-const { class: cls, color, variant, size, shape, shadow, fitContent, ...delegatedProps } = defineProps<ButtonProps>();
+const {
+  class: cls,
+  as = 'button',
+  color,
+  variant,
+  size,
+  shape,
+  shadow,
+  fitContent,
+  ...delegatedProps
+} = defineProps<ButtonPropsWithPrimitive>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
@@ -16,11 +26,11 @@ const mergedCls = computed(() => cn(buttonVariants({ color, variant, size, shape
 </script>
 
 <template>
-  <button v-bind="forwardedProps" :class="mergedCls">
+  <Primitive v-bind="forwardedProps" :class="mergedCls" :as="as">
     <slot name="leading" />
     <slot />
     <slot name="trailing" />
-  </button>
+  </Primitive>
 </template>
 
 <style scoped></style>
