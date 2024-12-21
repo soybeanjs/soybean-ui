@@ -41,6 +41,10 @@ export type HTMLAttributeReferrerPolicy =
   | 'strict-origin-when-cross-origin'
   | 'unsafe-url';
 
+export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
+
+export type AnchorRel = 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
+
 export interface Point {
   x: number;
   y: number;
@@ -155,3 +159,5 @@ export type InferDefaults<T> = {
 };
 type NativeType = null | number | string | boolean | symbol | Function;
 type InferDefault<P, T> = ((props: P) => T & {}) | (T extends NativeType ? T : never);
+
+export type MaybeArray<T> = T | T[];

@@ -107,6 +107,7 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
   <div class="py-12px text-18px">Link</div>
   <div class="flex flex-wrap gap-12px">
     <SButtonLink href="https://soybeanjs.cn">soybeanjs.cn</SButtonLink>
+    <SButtonLink to="/demo">Demo Route</SButtonLink>
   </div>
   <div class="py-12px text-18px">Button Group</div>
   <div class="flex flex-wrap gap-12px">

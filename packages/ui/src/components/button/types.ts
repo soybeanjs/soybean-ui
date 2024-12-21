@@ -6,8 +6,8 @@ import type {
   ThemeOrientation,
   ThemeSize
 } from '@soybean-ui/variants';
-import type { ClassValueProp, HTMLAttributeReferrerPolicy, PrimitiveProps } from '@soybean-ui/primitive';
-import type { AnchorRel, AnchorTarget } from '../../types';
+import type { ClassValueProp, PrimitiveProps } from '@soybean-ui/primitive';
+import type { LinkProps } from '../link';
 
 export interface ButtonProps extends ClassValueProp {
   color?: ThemeColor;
@@ -38,12 +38,7 @@ export interface LoadingButtonProps extends ButtonProps {
   loading?: boolean;
 }
 
-export interface ButtonLinkProps extends ButtonProps {
-  href?: string;
-  target?: AnchorTarget;
-  rel?: AnchorRel;
-  referrerPolicy?: HTMLAttributeReferrerPolicy;
-}
+export type ButtonLinkProps = ButtonProps & LinkProps;
 
 export interface ButtonGroupProps extends ClassValueProp {
   orientation?: ThemeOrientation;

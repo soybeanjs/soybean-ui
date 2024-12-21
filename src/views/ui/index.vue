@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component } from 'vue';
+import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SScrollArea, SToastProvider, Stabs } from '@soybean-ui/vue';
