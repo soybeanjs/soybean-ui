@@ -40,7 +40,7 @@ const items2: BreadcrumbItem[] = [
     target: '_blank'
   },
   {
-    label: 'RekaUI',
+    label: 'SoybeanUI',
     value: 'soybean-ui',
     href: 'https://soybean-ui.com',
     target: '_blank'

@@ -132,7 +132,7 @@ const css = `
 [soybean-drawer-overlay][soybean-drawer-snap-points-overlay='true']:not([soybean-drawer-visible='false']) {
   opacity: 1;
 } /* This will allow us to not animate via animation, but still benefit from delaying unmount via
-      Radix. */
+      SoybeanUI. */
 @keyframes fake-animation {
   from {
   }

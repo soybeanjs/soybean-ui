@@ -16,9 +16,9 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 <template>
   <div class="py-12px text-18px">Default</div>
   <div class="flex gap-12px">
-    <SAvatar :src="soybeanUiRsc" alt="RekaUI" fallback-label="CN" />
-    <SAvatar :src="soybeanUiRsc" alt="RekaUI">
-      <template #fallback>RekaUI</template>
+    <SAvatar :src="soybeanUiRsc" alt="SoybeanUI" fallback-label="CN" />
+    <SAvatar :src="soybeanUiRsc" alt="SoybeanUI">
+      <template #fallback>SoybeanUI</template>
     </SAvatar>
   </div>
   <div class="py-12px text-18px">Size</div>

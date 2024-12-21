@@ -6,8 +6,8 @@ export const toastVariants = tv({
     root: [
       `group pointer-events-auto relative flex w-full items-center justify-between space-x-2 overflow-hidden rounded-md border p-4 pr-6 shadow-lg transition-all`,
       `data-[swipe=cancel]:translate-x-0`,
-      `data-[swipe=end]:(translate-x-[var(--radix-toast-swipe-end-x)] animate-out)`,
-      `data-[swipe=move]:(translate-x-[var(--radix-toast-swipe-move-x)] transition-none)`,
+      `data-[swipe=end]:(translate-x-[var(--soybean-toast-swipe-end-x)] animate-out)`,
+      `data-[swipe=move]:(translate-x-[var(--soybean-toast-swipe-move-x)] transition-none)`,
       `data-[state=open]:(slide-in-from-top-full sm:slide-in-from-bottom-full animate-in)`,
       `data-[state=closed]:(fade-out-80 slide-out-to-right-full animate-out)`
     ],
