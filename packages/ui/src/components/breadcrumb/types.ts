@@ -1,6 +1,7 @@
 import type { Component } from 'vue';
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
 import type { ThemeSize } from '@soybean-ui/variants';
+import type { AnchorTarget } from '../../types';
 
 export interface BreadcrumbRootProps extends ClassValueProp {
   size?: ThemeSize;
@@ -11,8 +12,6 @@ export interface BreadcrumbListProps extends ClassValueProp {}
 export interface BreadcrumbItemProps extends ClassValueProp {}
 
 export interface BreadcrumbPageProps extends ClassValueProp {}
-
-export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
 
 export interface BreadcrumbLinkProps extends ClassValueProp {
   disabled?: boolean;

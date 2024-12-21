@@ -7,6 +7,7 @@ import type {
   ThemeSize
 } from '@soybean-ui/variants';
 import type { ClassValueProp, HTMLAttributeReferrerPolicy, PrimitiveProps } from '@soybean-ui/primitive';
+import type { AnchorRel, AnchorTarget } from '../../types';
 
 export interface ButtonProps extends ClassValueProp {
   color?: ThemeColor;
@@ -36,10 +37,6 @@ export type ButtonType = 'submit' | 'reset' | 'button';
 export interface LoadingButtonProps extends ButtonProps {
   loading?: boolean;
 }
-
-export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
-
-export type AnchorRel = 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
 
 export interface ButtonLinkProps extends ButtonProps {
   href?: string;
