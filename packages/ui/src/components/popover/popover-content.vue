@@ -8,7 +8,7 @@ defineOptions({
   name: 'SPopoverContent'
 });
 
-const { class: cls, sideOffset = 8, avoidCollisions = true, ...delegatedProps } = defineProps<PopoverContentProps>();
+const { class: cls, sideOffset = 5, avoidCollisions = true, ...delegatedProps } = defineProps<PopoverContentProps>();
 
 const emit = defineEmits<PopoverContentEmits>();
 
@@ -20,7 +20,7 @@ const mergedCls = computed(() => cn(content(), cls));
 </script>
 
 <template>
-  <PopoverContent v-bind="forwarded" :class="mergedCls" :side-offset :avoid-collisions>
+  <PopoverContent v-bind="forwarded" :class="mergedCls" :side-offset="sideOffset" :avoid-collisions="avoidCollisions">
     <slot />
   </PopoverContent>
 </template>

@@ -61,10 +61,10 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
         :prioritize-position
       >
         <slot />
-        <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
         <PopoverClose v-if="$slots.close" as-child>
           <slot name="close" />
         </PopoverClose>
+        <SPopoverArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
       </SPopoverContent>
     </PopoverPortal>
   </PopoverRoot>

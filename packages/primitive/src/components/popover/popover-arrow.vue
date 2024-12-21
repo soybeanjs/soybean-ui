@@ -8,8 +8,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<PopoverArrowPropsWithPrimitive>(), {
-  width: 10,
-  height: 5,
+  width: 12,
+  height: 6,
   as: 'svg'
 });
 

@@ -8,8 +8,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<ArrowPropsWithPrimitive>(), {
   as: 'svg',
-  width: 10,
-  height: 5
+  width: 12,
+  height: 6
 });
 </script>
 
@@ -17,10 +17,10 @@ const props = withDefaults(defineProps<ArrowPropsWithPrimitive>(), {
   <Primitive
     :class="props.class"
     :as="as"
-    :as-child="asChild"
     :width="width"
     :height="height"
-    :view-box="asChild ? undefined : '0 0 12 6'"
+    :viewBox="asChild ? undefined : '0 0 12 6'"
+    :preserveAspectRatio="asChild ? undefined : 'none'"
   >
     <slot>
       <path v-if="!rounded" d="M0 0L6 6L12 0" />

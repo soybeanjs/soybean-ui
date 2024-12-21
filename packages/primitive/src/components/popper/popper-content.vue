@@ -150,7 +150,9 @@ const arrowY = computed(() => middlewareData.value.arrow?.y ?? 0);
 
 providePopperContentContext({
   placedSide,
-  onArrowChange: element => (arrow.value = element),
+  onArrowChange: element => {
+    arrow.value = element;
+  },
   arrowX,
   arrowY,
   shouldHideArrow: cannotCenterArrow
