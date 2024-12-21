@@ -30,4 +30,4 @@ export * from './use-selection-behavior';
 export * from './use-single-or-multiple-value';
 export * from './use-size';
 export * from './use-state-machine';
-export * from './use-type-ahead';
+export * from './use-typeahead';

@@ -2,7 +2,7 @@
 import { computed, nextTick, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
-import { useDirection, useSelectionBehavior, useTypeAhead } from '../../composables';
+import { useDirection, useSelectionBehavior, useTypeahead } from '../../composables';
 import { flatten } from '../../shared';
 import type { NavigationKeys } from '../../types';
 import { Primitive } from '../primitive';
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<TreeRootPropsWithPrimitive<T, U>>(), {
 const emit = defineEmits<TreeRootEmits>();
 
 const { items, multiple, disabled, propagateSelect, dir: propDir } = toRefs(props);
-const { handleTypeAheadSearch } = useTypeAhead();
+const { handleTypeaheadSearch } = useTypeahead();
 const dir = useDirection(propDir);
 const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 
@@ -94,7 +94,7 @@ function handleKeydown(event: KeyboardEvent) {
     virtualKeydownHook.trigger(event);
   } else {
     const collections = rovingFocusGroupRef.value?.getItems().map(i => i.ref);
-    handleTypeAheadSearch(event.key, collections);
+    handleTypeaheadSearch(event.key, collections);
   }
 }
 

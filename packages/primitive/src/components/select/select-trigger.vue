@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { useCollection, useForwardExpose, useId, useTypeAhead } from '../../composables';
+import { useCollection, useForwardExpose, useId, useTypeahead } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
 import { injectSelectRootContext } from './context';
@@ -26,13 +26,13 @@ onMounted(() => {
 });
 
 const { getItems } = useCollection();
-const { search, handleTypeAheadSearch, resetTypeAhead } = useTypeAhead();
+const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
 
 function handleOpen() {
   if (!isDisabled.value) {
     rootContext.onOpenChange(true);
     // reset typeahead when we open
-    resetTypeAhead();
+    resetTypeahead();
   }
 }
 
@@ -109,7 +109,7 @@ function handlePointerOpen(event: PointerEvent) {
           if (!isModifierKey && event.key.length === 1) if (isTypingAhead && event.key === ' ') return;
 
           const collectionItems = getItems().map(i => i.ref);
-          handleTypeAheadSearch(event.key, collectionItems);
+          handleTypeaheadSearch(event.key, collectionItems);
           if (OPEN_KEYS.includes(event.key)) {
             handleOpen();
             event.preventDefault();

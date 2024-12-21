@@ -77,7 +77,7 @@ export type ListboxRootContext<T = AcceptableValue> = {
   changeHighlight: (el: HTMLElement, scrollIntoView?: boolean) => void;
   onKeydownNavigation: (event: KeyboardEvent) => void;
   onKeydownEnter: (event: KeyboardEvent) => void;
-  onKeydownTypeAhead: (event: KeyboardEvent) => void;
+  onKeydownTypeahead: (event: KeyboardEvent) => void;
   highlightFirstItem: (event: InputEvent) => void;
 };
 

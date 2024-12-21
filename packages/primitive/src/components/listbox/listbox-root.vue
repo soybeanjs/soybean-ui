@@ -7,7 +7,7 @@ import {
   useFormControl,
   useKbd,
   usePrimitiveElement,
-  useTypeAhead
+  useTypeahead
 } from '../../composables';
 import { findValuesBetween } from '../../shared';
 import type { AcceptableValue } from '../../types';
@@ -38,7 +38,7 @@ defineSlots<Slots>();
 
 const { multiple, highlightOnHover, orientation, disabled, selectionBehavior, dir: propDir } = toRefs(props);
 const { getItems } = useCollection<{ value: T }>({ isProvider: true });
-const { handleTypeAheadSearch } = useTypeAhead();
+const { handleTypeaheadSearch } = useTypeahead();
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const kbd = useKbd();
 const dir = useDirection(propDir);
@@ -132,7 +132,7 @@ function onKeydownEnter(event: KeyboardEvent) {
   }
 }
 
-function onKeydownTypeAhead(event: KeyboardEvent) {
+function onKeydownTypeahead(event: KeyboardEvent) {
   isUserAction.value = true;
   if (isVirtual.value) {
     virtualKeydownHook.trigger(event);
@@ -146,7 +146,7 @@ function onKeydownTypeAhead(event: KeyboardEvent) {
       event.preventDefault();
       changeHighlight(collection[collection.length - 1].ref);
     } else if (!isMetaKey) {
-      const el = handleTypeAheadSearch(event.key, getCollectionItem());
+      const el = handleTypeaheadSearch(event.key, getCollectionItem());
       if (el) changeHighlight(el);
     }
   }
@@ -303,7 +303,7 @@ provideListboxRootContext({
   changeHighlight,
   onKeydownEnter,
   onKeydownNavigation,
-  onKeydownTypeAhead,
+  onKeydownTypeahead,
   highlightFirstItem
 } as ListboxRootContext<AcceptableValue>);
 </script>

@@ -39,14 +39,6 @@ const { getItems, CollectionSlot } = useCollection({ isProvider: true });
 const selectedElement = ref<HTMLElement>();
 const isInvalidInput = ref(false);
 
-function handleRemoveTag(index: number) {
-  if (index !== -1) {
-    const collection = getItems().filter(i => i.ref.dataset.disabled !== '');
-    modelValue.value.splice(index, 1);
-    emit('removeTag', collection[index].value);
-  }
-}
-
 provideTagsInputRootContext({
   modelValue,
   onAddValue: _payload => {
@@ -65,14 +57,12 @@ provideTagsInputRootContext({
     }
 
     if (props.duplicate) {
-      modelValue.value.push(payload);
-      emit('addTag', payload);
+      modelValue.value = [...modelValue.value, payload];
       return true;
     }
     const exist = modelValue.value.includes(payload);
     if (!exist) {
-      modelValue.value.push(payload);
-      emit('addTag', payload);
+      modelValue.value = [...modelValue.value, payload];
       return true;
     }
     isInvalidInput.value = true;
@@ -80,7 +70,9 @@ provideTagsInputRootContext({
     emit('invalid', payload);
     return false;
   },
-  onRemoveValue: handleRemoveTag,
+  onRemoveValue: index => {
+    if (index !== -1) modelValue.value = modelValue.value.filter((_, i) => i !== index);
+  },
   // eslint-disable-next-line complexity
   onInputKeydown: event => {
     const target = event.target as HTMLInputElement;
@@ -96,7 +88,7 @@ provideTagsInputRootContext({
 
         if (selectedElement.value) {
           const index = collection.findIndex(i => i === selectedElement.value);
-          handleRemoveTag(index);
+          modelValue.value = modelValue.value.filter((_, i) => i !== index);
           selectedElement.value =
             selectedElement.value === lastTag ? collection.at(index - 1) : collection.at(index + 1);
           event.preventDefault();

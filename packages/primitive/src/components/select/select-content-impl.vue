@@ -8,7 +8,7 @@ import {
   useFocusGuards,
   useForwardProps,
   useHideOthers,
-  useTypeAhead
+  useTypeahead
 } from '../../composables';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
@@ -41,7 +41,7 @@ const { CollectionSlot, getItems } = useCollection();
 const content = ref<HTMLElement>();
 useHideOthers(content);
 
-const { search, handleTypeAheadSearch } = useTypeAhead();
+const { search, handleTypeaheadSearch } = useTypeahead();
 
 const viewport = ref<HTMLElement>();
 const selectedItem = ref<HTMLElement>();
@@ -116,7 +116,7 @@ function handleKeyDown(event: KeyboardEvent) {
   if (event.key === 'Tab') event.preventDefault();
 
   const collectionItems = getItems().map(i => i.ref);
-  if (!isModifierKey && event.key.length === 1) handleTypeAheadSearch(event.key, collectionItems);
+  if (!isModifierKey && event.key.length === 1) handleTypeaheadSearch(event.key, collectionItems);
 
   if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
     let candidateNodes = [...collectionItems];

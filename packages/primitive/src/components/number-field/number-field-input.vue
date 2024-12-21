@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectNumberFieldRootContext } from './context';
@@ -31,6 +31,38 @@ function handleWheelEvent(event: WheelEvent) {
   else if (event.deltaY < 0) rootContext.handleDecrease();
 }
 
+const inputValue = ref(rootContext.textValue.value);
+
+function handleBeforeInput(event: InputEvent) {
+  const target = event.target as HTMLInputElement;
+  const nextValue =
+    target.value.slice(0, target.selectionStart ?? undefined) +
+    (event.data ?? '') +
+    target.value.slice(target.selectionEnd ?? undefined);
+
+  // validate
+  if (!rootContext.validate(nextValue)) event.preventDefault();
+}
+
+function handleInput(event: InputEvent) {
+  const target = event.target as HTMLInputElement;
+  inputValue.value = target.value;
+}
+
+function handleChange() {
+  requestAnimationFrame(() => {
+    inputValue.value = rootContext.textValue.value;
+  });
+}
+
+watch(
+  () => rootContext.textValue.value,
+  () => {
+    inputValue.value = rootContext.textValue.value;
+  },
+  { immediate: true, deep: true }
+);
+
 onMounted(() => {
   rootContext.onInputElement(currentElement.value as HTMLInputElement);
 });
@@ -44,7 +76,7 @@ onMounted(() => {
     role="spinbutton"
     type="text"
     tabindex="0"
-    :value="rootContext.textValue.value"
+    :value="inputValue"
     :inputmode="rootContext.inputMode.value"
     :disabled="rootContext.disabled.value ? '' : undefined"
     :data-disabled="rootContext.disabled.value ? '' : undefined"
@@ -62,18 +94,9 @@ onMounted(() => {
     @keydown.home.prevent="rootContext.handleMinMaxValue('min')"
     @keydown.end.prevent="rootContext.handleMinMaxValue('max')"
     @wheel="handleWheelEvent"
-    @beforeinput="
-      (event: InputEvent) => {
-        const target = event.target as HTMLInputElement;
-        let nextValue =
-          target.value.slice(0, target.selectionStart ?? undefined) +
-          (event.data ?? '') +
-          target.value.slice(target.selectionEnd ?? undefined);
-
-        // validate
-        if (!rootContext.validate(nextValue)) event.preventDefault();
-      }
-    "
+    @beforeinput="handleBeforeInput"
+    @input="handleInput"
+    @change="handleChange"
     @keydown.enter="rootContext.applyInputValue($event.target?.value)"
     @blur="rootContext.applyInputValue($event.target?.value)"
   >

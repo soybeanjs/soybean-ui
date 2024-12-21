@@ -3,9 +3,9 @@ import { createSharedComposable, useEventListener } from '@vueuse/core';
 import { isClient, isIOS, tryOnBeforeUnmount } from '@vueuse/shared';
 import type { Fn } from '@vueuse/shared';
 import { defu } from 'defu';
-import { randomUUID } from 'uncrypto';
 import { injectConfigProviderContext } from '../components/config-provider/context';
 import type { ScrollBodyOption } from '../types';
+import { useId } from './use-id';
 
 const useBodyLockStackCount = createSharedComposable(() => {
   const map = ref<Map<string, boolean>>(new Map());
@@ -102,7 +102,7 @@ function addPx(value?: number | string | undefined | boolean) {
 }
 
 export function useBodyScrollLock(initialState?: boolean | undefined) {
-  const id = randomUUID();
+  const id = useId();
   const map = useBodyLockStackCount();
 
   map.value.set(id, initialState ?? false);

@@ -16,7 +16,6 @@ const {
   modelValue,
   disabled: ctxDisabled,
   parentElement,
-  collapsible,
   orientation,
   direction,
   unmountOnHide
@@ -28,9 +27,7 @@ const open = computed(() => {
     : Array.isArray(modelValue.value) && modelValue.value.includes(props.value);
 });
 
-const disabled = computed(() => {
-  return ctxDisabled.value || props.disabled || (isSingle.value && open.value && !collapsible.value);
-});
+const disabled = computed(() => ctxDisabled.value || props.disabled);
 
 const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 
@@ -39,6 +36,16 @@ defineExpose({ open, dataDisabled });
 const { currentRef, currentElement } = useForwardExpose();
 
 function handleArrowKey(e: KeyboardEvent) {
+  const target = e.target as HTMLElement;
+  const allCollectionItems: HTMLElement[] = Array.from(
+    parentElement.value?.querySelectorAll('[data-soybean-accordion-trigger]') ?? []
+  );
+
+  const collectionItemIndex = allCollectionItems.findIndex(item => item === target);
+  if (collectionItemIndex === -1) {
+    return null;
+  }
+
   useArrowNavigation(e, currentElement.value, parentElement.value!, {
     arrowKeyOptions: orientation.value,
     dir: direction.value,

@@ -5,7 +5,7 @@ import {
   useBodyScrollLock,
   useFocusGuards,
   useForwardExpose,
-  useTypeAhead
+  useTypeahead
 } from '../../composables';
 import type { GraceIntent, HorizontalSide } from '../../types';
 import { DismissableLayer } from '../dismissable-layer';
@@ -44,7 +44,7 @@ const currentItemId = ref<string | null>(null);
 
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
-const { handleTypeAheadSearch } = useTypeAhead();
+const { handleTypeaheadSearch } = useTypeahead();
 
 watch(contentElement, el => {
   menuContext!.onContentChange(el);
@@ -96,7 +96,7 @@ function handleKeyDown(event: KeyboardEvent) {
   if (isKeyDownInside) {
     // menus should not be navigated using tab key so we prevent it
     if (event.key === 'Tab') event.preventDefault();
-    if (!isModifierKey && isCharacterKey) handleTypeAheadSearch(event.key, collectionItems);
+    if (!isModifierKey && isCharacterKey) handleTypeaheadSearch(event.key, collectionItems);
   }
 
   // focus first/last item based on key pressed

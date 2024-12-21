@@ -9,14 +9,15 @@ defineOptions({
 
 const props = defineProps<AccordionTriggerPropsWithPrimitive>();
 
-const { orientation, changeModelValue } = injectAccordionRootContext();
+const { orientation, collapsible, isSingle, changeModelValue } = injectAccordionRootContext();
 
 const { dataState, dataDisabled, value, triggerId, currentRef, disabled, open, initTriggerId } =
   injectAccordionItemContext();
 initTriggerId();
 
 function changeItem() {
-  if (dataDisabled.value) return;
+  const triggerDisabled = isSingle.value && open.value && !collapsible.value;
+  if (disabled.value || triggerDisabled) return;
 
   changeModelValue(value.value);
 }

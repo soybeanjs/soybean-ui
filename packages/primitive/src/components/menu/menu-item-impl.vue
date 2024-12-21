@@ -56,7 +56,7 @@ async function handleBlur(event: FocusEvent) {
 </script>
 
 <template>
-  <CollectionItem>
+  <CollectionItem :value="{ textValue }">
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"

@@ -43,7 +43,7 @@ function onKeydownNavigation(event: KeyboardEvent) {
       @focus="onFocus"
       @keydown.down.up.left.right.home.end.prevent="onKeydownNavigation"
       @keydown.enter="rootContext.onKeydownEnter"
-      @keydown="rootContext.onKeydownTypeAhead"
+      @keydown="rootContext.onKeydownTypeahead"
     >
       <slot />
     </Primitive>
