@@ -19,6 +19,7 @@ function isRouterLink(p: LinkProps): p is RouterLinkProps {
 }
 
 const routerLinkProps = usePickForwardProps(props, [
+  'class',
   'to',
   'replace',
   'custom',
@@ -30,6 +31,7 @@ const routerLinkProps = usePickForwardProps(props, [
 ]) as ComputedRef<RouterLinkProps>;
 
 const anchorLinkProps = usePickForwardProps(props, [
+  'class',
   'href',
   'target',
   'rel',

@@ -12,5 +12,6 @@ export {
   createContext,
   useContext
 } from './composables';
+export { pick, omit } from './shared/object';
 
 export * from './types';
