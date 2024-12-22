@@ -37,7 +37,6 @@ const items: CommandItemOption[] = [
   {
     groupId: 'settings',
     label: 'Settings',
-    separator: true,
     items: [
       {
         label: 'Profile',
