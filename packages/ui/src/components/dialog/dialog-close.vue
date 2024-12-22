@@ -20,7 +20,7 @@ const mergedCls = computed(() => cn(close(), cls));
 <template>
   <DialogClose :class="mergedCls" as-child>
     <slot name="close">
-      <SButtonIcon size="sm">
+      <SButtonIcon size="xs">
         <X />
       </SButtonIcon>
     </slot>

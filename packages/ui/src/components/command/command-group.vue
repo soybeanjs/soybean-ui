@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ComboboxGroup } from '@soybean-ui/primitive';
+import { ListboxGroup } from '@soybean-ui/primitive';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandGroupProps } from './types';
 
@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(group(), cls));
 </script>
 
 <template>
-  <ComboboxGroup :class="mergedCls">
+  <ListboxGroup :class="mergedCls">
     <slot />
-  </ComboboxGroup>
+  </ListboxGroup>
 </template>

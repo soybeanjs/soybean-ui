@@ -37,6 +37,7 @@ const items: CommandItemOption[] = [
   {
     groupId: 'settings',
     label: 'Settings',
+    separator: true,
     items: [
       {
         label: 'Profile',
@@ -83,7 +84,6 @@ watch(CmdJ, v => {
   <SCommand
     :items="items"
     :input-props="{ placeholder: 'Type a command or search...' }"
-    empty-label="No option found"
     class="max-w-[450px] border rounded-lg shadow-md"
     @select="handleSelect"
   />

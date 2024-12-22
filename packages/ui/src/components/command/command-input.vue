@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ComboboxInput, useForwardProps } from '@soybean-ui/primitive';
+import { ListboxFilter, useForwardPropsEmits } from '@soybean-ui/primitive';
 import { cn, commandVariants } from '@soybean-ui/variants';
-import type { CommandInputProps } from './types';
+import type { CommandInputEmits, CommandInputProps } from './types';
 
 defineOptions({
   name: 'SCommandInput'
 });
 
-const { class: cls, autoFocus = true, ...delegatedProps } = defineProps<CommandInputProps>();
+const { class: cls, autoFocus: _, ...delegatedProps } = defineProps<CommandInputProps>();
 
-const forwardedProps = useForwardProps(delegatedProps);
+const emit = defineEmits<CommandInputEmits>();
+
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const { input } = commandVariants();
 
@@ -18,5 +20,5 @@ const mergedCls = computed(() => cn(input(), cls));
 </script>
 
 <template>
-  <ComboboxInput v-bind="forwardedProps" :class="mergedCls" :auto-focus="autoFocus" />
+  <ListboxFilter v-bind="forwarded" :class="mergedCls" auto-focus />
 </template>
