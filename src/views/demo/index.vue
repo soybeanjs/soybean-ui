@@ -7,7 +7,7 @@ const router = useRouter();
 
 <template>
   <div class="h-full p-4">
-    <SCard title="Page Demo" split="header" class="h-full">
+    <SCard title="Page Demo" split class="h-full">
       <template #extra>
         <SButton @click="router.back">Go Back</SButton>
       </template>

@@ -8,10 +8,10 @@ defineOptions({
   name: 'SCardRoot'
 });
 
-const { class: cls, size } = defineProps<CardRootProps>();
+const { class: cls, size, split } = defineProps<CardRootProps>();
 
 const mergedCls = computed(() => {
-  const { root } = cardVariants({ size });
+  const { root } = cardVariants({ size, split });
 
   return cn(root(), cls);
 });
