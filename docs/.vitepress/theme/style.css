@@ -7,7 +7,12 @@ body,
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  border-style: solid;
   border-color: hsl(var(--border));
+}
+
+button {
+  border-style: solid;
 }
 
 .dark * {
