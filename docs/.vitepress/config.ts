@@ -1,6 +1,8 @@
 import { defineConfigWithTheme } from 'vitepress';
 import unocss from 'unocss/vite';
 import { version } from '../package.json';
+import ComponentPreview from './plugins/component-preview';
+import InstallationTabs from './plugins/installation-tabs';
 import type { CustomThemeConfig } from './types';
 
 export default defineConfigWithTheme<CustomThemeConfig>({
@@ -25,6 +27,21 @@ export default defineConfigWithTheme<CustomThemeConfig>({
     ],
     ['link', { rel: 'icon', href: '/favicon.ico' }]
   ],
+  markdown: {
+    headers: {
+      level: [2, 3]
+    },
+    anchor: {
+      callback(token) {
+        // set tw `group` modifier to heading element
+        token.attrSet('class', 'group relative border-none mb-4 lg:-ml-2 lg:pl-2 lg:pr-2 w-max');
+      }
+    },
+    preConfig(md) {
+      md.use(ComponentPreview);
+      md.use(InstallationTabs);
+    }
+  },
   themeConfig: {
     logo: '/logo.svg',
     socialLinks: [{ icon: 'github', link: 'https://github.com/soybeanjs/soybean-ui' }],
@@ -37,6 +54,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
     nav: [
       { value: 'docs', label: 'Docs', link: '/docs/overview/getting-started' },
       { value: 'examples', label: 'Examples', link: '/examples/checkbox-group' },
+      { value: 'primitive', label: 'Primitive', link: '/primitive' },
       {
         value: 'version',
         label: `v${version}`,

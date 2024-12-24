@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { SButtonLink } from '@soybean-ui/vue';
 
 defineOptions({
   name: 'Home'
@@ -9,27 +10,31 @@ defineOptions({
 <template>
   <div class="grid justify-items-center gap-8 p-5 px-3 md:gap-10 md:px-8 sm:px-4">
     <div class="grid mt-6 max-w-4xl w-full justify-items-center gap-[inherit] md:mt-20 sm:mt-10">
-      <h1 class="text-center text-pretty text-4xl text-foreground font-bold md:text-7xl sm:text-6xl sm:font-extrabold">
-        Craft accessible web apps with Vue
+      <h1 class="text-center text-4xl text-foreground font-bold md:text-7xl sm:text-6xl sm:font-extrabold">
+        An elegant and accessible UI library like shadcn for Vue3
       </h1>
       <p
         class="max-w-[720px] text-center text-pretty text-lg text-muted-foreground lg:text-2xl md:text-xl lg:leading-9 md:leading-8"
       >
-        An open-source library with
-        <a
-          class="relative inline-block text-foreground font-semibold before:[translate:0_-0.1em] before:absolute before:inset-x-0 before:top-full before:h-[2px] before:bg-primary hover:before:h-[4px]"
-          href="/docs/guides/styling"
+        An open-source library based on
+        <SButtonLink href="/primitive" class="p-0 text-foreground lg:text-2xl md:text-xl lg:leading-9 md:leading-8">
+          soybean-primitive
+        </SButtonLink>
+        and
+        <SButtonLink
+          href="https://unocss.dev"
+          class="p-0 text-foreground lg:text-2xl md:text-xl lg:leading-9 md:leading-8"
         >
-          unstyled
-        </a>
-        ,
-        <a
-          class="relative inline-block text-foreground font-semibold before:[translate:0_-0.1em] before:absolute before:inset-x-0 before:top-full before:h-[2px] before:bg-primary hover:before:h-[4px]"
-          href="/docs/guides/composition"
+          UnoCSS
+        </SButtonLink>
+        , like
+        <SButtonLink
+          href="https://ui.shadcn.com/"
+          class="p-0 text-foreground lg:text-2xl md:text-xl lg:leading-9 md:leading-8"
         >
-          primitive
-        </a>
-        components, accompanied by a variety of
+          shadcn
+        </SButtonLink>
+        for Vue3, accompanied by a variety of
         <a
           class="relative inline-block text-foreground font-semibold before:[translate:0_-0.1em] before:absolute before:inset-x-0 before:top-full before:h-[2px] before:bg-primary hover:before:h-[4px]"
           href="/examples"
