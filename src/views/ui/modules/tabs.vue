@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Stabs } from '@soybean-ui/vue';
+import { STabs } from '@soybean-ui/vue';
 import type { TabsOption } from '@soybean-ui/vue';
 
 const tabValue = ref('1');
@@ -30,19 +30,19 @@ defineOptions({
 <template>
   <div class="w-320px lt-sm:w-auto">
     <div class="py-12px text-18px">Horizontal</div>
-    <Stabs v-model="tabValue" :items="tabs" content-class="p-4 border border-border rounded-1">
+    <STabs v-model="tabValue" :items="tabs" content-class="p-4 border border-border rounded-1">
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
-    </Stabs>
+    </STabs>
     <div class="py-12px text-18px">Vertical</div>
-    <Stabs v-model="tabValue2" :items="tabs" orientation="vertical" content-class="p-4 border border-border rounded-1">
+    <STabs v-model="tabValue2" :items="tabs" orientation="vertical" content-class="p-4 border border-border rounded-1">
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
-    </Stabs>
+    </STabs>
     <div class="py-12px text-18px">Custom Style</div>
-    <Stabs
+    <STabs
       v-model="tabValue3"
       :items="tabs"
       list-class="border-border border-b bg-transparent rounded-none"
@@ -57,8 +57,8 @@ defineOptions({
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
-    </Stabs>
-    <Stabs
+    </STabs>
+    <STabs
       v-model="tabValue3"
       :items="tabs"
       orientation="vertical"
@@ -75,7 +75,7 @@ defineOptions({
       <template #content="{ value }">
         <div>The Tab Content: {{ value }}</div>
       </template>
-    </Stabs>
+    </STabs>
   </div>
 </template>
 
