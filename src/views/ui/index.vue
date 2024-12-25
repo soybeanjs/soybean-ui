@@ -2,7 +2,7 @@
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
-import { SButtonIcon, SCard, SScrollArea, SToastProvider, Stabs } from '@soybean-ui/vue';
+import { SButtonIcon, SCard, SScrollArea, STabs, SToastProvider } from '@soybean-ui/vue';
 import type { TabsOption } from '@soybean-ui/vue';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
@@ -275,7 +275,7 @@ const tabs: TabConfig[] = [
     label: 'Tooltip',
     component: UiTooltip
   }
-] satisfies TabConfig[];
+];
 </script>
 
 <template>
@@ -288,7 +288,7 @@ const tabs: TabConfig[] = [
             <Moon v-else />
           </SButtonIcon>
         </template>
-        <Stabs
+        <STabs
           v-model="activeTab"
           :items="tabs"
           :enable-indicator="false"
@@ -303,7 +303,7 @@ const tabs: TabConfig[] = [
               </div>
             </SScrollArea>
           </template>
-        </Stabs>
+        </STabs>
       </SCard>
     </div>
   </SToastProvider>
