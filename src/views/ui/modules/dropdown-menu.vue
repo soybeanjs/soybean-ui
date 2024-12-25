@@ -16,6 +16,7 @@ import {
   LifeBuoy,
   LogOut,
   Mail,
+  MessageCircle,
   Settings,
   Twitter,
   User,
@@ -51,7 +52,12 @@ const menus: DropdownMenuOptionType[] = [
       { value: '06', label: 'Email', icon: Mail, shortcut: '⇧⌘E' },
       { value: '07', label: 'Facebook', icon: Facebook, shortcut: '⇧⌘F' },
       { value: '08', label: 'Twitter', icon: Twitter, shortcut: '⇧⌘T', separator: true },
-      { value: '09', label: 'More', icon: CirclePlus }
+      {
+        value: '09',
+        label: 'More',
+        icon: CirclePlus,
+        items: [{ value: '0901', label: 'Message', icon: MessageCircle, shortcut: '⌘M' }]
+      }
     ]
   },
   { value: '12', label: 'Github', icon: Github },
@@ -96,26 +102,26 @@ const placements = [
   <div class="w-fit flex-c gap-12px">
     <SDropdownMenu v-for="size in sizes" :key="size" :size="size" :items="menus" @select="handleSelect">
       <template #trigger>
-        <SButton variant="outline" :size="size">{{ size }} Dropdown</SButton>
+        <SButton variant="pure" :size="size">{{ size }} Dropdown</SButton>
       </template>
     </SDropdownMenu>
   </div>
   <div class="py-12px text-18px">With Arrow</div>
   <SDropdownMenu :items="menus" show-arrow>
     <template #trigger>
-      <SButton variant="outline">Open Dropdown</SButton>
+      <SButton variant="pure">Open Dropdown</SButton>
     </template>
   </SDropdownMenu>
   <div class="py-12px text-18px">Checkbox</div>
   <SDropdownMenuCheckbox v-model="checks" group-label="My Account" group-separator :items="items">
     <template #trigger>
-      <SButton variant="outline">Checkbox Dropdown</SButton>
+      <SButton variant="pure">Checkbox Dropdown</SButton>
     </template>
   </SDropdownMenuCheckbox>
   <div class="py-12px text-18px">Radio</div>
   <SDropdownMenuRadio v-model="placement" group-label="Tooltip placement" group-separator :items="placements">
     <template #trigger>
-      <SButton variant="outline">Radio Dropdown</SButton>
+      <SButton variant="pure">Radio Dropdown</SButton>
     </template>
   </SDropdownMenuRadio>
 </template>
