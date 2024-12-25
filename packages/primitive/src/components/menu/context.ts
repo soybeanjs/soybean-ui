@@ -13,7 +13,7 @@ export const [provideMenuContext, injectMenuContext] = createContext<MenuContext
 
 export const [provideMenuContentContext, injectMenuContentContext] = createContext<MenuContentContext>('MenuContent');
 
-export const [injectMenuItemIndicatorContext, provideMenuItemIndicatorContext] =
+export const [provideMenuItemIndicatorContext, injectMenuItemIndicatorContext] =
   createContext<MenuItemIndicatorContext>('MenuItemIndicatorContext');
 
 export const [provideMenuSubContext, injectMenuSubContext] = createContext<MenuSubContext>('MenuSub');

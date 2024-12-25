@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
+import { computed } from 'vue';
 import { getCheckedState } from '../checkbox/shared';
 import { injectMenuRadioGroupContext, provideMenuItemIndicatorContext } from './context';
 import MenuItem from './menu-item.vue';
@@ -12,13 +12,13 @@ defineOptions({
 const props = defineProps<MenuRadioItemPropsWithPrimitive>();
 const emit = defineEmits<MenuRadioItemEmits>();
 
-const { value } = toRefs(props);
-const radioGroupContext = injectMenuRadioGroupContext();
-const modelValue = computed(() => radioGroupContext.modelValue.value === value?.value);
+const { onValueChange, modelValue: groupModelValue } = injectMenuRadioGroupContext();
+
+const modelValue = computed(() => groupModelValue.value === props.value);
 
 function onSelect(event: Event) {
   emit('select', event);
-  radioGroupContext.onValueChange(value.value);
+  onValueChange(props.value);
 }
 
 provideMenuItemIndicatorContext({ modelValue });

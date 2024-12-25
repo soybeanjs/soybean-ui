@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { getCheckedState, isIndeterminate } from '../checkbox/shared';
 import { Presence } from '../presence';
 import { Primitive } from '../primitive';
@@ -14,23 +14,18 @@ const props = withDefaults(defineProps<MenuItemIndicatorPropsWithPrimitive>(), {
   as: 'span'
 });
 
-const indicatorContext = injectMenuItemIndicatorContext({
+const { modelValue } = injectMenuItemIndicatorContext({
   modelValue: ref(false)
 });
+
+const presence = computed(() => props.forceMount || isIndeterminate(modelValue.value) || modelValue.value === true);
+
+const dataState = computed(() => getCheckedState(modelValue.value));
 </script>
 
 <template>
-  <Presence
-    :present="
-      forceMount || isIndeterminate(indicatorContext.modelValue.value) || indicatorContext.modelValue.value === true
-    "
-  >
-    <Primitive
-      :class="props.class"
-      :as="as"
-      :as-child="asChild"
-      :data-state="getCheckedState(indicatorContext.modelValue.value)"
-    >
+  <Presence :present="presence">
+    <Primitive :class="props.class" :as="as" :as-child="asChild" :data-state="dataState">
       <slot />
     </Primitive>
   </Presence>
