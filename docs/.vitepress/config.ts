@@ -54,7 +54,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
     nav: [
       { value: 'docs', label: 'Docs', link: '/docs/overview/getting-started' },
       { value: 'examples', label: 'Examples', link: '/examples/checkbox-group' },
-      { value: 'primitive', label: 'Primitive', link: '/primitive' },
+      { value: 'primitive', label: 'Primitive', link: '/primitive/index' },
       {
         value: 'version',
         label: `v${version}`,

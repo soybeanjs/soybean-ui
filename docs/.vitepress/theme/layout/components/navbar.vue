@@ -93,13 +93,13 @@ watch(path, () => {
         <template v-else>{{ label }}</template>
       </component>
     </DefineNavMenuItem>
-    <SPopover v-model:open="isPopoverOpen" side="bottom" align="end" content-class="p-2">
+    <SPopover v-model:open="isPopoverOpen" side="bottom" align="end" content-class="z-15 p-2">
       <template #trigger>
         <SButtonIcon>
           <Icon icon="lucide:ellipsis" />
         </SButtonIcon>
       </template>
-      <nav class="flex-c">
+      <nav class="relative z-10 flex-c">
         <template v-for="(nav, index) in theme.nav" :key="index">
           <NavMenuItem v-if="isNavItemWithLink(nav)" :label="nav.label" :link="nav.link" />
           <SDropdownMenu v-else :label="nav.label" :items="nav.items" align="end" @select="handleSelect">
