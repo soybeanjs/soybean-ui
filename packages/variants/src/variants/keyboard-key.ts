@@ -1,19 +1,58 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
+import type { VariantProps } from 'tailwind-variants';
 
 export const keyboardKeyVariants = tv({
-  base: 'inline-flex font-medium leading-none border border-border bg-muted rounded-md',
+  slots: {
+    item: `inline-flex items-center justify-center font-medium border border-border  rounded-sm`,
+    group: 'flex items-center',
+    separator: 'font-medium text-muted-foreground'
+  },
   variants: {
+    variant: {
+      solid: {
+        item: 'bg-muted-foreground text-muted'
+      },
+      outline: {
+        item: 'border-border bg-background text-muted-foreground'
+      },
+      subtle: {
+        item: ' border-border bg-muted text-muted-foreground'
+      }
+    },
     size: {
-      xs: 'text-xs px-1 py-0.5',
-      sm: 'text-sm px-1.5 py-0.5',
-      md: 'text-sm px-2 py-1',
-      lg: 'text-base px-2.5 py-1.5',
-      xl: 'text-xl px-3 py-2',
-      xxl: 'text-2xl px-3.5 py-2.5'
+      xs: {
+        item: 'h-4 min-w-4 px-0.75 gap-0.75 text-xs',
+        group: 'gap-0.75 text-xs'
+      },
+      sm: {
+        item: 'h-4.5 min-w-4.5 px-0.75 gap-1 text-xs',
+        group: 'gap-1 text-xs'
+      },
+      md: {
+        item: 'h-5 min-w-5 px-1 gap-1.5 text-sm',
+        group: 'gap-1.5 text-sm'
+      },
+      lg: {
+        item: 'h-5.5 min-w-5.5 px-1.25 gap-2 text-base',
+        group: 'gap-2 text-base'
+      },
+      xl: {
+        item: 'h-6 min-w-6 px-1.5 gap-2.5 text-base',
+        group: 'gap-2.5 text-base'
+      },
+      xxl: {
+        item: 'h-6.5 min-w-6.5 px-1.5 gap-3 text-lg',
+        group: 'gap-3 text-lg'
+      }
     }
   },
   defaultVariants: {
+    variant: 'outline',
     size: 'md'
   }
 });
+
+type KeyboardKeyVariants = VariantProps<typeof keyboardKeyVariants>;
+
+export type KeyboardKeyVariant = NonNullable<KeyboardKeyVariants['variant']>;
