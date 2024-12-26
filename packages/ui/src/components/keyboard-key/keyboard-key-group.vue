@@ -10,8 +10,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<KeyboardKeyGroupProps>(), {
-  separator: '+',
-  values: () => []
+  values: () => [],
+  separator: '+'
 });
 
 const mergedCls = computed(() => {

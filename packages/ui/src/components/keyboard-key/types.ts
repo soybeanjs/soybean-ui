@@ -30,10 +30,13 @@ export type SpecificKeyboardKeyMap = {
   ctrl: string;
 };
 
-export interface KeyboardKeyProps extends ClassValueProp {
+export type KeyboardKeyValue = BuiltinKeyboardKey | (string & {});
+
+export interface KeyboardKeyProps<T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue>
+  extends ClassValueProp {
   variant?: KeyboardKeyVariant;
   size?: ThemeSize;
-  value?: BuiltinKeyboardKey | (string & {});
+  value?: T;
 }
 
 export interface KeyboardKeyGroupProps extends Omit<KeyboardKeyProps, 'value'> {

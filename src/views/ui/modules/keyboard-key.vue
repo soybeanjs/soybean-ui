@@ -13,7 +13,7 @@ const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'subtle'];
 <template>
   <div class="py-12px text-18px">KeyboardKey Size</div>
   <div class="flex flex-wrap gap-2">
-    <div v-for="size in sizes" :key="size">
+    <div v-for="size in sizes" :key="size" class="flex-c justify-between">
       <div>{{ size }}</div>
       <SKeyboardKey :size="size" value="command" />
     </div>
@@ -21,10 +21,18 @@ const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'subtle'];
 
   <div class="py-12px text-18px">KeyboardKey Variant</div>
   <div class="flex flex-wrap gap-2">
-    <div v-for="variant in variants" :key="variant">
+    <div v-for="variant in variants" :key="variant" class="flex-c">
       <div>{{ variant }}</div>
-      <SKeyboardKey :variant="variant" value="command" />
+      <div class="flex items-end gap-2">
+        <SKeyboardKey v-for="size in sizes" :key="size" :variant="variant" value="K" :size="size" />
+      </div>
     </div>
+  </div>
+  <div class="py-12px text-18px">KeyboardKey Combination</div>
+  <div class="flex flex-wrap gap-2">
+    <SKeyboardKey :value="['command', 'k']" variant="solid" />
+    <SKeyboardKey :value="['shift', 's']" variant="outline" />
+    <SKeyboardKey :value="['ctrl', 'alt', 'a']" variant="subtle" />
   </div>
   <div class="py-12px text-18px">KeyboardKey Group</div>
   <div class="flex-c gap-2">

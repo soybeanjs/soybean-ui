@@ -23,27 +23,27 @@ export const keyboardKeyVariants = tv({
     size: {
       xs: {
         item: 'h-4 min-w-4 px-0.75 gap-0.75 text-xs',
-        group: 'gap-0.75 text-xs'
+        group: 'gap-0.75'
       },
       sm: {
         item: 'h-4.5 min-w-4.5 px-0.75 gap-1 text-xs',
-        group: 'gap-1 text-xs'
+        group: 'gap-1'
       },
       md: {
-        item: 'h-5 min-w-5 px-1 gap-1.5 text-sm',
-        group: 'gap-1.5 text-sm'
+        item: 'h-5 min-w-5 px-1 gap-1.5 text-xs',
+        group: 'gap-1.5'
       },
       lg: {
-        item: 'h-5.5 min-w-5.5 px-1.25 gap-2 text-base',
-        group: 'gap-2 text-base'
+        item: 'h-5.5 min-w-5.5 px-1.25 gap-2 text-sm',
+        group: 'gap-2'
       },
       xl: {
-        item: 'h-6 min-w-6 px-1.5 gap-2.5 text-base',
-        group: 'gap-2.5 text-base'
+        item: 'h-6 min-w-6 px-1.5 gap-2.5 text-sm',
+        group: 'gap-2.5'
       },
       xxl: {
-        item: 'h-6.5 min-w-6.5 px-1.5 gap-3 text-lg',
-        group: 'gap-3 text-lg'
+        item: 'h-6.5 min-w-6.5 px-1.5 gap-3 text-sm',
+        group: 'gap-3'
       }
     }
   },
