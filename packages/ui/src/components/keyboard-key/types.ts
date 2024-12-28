@@ -39,8 +39,9 @@ export interface KeyboardKeyProps<T extends KeyboardKeyValue | KeyboardKeyValue[
   value?: T;
 }
 
-export interface KeyboardKeyGroupProps extends Omit<KeyboardKeyProps, 'value'> {
-  values?: KeyboardKeyProps['value'][];
+export interface KeyboardKeyGroupProps<T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue>
+  extends Omit<KeyboardKeyProps, 'value'> {
+  values?: T[];
   itemClass?: ClassValue;
   separator?: string;
   separatorClass?: ClassValue;

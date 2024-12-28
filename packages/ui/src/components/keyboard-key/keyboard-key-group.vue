@@ -1,15 +1,15 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends KeyboardKeyValue | KeyboardKeyValue[]">
 import { computed } from 'vue';
 import { Primitive } from '@soybean-ui/primitive';
 import { cn, keyboardKeyVariants } from '@soybean-ui/variants';
 import SKeyboardKey from './keyboard-key.vue';
-import type { KeyboardKeyGroupProps } from './types';
+import type { KeyboardKeyGroupProps, KeyboardKeyValue } from './types';
 
 defineOptions({
   name: 'SKeyboardKeyGroup'
 });
 
-const props = withDefaults(defineProps<KeyboardKeyGroupProps>(), {
+const props = withDefaults(defineProps<KeyboardKeyGroupProps<T>>(), {
   values: () => [],
   separator: '+'
 });
