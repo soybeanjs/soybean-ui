@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SBreadcrumb, SBreadcrumbEllipsis, SBreadcrumbPage, SDropdownMenu } from '@soybean-ui/vue';
-import type { BreadcrumbItem, DropdownMenuItemOption, ThemeSize } from '@soybean-ui/vue';
+import type { BreadcrumbItem, MenuOptionData, ThemeSize } from '@soybean-ui/vue';
 import { Component, Dock, Home } from 'lucide-vue-next';
 
 defineOptions({
@@ -61,7 +61,7 @@ const items3: BreadcrumbItem[] = items.concat([
 ]);
 
 interface DropdownItem extends BreadcrumbItem {
-  items?: DropdownMenuItemOption[];
+  items?: MenuOptionData[];
 }
 
 const dropdownItems: DropdownItem[] = [

@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { SButton, SDropdownMenu, SDropdownMenuCheckbox, SDropdownMenuRadio } from '@soybean-ui/vue';
-import type {
-  DropdownMenuCheckboxOption,
-  DropdownMenuItemOption,
-  DropdownMenuOptionType,
-  ThemeSize
-} from '@soybean-ui/vue';
+import type { MenuOptionData, ThemeSize } from '@soybean-ui/vue';
 import {
   CirclePlus,
   Cloud,
@@ -31,46 +26,52 @@ defineOptions({
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-const menus: DropdownMenuOptionType[] = [
+const menus: MenuOptionData<string>[] = [
   {
-    groupId: 'myAccount',
+    isGroupLabel: true,
+    value: 'myAccount',
     label: 'My Account',
-    separator: true,
-    items: [
-      { value: '01', label: 'Profile', icon: User, shortcut: '⇧⌘P' },
-      { value: '02', label: 'Billing', icon: CreditCard, shortcut: '⌘B' },
-      { value: '03', label: 'Settings', icon: Settings, shortcut: '⌘S' },
-      { value: '04', label: 'Keyboard shortcuts', icon: Keyboard, shortcut: '⌘K', separator: true }
-    ]
+    separator: true
   },
-  { value: '05', label: 'Team', icon: Users, shortcut: '⇧⌘T' },
+  { value: '01', label: 'Profile', icon: User, shortcut: ['command', 'shift', 'p'] },
+  { value: '02', label: 'Billing', icon: CreditCard, shortcut: ['command', 'b'] },
+  { value: '03', label: 'Settings', icon: Settings, shortcut: ['command', 's'] },
+  { value: '04', label: 'Keyboard shortcuts', icon: Keyboard, shortcut: ['command', 'k'], separator: true },
+  { value: '05', label: 'Team', icon: Users, shortcut: ['command', 'shift', 't'] },
   {
+    value: '06',
     label: 'Invite Users',
     icon: UserPlus,
     separator: true,
-    items: [
-      { value: '06', label: 'Email', icon: Mail, shortcut: '⇧⌘E' },
-      { value: '07', label: 'Facebook', icon: Facebook, shortcut: '⇧⌘F' },
-      { value: '08', label: 'Twitter', icon: Twitter, shortcut: '⇧⌘T', separator: true },
+    children: [
+      { value: '0601', label: 'Email', icon: Mail, shortcut: ['command', 'shift', 'e'] },
+      { value: '0602', label: 'Facebook', icon: Facebook, shortcut: ['command', 'shift', 'f'] },
+      { value: '0603', label: 'Twitter', icon: Twitter, shortcut: ['command', 'shift', 't'], separator: true },
       {
-        value: '09',
+        value: '0604',
         label: 'More',
         icon: CirclePlus,
-        items: [{ value: '0901', label: 'Message', icon: MessageCircle, shortcut: '⌘M' }]
+        children: [{ value: '060401', label: 'Message', icon: MessageCircle, shortcut: ['command', 'm'] }]
       }
     ]
   },
-  { value: '12', label: 'Github', icon: Github },
-  { value: '13', label: 'Support', icon: LifeBuoy },
-  { value: '14', label: 'API', icon: Cloud, disabled: true, separator: true },
-  { value: '15', label: 'Sign out', icon: LogOut }
+  {
+    value: '07',
+    label: 'Github',
+    icon: Github,
+    linkProps: { href: 'https://github.com', target: '_blank' }
+  },
+  { value: '08', label: 'Support', icon: LifeBuoy },
+  { value: '09', label: 'API', icon: Cloud, disabled: true, separator: true },
+  { value: '10', label: 'Sign out', icon: LogOut, shortcut: ['command', 'shift', 'Q'] }
 ];
 
-function handleSelect(item: DropdownMenuItemOption) {
+function handleSelect(_event: Event, item: MenuOptionData) {
   console.log('Selected:', item);
 }
 
-const items: DropdownMenuCheckboxOption[] = [
+const items: MenuOptionData[] = [
+  { isGroupLabel: true, value: 'myAccount', label: 'My Account', separator: true },
   { value: '01', label: 'Profile', icon: User, shortcut: '⇧⌘P' },
   { value: '02', label: 'Billing', icon: CreditCard, shortcut: '⌘B' },
   { value: '03', label: 'Settings', icon: Settings, shortcut: '⌘S', separator: true },
@@ -82,6 +83,7 @@ const checks = ref(['01']);
 const placement = ref('top-start');
 
 const placements = [
+  { isGroupLabel: true, value: 'tooltipPlacement', label: 'Tooltip Placement', separator: true },
   { value: 'top-start', label: 'Top Start' },
   { value: 'top', label: 'Top' },
   { value: 'top-end', label: 'Top End' },
@@ -113,13 +115,13 @@ const placements = [
     </template>
   </SDropdownMenu>
   <div class="py-12px text-18px">Checkbox</div>
-  <SDropdownMenuCheckbox v-model="checks" group-label="My Account" group-separator :items="items">
+  <SDropdownMenuCheckbox v-model="checks" :items="items">
     <template #trigger>
       <SButton variant="pure">Checkbox Dropdown</SButton>
     </template>
   </SDropdownMenuCheckbox>
   <div class="py-12px text-18px">Radio</div>
-  <SDropdownMenuRadio v-model="placement" group-label="Tooltip placement" group-separator :items="placements">
+  <SDropdownMenuRadio v-model="placement" :items="placements">
     <template #trigger>
       <SButton variant="pure">Radio Dropdown</SButton>
     </template>

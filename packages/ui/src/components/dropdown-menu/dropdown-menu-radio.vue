@@ -1,17 +1,19 @@
-<script setup lang="ts" generic="T extends DropdownMenuRadioOption = DropdownMenuRadioOption">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
 import {
-  DropdownMenuRadioGroup,
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
-  useOmitForwardProps
+  useOmitForwardProps,
+  usePickEmitAsProps,
+  usePickForwardProps
 } from '@soybean-ui/primitive';
-import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
-import SDropdownMenuLabel from './dropdown-menu-label.vue';
-import SDropdownMenuRadioItem from './dropdown-menu-radio-item.vue';
-import SDropdownMenuShortcut from './dropdown-menu-shortcut.vue';
-import SDropdownMenuSeparator from './dropdown-menu-separator.vue';
-import type { DropdownMenuRadioEmits, DropdownMenuRadioOption, DropdownMenuRadioProps } from './types';
+import type { AcceptableValue } from '@soybean-ui/primitive';
+import type { ThemeSize } from '../../types';
+import SMenuRadio from '../menu/menu-radio.vue';
+import type { MenuOptionData } from '../menu/types';
+import type { DropdownMenuRadioEmits, DropdownMenuRadioProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuRadio'
@@ -19,75 +21,42 @@ defineOptions({
 
 const props = defineProps<DropdownMenuRadioProps<T>>();
 
-const emit = defineEmits<DropdownMenuRadioEmits>();
+const emit = defineEmits<DropdownMenuRadioEmits<T>>();
 
-const forwardedWrapperProps = useOmitForwardProps(props, [
-  'separator',
-  'groupLabelClass',
-  'itemClass',
-  'itemIconClass',
-  'separatorClass',
-  'shortcutClass',
-  'items',
-  'modelValue',
-  'defaultValue',
-  'groupLabel',
-  'groupSeparator',
-  'indicatorClass',
-  'indicatorIconRootClass',
-  'indicatorIconClass'
-]);
+type Slots = {
+  trigger?: (size?: ThemeSize) => any;
+  item?: (props: MenuOptionData<T>) => any;
+  itemLeading?: (props: MenuOptionData<T>) => any;
+  itemTrailing?: (props: MenuOptionData<T>) => any;
+  itemIndicatorIcon?: (props: MenuOptionData<T>) => any;
+};
 
-const forwardedWrapperEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
+const slots = defineSlots<Slots>();
+const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
+const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuRadioProps<T>)[];
 
-const radioValue = computed({
-  get() {
-    return props.modelValue || props.defaultValue || '';
-  },
-  set(value) {
-    emit('update:modelValue', value);
-  }
-});
+const forwardedRootProps = usePickForwardProps(props, propKeys);
+const forwardedMenuRadioProps = useOmitForwardProps(props, propKeys);
+
+const emitKeys = ['update:open'] satisfies (keyof DropdownMenuRadioEmits<T>)[];
+
+const forwardedRootEmits = usePickEmitAsProps(emit, emitKeys);
+const forwardedMenuRadioEmits = useOmitEmitAsProps(emit, emitKeys);
+
+const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, forwardedRootEmits);
+const forwardedMenuRadio = useCombinedPropsEmits(forwardedMenuRadioProps, forwardedMenuRadioEmits);
 </script>
 
 <template>
-  <SDropdownMenuWrapper v-bind="forwardedWrapper">
-    <template #trigger>
+  <DropdownMenuRoot v-bind="forwardedRoot">
+    <DropdownMenuTrigger as-child>
       <slot name="trigger" :size="size" />
-    </template>
-    <SDropdownMenuLabel v-if="groupLabel" :class="groupLabelClass" :size="size">
-      {{ groupLabel }}
-    </SDropdownMenuLabel>
-    <SDropdownMenuSeparator v-if="groupLabel && (separator || groupSeparator)" :class="separatorClass" />
-    <DropdownMenuRadioGroup v-model="radioValue">
-      <template v-for="item in items" :key="item.value">
-        <SDropdownMenuRadioItem
-          :class="itemClass"
-          :size="size"
-          :disabled="item.disabled"
-          :text-value="item.textValue || item.label"
-          :value="item.value"
-          :indicator-class
-          :indicator-icon-root-class
-          :indicator-icon-class
-        >
-          <template #indicatorIcon>
-            <slot name="indicatorIcon" />
-          </template>
-          <slot name="item" :item="item">
-            <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
-            <span>{{ item.label }}</span>
-            <SDropdownMenuShortcut v-if="item.shortcut" :class="shortcutClass" :size="size">
-              {{ item.shortcut }}
-            </SDropdownMenuShortcut>
-          </slot>
-        </SDropdownMenuRadioItem>
-        <SDropdownMenuSeparator v-if="separator || item.separator" :class="separatorClass" />
+    </DropdownMenuTrigger>
+    <SMenuRadio v-bind="forwardedMenuRadio">
+      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
+        <slot :name="slotKey" v-bind="slotProps" />
       </template>
-    </DropdownMenuRadioGroup>
-  </SDropdownMenuWrapper>
+    </SMenuRadio>
+  </DropdownMenuRoot>
 </template>
-
-<style scoped></style>

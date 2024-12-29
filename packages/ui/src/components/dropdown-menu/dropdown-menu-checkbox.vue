@@ -1,18 +1,19 @@
-<script setup lang="ts" generic="T extends DropdownMenuCheckboxOption = DropdownMenuCheckboxOption">
-import { ref, watch } from 'vue';
-import type { Ref } from 'vue';
-import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitive';
-import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
-import SDropdownMenuLabel from './dropdown-menu-label.vue';
-import SDropdownMenuCheckboxItem from './dropdown-menu-checkbox-item.vue';
-import SDropdownMenuShortcut from './dropdown-menu-shortcut.vue';
-import SDropdownMenuSeparator from './dropdown-menu-separator.vue';
-import type {
-  CheckAction,
-  DropdownMenuCheckboxEmits,
-  DropdownMenuCheckboxOption,
-  DropdownMenuCheckboxProps
-} from './types';
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed } from 'vue';
+import {
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
+  useCombinedPropsEmits,
+  useOmitEmitAsProps,
+  useOmitForwardProps,
+  usePickEmitAsProps,
+  usePickForwardProps
+} from '@soybean-ui/primitive';
+import type { AcceptableValue } from '@soybean-ui/primitive';
+import type { ThemeSize } from '../../types';
+import SMenuCheckbox from '../menu/menu-checkbox.vue';
+import type { MenuOptionData } from '../menu/types';
+import type { DropdownMenuCheckboxEmits, DropdownMenuCheckboxProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenuCheckbox'
@@ -20,80 +21,42 @@ defineOptions({
 
 const props = defineProps<DropdownMenuCheckboxProps<T>>();
 
-const emit = defineEmits<DropdownMenuCheckboxEmits>();
+const emit = defineEmits<DropdownMenuCheckboxEmits<T>>();
 
-const forwardedWrapperProps = useOmitForwardProps(props, [
-  'separator',
-  'groupLabelClass',
-  'itemClass',
-  'itemIconClass',
-  'separatorClass',
-  'shortcutClass',
-  'items',
-  'modelValue',
-  'defaultValue',
-  'groupLabel',
-  'groupSeparator'
-]);
+type Slots = {
+  trigger?: (size?: ThemeSize) => any;
+  item?: (props: MenuOptionData<T>) => any;
+  itemLeading?: (props: MenuOptionData<T>) => any;
+  itemTrailing?: (props: MenuOptionData<T>) => any;
+  itemIndicatorIcon?: (props: MenuOptionData<T>) => any;
+};
 
-const forwardedWrapperEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
+const slots = defineSlots<Slots>();
+const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
+const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuCheckboxProps<T>)[];
 
-const checkValue = ref(props.modelValue || props.defaultValue || []) as Ref<string[]>;
+const forwardedRootProps = usePickForwardProps(props, propKeys);
+const forwardedMenuCheckboxProps = useOmitForwardProps(props, propKeys);
 
-function handleUpdateChecked(item: T, checked: boolean) {
-  if (checked) {
-    checkValue.value = [...checkValue.value, item.value];
-  } else {
-    checkValue.value = checkValue.value.filter(v => v !== item.value);
-  }
+const emitKeys = ['update:open'] satisfies (keyof DropdownMenuCheckboxEmits<T>)[];
 
-  const action: CheckAction = checked ? 'check' : 'uncheck';
+const forwardedRootEmits = usePickEmitAsProps(emit, emitKeys);
+const forwardedMenuCheckboxEmits = useOmitEmitAsProps(emit, emitKeys);
 
-  emit('update:modelValue', checkValue.value, item, action);
-}
-
-watch(
-  () => props.modelValue,
-  value => {
-    checkValue.value = value || [];
-  }
-);
+const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, forwardedRootEmits);
+const forwardedMenuCheckbox = useCombinedPropsEmits(forwardedMenuCheckboxProps, forwardedMenuCheckboxEmits);
 </script>
 
 <template>
-  <SDropdownMenuWrapper v-bind="forwardedWrapper">
-    <template #trigger>
+  <DropdownMenuRoot v-bind="forwardedRoot">
+    <DropdownMenuTrigger as-child>
       <slot name="trigger" :size="size" />
-    </template>
-    <SDropdownMenuLabel v-if="groupLabel" :class="groupLabelClass" :size="size">
-      {{ groupLabel }}
-    </SDropdownMenuLabel>
-    <SDropdownMenuSeparator v-if="groupLabel && (separator || groupSeparator)" :class="separatorClass" />
-    <template v-for="item in items" :key="item.value">
-      <SDropdownMenuCheckboxItem
-        :class="itemClass"
-        :size="size"
-        :disabled="item.disabled"
-        :text-value="item.textValue || item.label"
-        :model-value="checkValue.includes(item.value)"
-        @update:model-value="handleUpdateChecked(item, $event)"
-      >
-        <template #indicatorIcon>
-          <slot name="indicatorIcon" />
-        </template>
-        <slot name="item" :item="item">
-          <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
-          <span>{{ item.label }}</span>
-          <SDropdownMenuShortcut v-if="item.shortcut" :class="shortcutClass" :size="size">
-            {{ item.shortcut }}
-          </SDropdownMenuShortcut>
-        </slot>
-      </SDropdownMenuCheckboxItem>
-      <SDropdownMenuSeparator v-if="separator || item.separator" :class="separatorClass" />
-    </template>
-  </SDropdownMenuWrapper>
+    </DropdownMenuTrigger>
+    <SMenuCheckbox v-bind="forwardedMenuCheckbox">
+      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
+        <slot :name="slotKey" v-bind="slotProps" />
+      </template>
+    </SMenuCheckbox>
+  </DropdownMenuRoot>
 </template>
-
-<style scoped></style>

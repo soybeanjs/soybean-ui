@@ -1,16 +1,19 @@
-<script setup lang="ts" generic="T extends DropdownMenuItemOption = DropdownMenuItemOption">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
 import {
+  DropdownMenuRoot,
+  DropdownMenuTrigger,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
   usePickEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitive';
-import { createOptionKey } from './shared';
-import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
-import SDropdownMenuOption from './dropdown-menu-option.vue';
-import type { DropdownMenuEmits, DropdownMenuItemOption, DropdownMenuProps } from './types';
+import type { AcceptableValue } from '@soybean-ui/primitive';
+import type { ThemeSize } from '../../types';
+import SMenu from '../menu/menu.vue';
+import type { MenuOptionData } from '../menu/types';
+import type { DropdownMenuEmits, DropdownMenuProps } from './types';
 
 defineOptions({
   name: 'SDropdownMenu'
@@ -18,98 +21,44 @@ defineOptions({
 
 const props = defineProps<DropdownMenuProps<T>>();
 
-type Emits = DropdownMenuEmits<T>;
+const emit = defineEmits<DropdownMenuEmits<T>>();
 
-const emit = defineEmits<Emits>();
+type Slots = {
+  trigger?: (size?: ThemeSize) => any;
+  item?: (props: MenuOptionData<T>) => any;
+  itemLeading?: (props: MenuOptionData<T>) => any;
+  itemTrailing?: (props: MenuOptionData<T>) => any;
+  itemTrigger?: (props: MenuOptionData<T>) => any;
+  subTriggerIcon?: (props: MenuOptionData<T>) => any;
+  children?: (props: MenuOptionData<T>) => any;
+};
 
-const forwardedWrapperProps = useOmitForwardProps(props, [
-  'separator',
-  'groupLabelClass',
-  'itemClass',
-  'itemIconClass',
-  'separatorClass',
-  'shortcutClass',
-  'items',
-  'groupClass',
-  'subTriggerClass',
-  'subTriggerIconClass',
-  'subContentClass',
-  'subContentProps'
-]);
+const slots = defineSlots<Slots>();
+const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const optionEmitKeys: (keyof Emits)[] = [
-  'select',
-  'update:subOpen',
-  'closeAutoFocusSub',
-  'entryFocusSub',
-  'escapeKeyDownSub',
-  'focusOutsideSub',
-  'interactOutsideSub',
-  'openAutoFocusSub',
-  'pointerDownOutsideSub'
-];
+const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuProps<T>)[];
 
-const forwardedWrapperEmits = useOmitEmitAsProps(emit, optionEmitKeys);
+const forwardedRootProps = usePickForwardProps(props, propKeys);
+const forwardedMenuProps = useOmitForwardProps(props, propKeys);
 
-const forwardedWrapper = useCombinedPropsEmits(forwardedWrapperProps, forwardedWrapperEmits);
+const emitKeys = ['update:open'] satisfies (keyof DropdownMenuEmits<T>)[];
 
-const forwardedSubContentProps = usePickForwardProps(props, [
-  'loop',
-  'sideOffset',
-  'alignOffset',
-  'avoidCollisions',
-  'collisionBoundary',
-  'collisionPadding',
-  'arrowPadding',
-  'sticky',
-  'hideWhenDetached',
-  'updatePositionStrategy',
-  'prioritizePosition'
-]);
+const forwardedRootEmits = usePickEmitAsProps(emit, emitKeys);
+const forwardedMenuEmits = useOmitEmitAsProps(emit, emitKeys);
 
-const combinedSubContentProps = computed(() => ({
-  ...forwardedSubContentProps.value,
-  ...props.subContentProps
-}));
-
-const forwardedOptionEmits = usePickEmitAsProps(emit, optionEmitKeys);
+const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, forwardedRootEmits);
+const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmits);
 </script>
 
 <template>
-  <SDropdownMenuWrapper v-bind="forwardedWrapper">
-    <template #trigger>
+  <DropdownMenuRoot v-bind="forwardedRoot">
+    <DropdownMenuTrigger as-child>
       <slot name="trigger" :size="size" />
-    </template>
-    <SDropdownMenuOption
-      v-for="item in items"
-      :key="createOptionKey(item)"
-      :option="item"
-      :to="to"
-      :size="size"
-      :separator="separator"
-      :disabled-portal="disabledPortal"
-      :force-mount-portal="forceMountPortal"
-      :group-class="groupClass"
-      :group-label-class="groupLabelClass"
-      :sub-trigger-class="subTriggerClass"
-      :sub-content-class="subContentClass"
-      :sub-content-props="combinedSubContentProps"
-      :item-class="itemClass"
-      :separator-class="separatorClass"
-      :shortcut-class="shortcutClass"
-      v-bind="forwardedOptionEmits"
-    >
-      <template #item>
-        <slot name="item" v-bind="item" />
+    </DropdownMenuTrigger>
+    <SMenu v-bind="forwardedMenu">
+      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
+        <slot :name="slotKey" v-bind="slotProps" />
       </template>
-      <template #subTrigger>
-        <slot name="subTrigger" v-bind="item" />
-      </template>
-      <template #subTriggerIcon>
-        <slot name="subTriggerIcon" v-bind="item" />
-      </template>
-    </SDropdownMenuOption>
-  </SDropdownMenuWrapper>
+    </SMenu>
+  </DropdownMenuRoot>
 </template>
-
-<style scoped></style>
