@@ -19,6 +19,7 @@ export * from './hover-card';
 export * from './input';
 export * from './keyboard-key';
 export * from './label';
+export * from './menu';
 export * from './navigation-menu';
 export * from './pagination';
 export * from './pin-input';

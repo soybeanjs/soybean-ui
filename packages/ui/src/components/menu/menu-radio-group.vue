@@ -1,0 +1,66 @@
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed } from 'vue';
+import { MenuRadioGroup } from '@soybean-ui/primitive';
+import type { AcceptableValue } from '@soybean-ui/primitive';
+import SMenuLabel from './menu-label.vue';
+import SMenuRadioItem from './menu-radio-item.vue';
+import SMenuShortcut from './menu-shortcut.vue';
+import SMenuSeparator from './menu-separator.vue';
+import type { MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
+
+defineOptions({
+  name: 'SMenuRadioGroup'
+});
+
+const props = defineProps<MenuRadioGroupProps<T>>();
+
+const emit = defineEmits<MenuRadioGroupEmits<T>>();
+
+const radioValue = computed({
+  get() {
+    return (props.modelValue || props.defaultValue || '') as T;
+  },
+  set(value) {
+    emit('update:modelValue', value);
+  }
+});
+</script>
+
+<template>
+  <MenuRadioGroup v-model="radioValue" :class="props.class">
+    <template v-for="item in items" :key="item.value">
+      <SMenuLabel v-if="item.isGroupLabel" :class="groupLabelClass" :size="size">
+        <slot name="item" v-bind="item">
+          <slot name="item-leading" v-bind="item">
+            <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
+          </slot>
+          <span>{{ item.label }}</span>
+          <slot name="item-trailing" v-bind="item" />
+        </slot>
+      </SMenuLabel>
+      <SMenuRadioItem
+        v-else
+        :class="itemClass"
+        :size="size"
+        :disabled="item.disabled"
+        :text-value="item.textValue || item.label"
+        :value="item.value"
+        :indicator-class="itemIndicatorClass"
+      >
+        <template #indicatorIcon>
+          <slot name="item-indicator-icon" v-bind="item" />
+        </template>
+        <slot name="item" v-bind="item">
+          <slot name="item-leading" v-bind="item">
+            <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
+          </slot>
+          <span>{{ item.label }}</span>
+          <slot name="item-trailing" v-bind="item">
+            <SMenuShortcut v-if="item.shortcut" :class="shortcutClass" :value="item.shortcut" :size="size" />
+          </slot>
+        </slot>
+      </SMenuRadioItem>
+      <SMenuSeparator v-if="separator || item.separator" :class="separatorClass" />
+    </template>
+  </MenuRadioGroup>
+</template>

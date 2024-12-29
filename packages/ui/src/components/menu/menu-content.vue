@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { MenuContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { cn, menuVariants } from '@soybean-ui/variants';
+import type { MenuContentEmits, MenuContentProps } from './types';
+
+defineOptions({
+  name: 'SMenuContent'
+});
+
+const { class: cls, ...delegatedProps } = defineProps<MenuContentProps>();
+
+const emit = defineEmits<MenuContentEmits>();
+
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
+
+const { content } = menuVariants();
+
+const mergedCls = computed(() => cn(content(), cls));
+</script>
+
+<template>
+  <MenuContent v-bind="forwarded" :class="mergedCls">
+    <slot />
+  </MenuContent>
+</template>
