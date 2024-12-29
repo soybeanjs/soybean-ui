@@ -12,16 +12,25 @@ defineOptions({
 const props = defineProps<MenubarMenuProps>();
 
 const value = useId(props.value);
-const rootContext = injectMenubarRootContext();
-useForwardExpose();
+const { modelValue, onMenuClose, dir } = injectMenubarRootContext();
 
 const triggerElement = ref<HTMLElement>();
 const wasKeyboardTriggerOpenRef = ref(false);
 
-const open = computed(() => rootContext.modelValue.value === value);
+const open = computed(() => modelValue.value === value);
+
+function onUpdateOpen(val: boolean) {
+  if (val) return;
+
+  // Menu only calls `@update:open` when dismissing so we
+  // want to close our MenuBar based on the same events.
+  onMenuClose();
+}
 
 watch(open, () => {
-  if (!open.value) wasKeyboardTriggerOpenRef.value = false;
+  if (!open.value) {
+    wasKeyboardTriggerOpenRef.value = false;
+  }
 });
 
 provideMenubarMenuContext({
@@ -31,21 +40,12 @@ provideMenubarMenuContext({
   contentId: '',
   wasKeyboardTriggerOpenRef
 });
+
+useForwardExpose();
 </script>
 
 <template>
-  <MenuRoot
-    :open="open"
-    :modal="false"
-    :dir="rootContext.dir.value"
-    @update:open="
-      value => {
-        // Menu only calls `@update:open` when dismissing so we
-        // want to close our MenuBar based on the same events.
-        if (!value) rootContext.onMenuClose();
-      }
-    "
-  >
+  <MenuRoot :open="open" :modal="false" :dir="dir" @update:open="onUpdateOpen">
     <slot />
   </MenuRoot>
 </template>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue';
-import { useForwardExpose, useId } from '../../composables';
-import { MenuAnchor } from '../menu';
+import { useForwardExpose } from '../../composables';
+import MenuAnchor from '../popper/popper-anchor.vue';
+import { getOpenState } from '../menu/shared';
 import { Primitive } from '../primitive';
 import { injectDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerPropsWithPrimitive } from './types';
@@ -14,53 +15,69 @@ const props = withDefaults(defineProps<DropdownMenuTriggerPropsWithPrimitive>(),
   as: 'button'
 });
 
-const rootContext = injectDropdownMenuRootContext();
-rootContext.triggerId ||= useId(undefined, 'soybean-dropdown-menu-trigger');
+const { open, onOpenToggle, onOpenChange, triggerId, contentId, initTriggerId, setTriggerElement } =
+  injectDropdownMenuRootContext();
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+initTriggerId();
 
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();
 
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const ariaControls = computed(() => (open.value ? contentId : undefined));
+const dataDisabled = computed(() => (props.disabled ? '' : undefined));
+const dataState = computed(() => getOpenState(open.value));
+
 async function onClick(event: MouseEvent) {
+  if (props.disabled) return;
+
   // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
   // but not when the control key is pressed (avoiding MacOS right click)
-  if (!props.disabled && event.button === 0 && event.ctrlKey === false) {
-    rootContext?.onOpenToggle();
+  if (event.button === 0 && event.ctrlKey === false) {
+    onOpenToggle();
     await nextTick();
     // prevent trigger focusing when opening
     // this allows the content to be given focus without competition
-    if (rootContext.open.value) event.preventDefault();
+    if (open.value) {
+      event.preventDefault();
+    }
   }
 }
 
 function onKeyDown(event: KeyboardEvent) {
   if (props.disabled) return;
-  if (['Enter', ' '].includes(event.key)) rootContext.onOpenToggle();
-  if (event.key === 'ArrowDown') rootContext.onOpenChange(true);
+  if (['Enter', ' '].includes(event.key)) {
+    onOpenToggle();
+  }
+  if (event.key === 'ArrowDown') {
+    onOpenChange(true);
+  }
   // prevent keydown from scrolling window / first focused item to execute
   // that keydown (inadvertently closing the menu)
-  if (['Enter', ' ', 'ArrowDown'].includes(event.key)) event.preventDefault();
+  if (['Enter', ' ', 'ArrowDown'].includes(event.key)) {
+    event.preventDefault();
+  }
 }
 
 onMounted(() => {
-  rootContext.triggerElement = triggerElement;
+  setTriggerElement(triggerElement);
 });
 </script>
 
 <template>
   <MenuAnchor as-child>
     <Primitive
-      :id="rootContext.triggerId"
+      :id="triggerId"
       :ref="forwardRef"
       :class="props.class"
       :as="as"
       :as-child="asChild"
       :type="tag"
-      :aria-controls="rootContext.open.value ? rootContext.contentId : undefined"
-      :aria-expanded="rootContext.open.value"
+      :aria-controls="ariaControls"
+      :aria-expanded="open"
       aria-haspopup="menu"
-      :data-disabled="disabled ? '' : undefined"
-      :data-state="rootContext.open.value ? 'open' : 'closed'"
+      :data-disabled="dataDisabled"
+      :data-state="dataState"
       :disabled="disabled"
       @click="onClick"
       @keydown.enter.space.arrow-down="onKeyDown"

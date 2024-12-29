@@ -1,23 +1,25 @@
-import ContextMenuRoot from './context-menu-root.vue';
-import ContextMenuPortal from './context-menu-portal.vue';
-import ContextMenuContent from './context-menu-content.vue';
-import ContextMenuSubContent from './context-menu-sub-content.vue';
-import ContextMenuSubTrigger from './context-menu-sub-trigger.vue';
-import ContextMenuGroup from './context-menu-group.vue';
+import ContextMenuArrow from '../popper/popper-arrow.vue';
+import ContextMenuCheckboxItem from '../menu/menu-checkbox-item.vue';
+import ContextMenuGroup from '../menu/menu-group.vue';
+import ContextMenuItemIndicator from '../menu/menu-item-indicator.vue';
+import ContextMenuPortal from '../menu/menu-portal.vue';
+import ContextMenuSubTrigger from '../menu/menu-sub-trigger.vue';
+import ContextMenuItem from '../menu/menu-item.vue';
+import ContextMenuLabel from '../menu/menu-label.vue';
+import ContextMenuSeparator from '../menu/menu-separator.vue';
+import ContextMenuRadioGroup from '../menu/menu-radio-group.vue';
+import ContextMenuRadioItem from '../menu/menu-radio-item.vue';
+import ContextMenuSub from '../menu/menu-sub.vue';
 import ContextMenuTrigger from './context-menu-trigger.vue';
-import ContextMenuItem from './context-menu-item.vue';
-import ContextMenuItemIndicator from './context-menu-item-indicator.vue';
-import ContextMenuLabel from './context-menu-label.vue';
-import ContextMenuSeparator from './context-menu-separator.vue';
-import ContextMenuCheckboxItem from './context-menu-checkbox-item.vue';
-import ContextMenuRadioGroup from './context-menu-radio-group.vue';
-import ContextMenuRadioItem from './context-menu-radio-item.vue';
-import ContextMenuArrow from './context-menu-arrow.vue';
+import ContextMenuSubContent from './context-menu-sub-content.vue';
+import ContextMenuContent from './context-menu-content.vue';
+import ContextMenuRoot from './context-menu-root.vue';
 
 export {
   ContextMenuRoot,
   ContextMenuPortal,
   ContextMenuContent,
+  ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuGroup,

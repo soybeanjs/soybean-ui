@@ -1,17 +1,25 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, Direction, GraceIntent } from '../../types';
+import type { AcceptableValue, ClassValueProp, Direction, GraceIntent } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type { FocusScopeProps } from '../focus-scope';
 import type { RovingFocusGroupEmits } from '../roving-focus';
-import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
+import type {
+  PopperAnchorProps,
+  PopperAnchorPropsWithPrimitive,
+  PopperArrowProps,
+  PopperArrowPropsWithPrimitive,
+  PopperContentProps
+} from '../popper';
 import type { CheckedState } from '../checkbox';
 
 // MenuRoot
 export interface MenuRootProps {
   /** The controlled open state of the menu. Can be used as `v-model:open`. */
   open?: boolean;
+  /** The open state of the menu when it is initially rendered. Use when you do not need to control its open state. */
+  defaultOpen?: boolean;
   /**
    * The reading direction of the combobox when applicable.
    *
@@ -26,18 +34,15 @@ export interface MenuRootProps {
    */
   modal?: boolean;
 }
-
 export type MenuRootEmits = {
   'update:open': [payload: boolean];
 };
-
 export interface MenuRootContext {
   onClose: () => void;
   dir: Ref<Direction>;
   isUsingKeyboardRef: Ref<boolean>;
   modal: Ref<boolean>;
 }
-
 export interface MenuContext {
   open: Ref<boolean>;
   onOpenChange: (open: boolean) => void;
@@ -45,6 +50,7 @@ export interface MenuContext {
   onContentChange: (content: HTMLElement | undefined) => void;
 }
 
+// MenuPortal
 export interface MenuPortalProps extends TeleportProps {}
 
 // MenuContentImpl
@@ -63,7 +69,6 @@ export type MenuContentImplPrivateProps = Pick<DismissableLayerProps, 'disableOu
    */
   trapFocus?: FocusScopeProps['trapped'];
 };
-
 export interface MenuContentImplProps
   extends ClassValueProp,
     MenuContentImplPrivateProps,
@@ -76,14 +81,12 @@ export interface MenuContentImplProps
   loop?: boolean;
 }
 export type MenuContentImplPropsWithPrimitive = MenuContentImplProps & PrimitiveProps;
-
 export type MenuContentImplEmits = DismissableLayerEmits &
   Pick<RovingFocusGroupEmits, 'entryFocus'> & {
     openAutoFocus: [event: Event];
     /** Event handler called when auto-focusing on close. Can be prevented. */
     closeAutoFocus: [event: Event];
   };
-
 export type MenuContentImplPrivateEmits = MenuContentImplEmits & {
   /** Handler called when the `DismissableLayer` should be dismissed */
   dismiss: [];
@@ -103,7 +106,6 @@ export interface MenuContentProps extends ClassValueProp, MenuRootContentTypePro
 }
 export type MenuContentPropsWithPrimitive = MenuContentProps & PrimitiveProps;
 export type MenuContentEmits = Omit<MenuContentImplEmits, 'entryFocus' | 'openAutoFocus'>;
-
 export interface MenuContentContext {
   onItemEnter: (event: PointerEvent) => boolean;
   onItemLeave: (event: PointerEvent) => void;
@@ -127,9 +129,10 @@ export type MenuRootContentNonModalEmits = MenuContentImplEmits;
 export interface MenuSubProps {
   /** The controlled open state of the menu. Can be used as `v-model:open`. */
   open?: boolean;
+  /** The open state of the menu when it is initially rendered. Use when you do not need to control its open state. */
+  defaultOpen?: boolean;
 }
 export type MenuSubEmits = MenuRootEmits;
-
 export interface MenuSubContext {
   contentId: string;
   triggerId: string;
@@ -169,7 +172,6 @@ export type MenuItemImplPropsWithPrimitive = MenuItemImplProps & PrimitiveProps;
 // MenuItem
 export interface MenuItemProps extends MenuItemImplProps {}
 export type MenuItemPropsWithPrimitive = MenuItemProps & PrimitiveProps;
-
 export type MenuItemEmits = {
   /**
    * Event handler called when the user selects an item (via mouse or keyboard). <br> Calling `event.preventDefault` in
@@ -184,7 +186,6 @@ export interface MenuItemIndicatorProps extends ClassValueProp {
   forceMount?: boolean;
 }
 export type MenuItemIndicatorPropsWithPrimitive = MenuItemIndicatorProps & PrimitiveProps;
-
 export interface MenuItemIndicatorContext {
   modelValue: Ref<CheckedState>;
 }
@@ -199,11 +200,11 @@ export type MenuLabelPropsWithPrimitive = MenuLabelProps & PrimitiveProps;
 
 // MenuArrow
 export interface MenuArrowProps extends PopperArrowProps {}
-export type MenuArrowPropsWithPrimitive = MenuArrowProps & PrimitiveProps;
+export type MenuArrowPropsWithPrimitive = PopperArrowPropsWithPrimitive;
 
 // MenuAnchor
 export interface MenuAnchorProps extends PopperAnchorProps {}
-export type MenuAnchorPropsWithPrimitive = MenuAnchorProps & PrimitiveProps;
+export type MenuAnchorPropsWithPrimitive = PopperAnchorPropsWithPrimitive;
 
 // MenuSeparator
 export interface MenuSeparatorProps extends ClassValueProp {}
@@ -215,7 +216,6 @@ export interface MenuCheckboxItemProps extends MenuItemProps {
   modelValue?: CheckedState;
 }
 export type MenuCheckboxItemPropsWithPrimitive = MenuCheckboxItemProps & PrimitiveProps;
-
 export type MenuCheckboxItemEmits = MenuItemEmits & {
   /** Event handler called when the checked state changes. */
   'update:modelValue': [payload: boolean];
@@ -224,7 +224,7 @@ export type MenuCheckboxItemEmits = MenuItemEmits & {
 // MenuRadioItem
 export interface MenuRadioItemProps extends MenuItemProps {
   /** The unique value of the item. */
-  value: string;
+  value: AcceptableValue;
 }
 export type MenuRadioItemPropsWithPrimitive = MenuRadioItemProps & PrimitiveProps;
 export type MenuRadioItemEmits = MenuItemEmits;
@@ -232,16 +232,14 @@ export type MenuRadioItemEmits = MenuItemEmits;
 // MenuRadioGroup
 export interface MenuRadioGroupProps extends MenuGroupProps {
   /** The value of the selected item in the group. */
-  modelValue?: string;
+  modelValue?: AcceptableValue;
 }
 export type MenuRadioGroupPropsWithPrimitive = MenuRadioGroupProps & PrimitiveProps;
-
 export type MenuRadioGroupEmits = {
   /** Event handler called when the value changes. */
   'update:modelValue': [payload: string];
 };
-
 export interface MenuRadioGroupContext {
-  modelValue: Ref<string>;
-  onValueChange: (payload: string) => void;
+  modelValue: Ref<AcceptableValue>;
+  onValueChange: (payload: AcceptableValue) => void;
 }

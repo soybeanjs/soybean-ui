@@ -1,3 +1,5 @@
+import MenuAnchor from '../popper/popper-anchor.vue';
+import MenuArrow from '../popper/popper-arrow.vue';
 import MenuRoot from './menu-root.vue';
 import MenuPortal from './menu-portal.vue';
 import MenuContent from './menu-content.vue';
@@ -12,8 +14,6 @@ import MenuSeparator from './menu-separator.vue';
 import MenuCheckboxItem from './menu-checkbox-item.vue';
 import MenuRadioGroup from './menu-radio-group.vue';
 import MenuRadioItem from './menu-radio-item.vue';
-import MenuAnchor from './menu-anchor.vue';
-import MenuArrow from './menu-arrow.vue';
 
 export {
   MenuRoot,

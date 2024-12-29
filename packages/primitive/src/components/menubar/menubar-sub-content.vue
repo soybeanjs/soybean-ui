@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useCollection, useForwardExpose, useForwardPropsEmits } from '../../composables';
 import { wrapArray } from '../../shared';
 import { MenuSubContent } from '../menu';
@@ -18,6 +19,14 @@ const { getItems } = useCollection({ key: 'Menubar' });
 
 const rootContext = injectMenubarRootContext();
 const menuContext = injectMenubarMenuContext();
+
+const style = computed<Record<string, string>>(() => ({
+  '--soybean-menubar-content-transform-origin': 'var(--soybean-popper-transform-origin)',
+  '--soybean-menubar-content-available-width': 'var(--soybean-popper-available-width)',
+  '--soybean-menubar-content-available-height': 'var(--soybean-popper-available-height)',
+  '--soybean-menubar-trigger-width': 'var(--soybean-popper-anchor-width)',
+  '--soybean-menubar-trigger-height': 'var(--soybean-popper-anchor-height)'
+}));
 
 function handleArrowNavigation(event: KeyboardEvent) {
   const target = event.target as HTMLElement;
@@ -44,13 +53,7 @@ function handleArrowNavigation(event: KeyboardEvent) {
   <MenuSubContent
     v-bind="forwarded"
     data-soybean-menubar-content=""
-    :style="{
-      '--soybean-menubar-content-transform-origin': 'var(--soybean-popper-transform-origin)',
-      '--soybean-menubar-content-available-width': 'var(--soybean-popper-available-width)',
-      '--soybean-menubar-content-available-height': 'var(--soybean-popper-available-height)',
-      '--soybean-menubar-trigger-width': 'var(--soybean-popper-anchor-width)',
-      '--soybean-menubar-trigger-height': 'var(--soybean-popper-anchor-height)'
-    }"
+    :style="style"
     @keydown.arrow-right="handleArrowNavigation"
   >
     <slot />

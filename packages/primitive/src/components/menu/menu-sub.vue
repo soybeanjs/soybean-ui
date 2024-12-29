@@ -17,18 +17,24 @@ const props = withDefaults(defineProps<MenuSubProps>(), {
 const emit = defineEmits<MenuSubEmits>();
 
 const open = useVModel(props, 'open', emit, {
-  defaultValue: false,
+  defaultValue: props.defaultOpen,
   passive: (props.open === undefined) as false
 }) as Ref<boolean>;
 
 const parentMenuContext = injectMenuContext();
+
 const trigger = ref<HTMLElement>();
 const content = ref<HTMLElement>();
 
 // Prevent the parent menu from reopening with open submenus.
 watchEffect(cleanupFn => {
-  if (parentMenuContext?.open.value === false) open.value = false;
-  cleanupFn(() => (open.value = false));
+  if (parentMenuContext?.open.value === false) {
+    open.value = false;
+  }
+
+  cleanupFn(() => {
+    open.value = false;
+  });
 });
 
 provideMenuContext({

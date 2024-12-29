@@ -7,6 +7,7 @@ import type {
   MenuCheckboxItemProps,
   MenuContentEmits,
   MenuContentProps,
+  MenuContentPropsWithPrimitive,
   MenuGroupProps,
   MenuItemEmits,
   MenuItemIndicatorProps,
@@ -27,24 +28,24 @@ import type {
 } from '../menu';
 
 // DropdownMenuRoot
-export interface DropdownMenuRootProps extends MenuRootProps {
-  /**
-   * The open state of the dropdown menu when it is initially rendered. Use when you do not need to control its open
-   * state.
-   */
-  defaultOpen?: boolean;
-}
+export interface DropdownMenuRootProps extends MenuRootProps {}
 export type DropdownMenuRootEmits = MenuRootEmits;
 
-export interface DropdownMenuRootContext {
-  open: Readonly<Ref<boolean>>;
-  onOpenChange: (open: boolean) => void;
-  onOpenToggle: () => void;
-  triggerId: string;
-  triggerElement: Ref<HTMLElement | undefined>;
-  contentId: string;
+export interface DropdownMenuRootContextParams {
+  open: Ref<boolean>;
   modal: Ref<boolean>;
   dir: Ref<Direction>;
+}
+
+export interface DropdownMenuRootContext extends DropdownMenuRootContextParams {
+  onOpenChange: (open: boolean) => void;
+  onOpenToggle: () => void;
+  triggerElement: Ref<HTMLElement | undefined>;
+  setTriggerElement: (elRef: Ref<HTMLElement | undefined>) => void;
+  triggerId: string;
+  initTriggerId: () => void;
+  contentId: string;
+  initContentId: () => void;
 }
 
 // DropdownMenuPortal
@@ -52,14 +53,11 @@ export interface DropdownMenuPortalProps extends MenuPortalProps {}
 
 // DropdownMenuContent
 export interface DropdownMenuContentProps extends MenuContentProps {}
-export type DropdownMenuContentPropsWithPrimitive = DropdownMenuContentProps & PrimitiveProps;
+export type DropdownMenuContentPropsWithPrimitive = MenuContentPropsWithPrimitive;
 export type DropdownMenuContentEmits = MenuContentEmits;
 
 // DropdownMenuSub
-export interface DropdownMenuSubProps extends MenuSubProps {
-  /** The open state of the submenu when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: boolean;
-}
+export interface DropdownMenuSubProps extends MenuSubProps {}
 export type DropdownMenuSubEmits = MenuSubEmits;
 
 // DropdownMenuSubContent

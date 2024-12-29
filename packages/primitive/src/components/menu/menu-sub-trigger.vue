@@ -2,9 +2,9 @@
 import { type ComponentPublicInstance, nextTick, onUnmounted, ref } from 'vue';
 import { useId } from '../../composables';
 import type { HorizontalSide } from '../../types';
+import MenuAnchor from '../popper/popper-anchor.vue';
 import { injectMenuContentContext, injectMenuContext, injectMenuRootContext, injectMenuSubContext } from './context';
 import { SUB_OPEN_KEYS, getOpenState, isMouseEvent } from './shared';
-import MenuAnchor from './menu-anchor.vue';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerPropsWithPrimitive } from './types';
 
@@ -29,7 +29,10 @@ function refTrigger(vnode: ComponentPublicInstance) {
 subContext.triggerId ||= useId(undefined, 'soybean-menu-sub-trigger');
 
 function clearOpenTimer() {
-  if (openTimerRef.value) window.clearTimeout(openTimerRef.value);
+  if (openTimerRef.value) {
+    window.clearTimeout(openTimerRef.value);
+  }
+
   openTimerRef.value = null;
 }
 

@@ -26,7 +26,6 @@ const props = withDefaults(defineProps<MenuContentImplPropsWithPrimitive>(), cre
 const emit = defineEmits<MenuContentImplPrivateEmits>();
 
 const rootContext = injectMenuRootContext();
-
 const menuContext = injectMenuContext();
 
 const { trapFocus, disableOutsidePointerEvents, loop } = toRefs(props);
@@ -46,21 +45,13 @@ const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
 const { handleTypeaheadSearch } = useTypeahead();
 
-watch(contentElement, el => {
-  menuContext!.onContentChange(el);
-});
-
-onUnmounted(() => {
-  window.clearTimeout(timerRef.value);
-});
-
 function isPointerMovingToSubmenu(event: PointerEvent) {
   const isMovingTowards = pointerDirRef.value === pointerGraceIntentRef.value?.side;
 
   return isMovingTowards && isPointerInGraceArea(event, pointerGraceIntentRef.value?.area);
 }
 
-async function handleMountAutoFocus(event: Event) {
+async function onMountAutoFocus(event: Event) {
   emit('openAutoFocus', event);
   if (event.defaultPrevented) return;
   // when opening, explicitly focus the content area only and leave
@@ -71,7 +62,7 @@ async function handleMountAutoFocus(event: Event) {
   });
 }
 
-function handleKeyDown(event: KeyboardEvent) {
+function onKeyDown(event: KeyboardEvent) {
   if (event.defaultPrevented) return;
   // submenu key events bubble through portals. We only care about keys in this menu.
   const target = event.target as HTMLElement;
@@ -108,7 +99,7 @@ function handleKeyDown(event: KeyboardEvent) {
   focusFirst(candidateNodes);
 }
 
-function handleBlur(event: FocusEvent) {
+function onBlur(event: FocusEvent) {
   // clear search buffer when leaving the menu
   // @ts-expect-error the provided currentTarget and target should be HTMLElement
   if (!event?.currentTarget?.contains?.(event.target)) {
@@ -117,7 +108,7 @@ function handleBlur(event: FocusEvent) {
   }
 }
 
-function handlePointerMove(event: PointerEvent) {
+function onPointerMove(event: PointerEvent) {
   if (!isMouseEvent(event)) return;
   const target = event.target as HTMLElement;
   const pointerXHasChanged = lastPointerXRef.value !== event.clientX;
@@ -131,11 +122,24 @@ function handlePointerMove(event: PointerEvent) {
   }
 }
 
+function onEntryFocus(event: Event) {
+  emit('entryFocus', event);
+  // only focus first item when using keyboard
+  if (!rootContext.isUsingKeyboardRef.value) event.preventDefault();
+}
+
+watch(contentElement, el => {
+  menuContext!.onContentChange(el);
+});
+
+onUnmounted(() => {
+  window.clearTimeout(timerRef.value);
+});
+
 provideMenuContentContext({
   onItemEnter: event => {
     // event.preventDefault() we can't prevent pointerMove event
-    if (isPointerMovingToSubmenu(event)) return true;
-    return false;
+    return isPointerMovingToSubmenu(event);
   },
   onItemLeave: event => {
     if (isPointerMovingToSubmenu(event)) return;
@@ -144,8 +148,7 @@ provideMenuContentContext({
   },
   onTriggerLeave: event => {
     // event.preventDefault() we can't prevent pointerLeave event
-    if (isPointerMovingToSubmenu(event)) return true;
-    return false;
+    return isPointerMovingToSubmenu(event);
   },
   searchRef,
   pointerGraceTimerRef,
@@ -159,7 +162,7 @@ provideMenuContentContext({
   <FocusScope
     as-child
     :trapped="trapFocus"
-    @mount-auto-focus="handleMountAutoFocus"
+    @mount-auto-focus="onMountAutoFocus"
     @unmount-auto-focus="emit('closeAutoFocus', $event)"
   >
     <DismissableLayer
@@ -178,13 +181,7 @@ provideMenuContentContext({
         orientation="vertical"
         :dir="rootContext.dir.value"
         :loop="loop"
-        @entry-focus="
-          event => {
-            emit('entryFocus', event);
-            // only focus first item when using keyboard
-            if (!rootContext.isUsingKeyboardRef.value) event.preventDefault();
-          }
-        "
+        @entry-focus="onEntryFocus"
       >
         <PopperContent
           :ref="forwardRef"
@@ -209,9 +206,9 @@ provideMenuContentContext({
           :reference="reference"
           :sticky="sticky"
           :hide-when-detached="hideWhenDetached"
-          @keydown="handleKeyDown"
-          @blur="handleBlur"
-          @pointermove="handlePointerMove"
+          @keydown="onKeyDown"
+          @blur="onBlur"
+          @pointermove="onPointerMove"
         >
           <slot />
         </PopperContent>

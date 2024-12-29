@@ -33,7 +33,7 @@ provideMenuItemIndicatorContext({ modelValue });
 <template>
   <MenuItem
     v-bind="props"
-    role="menuitemcheckbox"
+    role="menu-item-checkbox"
     :aria-checked="isIndeterminate(modelValue) ? 'mixed' : modelValue"
     :data-state="getCheckedState(modelValue)"
     @select="onSelect"

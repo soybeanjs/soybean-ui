@@ -27,7 +27,7 @@ import type {
 } from '../menu';
 
 // ContextMenuRoot
-export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open'> {}
+export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {}
 export type ContextMenuRootEmits = MenuRootEmits;
 
 export type ContextMenuRootContext = {

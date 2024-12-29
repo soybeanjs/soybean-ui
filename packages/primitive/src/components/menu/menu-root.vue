@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<MenuRootProps>(), {
 
 const emit = defineEmits<MenuRootEmits>();
 
-const open = useVModel(props, 'open', emit);
+const open = useVModel(props, 'open', emit, { defaultValue: props.defaultOpen });
 
 const isUsingKeyboardRef = useIsUsingKeyboard();
 

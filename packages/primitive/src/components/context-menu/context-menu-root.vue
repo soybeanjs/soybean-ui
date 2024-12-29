@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs, watch } from 'vue';
 import { useDirection, useForwardExpose } from '../../composables';
-import { MenuRoot } from '../menu';
+import MenuRoot from '../menu/menu-root.vue';
 import { provideContextMenuRootContext } from './context';
 import type { ContextMenuRootEmits, ContextMenuRootProps } from './types';
 
@@ -18,11 +18,13 @@ const emit = defineEmits<ContextMenuRootEmits>();
 
 const { dir: propDir, modal } = toRefs(props);
 
-useForwardExpose();
-
 const dir = useDirection(propDir);
 
 const open = ref(false);
+
+watch(open, value => {
+  emit('update:open', value);
+});
 
 provideContextMenuRootContext({
   open,
@@ -33,9 +35,7 @@ provideContextMenuRootContext({
   modal
 });
 
-watch(open, value => {
-  emit('update:open', value);
-});
+useForwardExpose();
 </script>
 
 <template>
