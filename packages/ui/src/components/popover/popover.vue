@@ -17,15 +17,15 @@ defineOptions({
   name: 'SPopover'
 });
 
-const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } = defineProps<PopoverProps>();
+const props = defineProps<PopoverProps>();
 
 const emit = defineEmits<PopoverEmits>();
 
-const delegatedRootProps = usePickForwardProps(delegatedProps, ['defaultOpen', 'open', 'modal']);
+const delegatedRootProps = usePickForwardProps(props, ['defaultOpen', 'open', 'modal']);
 
 const forwardedRootProps = useForwardProps(delegatedRootProps);
 
-const delegatedContentProps = usePickForwardProps(delegatedProps, [
+const delegatedContentProps = usePickForwardProps(props, [
   'trapFocus',
   'side',
   'sideOffset',
@@ -53,13 +53,7 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SPopoverContent
-        v-bind="forwardedContent"
-        :class="contentClass"
-        :force-mount="forceMountContent"
-        :avoid-collisions
-        :prioritize-position
-      >
+      <SPopoverContent v-bind="forwardedContent" :class="contentClass" :force-mount="forceMountContent">
         <slot />
         <PopoverClose v-if="$slots.close" as-child>
           <slot name="close" />

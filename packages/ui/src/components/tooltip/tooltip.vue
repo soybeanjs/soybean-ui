@@ -43,7 +43,7 @@ const forwardedContentProps = usePickForwardProps(delegatedProps, [
 
 <template>
   <TooltipProvider>
-    <TooltipRoot v-bind="forwardedRootProps" :delay-duration @update:open="emit('update:open', $event)">
+    <TooltipRoot v-bind="forwardedRootProps" :delay-duration="delayDuration" @update:open="emit('update:open', $event)">
       <TooltipTrigger as-child>
         <slot name="trigger" />
       </TooltipTrigger>
@@ -51,7 +51,7 @@ const forwardedContentProps = usePickForwardProps(delegatedProps, [
         <STooltipContent
           v-bind="forwardedContentProps"
           :class="contentClass"
-          :avoid-collisions
+          :avoid-collisions="avoidCollisions"
           :force-mount="forceMountContent"
           @escape-key-down="emit('escapeKeyDown', $event)"
           @pointer-down-outside="emit('pointerDownOutside', $event)"
