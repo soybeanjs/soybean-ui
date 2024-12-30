@@ -7,6 +7,7 @@ import SMenuLabel from './menu-label.vue';
 import SMenuItem from './menu-item.vue';
 import SMenuItemIndicator from './menu-item-indicator.vue';
 import SMenuItemLink from './menu-item-link.vue';
+import SMenuItemLinkIcon from './menu-item-link-icon.vue';
 import SMenuShortcut from './menu-shortcut.vue';
 import SMenuSeparator from './menu-separator.vue';
 import SMenuOption from './menu-option.vue';
@@ -29,6 +30,7 @@ export {
   SMenuItem,
   SMenuItemIndicator,
   SMenuItemLink,
+  SMenuItemLinkIcon,
   SMenuLabel,
   SMenuShortcut,
   SMenuCheckboxItem,

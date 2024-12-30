@@ -5,6 +5,7 @@ import SMenuLabel from './menu-label.vue';
 import SMenuSeparator from './menu-separator.vue';
 import SMenuItem from './menu-item.vue';
 import SMenuItemLink from './menu-item-link.vue';
+import SMenuItemLinkIcon from './menu-item-link-icon.vue';
 import SMenuShortcut from './menu-shortcut.vue';
 import SMenuSubTrigger from './menu-sub-trigger.vue';
 import SMenuSubContent from './menu-sub-content.vue';
@@ -46,6 +47,7 @@ const forwardedEmits = useEmitAsProps(emit);
         <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
       </slot>
       <span>{{ item.label }}</span>
+      <SMenuItemLinkIcon :class="itemLinkIconClass" :size="size" />
       <slot name="item-trailing" v-bind="item" />
     </slot>
   </SMenuItemLink>

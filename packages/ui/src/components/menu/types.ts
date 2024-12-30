@@ -3,6 +3,7 @@ import type {
   AcceptableValue,
   CheckAction,
   ClassValue,
+  ClassValueProp,
   FocusOutsideEvent,
   MenuArrowProps,
   MenuCheckboxItemEmits,
@@ -39,6 +40,10 @@ export interface MenuItemProps extends _MenuItemProps {
 // ItemLink
 export interface MenuItemLinkProps extends MenuItemProps, LinkProps {}
 export type MenuItemLinkEmits = MenuItemEmits;
+
+export interface MenuItemLinkIconProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 // Indicator
 export interface MenuItemIndicatorProps extends _MenuItemIndicatorProps {
