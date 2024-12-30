@@ -25,7 +25,7 @@ import type {
 } from '../menu';
 
 // MenubarRoot
-export interface MenubarRootProps {
+export interface MenubarRootProps extends ClassValueProp {
   /** The controlled value of the menu to open. Can be used as `v-model`. */
   modelValue?: string;
   /**

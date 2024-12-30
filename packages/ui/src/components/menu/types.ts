@@ -144,7 +144,7 @@ export type MenuOptionEmits<T extends AcceptableValue = AcceptableValue> = MenuS
 export interface MenuProps<T extends AcceptableValue = AcceptableValue>
   extends MenuPortalContentProps,
     Omit<MenuOptionProps, 'item'> {
-  items: MenuOptionData<T>[];
+  items?: MenuOptionData<T>[];
 }
 export type MenuEmits<T extends AcceptableValue = AcceptableValue> = MenuPortalContentEmits & MenuOptionEmits<T>;
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { dropdownMenuVariants } from '@soybean-ui/variants';
+import { menuVariants } from '@soybean-ui/variants';
 
 defineOptions({
   name: 'SMenuRadioIndicatorIcon'
 });
 
-const { radioIndicatorIconRoot, radioIndicatorIcon } = dropdownMenuVariants();
+const { radioIndicatorIconRoot, radioIndicatorIcon } = menuVariants();
 </script>
 
 <template>

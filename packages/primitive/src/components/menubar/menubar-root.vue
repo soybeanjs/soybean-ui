@@ -61,7 +61,7 @@ provideMenubarRootContext({
       :dir="dir"
       as-child
     >
-      <Primitive :ref="forwardRef" role="menubar">
+      <Primitive :ref="forwardRef" :class="props.class" role="menubar">
         <slot :model-value="modelValue" />
       </Primitive>
     </RovingFocusGroup>
