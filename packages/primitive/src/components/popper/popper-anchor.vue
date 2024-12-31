@@ -6,8 +6,7 @@ import { injectPopperRootContext } from './context';
 import type { PopperAnchorPropsWithPrimitive } from './types';
 
 defineOptions({
-  name: 'PopperAnchor',
-  inheritAttrs: false
+  name: 'PopperAnchor'
 });
 
 const props = defineProps<PopperAnchorPropsWithPrimitive>();
