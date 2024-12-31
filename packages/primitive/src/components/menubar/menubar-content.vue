@@ -62,7 +62,9 @@ function onInteractOutside(_event: PointerDownOutsideEvent | FocusOutsideEvent) 
 }
 
 function onEntryFocus(event: Event) {
-  if (!menuContext.wasKeyboardTriggerOpenRef.value) event.preventDefault();
+  if (!menuContext.wasKeyboardTriggerOpenRef.value) {
+    event.preventDefault();
+  }
 }
 
 function onArrowNavigation(event: KeyboardEvent) {
@@ -88,7 +90,9 @@ function onArrowNavigation(event: KeyboardEvent) {
     : candidateValues.slice(currentIndex + 1);
 
   const [nextValue] = candidateValues;
-  if (nextValue) rootContext.onMenuOpen(nextValue);
+  if (nextValue) {
+    rootContext.onMenuOpen(nextValue);
+  }
 }
 
 useForwardExpose();

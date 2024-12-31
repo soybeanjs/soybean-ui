@@ -12,7 +12,7 @@ const props = defineProps<MenuRootContentNonModalPropsWithPrimitive>();
 const emit = defineEmits<MenuRootContentNonModalEmits>();
 const forwarded = useForwardPropsEmits(props, emit);
 
-const menuContext = injectMenuContext();
+const { onOpenChange } = injectMenuContext();
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const menuContext = injectMenuContext();
     :trap-focus="false"
     :disable-outside-pointer-events="false"
     :disable-outside-scroll="false"
-    @dismiss="menuContext.onOpenChange(false)"
+    @dismiss="onOpenChange(false)"
   >
     <slot />
   </MenuContentImpl>

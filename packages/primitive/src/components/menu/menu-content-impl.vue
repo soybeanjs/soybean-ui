@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onUnmounted, ref, toRefs, useTemplateRef, watch } from 'vue';
+import { computed, onUnmounted, ref, toRefs, useTemplateRef, watch } from 'vue';
 import {
   useArrowNavigation,
   useBodyScrollLock,
@@ -25,8 +25,8 @@ const props = withDefaults(defineProps<MenuContentImplPropsWithPrimitive>(), cre
 
 const emit = defineEmits<MenuContentImplPrivateEmits>();
 
-const rootContext = injectMenuRootContext();
-const menuContext = injectMenuContext();
+const { dir, isUsingKeyboardRef } = injectMenuRootContext();
+const { open, onContentChange } = injectMenuContext();
 
 const { trapFocus, disableOutsidePointerEvents, loop } = toRefs(props);
 
@@ -44,6 +44,8 @@ const currentItemId = ref<string | null>(null);
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { forwardRef, currentElement: contentElement } = useForwardExpose();
 const { handleTypeaheadSearch } = useTypeahead();
+
+const dataState = computed(() => getOpenState(open.value));
 
 function isPointerMovingToSubmenu(event: PointerEvent) {
   const isMovingTowards = pointerDirRef.value === pointerGraceIntentRef.value?.side;
@@ -73,7 +75,7 @@ function onKeyDown(event: KeyboardEvent) {
   const el = useArrowNavigation(event, document.activeElement as HTMLElement, contentElement.value, {
     loop: loop.value,
     arrowKeyOptions: 'vertical',
-    dir: rootContext?.dir.value,
+    dir: dir.value,
     focus: true,
     attributeName: '[data-soybean-collection-item]:not([data-disabled])'
   });
@@ -125,11 +127,11 @@ function onPointerMove(event: PointerEvent) {
 function onEntryFocus(event: Event) {
   emit('entryFocus', event);
   // only focus first item when using keyboard
-  if (!rootContext.isUsingKeyboardRef.value) event.preventDefault();
+  if (!isUsingKeyboardRef.value) event.preventDefault();
 }
 
 watch(contentElement, el => {
-  menuContext!.onContentChange(el);
+  onContentChange(el);
 });
 
 onUnmounted(() => {
@@ -179,7 +181,7 @@ provideMenuContentContext({
         v-model:current-tab-stop-id="currentItemId"
         as-child
         orientation="vertical"
-        :dir="rootContext.dir.value"
+        :dir="dir"
         :loop="loop"
         @entry-focus="onEntryFocus"
       >
@@ -191,8 +193,8 @@ provideMenuContentContext({
           :as-child="asChild"
           aria-orientation="vertical"
           data-soybean-menu-content
-          :data-state="getOpenState(menuContext.open.value)"
-          :dir="rootContext.dir.value"
+          :data-state="dataState"
+          :dir="dir"
           :side="side"
           :side-offset="sideOffset"
           :align="align"

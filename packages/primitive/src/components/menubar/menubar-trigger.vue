@@ -14,6 +14,7 @@ defineOptions({
 const props = withDefaults(defineProps<MenubarTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
+
 const { modelValue, onMenuOpen, onMenuToggle } = injectMenubarRootContext();
 const menuContext = injectMenubarMenuContext();
 
@@ -31,7 +32,9 @@ function onPointerDown(event: PointerEvent) {
     onMenuOpen(menuContext.value);
     // prevent trigger focusing when opening
     // this allows the content to be given focus without competition
-    if (!open.value) event.preventDefault();
+    if (!open.value) {
+      event.preventDefault();
+    }
   }
 }
 

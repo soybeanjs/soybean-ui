@@ -65,7 +65,6 @@ async function handleBlur(event: FocusEvent) {
       :as-child="asChild"
       role="menuitem"
       tabindex="-1"
-      data-soybean-collection-item
       :aria-disabled="disabled || undefined"
       :data-disabled="disabled ? '' : undefined"
       :data-highlighted="isFocused ? '' : undefined"

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Presence } from '../presence';
 import { useForwardExpose, useForwardPropsEmits, useId } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
@@ -18,17 +19,19 @@ const emit = defineEmits<MenuSubContentEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);
 
-const menuContext = injectMenuContext();
-const rootContext = injectMenuRootContext();
+const { open, onOpenChange } = injectMenuContext();
+const { dir, isUsingKeyboardRef, onClose } = injectMenuRootContext();
 const menuSubContext = injectMenuSubContext();
 
 const { forwardRef, currentElement: subContentElement } = useForwardExpose();
 
 menuSubContext.contentId ||= useId(undefined, 'soybean-menu-sub-content');
 
+const present = computed(() => Boolean(props.forceMount || open.value));
+
 function onOpenAutoFocus(_event: Event) {
   // when opening a submenu, focus content for keyboard users only
-  if (rootContext.isUsingKeyboardRef.value) {
+  if (isUsingKeyboardRef.value) {
     subContentElement.value?.focus();
   }
 }
@@ -38,12 +41,12 @@ function onFocusOutside(event: FocusOutsideEvent) {
   // We prevent closing when the trigger is focused to avoid triggering a re-open animation
   // on pointer interaction.
   if (event.target !== menuSubContext.trigger.value) {
-    menuContext.onOpenChange(false);
+    onOpenChange(false);
   }
 }
 
 function onEscapeKeyDown(event: KeyboardEvent) {
-  rootContext.onClose();
+  onClose();
   // ensure pressing escape in submenu doesn't escape full screen mode
   event.preventDefault();
 }
@@ -51,9 +54,9 @@ function onEscapeKeyDown(event: KeyboardEvent) {
 function onKeyDown(event: KeyboardEvent) {
   // Submenu key events bubble through portals. We only care about keys in this menu.
   const isKeyDownInside = (event.currentTarget as HTMLElement)?.contains(event.target as HTMLElement);
-  const isCloseKey = SUB_CLOSE_KEYS[rootContext.dir.value].includes(event.key);
+  const isCloseKey = SUB_CLOSE_KEYS[dir.value].includes(event.key);
   if (isKeyDownInside && isCloseKey) {
-    menuContext.onOpenChange(false);
+    onOpenChange(false);
     // We focus manually because we prevented it in `onCloseAutoFocus`
     menuSubContext.trigger.value?.focus();
     // prevent window from scrolling
@@ -63,14 +66,14 @@ function onKeyDown(event: KeyboardEvent) {
 </script>
 
 <template>
-  <Presence :present="forceMount || menuContext.open.value">
+  <Presence :present="present">
     <MenuContentImpl
       v-bind="forwarded"
       :id="menuSubContext.contentId"
       :ref="forwardRef"
       :aria-labelledby="menuSubContext.triggerId"
       align="start"
-      :side="rootContext.dir.value === 'rtl' ? 'left' : 'right'"
+      :side="dir === 'rtl' ? 'left' : 'right'"
       :disable-outside-pointer-events="false"
       :disable-outside-scroll="false"
       :trap-focus="false"

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type ComponentPublicInstance, nextTick, onUnmounted, ref } from 'vue';
+import { nextTick, onUnmounted, ref } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 import { useId } from '../../composables';
 import type { HorizontalSide } from '../../types';
 import MenuAnchor from '../popper/popper-anchor.vue';

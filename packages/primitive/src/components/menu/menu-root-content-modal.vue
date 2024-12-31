@@ -14,7 +14,7 @@ const emit = defineEmits<MenuRootContentModalEmits>();
 
 const forwarded = useForwardPropsEmits(props, emit);
 
-const menuContext = injectMenuContext();
+const { open, onOpenChange } = injectMenuContext();
 
 const { forwardRef, currentElement } = useForwardExpose();
 
@@ -25,10 +25,10 @@ useHideOthers(currentElement);
   <MenuContentImpl
     v-bind="forwarded"
     :ref="forwardRef"
-    :trap-focus="menuContext.open.value"
-    :disable-outside-pointer-events="menuContext.open.value"
+    :trap-focus="open"
+    :disable-outside-pointer-events="open"
     :disable-outside-scroll="true"
-    @dismiss="menuContext.onOpenChange(false)"
+    @dismiss="onOpenChange(false)"
     @focus-outside.prevent="emit('focusOutside', $event)"
   >
     <slot />
