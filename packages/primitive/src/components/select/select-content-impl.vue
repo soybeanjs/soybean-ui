@@ -115,10 +115,12 @@ function handleKeyDown(event: KeyboardEvent) {
   // select should not be navigated using tab key so we prevent it
   if (event.key === 'Tab') event.preventDefault();
 
-  const collectionItems = getItems().map(i => i.ref);
-  if (!isModifierKey && event.key.length === 1) handleTypeaheadSearch(event.key, collectionItems);
+  if (!isModifierKey && event.key.length === 1) {
+    handleTypeaheadSearch(event.key, getItems());
+  }
 
   if (['ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) {
+    const collectionItems = getItems().map(i => i.ref);
     let candidateNodes = [...collectionItems];
 
     if (['ArrowUp', 'End'].includes(event.key)) candidateNodes = candidateNodes.slice().reverse();

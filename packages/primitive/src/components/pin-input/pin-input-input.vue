@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue';
 import { useArrowNavigation, usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectPinInputRootContext } from './context';
@@ -15,6 +15,7 @@ const props = withDefaults(defineProps<PinInputInputPropsWithPrimitive>(), {
 
 const context = injectPinInputRootContext();
 const inputElements = computed(() => Array.from(context.inputElements!.value));
+const currentValue = computed(() => context.modelValue.value[props.index]);
 
 const disabled = computed(() => props.disabled || context.disabled.value);
 const isOtpMode = computed(() => context.otp.value);
@@ -40,6 +41,14 @@ function handleInput(event: InputEvent) {
 
   const nextEl = inputElements.value[props.index + 1];
   if (nextEl) nextEl.focus();
+}
+
+async function resetPlaceholder() {
+  const target = currentElement.value as HTMLInputElement;
+  await nextTick();
+  if (!target.value) {
+    target.placeholder = context.placeholder.value;
+  }
 }
 
 function handleKeydown(event: KeyboardEvent) {
@@ -82,11 +91,8 @@ function handleFocus(event: FocusEvent) {
   if (!target.value) target.placeholder = '';
 }
 
-function handleBlur(event: FocusEvent) {
-  const target = event.target as HTMLInputElement;
-  nextTick(() => {
-    if (!target.value) target.placeholder = context.placeholder.value;
-  });
+function handleBlur(_event: FocusEvent) {
+  resetPlaceholder();
 }
 
 function handlePaste(event: ClipboardEvent) {
@@ -132,6 +138,12 @@ function updateModelValueAt(index: number, value: string) {
   context.modelValue.value = removeTrailingEmptyStrings(tempModelValue);
 }
 
+watch(currentValue, () => {
+  if (!currentValue.value) {
+    resetPlaceholder();
+  }
+});
+
 onMounted(() => {
   context.onInputElementChange(currentElement.value as HTMLInputElement);
 });
@@ -152,7 +164,7 @@ onUnmounted(() => {
     :inputmode="isNumericMode ? 'numeric' : 'text'"
     :pattern="isNumericMode ? '[0-9]*' : undefined"
     :placeholder="context.placeholder.value"
-    :value="context.modelValue.value[index]"
+    :value="currentValue"
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"
     :data-complete="context.isCompleted.value ? '' : undefined"

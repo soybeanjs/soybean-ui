@@ -43,6 +43,59 @@ function handlePointerOpen(event: PointerEvent) {
     y: Math.round(event.pageY)
   };
 }
+
+function onClick(event: MouseEvent) {
+  // Whilst browsers generally have no issue focusing the trigger when clicking
+  // on a label, Safari seems to struggle with the fact that there's no `onClick`.
+  // We force `focus` in this case. Note: this doesn't create any other side-effect
+  // because we are preventing default in `onPointerDown` so effectively
+  // this only runs for a label 'click'
+  (event?.currentTarget as HTMLElement)?.focus();
+}
+
+function onPointerDown(event: PointerEvent) {
+  // Prevent opening on touch down.
+  // https://github.com/unovue/soybean-ui/issues/804
+  if (event.pointerType === 'touch') {
+    event.preventDefault();
+    return;
+  }
+
+  // prevent implicit pointer capture
+  // https://www.w3.org/TR/pointerevents3/#implicit-pointer-capture
+  const target = event.target as HTMLElement;
+  if (target.hasPointerCapture(event.pointerId)) {
+    target.releasePointerCapture(event.pointerId);
+  }
+
+  // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
+  // but not when the control key is pressed (avoiding MacOS right click)
+  if (event.button === 0 && event.ctrlKey === false) {
+    handlePointerOpen(event);
+    // prevent trigger from stealing focus from the active item after opening.
+    event.preventDefault();
+  }
+}
+
+function onPointerUp(event: PointerEvent) {
+  // Only open on pointer up when using touch devices
+  // https://github.com/unovue/soybean-ui/issues/804
+  if (event.pointerType === 'touch') {
+    handlePointerOpen(event);
+  }
+}
+
+function onKeyDown(event: KeyboardEvent) {
+  const isTypingAhead = search.value !== '';
+  const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
+  if (!isModifierKey && event.key.length === 1) if (isTypingAhead && event.key === ' ') return;
+
+  handleTypeaheadSearch(event.key, getItems());
+  if (OPEN_KEYS.includes(event.key)) {
+    handleOpen();
+    event.preventDefault();
+  }
+}
 </script>
 
 <template>
@@ -63,59 +116,10 @@ function handlePointerOpen(event: PointerEvent) {
       :data-placeholder="rootContext.modelValue?.value ? undefined : ''"
       role="combobox"
       :type="as === 'button' ? 'button' : undefined"
-      @click="
-        (event: MouseEvent) => {
-          // Whilst browsers generally have no issue focusing the trigger when clicking
-          // on a label, Safari seems to struggle with the fact that there's no `onClick`.
-          // We force `focus` in this case. Note: this doesn't create any other side-effect
-          // because we are preventing default in `onPointerDown` so effectively
-          // this only runs for a label 'click'
-          (event?.currentTarget as HTMLElement)?.focus();
-        }
-      "
-      @pointerdown="
-        (event: PointerEvent) => {
-          // Prevent opening on touch down.
-          // https://github.com/unovue/soybean-ui/issues/804
-          if (event.pointerType === 'touch') return event.preventDefault();
-
-          // prevent implicit pointer capture
-          // https://www.w3.org/TR/pointerevents3/#implicit-pointer-capture
-          const target = event.target as HTMLElement;
-          if (target.hasPointerCapture(event.pointerId)) {
-            target.releasePointerCapture(event.pointerId);
-          }
-
-          // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
-          // but not when the control key is pressed (avoiding MacOS right click)
-          if (event.button === 0 && event.ctrlKey === false) {
-            handlePointerOpen(event);
-            // prevent trigger from stealing focus from the active item after opening.
-            event.preventDefault();
-          }
-        }
-      "
-      @pointerup.prevent="
-        (event: PointerEvent) => {
-          // Only open on pointer up when using touch devices
-          // https://github.com/unovue/soybean-ui/issues/804
-          if (event.pointerType === 'touch') handlePointerOpen(event);
-        }
-      "
-      @keydown="
-        event => {
-          const isTypingAhead = search !== '';
-          const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
-          if (!isModifierKey && event.key.length === 1) if (isTypingAhead && event.key === ' ') return;
-
-          const collectionItems = getItems().map(i => i.ref);
-          handleTypeaheadSearch(event.key, collectionItems);
-          if (OPEN_KEYS.includes(event.key)) {
-            handleOpen();
-            event.preventDefault();
-          }
-        }
-      "
+      @click="onClick"
+      @pointerdown="onPointerDown"
+      @pointerup.prevent="onPointerUp"
+      @keydown="onKeyDown"
     >
       <slot />
     </Primitive>

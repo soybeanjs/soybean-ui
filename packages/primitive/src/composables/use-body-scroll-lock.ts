@@ -5,7 +5,6 @@ import type { Fn } from '@vueuse/shared';
 import { defu } from 'defu';
 import { injectConfigProviderContext } from '../components/config-provider/context';
 import type { ScrollBodyOption } from '../types';
-import { useId } from './use-id';
 
 const useBodyLockStackCount = createSharedComposable(() => {
   const map = ref<Map<string, boolean>>(new Map());
@@ -102,7 +101,7 @@ function addPx(value?: number | string | undefined | boolean) {
 }
 
 export function useBodyScrollLock(initialState?: boolean | undefined) {
-  const id = useId();
+  const id = Math.random().toString(36).substring(2, 7); // just simple random id, need not to be cryptographically secure
   const map = useBodyLockStackCount();
 
   map.value.set(id, initialState ?? false);
