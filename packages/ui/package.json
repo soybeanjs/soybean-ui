@@ -35,7 +35,7 @@
     "@vueuse/shared": "12.3.0",
     "aria-hidden": "1.2.4",
     "defu": "6.1.4",
-    "fuse.js": "^7.0.0",
+    "fuse.js": "7.0.0",
     "lucide-vue-next": "0.469.0",
     "ohash": "1.1.4",
     "uncrypto": "0.1.3",
