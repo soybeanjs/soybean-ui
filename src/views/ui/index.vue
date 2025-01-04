@@ -19,6 +19,7 @@ import UiChip from './modules/chip.vue';
 import UiCollapsible from './modules/collapsible.vue';
 import UiCombobox from './modules/combobox.vue';
 import UiCommand from './modules/command.vue';
+import UiContextMenu from './modules/context-menu.vue';
 import UiDialog from './modules/dialog.vue';
 import UiDrawer from './modules/drawer.vue';
 import UiDropdownMenu from './modules/dropdown-menu.vue';
@@ -135,6 +136,11 @@ const tabs: TabConfig[] = [
     value: 'command',
     label: 'Command',
     component: UiCommand
+  },
+  {
+    value: 'context-menu',
+    label: 'ContextMenu',
+    component: UiContextMenu
   },
   {
     value: 'dialog',

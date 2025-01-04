@@ -49,10 +49,7 @@ export type ContextMenuContentPropsWithPrimitive = ContextMenuContentProps & Pri
 export type ContextMenuContentEmits = MenuContentEmits;
 
 // ContextMenuSub
-export interface ContextMenuSubProps extends MenuSubProps {
-  /** The open state of the submenu when it is initially rendered. Use when you do not need to control its open state. */
-  defaultOpen?: boolean;
-}
+export interface ContextMenuSubProps extends MenuSubProps {}
 export type ContextMenuSubEmits = MenuSubEmits;
 
 // ContextMenuSubContent
