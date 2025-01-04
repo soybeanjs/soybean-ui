@@ -106,6 +106,7 @@ export interface MenubarTriggerProps extends ClassValueProp {
    * Note that this will also restore the native context menu.
    */
   disabled?: boolean;
+  isLink?: boolean;
 }
 export type MenubarTriggerPropsWithPrimitive = MenubarTriggerProps & PrimitiveProps;
 

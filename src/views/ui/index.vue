@@ -26,6 +26,7 @@ import UiForm from './modules/form.vue';
 import UiHoverCard from './modules/hover-card.vue';
 import UiInput from './modules/input.vue';
 import UiKeyboardKey from './modules/keyboard-key.vue';
+import UiMenubar from './modules/menubar.vue';
 import UiNavigationMenu from './modules/navigation-menu.vue';
 import UiPagination from './modules/pagination.vue';
 import UiPinInput from './modules/pin-input.vue';
@@ -169,6 +170,11 @@ const tabs: TabConfig[] = [
     value: 'keyboard-key',
     label: 'KeyboardKey',
     component: UiKeyboardKey
+  },
+  {
+    value: 'menubar',
+    label: 'Menubar',
+    component: UiMenubar
   },
   {
     value: 'navigation-menu',

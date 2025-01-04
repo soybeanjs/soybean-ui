@@ -47,7 +47,7 @@ function onPointerEnter() {
 }
 
 function onKeyDown(event: KeyboardEvent) {
-  if (props.disabled) return;
+  if (props.disabled || props.isLink) return;
   if (['Enter', ' '].includes(event.key)) {
     onMenuToggle(menuContext.value);
   }
