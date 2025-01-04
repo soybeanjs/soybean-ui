@@ -87,7 +87,7 @@ watch(CmdJ, v => {
     @select="handleSelect"
   />
   <div>Dialog Command</div>
-  <SKeyboardKey :keys="['⌘J']" />
+  <SKeyboardKey :value="['command', 'j']" />
   <SCommandDialog v-model:open="open">
     <SCommand
       :items="items"
