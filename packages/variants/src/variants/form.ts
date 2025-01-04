@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const formVariants = tv({
   slots: {
     item: `form-item space-y-2`,
-    label: '',
+    label: 'flex items-center gap-2',
     message: `text-sm font-medium text-destructive`,
     description: `text-sm text-muted-foreground`
   },

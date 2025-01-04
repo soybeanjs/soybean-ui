@@ -41,13 +41,13 @@
   "dependencies": {
     "@soybean-ui/vue": "workspace:*",
     "@unocss/reset": "0.65.3",
-    "@vee-validate/zod": "4.15.0",
+    "@vee-validate/valibot": "4.15.0",
     "@vueuse/core": "12.3.0",
     "@vueuse/router": "12.3.0",
     "lucide-vue-next": "0.469.0",
+    "valibot": "1.0.0-beta.9",
     "vue": "3.5.13",
-    "vue-router": "4.5.0",
-    "zod": "3.24.1"
+    "vue-router": "4.5.0"
   },
   "devDependencies": {
     "@soybean-ui/unocss-preset": "workspace:*",

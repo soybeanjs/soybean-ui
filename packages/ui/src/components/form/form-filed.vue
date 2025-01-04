@@ -19,7 +19,7 @@ const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <Field v-slot="{ componentField }" v-bind="forwardedProps">
+  <Field v-slot="{ componentField, ...slotProps }" v-bind="forwardedProps">
     <SFormItem v-auto-animate :class="cls">
       <SFormLabel>
         <slot name="label">{{ label }}</slot>
@@ -31,14 +31,10 @@ const forwardedProps = useForwardProps(delegatedProps);
         @blur="componentField['onBlur']"
         @input="componentField['onInput']"
       >
-        <slot />
+        <slot v-bind="slotProps" />
       </SFormControl>
-      <SFormDescription v-if="description">
-        {{ description }}
-      </SFormDescription>
+      <SFormDescription v-if="description">{{ description }}</SFormDescription>
       <SFormMessage />
     </SFormItem>
   </Field>
 </template>
-
-<style scoped></style>

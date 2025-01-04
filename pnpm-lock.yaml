@@ -14,9 +14,9 @@ importers:
       '@unocss/reset':
         specifier: 0.65.3
         version: 0.65.3
-      '@vee-validate/zod':
-        specifier: 4.15.0
-        version: 4.15.0(vue@3.5.13(typescript@5.7.2))(zod@3.24.1)
+      '@vee-validate/valibot':
+        specifier: ^4.15.0
+        version: 4.15.0(valibot@1.0.0-beta.9(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))
       '@vueuse/core':
         specifier: 12.3.0
         version: 12.3.0(typescript@5.7.2)
@@ -26,15 +26,15 @@ importers:
       lucide-vue-next:
         specifier: 0.469.0
         version: 0.469.0(vue@3.5.13(typescript@5.7.2))
+      valibot:
+        specifier: 1.0.0-beta.9
+        version: 1.0.0-beta.9(typescript@5.7.2)
       vue:
         specifier: 3.5.13
         version: 3.5.13(typescript@5.7.2)
       vue-router:
         specifier: 4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.7.2))
-      zod:
-        specifier: 3.24.1
-        version: 3.24.1
     devDependencies:
       '@soybean-ui/unocss-preset':
         specifier: workspace:*
@@ -1582,10 +1582,10 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0 || ^6.0.0-0
 
-  '@vee-validate/zod@4.15.0':
-    resolution: {integrity: sha512-MpvIKiyg9X5yD8bJW0no2AU7wtR2T5mrvD9tuPRiie951sU2n6QKgMV38qKKOiqFBCxsMSjIuLLLV3V5kVE4nQ==}
+  '@vee-validate/valibot@4.15.0':
+    resolution: {integrity: sha512-VjxyjeOrpXbq4jWDu7eix5zh7XlEVx6ygHqz+MCCPn0JqeIVmAke6DuLauwYON/7VDXXj2IZYZQ1DsuCs7egXQ==}
     peerDependencies:
-      zod: ^3.24.0
+      valibot: ^1.0.0-beta.7
 
   '@vitejs/plugin-vue-jsx@4.1.1':
     resolution: {integrity: sha512-uMJqv/7u1zz/9NbWAD3XdjaY20tKTf17XVfQ9zq4wY1BjsB/PjpJPMe2xiG39QpP4ZdhYNhm4Hvo66uJrykNLA==}
@@ -3720,6 +3720,14 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  valibot@1.0.0-beta.9:
+    resolution: {integrity: sha512-yEX8gMAZ2R1yI2uwOO4NCtVnJQx36zn3vD0omzzj9FhcoblvPukENIiRZXKZwCnqSeV80bMm8wNiGhQ0S8fiww==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
@@ -3954,9 +3962,6 @@ packages:
   yoctocolors@2.1.1:
     resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
     engines: {node: '>=18'}
-
-  zod@3.24.1:
-    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -5295,11 +5300,11 @@ snapshots:
       - supports-color
       - vue
 
-  '@vee-validate/zod@4.15.0(vue@3.5.13(typescript@5.7.2))(zod@3.24.1)':
+  '@vee-validate/valibot@4.15.0(valibot@1.0.0-beta.9(typescript@5.7.2))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       type-fest: 4.31.0
+      valibot: 1.0.0-beta.9(typescript@5.7.2)
       vee-validate: 4.15.0(vue@3.5.13(typescript@5.7.2))
-      zod: 3.24.1
     transitivePeerDependencies:
       - vue
 
@@ -7642,6 +7647,10 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  valibot@1.0.0-beta.9(typescript@5.7.2):
+    optionalDependencies:
+      typescript: 5.7.2
+
   validate-npm-package-license@3.0.4:
     dependencies:
       spdx-correct: 3.2.0
@@ -7895,7 +7904,5 @@ snapshots:
   yocto-queue@0.1.0: {}
 
   yoctocolors@2.1.1: {}
-
-  zod@3.24.1: {}
 
   zwitch@2.0.4: {}

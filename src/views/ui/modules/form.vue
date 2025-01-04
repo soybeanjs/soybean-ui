@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import {
-  FieldArray,
   SButton,
   SButtonIcon,
   SCheckboxGroup,
   SFormField,
+  SFormFieldArray,
   SInput,
-  SLabel,
   SRadioGroup,
   SSelect,
   SSwitch,
   useForm
 } from '@soybean-ui/vue';
-import { toTypedSchema } from '@vee-validate/zod';
-import z from 'zod';
+import { toTypedSchema } from '@vee-validate/valibot';
+import * as v from 'valibot';
 import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from '@soybean-ui/vue';
 import { Minus, Plus } from 'lucide-vue-next';
 
@@ -22,26 +21,23 @@ defineOptions({
   name: 'UiForm'
 });
 
-interface User {
-  username: string;
-  gender: 'male' | 'female';
-  remember: boolean;
-  hobbies: string[];
-  city: string;
-  social: { name: string; url: string }[];
-}
-
-const requiredString = (message: string = 'Required!') =>
-  z.string({ required_error: message }).trim().min(1, { message });
-
-const user = z.object({
-  username: requiredString('Username is required'),
-  gender: z.enum(['male', 'female'], { required_error: 'Gender is required' }),
-  remember: z.boolean({ required_error: 'Remember is required' }),
-  hobbies: z.array(z.string(), { required_error: 'Hobbies is required' }).min(1, { message: 'Hobbies is required' }),
-  city: requiredString('City is required'),
-  social: z.array(z.object({ name: z.string(), url: z.string() }), { required_error: 'Social is required' })
-} satisfies Record<keyof User, z.ZodTypeAny>);
+const user = v.object({
+  username: v.string('Username is required'),
+  gender: v.picklist(['male', 'female'], 'Gender is required'),
+  remember: v.boolean('Remember is required'),
+  hobbies: v.pipe(v.array(v.string(), 'Hobbies is required'), v.minLength(1, 'Hobbies is required')),
+  city: v.string('City is required'),
+  social: v.pipe(
+    v.array(
+      v.object({
+        name: v.pipe(v.string(), v.nonEmpty('Name is required')),
+        url: v.pipe(v.string(), v.nonEmpty('URL is required'))
+      }),
+      'Social is required'
+    ),
+    v.minLength(1, 'Social is required')
+  )
+});
 
 const formSchema = toTypedSchema(user);
 
@@ -67,12 +63,12 @@ const cities = ref<SelectOption[]>([
   { label: 'Guangzhou', value: 'guangzhou' }
 ]);
 
-const onSubmit = handleSubmit(v => {
-  console.log(v);
+const onSubmit = handleSubmit(value => {
+  console.log(value);
 });
 
-watch(values, v => {
-  console.log(v);
+watch(values, value => {
+  console.log(value);
 });
 </script>
 
@@ -93,32 +89,34 @@ watch(values, v => {
     <SFormField name="city" label="City">
       <SSelect :items="cities" />
     </SFormField>
-    <div class="flex-y-center gap-4px">
-      <SLabel>Social</SLabel>
-      <SButtonIcon
-        v-if="!values.social?.length"
-        type="button"
-        @click="setFieldValue('social', [{ name: '', url: '' }])"
-      >
-        <Plus />
-      </SButtonIcon>
-    </div>
-    <FieldArray v-slot="{ fields, push, remove }" name="social">
-      <div v-for="(field, index) in fields" :key="field.key" class="flex items-end gap-12px">
-        <SFormField :name="`social.${index}.name`" label="Name">
-          <SInput />
-        </SFormField>
-        <SFormField :name="`social.${index}.url`" label="URL">
-          <SInput />
-        </SFormField>
-        <SButtonIcon type="button" class="flex-shrink-0" @click="remove(index)">
-          <Minus />
-        </SButtonIcon>
-        <SButtonIcon type="button" class="flex-shrink-0" @click="push({ name: '', url: '' })">
+    <SFormFieldArray name="social">
+      <template #label>
+        <span>Social</span>
+        <SButtonIcon
+          v-if="!values.social?.length"
+          type="button"
+          @click="setFieldValue('social', [{ name: '', url: '' }])"
+        >
           <Plus />
         </SButtonIcon>
-      </div>
-    </FieldArray>
+      </template>
+      <template #default="{ fields, push, remove }">
+        <div v-for="(field, index) in fields" :key="field.key" class="flex gap-12px">
+          <SFormField :name="`social.${index}.name`" label="Name">
+            <SInput />
+          </SFormField>
+          <SFormField :name="`social.${index}.url`" label="URL">
+            <SInput />
+          </SFormField>
+          <SButtonIcon type="button" class="mt-7 flex-shrink-0" @click="remove(index)">
+            <Minus />
+          </SButtonIcon>
+          <SButtonIcon type="button" class="mt-7 flex-shrink-0" @click="push({ name: '', url: '' })">
+            <Plus />
+          </SButtonIcon>
+        </div>
+      </template>
+    </SFormFieldArray>
     <SButton type="submit">Submit</SButton>
   </form>
 </template>

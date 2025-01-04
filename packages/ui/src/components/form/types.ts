@@ -32,3 +32,5 @@ export type FormFieldProps<T = unknown> = FormItemProps &
   FieldProps<T> & {
     description?: string;
   };
+
+export interface FormFieldArrayProps extends FormFieldProps {}
