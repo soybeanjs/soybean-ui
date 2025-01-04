@@ -32,6 +32,8 @@ const currentTabStopId = ref<string | null>(null);
 const { dir: propDir, loop } = toRefs(props);
 const dir = useDirection(propDir);
 
+const LINK_ID = '__MENUBAR_TRIGGER_LINK__';
+
 provideMenubarRootContext({
   modelValue,
   dir,
@@ -42,6 +44,9 @@ provideMenubarRootContext({
   },
   onMenuClose: () => {
     modelValue.value = '';
+  },
+  setTriggerLink: () => {
+    modelValue.value = LINK_ID;
   },
   onMenuToggle: value => {
     modelValue.value = modelValue.value ? '' : value;

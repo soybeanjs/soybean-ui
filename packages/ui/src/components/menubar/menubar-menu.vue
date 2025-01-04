@@ -44,24 +44,11 @@ const slotKeys = computed(() => {
     item
   };
 });
-const forwardedMenuProps = useOmitForwardProps(props, ['value', 'triggerClass', 'item', 'contentClass', 'showArrow']);
+const forwardedMenuProps = useOmitForwardProps(props, ['value', 'triggerClass', 'item']);
 
 const forwardedMenuEmits = useEmitAsProps(emit);
 
 const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmits);
-
-// avoid showing the menu popper when the item has no children
-const contentClass = computed(() => {
-  const cls = Array.isArray(props.contentClass) ? props.contentClass : [props.contentClass];
-
-  if (!props.item.children?.length) {
-    cls.push('!absolute !-z-1 !size-0 !min-w-0 !border-0 !p-0 !opacity-0');
-  }
-
-  return cls;
-});
-
-const showArrow = computed(() => Boolean(props.item.children?.length && props.showArrow));
 </script>
 
 <template>
@@ -79,7 +66,7 @@ const showArrow = computed(() => Boolean(props.item.children?.length && props.sh
         <slot :name="slotKey" v-bind="slotProps" />
       </template>
     </SMenubarTriggerOption>
-    <SMenubarItem v-bind="forwardedMenu" :items="item.children" :content-class="contentClass" :show-arrow="showArrow">
+    <SMenubarItem v-bind="forwardedMenu" :items="item.children">
       <template v-for="slotKey in slotKeys.item" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

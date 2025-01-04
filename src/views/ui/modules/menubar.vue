@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { EditIcon, FileIcon, HelpCircle, UserIcon, ViewIcon } from 'lucide-vue-next';
+import { EditIcon, FileIcon, Link, UserIcon, ViewIcon } from 'lucide-vue-next';
 import { SMenubar } from '@soybean-ui/vue';
 import type { MenuOptionData } from '@soybean-ui/vue';
 
@@ -177,9 +177,9 @@ const options: MenuOptionData[] = [
     ]
   },
   {
-    label: 'More',
-    value: 'more',
-    icon: HelpCircle,
+    label: 'Link',
+    value: 'link',
+    icon: Link,
     linkProps: {
       href: 'https://soybeanjs.cn'
     }
@@ -190,5 +190,7 @@ const currentMenu = ref('');
 </script>
 
 <template>
-  <SMenubar v-model="currentMenu" :items="options" />
+  <SMenubar v-model="currentMenu" :items="options" class="w-fit" />
+  <div class="py-12px text-18px">With Arrow</div>
+  <SMenubar v-model="currentMenu" :items="options" show-arrow class="w-fit" />
 </template>

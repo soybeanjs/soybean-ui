@@ -19,7 +19,7 @@ const mergedCls = computed(() => cn(triggerLink(), cls));
 </script>
 
 <template>
-  <MenubarTrigger as-child :disabled="disabled" is-link>
+  <MenubarTrigger as-child :disabled="disabled">
     <SLink v-bind="forwardedLinkProps" :class="mergedCls">
       <slot />
     </SLink>

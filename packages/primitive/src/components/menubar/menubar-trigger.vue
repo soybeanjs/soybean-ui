@@ -5,6 +5,7 @@ import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
+import { isTriggerLink } from './shared';
 import type { MenubarTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -15,7 +16,7 @@ const props = withDefaults(defineProps<MenubarTriggerPropsWithPrimitive>(), {
   as: 'button'
 });
 
-const { modelValue, onMenuOpen, onMenuToggle } = injectMenubarRootContext();
+const { modelValue, onMenuOpen, setTriggerLink, onMenuToggle } = injectMenubarRootContext();
 const menuContext = injectMenubarMenuContext();
 
 const { forwardRef, currentElement: triggerElement } = useForwardExpose();
@@ -26,9 +27,12 @@ const isFocused = ref(false);
 const open = computed(() => modelValue.value === menuContext.value);
 
 function onPointerDown(event: PointerEvent) {
+  if (props.disabled) return;
+  if (isTriggerLink(menuContext.value)) return;
+
   // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
   // but not when the control key is pressed (avoiding MacOS right click)
-  if (!props.disabled && event.button === 0 && event.ctrlKey === false) {
+  if (event.button === 0 && event.ctrlKey === false) {
     onMenuOpen(menuContext.value);
     // prevent trigger focusing when opening
     // this allows the content to be given focus without competition
@@ -40,14 +44,19 @@ function onPointerDown(event: PointerEvent) {
 
 function onPointerEnter() {
   const menubarOpen = Boolean(modelValue.value);
-  if (menubarOpen && !open.value) {
+  if (!menubarOpen) return;
+  if (open.value) return;
+
+  if (!isTriggerLink(menuContext.value)) {
     onMenuOpen(menuContext.value);
-    triggerElement.value?.focus();
+  } else {
+    setTriggerLink();
   }
+  triggerElement.value?.focus();
 }
 
 function onKeyDown(event: KeyboardEvent) {
-  if (props.disabled || props.isLink) return;
+  if (props.disabled || isTriggerLink(menuContext.value)) return;
   if (['Enter', ' '].includes(event.key)) {
     onMenuToggle(menuContext.value);
   }

@@ -5,6 +5,7 @@ import { wrapArray } from '../../shared';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { MenuContent } from '../menu';
 import { injectMenubarMenuContext, injectMenubarRootContext } from './context';
+import { isTriggerLink } from './shared';
 import type { MenubarContentEmits, MenubarContentPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -90,9 +91,19 @@ function onArrowNavigation(event: KeyboardEvent) {
     : candidateValues.slice(currentIndex + 1);
 
   const [nextValue] = candidateValues;
-  if (nextValue) {
+  if (!nextValue) return;
+
+  if (!isTriggerLink(nextValue)) {
     rootContext.onMenuOpen(nextValue);
+    return;
   }
+  focusTriggerLink(nextValue);
+}
+
+function focusTriggerLink(id: string) {
+  rootContext.setTriggerLink();
+  const el = document.getElementById(id);
+  el?.focus();
 }
 
 useForwardExpose();
