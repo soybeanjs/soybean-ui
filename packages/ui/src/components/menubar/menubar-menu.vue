@@ -1,0 +1,88 @@
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed } from 'vue';
+import { MenubarMenu, useCombinedPropsEmits, useEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitive';
+import type { AcceptableValue } from '@soybean-ui/primitive';
+import type { MenuOptionData } from '../menu/types';
+import SMenubarTriggerOption from './menubar-trigger-option.vue';
+import SMenubarItem from './menubar-item.vue';
+import type { MenubarMenuEmits, MenubarMenuProps } from './types';
+
+defineOptions({
+  name: 'SMenubarMenu'
+});
+
+const props = defineProps<MenubarMenuProps<T>>();
+
+const emit = defineEmits<MenubarMenuEmits<T>>();
+
+type TriggerSlots = {
+  trigger?: (props: MenuOptionData<T>) => any;
+  triggerLeading?: (props: MenuOptionData<T>) => any;
+  triggerTrailing?: (props: MenuOptionData<T>) => any;
+};
+type ItemSlots = {
+  item?: (props: MenuOptionData<T>) => any;
+  itemLeading?: (props: MenuOptionData<T>) => any;
+  itemTrailing?: (props: MenuOptionData<T>) => any;
+  itemTrigger?: (props: MenuOptionData<T>) => any;
+  subTriggerIcon?: (props: MenuOptionData<T>) => any;
+  children?: (props: MenuOptionData<T>) => any;
+};
+
+type Slots = TriggerSlots & ItemSlots;
+
+const slots = defineSlots<Slots>();
+
+const slotKeys = computed(() => {
+  const all = Object.keys(slots) as (keyof Slots)[];
+
+  const trigger = all.filter(key => key.startsWith('trigger'));
+  const item = all.filter(key => !key.startsWith('trigger'));
+
+  return {
+    trigger,
+    item
+  };
+});
+const forwardedMenuProps = useOmitForwardProps(props, ['value', 'triggerClass', 'item', 'contentClass', 'showArrow']);
+
+const forwardedMenuEmits = useEmitAsProps(emit);
+
+const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmits);
+
+// avoid showing the menu popper when the item has no children
+const contentClass = computed(() => {
+  const cls = Array.isArray(props.contentClass) ? props.contentClass : [props.contentClass];
+
+  if (!props.item.children?.length) {
+    cls.push('!absolute !-z-1 !size-0 !min-w-0 !border-0 !p-0 !opacity-0');
+  }
+
+  return cls;
+});
+
+const showArrow = computed(() => Boolean(props.item.children?.length && props.showArrow));
+</script>
+
+<template>
+  <MenubarMenu :value="value">
+    <SMenubarTriggerOption
+      :class="triggerClass"
+      :disabled="item.disabled"
+      :size="size"
+      :item="item"
+      :item-link-icon-class="itemLinkIconClass"
+      :item-icon-class="itemIconClass"
+      :shortcut-class="shortcutClass"
+    >
+      <template v-for="slotKey in slotKeys.trigger" :key="slotKey" #[slotKey]="slotProps">
+        <slot :name="slotKey" v-bind="slotProps" />
+      </template>
+    </SMenubarTriggerOption>
+    <SMenubarItem v-bind="forwardedMenu" :items="item.children" :content-class="contentClass" :show-arrow="showArrow">
+      <template v-for="slotKey in slotKeys.item" :key="slotKey" #[slotKey]="slotProps">
+        <slot :name="slotKey" v-bind="slotProps" />
+      </template>
+    </SMenubarItem>
+  </MenubarMenu>
+</template>
