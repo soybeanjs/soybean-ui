@@ -25,5 +25,3 @@ defineOptions({
     </template>
   </SDrawer>
 </template>
-
-<style scoped></style>

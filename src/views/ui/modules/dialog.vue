@@ -63,5 +63,3 @@ function closeDialog() {
     </template>
   </SDialog>
 </template>
-
-<style scoped></style>

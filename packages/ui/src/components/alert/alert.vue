@@ -41,5 +41,3 @@ function closeAlert() {
     </SAlertDescription>
   </SAlertRoot>
 </template>
-
-<style scoped></style>

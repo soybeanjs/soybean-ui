@@ -26,5 +26,3 @@ const mergedCls = computed(() => {
     <slot />
   </Toggle>
 </template>
-
-<style scoped></style>

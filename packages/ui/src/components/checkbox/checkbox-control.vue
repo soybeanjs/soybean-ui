@@ -26,5 +26,3 @@ const mergedCls = computed(() => {
     <slot />
   </CheckboxRoot>
 </template>
-
-<style scoped></style>

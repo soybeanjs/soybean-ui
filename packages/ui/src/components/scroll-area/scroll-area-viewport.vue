@@ -22,5 +22,3 @@ const mergedCls = computed(() => cn(viewport(), cls));
     <slot />
   </ScrollAreaViewport>
 </template>
-
-<style scoped></style>

@@ -22,5 +22,3 @@ const mergedCls = computed(() => cn(title(), cls));
     <slot name="title-trailing" />
   </ToastTitle>
 </template>
-
-<style scoped></style>

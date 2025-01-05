@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(separator(), cls));
 <template>
   <SelectSeparator :class="mergedCls" />
 </template>
-
-<style scoped></style>

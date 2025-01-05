@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(content(), cls));
     <slot />
   </DrawerContent>
 </template>
-
-<style scoped></style>

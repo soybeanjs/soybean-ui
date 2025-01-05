@@ -31,5 +31,3 @@ const forwarded = useForwardPropsEmits(props, emit);
     </SToggleGroupItem>
   </SToggleGroupRoot>
 </template>
-
-<style scoped></style>

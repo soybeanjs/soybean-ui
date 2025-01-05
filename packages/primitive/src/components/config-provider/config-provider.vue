@@ -24,5 +24,3 @@ provideConfigProviderContext({ dir, locale, scrollBody, nonce, useId: props.useI
 <template>
   <slot />
 </template>
-
-<style scoped></style>

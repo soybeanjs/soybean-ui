@@ -32,5 +32,3 @@ const mergedCls = computed(() => {
     <slot />
   </SelectContent>
 </template>
-
-<style scoped></style>

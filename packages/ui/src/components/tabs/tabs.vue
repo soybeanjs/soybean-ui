@@ -61,5 +61,3 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
     </STabsContent>
   </STabsRoot>
 </template>
-
-<style scoped></style>

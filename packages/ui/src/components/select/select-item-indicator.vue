@@ -25,5 +25,3 @@ const mergedCls = computed(() => {
     </slot>
   </SelectItemIndicator>
 </template>
-
-<style scoped></style>

@@ -63,5 +63,3 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     </PopoverPortal>
   </PopoverRoot>
 </template>
-
-<style scoped></style>

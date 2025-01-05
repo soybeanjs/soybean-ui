@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(overlay(), cls));
 <template>
   <AlertDialogOverlay :class="mergedCls" :force-mount />
 </template>
-
-<style scoped></style>

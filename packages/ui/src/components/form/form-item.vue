@@ -24,5 +24,3 @@ const mergedCls = cn(item(), cls);
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

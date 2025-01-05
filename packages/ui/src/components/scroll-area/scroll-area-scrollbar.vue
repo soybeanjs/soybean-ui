@@ -24,5 +24,3 @@ const mergedCls = computed(() => {
     <slot />
   </ScrollAreaScrollbar>
 </template>
-
-<style scoped></style>

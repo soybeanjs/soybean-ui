@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(indicator(), cls));
     <slot />
   </CheckboxIndicator>
 </template>
-
-<style scoped></style>

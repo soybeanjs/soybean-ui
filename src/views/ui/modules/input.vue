@@ -29,5 +29,3 @@ const modelValue = ref<string>('');
     <SInput type="file" />
   </div>
 </template>
-
-<style scoped></style>

@@ -62,5 +62,3 @@ const works: Artwork[] = [
     </div>
   </SScrollArea>
 </template>
-
-<style scoped></style>

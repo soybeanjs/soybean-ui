@@ -22,5 +22,3 @@ const mergedCls = computed(() => cn(link(), cls));
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

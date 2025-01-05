@@ -25,5 +25,3 @@ const mergedCls = computed(() => {
     </slot>
   </SelectScrollUpButton>
 </template>
-
-<style scoped></style>

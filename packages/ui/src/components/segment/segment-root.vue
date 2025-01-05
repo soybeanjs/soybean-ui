@@ -19,5 +19,3 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
     <slot />
   </TabsRoot>
 </template>
-
-<style scoped></style>

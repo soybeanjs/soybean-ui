@@ -22,5 +22,3 @@ const mergedCls = computed(() => {
     <slot />
   </TabsIndicator>
 </template>
-
-<style scoped></style>

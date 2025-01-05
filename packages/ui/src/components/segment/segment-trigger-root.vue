@@ -22,5 +22,3 @@ const mergedCls = computed(() => cn(triggerRoot(), cls));
     <slot />
   </TabsList>
 </template>
-
-<style scoped></style>

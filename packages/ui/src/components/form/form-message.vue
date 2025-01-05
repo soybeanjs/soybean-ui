@@ -21,5 +21,3 @@ const mergedCls = computed(() => cn(message(), cls));
 <template>
   <ErrorMessage :id="formMessageId" as="p" :name="toValue(name)" :class="mergedCls" />
 </template>
-
-<style scoped></style>

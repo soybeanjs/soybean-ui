@@ -320,5 +320,3 @@ const tabs: TabConfig[] = [
     </div>
   </SToastProvider>
 </template>
-
-<style scoped></style>

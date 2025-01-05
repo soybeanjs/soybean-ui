@@ -27,5 +27,3 @@ const forwardedProps = useForwardProps(delegatedProps);
     <ScrollAreaCorner />
   </SScrollAreaRoot>
 </template>
-
-<style scoped></style>

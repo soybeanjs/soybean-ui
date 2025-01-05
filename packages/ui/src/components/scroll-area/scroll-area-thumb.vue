@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(thumb(), cls));
     <slot />
   </ScrollAreaThumb>
 </template>
-
-<style scoped></style>

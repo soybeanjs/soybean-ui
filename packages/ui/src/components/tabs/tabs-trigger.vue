@@ -24,5 +24,3 @@ const mergedCls = computed(() => {
     <slot />
   </TabsTrigger>
 </template>
-
-<style scoped></style>

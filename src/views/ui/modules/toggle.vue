@@ -27,5 +27,3 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
     <SToggle size="md" variant="outline" disabled>disabled</SToggle>
   </div>
 </template>
-
-<style scoped></style>

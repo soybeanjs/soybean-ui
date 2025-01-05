@@ -24,5 +24,3 @@ const mergedCls = computed(() => cn(close(), cls));
     </SButtonIcon>
   </ToastClose>
 </template>
-
-<style scoped></style>

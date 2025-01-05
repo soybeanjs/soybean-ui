@@ -30,5 +30,3 @@ function handleInput(event: Event) {
     @input="handleInput"
   />
 </template>
-
-<style scoped></style>

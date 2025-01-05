@@ -145,5 +145,3 @@ function handleClick(item: BreadcrumbItem) {
     </div>
   </div>
 </template>
-
-<style scoped></style>

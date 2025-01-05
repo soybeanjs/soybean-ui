@@ -62,7 +62,7 @@ const activeSection = computed(() =>
         <div class="mb-2 text-sm text-primary font-bold">
           {{ activeSection?.text }}
         </div>
-        <article class="prose prose-stone dark:prose-invert max-w-none w-full">
+        <article class="max-w-none w-full prose prose-stone dark:prose-invert">
           <Content />
         </article>
 

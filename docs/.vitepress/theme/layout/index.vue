@@ -46,5 +46,3 @@ const { top } = toRefs(arrivedState);
     </div>
   </div>
 </template>
-
-<style scoped></style>

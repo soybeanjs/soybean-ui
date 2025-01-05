@@ -35,5 +35,3 @@ const items: DemoData[] = [
     </SToggleGroup>
   </div>
 </template>
-
-<style scoped></style>

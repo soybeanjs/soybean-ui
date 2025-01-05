@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(badgeVariants({ color, variant }), cls));
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

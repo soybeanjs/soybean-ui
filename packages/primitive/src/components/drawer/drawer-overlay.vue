@@ -21,5 +21,3 @@ const hasSnapPoints = computed(() => snapPoints && (snapPoints.value?.length ?? 
     :soybean-drawer-snap-points-overlay="isOpen && shouldFade ? 'true' : 'false'"
   />
 </template>
-
-<style scoped></style>

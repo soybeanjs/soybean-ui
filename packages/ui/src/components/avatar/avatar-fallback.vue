@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(fallback(), cls));
     <slot></slot>
   </AvatarFallback>
 </template>
-
-<style scoped></style>

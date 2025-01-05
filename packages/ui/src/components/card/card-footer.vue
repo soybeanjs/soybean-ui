@@ -22,5 +22,3 @@ const mergedCls = computed(() => {
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

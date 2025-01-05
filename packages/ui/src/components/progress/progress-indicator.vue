@@ -22,5 +22,3 @@ const style = computed(() => `transform: translateX(-${100 - (modelValue || 0)}%
 <template>
   <ProgressIndicator :class="mergedCls" :style="style" />
 </template>
-
-<style scoped></style>

@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(arrow(), cls));
 <template>
   <PopoverArrow v-bind="forwardedProps" :class="mergedCls" />
 </template>
-
-<style scoped></style>

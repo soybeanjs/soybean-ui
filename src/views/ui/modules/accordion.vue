@@ -75,5 +75,3 @@ const items: AccordionItems[] = [
     </template>
   </SAccordion>
 </template>
-
-<style scoped></style>

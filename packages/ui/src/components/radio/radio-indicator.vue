@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(indicator({ color }), cls));
 <template>
   <RadioGroupIndicator v-bind="forwardedProps" :class="mergedCls" />
 </template>
-
-<style scoped></style>

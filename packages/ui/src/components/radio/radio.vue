@@ -41,5 +41,3 @@ const radioId = computed(() => id || `radio-${defaultId}`);
     </SRadioLabel>
   </SRadioRoot>
 </template>
-
-<style scoped></style>

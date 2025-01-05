@@ -63,5 +63,3 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     </DialogPortal>
   </DialogRoot>
 </template>
-
-<style scoped></style>

@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(collapsibleVariants(), cls));
     <slot />
   </CollapsibleContent>
 </template>
-
-<style scoped></style>

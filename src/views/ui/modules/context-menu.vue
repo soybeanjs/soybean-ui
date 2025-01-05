@@ -73,5 +73,3 @@ const menus: MenuOptionData<string>[] = [
     </template>
   </SContextMenu>
 </template>
-
-<style scoped></style>

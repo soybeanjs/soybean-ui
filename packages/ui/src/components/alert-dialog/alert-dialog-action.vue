@@ -19,5 +19,3 @@ const forwardedProps = useForwardProps(props);
     </SButton>
   </AlertDialogAction>
 </template>
-
-<style scoped></style>

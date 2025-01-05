@@ -16,5 +16,3 @@ const isDark = useDark();
     <Icon v-else icon="lucide:sun" />
   </SSwitch>
 </template>
-
-<style scoped></style>

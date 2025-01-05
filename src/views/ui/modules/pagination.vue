@@ -25,5 +25,3 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
     </div>
   </div>
 </template>
-
-<style scoped></style>

@@ -30,5 +30,3 @@ const forwarded = useForwardPropsEmits(props, emit);
     </slot>
   </SCheckboxGroupRoot>
 </template>
-
-<style scoped></style>

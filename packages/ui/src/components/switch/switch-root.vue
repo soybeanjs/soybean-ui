@@ -26,5 +26,3 @@ const mergedCls = computed(() => {
     <slot />
   </SwitchRoot>
 </template>
-
-<style scoped></style>

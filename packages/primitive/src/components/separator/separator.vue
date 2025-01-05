@@ -40,5 +40,3 @@ function isValidOrientation(_orientation: any): _orientation is DataOrientation 
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

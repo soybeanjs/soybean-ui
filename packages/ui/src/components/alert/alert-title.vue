@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(title(), cls));
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

@@ -38,5 +38,3 @@ function createRadioGroupItems(): RadioGroupItemProps[] {
     <SRadio v-for="item in items" :key="item.value" v-bind="item" :disabled="item.value === '2'" />
   </SRadioGroup>
 </template>
-
-<style scoped></style>

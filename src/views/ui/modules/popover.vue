@@ -32,5 +32,3 @@ const aligns: PopoverAlign[] = ['start', 'center', 'end'];
     <p>Popover content</p>
   </SPopover>
 </template>
-
-<style scoped></style>

@@ -19,5 +19,3 @@ const forwardedProps = useForwardProps(delegatedProps);
     </SButton>
   </AlertDialogCancel>
 </template>
-
-<style scoped></style>

@@ -19,5 +19,3 @@ const ariaInvalid = computed(() => Boolean(error.value));
     <slot />
   </Slot>
 </template>
-
-<style scoped></style>

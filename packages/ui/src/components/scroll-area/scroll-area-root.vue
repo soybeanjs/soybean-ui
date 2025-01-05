@@ -22,5 +22,3 @@ const mergedCls = computed(() => cn(root(), cls));
     <slot />
   </ScrollAreaRoot>
 </template>
-
-<style scoped></style>

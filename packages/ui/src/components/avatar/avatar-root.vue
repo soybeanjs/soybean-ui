@@ -22,5 +22,3 @@ const mergedCls = computed(() => {
     <slot />
   </AvatarRoot>
 </template>
-
-<style scoped></style>

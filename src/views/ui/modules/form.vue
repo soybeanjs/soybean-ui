@@ -120,5 +120,3 @@ watch(values, value => {
     <SButton type="submit">Submit</SButton>
   </form>
 </template>
-
-<style scoped></style>

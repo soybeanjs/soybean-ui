@@ -21,5 +21,3 @@ defineProps<SelectItemOptionProps>();
   </SSelectItem>
   <SSelectSeparator v-if="separator" :key="`separator_${option.value}`" :class="separatorClass" />
 </template>
-
-<style scoped></style>

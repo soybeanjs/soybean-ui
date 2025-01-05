@@ -27,5 +27,3 @@ const switchId = computed(() => id || `switch-${defaultId}`);
     </SSwitchThumb>
   </SSwitchRoot>
 </template>
-
-<style scoped></style>

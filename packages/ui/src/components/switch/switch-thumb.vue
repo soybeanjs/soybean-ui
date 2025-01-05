@@ -22,5 +22,3 @@ const mergedCls = computed(() => {
     <slot />
   </SwitchThumb>
 </template>
-
-<style scoped></style>

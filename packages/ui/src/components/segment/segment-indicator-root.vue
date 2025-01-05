@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(indicatorRoot(), cls));
     <slot />
   </TabsIndicator>
 </template>
-
-<style scoped></style>

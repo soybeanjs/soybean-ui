@@ -50,8 +50,6 @@ const mergedCls = computed(() => cn(${slotName}(), cls));
     <slot />
   </${cpName}>
 </template>
-
-<style scoped></style>
 `;
 }
 

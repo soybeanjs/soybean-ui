@@ -97,5 +97,3 @@ watch(CmdJ, v => {
     />
   </SCommandDialog>
 </template>
-
-<style scoped></style>

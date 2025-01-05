@@ -132,5 +132,3 @@ function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOptio
     </SelectPortal>
   </SelectRoot>
 </template>
-
-<style scoped></style>

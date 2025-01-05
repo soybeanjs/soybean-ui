@@ -50,5 +50,3 @@ defineOptions({
     </template>
   </SAlertDialog>
 </template>
-
-<style scoped></style>

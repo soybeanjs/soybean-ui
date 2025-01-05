@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(buttonGroupVariants({ orientation }), cls));
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>

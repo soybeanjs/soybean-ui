@@ -49,5 +49,3 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
     </SCard>
   </div>
 </template>
-
-<style scoped></style>

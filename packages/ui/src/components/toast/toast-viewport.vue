@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(viewport(), cls));
 <template>
   <ToastViewport v-bind="forwarded" :class="mergedCls" />
 </template>
-
-<style scoped></style>

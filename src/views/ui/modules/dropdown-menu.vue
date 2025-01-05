@@ -127,5 +127,3 @@ const placements = [
     </template>
   </SDropdownMenuRadio>
 </template>
-
-<style scoped></style>

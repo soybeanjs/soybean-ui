@@ -31,5 +31,3 @@ const emit = defineEmits<AvatarEmits>();
     </slot>
   </SAvatarRoot>
 </template>
-
-<style scoped></style>

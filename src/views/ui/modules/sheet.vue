@@ -35,5 +35,3 @@ const sides: SheetSide[] = ['left', 'right', 'top', 'bottom'];
     </template>
   </SSheet>
 </template>
-
-<style scoped></style>

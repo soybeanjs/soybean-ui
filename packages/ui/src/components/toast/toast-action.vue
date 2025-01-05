@@ -25,5 +25,3 @@ const mergedCls = computed(() => cn(action(), cls));
     </SButton>
   </ToastAction>
 </template>
-
-<style scoped></style>

@@ -47,5 +47,3 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
     </SSegmentTriggerRoot>
   </SSegmentRoot>
 </template>
-
-<style scoped></style>

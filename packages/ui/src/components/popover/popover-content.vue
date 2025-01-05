@@ -24,5 +24,3 @@ const mergedCls = computed(() => cn(content(), cls));
     <slot />
   </PopoverContent>
 </template>
-
-<style scoped></style>

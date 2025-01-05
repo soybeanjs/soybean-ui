@@ -120,5 +120,3 @@ const menus: NavigationMenuItemOption[] = [
 <template>
   <SNavigationMenu :items="menus" show-arrow child-link-class="w-80" />
 </template>
-
-<style scoped></style>

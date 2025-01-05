@@ -27,5 +27,3 @@ defineOptions({
     </template>
   </SCollapsible>
 </template>
-
-<style scoped></style>

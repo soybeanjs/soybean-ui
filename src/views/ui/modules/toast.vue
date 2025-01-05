@@ -57,5 +57,3 @@ function openToastWithAction() {
     <SButton variant="outline" @click="openToastWithWarningColorAndIcon">Warning Color And Icon</SButton>
   </div>
 </template>
-
-<style scoped></style>

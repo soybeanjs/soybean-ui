@@ -30,5 +30,3 @@ const isDisabled = computed(() => loading || disabled);
     </template>
   </SButton>
 </template>
-
-<style scoped></style>

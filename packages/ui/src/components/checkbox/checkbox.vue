@@ -49,5 +49,3 @@ const isIndeterminate = computed(() => delegatedProps.modelValue === 'indetermin
     </SCheckboxLabel>
   </SCheckboxRoot>
 </template>
-
-<style scoped></style>

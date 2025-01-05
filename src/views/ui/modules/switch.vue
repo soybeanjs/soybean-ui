@@ -23,5 +23,3 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   <div class="py-12px text-18px">Disabled</div>
   <SSwitch disabled default-value color="success" />
 </template>
-
-<style scoped></style>

@@ -12,5 +12,3 @@ const props = defineProps<ToastPortalProps>();
 <template>
   <TeleportPrimitive v-bind="props" />
 </template>
-
-<style scoped></style>

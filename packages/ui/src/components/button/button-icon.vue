@@ -17,5 +17,3 @@ const forwardedProps = useForwardProps(delegatedProps);
     <slot></slot>
   </SButton>
 </template>
-
-<style scoped></style>

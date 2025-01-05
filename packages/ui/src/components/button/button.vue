@@ -32,5 +32,3 @@ const mergedCls = computed(() => cn(buttonVariants({ color, variant, size, shape
     <slot name="trailing" />
   </Primitive>
 </template>
-
-<style scoped></style>

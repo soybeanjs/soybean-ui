@@ -26,5 +26,3 @@ const mergedCls = computed(() => {
     <slot />
   </ProgressRoot>
 </template>
-
-<style scoped></style>

@@ -60,5 +60,3 @@ const iconRecord: Record<ToastIconType, { icon: FunctionalComponent<LucideProps>
   </SToastRoot>
   <SToastViewport />
 </template>
-
-<style scoped></style>

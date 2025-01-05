@@ -68,5 +68,3 @@ const showFooter = computed(() => Boolean(slots.footer));
     </SCardFooter>
   </SCardRoot>
 </template>
-
-<style scoped></style>

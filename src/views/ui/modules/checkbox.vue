@@ -62,5 +62,3 @@ function createCheckboxItems() {
   <div class="py-12px text-18px">Disabled</div>
   <SCheckboxGroup :default-value="['2']" :items="items" disabled />
 </template>
-
-<style scoped></style>

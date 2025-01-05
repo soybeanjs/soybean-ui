@@ -31,5 +31,3 @@ const borders: SeparatorBorder[] = ['solid', 'dashed', 'dotted'];
   <div class="py-12px text-18px">Border Width</div>
   <SSeparator border="solid" class="mb-6 border-2px">2 px</SSeparator>
 </template>
-
-<style scoped></style>

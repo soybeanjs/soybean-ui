@@ -25,5 +25,3 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
     </SCollapsibleContent>
   </CollapsibleRoot>
 </template>
-
-<style scoped></style>

@@ -30,5 +30,3 @@ const mergedCls = computed(() => {
     </slot>
   </RadioGroupRoot>
 </template>
-
-<style scoped></style>

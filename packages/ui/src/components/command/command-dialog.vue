@@ -48,5 +48,3 @@ const mergedContentCls = computed(() => cn(dialog(), props.class));
     </DialogPortal>
   </DialogRoot>
 </template>
-
-<style scoped></style>

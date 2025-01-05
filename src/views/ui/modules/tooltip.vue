@@ -35,5 +35,3 @@ const aligns: TooltipAlign[] = ['start', 'center', 'end'];
     </STooltip>
   </div>
 </template>
-
-<style scoped></style>

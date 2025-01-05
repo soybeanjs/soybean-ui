@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(knob(), cls));
 <template>
   <Primitive as="div" :class="mergedCls" />
 </template>
-
-<style scoped></style>

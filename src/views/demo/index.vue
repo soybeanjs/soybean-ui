@@ -14,5 +14,3 @@ const router = useRouter();
     </SCard>
   </div>
 </template>
-
-<style scoped></style>

@@ -26,5 +26,3 @@ const mergedCls = computed(() => cn(close(), cls));
     </slot>
   </DialogClose>
 </template>
-
-<style scoped></style>

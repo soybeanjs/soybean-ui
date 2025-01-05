@@ -56,5 +56,3 @@ function handleSelect(item: CommandItemSingleOption<string>) {
     </SCommand>
   </SPopover>
 </template>
-
-<style scoped></style>

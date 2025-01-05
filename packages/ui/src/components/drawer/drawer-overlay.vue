@@ -18,5 +18,3 @@ const mergedCls = computed(() => cn(overlay(), cls));
 <template>
   <DrawerOverlay :class="mergedCls" />
 </template>
-
-<style scoped></style>

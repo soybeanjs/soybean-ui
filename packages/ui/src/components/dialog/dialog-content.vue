@@ -24,5 +24,3 @@ const mergedCls = computed(() => cn(content(), cls));
     <slot />
   </DialogContent>
 </template>
-
-<style scoped></style>

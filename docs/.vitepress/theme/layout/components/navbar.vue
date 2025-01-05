@@ -131,5 +131,3 @@ watch(path, () => {
     </SPopover>
   </div>
 </template>
-
-<style scoped></style>

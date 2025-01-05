@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(cls, arrow()));
 <template>
   <TooltipArrow v-bind="forwardedProps" :class="mergedCls" />
 </template>
-
-<style scoped></style>

@@ -20,5 +20,3 @@ const mergedCls = computed(() => cn(arrow(), cls));
     <div :class="mergedCls"></div>
   </HoverCardArrow>
 </template>
-
-<style scoped></style>

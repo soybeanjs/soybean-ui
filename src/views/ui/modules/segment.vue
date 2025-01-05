@@ -44,5 +44,3 @@ defineOptions({
 <template>
   <SSegment v-model="day" :items="weekends" />
 </template>
-
-<style scoped></style>

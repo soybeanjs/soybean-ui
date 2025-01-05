@@ -93,5 +93,3 @@ const iconProps = computed(() => {
     </AlertDialogPortal>
   </AlertDialogRoot>
 </template>
-
-<style scoped></style>

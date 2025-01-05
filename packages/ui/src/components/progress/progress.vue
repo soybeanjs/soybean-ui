@@ -20,5 +20,3 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
     <SProgressIndicator :class="indicatorClass" :model-value="modelValue" :color="color" />
   </SProgressRoot>
 </template>
-
-<style scoped></style>
