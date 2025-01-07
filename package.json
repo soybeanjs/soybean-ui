@@ -39,12 +39,12 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
-    "@soybean-ui/vue": "workspace:*",
     "@unocss/reset": "0.65.3",
     "@vee-validate/valibot": "4.15.0",
     "@vueuse/core": "12.3.0",
     "@vueuse/router": "12.3.0",
     "lucide-vue-next": "0.469.0",
+    "soy-ui": "workspace:*",
     "valibot": "1.0.0-beta.10",
     "vue": "3.5.13",
     "vue-router": "4.5.0"

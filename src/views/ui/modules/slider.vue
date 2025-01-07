@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SSlider } from '@soybean-ui/vue';
-import type { ThemeColor } from '@soybean-ui/vue';
+import { SSlider } from 'soy-ui';
+import type { ThemeColor } from 'soy-ui';
 
 const model = ref<number[]>([33]);
 

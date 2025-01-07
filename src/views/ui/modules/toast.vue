@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { SButton, SToastAction, useToast } from '@soybean-ui/vue';
+import { SButton, SToastAction, useToast } from 'soy-ui';
 
 defineOptions({
   name: 'UiToast'

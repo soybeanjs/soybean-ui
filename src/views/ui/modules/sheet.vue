@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SScrollArea, SSheet } from '@soybean-ui/vue';
-import type { SheetSide } from '@soybean-ui/vue';
+import { SButton, SScrollArea, SSheet } from 'soy-ui';
+import type { SheetSide } from 'soy-ui';
 
 defineOptions({
   name: 'UiSheet'

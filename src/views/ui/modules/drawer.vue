@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SDrawer, SDrawerClose } from '@soybean-ui/vue';
+import { SButton, SDrawer, SDrawerClose } from 'soy-ui';
 
 defineOptions({
   name: 'UiDrawer'

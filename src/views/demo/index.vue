@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@soybean-ui/vue';
+import { SButton, SCard } from 'soy-ui';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

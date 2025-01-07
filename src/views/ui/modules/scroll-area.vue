@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SScrollArea, SSeparator } from '@soybean-ui/vue';
+import { SScrollArea, SSeparator } from 'soy-ui';
 
 defineOptions({
   name: 'UiScrollArea'

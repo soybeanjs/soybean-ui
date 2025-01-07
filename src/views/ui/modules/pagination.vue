@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SPagination } from '@soybean-ui/vue';
-import type { ThemeSize } from '@soybean-ui/vue';
+import { SPagination } from 'soy-ui';
+import type { ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'UiPagination'

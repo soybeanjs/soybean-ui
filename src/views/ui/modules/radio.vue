@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SRadio, SRadioGroup } from '@soybean-ui/vue';
-import type { RadioGroupItemProps, ThemeColor, ThemeSize } from '@soybean-ui/vue';
+import { SRadio, SRadioGroup } from 'soy-ui';
+import type { RadioGroupItemProps, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'UiRadio'

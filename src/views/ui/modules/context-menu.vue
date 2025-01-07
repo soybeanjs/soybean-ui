@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SContextMenu } from '@soybean-ui/vue';
-import type { MenuOptionData } from '@soybean-ui/vue';
+import { SContextMenu } from 'soy-ui';
+import type { MenuOptionData } from 'soy-ui';
 import {
   CirclePlus,
   Cloud,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SSkeleton } from '@soybean-ui/vue';
+import { SSkeleton } from 'soy-ui';
 
 defineOptions({
   name: 'UiSkeleton'

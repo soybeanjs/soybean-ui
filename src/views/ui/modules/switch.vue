@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SSwitch } from '@soybean-ui/vue';
-import type { ThemeColor, ThemeSize } from '@soybean-ui/vue';
+import { SSwitch } from 'soy-ui';
+import type { ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'UiSwitch'

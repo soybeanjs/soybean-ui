@@ -15,9 +15,9 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@soybean-ui/vue": "workspace:*",
     "@vueuse/core": "12.3.0",
     "lucide-vue-next": "0.469.0",
+    "soy-ui": "workspace:*",
     "vue": "3.5.13"
   },
   "devDependencies": {

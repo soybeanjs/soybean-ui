@@ -11,10 +11,10 @@ import {
   SSelect,
   SSwitch,
   useForm
-} from '@soybean-ui/vue';
+} from 'soy-ui';
 import { toTypedSchema } from '@vee-validate/valibot';
 import * as v from 'valibot';
-import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from '@soybean-ui/vue';
+import type { CheckboxGroupItem, RadioGroupItemProps, SelectOption } from 'soy-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({

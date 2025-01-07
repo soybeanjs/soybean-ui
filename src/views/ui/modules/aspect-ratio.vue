@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAspectRatio } from '@soybean-ui/vue';
+import { SAspectRatio } from 'soy-ui';
 
 defineOptions({
   name: 'UiAspectRatio'

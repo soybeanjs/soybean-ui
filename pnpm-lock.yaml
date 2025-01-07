@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@soybean-ui/vue':
+      'soy-ui':
         specifier: workspace:*
         version: link:packages/ui
       '@unocss/reset':
@@ -105,7 +105,7 @@ importers:
 
   docs:
     dependencies:
-      '@soybean-ui/vue':
+      'soy-ui':
         specifier: workspace:*
         version: link:../packages/ui
       '@vueuse/core':

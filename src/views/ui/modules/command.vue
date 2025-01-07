@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
-import { SCommand, SCommandDialog, SKeyboardKey } from '@soybean-ui/vue';
-import type { CommandItemOption, CommandItemSingleOption, SelectEvent } from '@soybean-ui/vue';
+import { SCommand, SCommandDialog, SKeyboardKey } from 'soy-ui';
+import type { CommandItemOption, CommandItemSingleOption, SelectEvent } from 'soy-ui';
 import { Calendar, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
 
 defineOptions({

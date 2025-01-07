@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBreadcrumb, SBreadcrumbEllipsis, SBreadcrumbPage, SDropdownMenu } from '@soybean-ui/vue';
-import type { BreadcrumbItem, MenuOptionData, ThemeSize } from '@soybean-ui/vue';
+import { SBreadcrumb, SBreadcrumbEllipsis, SBreadcrumbPage, SDropdownMenu } from 'soy-ui';
+import type { BreadcrumbItem, MenuOptionData, ThemeSize } from 'soy-ui';
 import { Component, Dock, Home } from 'lucide-vue-next';
 
 defineOptions({

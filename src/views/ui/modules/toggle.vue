@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SToggle } from '@soybean-ui/vue';
-import type { ThemeSize, ToggleVariant } from '@soybean-ui/vue';
+import { SToggle } from 'soy-ui';
+import type { ThemeSize, ToggleVariant } from 'soy-ui';
 
 defineOptions({
   name: 'UiToggle'

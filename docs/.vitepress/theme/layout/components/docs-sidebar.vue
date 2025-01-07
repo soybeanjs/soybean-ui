@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCollapsible, SCollapsibleTrigger } from '@soybean-ui/vue';
+import { SCollapsible, SCollapsibleTrigger } from 'soy-ui';
 import { Icon } from '@iconify/vue';
 import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BookOpen, Box, CloudDownload, Cog, Database, FileText, House, Smile, SwatchBook } from 'lucide-vue-next';
-import { SNavigationMenu } from '@soybean-ui/vue';
-import type { NavigationMenuItemOption } from '@soybean-ui/vue';
+import { SNavigationMenu } from 'soy-ui';
+import type { NavigationMenuItemOption } from 'soy-ui';
 
 defineOptions({
   name: 'UiNavigationMenu'

@@ -1,4 +1,4 @@
-import type { DropdownMenuOptionType } from '@soybean-ui/vue';
+import type { DropdownMenuOptionType } from 'soy-ui';
 import type { NavItem } from '../types';
 
 export function isNavItemWithLink(item: DropdownMenuOptionType<NavItem>): item is NavItem {

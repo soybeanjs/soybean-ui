@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAvatar, SButton, SHoverCard } from '@soybean-ui/vue';
+import { SAvatar, SButton, SHoverCard } from 'soy-ui';
 
 defineOptions({
   name: 'UiHoverCard'

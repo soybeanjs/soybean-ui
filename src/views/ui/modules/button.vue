@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SButtonGroup, SButtonIcon, SButtonLink, SLoadingButton } from '@soybean-ui/vue';
-import type { ButtonShadow, ButtonVariant, ThemeColor, ThemeSize } from '@soybean-ui/vue';
+import { SButton, SButtonGroup, SButtonIcon, SButtonLink, SLoadingButton } from 'soy-ui';
+import type { ButtonShadow, ButtonVariant, ThemeColor, ThemeSize } from 'soy-ui';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
 defineOptions({

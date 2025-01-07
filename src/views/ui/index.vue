@@ -2,8 +2,8 @@
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
-import { SButtonIcon, SCard, SScrollArea, STabs, SToastProvider } from '@soybean-ui/vue';
-import type { TabsOption } from '@soybean-ui/vue';
+import { SButtonIcon, SCard, SScrollArea, STabs, SToastProvider } from 'soy-ui';
+import type { TabsOption } from 'soy-ui';
 import { Moon, Sun } from 'lucide-vue-next';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';

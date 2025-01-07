@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { STabs } from '@soybean-ui/vue';
-import type { TabsOption } from '@soybean-ui/vue';
+import { STabs } from 'soy-ui';
+import type { TabsOption } from 'soy-ui';
 
 const tabValue = ref('1');
 const tabValue2 = ref('1');

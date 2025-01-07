@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SToggleGroup } from '@soybean-ui/vue';
-import type { ToggleGroupItemData } from '@soybean-ui/vue';
+import { SToggleGroup } from 'soy-ui';
+import type { ToggleGroupItemData } from 'soy-ui';
 
 defineOptions({
   name: 'UiToggleGroup'
