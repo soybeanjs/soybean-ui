@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1-beta.3",
   "private": true,
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@9.15.3",
   "description": "soybean-ui is an ui library like shadcn for Vue3.",
   "author": {
     "name": "Soybean",
@@ -45,7 +45,7 @@
     "@vueuse/router": "12.3.0",
     "lucide-vue-next": "0.469.0",
     "soy-ui": "workspace:*",
-    "valibot": "1.0.0-beta.10",
+    "valibot": "1.0.0-beta.11",
     "vue": "3.5.13",
     "vue-router": "4.5.0"
   },

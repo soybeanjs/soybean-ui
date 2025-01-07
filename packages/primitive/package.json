@@ -27,8 +27,8 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@floating-ui/dom": "1.6.12",
-    "@floating-ui/vue": "1.1.5",
+    "@floating-ui/dom": "1.6.13",
+    "@floating-ui/vue": "1.1.6",
     "@internationalized/date": "3.6.0",
     "@internationalized/number": "3.6.0",
     "@tanstack/vue-virtual": "3.11.2",

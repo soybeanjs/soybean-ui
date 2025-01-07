@@ -22,8 +22,8 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@floating-ui/dom": "1.6.12",
-    "@floating-ui/vue": "1.1.5",
+    "@floating-ui/dom": "1.6.13",
+    "@floating-ui/vue": "1.1.6",
     "@formkit/auto-animate": "0.8.2",
     "@internationalized/date": "3.6.0",
     "@internationalized/number": "3.6.0",
