@@ -74,7 +74,8 @@
     "vue-tsc": "2.2.0"
   },
   "simple-git-hooks": {
-    "commit-msg": "pnpm soy git-commit-verify"
+    "commit-msg": "pnpm soy git-commit-verify",
+    "pre-commit": "pnpm typecheck && pnpm lint-staged"
   },
   "lint-staged": {
     "*": "eslint --fix"
