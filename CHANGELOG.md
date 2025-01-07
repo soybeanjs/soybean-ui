@@ -1,6 +1,26 @@
 # Changelog
 
 
+## [v0.0.1-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.3...v0.0.1-beta.4) (2025-01-07)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **projects**: rename package `@soybean-ui/primitive` to `@soybean-ui/primitives` &nbsp;-&nbsp; by **Soybean** [<samp>(c7827)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c7827da)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by **Soybean** [<samp>(4c86a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4c86a9e)
+- **projects**:
+  - ui: fix build types &nbsp;-&nbsp; by **Soybean** [<samp>(2baac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2baac64)
+  - sync change from radix-vue &nbsp;-&nbsp; by **Soybean** [<samp>(46596)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4659697)
+  - add pre-commit hook &nbsp;-&nbsp; by **Soybean** [<samp>(77903)</samp>](https://github.com/soybeanjs/soybean-ui/commit/779035a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.0.1-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.2...v0.0.1-beta.3) (2025-01-07)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
