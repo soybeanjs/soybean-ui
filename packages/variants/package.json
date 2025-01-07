@@ -1,6 +1,6 @@
 {
   "name": "@soybean-ui/variants",
-  "version": "0.0.1-beta.2",
+  "version": "0.0.1-beta.3",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

@@ -1,6 +1,116 @@
 # Changelog
 
 
+## [v0.0.1-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.2...v0.0.1-beta.3) (2025-01-07)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **packages**:
+  - ui: add toast &nbsp;-&nbsp; by @soybeanjs [<samp>(2ccf0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2ccf00f)
+  - ui: add command &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/48 [<samp>(68f5f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/68f5fe7)
+  - ui: add skeleton &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/49 [<samp>(0f56e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0f56ee9)
+  - ui: add slider &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/50 [<samp>(a7e87)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a7e87f5)
+  - ui: add button-link &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/51 [<samp>(5a5ab)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5a5ab21)
+  - ui: add link component &nbsp;-&nbsp; by @soybeanjs [<samp>(5d9f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5d9f31f)
+  - ui: add navigation-menu &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/52 [<samp>(0dd27)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0dd2738)
+  - ui: add menubar &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/54 [<samp>(1aed7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1aed783)
+  - ui: add context-menu &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/55 [<samp>(7238a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7238ad4)
+- **projects**:
+  - add combobox example &nbsp;-&nbsp; by @soybeanjs [<samp>(838dd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/838dd4c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**:
+  - fix generate style repeatly &nbsp;-&nbsp; by @soybeanjs [<samp>(7a2ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a2edf8)
+  - primitive: fix dialog prop bind &nbsp;-&nbsp; by @soybeanjs [<samp>(5fb62)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fb6218)
+  - ui: fix build type error &nbsp;-&nbsp; by @soybeanjs [<samp>(7a9d3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a9d39b)
+  - fix arrow &nbsp;-&nbsp; by @soybeanjs [<samp>(b2262)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b22623a)
+  - ui: fix tab export name &nbsp;-&nbsp; by @soybeanjs [<samp>(d9b3c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d9b3ca8)
+  - primitive: fix menu context &nbsp;-&nbsp; by @soybeanjs [<samp>(60121)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6012174)
+  - primitive: fix popper-anchor &nbsp;-&nbsp; by @soybeanjs [<samp>(ae162)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ae16262)
+  - fix menu content class &nbsp;-&nbsp; by @soybeanjs [<samp>(6c97c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6c97cfb)
+- **projects**:
+  - fix STabs export &nbsp;-&nbsp; by @soybeanjs [<samp>(e53c9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e53c92c)
+  - fix command example shortcut &nbsp;-&nbsp; by @soybeanjs [<samp>(940b3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/940b3f1)
+- **types**:
+  - ui: fix command type &nbsp;-&nbsp; by @soybeanjs [<samp>(fb701)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb70153)
+  - fix import types &nbsp;-&nbsp; by @soybeanjs [<samp>(db992)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db992d1)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **packages**:
+  - ui: optimize toast &nbsp;-&nbsp; by @soybeanjs [<samp>(1be49)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1be490c)
+  - optimize toast &nbsp;-&nbsp; by @soybeanjs [<samp>(e7610)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e761095)
+  - ui: optimize sheet &nbsp;-&nbsp; by @soybeanjs [<samp>(712dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/712dce3)
+  - ui: optimize drawer &nbsp;-&nbsp; by @soybeanjs [<samp>(a6513)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a651307)
+  - ui: optimize keyboardKey style &nbsp;-&nbsp; by @soybeanjs [<samp>(393ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/393edb7)
+  - ui: optimize `KeyboardKey` &nbsp;-&nbsp; by @soybeanjs [<samp>(00862)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0086206)
+  - ui: optimize `KeyboardKey` type &nbsp;-&nbsp; by @soybeanjs [<samp>(bc02d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bc02d26)
+  - ui: optimize popper and based popper &nbsp;-&nbsp; by @soybeanjs [<samp>(8289c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8289cb1)
+  - primitive: simplify components based on menu &nbsp;-&nbsp; by @soybeanjs [<samp>(5e383)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e38346)
+  - ui: add menu &nbsp;-&nbsp; by @soybeanjs [<samp>(ddbda)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ddbda8b)
+  - optimize menu &nbsp;-&nbsp; by @soybeanjs [<samp>(1113c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1113cf7)
+  - ui: add menu link icon &nbsp;-&nbsp; by @soybeanjs [<samp>(f4ffb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f4ffbf4)
+  - primitive: optimize menu &nbsp;-&nbsp; by @soybeanjs [<samp>(b92d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b92d013)
+  - optimize menubar &nbsp;-&nbsp; by @soybeanjs [<samp>(ac832)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ac832a7)
+- **projects**:
+  - optimize form &nbsp;-&nbsp; by @soybeanjs [<samp>(65a25)</samp>](https://github.com/soybeanjs/soybean-ui/commit/65a2501)
+  - projects example dropdown-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(87391)</samp>](https://github.com/soybeanjs/soybean-ui/commit/87391fb)
+  - remove empty style tag &nbsp;-&nbsp; by @soybeanjs [<samp>(8840c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8840ce3)
+- **types**:
+  - optimize types &nbsp;-&nbsp; by @soybeanjs [<samp>(2b64a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b64a49)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **packages**:
+  - rename `ui-variants` to `variants` &nbsp;-&nbsp; by @soybeanjs [<samp>(f5fb1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5fb180)
+  - ui: refactor `command` use `Listbox` &nbsp;-&nbsp; by @soybeanjs [<samp>(207bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/207bc1e)
+  - ui: refactor card &nbsp;-&nbsp; by @soybeanjs [<samp>(ab988)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ab98893)
+  - ui: refactor `KeyboardKey` &nbsp;-&nbsp; by @soybeanjs [<samp>(3966f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3966f3a)
+  - ui: refactor dropdown-menu by menu &nbsp;-&nbsp; by @soybeanjs [<samp>(e1f99)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e1f99de)
+- **projects**:
+  - use `valibot` replace `zod` and optimize `Form` &nbsp;-&nbsp; by @soybeanjs [<samp>(6f9ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6f9ed87)
+  - rename ui package name to `soy-ui` &nbsp;-&nbsp; by @soybeanjs [<samp>(75ee1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75ee1f9)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**:
+  - update docs &nbsp;-&nbsp; by @soybeanjs [<samp>(836cd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/836cda4)
+  - update docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(6a917)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6a917e2)
+- **styles**:
+  - fix border style &nbsp;-&nbsp; by @soybeanjs [<samp>(d6fb1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d6fb1a1)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(dd989)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd9898c)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(1753a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1753ab3)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(2db9b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2db9ba2)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4b447)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4b447f3)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(93e05)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93e053c)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(f627a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f627ad6)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(99574)</samp>](https://github.com/soybeanjs/soybean-ui/commit/99574d7)
+- **projects**:
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(bf23f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bf23fd4)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(0ff74)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0ff74f6)
+  - update script &nbsp;-&nbsp; by @soybeanjs [<samp>(aeb91)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aeb91a8)
+  - update package name &nbsp;-&nbsp; by @soybeanjs [<samp>(9fb14)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9fb140e)
+  - rename reka &nbsp;-&nbsp; by @soybeanjs [<samp>(fcd17)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fcd17e2)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(ab1ac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ab1acc9)
+  - update docs scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(48afd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/48afd5f)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(75a6e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75a6e18)
+  - update pkg version &nbsp;-&nbsp; by @soybeanjs [<samp>(7acd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7acd406)
+  - update pnpm-lock &nbsp;-&nbsp; by @soybeanjs [<samp>(7be19)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7be1940)
+  - add scripts `generate` &nbsp;-&nbsp; by @soybeanjs [<samp>(5f98c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5f98cfd)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **packages**: ui: fix pagination style &nbsp;-&nbsp; by @soybeanjs [<samp>(7533d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7533dcc)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.1...v0.0.1-beta.2) (2024-12-07)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
