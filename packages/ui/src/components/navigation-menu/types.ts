@@ -12,7 +12,7 @@ import type {
   NavigationMenuViewportProps,
   NavigationMenuLinkProps as _NavigationMenuLinkProps,
   NavigationMenuTriggerProps as _NavigationMenuTriggerProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { LinkProps } from '../link';
 
 export interface NavigationMenuTriggerProps extends _NavigationMenuTriggerProps {

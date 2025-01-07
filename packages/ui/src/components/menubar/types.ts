@@ -7,7 +7,7 @@ import type {
   MenubarRootProps,
   MenubarTriggerProps,
   MenubarMenuProps as _MenubarMenuProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '../../types';
 import type {
   MenuEmits,

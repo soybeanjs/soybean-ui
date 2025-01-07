@@ -27,7 +27,7 @@
     "@formkit/auto-animate": "0.8.2",
     "@internationalized/date": "3.6.0",
     "@internationalized/number": "3.6.0",
-    "@soybean-ui/primitive": "workspace:*",
+    "@soybean-ui/primitives": "workspace:*",
     "@soybean-ui/variants": "workspace:*",
     "@tanstack/vue-virtual": "3.11.2",
     "@vueuse/core": "12.3.0",

@@ -8,7 +8,7 @@ import {
   useForwardProps,
   useOmitEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SPopoverContent from './popover-content.vue';
 import SPopoverArrow from './popover-arrow.vue';
 import type { PopoverEmits, PopoverProps } from './types';

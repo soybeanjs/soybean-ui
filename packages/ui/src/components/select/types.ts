@@ -10,7 +10,7 @@ import type {
   SelectLabelProps as _SelectLabelProps,
   SelectTriggerProps as _SelectTriggerProps,
   SelectViewportProps as _SelectViewportProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { SelectPosition, ThemeSize } from '@soybean-ui/variants';
 
 export interface SelectTriggerProps extends _SelectTriggerProps {

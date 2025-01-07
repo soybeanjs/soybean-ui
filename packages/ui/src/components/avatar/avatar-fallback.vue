@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarFallback } from '@soybean-ui/primitive';
+import { AvatarFallback } from '@soybean-ui/primitives';
 import { avatarVariants, cn } from '@soybean-ui/variants';
 import type { AvatarFallbackProps } from './types';
 

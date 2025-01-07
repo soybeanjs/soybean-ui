@@ -5,7 +5,7 @@ import {
   TooltipRoot,
   TooltipTrigger,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import STooltipContent from './tooltip-content.vue';
 import STooltipArrow from './tooltip-arrow.vue';
 import type { TooltipEmits, TooltipProps } from './types';

@@ -1,7 +1,7 @@
 import type {
   ToggleGroupItemProps as _ToggleGroupItemProps,
   ToggleGroupRootProps as _ToggleGroupRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ToggleVariant } from '@soybean-ui/variants';
 import type { ThemeSize } from '../../types';
 

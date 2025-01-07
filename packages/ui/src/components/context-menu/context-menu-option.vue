@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { ContextMenuGroup, ContextMenuPortal, ContextMenuSub, useEmitAsProps } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { ContextMenuGroup, ContextMenuPortal, ContextMenuSub, useEmitAsProps } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SContextMenuLabel from '../menu/menu-label.vue';
 import SContextMenuSeparator from '../menu/menu-separator.vue';
 import SContextMenuItem from '../menu/menu-item.vue';

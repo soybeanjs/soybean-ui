@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DrawerOverlay } from '@soybean-ui/primitive';
+import { DrawerOverlay } from '@soybean-ui/primitives';
 import { cn, drawerVariants } from '@soybean-ui/variants';
 import type { DrawerOverlayProps } from './types';
 

@@ -3,7 +3,7 @@ import type {
   CollapsibleContentProps,
   CollapsibleRootEmits,
   CollapsibleRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface CollapsibleProps extends CollapsibleRootProps {
   contentClass?: ClassValue;

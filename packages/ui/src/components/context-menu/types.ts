@@ -6,7 +6,7 @@ import type {
   ContextMenuRootEmits,
   ContextMenuRootProps,
   ContextMenuSubContentProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type {
   MenuOptionEmits as ContextMenuOptionEmits,
   MenuOptionProps as ContextMenuOptionProps,

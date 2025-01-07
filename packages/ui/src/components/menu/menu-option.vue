@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { MenuGroup, MenuPortal, MenuSub, useEmitAsProps } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { MenuGroup, MenuPortal, MenuSub, useEmitAsProps } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SMenuLabel from './menu-label.vue';
 import SMenuSeparator from './menu-separator.vue';
 import SMenuItem from './menu-item.vue';

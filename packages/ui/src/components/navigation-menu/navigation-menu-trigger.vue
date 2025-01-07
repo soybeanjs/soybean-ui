@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuTrigger } from '@soybean-ui/primitive';
+import { NavigationMenuTrigger } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuTriggerProps } from './types';
 import SNavigationMenuTriggerIcon from './navigation-menu-trigger-icon.vue';

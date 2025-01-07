@@ -6,7 +6,7 @@ import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SDialogOverlay from './dialog-overlay.vue';
 import SDialogContent from './dialog-content.vue';
 import SDialogHeader from './dialog-header.vue';

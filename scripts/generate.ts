@@ -30,7 +30,7 @@ function getVueTemplate(componentName: string, module: string) {
 
   return `<script setup lang="ts">
 import { computed } from 'vue';
-import { ${cpName} } from '@soybean-ui/primitive';
+import { ${cpName} } from '@soybean-ui/primitives';
 import { ${module}Variants, cn } from '@soybean-ui/variants';
 import type { ${cpName}Props } from './types';
 

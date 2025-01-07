@@ -1,1 +1,1 @@
-export type { AspectRatioProps } from '@soybean-ui/primitive';
+export type { AspectRatioProps } from '@soybean-ui/primitives';

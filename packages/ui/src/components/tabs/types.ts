@@ -7,7 +7,7 @@ import type {
   TabsContentProps as _TabsContentProps,
   TabsListProps as _TabsListProps,
   TabsTriggerProps as _TabsTriggerProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeOrientation } from '../../types';
 
 export interface TabsListProps extends _TabsListProps {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertDialogOverlay } from '@soybean-ui/primitive';
+import { AlertDialogOverlay } from '@soybean-ui/primitives';
 import { alertDialogVariants, cn } from '@soybean-ui/variants';
 import type { AlertDialogOverlayProps } from './types';
 

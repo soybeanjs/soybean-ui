@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ListboxContent, useForwardProps } from '@soybean-ui/primitive';
+import { ListboxContent, useForwardProps } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandListProps } from './types';
 

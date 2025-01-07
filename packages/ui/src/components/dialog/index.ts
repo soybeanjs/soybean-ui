@@ -2,7 +2,7 @@ import {
   DialogPortal as SDialogPortal,
   DialogRoot as SDialogRoot,
   DialogTrigger as SDialogTrigger
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SDialog from './dialog.vue';
 import SDialogOverlay from './dialog-overlay.vue';
 import SDialogContent from './dialog-content.vue';

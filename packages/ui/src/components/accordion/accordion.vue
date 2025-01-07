@@ -3,7 +3,7 @@
   lang="ts"
   generic="T extends AccordionItemData = AccordionItemData, V extends string | string[] = string | string[]"
 >
-import { AccordionRoot, useCombinedPropsEmits, useOmitForwardProps } from '@soybean-ui/primitive';
+import { AccordionRoot, useCombinedPropsEmits, useOmitForwardProps } from '@soybean-ui/primitives';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionContent from './accordion-content.vue';

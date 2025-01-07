@@ -1,5 +1,5 @@
 import type { TextareaResize, ThemeSize } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 
 export interface TextareaRootProps extends ClassValueProp {}
 

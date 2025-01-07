@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverArrow, useForwardProps } from '@soybean-ui/primitive';
+import { PopoverArrow, useForwardProps } from '@soybean-ui/primitives';
 import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { PopoverArrowProps } from './types';
 

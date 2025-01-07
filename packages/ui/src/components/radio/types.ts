@@ -5,7 +5,7 @@ import type {
   RadioGroupIndicatorProps,
   RadioGroupRootProps,
   RadioGroupItemProps as _RadioControlProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface RadioIndicatorProps extends RadioGroupIndicatorProps {

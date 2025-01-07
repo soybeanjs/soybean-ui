@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectTrigger } from '@soybean-ui/primitive';
+import { SelectTrigger } from '@soybean-ui/primitives';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectTriggerProps } from './types';
 

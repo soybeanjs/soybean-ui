@@ -4,8 +4,8 @@ import {
   useOmitEmitAsProps,
   useOmitForwardProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SMenubarRoot from './menubar-root.vue';
 import SMenubarMenu from './menubar-menu.vue';
 import type { MenubarEmits, MenubarProps } from './types';

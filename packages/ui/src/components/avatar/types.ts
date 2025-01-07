@@ -4,7 +4,7 @@ import type {
   AvatarImageProps,
   ClassValue,
   AvatarRootProps as _AvatarRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 
 export type AvatarRootProps = _AvatarRootProps & {

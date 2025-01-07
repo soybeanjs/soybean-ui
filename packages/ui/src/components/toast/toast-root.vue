@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { ToastRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, toastVariants } from '@soybean-ui/variants';
 import type { ToastRootEmits, ToastRootProps } from './types';
 

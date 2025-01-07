@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '@soybean-ui/primitive';
+import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import SSliderRoot from './slider-root.vue';
 import SSliderTrack from './slider-track.vue';
 import SSliderRange from './slider-range.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Toggle, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { Toggle, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, toggleVariants } from '@soybean-ui/variants';
 import type { ToggleEmits, ToggleProps } from './types';
 

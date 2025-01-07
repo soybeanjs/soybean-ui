@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RadioGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
-import type { RadioGroupRootEmits } from '@soybean-ui/primitive';
+import { RadioGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
+import type { RadioGroupRootEmits } from '@soybean-ui/primitives';
 import { cn, radioVariants } from '@soybean-ui/variants';
 import type { RadioGroupProps } from './types';
 import SRadio from './radio.vue';

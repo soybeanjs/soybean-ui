@@ -1,4 +1,4 @@
-import type { ClassValue, ClassValueProp, SeparatorProps as _SeparatorProps } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp, SeparatorProps as _SeparatorProps } from '@soybean-ui/primitives';
 import type { SeparatorBorder } from '@soybean-ui/variants';
 import type { ThemeAlign, ThemeOrientation } from '../../types';
 

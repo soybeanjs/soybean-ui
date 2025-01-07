@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PaginationPrev, useForwardProps } from '@soybean-ui/primitive';
+import { PaginationPrev, useForwardProps } from '@soybean-ui/primitives';
 import { ChevronLeft } from 'lucide-vue-next';
 import SPaginationButton from './pagination-button.vue';
 import type { PaginationPrevProps } from './types';

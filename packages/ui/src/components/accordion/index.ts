@@ -1,4 +1,4 @@
-import { AccordionRoot as SAccordionRoot } from '@soybean-ui/primitive';
+import { AccordionRoot as SAccordionRoot } from '@soybean-ui/primitives';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionTrigger from './accordion-trigger.vue';

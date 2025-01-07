@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectIcon } from '@soybean-ui/primitive';
+import { SelectIcon } from '@soybean-ui/primitives';
 import { ChevronsUpDown } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectIconProps } from './types';

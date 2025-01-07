@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { useForwardPropsEmits } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { useForwardPropsEmits } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SCheckboxGroupRoot from './checkbox-group-root.vue';
 import SCheckbox from './checkbox.vue';
 import type { CheckboxGroupEmits, CheckboxGroupProps } from './types';

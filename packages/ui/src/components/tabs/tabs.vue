@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends TabsOption = TabsOption">
-import { useForwardPropsEmits } from '@soybean-ui/primitive';
+import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';

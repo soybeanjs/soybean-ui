@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { PopoverContent, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { PopoverContentEmits, PopoverContentProps } from './types';
 

@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue';
 import type { Ref } from 'vue';
-import { useContext } from '@soybean-ui/primitive';
+import { useContext } from '@soybean-ui/primitives';
 import type { Action, ToastContext, ToastContextParams, ToastState } from './types';
 
 export const [provideToastContext, injectToastContext] = useContext('ToastContext', (params: ToastContextParams) => {

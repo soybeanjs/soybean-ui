@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ListboxFilter, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { ListboxFilter, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandInputEmits, CommandInputProps } from './types';
 

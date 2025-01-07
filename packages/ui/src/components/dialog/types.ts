@@ -10,7 +10,7 @@ import type {
   DialogRootEmits,
   DialogRootProps,
   DialogTitleProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface DialogHeaderProps extends ClassValueProp {}
 

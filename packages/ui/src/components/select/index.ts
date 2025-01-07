@@ -4,7 +4,7 @@ import {
   SelectPortal as SSelectPortal,
   SelectRoot as SSelectRoot,
   SelectValue as SSelectValue
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
 import SSelectViewport from './select-viewport.vue';

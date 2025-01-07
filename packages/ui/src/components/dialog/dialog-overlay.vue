@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogOverlay } from '@soybean-ui/primitive';
+import { DialogOverlay } from '@soybean-ui/primitives';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { DialogOverlayProps } from './types';
 

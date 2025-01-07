@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { HoverCardContent, useForwardProps } from '@soybean-ui/primitive';
+import { HoverCardContent, useForwardProps } from '@soybean-ui/primitives';
 import { cn, hoverCardVariants } from '@soybean-ui/variants';
 import type { HoverCardContentProps } from './types';
 

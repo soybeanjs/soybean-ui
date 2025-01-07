@@ -6,7 +6,7 @@ import type {
   DialogTitleProps,
   DrawerRootEmits,
   DrawerRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface DrawerOverlayProps extends ClassValueProp {}
 

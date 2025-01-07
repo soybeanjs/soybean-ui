@@ -1,4 +1,4 @@
-import { PaginationRoot as SPaginationRoot } from '@soybean-ui/primitive';
+import { PaginationRoot as SPaginationRoot } from '@soybean-ui/primitives';
 import SPaginationList from './pagination-list.vue';
 import SPaginationListItem from './pagination-list-item.vue';
 import SPaginationFirst from './pagination-first.vue';

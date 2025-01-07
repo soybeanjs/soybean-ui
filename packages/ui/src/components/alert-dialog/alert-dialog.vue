@@ -10,7 +10,7 @@ import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogHeader from './alert-dialog-header.vue';

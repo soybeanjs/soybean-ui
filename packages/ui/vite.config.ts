@@ -10,14 +10,14 @@ export default defineConfig({
     vueJsx(),
     dts({
       cleanVueFileName: true,
-      bundledPackages: ['@soybean-ui/primitive'],
+      bundledPackages: ['@soybean-ui/primitives'],
       rollupTypes: true,
       include: 'src/**/*'
     })
   ],
   build: {
     lib: {
-      name: 'soybean-ui',
+      name: 'soy-ui',
       entry: {
         index: fileURLToPath(new URL('src/index.ts', import.meta.url))
       },

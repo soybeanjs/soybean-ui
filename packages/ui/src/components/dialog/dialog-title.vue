@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogTitle } from '@soybean-ui/primitive';
+import { DialogTitle } from '@soybean-ui/primitives';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { DialogTitleProps } from './types';
 

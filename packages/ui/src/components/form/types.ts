@@ -1,5 +1,5 @@
 import type { RuleExpression } from 'vee-validate';
-import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValueProp } from '@soybean-ui/primitives';
 import type { LabelProps } from '../label';
 
 export interface FormItemProps extends ClassValueProp {}

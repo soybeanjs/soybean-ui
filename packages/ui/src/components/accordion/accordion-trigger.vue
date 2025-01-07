@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionTrigger, useForwardProps } from '@soybean-ui/primitive';
+import { AccordionTrigger, useForwardProps } from '@soybean-ui/primitives';
 import { ChevronDown } from 'lucide-vue-next';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionTriggerProps } from './types';

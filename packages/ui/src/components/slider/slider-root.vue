@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SliderRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { SliderRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, sliderVariants } from '@soybean-ui/variants';
 import type { SliderRootEmits, SliderRootProps } from './types';
 

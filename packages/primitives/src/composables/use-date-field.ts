@@ -3,7 +3,7 @@ import type { Ref } from 'vue';
 import type { CalendarDateTime, CycleTimeOptions, DateFields, DateValue, TimeFields } from '@internationalized/date';
 import { getDaysInMonth, isAcceptableSegmentKey, isNumberString, isSegmentNavigationKey, toDate } from '../date';
 import type { AnyExceptLiteral, DateFormatter, HourCycle, SegmentPart, SegmentValueObj } from '../date';
-import { useKbd } from '../composables/use-kbd';
+import { useKbd } from './use-kbd';
 
 type MinuteSecondIncrementProps = {
   e: KeyboardEvent;

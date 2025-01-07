@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits, useOmitForwardProps } from '@soybean-ui/primitive';
+import { useForwardPropsEmits, useOmitForwardProps } from '@soybean-ui/primitives';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';

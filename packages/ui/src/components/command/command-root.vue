@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
-import { ListboxRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { ListboxRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandRootEmits, CommandRootProps } from './types';
 

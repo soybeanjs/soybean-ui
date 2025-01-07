@@ -6,7 +6,7 @@ import type {
   DialogPortalProps as SheetPortalProps,
   DialogRootEmits as SheetRootEmits,
   DialogRootProps as SheetRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { SheetSide } from '@soybean-ui/variants';
 
 export interface SheetContentProps extends DialogContentProps {

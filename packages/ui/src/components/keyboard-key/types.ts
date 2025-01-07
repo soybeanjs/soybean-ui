@@ -1,4 +1,4 @@
-import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { KeyboardKeyVariant, ThemeSize } from '@soybean-ui/variants';
 
 export type BuiltinKeyboardKey =

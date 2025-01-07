@@ -2,7 +2,7 @@ import {
   NavigationMenuItem as SNavigationMenuItem,
   NavigationMenuLink as SNavigationMenuLink,
   NavigationMenuSub as SNavigationMenuSub
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';
 import SNavigationMenuList from './navigation-menu-list.vue';

@@ -1,4 +1,4 @@
-import type { AcceptableValue, DropdownMenuRootEmits, DropdownMenuRootProps } from '@soybean-ui/primitive';
+import type { AcceptableValue, DropdownMenuRootEmits, DropdownMenuRootProps } from '@soybean-ui/primitives';
 import type {
   MenuCheckboxEmits,
   MenuCheckboxProps,

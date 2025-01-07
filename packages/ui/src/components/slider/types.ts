@@ -5,7 +5,7 @@ import type {
   SliderRangeProps as _SliderRangeProps,
   SliderThumbProps as _SliderThumbProps,
   SliderTrackProps as _SliderTrackProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor } from '../../types';
 
 export interface SliderTrackProps extends _SliderTrackProps {

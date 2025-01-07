@@ -9,7 +9,7 @@ import type {
   AlertDialogTitleProps,
   ClassValue,
   ClassValueProp
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor } from '@soybean-ui/variants';
 
 export type AlertType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;

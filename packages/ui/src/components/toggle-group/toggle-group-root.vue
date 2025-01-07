@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends string | string[] = string | string[]">
 import { computed } from 'vue';
-import { ToggleGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { ToggleGroupRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, toggleVariants } from '@soybean-ui/variants';
 import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';
 

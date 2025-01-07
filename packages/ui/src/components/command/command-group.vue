@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ListboxGroup } from '@soybean-ui/primitive';
+import { ListboxGroup } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandGroupProps } from './types';
 

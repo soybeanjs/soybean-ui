@@ -9,7 +9,7 @@ import type {
   ClassValueProp,
   SingleOrMultipleType,
   AccordionTriggerProps as _AccordionTriggerProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface AccordionTriggerProps extends _AccordionTriggerProps {
   triggerIconClass?: ClassValue;

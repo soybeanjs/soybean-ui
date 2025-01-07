@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ScrollAreaRoot, useForwardProps } from '@soybean-ui/primitive';
+import { ScrollAreaRoot, useForwardProps } from '@soybean-ui/primitives';
 import { cn, scrollAreaVariants } from '@soybean-ui/variants';
 import type { ScrollAreaRootProps } from './types';
 

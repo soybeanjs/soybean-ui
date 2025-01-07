@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenuItem, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { MenuItem, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import { SLink } from '../link';
 import type { MenuItemLinkEmits, MenuItemLinkProps } from './types';

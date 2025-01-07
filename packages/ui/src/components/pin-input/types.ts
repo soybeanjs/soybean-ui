@@ -4,7 +4,7 @@ import type {
   PinInputRootEmits,
   PinInputRootProps,
   PinInputInputProps as _PinInputInputProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 
 export interface PinInputInputRootProps extends ClassValueProp {

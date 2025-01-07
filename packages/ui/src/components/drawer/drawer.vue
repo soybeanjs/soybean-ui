@@ -6,7 +6,7 @@ import {
   DrawerTrigger,
   useForwardPropsEmits,
   useOmitForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import { SDialogClose, SDialogDescription, SDialogHeader, SDialogTitle } from '../dialog';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';

@@ -1,5 +1,5 @@
 import type { AlertVariant, ThemeColor } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 
 export type AlertRootProps = ClassValueProp & {
   color?: ThemeColor;

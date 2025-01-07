@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TooltipContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { TooltipContent, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, tooltipVariants } from '@soybean-ui/variants';
 import type { TooltipContentEmits, TooltipContentProps } from './types';
 

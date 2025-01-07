@@ -1,5 +1,5 @@
 import type { Component } from 'vue';
-import type { AnchorTarget, ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { AnchorTarget, ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 
 export interface BreadcrumbRootProps extends ClassValueProp {

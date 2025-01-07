@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardProps } from '@soybean-ui/primitive';
+import { useForwardProps } from '@soybean-ui/primitives';
 import { SLink } from '../link';
 import SButton from './button.vue';
 import type { ButtonLinkProps } from './types';

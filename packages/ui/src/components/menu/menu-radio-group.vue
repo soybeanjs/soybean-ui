@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
-import { MenuRadioGroup } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { MenuRadioGroup } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SMenuLabel from './menu-label.vue';
 import SMenuRadioItem from './menu-radio-item.vue';
 import SMenuShortcut from './menu-shortcut.vue';

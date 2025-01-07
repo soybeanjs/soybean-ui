@@ -9,7 +9,7 @@ import type {
   ToastActionProps as _ToastActionProps,
   ToastProviderProps as _ToastProviderProps,
   ToastRootProps as _ToastRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor } from '../../types';
 import type { ButtonProps } from '../button';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarRoot } from '@soybean-ui/primitive';
+import { AvatarRoot } from '@soybean-ui/primitives';
 import { avatarVariants, cn } from '@soybean-ui/variants';
 import type { AvatarRootProps } from './types';
 

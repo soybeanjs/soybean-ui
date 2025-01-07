@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
-import { useForwardPropsEmits } from '@soybean-ui/primitive';
+import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import SSwitchRoot from './switch-root.vue';
 import SSwitchThumb from './switch-thumb.vue';
 import type { SwitchEmits, SwitchProps } from './types';

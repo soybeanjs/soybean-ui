@@ -6,7 +6,7 @@ import type {
   ThemeOrientation,
   ThemeSize
 } from '@soybean-ui/variants';
-import type { ClassValueProp, PrimitiveProps } from '@soybean-ui/primitive';
+import type { ClassValueProp, PrimitiveProps } from '@soybean-ui/primitives';
 import type { LinkProps } from '../link';
 
 export interface ButtonProps extends ClassValueProp {

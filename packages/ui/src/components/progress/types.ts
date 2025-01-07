@@ -3,7 +3,7 @@ import type {
   ClassValueProp,
   ProgressRootEmits,
   ProgressRootProps as _ProgressRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface ProgressRootProps extends _ProgressRootProps {

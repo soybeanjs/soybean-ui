@@ -1,5 +1,5 @@
 import type { ChipPosition } from '@soybean-ui/variants';
-import type { ClassValue, ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { ThemeColor, ThemeSize } from '../../types';
 
 export interface ChipRootProps extends ClassValueProp {}

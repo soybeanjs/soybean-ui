@@ -19,7 +19,7 @@ import type {
   ListboxRootEmits,
   ListboxRootProps,
   SelectEvent
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { InputProps } from '../input';
 
 // CommandRoot

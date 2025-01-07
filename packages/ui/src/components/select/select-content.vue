@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SelectContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { SelectContent, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, selectVariants } from '@soybean-ui/variants';
 import type { SelectContentEmits, SelectContentProps } from './types';
 

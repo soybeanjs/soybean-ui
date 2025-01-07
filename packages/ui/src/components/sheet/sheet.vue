@@ -7,7 +7,7 @@ import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import {
   SDialogClose,
   SDialogDescription,

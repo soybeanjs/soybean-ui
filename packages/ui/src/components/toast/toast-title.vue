@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastTitle } from '@soybean-ui/primitive';
+import { ToastTitle } from '@soybean-ui/primitives';
 import { cn, toastVariants } from '@soybean-ui/variants';
 import type { ToastTitleProps } from './types';
 

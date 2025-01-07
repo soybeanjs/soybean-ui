@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ChevronDown } from 'lucide-vue-next';
-import { Slot } from '@soybean-ui/primitive';
+import { Slot } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuTriggerIconProps } from './types';
 

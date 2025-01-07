@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
-import { useForwardProps } from '@soybean-ui/primitive';
+import { useForwardProps } from '@soybean-ui/primitives';
 import { Toaster } from 'vue-sonner';
 import type { SonnerProps } from './types';
 

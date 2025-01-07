@@ -5,7 +5,7 @@ import type {
   HoverCardPortalProps,
   HoverCardRootEmits,
   HoverCardRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export type HoverCardProps = HoverCardRootProps &
   Pick<HoverCardPortalProps, 'to'> &

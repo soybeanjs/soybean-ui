@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PaginationList } from '@soybean-ui/primitive';
+import { PaginationList } from '@soybean-ui/primitives';
 import { cn, paginationVariants } from '@soybean-ui/variants';
 import type { PaginationListProps } from './types';
 

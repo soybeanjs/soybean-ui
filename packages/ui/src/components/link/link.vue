@@ -2,7 +2,7 @@
 import type { ComputedRef } from 'vue';
 import { RouterLink } from 'vue-router';
 import type { RouterLinkProps } from 'vue-router';
-import { usePickForwardProps } from '@soybean-ui/primitive';
+import { usePickForwardProps } from '@soybean-ui/primitives';
 import type { LinkProps } from './types';
 import SAnchorLink from './anchor-link.vue';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PinInputRoot, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { PinInputRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
 import type { PinInputRootEmits, PinInputRootProps } from './types';
 
 defineOptions({

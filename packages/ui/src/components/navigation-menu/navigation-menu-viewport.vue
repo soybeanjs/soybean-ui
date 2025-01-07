@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuViewport, useForwardProps } from '@soybean-ui/primitive';
+import { NavigationMenuViewport, useForwardProps } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuViewportProps } from './types';
 

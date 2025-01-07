@@ -1,5 +1,5 @@
 import type { ThemeSize } from '@soybean-ui/variants';
-import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValueProp } from '@soybean-ui/primitives';
 
 export interface InputProps extends ClassValueProp {
   defaultValue?: string;

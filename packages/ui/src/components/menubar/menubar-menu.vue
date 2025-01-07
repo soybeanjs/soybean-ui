@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
-import { MenubarMenu, useCombinedPropsEmits, useEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import { MenubarMenu, useCombinedPropsEmits, useEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import type { MenuOptionData } from '../menu/types';
 import SMenubarTriggerOption from './menubar-trigger-option.vue';
 import SMenubarItem from './menubar-item.vue';

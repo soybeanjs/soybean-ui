@@ -1,4 +1,4 @@
-import type { ClassValue, ClassValueProp, SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitive';
+import type { ClassValue, ClassValueProp, SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitives';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface SwitchRootProps extends _SwitchRootProps {

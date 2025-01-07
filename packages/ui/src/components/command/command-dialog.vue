@@ -6,7 +6,7 @@ import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import { SDialogClose, SDialogContent, SDialogOverlay } from '../dialog';
 import type { CommandDialogEmits, CommandDialogProps } from './types';

@@ -5,7 +5,7 @@ import {
   useOmitEmitAsProps,
   useOmitForwardProps,
   usePickEmitAsProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
 import SNavigationMenuViewportRoot from './navigation-menu-viewport-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';

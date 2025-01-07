@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenuCheckboxItem, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { MenuCheckboxItem, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { Check } from 'lucide-vue-next';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import SMenuItemIndicator from './menu-item-indicator.vue';

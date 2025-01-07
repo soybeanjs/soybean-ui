@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PinInputInput, useForwardProps } from '@soybean-ui/primitive';
+import { PinInputInput, useForwardProps } from '@soybean-ui/primitives';
 import { cn, pinInputVariants } from '@soybean-ui/variants';
 import type { PinInputInputProps } from './types';
 

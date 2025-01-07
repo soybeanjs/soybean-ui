@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToggleGroupItem, useForwardProps } from '@soybean-ui/primitive';
+import { ToggleGroupItem, useForwardProps } from '@soybean-ui/primitives';
 import { cn, toggleVariants } from '@soybean-ui/variants';
 import type { ToggleGroupItemProps } from './types';
 

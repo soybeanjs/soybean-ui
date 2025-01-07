@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from '@soybean-ui/primitive';
+import { Primitive, useForwardProps } from '@soybean-ui/primitives';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbLinkProps } from './types';
 

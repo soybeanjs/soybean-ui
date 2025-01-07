@@ -9,7 +9,7 @@ import type {
   PaginationListItemProps as _PaginationListItemProps,
   PaginationNextProps as _PaginationNextProps,
   PaginationPrevProps as _PaginationPrevProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ButtonVariant } from '../button/types';
 

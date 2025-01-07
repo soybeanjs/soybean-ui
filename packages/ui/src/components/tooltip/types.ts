@@ -8,7 +8,7 @@ import type {
   TooltipPortalProps,
   TooltipRootEmits,
   TooltipRootProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export type TooltipProps = TooltipRootProps &
   Pick<TooltipPortalProps, 'to'> &

@@ -3,7 +3,7 @@
   lang="ts"
   generic="T extends ToggleGroupItemData = ToggleGroupItemData, V extends string | string[] = string | string[]"
 >
-import { useForwardPropsEmits } from '@soybean-ui/primitive';
+import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import SToggleGroupRoot from './toggle-group-root.vue';
 import SToggleGroupItem from './toggle-group-item.vue';
 import type { ToggleGroupEmits, ToggleGroupItemData, ToggleGroupProps } from './types';

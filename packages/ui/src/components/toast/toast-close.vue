@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastClose } from '@soybean-ui/primitive';
+import { ToastClose } from '@soybean-ui/primitives';
 import { cn, toastVariants } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
 import { SButtonIcon } from '../button';

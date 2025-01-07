@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SelectItemText } from '@soybean-ui/primitive';
+import { SelectItemText } from '@soybean-ui/primitives';
 import SSelectItem from './select-item.vue';
 import SSelectItemIndicator from './select-item-indicator.vue';
 import SSelectSeparator from './select-separator.vue';

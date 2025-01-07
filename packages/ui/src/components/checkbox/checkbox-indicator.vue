@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CheckboxIndicator } from '@soybean-ui/primitive';
+import { CheckboxIndicator } from '@soybean-ui/primitives';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxIndicatorProps } from './types';
 

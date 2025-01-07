@@ -6,7 +6,7 @@ import type {
   TabsTriggerProps as SegmentTriggerProps,
   TabsListProps as SegmentTriggerRootProps,
   StringOrNumber
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export type SegmentIndicatorRootProps = ClassValueProp;
 

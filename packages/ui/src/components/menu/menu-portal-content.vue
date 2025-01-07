@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MenuPortal, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { MenuPortal, useForwardPropsEmits } from '@soybean-ui/primitives';
 import SMenuContent from './menu-content.vue';
 import SMenuArrow from './menu-arrow.vue';
 import type { MenuPortalContentEmits, MenuPortalContentProps } from './types';

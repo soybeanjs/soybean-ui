@@ -6,8 +6,8 @@ import {
   useOmitForwardProps,
   usePickEmitAsProps,
   usePickForwardProps
-} from '@soybean-ui/primitive';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import type { MenuOptionData } from '../menu/types';
 import SMenubarPortalContent from './menubar-portal-content.vue';
 import SMenubarOption from './menubar-option.vue';

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContextMenuPortal, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { ContextMenuPortal, useForwardPropsEmits } from '@soybean-ui/primitives';
 import ContextMenuArrow from '../menu/menu-arrow.vue';
 import ContextMenuContent from './context-menu-content.vue';
 import type { ContextMenuPortalContentEmits, ContextMenuPortalContentProps } from './types';

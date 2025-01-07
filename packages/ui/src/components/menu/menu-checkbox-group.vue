@@ -1,8 +1,8 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { ref, watch } from 'vue';
 import type { Ref } from 'vue';
-import { MenuGroup } from '@soybean-ui/primitive';
-import type { AcceptableValue, CheckAction } from '@soybean-ui/primitive';
+import { MenuGroup } from '@soybean-ui/primitives';
+import type { AcceptableValue, CheckAction } from '@soybean-ui/primitives';
 import SMenuLabel from './menu-label.vue';
 import SMenuCheckboxItem from './menu-checkbox-item.vue';
 import SMenuShortcut from './menu-shortcut.vue';

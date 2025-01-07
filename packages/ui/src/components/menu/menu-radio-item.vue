@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenuRadioItem, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { MenuRadioItem, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import SMenuItemIndicator from './menu-item-indicator.vue';
 import SMenuRadioIndicatorIcon from './menu-radio-indicator-icon.vue';

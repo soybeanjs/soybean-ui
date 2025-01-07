@@ -4,7 +4,7 @@ import type {
   ScrollAreaRootProps,
   ScrollAreaScrollbarProps,
   ScrollAreaViewportProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface ScrollAreaThumbProps extends ClassValueProp {}
 

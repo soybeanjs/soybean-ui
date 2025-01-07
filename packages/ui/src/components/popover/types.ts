@@ -9,7 +9,7 @@ import type {
   PopoverRootEmits,
   PopoverRootProps,
   Side
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export type PopoverProps = PopoverRootProps &
   Pick<PopoverPortalProps, 'to'> &

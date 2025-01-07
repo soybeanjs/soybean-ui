@@ -13,6 +13,6 @@ soybean-primitive is designed to be used with [soybean-ui](https://soybean-ui.co
 ## Installation
 
 ```bash
-pnpm install @soybean-ui/primitive
+pnpm install @soybean-ui/primitives
 ```
 

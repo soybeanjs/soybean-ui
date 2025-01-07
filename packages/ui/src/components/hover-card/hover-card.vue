@@ -6,7 +6,7 @@ import {
   useForwardProps,
   useForwardPropsEmits,
   usePickForwardProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SHoverCardContent from './hover-card-content.vue';
 import SHoverCardArrow from './hover-card-arrow.vue';
 import type { HoverCardEmits, HoverCardProps } from './types';

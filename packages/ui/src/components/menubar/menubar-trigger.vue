@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenubarTrigger } from '@soybean-ui/primitive';
+import { MenubarTrigger } from '@soybean-ui/primitives';
 import { cn, menubarVariants } from '@soybean-ui/variants';
 import type { MenubarTriggerProps } from './types';
 

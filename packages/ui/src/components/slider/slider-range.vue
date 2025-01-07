@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SliderRange } from '@soybean-ui/primitive';
+import { SliderRange } from '@soybean-ui/primitives';
 import { cn, sliderVariants } from '@soybean-ui/variants';
 import type { SliderRangeProps } from './types';
 

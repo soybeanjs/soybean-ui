@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenuSeparator } from '@soybean-ui/primitive';
+import { MenuSeparator } from '@soybean-ui/primitives';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import type { MenuSeparatorProps } from './types';
 

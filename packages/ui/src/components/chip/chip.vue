@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useForwardProps } from '@soybean-ui/primitive';
+import { useForwardProps } from '@soybean-ui/primitives';
 import SChipRoot from './chip-root.vue';
 import SChipContent from './chip-content.vue';
 import type { ChipProps } from './types';

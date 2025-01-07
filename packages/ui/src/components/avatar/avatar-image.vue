@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarImage } from '@soybean-ui/primitive';
+import { AvatarImage } from '@soybean-ui/primitives';
 import { avatarVariants, cn } from '@soybean-ui/variants';
 import type { AvatarImageEmits, AvatarImageProps } from './types';
 

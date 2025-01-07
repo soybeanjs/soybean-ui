@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DialogContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { DialogContent, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, sheetVariants } from '@soybean-ui/variants';
 import type { SheetContentEmits, SheetContentProps } from './types';
 

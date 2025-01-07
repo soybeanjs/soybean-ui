@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuIndicator } from '@soybean-ui/primitive';
+import { NavigationMenuIndicator } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuIndicatorProps } from './types';
 

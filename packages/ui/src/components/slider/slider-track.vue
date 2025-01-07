@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SliderTrack } from '@soybean-ui/primitive';
+import { SliderTrack } from '@soybean-ui/primitives';
 import { cn, sliderVariants } from '@soybean-ui/variants';
 import type { SliderTrackProps } from './types';
 

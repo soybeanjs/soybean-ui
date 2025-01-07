@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenuLabel } from '@soybean-ui/primitive';
+import { MenuLabel } from '@soybean-ui/primitives';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import type { MenuLabelProps } from './types';
 

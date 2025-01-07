@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionContent, useForwardExpose, useForwardProps } from '@soybean-ui/primitive';
+import { AccordionContent, useForwardExpose, useForwardProps } from '@soybean-ui/primitives';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionContentProps } from './types';
 

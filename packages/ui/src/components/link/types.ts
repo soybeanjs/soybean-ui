@@ -6,7 +6,7 @@ import type {
   HTMLAttributeReferrerPolicy,
   MaybeArray,
   PrimitiveProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 
 export interface AnchorLinkProps {
   href?: string;

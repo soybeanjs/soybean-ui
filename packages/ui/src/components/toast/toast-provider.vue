@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastProvider } from '@soybean-ui/primitive';
+import { ToastProvider } from '@soybean-ui/primitives';
 import { provideToastContext } from './context';
 import type { ToastProviderProps } from './types';
 import Toast from './toast.vue';

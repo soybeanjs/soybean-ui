@@ -418,7 +418,7 @@
   - rename `soybean-unify` to `soybean-ui` &nbsp;-&nbsp; by @soybeanjs [<samp>(bfc50)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bfc50ea)
   - remove package `@soybean-ui/shadcn-ui` &nbsp;-&nbsp; by @soybeanjs [<samp>(73ad7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/73ad706)
   - use `reka-ui` replace `radix-vue` &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/44 [<samp>(4e492)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4e4927e)
-  - replace `reka-ui` by `@soybean-ui/primitive` &nbsp;-&nbsp; by @soybeanjs [<samp>(f3810)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f3810ae)
+  - replace `reka-ui` by `@soybean-ui/primitives` &nbsp;-&nbsp; by @soybeanjs [<samp>(f3810)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f3810ae)
 
 ### &nbsp;&nbsp;&nbsp;📖 Documentation
 

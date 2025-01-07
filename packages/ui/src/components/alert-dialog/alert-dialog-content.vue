@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertDialogContent, useForwardPropsEmits } from '@soybean-ui/primitive';
+import { AlertDialogContent, useForwardPropsEmits } from '@soybean-ui/primitives';
 import { alertDialogVariants, cn } from '@soybean-ui/variants';
 import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
 

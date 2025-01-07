@@ -1,5 +1,5 @@
 import type { FuseResult, FuseResultMatch } from 'fuse.js';
-import type { AcceptableValue } from '@soybean-ui/primitive';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import type {
   CommandItemGroupOption,
   CommandItemHighlightSearchOption,

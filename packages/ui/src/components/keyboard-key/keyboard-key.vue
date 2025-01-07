@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends KeyboardKeyValue | KeyboardKeyValue[]">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitive';
+import { Primitive } from '@soybean-ui/primitives';
 import { cn, keyboardKeyVariants } from '@soybean-ui/variants';
 import { useKeyboardKey } from './shared';
 import type { KeyboardKeyProps, KeyboardKeyValue } from './types';

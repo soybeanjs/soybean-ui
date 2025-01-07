@@ -7,7 +7,7 @@ import type {
   ClassValue,
   ClassValueProp,
   CheckboxRootProps as _CheckboxControlProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface CheckboxRootProps extends ClassValueProp {}

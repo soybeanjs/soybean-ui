@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PaginationListItem, useForwardProps } from '@soybean-ui/primitive';
+import { PaginationListItem, useForwardProps } from '@soybean-ui/primitives';
 import SPaginationButton from './pagination-button.vue';
 import type { PaginationListItemProps } from './types';
 

@@ -2,7 +2,7 @@ import {
   DrawerClose as SDrawerClose,
   DrawerPortal as SDrawerPortal,
   DrawerRoot as SDrawerRoot
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';
 import SDrawerContentBody from './drawer-content-body.vue';

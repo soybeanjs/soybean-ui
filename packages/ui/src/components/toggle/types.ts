@@ -1,4 +1,4 @@
-import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybean-ui/primitive';
+import type { ToggleEmits, ToggleProps as _ToggleProps } from '@soybean-ui/primitives';
 import type { ThemeSize, ToggleVariant } from '@soybean-ui/variants';
 
 export interface ToggleProps extends _ToggleProps {

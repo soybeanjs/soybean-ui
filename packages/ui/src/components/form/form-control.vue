@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Slot } from '@soybean-ui/primitive';
+import { Slot } from '@soybean-ui/primitives';
 import { useFormField } from './hooks';
 
 defineOptions({

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitive';
+import { Primitive } from '@soybean-ui/primitives';
 import { cn, formVariants } from '@soybean-ui/variants';
 import { useFormField } from './hooks';
 import type { FormDescriptionProps } from './types';

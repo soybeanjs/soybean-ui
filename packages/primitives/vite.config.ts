@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), vueJsx(), dts({ cleanVueFileName: true, rollupTypes: true, include: 'src/**/*' })],
   build: {
     lib: {
-      name: 'soybean-primitive',
+      name: 'soybean-primitives',
       entry: {
         index: fileURLToPath(new URL('src/index.ts', import.meta.url)),
         date: fileURLToPath(new URL('src/date/index.ts', import.meta.url))

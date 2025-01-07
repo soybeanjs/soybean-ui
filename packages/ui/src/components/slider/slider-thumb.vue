@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { SliderThumb } from '@soybean-ui/primitive';
+import { SliderThumb } from '@soybean-ui/primitives';
 import { cn, sliderVariants } from '@soybean-ui/variants';
 import type { SliderThumbProps } from './types';
 

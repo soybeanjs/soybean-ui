@@ -1,4 +1,4 @@
-import { MenuPortal as SMenuPortal } from '@soybean-ui/primitive';
+import { MenuPortal as SMenuPortal } from '@soybean-ui/primitives';
 import SMenuArrow from './menu-arrow.vue';
 import SMenuContent from './menu-content.vue';
 import SMenuSubContent from './menu-sub-content.vue';

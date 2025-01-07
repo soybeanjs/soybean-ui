@@ -1,5 +1,5 @@
 import type { BadgeVariant, ThemeColor } from '@soybean-ui/variants';
-import type { ClassValueProp } from '@soybean-ui/primitive';
+import type { ClassValueProp } from '@soybean-ui/primitives';
 
 export interface BadgeProps extends ClassValueProp {
   color?: ThemeColor;

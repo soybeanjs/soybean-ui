@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TabsList } from '@soybean-ui/primitive';
+import { TabsList } from '@soybean-ui/primitives';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsListProps } from './types';
 

@@ -22,7 +22,7 @@ import type {
   MenuLabelProps as _MenuLabelProps,
   MenuRadioItemProps as _MenuRadioItemProps,
   MenuSubTriggerProps as _MenuSubTriggerProps
-} from '@soybean-ui/primitive';
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
 import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
