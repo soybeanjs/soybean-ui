@@ -38,7 +38,7 @@ export interface LoadingButtonProps extends ButtonProps {
   loading?: boolean;
 }
 
-export type ButtonLinkProps = ButtonProps & LinkProps;
+export interface ButtonLinkProps extends ButtonProps, LinkProps {}
 
 export interface ButtonGroupProps extends ClassValueProp {
   orientation?: ThemeOrientation;

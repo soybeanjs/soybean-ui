@@ -14,6 +14,17 @@ const { color, trackClass, thumbClass, rangeClass, ...delegatedRootProps } = def
 
 const emit = defineEmits<SliderEmits>();
 
+type SlotProps = Omit<SliderProps, 'trackClass' | 'thumbClass' | 'rangeClass'>;
+
+type Slots = {
+  default: (props: SlotProps) => any;
+  track: (props: SlotProps) => any;
+  range: (props: SlotProps) => any;
+  thumb: (props: SlotProps) => any;
+};
+
+defineSlots<Slots>();
+
 const forwardedRootProps = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 

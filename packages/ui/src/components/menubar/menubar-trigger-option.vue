@@ -1,4 +1,5 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import type { AcceptableValue } from '@soybean-ui/primitive';
 import SMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
 import SMenuShortcut from '../menu/menu-shortcut.vue';
 import SMenubarTrigger from './menubar-trigger.vue';
@@ -9,7 +10,7 @@ defineOptions({
   name: 'SMenubarTriggerOption'
 });
 
-const props = defineProps<MenubarTriggerOptionProps>();
+const props = defineProps<MenubarTriggerOptionProps<T>>();
 </script>
 
 <template>

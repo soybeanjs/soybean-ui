@@ -8,15 +8,13 @@ defineOptions({
   name: 'SButtonLink'
 });
 
-const props = withDefaults(defineProps<ButtonLinkProps>(), {
-  variant: 'link'
-});
+const { variant = 'link', ...delegatedProps } = defineProps<ButtonLinkProps>();
 
-const forwardedProps = useForwardProps(props);
+const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <SButton v-bind="forwardedProps" as-child>
+  <SButton v-bind="forwardedProps" as-child :variant="variant">
     <SLink>
       <slot />
     </SLink>

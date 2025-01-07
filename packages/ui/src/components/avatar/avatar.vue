@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useForwardPropsEmits, useOmitForwardProps } from '@soybean-ui/primitive';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';
@@ -8,22 +9,26 @@ defineOptions({
   name: 'SAvatar'
 });
 
-const { class: rootClass } = defineProps<AvatarProps>();
+const props = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
+
+const forwardedImageProps = useOmitForwardProps(props, [
+  'class',
+  'size',
+  'imageClass',
+  'fallbackClass',
+  'fallbackLabel'
+]);
+
+const forwardedImage = useForwardPropsEmits(forwardedImageProps, emit);
 </script>
 
 <template>
-  <SAvatarRoot :size :class="rootClass">
+  <SAvatarRoot :class="props.class" :size="size">
     <slot>
       <slot name="image">
-        <SAvatarImage
-          :class="imageClass"
-          :src
-          :alt
-          :delay-ms
-          @loading-status-change="emit('loadingStatusChange', $event)"
-        />
+        <SAvatarImage v-bind="forwardedImage" :class="imageClass" />
       </slot>
       <SAvatarFallback :class="fallbackClass">
         <slot name="fallback">{{ fallbackLabel }}</slot>
