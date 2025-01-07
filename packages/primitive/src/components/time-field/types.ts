@@ -14,7 +14,7 @@ export interface TimeFieldRootProps extends ClassValueProp, FormFieldProps {
    */
   placeholder?: TimeValue;
   /** The controlled checked state of the field. Can be bound as `v-model`. */
-  modelValue?: TimeValue | undefined;
+  modelValue?: TimeValue | null;
   /** The hour cycle used for formatting times. Defaults to the local preference */
   hourCycle?: HourCycle;
   /**

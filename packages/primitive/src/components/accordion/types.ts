@@ -12,10 +12,7 @@ import type { PrimitiveProps } from '../primitive';
 import type { CollapsibleContentProps, CollapsibleRootProps } from '../collapsible';
 
 // AccordionRoot
-export type AccordionRootProps<
-  V = AcceptableValue | AcceptableValue[],
-  E = SingleOrMultipleType
-> = SingleOrMultipleProps<V, E> & {
+export type AccordionRootProps<T extends string | string[]> = SingleOrMultipleProps<T> & {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item. When type is "multiple", this
    * prop has no effect.
@@ -53,10 +50,9 @@ export type AccordionRootProps<
   unmountOnHide?: boolean;
 } & ClassValueProp;
 
-export type AccordionRootPropsWithPrimitive<
-  V = AcceptableValue | AcceptableValue[],
-  E = SingleOrMultipleType
-> = AccordionRootProps<V, E> & PrimitiveProps;
+export interface AccordionRootPropsWithPrimitive<T extends string | string[]>
+  extends AccordionRootProps<T>,
+    PrimitiveProps {}
 
 export type AccordionRootEmits<T extends SingleOrMultipleType = SingleOrMultipleType> = {
   /** Event handler called when the expanded state of an item changes */

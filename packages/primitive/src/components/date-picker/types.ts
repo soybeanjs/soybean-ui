@@ -63,7 +63,7 @@ export type DatePickerRootContext = {
   required: Ref<boolean>;
   locale: Ref<string>;
   dateFieldRef: Ref<DateFieldInstance | undefined>;
-  modelValue: Ref<DateValue | undefined>;
+  modelValue: Ref<DateValue | null | undefined>;
   placeholder: Ref<DateValue>;
   pagedNavigation: Ref<boolean>;
   preventDeselect: Ref<boolean>;

@@ -5,7 +5,7 @@ import type { PrimitiveProps } from '../primitive';
 // Root
 export interface NumberFieldRootProps extends ClassValueProp {
   defaultValue?: number;
-  modelValue?: number;
+  modelValue?: number | null;
   /** The smallest value allowed for the input. */
   min?: number;
   /** The largest value allowed for the input. */

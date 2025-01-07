@@ -1,7 +1,7 @@
-<script setup lang="ts" generic="T extends AcceptableValue | AcceptableValue[], S extends SingleOrMultipleType">
+<script setup lang="ts" generic="T extends string | string[], S extends SingleOrMultipleType">
 import { toRefs } from 'vue';
 import { useDirection, useForwardExpose, useSingleOrMultipleValue } from '../../composables';
-import type { AcceptableValue, SingleOrMultipleType } from '../../types';
+import type { SingleOrMultipleType } from '../../types';
 import { Primitive } from '../primitive';
 import { provideAccordionRootContext } from './context';
 import type { AccordionRootEmits, AccordionRootPropsWithPrimitive } from './types';
@@ -10,7 +10,7 @@ defineOptions({
   name: 'AccordionRoot'
 });
 
-const props = withDefaults(defineProps<AccordionRootPropsWithPrimitive<T, S>>(), {
+const props = withDefaults(defineProps<AccordionRootPropsWithPrimitive<T>>(), {
   disabled: false,
   orientation: 'vertical',
   collapsible: false,

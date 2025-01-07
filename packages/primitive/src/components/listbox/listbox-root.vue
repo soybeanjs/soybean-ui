@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { nextTick, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
 import {
   useCollection,
@@ -55,30 +56,29 @@ const modelValue = useVModel<ListboxRootPropsWithPrimitive<T>, 'modelValue', 'up
   emit,
   {
     defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-    passive: (props.modelValue === undefined) as false
+    passive: (props.modelValue === undefined) as false,
+    deep: true
   }
-);
+) as Ref<T | T[] | undefined>;
 
 function onValueChange(val: T) {
   isUserAction.value = true;
-  if (Array.isArray(modelValue.value)) {
-    const index = modelValue.value.findIndex(i => compare(i, val, props.by));
+  if (props.multiple) {
+    const modelArray = Array.isArray(modelValue.value) ? [...modelValue.value] : [];
+    const index = modelArray.findIndex(i => compare(i, val, props.by));
     if (props.selectionBehavior === 'toggle') {
-      const modelArray = [...modelValue.value];
-      // index === -1 ? modelArray.push(val) : modelArray.splice(index, 1);
-      if (index === -1) {
-        modelArray.push(val);
-      } else {
-        modelArray.splice(index, 1);
-      }
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      index === -1 ? modelArray.push(val) : modelArray.splice(index, 1);
       modelValue.value = modelArray;
     } else {
       modelValue.value = [val];
       firstValue.value = val;
     }
   } else if (props.selectionBehavior === 'toggle') {
-    if (compare(modelValue.value, val, props.by)) modelValue.value = undefined;
-    else modelValue.value = val;
+    // @ts-expect-error ignore type
+    if (compare(modelValue.value, val, props.by)) {
+      modelValue.value = undefined;
+    } else modelValue.value = val;
   } else {
     modelValue.value = val;
   }

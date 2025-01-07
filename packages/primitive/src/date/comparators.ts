@@ -188,7 +188,7 @@ export function areAllDaysBetweenValid(
 }
 
 type GetDefaultDateProps = {
-  defaultValue?: DateValue | DateValue[] | undefined;
+  defaultValue?: DateValue | DateValue[] | null | undefined;
   defaultPlaceholder?: DateValue | undefined;
   granularity?: Granularity;
   locale?: string;

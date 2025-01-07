@@ -5,18 +5,15 @@ import type {
   DataOrientation,
   Direction,
   FormFieldProps,
-  SingleOrMultipleProps,
-  SingleOrMultipleType
+  SingleOrMultipleProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 import type { ToggleProps } from '../toggle';
 
-export interface ToggleGroupRootProps<
-  ValidValue = AcceptableValue | AcceptableValue[],
-  ExplicitType = SingleOrMultipleType
-> extends ClassValueProp,
+export interface ToggleGroupRootProps<T = AcceptableValue | AcceptableValue[]>
+  extends ClassValueProp,
     FormFieldProps,
-    SingleOrMultipleProps<ValidValue, ExplicitType> {
+    SingleOrMultipleProps<T> {
   /** When `false`, navigating through the items using arrow keys will be disabled. */
   rovingFocus?: boolean;
   /** When `true`, prevents the user from interacting with the toggle group and all its items. */
@@ -34,10 +31,9 @@ export interface ToggleGroupRootProps<
   /** When `loop` and `rovingFocus` is `true`, keyboard navigation will loop from last item to first, and vice versa. */
   loop?: boolean;
 }
-export type ToggleGroupRootPropsWithPrimitive<
-  ValidValue = AcceptableValue | AcceptableValue[],
-  ExplicitType = SingleOrMultipleType
-> = ToggleGroupRootProps<ValidValue, ExplicitType> & PrimitiveProps;
+export interface ToggleGroupRootPropsWithPrimitive<T = AcceptableValue | AcceptableValue[]>
+  extends ToggleGroupRootProps<T>,
+    PrimitiveProps {}
 
 export type ToggleGroupRootEmits = {
   /** Event handler called when the value changes. */

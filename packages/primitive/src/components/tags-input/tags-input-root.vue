@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableInputValue = string">
-import { ref, toRefs } from 'vue';
+import { computed, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useFocusWithin, useVModel } from '@vueuse/core';
 import { useArrowNavigation, useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
@@ -39,11 +39,14 @@ const { getItems, CollectionSlot } = useCollection({ isProvider: true });
 const selectedElement = ref<HTMLElement>();
 const isInvalidInput = ref(false);
 
+const currentModelValue = computed(() => (Array.isArray(modelValue.value) ? [...modelValue.value] : []));
+
 provideTagsInputRootContext({
   modelValue,
   onAddValue: _payload => {
-    const modelValueIsObject = modelValue.value.length > 0 && typeof modelValue.value[0] === 'object';
-    const defaultValueIsObject = modelValue.value.length > 0 && typeof props.defaultValue[0] === 'object';
+    const array = [...currentModelValue.value];
+    const modelValueIsObject = array.length > 0 && typeof array[0] === 'object';
+    const defaultValueIsObject = array.length > 0 && typeof props.defaultValue[0] === 'object';
 
     // Check if the value is an object and if the convertValue function is provided. We don't check this a type level because the use
     // of `TagsInputInput` is optional.
@@ -51,20 +54,24 @@ provideTagsInputRootContext({
       throw new Error('You must provide a `convertValue` function when using objects as values.');
     const payload = props.convertValue ? props.convertValue(_payload) : (_payload as T);
 
-    if (modelValue.value.length >= max.value && Boolean(max.value)) {
+    if (array.length >= max.value && Boolean(max.value)) {
       emit('invalid', payload);
       return false;
     }
 
     if (props.duplicate) {
-      modelValue.value = [...modelValue.value, payload];
+      modelValue.value = [...array, payload];
+      emit('addTag', payload);
       return true;
     }
-    const exist = modelValue.value.includes(payload);
+
+    const exist = array.includes(payload);
     if (!exist) {
-      modelValue.value = [...modelValue.value, payload];
+      modelValue.value = [...array, payload];
+      emit('addTag', payload);
       return true;
     }
+
     isInvalidInput.value = true;
 
     emit('invalid', payload);

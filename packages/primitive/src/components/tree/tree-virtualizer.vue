@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { cloneVNode, computed, nextTick, useSlots } from 'vue';
-import type { Ref } from 'vue';
+import { cloneVNode, computed, nextTick } from 'vue';
+import type { Ref, VNode } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
 import { useVirtualizer } from '@tanstack/vue-virtual';
+import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import { useCollection } from '../../composables';
 import { getNextMatch } from '../../shared';
 import type { NavigationKeys } from '../../types';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { injectTreeRootContext } from './context';
-import type { TreeVirtualizerProps } from './types';
+import type { FlattenedItem, TreeVirtualizerProps } from './types';
 
 defineOptions({
   name: 'TreeVirtualizer'
@@ -16,7 +17,15 @@ defineOptions({
 
 const props = defineProps<TreeVirtualizerProps>();
 
-const slots = useSlots();
+type Slots = {
+  default: (props: {
+    item: FlattenedItem<Record<string, any>>;
+    virtualizer: Virtualizer<HTMLElement, Element>;
+    virtualItem: VirtualItem;
+  }) => VNode[];
+};
+
+const slots = defineSlots<Slots>();
 const rootContext = injectTreeRootContext();
 const parentEl = useParentElement() as Ref<HTMLElement>;
 const { getItems } = useCollection();
@@ -81,7 +90,7 @@ const virtualizedItems = computed(() =>
     return {
       item,
       is: cloneVNode(
-        slots.default!({
+        slots.default({
           item: rootContext.expandedItems.value[item.index],
           virtualizer: virtualizer.value,
           virtualItem: item

@@ -60,12 +60,12 @@ onMounted(() => {
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue ?? { start: undefined, end: undefined },
   passive: (props.modelValue === undefined) as false
-}) as Ref<DateRange>;
+}) as Ref<DateRange | null>;
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
   granularity: props.granularity,
-  defaultValue: modelValue.value.start,
+  defaultValue: modelValue.value?.start,
   locale: props.locale
 });
 
@@ -81,7 +81,7 @@ const inferredGranularity = computed(() => {
 });
 
 const isStartInvalid = computed(() => {
-  if (!modelValue.value.start) return false;
+  if (!modelValue.value?.start) return false;
 
   if (propsIsDateUnavailable.value?.(modelValue.value.start)) return true;
 
@@ -93,7 +93,7 @@ const isStartInvalid = computed(() => {
 });
 
 const isEndInvalid = computed(() => {
-  if (!modelValue.value.end) return false;
+  if (!modelValue.value?.end) return false;
 
   if (propsIsDateUnavailable.value?.(modelValue.value.end)) return true;
 
@@ -107,7 +107,7 @@ const isEndInvalid = computed(() => {
 const isInvalid = computed(() => {
   if (isStartInvalid.value || isEndInvalid.value) return true;
 
-  if (!modelValue.value.start || !modelValue.value.end) return false;
+  if (!modelValue.value?.start || !modelValue.value?.end) return false;
 
   if (!isBeforeOrSame(modelValue.value.start, modelValue.value.end)) return true;
 
@@ -126,12 +126,12 @@ const isInvalid = computed(() => {
 const initialSegments = initializeSegmentValues(inferredGranularity.value);
 
 const startSegmentValues = ref<SegmentValueObj>(
-  modelValue.value.start
+  modelValue.value?.start
     ? { ...syncSegmentValues({ value: modelValue.value.start, formatter }) }
     : { ...initialSegments }
 );
 const endSegmentValues = ref<SegmentValueObj>(
-  modelValue.value.end ? { ...syncSegmentValues({ value: modelValue.value.end, formatter }) } : { ...initialSegments }
+  modelValue.value?.end ? { ...syncSegmentValues({ value: modelValue.value.end, formatter }) } : { ...initialSegments }
 );
 
 const startSegmentContent = computed(() =>
@@ -168,15 +168,15 @@ const editableSegmentContents = computed(() => ({
   end: segmentContents.value.end.filter(({ part }) => part !== 'literal')
 }));
 
-const startValue = ref(modelValue.value.start?.copy()) as Ref<DateValue | undefined>;
-const endValue = ref(modelValue.value.end?.copy()) as Ref<DateValue | undefined>;
+const startValue = ref(modelValue.value?.start?.copy()) as Ref<DateValue | undefined>;
+const endValue = ref(modelValue.value?.end?.copy()) as Ref<DateValue | undefined>;
 
 watch([startValue, endValue], ([_startValue, _endValue]) => {
   modelValue.value = { start: _startValue?.copy(), end: _endValue?.copy() };
 });
 
 watch(modelValue, _modelValue => {
-  if (_modelValue.start && _modelValue.end) {
+  if (_modelValue?.start && _modelValue?.end) {
     if (!startValue.value || _modelValue.start.compare(startValue.value) !== 0)
       startValue.value = _modelValue.start.copy();
     if (!endValue.value || _modelValue.end.compare(endValue.value) !== 0) endValue.value = _modelValue.end.copy();
@@ -205,6 +205,7 @@ watch(locale, value => {
 
 watch(modelValue, _modelValue => {
   if (
+    _modelValue &&
     _modelValue.start !== undefined &&
     (!isEqualDay(placeholder.value, _modelValue.start) || placeholder.value.compare(_modelValue.start) !== 0)
   )
@@ -249,6 +250,8 @@ const prevFocusableSegment = computed(() => {
   const segmentToFocus = Array.from(segmentElements.value)[currentSegmentIndex.value - sign];
   return segmentToFocus;
 });
+
+const value = computed(() => `${modelValue.value?.start?.toString()} - ${modelValue.value?.end?.toString()}`);
 
 const kbd = useKbd();
 
@@ -307,7 +310,7 @@ defineExpose({
       as="input"
       feature="focusable"
       tabindex="-1"
-      :value="`${modelValue.start?.toString()} - ${modelValue.end?.toString()}`"
+      :value="value"
       :name="name"
       :disabled="disabled"
       :required="required"

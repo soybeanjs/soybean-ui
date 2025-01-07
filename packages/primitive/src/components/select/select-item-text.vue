@@ -24,7 +24,7 @@ const optionProps = computed(() => {
   return {
     value: itemContext.value,
     disabled: itemContext.disabled.value,
-    textContent: itemTextElement.value?.textContent ?? itemContext.value.toString()
+    textContent: itemTextElement.value?.textContent ?? itemContext.value?.toString() ?? ''
   };
 });
 

@@ -4,7 +4,7 @@ import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { isEqual } from 'ohash';
 import { useFormControl, useForwardExpose } from '../../composables';
-import { isValueEqualOrExist } from '../../shared';
+import { isNullish, isValueEqualOrExist } from '../../shared';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -48,7 +48,7 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 const disabled = computed(() => checkboxGroupContext?.disabled.value || props.disabled);
 
 const checkboxState = computed<CheckedState>(() => {
-  if (checkboxGroupContext?.modelValue.value) {
+  if (!isNullish(checkboxGroupContext?.modelValue.value)) {
     return isValueEqualOrExist(checkboxGroupContext.modelValue.value, props.value);
   }
 
@@ -61,7 +61,7 @@ provideCheckboxRootContext({
 });
 
 function handleClick() {
-  if (checkboxGroupContext?.modelValue.value) {
+  if (!isNullish(checkboxGroupContext?.modelValue.value)) {
     const modelValueArray = [...(checkboxGroupContext.modelValue.value || [])];
     if (isValueEqualOrExist(modelValueArray, props.value)) {
       const index = modelValueArray.findIndex(i => isEqual(i, props.value));

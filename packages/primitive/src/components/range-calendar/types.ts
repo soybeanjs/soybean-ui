@@ -10,7 +10,7 @@ export interface RangeCalendarRootProps extends ClassValueProp {
   /** The default value for the calendar */
   defaultValue?: DateRange;
   /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateRange;
+  modelValue?: DateRange | null;
   /**
    * The placeholder date, which is used to determine what month to display when no date is selected. This updates as
    * the user navigates the calendar and can be used to programmatically control the calendar view
@@ -85,7 +85,7 @@ export type RangeCalendarRootEmits = {
 };
 
 export type RangeCalendarRootContext = {
-  modelValue: Ref<DateRange>;
+  modelValue: Ref<DateRange | null>;
   startValue: Ref<DateValue | undefined>;
   endValue: Ref<DateValue | undefined>;
   locale: Ref<string>;

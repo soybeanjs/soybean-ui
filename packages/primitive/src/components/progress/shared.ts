@@ -9,7 +9,9 @@ export function isNumber(v: any): v is number {
 export function validateValue(value: any, max: number): number | null {
   const isValidValueError = isNullish(value) || (isNumber(value) && !Number.isNaN(value) && value <= max && value >= 0);
 
-  if (isValidValueError) return value as number;
+  if (isValidValueError) {
+    return value as null;
+  }
 
   console.error(`Invalid prop \`value\` of value \`${value}\` supplied to \`ProgressRoot\`. The \`value\` prop must be:
   - a positive number

@@ -24,7 +24,7 @@ export interface DateRangeFieldRootProps extends ClassValueProp, FormFieldProps 
    */
   placeholder?: DateValue;
   /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateRange;
+  modelValue?: DateRange | null;
   /** The hour cycle used for formatting times. Defaults to the local preference */
   hourCycle?: HourCycle;
   /**

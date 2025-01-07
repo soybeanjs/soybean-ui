@@ -9,7 +9,7 @@ export type PinInputRootEmits = {
 
 export interface PinInputRootProps extends ClassValueProp, FormFieldProps {
   /** The controlled checked state of the pin input. Can be bound as `v-model`. */
-  modelValue?: string[];
+  modelValue?: string[] | null;
   /**
    * The default value of the pin inputs when it is initially rendered. Use when you do not need to control its checked
    * state.
@@ -37,6 +37,7 @@ export type PinInputRootPropsWithPrimitive = PinInputRootProps & PrimitiveProps;
 
 export interface PinInputRootContext {
   modelValue: Ref<string[]>;
+  currentModelValue: ComputedRef<string[]>;
   mask: Ref<boolean>;
   otp: Ref<boolean>;
   placeholder: Ref<string>;

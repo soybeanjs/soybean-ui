@@ -7,7 +7,7 @@ export interface EditableRootProps extends ClassValueProp, FormFieldProps {
   /** The default value of the editable field */
   defaultValue?: string;
   /** The value of the editable field */
-  modelValue?: string;
+  modelValue?: string | null;
   /** The placeholder for the editable field */
   placeholder?: string | { edit: string; preview: string };
   /**
@@ -40,7 +40,7 @@ export interface EditableRootEmits {
   /** Event handler called whenever the model value changes */
   'update:modelValue': [value: string];
   /** Event handler called when a value is submitted */
-  submit: [value: string | undefined];
+  submit: [value: string | null | undefined];
   /** Event handler called when the editable field changes state */
   'update:state': [state: 'edit' | 'submit' | 'cancel'];
 }
@@ -50,7 +50,7 @@ export interface EditableRootContext {
   name: Ref<string | undefined>;
   maxLength: Ref<number | undefined>;
   disabled: Ref<boolean>;
-  modelValue: Ref<string | undefined>;
+  modelValue: Ref<string | null | undefined>;
   placeholder: Ref<{ edit: string; preview: string }>;
   isEditing: Ref<boolean>;
   submitMode: Ref<SubmitMode>;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Comment, computed, onMounted, useSlots } from 'vue';
+import { Comment, computed, onMounted } from 'vue';
 import type { VNode } from 'vue';
 import { useEventListener } from '@vueuse/core';
 import { useForwardExpose } from '../../composables';
@@ -32,7 +32,9 @@ const emit = defineEmits<TooltipContentEmits>();
 const rootContext = injectTooltipRootContext();
 
 const { forwardRef } = useForwardExpose();
-const slots = useSlots();
+const slots = defineSlots<{
+  default?: () => VNode[];
+}>();
 const defaultSlot = computed(() => slots.default?.());
 const ariaLabel = computed(() => {
   if (props.ariaLabel) return props.ariaLabel;

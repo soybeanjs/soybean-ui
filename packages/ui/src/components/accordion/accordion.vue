@@ -1,14 +1,9 @@
 <script
   setup
   lang="ts"
-  generic="
-    T extends AccordionItemData = AccordionItemData,
-    V extends AcceptableValue | AcceptableValue[] = AcceptableValue | AcceptableValue[],
-    E extends SingleOrMultipleType = SingleOrMultipleType
-  "
+  generic="T extends AccordionItemData = AccordionItemData, V extends string | string[] = string | string[]"
 >
 import { AccordionRoot, useCombinedPropsEmits, useOmitForwardProps } from '@soybean-ui/primitive';
-import type { AcceptableValue, SingleOrMultipleType } from '@soybean-ui/primitive';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionContent from './accordion-content.vue';
@@ -20,7 +15,7 @@ defineOptions({
   name: 'SAccordion'
 });
 
-const props = defineProps<AccordionProps<T, V, E>>();
+const props = defineProps<AccordionProps<T, V>>();
 
 const emit = defineEmits<AccordionEmits>();
 

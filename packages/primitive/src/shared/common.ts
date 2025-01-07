@@ -1,6 +1,6 @@
 import { isEqual } from 'ohash';
 
-export function isNullish<T>(value: T | null | undefined): value is null | undefined {
+export function isNullish(value: unknown): value is null | undefined {
   return value === null || value === undefined;
 }
 

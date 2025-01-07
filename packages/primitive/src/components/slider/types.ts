@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import type { ClassValueProp, DataOrientation, Direction, FormFieldProps, Side } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
@@ -7,7 +7,7 @@ export interface SliderRootProps extends ClassValueProp, FormFieldProps {
   /** The value of the slider when initially rendered. Use when you do not need to control the state of the slider. */
   defaultValue?: number[];
   /** The controlled value of the slider. Can be bind as `v-model`. */
-  modelValue?: number[];
+  modelValue?: number[] | null;
   /** When `true`, prevents the user from interacting with the slider. */
   disabled?: boolean;
   /** The orientation of the slider. */
@@ -45,7 +45,8 @@ export type SliderRootContext = {
   disabled: Ref<boolean>;
   min: Ref<number>;
   max: Ref<number>;
-  modelValue?: Readonly<Ref<number[] | undefined>>;
+  modelValue?: Readonly<Ref<number[] | null | undefined>>;
+  currentModelValue: ComputedRef<number[]>;
   valueIndexToChangeRef: Ref<number>;
   thumbElements: Ref<HTMLElement[]>;
 };

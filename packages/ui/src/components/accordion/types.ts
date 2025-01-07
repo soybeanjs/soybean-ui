@@ -1,5 +1,4 @@
 import type {
-  AcceptableValue,
   AccordionContentProps,
   AccordionHeaderProps,
   AccordionItemData,
@@ -20,9 +19,8 @@ export interface AccordionContentBodyProps extends ClassValueProp {}
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
-  V = AcceptableValue | AcceptableValue[],
-  E = SingleOrMultipleType
-> = AccordionRootProps<V, E> & {
+  V extends string | string[] = string | string[]
+> = AccordionRootProps<V> & {
   items: T[];
   itemClass?: ClassValue;
   headerClass?: ClassValue;

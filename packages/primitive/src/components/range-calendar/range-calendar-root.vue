@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref, toRefs, watch } from 'vue';
+import { computed, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
+import { isNullish } from '../../shared';
 import { getDefaultDate, handleCalendarInitialFocus, isBefore } from '../../date';
 import type { DateRange, DateValue } from '../../date';
 import { useCalendar, useDirection, useLocale, usePrimitiveElement, useRangeCalendarState } from '../../composables';
@@ -66,16 +67,20 @@ const focusedValue = ref() as Ref<DateValue | undefined>;
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
-}) as Ref<DateRange>;
+}) as Ref<DateRange | null>;
+
+const currentModelValue = computed(() =>
+  isNullish(modelValue.value) ? { start: undefined, end: undefined } : modelValue.value
+);
 
 const defaultDate = getDefaultDate({
   defaultPlaceholder: props.placeholder,
-  defaultValue: modelValue.value.start,
+  defaultValue: currentModelValue.value.start,
   locale: props.locale
 });
 
-const startValue = ref(modelValue.value.start) as Ref<DateValue | undefined>;
-const endValue = ref(modelValue.value.end) as Ref<DateValue | undefined>;
+const startValue = ref(currentModelValue.value.start) as Ref<DateValue | undefined>;
+const endValue = ref(currentModelValue.value.end) as Ref<DateValue | undefined>;
 
 const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
@@ -135,11 +140,11 @@ const {
 });
 
 watch(modelValue, _modelValue => {
-  if (_modelValue.start) {
+  if (_modelValue?.start) {
     if (!startValue.value || !isEqualDay(startValue.value, _modelValue.start))
       startValue.value = _modelValue.start.copy();
   }
-  if (_modelValue.end) {
+  if (_modelValue?.end) {
     if (!endValue.value || !isEqualDay(endValue.value, _modelValue.end)) endValue.value = _modelValue.end.copy();
   }
 });
@@ -151,7 +156,7 @@ watch(startValue, _startValue => {
 });
 
 watch([startValue, endValue], ([_startValue, _endValue]) => {
-  const value = modelValue.value;
+  const value = currentModelValue.value;
 
   if (
     value &&

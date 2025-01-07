@@ -193,6 +193,7 @@ provideComboboxRootContext({
       :name="name"
       :required="required"
       highlight-on-hover
+      :by="by"
       :style="{
         pointerEvents: open ? 'auto' : undefined
       }"

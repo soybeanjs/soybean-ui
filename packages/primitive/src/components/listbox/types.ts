@@ -141,7 +141,7 @@ export interface ListboxVirtualizerProps<T extends AcceptableValue = AcceptableV
 
 export type ListboxVirtualizerSlotsProps<T extends AcceptableValue = AcceptableValue> = {
   option: T;
-  virtualizer: Virtualizer<Element | Window, Element>;
+  virtualizer: Virtualizer<HTMLElement, Element>;
   virtualItem: VirtualItem;
 };
 

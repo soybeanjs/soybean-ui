@@ -50,7 +50,9 @@ const triggerPointerDownPosRef = ref({
 });
 
 const isEmptyModelValue = computed(() => {
-  if (multiple.value && Array.isArray(modelValue.value)) return modelValue.value.length === 0;
+  if (multiple.value && Array.isArray(modelValue.value)) {
+    return modelValue.value?.length === 0;
+  }
   return isNullish(modelValue.value);
 });
 
@@ -72,13 +74,12 @@ const nativeSelectKey = computed(() => {
 });
 
 function handleValueChange(value: T) {
-  if (multiple.value && Array.isArray(modelValue.value)) {
-    const index = modelValue.value.findIndex(i => compare(i, value, props.by));
-    if (index === -1) {
-      modelValue.value.push(value);
-    } else {
-      modelValue.value.splice(index, 1);
-    }
+  if (multiple.value) {
+    const array = Array.isArray(modelValue.value) ? [...modelValue.value] : [];
+    const index = array.findIndex(i => compare(i, value, props.by));
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    index === -1 ? array.push(value) : array.splice(index, 1);
+    modelValue.value = [...array];
   } else {
     modelValue.value = value;
   }
@@ -128,9 +129,8 @@ provideSelectRootContext({
       :autocomplete="autocomplete"
       :disabled="disabled"
       :value="modelValue"
-      @change="handleValueChange($event.target.value)"
     >
-      <option v-if="modelValue === undefined" value="" />
+      <option v-if="isNullish(modelValue)" value="" />
       <option v-for="option in Array.from(optionsSet)" :key="option.value ?? ''" v-bind="option" />
     </BubbleSelect>
   </PopperRoot>

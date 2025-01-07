@@ -28,13 +28,15 @@ const modelValue = useVModel(props, 'modelValue', emit, {
   passive: (props.modelValue === undefined) as false
 }) as Ref<string[]>;
 
+const currentModelValue = computed(() => (Array.isArray(modelValue.value) ? [...modelValue.value] : []));
+
 const inputElements = ref<Set<HTMLInputElement>>(new Set());
 function onInputElementChange(el: HTMLInputElement) {
   inputElements.value.add(el);
 }
 
 const isCompleted = computed(() => {
-  const modelValues = modelValue.value.filter(i => Boolean(i));
+  const modelValues = currentModelValue.value.filter(i => Boolean(i));
   return modelValues.length === inputElements.value.size;
 });
 
@@ -48,6 +50,7 @@ watch(
 
 providePinInputRootContext({
   modelValue,
+  currentModelValue,
   mask,
   otp,
   placeholder,
@@ -78,7 +81,7 @@ providePinInputRootContext({
       as="input"
       feature="focusable"
       tabindex="-1"
-      :value="modelValue.join('')"
+      :value="currentModelValue.join('')"
       :name="name ?? ''"
       :disabled="disabled"
       :required="required"

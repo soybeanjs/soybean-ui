@@ -7,7 +7,7 @@ export type AcceptableInputValue = string | Record<string, any>;
 // Root
 export interface TagsInputRootProps<T = AcceptableInputValue> extends ClassValueProp, FormFieldProps {
   /** The controlled value of the tags input. Can be bind as `v-model`. */
-  modelValue?: Array<T>;
+  modelValue?: Array<T> | null;
   /** The value of the tags that should be added. Use when you do not need to control the state of the tags input */
   defaultValue?: Array<T>;
   /** When `true`, allow adding tags on paste. Work in conjunction with delimiter prop. */

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRaw, toRefs } from 'vue';
+import { computed, ref, toRaw, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useDirection, useFormControl, useForwardExpose } from '../../composables';
@@ -40,7 +40,9 @@ const emit = defineEmits<SliderRootEmits>();
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
-}) as Ref<number[]>;
+}) as Ref<number[] | null>;
+
+const currentModelValue = computed(() => (Array.isArray(modelValue.value) ? [...modelValue.value] : []));
 
 const { min, max, step, minStepsBetweenThumbs, orientation, disabled, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
@@ -50,10 +52,10 @@ const isFormControl = useFormControl(currentElement);
 const { CollectionSlot } = useCollection({ isProvider: true });
 
 const valueIndexToChangeRef = ref(0);
-const valuesBeforeSlideStartRef = ref(modelValue.value);
+const valuesBeforeSlideStartRef = ref(currentModelValue.value);
 
 function handleSlideStart(value: number) {
-  const closestIndex = getClosestValueIndex(modelValue.value, value);
+  const closestIndex = getClosestValueIndex(currentModelValue.value, value);
   updateValues(value, closestIndex);
 }
 
@@ -63,9 +65,11 @@ function handleSlideMove(value: number) {
 
 function handleSlideEnd() {
   const prevValue = valuesBeforeSlideStartRef.value[valueIndexToChangeRef.value];
-  const nextValue = modelValue.value[valueIndexToChangeRef.value];
+  const nextValue = currentModelValue.value[valueIndexToChangeRef.value];
   const hasChanged = nextValue !== prevValue;
-  if (hasChanged) emit('valueCommit', toRaw(modelValue.value));
+  if (hasChanged) {
+    emit('valueCommit', toRaw(currentModelValue.value));
+  }
 }
 
 const thumbElements = ref<HTMLElement[]>([]);
@@ -75,7 +79,7 @@ function updateValues(value: number, atIndex: number, { commit } = { commit: fal
   const snapToStep = roundValue(Math.round((value - min.value) / step.value) * step.value + min.value, decimalCount);
   const nextValue = clamp(snapToStep, min.value, max.value);
 
-  const nextValues = getNextSortedValues(modelValue.value, nextValue, atIndex);
+  const nextValues = getNextSortedValues(currentModelValue.value, nextValue, atIndex);
 
   if (hasMinStepsBetweenValues(nextValues, minStepsBetweenThumbs.value * step.value)) {
     valueIndexToChangeRef.value = nextValues.indexOf(nextValue);
@@ -91,6 +95,7 @@ function updateValues(value: number, atIndex: number, { commit } = { commit: fal
 
 provideSliderRootContext({
   modelValue,
+  currentModelValue,
   valueIndexToChangeRef,
   thumbElements,
   orientation,
@@ -117,14 +122,16 @@ provideSliderRootContext({
       :data-disabled="disabled ? '' : undefined"
       @pointerdown="
         () => {
-          if (!disabled) valuesBeforeSlideStartRef = modelValue;
+          if (!disabled) {
+            valuesBeforeSlideStartRef = currentModelValue;
+          }
         }
       "
       @slide-start="!disabled && handleSlideStart($event)"
       @slide-move="!disabled && handleSlideMove($event)"
       @slide-end="!disabled && handleSlideEnd()"
       @home-key-down="!disabled && updateValues(min, 0, { commit: true })"
-      @end-key-down="!disabled && updateValues(max, modelValue.length - 1, { commit: true })"
+      @end-key-down="!disabled && updateValues(max, currentModelValue.length - 1, { commit: true })"
       @step-key-down="
         (event, direction) => {
           if (!disabled) {
@@ -132,7 +139,7 @@ provideSliderRootContext({
             const isSkipKey = isPageKey || (event.shiftKey && ARROW_KEYS.includes(event.key));
             const multiplier = isSkipKey ? 10 : 1;
             const atIndex = valueIndexToChangeRef;
-            const value = modelValue[atIndex];
+            const value = currentModelValue[atIndex];
             const stepInDirection = step * multiplier * direction;
             updateValues(value + stepInDirection, atIndex, { commit: true });
           }

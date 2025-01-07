@@ -50,7 +50,7 @@ const {
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: defaultValue.value,
   passive: (props.modelValue === undefined) as false
-});
+}) as Ref<DateValue>;
 
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
@@ -138,7 +138,7 @@ watch(modelValue, _modelValue => {
 watch([modelValue, locale], ([_modelValue]) => {
   if (!isNullish(_modelValue)) {
     segmentValues.value = { ...syncSegmentValues({ value: _modelValue, formatter }) };
-  } else if (Object.values(segmentValues.value).every(value => value === null) || _modelValue === undefined) {
+  } else if (Object.values(segmentValues.value).every(value => value === null) || isNullish(_modelValue)) {
     segmentValues.value = { ...initialSegments };
   }
 });

@@ -132,8 +132,10 @@ rootContext.virtualHighlightHook.on(value => {
 const search = refAutoReset('', 1000);
 const optionsWithMetadata = computed(() => {
   const parseTextContent = (option: T) => {
-    if (props.textContent) return props.textContent(option);
-    return option.toString().toLowerCase();
+    if (props.textContent) {
+      return props.textContent(option);
+    }
+    return option?.toString()?.toLowerCase();
   };
 
   return props.options.map((option, index) => ({
@@ -205,7 +207,7 @@ rootContext.virtualKeydownHook.on(event => {
     search.value += event.key;
     const currentIndex = Number(document.activeElement?.getAttribute('data-index'));
     const currentMatch = optionsWithMetadata.value[currentIndex].textContent;
-    const filteredOptions = optionsWithMetadata.value.map(i => i.textContent);
+    const filteredOptions = optionsWithMetadata.value.map(i => i.textContent || '');
     const next = getNextMatch(filteredOptions, search.value, currentMatch);
 
     const nextMatch = optionsWithMetadata.value.find(option => option.textContent === next);
