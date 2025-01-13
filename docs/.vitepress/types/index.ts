@@ -1,15 +1,13 @@
 import type { DefaultTheme } from 'vitepress';
-import type { DropdownMenuItemOption, DropdownMenuOptionType } from 'soy-ui';
+import type { MenuOptionData } from 'soy-ui';
 
-export interface NavItem extends DropdownMenuItemOption {
-  link?: string;
-}
+export interface NavItem extends MenuOptionData {}
 
 export interface SidebarItem extends DefaultTheme.SidebarItem {
   icon?: string;
 }
 
 export interface CustomThemeConfig extends Omit<DefaultTheme.Config, 'nav' | 'sidebar'> {
-  nav: DropdownMenuOptionType<NavItem>[];
+  nav: NavItem[];
   sidebar: SidebarItem[];
 }

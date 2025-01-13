@@ -4,7 +4,6 @@ import { useData, useRoute } from 'vitepress';
 import { createReusableTemplate } from '@vueuse/core';
 import { Icon } from '@iconify/vue';
 import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from 'soy-ui';
-import { isNavItemWithLink } from '../../../shared';
 import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';
 
@@ -25,10 +24,10 @@ const [DefineNavMenuItem, NavMenuItem] = createReusableTemplate<NavItemProps>();
 
 const isPopoverOpen = ref(false);
 
-function handleSelect(nav: NavItemType) {
-  if (!nav.link) return;
+function handleSelect(_event: Event, nav: NavItemType) {
+  if (!nav.linkProps) return;
 
-  openLink(nav.link);
+  openLink(nav.linkProps.href!);
 }
 
 function openLink(link: string) {
@@ -56,8 +55,8 @@ watch(path, () => {
       </component>
     </DefineNavItem>
     <template v-for="(nav, index) in theme.nav" :key="index">
-      <NavItem v-if="isNavItemWithLink(nav)" :label="nav.label" :link="nav.link" />
-      <SDropdownMenu v-else :label="nav.label" :items="nav.items" @select="handleSelect">
+      <NavItem v-if="nav.linkProps" :label="nav.label" :link="nav.linkProps.href" />
+      <SDropdownMenu v-else :label="nav.label" :items="nav.children" content-class="min-w-20" @select="handleSelect">
         <template #trigger>
           <NavItem :label="nav.label">
             <span class="whitespace-nowrap">{{ nav.label }}</span>
@@ -66,7 +65,7 @@ watch(path, () => {
         </template>
         <template #item="item">
           <span>{{ item.label }}</span>
-          <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
+          <Icon v-if="item.linkProps" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
         </template>
       </SDropdownMenu>
     </template>
@@ -101,8 +100,15 @@ watch(path, () => {
       </template>
       <nav class="relative z-10 flex-c">
         <template v-for="(nav, index) in theme.nav" :key="index">
-          <NavMenuItem v-if="isNavItemWithLink(nav)" :label="nav.label" :link="nav.link" />
-          <SDropdownMenu v-else :label="nav.label" :items="nav.items" align="end" @select="handleSelect">
+          <NavMenuItem v-if="nav.linkProps" :label="nav.label" :link="nav.linkProps.href" />
+          <SDropdownMenu
+            v-else
+            :label="nav.label"
+            :items="nav.children"
+            align="end"
+            content-class="min-w-20"
+            @select="handleSelect"
+          >
             <template #trigger>
               <NavMenuItem :label="nav.label">
                 <span class="whitespace-nowrap">{{ nav.label }}</span>
@@ -111,7 +117,7 @@ watch(path, () => {
             </template>
             <template #item="item">
               <span>{{ item.label }}</span>
-              <Icon v-if="isNavItemWithLink(item)" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
+              <Icon v-if="item.linkProps" icon="lucide:arrow-up-right" class="ml-2 text-sm" />
             </template>
           </SDropdownMenu>
         </template>

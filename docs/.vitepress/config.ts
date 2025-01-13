@@ -1,8 +1,7 @@
-import { defineConfigWithTheme } from 'vitepress';
+import { defineConfigWithTheme, postcssIsolateStyles } from 'vitepress';
 import unocss from 'unocss/vite';
 import { version } from '../package.json';
 import ComponentPreview from './plugins/component-preview';
-import InstallationTabs from './plugins/installation-tabs';
 import type { CustomThemeConfig } from './types';
 
 export default defineConfigWithTheme<CustomThemeConfig>({
@@ -39,7 +38,6 @@ export default defineConfigWithTheme<CustomThemeConfig>({
     },
     preConfig(md) {
       md.use(ComponentPreview);
-      md.use(InstallationTabs);
     }
   },
   themeConfig: {
@@ -52,17 +50,17 @@ export default defineConfigWithTheme<CustomThemeConfig>({
       level: [2, 3]
     },
     nav: [
-      { value: 'docs', label: 'Docs', link: '/docs/overview/getting-started' },
-      { value: 'examples', label: 'Examples', link: '/examples/checkbox-group' },
-      { value: 'primitive', label: 'Primitive', link: '/primitive/index' },
+      { value: 'docs', label: 'Docs', linkProps: { href: '/docs/overview/getting-started' } },
+      { value: 'examples', label: 'Examples', linkProps: { href: '/examples/checkbox-group' } },
+      { value: 'primitive', label: 'Primitive', linkProps: { href: '/primitive/index' } },
       {
         value: 'version',
         label: `v${version}`,
-        items: [
+        children: [
           {
             value: 'release-notes',
             label: 'Release Notes',
-            link: 'https://github.com/soybeanjs/soybean-ui/releases'
+            linkProps: { href: 'https://github.com/soybeanjs/soybean-ui/releases' }
           }
         ]
       }
@@ -128,6 +126,11 @@ export default defineConfigWithTheme<CustomThemeConfig>({
   },
   vite: {
     // @ts-expect-error ignore type
-    plugins: [unocss({ configFile: '../uno.config.ts' })]
+    plugins: [unocss({ configFile: '../uno.config.ts' })],
+    css: {
+      postcss: {
+        plugins: [postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] })]
+      }
+    }
   }
 });
