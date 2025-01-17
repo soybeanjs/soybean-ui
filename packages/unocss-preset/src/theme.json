@@ -2,7 +2,6 @@
   {
     "name": "default",
     "label": "Default",
-    "activeColor": { "light": "236.9 100% 69.61%", "dark": "229 100% 62%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -13,8 +12,8 @@
         "popover-foreground": "224 71.4% 4.1%",
         "primary": "236.9 100% 69.61%",
         "primary-foreground": "0 0% 100%",
-        "secondary": "220 14.3% 95.9%",
-        "secondary-foreground": "220.9 39.3% 11%",
+        "secondary": "229 20% 90%",
+        "secondary-foreground": "229 20% 30%",
         "muted": "220 14.3% 95.9%",
         "muted-foreground": "220 8.9% 46.1%",
         "accent": "220 14.3% 95.9%",
@@ -34,8 +33,8 @@
         "popover-foreground": "210 20% 98%",
         "primary": "236.9 100% 69.61%",
         "primary-foreground": "0 0% 100%",
-        "secondary": "215 27.9% 16.9%",
-        "secondary-foreground": "210 20% 98%",
+        "secondary": "229 14% 8%",
+        "secondary-foreground": "229 14% 68%",
         "muted": "215 27.9% 16.9%",
         "muted-foreground": "217.9 10.6% 64.9%",
         "accent": "215 27.9% 16.9%",
@@ -51,7 +50,6 @@
   {
     "name": "zinc",
     "label": "Zinc",
-    "activeColor": { "light": "240 5.9% 10%", "dark": "240 5.2% 33.9%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -101,7 +99,6 @@
   {
     "name": "slate",
     "label": "Slate",
-    "activeColor": { "light": "215.4 16.3% 46.9%", "dark": "215.3 19.3% 34.5%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -151,7 +148,6 @@
   {
     "name": "stone",
     "label": "Stone",
-    "activeColor": { "light": "25 5.3% 44.7%", "dark": "33.3 5.5% 32.4%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -201,7 +197,6 @@
   {
     "name": "gray",
     "label": "Gray",
-    "activeColor": { "light": "220 8.9% 46.1%", "dark": "215 13.8% 34.1%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -251,7 +246,6 @@
   {
     "name": "neutral",
     "label": "Neutral",
-    "activeColor": { "light": "0 0% 45.1%", "dark": "0 0% 32.2%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -300,7 +294,6 @@
   {
     "name": "red",
     "label": "Red",
-    "activeColor": { "light": "0 72.2% 50.6%", "dark": "0 72.2% 50.6%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -350,7 +343,6 @@
   {
     "name": "rose",
     "label": "Rose",
-    "activeColor": { "light": "346.8 77.2% 49.8%", "dark": "346.8 77.2% 49.8%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -400,7 +392,6 @@
   {
     "name": "orange",
     "label": "Orange",
-    "activeColor": { "light": "24.6 95% 53.1%", "dark": "20.5 90.2% 48.2%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -450,7 +441,6 @@
   {
     "name": "green",
     "label": "Green",
-    "activeColor": { "light": "142.1 76.2% 36.3%", "dark": "142.1 70.6% 45.3%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -499,7 +489,6 @@
   {
     "name": "blue",
     "label": "Blue",
-    "activeColor": { "light": "221.2 83.2% 53.3%", "dark": "217.2 91.2% 59.8%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -548,7 +537,6 @@
   {
     "name": "yellow",
     "label": "Yellow",
-    "activeColor": { "light": "47.9 95.8% 53.1%", "dark": "47.9 95.8% 53.1%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",
@@ -598,7 +586,6 @@
   {
     "name": "violet",
     "label": "Violet",
-    "activeColor": { "light": "262.1 83.3% 57.8%", "dark": "263.4 70% 50.4%" },
     "cssVars": {
       "light": {
         "background": "0 0% 100%",

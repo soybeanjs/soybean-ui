@@ -34,6 +34,8 @@ const themeCSSVarKeys: CSSVarKey[] = [
   'info-foreground',
   'secondary',
   'secondary-foreground',
+  'carbon',
+  'carbon-foreground',
   'muted',
   'muted-foreground',
   'accent',
@@ -43,7 +45,7 @@ const themeCSSVarKeys: CSSVarKey[] = [
   'ring'
 ];
 
-const themeColorKeys: CSSVarKey[] = ['primary', 'destructive', 'success', 'warning', 'info'];
+const themeColorKeys: CSSVarKey[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon'];
 
 function getColorCSSVars(color: ThemeCSSVars & FeedbackColorOfThemeCssVars) {
   const cssVars = Object.entries(color)
@@ -170,19 +172,19 @@ function createBuiltinFeedbackColorTheme() {
       warning: '37 91% 55%',
       'warning-foreground': '0 0% 100%',
       info: '215 100% 54%',
-      // info: '207 90% 61%',
-      'info-foreground': '0 0% 100%'
+      'info-foreground': '0 0% 100%',
+      carbon: '240 4% 16%',
+      'carbon-foreground': '0 0% 98%'
     },
     dark: {
-      // success: '157 79% 17%',
       success: '140 79% 45%',
       'success-foreground': '0 0% 100%',
       warning: '37 91% 55%',
-      // warning: '25 91% 35%',
       'warning-foreground': '0 0% 100%',
       info: '215 100% 54%',
-      // info: '212 75% 18%',
-      'info-foreground': '0 0% 100%'
+      'info-foreground': '0 0% 100%',
+      carbon: '220 14.3% 95.9%',
+      'carbon-foreground': '220.9 39.3% 11%'
     }
   };
 

@@ -33,6 +33,10 @@ export const radioVariants = tv({
         control: `border-info focus-visible:outline-info`,
         indicator: `bg-info`
       },
+      carbon: {
+        control: `border-carbon focus-visible:outline-carbon`,
+        indicator: `bg-carbon`
+      },
       secondary: {
         control: `border-secondary-foreground focus-visible:outline-secondary-foreground/20`,
         indicator: `bg-secondary-foreground/60`

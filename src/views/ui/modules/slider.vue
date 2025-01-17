@@ -7,7 +7,7 @@ const model = ref<number[]>([33]);
 
 const model2 = ref<number[]>([10, 60]);
 
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 </script>
 
 <template>

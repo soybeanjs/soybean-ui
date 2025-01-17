@@ -4,7 +4,7 @@ import { SButton, SButtonGroup, SCard, SSelect } from 'soy-ui';
 import type { ButtonShadow, ButtonShape, ButtonVariant, SelectOption, ThemeColor, ThemeSize } from 'soy-ui';
 
 const activeColor = ref<ThemeColor>('primary');
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const colorOptions: SelectOption[] = colors.map(color => ({
   label: color,
   value: color

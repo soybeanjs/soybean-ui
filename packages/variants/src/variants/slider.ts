@@ -42,15 +42,20 @@ export const sliderVariants = tv({
         range: 'bg-info',
         thumb: 'border-info focus-visible:outline-info'
       },
+      carbon: {
+        track: 'bg-carbon/20',
+        range: 'bg-carbon',
+        thumb: 'border-carbon focus-visible:outline-carbon'
+      },
       secondary: {
-        track: 'bg-secondary-foreground/20',
-        range: 'bg-secondary-foreground',
-        thumb: 'border-secondary-foreground focus-visible:outline-secondary-foreground'
+        track: 'bg-secondary/20',
+        range: 'bg-secondary',
+        thumb: 'border-secondary focus-visible:outline-secondary'
       },
       accent: {
-        track: 'bg-accent-foreground/20',
-        range: 'bg-accent-foreground',
-        thumb: 'border-accent-foreground focus-visible:outline-accent-foreground'
+        track: 'bg-accent/20',
+        range: 'bg-accent',
+        thumb: 'border-accent focus-visible:outline-accent'
       }
     }
   },

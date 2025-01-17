@@ -7,7 +7,7 @@ defineOptions({
   name: 'UiCheckbox'
 });
 
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 
 const sizeChecked = ref<CheckedState>('indeterminate');
 

@@ -28,6 +28,10 @@ export const progressVariants = tv({
         root: 'bg-info/20',
         indicator: 'bg-info'
       },
+      carbon: {
+        root: 'bg-carbon/20',
+        indicator: 'bg-carbon'
+      },
       secondary: {
         root: 'bg-secondary/20',
         indicator: 'bg-secondary'

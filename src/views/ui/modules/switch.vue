@@ -5,7 +5,7 @@ import type { ThemeColor, ThemeSize } from 'soy-ui';
 defineOptions({
   name: 'UiSwitch'
 });
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 

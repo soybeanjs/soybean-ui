@@ -28,6 +28,9 @@ export const checkboxVariants = tv({
       info: {
         control: `border-info focus-visible:outline-info data-[state=checked]:(bg-info text-info-foreground) data-[state=indeterminate]:(bg-info text-info-foreground)`
       },
+      carbon: {
+        control: `border-carbon focus-visible:outline-carbon data-[state=checked]:(bg-carbon text-carbon-foreground) data-[state=indeterminate]:(bg-carbon text-carbon-foreground)`
+      },
       secondary: {
         control: `border-secondary-foreground/50 focus-visible:outline-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/5 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/5 text-secondary-foreground)`
       },

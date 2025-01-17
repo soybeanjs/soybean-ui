@@ -27,6 +27,9 @@ export const switchVariants = tv({
       info: {
         root: `data-[state=checked]:bg-info focus-visible:outline-info`
       },
+      carbon: {
+        root: `data-[state=checked]:bg-carbon focus-visible:outline-carbon`
+      },
       secondary: {
         root: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:outline-secondary-foreground/20`
       },

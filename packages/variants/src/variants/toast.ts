@@ -38,6 +38,9 @@ export const toastVariants = tv({
       warning: {
         root: 'border-warning bg-warning/10 text-warning'
       },
+      carbon: {
+        root: 'border-carbon bg-carbon/10 text-carbon'
+      },
       secondary: {
         root: 'border-secondary bg-secondary/10 text-secondary'
       },

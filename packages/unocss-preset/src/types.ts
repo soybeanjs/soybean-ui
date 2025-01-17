@@ -33,6 +33,8 @@ export type FeedbackColorOfThemeCssVars = {
   'warning-foreground': HslColorString;
   info: HslColorString;
   'info-foreground': HslColorString;
+  carbon: HslColorString;
+  'carbon-foreground': HslColorString;
 };
 
 export type FeedbackColorOfThemeCssVarKey = keyof FeedbackColorOfThemeCssVars;
@@ -108,4 +110,4 @@ export type PresetShadcnOptions = ThemeOptions | ThemeOptions[];
 
 export type ThemeColorKey =
   | Extract<ThemeCSSVarKey, 'primary' | 'secondary' | 'destructive'>
-  | Extract<FeedbackColorOfThemeCssVarKey, 'success' | 'warning' | 'info'>;
+  | Extract<FeedbackColorOfThemeCssVarKey, 'success' | 'warning' | 'info' | 'carbon'>;

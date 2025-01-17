@@ -11,12 +11,13 @@ export const badgeVariants = tv({
       success: '',
       warning: '',
       info: '',
+      carbon: '',
       secondary: '',
       accent: ''
     },
     variant: {
       solid: '',
-      plain: 'border border-border bg-background text-foreground',
+      pure: 'border border-border bg-background text-foreground',
       outline: 'border'
     },
     shape: {
@@ -49,6 +50,11 @@ export const badgeVariants = tv({
       color: 'info',
       variant: 'solid',
       class: `bg-info border-info text-info-foreground`
+    },
+    {
+      color: 'carbon',
+      variant: 'solid',
+      class: `bg-carbon border-carbon text-carbon-foreground`
     },
     {
       color: 'secondary',
@@ -84,6 +90,11 @@ export const badgeVariants = tv({
       color: 'info',
       variant: 'outline',
       class: 'border-info bg-info/10 text-info'
+    },
+    {
+      color: 'carbon',
+      variant: 'outline',
+      class: 'border-carbon bg-carbon/10 text-carbon'
     },
     {
       color: 'secondary',

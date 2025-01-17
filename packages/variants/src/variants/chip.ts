@@ -37,6 +37,9 @@ export const chipVariants = tv({
       info: {
         content: 'bg-info text-info-foreground'
       },
+      carbon: {
+        content: 'bg-carbon text-carbon-foreground'
+      },
       secondary: {
         content: 'bg-secondary text-secondary-foreground'
       },

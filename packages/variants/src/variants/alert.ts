@@ -29,8 +29,12 @@ export const alertVariants = tv({
         titleRoot: '[&>svg]:text-warning'
       },
       info: {
-        root: 'border-info text-info dark:border-info',
+        root: 'border-info text-info',
         titleRoot: '[&>svg]:text-info'
+      },
+      carbon: {
+        root: 'border-carbon text-carbon',
+        titleRoot: '[&>svg]:text-carbon'
       },
       secondary: {
         root: 'border-secondary-foreground/50 text-secondary-foreground',
@@ -87,6 +91,13 @@ export const alertVariants = tv({
       variant: 'soft',
       class: {
         root: 'bg-info/10'
+      }
+    },
+    {
+      color: 'carbon',
+      variant: 'soft',
+      class: {
+        root: 'bg-carbon/10'
       }
     },
     {

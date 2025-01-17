@@ -6,8 +6,8 @@ defineOptions({
   name: 'UiBadge'
 });
 
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
-const variants: BadgeVariant[] = ['solid', 'plain', 'outline'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
+const variants: BadgeVariant[] = ['solid', 'pure', 'outline'];
 </script>
 
 <template>

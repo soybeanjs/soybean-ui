@@ -136,6 +136,21 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
           900: 'hsl(var(--info-900))',
           950: 'hsl(var(--info-950))'
         },
+        carbon: {
+          DEFAULT: 'hsl(var(--carbon))',
+          foreground: 'hsl(var(--carbon-foreground))',
+          50: 'hsl(var(--carbon-50))',
+          100: 'hsl(var(--carbon-100))',
+          200: 'hsl(var(--carbon-200))',
+          300: 'hsl(var(--carbon-300))',
+          400: 'hsl(var(--carbon-400))',
+          500: 'hsl(var(--carbon-500))',
+          600: 'hsl(var(--carbon-600))',
+          700: 'hsl(var(--carbon-700))',
+          800: 'hsl(var(--carbon-800))',
+          900: 'hsl(var(--carbon-900))',
+          950: 'hsl(var(--carbon-950))'
+        },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'

@@ -3,7 +3,7 @@ import { Rocket, TriangleAlert } from 'lucide-vue-next';
 import { SAlert } from 'soy-ui';
 import type { AlertVariant, ThemeColor } from 'soy-ui';
 
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'secondary', 'accent'];
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: AlertVariant[] = ['outline', 'plain', 'soft'];
 
 defineOptions({

@@ -11,12 +11,13 @@ export const buttonVariants = tv({
       success: `focus-visible:outline-success`,
       warning: `focus-visible:outline-warning`,
       info: `focus-visible:outline-info`,
+      carbon: `focus-visible:outline-carbon`,
       secondary: `focus-visible:outline-secondary-foreground/20`,
       accent: `focus-visible:outline-accent-foreground/20`
     },
     variant: {
       solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
-      pure: 'border border-border bg-background text-accent-foreground hover:bg-accent/80 active:bg-accent',
+      pure: 'border border-border bg-background text-accent-foreground hover:bg-accent/60 active:bg-accent',
       plain: 'border border-border bg-background text-foreground',
       outline: 'border bg-background',
       dashed: 'border border-dashed bg-background',
@@ -70,6 +71,11 @@ export const buttonVariants = tv({
       class: `bg-info text-info-foreground hover:bg-info/80 active:bg-info-600`
     },
     {
+      color: 'carbon',
+      variant: 'solid',
+      class: `bg-carbon text-carbon-foreground hover:bg-carbon/80 active:bg-carbon-600`
+    },
+    {
       color: 'secondary',
       variant: 'solid',
       class: `bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary-foreground/20`
@@ -103,6 +109,11 @@ export const buttonVariants = tv({
       color: 'info',
       variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
       class: 'text-info'
+    },
+    {
+      color: 'carbon',
+      variant: ['outline', 'dashed', 'soft', 'ghost', 'link'],
+      class: 'text-carbon'
     },
     {
       color: 'secondary',
@@ -140,6 +151,11 @@ export const buttonVariants = tv({
       class: 'hover:bg-info/10 active:bg-info/20'
     },
     {
+      color: 'carbon',
+      variant: ['outline', 'dashed', 'ghost'],
+      class: 'hover:bg-carbon/10 active:bg-carbon/20'
+    },
+    {
       color: 'secondary',
       variant: ['outline', 'dashed', 'ghost'],
       class: 'hover:bg-secondary-foreground/10 active:bg-secondary-foreground/20'
@@ -173,6 +189,11 @@ export const buttonVariants = tv({
       color: 'info',
       variant: 'plain',
       class: 'hover:(border-info text-info)'
+    },
+    {
+      color: 'carbon',
+      variant: 'plain',
+      class: 'hover:(border-carbon text-carbon)'
     },
     {
       color: 'secondary',
@@ -210,6 +231,11 @@ export const buttonVariants = tv({
       class: 'border-info'
     },
     {
+      color: 'carbon',
+      variant: ['outline', 'dashed'],
+      class: 'border-carbon'
+    },
+    {
       color: 'secondary',
       variant: ['outline', 'dashed'],
       class: 'border-secondary-foreground'
@@ -238,6 +264,11 @@ export const buttonVariants = tv({
       color: 'info',
       variant: 'soft',
       class: 'bg-info/10 hover:bg-info/10 active:bg-info/20'
+    },
+    {
+      color: 'carbon',
+      variant: 'soft',
+      class: 'bg-carbon/10 hover:bg-carbon/10 active:bg-carbon/20'
     },
     {
       color: 'secondary',
