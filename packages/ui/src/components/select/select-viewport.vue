@@ -18,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <SelectViewport :class="mergedCls" :nonce>
+  <SelectViewport :class="mergedCls" :nonce="nonce">
     <slot />
   </SelectViewport>
 </template>

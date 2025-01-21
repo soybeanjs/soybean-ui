@@ -1,30 +1,48 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import {
-  SelectGroup,
   SelectPortal,
   SelectRoot,
   SelectValue,
   useForwardPropsEmits,
   usePickForwardProps
 } from '@soybean-ui/primitives';
+import type { AcceptableValue } from '@soybean-ui/primitives';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
 import SSelectViewport from './select-viewport.vue';
 import SSelectIcon from './select-icon.vue';
-import SSelectSeparator from './select-separator.vue';
-import SSelectLabel from './select-label.vue';
 import SSelectScrollUpButton from './select-scroll-up-button.vue';
 import SSelectScrollDownButton from './select-scroll-down-button.vue';
-import SSelectItemOption from './select-item-option.vue';
-import type { SelectEmits, SelectGroupOption, SelectOption, SelectProps } from './types';
+import SSelectOption from './select-option.vue';
+import type { SelectEmits, SelectOptionType, SelectProps } from './types';
 
 defineOptions({
   name: 'SSelect'
 });
 
-const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } = defineProps<SelectProps>();
+const {
+  class: cls,
+  avoidCollisions = true,
+  prioritizePosition = true,
+  ...delegatedProps
+} = defineProps<SelectProps<T>>();
 
 const emit = defineEmits<SelectEmits>();
+
+type Slots = {
+  default?: () => any;
+  leading?: () => any;
+  trailing?: () => any;
+  trigger?: (props: { modelValue?: T | T[]; selectedLabel: string[]; slotText: string }) => any;
+  itemLeading?: (props: { item: SelectOptionType<T> }) => any;
+  itemTrailing?: (props: { item: SelectOptionType<T> }) => any;
+  itemIndicatorIcon?: (props: { item: SelectOptionType<T> }) => any;
+  triggerIcon?: () => any;
+  scrollUpIcon?: () => any;
+  scrollDownIcon?: () => any;
+};
+
+defineSlots<Slots>();
 
 const forwardedRootProps = usePickForwardProps(delegatedProps, [
   'defaultOpen',
@@ -38,7 +56,7 @@ const forwardedRootProps = usePickForwardProps(delegatedProps, [
   'required'
 ]);
 
-const forwarded = useForwardPropsEmits(forwardedRootProps, emit);
+const forwardedRoot = useForwardPropsEmits(forwardedRootProps, emit);
 
 const forwardedContentProps = usePickForwardProps(delegatedProps, [
   'position',
@@ -55,77 +73,59 @@ const forwardedContentProps = usePickForwardProps(delegatedProps, [
   'updatePositionStrategy'
 ]);
 
-function isGroup(opt: SelectOption | SelectGroupOption): opt is SelectGroupOption {
-  return (opt as SelectGroupOption).items !== undefined;
+function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefined) {
+  return modelValue as T | T[];
 }
 </script>
 
 <template>
-  <SelectRoot v-bind="forwarded">
-    <SSelectTrigger :class="triggerClass" :size>
-      <SelectValue :placeholder />
-      <SSelectIcon :class="triggerIconClass" :size>
-        <slot name="triggerIcon" />
-      </SSelectIcon>
+  <SelectRoot v-bind="forwardedRoot">
+    <SSelectTrigger :class="cls || ui?.trigger" :size="size">
+      <slot name="leading" />
+      <SelectValue v-slot="{ modelValue, selectedLabel, slotText }" :placeholder="placeholder">
+        <slot
+          name="trigger"
+          :model-value="getModelValue(modelValue)"
+          :selected-label="selectedLabel"
+          :slot-text="slotText"
+        />
+      </SelectValue>
+      <slot name="trailing">
+        <SSelectIcon :class="ui?.triggerIcon" :size="size">
+          <slot name="triggerIcon" />
+        </SSelectIcon>
+      </slot>
     </SSelectTrigger>
-    <SelectPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent
-        :class="contentClass"
+        :class="ui?.content"
         v-bind="forwardedContentProps"
         :force-mount="forceMountContent"
-        :avoid-collisions
-        :prioritize-position
+        :avoid-collisions="avoidCollisions"
+        :prioritize-position="prioritizePosition"
         @close-auto-focus="emit('closeAutoFocus', $event)"
         @escape-key-down="emit('escapeKeyDown', $event)"
         @pointer-down-outside="emit('pointerDownOutside', $event)"
       >
-        <SSelectScrollUpButton :size :class="scrollUpButtonClass">
+        <SSelectScrollUpButton :class="ui?.scrollUpButton" :size="size">
           <slot name="scrollUpIcon" />
         </SSelectScrollUpButton>
-        <SSelectViewport :nonce :position>
-          <template v-for="(opt, index) in items">
-            <template v-if="isGroup(opt)">
-              <SSelectLabel :key="`groupLabel_${opt.label}`" :size :class="groupLabelClass">
-                {{ opt.label }}
-              </SSelectLabel>
-              <SSelectSeparator
-                v-if="separator || opt.separator"
-                :key="`separator_${opt.label}`"
-                :class="separatorClass"
-              />
-              <SelectGroup :key="`group_${opt.label}`" :class="groupClass">
-                <template v-for="(item, itemIndex) in opt.items" :key="itemIndex">
-                  <SSelectItemOption
-                    :option="item"
-                    :size
-                    :item-class
-                    :item-text-class
-                    :item-indicator-class
-                    :separator="itemIndex !== opt.items.length - 1 && (separator || item.separator)"
-                    :separator-class
-                  >
-                    <slot name="itemIndicatorIcon" />
-                  </SSelectItemOption>
-                </template>
-              </SelectGroup>
-            </template>
-            <template v-else>
-              <SSelectItemOption
-                :key="index"
-                :option="opt"
-                :size
-                :item-class
-                :item-text-class
-                :item-indicator-class
-                :separator="index !== items.length - 1 && (separator || opt.separator)"
-                :separator-class
-              >
-                <slot name="itemIndicatorIcon" />
-              </SSelectItemOption>
-            </template>
-          </template>
+        <SSelectViewport :class="ui?.viewport" :nonce="nonce" :position="position">
+          <slot>
+            <SSelectOption v-for="(item, index) in items" :key="index" :size="size" :item="item" :ui="ui">
+              <template #leading="slotProps">
+                <slot name="itemLeading" :item="slotProps.item" />
+              </template>
+              <template #trailing="slotProps">
+                <slot name="itemTrailing" :item="slotProps.item" />
+              </template>
+              <template #itemIndicatorIcon="slotProps">
+                <slot name="itemIndicatorIcon" :item="slotProps.item" />
+              </template>
+            </SSelectOption>
+          </slot>
         </SSelectViewport>
-        <SSelectScrollDownButton :size>
+        <SSelectScrollDownButton :class="ui?.scrollDownButton" :size="size">
           <slot name="scrollDownIcon" />
         </SSelectScrollDownButton>
       </SSelectContent>

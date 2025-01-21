@@ -18,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <SelectTrigger :class="mergedCls" :disabled>
+  <SelectTrigger :class="mergedCls" :disabled="disabled">
     <slot />
   </SelectTrigger>
 </template>

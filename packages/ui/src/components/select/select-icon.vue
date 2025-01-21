@@ -12,9 +12,9 @@ defineOptions({
 const { class: cls, size } = defineProps<SelectIconProps>();
 
 const mergedCls = computed(() => {
-  const { icon } = selectVariants({ size });
+  const { triggerIcon } = selectVariants({ size });
 
-  return cn(icon(), cls);
+  return cn(triggerIcon(), cls);
 });
 </script>
 

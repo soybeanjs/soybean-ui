@@ -28,7 +28,13 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <SelectContent v-bind="forwarded" :class="mergedCls" :avoid-collisions :prioritize-position :position>
+  <SelectContent
+    v-bind="forwarded"
+    :class="mergedCls"
+    :avoid-collisions="avoidCollisions"
+    :prioritize-position="prioritizePosition"
+    :position="position"
+  >
     <slot />
   </SelectContent>
 </template>

@@ -11,9 +11,9 @@ defineOptions({
 const { class: cls, size, for: id } = defineProps<SelectLabelProps>();
 
 const mergedCls = computed(() => {
-  const { label } = selectVariants({ size });
+  const { groupLabel } = selectVariants({ size });
 
-  return cn(label(), cls);
+  return cn(groupLabel(), cls);
 });
 </script>
 

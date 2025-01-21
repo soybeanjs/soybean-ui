@@ -1,4 +1,5 @@
 import type {
+  AcceptableValue,
   ClassValue,
   ClassValueProp,
   SelectContentEmits,
@@ -11,7 +12,7 @@ import type {
   SelectTriggerProps as _SelectTriggerProps,
   SelectViewportProps as _SelectViewportProps
 } from '@soybean-ui/primitives';
-import type { SelectPosition, ThemeSize } from '@soybean-ui/variants';
+import type { SelectPosition, SelectSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface SelectTriggerProps extends _SelectTriggerProps {
   size?: ThemeSize;
@@ -21,7 +22,7 @@ export interface SelectViewportProps extends _SelectViewportProps {
   position?: SelectPosition;
 }
 
-export interface SelectItemProps extends _SelectItemProps {
+export interface SelectItemProps<T extends AcceptableValue = AcceptableValue> extends _SelectItemProps<T> {
   size?: ThemeSize;
 }
 
@@ -47,7 +48,8 @@ export interface SelectScrollDownButtonProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface SelectOption extends Pick<SelectItemProps, 'value' | 'disabled' | 'textValue'> {
+export interface SelectOptionType<T extends AcceptableValue = AcceptableValue>
+  extends Pick<SelectItemProps<T>, 'value' | 'disabled' | 'textValue'> {
   /**
    * The label to display in the dropdown.
    *
@@ -58,43 +60,43 @@ export interface SelectOption extends Pick<SelectItemProps, 'value' | 'disabled'
   separator?: boolean;
 }
 
-export interface SelectGroupOption extends Pick<SelectOption, 'separator'> {
-  label: string;
-  items: SelectOption[];
-  groupId?: string;
+export interface SelectGroupOptionType<T extends AcceptableValue = AcceptableValue>
+  extends Pick<SelectOptionType, 'separator' | 'label'> {
+  items: SelectOptionType<T>[];
 }
 
-export type SelectProps = SelectRootProps &
+export type SelectSingleOptionSlots = Extract<SelectSlots, 'item' | 'itemText' | 'itemIndicator' | 'separator'>;
+
+export interface SelectSingleOptionProps<T extends AcceptableValue = AcceptableValue> {
+  size?: ThemeSize;
+  item: SelectOptionType<T>;
+  ui?: Record<SelectSingleOptionSlots, ClassValue>;
+}
+
+export type SelectOptionSlots = Extract<
+  SelectSlots,
+  'group' | 'groupLabel' | 'item' | 'itemText' | 'itemIndicator' | 'separator'
+>;
+
+export interface SelectOptionProps<T extends AcceptableValue = AcceptableValue> {
+  size?: ThemeSize;
+  item: SelectOptionType<T> | SelectGroupOptionType<T>;
+  ui?: Record<SelectOptionSlots, ClassValue>;
+}
+
+export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRootProps<T> &
   Pick<SelectPortalProps, 'to'> &
-  Omit<SelectContentProps, 'class' | 'forceMount'> &
-  Pick<SelectViewportProps, 'nonce'> & {
-    items: (SelectOption | SelectGroupOption)[];
+  Omit<SelectContentProps, 'forceMount'> &
+  SelectViewportProps & {
     size?: ThemeSize;
+    items?: (SelectGroupOptionType<T> | SelectOptionType<T>)[];
     placeholder?: string;
     separator?: boolean;
-    separatorClass?: ClassValue;
-    triggerClass?: ClassValue;
-    triggerIconClass?: ClassValue;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    contentClass?: ClassValue;
     forceMountContent?: boolean;
-    scrollUpButtonClass?: ClassValue;
-    scrollDownButtonClass?: ClassValue;
-    itemClass?: ClassValue;
-    itemTextClass?: ClassValue;
-    itemIndicatorClass?: ClassValue;
-    groupClass?: ClassValue;
-    groupLabelClass?: ClassValue;
+    ui?: Record<SelectSlots, ClassValue>;
   };
-
-export interface SelectItemOptionProps
-  extends Pick<
-    SelectProps,
-    'size' | 'itemClass' | 'itemTextClass' | 'itemIndicatorClass' | 'separator' | 'separatorClass'
-  > {
-  option: SelectOption;
-}
 
 export type SelectEmits = SelectRootEmits & SelectContentEmits;
 

@@ -16,7 +16,7 @@ import SSelectLabel from './select-label.vue';
 import SSelectScrollUpButton from './select-scroll-up-button.vue';
 import SSelectScrollDownButton from './select-scroll-down-button.vue';
 import SSelect from './select.vue';
-import SSelectItemOption from './select-item-option.vue';
+import SSelectOption from './select-option.vue';
 
 export {
   SSelectRoot,
@@ -35,7 +35,7 @@ export {
   SSelectSeparator,
   SSelectLabel,
   SSelect,
-  SSelectItemOption
+  SSelectOption
 };
 
 export * from './types';

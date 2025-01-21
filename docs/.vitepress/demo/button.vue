@@ -1,39 +1,39 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SButton, SButtonGroup, SCard, SSelect } from 'soy-ui';
-import type { ButtonShadow, ButtonShape, ButtonVariant, SelectOption, ThemeColor, ThemeSize } from 'soy-ui';
+import type { ButtonShadow, ButtonShape, ButtonVariant, SelectOptionType, ThemeColor, ThemeSize } from 'soy-ui';
 
 const activeColor = ref<ThemeColor>('primary');
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const colorOptions: SelectOption[] = colors.map(color => ({
+const colorOptions: SelectOptionType[] = colors.map(color => ({
   label: color,
   value: color
 }));
 
 const activeVariant = ref<ButtonVariant>('solid');
 const variants: ButtonVariant[] = ['solid', 'pure', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
-const variantOptions: SelectOption[] = variants.map(variant => ({
+const variantOptions: SelectOptionType[] = variants.map(variant => ({
   label: variant,
   value: variant
 }));
 
 const activeSize = ref<ThemeSize>('md');
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-const sizeOptions: SelectOption[] = sizes.map(size => ({
+const sizeOptions: SelectOptionType[] = sizes.map(size => ({
   label: size,
   value: size
 }));
 
 const activeShape = ref<ButtonShape>('auto');
 const shapes: ButtonShape[] = ['auto', 'square', 'circle', 'rounded'];
-const shapeOptions: SelectOption[] = shapes.map(shape => ({
+const shapeOptions: SelectOptionType[] = shapes.map(shape => ({
   label: shape,
   value: shape
 }));
 
 const activeShadow = ref<ButtonShadow>('sm');
 const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
-const shadowOptions: SelectOption[] = shadows.map(shadow => ({
+const shadowOptions: SelectOptionType[] = shadows.map(shadow => ({
   label: shadow,
   value: shadow
 }));

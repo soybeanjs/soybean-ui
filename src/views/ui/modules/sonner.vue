@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SButton, SSelect, SonnerToaster, toast } from 'soy-ui';
-import type { SelectOption, SonnerProps } from 'soy-ui';
+import type { SelectOptionType, SonnerProps } from 'soy-ui';
 
 defineOptions({
   name: 'UiSonner'
@@ -60,7 +60,7 @@ function openToastWithAction() {
 
 const position = ref<SonnerProps['position']>('top-right');
 
-const positionOptions: SelectOption[] = [
+const positionOptions: SelectOptionType[] = [
   { label: 'Top Left', value: 'top-left' },
   { label: 'Top Center', value: 'top-center' },
   { label: 'Top Right', value: 'top-right' },

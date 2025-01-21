@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { SSelect } from 'soy-ui';
-import type { SelectGroupOption, SelectOption, ThemeSize } from 'soy-ui';
+import type { SelectGroupOptionType, SelectOptionType, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'UiSelect'
 });
 
-const fruits: SelectOption[] = createFruititems();
+const fruits: SelectOptionType[] = createFruitItems();
 
-const fruits2: SelectOption[] = fruits.map(fruit => ({ ...fruit, separator: fruit.value === 'orange' }));
+const fruits2: SelectOptionType[] = fruits.map(fruit => ({ ...fruit, separator: fruit.value === 'orange' }));
 
-const fruits3: SelectOption[] = fruits.map(fruit => ({ ...fruit, disabled: fruit.value === 'banana' }));
+const fruits3: SelectOptionType[] = fruits.map(fruit => ({ ...fruit, disabled: fruit.value === 'banana' }));
 
-function createFruititems() {
-  const opts: SelectOption[] = [
+function createFruitItems() {
+  const opts: SelectOptionType[] = [
     { value: 'apple', label: 'Apple' },
     { value: 'banana', label: 'Banana' },
     { value: 'cherry', label: 'Cherry' },
@@ -27,7 +27,7 @@ function createFruititems() {
   return opts;
 }
 
-const items: (SelectOption | SelectGroupOption)[] = [
+const items: SelectGroupOptionType[] = [
   {
     label: 'Group 1',
     items: [
