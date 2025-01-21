@@ -29,7 +29,7 @@ export default defineConfig({
       formats: ['es', 'cjs']
     },
     rollupOptions: {
-      external: ['vue', 'vue-router']
+      external: ['vue', 'vue-router', 'lucide-vue-next']
     }
   }
 });

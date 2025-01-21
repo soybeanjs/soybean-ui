@@ -15,5 +15,6 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
+  // @ts-expect-error ignore the error in presetSoybeanUI
   presets: [presetUno({ dark: 'class' }), presetTypography(), presetAnimations(), presetSoybeanJS(), presetSoybeanUI()]
 });
