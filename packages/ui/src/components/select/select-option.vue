@@ -5,7 +5,7 @@ import type { AcceptableValue } from '@soybean-ui/primitives';
 import SSelectLabel from './select-label.vue';
 import SSelectSeparator from './select-separator.vue';
 import SSelectSingleOption from './select-single-option.vue';
-import type { SelectOptionProps, SelectOptionType } from './types';
+import type { SelectOptionData, SelectOptionProps } from './types';
 import { isGroupOption } from './shared';
 
 defineOptions({
@@ -15,9 +15,9 @@ defineOptions({
 defineProps<SelectOptionProps<T>>();
 
 type Slots = {
-  leading?: (props: { item: SelectOptionType<T> }) => any;
-  trailing?: (props: { item: SelectOptionType<T> }) => any;
-  itemIndicatorIcon?: (props: { item: SelectOptionType<T> }) => any;
+  leading?: (props: { item: SelectOptionData<T> }) => any;
+  trailing?: (props: { item: SelectOptionData<T> }) => any;
+  itemIndicatorIcon?: (props: { item: SelectOptionData<T> }) => any;
 };
 
 const slots = defineSlots<Slots>();

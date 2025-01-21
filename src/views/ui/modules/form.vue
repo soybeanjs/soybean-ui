@@ -14,7 +14,7 @@ import {
 } from 'soy-ui';
 import { toTypedSchema } from '@vee-validate/valibot';
 import * as v from 'valibot';
-import type { CheckboxGroupItem, RadioGroupItemProps, SelectOptionType } from 'soy-ui';
+import type { CheckboxGroupItem, RadioGroupItemProps, SelectOptionData } from 'soy-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
@@ -57,7 +57,7 @@ const hobbies = ref<CheckboxGroupItem[]>([
   { label: 'Music', value: 'music' }
 ]);
 
-const cities = ref<SelectOptionType[]>([
+const cities = ref<SelectOptionData[]>([
   { label: 'Beijing', value: 'beijing' },
   { label: 'Shanghai', value: 'shanghai' },
   { label: 'Guangzhou', value: 'guangzhou' }

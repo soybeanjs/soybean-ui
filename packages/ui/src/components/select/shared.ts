@@ -1,5 +1,5 @@
-import type { SelectGroupOptionType, SelectOptionType } from './types';
+import type { SelectGroupOptionData, SelectOptionData } from './types';
 
-export function isGroupOption(opt: SelectOptionType | SelectGroupOptionType): opt is SelectGroupOptionType {
-  return (opt as SelectGroupOptionType).items !== undefined;
+export function isGroupOption(opt: SelectOptionData | SelectGroupOptionData): opt is SelectGroupOptionData {
+  return (opt as SelectGroupOptionData).items !== undefined;
 }

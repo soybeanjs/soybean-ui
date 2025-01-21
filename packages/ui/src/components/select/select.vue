@@ -14,7 +14,7 @@ import SSelectIcon from './select-icon.vue';
 import SSelectScrollUpButton from './select-scroll-up-button.vue';
 import SSelectScrollDownButton from './select-scroll-down-button.vue';
 import SSelectOption from './select-option.vue';
-import type { SelectEmits, SelectOptionType, SelectProps } from './types';
+import type { SelectEmits, SelectOptionData, SelectProps } from './types';
 
 defineOptions({
   name: 'SSelect'
@@ -34,9 +34,9 @@ type Slots = {
   leading?: () => any;
   trailing?: () => any;
   trigger?: (props: { modelValue?: T | T[]; selectedLabel: string[]; slotText: string }) => any;
-  itemLeading?: (props: { item: SelectOptionType<T> }) => any;
-  itemTrailing?: (props: { item: SelectOptionType<T> }) => any;
-  itemIndicatorIcon?: (props: { item: SelectOptionType<T> }) => any;
+  itemLeading?: (props: { item: SelectOptionData<T> }) => any;
+  itemTrailing?: (props: { item: SelectOptionData<T> }) => any;
+  itemIndicatorIcon?: (props: { item: SelectOptionData<T> }) => any;
   triggerIcon?: () => any;
   scrollUpIcon?: () => any;
   scrollDownIcon?: () => any;

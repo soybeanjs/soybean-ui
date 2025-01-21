@@ -48,7 +48,7 @@ export interface SelectScrollDownButtonProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface SelectOptionType<T extends AcceptableValue = AcceptableValue>
+export interface SelectOptionData<T extends AcceptableValue = AcceptableValue>
   extends Pick<SelectItemProps<T>, 'value' | 'disabled' | 'textValue'> {
   /**
    * The label to display in the dropdown.
@@ -60,16 +60,16 @@ export interface SelectOptionType<T extends AcceptableValue = AcceptableValue>
   separator?: boolean;
 }
 
-export interface SelectGroupOptionType<T extends AcceptableValue = AcceptableValue>
-  extends Pick<SelectOptionType, 'separator' | 'label'> {
-  items: SelectOptionType<T>[];
+export interface SelectGroupOptionData<T extends AcceptableValue = AcceptableValue>
+  extends Pick<SelectOptionData, 'separator' | 'label'> {
+  items: SelectOptionData<T>[];
 }
 
 export type SelectSingleOptionSlots = Extract<SelectSlots, 'item' | 'itemText' | 'itemIndicator' | 'separator'>;
 
 export interface SelectSingleOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
-  item: SelectOptionType<T>;
+  item: SelectOptionData<T>;
   ui?: Record<SelectSingleOptionSlots, ClassValue>;
 }
 
@@ -80,7 +80,7 @@ export type SelectOptionSlots = Extract<
 
 export interface SelectOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
-  item: SelectOptionType<T> | SelectGroupOptionType<T>;
+  item: SelectOptionData<T> | SelectGroupOptionData<T>;
   ui?: Record<SelectOptionSlots, ClassValue>;
 }
 
@@ -89,7 +89,7 @@ export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRoo
   Omit<SelectContentProps, 'forceMount'> &
   SelectViewportProps & {
     size?: ThemeSize;
-    items?: (SelectGroupOptionType<T> | SelectOptionType<T>)[];
+    items?: (SelectGroupOptionData<T> | SelectOptionData<T>)[];
     placeholder?: string;
     separator?: boolean;
     disabledPortal?: boolean;
