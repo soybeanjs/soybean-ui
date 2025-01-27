@@ -27,7 +27,7 @@ const {
   ...delegatedProps
 } = defineProps<SelectProps<T>>();
 
-const emit = defineEmits<SelectEmits>();
+const emit = defineEmits<SelectEmits<T>>();
 
 type Slots = {
   default?: () => any;

@@ -98,6 +98,6 @@ export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRoo
     ui?: Record<SelectSlots, ClassValue>;
   };
 
-export type SelectEmits = SelectRootEmits & SelectContentEmits;
+export type SelectEmits<T extends AcceptableValue = AcceptableValue> = SelectRootEmits<T> & SelectContentEmits;
 
 export type { SelectContentProps, SelectPosition, SelectContentEmits };
