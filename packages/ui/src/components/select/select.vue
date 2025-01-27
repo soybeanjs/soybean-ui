@@ -96,7 +96,7 @@ function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefin
         </SSelectIcon>
       </slot>
     </SSelectTrigger>
-    <SelectPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <SelectPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent
         :class="ui?.content"
         v-bind="forwardedContentProps"

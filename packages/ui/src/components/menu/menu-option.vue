@@ -93,7 +93,7 @@ const forwardedEmits = useEmitAsProps(emit);
       </template>
     </SMenuSubTrigger>
     <SMenuSeparator v-if="separator || item.separator" :class="separatorClass" />
-    <MenuPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <MenuPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SMenuSubContent
         v-bind="subContentProps"
         :class="subContentClass"

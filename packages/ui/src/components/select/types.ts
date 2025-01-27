@@ -85,7 +85,7 @@ export interface SelectOptionProps<T extends AcceptableValue = AcceptableValue> 
 }
 
 export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRootProps<T> &
-  Pick<SelectPortalProps, 'to'> &
+  Pick<SelectPortalProps, 'to' | 'defer'> &
   Omit<SelectContentProps, 'forceMount'> &
   SelectViewportProps & {
     size?: ThemeSize;

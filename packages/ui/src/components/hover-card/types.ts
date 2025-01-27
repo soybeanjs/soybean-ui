@@ -8,7 +8,7 @@ import type {
 } from '@soybean-ui/primitives';
 
 export type HoverCardProps = HoverCardRootProps &
-  Pick<HoverCardPortalProps, 'to'> &
+  Pick<HoverCardPortalProps, 'to' | 'defer'> &
   Omit<HoverCardContentProps, 'forceMount' | 'class'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;

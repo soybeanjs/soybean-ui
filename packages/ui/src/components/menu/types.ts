@@ -107,7 +107,7 @@ export interface MenuCommonProps {
 }
 
 export interface MenuPortalContentProps
-  extends Pick<MenuPortalProps, 'to'>,
+  extends Pick<MenuPortalProps, 'to' | 'defer'>,
     Omit<MenuContentProps, 'class' | 'forceMount'> {
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
@@ -131,7 +131,7 @@ export type MenuSubContentEmits<T extends AcceptableValue = AcceptableValue> = {
 };
 
 export interface MenuOptionProps<T extends AcceptableValue = AcceptableValue>
-  extends Pick<MenuPortalContentProps, 'to' | 'disabledPortal' | 'forceMountPortal'>,
+  extends Pick<MenuPortalContentProps, 'to' | 'defer' | 'disabledPortal' | 'forceMountPortal'>,
     MenuCommonProps {
   item: MenuOptionData<T>;
   groupClass?: ClassValue;

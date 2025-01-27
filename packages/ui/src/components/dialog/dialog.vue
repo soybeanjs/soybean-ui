@@ -43,7 +43,7 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     <DialogTrigger as-child>
       <slot name="trigger" />
     </DialogTrigger>
-    <DialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SDialogContent v-bind="forwardedContent">
         <SDialogHeader :class="headerClass">

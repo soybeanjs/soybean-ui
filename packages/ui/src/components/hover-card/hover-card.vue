@@ -44,7 +44,7 @@ const forwardedContentProps = useForwardProps(delegatedContentProps);
     <HoverCardTrigger as-child>
       <slot name="trigger" />
     </HoverCardTrigger>
-    <HoverCardPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <HoverCardPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SHoverCardContent
         v-bind="forwardedContentProps"
         :class="contentClass"

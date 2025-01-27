@@ -26,7 +26,7 @@ export interface DrawerFooterProps extends ClassValueProp {}
 
 export type DrawerProps = DrawerRootProps &
   DrawerContentProps &
-  Pick<DrawerPortalProps, 'to'> & {
+  Pick<DrawerPortalProps, 'to' | 'defer'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;

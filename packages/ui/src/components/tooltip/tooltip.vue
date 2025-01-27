@@ -47,7 +47,7 @@ const forwardedContentProps = usePickForwardProps(delegatedProps, [
       <TooltipTrigger as-child>
         <slot name="trigger" />
       </TooltipTrigger>
-      <TooltipPortal :to :disabled="disabledPortal" :force-mount="forceMountPortal">
+      <TooltipPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
         <STooltipContent
           v-bind="forwardedContentProps"
           :class="contentClass"

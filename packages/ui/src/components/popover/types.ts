@@ -12,7 +12,7 @@ import type {
 } from '@soybean-ui/primitives';
 
 export type PopoverProps = PopoverRootProps &
-  Pick<PopoverPortalProps, 'to'> &
+  Pick<PopoverPortalProps, 'to' | 'defer'> &
   Omit<PopoverContentProps, 'forceMount' | 'class'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;

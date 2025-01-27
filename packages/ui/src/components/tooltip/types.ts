@@ -11,7 +11,7 @@ import type {
 } from '@soybean-ui/primitives';
 
 export type TooltipProps = TooltipRootProps &
-  Pick<TooltipPortalProps, 'to'> &
+  Pick<TooltipPortalProps, 'to' | 'defer'> &
   Omit<TooltipContentProps, 'class' | 'forceMount'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;

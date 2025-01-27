@@ -53,7 +53,10 @@ export interface CommandItemIndicatorProps extends ListboxItemIndicatorProps {}
 export interface CommandSeparatorProps extends ClassValueProp {}
 
 // CommandDialog
-export interface CommandDialogProps extends DialogRootProps, DialogContentProps, Pick<DialogPortalProps, 'to'> {
+export interface CommandDialogProps
+  extends DialogRootProps,
+    DialogContentProps,
+    Pick<DialogPortalProps, 'to' | 'defer'> {
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
   overlayClass?: ClassValue;

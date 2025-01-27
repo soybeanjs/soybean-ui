@@ -15,7 +15,7 @@ export interface SheetContentProps extends DialogContentProps {
 
 export type SheetProps = SheetRootProps &
   SheetContentProps &
-  Pick<SheetPortalProps, 'to'> & {
+  Pick<SheetPortalProps, 'to' | 'defer'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;

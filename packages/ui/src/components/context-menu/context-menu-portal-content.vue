@@ -8,7 +8,7 @@ defineOptions({
   name: 'SContextMenuPortalContent'
 });
 
-const { to, disabledPortal, forceMountPortal, contentClass, forceMountContent, showArrow, ...delegatedProps } =
+const { to, defer, disabledPortal, forceMountPortal, contentClass, forceMountContent, showArrow, ...delegatedProps } =
   defineProps<ContextMenuPortalContentProps>();
 
 const emit = defineEmits<ContextMenuPortalContentEmits>();
@@ -17,7 +17,7 @@ const forwardedContentProps = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <ContextMenuPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+  <ContextMenuPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
     <ContextMenuContent v-bind="forwardedContentProps" :class="contentClass" :force-mount="forceMountContent">
       <slot />
       <ContextMenuArrow v-if="showArrow" />

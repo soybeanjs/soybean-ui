@@ -20,7 +20,7 @@ export interface AlertDialogFooterProps extends ClassValueProp {}
 
 export type AlertDialogProps = AlertDialogRootProps &
   AlertDialogContentProps &
-  Pick<AlertDialogPortalProps, 'to'> & {
+  Pick<AlertDialogPortalProps, 'to' | 'defer'> & {
     type?: AlertType;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;

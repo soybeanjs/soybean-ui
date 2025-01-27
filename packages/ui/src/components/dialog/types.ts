@@ -16,7 +16,7 @@ export interface DialogHeaderProps extends ClassValueProp {}
 
 export interface DialogFooterProps extends ClassValueProp {}
 
-export interface DialogProps extends DialogRootProps, DialogContentProps, Pick<DialogPortalProps, 'to'> {
+export interface DialogProps extends DialogRootProps, DialogContentProps, Pick<DialogPortalProps, 'to' | 'defer'> {
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
   overlayClass?: ClassValue;

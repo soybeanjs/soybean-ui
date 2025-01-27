@@ -26,6 +26,7 @@ const emit = defineEmits<DrawerEmits>();
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',
   'to',
+  'defer',
   'disabledPortal',
   'forceMountPortal',
   'overlayClass',
@@ -153,7 +154,7 @@ useStyleTag(css, { id: 'soybean-drawer-style' });
     <DrawerTrigger as-child>
       <slot name="trigger" />
     </DrawerTrigger>
-    <DrawerPortal>
+    <DrawerPortal :to="to" :defer="defer">
       <SDrawerOverlay :class="overlayClass" />
       <SDrawerContent :class="props.class">
         <SDrawerKnob />

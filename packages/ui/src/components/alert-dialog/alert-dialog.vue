@@ -73,7 +73,7 @@ const iconProps = computed(() => {
     <AlertDialogTrigger as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
-    <AlertDialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <AlertDialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SAlertDialogOverlay :class="overlayClass" :force-mount="forceMountOverlay" />
       <SAlertDialogContent v-bind="forwardedContent">
         <SAlertDialogHeader :class="headerClass">

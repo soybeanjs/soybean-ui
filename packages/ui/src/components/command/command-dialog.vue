@@ -39,7 +39,7 @@ const mergedContentCls = computed(() => cn(dialog(), props.class));
 
 <template>
   <DialogRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <DialogPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
+    <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
       <SDialogContent v-bind="forwardedContent" :class="mergedContentCls">
         <SDialogClose :class="closeClass" />

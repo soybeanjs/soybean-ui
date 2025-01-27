@@ -21,7 +21,7 @@ import type {
 } from '../menu/types';
 
 export interface ContextMenuPortalContentProps
-  extends Pick<MenuPortalProps, 'to'>,
+  extends Pick<MenuPortalProps, 'to' | 'defer'>,
     Omit<ContextMenuContentProps, 'class' | 'forceMount'> {
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
