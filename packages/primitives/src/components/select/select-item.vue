@@ -1,17 +1,20 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed, nextTick, onMounted, ref, toRefs } from 'vue';
 import { useCollection, useForwardExpose, useId } from '../../composables';
+import { handleAndDispatchCustomEvent } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
 import { injectSelectContentContext, injectSelectRootContext, provideSelectItemContext } from './context';
 import { SELECTION_KEYS, valueComparator } from './shared';
-import type { SelectItemPropsWithPrimitive } from './types';
+import type { SelectItemEmits, SelectItemEvent, SelectItemPropsWithPrimitive } from './types';
 
 defineOptions({
   name: 'SelectItem'
 });
 
 const props = defineProps<SelectItemPropsWithPrimitive<T>>();
+const emit = defineEmits<SelectItemEmits<T>>();
+
 const { disabled } = toRefs(props);
 
 const rootContext = injectSelectRootContext();
@@ -23,10 +26,19 @@ const isSelected = computed(() => valueComparator(rootContext.modelValue?.value,
 const isFocused = ref(false);
 const textValue = ref(props.textValue ?? '');
 const textId = useId(undefined, 'soybean-select-item-text');
+const SELECT_SELECT = 'select.select';
 
-async function handleSelect(ev?: PointerEvent) {
+async function handleSelectCustomEvent(ev: PointerEvent | KeyboardEvent) {
+  if (ev.defaultPrevented) return;
+
+  const eventDetail = { originalEvent: ev, value: props.value as T };
+  handleAndDispatchCustomEvent(SELECT_SELECT, handleSelect, eventDetail);
+}
+
+async function handleSelect(ev: SelectItemEvent<T>) {
   await nextTick();
-  if (ev?.defaultPrevented) return;
+  emit('select', ev);
+  if (ev.defaultPrevented) return;
 
   if (!disabled.value) {
     rootContext.onValueChange(props.value);
@@ -57,15 +69,23 @@ async function handleKeyDown(event: KeyboardEvent) {
   if (event.defaultPrevented) return;
   const isTypingAhead = contentContext.searchRef?.value !== '';
   if (isTypingAhead && event.key === ' ') return;
-  if (SELECTION_KEYS.includes(event.key)) handleSelect();
+  if (SELECTION_KEYS.includes(event.key)) {
+    handleSelectCustomEvent(event);
+  }
   // prevent page scroll if using the space key to select an item
-  if (event.key === ' ') event.preventDefault();
+  if (event.key === ' ') {
+    event.preventDefault();
+  }
 }
 
 if (props.value === '') {
   throw new Error(
     'A <SelectItem /> must have a value prop that is not an empty string. This is because the Select value can be set to an empty string to clear the selection and show the placeholder.'
   );
+}
+
+function onPointerDown(event: PointerEvent) {
+  (event.currentTarget as HTMLElement).focus({ preventScroll: true });
 }
 
 onMounted(() => {
@@ -101,12 +121,8 @@ provideSelectItemContext({
       :tabindex="disabled ? undefined : -1"
       @focus="isFocused = true"
       @blur="isFocused = false"
-      @pointerup="handleSelect"
-      @pointerdown="
-        event => {
-          (event.currentTarget as HTMLElement).focus({ preventScroll: true });
-        }
-      "
+      @pointerup="handleSelectCustomEvent"
+      @pointerdown="onPointerDown"
       @touchend.prevent.stop
       @pointermove="handlePointerMove"
       @pointerleave="handlePointerLeave"

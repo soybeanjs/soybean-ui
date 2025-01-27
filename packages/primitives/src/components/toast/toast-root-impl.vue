@@ -143,9 +143,9 @@ provideToastRootContext({ onClose: handleClose });
 <template>
   <ToastAnnounce
     v-if="announceTextContent"
-    role="status"
+    role="alert"
     :aria-live="type === 'foreground' ? 'assertive' : 'polite'"
-    aria-atomic
+    aria-atomic="true"
   >
     {{ announceTextContent }}
   </ToastAnnounce>
@@ -158,11 +158,11 @@ provideToastRootContext({ onClose: handleClose });
         :class="props.class"
         :as="as"
         :as-child="asChild"
-        aria-atomic
+        aria-atomic="true"
         aria-live="off"
         :data-swipe-direction="providerContext.swipeDirection.value"
         :data-state="open ? 'open' : 'closed'"
-        role="status"
+        role="alert"
         tabindex="0"
         :style="{ userSelect: 'none', touchAction: 'none' }"
         @pointerdown.left="

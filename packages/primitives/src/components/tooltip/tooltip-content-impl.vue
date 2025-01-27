@@ -33,9 +33,9 @@ const rootContext = injectTooltipRootContext();
 
 const { forwardRef } = useForwardExpose();
 const slots = defineSlots<{
-  default?: () => VNode[];
+  default?: (props?: any) => VNode[];
 }>();
-const defaultSlot = computed(() => slots.default?.());
+const defaultSlot = computed(() => slots.default?.({}));
 const ariaLabel = computed(() => {
   if (props.ariaLabel) return props.ariaLabel;
   let content = '';

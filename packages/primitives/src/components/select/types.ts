@@ -169,6 +169,11 @@ export interface SelectItemProps<T = AcceptableValue> extends ClassValueProp {
   textValue?: string;
 }
 export type SelectItemPropsWithPrimitive<T = AcceptableValue> = SelectItemProps<T> & PrimitiveProps;
+export type SelectItemEvent<T> = CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: T }>;
+export type SelectItemEmits<T = AcceptableValue> = {
+  /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
+  select: [event: SelectItemEvent<T>];
+};
 
 export interface SelectItemContext<T = AcceptableValue> {
   value: T;

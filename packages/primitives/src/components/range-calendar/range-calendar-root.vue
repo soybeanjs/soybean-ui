@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
-import { useVModel } from '@vueuse/core';
+import { useEventListener, useVModel } from '@vueuse/core';
 import { isEqualDay } from '@internationalized/date';
 import { isNullish } from '../../shared';
 import { getDefaultDate, handleCalendarInitialFocus, isBefore } from '../../date';
 import type { DateRange, DateValue } from '../../date';
-import { useCalendar, useDirection, useLocale, usePrimitiveElement, useRangeCalendarState } from '../../composables';
+import {
+  useCalendar,
+  useDirection,
+  useKbd,
+  useLocale,
+  usePrimitiveElement,
+  useRangeCalendarState
+} from '../../composables';
 import { Primitive } from '../primitive';
 import { provideRangeCalendarRootContext } from './context';
 import type { RangeCalendarRootEmits, RangeCalendarRootPropsWithPrimitive } from './types';
@@ -67,7 +74,7 @@ const focusedValue = ref() as Ref<DateValue | undefined>;
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false
-}) as Ref<DateRange | null>;
+}) as Ref<DateRange>;
 
 const currentModelValue = computed(() =>
   isNullish(modelValue.value) ? { start: undefined, end: undefined } : modelValue.value
@@ -182,11 +189,15 @@ watch([startValue, endValue], ([_startValue, _endValue]) => {
         end: _endValue.copy()
       };
     }
-  } else if (value.start && value.end) {
-    modelValue.value = {
-      start: undefined,
-      end: undefined
-    };
+  }
+});
+
+const kbd = useKbd();
+useEventListener('keydown', ev => {
+  if (ev.key === kbd.ESCAPE) {
+    // Abort start and end selection
+    startValue.value = modelValue.value.start;
+    endValue.value = modelValue.value.end;
   }
 });
 

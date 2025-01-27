@@ -19,7 +19,7 @@ const showTeleport = computed(() => isMounted.value || props.forceMount);
 </script>
 
 <template>
-  <Teleport v-if="showTeleport" :disabled="disabled" :to="to">
+  <Teleport v-if="showTeleport" :disabled="disabled" :to="to" :defer="defer">
     <slot />
   </Teleport>
 </template>

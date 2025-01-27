@@ -483,12 +483,19 @@ function getPanelSize(item: PanelData) {
   return panelSize;
 }
 
-function isPanelCollapsed(item: PanelData) {
+function isPanelCollapsed(panelData: PanelData) {
   const { layout: _layout, panelDataArray } = eagerValuesRef.value;
 
-  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, item, _layout);
+  const { collapsedSize = 0, collapsible, panelSize } = panelDataHelper(panelDataArray, panelData, _layout);
 
-  return collapsible === true && panelSize === collapsedSize;
+  if (!collapsible) return false;
+
+  // panelSize is undefined during ssr due to vue ssr reactivity limitation.
+  if (panelSize === undefined) {
+    return panelData.constraints.defaultSize === panelData.constraints.collapsedSize;
+  }
+
+  return panelSize === collapsedSize;
 }
 
 function isPanelExpanded(item: PanelData) {

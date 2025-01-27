@@ -116,9 +116,10 @@ export type TooltipProviderContext = {
   ignoreNonKeyboardFocus: Ref<boolean>;
 };
 
-// Content
-export interface TooltipContentProps
+// ContentImpl
+export interface TooltipContentImplProps
   extends ClassValueProp,
+    PrimitiveProps,
     Pick<
       PopperContentProps,
       | 'side'
@@ -131,21 +132,39 @@ export interface TooltipContentProps
       | 'arrowPadding'
       | 'sticky'
       | 'hideWhenDetached'
+      | 'positionStrategy'
+      | 'updatePositionStrategy'
     > {
-  /** Used to force mounting when more control is needed. */
-  forceMount?: boolean;
   /**
-   * By default, screen readers will announce the content inside the component. If this is not descriptive enough, use
-   * aria-label as a more descriptive label.
+   * By default, screenreaders will announce the content inside the component. If this is not descriptive enough, or you
+   * have content that cannot be announced, use aria-label as a more descriptive label.
+   *
+   * @defaultValue String
    */
   ariaLabel?: string;
 }
-export type TooltipContentPropsWithPrimitive = TooltipContentProps & PrimitiveProps;
 
-export type TooltipContentEmits = {
+export type TooltipContentImplEmits = {
+  /**
+   * Event handler called when focus moves to the destructive action after opening. It can be prevented by calling
+   * `event.preventDefault`
+   */
   escapeKeyDown: [event: KeyboardEvent];
+  /**
+   * Event handler called when a pointer event occurs outside the bounds of the component. It can be prevented by
+   * calling `event.preventDefault`.
+   */
   pointerDownOutside: [event: Event];
 };
+
+// Content
+export interface TooltipContentProps extends TooltipContentImplProps {
+  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
+  forceMount?: boolean;
+}
+export type TooltipContentPropsWithPrimitive = TooltipContentProps & PrimitiveProps;
+
+export type TooltipContentEmits = TooltipContentImplEmits;
 
 // Arrow
 export interface TooltipArrowProps extends ArrowProps {}

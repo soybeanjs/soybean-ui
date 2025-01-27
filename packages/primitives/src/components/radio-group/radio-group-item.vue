@@ -63,7 +63,7 @@ function handleFocus() {
       @keydown.enter.prevent
       @focus="handleFocus"
     >
-      <slot />
+      <slot :checked="checked" :required="required" :disabled="disabled" />
     </Radio>
   </RovingFocusItem>
 </template>

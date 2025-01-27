@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect, watchPostEffect } from 'vue';
-import { computedEager, useThrottleFn } from '@vueuse/core';
+import { computedEager } from '@vueuse/core';
 import {
   autoUpdate,
   flip,
@@ -110,7 +110,7 @@ const computedMiddleware = computedEager(() => {
 // If provided custom reference, it will overwrite the default anchor element
 const reference = computed(() => props.reference ?? rootContext.anchor.value);
 
-const { floatingStyles, placement, isPositioned, middlewareData, update } = useFloating(reference, floatingRef, {
+const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(reference, floatingRef, {
   strategy: props.positionStrategy,
   placement: desiredPlacement,
   whileElementsMounted: (...args) => {
@@ -128,14 +128,6 @@ const placedAlign = computed(() => getSideAndAlignFromPlacement(placement.value)
 
 watchPostEffect(() => {
   if (isPositioned.value) emit('placed');
-});
-
-// update position automatically when `boundingClientRect` changes
-const throttleUpdate = useThrottleFn(update, 10, true, true);
-watchEffect(() => {
-  if (reference.value?.getBoundingClientRect()) {
-    throttleUpdate();
-  }
 });
 
 const cannotCenterArrow = computed(() => middlewareData.value.arrow?.centerOffset !== 0);

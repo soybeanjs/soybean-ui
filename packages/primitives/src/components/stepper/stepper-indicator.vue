@@ -10,12 +10,13 @@ defineOptions({
 
 const props = defineProps<StepperIndicatorPropsWithPrimitive>();
 
+const { step } = injectStepperItemContext();
+
 useForwardExpose();
-const itemContext = injectStepperItemContext();
 </script>
 
 <template>
   <Primitive v-bind="props">
-    <slot>Step {{ itemContext.step.value }}</slot>
+    <slot :step="step">Step {{ step }}</slot>
   </Primitive>
 </template>
