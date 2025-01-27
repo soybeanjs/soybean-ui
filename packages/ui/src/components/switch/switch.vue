@@ -22,7 +22,7 @@ const switchId = computed(() => id || `switch-${defaultId}`);
 
 <template>
   <SSwitchRoot v-bind="forwarded" :id="switchId">
-    <SSwitchThumb :class="thumbClass" :size>
+    <SSwitchThumb :class="thumbClass" :size="size">
       <slot />
     </SSwitchThumb>
   </SSwitchRoot>

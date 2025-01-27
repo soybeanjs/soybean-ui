@@ -19,6 +19,6 @@ const mergedCls = computed(() => {
 
 <template>
   <PaginationList v-slot="{ items }" :class="mergedCls">
-    <slot :items />
+    <slot :items="items" />
   </PaginationList>
 </template>

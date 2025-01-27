@@ -38,6 +38,6 @@ useForwardExpose();
 
 <template>
   <Primitive :class="props.class" :as="as" :as-child="asChild" :data-state="dataState" :data-disabled="dataDisabled">
-    <slot :open />
+    <slot :open="open" />
   </Primitive>
 </template>

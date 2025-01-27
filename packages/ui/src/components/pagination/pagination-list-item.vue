@@ -13,7 +13,7 @@ const forwardedProps = useForwardProps(props);
 </script>
 
 <template>
-  <PaginationListItem as-child :value>
+  <PaginationListItem as-child :value="value">
     <slot>
       <SPaginationButton v-bind="forwardedProps">
         {{ value }}

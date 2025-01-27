@@ -32,7 +32,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
 <template>
   <STabsRoot v-bind="forwarded">
-    <STabsList :class="listClass" :loop :orientation>
+    <STabsList :class="listClass" :loop="loop" :orientation="orientation">
       <STabsTrigger
         v-for="item in items"
         :key="item.value"
@@ -43,9 +43,9 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation>
+      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation="orientation">
         <slot name="indicator">
-          <STabsIndicator :class="indicatorClass" :orientation />
+          <STabsIndicator :class="indicatorClass" :orientation="orientation" />
         </slot>
       </STabsIndicatorRoot>
     </STabsList>
@@ -55,7 +55,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       :value="item.value"
       :force-mount="forceMountContent"
       :class="contentClass"
-      :orientation
+      :orientation="orientation"
     >
       <slot name="content" v-bind="{ ...item, active: item.value === modelValue }" />
     </STabsContent>

@@ -114,5 +114,5 @@ useStyleTag(css, { id: 'sonner-toaster-style' });
 </script>
 
 <template>
-  <Toaster v-bind="forwardedProps" :duration :toast-options="opts" />
+  <Toaster v-bind="forwardedProps" :duration="duration" :toast-options="opts" />
 </template>

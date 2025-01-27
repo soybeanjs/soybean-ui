@@ -23,7 +23,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" :class="mergedCls" :orientation>
+  <TabsRoot v-bind="forwardedProps" :class="mergedCls" :orientation="orientation">
     <slot />
   </TabsRoot>
 </template>

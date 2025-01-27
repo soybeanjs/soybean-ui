@@ -18,5 +18,5 @@ const mergedCls = computed(() => cn(image(), cls));
 </script>
 
 <template>
-  <AvatarImage :src :alt :class="mergedCls" @loading-status-change="emit('loadingStatusChange', $event)" />
+  <AvatarImage :src="src" :alt="alt" :class="mergedCls" @loading-status-change="emit('loadingStatusChange', $event)" />
 </template>

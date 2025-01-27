@@ -53,6 +53,6 @@ provideCheckboxGroupRootContext({
     :as-child="asChild"
   >
     <slot />
-    <VisuallyHiddenInput v-if="isFormControl && name" :name :value="modelValue" :required />
+    <VisuallyHiddenInput v-if="isFormControl && name" :name="name" :value="modelValue" :required="required" />
   </component>
 </template>

@@ -14,7 +14,7 @@ const forwardedProps = useForwardProps(delegatedProps);
 
 <template>
   <AlertDialogCancel as-child>
-    <SButton v-bind="forwardedProps" :variant>
+    <SButton v-bind="forwardedProps" :variant="variant">
       <slot>Cancel</slot>
     </SButton>
   </AlertDialogCancel>

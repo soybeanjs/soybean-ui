@@ -33,10 +33,10 @@ const radioId = computed(() => id || `radio-${defaultId}`);
   <SRadioRoot :class="rootCls">
     <SRadioControl v-bind="forwardedProps" :id="radioId" :class="controlClass">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
-        <SRadioIndicator :class="indicatorClass" :color :force-mount="forceMountIndicator" />
+        <SRadioIndicator :class="indicatorClass" :color="color" :force-mount="forceMountIndicator" />
       </Transition>
     </SRadioControl>
-    <SRadioLabel :class="labelClass" :for="radioId" :size>
+    <SRadioLabel :class="labelClass" :for="radioId" :size="size">
       <slot :id="radioId">{{ label }}</slot>
     </SRadioLabel>
   </SRadioRoot>

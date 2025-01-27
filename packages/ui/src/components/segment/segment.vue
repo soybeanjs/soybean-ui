@@ -29,7 +29,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
 <template>
   <SSegmentRoot v-bind="forwarded">
-    <SSegmentTriggerRoot :class="triggerRootClass" :loop>
+    <SSegmentTriggerRoot :class="triggerRootClass" :loop="loop">
       <SSegmentTrigger
         v-for="item in items"
         :key="item.value"
@@ -39,9 +39,9 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </SSegmentTrigger>
-      <SSegmentIndicatorRoot :class="indicatorRootClass" :orientation>
+      <SSegmentIndicatorRoot :class="indicatorRootClass" :orientation="orientation">
         <slot name="indicator">
-          <SSegmentIndicator :class="indicatorClass" :orientation />
+          <SSegmentIndicator :class="indicatorClass" :orientation="orientation" />
         </slot>
       </SSegmentIndicatorRoot>
     </SSegmentTriggerRoot>

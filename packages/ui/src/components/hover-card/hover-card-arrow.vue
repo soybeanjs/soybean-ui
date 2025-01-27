@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(arrow(), cls));
 </script>
 
 <template>
-  <HoverCardArrow as-child :width :height>
+  <HoverCardArrow as-child :width="width" :height="height">
     <div :class="mergedCls"></div>
   </HoverCardArrow>
 </template>

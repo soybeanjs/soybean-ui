@@ -13,7 +13,7 @@ const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
-  <SButton v-bind="forwardedProps" :color :variant :shape>
+  <SButton v-bind="forwardedProps" :color="color" :variant="variant" :shape="shape">
     <slot></slot>
   </SButton>
 </template>

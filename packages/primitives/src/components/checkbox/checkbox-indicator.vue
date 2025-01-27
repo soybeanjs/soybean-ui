@@ -28,7 +28,7 @@ const dataState = computed(() => getCheckedState(state.value));
 </script>
 
 <template>
-  <Presence :present>
+  <Presence :present="present">
     <Primitive
       v-bind="$attrs"
       :ref="forwardRef"

@@ -18,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <Separator :class="mergedCls" :decorative :orientation>
+  <Separator :class="mergedCls" :decorative="decorative" :orientation="orientation">
     <slot />
   </Separator>
 </template>

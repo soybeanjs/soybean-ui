@@ -46,7 +46,7 @@ const showFooter = computed(() => Boolean(slots.footer));
 
 <template>
   <SCardRoot :class="rootCls" :size="size" :split="split">
-    <SCardHeader v-if="showHeader" :class="headerClass" :size>
+    <SCardHeader v-if="showHeader" :class="headerClass" :size="size">
       <slot name="header">
         <slot name="title-root">
           <SCardTitleRoot :class="titleRootClass">

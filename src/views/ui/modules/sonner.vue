@@ -72,7 +72,7 @@ const positionOptions: SelectOptionData[] = [
 
 <template>
   <div>
-    <SonnerToaster :position close-button />
+    <SonnerToaster :position="position" close-button />
     <div class="py-12px text-18px">Type</div>
     <div class="flex gap-12px">
       <SButton variant="outline" @click="openDefaultToast">Default</SButton>

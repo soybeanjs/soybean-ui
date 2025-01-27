@@ -16,7 +16,7 @@ const forwardedProps = useForwardProps(delegatedProps);
 <template>
   <SSeparatorRoot v-bind="forwardedProps">
     <slot name="leading" />
-    <SSeparatorLabel v-if="label || $slots.default" :class="labelClass" :align :orientation>
+    <SSeparatorLabel v-if="label || $slots.default" :class="labelClass" :align="align" :orientation="orientation">
       <slot>{{ label }}</slot>
     </SSeparatorLabel>
     <slot name="trailing" />

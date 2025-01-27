@@ -31,8 +31,16 @@ const value = computed(() => delegatedContentProps.modelValue || delegatedConten
 <template>
   <TextareaRoot :class="rootCls">
     <STextareaContent v-bind="forwardedContent" :ref="forwardRef" :class="contentClass" />
-    <STextareaCount v-if="showCount" v-slot="{ count }" :class="countClass" :size :value :maxlength :count-graphemes>
-      <slot name="count" :count :value />
+    <STextareaCount
+      v-if="showCount"
+      v-slot="{ count }"
+      :class="countClass"
+      :size="size"
+      :value="value"
+      :maxlength="maxlength"
+      :count-graphemes="countGraphemes"
+    >
+      <slot name="count" :count="count" :value="value" />
     </STextareaCount>
   </TextareaRoot>
 </template>

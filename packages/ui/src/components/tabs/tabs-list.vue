@@ -18,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <TabsList :class="mergedCls" :loop>
+  <TabsList :class="mergedCls" :loop="loop">
     <slot />
   </TabsList>
 </template>

@@ -18,7 +18,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <TabsContent :class="mergedCls" :value :force-mount>
+  <TabsContent :class="mergedCls" :value="value" :force-mount="forceMount">
     <slot />
   </TabsContent>
 </template>

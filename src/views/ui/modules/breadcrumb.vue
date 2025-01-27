@@ -107,9 +107,9 @@ function handleClick(item: BreadcrumbItem) {
 
 <template>
   <div class="py-12px text-18px">Default</div>
-  <SBreadcrumb :items @click="handleClick" />
+  <SBreadcrumb :items="items" @click="handleClick" />
   <div class="py-12px text-18px">Custom Separator</div>
-  <SBreadcrumb :items>
+  <SBreadcrumb :items="items">
     <template #separator>&nbsp;/&nbsp;</template>
   </SBreadcrumb>
   <div class="py-12px text-18px">Link</div>
@@ -141,7 +141,7 @@ function handleClick(item: BreadcrumbItem) {
   <div class="flex-c-stretch gap-12px">
     <div v-for="size in sizes" :key="size" class="flex gap-12px">
       <span class="w-36px text-right">{{ size }}:</span>
-      <SBreadcrumb :items :size="size" />
+      <SBreadcrumb :items="items" :size="size" />
     </div>
   </div>
 </template>

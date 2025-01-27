@@ -33,25 +33,31 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 <template>
   <PaginationRoot v-bind="forwarded">
-    <SPaginationList v-slot="{ items }" :class="listCls" :size>
-      <SPaginationFirst :class="firstClass" :size :variant>
+    <SPaginationList v-slot="{ items }" :class="listCls" :size="size">
+      <SPaginationFirst :class="firstClass" :size="size" :variant="variant">
         <slot name="first" />
       </SPaginationFirst>
-      <SPaginationPrev :class="prevClass" :size :variant>
+      <SPaginationPrev :class="prevClass" :size="size" :variant="variant">
         <slot name="prev" />
       </SPaginationPrev>
       <template v-for="(item, index) in items" :key="index">
-        <SPaginationListItem v-if="item.type === 'page'" :class="listItemClass" :size :variant :value="item.value">
+        <SPaginationListItem
+          v-if="item.type === 'page'"
+          :class="listItemClass"
+          :size="size"
+          :variant="variant"
+          :value="item.value"
+        >
           <slot />
         </SPaginationListItem>
-        <SPaginationEllipsis v-else-if="item.type === 'ellipsis'" :class="ellipsisClass" :size>
+        <SPaginationEllipsis v-else-if="item.type === 'ellipsis'" :class="ellipsisClass" :size="size">
           <slot name="ellipsis" />
         </SPaginationEllipsis>
       </template>
-      <SPaginationNext :class="nextClass" :size :variant>
+      <SPaginationNext :class="nextClass" :size="size" :variant="variant">
         <slot name="next" />
       </SPaginationNext>
-      <SPaginationLast :class="lastClass" :size :variant>
+      <SPaginationLast :class="lastClass" :size="size" :variant="variant">
         <slot name="last" />
       </SPaginationLast>
     </SPaginationList>

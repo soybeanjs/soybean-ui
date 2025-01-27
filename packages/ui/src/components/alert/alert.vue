@@ -22,15 +22,15 @@ function closeAlert() {
 </script>
 
 <template>
-  <SAlertRoot v-show="!close" :class="rootCls" :color :variant>
+  <SAlertRoot v-show="!close" :class="rootCls" :color="color" :variant="variant">
     <SAlertHeader :class="headerClass">
-      <SAlertTitleRoot :class="titleRootClass" :color>
+      <SAlertTitleRoot :class="titleRootClass" :color="color">
         <slot name="icon" />
         <SAlertTitle :class="titleClass">
           <slot>{{ title }}</slot>
         </SAlertTitle>
       </SAlertTitleRoot>
-      <slot name="extra" :closable>
+      <slot name="extra" :closable="closable">
         <SButtonIcon v-if="closable" size="xs" fit-content @click="closeAlert">
           <X />
         </SButtonIcon>

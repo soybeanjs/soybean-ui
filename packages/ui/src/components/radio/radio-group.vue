@@ -24,7 +24,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <RadioGroupRoot v-bind="forwarded" :class="mergedCls" :orientation>
+  <RadioGroupRoot v-bind="forwarded" :class="mergedCls" :orientation="orientation">
     <slot>
       <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" :size="size" />
     </slot>

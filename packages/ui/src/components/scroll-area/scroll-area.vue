@@ -18,10 +18,10 @@ const forwardedProps = useForwardProps(delegatedProps);
 
 <template>
   <SScrollAreaRoot v-bind="forwardedProps">
-    <SScrollAreaViewport :class="viewportClass" :nonce>
+    <SScrollAreaViewport :class="viewportClass" :nonce="nonce">
       <slot />
     </SScrollAreaViewport>
-    <SScrollAreaScrollbar :class="scrollbarClass" :orientation :force-mount>
+    <SScrollAreaScrollbar :class="scrollbarClass" :orientation="orientation" :force-mount="forceMount">
       <SScrollAreaThumb :class="thumbClass" />
     </SScrollAreaScrollbar>
     <ScrollAreaCorner />

@@ -25,7 +25,7 @@ const mergedCls = computed(() => {
 
 <template>
   <MenuRadioItem v-bind="forwarded" :class="mergedCls">
-    <SMenuItemIndicator :class="indicatorClass" :size>
+    <SMenuItemIndicator :class="indicatorClass" :size="size">
       <slot name="indicatorIcon">
         <SMenuRadioIndicatorIcon />
       </slot>

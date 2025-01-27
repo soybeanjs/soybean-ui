@@ -12,7 +12,7 @@ const sides: SheetSide[] = ['left', 'right', 'top', 'bottom'];
 <template>
   <div class="py-12px text-18px">Side</div>
   <div class="flex gap-3">
-    <SSheet v-for="side in sides" :key="side" title="Sheet Title" :side>
+    <SSheet v-for="side in sides" :key="side" title="Sheet Title" :side="side">
       <template #trigger>
         <SButton variant="outline">{{ side }}</SButton>
       </template>
