@@ -42,6 +42,6 @@ provideAccordionRootContext({
 
 <template>
   <Primitive :ref="forwardRef" :class="props.class" :as="as" :as-child="asChild">
-    <slot :model-value="modelValue" />
+    <slot :model-value="modelValue" :is-single="isSingle" />
   </Primitive>
 </template>

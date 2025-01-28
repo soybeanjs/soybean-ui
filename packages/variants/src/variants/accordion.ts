@@ -11,3 +11,5 @@ export const accordionVariants = tv({
     triggerIcon: 'shrink-0 text-muted-foreground transition-transform duration-200'
   }
 });
+
+export type AccordionSlots = keyof typeof accordionVariants.slots;

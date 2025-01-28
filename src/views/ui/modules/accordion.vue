@@ -51,6 +51,10 @@ const items: AccordionItems[] = [
     type="single"
     collapsible
     :items="items"
+    :ui="{
+      item: 'border-b-0',
+      content: 'px-3 leading-8'
+    }"
     item-class="border-b-0"
     content-class="px-3 leading-8"
   >
