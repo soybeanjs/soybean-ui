@@ -70,7 +70,7 @@ export type SelectSingleOptionSlots = Extract<SelectSlots, 'item' | 'itemText' |
 export interface SelectSingleOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
   item: SelectOptionData<T>;
-  ui?: Record<SelectSingleOptionSlots, ClassValue>;
+  ui?: Partial<Record<SelectSingleOptionSlots, ClassValue>>;
 }
 
 export type SelectOptionSlots = Extract<
@@ -81,8 +81,10 @@ export type SelectOptionSlots = Extract<
 export interface SelectOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
   item: SelectOptionData<T> | SelectGroupOptionData<T>;
-  ui?: Record<SelectOptionSlots, ClassValue>;
+  ui?: Partial<Record<SelectOptionSlots, ClassValue>>;
 }
+
+export type SelectUi = Partial<Record<SelectSlots, ClassValue>>;
 
 export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRootProps<T> &
   Pick<SelectPortalProps, 'to' | 'defer'> &
@@ -95,7 +97,7 @@ export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRoo
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     forceMountContent?: boolean;
-    ui?: Record<SelectSlots, ClassValue>;
+    ui?: SelectUi;
   };
 
 export type SelectEmits<T extends AcceptableValue = AcceptableValue> = SelectRootEmits<T> & SelectContentEmits;
