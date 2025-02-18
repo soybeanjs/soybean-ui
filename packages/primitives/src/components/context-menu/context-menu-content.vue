@@ -57,6 +57,7 @@ useForwardExpose();
     side="right"
     :side-offset="2"
     align="start"
+    update-position-strategy="always"
     :style="style"
     @close-auto-focus="onCloseAutoFocus"
     @interact-outside="onInteractOutside"

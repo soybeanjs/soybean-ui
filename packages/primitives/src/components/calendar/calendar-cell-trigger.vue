@@ -31,7 +31,7 @@ const labelText = computed(() => {
 });
 
 const isDisabled = computed(() => rootContext.isDateDisabled(props.day));
-const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day));
+const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day) ?? false);
 const isDateToday = computed(() => {
   return isToday(props.day, getLocalTimeZone());
 });
@@ -45,8 +45,7 @@ const isFocusedDate = computed(() => {
 });
 const isSelectedDate = computed(() => rootContext.isDateSelected(props.day));
 
-const SELECTOR =
-  '[data-soybean-calendar-cell-trigger]:not([data-disabled]):not([data-outside-month]):not([data-outside-visible-months])';
+const SELECTOR = `[data-radix-vue-calendar-cell-trigger]:not([data-disabled]):not([data-outside-view]):not([data-outside-visible-view])`;
 
 function changeDate(date: DateValue) {
   if (rootContext.readonly.value) return;
@@ -126,10 +125,10 @@ function handleArrowKey(e: KeyboardEvent) {
     role="button"
     :aria-label="labelText"
     data-soybean-calendar-cell-trigger
-    :aria-disabled="isOutsideView || isDisabled || isUnavailable ? true : undefined"
+    :aria-disabled="isDisabled || isUnavailable ? true : undefined"
     :data-selected="isSelectedDate ? true : undefined"
     :data-value="day.toString()"
-    :data-disabled="isDisabled || isOutsideView ? '' : undefined"
+    :data-disabled="isDisabled ? '' : undefined"
     :data-unavailable="isUnavailable ? '' : undefined"
     :data-today="isDateToday ? '' : undefined"
     :data-outside-view="isOutsideView ? '' : undefined"
@@ -140,7 +139,15 @@ function handleArrowKey(e: KeyboardEvent) {
     @keydown.up.down.left.right.space.enter="handleArrowKey"
     @keydown.enter.prevent
   >
-    <slot :day-value="dayValue">
+    <slot
+      :day-value="dayValue"
+      :disabled="isDisabled"
+      :today="isDateToday"
+      :selected="isSelectedDate"
+      :outside-view="isOutsideView"
+      :outside-visible-view="isOutsideVisibleView"
+      :unavailable="isUnavailable"
+    >
       {{ dayValue }}
     </slot>
   </Primitive>

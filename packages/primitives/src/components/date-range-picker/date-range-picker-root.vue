@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRefs } from 'vue';
+import { ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { getDefaultDate } from '../../date';
@@ -89,6 +89,12 @@ const open = useVModel(props, 'open', emit, {
 }) as Ref<boolean>;
 
 const dateFieldRef = ref<DateRangeFieldRootInstance | undefined>();
+
+watch(modelValue, value => {
+  if (value.start && value.start.compare(placeholder.value) !== 0) {
+    placeholder.value = value.start.copy();
+  }
+});
 
 provideDateRangePickerRootContext({
   allowNonContiguousRanges,

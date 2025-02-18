@@ -37,6 +37,6 @@ function handleClick() {
     :disabled="disabled"
     @click="handleClick"
   >
-    <slot>Prev page</slot>
+    <slot :disabled="disabled">Prev page</slot>
   </Primitive>
 </template>

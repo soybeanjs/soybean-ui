@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, toRefs } from 'vue';
+import { computed, ref, toRefs, watch } from 'vue';
 import { useVModel } from '@vueuse/core';
 import {
   useDirection,
@@ -70,6 +70,16 @@ const placeholder = computed(() => {
 
 const previousValue = ref(modelValue.value);
 
+const inputValue = ref(modelValue.value);
+
+watch(
+  () => modelValue.value,
+  () => {
+    inputValue.value = modelValue.value;
+  },
+  { immediate: true, deep: true }
+);
+
 function cancel() {
   modelValue.value = previousValue.value;
   isEditing.value = false;
@@ -78,10 +88,12 @@ function cancel() {
 
 function edit() {
   isEditing.value = true;
+  inputValue.value = modelValue.value;
   emit('update:state', 'edit');
 }
 
 function submit() {
+  modelValue.value = inputValue.value;
   previousValue.value = modelValue.value;
   isEditing.value = false;
 
@@ -116,6 +128,7 @@ provideEditableRootContext({
   isEditing,
   maxLength,
   modelValue,
+  inputValue,
   placeholder,
   edit,
   cancel,

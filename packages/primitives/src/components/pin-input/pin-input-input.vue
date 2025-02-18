@@ -46,7 +46,7 @@ function handleInput(event: InputEvent) {
 async function resetPlaceholder() {
   const target = currentElement.value as HTMLInputElement;
   await nextTick();
-  if (!target.value) {
+  if (target && !target.value) {
     target.placeholder = context.placeholder.value;
   }
 }

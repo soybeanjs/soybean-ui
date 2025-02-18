@@ -2,7 +2,6 @@
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqualDay } from '@internationalized/date';
 import type { DateRange, DateValue, SegmentValueObj } from '../../date';
 import {
   areAllDaysBetweenValid,
@@ -204,12 +203,9 @@ watch(locale, value => {
 });
 
 watch(modelValue, _modelValue => {
-  if (
-    _modelValue &&
-    _modelValue.start !== undefined &&
-    (!isEqualDay(placeholder.value, _modelValue.start) || placeholder.value.compare(_modelValue.start) !== 0)
-  )
+  if (_modelValue && _modelValue.start !== undefined && placeholder.value.compare(_modelValue.start) !== 0) {
     placeholder.value = _modelValue.start.copy();
+  }
 });
 
 watch([endValue, locale], ([_endValue]) => {

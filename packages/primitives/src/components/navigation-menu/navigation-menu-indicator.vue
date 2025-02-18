@@ -47,7 +47,7 @@ useResizeObserver(menuContext.indicatorTrack, handlePositionChange);
 
 <template>
   <Teleport v-if="menuContext.indicatorTrack.value" :to="menuContext.indicatorTrack.value">
-    <Presence :present="(forceMount || isVisible) && !!indicatorStyle?.size">
+    <Presence :present="forceMount || isVisible">
       <Primitive
         v-bind="$attrs"
         :ref="forwardRef"

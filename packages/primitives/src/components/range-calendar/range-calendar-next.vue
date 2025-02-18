@@ -26,6 +26,6 @@ const disabled = computed(() => rootContext.disabled.value || rootContext.isNext
     :disabled="disabled"
     @click="rootContext.nextPage(props.nextPage)"
   >
-    <slot>Next page</slot>
+    <slot :disabled="disabled">Next page</slot>
   </Primitive>
 </template>

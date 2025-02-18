@@ -10,7 +10,7 @@ const props = defineProps<DateRangePickerNextPropsWithPrimitive>();
 </script>
 
 <template>
-  <RangeCalendarNext v-bind="props">
-    <slot />
+  <RangeCalendarNext v-slot="slotProps" v-bind="props">
+    <slot v-bind="slotProps" />
   </RangeCalendarNext>
 </template>

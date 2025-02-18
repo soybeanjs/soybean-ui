@@ -2,7 +2,6 @@
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqualDay } from '@internationalized/date';
 import {
   createContent,
   getDefaultDate,
@@ -128,11 +127,9 @@ watch(locale, value => {
 });
 
 watch(modelValue, _modelValue => {
-  if (
-    !isNullish(_modelValue) &&
-    (!isEqualDay(placeholder.value, _modelValue) || placeholder.value.compare(_modelValue) !== 0)
-  )
+  if (!isNullish(_modelValue) && placeholder.value.compare(_modelValue) !== 0) {
     placeholder.value = _modelValue.copy();
+  }
 });
 
 watch([modelValue, locale], ([_modelValue]) => {

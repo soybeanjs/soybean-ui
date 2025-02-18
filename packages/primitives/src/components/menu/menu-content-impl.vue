@@ -208,6 +208,7 @@ provideMenuContentContext({
           :reference="reference"
           :sticky="sticky"
           :hide-when-detached="hideWhenDetached"
+          :update-position-strategy="updatePositionStrategy"
           @keydown="onKeyDown"
           @blur="onBlur"
           @pointermove="onPointerMove"

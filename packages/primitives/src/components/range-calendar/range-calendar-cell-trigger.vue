@@ -32,7 +32,7 @@ const labelText = computed(() =>
 );
 
 const isDisabled = computed(() => rootContext.isDateDisabled(props.day));
-const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day));
+const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day) ?? false);
 const isSelectedDate = computed(() => rootContext.isSelected(props.day));
 const isSelectionStart = computed(() => rootContext.isSelectionStart(props.day));
 const isSelectionEnd = computed(() => rootContext.isSelectionEnd(props.day));
@@ -44,8 +44,7 @@ const isHighlighted = computed(() =>
     : false
 );
 
-const SELECTOR =
-  '[data-soybean-calendar-cell-trigger]:not([data-disabled]):not([data-outside-month]):not([data-outside-visible-months])';
+const SELECTOR = `[data-radix-vue-calendar-cell-trigger]:not([data-disabled]):not([data-outside-view]):not([data-outside-visible-view])`;
 
 const isDateToday = computed(() => {
   return isToday(props.day, getLocalTimeZone());
@@ -185,7 +184,7 @@ function handleArrowKey(e: KeyboardEvent) {
     :aria-label="labelText"
     data-soybean-calendar-cell-trigger
     :aria-selected="isSelectedDate && !isUnavailable ? true : undefined"
-    :aria-disabled="isOutsideView || isDisabled || isUnavailable ? true : undefined"
+    :aria-disabled="isDisabled || isUnavailable ? true : undefined"
     :data-highlighted="isHighlighted && !isUnavailable ? '' : undefined"
     :data-selection-start="isSelectionStart ? true : undefined"
     :data-selection-end="isSelectionEnd ? true : undefined"
@@ -194,10 +193,10 @@ function handleArrowKey(e: KeyboardEvent) {
     :data-selected="isSelectedDate && !isUnavailable ? true : undefined"
     :data-outside-visible-view="isOutsideVisibleView ? '' : undefined"
     :data-value="day.toString()"
-    :data-disabled="isDisabled || isOutsideView ? '' : undefined"
+    :data-disabled="isDisabled ? '' : undefined"
     :data-unavailable="isUnavailable ? '' : undefined"
     :data-today="isDateToday ? '' : undefined"
-    :data-outside-month="isOutsideView ? '' : undefined"
+    :data-outside-view="isOutsideView ? '' : undefined"
     :data-focused="isFocusedDate ? '' : undefined"
     :tabindex="isFocusedDate ? 0 : isOutsideView || isDisabled ? undefined : -1"
     @click="handleClick"
@@ -205,7 +204,20 @@ function handleArrowKey(e: KeyboardEvent) {
     @mouseenter="handleFocus"
     @keydown.up.down.left.right.enter.space="handleArrowKey"
   >
-    <slot :day-value="dayValue">
+    <slot
+      :day-value="dayValue"
+      :disabled="isDisabled"
+      :today="isDateToday"
+      :selected="isSelectedDate"
+      :outside-view="isOutsideView"
+      :outside-visible-view="isOutsideVisibleView"
+      :unavailable="isUnavailable"
+      :highlighted="isHighlighted && !isUnavailable"
+      :highlighted-start="isHighlightStart"
+      :highlighted-end="isHighlightEnd"
+      :selection-start="isSelectionStart"
+      :selection-end="isSelectionEnd"
+    >
       {{ dayValue }}
     </slot>
   </Primitive>

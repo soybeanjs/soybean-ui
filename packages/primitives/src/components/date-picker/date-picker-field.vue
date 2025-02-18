@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { isEqualDay } from '@internationalized/date';
 import type { DateValue } from '../../date';
 import { DateFieldRoot } from '../date-field';
 import { injectDatePickerRootContext } from './context';
@@ -9,6 +8,16 @@ defineOptions({
 });
 
 const rootContext = injectDatePickerRootContext();
+
+function onUpdateModelValue(date?: DateValue) {
+  if (date && rootContext.modelValue.value && date.compare(rootContext.modelValue.value) === 0) return;
+  rootContext.onDateChange(date);
+}
+
+function onUpdatePlaceholder(date: DateValue) {
+  if (date.compare(rootContext.placeholder.value) === 0) return;
+  rootContext.onPlaceholderChange(date);
+}
 </script>
 
 <template>
@@ -32,25 +41,8 @@ const rootContext = injectDatePickerRootContext();
       required: rootContext.required.value,
       dir: rootContext.dir.value
     }"
-    @update:model-value="
-      (date: DateValue | undefined) => {
-        if (
-          date &&
-          rootContext.modelValue.value &&
-          isEqualDay(rootContext.modelValue.value, date) &&
-          date.compare(rootContext.modelValue.value) === 0
-        )
-          return;
-        rootContext.onDateChange(date);
-      }
-    "
-    @update:placeholder="
-      (date: DateValue) => {
-        if (isEqualDay(rootContext.placeholder.value, date) && date.compare(rootContext.placeholder.value) === 0)
-          return;
-        rootContext.onPlaceholderChange(date);
-      }
-    "
+    @update:model-value="onUpdateModelValue"
+    @update:placeholder="onUpdatePlaceholder"
   >
     <slot :segments="segments" :model-value="modelValue" />
   </DateFieldRoot>

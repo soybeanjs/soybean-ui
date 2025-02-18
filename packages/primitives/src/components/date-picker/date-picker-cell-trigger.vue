@@ -10,7 +10,7 @@ const props = defineProps<DatePickerCellTriggerPropsWithPrimitive>();
 </script>
 
 <template>
-  <CalendarCellTrigger v-bind="props">
-    <slot />
+  <CalendarCellTrigger v-slot="slotProps" v-bind="props">
+    <slot v-bind="slotProps" />
   </CalendarCellTrigger>
 </template>

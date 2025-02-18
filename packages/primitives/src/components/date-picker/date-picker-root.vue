@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, toRefs } from 'vue';
+import { computed, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqualDay, isSameDay } from '@internationalized/date';
 import { getDefaultDate } from '../../date';
 import type { DateValue } from '../../date';
 import { useDirection } from '../../composables';
@@ -92,6 +91,12 @@ const open = useVModel(props, 'open', emit, {
 
 const dateFieldRef = ref<DateFieldInstance | undefined>();
 
+watch(modelValue, value => {
+  if (value && value.compare(placeholder.value) !== 0) {
+    placeholder.value = value.copy();
+  }
+});
+
 provideDatePickerRootContext({
   isDateUnavailable: propsIsDateUnavailable.value,
   isDateDisabled: propsIsDateDisabled.value,
@@ -121,15 +126,17 @@ provideDatePickerRootContext({
   dir,
   onDateChange(date: DateValue | undefined) {
     if (!date || !modelValue.value) {
-      modelValue.value = date;
-    } else if (!preventDeselect.value && isSameDay(modelValue.value as DateValue, date)) {
+      modelValue.value = date?.copy() ?? undefined;
+    } else if (!preventDeselect.value && date && modelValue.value.compare(date) === 0) {
       modelValue.value = undefined;
     } else {
       modelValue.value = date.copy();
     }
   },
   onPlaceholderChange(date: DateValue) {
-    if (!isEqualDay(date, placeholder.value)) placeholder.value = date.copy();
+    if (date.compare(placeholder.value) === 0) {
+      placeholder.value = date.copy();
+    }
   }
 });
 </script>

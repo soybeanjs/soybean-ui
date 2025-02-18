@@ -10,7 +10,7 @@ const props = defineProps<DatePickerPrevPropsWithPrimitive>();
 </script>
 
 <template>
-  <CalendarPrev v-bind="props">
-    <slot />
+  <CalendarPrev v-slot="slotProps" v-bind="props">
+    <slot v-bind="slotProps" />
   </CalendarPrev>
 </template>

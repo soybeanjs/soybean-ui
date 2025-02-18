@@ -51,6 +51,7 @@ export interface EditableRootContext {
   maxLength: Ref<number | undefined>;
   disabled: Ref<boolean>;
   modelValue: Ref<string | null | undefined>;
+  inputValue: Ref<string | null | undefined>;
   placeholder: Ref<{ edit: string; preview: string }>;
   isEditing: Ref<boolean>;
   submitMode: Ref<SubmitMode>;
