@@ -23,8 +23,8 @@ const forwarded = useForwardPropsEmits(props, emit);
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        :color
-        :size
+        :color="color"
+        :size="size"
         :disabled="disabled || item.disabled"
       />
     </slot>

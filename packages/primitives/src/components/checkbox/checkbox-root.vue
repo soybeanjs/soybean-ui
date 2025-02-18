@@ -103,10 +103,10 @@ function handleClick() {
       v-if="isFormControl && name && !checkboxGroupContext"
       type="checkbox"
       :checked="!!checkboxState"
-      :name
-      :value
-      :disabled
-      :required
+      :name="name"
+      :value="value"
+      :disabled="disabled"
+      :required="required"
     />
   </component>
 </template>

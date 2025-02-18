@@ -98,7 +98,7 @@ defineExpose({
       :as-child="asChild"
       :tabindex="isTabbingBackOut || focusableItemsCount === 0 ? -1 : 0"
       :data-orientation="orientation"
-      :dir
+      :dir="dir"
       style="outline: none"
       @mousedown="handleMouseDown"
       @mouseup="handleMouseUp"

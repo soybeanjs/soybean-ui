@@ -24,7 +24,7 @@ const disabled = computed(
     v-bind="props"
     aria-label="Last Page"
     :type="as === 'button' ? 'button' : undefined"
-    :disabled
+    :disabled="disabled"
     @click="!disabled && rootContext.onPageChange(rootContext.pageCount.value)"
   >
     <slot>Last page</slot>
