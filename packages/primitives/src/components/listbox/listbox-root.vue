@@ -113,6 +113,7 @@ function changeHighlight(el: HTMLElement, scrollIntoView = true) {
 
 function highlightItem(value: T) {
   if (isVirtual.value) {
+    // @ts-expect-error ignore type
     virtualHighlightHook.trigger(value);
   } else {
     const item = getItems().find(i => compare(i.value, value, props.by));

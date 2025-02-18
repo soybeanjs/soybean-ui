@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { Fragment, cloneVNode, computed, useSlots } from 'vue';
+import { Fragment, cloneVNode, computed } from 'vue';
 import type { Ref, VNode } from 'vue';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useParentElement } from '@vueuse/core';
@@ -18,9 +18,7 @@ defineOptions({
 
 const props = defineProps<ListboxVirtualizerProps<T>>();
 
-defineSlots<ListboxVirtualizerSlots<T>>();
-
-const slots = useSlots();
+const slots = defineSlots<ListboxVirtualizerSlots<T>>();
 const rootContext = injectListboxRootContext();
 const parentEl = useParentElement() as Ref<HTMLElement>;
 const { getItems } = useCollection<{ value: T }>();
@@ -65,7 +63,7 @@ const virtualizer = useVirtualizer({
 
 const virtualizedItems = computed(() =>
   virtualizer.value.getVirtualItems().map(item => {
-    const defaultNode = slots.default!({
+    const defaultNode = slots.default({
       option: props.options[item.index],
       virtualizer: virtualizer.value,
       virtualItem: item

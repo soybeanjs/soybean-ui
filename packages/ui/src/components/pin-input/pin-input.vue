@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import PinInputRoot from './pin-input-root.vue';
 import PinInputInputRoot from './pin-input-input-root.vue';
@@ -23,7 +23,12 @@ const {
 
 const emit = defineEmits<PinInputEmits>();
 
-const slots = useSlots();
+type Slots = {
+  default: () => any;
+  separator?: (params: { index: number }) => any;
+};
+
+const slots = defineSlots<Slots>();
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
