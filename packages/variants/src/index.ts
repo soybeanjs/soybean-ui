@@ -26,6 +26,7 @@ export * from './variants/pin-input';
 export * from './variants/popover';
 export * from './variants/progress';
 export * from './variants/radio';
+export * from './variants/resizable';
 export * from './variants/scroll-area';
 export * from './variants/segment';
 export * from './variants/select';

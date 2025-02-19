@@ -28,6 +28,7 @@ export * from './pin-input';
 export * from './popover';
 export * from './progress';
 export * from './radio';
+export * from './resizable';
 export * from './scroll-area';
 export * from './segment';
 export * from './select';

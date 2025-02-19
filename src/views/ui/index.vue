@@ -34,6 +34,7 @@ import UiPinInput from './modules/pin-input.vue';
 import UiPopover from './modules/popover.vue';
 import UiProgress from './modules/progress.vue';
 import UiRadio from './modules/radio.vue';
+import UiResizable from './modules/resizable.vue';
 import UiScrollArea from './modules/scroll-area.vue';
 import UiSegment from './modules/segment.vue';
 import UiSelect from './modules/select.vue';
@@ -211,6 +212,11 @@ const tabs: TabConfig[] = [
     value: 'radio',
     label: 'Radio',
     component: UiRadio
+  },
+  {
+    value: 'resizable',
+    label: 'Resizable',
+    component: UiResizable
   },
   {
     value: 'scroll-area',
