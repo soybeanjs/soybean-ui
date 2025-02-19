@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ArrowUpRight } from 'lucide-vue-next';
 import { cn, menuVariants } from '@soybean-ui/variants';
+import { ArrowUpRight } from 'lucide-vue-next';
 import type { MenuItemLinkIconProps } from './types';
 
 defineOptions({

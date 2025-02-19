@@ -12,9 +12,9 @@ import {
   SSwitch,
   useForm
 } from 'soy-ui';
-import { toTypedSchema } from '@vee-validate/valibot';
-import * as v from 'valibot';
 import type { CheckboxGroupItem, RadioGroupItemProps, SelectOptionData } from 'soy-ui';
+import * as v from 'valibot';
+import { toTypedSchema } from '@vee-validate/valibot';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({

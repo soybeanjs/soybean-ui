@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Rocket, TriangleAlert } from 'lucide-vue-next';
 import { SAlert } from 'soy-ui';
 import type { AlertVariant, ThemeColor } from 'soy-ui';
+import { Rocket, TriangleAlert } from 'lucide-vue-next';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: AlertVariant[] = ['outline', 'plain', 'soft'];

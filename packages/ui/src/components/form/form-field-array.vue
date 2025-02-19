@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { FieldArray } from 'vee-validate';
 import { useForwardProps } from '@soybean-ui/primitives';
+import { FieldArray } from 'vee-validate';
 import SFormField from './form-filed.vue';
 import type { FormFieldArrayProps } from './types';
 

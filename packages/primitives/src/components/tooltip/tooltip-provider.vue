@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/shared';
 import { ref, toRefs } from 'vue';
+import { useTimeoutFn } from '@vueuse/shared';
 import { useForwardExpose } from '../../composables';
 import { provideTooltipProviderContext } from './context';
 import type { TooltipProviderProps } from './types';

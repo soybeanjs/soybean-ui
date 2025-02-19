@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
 import { SButtonLink } from 'soy-ui';
+import { Icon } from '@iconify/vue';
 
 defineOptions({
   name: 'Home'

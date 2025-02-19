@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { FunctionalComponent } from 'vue';
-import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
-import type { LucideProps } from 'lucide-vue-next';
 import {
   AlertDialogPortal,
   AlertDialogRoot,
@@ -11,6 +9,8 @@ import {
   useOmitEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitives';
+import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
+import type { LucideProps } from 'lucide-vue-next';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogHeader from './alert-dialog-header.vue';

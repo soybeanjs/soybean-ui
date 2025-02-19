@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SCard } from 'soy-ui';
 import { useRouter } from 'vue-router';
+import { SButton, SCard } from 'soy-ui';
 
 const router = useRouter();
 </script>

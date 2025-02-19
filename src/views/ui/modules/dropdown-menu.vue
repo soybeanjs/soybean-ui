@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { SButton, SDropdownMenu, SDropdownMenuCheckbox, SDropdownMenuRadio } from 'soy-ui';
 import type { MenuOptionData, ThemeSize } from 'soy-ui';
 import {
@@ -18,7 +19,6 @@ import {
   UserPlus,
   Users
 } from 'lucide-vue-next';
-import { ref } from 'vue';
 
 defineOptions({
   name: 'UiDropdownMenu'

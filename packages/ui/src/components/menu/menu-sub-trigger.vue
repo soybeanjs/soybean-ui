@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { MenuSubTrigger, useForwardProps } from '@soybean-ui/primitives';
-import { ChevronRight } from 'lucide-vue-next';
 import { cn, menuVariants } from '@soybean-ui/variants';
+import { ChevronRight } from 'lucide-vue-next';
 import type { MenuSubTriggerProps } from './types';
 
 defineOptions({

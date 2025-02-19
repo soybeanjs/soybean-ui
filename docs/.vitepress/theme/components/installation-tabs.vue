@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Copy } from 'lucide-vue-next';
 import { SButtonIcon, STabs } from 'soy-ui';
 import type { TabsOption } from 'soy-ui';
+import { Copy } from 'lucide-vue-next';
 
 defineOptions({
   name: 'InstallationTabs'

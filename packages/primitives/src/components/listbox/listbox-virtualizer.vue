@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { Fragment, cloneVNode, computed } from 'vue';
 import type { Ref, VNode } from 'vue';
-import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useParentElement } from '@vueuse/core';
 import { refAutoReset } from '@vueuse/shared';
+import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useCollection } from '../../composables';
 import { findValuesBetween, getNextMatch } from '../../shared';
 import type { AcceptableValue, NavigationKeys } from '../../types';

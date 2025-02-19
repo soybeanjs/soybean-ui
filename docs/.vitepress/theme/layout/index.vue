@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { toRefs } from 'vue';
 import { useData } from 'vitepress';
+import { toRefs } from 'vue';
 import { useScroll } from '@vueuse/core';
 import Home from './components/home.vue';
 import Navbar from './components/navbar.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core';
 import { computed, nextTick, watch } from 'vue';
+import { useVModel } from '@vueuse/core';
 import { useForwardExpose } from '../../composables';
 import { isNullish } from '../../shared';
 import { Primitive } from '../primitive';

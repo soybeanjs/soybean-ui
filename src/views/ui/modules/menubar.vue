@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { EditIcon, FileIcon, Link, UserIcon, ViewIcon } from 'lucide-vue-next';
 import { SMenubar } from 'soy-ui';
 import type { MenuOptionData } from 'soy-ui';
+import { EditIcon, FileIcon, Link, UserIcon, ViewIcon } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiMenubar'

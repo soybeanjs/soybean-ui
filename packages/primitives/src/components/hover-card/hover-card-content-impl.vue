@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { syncRef } from '@vueuse/shared';
 import { nextTick, onMounted, onUnmounted, ref, watchEffect } from 'vue';
+import { syncRef } from '@vueuse/shared';
 import { useForwardExpose, useForwardProps, useGraceArea } from '../../composables';
 import { DismissableLayer } from '../dismissable-layer';
 import { PopperContent } from '../popper';

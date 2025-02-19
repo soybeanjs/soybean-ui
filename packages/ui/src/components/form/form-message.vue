@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, toValue } from 'vue';
-import { ErrorMessage } from 'vee-validate';
 import { cn, formVariants } from '@soybean-ui/variants';
+import { ErrorMessage } from 'vee-validate';
 import { useFormField } from './hooks';
 import type { FormMessageProps } from './types';
 

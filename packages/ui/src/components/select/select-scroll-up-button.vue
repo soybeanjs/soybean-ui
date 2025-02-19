@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { SelectScrollUpButton } from '@soybean-ui/primitives';
-import { ChevronUp } from 'lucide-vue-next';
 import { cn, selectVariants } from '@soybean-ui/variants';
+import { ChevronUp } from 'lucide-vue-next';
 import type { SelectScrollUpButtonProps } from './types';
 
 defineOptions({

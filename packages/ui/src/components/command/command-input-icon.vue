@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Search } from 'lucide-vue-next';
 import { cn, commandVariants } from '@soybean-ui/variants';
+import { Search } from 'lucide-vue-next';
 import type { CommandInputIconProps } from './types';
 
 defineOptions({

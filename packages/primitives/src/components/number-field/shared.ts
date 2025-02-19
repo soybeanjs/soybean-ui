@@ -1,9 +1,9 @@
 import { computed, ref } from 'vue';
 import type { Ref } from 'vue';
-import { NumberFormatter, NumberParser } from '@internationalized/number';
 import { unrefElement, useEventListener } from '@vueuse/core';
 import type { MaybeComputedElementRef } from '@vueuse/core';
 import { createEventHook, isClient, reactiveComputed } from '@vueuse/shared';
+import { NumberFormatter, NumberParser } from '@internationalized/number';
 
 export function usePressedHold(options: { target?: MaybeComputedElementRef; disabled: Ref<boolean> }) {
   const { disabled } = options;

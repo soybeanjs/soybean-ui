@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, toRefs, watch } from 'vue';
 import { useData, useRoute } from 'vitepress';
+import { ref, toRefs, watch } from 'vue';
 import { createReusableTemplate } from '@vueuse/core';
-import { Icon } from '@iconify/vue';
 import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from 'soy-ui';
+import { Icon } from '@iconify/vue';
 import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';
 

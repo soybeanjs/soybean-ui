@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Check, ChevronsUpDown } from 'lucide-vue-next';
 import { SButton, SCommand, SPopover } from 'soy-ui';
 import type { CommandItemSingleOption } from 'soy-ui';
+import { Check, ChevronsUpDown } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCombobox'

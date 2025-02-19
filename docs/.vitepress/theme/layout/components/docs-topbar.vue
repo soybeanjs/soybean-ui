@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useScroll } from '@vueuse/core';
 import { useData, useRoute } from 'vitepress';
 import { computed, ref, toRefs, watch } from 'vue';
-import { Icon } from '@iconify/vue';
+import { useScroll } from '@vueuse/core';
 import { SButton, SScrollArea, SSheet } from 'soy-ui';
+import { Icon } from '@iconify/vue';
 import { flatten } from '../../../shared';
 import type { SidebarItem } from '../../../types';
 import DocSidebarItem from './docs-sidebar-item.vue';

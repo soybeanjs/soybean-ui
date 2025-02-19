@@ -1,7 +1,7 @@
-import { computed, onMounted, onUnmounted, ref, watch, watchEffect, watchPostEffect } from 'vue';
-import type { ComputedRef, Ref } from 'vue';
 import { useData } from 'vitepress';
 import type { DefaultTheme } from 'vitepress/theme';
+import { computed, onMounted, onUnmounted, ref, watch, watchEffect, watchPostEffect } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
 import { isNullish } from '../../shared';
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue';
 import { Content, useData, useRoute } from 'vitepress';
 import type { DefaultTheme } from 'vitepress/theme';
+import { computed, toRefs } from 'vue';
 import { SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger } from 'soy-ui';
 import { flatten } from '../../../shared';
 import DocsTopbar from './docs-topbar.vue';
