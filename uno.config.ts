@@ -1,8 +1,8 @@
-import { defineConfig, presetTypography, presetUno, transformerDirectives, transformerVariantGroup } from 'unocss';
-import type { Theme } from 'unocss/preset-mini';
-import { presetSoybeanJS } from '@soybeanjs/unocss-preset';
-import { presetAnimations } from 'unocss-preset-animations';
+import { defineConfig, presetTypography, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
 import { presetSoybeanUI } from '@soybean-ui/unocss-preset';
+import { presetSoybeanJS } from '@soybeanjs/unocss-preset';
+import type { Theme } from 'unocss/preset-mini';
+import { presetAnimations } from 'unocss-preset-animations';
 
 export default defineConfig<Theme>({
   content: {
@@ -15,6 +15,11 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  // @ts-expect-error ignore the error in presetSoybeanUI
-  presets: [presetUno({ dark: 'class' }), presetTypography(), presetAnimations(), presetSoybeanJS(), presetSoybeanUI()]
+  presets: [
+    presetWind3({ dark: 'class' }),
+    presetTypography(),
+    presetAnimations(),
+    presetSoybeanJS(),
+    presetSoybeanUI()
+  ]
 });
