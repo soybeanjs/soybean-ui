@@ -8,3 +8,5 @@ export const alertDialogVariants = tv({
     title: `flex items-center gap-x-2 text-lg font-semibold leading-none tracking-tight`
   }
 });
+
+export type AlertDialogSlots = keyof typeof alertDialogVariants.slots;

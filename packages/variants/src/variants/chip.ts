@@ -78,3 +78,5 @@ export const chipVariants = tv({
 type ChipVariants = VariantProps<typeof chipVariants>;
 
 export type ChipPosition = NonNullable<ChipVariants['position']>;
+
+export type ChipSlots = keyof typeof chipVariants.slots;

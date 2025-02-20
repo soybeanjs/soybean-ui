@@ -51,3 +51,5 @@ export const separatorVariants = tv({
 type SeparatorVariants = VariantProps<typeof separatorVariants>;
 
 export type SeparatorBorder = NonNullable<SeparatorVariants['border']>;
+
+export type SeparatorSlots = keyof typeof separatorVariants.slots;

@@ -11,3 +11,5 @@ export const tooltipVariants = tv({
     arrow: 'fill-popover stroke-border'
   }
 });
+
+export type TooltipSlots = keyof typeof tooltipVariants.slots;

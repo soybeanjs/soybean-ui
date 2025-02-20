@@ -67,3 +67,5 @@ export const progressVariants = tv({
     size: 'md'
   }
 });
+
+export type ProgressSlots = keyof typeof progressVariants.slots;

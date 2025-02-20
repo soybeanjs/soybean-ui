@@ -12,3 +12,5 @@ export const hoverCardVariants = tv({
     arrow: 'absolute size-8px rotate-45 border-b border-r border-border bg-popover -top-4px rounded-1px'
   }
 });
+
+export type HoverCardSlots = keyof typeof hoverCardVariants.slots;

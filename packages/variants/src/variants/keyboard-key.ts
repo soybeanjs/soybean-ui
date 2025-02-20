@@ -56,3 +56,5 @@ export const keyboardKeyVariants = tv({
 type KeyboardKeyVariants = VariantProps<typeof keyboardKeyVariants>;
 
 export type KeyboardKeyVariant = NonNullable<KeyboardKeyVariants['variant']>;
+
+export type KeyboardKeySlots = keyof typeof keyboardKeyVariants.slots;

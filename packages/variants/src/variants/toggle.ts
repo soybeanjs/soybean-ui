@@ -56,3 +56,5 @@ export const toggleVariants = tv({
 type ToggleVariants = VariantProps<typeof toggleVariants>;
 
 export type ToggleVariant = NonNullable<ToggleVariants['variant']>;
+
+export type ToggleSlots = keyof typeof toggleVariants.slots;

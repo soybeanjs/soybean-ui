@@ -20,3 +20,5 @@ export const dialogVariants = tv({
     footer: `flex flex-col-reverse sm:flex-row sm:justify-end gap-2`
   }
 });
+
+export type DialogSlots = keyof typeof dialogVariants.slots;

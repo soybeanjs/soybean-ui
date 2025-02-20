@@ -20,3 +20,5 @@ export const commandVariants = tv({
     dialog: `p-0 gap-0`
   }
 });
+
+export type CommandSlots = keyof typeof commandVariants.slots;

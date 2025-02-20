@@ -12,3 +12,5 @@ export const popoverVariants = tv({
     arrow: 'fill-popover stroke-border'
   }
 });
+
+export type PopoverSlots = keyof typeof popoverVariants.slots;

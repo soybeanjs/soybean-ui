@@ -73,3 +73,5 @@ export const checkboxVariants = tv({
     orientation: 'horizontal'
   }
 });
+
+export type CheckboxSlots = keyof typeof checkboxVariants.slots;

@@ -11,3 +11,5 @@ export const drawerVariants = tv({
     footer: `flex flex-col-reverse gap-2 sm:flex-row sm:justify-end`
   }
 });
+
+export type DrawerSlots = keyof typeof drawerVariants.slots;

@@ -62,3 +62,5 @@ export const paginationVariants = tv({
     variant: 'plain'
   }
 });
+
+export type PaginationSlots = keyof typeof paginationVariants.slots;

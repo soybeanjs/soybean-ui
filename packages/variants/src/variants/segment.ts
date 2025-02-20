@@ -13,3 +13,5 @@ export const segmentVariants = tv({
     indicator: `size-full rounded-md bg-background shadow`
   }
 });
+
+export type SegmentSlots = keyof typeof segmentVariants.slots;

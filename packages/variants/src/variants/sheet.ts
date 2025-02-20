@@ -34,3 +34,5 @@ export const sheetVariants = tv({
 type SheetVariants = VariantProps<typeof sheetVariants>;
 
 export type SheetSide = NonNullable<SheetVariants['side']>;
+
+export type SheetSlots = keyof typeof sheetVariants.slots;

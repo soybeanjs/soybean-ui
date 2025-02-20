@@ -124,3 +124,5 @@ export const alertVariants = tv({
 type AlertVariants = VariantProps<typeof alertVariants>;
 
 export type AlertVariant = NonNullable<AlertVariants['variant']>;
+
+export type AlertSlots = keyof typeof alertVariants.slots;

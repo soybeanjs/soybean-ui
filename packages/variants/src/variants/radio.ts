@@ -81,3 +81,5 @@ export const radioVariants = tv({
     orientation: 'horizontal'
   }
 });
+
+export type RadioSlots = keyof typeof radioVariants.slots;

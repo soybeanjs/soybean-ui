@@ -33,3 +33,5 @@ export const avatarVariants = tv({
     size: 'md'
   }
 });
+
+export type AvatarSlots = keyof typeof avatarVariants.slots;

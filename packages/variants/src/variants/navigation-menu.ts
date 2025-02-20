@@ -47,3 +47,5 @@ export const navigationMenuVariants = tv({
     childLinkDescription: `line-clamp-2 text-sm text-muted-foreground leading-snug`
   }
 });
+
+export type NavigationMenuSlots = keyof typeof navigationMenuVariants.slots;

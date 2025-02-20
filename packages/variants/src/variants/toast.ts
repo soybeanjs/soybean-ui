@@ -50,3 +50,5 @@ export const toastVariants = tv({
     }
   }
 });
+
+export type ToastSlots = keyof typeof toastVariants.slots;

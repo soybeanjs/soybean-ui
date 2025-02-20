@@ -63,3 +63,5 @@ export const sliderVariants = tv({
     color: 'primary'
   }
 });
+
+export type SliderSlots = keyof typeof sliderVariants.slots;

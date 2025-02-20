@@ -52,3 +52,5 @@ export const pinInputVariants = tv({
     separate: false
   }
 });
+
+export type PinInputSlots = keyof typeof pinInputVariants.slots;

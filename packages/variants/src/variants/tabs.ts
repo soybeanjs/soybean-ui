@@ -38,3 +38,5 @@ export const tabsVariants = tv({
     enableIndicator: true
   }
 });
+
+export type TabsSlots = keyof typeof tabsVariants.slots;
