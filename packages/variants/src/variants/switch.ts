@@ -6,7 +6,7 @@ export const switchVariants = tv({
   slots: {
     root: [
       `peer shrink-0 inline-flex items-center rounded-full border-transparent shadow-sm transition-colors`,
-      `focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
+      `focus-visible:(outline-solid outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
     ],
     thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
   },

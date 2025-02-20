@@ -11,7 +11,7 @@ export const sliderVariants = tv({
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
       `block h-5 w-5 rounded-full border-2 bg-background transition-colors`,
-      `focus-visible:(outline outline-2 outline-offset-2)`,
+      `focus-visible:(outline-solid outline-2 outline-offset-2)`,
       `disabled:(pointer-events-none opacity-50)`
     ]
   },

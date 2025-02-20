@@ -5,7 +5,7 @@ export const inputVariants = tv({
   base: [
     `flex w-full rounded-md border border-input bg-background`,
     `file:(border-0 bg-transparent font-medium)`,
-    `focus-visible:(outline outline-2 outline-primary outline-offset-2)`,
+    `focus-visible:(outline-solid outline-2 outline-primary outline-offset-2)`,
     `disabled:(cursor-not-allowed opacity-50)`
   ],
   variants: {

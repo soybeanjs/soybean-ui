@@ -6,7 +6,7 @@ export const checkboxVariants = tv({
     root: 'flex items-center gap-2',
     control: [
       'peer shrink-0 rounded-sm border shadow',
-      'focus-visible:(outline outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
+      'focus-visible:(outline-solid outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
     groupRoot: 'flex gap-2'

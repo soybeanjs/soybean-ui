@@ -6,7 +6,7 @@ export const selectVariants = tv({
   slots: {
     trigger: [
       `flex items-center justify-between w-full rounded-md border border-input bg-background [&_span]:truncate`,
-      `focus-visible:(outline outline-2 outline-primary outline-offset-2) focus:(outline outline-2 outline-primary outline-offset-2) disabled:(pointer-events-none opacity-50)`,
+      `focus-visible:(outline-solid outline-2 outline-primary outline-offset-2) focus:(outline-solid outline-2 outline-primary outline-offset-2) disabled:(pointer-events-none opacity-50)`,
       `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
     ],
     selectedValue: '',
