@@ -6,7 +6,7 @@ export const radioVariants = tv({
     root: 'flex items-center gap-2',
     control: [
       'peer flex justify-center items-center shrink-0 rounded-full border shadow',
-      'focus-visible:(outline-solid outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50)'
+      'outline-none focus-visible:(ring-2 ring-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-1/2 rounded-full',
     group: 'flex gap-2'
@@ -14,35 +14,35 @@ export const radioVariants = tv({
   variants: {
     color: {
       primary: {
-        control: `border-primary focus-visible:outline-primary`,
+        control: `border-primary focus-visible:ring-primary`,
         indicator: `bg-primary`
       },
       destructive: {
-        control: `border-destructive focus-visible:outline-destructive`,
+        control: `border-destructive focus-visible:ring-destructive`,
         indicator: `bg-destructive`
       },
       success: {
-        control: `border-success focus-visible:outline-success`,
+        control: `border-success focus-visible:ring-success`,
         indicator: `bg-success`
       },
       warning: {
-        control: `border-warning focus-visible:outline-warning`,
+        control: `border-warning focus-visible:ring-warning`,
         indicator: `bg-warning`
       },
       info: {
-        control: `border-info focus-visible:outline-info`,
+        control: `border-info focus-visible:ring-info`,
         indicator: `bg-info`
       },
       carbon: {
-        control: `border-carbon focus-visible:outline-carbon`,
+        control: `border-carbon focus-visible:ring-carbon`,
         indicator: `bg-carbon`
       },
       secondary: {
-        control: `border-secondary-foreground focus-visible:outline-secondary-foreground/20`,
+        control: `border-secondary-foreground focus-visible:ring-secondary-foreground/20`,
         indicator: `bg-secondary-foreground/60`
       },
       accent: {
-        control: `border-accent-foreground focus-visible:outline-accent-foreground/20`,
+        control: `border-accent-foreground focus-visible:ring-accent-foreground/20`,
         indicator: `bg-accent-foreground/60`
       }
     },

@@ -11,7 +11,7 @@ export const sliderVariants = tv({
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
       `block h-5 w-5 rounded-full border-2 bg-background transition-colors`,
-      `focus-visible:(outline-solid outline-2 outline-offset-2)`,
+      `outline-none focus-visible:(ring-2 ring-offset-2)`,
       `disabled:(pointer-events-none opacity-50)`
     ]
   },
@@ -20,42 +20,42 @@ export const sliderVariants = tv({
       primary: {
         track: 'bg-primary/20',
         range: 'bg-primary',
-        thumb: 'border-primary focus-visible:outline-primary'
+        thumb: 'border-primary focus-visible:ring-primary'
       },
       destructive: {
         track: 'bg-destructive/20',
         range: 'bg-destructive',
-        thumb: 'border-destructive focus-visible:outline-destructive'
+        thumb: 'border-destructive focus-visible:ring-destructive'
       },
       success: {
         track: 'bg-success/20',
         range: 'bg-success',
-        thumb: 'border-success focus-visible:outline-success'
+        thumb: 'border-success focus-visible:ring-success'
       },
       warning: {
         track: 'bg-warning/20',
         range: 'bg-warning',
-        thumb: 'border-warning focus-visible:outline-warning'
+        thumb: 'border-warning focus-visible:ring-warning'
       },
       info: {
         track: 'bg-info/20',
         range: 'bg-info',
-        thumb: 'border-info focus-visible:outline-info'
+        thumb: 'border-info focus-visible:ring-info'
       },
       carbon: {
         track: 'bg-carbon/20',
         range: 'bg-carbon',
-        thumb: 'border-carbon focus-visible:outline-carbon'
+        thumb: 'border-carbon focus-visible:ring-carbon'
       },
       secondary: {
         track: 'bg-secondary/20',
         range: 'bg-secondary',
-        thumb: 'border-secondary focus-visible:outline-secondary'
+        thumb: 'border-secondary focus-visible:ring-secondary'
       },
       accent: {
         track: 'bg-accent/20',
         range: 'bg-accent',
-        thumb: 'border-accent focus-visible:outline-accent'
+        thumb: 'border-accent focus-visible:ring-accent'
       }
     }
   },

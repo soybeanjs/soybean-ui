@@ -6,35 +6,35 @@ export const switchVariants = tv({
   slots: {
     root: [
       `peer shrink-0 inline-flex items-center rounded-full border-transparent shadow-sm transition-colors`,
-      `focus-visible:(outline-solid outline-2 outline-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
+      `outline-none focus-visible:(ring-2 ring-offset-2) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
     ],
     thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform bg-background pointer-events-none data-[state=unchecked]:translate-x-0`
   },
   variants: {
     color: {
       primary: {
-        root: `data-[state=checked]:bg-primary focus-visible:outline-primary`
+        root: `data-[state=checked]:bg-primary focus-visible:ring-primary`
       },
       destructive: {
-        root: `data-[state=checked]:bg-destructive focus-visible:outline-destructive`
+        root: `data-[state=checked]:bg-destructive focus-visible:ring-destructive`
       },
       success: {
-        root: `data-[state=checked]:bg-success focus-visible:outline-success`
+        root: `data-[state=checked]:bg-success focus-visible:ring-success`
       },
       warning: {
-        root: `data-[state=checked]:bg-warning focus-visible:outline-warning`
+        root: `data-[state=checked]:bg-warning focus-visible:ring-warning`
       },
       info: {
-        root: `data-[state=checked]:bg-info focus-visible:outline-info`
+        root: `data-[state=checked]:bg-info focus-visible:ring-info`
       },
       carbon: {
-        root: `data-[state=checked]:bg-carbon focus-visible:outline-carbon`
+        root: `data-[state=checked]:bg-carbon focus-visible:ring-carbon`
       },
       secondary: {
-        root: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:outline-secondary-foreground/20`
+        root: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:ring-secondary-foreground/20`
       },
       accent: {
-        root: `data-[state=checked]:bg-accent-foreground/20 focus-visible:outline-accent-foreground/20`
+        root: `data-[state=checked]:bg-accent-foreground/20 focus-visible:ring-accent-foreground/20`
       }
     },
     size: {

@@ -3,17 +3,17 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const buttonVariants = tv({
-  base: 'inline-flex items-center justify-center font-medium focus-visible:(outline-solid outline-2 outline-offset-2) disabled:(pointer-events-none opacity-50)',
+  base: 'inline-flex items-center justify-center font-medium outline-none focus-visible:(ring-2 ring-offset-2) disabled:(pointer-events-none opacity-50)',
   variants: {
     color: {
-      primary: `focus-visible:outline-primary`,
-      destructive: `focus-visible:outline-destructive`,
-      success: `focus-visible:outline-success`,
-      warning: `focus-visible:outline-warning`,
-      info: `focus-visible:outline-info`,
-      carbon: `focus-visible:outline-carbon`,
-      secondary: `focus-visible:outline-secondary-foreground/20`,
-      accent: `focus-visible:outline-accent-foreground/20`
+      primary: `focus-visible:ring-primary`,
+      destructive: `focus-visible:ring-destructive`,
+      success: `focus-visible:ring-success`,
+      warning: `focus-visible:ring-warning`,
+      info: `focus-visible:ring-info`,
+      carbon: `focus-visible:ring-carbon`,
+      secondary: `focus-visible:ring-secondary-foreground/20`,
+      accent: `focus-visible:ring-accent-foreground/20`
     },
     variant: {
       solid: 'bg-primary text-primary-foreground hover:bg-primary/80 active:bg-primary-600',
