@@ -38,6 +38,7 @@ export * from './skeleton';
 export * from './slider';
 export * from './switch';
 export * from './tabs';
+export * from './tags-input';
 export * from './textarea';
 export * from './toast';
 export * from './toggle';

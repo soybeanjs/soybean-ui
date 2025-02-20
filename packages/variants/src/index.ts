@@ -36,6 +36,7 @@ export * from './variants/skeleton';
 export * from './variants/slider';
 export * from './variants/switch';
 export * from './variants/tabs';
+export * from './variants/tags-input';
 export * from './variants/textarea';
 export * from './variants/toast';
 export * from './variants/toggle';
