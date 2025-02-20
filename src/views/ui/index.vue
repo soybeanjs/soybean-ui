@@ -45,6 +45,7 @@ import UiSlider from './modules/slider.vue';
 import UiSonner from './modules/sonner.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTabs from './modules/tabs.vue';
+import UiTagsInput from './modules/tags-input.vue';
 import UiTextarea from './modules/textarea.vue';
 import UiToast from './modules/toast.vue';
 import UiToggle from './modules/toggle.vue';
@@ -267,6 +268,11 @@ const tabs: TabConfig[] = [
     value: 'tabs',
     label: 'Tabs',
     component: UiTabs
+  },
+  {
+    value: 'tags-input',
+    label: 'TagsInput',
+    component: UiTagsInput
   },
   {
     value: 'textarea',
