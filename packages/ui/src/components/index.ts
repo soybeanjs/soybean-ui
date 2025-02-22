@@ -23,6 +23,7 @@ export * from './label';
 export * from './menu';
 export * from './menubar';
 export * from './navigation-menu';
+export * from './number-field';
 export * from './pagination';
 export * from './pin-input';
 export * from './popover';

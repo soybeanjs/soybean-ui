@@ -29,6 +29,7 @@ import UiInput from './modules/input.vue';
 import UiKeyboardKey from './modules/keyboard-key.vue';
 import UiMenubar from './modules/menubar.vue';
 import UiNavigationMenu from './modules/navigation-menu.vue';
+import UiNumberField from './modules/number-field.vue';
 import UiPagination from './modules/pagination.vue';
 import UiPinInput from './modules/pin-input.vue';
 import UiPopover from './modules/popover.vue';
@@ -188,6 +189,11 @@ const tabs: TabConfig[] = [
     value: 'navigation-menu',
     label: 'NavigationMenu',
     component: UiNavigationMenu
+  },
+  {
+    value: 'number-field',
+    label: 'NumberField',
+    component: UiNumberField
   },
   {
     value: 'popover',
