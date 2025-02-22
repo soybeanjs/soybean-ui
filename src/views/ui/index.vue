@@ -11,8 +11,8 @@ import UiAlertDialog from './modules/alert-dialog.vue';
 import UiAspectRatio from './modules/aspect-ratio.vue';
 import UiAvatar from './modules/avatar.vue';
 import UiBadge from './modules/badge.vue';
-import UiButton from './modules/button.vue';
 import UiBreadcrumb from './modules/breadcrumb.vue';
+import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiChip from './modules/chip.vue';
@@ -196,11 +196,6 @@ const tabs: TabConfig[] = [
     component: UiNumberField
   },
   {
-    value: 'popover',
-    label: 'Popover',
-    component: UiPopover
-  },
-  {
     value: 'pagination',
     label: 'Pagination',
     component: UiPagination
@@ -209,6 +204,11 @@ const tabs: TabConfig[] = [
     value: 'pin-input',
     label: 'PinInput',
     component: UiPinInput
+  },
+  {
+    value: 'popover',
+    label: 'Popover',
+    component: UiPopover
   },
   {
     value: 'progress',
