@@ -4,6 +4,7 @@ import { unrefElement, useEventListener } from '@vueuse/core';
 import type { MaybeComputedElementRef } from '@vueuse/core';
 import { createEventHook, isClient, reactiveComputed } from '@vueuse/shared';
 import { NumberFormatter, NumberParser } from '@internationalized/number';
+import { isNullish } from '../../shared';
 
 export function usePressedHold(options: { target?: MaybeComputedElementRef; disabled: Ref<boolean> }) {
   const { disabled } = options;
@@ -68,7 +69,11 @@ export function useNumberParser(locale: Ref<string>, options: Ref<Intl.NumberFor
   return reactiveComputed(() => new NumberParser(locale.value, options.value));
 }
 
-export function handleDecimalOperation(operator: '-' | '+', value1: number, value2: number): number {
+export function handleDecimalOperation(operator: '-' | '+', value1?: number, value2?: number): number {
+  if (isNullish(value1) || isNullish(value2)) {
+    return 0;
+  }
+
   let v1 = value1;
   let v2 = value2;
 

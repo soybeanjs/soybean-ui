@@ -90,7 +90,14 @@ const inputMode = computed<HTMLAttributes['inputmode']>(() => {
 // Replace negative textValue formatted using currencySign: 'accounting'
 // with a textValue that can be announced using a minus sign.
 const textValueFormatter = useNumberFormatter(locale, formatOptions);
-const textValue = computed(() => (Number.isNaN(modelValue.value) ? '' : textValueFormatter.format(modelValue.value)));
+const textValue = computed(() => {
+  if (Number.isNaN(modelValue.value)) return '';
+
+  const formatted = textValueFormatter.format(modelValue.value);
+  if (formatted === 'NaN') return '';
+
+  return formatted;
+});
 
 function validate(val: string) {
   return numberParser.isValidPartialNumber(val, min.value, max.value);
