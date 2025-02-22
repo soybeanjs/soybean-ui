@@ -21,6 +21,7 @@ export * from './variants/label';
 export * from './variants/menu';
 export * from './variants/menubar';
 export * from './variants/navigation-menu';
+export * from './variants/number-field';
 export * from './variants/pagination';
 export * from './variants/pin-input';
 export * from './variants/popover';
