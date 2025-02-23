@@ -110,3 +110,16 @@ export function getPkgs() {
 
   return Object.entries(pkgs).map(([pkgName, pkgPath]) => ({ pkgName, pkgPath }));
 }
+
+export function toKebabCase(str: string) {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+export function toPascalCase(str: string) {
+  return str.replace(/(^\w|-\w)/g, letter => letter.toUpperCase()).replace(/-/g, '');
+}
+
+export function toCamelCase(str: string) {
+  const res = str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
+  return res.charAt(0).toLowerCase() + res.slice(1);
+}

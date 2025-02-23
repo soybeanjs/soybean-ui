@@ -1,41 +1,6 @@
 import fs from 'node:fs';
-import fg from 'fast-glob';
-
-function getComponentFiles(module: string) {
-  const kbName = toKebabCase(module);
-  const dir = `packages/ui/src/components/${kbName}`;
-
-  const files = fg.sync(`**/*.vue`, { onlyFiles: true, cwd: dir });
-
-  const componentNames: string[] = [];
-
-  files
-    .filter(file => file.includes('-'))
-    .forEach(file => {
-      const componentName = file.replace('.vue', '');
-
-      componentNames.push(toKebabCase(componentName));
-
-      generateComponent(toKebabCase(componentName), module, dir);
-    });
-
-  generateTypes(componentNames, dir);
-  generateExports(componentNames, dir);
-  generateVariants(componentNames, module);
-}
-
-function toKebabCase(str: string) {
-  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-}
-
-function toPascalCase(str: string) {
-  return str.replace(/(^\w|-\w)/g, letter => letter.toUpperCase()).replace(/-/g, '');
-}
-
-function toCamelCase(str: string) {
-  const res = str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-  return res.charAt(0).toLowerCase() + res.slice(1);
-}
+import enquirer from 'enquirer';
+import { toCamelCase, toKebabCase, toPascalCase } from './_shared';
 
 function getVueTemplate(componentName: string, module: string) {
   const cpName = toPascalCase(componentName);
@@ -109,9 +74,7 @@ function generateExports(componentNames: string[], dir: string) {
   fs.writeFileSync(filePath, template);
 }
 
-function generateVariants(componentNames: string[], module: string) {
-  const kbName = toKebabCase(module);
-  const variantsDir = `packages/variants/src/variants/${kbName}.ts`;
+function generateVariants(componentNames: string[], module: string, dir: string) {
   let template = `// @unocss-include
 import { tv } from 'tailwind-variants';
 
@@ -119,7 +82,10 @@ export const ${module}Variants = tv({
   slots: {\n`;
 
   componentNames.forEach(componentName => {
-    const slotName = toCamelCase(toCamelCase(componentName).replace(module, '')) || 'root';
+    const slotName = toCamelCase(toCamelCase(componentName).replace(module, ''));
+    if (!slotName) {
+      return;
+    }
 
     template += `    ${slotName}: '',\n`;
   });
@@ -129,11 +95,61 @@ export const ${module}Variants = tv({
 
   template += `export type ${toPascalCase(module)}Slots = keyof typeof ${module}Variants.slots;`;
 
-  fs.writeFileSync(variantsDir, template);
+  fs.writeFileSync(dir, template);
 }
 
-function start() {
-  getComponentFiles('numberField');
+interface GenerateOptions {
+  module: string;
+  components: string[];
+}
+
+async function resolvePrompt() {
+  const { module, components: _components } = await enquirer.prompt<GenerateOptions>([
+    {
+      type: 'input',
+      name: 'module',
+      message: '请输入组件模块名称'
+    },
+    {
+      type: 'list',
+      name: 'components',
+      message: '请输入组件名称'
+    }
+  ]);
+
+  const kbName = toKebabCase(module);
+  const dir = `packages/ui/src/components/${kbName}`;
+  const variantsDir = `packages/variants/src/variants/${kbName}.ts`;
+
+  const components = _components.map(component => {
+    let name = toKebabCase(component);
+
+    if (!name.startsWith(kbName)) {
+      name = `${kbName}-${name}`;
+    }
+
+    return name;
+  });
+
+  components.unshift(kbName);
+
+  return { module, components, dir, variantsDir };
+}
+
+async function start() {
+  const { module, components, dir, variantsDir } = await resolvePrompt();
+
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+
+  generateTypes(components, dir);
+  generateExports(components, dir);
+  generateVariants(components, module, variantsDir);
+
+  components.forEach(component => {
+    generateComponent(component, module, dir);
+  });
 }
 
 start();
