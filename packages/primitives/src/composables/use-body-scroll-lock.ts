@@ -130,9 +130,11 @@ function checkOverflowScroll(ele: Element): boolean {
     return true;
   }
 
-  const parent = ele.parentNode as Element;
+  const parent = ele.parentNode;
 
-  if (!parent || parent.tagName === 'BODY') return false;
+  if (!(parent instanceof Element) || parent.tagName === 'BODY') {
+    return false;
+  }
 
   return checkOverflowScroll(parent);
 }

@@ -51,13 +51,13 @@ export function useForwardExpose<T extends ComponentPublicInstance>() {
   function forwardRef(el: Element | T | null) {
     currentRef.value = el;
 
-    if (el instanceof Element || !el) return;
+    if (!el) return;
 
     // retrieve the forwarded element
     Object.defineProperty(ret, '$el', {
       enumerable: true,
       configurable: true,
-      get: () => el.$el
+      get: () => (ref instanceof Element ? ref : (ref as any).$el)
     });
 
     instance.exposed = ret;

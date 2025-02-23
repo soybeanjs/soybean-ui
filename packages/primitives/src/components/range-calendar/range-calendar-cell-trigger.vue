@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
 import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationalized/date';
-import { isBetweenInclusive, toDate } from '../../date';
+import { getDaysInMonth, isBetweenInclusive, toDate } from '../../date';
 import type { DateValue } from '../../date';
 import { useKbd, usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
@@ -158,6 +158,12 @@ function handleArrowKey(e: KeyboardEvent) {
       const newCollectionItems: HTMLElement[] = parentElement
         ? Array.from(parentElement.querySelectorAll(SELECTOR))
         : [];
+      if (!rootContext.pagedNavigation.value) {
+        // Placeholder is set to first month of the new page
+        const numberOfDays = getDaysInMonth(rootContext.placeholder.value);
+        newCollectionItems[numberOfDays - Math.abs(newIndex)].focus();
+        return;
+      }
       newCollectionItems[newCollectionItems.length - Math.abs(newIndex)].focus();
     });
     return;
@@ -170,6 +176,15 @@ function handleArrowKey(e: KeyboardEvent) {
       const newCollectionItems: HTMLElement[] = parentElement
         ? Array.from(parentElement.querySelectorAll(SELECTOR))
         : [];
+
+      if (!rootContext.pagedNavigation.value) {
+        // Placeholder is set to first month of the new page
+        const numberOfDays = getDaysInMonth(
+          rootContext.placeholder.value.add({ months: rootContext.numberOfMonths.value - 1 })
+        );
+        newCollectionItems[newCollectionItems.length - numberOfDays + newIndex - allCollectionItems.length].focus();
+        return;
+      }
       newCollectionItems[newIndex - allCollectionItems.length].focus();
     });
   }

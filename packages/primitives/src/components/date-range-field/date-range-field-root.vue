@@ -185,7 +185,9 @@ watch(modelValue, _modelValue => {
 watch([startValue, locale], ([_startValue]) => {
   if (_startValue !== undefined) {
     startSegmentValues.value = { ...syncSegmentValues({ value: _startValue, formatter }) };
-  } else if (Object.values(startSegmentValues.value).every(value => value === null)) {
+  }
+  // If segment has null value, means that user modified it, thus do not reset the segmentValues
+  else if (Object.values(startSegmentValues.value).every(value => value !== null) && _startValue === undefined) {
     startSegmentValues.value = { ...initialSegments };
   }
 });

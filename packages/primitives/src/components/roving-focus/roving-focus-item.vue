@@ -32,7 +32,8 @@ const {
 } = injectRovingFocusGroupContext();
 
 const rootNode = computed(() => currentElement.value?.getRootNode() as Document | ShadowRoot);
-const id = computed(() => props.tabStopId || useId());
+const randomId = useId();
+const id = computed(() => props.tabStopId || randomId);
 const isCurrentTabStop = computed(() => currentTabStopId.value === id.value);
 
 function handleKeydown(event: KeyboardEvent) {
