@@ -17,6 +17,15 @@ const props = defineProps<MenuCheckboxGroupProps<T>>();
 
 const emit = defineEmits<MenuCheckboxGroupEmits<T>>();
 
+type Slots = {
+  item: (props: MenuOptionData<T>) => any;
+  'item-leading': (props: MenuOptionData<T>) => any;
+  'item-trailing': (props: MenuOptionData<T>) => any;
+  'item-indicator-icon': (props: MenuOptionData<T>) => any;
+};
+
+defineSlots<Slots>();
+
 const checkValue = ref(props.modelValue || props.defaultValue || []) as Ref<T[]>;
 
 function handleUpdateChecked(item: MenuOptionData<T>, checked: boolean) {

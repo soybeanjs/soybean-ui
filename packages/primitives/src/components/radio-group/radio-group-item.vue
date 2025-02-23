@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useEventListener } from '@vueuse/core';
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 import { useForwardExpose } from '../../composables';
 import { RovingFocusItem } from '../roving-focus';
 import { injectRadioGroupRootContext, provideRadioGroupItemContext } from './context';

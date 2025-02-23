@@ -5,7 +5,8 @@ import type {
   DialogPortalProps,
   DialogTitleProps,
   DrawerRootEmits,
-  DrawerRootProps
+  DrawerRootProps,
+  TeleportProps
 } from '@soybean-ui/primitives';
 
 export interface DrawerOverlayProps extends ClassValueProp {}
@@ -24,9 +25,9 @@ export interface DrawerKnobProps extends ClassValueProp {}
 
 export interface DrawerFooterProps extends ClassValueProp {}
 
-export type DrawerProps = DrawerRootProps &
-  DrawerContentProps &
-  Pick<DrawerPortalProps, 'to' | 'defer'> & {
+export type DrawerProps = ClassValueProp &
+  DrawerRootProps &
+  Pick<TeleportProps, 'to' | 'defer'> & {
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     overlayClass?: ClassValue;

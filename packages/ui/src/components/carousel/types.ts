@@ -1,14 +1,12 @@
-import type { Ref, UnwrapRef } from 'vue';
+import type { MaybeRef, Ref, UnwrapRef } from 'vue';
 import type { CarouselSlots, ThemeOrientation } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
-import type useEmblaCarousel from 'embla-carousel-vue';
-import type { EmblaCarouselVueType } from 'embla-carousel-vue';
+import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
 import type { ButtonProps } from '../button/types';
 
-type CarouselApi = EmblaCarouselVueType[1];
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
-type CarouselOptions = UseCarouselParameters[0];
-type CarouselPlugin = UseCarouselParameters[1];
+type CarouselApi = Ref<EmblaCarouselType | undefined>;
+type CarouselOptions = MaybeRef<Partial<EmblaOptionsType>>;
+type CarouselPlugin = MaybeRef<EmblaPluginType[]>;
 
 export type UnwrapRefCarouselApi = UnwrapRef<CarouselApi>;
 

@@ -1,4 +1,4 @@
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 
 export const OPEN_KEYS = [' ', 'Enter', 'ArrowUp', 'ArrowDown'];
 export const SELECTION_KEYS = [' ', 'Enter'];

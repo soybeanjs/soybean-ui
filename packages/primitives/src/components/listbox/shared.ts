@@ -1,4 +1,4 @@
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 
 export function queryCheckedElement(parentEl: HTMLElement | null) {
   return parentEl?.querySelector('[data-state=checked]') as HTMLElement | null;

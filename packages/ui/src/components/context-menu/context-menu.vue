@@ -25,7 +25,7 @@ const props = defineProps<ContextMenuProps<T>>();
 const emit = defineEmits<ContextMenuEmits<T>>();
 
 type Slots = {
-  trigger?: (size?: ThemeSize) => any;
+  trigger?: (props?: { size?: ThemeSize }) => any;
   item?: (props: MenuOptionData<T>) => any;
   itemLeading?: (props: MenuOptionData<T>) => any;
   itemTrailing?: (props: MenuOptionData<T>) => any;

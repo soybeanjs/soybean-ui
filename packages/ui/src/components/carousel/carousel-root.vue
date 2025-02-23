@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { Ref, UnwrapRef } from 'vue';
 import { carouselVariants, cn } from '@soybean-ui/variants';
-import type { CarouselRootEmits, CarouselRootProps } from './types';
 import { provideCarouselContext } from './context';
+import type { CarouselContext, CarouselRootEmits, CarouselRootProps, UnwrapRefCarouselApi } from './types';
 
 defineOptions({
   name: 'SCarouselRoot'
@@ -13,6 +14,12 @@ const props = withDefaults(defineProps<CarouselRootProps>(), {
 });
 
 const emit = defineEmits<CarouselRootEmits>();
+
+type Slots = {
+  default: (props: UnwrapRef<CarouselContext>) => any;
+};
+
+defineSlots<Slots>();
 
 const { canScrollNext, canScrollPrev, carouselApi, carouselRef, orientation, scrollNext, scrollPrev } =
   provideCarouselContext(props, emit);
@@ -43,12 +50,12 @@ function onKeyDown(event: KeyboardEvent) {
 defineExpose({
   canScrollNext,
   canScrollPrev,
-  carouselApi,
+  carouselApi: carouselApi as Ref<UnwrapRefCarouselApi>,
   carouselRef,
   orientation,
   scrollNext,
   scrollPrev
-});
+} as CarouselContext);
 </script>
 
 <template>

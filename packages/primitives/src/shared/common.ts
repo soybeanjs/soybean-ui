@@ -1,4 +1,4 @@
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 
 export function isNullish(value: unknown): value is null | undefined {
   return value === null || value === undefined;

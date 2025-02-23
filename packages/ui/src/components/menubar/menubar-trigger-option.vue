@@ -2,6 +2,7 @@
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import SMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
 import SMenuShortcut from '../menu/menu-shortcut.vue';
+import type { MenuOptionData } from '../menu/types';
 import SMenubarTrigger from './menubar-trigger.vue';
 import SMenubarTriggerLink from './menubar-trigger-link.vue';
 import type { MenubarTriggerOptionProps } from './types';
@@ -11,6 +12,14 @@ defineOptions({
 });
 
 const props = defineProps<MenubarTriggerOptionProps<T>>();
+
+type Slots = {
+  trigger: (props: MenuOptionData<T>) => any;
+  'trigger-leading': (props: MenuOptionData<T>) => any;
+  'trigger-trailing': (props: MenuOptionData<T>) => any;
+};
+
+defineSlots<Slots>();
 </script>
 
 <template>

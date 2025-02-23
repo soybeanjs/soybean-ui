@@ -4,6 +4,7 @@ import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
+import type { DataOrientation } from '../../types';
 import { injectNavigationMenuRootContext, provideNavigationMenuRootContext } from './context';
 import type { NavigationMenuSubEmits, NavigationMenuSubPropsWithPrimitive } from './types';
 
@@ -12,7 +13,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<NavigationMenuSubPropsWithPrimitive>(), {
-  orientation: 'horizontal',
+  orientation: 'horizontal' as DataOrientation,
   defaultValue: ''
 });
 

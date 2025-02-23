@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import { useContext } from '@soybean-ui/primitives';
-import type { Action, ToastContext, ToastContextParams, ToastState } from './types';
+import type { Action, ToastContext, ToastContextParams, ToastReturn, ToastState } from './types';
 
 export const [provideToastContext, injectToastContext] = useContext('ToastContext', (params: ToastContextParams) => {
   const toasts = ref([]) as Ref<ToastState[]>;
@@ -123,7 +123,13 @@ export const [provideToastContext, injectToastContext] = useContext('ToastContex
   return context;
 });
 
-export function useToast() {
+export interface UseToastReturn {
+  toasts: ComputedRef<ToastState[]>;
+  toast: (props: Omit<ToastState, 'id'>) => ToastReturn;
+  dismiss: (toastId?: string) => void;
+}
+
+export function useToast(): UseToastReturn {
   const context = injectToastContext();
 
   if (!context) {

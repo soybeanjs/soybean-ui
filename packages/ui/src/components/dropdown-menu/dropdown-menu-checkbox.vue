@@ -24,7 +24,7 @@ const props = defineProps<DropdownMenuCheckboxProps<T>>();
 const emit = defineEmits<DropdownMenuCheckboxEmits<T>>();
 
 type Slots = {
-  trigger?: (size?: ThemeSize) => any;
+  trigger?: (props?: { size?: ThemeSize }) => any;
   item?: (props: MenuOptionData<T>) => any;
   itemLeading?: (props: MenuOptionData<T>) => any;
   itemTrailing?: (props: MenuOptionData<T>) => any;

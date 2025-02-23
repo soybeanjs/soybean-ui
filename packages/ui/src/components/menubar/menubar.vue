@@ -6,6 +6,8 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { MenuOptionData } from '../menu/types';
 import SMenubarRoot from './menubar-root.vue';
 import SMenubarMenu from './menubar-menu.vue';
 import type { MenubarEmits, MenubarProps } from './types';

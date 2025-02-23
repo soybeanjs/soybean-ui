@@ -6,7 +6,7 @@ import SMenuLabel from './menu-label.vue';
 import SMenuRadioItem from './menu-radio-item.vue';
 import SMenuShortcut from './menu-shortcut.vue';
 import SMenuSeparator from './menu-separator.vue';
-import type { MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
+import type { MenuOptionData, MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
 
 defineOptions({
   name: 'SMenuRadioGroup'
@@ -15,6 +15,15 @@ defineOptions({
 const props = defineProps<MenuRadioGroupProps<T>>();
 
 const emit = defineEmits<MenuRadioGroupEmits<T>>();
+
+type Slots = {
+  item: (props: MenuOptionData<T>) => any;
+  'item-leading': (props: MenuOptionData<T>) => any;
+  'item-trailing': (props: MenuOptionData<T>) => any;
+  'item-indicator-icon': (props: MenuOptionData<T>) => any;
+};
+
+defineSlots<Slots>();
 
 const radioValue = computed({
   get() {

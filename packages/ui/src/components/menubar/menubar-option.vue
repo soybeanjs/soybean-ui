@@ -7,6 +7,7 @@ import SMenuItem from '../menu/menu-item.vue';
 import SMenuItemLink from '../menu/menu-item-link.vue';
 import SMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
 import SMenuShortcut from '../menu/menu-shortcut.vue';
+import type { MenuOptionData } from '../menu/types';
 import SMenubarSubTrigger from './menubar-sub-trigger.vue';
 import SMenubarSubContent from './menubar-sub-content.vue';
 import type { MenubarOptionEmits, MenubarOptionProps } from './types';
@@ -18,6 +19,17 @@ defineOptions({
 defineProps<MenubarOptionProps<T>>();
 
 const emit = defineEmits<MenubarOptionEmits<T>>();
+
+type Slots = {
+  item: (props: MenuOptionData<T>) => any;
+  'item-leading': (props: MenuOptionData<T>) => any;
+  'item-trailing': (props: MenuOptionData<T>) => any;
+  'item-trigger': (props: MenuOptionData<T>) => any;
+  'sub-trigger-icon': (props: MenuOptionData<T>) => any;
+  children: (props: MenuOptionData<T>) => any;
+};
+
+defineSlots<Slots>();
 
 const forwardedEmits = useEmitAsProps(emit);
 </script>

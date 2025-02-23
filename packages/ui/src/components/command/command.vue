@@ -18,7 +18,7 @@ import SCommandItem from './command-item.vue';
 import SCommandSeparator from './command-separator.vue';
 import SCommandShortcut from './command-shortcut.vue';
 import { getHighlightSearchOption, getItemOptions, getSearchOptions, isCommandGroupOption } from './shared';
-import type { CommandEmits, CommandItemOption, CommandProps } from './types';
+import type { CommandEmits, CommandItemOption, CommandItemSingleOption, CommandProps } from './types';
 
 defineOptions({
   name: 'SCommand'
@@ -27,6 +27,13 @@ defineOptions({
 const props = defineProps<CommandProps<T, S>>();
 
 const emit = defineEmits<CommandEmits<T>>();
+
+type Slots = {
+  empty: (props: { searchTerm: string }) => any;
+  item: (props: { item: S | CommandItemSingleOption<T> }) => any;
+};
+
+defineSlots<Slots>();
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'items',

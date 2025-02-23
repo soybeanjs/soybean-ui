@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 import { useFormControl, useForwardExpose } from '../../composables';
 import { isNullish, isValueEqualOrExist } from '../../shared';
 import { Primitive } from '../primitive';

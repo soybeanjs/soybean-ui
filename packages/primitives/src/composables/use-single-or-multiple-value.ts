@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqual } from 'ohash';
+import { isEqual } from 'ohash/utils';
 import { isValueEqualOrExist } from '../shared';
 import type { AcceptableValue, SingleOrMultipleProps } from '../types';
 
