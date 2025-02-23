@@ -14,6 +14,7 @@ import UiBadge from './modules/badge.vue';
 import UiBreadcrumb from './modules/breadcrumb.vue';
 import UiButton from './modules/button.vue';
 import UiCard from './modules/card.vue';
+import UiCarousel from './modules/carousel.vue';
 import UiCheckbox from './modules/checkbox.vue';
 import UiChip from './modules/chip.vue';
 import UiCollapsible from './modules/collapsible.vue';
@@ -114,6 +115,11 @@ const tabs: TabConfig[] = [
     value: 'card',
     label: 'Card',
     component: UiCard
+  },
+  {
+    value: 'carousel',
+    label: 'Carousel',
+    component: UiCarousel
   },
   {
     value: 'checkbox',

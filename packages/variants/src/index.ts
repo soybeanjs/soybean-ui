@@ -7,6 +7,7 @@ export * from './variants/breadcrumb';
 export * from './variants/button';
 export * from './variants/button-group';
 export * from './variants/card';
+export * from './variants/carousel';
 export * from './variants/checkbox';
 export * from './variants/chip';
 export * from './variants/collapsible';
