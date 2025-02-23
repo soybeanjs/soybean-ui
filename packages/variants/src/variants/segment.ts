@@ -6,7 +6,7 @@ export const segmentVariants = tv({
     triggerRoot: 'relative inline-flex justify-center items-center p-1 rounded-md bg-muted text-muted-foreground',
     trigger: [
       `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all`,
-      `outline-none focus-visible:(ring-2 ring-offset-2 ring-primary)`,
+      `focus-visible:(outline-none ring-2 ring-offset-2 ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
     indicatorRoot: `absolute top-0 left-0 z-1 h-full w-[--soybean-tabs-indicator-size] py-1 translate-x-[--soybean-tabs-indicator-position] transition-[width,height,transform] duration-300`,

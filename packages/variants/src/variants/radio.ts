@@ -6,7 +6,7 @@ export const radioVariants = tv({
     root: 'flex items-center gap-2',
     control: [
       'peer flex justify-center items-center shrink-0 rounded-full border shadow',
-      'outline-none focus-visible:(ring-2 ring-offset-2) disabled:(cursor-not-allowed opacity-50)'
+      'focus-visible:(outline-none ring-2 ring-offset-2) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-1/2 rounded-full',
     group: 'flex gap-2'

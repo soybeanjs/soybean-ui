@@ -6,7 +6,7 @@ export const toggleVariants = tv({
   slots: {
     toggle: [
       `inline-flex items-center justify-center rounded-md font-medium transition-colors`,
-      `hover:(bg-muted text-muted-foreground) outline-none focus-visible:(ring-2 ring-offset-2 ring-primary) disabled:(pointer-events-none opacity-50)`,
+      `hover:(bg-muted text-muted-foreground) focus-visible:(outline-none ring-2 ring-offset-2 ring-primary) disabled:(pointer-events-none opacity-50)`,
       `data-[state=on]:bg-accent data-[state=on]:hover:(bg-accent text-accent-foreground)`
     ],
     groupRoot: `flex justify-center items-center`
