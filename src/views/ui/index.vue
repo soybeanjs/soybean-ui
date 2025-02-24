@@ -45,6 +45,7 @@ import UiSheet from './modules/sheet.vue';
 import UiSkeleton from './modules/skeleton.vue';
 import UiSlider from './modules/slider.vue';
 import UiSonner from './modules/sonner.vue';
+import UiStepper from './modules/stepper.vue';
 import UiSwitch from './modules/switch.vue';
 import UiTabs from './modules/tabs.vue';
 import UiTagsInput from './modules/tags-input.vue';
@@ -270,6 +271,11 @@ const tabs: TabConfig[] = [
     value: 'sonner',
     label: 'Sonner',
     component: UiSonner
+  },
+  {
+    value: 'stepper',
+    label: 'Stepper',
+    component: UiStepper
   },
   {
     value: 'switch',

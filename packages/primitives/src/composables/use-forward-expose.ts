@@ -10,8 +10,8 @@ export function useForwardExpose<T extends ComponentPublicInstance>() {
   const currentElement = computed<HTMLElement>(() => {
     // $el could be text/comment for non-single root normal or text root, thus we retrieve the nextElementSibling
 
-    return ['#text', '#comment'].includes((currentRef.value as ComponentPublicInstance)?.$el.nodeName)
-      ? (currentRef.value as ComponentPublicInstance)?.$el.nextElementSibling
+    return ['#text', '#comment'].includes((currentRef.value as ComponentPublicInstance)?.$el?.nodeName)
+      ? (currentRef.value as ComponentPublicInstance)?.$el?.nextElementSibling
       : unrefElement(currentRef as MaybeComputedElementRef<MaybeElement>);
   });
 
