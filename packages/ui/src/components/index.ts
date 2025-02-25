@@ -38,6 +38,7 @@ export * from './separator';
 export * from './sheet';
 export * from './skeleton';
 export * from './slider';
+export * from './stepper';
 export * from './switch';
 export * from './tabs';
 export * from './tags-input';

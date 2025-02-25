@@ -3,7 +3,7 @@ import { computed, toRefs } from 'vue';
 import { useForwardExpose, useId } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectStepperRootContext, provideStepperItemContext } from './context';
-import type { StepperItemPropsWithPrimitive } from './types';
+import type { StepperItemPropsWithPrimitive, StepperState } from './types';
 
 defineOptions({
   name: 'StepperItem'
@@ -23,7 +23,7 @@ const rootContext = injectStepperRootContext();
 const titleId = useId(undefined, 'soybean-stepper-item-title');
 const descriptionId = useId(undefined, 'soybean-stepper-item-description');
 
-const itemState = computed(() => {
+const itemState = computed<StepperState>(() => {
   if (completed.value) return 'completed';
   if (rootContext.modelValue.value === step.value) return 'active';
   if (rootContext.modelValue.value! > step.value) return 'completed';
