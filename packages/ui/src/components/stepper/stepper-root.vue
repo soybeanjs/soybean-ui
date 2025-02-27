@@ -22,7 +22,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <StepperRoot v-slot="slotProps" v-bind="forwarded" :class="mergedCls">
+  <StepperRoot v-slot="slotProps" v-bind="forwarded" :class="mergedCls" :orientation="orientation">
     <slot v-bind="slotProps" />
   </StepperRoot>
 </template>
