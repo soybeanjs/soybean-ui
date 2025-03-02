@@ -20,10 +20,13 @@ import type {
   ListboxRootProps,
   SelectEvent
 } from '@soybean-ui/primitives';
+import type { CommandSlots, ThemeSize } from '@soybean-ui/variants';
 import type { InputProps } from '../input';
 
 // CommandRoot
-export type CommandRootProps<T extends AcceptableValue = AcceptableValue> = ListboxRootProps<T>;
+export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {
+  size?: ThemeSize;
+}
 export type CommandRootEmits<T extends AcceptableValue = AcceptableValue> = ListboxRootEmits<T>;
 
 // CommandInput
@@ -40,7 +43,7 @@ export interface CommandListProps extends ListboxContentProps {}
 
 // CommandGroup
 export interface CommandGroupProps extends ListboxGroupProps {}
-export interface CommandGroupHeadingProps extends ClassValueProp {}
+export interface CommandGroupLabelProps extends ClassValueProp {}
 
 // CommandItem
 export interface CommandItemProps<T extends AcceptableValue = AcceptableValue> extends ListboxItemProps<T> {}
@@ -69,66 +72,74 @@ export type CommandDialogEmits = DialogRootEmits & DialogContentEmits;
 // CommandShortcut
 export interface CommandShortcutProps extends ClassValueProp {}
 
-// CommandItemOption
-export interface CommandItemSingleOption<T extends AcceptableValue = AcceptableValue>
-  extends Omit<CommandItemProps<T>, 'class'> {
+export interface CommandOptionData<T extends AcceptableValue = AcceptableValue>
+  extends Pick<CommandItemProps<T>, 'value' | 'disabled'> {
+  /** The label to display in the command. */
   label: string;
+  /** The icon to display in the command. */
   icon?: Component | VNode;
+  /** The shortcut to display in the command. */
   shortcut?: string;
+  /** whether to show a separator above this option */
   separator?: boolean;
 }
 
-export interface CommandItemGroupOption<T extends AcceptableValue = AcceptableValue>
-  extends Pick<CommandItemSingleOption<T>, 'label' | 'separator'> {
-  groupId: string;
-  items: CommandItemSingleOption<T>[];
+export interface CommandGroupOptionData<T extends AcceptableValue = AcceptableValue>
+  extends Pick<CommandOptionData, 'separator' | 'label'> {
+  items: CommandOptionData<T>[];
 }
 
-export interface CommandItemSearchOption<T extends AcceptableValue = AcceptableValue>
-  extends CommandItemSingleOption<T> {
-  isGroup?: boolean;
-  groupId: string;
+export type CommandSingleOptionSlots = Extract<CommandSlots, 'item' | 'itemIcon' | 'shortcut' | 'separator'>;
+
+export interface CommandSingleOptionProps<T extends AcceptableValue = AcceptableValue> {
+  size?: ThemeSize;
+  item: CommandOptionData<T>;
+  ui?: Partial<Record<CommandSingleOptionSlots, ClassValue>>;
+}
+export type CommandSingleOptionEmits<T extends AcceptableValue = AcceptableValue> = {
+  select: [event: SelectEvent<T>];
+};
+
+export type CommandOptionSlots = Extract<
+  CommandSlots,
+  'group' | 'groupLabel' | 'item' | 'itemIcon' | 'shortcut' | 'separator'
+>;
+
+export interface CommandOptionProps<T extends AcceptableValue = AcceptableValue> {
+  size?: ThemeSize;
+  item: CommandOptionData<T> | CommandGroupOptionData<T>;
+  ui?: Partial<Record<CommandOptionSlots, ClassValue>>;
+}
+
+export type CommandOptionEmits<T extends AcceptableValue = AcceptableValue> = {
+  select: [item: CommandOptionData<T>, event: SelectEvent<T>];
+};
+
+export interface CommandSearchOptionData<T extends AcceptableValue = AcceptableValue> extends CommandOptionData<T> {
   groupLabel?: string;
   groupSeparator?: boolean;
 }
 
-export interface CommandItemHighlightSearchOption<T extends AcceptableValue = AcceptableValue>
-  extends CommandItemSearchOption<T> {
+export interface CommandHighlightSearchOptionData<T extends AcceptableValue = AcceptableValue>
+  extends CommandSearchOptionData<T> {
   labelHtml?: string;
 }
 
-export type CommandItemOption<T extends AcceptableValue = AcceptableValue> =
-  | CommandItemSingleOption<T>
-  | CommandItemGroupOption<T>;
+export type CommandUi = Partial<Record<CommandSlots, ClassValue>>;
 
 // Command
-export interface CommandProps<
-  T extends AcceptableValue = AcceptableValue,
-  S extends CommandItemOption<T> = CommandItemOption<T>
-> extends CommandRootProps<T> {
-  items: S[];
-  fuseOptions?: UseFuseOptions<CommandItemSearchOption<T>>;
+export interface CommandProps<T extends AcceptableValue = AcceptableValue> extends CommandRootProps<T> {
+  items: (CommandOptionData<T> | CommandGroupOptionData<T>)[];
+  ui?: CommandUi;
+  fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>;
   searchTerm?: string;
-  inputWrapperClass?: ClassValue;
-  inputClass?: ClassValue;
   inputProps?: Omit<CommandInputProps, 'class' | 'modelValue'>;
-  inputIconClass?: ClassValue;
-  emptyClass?: ClassValue;
   emptyLabel?: string;
-  listClass?: ClassValue;
-  groupClass?: ClassValue;
-  groupHeadingClass?: ClassValue;
-  itemClass?: ClassValue;
-  itemIconClass?: ClassValue;
-  separatorClass?: ClassValue;
-  shortcutClass?: ClassValue;
 }
-export type CommandItemOptionEmits<T extends AcceptableValue = AcceptableValue> = {
-  select: [item: CommandItemSingleOption<T>, event: SelectEvent<T>];
-};
-export type SearchTermEmit = {
+
+export type CommandSearchTermEmit = {
   'update:searchTerm': [value: string];
 };
 export type CommandEmits<T extends AcceptableValue = AcceptableValue> = CommandRootEmits<T> &
-  CommandItemOptionEmits<T> &
-  SearchTermEmit;
+  CommandOptionEmits<T> &
+  CommandSearchTermEmit;

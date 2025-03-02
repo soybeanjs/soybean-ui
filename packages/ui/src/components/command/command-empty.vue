@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
 import type { CommandEmptyProps } from './types';
 
@@ -16,7 +15,7 @@ const mergedCls = computed(() => cn(empty(), cls));
 </script>
 
 <template>
-  <Primitive :class="mergedCls">
+  <div :class="mergedCls">
     <slot></slot>
-  </Primitive>
+  </div>
 </template>

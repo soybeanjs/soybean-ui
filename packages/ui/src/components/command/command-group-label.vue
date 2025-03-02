@@ -2,17 +2,17 @@
 import { computed } from 'vue';
 import { ListboxGroupLabel } from '@soybean-ui/primitives';
 import { cn, commandVariants } from '@soybean-ui/variants';
-import type { CommandGroupHeadingProps } from './types';
+import type { CommandGroupLabelProps } from './types';
 
 defineOptions({
-  name: 'SCommandGroupHeading'
+  name: 'SCommandGroupLabel'
 });
 
-const { class: cls } = defineProps<CommandGroupHeadingProps>();
+const { class: cls } = defineProps<CommandGroupLabelProps>();
 
-const { groupHeading } = commandVariants();
+const { groupLabel } = commandVariants();
 
-const mergedCls = computed(() => cn(groupHeading(), cls));
+const mergedCls = computed(() => cn(groupLabel(), cls));
 </script>
 
 <template>

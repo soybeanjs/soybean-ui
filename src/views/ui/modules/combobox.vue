@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { SButton, SCommand, SPopover } from 'soy-ui';
-import type { CommandItemSingleOption } from 'soy-ui';
+import type { CommandOptionData } from 'soy-ui';
 import { Check, ChevronsUpDown } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCombobox'
 });
 
-const frameworks: CommandItemSingleOption<string>[] = [
+const frameworks: CommandOptionData<string>[] = [
   { value: 'vue', label: 'Vue' },
   { value: 'react', label: 'React' },
   { value: 'next.js', label: 'Next.js' },
@@ -26,7 +26,7 @@ const selectedLabel = computed(() => frameworks.find(framework => framework.valu
 
 const triggerLabel = computed(() => selectedLabel.value || 'Choose a framework');
 
-function handleSelect(item: CommandItemSingleOption<string>) {
+function handleSelect(item: CommandOptionData<string>) {
   selectValue.value = item.value;
   open.value = false;
 }

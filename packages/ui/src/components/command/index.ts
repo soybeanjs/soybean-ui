@@ -5,7 +5,7 @@ import SCommandInputIcon from './command-input-icon.vue';
 import SCommandList from './command-list.vue';
 import SCommandEmpty from './command-empty.vue';
 import SCommandGroup from './command-group.vue';
-import SCommandGroupHeading from './command-group-heading.vue';
+import SCommandGroupHeading from './command-group-label.vue';
 import SCommandItem from './command-item.vue';
 import SCommandSeparator from './command-separator.vue';
 import SCommandShortcut from './command-shortcut.vue';

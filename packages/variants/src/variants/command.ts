@@ -10,11 +10,12 @@ export const commandVariants = tv({
     empty: `py-6 text-center text-sm`,
     list: `max-h-[300px] overflow-y-auto overflow-x-hidden p-1`,
     group: `overflow-hidden text-foreground`,
-    groupHeading: `p-2 text-xs font-medium text-muted-foreground`,
+    groupLabel: `p-2 text-xs font-medium text-muted-foreground`,
     item: [
       `relative flex gap-2 cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none`,
       `data-[highlighted]:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
+    itemIcon: '',
     separator: `-mx-1 h-px bg-border`,
     shortcut: `ml-auto text-xs tracking-widest text-muted-foreground`,
     dialog: `p-0 gap-0`

@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends AcceptableValue, S extends CommandItemOption<T>">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
@@ -12,51 +12,32 @@ import SCommandInput from './command-input.vue';
 import SCommandInputIcon from './command-input-icon.vue';
 import SCommandList from './command-list.vue';
 import SCommandEmpty from './command-empty.vue';
-import SCommandGroup from './command-group.vue';
-import SCommandGroupHeading from './command-group-heading.vue';
-import SCommandItem from './command-item.vue';
-import SCommandSeparator from './command-separator.vue';
-import SCommandShortcut from './command-shortcut.vue';
-import { getHighlightSearchOption, getItemOptions, getSearchOptions, isCommandGroupOption } from './shared';
-import type { CommandEmits, CommandItemOption, CommandItemSingleOption, CommandProps } from './types';
+import SCommandOption from './command-option.vue';
+import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions } from './shared';
+import type { CommandEmits, CommandOptionData, CommandProps } from './types';
 
 defineOptions({
   name: 'SCommand'
 });
 
-const props = defineProps<CommandProps<T, S>>();
+const props = defineProps<CommandProps<T>>();
 
 const emit = defineEmits<CommandEmits<T>>();
 
 type Slots = {
   empty: (props: { searchTerm: string }) => any;
-  item: (props: { item: S | CommandItemSingleOption<T> }) => any;
+  item: (props: { item: CommandOptionData<T> }) => any;
 };
 
 defineSlots<Slots>();
 
-const forwardedRootProps = useOmitForwardProps(props, [
-  'items',
-  'fuseOptions',
-  'inputWrapperClass',
-  'inputClass',
-  'inputProps',
-  'inputIconClass',
-  'emptyClass',
-  'listClass',
-  'groupClass',
-  'groupHeadingClass',
-  'itemClass',
-  'itemIconClass',
-  'separatorClass',
-  'shortcutClass'
-]);
+const forwardedRootProps = useOmitForwardProps(props, ['class', 'items', 'fuseOptions', 'inputProps', 'ui']);
 
 const forwardedRootEmits = useOmitEmitAsProps<CommandEmits<T>>(emit, ['select', 'update:searchTerm']);
 
 const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, forwardedRootEmits);
 
-const searchTerm = useVModel<CommandProps<T, S>, 'searchTerm', 'update:searchTerm'>(props, 'searchTerm', emit, {
+const searchTerm = useVModel<CommandProps<T>, 'searchTerm', 'update:searchTerm'>(props, 'searchTerm', emit, {
   passive: true,
   defaultValue: props.inputProps?.defaultValue || ''
 }) as Ref<string>;
@@ -73,77 +54,45 @@ const computedFuseOptions = computed(() =>
   })
 );
 
-const searchItems = computed(() => getSearchOptions<T, S>(props.items));
+const searchItems = computed(() => getCommandSearchOptions<T>(props.items));
 
 const { results } = useFuse(searchTerm, searchItems, computedFuseOptions);
 
 const filteredItems = computed(() => {
-  const highlightOptions = results.value.map(result => getHighlightSearchOption(result.item, searchTerm.value));
+  const highlightOptions = results.value.map(result => getCommandHighlightSearchOption(result.item, searchTerm.value));
 
-  return getItemOptions(highlightOptions) as S[];
+  return getCommandItemOptions(highlightOptions);
 });
 </script>
 
 <template>
-  <SCommandRoot v-bind="forwardedRoot">
-    <SCommandInputWrapper :class="inputWrapperClass">
-      <SCommandInputIcon :class="inputIconClass" />
+  <SCommandRoot v-bind="forwardedRoot" :class="props.class || ui?.root">
+    <SCommandInputWrapper :class="ui?.inputWrapper">
+      <SCommandInputIcon :class="ui?.inputIcon" />
       <SCommandInput
         v-bind="inputProps"
         v-model="searchTerm"
-        :class="inputClass"
+        :class="ui?.input"
         @update:model-value="emit('update:searchTerm', $event)"
       />
     </SCommandInputWrapper>
-    <SCommandList :class="listClass">
-      <SCommandEmpty v-if="!filteredItems.length && searchTerm" :class="emptyClass">
+    <SCommandList :class="ui?.list">
+      <SCommandEmpty v-if="!filteredItems.length && searchTerm" :class="ui?.empty">
         <slot name="empty" :search-term="searchTerm">
           {{ emptyLabel || `No result for "${searchTerm}"` }}
         </slot>
       </SCommandEmpty>
-
-      <template v-for="(itemOrGroup, itemOrGroupIndex) in filteredItems" :key="itemOrGroupIndex">
-        <template v-if="isCommandGroupOption(itemOrGroup)">
-          <SCommandGroup :class="groupClass">
-            <SCommandGroupHeading :class="groupHeadingClass">{{ itemOrGroup.label }}</SCommandGroupHeading>
-            <template v-for="(item, index) in itemOrGroup.items" :key="index">
-              <SCommandItem
-                :class="itemClass"
-                :value="item.value"
-                :disabled="item.disabled"
-                @select="emit('select', item, $event)"
-              >
-                <slot name="item" :item="item">
-                  <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
-                  {{ item.label }}
-                  <SCommandShortcut v-if="item.shortcut" :class="shortcutClass">{{ item.shortcut }}</SCommandShortcut>
-                </slot>
-              </SCommandItem>
-              <SCommandSeparator v-if="item.separator" :class="separatorClass" />
-            </template>
-          </SCommandGroup>
-          <SCommandSeparator v-if="itemOrGroup.separator" :class="separatorClass" />
-        </template>
-        <template v-else>
-          <SCommandGroup :class="groupClass">
-            <SCommandItem
-              :class="itemClass"
-              :value="itemOrGroup.value"
-              :disabled="itemOrGroup.disabled"
-              @select="emit('select', itemOrGroup, $event)"
-            >
-              <slot name="item" :item="itemOrGroup">
-                <component :is="itemOrGroup.icon" v-if="itemOrGroup.icon" :class="itemIconClass" />
-                {{ itemOrGroup.label }}
-                <SCommandShortcut v-if="itemOrGroup.shortcut" :class="shortcutClass">
-                  {{ itemOrGroup.shortcut }}
-                </SCommandShortcut>
-              </slot>
-            </SCommandItem>
-          </SCommandGroup>
-          <SCommandSeparator v-if="itemOrGroup.separator" :class="separatorClass" />
-        </template>
-      </template>
+      <SCommandOption
+        v-for="(item, itemIndex) in filteredItems"
+        v-slot="slotProps"
+        :key="itemIndex"
+        :size="size"
+        :item="item"
+        :ui="ui"
+        @select="(opt, event) => emit('select', opt, event)"
+      >
+        <slot name="item" v-bind="slotProps" />
+      </SCommandOption>
     </SCommandList>
   </SCommandRoot>
 </template>

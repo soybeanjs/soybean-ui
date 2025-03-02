@@ -1,33 +1,28 @@
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import type { FuseResult, FuseResultMatch } from 'fuse.js';
 import type {
-  CommandItemGroupOption,
-  CommandItemHighlightSearchOption,
-  CommandItemOption,
-  CommandItemSearchOption
+  CommandGroupOptionData,
+  CommandHighlightSearchOptionData,
+  CommandOptionData,
+  CommandSearchOptionData
 } from './types';
 
 export function isCommandGroupOption<A extends AcceptableValue>(
-  option: CommandItemOption<A>
-): option is CommandItemGroupOption<A> {
-  return Boolean((option as CommandItemGroupOption<A>).items);
+  option: CommandOptionData<A> | CommandGroupOptionData<A>
+): option is CommandGroupOptionData<A> {
+  return Boolean((option as CommandGroupOptionData<A>).items);
 }
 
-export function getSearchOptions<T extends AcceptableValue, S extends CommandItemOption<T>>(items: S[]) {
+export function getCommandSearchOptions<T extends AcceptableValue>(
+  items: (CommandOptionData<T> | CommandGroupOptionData<T>)[]
+) {
   const searchOptions = items.flatMap(item => {
     if (!isCommandGroupOption(item)) {
-      const searchOption: CommandItemSearchOption<T> = {
-        groupId: `group-${item.value}`,
-        ...item
-      };
-
-      return [searchOption];
+      return [item];
     }
 
     return item.items.map(groupItem => {
-      const searchOption: CommandItemSearchOption<T> = {
-        isGroup: true,
-        groupId: item.groupId,
+      const searchOption: CommandSearchOptionData<T> = {
         groupLabel: item.label,
         groupSeparator: item.separator,
         ...groupItem
@@ -40,41 +35,40 @@ export function getSearchOptions<T extends AcceptableValue, S extends CommandIte
   return searchOptions;
 }
 
-export function getHighlightSearchOption<T extends AcceptableValue>(
-  item: CommandItemSearchOption<T>,
+export function getCommandHighlightSearchOption<T extends AcceptableValue>(
+  item: CommandSearchOptionData<T>,
   searchTerm: string
 ) {
-  const searchOption: CommandItemHighlightSearchOption<T> = {
+  const searchOption: CommandHighlightSearchOptionData<T> = {
     ...item,
-    labelHtml: highlight(item, searchTerm, 'label')
+    labelHtml: highlightCommandOption(item, searchTerm, 'label')
   };
 
   return searchOption;
 }
 
-export function getItemOptions<T extends AcceptableValue>(options: CommandItemHighlightSearchOption<T>[]) {
+export function getCommandItemOptions<T extends AcceptableValue>(options: CommandHighlightSearchOptionData<T>[]) {
   const itemsByGroup = options.reduce(
     (acc, item) => {
-      const { isGroup, groupId, groupLabel, groupSeparator, ...rest } = item;
+      const { groupLabel, groupSeparator, ...rest } = item;
 
-      if (isGroup) {
-        if (!acc[item.groupId]) {
-          acc[item.groupId] = {
-            groupId,
-            label: groupLabel!,
+      if (groupLabel) {
+        if (!acc[groupLabel]) {
+          acc[groupLabel] = {
+            label: groupLabel,
             separator: groupSeparator,
             items: []
           };
         }
 
-        (acc[item.groupId] as CommandItemGroupOption).items.push(rest);
+        (acc[groupLabel] as CommandGroupOptionData<T>).items.push(rest);
       } else {
-        acc[groupId] = rest;
+        acc[item.label] = rest as CommandOptionData<T>;
       }
 
       return acc;
     },
-    {} as Record<string, CommandItemOption<T>>
+    {} as Record<string, CommandOptionData<T> | CommandGroupOptionData<T>>
   );
 
   return Object.values(itemsByGroup);
@@ -113,7 +107,7 @@ function truncateHTMLFromStart(html: string, maxLength: number) {
   return truncated;
 }
 
-export function highlight<T>(
+export function highlightCommandOption<T>(
   item: T & { matches?: FuseResult<T>['matches'] },
   searchTerm: string,
   forceKey?: string,

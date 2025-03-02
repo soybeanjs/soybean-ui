@@ -2,8 +2,8 @@
 import { ref, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
 import { SCommand, SCommandDialog, SKeyboardKey } from 'soy-ui';
-import type { CommandItemOption, CommandItemSingleOption, SelectEvent } from 'soy-ui';
-import { Calendar, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
+import type { CommandGroupOptionData, CommandOptionData, SelectEvent } from 'soy-ui';
+import { Calendar, HelpCircle, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCommand'
@@ -11,10 +11,10 @@ defineOptions({
 
 const keys = useMagicKeys();
 
-const items: CommandItemOption[] = [
+const items: (CommandGroupOptionData | CommandOptionData)[] = [
   {
-    groupId: 'suggestions',
     label: 'Suggestions',
+    separator: true,
     items: [
       {
         label: 'Calendar',
@@ -31,12 +31,11 @@ const items: CommandItemOption[] = [
         value: 'launch',
         icon: Rocket
       }
-    ],
-    separator: true
+    ]
   },
   {
-    groupId: 'settings',
     label: 'Settings',
+    separator: true,
     items: [
       {
         label: 'Profile',
@@ -57,10 +56,15 @@ const items: CommandItemOption[] = [
         shortcut: '⌘S'
       }
     ]
+  },
+  {
+    label: 'Help',
+    value: 'help',
+    icon: HelpCircle
   }
 ];
 
-function handleSelect(item: CommandItemSingleOption, event: SelectEvent) {
+function handleSelect(item: CommandOptionData, event: SelectEvent) {
   console.log(item, event);
 }
 
