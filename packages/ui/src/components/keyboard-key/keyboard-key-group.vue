@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T extends KeyboardKeyValue | KeyboardKeyValue[]">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, keyboardKeyVariants } from '@soybean-ui/variants';
 import SKeyboardKey from './keyboard-key.vue';
 import type { KeyboardKeyGroupProps, KeyboardKeyValue } from './types';
@@ -25,12 +24,12 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls.root">
+  <div :class="mergedCls.root">
     <template v-for="(value, index) in values" :key="index">
       <SKeyboardKey :value="value" :class="itemClass" :variant="variant" :size="size" />
       <template v-if="separator && index < values.length - 1">
-        <Primitive as="span" :class="mergedCls.separator">{{ separator }}</Primitive>
+        <span :class="mergedCls.separator">{{ separator }}</span>
       </template>
     </template>
-  </Primitive>
+  </div>
 </template>
