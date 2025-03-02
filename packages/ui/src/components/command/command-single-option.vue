@@ -20,7 +20,7 @@ const emit = defineEmits<CommandSingleOptionEmits<T>>();
     <slot name="item">
       <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
       <span>{{ item.label }}</span>
-      <SCommandShortcut v-if="item.shortcut" :class="ui?.shortcut">{{ item.shortcut }}</SCommandShortcut>
+      <SCommandShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" />
     </slot>
   </SCommandItem>
   <SCommandSeparator v-if="item.separator" :class="ui?.separator" />

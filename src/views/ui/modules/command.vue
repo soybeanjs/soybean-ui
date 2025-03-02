@@ -41,26 +41,27 @@ const items: (CommandGroupOptionData | CommandOptionData)[] = [
         label: 'Profile',
         value: 'profile',
         icon: User,
-        shortcut: '⌘P'
+        shortcut: ['command', 'p']
       },
       {
         label: 'Mail',
         value: 'mail',
         icon: Mail,
-        shortcut: '⌘M'
+        shortcut: ['command', 'm']
       },
       {
         label: 'Settings',
         value: 'settings',
         icon: Settings,
-        shortcut: '⌘S'
+        shortcut: ['command', 's']
       }
     ]
   },
   {
     label: 'Help',
     value: 'help',
-    icon: HelpCircle
+    icon: HelpCircle,
+    shortcut: ['command', 'h']
   }
 ];
 

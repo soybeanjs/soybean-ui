@@ -22,6 +22,7 @@ import type {
 } from '@soybean-ui/primitives';
 import type { CommandSlots, ThemeSize } from '@soybean-ui/variants';
 import type { InputProps } from '../input';
+import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
 
 // CommandRoot
 export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {
@@ -70,7 +71,8 @@ export interface CommandDialogProps
 export type CommandDialogEmits = DialogRootEmits & DialogContentEmits;
 
 // CommandShortcut
-export interface CommandShortcutProps extends ClassValueProp {}
+export interface CommandShortcutProps<T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue>
+  extends Omit<KeyboardKeyProps<T>, 'variant'> {}
 
 export interface CommandOptionData<T extends AcceptableValue = AcceptableValue>
   extends Pick<CommandItemProps<T>, 'value' | 'disabled'> {
@@ -79,7 +81,7 @@ export interface CommandOptionData<T extends AcceptableValue = AcceptableValue>
   /** The icon to display in the command. */
   icon?: Component | VNode;
   /** The shortcut to display in the command. */
-  shortcut?: string;
+  shortcut?: KeyboardKeyValue | KeyboardKeyValue[];
   /** whether to show a separator above this option */
   separator?: boolean;
 }
