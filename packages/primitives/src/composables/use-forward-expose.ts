@@ -57,7 +57,7 @@ export function useForwardExpose<T extends ComponentPublicInstance>() {
     Object.defineProperty(ret, '$el', {
       enumerable: true,
       configurable: true,
-      get: () => (ref instanceof Element ? ref : (ref as any).$el)
+      get: () => (el instanceof Element ? el : (el as any).$el)
     });
 
     instance.exposed = ret;
