@@ -16,12 +16,18 @@ const emit = defineEmits<CommandSingleOptionEmits<T>>();
 </script>
 
 <template>
-  <SCommandItem :class="ui?.item" :value="item.value" :disabled="item.disabled" @select="emit('select', $event)">
+  <SCommandItem
+    :class="ui?.item"
+    :size="size"
+    :value="item.value"
+    :disabled="item.disabled"
+    @select="emit('select', $event)"
+  >
     <slot name="item">
       <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
       <span>{{ item.label }}</span>
-      <SCommandShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" />
+      <SCommandShortcut v-if="item.shortcut" :class="ui?.shortcut" :size="size" :value="item.shortcut" />
     </slot>
   </SCommandItem>
-  <SCommandSeparator v-if="item.separator" :class="ui?.separator" />
+  <SCommandSeparator v-if="item.separator" :class="ui?.separator" :size="size" />
 </template>

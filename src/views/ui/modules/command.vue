@@ -2,12 +2,14 @@
 import { ref, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
 import { SCommand, SCommandDialog, SKeyboardKey } from 'soy-ui';
-import type { CommandGroupOptionData, CommandOptionData, SelectEvent } from 'soy-ui';
+import type { CommandGroupOptionData, CommandOptionData, SelectEvent, ThemeSize } from 'soy-ui';
 import { Calendar, HelpCircle, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
 
 defineOptions({
   name: 'UiCommand'
 });
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 const keys = useMagicKeys();
 
@@ -85,13 +87,14 @@ watch(CmdJ, v => {
 </script>
 
 <template>
-  <SCommand
-    :items="items"
-    :input-props="{ placeholder: 'Type a command or search...' }"
-    class="max-w-[450px] border rounded-lg shadow-md"
-    @select="handleSelect"
-  />
-  <div>Dialog Command</div>
+  <div class="py-12px text-18px">Size</div>
+  <div class="flex flex-wrap gap-24px">
+    <div v-for="size in sizes" :key="size" class="w-320px lt-sm:w-full">
+      <div>{{ size }}</div>
+      <SCommand class="border rounded-lg shadow-md" :size="size" :items="items" />
+    </div>
+  </div>
+  <div class="mt-24px py-12px text-18px">Dialog Command</div>
   <SKeyboardKey :value="['command', 'j']" />
   <SCommandDialog v-model:open="open">
     <SCommand

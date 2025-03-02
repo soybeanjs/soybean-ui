@@ -9,15 +9,17 @@ defineOptions({
   name: 'SCommandItem'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<CommandItemProps<T>>();
+const { class: cls, size, ...delegatedProps } = defineProps<CommandItemProps<T>>();
 
 const emit = defineEmits<CommandItemEmits<T>>();
 
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit);
 
-const { item } = commandVariants();
+const mergedCls = computed(() => {
+  const { item } = commandVariants({ size });
 
-const mergedCls = computed(() => cn(item(), cls));
+  return cn(item(), cls);
+});
 </script>
 
 <template>

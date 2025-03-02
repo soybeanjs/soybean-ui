@@ -7,11 +7,13 @@ defineOptions({
   name: 'SCommandEmpty'
 });
 
-const { class: cls } = defineProps<CommandEmptyProps>();
+const { class: cls, size } = defineProps<CommandEmptyProps>();
 
-const { empty } = commandVariants();
+const mergedCls = computed(() => {
+  const { empty } = commandVariants({ size });
 
-const mergedCls = computed(() => cn(empty(), cls));
+  return cn(empty(), cls);
+});
 </script>
 
 <template>

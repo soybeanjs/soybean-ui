@@ -25,36 +25,49 @@ import type { InputProps } from '../input';
 import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
 
 // CommandRoot
-export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {
-  size?: ThemeSize;
-}
+export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {}
 export type CommandRootEmits<T extends AcceptableValue = AcceptableValue> = ListboxRootEmits<T>;
 
 // CommandInput
-export interface CommandInputWrapperProps extends ClassValueProp {}
-export interface CommandInputProps extends InputProps, ListboxFilterProps {}
+export interface CommandInputProps extends InputProps, ListboxFilterProps {
+  size?: ThemeSize;
+  wrapperClass?: ClassValue;
+  iconClass?: ClassValue;
+}
 export type CommandInputEmits = ListboxFilterEmits;
-export interface CommandInputIconProps extends ClassValueProp {}
+export interface CommandInputIconProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 // CommandEmpty
-export interface CommandEmptyProps extends ClassValueProp {}
+export interface CommandEmptyProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 // CommandList
-export interface CommandListProps extends ListboxContentProps {}
+export interface CommandListProps extends ListboxContentProps {
+  size?: ThemeSize;
+}
 
 // CommandGroup
 export interface CommandGroupProps extends ListboxGroupProps {}
-export interface CommandGroupLabelProps extends ClassValueProp {}
+export interface CommandGroupLabelProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 // CommandItem
-export interface CommandItemProps<T extends AcceptableValue = AcceptableValue> extends ListboxItemProps<T> {}
+export interface CommandItemProps<T extends AcceptableValue = AcceptableValue> extends ListboxItemProps<T> {
+  size?: ThemeSize;
+}
 export type CommandItemEmits<T extends AcceptableValue = AcceptableValue> = ListboxItemEmits<T>;
 
 // CommandItemIndicator
 export interface CommandItemIndicatorProps extends ListboxItemIndicatorProps {}
 
 // CommandSeparator
-export interface CommandSeparatorProps extends ClassValueProp {}
+export interface CommandSeparatorProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 // CommandDialog
 export interface CommandDialogProps
@@ -131,6 +144,7 @@ export type CommandUi = Partial<Record<CommandSlots, ClassValue>>;
 
 // Command
 export interface CommandProps<T extends AcceptableValue = AcceptableValue> extends CommandRootProps<T> {
+  size?: ThemeSize;
   items: (CommandOptionData<T> | CommandGroupOptionData<T>)[];
   ui?: CommandUi;
   fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>;

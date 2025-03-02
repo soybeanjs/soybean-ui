@@ -37,7 +37,7 @@ defineSlots<Slots>();
         <slot :item="opt" />
       </SCommandSingleOption>
     </SCommandGroup>
-    <SCommandSeparator v-if="item.separator" :class="ui?.separator" />
+    <SCommandSeparator v-if="item.separator" :class="ui?.separator" :size="size" />
   </template>
   <SCommandSingleOption v-else :size="size" :item="item" :ui="ui" @select="emit('select', item, $event)">
     <slot :item="item" />

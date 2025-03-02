@@ -7,9 +7,7 @@ import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { defu } from 'defu';
 import SCommandRoot from './command-root.vue';
-import SCommandInputWrapper from './command-input-wrapper.vue';
 import SCommandInput from './command-input.vue';
-import SCommandInputIcon from './command-input-icon.vue';
 import SCommandList from './command-list.vue';
 import SCommandEmpty from './command-empty.vue';
 import SCommandOption from './command-option.vue';
@@ -25,6 +23,8 @@ const props = defineProps<CommandProps<T>>();
 const emit = defineEmits<CommandEmits<T>>();
 
 type Slots = {
+  leading: () => any;
+  trailing: () => any;
   empty: (props: { searchTerm: string }) => any;
   item: (props: { item: CommandOptionData<T> }) => any;
 };
@@ -67,17 +67,24 @@ const filteredItems = computed(() => {
 
 <template>
   <SCommandRoot v-bind="forwardedRoot" :class="props.class || ui?.root">
-    <SCommandInputWrapper :class="ui?.inputWrapper">
-      <SCommandInputIcon :class="ui?.inputIcon" />
-      <SCommandInput
-        v-bind="inputProps"
-        v-model="searchTerm"
-        :class="ui?.input"
-        @update:model-value="emit('update:searchTerm', $event)"
-      />
-    </SCommandInputWrapper>
-    <SCommandList :class="ui?.list">
-      <SCommandEmpty v-if="!filteredItems.length && searchTerm" :class="ui?.empty">
+    <SCommandInput
+      v-bind="inputProps"
+      v-model="searchTerm"
+      :class="ui?.input"
+      :wrapper-class="ui?.inputWrapper"
+      :icon-class="ui?.inputIcon"
+      :size="size"
+      @update:model-value="emit('update:searchTerm', $event)"
+    >
+      <template #leading>
+        <slot name="leading" />
+      </template>
+      <template #trailing>
+        <slot name="trailing" />
+      </template>
+    </SCommandInput>
+    <SCommandList :class="ui?.list" :size="size">
+      <SCommandEmpty v-if="!filteredItems.length && searchTerm" :class="ui?.empty" :size="size">
         <slot name="empty" :search-term="searchTerm">
           {{ emptyLabel || `No result for "${searchTerm}"` }}
         </slot>

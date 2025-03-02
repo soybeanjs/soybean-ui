@@ -8,11 +8,13 @@ defineOptions({
   name: 'SCommandGroupLabel'
 });
 
-const { class: cls } = defineProps<CommandGroupLabelProps>();
+const { class: cls, size } = defineProps<CommandGroupLabelProps>();
 
-const { groupLabel } = commandVariants();
+const mergedCls = computed(() => {
+  const { groupLabel } = commandVariants({ size });
 
-const mergedCls = computed(() => cn(groupLabel(), cls));
+  return cn(groupLabel(), cls);
+});
 </script>
 
 <template>

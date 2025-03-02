@@ -8,13 +8,15 @@ defineOptions({
   name: 'SCommandList'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<CommandListProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<CommandListProps>();
 
 const forwarded = useForwardProps(delegatedProps);
 
-const { list } = commandVariants();
+const mergedCls = computed(() => {
+  const { list } = commandVariants({ size });
 
-const mergedCls = computed(() => cn(list(), cls));
+  return cn(list(), cls);
+});
 </script>
 
 <template>

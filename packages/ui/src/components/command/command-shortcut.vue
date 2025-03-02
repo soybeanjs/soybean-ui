@@ -11,11 +11,9 @@ defineOptions({
 
 const { class: cls, size, value } = defineProps<CommandShortcutProps<T>>();
 
-const mergedCls = computed(() => {
-  const { shortcut } = commandVariants({ size });
+const { shortcut } = commandVariants();
 
-  return cn(shortcut(), cls);
-});
+const mergedCls = computed(() => cn(shortcut(), cls));
 </script>
 
 <template>
