@@ -1,6 +1,90 @@
 # Changelog
 
 
+## [v0.0.1-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.4...v0.0.1-beta.5) (2025-03-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **packages**:
+  - ui: add resizable &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/56 [<samp>(54a41)</samp>](https://github.com/soybeanjs/soybean-ui/commit/54a41b4)
+  - variants: export slot type &nbsp;-&nbsp; by @soybeanjs [<samp>(ce901)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce90128)
+  - ui: add tags-input &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/57 [<samp>(f6535)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f6535bf)
+  - ui: add number-field &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/59 [<samp>(ef749)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ef74911)
+  - ui: add carousel &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/60 [<samp>(88328)</samp>](https://github.com/soybeanjs/soybean-ui/commit/88328f6)
+  - ui: add stepper &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/61 [<samp>(25027)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2502769)
+  - ui: command support size &nbsp;-&nbsp; by @soybeanjs [<samp>(a12bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a12bb48)
+- **projects**:
+  - add theme color `carbon` &nbsp;-&nbsp; by @soybeanjs [<samp>(80906)</samp>](https://github.com/soybeanjs/soybean-ui/commit/809061f)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**:
+  - primitives: fix number-field error when not provide prop modelValue &nbsp;-&nbsp; by @soybeanjs [<samp>(6c51c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6c51c48)
+  - ui: fix missing stepper props orientation &nbsp;-&nbsp; by @soybeanjs [<samp>(934fa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/934fac7)
+  - primitives: fix `useForwardExpose` &nbsp;-&nbsp; by @soybeanjs [<samp>(cbd21)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cbd2140)
+- **types**:
+  - fix ts types &nbsp;-&nbsp; by @soybeanjs [<samp>(3a12e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3a12e63)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **packages**:
+  - ui: optimize select option type &nbsp;-&nbsp; by @soybeanjs [<samp>(ef6e0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ef6e070)
+  - ui: optimize select option type &nbsp;-&nbsp; by @soybeanjs [<samp>(7711c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7711c6c)
+  - ui: optimize select prop &nbsp;-&nbsp; by @soybeanjs [<samp>(efa1e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/efa1ee3)
+  - ui: optimize keboard-key &nbsp;-&nbsp; by @soybeanjs [<samp>(d9f68)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d9f68d2)
+  - ui: optimize command &nbsp;-&nbsp; by @soybeanjs [<samp>(472e4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/472e449)
+- **projects**:
+  - ui: add prop `defer` &nbsp;-&nbsp; by @soybeanjs [<samp>(39d10)</samp>](https://github.com/soybeanjs/soybean-ui/commit/39d10fb)
+  - optimize scripts generate &nbsp;-&nbsp; by @soybeanjs [<samp>(b76d1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b76d142)
+  - optimize tabs data &nbsp;-&nbsp; by @soybeanjs [<samp>(14d60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/14d600a)
+  - optimize code to avoid wrong build types &nbsp;-&nbsp; by @soybeanjs [<samp>(2d81d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2d81de5)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **packages**:
+  - ui: refactor select &nbsp;-&nbsp; by @soybeanjs [<samp>(b18f8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b18f8e4)
+  - ui: refactor accordion class &nbsp;-&nbsp; by @soybeanjs [<samp>(d04c3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d04c330)
+  - variants: use `ring` replace `outline` &nbsp;-&nbsp; by @soybeanjs [<samp>(c0203)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c02034a)
+  - variants: fix outline-none &nbsp;-&nbsp; by @soybeanjs [<samp>(9c066)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9c06676)
+  - ui: refactor command &nbsp;-&nbsp; by @soybeanjs [<samp>(3c876)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3c876d5)
+- **projects**:
+  - ui: remove short prop &nbsp;-&nbsp; by @soybeanjs [<samp>(0843a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0843a97)
+  - ui: remove short prop &nbsp;-&nbsp; by @soybeanjs [<samp>(32a78)</samp>](https://github.com/soybeanjs/soybean-ui/commit/32a7880)
+  - use `outline-solid` replace unuseless `outline` in unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(e0f4b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e0f4bae)
+  - update package build &nbsp;-&nbsp; by @soybeanjs [<samp>(3b105)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3b105d3)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update docs &nbsp;-&nbsp; by @soybeanjs [<samp>(bcb30)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bcb30ac)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(ba27a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ba27aad)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(18687)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1868790)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(f9dd8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f9dd824)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(89afa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/89afa9e)
+- **projects**:
+  - update vscode settings &nbsp;-&nbsp; by @soybeanjs [<samp>(245af)</samp>](https://github.com/soybeanjs/soybean-ui/commit/245afae)
+  - update deps & update vite config &nbsp;-&nbsp; by @soybeanjs [<samp>(ee143)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ee143fd)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(8044f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8044f46)
+  - ui: update pnpm version &nbsp;-&nbsp; by @soybeanjs [<samp>(9a628)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9a628bb)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(bd5e3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bd5e32e)
+  - update unocss preset &nbsp;-&nbsp; by @soybeanjs [<samp>(30874)</samp>](https://github.com/soybeanjs/soybean-ui/commit/308740a)
+  - update vscode settings &nbsp;-&nbsp; by @soybeanjs [<samp>(ca0cd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca0cd83)
+  - optimize scripts generate &nbsp;-&nbsp; by @soybeanjs [<samp>(d8387)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d83874c)
+  - sync code from radix-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(a86e4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a86e480)
+  - update pnpm version &nbsp;-&nbsp; by @soybeanjs [<samp>(324e4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/324e42b)
+  - update pnpm version &nbsp;-&nbsp; by @soybeanjs [<samp>(11296)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1129633)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: eslint sort import &nbsp;-&nbsp; by @soybeanjs [<samp>(45ba3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/45ba345)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.3...v0.0.1-beta.4) (2025-01-07)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
