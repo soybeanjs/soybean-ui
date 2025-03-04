@@ -64,10 +64,10 @@ importers:
         specifier: 3.5.13
         version: 3.5.13
       embla-carousel:
-        specifier: ^8.5.2
+        specifier: 8.5.2
         version: 8.5.2
       enquirer:
-        specifier: ^2.4.1
+        specifier: 2.4.1
         version: 2.4.1
       eslint:
         specifier: 9.21.0
