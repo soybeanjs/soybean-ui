@@ -13,12 +13,22 @@
       "require": "./dist/index.cjs"
     },
     "./date": {
-      "types": "./dist/date.d.ts",
-      "import": "./dist/date.mjs",
-      "require": "./dist/date.cjs"
+      "types": "./dist/date/index.d.ts",
+      "import": "./dist/date.mjs"
+    },
+    "./constant": {
+      "types": "./dist/constant/index.d.ts",
+      "import": "./dist/constant.mjs"
+    },
+    "./composables": {
+      "types": "./dist/composables/index.d.ts",
+      "import": "./dist/composables.mjs"
+    },
+    "./*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
