@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@vueuse/core": "12.7.0",
-    "lucide-vue-next": "0.475.0",
+    "lucide-vue-next": "0.477.0",
     "soy-ui": "workspace:*",
     "vue": "3.5.13"
   },
