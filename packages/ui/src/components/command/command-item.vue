@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends AcceptableValue">
+<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
 import { ListboxItem, useForwardPropsEmits } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';

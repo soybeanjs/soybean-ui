@@ -31,7 +31,15 @@ type Slots = {
 
 defineSlots<Slots>();
 
-const forwardedRootProps = useOmitForwardProps(props, ['class', 'items', 'fuseOptions', 'inputProps', 'ui']);
+const forwardedRootProps = useOmitForwardProps(props, [
+  'class',
+  'size',
+  'ui',
+  'items',
+  'fuseOptions',
+  'inputProps',
+  'emptyLabel'
+]);
 
 const forwardedRootEmits = useOmitEmitAsProps<CommandEmits<T>>(emit, ['select', 'update:searchTerm']);
 

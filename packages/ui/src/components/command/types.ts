@@ -111,9 +111,7 @@ export interface CommandSingleOptionProps<T extends AcceptableValue = Acceptable
   item: CommandOptionData<T>;
   ui?: Partial<Record<CommandSingleOptionSlots, ClassValue>>;
 }
-export type CommandSingleOptionEmits<T extends AcceptableValue = AcceptableValue> = {
-  select: [event: SelectEvent<T>];
-};
+export type CommandSingleOptionEmits<T extends AcceptableValue = AcceptableValue> = ListboxItemEmits<T>;
 
 export type CommandOptionSlots = Extract<
   CommandSlots,
@@ -145,8 +143,8 @@ export type CommandUi = Partial<Record<CommandSlots, ClassValue>>;
 // Command
 export interface CommandProps<T extends AcceptableValue = AcceptableValue> extends CommandRootProps<T> {
   size?: ThemeSize;
-  items: (CommandOptionData<T> | CommandGroupOptionData<T>)[];
   ui?: CommandUi;
+  items: (CommandOptionData<T> | CommandGroupOptionData<T>)[];
   fuseOptions?: UseFuseOptions<CommandSearchOptionData<T>>;
   searchTerm?: string;
   inputProps?: Omit<CommandInputProps, 'class' | 'modelValue'>;
