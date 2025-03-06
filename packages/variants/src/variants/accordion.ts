@@ -9,7 +9,7 @@ export const accordionVariants = tv({
     contentBody: 'pb-4',
     trigger: [
       `flex-1 flex items-center justify-between py-4 text-sm font-medium transition-all bg-transparent`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-primary)`,
+      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `hover:underline [&[data-state=open]>svg]:rotate-180`
     ],
     triggerIcon: 'shrink-0 text-muted-foreground transition-transform duration-200'

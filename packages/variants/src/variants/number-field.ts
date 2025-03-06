@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const numberFieldVariants = tv({
   slots: {
-    root: 'flex items-center w-full rounded-md border border-input bg-background focus-within:(border-input ring-2 ring-offset-2 ring-primary) disabled:(cursor-not-allowed opacity-50)',
+    root: 'flex items-center w-full rounded-md border border-input bg-background focus-within:(border-input ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)',
     decrement: `flex h-full shrink-0 items-center justify-center bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,
     decrementIcon: '',
     increment: `flex h-full shrink-0 items-center justify-center bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,

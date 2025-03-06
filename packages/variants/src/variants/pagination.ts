@@ -8,7 +8,7 @@ export const paginationVariants = tv({
     button: [
       `inline-flex items-center justify-center flex-shrink-0 font-medium rounded-md`,
       `hover:(bg-accent text-accent-foreground)`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-primary)`,
+      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ]
   },

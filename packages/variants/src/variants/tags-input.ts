@@ -5,10 +5,10 @@ export const tagsInputVariants = tv({
   slots: {
     root: [
       `flex flex-wrap gap-2 items-center rounded-md border border-input bg-background`,
-      `focus-within:(ring-2 ring-offset-2 ring-primary) disabled:(cursor-not-allowed opacity-50)`
+      `focus-within:(ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)`
     ],
     input: `focus:outline-none flex-1 bg-transparent`,
-    item: `flex items-center rounded-md bg-accent data-[state=active]:(ring-2 ring-offset-2 ring-accent-foreground/20) ring-offset-background`,
+    item: `flex items-center rounded-md bg-accent data-[state=active]:(ring-2 ring-offset-2 ring-offset-background ring-accent-foreground/20) ring-offset-background`,
     itemText: `rounded bg-transparent`,
     itemDelete: `flex rounded bg-transparent mr-1 text-foreground hover:text-foreground/80`,
     itemDeleteIcon: `cursor-pointer`

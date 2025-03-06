@@ -7,7 +7,7 @@ export const textareaVariants = tv({
     root: 'relative',
     content: [
       `flex w-full rounded-md border border-input bg-background`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-primary) disabled:(cursor-not-allowed opacity-50)`
+      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)`
     ],
     count: 'absolute right-2.5 bottom-2 z-1 lh-none text-muted-foreground'
   },

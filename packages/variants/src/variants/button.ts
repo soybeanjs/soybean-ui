@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const buttonVariants = tv({
-  base: 'inline-flex items-center justify-center font-medium focus-visible:(outline-none ring-2 ring-offset-2) disabled:(pointer-events-none opacity-50)',
+  base: 'inline-flex items-center justify-center font-medium focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-offset-background) disabled:(pointer-events-none opacity-50)',
   variants: {
     color: {
       primary: `focus-visible:ring-primary`,
