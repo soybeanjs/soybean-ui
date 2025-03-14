@@ -17,7 +17,7 @@ useForwardExpose();
 </script>
 
 <template>
-  <DialogRoot v-bind="forwarded" modal>
-    <slot />
+  <DialogRoot v-slot="slotProps" v-bind="forwarded" modal>
+    <slot v-bind="slotProps" />
   </DialogRoot>
 </template>
