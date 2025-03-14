@@ -15,8 +15,8 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@vueuse/core": "12.7.0",
-    "lucide-vue-next": "0.477.0",
+    "@vueuse/core": "13.0.0",
+    "lucide-vue-next": "0.479.0",
     "soy-ui": "workspace:*",
     "vue": "3.5.13"
   },
