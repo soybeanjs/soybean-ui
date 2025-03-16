@@ -31,6 +31,12 @@ export type ComboboxRootProps<T = AcceptableValue> = ClassValueProp &
      * @defaultValue `true`
      */
     resetSearchTermOnBlur?: boolean;
+    /**
+     * Whether to reset the searchTerm when the Combobox value is selected
+     *
+     * @defaultValue `true`
+     */
+    resetSearchTermOnSelect?: boolean;
     /** When `true`, disable the default filters */
     ignoreFilter?: boolean;
   };
@@ -52,6 +58,7 @@ export interface ComboboxRootContext<T> {
   onTriggerElementChange: (el: HTMLElement) => void;
   highlightedElement: Ref<HTMLElement | undefined>;
   parentElement: Ref<HTMLElement | undefined>;
+  resetSearchTermOnSelect: Ref<boolean>;
   onResetSearchTerm: EventHookOn;
   allItems: Ref<Map<string, string>>;
   allGroups: Ref<Map<string, Set<string>>>;
