@@ -11,6 +11,7 @@ export * from './variants/carousel';
 export * from './variants/checkbox';
 export * from './variants/chip';
 export * from './variants/collapsible';
+export * from './variants/combobox';
 export * from './variants/command';
 export * from './variants/dialog';
 export * from './variants/drawer';

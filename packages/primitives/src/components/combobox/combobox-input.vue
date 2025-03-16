@@ -50,8 +50,9 @@ function resetSearchTerm() {
   if (props.displayValue) {
     modelValue.value = props.displayValue(rootModelValue);
   } else if (!rootContext.multiple.value && rootModelValue && !Array.isArray(rootModelValue)) {
-    if (typeof rootModelValue !== 'object') modelValue.value = rootModelValue.toString();
-    else modelValue.value = '';
+    if (typeof rootModelValue !== 'object') {
+      modelValue.value = rootModelValue.toString();
+    } else modelValue.value = '';
   } else {
     modelValue.value = '';
   }
@@ -70,7 +71,9 @@ rootContext.onResetSearchTerm(() => {
 watch(
   rootContext.modelValue,
   async () => {
-    if (!rootContext.isUserInputted.value) resetSearchTerm();
+    if (!rootContext.isUserInputted.value && rootContext.resetSearchTermOnSelect.value) {
+      resetSearchTerm();
+    }
   },
   { immediate: true, deep: true }
 );
