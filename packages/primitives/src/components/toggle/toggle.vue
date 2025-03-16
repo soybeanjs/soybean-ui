@@ -51,7 +51,7 @@ const isFormControl = useFormControl(currentElement);
     :disabled="disabled"
     @click="togglePressed"
   >
-    <slot :model-value="modelValue" />
+    <slot :model-value="modelValue" :disabled="disabled" :pressed="modelValue" :state="dataState" />
 
     <VisuallyHiddenInput
       v-if="isFormControl && name && !toggleGroupContext"

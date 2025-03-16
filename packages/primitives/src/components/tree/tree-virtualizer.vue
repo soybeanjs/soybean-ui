@@ -5,7 +5,7 @@ import { refAutoReset, useParentElement } from '@vueuse/core';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import { useCollection } from '../../composables';
-import { getNextMatch } from '../../shared';
+import { getActiveElement, getNextMatch } from '../../shared';
 import type { NavigationKeys } from '../../types';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { injectTreeRootContext } from './context';
@@ -136,7 +136,7 @@ rootContext.virtualKeydownHook.on(event => {
       item.ref.focus();
     });
   } else if (intent === 'prev' && event.key !== 'ArrowUp') {
-    const currentElement = document.activeElement as HTMLElement;
+    const currentElement = getActiveElement() as HTMLElement;
     const currentIndex = Number(currentElement.getAttribute('data-index'));
     const currentLevel = Number(currentElement.getAttribute('data-indent'));
     const list = rootContext.expandedItems.value
@@ -148,7 +148,7 @@ rootContext.virtualKeydownHook.on(event => {
     if (parentItem) scrollToIndexAndFocus(parentItem.index);
   } else if (!intent && !isMetaKey) {
     search.value += event.key;
-    const currentIndex = Number(document.activeElement?.getAttribute('data-index'));
+    const currentIndex = Number(getActiveElement()?.getAttribute('data-index'));
     const currentMatch = optionsWithMetadata.value[currentIndex].textContent;
     const filteredOptions = optionsWithMetadata.value.map(i => i.textContent);
     const next = getNextMatch(filteredOptions, search.value, currentMatch);
@@ -161,7 +161,7 @@ rootContext.virtualKeydownHook.on(event => {
     if (event.shiftKey && intent)
       rootContext.handleMultipleReplace(
         intent,
-        document.activeElement,
+        getActiveElement(),
         getItems,
         rootContext.expandedItems.value.map(i => i.value)
       );

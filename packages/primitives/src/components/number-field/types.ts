@@ -12,6 +12,8 @@ export interface NumberFieldRootProps extends ClassValueProp {
   max?: number;
   /** The amount that the input value changes with each increment or decrement "tick". */
   step?: number;
+  /** When `false`, prevents the value from snapping to the nearest increment of the step value */
+  stepSnapping?: boolean;
   /**
    * Formatting options for the value displayed in the number field. This also affects what characters are allowed to be
    * typed by the user.
@@ -21,6 +23,8 @@ export interface NumberFieldRootProps extends ClassValueProp {
   locale?: string;
   /** When `true`, prevents the user from interacting with the Number Field. */
   disabled?: boolean;
+  /** When `true`, prevents the value from changing on wheel scroll. */
+  disableWheelChange?: boolean;
   /** Id of the element */
   id?: string;
 }
@@ -42,6 +46,7 @@ export interface NumberFieldRootContext {
   validate: (val: string) => boolean;
   applyInputValue: (val: string) => void;
   disabled: Ref<boolean>;
+  disableWheelChange: Ref<boolean>;
   max: Ref<number | undefined>;
   min: Ref<number | undefined>;
   isDecreaseDisabled: Ref<boolean>;

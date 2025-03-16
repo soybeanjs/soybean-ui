@@ -32,7 +32,8 @@ const props = withDefaults(defineProps<SliderRootPropsWithPrimitive>(), {
   disabled: false,
   minStepsBetweenThumbs: 0,
   defaultValue: () => [0],
-  inverted: false
+  inverted: false,
+  thumbAlignment: 'contain'
 });
 
 const emit = defineEmits<SliderRootEmits>();
@@ -44,7 +45,7 @@ const modelValue = useVModel(props, 'modelValue', emit, {
 
 const currentModelValue = computed(() => (Array.isArray(modelValue.value) ? [...modelValue.value] : []));
 
-const { min, max, step, minStepsBetweenThumbs, orientation, disabled, dir: propDir } = toRefs(props);
+const { min, max, step, minStepsBetweenThumbs, orientation, disabled, thumbAlignment, dir: propDir } = toRefs(props);
 const dir = useDirection(propDir);
 const { forwardRef, currentElement } = useForwardExpose();
 const isFormControl = useFormControl(currentElement);
@@ -101,7 +102,8 @@ provideSliderRootContext({
   orientation,
   min,
   max,
-  disabled
+  disabled,
+  thumbAlignment
 });
 </script>
 

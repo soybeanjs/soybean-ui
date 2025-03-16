@@ -1,3 +1,4 @@
+import { getActiveElement } from '../../shared';
 import type { Direction, DisclosureState, Point, Polygon } from '../../types';
 
 export const ITEM_NAME = 'MenuItem';
@@ -20,12 +21,12 @@ export function getOpenState(open: boolean): DisclosureState {
 }
 
 export function focusFirst(candidates: HTMLElement[]) {
-  const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
+  const PREVIOUSLY_FOCUSED_ELEMENT = getActiveElement();
   for (const candidate of candidates) {
     // if focus is already where we want to go, we don't want to keep going through the candidates
     if (candidate === PREVIOUSLY_FOCUSED_ELEMENT) return;
     candidate.focus();
-    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) return;
+    if (getActiveElement() !== PREVIOUSLY_FOCUSED_ELEMENT) return;
   }
 }
 

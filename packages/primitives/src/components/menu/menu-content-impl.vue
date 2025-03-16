@@ -7,6 +7,7 @@ import {
   useForwardExpose,
   useTypeahead
 } from '../../composables';
+import { getActiveElement } from '../../shared';
 import type { GraceIntent, HorizontalSide } from '../../types';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
@@ -72,7 +73,7 @@ function onKeyDown(event: KeyboardEvent) {
   const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
   const isCharacterKey = event.key.length === 1;
 
-  const el = useArrowNavigation(event, document.activeElement as HTMLElement, contentElement.value, {
+  const el = useArrowNavigation(event, getActiveElement() as HTMLElement, contentElement.value, {
     loop: loop.value,
     arrowKeyOptions: 'vertical',
     dir: dir.value,

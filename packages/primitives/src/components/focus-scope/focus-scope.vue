@@ -2,6 +2,7 @@
 import { nextTick, reactive, ref, watchEffect } from 'vue';
 import { isClient } from '@vueuse/shared';
 import { useForwardExpose } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import {
   AUTOFOCUS_ON_MOUNT,
@@ -48,7 +49,7 @@ function handleKeyDown(event: KeyboardEvent) {
   const container = currentElement.value;
 
   const isTabKey = event.key === 'Tab' && !event.altKey && !event.ctrlKey && !event.metaKey;
-  const focusedElement = document.activeElement as HTMLElement | null;
+  const focusedElement = getActiveElement() as HTMLElement | null;
 
   if (isTabKey && focusedElement) {
     const [first, last] = getTabbableEdges(container);
@@ -143,7 +144,7 @@ watchEffect(async cleanupFn => {
   await nextTick();
   if (!container) return;
   focusScopesStack.add(focusScope);
-  const previouslyFocusedElement = document.activeElement as HTMLElement | null;
+  const previouslyFocusedElement = getActiveElement() as HTMLElement | null;
   const hasFocusedCandidate = container.contains(previouslyFocusedElement);
 
   if (!hasFocusedCandidate) {
@@ -155,7 +156,7 @@ watchEffect(async cleanupFn => {
       focusFirst(removeLinks(getTabbableCandidates(container)), {
         select: true
       });
-      if (document.activeElement === previouslyFocusedElement) {
+      if (getActiveElement() === previouslyFocusedElement) {
         focus(container);
       }
     }

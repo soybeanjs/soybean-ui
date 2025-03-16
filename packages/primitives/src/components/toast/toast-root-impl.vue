@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref, watch, watchEffect } from 'vue';
 import { onKeyStroke, useRafFn } from '@vueuse/core';
 import { isClient } from '@vueuse/shared';
 import { useCollection, useForwardExpose } from '../../composables';
+import { getActiveElement } from '../../shared';
 import type { SwipeEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { injectToastProviderContext, provideToastRootContext } from './context';
@@ -67,7 +68,7 @@ function startTimer(_duration: number) {
 function handleClose() {
   // focus viewport if focus is within toast to read the remaining toast
   // count to SR users and ensure focus isn't lost
-  const isFocusInToast = currentElement.value?.contains(document.activeElement);
+  const isFocusInToast = currentElement.value?.contains(getActiveElement());
   if (isFocusInToast) providerContext.viewport.value?.focus();
 
   // when manually close the toast, we reset isClosePausedRef

@@ -28,7 +28,9 @@ const position = ref<{ left: number; top: number }>();
 const open = computed(() => Boolean(menuContext.modelValue.value));
 
 watch(currentElement, () => {
-  if (currentElement.value) menuContext.onViewportChange(currentElement.value);
+  if (currentElement.value) {
+    menuContext.onViewportChange(currentElement.value);
+  }
 });
 
 const content = ref<HTMLElement>();

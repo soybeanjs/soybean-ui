@@ -2,6 +2,8 @@ import type { ComputedRef, Ref } from 'vue';
 import type { ClassValueProp, DataOrientation, Direction, FormFieldProps, Side } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
+export type ThumbAlignment = 'contain' | 'overflow';
+
 // Root
 export interface SliderRootProps extends ClassValueProp, FormFieldProps {
   /** The value of the slider when initially rendered. Use when you do not need to control the state of the slider. */
@@ -27,6 +29,15 @@ export interface SliderRootProps extends ClassValueProp, FormFieldProps {
   step?: number;
   /** The minimum permitted steps between multiple thumbs. */
   minStepsBetweenThumbs?: number;
+  /**
+   * The alignment of the slider thumb.
+   *
+   * - `contain`: thumbs will be contained within the bounds of the track.
+   * - `overflow`: thumbs will not be bound by the track. No extra offset will be added.
+   *
+   * @defaultValue 'contain'
+   */
+  thumbAlignment?: ThumbAlignment;
 }
 export type SliderRootPropsWithPrimitive = SliderRootProps & PrimitiveProps;
 
@@ -49,6 +60,7 @@ export type SliderRootContext = {
   currentModelValue: ComputedRef<number[]>;
   valueIndexToChangeRef: Ref<number>;
   thumbElements: Ref<HTMLElement[]>;
+  thumbAlignment: Ref<ThumbAlignment>;
 };
 
 // Thumb

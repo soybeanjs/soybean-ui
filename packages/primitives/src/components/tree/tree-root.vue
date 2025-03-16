@@ -3,7 +3,7 @@ import { computed, nextTick, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
 import { useDirection, useSelectionBehavior, useTypeahead } from '../../composables';
-import { flatten } from '../../shared';
+import { flatten, getActiveElement } from '../../shared';
 import type { NavigationKeys } from '../../types';
 import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
@@ -105,7 +105,7 @@ function handleKeydownNavigation(event: KeyboardEvent) {
   nextTick(() => {
     handleMultipleReplace(
       intent,
-      document.activeElement,
+      getActiveElement(),
       rovingFocusGroupRef.value?.getItems as () => { ref: HTMLElement; value?: any }[],
       expandedItems.value.map(i => i.value)
     );

@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { computed, nextTick, reactive, ref, toRefs, watch } from 'vue';
+import { computed, getCurrentInstance, nextTick, onMounted, reactive, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
 import { useDirection, useFilter, usePrimitiveElement } from '../../composables';
@@ -143,6 +143,16 @@ watch(
   },
   { flush: 'post' }
 );
+
+const instance = getCurrentInstance();
+
+onMounted(() => {
+  if (instance?.exposed) {
+    instance.exposed.highlightItem = primitiveElement.value?.highlightItem;
+    instance.exposed.highlightFirstItem = primitiveElement.value?.highlightFirstItem;
+    instance.exposed.highlightSelected = primitiveElement.value?.highlightSelected;
+  }
+});
 
 defineExpose({
   filtered: computed(() => filterState.filtered),

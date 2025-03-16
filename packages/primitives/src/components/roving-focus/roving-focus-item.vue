@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted } from 'vue';
-import { useCollection, useId, usePrimitiveElement } from '../../composables';
-import { Primitive } from '../primitive';
+import { useCollection, useId } from '../../composables';
 import { wrapArray } from '../../shared';
+import { Primitive } from '../primitive';
 import { injectRovingFocusGroupContext } from './context';
 import { focusFirst, getFocusIntent } from './shared';
 import type { RovingFocusItemPropsWithPrimitive } from './types';
@@ -17,7 +17,6 @@ const props = withDefaults(defineProps<RovingFocusItemPropsWithPrimitive>(), {
   active: true
 });
 
-const { primitiveElement, currentElement } = usePrimitiveElement();
 const { getItems, CollectionItem } = useCollection();
 
 const {
@@ -31,7 +30,6 @@ const {
   onItemShiftTab
 } = injectRovingFocusGroupContext();
 
-const rootNode = computed(() => currentElement.value?.getRootNode() as Document | ShadowRoot);
 const randomId = useId();
 const id = computed(() => props.tabStopId || randomId);
 const isCurrentTabStop = computed(() => currentTabStopId.value === id.value);
@@ -66,7 +64,7 @@ function handleKeydown(event: KeyboardEvent) {
         : candidateNodes.slice(currentIndex + 1);
     }
 
-    nextTick(() => focusFirst(candidateNodes, false, rootNode.value));
+    nextTick(() => focusFirst(candidateNodes));
   }
 }
 
@@ -102,7 +100,6 @@ onUnmounted(() => {
 <template>
   <CollectionItem>
     <Primitive
-      ref="primitiveElement"
       :class="props.class"
       :as="as"
       :as-child="asChild"

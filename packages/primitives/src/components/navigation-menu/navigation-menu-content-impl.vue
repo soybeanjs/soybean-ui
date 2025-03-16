@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
 import { useArrowNavigation, useCollection, useForwardExpose } from '../../composables';
+import { getActiveElement } from '../../shared';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { DismissableLayer } from '../dismissable-layer';
 import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
@@ -101,7 +102,7 @@ watchEffect(cleanupFn => {
     const handleClose = () => {
       menuContext.onItemDismiss();
       itemContext.onRootContentClose();
-      if (content.contains(document.activeElement)) itemContext.triggerRef.value?.focus();
+      if (content.contains(getActiveElement())) itemContext.triggerRef.value?.focus();
     };
     content.addEventListener(EVENT_ROOT_CONTENT_DISMISS, handleClose);
 
@@ -129,7 +130,7 @@ function handleKeydown(ev: KeyboardEvent) {
   const candidates = getTabbableCandidates(ev.currentTarget as HTMLElement);
 
   if (isTabKey) {
-    const focusedElement = document.activeElement;
+    const focusedElement = getActiveElement();
     const index = candidates.findIndex(candidate => candidate === focusedElement);
     const isMovingBackwards = ev.shiftKey;
     const nextCandidates = isMovingBackwards
@@ -148,7 +149,7 @@ function handleKeydown(ev: KeyboardEvent) {
     }
   }
 
-  const newSelectedElement = useArrowNavigation(ev, document.activeElement as HTMLElement, undefined, {
+  const newSelectedElement = useArrowNavigation(ev, getActiveElement() as HTMLElement, undefined, {
     itemsArray: candidates,
     loop: false,
     enableIgnoredElement: true

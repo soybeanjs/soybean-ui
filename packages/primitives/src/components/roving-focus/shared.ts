@@ -1,3 +1,4 @@
+import { getActiveElement } from '../../shared';
 import type { DataOrientation, Direction, FocusIntent, NavigationKeys } from '../../types';
 
 export const ENTRY_FOCUS = 'rovingFocusGroup.onEntryFocus';
@@ -38,8 +39,8 @@ export function getFocusIntent(event: KeyboardEvent, orientation?: DataOrientati
   return MAP_KEY_TO_FOCUS_INTENT[key as NavigationKeys];
 }
 
-export function focusFirst(candidates: HTMLElement[], preventScroll?: boolean, rootNode?: Document | ShadowRoot) {
-  const PREVIOUSLY_FOCUSED_ELEMENT = rootNode?.activeElement ?? document.activeElement;
+export function focusFirst(candidates: HTMLElement[], preventScroll?: boolean) {
+  const PREVIOUSLY_FOCUSED_ELEMENT = getActiveElement();
 
   for (const candidate of candidates) {
     // if focus is already where we want to go, we don't want to keep going through the candidates
@@ -49,7 +50,7 @@ export function focusFirst(candidates: HTMLElement[], preventScroll?: boolean, r
 
     candidate.focus({ preventScroll });
 
-    if (document.activeElement !== PREVIOUSLY_FOCUSED_ELEMENT) {
+    if (getActiveElement() !== PREVIOUSLY_FOCUSED_ELEMENT) {
       return;
     }
   }

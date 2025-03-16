@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useArrowNavigation, useCollection, useForwardExpose, useId } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { injectNavigationMenuRootContext, provideNavigationMenuItemContext } from './context';
 import { focusFirst, getTabbableCandidates, makeContentId, removeFromTabOrder } from './shared';
@@ -63,7 +64,7 @@ function handleClose() {
 }
 
 function handleKeydown(ev: KeyboardEvent) {
-  const currentFocus = document.activeElement as HTMLElement;
+  const currentFocus = getActiveElement() as HTMLElement;
   if (ev.keyCode === 32 || ev.key === 'Enter') {
     if (context.modelValue.value === value) {
       handleClose();

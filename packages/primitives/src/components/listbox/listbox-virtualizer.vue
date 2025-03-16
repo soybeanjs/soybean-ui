@@ -5,7 +5,7 @@ import { useParentElement } from '@vueuse/core';
 import { refAutoReset } from '@vueuse/shared';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import { useCollection } from '../../composables';
-import { findValuesBetween, getNextMatch } from '../../shared';
+import { findValuesBetween, getActiveElement, getNextMatch } from '../../shared';
 import type { AcceptableValue, NavigationKeys } from '../../types';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../roving-focus/shared';
 import { injectListboxRootContext } from './context';
@@ -203,7 +203,7 @@ rootContext.virtualKeydownHook.on(event => {
     });
   } else if (!intent && !isMetaKey) {
     search.value += event.key;
-    const currentIndex = Number(document.activeElement?.getAttribute('data-index'));
+    const currentIndex = Number(getActiveElement()?.getAttribute('data-index'));
     const currentMatch = optionsWithMetadata.value[currentIndex].textContent;
     const filteredOptions = optionsWithMetadata.value.map(i => i.textContent || '');
     const next = getNextMatch(filteredOptions, search.value, currentMatch);

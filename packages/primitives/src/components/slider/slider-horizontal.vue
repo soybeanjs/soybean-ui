@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useForwardExpose } from '../../composables';
-import { provideSliderOrientationContext } from './context';
+import { injectSliderRootContext, provideSliderOrientationContext } from './context';
 import { BACK_KEYS, linearScale } from './shared';
 import SliderImpl from './slider-impl.vue';
 import type { SliderHorizontalProps, SliderOrientationPrivateEmits } from './types';
@@ -18,33 +19,57 @@ const { max, min, dir, inverted } = toRefs(props);
 
 const { forwardRef, currentElement: sliderElement } = useForwardExpose();
 
-const rectRef = ref<ClientRect>();
+const rootContext = injectSliderRootContext();
+
+const offsetPosition = ref<number>();
+const rectRef = ref<DOMRect>();
 const isSlidingFromLeft = computed(
   () => (dir?.value === 'ltr' && !inverted.value) || (dir?.value !== 'ltr' && inverted.value)
 );
 
-function getValueFromPointer(pointerPosition: number) {
+const style = computed<CSSProperties>(() => ({
+  '--soybean-slider-thumb-transform':
+    !isSlidingFromLeft.value && rootContext.thumbAlignment.value === 'overflow' ? 'translateX(50%)' : 'translateX(-50%)'
+}));
+
+function getValueFromPointerEvent(event: PointerEvent, slideStart?: boolean) {
   const rect = rectRef.value || sliderElement.value!.getBoundingClientRect();
-  const input: [number, number] = [0, rect.width];
+
+  // Get the currently active thumb element
+  const thumb = [...rootContext.thumbElements.value][rootContext.valueIndexToChangeRef.value];
+  const thumbWidth = rootContext.thumbAlignment.value === 'contain' ? thumb.clientWidth : 0;
+
+  // Calculate offset for dragging, but only when needed
+  if (!offsetPosition.value && !slideStart && rootContext.thumbAlignment.value === 'contain') {
+    offsetPosition.value = event.clientX - thumb.getBoundingClientRect().left;
+  }
+
+  // Define the input range (slider track width minus thumb width)
+  const input: [number, number] = [0, rect.width - thumbWidth];
   const output: [number, number] = isSlidingFromLeft.value ? [min.value, max.value] : [max.value, min.value];
   const value = linearScale(input, output);
 
   rectRef.value = rect;
-  return value(pointerPosition - rect.left);
+  const position = slideStart
+    ? event.clientX - rect.left - thumbWidth / 2
+    : event.clientX - rect.left - (offsetPosition.value ?? 0);
+
+  return value(position);
 }
 
 function onSlideStart(event: PointerEvent) {
-  const value = getValueFromPointer(event.clientX);
+  const value = getValueFromPointerEvent(event, true);
   emit('slideStart', value);
 }
 
 function onSlideMove(event: PointerEvent) {
-  const value = getValueFromPointer(event.clientX);
+  const value = getValueFromPointerEvent(event);
   emit('slideMove', value);
 }
 
 function onSlideEnd() {
   rectRef.value = undefined;
+  offsetPosition.value = undefined;
   emit('slideEnd');
 }
 
@@ -67,9 +92,7 @@ provideSliderOrientationContext({
     :ref="forwardRef"
     data-orientation="horizontal"
     :dir="dir"
-    :style="{
-      ['--soybean-slider-thumb-transform' as any]: 'translateX(-50%)'
-    }"
+    :style="style"
     @slide-start="onSlideStart"
     @slide-move="onSlideMove"
     @slide-end="onSlideEnd"

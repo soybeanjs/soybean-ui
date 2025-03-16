@@ -3,6 +3,7 @@ import type { ComponentPublicInstance } from 'vue';
 import { computed, onMounted, ref, toRefs, watchEffect } from 'vue';
 import { onKeyStroke, unrefElement } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { DismissableLayerBranch } from '../dismissable-layer';
 import { focusFirst, getTabbableCandidates } from '../focus-scope/shared';
@@ -64,7 +65,7 @@ watchEffect(cleanupFn => {
     };
 
     const handlePointerLeaveResume = () => {
-      const isFocusInside = viewport.contains(document.activeElement);
+      const isFocusInside = viewport.contains(getActiveElement());
       if (!isFocusInside) handleResume();
     };
 
@@ -76,7 +77,7 @@ watchEffect(cleanupFn => {
       const isTabKey = event.key === 'Tab' && !isMetaKey;
 
       if (isTabKey) {
-        const focusedElement = document.activeElement;
+        const focusedElement = getActiveElement();
         const isTabbingBackwards = event.shiftKey;
         const targetIsViewport = event.target === viewport;
 

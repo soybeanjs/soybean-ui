@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed, nextTick, onMounted, ref, toRefs } from 'vue';
 import { useCollection, useForwardExpose, useId } from '../../composables';
-import { handleAndDispatchCustomEvent } from '../../shared';
+import { getActiveElement, handleAndDispatchCustomEvent } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
 import { injectSelectContentContext, injectSelectRootContext, provideSelectItemContext } from './context';
@@ -61,7 +61,7 @@ async function handlePointerMove(event: PointerEvent) {
 async function handlePointerLeave(event: PointerEvent) {
   await nextTick();
   if (event.defaultPrevented) return;
-  if (event.currentTarget === document.activeElement) contentContext.onItemLeave?.();
+  if (event.currentTarget === getActiveElement()) contentContext.onItemLeave?.();
 }
 
 async function handleKeyDown(event: KeyboardEvent) {

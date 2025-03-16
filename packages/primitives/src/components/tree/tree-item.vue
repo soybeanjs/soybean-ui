@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends Record<string, any>">
 import { computed } from 'vue';
 import { useCollection } from '../../composables';
-import { flatten, handleAndDispatchCustomEvent } from '../../shared';
+import { flatten, getActiveElement, handleAndDispatchCustomEvent } from '../../shared';
 import type { TreeSelectEvent, TreeToggleEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
@@ -69,7 +69,7 @@ function handleKeydownRight(ev: KeyboardEvent) {
   if (isExpanded.value) {
     // go to first child
     const collection = getItems().map(i => i.ref);
-    const currentElement = document.activeElement as HTMLElement;
+    const currentElement = getActiveElement() as HTMLElement;
     const currentIndex = collection.indexOf(currentElement);
     const list = [...collection].slice(currentIndex);
     const nextElement = list.find(el => Number(el.getAttribute('data-indent')) === props.level + 1);
@@ -88,7 +88,7 @@ function handleKeydownLeft(ev: KeyboardEvent) {
   } else {
     // go back to parent
     const collection = getItems().map(i => i.ref);
-    const currentElement = document.activeElement as HTMLElement;
+    const currentElement = getActiveElement() as HTMLElement;
     const currentIndex = collection.indexOf(currentElement);
     const list = [...collection].slice(0, currentIndex).reverse();
     const parentElement = list.find(el => Number(el.getAttribute('data-indent')) === props.level - 1);

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useForwardExpose } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { DismissableLayer } from '../dismissable-layer';
 import { FocusScope } from '../focus-scope';
 import { getOpenState } from '../menu/shared';
@@ -38,8 +39,8 @@ onMounted(() => {
   setContentElement(contentElement);
 
   // Preserve the `DialogTrigger` element in case it was triggered programmatically
-  if (document.activeElement !== document.body) {
-    triggerElement.value = document.activeElement as HTMLElement;
+  if (getActiveElement() !== document.body) {
+    triggerElement.value = getActiveElement() as HTMLElement;
   }
 });
 

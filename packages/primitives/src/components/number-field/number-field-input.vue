@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 import { usePrimitiveElement } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { injectNumberFieldRootContext } from './context';
 import type { NumberFieldInputPropsWithPrimitive } from './types';
@@ -17,8 +18,10 @@ const { primitiveElement, currentElement } = usePrimitiveElement();
 const rootContext = injectNumberFieldRootContext();
 
 function handleWheelEvent(event: WheelEvent) {
+  if (rootContext.disableWheelChange.value) return;
+
   // only handle when in focus
-  if (event.target !== document.activeElement) return;
+  if (event.target !== getActiveElement()) return;
 
   // if on a trackpad, users can scroll in both X and Y at once, check the magnitude of the change
   // if it's mostly in the X direction, then just return, the user probably doesn't mean to inc/dec

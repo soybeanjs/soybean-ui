@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, watch } from 'vue';
 import { useArrowNavigation, usePrimitiveElement } from '../../composables';
+import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { injectPinInputRootContext } from './context';
 import type { PinInputInputPropsWithPrimitive } from './types';
@@ -52,7 +53,7 @@ async function resetPlaceholder() {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  useArrowNavigation(event, document.activeElement as HTMLElement, undefined, {
+  useArrowNavigation(event, getActiveElement() as HTMLElement, undefined, {
     itemsArray: inputElements.value,
     focus: true,
     loop: false,

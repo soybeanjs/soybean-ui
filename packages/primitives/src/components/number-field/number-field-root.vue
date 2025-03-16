@@ -18,12 +18,23 @@ defineOptions({
 const props = withDefaults(defineProps<NumberFieldRootPropsWithPrimitive>(), {
   as: 'div',
   defaultValue: undefined,
-  step: 1
+  step: 1,
+  stepSnapping: true
 });
 
 const emit = defineEmits<NumberFieldRootEmits>();
 
-const { disabled, min, max, step, formatOptions, id, locale: propLocale } = toRefs(props);
+const {
+  disabled,
+  min,
+  max,
+  step,
+  stepSnapping,
+  formatOptions,
+  id,
+  disableWheelChange,
+  locale: propLocale
+} = toRefs(props);
 
 const modelValue = useVModel(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
@@ -110,8 +121,11 @@ function setInputValue(val: string) {
 function clampInputValue(val: number) {
   // Clamp to min and max, round to the nearest step, and round to specified number of digits
   let clampedValue: number;
-  if (step.value === undefined || Number.isNaN(step.value)) clampedValue = clamp(val, min.value, max.value);
-  else clampedValue = snapValueToStep(val, min.value, max.value, step.value);
+  if (step.value === undefined || Number.isNaN(step.value) || !stepSnapping.value) {
+    clampedValue = clamp(val, min.value, max.value);
+  } else {
+    clampedValue = snapValueToStep(val, min.value, max.value, step.value);
+  }
 
   clampedValue = numberParser.parse(numberFormatter.format(clampedValue));
   return clampedValue;
@@ -146,6 +160,7 @@ provideNumberFieldRootContext({
   min,
   isDecreaseDisabled,
   isIncreaseDisabled,
+  disableWheelChange,
   id
 });
 </script>
