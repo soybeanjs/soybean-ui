@@ -24,6 +24,8 @@
     "build-only": "vite build",
     "build:docs": "pnpm build:pkg && pnpm -r --filter='./docs' run build",
     "build:pkg": "pnpm -r --filter='./packages/**' run build",
+    "build:primitives": "pnpm -r --filter='./packages/primitives' run build",
+    "build:ui": "pnpm -r --filter='./packages/ui' run build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
