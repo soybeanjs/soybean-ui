@@ -27,7 +27,7 @@ const frameworks: CommandOptionData<string>[] = [
     <div class="py-3 text-18px">Combobox Size</div>
     <div class="flex-c-stretch gap-3">
       <div v-for="size in sizes" :key="size">
-        <div>{{ size }}-{{ framework }}</div>
+        <div>{{ size }}</div>
         <SCombobox
           v-model="framework"
           :items="frameworks"
