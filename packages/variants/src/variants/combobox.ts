@@ -4,7 +4,6 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const comboboxVariants = tv({
   slots: {
-    root: '',
     anchor: 'w-full',
     empty: `text-center`,
     group: `overflow-hidden text-foreground`,

@@ -40,7 +40,6 @@ export interface ComboboxInputProps extends _ComboboxInputProps, InputProps {
   size?: ThemeSize;
   mode?: ComboboxMode;
   wrapperClass?: ClassValue;
-  selectItem?: ComboboxOptionData;
 }
 
 export interface ComboboxTriggerProps extends ComboboxTriggerPropsWithPrimitive {
@@ -106,6 +105,7 @@ export interface ComboboxProps<T extends AcceptableValue = AcceptableValue> exte
   items: (ComboboxOptionData<T> | ComboboxGroupOptionData<T>)[];
   ui?: Partial<Record<ComboboxSlots, ClassValue>>;
   inputProps?: Omit<ComboboxInputProps, 'class' | 'size' | 'wrapperClass' | 'modelValue'>;
+  inputModelValue?: string;
   /**
    * The label to display in the trigger.
    *
@@ -121,7 +121,8 @@ export interface ComboboxProps<T extends AcceptableValue = AcceptableValue> exte
 }
 
 export type ComboboxEmits<T extends AcceptableValue = AcceptableValue> = ComboboxRootEmits<T> &
-  ComboboxOptionEmits<T> &
-  ComboboxInputEmits;
+  ComboboxOptionEmits<T> & {
+    'update:inputModelValue': [string];
+  };
 
 export type { ComboboxRootEmits, ComboboxItemEmits, ComboBoxListEmits, ComboboxInputEmits };

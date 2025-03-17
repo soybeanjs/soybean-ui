@@ -1,23 +1,21 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { computed } from 'vue';
-import { ComboboxRoot } from '@soybean-ui/primitives';
+import { ComboboxRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { cn, comboboxVariants } from '@soybean-ui/variants';
-import type { ComboboxRootProps } from './types';
+import type { ComboboxRootEmits, ComboboxRootProps } from './types';
 
 defineOptions({
   name: 'SComboboxRoot'
 });
 
-const { class: cls } = defineProps<ComboboxRootProps<T>>();
+const props = defineProps<ComboboxRootProps<T>>();
 
-const { root } = comboboxVariants();
+const emit = defineEmits<ComboboxRootEmits<T>>();
 
-const mergedCls = computed(() => cn(root(), cls));
+const forwarded = useForwardPropsEmits(props, emit);
 </script>
 
 <template>
-  <ComboboxRoot v-slot="slotProps" :class="mergedCls">
-    <slot v-bind="slotProps" />
+  <ComboboxRoot v-bind="forwarded">
+    <slot />
   </ComboboxRoot>
 </template>

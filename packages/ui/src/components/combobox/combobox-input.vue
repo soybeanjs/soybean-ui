@@ -8,15 +8,7 @@ defineOptions({
   name: 'SComboboxInput'
 });
 
-const {
-  class: cls,
-  size,
-  mode,
-  wrapperClass,
-  selectItem,
-  displayValue,
-  ...delegatedProps
-} = defineProps<ComboboxInputProps>();
+const { class: cls, size, mode, wrapperClass, ...delegatedProps } = defineProps<ComboboxInputProps>();
 
 const emit = defineEmits<ComboboxInputEmits>();
 
@@ -30,20 +22,12 @@ const mergedCls = computed(() => {
     wrapper: cn(inputWrapper(), wrapperClass)
   };
 });
-
-const displayValueFn = computed(() => {
-  if (displayValue) {
-    return displayValue;
-  }
-
-  return () => selectItem?.label || '';
-});
 </script>
 
 <template>
   <div :class="mergedCls.wrapper">
     <slot name="leading" />
-    <ComboboxInput v-bind="forwarded" :class="mergedCls.cls" :display-value="displayValueFn">
+    <ComboboxInput v-bind="forwarded" :class="mergedCls.cls">
       <slot />
     </ComboboxInput>
     <slot name="trailing" />

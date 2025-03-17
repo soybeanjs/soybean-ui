@@ -12,6 +12,7 @@ import SComboboxTrigger from './combobox-trigger.vue';
 import SComboboxSearchIcon from './combobox-search-icon.vue';
 import SComboboxList from './combobox-list.vue';
 import SComboboxOption from './combobox-option.vue';
+import { getComboboxOptionByValue } from './shared';
 import type { ComboboxEmits, ComboboxOptionData, ComboboxProps } from './types';
 
 defineOptions({
@@ -19,23 +20,22 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ComboboxProps<T>>(), {
-  mode: 'modern',
-  getItemValue: () => (item: ComboboxOptionData<T>) => item.value
+  mode: 'modern'
 });
 
 const emit = defineEmits<ComboboxEmits<T>>();
 
 const forwardedRootProps = useOmitForwardProps(props, [
-  'class',
   'size',
   'mode',
   'ui',
   'items',
   'inputProps',
+  'inputModelValue',
   'emptyLabel'
 ]);
 
-const forwardedRootEmits = useOmitEmitAsProps<ComboboxEmits<T>>(emit, ['select', 'update:modelValue']);
+const forwardedRootEmits = useOmitEmitAsProps<ComboboxEmits<T>>(emit, ['select', 'update:inputModelValue']);
 
 const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, forwardedRootEmits);
 
@@ -46,11 +46,27 @@ function handleSelect(item: ComboboxOptionData<T>, event: SelectEvent<T>) {
   emit('select', item, event);
 }
 
-const modernTriggerLabel = computed(() => selectItem.value?.label || props.triggerLabel || 'Select an option');
+const defaultTriggerLabel = 'Select an option';
+const defaultInputPlaceholder = `${defaultTriggerLabel}...`;
+const defaultEmptyLabel = 'Nothing found.';
+
+const selectItemLabel = computed(() => {
+  const findItem = selectItem.value || getComboboxOptionByValue(props.items, props.modelValue);
+
+  return findItem?.label || '';
+});
+
+const modernTriggerLabel = computed(() => selectItemLabel.value || props.triggerLabel || defaultTriggerLabel);
+
+const computedInputProps = computed(() => ({
+  placeholder: props.inputProps?.placeholder || defaultInputPlaceholder,
+  displayValue: () => selectItemLabel.value || '',
+  ...props.inputProps
+}));
 </script>
 
 <template>
-  <SComboboxRoot v-bind="forwardedRoot" :class="props.class || ui?.root">
+  <SComboboxRoot v-bind="forwardedRoot">
     <SComboboxAnchor :class="ui?.anchor">
       <SComboboxTrigger v-if="mode === 'modern'" :class="ui?.trigger" :size="size" as-child>
         <SButton :size="size" variant="pure">
@@ -62,12 +78,13 @@ const modernTriggerLabel = computed(() => selectItem.value?.label || props.trigg
       </SComboboxTrigger>
       <SComboboxInput
         v-if="mode === 'traditional'"
+        v-bind="computedInputProps"
+        :model-value="inputModelValue"
         :class="ui?.input"
         :wrapper-class="ui?.inputWrapper"
         :size="size"
         :mode="mode"
-        :select-item="selectItem"
-        v-bind="inputProps"
+        @update:model-value="emit('update:inputModelValue', $event)"
       >
         <template #trailing>
           <SComboboxTrigger :size="size" :mode="mode">
@@ -79,18 +96,19 @@ const modernTriggerLabel = computed(() => selectItem.value?.label || props.trigg
     <SComboboxList :class="ui?.list" :size="size">
       <SComboboxInput
         v-if="mode === 'modern'"
+        v-bind="computedInputProps"
+        :model-value="inputModelValue"
         :class="ui?.input"
         :wrapper-class="ui?.inputWrapper"
         :size="size"
         :mode="mode"
-        :select-item="selectItem"
-        v-bind="inputProps"
+        @update:model-value="emit('update:inputModelValue', $event)"
       >
         <template #trailing>
           <SComboboxSearchIcon :class="ui?.searchIcon" :size="size" />
         </template>
       </SComboboxInput>
-      <SComboboxEmpty :class="ui?.empty" :size="size">{{ emptyLabel || 'Nothing found.' }}</SComboboxEmpty>
+      <SComboboxEmpty :class="ui?.empty" :size="size">{{ emptyLabel || defaultEmptyLabel }}</SComboboxEmpty>
       <SComboboxOption
         v-for="(item, itemIndex) in items"
         v-slot="slotProps"
