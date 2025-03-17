@@ -14,7 +14,7 @@ const mergedCls = computed(() => cn(collapsibleVariants(), cls));
 </script>
 
 <template>
-  <CollapsibleContent :class="mergedCls" :force-mount>
+  <CollapsibleContent :class="mergedCls" :force-mount="forceMount">
     <slot />
   </CollapsibleContent>
 </template>

@@ -7,7 +7,7 @@ defineOptions({
   name: 'SCollapsible'
 });
 
-const { contentClass, forceMountContent, ...delegatedProps } = defineProps<CollapsibleProps>();
+const { ui, forceMountContent, ...delegatedProps } = defineProps<CollapsibleProps>();
 
 const emit = defineEmits<CollapsibleEmits>();
 
@@ -17,11 +17,11 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 <template>
   <CollapsibleRoot v-slot="{ open }" v-bind="forwarded">
     <CollapsibleTrigger v-if="$slots.trigger" as-child>
-      <slot name="trigger" v-bind="{ open }" />
+      <slot name="trigger" :open="open" />
     </CollapsibleTrigger>
-    <slot v-bind="{ open }"></slot>
-    <SCollapsibleContent :class="contentClass" :force-mount="forceMountContent">
-      <slot name="content" v-bind="{ open }" />
+    <slot :open="open" />
+    <SCollapsibleContent :class="ui?.content" :force-mount="forceMountContent">
+      <slot name="content" :open="open" />
     </SCollapsibleContent>
   </CollapsibleRoot>
 </template>
