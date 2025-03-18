@@ -1,1 +1,3 @@
 # Collapsible
+
+<DemoCollapsible />

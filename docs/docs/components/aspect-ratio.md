@@ -1,1 +1,3 @@
 # AspectRatio
+
+<DemoAspectRatio />

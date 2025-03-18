@@ -1,0 +1,3 @@
+# Resizable
+
+<DemoResizable />

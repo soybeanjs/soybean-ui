@@ -11,6 +11,11 @@ body,
   border-color: hsl(var(--border));
 }
 
+/* input,
+textarea {
+  border: 1px solid hsl(var(--border));
+} */
+
 button {
   border-style: solid;
 }

@@ -1,1 +1,3 @@
 # Alert
+
+<DemoAlert />

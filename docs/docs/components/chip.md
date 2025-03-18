@@ -1,1 +1,3 @@
 # Chip
+
+<DemoChip />

@@ -16,7 +16,7 @@ const { top } = toRefs(arrivedState);
 <template>
   <div class="h-full flex-c items-center">
     <header
-      class="sticky top-0 z-10 h-68px w-full py-4 transition-all duration-500"
+      class="sticky top-0 z-10 h-17 w-full py-4 transition-all duration-500"
       :class="[
         top
           ? 'bg-transparent backdrop-blur-0'

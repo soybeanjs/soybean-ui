@@ -1,1 +1,3 @@
 # Textarea
+
+<DemoTextarea />

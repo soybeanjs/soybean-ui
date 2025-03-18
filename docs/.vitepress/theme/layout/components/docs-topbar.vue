@@ -36,7 +36,7 @@ watch(path, () => {
 
 <template>
   <div
-    class="sticky top-[4.25rem] z-10 h-12 w-full border-y border-muted-foreground/10 px-4 transition-all duration-500"
+    class="sticky top-17 z-10 h-12 w-full border-y border-muted-foreground/10 px-4 transition-all duration-500"
     :class="[
       top
         ? 'bg-transparent backdrop-blur-0'
@@ -106,17 +106,6 @@ watch(path, () => {
           <div class="h-12 w-full" />
         </SScrollArea>
       </SSheet>
-
-      <div class="h-full flex items-center">
-        <a
-          href="/examples"
-          :class="{ '!border-b-primary !font-semibold !text-foreground': page.relativePath.includes('examples') }"
-          class="mx-4 h-full inline-flex items-center gap-2 border-b border-b-transparent py-2 text-sm text-muted-foreground font-medium hover:border-b-muted hover:text-foreground"
-        >
-          <Icon icon="lucide:square-dashed-mouse-pointer" class="text-lg" />
-          Examples
-        </a>
-      </div>
     </div>
   </div>
 </template>

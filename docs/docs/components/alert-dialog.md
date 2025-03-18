@@ -1,1 +1,3 @@
 # AlertDialog
+
+<DemoAlertDialog />
