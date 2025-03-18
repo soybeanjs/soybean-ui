@@ -57,20 +57,4 @@ export * from './components/tree';
 export * from './components/viewport';
 export * from './components/visually-hidden';
 
-export {
-  useForwardExpose,
-  useForwardProps,
-  useEmitAsProps,
-  useOmitEmitAsProps,
-  usePickEmitAsProps,
-  useForwardPropsEmits,
-  useOmitForwardProps,
-  usePickForwardProps,
-  useCombinedPropsEmits,
-  createContext,
-  useContext
-} from './composables';
-
-export { pick, omit } from './shared/object';
-
 export * from './types';

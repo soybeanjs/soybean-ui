@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption">
 import {
-  omit,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
   usePickEmitAsProps
 } from '@soybean-ui/primitives';
+import { omit } from '../../shared';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
 import SNavigationMenuViewportRoot from './navigation-menu-viewport-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';

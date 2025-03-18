@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { isClient, reactiveOmit } from '@vueuse/shared';
-import { useForwardExpose, useForwardPropsEmits } from '../../composables';
+import { isClient } from '@vueuse/shared';
+import { useCombinedPropsEmits, useForwardExpose, useOmitForwardProps } from '../../composables';
 import { Presence } from '../presence';
 import { injectNavigationMenuItemContext, injectNavigationMenuRootContext } from './context';
 import { getOpenState, whenMouse } from './shared';
@@ -16,7 +16,8 @@ defineOptions({
 const props = defineProps<NavigationMenuContentPropsWithPrimitive>();
 const emit = defineEmits<NavigationMenuContentEmits>();
 
-const forwarded = useForwardPropsEmits(reactiveOmit(props, 'forceMount'), emit);
+const forwardedProps = useOmitForwardProps(props, ['forceMount']);
+const forwarded = useCombinedPropsEmits(forwardedProps, emit);
 const { forwardRef } = useForwardExpose();
 
 const menuContext = injectNavigationMenuRootContext();
