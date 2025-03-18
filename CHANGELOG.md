@@ -1,6 +1,53 @@
 # Changelog
 
 
+## [v0.0.1-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.5...v0.0.1-beta.6) (2025-03-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **packages**:
+  - primitives: add open prop slot on AlertDialog &nbsp;-&nbsp; by @soybeanjs [<samp>(e2bdf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e2bdf0d)
+  - ui: add combobox &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/62 [<samp>(a7ea2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a7ea231)
+  - primitives and ui support resolver and nuxt &nbsp;-&nbsp; by @soybeanjs [<samp>(29dd7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/29dd749)
+- **projects**:
+  - add script to generate primitives components name &nbsp;-&nbsp; by @soybeanjs [<samp>(53ce1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/53ce199)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**: ui: fix select prop separator &nbsp;-&nbsp; by @soybeanjs [<samp>(097b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/097b686)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **packages**:
+  - optimize command &nbsp;-&nbsp; by @soybeanjs [<samp>(c2c64)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c2c6484)
+  - variants: add ring-offset-background &nbsp;-&nbsp; by @soybeanjs [<samp>(61ad6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/61ad695)
+  - ui: optimize combobox &nbsp;-&nbsp; by @soybeanjs [<samp>(1a02c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1a02c11)
+  - ui: optimize collapsible &nbsp;-&nbsp; by @soybeanjs [<samp>(b8d04)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b8d04e4)
+  - optimize primitives and ui export &nbsp;-&nbsp; by @soybeanjs [<samp>(4ee05)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4ee05f4)
+- **projects**:
+  - optimize combobox example &nbsp;-&nbsp; by @soybeanjs [<samp>(bbed7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bbed74b)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **packages**: add README for primitives and ui &nbsp;-&nbsp; by @soybeanjs [<samp>(b0396)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b039675)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(025ef)</samp>](https://github.com/soybeanjs/soybean-ui/commit/025ef45)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(2b76d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b76d61)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4e5dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4e5dca0)
+- **packages**:
+  - primitives: remove cjs export &nbsp;-&nbsp; by @soybeanjs [<samp>(703ef)</samp>](https://github.com/soybeanjs/soybean-ui/commit/703ef10)
+- **projects**:
+  - update pkg version &nbsp;-&nbsp; by @soybeanjs [<samp>(db38d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db38dda)
+  - sync code from reka-ui &nbsp;-&nbsp; by @soybeanjs [<samp>(29a06)</samp>](https://github.com/soybeanjs/soybean-ui/commit/29a06fc)
+  - add scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(1a96f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1a96ff1)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.4...v0.0.1-beta.5) (2025-03-05)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
