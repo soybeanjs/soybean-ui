@@ -112,7 +112,14 @@ function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefin
         </SSelectScrollUpButton>
         <SSelectViewport :class="ui?.viewport" :nonce="nonce" :position="position">
           <slot>
-            <SSelectOption v-for="(item, index) in items" :key="index" :size="size" :item="item" :ui="ui">
+            <SSelectOption
+              v-for="(item, index) in items"
+              :key="index"
+              :size="size"
+              :item="item"
+              :ui="ui"
+              :separator="separator"
+            >
               <template #leading="slotProps">
                 <slot name="itemLeading" :item="slotProps.item" />
               </template>

@@ -71,6 +71,7 @@ export interface SelectSingleOptionProps<T extends AcceptableValue = AcceptableV
   size?: ThemeSize;
   item: SelectOptionData<T>;
   ui?: Partial<Record<SelectSingleOptionSlots, ClassValue>>;
+  separator?: boolean;
 }
 
 export type SelectOptionSlots = Extract<
@@ -82,6 +83,7 @@ export interface SelectOptionProps<T extends AcceptableValue = AcceptableValue> 
   size?: ThemeSize;
   item: SelectOptionData<T> | SelectGroupOptionData<T>;
   ui?: Partial<Record<SelectOptionSlots, ClassValue>>;
+  separator?: boolean;
 }
 
 export type SelectUi = Partial<Record<SelectSlots, ClassValue>>;

@@ -6,7 +6,8 @@ import SSelectSeparator from './select-separator.vue';
 import type { SelectSingleOptionProps } from './types';
 
 defineOptions({
-  name: 'SSelectSingleOption'
+  name: 'SSelectSingleOption',
+  inheritAttrs: false
 });
 
 defineProps<SelectSingleOptionProps>();
@@ -21,5 +22,5 @@ defineProps<SelectSingleOptionProps>();
       <slot name="itemIndicatorIcon" />
     </SSelectItemIndicator>
   </SSelectItem>
-  <SSelectSeparator v-if="item.separator" :class="ui?.separator" />
+  <SSelectSeparator v-if="separator || item.separator" :class="ui?.separator" />
 </template>
