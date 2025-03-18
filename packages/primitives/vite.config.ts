@@ -35,18 +35,22 @@ export default defineConfig(() => {
           date: fileURLToPath(new URL('src/date/index.ts', import.meta.url)),
           composables: fileURLToPath(new URL('src/composables/index.ts', import.meta.url)),
           ...entry,
-          index: fileURLToPath(new URL('src/index.ts', import.meta.url))
+          index: fileURLToPath(new URL('src/index.ts', import.meta.url)),
+          nuxt: fileURLToPath(new URL('src/nuxt/index.ts', import.meta.url)),
+          resolver: fileURLToPath(new URL('src/resolver/index.ts', import.meta.url))
         }
       },
       rollupOptions: {
-        external: ['vue', ...Object.keys(pkg.dependencies)],
+        external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.devDependencies)],
         output: {
           manualChunks: {
             constant: ['src/constant/index.ts'],
             date: ['src/date/index.ts'],
             composables: ['src/composables/index.ts'],
             ...manualChunks,
-            index: ['src/index.ts']
+            index: ['src/index.ts'],
+            nuxt: ['src/nuxt/index.ts'],
+            resolver: ['src/resolver/index.ts']
           }
         }
       }

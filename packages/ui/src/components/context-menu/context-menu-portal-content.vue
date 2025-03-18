@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ContextMenuPortal, useForwardPropsEmits } from '@soybean-ui/primitives';
-import ContextMenuArrow from '../menu/menu-arrow.vue';
-import ContextMenuContent from './context-menu-content.vue';
+import SContextMenuArrow from '../menu/menu-arrow.vue';
+import SContextMenuContent from './context-menu-content.vue';
 import type { ContextMenuPortalContentEmits, ContextMenuPortalContentProps } from './types';
 
 defineOptions({
@@ -18,9 +18,9 @@ const forwardedContentProps = useForwardPropsEmits(delegatedProps, emit);
 
 <template>
   <ContextMenuPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
-    <ContextMenuContent v-bind="forwardedContentProps" :class="contentClass" :force-mount="forceMountContent">
+    <SContextMenuContent v-bind="forwardedContentProps" :class="contentClass" :force-mount="forceMountContent">
       <slot />
-      <ContextMenuArrow v-if="showArrow" />
-    </ContextMenuContent>
+      <SContextMenuArrow v-if="showArrow" />
+    </SContextMenuContent>
   </ContextMenuPortal>
 </template>

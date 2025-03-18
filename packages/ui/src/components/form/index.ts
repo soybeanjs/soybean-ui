@@ -20,3 +20,5 @@ export {
   useForm,
   FieldArray
 };
+
+export * from './types';

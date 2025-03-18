@@ -28,3 +28,7 @@ export const isBrowser = typeof document !== 'undefined';
 export function isBlankString(value: unknown | undefined) {
   return typeof value === 'string' && value === '';
 }
+
+export function toKebabCase(str: string) {
+  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+}

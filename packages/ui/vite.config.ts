@@ -35,15 +35,19 @@ export default defineConfig(() => {
         fileName: (_format, entryName) => `${entryName}.mjs`,
         entry: {
           ...entry,
-          index: fileURLToPath(new URL('src/index.ts', import.meta.url))
+          index: fileURLToPath(new URL('src/index.ts', import.meta.url)),
+          nuxt: fileURLToPath(new URL('src/nuxt/index.ts', import.meta.url)),
+          resolver: fileURLToPath(new URL('src/resolver/index.ts', import.meta.url))
         }
       },
       rollupOptions: {
-        external: ['vue', 'vue-router', 'lucide-vue-next'],
+        external: ['vue', 'vue-router', 'lucide-vue-next', '@nuxt/schema', '@nuxt/kit'],
         output: {
           manualChunks: {
             ...manualChunks,
-            index: ['src/index.ts']
+            index: ['src/index.ts'],
+            nuxt: ['src/nuxt/index.ts'],
+            resolver: ['src/resolver/index.ts']
           }
         }
       }
