@@ -1,1 +1,3 @@
 # Sonner
+
+<DemoSonner />

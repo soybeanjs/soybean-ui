@@ -1,1 +1,3 @@
 # ToggleGroup
+
+<DemoToggleGroup />

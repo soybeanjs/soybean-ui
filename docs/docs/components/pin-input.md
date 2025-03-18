@@ -1,1 +1,3 @@
 # PinInput
+
+<DemoPinInput />

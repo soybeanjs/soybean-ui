@@ -17,14 +17,12 @@ defineOptions({
         class="max-w-[720px] text-center text-pretty text-lg text-muted-foreground lg:text-2xl md:text-xl lg:leading-9 md:leading-8"
       >
         An open-source library based on
-        <SButtonLink href="/primitive/index.html" target="_self" class="link">soybean-primitive</SButtonLink>
+        <SButtonLink href="/primitives/index.html" target="_self" class="link">@soybean-ui/primitives</SButtonLink>
         and
         <SButtonLink href="https://unocss.dev" class="link">UnoCSS</SButtonLink>
         , like
-        <SButtonLink href="https://ui.shadcn.com/" class="link">shadcn</SButtonLink>
-        for Vue3, accompanied by a variety of
-        <SButtonLink href="/examples/checkbox-group.html" target="_self" class="link">examples & use cases</SButtonLink>
-        ready to be integrated into your projects.
+        <SButtonLink href="https://ui.shadcn.com/" class="link">shadcn-ui</SButtonLink>
+        , it's easy to use and customize.
       </p>
     </div>
     <div class="mb-12 max-w-[calc(100%-2rem)] flex flex-wrap items-center justify-center gap-4 md:mb-20">

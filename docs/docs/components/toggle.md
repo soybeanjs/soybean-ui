@@ -1,1 +1,3 @@
 # Toggle
+
+<DemoToggle />

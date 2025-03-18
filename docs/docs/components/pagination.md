@@ -1,1 +1,3 @@
 # Pagination
+
+<DemoPagination />

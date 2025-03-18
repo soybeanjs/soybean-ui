@@ -1,1 +1,3 @@
 # Badge
+
+<DemoBadge />

@@ -1,1 +1,3 @@
 # Segment
+
+<DemoSegment />

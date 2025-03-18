@@ -1,1 +1,3 @@
 # Tabs
+
+<DemoTabs />
