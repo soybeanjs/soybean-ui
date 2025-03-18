@@ -1,353 +1,331 @@
 export const components = {
   accordion: ['AccordionContent', 'AccordionHeader', 'AccordionItem', 'AccordionRoot', 'AccordionTrigger'],
-
   alertDialog: [
-    'AlertDialogRoot',
-    'AlertDialogTrigger',
-    'AlertDialogPortal',
-    'AlertDialogContent',
-    'AlertDialogOverlay',
+    'AlertDialogAction',
     'AlertDialogCancel',
-    'AlertDialogTitle',
+    'AlertDialogContent',
     'AlertDialogDescription',
-    'AlertDialogAction'
+    'AlertDialogOverlay',
+    'AlertDialogPortal',
+    'AlertDialogRoot',
+    'AlertDialogTitle',
+    'AlertDialogTrigger'
   ],
-
+  arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
-
-  avatar: ['AvatarRoot', 'AvatarFallback', 'AvatarImage'],
-
+  avatar: ['AvatarFallback', 'AvatarImage', 'AvatarRoot'],
   calendar: [
-    'CalendarRoot',
+    'CalendarCellTrigger',
+    'CalendarCell',
+    'CalendarGridBody',
+    'CalendarGridHead',
+    'CalendarGridRow',
+    'CalendarGrid',
+    'CalendarHeadCell',
     'CalendarHeader',
     'CalendarHeading',
-    'CalendarGrid',
-    'CalendarCell',
-    'CalendarHeadCell',
     'CalendarNext',
     'CalendarPrev',
-    'CalendarGridHead',
-    'CalendarGridBody',
-    'CalendarGridRow',
-    'CalendarCellTrigger'
+    'CalendarRoot'
   ],
-
-  checkbox: ['CheckboxGroupRoot', 'CheckboxRoot', 'CheckboxIndicator'],
-
-  collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
-
+  checkbox: ['CheckboxGroupRoot', 'CheckboxIndicator', 'CheckboxRoot'],
+  collapsible: ['CollapsibleContent', 'CollapsibleRoot', 'CollapsibleTrigger'],
   combobox: [
-    'ComboboxRoot',
-    'ComboboxInput',
     'ComboboxAnchor',
-    'ComboboxEmpty',
-    'ComboboxTrigger',
-    'ComboboxCancel',
-    'ComboboxGroup',
-    'ComboboxLabel',
-    'ComboboxContent',
-    'ComboboxViewport',
-    'ComboboxVirtualizer',
-    'ComboboxItem',
-    'ComboboxItemIndicator',
-    'ComboboxSeparator',
     'ComboboxArrow',
-    'ComboboxPortal'
+    'ComboboxCancel',
+    'ComboboxContentImpl',
+    'ComboboxContent',
+    'ComboboxEmpty',
+    'ComboboxGroup',
+    'ComboboxInput',
+    'ComboboxItemIndicator',
+    'ComboboxItem',
+    'ComboboxLabel',
+    'ComboboxPortal',
+    'ComboboxRoot',
+    'ComboboxSeparator',
+    'ComboboxTrigger',
+    'ComboboxViewport',
+    'ComboboxVirtualizer'
   ],
-
   configProvider: ['ConfigProvider'],
-
-  contextMenu: [
-    'ContextMenuRoot',
-    'ContextMenuTrigger',
-    'ContextMenuPortal',
-    'ContextMenuContent',
-    'ContextMenuArrow',
-    'ContextMenuItem',
-    'ContextMenuGroup',
-    'ContextMenuSeparator',
-    'ContextMenuCheckboxItem',
-    'ContextMenuItemIndicator',
-    'ContextMenuLabel',
-    'ContextMenuRadioGroup',
-    'ContextMenuRadioItem',
-    'ContextMenuSub',
-    'ContextMenuSubContent',
-    'ContextMenuSubTrigger'
-  ],
-
-  dateField: ['DateFieldRoot', 'DateFieldInput'],
-
+  contextMenu: ['ContextMenuContent', 'ContextMenuRoot', 'ContextMenuSubContent', 'ContextMenuTrigger'],
+  dateField: ['DateFieldInput', 'DateFieldRoot'],
   datePicker: [
-    'DatePickerRoot',
-    'DatePickerHeader',
-    'DatePickerHeading',
-    'DatePickerGrid',
-    'DatePickerCell',
-    'DatePickerHeadCell',
-    'DatePickerNext',
-    'DatePickerPrev',
-    'DatePickerGridHead',
-    'DatePickerGridBody',
-    'DatePickerGridRow',
-    'DatePickerCellTrigger',
-    'DatePickerInput',
-    'DatePickerCalendar',
-    'DatePickerField',
     'DatePickerAnchor',
     'DatePickerArrow',
+    'DatePickerCalendar',
+    'DatePickerCellTrigger',
+    'DatePickerCell',
     'DatePickerClose',
-    'DatePickerTrigger',
-    'DatePickerContent'
+    'DatePickerContent',
+    'DatePickerField',
+    'DatePickerGridBody',
+    'DatePickerGridHead',
+    'DatePickerGridRow',
+    'DatePickerGrid',
+    'DatePickerHeadCell',
+    'DatePickerHeader',
+    'DatePickerHeading',
+    'DatePickerInput',
+    'DatePickerNext',
+    'DatePickerPrev',
+    'DatePickerRoot',
+    'DatePickerTrigger'
   ],
-
+  dateRangeField: ['DateRangeFieldInput', 'DateRangeFieldRoot'],
   dateRangePicker: [
-    'DateRangePickerRoot',
-    'DateRangePickerHeader',
-    'DateRangePickerHeading',
-    'DateRangePickerGrid',
-    'DateRangePickerCell',
-    'DateRangePickerHeadCell',
-    'DateRangePickerNext',
-    'DateRangePickerPrev',
-    'DateRangePickerGridHead',
-    'DateRangePickerGridBody',
-    'DateRangePickerGridRow',
-    'DateRangePickerCellTrigger',
-    'DateRangePickerInput',
-    'DateRangePickerCalendar',
-    'DateRangePickerField',
     'DateRangePickerAnchor',
     'DateRangePickerArrow',
+    'DateRangePickerCalendar',
+    'DateRangePickerCellTrigger',
+    'DateRangePickerCell',
     'DateRangePickerClose',
-    'DateRangePickerTrigger',
-    'DateRangePickerContent'
+    'DateRangePickerContent',
+    'DateRangePickerField',
+    'DateRangePickerGridBody',
+    'DateRangePickerGridHead',
+    'DateRangePickerGridRow',
+    'DateRangePickerGrid',
+    'DateRangePickerHeadCell',
+    'DateRangePickerHeader',
+    'DateRangePickerHeading',
+    'DateRangePickerInput',
+    'DateRangePickerNext',
+    'DateRangePickerPrev',
+    'DateRangePickerRoot',
+    'DateRangePickerTrigger'
   ],
-
-  dateRangeField: ['DateRangeFieldRoot', 'DateRangeFieldInput'],
-
   dialog: [
-    'DialogRoot',
-    'DialogTrigger',
-    'DialogPortal',
-    'DialogContent',
-    'DialogOverlay',
     'DialogClose',
+    'DialogContentImpl',
+    'DialogContentModal',
+    'DialogContentNonModal',
+    'DialogContent',
+    'DialogDescription',
+    'DialogOverlayImpl',
+    'DialogOverlay',
+    'DialogPortal',
+    'DialogRoot',
     'DialogTitle',
-    'DialogDescription'
+    'DialogTrigger'
   ],
-
-  dropdownMenu: [
-    'DropdownMenuRoot',
-    'DropdownMenuTrigger',
-    'DropdownMenuPortal',
-    'DropdownMenuContent',
-    'DropdownMenuArrow',
-    'DropdownMenuItem',
-    'DropdownMenuGroup',
-    'DropdownMenuSeparator',
-    'DropdownMenuCheckboxItem',
-    'DropdownMenuItemIndicator',
-    'DropdownMenuLabel',
-    'DropdownMenuRadioGroup',
-    'DropdownMenuRadioItem',
-    'DropdownMenuSub',
-    'DropdownMenuSubContent',
-    'DropdownMenuSubTrigger'
-  ],
+  dismissableLayer: ['DismissableLayerBranch', 'DismissableLayer'],
+  drawer: ['DrawerContent', 'DrawerOverlay', 'DrawerRootNested', 'DrawerRoot'],
+  dropdownMenu: ['DropdownMenuContent', 'DropdownMenuRoot', 'DropdownMenuSubContent', 'DropdownMenuTrigger'],
   editable: [
-    'EditableRoot',
     'EditableArea',
+    'EditableCancelTrigger',
+    'EditableEditTrigger',
     'EditableInput',
     'EditablePreview',
-    'EditableSubmitTrigger',
-    'EditableCancelTrigger',
-    'EditableEditTrigger'
+    'EditableRoot',
+    'EditableSubmitTrigger'
   ],
-
-  hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardContent', 'HoverCardArrow'],
-
+  focusGuards: ['FocusGuards'],
+  focusScope: ['FocusScope'],
+  hoverCard: [
+    'HoverCardArrow',
+    'HoverCardContentImpl',
+    'HoverCardContent',
+    'HoverCardPortal',
+    'HoverCardRoot',
+    'HoverCardTrigger'
+  ],
   label: ['Label'],
-
   listbox: [
-    'ListboxRoot',
     'ListboxContent',
     'ListboxFilter',
-    'ListboxItem',
-    'ListboxItemIndicator',
-    'ListboxVirtualizer',
+    'ListboxGroupLabel',
     'ListboxGroup',
-    'ListboxGroupLabel'
+    'ListboxItemIndicator',
+    'ListboxItem',
+    'ListboxRoot',
+    'ListboxVirtualizer'
   ],
-
-  menubar: [
-    'MenubarRoot',
-    'MenubarTrigger',
-    'MenubarPortal',
-    'MenubarContent',
-    'MenubarArrow',
-    'MenubarItem',
-    'MenubarGroup',
-    'MenubarSeparator',
-    'MenubarCheckboxItem',
-    'MenubarItemIndicator',
-    'MenubarLabel',
-    'MenubarRadioGroup',
-    'MenubarRadioItem',
-    'MenubarSub',
-    'MenubarSubContent',
-    'MenubarSubTrigger',
-    'MenubarMenu'
+  menu: [
+    'MenuCheckboxItem',
+    'MenuContentImpl',
+    'MenuContent',
+    'MenuGroup',
+    'MenuItemImpl',
+    'MenuItemIndicator',
+    'MenuItem',
+    'MenuLabel',
+    'MenuPortal',
+    'MenuRadioGroup',
+    'MenuRadioItem',
+    'MenuRootContentModal',
+    'MenuRootContentNonModal',
+    'MenuRoot',
+    'MenuSeparator',
+    'MenuSubContent',
+    'MenuSubTrigger',
+    'MenuSub'
   ],
-
+  menubar: ['MenubarContent', 'MenubarMenu', 'MenubarRoot', 'MenubarSubContent', 'MenubarSubTrigger', 'MenubarTrigger'],
   navigationMenu: [
-    'NavigationMenuRoot',
+    'NavigationMenuContentImpl',
     'NavigationMenuContent',
     'NavigationMenuIndicator',
     'NavigationMenuItem',
     'NavigationMenuLink',
     'NavigationMenuList',
+    'NavigationMenuRoot',
     'NavigationMenuSub',
     'NavigationMenuTrigger',
     'NavigationMenuViewport'
   ],
-
-  numberField: ['NumberFieldRoot', 'NumberFieldInput', 'NumberFieldIncrement', 'NumberFieldDecrement'],
-
+  numberField: ['NumberFieldDecrement', 'NumberFieldIncrement', 'NumberFieldInput', 'NumberFieldRoot'],
   pagination: [
-    'PaginationRoot',
     'PaginationEllipsis',
     'PaginationFirst',
     'PaginationLast',
-    'PaginationList',
     'PaginationListItem',
+    'PaginationList',
     'PaginationNext',
-    'PaginationPrev'
+    'PaginationPrev',
+    'PaginationRoot'
   ],
-
-  pinInput: ['PinInputRoot', 'PinInputInput'],
-
+  pinInput: ['PinInputInput', 'PinInputRoot'],
   popover: [
-    'PopoverRoot',
-    'PopoverTrigger',
-    'PopoverPortal',
-    'PopoverContent',
+    'PopoverAnchor',
     'PopoverArrow',
     'PopoverClose',
-    'PopoverAnchor'
+    'PopoverContentImpl',
+    'PopoverContentModal',
+    'PopoverContentNonModal',
+    'PopoverContent',
+    'PopoverPortal',
+    'PopoverRoot',
+    'PopoverTrigger'
   ],
-
-  presence: ['Presence'],
-
-  progress: ['ProgressRoot', 'ProgressIndicator'],
-
-  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupIndicator'],
-
+  popper: ['PopperAnchor', 'PopperArrow', 'PopperContent', 'PopperRoot'],
+  progress: ['ProgressIndicator', 'ProgressRoot'],
+  radioGroup: ['RadioGroupIndicator', 'RadioGroupItem', 'RadioGroupRoot', 'Radio'],
   rangeCalendar: [
-    'RangeCalendarRoot',
+    'RangeCalendarCellTrigger',
+    'RangeCalendarCell',
+    'RangeCalendarGridBody',
+    'RangeCalendarGridHead',
+    'RangeCalendarGridRow',
+    'RangeCalendarGrid',
+    'RangeCalendarHeadCell',
     'RangeCalendarHeader',
     'RangeCalendarHeading',
-    'RangeCalendarGrid',
-    'RangeCalendarCell',
-    'RangeCalendarHeadCell',
     'RangeCalendarNext',
     'RangeCalendarPrev',
-    'RangeCalendarGridHead',
-    'RangeCalendarGridBody',
-    'RangeCalendarGridRow',
-    'RangeCalendarCellTrigger'
+    'RangeCalendarRoot'
   ],
-
-  scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
-
+  rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
+  scrollArea: [
+    'ScrollAreaCornerImpl',
+    'ScrollAreaCorner',
+    'ScrollAreaRoot',
+    'ScrollAreaScrollbarAuto',
+    'ScrollAreaScrollbarHover',
+    'ScrollAreaScrollbarImpl',
+    'ScrollAreaScrollbarScroll',
+    'ScrollAreaScrollbarVisible',
+    'ScrollAreaScrollbarX',
+    'ScrollAreaScrollbarY',
+    'ScrollAreaScrollbar',
+    'ScrollAreaThumb',
+    'ScrollAreaViewport'
+  ],
   select: [
-    'SelectRoot',
-    'SelectTrigger',
-    'SelectPortal',
-    'SelectContent',
+    'BubbleSelect',
     'SelectArrow',
-    'SelectSeparator',
-    'SelectItemIndicator',
-    'SelectLabel',
+    'SelectContentImpl',
+    'SelectContent',
     'SelectGroup',
-    'SelectItem',
+    'SelectIcon',
+    'SelectItemAlignedPosition',
+    'SelectItemIndicator',
     'SelectItemText',
-    'SelectViewport',
-    'SelectScrollUpButton',
+    'SelectItem',
+    'SelectLabel',
+    'SelectPopperPosition',
+    'SelectPortal',
+    'SelectProvider',
+    'SelectRoot',
+    'SelectScrollButtonImpl',
     'SelectScrollDownButton',
+    'SelectScrollUpButton',
+    'SelectSeparator',
+    'SelectTrigger',
     'SelectValue',
-    'SelectIcon'
+    'SelectViewport'
   ],
-
   separator: ['Separator'],
-
-  slider: ['SliderRoot', 'SliderThumb', 'SliderTrack', 'SliderRange'],
-
+  slider: [
+    'SliderHorizontal',
+    'SliderImpl',
+    'SliderRange',
+    'SliderRoot',
+    'SliderThumbImpl',
+    'SliderThumb',
+    'SliderTrack',
+    'SliderVertical'
+  ],
   splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
-
   stepper: [
-    'StepperRoot',
-    'StepperItem',
-    'StepperTrigger',
     'StepperDescription',
-    'StepperTitle',
     'StepperIndicator',
-    'StepperSeparator'
+    'StepperItem',
+    'StepperRoot',
+    'StepperSeparator',
+    'StepperTitle',
+    'StepperTrigger'
   ],
-
   switch: ['SwitchRoot', 'SwitchThumb'],
-
-  tabs: ['TabsRoot', 'TabsList', 'TabsContent', 'TabsTrigger', 'TabsIndicator'],
-
+  tabs: ['TabsContent', 'TabsIndicator', 'TabsList', 'TabsRoot', 'TabsTrigger'],
   tagsInput: [
-    'TagsInputRoot',
+    'TagsInputClear',
     'TagsInputInput',
-    'TagsInputItem',
-    'TagsInputItemText',
     'TagsInputItemDelete',
-    'TagsInputClear'
+    'TagsInputItemText',
+    'TagsInputItem',
+    'TagsInputRoot'
   ],
-
+  teleport: ['Teleport'],
   timeField: ['TimeFieldInput', 'TimeFieldRoot'],
-
-  toast: ['ToastProvider', 'ToastRoot', 'ToastAction', 'ToastClose', 'ToastViewport', 'ToastTitle', 'ToastDescription'],
-
+  toast: [
+    'FocusProxy',
+    'ToastAction',
+    'ToastAnnounceExclude',
+    'ToastAnnounce',
+    'ToastClose',
+    'ToastDescription',
+    'ToastPortal',
+    'ToastProvider',
+    'ToastRootImpl',
+    'ToastRoot',
+    'ToastTitle',
+    'ToastViewport'
+  ],
   toggle: ['Toggle'],
-
-  toggleGroup: ['ToggleGroupRoot', 'ToggleGroupItem'],
-
+  toggleGroup: ['ToggleGroupItem', 'ToggleGroupRoot'],
   toolbar: [
-    'ToolbarRoot',
     'ToolbarButton',
     'ToolbarLink',
+    'ToolbarRoot',
+    'ToolbarSeparator',
     'ToolbarToggleGroup',
-    'ToolbarToggleItem',
-    'ToolbarSeparator'
+    'ToolbarToggleItem'
   ],
-
-  tooltip: ['TooltipRoot', 'TooltipTrigger', 'TooltipContent', 'TooltipArrow', 'TooltipPortal', 'TooltipProvider'],
-
-  tree: ['TreeRoot', 'TreeItem', 'TreeVirtualizer'],
-
+  tooltip: [
+    'TooltipArrow',
+    'TooltipContentHoverable',
+    'TooltipContentImpl',
+    'TooltipContent',
+    'TooltipPortal',
+    'TooltipProvider',
+    'TooltipRoot',
+    'TooltipTrigger'
+  ],
+  tree: ['TreeItem', 'TreeRoot', 'TreeVirtualizer'],
   viewport: ['Viewport'],
-
-  primitive: ['Primitive', 'Slot'],
-
-  visuallyHidden: ['VisuallyHidden']
-};
-
-export const utilities = {
-  utilities: [
-    'useEmitAsProps',
-    'useFilter',
-    'useForwardProps',
-    'useForwardPropsEmits',
-    'useForwardExpose',
-    'useId',
-    'useStateMachine',
-    'useBodyScrollLock',
-    'useDateFormatter',
-    'withDefault',
-    'createContext'
-  ]
+  visuallyHidden: ['VisuallyHiddenInputBubble', 'VisuallyHiddenInput', 'VisuallyHidden']
 };
