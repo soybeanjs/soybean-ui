@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButtonIcon, SCard } from 'soy-ui';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { ThemeSize } from 'soy-ui';
 import { X } from 'lucide-vue-next';
 
 defineOptions({
