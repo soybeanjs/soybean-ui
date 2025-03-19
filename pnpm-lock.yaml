@@ -218,7 +218,7 @@ importers:
         version: link:../primitives
       '@soybean-ui/variants':
         specifier: workspace:*
-        version: link:../variants
+        version: link:../ui-variants
       '@tanstack/vue-virtual':
         specifier: 3.13.4
         version: 3.13.4(vue@3.5.13(typescript@5.8.2))
@@ -272,20 +272,7 @@ importers:
         specifier: 4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.8.2))
 
-  packages/unocss-preset:
-    dependencies:
-      '@soybean-ui/color':
-        specifier: workspace:*
-        version: link:../color
-      '@unocss/core':
-        specifier: 66.0.0
-        version: 66.0.0
-    devDependencies:
-      tsup:
-        specifier: 8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.1(@types/node@22.13.10))(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.7.0)
-
-  packages/variants:
+  packages/ui-variants:
     dependencies:
       clsx:
         specifier: 2.1.1
@@ -296,6 +283,22 @@ importers:
       tailwind-variants:
         specifier: 1.0.0
         version: 1.0.0(tailwindcss@4.0.14)
+    devDependencies:
+      vite:
+        specifier: 6.2.2
+        version: 6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0)
+      vite-plugin-dts:
+        specifier: 4.5.3
+        version: 4.5.3(@types/node@22.13.10)(rollup@4.36.0)(typescript@5.8.2)(vite@6.2.2(@types/node@22.13.10)(jiti@2.4.2)(tsx@4.19.3)(yaml@2.7.0))
+
+  packages/unocss-preset:
+    dependencies:
+      '@soybean-ui/color':
+        specifier: workspace:*
+        version: link:../color
+      '@unocss/core':
+        specifier: 66.0.0
+        version: 66.0.0
     devDependencies:
       tsup:
         specifier: 8.4.0

@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import dts from 'vite-plugin-dts';
 import fg from 'fast-glob';
+
 export default defineConfig(() => {
   const components = fg.sync('src/components/**/index.ts');
   const names = components.map(component => {
@@ -43,11 +44,41 @@ export default defineConfig(() => {
       rollupOptions: {
         external: ['vue', 'vue-router', 'lucide-vue-next', '@nuxt/schema', '@nuxt/kit'],
         output: {
-          manualChunks: {
-            ...manualChunks,
-            index: ['src/index.ts'],
-            nuxt: ['src/nuxt/index.ts'],
-            resolver: ['src/resolver/index.ts']
+          manualChunks: id => {
+            const moduleChunks = id.match(/[/\\]node_modules[/\\]\.pnpm[/\\](.*?)[/\\]/);
+            if (moduleChunks) {
+              return `vendor/${moduleChunks[1]}`;
+            }
+
+            const componentsChunks = id.match(/[/\\]src[/\\]components[/\\](.*?)[/\\]/);
+            if (componentsChunks) {
+              return `components/${componentsChunks[1]}/index`;
+            }
+
+            const variantsChunks = id.match(/[/\\]variants[/\\]([\w-]+)/);
+            if (variantsChunks) {
+              return `variants/${variantsChunks[1]}`;
+            }
+
+            const primitivesComponentsChunks = id.match(/[/\\]primitives[/\\]([\w-]+)[/\\]([\w-]+)[/\\]([\w-]+)/);
+            if (primitivesComponentsChunks) {
+              return `primitives/${primitivesComponentsChunks[3]}`;
+            }
+
+            const primitivesChunks = id.match(/[/\\]primitives[/\\]([\w-]+)[/\\]([\w-]+)/);
+            if (primitivesChunks) {
+              return `primitives/${primitivesChunks[2]}`;
+            }
+
+            const otherChunks = id.match(/[/\\]src[/\\](.*?)[/\\]/);
+
+            if (otherChunks) {
+              if (!id.includes('types')) {
+                return `${otherChunks[1]}`;
+              }
+            }
+
+            return null;
           }
         }
       }

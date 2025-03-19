@@ -8,17 +8,16 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "typings": "./dist/index.d.ts",
   "files": ["./dist"],
   "scripts": {
-    "build": "tsup"
+    "build": "vite build"
   },
   "dependencies": {
     "clsx": "2.1.1",
@@ -26,6 +25,7 @@
     "tailwind-variants": "1.0.0"
   },
   "devDependencies": {
-    "tsup": "8.4.0"
+    "vite": "6.2.2",
+    "vite-plugin-dts": "4.5.3"
   }
 }
