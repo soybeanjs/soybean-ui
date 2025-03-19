@@ -42,9 +42,22 @@ export default defineConfig(() => {
         }
       },
       rollupOptions: {
-        external: ['vue', 'vue-router', 'lucide-vue-next', '@nuxt/schema', '@nuxt/kit'],
+        external: [
+          'vue',
+          'vue-router',
+          'vue-demi',
+          '@vue/devtools-api',
+          'lucide-vue-next',
+          '@nuxt/schema',
+          '@nuxt/kit'
+        ],
         output: {
-          manualChunks: id => {
+          manualChunks: (id, meta) => {
+            const info = meta.getModuleInfo(id);
+            if (!info?.code) {
+              return null;
+            }
+
             const moduleChunks = id.match(/[/\\]node_modules[/\\]\.pnpm[/\\](.*?)[/\\]/);
             if (moduleChunks) {
               return `vendor/${moduleChunks[1]}`;
@@ -66,16 +79,14 @@ export default defineConfig(() => {
             }
 
             const primitivesChunks = id.match(/[/\\]primitives[/\\]([\w-]+)[/\\]([\w-]+)/);
-            if (primitivesChunks) {
+            if (primitivesChunks && primitivesChunks[2] !== 'index') {
               return `primitives/${primitivesChunks[2]}`;
             }
 
             const otherChunks = id.match(/[/\\]src[/\\](.*?)[/\\]/);
 
             if (otherChunks) {
-              if (!id.includes('types')) {
-                return `${otherChunks[1]}`;
-              }
+              return `${otherChunks[1]}`;
             }
 
             return null;
