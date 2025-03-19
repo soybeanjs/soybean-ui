@@ -107,17 +107,17 @@ function handleClick(item: BreadcrumbItem) {
 
 <template>
   <div class="py-12px text-18px">Default</div>
-  <SBreadcrumb :items="items" separator-class="marker:text-transparent" @click="handleClick" />
+  <SBreadcrumb :items="items" separator-class="marker:(text-transparent leading-0)" @click="handleClick" />
   <div class="py-12px text-18px">Custom Separator</div>
-  <SBreadcrumb :items="items" separator-class="marker:text-transparent">
+  <SBreadcrumb :items="items" separator-class="marker:(text-transparent leading-0)">
     <template #separator>&nbsp;/&nbsp;</template>
   </SBreadcrumb>
   <div class="py-12px text-18px">Link</div>
-  <SBreadcrumb :items="items2" separator-class="marker:text-transparent" />
+  <SBreadcrumb :items="items2" separator-class="marker:(text-transparent leading-0)" />
   <div class="py-12px text-18px">Ellipsis</div>
-  <SBreadcrumb :items="items3" ellipsis separator-class="marker:text-transparent" />
+  <SBreadcrumb :items="items3" ellipsis separator-class="marker:(text-transparent leading-0)" />
   <div class="py-12px text-18px">Item Dropdown</div>
-  <SBreadcrumb :items="dropdownItems" separator-class="marker:text-transparent">
+  <SBreadcrumb :items="dropdownItems" separator-class="marker:(text-transparent leading-0)">
     <template #default="{ item }">
       <SDropdownMenu v-if="item.items" :items="item.items" :modal="false">
         <template #trigger>
@@ -128,7 +128,7 @@ function handleClick(item: BreadcrumbItem) {
     </template>
   </SBreadcrumb>
   <div class="py-12px text-18px">Ellipsis Dropdown</div>
-  <SBreadcrumb :items="items3" ellipsis separator-class="marker:text-transparent">
+  <SBreadcrumb :items="items3" ellipsis separator-class="marker:(text-transparent leading-0)">
     <template #ellipsis="{ ellipsisItems }">
       <SDropdownMenu :items="ellipsisItems" :modal="false">
         <template #trigger>
@@ -140,8 +140,8 @@ function handleClick(item: BreadcrumbItem) {
   <div class="py-12px text-18px">Size</div>
   <div class="flex-c-stretch gap-12px">
     <div v-for="size in sizes" :key="size" class="flex gap-12px">
-      <span class="w-36px text-right">{{ size }}:</span>
-      <SBreadcrumb :items="items" :size="size" separator-class="marker:text-transparent" />
+      <span class="w-36px flex-center text-right">{{ size }}:</span>
+      <SBreadcrumb :items="items" :size="size" separator-class="marker:(text-transparent leading-0)" />
     </div>
   </div>
 </template>
