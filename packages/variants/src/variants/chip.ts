@@ -9,10 +9,10 @@ export const chipVariants = tv({
   variants: {
     position: {
       'top-right': {
-        content: 'right-0 top-0 -translate-y-1/2 translate-x-1/2'
+        content: 'right-0 top-0 translate-x-1/2 -translate-y-1/2'
       },
       'bottom-right': {
-        content: 'right-0 bottom-0 -translate-x-1/2 translate-y-1/2'
+        content: 'right-0 bottom-0 translate-x-1/2 translate-y-1/2'
       },
       'top-left': {
         content: 'left-0 top-0 -translate-x-1/2 -translate-y-1/2'
