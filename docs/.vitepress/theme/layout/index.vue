@@ -41,7 +41,7 @@ const { top } = toRefs(arrivedState);
       <div></div>
     </div>
 
-    <div v-else class="flex-grow lg:(mx-auto w-1024px) lt-lg:w-full">
+    <div v-else class="w-full flex-grow">
       <Docs />
     </div>
   </div>

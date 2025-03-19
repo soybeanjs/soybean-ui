@@ -136,8 +136,8 @@ const menus: NavigationMenuItemOption[] = [
 </script>
 
 <template>
-  <div class="demo-navigation-menu">
-    <SNavigationMenu :items="menus" show-arrow child-link-class="w-60" />
+  <div class="demo-navigation-menu lt-md:min-h-100">
+    <SNavigationMenu :items="menus" show-arrow child-link-class="w-80 at-lg:w-70 at-md:w-60 lt-md:w-40" />
   </div>
 </template>
 

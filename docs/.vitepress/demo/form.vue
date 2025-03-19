@@ -73,7 +73,7 @@ watch(values, value => {
 </script>
 
 <template>
-  <form class="w-480px space-y-4" @submit="onSubmit">
+  <form class="demo-form w-480px space-y-4" @submit="onSubmit">
     <SFormField name="username" label="Username">
       <SInput placeholder="Please input username" />
     </SFormField>
@@ -120,3 +120,9 @@ watch(values, value => {
     <SButton type="submit">Submit</SButton>
   </form>
 </template>
+
+<style scoped>
+.demo-form :deep(input) {
+  border: 1px solid hsl(var(--input));
+}
+</style>

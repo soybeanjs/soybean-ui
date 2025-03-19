@@ -11,7 +11,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
 <template>
-  <div class="w-600px lt-sm:w-full">
+  <div class="lt-sm:w-full">
     <div class="py-12px text-18px">Size</div>
     <div class="w-1/2 i-flex-c pr-10px lt-sm:(w-full pr-0)">
       <SCard v-for="size in sizes" :key="size" :title="`Size: ${size}`" :size="size" class="mb-12px">
