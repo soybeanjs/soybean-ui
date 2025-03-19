@@ -9,7 +9,7 @@ import { presetSoybeanUI } from '@soybean-ui/unocss-preset';
 export default defineConfig({
   content: {
     pipeline: {
-      include: [/\.vue($|\?)/, /.*\/soy-ui\.js(.*)?$/]
+      include: [/\.vue($|\?)/, /.*\/soy-ui\/dist\/variants\/.*\.js/]
     }
   },
   presets: [presetWind3(), presetSoybeanUI()],
