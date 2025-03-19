@@ -51,8 +51,8 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
   </div>
 </template>
 
-<style>
-.demo-pin-input input {
+<style scoped>
+.demo-pin-input :deep(input) {
   border: 1px solid hsl(var(--input));
 }
 </style>

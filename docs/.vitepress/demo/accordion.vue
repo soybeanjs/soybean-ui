@@ -41,33 +41,11 @@ const items: AccordionItems[] = [
 <template>
   <div class="demo-accordion">
     <div class="py-12px text-18px">Single Collapse</div>
-    <SAccordion
-      v-model="single"
-      type="single"
-      collapsible
-      :items="items"
-      :ui="{
-        header: 'm-0!'
-      }"
-    />
+    <SAccordion v-model="single" type="single" collapsible :items="items" />
     <div class="pb-12px pt-32px text-18px">Multi Collapse</div>
-    <SAccordion
-      v-model="multi"
-      type="multiple"
-      :items="items"
-      :ui="{
-        header: 'm-0!'
-      }"
-    />
+    <SAccordion v-model="multi" type="multiple" :items="items" />
     <div class="py-12px pt-32px text-18px">Single Collapse: always open one</div>
-    <SAccordion
-      v-model="single2"
-      type="single"
-      :items="items"
-      :ui="{
-        header: 'm-0!'
-      }"
-    />
+    <SAccordion v-model="single2" type="single" :items="items" />
     <div class="pb-12px pt-32px text-18px">Custom styling</div>
     <SAccordion
       v-model="single3"
@@ -76,8 +54,7 @@ const items: AccordionItems[] = [
       :items="items"
       :ui="{
         item: 'border-b-0',
-        content: 'px-3 leading-8',
-        header: 'm-0!'
+        content: 'px-3 leading-8'
       }"
       item-class="border-b-0"
       content-class="px-3 leading-8"
@@ -96,14 +73,7 @@ const items: AccordionItems[] = [
       </template>
     </SAccordion>
     <div class="py-12px pt-32px text-18px">Custom Icon</div>
-    <SAccordion
-      v-model="multi2"
-      type="multiple"
-      :items="items"
-      :ui="{
-        header: 'm-0!'
-      }"
-    >
+    <SAccordion v-model="multi2" type="multiple" :items="items">
       <template #triggerIcon="{ open }">
         <Minus v-if="open" />
         <Plus v-else />
@@ -112,4 +82,8 @@ const items: AccordionItems[] = [
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.demo-accordion :deep(h3) {
+  margin: 0;
+}
+</style>

@@ -30,8 +30,8 @@ const modelValue = ref<string>('');
   </div>
 </template>
 
-<style>
-.demo-input input {
+<style scoped>
+.demo-input :deep(input) {
   border: 1px solid hsl(var(--input));
 }
 </style>

@@ -94,8 +94,8 @@ const countGraphemesWord = ref('🌷🇨🇳');
   </div>
 </template>
 
-<style>
-.demo-textarea textarea {
+<style scoped>
+.demo-textarea :deep(textarea) {
   border: 1px solid hsl(var(--input));
 }
 </style>
