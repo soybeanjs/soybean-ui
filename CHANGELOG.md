@@ -1,6 +1,34 @@
 # Changelog
 
 
+## [v0.0.1-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.7...v0.0.1-beta.8) (2025-03-20)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **types**: fix import type &nbsp;-&nbsp; by @soybeanjs [<samp>(53416)</samp>](https://github.com/soybeanjs/soybean-ui/commit/53416c8)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **projects**: optimize package chunk &nbsp;-&nbsp; by @soybeanjs [<samp>(8fba6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8fba6da)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **projects**: rename dir `ui` to `soy-ui` &nbsp;-&nbsp; by @soybeanjs [<samp>(4acb5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4acb54a)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update README &nbsp;-&nbsp; by @soybeanjs [<samp>(d82f2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d82f24d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**:
+  - update unocss config &nbsp;-&nbsp; by @soybeanjs [<samp>(59988)</samp>](https://github.com/soybeanjs/soybean-ui/commit/59988d2)
+  - update unocss config include soy-ui &nbsp;-&nbsp; by @soybeanjs [<samp>(33871)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3387134)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.6...v0.0.1-beta.7) (2025-03-19)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
