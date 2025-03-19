@@ -14,7 +14,7 @@ const { top } = toRefs(arrivedState);
 </script>
 
 <template>
-  <div class="h-full flex-c items-center">
+  <div class="flex-c items-center">
     <header
       class="sticky top-0 z-10 h-17 w-full py-4 transition-all duration-500"
       :class="[
@@ -41,7 +41,7 @@ const { top } = toRefs(arrivedState);
       <div></div>
     </div>
 
-    <div v-else class="size-full max-w-1440px flex-grow">
+    <div v-else class="flex-grow lg:(mx-auto w-1024px) lt-lg:w-full">
       <Docs />
     </div>
   </div>

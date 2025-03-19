@@ -68,7 +68,7 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
 <template>
   <SNavigationMenuRoot v-bind="forwardedRoot">
     <SNavigationMenuList :class="listClass">
-      <template v-for="item in props.items" :key="item.value">
+      <template v-for="item in items" :key="item.value">
         <SNavigationMenuItem :class="itemClass" :value="item.value">
           <SNavigationMenuLink
             v-if="!hasChildren(item)"

@@ -28,14 +28,14 @@ const isDocsPage = computed(() => path.value.includes('docs'));
 
 <template>
   <SToastProvider>
-    <div class="w-full">
+    <div>
       <DocsTopbar v-if="isDocsPage" />
       <SSeparator v-else class="sticky top-17 z-10" />
 
       <main class="flex">
         <aside
           v-if="isDocsPage"
-          class="sticky top-[7.25rem] hidden h-full max-h-[calc(100vh-7.25rem)] w-[17rem] flex-shrink-0 overflow-y-auto py-4 pl-4 pr-4 md:block"
+          class="sticky top-29 hidden h-full max-h-[calc(100vh-7.25rem)] w-68 flex-shrink-0 overflow-y-auto py-4 pl-4 pr-4 md:block"
         >
           <div v-if="activeSection" class="h-full">
             <DocsSidebar :items="activeSection.items ?? []" />
