@@ -14,7 +14,7 @@
 ## Installation
 
 ```bash
-pnpm install @soybean-ui/primitives
+pnpm add @soybean-ui/primitives
 ```
 
 ## Credits

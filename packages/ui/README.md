@@ -2,7 +2,7 @@
 
 ## Introduction
 
-SoybeanUI is an elegant and modern Vue ui library like shadcn-ui, it is based on [@soybean-ui/primitives](/primitives) and [UnoCSS](https://unocss.dev/).
+SoybeanUI is an elegant and accessible UI library like shadcn for Vue3, it is based on [@soybean-ui/primitives](/primitives) and [UnoCSS](https://unocss.dev/).
 
 ## Installation
 
