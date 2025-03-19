@@ -1,6 +1,34 @@
 # Changelog
 
 
+## [v0.0.1-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.6...v0.0.1-beta.7) (2025-03-19)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**:
+  - fix chip variant &nbsp;-&nbsp; by @soybeanjs [<samp>(ad299)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ad299c2)
+- **styles**:
+  - fix conflict style with vitepress &nbsp;-&nbsp; by @soybeanjs [<samp>(9b25f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9b25f58)
+  - fix docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(9d81a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9d81a39)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **styles**: optimize docs component style &nbsp;-&nbsp; by @soybeanjs [<samp>(8b3ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8b3ea29)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**:
+  - add docs for soybean-ui &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/63 [<samp>(b79c9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b79c949)
+  - update README & license &nbsp;-&nbsp; by @soybeanjs [<samp>(47501)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4750166)
+  - fix dead link &nbsp;-&nbsp; by @soybeanjs [<samp>(90490)</samp>](https://github.com/soybeanjs/soybean-ui/commit/904909b)
+  - fix docs demo breadcrumb style &nbsp;-&nbsp; by @soybeanjs [<samp>(8438c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8438c72)
+- **styles**:
+  - fix docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(1fd99)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1fd9976)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.5...v0.0.1-beta.6) (2025-03-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

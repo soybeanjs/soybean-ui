@@ -1,6 +1,6 @@
 {
   "name": "@soybean-ui/unocss-preset",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
