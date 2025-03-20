@@ -1,6 +1,24 @@
 # Changelog
 
 
+## [v0.0.1-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.8...v0.0.1-beta.9) (2025-03-20)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **projects**: optimize build chunk &nbsp;-&nbsp; by @soybeanjs [<samp>(fad54)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fad5418)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update docs &nbsp;-&nbsp; by @soybeanjs [<samp>(a6743)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a674363)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**: update unocss config include soy-ui &nbsp;-&nbsp; by @soybeanjs [<samp>(c29a8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c29a86c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1-beta.7...v0.0.1-beta.8) (2025-03-20)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
