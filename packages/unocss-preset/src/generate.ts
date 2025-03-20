@@ -13,6 +13,8 @@ import type {
   ThemeConfig
 } from './types';
 
+const builtinThemes = themes as ThemeConfig[];
+
 type CSSVarKey = ThemeCSSVarKey | FeedbackColorOfThemeCssVarKey;
 
 const themeCSSVarKeys: CSSVarKey[] = [
@@ -88,7 +90,7 @@ function getColorCSSVarsStyles(lightVars: string, darkVars: string, options: Col
   const { darkSelector, radius, themeName } = options;
 
   const themeSelector = themeName ? `.theme-${themeName}` : ':root';
-  const radiusCSS = radius ? getRadiusCSSVars(radius) : '';
+  const radiusCSS = radius || radius === 0 ? getRadiusCSSVars(radius) : '';
   const darkThemeSelector = themeName ? `${darkSelector} .theme-${themeName}` : darkSelector;
 
   return `
@@ -134,7 +136,7 @@ body {
 }
 
 function getBuiltInTheme(name: string): ThemeCSSVarsVariant {
-  const theme = (themes as ThemeConfig[]).find(t => t.name === name);
+  const theme = builtinThemes.find(t => t.name === name);
 
   if (!theme) {
     throw new Error(`Unknown color: ${name}`);
@@ -192,6 +194,10 @@ function createBuiltinFeedbackColorTheme() {
 }
 
 export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): string {
+  if (theme === 'all') {
+    return builtinThemes.map(t => generateCSSVars({ color: t.name }, false)).join('\n');
+  }
+
   if (Array.isArray(theme)) {
     return theme.map(t => generateCSSVars(t, false)).join('\n');
   }

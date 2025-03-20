@@ -65,13 +65,9 @@ export type ThemeConfigColor =
   | 'yellow'
   | 'violet';
 
-export type ThemeConfig<T extends ThemeConfigColor = ThemeConfigColor> = {
+export type ThemeConfig<T = ThemeConfigColor> = {
   name: T;
   label: string;
-  activeColor: {
-    light: string;
-    dark: string;
-  };
   cssVars: {
     light: ThemeCSSVars;
     dark: ThemeCSSVars;
@@ -106,7 +102,7 @@ export interface ThemeOptions {
   darkSelector?: string;
 }
 
-export type PresetShadcnOptions = ThemeOptions | ThemeOptions[];
+export type PresetShadcnOptions = ThemeOptions | ThemeOptions[] | 'all';
 
 export type ThemeColorKey =
   | Extract<ThemeCSSVarKey, 'primary' | 'secondary' | 'destructive'>

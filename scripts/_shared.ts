@@ -105,7 +105,7 @@ export function getPkgs() {
     variants: 'packages/ui-variants',
     color: 'packages/color',
     'unocss-preset': 'packages/unocss-preset',
-    ui: 'packages/ui'
+    ui: 'packages/soy-ui'
   };
 
   return Object.entries(pkgs).map(([pkgName, pkgPath]) => ({ pkgName, pkgPath }));

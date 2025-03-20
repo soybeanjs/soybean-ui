@@ -111,6 +111,9 @@ importers:
 
   docs:
     dependencies:
+      '@soybean-ui/unocss-preset':
+        specifier: workspace:*
+        version: link:../packages/unocss-preset
       '@vueuse/core':
         specifier: 13.0.0
         version: 13.0.0(vue@3.5.13(typescript@5.8.2))

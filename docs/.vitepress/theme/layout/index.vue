@@ -1,48 +1,77 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { toRefs } from 'vue';
+import { computed, ref, toRefs } from 'vue';
 import { useScroll } from '@vueuse/core';
+import { SButtonIcon, SConfigProvider, SPopover } from 'soy-ui';
+import type { ConfigProviderProps } from 'soy-ui';
+import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
+import { SwatchBook } from 'lucide-vue-next';
+import AppLogo from './components/app-logo.vue';
 import Home from './components/home.vue';
 import Navbar from './components/navbar.vue';
 import Docs from './components/docs.vue';
+import ThemeCustomize from './components/theme-customize.vue';
 
-const { site, theme, frontmatter } = useData();
+const { site, frontmatter } = useData();
 
 const { arrivedState } = useScroll(globalThis.window);
 
 const { top } = toRefs(arrivedState);
+
+const color = ref<ThemeConfigColor>('default');
+const radius = ref(0.5);
+
+const configProviderProps = computed<ConfigProviderProps>(() => ({
+  theme: {
+    color: color.value,
+    radius: radius.value
+  }
+}));
 </script>
 
 <template>
-  <div class="flex-c items-center">
-    <header
-      class="sticky top-0 z-10 h-17 w-full py-4 transition-all duration-500"
-      :class="[
-        top
-          ? 'bg-transparent backdrop-blur-0'
-          : 'bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/90'
-      ]"
-    >
-      <div class="mx-auto max-w-1440px flex-y-center justify-between px-6">
-        <div class="w-full flex-y-center justify-between gap-8 md:justify-unset">
-          <a href="/" class="flex-y-center gap-2">
-            <img class="w-8 md:w-9" alt="Soybean UI logo" :src="theme.logo" />
-            <span class="text-xl font-bold md:text-2xl">{{ site.title }}</span>
-          </a>
-          <!-- <SearchTrigger /> -->
+  <SConfigProvider v-bind="configProviderProps">
+    <div class="flex-c items-center">
+      <header
+        class="sticky top-0 z-10 h-17 w-full py-4 transition-all duration-500"
+        :class="[
+          top
+            ? 'bg-transparent backdrop-blur-0'
+            : 'bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/90'
+        ]"
+      >
+        <div class="mx-auto max-w-1440px flex-y-center justify-between px-6">
+          <div class="w-full flex-y-center justify-between gap-8 md:justify-unset">
+            <a href="/" class="flex-y-center gap-2">
+              <AppLogo class="size-8 text-primary md:size-9" />
+              <span class="text-xl font-bold md:text-2xl">{{ site.title }}</span>
+            </a>
+            <!-- <SearchTrigger /> -->
+          </div>
+
+          <Navbar>
+            <template #theme-customize>
+              <SPopover content-class="z-15" side="bottom" align="end">
+                <template #trigger>
+                  <SButtonIcon size="lg" class="mr-3">
+                    <SwatchBook />
+                  </SButtonIcon>
+                </template>
+                <ThemeCustomize v-model:color="color" v-model:radius="radius" />
+              </SPopover>
+            </template>
+          </Navbar>
         </div>
+      </header>
 
-        <Navbar />
+      <div v-if="frontmatter.layout === 'home'" class="size-full flex-c flex-1 justify-between">
+        <Home />
+        <div></div>
       </div>
-    </header>
 
-    <div v-if="frontmatter.layout === 'home'" class="size-full flex-c flex-1 justify-between">
-      <Home />
-      <div></div>
+      <div v-else class="w-full flex-grow">
+        <Docs />
+      </div>
     </div>
-
-    <div v-else class="w-full flex-grow">
-      <Docs />
-    </div>
-  </div>
+  </SConfigProvider>
 </template>

@@ -70,6 +70,7 @@ watch(path, () => {
       </SDropdownMenu>
     </template>
     <SSeparator class="mx-4 h-4" decorative orientation="vertical" />
+    <slot name="theme-customize" />
     <ThemeToggle />
     <SSeparator class="mx-4 h-4" decorative orientation="vertical" />
     <SButtonIcon v-for="link in theme.socialLinks" :key="link.link" @click="openLink(link.link)">

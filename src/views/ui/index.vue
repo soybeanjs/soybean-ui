@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue';
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
-import { SButtonIcon, SCard, SScrollArea, STabs, SToastProvider } from 'soy-ui';
-import type { TabsOption } from 'soy-ui';
-import { Moon, Sun } from 'lucide-vue-next';
+import { SButtonIcon, SCard, SConfigProvider, SPopover, SScrollArea, STabs, SToastProvider } from 'soy-ui';
+import type { ConfigProviderProps, TabsOption } from 'soy-ui';
+import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
+import { Moon, Sun, SwatchBook } from 'lucide-vue-next';
+import ThemeCustomize from '@/components/theme-customize.vue';
 import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
 import UiAlertDialog from './modules/alert-dialog.vue';
@@ -66,6 +69,16 @@ const isDark = useDark();
 function toggleDark() {
   isDark.value = !isDark.value;
 }
+
+const color = ref<ThemeConfigColor>('default');
+const radius = ref(0.5);
+
+const configProviderProps = computed<ConfigProviderProps>(() => ({
+  theme: {
+    color: color.value,
+    radius: radius.value
+  }
+}));
 
 interface TabConfig extends TabsOption {
   component: Component;
@@ -321,32 +334,44 @@ const tabs: TabConfig[] = [
 </script>
 
 <template>
-  <SToastProvider>
-    <div class="h-full p-16px">
-      <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
-        <template #extra>
-          <SButtonIcon size="lg" @click="toggleDark">
-            <Sun v-if="isDark" />
-            <Moon v-else />
-          </SButtonIcon>
-        </template>
-        <STabs
-          v-model="activeTab"
-          :items="tabs"
-          :enable-indicator="false"
-          class="h-full"
-          list-class="flex-wrap justify-start"
-          trigger-class="flex-none max-w-120px w-1/3"
-        >
-          <template #content="{ component }">
-            <SScrollArea class="h-full">
-              <div class="p-18px">
-                <component :is="component" />
-              </div>
-            </SScrollArea>
+  <SConfigProvider v-bind="configProviderProps">
+    <SToastProvider>
+      <div class="h-full p-16px">
+        <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
+          <template #extra>
+            <div>
+              <SPopover content-class="z-15" side="bottom" align="end">
+                <template #trigger>
+                  <SButtonIcon size="lg">
+                    <SwatchBook />
+                  </SButtonIcon>
+                </template>
+                <ThemeCustomize v-model:color="color" v-model:radius="radius" />
+              </SPopover>
+              <SButtonIcon size="lg" @click="toggleDark">
+                <Sun v-if="isDark" />
+                <Moon v-else />
+              </SButtonIcon>
+            </div>
           </template>
-        </STabs>
-      </SCard>
-    </div>
-  </SToastProvider>
+          <STabs
+            v-model="activeTab"
+            :items="tabs"
+            :enable-indicator="false"
+            class="h-full"
+            list-class="flex-wrap justify-start"
+            trigger-class="flex-none max-w-120px w-1/3"
+          >
+            <template #content="{ component }">
+              <SScrollArea class="h-full">
+                <div class="p-18px">
+                  <component :is="component" />
+                </div>
+              </SScrollArea>
+            </template>
+          </STabs>
+        </SCard>
+      </div>
+    </SToastProvider>
+  </SConfigProvider>
 </template>

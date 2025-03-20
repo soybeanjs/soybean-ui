@@ -16,6 +16,6 @@ export default defineConfig<Theme>({
     presetTypography(),
     presetAnimations(),
     presetSoybeanJS(),
-    presetSoybeanUI()
+    presetSoybeanUI('all')
   ]
 });
