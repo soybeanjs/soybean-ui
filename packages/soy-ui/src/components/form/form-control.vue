@@ -15,7 +15,7 @@ const ariaInvalid = computed(() => Boolean(error.value));
 </script>
 
 <template>
-  <Slot :id="formItemId" :aria-described-by :aria-invalid>
+  <Slot :id="formItemId" :aria-described-by="ariaDescribedBy" :aria-invalid="ariaInvalid">
     <slot />
   </Slot>
 </template>

@@ -18,7 +18,12 @@ const mergedCls = computed(() => cn(content(), cls));
 </script>
 
 <template>
-  <HoverCardContent v-bind="forwardedProps" :class="mergedCls" :side-offset :avoid-collisions>
+  <HoverCardContent
+    v-bind="forwardedProps"
+    :class="mergedCls"
+    :side-offset="sideOffset"
+    :avoid-collisions="avoidCollisions"
+  >
     <slot />
   </HoverCardContent>
 </template>

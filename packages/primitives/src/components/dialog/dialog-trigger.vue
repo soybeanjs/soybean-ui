@@ -35,7 +35,7 @@ onMounted(() => {
     aria-haspopup="dialog"
     :aria-expanded="open || false"
     :aria-controls="open ? contentId : undefined"
-    :data-state
+    :data-state="dataState"
     @click="onOpenToggle"
   >
     <slot />

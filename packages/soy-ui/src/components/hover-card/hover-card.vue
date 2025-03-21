@@ -49,8 +49,8 @@ const forwardedContentProps = useForwardProps(delegatedContentProps);
         v-bind="forwardedContentProps"
         :class="contentClass"
         :force-mount="forceMountContent"
-        :avoid-collisions
-        :prioritize-position
+        :avoid-collisions="avoidCollisions"
+        :prioritize-position="prioritizePosition"
       >
         <slot />
         <SHoverCardArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />

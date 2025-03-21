@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(indicator(), cls));
 </script>
 
 <template>
-  <CheckboxIndicator :class="mergedCls" :force-mount>
+  <CheckboxIndicator :class="mergedCls" :force-mount="forceMount">
     <slot />
   </CheckboxIndicator>
 </template>

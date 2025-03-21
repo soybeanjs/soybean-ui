@@ -39,7 +39,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
         :value="item.value"
         :disabled="item.disabled"
         :class="triggerClass"
-        :enable-indicator
+        :enable-indicator="enableIndicator"
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>

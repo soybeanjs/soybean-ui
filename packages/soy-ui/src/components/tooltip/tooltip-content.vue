@@ -20,7 +20,7 @@ const mergedCls = computed(() => cn(cls, content()));
 </script>
 
 <template>
-  <TooltipContent v-bind="forwarded" :class="mergedCls" :side-offset :avoid-collisions>
+  <TooltipContent v-bind="forwarded" :class="mergedCls" :side-offset="sideOffset" :avoid-collisions="avoidCollisions">
     <slot />
   </TooltipContent>
 </template>

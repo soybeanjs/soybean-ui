@@ -15,7 +15,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <TabsRoot v-bind="forwarded" :activation-mode>
+  <TabsRoot v-bind="forwarded" :activation-mode="activationMode">
     <slot />
   </TabsRoot>
 </template>
