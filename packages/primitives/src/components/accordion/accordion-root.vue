@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends string | string[], S extends SingleOrMultipleType">
 import { toRefs } from 'vue';
 import { useDirection, useForwardExpose, useSingleOrMultipleValue } from '../../composables';
-import type { SingleOrMultipleType } from '../../types';
+import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { Primitive } from '../primitive';
 import { provideAccordionRootContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
@@ -19,6 +19,12 @@ const props = withDefaults(defineProps<AccordionRootProps<T>>(), {
 });
 
 const emit = defineEmits<AccordionRootEmits<S>>();
+
+type Slots = {
+  default: (props: { modelValue?: AcceptableValue | AcceptableValue[]; isSingle: boolean }) => any;
+};
+
+defineSlots<Slots>();
 
 const { modelValue, changeModelValue, isSingle } = useSingleOrMultipleValue(props, emit);
 
