@@ -2,7 +2,7 @@
 import { useData, useRoute } from 'vitepress';
 import { ref, toRefs, watch } from 'vue';
 import { createReusableTemplate } from '@vueuse/core';
-import { SButtonIcon, SDropdownMenu, SLabel, SPopover, SSeparator } from 'soy-ui';
+import { SButtonIcon, SDropdownMenu, SPopover, SSeparator } from 'soy-ui';
 import { Icon } from '@iconify/vue';
 import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';
@@ -124,8 +124,8 @@ watch(path, () => {
         </template>
 
         <SSeparator decorative class="my-2" />
-        <div class="flex items-center justify-between px-2 text-sm space-x-2">
-          <SLabel for="theme-toggle">Appearance</SLabel>
+        <div class="flex items-center justify-between px-2 text-sm">
+          <slot name="theme-customize" />
           <ThemeToggle />
         </div>
         <SSeparator class="my-2" decorative />
