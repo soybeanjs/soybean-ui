@@ -2,13 +2,13 @@
 import { useForwardExpose } from '../../composables';
 import { CollapsibleContent } from '../collapsible';
 import { injectAccordionItemContext, injectAccordionRootContext } from './context';
-import type { AccordionContentPropsWithPrimitive } from './types';
+import type { AccordionContentProps } from './types';
 
 defineOptions({
   name: 'AccordionContent'
 });
 
-const props = defineProps<AccordionContentPropsWithPrimitive>();
+const props = defineProps<AccordionContentProps>();
 
 const { orientation, changeModelValue } = injectAccordionRootContext();
 const { triggerId, dataState, dataDisabled, value } = injectAccordionItemContext();

@@ -5,13 +5,13 @@ import { useVModel } from '@vueuse/core';
 import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext } from './context';
-import type { CollapsibleRootEmits, CollapsibleRootPropsWithPrimitive } from './types';
+import type { CollapsibleRootEmits, CollapsibleRootProps } from './types';
 
 defineOptions({
   name: 'CollapsibleRoot'
 });
 
-const props = withDefaults(defineProps<CollapsibleRootPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   open: undefined,
   defaultOpen: false,
   unmountOnHide: true

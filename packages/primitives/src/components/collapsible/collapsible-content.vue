@@ -5,14 +5,14 @@ import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { Presence } from '../presence';
 import { injectCollapsibleRootContext } from './context';
-import type { CollapsibleContentEmits, CollapsibleContentPropsWithPrimitive } from './types';
+import type { CollapsibleContentEmits, CollapsibleContentProps } from './types';
 
 defineOptions({
   name: 'CollapsibleContent',
   inheritAttrs: false
 });
 
-const props = defineProps<CollapsibleContentPropsWithPrimitive>();
+const props = defineProps<CollapsibleContentProps>();
 
 const emit = defineEmits<CollapsibleContentEmits>();
 

@@ -43,6 +43,7 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
+    "@soybean-ui/examples": "workspace:*",
     "@unocss/reset": "66.0.0",
     "@vee-validate/valibot": "4.15.0",
     "@vueuse/core": "13.0.0",

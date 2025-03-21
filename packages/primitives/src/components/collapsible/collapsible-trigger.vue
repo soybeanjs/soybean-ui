@@ -3,13 +3,13 @@ import { computed } from 'vue';
 import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectCollapsibleRootContext } from './context';
-import type { CollapsibleTriggerPropsWithPrimitive } from './types';
+import type { CollapsibleTriggerProps } from './types';
 
 defineOptions({
   name: 'CollapsibleTrigger'
 });
 
-const props = withDefaults(defineProps<CollapsibleTriggerPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<CollapsibleTriggerProps>(), {
   as: 'button'
 });
 

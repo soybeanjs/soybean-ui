@@ -5,10 +5,10 @@ import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SConfigProvider, SPopover, SScrollArea, STabs, SToastProvider } from 'soy-ui';
 import type { ConfigProviderProps, TabsOption } from 'soy-ui';
+import { DemoAccordion } from '@soybean-ui/examples';
 import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
 import { Moon, Sun, SwatchBook } from 'lucide-vue-next';
 import ThemeCustomize from '@/components/theme-customize.vue';
-import UiAccordion from './modules/accordion.vue';
 import UiAlert from './modules/alert.vue';
 import UiAlertDialog from './modules/alert-dialog.vue';
 import UiAspectRatio from './modules/aspect-ratio.vue';
@@ -88,7 +88,7 @@ const tabs: TabConfig[] = [
   {
     value: 'accordion',
     label: 'Accordion',
-    component: UiAccordion
+    component: DemoAccordion
   },
   {
     value: 'alert',

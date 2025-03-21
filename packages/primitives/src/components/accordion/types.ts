@@ -48,11 +48,8 @@ export type AccordionRootProps<T extends string | string[]> = SingleOrMultiplePr
    * @defaultValue `true`
    */
   unmountOnHide?: boolean;
-} & ClassValueProp;
-
-export interface AccordionRootPropsWithPrimitive<T extends string | string[]>
-  extends AccordionRootProps<T>,
-    PrimitiveProps {}
+} & ClassValueProp &
+  PrimitiveProps;
 
 export type AccordionRootEmits<T extends SingleOrMultipleType = SingleOrMultipleType> = {
   /** Event handler called when the expanded state of an item changes */
@@ -73,7 +70,10 @@ export interface AccordionRootContext {
 }
 
 // AccordionItem
-export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountOnHide'>, ClassValueProp {
+export interface AccordionItemProps
+  extends Pick<CollapsibleRootProps, 'unmountOnHide'>,
+    ClassValueProp,
+    PrimitiveProps {
   /**
    * Whether or not an accordion item is disabled from user interaction. When `true`, prevents the user from interacting
    * with the item.
@@ -84,8 +84,6 @@ export interface AccordionItemProps extends Pick<CollapsibleRootProps, 'unmountO
   /** A string value for the accordion item. All items within an accordion should use a unique value. */
   value: string;
 }
-
-export type AccordionItemPropsWithPrimitive = AccordionItemProps & PrimitiveProps;
 
 // AccordionItemContext
 export interface AccordionItemContextParams {
@@ -104,19 +102,21 @@ export interface AccordionItemContext extends AccordionItemContextParams {
 }
 
 // AccordionHeader
-export interface AccordionHeaderProps extends ClassValueProp {}
-export type AccordionHeaderPropsWithPrimitive = AccordionHeaderProps & PrimitiveProps;
+export interface AccordionHeaderProps extends ClassValueProp, PrimitiveProps {}
 
 // AccordionContent
-export interface AccordionContentProps extends CollapsibleContentProps, ClassValueProp {}
-export type AccordionContentPropsWithPrimitive = AccordionContentProps & PrimitiveProps;
+export interface AccordionContentProps
+  extends Pick<CollapsibleContentProps, 'forceMount'>,
+    ClassValueProp,
+    PrimitiveProps {}
 
 // AccordionTrigger
-export interface AccordionTriggerProps extends ClassValueProp {}
-export type AccordionTriggerPropsWithPrimitive = AccordionTriggerProps & PrimitiveProps;
+export interface AccordionTriggerProps extends ClassValueProp, PrimitiveProps {}
 
 // Accordion
 export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
+  /** The title of the accordion item. */
   title?: string;
+  /** The content of the accordion item. */
   content?: string;
 }

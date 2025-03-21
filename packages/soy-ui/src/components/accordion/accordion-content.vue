@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionContent, useForwardExpose, useForwardProps } from '@soybean-ui/primitives';
+import { AccordionContent, useForwardProps } from '@soybean-ui/primitives';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionContentProps } from './types';
 
@@ -8,15 +8,15 @@ defineOptions({
   name: 'SAccordionContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<AccordionContentProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<AccordionContentProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const { content } = accordionVariants();
+const mergedCls = computed(() => {
+  const { content } = accordionVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
-
-useForwardExpose();
+  return cn(content(), cls);
+});
 </script>
 
 <template>

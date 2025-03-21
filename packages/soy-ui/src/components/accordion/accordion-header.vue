@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AccordionHeader, useForwardExpose, useForwardProps } from '@soybean-ui/primitives';
+import { AccordionHeader, useForwardProps } from '@soybean-ui/primitives';
 import { accordionVariants, cn } from '@soybean-ui/variants';
 import type { AccordionHeaderProps } from './types';
 
@@ -15,8 +15,6 @@ const forwardedProps = useForwardProps(delegatedProps);
 const { header } = accordionVariants();
 
 const mergedCls = computed(() => cn(header(), cls));
-
-useForwardExpose();
 </script>
 
 <template>
