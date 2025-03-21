@@ -102,7 +102,7 @@ export interface ThemeOptions {
   darkSelector?: string;
 }
 
-export type PresetShadcnOptions = ThemeOptions | ThemeOptions[] | 'all';
+export type PresetShadcnOptions = ThemeOptions | ThemeOptions[];
 
 export type ThemeColorKey =
   | Extract<ThemeCSSVarKey, 'primary' | 'secondary' | 'destructive'>

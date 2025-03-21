@@ -89,9 +89,11 @@ interface ColorCSSVarsStylesOptions {
 function getColorCSSVarsStyles(lightVars: string, darkVars: string, options: ColorCSSVarsStylesOptions) {
   const { darkSelector, radius, themeName } = options;
 
-  const themeSelector = themeName ? `.theme-${themeName}` : ':root';
+  const addThemeName = themeName && themeName !== 'default';
+
+  const themeSelector = addThemeName ? `.theme-${themeName}` : ':root';
   const radiusCSS = radius || radius === 0 ? getRadiusCSSVars(radius) : '';
-  const darkThemeSelector = themeName ? `${darkSelector} .theme-${themeName}` : darkSelector;
+  const darkThemeSelector = addThemeName ? `.theme-${themeName}${darkSelector}` : darkSelector;
 
   return `
 ${themeSelector} {
@@ -194,10 +196,6 @@ function createBuiltinFeedbackColorTheme() {
 }
 
 export function generateCSSVars(theme: PresetShadcnOptions, onlyOne = true): string {
-  if (theme === 'all') {
-    return builtinThemes.map(t => generateCSSVars({ color: t.name }, false)).join('\n');
-  }
-
   if (Array.isArray(theme)) {
     return theme.map(t => generateCSSVars(t, false)).join('\n');
   }

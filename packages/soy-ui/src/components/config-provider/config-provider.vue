@@ -2,9 +2,9 @@
 import { computed, toRefs, watch } from 'vue';
 import { useStyleTag } from '@vueuse/core';
 import { ConfigProvider, useOmitForwardProps } from '@soybean-ui/primitives';
-import { builtinColors, generateCSSVars } from '@soybean-ui/unocss-preset';
-import type { ThemeOptions } from '@soybean-ui/unocss-preset';
+import { generateCSSVars } from '@soybean-ui/unocss-preset';
 import { provideConfigProviderContext } from './context';
+import { DEFAULT_THEME, getThemeName, getThemeOptionStr } from './shared';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -24,49 +24,27 @@ const { theme, size } = toRefs(props);
 provideConfigProviderContext({ theme, size });
 
 const cssVars = computed(() => {
-  const keys = Object.keys(theme.value);
+  const defaultThemeStr = getThemeOptionStr(DEFAULT_THEME);
+  const currentThemeStr = getThemeOptionStr(theme.value);
 
-  if (!keys.length) return '';
-
-  if (keys.length === 1 && keys.includes('color')) {
-    if (typeof theme.value.color === 'string' && builtinColors.includes(theme.value.color)) {
-      return '';
-    }
+  if (defaultThemeStr.includes(currentThemeStr)) {
+    return '';
   }
 
-  return generateCSSVars(theme.value);
+  return generateCSSVars(theme.value, theme.value.color === 'default');
 });
 
 useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
 
-function getThemeName(color: ThemeOptions['color']) {
-  let themeName = 'default';
-
-  if (typeof color === 'string') {
-    themeName = color;
-  }
-
-  if (typeof color === 'object') {
-    if ('base' in color) {
-      themeName = color.base || color.name;
-    } else {
-      themeName = color.name;
-    }
-  }
-
-  return themeName;
-}
-
 function addThemeClass(newThemeName: string, oldThemeName: string) {
   if (newThemeName === oldThemeName) {
-    if (newThemeName === 'default') {
-      document.documentElement.classList.add(`theme-${newThemeName}`);
-    }
-
     return;
   }
 
-  document.documentElement.classList.add(`theme-${newThemeName}`);
+  if (newThemeName !== 'default') {
+    document.documentElement.classList.add(`theme-${newThemeName}`);
+  }
+
   document.documentElement.classList.remove(`theme-${oldThemeName}`);
 }
 
