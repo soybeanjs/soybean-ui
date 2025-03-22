@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { alertVariants, cn } from '@soybean-ui/variants';
-import type { AlertDescriptionProps } from './types';
+import type { AlertWrapperProps } from './types';
 
 defineOptions({
-  name: 'SAlertDescription'
+  name: 'SAlertWrapper'
 });
 
-const { class: cls, size } = defineProps<AlertDescriptionProps>();
+const { class: cls, size } = defineProps<AlertWrapperProps>();
 
 const mergedCls = computed(() => {
-  const { description } = alertVariants({ size });
+  const { wrapper } = alertVariants({ size });
 
-  return cn(description(), cls);
+  return cn(wrapper(), cls);
 });
 </script>
 

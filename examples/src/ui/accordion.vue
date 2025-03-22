@@ -5,7 +5,7 @@ import type { ThemeSize } from 'soy-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiAccordion'
+  name: 'DemoAccordion'
 });
 
 const single = ref('');
@@ -43,16 +43,16 @@ const items: AccordionItems[] = [
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Single Collapse" size="sm" split>
+    <SCard title="Single Collapse" split>
       <SAccordion v-model="single" type="single" collapsible :items="items" />
     </SCard>
-    <SCard title="Multi Collapse" size="sm" split>
+    <SCard title="Multi Collapse" split>
       <SAccordion v-model="multi" type="multiple" :items="items" />
     </SCard>
-    <SCard title="Single Collapse (always open one)" size="sm" split>
+    <SCard title="Single Collapse (always open one)" split>
       <SAccordion v-model="single2" type="single" :items="items" />
     </SCard>
-    <SCard title="Custom Styling" size="sm" split>
+    <SCard title="Custom Styling" split>
       <SAccordion
         v-model="single3"
         type="single"
@@ -65,7 +65,7 @@ const items: AccordionItems[] = [
         }"
       />
     </SCard>
-    <SCard title="Custom Icon" size="sm" split>
+    <SCard title="Custom Icon" split>
       <SAccordion v-model="multi2" type="multiple" :items="items">
         <template #triggerIcon="{ open }">
           <Minus v-if="open" />
@@ -73,7 +73,7 @@ const items: AccordionItems[] = [
         </template>
       </SAccordion>
     </SCard>
-    <SCard title="Size" size="sm" split>
+    <SCard title="Size" split>
       <div class="flex flex-wrap justify-between gap-4">
         <SAccordion v-for="size in sizes" :key="size" :size="size" :items="items" collapsible class="basis-48%" />
       </div>
