@@ -17,6 +17,6 @@ const mergedCls = computed(() => cn(fallback(), cls));
 
 <template>
   <AvatarFallback :class="mergedCls" :delay-ms="delayMs">
-    <slot></slot>
+    <slot />
   </AvatarFallback>
 </template>

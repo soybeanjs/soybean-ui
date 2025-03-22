@@ -30,6 +30,6 @@ const mergedCls = computed(() => {
         <SMenuRadioIndicatorIcon />
       </slot>
     </SMenuItemIndicator>
-    <slot></slot>
+    <slot />
   </MenuRadioItem>
 </template>

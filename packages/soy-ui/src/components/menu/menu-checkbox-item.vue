@@ -30,6 +30,6 @@ const mergedCls = computed(() => {
         <Check />
       </slot>
     </SMenuItemIndicator>
-    <slot></slot>
+    <slot />
   </MenuCheckboxItem>
 </template>

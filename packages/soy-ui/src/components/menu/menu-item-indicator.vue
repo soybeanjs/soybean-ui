@@ -21,6 +21,6 @@ const mergedCls = computed(() => {
 
 <template>
   <MenuItemIndicator v-bind="forwardedProps" :class="mergedCls">
-    <slot></slot>
+    <slot />
   </MenuItemIndicator>
 </template>

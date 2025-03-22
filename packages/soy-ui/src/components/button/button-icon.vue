@@ -14,6 +14,6 @@ const forwardedProps = useForwardProps(delegatedProps);
 
 <template>
   <SButton v-bind="forwardedProps" :color="color" :variant="variant" :shape="shape">
-    <slot></slot>
+    <slot />
   </SButton>
 </template>

@@ -18,6 +18,6 @@ const mergedCls = computed(() => {
 
 <template>
   <div :class="mergedCls">
-    <slot></slot>
+    <slot />
   </div>
 </template>

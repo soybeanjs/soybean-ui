@@ -57,14 +57,14 @@ const showFooter = computed(() => Boolean(slots.footer));
             <slot name="title-trailing" />
           </SCardTitleRoot>
         </slot>
-        <slot name="extra"></slot>
+        <slot name="extra" />
       </slot>
     </SCardHeader>
     <SCardBody :class="bodyClass" :size="size">
       <slot />
     </SCardBody>
     <SCardFooter v-if="showFooter" :class="footerClass" :size="size">
-      <slot name="footer"></slot>
+      <slot name="footer" />
     </SCardFooter>
   </SCardRoot>
 </template>
