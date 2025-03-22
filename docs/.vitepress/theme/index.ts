@@ -1,23 +1,16 @@
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import type { App } from 'vue';
+import * as ExampleComponents from '@soybean-ui/examples';
 import 'uno.css';
 import '@unocss/reset/tailwind-compat.css';
 import './style.css';
-import { toPascalCase } from '../shared';
 import Layout from './layout/index.vue';
 import InstallationTabs from './components/installation-tabs.vue';
 
-const demos = import.meta.glob('../demo/*.vue', { eager: true });
-
-function registerDemos(app: App) {
-  for (const path in demos) {
-    const name = path.replace('../demo/', '').replace('.vue', '');
-
-    if (name) {
-      const cpName = toPascalCase(`demo-${name}`);
-      app.component(cpName, (demos[path] as any)?.default);
-    }
+function registerExamples(app: App) {
+  for (const key in ExampleComponents) {
+    app.component(key, (ExampleComponents as any)[key]);
   }
 }
 
@@ -26,7 +19,7 @@ const theme: Theme = {
   Layout,
   enhanceApp({ app }) {
     app.component('InstallationTabs', InstallationTabs);
-    registerDemos(app);
+    registerExamples(app);
   }
 };
 

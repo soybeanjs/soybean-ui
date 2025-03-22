@@ -75,7 +75,14 @@ const items: AccordionItems[] = [
     </SCard>
     <SCard title="Size" split>
       <div class="flex flex-wrap justify-between gap-4">
-        <SAccordion v-for="size in sizes" :key="size" :size="size" :items="items" collapsible class="basis-48%" />
+        <SAccordion
+          v-for="size in sizes"
+          :key="size"
+          :size="size"
+          :items="items"
+          collapsible
+          class="basis-48% lt-sm:basis-100%"
+        />
       </div>
     </SCard>
   </div>

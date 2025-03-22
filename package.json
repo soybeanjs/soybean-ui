@@ -48,6 +48,7 @@
     "@vee-validate/valibot": "4.15.0",
     "@vueuse/core": "13.0.0",
     "@vueuse/router": "13.0.0",
+    "es-toolkit": "1.33.0",
     "lucide-vue-next": "0.483.0",
     "soy-ui": "workspace:*",
     "valibot": "1.0.0",
