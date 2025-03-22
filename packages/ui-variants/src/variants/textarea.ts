@@ -4,7 +4,7 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const textareaVariants = tv({
   slots: {
-    root: 'relative overflow-hidden',
+    root: 'relative',
     content: [
       `flex w-full rounded-md border border-input bg-background`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)`
