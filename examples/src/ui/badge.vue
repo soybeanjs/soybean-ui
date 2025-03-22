@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { SBadge, SCard } from 'soy-ui';
-import type { BadgeVariant, ThemeColor } from 'soy-ui';
+import type { BadgeShape, BadgeVariant, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoBadge'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const variants: BadgeVariant[] = ['solid', 'pure', 'outline'];
+const variants: BadgeVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const shapes: BadgeShape[] = ['auto', 'rounded'];
 </script>
 
 <template>
@@ -22,6 +24,18 @@ const variants: BadgeVariant[] = ['solid', 'pure', 'outline'];
         <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
           <SBadge v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SBadge>
         </div>
+      </div>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex flex-wrap gap-12px">
+        <SBadge v-for="(size, index) in sizes" :key="size" :color="colors[index]" :size="size">
+          {{ size }}
+        </SBadge>
+      </div>
+    </SCard>
+    <SCard title="Shape" split>
+      <div class="flex flex-wrap gap-12px">
+        <SBadge v-for="shape in shapes" :key="shape" variant="ghost" :shape="shape">{{ shape }}</SBadge>
       </div>
     </SCard>
   </div>

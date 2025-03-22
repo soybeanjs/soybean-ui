@@ -8,9 +8,9 @@ defineOptions({
   name: 'SBadge'
 });
 
-const { class: cls, color, variant } = defineProps<BadgeProps>();
+const { class: cls, color, variant, size, shape } = defineProps<BadgeProps>();
 
-const mergedCls = computed(() => cn(badgeVariants({ color, variant }), cls));
+const mergedCls = computed(() => cn(badgeVariants({ color, variant, size, shape }), cls));
 </script>
 
 <template>

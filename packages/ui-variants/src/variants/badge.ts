@@ -3,22 +3,32 @@ import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
 export const badgeVariants = tv({
-  base: 'inline-flex items-center gap-1 border px-3 py-1 text-xs font-semibold',
+  base: 'inline-flex items-center border font-semibold',
   variants: {
     color: {
-      primary: '',
-      destructive: '',
-      success: '',
-      warning: '',
-      info: '',
-      carbon: '',
-      secondary: '',
-      accent: ''
+      primary: 'border-primary text-primary',
+      destructive: 'border-destructive text-destructive',
+      success: 'border-success text-success',
+      warning: 'border-warning text-warning',
+      info: 'border-info text-info',
+      carbon: 'border-carbon text-carbon',
+      secondary: 'border-secondary-foreground/50 text-secondary-foreground',
+      accent: 'border-accent-foreground/50 text-accent-foreground'
     },
     variant: {
       solid: '',
-      pure: 'border border-border bg-background text-foreground',
-      outline: 'border'
+      pure: 'bg-background text-foreground border-border',
+      outline: 'bg-background',
+      soft: 'border-0',
+      ghost: ''
+    },
+    size: {
+      xs: 'gap-0.5 h-5 px-2 text-[10px]',
+      sm: 'gap-0.75 h-5.5 px-2.5 text-[11px]',
+      md: 'gap-1 h-6 px-3 text-xs',
+      lg: 'gap-1.25 h-6.5 px-3.5 py-1.25 text-sm',
+      xl: 'gap-1.5 h-7 px-4 py-1.5 text-sm',
+      xxl: 'gap-2 h-8 px-5 py-2 text-lg'
     },
     shape: {
       auto: 'rounded-lg',
@@ -29,87 +39,88 @@ export const badgeVariants = tv({
     {
       color: 'primary',
       variant: 'solid',
-      class: `bg-primary border-primary text-primary-foreground`
+      class: `bg-primary text-primary-foreground`
     },
     {
       color: 'destructive',
       variant: 'solid',
-      class: `bg-destructive border-destructive text-destructive-foreground`
+      class: `bg-destructive text-destructive-foreground`
     },
     {
       color: 'success',
       variant: 'solid',
-      class: `bg-success border-success text-success-foreground`
+      class: `bg-success text-success-foreground`
     },
     {
       color: 'warning',
       variant: 'solid',
-      class: `bg-warning border-warning text-warning-foreground`
+      class: `bg-warning text-warning-foreground`
     },
     {
       color: 'info',
       variant: 'solid',
-      class: `bg-info border-info text-info-foreground`
+      class: `bg-info text-info-foreground`
     },
     {
       color: 'carbon',
       variant: 'solid',
-      class: `bg-carbon border-carbon text-carbon-foreground`
+      class: `bg-carbon text-carbon-foreground`
     },
     {
       color: 'secondary',
       variant: 'solid',
-      class: `bg-secondary border-secondary text-secondary-foreground`
+      class: `bg-secondary text-secondary-foreground`
     },
     {
       color: 'accent',
       variant: 'solid',
-      class: `bg-accent border-accent text-accent-foreground`
+      class: `bg-accent text-accent-foreground`
     },
     {
       color: 'primary',
-      variant: 'outline',
-      class: 'border-primary bg-primary/10 text-primary'
+      variant: ['soft', 'ghost'],
+      class: 'bg-primary/10'
     },
     {
       color: 'destructive',
-      variant: 'outline',
-      class: 'border-destructive bg-destructive/10 text-destructive'
+      variant: ['soft', 'ghost'],
+      class: 'bg-destructive/10'
     },
     {
       color: 'success',
-      variant: 'outline',
-      class: 'border-success bg-success/10 text-success'
+      variant: ['soft', 'ghost'],
+      class: 'bg-success/10'
     },
     {
       color: 'warning',
-      variant: 'outline',
-      class: 'border-warning bg-warning/10 text-warning'
+      variant: ['soft', 'ghost'],
+      class: 'bg-warning/10'
     },
     {
       color: 'info',
-      variant: 'outline',
-      class: 'border-info bg-info/10 text-info'
+      variant: ['soft', 'ghost'],
+      class: 'bg-info/10'
     },
     {
       color: 'carbon',
-      variant: 'outline',
-      class: 'border-carbon bg-carbon/10 text-carbon'
+      variant: ['soft', 'ghost'],
+      class: 'bg-carbon/10'
     },
     {
       color: 'secondary',
-      variant: 'outline',
-      class: 'border-secondary-foreground/20 bg-secondary-foreground/5'
+      variant: ['soft', 'ghost'],
+      class: 'bg-secondary-foreground/5'
     },
     {
       color: 'accent',
-      variant: 'outline',
-      class: 'border-accent-foreground/20 bg-accent-foreground/5'
+      variant: ['soft', 'ghost'],
+      class: 'bg-accent-foreground/5'
     }
   ],
   defaultVariants: {
     color: 'primary',
     variant: 'solid',
+    size: 'md',
     shape: 'auto'
   }
 });
@@ -117,3 +128,5 @@ export const badgeVariants = tv({
 type BadgeVariants = VariantProps<typeof badgeVariants>;
 
 export type BadgeVariant = NonNullable<BadgeVariants['variant']>;
+
+export type BadgeShape = NonNullable<BadgeVariants['shape']>;
