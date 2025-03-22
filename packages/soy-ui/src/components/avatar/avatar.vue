@@ -13,24 +13,18 @@ const props = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
 
-const forwardedImageProps = useOmitForwardProps(props, [
-  'class',
-  'size',
-  'imageClass',
-  'fallbackClass',
-  'fallbackLabel'
-]);
+const forwardedImageProps = useOmitForwardProps(props, ['class', 'size', 'ui', 'fallbackLabel']);
 
 const forwardedImage = useForwardPropsEmits(forwardedImageProps, emit);
 </script>
 
 <template>
-  <SAvatarRoot :class="props.class" :size="size">
+  <SAvatarRoot :class="props.class || ui?.root" :size="size">
     <slot>
       <slot name="image">
-        <SAvatarImage v-bind="forwardedImage" :class="imageClass" />
+        <SAvatarImage v-bind="forwardedImage" :class="ui?.image" />
       </slot>
-      <SAvatarFallback :class="fallbackClass">
+      <SAvatarFallback :class="ui?.fallback">
         <slot name="fallback">{{ fallbackLabel }}</slot>
       </SAvatarFallback>
     </slot>

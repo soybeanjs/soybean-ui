@@ -5,19 +5,18 @@ import type {
   ClassValue,
   AvatarRootProps as _AvatarRootProps
 } from '@soybean-ui/primitives';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { AvatarSlots, ThemeSize } from '@soybean-ui/variants';
 
 export type AvatarRootProps = _AvatarRootProps & {
   size?: ThemeSize;
 };
 
-export type AvatarProps = AvatarRootProps &
-  AvatarImageProps &
-  AvatarFallbackProps & {
-    imageClass?: ClassValue;
-    fallbackLabel?: string;
-    fallbackClass?: ClassValue;
-  };
+export type AvatarUi = Partial<Record<AvatarSlots, ClassValue>>;
+
+export interface AvatarProps extends AvatarRootProps, AvatarImageProps, AvatarFallbackProps {
+  ui?: AvatarUi;
+  fallbackLabel?: string;
+}
 
 export type AvatarEmits = AvatarImageEmits;
 
