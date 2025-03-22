@@ -67,7 +67,7 @@
     "@vue/shared": "3.5.13",
     "embla-carousel": "8.5.2",
     "enquirer": "2.4.1",
-    "eslint": "9.22.0",
+    "eslint": "9.23.0",
     "eslint-plugin-vue": "10.0.0",
     "grapheme-splitter": "1.0.4",
     "lint-staged": "15.5.0",
