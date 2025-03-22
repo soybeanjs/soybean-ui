@@ -8,7 +8,7 @@ defineOptions({
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const variants: AlertVariant[] = ['outline', 'pure', 'soft', 'ghost'];
+const variants: AlertVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 </script>
 
@@ -70,7 +70,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
           v-for="(size, index) in sizes"
           :key="size"
           :color="colors[index]"
-          variant="ghost"
+          variant="soft"
           :size="size"
           :title="`Size: ${size}`"
         >

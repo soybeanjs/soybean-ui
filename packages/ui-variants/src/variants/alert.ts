@@ -48,14 +48,17 @@ export const alertVariants = tv({
       }
     },
     variant: {
-      outline: {
-        root: 'bg-background'
+      solid: {
+        root: ''
       },
       pure: {
         root: 'bg-background text-foreground border-border'
       },
+      outline: {
+        root: 'bg-background'
+      },
       soft: {
-        root: 'text-foreground'
+        root: 'border-0'
       },
       ghost: {
         root: ''
@@ -110,13 +113,81 @@ export const alertVariants = tv({
         description: 'text-lg',
         close: 'text-lg'
       }
-    },
-    orientation: {
-      horizontal: {},
-      vertical: {}
     }
   },
   compoundVariants: [
+    {
+      color: 'primary',
+      variant: 'solid',
+      class: {
+        root: 'bg-primary text-primary-foreground',
+        icon: 'text-primary-foreground',
+        close: 'text-primary-foreground'
+      }
+    },
+    {
+      color: 'destructive',
+      variant: 'solid',
+      class: {
+        root: 'bg-destructive text-destructive-foreground',
+        icon: 'text-destructive-foreground',
+        close: 'text-destructive-foreground'
+      }
+    },
+    {
+      color: 'success',
+      variant: 'solid',
+      class: {
+        root: 'bg-success text-success-foreground',
+        icon: 'text-success-foreground',
+        close: 'text-success-foreground'
+      }
+    },
+    {
+      color: 'warning',
+      variant: 'solid',
+      class: {
+        root: 'bg-warning text-warning-foreground',
+        icon: 'text-warning-foreground',
+        close: 'text-warning-foreground'
+      }
+    },
+    {
+      color: 'info',
+      variant: 'solid',
+      class: {
+        root: 'bg-info text-info-foreground',
+        icon: 'text-info-foreground',
+        close: 'text-info-foreground'
+      }
+    },
+    {
+      color: 'carbon',
+      variant: 'solid',
+      class: {
+        root: 'bg-carbon text-carbon-foreground',
+        icon: 'text-carbon-foreground',
+        close: 'text-carbon-foreground'
+      }
+    },
+    {
+      color: 'secondary',
+      variant: 'solid',
+      class: {
+        root: 'bg-secondary text-secondary-foreground',
+        icon: 'text-secondary-foreground',
+        close: 'text-secondary-foreground'
+      }
+    },
+    {
+      color: 'accent',
+      variant: 'solid',
+      class: {
+        root: 'bg-accent text-accent-foreground',
+        icon: 'text-accent-foreground',
+        close: 'text-accent-foreground'
+      }
+    },
     {
       color: 'primary',
       variant: ['soft', 'ghost'],
@@ -176,9 +247,8 @@ export const alertVariants = tv({
   ],
   defaultVariants: {
     color: 'primary',
-    variant: 'outline',
-    size: 'md',
-    orientation: 'vertical'
+    variant: 'ghost',
+    size: 'md'
   }
 });
 
