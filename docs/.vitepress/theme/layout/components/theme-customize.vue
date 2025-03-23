@@ -17,7 +17,7 @@ interface ThemeCustomizeProps {
 const props = defineProps<ThemeCustomizeProps>();
 
 type ThemeCustomizeEmits = {
-  (e: 'update:theme', value: ThemeConfigColor): void;
+  (e: 'update:color', value: ThemeConfigColor): void;
   (e: 'update:radius', value: number): void;
 };
 

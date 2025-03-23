@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress';
-import { computed, ref, toRefs } from 'vue';
-import { useScroll } from '@vueuse/core';
+import { computed, toRefs } from 'vue';
+import { useScroll, useStorage } from '@vueuse/core';
 import { SButtonIcon, SConfigProvider, SPopover } from 'soy-ui';
 import type { ConfigProviderProps } from 'soy-ui';
 import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
@@ -18,8 +18,8 @@ const { arrivedState } = useScroll(globalThis.window);
 
 const { top } = toRefs(arrivedState);
 
-const color = ref<ThemeConfigColor>('default');
-const radius = ref(0.5);
+const color = useStorage<ThemeConfigColor>('color', 'default');
+const radius = useStorage('radius', 0.5);
 
 const configProviderProps = computed<ConfigProviderProps>(() => ({
   theme: {

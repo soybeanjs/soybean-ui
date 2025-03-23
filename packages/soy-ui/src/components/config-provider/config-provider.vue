@@ -56,7 +56,7 @@ watch(
 
     addThemeClass(newThemeName, oldThemeName);
   },
-  { flush: 'post' }
+  { immediate: true, flush: 'post' }
 );
 </script>
 

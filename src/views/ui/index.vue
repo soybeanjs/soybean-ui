@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import type { Component } from 'vue';
-import { useDark } from '@vueuse/core';
+import { useDark, useStorage } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SConfigProvider, SPopover, SScrollArea, STabs, SToastProvider } from 'soy-ui';
 import type { ConfigProviderProps, TabsOption } from 'soy-ui';
@@ -23,8 +23,8 @@ function toggleDark() {
   isDark.value = !isDark.value;
 }
 
-const color = ref<ThemeConfigColor>('default');
-const radius = ref(0.5);
+const color = useStorage<ThemeConfigColor>('color', 'default');
+const radius = useStorage('radius', 0.5);
 
 const configProviderProps = computed<ConfigProviderProps>(() => ({
   theme: {
