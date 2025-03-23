@@ -1,7 +1,7 @@
 {
   "name": "@soybean-ui/examples",
   "type": "module",
-  "version": "0.0.1-beta.9",
+  "version": "0.0.1",
   "private": true,
   "description": "The example of soybean-ui",
   "author": {
