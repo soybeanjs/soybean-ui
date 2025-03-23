@@ -1,41 +1,83 @@
 <script setup lang="ts">
-import { SBadge, SCard } from 'soy-ui';
-import type { BadgeShape, BadgeVariant, ThemeColor, ThemeSize } from 'soy-ui';
+import { ref } from 'vue';
+import { SBadge, SButton, SCard, SInput, SSwitch } from 'soy-ui';
+import type { BadgePosition, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoBadge'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const variants: BadgeVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-const shapes: BadgeShape[] = ['auto', 'rounded'];
+const positions: BadgePosition[] = ['top-right', 'bottom-right', 'top-left', 'bottom-left'];
+
+const text = ref('99+');
+const slotText = ref('New');
+const show = ref(true);
 </script>
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Color" split>
-      <div class="flex flex-wrap gap-12px">
-        <SBadge v-for="color in colors" :key="color" :color="color">{{ color }}</SBadge>
-      </div>
-    </SCard>
-    <SCard title="Variant" split>
-      <div class="flex-c-stretch gap-12px">
-        <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
-          <SBadge v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SBadge>
+    <SCard title="Size" split>
+      <div class="flex gap-3">
+        <div v-for="size in sizes" :key="size">
+          <div>{{ size }}</div>
+          <SBadge :size="size">
+            <SButton color="secondary">A</SButton>
+          </SBadge>
         </div>
       </div>
     </SCard>
-    <SCard title="Size" split>
-      <div class="flex flex-wrap gap-12px">
-        <SBadge v-for="(size, index) in sizes" :key="size" :color="colors[index]" :size="size">
-          {{ size }}
+    <SCard title="Color" split>
+      <div class="flex gap-3">
+        <div v-for="color in colors" :key="color">
+          <SBadge :color="color">
+            <SButton variant="dashed">{{ color }}</SButton>
+          </SBadge>
+        </div>
+      </div>
+    </SCard>
+    <SCard title="Color With Text" split>
+      <div class="flex gap-4">
+        <div v-for="color in colors" :key="color">
+          <SBadge :color="color" text="99+">
+            <SButton variant="dashed">{{ color }}</SButton>
+          </SBadge>
+        </div>
+      </div>
+    </SCard>
+    <SCard title="Positions" split>
+      <div class="flex gap-3">
+        <div v-for="position in positions" :key="position">
+          <SBadge :position="position">
+            <SButton variant="dashed" class="w-30">{{ position }}</SButton>
+          </SBadge>
+        </div>
+      </div>
+    </SCard>
+    <SCard title="ModelValue" split>
+      <div class="flex gap-3">
+        <SInput v-model="text" />
+        <SBadge :text="text">
+          <SButton variant="outline">A</SButton>
         </SBadge>
       </div>
     </SCard>
-    <SCard title="Shape" split>
-      <div class="flex flex-wrap gap-12px">
-        <SBadge v-for="shape in shapes" :key="shape" variant="ghost" :shape="shape">{{ shape }}</SBadge>
+    <SCard title="Slot" split>
+      <div class="flex gap-3">
+        <SInput v-model="slotText" />
+        <SBadge :text="slotText">
+          <SButton variant="outline">A</SButton>
+          <template #content="{ value }">{{ value }}！</template>
+        </SBadge>
+      </div>
+    </SCard>
+    <SCard title="Show" split>
+      <div class="flex gap-3">
+        <SSwitch v-model:checked="show" />
+        <SBadge :show="show">
+          <SButton variant="outline">A</SButton>
+        </SBadge>
       </div>
     </SCard>
   </div>

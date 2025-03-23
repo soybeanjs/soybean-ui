@@ -9,7 +9,6 @@ import DemoButton from './ui/button.vue';
 import DemoCard from './ui/card.vue';
 import DemoCarousel from './ui/carousel.vue';
 import DemoCheckbox from './ui/checkbox.vue';
-import DemoChip from './ui/chip.vue';
 import DemoCollapsible from './ui/collapsible.vue';
 import DemoCombobox from './ui/combobox.vue';
 import DemoCommand from './ui/command.vue';
@@ -41,6 +40,7 @@ import DemoSonner from './ui/sonner.vue';
 import DemoStepper from './ui/stepper.vue';
 import DemoSwitch from './ui/switch.vue';
 import DemoTabs from './ui/tabs.vue';
+import DemoTag from './ui/tag.vue';
 import DemoTagsInput from './ui/tags-input.vue';
 import DemoTextarea from './ui/textarea.vue';
 import DemoToast from './ui/toast.vue';
@@ -60,7 +60,6 @@ export {
   DemoCard,
   DemoCarousel,
   DemoCheckbox,
-  DemoChip,
   DemoCollapsible,
   DemoCombobox,
   DemoCommand,
@@ -92,6 +91,7 @@ export {
   DemoStepper,
   DemoSwitch,
   DemoTabs,
+  DemoTag,
   DemoTagsInput,
   DemoTextarea,
   DemoToast,

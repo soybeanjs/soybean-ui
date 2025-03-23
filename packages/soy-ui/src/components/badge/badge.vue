@@ -1,20 +1,25 @@
-<script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
-import { badgeVariants, cn } from '@soybean-ui/variants';
+<script lang="ts" setup>
+import { useForwardProps } from '@soybean-ui/primitives';
+import SBadgeRoot from './badge-root.vue';
+import SBadgeContent from './badge-content.vue';
 import type { BadgeProps } from './types';
 
 defineOptions({
   name: 'SBadge'
 });
 
-const { class: cls, color, variant, size, shape } = defineProps<BadgeProps>();
+const { class: cls, ui, text, show = true, ...delegatedContentProps } = defineProps<BadgeProps>();
 
-const mergedCls = computed(() => cn(badgeVariants({ color, variant, size, shape }), cls));
+const forwardedContentProps = useForwardProps(delegatedContentProps);
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <SBadgeRoot :class="cls || ui?.root">
     <slot />
-  </Primitive>
+    <SBadgeContent v-if="show" v-bind="forwardedContentProps" :class="ui?.content">
+      <slot name="content" :value="text">
+        {{ text }}
+      </slot>
+    </SBadgeContent>
+  </SBadgeRoot>
 </template>

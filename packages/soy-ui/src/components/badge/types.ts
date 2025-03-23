@@ -1,11 +1,20 @@
-import type { ClassValueProp } from '@soybean-ui/primitives';
-import type { BadgeShape, BadgeVariant, ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { BadgePosition, BadgeSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 
-export interface BadgeProps extends ClassValueProp {
+export interface BadgeRootProps extends ClassValueProp {}
+
+export interface BadgeContentProps extends ClassValueProp {
   color?: ThemeColor;
-  variant?: BadgeVariant;
   size?: ThemeSize;
-  shape?: BadgeShape;
+  position?: BadgePosition;
 }
 
-export type { BadgeVariant, BadgeShape };
+export type BadgeUi = Partial<Record<BadgeSlots, ClassValue>>;
+
+export interface BadgeProps extends BadgeContentProps {
+  ui?: BadgeUi;
+  text?: string;
+  show?: boolean;
+}
+
+export { BadgePosition };

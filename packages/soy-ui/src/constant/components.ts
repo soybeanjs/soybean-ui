@@ -25,7 +25,7 @@ export const components = {
   ],
   aspectRatio: ['SAspectRatio'],
   avatar: ['SAvatarFallback', 'SAvatarImage', 'SAvatarRoot', 'SAvatar'],
-  badge: ['SBadge'],
+  badge: ['SBadgeRoot', 'SBadgeContent', 'SBadge'],
   breadcrumb: [
     'SBreadcrumbRoot',
     'SBreadcrumbList',
@@ -61,7 +61,6 @@ export const components = {
     'SCheckbox',
     'SCheckboxGroup'
   ],
-  chip: ['SChipRoot', 'SChipContent', 'SChip'],
   collapsible: ['SCollapsibleContent', 'SCollapsibleRoot', 'SCollapsibleTrigger', 'SCollapsible'],
   combobox: [
     'SComboboxRoot',
@@ -349,6 +348,7 @@ export const components = {
   ],
   switch: ['SSwitchRoot', 'SSwitchThumb', 'SSwitch'],
   tabs: ['STabsRoot', 'STabsList', 'STabsTrigger', 'STabsIndicatorRoot', 'STabsIndicator', 'STabsContent', 'STabs'],
+  tag: ['STag'],
   tagsInput: [
     'STagsInputRoot',
     'STagsInputInput',
