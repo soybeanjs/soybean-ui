@@ -5,10 +5,10 @@ export const radioVariants = tv({
   slots: {
     root: 'flex items-center gap-2',
     control: [
-      'peer flex justify-center items-center shrink-0 rounded-full border shadow',
+      'peer relative shrink-0 rounded-full border shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
-    indicator: 'size-1/2 rounded-full',
+    indicator: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 rounded-full',
     group: 'flex gap-2',
     label: ''
   },
