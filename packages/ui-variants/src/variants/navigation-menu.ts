@@ -10,8 +10,8 @@ export const navigationMenuVariants = tv({
       `h-[var(--soybean-navigation-menu-viewport-height)] md:w-[var(--soybean-navigation-menu-viewport-width)]`,
       `data-[state=open]:(animate-in zoom-in-90) data-[state=closed]:(animate-out zoom-out-95)`
     ],
-    list: `group flex flex-1 list-none items-center justify-center space-x-1`,
-    item: ``,
+    list: `group flex flex-1 list-none items-center justify-center space-x-1 my-0`,
+    item: `list-none`,
     trigger: [
       `group inline-flex h-10 w-max items-center justify-center gap-1.5 rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors-200`,
       `hover:(bg-accent text-accent-foreground)`,
@@ -37,8 +37,8 @@ export const navigationMenuVariants = tv({
       `group relative w-full h-10 flex items-center rounded-md px-4 py-2 gap-1.5 font-medium text-sm outline-none cursor-pointer`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`
     ],
-    childList: `grid grid-cols-[auto_auto] gap-2 p-2`,
-    childListItem: ``,
+    childList: `grid grid-cols-[auto_auto] gap-2 p-2 list-none my-0`,
+    childListItem: `list-none`,
     childLink: [
       `block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors-200 space-y-1 cursor-pointer`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`

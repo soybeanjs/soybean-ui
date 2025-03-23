@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuChildListProps } from './types';
 
@@ -16,7 +15,7 @@ const mergedCls = computed(() => cn(childList(), cls));
 </script>
 
 <template>
-  <Primitive :class="mergedCls" as="ul">
+  <ul :class="mergedCls">
     <slot />
-  </Primitive>
+  </ul>
 </template>
