@@ -9,7 +9,8 @@ export const radioVariants = tv({
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-1/2 rounded-full',
-    group: 'flex gap-2'
+    group: 'flex gap-2',
+    label: ''
   },
   variants: {
     color: {

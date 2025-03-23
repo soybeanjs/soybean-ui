@@ -47,13 +47,13 @@ const forwardedContentProps = useForwardProps(delegatedContentProps);
     <HoverCardPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SHoverCardContent
         v-bind="forwardedContentProps"
-        :class="contentClass"
+        :class="ui?.content"
         :force-mount="forceMountContent"
         :avoid-collisions="avoidCollisions"
         :prioritize-position="prioritizePosition"
       >
         <slot />
-        <SHoverCardArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
+        <SHoverCardArrow v-if="showArrow" :class="ui?.arrow" :width="arrowWidth" :height="arrowHeight" />
       </SHoverCardContent>
     </HoverCardPortal>
   </HoverCardRoot>

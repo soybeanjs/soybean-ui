@@ -1,6 +1,6 @@
 import type { Component } from 'vue';
 import type { AnchorTarget, ClassValue, ClassValueProp } from '@soybean-ui/primitives';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { BreadcrumbSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface BreadcrumbRootProps extends ClassValueProp {
   size?: ThemeSize;
@@ -28,14 +28,11 @@ export interface BreadcrumbItem extends Omit<BreadcrumbLinkProps, 'class'> {
   icon?: Component;
 }
 
+export type BreadcrumbUi = Partial<Record<BreadcrumbSlots, ClassValue>>;
+
 export type BreadcrumbProps<T extends BreadcrumbItem> = BreadcrumbRootProps & {
+  ui?: BreadcrumbUi;
   items: T[];
-  listClass?: ClassValue;
-  itemClass?: ClassValue;
-  pageClass?: ClassValue;
-  linkClass?: ClassValue;
-  ellipsisClass?: ClassValue;
-  separatorClass?: ClassValue;
   /**
    * the range of items to show ellipsis
    *

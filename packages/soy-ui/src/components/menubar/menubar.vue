@@ -18,10 +18,10 @@ const props = defineProps<MenubarProps<T>>();
 
 const emit = defineEmits<MenubarEmits<T>>();
 
-const propKeys: (keyof MenubarProps<T>)[] = ['class', 'modelValue', 'defaultValue', 'dir', 'loop'];
+const propKeys: (keyof MenubarProps<T>)[] = ['modelValue', 'defaultValue', 'dir', 'loop'];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['items']));
+const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['class', 'items']));
 
 const forwardedMenuEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
 
@@ -29,7 +29,11 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
 </script>
 
 <template>
-  <SMenubarRoot v-bind="forwardedRootProps" @update:model-value="emit('update:modelValue', $event)">
+  <SMenubarRoot
+    v-bind="forwardedRootProps"
+    :class="props.class || ui?.root"
+    @update:model-value="emit('update:modelValue', $event)"
+  >
     <SMenubarMenu v-for="item in items" v-bind="forwardedMenu" :key="String(item.value)" :item="item" />
   </SMenubarRoot>
 </template>

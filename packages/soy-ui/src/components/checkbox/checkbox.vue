@@ -12,16 +12,7 @@ defineOptions({
   name: 'SCheckbox'
 });
 
-const {
-  class: rootCls,
-  id,
-  controlClass,
-  indicatorClass,
-  forceMountIndicator,
-  label,
-  labelClass,
-  ...delegatedProps
-} = defineProps<CheckboxProps>();
+const { class: rootCls, id, ui, forceMountIndicator, label, ...delegatedProps } = defineProps<CheckboxProps>();
 
 const emit = defineEmits<CheckboxEmits>();
 
@@ -35,16 +26,16 @@ const isIndeterminate = computed(() => delegatedProps.modelValue === 'indetermin
 </script>
 
 <template>
-  <SCheckboxRoot :class="rootCls">
-    <SCheckboxControl v-bind="forwarded" :id="checkboxId" :class="controlClass">
+  <SCheckboxRoot :class="rootCls || ui?.root">
+    <SCheckboxControl v-bind="forwarded" :id="checkboxId" :class="ui?.control">
       <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
-        <SCheckboxIndicator :class="indicatorClass" :force-mount="forceMountIndicator">
+        <SCheckboxIndicator :class="ui?.indicator" :force-mount="forceMountIndicator">
           <Minus v-if="isIndeterminate" class="size-full" />
           <Check v-else class="size-full" />
         </SCheckboxIndicator>
       </Transition>
     </SCheckboxControl>
-    <SCheckboxLabel :class="labelClass" :for="checkboxId" :size="size">
+    <SCheckboxLabel :class="ui?.label" :for="checkboxId" :size="size">
       <slot :id="checkboxId">{{ label }}</slot>
     </SCheckboxLabel>
   </SCheckboxRoot>

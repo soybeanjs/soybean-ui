@@ -11,15 +11,7 @@ defineOptions({
   name: 'SPinInput'
 });
 
-const {
-  size,
-  inputCount = 5,
-  separate,
-  inputRootClass,
-  itemClass,
-  separatorClass,
-  ...delegatedRootProps
-} = defineProps<PinInputProps>();
+const { class: cls, size, ui, inputCount = 5, separate, ...delegatedRootProps } = defineProps<PinInputProps>();
 
 const emit = defineEmits<PinInputEmits>();
 
@@ -36,13 +28,13 @@ const hasSeparator = computed(() => separate || Boolean(slots.separator));
 </script>
 
 <template>
-  <PinInputRoot v-bind="forwarded">
+  <PinInputRoot v-bind="forwarded" :class="cls || ui?.root">
     <slot>
-      <PinInputInputRoot :separate="hasSeparator" :class="inputRootClass">
+      <PinInputInputRoot :separate="hasSeparator" :class="ui?.inputRoot">
         <template v-for="(_item, index) in inputCount" :key="index">
-          <PinInputInput :class="itemClass" :size="size" :separate="hasSeparator" :index="index" />
+          <PinInputInput :class="ui?.input" :size="size" :separate="hasSeparator" :index="index" />
           <template v-if="index < inputCount - 1">
-            <PinInputSeparator v-if="hasSeparator" :class="separatorClass">
+            <PinInputSeparator v-if="hasSeparator" :class="ui?.separator">
               <slot name="separator" :index="index" />
             </PinInputSeparator>
           </template>

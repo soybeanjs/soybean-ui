@@ -13,6 +13,7 @@ import type {
   NavigationMenuLinkProps as _NavigationMenuLinkProps,
   NavigationMenuTriggerProps as _NavigationMenuTriggerProps
 } from '@soybean-ui/primitives';
+import type { NavigationMenuSlots } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
 
 export interface NavigationMenuTriggerProps extends _NavigationMenuTriggerProps {
@@ -45,22 +46,14 @@ export type NavigationMenuItemOption<T extends NavigationMenuItemBaseOption = Na
   items?: T[];
 };
 
+export type NavigationMenuUi = Partial<Record<NavigationMenuSlots, ClassValue>>;
+
 export interface NavigationMenuProps<T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption>
   extends NavigationMenuRootProps {
+  ui?: NavigationMenuUi;
   items: NavigationMenuItemOption<T>[];
   showArrow?: boolean;
-  listClass?: ClassValue;
-  itemClass?: ClassValue;
-  linkClass?: ClassValue;
-  triggerClass?: ClassValue;
-  triggerIconClass?: ClassValue;
-  contentClass?: ClassValue;
   forceMountContent?: boolean;
-  childListClass?: ClassValue;
-  childListItemClass?: ClassValue;
-  childLinkClass?: ClassValue;
-  childLinkLabelClass?: ClassValue;
-  childLinkDescriptionClass?: ClassValue;
 }
 
 export type NavigationMenuLinkEmits<T extends NavigationMenuItemOption = NavigationMenuItemOption> = {

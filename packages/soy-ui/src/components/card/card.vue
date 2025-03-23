@@ -12,17 +12,7 @@ defineOptions({
   name: 'SCard'
 });
 
-const {
-  class: rootCls,
-  size,
-  split,
-  title,
-  headerClass,
-  titleClass,
-  titleRootClass,
-  bodyClass,
-  footerClass
-} = defineProps<CardProps>();
+const { class: cls, size, split, title, ui } = defineProps<CardProps>();
 
 type Slots = {
   default: () => any;
@@ -45,13 +35,13 @@ const showFooter = computed(() => Boolean(slots.footer));
 </script>
 
 <template>
-  <SCardRoot :class="rootCls" :size="size" :split="split">
-    <SCardHeader v-if="showHeader" :class="headerClass" :size="size">
+  <SCardRoot :class="cls || ui?.root" :size="size" :split="split">
+    <SCardHeader v-if="showHeader" :class="ui?.header" :size="size">
       <slot name="header">
         <slot name="title-root">
-          <SCardTitleRoot :class="titleRootClass">
+          <SCardTitleRoot :class="ui?.titleRoot">
             <slot name="title-leading" />
-            <SCardTitle :class="titleClass" :size="size">
+            <SCardTitle :class="ui?.title" :size="size">
               <slot name="title">{{ title }}</slot>
             </SCardTitle>
             <slot name="title-trailing" />
@@ -60,10 +50,10 @@ const showFooter = computed(() => Boolean(slots.footer));
         <slot name="extra" />
       </slot>
     </SCardHeader>
-    <SCardBody :class="bodyClass" :size="size">
+    <SCardBody :class="ui?.body" :size="size">
       <slot />
     </SCardBody>
-    <SCardFooter v-if="showFooter" :class="footerClass" :size="size">
+    <SCardFooter v-if="showFooter" :class="ui?.footer" :size="size">
       <slot name="footer" />
     </SCardFooter>
   </SCardRoot>

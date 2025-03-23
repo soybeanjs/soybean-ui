@@ -8,7 +8,7 @@ import type {
   ClassValueProp,
   CheckboxRootProps as _CheckboxControlProps
 } from '@soybean-ui/primitives';
-import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { CheckboxSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface CheckboxRootProps extends ClassValueProp {}
 
@@ -17,11 +17,11 @@ export interface CheckboxControlProps extends _CheckboxControlProps {
   size?: ThemeSize;
 }
 
+export type CheckboxUi = Partial<Record<CheckboxSlots, ClassValue>>;
+
 export type CheckboxProps = CheckboxControlProps & {
-  controlClass?: ClassValue;
-  indicatorClass?: ClassValue;
+  ui?: CheckboxUi;
   forceMountIndicator?: boolean;
-  labelClass?: ClassValue;
   label?: string;
 };
 

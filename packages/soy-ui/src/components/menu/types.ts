@@ -23,7 +23,7 @@ import type {
   MenuRadioItemProps as _MenuRadioItemProps,
   MenuSubTriggerProps as _MenuSubTriggerProps
 } from '@soybean-ui/primitives';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { MenuSlots, ThemeSize } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
 import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
 
@@ -53,7 +53,7 @@ export interface MenuItemIndicatorProps extends _MenuItemIndicatorProps {
 // SubTrigger
 export interface MenuSubTriggerProps extends _MenuSubTriggerProps {
   size?: ThemeSize;
-  triggerIconClass?: ClassValue;
+  iconClass?: ClassValue;
 }
 
 // MenuShortcut
@@ -94,26 +94,22 @@ export interface MenuOptionData<T extends AcceptableValue = AcceptableValue>
   children?: MenuOptionData<T>[];
 }
 
+export type MenuUi = Partial<Record<MenuSlots, ClassValue>>;
+
 export interface MenuCommonProps {
   size?: ThemeSize;
+  ui?: MenuUi;
   separator?: boolean;
-  groupLabelClass?: ClassValue;
-  itemClass?: ClassValue;
-  itemIconClass?: ClassValue;
-  itemLinkClass?: ClassValue;
-  itemLinkIconClass?: ClassValue;
-  separatorClass?: ClassValue;
-  shortcutClass?: ClassValue;
 }
 
 export interface MenuPortalContentProps
   extends Pick<MenuPortalProps, 'to' | 'defer'>,
-    Omit<MenuContentProps, 'class' | 'forceMount'> {
+    Omit<MenuContentProps, 'forceMount'> {
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
-  contentClass?: ClassValue;
   forceMountContent?: boolean;
   showArrow?: boolean;
+  arrowClass?: ClassValue;
 }
 export type MenuPortalContentEmits = MenuContentEmits;
 
@@ -133,12 +129,9 @@ export type MenuSubContentEmits<T extends AcceptableValue = AcceptableValue> = {
 export interface MenuOptionProps<T extends AcceptableValue = AcceptableValue>
   extends Pick<MenuPortalContentProps, 'to' | 'defer' | 'disabledPortal' | 'forceMountPortal'>,
     MenuCommonProps {
+  ui?: MenuUi;
   item: MenuOptionData<T>;
-  groupClass?: ClassValue;
-  subContentClass?: ClassValue;
   subContentProps?: MenuSubContentProps;
-  subTriggerClass?: ClassValue;
-  subTriggerIconClass?: ClassValue;
 }
 
 export type MenuOptionEmits<T extends AcceptableValue = AcceptableValue> = MenuSubEmits<T> &
@@ -147,7 +140,7 @@ export type MenuOptionEmits<T extends AcceptableValue = AcceptableValue> = MenuS
   };
 
 export interface MenuProps<T extends AcceptableValue = AcceptableValue>
-  extends MenuPortalContentProps,
+  extends Omit<MenuPortalContentProps, 'arrowClass'>,
     Omit<MenuOptionProps, 'item'> {
   items?: MenuOptionData<T>[];
 }
@@ -163,16 +156,13 @@ export interface MenuCheckboxGroupProps<T extends AcceptableValue = AcceptableVa
   items?: MenuOptionData<T>[];
   modelValue?: T[] | null;
   defaultValue?: T[] | null;
-  itemIndicatorClass?: ClassValue;
 }
 export type MenuCheckboxGroupEmits<T extends AcceptableValue = AcceptableValue> = {
   'update:modelValue': [payload: T[], item: MenuOptionData<T>, action: CheckAction];
 };
 export interface MenuCheckboxProps<T extends AcceptableValue = AcceptableValue>
   extends MenuPortalContentProps,
-    Omit<MenuCheckboxGroupProps<T>, 'class'> {
-  groupClass?: ClassValue;
-}
+    Omit<MenuCheckboxGroupProps<T>, 'class'> {}
 export type MenuCheckboxEmits<T extends AcceptableValue = AcceptableValue> = MenuPortalContentEmits &
   MenuCheckboxGroupEmits<T>;
 
@@ -186,16 +176,13 @@ export interface MenuRadioGroupProps<T extends AcceptableValue = AcceptableValue
   items?: MenuOptionData<T>[];
   modelValue?: T | null;
   defaultValue?: T | null;
-  itemIndicatorClass?: ClassValue;
 }
 export type MenuRadioGroupEmits<T extends AcceptableValue = AcceptableValue> = {
   'update:modelValue': [payload: T];
 };
 export interface MenuRadioProps<T extends AcceptableValue = AcceptableValue>
   extends MenuPortalContentProps,
-    Omit<MenuRadioGroupProps<T>, 'class'> {
-  groupClass?: ClassValue;
-}
+    Omit<MenuRadioGroupProps<T>, 'class'> {}
 export type MenuRadioEmits<T extends AcceptableValue = AcceptableValue> = MenuPortalContentEmits &
   MenuRadioGroupEmits<T>;
 

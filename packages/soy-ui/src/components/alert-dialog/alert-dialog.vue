@@ -29,12 +29,7 @@ const emit = defineEmits<AlertDialogEmits>();
 
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen']);
 
-const forwardedContentProps = usePickForwardProps(props, [
-  'class',
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents'
-]);
+const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
@@ -74,19 +69,19 @@ const iconProps = computed(() => {
       <slot name="trigger" />
     </AlertDialogTrigger>
     <AlertDialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SAlertDialogOverlay :class="overlayClass" :force-mount="forceMountOverlay" />
-      <SAlertDialogContent v-bind="forwardedContent">
-        <SAlertDialogHeader :class="headerClass">
-          <SAlertDialogTitle :class="titleClass">
+      <SAlertDialogOverlay :class="ui?.overlay" :force-mount="forceMountOverlay" />
+      <SAlertDialogContent v-bind="forwardedContent" :class="props.class || ui?.content">
+        <SAlertDialogHeader :class="ui?.header">
+          <SAlertDialogTitle :class="ui?.title">
             <component :is="iconProps.icon" v-if="iconProps" :class="iconProps.class" />
             <slot name="title">{{ title }}</slot>
           </SAlertDialogTitle>
-          <SAlertDialogDescription :class="descriptionClass">
+          <SAlertDialogDescription :class="ui?.description">
             <slot name="description">{{ description }}</slot>
           </SAlertDialogDescription>
         </SAlertDialogHeader>
         <slot />
-        <SAlertDialogFooter :class="footerClass">
+        <SAlertDialogFooter :class="ui?.footer">
           <slot name="footer" />
         </SAlertDialogFooter>
       </SAlertDialogContent>

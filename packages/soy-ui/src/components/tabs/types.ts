@@ -8,7 +8,7 @@ import type {
   TabsListProps as _TabsListProps,
   TabsTriggerProps as _TabsTriggerProps
 } from '@soybean-ui/primitives';
-import type { ThemeOrientation } from '../../types';
+import type { TabsSlots, ThemeOrientation } from '@soybean-ui/variants';
 
 export interface TabsListProps extends _TabsListProps {
   orientation?: ThemeOrientation;
@@ -36,16 +36,14 @@ export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTri
   label: string;
 };
 
+export type TabsUi = Partial<Record<TabsSlots, ClassValue>>;
+
 export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
   TabsListProps & {
+    ui?: TabsUi;
     items: T[];
-    listClass?: ClassValue;
-    triggerClass?: ClassValue;
     enableIndicator?: boolean;
-    indicatorRootClass?: ClassValue;
-    indicatorClass?: ClassValue;
     forceMountContent?: boolean;
-    contentClass?: ClassValue;
   };
 
 export type TabsEmits<T extends StringOrNumber = StringOrNumber> = TabsRootEmits<T>;

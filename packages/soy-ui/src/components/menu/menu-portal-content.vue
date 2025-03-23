@@ -8,7 +8,7 @@ defineOptions({
   name: 'SMenuPortalContent'
 });
 
-const { to, defer, disabledPortal, forceMountPortal, contentClass, forceMountContent, showArrow, ...delegatedProps } =
+const { to, defer, disabledPortal, forceMountPortal, forceMountContent, showArrow, ...delegatedProps } =
   defineProps<MenuPortalContentProps>();
 
 const emit = defineEmits<MenuPortalContentEmits>();
@@ -18,7 +18,7 @@ const forwardedContentProps = useForwardPropsEmits(delegatedProps, emit);
 
 <template>
   <MenuPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
-    <SMenuContent v-bind="forwardedContentProps" :class="contentClass" :force-mount="forceMountContent">
+    <SMenuContent v-bind="forwardedContentProps" :force-mount="forceMountContent">
       <slot />
       <SMenuArrow v-if="showArrow" />
     </SMenuContent>

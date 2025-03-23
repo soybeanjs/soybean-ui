@@ -6,6 +6,7 @@ import type {
   SliderThumbProps as _SliderThumbProps,
   SliderTrackProps as _SliderTrackProps
 } from '@soybean-ui/primitives';
+import type { SliderSlots } from '@soybean-ui/variants';
 import type { ThemeColor } from '../../types';
 
 export interface SliderTrackProps extends _SliderTrackProps {
@@ -20,11 +21,11 @@ export interface SliderThumbProps extends _SliderThumbProps {
   color?: ThemeColor;
 }
 
+export type SliderUi = Partial<Record<SliderSlots, ClassValue>>;
+
 export interface SliderProps extends SliderRootProps {
+  ui?: SliderUi;
   color?: ThemeColor;
-  trackClass?: ClassValue;
-  rangeClass?: ClassValue;
-  thumbClass?: ClassValue;
 }
 
 export type SliderEmits = SliderRootEmits;

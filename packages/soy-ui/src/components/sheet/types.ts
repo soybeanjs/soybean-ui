@@ -7,27 +7,24 @@ import type {
   DialogRootEmits as SheetRootEmits,
   DialogRootProps as SheetRootProps
 } from '@soybean-ui/primitives';
-import type { SheetSide } from '@soybean-ui/variants';
+import type { SheetSide, DialogSlots as SheetSlots } from '@soybean-ui/variants';
 
 export interface SheetContentProps extends DialogContentProps {
   side?: SheetSide;
 }
 
+export type SheetUi = Partial<Record<SheetSlots, ClassValue>>;
+
 export type SheetProps = SheetRootProps &
   SheetContentProps &
   Pick<SheetPortalProps, 'to' | 'defer'> & {
+    ui?: SheetUi;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    overlayClass?: ClassValue;
     forceMountOverlay?: boolean;
-    headerClass?: ClassValue;
     title?: string;
-    titleClass?: ClassValue;
     description?: string;
-    descriptionClass?: ClassValue;
     showClose?: boolean;
-    closeClass?: ClassValue;
-    footerClass?: ClassValue;
   };
 
 export type SheetEmits = SheetRootEmits & SheetContentEmits;

@@ -1,5 +1,7 @@
 import type { Component, ComputedRef, Ref } from 'vue';
 import type {
+  ClassValue,
+  ClassValueProp,
   StringOrVNode,
   ToastCloseProps,
   ToastDescriptionProps,
@@ -10,10 +12,13 @@ import type {
   ToastProviderProps as _ToastProviderProps,
   ToastRootProps as _ToastRootProps
 } from '@soybean-ui/primitives';
-import type { ThemeColor } from '../../types';
+import type { ThemeColor, ToastSlots } from '@soybean-ui/variants';
 import type { ButtonProps } from '../button';
 
+export type ToastUi = Partial<Record<ToastSlots, ClassValue>>;
+
 export interface ToastProviderProps extends _ToastProviderProps {
+  ui?: ToastUi;
   /**
    * The maximum number of toasts that can be displayed at the same time.
    *
@@ -37,7 +42,11 @@ export interface ToastRootProps extends _ToastRootProps {
 
 export interface ToastActionProps extends _ToastActionProps, ButtonProps {}
 
-export interface ToastState extends ToastRootProps {
+export interface ToastProps extends ClassValueProp {
+  ui?: ToastUi;
+}
+
+export interface ToastState extends Omit<ToastRootProps, 'class'> {
   id: string;
   title?: string;
   description?: StringOrVNode;

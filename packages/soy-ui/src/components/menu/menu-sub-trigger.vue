@@ -9,15 +9,16 @@ defineOptions({
   name: 'SMenuSubTrigger'
 });
 
-const { class: cls, size, triggerIconClass, ...delegatedProps } = defineProps<MenuSubTriggerProps>();
+const { class: cls, size, iconClass, ...delegatedProps } = defineProps<MenuSubTriggerProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
   const { subTrigger, subTriggerIcon } = menuVariants({ size });
+
   return {
     subTrigger: cn(subTrigger(), cls),
-    subTriggerIcon: cn(subTriggerIcon(), triggerIconClass)
+    subTriggerIcon: cn(subTriggerIcon(), iconClass)
   };
 });
 </script>

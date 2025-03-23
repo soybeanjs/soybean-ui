@@ -6,7 +6,7 @@ import type {
   RadioGroupRootProps,
   RadioGroupItemProps as _RadioControlProps
 } from '@soybean-ui/primitives';
-import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { RadioSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface RadioIndicatorProps extends RadioGroupIndicatorProps {
   color?: ThemeColor;
@@ -21,11 +21,11 @@ export interface RadioRootProps extends ClassValueProp {}
 
 export interface RadioLabelProps extends LabelProps {}
 
+export type RadioUi = Partial<Record<RadioSlots, ClassValue>>;
+
 export interface RadioProps extends RadioControlProps {
-  controlClass?: ClassValue;
-  indicatorClass?: ClassValue;
+  ui?: RadioUi;
   forceMountIndicator?: boolean;
-  labelClass?: ClassValue;
   label?: string;
   color?: ThemeColor;
 }
@@ -36,6 +36,7 @@ export interface RadioGroupItemProps extends RadioProps {
 }
 
 export interface RadioGroupProps extends RadioGroupRootProps {
+  ui?: RadioUi;
   items?: RadioGroupItemProps[];
   color?: ThemeColor;
   size?: ThemeSize;

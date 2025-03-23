@@ -9,7 +9,7 @@ defineOptions({
 <template>
   <div class="flex-c gap-4">
     <SCard title="Default" split>
-      <SHoverCard content-class="w-64">
+      <SHoverCard :ui="{ content: 'w-64' }">
         <template #trigger>
           <SButton variant="link">@soybeanjs</SButton>
         </template>
@@ -25,7 +25,7 @@ defineOptions({
       </SHoverCard>
     </SCard>
     <SCard title="With Arrow" split>
-      <SHoverCard content-class="w-64" show-arrow>
+      <SHoverCard :ui="{ content: 'w-64' }" show-arrow>
         <template #trigger>
           <SButton variant="link">@soybeanjs</SButton>
         </template>

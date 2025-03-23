@@ -1,5 +1,5 @@
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
-import type { KeyboardKeyVariant, ThemeSize } from '@soybean-ui/variants';
+import type { KeyboardKeySlots, KeyboardKeyVariant, ThemeSize } from '@soybean-ui/variants';
 
 export type BuiltinKeyboardKey =
   | 'meta'
@@ -39,12 +39,13 @@ export interface KeyboardKeyProps<T extends KeyboardKeyValue | KeyboardKeyValue[
   value?: T;
 }
 
+export type KeyboardKeyUi = Partial<Record<KeyboardKeySlots, ClassValue>>;
+
 export interface KeyboardKeyGroupProps<T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue>
   extends Omit<KeyboardKeyProps, 'value'> {
+  ui?: KeyboardKeyUi;
   values?: T[];
-  itemClass?: ClassValue;
   separator?: string;
-  separatorClass?: ClassValue;
 }
 
 export type { KeyboardKeyVariant };

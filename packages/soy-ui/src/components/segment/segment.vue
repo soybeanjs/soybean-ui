@@ -11,16 +11,7 @@ defineOptions({
   name: 'SSegment'
 });
 
-const {
-  loop,
-  items,
-  triggerRootClass,
-  triggerClass,
-  indicatorRootClass,
-  indicatorClass,
-  ...delegatedRootProps
-  //
-} = defineProps<SegmentProps<T>>();
+const { class: cls, ui, loop, items, ...delegatedRootProps } = defineProps<SegmentProps<T>>();
 
 const emit = defineEmits<SegmentEmits<T['value']>>();
 
@@ -28,20 +19,20 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
-  <SSegmentRoot v-bind="forwarded">
-    <SSegmentTriggerRoot :class="triggerRootClass" :loop="loop">
+  <SSegmentRoot v-bind="forwarded" :class="cls || ui?.root">
+    <SSegmentTriggerRoot :class="ui?.triggerRoot" :loop="loop">
       <SSegmentTrigger
         v-for="item in items"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled"
-        :class="triggerClass"
+        :class="ui?.trigger"
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </SSegmentTrigger>
-      <SSegmentIndicatorRoot :class="indicatorRootClass" :orientation="orientation">
+      <SSegmentIndicatorRoot :class="ui?.indicatorRoot" :orientation="orientation">
         <slot name="indicator">
-          <SSegmentIndicator :class="indicatorClass" :orientation="orientation" />
+          <SSegmentIndicator :class="ui?.indicator" :orientation="orientation" />
         </slot>
       </SSegmentIndicatorRoot>
     </SSegmentTriggerRoot>

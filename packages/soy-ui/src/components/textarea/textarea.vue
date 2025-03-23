@@ -10,14 +10,7 @@ defineOptions({
   name: 'STextarea'
 });
 
-const {
-  class: rootCls,
-  contentClass,
-  showCount,
-  countClass,
-  countGraphemes,
-  ...delegatedContentProps
-} = defineProps<TextareaProps>();
+const { class: cls, ui, showCount, countGraphemes, ...delegatedContentProps } = defineProps<TextareaProps>();
 
 const emit = defineEmits<TextareaContentEmits>();
 
@@ -29,12 +22,12 @@ const value = computed(() => delegatedContentProps.modelValue || delegatedConten
 </script>
 
 <template>
-  <TextareaRoot :class="rootCls">
-    <STextareaContent v-bind="forwardedContent" :ref="forwardRef" :class="contentClass" />
+  <TextareaRoot :class="cls || ui?.root">
+    <STextareaContent v-bind="forwardedContent" :ref="forwardRef" :class="ui?.content" />
     <STextareaCount
       v-if="showCount"
       v-slot="{ count }"
-      :class="countClass"
+      :class="ui?.count"
       :size="size"
       :value="value"
       :maxlength="maxlength"

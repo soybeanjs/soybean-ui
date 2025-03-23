@@ -3,6 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const segmentVariants = tv({
   slots: {
+    root: '',
     triggerRoot: 'relative inline-flex justify-center items-center p-1 rounded-md bg-muted text-muted-foreground',
     trigger: [
       `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all`,

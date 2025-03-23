@@ -13,18 +13,7 @@ defineOptions({
   name: 'SBreadcrumb'
 });
 
-const {
-  class: cls,
-  size,
-  items,
-  listClass,
-  itemClass,
-  pageClass,
-  linkClass,
-  ellipsisClass,
-  separatorClass,
-  ellipsis
-} = defineProps<BreadcrumbProps<T>>();
+const { class: cls, size, items, ui, ellipsis } = defineProps<BreadcrumbProps<T>>();
 
 const emit = defineEmits<BreadcrumbEmits<T>>();
 
@@ -77,40 +66,40 @@ function handleItemClick(item: T) {
 </script>
 
 <template>
-  <SBreadcrumbRoot :class="cls" :size="size">
-    <SBreadcrumbList :class="listClass">
+  <SBreadcrumbRoot :class="cls || ui?.root" :size="size">
+    <SBreadcrumbList :class="ui?.list">
       <template v-for="(item, index) in itemsFilterEllipsis" :key="item.value">
         <template v-if="startEllipsisIndex && index === startEllipsisIndex">
           <slot name="ellipsis" :ellipsis-items="ellipsisItems">
-            <SBreadcrumbEllipsis :class="ellipsisClass">
+            <SBreadcrumbEllipsis :class="ui?.ellipsis">
               <slot name="ellipsis-icon" />
             </SBreadcrumbEllipsis>
           </slot>
-          <SBreadcrumbSeparator :class="separatorClass">
+          <SBreadcrumbSeparator :class="ui?.separator">
             <slot name="separator" />
           </SBreadcrumbSeparator>
         </template>
-        <SBreadcrumbItem :class="itemClass" @click="handleItemClick(item)">
+        <SBreadcrumbItem :class="ui?.item" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item">
             <component :is="item.icon" v-if="item.icon" />
           </slot>
           <slot :item="item">
             <SBreadcrumbLink
               v-if="item.href"
-              :class="linkClass"
+              :class="ui?.link"
               :href="item.href"
               :target="item.target"
               :disabled="item.disabled"
             >
               <slot name="item-link" :item="item">{{ item.label }}</slot>
             </SBreadcrumbLink>
-            <SBreadcrumbPage v-else :class="pageClass">
+            <SBreadcrumbPage v-else :class="ui?.page">
               <slot name="item-label" :item="item">{{ item.label }}</slot>
             </SBreadcrumbPage>
           </slot>
           <slot name="item-trailing" :item="item" />
         </SBreadcrumbItem>
-        <SBreadcrumbSeparator v-if="index < itemsFilterEllipsis.length - 1" :class="separatorClass">
+        <SBreadcrumbSeparator v-if="index < itemsFilterEllipsis.length - 1" :class="ui?.separator">
           <slot name="separator" />
         </SBreadcrumbSeparator>
       </template>

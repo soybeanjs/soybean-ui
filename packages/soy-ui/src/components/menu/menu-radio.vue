@@ -30,24 +30,9 @@ type Slots = {
 const slots = defineSlots<Slots>();
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenuRadioProps<T>)[] = [
-  'items',
-  'modelValue',
-  'defaultValue',
-  'size',
-  'separator',
-  'groupClass',
-  'groupLabelClass',
-  'itemClass',
-  'itemIndicatorClass',
-  'itemIconClass',
-  'itemLinkClass',
-  'itemLinkIconClass',
-  'separatorClass',
-  'shortcutClass'
-];
+const propKeys: (keyof MenuRadioProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'size', 'separator', 'ui'];
 
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys);
+const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class'));
 const forwardedRadioGroupProps = usePickForwardProps(props, propKeys);
 
 const emitKeys: (keyof MenuRadioEmits<T>)[] = [
@@ -66,7 +51,7 @@ const forwardedRadioGroup = useCombinedPropsEmits(forwardedRadioGroupProps, forw
 </script>
 
 <template>
-  <SMenuPortalContent v-bind="forwardedPortalContent">
+  <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
     <SMenuRadioGroup v-bind="forwardedRadioGroup">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />

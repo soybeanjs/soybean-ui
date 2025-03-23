@@ -5,7 +5,7 @@ import type {
   PinInputRootProps,
   PinInputInputProps as _PinInputInputProps
 } from '@soybean-ui/primitives';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { PinInputSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface PinInputInputRootProps extends ClassValueProp {
   separate?: boolean;
@@ -20,12 +20,12 @@ export interface PinInputInputProps extends _PinInputInputProps {
   separate?: boolean;
 }
 
+export type PinInputUi = Partial<Record<PinInputSlots, ClassValue>>;
+
 export interface PinInputProps extends PinInputRootProps, PinInputInputRootProps, PinInputSeparatorProps {
-  inputRootClass?: ClassValue;
   size?: ThemeSize;
+  ui?: PinInputUi;
   inputCount?: number;
-  itemClass?: ClassValue;
-  separatorClass?: ClassValue;
 }
 
 export type PinInputEmits = PinInputRootEmits;

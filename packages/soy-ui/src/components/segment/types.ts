@@ -7,6 +7,7 @@ import type {
   TabsListProps as SegmentTriggerRootProps,
   StringOrNumber
 } from '@soybean-ui/primitives';
+import type { SegmentSlots } from '@soybean-ui/variants';
 
 export type SegmentIndicatorRootProps = ClassValueProp;
 
@@ -17,13 +18,12 @@ export type SegmentOption<T extends StringOrNumber = StringOrNumber> = Pick<Segm
   label: string;
 };
 
+export type SegmentUi = Partial<Record<SegmentSlots, ClassValue>>;
+
 export type SegmentProps<T extends SegmentOption> = SegmentRootProps<T['value']> &
   SegmentTriggerRootProps & {
+    ui?: SegmentUi;
     items: T[];
-    triggerRootClass?: ClassValue;
-    triggerClass?: ClassValue;
-    indicatorRootClass?: ClassValue;
-    indicatorClass?: ClassValue;
   };
 
 export type SegmentEmits<T extends StringOrNumber = StringOrNumber> = SegmentRootEmits<T>;

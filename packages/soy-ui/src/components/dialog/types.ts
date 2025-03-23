@@ -11,24 +11,22 @@ import type {
   DialogRootProps,
   DialogTitleProps
 } from '@soybean-ui/primitives';
+import type { DialogSlots } from '@soybean-ui/variants';
 
 export interface DialogHeaderProps extends ClassValueProp {}
 
 export interface DialogFooterProps extends ClassValueProp {}
 
+export type DialogUi = Partial<Record<DialogSlots, ClassValue>>;
+
 export interface DialogProps extends DialogRootProps, DialogContentProps, Pick<DialogPortalProps, 'to' | 'defer'> {
+  ui?: DialogUi;
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
-  overlayClass?: ClassValue;
   forceMountOverlay?: boolean;
-  headerClass?: ClassValue;
   title?: string;
-  titleClass?: ClassValue;
   description?: string;
-  descriptionClass?: ClassValue;
   showClose?: boolean;
-  closeClass?: ClassValue;
-  footerClass?: ClassValue;
 }
 
 export type DialogEmits = DialogRootEmits & DialogContentEmits;

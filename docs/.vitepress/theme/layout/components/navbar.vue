@@ -56,7 +56,13 @@ watch(path, () => {
     </DefineNavItem>
     <template v-for="(nav, index) in theme.nav" :key="index">
       <NavItem v-if="nav.linkProps" :label="nav.label" :link="nav.linkProps.href" />
-      <SDropdownMenu v-else :label="nav.label" :items="nav.children" content-class="min-w-20" @select="handleSelect">
+      <SDropdownMenu
+        v-else
+        :label="nav.label"
+        :items="nav.children"
+        :ui="{ content: 'min-w-20' }"
+        @select="handleSelect"
+      >
         <template #trigger>
           <NavItem :label="nav.label">
             <span class="whitespace-nowrap">{{ nav.label }}</span>
@@ -93,7 +99,7 @@ watch(path, () => {
         <template v-else>{{ label }}</template>
       </component>
     </DefineNavMenuItem>
-    <SPopover v-model:open="isPopoverOpen" side="bottom" align="end" content-class="z-15 p-2">
+    <SPopover v-model:open="isPopoverOpen" side="bottom" align="end" :ui="{ content: 'z-15 p-2' }">
       <template #trigger>
         <SButtonIcon>
           <Icon icon="lucide:ellipsis" />
@@ -107,7 +113,7 @@ watch(path, () => {
             :label="nav.label"
             :items="nav.children"
             align="end"
-            content-class="min-w-20"
+            :ui="{ content: 'min-w-20' }"
             @select="handleSelect"
           >
             <template #trigger>

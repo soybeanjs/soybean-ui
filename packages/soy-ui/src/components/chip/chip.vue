@@ -8,15 +8,15 @@ defineOptions({
   name: 'SChip'
 });
 
-const { class: rootCls, contentCls, text, show = true, ...delegatedContentProps } = defineProps<ChipProps>();
+const { class: cls, ui, text, show = true, ...delegatedContentProps } = defineProps<ChipProps>();
 
 const forwardedContentProps = useForwardProps(delegatedContentProps);
 </script>
 
 <template>
-  <SChipRoot :class="rootCls">
+  <SChipRoot :class="cls || ui?.root">
     <slot />
-    <SChipContent v-if="show" v-bind="forwardedContentProps" :class="contentCls">
+    <SChipContent v-if="show" v-bind="forwardedContentProps" :class="ui?.content">
       <slot name="content" :value="text">
         {{ text }}
       </slot>

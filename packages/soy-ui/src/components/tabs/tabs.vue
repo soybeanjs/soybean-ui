@@ -13,15 +13,12 @@ defineOptions({
 });
 
 const {
+  class: cls,
+  ui,
   loop,
   items,
-  listClass,
-  triggerClass,
   enableIndicator = true,
-  indicatorRootClass,
-  indicatorClass,
   forceMountContent,
-  contentClass,
   ...delegatedRootProps
 } = defineProps<TabsProps<T>>();
 
@@ -31,21 +28,21 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
-  <STabsRoot v-bind="forwarded">
-    <STabsList :class="listClass" :loop="loop" :orientation="orientation">
+  <STabsRoot v-bind="forwarded" :class="cls || ui?.root">
+    <STabsList :class="ui?.list" :loop="loop" :orientation="orientation">
       <STabsTrigger
         v-for="item in items"
         :key="item.value"
         :value="item.value"
         :disabled="item.disabled"
-        :class="triggerClass"
+        :class="ui?.trigger"
         :enable-indicator="enableIndicator"
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicatorRoot v-if="enableIndicator" :class="indicatorRootClass" :orientation="orientation">
+      <STabsIndicatorRoot v-if="enableIndicator" :class="ui?.indicatorRoot" :orientation="orientation">
         <slot name="indicator">
-          <STabsIndicator :class="indicatorClass" :orientation="orientation" />
+          <STabsIndicator :class="ui?.indicator" :orientation="orientation" />
         </slot>
       </STabsIndicatorRoot>
     </STabsList>
@@ -54,7 +51,7 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       :key="item.value"
       :value="item.value"
       :force-mount="forceMountContent"
-      :class="contentClass"
+      :class="ui?.content"
       :orientation="orientation"
     >
       <slot name="content" v-bind="{ ...item, active: item.value === modelValue }" />

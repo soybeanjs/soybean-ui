@@ -26,12 +26,7 @@ const emit = defineEmits<DialogEmits>();
 
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen', 'modal']);
 
-const forwardedContentProps = usePickForwardProps(props, [
-  'class',
-  'forceMount',
-  'trapFocus',
-  'disableOutsidePointerEvents'
-]);
+const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
 
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
@@ -44,19 +39,19 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
       <slot name="trigger" />
     </DialogTrigger>
     <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SDialogOverlay :force-mount="forceMountOverlay" :class="overlayClass" />
-      <SDialogContent v-bind="forwardedContent">
-        <SDialogHeader :class="headerClass">
-          <SDialogTitle :class="titleClass">
+      <SDialogOverlay :force-mount="forceMountOverlay" :class="ui?.overlay" />
+      <SDialogContent v-bind="forwardedContent" :class="props.class || ui?.content">
+        <SDialogHeader :class="ui?.header">
+          <SDialogTitle :class="ui?.title">
             <slot name="title">{{ title }}</slot>
           </SDialogTitle>
-          <SDialogDescription :class="descriptionClass">
+          <SDialogDescription :class="ui?.description">
             <slot name="description">{{ description }}</slot>
           </SDialogDescription>
         </SDialogHeader>
-        <SDialogClose :class="closeClass" />
+        <SDialogClose :class="ui?.close" />
         <slot />
-        <SDialogFooter :class="footerClass">
+        <SDialogFooter :class="ui?.footer">
           <slot name="footer" />
         </SDialogFooter>
       </SDialogContent>

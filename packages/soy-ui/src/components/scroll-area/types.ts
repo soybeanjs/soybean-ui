@@ -5,13 +5,14 @@ import type {
   ScrollAreaScrollbarProps,
   ScrollAreaViewportProps
 } from '@soybean-ui/primitives';
+import type { ScrollAreaSlots } from '@soybean-ui/variants';
 
 export interface ScrollAreaThumbProps extends ClassValueProp {}
 
+export type ScrollAreaUi = Partial<Record<ScrollAreaSlots, ClassValue>>;
+
 export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaViewportProps, ScrollAreaScrollbarProps {
-  viewportClass?: ClassValue;
-  scrollbarClass?: ClassValue;
-  thumbClass?: ClassValue;
+  ui?: ScrollAreaUi;
 }
 
 export type { ScrollAreaRootProps, ScrollAreaScrollbarProps, ScrollAreaViewportProps };

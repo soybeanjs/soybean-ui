@@ -51,7 +51,7 @@ const tabs: TabConfig[] = Object.entries(ExampleComponents).map(([key, component
         <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
           <template #extra>
             <div>
-              <SPopover content-class="z-15" side="bottom" align="end">
+              <SPopover :ui="{ content: 'z-15' }" side="bottom" align="end">
                 <template #trigger>
                   <SButtonIcon size="lg">
                     <SwatchBook />
@@ -69,9 +69,11 @@ const tabs: TabConfig[] = Object.entries(ExampleComponents).map(([key, component
             v-model="activeTab"
             :items="tabs"
             :enable-indicator="false"
-            class="h-full"
-            list-class="flex-wrap justify-start"
-            trigger-class="flex-none max-w-120px w-1/3"
+            :ui="{
+              root: 'h-full',
+              list: 'flex-wrap justify-start',
+              trigger: 'flex-none max-w-120px w-1/3'
+            }"
           >
             <template #content="{ component }">
               <SScrollArea class="h-full">

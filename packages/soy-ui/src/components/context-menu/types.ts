@@ -7,6 +7,7 @@ import type {
   ContextMenuRootProps,
   ContextMenuSubContentProps
 } from '@soybean-ui/primitives';
+import type { MenuSlots } from '@soybean-ui/variants';
 import type {
   MenuOptionEmits as ContextMenuOptionEmits,
   MenuOptionProps as ContextMenuOptionProps,
@@ -31,10 +32,13 @@ export interface ContextMenuPortalContentProps
 }
 export type ContextMenuPortalContentEmits = ContextMenuContentEmits;
 
+export type ContextMenuUi = Partial<Record<MenuSlots, ClassValue>>;
+
 // ContextMenu
 export interface ContextMenuProps<T extends AcceptableValue = AcceptableValue>
   extends ContextMenuRootProps,
     Omit<ContextMenuOptionProps, 'item'> {
+  ui?: ContextMenuUi;
   items?: MenuOptionData<T>[];
 }
 export type ContextMenuEmits<T extends AcceptableValue = AcceptableValue> = ContextMenuRootEmits & MenuEmits<T>;

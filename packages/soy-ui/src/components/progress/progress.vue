@@ -8,7 +8,7 @@ defineOptions({
   name: 'SProgress'
 });
 
-const { indicatorClass, ...delegatedProps } = defineProps<ProgressProps>();
+const { class: cls, ui, ...delegatedProps } = defineProps<ProgressProps>();
 
 const emit = defineEmits<ProgressEmits>();
 
@@ -16,7 +16,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <SProgressRoot v-bind="forwarded">
-    <SProgressIndicator :class="indicatorClass" :model-value="modelValue" :color="color" />
+  <SProgressRoot v-bind="forwarded" :class="cls || ui?.root">
+    <SProgressIndicator :class="ui?.indicator" :model-value="modelValue" :color="color" />
   </SProgressRoot>
 </template>

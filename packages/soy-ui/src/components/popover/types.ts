@@ -10,16 +10,18 @@ import type {
   PopoverRootProps,
   Side
 } from '@soybean-ui/primitives';
+import type { PopoverSlots } from '@soybean-ui/variants';
+
+export type PopoverUi = Partial<Record<PopoverSlots, ClassValue>>;
 
 export type PopoverProps = PopoverRootProps &
   Pick<PopoverPortalProps, 'to' | 'defer'> &
   Omit<PopoverContentProps, 'forceMount' | 'class'> & {
+    ui?: PopoverUi;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    contentClass?: ClassValue;
     forceMountContent?: boolean;
     showArrow?: boolean;
-    arrowClass?: ClassValue;
     arrowWidth?: number;
     arrowHeight?: number;
   };

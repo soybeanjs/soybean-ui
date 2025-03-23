@@ -9,16 +9,18 @@ import type {
   TooltipRootEmits,
   TooltipRootProps
 } from '@soybean-ui/primitives';
+import type { TooltipSlots } from '@soybean-ui/variants';
+
+export type TooltipUi = Partial<Record<TooltipSlots, ClassValue>>;
 
 export type TooltipProps = TooltipRootProps &
   Pick<TooltipPortalProps, 'to' | 'defer'> &
   Omit<TooltipContentProps, 'class' | 'forceMount'> & {
+    ui?: TooltipUi;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    contentClass?: ClassValue;
     forceMountContent?: boolean;
     showArrow?: boolean;
-    arrowClass?: ClassValue;
     arrowWidth?: number;
     arrowHeight?: number;
   };

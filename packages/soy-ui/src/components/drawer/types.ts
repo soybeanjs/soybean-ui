@@ -8,6 +8,7 @@ import type {
   DrawerRootProps,
   TeleportProps
 } from '@soybean-ui/primitives';
+import type { DrawerSlots } from '@soybean-ui/variants';
 
 export interface DrawerOverlayProps extends ClassValueProp {}
 
@@ -25,21 +26,17 @@ export interface DrawerKnobProps extends ClassValueProp {}
 
 export interface DrawerFooterProps extends ClassValueProp {}
 
+export type DrawerUi = Partial<Record<DrawerSlots, ClassValue>>;
+
 export type DrawerProps = ClassValueProp &
   DrawerRootProps &
   Pick<TeleportProps, 'to' | 'defer'> & {
+    ui?: DrawerUi;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    overlayClass?: ClassValue;
-    contentBodyClass?: ClassValue;
-    headerClass?: ClassValue;
     title?: string;
-    titleClass?: ClassValue;
     description?: string;
-    descriptionClass?: ClassValue;
     showClose?: boolean;
-    closeClass?: ClassValue;
-    footerClass?: ClassValue;
   };
 
 export type DrawerEmits = DrawerRootEmits;

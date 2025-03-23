@@ -8,7 +8,7 @@ defineOptions({
 
 <template>
   <SCard title="Drawer" split>
-    <SDrawer title="Drawer Title" show-close content-body-class="mx-auto max-w-sm w-full">
+    <SDrawer title="Drawer Title" show-close :ui="{ contentBody: 'mx-auto max-w-sm w-full' }">
       <template #trigger>
         <SButton variant="outline">Open</SButton>
       </template>

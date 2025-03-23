@@ -12,16 +12,22 @@ defineOptions({
   name: 'SToggleGroup'
 });
 
-const props = defineProps<ToggleGroupProps<T, V>>();
+const { class: cls, ui, ...delegatedProps } = defineProps<ToggleGroupProps<T, V>>();
 
 const emit = defineEmits<ToggleGroupEmits<V>>();
 
-const forwarded = useForwardPropsEmits(props, emit);
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <SToggleGroupRoot v-bind="forwarded">
-    <SToggleGroupItem v-for="(item, index) in items" :key="index" :value="item.value" :disabled="item.disabled">
+  <SToggleGroupRoot v-bind="forwarded" :class="cls || ui?.groupRoot">
+    <SToggleGroupItem
+      v-for="(item, index) in items"
+      :key="index"
+      :class="ui?.toggle"
+      :value="item.value"
+      :disabled="item.disabled"
+    >
       <slot name="item" v-bind="item" />
     </SToggleGroupItem>
   </SToggleGroupRoot>

@@ -33,24 +33,9 @@ type Slots = {
 const slots = defineSlots<Slots>();
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenubarItemProps<T>)[] = [
-  'size',
-  'separator',
-  'groupLabelClass',
-  'itemClass',
-  'itemIconClass',
-  'itemLinkClass',
-  'itemLinkIconClass',
-  'separatorClass',
-  'shortcutClass',
-  'groupClass',
-  'subContentClass',
-  'subContentProps',
-  'subTriggerClass',
-  'subTriggerIconClass'
-];
+const propKeys: (keyof MenubarItemProps<T>)[] = ['size', 'separator', 'subContentProps', 'ui'];
 
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('items'));
+const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat(['class', 'items']));
 const forwardedOptionProps = usePickForwardProps(props, propKeys);
 
 const emitKeys: (keyof MenubarItemEmits<T>)[] = [
@@ -69,7 +54,7 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
 </script>
 
 <template>
-  <SMenubarPortalContent v-bind="forwardedPortalContent">
+  <SMenubarPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
     <SMenubarOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :item="item">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />

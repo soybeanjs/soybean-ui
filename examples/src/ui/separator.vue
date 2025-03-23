@@ -29,7 +29,7 @@ const borders: SeparatorBorder[] = ['solid', 'dashed', 'dotted'];
       <SSeparator v-for="align in aligns" :key="align" :align="align" class="mb-6">{{ align }}</SSeparator>
     </SCard>
     <SCard title="Custom Align">
-      <SSeparator class="mb-6" label-class="left-1/3">Custom Align</SSeparator>
+      <SSeparator class="mb-6" :ui="{ label: 'left-1/3' }">Custom Align</SSeparator>
     </SCard>
     <SCard title="Border">
       <SSeparator v-for="border in borders" :key="border" :border="border" class="mb-6">{{ border }}</SSeparator>

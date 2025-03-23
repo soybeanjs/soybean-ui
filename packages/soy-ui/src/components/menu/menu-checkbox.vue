@@ -30,24 +30,9 @@ type Slots = {
 const slots = defineSlots<Slots>();
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenuCheckboxProps<T>)[] = [
-  'items',
-  'modelValue',
-  'defaultValue',
-  'size',
-  'separator',
-  'groupClass',
-  'groupLabelClass',
-  'itemClass',
-  'itemIndicatorClass',
-  'itemIconClass',
-  'itemLinkClass',
-  'itemLinkIconClass',
-  'separatorClass',
-  'shortcutClass'
-];
+const propKeys: (keyof MenuCheckboxProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'size', 'separator', 'ui'];
 
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys);
+const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class'));
 const forwardedCheckboxGroupProps = usePickForwardProps(props, propKeys);
 
 const emitKeys: (keyof MenuCheckboxEmits<T>)[] = [
@@ -66,7 +51,7 @@ const forwardedCheckboxGroup = useCombinedPropsEmits(forwardedCheckboxGroupProps
 </script>
 
 <template>
-  <SMenuPortalContent v-bind="forwardedPortalContent">
+  <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
     <SMenuCheckboxGroup v-bind="forwardedCheckboxGroup">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />

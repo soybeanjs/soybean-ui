@@ -10,7 +10,7 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const { class: cls, color, size, items, orientation, ...delegatedProps } = defineProps<RadioGroupProps>();
+const { class: cls, color, size, ui, items, orientation, ...delegatedProps } = defineProps<RadioGroupProps>();
 
 const emit = defineEmits<RadioGroupRootEmits>();
 
@@ -19,14 +19,14 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 const mergedCls = computed(() => {
   const { group } = radioVariants({ orientation });
 
-  return cn(group(), cls);
+  return cn(group(), cls || ui?.root);
 });
 </script>
 
 <template>
   <RadioGroupRoot v-bind="forwarded" :class="mergedCls" :orientation="orientation">
     <slot>
-      <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" :size="size" />
+      <SRadio v-for="item in items" :key="item.value" v-bind="item" :color="color" :size="size" :ui="ui" />
     </slot>
   </RadioGroupRoot>
 </template>

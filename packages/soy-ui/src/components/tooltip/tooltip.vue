@@ -14,7 +14,7 @@ defineOptions({
   name: 'STooltip'
 });
 
-const { delayDuration = 200, avoidCollisions = true, ...delegatedProps } = defineProps<TooltipProps>();
+const { class: cls, delayDuration = 200, avoidCollisions = true, ...delegatedProps } = defineProps<TooltipProps>();
 
 const emit = defineEmits<TooltipEmits>();
 
@@ -50,14 +50,14 @@ const forwardedContentProps = usePickForwardProps(delegatedProps, [
       <TooltipPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
         <STooltipContent
           v-bind="forwardedContentProps"
-          :class="contentClass"
+          :class="cls || ui?.content"
           :avoid-collisions="avoidCollisions"
           :force-mount="forceMountContent"
           @escape-key-down="emit('escapeKeyDown', $event)"
           @pointer-down-outside="emit('pointerDownOutside', $event)"
         >
           <slot />
-          <STooltipArrow v-if="showArrow" :class="arrowClass" :width="arrowWidth" :height="arrowHeight" />
+          <STooltipArrow v-if="showArrow" :class="ui?.arrow" :width="arrowWidth" :height="arrowHeight" />
         </STooltipContent>
       </TooltipPortal>
     </TooltipRoot>

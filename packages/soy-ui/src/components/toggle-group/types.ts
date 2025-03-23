@@ -1,8 +1,9 @@
 import type {
+  ClassValue,
   ToggleGroupItemProps as _ToggleGroupItemProps,
   ToggleGroupRootProps as _ToggleGroupRootProps
 } from '@soybean-ui/primitives';
-import type { ToggleVariant } from '@soybean-ui/variants';
+import type { ToggleSlots, ToggleVariant } from '@soybean-ui/variants';
 import type { ThemeSize } from '../../types';
 
 export type ToggleGroupRootProps<T extends string | string[]> = _ToggleGroupRootProps<T> & {
@@ -16,10 +17,13 @@ export interface ToggleGroupItemProps extends _ToggleGroupItemProps {
 
 export type ToggleGroupItemData = Pick<ToggleGroupItemProps, 'value' | 'disabled'>;
 
+export type ToggleGroupUi = Partial<Record<ToggleSlots, ClassValue>>;
+
 export type ToggleGroupProps<
   T extends ToggleGroupItemData = ToggleGroupItemData,
   V extends string | string[] = string | string[]
 > = ToggleGroupRootProps<V> & {
+  ui?: ToggleGroupUi;
   items: T[];
   variant?: ToggleVariant;
 };

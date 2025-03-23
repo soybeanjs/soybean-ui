@@ -1,5 +1,5 @@
-import type { TextareaResize, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
+import type { TextareaResize, TextareaSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface TextareaRootProps extends ClassValueProp {}
 
@@ -36,11 +36,12 @@ export interface TextareaCountProps extends Pick<TextareaContentProps, 'class' |
   countGraphemes?: (input: string) => number;
 }
 
+export type TextareaUi = Partial<Record<TextareaSlots, ClassValue>>;
+
 export interface TextareaProps
   extends TextareaRootProps,
     TextareaContentProps,
     Pick<TextareaCountProps, 'countGraphemes'> {
+  ui?: TextareaUi;
   showCount?: boolean;
-  contentClass?: ClassValue;
-  countClass?: ClassValue;
 }

@@ -9,7 +9,7 @@ defineOptions({
   name: 'ToastProvider'
 });
 
-const { toastLimit = 1, toastRemoveDelay = 1000 * 1000, ...delegatedProps } = defineProps<ToastProviderProps>();
+const { ui, toastLimit = 1, toastRemoveDelay = 1000 * 1000, ...delegatedProps } = defineProps<ToastProviderProps>();
 
 const contextParams = computed(() => ({
   toastLimit,
@@ -21,7 +21,7 @@ provideToastContext(contextParams);
 
 <template>
   <ToastProvider v-bind="delegatedProps">
-    <Toast />
+    <Toast :ui="ui" />
     <slot />
   </ToastProvider>
 </template>

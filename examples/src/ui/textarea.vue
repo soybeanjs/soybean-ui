@@ -36,7 +36,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
       <STextarea v-model="countGraphemesWord" :count-graphemes="countGraphemes" show-count />
     </SCard>
     <SCard title="count slot" split>
-      <STextarea v-model="wordCount2" show-count count-class="text-xl text-red right-6" />
+      <STextarea v-model="wordCount2" show-count :ui="{ count: 'text-xl text-red right-6' }" />
     </SCard>
     <SCard title="count slot" split>
       <STextarea v-model="wordCount3" show-count>

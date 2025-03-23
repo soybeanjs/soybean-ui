@@ -6,16 +6,18 @@ import type {
   HoverCardRootEmits,
   HoverCardRootProps
 } from '@soybean-ui/primitives';
+import type { HoverCardSlots } from '@soybean-ui/variants';
+
+export type HoverCardUi = Partial<Record<HoverCardSlots, ClassValue>>;
 
 export type HoverCardProps = HoverCardRootProps &
   Pick<HoverCardPortalProps, 'to' | 'defer'> &
   Omit<HoverCardContentProps, 'forceMount' | 'class'> & {
+    ui?: HoverCardUi;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
-    contentClass?: ClassValue;
-    forceMountContent?: boolean;
     showArrow?: boolean;
-    arrowClass?: ClassValue;
+    forceMountContent?: boolean;
     arrowWidth?: number;
     arrowHeight?: number;
   };

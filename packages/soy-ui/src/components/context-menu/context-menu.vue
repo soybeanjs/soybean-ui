@@ -37,22 +37,7 @@ type Slots = {
 const slots = defineSlots<Slots>();
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof ContextMenuProps<T>)[] = [
-  'size',
-  'separator',
-  'groupLabelClass',
-  'itemClass',
-  'itemIconClass',
-  'itemLinkClass',
-  'itemLinkIconClass',
-  'separatorClass',
-  'shortcutClass',
-  'groupClass',
-  'subContentClass',
-  'subContentProps',
-  'subTriggerClass',
-  'subTriggerIconClass'
-];
+const propKeys: (keyof ContextMenuProps<T>)[] = ['ui', 'size', 'separator', 'subContentProps'];
 
 const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('dir', 'modal', 'items'));
 const forwardedOptionProps = usePickForwardProps(props, propKeys);
@@ -77,7 +62,7 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
     <ContextMenuTrigger as-child>
       <slot name="trigger" :size="size" />
     </ContextMenuTrigger>
-    <SContextMenuPortalContent v-bind="forwardedPortalContent">
+    <SContextMenuPortalContent v-bind="forwardedPortalContent" :class="ui?.content">
       <SContextMenuOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :item="item">
         <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />

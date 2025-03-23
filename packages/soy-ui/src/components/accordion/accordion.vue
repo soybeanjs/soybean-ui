@@ -35,7 +35,7 @@ const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, emit);
         <SAccordionItem v-slot="{ open }" :value="item.value" :disabled="item.disabled" :class="ui?.item">
           <SAccordionHeader :class="ui?.header">
             <slot name="trigger" v-bind="{ modelValue, open, item }">
-              <SAccordionTrigger :class="ui?.trigger" :size="size" :trigger-icon-class="ui?.triggerIcon">
+              <SAccordionTrigger :class="ui?.trigger" :size="size" :icon-class="ui?.triggerIcon">
                 <slot name="triggerContent" v-bind="{ modelValue, open, item }">{{ item.title }}</slot>
                 <template #icon>
                   <slot name="triggerIcon" v-bind="{ modelValue, open, item }" />

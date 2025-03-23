@@ -31,7 +31,7 @@ defineOptions({
   <div class="flex-c gap-4">
     <SCard title="Horizontal" split>
       <div class="w-320px lt-sm:w-auto">
-        <STabs v-model="tabValue" :items="tabs" content-class="p-4 border border-border rounded-1">
+        <STabs v-model="tabValue" :items="tabs" :ui="{ content: 'p-4 border border-border rounded-1' }">
           <template #content="{ value }">
             <div>The Tab Content: {{ value }}</div>
           </template>
@@ -44,7 +44,7 @@ defineOptions({
           v-model="tabValue2"
           :items="tabs"
           orientation="vertical"
-          content-class="p-4 border border-border rounded-1"
+          :ui="{ content: 'p-4 border border-border rounded-1' }"
         >
           <template #content="{ value }">
             <div>The Tab Content: {{ value }}</div>
@@ -57,14 +57,14 @@ defineOptions({
         <STabs
           v-model="tabValue3"
           :items="tabs"
-          list-class="border-border border-b bg-transparent rounded-none"
-          content-class="p-4 border border-border rounded-1"
+          :ui="{
+            list: 'border-border border-b bg-transparent rounded-none',
+            content: 'p-4 border border-border rounded-1',
+            indicator: 'absolute bottom-0 h-2px w-full rounded-1 bg-primary'
+          }"
         >
           <template #trigger="{ label, active }">
             <div :class="{ 'text-primary fw-bold': active }">{{ label }}</div>
-          </template>
-          <template #indicator>
-            <div class="absolute bottom-0 h-2px w-full rounded-1 bg-primary"></div>
           </template>
           <template #content="{ value }">
             <div>The Tab Content: {{ value }}</div>
@@ -79,14 +79,14 @@ defineOptions({
           :items="tabs"
           orientation="vertical"
           class="mt-24px"
-          list-class="border-border border-l bg-transparent rounded-none"
-          content-class="p-4 border border-border rounded-1"
+          :ui="{
+            list: 'border-border border-l bg-transparent rounded-none',
+            content: 'p-4 border border-border rounded-1',
+            indicator: 'absolute left-0 h-full w-2px rounded-1 bg-primary'
+          }"
         >
           <template #trigger="{ label, active }">
             <div :class="{ 'text-primary fw-bold': active }">{{ label }}</div>
-          </template>
-          <template #indicator>
-            <div class="absolute left-0 h-full w-2px rounded-1 bg-primary"></div>
           </template>
           <template #content="{ value }">
             <div>The Tab Content: {{ value }}</div>

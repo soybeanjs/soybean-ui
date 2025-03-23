@@ -51,7 +51,7 @@ const configProviderProps = computed<ConfigProviderProps>(() => ({
 
           <Navbar>
             <template #theme-customize>
-              <SPopover content-class="z-15" side="bottom" align="end">
+              <SPopover :ui="{ content: 'z-15' }" side="bottom" align="end">
                 <template #trigger>
                   <SButtonIcon size="lg" class="mr-3">
                     <SwatchBook />

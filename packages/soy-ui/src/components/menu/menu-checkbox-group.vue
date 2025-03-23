@@ -49,11 +49,11 @@ watch(
 </script>
 
 <template>
-  <MenuGroup :class="props.class">
+  <MenuGroup :class="props.class || ui?.group">
     <template v-for="item in items" :key="item.value">
-      <SMenuLabel v-if="item.isGroupLabel" :class="groupLabelClass" :size="size">
+      <SMenuLabel v-if="item.isGroupLabel" :class="ui?.label" :size="size">
         <slot name="item" v-bind="item">
-          <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
+          <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
           <slot name="item-leading" v-bind="item" />
           <span>{{ item.label }}</span>
           <slot name="item-trailing" v-bind="item" />
@@ -61,26 +61,26 @@ watch(
       </SMenuLabel>
       <SMenuCheckboxItem
         v-else
-        :class="itemClass"
+        :class="ui?.item"
         :size="size"
         :disabled="item.disabled"
         :text-value="item.textValue || item.label"
         :model-value="checkValue.includes(item.value)"
-        :indicator-class="itemIndicatorClass"
+        :indicator-class="ui?.itemIndicator"
         @update:model-value="handleUpdateChecked(item, $event)"
       >
         <template #indicatorIcon>
           <slot name="item-indicator-icon" v-bind="item" />
         </template>
         <slot name="item" v-bind="item">
-          <component :is="item.icon" v-if="item.icon" :class="itemIconClass" />
+          <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
           <slot name="item-leading" v-bind="item" />
           <span>{{ item.label }}</span>
           <slot name="item-trailing" v-bind="item" />
-          <SMenuShortcut v-if="item.shortcut" :class="shortcutClass" :value="item.shortcut" :size="size" />
+          <SMenuShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" :size="size" />
         </slot>
       </SMenuCheckboxItem>
-      <SMenuSeparator v-if="separator || item.separator" :class="separatorClass" />
+      <SMenuSeparator v-if="separator || item.separator" :class="ui?.separator" />
     </template>
   </MenuGroup>
 </template>

@@ -9,7 +9,7 @@ defineOptions({
   name: 'SSwitch'
 });
 
-const { id, thumbClass, ...delegatedProps } = defineProps<SwitchProps>();
+const { class: cls, ui, id, ...delegatedProps } = defineProps<SwitchProps>();
 
 const emit = defineEmits<SwitchEmits>();
 
@@ -21,8 +21,8 @@ const switchId = computed(() => id || `switch-${defaultId}`);
 </script>
 
 <template>
-  <SSwitchRoot v-bind="forwarded" :id="switchId">
-    <SSwitchThumb :class="thumbClass" :size="size">
+  <SSwitchRoot v-bind="forwarded" :id="switchId" :class="cls || ui?.root">
+    <SSwitchThumb :class="ui?.thumb" :size="size">
       <slot />
     </SSwitchThumb>
   </SSwitchRoot>

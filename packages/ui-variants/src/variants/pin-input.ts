@@ -3,6 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const pinInputVariants = tv({
   slots: {
+    root: '',
     inputRoot: `flex items-center`,
     input: [
       `relative flex items-center justify-center text-center border-y border-r border-input bg-background transition-all`,

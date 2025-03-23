@@ -1,5 +1,5 @@
 import type { ClassValue, ClassValueProp, SwitchRootProps as _SwitchRootProps } from '@soybean-ui/primitives';
-import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { SwitchSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface SwitchRootProps extends _SwitchRootProps {
   color?: ThemeColor;
@@ -10,8 +10,10 @@ export interface SwitchThumbProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
+export type SwitchUi = Partial<Record<SwitchSlots, ClassValue>>;
+
 export interface SwitchProps extends SwitchRootProps {
-  thumbClass?: ClassValue;
+  ui?: SwitchUi;
 }
 
 export type SwitchRootEmits = {

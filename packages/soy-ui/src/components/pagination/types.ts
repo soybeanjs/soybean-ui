@@ -10,7 +10,7 @@ import type {
   PaginationNextProps as _PaginationNextProps,
   PaginationPrevProps as _PaginationPrevProps
 } from '@soybean-ui/primitives';
-import type { ThemeSize } from '@soybean-ui/variants';
+import type { PaginationSlots, ThemeSize } from '@soybean-ui/variants';
 import type { ButtonVariant } from '../button/types';
 
 export interface PaginationListProps extends ClassValueProp {
@@ -38,13 +38,10 @@ export interface PaginationNextProps extends PaginationButtonProps, _PaginationN
 
 export interface PaginationPrevProps extends PaginationButtonProps, _PaginationPrevProps {}
 
+export type PaginationUi = Partial<Record<PaginationSlots, ClassValue>>;
+
 export interface PaginationProps extends PaginationRootProps, PaginationListProps, PaginationButtonProps {
-  listItemClass?: ClassValue;
-  firstClass?: ClassValue;
-  lastClass?: ClassValue;
-  nextClass?: ClassValue;
-  prevClass?: ClassValue;
-  ellipsisClass?: ClassValue;
+  ui?: PaginationUi;
 }
 
 export type PaginationEmits = PaginationRootEmits;

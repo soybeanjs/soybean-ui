@@ -11,16 +11,7 @@ defineOptions({
   name: 'SRadio'
 });
 
-const {
-  class: rootCls,
-  id,
-  controlClass,
-  indicatorClass,
-  forceMountIndicator,
-  label,
-  labelClass,
-  ...delegatedProps
-} = defineProps<RadioProps>();
+const { class: cls, id, ui, forceMountIndicator, label, ...delegatedProps } = defineProps<RadioProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
@@ -30,13 +21,13 @@ const radioId = computed(() => id || `radio-${defaultId}`);
 </script>
 
 <template>
-  <SRadioRoot :class="rootCls">
-    <SRadioControl v-bind="forwardedProps" :id="radioId" :class="controlClass">
+  <SRadioRoot :class="cls || ui?.root">
+    <SRadioControl v-bind="forwardedProps" :id="radioId" :class="ui?.control">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
-        <SRadioIndicator :class="indicatorClass" :color="color" :force-mount="forceMountIndicator" />
+        <SRadioIndicator :class="ui?.indicator" :color="color" :force-mount="forceMountIndicator" />
       </Transition>
     </SRadioControl>
-    <SRadioLabel :class="labelClass" :for="radioId" :size="size">
+    <SRadioLabel :class="ui?.label" :for="radioId" :size="size">
       <slot :id="radioId">{{ label }}</slot>
     </SRadioLabel>
   </SRadioRoot>

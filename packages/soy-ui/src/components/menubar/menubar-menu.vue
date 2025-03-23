@@ -44,7 +44,7 @@ const slotKeys = computed(() => {
     item
   };
 });
-const forwardedMenuProps = useOmitForwardProps(props, ['value', 'triggerClass', 'item']);
+const forwardedMenuProps = useOmitForwardProps(props, ['value', 'item']);
 
 const forwardedMenuEmits = useEmitAsProps(emit);
 
@@ -53,15 +53,7 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
 
 <template>
   <MenubarMenu :value="value">
-    <SMenubarTriggerOption
-      :class="triggerClass"
-      :disabled="item.disabled"
-      :size="size"
-      :item="item"
-      :item-link-icon-class="itemLinkIconClass"
-      :item-icon-class="itemIconClass"
-      :shortcut-class="shortcutClass"
-    >
+    <SMenubarTriggerOption :class="ui?.trigger" :disabled="item.disabled" :size="size" :ui="ui" :item="item">
       <template v-for="slotKey in slotKeys.trigger" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

@@ -3,6 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const paginationVariants = tv({
   slots: {
+    root: '',
     list: `flex items-center`,
     ellipsis: `flex justify-center items-center`,
     button: [

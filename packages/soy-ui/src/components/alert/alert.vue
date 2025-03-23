@@ -14,7 +14,7 @@ defineOptions({
   name: 'SAlert'
 });
 
-const { class: rootCls, color, variant, size, ui } = defineProps<AlertProps>();
+const { class: cls, color, variant, size, ui } = defineProps<AlertProps>();
 
 const mergedCls = computed(() => {
   const { icon, close } = alertVariants({ color, variant, size });
@@ -33,7 +33,7 @@ function closeAlert() {
 </script>
 
 <template>
-  <SAlertRoot v-if="!close" :class="rootCls || ui?.root" :color="color" :variant="variant" :size="size">
+  <SAlertRoot v-if="!close" :class="cls || ui?.root" :color="color" :variant="variant" :size="size">
     <slot name="leading">
       <Slot :class="mergedCls.icon">
         <slot name="icon" />

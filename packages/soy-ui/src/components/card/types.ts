@@ -1,5 +1,5 @@
-import type { ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
+import type { CardSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface CardRootProps extends ClassValueProp {
   size?: ThemeSize;
@@ -24,11 +24,9 @@ export interface CardFooterProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
+export type CardUi = Partial<Record<CardSlots, ClassValue>>;
+
 export interface CardProps extends CardRootProps {
-  headerClass?: ClassValue;
+  ui?: CardUi;
   title?: string;
-  titleRootClass?: ClassValue;
-  titleClass?: ClassValue;
-  bodyClass?: ClassValue;
-  footerClass?: ClassValue;
 }

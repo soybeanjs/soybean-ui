@@ -9,7 +9,8 @@ export const checkboxVariants = tv({
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
-    groupRoot: 'flex gap-2'
+    groupRoot: 'flex gap-2',
+    label: ''
   },
   variants: {
     color: {

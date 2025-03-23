@@ -137,6 +137,6 @@ const menus: NavigationMenuItemOption[] = [
 
 <template>
   <SCard title="NavigationMenu" split class="h-150">
-    <SNavigationMenu :items="menus" show-arrow child-link-class="w-80" />
+    <SNavigationMenu :items="menus" show-arrow :ui="{ childLink: 'w-80' }" />
   </SCard>
 </template>

@@ -13,18 +13,7 @@ defineOptions({
   name: 'SPagination'
 });
 
-const {
-  class: listCls,
-  size,
-  variant = 'plain',
-  listItemClass,
-  firstClass,
-  lastClass,
-  nextClass,
-  prevClass,
-  ellipsisClass,
-  ...delegatedProps
-} = defineProps<PaginationProps>();
+const { class: cls, size, variant = 'plain', ui, ...delegatedProps } = defineProps<PaginationProps>();
 
 const emit = defineEmits<PaginationEmits>();
 
@@ -32,32 +21,32 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <PaginationRoot v-bind="forwarded">
-    <SPaginationList v-slot="{ items }" :class="listCls" :size="size">
-      <SPaginationFirst :class="firstClass" :size="size" :variant="variant">
+  <PaginationRoot v-bind="forwarded" :class="cls || ui?.root">
+    <SPaginationList v-slot="{ items }" :class="ui?.list" :size="size">
+      <SPaginationFirst :class="ui?.button" :size="size" :variant="variant">
         <slot name="first" />
       </SPaginationFirst>
-      <SPaginationPrev :class="prevClass" :size="size" :variant="variant">
+      <SPaginationPrev :class="ui?.button" :size="size" :variant="variant">
         <slot name="prev" />
       </SPaginationPrev>
       <template v-for="(item, index) in items" :key="index">
         <SPaginationListItem
           v-if="item.type === 'page'"
-          :class="listItemClass"
+          :class="ui?.button"
           :size="size"
           :variant="variant"
           :value="item.value"
         >
           <slot />
         </SPaginationListItem>
-        <SPaginationEllipsis v-else-if="item.type === 'ellipsis'" :class="ellipsisClass" :size="size">
+        <SPaginationEllipsis v-else-if="item.type === 'ellipsis'" :class="ui?.ellipsis" :size="size">
           <slot name="ellipsis" />
         </SPaginationEllipsis>
       </template>
-      <SPaginationNext :class="nextClass" :size="size" :variant="variant">
+      <SPaginationNext :class="ui?.button" :size="size" :variant="variant">
         <slot name="next" />
       </SPaginationNext>
-      <SPaginationLast :class="lastClass" :size="size" :variant="variant">
+      <SPaginationLast :class="ui?.button" :size="size" :variant="variant">
         <slot name="last" />
       </SPaginationLast>
     </SPaginationList>

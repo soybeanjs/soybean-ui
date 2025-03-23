@@ -4,7 +4,7 @@ import type {
   ProgressRootEmits,
   ProgressRootProps as _ProgressRootProps
 } from '@soybean-ui/primitives';
-import type { ThemeColor, ThemeSize } from '@soybean-ui/variants';
+import type { ProgressSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export interface ProgressRootProps extends _ProgressRootProps {
   color?: ThemeColor;
@@ -16,8 +16,10 @@ export interface ProgressIndicatorProps extends ClassValueProp {
   color?: ThemeColor;
 }
 
+export type ProgressUi = Partial<Record<ProgressSlots, ClassValue>>;
+
 export interface ProgressProps extends ProgressRootProps {
-  indicatorClass?: ClassValue;
+  ui?: ProgressUi;
 }
 
 export type ProgressEmits = ProgressRootEmits;

@@ -29,15 +29,9 @@ const forwardedRootProps = useOmitForwardProps(props, [
   'defer',
   'disabledPortal',
   'forceMountPortal',
-  'overlayClass',
-  'headerClass',
   'title',
-  'titleClass',
   'description',
-  'descriptionClass',
-  'showClose',
-  'closeClass',
-  'footerClass'
+  'showClose'
 ]);
 
 const forwardedRoot = useForwardPropsEmits(forwardedRootProps, emit);
@@ -155,21 +149,21 @@ useStyleTag(css, { id: 'soybean-drawer-style' });
       <slot name="trigger" />
     </DrawerTrigger>
     <DrawerPortal :to="to" :defer="defer">
-      <SDrawerOverlay :class="overlayClass" />
-      <SDrawerContent :class="props.class">
-        <SDrawerKnob />
-        <SDrawerContentBody :class="contentBodyClass">
-          <SDialogHeader :class="headerClass">
-            <SDialogTitle :class="titleClass">
+      <SDrawerOverlay :class="ui?.overlay" />
+      <SDrawerContent :class="props.class || ui?.content">
+        <SDrawerKnob :class="ui?.knob" />
+        <SDrawerContentBody :class="ui?.contentBody">
+          <SDialogHeader :class="ui?.header">
+            <SDialogTitle :class="ui?.title">
               <slot name="title">{{ title }}</slot>
             </SDialogTitle>
-            <SDialogDescription :class="descriptionClass">
+            <SDialogDescription :class="ui?.description">
               <slot name="description">{{ description }}</slot>
             </SDialogDescription>
           </SDialogHeader>
-          <SDialogClose :class="closeClass" />
+          <SDialogClose :class="ui?.close" />
           <slot />
-          <SDrawerFooter :class="footerClass">
+          <SDrawerFooter :class="ui?.footer">
             <slot name="footer" />
           </SDrawerFooter>
         </SDrawerContentBody>
