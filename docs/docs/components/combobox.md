@@ -1,3 +1,4 @@
 # Combobox
 
-<DemoCombobox />
+<ComponentPreview name="Combobox" />
+

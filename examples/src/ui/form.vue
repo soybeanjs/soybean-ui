@@ -19,7 +19,7 @@ import { toTypedSchema } from '@vee-validate/valibot';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiForm'
+  name: 'DemoForm'
 });
 
 const user = v.object({

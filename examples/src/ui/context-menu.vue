@@ -22,7 +22,7 @@ import {
 import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
-  name: 'UiContextMenu'
+  name: 'DemoContextMenu'
 });
 
 const menus: MenuOptionData<string>[] = [

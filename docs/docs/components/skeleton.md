@@ -1,3 +1,4 @@
 # Skeleton
 
-<DemoSkeleton />
+<ComponentPreview name="Skeleton" />
+

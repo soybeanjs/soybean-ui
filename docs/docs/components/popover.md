@@ -1,3 +1,4 @@
 # Popover
 
-<DemoPopover />
+<ComponentPreview name="Popover" />
+

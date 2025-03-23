@@ -3,7 +3,7 @@ import { SCard, SResizableHandle, SResizablePanel, SResizablePanelGroup } from '
 import { CircleDashed } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiResizable'
+  name: 'DemoResizable'
 });
 </script>
 

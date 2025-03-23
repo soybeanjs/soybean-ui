@@ -3,7 +3,7 @@ import { SCard, SSeparator } from 'soy-ui';
 import type { SeparatorBorder, ThemeAlign } from 'soy-ui';
 
 defineOptions({
-  name: 'UiSeparator'
+  name: 'DemoSeparator'
 });
 
 const aligns: ThemeAlign[] = ['start', 'center', 'end'];

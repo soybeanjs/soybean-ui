@@ -1,3 +1,3 @@
 # Collapsible
 
-<DemoCollapsible />
+<ComponentPreview name="Collapsible" />

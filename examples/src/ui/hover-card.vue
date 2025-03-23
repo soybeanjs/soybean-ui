@@ -2,7 +2,7 @@
 import { SAvatar, SButton, SCard, SHoverCard } from 'soy-ui';
 
 defineOptions({
-  name: 'UiHoverCard'
+  name: 'DemoHoverCard'
 });
 </script>
 

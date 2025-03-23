@@ -3,7 +3,7 @@ import { SCard, SToggle } from 'soy-ui';
 import type { ThemeSize, ToggleVariant } from 'soy-ui';
 
 defineOptions({
-  name: 'UiToggle'
+  name: 'DemoToggle'
 });
 
 const variants: ToggleVariant[] = ['ghost', 'outline'];

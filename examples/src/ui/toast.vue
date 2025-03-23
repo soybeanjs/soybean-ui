@@ -2,7 +2,7 @@
 import { SButton, SCard, SToastAction, useToast } from 'soy-ui';
 
 defineOptions({
-  name: 'UiToast'
+  name: 'DemoToast'
 });
 
 const { toast } = useToast();

@@ -1,3 +1,4 @@
 # Pagination
 
-<DemoPagination />
+<ComponentPreview name="Pagination" />
+

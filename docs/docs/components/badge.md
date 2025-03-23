@@ -1,3 +1,4 @@
 # Badge
 
-<DemoBadge />
+<ComponentPreview name="Badge" />
+

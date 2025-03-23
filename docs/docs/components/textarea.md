@@ -1,3 +1,4 @@
 # Textarea
 
-<DemoTextarea />
+<ComponentPreview name="Textarea" />
+

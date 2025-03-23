@@ -1,3 +1,4 @@
 # Select
 
-<DemoSelect />
+<ComponentPreview name="Select" />
+

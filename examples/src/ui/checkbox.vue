@@ -4,7 +4,7 @@ import { SCard, SCheckbox, SCheckboxGroup } from 'soy-ui';
 import type { CheckboxGroupItem, CheckedState, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiCheckbox'
+  name: 'DemoCheckbox'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

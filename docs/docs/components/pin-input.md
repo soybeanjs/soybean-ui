@@ -1,3 +1,3 @@
 # PinInput
 
-<DemoPinInput />
+<ComponentPreview name="PinInput" />

@@ -1,3 +1,4 @@
 # Drawer
 
-<DemoDrawer />
+<ComponentPreview name="Drawer" />
+

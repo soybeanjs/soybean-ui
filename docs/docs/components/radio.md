@@ -1,3 +1,3 @@
 # Radio
 
-<DemoRadio />
+<ComponentPreview name="Radio" />

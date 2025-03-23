@@ -5,7 +5,7 @@ import type { SheetSide, ThemeSize } from 'soy-ui';
 import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
-  name: 'UiSheet'
+  name: 'DemoSheet'
 });
 
 const size = ref<ThemeSize>('md');

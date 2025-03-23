@@ -5,7 +5,7 @@ import { SCard, SProgress } from 'soy-ui';
 import type { ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiProgress'
+  name: 'DemoProgress'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

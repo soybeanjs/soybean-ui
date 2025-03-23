@@ -1,3 +1,4 @@
 # Tooltip
 
-<DemoTooltip />
+<ComponentPreview name="Tooltip" />
+

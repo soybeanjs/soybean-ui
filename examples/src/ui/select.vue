@@ -3,7 +3,7 @@ import { SCard, SSelect } from 'soy-ui';
 import type { SelectGroupOptionData, SelectOptionData, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiSelect'
+  name: 'DemoSelect'
 });
 
 const fruits: SelectOptionData[] = createFruitItems();

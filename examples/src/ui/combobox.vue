@@ -4,7 +4,7 @@ import { SCard, SCombobox } from 'soy-ui';
 import type { CommandOptionData, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiCombobox'
+  name: 'DemoCombobox'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

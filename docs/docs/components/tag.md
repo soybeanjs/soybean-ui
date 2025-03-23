@@ -1,3 +1,4 @@
 # Tag
 
-<DemoTag />
+<ComponentPreview name="Tag" />
+

@@ -4,7 +4,7 @@ import type { NavigationMenuItemOption } from 'soy-ui';
 import { BookOpen, Box, CloudDownload, Cog, Database, FileText, House, Smile, SwatchBook } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiNavigationMenu'
+  name: 'DemoNavigationMenu'
 });
 
 const menus: NavigationMenuItemOption[] = [

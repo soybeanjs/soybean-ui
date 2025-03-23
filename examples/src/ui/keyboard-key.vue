@@ -3,7 +3,7 @@ import { SCard, SKeyboardKey, SKeyboardKeyGroup } from 'soy-ui';
 import type { KeyboardKeyVariant, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiKeyboardKey'
+  name: 'DemoKeyboardKey'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

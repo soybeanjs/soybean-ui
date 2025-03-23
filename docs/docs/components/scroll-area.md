@@ -1,3 +1,3 @@
 # ScrollArea
 
-<DemoScrollArea />
+<ComponentPreview name="ScrollArea" />

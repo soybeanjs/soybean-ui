@@ -1,3 +1,4 @@
 # ToggleGroup
 
-<DemoToggleGroup />
+<ComponentPreview name="ToggleGroup" />
+

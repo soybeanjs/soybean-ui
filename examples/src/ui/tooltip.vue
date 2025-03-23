@@ -3,7 +3,7 @@ import { SButton, SCard, STooltip } from 'soy-ui';
 import type { TooltipAlign, TooltipSide } from 'soy-ui';
 
 defineOptions({
-  name: 'UiTooltip'
+  name: 'DemoTooltip'
 });
 
 const sides: TooltipSide[] = ['top', 'right', 'bottom', 'left'];

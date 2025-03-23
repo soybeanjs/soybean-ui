@@ -1,3 +1,4 @@
 # TagsInput
 
-<DemoTagsInput />
+<ComponentPreview name="TagsInput" />
+

@@ -4,7 +4,7 @@ import type { ThemeSize } from 'soy-ui';
 import { ChevronDown, ChevronUp } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiNumberField'
+  name: 'DemoNumberField'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

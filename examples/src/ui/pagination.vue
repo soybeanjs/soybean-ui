@@ -3,7 +3,7 @@ import { SCard, SPagination } from 'soy-ui';
 import type { ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiPagination'
+  name: 'DemoPagination'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

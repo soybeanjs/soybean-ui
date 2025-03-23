@@ -4,7 +4,7 @@ import { SCard, SInput } from 'soy-ui';
 import type { ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiInput'
+  name: 'DemoInput'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

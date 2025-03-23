@@ -4,7 +4,7 @@ import { SCard, SToggleGroup } from 'soy-ui';
 import type { ToggleGroupItemData } from 'soy-ui';
 
 defineOptions({
-  name: 'UiToggleGroup'
+  name: 'DemoToggleGroup'
 });
 
 const value = ref<string>('top');

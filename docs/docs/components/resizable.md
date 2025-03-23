@@ -1,3 +1,3 @@
 # Resizable
 
-<DemoResizable />
+<ComponentPreview name="Resizable" />

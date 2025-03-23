@@ -1,3 +1,4 @@
 # Sheet
 
-<DemoSheet />
+<ComponentPreview name="Sheet" />
+

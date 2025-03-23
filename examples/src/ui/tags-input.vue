@@ -3,13 +3,13 @@ import { ref } from 'vue';
 import { SCard, STagsInput } from 'soy-ui';
 import type { ThemeSize } from 'soy-ui';
 
+defineOptions({
+  name: 'DemoTagsInput'
+});
+
 const tags = ref(['Apple', 'Banana', 'Cherry']);
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-
-defineOptions({
-  name: 'UiTagsInput'
-});
 </script>
 
 <template>

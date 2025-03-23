@@ -1,3 +1,3 @@
 # Carousel
 
-<DemoCarousel />
+<ComponentPreview name="Carousel" />

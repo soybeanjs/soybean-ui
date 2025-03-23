@@ -5,7 +5,7 @@ import type { ThemeSize } from 'soy-ui';
 import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
-  name: 'UiDrawer'
+  name: 'DemoDrawer'
 });
 
 const size = ref<ThemeSize>('md');

@@ -5,7 +5,7 @@ import type { ThemeSize } from 'soy-ui';
 import GraphemeSplitter from 'grapheme-splitter';
 
 defineOptions({
-  name: 'UiTextarea'
+  name: 'DemoTextarea'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

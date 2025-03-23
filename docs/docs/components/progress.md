@@ -1,3 +1,4 @@
 # Progress
 
-<DemoProgress />
+<ComponentPreview name="Progress" />
+

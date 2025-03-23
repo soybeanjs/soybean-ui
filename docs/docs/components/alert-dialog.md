@@ -1,3 +1,3 @@
 # AlertDialog
 
-<DemoAlertDialog />
+<ComponentPreview name="AlertDialog" />

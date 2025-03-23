@@ -1,3 +1,3 @@
 # Segment
 
-<DemoSegment />
+<ComponentPreview name="Segment" />

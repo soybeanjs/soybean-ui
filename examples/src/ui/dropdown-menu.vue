@@ -21,7 +21,7 @@ import {
 } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiDropdownMenu'
+  name: 'DemoDropdownMenu'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

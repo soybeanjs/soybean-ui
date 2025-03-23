@@ -1,3 +1,4 @@
 # Dialog
 
-<DemoDialog />
+<ComponentPreview name="Dialog" />
+

@@ -1,3 +1,3 @@
 # DropdownMenu
 
-<DemoDropdownMenu />
+<ComponentPreview name="DropdownMenu" />

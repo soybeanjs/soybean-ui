@@ -1,3 +1,3 @@
 # AspectRatio
 
-<DemoAspectRatio />
+<ComponentPreview name="AspectRatio" />

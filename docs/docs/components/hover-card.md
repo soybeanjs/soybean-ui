@@ -1,3 +1,4 @@
 # HoverCard
 
-<DemoHoverCard />
+<ComponentPreview name="HoverCard" />
+

@@ -1,3 +1,3 @@
 # Form
 
-<DemoForm />
+<ComponentPreview name="Form" />

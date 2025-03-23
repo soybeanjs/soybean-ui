@@ -1,3 +1,3 @@
 # Input
 
-<DemoInput />
+<ComponentPreview name="Input" />

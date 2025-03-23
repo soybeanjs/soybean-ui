@@ -6,7 +6,7 @@ import type { CommandGroupOptionData, CommandOptionData, SelectEvent, ThemeSize 
 import { Calendar, HelpCircle, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiCommand'
+  name: 'DemoCommand'
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];

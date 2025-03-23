@@ -1,3 +1,4 @@
 # Slider
 
-<DemoSlider />
+<ComponentPreview name="Slider" />
+

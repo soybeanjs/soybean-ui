@@ -1,3 +1,4 @@
 # KeyboardKey
 
-<DemoKeyboardKey />
+<ComponentPreview name="KeyboardKey" />
+

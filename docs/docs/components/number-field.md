@@ -1,3 +1,4 @@
 # NumberField
 
-<DemoNumberField />
+<ComponentPreview name="NumberField" />
+

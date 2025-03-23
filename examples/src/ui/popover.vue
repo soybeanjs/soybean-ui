@@ -3,7 +3,7 @@ import { SButton, SCard, SPopover } from 'soy-ui';
 import type { PopoverAlign, PopoverSide } from 'soy-ui';
 
 defineOptions({
-  name: 'UiPopover'
+  name: 'DemoPopover'
 });
 
 const sides: PopoverSide[] = ['top', 'right', 'bottom', 'left'];

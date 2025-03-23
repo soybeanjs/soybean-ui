@@ -1,3 +1,3 @@
 # Command
 
-<DemoCommand />
+<ComponentPreview name="Command" />

@@ -1,3 +1,3 @@
 # NavigationMenu
 
-<DemoNavigationMenu />
+<ComponentPreview name="NavigationMenu" />

@@ -4,7 +4,7 @@ import { SButton, SCard, SSelect, SonnerToaster, toast } from 'soy-ui';
 import type { SelectOptionData, SonnerProps } from 'soy-ui';
 
 defineOptions({
-  name: 'UiSonner'
+  name: 'DemoSonner'
 });
 
 function openDefaultToast() {

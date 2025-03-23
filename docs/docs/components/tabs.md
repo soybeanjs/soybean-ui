@@ -1,3 +1,3 @@
 # Tabs
 
-<DemoTabs />
+<ComponentPreview name="Tabs" />

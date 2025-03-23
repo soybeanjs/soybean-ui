@@ -2,7 +2,7 @@
 import { SCard, SSkeleton } from 'soy-ui';
 
 defineOptions({
-  name: 'UiSkeleton'
+  name: 'DemoSkeleton'
 });
 </script>
 

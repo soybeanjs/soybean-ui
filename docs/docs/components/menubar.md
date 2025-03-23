@@ -1,3 +1,3 @@
 # Menubar
 
-<DemoMenubar />
+<ComponentPreview name="Menubar" />

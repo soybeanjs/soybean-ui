@@ -3,6 +3,10 @@ import { ref } from 'vue';
 import { SCard, SSlider } from 'soy-ui';
 import type { ThemeColor } from 'soy-ui';
 
+defineOptions({
+  name: 'DemoSlider'
+});
+
 const model = ref<number[]>([33]);
 
 const model2 = ref<number[]>([10, 60]);

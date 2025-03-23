@@ -1,3 +1,4 @@
 # Avatar
 
-<DemoAvatar />
+<ComponentPreview name="Avatar" />
+

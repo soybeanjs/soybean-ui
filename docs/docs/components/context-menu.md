@@ -1,3 +1,3 @@
 # ContextMenu
 
-<DemoContextMenu />
+<ComponentPreview name="ContextMenu" />

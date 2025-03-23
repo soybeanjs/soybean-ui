@@ -1,3 +1,3 @@
 # Sonner
 
-<DemoSonner />
+<ComponentPreview name="Sonner" />

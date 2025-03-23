@@ -1,3 +1,4 @@
 # Toggle
 
-<DemoToggle />
+<ComponentPreview name="Toggle" />
+

@@ -1,3 +1,3 @@
 # Accordion
 
-<DemoAccordion />
+<ComponentPreview name="Accordion" />

@@ -1,3 +1,4 @@
 # Breadcrumb
 
-<DemoBreadcrumb />
+<ComponentPreview name="Breadcrumb" />
+

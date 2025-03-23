@@ -1,3 +1,4 @@
 # Toast
 
-<DemoToast />
+<ComponentPreview name="Toast" />
+

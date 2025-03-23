@@ -1,3 +1,4 @@
 # Card
 
-<DemoCard />
+<ComponentPreview name="Card" />
+

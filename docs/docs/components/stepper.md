@@ -1,3 +1,4 @@
 # Stepper
 
-<DemoStepper />
+<ComponentPreview name="Stepper" />
+

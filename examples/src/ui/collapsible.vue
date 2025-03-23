@@ -3,7 +3,7 @@ import { SButtonIcon, SCard, SCollapsible, SCollapsibleTrigger } from 'soy-ui';
 import { ChevronsDownUp, ChevronsUpDown } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'UiCollapsible'
+  name: 'DemoCollapsible'
 });
 </script>
 

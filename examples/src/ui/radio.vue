@@ -3,7 +3,7 @@ import { SCard, SRadio, SRadioGroup } from 'soy-ui';
 import type { RadioGroupItemProps, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiRadio'
+  name: 'DemoRadio'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

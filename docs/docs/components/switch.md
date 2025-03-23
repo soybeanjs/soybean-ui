@@ -1,3 +1,4 @@
 # Switch
 
-<DemoSwitch />
+<ComponentPreview name="Switch" />
+

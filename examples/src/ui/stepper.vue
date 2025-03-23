@@ -2,6 +2,10 @@
 import { SCard, SStepper } from 'soy-ui';
 import type { StepperOptionData } from 'soy-ui';
 
+defineOptions({
+  name: 'DemoStepper'
+});
+
 const items: StepperOptionData[] = [
   {
     step: 1,

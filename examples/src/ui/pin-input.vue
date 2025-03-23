@@ -4,7 +4,7 @@ import { SCard, SPinInput, SonnerToaster, toast } from 'soy-ui';
 import type { ThemeSize } from 'soy-ui';
 
 defineOptions({
-  name: 'UiPinInput'
+  name: 'DemoPinInput'
 });
 
 const numberValue = ref<string[]>([]);

@@ -1,3 +1,4 @@
 # Checkbox
 
-<DemoCheckbox />
+<ComponentPreview name="Checkbox" />
+

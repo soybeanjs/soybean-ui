@@ -1,3 +1,3 @@
 # Alert
 
-<DemoAlert />
+<ComponentPreview name="Alert" />

@@ -1,3 +1,3 @@
 # Separator
 
-<DemoSeparator />
+<ComponentPreview name="Separator" />
