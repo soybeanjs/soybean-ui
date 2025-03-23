@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress';
-import { computed, ref } from 'vue';
+import { computed, getCurrentInstance, ref } from 'vue';
 import { useClipboard } from '@vueuse/core';
 import { SButtonIcon, SSegment } from 'soy-ui';
 import type { SegmentOptionData } from 'soy-ui';
@@ -18,13 +17,17 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const { theme } = useData();
+const instance = getCurrentInstance();
 const { copy, copied } = useClipboard();
 
 function getCode(name: string) {
   const pathName = kebabCase(name);
 
-  const codeRecord = theme.value.customData.code;
+  const codeRecord = instance?.appContext?.config?.globalProperties?.$code as Record<string, string>;
+
+  if (!codeRecord) {
+    return '';
+  }
 
   return codeRecord[pathName];
 }

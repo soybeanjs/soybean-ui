@@ -5,6 +5,7 @@ import * as ExampleComponents from '@soybean-ui/examples';
 import 'uno.css';
 import '@unocss/reset/tailwind-compat.css';
 import './style.css';
+import code from '../code.json';
 import Layout from './layout/index.vue';
 import InstallationTabs from './components/installation-tabs.vue';
 import ComponentPreview from './components/component-preview.vue';
@@ -23,8 +24,13 @@ const theme: Theme = {
     app.component('InstallationTabs', InstallationTabs);
     app.component('ComponentPreview', ComponentPreview);
     registerExamples(app);
+    registerCode(app);
   }
 };
+
+function registerCode(app: App) {
+  app.config.globalProperties.$code = code;
+}
 
 function cacheTheme() {
   if (import.meta.env.SSR) return;

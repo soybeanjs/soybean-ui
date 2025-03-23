@@ -12,5 +12,4 @@ export interface SidebarItem extends DefaultTheme.SidebarItem {
 export interface CustomThemeConfig extends Omit<DefaultTheme.Config, 'nav' | 'sidebar'> {
   nav: NavItem[];
   sidebar: SidebarItem[];
-  customData: Record<string, any>;
 }
