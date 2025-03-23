@@ -25,6 +25,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SliderRootPropsWithPrimitive>(), {
+  as: 'span',
   min: 0,
   max: 100,
   step: 1,

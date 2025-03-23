@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
@@ -30,14 +30,23 @@ const { forwardRef, currentElement } = useForwardExpose();
 
 const indicatorTrack = ref<HTMLElement>();
 const viewport = ref<HTMLElement>();
+const activeTrigger = ref<HTMLElement>();
 
-const { CollectionSlot } = useCollection({ key: 'NavigationMenu', isProvider: true });
+const { getItems, CollectionSlot } = useCollection({ key: 'NavigationMenu', isProvider: true });
+
+watchEffect(() => {
+  if (!modelValue.value) return;
+
+  const items = getItems().map(i => i.ref);
+  activeTrigger.value = items.find(item => item.id.includes(modelValue.value));
+});
 
 provideNavigationMenuRootContext({
   ...menuContext,
   isRootMenu: false,
   modelValue,
   previousValue,
+  activeTrigger,
   orientation: props.orientation,
   rootNavigationMenu: currentElement,
   indicatorTrack,

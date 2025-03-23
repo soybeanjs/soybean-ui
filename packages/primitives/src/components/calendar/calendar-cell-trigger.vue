@@ -100,9 +100,11 @@ function handleArrowKey(e: KeyboardEvent) {
       const newCollectionItems: HTMLElement[] = parentElement
         ? Array.from(parentElement.querySelectorAll(SELECTOR))
         : [];
-      if (!rootContext.pagedNavigation.value) {
+      if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
         // Placeholder is set to first month of the new page
-        const numberOfDays = getDaysInMonth(rootContext.placeholder.value);
+        const numberOfDays = getDaysInMonth(
+          rootContext.placeholder.value.add({ months: rootContext.numberOfMonths.value })
+        );
         newCollectionItems[numberOfDays - Math.abs(newIndex)].focus();
         return;
       }
@@ -118,14 +120,16 @@ function handleArrowKey(e: KeyboardEvent) {
       const newCollectionItems: HTMLElement[] = parentElement
         ? Array.from(parentElement.querySelectorAll(SELECTOR))
         : [];
-      if (!rootContext.pagedNavigation.value) {
+
+      if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
         // Placeholder is set to first month of the new page
         const numberOfDays = getDaysInMonth(
           rootContext.placeholder.value.add({ months: rootContext.numberOfMonths.value - 1 })
         );
-        newCollectionItems[newCollectionItems.length - numberOfDays + newIndex - allCollectionItems.length].focus();
+        newCollectionItems[newIndex - allCollectionItems.length + (newCollectionItems.length - numberOfDays)].focus();
         return;
       }
+
       newCollectionItems[newIndex - allCollectionItems.length].focus();
     });
   }

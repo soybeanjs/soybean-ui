@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { isEqual } from 'ohash';
 import { useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { injectTagsInputItemContext, injectTagsInputRootContext } from './context';
@@ -21,7 +22,7 @@ const disabled = computed(() => itemContext.disabled?.value || context.disabled.
 
 function handleDelete() {
   if (disabled.value) return;
-  const index = context.modelValue.value.findIndex(i => i === itemContext.value.value);
+  const index = context.modelValue.value.findIndex(i => isEqual(i, itemContext.value.value));
   context.onRemoveValue(index);
 }
 </script>

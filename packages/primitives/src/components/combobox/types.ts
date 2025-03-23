@@ -130,9 +130,6 @@ export interface ComboboxContentContext {
 }
 
 // ComboboxItemContext
-export interface ComboboxItemContext {
-  isSelected: Ref<boolean>;
-}
 
 export interface ComboboxGroupContext {
   id: string;
