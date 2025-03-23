@@ -1,6 +1,30 @@
 # Changelog
 
 
+## [v0.0.2-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2-beta.1) (2025-03-23)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **packages**: rename `badge` to `tag`, `chip` to `badge` &nbsp;-&nbsp; by @soybeanjs [<samp>(d0a65)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d0a65d9)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**: ui: fix checkbox-group props &nbsp;-&nbsp; by @soybeanjs [<samp>(e32bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e32bb91)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **packages**:
+  - optimize navigation-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(1887f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1887f2f)
+  - optimize import order & update component names &nbsp;-&nbsp; by @soybeanjs [<samp>(79b3a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/79b3a72)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: optimize read theme config in vitepress &nbsp;-&nbsp; by @soybeanjs [<samp>(17cf1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/17cf152)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1](https://github.com/soybeanjs/soybean-ui/compare/undefined...v0.0.1) (2025-03-23)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
