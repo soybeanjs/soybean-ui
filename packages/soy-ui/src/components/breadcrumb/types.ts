@@ -6,9 +6,13 @@ export interface BreadcrumbRootProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface BreadcrumbListProps extends ClassValueProp {}
+export interface BreadcrumbListProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
-export interface BreadcrumbItemProps extends ClassValueProp {}
+export interface BreadcrumbItemProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export interface BreadcrumbPageProps extends ClassValueProp {}
 

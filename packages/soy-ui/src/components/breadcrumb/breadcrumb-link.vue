@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from '@soybean-ui/primitives';
+import { useForwardProps } from '@soybean-ui/primitives';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbLinkProps } from './types';
 
@@ -18,7 +18,7 @@ const mergedCls = computed(() => cn(link(), cls));
 </script>
 
 <template>
-  <Primitive as="a" v-bind="forwardedProps" :class="mergedCls">
+  <a v-bind="forwardedProps" :class="mergedCls">
     <slot />
-  </Primitive>
+  </a>
 </template>

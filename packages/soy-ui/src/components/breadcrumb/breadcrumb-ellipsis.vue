@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import { Ellipsis } from 'lucide-vue-next';
 import type { BreadcrumbEllipsisProps } from './types';
@@ -17,10 +16,10 @@ const mergedCls = computed(() => cn(ellipsis(), cls));
 </script>
 
 <template>
-  <Primitive as="li" role="presentation" aria-hidden="true" :class="mergedCls">
+  <li role="presentation" aria-hidden="true" :class="mergedCls">
     <slot>
       <Ellipsis />
     </slot>
     <span class="sr-only">More</span>
-  </Primitive>
+  </li>
 </template>

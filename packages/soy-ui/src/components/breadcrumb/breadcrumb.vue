@@ -67,7 +67,7 @@ function handleItemClick(item: T) {
 
 <template>
   <SBreadcrumbRoot :class="cls || ui?.root" :size="size">
-    <SBreadcrumbList :class="ui?.list">
+    <SBreadcrumbList :class="ui?.list" :size="size">
       <template v-for="(item, index) in itemsFilterEllipsis" :key="item.value">
         <template v-if="startEllipsisIndex && index === startEllipsisIndex">
           <slot name="ellipsis" :ellipsis-items="ellipsisItems">
@@ -79,7 +79,7 @@ function handleItemClick(item: T) {
             <slot name="separator" />
           </SBreadcrumbSeparator>
         </template>
-        <SBreadcrumbItem :class="ui?.item" @click="handleItemClick(item)">
+        <SBreadcrumbItem :class="ui?.item" :size="size" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item">
             <component :is="item.icon" v-if="item.icon" />
           </slot>

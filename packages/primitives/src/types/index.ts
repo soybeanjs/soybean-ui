@@ -40,7 +40,7 @@ export type HTMLAttributeReferrerPolicy =
   | 'strict-origin'
   | 'strict-origin-when-cross-origin'
   | 'unsafe-url';
-export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
+export type AnchorTarget = '_blank' | '_parent' | '_self' | '_top' | (string & {}) | undefined;
 export type AnchorRel = 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
 export type CheckAction = 'check' | 'uncheck';
 

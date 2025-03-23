@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbPageProps } from './types';
 
@@ -16,7 +15,7 @@ const mergedCls = computed(() => cn(page(), cls));
 </script>
 
 <template>
-  <Primitive as="span" role="link" aria-disabled="true" aria-current="page" :class="mergedCls">
+  <span role="link" aria-disabled="true" aria-current="page" :class="mergedCls">
     <slot />
-  </Primitive>
+  </span>
 </template>

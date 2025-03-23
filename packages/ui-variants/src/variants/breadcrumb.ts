@@ -4,8 +4,8 @@ import { tv } from 'tailwind-variants';
 export const breadcrumbVariants = tv({
   slots: {
     root: '',
-    list: 'flex flex-wrap items-center gap-1.5 break-words text-muted-foreground',
-    item: 'inline-flex items-center gap-1.5 list-none',
+    list: 'flex flex-wrap items-center my-0 break-words text-muted-foreground',
+    item: 'inline-flex items-center list-none',
     page: 'font-normal text-foreground',
     separator: 'text-muted-foreground flex-shrink-0 list-none',
     ellipsis: 'flex items-center justify-center',
@@ -14,22 +14,34 @@ export const breadcrumbVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'text-xs'
+        root: 'text-[10px]',
+        list: 'gap-1',
+        item: 'gap-0.5'
       },
       sm: {
-        root: 'text-sm'
+        root: 'text-xs',
+        list: 'gap-1.5',
+        item: 'gap-1'
       },
       md: {
-        root: 'text-sm'
+        root: 'text-sm',
+        list: 'gap-2',
+        item: 'gap-1.25'
       },
       lg: {
-        root: 'text-base'
+        root: 'text-base',
+        list: 'gap-2.5',
+        item: 'gap-1.5'
       },
       xl: {
-        root: 'text-base'
+        root: 'text-lg',
+        list: 'gap-3',
+        item: 'gap-2'
       },
       xxl: {
-        root: 'text-lg'
+        root: 'text-xl',
+        list: 'gap-3.5',
+        item: 'gap-2.5'
       }
     }
   },

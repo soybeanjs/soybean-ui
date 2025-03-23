@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { breadcrumbVariants, cn } from '@soybean-ui/variants';
 import type { BreadcrumbItemProps } from './types';
 
@@ -8,15 +7,17 @@ defineOptions({
   name: 'SBreadcrumbItem'
 });
 
-const { class: cls } = defineProps<BreadcrumbItemProps>();
+const { class: cls, size } = defineProps<BreadcrumbItemProps>();
 
-const { item } = breadcrumbVariants();
+const mergedCls = computed(() => {
+  const { item } = breadcrumbVariants({ size });
 
-const mergedCls = computed(() => cn(item(), cls));
+  return cn(item(), cls);
+});
 </script>
 
 <template>
-  <Primitive as="li" :class="mergedCls">
+  <li :class="mergedCls">
     <slot />
-  </Primitive>
+  </li>
 </template>
