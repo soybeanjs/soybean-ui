@@ -1,8 +1,9 @@
 import { defineConfigWithTheme, postcssIsolateStyles } from 'vitepress';
 import unocss from 'unocss/vite';
 import { version } from '../package.json';
-import ComponentPreview from './plugins/component-preview';
+import ComponentPreview from './plugins/previewer';
 import type { CustomThemeConfig } from './types';
+import code from './code.json?raw';
 
 export default defineConfigWithTheme<CustomThemeConfig>({
   title: 'Soybean UI',
@@ -141,7 +142,10 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'Tree', link: '/docs/components/tree', badge: 'wip' }
         ]
       }
-    ]
+    ],
+    customData: {
+      code
+    }
   },
   vite: {
     // @ts-expect-error ignore type
