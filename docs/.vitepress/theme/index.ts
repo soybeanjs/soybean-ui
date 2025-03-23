@@ -7,6 +7,7 @@ import '@unocss/reset/tailwind-compat.css';
 import './style.css';
 import Layout from './layout/index.vue';
 import InstallationTabs from './components/installation-tabs.vue';
+import ComponentPreview from './components/component-preview.vue';
 
 function registerExamples(app: App) {
   for (const key in ExampleComponents) {
@@ -20,6 +21,7 @@ const theme: Theme = {
   enhanceApp({ app }) {
     cacheTheme();
     app.component('InstallationTabs', InstallationTabs);
+    app.component('ComponentPreview', ComponentPreview);
     registerExamples(app);
   }
 };

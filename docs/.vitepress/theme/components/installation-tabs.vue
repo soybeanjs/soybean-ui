@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SButtonIcon, STabs } from 'soy-ui';
-import type { TabsOption } from 'soy-ui';
+import type { TabsOptionData } from 'soy-ui';
 import { Copy } from 'lucide-vue-next';
 
 defineOptions({
@@ -18,7 +18,7 @@ const activePackageManager = ref<string>('npm');
 
 const PACKAGE_MANAGERS = ['npm', 'pnpm', 'yarn', 'bun'] as const;
 
-const packageManagers = ref<TabsOption[]>(PACKAGE_MANAGERS.map(pkg => ({ value: pkg, label: pkg })));
+const packageManagers = ref<TabsOptionData[]>(PACKAGE_MANAGERS.map(pkg => ({ value: pkg, label: pkg })));
 
 function handleCopy() {
   const command = `${activePackageManager.value} add ${props.pkg}`;
