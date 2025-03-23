@@ -9,11 +9,11 @@ defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = defineProps<CheckboxGroupProps<T>>();
+const { items, ...delegatedProps } = defineProps<CheckboxGroupProps<T>>();
 
 const emit = defineEmits<CheckboxGroupEmits<T>>();
 
-const forwarded = useForwardPropsEmits(props, emit);
+const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>

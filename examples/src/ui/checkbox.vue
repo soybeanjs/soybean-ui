@@ -63,6 +63,7 @@ function createCheckboxItems() {
     </SCard>
     <SCard title="Indeterminate" split>
       <SCheckbox v-model="checked" label="Check All" />
+      <SCheckboxGroup v-model="checks3" :items="items3" class="mt-3" />
     </SCard>
     <SCard title="Disabled" split>
       <SCheckboxGroup :default-value="['2']" :items="items" disabled />
