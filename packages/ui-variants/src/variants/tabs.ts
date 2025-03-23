@@ -6,7 +6,7 @@ export const tabsVariants = tv({
     root: `flex items-stretch`,
     list: 'relative inline-flex justify-center items-center p-1 rounded-md bg-muted text-muted-foreground',
     trigger: [
-      `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all`,
+      `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium transition-all-200`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ],

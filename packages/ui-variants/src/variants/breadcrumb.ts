@@ -9,7 +9,7 @@ export const breadcrumbVariants = tv({
     page: 'font-normal text-foreground',
     separator: 'text-muted-foreground flex-shrink-0 list-none',
     ellipsis: 'flex items-center justify-center',
-    link: 'hover:text-foreground transition-colors rounded-sm focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)'
+    link: 'hover:text-foreground transition-colors-200 rounded-sm focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)'
   },
   variants: {
     size: {

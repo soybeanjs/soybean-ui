@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const toastVariants = tv({
   slots: {
     root: [
-      `group pointer-events-auto relative flex w-full items-center justify-between space-x-2 overflow-hidden rounded-md border p-4 pr-6 shadow-lg transition-all`,
+      `group pointer-events-auto relative flex w-full items-center justify-between space-x-2 overflow-hidden rounded-md border p-4 pr-6 shadow-lg transition-all-200`,
       `data-[swipe=cancel]:translate-x-0`,
       `data-[swipe=end]:(translate-x-[var(--soybean-toast-swipe-end-x)] animate-out)`,
       `data-[swipe=move]:(translate-x-[var(--soybean-toast-swipe-move-x)] transition-none)`,
@@ -18,7 +18,7 @@ export const toastVariants = tv({
     ],
     title: `flex items-center gap-2 text-sm font-semibold [&+div]:text-xs`,
     description: `text-sm opacity-90`,
-    close: `absolute right-1 top-1 opacity-0 transition-opacity group-hover:opacity-100`,
+    close: `absolute right-1 top-1 opacity-0 transition-opacity-200 group-hover:opacity-100`,
     action: ''
   },
   variants: {

@@ -5,7 +5,7 @@ export const scrollAreaVariants = tv({
   slots: {
     root: 'relative overflow-hidden',
     viewport: 'size-full rounded-inherit',
-    scrollbar: 'flex touch-none select-none transition-colors',
+    scrollbar: 'flex touch-none select-none transition-colors-200',
     thumb: 'relative flex-1 rounded-full bg-border'
   },
   variants: {

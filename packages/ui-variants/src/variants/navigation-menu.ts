@@ -13,7 +13,7 @@ export const navigationMenuVariants = tv({
     list: `group flex flex-1 list-none items-center justify-center space-x-1`,
     item: ``,
     trigger: [
-      `group inline-flex h-10 w-max items-center justify-center gap-1.5 rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors`,
+      `group inline-flex h-10 w-max items-center justify-center gap-1.5 rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors-200`,
       `hover:(bg-accent text-accent-foreground)`,
       `focus:(bg-accent text-accent-foreground outline-none)`,
       `disabled:(pointer-events-none opacity-50)`,
@@ -22,7 +22,7 @@ export const navigationMenuVariants = tv({
     ],
     triggerIcon: `relative top-px size-5 transition duration-200 group-data-[state=open]:rotate-180`,
     indicator: [
-      `absolute top-full z-1 flex mt-1px w-[--soybean-navigation-menu-indicator-size] h-2.5 items-end justify-center overflow-hidden transition-transform duration-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
+      `absolute top-full z-1 flex mt-1px w-[--soybean-navigation-menu-indicator-size] h-2.5 items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
       `data-[state=visible]:(animate-in fade-in-0)`,
       `data-[state=hidden]:(animate-out fade-out-0)`
     ],
@@ -40,7 +40,7 @@ export const navigationMenuVariants = tv({
     childList: `grid grid-cols-[auto_auto] gap-2 p-2`,
     childListItem: ``,
     childLink: [
-      `block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors space-y-1 cursor-pointer`,
+      `block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors-200 space-y-1 cursor-pointer`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`
     ],
     childLinkLabel: `text-sm font-medium leading-none`,

@@ -10,7 +10,7 @@ export const sliderVariants = tv({
     track: `relative h-2 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full`,
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
-      `block h-5 w-5 rounded-full border-2 bg-background transition-colors`,
+      `block h-5 w-5 rounded-full border-2 bg-background transition-colors-200`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background)`,
       `disabled:(pointer-events-none opacity-50)`
     ]

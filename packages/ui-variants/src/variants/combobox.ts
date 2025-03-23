@@ -9,7 +9,7 @@ export const comboboxVariants = tv({
     group: `overflow-hidden text-foreground`,
     groupLabel: `font-medium text-muted-foreground`,
     input: [
-      `flex w-full bg-transparent shadow-sm transition-colors`,
+      `flex w-full bg-transparent shadow-sm transition-colors-200`,
       `file:(border-0 bg-transparent font-medium)`,
       `placeholder:text-muted-foreground outline-none disabled:(cursor-not-allowed opacity-50)`
     ],

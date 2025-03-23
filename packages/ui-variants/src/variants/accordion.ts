@@ -8,11 +8,11 @@ export const accordionVariants = tv({
     header: 'flex',
     content: `overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`,
     trigger: [
-      `flex-1 flex items-center justify-between font-medium transition-all bg-transparent`,
+      `flex-1 flex items-center justify-between font-medium transition-all-200 bg-transparent`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `hover:underline [&[data-state=open]>svg]:rotate-180`
     ],
-    triggerIcon: 'shrink-0 text-muted-foreground transition-transform duration-200'
+    triggerIcon: 'shrink-0 text-muted-foreground transition-transform-200'
   },
   variants: {
     size: {

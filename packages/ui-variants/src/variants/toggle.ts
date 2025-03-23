@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const toggleVariants = tv({
   slots: {
     toggle: [
-      `inline-flex items-center justify-center rounded-md font-medium transition-colors`,
+      `inline-flex items-center justify-center rounded-md font-medium transition-colors-200`,
       `hover:(bg-muted text-muted-foreground) focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(pointer-events-none opacity-50)`,
       `data-[state=on]:bg-accent data-[state=on]:hover:(bg-accent text-accent-foreground)`
     ],

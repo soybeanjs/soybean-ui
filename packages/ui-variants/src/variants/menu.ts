@@ -17,12 +17,12 @@ export const menuVariants = tv({
     ],
     group: '',
     item: [
-      `relative flex items-center gap-3 rounded-sm outline-none transition-colors cursor-default select-none`,
+      `relative flex items-center gap-3 rounded-sm outline-none transition-colors-200 cursor-default select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemIcon: `text-muted-foreground`,
     itemLink: [
-      `relative flex items-center gap-3 rounded-sm outline-none transition-colors cursor-pointer select-none`,
+      `relative flex items-center gap-3 rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemLinkIcon: `self-start -ml-3 text-muted-foreground`,
@@ -31,12 +31,12 @@ export const menuVariants = tv({
     shortcut: `ml-auto tracking-widest opacity-60`,
     separator: `-mx-1 my-1 h-px bg-border`,
     checkboxItem: [
-      `relative flex items-center gap-3 rounded-sm outline-none transition-colors cursor-pointer select-none`,
+      `relative flex items-center gap-3 rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemIndicator: `absolute flex items-center justify-center text-primary`,
     radioItem: [
-      `relative flex items-center gap-3 rounded-sm outline-none transition-colors cursor-pointer select-none`,
+      `relative flex items-center gap-3 rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     radioIndicatorIconRoot: `size-1.25em flex items-center justify-center`,
