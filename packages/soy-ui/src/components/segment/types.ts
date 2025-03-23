@@ -13,14 +13,14 @@ export type SegmentIndicatorRootProps = ClassValueProp;
 
 export type SegmentIndicatorProps = ClassValueProp;
 
-export type SegmentOption<T extends StringOrNumber = StringOrNumber> = Pick<SegmentTriggerProps, 'disabled'> & {
+export type SegmentOptionData<T extends StringOrNumber = StringOrNumber> = Pick<SegmentTriggerProps, 'disabled'> & {
   value: T;
   label: string;
 };
 
 export type SegmentUi = Partial<Record<SegmentSlots, ClassValue>>;
 
-export type SegmentProps<T extends SegmentOption> = SegmentRootProps<T['value']> &
+export type SegmentProps<T extends SegmentOptionData> = SegmentRootProps<T['value']> &
   SegmentTriggerRootProps & {
     ui?: SegmentUi;
     items: T[];

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, STabs } from 'soy-ui';
-import type { TabsOption } from 'soy-ui';
+import type { TabsOptionData } from 'soy-ui';
+
+defineOptions({
+  name: 'DemoTabs'
+});
 
 const tabValue = ref('1');
 const tabValue2 = ref('1');
@@ -20,11 +24,7 @@ const tabs = [
     value: '3',
     label: 'Tab 3'
   }
-] satisfies TabsOption[];
-
-defineOptions({
-  name: 'UiTabs'
-});
+] satisfies TabsOptionData[];
 </script>
 
 <template>

@@ -31,14 +31,14 @@ export interface TabsContentProps extends _TabsContentProps {
   orientation?: ThemeOrientation;
 }
 
-export type TabsOption<T extends StringOrNumber = StringOrNumber> = Pick<TabsTriggerProps, 'disabled'> & {
+export type TabsOptionData<T extends StringOrNumber = StringOrNumber> = Pick<TabsTriggerProps, 'disabled'> & {
   value: T;
   label: string;
 };
 
 export type TabsUi = Partial<Record<TabsSlots, ClassValue>>;
 
-export type TabsProps<T extends TabsOption> = TabsRootProps<T['value']> &
+export type TabsProps<T extends TabsOptionData> = TabsRootProps<T['value']> &
   TabsListProps & {
     ui?: TabsUi;
     items: T[];

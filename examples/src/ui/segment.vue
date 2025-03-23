@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, SSegment } from 'soy-ui';
-import type { SegmentOption } from 'soy-ui';
+import type { SegmentOptionData } from 'soy-ui';
+
+defineOptions({
+  name: 'DemoSegment'
+});
 
 const day = ref('monday');
 
@@ -34,11 +38,7 @@ const weekends = [
     value: 'sunday',
     label: 'Sunday'
   }
-] satisfies SegmentOption[];
-
-defineOptions({
-  name: 'UiSegment'
-});
+] satisfies SegmentOptionData[];
 </script>
 
 <template>

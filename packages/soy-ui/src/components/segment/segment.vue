@@ -1,11 +1,11 @@
-<script setup lang="ts" generic="T extends SegmentOption = SegmentOption">
+<script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import SSegmentRoot from './segment-root.vue';
 import SSegmentTriggerRoot from './segment-trigger-root.vue';
 import SSegmentTrigger from './segment-trigger.vue';
 import SSegmentIndicatorRoot from './segment-indicator-root.vue';
 import SSegmentIndicator from './segment-indicator.vue';
-import type { SegmentEmits, SegmentOption, SegmentProps } from './types';
+import type { SegmentEmits, SegmentOptionData, SegmentProps } from './types';
 
 defineOptions({
   name: 'SSegment'

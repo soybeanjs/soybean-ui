@@ -4,7 +4,7 @@ import type { Component } from 'vue';
 import { useDark, useStorage } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SConfigProvider, SPopover, SScrollArea, STabs, SToastProvider } from 'soy-ui';
-import type { ConfigProviderProps, TabsOption } from 'soy-ui';
+import type { ConfigProviderProps, TabsOptionData } from 'soy-ui';
 import * as ExampleComponents from '@soybean-ui/examples';
 import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
 import { kebabCase } from 'es-toolkit';
@@ -33,7 +33,7 @@ const configProviderProps = computed<ConfigProviderProps>(() => ({
   }
 }));
 
-interface TabConfig extends TabsOption {
+interface TabConfig extends TabsOptionData {
   component: Component;
 }
 
