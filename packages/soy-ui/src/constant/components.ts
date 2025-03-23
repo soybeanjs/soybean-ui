@@ -8,7 +8,7 @@ export const components = {
     'SAccordionTrigger',
     'SAccordion'
   ],
-  alert: ['SAlertRoot', 'SAlertHeader', 'SAlertTitleRoot', 'SAlertTitle', 'SAlertDescription', 'SAlert'],
+  alert: ['SAlertRoot', 'SAlertWrapper', 'SAlertTitle', 'SAlertDescription', 'SAlert'],
   alertDialog: [
     'SAlertDialogAction',
     'SAlertDialogCancel',
@@ -51,7 +51,7 @@ export const components = {
   //   'SCalendarPrev',
   //   'SCalendarRoot'
   // ],
-  card: ['SCardRoot', 'SCardHeader', 'SCardTitleRoot', 'SCardTitle', 'SCardBody', 'SCardFooter', 'SCard'],
+  card: ['SCardRoot', 'SCardHeader', 'SCardTitleRoot', 'SCardTitle', 'SCardContent', 'SCardFooter', 'SCard'],
   carousel: ['SCarouselRoot', 'SCarouselContent', 'SCarouselItem', 'SCarouselNext', 'SCarouselPrevious', 'SCarousel'],
   checkbox: [
     'SCheckboxGroupRoot',
@@ -93,7 +93,7 @@ export const components = {
     'SCommandSingleOption',
     'SCommand'
   ],
-  // configProvider: ['SConfigProvider'],
+  configProvider: ['SConfigProvider'],
   contextMenu: [
     'SContextMenuContent',
     'SContextMenuOption',
@@ -156,6 +156,7 @@ export const components = {
   // ],
   dialog: [
     'SDialogClose',
+    'SDialogCloseIcon',
     'SDialogContent',
     'SDialogDescription',
     'SDialogOverlay',
@@ -168,6 +169,7 @@ export const components = {
     'SDialog'
   ],
   drawer: [
+    'SDrawer',
     'SDrawerOverlay',
     'SDrawerContent',
     'SDrawerContentBody',
@@ -175,8 +177,12 @@ export const components = {
     'SDrawerRoot',
     'SDrawerClose',
     'SDrawerPortal',
+    'SDrawerCloseIcon',
+    'SDrawerDescription',
     'SDrawerFooter',
-    'SDrawer'
+    'SDrawerHeader',
+    'SDrawerTitle',
+    'SDrawerTrigger'
   ],
   dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio'],
   form: [
@@ -189,42 +195,43 @@ export const components = {
     'SFormFieldArray'
   ],
   hoverCard: [
+    'SHoverCard',
     'SHoverCardArrow',
     'SHoverCardContent',
     'SHoverCardPortal',
     'SHoverCardRoot',
-    'SHoverCardTrigger',
-    'SHoverCard'
+    'SHoverCardTrigger'
   ],
   input: ['SInput'],
   keyboardKey: ['SKeyboardKey', 'SKeyboardKeyGroup'],
   label: ['SLabel'],
   link: ['SLink'],
   menu: [
-    'SMenuPortal',
+    'SMenu',
     'SMenuArrow',
+    'SMenuCheckbox',
+    'SMenuCheckboxGroup',
+    'SMenuCheckboxItem',
     'SMenuContent',
-    'SMenuSubContent',
-    'SMenuSubTrigger',
     'SMenuItem',
     'SMenuItemIndicator',
     'SMenuItemLink',
     'SMenuItemLinkIcon',
     'SMenuLabel',
-    'SMenuShortcut',
-    'SMenuCheckboxItem',
-    'SMenuRadioItem',
-    'SMenuRadioIndicatorIcon',
-    'SMenuSeparator',
     'SMenuOption',
-    'SMenuCheckboxGroup',
-    'SMenuRadioGroup',
+    'SMenuPortal',
     'SMenuPortalContent',
-    'SMenu',
-    'SMenuCheckbox',
-    'SMenuRadio'
+    'SMenuRadio',
+    'SMenuRadioGroup',
+    'SMenuRadioIndicatorIcon',
+    'SMenuRadioItem',
+    'SMenuSeparator',
+    'SMenuShortcut',
+    'SMenuSubContent',
+    'SMenuSubTrigger'
   ],
   menubar: [
+    'SMenubar',
     'SMenubarRoot',
     'SMenubarContent',
     'SMenubarItem',
@@ -235,53 +242,59 @@ export const components = {
     'SMenubarSubTrigger',
     'SMenubarTrigger',
     'SMenubarTriggerLink',
-    'SMenubarTriggerOption',
-    'SMenubar'
+    'SMenubarTriggerOption'
   ],
   navigationMenu: [
-    'SNavigationMenuRoot',
-    'SNavigationMenuViewport',
-    'SNavigationMenuList',
+    'SNavigationMenu',
+    'SNavigationMenuChildLink',
+    'SNavigationMenuChildLinkDescription',
+    'SNavigationMenuChildLinkLabel',
+    'SNavigationMenuChildListItem',
+    'SNavigationMenuChildList',
     'SNavigationMenuContent',
-    'SNavigationMenuItem',
-    'SNavigationMenuTrigger',
-    'SNavigationMenuLink',
     'SNavigationMenuIndicator',
+    'SNavigationMenuLink',
+    'SNavigationMenuList',
+    'SNavigationMenuRoot',
     'SNavigationMenuSub',
-    'SNavigationMenu'
+    'SNavigationMenuTrigger',
+    'SNavigationMenuTriggerIcon',
+    'SNavigationMenuViewport',
+    'SNavigationMenuViewportRoot',
+    'SNavigationMenuItem'
   ],
   numberField: [
+    'SNumberField',
     'SNumberFieldDecrement',
     'SNumberFieldIncrement',
     'SNumberFieldInput',
-    'SNumberFieldRoot',
-    'SNumberField'
+    'SNumberFieldRoot'
   ],
   pagination: [
-    'SPaginationRoot',
-    'SPaginationList',
-    'SPaginationListItem',
-    'SPaginationFirst',
-    'SPaginationLast',
-    'SPaginationNext',
-    'SPaginationPrev',
+    'SPagination',
     'SPaginationButton',
     'SPaginationEllipsis',
-    'SPagination'
+    'SPaginationFirst',
+    'SPaginationLast',
+    'SPaginationList',
+    'SPaginationListItem',
+    'SPaginationNext',
+    'SPaginationPrev',
+    'SPaginationRoot'
   ],
-  pinInput: ['SPinInputRoot', 'SPinInputItem', 'SPinInputSeparator', 'SPinInput'],
+  pinInput: ['SPinInput', 'SPinInputInput', 'SPinInputRoot', 'SPinInputSeparator'],
   popover: [
     'SPopover',
-    'SPopoverRoot',
-    'SPopoverTrigger',
-    'SPopoverContent',
-    'SPopoverPortal',
     'SPopoverAnchor',
     'SPopoverArrow',
-    'SPopoverClose'
+    'SPopoverClose',
+    'SPopoverContent',
+    'SPopoverPortal',
+    'SPopoverRoot',
+    'SPopoverTrigger'
   ],
-  progress: ['SProgressRoot', 'SProgressIndicator', 'SProgress'],
-  radioGroup: ['SRadioRoot', 'SRadioControl', 'SRadioIndicator', 'SRadio', 'SRadioGroup'],
+  progress: ['SProgress', 'SProgressIndicator', 'SProgressRoot'],
+  radio: ['SRadio', 'SRadioControl', 'SRadioGroup', 'SRadioIndicator', 'SRadioRoot'],
   // rangeCalendar: [
   //   'RangeCalendarCellTrigger',
   //   'RangeCalendarCell',
@@ -296,72 +309,91 @@ export const components = {
   //   'RangeCalendarPrev',
   //   'RangeCalendarRoot'
   // ],
-  resizable: ['SResizablePanel', 'SResizableHandle', 'SResizablePanelGroup'],
+  resizable: ['SResizableHandle', 'SResizablePanel', 'SResizablePanelGroup'],
   scrollArea: [
+    'SScrollArea',
+    'SScrollAreaCorner',
     'SScrollAreaRoot',
-    'SScrollAreaViewport',
     'SScrollAreaScrollbar',
     'SScrollAreaThumb',
-    'SScrollAreaCorner',
-    'SScrollArea'
+    'SScrollAreaViewport'
   ],
   segment: [
-    'SSegmentRoot',
-    'SSegmentTriggerRoot',
-    'SSegmentTrigger',
-    'SSegmentIndicatorRoot',
+    'SSegment',
     'SSegmentIndicator',
-    'SSegment'
+    'SSegmentIndicatorRoot',
+    'SSegmentRoot',
+    'SSegmentTrigger',
+    'SSegmentTriggerRoot'
   ],
   select: [
+    'SSelect',
+    'SSelectContent',
+    'SSelectGroup',
+    'SSelectIcon',
+    'SSelectItem',
+    'SSelectItemIndicator',
+    'SSelectItemText',
+    'SSelectLabel',
+    'SSelectOption',
+    'SSelectPortal',
     'SSelectRoot',
+    'SSelectScrollDownButton',
+    'SSelectScrollUpButton',
+    'SSelectSeparator',
     'SSelectTrigger',
     'SSelectValue',
-    'SSelectIcon',
-    'SSelectPortal',
-    'SSelectContent',
-    'SSelectScrollUpButton',
-    'SSelectScrollDownButton',
-    'SSelectViewport',
-    'SSelectGroup',
-    'SSelectItem',
-    'SSelectItemText',
-    'SSelectItemIndicator',
-    'SSelectSeparator',
-    'SSelectLabel',
-    'SSelect',
-    'SSelectOption'
+    'SSelectViewport'
   ],
-  separator: ['SSeparatorRoot', 'SSeparatorLabel', 'SSeparator'],
-  sheet: ['SSheetContent', 'SSheet'],
+  separator: ['SSeparator', 'SSeparatorLabel', 'SSeparatorRoot'],
+  sheet: [
+    'SSheet',
+    'SSheetCloseIcon',
+    'SSheetContent',
+    'SSheetDescription',
+    'SSheetFooter',
+    'SSheetHeader',
+    'SSheetOverlay',
+    'SSheetTitle',
+    'SSheetTrigger'
+  ],
   skeleton: ['SSkeleton'],
-  slider: ['SSliderRoot', 'SSliderTrack', 'SSliderRange', 'SSliderThumb', 'SSlider'],
+  slider: ['SSlider', 'SSliderRange', 'SSliderRoot', 'SSliderThumb', 'SSliderTrack'],
   stepper: [
-    'SStepperRoot',
+    'SStepper',
     'SStepperDescription',
     'SStepperIndicator',
     'SStepperItem',
+    'SStepperRoot',
     'SStepperSeparator',
     'SStepperTitle',
-    'SStepperTrigger',
-    'SStepper'
+    'SStepperTrigger'
   ],
-  switch: ['SSwitchRoot', 'SSwitchThumb', 'SSwitch'],
-  tabs: ['STabsRoot', 'STabsList', 'STabsTrigger', 'STabsIndicatorRoot', 'STabsIndicator', 'STabsContent', 'STabs'],
+  switch: ['SSwitch', 'SSwitchRoot', 'SSwitchThumb'],
+  tabs: ['STabs', 'STabsContent', 'STabsIndicator', 'STabsIndicatorRoot', 'STabsList', 'STabsRoot', 'STabsTrigger'],
   tag: ['STag'],
   tagsInput: [
-    'STagsInputRoot',
+    'STagsInput',
     'STagsInputInput',
     'STagsInputItem',
     'STagsInputItemText',
     'STagsInputItemDelete',
-    'STagsInput'
+    'STagsInputRoot'
   ],
-  textarea: ['STextareaRoot', 'STextareaContent', 'STextareaCount', 'STextarea'],
+  textarea: ['STextarea', 'STextareaContent', 'STextareaCount', 'STextareaRoot'],
   // timeField: ['STimeFieldInput', 'STimeFieldRoot'],
-  toast: ['SToastProvider', 'SToastAction'],
+  toast: [
+    'SToast',
+    'SToastAction',
+    'SToastClose',
+    'SToastDescription',
+    'SToastProvider',
+    'SToastRoot',
+    'SToastTitle',
+    'SToastViewport'
+  ],
   toggle: ['SToggle'],
-  toggleGroup: ['SToggleGroupRoot', 'SToggleGroupItem', 'SToggleGroup'],
+  toggleGroup: ['SToggleGroup', 'SToggleGroupItem', 'SToggleGroupRoot'],
   // toolbar: [
   //   'SToolbarButton',
   //   'SToolbarLink',
@@ -370,6 +402,6 @@ export const components = {
   //   'ToolbarToggleGroup',
   //   'ToolbarToggleItem'
   // ],
-  tooltip: ['STooltip', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger', 'STooltipContent', 'STooltipArrow']
+  tooltip: ['STooltip', 'STooltipArrow', 'STooltipContent', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger']
   // tree: ['STreeItem', 'STreeRoot', 'STreeVirtualizer'],
 };

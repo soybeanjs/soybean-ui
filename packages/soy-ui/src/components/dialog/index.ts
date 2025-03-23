@@ -5,27 +5,27 @@ import {
   DialogTrigger as SDialogTrigger
 } from '@soybean-ui/primitives';
 import SDialog from './dialog.vue';
-import SDialogOverlay from './dialog-overlay.vue';
-import SDialogContent from './dialog-content.vue';
-import SDialogHeader from './dialog-header.vue';
-import SDialogTitle from './dialog-title.vue';
-import SDialogDescription from './dialog-description.vue';
 import SDialogCloseIcon from './dialog-close-icon.vue';
+import SDialogContent from './dialog-content.vue';
+import SDialogDescription from './dialog-description.vue';
 import SDialogFooter from './dialog-footer.vue';
+import SDialogHeader from './dialog-header.vue';
+import SDialogOverlay from './dialog-overlay.vue';
+import SDialogTitle from './dialog-title.vue';
 
 export {
   SDialog,
-  SDialogOverlay,
-  SDialogContent,
-  SDialogPortal,
-  SDialogRoot,
-  SDialogTrigger,
   SDialogClose,
   SDialogCloseIcon,
-  SDialogHeader,
-  SDialogTitle,
+  SDialogContent,
   SDialogDescription,
-  SDialogFooter
+  SDialogFooter,
+  SDialogHeader,
+  SDialogOverlay,
+  SDialogPortal,
+  SDialogRoot,
+  SDialogTitle,
+  SDialogTrigger
 };
 
 export * from './types';

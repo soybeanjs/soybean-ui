@@ -1,8 +1,8 @@
-import SPinInputRoot from './pin-input-root.vue';
-import SPinInputItem from './pin-input-input.vue';
-import SPinInputSeparator from './pin-input-separator.vue';
 import SPinInput from './pin-input.vue';
+import SPinInputInput from './pin-input-input.vue';
+import SPinInputRoot from './pin-input-root.vue';
+import SPinInputSeparator from './pin-input-separator.vue';
 
-export { SPinInputRoot, SPinInputItem, SPinInputSeparator, SPinInput };
+export { SPinInput, SPinInputInput, SPinInputRoot, SPinInputSeparator };
 
 export * from './types';

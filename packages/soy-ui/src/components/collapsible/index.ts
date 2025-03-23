@@ -1,7 +1,7 @@
 import { CollapsibleRoot as SCollapsibleRoot, CollapsibleTrigger as SCollapsibleTrigger } from '@soybean-ui/primitives';
-import SCollapsibleContent from './collapsible-content.vue';
 import SCollapsible from './collapsible.vue';
+import SCollapsibleContent from './collapsible-content.vue';
 
-export { SCollapsibleTrigger, SCollapsibleRoot, SCollapsibleContent, SCollapsible };
+export { SCollapsible, SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger };
 
 export * from './types';

@@ -1,8 +1,8 @@
 import SAvatar from './avatar.vue';
-import SAvatarRoot from './avatar-root.vue';
-import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';
+import SAvatarImage from './avatar-image.vue';
+import SAvatarRoot from './avatar-root.vue';
 
-export { SAvatar, SAvatarRoot, SAvatarImage, SAvatarFallback };
+export { SAvatar, SAvatarFallback, SAvatarImage, SAvatarRoot };
 
 export * from './types';

@@ -1,3 +1,4 @@
+import SCommand from './command.vue';
 import SCommandDialog from './command-dialog.vue';
 import SCommandEmpty from './command-empty.vue';
 import SCommandGroupLabel from './command-group-label.vue';
@@ -10,22 +11,21 @@ import SCommandRoot from './command-root.vue';
 import SCommandSeparator from './command-separator.vue';
 import SCommandShortcut from './command-shortcut.vue';
 import SCommandSingleOption from './command-single-option.vue';
-import SCommand from './command.vue';
 
 export {
-  SCommandRoot,
-  SCommandInput,
-  SCommandList,
+  SCommand,
+  SCommandDialog,
   SCommandEmpty,
   SCommandGroup,
   SCommandGroupLabel,
+  SCommandInput,
   SCommandItem,
+  SCommandList,
+  SCommandOption,
+  SCommandRoot,
   SCommandSeparator,
   SCommandShortcut,
-  SCommandDialog,
-  SCommandOption,
-  SCommandSingleOption,
-  SCommand
+  SCommandSingleOption
 };
 
 export type * from './types';

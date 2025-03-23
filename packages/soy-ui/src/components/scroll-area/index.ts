@@ -1,10 +1,10 @@
 import { ScrollAreaCorner as SScrollAreaCorner } from '@soybean-ui/primitives';
+import SScrollArea from './scroll-area.vue';
 import SScrollAreaRoot from './scroll-area-root.vue';
-import SScrollAreaViewport from './scroll-area-viewport.vue';
 import SScrollAreaScrollbar from './scroll-area-scrollbar.vue';
 import SScrollAreaThumb from './scroll-area-thumb.vue';
-import SScrollArea from './scroll-area.vue';
+import SScrollAreaViewport from './scroll-area-viewport.vue';
 
-export { SScrollAreaRoot, SScrollAreaViewport, SScrollAreaScrollbar, SScrollAreaThumb, SScrollAreaCorner, SScrollArea };
+export { SScrollArea, SScrollAreaCorner, SScrollAreaRoot, SScrollAreaScrollbar, SScrollAreaThumb, SScrollAreaViewport };
 
 export * from './types';

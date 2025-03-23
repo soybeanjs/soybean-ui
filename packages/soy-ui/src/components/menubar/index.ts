@@ -1,3 +1,4 @@
+import SMenubar from './menubar.vue';
 import SMenubarContent from './menubar-content.vue';
 import SMenubarItem from './menubar-item.vue';
 import SMenubarMenu from './menubar-menu.vue';
@@ -6,12 +7,12 @@ import SMenubarPortalContent from './menubar-portal-content.vue';
 import SMenubarRoot from './menubar-root.vue';
 import SMenubarSubContent from './menubar-sub-content.vue';
 import SMenubarSubTrigger from './menubar-sub-trigger.vue';
-import SMenubarTrigger from './menubar-trigger.vue';
 import SMenubarTriggerLink from './menubar-trigger-link.vue';
 import SMenubarTriggerOption from './menubar-trigger-option.vue';
-import SMenubar from './menubar.vue';
+import SMenubarTrigger from './menubar-trigger.vue';
 
 export {
+  SMenubar,
   SMenubarRoot,
   SMenubarContent,
   SMenubarItem,
@@ -22,8 +23,7 @@ export {
   SMenubarSubTrigger,
   SMenubarTrigger,
   SMenubarTriggerLink,
-  SMenubarTriggerOption,
-  SMenubar
+  SMenubarTriggerOption
 };
 
 export * from './types';

@@ -1,7 +1,7 @@
-import SBadgeRoot from './badge-root.vue';
-import SBadgeContent from './badge-content.vue';
 import SBadge from './badge.vue';
+import SBadgeContent from './badge-content.vue';
+import SBadgeRoot from './badge-root.vue';
 
-export { SBadgeRoot, SBadgeContent, SBadge };
+export { SBadge, SBadgeContent, SBadgeRoot };
 
 export * from './types';

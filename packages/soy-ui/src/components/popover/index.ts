@@ -11,13 +11,13 @@ import SPopoverContent from './popover-content.vue';
 
 export {
   SPopover,
-  SPopoverRoot,
-  SPopoverTrigger,
-  SPopoverContent,
-  SPopoverPortal,
   SPopoverAnchor,
   SPopoverArrow,
-  SPopoverClose
+  SPopoverClose,
+  SPopoverContent,
+  SPopoverPortal,
+  SPopoverRoot,
+  SPopoverTrigger
 };
 
 export * from './types';
