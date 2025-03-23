@@ -7,9 +7,10 @@ import type {
   DialogRootEmits as SheetRootEmits,
   DialogRootProps as SheetRootProps
 } from '@soybean-ui/primitives';
-import type { SheetSide, DialogSlots as SheetSlots } from '@soybean-ui/variants';
+import type { SheetSide, DialogSlots as SheetSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface SheetContentProps extends DialogContentProps {
+  size?: ThemeSize;
   side?: SheetSide;
 }
 

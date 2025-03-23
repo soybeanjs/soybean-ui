@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SButtonGroup, SCard, SContextMenu, SSelect } from 'soy-ui';
-import type { MenuOptionData, SelectOptionData, ThemeSize } from 'soy-ui';
+import { SCard, SContextMenu } from 'soy-ui';
+import type { MenuOptionData, ThemeSize } from 'soy-ui';
 import {
   CirclePlus,
   Cloud,
@@ -19,6 +19,7 @@ import {
   UserPlus,
   Users
 } from 'lucide-vue-next';
+import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
   name: 'UiContextMenu'
@@ -65,24 +66,12 @@ const menus: MenuOptionData<string>[] = [
 ];
 
 const size = ref<ThemeSize>('md');
-
-const sizes: SelectOptionData<ThemeSize>[] = [
-  { value: 'xs', label: 'xs' },
-  { value: 'sm', label: 'sm' },
-  { value: 'md', label: 'md' },
-  { value: 'lg', label: 'lg' },
-  { value: 'xl', label: 'xl' },
-  { value: 'xxl', label: 'xxl' }
-];
 </script>
 
 <template>
   <SCard title="ContextMenu" split>
     <template #extra>
-      <SButtonGroup class="w-40">
-        <SButton variant="pure">Size：</SButton>
-        <SSelect v-model="size" :items="sizes" side="bottom" align="end" :side-offset="0" />
-      </SButtonGroup>
+      <ThemeSizeToggler v-model:size="size" class="w-40" />
     </template>
     <SContextMenu :size="size" :items="menus">
       <template #trigger>

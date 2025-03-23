@@ -8,11 +8,13 @@ defineOptions({
   name: 'SDialogDescription'
 });
 
-const { class: cls } = defineProps<DialogDescriptionProps>();
+const { class: cls, size } = defineProps<DialogDescriptionProps>();
 
-const { description } = dialogVariants();
+const mergedCls = computed(() => {
+  const { description } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(description(), cls));
+  return cn(description(), cls);
+});
 </script>
 
 <template>

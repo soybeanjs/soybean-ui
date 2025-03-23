@@ -70,18 +70,18 @@ const iconProps = computed(() => {
     </AlertDialogTrigger>
     <AlertDialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SAlertDialogOverlay :class="ui?.overlay" :force-mount="forceMountOverlay" />
-      <SAlertDialogContent v-bind="forwardedContent" :class="props.class || ui?.content">
-        <SAlertDialogHeader :class="ui?.header">
-          <SAlertDialogTitle :class="ui?.title">
+      <SAlertDialogContent v-bind="forwardedContent" :class="props.class || ui?.content" :size="size">
+        <SAlertDialogHeader :class="ui?.header" :size="size">
+          <SAlertDialogTitle :class="ui?.title" :size="size">
             <component :is="iconProps.icon" v-if="iconProps" :class="iconProps.class" />
             <slot name="title">{{ title }}</slot>
           </SAlertDialogTitle>
-          <SAlertDialogDescription :class="ui?.description">
+          <SAlertDialogDescription v-if="$slots.description || description" :class="ui?.description" :size="size">
             <slot name="description">{{ description }}</slot>
           </SAlertDialogDescription>
         </SAlertDialogHeader>
         <slot />
-        <SAlertDialogFooter :class="ui?.footer">
+        <SAlertDialogFooter v-if="$slots.footer" :class="ui?.footer" :size="size">
           <slot name="footer" />
         </SAlertDialogFooter>
       </SAlertDialogContent>

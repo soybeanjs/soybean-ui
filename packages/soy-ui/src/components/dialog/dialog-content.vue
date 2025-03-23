@@ -8,15 +8,17 @@ defineOptions({
   name: 'SDialogContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<DialogContentProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<DialogContentProps>();
 
 const emit = defineEmits<DialogContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { content } = dialogVariants();
+const mergedCls = computed(() => {
+  const { content } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
+  return cn(content(), cls);
+});
 </script>
 
 <template>

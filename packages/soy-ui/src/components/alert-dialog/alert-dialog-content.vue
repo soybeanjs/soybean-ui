@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertDialogContent, useForwardPropsEmits } from '@soybean-ui/primitives';
-import { alertDialogVariants, cn } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
 
 defineOptions({
   name: 'SAlertDialogContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<AlertDialogContentProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<AlertDialogContentProps>();
 
 const emit = defineEmits<AlertDialogContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { content } = alertDialogVariants();
+const mergedCls = computed(() => {
+  const { content } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
+  return cn(content(), cls);
+});
 </script>
 
 <template>

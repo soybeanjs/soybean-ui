@@ -1,24 +1,40 @@
 import type {
   AlertDialogContentEmits,
-  AlertDialogContentProps,
-  AlertDialogDescriptionProps,
   AlertDialogOverlayProps,
   AlertDialogPortalProps,
   AlertDialogRootEmits,
   AlertDialogRootProps,
-  AlertDialogTitleProps,
   ClassValue,
-  ClassValueProp
+  ClassValueProp,
+  AlertDialogContentProps as _AlertDialogContentProps,
+  AlertDialogDescriptionProps as _AlertDialogDescriptionProps,
+  AlertDialogTitleProps as _AlertDialogTitleProps
 } from '@soybean-ui/primitives';
-import type { AlertDialogSlots, ThemeColor } from '@soybean-ui/variants';
+import type { DialogSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
 export type AlertType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
-export interface AlertDialogHeaderProps extends ClassValueProp {}
+export interface AlertDialogHeaderProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
-export interface AlertDialogFooterProps extends ClassValueProp {}
+export type AlertDialogContentProps = _AlertDialogContentProps & {
+  size?: ThemeSize;
+};
 
-export type AlertDialogUi = Partial<Record<AlertDialogSlots, ClassValue>>;
+export type AlertDialogTitleProps = _AlertDialogTitleProps & {
+  size?: ThemeSize;
+};
+
+export type AlertDialogDescriptionProps = _AlertDialogDescriptionProps & {
+  size?: ThemeSize;
+};
+
+export interface AlertDialogFooterProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export type AlertDialogUi = Partial<Record<DialogSlots, ClassValue>>;
 
 export type AlertDialogProps = AlertDialogRootProps &
   AlertDialogContentProps &
@@ -38,9 +54,6 @@ export type {
   AlertDialogRootProps,
   AlertDialogRootEmits,
   AlertDialogPortalProps,
-  AlertDialogContentProps,
   AlertDialogContentEmits,
-  AlertDialogOverlayProps,
-  AlertDialogTitleProps,
-  AlertDialogDescriptionProps
+  AlertDialogOverlayProps
 };

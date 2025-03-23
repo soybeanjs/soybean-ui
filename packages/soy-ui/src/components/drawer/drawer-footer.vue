@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
-import { cn, drawerVariants } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { DrawerFooterProps } from './types';
 
 defineOptions({
   name: 'SDrawerFooter'
 });
 
-const { class: cls } = defineProps<DrawerFooterProps>();
+const { class: cls, size } = defineProps<DrawerFooterProps>();
 
-const { footer } = drawerVariants();
+const mergedCls = computed(() => {
+  const { footer } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(footer(), cls));
+  return cn(footer(), cls);
+});
 </script>
 
 <template>
-  <Primitive :class="mergedCls" as="div">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>

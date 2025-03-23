@@ -3,19 +3,39 @@ import type {
   ClassValueProp,
   DialogCloseProps,
   DialogContentEmits,
-  DialogContentProps,
-  DialogDescriptionProps,
   DialogOverlayProps,
   DialogPortalProps,
   DialogRootEmits,
   DialogRootProps,
-  DialogTitleProps
+  DialogContentProps as _DialogContentProps,
+  DialogDescriptionProps as _DialogDescriptionProps,
+  DialogTitleProps as _DialogTitleProps
 } from '@soybean-ui/primitives';
-import type { DialogSlots } from '@soybean-ui/variants';
+import type { DialogSlots, ThemeSize } from '@soybean-ui/variants';
 
-export interface DialogHeaderProps extends ClassValueProp {}
+export interface DialogHeaderProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
-export interface DialogFooterProps extends ClassValueProp {}
+export type DialogContentProps = _DialogContentProps & {
+  size?: ThemeSize;
+};
+
+export type DialogTitleProps = _DialogTitleProps & {
+  size?: ThemeSize;
+};
+
+export type DialogDescriptionProps = _DialogDescriptionProps & {
+  size?: ThemeSize;
+};
+
+export type DialogCloseIconProps = DialogCloseProps & {
+  size?: ThemeSize;
+};
+
+export interface DialogFooterProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export type DialogUi = Partial<Record<DialogSlots, ClassValue>>;
 
@@ -35,10 +55,7 @@ export type {
   DialogRootProps,
   DialogPortalProps,
   DialogRootEmits,
-  DialogContentProps,
   DialogContentEmits,
   DialogOverlayProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
   DialogCloseProps
 };

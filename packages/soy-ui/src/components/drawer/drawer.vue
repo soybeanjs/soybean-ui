@@ -7,12 +7,11 @@ import {
   useForwardPropsEmits,
   useOmitForwardProps
 } from '@soybean-ui/primitives';
-import { SDialogClose, SDialogDescription, SDialogHeader, SDialogTitle } from '../dialog';
+import { SDialogCloseIcon, SDialogDescription, SDialogFooter, SDialogHeader, SDialogTitle } from '../dialog';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';
 import SDrawerContentBody from './drawer-content-body.vue';
 import SDrawerKnob from './drawer-knob.vue';
-import SDrawerFooter from './drawer-footer.vue';
 import type { DrawerEmits, DrawerProps } from './types';
 
 defineOptions({
@@ -25,6 +24,8 @@ const emit = defineEmits<DrawerEmits>();
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',
+  'size',
+  'ui',
   'to',
   'defer',
   'disabledPortal',
@@ -150,22 +151,22 @@ useStyleTag(css, { id: 'soybean-drawer-style' });
     </DrawerTrigger>
     <DrawerPortal :to="to" :defer="defer">
       <SDrawerOverlay :class="ui?.overlay" />
-      <SDrawerContent :class="props.class || ui?.content">
-        <SDrawerKnob :class="ui?.knob" />
-        <SDrawerContentBody :class="ui?.contentBody">
-          <SDialogHeader :class="ui?.header">
-            <SDialogTitle :class="ui?.title">
+      <SDrawerContent :class="props.class || ui?.content" :size="size">
+        <SDrawerKnob :class="ui?.knob" :size="size" />
+        <SDrawerContentBody :class="ui?.contentBody" :size="size">
+          <SDialogHeader :class="ui?.header" :size="size">
+            <SDialogTitle :class="ui?.title" :size="size">
               <slot name="title">{{ title }}</slot>
             </SDialogTitle>
-            <SDialogDescription :class="ui?.description">
+            <SDialogDescription v-if="$slots.description || description" :class="ui?.description" :size="size">
               <slot name="description">{{ description }}</slot>
             </SDialogDescription>
           </SDialogHeader>
-          <SDialogClose :class="ui?.close" />
+          <SDialogCloseIcon :class="ui?.closeIcon" :size="size" />
           <slot />
-          <SDrawerFooter :class="ui?.footer">
+          <SDialogFooter v-if="$slots.footer" :class="ui?.footer" :size="size">
             <slot name="footer" />
-          </SDrawerFooter>
+          </SDialogFooter>
         </SDrawerContentBody>
       </SDrawerContent>
     </DrawerPortal>

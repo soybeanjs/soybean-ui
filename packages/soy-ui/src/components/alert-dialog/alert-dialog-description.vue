@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertDialogDescription } from '@soybean-ui/primitives';
-import { alertDialogVariants, cn } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { AlertDialogDescriptionProps } from './types';
 
 defineOptions({
   name: 'SAlertDialogDescription'
 });
 
-const { class: cls } = defineProps<AlertDialogDescriptionProps>();
+const { class: cls, size } = defineProps<AlertDialogDescriptionProps>();
 
-const { description } = alertDialogVariants();
+const mergedCls = computed(() => {
+  const { description } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(description(), cls));
+  return cn(description(), cls);
+});
 </script>
 
 <template>

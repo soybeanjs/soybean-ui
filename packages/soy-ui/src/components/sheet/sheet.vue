@@ -9,7 +9,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import {
-  SDialogClose,
+  SDialogCloseIcon,
   SDialogDescription,
   SDialogFooter,
   SDialogHeader,
@@ -48,20 +48,20 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     </DialogTrigger>
     <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="ui?.overlay" />
-      <SSheetContent v-bind="forwardedContent" :class="props.class || ui?.content">
-        <SDialogHeader :class="ui?.header">
-          <SDialogTitle :class="ui?.title">
+      <SSheetContent v-bind="forwardedContent" :class="props.class || ui?.content" :size="size">
+        <SDialogHeader :class="ui?.header" :size="size">
+          <SDialogTitle :class="ui?.title" :size="size">
             <slot name="title">{{ title }}</slot>
           </SDialogTitle>
-          <SDialogDescription :class="ui?.description">
+          <SDialogDescription v-if="$slots.description || description" :class="ui?.description" :size="size">
             <slot name="description">{{ description }}</slot>
           </SDialogDescription>
         </SDialogHeader>
-        <SDialogClose :class="ui?.close" />
+        <SDialogCloseIcon :class="ui?.closeIcon" :size="size" />
         <Slot class="flex-grow overflow-hidden">
           <slot />
         </Slot>
-        <SDialogFooter :class="ui?.footer">
+        <SDialogFooter v-if="$slots.footer" :class="ui?.footer" :size="size">
           <slot name="footer" />
         </SDialogFooter>
       </SSheetContent>

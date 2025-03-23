@@ -8,11 +8,13 @@ defineOptions({
   name: 'SDrawerContent'
 });
 
-const { class: cls } = defineProps<DrawerContentProps>();
+const { class: cls, size } = defineProps<DrawerContentProps>();
 
-const { content } = drawerVariants();
+const mergedCls = computed(() => {
+  const { content } = drawerVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
+  return cn(content(), cls);
+});
 </script>
 
 <template>

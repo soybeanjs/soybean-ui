@@ -4,23 +4,25 @@ import { DialogClose } from '@soybean-ui/primitives';
 import { cn, dialogVariants } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
 import SButtonIcon from '../button/button-icon.vue';
-import type { DialogCloseProps } from './types';
+import type { DialogCloseIconProps } from './types';
 
 defineOptions({
-  name: 'SDialogClose'
+  name: 'SDialogCloseIcon'
 });
 
-const { class: cls } = defineProps<DialogCloseProps>();
+const { class: cls, size } = defineProps<DialogCloseIconProps>();
 
-const { close } = dialogVariants();
+const mergedCls = computed(() => {
+  const { closeIcon } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(close(), cls));
+  return cn(closeIcon(), cls);
+});
 </script>
 
 <template>
   <DialogClose :class="mergedCls" as-child>
     <slot name="close">
-      <SButtonIcon size="xs">
+      <SButtonIcon fit-content :size="size">
         <X />
       </SButtonIcon>
     </slot>

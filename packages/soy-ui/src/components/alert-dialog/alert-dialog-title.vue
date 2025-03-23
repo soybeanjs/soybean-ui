@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertDialogTitle } from '@soybean-ui/primitives';
-import { alertDialogVariants, cn } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { AlertDialogTitleProps } from './types';
 
 defineOptions({
   name: 'SAlertDialogTitle'
 });
 
-const { class: cls } = defineProps<AlertDialogTitleProps>();
+const { class: cls, size } = defineProps<AlertDialogTitleProps>();
 
-const { title } = alertDialogVariants();
+const mergedCls = computed(() => {
+  const { title } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(title(), cls));
+  return cn(title(), cls);
+});
 </script>
 
 <template>

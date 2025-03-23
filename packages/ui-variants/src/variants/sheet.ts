@@ -5,12 +5,32 @@ import type { VariantProps } from 'tailwind-variants';
 export const sheetVariants = tv({
   slots: {
     content: [
-      `fixed z-50 flex flex-col justify-between items-stretch border bg-background px-5 py-4 rounded-md transition ease-in-out`,
+      `fixed z-50 flex flex-col justify-between items-stretch border bg-background rounded-md transition ease-in-out`,
       `data-[state=open]:(animate-in duration-500)`,
       `data-[state=closed]:(animate-out duration-300)`
     ]
   },
   variants: {
+    size: {
+      xs: {
+        content: `gap-y-1.5 px-2 py-1.5 text-xs`
+      },
+      sm: {
+        content: `gap-y-2 px-3 py-2 text-sm`
+      },
+      md: {
+        content: `gap-y-3 px-4 py-3 text-sm`
+      },
+      lg: {
+        content: `gap-y-4 px-5 py-4 text-base`
+      },
+      xl: {
+        content: `gap-y-5 px-6 py-5 text-base`
+      },
+      xxl: {
+        content: `gap-y-6 px-7 py-6 text-lg`
+      }
+    },
     side: {
       top: {
         content: `inset-x-0 top-0 border-b rounded-t-0 data-[state=open]:slide-in-from-top data-[state=closed]:slide-out-to-top`
@@ -27,6 +47,7 @@ export const sheetVariants = tv({
     }
   },
   defaultVariants: {
+    size: 'md',
     side: 'right'
   }
 });
@@ -34,5 +55,3 @@ export const sheetVariants = tv({
 type SheetVariants = VariantProps<typeof sheetVariants>;
 
 export type SheetSide = NonNullable<SheetVariants['side']>;
-
-export type SheetSlots = keyof typeof sheetVariants.slots;

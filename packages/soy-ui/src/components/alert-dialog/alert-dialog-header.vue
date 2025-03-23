@@ -1,22 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
-import { alertDialogVariants, cn } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { AlertDialogHeaderProps } from './types';
 
 defineOptions({
   name: 'SAlertDialogHeader'
 });
 
-const { class: cls } = defineProps<AlertDialogHeaderProps>();
+const { class: cls, size } = defineProps<AlertDialogHeaderProps>();
 
-const { header } = alertDialogVariants();
+const mergedCls = computed(() => {
+  const { header } = dialogVariants({ size });
 
-const mergedCls = computed(() => cn(header(), cls));
+  return cn(header(), cls);
+});
 </script>
 
 <template>
-  <Primitive :class="mergedCls" as="div">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>

@@ -12,7 +12,7 @@ import SDialogContent from './dialog-content.vue';
 import SDialogHeader from './dialog-header.vue';
 import SDialogTitle from './dialog-title.vue';
 import SDialogDescription from './dialog-description.vue';
-import SDialogClose from './dialog-close.vue';
+import SDialogCloseIcon from './dialog-close-icon.vue';
 import SDialogFooter from './dialog-footer.vue';
 import type { DialogEmits, DialogProps } from './types';
 
@@ -40,18 +40,18 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
     </DialogTrigger>
     <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="ui?.overlay" />
-      <SDialogContent v-bind="forwardedContent" :class="props.class || ui?.content">
-        <SDialogHeader :class="ui?.header">
-          <SDialogTitle :class="ui?.title">
+      <SDialogContent v-bind="forwardedContent" :class="props.class || ui?.content" :size="size">
+        <SDialogHeader :class="ui?.header" :size="size">
+          <SDialogTitle :class="ui?.title" :size="size">
             <slot name="title">{{ title }}</slot>
           </SDialogTitle>
-          <SDialogDescription :class="ui?.description">
+          <SDialogDescription v-if="$slots.description || description" :class="ui?.description" :size="size">
             <slot name="description">{{ description }}</slot>
           </SDialogDescription>
         </SDialogHeader>
-        <SDialogClose :class="ui?.close" />
+        <SDialogCloseIcon :class="ui?.closeIcon" :size="size" />
         <slot />
-        <SDialogFooter :class="ui?.footer">
+        <SDialogFooter v-if="$slots.footer" :class="ui?.footer" :size="size">
           <slot name="footer" />
         </SDialogFooter>
       </SDialogContent>

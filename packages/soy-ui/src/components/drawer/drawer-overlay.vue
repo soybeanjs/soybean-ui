@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { DrawerOverlay } from '@soybean-ui/primitives';
-import { cn, drawerVariants } from '@soybean-ui/variants';
+import { cn, dialogVariants } from '@soybean-ui/variants';
 import type { DrawerOverlayProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ defineOptions({
 
 const { class: cls } = defineProps<DrawerOverlayProps>();
 
-const { overlay } = drawerVariants();
+const { overlay } = dialogVariants();
 
 const mergedCls = computed(() => cn(overlay(), cls));
 </script>
