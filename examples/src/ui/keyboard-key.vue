@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
-const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'subtle'];
+const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'ghost'];
 </script>
 
 <template>
@@ -34,14 +34,14 @@ const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'subtle'];
       <div class="flex flex-wrap gap-2">
         <SKeyboardKey :value="['command', 'k']" variant="solid" />
         <SKeyboardKey :value="['shift', 's']" variant="outline" />
-        <SKeyboardKey :value="['ctrl', 'alt', 'a']" variant="subtle" />
+        <SKeyboardKey :value="['ctrl', 'alt', 'a']" variant="ghost" />
       </div>
     </SCard>
     <SCard title="Group" split>
       <div class="flex-c gap-2">
         <SKeyboardKeyGroup :values="['command', 'shift', 'alt']" variant="solid" />
-        <SKeyboardKeyGroup :values="['command', 'shift', 'alt']" variant="outline" separator="" />
-        <SKeyboardKeyGroup :values="['command', 'shift', 'alt']" variant="subtle" separator=" " />
+        <SKeyboardKeyGroup :values="['command', 'shift', 'alt']" variant="outline" separator=" " />
+        <SKeyboardKeyGroup :values="['command', 'shift', 'alt']" variant="ghost" separator=" " />
       </div>
     </SCard>
   </div>

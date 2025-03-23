@@ -16,7 +16,7 @@ export const keyboardKeyVariants = tv({
       outline: {
         item: 'border-border bg-background text-muted-foreground'
       },
-      subtle: {
+      ghost: {
         item: ' border-border bg-muted text-muted-foreground'
       }
     },
