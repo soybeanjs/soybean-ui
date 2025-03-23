@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { cardVariants, cn } from '@soybean-ui/variants';
-import type { CardBodyProps } from './types';
+import type { CardContentProps } from './types';
 
 defineOptions({
-  name: 'SCardBody'
+  name: 'SCardContent'
 });
 
-const { class: cls, size } = defineProps<CardBodyProps>();
+const { class: cls, size, flexHeight } = defineProps<CardContentProps>();
 
 const mergedCls = computed(() => {
-  const { body } = cardVariants({ size });
+  const { content } = cardVariants({ size, flexHeight });
 
-  return cn(body(), cls);
+  return cn(content(), cls);
 });
 </script>
 

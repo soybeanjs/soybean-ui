@@ -4,7 +4,7 @@ import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
 import SCardTitleRoot from './card-title-root.vue';
 import SCardTitle from './card-title.vue';
-import SCardBody from './card-body.vue';
+import SCardContent from './card-content.vue';
 import SCardFooter from './card-footer.vue';
 import type { CardProps } from './types';
 
@@ -12,7 +12,7 @@ defineOptions({
   name: 'SCard'
 });
 
-const { class: cls, size, split, title, ui } = defineProps<CardProps>();
+const { class: cls, size, split, title, ui, flexHeight } = defineProps<CardProps>();
 
 type Slots = {
   default: () => any;
@@ -50,9 +50,9 @@ const showFooter = computed(() => Boolean(slots.footer));
         <slot name="extra" />
       </slot>
     </SCardHeader>
-    <SCardBody :class="ui?.body" :size="size">
+    <SCardContent :class="ui?.content" :size="size" :flex-height="flexHeight">
       <slot />
-    </SCardBody>
+    </SCardContent>
     <SCardFooter v-if="showFooter" :class="ui?.footer" :size="size">
       <slot name="footer" />
     </SCardFooter>

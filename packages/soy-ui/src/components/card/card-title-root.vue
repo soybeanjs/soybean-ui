@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cardVariants, cn } from '@soybean-ui/variants';
 import type { CardTitleRootProps } from './types';
 
@@ -16,9 +15,9 @@ const mergedCls = computed(() => cn(titleRoot(), cls));
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot name="leading" />
     <slot />
     <slot name="trailing" />
-  </Primitive>
+  </div>
 </template>

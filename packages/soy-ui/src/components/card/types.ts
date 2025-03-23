@@ -16,8 +16,14 @@ export interface CardTitleProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface CardBodyProps extends ClassValueProp {
+export interface CardContentProps extends ClassValueProp {
   size?: ThemeSize;
+  /**
+   * If true, the content will be flex-grow and overflow-hidden
+   *
+   * @default false
+   */
+  flexHeight?: boolean;
 }
 
 export interface CardFooterProps extends ClassValueProp {
@@ -29,4 +35,10 @@ export type CardUi = Partial<Record<CardSlots, ClassValue>>;
 export interface CardProps extends CardRootProps {
   ui?: CardUi;
   title?: string;
+  /**
+   * If true, the content will be flex-grow and overflow-hidden
+   *
+   * @default false
+   */
+  flexHeight?: boolean;
 }

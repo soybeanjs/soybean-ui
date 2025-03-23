@@ -48,7 +48,7 @@ const tabs: TabConfig[] = Object.entries(ExampleComponents).map(([key, component
   <SConfigProvider v-bind="configProviderProps">
     <SToastProvider>
       <div class="h-full p-16px">
-        <SCard title="Soybean UI Components" class="h-full lt-sm:h-auto">
+        <SCard title="Soybean UI Components" flex-height class="h-full lt-sm:h-auto">
           <template #extra>
             <div>
               <SPopover :ui="{ content: 'z-15' }" side="bottom" align="end">

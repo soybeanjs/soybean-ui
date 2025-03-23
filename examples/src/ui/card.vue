@@ -18,7 +18,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
           <template #extra>
             <span>extra</span>
           </template>
-          <p class="text-gray-500 dark:text-neutral-400">Body</p>
+          <p class="text-gray-500 dark:text-neutral-400">Content</p>
           <template #footer>Footer</template>
         </SCard>
       </div>
@@ -29,20 +29,20 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
               <X />
             </SButtonIcon>
           </template>
-          <p class="text-gray-500 dark:text-neutral-400">Body</p>
+          <p class="text-gray-500 dark:text-neutral-400">Content</p>
           <template #footer>Footer</template>
         </SCard>
       </div>
     </SCard>
     <SCard title="More" split>
       <SCard class="mb-12px">
-        <p class="text-gray-500 dark:text-neutral-400">Only Body</p>
+        <p class="text-gray-500 dark:text-neutral-400">Only Content</p>
       </SCard>
       <SCard title="Title" split class="mb-12px">
-        <p class="text-gray-500 dark:text-neutral-400">Body</p>
+        <p class="text-gray-500 dark:text-neutral-400">Content</p>
       </SCard>
       <SCard split>
-        <p class="text-gray-500 dark:text-neutral-400">Body</p>
+        <p class="text-gray-500 dark:text-neutral-400">Content</p>
         <template #footer>Footer</template>
       </SCard>
     </SCard>

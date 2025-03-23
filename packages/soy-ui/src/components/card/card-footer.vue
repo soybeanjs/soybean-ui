@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cardVariants, cn } from '@soybean-ui/variants';
 import type { CardFooterProps } from './types';
 
@@ -18,7 +17,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>
