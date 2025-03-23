@@ -103,7 +103,7 @@ export const comboboxVariants = tv({
         trigger: 'w-full justify-between'
       },
       traditional: {
-        input: 'rounded-md border border-input',
+        input: 'rounded-md border border-solid border-input',
         trigger: 'absolute end-0 inset-y-0 justify-center'
       }
     }

@@ -75,7 +75,7 @@ watch(values, value => {
 
 <template>
   <SCard title="Form" split>
-    <form class="fix-docs w-480px space-y-4" @submit="onSubmit">
+    <form class="w-480px space-y-4" @submit="onSubmit">
       <SFormField name="username" label="Username">
         <SInput placeholder="Please input username" />
       </SFormField>

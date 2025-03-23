@@ -106,7 +106,7 @@ function handleClick(item: BreadcrumbItem) {
 </script>
 
 <template>
-  <div class="fix-docs flex-c gap-4">
+  <div class="flex-c gap-4">
     <SCard title="Default" split>
       <SBreadcrumb :items="items" @click="handleClick" />
     </SCard>

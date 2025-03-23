@@ -25,7 +25,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
 </script>
 
 <template>
-  <div class="fix-docs flex-c gap-4">
+  <div class="flex-c gap-4">
     <SCard title="word count" split>
       <STextarea v-model="wordCount" show-count />
     </SCard>

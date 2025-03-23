@@ -24,7 +24,7 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
 <template>
   <SonnerToaster position="top-center" />
-  <div class="fix-docs flex-c gap-4">
+  <div class="demo-pin-input flex-c gap-4">
     <SCard title="Default" split>
       <SPinInput v-model="numberValue" type="number" placeholder="○" @complete="handleComplete" />
     </SCard>
@@ -58,3 +58,5 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
     </SCard>
   </div>
 </template>
+
+<style scoped></style>

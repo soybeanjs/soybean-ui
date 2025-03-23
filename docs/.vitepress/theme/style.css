@@ -11,14 +11,6 @@ body,
   border-color: hsl(var(--border));
 }
 
-.fix-docs input,
-.fix-docs textarea {
-  border: 1px solid hsl(var(--input));
-}
-.fix-docs li {
-  list-style-type: none;
-}
-
 button {
   border-style: solid;
 }

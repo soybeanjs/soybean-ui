@@ -24,7 +24,7 @@ const frameworks: CommandOptionData<string>[] = [
 
 <template>
   <SCard title="Combobox Size" split>
-    <div class="fix-docs w-60 lt-sm:w-auto">
+    <div class="w-60 lt-sm:w-auto">
       <div class="flex-c-stretch gap-3">
         <div v-for="size in sizes" :key="size">
           <div>{{ size }}</div>

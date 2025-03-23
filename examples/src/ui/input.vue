@@ -13,7 +13,7 @@ const modelValue = ref<string>('');
 </script>
 
 <template>
-  <div class="fix-docs flex-c gap-4">
+  <div class="flex-c gap-4">
     <SCard title="Size" split>
       <div class="w-320px flex-c-stretch gap-3 lt-sm:w-auto">
         <div v-for="size in sizes" :key="size">

@@ -5,9 +5,9 @@ export const breadcrumbVariants = tv({
   slots: {
     root: '',
     list: 'flex flex-wrap items-center gap-1.5 break-words text-muted-foreground',
-    item: 'inline-flex items-center gap-1.5',
+    item: 'inline-flex items-center gap-1.5 list-none',
     page: 'font-normal text-foreground',
-    separator: 'text-muted-foreground flex-shrink-0',
+    separator: 'text-muted-foreground flex-shrink-0 list-none',
     ellipsis: 'flex items-center justify-center',
     link: 'hover:text-foreground transition-colors rounded-sm focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)'
   },
