@@ -1,12 +1,12 @@
 import { computedAsync } from '@vueuse/core';
 import type { HighlighterCore } from 'shiki/core';
 import { createHighlighterCore } from 'shiki/core';
-import { createJavaScriptRegexEngine } from 'shiki/engine/javascript';
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma';
 
 export const highlighter = computedAsync<HighlighterCore>(async onCancel => {
   const shiki = await createHighlighterCore({
-    engine: createJavaScriptRegexEngine(),
-    themes: [() => import('shiki/themes/one-dark-pro.mjs')],
+    engine: createOnigurumaEngine(import('shiki/wasm')),
+    themes: [() => import('shiki/themes/github-dark-default.mjs')],
     langs: [() => import('shiki/langs/javascript.mjs'), () => import('shiki/langs/vue.mjs')]
   });
 
@@ -20,6 +20,6 @@ export function highlight(code: string, lang: string) {
   return highlighter.value.codeToHtml(code, {
     lang,
     defaultColor: false,
-    theme: 'one-dark-pro'
+    theme: 'github-dark-default'
   });
 }
