@@ -150,6 +150,11 @@ export default defineConfigWithTheme<CustomThemeConfig>({
       postcss: {
         plugins: [postcssIsolateStyles({ includeFiles: [/vp-doc\.css/] })]
       }
+    },
+    server: {
+      port: 1997,
+      open: true,
+      host: true
     }
   }
 });

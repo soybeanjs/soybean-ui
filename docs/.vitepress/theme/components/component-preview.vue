@@ -57,12 +57,12 @@ const codeHtml = computed(() => highlight(code.value, 'vue'));
 
   <slot v-if="active === 'preview'"></slot>
   <div v-else class="relative">
-    <SButtonIcon class="absolute right-1 top-1 text-muted-foreground" @click="copy(code)">
+    <SButtonIcon class="absolute right-5 top-3 text-muted-foreground" @click="copy(code)">
       <Copy v-if="!copied" />
       <CopyCheck v-else />
     </SButtonIcon>
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div class="h-150 overflow-auto" v-html="codeHtml" />
+    <div class="h-[calc(100vh-380px)] overflow-auto" v-html="codeHtml" />
   </div>
 </template>
 

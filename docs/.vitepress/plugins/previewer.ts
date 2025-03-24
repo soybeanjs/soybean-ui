@@ -15,8 +15,7 @@ function ComponentPreview(md: MarkdownRenderer) {
 
       const componentName = pascalCase(`Demo${props.name}`);
 
-      const demoScripts =
-        `<ComponentPreview v-bind='${JSON.stringify(props)}'><${componentName} /></ComponentPreview>`.trim();
+      const demoScripts = `<ComponentPreview name="${props.name}"><${componentName} /></ComponentPreview>`;
       return demoScripts;
     };
   }
