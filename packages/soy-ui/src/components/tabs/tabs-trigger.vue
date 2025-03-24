@@ -8,12 +8,12 @@ defineOptions({
   name: 'STabsTrigger'
 });
 
-const { class: cls, enableIndicator = true, ...delegatedProps } = defineProps<TabsTriggerProps>();
+const { class: cls, size, enableIndicator = true, ...delegatedProps } = defineProps<TabsTriggerProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { trigger } = tabsVariants({ enableIndicator });
+  const { trigger } = tabsVariants({ size, enableIndicator });
 
   return cn(trigger(), cls);
 });

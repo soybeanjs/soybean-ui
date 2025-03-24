@@ -8,10 +8,10 @@ defineOptions({
   name: 'STabsList'
 });
 
-const { class: cls, orientation, loop } = defineProps<TabsListProps>();
+const { class: cls, size, orientation, loop } = defineProps<TabsListProps>();
 
 const mergedCls = computed(() => {
-  const { list } = tabsVariants({ orientation });
+  const { list } = tabsVariants({ size, orientation });
 
   return cn(list(), cls);
 });

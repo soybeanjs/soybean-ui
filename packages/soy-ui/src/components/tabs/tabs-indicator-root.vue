@@ -8,10 +8,10 @@ defineOptions({
   name: 'STabsIndicatorRoot'
 });
 
-const { class: cls, orientation } = defineProps<TabsIndicatorRootProps>();
+const { class: cls, size, orientation } = defineProps<TabsIndicatorRootProps>();
 
 const mergedCls = computed(() => {
-  const { indicatorRoot } = tabsVariants({ orientation });
+  const { indicatorRoot } = tabsVariants({ size, orientation });
 
   return cn(indicatorRoot(), cls);
 });

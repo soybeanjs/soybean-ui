@@ -8,18 +8,21 @@ import type {
   TabsListProps as _TabsListProps,
   TabsTriggerProps as _TabsTriggerProps
 } from '@soybean-ui/primitives';
-import type { TabsSlots, ThemeOrientation } from '@soybean-ui/variants';
+import type { TabsSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
 
 export interface TabsListProps extends _TabsListProps {
+  size?: ThemeSize;
   orientation?: ThemeOrientation;
 }
 
 export interface TabsTriggerProps extends _TabsTriggerProps {
+  size?: ThemeSize;
   orientation?: ThemeOrientation;
   enableIndicator?: boolean;
 }
 
 export interface TabsIndicatorRootProps extends ClassValueProp {
+  size?: ThemeSize;
   orientation?: ThemeOrientation;
 }
 
@@ -28,6 +31,7 @@ export interface TabsIndicatorProps extends ClassValueProp {
 }
 
 export interface TabsContentProps extends _TabsContentProps {
+  size?: ThemeSize;
   orientation?: ThemeOrientation;
 }
 

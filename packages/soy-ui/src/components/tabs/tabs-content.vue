@@ -8,10 +8,10 @@ defineOptions({
   name: 'STabsContent'
 });
 
-const { class: cls, orientation, value, forceMount } = defineProps<TabsContentProps>();
+const { class: cls, size, orientation, value, forceMount } = defineProps<TabsContentProps>();
 
 const mergedCls = computed(() => {
-  const { content } = tabsVariants({ orientation });
+  const { content } = tabsVariants({ size, orientation });
 
   return cn(content(), cls);
 });
