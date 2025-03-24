@@ -26,10 +26,16 @@ defineOptions({
       </p>
     </div>
     <div class="mb-12 max-w-[calc(100%-2rem)] flex flex-wrap items-center justify-center gap-4 md:mb-20">
-      <SButtonLink variant="solid" size="xl" href="/docs/overview/getting-started.html" target="_self">
+      <SButtonLink
+        variant="solid"
+        size="xl"
+        href="/docs/overview/getting-started.html"
+        target="_self"
+        class="lt-sm:w-4/5"
+      >
         Get started
       </SButtonLink>
-      <SButtonLink variant="pure" size="xl" href="/docs/components/button.html" target="_self">
+      <SButtonLink variant="pure" size="xl" href="/docs/components/button.html" target="_self" class="lt-sm:w-4/5">
         Explore components
         <Icon icon="lucide:arrow-right" />
       </SButtonLink>
