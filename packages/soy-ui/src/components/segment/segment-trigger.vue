@@ -8,13 +8,15 @@ defineOptions({
   name: 'SSegmentTrigger'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<SegmentTriggerProps>();
+const { class: cls, size, enableIndicator = true, ...delegatedProps } = defineProps<SegmentTriggerProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const { trigger } = segmentVariants();
+const mergedCls = computed(() => {
+  const { trigger } = segmentVariants({ size, enableIndicator });
 
-const mergedCls = computed(() => cn(trigger(), cls));
+  return cn(trigger(), cls);
+});
 </script>
 
 <template>

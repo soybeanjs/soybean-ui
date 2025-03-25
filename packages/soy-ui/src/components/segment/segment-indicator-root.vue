@@ -8,11 +8,13 @@ defineOptions({
   name: 'SSegmentIndicatorRoot'
 });
 
-const { class: cls } = defineProps<SegmentIndicatorRootProps>();
+const { class: cls, size, orientation } = defineProps<SegmentIndicatorRootProps>();
 
-const { indicatorRoot } = segmentVariants();
+const mergedCls = computed(() => {
+  const { indicatorRoot } = segmentVariants({ size, orientation });
 
-const mergedCls = computed(() => cn(indicatorRoot(), cls));
+  return cn(indicatorRoot(), cls);
+});
 </script>
 
 <template>

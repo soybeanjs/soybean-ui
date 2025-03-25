@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, segmentVariants } from '@soybean-ui/variants';
 import type { SegmentIndicatorProps } from './types';
 
@@ -8,15 +7,17 @@ defineOptions({
   name: 'SSegmentIndicator'
 });
 
-const { class: cls } = defineProps<SegmentIndicatorProps>();
+const { class: cls, orientation } = defineProps<SegmentIndicatorProps>();
 
-const { indicator } = segmentVariants();
+const mergedCls = computed(() => {
+  const { indicator } = segmentVariants({ orientation });
 
-const mergedCls = computed(() => cn(indicator(), cls));
+  return cn(indicator(), cls);
+});
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>
