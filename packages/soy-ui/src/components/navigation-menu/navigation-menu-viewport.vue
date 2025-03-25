@@ -5,20 +5,26 @@ import { cn, navigationMenuVariants } from '@soybean-ui/variants';
 import type { NavigationMenuViewportProps } from './types';
 
 defineOptions({
-  name: 'SNavigationMenuViewport'
+  name: 'SNavigationMenuViewport',
+  inheritAttrs: false
 });
 
-const { class: cls, size, ...delegatedProps } = defineProps<NavigationMenuViewportProps>();
+const { class: cls, size, rootClass, ...delegatedProps } = defineProps<NavigationMenuViewportProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { viewport } = navigationMenuVariants({ size });
+  const { viewport, viewportRoot } = navigationMenuVariants({ size });
 
-  return cn(viewport(), cls);
+  return {
+    cls: cn(viewport(), cls),
+    root: cn(viewportRoot(), rootClass)
+  };
 });
 </script>
 
 <template>
-  <NavigationMenuViewport v-bind="forwardedProps" :class="mergedCls" />
+  <div :class="mergedCls.root">
+    <NavigationMenuViewport v-bind="forwardedProps" :class="mergedCls.cls" />
+  </div>
 </template>

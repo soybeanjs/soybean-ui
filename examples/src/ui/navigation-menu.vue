@@ -2,7 +2,19 @@
 import { ref } from 'vue';
 import { SCard, SNavigationMenu } from 'soy-ui';
 import type { NavigationMenuItemOption, ThemeSize } from 'soy-ui';
-import { BookOpen, Box, CloudDownload, Cog, Database, FileText, House, Smile, SwatchBook } from 'lucide-vue-next';
+import {
+  BookOpen,
+  Box,
+  CloudDownload,
+  Cog,
+  Database,
+  FileText,
+  Github,
+  HelpCircle,
+  House,
+  Smile,
+  SwatchBook
+} from 'lucide-vue-next';
 import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
@@ -133,6 +145,18 @@ const menus: NavigationMenuItemOption[] = [
         href: '/components/progress'
       }
     ]
+  },
+  {
+    label: 'GitHub',
+    icon: Github,
+    href: 'https://github.com/nuxt/ui',
+    target: '_blank'
+  },
+  {
+    label: 'Help',
+    icon: HelpCircle,
+    href: 'https://github.com/nuxt/ui',
+    disabled: true
   }
 ];
 

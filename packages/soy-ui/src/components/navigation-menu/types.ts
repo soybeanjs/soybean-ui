@@ -18,21 +18,41 @@ import type { LinkProps } from '../link';
 
 export interface NavigationMenuViewportProps extends _NavigationMenuViewportProps {
   size?: ThemeSize;
+  rootClass?: ClassValue;
 }
 
 export interface NavigationMenuListProps extends _NavigationMenuListProps {
   size?: ThemeSize;
 }
 
-export interface NavigationMenuTriggerProps extends _NavigationMenuTriggerProps {
-  size?: ThemeSize;
-  iconClass?: ClassValue;
+export interface NavigationMenuItemBaseOption extends Pick<NavigationMenuItemProps, 'value'>, LinkProps {
+  label: string;
+  icon?: Component | VNode;
+  description?: string;
 }
 
-export interface NavigationMenuViewportRootProps extends ClassValueProp {}
+type NavigationMenuTriggerSlots = Extract<NavigationMenuSlots, 'trigger' | 'triggerLeadingIcon' | 'triggerIcon'>;
 
-export interface NavigationMenuLinkProps extends _NavigationMenuLinkProps, LinkProps {
+export type NavigationMenuTriggerUi = Partial<Record<NavigationMenuTriggerSlots, ClassValue>>;
+
+export interface NavigationMenuTriggerProps
+  extends _NavigationMenuTriggerProps,
+    LinkProps,
+    Pick<NavigationMenuItemBaseOption, 'label' | 'icon'> {
   size?: ThemeSize;
+  ui?: NavigationMenuTriggerUi;
+}
+
+type NavigationMenuLinkSlots = Extract<NavigationMenuSlots, 'link' | 'linkLeadingIcon' | 'linkLabel' | 'linkIcon'>;
+
+export type NavigationMenuLinkUi = Partial<Record<NavigationMenuLinkSlots, ClassValue>>;
+
+export interface NavigationMenuLinkProps
+  extends _NavigationMenuLinkProps,
+    LinkProps,
+    Pick<NavigationMenuItemBaseOption, 'label' | 'icon'> {
+  size?: ThemeSize;
+  ui?: NavigationMenuLinkUi;
 }
 
 export interface NavigationMenuIndicatorProps extends _NavigationMenuIndicatorProps {
@@ -40,16 +60,18 @@ export interface NavigationMenuIndicatorProps extends _NavigationMenuIndicatorPr
   arrowClass?: ClassValue;
 }
 
-export interface NavigationMenuChildLinkProps extends NavigationMenuLinkProps {
-  size?: ThemeSize;
-}
+type NavigationMenuChildLinkSlots = Extract<
+  NavigationMenuSlots,
+  'childLink' | 'childLinkIcon' | 'childLinkContent' | 'childLinkLabel' | 'childLinkDescription'
+>;
 
-export interface NavigationMenuChildLinkLabelProps extends ClassValueProp {
-  size?: ThemeSize;
-}
+export type NavigationMenuChildLinkUi = Partial<Record<NavigationMenuChildLinkSlots, ClassValue>>;
 
-export interface NavigationMenuChildLinkDescriptionProps extends ClassValueProp {
+export interface NavigationMenuChildLinkProps
+  extends _NavigationMenuLinkProps,
+    Pick<NavigationMenuItemBaseOption, 'label' | 'icon' | 'description'> {
   size?: ThemeSize;
+  ui?: NavigationMenuChildLinkUi;
 }
 
 export interface NavigationMenuChildListProps extends ClassValueProp {
@@ -57,12 +79,6 @@ export interface NavigationMenuChildListProps extends ClassValueProp {
 }
 
 export interface NavigationMenuChildListItemProps extends ClassValueProp {}
-
-export interface NavigationMenuItemBaseOption extends Pick<NavigationMenuItemProps, 'value'>, LinkProps {
-  label: string;
-  icon?: Component | VNode;
-  description?: string;
-}
 
 export type NavigationMenuItemOption<T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption> = T & {
   items?: T[];

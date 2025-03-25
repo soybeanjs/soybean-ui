@@ -9,7 +9,6 @@ import {
 import { useThemeSize } from '../../context/theme';
 import { omit } from '../../shared';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
-import SNavigationMenuViewportRoot from './navigation-menu-viewport-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';
 import SNavigationMenuList from './navigation-menu-list.vue';
 import SNavigationMenuItem from './navigation-menu-item.vue';
@@ -20,8 +19,6 @@ import SNavigationMenuLink from './navigation-menu-link.vue';
 import SNavigationMenuChildLink from './navigation-menu-child-link.vue';
 import SNavigationMenuChildList from './navigation-menu-child-list.vue';
 import SNavigationMenuChildListItem from './navigation-menu-child-list-item.vue';
-import NavigationMenuChildLinkLabel from './navigation-menu-child-link-label.vue';
-import NavigationMenuChildLinkDescription from './navigation-menu-child-link-description.vue';
 import type {
   NavigationMenuEmits,
   NavigationMenuItemBaseOption,
@@ -61,7 +58,7 @@ function hasChildren(item: NavigationMenuItemOption<T>) {
 }
 
 function getLinkProps(item: NavigationMenuItemOption<T>) {
-  return omit(item, ['items', 'label', 'value', 'description', 'icon']);
+  return omit(item, ['items', 'value', 'description']);
 }
 </script>
 
@@ -73,21 +70,18 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
           <SNavigationMenuLink
             v-if="!hasChildren(item)"
             v-bind="getLinkProps(item)"
-            :class="ui?.link"
             :size="size"
+            :ui="ui"
             @select="emit('select', item, $event)"
           >
-            <slot name="link" :item="item">
-              <component :is="item.icon" v-if="item.icon" />
-              {{ item.label }}
-            </slot>
+            <slot name="link" :item="item" />
           </SNavigationMenuLink>
           <template v-else>
-            <SNavigationMenuTrigger :class="ui?.trigger" :size="size" :icon-class="ui?.triggerIcon">
-              <slot name="trigger" :item="item">
-                <component :is="item.icon" v-if="item.icon" />
-                {{ item.label }}
-              </slot>
+            <SNavigationMenuTrigger v-bind="getLinkProps(item)" :size="size" :ui="ui" :disabled="item.disabled">
+              <slot name="trigger" :item="item" />
+              <template #icon>
+                <slot name="triggerIcon" :item="item" />
+              </template>
             </SNavigationMenuTrigger>
             <SNavigationMenuContent
               v-bind="forwardedContentEmits"
@@ -105,19 +99,10 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
                       v-bind="getLinkProps(child)"
                       :class="ui?.childLink"
                       :size="size"
+                      :ui="ui"
+                      :description="child.description"
                       @select="emit('select', child, $event)"
-                    >
-                      <NavigationMenuChildLinkLabel :class="ui?.childLinkLabel" :size="size">
-                        {{ child.label }}
-                      </NavigationMenuChildLinkLabel>
-                      <NavigationMenuChildLinkDescription
-                        v-if="child.description"
-                        :class="ui?.childLinkDescription"
-                        :size="size"
-                      >
-                        {{ child.description }}
-                      </NavigationMenuChildLinkDescription>
-                    </SNavigationMenuChildLink>
+                    />
                   </SNavigationMenuChildListItem>
                 </SNavigationMenuChildList>
               </slot>
@@ -127,8 +112,6 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
       </template>
     </SNavigationMenuList>
     <SNavigationMenuIndicator v-if="showArrow" :class="ui?.indicator" :size="size" :arrow-class="ui?.arrow" />
-    <SNavigationMenuViewportRoot :class="ui?.viewportRoot">
-      <SNavigationMenuViewport :class="ui?.viewport" :size="size" />
-    </SNavigationMenuViewportRoot>
+    <SNavigationMenuViewport :class="ui?.viewport" :size="size" :root-class="ui?.viewportRoot" />
   </SNavigationMenuRoot>
 </template>
