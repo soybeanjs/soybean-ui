@@ -247,8 +247,6 @@ export const components = {
   navigationMenu: [
     'SNavigationMenu',
     'SNavigationMenuChildLink',
-    'SNavigationMenuChildLinkDescription',
-    'SNavigationMenuChildLinkLabel',
     'SNavigationMenuChildListItem',
     'SNavigationMenuChildList',
     'SNavigationMenuContent',
@@ -258,9 +256,7 @@ export const components = {
     'SNavigationMenuRoot',
     'SNavigationMenuSub',
     'SNavigationMenuTrigger',
-    'SNavigationMenuTriggerIcon',
     'SNavigationMenuViewport',
-    'SNavigationMenuViewportRoot',
     'SNavigationMenuItem'
   ],
   numberField: [
