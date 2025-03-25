@@ -6,6 +6,7 @@ import { SButtonIcon, SDropdownMenu, SPopover, SSeparator } from 'soy-ui';
 import { Icon } from '@iconify/vue';
 import type { CustomThemeConfig, NavItem as NavItemType } from '../../../types';
 import ThemeToggle from './theme-toggle.vue';
+import LanguageSwitch from './language-switch.vue';
 
 defineOptions({
   name: 'Navbar'
@@ -75,6 +76,7 @@ watch(path, () => {
         </template>
       </SDropdownMenu>
     </template>
+    <LanguageSwitch />
     <SSeparator class="mx-4 h-4" decorative orientation="vertical" />
     <slot name="theme-customize" />
     <ThemeToggle />

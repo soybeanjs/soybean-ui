@@ -40,6 +40,18 @@ export default defineConfigWithTheme<CustomThemeConfig>({
       md.use(ComponentPreview);
     }
   },
+  locales: {
+    root: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/'
+    },
+    zh: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      link: '/zh'
+    }
+  },
   themeConfig: {
     logo: '/logo.svg',
     socialLinks: [{ icon: 'github', link: 'https://github.com/soybeanjs/soybean-ui' }],
