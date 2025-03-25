@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { SCard, SContextMenu } from 'soy-ui';
-import type { MenuOptionData, ThemeSize } from 'soy-ui';
+import type { MenuOptionData } from 'soy-ui';
 import {
   CirclePlus,
   Cloud,
@@ -19,7 +18,6 @@ import {
   UserPlus,
   Users
 } from 'lucide-vue-next';
-import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
   name: 'DemoContextMenu'
@@ -64,16 +62,11 @@ const menus: MenuOptionData<string>[] = [
   { value: '09', label: 'API', icon: Cloud, disabled: true, separator: true },
   { value: '10', label: 'Sign out', icon: LogOut, shortcut: ['command', 'shift', 'Q'] }
 ];
-
-const size = ref<ThemeSize>('md');
 </script>
 
 <template>
   <SCard title="ContextMenu" split>
-    <template #extra>
-      <ThemeSizeToggler v-model:size="size" class="w-40" />
-    </template>
-    <SContextMenu :size="size" :items="menus">
+    <SContextMenu :items="menus">
       <template #trigger>
         <div class="h-50 w-80 flex items-center justify-center border rounded-md border-dashed text-sm">
           Right click here

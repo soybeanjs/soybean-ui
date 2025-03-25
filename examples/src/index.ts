@@ -1,3 +1,4 @@
+import ThemeCustomizer from './components/theme-customizer.vue';
 import DemoAccordion from './ui/accordion.vue';
 import DemoAlert from './ui/alert.vue';
 import DemoAlertDialog from './ui/alert-dialog.vue';
@@ -49,6 +50,7 @@ import DemoToggleGroup from './ui/toggle-group.vue';
 import DemoTooltip from './ui/tooltip.vue';
 
 export {
+  ThemeCustomizer,
   DemoAccordion,
   DemoAlert,
   DemoAlertDialog,

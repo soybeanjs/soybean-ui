@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, STabs } from 'soy-ui';
-import type { TabsOptionData, ThemeSize } from 'soy-ui';
+import type { TabsOptionData } from 'soy-ui';
 
 defineOptions({
   name: 'DemoTabs'
@@ -10,8 +10,6 @@ defineOptions({
 const tabValue = ref('1');
 const tabValue2 = ref('1');
 const tabValue3 = ref('1');
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const tabs = [
   {
@@ -57,20 +55,6 @@ const tabs = [
     <SCard title="Fill" split>
       <div class="w-320px lt-sm:w-auto">
         <STabs v-model="tabValue" :items="tabs" fill="full" :ui="{ content: 'p-4 border border-border rounded-1' }">
-          <template #content="{ value }">
-            <div>The Tab Content: {{ value }}</div>
-          </template>
-        </STabs>
-      </div>
-    </SCard>
-    <SCard title="Size" split>
-      <div class="w-480px flex-c gap-4 lt-sm:w-auto">
-        <STabs v-for="size in sizes" :key="size" :size="size" default-value="1" :items="tabs">
-          <template #content="{ value }">
-            <div>The Tab Content: {{ value }}</div>
-          </template>
-        </STabs>
-        <STabs v-for="size in sizes" :key="size" :size="size" default-value="1" :items="tabs" orientation="vertical">
           <template #content="{ value }">
             <div>The Tab Content: {{ value }}</div>
           </template>

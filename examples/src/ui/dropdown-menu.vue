@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SButton, SCard, SDropdownMenu, SDropdownMenuCheckbox, SDropdownMenuRadio } from 'soy-ui';
-import type { MenuOptionData, ThemeSize } from 'soy-ui';
+import type { MenuOptionData } from 'soy-ui';
 import {
   CirclePlus,
   Cloud,
@@ -23,8 +23,6 @@ import {
 defineOptions({
   name: 'DemoDropdownMenu'
 });
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const menus: MenuOptionData<string>[] = [
   {
@@ -101,14 +99,12 @@ const placements = [
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Size" split>
-      <div class="w-fit flex-c gap-12px">
-        <SDropdownMenu v-for="size in sizes" :key="size" :size="size" :items="menus" @select="handleSelect">
-          <template #trigger>
-            <SButton variant="pure" :size="size">{{ size }} Dropdown</SButton>
-          </template>
-        </SDropdownMenu>
-      </div>
+    <SCard title="Dropdown Menu" split>
+      <SDropdownMenu :items="menus" @select="handleSelect">
+        <template #trigger>
+          <SButton variant="pure">Dropdown</SButton>
+        </template>
+      </SDropdownMenu>
     </SCard>
     <SCard title="With Arrow" split>
       <SDropdownMenu :items="menus" show-arrow>

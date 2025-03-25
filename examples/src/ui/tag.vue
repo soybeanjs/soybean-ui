@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard, STag } from 'soy-ui';
-import type { TagShape, TagVariant, ThemeColor, ThemeSize } from 'soy-ui';
+import type { TagShape, TagVariant, ThemeColor } from 'soy-ui';
 
 defineOptions({
   name: 'DemoTag'
@@ -8,7 +8,6 @@ defineOptions({
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: TagVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const shapes: TagShape[] = ['auto', 'rounded'];
 </script>
 
@@ -24,13 +23,6 @@ const shapes: TagShape[] = ['auto', 'rounded'];
         <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
           <STag v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</STag>
         </div>
-      </div>
-    </SCard>
-    <SCard title="Size" split>
-      <div class="flex flex-wrap gap-12px">
-        <STag v-for="(size, index) in sizes" :key="size" :color="colors[index]" :size="size">
-          {{ size }}
-        </STag>
       </div>
     </SCard>
     <SCard title="Shape" split>

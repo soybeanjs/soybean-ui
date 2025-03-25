@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SBadge, SButton, SCard, SInput, SSwitch } from 'soy-ui';
-import type { BadgePosition, ThemeColor, ThemeSize } from 'soy-ui';
+import type { BadgePosition, ThemeColor } from 'soy-ui';
 
 defineOptions({
   name: 'DemoBadge'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const positions: BadgePosition[] = ['top-right', 'bottom-right', 'top-left', 'bottom-left'];
 
 const text = ref('99+');
@@ -18,16 +17,6 @@ const show = ref(true);
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Size" split>
-      <div class="flex gap-3">
-        <div v-for="size in sizes" :key="size">
-          <div>{{ size }}</div>
-          <SBadge :size="size">
-            <SButton color="secondary">A</SButton>
-          </SBadge>
-        </div>
-      </div>
-    </SCard>
     <SCard title="Color" split>
       <div class="flex gap-3">
         <div v-for="color in colors" :key="color">

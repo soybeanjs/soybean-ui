@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { SCard, SCheckbox, SCheckboxGroup } from 'soy-ui';
-import type { CheckboxGroupItem, CheckedState, ThemeColor, ThemeSize } from 'soy-ui';
+import type { CheckboxGroupItem, CheckedState, ThemeColor } from 'soy-ui';
 
 defineOptions({
   name: 'DemoCheckbox'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-
-const sizeChecked = ref<CheckedState>('indeterminate');
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const checks = ref<string[]>(['1']);
 const items = createCheckboxItems();
@@ -48,11 +44,6 @@ function createCheckboxItems() {
     <SCard title="Color" split>
       <div class="flex flex-wrap gap-12px">
         <SCheckbox v-for="color in colors" :key="color" :color="color" :label="color" />
-      </div>
-    </SCard>
-    <SCard title="Size" split>
-      <div class="flex flex-wrap gap-12px">
-        <SCheckbox v-for="size in sizes" :key="size" v-model="sizeChecked" :size="size" :label="size" />
       </div>
     </SCard>
     <SCard title="Group" split>

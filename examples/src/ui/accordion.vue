@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SAccordion, SCard } from 'soy-ui';
-import type { ThemeSize } from 'soy-ui';
 import { Minus, Plus } from 'lucide-vue-next';
 
 defineOptions({
@@ -13,8 +12,6 @@ const single2 = ref('');
 const single3 = ref('');
 const multi = ref<string[]>([]);
 const multi2 = ref<string[]>([]);
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 type AccordionItems = {
   value: string;
@@ -72,18 +69,6 @@ const items: AccordionItems[] = [
           <Plus v-else />
         </template>
       </SAccordion>
-    </SCard>
-    <SCard title="Size" split>
-      <div class="flex flex-wrap justify-between gap-4">
-        <SAccordion
-          v-for="size in sizes"
-          :key="size"
-          :size="size"
-          :items="items"
-          collapsible
-          class="basis-48% lt-sm:basis-100%"
-        />
-      </div>
     </SCard>
   </div>
 </template>

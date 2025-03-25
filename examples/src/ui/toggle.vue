@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { SCard, SToggle } from 'soy-ui';
-import type { ThemeSize, ToggleVariant } from 'soy-ui';
+import type { ToggleVariant } from 'soy-ui';
 
 defineOptions({
   name: 'DemoToggle'
 });
 
 const variants: ToggleVariant[] = ['ghost', 'outline'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>
@@ -15,13 +14,6 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
     <SCard title="Variant" split>
       <div class="flex gap-12px">
         <SToggle v-for="variant in variants" :key="variant" :variant="variant">{{ variant }}</SToggle>
-      </div>
-    </SCard>
-    <SCard title="Size" split>
-      <div class="flex gap-12px">
-        <SToggle v-for="size in sizes" :key="size" variant="outline" :size="size">
-          {{ size }}
-        </SToggle>
       </div>
     </SCard>
     <SCard title="Disabled" split>

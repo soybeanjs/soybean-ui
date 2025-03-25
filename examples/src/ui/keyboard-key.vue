@@ -1,32 +1,24 @@
 <script setup lang="ts">
 import { SCard, SKeyboardKey, SKeyboardKeyGroup } from 'soy-ui';
-import type { KeyboardKeyVariant, ThemeSize } from 'soy-ui';
+import type { KeyboardKeyVariant } from 'soy-ui';
 
 defineOptions({
   name: 'DemoKeyboardKey'
 });
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'ghost'];
 </script>
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Size" split>
-      <div class="flex flex-wrap gap-2">
-        <div v-for="size in sizes" :key="size" class="flex-c justify-between">
-          <div>{{ size }}</div>
-          <SKeyboardKey :size="size" value="command" />
-        </div>
-      </div>
+    <SCard title="Keyboard Key" split>
+      <SKeyboardKey value="command" />
     </SCard>
     <SCard title="Variant" split>
       <div class="flex-c gap-2">
         <div v-for="variant in variants" :key="variant" class="flex-c">
           <div>{{ variant }}</div>
-          <div class="flex items-end gap-2">
-            <SKeyboardKey v-for="size in sizes" :key="size" :variant="variant" value="K" :size="size" />
-          </div>
+          <SKeyboardKey :variant="variant" value="K" />
         </div>
       </div>
     </SCard>

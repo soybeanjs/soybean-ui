@@ -2,14 +2,12 @@
 import { ref, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
 import { SCard, SCommand, SCommandDialog, SKeyboardKey } from 'soy-ui';
-import type { CommandGroupOptionData, CommandOptionData, SelectEvent, ThemeSize } from 'soy-ui';
+import type { CommandGroupOptionData, CommandOptionData, SelectEvent } from 'soy-ui';
 import { Calendar, HelpCircle, Mail, Rocket, Settings, Smile, User } from 'lucide-vue-next';
 
 defineOptions({
   name: 'DemoCommand'
 });
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const keys = useMagicKeys();
 
@@ -88,13 +86,8 @@ watch(CmdJ, v => {
 
 <template>
   <div class="flex-c gap-4">
-    <SCard title="Size" split>
-      <div class="flex flex-wrap gap-24px">
-        <div v-for="size in sizes" :key="size" class="w-320px lt-sm:w-full">
-          <div>{{ size }}</div>
-          <SCommand class="border rounded-lg shadow-md" :size="size" :items="items" />
-        </div>
-      </div>
+    <SCard title="Command" split>
+      <SCommand class="border rounded-lg shadow-md" :items="items" />
     </SCard>
     <SCard title="Dialog Command" split>
       <SKeyboardKey :value="['command', 'j']" />

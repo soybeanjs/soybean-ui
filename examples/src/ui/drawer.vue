@@ -1,22 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { SButton, SCard, SDrawer, SDrawerClose } from 'soy-ui';
-import type { ThemeSize } from 'soy-ui';
-import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
   name: 'DemoDrawer'
 });
-
-const size = ref<ThemeSize>('md');
 </script>
 
 <template>
   <SCard title="Drawer" split>
-    <template #extra>
-      <ThemeSizeToggler v-model:size="size" class="w-40" />
-    </template>
-    <SDrawer title="Drawer Title" show-close :size="size" :ui="{ contentBody: 'mx-auto max-w-sm w-full' }">
+    <SDrawer title="Drawer Title" show-close :ui="{ contentBody: 'mx-auto max-w-sm w-full' }">
       <template #trigger>
         <SButton variant="outline">Open</SButton>
       </template>
@@ -27,9 +19,9 @@ const size = ref<ThemeSize>('md');
       </p>
       <template #footer>
         <SDrawerClose as-child>
-          <SButton :size="size" variant="outline">Cancel</SButton>
+          <SButton variant="outline">Cancel</SButton>
         </SDrawerClose>
-        <SButton :size="size">Submit</SButton>
+        <SButton>Submit</SButton>
       </template>
     </SDrawer>
   </SCard>

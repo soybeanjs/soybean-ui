@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, SPinInput, SonnerToaster, toast } from 'soy-ui';
-import type { ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoPinInput'
@@ -18,8 +17,6 @@ const upperCaseValue = ref<string[]>([]);
 function handleChange(value: string[]) {
   upperCaseValue.value = value.join('').toUpperCase().split('');
 }
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>
@@ -47,14 +44,6 @@ const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
     </SCard>
     <SCard title="Password" split>
       <SPinInput placeholder="○" type="text" mask />
-    </SCard>
-    <SCard title="Size" split>
-      <div class="flex-c-stretch gap-3">
-        <div v-for="size in sizes" :key="size">
-          <div>{{ size }}</div>
-          <SPinInput placeholder="○" :size="size" />
-        </div>
-      </div>
     </SCard>
   </div>
 </template>
