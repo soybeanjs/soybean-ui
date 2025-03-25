@@ -7,11 +7,13 @@ defineOptions({
   name: 'NavigationMenuChildLinkDescription'
 });
 
-const { class: cls } = defineProps<NavigationMenuChildLinkDescriptionProps>();
+const { class: cls, size } = defineProps<NavigationMenuChildLinkDescriptionProps>();
 
-const { childLinkDescription } = navigationMenuVariants();
+const mergedCls = computed(() => {
+  const { childLinkDescription } = navigationMenuVariants({ size });
 
-const mergedCls = computed(() => cn(childLinkDescription(), cls));
+  return cn(childLinkDescription(), cls);
+});
 </script>
 
 <template>

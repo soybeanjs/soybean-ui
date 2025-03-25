@@ -8,13 +8,15 @@ defineOptions({
   name: 'SNavigationMenuViewport'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<NavigationMenuViewportProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<NavigationMenuViewportProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
-const { viewport } = navigationMenuVariants();
+const mergedCls = computed(() => {
+  const { viewport } = navigationMenuVariants({ size });
 
-const mergedCls = computed(() => cn(viewport(), cls));
+  return cn(viewport(), cls);
+});
 </script>
 
 <template>

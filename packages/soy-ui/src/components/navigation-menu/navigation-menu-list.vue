@@ -8,11 +8,13 @@ defineOptions({
   name: 'SNavigationMenuList'
 });
 
-const { class: cls } = defineProps<NavigationMenuListProps>();
+const { class: cls, size } = defineProps<NavigationMenuListProps>();
 
-const { list } = navigationMenuVariants();
+const mergedCls = computed(() => {
+  const { list } = navigationMenuVariants({ size });
 
-const mergedCls = computed(() => cn(list(), cls));
+  return cn(list(), cls);
+});
 </script>
 
 <template>

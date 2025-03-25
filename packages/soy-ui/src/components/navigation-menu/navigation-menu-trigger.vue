@@ -1,26 +1,33 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { NavigationMenuTrigger } from '@soybean-ui/primitives';
+import { NavigationMenuTrigger, Slot } from '@soybean-ui/primitives';
 import { cn, navigationMenuVariants } from '@soybean-ui/variants';
+import { ChevronDown } from 'lucide-vue-next';
 import type { NavigationMenuTriggerProps } from './types';
-import SNavigationMenuTriggerIcon from './navigation-menu-trigger-icon.vue';
 
 defineOptions({
   name: 'SNavigationMenuTrigger'
 });
 
-const { class: cls, disabled, iconClass } = defineProps<NavigationMenuTriggerProps>();
+const { class: cls, size, disabled, iconClass } = defineProps<NavigationMenuTriggerProps>();
 
-const { trigger } = navigationMenuVariants();
+const mergedCls = computed(() => {
+  const { trigger, triggerIcon } = navigationMenuVariants({ size });
 
-const mergedCls = computed(() => cn(trigger(), cls));
+  return {
+    cls: cn(trigger(), cls),
+    icon: cn(triggerIcon(), iconClass)
+  };
+});
 </script>
 
 <template>
-  <NavigationMenuTrigger :class="mergedCls" :disabled="disabled">
+  <NavigationMenuTrigger :class="mergedCls.cls" :disabled="disabled">
     <slot />
-    <slot name="icon">
-      <SNavigationMenuTriggerIcon :class="iconClass" aria-hidden="true" />
-    </slot>
+    <Slot :class="mergedCls.icon" aria-hidden="true">
+      <slot name="icon">
+        <ChevronDown />
+      </slot>
+    </Slot>
   </NavigationMenuTrigger>
 </template>

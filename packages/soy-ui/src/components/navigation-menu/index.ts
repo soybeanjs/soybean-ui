@@ -10,7 +10,6 @@ import SNavigationMenuItem from './navigation-menu-item.vue';
 import SNavigationMenuLink from './navigation-menu-link.vue';
 import SNavigationMenuList from './navigation-menu-list.vue';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
-import SNavigationMenuTriggerIcon from './navigation-menu-trigger-icon.vue';
 import SNavigationMenuTrigger from './navigation-menu-trigger.vue';
 import SNavigationMenuViewportRoot from './navigation-menu-viewport-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';
@@ -30,7 +29,6 @@ export {
   SNavigationMenuRoot,
   SNavigationMenuSub,
   SNavigationMenuTrigger,
-  SNavigationMenuTriggerIcon,
   SNavigationMenuViewport,
   SNavigationMenuViewportRoot,
   SNavigationMenuItem

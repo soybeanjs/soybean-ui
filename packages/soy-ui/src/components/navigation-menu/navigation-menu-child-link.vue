@@ -10,15 +10,17 @@ defineOptions({
   name: 'SNavigationMenuChildLink'
 });
 
-const { class: cls, active, ...delegatedProps } = defineProps<NavigationMenuChildLinkProps>();
+const { class: cls, size, active, ...delegatedProps } = defineProps<NavigationMenuChildLinkProps>();
 
 const emit = defineEmits<NavigationMenuLinkEmits>();
 
 const forwardedLinkProps = useForwardProps(delegatedProps);
 
-const { childLink } = navigationMenuVariants();
+const mergedCls = computed(() => {
+  const { childLink } = navigationMenuVariants({ size });
 
-const mergedCls = computed(() => cn(childLink(), cls));
+  return cn(childLink(), cls);
+});
 </script>
 
 <template>

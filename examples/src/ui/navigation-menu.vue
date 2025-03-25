@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { SCard, SNavigationMenu } from 'soy-ui';
-import type { NavigationMenuItemOption } from 'soy-ui';
+import type { NavigationMenuItemOption, ThemeSize } from 'soy-ui';
 import { BookOpen, Box, CloudDownload, Cog, Database, FileText, House, Smile, SwatchBook } from 'lucide-vue-next';
+import ThemeSizeToggler from '../components/theme-size-toggler.vue';
 
 defineOptions({
   name: 'DemoNavigationMenu'
@@ -133,10 +135,15 @@ const menus: NavigationMenuItemOption[] = [
     ]
   }
 ];
+
+const size = ref<ThemeSize>('md');
 </script>
 
 <template>
   <SCard title="NavigationMenu" split>
-    <SNavigationMenu :items="menus" show-arrow :ui="{ childLink: 'w-80' }" />
+    <template #extra>
+      <ThemeSizeToggler v-model:size="size" class="w-40" />
+    </template>
+    <SNavigationMenu :items="menus" show-arrow :ui="{ childLink: 'w-80' }" :size="size" />
   </SCard>
 </template>

@@ -6,27 +6,27 @@ export const navigationMenuVariants = tv({
     root: `relative z-1 w-full flex justify-center`,
     viewportRoot: `perspective-2000px absolute top-full left-0 flex w-full justify-center`,
     viewport: [
-      `origin-top-center relative w-full mt-2.5 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
+      `origin-top-center relative w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
       `h-[var(--soybean-navigation-menu-viewport-height)] md:w-[var(--soybean-navigation-menu-viewport-width)]`,
       `data-[state=open]:(animate-in zoom-in-90) data-[state=closed]:(animate-out zoom-out-95)`
     ],
-    list: `group flex flex-1 list-none items-center justify-center space-x-1 my-0`,
+    list: `group flex flex-1 list-none items-center justify-center my-0`,
     item: `list-none`,
     trigger: [
-      `group inline-flex h-10 w-max items-center justify-center gap-1.5 rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors-200`,
+      `group inline-flex w-max items-center justify-center rounded-md bg-background font-medium transition-colors-200`,
       `hover:(bg-accent text-accent-foreground)`,
       `focus:(bg-accent text-accent-foreground outline-none)`,
       `disabled:(pointer-events-none opacity-50)`,
       `data-[active]:bg-accent/50`,
       `data-[state=open]:bg-accent/50`
     ],
-    triggerIcon: `relative top-px size-5 transition duration-200 group-data-[state=open]:rotate-180`,
+    triggerIcon: `relative top-px transition duration-200 group-data-[state=open]:rotate-180`,
     indicator: [
-      `absolute top-full z-1 flex mt-1px w-[--soybean-navigation-menu-indicator-size] h-2.5 items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
+      `absolute top-full z-1 flex mt-1px w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
       `data-[state=visible]:(animate-in fade-in-0)`,
       `data-[state=hidden]:(animate-out fade-out-0)`
     ],
-    arrow: 'relative top-70% size-3 rotate-45 border border-border bg-background rounded-2px',
+    arrow: 'relative top-70% rotate-45 border border-border bg-background rounded-2px',
     content: [
       `left-0 top-0 w-full md:(absolute w-auto)`,
       `data-[motion^=from-]:(animate-in fade-in)`,
@@ -34,17 +34,96 @@ export const navigationMenuVariants = tv({
       `data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`
     ],
     link: [
-      `group relative w-full h-10 flex items-center rounded-md px-4 py-2 gap-1.5 font-medium text-sm outline-none cursor-pointer`,
+      `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`
     ],
-    childList: `grid grid-cols-[auto_auto] gap-2 p-2 list-none my-0`,
+    childList: `grid grid-cols-[auto_auto] list-none my-0`,
     childListItem: `list-none`,
     childLink: [
-      `block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors-200 space-y-1 cursor-pointer`,
+      `block select-none rounded-md leading-none no-underline outline-none transition-colors-200 cursor-pointer`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`
     ],
-    childLinkLabel: `text-sm font-medium leading-none`,
-    childLinkDescription: `line-clamp-2 text-sm text-muted-foreground leading-snug`
+    childLinkLabel: `font-medium leading-none`,
+    childLinkDescription: `line-clamp-2 text-muted-foreground leading-snug`
+  },
+  variants: {
+    size: {
+      xs: {
+        viewport: 'mt-1.75',
+        list: 'space-x-0.5',
+        trigger: 'gap-1 py-1 px-1 text-xs',
+        indicator: 'h-1.5',
+        arrow: 'size-2',
+        link: 'gap-1 py-1 px-1 text-xs',
+        childList: 'gap-1 p-1',
+        childLink: 'space-y-0.5 p-2',
+        childLinkLabel: 'text-xs',
+        childLinkDescription: 'text-xs'
+      },
+      sm: {
+        viewport: 'mt-2',
+        list: 'space-x-0.75',
+        trigger: 'gap-1 py-1 px-1.5 text-sm',
+        indicator: 'h-2',
+        arrow: 'size-2.5',
+        link: 'gap-1 py-1 px-1.5 text-sm',
+        childList: 'gap-1.5 p-1.5',
+        childLink: 'space-y-0.75 p-2.5',
+        childLinkLabel: 'text-sm',
+        childLinkDescription: 'text-sm'
+      },
+      md: {
+        viewport: 'mt-2.5',
+        list: 'space-x-1',
+        trigger: 'gap-1.5 py-1.5 px-2 text-sm',
+        indicator: 'h-2.5',
+        arrow: 'size-3',
+        link: 'gap-1.5 py-1.5 px-2 text-sm',
+        childList: 'gap-2 p-2',
+        childLink: 'space-y-1 p-3',
+        childLinkLabel: 'text-sm',
+        childLinkDescription: 'text-sm'
+      },
+      lg: {
+        viewport: 'mt-3',
+        list: 'space-x-1.5',
+        trigger: 'gap-2 py-1.5 px-2.5 text-base',
+        indicator: 'h-3',
+        arrow: 'size-3.5',
+        link: 'gap-2 py-1.5 px-2.5 text-base',
+        childList: 'gap-2.5 p-2.5',
+        childLink: 'space-y-1.5 p-3.5',
+        childLinkLabel: 'text-base',
+        childLinkDescription: 'text-base'
+      },
+      xl: {
+        viewport: 'mt-3.5',
+        list: 'space-x-2',
+        trigger: 'gap-2.5 py-2 px-3 text-base',
+        indicator: 'h-3.5',
+        arrow: 'size-4',
+        link: 'gap-2.5 py-2 px-3 text-base',
+        childList: 'gap-3 p-3',
+        childLink: 'space-y-2 p-4',
+        childLinkLabel: 'text-base',
+        childLinkDescription: 'text-base'
+      },
+      '2xl': {
+        viewport: 'mt-4',
+        list: 'space-x-2.5',
+        trigger: 'gap-3 py-2.5 px-3.5 text-lg',
+        indicator: 'h-4',
+        arrow: 'size-4.5',
+        link: 'gap-3 py-2.5 px-3.5 text-lg',
+        childList: 'gap-3.5 p-3.5',
+        childLink: 'space-y-2.5 p-4.5',
+        childLinkLabel: 'text-lg',
+        childLinkDescription: 'text-lg'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
   }
 });
 

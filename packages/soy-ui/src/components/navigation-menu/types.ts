@@ -4,35 +4,57 @@ import type {
   ClassValueProp,
   NavigationMenuContentEmits,
   NavigationMenuContentProps,
-  NavigationMenuIndicatorProps,
   NavigationMenuItemProps,
-  NavigationMenuListProps,
   NavigationMenuRootEmits,
   NavigationMenuRootProps,
-  NavigationMenuViewportProps,
+  NavigationMenuIndicatorProps as _NavigationMenuIndicatorProps,
   NavigationMenuLinkProps as _NavigationMenuLinkProps,
-  NavigationMenuTriggerProps as _NavigationMenuTriggerProps
+  NavigationMenuListProps as _NavigationMenuListProps,
+  NavigationMenuTriggerProps as _NavigationMenuTriggerProps,
+  NavigationMenuViewportProps as _NavigationMenuViewportProps
 } from '@soybean-ui/primitives';
-import type { NavigationMenuSlots } from '@soybean-ui/variants';
+import type { NavigationMenuSlots, ThemeSize } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
 
+export interface NavigationMenuViewportProps extends _NavigationMenuViewportProps {
+  size?: ThemeSize;
+}
+
+export interface NavigationMenuListProps extends _NavigationMenuListProps {
+  size?: ThemeSize;
+}
+
 export interface NavigationMenuTriggerProps extends _NavigationMenuTriggerProps {
+  size?: ThemeSize;
   iconClass?: ClassValue;
 }
 
-export interface NavigationMenuTriggerIconProps extends ClassValueProp {}
-
 export interface NavigationMenuViewportRootProps extends ClassValueProp {}
 
-export interface NavigationMenuLinkProps extends _NavigationMenuLinkProps, LinkProps {}
+export interface NavigationMenuLinkProps extends _NavigationMenuLinkProps, LinkProps {
+  size?: ThemeSize;
+}
 
-export interface NavigationMenuChildLinkProps extends NavigationMenuLinkProps {}
+export interface NavigationMenuIndicatorProps extends _NavigationMenuIndicatorProps {
+  size?: ThemeSize;
+  arrowClass?: ClassValue;
+}
 
-export interface NavigationMenuChildLinkLabelProps extends ClassValueProp {}
+export interface NavigationMenuChildLinkProps extends NavigationMenuLinkProps {
+  size?: ThemeSize;
+}
 
-export interface NavigationMenuChildLinkDescriptionProps extends ClassValueProp {}
+export interface NavigationMenuChildLinkLabelProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
-export interface NavigationMenuChildListProps extends ClassValueProp {}
+export interface NavigationMenuChildLinkDescriptionProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export interface NavigationMenuChildListProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export interface NavigationMenuChildListItemProps extends ClassValueProp {}
 
@@ -50,6 +72,7 @@ export type NavigationMenuUi = Partial<Record<NavigationMenuSlots, ClassValue>>;
 
 export interface NavigationMenuProps<T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption>
   extends NavigationMenuRootProps {
+  size?: ThemeSize;
   ui?: NavigationMenuUi;
   items: NavigationMenuItemOption<T>[];
   showArrow?: boolean;
@@ -65,10 +88,7 @@ export type NavigationMenuEmits<T extends NavigationMenuItemOption = NavigationM
 
 export type {
   NavigationMenuContentProps,
-  NavigationMenuIndicatorProps,
-  NavigationMenuListProps,
   NavigationMenuRootProps,
-  NavigationMenuViewportProps,
   NavigationMenuItemProps,
   NavigationMenuRootEmits,
   NavigationMenuContentEmits
