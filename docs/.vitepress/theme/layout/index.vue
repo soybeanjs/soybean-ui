@@ -3,14 +3,14 @@ import { useData } from 'vitepress';
 import { computed, toRefs } from 'vue';
 import { useScroll, useStorage } from '@vueuse/core';
 import { SButtonIcon, SConfigProvider, SPopover } from 'soy-ui';
-import type { ConfigProviderProps } from 'soy-ui';
+import type { ConfigProviderProps, ThemeSize } from 'soy-ui';
 import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
+import { ThemeCustomizer } from '@soybean-ui/examples';
 import { SwatchBook } from 'lucide-vue-next';
 import AppLogo from './components/app-logo.vue';
 import Home from './components/home.vue';
 import Navbar from './components/navbar.vue';
 import Docs from './components/docs.vue';
-import ThemeCustomize from './components/theme-customize.vue';
 
 const { site, frontmatter } = useData();
 
@@ -20,12 +20,14 @@ const { top } = toRefs(arrivedState);
 
 const color = useStorage<ThemeConfigColor>('color', 'default');
 const radius = useStorage('radius', 0.5);
+const size = useStorage<ThemeSize>('size', 'md');
 
 const configProviderProps = computed<ConfigProviderProps>(() => ({
   theme: {
     color: color.value,
     radius: radius.value
-  }
+  },
+  size: size.value
 }));
 </script>
 
@@ -57,7 +59,7 @@ const configProviderProps = computed<ConfigProviderProps>(() => ({
                     <SwatchBook />
                   </SButtonIcon>
                 </template>
-                <ThemeCustomize v-model:color="color" v-model:radius="radius" />
+                <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
               </SPopover>
             </template>
           </Navbar>

@@ -4,12 +4,12 @@ import type { Component } from 'vue';
 import { useDark, useStorage } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SCard, SConfigProvider, SPopover, SScrollArea, STabs, SToastProvider } from 'soy-ui';
-import type { ConfigProviderProps, TabsOptionData } from 'soy-ui';
+import type { ConfigProviderProps, TabsOptionData, ThemeSize } from 'soy-ui';
 import * as ExampleComponents from '@soybean-ui/examples';
+import { ThemeCustomizer } from '@soybean-ui/examples';
 import type { ThemeConfigColor } from '@soybean-ui/unocss-preset';
 import { kebabCase } from 'es-toolkit';
 import { Moon, Sun, SwatchBook } from 'lucide-vue-next';
-import ThemeCustomize from '@/components/theme-customize.vue';
 
 defineOptions({
   name: 'UiPage'
@@ -25,23 +25,31 @@ function toggleDark() {
 
 const color = useStorage<ThemeConfigColor>('color', 'default');
 const radius = useStorage('radius', 0.5);
+const size = useStorage<ThemeSize>('size', 'md');
 
 const configProviderProps = computed<ConfigProviderProps>(() => ({
   theme: {
     color: color.value,
     radius: radius.value
-  }
+  },
+  size: size.value
 }));
 
 interface TabConfig extends TabsOptionData {
   component: Component;
 }
 
-const tabs: TabConfig[] = Object.entries(ExampleComponents).map(([key, component]) => ({
-  label: key.replace('Demo', ''),
-  value: kebabCase(key.replace('Demo', '')),
-  component: component as Component
-}));
+const tabs: TabConfig[] = [];
+
+Object.entries(ExampleComponents).forEach(([key, component]) => {
+  if (!key.includes('Demo')) return;
+
+  tabs.push({
+    label: key.replace('Demo', ''),
+    value: kebabCase(key.replace('Demo', '')),
+    component: component as Component
+  });
+});
 </script>
 
 <template>
@@ -57,7 +65,7 @@ const tabs: TabConfig[] = Object.entries(ExampleComponents).map(([key, component
                     <SwatchBook />
                   </SButtonIcon>
                 </template>
-                <ThemeCustomize v-model:color="color" v-model:radius="radius" />
+                <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
               </SPopover>
               <SButtonIcon size="lg" @click="toggleDark">
                 <Sun v-if="isDark" />
