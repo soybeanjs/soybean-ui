@@ -14,7 +14,7 @@ const single3 = ref('');
 const multi = ref<string[]>([]);
 const multi2 = ref<string[]>([]);
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 type AccordionItems = {
   value: string;

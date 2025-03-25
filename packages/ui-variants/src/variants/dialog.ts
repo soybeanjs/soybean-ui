@@ -61,7 +61,7 @@ export const dialogVariants = tv({
         closeIcon: 'right-5 top-5',
         footer: 'gap-5'
       },
-      xxl: {
+      '2xl': {
         content: `gap-y-6 max-w-3xl px-7 py-6 text-lg`,
         header: 'gap-y-6',
         title: 'gap-x-4.5 text-xl',

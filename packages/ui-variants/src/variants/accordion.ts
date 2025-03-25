@@ -36,7 +36,7 @@ export const accordionVariants = tv({
         content: 'text-base data-[state=open]:pb-5',
         trigger: 'text-base py-5'
       },
-      xxl: {
+      '2xl': {
         content: 'text-lg data-[state=open]:pb-6',
         trigger: 'text-lg py-6'
       }

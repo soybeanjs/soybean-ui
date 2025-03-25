@@ -7,7 +7,7 @@ defineOptions({
 });
 
 const variants: ToggleVariant[] = ['ghost', 'outline'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>

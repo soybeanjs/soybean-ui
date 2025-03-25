@@ -9,7 +9,7 @@ defineOptions({
   name: 'DemoCommand'
 });
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const keys = useMagicKeys();
 

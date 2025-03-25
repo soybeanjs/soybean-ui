@@ -58,7 +58,7 @@ export const switchVariants = tv({
         root: 'h-6.5 w-11.5 border-3',
         thumb: 'size-5 data-[state=checked]:translate-x-5 text-base'
       },
-      xxl: {
+      '2xl': {
         root: 'h-7.5 w-13.5 border-3',
         thumb: 'size-6 data-[state=checked]:translate-x-6 text-base'
       }

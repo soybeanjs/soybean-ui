@@ -36,7 +36,7 @@ export const drawerVariants = tv({
         contentBody: `gap-y-5 max-w-2xl px-6 py-5 text-base`,
         knob: 'mt-6 h-3 w-35'
       },
-      xxl: {
+      '2xl': {
         content: `mt-30 rounded-t-[16px]`,
         contentBody: `gap-y-6 max-w-3xl px-7 py-6 text-lg`,
         knob: 'mt-7 h-3.5 w-40'

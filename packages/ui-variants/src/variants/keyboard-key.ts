@@ -41,7 +41,7 @@ export const keyboardKeyVariants = tv({
         item: 'h-6 min-w-6 px-1.5 gap-2 text-sm',
         group: 'gap-2'
       },
-      xxl: {
+      '2xl': {
         item: 'h-6.5 min-w-6.5 px-1.5 gap-2.5 text-sm',
         group: 'gap-2.5'
       }

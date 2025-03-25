@@ -42,7 +42,7 @@ export const pinInputVariants = tv({
         input: `h-10 w-10 text-base`,
         separator: `text-base`
       },
-      xxl: {
+      '2xl': {
         input: `h-12 w-12 text-lg`,
         separator: `text-lg`
       }

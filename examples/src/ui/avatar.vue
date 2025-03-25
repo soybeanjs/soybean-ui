@@ -10,7 +10,7 @@ const soybeanUiRsc = 'https://soybean-ui.com/logo.svg';
 
 const soybeanSrc = 'https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/logo.png';
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>

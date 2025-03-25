@@ -105,7 +105,7 @@ export const alertVariants = tv({
         description: 'text-base',
         close: 'text-base'
       },
-      xxl: {
+      '2xl': {
         root: 'gap-4.5 px-7 py-4.5',
         wrapper: 'space-y-2',
         icon: 'text-lg',

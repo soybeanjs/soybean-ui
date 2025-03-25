@@ -10,7 +10,7 @@ const sizes: SelectOptionData<ThemeSize>[] = [
   { value: 'md', label: 'md' },
   { value: 'lg', label: 'lg' },
   { value: 'xl', label: 'xl' },
-  { value: 'xxl', label: 'xxl' }
+  { value: '2xl', label: '2xl' }
 ];
 </script>
 

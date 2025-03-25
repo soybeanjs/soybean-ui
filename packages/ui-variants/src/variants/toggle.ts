@@ -41,7 +41,7 @@ export const toggleVariants = tv({
         toggle: `h-10 px-8 text-base`,
         groupRoot: `gap-1.5`
       },
-      xxl: {
+      '2xl': {
         toggle: `h-12 px-10 text-lg`,
         groupRoot: `gap-1.5`
       }

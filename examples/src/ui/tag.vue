@@ -8,7 +8,7 @@ defineOptions({
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: TagVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const shapes: TagShape[] = ['auto', 'rounded'];
 </script>
 

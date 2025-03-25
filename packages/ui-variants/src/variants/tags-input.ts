@@ -55,7 +55,7 @@ export const tagsInputVariants = tv({
         itemDelete: 'mr-3.5',
         itemDeleteIcon: 'size-5'
       },
-      xxl: {
+      '2xl': {
         root: 'px-4 py-1.75 text-lg',
         input: 'min-h-8 px-4 text-lg',
         item: 'h-8',

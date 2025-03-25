@@ -42,7 +42,7 @@ export const tabsVariants = tv({
         trigger: `px-5 gap-3 py-1.25 text-base`,
         indicatorRoot: ''
       },
-      xxl: {
+      '2xl': {
         list: `p-1.5`,
         trigger: `px-6 gap-4 py-1.5 text-xl`,
         indicatorRoot: ''
@@ -154,7 +154,7 @@ export const tabsVariants = tv({
       }
     },
     {
-      size: 'xxl',
+      size: '2xl',
       orientation: 'horizontal',
       class: {
         indicatorRoot: 'py-1.5',
@@ -162,7 +162,7 @@ export const tabsVariants = tv({
       }
     },
     {
-      size: 'xxl',
+      size: '2xl',
       orientation: 'vertical',
       class: {
         indicatorRoot: 'px-1.5',

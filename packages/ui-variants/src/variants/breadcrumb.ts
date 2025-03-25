@@ -38,7 +38,7 @@ export const breadcrumbVariants = tv({
         list: 'gap-3',
         item: 'gap-2'
       },
-      xxl: {
+      '2xl': {
         root: 'text-xl',
         list: 'gap-3.5',
         item: 'gap-2.5'

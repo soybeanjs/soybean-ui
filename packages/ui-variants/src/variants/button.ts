@@ -34,7 +34,7 @@ export const buttonVariants = tv({
       md: 'h-8 px-4 gap-3 text-sm',
       lg: 'h-9 px-6 gap-4 text-base',
       xl: 'h-10 px-8 gap-5 text-base',
-      xxl: 'h-12 px-10 gap-6 text-lg'
+      '2xl': 'h-12 px-10 gap-6 text-lg'
     },
     shape: {
       auto: 'rounded-md',
@@ -304,7 +304,7 @@ export const buttonVariants = tv({
       class: 'h-10 w-10'
     },
     {
-      size: 'xxl',
+      size: '2xl',
       shape: ['square', 'circle'],
       class: 'h-12 w-12'
     },

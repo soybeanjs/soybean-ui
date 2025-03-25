@@ -11,7 +11,7 @@ const tabValue = ref('1');
 const tabValue2 = ref('1');
 const tabValue3 = ref('1');
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const tabs = [
   {

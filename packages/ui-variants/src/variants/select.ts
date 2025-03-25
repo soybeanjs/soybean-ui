@@ -84,7 +84,7 @@ export const selectVariants = tv({
         scrollUpButton: 'py-1.25 text-base',
         scrollDownButton: 'py-1.25 text-base'
       },
-      xxl: {
+      '2xl': {
         trigger: 'h-12 px-4.5 text-lg',
         icon: 'text-base',
         item: 'py-2.5 pl-3.5 pr-12 text-lg',

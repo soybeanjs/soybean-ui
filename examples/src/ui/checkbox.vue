@@ -11,7 +11,7 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 
 const sizeChecked = ref<CheckedState>('indeterminate');
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const checks = ref<string[]>(['1']);
 const items = createCheckboxItems();

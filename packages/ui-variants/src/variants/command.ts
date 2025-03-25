@@ -72,7 +72,7 @@ export const commandVariants = tv({
         item: 'gap-3 px-3 py-2 text-base',
         separator: '-mx-3 my-1.5'
       },
-      xxl: {
+      '2xl': {
         inputWrapper: 'px-4.5 py-1',
         input: 'h-12',
         inputIcon: 'size-6 mr-3.5',

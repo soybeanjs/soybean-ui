@@ -40,7 +40,7 @@ export const paginationVariants = tv({
         ellipsis: 'size-10 text-base',
         button: 'size-10 text-base'
       },
-      xxl: {
+      '2xl': {
         list: 'gap-2',
         ellipsis: 'size-12 text-lg',
         button: 'size-12 text-lg'

@@ -27,7 +27,7 @@ export const sheetVariants = tv({
       xl: {
         content: `gap-y-5 px-6 py-5 text-base`
       },
-      xxl: {
+      '2xl': {
         content: `gap-y-6 px-7 py-6 text-lg`
       }
     },

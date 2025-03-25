@@ -99,7 +99,7 @@ export const menuVariants = tv({
         itemIndicator: 'left-3',
         radioItem: 'py-2 pl-10 pr-3 text-base'
       },
-      xxl: {
+      '2xl': {
         label: 'py-2.5 px-3.5 text-lg',
         item: 'py-2.5 px-3.5 text-lg',
         itemLink: 'py-2.5 px-3.5 text-lg',

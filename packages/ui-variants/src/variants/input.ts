@@ -15,7 +15,7 @@ export const inputVariants = tv({
       md: 'h-8 px-2.5 text-sm file:py-1.25',
       lg: 'h-9 px-3 text-base file:py-1.25',
       xl: 'h-10 px-3.5 text-base file:py-1.75',
-      xxl: 'h-12 px-4 text-lg file:py-2.25'
+      '2xl': 'h-12 px-4 text-lg file:py-2.25'
     }
   },
   defaultVariants: {

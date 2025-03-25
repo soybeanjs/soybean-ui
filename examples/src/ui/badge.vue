@@ -8,7 +8,7 @@ defineOptions({
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const positions: BadgePosition[] = ['top-right', 'bottom-right', 'top-left', 'bottom-left'];
 
 const text = ref('99+');

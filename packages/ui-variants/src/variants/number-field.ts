@@ -50,7 +50,7 @@ export const numberFieldVariants = tv({
         incrementIcon: 'text-lg',
         input: 'h-10 text-base'
       },
-      xxl: {
+      '2xl': {
         decrement: 'p-2',
         decrementIcon: 'text-xl',
         increment: 'p-2',
@@ -103,7 +103,7 @@ export const numberFieldVariants = tv({
       }
     },
     {
-      size: 'xxl',
+      size: '2xl',
       center: false,
       class: {
         input: 'pl-4'

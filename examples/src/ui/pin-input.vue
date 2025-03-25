@@ -19,7 +19,7 @@ function handleChange(value: string[]) {
   upperCaseValue.value = value.join('').toUpperCase().split('');
 }
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>

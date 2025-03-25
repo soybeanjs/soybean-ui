@@ -55,7 +55,7 @@ export const checkboxVariants = tv({
       xl: {
         control: 'size-5'
       },
-      xxl: {
+      '2xl': {
         control: 'size-6'
       }
     },

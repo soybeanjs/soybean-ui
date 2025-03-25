@@ -10,7 +10,7 @@ export const labelVariants = tv({
       md: 'text-sm',
       lg: 'text-base',
       xl: 'text-base',
-      xxl: 'text-lg'
+      '2xl': 'text-lg'
     }
   },
   defaultVariants: {

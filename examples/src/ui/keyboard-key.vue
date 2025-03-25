@@ -6,7 +6,7 @@ defineOptions({
   name: 'DemoKeyboardKey'
 });
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'ghost'];
 </script>
 

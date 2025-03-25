@@ -47,7 +47,7 @@ export const cardVariants = tv({
         content: 'px-6 py-5',
         footer: 'px-6 py-6'
       },
-      xxl: {
+      '2xl': {
         root: 'text-lg',
         header: 'px-7 py-6',
         title: 'text-xl',

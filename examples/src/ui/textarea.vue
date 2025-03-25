@@ -8,7 +8,7 @@ defineOptions({
   name: 'DemoTextarea'
 });
 
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const modelValue = ref<string>('');
 

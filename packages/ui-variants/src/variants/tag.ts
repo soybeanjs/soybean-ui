@@ -28,7 +28,7 @@ export const tagVariants = tv({
       md: 'gap-1 h-6 px-3 text-xs',
       lg: 'gap-1.25 h-6.5 px-3.5 py-1.25 text-sm',
       xl: 'gap-1.5 h-7 px-4 py-1.5 text-sm',
-      xxl: 'gap-2 h-8 px-5 py-2 text-lg'
+      '2xl': 'gap-2 h-8 px-5 py-2 text-lg'
     },
     shape: {
       auto: 'rounded-lg',

@@ -33,7 +33,7 @@ export const textareaVariants = tv({
         content: 'px-3.5 py-1.75 text-base min-h-10',
         count: 'text-base'
       },
-      xxl: {
+      '2xl': {
         content: 'px-4 py-2.25 text-lg min-h-12',
         count: 'text-lg'
       }

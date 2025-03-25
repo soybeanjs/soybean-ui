@@ -85,7 +85,7 @@ export const comboboxVariants = tv({
         trigger: 'text-base px-3.5',
         searchIcon: 'text-base px-3.5'
       },
-      xxl: {
+      '2xl': {
         input: 'h-12 px-4 text-lg file:py-2.25 file:text-lg',
         inputIcon: 'size-6 mr-3.5',
         empty: 'py-6 text-lg',
@@ -146,7 +146,7 @@ export const comboboxVariants = tv({
     },
     {
       mode: 'modern',
-      size: 'xxl',
+      size: '2xl',
       class: {
         input: 'pl-12'
       }

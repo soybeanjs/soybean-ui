@@ -64,7 +64,7 @@ export const badgeVariants = tv({
       xl: {
         content: `p-1.75`
       },
-      xxl: {
+      '2xl': {
         content: `p-2`
       }
     }
