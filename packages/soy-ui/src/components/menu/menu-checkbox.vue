@@ -8,6 +8,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SMenuPortalContent from './menu-portal-content.vue';
 import SMenuCheckboxGroup from './menu-checkbox-group.vue';
 import type { MenuCheckboxEmits, MenuCheckboxProps, MenuOptionData } from './types';
@@ -28,11 +29,16 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenuCheckboxProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'size', 'separator', 'ui'];
+const propKeys: (keyof MenuCheckboxProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'separator', 'ui'];
 
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class'));
+const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class', 'size'));
 const forwardedCheckboxGroupProps = usePickForwardProps(props, propKeys);
 
 const emitKeys: (keyof MenuCheckboxEmits<T>)[] = [
@@ -52,7 +58,7 @@ const forwardedCheckboxGroup = useCombinedPropsEmits(forwardedCheckboxGroupProps
 
 <template>
   <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
-    <SMenuCheckboxGroup v-bind="forwardedCheckboxGroup">
+    <SMenuCheckboxGroup v-bind="forwardedCheckboxGroup" :size="size">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

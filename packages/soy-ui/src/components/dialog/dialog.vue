@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import {
   DialogPortal,
   DialogRoot,
   DialogTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SDialogOverlay from './dialog-overlay.vue';
 import SDialogContent from './dialog-content.vue';
 import SDialogHeader from './dialog-header.vue';
@@ -24,6 +27,10 @@ const props = defineProps<DialogProps>();
 
 const emit = defineEmits<DialogEmits>();
 
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen', 'modal']);
 
 const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
@@ -36,7 +43,9 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
 <template>
   <DialogRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <DialogTrigger as-child>
-      <slot name="trigger" />
+      <Slot :size="size">
+        <slot name="trigger" />
+      </Slot>
     </DialogTrigger>
     <DialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SDialogOverlay :force-mount="forceMountOverlay" :class="ui?.overlay" />

@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed } from 'vue';
 import {
   SelectPortal,
   SelectRoot,
@@ -7,6 +8,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SSelectContent from './select-content.vue';
 import SSelectTrigger from './select-trigger.vue';
 import SSelectViewport from './select-viewport.vue';
@@ -22,6 +24,7 @@ defineOptions({
 
 const {
   class: cls,
+  size: _size,
   avoidCollisions = true,
   prioritizePosition = true,
   ...delegatedProps
@@ -43,6 +46,10 @@ type Slots = {
 };
 
 defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const forwardedRootProps = usePickForwardProps(delegatedProps, [
   'defaultOpen',

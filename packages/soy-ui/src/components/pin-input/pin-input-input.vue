@@ -13,7 +13,7 @@ const { class: cls, size, separate, ...delegatedProps } = defineProps<PinInputIn
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { input } = pinInputVariants({ separate, size });
+  const { input } = pinInputVariants({ size, separate });
 
   return cn(input(), cls);
 });

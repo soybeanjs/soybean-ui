@@ -1,5 +1,7 @@
 <script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
+import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';
@@ -14,6 +16,7 @@ defineOptions({
 
 const {
   class: cls,
+  size: _size,
   ui,
   loop,
   items,
@@ -24,11 +27,15 @@ const {
 
 const emit = defineEmits<TabsEmits<T['value']>>();
 
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
+
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
-  <STabsRoot v-bind="forwarded" :class="cls || ui?.root">
+  <STabsRoot v-bind="forwarded" :class="cls || ui?.root" :size="size">
     <STabsList :class="ui?.list" :size="size" :loop="loop" :orientation="orientation">
       <STabsTrigger
         v-for="item in items"

@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import {
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
@@ -37,7 +38,7 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuCheckboxProps<T>)[];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuCheckboxProps = useOmitForwardProps(props, propKeys);
+const forwardedMenuCheckboxProps = useOmitForwardProps(props, [...propKeys, 'size']);
 
 const emitKeys = ['update:open'] satisfies (keyof DropdownMenuCheckboxEmits<T>)[];
 
@@ -51,9 +52,11 @@ const forwardedMenuCheckbox = useCombinedPropsEmits(forwardedMenuCheckboxProps, 
 <template>
   <DropdownMenuRoot v-bind="forwardedRoot">
     <DropdownMenuTrigger as-child>
-      <slot name="trigger" :size="size" />
+      <Slot :size="size">
+        <slot name="trigger" />
+      </Slot>
     </DropdownMenuTrigger>
-    <SMenuCheckbox v-bind="forwardedMenuCheckbox">
+    <SMenuCheckbox v-bind="forwardedMenuCheckbox" :size="size">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

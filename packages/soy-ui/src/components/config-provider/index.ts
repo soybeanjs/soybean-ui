@@ -1,6 +1,6 @@
+import { injectConfigProviderContext } from '@soybean-ui/primitives';
 import SConfigProvider from './config-provider.vue';
-import { useConfigProvider } from './context';
 
-export { SConfigProvider, useConfigProvider };
+export { injectConfigProviderContext, SConfigProvider };
 
 export * from './types';

@@ -7,8 +7,10 @@
     E extends SingleOrMultipleType = SingleOrMultipleType
   "
 >
+import { computed } from 'vue';
 import { AccordionRoot, useCombinedPropsEmits, useOmitForwardProps } from '@soybean-ui/primitives';
 import type { SingleOrMultipleType } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SAccordionItem from './accordion-item.vue';
 import SAccordionHeader from './accordion-header.vue';
 import SAccordionContent from './accordion-content.vue';
@@ -23,9 +25,13 @@ const props = defineProps<AccordionProps<T, V>>();
 
 const emit = defineEmits<AccordionEmits<E>>();
 
+const themeSize = useThemeSize();
+
 const forwardedRootProps = useOmitForwardProps(props, ['class', 'size', 'ui', 'items']);
 
 const forwardedRoot = useCombinedPropsEmits(forwardedRootProps, emit);
+
+const size = computed(() => props.size || themeSize.value);
 </script>
 
 <template>

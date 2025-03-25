@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import {
   ContextMenuRoot,
   ContextMenuTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
@@ -10,6 +11,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import type { ThemeSize } from '../../types';
 import type { MenuOptionData } from '../menu/types';
 import SContextMenuPortalContent from './context-menu-portal-content.vue';
@@ -24,6 +26,10 @@ const props = defineProps<ContextMenuProps<T>>();
 
 const emit = defineEmits<ContextMenuEmits<T>>();
 
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 type Slots = {
   trigger?: (props?: { size?: ThemeSize }) => any;
   item?: (props: MenuOptionData<T>) => any;
@@ -37,10 +43,16 @@ type Slots = {
 const slots = defineSlots<Slots>();
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof ContextMenuProps<T>)[] = ['ui', 'size', 'separator', 'subContentProps'];
-
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('dir', 'modal', 'items'));
-const forwardedOptionProps = usePickForwardProps(props, propKeys);
+const forwardedPortalContentProps = useOmitForwardProps(props, [
+  'ui',
+  'size',
+  'separator',
+  'subContentProps',
+  'dir',
+  'modal',
+  'items'
+]);
+const forwardedOptionProps = usePickForwardProps(props, ['ui', 'separator', 'subContentProps']);
 
 const emitKeys: (keyof ContextMenuEmits<T>)[] = [
   'escapeKeyDown',
@@ -60,10 +72,18 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
 <template>
   <ContextMenuRoot :dir="dir" :modal="modal" @update:open="emit('update:open', $event)">
     <ContextMenuTrigger as-child>
-      <slot name="trigger" :size="size" />
+      <Slot :size="size">
+        <slot name="trigger" />
+      </Slot>
     </ContextMenuTrigger>
     <SContextMenuPortalContent v-bind="forwardedPortalContent" :class="ui?.content">
-      <SContextMenuOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :item="item">
+      <SContextMenuOption
+        v-for="item in items"
+        :key="String(item.value)"
+        v-bind="forwardedOption"
+        :size="size"
+        :item="item"
+      >
         <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
         </template>

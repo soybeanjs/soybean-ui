@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T extends KeyboardKeyValue | KeyboardKeyValue[]">
 import { computed } from 'vue';
 import { cn, keyboardKeyVariants } from '@soybean-ui/variants';
+import { useThemeSize } from '../../context/theme';
 import { useKeyboardKey } from './shared';
 import type { KeyboardKeyProps, KeyboardKeyValue } from './types';
 
@@ -8,12 +9,16 @@ defineOptions({
   name: 'SKeyboardKey'
 });
 
-const { class: cls, variant, size, value } = defineProps<KeyboardKeyProps<T>>();
+const { class: cls, variant, size: _size, value } = defineProps<KeyboardKeyProps<T>>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const { getKeyboardKey } = useKeyboardKey();
 
 const mergedCls = computed(() => {
-  const { item } = keyboardKeyVariants({ variant, size });
+  const { item } = keyboardKeyVariants({ variant, size: size.value });
 
   return cn(item(), cls);
 });

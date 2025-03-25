@@ -2,15 +2,20 @@
 import { computed } from 'vue';
 import { Label } from '@soybean-ui/primitives';
 import { cn, labelVariants } from '@soybean-ui/variants';
+import { useThemeSize } from '../../context/theme';
 import type { LabelProps } from './types';
 
 defineOptions({
   name: 'SLabel'
 });
 
-const { class: cls, size, for: forId } = defineProps<LabelProps>();
+const { class: cls, size: _size, for: forId } = defineProps<LabelProps>();
 
-const mergedCls = computed(() => cn(labelVariants({ size }), cls));
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
+
+const mergedCls = computed(() => cn(labelVariants({ size: size.value }), cls));
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import PinInputRoot from './pin-input-root.vue';
 import PinInputInputRoot from './pin-input-input-root.vue';
 import PinInputInput from './pin-input-input.vue';
@@ -11,7 +12,7 @@ defineOptions({
   name: 'SPinInput'
 });
 
-const { class: cls, size, ui, inputCount = 5, separate, ...delegatedRootProps } = defineProps<PinInputProps>();
+const { class: cls, size: _size, ui, inputCount = 5, separate, ...delegatedRootProps } = defineProps<PinInputProps>();
 
 const emit = defineEmits<PinInputEmits>();
 
@@ -21,6 +22,10 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 
@@ -34,7 +39,7 @@ const hasSeparator = computed(() => separate || Boolean(slots.separator));
         <template v-for="(_item, index) in inputCount" :key="index">
           <PinInputInput :class="ui?.input" :size="size" :separate="hasSeparator" :index="index" />
           <template v-if="index < inputCount - 1">
-            <PinInputSeparator v-if="hasSeparator" :class="ui?.separator">
+            <PinInputSeparator v-if="hasSeparator" :class="ui?.separator" :size="size">
               <slot name="separator" :index="index" />
             </PinInputSeparator>
           </template>

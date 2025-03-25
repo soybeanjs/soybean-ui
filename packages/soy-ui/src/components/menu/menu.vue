@@ -8,6 +8,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SMenuPortalContent from './menu-portal-content.vue';
 import SMenuOption from './menu-option.vue';
 import type { MenuEmits, MenuOptionData, MenuProps } from './types';
@@ -30,12 +31,21 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenuProps<T>)[] = ['size', 'separator', 'subContentProps', 'ui'];
-
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat(['class', 'items']));
-const forwardedOptionProps = usePickForwardProps(props, propKeys);
+const forwardedPortalContentProps = useOmitForwardProps(props, [
+  'class',
+  'size',
+  'ui',
+  'items',
+  'separator',
+  'subContentProps'
+]);
+const forwardedOptionProps = usePickForwardProps(props, ['separator', 'subContentProps', 'ui']);
 
 const emitKeys: (keyof MenuEmits<T>)[] = [
   'escapeKeyDown',
@@ -54,7 +64,7 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
 
 <template>
   <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
-    <SMenuOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :item="item">
+    <SMenuOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :size="size" :item="item">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

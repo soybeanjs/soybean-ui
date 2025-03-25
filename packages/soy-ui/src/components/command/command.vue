@@ -6,6 +6,7 @@ import { useFuse } from '@vueuse/integrations/useFuse';
 import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { defu } from 'defu';
+import { useThemeSize } from '../../context/theme';
 import SCommandRoot from './command-root.vue';
 import SCommandInput from './command-input.vue';
 import SCommandList from './command-list.vue';
@@ -30,6 +31,10 @@ type Slots = {
 };
 
 defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',

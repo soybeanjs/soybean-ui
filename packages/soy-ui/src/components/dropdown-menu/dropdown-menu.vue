@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import {
   DropdownMenuRoot,
   DropdownMenuTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
@@ -10,6 +11,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import type { ThemeSize } from '../../types';
 import SMenu from '../menu/menu.vue';
 import type { MenuOptionData } from '../menu/types';
@@ -34,12 +36,17 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
 const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuProps<T>)[];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuProps = useOmitForwardProps(props, propKeys);
+const forwardedMenuProps = useOmitForwardProps(props, [...propKeys, 'size']);
 
 const emitKeys = ['update:open'] satisfies (keyof DropdownMenuEmits<T>)[];
 
@@ -53,9 +60,11 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
 <template>
   <DropdownMenuRoot v-bind="forwardedRoot">
     <DropdownMenuTrigger as-child>
-      <slot name="trigger" :size="size" />
+      <Slot :size="size">
+        <slot name="trigger" />
+      </Slot>
     </DropdownMenuTrigger>
-    <SMenu v-bind="forwardedMenu">
+    <SMenu v-bind="forwardedMenu" :size="size">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

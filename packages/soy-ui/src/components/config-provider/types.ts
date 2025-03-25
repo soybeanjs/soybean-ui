@@ -1,5 +1,8 @@
 import type { Ref } from 'vue';
-import type { ConfigProviderProps as _ConfigProviderProps } from '@soybean-ui/primitives';
+import type {
+  ConfigProviderContext as _ConfigProviderContext,
+  ConfigProviderProps as _ConfigProviderProps
+} from '@soybean-ui/primitives';
 import type { ThemeSize } from '@soybean-ui/variants';
 import type { ThemeOptions } from '@soybean-ui/unocss-preset';
 
@@ -10,7 +13,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   size?: ThemeSize;
 }
 
-export interface ConfigProviderContext {
+export interface ConfigProviderContext extends _ConfigProviderContext {
   theme: Ref<ThemeOptions | undefined>;
   size: Ref<ThemeSize | undefined>;
 }

@@ -1,6 +1,8 @@
 <script setup lang="ts" generic="T extends AcceptableInputValue = AcceptableInputValue">
+import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import type { AcceptableInputValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import STagsInputRoot from './tags-input-root.vue';
 import STagsInputInput from './tags-input-input.vue';
 import STagsInputItem from './tags-input-item.vue';
@@ -14,6 +16,7 @@ defineOptions({
 
 const {
   class: cls,
+  size: _size,
   ui,
   disabledValue,
   placeholder,
@@ -24,11 +27,15 @@ const {
 
 const emit = defineEmits<TagsInputEmits<T>>();
 
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
+
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>
 
 <template>
-  <STagsInputRoot v-bind="forwarded" :class="cls || ui?.root">
+  <STagsInputRoot v-bind="forwarded" :class="cls || ui?.root" :size="size">
     <template v-for="item in modelValue" :key="item">
       <slot name="item" :value="item">
         <STagsInputItem

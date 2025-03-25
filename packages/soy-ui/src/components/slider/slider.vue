@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SSliderRoot from './slider-root.vue';
 import SSliderTrack from './slider-track.vue';
 import SSliderRange from './slider-range.vue';
@@ -10,7 +12,7 @@ defineOptions({
   name: 'SSlider'
 });
 
-const { class: cls, color, size, ui, ...delegatedRootProps } = defineProps<SliderProps>();
+const { class: cls, color, size: _size, ui, ...delegatedRootProps } = defineProps<SliderProps>();
 
 const emit = defineEmits<SliderEmits>();
 
@@ -24,6 +26,10 @@ type Slots = {
 };
 
 defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const forwardedRootProps = useForwardPropsEmits(delegatedRootProps, emit);
 </script>

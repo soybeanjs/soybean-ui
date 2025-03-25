@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+import { computed } from 'vue';
 import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
@@ -6,6 +7,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SMenubarRoot from './menubar-root.vue';
 import SMenubarMenu from './menubar-menu.vue';
 import type { MenubarEmits, MenubarProps } from './types';
@@ -18,10 +20,14 @@ const props = defineProps<MenubarProps<T>>();
 
 const emit = defineEmits<MenubarEmits<T>>();
 
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const propKeys: (keyof MenubarProps<T>)[] = ['modelValue', 'defaultValue', 'dir', 'loop'];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['class', 'items']));
+const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['class', 'size', 'items']));
 
 const forwardedMenuEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
 
@@ -34,6 +40,6 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
     :class="props.class || ui?.root"
     @update:model-value="emit('update:modelValue', $event)"
   >
-    <SMenubarMenu v-for="item in items" v-bind="forwardedMenu" :key="String(item.value)" :item="item" />
+    <SMenubarMenu v-for="item in items" v-bind="forwardedMenu" :key="String(item.value)" :size="size" :item="item" />
   </SMenubarRoot>
 </template>

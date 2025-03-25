@@ -8,6 +8,7 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SMenuPortalContent from './menu-portal-content.vue';
 import SMenuRadioGroup from './menu-radio-group.vue';
 import type { MenuOptionData, MenuRadioEmits, MenuRadioProps } from './types';
@@ -28,11 +29,16 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => props.size || themeSize.value);
+
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const propKeys: (keyof MenuRadioProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'size', 'separator', 'ui'];
+const propKeys: (keyof MenuRadioProps<T>)[] = ['items', 'modelValue', 'defaultValue', 'separator', 'ui'];
 
-const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class'));
+const forwardedPortalContentProps = useOmitForwardProps(props, propKeys.concat('class', 'size'));
 const forwardedRadioGroupProps = usePickForwardProps(props, propKeys);
 
 const emitKeys: (keyof MenuRadioEmits<T>)[] = [
@@ -52,7 +58,7 @@ const forwardedRadioGroup = useCombinedPropsEmits(forwardedRadioGroupProps, forw
 
 <template>
   <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
-    <SMenuRadioGroup v-bind="forwardedRadioGroup">
+    <SMenuRadioGroup v-bind="forwardedRadioGroup" :size="size">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

@@ -5,12 +5,14 @@ import {
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTrigger,
+  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
+import { useThemeSize } from '../../context/theme';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogHeader from './alert-dialog-header.vue';
@@ -27,6 +29,8 @@ const props = defineProps<AlertDialogProps>();
 
 const emit = defineEmits<AlertDialogEmits>();
 
+const themeSize = useThemeSize();
+
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen']);
 
 const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
@@ -34,6 +38,8 @@ const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFoc
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
 const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
+
+const size = computed(() => props.size || themeSize.value);
 
 const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
   destructive: {
@@ -66,7 +72,9 @@ const iconProps = computed(() => {
 <template>
   <AlertDialogRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <AlertDialogTrigger as-child>
-      <slot name="trigger" />
+      <Slot :size="size">
+        <slot name="trigger" />
+      </Slot>
     </AlertDialogTrigger>
     <AlertDialogPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SAlertDialogOverlay :class="ui?.overlay" :force-mount="forceMountOverlay" />

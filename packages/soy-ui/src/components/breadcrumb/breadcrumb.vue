@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends BreadcrumbItem">
 import { computed } from 'vue';
+import { useThemeSize } from '../../context/theme';
 import SBreadcrumbRoot from './breadcrumb-root.vue';
 import SBreadcrumbList from './breadcrumb-list.vue';
 import SBreadcrumbItem from './breadcrumb-item.vue';
@@ -13,9 +14,13 @@ defineOptions({
   name: 'SBreadcrumb'
 });
 
-const { class: cls, size, items, ui, ellipsis } = defineProps<BreadcrumbProps<T>>();
+const { class: cls, size: _size, items, ui, ellipsis } = defineProps<BreadcrumbProps<T>>();
 
 const emit = defineEmits<BreadcrumbEmits<T>>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 function getEllipsisRange() {
   /** when the item count is greater than 4, we will show ellipsis */
