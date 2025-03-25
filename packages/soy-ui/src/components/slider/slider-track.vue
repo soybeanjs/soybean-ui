@@ -8,10 +8,10 @@ defineOptions({
   name: 'SSliderTrack'
 });
 
-const { class: cls, color } = defineProps<SliderTrackProps>();
+const { class: cls, color, size } = defineProps<SliderTrackProps>();
 
 const mergedCls = computed(() => {
-  const { track } = sliderVariants({ color });
+  const { track } = sliderVariants({ color, size });
 
   return cn(track(), cls);
 });

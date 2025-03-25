@@ -3,14 +3,11 @@ import { tv } from 'tailwind-variants';
 
 export const sliderVariants = tv({
   slots: {
-    root: [
-      `relative flex w-full touch-none select-none items-center`,
-      `data-[orientation=vertical]:(flex-col w-2 h-full)`
-    ],
-    track: `relative h-2 w-full data-[orientation=vertical]:w-2 grow overflow-hidden rounded-full`,
+    root: [`relative flex w-full touch-none select-none items-center`, `data-[orientation=vertical]:(flex-col h-full)`],
+    track: `relative w-full grow overflow-hidden rounded-full`,
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
-      `block h-5 w-5 rounded-full border-2 bg-background transition-colors-200`,
+      `block rounded-full bg-background transition-colors-200`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background)`,
       `disabled:(pointer-events-none opacity-50)`
     ]
@@ -57,10 +54,43 @@ export const sliderVariants = tv({
         range: 'bg-accent',
         thumb: 'border-accent focus-visible:ring-accent'
       }
+    },
+    size: {
+      xs: {
+        root: 'data-[orientation=vertical]:w-1.25',
+        track: 'h-1.25 data-[orientation=vertical]:w-1.25',
+        thumb: 'size-4 border-1.5'
+      },
+      sm: {
+        root: 'data-[orientation=vertical]:w-1.5',
+        track: 'h-1.5 data-[orientation=vertical]:w-1.5',
+        thumb: 'size-4.5 border-1.75'
+      },
+      md: {
+        root: 'data-[orientation=vertical]:w-2',
+        track: 'h-2 data-[orientation=vertical]:w-2',
+        thumb: 'size-5 border-2'
+      },
+      lg: {
+        root: 'data-[orientation=vertical]:w-2.5',
+        track: 'h-2.5 data-[orientation=vertical]:w-2.5',
+        thumb: 'size-5.5 border-2.5'
+      },
+      xl: {
+        root: 'data-[orientation=vertical]:w-3',
+        track: 'h-3 data-[orientation=vertical]:w-3',
+        thumb: 'size-6 border-3'
+      },
+      xxl: {
+        root: 'data-[orientation=vertical]:w-3.5',
+        track: 'h-3.5 data-[orientation=vertical]:w-3.5',
+        thumb: 'size-7 border-3.5'
+      }
     }
   },
   defaultVariants: {
-    color: 'primary'
+    color: 'primary',
+    size: 'md'
   }
 });
 

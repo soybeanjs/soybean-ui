@@ -8,10 +8,10 @@ defineOptions({
   name: 'SSliderThumb'
 });
 
-const { class: cls, color } = defineProps<SliderThumbProps>();
+const { class: cls, color, size } = defineProps<SliderThumbProps>();
 
 const mergedCls = computed(() => {
-  const { thumb } = sliderVariants({ color });
+  const { thumb } = sliderVariants({ color, size });
 
   return cn(thumb(), cls);
 });

@@ -10,7 +10,7 @@ defineOptions({
   name: 'SSlider'
 });
 
-const { class: cls, ui, color, ...delegatedRootProps } = defineProps<SliderProps>();
+const { class: cls, color, size, ui, ...delegatedRootProps } = defineProps<SliderProps>();
 
 const emit = defineEmits<SliderEmits>();
 
@@ -29,17 +29,17 @@ const forwardedRootProps = useForwardPropsEmits(delegatedRootProps, emit);
 </script>
 
 <template>
-  <SSliderRoot v-bind="forwardedRootProps" :class="cls || ui?.root">
+  <SSliderRoot v-bind="forwardedRootProps" :class="cls || ui?.root" :size="size">
     <slot v-bind="{ color, ...delegatedRootProps }">
       <slot name="track" v-bind="{ color, ...delegatedRootProps }">
-        <SSliderTrack :class="ui?.track" :color="color">
+        <SSliderTrack :class="ui?.track" :color="color" :size="size">
           <slot name="range" v-bind="{ color, ...delegatedRootProps }">
             <SSliderRange :class="ui?.range" :color="color" />
           </slot>
         </SSliderTrack>
       </slot>
       <slot name="thumb" v-bind="{ color, ...delegatedRootProps }">
-        <SSliderThumb v-for="(_, key) in modelValue" :key="key" :class="ui?.thumb" :color="color" />
+        <SSliderThumb v-for="(_, key) in modelValue" :key="key" :class="ui?.thumb" :color="color" :size="size" />
       </slot>
     </slot>
   </SSliderRoot>

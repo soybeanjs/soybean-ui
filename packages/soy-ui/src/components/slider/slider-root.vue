@@ -8,15 +8,17 @@ defineOptions({
   name: 'SSliderRoot'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<SliderRootProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<SliderRootProps>();
 
 const emit = defineEmits<SliderRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { root } = sliderVariants();
+const mergedCls = computed(() => {
+  const { root } = sliderVariants({ size });
 
-const mergedCls = computed(() => cn(root(), cls));
+  return cn(root(), cls);
+});
 </script>
 
 <template>
