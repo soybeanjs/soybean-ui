@@ -2,6 +2,21 @@
   "name": "soy-ui",
   "type": "module",
   "version": "0.0.2-beta.1",
+  "author": {
+    "name": "Soybean",
+    "email": "soybeanjs@outlook.com",
+    "url": "https://github.com/soybeanjs"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soybeanjs/soybean-ui",
+    "directory": "packages/soy-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

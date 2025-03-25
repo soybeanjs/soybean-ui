@@ -1,5 +1,5 @@
 {
-  "name": "@soybean-ui/example",
+  "name": "soybean-ui",
   "type": "module",
   "version": "0.0.2-beta.1",
   "private": true,
@@ -11,14 +11,7 @@
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/soybeanjs/soybean-ui",
-  "repository": {
-    "url": "https://github.com/soybeanjs/soybean-ui.git"
-  },
-  "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-ui/issues"
-  },
-  "keywords": ["UI", "UnoCSS"],
+  "keywords": ["UI", "UnoCSS", "shadcn-ui", "vue3"],
   "scripts": {
     "build": "pnpm build:pkg && vite build",
     "build-only": "vite build",
