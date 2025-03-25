@@ -9,14 +9,14 @@ defineOptions({
   name: 'STabsRoot'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<TabsRootProps<T>>();
+const { class: cls, orientation, fill, ...delegatedProps } = defineProps<TabsRootProps<T>>();
 
 const emit = defineEmits<TabsRootEmits<T>>();
 
 const forwardedProps = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { root } = tabsVariants({ orientation });
+  const { root } = tabsVariants({ orientation, fill });
 
   return cn(root(), cls);
 });

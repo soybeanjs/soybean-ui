@@ -3,12 +3,16 @@ import type {
   ClassValueProp,
   StringOrNumber,
   TabsRootEmits,
-  TabsRootProps,
   TabsContentProps as _TabsContentProps,
   TabsListProps as _TabsListProps,
+  TabsRootProps as _TabsRootProps,
   TabsTriggerProps as _TabsTriggerProps
 } from '@soybean-ui/primitives';
-import type { TabsSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
+import type { TabsFill, TabsSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
+
+export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> extends _TabsRootProps<T> {
+  fill?: TabsFill;
+}
 
 export interface TabsListProps extends _TabsListProps {
   size?: ThemeSize;
@@ -17,7 +21,6 @@ export interface TabsListProps extends _TabsListProps {
 
 export interface TabsTriggerProps extends _TabsTriggerProps {
   size?: ThemeSize;
-  orientation?: ThemeOrientation;
   enableIndicator?: boolean;
 }
 
@@ -52,4 +55,4 @@ export type TabsProps<T extends TabsOptionData> = TabsRootProps<T['value']> &
 
 export type TabsEmits<T extends StringOrNumber = StringOrNumber> = TabsRootEmits<T>;
 
-export type { TabsRootProps, TabsRootEmits };
+export type { TabsRootEmits };

@@ -56,14 +56,16 @@ const tabs = [
     </SCard>
     <SCard title="Size" split>
       <div class="w-480px flex-c gap-4 lt-sm:w-auto">
-        <template v-for="size in sizes" :key="size">
-          <STabs :size="size" default-value="1" :items="tabs">
-            <template #content="{ value }">
-              <div>Size: {{ size }}</div>
-              <div>The Tab Content: {{ value }}</div>
-            </template>
-          </STabs>
-        </template>
+        <STabs v-for="size in sizes" :key="size" :size="size" default-value="1" :items="tabs">
+          <template #content="{ value }">
+            <div>The Tab Content: {{ value }}</div>
+          </template>
+        </STabs>
+        <STabs v-for="size in sizes" :key="size" :size="size" default-value="1" :items="tabs" orientation="vertical">
+          <template #content="{ value }">
+            <div>The Tab Content: {{ value }}</div>
+          </template>
+        </STabs>
       </div>
     </SCard>
     <SCard title="Custom Style" split>
@@ -86,7 +88,7 @@ const tabs = [
         </STabs>
       </div>
     </SCard>
-    <SCard title="Vertical" split>
+    <SCard title="Custom Style Vertical" split>
       <div class="w-320px lt-sm:w-auto">
         <STabs
           v-model="tabValue3"

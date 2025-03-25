@@ -1,9 +1,10 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
+import type { VariantProps } from 'tailwind-variants';
 
 export const tabsVariants = tv({
   slots: {
-    root: `flex items-stretch`,
+    root: `flex`,
     list: 'relative inline-flex justify-center items-center rounded-md bg-muted text-muted-foreground',
     trigger: [
       `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
@@ -50,13 +51,19 @@ export const tabsVariants = tv({
     orientation: {
       horizontal: {
         root: `flex-col`,
-        indicatorRoot: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position]`,
-        content: ``
+        indicatorRoot: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position]`
       },
       vertical: {
         list: `flex-col`,
-        indicatorRoot: `w-full h-[--soybean-tabs-indicator-size] translate-y-[--soybean-tabs-indicator-position]`,
-        content: ``
+        indicatorRoot: `w-full h-[--soybean-tabs-indicator-size] translate-y-[--soybean-tabs-indicator-position]`
+      }
+    },
+    fill: {
+      full: {
+        root: `items-stretch`
+      },
+      auto: {
+        root: `items-start`
       }
     },
     enableIndicator: {
@@ -166,8 +173,13 @@ export const tabsVariants = tv({
   defaultVariants: {
     size: 'md',
     orientation: 'horizontal',
+    fill: 'auto',
     enableIndicator: true
   }
 });
 
 export type TabsSlots = keyof typeof tabsVariants.slots;
+
+export type TabsProps = VariantProps<typeof tabsVariants>;
+
+export type TabsFill = NonNullable<TabsProps['fill']>;
