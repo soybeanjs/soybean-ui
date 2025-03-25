@@ -13,7 +13,7 @@ export const tabsVariants = tv({
     ],
     indicatorRoot: `absolute top-0 left-0 z-1 transition-[width,height,transform] duration-300`,
     indicator: `size-full rounded-md bg-background shadow`,
-    content: `flex-grow overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
+    content: `flex-grow self-stretch overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
   },
   variants: {
     size: {

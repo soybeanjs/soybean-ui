@@ -54,6 +54,15 @@ const tabs = [
         </STabs>
       </div>
     </SCard>
+    <SCard title="Fill" split>
+      <div class="w-320px lt-sm:w-auto">
+        <STabs v-model="tabValue" :items="tabs" fill="full" :ui="{ content: 'p-4 border border-border rounded-1' }">
+          <template #content="{ value }">
+            <div>The Tab Content: {{ value }}</div>
+          </template>
+        </STabs>
+      </div>
+    </SCard>
     <SCard title="Size" split>
       <div class="w-480px flex-c gap-4 lt-sm:w-auto">
         <STabs v-for="size in sizes" :key="size" :size="size" default-value="1" :items="tabs">
