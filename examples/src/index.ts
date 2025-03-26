@@ -4,12 +4,12 @@ import DemoAlert from './ui/alert.vue';
 import DemoAlertDialog from './ui/alert-dialog.vue';
 import DemoAspectRatio from './ui/aspect-ratio.vue';
 import DemoAvatar from './ui/avatar.vue';
-import DemoBadge from './ui/badge.vue';
 import DemoBreadcrumb from './ui/breadcrumb.vue';
 import DemoButton from './ui/button.vue';
 import DemoCard from './ui/card.vue';
 import DemoCarousel from './ui/carousel.vue';
 import DemoCheckbox from './ui/checkbox.vue';
+import DemoChip from './ui/chip.vue';
 import DemoCollapsible from './ui/collapsible.vue';
 import DemoCombobox from './ui/combobox.vue';
 import DemoCommand from './ui/command.vue';
@@ -56,12 +56,12 @@ export {
   DemoAlertDialog,
   DemoAspectRatio,
   DemoAvatar,
-  DemoBadge,
   DemoBreadcrumb,
   DemoButton,
   DemoCard,
   DemoCarousel,
   DemoCheckbox,
+  DemoChip,
   DemoCollapsible,
   DemoCombobox,
   DemoCommand,

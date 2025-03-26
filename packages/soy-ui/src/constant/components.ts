@@ -25,7 +25,6 @@ export const components = {
   ],
   aspectRatio: ['SAspectRatio'],
   avatar: ['SAvatarFallback', 'SAvatarImage', 'SAvatarRoot', 'SAvatar'],
-  badge: ['SBadgeRoot', 'SBadgeContent', 'SBadge'],
   breadcrumb: [
     'SBreadcrumbRoot',
     'SBreadcrumbList',
@@ -61,6 +60,7 @@ export const components = {
     'SCheckbox',
     'SCheckboxGroup'
   ],
+  chip: ['SChipRoot', 'SChipContent', 'SChip'],
   collapsible: ['SCollapsibleContent', 'SCollapsibleRoot', 'SCollapsibleTrigger', 'SCollapsible'],
   combobox: [
     'SComboboxRoot',
