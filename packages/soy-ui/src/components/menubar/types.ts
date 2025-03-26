@@ -4,9 +4,9 @@ import type {
   MenubarContentEmits,
   MenubarContentProps,
   MenubarRootEmits,
-  MenubarRootProps,
-  MenubarTriggerProps,
-  MenubarMenuProps as _MenubarMenuProps
+  MenubarMenuProps as _MenubarMenuProps,
+  MenubarRootProps as _MenubarRootProps,
+  MenubarTriggerProps as _MenubarTriggerProps
 } from '@soybean-ui/primitives';
 import type { MenuSlots, MenubarSlots } from '@soybean-ui/variants';
 import type { ThemeSize } from '../../types';
@@ -25,6 +25,14 @@ import type {
 } from '../menu/types';
 import type { LinkProps } from '../link';
 
+export interface MenubarRootProps extends _MenubarRootProps {
+  size?: ThemeSize;
+}
+
+export interface MenubarTriggerProps extends _MenubarTriggerProps {
+  size?: ThemeSize;
+}
+
 // MenubarOption
 export interface MenubarOptionProps<T extends AcceptableValue = AcceptableValue> extends MenuOptionProps<T> {}
 export type MenubarOptionEmits<T extends AcceptableValue = AcceptableValue> = MenuOptionEmits<T>;
@@ -34,7 +42,9 @@ export interface MenubarItemProps<T extends AcceptableValue = AcceptableValue> e
 export type MenubarItemEmits<T extends AcceptableValue = AcceptableValue> = MenuEmits<T>;
 
 // MenubarTriggerLink
-export interface MenubarTriggerLinkProps extends LinkProps {}
+export interface MenubarTriggerLinkProps extends LinkProps {
+  size?: ThemeSize;
+}
 
 export type MenubarTriggerSlots = Extract<MenuSlots, 'itemIcon' | 'itemLinkIcon' | 'shortcut'>;
 
@@ -57,6 +67,7 @@ export interface MenubarMenuProps<T extends AcceptableValue = AcceptableValue>
   extends _MenubarMenuProps,
     MenuPortalContentProps,
     MenuOptionProps<T> {
+  size?: ThemeSize;
   ui?: MenubarMenuUi;
 }
 export type MenubarMenuEmits<T extends AcceptableValue = AcceptableValue> = MenuEmits<T>;
@@ -70,13 +81,11 @@ export type MenubarEmits<T extends AcceptableValue = AcceptableValue> = MenubarR
 
 export type {
   MenubarRootEmits,
-  MenubarRootProps,
   MenubarContentProps,
   MenubarContentEmits,
   MenubarPortalContentProps,
   MenubarPortalContentEmits,
   MenubarSubContentProps,
   MenubarSubContentEmits,
-  MenubarTriggerProps,
   MenubarSubTriggerProps
 };

@@ -8,11 +8,13 @@ defineOptions({
   name: 'SMenubarTrigger'
 });
 
-const { class: cls, disabled } = defineProps<MenubarTriggerProps>();
+const { class: cls, size, disabled } = defineProps<MenubarTriggerProps>();
 
-const { trigger } = menubarVariants();
+const mergedCls = computed(() => {
+  const { trigger } = menubarVariants({ size });
 
-const mergedCls = computed(() => cn(trigger(), cls));
+  return cn(trigger(), cls);
+});
 </script>
 
 <template>

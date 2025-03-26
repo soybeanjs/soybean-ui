@@ -23,7 +23,13 @@ defineSlots<Slots>();
 </script>
 
 <template>
-  <SMenubarTriggerLink v-if="item.linkProps" v-bind="item.linkProps" :class="props.class" :disabled="disabled">
+  <SMenubarTriggerLink
+    v-if="item.linkProps"
+    v-bind="item.linkProps"
+    :class="props.class"
+    :size="size"
+    :disabled="disabled"
+  >
     <slot name="trigger" v-bind="item">
       <slot name="trigger-leading" v-bind="item">
         <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
@@ -33,7 +39,7 @@ defineSlots<Slots>();
       <slot name="trigger-trailing" v-bind="item" />
     </slot>
   </SMenubarTriggerLink>
-  <SMenubarTrigger v-else :class="props.class" :disabled="disabled">
+  <SMenubarTrigger v-else :class="props.class" :size="size" :disabled="disabled">
     <slot name="trigger" v-bind="item">
       <slot name="trigger-leading" v-bind="item">
         <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />

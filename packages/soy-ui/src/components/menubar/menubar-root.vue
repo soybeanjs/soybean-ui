@@ -8,15 +8,17 @@ defineOptions({
   name: 'SMenubarRoot'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<MenubarRootProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<MenubarRootProps>();
 
 const emit = defineEmits<MenubarRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { root } = menubarVariants();
+const mergedCls = computed(() => {
+  const { root } = menubarVariants({ size });
 
-const mergedCls = computed(() => cn(root(), cls));
+  return cn(root(), cls);
+});
 </script>
 
 <template>

@@ -9,13 +9,15 @@ defineOptions({
   name: 'SMenubarTriggerLink'
 });
 
-const { class: cls, disabled, ...delegatedProps } = defineProps<MenubarTriggerLinkProps>();
+const { class: cls, size, disabled, ...delegatedProps } = defineProps<MenubarTriggerLinkProps>();
 
 const forwardedLinkProps = useForwardProps(delegatedProps);
 
-const { triggerLink } = menubarVariants();
+const mergedCls = computed(() => {
+  const { triggerLink } = menubarVariants({ size });
 
-const mergedCls = computed(() => cn(triggerLink(), cls));
+  return cn(triggerLink(), cls);
+});
 </script>
 
 <template>

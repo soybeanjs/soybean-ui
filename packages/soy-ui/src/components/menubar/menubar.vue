@@ -24,10 +24,10 @@ const themeSize = useThemeSize();
 
 const size = computed(() => props.size || themeSize.value);
 
-const propKeys: (keyof MenubarProps<T>)[] = ['modelValue', 'defaultValue', 'dir', 'loop'];
+const propKeys: (keyof MenubarProps<T>)[] = ['size', 'modelValue', 'defaultValue', 'dir', 'loop'];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['class', 'size', 'items']));
+const forwardedMenuProps = useOmitForwardProps(props, propKeys.concat(['class', 'items']));
 
 const forwardedMenuEmits = useOmitEmitAsProps(emit, ['update:modelValue']);
 
@@ -38,6 +38,7 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
   <SMenubarRoot
     v-bind="forwardedRootProps"
     :class="props.class || ui?.root"
+    :size="size"
     @update:model-value="emit('update:modelValue', $event)"
   >
     <SMenubarMenu v-for="item in items" v-bind="forwardedMenu" :key="String(item.value)" :size="size" :item="item" />
