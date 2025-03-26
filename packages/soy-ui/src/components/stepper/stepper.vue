@@ -3,10 +3,10 @@ import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import { cn, stepperVariants } from '@soybean-ui/variants';
 import { Check, Circle, Dot } from 'lucide-vue-next';
+import { useThemeSize } from '../../context/theme';
 import SButton from '../button/button.vue';
 import SStepperRoot from './stepper-root.vue';
 import SStepperDescription from './stepper-description.vue';
-import SStepperIndicator from './stepper-indicator.vue';
 import SStepperItem from './stepper-item.vue';
 import SStepperSeparator from './stepper-separator.vue';
 import SStepperTitle from './stepper-title.vue';
@@ -17,9 +17,13 @@ defineOptions({
   name: 'SStepper'
 });
 
-const { class: cls, ui, items, ...delegatedRootProps } = defineProps<StepperProps<T>>();
+const { class: cls, size: _size, ui, items, ...delegatedRootProps } = defineProps<StepperProps<T>>();
 
 const emit = defineEmits<StepperEmits>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const forwardedRoot = useForwardPropsEmits(delegatedRootProps, emit);
 
@@ -31,12 +35,13 @@ const titleDescWrapperCls = computed(() => {
 </script>
 
 <template>
-  <SStepperRoot v-bind="forwardedRoot" :class="cls || ui?.root">
+  <SStepperRoot v-bind="forwardedRoot" :class="cls || ui?.root" :size="size">
     <template v-for="(item, index) in items" :key="index">
       <slot name="item" :item="item" :index="index">
         <SStepperItem
           v-slot="{ state }"
           :class="ui?.item"
+          :size="size"
           :orientation="orientation"
           :step="item.step"
           :disabled="item.disabled"
@@ -45,16 +50,14 @@ const titleDescWrapperCls = computed(() => {
           <SStepperSeparator
             v-if="item.step !== items[items.length - 1].step"
             :class="ui?.separator"
+            :size="size"
             :orientation="orientation"
           />
-          <SStepperIndicator v-if="item.indicatorLabel" :class="ui?.indicator">
-            <component :is="item.icon" />
-            <span v-if="item.indicatorLabel">{{ item.indicatorLabel }}</span>
-          </SStepperIndicator>
           <slot name="trigger" :item="item" :state="state">
-            <SStepperTrigger :class="ui?.trigger" as-child>
+            <SStepperTrigger :class="ui?.trigger" :size="size" as-child>
               <SButton
                 :variant="state == 'completed' || state == 'active' ? 'solid' : 'outline'"
+                :size="size"
                 shape="circle"
                 class="z-10"
                 :class="{ 'ring-2 ring-primary ring-offset-2 ring-offset-background': state === 'active' }"

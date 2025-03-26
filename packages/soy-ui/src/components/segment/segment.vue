@@ -1,5 +1,7 @@
 <script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
+import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
+import { useThemeSize } from '../../context/theme';
 import SSegmentRoot from './segment-root.vue';
 import SSegmentTriggerRoot from './segment-list.vue';
 import SSegmentTrigger from './segment-trigger.vue';
@@ -11,9 +13,21 @@ defineOptions({
   name: 'SSegment'
 });
 
-const { class: cls, ui, loop, items, enableIndicator = true, ...delegatedRootProps } = defineProps<SegmentProps<T>>();
+const {
+  class: cls,
+  ui,
+  size: _size,
+  loop,
+  items,
+  enableIndicator = true,
+  ...delegatedRootProps
+} = defineProps<SegmentProps<T>>();
 
 const emit = defineEmits<SegmentEmits<T['value']>>();
+
+const themeSize = useThemeSize();
+
+const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>

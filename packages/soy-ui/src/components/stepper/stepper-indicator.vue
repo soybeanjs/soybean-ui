@@ -8,11 +8,13 @@ defineOptions({
   name: 'SStepperIndicator'
 });
 
-const { class: cls } = defineProps<StepperIndicatorProps>();
+const { class: cls, size } = defineProps<StepperIndicatorProps>();
 
-const { indicator } = stepperVariants();
+const mergedCls = computed(() => {
+  const { indicator } = stepperVariants({ size });
 
-const mergedCls = computed(() => cn(indicator(), cls));
+  return cn(indicator(), cls);
+});
 </script>
 
 <template>

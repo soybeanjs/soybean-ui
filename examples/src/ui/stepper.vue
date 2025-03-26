@@ -10,17 +10,20 @@ const items: StepperOptionData[] = [
   {
     step: 1,
     title: 'Your details',
-    description: 'Provide your name and email'
+    description: 'Provide your name and email',
+    indicatorLabel: '1'
   },
   {
     step: 2,
     title: 'Company details',
-    description: 'A few details about your company'
+    description: 'A few details about your company',
+    indicatorLabel: '2'
   },
   {
     step: 3,
     title: 'Invite your team',
-    description: 'Start collaborating with your team'
+    description: 'Start collaborating with your team',
+    indicatorLabel: '3'
   }
 ];
 </script>

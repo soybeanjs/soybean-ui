@@ -8,12 +8,12 @@ defineOptions({
   name: 'SStepperItem'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<StepperItemProps>();
+const { class: cls, size, orientation, ...delegatedProps } = defineProps<StepperItemProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { item } = stepperVariants({ orientation });
+  const { item } = stepperVariants({ size, orientation });
 
   return cn(item(), cls);
 });
