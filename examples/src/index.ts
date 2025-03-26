@@ -4,6 +4,7 @@ import DemoAlert from './ui/alert.vue';
 import DemoAlertDialog from './ui/alert-dialog.vue';
 import DemoAspectRatio from './ui/aspect-ratio.vue';
 import DemoAvatar from './ui/avatar.vue';
+import DemoBadge from './ui/badge.vue';
 import DemoBreadcrumb from './ui/breadcrumb.vue';
 import DemoButton from './ui/button.vue';
 import DemoCard from './ui/card.vue';
@@ -41,7 +42,6 @@ import DemoSonner from './ui/sonner.vue';
 import DemoStepper from './ui/stepper.vue';
 import DemoSwitch from './ui/switch.vue';
 import DemoTabs from './ui/tabs.vue';
-import DemoTag from './ui/tag.vue';
 import DemoTagsInput from './ui/tags-input.vue';
 import DemoTextarea from './ui/textarea.vue';
 import DemoToast from './ui/toast.vue';
@@ -56,6 +56,7 @@ export {
   DemoAlertDialog,
   DemoAspectRatio,
   DemoAvatar,
+  DemoBadge,
   DemoBreadcrumb,
   DemoButton,
   DemoCard,
@@ -93,7 +94,6 @@ export {
   DemoStepper,
   DemoSwitch,
   DemoTabs,
-  DemoTag,
   DemoTagsInput,
   DemoTextarea,
   DemoToast,

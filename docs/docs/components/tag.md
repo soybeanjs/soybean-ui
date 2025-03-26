@@ -1,4 +1,0 @@
-# Tag
-
-<ComponentPreview name="Tag" />
-

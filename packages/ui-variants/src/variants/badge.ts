@@ -2,7 +2,7 @@
 import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
-export const tagVariants = tv({
+export const badgeVariants = tv({
   base: 'inline-flex items-center border font-semibold',
   variants: {
     color: {
@@ -125,8 +125,8 @@ export const tagVariants = tv({
   }
 });
 
-type TagVariants = VariantProps<typeof tagVariants>;
+type BadgeVariants = VariantProps<typeof badgeVariants>;
 
-export type TagVariant = NonNullable<TagVariants['variant']>;
+export type BadgeVariant = NonNullable<BadgeVariants['variant']>;
 
-export type TagShape = NonNullable<TagVariants['shape']>;
+export type BadgeShape = NonNullable<BadgeVariants['shape']>;

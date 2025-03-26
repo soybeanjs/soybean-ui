@@ -1,6 +1,7 @@
 export * from './variants/accordion';
 export * from './variants/alert';
 export * from './variants/avatar';
+export * from './variants/badge';
 export * from './variants/breadcrumb';
 export * from './variants/button';
 export * from './variants/button-group';
@@ -38,7 +39,6 @@ export * from './variants/slider';
 export * from './variants/stepper';
 export * from './variants/switch';
 export * from './variants/tabs';
-export * from './variants/tag';
 export * from './variants/tags-input';
 export * from './variants/textarea';
 export * from './variants/toast';
