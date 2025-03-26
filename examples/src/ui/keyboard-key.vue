@@ -15,10 +15,10 @@ const variants: KeyboardKeyVariant[] = ['solid', 'outline', 'ghost'];
       <SKeyboardKey value="command" />
     </SCard>
     <SCard title="Variant" split>
-      <div class="flex-c gap-2">
-        <div v-for="variant in variants" :key="variant" class="flex-c">
-          <div>{{ variant }}</div>
+      <div class="flex gap-4">
+        <div v-for="variant in variants" :key="variant" class="flex-c-center gap-2">
           <SKeyboardKey :variant="variant" value="K" />
+          <div>{{ variant }}</div>
         </div>
       </div>
     </SCard>
