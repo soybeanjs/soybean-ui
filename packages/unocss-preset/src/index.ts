@@ -1,6 +1,7 @@
 import type { Preset } from '@unocss/core';
 import type { Theme } from 'unocss/preset-mini';
 import { generateCSSVars, generateGlobalStyles } from './generate';
+import { createUiCssVars } from './vars';
 import themes from './theme.json';
 import type { PresetShadcnOptions, ThemeColorKey, ThemeConfig, ThemeConfigColor, ThemeOptions } from './types';
 
@@ -35,6 +36,9 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
 
           ${globals ? generateGlobalStyles() : ''}
         `
+      },
+      {
+        getCSS: () => createUiCssVars()
       }
     ],
     rules: [
@@ -186,6 +190,41 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
+      },
+      fontSize: {
+        '4xs': ['var(--ui-font-size-4xs)', 'var(--ui-font-size-4xs-lh)'],
+        '3xs': ['var(--ui-font-size-3xs)', 'var(--ui-font-size-3xs-lh)'],
+        '2xs': ['var(--ui-font-size-2xs)', 'var(--ui-font-size-2xs-lh)'],
+        xs: ['var(--ui-font-size-xs)', 'var(--ui-font-size-xs-lh)'],
+        sm: ['var(--ui-font-size-sm)', 'var(--ui-font-size-sm-lh)'],
+        md: ['var(--ui-font-size-md)', 'var(--ui-font-size-md-lh)'],
+        lg: ['var(--ui-font-size-lg)', 'var(--ui-font-size-lg-lh)'],
+        xl: ['var(--ui-font-size-xl)', 'var(--ui-font-size-xl-lh)'],
+        '2xl': ['var(--ui-font-size-2xl)', 'var(--ui-font-size-2xl-lh)'],
+        '3xl': ['var(--ui-font-size-3xl)', 'var(--ui-font-size-3xl-lh)'],
+        '4xl': ['var(--ui-font-size-4xl)', 'var(--ui-font-size-4xl-lh)'],
+        '5xl': ['var(--ui-font-size-5xl)', 'var(--ui-font-size-5xl-lh)'],
+        '6xl': ['var(--ui-font-size-6xl)', 'var(--ui-font-size-6xl-lh)'],
+        '7xl': ['var(--ui-font-size-7xl)', 'var(--ui-font-size-7xl-lh)'],
+        '8xl': ['var(--ui-font-size-8xl)', 'var(--ui-font-size-8xl-lh)'],
+        '9xl': ['var(--ui-font-size-9xl)', 'var(--ui-font-size-9xl-lh)']
+      },
+      spacing: {
+        DEFAULT: 'var(--ui-spacing-DEFAULT)',
+        none: 'var(--ui-spacing-none)',
+        xs: 'var(--ui-spacing-xs)',
+        sm: 'var(--ui-spacing-sm)',
+        md: 'var(--ui-spacing-md)',
+        lg: 'var(--ui-spacing-lg)',
+        xl: 'var(--ui-spacing-xl)',
+        '2xl': 'var(--ui-spacing-2xl)',
+        '3xl': 'var(--ui-spacing-3xl)',
+        '4xl': 'var(--ui-spacing-4xl)',
+        '5xl': 'var(--ui-spacing-5xl)',
+        '6xl': 'var(--ui-spacing-6xl)',
+        '7xl': 'var(--ui-spacing-7xl)',
+        '8xl': 'var(--ui-spacing-8xl)',
+        '9xl': 'var(--ui-spacing-9xl)'
       }
     }
   };
