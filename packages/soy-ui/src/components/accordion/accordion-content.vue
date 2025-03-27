@@ -8,7 +8,7 @@ defineOptions({
   name: 'SAccordionContent'
 });
 
-const { class: cls, size, ...delegatedProps } = defineProps<AccordionContentProps>();
+const { class: cls, size, content: desc, ...delegatedProps } = defineProps<AccordionContentProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
@@ -21,6 +21,6 @@ const mergedCls = computed(() => {
 
 <template>
   <AccordionContent v-bind="forwardedProps" :class="mergedCls">
-    <slot />
+    <slot>{{ desc }}</slot>
   </AccordionContent>
 </template>

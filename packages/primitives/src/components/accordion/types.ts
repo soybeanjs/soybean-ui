@@ -72,10 +72,7 @@ export interface AccordionRootContext {
 }
 
 // AccordionItem
-export interface AccordionItemProps
-  extends Pick<CollapsibleRootProps, 'unmountOnHide'>,
-    ClassValueProp,
-    PrimitiveProps {
+export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /**
    * Whether or not an accordion item is disabled from user interaction. When `true`, prevents the user from interacting
    * with the item.
@@ -107,18 +104,7 @@ export interface AccordionItemContext extends AccordionItemContextParams {
 export interface AccordionHeaderProps extends ClassValueProp, PrimitiveProps {}
 
 // AccordionContent
-export interface AccordionContentProps
-  extends Pick<CollapsibleContentProps, 'forceMount'>,
-    ClassValueProp,
-    PrimitiveProps {}
+export type AccordionContentProps = CollapsibleContentProps;
 
 // AccordionTrigger
 export interface AccordionTriggerProps extends ClassValueProp, PrimitiveProps {}
-
-// Accordion
-export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
-  /** The title of the accordion item. */
-  title?: string;
-  /** The content of the accordion item. */
-  content?: string;
-}
