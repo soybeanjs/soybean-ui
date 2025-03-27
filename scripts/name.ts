@@ -2,10 +2,10 @@ import { writeFile } from 'node:fs/promises';
 import fg from 'fast-glob';
 import { toCamelCase, toPascalCase } from './_shared';
 
-function generatePrimitivesNames() {
-  const base = 'packages/primitives/src/components';
+function _generatePrimitivesNames() {
+  const base = 'packages/soy-ui/src/components';
 
-  const components = fg.sync(`**/*.vue`, { cwd: base });
+  const components = fg.sync(`**/index.ts`, { cwd: base });
 
   const nameRecords: Record<string, string[]> = {};
 
@@ -22,7 +22,22 @@ function generatePrimitivesNames() {
     nameRecords[key].push(name);
   });
 
-  writeFile('packages/primitives/src/constant/components.json', JSON.stringify(nameRecords, null, 2));
+  writeFile('components.json', JSON.stringify(nameRecords, null, 2));
+}
+function generateUiNames() {
+  const base = 'packages/soy-ui/src/components';
+
+  const components = fg.sync(`**/index.ts`, { cwd: base });
+
+  let code = ``;
+
+  components.forEach(component => {
+    const [moduleName] = component.split('/');
+
+    code += `- ${moduleName}\n`;
+  });
+
+  writeFile('components.txt', code);
 }
 
-generatePrimitivesNames();
+generateUiNames();
