@@ -1,5 +1,5 @@
-import { computed } from 'vue';
-import type { ComputedRef, MaybeRefOrGetter } from 'vue';
+import { computed, toValue } from 'vue';
+import type { MaybeRef, MaybeRefOrGetter } from 'vue';
 import { useEmitAsProps } from './use-emit-as-props';
 import { useForwardProps } from './use-forward-props';
 
@@ -28,7 +28,7 @@ export function useForwardPropsEmits<T extends Record<string, any>, Name extends
 }
 
 export function useCombinedPropsEmits<T extends Record<string, any>, Name extends string>(
-  props: ComputedRef<T>,
+  props: MaybeRef<T>,
   emit?: ((name: Name, ...args: any[]) => void) | Record<string, any>
 ) {
   let emitsAsProps = {};
@@ -40,7 +40,7 @@ export function useCombinedPropsEmits<T extends Record<string, any>, Name extend
   }
 
   return computed(() => ({
-    ...props.value,
+    ...toValue(props),
     ...emitsAsProps
   }));
 }
