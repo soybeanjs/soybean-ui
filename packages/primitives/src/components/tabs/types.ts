@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, DataOrientation, Direction, StringOrNumber } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, DataOrientation, Direction, PrimitiveProps, StringOrNumber } from '../../types';
 
 // Root
 export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> extends ClassValueProp {

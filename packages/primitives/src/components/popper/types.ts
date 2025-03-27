@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
-import type { Align, ClassValueProp, Side } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { Align, ClassValueProp, PrimitiveProps, Side } from '../../types';
 import type { ArrowProps } from '../arrow';
 
 export interface Measurable {

@@ -1,6 +1,12 @@
 import type { Ref } from 'vue';
-import type { ActivationMode, ClassValueProp, Direction, FormFieldProps, SubmitMode } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type {
+  ActivationMode,
+  ClassValueProp,
+  Direction,
+  FormFieldProps,
+  PrimitiveProps,
+  SubmitMode
+} from '../../types';
 
 // EditableRoot types
 export interface EditableRootProps extends ClassValueProp, FormFieldProps {

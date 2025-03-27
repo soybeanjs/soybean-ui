@@ -1,5 +1,4 @@
-import type { ClassValueProp, DataOrientation } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, DataOrientation, PrimitiveProps } from '../../types';
 
 export interface SeparatorProps extends ClassValueProp {
   /**

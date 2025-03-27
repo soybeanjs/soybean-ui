@@ -1,6 +1,5 @@
 import type { CSSProperties, Ref } from 'vue';
-import type { ClassValueProp, DataOrientation } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, DataOrientation, PrimitiveProps } from '../../types';
 
 export interface SplitterGroupProps extends ClassValueProp {
   /** Group id; falls back to `useId` when not provided. */

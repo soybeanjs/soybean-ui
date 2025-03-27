@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { AcceptableValue, ClassValueProp, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { AcceptableValue, ClassValueProp, FormFieldProps, PrimitiveProps } from '../../types';
 import type { RovingFocusGroupProps } from '../roving-focus';
 
 export type CheckedState = boolean | 'indeterminate';

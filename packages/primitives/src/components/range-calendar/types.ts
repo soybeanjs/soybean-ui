@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
-import type { ClassValueProp, Direction } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
 // Root
 export interface RangeCalendarRootProps extends ClassValueProp {

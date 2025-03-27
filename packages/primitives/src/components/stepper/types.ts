@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, DataOrientation, Direction } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, DataOrientation, Direction, PrimitiveProps } from '../../types';
 import type { SeparatorProps } from '../separator';
 
 // Root

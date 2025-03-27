@@ -1,7 +1,6 @@
 import { defineComponent, h } from 'vue';
-import type { DefaultSlots } from '../../types';
+import type { DefaultSlots, PrimitiveProps } from '../../types';
 import { Slot } from './slot';
-import type { PrimitiveProps } from './types';
 
 export const Primitive = defineComponent<PrimitiveProps, {}, string, DefaultSlots>(
   (props, { attrs, slots }) => {

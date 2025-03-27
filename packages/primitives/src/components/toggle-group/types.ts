@@ -5,9 +5,9 @@ import type {
   DataOrientation,
   Direction,
   FormFieldProps,
+  PrimitiveProps,
   SingleOrMultipleProps
 } from '../../types';
-import type { PrimitiveProps } from '../primitive';
 import type { ToggleProps } from '../toggle';
 
 export interface ToggleGroupRootProps<T = AcceptableValue | AcceptableValue[]>

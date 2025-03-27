@@ -8,8 +8,7 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, FormFieldProps, PrimitiveProps } from '../../types';
 
 // DateFieldRoot
 export interface DateFieldRootProps extends ClassValueProp, FormFieldProps {

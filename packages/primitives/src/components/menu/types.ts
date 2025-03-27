@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { AcceptableValue, ClassValueProp, Direction, GraceIntent } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { AcceptableValue, ClassValueProp, Direction, GraceIntent, PrimitiveProps } from '../../types';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type { FocusScopeProps } from '../focus-scope';

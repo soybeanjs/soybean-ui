@@ -1,6 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, FormFieldProps, PrimitiveProps } from '../../types';
 
 export type AcceptableInputValue = string | Record<string, any>;
 

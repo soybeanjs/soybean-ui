@@ -1,6 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps } from '../../types';
 
 // Root
 export interface ProgressRootProps extends ClassValueProp {

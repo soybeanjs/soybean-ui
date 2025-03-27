@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { EventHookOn } from '@vueuse/core';
-import type { AcceptableValue, ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { AcceptableValue, ClassValueProp, PrimitiveProps } from '../../types';
 import type { TeleportProps } from '../teleport';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';

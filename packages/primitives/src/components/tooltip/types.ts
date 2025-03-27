@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps } from '../../types';
 import type { ArrowProps } from '../arrow';
 import type { PopperAnchorProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';

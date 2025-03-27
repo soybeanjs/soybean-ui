@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, SwipeDirection, SwipeEvent } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps, SwipeDirection, SwipeEvent } from '../../types';
 import type { TeleportProps } from '../teleport';
 
 // ToastProvider

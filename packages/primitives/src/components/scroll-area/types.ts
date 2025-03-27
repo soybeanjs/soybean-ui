@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValue, ClassValueProp, Direction } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValue, ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
 export interface ScrollAreaSizes {
   content: number;

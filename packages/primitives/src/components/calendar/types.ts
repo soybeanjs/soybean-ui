@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { DateFormatter, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
-import type { ClassValueProp, Direction } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
 export interface BaseCalendarRootProps extends ClassValueProp {
   /** The default value for the calendar */

@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
-import type { ClassValueProp, Direction, TreeSelectEvent, TreeToggleEvent } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, PrimitiveProps, TreeSelectEvent, TreeToggleEvent } from '../../types';
 // Root
 export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
   extends ClassValueProp {

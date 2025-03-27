@@ -1,5 +1,4 @@
-import type { ClassValueProp, FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, FocusOutsideEvent, PointerDownOutsideEvent, PrimitiveProps } from '../../types';
 
 export interface DismissableLayerProps extends ClassValueProp {
   /**

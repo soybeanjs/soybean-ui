@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, FormFieldProps, PrimitiveProps } from '../../types';
 
 export interface SwitchRootProps extends ClassValueProp, FormFieldProps {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */

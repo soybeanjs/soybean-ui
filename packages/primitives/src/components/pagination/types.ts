@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps } from '../../types';
 
 // Root
 export interface PaginationRootProps extends ClassValueProp {

@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { DateValue, Granularity, HourCycle, Matcher, WeekDayFormat } from '../../date';
-import type { Direction } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { Direction, PrimitiveProps } from '../../types';
 import type { DateFieldInputProps, DateFieldRootProps } from '../date-field';
 import type {
   CalendarCellProps,

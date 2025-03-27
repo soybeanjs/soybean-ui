@@ -1,5 +1,4 @@
-import type { ClassValueProp, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, FormFieldProps, PrimitiveProps } from '../../types';
 
 export type ToggleEmits = {
   /** Event handler called when the value of the toggle changes. */

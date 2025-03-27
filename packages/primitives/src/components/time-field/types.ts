@@ -1,7 +1,6 @@
 import type { Ref } from 'vue';
 import type { DateFormatter, DateValue, HourCycle, SegmentPart, SegmentValueObj, TimeValue } from '../../date';
-import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, FormFieldProps, PrimitiveProps } from '../../types';
 
 export interface TimeFieldRootProps extends ClassValueProp, FormFieldProps {
   /** The default value for the calendar */

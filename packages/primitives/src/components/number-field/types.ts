@@ -1,6 +1,5 @@
 import type { HTMLAttributes, Ref } from 'vue';
-import type { ClassValueProp, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, FormFieldProps, PrimitiveProps } from '../../types';
 
 // Root
 export interface NumberFieldRootProps extends ClassValueProp {

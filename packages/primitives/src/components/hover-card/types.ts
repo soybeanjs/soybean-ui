@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';
-import type { PrimitiveProps } from '../primitive';
+import type { PrimitiveProps } from '../../types';
 import type { DismissableLayerEmits } from '../dismissable-layer';
 
 // HoverCardRoot

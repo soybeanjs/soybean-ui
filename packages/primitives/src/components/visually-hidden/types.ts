@@ -1,5 +1,4 @@
-import type { ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps } from '../../types';
 
 export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
 

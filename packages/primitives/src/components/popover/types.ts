@@ -1,6 +1,5 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, PrimitiveProps } from '../../types';
 import type { TeleportProps } from '../teleport';
 import type { DismissableLayerEmits, DismissableLayerProps } from '../dismissable-layer';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';

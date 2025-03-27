@@ -1,6 +1,5 @@
 import type { ComputedRef, Ref } from 'vue';
-import type { ClassValueProp, DataOrientation, Direction, FormFieldProps, Side } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, DataOrientation, Direction, FormFieldProps, PrimitiveProps, Side } from '../../types';
 
 export type ThumbAlignment = 'contain' | 'overflow';
 

@@ -1,6 +1,12 @@
 import type { Ref } from 'vue';
-import type { AcceptableValue, ClassValueProp, Direction, FormFieldProps, PointerDownOutsideEvent } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type {
+  AcceptableValue,
+  ClassValueProp,
+  Direction,
+  FormFieldProps,
+  PointerDownOutsideEvent,
+  PrimitiveProps
+} from '../../types';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';
 import type { LabelProps } from '../label';

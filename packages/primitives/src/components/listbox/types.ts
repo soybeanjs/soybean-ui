@@ -7,9 +7,9 @@ import type {
   DataOrientation,
   Direction,
   FormFieldProps,
+  PrimitiveProps,
   SelectEvent
 } from '../../types';
-import type { PrimitiveProps } from '../primitive';
 import type { LabelProps } from '../label';
 
 export interface ListboxRootProps<T = AcceptableValue> extends ClassValueProp, FormFieldProps {

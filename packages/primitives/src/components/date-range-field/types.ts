@@ -10,8 +10,7 @@ import type {
   SegmentPart,
   SegmentValueObj
 } from '../../date';
-import type { ClassValueProp, Direction, FormFieldProps } from '../../types';
-import type { PrimitiveProps } from '../primitive';
+import type { ClassValueProp, Direction, FormFieldProps, PrimitiveProps } from '../../types';
 
 export interface DateRangeFieldRootProps extends ClassValueProp, FormFieldProps {
   /** The default value for the calendar */

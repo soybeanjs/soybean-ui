@@ -5,9 +5,9 @@ import type {
   DataOrientation,
   Direction,
   FormFieldProps,
+  PrimitiveProps,
   SelectEvent
 } from '../../types';
-import type { PrimitiveProps } from '../primitive';
 
 // Root
 export interface RadioGroupRootProps extends ClassValueProp, FormFieldProps {
