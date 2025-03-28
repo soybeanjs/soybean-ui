@@ -6,39 +6,46 @@ export const accordionVariants = tv({
     root: '',
     item: 'border-b',
     header: 'flex',
-    content: `overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`,
+    content: [`overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`],
     trigger: [
-      `flex-1 flex items-center justify-between font-medium transition-all-200 bg-transparent`,
+      `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
-      `hover:underline [&[data-state=open]>svg]:rotate-180`
+      `hover:underline [&[data-state=open]>.trigger-icon]:rotate-180`
     ],
-    triggerIcon: 'shrink-0 text-muted-foreground transition-transform-200'
+    triggerLeadingIcon: `shrink-0`,
+    triggerIcon: `trigger-icon ml-auto shrink-0 text-muted-foreground transition-transform-200`
   },
   variants: {
     size: {
       xs: {
-        content: 'text-xs data-[state=open]:pb-3',
-        trigger: 'text-xs py-3'
+        root: 'text-2xs',
+        content: 'data-[state=open]:pb-3',
+        trigger: 'py-3 gap-3'
       },
       sm: {
-        content: 'text-sm data-[state=open]:pb-3.5',
-        trigger: 'text-sm py-3.5'
+        root: 'text-xs',
+        content: 'data-[state=open]:pb-3.5',
+        trigger: 'py-3.5 gap-3.5'
       },
       md: {
-        content: 'text-sm data-[state=open]:pb-4',
-        trigger: 'text-sm py-4'
+        root: 'text-sm',
+        content: 'data-[state=open]:pb-4',
+        trigger: 'py-4 gap-4'
       },
       lg: {
-        content: 'text-base data-[state=open]:pb-4.5',
-        trigger: 'text-base py-4.5'
+        root: 'text-base',
+        content: 'data-[state=open]:pb-4.5',
+        trigger: 'py-4.5 gap-4.5'
       },
       xl: {
-        content: 'text-base data-[state=open]:pb-5',
-        trigger: 'text-base py-5'
+        root: 'text-lg',
+        content: 'data-[state=open]:pb-5',
+        trigger: 'py-5 gap-5'
       },
       '2xl': {
-        content: 'text-lg data-[state=open]:pb-6',
-        trigger: 'text-lg py-6'
+        root: 'text-2xl',
+        content: 'data-[state=open]:pb-6',
+        trigger: 'py-6 gap-6'
       }
     }
   },
