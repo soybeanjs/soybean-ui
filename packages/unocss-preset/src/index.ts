@@ -35,6 +35,28 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
 
           ${globals ? generateGlobalStyles() : ''}
         `
+      },
+      {
+        getCSS: () => `
+          html.size-xs {
+            font-size: 12px;
+          }
+          html.size-sm {
+            font-size: 14px;
+          }
+          html.size-md {
+            font-size: 16px;
+          }
+          html.size-lg {
+            font-size: 18px;
+          }
+          html.size-xl {
+            font-size: 20px;
+          }
+          html.size-2xl {
+            font-size: 24px;
+          }
+        `
       }
     ],
     rules: [

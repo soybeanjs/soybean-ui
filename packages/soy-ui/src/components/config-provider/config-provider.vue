@@ -3,6 +3,7 @@ import { computed, toRefs, watch } from 'vue';
 import { useStyleTag } from '@vueuse/core';
 import { ConfigProvider, useOmitForwardProps } from '@soybean-ui/primitives';
 import { generateCSSVars } from '@soybean-ui/unocss-preset';
+import type { ThemeSize } from '@soybean-ui/variants';
 import { provideConfigProviderContext } from './context';
 import { DEFAULT_THEME, getThemeName, getThemeOptionStr } from './shared';
 import type { ConfigProviderProps } from './types';
@@ -48,6 +49,16 @@ function addThemeClass(newThemeName: string, oldThemeName: string) {
   document.documentElement.classList.remove(`theme-${oldThemeName}`);
 }
 
+function addSizeClass(_size: ThemeSize) {
+  const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+
+  document.documentElement.classList.add(`size-${_size}`);
+
+  const removedSizes = sizes.filter(s => s !== _size).map(s => `size-${s}`);
+
+  document.documentElement.classList.remove(...removedSizes);
+}
+
 watch(
   () => theme.value.color,
   (newVal, oldVal) => {
@@ -55,6 +66,14 @@ watch(
     const oldThemeName = getThemeName(oldVal);
 
     addThemeClass(newThemeName, oldThemeName);
+  },
+  { immediate: true, flush: 'post' }
+);
+
+watch(
+  () => size.value,
+  newVal => {
+    addSizeClass(newVal);
   },
   { immediate: true, flush: 'post' }
 );
