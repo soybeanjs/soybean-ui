@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useForwardProps } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import SRadioLabel from '../label/label.vue';
 import SRadioRoot from './radio-root.vue';
 import SRadioControl from './radio-control.vue';
@@ -12,11 +11,7 @@ defineOptions({
   name: 'SRadio'
 });
 
-const { class: cls, id, size: _size, ui, forceMountIndicator, label, ...delegatedProps } = defineProps<RadioProps>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
+const { class: cls, id, size, ui, forceMountIndicator, label, ...delegatedProps } = defineProps<RadioProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 

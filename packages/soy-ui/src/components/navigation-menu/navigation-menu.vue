@@ -1,12 +1,10 @@
 <script setup lang="ts" generic="T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption">
-import { computed } from 'vue';
 import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
   usePickEmitAsProps
 } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import { omit } from '../../shared';
 import SNavigationMenuRoot from './navigation-menu-root.vue';
 import SNavigationMenuViewport from './navigation-menu-viewport.vue';
@@ -33,10 +31,6 @@ defineOptions({
 const props = defineProps<NavigationMenuProps<T>>();
 
 const emit = defineEmits<NavigationMenuEmits<T>>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',

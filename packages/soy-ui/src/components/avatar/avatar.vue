@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useForwardPropsEmits, useOmitForwardProps } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';
@@ -15,17 +13,13 @@ const props = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
 
-const themeSize = useThemeSize();
-
-const forwardedImageProps = useOmitForwardProps(props, ['class', 'size', 'ui', 'fallbackLabel']);
+const forwardedImageProps = useOmitForwardProps(props, ['class', 'ui', 'fallbackLabel']);
 
 const forwardedImage = useForwardPropsEmits(forwardedImageProps, emit);
-
-const size = computed(() => props.size || themeSize.value);
 </script>
 
 <template>
-  <SAvatarRoot :class="props.class || ui?.root" :size="size">
+  <SAvatarRoot :class="props.class || ui?.root">
     <slot>
       <slot name="image">
         <SAvatarImage v-bind="forwardedImage" :class="ui?.image" />

@@ -1,7 +1,5 @@
 <script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
-import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';
@@ -16,7 +14,7 @@ defineOptions({
 
 const {
   class: cls,
-  size: _size,
+  size,
   ui,
   loop,
   items,
@@ -26,10 +24,6 @@ const {
 } = defineProps<TabsProps<T>>();
 
 const emit = defineEmits<TabsEmits<T['value']>>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 </script>

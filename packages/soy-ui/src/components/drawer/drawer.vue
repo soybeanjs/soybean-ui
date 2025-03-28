@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useStyleTag } from '@vueuse/core';
 import {
   DrawerPortal,
@@ -9,7 +8,6 @@ import {
   useForwardPropsEmits,
   useOmitForwardProps
 } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import { SDialogCloseIcon, SDialogDescription, SDialogFooter, SDialogHeader, SDialogTitle } from '../dialog';
 import SDrawerOverlay from './drawer-overlay.vue';
 import SDrawerContent from './drawer-content.vue';
@@ -24,10 +22,6 @@ defineOptions({
 const props = defineProps<DrawerProps>();
 
 const emit = defineEmits<DrawerEmits>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',

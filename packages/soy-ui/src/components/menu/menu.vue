@@ -8,7 +8,6 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import SMenuPortalContent from './menu-portal-content.vue';
 import SMenuOption from './menu-option.vue';
 import type { MenuEmits, MenuOptionData, MenuProps } from './types';
@@ -31,9 +30,6 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 

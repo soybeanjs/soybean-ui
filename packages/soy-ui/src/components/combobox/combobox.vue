@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitives';
 import type { AcceptableValue, SelectEvent } from '@soybean-ui/primitives';
 import { ChevronsUpDown } from 'lucide-vue-next';
-import { useThemeSize } from '../../context/theme';
 import SButton from '../button/button.vue';
 import SComboboxRoot from './combobox-root.vue';
 import SComboboxAnchor from './combobox-anchor.vue';
@@ -25,10 +24,6 @@ const props = withDefaults(defineProps<ComboboxProps<T>>(), {
 });
 
 const emit = defineEmits<ComboboxEmits<T>>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const forwardedRootProps = useOmitForwardProps(props, [
   'size',

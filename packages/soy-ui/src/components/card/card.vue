@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useThemeSize } from '../../context/theme';
 import SCardRoot from './card-root.vue';
 import SCardHeader from './card-header.vue';
 import SCardTitleRoot from './card-title-root.vue';
@@ -13,11 +12,7 @@ defineOptions({
   name: 'SCard'
 });
 
-const { class: cls, size: _size, split, title, ui, flexHeight } = defineProps<CardProps>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
+const { class: cls, size, split, title, ui, flexHeight } = defineProps<CardProps>();
 
 type Slots = {
   default: () => any;

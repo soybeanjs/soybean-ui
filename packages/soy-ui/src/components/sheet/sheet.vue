@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import {
   DialogPortal,
   DialogRoot,
@@ -9,7 +8,6 @@ import {
   useOmitEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import {
   SDialogCloseIcon,
   SDialogDescription,
@@ -28,10 +26,6 @@ defineOptions({
 const props = defineProps<SheetProps>();
 
 const emit = defineEmits<SheetEmits>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen', 'modal']);
 

@@ -12,7 +12,6 @@ import {
 } from '@soybean-ui/primitives';
 import { CircleAlert, CircleCheck, CircleX, Info } from 'lucide-vue-next';
 import type { LucideProps } from 'lucide-vue-next';
-import { useThemeSize } from '../../context/theme';
 import SAlertDialogOverlay from './alert-dialog-overlay.vue';
 import SAlertDialogContent from './alert-dialog-content.vue';
 import SAlertDialogHeader from './alert-dialog-header.vue';
@@ -29,8 +28,6 @@ const props = defineProps<AlertDialogProps>();
 
 const emit = defineEmits<AlertDialogEmits>();
 
-const themeSize = useThemeSize();
-
 const forwardedRootProps = usePickForwardProps(props, ['open', 'defaultOpen']);
 
 const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFocus', 'disableOutsidePointerEvents']);
@@ -38,8 +35,6 @@ const forwardedContentProps = usePickForwardProps(props, ['forceMount', 'trapFoc
 const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
 
 const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
-
-const size = computed(() => props.size || themeSize.value);
 
 const iconRecord: Record<AlertType, { icon: FunctionalComponent<LucideProps>; class: string }> = {
   destructive: {

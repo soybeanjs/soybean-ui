@@ -11,7 +11,6 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import type { ThemeSize } from '../../types';
 import SMenuRadio from '../menu/menu-radio.vue';
 import type { MenuOptionData } from '../menu/types';
@@ -34,10 +33,6 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 

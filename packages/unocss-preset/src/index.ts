@@ -35,6 +35,28 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
 
           ${globals ? generateGlobalStyles() : ''}
         `
+      },
+      {
+        getCSS: () => `
+          html.size-xs {
+            font-size: 12px;
+          }
+          html.size-sm {
+            font-size: 14px;
+          }
+          html.size-md {
+            font-size: 16px;
+          }
+          html.size-lg {
+            font-size: 18px;
+          }
+          html.size-xl {
+            font-size: 20px;
+          }
+          html.size-2xl {
+            font-size: 24px;
+          }
+        `
       }
     ],
     rules: [
@@ -186,6 +208,11 @@ export function presetSoybeanUI(options: PresetShadcnOptions = {}, globals = tru
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
+      },
+      fontSize: {
+        '4xs': ['0.375rem', '0.5rem'],
+        '3xs': ['0.5rem', '0.625rem'],
+        '2xs': ['0.625rem', '0.75rem']
       }
     }
   };

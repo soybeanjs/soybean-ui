@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import NumberFieldDecrement from './number-field-decrement.vue';
 import NumberFieldIncrement from './number-field-increment.vue';
 import NumberFieldInput from './number-field-input.vue';
@@ -14,7 +12,7 @@ defineOptions({
 
 const {
   class: cls,
-  size: _size,
+  size,
   center,
   disabledDecrement,
   disabledIncrement,
@@ -23,10 +21,6 @@ const {
 } = defineProps<NumberFieldProps>();
 
 const emit = defineEmits<NumberFieldEmits>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(rootProps, emit);
 </script>
