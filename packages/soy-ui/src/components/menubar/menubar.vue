@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { computed } from 'vue';
 import {
   useCombinedPropsEmits,
   useOmitEmitAsProps,
@@ -7,7 +6,6 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import SMenubarRoot from './menubar-root.vue';
 import SMenubarMenu from './menubar-menu.vue';
 import type { MenubarEmits, MenubarProps } from './types';
@@ -19,10 +17,6 @@ defineOptions({
 const props = defineProps<MenubarProps<T>>();
 
 const emit = defineEmits<MenubarEmits<T>>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 const propKeys: (keyof MenubarProps<T>)[] = ['size', 'modelValue', 'defaultValue', 'dir', 'loop'];
 

@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { Slot } from '@soybean-ui/primitives';
 import { alertVariants, cn } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
-import { useThemeSize } from '../../context/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SAlertRoot from './alert-root.vue';
 import SAlertWrapper from './alert-wrapper.vue';
@@ -15,14 +14,10 @@ defineOptions({
   name: 'SAlert'
 });
 
-const { class: cls, color, variant, size: _size, ui } = defineProps<AlertProps>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
+const { class: cls, color, variant, size, ui } = defineProps<AlertProps>();
 
 const mergedCls = computed(() => {
-  const { icon, close } = alertVariants({ color, variant, size: size.value });
+  const { icon, close } = alertVariants({ color, variant, size });
 
   return {
     icon: cn(icon(), ui?.icon),

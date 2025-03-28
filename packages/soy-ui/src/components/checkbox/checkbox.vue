@@ -2,7 +2,6 @@
 import { computed, useId } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import { Check, Minus } from 'lucide-vue-next';
-import { useThemeSize } from '../../context/theme';
 import SCheckboxLabel from '../label/label.vue';
 import SCheckboxRoot from './checkbox-root.vue';
 import SCheckboxControl from './checkbox-control.vue';
@@ -13,23 +12,11 @@ defineOptions({
   name: 'SCheckbox'
 });
 
-const {
-  class: rootCls,
-  id,
-  size: _size,
-  ui,
-  forceMountIndicator,
-  label,
-  ...delegatedProps
-} = defineProps<CheckboxProps>();
+const { class: rootCls, id, size, ui, forceMountIndicator, label, ...delegatedProps } = defineProps<CheckboxProps>();
 
 const emit = defineEmits<CheckboxEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const defaultId = useId();
 

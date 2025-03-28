@@ -11,7 +11,6 @@ import {
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import type { ThemeSize } from '../../types';
 import type { MenuOptionData } from '../menu/types';
 import SContextMenuPortalContent from './context-menu-portal-content.vue';
@@ -25,10 +24,6 @@ defineOptions({
 const props = defineProps<ContextMenuProps<T>>();
 
 const emit = defineEmits<ContextMenuEmits<T>>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => props.size || themeSize.value);
 
 type Slots = {
   trigger?: (props?: { size?: ThemeSize }) => any;

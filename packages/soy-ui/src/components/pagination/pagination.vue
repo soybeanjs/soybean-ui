@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { PaginationRoot, useForwardPropsEmits } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import SPaginationList from './pagination-list.vue';
 import SPaginationListItem from './pagination-list-item.vue';
 import SPaginationFirst from './pagination-first.vue';
@@ -15,13 +13,9 @@ defineOptions({
   name: 'SPagination'
 });
 
-const { class: cls, size: _size, variant = 'plain', ui, ...delegatedProps } = defineProps<PaginationProps>();
+const { class: cls, size, variant = 'plain', ui, ...delegatedProps } = defineProps<PaginationProps>();
 
 const emit = defineEmits<PaginationEmits>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 </script>

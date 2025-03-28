@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardPropsEmits } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import PinInputRoot from './pin-input-root.vue';
 import PinInputInputRoot from './pin-input-input-root.vue';
 import PinInputInput from './pin-input-input.vue';
@@ -12,7 +11,7 @@ defineOptions({
   name: 'SPinInput'
 });
 
-const { class: cls, size: _size, ui, inputCount = 5, separate, ...delegatedRootProps } = defineProps<PinInputProps>();
+const { class: cls, size, ui, inputCount = 5, separate, ...delegatedRootProps } = defineProps<PinInputProps>();
 
 const emit = defineEmits<PinInputEmits>();
 
@@ -22,10 +21,6 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
 

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useThemeSize } from '../../context/theme';
 import SChipRoot from './chip-root.vue';
 import SChipContent from './chip-content.vue';
 import type { ChipProps } from './types';
@@ -9,11 +7,7 @@ defineOptions({
   name: 'SChip'
 });
 
-const { class: cls, ui, text, show = true, size: _size, color, position } = defineProps<ChipProps>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
+const { class: cls, ui, text, show = true, size, color, position } = defineProps<ChipProps>();
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardExpose, useForwardPropsEmits } from '@soybean-ui/primitives';
-import { useThemeSize } from '../../context/theme';
 import TextareaRoot from './textarea-root.vue';
 import STextareaContent from './textarea-content.vue';
 import STextareaCount from './textarea-count.vue';
@@ -11,20 +10,9 @@ defineOptions({
   name: 'STextarea'
 });
 
-const {
-  class: cls,
-  size: _size,
-  ui,
-  showCount,
-  countGraphemes,
-  ...delegatedContentProps
-} = defineProps<TextareaProps>();
+const { class: cls, size, ui, showCount, countGraphemes, ...delegatedContentProps } = defineProps<TextareaProps>();
 
 const emit = defineEmits<TextareaContentEmits>();
-
-const themeSize = useThemeSize();
-
-const size = computed(() => _size || themeSize.value);
 
 const { forwardRef } = useForwardExpose();
 
