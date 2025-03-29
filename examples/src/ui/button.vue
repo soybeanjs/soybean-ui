@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SButton, SButtonGroup, SButtonIcon, SButtonLink, SCard, SLoadingButton } from 'soy-ui';
-import type { ButtonShadow, ButtonVariant, ThemeColor } from 'soy-ui';
+import type { ButtonShadow, ButtonVariant, ThemeColor, ThemeSize } from 'soy-ui';
 import { Loader, Minus, Pause, Plus, SkipBack, SkipForward } from 'lucide-vue-next';
 
 defineOptions({
@@ -9,6 +9,7 @@ defineOptions({
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: ButtonVariant[] = ['solid', 'pure', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>
 
@@ -24,6 +25,13 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
         <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
           <SButton v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SButton>
         </div>
+      </div>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex flex-wrap gap-12px">
+        <SButton v-for="(size, index) in sizes" :key="size" :color="colors[index]" variant="outline" :size="size">
+          {{ size }}
+        </SButton>
       </div>
     </SCard>
 

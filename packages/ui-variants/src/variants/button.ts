@@ -29,12 +29,12 @@ export const buttonVariants = tv({
       link: 'bg-transparent underline-offset-4 hover:underline'
     },
     size: {
-      xs: 'h-6 px-1.5 gap-1 text-xs',
-      sm: 'h-7 px-2 gap-2 text-sm',
+      xs: 'h-6 px-1.5 gap-1 text-2xs',
+      sm: 'h-7 px-2 gap-2 text-xs',
       md: 'h-8 px-4 gap-3 text-sm',
       lg: 'h-9 px-6 gap-4 text-base',
-      xl: 'h-10 px-8 gap-5 text-base',
-      '2xl': 'h-12 px-10 gap-6 text-lg'
+      xl: 'h-10 px-8 gap-5 text-lg',
+      '2xl': 'h-12 px-10 gap-6 text-xl'
     },
     shape: {
       auto: 'rounded-md',
