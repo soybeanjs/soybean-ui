@@ -17,7 +17,7 @@ defineOptions({
     >
       <template #default="{ open }">
         <div class="flex-y-center justify-between px-2 space-x-4">
-          <h4 class="text-sm font-semibold">@peduarte starred 3 repositories</h4>
+          <h4 class="text-sm font-semibold">@soybeanjs starred 3 repositories</h4>
           <SCollapsibleTrigger as-child>
             <SButtonIcon>
               <ChevronsDownUp v-if="open" />
@@ -29,7 +29,7 @@ defineOptions({
       </template>
       <template #content>
         <div class="border rounded-md px-4 py-3 text-sm font-mono">@soybean-ui/colors</div>
-        <div class="border rounded-md px-4 py-3 text-sm font-mono">@stitches/react</div>
+        <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-ui</div>
       </template>
     </SCollapsible>
   </SCard>

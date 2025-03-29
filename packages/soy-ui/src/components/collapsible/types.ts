@@ -2,16 +2,21 @@ import type {
   ClassValue,
   CollapsibleContentProps,
   CollapsibleRootEmits,
-  CollapsibleRootProps
+  CollapsibleRootProps as _CollapsibleRootProps
 } from '@soybean-ui/primitives';
+import type { CollapsibleSlots, ThemeSize } from '@soybean-ui/variants';
+
+export interface CollapsibleRootProps extends _CollapsibleRootProps {
+  size?: ThemeSize;
+}
+
+export type CollapsibleUi = Partial<Record<CollapsibleSlots, ClassValue>>;
 
 export interface CollapsibleProps extends CollapsibleRootProps {
   forceMountContent?: boolean;
-  ui?: {
-    content?: ClassValue;
-  };
+  ui?: CollapsibleUi;
 }
 
 export type CollapsibleEmits = CollapsibleRootEmits;
 
-export type { CollapsibleRootProps, CollapsibleRootEmits, CollapsibleContentProps };
+export type { CollapsibleRootEmits, CollapsibleContentProps };

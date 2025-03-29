@@ -10,7 +10,9 @@ defineOptions({
 
 const { class: cls, forceMount } = defineProps<CollapsibleContentProps>();
 
-const mergedCls = computed(() => cn(collapsibleVariants(), cls));
+const { content } = collapsibleVariants();
+
+const mergedCls = computed(() => cn(content(), cls));
 </script>
 
 <template>
