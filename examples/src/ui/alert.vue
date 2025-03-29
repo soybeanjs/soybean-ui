@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SAlert, SCard } from 'soy-ui';
-import type { AlertVariant, ThemeColor } from 'soy-ui';
+import type { AlertVariant, ThemeColor, ThemeSize } from 'soy-ui';
 import { Rocket, Terminal, TriangleAlert } from 'lucide-vue-next';
 
 defineOptions({
@@ -9,6 +9,7 @@ defineOptions({
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: AlertVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 
 <template>
@@ -62,6 +63,23 @@ const variants: AlertVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
     </SCard>
     <SCard title="Closable" split>
       <SAlert variant="outline" title="Closable" description="You can click close icon to close alert." closable />
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex flex-c-stretch gap-12px">
+        <SAlert
+          v-for="(size, index) in sizes"
+          :key="size"
+          :title="`Size: ${size}`"
+          :color="colors[index]"
+          variant="soft"
+          :size="size"
+          closable
+        >
+          <template #icon>
+            <Terminal />
+          </template>
+        </SAlert>
+      </div>
     </SCard>
   </div>
 </template>

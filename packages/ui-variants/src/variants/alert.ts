@@ -10,7 +10,7 @@ export const alertVariants = tv({
     title: 'font-medium tracking-tight',
     description: '[&_p]:leading-relaxed',
     action: 'shrink-0',
-    close: 'shrink-0'
+    close: 'absolute'
   },
   variants: {
     color: {
@@ -66,52 +66,40 @@ export const alertVariants = tv({
     },
     size: {
       xs: {
-        root: 'gap-2 px-2 py-1.75',
-        wrapper: 'space-y-0.75',
-        icon: 'text-xs',
-        title: 'text-sm leading-15px',
-        description: 'text-xs',
-        close: 'text-xs'
+        root: 'gap-2 px-2 py-1.75 text-2xs',
+        wrapper: 'gap-0.75',
+        title: 'text-xs leading-3.125',
+        close: 'top-1.25 right-2'
       },
       sm: {
-        root: 'gap-2.5 px-3 py-2.5',
-        wrapper: 'space-y-1',
-        icon: 'text-xs',
-        title: 'text-sm leading-15px',
-        description: 'text-xs',
-        close: 'text-xs'
+        root: 'gap-2.5 px-3 py-2.5 text-xs',
+        wrapper: 'gap-1',
+        title: 'text-sm leading-3.75',
+        close: 'top-2 right-3'
       },
       md: {
-        root: 'gap-3 px-4 py-3',
-        wrapper: 'space-y-1',
-        icon: 'text-sm',
-        title: 'text-base leading-17.5px',
-        description: 'text-sm',
-        close: 'text-sm'
+        root: 'gap-3 px-4 py-3 text-sm',
+        wrapper: 'gap-1',
+        title: 'text-base leading-4.375',
+        close: 'top-2.5 right-4'
       },
       lg: {
-        root: 'gap-3.5 px-5 py-3.5',
-        wrapper: 'space-y-1.25',
-        icon: 'text-sm',
-        title: 'text-base leading-17.5px',
-        description: 'text-sm',
-        close: 'text-sm'
+        root: 'gap-3.5 px-5 py-3.5 text-base',
+        wrapper: 'gap-1.25',
+        title: 'text-lg leading-5',
+        close: 'top-3 right-5'
       },
       xl: {
-        root: 'gap-4 px-6 py-4',
-        wrapper: 'space-y-1.5',
-        icon: 'text-base',
-        title: 'text-lg leading-20px',
-        description: 'text-base',
-        close: 'text-base'
+        root: 'gap-4 px-6 py-4 text-lg',
+        wrapper: 'gap-1.5',
+        title: 'text-xl leading-5.625',
+        close: 'top-3.5 right-6'
       },
       '2xl': {
-        root: 'gap-4.5 px-7 py-4.5',
-        wrapper: 'space-y-2',
-        icon: 'text-lg',
-        title: 'text-xl leading-22.5px',
-        description: 'text-lg',
-        close: 'text-lg'
+        root: 'gap-4.5 px-7 py-4.5 text-xl',
+        wrapper: 'gap-2',
+        title: 'text-2xl leading-6.25',
+        close: 'top-4 right-7'
       }
     }
   },
