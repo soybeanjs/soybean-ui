@@ -30,8 +30,6 @@ const slots = defineSlots<Slots>();
 const showHeader = computed(() => {
   return Boolean(slots.header || slots.title || title || slots.extra);
 });
-
-const showFooter = computed(() => Boolean(slots.footer));
 </script>
 
 <template>
@@ -39,7 +37,7 @@ const showFooter = computed(() => Boolean(slots.footer));
     <SCardHeader v-if="showHeader" :class="ui?.header" :size="size">
       <slot name="header">
         <slot name="title-root">
-          <SCardTitleRoot :class="ui?.titleRoot">
+          <SCardTitleRoot :class="ui?.titleRoot" :size="size">
             <slot name="title-leading" />
             <SCardTitle :class="ui?.title" :size="size">
               <slot name="title">{{ title }}</slot>
@@ -53,7 +51,7 @@ const showFooter = computed(() => Boolean(slots.footer));
     <SCardContent :class="ui?.content" :size="size" :flex-height="flexHeight">
       <slot />
     </SCardContent>
-    <SCardFooter v-if="showFooter" :class="ui?.footer" :size="size">
+    <SCardFooter v-if="slots.footer" :class="ui?.footer" :size="size">
       <slot name="footer" />
     </SCardFooter>
   </SCardRoot>

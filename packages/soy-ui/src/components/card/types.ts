@@ -10,7 +10,9 @@ export interface CardHeaderProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface CardTitleRootProps extends ClassValueProp {}
+export interface CardTitleRootProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export interface CardTitleProps extends ClassValueProp {
   size?: ThemeSize;

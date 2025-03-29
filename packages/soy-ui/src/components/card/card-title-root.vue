@@ -7,11 +7,13 @@ defineOptions({
   name: 'SCardTitleRoot'
 });
 
-const { class: cls } = defineProps<CardTitleRootProps>();
+const { class: cls, size } = defineProps<CardTitleRootProps>();
 
-const { titleRoot } = cardVariants();
+const mergedCls = computed(() => {
+  const { titleRoot } = cardVariants({ size });
 
-const mergedCls = computed(() => cn(titleRoot(), cls));
+  return cn(titleRoot(), cls);
+});
 </script>
 
 <template>
