@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SBadge, SCard } from 'soy-ui';
-import type { BadgeShape, BadgeVariant, ThemeColor } from 'soy-ui';
+import type { BadgeShape, BadgeVariant, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoBadge'
@@ -8,6 +8,7 @@ defineOptions({
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 const variants: BadgeVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 const shapes: BadgeShape[] = ['auto', 'rounded'];
 </script>
 
@@ -23,6 +24,13 @@ const shapes: BadgeShape[] = ['auto', 'rounded'];
         <div v-for="color in colors" :key="color" class="flex flex-wrap gap-12px">
           <SBadge v-for="variant in variants" :key="variant" :color="color" :variant="variant">{{ variant }}</SBadge>
         </div>
+      </div>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex flex-wrap gap-12px">
+        <SBadge v-for="size in sizes" :key="size" :size="size" variant="soft">
+          {{ size }}
+        </SBadge>
       </div>
     </SCard>
     <SCard title="Shape" split>
