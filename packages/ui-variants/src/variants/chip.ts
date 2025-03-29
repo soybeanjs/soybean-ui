@@ -36,22 +36,22 @@ export const chipVariants = tv({
     },
     size: {
       xs: {
-        content: `min-h-2 px-1 text-[8px] leading-relaxed`
+        content: `min-h-2 px-1 text-4xs leading-relaxed`
       },
       sm: {
-        content: `min-h-2.5 px-1.25 text-[9px] leading-relaxed`
+        content: `min-h-2.5 px-1.25 text-3xs leading-relaxed`
       },
       md: {
-        content: `min-h-3 px-1.5 text-[10px] leading-relaxed`
+        content: `min-h-3 px-1.5 text-2xs leading-relaxed`
       },
       lg: {
-        content: `min-h-3.5 px-1.75 text-[11px] leading-relaxed`
+        content: `min-h-3.5 px-1.75 text-xs leading-relaxed`
       },
       xl: {
-        content: `min-h-4 px-2 text-[12px] leading-relaxed`
+        content: `min-h-4 px-2 text-sm leading-relaxed`
       },
       '2xl': {
-        content: `min-h-5 px-2.5 text-[13px] leading-relaxed`
+        content: `min-h-5 px-2.5 text-base leading-relaxed`
       }
     },
     position: {
