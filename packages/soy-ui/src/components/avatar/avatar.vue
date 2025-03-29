@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits, useOmitForwardProps } from '@soybean-ui/primitives';
+import { useCombinedPropsEmits } from '@soybean-ui/primitives';
 import SAvatarRoot from './avatar-root.vue';
 import SAvatarImage from './avatar-image.vue';
 import SAvatarFallback from './avatar-fallback.vue';
@@ -9,17 +9,15 @@ defineOptions({
   name: 'SAvatar'
 });
 
-const props = defineProps<AvatarProps>();
+const { class: cls, size, ui, fallbackLabel, ...delegatedImageProps } = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
 
-const forwardedImageProps = useOmitForwardProps(props, ['class', 'ui', 'fallbackLabel']);
-
-const forwardedImage = useForwardPropsEmits(forwardedImageProps, emit);
+const forwardedImage = useCombinedPropsEmits(delegatedImageProps, emit);
 </script>
 
 <template>
-  <SAvatarRoot :class="props.class || ui?.root">
+  <SAvatarRoot :class="cls || ui?.root" :size="size">
     <slot>
       <slot name="image">
         <SAvatarImage v-bind="forwardedImage" :class="ui?.image" />
