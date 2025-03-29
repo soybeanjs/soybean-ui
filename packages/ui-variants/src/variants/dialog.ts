@@ -22,7 +22,7 @@ export const dialogVariants = tv({
   variants: {
     size: {
       xs: {
-        content: `gap-y-1.5 max-w-md px-2 py-1.5 text-xs`,
+        content: `gap-y-1.5 max-w-md px-2 py-1.5 text-2xs`,
         header: 'gap-y-1.5',
         title: 'gap-x-1.5 text-sm',
         description: 'text-xs',
@@ -30,7 +30,7 @@ export const dialogVariants = tv({
         footer: 'gap-1.5'
       },
       sm: {
-        content: `gap-y-2 max-w-md px-3 py-2 text-sm`,
+        content: `gap-y-2 max-w-md px-3 py-2 text-xs`,
         header: 'gap-y-2',
         title: 'gap-x-2 text-base',
         description: 'text-sm',
