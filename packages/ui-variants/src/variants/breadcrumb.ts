@@ -14,34 +14,34 @@ export const breadcrumbVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'text-[10px]',
-        list: 'gap-1',
-        item: 'gap-0.5'
+        root: 'text-2xs',
+        list: 'gap-2',
+        item: 'gap-1.5'
       },
       sm: {
         root: 'text-xs',
-        list: 'gap-1.5',
-        item: 'gap-1'
+        list: 'gap-2.5',
+        item: 'gap-1.75'
       },
       md: {
         root: 'text-sm',
-        list: 'gap-2',
-        item: 'gap-1.25'
-      },
-      lg: {
-        root: 'text-base',
-        list: 'gap-2.5',
-        item: 'gap-1.5'
-      },
-      xl: {
-        root: 'text-lg',
         list: 'gap-3',
         item: 'gap-2'
       },
-      '2xl': {
-        root: 'text-xl',
+      lg: {
+        root: 'text-base',
         list: 'gap-3.5',
         item: 'gap-2.5'
+      },
+      xl: {
+        root: 'text-lg',
+        list: 'gap-4',
+        item: 'gap-3'
+      },
+      '2xl': {
+        root: 'text-xl',
+        list: 'gap-4.5',
+        item: 'gap-3.5'
       }
     }
   },

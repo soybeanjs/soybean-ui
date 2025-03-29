@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { SBreadcrumb, SBreadcrumbEllipsis, SBreadcrumbPage, SCard, SDropdownMenu } from 'soy-ui';
-import type { BreadcrumbItem, MenuOptionData } from 'soy-ui';
+import type { BreadcrumbItem, MenuOptionData, ThemeSize } from 'soy-ui';
 import { Component, Dock, Home } from 'lucide-vue-next';
 
 defineOptions({
   name: 'DemoBreadcrumb'
 });
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const items: BreadcrumbItem[] = [
   {
@@ -141,6 +143,11 @@ function handleClick(item: BreadcrumbItem) {
           </SDropdownMenu>
         </template>
       </SBreadcrumb>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex-c-stretch gap-12px">
+        <SBreadcrumb v-for="size in sizes" :key="size" :items="items" :size="size" />
+      </div>
     </SCard>
   </div>
 </template>
