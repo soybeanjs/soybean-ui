@@ -1,8 +1,7 @@
 <script lang="ts" setup generic="T extends AcceptableValue = AcceptableValue">
-import { ComboboxItemIndicator } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { Check } from 'lucide-vue-next';
 import SComboboxItem from './combobox-item.vue';
+import SComboboxIndicator from './combobox-indicator.vue';
 import SComboboxSeparator from './combobox-separator.vue';
 import type { ComboboxSingleOptionEmits, ComboboxSingleOptionProps } from './types';
 
@@ -26,9 +25,7 @@ const emit = defineEmits<ComboboxSingleOptionEmits<T>>();
     <slot name="item">
       <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
       <span>{{ item.label }}</span>
-      <ComboboxItemIndicator>
-        <Check />
-      </ComboboxItemIndicator>
+      <SComboboxIndicator :class="ui?.itemIndicator" />
     </slot>
   </SComboboxItem>
   <SComboboxSeparator v-if="item.separator" :class="ui?.separator" :size="size" />

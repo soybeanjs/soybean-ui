@@ -26,13 +26,15 @@ const props = withDefaults(defineProps<ComboboxProps<T>>(), {
 const emit = defineEmits<ComboboxEmits<T>>();
 
 const forwardedRootProps = useOmitForwardProps(props, [
+  'class',
   'size',
   'mode',
   'ui',
   'items',
   'inputProps',
   'inputModelValue',
-  'emptyLabel'
+  'emptyLabel',
+  'triggerLabel'
 ]);
 
 const forwardedRootEmits = useOmitEmitAsProps<ComboboxEmits<T>>(emit, ['select', 'update:inputModelValue']);
@@ -66,7 +68,7 @@ const computedInputProps = computed(() => ({
 </script>
 
 <template>
-  <SComboboxRoot v-bind="forwardedRoot">
+  <SComboboxRoot v-bind="forwardedRoot" :class="props.class || ui?.root" :size="size">
     <SComboboxAnchor :class="ui?.anchor">
       <SComboboxTrigger v-if="mode === 'modern'" :class="ui?.trigger" :size="size" as-child>
         <SButton :size="size" variant="pure">

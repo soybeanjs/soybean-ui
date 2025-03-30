@@ -15,6 +15,7 @@ import type {
   ComboboxEmptyProps as _ComboboxEmptyProps,
   ComboboxGroupProps as _ComboboxGroupProps,
   ComboboxInputProps as _ComboboxInputProps,
+  ComboboxItemIndicatorProps as _ComboboxItemIndicatorProps,
   ComboboxItemProps as _ComboboxItemProps,
   ComboboxRootProps as _ComboboxRootProps,
   ComboboxSeparatorProps as _ComboboxSeparatorProps
@@ -22,7 +23,9 @@ import type {
 import type { ComboboxMode, ComboboxSlots, ThemeSize } from '@soybean-ui/variants';
 import type { InputProps } from '../input';
 
-export interface ComboboxRootProps<T extends AcceptableValue = AcceptableValue> extends _ComboboxRootProps<T> {}
+export interface ComboboxRootProps<T extends AcceptableValue = AcceptableValue> extends _ComboboxRootProps<T> {
+  size?: ThemeSize;
+}
 
 export interface ComboboxAnchorProps extends _ComboboxAnchorProps {}
 
@@ -63,6 +66,8 @@ export interface ComboboxSeparatorProps extends _ComboboxSeparatorProps {
   size?: ThemeSize;
 }
 
+export interface ComboboxItemIndicatorProps extends _ComboboxItemIndicatorProps {}
+
 export interface ComboboxOptionData<T extends AcceptableValue = AcceptableValue>
   extends Pick<ComboboxItemProps<T>, 'value' | 'disabled'> {
   /** The label to display in the command. */
@@ -78,7 +83,7 @@ export interface ComboboxGroupOptionData<T extends AcceptableValue = AcceptableV
   items: ComboboxOptionData<T>[];
 }
 
-export type ComboboxSingleOptionSlots = Extract<ComboboxSlots, 'item' | 'itemIcon' | 'separator'>;
+export type ComboboxSingleOptionSlots = Extract<ComboboxSlots, 'item' | 'itemIcon' | 'itemIndicator' | 'separator'>;
 
 export interface ComboboxSingleOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
