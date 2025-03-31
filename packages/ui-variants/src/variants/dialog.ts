@@ -24,23 +24,23 @@ export const dialogVariants = tv({
       xs: {
         content: `gap-y-1.5 max-w-md px-2 py-1.5 text-2xs`,
         header: 'gap-y-1.5',
-        title: 'gap-x-1.5 text-sm',
-        description: 'text-xs',
+        title: 'gap-x-1.5 text-xs',
+        description: 'text-2xs',
         closeIcon: 'right-1.5 top-1.5',
         footer: 'gap-1.5'
       },
       sm: {
         content: `gap-y-2 max-w-md px-3 py-2 text-xs`,
         header: 'gap-y-2',
-        title: 'gap-x-2 text-base',
-        description: 'text-sm',
+        title: 'gap-x-1.75 text-sm',
+        description: 'text-xs',
         closeIcon: 'right-2 top-2',
         footer: 'gap-2'
       },
       md: {
         content: `gap-y-3 max-w-lg px-4 py-3 text-sm`,
         header: 'gap-y-3',
-        title: 'gap-x-3 text-base',
+        title: 'gap-x-2 text-base',
         description: 'text-sm',
         closeIcon: 'right-3 top-3',
         footer: 'gap-3'
@@ -48,24 +48,24 @@ export const dialogVariants = tv({
       lg: {
         content: `gap-y-4 max-w-xl px-5 py-4 text-base`,
         header: 'gap-y-4',
-        title: 'gap-x-3.5 text-lg',
+        title: 'gap-x-2.5 text-lg',
         description: 'text-base',
         closeIcon: 'right-4 top-4',
         footer: 'gap-4'
       },
       xl: {
-        content: `gap-y-5 max-w-2xl px-6 py-5 text-base`,
+        content: `gap-y-5 max-w-2xl px-6 py-5 text-lg`,
         header: 'gap-y-5',
-        title: 'gap-x-4 text-lg',
-        description: 'text-base',
+        title: 'gap-x-3 text-xl',
+        description: 'text-lg',
         closeIcon: 'right-5 top-5',
         footer: 'gap-5'
       },
       '2xl': {
-        content: `gap-y-6 max-w-3xl px-7 py-6 text-lg`,
+        content: `gap-y-6 max-w-3xl px-7 py-6 text-xl`,
         header: 'gap-y-6',
-        title: 'gap-x-4.5 text-xl',
-        description: 'text-lg',
+        title: 'gap-x-3.5 text-2xl',
+        description: 'text-xl',
         closeIcon: 'right-6 top-6',
         footer: 'gap-6'
       }
