@@ -22,7 +22,7 @@ type Slots = {
   'title-leading': () => any;
   'title-trailing': () => any;
   extra: () => any;
-  footer: () => any;
+  footer?: () => any;
 };
 
 const slots = defineSlots<Slots>();
