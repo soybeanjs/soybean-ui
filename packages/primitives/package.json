@@ -56,8 +56,8 @@
     "ohash": "2.0.11"
   },
   "devDependencies": {
-    "@nuxt/kit": "3.16.1",
-    "@nuxt/schema": "3.16.1",
+    "@nuxt/kit": "3.16.2",
+    "@nuxt/schema": "3.16.2",
     "typescript": "5.8.2",
     "unplugin-vue-components": "28.4.1",
     "vite": "6.2.4",
