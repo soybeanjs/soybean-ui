@@ -11,10 +11,9 @@ export const comboboxVariants = tv({
     groupLabel: `font-medium text-muted-foreground`,
     input: [
       `flex w-full bg-transparent shadow-sm transition-colors-200`,
-      `file:(border-0 bg-transparent font-medium)`,
       `placeholder:text-muted-foreground outline-none disabled:(cursor-not-allowed opacity-50)`
     ],
-    inputWrapper: 'relative w-full items-center',
+    inputWrapper: `relative w-full items-center`,
     item: [
       `relative flex justify-start items-center cursor-default select-none rounded-sm outline-none`,
       `data-[highlighted]:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
@@ -34,7 +33,7 @@ export const comboboxVariants = tv({
     size: {
       xs: {
         root: 'text-2xs',
-        input: 'h-6 px-1.5 file:py-0.75',
+        input: 'h-6 px-1.5',
         inputIcon: 'size-3 mr-1.5',
         empty: 'py-3',
         list: 'max-h-70 p-0.75 text-2xs',
@@ -46,7 +45,7 @@ export const comboboxVariants = tv({
       },
       sm: {
         root: 'text-xs',
-        input: 'h-7 px-2 file:py-0.75',
+        input: 'h-7 px-2',
         inputIcon: 'size-3.5 mr-1.75',
         empty: 'py-3.5',
         list: 'max-h-75 p-1 text-xs',
@@ -58,7 +57,7 @@ export const comboboxVariants = tv({
       },
       md: {
         root: 'text-sm',
-        input: 'h-8 px-2.5 file:py-1.25',
+        input: 'h-8 px-2.5',
         inputIcon: 'size-4 mr-2',
         empty: 'py-4',
         list: 'max-h-80 p-1 text-sm',
@@ -70,7 +69,7 @@ export const comboboxVariants = tv({
       },
       lg: {
         root: 'text-base',
-        input: 'h-9 px-3 file:py-1.25',
+        input: 'h-9 px-3',
         inputIcon: 'size-4.5 mr-2.5',
         empty: 'py-4.5',
         list: 'max-h-87.5 p-1.25 text-base',
@@ -82,7 +81,7 @@ export const comboboxVariants = tv({
       },
       xl: {
         root: 'text-lg',
-        input: 'h-10 px-3.5 file:py-1.75',
+        input: 'h-10 px-3.5',
         inputIcon: 'size-5 mr-3',
         empty: 'py-5',
         list: 'max-h-100 p-1.5 text-lg',
@@ -94,7 +93,7 @@ export const comboboxVariants = tv({
       },
       '2xl': {
         root: 'text-xl',
-        input: 'h-12 px-4 file:py-2.25',
+        input: 'h-12 px-4',
         inputIcon: 'size-6 mr-3.5',
         empty: 'py-6',
         list: 'max-h-112.5 p-1.75 text-xl',
@@ -121,6 +120,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: 'xs',
       class: {
+        inputWrapper: 'mb-0.75',
         input: 'pl-6'
       }
     },
@@ -128,6 +128,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: 'sm',
       class: {
+        inputWrapper: 'mb-1',
         input: 'pl-7'
       }
     },
@@ -135,6 +136,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: 'md',
       class: {
+        inputWrapper: 'mb-1',
         input: 'pl-8'
       }
     },
@@ -142,6 +144,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: 'lg',
       class: {
+        inputWrapper: 'mb-1.25',
         input: 'pl-9'
       }
     },
@@ -149,6 +152,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: 'xl',
       class: {
+        inputWrapper: 'mb-1.75',
         input: 'pl-10'
       }
     },
@@ -156,6 +160,7 @@ export const comboboxVariants = tv({
       mode: 'modern',
       size: '2xl',
       class: {
+        inputWrapper: 'mb-2',
         input: 'pl-12'
       }
     }
