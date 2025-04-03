@@ -13,15 +13,24 @@ defineOptions({
 
 interface Props {
   name: string;
+  demo?: string;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  demo: undefined
+});
 
 const instance = getCurrentInstance();
 const { copy, copied } = useClipboard();
 
-function getCode(name: string) {
-  const pathName = kebabCase(name);
+function getCode(name: string, demo?: string) {
+  let pathName;
+
+  if (demo) {
+    pathName = kebabCase(`${name}-${demo}`);
+  } else {
+    pathName = kebabCase(name);
+  }
 
   const codeRecord = instance?.appContext?.config?.globalProperties?.$code as Record<string, string>;
 
@@ -29,7 +38,7 @@ function getCode(name: string) {
     return '';
   }
 
-  return codeRecord[pathName];
+  return codeRecord[pathName] || '';
 }
 
 const items = [
@@ -45,7 +54,7 @@ const items = [
 
 const active = ref('preview');
 
-const code = computed(() => getCode(props.name));
+const code = computed(() => getCode(props.name, props.demo));
 
 const codeHtml = computed(() => highlight(code.value, 'vue'));
 </script>
