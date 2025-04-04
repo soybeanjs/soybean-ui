@@ -12,10 +12,20 @@ function ComponentPreview(md: MarkdownRenderer) {
         return defaultRender!(tokens, idx, options, env, self);
 
       const props = parseProps(content);
+      const demo = props.demo;
 
-      const componentName = pascalCase(`Demo${props.name}`);
+      let componentName;
+      if (demo) {
+        // if demo is a string, use it as the component name
+        componentName = pascalCase(`Demo${props.name}${demo}`);
+      } else {
+        // otherwise, use the original component naming method
+        componentName = pascalCase(`Demo${props.name}`);
+      }
 
-      const demoScripts = `<ComponentPreview name="${props.name}"><${componentName} /></ComponentPreview>`;
+      const demoAttr = demo ? ` demo="${demo}"` : '';
+      const demoScripts = `<ComponentPreview name="${props.name}"${demoAttr}><${componentName} /></ComponentPreview>`;
+
       return demoScripts;
     };
   }

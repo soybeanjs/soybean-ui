@@ -29,6 +29,7 @@
     "preview": "vite preview",
     "preview:docs": "pnpm -r --filter='./docs' run preview",
     "publish-pkg": "pnpm -r publish --access public",
+    "rebuild-code": "tsx scripts/code.ts",
     "release": "soy release",
     "restore": "tsx scripts/restore.ts",
     "stub": "tsx scripts/stub.ts",

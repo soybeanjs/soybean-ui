@@ -49,6 +49,8 @@ import DemoToggle from './ui/toggle.vue';
 import DemoToggleGroup from './ui/toggle-group.vue';
 import DemoTooltip from './ui/tooltip.vue';
 
+export * from './ui/button/index';
+
 export {
   ThemeCustomizer,
   DemoAccordion,

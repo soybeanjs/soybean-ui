@@ -1,4 +1,3 @@
 # Button
 
-<ComponentPreview name="Button" />
-
+<ComponentPreview name="Button" demo="Color" />
