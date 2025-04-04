@@ -8,10 +8,10 @@ defineOptions({
   name: 'SSelectViewport'
 });
 
-const { class: cls, position, nonce } = defineProps<SelectViewportProps>();
+const { class: cls, size, position, nonce } = defineProps<SelectViewportProps>();
 
 const mergedCls = computed(() => {
-  const { viewport } = selectVariants({ position });
+  const { viewport } = selectVariants({ size, position });
 
   return cn(viewport(), cls);
 });

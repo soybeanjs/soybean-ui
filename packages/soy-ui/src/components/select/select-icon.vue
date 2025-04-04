@@ -9,13 +9,11 @@ defineOptions({
   name: 'SSelectIcon'
 });
 
-const { class: cls, size } = defineProps<SelectIconProps>();
+const { class: cls } = defineProps<SelectIconProps>();
 
-const mergedCls = computed(() => {
-  const { triggerIcon } = selectVariants({ size });
+const { triggerIcon } = selectVariants();
 
-  return cn(triggerIcon(), cls);
-});
+const mergedCls = computed(() => cn(triggerIcon(), cls));
 </script>
 
 <template>

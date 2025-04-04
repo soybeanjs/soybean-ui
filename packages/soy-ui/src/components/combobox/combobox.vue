@@ -28,9 +28,10 @@ const emit = defineEmits<ComboboxEmits<T>>();
 const forwardedRootProps = useOmitForwardProps(props, [
   'class',
   'size',
-  'mode',
   'ui',
+  'mode',
   'items',
+  'separator',
   'inputProps',
   'inputModelValue',
   'emptyLabel',
@@ -119,6 +120,7 @@ const computedInputProps = computed(() => ({
           :size="size"
           :item="item"
           :ui="ui"
+          :separator="separator"
           @select="handleSelect"
         >
           <slot name="item" v-bind="slotProps" />

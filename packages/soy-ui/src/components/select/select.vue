@@ -35,12 +35,12 @@ type Slots = {
   leading?: () => any;
   trailing?: () => any;
   trigger?: (props: { modelValue?: T | T[]; selectedLabel: string[]; slotText: string }) => any;
-  itemLeading?: (props: { item: SelectOptionData<T> }) => any;
-  itemTrailing?: (props: { item: SelectOptionData<T> }) => any;
-  itemIndicatorIcon?: (props: { item: SelectOptionData<T> }) => any;
-  triggerIcon?: () => any;
-  scrollUpIcon?: () => any;
-  scrollDownIcon?: () => any;
+  'item-leading'?: (props: { item: SelectOptionData<T> }) => any;
+  'item-trailing'?: (props: { item: SelectOptionData<T> }) => any;
+  'item-indicator-icon'?: (props: { item: SelectOptionData<T> }) => any;
+  'trigger-icon'?: () => any;
+  'scroll-up-icon'?: () => any;
+  'scroll-down-icon'?: () => any;
 };
 
 defineSlots<Slots>();
@@ -92,15 +92,16 @@ function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefin
         />
       </SelectValue>
       <slot name="trailing">
-        <SSelectIcon :class="ui?.triggerIcon" :size="size">
-          <slot name="triggerIcon" />
+        <SSelectIcon :class="ui?.triggerIcon">
+          <slot name="trigger-icon" />
         </SSelectIcon>
       </slot>
     </SSelectTrigger>
     <SelectPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SSelectContent
-        :class="ui?.content"
         v-bind="forwardedContentProps"
+        :class="ui?.content"
+        :size="size"
         :force-mount="forceMountContent"
         :avoid-collisions="avoidCollisions"
         :prioritize-position="prioritizePosition"
@@ -109,9 +110,9 @@ function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefin
         @pointer-down-outside="emit('pointerDownOutside', $event)"
       >
         <SSelectScrollUpButton :class="ui?.scrollUpButton" :size="size">
-          <slot name="scrollUpIcon" />
+          <slot name="scroll-up-icon" />
         </SSelectScrollUpButton>
-        <SSelectViewport :class="ui?.viewport" :nonce="nonce" :position="position">
+        <SSelectViewport :class="ui?.viewport" :size="size" :nonce="nonce" :position="position">
           <slot>
             <SSelectOption
               v-for="(item, index) in items"
@@ -122,19 +123,19 @@ function getModelValue(modelValue: AcceptableValue | AcceptableValue[] | undefin
               :separator="separator"
             >
               <template #leading="slotProps">
-                <slot name="itemLeading" :item="slotProps.item" />
+                <slot name="item-leading" :item="slotProps.item" />
               </template>
               <template #trailing="slotProps">
-                <slot name="itemTrailing" :item="slotProps.item" />
+                <slot name="item-trailing" :item="slotProps.item" />
               </template>
-              <template #itemIndicatorIcon="slotProps">
-                <slot name="itemIndicatorIcon" :item="slotProps.item" />
+              <template #indicator-icon="slotProps">
+                <slot name="item-indicator-icon" :item="slotProps.item" />
               </template>
             </SSelectOption>
           </slot>
         </SSelectViewport>
         <SSelectScrollDownButton :class="ui?.scrollDownButton" :size="size">
-          <slot name="scrollDownIcon" />
+          <slot name="scroll-down-icon" />
         </SSelectScrollDownButton>
       </SSelectContent>
     </SelectPortal>

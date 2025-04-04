@@ -1,4 +1,4 @@
-import type { Component, VNode } from 'vue';
+import type { Component } from 'vue';
 import type {
   AcceptableValue,
   ClassValue,
@@ -77,7 +77,7 @@ export interface ComboboxOptionData<T extends AcceptableValue = AcceptableValue>
   /** The label to display in the command. */
   label: string;
   /** The icon to display in the command. */
-  icon?: Component | VNode;
+  icon?: Component;
   /** whether to show a separator above this option */
   separator?: boolean;
 }
@@ -93,6 +93,7 @@ export interface ComboboxSingleOptionProps<T extends AcceptableValue = Acceptabl
   size?: ThemeSize;
   item: ComboboxOptionData<T>;
   ui?: Partial<Record<ComboboxSingleOptionSlots, ClassValue>>;
+  separator?: boolean;
 }
 export type ComboboxSingleOptionEmits<T extends AcceptableValue = AcceptableValue> = ComboboxItemEmits<T>;
 
@@ -102,6 +103,7 @@ export interface ComboboxOptionProps<T extends AcceptableValue = AcceptableValue
   size?: ThemeSize;
   item: ComboboxOptionData<T> | ComboboxGroupOptionData<T>;
   ui?: Partial<Record<ComboboxOptionSlots, ClassValue>>;
+  separator?: boolean;
 }
 
 export type ComboboxOptionEmits<T extends AcceptableValue = AcceptableValue> = {
@@ -110,9 +112,10 @@ export type ComboboxOptionEmits<T extends AcceptableValue = AcceptableValue> = {
 
 export interface ComboboxProps<T extends AcceptableValue = AcceptableValue> extends ComboboxRootProps<T> {
   size?: ThemeSize;
+  ui?: Partial<Record<ComboboxSlots, ClassValue>>;
   mode?: ComboboxMode;
   items: (ComboboxOptionData<T> | ComboboxGroupOptionData<T>)[];
-  ui?: Partial<Record<ComboboxSlots, ClassValue>>;
+  separator?: boolean;
   inputProps?: Omit<ComboboxInputProps, 'class' | 'size' | 'wrapperClass' | 'modelValue'>;
   inputModelValue?: string;
   /**

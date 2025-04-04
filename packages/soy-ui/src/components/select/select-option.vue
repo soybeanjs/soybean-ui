@@ -18,7 +18,7 @@ defineProps<SelectOptionProps<T>>();
 type Slots = {
   leading?: (props: { item: SelectOptionData<T> }) => any;
   trailing?: (props: { item: SelectOptionData<T> }) => any;
-  itemIndicatorIcon?: (props: { item: SelectOptionData<T> }) => any;
+  'indicator-icon'?: (props: { item: SelectOptionData<T> }) => any;
 };
 
 const slots = defineSlots<Slots>();
@@ -27,8 +27,8 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
 <template>
   <SelectGroup v-if="isGroupOption(item)" :class="ui?.group">
-    <SSelectLabel :class="ui?.groupLabel">{{ item.label }}</SSelectLabel>
-    <SSelectSeparator v-if="separator || item.separator" :class="ui?.separator" />
+    <SSelectLabel :class="ui?.groupLabel" :size="size">{{ item.label }}</SSelectLabel>
+    <SSelectSeparator v-if="separator || item.separator" :class="ui?.separator" :size="size" />
     <SSelectSingleOption v-for="(opt, index) in item.items" :key="index" :size="size" :item="opt" :ui="ui">
       <template v-for="slotKey in slotKeys" :key="slotKey">
         <slot :name="slotKey" :item="opt" />

@@ -8,11 +8,13 @@ defineOptions({
   name: 'SSelectSeparator'
 });
 
-const { class: cls } = defineProps<SelectSeparatorProps>();
+const { class: cls, size } = defineProps<SelectSeparatorProps>();
 
-const { separator } = selectVariants();
+const mergedCls = computed(() => {
+  const { separator } = selectVariants({ size });
 
-const mergedCls = computed(() => cn(separator(), cls));
+  return cn(separator(), cls);
+});
 </script>
 
 <template>

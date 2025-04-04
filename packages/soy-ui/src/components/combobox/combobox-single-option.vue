@@ -28,5 +28,5 @@ const emit = defineEmits<ComboboxSingleOptionEmits<T>>();
       <SComboboxIndicator :class="ui?.itemIndicator" />
     </slot>
   </SComboboxItem>
-  <SComboboxSeparator v-if="item.separator" :class="ui?.separator" :size="size" />
+  <SComboboxSeparator v-if="separator || item.separator" :class="ui?.separator" :size="size" />
 </template>

@@ -37,9 +37,9 @@ export const comboboxVariants = tv({
         empty: 'py-3',
         content: 'text-2xs',
         list: 'max-h-70 p-0.75',
-        groupLabel: 'p-0.75',
+        groupLabel: 'p-1',
         item: 'gap-1 px-1 py-1',
-        separator: '-mx-1 my-0.75',
+        separator: '-mx-0.75 my-0.375',
         trigger: 'px-1.5'
       },
       sm: {
@@ -47,10 +47,10 @@ export const comboboxVariants = tv({
         input: 'h-7 pl-2',
         empty: 'py-3.5',
         content: 'text-xs',
-        list: 'max-h-75 p-1',
+        list: 'max-h-75 p-0.875',
         groupLabel: 'p-1.25',
         item: 'gap-1.5 px-1.5 py-1',
-        separator: '-mx-1.5 my-1',
+        separator: '-mx-0.875 my-0.4375',
         trigger: 'px-2'
       },
       md: {
@@ -61,7 +61,7 @@ export const comboboxVariants = tv({
         list: 'max-h-80 p-1',
         groupLabel: 'p-1.75',
         item: 'gap-2 px-2 py-1.5',
-        separator: '-mx-2 my-1',
+        separator: '-mx-1 my-0.5',
         trigger: 'px-2.5'
       },
       lg: {
@@ -72,7 +72,7 @@ export const comboboxVariants = tv({
         list: 'max-h-90 p-1.25',
         groupLabel: 'p-2',
         item: 'gap-2.5 px-2.5 py-1.5',
-        separator: '-mx-2.5 my-1.25',
+        separator: '-mx-1.25 my-0.625',
         trigger: 'px-3'
       },
       xl: {
@@ -83,7 +83,7 @@ export const comboboxVariants = tv({
         list: 'max-h-100 p-1.5',
         groupLabel: 'p-2.5',
         item: 'gap-3 px-3 py-2',
-        separator: '-mx-3 my-1.5',
+        separator: '-mx-1.5 my-0.75',
         trigger: 'px-3.5'
       },
       '2xl': {
@@ -94,7 +94,7 @@ export const comboboxVariants = tv({
         list: 'max-h-115 p-1.75',
         groupLabel: 'p-3',
         item: 'gap-3.5 px-3.5 py-2.5',
-        separator: '-mx-3.5 my-2',
+        separator: '-mx-1.75 my-0.875',
         trigger: 'px-4'
       }
     },

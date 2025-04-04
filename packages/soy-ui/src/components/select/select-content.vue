@@ -10,6 +10,7 @@ defineOptions({
 
 const {
   class: cls,
+  size,
   avoidCollisions = true,
   prioritizePosition = true,
   position = 'popper',
@@ -21,7 +22,7 @@ const emit = defineEmits<SelectContentEmits>();
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { content } = selectVariants({ position });
+  const { content } = selectVariants({ size, position });
 
   return cn(content(), cls);
 });

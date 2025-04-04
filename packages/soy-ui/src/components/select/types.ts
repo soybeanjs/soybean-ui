@@ -3,10 +3,10 @@ import type {
   ClassValue,
   ClassValueProp,
   SelectContentEmits,
-  SelectContentProps,
   SelectPortalProps,
   SelectRootEmits,
   SelectRootProps,
+  SelectContentProps as _SelectContentProps,
   SelectItemProps as _SelectItemProps,
   SelectLabelProps as _SelectLabelProps,
   SelectTriggerProps as _SelectTriggerProps,
@@ -18,7 +18,12 @@ export interface SelectTriggerProps extends _SelectTriggerProps {
   size?: ThemeSize;
 }
 
+export interface SelectContentProps extends _SelectContentProps {
+  size?: ThemeSize;
+}
+
 export interface SelectViewportProps extends _SelectViewportProps {
+  size?: ThemeSize;
   position?: SelectPosition;
 }
 
@@ -30,11 +35,11 @@ export interface SelectItemIndicatorProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
-export interface SelectIconProps extends ClassValueProp {
+export interface SelectIconProps extends ClassValueProp {}
+
+export interface SelectSeparatorProps extends ClassValueProp {
   size?: ThemeSize;
 }
-
-export interface SelectSeparatorProps extends ClassValueProp {}
 
 export interface SelectLabelProps extends _SelectLabelProps {
   size?: ThemeSize;
@@ -104,4 +109,4 @@ export type SelectProps<T extends AcceptableValue = AcceptableValue> = SelectRoo
 
 export type SelectEmits<T extends AcceptableValue = AcceptableValue> = SelectRootEmits<T> & SelectContentEmits;
 
-export type { SelectContentProps, SelectPosition, SelectContentEmits };
+export type { SelectPosition, SelectContentEmits };
