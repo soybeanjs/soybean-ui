@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from '@soybean-ui/primitives';
+import { useForwardProps } from '@soybean-ui/primitives';
 import { cn, textareaVariants } from '@soybean-ui/variants';
 import { isBlankString } from '../../shared';
 import type { TextareaContentEmits, TextareaContentProps } from './types';
@@ -27,11 +27,5 @@ function handleInput(event: Event) {
 </script>
 
 <template>
-  <Primitive
-    as="textarea"
-    v-bind="forwardedProps"
-    :value="modelValue || defaultValue"
-    :class="mergedCls"
-    @input="handleInput"
-  />
+  <textarea v-bind="forwardedProps" :value="modelValue || defaultValue" :class="mergedCls" @input="handleInput" />
 </template>

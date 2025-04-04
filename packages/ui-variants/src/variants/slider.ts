@@ -45,14 +45,14 @@ export const sliderVariants = tv({
         thumb: 'border-carbon focus-visible:ring-carbon'
       },
       secondary: {
-        track: 'bg-secondary/20',
-        range: 'bg-secondary',
-        thumb: 'border-secondary focus-visible:ring-secondary'
+        track: 'bg-secondary-foreground/20',
+        range: 'bg-secondary-foreground',
+        thumb: 'border-secondary-foreground focus-visible:ring-secondary-foreground'
       },
       accent: {
-        track: 'bg-accent/20',
-        range: 'bg-accent',
-        thumb: 'border-accent focus-visible:ring-accent'
+        track: 'bg-accent-foreground/20',
+        range: 'bg-accent-foreground',
+        thumb: 'border-accent-foreground focus-visible:ring-accent-foreground'
       }
     },
     size: {

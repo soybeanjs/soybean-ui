@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, textareaVariants } from '@soybean-ui/variants';
 import type { TextareaCountProps } from './types';
 
@@ -34,7 +33,7 @@ const countWithMaxLength = computed(() => {
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot :count="count">{{ countWithMaxLength }}</slot>
-  </Primitive>
+  </div>
 </template>

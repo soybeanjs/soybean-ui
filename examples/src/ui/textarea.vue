@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, STextarea } from 'soy-ui';
+import type { ThemeSize } from 'soy-ui';
 import GraphemeSplitter from 'grapheme-splitter';
 
 defineOptions({
   name: 'DemoTextarea'
 });
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const modelValue = ref<string>('');
 
@@ -33,7 +36,7 @@ const countGraphemesWord = ref('🌷🇨🇳');
       <STextarea v-model="countGraphemesWord" :count-graphemes="countGraphemes" show-count />
     </SCard>
     <SCard title="count slot" split>
-      <STextarea v-model="wordCount2" show-count :ui="{ count: 'text-xl text-red right-6' }" />
+      <STextarea v-model="wordCount2" show-count :ui="{ count: 'text-red' }" />
     </SCard>
     <SCard title="count slot" split>
       <STextarea v-model="wordCount3" show-count>
@@ -41,6 +44,35 @@ const countGraphemesWord = ref('🌷🇨🇳');
           <span>count is {{ count }}</span>
         </template>
       </STextarea>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex justify-around gap-6">
+        <div class="w-full">
+          <div class="py-12px text-18px">Size</div>
+          <div class="flex-c-stretch gap-3">
+            <STextarea
+              v-for="size in sizes"
+              :key="size"
+              :default-value="`size: ${size}`"
+              :size="size"
+              placeholder="Please Input Textarea"
+            />
+          </div>
+        </div>
+        <div class="w-full">
+          <div class="py-12px text-18px">show count with size</div>
+          <div class="flex-c-stretch gap-3">
+            <STextarea
+              v-for="size in sizes"
+              :key="size"
+              :default-value="`size: ${size}`"
+              :size="size"
+              show-count
+              placeholder="Please Input Textarea"
+            />
+          </div>
+        </div>
+      </div>
     </SCard>
     <SCard title="Rows" split>
       <div class="flex-c-stretch gap-3">

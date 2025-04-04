@@ -22,28 +22,28 @@ export const toggleVariants = tv({
     },
     size: {
       xs: {
-        toggle: `h-6 px-1.5 text-xs`,
-        groupRoot: `gap-1`
+        toggle: `h-6 px-1.5 text-2xs`,
+        groupRoot: `gap-1.5`
       },
       sm: {
-        toggle: `h-7 px-2 text-sm`,
-        groupRoot: `gap-1`
+        toggle: `h-7 px-2 text-xs`,
+        groupRoot: `gap-1.75`
       },
       md: {
         toggle: `h-8 px-4 text-sm`,
-        groupRoot: `gap-1`
+        groupRoot: `gap-2`
       },
       lg: {
         toggle: `h-9 px-6 text-base`,
-        groupRoot: `gap-1.5`
+        groupRoot: `gap-2.5`
       },
       xl: {
-        toggle: `h-10 px-8 text-base`,
-        groupRoot: `gap-1.5`
+        toggle: `h-10 px-8 text-lg`,
+        groupRoot: `gap-3`
       },
       '2xl': {
-        toggle: `h-12 px-10 text-lg`,
-        groupRoot: `gap-1.5`
+        toggle: `h-12 px-10 text-xl`,
+        groupRoot: `gap-3`
       }
     }
   },

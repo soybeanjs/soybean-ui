@@ -1,5 +1,5 @@
 import type { ClassValue, ClassValueProp, SeparatorProps as _SeparatorProps } from '@soybean-ui/primitives';
-import type { SeparatorBorder, SeparatorSlots } from '@soybean-ui/variants';
+import type { SeparatorBorder, SeparatorSlots, ThemeSize } from '@soybean-ui/variants';
 import type { ThemeAlign, ThemeOrientation } from '../../types';
 
 export interface SeparatorRootProps extends _SeparatorProps {
@@ -7,6 +7,7 @@ export interface SeparatorRootProps extends _SeparatorProps {
 }
 
 export interface SeparatorLabelProps extends ClassValueProp {
+  size?: ThemeSize;
   orientation?: ThemeOrientation;
   align?: ThemeAlign;
 }

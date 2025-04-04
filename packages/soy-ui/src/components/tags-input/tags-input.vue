@@ -39,18 +39,16 @@ const forwarded = useForwardPropsEmits(delegatedProps, emit);
           :disabled="disabled || disabledValue?.includes(item)"
         >
           <STagsInputItemText :class="ui?.itemText" :size="size" />
-          <STagsInputItemDelete :class="ui?.itemDelete" :icon-class="ui?.itemDeleteIcon" :size="size">
-            <slot name="item-delete-icon" :value="item" />
-          </STagsInputItemDelete>
+          <STagsInputItemDelete :class="ui?.itemDelete" :size="size" />
         </STagsInputItem>
       </slot>
     </template>
     <STagsInputInput
       :class="ui?.input"
+      :size="size"
       :placeholder="placeholder"
       :auto-focus="autoFocus"
       :max-length="maxLength"
-      :size="size"
     />
   </STagsInputRoot>
 </template>

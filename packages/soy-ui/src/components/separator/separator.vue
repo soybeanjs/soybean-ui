@@ -8,7 +8,7 @@ defineOptions({
   name: 'SSeparator'
 });
 
-const { class: cls, ui, align, label, ...delegatedProps } = defineProps<SeparatorProps>();
+const { class: cls, size, ui, align, label, ...delegatedProps } = defineProps<SeparatorProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 </script>
@@ -16,7 +16,13 @@ const forwardedProps = useForwardProps(delegatedProps);
 <template>
   <SSeparatorRoot v-bind="forwardedProps" :class="cls || ui?.root">
     <slot name="leading" />
-    <SSeparatorLabel v-if="label || $slots.default" :class="ui?.label" :align="align" :orientation="orientation">
+    <SSeparatorLabel
+      v-if="label || $slots.default"
+      :class="ui?.label"
+      :size="size"
+      :align="align"
+      :orientation="orientation"
+    >
       <slot>{{ label }}</slot>
     </SSeparatorLabel>
     <slot name="trailing" />

@@ -28,7 +28,6 @@ export interface TagsInputItemTextProps extends _TagsInputItemTextProps {
 
 export interface TagsInputItemDeleteProps extends _TagsInputItemDeleteProps {
   size?: ThemeSize;
-  iconClass?: ClassValue;
 }
 
 export type TagsInputUi = Partial<Record<TagsInputSlots, ClassValue>>;
