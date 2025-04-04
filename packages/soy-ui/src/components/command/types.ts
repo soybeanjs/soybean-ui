@@ -25,7 +25,9 @@ import type { InputProps } from '../input';
 import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
 
 // CommandRoot
-export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {}
+export interface CommandRootProps<T extends AcceptableValue = AcceptableValue> extends ListboxRootProps<T> {
+  size?: ThemeSize;
+}
 export type CommandRootEmits<T extends AcceptableValue = AcceptableValue> = ListboxRootEmits<T>;
 
 // CommandInput

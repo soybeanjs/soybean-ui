@@ -5,8 +5,6 @@ import SMenuLabel from '../menu/menu-label.vue';
 import SMenuSeparator from '../menu/menu-separator.vue';
 import SMenuItem from '../menu/menu-item.vue';
 import SMenuItemLink from '../menu/menu-item-link.vue';
-import SMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
-import SMenuShortcut from '../menu/menu-shortcut.vue';
 import type { MenuOptionData } from '../menu/types';
 import SMenubarSubTrigger from './menubar-sub-trigger.vue';
 import SMenubarSubContent from './menubar-sub-content.vue';
@@ -32,10 +30,16 @@ type Slots = {
 defineSlots<Slots>();
 
 const forwardedEmits = useEmitAsProps(emit);
+
+const itemSlotMap = {
+  leading: 'item-leading',
+  default: 'item',
+  trailing: 'item-trailing'
+} satisfies Record<string, keyof Slots>;
 </script>
 
 <template>
-  <SMenuLabel v-if="item.isGroupLabel" :class="ui?.label" :size="size">
+  <SMenuLabel v-if="item.isGroupLabel" :size="size" :ui="ui" :label="item.label" :icon="item.icon">
     <slot name="item" v-bind="item">
       <slot name="item-leading" v-bind="item">
         <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
@@ -47,37 +51,32 @@ const forwardedEmits = useEmitAsProps(emit);
   <SMenuItemLink
     v-else-if="item.linkProps"
     v-bind="item.linkProps"
-    :class="ui?.itemLink"
     :size="size"
+    :ui="ui"
+    :label="item.label"
+    :icon="item.icon"
     :disabled="item.disabled"
     :text-value="item.textValue || item.label"
     @select="emit('select', $event, item)"
   >
-    <slot name="item" v-bind="item">
-      <slot name="item-leading" v-bind="item">
-        <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-      </slot>
-      <span>{{ item.label }}</span>
-      <SMenuItemLinkIcon :class="ui?.itemLinkIcon" :size="size" />
-      <slot name="item-trailing" v-bind="item" />
-    </slot>
+    <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+      <slot :name="slotKey" v-bind="item" />
+    </template>
   </SMenuItemLink>
   <SMenuItem
     v-else-if="!item.children"
-    :class="ui?.item"
     :size="size"
+    :ui="ui"
+    :label="item.label"
+    :icon="item.icon"
+    :shortcut="item.shortcut"
     :disabled="item.disabled"
     :text-value="item.textValue || item.label"
     @select="emit('select', $event, item)"
   >
-    <slot name="item" v-bind="item">
-      <slot name="item-leading" v-bind="item">
-        <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-      </slot>
-      <span>{{ item.label }}</span>
-      <slot name="item-trailing" v-bind="item" />
-      <SMenuShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" :size="size" />
-    </slot>
+    <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+      <slot :name="slotKey" v-bind="item" />
+    </template>
   </SMenuItem>
   <MenuSub
     v-else
@@ -86,28 +85,32 @@ const forwardedEmits = useEmitAsProps(emit);
     @update:open="emit('update:subOpen', $event, item)"
   >
     <SMenubarSubTrigger
-      :class="ui?.subTrigger"
+      :ui="ui"
       :size="size"
-      :icon-class="ui?.subTriggerIcon"
+      :label="item.label"
+      :icon="item.icon"
       :disabled="item.disabled"
       :text-value="item.textValue || item.label"
     >
-      <slot name="item-trigger" v-bind="item">
-        <slot name="item-leading" v-bind="item">
-          <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-        </slot>
-        <span>{{ item.label }}</span>
+      <template #leading>
+        <slot name="item-leading" v-bind="item" />
+      </template>
+      <template #default>
+        <slot name="item-trigger" v-bind="item" />
+      </template>
+      <template #trailing>
         <slot name="item-trailing" v-bind="item" />
-      </slot>
+      </template>
       <template #icon>
         <slot name="sub-trigger-icon" v-bind="item" />
       </template>
     </SMenubarSubTrigger>
-    <SMenuSeparator v-if="separator || item.separator" :class="ui?.separator" />
+    <SMenuSeparator v-if="separator || item.separator" :class="ui?.separator" :size="size" />
     <MenuPortal :to="to" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SMenubarSubContent
         v-bind="subContentProps"
         :class="ui?.subContent"
+        :size="size"
         @close-auto-focus="emit('closeAutoFocusSub', $event, item)"
         @entry-focus="emit('entryFocusSub', $event, item)"
         @escape-key-down="emit('escapeKeyDownSub', $event, item)"
@@ -136,5 +139,5 @@ const forwardedEmits = useEmitAsProps(emit);
       </SMenubarSubContent>
     </MenuPortal>
   </MenuSub>
-  <SMenuSeparator v-if="(separator || item.separator) && !item.children" :class="ui?.separator" />
+  <SMenuSeparator v-if="(separator || item.separator) && !item.children" :class="ui?.separator" :size="size" />
 </template>

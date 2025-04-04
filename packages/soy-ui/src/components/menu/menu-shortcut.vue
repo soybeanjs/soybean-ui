@@ -1,10 +1,10 @@
 <script setup lang="ts" generic="T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue[]">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, menuVariants } from '@soybean-ui/variants';
 import SKeyboardKey from '../keyboard-key/keyboard-key.vue';
 import type { KeyboardKeyValue } from '../keyboard-key';
 import type { MenuShortcutProps } from './types';
+
 defineOptions({
   name: 'SMenuShortcut'
 });
@@ -19,7 +19,7 @@ const mergedCls = computed(() => {
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <SKeyboardKey :value="value" :size="size" />
-  </Primitive>
+  </div>
 </template>

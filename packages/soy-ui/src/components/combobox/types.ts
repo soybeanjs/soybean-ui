@@ -3,8 +3,7 @@ import type {
   AcceptableValue,
   ClassValue,
   ClassValueProp,
-  ComboboxContentEmits as ComboBoxListEmits,
-  ComboboxContentProps,
+  ComboboxContentEmits,
   ComboboxInputEmits,
   ComboboxItemEmits,
   ComboboxLabelProps,
@@ -12,6 +11,7 @@ import type {
   ComboboxTriggerPropsWithPrimitive,
   SelectEvent,
   ComboboxAnchorProps as _ComboboxAnchorProps,
+  ComboboxContentProps as _ComboboxContentProps,
   ComboboxEmptyProps as _ComboboxEmptyProps,
   ComboboxGroupProps as _ComboboxGroupProps,
   ComboboxInputProps as _ComboboxInputProps,
@@ -58,7 +58,11 @@ export interface ComboboxItemProps<T extends AcceptableValue = AcceptableValue> 
   size?: ThemeSize;
 }
 
-export interface ComboboxListProps extends ComboboxContentProps {
+export interface ComboboxContentProps extends _ComboboxContentProps {
+  size?: ThemeSize;
+}
+
+export interface ComboboxListProps extends ClassValueProp {
   size?: ThemeSize;
 }
 
@@ -130,4 +134,4 @@ export type ComboboxEmits<T extends AcceptableValue = AcceptableValue> = Combobo
     'update:inputModelValue': [string];
   };
 
-export type { ComboboxRootEmits, ComboboxItemEmits, ComboBoxListEmits, ComboboxInputEmits };
+export type { ComboboxRootEmits, ComboboxItemEmits, ComboboxContentEmits, ComboboxInputEmits };

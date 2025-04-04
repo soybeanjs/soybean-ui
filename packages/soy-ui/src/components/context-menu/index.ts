@@ -1,4 +1,3 @@
-import SContextMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
 import SContextMenuItemLink from '../menu/menu-item-link.vue';
 import SContextMenuItem from '../menu/menu-item.vue';
 import SContextMenuLabel from '../menu/menu-label.vue';
@@ -16,7 +15,6 @@ export {
   SContextMenuContent,
   SContextMenuItem,
   SContextMenuItemLink,
-  SContextMenuItemLinkIcon,
   SContextMenuLabel,
   SContextMenuOption,
   SContextMenuPortalContent,

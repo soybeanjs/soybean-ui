@@ -1,9 +1,10 @@
+import type { Component } from 'vue';
 import type {
   AcceptableValue,
   ClassValue,
   MenubarContentEmits,
-  MenubarContentProps,
   MenubarRootEmits,
+  MenubarContentProps as _MenubarContentProps,
   MenubarMenuProps as _MenubarMenuProps,
   MenubarRootProps as _MenubarRootProps,
   MenubarTriggerProps as _MenubarTriggerProps
@@ -24,12 +25,27 @@ import type {
   MenuSubTriggerProps as MenubarSubTriggerProps
 } from '../menu/types';
 import type { LinkProps } from '../link';
+import type { KeyboardKeyValue } from '../keyboard-key';
+
+export type MenubarUi = Partial<Record<MenubarSlots | MenuSlots, ClassValue>>;
 
 export interface MenubarRootProps extends _MenubarRootProps {
   size?: ThemeSize;
 }
 
 export interface MenubarTriggerProps extends _MenubarTriggerProps {
+  size?: ThemeSize;
+  ui?: Pick<MenubarUi, 'trigger' | 'itemIcon' | 'shortcut'>;
+  /** The group label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
+  /** The shortcut to display next to the label. */
+  shortcut?: KeyboardKeyValue | KeyboardKeyValue[];
+}
+
+// MenubarContent
+export interface MenubarContentProps extends _MenubarContentProps {
   size?: ThemeSize;
 }
 
@@ -44,23 +60,21 @@ export type MenubarItemEmits<T extends AcceptableValue = AcceptableValue> = Menu
 // MenubarTriggerLink
 export interface MenubarTriggerLinkProps extends LinkProps {
   size?: ThemeSize;
+  ui?: Pick<MenubarUi, 'triggerLink' | 'itemIcon' | 'itemLinkIcon'>;
+  /** The group label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
 }
-
-export type MenubarTriggerSlots = Extract<MenuSlots, 'itemIcon' | 'itemLinkIcon' | 'shortcut'>;
-
-export type MenubarTriggerUi = Partial<Record<MenubarTriggerSlots, ClassValue>>;
 
 // MenubarTriggerOption
-export interface MenubarTriggerOptionProps<T extends AcceptableValue = AcceptableValue> extends MenubarTriggerProps {
+export interface MenubarTriggerOptionProps<T extends AcceptableValue = AcceptableValue> {
   size?: ThemeSize;
+  ui?: MenubarUi;
   item: MenuOptionData<T>;
-  ui?: MenubarTriggerUi;
+  disabled?: boolean;
 }
 export type MenubarTriggerOptionEmits<T extends AcceptableValue = AcceptableValue> = MenuOptionEmits<T>;
-
-export type MenubarMenuSlots = MenubarSlots | MenuSlots;
-
-export type MenubarMenuUi = Partial<Record<MenubarMenuSlots, ClassValue>>;
 
 // MenubarMenu
 export interface MenubarMenuProps<T extends AcceptableValue = AcceptableValue>
@@ -68,11 +82,9 @@ export interface MenubarMenuProps<T extends AcceptableValue = AcceptableValue>
     MenuPortalContentProps,
     MenuOptionProps<T> {
   size?: ThemeSize;
-  ui?: MenubarMenuUi;
+  ui?: MenubarUi;
 }
 export type MenubarMenuEmits<T extends AcceptableValue = AcceptableValue> = MenuEmits<T>;
-
-export type MenubarUi = MenubarMenuUi;
 
 export interface MenubarProps<T extends AcceptableValue = AcceptableValue> extends MenubarRootProps, MenuProps<T> {
   ui?: MenubarUi;
@@ -81,7 +93,6 @@ export type MenubarEmits<T extends AcceptableValue = AcceptableValue> = MenubarR
 
 export type {
   MenubarRootEmits,
-  MenubarContentProps,
   MenubarContentEmits,
   MenubarPortalContentProps,
   MenubarPortalContentEmits,

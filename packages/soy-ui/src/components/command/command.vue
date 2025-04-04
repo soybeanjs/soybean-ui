@@ -74,7 +74,7 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <SCommandRoot v-bind="forwardedRoot" :class="props.class || ui?.root">
+  <SCommandRoot v-bind="forwardedRoot" :class="props.class || ui?.root" :size="size">
     <SCommandInput
       v-bind="inputProps"
       v-model="searchTerm"

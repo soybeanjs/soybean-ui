@@ -8,14 +8,14 @@ defineOptions({
   name: 'SNavigationMenuIndicator'
 });
 
-const { class: cls, size, arrowClass, forceMount } = defineProps<NavigationMenuIndicatorProps>();
+const { class: cls, size, ui, forceMount } = defineProps<NavigationMenuIndicatorProps>();
 
 const mergedCls = computed(() => {
   const { indicator, arrow } = navigationMenuVariants({ size });
 
   return {
-    cls: cn(indicator(), cls),
-    arrow: cn(arrow(), arrowClass)
+    cls: cn(indicator(), cls || ui?.indicator),
+    arrow: cn(arrow(), ui?.arrow)
   };
 });
 </script>

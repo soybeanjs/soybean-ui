@@ -74,7 +74,7 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
             <SNavigationMenuTrigger v-bind="getLinkProps(item)" :size="size" :ui="ui" :disabled="item.disabled">
               <slot name="trigger" :item="item" />
               <template #icon>
-                <slot name="triggerIcon" :item="item" />
+                <slot name="trigger-icon" :item="item" />
               </template>
             </SNavigationMenuTrigger>
             <SNavigationMenuContent
@@ -105,7 +105,7 @@ function getLinkProps(item: NavigationMenuItemOption<T>) {
         </SNavigationMenuItem>
       </template>
     </SNavigationMenuList>
-    <SNavigationMenuIndicator v-if="showArrow" :class="ui?.indicator" :size="size" :arrow-class="ui?.arrow" />
-    <SNavigationMenuViewport :class="ui?.viewport" :size="size" :root-class="ui?.viewportRoot" />
+    <SNavigationMenuIndicator v-if="showArrow" :size="size" :ui="ui" />
+    <SNavigationMenuViewport :size="size" :ui="ui" />
   </SNavigationMenuRoot>
 </template>

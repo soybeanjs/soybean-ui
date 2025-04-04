@@ -2,12 +2,12 @@ import type {
   AcceptableValue,
   ClassValue,
   ContextMenuContentEmits,
-  ContextMenuContentProps,
   ContextMenuRootEmits,
   ContextMenuRootProps,
-  ContextMenuSubContentProps
+  ContextMenuContentProps as _ContextMenuContentProps,
+  ContextMenuSubContentProps as _ContextMenuSubContentProps
 } from '@soybean-ui/primitives';
-import type { MenuSlots } from '@soybean-ui/variants';
+import type { MenuSlots, ThemeSize } from '@soybean-ui/variants';
 import type {
   MenuOptionEmits as ContextMenuOptionEmits,
   MenuOptionProps as ContextMenuOptionProps,
@@ -21,18 +21,26 @@ import type {
   MenuRadioProps
 } from '../menu/types';
 
+export type ContextMenuUi = Partial<Record<MenuSlots, ClassValue>>;
+
+export interface ContextMenuContentProps extends _ContextMenuContentProps {
+  size?: ThemeSize;
+}
+
+export interface ContextMenuSubContentProps extends _ContextMenuSubContentProps {
+  size?: ThemeSize;
+}
+
 export interface ContextMenuPortalContentProps
   extends Pick<MenuPortalProps, 'to' | 'defer'>,
     Omit<ContextMenuContentProps, 'class' | 'forceMount'> {
+  ui?: ContextMenuUi;
   disabledPortal?: boolean;
   forceMountPortal?: boolean;
-  contentClass?: ClassValue;
   forceMountContent?: boolean;
   showArrow?: boolean;
 }
 export type ContextMenuPortalContentEmits = ContextMenuContentEmits;
-
-export type ContextMenuUi = Partial<Record<MenuSlots, ClassValue>>;
 
 // ContextMenu
 export interface ContextMenuProps<T extends AcceptableValue = AcceptableValue>
@@ -60,10 +68,8 @@ export type ContextMenuRadioEmits<T extends AcceptableValue = AcceptableValue> =
 export type {
   ContextMenuRootProps,
   ContextMenuRootEmits,
-  ContextMenuContentProps,
   ContextMenuContentEmits,
   ContextMenuOptionProps,
   ContextMenuOptionEmits,
-  ContextMenuSubContentProps,
   ContextMenuSubContentEmits
 };

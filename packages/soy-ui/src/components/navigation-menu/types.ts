@@ -16,9 +16,11 @@ import type {
 import type { NavigationMenuSlots, ThemeSize } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
 
+export type NavigationMenuUi = Partial<Record<NavigationMenuSlots, ClassValue>>;
+
 export interface NavigationMenuViewportProps extends _NavigationMenuViewportProps {
   size?: ThemeSize;
-  rootClass?: ClassValue;
+  ui?: Pick<NavigationMenuUi, 'viewport' | 'viewportRoot'>;
 }
 
 export interface NavigationMenuListProps extends _NavigationMenuListProps {
@@ -31,33 +33,25 @@ export interface NavigationMenuItemBaseOption extends Pick<NavigationMenuItemPro
   description?: string;
 }
 
-type NavigationMenuTriggerSlots = Extract<NavigationMenuSlots, 'trigger' | 'triggerLeadingIcon' | 'triggerIcon'>;
-
-export type NavigationMenuTriggerUi = Partial<Record<NavigationMenuTriggerSlots, ClassValue>>;
-
 export interface NavigationMenuTriggerProps
   extends _NavigationMenuTriggerProps,
     LinkProps,
     Pick<NavigationMenuItemBaseOption, 'label' | 'icon'> {
   size?: ThemeSize;
-  ui?: NavigationMenuTriggerUi;
+  ui?: Pick<NavigationMenuUi, 'trigger' | 'itemIcon' | 'triggerIcon'>;
 }
-
-type NavigationMenuLinkSlots = Extract<NavigationMenuSlots, 'link' | 'linkLeadingIcon' | 'linkLabel' | 'linkIcon'>;
-
-export type NavigationMenuLinkUi = Partial<Record<NavigationMenuLinkSlots, ClassValue>>;
 
 export interface NavigationMenuLinkProps
   extends _NavigationMenuLinkProps,
     LinkProps,
     Pick<NavigationMenuItemBaseOption, 'label' | 'icon'> {
   size?: ThemeSize;
-  ui?: NavigationMenuLinkUi;
+  ui?: Pick<NavigationMenuUi, 'link' | 'linkLabel' | 'itemIcon' | 'linkIcon'>;
 }
 
 export interface NavigationMenuIndicatorProps extends _NavigationMenuIndicatorProps {
   size?: ThemeSize;
-  arrowClass?: ClassValue;
+  ui?: Pick<NavigationMenuUi, 'indicator' | 'arrow'>;
 }
 
 type NavigationMenuChildLinkSlots = Extract<
@@ -83,8 +77,6 @@ export interface NavigationMenuChildListItemProps extends ClassValueProp {}
 export type NavigationMenuItemOption<T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption> = T & {
   items?: T[];
 };
-
-export type NavigationMenuUi = Partial<Record<NavigationMenuSlots, ClassValue>>;
 
 export interface NavigationMenuProps<T extends NavigationMenuItemBaseOption = NavigationMenuItemBaseOption>
   extends NavigationMenuRootProps {

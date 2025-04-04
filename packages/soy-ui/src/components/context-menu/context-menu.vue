@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import {
   ContextMenuRoot,
   ContextMenuTrigger,
-  Slot,
   useCombinedPropsEmits,
   useOmitEmitAsProps,
   useOmitForwardProps,
@@ -67,11 +66,9 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
 <template>
   <ContextMenuRoot :dir="dir" :modal="modal" @update:open="emit('update:open', $event)">
     <ContextMenuTrigger as-child>
-      <Slot :size="size">
-        <slot name="trigger" />
-      </Slot>
+      <slot name="trigger" />
     </ContextMenuTrigger>
-    <SContextMenuPortalContent v-bind="forwardedPortalContent" :class="ui?.content">
+    <SContextMenuPortalContent v-bind="forwardedPortalContent" :ui="ui">
       <SContextMenuOption
         v-for="item in items"
         :key="String(item.value)"

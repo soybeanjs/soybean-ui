@@ -8,15 +8,17 @@ defineOptions({
   name: 'SContextMenuContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<ContextMenuContentProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<ContextMenuContentProps>();
 
 const emit = defineEmits<ContextMenuContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { content } = menuVariants();
+const mergedCls = computed(() => {
+  const { content } = menuVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
+  return cn(content(), cls);
+});
 </script>
 
 <template>

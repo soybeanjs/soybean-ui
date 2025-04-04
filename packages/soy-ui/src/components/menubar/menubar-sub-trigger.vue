@@ -9,24 +9,32 @@ defineOptions({
   name: 'SMenubarSubTrigger'
 });
 
-const { class: cls, size, iconClass, ...delegatedProps } = defineProps<MenubarSubTriggerProps>();
+const { class: cls, size, ui, label, icon, ...delegatedProps } = defineProps<MenubarSubTriggerProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { subTrigger, subTriggerIcon } = menuVariants({ size });
+  const { subTrigger, itemIcon, subTriggerIcon } = menuVariants({ size });
+
   return {
-    subTrigger: cn(subTrigger(), cls),
-    subTriggerIcon: cn(subTriggerIcon(), iconClass)
+    cls: cn(subTrigger(), cls || ui?.subTrigger),
+    itemIcon: cn(itemIcon(), ui?.itemIcon),
+    icon: cn(subTriggerIcon(), ui?.subTriggerIcon)
   };
 });
 </script>
 
 <template>
-  <MenubarSubTrigger v-bind="forwardedProps" :class="mergedCls.subTrigger">
-    <slot />
-    <slot name="icon">
-      <ChevronRight :class="mergedCls.subTriggerIcon" />
+  <MenubarSubTrigger v-bind="forwardedProps" :class="mergedCls.cls">
+    <slot>
+      <slot name="leading">
+        <component :is="icon" :class="mergedCls.itemIcon" />
+      </slot>
+      <span>{{ label }}</span>
+      <slot name="trailing" />
+      <slot name="icon">
+        <ChevronRight :class="mergedCls.icon" />
+      </slot>
     </slot>
   </MenubarSubTrigger>
 </template>

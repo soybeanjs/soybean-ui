@@ -8,19 +8,19 @@ import type {
   MenuArrowProps,
   MenuCheckboxItemEmits,
   MenuContentEmits,
-  MenuContentProps,
   MenuItemEmits,
   MenuPortalProps,
   MenuRadioItemEmits,
-  MenuSeparatorProps,
-  MenuSubContentProps,
   MenuSubProps,
   PointerDownOutsideEvent,
   MenuCheckboxItemProps as _MenuCheckboxItemProps,
+  MenuContentProps as _MenuContentProps,
   MenuItemIndicatorProps as _MenuItemIndicatorProps,
   MenuItemProps as _MenuItemProps,
   MenuLabelProps as _MenuLabelProps,
   MenuRadioItemProps as _MenuRadioItemProps,
+  MenuSeparatorProps as _MenuSeparatorProps,
+  MenuSubContentProps as _MenuSubContentProps,
   MenuSubTriggerProps as _MenuSubTriggerProps
 } from '@soybean-ui/primitives';
 import type { MenuSlots, ThemeSize } from '@soybean-ui/variants';
@@ -30,15 +30,33 @@ import type { KeyboardKeyProps, KeyboardKeyValue } from '../keyboard-key';
 // Label
 export interface MenuLabelProps extends _MenuLabelProps {
   size?: ThemeSize;
+  ui?: Pick<MenuUi, 'label' | 'itemIcon'>;
+  /** The group label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
 }
 
 // Item
 export interface MenuItemProps extends _MenuItemProps {
   size?: ThemeSize;
+  ui?: Pick<MenuUi, 'item' | 'itemIcon' | 'shortcut'>;
+  /** The label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
+  /** The shortcut to display next to the label. */
+  shortcut?: KeyboardKeyValue | KeyboardKeyValue[];
 }
 
 // ItemLink
-export interface MenuItemLinkProps extends MenuItemProps, LinkProps {}
+export interface MenuItemLinkProps extends MenuItemProps, LinkProps {
+  ui?: Pick<MenuUi, 'itemLink' | 'itemIcon' | 'itemLinkIcon'>;
+  /** The group label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
+}
 export type MenuItemLinkEmits = MenuItemEmits;
 
 export interface MenuItemLinkIconProps extends ClassValueProp {
@@ -50,15 +68,31 @@ export interface MenuItemIndicatorProps extends _MenuItemIndicatorProps {
   size?: ThemeSize;
 }
 
+export interface MenuSeparatorProps extends _MenuSeparatorProps {
+  size?: ThemeSize;
+}
+
 // SubTrigger
 export interface MenuSubTriggerProps extends _MenuSubTriggerProps {
   size?: ThemeSize;
-  iconClass?: ClassValue;
+  ui?: Pick<MenuUi, 'subTrigger' | 'itemIcon' | 'subTriggerIcon'>;
+  /** The group label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
 }
 
 // MenuShortcut
 export interface MenuShortcutProps<T extends KeyboardKeyValue | KeyboardKeyValue[] = KeyboardKeyValue>
   extends Omit<KeyboardKeyProps<T>, 'variant'> {}
+
+export interface MenuContentProps extends _MenuContentProps {
+  size?: ThemeSize;
+}
+
+export interface MenuSubContentProps extends _MenuSubContentProps {
+  size?: ThemeSize;
+}
 
 // MenuOptionData
 export interface MenuOptionData<T extends AcceptableValue = AcceptableValue>
@@ -129,7 +163,6 @@ export type MenuSubContentEmits<T extends AcceptableValue = AcceptableValue> = {
 export interface MenuOptionProps<T extends AcceptableValue = AcceptableValue>
   extends Pick<MenuPortalContentProps, 'to' | 'defer' | 'disabledPortal' | 'forceMountPortal'>,
     MenuCommonProps {
-  ui?: MenuUi;
   item: MenuOptionData<T>;
   subContentProps?: MenuSubContentProps;
 }
@@ -149,7 +182,13 @@ export type MenuEmits<T extends AcceptableValue = AcceptableValue> = MenuPortalC
 // Checkbox
 export interface MenuCheckboxItemProps extends _MenuCheckboxItemProps {
   size?: ThemeSize;
-  indicatorClass?: ClassValue;
+  ui?: Pick<MenuUi, 'checkboxItem' | 'itemIcon' | 'itemIndicator' | 'shortcut'>;
+  /** The label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
+  /** The shortcut to display next to the label. */
+  shortcut?: KeyboardKeyValue | KeyboardKeyValue[];
 }
 export interface MenuCheckboxGroupProps<T extends AcceptableValue = AcceptableValue> extends MenuCommonProps {
   class?: ClassValue;
@@ -169,7 +208,13 @@ export type MenuCheckboxEmits<T extends AcceptableValue = AcceptableValue> = Men
 // Radio
 export interface MenuRadioItemProps extends _MenuRadioItemProps {
   size?: ThemeSize;
-  indicatorClass?: ClassValue;
+  ui?: Pick<MenuUi, 'radioItem' | 'radioIndicatorIcon' | 'itemIcon' | 'itemIndicator' | 'shortcut'>;
+  /** The label of the menu. */
+  label: string;
+  /** The icon to display prepended to the label. */
+  icon?: Component;
+  /** The shortcut to display next to the label. */
+  shortcut?: KeyboardKeyValue | KeyboardKeyValue[];
 }
 export interface MenuRadioGroupProps<T extends AcceptableValue = AcceptableValue> extends MenuCommonProps {
   class?: ClassValue;
@@ -188,13 +233,10 @@ export type MenuRadioEmits<T extends AcceptableValue = AcceptableValue> = MenuPo
 
 export type {
   MenuPortalProps,
-  MenuContentProps,
   MenuContentEmits,
-  MenuSubContentProps,
   MenuItemEmits,
   MenuCheckboxItemEmits,
   MenuRadioItemEmits,
   MenuArrowProps,
-  MenuSeparatorProps,
   MenuSubProps
 };

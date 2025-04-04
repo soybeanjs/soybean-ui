@@ -5,14 +5,12 @@ import SMenuCheckboxItem from './menu-checkbox-item.vue';
 import SMenuCheckbox from './menu-checkbox.vue';
 import SMenuContent from './menu-content.vue';
 import SMenuItemIndicator from './menu-item-indicator.vue';
-import SMenuItemLinkIcon from './menu-item-link-icon.vue';
 import SMenuItemLink from './menu-item-link.vue';
 import SMenuItem from './menu-item.vue';
 import SMenuLabel from './menu-label.vue';
 import SMenuOption from './menu-option.vue';
 import SMenuPortalContent from './menu-portal-content.vue';
 import SMenuRadioGroup from './menu-radio-group.vue';
-import SMenuRadioIndicatorIcon from './menu-radio-indicator-icon.vue';
 import SMenuRadioItem from './menu-radio-item.vue';
 import SMenuRadio from './menu-radio.vue';
 import SMenuSeparator from './menu-separator.vue';
@@ -31,14 +29,12 @@ export {
   SMenuItem,
   SMenuItemIndicator,
   SMenuItemLink,
-  SMenuItemLinkIcon,
   SMenuLabel,
   SMenuOption,
   SMenuPortal,
   SMenuPortalContent,
   SMenuRadio,
   SMenuRadioGroup,
-  SMenuRadioIndicatorIcon,
   SMenuRadioItem,
   SMenuSeparator,
   SMenuShortcut,

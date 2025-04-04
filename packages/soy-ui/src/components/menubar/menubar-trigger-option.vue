@@ -1,7 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import SMenuItemLinkIcon from '../menu/menu-item-link-icon.vue';
-import SMenuShortcut from '../menu/menu-shortcut.vue';
 import type { MenuOptionData } from '../menu/types';
 import SMenubarTrigger from './menubar-trigger.vue';
 import SMenubarTriggerLink from './menubar-trigger-link.vue';
@@ -11,7 +9,7 @@ defineOptions({
   name: 'SMenubarTriggerOption'
 });
 
-const props = defineProps<MenubarTriggerOptionProps<T>>();
+defineProps<MenubarTriggerOptionProps<T>>();
 
 type Slots = {
   trigger: (props: MenuOptionData<T>) => any;
@@ -20,33 +18,31 @@ type Slots = {
 };
 
 defineSlots<Slots>();
+
+const itemSlotMap = {
+  leading: 'trigger-leading',
+  default: 'trigger',
+  trailing: 'trigger-trailing'
+} satisfies Record<string, keyof Slots>;
 </script>
 
 <template>
   <SMenubarTriggerLink
     v-if="item.linkProps"
     v-bind="item.linkProps"
-    :class="props.class"
     :size="size"
+    :ui="ui"
+    :label="item.label"
+    :icon="item.icon"
     :disabled="disabled"
   >
-    <slot name="trigger" v-bind="item">
-      <slot name="trigger-leading" v-bind="item">
-        <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-      </slot>
-      <span>{{ item.label }}</span>
-      <SMenuItemLinkIcon :class="ui?.itemLinkIcon" :size="size" />
-      <slot name="trigger-trailing" v-bind="item" />
-    </slot>
+    <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+      <slot :name="slotKey" v-bind="item" />
+    </template>
   </SMenubarTriggerLink>
-  <SMenubarTrigger v-else :class="props.class" :size="size" :disabled="disabled">
-    <slot name="trigger" v-bind="item">
-      <slot name="trigger-leading" v-bind="item">
-        <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-      </slot>
-      <span>{{ item.label }}</span>
-      <slot name="trigger-trailing" v-bind="item" />
-      <SMenuShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" :size="size" />
-    </slot>
+  <SMenubarTrigger v-else :size="size" :ui="ui" :label="item.label" :icon="item.icon" :disabled="disabled">
+    <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+      <slot :name="slotKey" v-bind="item" />
+    </template>
   </SMenubarTrigger>
 </template>

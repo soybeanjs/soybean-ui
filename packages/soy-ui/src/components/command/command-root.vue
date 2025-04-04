@@ -9,15 +9,17 @@ defineOptions({
   name: 'SCommandRoot'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<CommandRootProps<T>>();
+const { class: cls, size, ...delegatedProps } = defineProps<CommandRootProps<T>>();
 
 const emit = defineEmits<CommandRootEmits<T>>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { root } = commandVariants();
+const mergedCls = computed(() => {
+  const { root } = commandVariants({ size });
 
-const mergedCls = computed(() => cn(root(), cls));
+  return cn(root(), cls);
+});
 </script>
 
 <template>

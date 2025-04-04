@@ -4,7 +4,6 @@ import { MenuRadioGroup } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import SMenuLabel from './menu-label.vue';
 import SMenuRadioItem from './menu-radio-item.vue';
-import SMenuShortcut from './menu-shortcut.vue';
 import SMenuSeparator from './menu-separator.vue';
 import type { MenuOptionData, MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
 
@@ -33,41 +32,39 @@ const radioValue = computed({
     emit('update:modelValue', value);
   }
 });
+
+const itemSlotMap = {
+  leading: 'item-leading',
+  default: 'item',
+  trailing: 'item-trailing'
+} satisfies Record<string, keyof Slots>;
 </script>
 
 <template>
   <MenuRadioGroup v-model="radioValue" :class="props.class || ui?.group">
     <template v-for="item in items" :key="item.value">
-      <SMenuLabel v-if="item.isGroupLabel" :class="ui?.label" :size="size">
-        <slot name="item" v-bind="item">
-          <slot name="item-leading" v-bind="item">
-            <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-          </slot>
-          <span>{{ item.label }}</span>
-          <slot name="item-trailing" v-bind="item" />
-        </slot>
+      <SMenuLabel v-if="item.isGroupLabel" :size="size" :ui="ui" :label="item.label" :icon="item.icon">
+        <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+          <slot :name="slotKey" v-bind="item" />
+        </template>
       </SMenuLabel>
       <SMenuRadioItem
         v-else
-        :class="ui?.item"
         :size="size"
+        :ui="ui"
+        :label="item.label"
+        :icon="item.icon"
+        :shortcut="item.shortcut"
         :disabled="item.disabled"
         :text-value="item.textValue || item.label"
         :value="item.value"
-        :indicator-class="ui?.itemIndicator"
       >
-        <template #indicatorIcon>
+        <template #icon>
           <slot name="item-indicator-icon" v-bind="item" />
         </template>
-        <slot name="item" v-bind="item">
-          <slot name="item-leading" v-bind="item">
-            <component :is="item.icon" v-if="item.icon" :class="ui?.itemIcon" />
-          </slot>
-          <span>{{ item.label }}</span>
-          <slot name="item-trailing" v-bind="item">
-            <SMenuShortcut v-if="item.shortcut" :class="ui?.shortcut" :value="item.shortcut" :size="size" />
-          </slot>
-        </slot>
+        <template v-for="(slotKey, slotName) in itemSlotMap" :key="slotKey" #[slotName]>
+          <slot :name="slotKey" v-bind="item" />
+        </template>
       </SMenuRadioItem>
       <SMenuSeparator v-if="separator || item.separator" :class="ui?.separator" />
     </template>

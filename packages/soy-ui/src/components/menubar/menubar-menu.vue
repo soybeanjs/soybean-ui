@@ -53,7 +53,7 @@ const forwardedMenu = useCombinedPropsEmits(forwardedMenuProps, forwardedMenuEmi
 
 <template>
   <MenubarMenu :value="value">
-    <SMenubarTriggerOption :class="ui?.trigger" :disabled="item.disabled" :size="size" :ui="ui" :item="item">
+    <SMenubarTriggerOption :disabled="item.disabled" :size="size" :ui="ui" :item="item">
       <template v-for="slotKey in slotKeys.trigger" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
       </template>

@@ -2,14 +2,14 @@
 import { computed, ref } from 'vue';
 import { useCombinedPropsEmits, useOmitEmitAsProps, useOmitForwardProps } from '@soybean-ui/primitives';
 import type { AcceptableValue, SelectEvent } from '@soybean-ui/primitives';
-import { ChevronsUpDown } from 'lucide-vue-next';
+import { ChevronsUpDown, Search } from 'lucide-vue-next';
 import SButton from '../button/button.vue';
 import SComboboxRoot from './combobox-root.vue';
 import SComboboxAnchor from './combobox-anchor.vue';
 import SComboboxEmpty from './combobox-empty.vue';
 import SComboboxInput from './combobox-input.vue';
 import SComboboxTrigger from './combobox-trigger.vue';
-import SComboboxSearchIcon from './combobox-search-icon.vue';
+import SComboboxContent from './combobox-content.vue';
 import SComboboxList from './combobox-list.vue';
 import SComboboxOption from './combobox-option.vue';
 import { getComboboxOptionByValue } from './shared';
@@ -89,13 +89,13 @@ const computedInputProps = computed(() => ({
         @update:model-value="emit('update:inputModelValue', $event)"
       >
         <template #trailing>
-          <SComboboxTrigger :size="size" :mode="mode">
+          <SComboboxTrigger :class="ui?.trigger" :size="size" :mode="mode">
             <ChevronsUpDown />
           </SComboboxTrigger>
         </template>
       </SComboboxInput>
     </SComboboxAnchor>
-    <SComboboxList :class="ui?.list" :size="size">
+    <SComboboxContent :class="ui?.content" :size="size">
       <SComboboxInput
         v-if="mode === 'modern'"
         v-bind="computedInputProps"
@@ -106,22 +106,24 @@ const computedInputProps = computed(() => ({
         :mode="mode"
         @update:model-value="emit('update:inputModelValue', $event)"
       >
-        <template #trailing>
-          <SComboboxSearchIcon :class="ui?.searchIcon" :size="size" />
+        <template #leading>
+          <Search />
         </template>
       </SComboboxInput>
       <SComboboxEmpty :class="ui?.empty" :size="size">{{ emptyLabel || defaultEmptyLabel }}</SComboboxEmpty>
-      <SComboboxOption
-        v-for="(item, itemIndex) in items"
-        v-slot="slotProps"
-        :key="itemIndex"
-        :size="size"
-        :item="item"
-        :ui="ui"
-        @select="handleSelect"
-      >
-        <slot name="item" v-bind="slotProps" />
-      </SComboboxOption>
-    </SComboboxList>
+      <SComboboxList :class="ui?.list" :size="size">
+        <SComboboxOption
+          v-for="(item, itemIndex) in items"
+          v-slot="slotProps"
+          :key="itemIndex"
+          :size="size"
+          :item="item"
+          :ui="ui"
+          @select="handleSelect"
+        >
+          <slot name="item" v-bind="slotProps" />
+        </SComboboxOption>
+      </SComboboxList>
+    </SComboboxContent>
   </SComboboxRoot>
 </template>

@@ -8,11 +8,13 @@ defineOptions({
   name: 'SMenuSeparator'
 });
 
-const { class: cls } = defineProps<MenuSeparatorProps>();
+const { class: cls, size } = defineProps<MenuSeparatorProps>();
 
-const { separator } = menuVariants();
+const mergedCls = computed(() => {
+  const { separator } = menuVariants({ size });
 
-const mergedCls = computed(() => cn(separator(), cls));
+  return cn(separator(), cls);
+});
 </script>
 
 <template>

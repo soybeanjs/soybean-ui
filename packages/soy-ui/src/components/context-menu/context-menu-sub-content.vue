@@ -9,15 +9,17 @@ defineOptions({
   name: 'SContextMenuSubContent'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<ContextMenuSubContentProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<ContextMenuSubContentProps>();
 
 const emit = defineEmits<ContextMenuSubContentEmits<T>>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { subContent } = menuVariants();
+const mergedCls = computed(() => {
+  const { subContent } = menuVariants({ size });
 
-const mergedCls = computed(() => cn(subContent(), cls));
+  return cn(subContent(), cls);
+});
 </script>
 
 <template>

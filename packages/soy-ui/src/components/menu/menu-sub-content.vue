@@ -13,13 +13,15 @@ const props = defineProps<MenuSubContentProps>();
 
 const emit = defineEmits<MenuSubContentEmits<T>>();
 
-const forwardedProps = useOmitForwardProps(props, ['class']);
+const forwardedProps = useOmitForwardProps(props, ['class', 'size']);
 
 const forwarded = useForwardPropsEmits(forwardedProps, emit);
 
-const { subContent } = menuVariants();
+const mergedCls = computed(() => {
+  const { subContent } = menuVariants({ size: props.size });
 
-const mergedCls = computed(() => cn(subContent(), props.class));
+  return cn(subContent(), props.class);
+});
 </script>
 
 <template>

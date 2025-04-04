@@ -18,13 +18,13 @@ const emit = defineEmits<NavigationMenuLinkEmits>();
 const forwardedLinkProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { link, linkLabel, linkLeadingIcon, linkIcon } = navigationMenuVariants({ size });
+  const { link, linkLabel, itemIcon, linkIcon } = navigationMenuVariants({ size });
 
   return {
     cls: cn(link(), cls || ui?.link),
-    leadingIcon: cn(linkLeadingIcon(), ui?.linkLeadingIcon),
+    icon: cn(itemIcon(), ui?.itemIcon),
     label: cn(linkLabel(), ui?.linkLabel),
-    icon: cn(linkIcon(), ui?.linkIcon)
+    linkIcon: cn(linkIcon(), ui?.linkIcon)
   };
 });
 </script>
@@ -39,9 +39,9 @@ const mergedCls = computed(() => {
   >
     <component :is="disabled ? 'button' : SLink" v-bind="forwardedLinkProps">
       <slot>
-        <component :is="icon" v-if="icon" :class="mergedCls.leadingIcon" />
+        <component :is="icon" v-if="icon" :class="mergedCls.icon" />
         <span :class="mergedCls.label">{{ label }}</span>
-        <ArrowUpRight :class="mergedCls.icon" />
+        <ArrowUpRight :class="mergedCls.linkIcon" />
       </slot>
     </component>
   </NavigationMenuLink>
