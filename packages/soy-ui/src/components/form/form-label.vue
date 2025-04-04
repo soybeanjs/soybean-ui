@@ -14,7 +14,7 @@ const { class: cls, size } = defineProps<FormLabelProps>();
 const { error, formItemId } = useFormField();
 
 const mergedCls = computed(() => {
-  const { label } = formVariants({ error: Boolean(error.value) });
+  const { label } = formVariants({ size, error: Boolean(error.value) });
 
   return cn(label(), cls);
 });
@@ -22,6 +22,6 @@ const mergedCls = computed(() => {
 
 <template>
   <SLabel :for="formItemId" :class="mergedCls" :size="size">
-    <slot />
+    <slot>{{ label }}</slot>
   </SLabel>
 </template>

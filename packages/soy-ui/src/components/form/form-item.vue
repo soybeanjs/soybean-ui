@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { provide, useId } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
+import { computed, provide, useId } from 'vue';
 import { cn, formVariants } from '@soybean-ui/variants';
 import { FORM_ITEM_INJECTION_KEY } from './hooks';
 import type { FormItemProps } from './types';
@@ -9,18 +8,20 @@ defineOptions({
   name: 'SFormItem'
 });
 
-const { class: cls } = defineProps<FormItemProps>();
+const { class: cls, size } = defineProps<FormItemProps>();
 
 const id = useId();
 provide(FORM_ITEM_INJECTION_KEY, id);
 
-const { item } = formVariants();
+const mergedCls = computed(() => {
+  const { item } = formVariants({ size });
 
-const mergedCls = cn(item(), cls);
+  return cn(item(), cls);
+});
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>

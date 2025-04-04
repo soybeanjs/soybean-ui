@@ -13,16 +13,16 @@ defineOptions({
   name: 'SFormField'
 });
 
-const { class: cls, description, ...delegatedProps } = defineProps<FormFieldProps>();
+const { class: cls, size, ui, description, ...delegatedProps } = defineProps<FormFieldProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 </script>
 
 <template>
   <Field v-slot="{ componentField, ...slotProps }" v-bind="forwardedProps">
-    <SFormItem v-auto-animate :class="cls">
-      <SFormLabel>
-        <slot name="label">{{ label }}</slot>
+    <SFormItem v-auto-animate :class="cls || ui?.item" :size="size">
+      <SFormLabel :class="ui?.label" :size="size" :label="label">
+        <slot name="label" />
       </SFormLabel>
       <SFormControl
         :model-value="componentField.modelValue"
@@ -33,8 +33,8 @@ const forwardedProps = useForwardProps(delegatedProps);
       >
         <slot v-bind="slotProps" />
       </SFormControl>
-      <SFormDescription v-if="description">{{ description }}</SFormDescription>
-      <SFormMessage />
+      <SFormDescription v-if="description" :class="ui?.description">{{ description }}</SFormDescription>
+      <SFormMessage :class="ui?.message" />
     </SFormItem>
   </Field>
 </template>

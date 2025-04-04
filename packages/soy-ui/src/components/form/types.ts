@@ -1,10 +1,18 @@
-import type { ClassValueProp } from '@soybean-ui/primitives';
+import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
+import type { FormSlots, ThemeSize } from '@soybean-ui/variants';
 import type { RuleExpression } from 'vee-validate';
 import type { LabelProps } from '../label';
 
-export interface FormItemProps extends ClassValueProp {}
+type FormUi = Partial<Record<FormSlots, ClassValue>>;
 
-export interface FormLabelProps extends LabelProps {}
+export interface FormItemProps extends ClassValueProp {
+  size?: ThemeSize;
+}
+
+export interface FormLabelProps extends LabelProps {
+  size?: ThemeSize;
+  label?: string;
+}
 
 export interface FormMessageProps extends ClassValueProp {}
 
@@ -30,6 +38,7 @@ export type FieldProps<T = unknown> = {
 
 export type FormFieldProps<T = unknown> = FormItemProps &
   FieldProps<T> & {
+    ui?: FormUi;
     description?: string;
   };
 

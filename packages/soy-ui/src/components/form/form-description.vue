@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, formVariants } from '@soybean-ui/variants';
 import { useFormField } from './hooks';
 import type { FormDescriptionProps } from './types';
@@ -19,7 +18,7 @@ const mergedCls = computed(() => cn(description(), cls));
 </script>
 
 <template>
-  <Primitive :id="formDescriptionId" as="p" :class="mergedCls">
+  <p :id="formDescriptionId" :class="mergedCls">
     <slot />
-  </Primitive>
+  </p>
 </template>
