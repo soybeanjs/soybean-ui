@@ -10,7 +10,10 @@ import type {
 } from '@soybean-ui/primitives';
 import type { TabsFill, TabsSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
 
+export type TabsUi = Partial<Record<TabsSlots, ClassValue>>;
+
 export interface TabsRootProps<T extends StringOrNumber = StringOrNumber> extends _TabsRootProps<T> {
+  size?: ThemeSize;
   fill?: TabsFill;
 }
 
@@ -30,6 +33,8 @@ export interface TabsIndicatorRootProps extends ClassValueProp {
 }
 
 export interface TabsIndicatorProps extends ClassValueProp {
+  size?: ThemeSize;
+  ui?: Pick<TabsUi, 'indicator' | 'indicatorRoot'>;
   orientation?: ThemeOrientation;
 }
 
@@ -42,8 +47,6 @@ export type TabsOptionData<T extends StringOrNumber = StringOrNumber> = Pick<Tab
   value: T;
   label: string;
 };
-
-export type TabsUi = Partial<Record<TabsSlots, ClassValue>>;
 
 export type TabsProps<T extends TabsOptionData> = TabsRootProps<T['value']> &
   TabsListProps & {

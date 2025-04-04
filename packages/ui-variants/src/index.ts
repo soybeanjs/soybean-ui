@@ -30,7 +30,6 @@ export * from './variants/progress';
 export * from './variants/radio';
 export * from './variants/resizable';
 export * from './variants/scroll-area';
-export * from './variants/segment';
 export * from './variants/select';
 export * from './variants/separator';
 export * from './variants/sheet';

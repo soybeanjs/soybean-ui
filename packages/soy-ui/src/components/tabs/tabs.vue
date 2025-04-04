@@ -3,7 +3,6 @@ import { useForwardPropsEmits } from '@soybean-ui/primitives';
 import STabsRoot from './tabs-root.vue';
 import STabsList from './tabs-list.vue';
 import STabsTrigger from './tabs-trigger.vue';
-import STabsIndicatorRoot from './tabs-indicator-root.vue';
 import STabsIndicator from './tabs-indicator.vue';
 import STabsContent from './tabs-content.vue';
 import type { TabsEmits, TabsOptionData, TabsProps } from './types';
@@ -42,20 +41,16 @@ const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
       >
         <slot name="trigger" v-bind="{ ...item, active: item.value === modelValue }">{{ item.label }}</slot>
       </STabsTrigger>
-      <STabsIndicatorRoot v-if="enableIndicator" :class="ui?.indicatorRoot" :size="size" :orientation="orientation">
-        <slot name="indicator">
-          <STabsIndicator :class="ui?.indicator" :orientation="orientation" />
-        </slot>
-      </STabsIndicatorRoot>
+      <STabsIndicator v-if="enableIndicator" :size="size" :ui="ui" :orientation="orientation" />
     </STabsList>
     <STabsContent
       v-for="item in items"
       :key="item.value"
-      :value="item.value"
-      :force-mount="forceMountContent"
       :class="ui?.content"
       :size="size"
       :orientation="orientation"
+      :value="item.value"
+      :force-mount="forceMountContent"
     >
       <slot name="content" v-bind="{ ...item, active: item.value === modelValue }" />
     </STabsContent>

@@ -18,34 +18,34 @@ export const tabsVariants = tv({
   variants: {
     size: {
       xs: {
+        root: 'text-2xs',
         list: `p-0.75`,
-        trigger: `px-1.5 gap-1 py-0.75 text-xs`,
-        indicatorRoot: ''
+        trigger: `gap-1 px-1.5 py-0.75`
       },
       sm: {
-        list: `p-1`,
-        trigger: `px-2 gap-1.5 py-1 text-xs`,
-        indicatorRoot: ''
+        root: 'text-xs',
+        list: `p-0.875`,
+        trigger: `gap-1.5 px-2 py-1`
       },
       md: {
+        root: 'text-sm',
         list: `p-1`,
-        trigger: `px-3 gap-2 py-1 text-sm`,
-        indicatorRoot: ''
+        trigger: `gap-2 px-3 py-1`
       },
       lg: {
+        root: 'text-base',
         list: `p-1.125`,
-        trigger: `px-4 gap-2.5 py-1.125 text-base`,
-        indicatorRoot: ''
+        trigger: `gap-2.5 px-4 py-1.125`
       },
       xl: {
+        root: 'text-lg',
         list: `p-1.25`,
-        trigger: `px-5 gap-3 py-1.25 text-base`,
-        indicatorRoot: ''
+        trigger: `gap-3 px-5 py-1.25`
       },
       '2xl': {
+        root: 'text-xl',
         list: `p-1.5`,
-        trigger: `px-6 gap-4 py-1.5 text-xl`,
-        indicatorRoot: ''
+        trigger: `gap-4 px-6 py-1.5`
       }
     },
     orientation: {

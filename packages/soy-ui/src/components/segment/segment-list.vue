@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { TabsList } from '@soybean-ui/primitives';
-import { cn, segmentVariants } from '@soybean-ui/variants';
+import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { SegmentListProps } from './types';
 
 defineOptions({
@@ -11,7 +11,7 @@ defineOptions({
 const { class: cls, size, orientation, loop } = defineProps<SegmentListProps>();
 
 const mergedCls = computed(() => {
-  const { list } = segmentVariants({ size, orientation });
+  const { list } = tabsVariants({ size, orientation });
 
   return cn(list(), cls);
 });

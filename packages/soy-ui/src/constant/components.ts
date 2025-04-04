@@ -312,14 +312,7 @@ export const components = {
     'SScrollAreaThumb',
     'SScrollAreaViewport'
   ],
-  segment: [
-    'SSegment',
-    'SSegmentIndicator',
-    'SSegmentIndicatorRoot',
-    'SSegmentRoot',
-    'SSegmentTrigger',
-    'SSegmentTriggerRoot'
-  ],
+  segment: ['SSegment', 'SSegmentIndicator', 'SSegmentList', 'SSegmentRoot', 'SSegmentTrigger'],
   select: [
     'SSelect',
     'SSelectContent',
@@ -364,7 +357,7 @@ export const components = {
     'SStepperTrigger'
   ],
   switch: ['SSwitch', 'SSwitchRoot', 'SSwitchThumb'],
-  tabs: ['STabs', 'STabsContent', 'STabsIndicator', 'STabsIndicatorRoot', 'STabsList', 'STabsRoot', 'STabsTrigger'],
+  tabs: ['STabs', 'STabsContent', 'STabsIndicator', 'STabsList', 'STabsRoot', 'STabsTrigger'],
   tag: ['STag'],
   tagsInput: [
     'STagsInput',

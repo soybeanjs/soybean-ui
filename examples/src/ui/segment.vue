@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SCard, SSegment } from 'soy-ui';
-import type { SegmentOptionData } from 'soy-ui';
+import type { SegmentOptionData, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoSegment'
 });
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const day = ref('monday');
 
@@ -49,6 +51,21 @@ const weekends = [
     <SCard title="Vertical" split>
       <div class="w-320px lt-sm:w-auto">
         <SSegment v-model="day" :items="weekends" orientation="vertical" />
+      </div>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex-c gap-3">
+        <SSegment v-for="size in sizes" :key="size" v-model="day" :items="weekends" :size="size" />
+      </div>
+      <div class="mt-4 flex gap-3">
+        <SSegment
+          v-for="size in sizes"
+          :key="size"
+          v-model="day"
+          :items="weekends"
+          :size="size"
+          orientation="vertical"
+        />
       </div>
     </SCard>
     <SCard title="Custom Style" split>

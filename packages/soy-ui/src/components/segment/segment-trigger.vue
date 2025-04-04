@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { TabsTrigger, useForwardProps } from '@soybean-ui/primitives';
-import { cn, segmentVariants } from '@soybean-ui/variants';
+import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { SegmentTriggerProps } from './types';
 
 defineOptions({
@@ -13,7 +13,7 @@ const { class: cls, size, enableIndicator = true, ...delegatedProps } = definePr
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { trigger } = segmentVariants({ size, enableIndicator });
+  const { trigger } = tabsVariants({ size, enableIndicator });
 
   return cn(trigger(), cls);
 });

@@ -2,12 +2,18 @@ import type {
   ClassValue,
   ClassValueProp,
   TabsRootEmits as SegmentRootEmits,
-  TabsRootProps as SegmentRootProps,
   StringOrNumber,
   TabsListProps,
+  TabsRootProps,
   TabsTriggerProps
 } from '@soybean-ui/primitives';
-import type { SegmentSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
+import type { TabsSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
+
+type SegmentSlots = Exclude<TabsSlots, 'content'>;
+
+export interface SegmentRootProps<T extends StringOrNumber = StringOrNumber> extends TabsRootProps<T> {
+  size?: ThemeSize;
+}
 
 export interface SegmentListProps extends TabsListProps {
   size?: ThemeSize;
@@ -25,6 +31,8 @@ export interface SegmentIndicatorRootProps extends ClassValueProp {
 }
 
 export interface SegmentIndicatorProps extends ClassValueProp {
+  size?: ThemeSize;
+  ui?: Pick<SegmentUi, 'indicator' | 'indicatorRoot'>;
   orientation?: ThemeOrientation;
 }
 
@@ -44,4 +52,4 @@ export type SegmentProps<T extends SegmentOptionData> = SegmentRootProps<T['valu
 
 export type SegmentEmits<T extends StringOrNumber = StringOrNumber> = SegmentRootEmits<T>;
 
-export type { SegmentRootProps, SegmentRootEmits };
+export type { SegmentRootEmits };

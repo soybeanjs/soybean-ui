@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { TabsIndicator } from '@soybean-ui/primitives';
 import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { TabsIndicatorProps } from './types';
 
@@ -7,17 +8,20 @@ defineOptions({
   name: 'STabsIndicator'
 });
 
-const { class: cls, orientation } = defineProps<TabsIndicatorProps>();
+const { class: cls, size, ui, orientation } = defineProps<TabsIndicatorProps>();
 
 const mergedCls = computed(() => {
-  const { indicator } = tabsVariants({ orientation });
+  const { indicatorRoot, indicator } = tabsVariants({ size, orientation });
 
-  return cn(indicator(), cls);
+  return {
+    cls: cn(indicator(), cls || ui?.indicator),
+    root: cn(indicatorRoot(), ui?.indicatorRoot)
+  };
 });
 </script>
 
 <template>
-  <div :class="mergedCls">
-    <slot />
-  </div>
+  <TabsIndicator :class="mergedCls.root">
+    <div :class="mergedCls.cls"></div>
+  </TabsIndicator>
 </template>

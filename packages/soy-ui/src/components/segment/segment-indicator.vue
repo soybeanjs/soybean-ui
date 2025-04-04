@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { cn, segmentVariants } from '@soybean-ui/variants';
+import { TabsIndicator } from '@soybean-ui/primitives';
+import { cn, tabsVariants } from '@soybean-ui/variants';
 import type { SegmentIndicatorProps } from './types';
 
 defineOptions({
   name: 'SSegmentIndicator'
 });
 
-const { class: cls, orientation } = defineProps<SegmentIndicatorProps>();
+const { class: cls, size, ui, orientation } = defineProps<SegmentIndicatorProps>();
 
 const mergedCls = computed(() => {
-  const { indicator } = segmentVariants({ orientation });
+  const { indicatorRoot, indicator } = tabsVariants({ size, orientation });
 
-  return cn(indicator(), cls);
+  return {
+    cls: cn(indicator(), cls || ui?.indicator),
+    root: cn(indicatorRoot(), ui?.indicatorRoot)
+  };
 });
 </script>
 
 <template>
-  <div :class="mergedCls">
-    <slot />
-  </div>
+  <TabsIndicator :class="mergedCls.root">
+    <div :class="mergedCls.cls"></div>
+  </TabsIndicator>
 </template>
