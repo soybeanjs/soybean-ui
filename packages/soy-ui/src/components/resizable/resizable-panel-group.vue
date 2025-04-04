@@ -8,15 +8,17 @@ defineOptions({
   name: 'SResizablePanelGroup'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<ResizablePanelGroupProps>();
+const { class: cls, size, ...delegatedProps } = defineProps<ResizablePanelGroupProps>();
 
 const emit = defineEmits<ResizablePanelGroupEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { panelGroup } = resizableVariants();
+const mergedCls = computed(() => {
+  const { panelGroup } = resizableVariants({ size });
 
-const mergedCls = computed(() => cn(panelGroup(), cls));
+  return cn(panelGroup(), cls);
+});
 </script>
 
 <template>

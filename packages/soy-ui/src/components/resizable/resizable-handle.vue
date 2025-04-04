@@ -9,19 +9,21 @@ defineOptions({
   name: 'SResizableHandle'
 });
 
-const { class: cls, ui, ...delegatedProps } = defineProps<ResizableHandleProps>();
+const { class: cls, size, ui, ...delegatedProps } = defineProps<ResizableHandleProps>();
 
 const emit = defineEmits<ResizableHandleEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { handle, handleIcon, handleIconRoot } = resizableVariants();
+const mergedCls = computed(() => {
+  const { handle, handleIcon, handleIconRoot } = resizableVariants({ size });
 
-const mergedCls = computed(() => ({
-  handle: cn(handle(), cls),
-  handleIconRoot: cn(handleIconRoot(), ui?.handleIconRoot),
-  handleIcon: cn(handleIcon(), ui?.handleIcon)
-}));
+  return {
+    handle: cn(handle(), cls),
+    handleIconRoot: cn(handleIconRoot(), ui?.handleIconRoot),
+    handleIcon: cn(handleIcon(), ui?.handleIcon)
+  };
+});
 </script>
 
 <template>

@@ -16,34 +16,34 @@ export const paginationVariants = tv({
   variants: {
     size: {
       xs: {
-        list: 'gap-0.75',
-        ellipsis: 'size-6 text-xs',
-        button: 'size-6 text-xs'
+        list: 'gap-0.75 text-2xs',
+        ellipsis: 'size-6',
+        button: 'size-6'
       },
       sm: {
-        list: 'gap-1',
-        ellipsis: 'size-6 text-sm',
-        button: 'size-6 text-sm'
+        list: 'gap-1 text-xs',
+        ellipsis: 'size-7',
+        button: 'size-7'
       },
       md: {
-        list: 'gap-1.25',
-        ellipsis: 'size-8 text-sm',
-        button: 'size-8 text-sm'
+        list: 'gap-1.25 text-sm',
+        ellipsis: 'size-8',
+        button: 'size-8'
       },
       lg: {
-        list: 'gap-1.5',
-        ellipsis: 'size-9 text-base',
-        button: 'size-9 text-base'
+        list: 'gap-1.5 text-base',
+        ellipsis: 'size-9',
+        button: 'size-9'
       },
       xl: {
-        list: 'gap-1.75',
-        ellipsis: 'size-10 text-base',
-        button: 'size-10 text-base'
+        list: 'gap-1.75 text-lg',
+        ellipsis: 'size-10',
+        button: 'size-10'
       },
       '2xl': {
-        list: 'gap-2',
-        ellipsis: 'size-12 text-lg',
-        button: 'size-12 text-lg'
+        list: 'gap-2 text-xl',
+        ellipsis: 'size-12',
+        button: 'size-12'
       }
     },
     variant: {

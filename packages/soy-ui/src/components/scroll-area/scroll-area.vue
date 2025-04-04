@@ -10,7 +10,7 @@ defineOptions({
   name: 'SScrollArea'
 });
 
-const { class: cls, ui, nonce, orientation, forceMount, ...delegatedProps } = defineProps<ScrollAreaProps>();
+const { class: cls, size, ui, nonce, orientation, forceMount, ...delegatedProps } = defineProps<ScrollAreaProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 </script>
@@ -20,9 +20,9 @@ const forwardedProps = useForwardProps(delegatedProps);
     <SScrollAreaViewport :class="ui?.viewport" :nonce="nonce">
       <slot />
     </SScrollAreaViewport>
-    <SScrollAreaScrollbar :class="ui?.scrollbar" :orientation="orientation" :force-mount="forceMount">
+    <SScrollAreaScrollbar :class="ui?.scrollbar" :size="size" :orientation="orientation" :force-mount="forceMount">
       <SScrollAreaThumb :class="ui?.thumb" />
     </SScrollAreaScrollbar>
-    <ScrollAreaCorner />
+    <ScrollAreaCorner :class="ui?.corner" />
   </SScrollAreaRoot>
 </template>

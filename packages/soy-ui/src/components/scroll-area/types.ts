@@ -2,12 +2,16 @@ import type {
   ClassValue,
   ClassValueProp,
   ScrollAreaRootProps,
-  ScrollAreaScrollbarProps,
-  ScrollAreaViewportProps
+  ScrollAreaViewportProps,
+  ScrollAreaScrollbarProps as _ScrollAreaScrollbarProps
 } from '@soybean-ui/primitives';
-import type { ScrollAreaSlots } from '@soybean-ui/variants';
+import type { ScrollAreaSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface ScrollAreaThumbProps extends ClassValueProp {}
+
+export interface ScrollAreaScrollbarProps extends _ScrollAreaScrollbarProps {
+  size?: ThemeSize;
+}
 
 export type ScrollAreaUi = Partial<Record<ScrollAreaSlots, ClassValue>>;
 
@@ -15,4 +19,4 @@ export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaViewport
   ui?: ScrollAreaUi;
 }
 
-export type { ScrollAreaRootProps, ScrollAreaScrollbarProps, ScrollAreaViewportProps };
+export type { ScrollAreaRootProps, ScrollAreaViewportProps };

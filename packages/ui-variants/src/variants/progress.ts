@@ -33,32 +33,32 @@ export const progressVariants = tv({
         indicator: 'bg-carbon'
       },
       secondary: {
-        root: 'bg-secondary/20',
-        indicator: 'bg-secondary'
+        root: 'bg-secondary-foreground/20',
+        indicator: 'bg-secondary-foreground'
       },
       accent: {
-        root: 'bg-accent/20',
-        indicator: 'bg-accent'
+        root: 'bg-accent-foreground/20',
+        indicator: 'bg-accent-foreground'
       }
     },
     size: {
       xs: {
-        root: 'h-1.5'
+        root: 'h-1.75'
       },
       sm: {
         root: 'h-2'
       },
       md: {
-        root: 'h-3'
+        root: 'h-2.5'
       },
       lg: {
-        root: 'h-4'
+        root: 'h-3'
       },
       xl: {
-        root: 'h-5'
+        root: 'h-3.5'
       },
       '2xl': {
-        root: 'h-6'
+        root: 'h-4'
       }
     }
   },
