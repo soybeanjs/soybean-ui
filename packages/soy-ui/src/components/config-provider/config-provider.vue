@@ -5,7 +5,7 @@ import { ConfigProvider, useOmitForwardProps } from '@soybean-ui/primitives';
 import { generateCSSVars } from '@soybean-ui/unocss-preset';
 import type { ThemeSize } from '@soybean-ui/variants';
 import { provideConfigProviderContext } from './context';
-import { DEFAULT_THEME, getThemeName, getThemeOptionStr } from './shared';
+import { getThemeName, isIncludeByDefaultTheme } from './shared';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -25,12 +25,7 @@ const { theme, size } = toRefs(props);
 provideConfigProviderContext({ theme, size });
 
 const cssVars = computed(() => {
-  const defaultThemeStr = getThemeOptionStr(DEFAULT_THEME);
-  const currentThemeStr = getThemeOptionStr(theme.value);
-
-  if (defaultThemeStr.includes(currentThemeStr)) {
-    return '';
-  }
+  if (isIncludeByDefaultTheme(theme.value)) return '';
 
   return generateCSSVars(theme.value, theme.value.color === 'default');
 });
