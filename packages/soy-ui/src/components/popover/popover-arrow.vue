@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { PopoverArrow, useForwardProps } from '@soybean-ui/primitives';
+import { PopoverArrow } from '@soybean-ui/primitives';
 import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { PopoverArrowProps } from './types';
 
@@ -8,15 +8,15 @@ defineOptions({
   name: 'SPopoverArrow'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<PopoverArrowProps>();
+const { class: cls, size, width, height, rounded } = defineProps<PopoverArrowProps>();
 
-const forwardedProps = useForwardProps(delegatedProps);
+const mergedCls = computed(() => {
+  const { arrow } = popoverVariants({ size });
 
-const { arrow } = popoverVariants();
-
-const mergedCls = computed(() => cn(arrow(), cls));
+  return cn(cls, arrow());
+});
 </script>
 
 <template>
-  <PopoverArrow v-bind="forwardedProps" :class="mergedCls" />
+  <PopoverArrow :class="mergedCls" :width="width" :height="height" :rounded="rounded" />
 </template>

@@ -25,7 +25,7 @@ const { canScrollNext, canScrollPrev, carouselApi, carouselRef, orientation, scr
   provideCarouselContext(props, emit);
 
 const mergedCls = computed(() => {
-  const { root } = carouselVariants({ orientation: props.orientation });
+  const { root } = carouselVariants({ size: props.size, orientation: props.orientation });
 
   return cn(root(), props.class);
 });

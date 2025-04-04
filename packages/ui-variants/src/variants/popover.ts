@@ -4,12 +4,43 @@ import { tv } from 'tailwind-variants';
 export const popoverVariants = tv({
   slots: {
     content: [
-      `w-auto p-4 rounded-md border bg-popover  text-popover-foreground shadow-md will-change-transform`,
+      `w-auto rounded-md border bg-popover  text-popover-foreground shadow-md will-change-transform`,
       `data-[state=open]:(animate-in fade-in-0 zoom-in-95)`,
       `data-[state=closed]:(animate-out fade-out-0 zoom-out-95)`,
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
-    arrow: 'fill-popover stroke-border'
+    arrow: 'w-1em h-0.5em fill-popover stroke-border'
+  },
+  variants: {
+    size: {
+      xs: {
+        content: 'p-3 text-2xs',
+        arrow: 'text-3xs'
+      },
+      sm: {
+        content: 'p-3.5 text-xs',
+        arrow: 'text-2xs'
+      },
+      md: {
+        content: 'p-4 text-sm',
+        arrow: 'text-xs'
+      },
+      lg: {
+        content: 'p-4.5 text-base',
+        arrow: 'text-sm'
+      },
+      xl: {
+        content: 'p-5 text-lg',
+        arrow: 'text-base'
+      },
+      '2xl': {
+        content: 'p-5.5 text-xl',
+        arrow: 'text-lg'
+      }
+    }
+  },
+  defaultVariants: {
+    size: 'md'
   }
 });
 

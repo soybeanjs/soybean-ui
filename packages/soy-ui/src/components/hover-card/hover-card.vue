@@ -3,8 +3,9 @@ import {
   HoverCardPortal,
   HoverCardRoot,
   HoverCardTrigger,
+  useCombinedPropsEmits,
   useForwardProps,
-  useForwardPropsEmits,
+  useOmitEmitAsProps,
   usePickForwardProps
 } from '@soybean-ui/primitives';
 import SHoverCardContent from './hover-card-content.vue';
@@ -15,13 +16,15 @@ defineOptions({
   name: 'SHoverCard'
 });
 
-const { avoidCollisions = true, prioritizePosition = true, ...delegatedProps } = defineProps<HoverCardProps>();
+const props = defineProps<HoverCardProps>();
 
 const emit = defineEmits<HoverCardEmits>();
 
-const delegatedRootProps = usePickForwardProps(delegatedProps, ['defaultOpen', 'open', 'openDelay', 'closeDelay']);
+const delegatedRootProps = usePickForwardProps(props, ['defaultOpen', 'open', 'openDelay', 'closeDelay']);
 
-const delegatedContentProps = usePickForwardProps(delegatedProps, [
+const forwardedRootProps = useForwardProps(delegatedRootProps);
+
+const delegatedContentProps = usePickForwardProps(props, [
   'side',
   'sideOffset',
   'align',
@@ -34,19 +37,21 @@ const delegatedContentProps = usePickForwardProps(delegatedProps, [
   'updatePositionStrategy'
 ]);
 
-const forwarded = useForwardPropsEmits(delegatedRootProps, emit);
-
 const forwardedContentProps = useForwardProps(delegatedContentProps);
+
+const forwardedContentEmits = useOmitEmitAsProps(emit, ['update:open']);
+
+const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedContentEmits);
 </script>
 
 <template>
-  <HoverCardRoot v-bind="forwarded">
+  <HoverCardRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <HoverCardTrigger as-child>
       <slot name="trigger" />
     </HoverCardTrigger>
     <HoverCardPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
       <SHoverCardContent
-        v-bind="forwardedContentProps"
+        v-bind="forwardedContent"
         :class="ui?.content"
         :force-mount="forceMountContent"
         :avoid-collisions="avoidCollisions"

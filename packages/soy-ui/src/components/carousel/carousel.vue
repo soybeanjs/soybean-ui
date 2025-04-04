@@ -10,19 +10,19 @@ defineOptions({
   name: 'SCarousel'
 });
 
-const { class: cls, ui, counts, nextProps, previousProps, ...delegatedProps } = defineProps<CarouselProps>();
+const { class: cls, size, ui, counts, nextProps, previousProps, ...delegatedProps } = defineProps<CarouselProps>();
 
 const emit = defineEmits<CarouselEmits>();
 </script>
 
 <template>
-  <SCarouselRoot v-bind="delegatedProps" :class="cls || ui?.root" @init-api="emit('initApi', $event)">
-    <SCarouselContent :class="ui?.content" :wrapper-class="ui?.contentWrapper">
-      <SCarouselItem v-for="i in counts" :key="i" :class="ui?.item">
+  <SCarouselRoot v-bind="delegatedProps" :class="cls || ui?.root" :size="size" @init-api="emit('initApi', $event)">
+    <SCarouselContent :size="size" :ui="ui">
+      <SCarouselItem v-for="i in counts" :key="i" :class="ui?.item" :size="size">
         <slot :index="i" />
       </SCarouselItem>
     </SCarouselContent>
-    <SCarouselNext v-bind="nextProps" :class="ui?.next" />
-    <SCarouselPrevious v-bind="previousProps" :class="ui?.previous" />
+    <SCarouselNext v-bind="nextProps" :class="ui?.next" :size="size" />
+    <SCarouselPrevious v-bind="previousProps" :class="ui?.previous" :size="size" />
   </SCarouselRoot>
 </template>

@@ -9,16 +9,16 @@ defineOptions({
   inheritAttrs: false
 });
 
-const { class: cls, wrapperClass } = defineProps<CarouselContentProps>();
+const { class: cls, size, ui } = defineProps<CarouselContentProps>();
 
 const { carouselRef, orientation } = useCarousel();
 
 const mergedCls = computed(() => {
-  const { content, contentWrapper } = carouselVariants({ orientation });
+  const { content, contentWrapper } = carouselVariants({ size, orientation });
 
   return {
-    cls: cn(content(), cls),
-    wrapper: cn(contentWrapper(), wrapperClass)
+    cls: cn(content(), cls || ui?.content),
+    wrapper: cn(contentWrapper(), ui?.contentWrapper)
   };
 });
 </script>

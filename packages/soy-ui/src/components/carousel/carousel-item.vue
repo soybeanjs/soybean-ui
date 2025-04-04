@@ -8,12 +8,12 @@ defineOptions({
   name: 'SCarouselItem'
 });
 
-const { class: cls } = defineProps<CarouselItemProps>();
+const { class: cls, size } = defineProps<CarouselItemProps>();
 
 const { orientation } = useCarousel();
 
 const mergedCls = computed(() => {
-  const { item } = carouselVariants({ orientation });
+  const { item } = carouselVariants({ size, orientation });
 
   return cn(item(), cls);
 });

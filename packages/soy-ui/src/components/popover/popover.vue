@@ -53,12 +53,24 @@ const forwardedContent = useCombinedPropsEmits(forwardedContentProps, forwardedC
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal :to="to" :defer="defer" :disabled="disabledPortal" :force-mount="forceMountPortal">
-      <SPopoverContent v-bind="forwardedContent" :class="ui?.content" :force-mount="forceMountContent">
+      <SPopoverContent
+        v-bind="forwardedContent"
+        :class="props.class || ui?.content"
+        :size="size"
+        :force-mount="forceMountContent"
+      >
         <slot />
         <PopoverClose v-if="$slots.close" as-child>
           <slot name="close" />
         </PopoverClose>
-        <SPopoverArrow v-if="showArrow" :class="ui?.arrow" :width="arrowWidth" :height="arrowHeight" />
+        <SPopoverArrow
+          v-if="showArrow"
+          :class="ui?.arrow"
+          :size="size"
+          :width="arrowWidth"
+          :height="arrowHeight"
+          :rounded="arrowRounded"
+        />
       </SPopoverContent>
     </PopoverPortal>
   </PopoverRoot>

@@ -5,7 +5,7 @@ import type { PopperAnchorProps, PopperContentProps } from '../popper';
 import type { TeleportProps } from '../teleport';
 
 // Root
-export interface TooltipRootProps extends ClassValueProp {
+export interface TooltipRootProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */

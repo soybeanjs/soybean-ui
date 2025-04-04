@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { HoverCardArrow } from '@soybean-ui/primitives';
-import { cn, hoverCardVariants } from '@soybean-ui/variants';
+import { cn, popoverVariants } from '@soybean-ui/variants';
 import type { HoverCardArrowProps } from './types';
 
 defineOptions({
   name: 'SHoverCardArrow'
 });
 
-const { class: cls, width, height } = defineProps<HoverCardArrowProps>();
+const { class: cls, size, width, height, rounded } = defineProps<HoverCardArrowProps>();
 
-const { arrow } = hoverCardVariants();
+const mergedCls = computed(() => {
+  const { arrow } = popoverVariants({ size });
 
-const mergedCls = computed(() => cn(arrow(), cls));
+  return cn(cls, arrow());
+});
 </script>
 
 <template>
-  <HoverCardArrow as-child :width="width" :height="height">
-    <div :class="mergedCls"></div>
-  </HoverCardArrow>
+  <HoverCardArrow :class="mergedCls" :width="width" :height="height" :rounded="rounded" />
 </template>

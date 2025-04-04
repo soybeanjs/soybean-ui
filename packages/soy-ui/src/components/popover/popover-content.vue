@@ -8,15 +8,23 @@ defineOptions({
   name: 'SPopoverContent'
 });
 
-const { class: cls, sideOffset = 5, avoidCollisions = true, ...delegatedProps } = defineProps<PopoverContentProps>();
+const {
+  class: cls,
+  size,
+  sideOffset = 5,
+  avoidCollisions = true,
+  ...delegatedProps
+} = defineProps<PopoverContentProps>();
 
 const emit = defineEmits<PopoverContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { content } = popoverVariants();
+const mergedCls = computed(() => {
+  const { content } = popoverVariants({ size });
 
-const mergedCls = computed(() => cn(content(), cls));
+  return cn(content(), cls);
+});
 </script>
 
 <template>

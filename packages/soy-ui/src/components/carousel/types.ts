@@ -1,5 +1,5 @@
 import type { MaybeRef, Ref, UnwrapRef } from 'vue';
-import type { CarouselSlots, ThemeOrientation } from '@soybean-ui/variants';
+import type { CarouselSlots, ThemeOrientation, ThemeSize } from '@soybean-ui/variants';
 import type { ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { EmblaCarouselType, EmblaOptionsType, EmblaPluginType } from 'embla-carousel';
 import type { ButtonProps } from '../button/types';
@@ -26,23 +26,32 @@ export interface CarouselContext {
   orientation?: ThemeOrientation;
 }
 
-export interface CarouselRootProps extends ClassValueProp, CarouselContextParams {}
+export type CarouselUi = Partial<Record<CarouselSlots, ClassValue>>;
+
+export interface CarouselRootProps extends ClassValueProp, CarouselContextParams {
+  size?: ThemeSize;
+}
 
 export type CarouselRootEmits = {
   (e: 'initApi', payload: UnwrapRefCarouselApi): void;
 };
 
 export interface CarouselContentProps extends ClassValueProp {
-  wrapperClass?: ClassValue;
+  size?: ThemeSize;
+  ui?: Pick<CarouselUi, 'content' | 'contentWrapper'>;
 }
 
-export interface CarouselItemProps extends ClassValueProp {}
+export interface CarouselItemProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
-export interface CarouselNextProps extends ButtonProps {}
+export interface CarouselNextProps extends ButtonProps {
+  size?: ThemeSize;
+}
 
-export interface CarouselPreviousProps extends ButtonProps {}
-
-export type CarouselUi = Partial<Record<CarouselSlots, ClassValue>>;
+export interface CarouselPreviousProps extends ButtonProps {
+  size?: ThemeSize;
+}
 
 export interface CarouselProps extends CarouselRootProps {
   counts?: number;

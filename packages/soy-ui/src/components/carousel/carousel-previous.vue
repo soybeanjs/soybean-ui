@@ -21,7 +21,7 @@ const forwardedProps = useOmitForwardProps(props, ['class', 'disabled']);
 const { orientation, canScrollPrev, scrollPrev } = useCarousel();
 
 const mergedCls = computed(() => {
-  const { previous } = carouselVariants({ orientation });
+  const { previous } = carouselVariants({ size: props.size, orientation });
 
   return cn(previous(), props.class);
 });

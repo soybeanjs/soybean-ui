@@ -8,15 +8,23 @@ defineOptions({
   name: 'STooltipContent'
 });
 
-const { class: cls, sideOffset = 8, avoidCollisions = true, ...delegatedProps } = defineProps<TooltipContentProps>();
+const {
+  class: cls,
+  size,
+  sideOffset = 8,
+  avoidCollisions = true,
+  ...delegatedProps
+} = defineProps<TooltipContentProps>();
 
 const emit = defineEmits<TooltipContentEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
-const { content } = tooltipVariants();
+const mergedCls = computed(() => {
+  const { content } = tooltipVariants({ size });
 
-const mergedCls = computed(() => cn(cls, content()));
+  return cn(cls, content());
+});
 </script>
 
 <template>
