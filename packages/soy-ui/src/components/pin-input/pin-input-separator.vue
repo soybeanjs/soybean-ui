@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { cn, pinInputVariants } from '@soybean-ui/variants';
 import type { PinInputSeparatorProps } from './types';
 
@@ -20,7 +19,7 @@ const BLANK = ' ';
 </script>
 
 <template>
-  <Primitive as="span" :class="mergedCls">
+  <span :class="mergedCls">
     <slot>{{ BLANK }}</slot>
-  </Primitive>
+  </span>
 </template>

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { SCard, SRadio, SRadioGroup } from 'soy-ui';
-import type { RadioGroupItemProps, ThemeColor } from 'soy-ui';
+import type { RadioGroupItemProps, ThemeColor, ThemeSize } from 'soy-ui';
 
 defineOptions({
   name: 'DemoRadio'
 });
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const items = createRadioGroupItems();
 
@@ -24,6 +25,11 @@ function createRadioGroupItems(): RadioGroupItemProps[] {
     <SCard title="Color" split>
       <div class="flex-c gap-12px">
         <SRadioGroup v-for="color in colors" :key="color" :color="color" :items="items" />
+      </div>
+    </SCard>
+    <SCard title="Size" split>
+      <div class="flex-c gap-12px">
+        <SRadioGroup v-for="size in sizes" :key="size" :size="size" :items="items" />
       </div>
     </SCard>
     <SCard title="Orientation: Vertical" split>

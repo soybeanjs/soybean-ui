@@ -1,16 +1,18 @@
 import type {
   AcceptableValue,
   CheckboxGroupRootEmits,
-  CheckboxGroupRootProps,
   CheckboxIndicatorProps,
   CheckedState,
   ClassValue,
   ClassValueProp,
-  CheckboxRootProps as _CheckboxControlProps
+  CheckboxRootProps as _CheckboxControlProps,
+  CheckboxGroupRootProps as _CheckboxGroupRootProps
 } from '@soybean-ui/primitives';
 import type { CheckboxSlots, ThemeColor, ThemeSize } from '@soybean-ui/variants';
 
-export interface CheckboxRootProps extends ClassValueProp {}
+export interface CheckboxRootProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export interface CheckboxControlProps extends _CheckboxControlProps {
   color?: ThemeColor;
@@ -30,6 +32,10 @@ export type CheckboxGroupItem<T = AcceptableValue> = CheckboxProps & {
   value: T;
 };
 
+export type CheckboxGroupRootProps<T = AcceptableValue> = _CheckboxGroupRootProps<T> & {
+  size?: ThemeSize;
+};
+
 export type CheckboxGroupProps<T = AcceptableValue> = CheckboxGroupRootProps<T> &
   Pick<CheckboxProps, 'color' | 'size'> & {
     items?: CheckboxGroupItem<T>[];
@@ -43,4 +49,4 @@ export type CheckboxEmits = CheckboxControlEmits;
 
 export type CheckboxGroupEmits<T = AcceptableValue> = CheckboxGroupRootEmits<T>;
 
-export type { CheckboxGroupRootEmits, CheckedState, CheckboxIndicatorProps, CheckboxGroupRootProps };
+export type { CheckboxGroupRootEmits, CheckedState, CheckboxIndicatorProps };

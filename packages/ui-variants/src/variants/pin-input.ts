@@ -18,17 +18,17 @@ export const pinInputVariants = tv({
         input: `rounded-md border`
       },
       false: {
-        inputRoot: `[&>:first-child]:(rounded-l-md border-l) [&>:last-child]:(rounded-r-md)`
+        input: `first:(rounded-l-md border-l) last:rounded-r-md`
       }
     },
     size: {
       xs: {
-        input: `h-6 w-6 text-xs`,
-        separator: `text-xs`
+        input: `h-6 w-6 text-2xs`,
+        separator: `text-2xs`
       },
       sm: {
-        input: `h-7 w-7 text-sm`,
-        separator: `text-sm`
+        input: `h-7 w-7 text-xs`,
+        separator: `text-xs`
       },
       md: {
         input: `h-8 w-8 text-sm`,
@@ -39,15 +39,52 @@ export const pinInputVariants = tv({
         separator: `text-base`
       },
       xl: {
-        input: `h-10 w-10 text-base`,
-        separator: `text-base`
+        input: `h-10 w-10 text-lg`,
+        separator: `text-lg`
       },
       '2xl': {
-        input: `h-12 w-12 text-lg`,
-        separator: `text-lg`
+        input: `h-12 w-12 text-xl`,
+        separator: `text-xl`
       }
     }
   },
+  compoundVariants: [
+    {
+      size: 'xs',
+      separate: true,
+      class: {
+        inputRoot: 'gap-0.75'
+      }
+    },
+    {
+      size: 'sm',
+      separate: true,
+      class: {
+        inputRoot: 'gap-875'
+      }
+    },
+    {
+      size: 'lg',
+      separate: true,
+      class: {
+        inputRoot: 'gap-1.25'
+      }
+    },
+    {
+      size: 'xl',
+      separate: true,
+      class: {
+        inputRoot: 'gap-1.5'
+      }
+    },
+    {
+      size: '2xl',
+      separate: true,
+      class: {
+        inputRoot: 'gap-1.75'
+      }
+    }
+  ],
   defaultVariants: {
     size: 'md',
     separate: false

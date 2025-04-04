@@ -20,13 +20,11 @@ export interface NumberFieldInputProps extends _NumberFieldInputProps {
 export interface NumberFieldDecrementProps extends _NumberFieldDecrementProps {
   size?: ThemeSize;
   center?: boolean;
-  iconClass?: ClassValue;
 }
 
 export interface NumberFieldIncrementProps extends _NumberFieldIncrementProps {
   size?: ThemeSize;
   center?: boolean;
-  iconClass?: ClassValue;
 }
 
 export type NumberFieldUi = Partial<Record<NumberFieldSlots, ClassValue>>;

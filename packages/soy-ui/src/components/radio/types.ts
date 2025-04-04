@@ -17,7 +17,9 @@ export interface RadioControlProps extends _RadioControlProps {
   size?: ThemeSize;
 }
 
-export interface RadioRootProps extends ClassValueProp {}
+export interface RadioRootProps extends ClassValueProp {
+  size?: ThemeSize;
+}
 
 export interface RadioLabelProps extends LabelProps {}
 

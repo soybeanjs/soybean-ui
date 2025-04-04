@@ -4,10 +4,8 @@ import { tv } from 'tailwind-variants';
 export const numberFieldVariants = tv({
   slots: {
     root: 'flex items-center w-full rounded-md border border-input bg-background focus-within:(border-input ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)',
-    decrement: `flex h-full shrink-0 items-center justify-center bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,
-    decrementIcon: '',
-    increment: `flex h-full shrink-0 items-center justify-center bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,
-    incrementIcon: '',
+    decrement: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,
+    increment: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none disabled:(cursor-not-allowed opacity-20)`,
     input: [
       `h-full w-full grow bg-transparent`,
       `placeholder:text-muted-foreground outline-none disabled:(cursor-not-allowed opacity-50)`
@@ -16,45 +14,39 @@ export const numberFieldVariants = tv({
   variants: {
     size: {
       xs: {
-        decrement: 'p-1',
-        decrementIcon: 'text-xs',
-        increment: 'p-1',
-        incrementIcon: 'text-xs',
+        root: 'text-2xs',
+        decrement: 'p-0.75',
+        increment: 'p-0.75',
         input: 'h-6 text-xs'
       },
       sm: {
-        decrement: 'p-1.25',
-        decrementIcon: 'text-sm',
-        increment: 'p-1.25',
-        incrementIcon: 'text-sm',
+        root: 'text-xs',
+        decrement: 'p-1',
+        increment: 'p-1',
         input: 'h-7 text-sm'
       },
       md: {
+        root: 'text-sm',
         decrement: 'p-1.25',
-        decrementIcon: 'text-sm',
         increment: 'p-1.25',
-        incrementIcon: 'text-sm',
         input: 'h-8 text-sm'
       },
       lg: {
+        root: 'text-base',
         decrement: 'p-1.5',
-        decrementIcon: 'text-base',
         increment: 'p-1.5',
-        incrementIcon: 'text-base',
         input: 'h-9 text-base'
       },
       xl: {
-        decrement: 'p-1.5',
-        decrementIcon: 'text-lg',
-        increment: 'p-1.5',
-        incrementIcon: 'text-lg',
+        root: 'text-lg',
+        decrement: 'p-1.75',
+        increment: 'p-1.75',
         input: 'h-10 text-base'
       },
       '2xl': {
+        root: 'text-xl',
         decrement: 'p-2',
-        decrementIcon: 'text-xl',
         increment: 'p-2',
-        incrementIcon: 'text-xl',
         input: 'h-12 text-lg'
       }
     },

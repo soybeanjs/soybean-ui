@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '@soybean-ui/primitives';
 import { checkboxVariants, cn } from '@soybean-ui/variants';
 import type { CheckboxRootProps } from './types';
 
@@ -8,15 +7,17 @@ defineOptions({
   name: 'SCheckboxRoot'
 });
 
-const { class: cls } = defineProps<CheckboxRootProps>();
+const { class: cls, size } = defineProps<CheckboxRootProps>();
 
-const { root } = checkboxVariants();
+const mergedCls = computed(() => {
+  const { root } = checkboxVariants({ size });
 
-const mergedCls = computed(() => cn(root(), cls));
+  return cn(root(), cls);
+});
 </script>
 
 <template>
-  <Primitive as="div" :class="mergedCls">
+  <div :class="mergedCls">
     <slot />
-  </Primitive>
+  </div>
 </template>

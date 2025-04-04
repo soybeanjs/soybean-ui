@@ -17,7 +17,7 @@ const emit = defineEmits<RadioGroupRootEmits>();
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { group } = radioVariants({ orientation });
+  const { group } = radioVariants({ size, orientation });
 
   return cn(group(), cls || ui?.root);
 });

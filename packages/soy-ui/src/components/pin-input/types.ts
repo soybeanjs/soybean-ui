@@ -8,6 +8,7 @@ import type {
 import type { PinInputSlots, ThemeSize } from '@soybean-ui/variants';
 
 export interface PinInputInputRootProps extends ClassValueProp {
+  size?: ThemeSize;
   separate?: boolean;
 }
 

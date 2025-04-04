@@ -3,13 +3,13 @@ import { tv } from 'tailwind-variants';
 
 export const checkboxVariants = tv({
   slots: {
-    root: 'flex items-center gap-2',
+    root: 'flex items-center',
     control: [
       'peer shrink-0 rounded-sm border shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
-    groupRoot: 'flex gap-2',
+    groupRoot: 'flex',
     label: ''
   },
   variants: {
@@ -41,22 +41,34 @@ export const checkboxVariants = tv({
     },
     size: {
       xs: {
-        control: 'size-3'
+        root: 'gap-1.5',
+        control: 'size-3',
+        groupRoot: 'gap-x-2 gap-y-1.5'
       },
       sm: {
-        control: 'size-3.5'
+        root: 'gap-1.75',
+        control: 'size-3.5',
+        groupRoot: 'gap-x-2.5 gap-y-1.75'
       },
       md: {
-        control: 'size-4'
+        root: 'gap-2',
+        control: 'size-4',
+        groupRoot: 'gap-x-3 gap-y-2'
       },
       lg: {
-        control: 'size-4.5'
+        root: 'gap-2.5',
+        control: 'size-4.5',
+        groupRoot: 'gap-x-3.5 gap-y-2.5'
       },
       xl: {
-        control: 'size-5'
+        root: 'gap-3',
+        control: 'size-5',
+        groupRoot: 'gap-x-4 gap-y-3'
       },
       '2xl': {
-        control: 'size-6'
+        root: 'gap-3.5',
+        control: 'size-6',
+        groupRoot: 'gap-x-4.5 gap-y-3.5'
       }
     },
     orientation: {

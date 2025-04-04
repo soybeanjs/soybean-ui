@@ -30,7 +30,7 @@ const hasSeparator = computed(() => separate || Boolean(slots.separator));
 <template>
   <PinInputRoot v-bind="forwarded" :class="cls || ui?.root">
     <slot>
-      <PinInputInputRoot :separate="hasSeparator" :class="ui?.inputRoot">
+      <PinInputInputRoot :class="ui?.inputRoot" :size="size" :separate="hasSeparator">
         <template v-for="(_item, index) in inputCount" :key="index">
           <PinInputInput :class="ui?.input" :size="size" :separate="hasSeparator" :index="index" />
           <template v-if="index < inputCount - 1">

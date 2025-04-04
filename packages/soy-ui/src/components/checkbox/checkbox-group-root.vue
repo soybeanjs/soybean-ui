@@ -9,14 +9,14 @@ defineOptions({
   name: 'SCheckboxGroupRoot'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<CheckboxGroupRootProps>();
+const { class: cls, size, orientation, ...delegatedProps } = defineProps<CheckboxGroupRootProps>();
 
 const emit = defineEmits<CheckboxGroupRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { groupRoot } = checkboxVariants({ orientation });
+  const { groupRoot } = checkboxVariants({ size, orientation });
 
   return cn(groupRoot(), cls);
 });

@@ -21,7 +21,7 @@ const radioId = computed(() => id || `radio-${defaultId}`);
 </script>
 
 <template>
-  <SRadioRoot :class="cls || ui?.root">
+  <SRadioRoot :class="cls || ui?.root" :size="size">
     <SRadioControl v-bind="forwardedProps" :id="radioId" :class="ui?.control" :size="size">
       <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
         <SRadioIndicator :class="ui?.indicator" :color="color" :force-mount="forceMountIndicator" />

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive, useForwardProps } from '@soybean-ui/primitives';
+import { useForwardProps } from '@soybean-ui/primitives';
 import { cn, inputVariants } from '@soybean-ui/variants';
 import type { InputEmits, InputProps } from './types';
 
@@ -22,11 +22,5 @@ function handleInput(event: Event) {
 </script>
 
 <template>
-  <Primitive
-    as="input"
-    v-bind="forwardedProps"
-    :value="modelValue || defaultValue"
-    :class="mergedCls"
-    @input="handleInput"
-  />
+  <input v-bind="forwardedProps" :value="modelValue || defaultValue" :class="mergedCls" @input="handleInput" />
 </template>

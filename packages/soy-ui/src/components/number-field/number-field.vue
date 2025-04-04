@@ -32,7 +32,6 @@ const forwarded = useForwardPropsEmits(rootProps, emit);
       :class="ui?.decrement"
       :size="size"
       :center="center"
-      :icon-class="ui?.decrementIcon"
       :disabled="disabled || disabledDecrement"
     >
       <slot name="decrement-icon" />
@@ -41,7 +40,6 @@ const forwarded = useForwardPropsEmits(rootProps, emit);
       :class="ui?.increment"
       :size="size"
       :center="center"
-      :icon-class="ui?.incrementIcon"
       :disabled="disabled || disabledIncrement"
     >
       <slot name="increment-icon" />
