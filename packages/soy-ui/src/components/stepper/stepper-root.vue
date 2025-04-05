@@ -8,14 +8,14 @@ defineOptions({
   name: 'SStepperRoot'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<StepperRootProps>();
+const { class: cls, size, orientation, ...delegatedProps } = defineProps<StepperRootProps>();
 
 const emit = defineEmits<StepperRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { root } = stepperVariants({ orientation });
+  const { root } = stepperVariants({ size, orientation });
 
   return cn(root(), cls);
 });

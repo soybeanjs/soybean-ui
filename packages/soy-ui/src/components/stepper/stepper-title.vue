@@ -8,11 +8,13 @@ defineOptions({
   name: 'SStepperTitle'
 });
 
-const { class: cls } = defineProps<StepperTitleProps>();
+const { class: cls, size } = defineProps<StepperTitleProps>();
 
-const { title } = stepperVariants();
+const mergedCls = computed(() => {
+  const { title } = stepperVariants({ size });
 
-const mergedCls = computed(() => cn(title(), cls));
+  return cn(title(), cls);
+});
 </script>
 
 <template>

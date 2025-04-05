@@ -8,11 +8,13 @@ defineOptions({
   name: 'SStepperTrigger'
 });
 
-const { class: cls, as, asChild } = defineProps<StepperTriggerProps>();
+const { class: cls, size, as, asChild } = defineProps<StepperTriggerProps>();
 
-const { trigger } = stepperVariants();
+const mergedCls = computed(() => {
+  const { trigger } = stepperVariants({ size });
 
-const mergedCls = computed(() => cn(trigger(), cls));
+  return cn(trigger(), cls);
+});
 </script>
 
 <template>

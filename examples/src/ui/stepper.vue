@@ -1,10 +1,14 @@
 <script setup lang="ts">
+import type { Component } from 'vue';
 import { SCard, SStepper } from 'soy-ui';
-import type { StepperOptionData } from 'soy-ui';
+import type { StepperOptionData, StepperState, ThemeSize } from 'soy-ui';
+import { Check, Pen } from 'lucide-vue-next';
 
 defineOptions({
   name: 'DemoStepper'
 });
+
+const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const items: StepperOptionData[] = [
   {
@@ -23,15 +27,32 @@ const items: StepperOptionData[] = [
     description: 'Start collaborating with your team'
   }
 ];
+
+const stateIcon: Record<Exclude<StepperState, 'inactive'>, Component> = {
+  completed: Check,
+  active: Pen
+};
 </script>
 
 <template>
   <div class="flex-c gap-4">
     <SCard title="Default" split>
-      <SStepper :items="items" />
+      <div class="flex-c gap-4">
+        <SStepper v-for="size in sizes" :key="size" :items="items" :size="size" />
+      </div>
     </SCard>
     <SCard title="Vertical" split>
-      <SStepper :items="items" orientation="vertical" />
+      <div class="flex gap-4">
+        <SStepper v-for="size in sizes" :key="size" :items="items" orientation="vertical" :size="size" />
+      </div>
+    </SCard>
+    <SCard title="Custom Indicator" split>
+      <SStepper :items="items">
+        <template #indicator="{ state, index }">
+          <component :is="stateIcon[state]" v-if="state !== 'inactive'" />
+          <span v-else>{{ index + 1 }}</span>
+        </template>
+      </SStepper>
     </SCard>
   </div>
 </template>

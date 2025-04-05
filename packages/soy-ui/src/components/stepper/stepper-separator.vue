@@ -8,12 +8,12 @@ defineOptions({
   name: 'SStepperSeparator'
 });
 
-const { class: cls, orientation, ...delegatedProps } = defineProps<StepperSeparatorProps>();
+const { class: cls, size, orientation, ...delegatedProps } = defineProps<StepperSeparatorProps>();
 
 const forwardedProps = useForwardProps(delegatedProps);
 
 const mergedCls = computed(() => {
-  const { separator } = stepperVariants({ orientation });
+  const { separator } = stepperVariants({ size, orientation });
 
   return cn(separator(), cls);
 });
