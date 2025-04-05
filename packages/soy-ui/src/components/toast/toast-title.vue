@@ -8,11 +8,13 @@ defineOptions({
   name: 'SToastTitle'
 });
 
-const { class: cls } = defineProps<ToastTitleProps>();
+const { class: cls, size } = defineProps<ToastTitleProps>();
 
-const { title } = toastVariants();
+const mergedCls = computed(() => {
+  const { title } = toastVariants({ size });
 
-const mergedCls = computed(() => cn(title(), cls));
+  return cn(title(), cls);
+});
 </script>
 
 <template>

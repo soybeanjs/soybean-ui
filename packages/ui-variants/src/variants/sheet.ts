@@ -13,10 +13,10 @@ export const sheetVariants = tv({
   variants: {
     size: {
       xs: {
-        content: `gap-y-1.5 px-2 py-1.5 text-xs`
+        content: `gap-y-1.5 px-2 py-1.5 text-2xs`
       },
       sm: {
-        content: `gap-y-2 px-3 py-2 text-sm`
+        content: `gap-y-2 px-3 py-2 text-xs`
       },
       md: {
         content: `gap-y-3 px-4 py-3 text-sm`
@@ -25,10 +25,10 @@ export const sheetVariants = tv({
         content: `gap-y-4 px-5 py-4 text-base`
       },
       xl: {
-        content: `gap-y-5 px-6 py-5 text-base`
+        content: `gap-y-5 px-6 py-5 text-lg`
       },
       '2xl': {
-        content: `gap-y-6 px-7 py-6 text-lg`
+        content: `gap-y-6 px-7 py-6 text-xl`
       }
     },
     side: {

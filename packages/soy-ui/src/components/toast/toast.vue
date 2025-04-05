@@ -15,7 +15,7 @@ defineOptions({
   name: 'SToast'
 });
 
-const { class: cls, ui } = defineProps<ToastProps>();
+const { class: cls, size, ui } = defineProps<ToastProps>();
 
 const { toasts } = useToast();
 
@@ -48,7 +48,7 @@ const iconRecord: Record<ToastIconType, { icon: FunctionalComponent<LucideProps>
     @update:open="toast.onOpenChange"
   >
     <div class="grid gap-1">
-      <SToastTitle v-if="toast.title" :class="ui?.title">
+      <SToastTitle v-if="toast.title" :class="ui?.title" :size="size">
         <template v-if="toast.iconType" #title-leading>
           <component :is="iconRecord[toast.iconType].icon" :class="iconRecord[toast.iconType].class" />
         </template>
@@ -62,7 +62,7 @@ const iconRecord: Record<ToastIconType, { icon: FunctionalComponent<LucideProps>
           {{ toast.description }}
         </SToastDescription>
       </template>
-      <SToastClose :class="ui?.close" />
+      <SToastClose :class="ui?.close" :size="size" />
     </div>
     <component :is="toast.action" :class="ui?.action" />
   </SToastRoot>

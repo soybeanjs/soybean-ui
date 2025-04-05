@@ -5,17 +5,18 @@ import { cn, toastVariants } from '@soybean-ui/variants';
 import type { ToastRootEmits, ToastRootProps } from './types';
 
 defineOptions({
-  name: 'SToastRoot'
+  name: 'SToastRoot',
+  inheritAttrs: false
 });
 
-const { class: cls, iconType: _iconType, richColor, ...delegatedProps } = defineProps<ToastRootProps>();
+const { class: cls, size, iconType: _iconType, richColor, ...delegatedProps } = defineProps<ToastRootProps>();
 
 const emit = defineEmits<ToastRootEmits>();
 
 const forwarded = useForwardPropsEmits(delegatedProps, emit);
 
 const mergedCls = computed(() => {
-  const { root } = toastVariants({ richColor });
+  const { root } = toastVariants({ size, richColor });
 
   return cn(root(), cls);
 });

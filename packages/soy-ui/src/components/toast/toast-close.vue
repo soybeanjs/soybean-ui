@@ -10,16 +10,18 @@ defineOptions({
   name: 'SToastClose'
 });
 
-const { class: cls } = defineProps<ToastCloseProps>();
+const { class: cls, size } = defineProps<ToastCloseProps>();
 
-const { close } = toastVariants();
+const mergedCls = computed(() => {
+  const { close } = toastVariants({ size });
 
-const mergedCls = computed(() => cn(close(), cls));
+  return cn(close(), cls);
+});
 </script>
 
 <template>
   <ToastClose :class="mergedCls" as-child>
-    <SButtonIcon size="xs">
+    <SButtonIcon fit-content>
       <X />
     </SButtonIcon>
   </ToastClose>

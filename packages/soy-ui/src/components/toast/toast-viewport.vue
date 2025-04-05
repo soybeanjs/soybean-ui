@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastViewport, useForwardProps } from '@soybean-ui/primitives';
+import { ToastViewport } from '@soybean-ui/primitives';
 import { cn, toastVariants } from '@soybean-ui/variants';
 import type { ToastViewportProps } from './types';
 
@@ -8,15 +8,15 @@ defineOptions({
   name: 'SToastViewport'
 });
 
-const { class: cls, ...delegatedProps } = defineProps<ToastViewportProps>();
+const { class: cls, size, hotkey, label } = defineProps<ToastViewportProps>();
 
-const forwarded = useForwardProps(delegatedProps);
+const mergedCls = computed(() => {
+  const { viewport } = toastVariants({ size });
 
-const { viewport } = toastVariants();
-
-const mergedCls = computed(() => cn(viewport(), cls));
+  return cn(viewport(), cls);
+});
 </script>
 
 <template>
-  <ToastViewport v-bind="forwarded" :class="mergedCls" />
+  <ToastViewport :class="mergedCls" :hotkey="hotkey" :label="label" />
 </template>

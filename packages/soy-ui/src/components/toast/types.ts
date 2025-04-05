@@ -3,16 +3,16 @@ import type {
   ClassValue,
   ClassValueProp,
   StringOrVNode,
-  ToastCloseProps,
   ToastDescriptionProps,
   ToastRootEmits,
-  ToastTitleProps,
-  ToastViewportProps,
   ToastActionProps as _ToastActionProps,
+  ToastCloseProps as _ToastCloseProps,
   ToastProviderProps as _ToastProviderProps,
-  ToastRootProps as _ToastRootProps
+  ToastRootProps as _ToastRootProps,
+  ToastTitleProps as _ToastTitleProps,
+  ToastViewportProps as _ToastViewportProps
 } from '@soybean-ui/primitives';
-import type { ThemeColor, ToastSlots } from '@soybean-ui/variants';
+import type { ThemeColor, ThemeSize, ToastSlots } from '@soybean-ui/variants';
 import type { ButtonProps } from '../button';
 
 export type ToastUi = Partial<Record<ToastSlots, ClassValue>>;
@@ -35,14 +35,28 @@ export interface ToastProviderProps extends _ToastProviderProps {
 
 export type ToastIconType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
+export interface ToastViewportProps extends _ToastViewportProps {
+  size?: ThemeSize;
+}
+
 export interface ToastRootProps extends _ToastRootProps {
+  size?: ThemeSize;
   iconType?: ToastIconType;
   richColor?: ThemeColor;
+}
+
+export interface ToastTitleProps extends _ToastTitleProps {
+  size?: ThemeSize;
+}
+
+export interface ToastCloseProps extends _ToastCloseProps {
+  size?: ThemeSize;
 }
 
 export interface ToastActionProps extends _ToastActionProps, ButtonProps {}
 
 export interface ToastProps extends ClassValueProp {
+  size?: ThemeSize;
   ui?: ToastUi;
 }
 
@@ -90,4 +104,4 @@ export interface ToastContext {
   toast(props: Omit<ToastState, 'id'>): ToastReturn;
 }
 
-export type { ToastViewportProps, ToastTitleProps, ToastDescriptionProps, ToastCloseProps, ToastRootEmits };
+export type { ToastDescriptionProps, ToastRootEmits };
