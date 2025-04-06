@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Matcher, WeekDayFormat } from '../../date';
+import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Grid, Matcher, WeekDayFormat } from '../../date';
 import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
 // Root
@@ -91,7 +91,9 @@ export type RangeCalendarRootContext = {
   placeholder: Ref<DateValue>;
   pagedNavigation: Ref<boolean>;
   preventDeselect: Ref<boolean>;
-  weekStartsOn: Ref<0 | 1 | 2 | 3 | 4 | 5 | 6>;
+  grid: Ref<Grid<DateValue>[]>;
+  weekDays: Ref<string[]>;
+  weekStartsOn: Ref<DaysOfWeekNumber>;
   weekdayFormat: Ref<WeekDayFormat>;
   fixedWeeks: Ref<boolean>;
   numberOfMonths: Ref<number>;

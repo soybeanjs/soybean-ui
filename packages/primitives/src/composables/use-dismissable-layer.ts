@@ -122,9 +122,11 @@ export function useFocusOutside(
 
   watchEffect(cleanupFn => {
     if (!isClient) return;
+
     const handleFocus = async (event: FocusEvent) => {
       if (!element?.value) return;
 
+      await nextTick();
       await nextTick();
       if (!element.value || isLayerExist(element.value, event.target as HTMLElement)) return;
 

@@ -4,6 +4,7 @@ import { getLocalTimeZone, isSameDay, isSameMonth, isToday } from '@internationa
 import { getDaysInMonth, isBetweenInclusive, toDate } from '../../date';
 import type { DateValue } from '../../date';
 import { useKbd, usePrimitiveElement } from '../../composables';
+import { getSelectableCells } from '../calendar/shared';
 import { Primitive } from '../primitive';
 import { injectRangeCalendarRootContext } from './context';
 import type { RangeCalendarCellTriggerPropsWithPrimitive } from './types';
@@ -43,8 +44,6 @@ const isHighlighted = computed(() =>
     ? isBetweenInclusive(props.day, rootContext.highlightedRange.value.start, rootContext.highlightedRange.value.end)
     : false
 );
-
-const SELECTOR = `[data-radix-vue-calendar-cell-trigger]:not([data-disabled]):not([data-outside-view]):not([data-outside-visible-view])`;
 
 const isDateToday = computed(() => {
   return isToday(props.day, getLocalTimeZone());
@@ -119,74 +118,97 @@ function handleArrowKey(e: KeyboardEvent) {
   e.preventDefault();
   e.stopPropagation();
   const parentElement = rootContext.parentElement.value!;
-  const allCollectionItems: HTMLElement[] = parentElement ? Array.from(parentElement.querySelectorAll(SELECTOR)) : [];
-
-  const index = allCollectionItems.indexOf(currentElement.value);
-  let newIndex = index;
   const indexIncrementation = 7;
   const sign = rootContext.dir.value === 'rtl' ? -1 : 1;
+  // eslint-disable-next-line default-case
   switch (e.code) {
     case kbd.ARROW_RIGHT:
-      newIndex += sign;
+      shiftFocus(currentElement.value, sign);
       break;
     case kbd.ARROW_LEFT:
-      newIndex -= sign;
+      shiftFocus(currentElement.value, -sign);
       break;
     case kbd.ARROW_UP:
-      newIndex -= indexIncrementation;
+      shiftFocus(currentElement.value, -indexIncrementation);
       break;
     case kbd.ARROW_DOWN:
-      newIndex += indexIncrementation;
+      shiftFocus(currentElement.value, indexIncrementation);
       break;
     case kbd.ENTER:
     case kbd.SPACE_CODE:
       changeDate(e, props.day);
-      return;
-    default:
-      return;
   }
 
-  if (newIndex >= 0 && newIndex < allCollectionItems.length) {
-    allCollectionItems[newIndex].focus();
-    return;
-  }
+  function shiftFocus(node: HTMLElement, add: number) {
+    const allCollectionItems: HTMLElement[] = getSelectableCells(parentElement);
+    if (!allCollectionItems.length) return;
 
-  if (newIndex < 0) {
-    if (rootContext.isPrevButtonDisabled()) return;
-    rootContext.prevPage();
-    nextTick(() => {
-      const newCollectionItems: HTMLElement[] = parentElement
-        ? Array.from(parentElement.querySelectorAll(SELECTOR))
-        : [];
-      if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
-        // Placeholder is set to first month of the new page
-        const numberOfDays = getDaysInMonth(rootContext.placeholder.value);
-        newCollectionItems[numberOfDays - Math.abs(newIndex)].focus();
-        return;
+    const index = allCollectionItems.indexOf(node);
+    const newIndex = index + add;
+
+    if (newIndex >= 0 && newIndex < allCollectionItems.length) {
+      if (allCollectionItems[newIndex].hasAttribute('data-disabled')) {
+        shiftFocus(allCollectionItems[newIndex], add);
       }
-      newCollectionItems[newCollectionItems.length - Math.abs(newIndex)].focus();
-    });
-    return;
-  }
+      allCollectionItems[newIndex].focus();
+      return;
+    }
 
-  if (newIndex >= allCollectionItems.length) {
-    if (rootContext.isNextButtonDisabled()) return;
-    rootContext.nextPage();
-    nextTick(() => {
-      const newCollectionItems: HTMLElement[] = parentElement
-        ? Array.from(parentElement.querySelectorAll(SELECTOR))
-        : [];
+    if (newIndex < 0) {
+      if (rootContext.isPrevButtonDisabled()) return;
+      rootContext.prevPage();
+      nextTick(() => {
+        const newCollectionItems: HTMLElement[] = getSelectableCells(parentElement);
+        if (!newCollectionItems.length) return;
+        if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
+          // Placeholder is set to first month of the new page
+          const numberOfDays = getDaysInMonth(rootContext.placeholder.value);
+          const computedIndex = numberOfDays - Math.abs(newIndex);
+          if (newCollectionItems[computedIndex].hasAttribute('data-disabled')) {
+            shiftFocus(newCollectionItems[computedIndex], add);
+          }
+          newCollectionItems[computedIndex].focus();
+          return;
+        }
+        const computedIndex = newCollectionItems.length - Math.abs(newIndex);
+        if (newCollectionItems[computedIndex].hasAttribute('data-disabled')) {
+          shiftFocus(newCollectionItems[computedIndex], add);
+        }
+        newCollectionItems[computedIndex].focus();
+      });
+      return;
+    }
 
-      if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
-        // Placeholder is set to first month of the new page
-        const numberOfDays = getDaysInMonth(
-          rootContext.placeholder.value.add({ months: rootContext.numberOfMonths.value - 1 })
-        );
-        newCollectionItems[newIndex - allCollectionItems.length + (newCollectionItems.length - numberOfDays)].focus();
-      }
+    if (newIndex >= allCollectionItems.length) {
+      if (rootContext.isNextButtonDisabled()) return;
+      rootContext.nextPage();
+      nextTick(() => {
+        const newCollectionItems: HTMLElement[] = getSelectableCells(parentElement);
+        if (!newCollectionItems.length) return;
 
-      newCollectionItems[newIndex - allCollectionItems.length].focus();
-    });
+        if (!rootContext.pagedNavigation.value && rootContext.numberOfMonths.value > 1) {
+          // Placeholder is set to first month of the new page
+          const numberOfDays = getDaysInMonth(
+            rootContext.placeholder.value.add({ months: rootContext.numberOfMonths.value - 1 })
+          );
+
+          const computedIndex = newIndex - allCollectionItems.length + (newCollectionItems.length - numberOfDays);
+
+          if (newCollectionItems[computedIndex].hasAttribute('data-disabled')) {
+            shiftFocus(newCollectionItems[computedIndex], add);
+          }
+          newCollectionItems[computedIndex].focus();
+          return;
+        }
+
+        const computedIndex = newIndex - allCollectionItems.length;
+        if (newCollectionItems[computedIndex].hasAttribute('data-disabled')) {
+          shiftFocus(newCollectionItems[computedIndex], add);
+        }
+
+        newCollectionItems[computedIndex].focus();
+      });
+    }
   }
 }
 </script>

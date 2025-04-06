@@ -14,6 +14,7 @@ import {
 } from '../../date';
 import type { DateValue, SegmentValueObj, TimeValue } from '../../date';
 import { useDateFormatter, useDirection, useKbd, useLocale, usePrimitiveElement } from '../../composables';
+import { isNullish } from '../../shared';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import { provideTimeFieldRootContext } from './context';
@@ -72,6 +73,10 @@ const modelValue = useVModel(props, 'modelValue', emit, {
 
 const convertedModelValue = computed({
   get() {
+    if (isNullish(modelValue.value)) {
+      return modelValue.value;
+    }
+
     return convertValue(modelValue.value);
   },
   set(newValue) {
@@ -164,16 +169,16 @@ watch(locale, value => {
 
 watch(convertedModelValue, _modelValue => {
   if (
-    _modelValue !== undefined &&
+    !isNullish(_modelValue) &&
     (!isEqualDay(convertedPlaceholder.value, _modelValue) || convertedPlaceholder.value.compare(_modelValue) !== 0)
   )
     placeholder.value = _modelValue.copy();
 });
 
 watch([convertedModelValue, locale], ([_modelValue]) => {
-  if (_modelValue !== undefined) {
+  if (!isNullish(_modelValue)) {
     segmentValues.value = { ...syncTimeSegmentValues({ value: _modelValue, formatter }) };
-  } else if (Object.values(segmentValues.value).every(value => value === null)) {
+  } else if (Object.values(segmentValues.value).every(value => value === null) || isNullish(_modelValue)) {
     segmentValues.value = { ...initialSegments };
   }
 });

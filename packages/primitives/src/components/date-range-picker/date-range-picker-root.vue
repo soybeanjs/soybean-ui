@@ -91,7 +91,7 @@ const open = useVModel(props, 'open', emit, {
 const dateFieldRef = ref<DateRangeFieldRootInstance | undefined>();
 
 watch(modelValue, value => {
-  if (value.start && value.start.compare(placeholder.value) !== 0) {
+  if (value && value.start && value.start.compare(placeholder.value) !== 0) {
     placeholder.value = value.start.copy();
   }
 });

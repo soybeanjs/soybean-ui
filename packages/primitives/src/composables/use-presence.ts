@@ -57,8 +57,14 @@ export function usePresence(present: Ref<boolean>, node: Ref<HTMLElement | undef
     if (currentPresent) {
       dispatch('MOUNT');
       dispatchCustomEvent('enter');
-      if (currentAnimationName === 'none') dispatchCustomEvent('after-enter');
-    } else if (currentAnimationName === 'none' || stylesRef.value?.display === 'none') {
+      if (currentAnimationName === 'none') {
+        dispatchCustomEvent('after-enter');
+      }
+    } else if (
+      currentAnimationName === 'none' ||
+      currentAnimationName === 'undefined' ||
+      stylesRef.value?.display === 'none'
+    ) {
       // If there is no exit animation or the element is hidden, animations won't run
       // so we unmount instantly rv
       dispatch('UNMOUNT');

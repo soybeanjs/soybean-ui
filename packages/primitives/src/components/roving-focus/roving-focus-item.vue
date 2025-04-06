@@ -13,8 +13,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<RovingFocusItemPropsWithPrimitive>(), {
   as: 'span',
-  focusable: true,
-  active: true
+  focusable: true
 });
 
 const { getItems, CollectionItem } = useCollection();
@@ -105,7 +104,7 @@ onUnmounted(() => {
       :as-child="asChild"
       :tabindex="isCurrentTabStop ? 0 : -1"
       :data-orientation="orientation"
-      :data-active="active"
+      :data-active="active ? '' : undefined"
       :data-disabled="!focusable ? '' : undefined"
       @mousedown="handleMousedown"
       @focus="handleFocus"

@@ -54,7 +54,7 @@ function handleFocus(event: FocusEvent) {
     .map(i => i.ref)
     .filter(i => i.dataset.disabled !== '');
 
-  const activeItem = items.find(item => item.getAttribute('data-active') === 'true');
+  const activeItem = items.find(item => item.getAttribute('data-active') === '');
   const currentItem = items.find(item => item.id === currentTabStopId.value);
   const candidateItems = [activeItem, currentItem, ...items].filter(Boolean) as typeof items;
 

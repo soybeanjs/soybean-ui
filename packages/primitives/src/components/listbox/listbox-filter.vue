@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watchSyncEffect } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watchSyncEffect } from 'vue';
 import { useVModel } from '@vueuse/core';
 import { usePrimitiveElement } from '../../composables';
 import { Primitive } from '../primitive';
@@ -22,7 +22,6 @@ const modelValue = useVModel(props, 'modelValue', emit, {
 });
 
 const rootContext = injectListboxRootContext();
-rootContext.focusable.value = false;
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 const disabled = computed(() => props.disabled || rootContext.disabled.value || false);
@@ -38,10 +37,16 @@ function onInput(event: InputEvent) {
 }
 
 onMounted(() => {
+  rootContext.focusable.value = false;
+
   setTimeout(() => {
     // make sure all DOM was flush then only capture the focus
     if (props.autoFocus) currentElement.value?.focus();
   }, 1);
+});
+
+onUnmounted(() => {
+  rootContext.focusable.value = true;
 });
 </script>
 

@@ -175,6 +175,8 @@ provideCalendarRootContext({
   disabled,
   initialFocus,
   pagedNavigation,
+  grid,
+  weekDays: weekdays,
   weekStartsOn,
   weekdayFormat,
   fixedWeeks,

@@ -10,6 +10,10 @@ defineOptions({
 
 const props = defineProps<VisuallyHiddenInputBubbleProps<T>>();
 
+const isFormArrayEmptyAndRequired = computed(
+  () => typeof props.value === 'object' && Array.isArray(props.value) && props.value.length === 0 && props.required
+);
+
 const parsedValue = computed(() => {
   // if primitive value
   if (typeof props.value === 'string' || typeof props.value === 'number' || typeof props.value === 'boolean') {
@@ -38,10 +42,19 @@ const parsedValue = computed(() => {
 
 <template>
   <VisuallyHiddenInputBubble
-    v-for="parsed in parsedValue"
-    :key="parsed.name"
+    v-if="isFormArrayEmptyAndRequired"
+    :key="name"
     v-bind="{ ...props, ...$attrs }"
-    :name="parsed.name"
-    :value="parsed.value"
+    :name="name"
+    :value="value"
   />
+  <template v-else>
+    <VisuallyHiddenInputBubble
+      v-for="parsed in parsedValue"
+      :key="parsed.name"
+      v-bind="{ ...props, ...$attrs }"
+      :name="parsed.name"
+      :value="parsed.value"
+    />
+  </template>
 </template>

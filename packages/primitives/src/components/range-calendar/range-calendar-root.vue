@@ -147,9 +147,10 @@ const {
   allowNonContiguousRanges
 });
 
+// eslint-disable-next-line complexity
 watch(modelValue, (_modelValue, _prevValue) => {
   if (
-    (!_prevValue.start && _modelValue?.start) ||
+    (!_prevValue?.start && _modelValue?.start) ||
     !_modelValue ||
     !_modelValue.start ||
     (startValue.value && !isEqualDay(_modelValue.start, startValue.value))
@@ -158,7 +159,7 @@ watch(modelValue, (_modelValue, _prevValue) => {
   }
 
   if (
-    (!_prevValue.end && _modelValue.end) ||
+    (!_prevValue?.end && _modelValue?.end) ||
     !_modelValue ||
     !_modelValue.end ||
     (endValue.value && !isEqualDay(_modelValue.end, endValue.value))
@@ -227,6 +228,8 @@ provideRangeCalendarRootContext({
   disabled,
   initialFocus,
   pagedNavigation,
+  grid,
+  weekDays: weekdays,
   weekStartsOn,
   weekdayFormat,
   fixedWeeks,
