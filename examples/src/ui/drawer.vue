@@ -19,7 +19,7 @@ defineOptions({
       </p>
       <template #footer>
         <SDrawerClose as-child>
-          <SButton variant="outline">Cancel</SButton>
+          <SButton variant="plain">Cancel</SButton>
         </SDrawerClose>
         <SButton>Submit</SButton>
       </template>

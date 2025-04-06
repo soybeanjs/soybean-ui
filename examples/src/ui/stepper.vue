@@ -42,7 +42,7 @@ const stateIcon: Record<Exclude<StepperState, 'inactive'>, Component> = {
       </div>
     </SCard>
     <SCard title="Vertical" split>
-      <div class="flex gap-4">
+      <div class="flex flex-wrap gap-4">
         <SStepper v-for="size in sizes" :key="size" :items="items" orientation="vertical" :size="size" />
       </div>
     </SCard>

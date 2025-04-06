@@ -1,4 +1,5 @@
-<script setup lang="tsx">
+<script setup lang="ts">
+import { h } from 'vue';
 import { SButton, SCard, SToastAction, useToast } from 'soy-ui';
 
 defineOptions({
@@ -43,7 +44,7 @@ function openToastWithAction() {
   toast({
     title: 'Action',
     description: 'This is a toast with action',
-    action: <SToastAction altText="Click me">Click me</SToastAction>
+    action: h(SToastAction, { altText: 'Click me' }, () => 'Click me')
   });
 }
 </script>

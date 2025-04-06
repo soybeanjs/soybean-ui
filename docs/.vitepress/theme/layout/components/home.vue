@@ -31,13 +31,13 @@ defineOptions({
         size="xl"
         href="/docs/overview/getting-started.html"
         target="_self"
-        class="lt-sm:w-4/5"
+        class="lt-sm:w-full"
       >
         Get started
       </SButtonLink>
-      <SButtonLink variant="pure" size="xl" href="/docs/components/button.html" target="_self" class="lt-sm:w-4/5">
-        Explore components
-        <Icon icon="lucide:arrow-right" />
+      <SButtonLink variant="pure" size="xl" href="/docs/components/button.html" target="_self" class="lt-sm:w-full">
+        <span class="whitespace-nowrap">Explore components</span>
+        <Icon icon="lucide:arrow-right" class="shrink-0" />
       </SButtonLink>
     </div>
   </div>
