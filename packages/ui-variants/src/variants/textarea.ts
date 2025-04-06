@@ -9,7 +9,7 @@ export const textareaVariants = tv({
       `flex w-full rounded-md border border-solid border-input bg-background`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)`
     ],
-    count: 'absolute z-1 lh-none text-muted-foreground'
+    count: 'absolute z-2 lh-none text-muted-foreground'
   },
   variants: {
     size: {

@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const navigationMenuVariants = tv({
   slots: {
-    root: `relative z-1 w-full flex justify-center`,
+    root: `relative z-2 w-full flex justify-center`,
     viewportRoot: `perspective-2000px absolute top-full left-0 flex w-full justify-center`,
     viewport: [
       `origin-top-center relative w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg`,
@@ -21,7 +21,7 @@ export const navigationMenuVariants = tv({
     item: `list-none`,
     itemIcon: 'shrink-0 text-muted-foreground',
     trigger: [
-      `group inline-flex w-max items-center justify-center rounded-md bg-background font-medium transition-colors-200`,
+      `group inline-flex w-max items-center justify-center rounded-md bg-background font-medium transition-colors-200 decoration-none`,
       `hover:(bg-accent text-accent-foreground)`,
       `focus:(bg-accent text-accent-foreground outline-none)`,
       `disabled:(pointer-events-none opacity-50)`,
@@ -30,12 +30,12 @@ export const navigationMenuVariants = tv({
     ],
     triggerIcon: `relative top-px transition duration-200 group-data-[state=open]:rotate-180`,
     indicator: [
-      `absolute top-full z-1 flex mt-1px w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
+      `absolute top-full z-2 flex mt-1px w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
       `data-[state=visible]:(animate-in fade-in-0)`,
       `data-[state=hidden]:(animate-out fade-out-0)`
     ],
     link: [
-      `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer`,
+      `group relative w-full flex items-center rounded-md font-medium outline-none cursor-pointer decoration-none`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
@@ -44,7 +44,7 @@ export const navigationMenuVariants = tv({
     childList: `grid grid-cols-[auto_auto] list-none my-0`,
     childListItem: `list-none`,
     childLink: [
-      `flex items-start select-none rounded-md leading-none no-underline outline-none transition-colors-200 cursor-pointer`,
+      `flex items-start select-none rounded-md leading-none no-underline outline-none transition-colors-200 cursor-pointer decoration-none`,
       `focus:(bg-accent text-accent-foreground) hover:(bg-accent text-accent-foreground)`
     ],
     childLinkIcon: 'shrink-0 text-muted-foreground',

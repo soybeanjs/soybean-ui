@@ -19,8 +19,7 @@ export const stepperVariants = tv({
     titleDescWrapper: 'flex flex-col',
     title: 'font-semibold whitespace-nowrap',
     description: 'text-muted-foreground',
-    trigger:
-      'shrink-0 flex flex-col items-center text-center z-10 data-[state=active]:(ring-2 ring-primary ring-offset-2 ring-offset-background)'
+    trigger: `shrink-0 flex flex-col items-center text-center z-10 data-[state=active]:(ring-2 ring-primary ring-offset-2 ring-offset-background)`
   },
   variants: {
     size: {
@@ -63,6 +62,7 @@ export const stepperVariants = tv({
     },
     orientation: {
       horizontal: {
+        root: 'items-start',
         item: 'flex-col items-center justify-center',
         titleDescWrapper: 'items-center text-center',
         separator: 'h-0.125rem'

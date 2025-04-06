@@ -7,11 +7,11 @@ export const tabsVariants = tv({
     root: `flex`,
     list: 'relative inline-flex justify-center items-center rounded-md bg-muted text-muted-foreground',
     trigger: [
-      `relative z-2 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
+      `relative z-3 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
-    indicatorRoot: `absolute top-0 left-0 z-1 transition-[width,height,transform] duration-300`,
+    indicatorRoot: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
     indicator: `size-full rounded-md bg-background shadow`,
     content: `flex-grow self-stretch overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
   },

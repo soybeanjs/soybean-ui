@@ -10,7 +10,7 @@ export const resizableVariants = tv({
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)',
       '[&[data-orientation=vertical]]:(h-px w-full) [&[data-orientation=vertical]]:after:(left-0 h-1 w-full -translate-y-1 translate-x-0) [&[data-orientation=vertical]>div]:rotate-90'
     ],
-    handleIconRoot: 'z-10 flex items-center justify-center rounded-sm border bg-border',
+    handleIconRoot: 'z-2 flex items-center justify-center rounded-sm border bg-border',
     handleIcon: ''
   },
   variants: {

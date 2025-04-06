@@ -10,7 +10,7 @@ export const menubarVariants = tv({
       `data-[state=open]:(bg-accent text-accent-foreground)`
     ],
     triggerLink: [
-      `flex cursor-pointer select-none items-center rounded-sm font-medium outline-none`,
+      `flex cursor-pointer select-none items-center rounded-sm font-medium outline-none decoration-none`,
       `focus:(bg-accent text-accent-foreground)`,
       `data-[state=open]:(bg-accent text-accent-foreground)`
     ]

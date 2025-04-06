@@ -22,7 +22,7 @@ export const menuVariants = tv({
     ],
     itemIcon: `shrink-0 text-muted-foreground`,
     itemLink: [
-      `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
+      `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none decoration-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
