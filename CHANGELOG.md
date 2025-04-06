@@ -1,6 +1,110 @@
 # Changelog
 
 
+## [v0.0.2-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.1...v0.0.2-beta.2) (2025-04-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - Add button color examples and update preview components t… &nbsp;-&nbsp; by @Azir-11 in https://github.com/soybeanjs/soybean-ui/issues/70 [<samp>(6595e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6595e07)
+- **packages**:
+  - tabs support `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(62290)</samp>](https://github.com/soybeanjs/soybean-ui/commit/62290fc)
+  - ui: segment support `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(d27f8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d27f8fd)
+  - ui: slider support `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(f06a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f06a97a)
+  - navigation-menu support `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(055b4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/055b4e5)
+  - add `useThemeSize` to control sizable components &nbsp;-&nbsp; by @soybeanjs [<samp>(96598)</samp>](https://github.com/soybeanjs/soybean-ui/commit/96598a7)
+  - menubar support `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(40b35)</samp>](https://github.com/soybeanjs/soybean-ui/commit/40b35f8)
+- **projects**:
+  - add script to generate examples code &nbsp;-&nbsp; by @soybeanjs [<samp>(67449)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6744908)
+  - new theme size approach by changing the root element size &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/69 [<samp>(0c114)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c114cb)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**:
+  - ui: fix card types &nbsp;-&nbsp; by @soybeanjs [<samp>(3bdd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3bdd4ee)
+  - ui: fix config-provider theme &nbsp;-&nbsp; by @soybeanjs [<samp>(c750a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c750aae)
+- **projects**:
+  - fix example keyboard-key &nbsp;-&nbsp; by @soybeanjs [<samp>(236b8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/236b808)
+  - fix import STag to SBadge &nbsp;-&nbsp; by @soybeanjs [<samp>(4b3d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4b3d48f)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **components**:
+  - optimize `ThemeCustomizer` & add size config &nbsp;-&nbsp; by @soybeanjs [<samp>(541fb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/541fb88)
+  - primitives: optimize `useCombinedPropsEmits` &nbsp;-&nbsp; by @soybeanjs [<samp>(1e803)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1e80395)
+- **packages**:
+  - optimize segment and tabs types &nbsp;-&nbsp; by @soybeanjs [<samp>(d7a0f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7a0fa4)
+  - ui: optimize tabs &nbsp;-&nbsp; by @soybeanjs [<samp>(eee67)</samp>](https://github.com/soybeanjs/soybean-ui/commit/eee67fd)
+  - optimize tabs &nbsp;-&nbsp; by @soybeanjs [<samp>(b8eb9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b8eb92a)
+  - ui: optimize accordion and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(ac035)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ac03569)
+  - ui: optimize button and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(0498e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0498ed6)
+  - ui: optimize alert and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(145f7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/145f739)
+  - ui: optimize dialog and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(af5c8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/af5c8d3)
+  - ui: optimize avatar and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(a2093)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a20934d)
+  - ui: optimize badge and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(8dac6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8dac688)
+  - ui: optimize breadcrumb and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(de787)</samp>](https://github.com/soybeanjs/soybean-ui/commit/de78776)
+  - ui: optimize card and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(08a6d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/08a6d5a)
+  - ui: optimize chip and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(79e70)</samp>](https://github.com/soybeanjs/soybean-ui/commit/79e70eb)
+  - ui: optimize collapsible and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(9b09b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9b09b21)
+  - ui: optimize combobox and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(e7afb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e7afb7e)
+  - ui: optimize dialog and adapt to ThemeSize &nbsp;-&nbsp; by @soybeanjs [<samp>(ed164)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ed16488)
+  - variants: optimize combobox &nbsp;-&nbsp; by @soybeanjs [<samp>(08049)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0804924)
+  - optimize components for menu categories &nbsp;-&nbsp; by @soybeanjs [<samp>(db76e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/db76ec3)
+  - ui: optimize form &nbsp;-&nbsp; by @soybeanjs [<samp>(9a5ec)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9a5ec1e)
+  - ui: optimize carousel, hover-card, popover, tooltip &nbsp;-&nbsp; by @soybeanjs [<samp>(301f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/301f3e8)
+  - ui: optimize input, number-field, radio, checkbox &nbsp;-&nbsp; by @soybeanjs [<samp>(2a906)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2a90648)
+  - ui: optimize tabs, segment &nbsp;-&nbsp; by @soybeanjs [<samp>(62c91)</samp>](https://github.com/soybeanjs/soybean-ui/commit/62c91e5)
+  - optimize keyboard-key, pagination, progress, resizable, scroll-area &nbsp;-&nbsp; by @soybeanjs [<samp>(d8147)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d814719)
+  - ui: optimize combobox, select &nbsp;-&nbsp; by @soybeanjs [<samp>(0d1d2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0d1d235)
+  - optimize slider, switch, tags-input, textarea, separator &nbsp;-&nbsp; by @soybeanjs [<samp>(59a3b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/59a3b78)
+  - ui: optimize toast, drawer, sheet &nbsp;-&nbsp; by @soybeanjs [<samp>(4060b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4060b48)
+  - ui: optimize stepper &nbsp;-&nbsp; by @soybeanjs [<samp>(7f914)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7f91486)
+  - optimize variants &nbsp;-&nbsp; by @soybeanjs [<samp>(f8c45)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f8c4514)
+- **projects**:
+  - optimize navigation-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(4aae4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4aae48b)
+  - update components names &nbsp;-&nbsp; by @soybeanjs [<samp>(9f379)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9f379e4)
+  - remove size control by self of examples &nbsp;-&nbsp; by @soybeanjs [<samp>(d295a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d295a5e)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **packages**:
+  - refactor `badge` to `chip` &nbsp;-&nbsp; by @soybeanjs [<samp>(245dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/245dce0)
+  - refactor `tag` to `badge` &nbsp;-&nbsp; by @soybeanjs [<samp>(3fa4a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3fa4a05)
+  - move PrimitiveProps to common types.ts file &nbsp;-&nbsp; by @soybeanjs [<samp>(b3e79)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b3e7910)
+  - ui: optimize checkbox and adapt to `ThemeSize` &nbsp;-&nbsp; by @soybeanjs [<samp>(7214a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7214a8f)
+- **projects**:
+  - rename ThemeSize `xx` to `2xl` &nbsp;-&nbsp; by @soybeanjs [<samp>(0f0dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0f0dc09)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**:
+  - add `ComponentPreview` for docs &nbsp;-&nbsp; by @soybeanjs [<samp>(45aa5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/45aa5ba)
+  - add examples code preview &nbsp;-&nbsp; by @soybeanjs [<samp>(7775d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7775d23)
+  - change code.json setup &nbsp;-&nbsp; by @soybeanjs [<samp>(d9d8e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d9d8e92)
+  - fix shiki error in safari &nbsp;-&nbsp; by @soybeanjs [<samp>(6e147)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6e147f0)
+  - optimize docs &nbsp;-&nbsp; by @soybeanjs [<samp>(0a94d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0a94d0b)
+  - optimize home button style &nbsp;-&nbsp; by @soybeanjs [<samp>(93aaa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/93aaa09)
+  - update code.json &nbsp;-&nbsp; by @soybeanjs [<samp>(7964c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7964c82)
+  - update code.json &nbsp;-&nbsp; by @soybeanjs [<samp>(e59b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e59b673)
+  - header support language switch &nbsp;-&nbsp; by @Azir-11 in https://github.com/soybeanjs/soybean-ui/issues/68 [<samp>(ff6f4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ff6f4c6)
+  - update code.json &nbsp;-&nbsp; by @soybeanjs [<samp>(e2bcd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e2bcd4f)
+  - optimize docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(c1bfd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c1bfd61)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(11ab2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/11ab213)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4ffbd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4ffbd98)
+- **projects**:
+  - sync code change from rekai-ui &nbsp;-&nbsp; by @soybeanjs [<samp>(f1b7d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f1b7d45)
+  - update package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(a768c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a768cf5)
+  - add scripts generateUinames &nbsp;-&nbsp; by @soybeanjs [<samp>(5ccfe)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ccfe5e)
+  - sync code from reka-ui &nbsp;-&nbsp; by @soybeanjs [<samp>(6b3ec)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b3ec5b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![Azir-11](https://github.com/Azir-11.png?size=48)](https://github.com/Azir-11)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.1...v0.0.2-beta.1) (2025-03-23)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
