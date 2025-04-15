@@ -19,12 +19,14 @@ const props = withDefaults(defineProps<DrawerRootProps>(), {
   activeSnapPoint: undefined,
   snapPoints: undefined,
   shouldScaleBackground: undefined,
+  setBackgroundColorOnScale: true,
   closeThreshold: CLOSE_THRESHOLD,
   fadeFromIndex: undefined,
   nested: false,
   modal: true,
   scrollLockTimeout: SCROLL_LOCK_TIMEOUT,
-  direction: 'bottom'
+  direction: 'bottom',
+  handleOnly: false
 });
 
 const emit = defineEmits<DrawerRootEmits>();
@@ -68,11 +70,13 @@ function handleOpenChange(openState: boolean) {
     emitHandlers.emitOpenChange(openState);
     return;
   }
-  if (!openState) {
-    closeDrawer();
-  } else {
+
+  isOpen.value = openState;
+
+  if (openState) {
     hasBeenOpened.value = true;
-    isOpen.value = openState;
+  } else {
+    closeDrawer();
   }
 }
 

@@ -33,6 +33,7 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   locale: 'en',
   isDateDisabled: undefined,
   isDateUnavailable: undefined,
+  isDateHighlightable: undefined,
   allowNonContiguousRanges: false
 });
 
@@ -50,6 +51,7 @@ const {
   preventDeselect,
   isDateDisabled: propsIsDateDisabled,
   isDateUnavailable: propsIsDateUnavailable,
+  isDateHighlightable: propsIsDateHighlightable,
   defaultOpen,
   modal,
   id,
@@ -100,6 +102,7 @@ provideDateRangePickerRootContext({
   allowNonContiguousRanges,
   isDateUnavailable: propsIsDateUnavailable.value,
   isDateDisabled: propsIsDateDisabled.value,
+  isDateHighlightable: propsIsDateHighlightable.value,
   locale,
   disabled,
   pagedNavigation,

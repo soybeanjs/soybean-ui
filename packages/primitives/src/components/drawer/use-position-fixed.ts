@@ -1,5 +1,6 @@
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 import type { Ref } from 'vue';
+import { isSafari } from './shared';
 
 interface BodyPosition {
   position: string;
@@ -13,17 +14,22 @@ interface PositionFixedOptions {
   modal: Ref<boolean>;
   nested: Ref<boolean>;
   hasBeenOpened: Ref<boolean>;
+  preventScrollRestoration: Ref<boolean>;
+  noBodyStyles: Ref<boolean>;
 }
 
 let previousBodyPosition: BodyPosition | null = null;
 
 export function usePositionFixed(options: PositionFixedOptions) {
-  const { isOpen, modal, nested, hasBeenOpened } = options;
+  const { isOpen, modal, nested, hasBeenOpened, preventScrollRestoration, noBodyStyles } = options;
   const activeUrl = ref(typeof window !== 'undefined' ? window.location.href : '');
   const scrollPos = ref(0);
 
   function setPositionFixed(): void {
-    if (previousBodyPosition === null && isOpen.value) {
+    // All browsers on iOS will return true here.
+    if (!isSafari()) return;
+
+    if (previousBodyPosition === null && isOpen.value && !noBodyStyles.value) {
       previousBodyPosition = {
         position: document.body.style.position,
         top: document.body.style.top,
@@ -31,13 +37,16 @@ export function usePositionFixed(options: PositionFixedOptions) {
         height: document.body.style.height
       };
 
+      // Update the dom inside an animation frame
       const { scrollX, innerHeight } = window;
 
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPos.value}px`;
-      document.body.style.left = `-${scrollX}px`;
-      document.body.style.right = '0px';
-      document.body.style.height = 'auto';
+      document.body.style.setProperty('position', 'fixed', 'important');
+      Object.assign(document.body.style, {
+        top: `${-scrollPos.value}px`,
+        left: `${-scrollX}px`,
+        right: '0px',
+        height: 'auto'
+      });
 
       setTimeout(() => {
         requestAnimationFrame(() => {
@@ -53,7 +62,10 @@ export function usePositionFixed(options: PositionFixedOptions) {
   }
 
   function restorePositionSetting(): void {
-    if (previousBodyPosition !== null) {
+    // All browsers on iOS will return true here.
+    if (!isSafari()) return;
+
+    if (previousBodyPosition !== null && !noBodyStyles.value) {
       // Convert the position from "px" to Int
       const y = -Number.parseInt(document.body.style.top, 10);
       const x = -Number.parseInt(document.body.style.left, 10);
@@ -61,8 +73,8 @@ export function usePositionFixed(options: PositionFixedOptions) {
       // Restore styles
       Object.assign(document.body.style, previousBodyPosition);
 
-      requestAnimationFrame(() => {
-        if (activeUrl.value !== window.location.href) {
+      window.requestAnimationFrame(() => {
+        if (preventScrollRestoration.value && activeUrl.value !== window.location.href) {
           activeUrl.value = window.location.href;
           return;
         }

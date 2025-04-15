@@ -12,6 +12,7 @@ import {
   parseZonedDateTime,
   toCalendar
 } from '@internationalized/date';
+import type { CalendarIdentifier } from '@internationalized/date';
 import type { DateValue, Granularity, Matcher, TimeValue } from './types';
 
 /**
@@ -172,17 +173,22 @@ export function areAllDaysBetweenValid(
   start: DateValue,
   end: DateValue,
   isUnavailable: Matcher | undefined,
-  isDisabled: Matcher | undefined
+  isDisabled: Matcher | undefined,
+  isHighlightable?: Matcher | undefined
 ) {
-  if (isUnavailable === undefined && isDisabled === undefined) return true;
+  if (isUnavailable === undefined && isDisabled === undefined && isHighlightable === undefined) return true;
 
   let dCurrent = start.add({ days: 1 });
-  if (isDisabled?.(dCurrent) || isUnavailable?.(dCurrent)) return false;
+  if ((isDisabled?.(dCurrent) || isUnavailable?.(dCurrent)) && !isHighlightable?.(dCurrent)) {
+    return false;
+  }
 
   const dEnd = end;
   while (dCurrent.compare(dEnd) < 0) {
     dCurrent = dCurrent.add({ days: 1 });
-    if (isDisabled?.(dCurrent) || isUnavailable?.(dCurrent)) return false;
+    if ((isDisabled?.(dCurrent) || isUnavailable?.(dCurrent)) && !isHighlightable?.(dCurrent)) {
+      return false;
+    }
   }
   return true;
 }
@@ -217,7 +223,7 @@ export function getDefaultDate(props: GetDefaultDateProps): DateValue {
   const calendarDateTimeGranularities = ['hour', 'minute', 'second'];
 
   const defaultFormatter = new DateFormatter(locale);
-  const calendar = createCalendar(defaultFormatter.resolvedOptions().calendar);
+  const calendar = createCalendar(defaultFormatter.resolvedOptions().calendar as CalendarIdentifier);
 
   if (calendarDateTimeGranularities.includes(granularity ?? 'day'))
     return toCalendar(new CalendarDateTime(year, month, day, 0, 0, 0), calendar);

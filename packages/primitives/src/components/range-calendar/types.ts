@@ -56,6 +56,8 @@ export interface RangeCalendarRootProps extends ClassValueProp {
   isDateDisabled?: Matcher;
   /** A function that returns whether or not a date is unavailable */
   isDateUnavailable?: Matcher;
+  /** A function that returns whether or not a date is highlightable */
+  isDateHighlightable?: Matcher;
   /**
    * The reading direction of the calendar when applicable. <br> If omitted, inherits globally from `ConfigProvider` or
    * assumes LTR (left-to-right) reading mode.
@@ -107,6 +109,7 @@ export type RangeCalendarRootContext = {
   isInvalid: Ref<boolean>;
   isDateDisabled: Matcher;
   isDateUnavailable?: Matcher;
+  isDateHighlightable?: Matcher;
   isOutsideVisibleView: (date: DateValue) => boolean;
   highlightedRange: Ref<{ start: DateValue; end: DateValue } | null>;
   focusedValue: Ref<DateValue | undefined>;

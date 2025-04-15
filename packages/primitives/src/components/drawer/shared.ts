@@ -95,3 +95,64 @@ export function dampenValue(v: number) {
 export function isVertical(direction: DrawerDirection) {
   return direction === 'top' || direction === 'bottom';
 }
+
+export function assignStyle(element: HTMLElement | null | undefined, style: Partial<CSSStyleDeclaration>) {
+  if (!element) return () => {};
+
+  const prevStyle = element.style.cssText;
+  Object.assign(element.style, style);
+
+  return () => {
+    element.style.cssText = prevStyle;
+  };
+}
+
+export type AnyFunction = (...args: any) => any;
+
+/** Receives functions as arguments and returns a new function that calls all. */
+export function chain<T>(...fns: T[]) {
+  return (...args: T extends AnyFunction ? Parameters<T> : never) => {
+    for (const fn of fns) {
+      if (typeof fn === 'function') {
+        fn(...args);
+      }
+    }
+  };
+}
+
+export function isMobileFirefox(): boolean | undefined {
+  const userAgent = navigator.userAgent;
+  return (
+    typeof window !== 'undefined' &&
+    ((/Firefox/.test(userAgent) && /Mobile/.test(userAgent)) || // Android Firefox
+      /FxiOS/.test(userAgent)) // iOS Firefox
+  );
+}
+
+export function isMac(): boolean | undefined {
+  return testPlatform(/^Mac/);
+}
+
+export function isIPhone(): boolean | undefined {
+  return testPlatform(/^iPhone/);
+}
+
+export function isSafari(): boolean | undefined {
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
+export function isIPad(): boolean | undefined {
+  return (
+    testPlatform(/^iPad/) ||
+    // iPadOS 13 lies and says it's a Mac, but we can distinguish by detecting touch support.
+    (isMac() && navigator.maxTouchPoints > 1)
+  );
+}
+
+export function isIOS(): boolean | undefined {
+  return isIPhone() || isIPad();
+}
+
+export function testPlatform(re: RegExp): boolean | undefined {
+  return typeof window !== 'undefined' && window.navigator !== null ? re.test(window.navigator.platform) : undefined;
+}

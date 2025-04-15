@@ -37,6 +37,7 @@ const props = withDefaults(defineProps<RangeCalendarRootPropsWithPrimitive>(), {
   placeholder: undefined,
   isDateDisabled: undefined,
   isDateUnavailable: undefined,
+  isDateHighlightable: undefined,
   allowNonContiguousRanges: false
 });
 
@@ -54,6 +55,7 @@ const {
   preventDeselect,
   isDateUnavailable: propsIsDateUnavailable,
   isDateDisabled: propsIsDateDisabled,
+  isDateHighlightable: propsIsDateHighlightable,
   calendarLabel,
   maxValue,
   minValue,
@@ -133,6 +135,7 @@ const {
 const {
   isInvalid,
   isSelected,
+  isDateHighlightable,
   highlightedRange,
   isSelectionStart,
   isSelectionEnd,
@@ -143,6 +146,7 @@ const {
   end: endValue,
   isDateDisabled,
   isDateUnavailable,
+  isDateHighlightable: propsIsDateHighlightable.value,
   focusedValue,
   allowNonContiguousRanges
 });
@@ -220,6 +224,7 @@ useEventListener('keydown', ev => {
 
 provideRangeCalendarRootContext({
   isDateUnavailable,
+  isDateHighlightable,
   startValue,
   endValue,
   formatter,

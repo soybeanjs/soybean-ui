@@ -5,6 +5,7 @@ import DrawerDescription from '../dialog/dialog-description.vue';
 import DrawerClose from '../dialog/dialog-close.vue';
 import DrawerContent from './drawer-content.vue';
 import DrawerOverlay from './drawer-overlay.vue';
+import DrawerHandle from './drawer-handle.vue';
 import DrawerRoot from './drawer-root.vue';
 import DrawerRootNested from './drawer-root-nested.vue';
 
@@ -13,6 +14,7 @@ export {
   DrawerOverlay,
   DrawerRoot,
   DrawerRootNested,
+  DrawerHandle,
   DrawerTrigger,
   DrawerPortal,
   DrawerTitle,

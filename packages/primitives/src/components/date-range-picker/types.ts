@@ -41,6 +41,7 @@ export type DateRangePickerRootProps = DateRangeFieldRootProps &
     | 'numberOfMonths'
     | 'preventDeselect'
     | 'isDateUnavailable'
+    | 'isDateHighlightable'
     | 'allowNonContiguousRanges'
   >;
 
@@ -78,6 +79,7 @@ export type DateRangePickerRootContext = {
   readonly: Ref<boolean>;
   isDateDisabled?: Matcher;
   isDateUnavailable?: Matcher;
+  isDateHighlightable?: Matcher;
   defaultOpen: Ref<boolean>;
   open: Ref<boolean>;
   modal: Ref<boolean>;

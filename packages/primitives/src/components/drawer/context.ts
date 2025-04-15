@@ -1,8 +1,7 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
-import { computed, onUnmounted, ref, watch, watchEffect } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
 import { isClient } from '@vueuse/core';
 import { useContext } from '../../composables';
-import { usePositionFixed } from './use-position-fixed';
 import { useSnapPoints } from './use-snap-points';
 import {
   BORDER_RADIUS,
@@ -38,16 +37,18 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     // fixed,
     modal,
     shouldScaleBackground,
+    setBackgroundColorOnScale,
     scrollLockTimeout,
     closeThreshold,
     activeSnapPoint,
     fadeFromIndex,
-    direction
+    direction,
+    noBodyStyles,
+    handleOnly
   } = props;
 
   const isOpen = ref(open.value ?? false);
   const hasBeenOpened = ref(false);
-  const isVisible = ref(false);
   const isDragging = ref(false);
   const justReleased = ref(false);
 
@@ -57,7 +58,7 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
   const dragStartTime = ref<Date | null>(null);
   const dragEndTime = ref<Date | null>(null);
   const lastTimeDragPrevented = ref<Date | null>(null);
-  const isAllowedToDrag = ref(true);
+  const isAllowedToDrag = ref(false);
 
   const nestedOpenChangeTimer = ref<number | null>(null);
 
@@ -71,6 +72,10 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
   const drawerHeightRef = computed(() => drawerRef.value?.$el.getBoundingClientRect().height || 0);
 
   const snapPoints = usePropOrDefaultRef(props.snapPoints, ref<(number | string)[] | undefined>(undefined));
+
+  const hasSnapPoints = computed(() => snapPoints && (snapPoints.value?.length ?? 0) > 0);
+
+  const handleRef = ref<ComponentPublicInstance | null>(null);
 
   // const onCloseProp = ref<(() => void) | undefined>(undefined)
   // const onOpenChangeProp = ref<((open: boolean) => void) | undefined>(undefined)
@@ -104,13 +109,6 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     // Change openTime ref when we reach the last snap point to prevent dragging for 500ms incase it's scrollable.
     if (snapPoints.value && activeSnapPointIndexValue === snapPointsOffsetValue.length - 1) openTime.value = new Date();
   }
-
-  const { restorePositionSetting } = usePositionFixed({
-    isOpen,
-    modal,
-    nested,
-    hasBeenOpened
-  });
 
   function getScale() {
     return (window.innerWidth - WINDOW_TOP_OFFSET) / window.innerWidth;
@@ -206,7 +204,9 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
 
     // We need to capture last time when drag with scroll was triggered and have a timeout between
     const absDraggedDistance = Math.abs(draggedDistance);
-    const wrapper = document.querySelector('[soybean-drawer-wrapper]');
+    const wrapper =
+      (document.querySelector('[data-soybean-drawer-wrapper]') as HTMLElement) ||
+      (document.querySelector('[soybean-drawer-wrapper]') as HTMLElement);
 
     // Calculate the percentage dragged, where 1 is the closed position
     let percentageDragged = absDraggedDistance / drawerHeightRef.value;
@@ -292,7 +292,9 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
 
   function resetDrawer() {
     if (!drawerRef.value) return;
-    const wrapper = document.querySelector('[soybean-drawer-wrapper]');
+    const wrapper =
+      (document.querySelector('[data-soybean-drawer-wrapper]') as HTMLElement) ||
+      (document.querySelector('[soybean-drawer-wrapper]') as HTMLElement);
     const currentSwipeAmount = getTranslate(drawerRef.value.$el, direction.value);
 
     set(drawerRef.value.$el, {
@@ -330,28 +332,13 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     }
   }
 
-  function closeDrawer() {
+  function closeDrawer(fromWithin?: boolean) {
     if (!drawerRef.value) return;
 
     emitClose();
-    set(drawerRef.value.$el, {
-      transform: isVertical(direction.value)
-        ? `translate3d(0, ${direction.value === 'bottom' ? '100%' : '-100%'}, 0)`
-        : `translate3d(${direction.value === 'right' ? '100%' : '-100%'}, 0, 0)`,
-      transition: `transform ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(',')})`
-    });
-
-    set(overlayRef.value?.$el, {
-      opacity: '0',
-      transition: `opacity ${TRANSITIONS.DURATION}s cubic-bezier(${TRANSITIONS.EASE.join(',')})`
-    });
-
-    scaleBackground(false);
-
-    window.setTimeout(() => {
-      isVisible.value = false;
+    if (!fromWithin) {
       isOpen.value = false;
-    }, 300);
+    }
 
     window.setTimeout(() => {
       if (snapPoints.value) activeSnapPoint.value = snapPoints.value[0];
@@ -369,9 +356,12 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     }
   });
 
-  onUnmounted(() => {
-    scaleBackground(false);
-    restorePositionSetting();
+  watch(open, () => {
+    // reflect controlled `open` state
+    isOpen.value = open.value;
+    if (!open.value) {
+      closeDrawer();
+    }
   });
 
   function onRelease(event: PointerEvent) {
@@ -443,72 +433,11 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     o => {
       if (o) {
         openTime.value = new Date();
-        scaleBackground(true);
       }
       emitOpenChange(o);
     },
     { immediate: true }
   );
-
-  watch(
-    open,
-    o => {
-      if (o) {
-        isOpen.value = o;
-        hasBeenOpened.value = true;
-      } else {
-        closeDrawer();
-      }
-    },
-    { immediate: true }
-  );
-
-  function scaleBackground(openState: boolean) {
-    const wrapper = document.querySelector('[soybean-drawer-wrapper]');
-    if (!wrapper || !shouldScaleBackground.value) return;
-
-    if (openState) {
-      // setting original styles initially
-      set(document.body, {
-        background: document.body.style.backgroundColor || document.body.style.background
-      });
-      // setting body styles, with cache ignored, so that we can get correct original styles in reset
-      set(
-        document.body,
-        {
-          background: 'black'
-        },
-        true
-      );
-
-      set(wrapper, {
-        borderRadius: `${BORDER_RADIUS}px`,
-        overflow: 'hidden',
-        ...(isVertical(direction.value)
-          ? {
-              transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
-              transformOrigin: 'top'
-            }
-          : {
-              transform: `scale(${getScale()}) translate3d(calc(env(safe-area-inset-top) + 14px), 0, 0)`,
-              transformOrigin: 'left'
-            }),
-        transitionProperty: 'transform, border-radius',
-        transitionDuration: `${TRANSITIONS.DURATION}s`,
-        transitionTimingFunction: `cubic-bezier(${TRANSITIONS.EASE.join(',')})`
-      });
-    } else {
-      // Exit
-      reset(wrapper, 'overflow');
-      reset(wrapper, 'transform');
-      reset(wrapper, 'borderRadius');
-      set(wrapper, {
-        transitionProperty: 'transform, border-radius',
-        transitionDuration: `${TRANSITIONS.DURATION}s`,
-        transitionTimingFunction: `cubic-bezier(${TRANSITIONS.EASE.join(',')})`
-      });
-    }
-  }
 
   function onNestedOpenChange(o: boolean) {
     const scale = o ? (window.innerWidth - NESTED_DISPLACEMENT) / window.innerWidth : 1;
@@ -571,14 +500,15 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     modal,
     keyboardIsOpen,
     hasBeenOpened,
-    isVisible,
     drawerRef,
     drawerHeightRef,
     overlayRef,
+    handleRef,
     isDragging,
     dragStartTime,
     isAllowedToDrag,
     snapPoints,
+    hasSnapPoints,
     activeSnapPoint,
     pointerStart,
     dismissible,
@@ -587,6 +517,7 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     shouldFade,
     fadeFromIndex,
     shouldScaleBackground,
+    setBackgroundColorOnScale,
     onPress,
     onDrag,
     onRelease,
@@ -598,7 +529,9 @@ export function useDrawer(props: DrawerRootContextParams): DrawerRootContext {
     emitDrag,
     emitRelease,
     emitOpenChange,
-    nested
+    nested,
+    handleOnly,
+    noBodyStyles
   };
 }
 
