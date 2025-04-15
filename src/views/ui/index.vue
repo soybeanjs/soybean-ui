@@ -55,7 +55,7 @@ Object.entries(ExampleComponents).forEach(([key, component]) => {
 <template>
   <SConfigProvider v-bind="configProviderProps">
     <SToastProvider>
-      <div class="h-full p-16px">
+      <div soybean-drawer-wrapper class="h-full">
         <SCard title="Soybean UI Components" flex-height class="h-full lt-sm:h-auto">
           <template #extra>
             <div>

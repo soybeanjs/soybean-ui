@@ -19,7 +19,9 @@ defineOptions({
   name: 'SDrawer'
 });
 
-const props = defineProps<DrawerProps>();
+const props = withDefaults(defineProps<DrawerProps>(), {
+  shouldScaleBackground: true
+});
 
 const emit = defineEmits<DrawerEmits>();
 
