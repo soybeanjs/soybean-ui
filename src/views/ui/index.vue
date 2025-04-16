@@ -80,7 +80,7 @@ Object.entries(ExampleComponents).forEach(([key, component]) => {
             :ui="{
               root: 'h-full',
               list: 'flex-wrap justify-start',
-              trigger: 'flex-none max-w-120px w-1/3'
+              trigger: 'flex-none'
             }"
           >
             <template #content="{ component }">
