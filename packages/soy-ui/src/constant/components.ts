@@ -397,6 +397,7 @@ export const components = {
     'STreeMenuGroup',
     'STreeMenuChildGroup',
     'STreeMenuGroupLabel',
+    'STreeMenuRootOption',
     'STreeMenuOption',
     'STreeMenuItem',
     'STreeMenuItemLink',

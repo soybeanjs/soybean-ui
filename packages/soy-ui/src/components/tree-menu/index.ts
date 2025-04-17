@@ -3,6 +3,7 @@ import STreeMenuRoot from './tree-menu-root.vue';
 import STreeMenuGroup from './tree-menu-group.vue';
 import STreeMenuChildGroup from './tree-menu-child-group.vue';
 import STreeMenuGroupLabel from './tree-menu-group-label.vue';
+import STreeMenuRootOption from './tree-menu-root-option.vue';
 import STreeMenuOption from './tree-menu-option.vue';
 import STreeMenuItem from './tree-menu-item.vue';
 import STreeMenuItemLink from './tree-menu-item-link.vue';
@@ -14,6 +15,7 @@ export {
   STreeMenuGroup,
   STreeMenuChildGroup,
   STreeMenuGroupLabel,
+  STreeMenuRootOption,
   STreeMenuOption,
   STreeMenuItem,
   STreeMenuItemLink,
