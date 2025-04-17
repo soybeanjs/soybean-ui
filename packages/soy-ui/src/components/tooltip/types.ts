@@ -25,6 +25,7 @@ export type TooltipProps = TooltipRootProps &
   Pick<TooltipPortalProps, 'to' | 'defer'> &
   Omit<TooltipContentProps, 'forceMount'> & {
     ui?: TooltipUi;
+    content?: string;
     disabledPortal?: boolean;
     forceMountPortal?: boolean;
     forceMountContent?: boolean;
