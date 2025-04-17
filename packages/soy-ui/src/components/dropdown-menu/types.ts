@@ -11,19 +11,25 @@ import type {
 // DropdownMenu
 export interface DropdownMenuProps<T extends AcceptableValue = AcceptableValue>
   extends DropdownMenuRootProps,
-    MenuProps<T> {}
+    MenuProps<T> {
+  disabledTrigger?: boolean;
+}
 export type DropdownMenuEmits<T extends AcceptableValue = AcceptableValue> = DropdownMenuRootEmits & MenuEmits<T>;
 
 // Checkbox
 export interface DropdownMenuCheckboxProps<T extends AcceptableValue = AcceptableValue>
   extends DropdownMenuRootProps,
-    MenuCheckboxProps<T> {}
+    MenuCheckboxProps<T> {
+  disabledTrigger?: boolean;
+}
 export type DropdownMenuCheckboxEmits<T extends AcceptableValue = AcceptableValue> = DropdownMenuRootEmits &
   MenuCheckboxEmits<T>;
 
 // Radio
 export interface DropdownMenuRadioProps<T extends AcceptableValue = AcceptableValue>
   extends DropdownMenuRootProps,
-    MenuRadioProps<T> {}
+    MenuRadioProps<T> {
+  disabledTrigger?: boolean;
+}
 export type DropdownMenuRadioEmits<T extends AcceptableValue = AcceptableValue> = DropdownMenuRootEmits &
   MenuRadioEmits<T>;

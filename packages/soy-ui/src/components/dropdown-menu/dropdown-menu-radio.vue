@@ -39,7 +39,7 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 const propKeys = ['open', 'defaultOpen', 'dir', 'modal'] satisfies (keyof DropdownMenuRadioProps<T>)[];
 
 const forwardedRootProps = usePickForwardProps(props, propKeys);
-const forwardedMenuRadioProps = useOmitForwardProps(props, [...propKeys, 'size']);
+const forwardedMenuRadioProps = useOmitForwardProps(props, [...propKeys, 'size', 'disabledTrigger']);
 
 const emitKeys = ['update:open'] satisfies (keyof DropdownMenuRadioEmits<T>)[];
 
@@ -52,7 +52,7 @@ const forwardedMenuRadio = useCombinedPropsEmits(forwardedMenuRadioProps, forwar
 
 <template>
   <DropdownMenuRoot v-bind="forwardedRoot">
-    <DropdownMenuTrigger as-child>
+    <DropdownMenuTrigger as-child :disabled="disabledTrigger">
       <Slot :size="size">
         <slot name="trigger" />
       </Slot>
