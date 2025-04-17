@@ -43,6 +43,7 @@ export * from './variants/textarea';
 export * from './variants/toast';
 export * from './variants/toggle';
 export * from './variants/tooltip';
+export * from './variants/tree-menu';
 
 export * from './shared';
 

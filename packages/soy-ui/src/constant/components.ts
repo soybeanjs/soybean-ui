@@ -389,6 +389,17 @@ export const components = {
   //   'ToolbarToggleGroup',
   //   'ToolbarToggleItem'
   // ],
-  tooltip: ['STooltip', 'STooltipArrow', 'STooltipContent', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger']
+  tooltip: ['STooltip', 'STooltipArrow', 'STooltipContent', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger'],
   // tree: ['STreeItem', 'STreeRoot', 'STreeVirtualizer'],
+  treeMenu: [
+    'STreeMenu',
+    'STreeMenuRoot',
+    'STreeMenuGroup',
+    'STreeMenuChildGroup',
+    'STreeMenuGroupLabel',
+    'STreeMenuOption',
+    'STreeMenuItem',
+    'STreeMenuItemLink',
+    'STreeMenuCollapsibleIcon'
+  ]
 };

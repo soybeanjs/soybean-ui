@@ -150,7 +150,8 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'Toggle', link: '/docs/components/toggle' },
           { text: 'ToggleGroup', link: '/docs/components/toggle-group' },
           { text: 'Tooltip', link: '/docs/components/tooltip' },
-          { text: 'Tree', link: '/docs/components/tree', badge: 'wip' }
+          { text: 'Tree', link: '/docs/components/tree', badge: 'wip' },
+          { text: 'TreeMenu', link: '/docs/components/tree-menu', badge: 'new' }
         ]
       }
     ]

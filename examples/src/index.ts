@@ -48,6 +48,7 @@ import DemoToast from './ui/toast.vue';
 import DemoToggle from './ui/toggle.vue';
 import DemoToggleGroup from './ui/toggle-group.vue';
 import DemoTooltip from './ui/tooltip.vue';
+import DemoTreeMenu from './ui/tree-menu.vue';
 
 export * from './ui/button/index';
 export * from './ui/accordion/index';
@@ -102,5 +103,6 @@ export {
   DemoToast,
   DemoToggle,
   DemoToggleGroup,
-  DemoTooltip
+  DemoTooltip,
+  DemoTreeMenu
 };
