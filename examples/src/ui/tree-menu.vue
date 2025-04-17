@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { SCard, STreeMenu } from 'soy-ui';
-import type { TreeMenuOptionData } from 'soy-ui';
+import { ref } from 'vue';
+import { useToggle } from '@vueuse/core';
+import { SButtonIcon, SCard, SSelect, STreeMenu } from 'soy-ui';
+import type { SelectOptionData, ThemeSize, TreeMenuOptionData } from 'soy-ui';
 import {
   BookOpen,
   Bot,
@@ -8,6 +10,7 @@ import {
   Frame,
   History,
   Map,
+  PanelLeft,
   PieChart,
   Route,
   Settings2,
@@ -19,6 +22,8 @@ import {
 defineOptions({
   name: 'DemoTreeMenu'
 });
+
+const [collapsible, toggleCollapsible] = useToggle(false);
 
 const items: TreeMenuOptionData<string>[] = [
   {
@@ -220,12 +225,52 @@ const items: TreeMenuOptionData<string>[] = [
     ]
   }
 ];
+
+const size = ref<ThemeSize>('md');
+
+const sizes: SelectOptionData<ThemeSize>[] = [
+  {
+    label: 'Xs',
+    value: 'xs'
+  },
+  {
+    label: 'Sm',
+    value: 'sm'
+  },
+  {
+    label: 'Md',
+    value: 'md'
+  },
+  {
+    label: 'Lg',
+    value: 'lg'
+  },
+  {
+    label: 'Xl',
+    value: 'xl'
+  },
+  {
+    label: '2xl',
+    value: '2xl'
+  }
+];
 </script>
 
 <template>
   <SCard title="Tree Menu">
-    <div class="w-60 border rounded-md">
-      <STreeMenu :items="items" />
+    <template #extra>
+      <SSelect v-model="size" :items="sizes" class="w-25" />
+    </template>
+    <div class="relative w-60">
+      <SButtonIcon
+        class="absolute right-2 top-2"
+        size="sm"
+        :ui="{ icon: 'text-muted-foreground' }"
+        @click="() => toggleCollapsible()"
+      >
+        <PanelLeft />
+      </SButtonIcon>
+      <STreeMenu :items="items" :size="size" :collapsible="collapsible" class="border rounded-md" />
     </div>
   </SCard>
 </template>

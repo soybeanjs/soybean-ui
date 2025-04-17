@@ -1,7 +1,16 @@
-import type { Component } from 'vue';
+import type { Component, Ref } from 'vue';
 import type { AcceptableValue, ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { ThemeSize, TreeMenuSlots } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
+
+export interface TreeMenuRootContext<T extends AcceptableValue = AcceptableValue> {
+  modelValue: Ref<T | undefined>;
+  onModelValueChange: (value?: T | undefined) => void;
+  expandedKeys: Ref<T[]>;
+  onExpandedKeysChange: (keys: T[]) => void;
+  collapsible: Ref<boolean>;
+  onCollapsibleChange: (collapsible: boolean) => void;
+}
 
 export type TreeMenuUi = Partial<Record<TreeMenuSlots, ClassValue>>;
 
@@ -40,7 +49,9 @@ export interface TreeMenuItemProps
   extends ClassValueProp,
     Pick<TreeMenuOptionData, 'value' | 'label' | 'icon' | 'disabled'> {
   size?: ThemeSize;
-  ui?: Pick<TreeMenuUi, 'item' | 'itemIcon'>;
+  ui?: Pick<TreeMenuUi, 'item' | 'itemIcon' | 'label'>;
+  checked?: boolean;
+  tooltip?: string;
 }
 
 // ItemLink
@@ -48,7 +59,9 @@ export interface TreeMenuItemLinkProps
   extends ClassValueProp,
     Pick<TreeMenuOptionData, 'value' | 'label' | 'icon' | 'disabled' | 'linkProps'> {
   size?: ThemeSize;
-  ui?: Pick<TreeMenuUi, 'itemLink' | 'itemIcon' | 'itemLinkIcon'>;
+  ui?: Pick<TreeMenuUi, 'itemLink' | 'itemIcon' | 'itemLinkIcon' | 'label'>;
+  checked?: boolean;
+  tooltip?: string;
 }
 
 export interface TreeMenuGroupProps extends ClassValueProp {
@@ -69,12 +82,36 @@ export interface TreeMenuOptionProps<T extends AcceptableValue = AcceptableValue
   item: TreeMenuOptionData<T>;
 }
 
-export interface TreeMenuRootProps extends ClassValueProp {
+export interface TreeMenuRootProps<T extends AcceptableValue = AcceptableValue> extends ClassValueProp {
   size?: ThemeSize;
+  modelValue?: T | null;
+  defaultValue?: T | null;
+  expandedKeys?: T[];
+  defaultExpandedKeys?: T[];
+  collapsible?: boolean;
+  /**
+   * The width of the tree menu.
+   *
+   * @default 240
+   */
+  width?: number;
+  /**
+   * The width of the collapsible tree menu.
+   *
+   * @default 50
+   */
+  collapsibleWidth?: number;
 }
 
-export interface TreeMenuProps<T extends AcceptableValue = AcceptableValue> extends ClassValueProp {
-  size?: ThemeSize;
+export type TreeMenuRootEmits<T extends AcceptableValue = AcceptableValue> = {
+  'update:modelValue': [value: T];
+  'update:expandedKeys': [keys: T[]];
+  'update:collapsible': [collapsible: boolean];
+};
+
+export interface TreeMenuProps<T extends AcceptableValue = AcceptableValue> extends TreeMenuRootProps<T> {
   ui?: TreeMenuUi;
   items?: TreeMenuOptionData<T>[];
 }
+
+export type TreeMenuEmits<T extends AcceptableValue = AcceptableValue> = TreeMenuRootEmits<T>;
