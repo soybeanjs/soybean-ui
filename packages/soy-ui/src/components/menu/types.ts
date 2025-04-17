@@ -50,7 +50,8 @@ export interface MenuItemProps extends _MenuItemProps {
 }
 
 // ItemLink
-export interface MenuItemLinkProps extends MenuItemProps, LinkProps {
+export interface MenuItemLinkProps extends _MenuItemProps, LinkProps {
+  size?: ThemeSize;
   ui?: Pick<MenuUi, 'itemLink' | 'itemIcon' | 'itemLinkIcon'>;
   /** The group label of the menu. */
   label: string;
