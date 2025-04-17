@@ -29,8 +29,9 @@ export function useContext<T extends (...args: any[]) => any>(contextName: strin
  * Create context
  *
  * @param contextName Context name
+ * @param requiredProvide Whether the context is required to be provided
  */
-export function createContext<T>(contextName: string) {
+export function createContext<T>(contextName: string, requiredProvide = true) {
   const injectKey: InjectionKey<T | null> = Symbol(contextName);
 
   function useProvide(context: T) {
@@ -46,11 +47,11 @@ export function createContext<T>(contextName: string) {
       return context as any;
     }
 
-    if (!context) {
+    if (requiredProvide && !context) {
       throw new Error(`${contextName} is not provided`);
     }
 
-    return context;
+    return context as T;
   }
 
   return [useProvide, useInject] as const;
