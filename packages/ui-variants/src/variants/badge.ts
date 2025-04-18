@@ -24,12 +24,12 @@ export const badgeVariants = tv({
       raw: 'bg-transparent border-0'
     },
     size: {
-      xs: 'gap-0.5 h-3.5 px-2 text-4xs',
-      sm: 'gap-0.75 h-4 px-2.5 text-3xs',
-      md: 'gap-1 h-4.5 px-3 text-2xs',
-      lg: 'gap-1.25 h-5 px-3.5 text-xs',
-      xl: 'gap-1.5 h-6 px-4 text-sm',
-      '2xl': 'gap-2 h-7 px-5 text-base'
+      xs: 'gap-0.5 h-3.5 px-1 text-4xs',
+      sm: 'gap-0.75 h-4 px-1.5 text-3xs',
+      md: 'gap-1 h-4.5 px-2 text-2xs',
+      lg: 'gap-1.25 h-5 px-2.5 text-xs',
+      xl: 'gap-1.5 h-6 px-3 text-sm',
+      '2xl': 'gap-2 h-7 px-4 text-base'
     },
     shape: {
       auto: 'rounded-md',
