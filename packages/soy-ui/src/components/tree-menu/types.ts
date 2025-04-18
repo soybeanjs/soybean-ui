@@ -95,12 +95,6 @@ export interface TreeMenuRootProps<T extends AcceptableValue = AcceptableValue> 
    * @default 240
    */
   width?: number;
-  /**
-   * The width of the collapsible tree menu.
-   *
-   * @default 50
-   */
-  collapsibleWidth?: number;
 }
 
 export type TreeMenuRootEmits<T extends AcceptableValue = AcceptableValue> = {

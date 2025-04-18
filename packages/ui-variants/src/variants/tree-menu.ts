@@ -3,28 +3,26 @@ import { tv } from 'tailwind-variants';
 
 export const treeMenuVariants = tv({
   slots: {
-    root: 'group w-[--tree-menu-width] data-[collapsible=true]:w-[--tree-menu-collapsible-width] transition-width-200',
-    groupLabel: 'flex items-center w-full text-foreground/70',
+    root: 'group w-[--tree-menu-width] data-[collapsible=true]:w-[--tree-menu-collapsible-width] transition-[width,height]-200 ease-out',
+    groupLabel: `flex items-center text-foreground/70  group-data-[collapsible=true]:(size-0 p-0 opacity-0 overflow-hidden) transition-[height,padding,opacity]-200`,
     group: 'flex flex-col items-stretch group-data-[collapsible=true]:pb-0',
     childGroup: 'flex flex-col items-stretch',
     item: [
-      `relative flex items-center w-full rounded-sm outline-none truncate transition-colors-200 cursor-pointer select-none`,
+      `relative flex items-center w-full rounded-sm outline-none truncate cursor-pointer select-none`,
       `data-[checked=true]:(bg-primary/10 text-primary)`,
       `data-[contains-checked=true]:text-primary`,
       `hover:data-[checked=false]:(bg-accent text-accent-foreground)`,
-      `group-data-[collapsible=true]:overflow-hidden`,
-      `data-[disabled]:(pointer-events-none opacity-50)`,
-      `transition-width-200`
+      `transition-[width,height,colors]-200 ease-linear`,
+      `data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemIcon: `shrink-0`,
     label: '',
     itemLink: [
-      `relative flex items-center w-full rounded-sm outline-none truncate transition-colors-200 cursor-pointer select-none decoration-none`,
+      `relative flex items-center w-full rounded-sm outline-none truncate cursor-pointer select-none decoration-none`,
       `data-[checked=true]:(bg-primary/10 text-primary)`,
       `hover:data-[checked=false]:(bg-accent text-accent-foreground)`,
-      `group-data-[collapsible=true]:overflow-hidden`,
-      `data-[disabled]:(pointer-events-none opacity-50)`,
-      `transition-width-200`
+      `transition-[width,height,colors]-200 ease-linear`,
+      `data-[disabled]:(pointer-events-none opacity-50)`
     ],
     itemLinkIcon: `shrink-0 self-start`,
     collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 data-[open]:rotate-90`
@@ -34,7 +32,7 @@ export const treeMenuVariants = tv({
       xs: {
         root: 'p-1 text-2xs',
         group: 'gap-0.75 pb-1.5',
-        groupLabel: 'gap-1 px-1 py-1 text-3xs group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-6 gap-1 px-1 py-1 text-3xs',
         childGroup: 'gap-0.75 pt-0.75 pl-3',
         item: 'h-6 gap-1.5 px-1.5 py-1 group-data-[collapsible=true]:w-6',
         itemLink: 'h-6 gap-1.5 px-1.5 py-1 group-data-[collapsible=true]:w-6',
@@ -44,7 +42,7 @@ export const treeMenuVariants = tv({
       sm: {
         root: 'p-1.5 text-xs',
         group: 'gap-0.875 pb-1.75',
-        groupLabel: 'gap-1.5 px-1.5 py-1 text-2xs group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-7 gap-1.5 px-1.5 py-1 text-2xs',
         childGroup: 'gap-0.875 pt-0.875 pl-3.5',
         item: 'h-7 gap-1.75 px-1.75 py-1 group-data-[collapsible=true]:w-7',
         itemLink: 'h-7 gap-1.75 px-1.75 py-1 group-data-[collapsible=true]:w-7',
@@ -54,7 +52,7 @@ export const treeMenuVariants = tv({
       md: {
         root: 'p-2 text-sm',
         group: 'gap-1 pb-2',
-        groupLabel: 'gap-2 px-2 py-1.5 text-xs group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-8 gap-2 px-2 py-1.5 text-xs',
         childGroup: 'gap-1 pt-1 pl-4',
         item: 'h-8 gap-2 px-2 py-1.5 group-data-[collapsible=true]:w-8',
         itemLink: 'h-8 gap-2 px-2 py-1.5 group-data-[collapsible=true]:w-8',
@@ -64,7 +62,7 @@ export const treeMenuVariants = tv({
       lg: {
         root: 'p-2.5 text-base',
         group: 'gap-1.25 pb-2.5',
-        groupLabel: 'gap-2.5 px-2.5 py-1.5 text-sm group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-9 gap-2.5 px-2.5 py-1.5 text-sm',
         childGroup: 'gap-1.25 pt-1.25 pl-5.5',
         item: 'h-9 gap-2.25 px-2.25 py-1.5 group-data-[collapsible=true]:w-9',
         itemLink: 'h-9 gap-2.25 px-2.25 py-1.5 group-data-[collapsible=true]:w-9',
@@ -74,7 +72,7 @@ export const treeMenuVariants = tv({
       xl: {
         root: 'p-3 text-lg',
         group: 'gap-1.5 pb-3',
-        groupLabel: 'gap-3 px-3 py-2 text-base group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-10 gap-3 px-3 py-2 text-base',
         childGroup: 'gap-1.5 pt-1.5 pl-6',
         item: 'h-10 gap-2.5 px-2.5 py-2 group-data-[collapsible=true]:w-10',
         itemLink: 'h-10 gap-2.5 px-2.5 py-2 group-data-[collapsible=true]:w-10',
@@ -84,7 +82,7 @@ export const treeMenuVariants = tv({
       '2xl': {
         root: 'p-3.5 text-xl',
         group: 'gap-1.75 pb-3.5',
-        groupLabel: 'gap-3.5 px-3.5 py-2.5 text-lg group-data-[collapsible=true]:hidden',
+        groupLabel: 'h-12 gap-3.5 px-3.5 py-2.5 text-lg',
         childGroup: 'gap-1.75 pt-1.75 pl-6.5',
         item: 'h-12 gap-3 px-3 py-2.5 group-data-[collapsible=true]:w-12',
         itemLink: 'h-12 gap-3 px-3 py-2.5 group-data-[collapsible=true]:w-12',

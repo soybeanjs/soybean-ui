@@ -4,6 +4,8 @@ import type { CSSProperties, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { cn, treeMenuVariants } from '@soybean-ui/variants';
+import { themeSizeRatio } from '../../constant';
+import type { ThemeSize } from '../../types';
 import { provideTreeMenuRootContext } from './context';
 import type { TreeMenuRootEmits, TreeMenuRootProps } from './types';
 
@@ -12,8 +14,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TreeMenuRootProps<T>>(), {
-  width: 240,
-  collapsibleWidth: 50
+  width: 240
 });
 
 const emit = defineEmits<TreeMenuRootEmits<T>>();
@@ -45,12 +46,24 @@ const collapsible = useVModel<TreeMenuRootProps<T>, 'collapsible', 'update:colla
   defaultValue: props.collapsible || false
 }) as Ref<boolean>;
 
+const collapsibleWidthMap: Record<ThemeSize, number> = {
+  xs: 34 / 16,
+  sm: 42 / 16,
+  md: 50 / 16,
+  lg: 58 / 16,
+  xl: 66 / 16,
+  '2xl': 78 / 16
+};
+
 const style = computed<CSSProperties>(() => {
-  const width = props.collapsible ? props.collapsibleWidth : props.width;
+  const fullWidth = props.width * themeSizeRatio[props.size || 'md'];
+  const collapsibleWidth = collapsibleWidthMap[props.size || 'md'];
+
+  const width = props.collapsible ? collapsibleWidth : fullWidth;
 
   return {
     '--tree-menu-width': `${width}px`,
-    '--tree-menu-collapsible-width': `${props.collapsibleWidth}px`
+    '--tree-menu-collapsible-width': `${collapsibleWidth}rem`
   };
 });
 

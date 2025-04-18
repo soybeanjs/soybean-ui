@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const buttonVariants = tv({
   base: [
     'inline-flex items-center justify-center font-medium transition-all-200',
-    'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-offset-background) disabled:(pointer-events-none opacity-50)'
+    'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(pointer-events-none opacity-50)'
   ],
   variants: {
     color: {
