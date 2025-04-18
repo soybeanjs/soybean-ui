@@ -136,6 +136,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'Select', link: '/docs/components/select' },
           { text: 'Separator', link: '/docs/components/separator' },
           { text: 'Sheet', link: '/docs/components/sheet' },
+          { text: 'SidebarMenu', link: '/docs/components/sidebar-menu', badge: 'new' },
           { text: 'Sidebar', link: '/docs/components/sidebar', badge: 'wip' },
           { text: 'Skeleton', link: '/docs/components/skeleton' },
           { text: 'Slider', link: '/docs/components/slider' },
@@ -150,8 +151,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'Toggle', link: '/docs/components/toggle' },
           { text: 'ToggleGroup', link: '/docs/components/toggle-group' },
           { text: 'Tooltip', link: '/docs/components/tooltip' },
-          { text: 'Tree', link: '/docs/components/tree', badge: 'wip' },
-          { text: 'TreeMenu', link: '/docs/components/tree-menu', badge: 'new' }
+          { text: 'Tree', link: '/docs/components/tree', badge: 'wip' }
         ]
       }
     ]

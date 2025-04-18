@@ -3,35 +3,35 @@ import { computed } from 'vue';
 import type { CSSProperties, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { AcceptableValue } from '@soybean-ui/primitives';
-import { cn, treeMenuVariants } from '@soybean-ui/variants';
+import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
 import { themeSizeRatio } from '../../constant';
 import type { ThemeSize } from '../../types';
-import { provideTreeMenuRootContext } from './context';
-import type { TreeMenuRootEmits, TreeMenuRootProps } from './types';
+import { provideSidebarMenuRootContext } from './context';
+import type { SidebarMenuRootEmits, SidebarMenuRootProps } from './types';
 
 defineOptions({
-  name: 'STreeMenuRoot'
+  name: 'SSidebarMenuRoot'
 });
 
-const props = withDefaults(defineProps<TreeMenuRootProps<T>>(), {
+const props = withDefaults(defineProps<SidebarMenuRootProps<T>>(), {
   width: 240
 });
 
-const emit = defineEmits<TreeMenuRootEmits<T>>();
+const emit = defineEmits<SidebarMenuRootEmits<T>>();
 
 const mergedCls = computed(() => {
-  const { root } = treeMenuVariants({ size: props.size });
+  const { root } = sidebarMenuVariants({ size: props.size });
 
   return cn(root(), props.class);
 });
 
-const modelValue = useVModel<TreeMenuRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
+const modelValue = useVModel<SidebarMenuRootProps<T>, 'modelValue', 'update:modelValue'>(props, 'modelValue', emit, {
   defaultValue: props.defaultValue,
   passive: (props.modelValue === undefined) as false,
   deep: true
 });
 
-const expandedKeys = useVModel<TreeMenuRootProps<T>, 'expandedKeys', 'update:expandedKeys'>(
+const expandedKeys = useVModel<SidebarMenuRootProps<T>, 'expandedKeys', 'update:expandedKeys'>(
   props,
   'expandedKeys',
   emit,
@@ -42,9 +42,14 @@ const expandedKeys = useVModel<TreeMenuRootProps<T>, 'expandedKeys', 'update:exp
   }
 ) as Ref<T[]>;
 
-const collapsible = useVModel<TreeMenuRootProps<T>, 'collapsible', 'update:collapsible'>(props, 'collapsible', emit, {
-  defaultValue: props.collapsible || false
-}) as Ref<boolean>;
+const collapsible = useVModel<SidebarMenuRootProps<T>, 'collapsible', 'update:collapsible'>(
+  props,
+  'collapsible',
+  emit,
+  {
+    defaultValue: props.collapsible || false
+  }
+) as Ref<boolean>;
 
 const collapsibleWidthMap: Record<ThemeSize, number> = {
   xs: 34 / 16,
@@ -62,12 +67,12 @@ const style = computed<CSSProperties>(() => {
   const width = props.collapsible ? collapsibleWidth : fullWidth;
 
   return {
-    '--tree-menu-width': `${width}px`,
-    '--tree-menu-collapsible-width': `${collapsibleWidth}rem`
+    '--sidebar-menu-width': `${width}px`,
+    '--sidebar-menu-collapsible-width': `${collapsibleWidth}rem`
   };
 });
 
-provideTreeMenuRootContext({
+provideSidebarMenuRootContext({
   modelValue,
   onModelValueChange: value => {
     modelValue.value = value as T;

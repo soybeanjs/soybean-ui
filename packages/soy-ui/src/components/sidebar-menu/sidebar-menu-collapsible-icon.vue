@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { cn, treeMenuVariants } from '@soybean-ui/variants';
+import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
 import { ChevronRight } from 'lucide-vue-next';
-import type { TreeMenuCollapsibleIconProps } from './types';
+import type { SidebarMenuCollapsibleIconProps } from './types';
 
 defineOptions({
-  name: 'STreeMenuCollapsibleIcon'
+  name: 'SSidebarMenuCollapsibleIcon'
 });
 
-const { class: cls } = defineProps<TreeMenuCollapsibleIconProps>();
+const { class: cls } = defineProps<SidebarMenuCollapsibleIconProps>();
 
-const { collapsibleIcon } = treeMenuVariants();
+const { collapsibleIcon } = sidebarMenuVariants();
 
 const mergedCls = computed(() => cn(collapsibleIcon(), cls));
 </script>

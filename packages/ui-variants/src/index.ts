@@ -33,6 +33,7 @@ export * from './variants/scroll-area';
 export * from './variants/select';
 export * from './variants/separator';
 export * from './variants/sheet';
+export * from './variants/sidebar-menu';
 export * from './variants/skeleton';
 export * from './variants/slider';
 export * from './variants/stepper';
@@ -43,7 +44,6 @@ export * from './variants/textarea';
 export * from './variants/toast';
 export * from './variants/toggle';
 export * from './variants/tooltip';
-export * from './variants/tree-menu';
 
 export * from './shared';
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useToggle } from '@vueuse/core';
-import { SButtonIcon, SCard, SSelect, STreeMenu } from 'soy-ui';
-import type { SelectOptionData, ThemeSize, TreeMenuOptionData } from 'soy-ui';
+import { SButtonIcon, SCard, SSelect, SSidebarMenu } from 'soy-ui';
+import type { SelectOptionData, SidebarMenuOptionData, ThemeSize } from 'soy-ui';
 import {
   BookOpen,
   Bot,
@@ -20,12 +20,12 @@ import {
 } from 'lucide-vue-next';
 
 defineOptions({
-  name: 'DemoTreeMenu'
+  name: 'DemoSidebarMenu'
 });
 
 const [collapsible, toggleCollapsible] = useToggle(false);
 
-const items: TreeMenuOptionData<string>[] = [
+const items: SidebarMenuOptionData<string>[] = [
   {
     label: 'Platform',
     value: 'platform',
@@ -270,7 +270,7 @@ const sizes: SelectOptionData<ThemeSize>[] = [
       >
         <PanelLeft />
       </SButtonIcon>
-      <STreeMenu :items="items" :size="size" :collapsible="collapsible" class="border rounded-md" />
+      <SSidebarMenu :items="items" :size="size" :collapsible="collapsible" class="border rounded-md" />
     </div>
   </SCard>
 </template>

@@ -344,6 +344,17 @@ export const components = {
     'SSheetTitle',
     'SSheetTrigger'
   ],
+  sidebarMenu: [
+    'SSidebarMenu',
+    'SSidebarMenuRoot',
+    'SSidebarMenuGroup',
+    'SSidebarMenuChildGroup',
+    'SSidebarMenuGroupLabel',
+    'SSidebarMenuOption',
+    'SSidebarMenuItem',
+    'SSidebarMenuItemLink',
+    'SSidebarMenuCollapsibleIcon'
+  ],
   skeleton: ['SSkeleton'],
   slider: ['SSlider', 'SSliderRange', 'SSliderRoot', 'SSliderThumb', 'SSliderTrack'],
   stepper: [
@@ -389,18 +400,6 @@ export const components = {
   //   'ToolbarToggleGroup',
   //   'ToolbarToggleItem'
   // ],
-  tooltip: ['STooltip', 'STooltipArrow', 'STooltipContent', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger'],
+  tooltip: ['STooltip', 'STooltipArrow', 'STooltipContent', 'STooltipProvider', 'STooltipRoot', 'STooltipTrigger']
   // tree: ['STreeItem', 'STreeRoot', 'STreeVirtualizer'],
-  treeMenu: [
-    'STreeMenu',
-    'STreeMenuRoot',
-    'STreeMenuGroup',
-    'STreeMenuChildGroup',
-    'STreeMenuGroupLabel',
-    'STreeMenuRootOption',
-    'STreeMenuOption',
-    'STreeMenuItem',
-    'STreeMenuItemLink',
-    'STreeMenuCollapsibleIcon'
-  ]
 };

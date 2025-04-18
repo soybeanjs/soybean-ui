@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { cn, treeMenuVariants } from '@soybean-ui/variants';
+import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
 import STooltip from '../tooltip/tooltip.vue';
-import type { TreeMenuItemProps } from './types';
+import type { SidebarMenuItemProps } from './types';
 
 defineOptions({
-  name: 'STreeMenuItem',
+  name: 'SSidebarMenuItem',
   inheritAttrs: false
 });
 
-const { class: cls, size, ui, label, icon, value, disabled, checked, tooltip } = defineProps<TreeMenuItemProps>();
+const { class: cls, size, ui, label, icon, value, disabled, checked, tooltip } = defineProps<SidebarMenuItemProps>();
 
 const mergedCls = computed(() => {
-  const { item, itemIcon, label: _label } = treeMenuVariants({ size });
+  const { item, itemIcon, label: _label } = sidebarMenuVariants({ size });
 
   return {
     cls: cn(item(), cls || ui?.item),

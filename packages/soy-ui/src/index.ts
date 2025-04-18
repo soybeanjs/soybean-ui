@@ -38,6 +38,7 @@ export * from './components/segment';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/sheet';
+export * from './components/sidebar-menu';
 export * from './components/skeleton';
 export * from './components/slider';
 export * from './components/stepper';
@@ -49,7 +50,6 @@ export * from './components/toast';
 export * from './components/toggle';
 export * from './components/toggle-group';
 export * from './components/tooltip';
-export * from './components/tree-menu';
 export * from './components/vue-sonner';
 
 export * from './types';

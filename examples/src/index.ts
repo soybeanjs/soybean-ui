@@ -36,6 +36,7 @@ import DemoSegment from './ui/segment.vue';
 import DemoSelect from './ui/select.vue';
 import DemoSeparator from './ui/separator.vue';
 import DemoSheet from './ui/sheet.vue';
+import DemoSidebarMenu from './ui/sidebar-menu.vue';
 import DemoSkeleton from './ui/skeleton.vue';
 import DemoSlider from './ui/slider.vue';
 import DemoSonner from './ui/sonner.vue';
@@ -48,7 +49,6 @@ import DemoToast from './ui/toast.vue';
 import DemoToggle from './ui/toggle.vue';
 import DemoToggleGroup from './ui/toggle-group.vue';
 import DemoTooltip from './ui/tooltip.vue';
-import DemoTreeMenu from './ui/tree-menu.vue';
 
 export * from './ui/button/index';
 export * from './ui/accordion/index';
@@ -92,6 +92,7 @@ export {
   DemoSelect,
   DemoSeparator,
   DemoSheet,
+  DemoSidebarMenu,
   DemoSkeleton,
   DemoSlider,
   DemoSonner,
@@ -103,6 +104,5 @@ export {
   DemoToast,
   DemoToggle,
   DemoToggleGroup,
-  DemoTooltip,
-  DemoTreeMenu
+  DemoTooltip
 };

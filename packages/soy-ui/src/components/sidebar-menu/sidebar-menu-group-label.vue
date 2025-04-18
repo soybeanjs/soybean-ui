@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { cn, treeMenuVariants } from '@soybean-ui/variants';
-import type { TreeMenuGroupLabelProps } from './types';
+import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
+import type { SidebarMenuGroupLabelProps } from './types';
 
 defineOptions({
-  name: 'STreeMenuGroupLabel'
+  name: 'SSidebarMenuGroupLabel'
 });
 
-const { class: cls, size, ui } = defineProps<TreeMenuGroupLabelProps>();
+const { class: cls, size, ui } = defineProps<SidebarMenuGroupLabelProps>();
 
 const mergedCls = computed(() => {
-  const { groupLabel, itemIcon } = treeMenuVariants({ size });
+  const { groupLabel, itemIcon } = sidebarMenuVariants({ size });
 
   return {
     cls: cn(groupLabel(), cls || ui?.groupLabel),

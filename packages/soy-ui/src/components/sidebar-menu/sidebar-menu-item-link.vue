@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { cn, treeMenuVariants } from '@soybean-ui/variants';
+import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
 import { ArrowUpRight } from 'lucide-vue-next';
 import { SLink } from '../link';
 import STooltip from '../tooltip/tooltip.vue';
-import type { TreeMenuItemLinkProps } from './types';
+import type { SidebarMenuItemLinkProps } from './types';
 
 defineOptions({
-  name: 'SMenuItemLink'
+  name: 'SSidebarMenuItemLink'
 });
 
 const {
@@ -21,10 +21,10 @@ const {
   linkProps,
   checked,
   tooltip
-} = defineProps<TreeMenuItemLinkProps>();
+} = defineProps<SidebarMenuItemLinkProps>();
 
 const mergedCls = computed(() => {
-  const { itemLink, itemIcon, itemLinkIcon, label: _label } = treeMenuVariants({ size });
+  const { itemLink, itemIcon, itemLinkIcon, label: _label } = sidebarMenuVariants({ size });
 
   return {
     cls: cn(itemLink(), cls || ui?.itemLink),
