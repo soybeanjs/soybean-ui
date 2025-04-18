@@ -8,7 +8,7 @@ defineOptions({
   name: 'SCollapsibleContent'
 });
 
-const { class: cls, forceMount } = defineProps<CollapsibleContentProps>();
+const { class: cls, forceMount, asChild } = defineProps<CollapsibleContentProps>();
 
 const { content } = collapsibleVariants();
 
@@ -16,7 +16,7 @@ const mergedCls = computed(() => cn(content(), cls));
 </script>
 
 <template>
-  <CollapsibleContent :class="mergedCls" :force-mount="forceMount">
+  <CollapsibleContent :class="mergedCls" :as-child="asChild" :force-mount="forceMount">
     <slot />
   </CollapsibleContent>
 </template>
