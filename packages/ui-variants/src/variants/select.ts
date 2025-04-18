@@ -19,7 +19,7 @@ export const selectVariants = tv({
     ],
     viewport: '',
     group: '',
-    groupLabel: `font-medium text-muted-foreground`,
+    groupLabel: `font-semibold`,
     item: [
       `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`

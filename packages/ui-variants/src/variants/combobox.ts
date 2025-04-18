@@ -14,7 +14,7 @@ export const comboboxVariants = tv({
     ],
     list: `overflow-y-auto overflow-x-hidden`,
     group: `overflow-hidden text-foreground`,
-    groupLabel: `font-medium text-muted-foreground`,
+    groupLabel: `font-semibold text-muted-foreground`,
     inputWrapper: `flex items-center`,
     input: [
       `flex w-full bg-transparent transition-colors-200`,
