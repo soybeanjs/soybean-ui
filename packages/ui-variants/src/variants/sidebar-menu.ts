@@ -9,25 +9,30 @@ export const sidebarMenuVariants = tv({
     collapsibleContent: '',
     childGroup: 'flex flex-col items-stretch border-l border-border border-solid',
     item: [
-      `relative flex items-center w-full rounded-sm outline-none truncate cursor-pointer select-none`,
+      `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none`,
       `data-[checked=true]:(bg-primary/10 text-primary)`,
       `data-[contains-checked=true]:text-primary`,
       `hover:data-[checked=false]:(bg-accent text-accent-foreground)`,
       `hover:data-[contains-checked=true]:text-primary`,
       `transition-[width,height,colors]-200 ease-linear`,
-      `data-[disabled]:(pointer-events-none opacity-50)`
+      `data-[disabled]:(pointer-events-none opacity-50)`,
+      `group-data-[collapsible=true]:overflow-hidden`
     ],
     itemIcon: `shrink-0`,
-    label: '',
+    label: 'truncate',
     itemLink: [
-      `relative flex items-center w-full rounded-sm outline-none truncate cursor-pointer select-none decoration-none`,
+      `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none decoration-none`,
       `data-[checked=true]:(bg-primary/10 text-primary)`,
       `hover:data-[checked=false]:(bg-accent text-accent-foreground)`,
       `transition-[width,height,colors]-200 ease-linear`,
-      `data-[disabled]:(pointer-events-none opacity-50)`
+      `data-[disabled]:(pointer-events-none opacity-50)`,
+      `group-data-[collapsible=true]:overflow-hidden`
     ],
     itemLinkIcon: `shrink-0 self-start`,
-    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 data-[open]:rotate-90`
+    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 data-[open]:rotate-90`,
+    actionIcon: `shrink-0 ml-auto text-muted-foreground`,
+    badge: `shrink-0 ml-auto`,
+    chip: ``
   },
   variants: {
     size: {

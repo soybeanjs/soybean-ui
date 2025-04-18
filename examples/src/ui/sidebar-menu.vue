@@ -11,11 +11,13 @@ import {
   History,
   Map,
   PanelLeft,
+  Pencil,
   PieChart,
   Route,
   Settings2,
   SquareTerminal,
   Star,
+  Trash,
   Users
 } from 'lucide-vue-next';
 
@@ -184,17 +186,31 @@ const items: SidebarMenuOptionData<string>[] = [
       {
         label: 'Design Engineering',
         value: 'design-engineering',
-        icon: Frame
+        icon: Frame,
+        actions: [
+          {
+            label: 'Edit',
+            value: 'edit',
+            icon: Pencil
+          },
+          {
+            label: 'Delete',
+            value: 'delete',
+            icon: Trash
+          }
+        ]
       },
       {
         label: 'Sales & Marketing',
         value: 'sales-marketing',
-        icon: PieChart
+        icon: PieChart,
+        badge: 'new'
       },
       {
         label: 'Travel',
         value: 'travel',
-        icon: Map
+        icon: Map,
+        chip: 'hot'
       }
     ]
   },
@@ -257,7 +273,7 @@ const sizes: SelectOptionData<ThemeSize>[] = [
 </script>
 
 <template>
-  <SCard title="Tree Menu">
+  <SCard title="Sidebar Menu">
     <template #extra>
       <SSelect v-model="size" :items="sizes" class="w-25" />
     </template>

@@ -70,6 +70,10 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
     :link-props="item.linkProps"
     :checked="isChecked"
     :tooltip="tooltip"
+    :actions="item.actions"
+    :on-action-select="item.onActionSelect"
+    :badge="item.badge"
+    :chip="item.chip"
     @click="handleClickItem"
   >
     <template #leading>
@@ -91,6 +95,10 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
               :icon="item.icon"
               :value="item.value"
               :disabled="item.disabled"
+              :actions="item.actions"
+              :on-action-select="item.onActionSelect"
+              :badge="item.badge"
+              :chip="item.chip"
               :data-contains-checked="isChildChecked"
             >
               <template #leading>
@@ -111,6 +119,10 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
           :icon="item.icon"
           :value="item.value"
           :disabled="item.disabled"
+          :actions="item.actions"
+          :on-action-select="item.onActionSelect"
+          :badge="item.badge"
+          :chip="item.chip"
           :data-contains-checked="isChildChecked"
         >
           <template #leading>
@@ -145,6 +157,10 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
       :disabled="item.disabled"
       :checked="isChecked"
       :tooltip="tooltip"
+      :actions="item.actions"
+      :on-action-select="item.onActionSelect"
+      :badge="item.badge"
+      :chip="item.chip"
       @click="handleClickItem"
     >
       <template #leading>

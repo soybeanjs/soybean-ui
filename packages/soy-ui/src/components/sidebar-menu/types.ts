@@ -2,6 +2,9 @@ import type { Component, Ref } from 'vue';
 import type { AcceptableValue, ClassValue, ClassValueProp } from '@soybean-ui/primitives';
 import type { SidebarMenuSlots, ThemeSize } from '@soybean-ui/variants';
 import type { LinkProps } from '../link';
+import type { MenuOptionData } from '../menu';
+import type { BadgeProps } from '../badge';
+import type { ChipProps } from '../chip';
 
 export interface SidebarMenuRootContext<T extends AcceptableValue = AcceptableValue> {
   modelValue: Ref<T | undefined>;
@@ -13,6 +16,10 @@ export interface SidebarMenuRootContext<T extends AcceptableValue = AcceptableVa
 }
 
 export type SidebarMenuUi = Partial<Record<SidebarMenuSlots, ClassValue>>;
+
+export type SidebarMenuBadgeProps = Pick<BadgeProps, 'color' | 'variant' | 'shape' | 'content'>;
+
+export type SidebarMenuChipProps = Pick<ChipProps, 'color' | 'position' | 'content'>;
 
 export interface SidebarMenuOptionData<T extends AcceptableValue = AcceptableValue> {
   /** The label to display in the menu. */
@@ -35,6 +42,14 @@ export interface SidebarMenuOptionData<T extends AcceptableValue = AcceptableVal
    * if provided, the option will be a link.
    */
   linkProps?: LinkProps;
+  /** The actions of the option. */
+  actions?: MenuOptionData[];
+  /** The action select handler. */
+  onActionSelect?: (event: Event, item: MenuOptionData) => any;
+  /** The badge of the option. */
+  badge?: string | SidebarMenuBadgeProps;
+  /** The chip of the option. */
+  chip?: string | SidebarMenuChipProps;
   /** The children of the option. */
   children?: SidebarMenuOptionData<T>[];
 }
@@ -47,9 +62,9 @@ export interface SidebarMenuGroupLabelProps extends ClassValueProp, Pick<Sidebar
 
 export interface SidebarMenuItemProps
   extends ClassValueProp,
-    Pick<SidebarMenuOptionData, 'value' | 'label' | 'icon' | 'disabled'> {
+    Omit<SidebarMenuOptionData, 'isGroupLabel' | 'linkProps' | 'children'> {
   size?: ThemeSize;
-  ui?: Pick<SidebarMenuUi, 'item' | 'itemIcon' | 'label'>;
+  ui?: SidebarMenuUi;
   checked?: boolean;
   tooltip?: string;
 }
@@ -57,9 +72,9 @@ export interface SidebarMenuItemProps
 // ItemLink
 export interface SidebarMenuItemLinkProps
   extends ClassValueProp,
-    Pick<SidebarMenuOptionData, 'value' | 'label' | 'icon' | 'disabled' | 'linkProps'> {
+    Omit<SidebarMenuOptionData, 'isGroupLabel' | 'children'> {
   size?: ThemeSize;
-  ui?: Pick<SidebarMenuUi, 'itemLink' | 'itemIcon' | 'itemLinkIcon' | 'label'>;
+  ui?: SidebarMenuUi;
   checked?: boolean;
   tooltip?: string;
 }
