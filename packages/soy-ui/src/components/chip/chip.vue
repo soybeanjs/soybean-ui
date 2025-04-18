@@ -7,16 +7,14 @@ defineOptions({
   name: 'SChip'
 });
 
-const { class: cls, ui, text, show = true, size, color, position } = defineProps<ChipProps>();
+const { class: cls, ui, content, open = true, size, color, position } = defineProps<ChipProps>();
 </script>
 
 <template>
   <SChipRoot :class="cls || ui?.root">
     <slot />
-    <SChipContent v-if="show" :class="ui?.content" :size="size" :color="color" :position="position">
-      <slot name="content" :value="text">
-        {{ text }}
-      </slot>
+    <SChipContent v-if="open" :class="ui?.content" :size="size" :color="color" :position="position">
+      <slot name="content">{{ content }}</slot>
     </SChipContent>
   </SChipRoot>
 </template>

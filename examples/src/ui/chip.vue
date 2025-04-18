@@ -30,7 +30,7 @@ const show = ref(true);
     <SCard title="Color With Text" split>
       <div class="flex gap-4">
         <div v-for="color in colors" :key="color">
-          <SChip :color="color" text="99+">
+          <SChip :color="color" content="99+">
             <SButton variant="dashed">{{ color }}</SButton>
           </SChip>
         </div>
@@ -46,7 +46,7 @@ const show = ref(true);
       </div>
       <div class="mt-6 flex gap-3">
         <div v-for="size in sizes" :key="size">
-          <SChip :size="size" text="99+">
+          <SChip :size="size" content="99+">
             <SButton variant="soft" :size="size">{{ size }}</SButton>
           </SChip>
         </div>
@@ -64,7 +64,7 @@ const show = ref(true);
     <SCard title="ModelValue" split>
       <div class="flex gap-3">
         <SInput v-model="text" />
-        <SChip :text="text">
+        <SChip :content="text">
           <SButton variant="outline">A</SButton>
         </SChip>
       </div>
@@ -72,9 +72,9 @@ const show = ref(true);
     <SCard title="Slot" split>
       <div class="flex gap-3">
         <SInput v-model="slotText" />
-        <SChip :text="slotText">
+        <SChip>
           <SButton variant="outline">A</SButton>
-          <template #content="{ value }">{{ value }}！</template>
+          <template #content>{{ slotText }}！</template>
         </SChip>
       </div>
     </SCard>

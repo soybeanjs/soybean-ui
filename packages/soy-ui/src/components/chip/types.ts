@@ -13,8 +13,8 @@ export type ChipUi = Partial<Record<ChipSlots, ClassValue>>;
 
 export interface ChipProps extends ChipContentProps {
   ui?: ChipUi;
-  text?: string;
-  show?: boolean;
+  content?: string;
+  open?: boolean;
 }
 
 export { ChipPosition };
