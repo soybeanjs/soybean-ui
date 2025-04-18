@@ -7,13 +7,13 @@ defineOptions({
   name: 'SBadge'
 });
 
-const { class: cls, color, variant, size, shape } = defineProps<BadgeProps>();
+const { class: cls, color, variant, size, shape, content } = defineProps<BadgeProps>();
 
 const mergedCls = computed(() => cn(badgeVariants({ color, variant, size, shape }), cls));
 </script>
 
 <template>
   <div :class="mergedCls">
-    <slot />
+    <slot>{{ content }}</slot>
   </div>
 </template>
