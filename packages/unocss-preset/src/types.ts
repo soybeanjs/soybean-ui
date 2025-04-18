@@ -39,6 +39,19 @@ export type FeedbackColorOfThemeCssVars = {
 
 export type FeedbackColorOfThemeCssVarKey = keyof FeedbackColorOfThemeCssVars;
 
+export type SidebarColorOfThemeCssVars = {
+  'sidebar-background': HslColorString;
+  'sidebar-foreground': HslColorString;
+  'sidebar-border': HslColorString;
+  'sidebar-ring': HslColorString;
+  'sidebar-primary': HslColorString;
+  'sidebar-primary-foreground': HslColorString;
+  'sidebar-accent': HslColorString;
+  'sidebar-accent-foreground': HslColorString;
+};
+
+export type SidebarColorOfThemeCssVarKey = keyof SidebarColorOfThemeCssVars;
+
 export interface ThemeCSSVarsVariant {
   name: string;
   light: ThemeCSSVars;
@@ -48,6 +61,11 @@ export interface ThemeCSSVarsVariant {
 export interface FeedbackColorOfThemeCssVarsVariant {
   light: FeedbackColorOfThemeCssVars;
   dark: FeedbackColorOfThemeCssVars;
+}
+
+export interface SidebarColorOfThemeCssVarsVariant {
+  light: SidebarColorOfThemeCssVars;
+  dark: SidebarColorOfThemeCssVars;
 }
 
 export type ThemeConfigColor =
@@ -88,6 +106,8 @@ export interface ThemeOptions {
   color?: ColorOptions | false;
   /** feedback color */
   feedbackColor?: FeedbackColorOfThemeCssVarsVariant;
+  /** sidebar color */
+  sidebar?: SidebarColorOfThemeCssVarsVariant;
   /**
    * theme radius
    *

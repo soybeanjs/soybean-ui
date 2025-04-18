@@ -22,6 +22,7 @@ import DemoForm from './ui/form.vue';
 import DemoHoverCard from './ui/hover-card.vue';
 import DemoInput from './ui/input.vue';
 import DemoKeyboardKey from './ui/keyboard-key.vue';
+import DemoLayout from './ui/layout.vue';
 import DemoMenubar from './ui/menubar.vue';
 import DemoNavigationMenu from './ui/navigation-menu.vue';
 import DemoNumberField from './ui/number-field.vue';
@@ -78,6 +79,7 @@ export {
   DemoHoverCard,
   DemoInput,
   DemoKeyboardKey,
+  DemoLayout,
   DemoMenubar,
   DemoNavigationMenu,
   DemoNumberField,
