@@ -13,7 +13,7 @@ const positions: ChipPosition[] = ['top-right', 'bottom-right', 'top-left', 'bot
 
 const text = ref('99+');
 const slotText = ref('New');
-const show = ref(true);
+const open = ref(true);
 </script>
 
 <template>
@@ -80,8 +80,8 @@ const show = ref(true);
     </SCard>
     <SCard title="Show" split>
       <div class="flex gap-3">
-        <SSwitch v-model:checked="show" />
-        <SChip :show="show">
+        <SSwitch v-model="open" />
+        <SChip :open="open">
           <SButton variant="outline">A</SButton>
         </SChip>
       </div>
