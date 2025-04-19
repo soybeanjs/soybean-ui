@@ -121,7 +121,11 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'HoverCard', link: '/docs/components/hover-card' },
           { text: 'Input', link: '/docs/components/input' },
           { text: 'KeyboardKey', link: '/docs/components/keyboard-key' },
-          { text: 'Layout', link: '/docs/components/layout' },
+          {
+            text: 'Layout',
+            link: '/docs/components/layout',
+            badge: { variant: 'ghost', color: 'success', content: 'new' }
+          },
           { text: 'Menubar', link: '/docs/components/menubar' },
           { text: 'NavigationMenu', link: '/docs/components/navigation-menu' },
           { text: 'NumberField', link: '/docs/components/number-field' },
@@ -137,7 +141,11 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'Select', link: '/docs/components/select' },
           { text: 'Separator', link: '/docs/components/separator' },
           { text: 'Sheet', link: '/docs/components/sheet' },
-          { text: 'SidebarMenu', link: '/docs/components/sidebar-menu', badge: 'new' },
+          {
+            text: 'SidebarMenu',
+            link: '/docs/components/sidebar-menu',
+            badge: { variant: 'ghost', color: 'success', content: 'new' }
+          },
           { text: 'Sidebar', link: '/docs/components/sidebar', badge: 'wip' },
           { text: 'Skeleton', link: '/docs/components/skeleton' },
           { text: 'Slider', link: '/docs/components/slider' },
