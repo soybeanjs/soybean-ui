@@ -1,6 +1,84 @@
 # Changelog
 
 
+## [v0.0.2-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.2...v0.0.2-beta.3) (2025-04-20)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **badge**:
+  - add optional 'content' prop to badge component &nbsp;-&nbsp; by @soybeanjs [<samp>(c3ec9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c3ec960)
+  - add 'raw' variant to badge component and update size and shape styles &nbsp;-&nbsp; by @soybeanjs [<samp>(15530)</samp>](https://github.com/soybeanjs/soybean-ui/commit/155306b)
+- **context**:
+  - add optional 'requiredProvide' parameter to createContext function &nbsp;-&nbsp; by @soybeanjs [<samp>(fdd21)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fdd217c)
+- **drawer**:
+  - add default prop for background scaling &nbsp;-&nbsp; by @soybeanjs [<samp>(1fe4b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1fe4b91)
+- **dropdown-menu**:
+  - add 'disabledTrigger' prop to dropdown components &nbsp;-&nbsp; by @soybeanjs [<samp>(113cc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/113ccea)
+- **packages**:
+  - ui: add tree-menu &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/71 [<samp>(87b47)</samp>](https://github.com/soybeanjs/soybean-ui/commit/87b4776)
+  - add layout &nbsp;-&nbsp; by @soybeanjs in https://github.com/soybeanjs/soybean-ui/issues/72 [<samp>(70187)</samp>](https://github.com/soybeanjs/soybean-ui/commit/70187d5)
+- **sidebar-menu**:
+  - enhance sidebar menu with action dropdowns, badges, and chips for improved interactivity &nbsp;-&nbsp; by @soybeanjs [<samp>(23ceb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/23ceb57)
+- **tooltip**:
+  - add optional 'content' prop to tooltip component &nbsp;-&nbsp; by @soybeanjs [<samp>(9a5cc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9a5ccc9)
+- **tree-menu**:
+  - add STreeMenuRootOption component to tree menu exports &nbsp;-&nbsp; by @soybeanjs [<samp>(405ca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/405ca62)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **packages**: fix menu size &nbsp;-&nbsp; by @soybeanjs [<samp>(b039e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b039e21)
+- **projects**: fix scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(a507a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a507a68)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **dropdown-menu**:
+  - add size selection to dropdown menu component example &nbsp;-&nbsp; by @soybeanjs [<samp>(75f3c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75f3c91)
+- **packages**:
+  - optimize tree-menu style &nbsp;-&nbsp; by @soybeanjs [<samp>(c8ddc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c8ddc12)
+  - optimize `collapsible-content` &nbsp;-&nbsp; by @soybeanjs [<samp>(c0315)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c031525)
+  - optimize sidebar-menu style &nbsp;-&nbsp; by @soybeanjs [<samp>(4b870)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4b870af)
+  - ui: optimize sidebar-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(482bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/482bbc5)
+- **projects**:
+  - optimize example & menu-group variants &nbsp;-&nbsp; by @soybeanjs [<samp>(9e7be)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9e7be74)
+  - optimize script genearte &nbsp;-&nbsp; by @soybeanjs [<samp>(8ada4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8ada4ec)
+  - optimize accordion example &nbsp;-&nbsp; by @soybeanjs [<samp>(676b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/676b605)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **chip**:
+  - replace 'text' and 'show' props with 'content' and 'open' for improved flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(8396f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8396f11)
+  - rename 'show' to 'open' for clarity and update binding in template &nbsp;-&nbsp; by @soybeanjs [<samp>(a4c19)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a4c19a5)
+- **packages**:
+  - refactor `tree-menu` to `sidebar-menu` &nbsp;-&nbsp; by @soybeanjs [<samp>(6344d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6344d4a)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**:
+  - update accordion docs. &nbsp;-&nbsp; by **Azir-11** [<samp>(bed72)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bed7296)
+  - update component preview. &nbsp;-&nbsp; by **Azir-11** [<samp>(089c2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/089c214)
+  - update docs config &nbsp;-&nbsp; by @soybeanjs [<samp>(f51b8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f51b89a)
+  - remove sidebar &nbsp;-&nbsp; by @soybeanjs [<samp>(a5e2a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a5e2abe)
+  - generate example code &nbsp;-&nbsp; by @soybeanjs [<samp>(460ec)</samp>](https://github.com/soybeanjs/soybean-ui/commit/460ec75)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(66d2a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/66d2ad3)
+- **projects**:
+  - update github workflows release.yml &nbsp;-&nbsp; by @soybeanjs [<samp>(87a09)</samp>](https://github.com/soybeanjs/soybean-ui/commit/87a097c)
+  - command script compatible with both Windows and Mac &nbsp;-&nbsp; by **Azir-11** [<samp>(a5f40)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a5f4010)
+  - sync code from vaul-vue &nbsp;-&nbsp; by @soybeanjs [<samp>(e1d17)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e1d174d)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **badge**: adjust padding for badge sizes to improve layout consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(5c60f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5c60f04)
+- **variants**: update groupLabel font weight to 'font-semibold' in combobox and select components &nbsp;-&nbsp; by @soybeanjs [<samp>(e45b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e45b604)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[Azir-11](mailto:2075125282@qq.com)
+
 ## [v0.0.2-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.1...v0.0.2-beta.2) (2025-04-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

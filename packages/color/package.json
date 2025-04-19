@@ -1,6 +1,6 @@
 {
   "name": "@soybean-ui/color",
-  "version": "0.0.2-beta.2",
+  "version": "0.0.2-beta.3",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
