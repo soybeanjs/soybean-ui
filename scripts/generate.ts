@@ -74,7 +74,7 @@ function generateExports(componentNames: string[], dir: string) {
   fs.writeFileSync(filePath, template);
 }
 
-function generateVariants(componentNames: string[], module: string, dir: string) {
+function generateVariants(componentNames: string[], module: string, filePath: string) {
   let template = `// @unocss-include
 import { tv } from 'tailwind-variants';
 
@@ -95,7 +95,7 @@ export const ${module}Variants = tv({
 
   template += `export type ${toPascalCase(module)}Slots = keyof typeof ${module}Variants.slots;`;
 
-  fs.writeFileSync(dir, template);
+  fs.writeFileSync(filePath, template);
 }
 
 interface GenerateOptions {
@@ -118,8 +118,8 @@ async function resolvePrompt() {
   ]);
 
   const kbName = toKebabCase(module);
-  const dir = `packages/ui/src/components/${kbName}`;
-  const variantsDir = `packages/variants/src/variants/${kbName}.ts`;
+  const dir = `packages/soy-ui/src/components/${kbName}`;
+  const variantsFilePath = `packages/ui-variants/src/variants/${kbName}.ts`;
 
   const components = _components.map(component => {
     let name = toKebabCase(component);
@@ -133,11 +133,11 @@ async function resolvePrompt() {
 
   components.unshift(kbName);
 
-  return { module, components, dir, variantsDir };
+  return { module, components, dir, variantsFilePath };
 }
 
 async function start() {
-  const { module, components, dir, variantsDir } = await resolvePrompt();
+  const { module, components, dir, variantsFilePath } = await resolvePrompt();
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
@@ -145,7 +145,7 @@ async function start() {
 
   generateTypes(components, dir);
   generateExports(components, dir);
-  generateVariants(components, module, variantsDir);
+  generateVariants(components, module, variantsFilePath);
 
   components.forEach(component => {
     generateComponent(component, module, dir);
