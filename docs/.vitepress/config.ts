@@ -121,6 +121,7 @@ export default defineConfigWithTheme<CustomThemeConfig>({
           { text: 'HoverCard', link: '/docs/components/hover-card' },
           { text: 'Input', link: '/docs/components/input' },
           { text: 'KeyboardKey', link: '/docs/components/keyboard-key' },
+          { text: 'Layout', link: '/docs/components/layout' },
           { text: 'Menubar', link: '/docs/components/menubar' },
           { text: 'NavigationMenu', link: '/docs/components/navigation-menu' },
           { text: 'NumberField', link: '/docs/components/number-field' },

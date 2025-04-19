@@ -23,6 +23,7 @@ export * from './components/hover-card';
 export * from './components/input';
 export * from './components/keyboard-key';
 export * from './components/label';
+export * from './components/layout';
 export * from './components/menu';
 export * from './components/menubar';
 export * from './components/navigation-menu';
