@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const sidebarMenuVariants = tv({
   slots: {
-    root: 'group w-[--sidebar-menu-width] data-[collapsible=true]:w-[--sidebar-menu-collapsible-width] transition-[width,height]-200 ease-out',
+    root: 'group w-[--sidebar-menu-width] data-[collapsible=true]:w-[--sidebar-menu-width-icon] transition-[width,height]-200 ease-out',
     groupLabel: `flex items-center text-foreground/70  group-data-[collapsible=true]:(size-0 p-0 opacity-0 overflow-hidden) transition-[height,padding,opacity]-200`,
     group: 'flex flex-col items-stretch group-data-[collapsible=true]:pb-0',
     collapsibleContent: '',

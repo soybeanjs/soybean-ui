@@ -4,8 +4,6 @@ import type { CSSProperties, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
-import { themeSizeRatio } from '../../constant';
-import type { ThemeSize } from '../../types';
 import { provideSidebarMenuRootContext } from './context';
 import type { SidebarMenuRootEmits, SidebarMenuRootProps } from './types';
 
@@ -14,7 +12,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<SidebarMenuRootProps<T>>(), {
-  width: 240
+  width: 240,
+  collapsedWidth: 50
 });
 
 const emit = defineEmits<SidebarMenuRootEmits<T>>();
@@ -51,24 +50,15 @@ const collapsible = useVModel<SidebarMenuRootProps<T>, 'collapsible', 'update:co
   }
 ) as Ref<boolean>;
 
-const collapsibleWidthMap: Record<ThemeSize, number> = {
-  xs: 34 / 16,
-  sm: 42 / 16,
-  md: 50 / 16,
-  lg: 58 / 16,
-  xl: 66 / 16,
-  '2xl': 78 / 16
-};
-
 const style = computed<CSSProperties>(() => {
-  const fullWidth = props.width * themeSizeRatio[props.size || 'md'];
-  const collapsibleWidth = collapsibleWidthMap[props.size || 'md'];
+  const fullWidth = `${props.width / 16}rem`;
+  const collapsibleWidth = `${props.collapsedWidth / 16}rem`;
 
   const width = props.collapsible ? collapsibleWidth : fullWidth;
 
   return {
-    '--sidebar-menu-width': `${width}px`,
-    '--sidebar-menu-collapsible-width': `${collapsibleWidth}rem`
+    '--sidebar-menu-width': `${width}`,
+    '--sidebar-menu-width-icon': `${collapsibleWidth}`
   };
 });
 

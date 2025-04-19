@@ -116,6 +116,12 @@ export interface SidebarMenuRootProps<T extends AcceptableValue = AcceptableValu
    * @default 240
    */
   width?: number;
+  /**
+   * The width of the sidebar menu when it's collapsed.
+   *
+   * @default 50
+   */
+  collapsedWidth?: number;
 }
 
 export type SidebarMenuRootEmits<T extends AcceptableValue = AcceptableValue> = {
