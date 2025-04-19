@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useToggle } from '@vueuse/core';
 import { SButtonIcon, SCard, SSelect, SSidebarMenu } from 'soy-ui';
 import type { SelectOptionData, SidebarMenuOptionData, ThemeSize } from 'soy-ui';
@@ -25,7 +25,7 @@ defineOptions({
   name: 'DemoSidebarMenu'
 });
 
-const [collapsible, toggleCollapsible] = useToggle(false);
+const [collapsed, toggleCollapsible] = useToggle(false);
 
 const items: SidebarMenuOptionData<string>[] = [
   {
@@ -244,25 +244,34 @@ const items: SidebarMenuOptionData<string>[] = [
 
 const size = ref<ThemeSize>('md');
 
+const themeSizeMap: Record<ThemeSize, number> = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 24
+};
+
 const sizes: SelectOptionData<ThemeSize>[] = [
   {
-    label: 'Xs',
+    label: 'xs',
     value: 'xs'
   },
   {
-    label: 'Sm',
+    label: 'sm',
     value: 'sm'
   },
   {
-    label: 'Md',
+    label: 'md',
     value: 'md'
   },
   {
-    label: 'Lg',
+    label: 'lg',
     value: 'lg'
   },
   {
-    label: 'Xl',
+    label: 'xl',
     value: 'xl'
   },
   {
@@ -270,6 +279,10 @@ const sizes: SelectOptionData<ThemeSize>[] = [
     value: '2xl'
   }
 ];
+
+const BASE_WIDTH = 240;
+
+const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeMap[size.value]) / themeSizeMap.md / 16}rem`);
 </script>
 
 <template>
@@ -277,16 +290,11 @@ const sizes: SelectOptionData<ThemeSize>[] = [
     <template #extra>
       <SSelect v-model="size" :items="sizes" class="w-25" />
     </template>
-    <div class="relative w-60">
-      <SButtonIcon
-        class="absolute right-2 top-2"
-        size="sm"
-        :ui="{ icon: 'text-muted-foreground' }"
-        @click="() => toggleCollapsible()"
-      >
+    <div class="relative h-100" :style="{ width: menuWidth }">
+      <SButtonIcon :size="size" class="absolute right-2 top-2" @click="() => toggleCollapsible()">
         <PanelLeft />
       </SButtonIcon>
-      <SSidebarMenu :items="items" :size="size" :collapsible="collapsible" class="border rounded-md" />
+      <SSidebarMenu :size="size" :items="items" :collapsed="collapsed" class="bg-sidebar-background" />
     </div>
   </SCard>
 </template>

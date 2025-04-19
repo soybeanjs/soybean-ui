@@ -6,13 +6,15 @@ import type { MenuOptionData } from '../menu';
 import type { BadgeProps } from '../badge';
 import type { ChipProps } from '../chip';
 
+export type SidebarMenuState = 'expanded' | 'collapsed';
+
 export interface SidebarMenuRootContext<T extends AcceptableValue = AcceptableValue> {
   modelValue: Ref<T | undefined>;
   onModelValueChange: (value?: T | undefined) => void;
   expandedKeys: Ref<T[]>;
   onExpandedKeysChange: (keys: T[]) => void;
-  collapsible: Ref<boolean>;
-  onCollapsibleChange: (collapsible: boolean) => void;
+  collapsed: Ref<boolean>;
+  onCollapsedChange: (collapsed: boolean) => void;
 }
 
 export type SidebarMenuUi = Partial<Record<SidebarMenuSlots, ClassValue>>;
@@ -105,17 +107,20 @@ export interface SidebarMenuOptionProps<T extends AcceptableValue = AcceptableVa
 
 export interface SidebarMenuRootProps<T extends AcceptableValue = AcceptableValue> extends ClassValueProp {
   size?: ThemeSize;
+  /** The active menu of the sidebar menu. */
   modelValue?: T | null;
+  /** The default active menu of the sidebar menu. */
   defaultValue?: T | null;
+  /** The expanded keys of the sidebar menu. */
   expandedKeys?: T[];
+  /** The default expanded keys of the sidebar menu. */
   defaultExpandedKeys?: T[];
-  collapsible?: boolean;
   /**
-   * The width of the sidebar menu.
+   * Whether the sidebar menu is collapsed.
    *
-   * @default 240
+   * @default false
    */
-  width?: number;
+  collapsed?: boolean;
   /**
    * The width of the sidebar menu when it's collapsed.
    *
@@ -127,7 +132,7 @@ export interface SidebarMenuRootProps<T extends AcceptableValue = AcceptableValu
 export type SidebarMenuRootEmits<T extends AcceptableValue = AcceptableValue> = {
   'update:modelValue': [value: T];
   'update:expandedKeys': [keys: T[]];
-  'update:collapsible': [collapsible: boolean];
+  'update:collapsed': [collapsed: boolean];
 };
 
 export interface SidebarMenuProps<T extends AcceptableValue = AcceptableValue> extends SidebarMenuRootProps<T> {

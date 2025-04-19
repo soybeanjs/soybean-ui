@@ -4,15 +4,15 @@ import type { CSSProperties, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
+import { themeSizeRatio } from '../../constant';
 import { provideSidebarMenuRootContext } from './context';
-import type { SidebarMenuRootEmits, SidebarMenuRootProps } from './types';
+import type { SidebarMenuRootEmits, SidebarMenuRootProps, SidebarMenuState } from './types';
 
 defineOptions({
   name: 'SSidebarMenuRoot'
 });
 
 const props = withDefaults(defineProps<SidebarMenuRootProps<T>>(), {
-  width: 240,
   collapsedWidth: 50
 });
 
@@ -41,26 +41,19 @@ const expandedKeys = useVModel<SidebarMenuRootProps<T>, 'expandedKeys', 'update:
   }
 ) as Ref<T[]>;
 
-const collapsible = useVModel<SidebarMenuRootProps<T>, 'collapsible', 'update:collapsible'>(
-  props,
-  'collapsible',
-  emit,
-  {
-    defaultValue: props.collapsible || false
-  }
-) as Ref<boolean>;
+const collapsed = useVModel<SidebarMenuRootProps<T>, 'collapsed', 'update:collapsed'>(props, 'collapsed', emit, {
+  defaultValue: props.collapsed || false
+}) as Ref<boolean>;
 
 const style = computed<CSSProperties>(() => {
-  const fullWidth = `${props.width / 16}rem`;
-  const collapsibleWidth = `${props.collapsedWidth / 16}rem`;
-
-  const width = props.collapsible ? collapsibleWidth : fullWidth;
+  const collapsedWidth = props.collapsedWidth * themeSizeRatio[props.size || 'md'];
 
   return {
-    '--sidebar-menu-width': `${width}`,
-    '--sidebar-menu-width-icon': `${collapsibleWidth}`
+    '--sidebar-collapsed-menu-width': `${collapsedWidth / 16}rem`
   };
 });
+
+const dataState = computed<SidebarMenuState>(() => (props.collapsed ? 'collapsed' : 'expanded'));
 
 provideSidebarMenuRootContext({
   modelValue,
@@ -71,15 +64,28 @@ provideSidebarMenuRootContext({
   onExpandedKeysChange: keys => {
     expandedKeys.value = keys as T[];
   },
-  collapsible,
-  onCollapsibleChange: value => {
-    collapsible.value = value as boolean;
+  collapsed,
+  onCollapsedChange: value => {
+    collapsed.value = value as boolean;
   }
 });
 </script>
 
 <template>
-  <div :class="mergedCls" :style="style">
+  <div class="scroll-area" :class="mergedCls" :style="style" :data-state="dataState">
     <slot />
   </div>
 </template>
+
+<style scoped>
+.scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  border-style: solid;
+  border-color: hsl(var(--border));
+}
+
+.dark .scroll-area {
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+</style>

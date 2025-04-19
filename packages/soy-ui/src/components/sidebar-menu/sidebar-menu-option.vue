@@ -18,7 +18,7 @@ defineOptions({
 
 const { size, ui, item, root } = defineProps<SidebarMenuOptionProps<T>>();
 
-const { modelValue, onModelValueChange, expandedKeys, onExpandedKeysChange, collapsible } =
+const { modelValue, onModelValueChange, expandedKeys, onExpandedKeysChange, collapsed } =
   injectSidebarMenuRootContext();
 
 const isChecked = computed(() => modelValue.value === item.value);
@@ -31,14 +31,14 @@ const collapsibleContentCls = computed(() => {
   return cn(collapsibleContent(), ui?.collapsibleContent);
 });
 
-const tooltip = computed(() => (root && collapsible.value ? item.label : undefined));
+const tooltip = computed(() => (root && collapsed.value ? item.label : undefined));
 
 function handleClickItem() {
   onModelValueChange(item.value);
 }
 
 function handleClickCollapsibleTrigger() {
-  if (collapsible.value) return;
+  if (collapsed.value) return;
 
   if (isOpen.value) {
     const keys = expandedKeys.value.filter(key => key !== item.value);
@@ -84,9 +84,9 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
     </template>
   </SSidebarMenuItemLink>
   <template v-else>
-    <CollapsibleRoot v-if="item.children" :open="!collapsible && isOpen">
+    <CollapsibleRoot v-if="item.children" :open="!collapsed && isOpen">
       <CollapsibleTrigger as-child @click="handleClickCollapsibleTrigger">
-        <SDropdownMenu v-if="root && collapsible" :items="item.children" side="right">
+        <SDropdownMenu v-if="root && collapsed" :items="item.children" side="right">
           <template #trigger>
             <SSidebarMenuItem
               :size="size"
@@ -136,7 +136,13 @@ function recurseCheckChild(children?: SidebarMenuOptionData[]): boolean {
       </CollapsibleTrigger>
       <SCollapsibleContent :class="collapsibleContentCls">
         <SSidebarMenuChildGroup :class="ui?.childGroup" :size="size">
-          <SSidebarMenuOption v-for="child in item.children" :key="String(child.value)" :item="child">
+          <SSidebarMenuOption
+            v-for="child in item.children"
+            :key="String(child.value)"
+            :size="size"
+            :ui="ui"
+            :item="child"
+          >
             <template #leading>
               <slot name="leading" :item="child" />
             </template>

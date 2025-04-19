@@ -99,7 +99,9 @@ const chipProps = computed<SidebarMenuChipProps | null>(() => {
           <SBadge v-if="badgeProps" v-bind="badgeProps" :class="mergedCls.badge" :size="size" />
           <SDropdownMenu v-if="actions" :actions="actions" :size="size" @select="onActionSelect">
             <template #trigger>
-              <Ellipsis :class="mergedCls.actionIcon" />
+              <span :class="mergedCls.actionIcon" @click.stop>
+                <Ellipsis />
+              </span>
             </template>
           </SDropdownMenu>
           <slot name="trailing" />
