@@ -59,7 +59,12 @@ const forwardedOption = useCombinedPropsEmits(forwardedOptionProps, forwardedOpt
 </script>
 
 <template>
-  <SMenuPortalContent v-bind="forwardedPortalContent" :class="props.class || ui?.content" :arrow-class="ui?.arrow">
+  <SMenuPortalContent
+    v-bind="forwardedPortalContent"
+    :class="props.class || ui?.content"
+    :size="size"
+    :arrow-class="ui?.arrow"
+  >
     <SMenuOption v-for="item in items" :key="String(item.value)" v-bind="forwardedOption" :size="size" :item="item">
       <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
         <slot :name="slotKey" v-bind="slotProps" />
