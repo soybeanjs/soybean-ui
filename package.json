@@ -11,6 +11,13 @@
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
+  "repository": {
+    "url": "https://github.com/soybeanjs/soybean-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
+  },
   "keywords": ["UI", "UnoCSS", "shadcn-ui", "vue3"],
   "scripts": {
     "build": "pnpm build:pkg && vite build",
