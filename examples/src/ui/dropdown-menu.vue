@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDropdownMenu, SDropdownMenuCheckbox, SDropdownMenuRadio } from 'soy-ui';
-import type { MenuOptionData } from 'soy-ui';
+import {
+  SButton,
+  SButtonGroup,
+  SCard,
+  SDropdownMenu,
+  SDropdownMenuCheckbox,
+  SDropdownMenuRadio,
+  SSelect
+} from 'soy-ui';
+import type { MenuOptionData, SelectOptionData, ThemeSize } from 'soy-ui';
 import {
   CirclePlus,
   Cloud,
@@ -23,6 +31,35 @@ import {
 defineOptions({
   name: 'DemoDropdownMenu'
 });
+
+const size = ref<ThemeSize>('md');
+
+const sizes: SelectOptionData<ThemeSize>[] = [
+  {
+    label: 'xs',
+    value: 'xs'
+  },
+  {
+    label: 'sm',
+    value: 'sm'
+  },
+  {
+    label: 'md',
+    value: 'md'
+  },
+  {
+    label: 'lg',
+    value: 'lg'
+  },
+  {
+    label: 'xl',
+    value: 'xl'
+  },
+  {
+    label: '2xl',
+    value: '2xl'
+  }
+];
 
 const menus: MenuOptionData<string>[] = [
   {
@@ -100,7 +137,13 @@ const placements = [
 <template>
   <div class="flex-c gap-4">
     <SCard title="Dropdown Menu" split>
-      <SDropdownMenu :items="menus" @select="handleSelect">
+      <template #extra>
+        <SButtonGroup>
+          <SButton size="sm" variant="pure" class="cursor-default">size</SButton>
+          <SSelect v-model="size" size="sm" :items="sizes" placeholder="Select size" class="w-30" />
+        </SButtonGroup>
+      </template>
+      <SDropdownMenu :size="size" :items="menus" @select="handleSelect">
         <template #trigger>
           <SButton variant="pure">Dropdown</SButton>
         </template>
