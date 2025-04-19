@@ -34,7 +34,7 @@ const items: AccordionItemData[] = [
 <template>
   <SCard title="Size" split>
     <div class="flex flex-wrap justify-between gap-4">
-      <SCard v-for="size in sizes" :key="size" :title="size" split class="basis-32% lt-lg:basis-48% lt-sm:basis-100%">
+      <SCard v-for="size in sizes" :key="size" :title="size" split class="basis-48% lt-sm:basis-100%">
         <SAccordion :size="size" :items="items" collapsible />
       </SCard>
     </div>
