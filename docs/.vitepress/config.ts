@@ -146,7 +146,6 @@ export default defineConfigWithTheme<CustomThemeConfig>({
             link: '/docs/components/sidebar-menu',
             badge: { variant: 'ghost', color: 'success', content: 'new' }
           },
-          { text: 'Sidebar', link: '/docs/components/sidebar', badge: 'wip' },
           { text: 'Skeleton', link: '/docs/components/skeleton' },
           { text: 'Slider', link: '/docs/components/slider' },
           { text: 'Sonner', link: '/docs/components/sonner' },
