@@ -1,5 +1,4 @@
 import ThemeCustomizer from './components/theme-customizer.vue';
-import DemoAccordion from './ui/accordion.vue';
 import DemoAlert from './ui/alert.vue';
 import DemoAlertDialog from './ui/alert-dialog.vue';
 import DemoAspectRatio from './ui/aspect-ratio.vue';
@@ -52,11 +51,10 @@ import DemoToggleGroup from './ui/toggle-group.vue';
 import DemoTooltip from './ui/tooltip.vue';
 
 export * from './ui/button/index';
-export * from './ui/accordion/index';
+export * from './ui/accordion';
 
 export {
   ThemeCustomizer,
-  DemoAccordion,
   DemoAlert,
   DemoAlertDialog,
   DemoAspectRatio,

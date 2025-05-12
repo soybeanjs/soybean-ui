@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import {
-  DemoAccordionCustomIcon,
-  DemoAccordionCustomStyling,
-  DemoAccordionMultiple,
-  DemoAccordionSingle,
-  DemoAccordionSize
-} from './accordion';
+import DemoAccordionSingle from './single.vue';
+import DemoAccordionMultiple from './multiple.vue';
+import DemoAccordionCustomStyling from './custom-styling.vue';
+import DemoAccordionCustomIcon from './custom-icon.vue';
+import DemoAccordionSize from './size.vue';
 
 defineOptions({
   name: 'DemoAccordion'
