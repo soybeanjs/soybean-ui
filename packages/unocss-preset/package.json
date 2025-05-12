@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@soybean-ui/color": "workspace:*",
-    "@unocss/core": "66.0.0"
+    "@unocss/core": "66.1.1"
   },
   "devDependencies": {
     "tsup": "8.4.0"
