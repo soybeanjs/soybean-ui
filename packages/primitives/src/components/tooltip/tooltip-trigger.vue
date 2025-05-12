@@ -47,6 +47,9 @@ function handlePointerUp() {
 }
 
 function handlePointerDown() {
+  if (rootContext.open.value) {
+    rootContext.onClose();
+  }
   isPointerDown.value = true;
   document.addEventListener('pointerup', handlePointerUp, { once: true });
 }

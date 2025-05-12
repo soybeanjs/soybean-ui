@@ -78,6 +78,15 @@ watch(
   { immediate: true, deep: true }
 );
 
+watch(
+  () => props.modelValue,
+  () => {
+    if (props.modelValue !== undefined) {
+      rootContext.filterState.search = props.modelValue;
+    }
+  }
+);
+
 onMounted(() => {
   if (currentElement.value) rootContext.onInputElementChange(currentElement.value as HTMLInputElement);
 });

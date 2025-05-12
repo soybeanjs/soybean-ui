@@ -20,6 +20,8 @@ const groupContext = injectComboboxGroupContext(null);
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
 
+const isDisabled = computed(() => rootContext.disabled?.value || props.disabled);
+
 if (props.value === '') {
   throw new Error(
     'A <ComboboxItem /> must have a value prop that is not an empty string. This is because the Combobox value can be set to an empty string to clear the selection and show the placeholder.'
@@ -47,6 +49,7 @@ function onSelect(event: Event) {
 
   if (event.defaultPrevented) return;
   if (rootContext.multiple.value) return;
+  if (isDisabled.value) return;
 
   event.preventDefault();
   rootContext.onOpenChange(false);
@@ -77,7 +80,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <ListboxItem v-if="isRender" v-bind="props" :id="id" ref="primitiveElement" @select="onSelect">
+  <ListboxItem v-if="isRender" v-bind="props" :id="id" ref="primitiveElement" :disabled="isDisabled" @select="onSelect">
     <slot>{{ value }}</slot>
   </ListboxItem>
 </template>

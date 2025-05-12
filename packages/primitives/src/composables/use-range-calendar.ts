@@ -6,7 +6,7 @@ import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { isSameDay } from '@internationalized/date';
 import { areAllDaysBetweenValid, isBefore, isBetween } from '../date';
-import type { DateValue, Matcher } from '../date';
+import type { DateValue, Matcher, RangeCalendarFixedDatePart } from '../date';
 
 export type UseRangeCalendarProps = {
   start: Ref<DateValue | undefined>;
@@ -16,6 +16,7 @@ export type UseRangeCalendarProps = {
   isDateHighlightable?: Matcher;
   focusedValue: Ref<DateValue | undefined>;
   allowNonContiguousRanges: Ref<boolean>;
+  fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
 };
 
 export function useRangeCalendarState(props: UseRangeCalendarProps) {
@@ -61,7 +62,7 @@ export function useRangeCalendarState(props: UseRangeCalendarProps) {
   };
 
   const highlightedRange = computed(() => {
-    if (props.start.value && props.end.value) return null;
+    if (props.start.value && props.end.value && !props.fixedDate.value) return null;
     if (!props.start.value || !props.focusedValue.value) return null;
 
     const isStartBeforeFocused = isBefore(props.start.value, props.focusedValue.value);

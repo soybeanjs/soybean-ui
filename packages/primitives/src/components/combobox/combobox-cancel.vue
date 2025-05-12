@@ -17,9 +17,12 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 useForwardExpose();
 
-const { inputElement } = injectComboboxRootContext();
+const { filterState, inputElement } = injectComboboxRootContext();
 
 function handleClick() {
+  // Reset the search to show all options.
+  filterState.search = '';
+
   if (inputElement.value) {
     inputElement.value.value = '';
     inputElement.value.focus();

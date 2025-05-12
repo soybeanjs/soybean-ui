@@ -4,7 +4,7 @@ import { useCollection, useForwardExpose, useId, useTypeahead } from '../../comp
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
 import { injectSelectRootContext } from './context';
-import { OPEN_KEYS } from './shared';
+import { OPEN_KEYS, shouldShowPlaceholder } from './shared';
 import type { SelectTriggerPropsWithPrimitive } from './types';
 
 defineOptions({
@@ -27,6 +27,8 @@ onMounted(() => {
 
 const { getItems } = useCollection();
 const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
+
+const dataPlaceholder = computed(() => (shouldShowPlaceholder(rootContext.modelValue?.value) ? '' : undefined));
 
 function handleOpen() {
   if (!isDisabled.value) {
@@ -113,7 +115,7 @@ function onKeyDown(event: KeyboardEvent) {
       :dir="rootContext?.dir.value"
       :data-state="rootContext?.open.value ? 'open' : 'closed'"
       :data-disabled="isDisabled ? '' : undefined"
-      :data-placeholder="rootContext.modelValue?.value ? undefined : ''"
+      :data-placeholder="dataPlaceholder"
       role="combobox"
       :type="as === 'button' ? 'button' : undefined"
       @click="onClick"

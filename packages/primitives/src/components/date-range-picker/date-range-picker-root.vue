@@ -63,7 +63,8 @@ const {
   hideTimeZone,
   hourCycle,
   dir: propsDir,
-  allowNonContiguousRanges
+  allowNonContiguousRanges,
+  fixedDate
 } = toRefs(props);
 
 const dir = useDirection(propsDir);
@@ -127,6 +128,7 @@ provideDateRangePickerRootContext({
   hourCycle,
   dateFieldRef,
   dir,
+  fixedDate,
   onStartValueChange(date: DateValue | undefined) {
     emit('update:startValue', date);
   },

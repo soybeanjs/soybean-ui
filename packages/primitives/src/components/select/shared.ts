@@ -1,4 +1,5 @@
 import { isEqual } from 'ohash/utils';
+import type { AcceptableValue } from '../../types';
 
 export const OPEN_KEYS = [' ', 'Enter', 'ArrowUp', 'ArrowDown'];
 export const SELECTION_KEYS = [' ', 'Enter'];
@@ -24,4 +25,8 @@ export function compare<T>(value?: T, currentValue?: T, comparator?: string | ((
   if (typeof comparator === 'string') return value?.[comparator as keyof T] === currentValue?.[comparator as keyof T];
 
   return isEqual(value, currentValue);
+}
+
+export function shouldShowPlaceholder(value?: AcceptableValue | AcceptableValue[]): boolean {
+  return value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0);
 }

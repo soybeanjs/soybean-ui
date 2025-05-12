@@ -107,4 +107,6 @@ export type CreateMonthProps = {
   locale: string;
 };
 
+export type RangeCalendarFixedDatePart = 'start' | 'end';
+
 export type { DateValue };

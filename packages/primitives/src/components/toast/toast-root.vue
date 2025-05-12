@@ -30,11 +30,15 @@ const open = useVModel(props, 'open', emit, {
 
 function onSwipeStart(event: SwipeEvent) {
   emit('swipeStart', event);
+  if (event.defaultPrevented) return;
+
   (event.currentTarget as HTMLElement).setAttribute('data-swipe', 'start');
 }
 
 function onSwipeMove(event: SwipeEvent) {
   emit('swipeMove', event);
+  if (event.defaultPrevented) return;
+
   const { x, y } = event.detail.delta;
   const target = event.currentTarget as HTMLElement;
   target.setAttribute('data-swipe', 'move');
@@ -44,6 +48,8 @@ function onSwipeMove(event: SwipeEvent) {
 
 function onSwipeCancel(event: SwipeEvent) {
   emit('swipeCancel', event);
+  if (event.defaultPrevented) return;
+
   const target = event.currentTarget as HTMLElement;
   target.setAttribute('data-swipe', 'cancel');
   target.style.removeProperty('--soybean-toast-swipe-move-x');
@@ -54,6 +60,8 @@ function onSwipeCancel(event: SwipeEvent) {
 
 function onSwipeEnd(event: SwipeEvent) {
   emit('swipeEnd', event);
+  if (event.defaultPrevented) return;
+
   const { x, y } = event.detail.delta;
   const target = event.currentTarget as HTMLElement;
   target.setAttribute('data-swipe', 'end');

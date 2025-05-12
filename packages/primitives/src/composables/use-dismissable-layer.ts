@@ -20,9 +20,9 @@ export function usePointerDownOutside(
   watchEffect(cleanupFn => {
     if (!isClient) return;
     const handlePointerDown = async (event: PointerEvent) => {
-      const target = event.target as HTMLElement;
+      const target = event.target as HTMLElement | undefined;
 
-      if (!element?.value) return;
+      if (!element?.value || !target) return;
 
       if (isLayerExist(element.value, target)) {
         isPointerInsideDOMTree.value = false;
@@ -93,7 +93,7 @@ export function usePointerDownOutside(
 }
 
 function isLayerExist(layerElement: HTMLElement, targetElement: HTMLElement) {
-  const targetLayer = targetElement.closest('[data-dismissable-layer]') as HTMLElement;
+  const targetLayer = targetElement.closest('[data-dismissable-layer]');
 
   const mainLayer =
     layerElement.dataset.dismissableLayer === ''
@@ -101,7 +101,8 @@ function isLayerExist(layerElement: HTMLElement, targetElement: HTMLElement) {
       : (layerElement.querySelector('[data-dismissable-layer]') as HTMLElement);
 
   const nodeList = Array.from(layerElement.ownerDocument.querySelectorAll('[data-dismissable-layer]'));
-  if ((targetLayer && mainLayer === targetLayer) || nodeList.indexOf(mainLayer) < nodeList.indexOf(targetLayer)) {
+
+  if (targetLayer && (mainLayer === targetLayer || nodeList.indexOf(mainLayer) < nodeList.indexOf(targetLayer))) {
     return true;
   }
 
@@ -128,7 +129,8 @@ export function useFocusOutside(
 
       await nextTick();
       await nextTick();
-      if (!element.value || isLayerExist(element.value, event.target as HTMLElement)) return;
+      const target = event.target as HTMLElement | undefined;
+      if (!element.value || !target || isLayerExist(element.value, target)) return;
 
       if (event.target && !isFocusInsideDOMTree.value) {
         const eventDetail = { originalEvent: event };

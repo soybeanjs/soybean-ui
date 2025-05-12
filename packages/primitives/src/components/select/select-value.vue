@@ -4,6 +4,7 @@ import { useForwardExpose } from '../../composables';
 import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
 import { injectSelectRootContext } from './context';
+import { valueComparator } from './shared';
 import type { SelectValuePropsWithPrimitive } from './types';
 
 defineOptions({
@@ -25,7 +26,9 @@ onMounted(() => {
 const selectedLabel = computed(() => {
   let list: string[] = [];
   const options = Array.from(rootContext.optionsSet.value);
-  const getOption = (value?: AcceptableValue) => options.find(option => option.value === value);
+  const getOption = (value?: AcceptableValue) =>
+    options.find(option => valueComparator(value, option.value, rootContext.by));
+
   if (Array.isArray(rootContext.modelValue.value)) {
     list = rootContext.modelValue.value.map(value => getOption(value)?.textContent ?? '');
   } else {

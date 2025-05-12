@@ -14,7 +14,7 @@ defineOptions({
 const props = defineProps<AvatarRootPropsWithPrimitive>();
 
 provideAvatarRootContext({
-  imageLoadingStatus: ref<ImageLoadingStatus>('loading')
+  imageLoadingStatus: ref<ImageLoadingStatus>('idle')
 });
 
 useForwardExpose();

@@ -22,6 +22,7 @@ import type {
   PopoverCloseProps,
   PopoverContentEmits,
   PopoverContentProps,
+  PopoverPortalProps,
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps
@@ -87,7 +88,9 @@ export interface DatePickerTriggerProps extends PopoverTriggerProps {}
 export type DatePickerTriggerPropsWithPrimitive = DatePickerTriggerProps & PrimitiveProps;
 
 // DatePickerContent
-export interface DatePickerContentProps extends PopoverContentProps {}
+export interface DatePickerContentProps extends PopoverContentProps {
+  portal?: PopoverPortalProps;
+}
 export type DatePickerContentPropsWithPrimitive = DatePickerContentProps & PrimitiveProps;
 export type DatePickerContentEmits = PopoverContentEmits;
 

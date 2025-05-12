@@ -63,7 +63,8 @@ const {
   locale: propLocale,
   nextPage: propsNextPage,
   prevPage: propsPrevPage,
-  allowNonContiguousRanges
+  allowNonContiguousRanges,
+  fixedDate
 } = toRefs(props);
 
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
@@ -148,7 +149,8 @@ const {
   isDateUnavailable,
   isDateHighlightable: propsIsDateHighlightable.value,
   focusedValue,
-  allowNonContiguousRanges
+  allowNonContiguousRanges,
+  fixedDate
 });
 
 // eslint-disable-next-line complexity
@@ -261,7 +263,8 @@ provideRangeCalendarRootContext({
   locale,
   dir,
   isHighlightedStart,
-  isHighlightedEnd
+  isHighlightedEnd,
+  fixedDate
 });
 
 onMounted(() => {

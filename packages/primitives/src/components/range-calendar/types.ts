@@ -1,5 +1,14 @@
 import type { Ref } from 'vue';
-import type { DateFormatter, DateRange, DateValue, DaysOfWeekNumber, Grid, Matcher, WeekDayFormat } from '../../date';
+import type {
+  DateFormatter,
+  DateRange,
+  DateValue,
+  DaysOfWeekNumber,
+  Grid,
+  Matcher,
+  RangeCalendarFixedDatePart,
+  WeekDayFormat
+} from '../../date';
 import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
 // Root
@@ -73,6 +82,8 @@ export interface RangeCalendarRootProps extends ClassValueProp {
    * inside the component.
    */
   prevPage?: (placeholder: DateValue) => DateValue;
+  /** Which part of the range should be fixed */
+  fixedDate?: RangeCalendarFixedDatePart;
 }
 export type RangeCalendarRootPropsWithPrimitive = RangeCalendarRootProps & PrimitiveProps;
 
@@ -125,6 +136,7 @@ export type RangeCalendarRootContext = {
   isPrevButtonDisabled: (prevPageFunc?: (date: DateValue) => DateValue) => boolean;
   formatter: DateFormatter;
   dir: Ref<Direction>;
+  fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
 };
 // Grid
 export interface RangeCalendarGridProps extends ClassValueProp {}

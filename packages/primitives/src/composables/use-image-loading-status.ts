@@ -1,10 +1,25 @@
-import { onMounted, onUnmounted, ref, watch } from 'vue';
-import type { Ref, WatchHandle } from 'vue';
-import type { HTMLAttributeReferrerPolicy, ImageLoadingStatus } from '../types';
+import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue';
+import type { Ref } from 'vue';
+import type { HTMLAttributeReferrerPolicy, ImageCrossOrigin, ImageLoadingStatus } from '../types';
 
-export function useImageLoadingStatus(src: Ref<string>, referrerPolicy?: Ref<HTMLAttributeReferrerPolicy>) {
-  const loadingStatus = ref<ImageLoadingStatus>('idle');
+export function useImageLoadingStatus(
+  src: Ref<string>,
+  referrerPolicy?: Ref<HTMLAttributeReferrerPolicy | undefined>,
+  crossOrigin?: Ref<ImageCrossOrigin | undefined>
+) {
   const isMounted = ref(false);
+  const imageRef = ref<HTMLImageElement | null>(null);
+  const image = computed(() => {
+    if (!isMounted.value) {
+      return null;
+    }
+    if (!imageRef.value) {
+      imageRef.value = new window.Image();
+    }
+    return imageRef.value;
+  });
+
+  const loadingStatus = ref<ImageLoadingStatus>(resolveLoadingStatus(image.value, src.value));
 
   function updateStatus(status: ImageLoadingStatus) {
     return () => {
@@ -14,35 +29,47 @@ export function useImageLoadingStatus(src: Ref<string>, referrerPolicy?: Ref<HTM
     };
   }
 
-  let watchHandle: WatchHandle;
-
   onMounted(() => {
     isMounted.value = true;
 
-    watchHandle = watch(
-      [() => src.value, () => referrerPolicy?.value],
-      ([srcValue, referrerValue]) => {
-        if (!srcValue) {
-          loadingStatus.value = 'error';
-        } else {
-          const image = new window.Image();
-          loadingStatus.value = 'loading';
-          image.onload = updateStatus('loaded');
-          image.onerror = updateStatus('error');
-          image.src = srcValue;
-          if (referrerValue) {
-            image.referrerPolicy = referrerValue;
-          }
-        }
-      },
-      { immediate: true }
-    );
+    watchEffect(onCleanup => {
+      const img = image.value;
+      if (!img) return;
+
+      loadingStatus.value = resolveLoadingStatus(img, src.value);
+
+      const handleLoad = updateStatus('loaded');
+      const handleError = updateStatus('error');
+
+      img.addEventListener('load', handleLoad);
+      img.addEventListener('error', handleError);
+
+      if (referrerPolicy?.value) img.referrerPolicy = referrerPolicy.value;
+      if (typeof crossOrigin?.value === 'string') img.crossOrigin = crossOrigin.value;
+
+      onCleanup(() => {
+        img.removeEventListener('load', handleLoad);
+        img.removeEventListener('error', handleError);
+      });
+    });
   });
 
   onUnmounted(() => {
     isMounted.value = false;
-    watchHandle();
   });
 
   return loadingStatus;
+}
+
+function resolveLoadingStatus(image: HTMLImageElement | null, src?: string): ImageLoadingStatus {
+  if (!image) {
+    return 'idle';
+  }
+  if (!src) {
+    return 'error';
+  }
+  if (image.src !== src) {
+    image.src = src;
+  }
+  return image.complete && image.naturalWidth > 0 ? 'loaded' : 'loading';
 }

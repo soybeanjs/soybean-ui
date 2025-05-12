@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardPropsEmits } from '../../composables';
+import { useCombinedPropsEmits, useOmitForwardProps } from '../../composables';
 import { PopoverContent, PopoverPortal } from '../popover';
 import type { DatePickerContentEmits, DatePickerContentPropsWithPrimitive } from './types';
 
@@ -12,11 +12,13 @@ const props = defineProps<DatePickerContentPropsWithPrimitive>();
 
 const emit = defineEmits<DatePickerContentEmits>();
 
-const forwarded = useForwardPropsEmits(props, emit);
+const forwardedProps = useOmitForwardProps(props, ['portal']);
+
+const forwarded = useCombinedPropsEmits(forwardedProps, emit);
 </script>
 
 <template>
-  <PopoverPortal>
+  <PopoverPortal v-bind="portal">
     <PopoverContent v-bind="{ ...forwarded, ...$attrs }">
       <slot />
     </PopoverContent>

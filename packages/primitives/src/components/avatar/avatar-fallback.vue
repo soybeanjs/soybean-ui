@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useForwardExpose } from '../../composables';
-import type { ImageLoadingStatus } from '../../types';
 import { Primitive } from '../primitive';
 import { injectAvatarRootContext } from './context';
 import type { AvatarFallbackPropsWithPrimitive } from './types';
@@ -11,39 +10,26 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AvatarFallbackPropsWithPrimitive>(), {
-  as: 'span',
-  delayMs: 0
+  as: 'span'
 });
 
 const { imageLoadingStatus } = injectAvatarRootContext();
 
-const canRender = ref(false);
+const canRender = ref(props.delayMs === undefined);
 
 const visible = computed(() => canRender.value && imageLoadingStatus.value !== 'loaded');
 
-let timeout: ReturnType<typeof setTimeout>;
-
-function onImageLoadingStatusChange(newStatus: ImageLoadingStatus) {
-  if (newStatus === 'loading') {
-    canRender.value = false;
-    if (props.delayMs) {
-      timeout = setTimeout(() => {
-        canRender.value = true;
-        clearTimeout(timeout);
-      }, props.delayMs);
-    } else {
+watchEffect(onCleanup => {
+  if (props.delayMs) {
+    const timerId = window.setTimeout(() => {
       canRender.value = true;
-    }
-  }
-}
+    }, props.delayMs);
 
-watch(
-  imageLoadingStatus,
-  value => {
-    onImageLoadingStatusChange(value);
-  },
-  { immediate: true }
-);
+    onCleanup(() => {
+      window.clearTimeout(timerId);
+    });
+  }
+});
 
 useForwardExpose();
 </script>

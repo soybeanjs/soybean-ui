@@ -1,5 +1,13 @@
 import type { Ref } from 'vue';
-import type { DateRange, DateValue, Granularity, HourCycle, Matcher, WeekDayFormat } from '../../date';
+import type {
+  DateRange,
+  DateValue,
+  Granularity,
+  HourCycle,
+  Matcher,
+  RangeCalendarFixedDatePart,
+  WeekDayFormat
+} from '../../date';
 import type { Direction, PrimitiveProps } from '../../types';
 import type { DateRangeFieldInputProps, DateRangeFieldRootProps } from '../date-range-field';
 import type {
@@ -22,6 +30,7 @@ import type {
   PopoverCloseProps,
   PopoverContentEmits,
   PopoverContentProps,
+  PopoverPortalProps,
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps
@@ -43,6 +52,7 @@ export type DateRangePickerRootProps = DateRangeFieldRootProps &
     | 'isDateUnavailable'
     | 'isDateHighlightable'
     | 'allowNonContiguousRanges'
+    | 'fixedDate'
   >;
 
 export type DateRangePickerRootEmits = PopoverRootEmits & {
@@ -88,6 +98,7 @@ export type DateRangePickerRootContext = {
   onStartValueChange: (date: DateValue | undefined) => void;
   dir: Ref<Direction>;
   allowNonContiguousRanges: Ref<boolean>;
+  fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
 };
 
 // DateRangePickerTrigger
@@ -95,7 +106,9 @@ export type DateRangePickerTriggerProps = PopoverTriggerProps;
 export type DateRangePickerTriggerPropsWithPrimitive = DateRangePickerTriggerProps & PrimitiveProps;
 
 // DateRangePickerContent
-export interface DateRangePickerContentProps extends PopoverContentProps {}
+export interface DateRangePickerContentProps extends PopoverContentProps {
+  portal?: PopoverPortalProps;
+}
 export type DateRangePickerContentPropsWithPrimitive = DateRangePickerContentProps & PrimitiveProps;
 export type DateRangePickerContentEmits = PopoverContentEmits;
 

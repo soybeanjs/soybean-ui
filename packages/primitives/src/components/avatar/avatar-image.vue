@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRef, watch } from 'vue';
+import { toRefs, watch } from 'vue';
 import { useForwardExpose, useImageLoadingStatus } from '../../composables';
 import type { ImageLoadingStatus } from '../../types';
 import { Primitive } from '../primitive';
@@ -19,7 +19,9 @@ const emit = defineEmits<AvatarImageEmits>();
 
 const context = injectAvatarRootContext();
 
-const imageLoadingStatus = useImageLoadingStatus(toRef(() => props.src));
+const { src, referrerPolicy, crossOrigin } = toRefs(props);
+
+const imageLoadingStatus = useImageLoadingStatus(src, referrerPolicy, crossOrigin);
 
 function handleLoadingStatusChange(newStatus: ImageLoadingStatus) {
   emit('loadingStatusChange', newStatus);
