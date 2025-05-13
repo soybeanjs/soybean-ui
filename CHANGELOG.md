@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [v0.0.2-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.3...v0.0.2-beta.4) (2025-05-13)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **projects**: add nuxt-demo &nbsp;-&nbsp; by @soybeanjs [<samp>(4ebe7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4ebe7e8)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(61401)</samp>](https://github.com/soybeanjs/soybean-ui/commit/614010f)
+- **package**: add homepage, repository, and bugs fields to package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(b93b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b93b6c3)
+- **projects**: sync code from reka-ui (0508) &nbsp;-&nbsp; by @soybeanjs [<samp>(f5b8c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5b8c4c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.2...v0.0.2-beta.3) (2025-04-20)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
