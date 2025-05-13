@@ -1,0 +1,9 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "editor.formatOnSave": false,
+  "eslint.validate": ["json", "jsonc"],
+  "prettier.enable": false
+}

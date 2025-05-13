@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "name": "TS Debugger tsx",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}",
+      "runtimeExecutable": "tsx",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"]
+    }
+  ]
+}
