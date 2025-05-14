@@ -6,9 +6,11 @@ export default defineConfig({
   entry: ['src/index.ts'],
   plugins: [unpluginVue({ isProduction: true }), unpluginVueJsx()],
   clean: true,
-  dts: true,
-  external: [],
+  dts: {
+    vue: true
+  },
+  platform: 'neutral',
   shims: true,
   sourcemap: false,
-  platform: 'neutral'
+  minify: false
 });

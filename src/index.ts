@@ -1,1 +1,3 @@
-export const pkgPlaceholder = 'this is a placeholder for the package';
+import DemoPkg from './demo-pkg.vue';
+
+export { DemoPkg };
