@@ -1,3 +1,2 @@
-import DemoPkg from './demo-pkg.vue';
-
-export { DemoPkg };
+export * from './components/slot';
+export * from './components/primitive';

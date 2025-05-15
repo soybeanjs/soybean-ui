@@ -7,6 +7,9 @@
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "types": ["node"],
     "strict": true,
@@ -22,6 +25,6 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "typings/**/*"],
   "exclude": ["node_modules", "dist"]
 }
