@@ -1,6 +1,6 @@
-import SChip from './chip.vue';
-import SChipContent from './chip-content.vue';
-import SChipRoot from './chip-root.vue';
+import SChip from './source/chip.vue';
+import SChipContent from './source/chip-content.vue';
+import SChipRoot from './source/chip-root.vue';
 
 export { SChip, SChipContent, SChipRoot };
 

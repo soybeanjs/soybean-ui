@@ -1,13 +1,13 @@
 import { PaginationRoot as SPaginationRoot } from '@soybean-ui/primitives';
-import SPagination from './pagination.vue';
-import SPaginationButton from './pagination-button.vue';
-import SPaginationEllipsis from './pagination-ellipsis.vue';
-import SPaginationFirst from './pagination-first.vue';
-import SPaginationLast from './pagination-last.vue';
-import SPaginationListItem from './pagination-list-item.vue';
-import SPaginationList from './pagination-list.vue';
-import SPaginationNext from './pagination-next.vue';
-import SPaginationPrev from './pagination-prev.vue';
+import SPagination from './source/pagination.vue';
+import SPaginationButton from './source/pagination-button.vue';
+import SPaginationEllipsis from './source/pagination-ellipsis.vue';
+import SPaginationFirst from './source/pagination-first.vue';
+import SPaginationLast from './source/pagination-last.vue';
+import SPaginationListItem from './source/pagination-list-item.vue';
+import SPaginationList from './source/pagination-list.vue';
+import SPaginationNext from './source/pagination-next.vue';
+import SPaginationPrev from './source/pagination-prev.vue';
 
 export {
   SPagination,

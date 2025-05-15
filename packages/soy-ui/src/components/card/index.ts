@@ -1,10 +1,10 @@
-import SCard from './card.vue';
-import SCardContent from './card-content.vue';
-import SCardFooter from './card-footer.vue';
-import SCardHeader from './card-header.vue';
-import SCardRoot from './card-root.vue';
-import SCardTitleRoot from './card-title-root.vue';
-import SCardTitle from './card-title.vue';
+import SCard from './source/card.vue';
+import SCardContent from './source/card-content.vue';
+import SCardFooter from './source/card-footer.vue';
+import SCardHeader from './source/card-header.vue';
+import SCardRoot from './source/card-root.vue';
+import SCardTitleRoot from './source/card-title-root.vue';
+import SCardTitle from './source/card-title.vue';
 
 export { SCard, SCardContent, SCardFooter, SCardHeader, SCardRoot, SCardTitle, SCardTitleRoot };
 

@@ -1,12 +1,12 @@
 import { useToast } from './context';
-import SToast from './toast.vue';
-import SToastAction from './toast-action.vue';
-import SToastClose from './toast-close.vue';
-import SToastDescription from './toast-description.vue';
-import SToastProvider from './toast-provider.vue';
-import SToastRoot from './toast-root.vue';
-import SToastTitle from './toast-title.vue';
-import SToastViewport from './toast-viewport.vue';
+import SToast from './source/toast.vue';
+import SToastAction from './source/toast-action.vue';
+import SToastClose from './source/toast-close.vue';
+import SToastDescription from './source/toast-description.vue';
+import SToastProvider from './source/toast-provider.vue';
+import SToastRoot from './source/toast-root.vue';
+import SToastTitle from './source/toast-title.vue';
+import SToastViewport from './source/toast-viewport.vue';
 
 export {
   SToast,

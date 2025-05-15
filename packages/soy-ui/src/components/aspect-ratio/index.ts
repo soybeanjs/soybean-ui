@@ -1,4 +1,4 @@
-import SAspectRatio from './aspect-ratio.vue';
+import SAspectRatio from './source/aspect-ratio.vue';
 
 export { SAspectRatio };
 

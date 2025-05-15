@@ -1,5 +1,5 @@
-import SKeyboardKey from './keyboard-key.vue';
-import SKeyboardKeyGroup from './keyboard-key-group.vue';
+import SKeyboardKey from './source/keyboard-key.vue';
+import SKeyboardKeyGroup from './source/keyboard-key-group.vue';
 
 export { SKeyboardKey, SKeyboardKeyGroup };
 

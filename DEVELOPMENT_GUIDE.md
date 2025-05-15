@@ -17,14 +17,17 @@ soybean-ui/
 │   │   ├── src/
 │   │   │   ├── components/          # 所有 UI 组件
 │   │   │   │   ├── Alert/           # Alert 组件示例目录
-│   │   │   │   │   ├── Alert.vue    # Alert 组件源文件
+│   │   │   │   │   ├── source/     # 源码文件夹
+│   │   │   │   │   │   ├── Alert.vue    # Alert 组件源文件
 │   │   │   │   │   ├── demos/       # Alert 组件的示例
 │   │   │   │   │   │   ├── basic.vue
-│   │   │   │   │   │   └── with-icon.vue
+│   │   │   │   │   │   ├── with-icon.vue
+│   │   │   │   │   │   └── index.ts     # 导出此目录下所有 demo 组件
 │   │   │   │   │   ├── index.md     # Alert 组件的 Markdown 文档 (API, 用法说明)
 │   │   │   │   │   └── types.ts     # Alert 组件的类型定义 (可选)
 │   │   │   │   ├── Button/
-│   │   │   │   │   ├── Button.vue
+│   │   │   │   │   ├── source/     # 源码文件夹
+│   │   │   │   │   │   └── Button.vue
 │   │   │   │   │   ├── demos/
 │   │   │   │   │   │   └── basic.vue
 │   │   │   │   │   └── index.md
@@ -63,11 +66,11 @@ soybean-ui/
 
 *   **`packages/soy-ui`**: 这是核心组件库。
     *   每个组件 (如 `Alert`, `Button`) 都有自己的文件夹。
-    *   `demos/` 文件夹存放该组件的 `.vue` 格式使用示例。
+    *   `demos/` 文件夹存放该组件的 `.vue` 格式使用示例，并通过一个 `index.ts` 文件导出所有这些示例。
     *   `index.md` 是该组件的文档，用于描述 API、props、events、slots 以及如何使用。它可以直接引用或内嵌 `demos/` 中的示例。
 *   **`apps/playground`**: 一个独立的 Vite/Vue3 应用。
     *   其主要目的是在开发 `soy-ui` 组件时，提供一个实时预览和调试的环境。
-    *   它可以动态扫描 `packages/soy-ui/src/components/**/demos/*.vue` 文件，并提供一个界面来选择和展示这些 demos。
+    *   它可以动态扫描 `packages/soy-ui/src/components/**/demos/index.ts` 文件，并提供一个界面来选择和展示这些 demos 模块中导出的所有组件。
     *   这将取代当前 `src/views/ui/index.vue` 和 `examples/` 目录的部分功能，使组件开发与主项目/其他示例项目解耦。
 *   **`apps/official-site` (原 `docs_v2`)**: 基于 Nuxt 的官方文档站。
     *   它会读取 `packages/soy-ui/src/components/**/index.md` 作为 API 文档内容。
@@ -84,6 +87,12 @@ soybean-ui/
     *   `basic.vue` (基础用法)
     *   `advanced-features.vue` (高级特性展示)
     每个 demo 都应该是一个可以独立运行和展示特定用法的 Vue 组件。
+    同时，在该目录下创建一个 `index.ts` 文件，导出所有 `.vue` 示例。例如:
+    ```typescript
+    // MyNewComponent/demos/index.ts
+    export { default as BasicDemo } from './basic.vue';
+    export { default as AdvancedFeaturesDemo } from './advanced-features.vue';
+    ```
 4.  **编写组件文档**:
     在 `MyNewComponent/` 下创建 `index.md` 文件。内容应包括：
     *   组件简介和用途。
@@ -94,7 +103,8 @@ soybean-ui/
     在 `packages/soy-ui/src/index.ts` (或相应的入口文件) 中导出新组件。
 6.  **在 Playground 中预览和调试**:
     *   启动 `apps/playground` 开发服务器。
-    *   Playground 应能自动发现新的 `MyNewComponent` 及其 demos。
+    *   Playground 应能自动发现新的 `MyNewComponent` 及其 `demos/index.ts`。
+    *   Playground 会加载 `index.ts` 模块，并展示其中导出的所有 demo 组件。
     *   通过 Playground 交互式地测试组件的各种状态和 props。
 7.  **更新文档站 (可选，通常自动)**:
     *   启动 `apps/official-site` (Nuxt 文档站) 开发服务器。
@@ -116,10 +126,11 @@ soybean-ui/
 
 ## 5. 编写与组织 Demos
 
-*   **原子性**: 每个 demo 文件应专注于展示组件的一个特定功能或用例。
+*   **原子性**: 每个 demo `.vue` 文件应专注于展示组件的一个特定功能或用例。
 *   **简洁性**: Demo 代码应尽可能简洁明了，移除不相关的逻辑。
 *   **可直接运行**: Demo 本身就是一个完整的 Vue 组件片段，可以直接在 Playground 或文档中渲染。
-*   **命名清晰**: Demo 文件名应能清晰反映其展示的内容，如 `disabled-state.vue`, `custom-icon.vue`。
+*   **命名清晰**: Demo 文件名应能清晰反映其展示的内容，如 `disabled-state.vue`, `custom-icon.vue`。导出到 `index.ts` 时也建议使用清晰的导出名 (如 `BasicDemo`, `CustomIconDemo`)。
+*   **`index.ts` 聚合**: 每个组件的 `demos` 目录下应包含一个 `index.ts` 文件，该文件负责导出目录内所有的 `.vue` demo 组件。这使得 Playground 或其他工具可以方便地一次性导入所有相关的 demos。
 
 ## 6. 文档编写 (Markdown)
 

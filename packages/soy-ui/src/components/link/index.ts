@@ -1,4 +1,4 @@
-import SLink from './link.vue';
+import SLink from './source/link.vue';
 
 export { SLink };
 
