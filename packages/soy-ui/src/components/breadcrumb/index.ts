@@ -1,11 +1,11 @@
-import SBreadcrumb from './breadcrumb.vue';
-import SBreadcrumbEllipsis from './breadcrumb-ellipsis.vue';
-import SBreadcrumbItem from './breadcrumb-item.vue';
-import SBreadcrumbLink from './breadcrumb-link.vue';
-import SBreadcrumbList from './breadcrumb-list.vue';
-import SBreadcrumbPage from './breadcrumb-page.vue';
-import SBreadcrumbRoot from './breadcrumb-root.vue';
-import SBreadcrumbSeparator from './breadcrumb-separator.vue';
+import SBreadcrumb from './source/breadcrumb.vue';
+import SBreadcrumbEllipsis from './source/breadcrumb-ellipsis.vue';
+import SBreadcrumbItem from './source/breadcrumb-item.vue';
+import SBreadcrumbLink from './source/breadcrumb-link.vue';
+import SBreadcrumbList from './source/breadcrumb-list.vue';
+import SBreadcrumbPage from './source/breadcrumb-page.vue';
+import SBreadcrumbRoot from './source/breadcrumb-root.vue';
+import SBreadcrumbSeparator from './source/breadcrumb-separator.vue';
 
 export {
   SBreadcrumb,

@@ -1,16 +1,16 @@
-import SCommand from './command.vue';
-import SCommandDialog from './command-dialog.vue';
-import SCommandEmpty from './command-empty.vue';
-import SCommandGroupLabel from './command-group-label.vue';
-import SCommandGroup from './command-group.vue';
-import SCommandInput from './command-input.vue';
-import SCommandItem from './command-item.vue';
-import SCommandList from './command-list.vue';
-import SCommandOption from './command-option.vue';
-import SCommandRoot from './command-root.vue';
-import SCommandSeparator from './command-separator.vue';
-import SCommandShortcut from './command-shortcut.vue';
-import SCommandSingleOption from './command-single-option.vue';
+import SCommand from './source/command.vue';
+import SCommandDialog from './source/command-dialog.vue';
+import SCommandEmpty from './source/command-empty.vue';
+import SCommandGroupLabel from './source/command-group-label.vue';
+import SCommandGroup from './source/command-group.vue';
+import SCommandInput from './source/command-input.vue';
+import SCommandItem from './source/command-item.vue';
+import SCommandList from './source/command-list.vue';
+import SCommandOption from './source/command-option.vue';
+import SCommandRoot from './source/command-root.vue';
+import SCommandSeparator from './source/command-separator.vue';
+import SCommandShortcut from './source/command-shortcut.vue';
+import SCommandSingleOption from './source/command-single-option.vue';
 
 export {
   SCommand,

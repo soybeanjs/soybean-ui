@@ -1,4 +1,4 @@
-import SToggle from './toggle.vue';
+import SToggle from './source/toggle.vue';
 
 export { SToggle };
 

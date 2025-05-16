@@ -1,7 +1,7 @@
-import STextarea from './textarea.vue';
-import STextareaContent from './textarea-content.vue';
-import STextareaCount from './textarea-count.vue';
-import STextareaRoot from './textarea-root.vue';
+import STextarea from './source/textarea.vue';
+import STextareaContent from './source/textarea-content.vue';
+import STextareaCount from './source/textarea-count.vue';
+import STextareaRoot from './source/textarea-root.vue';
 
 export { STextarea, STextareaContent, STextareaCount, STextareaRoot };
 

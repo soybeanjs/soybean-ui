@@ -1,8 +1,8 @@
-import SRadio from './radio.vue';
-import SRadioControl from './radio-control.vue';
-import SRadioGroup from './radio-group.vue';
-import SRadioIndicator from './radio-indicator.vue';
-import SRadioRoot from './radio-root.vue';
+import SRadio from './source/radio.vue';
+import SRadioControl from './source/radio-control.vue';
+import SRadioGroup from './source/radio-group.vue';
+import SRadioIndicator from './source/radio-indicator.vue';
+import SRadioRoot from './source/radio-root.vue';
 
 export { SRadio, SRadioControl, SRadioGroup, SRadioIndicator, SRadioRoot };
 

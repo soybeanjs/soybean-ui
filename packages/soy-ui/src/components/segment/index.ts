@@ -1,8 +1,8 @@
-import SSegment from './segment.vue';
-import SSegmentIndicator from './segment-indicator.vue';
-import SSegmentList from './segment-list.vue';
-import SSegmentRoot from './segment-root.vue';
-import SSegmentTrigger from './segment-trigger.vue';
+import SSegment from './source/segment.vue';
+import SSegmentIndicator from './source/segment-indicator.vue';
+import SSegmentList from './source/segment-list.vue';
+import SSegmentRoot from './source/segment-root.vue';
+import SSegmentTrigger from './source/segment-trigger.vue';
 
 export { SSegment, SSegmentIndicator, SSegmentList, SSegmentRoot, SSegmentTrigger };
 

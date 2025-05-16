@@ -1,7 +1,7 @@
-import SAvatar from './avatar.vue';
-import SAvatarFallback from './avatar-fallback.vue';
-import SAvatarImage from './avatar-image.vue';
-import SAvatarRoot from './avatar-root.vue';
+import SAvatar from './source/avatar.vue';
+import SAvatarFallback from './source/avatar-fallback.vue';
+import SAvatarImage from './source/avatar-image.vue';
+import SAvatarRoot from './source/avatar-root.vue';
 
 export { SAvatar, SAvatarFallback, SAvatarImage, SAvatarRoot };
 

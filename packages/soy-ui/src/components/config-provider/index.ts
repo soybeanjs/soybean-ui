@@ -1,5 +1,5 @@
 import { injectConfigProviderContext } from '@soybean-ui/primitives';
-import SConfigProvider from './config-provider.vue';
+import SConfigProvider from './source/config-provider.vue';
 
 export { injectConfigProviderContext, SConfigProvider };
 

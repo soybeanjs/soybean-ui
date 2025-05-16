@@ -1,4 +1,4 @@
-import SInput from './input.vue';
+import SInput from './source/input.vue';
 
 export { SInput };
 
