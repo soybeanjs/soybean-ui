@@ -1,4 +1,4 @@
-import SLabel from './label.vue';
+import SLabel from './source/label.vue';
 
 export { SLabel };
 

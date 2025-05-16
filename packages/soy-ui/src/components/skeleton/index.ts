@@ -1,4 +1,4 @@
-import SSkeleton from './skeleton.vue';
+import SSkeleton from './source/skeleton.vue';
 
 export { SSkeleton };
 

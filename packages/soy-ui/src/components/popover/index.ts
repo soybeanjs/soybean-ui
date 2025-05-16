@@ -5,9 +5,9 @@ import {
   PopoverRoot as SPopoverRoot,
   PopoverTrigger as SPopoverTrigger
 } from '@soybean-ui/primitives';
-import SPopover from './popover.vue';
-import SPopoverArrow from './popover-arrow.vue';
-import SPopoverContent from './popover-content.vue';
+import SPopover from './source/popover.vue';
+import SPopoverArrow from './source/popover-arrow.vue';
+import SPopoverContent from './source/popover-content.vue';
 
 export {
   SPopover,

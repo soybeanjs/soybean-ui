@@ -1,4 +1,4 @@
-import SBadge from './badge.vue';
+import SBadge from './source/badge.vue';
 
 export { SBadge };
 

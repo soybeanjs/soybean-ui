@@ -3,15 +3,15 @@ import {
   AlertDialogRoot as SAlertDialogRoot,
   AlertDialogTrigger as SAlertDialogTrigger
 } from '@soybean-ui/primitives';
-import SAlertDialog from './alert-dialog.vue';
-import SAlertDialogAction from './alert-dialog-action.vue';
-import SAlertDialogCancel from './alert-dialog-cancel.vue';
-import SAlertDialogContent from './alert-dialog-content.vue';
-import SAlertDialogDescription from './alert-dialog-description.vue';
-import SAlertDialogFooter from './alert-dialog-footer.vue';
-import SAlertDialogHeader from './alert-dialog-header.vue';
-import SAlertDialogOverlay from './alert-dialog-overlay.vue';
-import SAlertDialogTitle from './alert-dialog-title.vue';
+import SAlertDialog from './source/alert-dialog.vue';
+import SAlertDialogAction from './source/alert-dialog-action.vue';
+import SAlertDialogCancel from './source/alert-dialog-cancel.vue';
+import SAlertDialogContent from './source/alert-dialog-content.vue';
+import SAlertDialogDescription from './source/alert-dialog-description.vue';
+import SAlertDialogFooter from './source/alert-dialog-footer.vue';
+import SAlertDialogHeader from './source/alert-dialog-header.vue';
+import SAlertDialogOverlay from './source/alert-dialog-overlay.vue';
+import SAlertDialogTitle from './source/alert-dialog-title.vue';
 
 export {
   SAlertDialog,

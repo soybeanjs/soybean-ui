@@ -1,15 +1,15 @@
-import SMenubar from './menubar.vue';
-import SMenubarContent from './menubar-content.vue';
-import SMenubarItem from './menubar-item.vue';
-import SMenubarMenu from './menubar-menu.vue';
-import SMenubarOption from './menubar-option.vue';
-import SMenubarPortalContent from './menubar-portal-content.vue';
-import SMenubarRoot from './menubar-root.vue';
-import SMenubarSubContent from './menubar-sub-content.vue';
-import SMenubarSubTrigger from './menubar-sub-trigger.vue';
-import SMenubarTriggerLink from './menubar-trigger-link.vue';
-import SMenubarTriggerOption from './menubar-trigger-option.vue';
-import SMenubarTrigger from './menubar-trigger.vue';
+import SMenubar from './source/menubar.vue';
+import SMenubarContent from './source/menubar-content.vue';
+import SMenubarItem from './source/menubar-item.vue';
+import SMenubarMenu from './source/menubar-menu.vue';
+import SMenubarOption from './source/menubar-option.vue';
+import SMenubarPortalContent from './source/menubar-portal-content.vue';
+import SMenubarRoot from './source/menubar-root.vue';
+import SMenubarSubContent from './source/menubar-sub-content.vue';
+import SMenubarSubTrigger from './source/menubar-sub-trigger.vue';
+import SMenubarTriggerLink from './source/menubar-trigger-link.vue';
+import SMenubarTriggerOption from './source/menubar-trigger-option.vue';
+import SMenubarTrigger from './source/menubar-trigger.vue';
 
 export {
   SMenubar,
