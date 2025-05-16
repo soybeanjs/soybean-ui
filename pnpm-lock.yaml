@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      soybean-ui:
+        specifier: 'link:'
+        version: 'link:'
     devDependencies:
       '@soybeanjs/cli':
         specifier: 1.2.1

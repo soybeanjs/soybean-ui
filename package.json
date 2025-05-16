@@ -18,7 +18,12 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": ["UI", "UnoCSS", "shadcn-ui", "vue3"],
+  "keywords": [
+    "UI",
+    "UnoCSS",
+    "shadcn-ui",
+    "vue3"
+  ],
   "scripts": {
     "build:docs": "pnpm build:pkg && pnpm -r --filter=\"./docs\" run build",
     "build:pkg": "pnpm -r --filter=\"./packages/**\" run build",
@@ -55,5 +60,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "dependencies": {
+    "soybean-ui": "link:"
   }
 }

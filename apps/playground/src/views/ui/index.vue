@@ -95,7 +95,7 @@ onMounted(() => {
             :enable-indicator="false"
             :ui="{
               root: 'h-full',
-              list: 'flex-wrap justify-start pt-4px pr-4px pl-4px',
+              list: 'flex-wrap justify-start',
               trigger: 'flex-none'
             }"
           >
