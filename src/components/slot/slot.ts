@@ -13,7 +13,7 @@ export const Slot = defineComponent(
       const firstNonCommentChild = children.find(child => child.type !== Comment);
 
       // In development, check if there are multiple non-comment children
-      if (__DEV__ && children.filter(child => child.type !== Comment).length > 1) {
+      if (import.meta.env.DEV && children.filter(child => child.type !== Comment).length > 1) {
         warn('<Slot> can only be used on a single element or component.');
       }
 
