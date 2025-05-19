@@ -26,5 +26,6 @@ export function getRawChildren(children: VNode[]): VNode[] {
       ret[i].patchFlag = PatchFlags.BAIL;
     }
   }
+
   return ret;
 }

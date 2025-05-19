@@ -4,22 +4,12 @@ import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
 import fg from 'fast-glob';
 
 export default defineConfig(() => {
-  const entry: Record<string, string> = {};
-
-  const components = fg.sync('src/components/**/index.ts');
-  components.forEach(component => {
-    const name = component.replace('/index.ts', '').replace('src/components/', '');
-    entry[`components/${name}/index`] = component;
-  });
+  const entry = getEntry();
 
   return {
-    entry: {
-      'shared/index': 'src/shared/index.ts',
-      ...entry,
-      index: 'src/index.ts'
-    },
+    entry,
     platform: 'neutral',
-    external: ['vue', '@vue/shared'],
+    external: ['vue', '@vue/shared', '@nuxt/schema', '@nuxt/kit', 'unplugin-vue-components'],
     clean: true,
     dts: {
       vue: true
@@ -29,3 +19,27 @@ export default defineConfig(() => {
     minify: false
   };
 });
+
+function getEntry() {
+  const entry: Record<string, string> = {};
+
+  const names = fg.sync('src/*/index.ts');
+  const excludes = ['types'];
+  names.forEach(n => {
+    const name = n.replace('/index.ts', '').replace('src/', '');
+    if (excludes.includes(name)) return;
+    entry[`${name}/index`] = n;
+  });
+
+  // components entry
+  const components = fg.sync('src/components/**/index.ts');
+  components.forEach(component => {
+    const name = component.replace('/index.ts', '').replace('src/components/', '');
+    entry[`components/${name}/index`] = component;
+  });
+
+  // index entry
+  entry.index = 'src/index.ts';
+
+  return entry;
+}
