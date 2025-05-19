@@ -1,7 +1,7 @@
 {
   "name": "soybean-ui",
   "type": "module",
-  "version": "0.0.2-beta.4",
+  "version": "0.0.2-beta.5",
   "private": true,
   "packageManager": "pnpm@10.11.0",
   "description": "soybean-ui is an ui library like shadcn for Vue3.",

@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.0.2-beta.5](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.4...v0.0.2-beta.5) (2025-05-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **sidebar-menu**: update sidebar menu component styles and structure &nbsp;-&nbsp; by @soybeanjs [<samp>(0d6bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0d6bc32b)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(e557e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e557e0db)
+- **nuxt-demo**: remove postinstall script from package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(d6bca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d6bcaf62)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.3...v0.0.2-beta.4) (2025-05-13)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
