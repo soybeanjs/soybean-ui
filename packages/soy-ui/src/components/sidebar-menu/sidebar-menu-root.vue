@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import type { CSSProperties, Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
+import { Primitive } from '@soybean-ui/primitives';
 import type { AcceptableValue } from '@soybean-ui/primitives';
 import { cn, sidebarMenuVariants } from '@soybean-ui/variants';
 import { themeSizeRatio } from '../../constant';
@@ -72,20 +73,12 @@ provideSidebarMenuRootContext({
 </script>
 
 <template>
-  <div class="scroll-area" :class="mergedCls" :style="style" :data-state="dataState">
+  <div class="sidebar-menu-root" :class="mergedCls" :style="style" :data-state="dataState">
     <slot />
   </div>
+  <Primitive as="style">
+    .sidebar-menu-root { scrollbar-width: thin; scrollbar-color: rgba(0, 0, 0, 0.3) transparent; border-style: solid;
+    border-color: hsl(var(--border)); } .dark .sidebar-menu-root { scrollbar-color: rgba(255, 255, 255, 0.2)
+    transparent; }
+  </Primitive>
 </template>
-
-<style scoped>
-.scroll-area {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
-  border-style: solid;
-  border-color: hsl(var(--border));
-}
-
-.dark .scroll-area {
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
-}
-</style>
