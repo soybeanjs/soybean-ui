@@ -1,7 +1,5 @@
-<script setup lang="ts">
-import { DemoPkg } from '../../src';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <DemoPkg :count="0" />
+  <div>soybean primitives</div>
 </template>
