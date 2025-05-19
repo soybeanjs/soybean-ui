@@ -74,10 +74,7 @@ const cardUi = {
     </template>
     <slot v-if="active === 'preview'"></slot>
     <div v-else class="relative">
-      <SButtonIcon
-        class="absolute right-5 top-3 text-muted-foreground"
-        @click="copy(code)"
-      >
+      <SButtonIcon class="absolute right-5 top-3 text-muted-foreground" @click="copy(code)">
         <Copy v-if="!copied" />
         <CopyCheck v-else />
       </SButtonIcon>
