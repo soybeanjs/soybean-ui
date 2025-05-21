@@ -6,7 +6,9 @@ export default defineConfig(
   },
   {
     rules: {
-      'no-plusplus': 'off'
+      'max-params': 'off',
+      'no-plusplus': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off'
     }
   }
 );
