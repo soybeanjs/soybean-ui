@@ -12,10 +12,15 @@ const toggle = () => {
 </script>
 
 <template>
-  <div class="example-container">
-    <h2>usePresence Example</h2>
+  <div>
+    <h2 class="text-xl font-bold">usePresence</h2>
 
-    <button @click="toggle">{{ isPresent ? 'Hide' : 'Show' }} Element</button>
+    <button
+      class="inline-flex items-center justify-center border border-border bg-background text-accent-foreground rd-2 hover:bg-accent/60 active:bg-accent font-medium transition-all-200 focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(pointer-events-none opacity-50)"
+      @click="toggle"
+    >
+      {{ isPresent ? 'Hide' : 'Show' }} Element
+    </button>
 
     <div v-if="isVisible" ref="elementRef" class="animated-element" :class="{ exit: !isPresent }">
       This element is {{ isPresent ? 'present' : 'animating out' }}
@@ -40,7 +45,6 @@ button {
 }
 
 .animated-element {
-  margin: 1rem auto;
   padding: 1rem;
   background-color: #4caf50;
   color: white;
