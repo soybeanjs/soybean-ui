@@ -40,6 +40,7 @@ function getEntry() {
 
   // index entry
   entry.index = 'src/index.ts';
+  entry.types = 'src/types/index.ts';
 
   return entry;
 }
