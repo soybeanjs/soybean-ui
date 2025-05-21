@@ -1,6 +1,7 @@
 import { Comment, Fragment } from 'vue';
-import type { VNode } from 'vue';
+import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
+import type { VNodeRef } from '../types';
 
 export function getRawChildren(children: VNode[]): VNode[] {
   let ret: VNode[] = [];
@@ -28,4 +29,14 @@ export function getRawChildren(children: VNode[]): VNode[] {
   }
 
   return ret;
+}
+
+export function getElFromTemplateRef<T extends HTMLElement>(nodeRef: VNodeRef) {
+  let node: T | undefined = (nodeRef as ComponentPublicInstance)?.$el ?? nodeRef;
+
+  if (node && node.nodeType !== 1) {
+    node = undefined;
+  }
+
+  return node;
 }
