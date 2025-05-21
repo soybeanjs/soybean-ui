@@ -9,7 +9,7 @@ export function useContext<Arguments extends Array<any>, T>(
   const useInject = (consumerName?: string, defaultValue?: T) => {
     const value = inject(key, defaultValue);
 
-    if (consumerName) {
+    if (consumerName && !value) {
       throw new Error(`\`${consumerName}\` must be used within \`${contextName}\``);
     }
 
