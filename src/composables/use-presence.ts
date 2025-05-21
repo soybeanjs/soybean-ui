@@ -25,6 +25,31 @@ export function usePresence(
     }
   });
 
+  const isPresent = computed(() => ['mounted', 'unmountSuspended'].includes(state.value));
+
+  /**
+   * Triggering an ANIMATION_OUT during an ANIMATION_IN will fire an `animationcancel` event for ANIMATION_IN after we
+   * have entered `unmountSuspended` state. So, we make sure we only trigger ANIMATION_END for the currently active
+   * animation.
+   */
+  const handleAnimationEnd = (event: AnimationEvent) => {
+    const currentAnimationName = getAnimationName(styles);
+    const isCurrentAnimation = currentAnimationName.includes(event.animationName);
+    if (event.target === elRef.value && isCurrentAnimation) {
+      // With React 18 concurrency this update is applied
+      // a frame after the animation ends, creating a flash of visible content.
+      // By manually flushing we ensure they sync within a frame, removing the flash.
+      send('ANIMATION_END');
+    }
+  };
+
+  const handleAnimationStart = (event: AnimationEvent) => {
+    if (event.target === elRef.value) {
+      // if animation occurred, store its name as the previous animation.
+      prevAnimationName = getAnimationName(styles);
+    }
+  };
+
   watchEffect(() => {
     const currentAnimationName = getAnimationName(styles);
     prevAnimationName = state.value === 'mounted' ? currentAnimationName : 'none';
@@ -63,29 +88,6 @@ export function usePresence(
     }
   );
 
-  /**
-   * Triggering an ANIMATION_OUT during an ANIMATION_IN will fire an `animationcancel` event for ANIMATION_IN after we
-   * have entered `unmountSuspended` state. So, we make sure we only trigger ANIMATION_END for the currently active
-   * animation.
-   */
-  async function handleAnimationEnd(event: AnimationEvent) {
-    const currentAnimationName = getAnimationName(styles);
-    const isCurrentAnimation = currentAnimationName.includes(event.animationName);
-    if (event.target === elRef.value && isCurrentAnimation) {
-      // With React 18 concurrency this update is applied
-      // a frame after the animation ends, creating a flash of visible content.
-      // By manually flushing we ensure they sync within a frame, removing the flash.
-      send('ANIMATION_END');
-    }
-  }
-
-  function handleAnimationStart(event: AnimationEvent) {
-    if (event.target === elRef.value) {
-      // if animation occurred, store its name as the previous animation.
-      prevAnimationName = getAnimationName(styles);
-    }
-  }
-
   watch(elRef, node => {
     if (node) {
       styles = getComputedStyle(node);
@@ -104,8 +106,6 @@ export function usePresence(
       send('ANIMATION_END');
     }
   });
-
-  const isPresent = computed(() => ['mounted', 'unmountSuspended'].includes(state.value));
 
   return isPresent;
 }
