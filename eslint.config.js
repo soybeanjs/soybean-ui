@@ -8,7 +8,8 @@ export default defineConfig(
     rules: {
       'max-params': 'off',
       'no-plusplus': 'off',
-      '@typescript-eslint/no-empty-object-type': 'off'
+      '@typescript-eslint/no-empty-object-type': 'off',
+      'vue/multi-word-component-names': 'off'
     }
   }
 );
