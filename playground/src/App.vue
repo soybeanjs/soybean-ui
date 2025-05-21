@@ -1,23 +1,12 @@
 <script setup lang="ts">
 import PresentExample from './examples/present.vue';
+import CollapsibleExample from './examples/collapsible.vue';
 </script>
 
 <template>
-  <div class="container">
-    <h1>Soybean Primitives Examples</h1>
+  <div class="container p-4">
+    <h1 class="text-2xl font-bold">Soybean Primitives Examples</h1>
     <PresentExample />
+    <CollapsibleExample />
   </div>
 </template>
-
-<style scoped>
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-</style>
