@@ -3,7 +3,7 @@ import type { Ref } from 'vue';
 import { useStateMachine } from './use-state-machine';
 
 export function usePresence(
-  elRef: Ref<HTMLElement | undefined>,
+  elRef: Ref<HTMLElement | null | undefined>,
   present: Ref<boolean> | (() => boolean),
   onChange?: (value: boolean) => void
 ) {
