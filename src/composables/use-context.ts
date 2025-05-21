@@ -1,27 +1,19 @@
 import { inject, provide } from 'vue';
-import type { InjectionKey } from 'vue';
-
-export type UseContextOptions<T> = {
-  injectionKey?: string | InjectionKey<T>;
-  defaultValue?: T;
-  required?: boolean;
-  requiredMessage?: string;
-};
 
 export function useContext<Arguments extends Array<any>, T>(
-  composable: (...args: Arguments) => T,
-  options?: UseContextOptions<T>
+  contextName: string,
+  composable: (...args: Arguments) => T
 ) {
-  const key = options?.injectionKey || Symbol(composable.name || 'InjectionState');
+  const key = Symbol(contextName);
 
-  const useInject = () => {
-    const value = inject(key, options?.defaultValue);
+  const useInject = (consumerName?: string, defaultValue?: T) => {
+    const value = inject(key, defaultValue);
 
-    if (options?.required && !value) {
-      throw new Error(options?.requiredMessage || 'Provide a value for the context');
+    if (consumerName) {
+      throw new Error(`\`${consumerName}\` must be used within \`${contextName}\``);
     }
 
-    return value || null;
+    return value!;
   };
 
   const useProvide = (...args: Arguments) => {
