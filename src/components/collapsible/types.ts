@@ -2,7 +2,7 @@ import type { Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 import type { ClassValueProp, PropsToContext } from '../../types';
 
-export interface CollapsibleRootProps extends PrimitiveProps {
+export interface CollapsibleRootProps extends ClassValueProp, PrimitiveProps {
   /**
    * The open state of the collapsible when it is initially rendered.
    *
@@ -30,10 +30,6 @@ export interface CollapsibleContentProps extends ClassValueProp, PrimitiveProps 
    */
   forceMount?: boolean;
 }
-
-export type CollapsibleContentEmits = {
-  contentFound: [];
-};
 
 export interface CollapsibleTriggerProps extends ClassValueProp, PrimitiveProps {}
 

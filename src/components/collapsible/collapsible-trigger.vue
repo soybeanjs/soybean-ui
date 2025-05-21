@@ -28,5 +28,3 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
     <slot />
   </Primitive>
 </template>
-
-<style scoped></style>
