@@ -5,7 +5,7 @@
  * @param b Second value to compare
  * @returns boolean indicating if values are equal
  */
-function isEqual(a: unknown, b: unknown): boolean {
+export function isEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;
   if (a === null || b === null) return false;
 
