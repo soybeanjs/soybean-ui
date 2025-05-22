@@ -1,5 +1,6 @@
 export * from './use-context';
 export * from './use-dismissable-layer';
+export * from './use-focus-guards';
 export * from './use-focus-scope';
 export * from './use-forward-element';
 export * from './use-global-state';
