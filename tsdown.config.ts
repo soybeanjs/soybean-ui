@@ -9,7 +9,16 @@ export default defineConfig(() => {
   return {
     entry,
     platform: 'neutral',
-    external: ['vue', '@vue/shared', '@unocss/reset', '@nuxt/schema', '@nuxt/kit', 'unplugin-vue-components'],
+    external: [
+      'vue',
+      '@vue/shared',
+      '@unocss/reset',
+      '@nuxt/schema',
+      '@nuxt/kit',
+      'unplugin-vue-components',
+      'lucide-vue-next',
+      '@soybean-ui/variants'
+    ],
     clean: true,
     dts: {
       vue: true

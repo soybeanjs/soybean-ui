@@ -7,7 +7,7 @@ import { presetAnimations } from 'unocss-preset-animations';
 export default defineConfig<Theme>({
   content: {
     pipeline: {
-      include: [/\.vue($|\?)/]
+      include: [/\.vue($|\?)/, /.*\/@soybean-ui_variants.*\.js/]
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
