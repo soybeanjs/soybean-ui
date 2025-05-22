@@ -66,3 +66,19 @@ export function isBlankString(value: unknown | undefined) {
 export function toKebabCase(str: string) {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }
+
+export function isClient() {
+  return typeof window !== 'undefined' && typeof document !== 'undefined';
+}
+
+export function jsonClone<T>(value: T) {
+  return JSON.parse(JSON.stringify(value)) as T;
+}
+
+export function clone<T>(value: T) {
+  if (typeof structuredClone === 'undefined') {
+    return jsonClone(value);
+  }
+
+  return structuredClone(value);
+}
