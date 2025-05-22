@@ -1,7 +1,7 @@
-import { Comment, Fragment } from 'vue';
+import { Comment, Fragment, computed } from 'vue';
 import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
-import type { VNodeRef } from '../types';
+import type { PropsToContext, VNodeRef } from '../types';
 
 export function getRawChildren(children: VNode[]): VNode[] {
   let ret: VNode[] = [];
@@ -39,4 +39,19 @@ export function getElFromTemplateRef<T extends HTMLElement>(nodeRef: VNodeRef) {
   }
 
   return node;
+}
+
+export function transformPropsToContext<T extends Record<string, any>, K extends keyof T = keyof T>(
+  props: T,
+  keys?: K[]
+) {
+  const $keys = keys ?? (Object.keys(props) as K[]);
+
+  return $keys.reduce(
+    (acc, key) => {
+      acc[key] = computed(() => props[key]);
+      return acc;
+    },
+    {} as PropsToContext<T, K>
+  );
 }
