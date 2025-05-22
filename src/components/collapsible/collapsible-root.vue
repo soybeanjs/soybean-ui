@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { useVModel } from '../../composables';
-import { provideCollapsibleContext } from './context';
+import { transformPropsToContext } from '../../shared';
+import { Primitive } from '../primitive';
+import { provideCollapsibleRootContext } from './context';
 import type { CollapsibleRootEmits, CollapsibleRootProps } from './types';
 
 const props = defineProps<CollapsibleRootProps>();
@@ -14,10 +14,9 @@ const open = useVModel(props, 'open', emit, {
   passive: props.open === undefined
 });
 
-const { disabled } = provideCollapsibleContext({
+const { dataDisabled, dataState } = provideCollapsibleRootContext({
   open,
-  disabled: computed(() => props.disabled),
-  unmountOnHide: computed(() => props.unmountOnHide)
+  ...transformPropsToContext(props, ['disabled', 'unmountOnHide'])
 });
 
 defineExpose({
@@ -26,12 +25,7 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive
-    :class="props.class"
-    :as="as"
-    :data-disabled="disabled ? '' : undefined"
-    :data-state="open ? 'open' : 'closed'"
-  >
+  <Primitive :class="props.class" :as="as" :data-disabled="dataDisabled" :data-state="dataState">
     <slot :open="open" />
   </Primitive>
 </template>

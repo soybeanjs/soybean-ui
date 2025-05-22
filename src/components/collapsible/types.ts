@@ -33,6 +33,7 @@ export interface CollapsibleContentProps extends ClassValueProp, PrimitiveProps 
 
 export interface CollapsibleTriggerProps extends ClassValueProp, PrimitiveProps {}
 
-export interface CollapsibleContextParams extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
+export interface CollapsibleRootContextParams
+  extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
   open: Ref<boolean>;
 }

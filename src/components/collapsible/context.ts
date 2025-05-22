@@ -1,10 +1,11 @@
-import { ref, useId } from 'vue';
+import { computed, ref, useId } from 'vue';
 import { useContext } from '../../composables';
-import type { CollapsibleContextParams } from './types';
+import type { OpenState } from '../../types';
+import type { CollapsibleRootContextParams } from './types';
 
-export const [provideCollapsibleContext, useCollapsibleContext] = useContext(
-  'Collapsible',
-  (params: CollapsibleContextParams) => {
+export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useContext(
+  'CollapsibleRoot',
+  (params: CollapsibleRootContextParams) => {
     const { open, disabled, unmountOnHide } = params;
 
     const onOpenToggle = () => {
@@ -19,13 +20,18 @@ export const [provideCollapsibleContext, useCollapsibleContext] = useContext(
       contentId.value = useId();
     };
 
+    const dataDisabled = computed(() => (disabled.value ? '' : undefined));
+    const dataState = computed<OpenState>(() => (open.value ? 'open' : 'closed'));
+
     return {
       open,
       disabled,
       unmountOnHide,
       onOpenToggle,
       contentId,
-      initContentId
+      initContentId,
+      dataDisabled,
+      dataState
     };
   }
 );

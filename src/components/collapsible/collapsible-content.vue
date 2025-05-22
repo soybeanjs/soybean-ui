@@ -3,15 +3,16 @@ import { computed, nextTick, onMounted, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { useCollapsibleContext } from './context';
+import { useCollapsibleRootContext } from './context';
 import { collapsibleContentCssVars } from './shared';
 import type { CollapsibleContentProps } from './types';
 
 const props = defineProps<CollapsibleContentProps>();
 
-const { contentId, initContentId, open, disabled, unmountOnHide } = useCollapsibleContext('CollapsibleContent');
+const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide } =
+  useCollapsibleRootContext('CollapsibleContent');
 
-const { elRef, setElRef } = useForwardElement(true);
+const { elRef, setElRef } = useForwardElement();
 
 let originalStyles: Pick<CSSStyleDeclaration, 'transitionDuration' | 'animationName'>;
 
@@ -81,9 +82,9 @@ onMounted(async () => {
     :id="contentId"
     :ref="setElRef"
     :class="props.class"
-    :as="props.as"
-    :data-disabled="disabled ? '' : undefined"
-    :data-state="open ? 'open' : 'closed'"
+    :as="as"
+    :data-disabled="dataDisabled"
+    :data-state="dataState"
     :hidden="hidden"
     :style="style"
   >
