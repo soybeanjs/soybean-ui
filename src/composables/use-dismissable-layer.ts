@@ -1,14 +1,12 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowReactive, toValue, watch } from 'vue';
-import type { Ref } from 'vue';
-import { handleAndDispatchCustomEvent } from '../shared';
+import type { MaybeRefOrGetter, Ref } from 'vue';
+import { handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 import { useEscapeKeydown } from './use-escape-keydown';
 
 const POINTER_DOWN_OUTSIDE = 'dismissableLayer.pointerDownOutside';
 const FOCUS_OUTSIDE = 'dismissableLayer.focusOutside';
 const DISMISSABLE_LAYER_ATTRIBUTE = 'data-dismissable-layer';
-
-const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
 
 const context = {
   layers: shallowReactive(new Set<HTMLElement>()),
@@ -22,7 +20,7 @@ export type UseDismissableLayerOptions = {
    * need to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to
    * trigger the element.
    */
-  disableOutsidePointerEvents?: Ref<boolean> | (() => boolean);
+  disableOutsidePointerEvents?: MaybeRefOrGetter<boolean>;
   /** Event handler called when the escape key is down. Can be prevented. */
   onEscapeKeydown?: (event: KeyboardEvent) => void;
   /** Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. */
@@ -40,7 +38,7 @@ export type UseDismissableLayerOptions = {
 
 let originalBodyPointerEvents: string | undefined;
 
-export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options: UseDismissableLayerOptions) {
+export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options?: UseDismissableLayerOptions) {
   const {
     disableOutsidePointerEvents,
     onEscapeKeydown,
@@ -48,7 +46,7 @@ export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options
     onFocusOutside,
     onInteractOutside,
     onDismiss
-  } = options;
+  } = options || {};
 
   const ownerDocument = () => elRef.value?.ownerDocument ?? globalThis?.document;
 
@@ -76,7 +74,7 @@ export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options
     return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
 
-  usePointerdownOutside(event => {
+  usePointerdownOutside(async event => {
     if (!isPointerEventsEnabled.value) return;
 
     const target = event.target as HTMLElement;
@@ -177,7 +175,7 @@ export function useDismissableLayerBranch(elRef: Ref<HTMLElement | undefined>) {
 
 /**
  * Listens for `pointerdown` outside a DOM subtree. We use `pointerdown` rather than `pointerup` to mimic layer
- * dismissing behaviour present in OS. Returns props to pass to the node we want to check for outside events.
+ * dismissing behavior present in OS. Returns props to pass to the node we want to check for outside events.
  */
 export function usePointerdownOutside(
   onPointerDownOutside: (event: PointerDownOutsideEvent) => void,
@@ -193,7 +191,7 @@ export function usePointerdownOutside(
     }
   };
 
-  if (!isClient) {
+  if (!isClient()) {
     return ret;
   }
 
@@ -288,7 +286,7 @@ export function useFocusOutside(
     }
   };
 
-  if (!isClient) {
+  if (!isClient()) {
     return ret;
   }
 
