@@ -9,7 +9,11 @@ export type ClassValueProp = {
 export type PropsToContext<T, K extends keyof T> = {
   [P in K]-?: ComputedRef<T[P]>;
 };
+export type VNodeRef = Element | ComponentPublicInstance | null | undefined;
 
 export type OpenState = 'open' | 'closed';
 
-export type VNodeRef = Element | ComponentPublicInstance | null | undefined;
+export type PointerDownOutsideEvent = CustomEvent<{
+  originalEvent: PointerEvent;
+}>;
+export type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
