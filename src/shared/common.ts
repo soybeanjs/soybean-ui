@@ -75,7 +75,7 @@ export function jsonClone<T>(value: T) {
   return JSON.parse(JSON.stringify(value)) as T;
 }
 
-export function clone<T>(value: T) {
+export function cloneValue<T>(value: T) {
   if (typeof structuredClone === 'undefined') {
     return jsonClone(value);
   }

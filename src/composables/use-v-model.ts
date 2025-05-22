@@ -1,6 +1,6 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import type { Ref } from 'vue';
-import { klona } from 'klona/json';
+import { cloneValue } from '../shared';
 
 interface UseVModelOptions<T> {
   /**
@@ -63,7 +63,7 @@ export function useVModel<P extends object, K extends keyof P, Name extends stri
 
   const event = (eventName ?? `update:${key.toString()}`) as Name;
 
-  const cloneFn = (val: P[K]) => (!clone ? val : klona(val));
+  const cloneFn = (val: P[K]) => (!clone ? val : cloneValue(val));
 
   const getValue = () => (props[key] !== undefined ? cloneFn(props[key]) : defaultValue!);
 

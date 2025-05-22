@@ -72,8 +72,7 @@
     "update-pkg": "soy ncu"
   },
   "dependencies": {
-    "@unocss/reset": "^66.1.2",
-    "klona": "2.0.6"
+    "@unocss/reset": "^66.1.2"
   },
   "devDependencies": {
     "@nuxt/kit": "3.17.3",
