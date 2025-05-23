@@ -74,6 +74,7 @@
   "dependencies": {
     "@soybean-ui/variants": "0.0.2-beta.5",
     "@unocss/reset": "66.1.2",
+    "aria-hidden": "^1.2.6",
     "lucide-vue-next": "0.511.0"
   },
   "devDependencies": {

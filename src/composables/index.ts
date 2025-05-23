@@ -9,6 +9,7 @@ export * from './use-focus-guards';
 export * from './use-focus-scope';
 export * from './use-forward-element';
 export * from './use-global-state';
+export * from './use-hide-others';
 export * from './use-presence';
 export * from './use-shared-composable';
 export * from './use-single-or-multiple-value';
