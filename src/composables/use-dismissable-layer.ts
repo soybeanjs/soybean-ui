@@ -1,7 +1,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowReactive, toValue, watch } from 'vue';
-import type { MaybeRefOrGetter, Ref } from 'vue';
+import type { CSSProperties, MaybeRefOrGetter, Ref } from 'vue';
 import { handleAndDispatchCustomEvent, isClient } from '../shared';
-import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
+import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 import { useEscapeKeydown } from './use-escape-keydown';
 
 const POINTER_DOWN_OUTSIDE = 'dismissableLayer.pointerDownOutside';
@@ -14,27 +14,16 @@ const context = {
   branches: shallowReactive(new Set<HTMLElement>())
 };
 
-export type UseDismissableLayerOptions = {
+export interface UseDismissableLayerOptions extends EmitsToHookProps<DismissableLayerEmits> {
   /**
    * When `true`, hover/focus/click interactions will be disabled on elements outside the `DismissableLayer`. Users will
    * need to click twice on outside elements to interact with them: once to close the `DismissableLayer`, and again to
    * trigger the element.
    */
   disableOutsidePointerEvents?: MaybeRefOrGetter<boolean>;
-  /** Event handler called when the escape key is down. Can be prevented. */
-  onEscapeKeydown?: (event: KeyboardEvent) => void;
-  /** Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented. */
-  onPointerDownOutside?: (event: PointerDownOutsideEvent) => void;
-  /** Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented. */
-  onFocusOutside?: (event: FocusOutsideEvent) => void;
-  /**
-   * Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`
-   * event happens outside or focus moves outside of it. Can be prevented.
-   */
-  onInteractOutside?: (event: PointerDownOutsideEvent | FocusOutsideEvent) => void;
   /** Handler called when the `DismissableLayer` should be dismissed */
   onDismiss?: () => void;
-};
+}
 
 let originalBodyPointerEvents: string | undefined;
 
@@ -73,6 +62,10 @@ export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options
 
     return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
+
+  const style = computed<CSSProperties>(() => ({
+    pointerEvents: pointerEvents.value
+  }));
 
   usePointerdownOutside(async event => {
     if (!isPointerEventsEnabled.value) return;
@@ -157,7 +150,8 @@ export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options
 
   return {
     DISMISSABLE_LAYER_ATTRIBUTE,
-    pointerEvents
+    pointerEvents,
+    style
   };
 }
 
