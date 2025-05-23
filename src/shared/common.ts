@@ -57,18 +57,12 @@ export function isValueEqualOrExist<T>(base: T | T[] | undefined, current: T | T
   return isEqual(base, current);
 }
 
-export const isBrowser = typeof document !== 'undefined';
-
 export function isBlankString(value: unknown | undefined) {
   return typeof value === 'string' && value === '';
 }
 
 export function toKebabCase(str: string) {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-}
-
-export function isClient() {
-  return typeof window !== 'undefined' && typeof document !== 'undefined';
 }
 
 export function jsonClone<T>(value: T) {
