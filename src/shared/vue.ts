@@ -1,7 +1,11 @@
-import { Comment, Fragment, computed } from 'vue';
+import { Comment, Fragment, computed, getCurrentInstance, getCurrentScope, onBeforeUnmount, onScopeDispose } from 'vue';
 import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
-import type { PropsToContext, VNodeRef } from '../types';
+import type { Fn, PropsToContext, VNodeRef } from '../types';
+
+export function getLifeCycleTarget(target?: any) {
+  return target || getCurrentInstance();
+}
 
 export function getRawChildren(children: VNode[]): VNode[] {
   let ret: VNode[] = [];
@@ -54,4 +58,28 @@ export function transformPropsToContext<T extends Record<string, any>, K extends
     },
     {} as PropsToContext<T, K>
   );
+}
+
+/**
+ * Call onBeforeUnmount() if it's inside a component lifecycle, if not, do nothing
+ *
+ * @param fn
+ * @param target
+ */
+export function tryOnBeforeUnmount(fn: Fn, target?: any) {
+  const instance = getLifeCycleTarget(target);
+  if (instance) onBeforeUnmount(fn, target);
+}
+
+/**
+ * Call onScopeDispose() if it's inside an effect scope lifecycle, if not, do nothing
+ *
+ * @param fn
+ */
+export function tryOnScopeDispose(fn: Fn) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn);
+    return true;
+  }
+  return false;
 }

@@ -12,6 +12,10 @@ export type AcceptableValue = StringOrNumber | null | undefined;
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';
 
+/** Void function */
+export type Fn = () => void;
+export type AnyFn = (...args: any[]) => any;
+
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)
  * otherwise, it will be passed string
@@ -67,3 +71,12 @@ export interface SingleOrMultipleProps<T = AcceptableValue | AcceptableValue[], 
 export type SingleOrMultipleEmits<T = AcceptableValue | AcceptableValue[]> = {
   'update:modelValue': [value: T];
 };
+
+export interface ForceMountProps {
+  /**
+   * Used to force mounting when more control is needed.
+   *
+   * Useful when controlling animation with Vue animation libraries.
+   */
+  forceMount?: boolean;
+}
