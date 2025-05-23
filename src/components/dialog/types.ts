@@ -62,5 +62,5 @@ export interface DialogDescriptionProps extends ClassValueProp {}
 export interface DialogCloseProps extends ClassValueProp, PrimitiveProps {}
 
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal'> {
-  open: Ref<boolean>;
+  open: Ref<boolean | undefined>;
 }

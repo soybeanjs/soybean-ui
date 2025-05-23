@@ -12,6 +12,6 @@ export function getOpenFromSingleOrMultiple(
   return Array.isArray(modelValue) && modelValue.includes(value);
 }
 
-export function getOpenState(open: boolean) {
+export function getOpenState(open?: boolean) {
   return open ? 'open' : 'closed';
 }

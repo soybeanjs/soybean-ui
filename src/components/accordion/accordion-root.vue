@@ -6,7 +6,12 @@ import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { provideAccordionRootContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
-const props = defineProps<AccordionRootProps<T, S>>();
+const props = withDefaults(defineProps<AccordionRootProps<T, S>>(), {
+  disabled: false,
+  orientation: 'vertical',
+  collapsible: false,
+  unmountOnHide: true
+});
 
 const emit = defineEmits<AccordionRootEmits>();
 

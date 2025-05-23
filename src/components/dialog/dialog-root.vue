@@ -8,7 +8,12 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<DialogRootProps>();
+const props = withDefaults(defineProps<DialogRootProps>(), {
+  open: undefined,
+  defaultOpen: false,
+  modal: true
+});
+
 const emit = defineEmits<DialogRootEmits>();
 
 const open = useVModel(props, 'open', emit, {

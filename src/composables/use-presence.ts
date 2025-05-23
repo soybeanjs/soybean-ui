@@ -1,10 +1,10 @@
 import { computed, onWatcherCleanup, toValue, watch, watchEffect } from 'vue';
-import type { Ref } from 'vue';
+import type { MaybeRefOrGetter, Ref } from 'vue';
 import { useStateMachine } from './use-state-machine';
 
 export function usePresence(
   elRef: Ref<HTMLElement | null | undefined>,
-  present: Ref<boolean> | (() => boolean),
+  present: MaybeRefOrGetter<boolean | undefined>,
   onChange?: (value: boolean) => void
 ) {
   let styles: CSSStyleDeclaration = {} as CSSStyleDeclaration;
@@ -56,9 +56,9 @@ export function usePresence(
   });
 
   watch(
-    present,
+    () => toValue(present),
     async (newValue, oldValue) => {
-      onChange?.(newValue);
+      onChange?.(Boolean(newValue));
 
       const currentAnimationName = getAnimationName(styles);
 

@@ -28,5 +28,5 @@ export interface CollapsibleTriggerProps extends ClassValueProp, PrimitiveProps 
 
 export interface CollapsibleRootContextParams
   extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
-  open: Ref<boolean>;
+  open: Ref<boolean | undefined>;
 }
