@@ -1,4 +1,6 @@
-export interface PortalProps {
+import type { ForceMountProps } from '../../types';
+
+export interface PortalProps extends ForceMountProps {
   /**
    * Vue native teleport component prop `:to`
    *
@@ -17,6 +19,4 @@ export interface PortalProps {
    * {@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}
    */
   defer?: boolean;
-  /** Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries. */
-  forceMount?: boolean;
 }
