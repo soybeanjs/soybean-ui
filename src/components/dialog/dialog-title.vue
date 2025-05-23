@@ -8,7 +8,7 @@ const { titleId } = useDialogRootContext('DialogTitle');
 </script>
 
 <template>
-  <div :id="titleId" :class="props.class">
+  <h2 :id="titleId" :class="props.class">
     <slot />
-  </div>
+  </h2>
 </template>

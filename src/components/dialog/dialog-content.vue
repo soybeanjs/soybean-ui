@@ -1,123 +1,113 @@
-<!-- <script setup lang="ts">
-import { computed, onMounted } from 'vue';
-import { useDismissableLayer, useEscapeKeydown, useFocusScope, usePresence } from '../../composables';
+<script setup lang="ts">
+import { computed, shallowRef } from 'vue';
+import { useHideOthers, usePresence } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
-import { getDialogDescriptionWarning, getDialogTitleWarning } from './shared';
+import DialogContentImpl from './dialog-content-impl.vue';
 import type { DialogContentEmits, DialogContentProps } from './types';
 
-const props = withDefaults(defineProps<DialogContentProps>(), {
-  as: 'div',
-  forceMount: false,
-  trapFocus: true
-});
-
+const props = defineProps<DialogContentProps>();
 const emit = defineEmits<DialogContentEmits>();
 
-const rootContext = useDialogRootContext('DialogContent');
-const {
-  open,
-  modal,
-  onOpenChange,
-  contentId,
-  titleId,
-  descriptionId,
-  initContentId,
-  initTitleId,
-  initDescriptionId,
-  contentElement,
-  setContentElement
-} = rootContext;
+const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
 
-// Initialize IDs
-initContentId();
-initTitleId();
-initDescriptionId();
+useHideOthers(contentElement, modal.value);
 
-// Presence management
-const isPresent = usePresence(
-  contentElement,
-  computed(() => props.forceMount || open.value)
-);
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
-// Focus management
-if (props.trapFocus) {
-  useFocusScope(contentElement, {
-    trapped: computed(() => open.value && Boolean(modal.value)),
-    onMountAutoFocus: event => emit('openAutoFocus', event),
-    onUnmountAutoFocus: event => emit('closeAutoFocus', event)
-  });
-}
+const trapFocus = computed(() => modal.value && open.value);
 
-// Escape key handling
-useEscapeKeydown((event: KeyboardEvent) => {
-  if (props.onEscapeKeyDown) {
-    props.onEscapeKeyDown(event);
-  } else {
-    emit('escapeKeyDown', event);
+let hasInteractedOutsideRef = false;
+let hasPointerDownOutsideRef = false;
+
+const onCloseAutoFocus = (event: Event) => {
+  emit('closeAutoFocus', event);
+
+  if (modal.value) {
     if (!event.defaultPrevented) {
-      onOpenChange(false);
+      event.preventDefault();
+      triggerElement.value?.focus();
     }
-  }
-});
 
-// Dismissable layer for modal dialogs
-if (modal.value) {
-  useDismissableLayer(contentElement, {
-    onPointerDownOutside: (event: PointerDownOutsideEvent) => {
-      if (props.onPointerDownOutside) {
-        props.onPointerDownOutside(event.detail.originalEvent);
-      } else {
-        emit('pointerDownOutside', event.detail.originalEvent);
-      }
-    },
-    onFocusOutside: (event: FocusOutsideEvent) => {
-      if (props.onFocusOutside) {
-        props.onFocusOutside(event.detail.originalEvent);
-      } else {
-        emit('focusOutside', event.detail.originalEvent);
-      }
-    },
-    onInteractOutside: (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
-      if (props.onInteractOutside) {
-        props.onInteractOutside(event.detail.originalEvent);
-      } else {
-        emit('interactOutside', event.detail.originalEvent);
-      }
-    }
-  });
-}
-
-// Accessibility warnings
-onMounted(() => {
-  const hasTitle = document.getElementById(titleId.value);
-  if (!hasTitle) {
-    console.warn(getDialogTitleWarning());
+    return;
   }
 
-  const describedById = contentElement.value?.getAttribute('aria-describedby');
-  if (descriptionId.value && describedById) {
-    const hasDescription = document.getElementById(descriptionId.value);
-    if (!hasDescription) {
-      console.warn(getDialogDescriptionWarning());
+  if (!event.defaultPrevented) {
+    if (!hasInteractedOutsideRef) {
+      triggerElement.value?.focus();
+    }
+    // Always prevent auto focus because we either focus manually or want user agent focus
+    event.preventDefault();
+  }
+  hasInteractedOutsideRef = false;
+  hasPointerDownOutsideRef = false;
+};
+
+const onPointerDownOutside = (event: PointerDownOutsideEvent) => {
+  emit('pointerDownOutside', event);
+
+  if (event.defaultPrevented) return;
+  const originalEvent = event.detail.originalEvent;
+  const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+  const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+
+  // If the event is a right-click, we shouldn't close because
+  // it is effectively as if we right-clicked the `Overlay`.
+  if (isRightClick) {
+    event.preventDefault();
+  }
+};
+
+const onFocusOutside = (event: FocusOutsideEvent) => {
+  emit('focusOutside', event);
+
+  // When focus is trapped, a `focusout` event may still happen.
+  // We make sure we don't trigger our `onDismiss` in such case.
+  event.preventDefault();
+};
+
+const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
+  emit('interactOutside', event);
+
+  if (!event.defaultPrevented) {
+    hasInteractedOutsideRef = true;
+    if (event.detail.originalEvent.type === 'pointerdown') {
+      hasPointerDownOutsideRef = true;
     }
   }
-});
+
+  // Prevent dismissing when clicking the trigger.
+  // As the trigger is already setup to close, without doing so would
+  // cause it to close and immediately open.
+  const target = event.target as HTMLElement;
+  const targetIsTrigger = triggerElement.value?.contains(target);
+  if (targetIsTrigger) {
+    event.preventDefault();
+  }
+
+  // On Safari if the trigger is inside a container with tabIndex={0}, when clicked
+  // we will get the pointer down outside event on the trigger, but then a subsequent
+  // focus outside event on the container, we ignore any focus outside event when we've
+  // already had a pointer down outside event.
+  if (event.detail.originalEvent.type === 'focusin' && hasPointerDownOutsideRef) {
+    event.preventDefault();
+  }
+};
 </script>
 
 <template>
-  <Primitive
+  <DialogContentImpl
     v-if="isPresent"
     v-bind="props"
-    :id="contentId"
-    :ref="setContentElement"
-    role="dialog"
-    :aria-modal="modal"
-    :aria-labelledby="titleId"
-    :aria-describedby="descriptionId"
-    :data-state="open ? 'open' : 'closed'"
+    :trap-focus="trapFocus"
+    :disable-outside-pointer-events="modal"
+    @escape-keydown="emit('escapeKeydown', $event)"
+    @pointer-down-outside="onPointerDownOutside"
+    @focus-outside="onFocusOutside"
+    @interact-outside="onInteractOutside"
+    @open-auto-focus="emit('openAutoFocus', $event)"
+    @close-auto-focus="onCloseAutoFocus"
   >
     <slot />
-  </Primitive>
-</template> -->
+  </DialogContentImpl>
+</template>

@@ -1,5 +1,12 @@
 import type { Ref } from 'vue';
-import type { ClassValueProp, ForceMountProps, PropsToContext } from '../../types';
+import type {
+  ClassValueProp,
+  DismissableLayerEmits,
+  DismissableLayerProps,
+  ForceMountProps,
+  PropsToContext,
+  TrapFocusProps
+} from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface DialogRootProps {
@@ -23,7 +30,6 @@ export interface DialogRootProps {
    */
   modal?: boolean;
 }
-
 export type DialogRootEmits = {
   /** Event handler called when the open state of the dialog changes. */
   'update:open': [value: boolean];
@@ -33,34 +39,21 @@ export interface DialogTriggerProps extends ClassValueProp, PrimitiveProps {}
 
 export interface DialogOverlayProps extends ClassValueProp, ForceMountProps {}
 
-export interface DialogContentProps extends PrimitiveProps, ForceMountProps {
-  /**
-   * When `true`, focus cannot escape the Content via keyboard, pointer, or a programmatic focus.
-   *
-   * @defaultValue false
-   */
-  trapFocus?: boolean;
-}
-
-export type DialogContentEmits = {
-  /** Event handler called when the escape key is down. */
-  escapeKeyDown: [event: KeyboardEvent];
-
-  /** Event handler called when a pointer down event occurs outside the dialog. */
-  pointerDownOutside: [event: PointerEvent];
-
-  /** Event handler called when focus moves outside the dialog. */
-  focusOutside: [event: FocusEvent];
-
-  /** Event handler called when an interaction occurs outside the dialog. */
-  interactOutside: [event: PointerEvent | FocusEvent];
-
-  /** Event handler called when the dialog content is opened/closed. */
+export interface DialogContentImplProps
+  extends ClassValueProp,
+    PrimitiveProps,
+    ForceMountProps,
+    TrapFocusProps,
+    DismissableLayerProps {}
+export type DialogContentImplEmits = DismissableLayerEmits & {
+  /** Event handler called when auto-focusing on open. Can be prevented. */
   openAutoFocus: [event: Event];
-
-  /** Event handler called when the dialog content is opened/closed. */
+  /** Event handler called when auto-focusing on close. Can be prevented. */
   closeAutoFocus: [event: Event];
 };
+
+export interface DialogContentProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {}
+export type DialogContentEmits = DialogContentImplEmits;
 
 export interface DialogTitleProps extends ClassValueProp {}
 
