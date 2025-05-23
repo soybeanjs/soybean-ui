@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useHideOthers, usePresence } from '../../composables';
+import { usePresence } from '../../composables';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
@@ -10,8 +10,6 @@ const props = defineProps<DialogContentProps>();
 const emit = defineEmits<DialogContentEmits>();
 
 const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
-
-useHideOthers(contentElement, modal.value);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
