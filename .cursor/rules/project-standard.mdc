@@ -91,7 +91,7 @@ export const [provideComponentRootContext, useComponentRootContext] = useContext
 export const [provideComponentItemContext, useComponentItemContext] = useContext(
   'ComponentItem',
   (params: ComponentItemContextParams) => {
-    const { elRef: triggerElement, setElRef: setTriggerElement } = useForwardElement();
+    const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
     const triggerId = ref(useId());
     const dataState = computed(() => /* logic */);
 
