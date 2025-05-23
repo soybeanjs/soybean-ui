@@ -1,5 +1,6 @@
 import { computed, ref, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
+import { getOpenState } from '../../shared';
 import type { OpenState } from '../../types';
 import type { AccordionItemContextParams, AccordionRootContextParams } from './types';
 
@@ -22,7 +23,7 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
-    const dataState = computed<OpenState>(() => (open.value ? 'open' : 'closed'));
+    const dataState = computed<OpenState>(() => getOpenState(open.value));
 
     return {
       ...params,
