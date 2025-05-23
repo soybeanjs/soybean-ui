@@ -1,17 +1,23 @@
 {
   "name": "nuxt-app",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
   },
   "dependencies": {
+    "@unocss/reset": "66.1.1",
     "nuxt": "^3.17.3",
+    "soy-ui": "workspace:*",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@unocss/nuxt": "66.1.1",
+    "unocss": "66.1.1"
   }
 }

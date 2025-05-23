@@ -15,7 +15,6 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@soybean-ui/examples": "workspace:*",
     "@soybean-ui/unocss-preset": "workspace:*",
     "@vueuse/core": "13.2.0",
     "lucide-vue-next": "0.511.0",

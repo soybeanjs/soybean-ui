@@ -1,6 +1,5 @@
 packages:
   - "docs"
   - "packages/*"
-  - "examples"
   - "playground/*"
   - "apps/*"

@@ -18,12 +18,7 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": [
-    "UI",
-    "UnoCSS",
-    "shadcn-ui",
-    "vue3"
-  ],
+  "keywords": ["UI", "UnoCSS", "shadcn-ui", "vue3"],
   "scripts": {
     "build": "pnpm build:pkg && vite build",
     "build-only": "vite build",
@@ -49,7 +44,6 @@
     "update-pkg": "soy update-pkg"
   },
   "dependencies": {
-    "@soybean-ui/examples": "workspace:*",
     "@unocss/reset": "66.1.1",
     "@vee-validate/valibot": "4.15.0",
     "@vueuse/core": "13.1.0",

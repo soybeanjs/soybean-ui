@@ -36,9 +36,21 @@ async function backupPkgJson(pkgName: string, pkgPath: string) {
 
 function transformValuePair(subKey: string, subValue: string): string {
   if (subKey === 'import') {
+    if (subValue === './dist/nuxt.mjs') {
+      return './src/nuxt/index.ts';
+    }
+    if (subValue === './dist/resolver.mjs') {
+      return './src/resolver/index.ts';
+    }
     return subValue.replace(/^\.\/dist\//, './src/').replace(/\.mjs$/, '.ts');
   }
   if (subKey === 'types') {
+    if (subValue === './dist/nuxt/index.d.ts') {
+      return './src/nuxt/index.ts';
+    }
+    if (subValue === './dist/resolver/index.d.ts') {
+      return './src/resolver/index.ts';
+    }
     return subValue.replace(/^\.\/dist\//, './src/').replace(/\.d\.ts$/, '.ts');
   }
   return subValue;
@@ -83,6 +95,10 @@ function generateTypesVersions(exports: Record<string, any>): Record<string, any
       if (cleanKey.endsWith('/*')) {
         const baseKey = cleanKey.replace(/\/\*$/, '');
         typesVersions['*'][`${baseKey}/*`] = [`./src/${baseKey}/*`];
+      } else if (cleanKey === 'nuxt') {
+        typesVersions['*'][cleanKey] = ['./src/nuxt/index.ts'];
+      } else if (cleanKey === 'resolver') {
+        typesVersions['*'][cleanKey] = ['./src/resolver/index.ts'];
       } else {
         typesVersions['*'][cleanKey] = [`./src/${cleanKey}/index.ts`];
       }

@@ -18,7 +18,12 @@
   "bugs": {
     "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
-  "keywords": ["UI", "UnoCSS", "shadcn-ui", "vue3"],
+  "keywords": [
+    "UI",
+    "UnoCSS",
+    "shadcn-ui",
+    "vue3"
+  ],
   "scripts": {
     "build": "pnpm build:pkg && vite build",
     "build-only": "vite build",
@@ -28,14 +33,12 @@
     "build:ui": "pnpm -r --filter=\"./packages/ui\" run build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
-    "dev:docs": "pnpm -r --filter=\"./docs\" run dev",
+    "dev:docs": "pnpm -r --filter=\"./apps/docs\" run dev",
     "generate": "tsx scripts/generate.ts",
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
-    "preview:docs": "pnpm -r --filter=\"./docs\" run preview",
     "publish-pkg": "pnpm -r publish --access public",
-    "rebuild-code": "tsx scripts/code.ts",
     "release": "soy release",
     "restore": "tsx scripts/restore.ts",
     "stub": "tsx scripts/stub.ts",

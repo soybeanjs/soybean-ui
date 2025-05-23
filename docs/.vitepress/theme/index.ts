@@ -1,7 +1,6 @@
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import type { App } from 'vue';
-import * as ExampleComponents from '@soybean-ui/examples';
 import 'uno.css';
 import '@unocss/reset/tailwind-compat.css';
 import './style.css';
@@ -10,12 +9,6 @@ import Layout from './layout/index.vue';
 import InstallationTabs from './components/installation-tabs.vue';
 import ComponentPreview from './components/component-preview.vue';
 
-function registerExamples(app: App) {
-  for (const key in ExampleComponents) {
-    app.component(key, (ExampleComponents as any)[key]);
-  }
-}
-
 const theme: Theme = {
   extends: DefaultTheme,
   Layout,
@@ -23,7 +16,9 @@ const theme: Theme = {
     cacheTheme();
     app.component('InstallationTabs', InstallationTabs);
     app.component('ComponentPreview', ComponentPreview);
-    registerExamples(app);
+
+    // 文档正在迁移中，examples部分内容已清理，短时间内新文档会支持正常浏览组件，暂不对旧版继续支持
+    // registerExamples(app);
     registerCode(app);
   }
 };
