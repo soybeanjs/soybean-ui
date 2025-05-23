@@ -15,11 +15,11 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
 
     const { open, disabled } = params;
 
-    const triggerId = ref(useId());
+    const triggerId = ref('');
 
     const initTriggerId = () => {
       if (triggerId.value) return;
-      triggerId.value = useId();
+      triggerId.value = `accordion-item-trigger-${useId()}`;
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));

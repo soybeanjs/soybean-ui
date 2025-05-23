@@ -13,11 +13,11 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
       open.value = !open.value;
     };
 
-    const contentId = ref(useId());
+    const contentId = ref('');
 
     const initContentId = () => {
       if (contentId.value) return;
-      contentId.value = useId();
+      contentId.value = `collapsible-content-${useId()}`;
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
