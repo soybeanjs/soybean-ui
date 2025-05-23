@@ -12,17 +12,6 @@ export async function execCommand(cmd: string, args: string[], options?: Options
 
 const cwd = process.cwd();
 
-const devPkg = {
-  exports: {
-    '.': './src/index.ts'
-  },
-  typesVersions: {
-    '*': {
-      '*': ['./src/*']
-    }
-  }
-};
-
 const removedKeys = ['types', 'typings', 'main', 'module'];
 
 const BACKUP_DIR = 'scripts/.json';
@@ -45,6 +34,64 @@ async function backupPkgJson(pkgName: string, pkgPath: string) {
   await writeFile(backupPath, originalPkgJson);
 }
 
+function transformValuePair(subKey: string, subValue: string): string {
+  if (subKey === 'import') {
+    return subValue.replace(/^\.\/dist\//, './src/').replace(/\.mjs$/, '.ts');
+  }
+  if (subKey === 'types') {
+    return subValue.replace(/^\.\/dist\//, './src/').replace(/\.d\.ts$/, '.ts');
+  }
+  return subValue;
+}
+
+function transformExportsToDevMode(exports: Record<string, any>): Record<string, any> {
+  const devExports: Record<string, any> = {};
+
+  for (const [key, value] of Object.entries(exports)) {
+    if (typeof value === 'string') {
+      devExports[key] = value.replace(/^\.\/dist\//, './src/').replace(/\.mjs$/, '.ts');
+    } else if (typeof value === 'object' && value !== null) {
+      const transformedValue: Record<string, any> = {};
+
+      for (const [subKey, subValue] of Object.entries(value)) {
+        if (typeof subValue === 'string') {
+          transformedValue[subKey] = transformValuePair(subKey, subValue);
+        } else {
+          transformedValue[subKey] = subValue;
+        }
+      }
+
+      devExports[key] = transformedValue;
+    } else {
+      devExports[key] = value;
+    }
+  }
+
+  return devExports;
+}
+
+function generateTypesVersions(exports: Record<string, any>): Record<string, any> {
+  const typesVersions: Record<string, any> = {
+    '*': {}
+  };
+
+  for (const key of Object.keys(exports)) {
+    if (key === '.') {
+      typesVersions['*']['*'] = ['./src/*'];
+    } else if (key.startsWith('./')) {
+      const cleanKey = key.replace(/^\.\//, '');
+      if (cleanKey.endsWith('/*')) {
+        const baseKey = cleanKey.replace(/\/\*$/, '');
+        typesVersions['*'][`${baseKey}/*`] = [`./src/${baseKey}/*`];
+      } else {
+        typesVersions['*'][cleanKey] = [`./src/${cleanKey}/index.ts`];
+      }
+    }
+  }
+
+  return typesVersions;
+}
+
 async function writeDevPkgJson(pkgName: string, pkgPath: string) {
   const backupPath = getBackupPath(pkgName);
 
@@ -52,8 +99,17 @@ async function writeDevPkgJson(pkgName: string, pkgPath: string) {
 
   const pkgJson: Record<string, unknown> = JSON.parse(backup);
 
-  pkgJson.exports = devPkg.exports;
-  pkgJson.typesVersions = devPkg.typesVersions;
+  if (pkgJson.exports && typeof pkgJson.exports === 'object') {
+    pkgJson.exports = transformExportsToDevMode(pkgJson.exports as Record<string, any>);
+    pkgJson.typesVersions = generateTypesVersions(pkgJson.exports as Record<string, any>);
+  } else {
+    pkgJson.exports = { '.': './src/index.ts' };
+    pkgJson.typesVersions = {
+      '*': {
+        '*': ['./src/*']
+      }
+    };
+  }
 
   for (const key of removedKeys) {
     if (removedKeys.includes(key)) {
