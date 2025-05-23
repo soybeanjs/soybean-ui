@@ -92,7 +92,11 @@ export const [provideComponentItemContext, useComponentItemContext] = useContext
   'ComponentItem',
   (params: ComponentItemContextParams) => {
     const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
-    const triggerId = ref(useId());
+    const triggerId = ref('');
+    const initTriggerId = () => {
+      if(triggerId.value) return;
+      triggerId.value = `soybean-component-item-${useId()}`;
+    }
     const dataState = computed(() => /* logic */);
 
     return {
