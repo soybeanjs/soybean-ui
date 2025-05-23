@@ -10,8 +10,9 @@ import {
   isClient,
   removeLinks
 } from '../shared';
+import type { EmitsToHookProps, FocusScopeEmits } from '../types';
 
-export interface UseFocusScopeOptions {
+export interface UseFocusScopeOptions extends EmitsToHookProps<FocusScopeEmits> {
   /**
    * When `true`, tabbing from last item will focus first tabbable and shift+tab from first item will focus last
    * tabbable.
@@ -19,18 +20,12 @@ export interface UseFocusScopeOptions {
    * @defaultValue false
    */
   loop?: MaybeRefOrGetter<boolean>;
-
   /**
    * When `true`, focus cannot escape the focus scope via keyboard, pointer, or a programmatic focus.
    *
    * @defaultValue false
    */
   trapped?: MaybeRefOrGetter<boolean>;
-  /** Event handler called when auto-focusing on mount. Can be prevented. */
-  onMountAutoFocus?: (event: Event) => void;
-
-  /** Event handler called when auto-focusing on unmount. Can be prevented. */
-  onUnmountAutoFocus?: (event: Event) => void;
 }
 
 const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
@@ -215,7 +210,8 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
   }
 
   return {
-    onKeydown
+    onKeydown,
+    tabindex: '-1'
   };
 }
 
