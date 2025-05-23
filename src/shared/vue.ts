@@ -1,7 +1,16 @@
-import { Comment, Fragment, computed, getCurrentInstance, getCurrentScope, onBeforeUnmount, onScopeDispose } from 'vue';
+import {
+  Comment,
+  Fragment,
+  computed,
+  getCurrentInstance,
+  getCurrentScope,
+  onBeforeUnmount,
+  onScopeDispose,
+  toValue
+} from 'vue';
 import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
-import type { Fn, PropsToContext, VNodeRef } from '../types';
+import type { Fn, MaybeComputedElementRef, PropsToContext, UnRefElementReturn, VNodeRef } from '../types';
 
 export function getLifeCycleTarget(target?: any) {
   return target || getCurrentInstance();
@@ -82,4 +91,14 @@ export function tryOnScopeDispose(fn: Fn) {
     return true;
   }
   return false;
+}
+
+/**
+ * Get the dom element of a ref of element or Vue component instance
+ *
+ * @param elRef
+ */
+export function unrefElement<T extends VNodeRef>(elRef: MaybeComputedElementRef<T>): UnRefElementReturn<T> {
+  const plain = toValue(elRef);
+  return (plain as ComponentPublicInstance)?.$el ?? plain;
 }
