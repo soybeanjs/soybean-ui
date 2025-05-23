@@ -17,7 +17,7 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
 
     const initContentId = () => {
       if (contentId.value) return;
-      contentId.value = `collapsible-content-${useId()}`;
+      contentId.value = `soybean-collapsible-content-${useId()}`;
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));

@@ -9,16 +9,16 @@ import type { CollapsibleContentProps } from './types';
 
 const props = defineProps<CollapsibleContentProps>();
 
+const { elementRef, setElementRef } = useForwardElement();
+
 const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide } =
   useCollapsibleRootContext('CollapsibleContent');
-
-const { elRef, setElRef } = useForwardElement();
 
 let originalStyles: Pick<CSSStyleDeclaration, 'transitionDuration' | 'animationName'>;
 
 initContentId();
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(elRef, open, handleNodeStyle);
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(elementRef, open, handleNodeStyle);
 
 // when opening we want it to immediately open to retrieve dimensions
 // when closing we delay `present` to retrieve dimensions before closing
@@ -44,7 +44,7 @@ const style = computed<CSSProperties>(() => ({
 }));
 
 function handleNodeStyle() {
-  const node = elRef.value;
+  const node = elementRef.value;
 
   if (!node) return;
 
@@ -80,7 +80,7 @@ onMounted(async () => {
 <template>
   <Primitive
     :id="contentId"
-    :ref="setElRef"
+    :ref="setElementRef"
     :class="props.class"
     :as="as"
     :data-disabled="dataDisabled"

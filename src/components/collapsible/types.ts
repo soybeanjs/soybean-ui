@@ -1,6 +1,6 @@
 import type { Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
-import type { ClassValueProp, PropsToContext } from '../../types';
+import type { ClassValueProp, ForceMountProps, PropsToContext } from '../../types';
 
 export interface CollapsibleRootProps extends ClassValueProp, PrimitiveProps {
   /**
@@ -22,14 +22,7 @@ export type CollapsibleRootEmits = {
   'update:open': [value: boolean];
 };
 
-export interface CollapsibleContentProps extends ClassValueProp, PrimitiveProps {
-  /**
-   * Used to force mounting when more control is needed.
-   *
-   * Useful when controlling animation with Vue animation libraries.
-   */
-  forceMount?: boolean;
-}
+export interface CollapsibleContentProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
 
 export interface CollapsibleTriggerProps extends ClassValueProp, PrimitiveProps {}
 

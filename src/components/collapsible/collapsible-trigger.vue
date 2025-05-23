@@ -18,12 +18,12 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
   <Primitive
     :class="props.class"
     :as="as"
+    :type="tag"
     :aria-controls="contentId"
     :aria-expanded="open"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :disabled="disabled"
-    :tag="tag"
     @click="onOpenToggle"
   >
     <slot />
