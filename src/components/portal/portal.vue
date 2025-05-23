@@ -2,7 +2,9 @@
 import { onMounted, ref } from 'vue';
 import type { PortalProps } from './types';
 
-defineProps<PortalProps>();
+withDefaults(defineProps<PortalProps>(), {
+  to: 'body'
+});
 
 const isMounted = ref(false);
 
