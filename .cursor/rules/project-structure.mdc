@@ -1,0 +1,188 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Soybean Primitives Repository Guide
+
+You are working with **Soybean Primitives**, a Vue 3 headless UI component library. This guide helps you quickly understand the repository structure and architecture.
+
+## 🏗️ Project Overview
+
+**Soybean Primitives** is a collection of primitive headless UI components for Vue 3, designed to be lightweight, accessible, and highly customizable.
+
+- **Framework**: Vue 3 with Composition API
+- **Language**: TypeScript (strict mode)
+- **Build System**: tsdown + Vite
+- **Package Manager**: pnpm
+- **Styling**: UnoCSS + CSS Variables
+- **Testing**: Vitest
+- **Architecture**: Headless UI Components (no built-in styling)
+
+## 📁 Repository Structure
+
+```
+soybean-primitives/
+├── 📦 src/                           # Source code
+│   ├── 🧩 components/                # Component library
+│   │   ├── accordion/                # Accordion component suite
+│   │   ├── collapsible/              # Collapsible component
+│   │   ├── config-provider/          # Configuration provider
+│   │   ├── portal/                   # Portal/Teleport component
+│   │   ├── primitive/                # Base primitive component
+│   │   └── slot/                     # Slot utilities
+│   ├── 🔧 composables/               # Vue 3 composables
+│   ├── 🎨 shared/                    # Shared utilities
+│   ├── 📝 types/                     # TypeScript type definitions
+│   ├── 🔢 constants/                 # Global constants
+│   ├── 🔌 resolver/                  # Component resolver
+│   ├── 🚀 nuxt/                      # Nuxt integration
+│   └── index.ts                      # Main export entry
+├── 🎮 playground/                    # Development playground
+├── 📚 typings/                       # Global type declarations
+├── ⚙️ Configuration files
+│   ├── package.json                  # Project metadata & dependencies
+│   ├── tsconfig.json                 # TypeScript configuration
+│   ├── vite.config.ts               # Vite configuration
+│   ├── vitest.config.ts             # Test configuration
+│   ├── uno.config.ts                # UnoCSS configuration
+│   ├── tsdown.config.ts             # Build configuration
+│   └── eslint.config.js             # ESLint configuration
+└── 📄 Documentation
+    ├── README.md                     # Project documentation
+    └── CHANGELOG.md                  # Version changelog
+```
+
+## 🧩 Component Architecture
+
+Each component follows a **standardized structure**:
+
+```
+src/components/{component-name}/
+├── index.ts                    # Export entry point
+├── types.ts                    # TypeScript definitions
+├── context.ts                  # Vue provide/inject context
+├── shared.ts                   # Component-specific utilities
+├── {component}-root.vue        # Root component
+├── {component}-item.vue        # Sub-components
+└── {component}-*.vue           # Additional sub-components
+```
+
+### Component Design Principles
+- **Headless**: No built-in styling, maximum customization
+- **Accessible**: Full ARIA support and keyboard navigation
+- **Composable**: Built with Vue 3 Composition API
+- **Type-safe**: Complete TypeScript coverage
+- **Context-aware**: Uses provide/inject for component communication
+
+## 🔧 Key Directories Explained
+
+### `/src/components/`
+Contains all UI components. Each component is a **complete suite** with multiple sub-components:
+- **accordion**: Collapsible content panels
+- **collapsible**: Basic show/hide functionality
+- **config-provider**: Global configuration context
+- **portal**: Render content in different DOM locations
+- **primitive**: Base component for building others
+- **slot**: Slot composition utilities
+
+### `/src/composables/`
+Vue 3 composables providing reusable logic:
+- `use-context.ts` - Provide/inject context management
+- `use-v-model.ts` - v-model binding utilities
+- `use-arrow-navigation.ts` - Keyboard navigation
+- `use-focus-scope.ts` - Focus management
+- `use-dismissable-layer.ts` - Click-outside detection
+- `use-presence.ts` - Enter/exit animations
+
+### `/src/shared/`
+Common utilities and helpers:
+- `common.ts` - General utility functions
+- `vue.ts` - Vue-specific helpers
+- `dom.ts` - DOM manipulation utilities
+- `focus.ts` - Focus management helpers
+- `event.ts` - Event handling utilities
+
+### `/src/types/`
+Global TypeScript type definitions for the entire library.
+
+## 🛠️ Development Workflow
+
+### Available Scripts
+```bash
+# Development
+pnpm dev          # Build library in watch mode
+pnpm play         # Start playground development server
+
+# Building
+pnpm build        # Build production bundle
+pnpm typecheck    # TypeScript type checking
+
+# Testing & Quality
+pnpm test         # Run test suite
+pnpm lint         # ESLint code formatting
+
+# Release
+pnpm release      # Version bumping and release
+pnpm publish-pkg  # Publish to npm
+```
+
+### Package Export Structure
+The library exports components in multiple ways:
+- **Main export**: `import { AccordionRoot } from 'soybean-primitives'`
+- **Individual exports**: `import { AccordionRoot } from 'soybean-primitives/accordion'`
+- **Composables**: `import { useContext } from 'soybean-primitives/composables'`
+- **Types**: `import type { ClassValueProp } from 'soybean-primitives'`
+
+## 🎯 Code Patterns
+
+### Component Structure Pattern
+```vue
+<script setup lang="ts">
+// 1. Imports (Vue, composables, types)
+// 2. Props/Emits definitions
+// 3. Template refs
+// 4. Composable usage
+// 5. Context provision/consumption
+</script>
+
+<template>
+  <!-- Semantic HTML with data attributes for styling hooks -->
+</template>
+```
+
+### Type Definition Pattern
+```typescript
+// Props interface (extends ClassValueProp)
+export interface ComponentProps extends ClassValueProp {
+  // JSDoc with @defaultValue
+}
+
+// Emits type
+export type ComponentEmits = {
+  'update:modelValue': [value: string];
+};
+
+// Context interface
+export interface ComponentContextParams {
+  // Context state and methods
+}
+```
+
+## 🔍 Quick Navigation Tips
+
+- **Adding new component**: Follow existing component structure in `/src/components/`
+- **Need composable**: Check `/src/composables/` first, then create new one
+- **Type definitions**: Global types in `/src/types/`, component types in component's `types.ts`
+- **Utilities**: Add to appropriate file in `/src/shared/`
+- **Testing**: Component tests should test accessibility, keyboard navigation, and core functionality
+
+## 🚀 Development Focus Areas
+
+1. **Accessibility**: ARIA attributes, keyboard navigation, focus management
+2. **Type Safety**: Complete TypeScript coverage with strict mode
+3. **Performance**: Efficient composables, computed properties, minimal re-renders
+4. **Developer Experience**: Clear APIs, good TypeScript intellisense, helpful error messages
+5. **Customization**: CSS variables, data attributes, unstyled components
+
+This repository structure supports building robust, accessible, and highly customizable UI components for Vue 3 applications.
