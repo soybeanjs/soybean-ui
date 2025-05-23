@@ -1,157 +1,119 @@
-import { computed, nextTick, ref, watch } from 'vue';
-import { isClient, isIOS, tryOnBeforeUnmount } from '../shared';
-import type { Fn, ScrollBodyOption } from '../types';
-import { useConfigProvider } from '../components/config-provider/context';
-import { useSharedComposable } from './use-shared-composable';
+import { isClient, isIOS } from '../shared';
 
-const useBodyLockStackCount = useSharedComposable(() => {
-  const map = ref<Map<string, boolean>>(new Map());
-  const initialOverflow = ref<string | undefined>();
+const DATA_SCROLL_LOCK = 'data-scroll-lock';
 
-  const locked = computed(() => Array.from(map.value.values()).some(Boolean));
-
-  const context = useConfigProvider();
-
-  let stopTouchMoveListener: Fn | null = null;
-
-  function resetBodyStyle() {
-    document.body.style.paddingRight = '';
-    document.body.style.marginRight = '';
-    document.body.style.pointerEvents = '';
-    document.body.style.removeProperty('--scrollbar-width');
-    document.body.style.overflow = initialOverflow.value ?? '';
-
-    if (isIOS()) {
-      stopTouchMoveListener?.();
-    }
-
-    initialOverflow.value = undefined;
+export function useBodyScrollLock(): () => void {
+  if (!isClient()) {
+    return () => {};
   }
 
-  async function handleLocked() {
-    if (initialOverflow.value === undefined) {
-      initialOverflow.value = document.body.style.overflow;
-    }
-
-    const verticalScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const defaultConfig = { padding: verticalScrollbarWidth, margin: 0 };
-
-    let config: ScrollBodyOption = defaultConfig;
-    if (context.scrollBody?.value) {
-      if (typeof context.scrollBody.value === 'object') {
-        const { padding, margin } = context.scrollBody.value;
-        config = {
-          ...defaultConfig,
-          padding: padding === true ? verticalScrollbarWidth : padding,
-          margin: margin === true ? verticalScrollbarWidth : margin
-        };
-      }
-    } else {
-      config = { padding: 0, margin: 0 };
-    }
-
-    if (verticalScrollbarWidth > 0) {
-      document.body.style.paddingRight = addPx(config.padding);
-      document.body.style.marginRight = addPx(config.margin);
-      document.body.style.setProperty('--scrollbar-width', `${verticalScrollbarWidth}px`);
-      document.body.style.overflow = 'hidden';
-    }
-
-    if (isIOS()) {
-      document.addEventListener('touchmove', preventDefault, { passive: false });
-      stopTouchMoveListener = () => {
-        document.removeEventListener('touchmove', preventDefault);
-      };
-    }
-
-    // let dismissableLayer set previous pointerEvent first
-    await nextTick();
-
-    document.body.style.pointerEvents = 'none';
-    document.body.style.overflow = 'hidden';
+  const body = document.body;
+  if (body.hasAttribute(DATA_SCROLL_LOCK)) {
+    return () => {};
   }
 
-  watch(
-    locked,
-    (val, oldVal) => {
-      if (!isClient) return;
+  const html = document.documentElement;
+  const bodyStyle = body.style;
 
-      if (!val) {
-        if (oldVal) {
-          resetBodyStyle();
-        }
-        return;
-      }
+  const originalStyles = {
+    overflow: bodyStyle.overflow,
+    overflowX: bodyStyle.overflowX,
+    overflowY: bodyStyle.overflowY,
+    position: bodyStyle.position,
+    top: bodyStyle.top,
+    left: bodyStyle.left,
+    right: bodyStyle.right,
+    bottom: bodyStyle.bottom,
+    scrollBehavior: html.style.scrollBehavior
+  };
 
-      handleLocked();
-    },
-    { immediate: true, flush: 'sync' }
-  );
+  const initialOverflow = bodyStyle.overflow;
+  const scrollY = window.scrollY;
 
-  return map;
-});
+  bodyStyle.top = `-${scrollY}px`;
+  bodyStyle.overflowX = 'hidden';
+  html.style.scrollBehavior = 'auto';
 
-function addPx(value?: number | string | undefined | boolean) {
-  return typeof value === 'number' ? `${value}px` : String(value);
+  if (body.scrollHeight > window.innerHeight) {
+    bodyStyle.setProperty('overflow-y', 'scroll', 'important');
+  }
+
+  bodyStyle.position = 'fixed';
+  bodyStyle.left = '0';
+  bodyStyle.right = '0';
+  bodyStyle.bottom = '0';
+  body.setAttribute(DATA_SCROLL_LOCK, 'true');
+
+  let stopTouchMoveListener: (() => void) | undefined;
+
+  if (isIOS()) {
+    function onTouchmove(e: TouchEvent) {
+      preventDefault(e);
+    }
+
+    document.addEventListener('touchmove', onTouchmove, {
+      passive: false
+    });
+
+    stopTouchMoveListener = () => {
+      document.removeEventListener('touchmove', onTouchmove);
+    };
+  }
+
+  const unlock = () => {
+    bodyStyle.overflow = initialOverflow ?? '';
+    body.removeAttribute(DATA_SCROLL_LOCK);
+
+    bodyStyle.overflowY = originalStyles.overflowY;
+    bodyStyle.position = originalStyles.position;
+    bodyStyle.left = originalStyles.left;
+    bodyStyle.right = originalStyles.right;
+    bodyStyle.bottom = originalStyles.bottom;
+
+    bodyStyle.top = originalStyles.top;
+    window.scrollTo(0, scrollY);
+    html.style.scrollBehavior = originalStyles.scrollBehavior;
+
+    stopTouchMoveListener?.();
+  };
+
+  return unlock;
 }
 
-export function useBodyScrollLock(initialState?: boolean | undefined) {
-  const id = Math.random().toString(36).substring(2, 7); // just simple random id, need not to be cryptographically secure
-  const map = useBodyLockStackCount();
-
-  map.value.set(id, initialState ?? false);
-
-  const locked = computed({
-    get: () => map.value.get(id) ?? false,
-    set: value => map.value.set(id, value)
-  });
-
-  tryOnBeforeUnmount(() => {
-    map.value.delete(id);
-  });
-
-  return locked;
-}
-
-// Adapt from https://github.com/vueuse/vueuse/blob/main/packages/core/useScrollLock/index.ts#L28C10-L28C24
-function checkOverflowScroll(ele: Element): boolean {
-  const style = window.getComputedStyle(ele);
-  if (
-    style.overflowX === 'scroll' ||
-    style.overflowY === 'scroll' ||
-    (style.overflowX === 'auto' && ele.clientWidth < ele.scrollWidth) ||
-    (style.overflowY === 'auto' && ele.clientHeight < ele.scrollHeight)
-  ) {
-    return true;
-  }
-
-  const parent = ele.parentNode;
-
-  if (!(parent instanceof Element) || parent.tagName === 'BODY') {
-    return false;
-  }
-
-  return checkOverflowScroll(parent);
-}
-
-function preventDefault(rawEvent: TouchEvent): boolean {
-  const e = rawEvent || window.event;
-
-  const target = e.target as Element;
+function preventDefault(event: TouchEvent): boolean {
+  const target = event.target as Element;
 
   // Do not prevent if element or parentNodes have overflow: scroll set.
-  if (target instanceof Element && checkOverflowScroll(target)) {
+  if (checkOverflowScroll(target)) {
     return false;
   }
 
   // Do not prevent if the event has more than one touch (usually meaning this is a multi touch gesture like pinch to zoom).
-  if (e.touches.length > 1) {
+  if (event.touches.length > 1) {
     return true;
   }
 
-  if (e.preventDefault && e.cancelable) {
-    e.preventDefault();
+  if (event.preventDefault) {
+    event.preventDefault();
   }
 
   return false;
+}
+
+function checkOverflowScroll(el: Element): boolean {
+  const style = window.getComputedStyle(el);
+  if (
+    style.overflowX === 'scroll' ||
+    style.overflowY === 'scroll' ||
+    (style.overflowX === 'auto' && el.clientWidth < el.scrollWidth) ||
+    (style.overflowY === 'auto' && el.clientHeight < el.scrollHeight)
+  ) {
+    return true;
+  }
+
+  const parent = el.parentNode as Element;
+
+  if (!parent || parent.tagName === 'BODY') return false;
+
+  return checkOverflowScroll(parent);
 }
