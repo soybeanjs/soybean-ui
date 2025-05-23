@@ -2,6 +2,7 @@
 import { accordionVariants } from '@soybean-ui/variants';
 import { ChevronDown } from 'lucide-vue-next';
 import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from '../../../src';
+import SectionWrapper from '../components/section-wrapper.vue';
 
 const { root, item, header, trigger, triggerIcon, content } = accordionVariants();
 
@@ -25,8 +26,7 @@ const accordionItems = [
 </script>
 
 <template>
-  <div class="flex flex-col gap-4">
-    <h3 class="text-lg font-bold">Accordion</h3>
+  <SectionWrapper title="Accordion">
     <AccordionRoot
       :class="root()"
       class="w-100 rd-lg shadow-sm border px-4 py-2"
@@ -50,5 +50,5 @@ const accordionItems = [
         </AccordionItem>
       </template>
     </AccordionRoot>
-  </div>
+  </SectionWrapper>
 </template>

@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '../../../src/components/collapsible';
+import SectionWrapper from '../components/section-wrapper.vue';
 
 const open = ref(false);
 </script>
 
 <template>
-  <div>
-    <h2 class="text-xl font-bold">Collapsible</h2>
-
+  <SectionWrapper title="Collapsible">
     <CollapsibleRoot v-model:open="open" class="collapsible">
       <CollapsibleTrigger class="trigger">{{ open ? 'Close' : 'Open' }} Content</CollapsibleTrigger>
 
@@ -22,7 +21,7 @@ const open = ref(false);
         </div>
       </CollapsibleContent>
     </CollapsibleRoot>
-  </div>
+  </SectionWrapper>
 </template>
 
 <style scoped>
