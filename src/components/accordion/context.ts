@@ -11,15 +11,14 @@ export const [provideAccordionRootContext, useAccordionRootContext] = useContext
 export const [provideAccordionItemContext, useAccordionItemContext] = useContext(
   'AccordionItem',
   (params: AccordionItemContextParams) => {
-    const { elRef: triggerElement, setElRef: setTriggerElement } = useForwardElement();
-
     const { open, disabled } = params;
 
-    const triggerId = ref('');
+    const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
 
+    const triggerId = ref('');
     const initTriggerId = () => {
       if (triggerId.value) return;
-      triggerId.value = `accordion-item-trigger-${useId()}`;
+      triggerId.value = `soybean-accordion-trigger-${useId()}`;
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));

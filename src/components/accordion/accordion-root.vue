@@ -10,7 +10,7 @@ const props = defineProps<AccordionRootProps<T, S>>();
 
 const emit = defineEmits<AccordionRootEmits>();
 
-const rootElement = useTemplateRef('root');
+const rootElement = useTemplateRef('rootRef');
 
 const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, emit);
 
@@ -27,7 +27,7 @@ provideAccordionRootContext({
 </script>
 
 <template>
-  <div ref="root" :class="props.class">
+  <div ref="rootRef" :class="props.class">
     <slot :model-value="modelValue as T" />
   </div>
 </template>
