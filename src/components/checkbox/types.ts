@@ -1,13 +1,20 @@
 import type { Ref } from 'vue';
-import type { AcceptableValue, ClassValueProp, DataOrientation, Direction } from '../../types';
+import type {
+  AcceptableValue,
+  ClassValueProp,
+  DataOrientation,
+  Direction,
+  ForceMountProps,
+  FormFieldProps
+} from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { CheckedState } from './shared';
 
-export interface CheckboxRootProps extends ClassValueProp, PrimitiveProps {
+export interface CheckboxRootProps extends ClassValueProp, FormFieldProps {
+  /** The controlled value of the checkbox. Can be bound with v-model. */
+  modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
   defaultValue?: CheckedState;
-  /** The controlled value of the checkbox. Can be binded with v-model. */
-  modelValue?: CheckedState;
   /**
    * When `true`, prevents the user from interacting with the checkbox
    *
@@ -22,14 +29,6 @@ export interface CheckboxRootProps extends ClassValueProp, PrimitiveProps {
   value?: AcceptableValue;
   /** Id of the element */
   id?: string;
-  /** The name of the checkbox. Submitted with its owning form as part of a name/value pair. */
-  name?: string;
-  /**
-   * When `true`, indicates that the user must check the checkbox before the owning form can be submitted.
-   *
-   * @defaultValue false
-   */
-  required?: boolean;
 }
 
 export type CheckboxRootEmits = {
@@ -37,23 +36,12 @@ export type CheckboxRootEmits = {
   'update:modelValue': [value: CheckedState];
 };
 
-export interface CheckboxIndicatorProps extends ClassValueProp, PrimitiveProps {
-  /**
-   * Used to force mounting when more control is needed. Useful when controlling animation with Vue animation libraries.
-   *
-   * @defaultValue false
-   */
-  forceMount?: boolean;
-}
+export interface CheckboxIndicatorProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
 
-export type CheckboxIndicatorEmits = {
-  // No emits for indicator component
-};
-
-export interface CheckboxGroupRootProps<T = AcceptableValue> extends ClassValueProp, PrimitiveProps {
+export interface CheckboxGroupRootProps<T = AcceptableValue> extends ClassValueProp, FormFieldProps {
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
   defaultValue?: T[];
-  /** The controlled value of the checkbox. Can be binded with v-model. */
+  /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
   /**
    * When `false`, navigating through the items using arrow keys will be disabled.
