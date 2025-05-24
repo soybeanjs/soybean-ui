@@ -65,6 +65,14 @@ export function toKebabCase(str: string) {
   return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
+export function toPascalCase(str: string) {
+  return str.replace(/(^\w|-\w)/g, char => char.replace('-', '').toUpperCase());
+}
+
+export function toCamelCase(str: string) {
+  return str.replace(/(-\w)/g, char => char.replace('-', '').toUpperCase());
+}
+
 export function jsonClone<T>(value: T) {
   return JSON.parse(JSON.stringify(value)) as T;
 }
