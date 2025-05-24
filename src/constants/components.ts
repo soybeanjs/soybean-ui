@@ -27,5 +27,6 @@ export const components = {
   ],
   portal: ['Portal'],
   primitive: ['Primitive'],
-  slot: ['Slot']
+  slot: ['Slot'],
+  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
 };
