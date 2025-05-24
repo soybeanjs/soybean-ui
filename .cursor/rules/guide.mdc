@@ -1,0 +1,517 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Soybean Primitives - Complete Development Guide
+
+You are an expert Vue 3 + TypeScript developer working on the **Soybean Primitives** component library. This comprehensive guide will help you understand the project structure, coding standards, and development patterns to build consistent, accessible, and high-quality headless UI components.
+
+## 🏗️ Project Overview
+
+**Soybean Primitives** is a collection of primitive headless UI components for Vue 3, designed to be lightweight, accessible, and highly customizable.
+
+### Core Features
+- **Headless Design**: Zero built-in styling, maximum customization freedom
+- **Type Safety**: Complete TypeScript support with strict mode
+- **Accessibility**: Full ARIA support and keyboard navigation
+- **Composable**: Built with Vue 3 Composition API
+- **Context-aware**: Uses provide/inject for component communication
+
+### Technology Stack
+- **Framework**: Vue 3 with Composition API (`<script setup>`)
+- **Language**: TypeScript (strict mode)
+- **Build Tools**: Vite + tsdown
+- **Styling**: UnoCSS + CSS Variables
+- **Testing**: Vitest
+- **Package Manager**: pnpm
+- **Architecture**: Headless UI Components (no built-in styling)
+
+## 📁 Repository Structure
+
+```
+soybean-primitives/
+├── 📦 src/                           # Source code
+│   ├── 🧩 components/                # Component library
+│   │   ├── accordion/                # Accordion component suite
+│   │   ├── alert-dialog/             # Alert dialog component
+│   │   ├── arrow/                    # Arrow component
+│   │   ├── aspect-ratio/             # Aspect ratio component
+│   │   ├── collapsible/              # Collapsible component
+│   │   ├── config-provider/          # Configuration provider
+│   │   ├── dialog/                   # Dialog component
+│   │   ├── portal/                   # Portal/Teleport component
+│   │   ├── primitive/                # Base primitive component
+│   │   └── slot/                     # Slot utilities
+│   ├── 🔧 composables/               # Vue 3 composables
+│   │   ├── use-context.ts            # Provide/inject context management
+│   │   ├── use-v-model.ts            # v-model binding utilities
+│   │   ├── use-arrow-navigation.ts   # Keyboard navigation
+│   │   ├── use-focus-scope.ts        # Focus management
+│   │   ├── use-dismissable-layer.ts  # Click-outside detection
+│   │   ├── use-presence.ts           # Enter/exit animations
+│   │   └── use-*.ts                  # Other reusable composables
+│   ├── 🎨 shared/                    # Shared utilities
+│   │   ├── common.ts                 # General utility functions
+│   │   ├── vue.ts                    # Vue-specific helpers
+│   │   ├── dom.ts                    # DOM manipulation utilities
+│   │   ├── focus.ts                  # Focus management helpers
+│   │   └── event.ts                  # Event handling utilities
+│   ├── 📝 types/                     # TypeScript type definitions
+│   │   ├── index.ts                  # Main export entry
+│   │   ├── common.ts                 # Basic common types
+│   │   ├── style.ts                  # Style-related types
+│   │   ├── component.ts              # Component-related types
+│   │   ├── event.ts                  # Event-related types
+│   │   └── props.ts                  # Feature Props types
+│   ├── 🔢 constants/                 # Global constants
+│   ├── 🔌 resolver/                  # Component resolver
+│   ├── 🚀 nuxt/                      # Nuxt integration
+│   └── index.ts                      # Main export entry
+├── 🎮 playground/                    # Development playground
+│   └── src/examples/                 # Component usage examples
+├── 📚 typings/                       # Global type declarations
+├── ⚙️ Configuration files
+│   ├── package.json                  # Project metadata & dependencies
+│   ├── tsconfig.json                 # TypeScript configuration
+│   ├── vite.config.ts               # Vite configuration
+│   ├── vitest.config.ts             # Test configuration
+│   ├── uno.config.ts                # UnoCSS configuration
+│   ├── tsdown.config.ts             # Build configuration
+│   └── eslint.config.js             # ESLint configuration
+└── 📄 Documentation
+    ├── README.md                     # Project documentation
+    ├── CHANGELOG.md                  # Version changelog
+    └── cursorrule.md                 # This development guide
+```
+
+## 🧩 Component Architecture
+
+Each component follows a **standardized five-file structure**:
+
+```
+src/components/{component-name}/
+├── index.ts                    # Export entry point
+├── types.ts                    # TypeScript type definitions
+├── context.ts                  # Component context management
+├── shared.ts                   # Shared constants and utilities
+├── {component-name}-root.vue   # Root component
+├── {component-name}-item.vue   # Sub-components (if needed)
+└── {component-name}-xxx.vue    # Additional sub-components
+```
+
+### Component Design Principles
+- **Headless**: No built-in styling, maximum customization
+- **Accessible**: Full ARIA support and keyboard navigation
+- **Composable**: Built with Vue 3 Composition API
+- **Type-safe**: Complete TypeScript coverage
+- **Context-aware**: Uses provide/inject for component communication
+
+## 📝 Naming Conventions
+
+Follow these naming patterns consistently:
+
+- **Files**: Use `kebab-case` (e.g., `accordion-root.vue`, `types.ts`)
+- **Components**: Use `PascalCase` for exports (e.g., `AccordionRoot`)
+- **Variables**: Use `camelCase` with descriptive names (e.g., `isLoading`, `hasError`)
+- **Types**: Use `PascalCase` with clear suffixes (e.g., `ComponentRootProps`, `ComponentRootEmits`)
+- **Constants**: Use `UPPER_SNAKE_CASE` (e.g., `DEFAULT_ORIENTATION`)
+
+## 🏗️ Component Development Templates
+
+### 1. `index.ts` Export Template
+```typescript
+import ComponentRoot from './component-root.vue';
+import ComponentItem from './component-item.vue';
+import ComponentTrigger from './component-trigger.vue';
+
+export { ComponentRoot, ComponentItem, ComponentTrigger };
+
+export type {
+  ComponentRootProps,
+  ComponentRootEmits,
+  ComponentItemProps,
+  ComponentTriggerProps
+} from './types';
+```
+
+### 2. `types.ts` Type Definition Template
+```typescript
+import type { ComputedRef, Ref } from 'vue';
+import type { ClassValueProp, DataOrientation } from '../../types';
+
+export interface ComponentRootProps extends ClassValueProp {
+  /**
+   * Brief description of the prop
+   * @defaultValue 'default-value'
+   */
+  orientation?: DataOrientation;
+  /**
+   * Whether the component is disabled
+   * @defaultValue false
+   */
+  disabled?: boolean;
+}
+
+export type ComponentRootEmits = {
+  'update:modelValue': [value: string];
+};
+
+export interface ComponentRootContextParams
+  extends PropsToContext<ComponentRootProps, 'disabled' | 'orientation'> {
+  rootElement: Ref<HTMLElement | null | undefined>;
+}
+
+export interface ComponentItemContextParams extends PropsToContext<ComponentItemProps, 'value'> {
+  open: ComputedRef<boolean>;
+  disabled: ComputedRef<boolean>;
+}
+```
+
+### 3. `context.ts` Context Management Template
+```typescript
+import { computed, ref, useId } from 'vue';
+import { useContext, useForwardElement } from '../../composables';
+import { getOpenState } from '../../shared';
+import type { OpenState } from '../../types';
+import type { ComponentRootContextParams, ComponentItemContextParams } from './types';
+
+export const [provideComponentRootContext, useComponentRootContext] = useContext(
+  'ComponentRoot',
+  (params: ComponentRootContextParams) => params
+);
+
+export const [provideComponentItemContext, useComponentItemContext] = useContext(
+  'ComponentItem',
+  (params: ComponentItemContextParams) => {
+    const { open, disabled } = params;
+
+    const [triggerElement, setTriggerElement] = useForwardElement();
+
+    const triggerId = ref('');
+    const initTriggerId = () => {
+      if (triggerId.value) return;
+      triggerId.value = `soybean-component-item-${useId()}`;
+    };
+
+    const dataDisabled = computed(() => (disabled.value ? '' : undefined));
+    const dataState = computed<OpenState>(() => getOpenState(open.value));
+
+    return {
+      ...params,
+      triggerElement,
+      setTriggerElement,
+      triggerId,
+      initTriggerId,
+      dataDisabled,
+      dataState
+    };
+  }
+);
+```
+
+### 4. Vue Component Template
+```vue
+<script setup lang="ts" generic="T extends AcceptableValue | AcceptableValue[], S extends SingleOrMultipleType">
+import { useTemplateRef } from 'vue';
+import { useDirection, useSingleOrMultipleValue } from '../../composables';
+import { transformPropsToContext } from '../../shared';
+import type { AcceptableValue, SingleOrMultipleType } from '../../types';
+import { provideComponentRootContext } from './context';
+import type { ComponentRootEmits, ComponentRootProps } from './types';
+
+const props = withDefaults(defineProps<ComponentRootProps<T, S>>(), {
+  disabled: false,
+  orientation: 'vertical',
+  collapsible: false,
+  unmountOnHide: true
+});
+
+const emit = defineEmits<ComponentRootEmits>();
+
+const rootElement = useTemplateRef('rootRef');
+
+// Composables
+const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, emit);
+const direction = useDirection(() => props.dir);
+
+// Provide context
+provideComponentRootContext({
+  rootElement,
+  modelValue,
+  isSingle,
+  toggleModelValue,
+  direction,
+  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide'])
+});
+</script>
+
+<template>
+  <div ref="rootRef" :class="props.class">
+    <slot :model-value="modelValue" />
+  </div>
+</template>
+```
+
+### 5. `shared.ts` Constants Template
+```typescript
+export const componentContentCssVars = {
+  width: '--soybean-component-content-width',
+  height: '--soybean-component-content-height'
+};
+
+export const COMPONENT_CONSTANTS = {
+  DEFAULT_ORIENTATION: 'vertical',
+  DEFAULT_DISABLED: false
+} as const;
+```
+
+## 🔧 Core Composables & Utilities
+
+### 1. Context Management (`useContext`)
+```typescript
+// Creating context
+const [provideContext, useContext] = useContext('ComponentName', (params) => {
+  // Context logic
+  return { ...params, additionalState };
+});
+
+// Providing context
+provideContext({ /* parameters */ });
+
+// Consuming context
+const context = useContext('ConsumerName'); // with error checking
+```
+
+### 2. Props to Context Transformation
+```typescript
+// Transform props to reactive context
+const contextProps = transformPropsToContext(props, ['disabled', 'orientation']);
+```
+
+### 3. Element Forwarding
+```typescript
+const [element, setElement] = useForwardElement();
+// Used for forwarding DOM references to child components
+```
+
+### 4. Single/Multiple Value Management
+```typescript
+const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, emit);
+```
+
+## 🎨 Styling System
+
+### CSS Variables Pattern
+```typescript
+// shared.ts
+export const componentCssVars = {
+  width: '--soybean-component-width',
+  height: '--soybean-component-height'
+};
+```
+
+### Data Attributes Pattern
+```vue
+<template>
+  <div
+    :data-state="dataState"
+    :data-disabled="disabled ? '' : undefined"
+    :data-orientation="orientation"
+    :class="props.class"
+  >
+    <!-- Content -->
+  </div>
+</template>
+```
+
+## ♿ Accessibility Requirements
+
+### 1. ARIA Attributes
+```vue
+<template>
+  <button
+    :aria-expanded="open"
+    :aria-disabled="disabled"
+    :aria-controls="contentId"
+    :id="triggerId"
+    role="button"
+  >
+    <!-- Trigger content -->
+  </button>
+</template>
+```
+
+### 2. Keyboard Navigation
+```typescript
+// Use arrow navigation composable
+const { handleArrowNavigation } = useArrowNavigation({
+  orientation: 'vertical',
+  loop: true
+});
+```
+
+### 3. Focus Management
+```typescript
+// Use focus scope composable
+const { trapFocus, releaseFocus } = useFocusScope();
+```
+
+## 📦 Export Strategy
+
+### Main Export (`src/index.ts`)
+```typescript
+export * from './components/accordion';
+export * from './components/collapsible';
+export * from './components/dialog';
+export type * from './types';
+```
+
+### Component Export (`src/components/[component]/index.ts`)
+```typescript
+export { ComponentRoot, ComponentItem, ComponentTrigger };
+export type { ComponentRootProps, ComponentRootEmits };
+```
+
+## 🔍 Type System Architecture
+
+Types are organized by functionality:
+
+- **`common.ts`**: Basic data types, orientations, functions
+- **`style.ts`**: CSS classes and styling types
+- **`component.ts`**: Component logic, props transformation, single/multiple patterns
+- **`event.ts`**: Custom events and event handlers
+- **`props.ts`**: Feature-specific prop interfaces
+
+## 📋 Strict Requirements
+
+### Type Safety
+- ALL props, emits, and context MUST have explicit TypeScript types
+- Always extend `ClassValueProp` for component props
+- Use JSDoc comments with `@defaultValue` for all optional props
+- Prefer interfaces over types for extensibility
+
+### Vue 3 Best Practices
+- ALWAYS use `<script setup>` syntax
+- Use `defineProps<T>()` and `defineEmits<T>()` with TypeScript
+- Use `useTemplateRef()` instead of ref for template references
+- Use `computed()` for derived state
+- Use `transformPropsToContext()` helper for context props
+
+### Context Management
+- Use `useContext()` for provide/inject patterns
+- Name context functions as `provide{ComponentName}Context` and `use{ComponentName}Context`
+- Include component name in useContext for error handling
+- Use `useForwardElement()` for DOM reference forwarding
+
+### Performance
+- Use `computed()` for expensive calculations
+- Avoid inline functions in templates
+- Use `v-if` vs `v-show` appropriately
+- Implement proper event handling patterns
+
+### Import Organization
+1. Vue imports first
+2. Composables and utilities
+3. Local component imports
+4. Type imports (use `import type`)
+5. Constants and shared resources
+
+## 🛠️ Development Workflow
+
+### Available Commands
+```bash
+# Development
+pnpm dev          # Build library in watch mode
+pnpm play         # Start playground development server
+
+# Building
+pnpm build        # Build production bundle
+pnpm typecheck    # TypeScript type checking
+
+# Testing & Quality
+pnpm test         # Run test suite
+pnpm lint         # ESLint code formatting
+
+# Release
+pnpm release      # Version bumping and release
+pnpm publish-pkg  # Publish to npm
+```
+
+### New Component Development Process
+1. **Create component directory structure**
+   ```bash
+   mkdir src/components/new-component
+   touch src/components/new-component/{index,types,context,shared}.ts
+   touch src/components/new-component/new-component-root.vue
+   ```
+
+2. **Implement files following templates**
+   - Use the provided templates above
+   - Follow naming conventions
+   - Implement proper TypeScript types
+
+3. **Add to main export**
+   ```typescript
+   // src/index.ts
+   export * from './components/new-component';
+   ```
+
+4. **Create playground example**
+   ```bash
+   touch playground/src/examples/new-component.vue
+   ```
+
+5. **Test and validate**
+   ```bash
+   pnpm typecheck
+   pnpm play
+   ```
+
+## ✅ Development Checklist
+
+### New Component Checklist
+- [ ] Follow standard directory structure (5 files)
+- [ ] Implement complete TypeScript types
+- [ ] Extend `ClassValueProp` interface
+- [ ] Use JSDoc comments with `@defaultValue`
+- [ ] Implement provide/inject context
+- [ ] Add ARIA attributes support
+- [ ] Support keyboard navigation
+- [ ] Use `data-*` attributes for state communication
+- [ ] Create playground example
+- [ ] Pass TypeScript type checking
+- [ ] Add to main export file
+
+### Code Quality Checklist
+- [ ] Use functional programming patterns
+- [ ] Avoid inline functions in templates
+- [ ] Correct import order
+- [ ] Descriptive variable naming
+- [ ] Defensive programming for optional props
+- [ ] Error handling and validation
+
+### Accessibility Checklist
+- [ ] Proper ARIA attributes
+- [ ] Semantic HTML elements
+- [ ] Keyboard navigation support
+- [ ] Focus management
+- [ ] Screen reader compatibility
+
+## 🚀 Development Focus Areas
+
+1. **Accessibility**: ARIA attributes, keyboard navigation, focus management
+2. **Type Safety**: Complete TypeScript coverage with strict mode
+3. **Performance**: Efficient composables, computed properties, minimal re-renders
+4. **Developer Experience**: Clear APIs, good TypeScript intellisense, helpful error messages
+5. **Customization**: CSS variables, data attributes, unstyled components
+
+## 🧪 Testing Strategy
+
+### Test Focus Areas
+- **Accessibility**: ARIA attributes, keyboard navigation
+- **Core Functionality**: Component state management, event handling
+- **Type Safety**: TypeScript type checking
+- **Edge Cases**: Disabled states, error handling
+
+When developing components, always reference existing implementations like `accordion` for consistency and follow these patterns exactly. The goal is to create a cohesive, accessible, and developer-friendly component library.
