@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AccordionExample from './examples/accordion.vue';
 import AlertDialogExample from './examples/alert-dialog.vue';
+import ArrowExample from './examples/arrow.vue';
 import DialogExample from './examples/dialog.vue';
 </script>
 
@@ -10,6 +11,7 @@ import DialogExample from './examples/dialog.vue';
     <div class="flex flex-col gap-4">
       <AccordionExample />
       <AlertDialogExample />
+      <ArrowExample />
       <DialogExample />
     </div>
   </div>
