@@ -10,6 +10,8 @@ export const components = {
     'AlertDialogDescription',
     'AlertDialogCancel'
   ],
+  arrow: ['Arrow'],
+  aspectRatio: ['AspectRatio'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   configProvider: ['ConfigProvider'],
   dialog: [
