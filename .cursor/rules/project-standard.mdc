@@ -91,7 +91,7 @@ export const [provideComponentRootContext, useComponentRootContext] = useContext
 export const [provideComponentItemContext, useComponentItemContext] = useContext(
   'ComponentItem',
   (params: ComponentItemContextParams) => {
-    const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
+    const [triggerElement, setElementRef] = useForwardElement();
     const triggerId = ref('');
     const initTriggerId = () => {
       if(triggerId.value) return;

@@ -7,8 +7,8 @@ import type { DialogRootContextParams } from './types';
 export const [provideDialogRootContext, useDialogRootContext] = useContext(
   'DialogRoot',
   (params: DialogRootContextParams) => {
-    const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
-    const { elementRef: contentElement, setElementRef: setContentElement } = useForwardElement();
+    const [triggerElement, setTriggerElement] = useForwardElement();
+    const [contentElement, setContentElement] = useForwardElement();
 
     const { open } = params;
 

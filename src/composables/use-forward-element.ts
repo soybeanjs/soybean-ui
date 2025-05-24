@@ -15,8 +15,5 @@ export function useForwardElement() {
     elementRef.value = node;
   }
 
-  return {
-    elementRef,
-    setElementRef
-  };
+  return [elementRef, setElementRef] as const;
 }

@@ -5,7 +5,7 @@ import { useForwardElement } from './use-forward-element';
 /** Expose the element ref to the parent component. */
 export function useExposedElement() {
   const instance = getCurrentInstance();
-  const { elementRef, setElementRef } = useForwardElement();
+  const [elementRef, setElementRef] = useForwardElement();
 
   const setExposedElement = (nodeRef: VNodeRef) => {
     setElementRef(nodeRef);
@@ -15,8 +15,5 @@ export function useExposedElement() {
     }
   };
 
-  return {
-    elementRef,
-    setElementRef: setExposedElement
-  };
+  return [elementRef, setExposedElement] as const;
 }

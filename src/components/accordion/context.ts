@@ -14,7 +14,7 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
   (params: AccordionItemContextParams) => {
     const { open, disabled } = params;
 
-    const { elementRef: triggerElement, setElementRef: setTriggerElement } = useForwardElement();
+    const [triggerElement, setTriggerElement] = useForwardElement();
 
     const triggerId = ref('');
     const initTriggerId = () => {
