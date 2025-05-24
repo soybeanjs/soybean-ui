@@ -7,12 +7,14 @@ import type { VNodeRef } from '../types';
  *
  * @returns An object containing the element reference and a function to set the element reference.
  */
-export function useForwardElement() {
-  const elementRef = shallowRef<HTMLElement>();
+export function useForwardElement<T extends HTMLElement = HTMLElement>() {
+  const elementRef = shallowRef<T>();
 
   function setElementRef(nodeRef: VNodeRef) {
-    const node = getElFromTemplateRef(nodeRef);
-    elementRef.value = node;
+    const node = getElFromTemplateRef<T>(nodeRef);
+    if (node) {
+      elementRef.value = node;
+    }
   }
 
   return [elementRef, setElementRef] as const;
