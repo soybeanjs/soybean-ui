@@ -67,7 +67,10 @@
     "prepare": "simple-git-hooks",
     "publish-pkg": "pnpm publish --access public",
     "release": "soy release",
-    "test": "vitest",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest watch",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "update-pkg": "soy ncu"
   },
