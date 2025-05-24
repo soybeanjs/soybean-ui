@@ -1,5 +1,5 @@
 import type { FormFieldProps } from '../types';
-import { isArrayValue, isNonNullObject, isPrimitive } from './value';
+import { isArrayValue, isNonNullObject, isPrimitive } from './guard';
 
 /**
  * 生成表单字段名称，支持嵌套结构
