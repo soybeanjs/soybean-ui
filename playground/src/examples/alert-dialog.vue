@@ -9,7 +9,7 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '../../../src/components/alert-dialog';
+} from '../../../src';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { content, description, overlay, title } = dialogVariants();

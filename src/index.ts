@@ -1,4 +1,6 @@
 export * from './components/accordion';
+export * from './components/alert-dialog';
+export * from './components/arrow';
 export * from './components/collapsible';
 export * from './components/config-provider';
 export * from './components/dialog';
@@ -6,4 +8,4 @@ export * from './components/portal';
 export * from './components/primitive';
 export * from './components/slot';
 
-export type { ClassValue, ClassValueProp, OpenState } from './types';
+export type * from './types';
