@@ -4,6 +4,10 @@ import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
 import type { DialogCloseProps } from './types';
 
+defineOptions({
+  name: 'DialogClose'
+});
+
 const props = withDefaults(defineProps<DialogCloseProps>(), {
   as: 'button'
 });

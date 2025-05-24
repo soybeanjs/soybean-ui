@@ -7,6 +7,10 @@ import { useAccordionItemContext, useAccordionRootContext } from './context';
 import { accordionContentCssVars } from './shared';
 import type { AccordionContentProps } from './types';
 
+defineOptions({
+  name: 'AccordionContent'
+});
+
 const props = defineProps<AccordionContentProps>();
 
 const { orientation } = useAccordionRootContext('AccordionContent');

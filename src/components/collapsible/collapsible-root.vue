@@ -5,6 +5,10 @@ import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext } from './context';
 import type { CollapsibleRootEmits, CollapsibleRootProps } from './types';
 
+defineOptions({
+  name: 'CollapsibleRoot'
+});
+
 const props = withDefaults(defineProps<CollapsibleRootProps>(), {
   open: undefined,
   defaultOpen: false,

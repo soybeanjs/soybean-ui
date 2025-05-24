@@ -6,6 +6,10 @@ import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
 import type { DialogContentImplEmits, DialogContentImplProps } from './types';
 
+defineOptions({
+  name: 'DialogContentImpl'
+});
+
 const props = defineProps<DialogContentImplProps>();
 
 const emit = defineEmits<DialogContentImplEmits>();

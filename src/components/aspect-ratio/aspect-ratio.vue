@@ -5,6 +5,7 @@ import { Primitive } from '../primitive';
 import type { AspectRatioProps } from './types';
 
 defineOptions({
+  name: 'AspectRatio',
   inheritAttrs: false
 });
 

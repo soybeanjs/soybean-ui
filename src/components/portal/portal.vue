@@ -2,6 +2,10 @@
 import { onMounted, ref } from 'vue';
 import type { PortalProps } from './types';
 
+defineOptions({
+  name: 'Portal'
+});
+
 withDefaults(defineProps<PortalProps>(), {
   to: 'body'
 });

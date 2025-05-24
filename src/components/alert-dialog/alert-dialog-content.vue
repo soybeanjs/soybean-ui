@@ -5,6 +5,10 @@ import { DialogContent } from '../dialog';
 import { provideAlertDialogContentContext } from './context';
 import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
 
+defineOptions({
+  name: 'AlertDialogContent'
+});
+
 const props = defineProps<AlertDialogContentProps>();
 
 const emit = defineEmits<AlertDialogContentEmits>();

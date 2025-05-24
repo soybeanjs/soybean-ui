@@ -4,6 +4,10 @@ import { useImageLoadingStatus } from '../../composables';
 import { useAvatarRootContext } from './context';
 import type { AvatarImageEmits, AvatarImageProps } from './types';
 
+defineOptions({
+  name: 'AvatarImage'
+});
+
 const props = defineProps<AvatarImageProps>();
 
 const emit = defineEmits<AvatarImageEmits>();

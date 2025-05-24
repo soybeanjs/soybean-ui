@@ -4,6 +4,10 @@ import { Primitive } from '../primitive';
 import { useCollapsibleRootContext } from './context';
 import type { CollapsibleTriggerProps } from './types';
 
+defineOptions({
+  name: 'CollapsibleTrigger'
+});
+
 const props = withDefaults(defineProps<CollapsibleTriggerProps>(), {
   as: 'button'
 });

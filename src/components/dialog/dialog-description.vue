@@ -2,6 +2,10 @@
 import { useDialogRootContext } from './context';
 import type { DialogDescriptionProps } from './types';
 
+defineOptions({
+  name: 'DialogDescription'
+});
+
 const props = defineProps<DialogDescriptionProps>();
 
 const { descriptionId } = useDialogRootContext('DialogDescription');

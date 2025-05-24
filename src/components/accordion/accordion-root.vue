@@ -6,6 +6,10 @@ import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { provideAccordionRootContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
+defineOptions({
+  name: 'AccordionRoot'
+});
+
 const props = withDefaults(defineProps<AccordionRootProps<T, S>>(), {
   disabled: false,
   orientation: 'vertical',

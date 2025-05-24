@@ -2,6 +2,10 @@
 import { useAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionHeaderProps } from './types';
 
+defineOptions({
+  name: 'AccordionHeader'
+});
+
 const props = defineProps<AccordionHeaderProps>();
 
 const { orientation } = useAccordionRootContext('AccordionHeader');

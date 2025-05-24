@@ -7,6 +7,10 @@ import { useCollapsibleRootContext } from './context';
 import { collapsibleContentCssVars } from './shared';
 import type { CollapsibleContentProps } from './types';
 
+defineOptions({
+  name: 'CollapsibleContent'
+});
+
 const props = defineProps<CollapsibleContentProps>();
 
 const [contentElement, setContentElement] = useForwardElement();

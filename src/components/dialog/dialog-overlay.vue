@@ -4,6 +4,10 @@ import { useBodyScrollLock, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import type { DialogOverlayProps } from './types';
 
+defineOptions({
+  name: 'DialogOverlay'
+});
+
 const props = defineProps<DialogOverlayProps>();
 
 const overlayElement = useTemplateRef('overlayRef');

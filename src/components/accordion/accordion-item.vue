@@ -6,6 +6,10 @@ import { getCollectionItemElements, getOpenFromSingleOrMultiple, transformPropsT
 import { provideAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionItemProps } from './types';
 
+defineOptions({
+  name: 'AccordionItem'
+});
+
 const props = defineProps<AccordionItemProps>();
 
 const {

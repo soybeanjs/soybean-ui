@@ -4,6 +4,7 @@ import { DialogRoot } from '../dialog';
 import type { AlertDialogRootEmits, AlertDialogRootProps } from './types';
 
 defineOptions({
+  name: 'AlertDialogRoot',
   inheritAttrs: false
 });
 

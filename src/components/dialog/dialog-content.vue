@@ -6,6 +6,10 @@ import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
 import type { DialogContentEmits, DialogContentProps } from './types';
 
+defineOptions({
+  name: 'DialogContent'
+});
+
 const props = defineProps<DialogContentProps>();
 const emit = defineEmits<DialogContentEmits>();
 

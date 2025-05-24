@@ -5,6 +5,7 @@ import { provideDialogRootContext } from './context';
 import type { DialogRootEmits, DialogRootProps } from './types';
 
 defineOptions({
+  name: 'DialogRoot',
   inheritAttrs: false
 });
 

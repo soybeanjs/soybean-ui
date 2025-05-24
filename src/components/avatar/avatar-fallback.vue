@@ -3,6 +3,10 @@ import { computed, ref, watchEffect } from 'vue';
 import { useAvatarRootContext } from './context';
 import type { AvatarFallbackProps } from './types';
 
+defineOptions({
+  name: 'AvatarFallback'
+});
+
 const props = defineProps<AvatarFallbackProps>();
 
 const { imageLoadingStatus } = useAvatarRootContext('AvatarFallback');

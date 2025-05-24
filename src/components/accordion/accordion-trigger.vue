@@ -4,6 +4,10 @@ import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { useAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionTriggerProps } from './types';
 
+defineOptions({
+  name: 'AccordionTrigger'
+});
+
 const props = defineProps<AccordionTriggerProps>();
 
 const { collapsible, orientation, toggleModelValue, isSingle } = useAccordionRootContext('AccordionTrigger');

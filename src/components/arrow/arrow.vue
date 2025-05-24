@@ -2,6 +2,10 @@
 import { Primitive } from '../primitive';
 import type { ArrowProps } from './types';
 
+defineOptions({
+  name: 'Arrow'
+});
+
 const props = withDefaults(defineProps<ArrowProps>(), {
   as: 'svg',
   width: 12,

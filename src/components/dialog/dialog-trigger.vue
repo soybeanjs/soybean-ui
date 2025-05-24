@@ -4,6 +4,10 @@ import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
 import type { DialogTriggerProps } from './types';
 
+defineOptions({
+  name: 'DialogTrigger'
+});
+
 const props = withDefaults(defineProps<DialogTriggerProps>(), {
   as: 'button'
 });

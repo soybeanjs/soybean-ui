@@ -2,6 +2,10 @@
 import { useDialogRootContext } from './context';
 import type { DialogTitleProps } from './types';
 
+defineOptions({
+  name: 'DialogTitle'
+});
+
 const props = defineProps<DialogTitleProps>();
 
 const { titleId } = useDialogRootContext('DialogTitle');
