@@ -3,6 +3,7 @@ import AccordionExample from './examples/accordion.vue';
 import AlertDialogExample from './examples/alert-dialog.vue';
 import ArrowExample from './examples/arrow.vue';
 import AspectRatioExample from './examples/aspect-ratio.vue';
+import AvatarExample from './examples/avatar.vue';
 import DialogExample from './examples/dialog.vue';
 </script>
 
@@ -14,6 +15,7 @@ import DialogExample from './examples/dialog.vue';
       <AlertDialogExample />
       <ArrowExample />
       <AspectRatioExample />
+      <AvatarExample />
       <DialogExample />
     </div>
   </div>

@@ -2,6 +2,7 @@ export * from './components/accordion';
 export * from './components/alert-dialog';
 export * from './components/arrow';
 export * from './components/aspect-ratio';
+export * from './components/avatar';
 export * from './components/collapsible';
 export * from './components/config-provider';
 export * from './components/dialog';
