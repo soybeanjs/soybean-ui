@@ -5,5 +5,8 @@ import unocss from 'unocss/vite';
 
 export default defineConfig({
   root: './playground',
-  plugins: [vue(), tsconfigPaths(), unocss()]
+  plugins: [vue(), tsconfigPaths(), unocss()],
+  server: {
+    open: true
+  }
 });
