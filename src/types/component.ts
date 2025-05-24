@@ -47,3 +47,12 @@ export type FocusScopeEmits = {
   /** Event handler called when auto-focusing on unmount. Can be prevented. */
   unmountAutoFocus: [event: Event];
 };
+
+export interface FormFieldProps<T = unknown> {
+  /** The name of the field. Submitted with its owning form as part of a name/value pair. */
+  name: string;
+  /** The value given as data when submitted with a `name`. */
+  value: T;
+  /** When `true`, indicates that the user must set the value before the owning form can be submitted. */
+  required?: boolean;
+}
