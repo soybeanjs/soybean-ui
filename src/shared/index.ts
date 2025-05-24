@@ -4,5 +4,6 @@ export * from './dom';
 export * from './env';
 export * from './event';
 export * from './focus';
+export * from './form';
 export * from './value';
 export * from './vue';
