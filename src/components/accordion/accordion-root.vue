@@ -17,7 +17,9 @@ const emit = defineEmits<AccordionRootEmits>();
 
 const rootElement = useTemplateRef('rootRef');
 
-const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, emit);
+const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, value => {
+  emit('update:modelValue', value);
+});
 
 const direction = useDirection(() => props.dir);
 

@@ -1,6 +1,7 @@
 export * from './use-arrow-navigation';
 export * from './use-body-scroll-lock';
 export * from './use-context';
+export * from './use-controllable-state';
 export * from './use-direction';
 export * from './use-dismissable-layer';
 export * from './use-escape-keydown';
@@ -15,4 +16,3 @@ export * from './use-image-loading-status';
 export * from './use-presence';
 export * from './use-single-or-multiple-value';
 export * from './use-state-machine';
-export * from './use-v-model';

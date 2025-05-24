@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useVModel } from '../../composables';
+import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext } from './context';
@@ -13,10 +13,14 @@ const props = withDefaults(defineProps<CollapsibleRootProps>(), {
 
 const emit = defineEmits<CollapsibleRootEmits>();
 
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: props.open === undefined
-});
+const open = useControllableState(
+  () => props.open,
+  value => {
+    if (value === undefined) return;
+    emit('update:open', value);
+  },
+  props.defaultOpen || false
+);
 
 const { dataDisabled, dataState } = provideCollapsibleRootContext({
   open,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useVModel } from '../../composables';
+import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideDialogRootContext } from './context';
 import type { DialogRootEmits, DialogRootProps } from './types';
@@ -16,10 +16,14 @@ const props = withDefaults(defineProps<DialogRootProps>(), {
 
 const emit = defineEmits<DialogRootEmits>();
 
-const open = useVModel(props, 'open', emit, {
-  defaultValue: props.defaultOpen,
-  passive: props.open === undefined
-});
+const open = useControllableState(
+  () => props.open,
+  value => {
+    if (value === undefined) return;
+    emit('update:open', value);
+  },
+  props.defaultOpen
+);
 
 provideDialogRootContext({
   open,

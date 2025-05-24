@@ -1,21 +1,23 @@
 import { computed } from 'vue';
 import { isEqual, isNullish, isValueEqualOrExist } from '../shared';
 import type { AcceptableValue, SingleOrMultipleProps } from '../types';
-import { useVModel } from './use-v-model';
+import { useControllableState } from './use-controllable-state';
 
-export function useSingleOrMultipleValue<P extends SingleOrMultipleProps, Name extends string>(
+export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
   props: P,
-  emits: (name: Name, ...args: any[]) => void
+  onUpdateModelValue: (value: P['modelValue']) => void
 ) {
   const type = computed(() => getDefaultType(props));
 
   const isSingle = computed(() => type.value === 'single');
 
-  const modelValue = useVModel(props, 'modelValue', emits, {
-    defaultValue: getDefaultValue(props),
-    passive: props.modelValue === undefined,
-    deep: true
-  });
+  const modelValue = useControllableState(
+    () => props.modelValue,
+    value => {
+      onUpdateModelValue(value);
+    },
+    getDefaultValue(props)
+  );
 
   function toggleModelValue(value: AcceptableValue) {
     if (type.value === 'single') {
