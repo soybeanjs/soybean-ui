@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import { CollapsibleRoot } from '../collapsible';
 import { useArrowNavigation } from '../../composables';
-import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
-import { getOpenFromSingleOrMultiple, transformPropsToContext } from '../../shared';
+import { getCollectionItemElements, getOpenFromSingleOrMultiple, transformPropsToContext } from '../../shared';
 import { provideAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionItemProps } from './types';
 
@@ -29,11 +28,10 @@ const { dataDisabled, dataState, triggerElement } = provideAccordionItemContext(
 });
 
 const onKeydown = (e: KeyboardEvent) => {
-  const target = e.target as HTMLElement;
-  const allCollectionItems: HTMLElement[] = Array.from(
-    rootElement.value?.querySelectorAll(`[${COLLECTION_ITEM_ATTRIBUTE}]`) ?? []
-  );
+  if (!rootElement.value) return;
 
+  const allCollectionItems = getCollectionItemElements(rootElement.value);
+  const target = e.target as HTMLElement;
   const collectionItemIndex = allCollectionItems.findIndex(item => item === target);
   if (collectionItemIndex === -1) return;
 
