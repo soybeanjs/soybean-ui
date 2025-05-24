@@ -13,6 +13,7 @@ export const components = {
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
+  checkbox: ['CheckboxRoot', 'CheckboxIndicator', 'CheckboxGroupRoot'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   configProvider: ['ConfigProvider'],
   dialog: [
