@@ -1,7 +1,7 @@
 ---
-description:
+description: the guide to develop ui components for SoybeanbeanPrimitives
 globs:
-alwaysApply: true
+alwaysApply: false
 ---
 # Soybean Primitives - Complete Development Guide
 
@@ -37,6 +37,7 @@ soybean-primitives/
 │   │   ├── alert-dialog/             # Alert dialog component
 │   │   ├── arrow/                    # Arrow component
 │   │   ├── aspect-ratio/             # Aspect ratio component
+│   │   ├── avatar/                   # Avatar component suite
 │   │   ├── collapsible/              # Collapsible component
 │   │   ├── config-provider/          # Configuration provider
 │   │   ├── dialog/                   # Dialog component
@@ -50,6 +51,7 @@ soybean-primitives/
 │   │   ├── use-focus-scope.ts        # Focus management
 │   │   ├── use-dismissable-layer.ts  # Click-outside detection
 │   │   ├── use-presence.ts           # Enter/exit animations
+│   │   ├── use-image-loading-status.ts # Image loading state management
 │   │   └── use-*.ts                  # Other reusable composables
 │   ├── 🎨 shared/                    # Shared utilities
 │   │   ├── common.ts                 # General utility functions
@@ -65,6 +67,9 @@ soybean-primitives/
 │   │   ├── event.ts                  # Event-related types
 │   │   └── props.ts                  # Feature Props types
 │   ├── 🔢 constants/                 # Global constants
+│   │   ├── components.ts             # Component registry for all components
+│   │   ├── attr.ts                   # HTML attribute constants
+│   │   └── index.ts                  # Constants exports
 │   ├── 🔌 resolver/                  # Component resolver
 │   ├── 🚀 nuxt/                      # Nuxt integration
 │   └── index.ts                      # Main export entry
@@ -94,7 +99,7 @@ src/components/{component-name}/
 ├── index.ts                    # Export entry point
 ├── types.ts                    # TypeScript type definitions
 ├── context.ts                  # Component context management
-├── shared.ts                   # Shared constants and utilities
+├── shared.ts                   # Shared constants and utilities (optional)
 ├── {component-name}-root.vue   # Root component
 ├── {component-name}-item.vue   # Sub-components (if needed)
 └── {component-name}-xxx.vue    # Additional sub-components
@@ -169,6 +174,9 @@ export interface ComponentItemContextParams extends PropsToContext<ComponentItem
 ```
 
 ### 3. `context.ts` Context Management Template
+
+**⚠️ 重要原则：优先在 useContext 函数内部创建响应式变量**
+
 ```typescript
 import { computed, ref, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
@@ -176,10 +184,37 @@ import { getOpenState } from '../../shared';
 import type { OpenState } from '../../types';
 import type { ComponentRootContextParams, ComponentItemContextParams } from './types';
 
+// ✅ 推荐：在函数内部创建响应式变量
 export const [provideComponentRootContext, useComponentRootContext] = useContext(
   'ComponentRoot',
-  (params: ComponentRootContextParams) => params
+  () => {
+    // 在函数内部创建所有响应式状态
+    const imageLoadingStatus = ref<ImageLoadingStatus>('idle');
+    const isDisabled = ref(false);
+    const currentValue = ref('');
+
+    // 创建计算属性和方法
+    const updateImageLoadingStatus = (status: ImageLoadingStatus) => {
+      imageLoadingStatus.value = status;
+    };
+
+    const dataState = computed(() => getOpenState(isOpen.value));
+
+    return {
+      imageLoadingStatus,
+      isDisabled,
+      currentValue,
+      updateImageLoadingStatus,
+      dataState
+    };
+  }
 );
+
+// ❌ 避免：传入外部创建的响应式变量作为参数
+// export const [provideComponentRootContext, useComponentRootContext] = useContext(
+//   'ComponentRoot',
+//   (params: ComponentRootContextParams) => params
+// );
 
 export const [provideComponentItemContext, useComponentItemContext] = useContext(
   'ComponentItem',
@@ -253,7 +288,7 @@ provideComponentRootContext({
 </template>
 ```
 
-### 5. `shared.ts` Constants Template
+### 5. `shared.ts` Constants Template (可选)
 ```typescript
 export const componentContentCssVars = {
   width: '--soybean-component-content-width',
@@ -269,18 +304,39 @@ export const COMPONENT_CONSTANTS = {
 ## 🔧 Core Composables & Utilities
 
 ### 1. Context Management (`useContext`)
+
+**最佳实践：在函数内部创建响应式变量**
+
 ```typescript
-// Creating context
-const [provideContext, useContext] = useContext('ComponentName', (params) => {
-  // Context logic
-  return { ...params, additionalState };
+// ✅ 推荐方式：函数内部创建状态
+const [provideContext, useContext] = useContext('ComponentName', () => {
+  // 在函数内部创建所有响应式状态
+  const state = ref('initial');
+  const isLoading = ref(false);
+  const data = ref(null);
+
+  // 创建方法
+  const updateState = (newState: string) => {
+    state.value = newState;
+  };
+
+  // 创建计算属性
+  const computedValue = computed(() => state.value.toUpperCase());
+
+  return {
+    state,
+    isLoading,
+    data,
+    updateState,
+    computedValue
+  };
 });
 
-// Providing context
-provideContext({ /* parameters */ });
+// 在组件中使用
+provideContext(); // 不需要传递参数
 
-// Consuming context
-const context = useContext('ConsumerName'); // with error checking
+// 在子组件中消费
+const context = useContext('ConsumerName');
 ```
 
 ### 2. Props to Context Transformation
@@ -362,6 +418,7 @@ const { trapFocus, releaseFocus } = useFocusScope();
 ### Main Export (`src/index.ts`)
 ```typescript
 export * from './components/accordion';
+export * from './components/avatar';
 export * from './components/collapsible';
 export * from './components/dialog';
 export type * from './types';
@@ -399,6 +456,7 @@ Types are organized by functionality:
 - Use `transformPropsToContext()` helper for context props
 
 ### Context Management
+- **优先在 `useContext` 函数内部创建响应式变量**
 - Use `useContext()` for provide/inject patterns
 - Name context functions as `provide{ComponentName}Context` and `use{ComponentName}Context`
 - Include component name in useContext for error handling
@@ -439,30 +497,41 @@ pnpm publish-pkg  # Publish to npm
 ```
 
 ### New Component Development Process
-1. **Create component directory structure**
+
+1. **Register component in constants**
+   ```typescript
+   // src/constants/components.ts
+   export const components = {
+     // ... existing components
+     newComponent: ['NewComponentRoot', 'NewComponentItem', 'NewComponentTrigger'],
+   };
+   ```
+
+2. **Create component directory structure**
    ```bash
    mkdir src/components/new-component
-   touch src/components/new-component/{index,types,context,shared}.ts
+   touch src/components/new-component/{index,types,context}.ts
    touch src/components/new-component/new-component-root.vue
    ```
 
-2. **Implement files following templates**
+3. **Implement files following templates**
    - Use the provided templates above
    - Follow naming conventions
    - Implement proper TypeScript types
+   - **优先在 context.ts 的 useContext 函数内部创建响应式变量**
 
-3. **Add to main export**
+4. **Add to main export**
    ```typescript
    // src/index.ts
    export * from './components/new-component';
    ```
 
-4. **Create playground example**
+5. **Create playground example**
    ```bash
    touch playground/src/examples/new-component.vue
    ```
 
-5. **Test and validate**
+6. **Test and validate**
    ```bash
    pnpm typecheck
    pnpm play
@@ -471,10 +540,12 @@ pnpm publish-pkg  # Publish to npm
 ## ✅ Development Checklist
 
 ### New Component Checklist
-- [ ] Follow standard directory structure (5 files)
+- [ ] **注册组件名称到 `src/constants/components.ts`**
+- [ ] Follow standard directory structure (4-5 files)
 - [ ] Implement complete TypeScript types
 - [ ] Extend `ClassValueProp` interface
 - [ ] Use JSDoc comments with `@defaultValue`
+- [ ] **在 useContext 函数内部创建响应式变量（而非传参）**
 - [ ] Implement provide/inject context
 - [ ] Add ARIA attributes support
 - [ ] Support keyboard navigation
@@ -514,4 +585,4 @@ pnpm publish-pkg  # Publish to npm
 - **Type Safety**: TypeScript type checking
 - **Edge Cases**: Disabled states, error handling
 
-When developing components, always reference existing implementations like `accordion` for consistency and follow these patterns exactly. The goal is to create a cohesive, accessible, and developer-friendly component library.
+When developing components, always reference existing implementations like `accordion` or `avatar` for consistency and follow these patterns exactly. The goal is to create a cohesive, accessible, and developer-friendly component library.
