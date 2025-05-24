@@ -4,6 +4,7 @@ import AlertDialogExample from './examples/alert-dialog.vue';
 import ArrowExample from './examples/arrow.vue';
 import AspectRatioExample from './examples/aspect-ratio.vue';
 import AvatarExample from './examples/avatar.vue';
+import CheckboxExample from './examples/checkbox.vue';
 import DialogExample from './examples/dialog.vue';
 import RovingFocusExample from './examples/roving-focus/demo.vue';
 </script>
@@ -17,6 +18,7 @@ import RovingFocusExample from './examples/roving-focus/demo.vue';
       <ArrowExample />
       <AspectRatioExample />
       <AvatarExample />
+      <CheckboxExample />
       <DialogExample />
       <RovingFocusExample />
     </div>
