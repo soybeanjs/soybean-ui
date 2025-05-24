@@ -11,6 +11,7 @@ export * from './use-forward-element';
 export * from './use-forward-emits';
 export * from './use-global-state';
 export * from './use-hide-others';
+export * from './use-image-loading-status';
 export * from './use-presence';
 export * from './use-single-or-multiple-value';
 export * from './use-state-machine';
