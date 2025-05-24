@@ -1,5 +1,5 @@
 import { Comment, cloneVNode, defineComponent, warn } from 'vue';
-import { getRawChildren } from '@/shared';
+import { getRawChildren } from '../../shared';
 
 export const Slot = defineComponent(
   (_, { slots, attrs }) => {
