@@ -10,13 +10,13 @@ import type {
   SingleOrMultipleType,
   StringOrNumber
 } from '../../types';
-import type { CollapsibleContentProps, CollapsibleRootProps, CollapsibleTriggerProps } from '../collapsible/types';
-
-export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
+import type {
+  CollapsibleContentProps as AccordionContentProps,
+  CollapsibleTriggerProps as AccordionTriggerProps,
+  CollapsibleRootProps
+} from '../collapsible/types';
 
 export interface AccordionHeaderProps extends ClassValueProp {}
-
-export interface AccordionContentProps extends CollapsibleContentProps {}
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /**
@@ -83,3 +83,5 @@ export interface AccordionItemContextParams extends PropsToContext<AccordionItem
   open: ComputedRef<boolean>;
   disabled: ComputedRef<boolean>;
 }
+
+export type { AccordionContentProps, AccordionTriggerProps };

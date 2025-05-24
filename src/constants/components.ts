@@ -1,5 +1,15 @@
 export const components = {
   accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
+  alertDialog: [
+    'AlertDialogRoot',
+    'AlertDialogTrigger',
+    'AlertDialogPortal',
+    'AlertDialogOverlay',
+    'AlertDialogContent',
+    'AlertDialogTitle',
+    'AlertDialogDescription',
+    'AlertDialogCancel'
+  ],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   configProvider: ['ConfigProvider'],
   dialog: [
