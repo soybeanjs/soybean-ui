@@ -34,7 +34,7 @@ useHideOthers(contentElement, modal.value);
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
 
-const { style, dismissableLayerProps } = useDismissableLayer(contentElement, {
+const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeydown: event => {
     emit('escapeKeydown', event);
@@ -83,7 +83,7 @@ onMounted(() => {
 
 <template>
   <Primitive
-    v-bind="{ ...dismissableLayerProps, ...focusScopeProps }"
+    v-bind="{ ...layerProps, ...focusScopeProps }"
     :id="contentId"
     :ref="setContentElement"
     :class="props.class"
@@ -92,7 +92,7 @@ onMounted(() => {
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"
     :data-state="dataState"
-    :style="style"
+    :style="computedStyle"
     @keydown="onKeydown"
   >
     <slot />
