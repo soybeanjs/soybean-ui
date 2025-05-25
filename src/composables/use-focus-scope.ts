@@ -3,7 +3,7 @@ import type { MaybeRefOrGetter, Ref } from 'vue';
 import {
   arrayRemove,
   focus,
-  focusFirst,
+  focusFirstAndSelect,
   getActiveElement,
   getTabbableCandidates,
   getTabbableEdges,
@@ -134,7 +134,7 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
         container.dispatchEvent(mountEvent);
 
         if (!mountEvent.defaultPrevented) {
-          focusFirst(removeLinks(getTabbableCandidates(container)), { select: true });
+          focusFirstAndSelect(removeLinks(getTabbableCandidates(container)), { select: true });
 
           if (getActiveElement() === previouslyFocusedElement) {
             focus(container);
@@ -211,7 +211,9 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
 
   return {
     onKeydown,
-    tabindex: '-1'
+    focusScopeProps: {
+      tabindex: '-1'
+    }
   };
 }
 

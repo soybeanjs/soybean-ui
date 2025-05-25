@@ -151,7 +151,10 @@ export function useDismissableLayer(elRef: Ref<HTMLElement | undefined>, options
   return {
     DISMISSABLE_LAYER_ATTRIBUTE,
     pointerEvents,
-    style
+    style,
+    dismissableLayerProps: {
+      [DISMISSABLE_LAYER_ATTRIBUTE]: true
+    }
   };
 }
 

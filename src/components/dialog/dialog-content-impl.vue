@@ -34,7 +34,7 @@ useHideOthers(contentElement, modal.value);
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
 
-const { style, DISMISSABLE_LAYER_ATTRIBUTE } = useDismissableLayer(contentElement, {
+const { style, dismissableLayerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeydown: event => {
     emit('escapeKeydown', event);
@@ -53,7 +53,7 @@ const { style, DISMISSABLE_LAYER_ATTRIBUTE } = useDismissableLayer(contentElemen
   }
 });
 
-const { onKeydown, tabindex } = useFocusScope(contentElement, {
+const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
   trapped: () => props.trapFocus,
   loop: true,
   onMountAutoFocus: event => {
@@ -83,6 +83,7 @@ onMounted(() => {
 
 <template>
   <Primitive
+    v-bind="{ ...dismissableLayerProps, ...focusScopeProps }"
     :id="contentId"
     :ref="setContentElement"
     :class="props.class"
@@ -91,9 +92,7 @@ onMounted(() => {
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"
     :data-state="dataState"
-    :[DISMISSABLE_LAYER_ATTRIBUTE]="true"
     :style="style"
-    :tabindex="tabindex"
     @keydown="onKeydown"
   >
     <slot />
