@@ -5,6 +5,7 @@ import ArrowExample from './examples/arrow.vue';
 import AspectRatioExample from './examples/aspect-ratio.vue';
 import AvatarExample from './examples/avatar.vue';
 import DialogExample from './examples/dialog.vue';
+import RovingFocusExample from './examples/roving-focus/demo.vue';
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import DialogExample from './examples/dialog.vue';
       <AspectRatioExample />
       <AvatarExample />
       <DialogExample />
+      <RovingFocusExample />
     </div>
   </div>
 </template>
