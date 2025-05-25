@@ -8,6 +8,8 @@ export type DisclosureState = 'open' | 'closed';
 
 export type FocusIntent = 'first' | 'last' | 'prev' | 'next';
 
+export type CheckedState = boolean | 'indeterminate';
+
 export type NavigationKey =
   | 'ArrowDown'
   | 'ArrowLeft'

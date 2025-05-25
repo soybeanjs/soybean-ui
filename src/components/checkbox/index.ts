@@ -8,9 +8,6 @@ export type {
   CheckboxRootProps,
   CheckboxRootEmits,
   CheckboxIndicatorProps,
-  CheckboxIndicatorEmits,
   CheckboxGroupRootProps,
   CheckboxGroupRootEmits
 } from './types';
-
-export type { CheckedState } from './shared';

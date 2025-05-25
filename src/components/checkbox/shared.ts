@@ -1,10 +1,10 @@
-export type CheckedState = boolean | 'indeterminate';
+import type { CheckedState } from '../../types';
 
 export function isIndeterminate(checked?: CheckedState | null): checked is 'indeterminate' {
   return checked === 'indeterminate';
 }
 
-export function getState(checked: CheckedState | null) {
+export function getCheckedState(checked?: CheckedState | null) {
   if (isIndeterminate(checked)) {
     return 'indeterminate';
   }
