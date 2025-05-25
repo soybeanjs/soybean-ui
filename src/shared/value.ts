@@ -26,6 +26,6 @@ export function getOpenFromSingleOrMultiple(
  * @param open - 是否开启
  * @returns 'open' 或 'closed'
  */
-export function getOpenState(open?: boolean) {
+export function getDisclosureState(open?: boolean) {
   return open ? 'open' : 'closed';
 }

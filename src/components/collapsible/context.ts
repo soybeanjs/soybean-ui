@@ -1,7 +1,7 @@
 import { computed, ref, useId } from 'vue';
 import { useContext } from '../../composables';
-import { getOpenState } from '../../shared';
-import type { OpenState } from '../../types';
+import { getDisclosureState } from '../../shared';
+import type { DisclosureState } from '../../types';
 import type { CollapsibleRootContextParams } from './types';
 
 export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useContext(
@@ -22,7 +22,7 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
-    const dataState = computed<OpenState>(() => getOpenState(open.value));
+    const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     return {
       open,

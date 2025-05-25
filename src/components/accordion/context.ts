@@ -1,7 +1,7 @@
 import { computed, ref, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
-import { getOpenState } from '../../shared';
-import type { OpenState } from '../../types';
+import { getDisclosureState } from '../../shared';
+import type { DisclosureState } from '../../types';
 import type { AccordionItemContextParams, AccordionRootContextParams } from './types';
 
 export const [provideAccordionRootContext, useAccordionRootContext] = useContext(
@@ -23,7 +23,7 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
-    const dataState = computed<OpenState>(() => getOpenState(open.value));
+    const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     return {
       ...params,

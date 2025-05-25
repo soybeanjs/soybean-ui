@@ -4,7 +4,7 @@ export type AcceptableValue = StringOrNumber | null | undefined;
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';
 
-export type OpenState = 'open' | 'closed';
+export type DisclosureState = 'open' | 'closed';
 
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)

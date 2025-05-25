@@ -158,6 +158,7 @@ export interface ComponentRootProps extends ClassValueProp {
   disabled?: boolean;
 }
 
+// add if has
 export type ComponentRootEmits = {
   'update:modelValue': [value: string];
 };
@@ -180,8 +181,8 @@ export interface ComponentItemContextParams extends PropsToContext<ComponentItem
 ```typescript
 import { computed, ref, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
-import { getOpenState } from '../../shared';
-import type { OpenState } from '../../types';
+import { getDisclosureState } from '../../shared';
+import type { DisclosureState } from '../../types';
 import type { ComponentRootContextParams, ComponentItemContextParams } from './types';
 
 // ✅ 推荐：在函数内部创建响应式变量
@@ -198,7 +199,7 @@ export const [provideComponentRootContext, useComponentRootContext] = useContext
       imageLoadingStatus.value = status;
     };
 
-    const dataState = computed(() => getOpenState(isOpen.value));
+    const dataState = computed(() => getDisclosureState(isOpen.value));
 
     return {
       imageLoadingStatus,
@@ -230,7 +231,7 @@ export const [provideComponentItemContext, useComponentItemContext] = useContext
     };
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
-    const dataState = computed<OpenState>(() => getOpenState(open.value));
+    const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     return {
       ...params,
@@ -358,6 +359,7 @@ const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(prop
 
 ## 🎨 Styling System
 
+// add if has
 ### CSS Variables Pattern
 ```typescript
 // shared.ts
