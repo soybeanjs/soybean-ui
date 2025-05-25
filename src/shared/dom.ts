@@ -21,13 +21,11 @@ export function getActiveElement<T extends Element = HTMLElement>() {
   return activeElement as T;
 }
 
-export function isDisabledElement(element: HTMLElement) {
-  const disabled = element.getAttribute('disabled');
-  const dataDisabled = element.getAttribute('data-disabled');
+export function isElementHasAttribute(element: HTMLElement, attribute: string) {
+  const value = element.getAttribute(attribute);
+  const dataValue = element.getAttribute(`data-${attribute}`);
 
-  const isDisabled = [disabled, dataDisabled].some(item => item === '' || item === 'true');
-
-  return isDisabled;
+  return [value, dataValue].some(item => item === '' || item === 'true');
 }
 
 export function getCollectionItemElements(element: HTMLElement) {

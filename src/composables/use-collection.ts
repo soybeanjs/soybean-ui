@@ -1,5 +1,5 @@
 import { markRaw, onBeforeUnmount, shallowRef } from 'vue';
-import { getCollectionItemElements, getElFromTemplateRef, isDisabledElement, toPascalCase } from '../shared';
+import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 import { useForwardElement } from './use-forward-element';
@@ -29,7 +29,7 @@ export function useCollection<ItemData = {}>(name: string) {
         return orderedItems;
       }
 
-      return orderedItems.filter(item => !isDisabledElement(item.element));
+      return orderedItems.filter(item => !isElementHasAttribute(item.element, 'disabled'));
     };
 
     onBeforeUnmount(() => {
