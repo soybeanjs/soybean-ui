@@ -9,3 +9,4 @@ export * from './focus';
 export * from './vue';
 export * from './env';
 export * from './event';
+export * from './layer';
