@@ -62,7 +62,7 @@ export function transformPropsToContext<T extends Record<string, any>, K extends
 
   return $keys.reduce(
     (acc, key) => {
-      acc[key] = computed(() => props[key]);
+      acc[key] = computed(() => (typeof props[key] === 'function' ? props[key]() : props[key]));
       return acc;
     },
     {} as PropsToContext<T, K>
