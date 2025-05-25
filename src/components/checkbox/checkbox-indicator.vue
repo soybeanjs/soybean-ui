@@ -1,34 +1,38 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue';
-import { usePresence } from '../../composables';
+import { shallowRef } from 'vue';
+import { useForwardElement, usePresence } from '../../composables';
+import { Primitive } from '../primitive';
 import { useCheckboxRootContext } from './context';
-import { getState, isIndeterminate } from './shared';
+import { isIndeterminate } from './shared';
 import type { CheckboxIndicatorProps } from './types';
 
-const props = withDefaults(defineProps<CheckboxIndicatorProps>(), {
-  as: 'span',
-  forceMount: false
+defineOptions({
+  name: 'CheckboxIndicator'
 });
 
-const indicatorElement = useTemplateRef('indicatorRef');
-const rootContext = useCheckboxRootContext('CheckboxIndicator');
+const props = withDefaults(defineProps<CheckboxIndicatorProps>(), {
+  as: 'span'
+});
 
-const shouldShow = computed(
-  () => props.forceMount || isIndeterminate(rootContext.state.value) || rootContext.state.value === true
-);
+const [indicatorElement, setIndicatorElement] = useForwardElement();
 
-const isPresent = usePresence(indicatorElement, shouldShow);
+const { state, dataDisabled, dataState } = useCheckboxRootContext('CheckboxIndicator');
+
+const isPresent = props.forceMount
+  ? shallowRef(true)
+  : usePresence(indicatorElement, () => isIndeterminate(state.value) || state.value === true);
 </script>
 
 <template>
-  <span
+  <Primitive
     v-if="isPresent"
-    ref="indicatorRef"
+    :ref="setIndicatorElement"
     :class="props.class"
-    :data-state="getState(rootContext.state.value)"
-    :data-disabled="rootContext.disabled.value ? '' : undefined"
+    :as="as"
+    :data-disabled="dataDisabled"
+    :data-state="dataState"
     :style="{ pointerEvents: 'none' }"
   >
     <slot />
-  </span>
+  </Primitive>
 </template>

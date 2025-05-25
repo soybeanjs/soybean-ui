@@ -1,32 +1,38 @@
-import { ref } from 'vue';
-import { useContext } from '../../composables';
-import type { AcceptableValue, DataOrientation, Direction } from '../../types';
-import type { CheckedState } from './shared';
+import { computed } from 'vue';
+import { useContext, useControllableState } from '../../composables';
+import { getCheckedState } from './shared';
+import type { CheckboxGroupRootContextParams, CheckboxRootContextParams } from './types';
 
-export const [provideCheckboxRootContext, useCheckboxRootContext] = useContext('CheckboxRoot', () => {
-  const disabled = ref(false);
-  const state = ref<CheckedState>(false);
+export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = useContext(
+  'CheckboxGroupRoot',
+  (params: CheckboxGroupRootContextParams) => {
+    const modelValue = useControllableState(
+      () => params.modelValue.value,
+      value => {
+        if (value) {
+          params.onUpdateModelValue?.(value);
+        }
+      },
+      params.defaultValue.value
+    );
 
-  return {
-    disabled,
-    state
-  };
-});
+    return {
+      ...params,
+      modelValue
+    };
+  }
+);
 
-export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = useContext('CheckboxGroupRoot', () => {
-  const modelValue = ref<AcceptableValue[]>([]);
-  const rovingFocus = ref(true);
-  const disabled = ref(false);
-  const dir = ref<Direction>('ltr');
-  const orientation = ref<DataOrientation>('vertical');
-  const loop = ref(false);
+export const [provideCheckboxRootContext, useCheckboxRootContext] = useContext(
+  'CheckboxRoot',
+  (params: CheckboxRootContextParams) => {
+    const dataDisabled = computed(() => (params.disabled.value ? '' : undefined));
+    const dataState = computed(() => getCheckedState(params.state.value));
 
-  return {
-    modelValue,
-    rovingFocus,
-    disabled,
-    dir,
-    orientation,
-    loop
-  };
-});
+    return {
+      ...params,
+      dataDisabled,
+      dataState
+    };
+  }
+);

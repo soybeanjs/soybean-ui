@@ -1,97 +1,135 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { useVModel } from '../../composables';
-import { isEqual, isNullish, isValueEqualOrExist } from '../../shared';
+import { computed, useAttrs } from 'vue';
+import { useControllableState, useForwardElement } from '../../composables';
+import { isEqual, isFormControl, isNullish, isValueEqualOrExist } from '../../shared';
+import type { CheckedState } from '../../types';
+import { Primitive } from '../primitive';
+import { RovingFocusItem } from '../roving-focus';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxRootContext, useCheckboxGroupRootContext } from './context';
-import { getState, isIndeterminate } from './shared';
+import { isIndeterminate } from './shared';
 import type { CheckboxRootEmits, CheckboxRootProps } from './types';
-import type { CheckedState } from './shared';
+
+defineOptions({
+  name: 'CheckboxRoot'
+});
 
 const props = withDefaults(defineProps<CheckboxRootProps>(), {
-  as: 'button',
-  disabled: false,
-  required: false,
-  value: 'on'
+  modelValue: undefined,
+  value: 'on',
+  as: 'button'
 });
 
 const emit = defineEmits<CheckboxRootEmits>();
 
-// Try to get checkbox group context (optional)
-let checkboxGroupContext: ReturnType<typeof useCheckboxGroupRootContext> | null = null;
-try {
-  checkboxGroupContext = useCheckboxGroupRootContext('CheckboxRoot');
-} catch {
-  // No context available, checkbox is standalone
-  checkboxGroupContext = null;
-}
+const attrs = useAttrs();
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? false,
-  passive: props.modelValue === undefined
-});
+const groupContext = useCheckboxGroupRootContext();
 
-const disabled = computed(() => checkboxGroupContext?.disabled.value || props.disabled);
+const [element, setElement] = useForwardElement();
+
+const modelValue = useControllableState(
+  () => props.modelValue,
+  value => {
+    if (!isNullish(value)) {
+      emit('update:modelValue', value);
+    }
+  },
+  props.defaultValue
+);
+
+const rovingFocus = computed(() => groupContext?.rovingFocus?.value);
+
+const disabled = computed(() => groupContext?.disabled?.value || props.disabled);
+
+const formControl = computed(() => isFormControl(element.value));
 
 const checkboxState = computed<CheckedState>(() => {
-  if (!isNullish(checkboxGroupContext?.modelValue.value)) {
-    return isValueEqualOrExist(checkboxGroupContext.modelValue.value, props.value);
+  if (!isNullish(groupContext?.modelValue?.value)) {
+    return isValueEqualOrExist(groupContext.modelValue.value, props.value);
   }
-  return modelValue.value ?? false;
+
+  if (isNullish(modelValue.value)) {
+    return false;
+  }
+
+  return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
 });
 
-function handleClick() {
-  if (!isNullish(checkboxGroupContext?.modelValue.value)) {
-    const modelValueArray = [...(checkboxGroupContext.modelValue.value || [])];
+const ariaLabel = computed(() => {
+  if (attrs['aria-label']) {
+    return attrs['aria-label'];
+  }
+
+  if (!props.id || !element.value) {
+    return undefined;
+  }
+
+  return (document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.textContent;
+});
+
+const ariaChecked = computed(() => {
+  if (isIndeterminate(checkboxState.value)) {
+    return 'mixed';
+  }
+  return checkboxState.value;
+});
+
+const focusable = computed(() => (rovingFocus.value ? !disabled.value : undefined));
+
+const onClick = () => {
+  if (!isNullish(groupContext?.modelValue?.value)) {
+    const modelValueArray = [...(groupContext.modelValue.value || [])];
     if (isValueEqualOrExist(modelValueArray, props.value)) {
       const index = modelValueArray.findIndex(i => isEqual(i, props.value));
       modelValueArray.splice(index, 1);
     } else {
       modelValueArray.push(props.value);
     }
-    checkboxGroupContext.modelValue.value = modelValueArray;
+    groupContext.modelValue.value = modelValueArray;
   } else {
     modelValue.value = isIndeterminate(modelValue.value) ? true : !modelValue.value;
   }
-}
+};
 
-const rootContext = provideCheckboxRootContext();
-
-// Watch for changes to update context
-watch(
-  () => disabled.value,
-  (newValue: boolean) => {
-    rootContext.disabled.value = newValue;
-  },
-  { immediate: true }
-);
-
-watch(
-  () => checkboxState.value,
-  (newValue: CheckedState) => {
-    rootContext.state.value = newValue;
-  },
-  { immediate: true }
-);
+const { dataDisabled, dataState } = provideCheckboxRootContext({
+  disabled,
+  state: checkboxState
+});
 </script>
 
 <template>
-  <button
+  <Primitive
     :id="id"
+    :ref="setElement"
     :class="props.class"
+    :as="rovingFocus ? RovingFocusItem : 'button'"
     role="checkbox"
     type="button"
-    :aria-checked="isIndeterminate(checkboxState) ? 'mixed' : checkboxState"
-    :aria-required="required"
-    :data-state="getState(checkboxState)"
-    :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
-    @click="handleClick"
+    :aria-checked="ariaChecked"
+    :data-disabled="dataDisabled"
+    :aria-labe="ariaLabel"
+    :aria-required="required"
+    :data-state="dataState"
+    :focusable="focusable"
     @keydown.enter.prevent="
       () => {
         // According to WAI ARIA, Checkboxes don't activate on enter keypress
       }
     "
+    @click="onClick"
   >
     <slot :model-value="modelValue" :state="checkboxState" />
-  </button>
+
+    <VisuallyHiddenInput
+      v-if="formControl && name && !groupContext"
+      type="checkbox"
+      :checked="!!checkboxState"
+      :name="name"
+      :value="value"
+      :disabled="disabled"
+      :required="required"
+    />
+  </Primitive>
 </template>

@@ -1,82 +1,52 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { watch } from 'vue';
-import { useDirection, useVModel } from '../../composables';
+import { computed } from 'vue';
+import { useForwardElement } from '../../composables';
+import { isFormControl, transformPropsToContext } from '../../shared';
 import type { AcceptableValue } from '../../types';
+import { Primitive } from '../primitive';
+import { RovingFocusGroup } from '../roving-focus';
+import type { RovingFocusGroupProps } from '../roving-focus/types';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxGroupRootContext } from './context';
 import type { CheckboxGroupRootEmits, CheckboxGroupRootProps } from './types';
 
+defineOptions({
+  name: 'CheckboxGroupRoot'
+});
+
 const props = withDefaults(defineProps<CheckboxGroupRootProps<T>>(), {
-  as: 'div',
-  disabled: false,
-  required: false,
-  rovingFocus: true,
-  orientation: 'vertical',
-  loop: false
+  rovingFocus: true
 });
 
 const emit = defineEmits<CheckboxGroupRootEmits<T>>();
 
-const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? [],
-  passive: props.modelValue === undefined
+provideCheckboxGroupRootContext({
+  ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
+  onUpdateModelValue: value => {
+    emit('update:modelValue', value as T[]);
+  }
 });
 
-const direction = useDirection(() => props.dir);
+const [element, setElement] = useForwardElement();
 
-const groupContext = provideCheckboxGroupRootContext();
+const formControl = computed(() => isFormControl(element.value));
 
-// Update context values
-watch(
-  () => modelValue.value,
-  newValue => {
-    groupContext.modelValue.value = newValue as AcceptableValue[];
-  },
-  { immediate: true }
-);
+const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
+  const { rovingFocus, loop, dir, orientation } = props;
 
-watch(
-  () => props.rovingFocus,
-  newValue => {
-    groupContext.rovingFocus.value = newValue;
-  },
-  { immediate: true }
-);
-
-watch(
-  () => props.disabled,
-  newValue => {
-    groupContext.disabled.value = newValue;
-  },
-  { immediate: true }
-);
-
-watch(
-  () => direction.value,
-  newValue => {
-    groupContext.dir.value = newValue;
-  },
-  { immediate: true }
-);
-
-watch(
-  () => props.orientation,
-  newValue => {
-    groupContext.orientation.value = newValue;
-  },
-  { immediate: true }
-);
-
-watch(
-  () => props.loop,
-  newValue => {
-    groupContext.loop.value = newValue;
-  },
-  { immediate: true }
-);
+  return rovingFocus ? { loop, dir, orientation } : {};
+});
 </script>
 
 <template>
-  <div :class="props.class" role="group" :aria-required="required" :data-disabled="disabled ? '' : undefined">
-    <slot :model-value="modelValue" />
-  </div>
+  <Primitive
+    :ref="setElement"
+    :as="rovingFocus ? RovingFocusGroup : 'div'"
+    v-bind="rovingFocusProps"
+    :class="props.class"
+  >
+    <slot />
+
+    <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
+  </Primitive>
 </template>
