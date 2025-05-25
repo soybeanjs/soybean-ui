@@ -1,4 +1,4 @@
-import type { FormFieldProps } from '../types';
+import type { FormNameValueProps } from '../types';
 import { isArrayValue, isNonNullObject, isPrimitive } from './guard';
 
 /**
@@ -23,7 +23,7 @@ export function createFieldName(baseName: string, ...paths: (string | number)[])
  * @param value - 原始值
  * @returns 表单字段数组
  */
-export function parsePrimitiveValue(name: string, value: string | number | boolean): FormFieldProps[] {
+export function parsePrimitiveValue(name: string, value: string | number | boolean): FormNameValueProps[] {
   return [{ name, value }];
 }
 
@@ -41,7 +41,7 @@ export function parsePrimitiveValue(name: string, value: string | number | boole
  * @param array - 数组值
  * @returns 表单字段数组
  */
-export function parseArrayValue(baseName: string, array: unknown[]): FormFieldProps[] {
+export function parseArrayValue(baseName: string, array: unknown[]): FormNameValueProps[] {
   return array.flatMap((item, index) => {
     if (isNonNullObject(item)) {
       // 处理对象数组
@@ -69,7 +69,7 @@ export function parseArrayValue(baseName: string, array: unknown[]): FormFieldPr
  * @param obj - 对象值
  * @returns 表单字段数组
  */
-export function parseObjectValue(baseName: string, obj: Record<string, unknown>): FormFieldProps[] {
+export function parseObjectValue(baseName: string, obj: Record<string, unknown>): FormNameValueProps[] {
   return Object.entries(obj).map(([key, value]) => ({
     name: createFieldName(baseName, key),
     value
@@ -88,7 +88,7 @@ export function parseObjectValue(baseName: string, obj: Record<string, unknown>)
  * @param value - 要解析的值
  * @returns 表单字段数组
  */
-export function parseFormValue(name: string, value: unknown): FormFieldProps[] {
+export function parseFormValue(name: string, value: unknown): FormNameValueProps[] {
   if (!name) {
     return [];
   }

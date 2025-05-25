@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T">
 import { computed } from 'vue';
-import type { FormFieldProps } from '../../types';
+import type { FormNameValueProps } from '../../types';
 import { isArrayValue, parseFormValue } from '../../shared';
 import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
 import type { VisuallyHiddenInputProps } from './types';
@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<VisuallyHiddenInputProps<T>>(), {
   checked: undefined
 });
 
-const parsedValue = computed<FormFieldProps[]>(() => {
+const parsedValue = computed<FormNameValueProps[]>(() => {
   const { value, name } = props;
 
   return parseFormValue(name, value);

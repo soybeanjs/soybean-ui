@@ -1,4 +1,4 @@
-import type { FormFieldProps } from '../../types';
+import type { FormNameValueProps } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
@@ -7,8 +7,9 @@ export interface VisuallyHiddenProps extends PrimitiveProps {
   feature?: VisuallyHiddenFeature;
 }
 
-export interface VisuallyHiddenInputBubbleProps<T> extends FormFieldProps<T> {
+export interface VisuallyHiddenInputBubbleProps<T> extends FormNameValueProps<T> {
   checked?: boolean;
+  required?: boolean;
   disabled?: boolean;
   feature?: VisuallyHiddenFeature;
 }

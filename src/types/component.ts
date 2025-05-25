@@ -48,11 +48,14 @@ export type FocusScopeEmits = {
   unmountAutoFocus: [event: Event];
 };
 
-export interface FormFieldProps<T = unknown> {
-  /** The name of the field. Submitted with its owning form as part of a name/value pair. */
+export interface FormNameValueProps<T = unknown> {
   name: string;
-  /** The value given as data when submitted with a `name`. */
   value: T;
+}
+
+export interface FormFieldProps {
+  /** The name of the field. Submitted with its owning form as part of a name/value pair. */
+  name?: string;
   /** When `true`, indicates that the user must set the value before the owning form can be submitted. */
   required?: boolean;
 }
