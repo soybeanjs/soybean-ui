@@ -1,4 +1,5 @@
 import { inject, provide } from 'vue';
+import { isNullish } from '../shared';
 
 export function useContext<Arguments extends Array<any>, T>(
   contextName: string,
@@ -14,14 +15,18 @@ export function useContext<Arguments extends Array<any>, T>(
    * @param defaultValue - The default value to return if the context is not provided.
    * @returns The context value.
    */
-  const useInject = (consumerName?: string, defaultValue?: T) => {
+  const useInject = <N extends string | null | undefined = undefined>(
+    consumerName?: N,
+    defaultValue?: T
+  ): N extends null | undefined ? T | null : T => {
     const value = inject(key, defaultValue);
 
-    if (consumerName && !value) {
+    if (!isNullish(consumerName) && !value) {
       throw new Error(`\`${consumerName}\` must be used within \`${contextName}\``);
     }
 
-    return value!;
+    // @ts-expect-error - we want to return null if the value is undefined or null
+    return value || null;
   };
 
   const useProvide = (...args: Arguments) => {

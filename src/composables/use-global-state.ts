@@ -1,6 +1,5 @@
 import { effectScope } from 'vue';
-
-type AnyFn = (...args: any[]) => any;
+import type { AnyFn } from '../types';
 
 export type UseGlobalStateReturn<Fn extends AnyFn = AnyFn> = Fn;
 
