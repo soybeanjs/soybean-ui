@@ -1,96 +1,145 @@
-import { markRaw, onBeforeUnmount, shallowRef } from 'vue';
+import { onBeforeUnmount, shallowRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 import { useForwardElement } from './use-forward-element';
 
-export type CollectionItemMapData<ItemData> = {
+export interface CollectionItemData<ItemData> {
   element: HTMLElement;
   data: ItemData;
-};
+}
 
-export function useCollection<ItemData = {}>(name: string) {
-  const contextName = toPascalCase(`${name}Collection`);
+export interface CollectionContext<ItemData> {
+  containerElement: ShallowRef<HTMLElement | undefined>;
+  containerProps: {
+    ref: (nodeRef: VNodeRef) => void;
+  };
+  itemRegistry: Map<HTMLElement, CollectionItemData<ItemData>>;
+  getOrderedItems: (excludeDisabled?: boolean) => CollectionItemData<ItemData>[];
+  getOrderedElements: (excludeDisabled?: boolean) => HTMLElement[];
+}
+
+export interface CollectionItemHook {
+  itemElement: ShallowRef<HTMLElement | undefined>;
+  itemProps: {
+    ref: (nodeRef: VNodeRef) => void;
+    [COLLECTION_ITEM_ATTRIBUTE]: true;
+  };
+}
+
+export interface UseCollectionReturn<ItemData> {
+  provideCollectionContext: () => CollectionContext<ItemData>;
+  useCollectionContext: (consumerName: string) => CollectionContext<ItemData>;
+  useCollectionItem: (itemData?: ItemData) => CollectionItemHook;
+}
+
+/**
+ * Create a collection composable for managing a group of related elements
+ *
+ * @param collectionName - The name of the collection (used for context naming)
+ * @returns Collection management functions and hooks
+ */
+export function useCollection<ItemData = Record<string, never>>(collectionName: string): UseCollectionReturn<ItemData> {
+  const contextName = toPascalCase(`${collectionName}Collection`);
 
   const [provideCollectionContext, useCollectionContext] = useContext(contextName, () => {
-    const [collectionElement, setCollectionElement] = useForwardElement();
+    const [containerElement, setContainerElement] = useForwardElement();
 
-    const collectionItemMap = new Map<HTMLElement, CollectionItemMapData<ItemData>>();
+    const itemRegistry = new Map<HTMLElement, CollectionItemData<ItemData>>();
 
     /**
-     * Get the data of the collection items.
+     * Get collection items ordered by their DOM position
      *
-     * @param filterDisabled - Whether to filter out disabled items. Default is `true`
-     * @returns The data of the collection items.
+     * @param excludeDisabled - Whether to exclude disabled items from the result
+     * @returns Collection items ordered by DOM position
      */
-    const getCollectionItemData = (filterDisabled = true) => {
-      if (!collectionElement.value) return [];
+    const getOrderedItems = (excludeDisabled = true): CollectionItemData<ItemData>[] => {
+      if (!containerElement.value) return [];
 
-      const elements = getCollectionItemElements(collectionElement.value);
-      const items = Array.from(collectionItemMap.values());
+      const domOrderedElements = getCollectionItemElements(containerElement.value);
+      const orderedItems: CollectionItemData<ItemData>[] = [];
 
-      const orderedItems = items.sort((a, b) => elements.indexOf(a.element) - elements.indexOf(b.element));
-
-      if (!filterDisabled) {
-        return orderedItems;
+      // Iterate through DOM-ordered elements for optimal performance
+      for (const element of domOrderedElements) {
+        const itemData = itemRegistry.get(element);
+        if (itemData) {
+          const shouldInclude = !excludeDisabled || !isElementHasAttribute(element, 'disabled');
+          if (shouldInclude) {
+            orderedItems.push(itemData);
+          }
+        }
       }
 
-      return orderedItems.filter(item => !isElementHasAttribute(item.element, 'disabled'));
+      return orderedItems;
     };
 
     /**
-     * Get the elements of the collection items.
+     * Get collection elements ordered by their DOM position
      *
-     * @param filterDisabled - Whether to filter out disabled items. Default is `true`
-     * @returns The elements of the collection items.
+     * @param excludeDisabled - Whether to exclude disabled elements from the result
+     * @returns Elements ordered by DOM position
      */
-    const getCollectionElements = (filterDisabled = true) =>
-      getCollectionItemData(filterDisabled).map(item => item.element);
+    const getOrderedElements = (excludeDisabled = true): HTMLElement[] =>
+      getOrderedItems(excludeDisabled).map(item => item.element);
 
+    // Clean up registry on component unmount
     onBeforeUnmount(() => {
-      collectionItemMap.clear();
+      itemRegistry.clear();
     });
 
     return {
-      collectionElement,
-      collectionProps: {
-        ref: setCollectionElement
+      containerElement,
+      containerProps: {
+        ref: setContainerElement
       },
-      collectionItemMap,
-      getCollectionItemData,
-      getCollectionElements
+      itemRegistry,
+      getOrderedItems,
+      getOrderedElements
     };
   });
 
-  const useCollectionItem = (itemData: ItemData = {} as ItemData) => {
-    const consumerName = toPascalCase(`${name}Item`);
-    const { collectionItemMap } = useCollectionContext(consumerName);
+  /**
+   * Hook for registering individual collection items
+   *
+   * @param itemData - Data to associate with this collection item
+   * @returns Item element reference and props for registration
+   */
+  const useCollectionItem = (itemData: ItemData = {} as ItemData): CollectionItemHook => {
+    const consumerName = toPascalCase(`${collectionName}Item`);
+    const { itemRegistry } = useCollectionContext(consumerName);
 
-    const collectionItemElement = shallowRef<HTMLElement>();
+    const itemElement = shallowRef<HTMLElement>();
 
-    const setCollectionItemElement = (nodeRef: VNodeRef) => {
+    /** Register the item element in the collection registry */
+    const registerItemElement = (nodeRef: VNodeRef): void => {
       const element = getElFromTemplateRef(nodeRef);
       if (!element) return;
 
-      collectionItemElement.value = element;
-      collectionItemMap.set(element, { element, data: itemData });
+      // Clean up previous registration if element changed
+      if (itemElement.value && itemElement.value !== element) {
+        itemRegistry.delete(itemElement.value);
+      }
+
+      itemElement.value = element;
+      itemRegistry.set(element, { element, data: itemData });
     };
 
-    const cleanup = () => {
-      if (!collectionItemElement.value) return;
-      const rawElement = markRaw(collectionItemElement.value);
-      collectionItemMap.delete(rawElement);
+    /** Unregister the item from the collection registry */
+    const unregisterItem = (): void => {
+      if (!itemElement.value) return;
+
+      itemRegistry.delete(itemElement.value);
+      itemElement.value = undefined;
     };
 
-    onBeforeUnmount(() => {
-      cleanup();
-    });
+    onBeforeUnmount(unregisterItem);
 
     return {
-      collectionItemElement,
-      collectionItemProps: {
-        ref: setCollectionItemElement,
+      itemElement,
+      itemProps: {
+        ref: registerItemElement,
         [COLLECTION_ITEM_ATTRIBUTE]: true
       }
     };

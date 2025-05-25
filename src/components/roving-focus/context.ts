@@ -17,7 +17,7 @@ const { provideCollectionContext, useCollectionContext, useCollectionItem } = us
 const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
   'RovingFocusGroup',
   (params: RovingFocusGroupContextParams) => {
-    const { collectionProps, getCollectionElements } = provideCollectionContext();
+    const { containerProps, getOrderedElements } = provideCollectionContext();
 
     const {
       loop,
@@ -75,7 +75,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
       if (entryFocusEvent.defaultPrevented) return;
 
-      const items = getCollectionElements();
+      const items = getOrderedElements();
       const activeItem = items.find(item => isElementHasAttribute(item, 'active'));
       const currentItem = items.find(item => item.id === currentTabStopId.value);
       const candidateItems = [activeItem, currentItem, ...items].filter(Boolean) as HTMLElement[];
@@ -85,7 +85,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
     const rovingFocusGroupProps = computed(() => {
       return {
-        ...collectionProps,
+        ...containerProps,
         tabindex: isTabbingBackOut.value || focusableItemsCount.value === 0 ? '-1' : '0',
         dataOrientation: orientation.value,
         dir: dir.value,
@@ -125,8 +125,8 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 );
 
 function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
-  const { getCollectionElements } = useCollectionContext('RovingFocusItem');
-  const { collectionItemProps } = useCollectionItem();
+  const { getOrderedElements } = useCollectionContext('RovingFocusItem');
+  const { itemProps } = useCollectionItem();
   const {
     currentTabStopId,
     orientation,
@@ -162,7 +162,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
 
     event.preventDefault();
 
-    let candidateNodes = getCollectionElements();
+    let candidateNodes = getOrderedElements();
     if (focusIntent === 'last') {
       candidateNodes.reverse();
     }
@@ -186,7 +186,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
 
   const rovingFocusItemProps = computed(() => {
     return {
-      ...collectionItemProps,
+      ...itemProps,
       tabindex: isCurrentTabStop.value ? '0' : '-1',
       dataOrientation: orientation.value,
       dataActive: active?.value ? '' : undefined,
