@@ -1,4 +1,4 @@
-import { computed, nextTick, ref, useId } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId } from 'vue';
 import { getFocusIntent, isElementHasAttribute, isNullish, toPascalCase, tryFocusFirst, wrapArray } from '../shared';
 import type {
   EmitsToHookProps,
@@ -141,7 +141,16 @@ export function useRovingFocus(name: string) {
   const useRovingFocusItem = (options: RovingFocusItemOptions = {}) => {
     const { getCollectionElements } = useCollectionContext();
     const { collectionItemProps } = useCollectionItem();
-    const { currentTabStopId, orientation, dir, loop, onItemFocus, onItemShiftTab } = useRovingFocusGroupContext();
+    const {
+      currentTabStopId,
+      orientation,
+      dir,
+      loop,
+      onItemFocus,
+      onItemShiftTab,
+      onFocusableItemAdd,
+      onFocusableItemRemove
+    } = useRovingFocusGroupContext();
 
     const { active, allowShiftKey } = options;
 
@@ -215,6 +224,14 @@ export function useRovingFocus(name: string) {
       },
       keydown: onKeyDown
     };
+
+    onMounted(() => {
+      onFocusableItemAdd();
+    });
+
+    onBeforeUnmount(() => {
+      onFocusableItemRemove();
+    });
 
     return {
       rovingFocusItemProps,
