@@ -6,6 +6,18 @@ export type Direction = 'ltr' | 'rtl';
 
 export type DisclosureState = 'open' | 'closed';
 
+export type FocusIntent = 'first' | 'last' | 'prev' | 'next';
+
+export type NavigationKey =
+  | 'ArrowDown'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'ArrowUp'
+  | 'End'
+  | 'Home'
+  | 'PageDown'
+  | 'PageUp';
+
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)
  * otherwise, it will be passed string

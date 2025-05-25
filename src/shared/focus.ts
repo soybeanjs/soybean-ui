@@ -1,12 +1,30 @@
+import { MAP_KEY_TO_FOCUS_INTENT } from '../constants';
+import type { DataOrientation, Direction, NavigationKey } from '../types';
+import { getActiveElement } from './dom';
+
 type FocusableTarget = HTMLElement | { focus: () => void };
 
 /** Attempts focusing the first element in a list of candidates. Stops when focus has actually moved. */
-export function focusFirst(candidates: HTMLElement[], { select = false } = {}) {
-  const previouslyFocusedElement = document.activeElement;
+export function focusFirstAndSelect(candidates: HTMLElement[], { select = false } = {}) {
+  const previouslyFocusedElement = getActiveElement();
+
   for (const candidate of candidates) {
     focus(candidate, { select });
-    if (document.activeElement !== previouslyFocusedElement) return;
+
+    if (getActiveElement() !== previouslyFocusedElement) return;
   }
+}
+
+export function tryFocusFirst(candidates: HTMLElement[], preventScroll = false) {
+  const previouslyFocusedElement = getActiveElement();
+
+  return candidates.some(candidate => {
+    // if focus is already where we want to go, we don't want to keep going through the candidates
+    if (candidate === previouslyFocusedElement) return true;
+    candidate.focus({ preventScroll });
+
+    return getActiveElement() !== previouslyFocusedElement;
+  });
 }
 
 /** Returns the first and last tabbable elements inside a container. */
@@ -83,7 +101,7 @@ export function focus(element?: FocusableTarget | null, { select = false } = {})
   // only focus if that element is focusable
   if (!element || !element.focus) return;
 
-  const previouslyFocusedElement = document.activeElement;
+  const previouslyFocusedElement = getActiveElement();
   // NOTE: we prevent scrolling on focus, to minimize jarring transitions for users
   element.focus({ preventScroll: true });
 
@@ -93,4 +111,28 @@ export function focus(element?: FocusableTarget | null, { select = false } = {})
   if (!isSelectableInput(element)) return;
 
   element.select();
+}
+
+export function getDirectionAwareKey(key: string, dir?: Direction) {
+  if (dir !== 'rtl') return key;
+
+  if (key === 'ArrowLeft') return 'ArrowRight';
+
+  if (key === 'ArrowRight') return 'ArrowLeft';
+
+  return key;
+}
+
+export function getFocusIntent(event: KeyboardEvent, orientation?: DataOrientation, dir?: Direction) {
+  const key = getDirectionAwareKey(event.key, dir);
+
+  if (orientation === 'vertical' && ['ArrowLeft', 'ArrowRight'].includes(key)) {
+    return undefined;
+  }
+
+  if (orientation === 'horizontal' && ['ArrowUp', 'ArrowDown'].includes(key)) {
+    return undefined;
+  }
+
+  return MAP_KEY_TO_FOCUS_INTENT[key as NavigationKey];
 }
