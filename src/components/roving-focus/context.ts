@@ -125,7 +125,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 );
 
 function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
-  const { getCollectionElements } = useCollectionContext();
+  const { getCollectionElements } = useCollectionContext('RovingFocusItem');
   const { collectionItemProps } = useCollectionItem();
   const {
     currentTabStopId,
@@ -136,7 +136,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
     onItemShiftTab,
     onFocusableItemAdd,
     onFocusableItemRemove
-  } = useRovingFocusGroupContext();
+  } = useRovingFocusGroupContext('RovingFocusItem');
 
   const { active, allowShiftKey } = options;
 

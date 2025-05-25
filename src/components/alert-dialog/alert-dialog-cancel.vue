@@ -9,7 +9,7 @@ defineOptions({
 
 const props = defineProps<AlertDialogCancelProps>();
 
-const { setCancelElement } = useAlertDialogContentContext();
+const { setCancelElement } = useAlertDialogContentContext('AlertDialogCancel');
 </script>
 
 <template>
