@@ -1,7 +1,5 @@
 import type { Ref } from 'vue';
-import { useContext, useRovingFocus } from '../../../../src/composables';
-
-export const { provideRovingFocusGroupContext, useRovingFocusItem } = useRovingFocus('Button');
+import { useContext } from '../../../../src/composables';
 
 interface ButtonRovingFocusContextParams {
   modelValue: Ref<string>;

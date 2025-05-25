@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { buttonVariants } from '@soybean-ui/variants';
-import { useButtonRovingFocusContext, useRovingFocusItem } from './context';
+import { RovingFocusItem } from '../../../../src/components/roving-focus';
+import { useButtonRovingFocusContext } from './context';
 
 interface Props {
   value: string;
@@ -15,10 +16,6 @@ const { modelValue, onModelValueChange } = useButtonRovingFocusContext('Button')
 const isSelected = computed(
   () => modelValue.value !== undefined && props.value !== undefined && modelValue.value === props.value
 );
-const { rovingFocusItemProps, rovingFocusItemEvents } = useRovingFocusItem({
-  active: isSelected,
-  focusable: computed(() => !props.disabled)
-});
 
 const buttonClasses = computed(() => buttonVariants({ variant: isSelected.value ? 'solid' : 'pure' }));
 
@@ -30,11 +27,7 @@ const onClick = () => {
   onModelValueChange(props.value);
 };
 
-const onFocus = (event: FocusEvent) => {
-  rovingFocusItemEvents.focus();
-
-  if (event.defaultPrevented) return;
-
+const onFocus = () => {
   if (modelValue.value !== undefined) {
     onClick();
   }
@@ -42,13 +35,9 @@ const onFocus = (event: FocusEvent) => {
 </script>
 
 <template>
-  <button
-    v-bind="rovingFocusItemProps"
-    :class="buttonClasses"
-    :value="value"
-    :disabled="disabled"
-    v-on="{ ...rovingFocusItemEvents, focus: onFocus, click: onClick }"
-  >
-    <slot />
-  </button>
+  <RovingFocusItem as="template" :active="isSelected" :focusable="!disabled">
+    <button :class="buttonClasses" :value="value" :disabled="disabled" @click="onClick" @focus="onFocus">
+      <slot />
+    </button>
+  </RovingFocusItem>
 </template>

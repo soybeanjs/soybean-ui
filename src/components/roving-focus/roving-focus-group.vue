@@ -1,0 +1,34 @@
+<script setup lang="ts">
+import { transformPropsToContext } from '../../shared';
+import { Primitive } from '../primitive';
+import { provideRovingFocusGroupContext } from './context';
+import type { RovingFocusGroupEmits, RovingFocusGroupProps } from './types';
+
+defineOptions({
+  name: 'RovingFocusGroup'
+});
+
+const props = withDefaults(defineProps<RovingFocusGroupProps>(), {
+  loop: false,
+  orientation: undefined,
+  preventScrollOnEntryFocus: false
+});
+
+const emit = defineEmits<RovingFocusGroupEmits>();
+
+const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGroupContext({
+  ...transformPropsToContext(props),
+  onUpdateCurrentTabStopId: (value: string | null | undefined) => {
+    emit('update:currentTabStopId', value);
+  },
+  onEntryFocus: (event: Event) => {
+    emit('entryFocus', event);
+  }
+});
+</script>
+
+<template>
+  <Primitive v-bind="rovingFocusGroupProps" :class="props.class" :as="as" v-on="rovingFocusGroupEvents">
+    <slot />
+  </Primitive>
+</template>

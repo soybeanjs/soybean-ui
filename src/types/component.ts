@@ -1,5 +1,4 @@
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from './event';
-import type { DataOrientation, Direction } from './common';
 
 export interface ForceMountProps {
   /**
@@ -56,46 +55,4 @@ export interface FormFieldProps<T = unknown> {
   value: T;
   /** When `true`, indicates that the user must set the value before the owning form can be submitted. */
   required?: boolean;
-}
-
-export interface RovingFocusGroupProps {
-  /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
-  orientation?: DataOrientation;
-  /** The direction of navigation between items. */
-  dir?: Direction;
-  /**
-   * Whether keyboard navigation should loop around
-   *
-   * @defaultValue false
-   */
-  loop?: boolean;
-  /** The controlled value of the current stop item. Can be bound as `v-model`. */
-  currentTabStopId?: string | null;
-  /**
-   * The value of the current stop item.
-   *
-   * Use when you do not need to control the state of the stop item.
-   */
-  defaultCurrentTabStopId?: string;
-  /** When `true`, will prevent scrolling to the focus item when focused. */
-  preventScrollOnEntryFocus?: boolean;
-}
-
-export type RovingFocusGroupEmits = {
-  entryFocus: [event: Event];
-  'update:currentTabStopId': [value: string | null | undefined];
-};
-
-export interface RovingFocusItemProps {
-  tabStopId?: string;
-  /**
-   * When `false`, item will not be focusable.
-   *
-   * @defaultValue `true`
-   */
-  focusable?: boolean;
-  /** When `true`, item will be initially focused. */
-  active?: boolean;
-  /** When `true`, shift + arrow key will allow focusing on next/previous item. */
-  allowShiftKey?: boolean;
 }

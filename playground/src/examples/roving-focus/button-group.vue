@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { RovingFocusGroupProps } from '../../../../src/types';
-import { transformPropsToContext } from '../../../../src/shared';
-import { provideButtonRovingFocusContext, provideRovingFocusGroupContext } from './context';
+import { RovingFocusGroup } from '../../../../src/components/roving-focus';
+import type { RovingFocusGroupProps } from '../../../../src/components/roving-focus';
+import { provideButtonRovingFocusContext } from './context';
 
 interface Props extends RovingFocusGroupProps {
   defaultValue?: string;
@@ -16,22 +16,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 const modelValue = ref(props.defaultValue);
 
-const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGroupContext(
-  transformPropsToContext(props)
-);
-
 provideButtonRovingFocusContext({ modelValue });
 </script>
 
 <template>
-  <div
-    v-bind="rovingFocusGroupProps"
+  <RovingFocusGroup
     :loop="props.loop"
     :orientation="props.orientation"
     class="inline-flex gap-2"
     :class="props.orientation === 'horizontal' ? 'flex-row' : 'flex-col'"
-    v-on="rovingFocusGroupEvents"
   >
     <slot />
-  </div>
+  </RovingFocusGroup>
 </template>
