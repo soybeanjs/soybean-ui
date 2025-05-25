@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { provideCollectionContext } from './context';
 
-const { setCollectionElement } = provideCollectionContext();
+const { collectionProps } = provideCollectionContext();
 </script>
 
 <template>
-  <ul :ref="setCollectionElement">
+  <ul v-bind="collectionProps">
     <slot />
   </ul>
 </template>

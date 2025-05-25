@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { COLLECTION_ITEM_ATTRIBUTE } from '../../../../src/constants';
 import { useCollectionItem } from './context';
 
 interface Props {
@@ -7,13 +6,13 @@ interface Props {
   value: string;
 }
 
-const props = defineProps<Props>();
+const { label, value } = defineProps<Props>();
 
-const { setCollectionItemElement } = useCollectionItem(props);
+const { collectionItemProps } = useCollectionItem({ label, value });
 </script>
 
 <template>
-  <li :ref="setCollectionItemElement" :[COLLECTION_ITEM_ATTRIBUTE]="true">
+  <li v-bind="collectionItemProps">
     <slot />
   </li>
 </template>

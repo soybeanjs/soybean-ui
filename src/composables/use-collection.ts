@@ -1,10 +1,11 @@
 import { markRaw, onBeforeUnmount, shallowRef } from 'vue';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
+import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 import { useForwardElement } from './use-forward-element';
 
-type CollectionItemMapData<ItemData> = {
+export type CollectionItemMapData<ItemData> = {
   element: HTMLElement;
   data: ItemData;
 };
@@ -17,6 +18,12 @@ export function useCollection<ItemData = {}>(name: string) {
 
     const collectionItemMap = new Map<HTMLElement, CollectionItemMapData<ItemData>>();
 
+    /**
+     * Get the data of the collection items.
+     *
+     * @param filterDisabled - Whether to filter out disabled items. Default is `true`
+     * @returns The data of the collection items.
+     */
     const getCollectionItemData = (filterDisabled = true) => {
       if (!collectionElement.value) return [];
 
@@ -32,19 +39,31 @@ export function useCollection<ItemData = {}>(name: string) {
       return orderedItems.filter(item => !isElementHasAttribute(item.element, 'disabled'));
     };
 
+    /**
+     * Get the elements of the collection items.
+     *
+     * @param filterDisabled - Whether to filter out disabled items. Default is `true`
+     * @returns The elements of the collection items.
+     */
+    const getCollectionElements = (filterDisabled = true) =>
+      getCollectionItemData(filterDisabled).map(item => item.element);
+
     onBeforeUnmount(() => {
       collectionItemMap.clear();
     });
 
     return {
       collectionElement,
-      setCollectionElement,
+      collectionProps: {
+        ref: setCollectionElement
+      },
       collectionItemMap,
-      getCollectionItemData
+      getCollectionItemData,
+      getCollectionElements
     };
   });
 
-  const useCollectionItem = (itemData: ItemData) => {
+  const useCollectionItem = (itemData: ItemData = {} as ItemData) => {
     const consumerName = toPascalCase(`${name}Item`);
     const { collectionItemMap } = useCollectionContext(consumerName);
 
@@ -70,7 +89,10 @@ export function useCollection<ItemData = {}>(name: string) {
 
     return {
       collectionItemElement,
-      setCollectionItemElement
+      collectionItemProps: {
+        ref: setCollectionItemElement,
+        [COLLECTION_ITEM_ATTRIBUTE]: true
+      }
     };
   };
 
