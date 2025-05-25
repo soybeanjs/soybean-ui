@@ -1,16 +1,7 @@
-import {
-  Comment,
-  Fragment,
-  computed,
-  getCurrentInstance,
-  getCurrentScope,
-  onBeforeUnmount,
-  onScopeDispose,
-  toValue
-} from 'vue';
+import { Comment, Fragment, computed, getCurrentInstance } from 'vue';
 import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
-import type { Fn, MaybeComputedElementRef, PropsToContext, UnRefElementReturn, VNodeRef } from '../types';
+import type { PropsToContext, VNodeRef } from '../types';
 
 export function getLifeCycleTarget(target?: any) {
   return target || getCurrentInstance();
@@ -69,36 +60,9 @@ export function transformPropsToContext<T extends Record<string, any>, K extends
   );
 }
 
-/**
- * Call onBeforeUnmount() if it's inside a component lifecycle, if not, do nothing
- *
- * @param fn
- * @param target
- */
-export function tryOnBeforeUnmount(fn: Fn, target?: any) {
-  const instance = getLifeCycleTarget(target);
-  if (instance) onBeforeUnmount(fn, target);
-}
+export function isFormControl(el?: HTMLElement) {
+  // We set this to true by default so that events bubble to forms without JS (SSR)
+  if (!el) return true;
 
-/**
- * Call onScopeDispose() if it's inside an effect scope lifecycle, if not, do nothing
- *
- * @param fn
- */
-export function tryOnScopeDispose(fn: Fn) {
-  if (getCurrentScope()) {
-    onScopeDispose(fn);
-    return true;
-  }
-  return false;
-}
-
-/**
- * Get the dom element of a ref of element or Vue component instance
- *
- * @param elRef
- */
-export function unrefElement<T extends VNodeRef>(elRef: MaybeComputedElementRef<T>): UnRefElementReturn<T> {
-  const plain = toValue(elRef);
-  return (plain as ComponentPublicInstance)?.$el ?? plain;
+  return el.classList.contains('form');
 }
