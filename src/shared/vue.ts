@@ -60,7 +60,7 @@ export function transformPropsToContext<T extends Record<string, any>, K extends
   );
 }
 
-export function isFormControl(el?: HTMLElement) {
+export function isFormControl(el?: HTMLElement | null) {
   // We set this to true by default so that events bubble to forms without JS (SSR)
   if (!el) return true;
 
