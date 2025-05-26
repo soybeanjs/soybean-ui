@@ -31,3 +31,17 @@ export function isElementHasAttribute(element: HTMLElement, attribute: string) {
 export function getCollectionItemElements(element: HTMLElement) {
   return Array.from(element.querySelectorAll(`[${COLLECTION_ITEM_ATTRIBUTE}]`)) as HTMLElement[];
 }
+
+export function getAriaLabel(element?: HTMLElement, id?: string, ariaLabel?: string) {
+  if (ariaLabel) {
+    return ariaLabel;
+  }
+
+  if (!id || !element) {
+    return undefined;
+  }
+
+  const labelElement = document.querySelector(`[for="${id}"]`) as HTMLLabelElement;
+
+  return labelElement?.textContent ?? undefined;
+}

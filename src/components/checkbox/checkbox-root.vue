@@ -56,17 +56,7 @@ const checkboxState = computed<CheckedState>(() => {
   return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
 });
 
-const ariaLabel = computed(() => {
-  if (attrs['aria-label']) {
-    return attrs['aria-label'];
-  }
-
-  if (!props.id || !element.value) {
-    return undefined;
-  }
-
-  return (document.querySelector(`[for="${props.id}"]`) as HTMLLabelElement)?.textContent;
-});
+const ariaLabel = computed(() => getAriaLabel(rootElement.value, props.id, attrs['aria-label'] as string));
 
 const ariaChecked = computed(() => {
   if (isIndeterminate(checkboxState.value)) {
