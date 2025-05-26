@@ -23,7 +23,7 @@ const emit = defineEmits<CheckboxGroupRootEmits<T>>();
 provideCheckboxGroupRootContext({
   ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
   onUpdateModelValue: value => {
-    emit('update:modelValue', value as T[]);
+    emit('update:modelValue', value as NonNullable<T>[]);
   }
 });
 

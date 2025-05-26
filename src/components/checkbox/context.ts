@@ -1,5 +1,6 @@
 import { computed } from 'vue';
 import { useContext, useControllableState } from '../../composables';
+import type { AcceptableValue } from '../../types';
 import { getCheckedState } from './shared';
 import type { CheckboxGroupRootContextParams, CheckboxRootContextParams } from './types';
 
@@ -10,7 +11,7 @@ export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = us
       () => params.modelValue.value,
       value => {
         if (value) {
-          params.onUpdateModelValue?.(value);
+          params.onUpdateModelValue?.(value as NonNullable<AcceptableValue>[]);
         }
       },
       params.defaultValue.value

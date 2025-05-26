@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
-import { isEqual, isFormControl, isNullish, isValueEqualOrExist } from '../../shared';
+import { getAriaLabel, isEqual, isFormControl, isNullish, isValueEqualOrExist } from '../../shared';
 import type { CheckedState } from '../../types';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
@@ -26,14 +26,12 @@ const attrs = useAttrs();
 
 const groupContext = useCheckboxGroupRootContext();
 
-const [element, setElement] = useForwardElement();
+const [rootElement, setRootElement] = useForwardElement();
 
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (!isNullish(value)) {
-      emit('update:modelValue', value);
-    }
+    emit('update:modelValue', value ?? false);
   },
   props.defaultValue
 );
@@ -42,7 +40,7 @@ const rovingFocus = computed(() => groupContext?.rovingFocus?.value);
 
 const disabled = computed(() => groupContext?.disabled?.value || props.disabled);
 
-const formControl = computed(() => isFormControl(element.value));
+const formControl = computed(() => isFormControl(rootElement.value));
 
 const checkboxState = computed<CheckedState>(() => {
   if (!isNullish(groupContext?.modelValue?.value)) {
@@ -91,7 +89,7 @@ const { dataDisabled, dataState } = provideCheckboxRootContext({
 <template>
   <Primitive
     :id="id"
-    :ref="setElement"
+    :ref="setRootElement"
     :class="props.class"
     :as="rovingFocus ? RovingFocusItem : 'button'"
     role="checkbox"

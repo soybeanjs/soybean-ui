@@ -6,7 +6,8 @@ import type {
   EmitsToHookProps,
   ForceMountProps,
   FormFieldProps,
-  PropsToContext
+  PropsToContext,
+  StringOrNumber
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
@@ -16,20 +17,20 @@ export interface CheckboxRootProps extends ClassValueProp, FormFieldProps {
   modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
   defaultValue?: CheckedState;
+  /** Id of the element */
+  id?: string;
+  /**
+   * The value given as data when submitted with a `name`.
+   *
+   * @defaultValue on
+   */
+  value?: StringOrNumber;
   /**
    * When `true`, prevents the user from interacting with the checkbox
    *
    * @defaultValue false
    */
   disabled?: boolean;
-  /**
-   * The value given as data when submitted with a `name`.
-   *
-   * @defaultValue on
-   */
-  value?: AcceptableValue;
-  /** Id of the element */
-  id?: string;
 }
 
 export type CheckboxRootEmits = {
@@ -63,7 +64,7 @@ export interface CheckboxGroupRootProps<T = AcceptableValue>
 
 export type CheckboxGroupRootEmits<T = AcceptableValue> = {
   /** Event handler called when the value of the checkbox group changes. */
-  'update:modelValue': [value: T[]];
+  'update:modelValue': [value: NonNullable<T>[]];
 };
 
 export type CheckboxGroupRootContextParams = PropsToContext<
