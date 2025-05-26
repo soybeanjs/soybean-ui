@@ -9,6 +9,7 @@ export * from './components/config-provider';
 export * from './components/dialog';
 export * from './components/portal';
 export * from './components/primitive';
+export * from './components/radio-group';
 export * from './components/slot';
 
 export type * from './types';

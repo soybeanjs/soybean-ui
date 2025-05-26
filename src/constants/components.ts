@@ -28,6 +28,7 @@ export const components = {
   ],
   portal: ['Portal'],
   primitive: ['Primitive'],
+  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupIndicator'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   slot: ['Slot'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
