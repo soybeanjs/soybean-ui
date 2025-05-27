@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue';
+import type { ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   CheckedState,
@@ -11,14 +11,13 @@ import type {
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
+import type { LabelProps as CheckboxLabelProps } from '../label/types';
 
 export interface CheckboxRootProps extends ClassValueProp, FormFieldProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
   defaultValue?: CheckedState;
-  /** Id of the element */
-  id?: string;
   /**
    * The value given as data when submitted with a `name`.
    *
@@ -37,6 +36,11 @@ export type CheckboxRootEmits = {
   /** Event handler called when the value of the checkbox changes. */
   'update:modelValue': [value: CheckedState];
 };
+
+export interface CheckboxControlProps extends ClassValueProp {
+  /** Id of the element */
+  id?: string;
+}
 
 export interface CheckboxIndicatorProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
 
@@ -68,11 +72,14 @@ export type CheckboxGroupRootEmits<T = AcceptableValue> = {
 };
 
 export type CheckboxGroupRootContextParams = PropsToContext<
-  Pick<CheckboxGroupRootProps, 'modelValue' | 'defaultValue' | 'rovingFocus' | 'disabled'>
+  CheckboxGroupRootProps,
+  'modelValue' | 'defaultValue' | 'rovingFocus' | 'disabled'
 > &
   EmitsToHookProps<CheckboxGroupRootEmits>;
 
-export interface CheckboxRootContextParams {
-  disabled: ComputedRef<boolean>;
-  state: ComputedRef<CheckedState>;
-}
+export type CheckboxRootContextParams = PropsToContext<Omit<CheckboxRootProps, 'class'>> &
+  EmitsToHookProps<CheckboxRootEmits> & {
+    groupModelValue?: ShallowRef<AcceptableValue[] | undefined>;
+  };
+
+export type { CheckboxLabelProps };

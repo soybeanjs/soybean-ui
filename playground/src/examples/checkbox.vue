@@ -40,8 +40,8 @@ const checked = computed<CheckedState>({
 <template>
   <SectionWrapper title="Checkbox">
     <div>Checkbox Single:</div>
-    <CheckboxRoot id="checkbox-1" v-slot="{ modelValue }" :class="css.root()">
-      <CheckboxControl :class="css.control()">
+    <CheckboxRoot v-slot="{ modelValue }" :class="css.root()">
+      <CheckboxControl id="checkbox-1" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
             <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
@@ -52,8 +52,8 @@ const checked = computed<CheckedState>({
       <CheckboxLabel :class="css.label()">Label</CheckboxLabel>
     </CheckboxRoot>
     <div>Checkbox Group:</div>
-    <CheckboxRoot id="checkbox-2" v-slot="{ modelValue }" v-model="checked" :class="css.root()">
-      <CheckboxControl :class="css.control()">
+    <CheckboxRoot v-slot="{ modelValue }" v-model="checked" :class="css.root()">
+      <CheckboxControl id="checkbox-2" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
             <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
@@ -66,13 +66,12 @@ const checked = computed<CheckedState>({
     <CheckboxGroupRoot v-model="selected" :class="css.groupRoot()">
       <CheckboxRoot
         v-for="item in items"
-        :id="`checkbox-${item.value}`"
         v-slot="{ modelValue }"
         :key="item.value"
         :value="item.value"
         :class="css.root()"
       >
-        <CheckboxControl :class="css.control()">
+        <CheckboxControl :id="`checkbox-${item.value}`" :class="css.control()">
           <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
             <CheckboxIndicator :class="css.indicator()">
               <Minus v-if="modelValue === 'indeterminate'" class="size-full" />

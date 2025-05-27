@@ -3,7 +3,6 @@ import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import type { AcceptableValue } from '../../types';
-import { Primitive } from '../primitive';
 import { RovingFocusGroup } from '../roving-focus';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -39,14 +38,15 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
 </script>
 
 <template>
-  <Primitive
+  <component
+    :is="rovingFocus ? RovingFocusGroup : 'div'"
     :ref="setElement"
-    :as="rovingFocus ? RovingFocusGroup : 'div'"
     v-bind="rovingFocusProps"
     :class="props.class"
+    as="div"
   >
     <slot />
 
     <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
-  </Primitive>
+  </component>
 </template>
