@@ -26,6 +26,7 @@ export const components = {
     'DialogDescription',
     'DialogClose'
   ],
+  label: ['Label'],
   portal: ['Portal'],
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupIndicator'],
