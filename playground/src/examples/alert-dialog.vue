@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { buttonVariants, dialogVariants } from '@soybean-ui/variants';
+import { buttonVariants } from '../variants/button';
+import { dialogVariants } from '../variants/dialog';
 import {
   AlertDialogCancel,
   AlertDialogContent,

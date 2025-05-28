@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { accordionVariants } from '@soybean-ui/variants';
 import { ChevronDown } from 'lucide-vue-next';
 import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from '../../../src';
+import { accordionVariants } from '../variants/accordion';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { root, item, header, trigger, triggerIcon, content } = accordionVariants();

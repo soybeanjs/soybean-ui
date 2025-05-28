@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { buttonVariants, dialogVariants } from '@soybean-ui/variants';
 import { X } from 'lucide-vue-next';
+import { buttonVariants } from '../variants/button';
+import { dialogVariants } from '../variants/dialog';
 import {
   DialogClose,
   DialogContent,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { buttonVariants } from '@soybean-ui/variants';
+import { buttonVariants } from '../../variants/button';
 import { RovingFocusItem } from '../../../../src/components/roving-focus';
 import { useButtonRovingFocusContext } from './context';
 

@@ -75,7 +75,6 @@
     "update-pkg": "soy ncu"
   },
   "dependencies": {
-    "@soybean-ui/variants": "0.0.2-beta.5",
     "@unocss/reset": "66.1.2",
     "@vue/shared": "3.5.15",
     "aria-hidden": "1.2.6",

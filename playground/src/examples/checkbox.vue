@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { checkboxVariants } from '@soybean-ui/variants';
 import { Check, Minus } from 'lucide-vue-next';
-import { CheckboxGroupRoot, CheckboxIndicator, CheckboxRoot } from '../../../src/components/checkbox';
+import { checkboxVariants } from '../variants/checkbox';
+import {
+  CheckboxControl,
+  CheckboxGroupRoot,
+  CheckboxIndicator,
+  CheckboxLabel,
+  CheckboxRoot
+} from '../../../src/components/checkbox';
 import type { CheckedState } from '../../../src/types';
 import SectionWrapper from '../components/section-wrapper.vue';
 
@@ -34,41 +40,48 @@ const checked = computed<CheckedState>({
 <template>
   <SectionWrapper title="Checkbox">
     <div>Checkbox Single:</div>
-    <div :class="css.root()">
-      <CheckboxRoot id="checkbox-1" v-slot="{ modelValue }" :class="css.control()">
+    <CheckboxRoot id="checkbox-1" v-slot="{ modelValue }" :class="css.root()">
+      <CheckboxControl :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
             <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
             <Check v-else class="size-full" />
           </CheckboxIndicator>
         </Transition>
-      </CheckboxRoot>
-      <label for="checkbox-1" :class="css.label()">Label</label>
-    </div>
+      </CheckboxControl>
+      <CheckboxLabel :class="css.label()">Label</CheckboxLabel>
+    </CheckboxRoot>
     <div>Checkbox Group:</div>
-    <div :class="css.root()">
-      <CheckboxRoot id="checkbox-2" v-slot="{ modelValue }" v-model="checked" :class="css.control()">
+    <CheckboxRoot id="checkbox-2" v-slot="{ modelValue }" v-model="checked" :class="css.root()">
+      <CheckboxControl :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
             <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
             <Check v-else class="size-full" />
           </CheckboxIndicator>
         </Transition>
-      </CheckboxRoot>
-      <label for="checkbox-2" :class="css.label()">Check All</label>
-    </div>
+      </CheckboxControl>
+      <CheckboxLabel :class="css.label()">Check All</CheckboxLabel>
+    </CheckboxRoot>
     <CheckboxGroupRoot v-model="selected" :class="css.groupRoot()">
-      <div v-for="item in items" :key="item.value" :class="css.root()">
-        <CheckboxRoot :id="`checkbox-${item.value}`" v-slot="{ modelValue }" :value="item.value" :class="css.control()">
+      <CheckboxRoot
+        v-for="item in items"
+        :id="`checkbox-${item.value}`"
+        v-slot="{ modelValue }"
+        :key="item.value"
+        :value="item.value"
+        :class="css.root()"
+      >
+        <CheckboxControl :class="css.control()">
           <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
             <CheckboxIndicator :class="css.indicator()">
               <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
               <Check v-else class="size-full" />
             </CheckboxIndicator>
           </Transition>
-        </CheckboxRoot>
-        <label :for="item.value" :class="css.label()">{{ item.label }}</label>
-      </div>
+        </CheckboxControl>
+        <CheckboxLabel :class="css.label()">{{ item.label }}</CheckboxLabel>
+      </CheckboxRoot>
     </CheckboxGroupRoot>
   </SectionWrapper>
 </template>

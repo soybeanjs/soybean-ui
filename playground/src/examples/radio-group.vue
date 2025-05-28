@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { radioVariants } from '@soybean-ui/variants';
+import { radioVariants } from '../variants/radio';
 import { RadioGroupIndicator, RadioGroupItem, RadioGroupRoot } from '../../../src';
 import SectionWrapper from '../components/section-wrapper.vue';
 
