@@ -10,7 +10,8 @@ export default defineConfig(
       'no-plusplus': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
       'vue/multi-word-component-names': 'off',
-      'vue/no-static-inline-styles': 'off'
+      'vue/no-static-inline-styles': 'off',
+      'vue/no-reserved-component-names': 'off'
     }
   }
 );
