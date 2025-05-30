@@ -13,7 +13,7 @@ export const components = {
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
-  checkbox: ['CheckboxRoot', 'CheckboxIndicator', 'CheckboxGroupRoot'],
+  checkbox: ['CheckboxRoot', 'CheckboxControl', 'CheckboxIndicator', 'CheckboxLabel', 'CheckboxGroupRoot'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   configProvider: ['ConfigProvider'],
   dialog: [
@@ -29,7 +29,7 @@ export const components = {
   label: ['Label'],
   portal: ['Portal'],
   primitive: ['Primitive'],
-  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupIndicator'],
+  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   slot: ['Slot'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
