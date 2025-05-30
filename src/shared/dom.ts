@@ -32,7 +32,7 @@ export function getCollectionItemElements(element: HTMLElement) {
   return Array.from(element.querySelectorAll(`[${COLLECTION_ITEM_ATTRIBUTE}]`)) as HTMLElement[];
 }
 
-export function getAriaLabel(element?: HTMLElement, id?: string, ariaLabel?: string) {
+export function getAriaLabel(element?: HTMLElement | null, id?: string, ariaLabel?: string) {
   if (ariaLabel) {
     return ariaLabel;
   }
