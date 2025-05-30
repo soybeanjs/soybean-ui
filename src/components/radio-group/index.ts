@@ -1,14 +1,18 @@
 import RadioGroupRoot from './radio-group-root.vue';
 import RadioGroupItem from './radio-group-item.vue';
+import RadioGroupControl from './radio-group-control.vue';
 import RadioGroupIndicator from './radio-group-indicator.vue';
+import RadioGroupLabel from './radio-group-label.vue';
 
-export { RadioGroupRoot, RadioGroupItem, RadioGroupIndicator };
+export { RadioGroupRoot, RadioGroupItem, RadioGroupControl, RadioGroupIndicator, RadioGroupLabel };
 
 export type {
   RadioGroupRootProps,
   RadioGroupRootEmits,
   RadioGroupItemProps,
   RadioGroupItemEmits,
+  RadioGroupControlProps,
   RadioGroupIndicatorProps,
-  RadioSelectEvent
+  RadioSelectEvent,
+  RadioGroupLabelProps
 } from './types';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { radioVariants } from '../variants/radio';
-import { RadioGroupIndicator, RadioGroupItem, RadioGroupRoot } from '../../../src';
+import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel, RadioGroupRoot } from '../../../src';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const css = radioVariants();
@@ -19,14 +19,14 @@ const items = [
 <template>
   <SectionWrapper title="RadioGroup">
     <RadioGroupRoot v-model="selected">
-      <div v-for="item in items" :key="item.value" :class="css.root()">
-        <RadioGroupItem :id="`radio-${item.value}`" :class="css.control()" :value="item.value">
+      <RadioGroupItem v-for="item in items" :key="item.value" :value="item.value" :class="css.root()">
+        <RadioGroupControl :id="`radio-${item.value}`" :class="css.control()">
           <Transition enter-active-class="transition" enter-from-class="opacity-0 scale-0">
             <RadioGroupIndicator :class="css.indicator()" />
           </Transition>
-        </RadioGroupItem>
-        <label :for="`radio-${item.value}`" :class="css.label()">{{ item.label }}</label>
-      </div>
+        </RadioGroupControl>
+        <RadioGroupLabel :class="css.label()">{{ item.label }}</RadioGroupLabel>
+      </RadioGroupItem>
     </RadioGroupRoot>
   </SectionWrapper>
 </template>

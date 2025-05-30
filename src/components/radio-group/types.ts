@@ -11,6 +11,7 @@ import type {
   StringOrNumber
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
+import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 export interface RadioGroupRootProps<T = AcceptableValue> extends ClassValueProp, FormFieldProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
@@ -39,8 +40,6 @@ export type RadioGroupRootContextParams = PropsToContext<Omit<RadioGroupRootProp
   EmitsToHookProps<RadioGroupRootEmits>;
 
 export interface RadioGroupItemProps extends ClassValueProp, FormFieldProps {
-  /** Id of the element */
-  id?: string;
   /** The value given as data when submitted with a `name`. */
   value?: StringOrNumber;
   /** When `true`, prevents the user from interacting with the radio item. */
@@ -57,11 +56,23 @@ export type RadioGroupItemEmits = {
   select: [event: RadioSelectEvent];
 };
 
-export interface RadioGroupItemContextParams {
-  /** Whether the radio item is disabled */
-  disabled: ComputedRef<boolean>;
-  /** Whether the radio item is checked */
-  checked: ComputedRef<boolean>;
+export interface RadioGroupControlProps extends ClassValueProp {
+  /** Id of the element */
+  id?: string;
 }
 
+export type RadioGroupItemContextParams = PropsToContext<Omit<RadioGroupItemProps, 'class'>> &
+  EmitsToHookProps<RadioGroupItemEmits> & {
+    /** Whether the radio item is checked */
+    checked: ComputedRef<boolean>;
+    /**
+     * Event handler called when the radio item is selected
+     *
+     * @param event - The event object
+     */
+    onSelect: (event: RadioSelectEvent) => void;
+  };
+
 export interface RadioGroupIndicatorProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
+
+export type { RadioGroupLabelProps };
