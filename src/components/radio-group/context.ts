@@ -1,24 +1,11 @@
 import { computed, shallowRef } from 'vue';
 import { getCheckedState } from '../checkbox/shared';
-import { useContext, useControllableState } from '../../composables';
+import { useContext } from '../../composables';
 import type { RadioGroupItemContextParams, RadioGroupRootContextParams } from './types';
 
 export const [provideRadioGroupRootContext, useRadioGroupRootContext] = useContext(
   'RadioGroupRoot',
-  (params: RadioGroupRootContextParams) => {
-    const modelValue = useControllableState(
-      () => params.modelValue.value,
-      value => {
-        params.onUpdateModelValue?.(value);
-      },
-      params.defaultValue.value
-    );
-
-    return {
-      ...params,
-      modelValue
-    };
-  }
+  (params: RadioGroupRootContextParams) => params
 );
 
 export const [provideRadioGroupItemContext, useRadioGroupItemContext] = useContext(

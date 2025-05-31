@@ -1,8 +1,7 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   CheckedState,
-  EmitsToHookProps,
   ForceMountProps,
   FormFieldProps,
   PropsToContext,
@@ -33,7 +32,7 @@ export interface CheckboxRootProps extends FormFieldProps, /** @vue-ignore */ HT
 
 export type CheckboxRootEmits = {
   /** Event handler called when the value of the checkbox changes. */
-  'update:modelValue': [value: CheckedState];
+  'update:modelValue': [value: CheckedState | null];
 };
 
 export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
@@ -72,18 +71,16 @@ export type CheckboxGroupRootEmits<T = AcceptableValue> = {
   'update:modelValue': [value: NonNullable<T>[]];
 };
 
-export type CheckboxGroupRootContextParams = PropsToContext<
-  CheckboxGroupRootProps,
-  'modelValue' | 'defaultValue' | 'rovingFocus' | 'disabled'
-> &
-  EmitsToHookProps<CheckboxGroupRootEmits>;
+export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
+  modelValue: ShallowRef<AcceptableValue[] | undefined>;
+};
 
 export type CheckboxRootContextParams = PropsToContext<
   CheckboxRootProps,
-  'modelValue' | 'defaultValue' | 'value' | 'disabled' | 'name' | 'required'
-> &
-  EmitsToHookProps<CheckboxRootEmits> & {
-    groupModelValue?: ShallowRef<AcceptableValue[] | undefined>;
-  };
+  'value' | 'disabled' | 'name' | 'required'
+> & {
+  modelValue: ShallowRef<CheckedState | null | undefined>;
+  state: ComputedRef<CheckedState>;
+};
 
 export type { CheckboxLabelProps };

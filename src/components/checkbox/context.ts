@@ -1,54 +1,17 @@
 import { computed, shallowRef } from 'vue';
-import { isNullish, isValueEqualOrExist } from '../../shared';
-import { useContext, useControllableState } from '../../composables';
-import type { AcceptableValue, CheckedState } from '../../types';
+import { useContext } from '../../composables';
 import { getCheckedState, isIndeterminate } from './shared';
 import type { CheckboxGroupRootContextParams, CheckboxRootContextParams } from './types';
 
 export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = useContext(
   'CheckboxGroupRoot',
-  (params: CheckboxGroupRootContextParams) => {
-    const modelValue = useControllableState(
-      () => params.modelValue.value,
-      value => {
-        if (value) {
-          params.onUpdateModelValue?.(value as NonNullable<AcceptableValue>[]);
-        }
-      },
-      params.defaultValue.value
-    );
-
-    return {
-      ...params,
-      modelValue
-    };
-  }
+  (params: CheckboxGroupRootContextParams) => params
 );
 
 export const [provideCheckboxRootContext, useCheckboxRootContext] = useContext(
   'CheckboxRoot',
   (params: CheckboxRootContextParams) => {
-    const modelValue = useControllableState(
-      () => params.modelValue.value,
-      value => {
-        if (!isNullish(value)) {
-          params.onUpdateModelValue?.(value);
-        }
-      },
-      params.defaultValue.value
-    );
-
-    const state = computed<CheckedState>(() => {
-      if (!isNullish(params.groupModelValue?.value)) {
-        return isValueEqualOrExist(params.groupModelValue.value, params.value.value);
-      }
-
-      if (isNullish(modelValue.value)) {
-        return false;
-      }
-
-      return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
-    });
+    const { modelValue, state } = params;
 
     const ariaChecked = computed(() => {
       if (isIndeterminate(state.value)) {

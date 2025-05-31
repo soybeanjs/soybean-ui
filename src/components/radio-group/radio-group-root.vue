@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue">
 import { computed, useTemplateRef } from 'vue';
+import { useControllableState } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -23,22 +24,19 @@ const emit = defineEmits<RadioGroupRootEmits<T>>();
 
 const rootElement = useTemplateRef('rootElement');
 
+const modelValue = useControllableState(
+  () => props.modelValue,
+  value => {
+    emit('update:modelValue', value as T);
+  },
+  props.defaultValue
+);
+
 const formControl = computed(() => isFormControl(rootElement.value));
 
 provideRadioGroupRootContext({
-  ...transformPropsToContext(props, [
-    'modelValue',
-    'defaultValue',
-    'disabled',
-    'orientation',
-    'dir',
-    'loop',
-    'name',
-    'required'
-  ]),
-  onUpdateModelValue: value => {
-    emit('update:modelValue', value as T);
-  }
+  ...transformPropsToContext(props, ['disabled', 'orientation', 'dir', 'loop', 'name', 'required']),
+  modelValue
 });
 </script>
 

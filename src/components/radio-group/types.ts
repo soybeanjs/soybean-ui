@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   DataOrientation,
@@ -37,9 +37,10 @@ export type RadioGroupRootEmits<T = AcceptableValue> = {
 
 export type RadioGroupRootContextParams = PropsToContext<
   RadioGroupRootProps,
-  'modelValue' | 'defaultValue' | 'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
-> &
-  EmitsToHookProps<RadioGroupRootEmits>;
+  'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
+> & {
+  modelValue: ShallowRef<AcceptableValue>;
+};
 
 export interface RadioGroupItemProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */

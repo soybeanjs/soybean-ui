@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { isFormControl, transformPropsToContext } from '../../shared';
+import { useControllableState } from '../../composables';
+import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext } from '../../shared';
+import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideCheckboxRootContext, useCheckboxGroupRootContext } from './context';
 import type { CheckboxRootEmits, CheckboxRootProps } from './types';
@@ -20,17 +22,35 @@ const rootElement = useTemplateRef<HTMLDivElement>('rootElement');
 
 const groupContext = useCheckboxGroupRootContext();
 
+const modelValue = useControllableState(
+  () => props.modelValue,
+  value => {
+    if (value !== undefined) {
+      emit('update:modelValue', value);
+    }
+  },
+  props.defaultValue
+);
+
 const formControl = computed(() => isFormControl(rootElement.value));
-
 const disabled = computed(() => groupContext?.disabled?.value || props.disabled);
-
-const { modelValue, state } = provideCheckboxRootContext({
-  ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'value', 'disabled', 'name', 'required']),
-  groupModelValue: groupContext?.modelValue,
-  disabled,
-  onUpdateModelValue: value => {
-    emit('update:modelValue', value);
+const state = computed<CheckedState>(() => {
+  if (!isNullish(groupContext?.modelValue?.value)) {
+    return isValueEqualOrExist(groupContext?.modelValue.value, props.value);
   }
+
+  if (isNullish(modelValue.value)) {
+    return false;
+  }
+
+  return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
+});
+
+provideCheckboxRootContext({
+  ...transformPropsToContext(props, ['value', 'name', 'required']),
+  modelValue,
+  disabled,
+  state
 });
 </script>
 

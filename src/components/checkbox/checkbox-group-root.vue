@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
 import { computed } from 'vue';
-import { useForwardElement } from '../../composables';
+import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -19,16 +19,24 @@ const props = withDefaults(defineProps<CheckboxGroupRootProps<T>>(), {
 
 const emit = defineEmits<CheckboxGroupRootEmits<T>>();
 
+const modelValue = useControllableState(
+  () => props.modelValue,
+  value => {
+    if (value) {
+      emit('update:modelValue', value as NonNullable<T>[]);
+    }
+  },
+  props.defaultValue
+);
+
 provideCheckboxGroupRootContext({
   ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'rovingFocus', 'disabled']),
-  onUpdateModelValue: value => {
-    emit('update:modelValue', value as NonNullable<T>[]);
-  }
+  modelValue
 });
 
-const [element, setElement] = useForwardElement();
+const [groupElement, setGroupElement] = useForwardElement();
 
-const formControl = computed(() => isFormControl(element.value));
+const formControl = computed(() => isFormControl(groupElement.value));
 
 const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
   const { rovingFocus, loop, dir, orientation } = props;
@@ -41,7 +49,7 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
   <component
     :is="rovingFocus ? RovingFocusGroup : 'div'"
     v-bind="{ ...props, ...rovingFocusProps }"
-    :ref="setElement"
+    :ref="setGroupElement"
     as="div"
   >
     <slot />
