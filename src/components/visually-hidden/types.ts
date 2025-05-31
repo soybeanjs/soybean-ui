@@ -16,4 +16,4 @@ export interface VisuallyHiddenInputBubbleProps<T> extends /** @vue-ignore */ In
   feature?: VisuallyHiddenFeature;
 }
 
-export type { VisuallyHiddenInputBubbleProps as VisuallyHiddenInputProps };
+export type VisuallyHiddenInputProps<T> = VisuallyHiddenInputBubbleProps<T>;
