@@ -12,18 +12,14 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
 
     const { open, modal } = params;
 
-    const openModal = () => {
-      open.value = true;
-    };
-    const closeModal = () => {
-      open.value = false;
-    };
     const onOpenChange = (value: boolean) => {
       open.value = value;
     };
     const onOpenToggle = () => {
       open.value = !open.value;
     };
+
+    const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     const contentId = ref('');
     const initContentId = () => {
@@ -43,25 +39,21 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       descriptionId.value = `soybean-dialog-description-${useId()}`;
     };
 
-    const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
-
     return {
       open,
-      modal,
-      openModal,
-      closeModal,
       onOpenChange,
       onOpenToggle,
+      modal,
       dataState,
       triggerElement,
       setTriggerElement,
       contentElement,
       setContentElement,
       contentId,
-      titleId,
-      descriptionId,
       initContentId,
+      titleId,
       initTitleId,
+      descriptionId,
       initDescriptionId
     };
   }

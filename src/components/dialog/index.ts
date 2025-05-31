@@ -27,6 +27,6 @@ export type {
   DialogContentEmits,
   DialogTitleProps,
   DialogDescriptionProps,
-  DialogCloseProps
+  DialogCloseProps,
+  DialogPortalProps
 } from './types';
-export type { PortalProps as DialogPortalProps } from '../portal/types';

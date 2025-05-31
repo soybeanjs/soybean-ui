@@ -12,13 +12,13 @@ const props = withDefaults(defineProps<DialogCloseProps>(), {
   as: 'button'
 });
 
-const { closeModal } = useDialogRootContext('DialogClose');
+const { onOpenChange } = useDialogRootContext('DialogClose');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>
 
 <template>
-  <Primitive v-bind="props" :type="tag" @click="closeModal">
+  <Primitive v-bind="props" :type="tag" @click="onOpenChange(false)">
     <slot />
   </Primitive>
 </template>

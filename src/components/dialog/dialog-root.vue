@@ -26,12 +26,16 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const { closeModal } = provideDialogRootContext({
+const { onOpenChange } = provideDialogRootContext({
   open,
   ...transformPropsToContext(props, ['modal'])
 });
+
+const close = () => {
+  onOpenChange(false);
+};
 </script>
 
 <template>
-  <slot :open="open" :close="closeModal" />
+  <slot :open="open" :close="close" />
 </template>

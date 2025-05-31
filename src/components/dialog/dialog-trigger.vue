@@ -12,12 +12,9 @@ const props = withDefaults(defineProps<DialogTriggerProps>(), {
   as: 'button'
 });
 
-const { open, onOpenToggle, dataState, contentId, initContentId, setTriggerElement } =
-  useDialogRootContext('DialogTrigger');
+const { open, onOpenToggle, dataState, contentId, setTriggerElement } = useDialogRootContext('DialogTrigger');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-
-initContentId();
 </script>
 
 <template>

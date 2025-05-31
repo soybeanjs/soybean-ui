@@ -7,6 +7,7 @@ import type {
   TrapFocusProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
+import type { PortalProps as DialogPortalProps } from '../portal/types';
 
 export interface DialogRootProps {
   /**
@@ -40,7 +41,6 @@ export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ 
 
 export interface DialogContentImplProps
   extends PrimitiveProps,
-    ForceMountProps,
     TrapFocusProps,
     DismissableLayerProps,
     /** @vue-ignore */ HTMLAttributes {}
@@ -51,7 +51,9 @@ export type DialogContentImplEmits = DismissableLayerEmits & {
   closeAutoFocus: [event: Event];
 };
 
-export interface DialogContentProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {}
+export interface DialogContentProps
+  extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>,
+    ForceMountProps {}
 export type DialogContentEmits = DialogContentImplEmits;
 
 export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -63,3 +65,5 @@ export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ But
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal'> {
   open: Ref<boolean | undefined>;
 }
+
+export type { DialogPortalProps };

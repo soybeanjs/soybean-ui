@@ -16,23 +16,18 @@ const emit = defineEmits<DialogContentImplEmits>();
 
 const {
   modal,
-  closeModal,
-  contentId,
+  onOpenChange,
+  setTriggerElement,
   contentElement,
   setContentElement,
-  setTriggerElement,
+  contentId,
+  initContentId,
   initTitleId,
   initDescriptionId,
   dataState,
   titleId,
   descriptionId
 } = useDialogRootContext('DialogContentImpl');
-
-useHideOthers(contentElement, modal.value);
-
-// Make sure the whole tree has focus guards as our `Dialog` will be
-// the last element in the DOM (because of the `Portal`)
-useFocusGuards();
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
@@ -49,7 +44,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
     emit('interactOutside', event);
   },
   onDismiss: () => {
-    closeModal();
+    onOpenChange(false);
   }
 });
 
@@ -73,6 +68,13 @@ const preserveTriggerElement = () => {
   }
 };
 
+useHideOthers(contentElement, modal.value);
+
+// Make sure the whole tree has focus guards as our `Dialog` will be
+// the last element in the DOM (because of the `Portal`)
+useFocusGuards();
+
+initContentId();
 initTitleId();
 initDescriptionId();
 
