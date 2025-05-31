@@ -59,6 +59,7 @@
   "files": ["dist"],
   "scripts": {
     "build": "tsdown",
+    "build:play": "vite build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "tsdown --watch",
