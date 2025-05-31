@@ -26,12 +26,12 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-provideDialogRootContext({
+const { closeModal } = provideDialogRootContext({
   open,
   ...transformPropsToContext(props, ['modal'])
 });
 </script>
 
 <template>
-  <slot :open="open" />
+  <slot :open="open" :close="closeModal" />
 </template>
