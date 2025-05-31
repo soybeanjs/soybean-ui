@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue';
+import { isClient } from '../../shared';
 import { useAvatarRootContext } from './context';
 import type { AvatarFallbackProps } from './types';
 
@@ -15,7 +16,7 @@ const canRender = ref(props.delayMs === undefined);
 const visible = computed(() => canRender.value && imageLoadingStatus.value !== 'loaded');
 
 watchEffect(onCleanup => {
-  if (!props.delayMs) return;
+  if (!props.delayMs || !isClient()) return;
 
   const timerId = window.setTimeout(() => {
     canRender.value = true;
