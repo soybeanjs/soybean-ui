@@ -86,7 +86,6 @@ onMounted(async () => {
     v-bind="props"
     :id="contentId"
     :ref="setContentElement"
-    :as="as"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :hidden="hidden"

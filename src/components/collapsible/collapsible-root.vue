@@ -37,7 +37,7 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="props" :as="as" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive v-bind="props" :data-disabled="dataDisabled" :data-state="dataState">
     <slot :open="open" />
   </Primitive>
 </template>

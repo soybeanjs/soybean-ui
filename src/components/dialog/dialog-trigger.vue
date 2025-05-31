@@ -24,7 +24,6 @@ initContentId();
   <Primitive
     v-bind="props"
     :ref="setTriggerElement"
-    :as="as"
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"

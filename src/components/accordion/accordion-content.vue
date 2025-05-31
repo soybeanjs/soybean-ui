@@ -25,7 +25,6 @@ const style = computed<CSSProperties>(() => ({
 <template>
   <CollapsibleContent
     v-bind="props"
-    :as="as"
     :force-mount="forceMount"
     role="region"
     :aria-labelledby="triggerId"

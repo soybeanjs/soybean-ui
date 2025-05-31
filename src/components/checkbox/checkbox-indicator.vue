@@ -28,7 +28,6 @@ const isPresent = props.forceMount
     v-if="isPresent"
     v-bind="props"
     :ref="setIndicatorElement"
-    :as="as"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :style="{ pointerEvents: 'none' }"

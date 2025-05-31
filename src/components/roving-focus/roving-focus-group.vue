@@ -35,7 +35,7 @@ const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGrou
 </script>
 
 <template>
-  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" :as="as" v-on="rovingFocusGroupEvents">
+  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" v-on="rovingFocusGroupEvents">
     <slot />
   </Primitive>
 </template>

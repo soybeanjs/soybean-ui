@@ -57,7 +57,6 @@ defineExpose({
 <template>
   <CollapsibleRoot
     v-bind="props"
-    :as="as"
     :open="open"
     :disabled="disabled"
     :unmount-on-hide="unmountOnHide"

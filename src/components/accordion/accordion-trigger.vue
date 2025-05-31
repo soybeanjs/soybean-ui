@@ -31,7 +31,6 @@ initTriggerId();
     v-bind="props"
     :id="triggerId"
     :ref="setTriggerElement"
-    :as="as"
     :[COLLECTION_ITEM_ATTRIBUTE]="true"
     :aria-disabled="disabled || undefined"
     :aria-expanded="open || false"

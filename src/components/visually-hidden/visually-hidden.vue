@@ -15,7 +15,6 @@ const props = withDefaults(defineProps<VisuallyHiddenProps>(), {
 <template>
   <Primitive
     v-bind="props"
-    :as="as"
     style="
       position: absolute;
       border: 0;

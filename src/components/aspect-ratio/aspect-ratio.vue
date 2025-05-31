@@ -26,7 +26,7 @@ const style = computed<CSSProperties>(() => ({
 
 <template>
   <div data-soybean-aspect-ratio-wrapper :style="style">
-    <Primitive v-bind="{ ...props, ...attrs }" :as="as" style="position: absolute; inset: 0px">
+    <Primitive v-bind="{ ...props, ...attrs }" style="position: absolute; inset: 0px">
       <slot :aspect="aspect" />
     </Primitive>
   </div>

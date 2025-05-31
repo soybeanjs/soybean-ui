@@ -27,7 +27,6 @@ const dataState = computed(() => getCheckedState(checked.value));
     v-if="isPresent"
     v-bind="props"
     :ref="setIndicatorElement"
-    :as="as"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"
   >

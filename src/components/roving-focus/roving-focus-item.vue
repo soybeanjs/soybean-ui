@@ -18,7 +18,7 @@ const { rovingFocusItemProps, rovingFocusItemEvents } = useRovingFocusItem(
 </script>
 
 <template>
-  <Primitive v-bind="{ ...props, ...rovingFocusItemProps }" :as="as" v-on="rovingFocusItemEvents">
+  <Primitive v-bind="{ ...props, ...rovingFocusItemProps }" v-on="rovingFocusItemEvents">
     <slot />
   </Primitive>
 </template>

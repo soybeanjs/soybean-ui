@@ -86,7 +86,6 @@ onMounted(() => {
     v-bind="{ ...props, ...layerProps, ...focusScopeProps }"
     :id="contentId"
     :ref="setContentElement"
-    :as="as"
     role="dialog"
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"
