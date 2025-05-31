@@ -58,7 +58,7 @@ const wrapperStyle = computed<CSSProperties>(() => {
   const { transformOrigin, hide } = middlewareData.value;
 
   return {
-    ...floatingStyles,
+    ...floatingStyles.value,
     transform: isPositioned.value ? floatingStyles.value.transform : 'translate(0, -200%)',
     minWidth: 'max-content',
     zIndex: contentZIndex.value,
