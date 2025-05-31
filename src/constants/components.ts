@@ -27,6 +27,7 @@ export const components = {
     'DialogClose'
   ],
   label: ['Label'],
+  popper: ['PopperRoot', 'PopperAnchor', 'PopperContent', 'PopperArrow'],
   portal: ['Portal'],
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],

@@ -16,4 +16,5 @@ export * from './use-hide-others';
 export * from './use-image-loading-status';
 export * from './use-presence';
 export * from './use-single-or-multiple-value';
+export * from './use-element-size';
 export * from './use-state-machine';

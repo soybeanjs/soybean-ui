@@ -7,6 +7,7 @@ export * from './components/checkbox';
 export * from './components/collapsible';
 export * from './components/config-provider';
 export * from './components/dialog';
+export * from './components/popper';
 export * from './components/portal';
 export * from './components/primitive';
 export * from './components/radio-group';

@@ -1,4 +1,4 @@
-import type { FocusIntent, NavigationKey } from '../types';
+import type { Align, FocusIntent, NavigationKey, Side } from '../types';
 
 export const MAP_KEY_TO_FOCUS_INTENT: Record<NavigationKey, FocusIntent> = {
   ArrowLeft: 'prev',
@@ -9,4 +9,14 @@ export const MAP_KEY_TO_FOCUS_INTENT: Record<NavigationKey, FocusIntent> = {
   Home: 'first',
   PageDown: 'last',
   End: 'last'
+};
+
+export const SIDE_OPTIONS: Side[] = ['top', 'right', 'bottom', 'left'];
+export const ALIGN_OPTIONS: Align[] = ['start', 'center', 'end'];
+
+export const OPPOSITE_SIDE: Record<Side, Side> = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right'
 };

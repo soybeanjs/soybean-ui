@@ -75,6 +75,7 @@
     "update-pkg": "soy ncu"
   },
   "dependencies": {
+    "@floating-ui/vue": "1.1.6",
     "@unocss/reset": "66.1.2",
     "@vue/shared": "3.5.16",
     "aria-hidden": "1.2.6",
