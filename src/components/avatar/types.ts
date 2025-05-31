@@ -1,19 +1,15 @@
-import type {
-  ClassValueProp,
-  HTMLAttributeCrossOrigin,
-  HTMLAttributeReferrerPolicy,
-  ImageLoadingStatus
-} from '../../types';
+import type { HTMLAttributes, ImgHTMLAttributes } from 'vue';
+import type { ImageLoadingStatus } from '../../types';
 
-export interface AvatarRootProps extends ClassValueProp {}
+export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface AvatarImageProps extends ClassValueProp {
+export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
   /** The image source URL */
   src: string;
   /** The referrer policy for the image */
-  referrerPolicy?: HTMLAttributeReferrerPolicy;
+  referrerpolicy?: ImgHTMLAttributes['referrerpolicy'];
   /** The cross-origin setting for the image */
-  crossOrigin?: HTMLAttributeCrossOrigin;
+  crossorigin?: ImgHTMLAttributes['crossorigin'];
 }
 export type AvatarImageEmits = {
   /**
@@ -23,7 +19,7 @@ export type AvatarImageEmits = {
   loadingStatusChange: [status: ImageLoadingStatus];
 };
 
-export interface AvatarFallbackProps extends ClassValueProp {
+export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * Useful for delaying rendering so it only appears for those with slower connections.
    *

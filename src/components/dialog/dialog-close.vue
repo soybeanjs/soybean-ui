@@ -18,7 +18,7 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>
 
 <template>
-  <Primitive :class="props.class" :as="as" :type="tag" @click="closeModal">
+  <Primitive v-bind="props" :as="as" :type="tag" @click="closeModal">
     <slot />
   </Primitive>
 </template>

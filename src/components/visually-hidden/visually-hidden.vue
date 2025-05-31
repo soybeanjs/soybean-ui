@@ -6,7 +6,7 @@ defineOptions({
   name: 'VisuallyHidden'
 });
 
-withDefaults(defineProps<VisuallyHiddenProps>(), {
+const props = withDefaults(defineProps<VisuallyHiddenProps>(), {
   as: 'span',
   feature: 'focusable'
 });
@@ -14,6 +14,7 @@ withDefaults(defineProps<VisuallyHiddenProps>(), {
 
 <template>
   <Primitive
+    v-bind="props"
     :as="as"
     style="
       position: absolute;

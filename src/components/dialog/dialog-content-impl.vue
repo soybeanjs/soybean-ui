@@ -83,10 +83,9 @@ onMounted(() => {
 
 <template>
   <Primitive
-    v-bind="{ ...layerProps, ...focusScopeProps }"
+    v-bind="{ ...props, ...layerProps, ...focusScopeProps }"
     :id="contentId"
     :ref="setContentElement"
-    :class="props.class"
     :as="as"
     role="dialog"
     :aria-labelledby="titleId"

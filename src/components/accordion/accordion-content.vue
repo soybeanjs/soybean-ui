@@ -24,7 +24,7 @@ const style = computed<CSSProperties>(() => ({
 
 <template>
   <CollapsibleContent
-    :class="props.class"
+    v-bind="props"
     :as="as"
     :force-mount="forceMount"
     role="region"

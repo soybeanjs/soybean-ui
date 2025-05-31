@@ -10,7 +10,7 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
     const [triggerElement, setTriggerElement] = useForwardElement();
     const [contentElement, setContentElement] = useForwardElement();
 
-    const { open } = params;
+    const { open, modal } = params;
 
     const openModal = () => {
       open.value = true;
@@ -46,7 +46,8 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
     return {
-      ...params,
+      open,
+      modal,
       openModal,
       closeModal,
       onOpenChange,

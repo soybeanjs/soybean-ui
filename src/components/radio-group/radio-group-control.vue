@@ -94,9 +94,8 @@ onBeforeMount(() => {
 <template>
   <RovingFocusItem as="template" :checked="checked" :focusable="!disabled" :active="checked">
     <button
-      :id="id"
+      v-bind="props"
       ref="controlElement"
-      :class="props.class"
       role="radio"
       type="button"
       :disabled="disabled"

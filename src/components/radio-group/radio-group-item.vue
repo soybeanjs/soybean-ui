@@ -24,7 +24,7 @@ const checked = computed(
 );
 
 provideRadioGroupItemContext({
-  ...transformPropsToContext(props),
+  ...transformPropsToContext(props, ['name', 'required', 'value', 'disabled']),
   checked,
   onSelect: (event: RadioSelectEvent) => {
     emit('select', event);
@@ -33,7 +33,7 @@ provideRadioGroupItemContext({
 </script>
 
 <template>
-  <div ref="itemElement" :class="props.class">
+  <div v-bind="props" ref="itemElement">
     <slot :checked="checked" />
 
     <VisuallyHiddenInput

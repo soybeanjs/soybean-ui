@@ -38,7 +38,7 @@ provideAccordionRootContext({
 </script>
 
 <template>
-  <div ref="rootRef" :class="props.class">
+  <div v-bind="props" ref="rootRef">
     <slot :model-value="modelValue as T" />
   </div>
 </template>

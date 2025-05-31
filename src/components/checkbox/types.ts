@@ -1,8 +1,7 @@
-import type { ShallowRef } from 'vue';
+import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   CheckedState,
-  ClassValueProp,
   EmitsToHookProps,
   ForceMountProps,
   FormFieldProps,
@@ -13,7 +12,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
 
-export interface CheckboxRootProps extends ClassValueProp, FormFieldProps {
+export interface CheckboxRootProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
@@ -37,16 +36,18 @@ export type CheckboxRootEmits = {
   'update:modelValue': [value: CheckedState];
 };
 
-export interface CheckboxControlProps extends ClassValueProp {
+export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
   /** Id of the element */
   id?: string;
 }
 
-export interface CheckboxIndicatorProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
+export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 export interface CheckboxGroupRootProps<T = AcceptableValue>
-  extends ClassValueProp,
-    Pick<RovingFocusGroupProps, 'dir' | 'orientation' | 'loop'>,
+  extends Omit<
+      RovingFocusGroupProps,
+      'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as'
+    >,
     FormFieldProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
@@ -77,7 +78,10 @@ export type CheckboxGroupRootContextParams = PropsToContext<
 > &
   EmitsToHookProps<CheckboxGroupRootEmits>;
 
-export type CheckboxRootContextParams = PropsToContext<Omit<CheckboxRootProps, 'class'>> &
+export type CheckboxRootContextParams = PropsToContext<
+  CheckboxRootProps,
+  'modelValue' | 'defaultValue' | 'value' | 'disabled' | 'name' | 'required'
+> &
   EmitsToHookProps<CheckboxRootEmits> & {
     groupModelValue?: ShallowRef<AcceptableValue[] | undefined>;
   };

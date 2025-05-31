@@ -13,7 +13,7 @@ const { setCancelElement } = useAlertDialogContentContext('AlertDialogCancel');
 </script>
 
 <template>
-  <DialogClose :ref="setCancelElement" v-bind="props">
+  <DialogClose v-bind="props" :ref="setCancelElement">
     <slot />
   </DialogClose>
 </template>

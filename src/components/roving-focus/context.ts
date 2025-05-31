@@ -1,13 +1,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId } from 'vue';
 import { getFocusIntent, isElementHasAttribute, isNullish, tryFocusFirst, wrapArray } from '../../shared';
-import type { EmitsToHookProps, PropsToContext } from '../../types';
 import { useCollection, useContext, useControllableState, useDirection } from '../../composables';
-import type { RovingFocusGroupEmits, RovingFocusGroupProps, RovingFocusItemProps } from './types';
-
-type RovingFocusGroupContextParams = PropsToContext<Omit<RovingFocusGroupProps, 'class' | 'as'>> &
-  EmitsToHookProps<RovingFocusGroupEmits>;
-
-type RovingFocusItemOptions = Partial<PropsToContext<Omit<RovingFocusItemProps, 'class' | 'as'>>>;
+import type { RovingFocusGroupContextParams, RovingFocusItemOptions } from './types';
 
 const ON_ENTRY_FOCUS = 'rovingFocusGroup.onEntryFocus';
 const ROVING_FOCUS_EVENT_OPTIONS = { bubbles: false, cancelable: true };

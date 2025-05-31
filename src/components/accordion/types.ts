@@ -1,7 +1,6 @@
-import type { ComputedRef, Ref } from 'vue';
+import type { ComputedRef, HTMLAttributes, Ref } from 'vue';
 import type {
   AcceptableValue,
-  ClassValueProp,
   DataOrientation,
   Direction,
   PropsToContext,
@@ -16,7 +15,7 @@ import type {
   CollapsibleRootProps
 } from '../collapsible/types';
 
-export interface AccordionHeaderProps extends ClassValueProp {}
+export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /**
@@ -32,8 +31,8 @@ export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 
 }
 
 export interface AccordionRootProps<T = AcceptableValue | AcceptableValue[], S = SingleOrMultipleType>
-  extends ClassValueProp,
-    SingleOrMultipleProps<T, S> {
+  extends SingleOrMultipleProps<T, S>,
+    /** @vue-ignore */ HTMLAttributes {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
    *

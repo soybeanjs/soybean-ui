@@ -13,7 +13,7 @@ const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');
 </script>
 
 <template>
-  <div :class="props.class" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
+  <h3 v-bind="props" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
     <slot />
-  </div>
+  </h3>
 </template>

@@ -26,7 +26,16 @@ const rootElement = useTemplateRef('rootElement');
 const formControl = computed(() => isFormControl(rootElement.value));
 
 provideRadioGroupRootContext({
-  ...transformPropsToContext(props),
+  ...transformPropsToContext(props, [
+    'modelValue',
+    'defaultValue',
+    'disabled',
+    'orientation',
+    'dir',
+    'loop',
+    'name',
+    'required'
+  ]),
   onUpdateModelValue: value => {
     emit('update:modelValue', value as T);
   }
@@ -36,12 +45,12 @@ provideRadioGroupRootContext({
 <template>
   <RovingFocusGroup as="template" :orientation="orientation" :dir="dir" :loop="loop">
     <div
+      v-bind="props"
       ref="rootElement"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"
       :aria-orientation="orientation"
       :aria-required="required"
-      :dir="dir"
     >
       <slot :model-value="modelValue" />
 

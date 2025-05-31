@@ -25,8 +25,8 @@ const dataState = computed(() => getCheckedState(checked.value));
 <template>
   <Primitive
     v-if="isPresent"
+    v-bind="props"
     :ref="setIndicatorElement"
-    :class="props.class"
     :as="as"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"

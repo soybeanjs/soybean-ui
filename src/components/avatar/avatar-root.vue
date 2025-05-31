@@ -12,7 +12,7 @@ provideAvatarRootContext();
 </script>
 
 <template>
-  <span :class="props.class">
+  <span v-bind="props">
     <slot />
   </span>
 </template>

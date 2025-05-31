@@ -1,7 +1,7 @@
-import type { ClassValueProp } from '../../types';
+import type { SVGAttributes } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface ArrowProps extends ClassValueProp, PrimitiveProps {
+export interface ArrowProps extends PrimitiveProps, /** @vue-ignore */ SVGAttributes {
   /**
    * The width of the arrow in pixels.
    *

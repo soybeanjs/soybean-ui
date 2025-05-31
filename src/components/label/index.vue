@@ -16,7 +16,7 @@ const onMouseDown = (event: MouseEvent) => {
 </script>
 
 <template>
-  <label :for="props.for" :class="props.class" @mousedown="onMouseDown">
+  <label v-bind="props" @mousedown="onMouseDown">
     <slot />
   </label>
 </template>

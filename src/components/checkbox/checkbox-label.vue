@@ -13,7 +13,7 @@ const { controlId } = useCheckboxRootContext('CheckboxLabel');
 </script>
 
 <template>
-  <Label :for="props.for || controlId" :class="props.class">
+  <Label v-bind="props" :for="props.for || controlId">
     <slot />
   </Label>
 </template>

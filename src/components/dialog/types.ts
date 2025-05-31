@@ -1,6 +1,5 @@
-import type { Ref } from 'vue';
+import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
 import type {
-  ClassValueProp,
   DismissableLayerEmits,
   DismissableLayerProps,
   ForceMountProps,
@@ -35,16 +34,16 @@ export type DialogRootEmits = {
   'update:open': [value: boolean];
 };
 
-export interface DialogTriggerProps extends ClassValueProp, PrimitiveProps {}
+export interface DialogTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
-export interface DialogOverlayProps extends ClassValueProp, ForceMountProps {}
+export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 export interface DialogContentImplProps
-  extends ClassValueProp,
-    PrimitiveProps,
+  extends PrimitiveProps,
     ForceMountProps,
     TrapFocusProps,
-    DismissableLayerProps {}
+    DismissableLayerProps,
+    /** @vue-ignore */ HTMLAttributes {}
 export type DialogContentImplEmits = DismissableLayerEmits & {
   /** Event handler called when auto-focusing on open. Can be prevented. */
   openAutoFocus: [event: Event];
@@ -55,11 +54,11 @@ export type DialogContentImplEmits = DismissableLayerEmits & {
 export interface DialogContentProps extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'> {}
 export type DialogContentEmits = DialogContentImplEmits;
 
-export interface DialogTitleProps extends ClassValueProp {}
+export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface DialogDescriptionProps extends ClassValueProp {}
+export interface DialogDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface DialogCloseProps extends ClassValueProp, PrimitiveProps {}
+export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal'> {
   open: Ref<boolean | undefined>;

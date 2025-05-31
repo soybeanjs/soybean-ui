@@ -15,8 +15,8 @@ const emit = defineEmits<AvatarImageEmits>();
 const { updateImageLoadingStatus } = useAvatarRootContext('AvatarImage');
 
 const imageLoadingStatus = useImageLoadingStatus(() => props.src, {
-  referrerPolicy: () => props.referrerPolicy,
-  crossOrigin: () => props.crossOrigin
+  referrerPolicy: () => props.referrerpolicy,
+  crossOrigin: () => props.crossorigin
 });
 
 watch(
@@ -32,12 +32,5 @@ watch(
 </script>
 
 <template>
-  <img
-    v-show="imageLoadingStatus === 'loaded'"
-    :class="props.class"
-    role="img"
-    :src="src"
-    :referrerpolicy="referrerPolicy"
-    :crossorigin="crossOrigin"
-  />
+  <img v-show="imageLoadingStatus === 'loaded'" v-bind="props" role="img" />
 </template>

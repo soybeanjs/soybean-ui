@@ -83,9 +83,9 @@ onMounted(async () => {
 
 <template>
   <Primitive
+    v-bind="props"
     :id="contentId"
     :ref="setContentElement"
-    :class="props.class"
     :as="as"
     :data-disabled="dataDisabled"
     :data-state="dataState"

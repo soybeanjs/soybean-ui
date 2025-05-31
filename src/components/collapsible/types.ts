@@ -1,8 +1,8 @@
-import type { Ref } from 'vue';
+import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
-import type { ClassValueProp, ForceMountProps, PropsToContext } from '../../types';
+import type { ForceMountProps, PropsToContext } from '../../types';
 
-export interface CollapsibleRootProps extends ClassValueProp, PrimitiveProps {
+export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * The open state of the collapsible when it is initially rendered.
    *
@@ -22,9 +22,9 @@ export type CollapsibleRootEmits = {
   'update:open': [value: boolean];
 };
 
-export interface CollapsibleContentProps extends ClassValueProp, PrimitiveProps, ForceMountProps {}
+export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface CollapsibleTriggerProps extends ClassValueProp, PrimitiveProps {}
+export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 export interface CollapsibleRootContextParams
   extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {

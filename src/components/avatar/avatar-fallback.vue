@@ -28,7 +28,7 @@ watchEffect(onCleanup => {
 </script>
 
 <template>
-  <span v-if="visible" :class="props.class">
+  <span v-if="visible" v-bind="props">
     <slot />
   </span>
 </template>

@@ -26,8 +26,8 @@ const isPresent = props.forceMount
 <template>
   <Primitive
     v-if="isPresent"
+    v-bind="props"
     :ref="setIndicatorElement"
-    :class="props.class"
     :as="as"
     :data-disabled="dataDisabled"
     :data-state="dataState"

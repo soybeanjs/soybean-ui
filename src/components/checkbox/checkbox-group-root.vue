@@ -40,13 +40,11 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
 <template>
   <component
     :is="rovingFocus ? RovingFocusGroup : 'div'"
+    v-bind="{ ...props, ...rovingFocusProps }"
     :ref="setElement"
-    v-bind="rovingFocusProps"
-    :class="props.class"
     as="div"
   >
     <slot />
-
     <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
   </component>
 </template>

@@ -1,7 +1,8 @@
-import type { ClassValueProp, DataOrientation, Direction, PropsToContext } from '../../types';
+import type { HTMLAttributes } from 'vue';
+import type { DataOrientation, Direction, EmitsToHookProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface RovingFocusGroupProps extends ClassValueProp, PrimitiveProps {
+export interface RovingFocusGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /** The direction of navigation between items. */
@@ -29,7 +30,7 @@ export type RovingFocusGroupEmits = {
   'update:currentTabStopId': [value: string | null | undefined];
 };
 
-export interface RovingFocusItemProps extends ClassValueProp, PrimitiveProps {
+export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   tabStopId?: string;
   /**
    * When `false`, item will not be focusable.
@@ -44,5 +45,11 @@ export interface RovingFocusItemProps extends ClassValueProp, PrimitiveProps {
 }
 
 export type RovingFocusGroupContextParams = PropsToContext<
-  Pick<RovingFocusGroupProps, 'dir' | 'orientation' | 'loop' | 'currentTabStopId'>
+  RovingFocusGroupProps,
+  'orientation' | 'dir' | 'loop' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
+> &
+  EmitsToHookProps<RovingFocusGroupEmits>;
+
+export type RovingFocusItemOptions = Partial<
+  PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey'>
 >;

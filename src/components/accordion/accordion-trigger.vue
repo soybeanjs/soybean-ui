@@ -28,9 +28,9 @@ initTriggerId();
 
 <template>
   <CollapsibleTrigger
+    v-bind="props"
     :id="triggerId"
     :ref="setTriggerElement"
-    :class="props.class"
     :as="as"
     :[COLLECTION_ITEM_ATTRIBUTE]="true"
     :aria-disabled="disabled || undefined"

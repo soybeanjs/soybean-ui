@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<ArrowProps>(), {
 
 <template>
   <Primitive
-    :class="props.class"
+    v-bind="props"
     :as="as"
     :width="width"
     :height="height"

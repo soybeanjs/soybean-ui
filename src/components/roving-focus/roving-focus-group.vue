@@ -17,7 +17,14 @@ const props = withDefaults(defineProps<RovingFocusGroupProps>(), {
 const emit = defineEmits<RovingFocusGroupEmits>();
 
 const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGroupContext({
-  ...transformPropsToContext(props),
+  ...transformPropsToContext(props, [
+    'loop',
+    'orientation',
+    'dir',
+    'currentTabStopId',
+    'defaultCurrentTabStopId',
+    'preventScrollOnEntryFocus'
+  ]),
   onUpdateCurrentTabStopId: (value: string | null | undefined) => {
     emit('update:currentTabStopId', value);
   },
@@ -28,7 +35,7 @@ const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGrou
 </script>
 
 <template>
-  <Primitive v-bind="rovingFocusGroupProps" :class="props.class" :as="as" v-on="rovingFocusGroupEvents">
+  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" :as="as" v-on="rovingFocusGroupEvents">
     <slot />
   </Primitive>
 </template>

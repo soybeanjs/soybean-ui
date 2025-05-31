@@ -12,7 +12,7 @@ const { descriptionId } = useDialogRootContext('DialogDescription');
 </script>
 
 <template>
-  <p :id="descriptionId" :class="props.class">
+  <p v-bind="props" :id="descriptionId">
     <slot />
   </p>
 </template>

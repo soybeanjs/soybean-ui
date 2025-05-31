@@ -25,7 +25,7 @@ const formControl = computed(() => isFormControl(rootElement.value));
 const disabled = computed(() => groupContext?.disabled?.value || props.disabled);
 
 const { modelValue, state } = provideCheckboxRootContext({
-  ...transformPropsToContext(props),
+  ...transformPropsToContext(props, ['modelValue', 'defaultValue', 'value', 'disabled', 'name', 'required']),
   groupModelValue: groupContext?.modelValue,
   disabled,
   onUpdateModelValue: value => {
@@ -35,7 +35,7 @@ const { modelValue, state } = provideCheckboxRootContext({
 </script>
 
 <template>
-  <div ref="rootElement" :class="props.class">
+  <div v-bind="props" ref="rootElement">
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput

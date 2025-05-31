@@ -23,7 +23,7 @@ watchEffect(onCleanup => {
 </script>
 
 <template>
-  <div v-if="isPresent" ref="overlayRef" :class="props.class" :data-state="dataState" style="pointer-events: auto">
+  <div v-if="isPresent" v-bind="props" ref="overlayRef" :data-state="dataState" style="pointer-events: auto">
     <slot />
   </div>
 </template>
