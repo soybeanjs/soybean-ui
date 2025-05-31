@@ -2,6 +2,7 @@ import { Comment, Fragment, computed, getCurrentInstance } from 'vue';
 import type { ComponentPublicInstance, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
 import type { PropsToContext, VNodeRef } from '../types';
+import { omit, pick } from './object';
 
 export function getLifeCycleTarget(target?: any) {
   return target || getCurrentInstance();
@@ -65,4 +66,12 @@ export function isFormControl(el?: HTMLElement | null) {
   if (!el) return true;
 
   return el.classList.contains('form');
+}
+
+export function pickProps<T extends Record<string, any>, K extends keyof T>(props: T, keys: K[]) {
+  return computed(() => pick(props, keys));
+}
+
+export function omitProps<T extends Record<string, any>, K extends keyof T>(props: T, keys: K[]) {
+  return computed(() => omit(props, keys));
 }
