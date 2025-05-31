@@ -155,13 +155,16 @@ export { layerManager as _layerManagerForTesting };
  */
 export function useOutsidePointerDown(
   onOutsidePointerDown: (event: PointerDownOutsideEvent) => void,
-  watchedElementRef: Ref<HTMLElement | undefined>
+  watchedElementRef: Ref<HTMLElement | undefined>,
+  enable?: MaybeRefOrGetter<boolean>
 ) {
   let isPointerCurrentlyInsideElement = false;
   let pendingTouchClickHandler: (() => void) | null = null;
 
   const captureHandlers = {
     onPointerdownCapture: () => {
+      if (!toValue(enable)) return;
+
       isPointerCurrentlyInsideElement = true;
     }
   };
