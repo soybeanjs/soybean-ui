@@ -15,6 +15,7 @@ export * from './use-grace-area';
 export * from './use-global-state';
 export * from './use-hide-others';
 export * from './use-image-loading-status';
+export * from './use-is-using-keyboard';
 export * from './use-presence';
 export * from './use-single-or-multiple-value';
 export * from './use-element-size';
