@@ -1,9 +1,9 @@
 /**
- * 从对象中选择指定的属性
+ * Select specified properties from an object
  *
- * @param obj - 源对象
- * @param keys - 要选择的属性键数组
- * @returns 包含指定属性的新对象
+ * @param obj - Source object
+ * @param keys - Array of property keys to select
+ * @returns New object containing specified properties
  */
 export function pick<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
   const result = {} as Pick<T, K>;
@@ -16,11 +16,11 @@ export function pick<T extends Record<string, any>, K extends keyof T>(obj: T, k
 }
 
 /**
- * 从对象中排除指定的属性
+ * Exclude specified properties from an object
  *
- * @param obj - 源对象
- * @param keys - 要排除的属性键数组
- * @returns 排除指定属性后的新对象
+ * @param obj - Source object
+ * @param keys - Array of property keys to exclude
+ * @returns New object with specified properties excluded
  */
 export function omit<T extends Record<string, any>, K extends keyof T>(obj: T, keys: K[]) {
   const result = {} as Omit<T, K>;
@@ -38,11 +38,11 @@ export function omit<T extends Record<string, any>, K extends keyof T>(obj: T, k
 }
 
 /**
- * 从数组中移除指定的元素
+ * Remove specified element from an array
  *
- * @param array - 源数组
- * @param item - 要移除的元素
- * @returns 移除元素后的新数组
+ * @param array - Source array
+ * @param item - Element to remove
+ * @returns New array with element removed
  */
 export function arrayRemove<T>(array: T[], item: T) {
   const updatedArray = [...array];
@@ -64,20 +64,20 @@ export function wrapArray<T>(array: T[], startIndex: number) {
 }
 
 /**
- * 使用 JSON 序列化进行深拷贝
+ * Deep clone using JSON serialization
  *
- * @param value - 要克隆的值
- * @returns 克隆后的值
+ * @param value - Value to clone
+ * @returns Cloned value
  */
 export function jsonClone<T>(value: T) {
   return JSON.parse(JSON.stringify(value)) as T;
 }
 
 /**
- * 使用结构化克隆或 JSON 克隆进行深拷贝
+ * Deep clone using structured clone or JSON clone
  *
- * @param value - 要克隆的值
- * @returns 克隆后的值
+ * @param value - Value to clone
+ * @returns Cloned value
  */
 export function cloneValue<T>(value: T) {
   if (typeof structuredClone === 'undefined') {

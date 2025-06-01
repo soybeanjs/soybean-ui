@@ -39,7 +39,7 @@ export function useIsUsingKeyboard() {
       subscribers++;
       isSubscribed = true;
 
-      // 只有第一个订阅者时才添加事件监听器
+      // Only add event listeners when the first subscriber appears
       if (subscribers === 1) {
         addEventListeners();
       }
@@ -51,10 +51,10 @@ export function useIsUsingKeyboard() {
       subscribers = Math.max(0, subscribers - 1);
       isSubscribed = false;
 
-      // 最后一个订阅者取消时移除事件监听器
+      // Remove event listeners when the last subscriber unsubscribes
       if (subscribers === 0) {
         removeEventListeners();
-        // 重置状态
+        // Reset state
         isUsingKeyboardRef.value = false;
       }
     }

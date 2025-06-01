@@ -1,12 +1,12 @@
 import type { AcceptableValue, StringOrNumber } from '../types';
 
 /**
- * 根据单选或多选模式检查值是否开启
+ * Check if value is enabled based on single or multiple selection mode
  *
- * @param value - 要检查的值
- * @param modelValue - 模型值（可以是单个值或数组）
- * @param isSingle - 是否为单选模式
- * @returns 是否开启
+ * @param value - The value to check
+ * @param modelValue - The model value (can be a single value or array)
+ * @param isSingle - Whether it's single selection mode
+ * @returns Whether it's enabled
  */
 export function getOpenFromSingleOrMultiple(
   value: StringOrNumber,
@@ -21,10 +21,10 @@ export function getOpenFromSingleOrMultiple(
 }
 
 /**
- * 根据开启状态返回对应的字符串
+ * Return corresponding string based on open state
  *
- * @param open - 是否开启
- * @returns 'open' 或 'closed'
+ * @param open - Whether it's open
+ * @returns 'open' or 'closed'
  */
 export function getDisclosureState(open?: boolean) {
   return open ? 'open' : 'closed';

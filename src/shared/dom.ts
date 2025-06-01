@@ -49,10 +49,11 @@ export function getAriaLabel(element?: HTMLElement | null, id?: string, ariaLabe
 }
 
 /**
- * 从VNode中提取文本内容，用于生成aria-label 使用迭代而不是递归，避免调用栈溢出
+ * Extract text content from VNode for generating aria-label. Use iteration instead of recursion to avoid stack
+ * overflow.
  *
- * @param node VNode节点
- * @returns 提取的文本内容
+ * @param node VNode node
+ * @returns Extracted text content
  */
 export function getAriaLabelByVNode(node?: VNode | null): string {
   if (!node) return '';
@@ -63,13 +64,13 @@ export function getAriaLabelByVNode(node?: VNode | null): string {
   while (nodesToProcess.length > 0) {
     const currentNode = nodesToProcess.pop()!;
 
-    // 跳过注释节点
+    // Skip comment nodes
     if (currentNode.type === Comment) {
       // eslint-disable-next-line no-continue
       continue;
     }
 
-    // 处理字符串子节点
+    // Handle string child nodes
     if (typeof currentNode.children === 'string') {
       const text = currentNode.children.trim();
       if (text) {
@@ -79,9 +80,9 @@ export function getAriaLabelByVNode(node?: VNode | null): string {
       continue;
     }
 
-    // 处理数组子节点
+    // Handle array child nodes
     if (Array.isArray(currentNode.children)) {
-      // 反向添加到栈中以保持正确的遍历顺序
+      // Add to stack in reverse order to maintain correct traversal order
       for (let i = currentNode.children.length - 1; i >= 0; i--) {
         const child = currentNode.children[i];
         if (child && typeof child === 'object' && 'type' in child) {
@@ -91,7 +92,7 @@ export function getAriaLabelByVNode(node?: VNode | null): string {
     }
   }
 
-  // 规范化空白字符并返回结果
+  // Normalize whitespace and return result
   return textParts.join(' ').replace(/\s+/g, ' ').trim();
 }
 

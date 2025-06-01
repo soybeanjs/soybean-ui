@@ -12,7 +12,7 @@ export const popperCssVars = {
   anchorHeight: '--soybean-popper-anchor-height'
 };
 
-// 对齐方式到百分比的映射
+// Alignment to percentage mapping
 const ALIGN_TO_PERCENTAGE: Record<Align, string> = {
   start: '0%',
   center: '50%',
@@ -29,7 +29,7 @@ interface TransformOriginParams {
   floatingHeight: number;
 }
 
-/** 每个方向的变换原点计算策略 */
+/** Transform origin calculation strategy for each direction */
 interface TransformOriginStrategy {
   getX: (params: TransformOriginParams) => string;
   getY: (params: TransformOriginParams) => string;

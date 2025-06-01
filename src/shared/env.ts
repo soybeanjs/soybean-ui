@@ -1,7 +1,7 @@
 export const isBrowser = typeof document !== 'undefined';
 export const isClient = typeof window !== 'undefined' && typeof document !== 'undefined';
 
-// iOS检测 - 延迟计算并缓存结果
+// iOS detection - lazy calculation and cached result
 let cachedIOSResult: boolean | null = null;
 
 function detectIOS(): boolean {
@@ -28,7 +28,7 @@ export function isIOS(): boolean {
   return cachedIOSResult;
 }
 
-// 如果需要在某些特殊情况下重新检测iOS（比如测试环境）
+// Re-detect iOS in special cases (e.g., testing environment)
 export function refreshIOSDetection(): boolean {
   cachedIOSResult = null;
   return isIOS();

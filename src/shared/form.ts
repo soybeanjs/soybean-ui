@@ -2,33 +2,33 @@ import type { FormNameValueProps } from '../types';
 import { isArrayValue, isNonNullObject, isPrimitive } from './guard';
 
 /**
- * 生成表单字段名称，支持嵌套结构
+ * Generate form field names, supporting nested structures
  *
  * @example
  *   createFieldName('user', 0, 'name'); // 'user[0][name]'
  *   createFieldName('form', 'profile', 'email'); // 'form[profile][email]'
  *
- * @param baseName - 基础字段名
- * @param paths - 嵌套路径（可以是字符串或数字）
- * @returns 格式化的字段名，如 "user[0][name]"
+ * @param baseName - Base field name
+ * @param paths - Nested paths (can be string or number)
+ * @returns Formatted field name, e.g., "user[0][name]"
  */
 export function createFieldName(baseName: string, ...paths: (string | number)[]): string {
   return paths.reduce<string>((name, path) => `${name}[${String(path)}]`, baseName);
 }
 
 /**
- * 解析原始值为表单字段
+ * Parse primitive values into form fields
  *
- * @param name - 字段名
- * @param value - 原始值
- * @returns 表单字段数组
+ * @param name - Field name
+ * @param value - Primitive value
+ * @returns Array of form fields
  */
 export function parsePrimitiveValue(name: string, value: string | number | boolean): FormNameValueProps[] {
   return [{ name, value }];
 }
 
 /**
- * 解析数组值为表单字段
+ * Parse array values into form fields
  *
  * @example
  *   parseArrayValue('items', ['a', 'b']);
@@ -37,20 +37,20 @@ export function parsePrimitiveValue(name: string, value: string | number | boole
  *   parseArrayValue('users', [{ name: 'John', age: 30 }]);
  *   // [{ name: 'users[0][name]', value: 'John' }, { name: 'users[0][age]', value: 30 }]
  *
- * @param baseName - 基础字段名
- * @param array - 数组值
- * @returns 表单字段数组
+ * @param baseName - Base field name
+ * @param array - Array value
+ * @returns Array of form fields
  */
 export function parseArrayValue(baseName: string, array: unknown[]): FormNameValueProps[] {
   return array.flatMap((item, index) => {
     if (isNonNullObject(item)) {
-      // 处理对象数组
+      // Handle object arrays
       return Object.entries(item).map(([key, value]) => ({
         name: createFieldName(baseName, index, key),
         value
       }));
     }
-    // 处理原始值数组
+    // Handle primitive value arrays
     return {
       name: createFieldName(baseName, index),
       value: item
@@ -59,15 +59,15 @@ export function parseArrayValue(baseName: string, array: unknown[]): FormNameVal
 }
 
 /**
- * 解析对象值为表单字段
+ * Parse object values into form fields
  *
  * @example
  *   parseObjectValue('user', { name: 'John', age: 30 });
  *   // [{ name: 'user[name]', value: 'John' }, { name: 'user[age]', value: 30 }]
  *
- * @param baseName - 基础字段名
- * @param obj - 对象值
- * @returns 表单字段数组
+ * @param baseName - Base field name
+ * @param obj - Object value
+ * @returns Array of form fields
  */
 export function parseObjectValue(baseName: string, obj: Record<string, unknown>): FormNameValueProps[] {
   return Object.entries(obj).map(([key, value]) => ({
@@ -77,42 +77,42 @@ export function parseObjectValue(baseName: string, obj: Record<string, unknown>)
 }
 
 /**
- * 解析任意值为表单字段数组
+ * Parse any value into form field array
  *
  * @example
  *   parseFormValue('test', 'hello'); // [{ name: 'test', value: 'hello' }]
  *   parseFormValue('items', [1, 2, 3]); // [{ name: 'items[0]', value: 1 }, ...]
  *   parseFormValue('user', { name: 'John' }); // [{ name: 'user[name]', value: 'John' }]
  *
- * @param name - 字段名
- * @param value - 要解析的值
- * @returns 表单字段数组
+ * @param name - Field name
+ * @param value - Value to parse
+ * @returns Array of form fields
  */
 export function parseFormValue(name: string, value: unknown): FormNameValueProps[] {
   if (!name) {
     return [];
   }
 
-  // 处理原始值
+  // Handle primitive values
   if (isPrimitive(value)) {
     return parsePrimitiveValue(name, value);
   }
 
-  // 处理数组值
+  // Handle array values
   if (isArrayValue(value)) {
     return parseArrayValue(name, value);
   }
 
-  // 处理对象值
+  // Handle object values
   if (isNonNullObject(value)) {
     return parseObjectValue(name, value);
   }
 
-  // 处理 null、undefined
+  // Handle null, undefined
   if (value === null || value === undefined) {
     return [];
   }
 
-  // 兜底处理：将未知类型转换为字符串
+  // Fallback handling: convert unknown types to string
   return [{ name, value: String(value) }];
 }

@@ -18,9 +18,9 @@ export interface UseGraceAreaOptions {
   onPointerInTransitChange?: (v: boolean) => void;
   onPointerExit: () => void;
   disabled?: ShallowRef<boolean | undefined>;
-  /** 防抖延迟时间（毫秒），默认16ms（约60fps） */
+  /** Debounce delay time (milliseconds), default 16ms (approximately 60fps) */
   debounceMs?: number;
-  /** 最大grace area检测时间（毫秒），默认1000ms */
+  /** Maximum grace area detection time (milliseconds), default 1000ms */
   maxGraceTime?: number;
 }
 
@@ -37,7 +37,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
   const pointerGraceArea = shallowRef<Polygon>();
   let graceTimeoutTimer: number | undefined;
 
-  // 延迟创建防抖器，只在需要时创建
+  // Lazy creation of debouncer, only create when needed
   let debounce: ReturnType<typeof createDebounce> | undefined;
 
   function handleRemoveGraceArea() {
@@ -52,7 +52,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     } catch {}
   }
 
-  // 元素引用变化监听
+  // Element reference change listener
   watchEffect(cleanup => {
     const isEnabled = disabled?.value !== true;
     if (!isClient || !isEnabled) {
@@ -66,7 +66,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       return;
     }
 
-    // 条件性创建函数，只在需要时创建
+    // Conditional function creation, only create when needed
     function createGraceAreaSafely(event: PointerEvent, hoverTarget: HTMLElement) {
       try {
         const { currentTarget, clientX: x, clientY: y } = event;
@@ -90,7 +90,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       }
     }
 
-    // 使用箭头函数避免函数声明提升，减少内存占用
+    // Use arrow functions to avoid function declaration hoisting, reduce memory usage
     const handleTriggerLeave = (event: PointerEvent) => createGraceAreaSafely(event, content);
     const handleContentLeave = (event: PointerEvent) => createGraceAreaSafely(event, trigger);
 
@@ -105,7 +105,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     });
   });
 
-  // Grace area 跟踪监听
+  // Grace area tracking listener
   watchEffect(cleanup => {
     const isEnabled = disabled?.value !== true;
     if (!isClient || !isEnabled || !pointerGraceArea.value) {
@@ -117,12 +117,12 @@ export function useGraceArea(options: UseGraceAreaOptions) {
 
     if (!document) return;
 
-    // 延迟创建防抖器，只有在真正需要时才创建
+    // Lazy creation of debouncer, only create when actually needed
     if (!debounce) {
       debounce = createDebounce();
     }
 
-    // 条件性创建跟踪函数
+    // Conditional creation of tracking function
     function trackPointerGrace(event: PointerEvent) {
       if (!pointerGraceArea.value) return;
 

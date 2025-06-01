@@ -3,13 +3,13 @@ import type { Point, Polygon, Side } from '../types';
 export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
   const { x, y } = point;
 
-  // 快速排除：边界框检查
+  // Quick exclusion: boundary box check
   if (polygon.length < 3) return false;
 
   let { x: minX, y: minY } = polygon[0];
   let { x: maxX, y: maxY } = polygon[0];
 
-  // 计算边界框
+  // Calculate boundary box
   for (let i = 1; i < polygon.length; i++) {
     const vertex = polygon[i];
     minX = Math.min(minX, vertex.x);
@@ -18,12 +18,12 @@ export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
     maxY = Math.max(maxY, vertex.y);
   }
 
-  // 点在边界框外，直接返回false
+  // Point is outside boundary box, return false directly
   if (x < minX || x > maxX || y < minY || y > maxY) {
     return false;
   }
 
-  // 射线投射算法 - 从点向右发射射线，计算与多边形边的交点数
+  // Ray casting algorithm - cast a ray from the point to the right, count intersections with polygon edges
   let intersectionCount = 0;
 
   for (let i = 0; i < polygon.length; i++) {
@@ -33,42 +33,42 @@ export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
     const { x: x1, y: y1 } = currentVertex;
     const { x: x2, y: y2 } = nextVertex;
 
-    // 检查射线是否与当前边相交
-    // 1. 边必须跨越水平射线（一个端点在射线上方，另一个在下方）
-    // 2. 射线必须在边的右侧
+    // Check if the ray intersects with the current edge
+    // 1. The edge must cross the horizontal ray (one endpoint above, another below)
+    // 2. The ray must be to the right of the edge
     if (y1 > y !== y2 > y) {
-      // 计算射线与边的交点的x坐标
+      // Calculate the x-coordinate of the intersection point between ray and edge
       const intersectionX = x1 + ((y - y1) * (x2 - x1)) / (y2 - y1);
 
-      // 如果交点在点的右侧，计数加1
+      // If the intersection point is to the right of the point, increment counter
       if (x < intersectionX) {
         intersectionCount++;
       }
     }
   }
 
-  // 奇数个交点表示点在多边形内部
+  // Odd number of intersections indicates the point is inside the polygon
   return intersectionCount % 2 === 1;
 }
 
 /**
- * 确定点离矩形哪一边最近
+ * Determine which side of the rectangle the point is closest to
  *
- * @param point 目标点
- * @param rect DOM矩形
- * @returns 最近的边
+ * @param point Target point
+ * @param rect DOM rectangle
+ * @returns The closest side
  */
 export function getExitSideFromRect(point: Point, rect: DOMRect): Side {
   const { x, y } = point;
   const { top, right, bottom, left } = rect;
 
-  // 计算到各边的距离
+  // Calculate distance to each side
   const distanceToTop = Math.abs(top - y);
   const distanceToBottom = Math.abs(bottom - y);
   const distanceToLeft = Math.abs(left - x);
   const distanceToRight = Math.abs(right - x);
 
-  // 先比较水平和垂直方向的最小距离，减少比较次数
+  // Compare horizontal and vertical minimum distances first to reduce comparisons
   const minHorizontal = Math.min(distanceToLeft, distanceToRight);
   const minVertical = Math.min(distanceToTop, distanceToBottom);
 
@@ -79,17 +79,17 @@ export function getExitSideFromRect(point: Point, rect: DOMRect): Side {
 }
 
 /**
- * 根据退出点和退出边创建带填充的点
+ * Create padded points based on exit point and exit side
  *
- * @param exitPoint 退出点
- * @param exitSide 退出边
- * @param padding 填充距离，默认5
- * @returns 填充后的点数组
+ * @param exitPoint Exit point
+ * @param exitSide Exit side
+ * @param padding Padding distance, default 5
+ * @returns Array of padded points
  */
 export function getPaddedExitPoints(exitPoint: Point, exitSide: Side, padding = 5): Point[] {
   const { x, y } = exitPoint;
 
-  // 使用对象映射来简化switch逻辑并提高性能
+  // Use object mapping to simplify switch logic and improve performance
   const paddingMap: Record<Side, [Point, Point]> = {
     top: [
       { x: x - padding, y: y + padding },
@@ -113,27 +113,27 @@ export function getPaddedExitPoints(exitPoint: Point, exitSide: Side, padding = 
 }
 
 /**
- * 从DOMRect获取四个角点
+ * Get four corner points from DOMRect
  *
- * @param rect DOM矩形
- * @returns 点数组（顺时针从左上角开始）
+ * @param rect DOM rectangle
+ * @returns Array of points (clockwise starting from top-left)
  */
 export function getPointsFromRect(rect: DOMRect): Point[] {
   const { top, right, bottom, left } = rect;
   return [
-    { x: left, y: top }, // 左上
-    { x: right, y: top }, // 右上
-    { x: right, y: bottom }, // 右下
-    { x: left, y: bottom } // 左下
+    { x: left, y: top }, // Top-left
+    { x: right, y: top }, // Top-right
+    { x: right, y: bottom }, // Bottom-right
+    { x: left, y: bottom } // Bottom-left
   ];
 }
 
 /**
- * 计算两点之间的欧几里得距离的平方（避免开方运算以提高性能）
+ * Calculate the squared Euclidean distance between two points (avoid square root for better performance)
  *
- * @param a 点A
- * @param b 点B
- * @returns 距离的平方
+ * @param a Point A
+ * @param b Point B
+ * @returns Squared distance
  */
 function getDistanceSquared(a: Point, b: Point): number {
   const dx = a.x - b.x;
@@ -142,32 +142,32 @@ function getDistanceSquared(a: Point, b: Point): number {
 }
 
 /**
- * 计算叉积用于判断点的方向
+ * Calculate cross product for determining point orientation
  *
- * @param o 原点
- * @param a 点A
- * @param b 点B
- * @returns 叉积值
+ * @param o Origin point
+ * @param a Point A
+ * @param b Point B
+ * @returns Cross product value
  */
 function crossProduct(o: Point, a: Point, b: Point): number {
   return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
 }
 
 /**
- * 使用Graham扫描算法计算凸包 优化版本，性能更好
+ * Calculate convex hull using Graham scan algorithm - optimized version with better performance
  *
- * @param points 点集合
- * @returns 凸包点数组
+ * @param points Point collection
+ * @returns Array of convex hull points
  */
 export function getHull<P extends Point>(points: Readonly<Array<P>>): Array<P> {
   if (points.length <= 1) return [...points];
   if (points.length === 2) return [...points];
   if (points.length === 3) {
-    // 对于三点，检查是否共线，如果共线则返回端点
+    // For three points, check if they are collinear, if so return endpoints
     const [p1, p2, p3] = points;
     const cross = crossProduct(p1, p2, p3);
     if (Math.abs(cross) < 1e-10) {
-      // 共线，返回距离最远的两点
+      // Collinear, return the two farthest points
       const dist12 = getDistanceSquared(p1, p2);
       const dist13 = getDistanceSquared(p1, p3);
       const dist23 = getDistanceSquared(p2, p3);
@@ -179,7 +179,7 @@ export function getHull<P extends Point>(points: Readonly<Array<P>>): Array<P> {
     return [...points];
   }
 
-  // 复制并排序点
+  // Copy and sort points
   const sortedPoints = [...points].sort((a, b) => {
     if (a.x !== b.x) return a.x - b.x;
     return a.y - b.y;
@@ -189,15 +189,15 @@ export function getHull<P extends Point>(points: Readonly<Array<P>>): Array<P> {
 }
 
 /**
- * 对已排序的点计算凸包
+ * Calculate convex hull for pre-sorted points
  *
- * @param points 已排序的点数组
- * @returns 凸包点数组
+ * @param points Pre-sorted array of points
+ * @returns Array of convex hull points
  */
 function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P> {
   if (points.length <= 1) return [...points];
 
-  // 构建下凸包
+  // Build lower convex hull
   const lower: P[] = [];
   for (const point of points) {
     while (lower.length >= 2 && crossProduct(lower[lower.length - 2], lower[lower.length - 1], point) <= 0) {
@@ -206,7 +206,7 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
     lower.push(point);
   }
 
-  // 构建上凸包
+  // Build upper convex hull
   const upper: P[] = [];
   for (let i = points.length - 1; i >= 0; i--) {
     const point = points[i];
@@ -216,11 +216,11 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
     upper.push(point);
   }
 
-  // 移除最后一个点（重复）并合并
+  // Remove the last point (duplicate) and merge
   lower.pop();
   upper.pop();
 
-  // 如果只有一个点，避免重复
+  // If only one point, avoid duplication
   if (lower.length === 1 && upper.length === 1 && lower[0].x === upper[0].x && lower[0].y === upper[0].y) {
     return lower;
   }
