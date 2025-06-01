@@ -9,6 +9,7 @@ import DialogExample from './examples/dialog.vue';
 import PopoverExample from './examples/popover.vue';
 import RadioGroupExample from './examples/radio-group.vue';
 import RovingFocusExample from './examples/roving-focus/demo.vue';
+import TooltipExample from './examples/tooltip.vue';
 </script>
 
 <template>
@@ -25,6 +26,7 @@ import RovingFocusExample from './examples/roving-focus/demo.vue';
       <PopoverExample />
       <RadioGroupExample />
       <RovingFocusExample />
+      <TooltipExample />
     </div>
   </div>
 </template>

@@ -13,5 +13,6 @@ export * from './components/portal';
 export * from './components/primitive';
 export * from './components/radio-group';
 export * from './components/slot';
+export * from './components/tooltip';
 
 export type * from './types';
