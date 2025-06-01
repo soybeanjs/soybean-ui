@@ -21,9 +21,7 @@ export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ Bu
 
 export interface PopoverContentImplProps extends PopperContentProps, TrapFocusProps, DismissableLayerProps {}
 
-export interface PopoverContentProps
-  extends Omit<PopoverContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>,
-    ForceMountProps {}
+export interface PopoverContentProps extends PopperContentProps, ForceMountProps {}
 export type PopoverContentEmits = PopoverContentImplEmits;
 
 export interface PopoverTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}

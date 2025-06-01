@@ -1,5 +1,5 @@
 import type { Ref, ShallowRef } from 'vue';
-import type { ForceMountProps, PropsToContext } from '../../types';
+import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
 import type { PopperContentProps, PopperAnchorProps as TooltipTriggerProps } from '../popper/types';
 import type { PortalProps as TooltipPortalProps } from '../portal/types';
 import type { ArrowProps as TooltipArrowProps } from '../arrow/types';
@@ -86,20 +86,7 @@ export interface TooltipContentImplProps extends PopperContentProps {
    */
   ariaLabel?: string;
 }
-export type TooltipContentImplEmits = {
-  /**
-   * Event handler called when focus moves to the destructive action after opening.
-   *
-   * It can be prevented by calling `event.preventDefault`
-   */
-  escapeKeyDown: [event: KeyboardEvent];
-  /**
-   * Event handler called when a pointer event occurs outside the bounds of the component.
-   *
-   * It can be prevented by calling `event.preventDefault`.
-   */
-  pointerDownOutside: [event: Event];
-};
+export type TooltipContentImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
 
 export interface TooltipContentProps extends TooltipContentImplProps, ForceMountProps {}
 export type TooltipContentEmits = TooltipContentImplEmits;
