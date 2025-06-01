@@ -6,7 +6,7 @@ import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
 import { useForwardElement } from './use-forward-element';
 
-export interface CollectionItemData<ItemData> {
+export interface CollectionItemData<ItemData = Record<string, any>> {
   element: HTMLElement;
   data: ItemData;
 }
@@ -41,7 +41,7 @@ export interface UseCollectionReturn<ItemData> {
  * @param collectionName - The name of the collection (used for context naming)
  * @returns Collection management functions and hooks
  */
-export function useCollection<ItemData = Record<string, never>>(collectionName: string): UseCollectionReturn<ItemData> {
+export function useCollection<ItemData = Record<string, any>>(collectionName: string): UseCollectionReturn<ItemData> {
   const contextName = toPascalCase(`${collectionName}Collection`);
 
   const [provideCollectionContext, useCollectionContext] = useContext(contextName, () => {
