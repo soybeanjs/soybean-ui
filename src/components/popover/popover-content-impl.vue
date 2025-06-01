@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers } from '../../composables';
+import { computed, watchEffect } from 'vue';
+import {
+  useBodyScrollLock,
+  useDismissableLayer,
+  useFocusGuards,
+  useFocusScope,
+  useHideOthers
+} from '../../composables';
 import { omit } from '../../shared';
 import { PopperContent } from '../popper';
 import { popperCssVars } from '../popper/shared';
@@ -78,13 +84,16 @@ const style = computed(() => ({
 }));
 
 useHideOthers(contentElement, modal.value);
-
-// Make sure the whole tree has focus guards as our `Dialog` will be
-// the last element in the DOM (because of the `Portal`)
+// Make sure the whole tree has focus guards as our `Dialog` will be the last element in the DOM (because of the `Portal`)
 useFocusGuards();
-
-initTriggerId();
 initContentId();
+initTriggerId();
+
+watchEffect(onCleanup => {
+  if (modal.value) {
+    onCleanup(useBodyScrollLock());
+  }
+});
 </script>
 
 <template>
