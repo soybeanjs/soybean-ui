@@ -1,4 +1,4 @@
-import { computed, ref, useId } from 'vue';
+import { computed, shallowRef, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
@@ -21,19 +21,19 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
 
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
-    const triggerId = ref('');
+    const triggerId = shallowRef('');
     const initTriggerId = () => {
       if (triggerId.value) return;
       triggerId.value = `soybean-popover-trigger-${useId()}`;
     };
 
-    const contentId = ref('');
+    const contentId = shallowRef('');
     const initContentId = () => {
       if (contentId.value) return;
       contentId.value = `soybean-popover-content-${useId()}`;
     };
 
-    const hasCustomAnchor = ref(false);
+    const hasCustomAnchor = shallowRef(false);
 
     return {
       open,

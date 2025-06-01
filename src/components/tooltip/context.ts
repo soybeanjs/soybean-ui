@@ -1,4 +1,4 @@
-import { computed, ref, useId } from 'vue';
+import { computed, shallowRef, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
 import type { TooltipDataState, TooltipProviderContextParams, TooltipRootContextParams } from './types';
 
@@ -7,9 +7,9 @@ export const [provideTooltipProviderContext, useTooltipProviderContext] = useCon
   (params: TooltipProviderContextParams) => {
     const { skipDelayDuration } = params;
 
-    const isOpenDelayed = ref(true);
+    const isOpenDelayed = shallowRef(true);
     // Reset the inTransit state if idle/scrolled.
-    const isPointerInTransitRef = ref(false);
+    const isPointerInTransitRef = shallowRef(false);
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -52,13 +52,13 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
 
     const { open, delayDuration, isOpenDelayed, disableHoverableContent } = params;
 
-    const contentId = ref('');
+    const contentId = shallowRef('');
     const initContentId = () => {
       if (contentId.value) return;
       contentId.value = `soybean-tooltip-content-${useId()}`;
     };
 
-    const wasOpenDelayedRef = ref(false);
+    const wasOpenDelayedRef = shallowRef(false);
 
     const dataState = computed<TooltipDataState>(() => {
       if (!open.value) return 'closed';

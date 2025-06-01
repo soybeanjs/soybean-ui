@@ -1,4 +1,4 @@
-import { computed, ref, useId } from 'vue';
+import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
@@ -14,7 +14,7 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
       open.value = !open.value;
     };
 
-    const contentId = ref('');
+    const contentId = shallowRef('');
 
     const initContentId = () => {
       if (contentId.value) return;

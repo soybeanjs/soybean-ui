@@ -1,4 +1,4 @@
-import { computed, ref, useId } from 'vue';
+import { computed, shallowRef, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
@@ -16,7 +16,7 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
 
     const [triggerElement, setTriggerElement] = useForwardElement();
 
-    const triggerId = ref('');
+    const triggerId = shallowRef('');
     const initTriggerId = () => {
       if (triggerId.value) return;
       triggerId.value = `soybean-accordion-trigger-${useId()}`;

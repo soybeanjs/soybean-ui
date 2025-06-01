@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, shallowRef } from 'vue';
 import type { PortalProps } from './types';
 
 defineOptions({
@@ -10,7 +10,7 @@ withDefaults(defineProps<PortalProps>(), {
   to: 'body'
 });
 
-const isMounted = ref(false);
+const isMounted = shallowRef(false);
 
 onMounted(() => {
   isMounted.value = true;

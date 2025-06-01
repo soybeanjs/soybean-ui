@@ -1,4 +1,4 @@
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, useId } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId } from 'vue';
 import { getFocusIntent, isElementHasAttribute, isNullish, tryFocusFirst, wrapArray } from '../../shared';
 import { useCollection, useContext, useControllableState, useDirection } from '../../composables';
 import type { RovingFocusGroupContextParams, RovingFocusItemOptions } from './types';
@@ -34,14 +34,14 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
       currentTabStopId.value = tabStopId;
     };
 
-    const isTabbingBackOut = ref(false);
-    const isClickFocus = ref(false);
+    const isTabbingBackOut = shallowRef(false);
+    const isClickFocus = shallowRef(false);
 
     const onItemShiftTab = () => {
       isTabbingBackOut.value = true;
     };
 
-    const focusableItemsCount = ref(0);
+    const focusableItemsCount = shallowRef(0);
 
     const onFocusableItemAdd = () => {
       focusableItemsCount.value++;

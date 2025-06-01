@@ -1,4 +1,4 @@
-import { computed, ref, useId } from 'vue';
+import { computed, shallowRef, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
@@ -21,19 +21,19 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
 
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
-    const contentId = ref('');
+    const contentId = shallowRef('');
     const initContentId = () => {
       if (contentId.value) return;
       contentId.value = `soybean-dialog-content-${useId()}`;
     };
 
-    const titleId = ref('');
+    const titleId = shallowRef('');
     const initTitleId = () => {
       if (titleId.value) return;
       titleId.value = `soybean-dialog-title-${useId()}`;
     };
 
-    const descriptionId = ref('');
+    const descriptionId = shallowRef('');
     const initDescriptionId = () => {
       if (descriptionId.value) return;
       descriptionId.value = `soybean-dialog-description-${useId()}`;
