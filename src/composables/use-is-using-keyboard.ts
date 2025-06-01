@@ -1,4 +1,4 @@
-import { onBeforeUnmount, onMounted, shallowRef } from 'vue';
+import { computed, onBeforeUnmount, onMounted, shallowRef } from 'vue';
 import { isClient } from '../shared';
 
 let subscribers = 0;
@@ -60,5 +60,5 @@ export function useIsUsingKeyboard() {
     }
   });
 
-  return isUsingKeyboardRef;
+  return computed(() => isUsingKeyboardRef.value);
 }
