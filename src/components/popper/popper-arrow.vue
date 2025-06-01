@@ -36,8 +36,8 @@ const TRANSFORM: Record<Side, string> = {
 
 const style = computed<CSSProperties>(() => ({
   position: 'absolute',
-  left: `${arrowX.value}px`,
-  top: `${arrowY.value}px`,
+  left: arrowX.value ? `${arrowX.value}px` : undefined,
+  top: arrowY.value ? `${arrowY.value}px` : undefined,
   [baseSide.value]: 0,
   transformOrigin: TRANSFORM_ORIGIN[placedSide.value],
   transform: TRANSFORM[placedSide.value],
