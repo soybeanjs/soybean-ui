@@ -1,5 +1,14 @@
 import type { Point, Polygon, Side } from '../types';
 
+export function isPointerInGraceArea(event: PointerEvent, area?: Polygon) {
+  if (!area) return false;
+  const { clientX: x, clientY: y } = event;
+
+  const point: Point = { x, y };
+
+  return isPointInPolygon(point, area);
+}
+
 export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
   const { x, y } = point;
 

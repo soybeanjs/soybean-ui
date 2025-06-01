@@ -22,6 +22,8 @@ export type NavigationKey =
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 
+export type HorizontalSide = Extract<Side, 'left' | 'right'>;
+
 export type Align = 'start' | 'center' | 'end';
 
 export interface Size {
@@ -32,6 +34,11 @@ export interface Size {
 export type Point = { x: number; y: number };
 
 export type Polygon = Point[];
+
+export interface GraceIntent {
+  area: Polygon;
+  side: HorizontalSide;
+}
 
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)

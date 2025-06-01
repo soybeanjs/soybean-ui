@@ -1,7 +1,16 @@
-import { Comment, Fragment, computed, getCurrentInstance } from 'vue';
-import type { ComponentPublicInstance, VNode } from 'vue';
+import {
+  Comment,
+  Fragment,
+  computed,
+  customRef,
+  getCurrentInstance,
+  getCurrentScope,
+  onScopeDispose,
+  toValue
+} from 'vue';
+import type { ComponentPublicInstance, MaybeRefOrGetter, Ref, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
-import type { PropsToContext, VNodeRef } from '../types';
+import type { Fn, PropsToContext, VNodeRef } from '../types';
 import { omit, pick } from './object';
 
 export function getLifeCycleTarget(target?: any) {
@@ -74,4 +83,55 @@ export function pickProps<T extends Record<string, any>, K extends keyof T>(prop
 
 export function omitProps<T extends Record<string, any>, K extends keyof T>(props: T, keys: K[]) {
   return computed(() => omit(props, keys));
+}
+
+/**
+ * Call onScopeDispose() if it's inside an effect scope lifecycle, if not, do nothing
+ *
+ * @param fn
+ */
+export function tryOnScopeDispose(fn: Fn) {
+  if (getCurrentScope()) {
+    onScopeDispose(fn);
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Create a ref which will be reset to the default value after some time.
+ *
+ * @param defaultValue The value which will be set.
+ * @param afterMs A zero-or-greater delay in milliseconds.
+ * @see https://vueuse.org/refAutoReset
+ */
+export function refAutoReset<T>(defaultValue: MaybeRefOrGetter<T>, afterMs: MaybeRefOrGetter<number> = 10000): Ref<T> {
+  return customRef<T>((track, trigger) => {
+    let value: T = toValue(defaultValue);
+    let timer: any;
+
+    const resetAfter = () =>
+      setTimeout(() => {
+        value = toValue(defaultValue);
+        trigger();
+      }, toValue(afterMs));
+
+    tryOnScopeDispose(() => {
+      clearTimeout(timer);
+    });
+
+    return {
+      get() {
+        track();
+        return value;
+      },
+      set(newValue) {
+        value = newValue;
+        trigger();
+
+        clearTimeout(timer);
+        timer = resetAfter();
+      }
+    };
+  });
 }

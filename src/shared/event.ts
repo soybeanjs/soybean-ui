@@ -15,3 +15,7 @@ export function handleAndDispatchCustomEvent<E extends CustomEvent, OriginalEven
 
   target.dispatchEvent(event);
 }
+
+export function isMouseEvent(event: PointerEvent) {
+  return event.pointerType === 'mouse';
+}
