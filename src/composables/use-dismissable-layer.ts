@@ -169,7 +169,7 @@ export function useOutsidePointerDown(
     }
   };
 
-  if (!isClient()) {
+  if (!isClient) {
     return captureHandlers;
   }
 
@@ -261,7 +261,7 @@ export function useOutsideFocus(
     }
   };
 
-  if (!isClient()) {
+  if (!isClient) {
     return captureHandlers;
   }
 

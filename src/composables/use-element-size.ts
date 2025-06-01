@@ -31,7 +31,7 @@ export function useElementSize(element: ShallowRef<HTMLElement | null | undefine
         // array
         if (!entries.length) return;
 
-        if (isClient() && window && isSVG.value) {
+        if (isClient && isSVG.value) {
           const rect = el.getBoundingClientRect();
           size.value = {
             width: rect.width,

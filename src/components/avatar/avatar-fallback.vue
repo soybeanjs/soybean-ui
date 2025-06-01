@@ -16,7 +16,7 @@ const canRender = ref(props.delayMs === undefined);
 const visible = computed(() => canRender.value && imageLoadingStatus.value !== 'loaded');
 
 watchEffect(onCleanup => {
-  if (!props.delayMs || !isClient()) return;
+  if (!props.delayMs || !isClient) return;
 
   const timerId = window.setTimeout(() => {
     canRender.value = true;

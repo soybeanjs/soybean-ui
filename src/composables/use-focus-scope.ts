@@ -49,7 +49,7 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
   };
 
   // Takes care of trapping focus if focus is moved outside programmatically for example
-  if (isClient()) {
+  if (isClient) {
     function handleFocusIn(event: FocusEvent) {
       if (focusScope.paused || !elRef.value) return;
 

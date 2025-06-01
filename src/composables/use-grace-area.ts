@@ -55,7 +55,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
   // 元素引用变化监听
   watchEffect(cleanup => {
     const isEnabled = disabled?.value !== true;
-    if (!isClient() || !isEnabled) {
+    if (!isClient || !isEnabled) {
       return;
     }
 
@@ -108,7 +108,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
   // Grace area 跟踪监听
   watchEffect(cleanup => {
     const isEnabled = disabled?.value !== true;
-    if (!isClient() || !isEnabled || !pointerGraceArea.value) {
+    if (!isClient || !isEnabled || !pointerGraceArea.value) {
       return;
     }
 

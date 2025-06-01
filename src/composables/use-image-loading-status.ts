@@ -20,7 +20,7 @@ export function useImageLoadingStatus(src: MaybeRefOrGetter<string>, options: Im
   const loadingStatus = shallowRef<ImageLoadingStatus>('idle');
 
   // Early return for SSR
-  if (!isClient()) return loadingStatus;
+  if (!isClient) return loadingStatus;
 
   watchEffect(onCleanup => {
     const srcValue = toValue(src);

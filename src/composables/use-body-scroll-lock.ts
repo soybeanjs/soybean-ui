@@ -35,7 +35,7 @@ const SCROLL_LOCK_CSS = `
  * @returns A function to unlock the scroll
  */
 export function useBodyScrollLock(): () => void {
-  if (!isClient()) {
+  if (!isClient) {
     return () => {};
   }
 
