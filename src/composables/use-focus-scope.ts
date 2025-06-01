@@ -28,13 +28,13 @@ export interface UseFocusScopeOptions extends EmitsToHookProps<FocusScopeEmits> 
   trapped?: MaybeRefOrGetter<boolean>;
 }
 
-const AUTOFOCUS_ON_MOUNT = 'focusScope.autoFocusOnMount';
+const AUTOFOCUS_ON_OPEN = 'focusScope.autoFocusOnOpen';
+const AUTOFOCUS_ON_CLOSE = 'focusScope.autoFocusOnClose';
 const AUTOFOCUS_EVENT_OPTIONS = { bubbles: false, cancelable: true };
-const AUTOFOCUS_ON_UNMOUNT = 'focusScope.autoFocusOnUnmount';
 const focusScopesStack = createFocusScopesStack();
 
 export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: UseFocusScopeOptions) {
-  const { loop, trapped, onMountAutoFocus, onUnmountAutoFocus } = options || {};
+  const { loop, trapped, onOpenAutoFocus, onCloseAutoFocus } = options || {};
 
   let lastFocusedElementRef: HTMLElement | null | undefined;
 
@@ -127,9 +127,9 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
       const hasFocusedCandidate = container.contains(previouslyFocusedElement);
 
       if (!hasFocusedCandidate) {
-        const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, AUTOFOCUS_EVENT_OPTIONS);
-        if (onMountAutoFocus) {
-          container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        const mountEvent = new CustomEvent(AUTOFOCUS_ON_OPEN, AUTOFOCUS_EVENT_OPTIONS);
+        if (onOpenAutoFocus) {
+          container.addEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
         }
         container.dispatchEvent(mountEvent);
 
@@ -143,16 +143,16 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
       }
 
       onCleanup(() => {
-        if (onMountAutoFocus) {
-          container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        if (onOpenAutoFocus) {
+          container.removeEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
         }
 
         // We hit a react bug (fixed in v17) with focusing in unmount.
         // We need to delay the focus a little to get around it for now.
         // See: https://github.com/facebook/react/issues/17894
-        const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, AUTOFOCUS_EVENT_OPTIONS);
-        if (onUnmountAutoFocus) {
-          container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+        const unmountEvent = new CustomEvent(AUTOFOCUS_ON_CLOSE, AUTOFOCUS_EVENT_OPTIONS);
+        if (onCloseAutoFocus) {
+          container.addEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
         }
         container.dispatchEvent(unmountEvent);
 
@@ -162,8 +162,8 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
           }
 
           // we need to remove the listener after we `dispatchEvent`
-          if (onUnmountAutoFocus) {
-            container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+          if (onCloseAutoFocus) {
+            container.removeEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
           }
 
           focusScopesStack.remove(focusScope);

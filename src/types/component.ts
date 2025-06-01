@@ -42,10 +42,10 @@ export type DismissableLayerEmits = {
 };
 
 export type FocusScopeEmits = {
-  /** Event handler called when auto-focusing on mount. Can be prevented. */
-  mountAutoFocus: [event: Event];
-  /** Event handler called when auto-focusing on unmount. Can be prevented. */
-  unmountAutoFocus: [event: Event];
+  /** Event handler called when auto-focusing on open. Can be prevented. */
+  openAutoFocus: [event: Event];
+  /** Event handler called when auto-focusing on close. Can be prevented. */
+  closeAutoFocus: [event: Event];
 };
 
 export interface FormNameValueProps<T = unknown> {

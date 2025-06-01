@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
 import type {
   DismissableLayerEmits,
   DismissableLayerProps,
+  FocusScopeEmits,
   ForceMountProps,
   PropsToContext,
   TrapFocusProps
@@ -44,12 +45,7 @@ export interface DialogContentImplProps
     TrapFocusProps,
     DismissableLayerProps,
     /** @vue-ignore */ HTMLAttributes {}
-export type DialogContentImplEmits = DismissableLayerEmits & {
-  /** Event handler called when auto-focusing on open. Can be prevented. */
-  openAutoFocus: [event: Event];
-  /** Event handler called when auto-focusing on close. Can be prevented. */
-  closeAutoFocus: [event: Event];
-};
+export type DialogContentImplEmits = DismissableLayerEmits & FocusScopeEmits;
 
 export interface DialogContentProps
   extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>,

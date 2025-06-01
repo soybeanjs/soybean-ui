@@ -51,10 +51,10 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
 const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
   trapped: () => props.trapFocus,
   loop: true,
-  onMountAutoFocus: event => {
+  onOpenAutoFocus: event => {
     emit('openAutoFocus', event);
   },
-  onUnmountAutoFocus: event => {
+  onCloseAutoFocus: event => {
     emit('closeAutoFocus', event);
   }
 });
