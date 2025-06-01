@@ -29,6 +29,10 @@ export interface Size {
   height: number;
 }
 
+export type Point = { x: number; y: number };
+
+export type Polygon = Point[];
+
 /**
  * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)
  * otherwise, it will be passed string
