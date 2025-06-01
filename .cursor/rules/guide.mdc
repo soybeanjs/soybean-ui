@@ -142,10 +142,10 @@ export type {
 
 ### 2. `types.ts` Type Definition Template
 ```typescript
-import type { ComputedRef, Ref } from 'vue';
-import type { ClassValueProp, DataOrientation } from '../../types';
+import type { ComputedRef, Ref, HTMLAttributes } from 'vue';
+import type { DataOrientation } from '../../types';
 
-export interface ComponentRootProps extends ClassValueProp {
+export interface ComponentRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * Brief description of the prop
    * @defaultValue 'default-value'
@@ -158,7 +158,7 @@ export interface ComponentRootProps extends ClassValueProp {
   disabled?: boolean;
 }
 
-// add if has
+// (可选)，如果没有事件就不创建
 export type ComponentRootEmits = {
   'update:modelValue': [value: string];
 };
@@ -359,7 +359,7 @@ const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(prop
 
 ## 🎨 Styling System
 
-// add if has
+// (可选)
 ### CSS Variables Pattern
 ```typescript
 // shared.ts
