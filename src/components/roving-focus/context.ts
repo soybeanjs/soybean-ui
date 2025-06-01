@@ -6,12 +6,13 @@ import type { RovingFocusGroupContextParams, RovingFocusItemOptions } from './ty
 const ON_ENTRY_FOCUS = 'rovingFocusGroup.onEntryFocus';
 const ROVING_FOCUS_EVENT_OPTIONS = { bubbles: false, cancelable: true };
 
-const { provideCollectionContext, useCollectionContext, useCollectionItem } = useCollection('RovingFocusGroup');
+const { provideCollectionContext, useCollectionContext, useCollectionItem } =
+  useCollection<Record<string, any>>('RovingFocusGroup');
 
 const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
   'RovingFocusGroup',
   (params: RovingFocusGroupContextParams) => {
-    const { containerProps, getOrderedElements } = provideCollectionContext();
+    const { containerProps, getOrderedItems, getOrderedElements } = provideCollectionContext();
 
     const {
       loop,
@@ -113,7 +114,8 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
       onFocusableItemAdd,
       onFocusableItemRemove,
       rovingFocusGroupProps,
-      rovingFocusGroupEvents
+      rovingFocusGroupEvents,
+      getOrderedItems
     };
   }
 );

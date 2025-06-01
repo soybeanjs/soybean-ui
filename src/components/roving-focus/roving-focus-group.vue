@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<RovingFocusGroupProps>(), {
 
 const emit = defineEmits<RovingFocusGroupEmits>();
 
-const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGroupContext({
+const { rovingFocusGroupProps, rovingFocusGroupEvents, getOrderedItems } = provideRovingFocusGroupContext({
   ...transformPropsToContext(props, [
     'loop',
     'orientation',
@@ -31,6 +31,10 @@ const { rovingFocusGroupProps, rovingFocusGroupEvents } = provideRovingFocusGrou
   onEntryFocus: (event: Event) => {
     emit('entryFocus', event);
   }
+});
+
+defineExpose({
+  getItems: getOrderedItems
 });
 </script>
 
