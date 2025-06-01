@@ -1,7 +1,7 @@
 {
   "name": "soybean-primitives",
   "type": "module",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "packageManager": "pnpm@10.11.0",
   "description": "soybean-primitives is a collection of primitive components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {

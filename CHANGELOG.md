@@ -1,6 +1,86 @@
 # Changelog
 
 
+## [v0.0.1-alpha.4](https://github.com/vexa-ui/vexa-ui/compare/v0.0.1-alpha.3...v0.0.1-alpha.4) (2025-06-01)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **checkbox, radio-group**:
+  - add control and label components to checkbox and radio group &nbsp;-&nbsp; by **Soybean** [<samp>(c5abf)</samp>](https://github.com/vexa-ui/vexa-ui/commit/c5abf97)
+- **debounce**:
+  - add createDebounce function for efficient callback debouncing and cancellation &nbsp;-&nbsp; by **Soybean** [<samp>(f0924)</samp>](https://github.com/vexa-ui/vexa-ui/commit/f0924ef)
+- **dialog**:
+  - expose closeModal function in dialog slot for improved control &nbsp;-&nbsp; by **Soybean** [<samp>(2f005)</samp>](https://github.com/vexa-ui/vexa-ui/commit/2f00562)
+- **dom**:
+  - add getAriaLabelByVNode and getAriaLabelByVNodeList functions for improved accessibility text extraction from VNodes &nbsp;-&nbsp; by **Soybean** [<samp>(3c7f1)</samp>](https://github.com/vexa-ui/vexa-ui/commit/3c7f179)
+- **geometry**:
+  - implement geometric functions for point-in-polygon checks, distance calculations, and convex hull generation &nbsp;-&nbsp; by **Soybean** [<samp>(da31c)</samp>](https://github.com/vexa-ui/vexa-ui/commit/da31c62)
+- **grace-area**:
+  - implement useGraceArea composable for enhanced pointer tracking and grace area detection &nbsp;-&nbsp; by **Soybean** [<samp>(c3b29)</samp>](https://github.com/vexa-ui/vexa-ui/commit/c3b2948)
+- **popover**:
+  - add Popover component with trigger, content, and context management for enhanced UI interactions &nbsp;-&nbsp; by **Soybean** [<samp>(b14c6)</samp>](https://github.com/vexa-ui/vexa-ui/commit/b14c6bd)
+- **popper**:
+  - introduce Popper components for enhanced positioning and dynamic content management &nbsp;-&nbsp; by **Soybean** [<samp>(a5c20)</samp>](https://github.com/vexa-ui/vexa-ui/commit/a5c20dd)
+- **props**:
+  - add pickProps and omitProps functions for selective property management in components &nbsp;-&nbsp; by **Soybean** [<samp>(db56f)</samp>](https://github.com/vexa-ui/vexa-ui/commit/db56f79)
+- **radio-group**:
+  - enhance radio group components with control and label features &nbsp;-&nbsp; by **Soybean** [<samp>(ea93e)</samp>](https://github.com/vexa-ui/vexa-ui/commit/ea93e7a)
+- **scripts**:
+  - add build:play script for Vite build process to enhance development workflow &nbsp;-&nbsp; by **Soybean** [<samp>(0b6a2)</samp>](https://github.com/vexa-ui/vexa-ui/commit/0b6a270)
+- **tooltip**:
+  - add tooltip component with provider, trigger, and content implementations for enhanced UI interactions &nbsp;-&nbsp; by **Soybean** [<samp>(a132b)</samp>](https://github.com/vexa-ui/vexa-ui/commit/a132ba0)
+- **types**:
+  - introduce new Side and Align types, and add Size interface for improved layout management &nbsp;-&nbsp; by **Soybean** [<samp>(0417b)</samp>](https://github.com/vexa-ui/vexa-ui/commit/0417b2f)
+  - add Point and Polygon types to enhance geometric data representation &nbsp;-&nbsp; by **Soybean** [<samp>(19749)</samp>](https://github.com/vexa-ui/vexa-ui/commit/197494c)
+- **use-dismissable-layer**:
+  - add enable parameter to useOutsidePointerDown for conditional event handling &nbsp;-&nbsp; by **Soybean** [<samp>(b6b58)</samp>](https://github.com/vexa-ui/vexa-ui/commit/b6b58c8)
+- **use-element-size**:
+  - implement composable for dynamic element size tracking using ResizeObserver &nbsp;-&nbsp; by **Soybean** [<samp>(01b17)</samp>](https://github.com/vexa-ui/vexa-ui/commit/01b1705)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **avatar-fallback**:
+  - prevent rendering delay when not in client environment &nbsp;-&nbsp; by **Soybean** [<samp>(71eed)</samp>](https://github.com/vexa-ui/vexa-ui/commit/71eedf2)
+- **dialog, popover**:
+  - standardize escape key event naming to 'escapeKeyDown' for consistency across components &nbsp;-&nbsp; by **Soybean** [<samp>(bcdea)</samp>](https://github.com/vexa-ui/vexa-ui/commit/bcdeaf3)
+- **dom**:
+  - update getAriaLabel function to handle null element parameter &nbsp;-&nbsp; by **Soybean** [<samp>(f2027)</samp>](https://github.com/vexa-ui/vexa-ui/commit/f20278d)
+- **popover, popper**:
+  - update CSS variable definitions to ensure consistency in transform origin and remove duplicate entries &nbsp;-&nbsp; by **Soybean** [<samp>(108fd)</samp>](https://github.com/vexa-ui/vexa-ui/commit/108fd18)
+- **popper**:
+  - correct floatingStyles reference in popper-content component for proper styling application &nbsp;-&nbsp; by **Soybean** [<samp>(86bd2)</samp>](https://github.com/vexa-ui/vexa-ui/commit/86bd2ec)
+  - handle undefined arrow position values to prevent CSS errors &nbsp;-&nbsp; by **Soybean** [<samp>(1c337)</samp>](https://github.com/vexa-ui/vexa-ui/commit/1c33790)
+- **vite.config**:
+  - specify root option for tsconfigPaths plugin &nbsp;-&nbsp; by **Soybean** [<samp>(bcc22)</samp>](https://github.com/vexa-ui/vexa-ui/commit/bcc22b3)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **checkbox, radio-group**:
+  - implement useControllableState for modelValue management &nbsp;-&nbsp; by **Soybean** [<samp>(2d9b9)</samp>](https://github.com/vexa-ui/vexa-ui/commit/2d9b9fd)
+- **components**:
+  - remove unused 'as' prop from various components for cleaner code &nbsp;-&nbsp; by **Soybean** [<samp>(07969)</samp>](https://github.com/vexa-ui/vexa-ui/commit/07969e4)
+  - dialog, popover: extract event handling logic into shared composable for better code reuse and maintainability &nbsp;-&nbsp; by **Soybean** [<samp>(03369)</samp>](https://github.com/vexa-ui/vexa-ui/commit/03369fb)
+- **dialog**:
+  - replace closeModal with onOpenChange for improved dialog state management &nbsp;-&nbsp; by **Soybean** [<samp>(430be)</samp>](https://github.com/vexa-ui/vexa-ui/commit/430be2f)
+- **popper**:
+  - rename element variable to anchorElement for clarity in popper-anchor component &nbsp;-&nbsp; by **Soybean** [<samp>(6fcea)</samp>](https://github.com/vexa-ui/vexa-ui/commit/6fceadc)
+- **projects**:
+  - add HTMLAttributes to components props &nbsp;-&nbsp; by **Soybean** [<samp>(bd6aa)</samp>](https://github.com/vexa-ui/vexa-ui/commit/bd6aa54)
+- **types**:
+  - remove style type definitions and update exports for cleaner type management &nbsp;-&nbsp; by **Soybean** [<samp>(eb926)</samp>](https://github.com/vexa-ui/vexa-ui/commit/eb92633)
+  - update export for VisuallyHiddenInputProps to enhance type clarity &nbsp;-&nbsp; by **Soybean** [<samp>(d6e2a)</samp>](https://github.com/vexa-ui/vexa-ui/commit/d6e2a0b)
+  - update ComponentRootProps to extend HTMLAttributes and improve type definitions &nbsp;-&nbsp; by **Soybean** [<samp>(a4c34)</samp>](https://github.com/vexa-ui/vexa-ui/commit/a4c34d7)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by **Soybean** [<samp>(358d7)</samp>](https://github.com/vexa-ui/vexa-ui/commit/358d787)
+- **types**: remove global type declaration for __DEV__ as it is no longer needed &nbsp;-&nbsp; by **Soybean** [<samp>(acbe5)</samp>](https://github.com/vexa-ui/vexa-ui/commit/acbe518)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.0.1-alpha.3](https://github.com/honghuangdc/soybean-primitives/compare/v0.0.1-alpha.2...v0.0.1-alpha.3) (2025-05-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
