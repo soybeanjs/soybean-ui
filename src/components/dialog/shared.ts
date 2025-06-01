@@ -14,8 +14,8 @@ export function useDialogContentEvents(options: UseDialogContentOptions) {
   let hasInteractedOutsideRef = false;
   let hasPointerDownOutsideRef = false;
 
-  const escapeKeydown = (event: KeyboardEvent) => {
-    emit('escapeKeydown', event);
+  const escapeKeyDown = (event: KeyboardEvent) => {
+    emit('escapeKeyDown', event);
   };
 
   const pointerDownOutside = (event: PointerDownOutsideEvent) => {
@@ -97,7 +97,7 @@ export function useDialogContentEvents(options: UseDialogContentOptions) {
   };
 
   return {
-    escapeKeydown,
+    escapeKeyDown,
     pointerDownOutside,
     focusOutside,
     interactOutside,

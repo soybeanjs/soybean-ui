@@ -2,7 +2,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, toVal
 import type { CSSProperties, MaybeRefOrGetter, Ref } from 'vue';
 import { DismissableLayerManager, handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
-import { useEscapeKeydown } from './use-escape-keydown';
+import { useEscapeKeyDown } from './use-escape-key-down';
 
 // Event type constants
 const POINTER_DOWN_OUTSIDE_EVENT = 'dismissableLayer.pointerDownOutside';
@@ -36,7 +36,7 @@ export function useDismissableLayer(
 ) {
   const {
     disableOutsidePointerEvents,
-    onEscapeKeydown,
+    onEscapeKeyDown,
     onPointerDownOutside,
     onFocusOutside,
     onInteractOutside,
@@ -90,10 +90,10 @@ export function useDismissableLayer(
   }, layerElementRef);
 
   // Handle escape key press
-  useEscapeKeydown(escapeKeyEvent => {
+  useEscapeKeyDown(escapeKeyEvent => {
     if (!layerElementRef.value || !layerManager.isTopMostLayer(layerElementRef.value)) return;
 
-    onEscapeKeydown?.(escapeKeyEvent);
+    onEscapeKeyDown?.(escapeKeyEvent);
 
     if (!escapeKeyEvent.defaultPrevented) {
       escapeKeyEvent.preventDefault();

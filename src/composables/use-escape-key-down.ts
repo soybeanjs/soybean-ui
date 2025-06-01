@@ -3,7 +3,7 @@ import type { MaybeRefOrGetter } from 'vue';
 
 let registeredEscapeHandlers: ((e: KeyboardEvent) => void)[] = [];
 
-export function useEscapeKeydown(
+export function useEscapeKeyDown(
   handler: (e: KeyboardEvent) => void,
   ownerDocument: MaybeRefOrGetter<Document | undefined> = globalThis?.document
 ) {

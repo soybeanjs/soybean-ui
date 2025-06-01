@@ -31,8 +31,8 @@ const {
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
-  onEscapeKeydown: event => {
-    emit('escapeKeydown', event);
+  onEscapeKeyDown: event => {
+    emit('escapeKeyDown', event);
   },
   onPointerDownOutside: event => {
     emit('pointerDownOutside', event);
