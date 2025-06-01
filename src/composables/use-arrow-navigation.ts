@@ -64,6 +64,10 @@ interface ArrowNavigationOptions {
   focus?: boolean;
 }
 
+interface ArrowNavigationConfig extends Required<ArrowNavigationOptions> {
+  attributeName: string;
+}
+
 interface NavigationDirection {
   /** Whether the right arrow key was pressed */
   right: boolean;
@@ -125,7 +129,7 @@ export function useArrowNavigation(
   parentElement: HTMLElement | undefined,
   options: ArrowNavigationOptions = {}
 ): HTMLElement | null {
-  const config = {
+  const config: ArrowNavigationConfig = {
     attributeName: `[${COLLECTION_ITEM_ATTRIBUTE}]`,
     itemsArray: [],
     loop: true,
@@ -156,7 +160,7 @@ function handleNavigation(
   e: KeyboardEvent,
   currentElement: HTMLElement,
   parentElement: HTMLElement | undefined,
-  config: Required<ArrowNavigationOptions> & { attributeName: string },
+  config: ArrowNavigationConfig,
   navigationInfo: NavigationDirection
 ): HTMLElement | null {
   // Cache collection items to avoid repeated DOM queries
