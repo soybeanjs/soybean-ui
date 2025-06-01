@@ -11,16 +11,16 @@ defineOptions({
 
 const props = defineProps<PopperAnchorProps>();
 
-const [element, setElement] = useForwardElement();
+const [anchorElement, setAnchorElement] = useForwardElement();
 const { onAnchorElementChange } = usePopperRootContext('PopperAnchor');
 
 watchPostEffect(() => {
-  onAnchorElementChange(props.reference ?? element.value);
+  onAnchorElementChange(props.reference ?? anchorElement.value);
 });
 </script>
 
 <template>
-  <Primitive v-bind="props" :ref="setElement">
+  <Primitive v-bind="props" :ref="setAnchorElement">
     <slot />
   </Primitive>
 </template>
