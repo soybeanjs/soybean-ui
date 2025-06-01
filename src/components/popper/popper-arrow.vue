@@ -47,12 +47,7 @@ const style = computed<CSSProperties>(() => ({
 
 <template>
   <span :ref="setArrowElement" :style="style">
-    <Arrow
-      v-bind="{ ...props, ...attrs }"
-      :style="{
-        display: 'block'
-      }"
-    >
+    <Arrow v-bind="{ ...props, ...attrs }" style="display: block">
       <slot />
     </Arrow>
   </span>
