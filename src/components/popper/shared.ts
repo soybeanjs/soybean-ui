@@ -5,11 +5,11 @@ import type { Align, InferDefaults, Side } from '../../types';
 import type { PopperContentProps } from './types';
 
 export const popperCssVars = {
+  transformOrigin: '--soybean-popper-transform-origin',
   availableWidth: '--soybean-popper-available-width',
   availableHeight: '--soybean-popper-available-height',
   anchorWidth: '--soybean-popper-anchor-width',
-  anchorHeight: '--soybean-popper-anchor-height',
-  transformOrigin: '--soybean-popper-transform-origin'
+  anchorHeight: '--soybean-popper-anchor-height'
 };
 
 // 对齐方式到百分比的映射
