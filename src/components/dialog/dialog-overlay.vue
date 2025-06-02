@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shallowRef, useTemplateRef, watchEffect } from 'vue';
+import { onWatcherCleanup, shallowRef, useTemplateRef, watchEffect } from 'vue';
 import { useBodyScrollLock, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import type { DialogOverlayProps } from './types';
@@ -15,9 +15,11 @@ const { open, dataState } = useDialogRootContext('DialogOverlay');
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(overlayElement, open);
 
-watchEffect(onCleanup => {
+watchEffect(() => {
   if (isPresent.value) {
-    onCleanup(useBodyScrollLock());
+    const cleanup = useBodyScrollLock();
+
+    onWatcherCleanup(cleanup);
   }
 });
 </script>

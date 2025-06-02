@@ -1,4 +1,4 @@
-import { shallowRef, toValue, watchEffect } from 'vue';
+import { onWatcherCleanup, shallowRef, toValue, watchEffect } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
 import { isClient } from '../shared';
 import type { HTMLAttributeCrossOrigin, HTMLAttributeReferrerPolicy, ImageLoadingStatus } from '../types';
@@ -22,7 +22,7 @@ export function useImageLoadingStatus(src: MaybeRefOrGetter<string>, options: Im
   // Early return for SSR
   if (!isClient) return loadingStatus;
 
-  watchEffect(onCleanup => {
+  watchEffect(() => {
     const srcValue = toValue(src);
     const referrerPolicyValue = toValue(referrerPolicy);
     const crossOriginValue = toValue(crossOrigin);
@@ -58,7 +58,7 @@ export function useImageLoadingStatus(src: MaybeRefOrGetter<string>, options: Im
     // Start loading
     image.src = srcValue;
 
-    onCleanup(() => {
+    onWatcherCleanup(() => {
       isMounted = false;
       // Clean up image to prevent memory leaks
       image.onload = null;

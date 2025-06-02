@@ -1,4 +1,4 @@
-import { nextTick, onBeforeUnmount, shallowRef, watchEffect } from 'vue';
+import { nextTick, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
 import type { Point, Polygon } from '../types';
@@ -35,27 +35,15 @@ export function useGraceArea(options: UseGraceAreaOptions) {
   } = options;
 
   const pointerGraceArea = shallowRef<Polygon>();
-  let graceTimeoutTimer: number | undefined;
 
-  // Lazy creation of debouncer, only create when needed
-  let debounce: ReturnType<typeof createDebounce> | undefined;
-
-  function handleRemoveGraceArea() {
-    try {
-      pointerGraceArea.value = undefined;
-      onPointerInTransitChange?.(false);
-
-      if (graceTimeoutTimer) {
-        clearTimeout(graceTimeoutTimer);
-        graceTimeoutTimer = undefined;
-      }
-    } catch {}
-  }
+  const cleanupGraceArea = () => {
+    pointerGraceArea.value = undefined;
+    onPointerInTransitChange?.(false);
+  };
 
   // Element reference change listener
-  watchEffect(cleanup => {
-    const isEnabled = disabled?.value !== true;
-    if (!isClient || !isEnabled) {
+  watchEffect(() => {
+    if (!isClient || disabled?.value === true) {
       return;
     }
 
@@ -65,6 +53,14 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     if (!trigger || !content) {
       return;
     }
+
+    let graceTimeoutTimer: number | undefined;
+    const cleanupGraceTimeout = () => {
+      if (graceTimeoutTimer) {
+        clearTimeout(graceTimeoutTimer);
+        graceTimeoutTimer = undefined;
+      }
+    };
 
     // Conditional function creation, only create when needed
     function createGraceAreaSafely(event: PointerEvent, hoverTarget: HTMLElement) {
@@ -78,19 +74,19 @@ export function useGraceArea(options: UseGraceAreaOptions) {
         pointerGraceArea.value = graceArea;
         onPointerInTransitChange?.(true);
 
-        if (graceTimeoutTimer) {
-          clearTimeout(graceTimeoutTimer);
-        }
+        cleanupGraceTimeout();
         graceTimeoutTimer = window.setTimeout(() => {
-          handleRemoveGraceArea();
+          cleanupGraceArea();
+          cleanupGraceTimeout();
           onPointerExit();
         }, maxGraceTime);
       } catch {
-        handleRemoveGraceArea();
+        cleanupGraceArea();
+        cleanupGraceTimeout();
       }
     }
 
-    // Use arrow functions to avoid function declaration hoisting, reduce memory usage
+    // Setup event listeners with consistent pattern
     const handleTriggerLeave = (event: PointerEvent) => createGraceAreaSafely(event, content);
     const handleContentLeave = (event: PointerEvent) => createGraceAreaSafely(event, trigger);
 
@@ -99,16 +95,16 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     trigger.addEventListener('pointerleave', handleTriggerLeave, eventOptions);
     content.addEventListener('pointerleave', handleContentLeave, eventOptions);
 
-    cleanup(() => {
+    onWatcherCleanup(() => {
       trigger.removeEventListener('pointerleave', handleTriggerLeave);
       content.removeEventListener('pointerleave', handleContentLeave);
+      cleanupGraceArea();
     });
   });
 
   // Grace area tracking listener
-  watchEffect(cleanup => {
-    const isEnabled = disabled?.value !== true;
-    if (!isClient || !isEnabled || !pointerGraceArea.value) {
+  watchEffect(() => {
+    if (!isClient || disabled?.value === true || !pointerGraceArea.value) {
       return;
     }
 
@@ -117,10 +113,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
 
     if (!document) return;
 
-    // Lazy creation of debouncer, only create when actually needed
-    if (!debounce) {
-      debounce = createDebounce();
-    }
+    const debounce = createDebounce();
 
     // Conditional creation of tracking function
     function trackPointerGrace(event: PointerEvent) {
@@ -137,7 +130,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
         (currentTrigger?.contains(target) ?? false) || (currentContent?.contains(target) ?? false);
 
       if (hasEnteredTarget) {
-        handleRemoveGraceArea();
+        cleanupGraceArea();
         return;
       }
 
@@ -147,33 +140,25 @@ export function useGraceArea(options: UseGraceAreaOptions) {
         const isAnotherGraceAreaTrigger = Boolean(target.closest(`[${GRACE_AREA_TRIGGER_ATTR}]`));
 
         if (isPointerOutsideGraceArea || isAnotherGraceAreaTrigger) {
-          handleRemoveGraceArea();
+          cleanupGraceArea();
           nextTick(() => {
             onPointerExit();
           });
         }
       } catch {
-        handleRemoveGraceArea();
+        cleanupGraceArea();
       }
     }
 
     const handleTrackPointerGrace = debounce.debounce(trackPointerGrace);
     const eventOptions: AddEventListenerOptions = { passive: true };
+
     document.addEventListener('pointermove', handleTrackPointerGrace, eventOptions);
 
-    cleanup(() => {
+    onWatcherCleanup(() => {
       document.removeEventListener('pointermove', handleTrackPointerGrace);
       debounce?.cancel();
     });
-  });
-
-  onBeforeUnmount(() => {
-    handleRemoveGraceArea();
-    debounce?.cancel();
-
-    if (graceTimeoutTimer) {
-      clearTimeout(graceTimeoutTimer);
-    }
   });
 }
 

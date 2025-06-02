@@ -1,4 +1,4 @@
-import { computed, onBeforeUnmount, ref, watch } from 'vue';
+import { computed, onWatcherCleanup, ref, watch } from 'vue';
 import type { ShallowRef } from 'vue';
 import { isClient } from '../shared';
 import type { Size } from '../types';
@@ -9,23 +9,12 @@ export function useElementSize(element: ShallowRef<HTMLElement | null | undefine
   const height = computed(() => size.value.height);
   const isSVG = computed(() => element.value?.namespaceURI?.includes('svg'));
 
-  let observer: ResizeObserver | undefined;
-
-  const cleanup = () => {
-    if (observer) {
-      observer.disconnect();
-      observer = undefined;
-    }
-  };
-
   watch(
     element,
     el => {
       if (!el) return;
 
-      cleanup();
-
-      observer = new ResizeObserver(entries => {
+      const observer = new ResizeObserver(entries => {
         if (!Array.isArray(entries)) return;
         // Since we only observe the one element, we don't need to loop over the
         // array
@@ -53,16 +42,16 @@ export function useElementSize(element: ShallowRef<HTMLElement | null | undefine
       });
 
       observer.observe(el, { box: 'border-box' });
+
+      onWatcherCleanup(() => {
+        observer.disconnect();
+      });
     },
     {
       immediate: true,
       flush: 'post'
     }
   );
-
-  onBeforeUnmount(() => {
-    cleanup();
-  });
 
   return {
     width,
