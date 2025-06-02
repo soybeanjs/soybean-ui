@@ -8,11 +8,11 @@ interface Props {
 
 const { label, value } = defineProps<Props>();
 
-const { collectionItemProps } = useCollectionItem({ label, value });
+const { itemProps } = useCollectionItem({ label, value });
 </script>
 
 <template>
-  <li v-bind="collectionItemProps">
+  <li v-bind="itemProps">
     <slot />
   </li>
 </template>

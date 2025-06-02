@@ -1,5 +1,5 @@
-import { onBeforeUnmount, shallowRef } from 'vue';
-import type { ShallowRef } from 'vue';
+import { onBeforeUnmount, onWatcherCleanup, shallowRef, toValue, watchPostEffect } from 'vue';
+import type { MaybeRefOrGetter, ShallowRef } from 'vue';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
@@ -32,7 +32,7 @@ export interface CollectionItemHook {
 export interface UseCollectionReturn<ItemData> {
   provideCollectionContext: () => CollectionContext<ItemData>;
   useCollectionContext: (consumerName: string) => CollectionContext<ItemData>;
-  useCollectionItem: (itemData?: ItemData) => CollectionItemHook;
+  useCollectionItem: (itemData?: MaybeRefOrGetter<ItemData>) => CollectionItemHook;
 }
 
 /**
@@ -106,13 +106,13 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
    * @param itemData - Data to associate with this collection item
    * @returns Item element reference and props for registration
    */
-  const useCollectionItem = (itemData: ItemData = {} as ItemData): CollectionItemHook => {
+  const useCollectionItem = (itemData: MaybeRefOrGetter<ItemData> = {} as ItemData): CollectionItemHook => {
     const consumerName = toPascalCase(`${collectionName}Item`);
     const { itemRegistry } = useCollectionContext(consumerName);
 
     const itemElement = shallowRef<HTMLElement>();
 
-    /** Register the item element in the collection registry */
+    /** Set the item element reference */
     const registerItemElement = (nodeRef: VNodeRef): void => {
       const element = getElFromTemplateRef(nodeRef);
       if (!element) return;
@@ -123,18 +123,26 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
       }
 
       itemElement.value = element;
-      itemRegistry.set(element, { element, data: itemData });
     };
 
-    /** Unregister the item from the collection registry */
-    const unregisterItem = (): void => {
-      if (!itemElement.value) return;
+    /** Handle item registration and data updates */
+    watchPostEffect(() => {
+      if (itemElement.value) {
+        // Register or update the item in the registry
+        itemRegistry.set(itemElement.value, {
+          element: itemElement.value,
+          data: toValue(itemData)
+        });
+      }
 
-      itemRegistry.delete(itemElement.value);
-      itemElement.value = undefined;
-    };
-
-    onBeforeUnmount(unregisterItem);
+      /** Unregister the item from the collection registry when watcher is cleaned up */
+      onWatcherCleanup(() => {
+        if (itemElement.value) {
+          itemRegistry.delete(itemElement.value);
+          itemElement.value = undefined;
+        }
+      });
+    });
 
     return {
       itemElement,
