@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import { useForwardEmits } from '../../composables';
+import { useForwardListeners } from '../../composables';
 import { DialogContent } from '../dialog';
 import { provideAlertDialogContentContext } from './context';
 import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
@@ -15,7 +15,7 @@ const emit = defineEmits<AlertDialogContentEmits>();
 
 const { focusCancel } = provideAlertDialogContentContext();
 
-const events = useForwardEmits<keyof AlertDialogContentEmits>(emit);
+const listeners = useForwardListeners<keyof AlertDialogContentEmits>(emit);
 
 const openAutoFocus = (event: Event) => {
   emit('openAutoFocus', event);
@@ -37,7 +37,7 @@ const interactOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => 
   <DialogContent
     v-bind="props"
     role="alertdialog"
-    v-on="{ ...events, openAutoFocus, pointerDownOutside, interactOutside }"
+    v-on="{ ...listeners, openAutoFocus, pointerDownOutside, interactOutside }"
   >
     <slot />
   </DialogContent>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardEmits } from '../../composables';
+import { useForwardListeners } from '../../composables';
 import { DialogRoot } from '../dialog';
 import type { AlertDialogRootEmits, AlertDialogRootProps } from './types';
 
@@ -15,11 +15,11 @@ const props = withDefaults(defineProps<AlertDialogRootProps>(), {
 
 const emit = defineEmits<AlertDialogRootEmits>();
 
-const events = useForwardEmits(emit);
+const listeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <DialogRoot v-slot="slotProps" v-bind="props" modal v-on="events">
+  <DialogRoot v-slot="slotProps" v-bind="props" modal v-on="listeners">
     <slot v-bind="slotProps" />
   </DialogRoot>
 </template>

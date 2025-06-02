@@ -8,7 +8,7 @@ interface UseDialogContentOptions {
   emit: ShortEmits<DialogContentEmits>;
 }
 
-export function useDialogContentEvents(options: UseDialogContentOptions) {
+export function useDialogContentListeners(options: UseDialogContentOptions) {
   const { modal, triggerElement, emit } = options;
 
   let hasInteractedOutsideRef = false;

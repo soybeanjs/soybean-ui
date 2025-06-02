@@ -131,7 +131,7 @@
   - add useSharedComposable for shared state management across Vue instances &nbsp;-&nbsp; by @soybeanjs [<samp>(cf121)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/cf12139)
   - introduce useExposedElement for exposing element refs to parent components &nbsp;-&nbsp; by @soybeanjs [<samp>(8dee7)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/8dee7cc)
   - add useBodyScrollLock composable for managing body scroll behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(d6ce5)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/d6ce5ed)
-  - add useForwardEmits composable for event emission handling &nbsp;-&nbsp; by @soybeanjs [<samp>(c98a7)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/c98a71b)
+  - add useForwardListeners composable for event emission handling &nbsp;-&nbsp; by @soybeanjs [<samp>(c98a7)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/c98a71b)
 - **config-provider**:
   - introduce ConfigProvider component with context and types for global configuration management &nbsp;-&nbsp; by @soybeanjs [<samp>(1e50e)</samp>](https://github.com/honghuangdc/soybean-primitives/commit/1e50e81)
 - **constants**:

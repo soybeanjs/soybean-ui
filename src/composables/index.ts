@@ -11,7 +11,7 @@ export * from './use-exposed-element';
 export * from './use-focus-guards';
 export * from './use-focus-scope';
 export * from './use-forward-element';
-export * from './use-forward-emits';
+export * from './use-forward-listeners';
 export * from './use-grace-area';
 export * from './use-hide-others';
 export * from './use-image-loading-status';

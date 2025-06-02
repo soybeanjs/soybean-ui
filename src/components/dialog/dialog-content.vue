@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
-import { useDialogContentEvents } from './shared';
+import { useDialogContentListeners } from './shared';
 import type { DialogContentEmits, DialogContentProps } from './types';
 
 defineOptions({
@@ -19,7 +19,7 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentEleme
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const events = useDialogContentEvents({
+const events = useDialogContentListeners({
   modal,
   triggerElement,
   emit

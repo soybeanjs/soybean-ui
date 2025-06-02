@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { usePresence } from '../../composables';
-import { useDialogContentEvents } from '../dialog/shared';
+import { useDialogContentListeners } from '../dialog/shared';
 import { usePopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
 import type { PopoverContentEmits, PopoverContentProps } from './types';
@@ -20,7 +20,7 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentEleme
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const events = useDialogContentEvents({
+const events = useDialogContentListeners({
   modal,
   triggerElement,
   emit
