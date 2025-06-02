@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed, onWatcherCleanup, useSlots, watchPostEffect } from 'vue';
 import { PopperContent } from '../popper';
 import { useDismissableLayer, useGraceArea } from '../../composables';
 import { getAriaLabelByVNodeList, omit } from '../../shared';
 import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
 import { useTooltipProviderContext, useTooltipRootContext } from './context';
-import { tooltipCssVars } from './shared';
+import { TOOLTIP_OPEN, tooltipCssVars } from './shared';
 import type { TooltipContentImplEmits, TooltipContentImplProps } from './types';
 
 defineOptions({
@@ -89,6 +89,22 @@ const ariaLabel = computed(() => {
   }
 
   return getAriaLabelByVNodeList(defaultSlot.value);
+});
+
+watchPostEffect(() => {
+  const handleScroll = (event: Event) => {
+    const target = event.target as HTMLElement;
+    if (target?.contains(triggerElement.value!)) {
+      onClose();
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener(TOOLTIP_OPEN, onClose);
+  onWatcherCleanup(() => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener(TOOLTIP_OPEN, onClose);
+  });
 });
 </script>
 
