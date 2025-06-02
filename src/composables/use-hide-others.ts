@@ -1,6 +1,7 @@
-import { onUnmounted, watch } from 'vue';
-import type { Ref } from 'vue';
+import { onWatcherCleanup, toValue, watchPostEffect } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 import { hideOthers } from 'aria-hidden';
+import { isClient } from '../shared';
 
 /**
  * The `useHideOthers` function is a TypeScript function that takes a target element reference and hides all other
@@ -8,29 +9,37 @@ import { hideOthers } from 'aria-hidden';
  * target element is removed.
  *
  * @param target - reference to the element that you want to hide other elements when it is clicked or focused.
+ * @param enabled - whether to enable the hide others functionality (supports reactive values)
  */
-export function useHideOthers(target: Ref<HTMLElement | undefined>, enabled = true) {
-  let undo: () => void;
-
-  watch(target, el => {
-    if (!enabled) return;
-    // disable hideOthers on test mode
-    if (import.meta.env.MODE === 'test') return;
-
-    if (!el) return;
-
-    if (undo) {
-      undo();
-
+export function useHideOthers(
+  target: MaybeRefOrGetter<HTMLElement | undefined>,
+  enabled: MaybeRefOrGetter<boolean | undefined>
+) {
+  watchPostEffect(() => {
+    // Ensure we're in a browser environment
+    if (!isClient) {
       return;
     }
 
-    undo = hideOthers(el);
-  });
+    const el = toValue(target);
+    const isEnabled = toValue(enabled);
 
-  onUnmounted(() => {
-    if (enabled && undo) {
-      undo();
+    // Early return if not enabled or in test mode
+    if (!isEnabled || import.meta.env.MODE === 'test') {
+      return;
     }
+
+    // Early return if no target element
+    if (!el) {
+      return;
+    }
+
+    // Hide other elements using aria-hidden
+    const undo = hideOthers(el);
+
+    onWatcherCleanup(() => {
+      // Restore visibility when target changes, component unmounts, or enabled becomes false
+      undo();
+    });
   });
 }

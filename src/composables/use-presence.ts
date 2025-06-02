@@ -1,4 +1,4 @@
-import { computed, onWatcherCleanup, toValue, watch, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, toValue, watchPostEffect } from 'vue';
 import type { MaybeRefOrGetter, Ref } from 'vue';
 import { useStateMachine } from './use-state-machine';
 
@@ -50,45 +50,46 @@ export function usePresence(
     }
   };
 
-  watchEffect(() => {
+  // Watch for animation name changes and update prevAnimationName
+  watchPostEffect(() => {
     const currentAnimationName = getAnimationName(styles);
     prevAnimationName = state.value === 'mounted' ? currentAnimationName : 'none';
   });
 
-  watch(
-    () => toValue(present),
-    async (newValue, oldValue) => {
-      onChange?.(Boolean(newValue));
+  // Watch for present state changes and trigger state machine transitions
+  watchPostEffect(() => {
+    const newValue = toValue(present);
 
-      const currentAnimationName = getAnimationName(styles);
+    onChange?.(Boolean(newValue));
 
-      if (newValue) {
-        send('MOUNT');
-      } else if (currentAnimationName === 'none' || styles?.display === 'none') {
-        // If there is no exit animation or the element is hidden, animations won't run
-        // so we unmount instantly
-        send('UNMOUNT');
+    const currentAnimationName = getAnimationName(styles);
+
+    if (newValue) {
+      send('MOUNT');
+    } else if (currentAnimationName === 'none' || styles?.display === 'none') {
+      // If there is no exit animation or the element is hidden, animations won't run
+      // so we unmount instantly
+      send('UNMOUNT');
+    } else {
+      /**
+       * When `present` changes to `false`, we check changes to animation-name to determine whether an animation has
+       * started. We chose this approach (reading computed styles) because there is no `animationrun` event and
+       * `animationstart` fires after `animation-delay` has expired which would be too late.
+       */
+      const isAnimating = prevAnimationName !== currentAnimationName;
+
+      if (isAnimating) {
+        send('ANIMATION_OUT');
       } else {
-        /**
-         * When `present` changes to `false`, we check changes to animation-name to determine whether an animation has
-         * started. We chose this approach (reading computed styles) because there is no `animationrun` event and
-         * `animationstart` fires after `animation-delay` has expired which would be too late.
-         */
-        const isAnimating = prevAnimationName !== currentAnimationName;
-
-        if (oldValue && isAnimating) {
-          send('ANIMATION_OUT');
-        } else {
-          send('UNMOUNT');
-        }
+        send('UNMOUNT');
       }
-    },
-    {
-      flush: 'post'
     }
-  );
+  });
 
-  watch(elRef, node => {
+  // Watch for element ref changes and manage event listeners
+  watchPostEffect(() => {
+    const node = elRef.value;
+
     if (node) {
       styles = getComputedStyle(node);
       node.addEventListener('animationstart', handleAnimationStart);

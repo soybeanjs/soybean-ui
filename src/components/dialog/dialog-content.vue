@@ -15,7 +15,7 @@ const emit = defineEmits<DialogContentEmits>();
 
 const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
 
-useHideOthers(contentElement, modal.value);
+useHideOthers(contentElement, modal);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 

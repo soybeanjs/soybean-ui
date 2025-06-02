@@ -16,7 +16,7 @@ const emit = defineEmits<PopoverContentEmits>();
 
 const { contentElement, open, modal, triggerElement } = usePopoverRootContext('PopoverContent');
 
-useHideOthers(contentElement, modal.value);
+useHideOthers(contentElement, modal);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 

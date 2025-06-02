@@ -1,4 +1,5 @@
-import { onMounted, onUnmounted } from 'vue';
+import { onWatcherCleanup, watchPostEffect } from 'vue';
+import { isClient } from '../shared';
 
 /** Number of components which have requested interest to have focus guards */
 let count = 0;
@@ -6,18 +7,39 @@ let count = 0;
 const FOCUS_GUARD_ATTRIBUTE = 'data-soybean-focus-guard';
 
 export function useFocusGuards() {
-  onMounted(() => {
-    const edgeGuards = document.querySelectorAll(`[${FOCUS_GUARD_ATTRIBUTE}]`);
-    document.body.insertAdjacentElement('afterbegin', edgeGuards[0] ?? createFocusGuard());
-    document.body.insertAdjacentElement('beforeend', edgeGuards[1] ?? createFocusGuard());
-    count++;
-  });
-
-  onUnmounted(() => {
-    if (count === 1) {
-      document.querySelectorAll(`[${FOCUS_GUARD_ATTRIBUTE}]`).forEach(node => node.remove());
+  watchPostEffect(() => {
+    // Ensure we're in a browser environment
+    if (!isClient) {
+      return;
     }
-    count--;
+
+    const existingGuards = document.querySelectorAll(`[${FOCUS_GUARD_ATTRIBUTE}]`);
+
+    // If this is the first component using focus guards or guards don't exist
+    if (count === 0 || existingGuards.length === 0) {
+      // Create or reuse focus guards
+      const firstGuard = existingGuards[0] ?? createFocusGuard();
+      const lastGuard = existingGuards[1] ?? createFocusGuard();
+
+      // Insert guards at the beginning and end of the body
+      if (!firstGuard.parentNode) {
+        document.body.insertAdjacentElement('afterbegin', firstGuard);
+      }
+      if (!lastGuard.parentNode) {
+        document.body.insertAdjacentElement('beforeend', lastGuard);
+      }
+    }
+
+    count++;
+
+    onWatcherCleanup(() => {
+      count--;
+
+      // If this is the last component using focus guards, remove them
+      if (count === 0) {
+        document.querySelectorAll(`[${FOCUS_GUARD_ATTRIBUTE}]`).forEach(node => node.remove());
+      }
+    });
   });
 }
 

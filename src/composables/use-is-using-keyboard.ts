@@ -1,4 +1,4 @@
-import { computed, onBeforeUnmount, onMounted, shallowRef } from 'vue';
+import { computed, onWatcherCleanup, shallowRef, watchPostEffect } from 'vue';
 import { isClient } from '../shared';
 
 let subscribers = 0;
@@ -14,7 +14,7 @@ function handleKeyDown() {
 }
 
 function addEventListeners() {
-  if (!isClient || isListening) return;
+  if (isListening) return;
 
   document.addEventListener('keydown', handleKeyDown, { capture: true, passive: true });
   document.addEventListener('pointerdown', handlePointer, { capture: true, passive: true });
@@ -23,7 +23,7 @@ function addEventListeners() {
 }
 
 function removeEventListeners() {
-  if (!isClient || !isListening) return;
+  if (!isListening) return;
 
   document.removeEventListener('keydown', handleKeyDown, { capture: true });
   document.removeEventListener('pointerdown', handlePointer, { capture: true });
@@ -32,32 +32,31 @@ function removeEventListeners() {
 }
 
 export function useIsUsingKeyboard() {
-  let isSubscribed = false;
-
-  onMounted(() => {
-    if (!isSubscribed) {
-      subscribers++;
-      isSubscribed = true;
-
-      // Only add event listeners when the first subscriber appears
-      if (subscribers === 1) {
-        addEventListeners();
-      }
+  watchPostEffect(() => {
+    // Ensure we're in a browser environment
+    if (!isClient) {
+      return;
     }
-  });
 
-  onBeforeUnmount(() => {
-    if (isSubscribed) {
+    // Subscribe to keyboard usage tracking
+    subscribers++;
+
+    // Add event listeners when the first subscriber appears
+    if (subscribers === 1) {
+      addEventListeners();
+    }
+
+    onWatcherCleanup(() => {
+      // Unsubscribe from keyboard usage tracking
       subscribers = Math.max(0, subscribers - 1);
-      isSubscribed = false;
 
       // Remove event listeners when the last subscriber unsubscribes
       if (subscribers === 0) {
         removeEventListeners();
-        // Reset state
+        // Reset state when no subscribers are left
         isUsingKeyboardRef.value = false;
       }
-    }
+    });
   });
 
   return computed(() => isUsingKeyboardRef.value);
