@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { usePresence } from '../../composables';
+import { useHideOthers, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
 import { useDialogContentListeners } from './shared';
@@ -15,11 +15,13 @@ const emit = defineEmits<DialogContentEmits>();
 
 const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
 
+useHideOthers(contentElement, modal.value);
+
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const events = useDialogContentListeners({
+const listeners = useDialogContentListeners({
   modal,
   triggerElement,
   emit
@@ -32,7 +34,7 @@ const events = useDialogContentListeners({
     v-bind="props"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
-    v-on="events"
+    v-on="listeners"
   >
     <slot />
   </DialogContentImpl>

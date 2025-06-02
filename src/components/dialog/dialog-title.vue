@@ -8,7 +8,9 @@ defineOptions({
 
 const props = defineProps<DialogTitleProps>();
 
-const { titleId } = useDialogRootContext('DialogTitle');
+const { titleId, initTitleId } = useDialogRootContext('DialogTitle');
+
+initTitleId();
 </script>
 
 <template>
