@@ -13,10 +13,12 @@ const props = withDefaults(defineProps<PopoverTriggerProps>(), {
   as: 'button'
 });
 
-const { open, onOpenToggle, dataState, contentId, setTriggerElement, hasCustomAnchor } =
+const { open, onOpenToggle, dataState, contentId, initTriggerId, setTriggerElement, hasCustomAnchor } =
   usePopoverRootContext('DialogTrigger');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+initTriggerId();
 </script>
 
 <template>
