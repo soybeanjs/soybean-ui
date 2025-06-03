@@ -67,6 +67,8 @@
     "play": "vite",
     "prepare": "simple-git-hooks",
     "publish-pkg": "pnpm publish --access public",
+    "rei": "pnpm cleanup && pnpm install",
+
     "release": "soy release",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
