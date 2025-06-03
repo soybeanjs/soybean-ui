@@ -25,6 +25,6 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*", "typings/**/*"],
+  "include": ["src/**/*", "typings/**/*", "test/**/*", "playground/**/*"],
   "exclude": ["node_modules", "dist"]
 }
