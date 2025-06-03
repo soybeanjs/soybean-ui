@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import {
+  RadioGroupControl,
+  RadioGroupIndicator,
+  RadioGroupItem,
+  RadioGroupLabel,
+  RadioGroupRoot
+} from '@/components/radio-group';
 import { radioVariants } from '../variants/radio';
-import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel, RadioGroupRoot } from '../../../src';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const css = radioVariants();

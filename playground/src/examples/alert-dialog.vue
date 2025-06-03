@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { buttonVariants } from '../variants/button';
-import { dialogVariants } from '../variants/dialog';
 import {
   AlertDialogCancel,
   AlertDialogContent,
@@ -10,7 +8,9 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '../../../src';
+} from '@/components/alert-dialog';
+import { buttonVariants } from '../variants/button';
+import { dialogVariants } from '../variants/dialog';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { content, description, overlay, title } = dialogVariants();

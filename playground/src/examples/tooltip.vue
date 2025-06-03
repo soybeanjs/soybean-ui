@@ -6,7 +6,7 @@ import {
   TooltipProvider,
   TooltipRoot,
   TooltipTrigger
-} from '../../../src';
+} from '@/components/tooltip';
 import { tooltipVariants } from '../variants/tooltip';
 import { buttonVariants } from '../variants/button';
 import SectionWrapper from '../components/section-wrapper.vue';

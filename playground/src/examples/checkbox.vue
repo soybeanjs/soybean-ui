@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { Check, Minus } from 'lucide-vue-next';
-import { checkboxVariants } from '../variants/checkbox';
 import {
   CheckboxControl,
   CheckboxGroupRoot,
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot
-} from '../../../src/components/checkbox';
-import type { CheckedState } from '../../../src/types';
+} from '@/components/checkbox';
+import type { CheckedState } from '@/types';
+import { checkboxVariants } from '../variants/checkbox';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const css = checkboxVariants();

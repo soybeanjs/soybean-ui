@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next';
-import { buttonVariants } from '../variants/button';
-import { dialogVariants } from '../variants/dialog';
 import {
   DialogClose,
   DialogContent,
@@ -11,7 +9,9 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger
-} from '../../../src';
+} from '@/components/dialog';
+import { buttonVariants } from '../variants/button';
+import { dialogVariants } from '../variants/dialog';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { closeIcon, content, description, overlay, title } = dialogVariants();

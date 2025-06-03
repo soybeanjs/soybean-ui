@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { ChevronDown } from 'lucide-vue-next';
-import { AccordionContent, AccordionHeader, AccordionItem, AccordionRoot, AccordionTrigger } from '../../../src';
+import {
+  AccordionContent,
+  AccordionHeader,
+  AccordionItem,
+  AccordionRoot,
+  AccordionTrigger
+} from '@/components/accordion';
 import { accordionVariants } from '../variants/accordion';
 import SectionWrapper from '../components/section-wrapper.vue';
 

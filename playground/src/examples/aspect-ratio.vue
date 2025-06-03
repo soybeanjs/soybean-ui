@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AspectRatio } from '../../../src';
+import { AspectRatio } from '@/components/aspect-ratio';
 import SectionWrapper from '../components/section-wrapper.vue';
 </script>
 

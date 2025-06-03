@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next';
-import { buttonVariants } from '../variants/button';
-import { popoverVariants } from '../variants/popover';
 import {
   PopoverAnchor,
   PopoverArrow,
@@ -10,7 +8,9 @@ import {
   PopoverPortal,
   PopoverRoot,
   PopoverTrigger
-} from '../../../src';
+} from '@/components/popover';
+import { buttonVariants } from '../variants/button';
+import { popoverVariants } from '../variants/popover';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { content, arrow } = popoverVariants();
