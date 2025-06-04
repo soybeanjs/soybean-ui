@@ -12,6 +12,7 @@ export * from './components/popper';
 export * from './components/portal';
 export * from './components/primitive';
 export * from './components/radio-group';
+export * from './components/separator';
 export * from './components/slot';
 export * from './components/tooltip';
 

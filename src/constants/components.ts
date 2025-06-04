@@ -32,6 +32,7 @@ export const components = {
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
+  separator: ['Separator'],
   slot: ['Slot'],
   tooltip: ['TooltipProvider', 'TooltipRoot', 'TooltipTrigger', 'TooltipContent', 'TooltipArrow', 'TooltipPortal'],
   visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
