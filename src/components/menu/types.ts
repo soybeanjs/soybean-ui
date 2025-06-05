@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   CheckedState,
@@ -47,6 +47,11 @@ export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pic
 // MenuContent
 export interface MenuContentProps extends PopperContentProps, ForceMountProps {}
 export type MenuContentEmits = MenuContentImplEmits;
+
+export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+  /** When `true`, the menu would not open when triggered. */
+  disabled?: boolean;
+}
 
 // MenuSub
 export interface MenuSubProps extends Pick<MenuRootProps, 'open' | 'defaultOpen'> {}

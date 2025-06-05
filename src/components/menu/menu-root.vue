@@ -11,7 +11,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<MenuRootProps>(), {
-  open: false,
+  open: undefined,
   modal: true
 });
 
@@ -20,7 +20,7 @@ const emit = defineEmits<MenuRootEmits>();
 const open = useControllableState(
   () => props.open,
   value => {
-    emit('update:open', value);
+    emit('update:open', value ?? false);
   },
   props.defaultOpen
 );
@@ -36,6 +36,6 @@ provideMenuRootContext({
 
 <template>
   <PopperRoot>
-    <slot />
+    <slot :open="open" />
   </PopperRoot>
 </template>

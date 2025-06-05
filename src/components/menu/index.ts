@@ -5,6 +5,7 @@ import MenuRoot from './menu-root.vue';
 import MenuContent from './menu-content.vue';
 import MenuSub from './menu-sub.vue';
 import MenuSubContent from './menu-sub-content.vue';
+import MenuSubTrigger from './menu-sub-trigger.vue';
 import MenuGroup from './menu-group.vue';
 import MenuItem from './menu-item.vue';
 import MenuCheckboxGroup from './menu-checkbox-group.vue';
@@ -20,6 +21,7 @@ export {
   MenuContent,
   MenuSub,
   MenuSubContent,
+  MenuSubTrigger,
   MenuAnchor,
   MenuArrow,
   MenuGroup,
@@ -39,10 +41,12 @@ export type {
   MenuPortalProps,
   MenuContentProps,
   MenuContentEmits,
+  MenuTriggerProps,
   MenuSubProps,
   MenuSubEmits,
   MenuSubContentProps,
   MenuSubContentEmits,
+  MenuSubTriggerProps,
   MenuAnchorProps,
   MenuArrowProps,
   MenuGroupProps,
