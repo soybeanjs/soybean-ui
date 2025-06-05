@@ -118,7 +118,7 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
       });
     });
 
-    watch(elRef, async container => {
+    watch(elRef, async (container, _, onCleanup) => {
       await nextTick();
       if (!container) return;
       focusScopesStack.add(focusScope);
@@ -142,7 +142,7 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
         }
       }
 
-      onWatcherCleanup(() => {
+      onCleanup(() => {
         if (onOpenAutoFocus) {
           container.removeEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
         }
