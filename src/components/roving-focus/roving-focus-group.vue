@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<RovingFocusGroupProps>(), {
 
 const emit = defineEmits<RovingFocusGroupEmits>();
 
-const { rovingFocusGroupProps, rovingFocusGroupEvents, getOrderedItems } = provideRovingFocusGroupContext({
+const { rovingFocusGroupProps, rovingFocusGroupListeners, getOrderedItems } = provideRovingFocusGroupContext({
   ...transformPropsToContext(props, [
     'loop',
     'orientation',
@@ -39,7 +39,7 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" v-on="rovingFocusGroupEvents">
+  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" v-on="rovingFocusGroupListeners">
     <slot />
   </Primitive>
 </template>

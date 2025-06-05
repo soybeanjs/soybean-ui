@@ -88,7 +88,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
       };
     });
 
-    const rovingFocusGroupEvents = {
+    const rovingFocusGroupListeners = {
       mousedown: () => {
         isClickFocus.value = true;
       },
@@ -114,7 +114,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
       onFocusableItemAdd,
       onFocusableItemRemove,
       rovingFocusGroupProps,
-      rovingFocusGroupEvents,
+      rovingFocusGroupListeners,
       getOrderedItems
     };
   }
@@ -190,7 +190,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
     };
   });
 
-  const rovingFocusItemEvents = {
+  const rovingFocusItemListeners = {
     mousedown: (event: MouseEvent) => {
       // We prevent focusing non-focusable items on `mousedown`.
       // Even though the item has tabIndex={-1}, that only means take it out of the tab order.
@@ -217,7 +217,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
 
   return {
     rovingFocusItemProps,
-    rovingFocusItemEvents
+    rovingFocusItemListeners
   };
 }
 

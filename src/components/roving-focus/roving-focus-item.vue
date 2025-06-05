@@ -12,13 +12,13 @@ const props = withDefaults(defineProps<RovingFocusItemProps>(), {
   focusable: true
 });
 
-const { rovingFocusItemProps, rovingFocusItemEvents } = useRovingFocusItem(
+const { rovingFocusItemProps, rovingFocusItemListeners } = useRovingFocusItem(
   transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey'])
 );
 </script>
 
 <template>
-  <Primitive v-bind="{ ...props, ...rovingFocusItemProps }" v-on="rovingFocusItemEvents">
+  <Primitive v-bind="{ ...props, ...rovingFocusItemProps }" v-on="rovingFocusItemListeners">
     <slot />
   </Primitive>
 </template>
