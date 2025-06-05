@@ -72,7 +72,7 @@ const onKeyDown = async (event: KeyboardEvent) => {
 <template>
   <MenuItemImpl
     v-bind="props"
-    ref="setMenuItemElement"
+    :ref="setMenuItemElement"
     @click="onSelect"
     @pointerdown="onPointerDown"
     @pointerup="onPointerUp"
