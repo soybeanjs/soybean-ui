@@ -6,6 +6,7 @@ import {
   useDismissableLayer,
   useFocusGuards,
   useFocusScope,
+  useHideOthers,
   useTypeahead
 } from '../../composables';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
@@ -28,7 +29,7 @@ const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
 const { handleTypeaheadSearch } = useTypeahead();
 
-const { dir, dataState, contentElement, setContentElement, onOpenChange, isUsingKeyboard } =
+const { modal, dir, dataState, contentElement, setContentElement, onOpenChange, isUsingKeyboard } =
   useMenuRootContext('MenuContentImpl');
 
 const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
@@ -162,6 +163,7 @@ function onPointerMove(event: PointerEvent) {
 }
 
 useFocusGuards();
+useHideOthers(contentElement, modal);
 
 watchEffect(() => {
   if (!props.disableOutsidePointerEvents) return;

@@ -221,4 +221,4 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
   };
 }
 
-export { provideRovingFocusGroupContext, useRovingFocusItem };
+export { provideRovingFocusGroupContext, useRovingFocusItem, useCollectionItem };

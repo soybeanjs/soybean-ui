@@ -2,7 +2,8 @@
 import { nextTick, shallowRef } from 'vue';
 import { isMouseEvent } from '../../shared';
 import { Primitive } from '../primitive';
-import { useCollectionItem, useMenuContentContext } from './context';
+import { useCollectionItem } from '../roving-focus/context';
+import { useMenuContentContext } from './context';
 import type { MenuItemImplProps } from './types';
 
 defineOptions({

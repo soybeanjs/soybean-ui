@@ -1,10 +1,9 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useCollection, useContext, useDirection, useForwardElement } from '../../composables';
+import { useContext, useDirection, useForwardElement } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableValue, GraceIntent, HorizontalSide, StringOrNumber } from '../../types';
 import type {
   MenuCheckboxGroupContextParams,
-  MenuCollectionItemData,
   MenuContentContextParams,
   MenuItemIndicatorContextParams,
   MenuRadioGroupContextParams,
@@ -119,9 +118,6 @@ export const [provideMenuContentContext, useMenuContentContext] = useContext(
     };
   }
 );
-
-export const { provideCollectionContext, useCollectionContext, useCollectionItem } =
-  useCollection<MenuCollectionItemData>('Menu');
 
 export const [provideMenuCheckboxGroupContext, useMenuCheckboxGroupContext] = useContext(
   'MenuCheckboxGroup',

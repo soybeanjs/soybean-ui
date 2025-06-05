@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, useHideOthers, usePresence } from '../../composables';
+import { useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
 import { useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
@@ -27,8 +27,6 @@ const focusOutside = (event: FocusOutsideEvent) => {
     event.preventDefault();
   }
 };
-
-useHideOthers(contentElement, modal);
 </script>
 
 <template>
