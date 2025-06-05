@@ -58,7 +58,7 @@ initTriggerId();
 </script>
 
 <template>
-  <MenuAnchor as-child>
+  <MenuAnchor as="template">
     <Primitive
       v-bind="props"
       :id="triggerId"
