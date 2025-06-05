@@ -18,18 +18,17 @@ const { contentElement, open, modal } = useMenuRootContext('MenuContent');
 
 const listeners = useForwardListeners(emit);
 
-useHideOthers(contentElement, modal);
-
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 
 const focusOutside = (event: FocusOutsideEvent) => {
-  emit('focusOutside', event);
   if (modal.value) {
     event.preventDefault();
   }
 };
+
+useHideOthers(contentElement, modal);
 </script>
 
 <template>
@@ -38,7 +37,8 @@ const focusOutside = (event: FocusOutsideEvent) => {
     v-bind="props"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="trapFocus"
-    v-on="{ ...listeners, focusOutside }"
+    v-on="listeners"
+    @focus-outside="focusOutside"
   >
     <slot />
   </MenuContentImpl>
