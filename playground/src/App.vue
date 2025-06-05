@@ -6,6 +6,7 @@ import AspectRatioExample from './examples/aspect-ratio.vue';
 import AvatarExample from './examples/avatar.vue';
 import CheckboxExample from './examples/checkbox.vue';
 import DialogExample from './examples/dialog.vue';
+import DropdownMenuExample from './examples/dropdown-menu.vue';
 import PopoverExample from './examples/popover.vue';
 import RadioGroupExample from './examples/radio-group.vue';
 import RovingFocusExample from './examples/roving-focus/demo.vue';
@@ -24,6 +25,7 @@ import TooltipExample from './examples/tooltip.vue';
       <AvatarExample />
       <CheckboxExample />
       <DialogExample />
+      <DropdownMenuExample />
       <PopoverExample />
       <RadioGroupExample />
       <RovingFocusExample />
