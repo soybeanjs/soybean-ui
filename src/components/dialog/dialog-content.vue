@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, useHideOthers, usePresence } from '../../composables';
+import { useForwardListeners, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
 import { useDialogContentEvents } from './shared';
@@ -25,8 +25,6 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
   modal,
   triggerElement
 });
-
-useHideOthers(contentElement, modal);
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, useHideOthers, usePresence } from '../../composables';
+import { useForwardListeners, usePresence } from '../../composables';
 import { useDialogContentEvents } from '../dialog/shared';
 import { usePopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
@@ -26,8 +26,6 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
   modal,
   triggerElement
 });
-
-useHideOthers(contentElement, modal);
 </script>
 
 <template>

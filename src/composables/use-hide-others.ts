@@ -22,15 +22,14 @@ export function useHideOthers(
     }
 
     const el = toValue(target);
-    const isEnabled = toValue(enabled);
-
-    // Early return if not enabled or in test mode
-    if (!isEnabled || import.meta.env.MODE === 'test') {
+    // Early return if no target element
+    if (!el) {
       return;
     }
 
-    // Early return if no target element
-    if (!el) {
+    const isEnabled = toValue(enabled);
+    // Early return if not enabled or in test mode
+    if (!isEnabled || import.meta.env.MODE === 'test') {
       return;
     }
 

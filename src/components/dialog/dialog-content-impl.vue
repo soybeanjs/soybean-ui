@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useDismissableLayer, useFocusGuards, useFocusScope } from '../../composables';
+import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers } from '../../composables';
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
@@ -15,6 +15,7 @@ const props = defineProps<DialogContentImplProps>();
 const emit = defineEmits<DialogContentImplEmits>();
 
 const {
+  modal,
   onOpenChange,
   setTriggerElement,
   contentElement,
@@ -68,8 +69,8 @@ const preserveTriggerElement = () => {
 // Make sure the whole tree has focus guards as our `Dialog` will be
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
+useHideOthers(contentElement, modal);
 initContentId();
-
 onMounted(() => {
   preserveTriggerElement();
 });
