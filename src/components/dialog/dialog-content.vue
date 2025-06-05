@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useHideOthers, usePresence } from '../../composables';
+import { useForwardListeners, useHideOthers, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
-import { useDialogContentListeners } from './shared';
+import { useDialogContentEvents } from './shared';
 import type { DialogContentEmits, DialogContentProps } from './types';
 
 defineOptions({
@@ -13,19 +13,20 @@ defineOptions({
 const props = defineProps<DialogContentProps>();
 const emit = defineEmits<DialogContentEmits>();
 
-const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
+const listeners = useForwardListeners(emit);
 
-useHideOthers(contentElement, modal);
+const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const listeners = useDialogContentListeners({
+const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocus } = useDialogContentEvents({
   modal,
-  triggerElement,
-  emit
+  triggerElement
 });
+
+useHideOthers(contentElement, modal);
 </script>
 
 <template>
@@ -35,6 +36,10 @@ const listeners = useDialogContentListeners({
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"
+    @pointer-down-outside="onPointerDownOutside"
+    @focus-outside="onFocusOutside"
+    @interact-outside="onInteractOutside"
+    @close-auto-focus="onCloseAutoFocus"
   >
     <slot />
   </DialogContentImpl>

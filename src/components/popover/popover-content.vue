@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useHideOthers, usePresence } from '../../composables';
-import { useDialogContentListeners } from '../dialog/shared';
+import { useForwardListeners, useHideOthers, usePresence } from '../../composables';
+import { useDialogContentEvents } from '../dialog/shared';
 import { usePopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
 import type { PopoverContentEmits, PopoverContentProps } from './types';
@@ -14,19 +14,20 @@ const props = defineProps<PopoverContentProps>();
 
 const emit = defineEmits<PopoverContentEmits>();
 
-const { contentElement, open, modal, triggerElement } = usePopoverRootContext('PopoverContent');
+const listeners = useForwardListeners(emit);
 
-useHideOthers(contentElement, modal);
+const { contentElement, open, modal, triggerElement } = usePopoverRootContext('PopoverContent');
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 
-const listeners = useDialogContentListeners({
+const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocus } = useDialogContentEvents({
   modal,
-  triggerElement,
-  emit
+  triggerElement
 });
+
+useHideOthers(contentElement, modal);
 </script>
 
 <template>
@@ -36,6 +37,10 @@ const listeners = useDialogContentListeners({
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"
+    @pointer-down-outside="onPointerDownOutside"
+    @focus-outside="onFocusOutside"
+    @interact-outside="onInteractOutside"
+    @close-auto-focus="onCloseAutoFocus"
   >
     <slot />
   </PopoverContentImpl>

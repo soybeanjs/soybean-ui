@@ -1,26 +1,18 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { FocusOutsideEvent, PointerDownOutsideEvent, ShortEmits } from '../../types';
-import type { DialogContentEmits } from './types';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 
 interface UseDialogContentOptions {
   modal: ComputedRef<boolean | undefined>;
   triggerElement: ShallowRef<HTMLElement | undefined>;
-  emit: ShortEmits<DialogContentEmits>;
 }
 
-export function useDialogContentListeners(options: UseDialogContentOptions) {
-  const { modal, triggerElement, emit } = options;
+export function useDialogContentEvents(options: UseDialogContentOptions) {
+  const { modal, triggerElement } = options;
 
   let hasInteractedOutsideRef = false;
   let hasPointerDownOutsideRef = false;
 
-  const escapeKeyDown = (event: KeyboardEvent) => {
-    emit('escapeKeyDown', event);
-  };
-
-  const pointerDownOutside = (event: PointerDownOutsideEvent) => {
-    emit('pointerDownOutside', event);
-
+  const onPointerDownOutside = (event: PointerDownOutsideEvent) => {
     if (event.defaultPrevented) return;
     const originalEvent = event.detail.originalEvent;
     const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
@@ -33,17 +25,13 @@ export function useDialogContentListeners(options: UseDialogContentOptions) {
     }
   };
 
-  const focusOutside = (event: FocusOutsideEvent) => {
-    emit('focusOutside', event);
-
+  const onFocusOutside = (event: FocusOutsideEvent) => {
     // When focus is trapped, a `focusout` event may still happen.
     // We make sure we don't trigger our `onDismiss` in such case.
     event.preventDefault();
   };
 
-  const interactOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
-    emit('interactOutside', event);
-
+  const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
     if (!event.defaultPrevented) {
       hasInteractedOutsideRef = true;
       if (event.detail.originalEvent.type === 'pointerdown') {
@@ -69,13 +57,7 @@ export function useDialogContentListeners(options: UseDialogContentOptions) {
     }
   };
 
-  const openAutoFocus = (event: Event) => {
-    emit('openAutoFocus', event);
-  };
-
-  const closeAutoFocus = (event: Event) => {
-    emit('closeAutoFocus', event);
-
+  const onCloseAutoFocus = (event: Event) => {
     if (modal.value) {
       if (!event.defaultPrevented) {
         event.preventDefault();
@@ -97,11 +79,9 @@ export function useDialogContentListeners(options: UseDialogContentOptions) {
   };
 
   return {
-    escapeKeyDown,
-    pointerDownOutside,
-    focusOutside,
-    interactOutside,
-    openAutoFocus,
-    closeAutoFocus
+    onPointerDownOutside,
+    onFocusOutside,
+    onInteractOutside,
+    onCloseAutoFocus
   };
 }
