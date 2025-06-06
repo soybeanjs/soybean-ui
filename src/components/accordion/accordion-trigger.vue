@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { CollapsibleTrigger } from '../collapsible';
-import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { useAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionTriggerProps } from './types';
 
@@ -31,7 +30,7 @@ initTriggerId();
     v-bind="props"
     :id="triggerId"
     :ref="setTriggerElement"
-    :[COLLECTION_ITEM_ATTRIBUTE]="true"
+    data-soybean-collection-item
     :aria-disabled="disabled || undefined"
     :aria-expanded="open || false"
     :data-disabled="dataDisabled"

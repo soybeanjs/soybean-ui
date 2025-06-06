@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { PopperAnchor } from '../popper';
-import { GRACE_AREA_TRIGGER_ATTR } from '../../constants';
 import { useTooltipProviderContext, useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
 
@@ -101,7 +100,7 @@ const tooltipListeners = computed(() => {
     :ref="setTriggerElement"
     :aria-describedby="open ? contentId : undefined"
     :data-state="dataState"
-    :[GRACE_AREA_TRIGGER_ATTR]="true"
+    data-grace-area-trigger
     v-on="tooltipListeners"
   >
     <slot />
