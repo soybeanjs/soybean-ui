@@ -32,6 +32,9 @@ importers:
       tailwind-variants:
         specifier: 1.0.0
         version: 1.0.0(tailwindcss@4.1.8)
+      vue3-simple-icons:
+        specifier: ^15.0.0
+        version: 15.0.0(typescript@5.8.3)
     devDependencies:
       '@nuxt/kit':
         specifier: 3.17.5
@@ -3207,6 +3210,9 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
+
+  vue3-simple-icons@15.0.0:
+    resolution: {integrity: sha512-RvynBry4kkuTFhxtmfEIbGLWEYlVzsUp3ExSqsZdaab8c2p2T+LcDyyDhNMWWHg++9Qn8/sxSKVo83KZzrx0UA==}
 
   vue@3.5.16:
     resolution: {integrity: sha512-rjOV2ecxMd5SiAmof2xzh2WxntRcigkX/He4YFJ6WdRvVUrbt6DxC1Iujh10XLl8xCDRDtGKMeO3D+pRQ1PP9w==}
@@ -6695,6 +6701,12 @@ snapshots:
       '@volar/typescript': 2.4.14
       '@vue/language-core': 2.2.10(typescript@5.8.3)
       typescript: 5.8.3
+
+  vue3-simple-icons@15.0.0(typescript@5.8.3):
+    dependencies:
+      vue: 3.5.16(typescript@5.8.3)
+    transitivePeerDependencies:
+      - typescript
 
   vue@3.5.16(typescript@5.8.3):
     dependencies:

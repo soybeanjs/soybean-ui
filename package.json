@@ -84,7 +84,8 @@
     "clsx": "2.1.1",
     "lucide-vue-next": "0.513.0",
     "tailwind-merge": "3.3.0",
-    "tailwind-variants": "1.0.0"
+    "tailwind-variants": "1.0.0",
+    "vue3-simple-icons": "^15.0.0"
   },
   "devDependencies": {
     "@nuxt/kit": "3.17.5",
