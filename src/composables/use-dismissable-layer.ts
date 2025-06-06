@@ -1,6 +1,6 @@
-import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, toValue, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowReactive, toValue, watch } from 'vue';
 import type { CSSProperties, MaybeRefOrGetter, Ref } from 'vue';
-import { DismissableLayerManager, handleAndDispatchCustomEvent, isClient } from '../shared';
+import { handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 import { useEscapeKeyDown } from './use-escape-key-down';
 
@@ -20,8 +20,13 @@ export interface UseDismissableLayerOptions extends EmitsToHookProps<Dismissable
   onDismiss?: () => void;
 }
 
-// Create a singleton instance with better encapsulation
-const layerManager = new DismissableLayerManager();
+export const layerContext = {
+  layers: shallowReactive(new Set<HTMLElement>()),
+  layersWithOutsidePointerEventsDisabled: shallowReactive(new Set<HTMLElement>()),
+  branches: shallowReactive(new Set<HTMLElement>())
+};
+
+let originalBodyPointerEvents: string | undefined;
 
 /**
  * Composable for creating dismissable layers with outside interaction handling
@@ -45,16 +50,27 @@ export function useDismissableLayer(
 
   const getElementOwnerDocument = (): Document => layerElementRef.value?.ownerDocument ?? globalThis?.document;
 
-  const hasAnyLayerWithDisabledPointerEvents = computed(() => layerManager.hasLayersWithDisabledPointerEvents());
+  const index = computed(() =>
+    layerElementRef.value ? Array.from(layerContext.layers).indexOf(layerElementRef.value) : -1
+  );
 
-  const isCurrentLayerPointerEventsEnabled = computed(() => {
-    if (!layerElementRef.value) return true;
-    return layerManager.isLayerPointerEventsEnabled(layerElementRef.value);
+  const isBodyPointerEventsDisabled = computed(() => layerContext.layersWithOutsidePointerEventsDisabled.size > 0);
+
+  const isPointerEventsEnabled = computed(() => {
+    const layers = Array.from(layerContext.layers);
+    const [highestLayerWithOutsidePointerEventsDisabled] = [
+      ...layerContext.layersWithOutsidePointerEventsDisabled
+    ].slice(-1);
+    const highestLayerWithOutsidePointerEventsDisabledIndex = highestLayerWithOutsidePointerEventsDisabled
+      ? layers.indexOf(highestLayerWithOutsidePointerEventsDisabled)
+      : -1;
+
+    return index.value >= highestLayerWithOutsidePointerEventsDisabledIndex;
   });
 
   const computedPointerEvents = computed(() => {
-    if (!hasAnyLayerWithDisabledPointerEvents.value) return undefined;
-    return isCurrentLayerPointerEventsEnabled.value ? 'auto' : 'none';
+    if (!isBodyPointerEventsDisabled.value) return undefined;
+    return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
 
   const computedStyle = computed<CSSProperties>(() => ({
@@ -62,54 +78,83 @@ export function useDismissableLayer(
   }));
 
   // Handle pointer down outside the layer
-  useOutsidePointerDown(async outsidePointerEvent => {
-    if (!isCurrentLayerPointerEventsEnabled.value) return;
+  useOutsidePointerDown(async event => {
+    if (!isPointerEventsEnabled.value) return;
 
-    const eventTarget = outsidePointerEvent.target as HTMLElement;
-    if (layerManager.isTargetInExemptBranch(eventTarget)) return;
+    const target = event.target as HTMLElement;
+    const isPointerdownOnBranch = [...layerContext.branches].some(branch => branch.contains(target));
+    if (isPointerdownOnBranch) return;
 
-    onPointerDownOutside?.(outsidePointerEvent);
-    onInteractOutside?.(outsidePointerEvent);
+    onPointerDownOutside?.(event);
+    onInteractOutside?.(event);
 
-    if (!outsidePointerEvent.defaultPrevented) {
+    if (!event.defaultPrevented) {
       onDismiss?.();
     }
   }, layerElementRef);
 
   // Handle focus outside the layer
-  useOutsideFocus(outsideFocusEvent => {
-    const eventTarget = outsideFocusEvent.target as HTMLElement;
-    if (layerManager.isTargetInExemptBranch(eventTarget)) return;
+  useOutsideFocus(event => {
+    const target = event.target as HTMLElement;
+    const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
+    if (isFocusInBranch) return;
 
-    onFocusOutside?.(outsideFocusEvent);
-    onInteractOutside?.(outsideFocusEvent);
+    onFocusOutside?.(event);
+    onInteractOutside?.(event);
 
-    if (!outsideFocusEvent.defaultPrevented) {
+    if (!event.defaultPrevented) {
       onDismiss?.();
     }
   }, layerElementRef);
 
   // Handle escape key press
-  useEscapeKeyDown(escapeKeyEvent => {
-    if (!layerElementRef.value || !layerManager.isTopMostLayer(layerElementRef.value)) return;
+  useEscapeKeyDown(event => {
+    const isHighestLayer = index.value === layerContext.layers.size - 1;
+    if (!isHighestLayer) return;
 
-    onEscapeKeyDown?.(escapeKeyEvent);
+    onEscapeKeyDown?.(event);
 
-    if (!escapeKeyEvent.defaultPrevented) {
-      escapeKeyEvent.preventDefault();
+    if (!event.defaultPrevented) {
+      event.preventDefault();
       onDismiss?.();
     }
   }, getElementOwnerDocument);
 
   // Manage layer registration and pointer events state
-  watch(layerElementRef, currentLayerElement => {
-    if (!currentLayerElement) return;
+  watch(layerElementRef, el => {
+    if (!el) return;
 
-    const shouldDisableOutsidePointerEvents = toValue(disableOutsidePointerEvents) ?? false;
-    layerManager.registerLayer(currentLayerElement, shouldDisableOutsidePointerEvents);
+    const ownerDocument = getElementOwnerDocument();
+
+    const shouldDisableOutsidePointerEvents = toValue(disableOutsidePointerEvents);
+    if (shouldDisableOutsidePointerEvents) {
+      if (layerContext.layersWithOutsidePointerEventsDisabled.size === 0) {
+        originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
+        ownerDocument.body.style.pointerEvents = 'none';
+      }
+      layerContext.layersWithOutsidePointerEventsDisabled.add(el);
+    }
+
+    layerContext.layers.add(el);
 
     onWatcherCleanup(() => {
-      layerManager.unregisterLayer(currentLayerElement);
+      if (shouldDisableOutsidePointerEvents && layerContext.layersWithOutsidePointerEventsDisabled.size === 1) {
+        if (!originalBodyPointerEvents) {
+          const styles = ownerDocument.body.style;
+          styles.removeProperty('pointer-events');
+        } else {
+          ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+        }
+      }
+
+      /**
+       * We purposefully prevent combining this effect with the `disableOutsidePointerEvents` effect because a change to
+       * `disableOutsidePointerEvents` would remove this layer from the stack and add it to the end again so the
+       * layering order wouldn't be _creation order_. We only want them to be removed from context stacks when
+       * unmounted.
+       */
+      layerContext.layers.delete(el);
+      layerContext.layersWithOutsidePointerEventsDisabled.delete(el);
     });
   });
 
@@ -131,19 +176,16 @@ export function useDismissableLayer(
 export function useDismissableLayerBranch(branchElementRef: Ref<HTMLElement | undefined>): void {
   onMounted(() => {
     if (branchElementRef.value) {
-      layerManager.addExemptBranch(branchElementRef.value);
+      layerContext.branches.add(branchElementRef.value);
     }
   });
 
   onBeforeUnmount(() => {
     if (branchElementRef.value) {
-      layerManager.removeExemptBranch(branchElementRef.value);
+      layerContext.branches.delete(branchElementRef.value);
     }
   });
 }
-
-// Export the layer manager for testing purposes
-export { layerManager as _layerManagerForTesting };
 
 /**
  * Listens for `pointerdown` outside a DOM subtree. We use `pointerdown` rather than `pointerup` to mimic layer

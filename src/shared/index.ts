@@ -9,6 +9,5 @@ export * from './focus';
 export * from './vue';
 export * from './env';
 export * from './event';
-export * from './layer';
 export * from './geometry';
 export * from './debounce';
