@@ -2,9 +2,7 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from '@/components/avatar';
 import SectionWrapper from '../components/section-wrapper.vue';
 
-function onLoadingStatusChange(status: string) {
-  console.log('Avatar loading status:', status);
-}
+function onLoadingStatusChange(_status: string) {}
 </script>
 
 <template>
