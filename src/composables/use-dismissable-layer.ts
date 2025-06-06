@@ -163,7 +163,7 @@ export function useDismissableLayer(
     computedPointerEvents,
     computedStyle,
     layerProps: {
-      [DISMISSABLE_LAYER_DATA_ATTRIBUTE]: true
+      [DISMISSABLE_LAYER_DATA_ATTRIBUTE]: ''
     }
   };
 }

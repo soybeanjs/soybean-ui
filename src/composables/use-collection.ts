@@ -25,7 +25,7 @@ export interface CollectionItemHook {
   itemElement: ShallowRef<HTMLElement | undefined>;
   itemProps: {
     ref: (nodeRef: VNodeRef) => void;
-    [COLLECTION_ITEM_ATTRIBUTE]: true;
+    [COLLECTION_ITEM_ATTRIBUTE]: '';
   };
 }
 
@@ -148,7 +148,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
       itemElement,
       itemProps: {
         ref: registerItemElement,
-        [COLLECTION_ITEM_ATTRIBUTE]: true
+        [COLLECTION_ITEM_ATTRIBUTE]: ''
       }
     };
   };
