@@ -3,9 +3,9 @@ import type { VNodeRef } from '../types';
 import { useForwardElement } from './use-forward-element';
 
 /** Expose the element ref to the parent component. */
-export function useExposedElement() {
+export function useExposedElement(callback?: (el: HTMLElement) => void) {
   const instance = getCurrentInstance();
-  const [elementRef, setElementRef] = useForwardElement();
+  const [elementRef, setElementRef] = useForwardElement(callback);
 
   const setExposedElement = (nodeRef: VNodeRef) => {
     setElementRef(nodeRef);
