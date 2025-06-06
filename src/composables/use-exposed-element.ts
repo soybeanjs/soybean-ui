@@ -10,8 +10,8 @@ export function useExposedElement() {
   const setExposedElement = (nodeRef: VNodeRef) => {
     setElementRef(nodeRef);
 
-    if (instance?.exposeProxy) {
-      instance.exposeProxy.$el = elementRef.value;
+    if (instance?.exposed) {
+      instance.exposed.$el = elementRef.value;
     }
   };
 
