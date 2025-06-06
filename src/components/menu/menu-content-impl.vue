@@ -4,6 +4,7 @@ import {
   useArrowNavigation,
   useBodyScrollLock,
   useDismissableLayer,
+  useExposedElement,
   useFocusGuards,
   useFocusScope,
   useHideOthers,
@@ -13,7 +14,7 @@ import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, omit, tryFocusFirst } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
 import { PopperContent } from '../popper';
-import { provideMenuContentContext, useMenuRootContext } from './context';
+import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_CONTENT_DATA_ATTRIBUTE } from './shared';
 import type { MenuContentImplEmits, MenuContentImplProps } from './types';
 
@@ -25,16 +26,16 @@ const props = defineProps<MenuContentImplProps>();
 
 const emit = defineEmits<MenuContentImplEmits>();
 
-const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
-
-const { handleTypeaheadSearch } = useTypeahead();
-
-const { modal, dir, dataState, contentElement, setContentElement, onOpenChange, isUsingKeyboard } =
-  useMenuRootContext('MenuContentImpl');
-
+const { onOpenChange, dataState, onContentElementChange } = useMenuContext('MenuContentImpl');
+const [contentElement, setContentElement] = useExposedElement(onContentElementChange);
+const { modal, dir, isUsingKeyboard } = useMenuRootContext('MenuContentImpl');
 const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
   contentElement
 });
+const subContext = useMenuSubContext();
+
+const { handleTypeaheadSearch } = useTypeahead();
+const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
@@ -163,7 +164,7 @@ function onPointerMove(event: PointerEvent) {
 }
 
 useFocusGuards();
-useHideOthers(contentElement, modal);
+useHideOthers(contentElement, () => modal.value && !subContext);
 
 watchEffect(() => {
   if (!props.disableOutsidePointerEvents) return;
@@ -187,7 +188,7 @@ watchEffect(() => {
       v-bind="forwardedProps"
       :ref="setContentElement"
       role="menu"
-      :[MENU_CONTENT_DATA_ATTRIBUTE]="true"
+      data-soybean-menu-content
       aria-orientation="vertical"
       :data-state="dataState"
       :dir="dir"

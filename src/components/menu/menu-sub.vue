@@ -2,7 +2,7 @@
 import { onWatcherCleanup, watchEffect } from 'vue';
 import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
-import { provideMenuSubContext, useMenuRootContext } from './context';
+import { provideMenuContext, provideMenuSubContext, useMenuContext } from './context';
 import type { MenuSubEmits, MenuSubProps } from './types';
 
 defineOptions({
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<MenuSubProps>(), {
 
 const emit = defineEmits<MenuSubEmits>();
 
-const subOpen = useControllableState(
+const open = useControllableState(
   () => props.open,
   value => {
     emit('update:open', value ?? false);
@@ -24,22 +24,24 @@ const subOpen = useControllableState(
   props.defaultOpen
 );
 
-const { open } = useMenuRootContext('MenuSub');
+const parentContext = useMenuContext('MenuSub');
 
 // Prevent the parent menu from reopening with open submenus.
 watchEffect(() => {
-  if (open.value === false) {
-    subOpen.value = false;
+  if (parentContext.open.value === false) {
+    open.value = false;
   }
 
   onWatcherCleanup(() => {
-    subOpen.value = false;
+    open.value = false;
   });
 });
 
-provideMenuSubContext({
-  subOpen
+provideMenuContext({
+  open
 });
+
+provideMenuSubContext();
 </script>
 
 <template>

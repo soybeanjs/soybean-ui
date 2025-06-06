@@ -2,7 +2,7 @@
 import { useControllableState, useIsUsingKeyboard } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { PopperRoot } from '../popper';
-import { provideMenuRootContext } from './context';
+import { provideMenuContext, provideMenuRootContext } from './context';
 import type { MenuRootEmits, MenuRootProps } from './types';
 
 defineOptions({
@@ -27,9 +27,17 @@ const open = useControllableState(
 
 const isUsingKeyboard = useIsUsingKeyboard();
 
+const onClose = () => {
+  open.value = false;
+};
+
+provideMenuContext({
+  open
+});
+
 provideMenuRootContext({
-  ...transformPropsToContext(props, ['open', 'modal', 'dir']),
-  open,
+  ...transformPropsToContext(props, ['modal', 'dir']),
+  onClose,
   isUsingKeyboard
 });
 </script>

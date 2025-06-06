@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, usePresence } from '../../composables';
+import { useForwardElement, useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
-import { useMenuRootContext } from './context';
+import { useMenuContext, useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuContentEmits, MenuContentProps } from './types';
 
@@ -14,9 +14,12 @@ const props = defineProps<MenuContentProps>();
 
 const emit = defineEmits<MenuContentEmits>();
 
-const { contentElement, open, modal } = useMenuRootContext('MenuContent');
-
 const listeners = useForwardListeners(emit);
+
+const { open } = useMenuContext('MenuContent');
+const { modal } = useMenuRootContext('MenuContent');
+
+const [contentElement, setContentElement] = useForwardElement();
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
@@ -33,6 +36,7 @@ const focusOutside = (event: FocusOutsideEvent) => {
   <MenuContentImpl
     v-if="isPresent"
     v-bind="props"
+    :ref="setContentElement"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="trapFocus"
     v-on="listeners"

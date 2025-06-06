@@ -15,7 +15,7 @@ const props = defineProps<MenuItemProps>();
 const emit = defineEmits<MenuItemEmits>();
 
 const [menuItemElement, setMenuItemElement] = useForwardElement();
-const { onOpenChange } = useMenuRootContext('MenuItem');
+const { onClose } = useMenuRootContext('MenuItem');
 const { searchRef } = useMenuContentContext('MenuItem');
 
 let isPointerDownRef = false;
@@ -33,7 +33,7 @@ const onSelect = async () => {
   if (itemSelectEvent.defaultPrevented) {
     isPointerDownRef = false;
   } else {
-    onOpenChange(false);
+    onClose();
   }
 };
 

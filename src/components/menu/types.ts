@@ -153,11 +153,11 @@ export interface MenuLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // Context
 export interface MenuRootContextParams extends PropsToContext<MenuRootProps, 'dir' | 'modal'> {
-  open: ShallowRef<boolean | undefined>;
+  onClose: () => void;
   isUsingKeyboard: ComputedRef<boolean>;
 }
-export interface MenuSubContextParams {
-  subOpen: ShallowRef<boolean | undefined>;
+export interface MenuContextParams {
+  open: ShallowRef<boolean | undefined>;
 }
 export interface MenuContentContextParams {
   contentElement: ShallowRef<HTMLElement | undefined>;

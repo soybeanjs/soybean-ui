@@ -1,20 +1,23 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useContext, useDirection, useForwardElement } from '../../composables';
+import { useContext, useDirection } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableValue, GraceIntent, HorizontalSide, StringOrNumber } from '../../types';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
+  MenuContextParams,
   MenuItemIndicatorContextParams,
   MenuRadioGroupContextParams,
-  MenuRootContextParams,
-  MenuSubContextParams
+  MenuRootContextParams
 } from './types';
 
-export const [provideMenuRootContext, useMenuRootContext] = useContext('MenuRoot', (params: MenuRootContextParams) => {
-  const [contentElement, setContentElement] = useForwardElement();
-
+export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: MenuContextParams) => {
   const { open } = params;
+
+  const contentElement = shallowRef<HTMLElement>();
+  const onContentElementChange = (el: HTMLElement) => {
+    contentElement.value = el;
+  };
 
   const onOpenChange = (v: boolean) => {
     open.value = v;
@@ -22,29 +25,30 @@ export const [provideMenuRootContext, useMenuRootContext] = useContext('MenuRoot
 
   const dataState = computed(() => getDisclosureState(open.value));
 
+  return {
+    open,
+    onOpenChange,
+    dataState,
+    contentElement,
+    onContentElementChange
+  };
+});
+
+export const [provideMenuRootContext, useMenuRootContext] = useContext('MenuRoot', (params: MenuRootContextParams) => {
   const dir = useDirection(params.dir);
 
   return {
     ...params,
-    dir,
-    dataState,
-    onOpenChange,
-    contentElement,
-    setContentElement
+    dir
   };
 });
 
-export const [provideMenuSubContext, useMenuSubContext] = useContext('MenuSub', (params: MenuSubContextParams) => {
-  const [subContentElement, setSubContentElement] = useForwardElement();
-  const [subTriggerElement, setSubTriggerElement] = useForwardElement();
+export const [provideMenuSubContext, useMenuSubContext] = useContext('MenuSub', () => {
+  const subTriggerElement = shallowRef<HTMLElement>();
 
-  const { subOpen } = params;
-
-  const onSubOpenChange = (v: boolean) => {
-    subOpen.value = v;
+  const onSubTriggerElementChange = (el: HTMLElement) => {
+    subTriggerElement.value = el;
   };
-
-  const dataState = computed(() => getDisclosureState(subOpen.value));
 
   const subTriggerId = shallowRef('');
   const initSubTriggerId = () => {
@@ -59,15 +63,10 @@ export const [provideMenuSubContext, useMenuSubContext] = useContext('MenuSub', 
   };
 
   return {
-    subOpen,
-    onSubOpenChange,
-    dataState,
-    subContentElement,
-    setSubContentElement,
     subContentId,
     initSubContentId,
     subTriggerElement,
-    setSubTriggerElement,
+    onSubTriggerElementChange,
     subTriggerId,
     initSubTriggerId
   };
@@ -124,8 +123,16 @@ export const [provideMenuCheckboxGroupContext, useMenuCheckboxGroupContext] = us
   (params: MenuCheckboxGroupContextParams) => {
     const { modelValue } = params;
 
-    const onModelValueChange = (v: StringOrNumber[]) => {
-      modelValue.value = v;
+    const onModelValueChange = (v: StringOrNumber) => {
+      if (!modelValue.value) {
+        modelValue.value = [];
+      }
+
+      if (modelValue.value.includes(v)) {
+        modelValue.value = modelValue.value.filter(item => item !== v);
+      } else {
+        modelValue.value.push(v);
+      }
     };
 
     return {

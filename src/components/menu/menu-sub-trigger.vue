@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { nextTick } from 'vue';
+import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import type { HorizontalSide } from '../../types';
-import { useMenuContentContext, useMenuRootContext, useMenuSubContext } from './context';
+import { PopperAnchor } from '../popper';
+import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
 import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
 
 const props = defineProps<MenuSubTriggerProps>();
 
-const { open, onOpenChange, dir } = useMenuRootContext('MenuSubTrigger');
+const { open, dataState, contentElement, onOpenChange } = useMenuContext('MenuSubTrigger');
+const { dir } = useMenuRootContext('MenuSubTrigger');
 const {
-  contentElement,
   pointerGraceTimer,
   searchRef,
   onPointerGraceIntentChange,
@@ -19,7 +21,8 @@ const {
   onItemEnter,
   onTriggerLeave
 } = useMenuContentContext('MenuSubTrigger');
-const { setSubTriggerElement, initSubTriggerId } = useMenuSubContext('MenuSubTrigger');
+const { subTriggerId, subContentId, onSubTriggerElementChange, initSubTriggerId } = useMenuSubContext('MenuSubTrigger');
+const [_, setSubTriggerElement] = useForwardElement(onSubTriggerElementChange);
 
 let openTimer: number | null = null;
 
@@ -117,13 +120,21 @@ initSubTriggerId();
 </script>
 
 <template>
-  <MenuItemImpl
-    :ref="setSubTriggerElement"
-    @click="onClick"
-    @pointermove="onPointerMove"
-    @pointerleave="onPointerLeave"
-    @keydown="onKeyDown"
-  >
-    <slot />
-  </MenuItemImpl>
+  <PopperAnchor as="template">
+    <MenuItemImpl
+      v-bind="props"
+      :id="subTriggerId"
+      :ref="setSubTriggerElement"
+      aria-haspopup="menu"
+      :aria-expanded="open"
+      :aria-controls="subContentId"
+      :data-state="dataState"
+      @click="onClick"
+      @pointermove="onPointerMove"
+      @pointerleave="onPointerLeave"
+      @keydown="onKeyDown"
+    >
+      <slot />
+    </MenuItemImpl>
+  </PopperAnchor>
 </template>

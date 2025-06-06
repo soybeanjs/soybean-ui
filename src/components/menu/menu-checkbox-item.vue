@@ -53,10 +53,14 @@ const onSelect = (event: Event) => {
   }
 
   modelValue.value = !modelValue.value;
+
+  if (props.value) {
+    groupContext?.onModelValueChange(props.value);
+  }
 };
 
 provideMenuItemIndicatorContext({
-  modelValue: computed(() => modelValue.value)
+  modelValue: state
 });
 </script>
 
@@ -69,6 +73,6 @@ provideMenuItemIndicatorContext({
     :aria-checked="ariaChecked"
     @select="onSelect"
   >
-    <slot :model-value="modelValue" />
+    <slot :model-value="state" />
   </MenuItem>
 </template>
