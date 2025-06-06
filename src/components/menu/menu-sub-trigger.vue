@@ -51,13 +51,13 @@ const onPointerMove = (event: PointerEvent) => {
   const defaultPrevented = onItemEnter(event);
   if (defaultPrevented) return;
 
-  if (!props.disabled && !open.value && !openTimer) {
-    resetPointerGraceIntent();
-    openTimer = window.setTimeout(() => {
-      onOpenChange(true);
-      clearOpenTimer();
-    }, 100);
-  }
+  if (props.disabled || open.value || openTimer) return;
+
+  resetPointerGraceIntent();
+  openTimer = window.setTimeout(() => {
+    onOpenChange(true);
+    clearOpenTimer();
+  }, 100);
 };
 
 const onPointerLeave = (event: PointerEvent) => {
