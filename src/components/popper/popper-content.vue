@@ -2,7 +2,7 @@
 import { computed, shallowRef, useAttrs, useTemplateRef, watchEffect, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
-import { useElementSize, useForwardElement } from '../../composables';
+import { useElementSize, useExposedElement, useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { providePopperContentContext, usePopperRootContext } from './context';
 import {
@@ -25,7 +25,7 @@ const emit = defineEmits<PopperContentEmits>();
 
 const attrs = useAttrs();
 
-const [contentElement, setContentElement] = useForwardElement();
+const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();
 const { anchorElement } = usePopperRootContext('PopperContent');
 const { width: arrowWidth, height: arrowHeight } = useElementSize(arrowElement);
