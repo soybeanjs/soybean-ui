@@ -1,38 +1,13 @@
 import { onBeforeUnmount, onWatcherCleanup, shallowRef, toValue, watchPostEffect } from 'vue';
-import type { MaybeRefOrGetter, ShallowRef } from 'vue';
+import type { MaybeRefOrGetter } from 'vue';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
 import { useContext } from './use-context';
-import { useForwardElement } from './use-forward-element';
 
 export interface CollectionItemData<ItemData = Record<string, any>> {
   element: HTMLElement;
   data: ItemData;
-}
-
-export interface CollectionContext<ItemData> {
-  containerElement: ShallowRef<HTMLElement | undefined>;
-  containerProps: {
-    ref: (nodeRef: VNodeRef) => void;
-  };
-  itemRegistry: Map<HTMLElement, CollectionItemData<ItemData>>;
-  getOrderedItems: (excludeDisabled?: boolean) => CollectionItemData<ItemData>[];
-  getOrderedElements: (excludeDisabled?: boolean) => HTMLElement[];
-}
-
-export interface CollectionItemHook {
-  itemElement: ShallowRef<HTMLElement | undefined>;
-  itemProps: {
-    ref: (nodeRef: VNodeRef) => void;
-    [COLLECTION_ITEM_ATTRIBUTE]: '';
-  };
-}
-
-export interface UseCollectionReturn<ItemData> {
-  provideCollectionContext: () => CollectionContext<ItemData>;
-  useCollectionContext: (consumerName: string) => CollectionContext<ItemData>;
-  useCollectionItem: (itemData?: MaybeRefOrGetter<ItemData>) => CollectionItemHook;
 }
 
 /**
@@ -41,11 +16,15 @@ export interface UseCollectionReturn<ItemData> {
  * @param collectionName - The name of the collection (used for context naming)
  * @returns Collection management functions and hooks
  */
-export function useCollection<ItemData = Record<string, any>>(collectionName: string): UseCollectionReturn<ItemData> {
+export function useCollection<ItemData = Record<string, any>>(collectionName: string) {
   const contextName = toPascalCase(`${collectionName}Collection`);
 
   const [provideCollectionContext, useCollectionContext] = useContext(contextName, () => {
-    const [containerElement, setContainerElement] = useForwardElement();
+    const containerElement = shallowRef<HTMLElement>();
+
+    const onContainerElementChange = (element: HTMLElement) => {
+      containerElement.value = element;
+    };
 
     const itemRegistry = new Map<HTMLElement, CollectionItemData<ItemData>>();
 
@@ -91,9 +70,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     return {
       containerElement,
-      containerProps: {
-        ref: setContainerElement
-      },
+      onContainerElementChange,
       itemRegistry,
       getOrderedItems,
       getOrderedElements
@@ -106,7 +83,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
    * @param itemData - Data to associate with this collection item
    * @returns Item element reference and props for registration
    */
-  const useCollectionItem = (itemData: MaybeRefOrGetter<ItemData> = {} as ItemData): CollectionItemHook => {
+  const useCollectionItem = (itemData: MaybeRefOrGetter<ItemData> = {} as ItemData) => {
     const consumerName = toPascalCase(`${collectionName}Item`);
     const { itemRegistry } = useCollectionContext(consumerName);
 
@@ -146,8 +123,8 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     return {
       itemElement,
+      setItemElement: registerItemElement,
       itemProps: {
-        ref: registerItemElement,
         [COLLECTION_ITEM_ATTRIBUTE]: ''
       }
     };
