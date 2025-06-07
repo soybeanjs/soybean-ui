@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, useAttrs, useSlots, watchPostEffect } from 'vue';
 import { PopperContent, PopperContentWrapper } from '../popper';
-import { useDismissableLayer, useForwardElement, useGraceArea } from '../../composables';
-import { getAriaLabelByVNodeList, omit } from '../../shared';
+import { useDismissableLayer, useForwardElement, useGraceArea, useOmitProps } from '../../composables';
+import { getAriaLabelByVNodeList } from '../../shared';
 import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
 import { useTooltipProviderContext, useTooltipRootContext } from './context';
@@ -70,11 +70,10 @@ const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
   }
 });
 
-const forwardedProps = computed(() => ({
+const forwardedProps = useOmitProps(props, ['ariaLabel'], {
   ...attrs,
-  ...omit(props, ['ariaLabel']),
   ...layerProps
-}));
+});
 
 const cssVarsStyle = {
   [tooltipCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,

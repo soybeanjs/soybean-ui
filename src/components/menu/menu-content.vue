@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardElement, useForwardListeners, usePresence } from '../../composables';
+import { useForwardElement, useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
 import { useMenuContext, useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
@@ -13,6 +13,8 @@ defineOptions({
 const props = defineProps<MenuContentProps>();
 
 const emit = defineEmits<MenuContentEmits>();
+
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const listeners = useForwardListeners(emit);
 
@@ -35,7 +37,7 @@ const focusOutside = (event: FocusOutsideEvent) => {
 <template>
   <MenuContentImpl
     v-if="isPresent"
-    v-bind="props"
+    v-bind="forwardedProps"
     :ref="setContentElement"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="trapFocus"

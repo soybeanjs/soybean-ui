@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardListeners } from '../../composables';
+import { useForwardListeners, useOmitProps } from '../../composables';
 import { DialogContent } from '../dialog';
 import { provideAlertDialogContentContext } from './context';
 import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
@@ -11,6 +11,8 @@ defineOptions({
 const props = defineProps<AlertDialogContentProps>();
 
 const emit = defineEmits<AlertDialogContentEmits>();
+
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const { focusCancel } = provideAlertDialogContentContext();
 
@@ -25,7 +27,7 @@ const openAutoFocus = (event: Event) => {
 
 <template>
   <DialogContent
-    v-bind="props"
+    v-bind="forwardedProps"
     role="alertdialog"
     v-on="listeners"
     @open-auto-focus="openAutoFocus"

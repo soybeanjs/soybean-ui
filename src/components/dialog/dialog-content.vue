@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, usePresence } from '../../composables';
+import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
 import DialogContentImpl from './dialog-content-impl.vue';
 import { useDialogContentEvents } from './shared';
@@ -11,7 +11,10 @@ defineOptions({
 });
 
 const props = defineProps<DialogContentProps>();
+
 const emit = defineEmits<DialogContentEmits>();
+
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const listeners = useForwardListeners(emit);
 
@@ -30,7 +33,7 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
 <template>
   <DialogContentImpl
     v-if="isPresent"
-    v-bind="props"
+    v-bind="forwardedProps"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"

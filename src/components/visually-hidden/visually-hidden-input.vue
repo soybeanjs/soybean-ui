@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
-import { computed } from 'vue';
-import type { FormNameValueProps } from '../../types';
+import { computed, useAttrs } from 'vue';
 import { isArrayValue, parseFormValue } from '../../shared';
+import type { FormNameValueProps } from '../../types';
 import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
 import type { VisuallyHiddenInputProps } from './types';
 
@@ -14,6 +14,8 @@ const props = withDefaults(defineProps<VisuallyHiddenInputProps<T>>(), {
   feature: 'fully-hidden',
   checked: undefined
 });
+
+const attrs = useAttrs();
 
 const parsedValue = computed<FormNameValueProps[]>(() => {
   const { value, name } = props;
@@ -31,7 +33,7 @@ const isFormArrayEmptyAndRequired = computed(
   <VisuallyHiddenInputBubble
     v-if="isFormArrayEmptyAndRequired"
     :key="name"
-    v-bind="{ ...props, ...$attrs }"
+    v-bind="{ ...props, ...attrs }"
     :name="name"
     :value="value"
   />
@@ -39,7 +41,7 @@ const isFormArrayEmptyAndRequired = computed(
     <VisuallyHiddenInputBubble
       v-for="parsed in parsedValue"
       :key="parsed.name"
-      v-bind="{ ...props, ...$attrs }"
+      v-bind="{ ...props, ...attrs }"
       :name="parsed.name"
       :value="parsed.value"
     />

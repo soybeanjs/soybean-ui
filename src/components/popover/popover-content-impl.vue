@@ -6,9 +6,9 @@ import {
   useFocusGuards,
   useFocusScope,
   useForwardElement,
-  useHideOthers
+  useHideOthers,
+  useOmitProps
 } from '../../composables';
-import { omit } from '../../shared';
 import { PopperContent, PopperContentWrapper } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { usePopoverRootContext } from './context';
@@ -62,12 +62,11 @@ const { onKeydown, focusScopeProps } = useFocusScope(wrapperElement, {
   }
 });
 
-const forwardedProps = computed(() => ({
+const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus'], {
   ...attrs,
-  ...omit(props, ['disableOutsidePointerEvents', 'trapFocus']),
   ...layerProps,
   ...focusScopeProps
-}));
+});
 
 const cssVarsStyle = {
   [popoverCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,

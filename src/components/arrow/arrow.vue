@@ -16,8 +16,6 @@ const props = withDefaults(defineProps<ArrowProps>(), {
 <template>
   <Primitive
     v-bind="props"
-    :width="width"
-    :height="height"
     :viewBox="as === 'template' ? undefined : '0 0 30 10'"
     :preserveAspectRatio="as === 'template' ? undefined : 'none'"
   >

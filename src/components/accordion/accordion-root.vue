@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableValue | AcceptableValue[], S extends SingleOrMultipleType">
 import { useTemplateRef } from 'vue';
-import { useDirection, useSingleOrMultipleValue } from '../../composables';
+import { useDirection, useOmitProps, useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { provideAccordionRootContext } from './context';
@@ -18,6 +18,8 @@ const props = withDefaults(defineProps<AccordionRootProps<T, S>>(), {
 });
 
 const emit = defineEmits<AccordionRootEmits>();
+
+const forwardedProps = useOmitProps(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide']);
 
 const rootElement = useTemplateRef('rootRef');
 
@@ -38,7 +40,7 @@ provideAccordionRootContext({
 </script>
 
 <template>
-  <div v-bind="props" ref="rootRef">
+  <div v-bind="forwardedProps" ref="rootRef">
     <slot :model-value="modelValue as T" />
   </div>
 </template>

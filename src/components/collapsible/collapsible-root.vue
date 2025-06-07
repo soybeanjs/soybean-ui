@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useControllableState } from '../../composables';
+import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideCollapsibleRootContext } from './context';
@@ -16,6 +16,8 @@ const props = withDefaults(defineProps<CollapsibleRootProps>(), {
 });
 
 const emit = defineEmits<CollapsibleRootEmits>();
+
+const forwardedProps = useOmitProps(props, ['open', 'defaultOpen', 'disabled', 'unmountOnHide']);
 
 const open = useControllableState(
   () => props.open,
@@ -37,7 +39,7 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="props" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive v-bind="forwardedProps" :data-disabled="dataDisabled" :data-state="dataState">
     <slot :open="open" />
   </Primitive>
 </template>

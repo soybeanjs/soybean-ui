@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { useForwardListeners, usePresence } from '../../composables';
+import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useTooltipRootContext } from './context';
 import TooltipContentImpl from './tooltip-content-impl.vue';
 import type { TooltipContentEmits, TooltipContentProps } from './types';
@@ -13,6 +13,8 @@ const props = defineProps<TooltipContentProps>();
 
 const emit = defineEmits<TooltipContentEmits>();
 
+const forwardedProps = useOmitProps(props, ['forceMount']);
+
 const listeners = useForwardListeners(emit);
 
 const { contentElement, open } = useTooltipRootContext('TooltipContent');
@@ -21,7 +23,7 @@ const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentEleme
 </script>
 
 <template>
-  <TooltipContentImpl v-if="isPresent" v-bind="props" v-on="listeners">
+  <TooltipContentImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
     <slot />
   </TooltipContentImpl>
 </template>

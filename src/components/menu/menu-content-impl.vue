@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, useTemplateRef, watchEffect } from 'vue';
+import { onWatcherCleanup, useAttrs, useTemplateRef, watchEffect } from 'vue';
 import {
   useArrowNavigation,
   useBodyScrollLock,
@@ -9,10 +9,11 @@ import {
   useFocusScope,
   useForwardElement,
   useHideOthers,
+  useOmitProps,
   useTypeahead
 } from '../../composables';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
-import { getActiveElement, isMouseEvent, omit, tryFocusFirst } from '../../shared';
+import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
 import { PopperContent, PopperContentWrapper } from '../popper';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
@@ -20,12 +21,15 @@ import { FIRST_LAST_KEYS, LAST_KEYS, MENU_CONTENT_DATA_ATTRIBUTE } from './share
 import type { MenuContentImplEmits, MenuContentImplProps } from './types';
 
 defineOptions({
-  name: 'MenuContentImpl'
+  name: 'MenuContentImpl',
+  inheritAttrs: false
 });
 
 const props = defineProps<MenuContentImplProps>();
 
 const emit = defineEmits<MenuContentImplEmits>();
+
+const attrs = useAttrs();
 
 const [wrapperElement, setWrapperElement] = useForwardElement();
 const { onOpenChange, dataState, onContentElementChange } = useMenuContext('MenuContentImpl');
@@ -75,11 +79,11 @@ const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(wrappe
   }
 });
 
-const forwardedProps = computed(() => ({
-  ...omit(props, ['disableOutsidePointerEvents', 'trapFocus', 'loop']),
+const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus', 'loop'], {
+  ...attrs,
   ...layerProps,
   ...focusScopeProps
-}));
+});
 
 const onEntryFocus = (event: Event) => {
   emit('entryFocus', event);

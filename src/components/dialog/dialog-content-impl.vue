@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers } from '../../composables';
+import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
@@ -57,6 +57,11 @@ const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
   }
 });
 
+const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents'], {
+  ...layerProps,
+  ...focusScopeProps
+});
+
 const preserveTriggerElement = () => {
   const activeElement = getActiveElement();
 
@@ -78,7 +83,7 @@ onMounted(() => {
 
 <template>
   <Primitive
-    v-bind="{ ...props, ...layerProps, ...focusScopeProps }"
+    v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
     role="dialog"

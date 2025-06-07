@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends StringOrNumber">
 import { computed } from 'vue';
-import { useControllableState } from '../../composables';
+import { useControllableState, useOmitProps } from '../../composables';
 import type { StringOrNumber } from '../../types';
 import { provideMenuCheckboxGroupContext } from './context';
 import MenuGroup from './menu-group.vue';
@@ -13,6 +13,8 @@ defineOptions({
 const props = defineProps<MenuCheckboxGroupProps<T>>();
 
 const emit = defineEmits<MenuCheckboxGroupEmits<T>>();
+
+const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -29,7 +31,7 @@ provideMenuCheckboxGroupContext({
 </script>
 
 <template>
-  <MenuGroup v-bind="props" role="menu-checkbox-group">
+  <MenuGroup v-bind="forwardedProps" role="menu-checkbox-group">
     <slot :model-value="modelValue" />
   </MenuGroup>
 </template>

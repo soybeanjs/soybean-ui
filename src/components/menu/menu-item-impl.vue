@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { nextTick, shallowRef } from 'vue';
+import { useOmitProps } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import { Primitive } from '../primitive';
 import { useCollectionItem } from '../roving-focus/context';
@@ -15,6 +16,8 @@ const props = defineProps<MenuItemImplProps>();
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
 const { setItemElement, itemProps } = useCollectionItem(() => ({ textValue: props.textValue }));
+
+const forwardedProps = useOmitProps(props, ['disabled', 'textValue'], itemProps);
 
 const isFocused = shallowRef(false);
 
@@ -60,7 +63,7 @@ const onBlur = async (event: FocusEvent) => {
 
 <template>
   <Primitive
-    v-bind="{ ...props, ...itemProps }"
+    v-bind="forwardedProps"
     :ref="setItemElement"
     role="menuitem"
     tabindex="-1"

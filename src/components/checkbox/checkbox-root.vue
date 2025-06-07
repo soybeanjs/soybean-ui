@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { useControllableState } from '../../composables';
+import { useControllableState, useOmitProps } from '../../composables';
 import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext } from '../../shared';
 import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
@@ -17,6 +17,8 @@ const props = withDefaults(defineProps<CheckboxRootProps>(), {
 });
 
 const emit = defineEmits<CheckboxRootEmits>();
+
+const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'value', 'disabled', 'name', 'required']);
 
 const rootElement = useTemplateRef<HTMLDivElement>('rootElement');
 
@@ -55,7 +57,7 @@ provideCheckboxRootContext({
 </script>
 
 <template>
-  <div v-bind="props" ref="rootElement">
+  <div v-bind="forwardedProps" ref="rootElement">
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput

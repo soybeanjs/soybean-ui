@@ -2,7 +2,7 @@
 import { computed, shallowRef, watchEffect, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
-import { useElementSize, useExposedElement, useForwardElement } from '../../composables';
+import { useElementSize, useExposedElement, useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { providePopperContentContext, usePopperRootContext } from './context';
 import {
@@ -26,6 +26,24 @@ const { anchorElement, contentWrapperElement, onContentWrapperStyleChange } = us
 const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();
 const { width: arrowWidth, height: arrowHeight } = useElementSize(arrowElement);
+
+const forwardedProps = useOmitProps(props, [
+  'side',
+  'sideOffset',
+  'align',
+  'alignOffset',
+  'avoidCollisions',
+  'collisionBoundary',
+  'collisionPadding',
+  'arrowPadding',
+  'sticky',
+  'hideWhenDetached',
+  'positionStrategy',
+  'updatePositionStrategy',
+  'disableUpdateOnLayoutShift',
+  'prioritizePosition',
+  'reference'
+]);
 
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
 
@@ -97,7 +115,7 @@ watchPostEffect(() => {
 
 <template>
   <Primitive
-    v-bind="props"
+    v-bind="forwardedProps"
     :ref="setContentElement"
     :data-side="placedSide"
     :data-align="placedAlign"

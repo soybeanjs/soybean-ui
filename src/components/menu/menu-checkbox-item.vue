@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState } from '../../composables';
+import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish, isValueEqualOrExist } from '../../shared';
 import type { CheckedState } from '../../types';
 import { getCheckedState, isIndeterminate } from '../checkbox/shared';
@@ -15,6 +15,8 @@ defineOptions({
 const props = defineProps<MenuCheckboxItemProps>();
 
 const emit = defineEmits<MenuCheckboxItemEmits>();
+
+const forwardedProps = useOmitProps(props, ['modelValue', 'value', 'disabled']);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -66,7 +68,7 @@ provideMenuItemIndicatorContext({
 
 <template>
   <MenuItem
-    v-bind="props"
+    v-bind="forwardedProps"
     role="menu-checkbox-item"
     :disabled="disabled"
     :data-state="dataState"

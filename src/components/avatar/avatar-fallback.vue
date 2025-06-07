@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
+import { useOmitProps } from '../../composables';
 import { isClient } from '../../shared';
 import { useAvatarRootContext } from './context';
 import type { AvatarFallbackProps } from './types';
@@ -9,6 +10,8 @@ defineOptions({
 });
 
 const props = defineProps<AvatarFallbackProps>();
+
+const forwardedProps = useOmitProps(props, ['delayMs']);
 
 const { imageLoadingStatus } = useAvatarRootContext('AvatarFallback');
 
@@ -29,7 +32,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <span v-if="visible" v-bind="props">
+  <span v-if="visible" v-bind="forwardedProps">
     <slot />
   </span>
 </template>

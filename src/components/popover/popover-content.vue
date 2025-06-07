@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardListeners, usePresence } from '../../composables';
+import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useDialogContentEvents } from '../dialog/shared';
 import { usePopoverRootContext } from './context';
 import PopoverContentImpl from './popover-content-impl.vue';
@@ -11,6 +11,8 @@ defineOptions({
 });
 
 const props = defineProps<PopoverContentProps>();
+
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const emit = defineEmits<PopoverContentEmits>();
 
@@ -31,7 +33,7 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
 <template>
   <PopoverContentImpl
     v-if="isPresent"
-    v-bind="props"
+    v-bind="forwardedProps"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="modal"
     v-on="listeners"

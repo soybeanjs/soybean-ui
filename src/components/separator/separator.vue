@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { omitProps } from '../../shared';
+import { useOmitProps } from '../../composables';
 import type { DataOrientation } from '../../types';
 import { Primitive } from '../primitive';
 import type { SeparatorProps } from './types';
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
 
 const slots = useSlots();
 
-const rootProps = omitProps(props, ['orientation', 'decorative', 'label', 'labelProps']);
+const rootProps = useOmitProps(props, ['orientation', 'decorative', 'label', 'labelProps']);
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 

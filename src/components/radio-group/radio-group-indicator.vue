@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { useForwardElement, usePresence } from '../../composables';
+import { useForwardElement, useOmitProps, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { getCheckedState } from '../checkbox/shared';
 import { useRadioGroupItemContext } from './context';
@@ -14,6 +14,8 @@ const props = withDefaults(defineProps<RadioGroupIndicatorProps>(), {
   as: 'span'
 });
 
+const forwardedProps = useOmitProps(props, ['forceMount']);
+
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 const { checked, disabled } = useRadioGroupItemContext('RadioGroupIndicator');
 
@@ -25,7 +27,7 @@ const dataState = computed(() => getCheckedState(checked.value));
 <template>
   <Primitive
     v-if="isPresent"
-    v-bind="props"
+    v-bind="forwardedProps"
     :ref="setIndicatorElement"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"

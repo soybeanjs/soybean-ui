@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useOmitProps } from '../../composables';
 import { getCheckedState, isIndeterminate } from '../checkbox/shared';
 import { provideMenuItemIndicatorContext, useMenuRadioGroupContext } from './context';
 import MenuItem from './menu-item.vue';
@@ -12,6 +13,8 @@ defineOptions({
 const props = defineProps<MenuRadioItemProps>();
 
 const emit = defineEmits<MenuRadioItemEmits>();
+
+const forwardedProps = useOmitProps(props, ['value', 'disabled']);
 
 const {
   modelValue: radioGroupModelValue,
@@ -40,7 +43,7 @@ provideMenuItemIndicatorContext({
 
 <template>
   <MenuItem
-    v-bind="props"
+    v-bind="forwardedProps"
     role="menu-checkbox-item"
     :disabled="disabled"
     :aria-checked="ariaChecked"

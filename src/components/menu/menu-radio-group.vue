@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState } from '../../composables';
+import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish } from '../../shared';
 import { provideMenuRadioGroupContext } from './context';
 import MenuGroup from './menu-group.vue';
@@ -13,6 +13,8 @@ defineOptions({
 const props = defineProps<MenuRadioGroupProps>();
 
 const emit = defineEmits<MenuRadioGroupEmits>();
+
+const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -30,7 +32,7 @@ provideMenuRadioGroupContext({
 </script>
 
 <template>
-  <MenuGroup v-bind="props" role="menu-radio-group">
+  <MenuGroup v-bind="forwardedProps" role="menu-radio-group">
     <slot :model-value="modelValue" />
   </MenuGroup>
 </template>

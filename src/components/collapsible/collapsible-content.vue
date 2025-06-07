@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
-import { useForwardElement, usePresence } from '../../composables';
+import { useForwardElement, useOmitProps, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { useCollapsibleRootContext } from './context';
 import { collapsibleContentCssVars } from './shared';
@@ -16,6 +16,8 @@ const [contentElement, setContentElement] = useForwardElement();
 
 const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide } =
   useCollapsibleRootContext('CollapsibleContent');
+
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open, handleNodeStyle);
 
@@ -81,7 +83,7 @@ onMounted(() => {
 
 <template>
   <Primitive
-    v-bind="props"
+    v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
     :data-disabled="dataDisabled"

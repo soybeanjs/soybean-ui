@@ -18,14 +18,6 @@ import type {
 export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
-  /**
-   * Whether or not an accordion item is disabled from user interaction.
-   *
-   * When `true`, prevents the user from interacting with the item.
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
   /** A string or number value for the accordion item. All items within an accordion should use a unique value. */
   value: StringOrNumber;
 }
