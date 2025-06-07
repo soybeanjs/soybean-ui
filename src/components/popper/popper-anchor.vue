@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { watchPostEffect } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { usePopperRootContext } from './context';
@@ -11,11 +10,9 @@ defineOptions({
 
 const props = defineProps<PopperAnchorProps>();
 
-const [anchorElement, setAnchorElement] = useForwardElement();
 const { onAnchorElementChange } = usePopperRootContext('PopperAnchor');
-
-watchPostEffect(() => {
-  onAnchorElementChange(props.reference ?? anchorElement.value);
+const [_, setAnchorElement] = useForwardElement(el => {
+  onAnchorElementChange(props.reference ?? el);
 });
 </script>
 

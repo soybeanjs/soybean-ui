@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef, useAttrs, useTemplateRef, watchEffect, watchPostEffect } from 'vue';
+import { computed, shallowRef, watchEffect, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
 import { useElementSize, useExposedElement, useForwardElement } from '../../composables';
@@ -15,38 +15,38 @@ import {
 import type { PopperContentEmits, PopperContentProps } from './types';
 
 defineOptions({
-  name: 'PopperContent',
-  inheritAttrs: false
+  name: 'PopperContent'
 });
 
 const props = withDefaults(defineProps<PopperContentProps>(), createPopperContentPropsDefaultValue());
 
 const emit = defineEmits<PopperContentEmits>();
 
-const attrs = useAttrs();
-
+const { anchorElement, contentWrapperElement, onContentWrapperStyleChange } = usePopperRootContext('PopperContent');
 const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();
-const { anchorElement } = usePopperRootContext('PopperContent');
 const { width: arrowWidth, height: arrowHeight } = useElementSize(arrowElement);
 
-const floatingRef = useTemplateRef('floatingRef');
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
 
 const contentZIndex = shallowRef('');
 
-const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(referenceElement, floatingRef, {
-  strategy: () => props.positionStrategy,
-  placement: () => getPlacementFromSideAndAlign(props.side, props.align),
-  whileElementsMounted: (...args) => {
-    const cleanup = autoUpdate(...args, {
-      layoutShift: !props.disableUpdateOnLayoutShift,
-      animationFrame: props.updatePositionStrategy === 'always'
-    });
-    return cleanup;
-  },
-  middleware: () => getFloatingUIMiddleware(props, arrowElement.value, arrowWidth.value, arrowHeight.value)
-});
+const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(
+  referenceElement,
+  contentWrapperElement,
+  {
+    strategy: () => props.positionStrategy,
+    placement: () => getPlacementFromSideAndAlign(props.side, props.align),
+    whileElementsMounted: (...args) => {
+      const cleanup = autoUpdate(...args, {
+        layoutShift: !props.disableUpdateOnLayoutShift,
+        animationFrame: props.updatePositionStrategy === 'always'
+      });
+      return cleanup;
+    },
+    middleware: () => getFloatingUIMiddleware(props, arrowElement.value, arrowWidth.value, arrowHeight.value)
+  }
+);
 
 const placedSide = computed(() => getSideAndAlignFromPlacement(placement.value)[0]);
 const placedAlign = computed(() => getSideAndAlignFromPlacement(placement.value)[1]);
@@ -84,6 +84,10 @@ watchEffect(() => {
   }
 });
 
+watchEffect(() => {
+  onContentWrapperStyleChange(wrapperStyle.value);
+});
+
 watchPostEffect(() => {
   if (isPositioned.value) {
     emit('placed');
@@ -92,17 +96,15 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <div ref="floatingRef" data-soybean-popper-content-wrapper="" :style="wrapperStyle">
-    <Primitive
-      v-bind="{ ...props, ...attrs }"
-      :ref="setContentElement"
-      :data-side="placedSide"
-      :data-align="placedAlign"
-      :style="{
-        animation: !isPositioned ? 'none' : undefined
-      }"
-    >
-      <slot />
-    </Primitive>
-  </div>
+  <Primitive
+    v-bind="props"
+    :ref="setContentElement"
+    :data-side="placedSide"
+    :data-align="placedAlign"
+    :style="{
+      animation: !isPositioned ? 'none' : undefined
+    }"
+  >
+    <slot />
+  </Primitive>
 </template>

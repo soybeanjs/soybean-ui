@@ -66,7 +66,7 @@ export const components = {
     'DropdownMenuLabel',
     'DropdownMenuSeparator'
   ],
-  popper: ['PopperRoot', 'PopperAnchor', 'PopperContent', 'PopperArrow'],
+  popper: ['PopperRoot', 'PopperAnchor', 'PopperContentWrapper', 'PopperContent', 'PopperArrow'],
   portal: ['Portal'],
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],

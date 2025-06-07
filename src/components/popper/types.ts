@@ -12,6 +12,8 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
   reference?: ReferenceElement;
 }
 
+export interface PopperContentWrapperProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface PopperContentProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * The preferred side of the trigger to render against when open. Will be reversed when collisions occur and
