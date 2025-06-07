@@ -1,3 +1,5 @@
+export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
+
 export type StringOrNumber = string | number;
 export type AcceptableValue = StringOrNumber | null | undefined;
 

@@ -13,6 +13,7 @@ export const components = {
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
+  card: ['CardRoot', 'CardHeader', 'CardContent', 'CardFooter', 'CardTitleRoot', 'CardTitle', 'CardDescription'],
   checkbox: ['CheckboxRoot', 'CheckboxControl', 'CheckboxIndicator', 'CheckboxLabel', 'CheckboxGroupRoot'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   configProvider: ['ConfigProvider'],
