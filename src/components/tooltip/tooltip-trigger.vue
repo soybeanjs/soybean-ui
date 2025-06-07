@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useForwardElement } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { useTooltipProviderContext, useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
@@ -20,12 +21,13 @@ const {
   dataState,
   disableClosingTrigger,
   ignoreNonKeyboardFocus,
-  setTriggerElement,
+  onTriggerElementChange,
   onOpen,
   onClose,
   onTriggerEnter,
   onTriggerLeave
 } = useTooltipRootContext('TooltipTrigger');
+const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 
 let isPointerDown = false;
 let hasPointerMoveOpened = false;

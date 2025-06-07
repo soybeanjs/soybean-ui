@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, useSlots, watchPostEffect } from 'vue';
-import { PopperContent } from '../popper';
-import { useDismissableLayer, useGraceArea } from '../../composables';
+import { computed, onWatcherCleanup, useAttrs, useSlots, watchPostEffect } from 'vue';
+import { PopperContent, PopperContentWrapper } from '../popper';
+import { useDismissableLayer, useForwardElement, useGraceArea } from '../../composables';
 import { getAriaLabelByVNodeList, omit } from '../../shared';
 import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
@@ -10,7 +10,8 @@ import { TOOLTIP_OPEN, tooltipCssVars } from './shared';
 import type { TooltipContentImplEmits, TooltipContentImplProps } from './types';
 
 defineOptions({
-  name: 'TooltipContentImpl'
+  name: 'TooltipContentImpl',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<TooltipContentImplProps>(), {
@@ -19,20 +20,24 @@ const props = withDefaults(defineProps<TooltipContentImplProps>(), {
 
 const emit = defineEmits<TooltipContentImplEmits>();
 
+const attrs = useAttrs();
+
 const slots = useSlots();
 const defaultSlot = computed(() => slots.default?.());
 
 const { isPointerInTransitRef } = useTooltipProviderContext('TooltipContentImpl');
 const {
   contentId,
-  contentElement,
-  setContentElement,
+  onContentElementChange,
   triggerElement,
   dataState,
   disableClosingTrigger,
   disableHoverableContent,
   onClose
 } = useTooltipRootContext('TooltipContentImpl');
+
+const [wrapperElement, setWrapperElement] = useForwardElement();
+const [contentElement, setContentElement] = useForwardElement(onContentElementChange);
 
 useGraceArea({
   triggerElement,
@@ -46,7 +51,7 @@ useGraceArea({
   disabled: disableHoverableContent
 });
 
-const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
+const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
   disableOutsidePointerEvents: false,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -66,6 +71,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
 });
 
 const forwardedProps = computed(() => ({
+  ...attrs,
   ...omit(props, ['ariaLabel']),
   ...layerProps
 }));
@@ -109,10 +115,12 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperContent v-bind="forwardedProps" :ref="setContentElement" :data-state="dataState" :style="style">
-    <slot />
-    <VisuallyHidden :id="contentId" role="tooltip">
-      {{ ariaLabel }}
-    </VisuallyHidden>
-  </PopperContent>
+  <PopperContentWrapper :ref="setWrapperElement">
+    <PopperContent v-bind="forwardedProps" :ref="setContentElement" :data-state="dataState" :style="style">
+      <slot />
+      <VisuallyHidden :id="contentId" role="tooltip">
+        {{ ariaLabel }}
+      </VisuallyHidden>
+    </PopperContent>
+  </PopperContentWrapper>
 </template>

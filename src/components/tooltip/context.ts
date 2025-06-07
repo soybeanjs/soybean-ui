@@ -1,5 +1,5 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { useContext } from '../../composables';
 import type { TooltipDataState, TooltipProviderContextParams, TooltipRootContextParams } from './types';
 
 export const [provideTooltipProviderContext, useTooltipProviderContext] = useContext(
@@ -47,9 +47,6 @@ export const [provideTooltipProviderContext, useTooltipProviderContext] = useCon
 export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
   'TooltipRoot',
   (params: TooltipRootContextParams) => {
-    const [contentElement, setContentElement] = useForwardElement();
-    const [triggerElement, setTriggerElement] = useForwardElement();
-
     const { open, delayDuration, isOpenDelayed, disableHoverableContent } = params;
 
     const contentId = shallowRef('');
@@ -64,6 +61,16 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
       if (!open.value) return 'closed';
       return wasOpenDelayedRef.value ? 'delayed-open' : 'instant-open';
     });
+
+    const triggerElement = shallowRef<HTMLElement>();
+    const onTriggerElementChange = (element: HTMLElement) => {
+      triggerElement.value = element;
+    };
+
+    const contentElement = shallowRef<HTMLElement>();
+    const onContentElementChange = (element: HTMLElement) => {
+      contentElement.value = element;
+    };
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
@@ -113,12 +120,12 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
     return {
       ...params,
       contentId,
-      initContentId,
-      contentElement,
-      setContentElement,
       dataState,
       triggerElement,
-      setTriggerElement,
+      onTriggerElementChange,
+      initContentId,
+      contentElement,
+      onContentElementChange,
       onTriggerEnter,
       onTriggerLeave,
       onOpen,
