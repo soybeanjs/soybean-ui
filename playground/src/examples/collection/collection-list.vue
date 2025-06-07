@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { useForwardElement } from '@/composables';
 import { provideCollectionContext } from './context';
 
-const { containerProps } = provideCollectionContext();
+const { onContainerElementChange } = provideCollectionContext();
+
+const [_, setContainerElement] = useForwardElement(onContainerElementChange);
 </script>
 
 <template>
-  <ul v-bind="containerProps">
+  <ul :ref="setContainerElement">
     <slot />
   </ul>
 </template>
