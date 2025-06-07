@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
 import PopperAnchor from '../popper/popper-anchor.vue';
 import { usePopoverRootContext } from './context';
@@ -13,8 +14,10 @@ const props = withDefaults(defineProps<PopoverTriggerProps>(), {
   as: 'button'
 });
 
-const { open, onOpenToggle, dataState, contentId, initTriggerId, setTriggerElement, hasCustomAnchor } =
+const { open, onOpenToggle, dataState, contentId, initTriggerId, onTriggerElementChange, hasCustomAnchor } =
   usePopoverRootContext('DialogTrigger');
+
+const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 

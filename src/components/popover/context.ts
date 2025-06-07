@@ -1,5 +1,5 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
 import type { PopoverRootContextParams } from './types';
@@ -7,8 +7,6 @@ import type { PopoverRootContextParams } from './types';
 export const [providePopoverRootContext, usePopoverRootContext] = useContext(
   'PopoverRoot',
   (params: PopoverRootContextParams) => {
-    const [contentElement, setContentElement] = useForwardElement();
-    const [triggerElement, setTriggerElement] = useForwardElement();
     const { open, modal } = params;
 
     const onOpenChange = (value: boolean) => {
@@ -21,10 +19,20 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
 
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
+    const triggerElement = shallowRef<HTMLElement>();
+    const onTriggerElementChange = (element: HTMLElement) => {
+      triggerElement.value = element;
+    };
+
     const triggerId = shallowRef('');
     const initTriggerId = () => {
       if (triggerId.value) return;
       triggerId.value = `soybean-popover-trigger-${useId()}`;
+    };
+
+    const contentElement = shallowRef<HTMLElement>();
+    const onContentElementChange = (element: HTMLElement) => {
+      contentElement.value = element;
     };
 
     const contentId = shallowRef('');
@@ -42,11 +50,11 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
       modal,
       dataState,
       triggerElement,
-      setTriggerElement,
+      onTriggerElementChange,
       triggerId,
       initTriggerId,
       contentElement,
-      setContentElement,
+      onContentElementChange,
       contentId,
       initContentId,
       hasCustomAnchor
