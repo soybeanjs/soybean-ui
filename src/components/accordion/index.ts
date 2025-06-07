@@ -6,11 +6,14 @@ import AccordionContent from './accordion-content.vue';
 
 export { AccordionRoot, AccordionItem, AccordionTrigger, AccordionHeader, AccordionContent };
 
+export { provideAccordionThemeContext } from './context';
+
 export type {
   AccordionRootProps,
   AccordionRootEmits,
   AccordionItemProps,
   AccordionTriggerProps,
   AccordionHeaderProps,
-  AccordionContentProps
+  AccordionContentProps,
+  AccordionSlot
 } from './types';

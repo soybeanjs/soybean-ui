@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { CollapsibleTrigger } from '../collapsible';
-import { useAccordionItemContext, useAccordionRootContext } from './context';
+import { useAccordionItemContext, useAccordionRootContext, useAccordionThemeContext } from './context';
 import type { AccordionTriggerProps } from './types';
 
 defineOptions({
@@ -12,6 +13,10 @@ const props = defineProps<AccordionTriggerProps>();
 const { collapsible, orientation, toggleModelValue, isSingle } = useAccordionRootContext('AccordionTrigger');
 const { setTriggerElement, triggerId, initTriggerId, open, value, dataDisabled, dataState, disabled } =
   useAccordionItemContext('AccordionTrigger');
+
+const themeContext = useAccordionThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
 
 const onClick = () => {
   if (disabled.value) return;
@@ -30,6 +35,7 @@ initTriggerId();
     v-bind="props"
     :id="triggerId"
     :ref="setTriggerElement"
+    :class="cls"
     data-soybean-collection-item
     :aria-disabled="disabled || undefined"
     :aria-expanded="open || false"

@@ -1,6 +1,7 @@
 import type { ComputedRef, HTMLAttributes, Ref } from 'vue';
 import type {
   AcceptableValue,
+  ClassValue,
   DataOrientation,
   Direction,
   PropsToContext,
@@ -73,6 +74,12 @@ export interface AccordionRootContextParams
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {
   open: ComputedRef<boolean>;
   disabled: ComputedRef<boolean>;
+}
+
+export type AccordionSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
+
+export interface AccordionThemeContextParams {
+  ui: ComputedRef<Record<AccordionSlot, ClassValue>>;
 }
 
 export type { AccordionContentProps, AccordionTriggerProps };

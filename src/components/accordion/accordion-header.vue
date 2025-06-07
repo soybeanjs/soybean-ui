@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useAccordionItemContext, useAccordionRootContext } from './context';
+import { computed } from 'vue';
+import { useAccordionItemContext, useAccordionRootContext, useAccordionThemeContext } from './context';
 import type { AccordionHeaderProps } from './types';
 
 defineOptions({
@@ -8,12 +9,16 @@ defineOptions({
 
 const props = defineProps<AccordionHeaderProps>();
 
+const themeContext = useAccordionThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.header, props.class]);
+
 const { orientation } = useAccordionRootContext('AccordionHeader');
 const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');
 </script>
 
 <template>
-  <h3 v-bind="props" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
+  <h3 v-bind="props" :class="cls" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
     <slot />
   </h3>
 </template>
