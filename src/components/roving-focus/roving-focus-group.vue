@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideRovingFocusGroupContext } from './context';
@@ -16,22 +17,25 @@ const props = withDefaults(defineProps<RovingFocusGroupProps>(), {
 
 const emit = defineEmits<RovingFocusGroupEmits>();
 
-const { rovingFocusGroupProps, rovingFocusGroupListeners, getOrderedItems } = provideRovingFocusGroupContext({
-  ...transformPropsToContext(props, [
-    'loop',
-    'orientation',
-    'dir',
-    'currentTabStopId',
-    'defaultCurrentTabStopId',
-    'preventScrollOnEntryFocus'
-  ]),
-  onUpdateCurrentTabStopId: (value: string | null | undefined) => {
-    emit('update:currentTabStopId', value);
-  },
-  onEntryFocus: (event: Event) => {
-    emit('entryFocus', event);
-  }
-});
+const { onContainerElementChange, rovingFocusGroupProps, rovingFocusGroupListeners, getOrderedItems } =
+  provideRovingFocusGroupContext({
+    ...transformPropsToContext(props, [
+      'loop',
+      'orientation',
+      'dir',
+      'currentTabStopId',
+      'defaultCurrentTabStopId',
+      'preventScrollOnEntryFocus'
+    ]),
+    onUpdateCurrentTabStopId: (value: string | null | undefined) => {
+      emit('update:currentTabStopId', value);
+    },
+    onEntryFocus: (event: Event) => {
+      emit('entryFocus', event);
+    }
+  });
+
+const [_, setContainerElement] = useForwardElement(onContainerElementChange);
 
 defineExpose({
   getItems: getOrderedItems
@@ -39,7 +43,11 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="{ ...props, ...rovingFocusGroupProps }" v-on="rovingFocusGroupListeners">
+  <Primitive
+    v-bind="{ ...props, ...rovingFocusGroupProps }"
+    :ref="setContainerElement"
+    v-on="rovingFocusGroupListeners"
+  >
     <slot />
   </Primitive>
 </template>

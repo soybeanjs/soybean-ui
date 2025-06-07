@@ -12,7 +12,7 @@ const { provideCollectionContext, useCollectionContext, useCollectionItem } =
 const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
   'RovingFocusGroup',
   (params: RovingFocusGroupContextParams) => {
-    const { containerProps, getOrderedItems, getOrderedElements } = provideCollectionContext();
+    const { onContainerElementChange, getOrderedItems, getOrderedElements } = provideCollectionContext();
 
     const {
       loop,
@@ -80,7 +80,6 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
     const rovingFocusGroupProps = computed(() => {
       return {
-        ...containerProps,
         tabindex: isTabbingBackOut.value || focusableItemsCount.value === 0 ? '-1' : '0',
         dataOrientation: orientation.value,
         dir: dir.value,
@@ -105,6 +104,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
     };
 
     return {
+      onContainerElementChange,
       loop,
       dir,
       orientation,
@@ -122,7 +122,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
 function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
   const { getOrderedElements } = useCollectionContext('RovingFocusItem');
-  const { itemProps } = useCollectionItem();
+  const { setItemElement, itemProps } = useCollectionItem();
   const {
     currentTabStopId,
     orientation,
@@ -216,6 +216,7 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
   });
 
   return {
+    setItemElement,
     rovingFocusItemProps,
     rovingFocusItemListeners
   };
