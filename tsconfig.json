@@ -8,7 +8,13 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@ui": ["./playground/src/ui/index.ts"],
+      "@ui/*": ["./playground/src/ui/*"],
+      "@theme": ["./playground/src/theme/index.ts"],
+      "@theme/*": ["./playground/src/theme/*"],
+      "@variants": ["./playground/src/variants/index.ts"],
+      "@variants/*": ["./playground/src/variants/*"]
     },
     "resolveJsonModule": true,
     "types": ["node", "vite/client"],

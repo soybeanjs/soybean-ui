@@ -8,7 +8,10 @@ export default defineConfig({
   root: './playground',
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@ui': fileURLToPath(new URL('./playground/src/ui', import.meta.url)),
+      '@theme': fileURLToPath(new URL('./playground/src/theme', import.meta.url)),
+      '@variants': fileURLToPath(new URL('./playground/src/variants', import.meta.url))
     }
   },
   plugins: [vue(), unocss(), devtools()],
