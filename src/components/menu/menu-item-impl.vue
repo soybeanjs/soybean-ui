@@ -14,7 +14,7 @@ const props = defineProps<MenuItemImplProps>();
 
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
-const { itemProps } = useCollectionItem(() => ({ textValue: props.textValue }));
+const { setItemElement, itemProps } = useCollectionItem(() => ({ textValue: props.textValue }));
 
 const isFocused = shallowRef(false);
 
@@ -61,6 +61,7 @@ const onBlur = async (event: FocusEvent) => {
 <template>
   <Primitive
     v-bind="{ ...props, ...itemProps }"
+    :ref="setItemElement"
     role="menuitem"
     tabindex="-1"
     :aria-disabled="disabled || undefined"
