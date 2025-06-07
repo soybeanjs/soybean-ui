@@ -1,5 +1,5 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowReactive, toValue, watch } from 'vue';
-import type { CSSProperties, MaybeRefOrGetter, Ref } from 'vue';
+import type { CSSProperties, MaybeRefOrGetter, ShallowRef } from 'vue';
 import { handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 import { useEscapeKeyDown } from './use-escape-key-down';
@@ -36,7 +36,7 @@ let originalBodyPointerEvents: string | undefined;
  * @returns Properties and handlers for the dismissable layer
  */
 export function useDismissableLayer(
-  layerElementRef: Ref<HTMLElement | undefined>,
+  layerElementRef: ShallowRef<HTMLElement | undefined>,
   options: UseDismissableLayerOptions = {}
 ) {
   const {
@@ -48,7 +48,7 @@ export function useDismissableLayer(
     onDismiss
   } = options;
 
-  const getElementOwnerDocument = (): Document => layerElementRef.value?.ownerDocument ?? globalThis?.document;
+  const ownerDocument = (): Document => layerElementRef.value?.ownerDocument ?? globalThis?.document;
 
   const index = computed(() =>
     layerElementRef.value ? Array.from(layerContext.layers).indexOf(layerElementRef.value) : -1
@@ -77,11 +77,11 @@ export function useDismissableLayer(
     pointerEvents: computedPointerEvents.value
   }));
 
-  // Handle pointer down outside the layer
-  useOutsidePointerDown(async event => {
+  usePointerdownOutside(layerElementRef, event => {
     if (!isPointerEventsEnabled.value) return;
 
     const target = event.target as HTMLElement;
+
     const isPointerdownOnBranch = [...layerContext.branches].some(branch => branch.contains(target));
     if (isPointerdownOnBranch) return;
 
@@ -91,11 +91,11 @@ export function useDismissableLayer(
     if (!event.defaultPrevented) {
       onDismiss?.();
     }
-  }, layerElementRef);
+  });
 
-  // Handle focus outside the layer
-  useOutsideFocus(event => {
+  useFocusOutside(layerElementRef, event => {
     const target = event.target as HTMLElement;
+
     const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
     if (isFocusInBranch) return;
 
@@ -105,11 +105,11 @@ export function useDismissableLayer(
     if (!event.defaultPrevented) {
       onDismiss?.();
     }
-  }, layerElementRef);
+  });
 
-  // Handle escape key press
-  useEscapeKeyDown(event => {
+  useEscapeKeyDown(ownerDocument, event => {
     const isHighestLayer = index.value === layerContext.layers.size - 1;
+
     if (!isHighestLayer) return;
 
     onEscapeKeyDown?.(event);
@@ -118,32 +118,31 @@ export function useDismissableLayer(
       event.preventDefault();
       onDismiss?.();
     }
-  }, getElementOwnerDocument);
+  });
 
-  // Manage layer registration and pointer events state
-  watch(layerElementRef, el => {
-    if (!el) return;
+  watch(layerElementRef, nodeVal => {
+    if (!nodeVal) return;
 
-    const ownerDocument = getElementOwnerDocument();
+    const ownerNode = ownerDocument();
 
     const shouldDisableOutsidePointerEvents = toValue(disableOutsidePointerEvents);
     if (shouldDisableOutsidePointerEvents) {
       if (layerContext.layersWithOutsidePointerEventsDisabled.size === 0) {
-        originalBodyPointerEvents = ownerDocument.body.style.pointerEvents;
-        ownerDocument.body.style.pointerEvents = 'none';
+        originalBodyPointerEvents = ownerNode.body.style.pointerEvents;
+        ownerNode.body.style.pointerEvents = 'none';
       }
-      layerContext.layersWithOutsidePointerEventsDisabled.add(el);
+      layerContext.layersWithOutsidePointerEventsDisabled.add(nodeVal);
     }
 
-    layerContext.layers.add(el);
+    layerContext.layers.add(nodeVal);
 
     onWatcherCleanup(() => {
       if (shouldDisableOutsidePointerEvents && layerContext.layersWithOutsidePointerEventsDisabled.size === 1) {
         if (!originalBodyPointerEvents) {
-          const styles = ownerDocument.body.style;
+          const styles = ownerNode.body.style;
           styles.removeProperty('pointer-events');
         } else {
-          ownerDocument.body.style.pointerEvents = originalBodyPointerEvents;
+          ownerNode.body.style.pointerEvents = originalBodyPointerEvents;
         }
       }
 
@@ -153,13 +152,12 @@ export function useDismissableLayer(
        * layering order wouldn't be _creation order_. We only want them to be removed from context stacks when
        * unmounted.
        */
-      layerContext.layers.delete(el);
-      layerContext.layersWithOutsidePointerEventsDisabled.delete(el);
+      layerContext.layers.delete(nodeVal);
+      layerContext.layersWithOutsidePointerEventsDisabled.delete(nodeVal);
     });
   });
 
   return {
-    DISMISSABLE_LAYER_DATA_ATTRIBUTE,
     computedPointerEvents,
     computedStyle,
     layerProps: {
@@ -173,7 +171,7 @@ export function useDismissableLayer(
  *
  * @param branchElementRef - Reference to the branch element
  */
-export function useDismissableLayerBranch(branchElementRef: Ref<HTMLElement | undefined>): void {
+export function useDismissableLayerBranch(branchElementRef: ShallowRef<HTMLElement | undefined>): void {
   onMounted(() => {
     if (branchElementRef.value) {
       layerContext.branches.add(branchElementRef.value);
@@ -189,165 +187,164 @@ export function useDismissableLayerBranch(branchElementRef: Ref<HTMLElement | un
 
 /**
  * Listens for `pointerdown` outside a DOM subtree. We use `pointerdown` rather than `pointerup` to mimic layer
- * dismissing behavior present in OS.
- *
- * @param onOutsidePointerDown - Handler for pointer down outside events
- * @param watchedElementRef - Reference to the element to check for outside events
- * @returns Event handlers to attach to the element
+ * dismissing behavior present in OS. Returns props to pass to the node we want to check for outside events.
  */
-export function useOutsidePointerDown(
-  onOutsidePointerDown: (event: PointerDownOutsideEvent) => void,
-  watchedElementRef: Ref<HTMLElement | undefined>,
-  enable?: MaybeRefOrGetter<boolean>
+export function usePointerdownOutside(
+  node: ShallowRef<HTMLElement | undefined>,
+  onPointerDownOutside: (event: PointerDownOutsideEvent) => void
 ) {
-  let isPointerCurrentlyInsideElement = false;
-  let pendingTouchClickHandler: (() => void) | null = null;
+  let isPointerInsideDOMTree = false;
 
-  const captureHandlers = {
+  let handleClick = () => {};
+
+  const ret = {
+    // ensures we check React component tree (not just DOM tree)
     onPointerdownCapture: () => {
-      if (!toValue(enable)) return;
-
-      isPointerCurrentlyInsideElement = true;
+      isPointerInsideDOMTree = true;
     }
   };
 
   if (!isClient) {
-    return captureHandlers;
+    return ret;
   }
 
-  const cleanupPendingTouchClickHandler = (ownerDocument: Document): void => {
-    if (pendingTouchClickHandler) {
-      ownerDocument.removeEventListener('click', pendingTouchClickHandler);
-      pendingTouchClickHandler = null;
-    }
-  };
+  watch(node, nodeVal => {
+    if (!nodeVal) return;
 
-  watch(watchedElementRef, currentWatchedElement => {
-    if (!currentWatchedElement) return;
+    const ownerDocument = nodeVal.ownerDocument;
 
-    const ownerDocument = currentWatchedElement.ownerDocument;
+    async function handlePointerDown(event: PointerEvent) {
+      if (!node.value) return;
 
-    const handleDocumentPointerDown = async (pointerEvent: PointerEvent): Promise<void> => {
-      if (!watchedElementRef.value) return;
+      const target = event.target as HTMLElement;
 
-      const pointerEventTarget = pointerEvent.target as HTMLElement;
-      isPointerCurrentlyInsideElement = isTargetInsideLayerTree(watchedElementRef.value, pointerEventTarget);
+      isPointerInsideDOMTree = isInsideDOMTree(node.value, target);
 
-      if (pointerEventTarget && !isPointerCurrentlyInsideElement) {
-        const outsideEventDetail = { originalEvent: pointerEvent };
+      if (target && !isPointerInsideDOMTree) {
+        const eventDetail = { originalEvent: event };
 
-        const dispatchOutsidePointerDownEvent = (): void => {
-          handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE_EVENT, onOutsidePointerDown, outsideEventDetail);
-        };
+        function handleAndDispatchPointerDownOutsideEvent() {
+          handleAndDispatchCustomEvent(POINTER_DOWN_OUTSIDE_EVENT, onPointerDownOutside, eventDetail);
+        }
 
         /**
          * On touch devices, we need to wait for a click event because browsers implement a ~350ms delay between the
          * time the user stops touching the display and when the browser executes events. We need to ensure we don't
          * reactivate pointer-events within this timeframe otherwise the browser may execute events that should have
          * been prevented.
+         *
+         * Additionally, this also lets us deal automatically with cancellations when a click event isn't raised because
+         * the page was considered scrolled/drag-scrolled, long-pressed, etc.
+         *
+         * This is why we also continuously remove the previous listener, because we cannot be certain that it was
+         * raised, and therefore cleaned-up.
          */
-        if (pointerEvent.pointerType === 'touch') {
-          cleanupPendingTouchClickHandler(ownerDocument);
-          pendingTouchClickHandler = dispatchOutsidePointerDownEvent;
-          ownerDocument.addEventListener('click', pendingTouchClickHandler, { once: true });
+        if (event.pointerType === 'touch') {
+          ownerDocument.removeEventListener('click', handleClick);
+          handleClick = handleAndDispatchPointerDownOutsideEvent;
+          ownerDocument.addEventListener('click', handleClick, { once: true });
         } else {
-          dispatchOutsidePointerDownEvent();
+          handleAndDispatchPointerDownOutsideEvent();
         }
       } else {
-        // Clean up pending click handler if pointer was inside
-        cleanupPendingTouchClickHandler(ownerDocument);
+        // We need to remove the event listener in case the outside click has been canceled.
+        // See: https://github.com/radix-ui/primitives/issues/2171
+        ownerDocument.removeEventListener('click', handleClick);
       }
+      isPointerInsideDOMTree = false;
+    }
 
-      isPointerCurrentlyInsideElement = false;
-    };
-
-    /** Delay event listener registration to avoid triggering on the same pointerdown event that mounted the component */
-    const registrationTimerId = window.setTimeout(() => {
-      ownerDocument.addEventListener('pointerdown', handleDocumentPointerDown);
+    /**
+     * if this hook executes in a component that mounts via a `pointerdown` event, the event would bubble up to the
+     * document and trigger a `pointerDownOutside` event. We avoid this by delaying the event listener registration on
+     * the document. This is how the DOM works, ie:
+     *
+     *     button.addEventListener('pointerdown', () => {
+     *       console.log('I will log');
+     *       document.addEventListener('pointerdown', () => {
+     *         console.log('I will also log');
+     *       });
+     *     });
+     */
+    const timerId = window.setTimeout(() => {
+      ownerDocument.addEventListener('pointerdown', handlePointerDown);
     }, 0);
 
     onWatcherCleanup(() => {
-      window.clearTimeout(registrationTimerId);
-      ownerDocument.removeEventListener('pointerdown', handleDocumentPointerDown);
-      cleanupPendingTouchClickHandler(ownerDocument);
+      window.clearTimeout(timerId);
+      ownerDocument.removeEventListener('pointerdown', handlePointerDown);
+      ownerDocument.removeEventListener('click', handleClick);
     });
   });
 
-  return captureHandlers;
-}
-
-interface UseOutsideFocusReturn {
-  onFocusCapture: () => void;
-  onBlurCapture: () => void;
+  return ret;
 }
 
 /**
- * Listens for when focus happens outside a DOM subtree
- *
- * @param onOutsideFocus - Handler for focus outside events
- * @param watchedElementRef - Reference to the element to check for outside focus
- * @returns Event handlers to attach to the element
+ * Listens for when focus happens outside a DOM subtree. Returns props to pass to the root (node) of the subtree we want
+ * to check.
  */
-export function useOutsideFocus(
-  onOutsideFocus: (event: FocusOutsideEvent) => void,
-  watchedElementRef: Ref<HTMLElement | undefined>
-): UseOutsideFocusReturn {
-  let isFocusCurrentlyInsideElement = false;
+export function useFocusOutside(
+  node: ShallowRef<HTMLElement | undefined>,
+  onFocusOutside: (event: FocusOutsideEvent) => void
+) {
+  let isFocusInsideDOMTree = false;
 
-  const captureHandlers: UseOutsideFocusReturn = {
+  const ret = {
     onFocusCapture: () => {
-      isFocusCurrentlyInsideElement = true;
+      isFocusInsideDOMTree = true;
     },
     onBlurCapture: () => {
-      isFocusCurrentlyInsideElement = false;
+      isFocusInsideDOMTree = false;
     }
   };
 
   if (!isClient) {
-    return captureHandlers;
+    return ret;
   }
 
-  const handleDocumentFocusIn = async (focusEvent: FocusEvent): Promise<void> => {
+  const handleFocus = async (event: FocusEvent) => {
     await nextTick();
 
-    if (!watchedElementRef.value || !focusEvent.target) return;
+    if (!node.value) return;
 
-    isFocusCurrentlyInsideElement = isTargetInsideLayerTree(watchedElementRef.value, focusEvent.target as HTMLElement);
+    isFocusInsideDOMTree = isInsideDOMTree(node.value, event.target as HTMLElement);
 
-    if (!isFocusCurrentlyInsideElement) {
-      const outsideEventDetail = { originalEvent: focusEvent };
-      handleAndDispatchCustomEvent(FOCUS_OUTSIDE_EVENT, onOutsideFocus, outsideEventDetail);
+    if (event.target && !isFocusInsideDOMTree) {
+      const eventDetail = { originalEvent: event };
+      handleAndDispatchCustomEvent(FOCUS_OUTSIDE_EVENT, onFocusOutside, eventDetail);
     }
   };
 
-  watch(watchedElementRef, currentWatchedElement => {
-    if (!currentWatchedElement) return;
+  watch(node, nodeVal => {
+    if (!nodeVal) return;
 
-    const ownerDocument = currentWatchedElement.ownerDocument;
-    ownerDocument.addEventListener('focusin', handleDocumentFocusIn);
+    const ownerDocument = nodeVal.ownerDocument;
+
+    ownerDocument.addEventListener('focusin', handleFocus);
 
     onWatcherCleanup(() => {
-      ownerDocument.removeEventListener('focusin', handleDocumentFocusIn);
+      ownerDocument.removeEventListener('focusin', handleFocus);
     });
   });
 
-  return captureHandlers;
+  return ret;
 }
 
-/** Check if a target element is inside a dismissable layer DOM tree */
-function isTargetInsideLayerTree(layerElement: HTMLElement, targetElement: HTMLElement): boolean {
-  if (!layerElement || !targetElement) return false;
+function isInsideDOMTree(mainLayer: HTMLElement, targetElement: HTMLElement) {
+  if (!mainLayer) return false;
 
-  const targetClosestLayer = targetElement.closest<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`);
-  if (!targetClosestLayer) return false;
-  if (layerElement === targetClosestLayer) return true;
+  const targetLayer = targetElement.closest<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`);
 
-  const allLayersInDocument = Array.from(
-    layerElement.ownerDocument.querySelectorAll<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`)
+  if (!targetLayer) return false;
+
+  if (mainLayer === targetLayer) return true;
+
+  const layerList = Array.from(
+    mainLayer.ownerDocument.querySelectorAll<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`)
   );
 
-  const layerElementIndex = allLayersInDocument.indexOf(layerElement);
-  const targetLayerIndex = allLayersInDocument.indexOf(targetClosestLayer);
+  if (layerList.indexOf(mainLayer) < layerList.indexOf(targetLayer)) return true;
 
-  return layerElementIndex < targetLayerIndex;
+  return false;
 }

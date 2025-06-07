@@ -43,7 +43,7 @@ const subContext = useMenuSubContext();
 const { handleTypeaheadSearch } = useTypeahead();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
-const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
+const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -58,6 +58,7 @@ const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
     emit('interactOutside', event);
   },
   onDismiss: () => {
+    if (subContext) return;
     onOpenChange(false);
   }
 });

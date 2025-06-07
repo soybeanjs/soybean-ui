@@ -5,8 +5,8 @@ let registeredEscapeHandlers: ((e: KeyboardEvent) => void)[] = [];
 let currentDocument: Document | undefined;
 
 export function useEscapeKeyDown(
-  handler: (e: KeyboardEvent) => void,
-  ownerDocument: MaybeRefOrGetter<Document | undefined> = globalThis?.document
+  ownerDocument: MaybeRefOrGetter<Document | undefined>,
+  handler: (e: KeyboardEvent) => void
 ) {
   watchPostEffect(() => {
     const document = toValue(ownerDocument);
