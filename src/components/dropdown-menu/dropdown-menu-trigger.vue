@@ -3,7 +3,7 @@ import { computed, nextTick } from 'vue';
 import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
 import { SELECTION_KEYS } from '../menu/shared';
-import { useDropdownMenuRootContext } from './context';
+import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
 
 defineOptions({
@@ -17,13 +17,16 @@ const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
 const { open, dataState, onOpenToggle, onOpenChange, triggerId, contentId, initTriggerId, setTriggerElement } =
   useDropdownMenuRootContext('DropdownMenuTrigger');
 
+const { isPointerInTransitRef, hoverable, onTriggerEnter, onTriggerLeave, onClose } =
+  useDropdownMenuHoverContext('DropdownMenuTrigger');
+
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const ariaControls = computed(() => (open.value ? contentId : undefined));
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
 const onClick = async (event: MouseEvent) => {
-  if (props.disabled) return;
+  if (props.disabled || hoverable.value) return;
 
   // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
   // but not when the control key is pressed (avoiding MacOS right click)
@@ -54,6 +57,38 @@ const onKeyDown = (event: KeyboardEvent) => {
   }
 };
 
+let hasPointerMoveOpened = false;
+
+const onPointerMove = (event: PointerEvent) => {
+  if (props.disabled) return;
+
+  if (event.pointerType === 'touch') return;
+
+  if (!hasPointerMoveOpened && !isPointerInTransitRef.value) {
+    onTriggerEnter();
+    hasPointerMoveOpened = true;
+  }
+};
+
+const onPointerLeave = () => {
+  if (props.disabled) return;
+
+  onTriggerLeave();
+  hasPointerMoveOpened = false;
+};
+
+const hoverListeners = computed(() =>
+  hoverable.value
+    ? {
+        blur: onClose,
+        pointermove: onPointerMove,
+        pointerleave: onPointerLeave
+      }
+    : {
+        click: onClick
+      }
+);
+
 initTriggerId();
 </script>
 
@@ -70,8 +105,8 @@ initTriggerId();
       aria-haspopup="menu"
       :data-disabled="dataDisabled"
       :data-state="dataState"
-      @click="onClick"
       @keydown.enter.space.arrow-down="onKeyDown"
+      v-on="hoverListeners"
     >
       <slot />
     </Primitive>

@@ -5,3 +5,5 @@ export const dropdownMenuCssVars = {
   anchorWidth: '--soybean-dropdown-menu-trigger-width',
   anchorHeight: '--soybean-dropdown-menu-trigger-height'
 };
+
+export const DROPDOWN_MENU_HOVER_OPEN = 'dropdown-menu.hover-open';

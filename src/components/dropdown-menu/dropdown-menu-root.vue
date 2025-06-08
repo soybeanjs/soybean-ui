@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { useControllableState } from '../../composables';
 import { MenuRoot } from '../menu';
-import { provideDropdownMenuRootContext } from './context';
+import { provideDropdownMenuHoverContext, provideDropdownMenuRootContext } from './context';
 import type { DropdownMenuRootEmits, DropdownMenuRootProps } from './types';
 
 defineOptions({
@@ -12,7 +13,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<DropdownMenuRootProps>(), {
   open: undefined,
-  modal: true
+  modal: true,
+  trigger: 'click',
+  delayDuration: 150,
+  skipDelayDuration: 300
 });
 
 const emit = defineEmits<DropdownMenuRootEmits>();
@@ -25,8 +29,19 @@ const open = useControllableState(
   props.defaultOpen
 );
 
+const hoverable = computed(() => props.trigger === 'hover');
+
+const modal = computed(() => props.modal && props.trigger !== 'hover');
+
 const { dir } = provideDropdownMenuRootContext({
-  ...transformPropsToContext(props, ['open', 'modal', 'dir']),
+  ...transformPropsToContext(props, ['open', 'dir']),
+  modal,
+  open
+});
+
+provideDropdownMenuHoverContext({
+  ...transformPropsToContext(props, ['delayDuration', 'skipDelayDuration']),
+  hoverable,
   open
 });
 </script>

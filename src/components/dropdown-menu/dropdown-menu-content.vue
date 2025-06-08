@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
-import { useForwardListeners } from '../../composables';
+import { computed, onWatcherCleanup, shallowRef, watchPostEffect } from 'vue';
+import { useForwardListeners, useGraceArea } from '../../composables';
 import { MenuContent } from '../menu';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { popperCssVars } from '../popper/shared';
-import { useDropdownMenuRootContext } from './context';
-import { dropdownMenuCssVars } from './shared';
+import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
+import { DROPDOWN_MENU_HOVER_OPEN, dropdownMenuCssVars } from './shared';
 import type { DropdownMenuContentEmits, DropdownMenuContentProps } from './types';
 
 defineOptions({
@@ -27,6 +27,20 @@ const setContentElement = (el: HTMLElement) => {
 const { modal, initContentId, triggerElement, triggerId, contentId } =
   useDropdownMenuRootContext('DropdownMenuContent');
 
+const { isPointerInTransitRef, hoverable, onClose } = useDropdownMenuHoverContext('DropdownMenuContent');
+
+useGraceArea({
+  triggerElement,
+  contentElement,
+  onPointerInTransitChange: v => {
+    isPointerInTransitRef.value = v;
+  },
+  onPointerExit: () => {
+    onClose();
+  },
+  disabled: computed(() => !hoverable.value)
+});
+
 const style = computed(() => ({
   [dropdownMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
   [dropdownMenuCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
@@ -38,13 +52,12 @@ const style = computed(() => ({
 let hasInteractedOutsideRef = false;
 
 const onCloseAutoFocus = (event: Event) => {
-  if (event.defaultPrevented) return;
+  if (event.defaultPrevented || hoverable.value || hasInteractedOutsideRef) return;
 
-  if (!hasInteractedOutsideRef) {
-    setTimeout(() => {
-      triggerElement.value?.focus();
-    }, 0);
-  }
+  setTimeout(() => {
+    triggerElement.value?.focus();
+  }, 0);
+
   hasInteractedOutsideRef = false;
 
   // Always prevent auto focus because we either focus manually or want user agent focus
@@ -67,6 +80,24 @@ const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) =
 };
 
 initContentId();
+
+watchPostEffect(() => {
+  if (!hoverable.value) return;
+
+  const handleScroll = (event: Event) => {
+    const target = event.target as HTMLElement;
+    if (target?.contains(triggerElement.value!)) {
+      onClose();
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener(DROPDOWN_MENU_HOVER_OPEN, onClose);
+  onWatcherCleanup(() => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener(DROPDOWN_MENU_HOVER_OPEN, onClose);
+  });
+});
 </script>
 
 <template>
