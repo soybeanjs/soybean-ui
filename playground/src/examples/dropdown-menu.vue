@@ -64,7 +64,7 @@ const radioValue = ref('1');
 
 <template>
   <SectionWrapper title="Dropdown">
-    <DropdownMenuRoot>
+    <DropdownMenuRoot trigger="hover">
       <DropdownMenuTrigger as="template">
         <button :class="buttonVariants({ variant: 'pure' })" class="w-20">Open</button>
       </DropdownMenuTrigger>
