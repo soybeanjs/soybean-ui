@@ -8,7 +8,7 @@ export interface TooltipProviderProps {
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened.
    *
-   * @defaultValue 700
+   * @defaultValue 150
    */
   delayDuration?: number;
 

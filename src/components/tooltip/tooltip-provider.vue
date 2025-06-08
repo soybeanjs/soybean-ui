@@ -9,7 +9,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TooltipProviderProps>(), {
-  delayDuration: 700,
+  delayDuration: 150,
   skipDelayDuration: 300
 });
 
