@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, useAttrs, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, watchEffect } from 'vue';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -9,30 +9,27 @@ import {
   useHideOthers,
   useOmitProps
 } from '../../composables';
-import { PopperContent, PopperContentWrapper } from '../popper';
+import { PopperContent } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { usePopoverRootContext } from './context';
 import { popoverCssVars } from './shared';
 import type { PopoverContentImplEmits, PopoverContentImplProps } from './types';
 
 defineOptions({
-  name: 'PopoverContentImpl',
-  inheritAttrs: false
+  name: 'PopoverContentImpl'
 });
 
 const props = defineProps<PopoverContentImplProps>();
 
 const emit = defineEmits<PopoverContentImplEmits>();
 
-const attrs = useAttrs();
-
 const { onOpenChange, modal, dataState, triggerId, onContentElementChange, contentId, initContentId } =
   usePopoverRootContext('PopoverContentImpl');
 
-const [wrapperElement, setWrapperElement] = useForwardElement();
+const [floatingElement, setFloatingElement] = useForwardElement(props.floatingRef);
 const [contentElement, setContentElement] = useForwardElement(onContentElementChange);
 
-const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
+const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -51,7 +48,7 @@ const { computedStyle, layerProps } = useDismissableLayer(wrapperElement, {
   }
 });
 
-const { onKeydown, focusScopeProps } = useFocusScope(wrapperElement, {
+const { onKeydown, focusScopeProps } = useFocusScope(floatingElement, {
   trapped: () => props.trapFocus,
   loop: true,
   onOpenAutoFocus: event => {
@@ -63,7 +60,6 @@ const { onKeydown, focusScopeProps } = useFocusScope(wrapperElement, {
 });
 
 const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus'], {
-  ...attrs,
   ...layerProps,
   ...focusScopeProps
 });
@@ -95,18 +91,17 @@ watchEffect(() => {
 </script>
 
 <template>
-  <PopperContentWrapper :ref="setWrapperElement">
-    <PopperContent
-      v-bind="forwardedProps"
-      :id="contentId"
-      :ref="setContentElement"
-      role="dialog"
-      :data-state="dataState"
-      :aria-labelledby="triggerId"
-      :style="style"
-      @keydown="onKeydown"
-    >
-      <slot />
-    </PopperContent>
-  </PopperContentWrapper>
+  <PopperContent
+    v-bind="forwardedProps"
+    :id="contentId"
+    :ref="setContentElement"
+    :floating-ref="setFloatingElement"
+    role="dialog"
+    :data-state="dataState"
+    :aria-labelledby="triggerId"
+    :style="style"
+    @keydown="onKeydown"
+  >
+    <slot />
+  </PopperContent>
 </template>

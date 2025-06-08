@@ -15,7 +15,7 @@ import {
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
-import { PopperContent, PopperContentWrapper } from '../popper';
+import { PopperContent } from '../popper';
 import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_CONTENT_DATA_ATTRIBUTE } from './shared';
 import type { MenuContentImplEmits, MenuContentImplProps } from './types';
@@ -31,10 +31,10 @@ const emit = defineEmits<MenuContentImplEmits>();
 
 const attrs = useAttrs();
 
-const [wrapperElement, setWrapperElement] = useForwardElement();
 const { onOpenChange, dataState, onContentElementChange } = useMenuContext('MenuContentImpl');
-const [contentElement, setContentElement] = useExposedElement(onContentElementChange);
 const { modal, dir, isUsingKeyboard } = useMenuRootContext('MenuContentImpl');
+const [floatingElement, setFloatingElement] = useForwardElement(props.floatingRef);
+const [contentElement, setContentElement] = useExposedElement(onContentElementChange);
 const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
   contentElement
 });
@@ -63,7 +63,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   }
 });
 
-const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(wrapperElement, {
+const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floatingElement, {
   trapped: () => props.trapFocus,
   onOpenAutoFocus: event => {
     emit('openAutoFocus', event);
@@ -182,31 +182,30 @@ watchEffect(() => {
 </script>
 
 <template>
-  <PopperContentWrapper :ref="setWrapperElement">
-    <RovingFocusGroup
-      ref="rovingFocusGroupRef"
-      v-model:current-tab-stop-id="currentItemId"
-      as="template"
-      orientation="vertical"
+  <RovingFocusGroup
+    ref="rovingFocusGroupRef"
+    v-model:current-tab-stop-id="currentItemId"
+    as="template"
+    orientation="vertical"
+    :dir="dir"
+    :loop="loop"
+    @entry-focus="onEntryFocus"
+  >
+    <PopperContent
+      v-bind="forwardedProps"
+      :ref="setContentElement"
+      :floating-ref="setFloatingElement"
+      role="menu"
+      data-soybean-menu-content
+      aria-orientation="vertical"
+      :data-state="dataState"
       :dir="dir"
-      :loop="loop"
-      @entry-focus="onEntryFocus"
+      :style="computedStyle"
+      @keydown="onKeyDown"
+      @blur="onBlur"
+      @pointermove="onPointerMove"
     >
-      <PopperContent
-        v-bind="forwardedProps"
-        :ref="setContentElement"
-        role="menu"
-        data-soybean-menu-content
-        aria-orientation="vertical"
-        :data-state="dataState"
-        :dir="dir"
-        :style="computedStyle"
-        @keydown="onKeyDown"
-        @blur="onBlur"
-        @pointermove="onPointerMove"
-      >
-        <slot />
-      </PopperContent>
-    </RovingFocusGroup>
-  </PopperContentWrapper>
+      <slot />
+    </PopperContent>
+  </RovingFocusGroup>
 </template>
