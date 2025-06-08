@@ -4,24 +4,24 @@ import { useForwardElement, useForwardListeners, useOmitProps, usePresence } fro
 import type { FocusOutsideEvent } from '../../types';
 import { useMenuContext, useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
-import type { MenuContentEmits, MenuContentProps } from './types';
+import type { MenuContentEmits, MenuContentPrivateProps } from './types';
 
 defineOptions({
   name: 'MenuContent'
 });
 
-const props = defineProps<MenuContentProps>();
+const props = defineProps<MenuContentPrivateProps>();
 
 const emit = defineEmits<MenuContentEmits>();
 
-const forwardedProps = useOmitProps(props, ['forceMount']);
+const forwardedProps = useOmitProps(props, ['forceMount', 'elRef']);
 
 const listeners = useForwardListeners(emit);
 
 const { open } = useMenuContext('MenuContent');
 const { modal } = useMenuRootContext('MenuContent');
 
-const [contentElement, setContentElement] = useForwardElement();
+const [contentElement, setContentElement] = useForwardElement(props.elRef);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 

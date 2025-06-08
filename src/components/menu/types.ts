@@ -46,6 +46,14 @@ export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pic
 
 // MenuContent
 export interface MenuContentProps extends PopperContentProps, ForceMountProps {}
+export interface MenuContentPrivateProps extends MenuContentProps {
+  /**
+   * The function to set the menu content element.
+   *
+   * @param el - The menu content element.
+   */
+  elRef?: (el: HTMLElement) => void;
+}
 export type MenuContentEmits = MenuContentImplEmits;
 
 export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
