@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { useForwardListeners } from '../../composables';
 import { MenuContent } from '../menu';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
@@ -17,6 +17,12 @@ const props = defineProps<DropdownMenuContentProps>();
 const emit = defineEmits<DropdownMenuContentEmits>();
 
 const listeners = useForwardListeners(emit);
+
+const contentElement = shallowRef<HTMLElement>();
+
+const setContentElement = (el: HTMLElement) => {
+  contentElement.value = el;
+};
 
 const { modal, initContentId, triggerElement, triggerId, contentId } =
   useDropdownMenuRootContext('DropdownMenuContent');
@@ -67,6 +73,7 @@ initContentId();
   <MenuContent
     v-bind="props"
     :id="contentId"
+    :el-ref="setContentElement"
     :aria-labelledby="triggerId"
     :style="style"
     v-on="listeners"
