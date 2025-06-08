@@ -1,5 +1,5 @@
-import TooltipArrow from '../popper/popper-arrow.vue';
 import TooltipPortal from '../portal/portal.vue';
+import { PopperArrow as TooltipArrow } from '../popper';
 import TooltipProvider from './tooltip-provider.vue';
 import TooltipRoot from './tooltip-root.vue';
 import TooltipTrigger from './tooltip-trigger.vue';

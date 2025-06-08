@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners } from '../../composables';
-import MenuContent from '../menu/menu-content.vue';
+import { MenuContent } from '../menu';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { popperCssVars } from '../popper/shared';
 import { useDropdownMenuRootContext } from './context';

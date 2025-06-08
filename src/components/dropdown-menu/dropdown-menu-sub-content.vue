@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners } from '../../composables';
-import MenuSubContent from '../menu/menu-sub-content.vue';
+import { MenuSubContent } from '../menu';
 import { popperCssVars } from '../popper/shared';
 import { dropdownMenuCssVars } from './shared';
 import type { DropdownMenuSubContentEmits, DropdownMenuSubContentProps } from './types';

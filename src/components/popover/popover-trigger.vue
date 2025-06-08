@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import PopperAnchor from '../popper/popper-anchor.vue';
+import { PopperAnchor } from '../popper';
 import { usePopoverRootContext } from './context';
 import type { PopoverTriggerProps } from './types';
 

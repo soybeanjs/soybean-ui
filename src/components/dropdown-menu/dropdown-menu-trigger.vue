@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
-import MenuAnchor from '../popper/popper-anchor.vue';
+import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
 import { SELECTION_KEYS } from '../menu/shared';
 import { useDropdownMenuRootContext } from './context';
