@@ -57,10 +57,7 @@ const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
   }
 });
 
-const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents'], {
-  ...layerProps,
-  ...focusScopeProps
-});
+const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents'], layerProps, focusScopeProps);
 
 const preserveTriggerElement = () => {
   const activeElement = getActiveElement();

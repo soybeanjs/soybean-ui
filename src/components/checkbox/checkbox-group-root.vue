@@ -28,7 +28,7 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
 const forwardedProps = useOmitProps(
   props,
   ['modelValue', 'defaultValue', 'rovingFocus', 'disabled', 'loop', 'dir', 'orientation', 'name', 'required'],
-  rovingFocusProps.value
+  rovingFocusProps
 );
 
 const modelValue = useControllableState(

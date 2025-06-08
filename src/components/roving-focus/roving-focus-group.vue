@@ -40,7 +40,7 @@ const [_, setContainerElement] = useForwardElement(onContainerElementChange);
 const forwardedProps = useOmitProps(
   props,
   ['loop', 'dir', 'currentTabStopId', 'defaultCurrentTabStopId', 'preventScrollOnEntryFocus'],
-  rovingFocusGroupProps.value
+  rovingFocusGroupProps
 );
 
 defineExpose({

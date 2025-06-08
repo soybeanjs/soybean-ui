@@ -17,11 +17,7 @@ const { setItemElement, rovingFocusItemProps, rovingFocusItemListeners } = useRo
   transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey'])
 );
 
-const forwardedProps = useOmitProps(
-  props,
-  ['tabStopId', 'focusable', 'active', 'allowShiftKey'],
-  rovingFocusItemProps.value
-);
+const forwardedProps = useOmitProps(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey'], rovingFocusItemProps);
 </script>
 
 <template>

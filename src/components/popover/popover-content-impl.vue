@@ -59,10 +59,7 @@ const { onKeydown, focusScopeProps } = useFocusScope(floatingElement, {
   }
 });
 
-const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus'], {
-  ...layerProps,
-  ...focusScopeProps
-});
+const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus'], layerProps, focusScopeProps);
 
 const cssVarsStyle = {
   [popoverCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,

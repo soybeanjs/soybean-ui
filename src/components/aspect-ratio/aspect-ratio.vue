@@ -16,9 +16,7 @@ const props = withDefaults(defineProps<AspectRatioProps>(), {
 
 const attrs = useAttrs();
 
-const forwardedProps = useOmitProps(props, ['ratio'], {
-  ...attrs
-});
+const forwardedProps = useOmitProps(props, ['ratio'], attrs);
 
 const aspect = computed(() => (1 / props.ratio) * 100);
 

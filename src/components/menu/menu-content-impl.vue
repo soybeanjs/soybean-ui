@@ -80,11 +80,13 @@ const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floati
   }
 });
 
-const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus', 'loop'], {
-  ...attrs,
-  ...layerProps,
-  ...focusScopeProps
-});
+const forwardedProps = useOmitProps(
+  props,
+  ['disableOutsidePointerEvents', 'trapFocus', 'loop'],
+  attrs,
+  layerProps,
+  focusScopeProps
+);
 
 const onEntryFocus = (event: Event) => {
   emit('entryFocus', event);
