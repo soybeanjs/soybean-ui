@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, shallowRef, watchEffect, watchPostEffect } from 'vue';
+import { computed, shallowRef, useAttrs, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
 import { useElementSize, useExposedElement, useForwardElement, useOmitProps } from '../../composables';
-import { Primitive } from '../primitive';
 import { providePopperContentContext, usePopperRootContext } from './context';
 import {
   createPopperContentPropsDefaultValue,
@@ -15,56 +14,60 @@ import {
 import type { PopperContentEmits, PopperContentProps } from './types';
 
 defineOptions({
-  name: 'PopperContent'
+  name: 'PopperContent',
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<PopperContentProps>(), createPopperContentPropsDefaultValue());
 
 const emit = defineEmits<PopperContentEmits>();
 
-const { anchorElement, contentWrapperElement, onContentWrapperStyleChange } = usePopperRootContext('PopperContent');
+const attrs = useAttrs();
+
+const forwardedProps = useOmitProps(
+  props,
+  [
+    'floatingRef',
+    'side',
+    'sideOffset',
+    'align',
+    'alignOffset',
+    'avoidCollisions',
+    'collisionBoundary',
+    'collisionPadding',
+    'arrowPadding',
+    'sticky',
+    'hideWhenDetached',
+    'positionStrategy',
+    'updatePositionStrategy',
+    'disableUpdateOnLayoutShift',
+    'prioritizePosition',
+    'reference'
+  ],
+  attrs
+);
+
 const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();
+const { anchorElement } = usePopperRootContext('PopperContent');
 const { width: arrowWidth, height: arrowHeight } = useElementSize(arrowElement);
-
-const forwardedProps = useOmitProps(props, [
-  'side',
-  'sideOffset',
-  'align',
-  'alignOffset',
-  'avoidCollisions',
-  'collisionBoundary',
-  'collisionPadding',
-  'arrowPadding',
-  'sticky',
-  'hideWhenDetached',
-  'positionStrategy',
-  'updatePositionStrategy',
-  'disableUpdateOnLayoutShift',
-  'prioritizePosition',
-  'reference'
-]);
+const [floatingRef, setFloatingRef] = useForwardElement(props.floatingRef);
 
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
-
 const contentZIndex = shallowRef('');
 
-const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(
-  referenceElement,
-  contentWrapperElement,
-  {
-    strategy: () => props.positionStrategy,
-    placement: () => getPlacementFromSideAndAlign(props.side, props.align),
-    whileElementsMounted: (...args) => {
-      const cleanup = autoUpdate(...args, {
-        layoutShift: !props.disableUpdateOnLayoutShift,
-        animationFrame: props.updatePositionStrategy === 'always'
-      });
-      return cleanup;
-    },
-    middleware: () => getFloatingUIMiddleware(props, arrowElement.value, arrowWidth.value, arrowHeight.value)
-  }
-);
+const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(referenceElement, floatingRef, {
+  strategy: () => props.positionStrategy,
+  placement: () => getPlacementFromSideAndAlign(props.side, props.align),
+  whileElementsMounted: (...args) => {
+    const cleanup = autoUpdate(...args, {
+      layoutShift: !props.disableUpdateOnLayoutShift,
+      animationFrame: props.updatePositionStrategy === 'always'
+    });
+    return cleanup;
+  },
+  middleware: () => getFloatingUIMiddleware(props, arrowElement.value, arrowWidth.value, arrowHeight.value)
+});
 
 const placedSide = computed(() => getSideAndAlignFromPlacement(placement.value)[0]);
 const placedAlign = computed(() => getSideAndAlignFromPlacement(placement.value)[1]);
@@ -88,6 +91,12 @@ const wrapperStyle = computed<CSSProperties>(() => {
   };
 });
 
+const style = computed<CSSProperties>(() => {
+  return {
+    animation: !isPositioned.value ? 'none' : undefined
+  };
+});
+
 providePopperContentContext({
   placedSide,
   arrowX,
@@ -96,14 +105,10 @@ providePopperContentContext({
   setArrowElement
 });
 
-watchEffect(() => {
+watchPostEffect(() => {
   if (contentElement.value) {
     contentZIndex.value = window.getComputedStyle(contentElement.value).zIndex;
   }
-});
-
-watchEffect(() => {
-  onContentWrapperStyleChange(wrapperStyle.value);
 });
 
 watchPostEffect(() => {
@@ -114,15 +119,15 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <Primitive
-    v-bind="forwardedProps"
-    :ref="setContentElement"
-    :data-side="placedSide"
-    :data-align="placedAlign"
-    :style="{
-      animation: !isPositioned ? 'none' : undefined
-    }"
-  >
-    <slot />
-  </Primitive>
+  <div :ref="setFloatingRef" data-soybean-popper-content-wrapper :style="wrapperStyle">
+    <div
+      v-bind="forwardedProps"
+      :ref="setContentElement"
+      :data-side="placedSide"
+      :data-align="placedAlign"
+      :style="style"
+    >
+      <slot />
+    </div>
+  </div>
 </template>

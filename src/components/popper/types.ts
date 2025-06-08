@@ -12,9 +12,13 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
   reference?: ReferenceElement;
 }
 
-export interface PopperContentWrapperProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface PopperContentProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface PopperContentProps extends /** @vue-ignore */ HTMLAttributes {
+  /**
+   * The function to set the floating element.
+   *
+   * @param el - The floating element.
+   */
+  floatingRef?: (el: HTMLElement) => void;
   /**
    * The preferred side of the trigger to render against when open. Will be reversed when collisions occur and
    * avoidCollisions is enabled.
