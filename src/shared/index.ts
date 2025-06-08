@@ -10,4 +10,3 @@ export * from './vue';
 export * from './env';
 export * from './event';
 export * from './geometry';
-export * from './debounce';

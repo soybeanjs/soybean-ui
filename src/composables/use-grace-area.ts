@@ -1,16 +1,16 @@
-import { nextTick, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
+import { onWatcherCleanup, ref, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
-import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
-import type { Point, Polygon } from '../types';
 import {
-  createDebounce,
   getExitSideFromRect,
   getHull,
   getPaddedExitPoints,
   getPointsFromRect,
   isClient,
-  isPointInPolygon
+  isPointInPolygon,
+  refAutoReset
 } from '../shared';
+import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
+import type { Point, Polygon } from '../types';
 
 export interface UseGraceAreaOptions {
   triggerElement: ShallowRef<HTMLElement | undefined>;
@@ -18,23 +18,14 @@ export interface UseGraceAreaOptions {
   onPointerInTransitChange?: (v: boolean) => void;
   onPointerExit: () => void;
   disabled?: ShallowRef<boolean | undefined>;
-  /** Debounce delay time (milliseconds), default 16ms (approximately 60fps) */
-  debounceMs?: number;
-  /** Maximum grace area detection time (milliseconds), default 1000ms */
-  maxGraceTime?: number;
 }
 
 export function useGraceArea(options: UseGraceAreaOptions) {
-  const {
-    triggerElement,
-    contentElement,
-    onPointerInTransitChange,
-    onPointerExit,
-    disabled,
-    maxGraceTime = 1000
-  } = options;
+  const { triggerElement, contentElement, onPointerInTransitChange, onPointerExit, disabled } = options;
 
-  const pointerGraceArea = shallowRef<Polygon>();
+  // Reset the inTransit state if idle/scrolled.
+  const isPointerInTransit = refAutoReset(false, 300);
+  const pointerGraceArea = ref<Polygon>();
 
   const cleanupGraceArea = () => {
     pointerGraceArea.value = undefined;
@@ -54,51 +45,28 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       return;
     }
 
-    let graceTimeoutTimer: number | undefined;
-    const cleanupGraceTimeout = () => {
-      if (graceTimeoutTimer) {
-        clearTimeout(graceTimeoutTimer);
-        graceTimeoutTimer = undefined;
-      }
-    };
-
     // Conditional function creation, only create when needed
     function createGraceAreaSafely(event: PointerEvent, hoverTarget: HTMLElement) {
-      try {
-        const { currentTarget, clientX: x, clientY: y } = event;
-        if (!(currentTarget instanceof HTMLElement)) return;
+      const { currentTarget, clientX: x, clientY: y } = event;
+      if (!(currentTarget instanceof HTMLElement)) return;
 
-        const exitPoint: Point = { x, y };
-        const graceArea = createGraceAreaGeometry(exitPoint, currentTarget, hoverTarget);
+      const exitPoint: Point = { x, y };
+      const graceArea = createGraceAreaGeometry(exitPoint, currentTarget, hoverTarget);
 
-        pointerGraceArea.value = graceArea;
-        onPointerInTransitChange?.(true);
-
-        cleanupGraceTimeout();
-        graceTimeoutTimer = window.setTimeout(() => {
-          cleanupGraceArea();
-          cleanupGraceTimeout();
-          onPointerExit();
-        }, maxGraceTime);
-      } catch {
-        cleanupGraceArea();
-        cleanupGraceTimeout();
-      }
+      pointerGraceArea.value = graceArea;
+      isPointerInTransit.value = true;
     }
 
     // Setup event listeners with consistent pattern
     const handleTriggerLeave = (event: PointerEvent) => createGraceAreaSafely(event, content);
     const handleContentLeave = (event: PointerEvent) => createGraceAreaSafely(event, trigger);
 
-    const eventOptions: AddEventListenerOptions = { passive: true };
-
-    trigger.addEventListener('pointerleave', handleTriggerLeave, eventOptions);
-    content.addEventListener('pointerleave', handleContentLeave, eventOptions);
+    trigger.addEventListener('pointerleave', handleTriggerLeave);
+    content.addEventListener('pointerleave', handleContentLeave);
 
     onWatcherCleanup(() => {
       trigger.removeEventListener('pointerleave', handleTriggerLeave);
       content.removeEventListener('pointerleave', handleContentLeave);
-      cleanupGraceArea();
     });
   });
 
@@ -108,57 +76,41 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       return;
     }
 
-    const trigger = triggerElement.value;
-    const document = trigger?.ownerDocument;
-
-    if (!document) return;
-
-    const debounce = createDebounce();
-
     // Conditional creation of tracking function
-    function trackPointerGrace(event: PointerEvent) {
+    const trackPointerGrace = (event: PointerEvent) => {
       if (!pointerGraceArea.value) return;
 
       const target = event.target;
       if (!(target instanceof HTMLElement)) return;
 
       const { clientX: x, clientY: y } = event;
-      const currentTrigger = triggerElement.value;
-      const currentContent = contentElement.value;
-
-      const hasEnteredTarget =
-        (currentTrigger?.contains(target) ?? false) || (currentContent?.contains(target) ?? false);
+      const hasEnteredTarget = triggerElement.value?.contains(target) || contentElement.value?.contains(target);
 
       if (hasEnteredTarget) {
         cleanupGraceArea();
         return;
       }
 
-      try {
-        const pointerPosition: Point = { x, y };
-        const isPointerOutsideGraceArea = !isPointInPolygon(pointerPosition, pointerGraceArea.value);
-        const isAnotherGraceAreaTrigger = Boolean(target.closest(`[${GRACE_AREA_TRIGGER_ATTR}]`));
+      const pointerPosition: Point = { x, y };
+      const isPointerOutsideGraceArea = !isPointInPolygon(pointerPosition, pointerGraceArea.value);
+      const isAnotherGraceAreaTrigger = Boolean(target.closest(`[${GRACE_AREA_TRIGGER_ATTR}]`));
 
-        if (isPointerOutsideGraceArea || isAnotherGraceAreaTrigger) {
-          cleanupGraceArea();
-          nextTick(() => {
-            onPointerExit();
-          });
-        }
-      } catch {
+      if (isPointerOutsideGraceArea || isAnotherGraceAreaTrigger) {
         cleanupGraceArea();
+        onPointerExit();
       }
-    }
+    };
 
-    const handleTrackPointerGrace = debounce.debounce(trackPointerGrace);
-    const eventOptions: AddEventListenerOptions = { passive: true };
-
-    document.addEventListener('pointermove', handleTrackPointerGrace, eventOptions);
+    triggerElement.value?.ownerDocument.addEventListener('pointermove', trackPointerGrace);
 
     onWatcherCleanup(() => {
-      document.removeEventListener('pointermove', handleTrackPointerGrace);
-      debounce?.cancel();
+      triggerElement.value?.ownerDocument.removeEventListener('pointermove', trackPointerGrace);
     });
+  });
+
+  watchEffect(() => {
+    const updated = isPointerInTransit.value;
+    onPointerInTransitChange?.(updated);
   });
 }
 
