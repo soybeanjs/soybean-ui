@@ -1,3 +1,3 @@
-# Soybean Primitives
+# SoybeanHeadless
 
-Soybean Primitives is a collection of primitive components for Vue 3. It is designed to be lightweight and easy to use.
+SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.

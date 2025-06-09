@@ -1,21 +1,21 @@
 {
-  "name": "soybean-primitives",
+  "name": "soybean-headless",
   "type": "module",
   "version": "0.0.1-alpha.4",
   "packageManager": "pnpm@10.11.1",
-  "description": "soybean-primitives is a collection of primitive components for Vue 3. It is designed to be lightweight and easy to use.",
+  "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/honghuangdc/soybean-primitives",
+  "homepage": "https://github.com/soybean-ui/soybean-headless",
   "repository": {
-    "url": "https://github.com/honghuangdc/soybean-primitives.git"
+    "url": "https://github.com/soybean-ui/soybean-headless.git"
   },
   "bugs": {
-    "url": "https://github.com/honghuangdc/soybean-primitives/issues"
+    "url": "https://github.com/soybean-ui/soybean-headless/issues"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

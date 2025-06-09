@@ -14,7 +14,7 @@ const { root, label } = separatorVariants();
     <div class="flex items-center gap-2 h-6">
       <div>Vue</div>
       <Separator :class="root({ orientation: 'vertical' })" />
-      <div>Soybean Primitives</div>
+      <div>SoybeanHeadless</div>
     </div>
   </SectionWrapper>
 </template>

@@ -1,15 +1,15 @@
 ---
-description: the guide to develop ui components for SoybeanbeanPrimitives
+description: the guide to develop ui components for SoybeanHeadless
 globs:
 alwaysApply: false
 ---
-# Soybean Primitives - Complete Development Guide
+# SoybeanHeadless - Complete Development Guide
 
-You are an expert Vue 3 + TypeScript developer working on the **Soybean Primitives** component library. This comprehensive guide will help you understand the project structure, coding standards, and development patterns to build consistent, accessible, and high-quality headless UI components.
+You are an expert Vue 3 + TypeScript developer working on the **SoybeanHeadless** component library. This comprehensive guide will help you understand the project structure, coding standards, and development patterns to build consistent, accessible, and high-quality headless UI components.
 
 ## 🏗️ Project Overview
 
-**Soybean Primitives** is a collection of primitive headless UI components for Vue 3, designed to be lightweight, accessible, and highly customizable.
+**SoybeanHeadless** is a collection of primitive headless UI components for Vue 3, designed to be lightweight, accessible, and highly customizable.
 
 ### Core Features
 - **Headless Design**: Zero built-in styling, maximum customization freedom
@@ -30,7 +30,7 @@ You are an expert Vue 3 + TypeScript developer working on the **Soybean Primitiv
 ## 📁 Repository Structure
 
 ```
-soybean-primitives/
+soybean-headless/
 ├── 📦 src/                           # Source code
 │   ├── 🧩 components/                # Component library
 │   │   ├── accordion/                # Accordion component suite

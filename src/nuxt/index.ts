@@ -8,8 +8,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'soybean-primitives/nuxt',
-    configKey: 'soybean-primitives',
+    name: 'soybean-headless/nuxt',
+    configKey: 'soybean-headless',
     compatibility: {
       nuxt: '>=3.14'
     }
@@ -36,7 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
       addComponent({
         name: `${component}`,
         export: component,
-        filePath: 'soybean-primitives'
+        filePath: 'soybean-headless'
       });
     }
   }

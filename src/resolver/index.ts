@@ -6,9 +6,9 @@ export interface ResolverOptions {
   /**
    * Whether to use standalone components
    *
-   * "true" means use `import { AccordionRoot } from 'soybean-primitives/accordion'`
+   * "true" means use `import { AccordionRoot } from 'soybean-headless/accordion'`
    *
-   * "false" means use `import { AccordionRoot } from 'soybean-primitives'`
+   * "false" means use `import { AccordionRoot } from 'soybean-headless'`
    *
    * @defaultValue false
    */
@@ -24,7 +24,7 @@ function createResolver(options: ResolverOptions = {}) {
       if (values.includes(name)) {
         const moduleName = toKebabCase(name).split('-')[0];
 
-        const $from = options.standalone ? `soybean-primitives/${moduleName}` : `soybean-primitives`;
+        const $from = options.standalone ? `soybean-headless/${moduleName}` : `soybean-headless`;
 
         return {
           name,
