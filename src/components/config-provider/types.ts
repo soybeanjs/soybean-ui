@@ -1,4 +1,5 @@
 import type { Direction, PropsToContext, ScrollBodyOption } from '../../types';
+import type { TooltipProviderProps } from '../tooltip/types';
 
 export interface ConfigProviderProps {
   /**
@@ -27,6 +28,12 @@ export interface ConfigProviderProps {
    * @type string
    */
   nonce?: string;
+  /**
+   * The global tooltip configuration of your application. This will be inherited by the related components.
+   *
+   * @type TooltipProviderProps
+   */
+  tooltip?: Partial<TooltipProviderProps>;
 }
 
 export interface ConfigProviderContextParams extends PropsToContext<ConfigProviderProps> {}

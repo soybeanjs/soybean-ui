@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { PopperAnchor } from '../popper';
-import { useTooltipProviderContext, useTooltipRootContext } from './context';
+import { useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
 import type { TooltipTriggerProps } from './types';
 
 defineOptions({
@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<TooltipTriggerProps>(), {
   as: 'button'
 });
 
-const { isPointerInTransitRef } = useTooltipProviderContext('TooltipTrigger');
+const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipTrigger');
 const {
   open,
   disabled,

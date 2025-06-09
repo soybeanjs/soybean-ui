@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ConfigProvider } from '@/components/config-provider';
 import AlertDialogExample from './examples/alert-dialog.vue';
 import ArrowExample from './examples/arrow.vue';
 import AspectRatioExample from './examples/aspect-ratio.vue';
@@ -15,22 +16,24 @@ import TooltipExample from './examples/tooltip.vue';
 </script>
 
 <template>
-  <div class="container p-4">
-    <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
-    <div class="flex flex-col gap-4">
-      <AlertDialogExample />
-      <ArrowExample />
-      <AspectRatioExample />
-      <AvatarExample />
-      <CheckboxExample />
-      <CardExample />
-      <DialogExample />
-      <DropdownMenuExample />
-      <PopoverExample />
-      <RadioGroupExample />
-      <RovingFocusExample />
-      <SeparatorExample />
-      <TooltipExample />
+  <ConfigProvider>
+    <div class="container p-4">
+      <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
+      <div class="flex flex-col gap-4">
+        <AlertDialogExample />
+        <ArrowExample />
+        <AspectRatioExample />
+        <AvatarExample />
+        <CheckboxExample />
+        <CardExample />
+        <DialogExample />
+        <DropdownMenuExample />
+        <PopoverExample />
+        <RadioGroupExample />
+        <RovingFocusExample />
+        <SeparatorExample />
+        <TooltipExample />
+      </div>
     </div>
-  </div>
+  </ConfigProvider>
 </template>

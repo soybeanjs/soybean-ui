@@ -50,21 +50,9 @@ export interface TooltipProviderProps {
   ignoreNonKeyboardFocus?: boolean;
 }
 
-export type TooltipProviderContextParams = PropsToContext<
-  TooltipProviderProps,
-  | 'delayDuration'
-  | 'skipDelayDuration'
-  | 'disableHoverableContent'
-  | 'disableClosingTrigger'
-  | 'disabled'
-  | 'ignoreNonKeyboardFocus'
->;
+export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProps, 'skipDelayDuration'>;
 
-export interface TooltipRootProps
-  extends Pick<
-    TooltipProviderProps,
-    'delayDuration' | 'disableHoverableContent' | 'disableClosingTrigger' | 'disabled' | 'ignoreNonKeyboardFocus'
-  > {
+export interface TooltipRootProps extends TooltipProviderProps {
   /** The open state of the tooltip when it is initially rendered. Use when you do not need to control its open state. */
   defaultOpen?: boolean;
   /** The controlled open state of the tooltip. */

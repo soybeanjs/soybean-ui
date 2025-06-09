@@ -1,10 +1,10 @@
 import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
-import type { TooltipDataState, TooltipProviderContextParams, TooltipRootContextParams } from './types';
+import type { TooltipDataState, TooltipOpenDelayedContextParams, TooltipRootContextParams } from './types';
 
-export const [provideTooltipProviderContext, useTooltipProviderContext] = useContext(
-  'TooltipProvider',
-  (params: TooltipProviderContextParams) => {
+export const [provideTooltipOpenDelayedContext, useTooltipOpenDelayedContext] = useContext(
+  'TooltipOpenDelayed',
+  (params: TooltipOpenDelayedContextParams) => {
     const { skipDelayDuration } = params;
 
     const isOpenDelayed = shallowRef(true);
@@ -35,7 +35,7 @@ export const [provideTooltipProviderContext, useTooltipProviderContext] = useCon
     };
 
     return {
-      ...params,
+      skipDelayDuration,
       isOpenDelayed,
       isPointerInTransitRef,
       onOpen,

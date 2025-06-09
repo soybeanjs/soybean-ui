@@ -5,7 +5,7 @@ import { getAriaLabelByVNodeList } from '../../shared';
 import { PopperContent } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
-import { useTooltipProviderContext, useTooltipRootContext } from './context';
+import { useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
 import { TOOLTIP_OPEN, tooltipCssVars } from './shared';
 import type { TooltipContentImplEmits, TooltipContentImplProps } from './types';
 
@@ -30,7 +30,7 @@ const emit = defineEmits<TooltipContentImplEmits>();
 const slots = useSlots();
 const defaultSlot = computed(() => slots.default?.());
 
-const { isPointerInTransitRef } = useTooltipProviderContext('TooltipContentImpl');
+const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipContentImpl');
 const {
   contentId,
   onContentElementChange,

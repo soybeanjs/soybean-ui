@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { useControllableState } from '../../composables';
+import { useConfigProvider } from '../config-provider/context';
 import { PopperRoot } from '../popper';
-import { provideTooltipRootContext, useTooltipProviderContext } from './context';
-import { TOOLTIP_OPEN } from './shared';
+import { provideTooltipOpenDelayedContext, provideTooltipRootContext } from './context';
+import { TOOLTIP_OPEN, createDefaultTooltipConfig } from './shared';
 import type { TooltipRootEmits, TooltipRootProps } from './types';
 
 defineOptions({
@@ -13,17 +14,10 @@ defineOptions({
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   defaultOpen: false,
-  open: undefined,
-  delayDuration: undefined,
-  disableHoverableContent: undefined,
-  disableClosingTrigger: undefined,
-  disabled: undefined,
-  ignoreNonKeyboardFocus: undefined
+  open: undefined
 });
 
 const emit = defineEmits<TooltipRootEmits>();
-
-const providerContext = useTooltipProviderContext('TooltipRoot');
 
 const open = useControllableState(
   () => props.open,
@@ -33,16 +27,21 @@ const open = useControllableState(
   props.defaultOpen
 );
 
-const delayDuration = computed(() => props.delayDuration ?? providerContext.delayDuration.value ?? 700);
+const globalConfig = useConfigProvider();
+const tooltipConfig = computed(() => createDefaultTooltipConfig(globalConfig?.tooltip?.value));
+
+const providerContext = provideTooltipOpenDelayedContext({
+  skipDelayDuration: computed(() => tooltipConfig.value.skipDelayDuration)
+});
+
+const delayDuration = computed(() => props.delayDuration ?? tooltipConfig.value.delayDuration);
 const disableHoverableContent = computed(
-  () => props.disableHoverableContent ?? providerContext.disableHoverableContent.value ?? false
+  () => props.disableHoverableContent ?? tooltipConfig.value.disableHoverableContent
 );
-const disableClosingTrigger = computed(
-  () => props.disableClosingTrigger ?? providerContext.disableClosingTrigger.value ?? false
-);
-const disabled = computed(() => props.disabled ?? providerContext.disabled.value ?? false);
+const disableClosingTrigger = computed(() => props.disableClosingTrigger ?? tooltipConfig.value.disableClosingTrigger);
+const disabled = computed(() => props.disabled ?? tooltipConfig.value.disabled);
 const ignoreNonKeyboardFocus = computed(
-  () => props.ignoreNonKeyboardFocus ?? providerContext.ignoreNonKeyboardFocus.value ?? false
+  () => props.ignoreNonKeyboardFocus ?? tooltipConfig.value.ignoreNonKeyboardFocus
 );
 
 provideTooltipRootContext({
