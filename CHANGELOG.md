@@ -1,6 +1,163 @@
 # Changelog
 
 
+## [v0.0.1-alpha.5](https://github.com/soybean-ui/soybean-headless/compare/v0.0.1-alpha.4...v0.0.1-alpha.5) (2025-06-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **accordion**:
+  - add theme context for customizable styles across accordion components &nbsp;-&nbsp; by @soybeanjs [<samp>(e7600)</samp>](https://github.com/soybean-ui/soybean-headless/commit/e7600f3)
+  - implement Accordion component with props management, customizable slots, and theme context integration &nbsp;-&nbsp; by @soybeanjs [<samp>(a0fcd)</samp>](https://github.com/soybean-ui/soybean-headless/commit/a0fcd51)
+  - add multiple accordion examples with custom icons and styling options, and integrate Card component examples &nbsp;-&nbsp; by @soybeanjs [<samp>(c6128)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c61289b)
+- **card**:
+  - introduce card component structure with header, footer, content, title, and description components along with context management &nbsp;-&nbsp; by @soybeanjs [<samp>(396aa)</samp>](https://github.com/soybean-ui/soybean-headless/commit/396aa37)
+  - implement Card component with customizable slots, props management, and enhanced styling variants &nbsp;-&nbsp; by @soybeanjs [<samp>(c92bd)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c92bd15)
+- **composables**:
+  - add useIsUsingKeyboard composable to track keyboard usage state &nbsp;-&nbsp; by @soybeanjs [<samp>(b9a25)</samp>](https://github.com/soybean-ui/soybean-headless/commit/b9a2566)
+  - add useTypeahead composable for enhanced search functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(bdf4a)</samp>](https://github.com/soybean-ui/soybean-headless/commit/bdf4af7)
+- **config**:
+  - add path aliases for UI, theme, and variants in TypeScript and Vite configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(a91ad)</samp>](https://github.com/soybean-ui/soybean-headless/commit/a91adf2)
+- **dialog, popover**:
+  - integrate useHideOthers composable for improved focus management in dialog and popover components &nbsp;-&nbsp; by @soybeanjs [<samp>(f42f6)</samp>](https://github.com/soybean-ui/soybean-headless/commit/f42f64e)
+- **dropdown-menu**:
+  - implement dropdown menu components with context management and accessibility features &nbsp;-&nbsp; by @soybeanjs [<samp>(96bcd)</samp>](https://github.com/soybean-ui/soybean-headless/commit/96bcd6b)
+  - add DropdownMenuExample component and integrate it into App.vue &nbsp;-&nbsp; by @soybeanjs [<samp>(4a190)</samp>](https://github.com/soybean-ui/soybean-headless/commit/4a190d4)
+  - enhance dropdown functionality with new submenus, checkbox, and radio groups &nbsp;-&nbsp; by @soybeanjs [<samp>(2a8e7)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2a8e702)
+- **menu**:
+  - implement menu component structure with context management, navigation, and accessibility features &nbsp;-&nbsp; by @soybeanjs [<samp>(e27d7)</samp>](https://github.com/soybean-ui/soybean-headless/commit/e27d735)
+  - add MenuSubTrigger component and update MenuRoot props for improved functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(c3b85)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c3b85d6)
+  - add menu component names &nbsp;-&nbsp; by @soybeanjs [<samp>(58293)</samp>](https://github.com/soybean-ui/soybean-headless/commit/582930e)
+- **popper**:
+  - introduce PopperContentWrapper component and enhance context management for content styling and element handling &nbsp;-&nbsp; by @soybeanjs [<samp>(7ab01)</samp>](https://github.com/soybean-ui/soybean-headless/commit/7ab0100)
+- **separator**:
+  - add Separator component with customizable orientation and decorative options &nbsp;-&nbsp; by @soybeanjs [<samp>(753e3)</samp>](https://github.com/soybean-ui/soybean-headless/commit/753e3fc)
+- **shared**:
+  - add utility functions for mouse event detection and pointer area validation &nbsp;-&nbsp; by @soybeanjs [<samp>(c4986)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c49865f)
+- **theme**:
+  - add theme management utilities with merge function and type definitions for colors and sizes &nbsp;-&nbsp; by @soybeanjs [<samp>(a6b6f)</samp>](https://github.com/soybean-ui/soybean-headless/commit/a6b6f73)
+- **tooltip**:
+  - add scroll event handling to close tooltip on scroll and enhance cleanup management &nbsp;-&nbsp; by @soybeanjs [<samp>(9b6de)</samp>](https://github.com/soybean-ui/soybean-headless/commit/9b6de0f)
+- **use-exposed-element, use-forward-element**:
+  - add callback support for element reference updates &nbsp;-&nbsp; by @soybeanjs [<samp>(d33fa)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d33fa6a)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **collapsible-content**: enhance animation handling and improve style management during mount &nbsp;-&nbsp; by @soybeanjs [<samp>(59256)</samp>](https://github.com/soybean-ui/soybean-headless/commit/5925655)
+- **dropdown-menu**: update MenuAnchor syntax for improved template compatibility &nbsp;-&nbsp; by @soybeanjs [<samp>(6d96c)</samp>](https://github.com/soybean-ui/soybean-headless/commit/6d96cb6)
+- **menu**: update dismissable layer to use contentElement and improve focus handling with new utility functions &nbsp;-&nbsp; by @soybeanjs [<samp>(9cbc7)</samp>](https://github.com/soybean-ui/soybean-headless/commit/9cbc73a)
+- **menu-item**: update ref binding syntax for improved Vue compatibility &nbsp;-&nbsp; by @soybeanjs [<samp>(cc2cc)</samp>](https://github.com/soybean-ui/soybean-headless/commit/cc2ccc5)
+- **use-exposed-element**: update exposed property reference for correct element binding &nbsp;-&nbsp; by @soybeanjs [<samp>(2f89a)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2f89a24)
+- **use-focus-scope**: update watch function to include onCleanup for better resource management &nbsp;-&nbsp; by @soybeanjs [<samp>(e5da3)</samp>](https://github.com/soybean-ui/soybean-headless/commit/e5da3ae)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **accordion, tooltip**:
+  - replace constant attribute bindings with data attributes for improved clarity and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(350d7)</samp>](https://github.com/soybean-ui/soybean-headless/commit/350d756)
+- **alert-dialog, menu**:
+  - streamline event handling by removing redundant emits and utilizing shorthand syntax for listeners &nbsp;-&nbsp; by @soybeanjs [<samp>(c1bb2)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c1bb2d0)
+- **avatar**:
+  - simplify loading status change function by removing console log &nbsp;-&nbsp; by @soybeanjs [<samp>(325c4)</samp>](https://github.com/soybean-ui/soybean-headless/commit/325c434)
+- **card**:
+  - remove size examples from Card component to streamline template and enhance clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(d573d)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d573dec)
+- **collection**:
+  - rename collection item props for clarity and update useCollectionItem to accept MaybeRefOrGetter for improved flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(ef474)</samp>](https://github.com/soybean-ui/soybean-headless/commit/ef47483)
+  - improve element management by integrating callback handlers for item and container elements &nbsp;-&nbsp; by @soybeanjs [<samp>(413aa)</samp>](https://github.com/soybean-ui/soybean-headless/commit/413aaa6)
+- **components**:
+  - replace ref with shallowRef for improved reactivity in context files &nbsp;-&nbsp; by @soybeanjs [<samp>(49a50)</samp>](https://github.com/soybean-ui/soybean-headless/commit/49a50e4)
+  - streamline prop management by integrating useOmitProps for cleaner component interfaces &nbsp;-&nbsp; by @soybeanjs [<samp>(f3eb9)</samp>](https://github.com/soybean-ui/soybean-headless/commit/f3eb9f9)
+- **composables**:
+  - replace isClient() function calls with isClient variable for improved performance and readability &nbsp;-&nbsp; by @soybeanjs [<samp>(d8b77)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d8b77b5)
+  - define ArrowNavigationConfig interface for improved type safety in useArrowNavigation &nbsp;-&nbsp; by @soybeanjs [<samp>(e90fb)</samp>](https://github.com/soybean-ui/soybean-headless/commit/e90fb9c)
+  - remove useGlobalState composable to streamline codebase &nbsp;-&nbsp; by @soybeanjs [<samp>(4f0fa)</samp>](https://github.com/soybean-ui/soybean-headless/commit/4f0fab2)
+  - return computed value for isUsingKeyboardRef in useIsUsingKeyboard for better reactivity &nbsp;-&nbsp; by @soybeanjs [<samp>(02de3)</samp>](https://github.com/soybean-ui/soybean-headless/commit/02de34b)
+  - update CollectionItemData interface to provide a default type for ItemData &nbsp;-&nbsp; by @soybeanjs [<samp>(4bb9b)</samp>](https://github.com/soybean-ui/soybean-headless/commit/4bb9b68)
+  - update useHideOthers and useEscapeKeyDown for improved functionality and cleanup management &nbsp;-&nbsp; by @soybeanjs [<samp>(c209d)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c209dbb)
+- **composables, components**:
+  - rename useForwardEmits to useForwardListeners and update related components for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(273b9)</samp>](https://github.com/soybean-ui/soybean-headless/commit/273b9d3)
+  - replace onCleanup with onWatcherCleanup for improved cleanup management in various components &nbsp;-&nbsp; by @soybeanjs [<samp>(1ec35)</samp>](https://github.com/soybean-ui/soybean-headless/commit/1ec35ab)
+- **dialog**:
+  - simplify dialog component structure by removing unused imports and enhancing focus management &nbsp;-&nbsp; by @soybeanjs [<samp>(5072c)</samp>](https://github.com/soybean-ui/soybean-headless/commit/5072c80)
+- **dialog, popover**:
+  - enhance event handling by replacing listeners with shorthand syntax and consolidating event management &nbsp;-&nbsp; by @soybeanjs [<samp>(b58d5)</samp>](https://github.com/soybean-ui/soybean-headless/commit/b58d50a)
+- **dialog, popover, composables**:
+  - rename auto-focus event handlers for clarity and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(50475)</samp>](https://github.com/soybean-ui/soybean-headless/commit/5047539)
+- **dropdown-menu**:
+  - enhance content element management by introducing shallowRef and el-ref binding &nbsp;-&nbsp; by @soybeanjs [<samp>(2c9ed)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2c9ed71)
+  - implement hover functionality with delay management for improved user experience &nbsp;-&nbsp; by @soybeanjs [<samp>(e24ef)</samp>](https://github.com/soybean-ui/soybean-headless/commit/e24eff6)
+- **dropdown-menu, popover, tooltip**:
+  - update imports to use named exports from respective modules for improved consistency and clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(f979c)</samp>](https://github.com/soybean-ui/soybean-headless/commit/f979cf8)
+- **examples**:
+  - update component imports to use alias paths for improved readability and maintainability &nbsp;-&nbsp; by @soybeanjs [<samp>(5a8a2)</samp>](https://github.com/soybean-ui/soybean-headless/commit/5a8a22c)
+- **grace-area**:
+  - simplify pointer tracking and remove debounce utility; enhance state management with refAutoReset &nbsp;-&nbsp; by @soybeanjs [<samp>(c12ba)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c12ba38)
+- **menu**:
+  - remove unused useCollection composable and integrate useHideOthers for better focus management &nbsp;-&nbsp; by @soybeanjs [<samp>(6a02b)</samp>](https://github.com/soybean-ui/soybean-headless/commit/6a02b54)
+  - streamline context management and enhance element handling across menu components &nbsp;-&nbsp; by @soybeanjs [<samp>(976cf)</samp>](https://github.com/soybean-ui/soybean-headless/commit/976cf2a)
+  - enhance element management by integrating PopperContentWrapper and callback handlers for improved structure and focus handling &nbsp;-&nbsp; by @soybeanjs [<samp>(d1596)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d15969a)
+  - update MenuContent to use MenuContentPrivateProps and enhance element forwarding with elRef &nbsp;-&nbsp; by @soybeanjs [<samp>(2e946)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2e94657)
+- **menu-sub-trigger**:
+  - simplify pointer event handling by consolidating condition checks &nbsp;-&nbsp; by @soybeanjs [<samp>(46380)</samp>](https://github.com/soybean-ui/soybean-headless/commit/463804c)
+- **popover**:
+  - integrate useBodyScrollLock for improved modal behavior and enhance focus management &nbsp;-&nbsp; by @soybeanjs [<samp>(2c757)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2c7573a)
+  - streamline component imports and enhance cleanup management with onWatcherCleanup &nbsp;-&nbsp; by @soybeanjs [<samp>(78af9)</samp>](https://github.com/soybean-ui/soybean-headless/commit/78af92d)
+  - streamline element handling in popover context and components by replacing setElement functions with callback support &nbsp;-&nbsp; by @soybeanjs [<samp>(4bba4)</samp>](https://github.com/soybean-ui/soybean-headless/commit/4bba45d)
+- **popover, tooltip**:
+  - simplify PopoverContentProps and update TooltipContentImplEmits for better type management &nbsp;-&nbsp; by @soybeanjs [<samp>(d8722)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d87227a)
+- **popper**:
+  - simplify Arrow component usage by consolidating style binding in popper-arrow.vue &nbsp;-&nbsp; by @soybeanjs [<samp>(c7d2f)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c7d2f34)
+  - remove PopperContentWrapper component and simplify context management; update PopperContent to enhance structure and style handling &nbsp;-&nbsp; by @soybeanjs [<samp>(36021)</samp>](https://github.com/soybean-ui/soybean-headless/commit/36021be)
+  - eliminate PopperContentWrapper across menu, popover, and tooltip components; streamline element management and enhance structure for improved clarity and performance &nbsp;-&nbsp; by @soybeanjs [<samp>(aa6e8)</samp>](https://github.com/soybean-ui/soybean-headless/commit/aa6e8bd)
+- **popper-content**:
+  - replace useForwardElement with useExposedElement for improved element reference handling &nbsp;-&nbsp; by @soybeanjs [<samp>(19d1d)</samp>](https://github.com/soybean-ui/soybean-headless/commit/19d1dd4)
+- **projects**:
+  - rename project from Soybean Primitives to SoybeanHeadless &nbsp;-&nbsp; by @soybeanjs [<samp>(97a09)</samp>](https://github.com/soybean-ui/soybean-headless/commit/97a0985)
+- **props**:
+  - streamline useOmitProps calls across multiple components to accept multiple extraProps directly, enhancing code clarity and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(ca8bc)</samp>](https://github.com/soybean-ui/soybean-headless/commit/ca8bcd7)
+- **roving-focus**:
+  - enhance context management by adding getOrderedItems to improve item retrieval &nbsp;-&nbsp; by @soybeanjs [<samp>(988c1)</samp>](https://github.com/soybean-ui/soybean-headless/commit/988c16a)
+  - update event handling by replacing 'events' with 'listeners' for improved clarity and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(fefb5)</samp>](https://github.com/soybean-ui/soybean-headless/commit/fefb5f6)
+  - improve element management by integrating callback handlers for container and item elements &nbsp;-&nbsp; by @soybeanjs [<samp>(9e8e5)</samp>](https://github.com/soybean-ui/soybean-headless/commit/9e8e5f2)
+- **shared**:
+  - translate comments to English for improved code readability &nbsp;-&nbsp; by @soybeanjs [<samp>(45e4e)</samp>](https://github.com/soybean-ui/soybean-headless/commit/45e4ebf)
+- **tooltip**:
+  - enhance element management by replacing setElement functions with callback handlers and introducing PopperContentWrapper for improved structure &nbsp;-&nbsp; by @soybeanjs [<samp>(13afb)</samp>](https://github.com/soybean-ui/soybean-headless/commit/13afb9b)
+  - reduce delayDuration from 700 to 150 for improved tooltip responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(51bbd)</samp>](https://github.com/soybean-ui/soybean-headless/commit/51bbd6c)
+- **use-collection**:
+  - simplify container element management by replacing setElement functions with callback handlers and removing unused interfaces &nbsp;-&nbsp; by @soybeanjs [<samp>(6e15a)</samp>](https://github.com/soybean-ui/soybean-headless/commit/6e15a3b)
+- **use-collection, use-dismissable-layer**:
+  - replace boolean attributes with empty strings for improved consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(c631d)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c631d2e)
+- **use-dismissable-layer**:
+  - replace DismissableLayerManager with layerContext for improved state management and encapsulation &nbsp;-&nbsp; by @soybeanjs [<samp>(2fecd)</samp>](https://github.com/soybean-ui/soybean-headless/commit/2fecd54)
+- **use-props**:
+  - enhance usePickProps and useOmitProps to accept multiple extraProps and streamline prop merging with a new mergeExtraProps function &nbsp;-&nbsp; by @soybeanjs [<samp>(d6b61)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d6b61ed)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update CHANGELOG repository name &nbsp;-&nbsp; by @soybeanjs [<samp>(4ddfa)</samp>](https://github.com/soybean-ui/soybean-headless/commit/4ddfaa3)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**:
+  - update TypeScript and Vite configurations to include test and playground directories, enhancing project structure &nbsp;-&nbsp; by @soybeanjs [<samp>(40b8a)</samp>](https://github.com/soybean-ui/soybean-headless/commit/40b8a6a)
+  - update Vite configuration to include path aliasing for improved module resolution &nbsp;-&nbsp; by @soybeanjs [<samp>(881b2)</samp>](https://github.com/soybean-ui/soybean-headless/commit/881b2b2)
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(3a751)</samp>](https://github.com/soybean-ui/soybean-headless/commit/3a7519e)
+  - add @vitest/coverage-v8 dependency &nbsp;-&nbsp; by @soybeanjs [<samp>(c0004)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c000416)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c55f8)</samp>](https://github.com/soybean-ui/soybean-headless/commit/c55f805)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(54fc7)</samp>](https://github.com/soybean-ui/soybean-headless/commit/54fc792)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d877e)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d877e2a)
+- **package**:
+  - add 'rei' script for cleanup and installation &nbsp;-&nbsp; by @soybeanjs [<samp>(cb5a2)</samp>](https://github.com/soybean-ui/soybean-headless/commit/cb5a25f)
+  - add vue3-simple-icons &nbsp;-&nbsp; by @soybeanjs [<samp>(b5492)</samp>](https://github.com/soybean-ui/soybean-headless/commit/b549259)
+
+### &nbsp;&nbsp;&nbsp;✅ Tests
+
+- **projects**: add test files &nbsp;-&nbsp; by @soybeanjs [<samp>(d3791)</samp>](https://github.com/soybean-ui/soybean-headless/commit/d37914d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-alpha.4](https://github.com/soybean-ui/soybean-headless/compare/v0.0.1-alpha.3...v0.0.1-alpha.4) (2025-06-01)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
