@@ -8,6 +8,8 @@
   "
 >
 import { computed } from 'vue';
+import { ChevronDown } from 'lucide-vue-next';
+import { mergeSlotVariants } from '@theme';
 import { useForwardListeners, useOmitProps } from '@/composables';
 import type { AcceptableValue, SingleOrMultipleType } from '@/types';
 import {
@@ -19,7 +21,6 @@ import {
   provideAccordionThemeContext
 } from '@/components/accordion';
 import { Slot } from '@/components/slot';
-import { cn } from '../../theme/merge';
 import { accordionVariants } from '../../variants/accordion';
 import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
 
@@ -40,19 +41,11 @@ const forwardedProps = useOmitProps(props, [
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => {
-  const { root, item, header, trigger, content, triggerLeadingIcon, triggerIcon } = accordionVariants({
+  const variants = accordionVariants({
     size: props.size
   });
 
-  return {
-    root: cn(root(), props.ui?.root),
-    item: cn(item(), props.ui?.item),
-    header: cn(header(), props.ui?.header),
-    trigger: cn(trigger(), props.ui?.trigger),
-    content: cn(content(), props.ui?.content),
-    triggerLeadingIcon: cn(triggerLeadingIcon(), props.ui?.triggerLeadingIcon),
-    triggerIcon: cn(triggerIcon(), props.ui?.triggerIcon)
-  };
+  return mergeSlotVariants(variants, props.ui);
 });
 
 provideAccordionThemeContext({
@@ -74,7 +67,9 @@ provideAccordionThemeContext({
               </slot>
               <slot name="title" :item="item" :model-value="modelValue" :open="open">{{ item.title }}</slot>
               <Slot :class="ui.triggerIcon">
-                <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open" />
+                <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">
+                  <ChevronDown />
+                </slot>
               </Slot>
             </AccordionTrigger>
           </AccordionHeader>

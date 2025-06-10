@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { mergeSlotVariants } from '@theme';
 import { useOmitProps } from '@/composables';
 import {
   CardContent,
@@ -11,7 +12,6 @@ import {
   CardTitleRoot,
   provideCardThemeContext
 } from '@/components/card';
-import { cn } from '../../theme/merge';
 import { cardVariants } from '../../variants/card';
 import type { CardProps } from './types';
 
@@ -55,21 +55,13 @@ const showHeader = computed(() => {
 });
 
 const ui = computed(() => {
-  const { root, header, content, footer, titleRoot, title, description } = cardVariants({
+  const variants = cardVariants({
     size: props.size,
     split: props.split,
     flexHeight: props.flexHeight
   });
 
-  return {
-    root: cn(root(), props.ui?.root),
-    header: cn(header(), props.ui?.header),
-    content: cn(content(), props.ui?.content),
-    footer: cn(footer(), props.ui?.footer),
-    titleRoot: cn(titleRoot(), props.ui?.titleRoot),
-    title: cn(title(), props.ui?.title),
-    description: cn(description(), props.ui?.description)
-  };
+  return mergeSlotVariants(variants, props.ui);
 });
 
 provideCardThemeContext({
