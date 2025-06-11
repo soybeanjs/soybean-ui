@@ -74,7 +74,9 @@ provideAccordionThemeContext({
             </AccordionTrigger>
           </AccordionHeader>
           <AccordionContent v-bind="props.contentProps">
-            <slot name="content" :item="item" :model-value="modelValue" :open="open">{{ item.description }}</slot>
+            <slot name="content" :item="item" :model-value="modelValue" :open="open">
+              <p :class="ui.description">{{ item.description }}</p>
+            </slot>
           </AccordionContent>
         </AccordionItem>
       </slot>

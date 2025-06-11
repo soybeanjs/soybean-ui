@@ -6,7 +6,11 @@ export const accordionVariants = tv({
     root: '',
     item: 'border-b',
     header: 'flex',
-    content: [`overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`],
+    content: [
+      `overflow-hidden transition will-change-auto`,
+      `data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`
+    ],
+    description: '',
     trigger: [
       `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
@@ -19,32 +23,32 @@ export const accordionVariants = tv({
     size: {
       xs: {
         root: 'text-2xs',
-        content: 'data-[state=open]:pb-3',
+        description: 'pb-3',
         trigger: 'py-3 gap-3'
       },
       sm: {
         root: 'text-xs',
-        content: 'data-[state=open]:pb-3.5',
+        description: 'pb-3.5',
         trigger: 'py-3.5 gap-3.5'
       },
       md: {
         root: 'text-sm',
-        content: 'data-[state=open]:pb-4',
+        description: 'pb-4',
         trigger: 'py-4 gap-4'
       },
       lg: {
         root: 'text-base',
-        content: 'data-[state=open]:pb-4.5',
+        description: 'pb-4.5',
         trigger: 'py-4.5 gap-4.5'
       },
       xl: {
         root: 'text-lg',
-        content: 'data-[state=open]:pb-5',
+        description: 'pb-5',
         trigger: 'py-5 gap-5'
       },
       '2xl': {
         root: 'text-2xl',
-        content: 'data-[state=open]:pb-6',
+        description: 'pb-6',
         trigger: 'py-6 gap-6'
       }
     }
