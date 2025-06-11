@@ -102,7 +102,7 @@ export type ScrollBodyOption = {
 
 // Exclude `boolean` type to prevent type casting
 // reference: https://vuejs.org/guide/components/props.html#boolean-casting
-export type AcceptableValue = string | number | Record<string, any> | null;
+export type AcceptableValue = string | number | bigint | Record<string, any> | null;
 export type ArrayOrWrapped<T> = T extends any[] ? T : Array<T>;
 export type StringOrNumber = string | number;
 

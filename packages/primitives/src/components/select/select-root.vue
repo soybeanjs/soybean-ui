@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<SelectRootProps<T>>(), {
   open: undefined
 });
 
-const emit = defineEmits<SelectRootEmits>();
+const emit = defineEmits<SelectRootEmits<T>>();
 
 type Slots = {
   default: (props: { modelValue: T | T[] | undefined; open: boolean }) => any;

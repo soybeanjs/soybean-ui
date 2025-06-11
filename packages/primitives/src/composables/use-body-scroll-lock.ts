@@ -22,7 +22,7 @@ const useBodyLockStackCount = createSharedComposable(() => {
     document.body.style.paddingRight = '';
     document.body.style.marginRight = '';
     document.body.style.pointerEvents = '';
-    document.body.style.removeProperty('--scrollbar-width');
+    document.documentElement.style.removeProperty('--scrollbar-width');
     document.body.style.overflow = initialOverflow.value ?? '';
 
     if (isIOS) {
@@ -59,7 +59,7 @@ const useBodyLockStackCount = createSharedComposable(() => {
     if (verticalScrollbarWidth > 0) {
       document.body.style.paddingRight = addPx(config.padding);
       document.body.style.marginRight = addPx(config.margin);
-      document.body.style.setProperty('--scrollbar-width', `${verticalScrollbarWidth}px`);
+      document.documentElement.style.setProperty('--scrollbar-width', `${verticalScrollbarWidth}px`);
       document.body.style.overflow = 'hidden';
     }
 

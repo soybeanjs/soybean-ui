@@ -8,11 +8,13 @@ export interface ProgressRootProps extends ClassValueProp {
   /** The maximum progress value. */
   max?: number;
   /**
-   * A function to get the accessible label text representing the current value in a human-readable format.
+   * A function to get the accessible label text in a human-readable format.
    *
    * If not provided, the value label will be read as the numeric value as a percentage of the max value.
    */
-  getValueLabel?: (value: number, max: number) => string;
+  getValueLabel?: (value: number | null | undefined, max: number) => string | undefined;
+  /** A function to get the accessible value text representing the current value in a human-readable format. */
+  getValueText?: (value: number | null | undefined, max: number) => string | undefined;
 }
 export type ProgressRootPropsWithPrimitive = ProgressRootProps & PrimitiveProps;
 

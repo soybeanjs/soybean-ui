@@ -10,6 +10,8 @@ import {
   initializeSegmentValues,
   isBefore,
   isSegmentNavigationKey,
+  normalizeDateStep,
+  normalizeHourCycle,
   syncSegmentValues
 } from '../../date';
 import type { DateValue, SegmentValueObj } from '../../date';
@@ -66,7 +68,11 @@ const placeholder = useVModel(props, 'placeholder', emit, {
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;
 
-const formatter = useDateFormatter(locale.value);
+const step = computed(() => normalizeDateStep(props));
+
+const formatter = useDateFormatter(locale.value, {
+  hourCycle: normalizeHourCycle(props.hourCycle)
+});
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 const segmentElements = ref<Set<HTMLElement>>(new Set());
 
@@ -191,6 +197,7 @@ provideDateFieldRootContext({
   disabled,
   formatter,
   hourCycle: props.hourCycle,
+  step,
   readonly,
   segmentValues,
   isInvalid,

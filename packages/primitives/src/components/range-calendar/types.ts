@@ -36,6 +36,8 @@ export interface RangeCalendarRootProps extends ClassValueProp {
   pagedNavigation?: boolean;
   /** Whether or not to prevent the user from deselecting a date without selecting another date first */
   preventDeselect?: boolean;
+  /** The maximum number of days that can be selected in a range */
+  maximumDays?: number;
   /** The day of the week to start the calendar on */
   weekStartsOn?: DaysOfWeekNumber;
   /** The format to use for the weekday strings provided via the weekdays slot prop */
@@ -82,6 +84,8 @@ export interface RangeCalendarRootProps extends ClassValueProp {
    * inside the component.
    */
   prevPage?: (placeholder: DateValue) => DateValue;
+  /** Whether or not to disable days outside the current view. */
+  disableDaysOutsideCurrentView?: boolean;
   /** Which part of the range should be fixed */
   fixedDate?: RangeCalendarFixedDatePart;
 }
@@ -122,6 +126,7 @@ export type RangeCalendarRootContext = {
   isDateUnavailable?: Matcher;
   isDateHighlightable?: Matcher;
   isOutsideVisibleView: (date: DateValue) => boolean;
+  allowNonContiguousRanges: Ref<boolean>;
   highlightedRange: Ref<{ start: DateValue; end: DateValue } | null>;
   focusedValue: Ref<DateValue | undefined>;
   lastPressedDateValue: Ref<DateValue | undefined>;
@@ -136,7 +141,9 @@ export type RangeCalendarRootContext = {
   isPrevButtonDisabled: (prevPageFunc?: (date: DateValue) => DateValue) => boolean;
   formatter: DateFormatter;
   dir: Ref<Direction>;
+  disableDaysOutsideCurrentView: Ref<boolean>;
   fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
+  maximumDays: Ref<number | undefined>;
 };
 // Grid
 export interface RangeCalendarGridProps extends ClassValueProp {}

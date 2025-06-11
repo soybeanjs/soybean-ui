@@ -32,7 +32,6 @@ const labelText = computed(() =>
   })
 );
 
-const isDisabled = computed(() => rootContext.isDateDisabled(props.day));
 const isUnavailable = computed(() => rootContext.isDateUnavailable?.(props.day) ?? false);
 const isSelectedDate = computed(() => rootContext.isSelected(props.day));
 const isSelectionStart = computed(() => rootContext.isSelectionStart(props.day));
@@ -44,6 +43,7 @@ const isHighlighted = computed(() =>
     ? isBetweenInclusive(props.day, rootContext.highlightedRange.value.start, rootContext.highlightedRange.value.end)
     : false
 );
+const allowNonContiguousRanges = computed(() => rootContext.allowNonContiguousRanges.value);
 
 const isDateToday = computed(() => {
   return isToday(props.day, getLocalTimeZone());
@@ -52,6 +52,11 @@ const isOutsideView = computed(() => {
   return !isSameMonth(props.day, props.month);
 });
 const isOutsideVisibleView = computed(() => rootContext.isOutsideVisibleView(props.day));
+
+const isDisabled = computed(
+  () =>
+    rootContext.isDateDisabled(props.day) || (rootContext.disableDaysOutsideCurrentView.value && isOutsideView.value)
+);
 
 const dayValue = computed(() => props.day.day.toLocaleString(rootContext.locale.value));
 
@@ -120,15 +125,18 @@ function changeDate(e: MouseEvent | KeyboardEvent, date: DateValue) {
 }
 
 function handleClick(e: MouseEvent) {
+  if (isDisabled.value) return;
   changeDate(e, props.day);
 }
 
 function handleFocus() {
+  if (isDisabled.value) return;
   if (rootContext.isDateDisabled(props.day) || rootContext.isDateUnavailable?.(props.day)) return;
   rootContext.focusedValue.value = props.day.copy();
 }
 
 function handleArrowKey(e: KeyboardEvent) {
+  if (isDisabled.value) return;
   e.preventDefault();
   e.stopPropagation();
   const parentElement = rootContext.parentElement.value!;
@@ -234,14 +242,14 @@ function handleArrowKey(e: KeyboardEvent) {
     role="button"
     :aria-label="labelText"
     data-soybean-calendar-cell-trigger
-    :aria-selected="isSelectedDate && !isUnavailable ? true : undefined"
+    :aria-selected="isSelectedDate && (allowNonContiguousRanges || !isUnavailable) ? true : undefined"
     :aria-disabled="isDisabled || isUnavailable ? true : undefined"
-    :data-highlighted="isHighlighted && !isUnavailable ? '' : undefined"
+    :data-highlighted="isHighlighted && (allowNonContiguousRanges || !isUnavailable) ? '' : undefined"
     :data-selection-start="isSelectionStart ? true : undefined"
     :data-selection-end="isSelectionEnd ? true : undefined"
     :data-highlighted-start="isHighlightStart ? true : undefined"
     :data-highlighted-end="isHighlightEnd ? true : undefined"
-    :data-selected="isSelectedDate && !isUnavailable ? true : undefined"
+    :data-selected="isSelectedDate && (allowNonContiguousRanges || !isUnavailable) ? true : undefined"
     :data-outside-visible-view="isOutsideVisibleView ? '' : undefined"
     :data-value="day.toString()"
     :data-disabled="isDisabled ? '' : undefined"
@@ -263,7 +271,7 @@ function handleArrowKey(e: KeyboardEvent) {
       :outside-view="isOutsideView"
       :outside-visible-view="isOutsideVisibleView"
       :unavailable="isUnavailable"
-      :highlighted="isHighlighted && !isUnavailable"
+      :highlighted="isHighlighted && (allowNonContiguousRanges || !isUnavailable)"
       :highlighted-start="isHighlightStart"
       :highlighted-end="isHighlightEnd"
       :selection-start="isSelectionStart"

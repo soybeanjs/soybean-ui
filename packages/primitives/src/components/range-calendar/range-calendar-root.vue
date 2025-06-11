@@ -38,7 +38,9 @@ const props = withDefaults(defineProps<RangeCalendarRootPropsWithPrimitive>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined,
   isDateHighlightable: undefined,
-  allowNonContiguousRanges: false
+  allowNonContiguousRanges: false,
+  maximumDays: undefined,
+  disableDaysOutsideCurrentView: false
 });
 
 const emit = defineEmits<RangeCalendarRootEmits>();
@@ -64,7 +66,9 @@ const {
   nextPage: propsNextPage,
   prevPage: propsPrevPage,
   allowNonContiguousRanges,
-  fixedDate
+  fixedDate,
+  maximumDays,
+  disableDaysOutsideCurrentView
 } = toRefs(props);
 
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
@@ -141,7 +145,8 @@ const {
   isSelectionStart,
   isSelectionEnd,
   isHighlightedStart,
-  isHighlightedEnd
+  isHighlightedEnd,
+  isDateDisabled: rangeIsDateDisabled
 } = useRangeCalendarState({
   start: startValue,
   end: endValue,
@@ -150,7 +155,8 @@ const {
   isDateHighlightable: propsIsDateHighlightable.value,
   focusedValue,
   allowNonContiguousRanges,
-  fixedDate
+  fixedDate,
+  maximumDays
 });
 
 // eslint-disable-next-line complexity
@@ -165,7 +171,7 @@ watch(modelValue, (_modelValue, _prevValue) => {
   }
 
   if (
-    (!_prevValue?.end && _modelValue?.end) ||
+    (!_prevValue?.end && _modelValue.end) ||
     !_modelValue ||
     !_modelValue.end ||
     (endValue.value && !isEqualDay(_modelValue.end, endValue.value))
@@ -246,7 +252,8 @@ provideRangeCalendarRootContext({
   fullCalendarLabel,
   headingValue,
   isInvalid,
-  isDateDisabled,
+  isDateDisabled: rangeIsDateDisabled,
+  allowNonContiguousRanges,
   highlightedRange,
   focusedValue,
   lastPressedDateValue,
@@ -264,11 +271,15 @@ provideRangeCalendarRootContext({
   dir,
   isHighlightedStart,
   isHighlightedEnd,
-  fixedDate
+  disableDaysOutsideCurrentView,
+  fixedDate,
+  maximumDays
 });
 
 onMounted(() => {
-  if (initialFocus.value) handleCalendarInitialFocus(parentElement.value);
+  if (initialFocus.value) {
+    handleCalendarInitialFocus(parentElement.value);
+  }
 });
 </script>
 

@@ -3,6 +3,7 @@ import type {
   DateFormatter,
   DateRange,
   DateRangeType,
+  DateStep,
   DateValue,
   Granularity,
   HourCycle,
@@ -26,6 +27,8 @@ export interface DateRangeFieldRootProps extends ClassValueProp, FormFieldProps 
   modelValue?: DateRange | null;
   /** The hour cycle used for formatting times. Defaults to the local preference */
   hourCycle?: HourCycle;
+  /** The stepping interval for the time fields. Defaults to `1`. */
+  step?: DateStep;
   /**
    * The granularity to use for formatting times. Defaults to day if a CalendarDate is provided, otherwise defaults to
    * minute. The field will render segments for each part of the date up to and including the specified granularity
@@ -73,6 +76,7 @@ export type DateRangeFieldRootContext = {
   readonly: Ref<boolean>;
   formatter: DateFormatter;
   hourCycle: HourCycle;
+  step: Ref<DateStep>;
   segmentValues: Record<DateRangeType, Ref<SegmentValueObj>>;
   segmentContents: Ref<{ start: { part: SegmentPart; value: string }[]; end: { part: SegmentPart; value: string }[] }>;
   elements: Ref<Set<HTMLElement>>;

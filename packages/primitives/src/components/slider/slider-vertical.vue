@@ -80,11 +80,15 @@ function onStepKeyDown(event: KeyboardEvent) {
   emit('stepKeyDown', event, isBackKey ? -1 : 1);
 }
 
+const startEdge = computed(() => (isSlidingFromBottom.value ? 'bottom' : 'top'));
+const endEdge = computed(() => (isSlidingFromBottom.value ? 'top' : 'bottom'));
+const direction = computed(() => (isSlidingFromBottom.value ? 1 : -1));
+
 provideSliderOrientationContext({
-  startEdge: isSlidingFromBottom.value ? 'bottom' : 'top',
-  endEdge: isSlidingFromBottom.value ? 'top' : 'bottom',
-  size: 'height',
-  direction: isSlidingFromBottom.value ? 1 : -1
+  startEdge,
+  endEdge,
+  direction,
+  size: 'height'
 });
 </script>
 

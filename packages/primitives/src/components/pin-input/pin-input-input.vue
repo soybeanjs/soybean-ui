@@ -20,7 +20,6 @@ const currentValue = computed(() => context.currentModelValue.value[props.index]
 
 const disabled = computed(() => props.disabled || context.disabled.value);
 const isOtpMode = computed(() => context.otp.value);
-const isNumericMode = computed(() => context.type.value === 'number');
 const isPasswordMode = computed(() => context.mask.value);
 
 const { primitiveElement, currentElement } = usePrimitiveElement();
@@ -32,7 +31,7 @@ function handleInput(event: InputEvent) {
     return;
   }
 
-  if (isNumericMode.value && !/^\d*$/.test(target.value)) {
+  if (context.isNumericMode.value && !/^\d*$/.test(target.value)) {
     target.value = target.value.replace(/\D/g, '');
     return;
   }
@@ -113,7 +112,7 @@ function handleMultipleCharacter(values: string) {
     const input = inputElements.value[i];
     const value = values[i - initialIndex];
     // eslint-disable-next-line no-continue
-    if (isNumericMode.value && !/^\d*$/.test(value)) continue;
+    if (context.isNumericMode.value && !/^\d*$/.test(value)) continue;
 
     tempModelValue[i] = value;
     input.focus();
@@ -122,7 +121,7 @@ function handleMultipleCharacter(values: string) {
   inputElements.value[lastIndex]?.focus();
 }
 
-function removeTrailingEmptyStrings(input: string[]) {
+function removeTrailingEmptyStrings(input: (string | number)[]) {
   let i = input.length - 1;
 
   while (i >= 0 && input[i] === '') {
@@ -135,7 +134,22 @@ function removeTrailingEmptyStrings(input: string[]) {
 
 function updateModelValueAt(index: number, value: string) {
   const tempModelValue = [...context.currentModelValue.value];
-  tempModelValue[index] = value;
+
+  if (context.isNumericMode.value) {
+    const num = Number(value);
+
+    if (value === '' || Number.isNaN(num)) {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+      delete tempModelValue[index];
+    } else {
+      // @ts-expect-error ignore type
+      tempModelValue[index] = num;
+    }
+  } else {
+    tempModelValue[index] = value;
+  }
+
+  // @ts-expect-error ignore type
   context.modelValue.value = removeTrailingEmptyStrings(tempModelValue);
 }
 
@@ -162,8 +176,8 @@ onUnmounted(() => {
     :as-child="asChild"
     :autocomplete="isOtpMode ? 'one-time-code' : 'false'"
     :type="isPasswordMode ? 'password' : 'text'"
-    :inputmode="isNumericMode ? 'numeric' : 'text'"
-    :pattern="isNumericMode ? '[0-9]*' : undefined"
+    :inputmode="context.isNumericMode.value ? 'numeric' : 'text'"
+    :pattern="context.isNumericMode.value ? '[0-9]*' : undefined"
     :placeholder="context.placeholder.value"
     :value="currentValue"
     :disabled="disabled"

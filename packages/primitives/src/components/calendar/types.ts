@@ -2,15 +2,12 @@ import type { Ref } from 'vue';
 import type { DateFormatter, DateValue, DaysOfWeekNumber, Grid, Matcher, WeekDayFormat } from '../../date';
 import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
-export interface BaseCalendarRootProps extends ClassValueProp {
+export interface CalendarRootProps extends ClassValueProp {
   /** The default value for the calendar */
   defaultValue?: DateValue;
   /** The default placeholder date */
   defaultPlaceholder?: DateValue;
-  /**
-   * The placeholder date, which is used to determine what month to display when no date is selected. This updates as
-   * the user navigates the calendar and can be used to programmatically control the calendar view
-   */
+  /** The placeholder date, which is used to determine what month to display when no date is selected */
   placeholder?: DateValue;
   /**
    * This property causes the previous and next buttons to navigate by the number of months displayed at once, rather
@@ -35,9 +32,9 @@ export interface BaseCalendarRootProps extends ClassValueProp {
   locale?: string;
   /** The number of months to display at once */
   numberOfMonths?: number;
-  /** Whether or not the calendar is disabled */
+  /** Whether the calendar is disabled */
   disabled?: boolean;
-  /** Whether or not the calendar is readonly */
+  /** Whether the calendar is readonly */
   readonly?: boolean;
   /**
    * If true, the calendar will focus the selected day, today, or the first day of the month depending on what is
@@ -63,23 +60,14 @@ export interface BaseCalendarRootProps extends ClassValueProp {
    * inside the component.
    */
   prevPage?: (placeholder: DateValue) => DateValue;
+  /** The controlled checked state of the calendar */
+  modelValue?: DateValue | DateValue[] | undefined;
+  /** Whether multiple dates can be selected */
+  multiple?: boolean;
+  /** Whether or not to disable days outside the current view. */
+  disableDaysOutsideCurrentView?: boolean;
 }
 
-export interface MultipleCalendarRootProps extends BaseCalendarRootProps {
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateValue[] | undefined;
-  /** Whether or not multiple dates can be selected */
-  multiple: true;
-}
-
-export interface SingleCalendarRootProps extends BaseCalendarRootProps {
-  /** The controlled checked state of the calendar. Can be bound as `v-model`. */
-  modelValue?: DateValue | undefined;
-  /** Whether or not multiple dates can be selected */
-  multiple?: false;
-}
-
-export type CalendarRootProps = MultipleCalendarRootProps | SingleCalendarRootProps;
 export type CalendarRootPropsWithPrimitive = CalendarRootProps & PrimitiveProps;
 
 // Calendar Cell
@@ -171,4 +159,5 @@ export interface CalendarRootContext {
   isPrevButtonDisabled: (prevPageFunc?: (date: DateValue) => DateValue) => boolean;
   formatter: DateFormatter;
   dir: Ref<Direction>;
+  disableDaysOutsideCurrentView: Ref<boolean>;
 }

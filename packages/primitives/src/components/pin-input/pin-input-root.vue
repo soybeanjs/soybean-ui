@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends PinInputType = 'text'">
 import { computed, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';
@@ -6,27 +6,27 @@ import { useDirection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { providePinInputRootContext } from './context';
-import type { PinInputRootEmits, PinInputRootPropsWithPrimitive } from './types';
+import type { PinInputRootEmits, PinInputRootPropsWithPrimitive, PinInputType, PinInputValue } from './types';
 
 defineOptions({
   name: 'PinInputRoot',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<PinInputRootPropsWithPrimitive>(), {
+const props = withDefaults(defineProps<PinInputRootPropsWithPrimitive<T>>(), {
   placeholder: '',
-  type: 'text'
+  type: 'text' as any
 });
-const emit = defineEmits<PinInputRootEmits>();
+const emit = defineEmits<PinInputRootEmits<T>>();
 
 const { mask, otp, placeholder, type, disabled, dir: propDir } = toRefs(props);
 const { forwardRef } = useForwardExpose();
 const dir = useDirection(propDir);
 
 const modelValue = useVModel(props, 'modelValue', emit, {
-  defaultValue: props.defaultValue ?? [],
+  defaultValue: props.defaultValue ?? ([] as any),
   passive: (props.modelValue === undefined) as false
-}) as Ref<string[]>;
+}) as Ref<PinInputValue<T>>;
 
 const currentModelValue = computed(() => (Array.isArray(modelValue.value) ? [...modelValue.value] : []));
 
@@ -35,21 +35,26 @@ function onInputElementChange(el: HTMLInputElement) {
   inputElements.value.add(el);
 }
 
+const isNumericMode = computed(() => props.type === 'number');
 const isCompleted = computed(() => {
-  const modelValues = currentModelValue.value.filter(i => Boolean(i));
+  const modelValues = currentModelValue.value.filter(i => Boolean(i) || (isNumericMode.value && i === 0));
   return modelValues.length === inputElements.value.size;
 });
 
 watch(
   modelValue,
   () => {
-    if (isCompleted.value) emit('complete', modelValue.value);
+    if (isCompleted.value) {
+      emit('complete', modelValue.value);
+    }
   },
   { deep: true }
 );
 
 providePinInputRootContext({
+  // @ts-expect-error ignore type
   modelValue,
+  // @ts-expect-error ignore type
   currentModelValue,
   mask,
   otp,
@@ -59,6 +64,7 @@ providePinInputRootContext({
   disabled,
   isCompleted,
   inputElements,
+  isNumericMode,
   onInputElementChange
 });
 </script>

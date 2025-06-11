@@ -30,7 +30,8 @@ const props = withDefaults(defineProps<CalendarRootPropsWithPrimitive>(), {
   initialFocus: false,
   placeholder: undefined,
   isDateDisabled: undefined,
-  isDateUnavailable: undefined
+  isDateUnavailable: undefined,
+  disableDaysOutsideCurrentView: false
 });
 
 const emit = defineEmits<CalendarRootEmits>();
@@ -57,7 +58,8 @@ const {
   nextPage: propsNextPage,
   prevPage: propsPrevPage,
   dir: propDir,
-  locale: propLocale
+  locale: propLocale,
+  disableDaysOutsideCurrentView
 } = toRefs(props);
 
 const locale = useLocale(propLocale);
@@ -195,7 +197,8 @@ provideCalendarRootContext({
   prevPage,
   parentElement,
   onPlaceholderChange,
-  onDateChange
+  onDateChange,
+  disableDaysOutsideCurrentView
 });
 </script>
 

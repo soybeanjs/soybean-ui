@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
 import type {
   DateFormatter,
+  DateStep,
   DateValue,
   Granularity,
   HourCycle,
@@ -25,6 +26,8 @@ export interface DateFieldRootProps extends ClassValueProp, FormFieldProps {
   modelValue?: DateValue | null;
   /** The hour cycle used for formatting times. Defaults to the local preference */
   hourCycle?: HourCycle;
+  /** The stepping interval for the time fields. Defaults to `1`. */
+  step?: DateStep;
   /**
    * The granularity to use for formatting times. Defaults to day if a CalendarDate is provided, otherwise defaults to
    * minute. The field will render segments for each part of the date up to and including the specified granularity
@@ -71,6 +74,7 @@ export type DateFieldRootContext = {
   readonly: Ref<boolean>;
   formatter: DateFormatter;
   hourCycle: HourCycle;
+  step: Ref<DateStep>;
   segmentValues: Ref<SegmentValueObj>;
   segmentContents: Ref<{ part: SegmentPart; value: string }[]>;
   elements: Ref<Set<HTMLElement>>;

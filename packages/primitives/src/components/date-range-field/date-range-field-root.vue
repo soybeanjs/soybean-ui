@@ -13,6 +13,8 @@ import {
   isBefore,
   isBeforeOrSame,
   isSegmentNavigationKey,
+  normalizeDateStep,
+  normalizeHourCycle,
   syncSegmentValues
 } from '../../date';
 import { Primitive } from '../primitive';
@@ -48,7 +50,9 @@ const {
 const locale = useLocale(propLocale);
 const dir = useDirection(propDir);
 
-const formatter = useDateFormatter(locale.value);
+const formatter = useDateFormatter(locale.value, {
+  hourCycle: normalizeHourCycle(props.hourCycle)
+});
 const { primitiveElement, currentElement: parentElement } = usePrimitiveElement();
 const segmentElements = ref<Set<HTMLElement>>(new Set());
 
@@ -72,6 +76,8 @@ const placeholder = useVModel(props, 'placeholder', emit, {
   defaultValue: props.defaultPlaceholder ?? defaultDate.copy(),
   passive: (props.placeholder === undefined) as false
 }) as Ref<DateValue>;
+
+const step = computed(() => normalizeDateStep(props));
 
 const inferredGranularity = computed(() => {
   if (props.granularity) return !hasTime(placeholder.value) ? 'day' : props.granularity;
@@ -175,18 +181,20 @@ watch([startValue, endValue], ([_startValue, _endValue]) => {
 });
 
 watch(modelValue, _modelValue => {
-  if (_modelValue?.start && _modelValue?.end) {
-    if (!startValue.value || _modelValue.start.compare(startValue.value) !== 0) {
-      startValue.value = _modelValue.start.copy();
-    }
-
-    if (!endValue.value || _modelValue.end.compare(endValue.value) !== 0) {
-      endValue.value = _modelValue.end.copy();
-    }
+  const isStartChanged =
+    _modelValue?.start && startValue.value
+      ? _modelValue.start.compare(startValue.value) !== 0
+      : _modelValue?.start !== startValue.value;
+  if (isStartChanged) {
+    startValue.value = _modelValue?.start?.copy();
   }
-  if (!_modelValue) {
-    startValue.value = undefined;
-    endValue.value = undefined;
+
+  const isEndChanged =
+    _modelValue?.end && endValue.value
+      ? _modelValue.end.compare(endValue.value) !== 0
+      : _modelValue?.end !== endValue.value;
+  if (isEndChanged) {
+    endValue.value = _modelValue?.end?.copy();
   }
 });
 
@@ -280,6 +288,7 @@ provideDateRangeFieldRootContext({
   disabled,
   formatter,
   hourCycle: props.hourCycle,
+  step,
   readonly,
   segmentValues: { start: startSegmentValues, end: endSegmentValues },
   isInvalid,

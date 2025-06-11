@@ -59,6 +59,16 @@ export type DayOfWeek = {
   daysOfWeek: DaysOfWeekNumber[];
 };
 
+export type DateStep = {
+  year?: number;
+  month?: number;
+  day?: number;
+  hour?: number;
+  minute?: number;
+  second?: number;
+  millisecond?: number;
+};
+
 export type DateRange = {
   start: DateValue | undefined;
   end: DateValue | undefined;

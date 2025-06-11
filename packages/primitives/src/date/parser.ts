@@ -9,7 +9,7 @@ import {
   isSegmentPart
 } from './parts';
 import { getPlaceholder } from './placeholders';
-import { getOptsByGranularity } from './utils';
+import { getOptsByGranularity, normalizeHourCycle } from './utils';
 import type {
   DateFormatter,
   DateSegmentPart,
@@ -129,17 +129,25 @@ function createContentObj(props: CreateContentObjProps) {
          * Edge case for when the month field is filled and the day field snaps to the maximum value of the value of the
          * placeholder month
          */
-        if (part === 'day' && segmentValues.month !== null) {
+        if (part === 'day') {
           return formatter.part(
-            props.dateRef.set({ [part as keyof DateFields]: value, month: segmentValues.month }),
+            props.dateRef.set({
+              [part as keyof DateFields]: value,
+              /**
+               * Edge case for the day field:
+               *
+               * 1. If the month is filled, we need to ensure that the day snaps to the maximum value of that month.
+               * 2. If the month is not filled, we default to the month with the maximum number of days (here just using
+               *    January, 31 days), so that user can input any possible day.
+               */
+              month: segmentValues.month ?? 1
+            }),
             part,
-            {
-              hourCycle: props.hourCycle === 24 ? 'h23' : undefined
-            }
+            { hourCycle: normalizeHourCycle(props.hourCycle) }
           );
         }
         return formatter.part(props.dateRef.set({ [part]: value }), part, {
-          hourCycle: props.hourCycle === 24 ? 'h23' : undefined
+          hourCycle: normalizeHourCycle(props.hourCycle)
         });
       }
 
@@ -149,9 +157,16 @@ function createContentObj(props: CreateContentObjProps) {
     if (isDateSegmentPart(part)) {
       const value = segmentValues[part];
       if (value !== null) {
-        if (part === 'day' && segmentValues.month !== null)
-          /** As described above, same function */
-          return formatter.part(props.dateRef.set({ [part]: value, month: segmentValues.month }), part);
+        if (part === 'day') {
+          return formatter.part(
+            props.dateRef.set({
+              [part]: value,
+              // Same logic as above for the day field
+              month: segmentValues.month ?? 1
+            }),
+            part
+          );
+        }
 
         return formatter.part(props.dateRef.set({ [part]: value }), part);
       }

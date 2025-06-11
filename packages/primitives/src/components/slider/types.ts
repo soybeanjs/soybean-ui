@@ -116,8 +116,8 @@ export type SliderOrientationPrivateEmits = {
 };
 
 export interface SliderOrientation {
-  startEdge: Side;
-  endEdge: Side;
+  startEdge: ComputedRef<Side>;
+  endEdge: ComputedRef<Side>;
   size: 'width' | 'height';
-  direction: number;
+  direction: ComputedRef<1 | -1>;
 }

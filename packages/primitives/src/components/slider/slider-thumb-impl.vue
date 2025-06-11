@@ -34,7 +34,7 @@ const thumbInBoundsOffset = computed(() => {
     return 0;
   }
 
-  return getThumbInBoundsOffset(orientationSize.value, percent.value, orientation!.direction);
+  return getThumbInBoundsOffset(orientationSize.value, percent.value, orientation!.direction.value);
 });
 
 const isMounted = useMounted();
@@ -68,7 +68,7 @@ onUnmounted(() => {
       :style="{
         transform: 'var(--soybean-slider-thumb-transform)',
         position: 'absolute',
-        [orientation!.startEdge]: `calc(${percent}% + ${thumbInBoundsOffset}px)`,
+        [orientation!.startEdge.value]: `calc(${percent}% + ${thumbInBoundsOffset}px)`,
         /**
          * There will be no value on initial render while we work out the index so we hide thumbs
          * without a value, otherwise SSR will render them in the wrong position before they

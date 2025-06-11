@@ -14,7 +14,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<ProgressRootPropsWithPrimitive>(), {
   max: DEFAULT_MAX,
-  getValueLabel: (value: number, max: number) => `${Math.round((value / max) * DEFAULT_MAX)}%`
+  getValueLabel: (value: number | null | undefined, max: number) =>
+    isNumber(value) ? `${Math.round((value / max) * DEFAULT_MAX)}%` : undefined
 });
 
 const emit = defineEmits<ProgressRootEmits>();
@@ -73,8 +74,8 @@ useForwardExpose();
     :aria-valuemax="max"
     :aria-valuemin="0"
     :aria-valuenow="isNumber(modelValue) ? modelValue : undefined"
-    :aria-valuetext="getValueLabel(modelValue!, max)"
-    :aria-label="getValueLabel(modelValue!, max)"
+    :aria-valuetext="getValueText?.(modelValue, max)"
+    :aria-label="getValueLabel(modelValue, max)"
     role="progressbar"
     :data-state="progressState"
     :data-value="modelValue ?? undefined"

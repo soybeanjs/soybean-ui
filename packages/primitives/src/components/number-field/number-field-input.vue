@@ -30,8 +30,13 @@ function handleWheelEvent(event: WheelEvent) {
   if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
 
   event.preventDefault();
-  if (event.deltaY > 0) rootContext.handleIncrease();
-  else if (event.deltaY < 0) rootContext.handleDecrease();
+  if (event.deltaY > 0) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    rootContext.invertWheelChange.value ? rootContext.handleDecrease() : rootContext.handleIncrease();
+  } else if (event.deltaY < 0) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    rootContext.invertWheelChange.value ? rootContext.handleIncrease() : rootContext.handleDecrease();
+  }
 }
 
 const inputValue = ref(rootContext.textValue.value);

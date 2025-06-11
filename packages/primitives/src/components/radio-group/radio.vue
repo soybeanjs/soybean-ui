@@ -35,6 +35,8 @@ const ariaLabel = computed(() =>
 );
 
 function handleClick(event: MouseEvent) {
+  if (props.disabled) return;
+
   handleSelect(event, props.value, ev => {
     emit('select', ev);
     if (ev?.defaultPrevented) return;

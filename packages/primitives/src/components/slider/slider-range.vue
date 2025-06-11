@@ -38,8 +38,8 @@ const offsetEnd = computed(() => 100 - Math.max(...percentages.value, 0));
     :data-disabled="rootContext.disabled.value ? '' : undefined"
     :data-orientation="rootContext.orientation.value"
     :style="{
-      [orientation!.startEdge]: `${offsetStart}%`,
-      [orientation!.endEdge]: `${offsetEnd}%`
+      [orientation!.startEdge.value]: `${offsetStart}%`,
+      [orientation!.endEdge.value]: `${offsetEnd}%`
     }"
   >
     <slot />

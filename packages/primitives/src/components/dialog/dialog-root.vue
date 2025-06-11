@@ -26,6 +26,10 @@ const open = useVModel(props, 'open', emit, {
 const triggerElement = ref<HTMLElement>();
 const contentElement = ref<HTMLElement>();
 
+const close = () => {
+  open.value = false;
+};
+
 provideDialogRootContext({
   open,
   modal: toRef(() => props.modal),
@@ -35,5 +39,5 @@ provideDialogRootContext({
 </script>
 
 <template>
-  <slot :open="open" />
+  <slot :open="open" :close="close" />
 </template>

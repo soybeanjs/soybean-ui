@@ -24,6 +24,8 @@ export interface NumberFieldRootProps extends ClassValueProp {
   disabled?: boolean;
   /** When `true`, prevents the value from changing on wheel scroll. */
   disableWheelChange?: boolean;
+  /** When `true`, inverts the direction of the wheel change. */
+  invertWheelChange?: boolean;
   /** Id of the element */
   id?: string;
 }
@@ -34,7 +36,7 @@ export type NumberFieldRootEmits = {
 };
 
 export interface NumberFieldRootContext {
-  modelValue: Ref<number>;
+  modelValue: Ref<number | undefined>;
   handleIncrease: (multiplier?: number) => void;
   handleDecrease: (multiplier?: number) => void;
   handleMinMaxValue: (type: 'min' | 'max') => void;
@@ -46,6 +48,7 @@ export interface NumberFieldRootContext {
   applyInputValue: (val: string) => void;
   disabled: Ref<boolean>;
   disableWheelChange: Ref<boolean>;
+  invertWheelChange: Ref<boolean>;
   max: Ref<number | undefined>;
   min: Ref<number | undefined>;
   isDecreaseDisabled: Ref<boolean>;

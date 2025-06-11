@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="T extends Record<string, any>, U extends Record<string, any>">
+<script
+  setup
+  lang="ts"
+  generic="T extends Record<string, any>, U extends Record<string, any>, M extends boolean = false"
+>
 import { computed, nextTick, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
@@ -15,15 +19,15 @@ defineOptions({
   name: 'TreeRoot'
 });
 
-const props = withDefaults(defineProps<TreeRootPropsWithPrimitive<T, U>>(), {
+const props = withDefaults(defineProps<TreeRootPropsWithPrimitive<T, U, M>>(), {
   as: 'ul',
   selectionBehavior: 'toggle',
   getChildren: (val: T) => val.children
 });
 
-const emit = defineEmits<TreeRootEmits>();
+const emit = defineEmits<TreeRootEmits<T, M>>();
 
-const { items, multiple, disabled, propagateSelect, dir: propDir } = toRefs(props);
+const { items, multiple, disabled, propagateSelect, dir: propDir, bubbleSelect } = toRefs(props);
 const { handleTypeaheadSearch } = useTypeahead();
 const dir = useDirection(propDir);
 const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
@@ -32,18 +36,15 @@ const rovingFocusGroupRef = ref<InstanceType<typeof RovingFocusGroup>>();
 const isVirtual = ref(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
-const modelValue = useVModel<TreeRootPropsWithPrimitive<T, U>, 'modelValue', 'update:modelValue'>(
-  props,
-  'modelValue',
-  emit,
-  {
-    defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-    passive: (props.modelValue === undefined) as false,
-    deep: true
-  }
-) as Ref<U | U[]>;
+const modelValue = useVModel(props, 'modelValue', emit, {
+  // @ts-expect-error ignore type
+  defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
+  passive: (props.modelValue === undefined) as false,
+  deep: true
+}) as Ref<U | U[]>;
 
-const expanded = useVModel<TreeRootPropsWithPrimitive<T, U>, 'expanded', 'update:expanded'>(props, 'expanded', emit, {
+const expanded = useVModel(props, 'expanded', emit, {
+  // @ts-expect-error ignore type
   defaultValue: props.defaultExpanded ?? [],
   passive: (props.expanded === undefined) as false,
   deep: true
@@ -112,6 +113,31 @@ function handleKeydownNavigation(event: KeyboardEvent) {
   });
 }
 
+function handleBubbleSelect(item: FlattenedItem<T>) {
+  // eslint-disable-next-line no-eq-null, eqeqeq
+  if (item.parentItem != null && Array.isArray(modelValue.value) && props.multiple) {
+    const parentItem = expandedItems.value.find(i => {
+      // eslint-disable-next-line no-eq-null, eqeqeq
+      return item.parentItem != null && props.getKey(i.value) === props.getKey(item.parentItem);
+    });
+
+    // eslint-disable-next-line no-eq-null, eqeqeq
+    if (parentItem != null) {
+      const areAllChilredOfParentSelected = props
+        .getChildren(parentItem.value)
+        ?.every(i => modelValue.value.find((v: any) => props.getKey(v) === props.getKey(i)));
+
+      if (areAllChilredOfParentSelected) {
+        modelValue.value = [...modelValue.value, parentItem.value as any];
+      } else {
+        modelValue.value = modelValue.value.filter((v: any) => props.getKey(v) !== props.getKey(parentItem.value));
+      }
+
+      handleBubbleSelect(parentItem);
+    }
+  }
+}
+
 provideTreeRootContext({
   modelValue,
   selectedKeys,
@@ -120,6 +146,17 @@ provideTreeRootContext({
     const exist =
       props.multiple && Array.isArray(modelValue.value) ? modelValue.value?.findIndex(condition) !== -1 : undefined;
     onSelectItem(val as U, condition);
+
+    if (props.bubbleSelect && props.multiple && Array.isArray(modelValue.value)) {
+      const item = expandedItems.value.find(i => {
+        // @ts-expect-error ignore type
+        return props.getKey(i.value) === props.getKey(val);
+      });
+      // eslint-disable-next-line no-eq-null, eqeqeq
+      if (item != null) {
+        handleBubbleSelect(item);
+      }
+    }
 
     if (props.propagateSelect && props.multiple && Array.isArray(modelValue.value)) {
       const children = flatten<U, any>(props.getChildren(val as T) ?? []);
@@ -151,6 +188,7 @@ provideTreeRootContext({
   multiple,
   dir,
   propagateSelect,
+  bubbleSelect,
   isVirtual,
   virtualKeydownHook,
   handleMultipleReplace
@@ -168,7 +206,7 @@ provideTreeRootContext({
       @keydown="handleKeydown"
       @keydown.up.down.shift="handleKeydownNavigation"
     >
-      <slot :flatten-items="expandedItems" :model-value="modelValue" :expanded="expanded" />
+      <slot :flatten-items="expandedItems" :model-value="modelValue as M extends true ? U[] : U" :expanded="expanded" />
     </Primitive>
   </RovingFocusGroup>
 </template>

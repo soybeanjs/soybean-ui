@@ -1,5 +1,6 @@
 import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue';
 import type { Ref } from 'vue';
+import { isClient } from '@vueuse/shared';
 import type { HTMLAttributeReferrerPolicy, ImageCrossOrigin, ImageLoadingStatus } from '../types';
 
 export function useImageLoadingStatus(
@@ -13,7 +14,7 @@ export function useImageLoadingStatus(
     if (!isMounted.value) {
       return null;
     }
-    if (!imageRef.value) {
+    if (!imageRef.value && isClient) {
       imageRef.value = new window.Image();
     }
     return imageRef.value;

@@ -20,7 +20,6 @@ const emit = defineEmits<StepperRootEmits>();
 
 const { dir: propDir, orientation: propOrientation, linear } = toRefs(props);
 const dir = useDirection(propDir);
-useForwardExpose();
 
 const totalStepperItems = ref<Set<HTMLElement>>(new Set());
 
@@ -54,6 +53,23 @@ function goToStep(step: number) {
 
   modelValue.value = step;
 }
+
+function nextStep() {
+  goToStep((modelValue.value ?? 1) + 1);
+}
+
+function prevStep() {
+  goToStep((modelValue.value ?? 1) - 1);
+}
+
+function hasNext() {
+  return (modelValue.value ?? 1) < totalSteps.value;
+}
+
+function hasPrev() {
+  return (modelValue.value ?? 1) > 1;
+}
+
 const nextStepperItem = ref<HTMLElement | null>(null);
 const prevStepperItem = ref<HTMLElement | null>(null);
 const isNextDisabled = computed(() =>
@@ -98,6 +114,22 @@ provideStepperRootContext({
   linear,
   totalStepperItems
 });
+
+defineExpose({
+  goToStep,
+  nextStep,
+  prevStep,
+  modelValue,
+  totalSteps,
+  isNextDisabled,
+  isPrevDisabled,
+  isFirstStep,
+  isLastStep,
+  hasNext,
+  hasPrev
+});
+
+useForwardExpose();
 </script>
 
 <template>
@@ -118,8 +150,10 @@ provideStepperRootContext({
       :is-first-step="isFirstStep"
       :is-last-step="isLastStep"
       :go-to-step="goToStep"
-      :next-step="() => goToStep((modelValue ?? 1) + 1)"
-      :prev-step="() => goToStep((modelValue ?? 1) - 1)"
+      :next-step="nextStep"
+      :prev-step="prevStep"
+      :has-next="hasNext"
+      :has-prev="hasPrev"
     />
 
     <div

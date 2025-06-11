@@ -2,12 +2,15 @@ import type { Ref } from 'vue';
 import type { EventHook } from '@vueuse/core';
 import type { ClassValueProp, Direction, PrimitiveProps, TreeSelectEvent, TreeToggleEvent } from '../../types';
 // Root
-export interface TreeRootProps<T = Record<string, any>, U extends Record<string, any> = Record<string, any>>
-  extends ClassValueProp {
+export interface TreeRootProps<
+  T = Record<string, any>,
+  U extends Record<string, any> = Record<string, any>,
+  M extends boolean = false
+> extends ClassValueProp {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
-  modelValue?: U | U[];
+  modelValue?: M extends true ? U[] : U;
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
-  defaultValue?: U | U[];
+  defaultValue?: M extends true ? U[] : U;
   /** List of items */
   items?: T[];
   /** The controlled value of the expanded item. Can be bound-with with `v-model`. */
@@ -21,21 +24,24 @@ export interface TreeRootProps<T = Record<string, any>, U extends Record<string,
   /** How multiple selection should behave in the collection. */
   selectionBehavior?: 'toggle' | 'replace';
   /** Whether multiple options can be selected or not. */
-  multiple?: boolean;
+  multiple?: M;
   /** The reading direction. */
   dir?: Direction;
   /** When `true`, prevents the user from interacting with tree */
   disabled?: boolean;
   /** When `true`, selecting parent will select the descendants. */
   propagateSelect?: boolean;
+  /** When `true`, selecting children will update the parent state. */
+  bubbleSelect?: boolean;
 }
 export type TreeRootPropsWithPrimitive<
   T = Record<string, any>,
-  U extends Record<string, any> = Record<string, any>
-> = TreeRootProps<T, U> & PrimitiveProps;
+  U extends Record<string, any> = Record<string, any>,
+  M extends boolean = false
+> = TreeRootProps<T, U, M> & PrimitiveProps;
 
-export type TreeRootEmits<T = Record<string, any>> = {
-  'update:modelValue': [val: T];
+export type TreeRootEmits<T = Record<string, any>, M extends boolean = false> = {
+  'update:modelValue': [val: M extends true ? T[] : T];
   'update:expanded': [val: string[]];
 };
 
@@ -53,6 +59,7 @@ export interface TreeRootContext<T = Record<string, any>> {
   disabled: Ref<boolean>;
   dir: Ref<Direction>;
   propagateSelect: Ref<boolean>;
+  bubbleSelect: Ref<boolean>;
   isVirtual: Ref<boolean>;
   virtualKeydownHook: EventHook<KeyboardEvent>;
   handleMultipleReplace: any;

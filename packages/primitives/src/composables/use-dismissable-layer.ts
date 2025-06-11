@@ -1,5 +1,5 @@
-import { nextTick, ref, watchEffect } from 'vue';
-import type { Ref } from 'vue';
+import { nextTick, ref, toValue, watchEffect } from 'vue';
+import type { MaybeRefOrGetter, Ref } from 'vue';
 import { isClient } from '@vueuse/shared';
 import { handleAndDispatchCustomEvent } from '../shared';
 import { CONTEXT_UPDATE, FOCUS_OUTSIDE, POINTER_DOWN_OUTSIDE } from '../constant';
@@ -10,7 +10,8 @@ import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
  */
 export function usePointerDownOutside(
   onPointerDownOutside?: (event: PointerDownOutsideEvent) => void,
-  element?: Ref<HTMLElement | undefined>
+  element?: Ref<HTMLElement | undefined>,
+  enabled: MaybeRefOrGetter<boolean> = true
 ) {
   const ownerDocument: Document = element?.value?.ownerDocument ?? globalThis?.document;
 
@@ -18,7 +19,7 @@ export function usePointerDownOutside(
   const handleClickRef = ref(() => {});
 
   watchEffect(cleanupFn => {
-    if (!isClient) return;
+    if (!isClient || !toValue(enabled)) return;
     const handlePointerDown = async (event: PointerEvent) => {
       const target = event.target as HTMLElement | undefined;
 
@@ -88,7 +89,10 @@ export function usePointerDownOutside(
   });
 
   return {
-    onPointerDownCapture: () => (isPointerInsideDOMTree.value = true)
+    onPointerDownCapture: () => {
+      if (!toValue(enabled)) return;
+      isPointerInsideDOMTree.value = true;
+    }
   };
 }
 
@@ -115,14 +119,15 @@ function isLayerExist(layerElement: HTMLElement, targetElement: HTMLElement) {
  */
 export function useFocusOutside(
   onFocusOutside?: (event: FocusOutsideEvent) => void,
-  element?: Ref<HTMLElement | undefined>
+  element?: Ref<HTMLElement | undefined>,
+  enabled: MaybeRefOrGetter<boolean> = true
 ) {
   const ownerDocument: Document = element?.value?.ownerDocument ?? globalThis?.document;
 
   const isFocusInsideDOMTree = ref(false);
 
   watchEffect(cleanupFn => {
-    if (!isClient) return;
+    if (!isClient || !toValue(enabled)) return;
 
     const handleFocus = async (event: FocusEvent) => {
       if (!element?.value) return;
@@ -144,8 +149,16 @@ export function useFocusOutside(
   });
 
   return {
-    onFocusCapture: () => (isFocusInsideDOMTree.value = true),
-    onBlurCapture: () => (isFocusInsideDOMTree.value = false)
+    onFocusCapture: () => {
+      if (!toValue(enabled)) return;
+
+      isFocusInsideDOMTree.value = true;
+    },
+    onBlurCapture: () => {
+      if (!toValue(enabled)) return;
+
+      isFocusInsideDOMTree.value = false;
+    }
   };
 }
 

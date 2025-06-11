@@ -11,6 +11,8 @@ export const [provideCollapsibleRootContext, injectCollapsibleRootContext] = use
       dataState: computed(() => (params.open.value ? 'open' : 'closed')),
       dataDisabled: computed(() => (params.disabled?.value ? '' : undefined)),
       onOpenToggle: () => {
+        if (params.disabled?.value) return;
+
         params.open.value = !params.open.value;
       },
       initContentId: () => {

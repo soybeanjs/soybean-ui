@@ -12,11 +12,16 @@ const props = withDefaults(defineProps<CalendarCellPropsWithPrimitive>(), {
   as: 'td'
 });
 
-const { isDateSelected, isDateDisabled, isDateUnavailable } = injectCalendarRootContext();
+const { isDateSelected, isDateDisabled, isDateUnavailable, disableDaysOutsideCurrentView } =
+  injectCalendarRootContext();
 
 const ariaSelected = computed(() => (isDateSelected(props.date) ? true : undefined));
-const ariaDisabled = computed(() => isDateDisabled(props.date) || isDateUnavailable?.(props.date));
-const dataDisabled = computed(() => (isDateDisabled(props.date) ? '' : undefined));
+const ariaDisabled = computed(
+  () => isDateDisabled(props.date) || isDateUnavailable?.(props.date) || disableDaysOutsideCurrentView.value
+);
+const dataDisabled = computed(() =>
+  isDateDisabled(props.date) || disableDaysOutsideCurrentView.value ? '' : undefined
+);
 </script>
 
 <template>
