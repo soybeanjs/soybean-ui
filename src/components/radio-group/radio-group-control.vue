@@ -41,6 +41,8 @@ function onKeyUp() {
 }
 
 function onClick(event: MouseEvent) {
+  if (props.disabled) return;
+
   const eventDetail = { originalEvent: event, value: value.value };
 
   handleAndDispatchCustomEvent(
