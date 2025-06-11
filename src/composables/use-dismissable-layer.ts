@@ -1,4 +1,14 @@
-import { computed, nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowReactive, toValue, watch } from 'vue';
+import {
+  computed,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  onWatcherCleanup,
+  shallowReactive,
+  toValue,
+  watch,
+  watchEffect
+} from 'vue';
 import type { CSSProperties, MaybeRefOrGetter, ShallowRef } from 'vue';
 import { handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
@@ -191,27 +201,17 @@ export function useDismissableLayerBranch(branchElementRef: ShallowRef<HTMLEleme
  */
 export function usePointerdownOutside(
   node: ShallowRef<HTMLElement | undefined>,
-  onPointerDownOutside: (event: PointerDownOutsideEvent) => void
+  onPointerDownOutside: (event: PointerDownOutsideEvent) => void,
+  enable: MaybeRefOrGetter<boolean> = true
 ) {
   let isPointerInsideDOMTree = false;
 
   let handleClick = () => {};
 
-  const ret = {
-    // ensures we check React component tree (not just DOM tree)
-    onPointerdownCapture: () => {
-      isPointerInsideDOMTree = true;
-    }
-  };
+  watchEffect(() => {
+    if (!isClient || !toValue(enable) || !node.value) return;
 
-  if (!isClient) {
-    return ret;
-  }
-
-  watch(node, nodeVal => {
-    if (!nodeVal) return;
-
-    const ownerDocument = nodeVal.ownerDocument;
+    const ownerDocument = node.value.ownerDocument;
 
     async function handlePointerDown(event: PointerEvent) {
       if (!node.value) return;
@@ -277,7 +277,13 @@ export function usePointerdownOutside(
     });
   });
 
-  return ret;
+  return {
+    onPointerdownCapture: () => {
+      if (!toValue(enable)) return;
+
+      isPointerInsideDOMTree = true;
+    }
+  };
 }
 
 /**
@@ -286,22 +292,10 @@ export function usePointerdownOutside(
  */
 export function useFocusOutside(
   node: ShallowRef<HTMLElement | undefined>,
-  onFocusOutside: (event: FocusOutsideEvent) => void
+  onFocusOutside: (event: FocusOutsideEvent) => void,
+  enable: MaybeRefOrGetter<boolean> = true
 ) {
   let isFocusInsideDOMTree = false;
-
-  const ret = {
-    onFocusCapture: () => {
-      isFocusInsideDOMTree = true;
-    },
-    onBlurCapture: () => {
-      isFocusInsideDOMTree = false;
-    }
-  };
-
-  if (!isClient) {
-    return ret;
-  }
 
   const handleFocus = async (event: FocusEvent) => {
     await nextTick();
@@ -316,10 +310,10 @@ export function useFocusOutside(
     }
   };
 
-  watch(node, nodeVal => {
-    if (!nodeVal) return;
+  watchEffect(() => {
+    if (!isClient || !toValue(enable) || !node.value) return;
 
-    const ownerDocument = nodeVal.ownerDocument;
+    const ownerDocument = node.value.ownerDocument;
 
     ownerDocument.addEventListener('focusin', handleFocus);
 
@@ -328,7 +322,16 @@ export function useFocusOutside(
     });
   });
 
-  return ret;
+  return {
+    onFocusCapture: () => {
+      if (!toValue(enable)) return;
+      isFocusInsideDOMTree = true;
+    },
+    onBlurCapture: () => {
+      if (!toValue(enable)) return;
+      isFocusInsideDOMTree = false;
+    }
+  };
 }
 
 function isInsideDOMTree(mainLayer: HTMLElement, targetElement: HTMLElement) {
