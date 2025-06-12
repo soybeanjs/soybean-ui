@@ -16,6 +16,7 @@ export default defineConfig<Theme>({
     presetTypography(),
     presetAnimations(),
     presetSoybeanJS(),
+    // @ts-expect-error ignore type
     presetSoybeanUI()
   ]
 });
