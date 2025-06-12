@@ -34,5 +34,30 @@ export function refreshIOSDetection(): boolean {
   return isIOS();
 }
 
-// eslint-disable-next-line no-underscore-dangle
-export const isNuxt = Boolean(window?.__NUXT__);
+// 更可靠的Nuxt环境检测
+function detectNuxtEnvironment(): boolean {
+  // 客户端检测
+  if (isClient) {
+    // eslint-disable-next-line no-underscore-dangle
+    return Boolean((window as any).__NUXT__);
+  }
+
+  // 服务端检测 - 检查是否有Nuxt特定的全局变量或上下文
+  if (typeof globalThis !== 'undefined') {
+    // 检查Nuxt的全局上下文标识
+    // eslint-disable-next-line no-underscore-dangle
+    if ((globalThis as any).__NUXT__ || (globalThis as any).$nuxt) {
+      return true;
+    }
+
+    // 检查是否在Nuxt的运行时环境中
+    // eslint-disable-next-line no-underscore-dangle
+    if ((globalThis as any).nuxtApp || (globalThis as any).__nuxtApp) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+export const isNuxt = detectNuxtEnvironment();
