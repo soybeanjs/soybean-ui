@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '@/components/collapsible';
+import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '@headless/components/collapsible';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const open = ref(false);

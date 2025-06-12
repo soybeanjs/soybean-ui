@@ -1,10 +1,10 @@
 import { computed, ref } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
-import { useDirection } from '@/composables/use-direction';
-import { useConfigProvider } from '@/components/config-provider/context';
+import { useDirection } from '@headless/composables/use-direction';
+import { useConfigProvider } from '@headless/components/config-provider/context';
 
 // Mock the config provider context
-vi.mock('@/components/config-provider/context', () => ({
+vi.mock('@headless/components/config-provider/context', () => ({
   useConfigProvider: vi.fn()
 }));
 

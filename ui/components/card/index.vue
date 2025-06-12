@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { mergeSlotVariants } from '@theme';
-import { useOmitProps } from '@/composables';
+import { useOmitProps } from '@headless/composables';
 import {
   CardContent,
   CardDescription,
@@ -11,8 +11,8 @@ import {
   CardTitle,
   CardTitleRoot,
   provideCardThemeContext
-} from '@/components/card';
-import { cardVariants } from '../../variants/card';
+} from '@headless/components/card';
+import { cardVariants } from '@variants/card';
 import type { CardProps } from './types';
 
 defineOptions({

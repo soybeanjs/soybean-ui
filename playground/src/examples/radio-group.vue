@@ -6,8 +6,8 @@ import {
   RadioGroupItem,
   RadioGroupLabel,
   RadioGroupRoot
-} from '@/components/radio-group';
-import { radioVariants } from '../variants/radio';
+} from '@headless/components/radio-group';
+import { radioVariants } from '../../../ui/variants/radio';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const css = radioVariants();

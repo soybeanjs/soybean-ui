@@ -32,10 +32,10 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger
-} from '@/components/dropdown-menu';
-import { menuVariants } from '../variants/menu';
-import { buttonVariants } from '../variants/button';
-import { popoverVariants } from '../variants/popover';
+} from '@headless/components/dropdown-menu';
+import { menuVariants } from '../../../ui/variants/menu';
+import { buttonVariants } from '../../../ui/variants/button';
+import { popoverVariants } from '../../../ui/variants/popover';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const {

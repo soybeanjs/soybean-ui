@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ConfigProvider } from '@/components/config-provider';
+import { ConfigProvider } from '@headless/components/config-provider';
 import AccordionExample from './examples/accordion/single.vue';
 import AlertDialogExample from './examples/alert-dialog.vue';
 import ArrowExample from './examples/arrow.vue';

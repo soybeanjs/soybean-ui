@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RovingFocusItem } from '@/components/roving-focus';
-import { buttonVariants } from '../../variants/button';
+import { RovingFocusItem } from '@headless/components/roving-focus';
+import { buttonVariants } from '../../../../ui/variants/button';
 import { useButtonRovingFocusContext } from './context';
 
 interface Props {

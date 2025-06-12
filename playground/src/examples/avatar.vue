@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AvatarFallback, AvatarImage, AvatarRoot } from '@/components/avatar';
+import { AvatarFallback, AvatarImage, AvatarRoot } from '@headless/components/avatar';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 function onLoadingStatusChange(_status: string) {}

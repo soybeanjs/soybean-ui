@@ -7,9 +7,9 @@ import type {
   CardSlot,
   CardTitleProps,
   CardTitleRootProps
-} from '@/components/card';
-import type { ClassValue } from '@/types';
-import type { ThemeSize } from '../../theme/types';
+} from '@headless/components/card';
+import type { ClassValue } from '@headless/types';
+import type { ThemeSize } from '@theme';
 
 export type CardUi = Partial<Record<CardSlot, ClassValue>>;
 

@@ -9,9 +9,9 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger
-} from '@/components/dialog';
-import { buttonVariants } from '../variants/button';
-import { dialogVariants } from '../variants/dialog';
+} from '@headless/components/dialog';
+import { buttonVariants } from '../../../ui/variants/button';
+import { dialogVariants } from '../../../ui/variants/dialog';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { closeIcon, content, description, overlay, title } = dialogVariants();

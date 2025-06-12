@@ -7,9 +7,9 @@ import type {
   AccordionRootProps,
   AccordionSlot,
   AccordionTriggerProps
-} from '@/components/accordion';
-import type { AcceptableValue, ClassValue, SingleOrMultipleType } from '@/types';
-import type { ThemeSize } from '../../theme/types';
+} from '@headless/components/accordion';
+import type { AcceptableValue, ClassValue, SingleOrMultipleType } from '@headless/types';
+import type { ThemeSize } from '@theme';
 
 export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */

@@ -1,4 +1,4 @@
-import { useCollection } from '@/composables';
+import { useCollection } from '@headless/composables';
 
 interface DemoItemData {
   label: string;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardElement } from '@/composables';
+import { useForwardElement } from '@headless/composables';
 import { provideCollectionContext } from './context';
 
 const { onContainerElementChange } = provideCollectionContext();

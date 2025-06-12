@@ -7,9 +7,9 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot
-} from '@/components/checkbox';
-import type { CheckedState } from '@/types';
-import { checkboxVariants } from '../variants/checkbox';
+} from '@headless/components/checkbox';
+import type { CheckedState } from '@headless/types';
+import { checkboxVariants } from '../../../ui/variants/checkbox';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const css = checkboxVariants();

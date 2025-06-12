@@ -1,6 +1,6 @@
 import { nextTick, ref } from 'vue';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { useElementSize } from '@/composables/use-element-size';
+import { useElementSize } from '@headless/composables/use-element-size';
 import { createMockElement, createMockResizeObserverEntry, setupMockResizeObserver } from '../../shared';
 
 describe('useElementSize', () => {

@@ -1,6 +1,6 @@
 import { nextTick, ref } from 'vue';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { useImageLoadingStatus } from '@/composables/use-image-loading-status';
+import { useImageLoadingStatus } from '@headless/composables/use-image-loading-status';
 import { TEST_DELAYS, delay, setupMockImage } from '../../shared';
 
 describe('useImageLoadingStatus', () => {

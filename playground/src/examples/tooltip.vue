@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipRoot, TooltipTrigger } from '@/components/tooltip';
-import { tooltipVariants } from '../variants/tooltip';
-import { buttonVariants } from '../variants/button';
+import { TooltipArrow, TooltipContent, TooltipPortal, TooltipRoot, TooltipTrigger } from '@headless/components/tooltip';
+import { tooltipVariants } from '../../../ui/variants/tooltip';
+import { buttonVariants } from '../../../ui/variants/button';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { content, arrow } = tooltipVariants();

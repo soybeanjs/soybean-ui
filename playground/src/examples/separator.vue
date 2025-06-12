@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Separator } from '@/components/separator';
-import { separatorVariants } from '../variants/separator';
+import { Separator } from '@headless/components/separator';
+import { separatorVariants } from '../../../ui/variants/separator';
 import SectionWrapper from '../components/section-wrapper.vue';
 
 const { root, label } = separatorVariants();

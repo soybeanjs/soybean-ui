@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RovingFocusGroup } from '@/components/roving-focus';
-import type { RovingFocusGroupProps } from '@/components/roving-focus';
+import { RovingFocusGroup } from '@headless/components/roving-focus';
+import type { RovingFocusGroupProps } from '@headless/components/roving-focus';
 import { provideButtonRovingFocusContext } from './context';
 
 interface Props extends RovingFocusGroupProps {

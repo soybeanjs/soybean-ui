@@ -1,4 +1,3 @@
-import type {} from '@nuxt/schema'; // workaround for TS bug with "phantom" deps
 import { addComponent, defineNuxtModule } from '@nuxt/kit';
 import { components } from '../constants';
 

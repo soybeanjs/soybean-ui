@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Arrow } from '@/components/arrow';
+import { Arrow } from '@headless/components/arrow';
 import SectionWrapper from '../components/section-wrapper.vue';
 </script>
 

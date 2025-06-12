@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import { useContext } from '@/composables';
+import { useContext } from '@headless/composables';
 
 interface ButtonRovingFocusContextParams {
   modelValue: Ref<string>;

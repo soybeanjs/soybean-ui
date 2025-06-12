@@ -10,8 +10,8 @@
 import { computed } from 'vue';
 import { ChevronDown } from 'lucide-vue-next';
 import { mergeSlotVariants } from '@theme';
-import { useForwardListeners, useOmitProps } from '@/composables';
-import type { AcceptableValue, SingleOrMultipleType } from '@/types';
+import { useForwardListeners, useOmitProps } from '@headless/composables';
+import type { AcceptableValue, SingleOrMultipleType } from '@headless/types';
 import {
   AccordionContent,
   AccordionHeader,
@@ -19,9 +19,9 @@ import {
   AccordionRoot,
   AccordionTrigger,
   provideAccordionThemeContext
-} from '@/components/accordion';
-import { Slot } from '@/components/slot';
-import { accordionVariants } from '../../variants/accordion';
+} from '@headless/components/accordion';
+import { Slot } from '@headless/components/slot';
+import { accordionVariants } from '@variants/accordion';
 import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
 
 const props = defineProps<AccordionProps<T, V, S>>();

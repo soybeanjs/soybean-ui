@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { buttonVariants } from '../../variants/button';
+import { buttonVariants } from '../../../../ui/variants/button';
 import SectionWrapper from '../../components/section-wrapper.vue';
 import ButtonGroup from './button-group.vue';
 import Button from './button.vue';
