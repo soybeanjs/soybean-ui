@@ -32,7 +32,7 @@ const LinkComponent = computed(() => {
 });
 
 const isExternal = computed(() => {
-  if (props.external) {
+  if (props.external || props.disabled) {
     return true;
   }
 
@@ -47,28 +47,54 @@ const isExternal = computed(() => {
   return false;
 });
 
-const forwarded = computed(() => ({
-  ...attrs,
-  ...props,
-  to: isExternal.value ? undefined : props.to,
-  href: isExternal.value ? props.to || props.href : props.href,
-  ariaDisabled: props.disabled ? 'true' : undefined,
-  role: props.disabled ? 'link' : undefined,
-  tabindex: props.disabled ? -1 : undefined
-}));
+const forwarded = computed(() => {
+  let to;
+  let href;
+
+  if (props.disabled) {
+    to = undefined;
+    href = undefined;
+  } else if (isExternal.value) {
+    to = undefined;
+    href = props.to || props.href;
+  } else {
+    to = props.to;
+    href = props.href;
+  }
+
+  const baseProps = {
+    ...attrs,
+    ...props,
+    to,
+    href,
+    'data-disabled': props.disabled ? '' : undefined,
+    'aria-disabled': props.disabled ? 'true' : undefined,
+    role: props.disabled ? 'link' : undefined,
+    tabindex: props.disabled ? -1 : undefined
+  };
+
+  return baseProps;
+});
+
+const handleClick = (event: Event) => {
+  if (props.disabled) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+};
 </script>
 
 <template>
-  <Primitive v-if="isExternal" v-bind="forwarded">
+  <Primitive v-if="isExternal" v-bind="forwarded" @click="handleClick">
     <slot />
   </Primitive>
-  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwarded">
+  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwarded" @click="handleClick">
     <template v-if="custom">
       <Primitive
         v-bind="forwarded"
         :class="slotProps?.isActive ? activeClass : inactiveClass"
-        :href="slotProps?.href"
-        @click="slotProps?.navigate"
+        :href="props.disabled ? undefined : slotProps?.href"
+        @click="props.disabled ? handleClick : slotProps?.navigate"
       >
         <slot />
       </Primitive>
