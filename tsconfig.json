@@ -1,36 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@ui": ["./playground/src/ui/index.ts"],
-      "@ui/*": ["./playground/src/ui/*"],
-      "@theme": ["./playground/src/theme/index.ts"],
-      "@theme/*": ["./playground/src/theme/*"],
-      "@variants": ["./playground/src/variants/index.ts"],
-      "@variants/*": ["./playground/src/variants/*"]
-    },
-    "resolveJsonModule": true,
-    "types": ["node", "vite/client"],
-    "strict": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "./dist",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*", "typings/**/*", "test/**/*", "playground/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "extends": "./.nuxt/tsconfig.json"
 }

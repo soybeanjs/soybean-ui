@@ -29,3 +29,14 @@ coverage
 *.sln
 *.sw?
 .temp
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+
+# Misc
+.fleet
+.idea
