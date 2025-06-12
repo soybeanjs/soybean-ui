@@ -34,6 +34,12 @@ export interface ConfigProviderProps {
    * @type TooltipProviderProps
    */
   tooltip?: Partial<TooltipProviderProps>;
+  /**
+   * Whether the application is running in Nuxt.
+   *
+   * @type boolean
+   */
+  nuxt?: boolean;
 }
 
 export interface ConfigProviderContextParams extends PropsToContext<ConfigProviderProps> {}

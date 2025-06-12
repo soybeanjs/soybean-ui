@@ -11,7 +11,8 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   dir: 'ltr',
   locale: 'en',
   scrollBody: true,
-  nonce: undefined
+  nonce: undefined,
+  nuxt: false
 });
 
 provideConfigProviderContext(transformPropsToContext(props));
