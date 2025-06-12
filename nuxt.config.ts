@@ -2,7 +2,9 @@ import { URL, fileURLToPath } from 'node:url';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  compatibilityDate: '2025-06-12',
   srcDir: './docs',
+  ignore: ['**/extensions/**', '**/uploads/**', '**/database/**', '**/node_modules/**', '**/.git/**', '**/dist/**'],
   // modules: ['@unocss/nuxt', 'soy-ui/nuxt'],
   // css: ['@unocss/reset/tailwind.css'],
   devtools: { enabled: true },

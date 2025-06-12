@@ -1,45 +1,23 @@
 <script setup lang="ts">
-import { ConfigProvider } from '@headless/components/config-provider';
-import { Link } from '@headless';
-import AccordionExample from './examples/accordion/single.vue';
-import AlertDialogExample from './examples/alert-dialog.vue';
-import ArrowExample from './examples/arrow.vue';
-import AspectRatioExample from './examples/aspect-ratio.vue';
-import AvatarExample from './examples/avatar.vue';
-import CardExample from './examples/card/index.vue';
-import CheckboxExample from './examples/checkbox.vue';
-import CollapsibleExample from './examples/collapsible.vue';
-import DialogExample from './examples/dialog.vue';
-import DropdownMenuExample from './examples/dropdown-menu.vue';
-import PopoverExample from './examples/popover.vue';
-import RadioGroupExample from './examples/radio-group.vue';
-import RovingFocusExample from './examples/roving-focus/demo.vue';
-import SeparatorExample from './examples/separator.vue';
-import TooltipExample from './examples/tooltip.vue';
+import { RouterView } from 'vue-router';
+
+defineOptions({
+  name: 'App'
+});
 </script>
 
 <template>
-  <ConfigProvider>
-    <div class="container p-4">
-      <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
-      <div class="flex flex-col gap-4">
-        <Link href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">SoybeanJS</Link>
-        <AccordionExample />
-        <AlertDialogExample />
-        <ArrowExample />
-        <AspectRatioExample />
-        <AvatarExample />
-        <CheckboxExample />
-        <CardExample />
-        <CollapsibleExample />
-        <DialogExample />
-        <DropdownMenuExample />
-        <PopoverExample />
-        <RadioGroupExample />
-        <RovingFocusExample />
-        <SeparatorExample />
-        <TooltipExample />
-      </div>
-    </div>
-  </ConfigProvider>
+  <RouterView />
 </template>
+
+<style>
+html,
+body,
+#app {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+</style>
