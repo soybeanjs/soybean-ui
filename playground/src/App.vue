@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import { ConfigProvider } from '@headless';
 
 defineOptions({
   name: 'App'
@@ -7,7 +8,9 @@ defineOptions({
 </script>
 
 <template>
-  <RouterView />
+  <ConfigProvider>
+    <RouterView />
+  </ConfigProvider>
 </template>
 
 <style>

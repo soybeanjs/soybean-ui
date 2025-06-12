@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ConfigProvider } from '@headless';
 import AccordionExample from '../examples/accordion/single.vue';
 import AlertDialogExample from '../examples/alert-dialog.vue';
 import ArrowExample from '../examples/arrow.vue';
@@ -19,27 +18,25 @@ import TooltipExample from '../examples/tooltip.vue';
 </script>
 
 <template>
-  <ConfigProvider>
-    <div class="container p-4">
-      <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
-      <div class="flex flex-col gap-4">
-        <AccordionExample />
-        <AlertDialogExample />
-        <ArrowExample />
-        <AspectRatioExample />
-        <AvatarExample />
-        <CheckboxExample />
-        <CardExample />
-        <CollapsibleExample />
-        <DialogExample />
-        <DropdownMenuExample />
-        <LinkExample />
-        <PopoverExample />
-        <RadioGroupExample />
-        <RovingFocusExample />
-        <SeparatorExample />
-        <TooltipExample />
-      </div>
+  <div class="container p-4">
+    <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
+    <div class="flex flex-col gap-4">
+      <AccordionExample />
+      <AlertDialogExample />
+      <ArrowExample />
+      <AspectRatioExample />
+      <AvatarExample />
+      <CheckboxExample />
+      <CardExample />
+      <CollapsibleExample />
+      <DialogExample />
+      <DropdownMenuExample />
+      <LinkExample />
+      <PopoverExample />
+      <RadioGroupExample />
+      <RovingFocusExample />
+      <SeparatorExample />
+      <TooltipExample />
     </div>
-  </ConfigProvider>
+  </div>
 </template>
