@@ -11,6 +11,9 @@ importers:
       '@floating-ui/vue':
         specifier: 1.1.6
         version: 1.1.6(vue@3.5.16(typescript@5.8.3))
+      '@iconify/vue':
+        specifier: 5.0.0
+        version: 5.0.0(vue@3.5.16(typescript@5.8.3))
       '@unocss/reset':
         specifier: 66.2.0
         version: 66.2.0
@@ -23,9 +26,6 @@ importers:
       clsx:
         specifier: 2.1.1
         version: 2.1.1
-      lucide-vue-next:
-        specifier: 0.514.0
-        version: 0.514.0(vue@3.5.16(typescript@5.8.3))
       tailwind-merge:
         specifier: 3.3.1
         version: 3.3.1
@@ -563,6 +563,11 @@ packages:
 
   '@iconify/utils@2.3.0':
     resolution: {integrity: sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==}
+
+  '@iconify/vue@5.0.0':
+    resolution: {integrity: sha512-C+KuEWIF5nSBrobFJhT//JS87OZ++QDORB6f2q2Wm6fl2mueSTpFBeBsveK0KW9hWiZ4mNiPjsh6Zs4jjdROSg==}
+    peerDependencies:
+      vue: '>=3'
 
   '@ioredis/commands@1.2.0':
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
@@ -3589,11 +3594,6 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lucide-vue-next@0.514.0:
-    resolution: {integrity: sha512-rZUuw7l8NTa2OZPo1RT/UPQLAWOAgZjDKv4tRyAXyjB1SWl/Bb7EhGjHYadfjMFSdaAYdfgiYGh5z/zIzl59zQ==}
-    peerDependencies:
-      vue: '>=3.0.1'
-
   luxon@3.6.1:
     resolution: {integrity: sha512-tJLxrKJhO2ukZ5z0gyjY1zPh3Rh88Ej9P7jNrZiHMUXHae1yvI2imgOZtL1TO8TW6biMMKfTtAOoEJANgtWBMQ==}
     engines: {node: '>=12'}
@@ -6023,6 +6023,11 @@ snapshots:
       mlly: 1.7.4
     transitivePeerDependencies:
       - supports-color
+
+  '@iconify/vue@5.0.0(vue@3.5.16(typescript@5.8.3))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.16(typescript@5.8.3)
 
   '@ioredis/commands@1.2.0': {}
 
@@ -9431,10 +9436,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-vue-next@0.514.0(vue@3.5.16(typescript@5.8.3)):
-    dependencies:
-      vue: 3.5.16(typescript@5.8.3)
 
   luxon@3.6.1: {}
 

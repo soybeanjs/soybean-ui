@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { Accordion, Card } from '@ui';
 import type { AccordionItemData } from '@ui';
-import { Earth, Info, Rocket } from 'lucide-vue-next';
 
 defineOptions({
   name: 'DemoAccordionMultiple'
@@ -15,19 +14,19 @@ const items: AccordionItemData[] = [
     value: '1',
     title: 'Is it accessible?',
     description: 'Yes. It adheres to the WAI-ARIA design pattern.',
-    icon: Info
+    icon: 'lucide:info'
   },
   {
     value: '2',
     title: 'Is it unstyled?',
     description: "Yes. It's unstyled by default, giving you freedom over the look and feel.",
-    icon: Rocket
+    icon: 'lucide:rocket'
   },
   {
     value: '3',
     title: 'Can it be animated?',
     description: 'Yes! You can use the transition prop to configure the animation.',
-    icon: Earth
+    icon: 'lucide:earth'
   }
 ];
 </script>

@@ -16,8 +16,12 @@ export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'd
   title?: string;
   /** The description of the accordion content. */
   description?: string;
-  /** The icon of the accordion item. */
-  icon?: VNode | Component;
+  /**
+   * The icon of the accordion item.
+   *
+   * if it is a string, it will be used as the icon name of the iconify.
+   */
+  icon?: VNode | Component | string;
 }
 
 export type AccordionUi = Partial<Record<AccordionSlot | 'triggerLeadingIcon' | 'triggerIcon', ClassValue>>;

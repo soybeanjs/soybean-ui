@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Check, Minus } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 import {
   CheckboxControl,
   CheckboxGroupRoot,
@@ -44,8 +44,8 @@ const checked = computed<CheckedState>({
       <CheckboxControl id="checkbox-1" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
-            <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
-            <Check v-else class="size-full" />
+            <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+            <Icon v-else icon="lucide:check" class="size-full" />
           </CheckboxIndicator>
         </Transition>
       </CheckboxControl>
@@ -56,8 +56,8 @@ const checked = computed<CheckedState>({
       <CheckboxControl id="checkbox-2" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
-            <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
-            <Check v-else class="size-full" />
+            <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+            <Icon v-else icon="lucide:check" class="size-full" />
           </CheckboxIndicator>
         </Transition>
       </CheckboxControl>
@@ -74,8 +74,8 @@ const checked = computed<CheckedState>({
         <CheckboxControl :id="`checkbox-${item.value}`" :class="css.control()">
           <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
             <CheckboxIndicator :class="css.indicator()">
-              <Minus v-if="modelValue === 'indeterminate'" class="size-full" />
-              <Check v-else class="size-full" />
+              <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+              <Icon v-else icon="lucide:check" class="size-full" />
             </CheckboxIndicator>
           </Transition>
         </CheckboxControl>

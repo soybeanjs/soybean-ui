@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { X } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 import {
   PopoverAnchor,
   PopoverArrow,
@@ -26,7 +26,7 @@ const { content, arrow } = popoverVariants();
         <PopoverContent :class="content()">
           <PopoverArrow :class="arrow()" />
           <PopoverClose as="template">
-            <X class="absolute top-1 right-1 size-3 cursor-pointer" />
+            <Icon icon="lucide:x" class="absolute top-1 right-1 size-3 cursor-pointer" />
           </PopoverClose>
           <p>This is a popover</p>
         </PopoverContent>
@@ -43,7 +43,7 @@ const { content, arrow } = popoverVariants();
         <PopoverContent :class="content()">
           <PopoverArrow :class="arrow()" />
           <PopoverClose as="template">
-            <X class="absolute top-1 right-1 size-3 cursor-pointer" />
+            <Icon icon="lucide:x" class="absolute top-1 right-1 size-3 cursor-pointer" />
           </PopoverClose>
           <p>This is a popover</p>
         </PopoverContent>

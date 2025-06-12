@@ -8,7 +8,7 @@
   "
 >
 import { computed } from 'vue';
-import { ChevronDown } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 import { mergeSlotVariants } from '@theme';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
 import type { AcceptableValue, SingleOrMultipleType } from '@headless/types';
@@ -62,13 +62,14 @@ provideAccordionThemeContext({
             <AccordionTrigger v-bind="props.triggerProps">
               <slot name="leading" :item="item" :model-value="modelValue" :open="open">
                 <Slot :class="ui.triggerLeadingIcon">
-                  <slot name="leading-icon" :item="item" :model-value="modelValue" :open="open" />
+                  <Icon v-if="typeof item.icon === 'string'" :icon="item.icon" />
+                  <component :is="item.icon" v-else />
                 </Slot>
               </slot>
               <slot name="title" :item="item" :model-value="modelValue" :open="open">{{ item.title }}</slot>
               <Slot :class="ui.triggerIcon">
                 <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">
-                  <ChevronDown />
+                  <Icon icon="lucide:chevron-down" />
                 </slot>
               </Slot>
             </AccordionTrigger>

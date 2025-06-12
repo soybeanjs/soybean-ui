@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Rocket, X } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 import { Card } from '@ui';
 </script>
 
@@ -18,7 +18,7 @@ import { Card } from '@ui';
       </Card>
       <Card title="Title Slot" split>
         <template #title-leading>
-          <Rocket />
+          <Icon icon="lucide:rocket" />
         </template>
         <template #title-trailing>
           <span>Trailing</span>
@@ -28,13 +28,13 @@ import { Card } from '@ui';
     </Card>
     <Card title="Description" split description="this is a description">
       <template #title-leading>
-        <Rocket />
+        <Icon icon="lucide:rocket" />
       </template>
       <template #title-trailing>
         <span>Trailing</span>
       </template>
       <template #extra>
-        <X />
+        <Icon icon="lucide:x" />
       </template>
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
     </Card>

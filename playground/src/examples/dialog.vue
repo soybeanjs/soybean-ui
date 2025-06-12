@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { X } from 'lucide-vue-next';
+import { Icon } from '@iconify/vue';
 import {
   DialogClose,
   DialogContent,
@@ -30,7 +30,7 @@ const { closeIcon, content, description, overlay, title } = dialogVariants();
           <DialogDescription :class="description()">Dialog Description</DialogDescription>
           <DialogClose as="template" :class="closeIcon()">
             <button>
-              <X />
+              <Icon icon="lucide:x" />
             </button>
           </DialogClose>
           <p>This is a dialog</p>
