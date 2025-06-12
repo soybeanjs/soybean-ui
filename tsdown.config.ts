@@ -11,7 +11,13 @@ export default defineConfig({
     'src/index.ts'
   ],
   platform: 'neutral',
-  external: [...Object.keys(pkg.dependencies), ...Object.keys(pkg.devDependencies), '@vue/shared'],
+  external: [
+    ...Object.keys(pkg.dependencies),
+    ...Object.keys(pkg.devDependencies),
+    '@vue/shared',
+    '@nuxt/kit',
+    '@nuxt/schema'
+  ],
   noExternal: ['aria-hidden'],
   clean: true,
   dts: {
