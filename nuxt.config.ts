@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-06-12',
   srcDir: './docs',
   ignore: ['**/extensions/**', '**/uploads/**', '**/database/**', '**/node_modules/**', '**/.git/**', '**/dist/**'],
-  // modules: ['@unocss/nuxt', 'soy-ui/nuxt'],
-  // css: ['@unocss/reset/tailwind.css'],
+  modules: ['@unocss/nuxt'],
+  css: ['@unocss/reset/tailwind.css'],
   devtools: { enabled: true },
   alias: {
     '@headless': '../src/index.ts',
