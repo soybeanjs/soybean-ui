@@ -33,3 +33,6 @@ export function refreshIOSDetection(): boolean {
   cachedIOSResult = null;
   return isIOS();
 }
+
+// eslint-disable-next-line no-underscore-dangle
+export const isNuxt = Boolean(window?.__NUXT__);

@@ -1,3 +1,5 @@
+import { URL, fileURLToPath } from 'node:url';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   srcDir: './docs',
@@ -11,5 +13,15 @@ export default defineNuxtConfig({
     '@ui/*': '../ui/*',
     '@theme': '../ui/theme/index.ts',
     '@variants/*': '../ui/variants/*'
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '@headless': fileURLToPath(new URL('./src', import.meta.url)),
+        '@ui': fileURLToPath(new URL('./ui', import.meta.url)),
+        '@theme': fileURLToPath(new URL('./ui/theme', import.meta.url)),
+        '@variants': fileURLToPath(new URL('./ui/variants', import.meta.url))
+      }
+    }
   }
 });

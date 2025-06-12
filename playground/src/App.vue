@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ConfigProvider } from '@headless/components/config-provider';
+import { Link } from '@headless';
 import AccordionExample from './examples/accordion/single.vue';
 import AlertDialogExample from './examples/alert-dialog.vue';
 import ArrowExample from './examples/arrow.vue';
@@ -22,6 +23,7 @@ import TooltipExample from './examples/tooltip.vue';
     <div class="container p-4">
       <h1 class="py-4 text-center text-2xl font-bold">SoybeanHeadless Examples</h1>
       <div class="flex flex-col gap-4">
+        <Link href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">SoybeanJS</Link>
         <AccordionExample />
         <AlertDialogExample />
         <ArrowExample />
