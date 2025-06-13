@@ -4,6 +4,7 @@ import AlertDialogExample from '../examples/alert-dialog.vue';
 import ArrowExample from '../examples/arrow.vue';
 import AspectRatioExample from '../examples/aspect-ratio.vue';
 import AvatarExample from '../examples/avatar.vue';
+import ButtonExample from '../examples/button/index.vue';
 import CardExample from '../examples/card/index.vue';
 import CheckboxExample from '../examples/checkbox.vue';
 import CollapsibleExample from '../examples/collapsible.vue';
@@ -26,6 +27,7 @@ import TooltipExample from '../examples/tooltip.vue';
       <ArrowExample />
       <AspectRatioExample />
       <AvatarExample />
+      <ButtonExample />
       <CheckboxExample />
       <CardExample />
       <CollapsibleExample />

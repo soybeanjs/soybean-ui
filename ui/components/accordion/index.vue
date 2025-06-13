@@ -8,7 +8,6 @@
   "
 >
 import { computed } from 'vue';
-import { Icon } from '@iconify/vue';
 import { mergeSlotVariants } from '@theme';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
 import type { AcceptableValue, SingleOrMultipleType } from '@headless/types';
@@ -22,6 +21,7 @@ import {
 } from '@headless/components/accordion';
 import { Slot } from '@headless/components/slot';
 import { accordionVariants } from '@variants/accordion';
+import Icon from '../icon/icon.vue';
 import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
 
 const props = defineProps<AccordionProps<T, V, S>>();
