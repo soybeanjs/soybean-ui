@@ -3,6 +3,7 @@ import type { Align, DataOrientation, PropsToContext } from '@headless/types';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@variants/button';
 import type { IconProps } from '../icon/types';
+import type { LinkProps } from '../link/types';
 
 export interface ButtonProps extends _ButtonProps {
   color?: ThemeColor;
@@ -60,6 +61,8 @@ export interface ButtonLoadingProps extends ButtonProps {
    */
   loadingPosition?: Align;
 }
+
+export interface ButtonLinkProps extends ButtonProps, LinkProps {}
 
 export interface ButtonGroupProps extends ButtonProps {
   orientation?: DataOrientation;

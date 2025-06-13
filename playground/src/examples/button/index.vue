@@ -9,6 +9,7 @@ import DemoButtonSlot from './slot.vue';
 import DemoButtonDisabled from './disabled.vue';
 import DemoButtonLoading from './loading.vue';
 import DemoButtonIcon from './icon.vue';
+import DemoButtonLink from './link.vue';
 import DemoButtonGroup from './group.vue';
 </script>
 
@@ -23,6 +24,7 @@ import DemoButtonGroup from './group.vue';
     <DemoButtonDisabled />
     <DemoButtonLoading />
     <DemoButtonIcon />
+    <DemoButtonLink />
     <DemoButtonGroup />
   </Card>
 </template>
