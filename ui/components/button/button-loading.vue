@@ -6,7 +6,7 @@ import Button from './button.vue';
 import type { ButtonLoadingProps } from './types';
 
 defineOptions({
-  name: 'ButtonLoading',
+  name: 'SButtonLoading',
   inheritAttrs: false
 });
 

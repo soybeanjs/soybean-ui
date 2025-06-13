@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Button } from '@headless/components/button';
+import { Button } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { cn } from '@theme';
 import { buttonVariants } from '@variants/button';
@@ -8,7 +8,7 @@ import { useButtonGroupContext } from './context';
 import type { ButtonProps } from './types';
 
 defineOptions({
-  name: 'Button'
+  name: 'SButton'
 });
 
 const props = defineProps<ButtonProps>();

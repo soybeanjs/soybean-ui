@@ -5,7 +5,7 @@ import Button from './button.vue';
 import type { ButtonLinkProps } from './types';
 
 defineOptions({
-  name: 'ButtonLink'
+  name: 'SButtonLink'
 });
 
 const props = withDefaults(defineProps<ButtonLinkProps>(), {

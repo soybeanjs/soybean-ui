@@ -1,5 +1,4 @@
-import type { ButtonProps as _ButtonProps } from '@headless/components/button';
-import type { Align, DataOrientation, PropsToContext } from '@headless/types';
+import type { Align, DataOrientation, Direction, PropsToContext, ButtonProps as _ButtonProps } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@variants/button';
 import type { IconProps } from '../icon/types';
@@ -65,7 +64,18 @@ export interface ButtonLoadingProps extends ButtonProps {
 export interface ButtonLinkProps extends ButtonProps, LinkProps {}
 
 export interface ButtonGroupProps extends ButtonProps {
+  /**
+   * The orientation of the button group.
+   *
+   * @default 'horizontal'
+   */
   orientation?: DataOrientation;
+  /**
+   * The direction of the button group.
+   *
+   * @default 'ltr'
+   */
+  dir?: Direction;
 }
 
 export interface ButtonGroupContextParams

@@ -1,10 +1,10 @@
-import Button from './button.vue';
-import ButtonLoading from './button-loading.vue';
-import ButtonIcon from './button-icon.vue';
-import ButtonLink from './button-link.vue';
-import ButtonGroup from './button-group.vue';
+import SButton from './button.vue';
+import SButtonLoading from './button-loading.vue';
+import SButtonIcon from './button-icon.vue';
+import SButtonLink from './button-link.vue';
+import SButtonGroup from './button-group.vue';
 
-export { Button, ButtonLoading, ButtonIcon, ButtonLink, ButtonGroup };
+export { SButton, SButtonLoading, SButtonIcon, SButtonLink, SButtonGroup };
 
 export type {
   ButtonProps,

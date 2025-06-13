@@ -5,7 +5,7 @@ import Button from './button.vue';
 import type { ButtonIconProps } from './types';
 
 defineOptions({
-  name: 'ButtonIcon'
+  name: 'SButtonIcon'
 });
 
 const props = withDefaults(defineProps<ButtonIconProps>(), {
