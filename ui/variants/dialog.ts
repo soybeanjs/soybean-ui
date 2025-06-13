@@ -9,7 +9,7 @@ export const dialogVariants = tv({
       `data-[state=closed]:(animate-out fade-out-0)`
     ],
     content: [
-      `fixed left-[50%] top-[50%] z-50 flex flex-col w-full border bg-background shadow-lg translate-x-[-50%] translate-y-[-50%] md:w-full duration-200 sm:rounded-lg`,
+      `fixed left-[50%] top-[50%] z-50 flex flex-col w-full border bg-background shadow-lg outline-none translate-x-[-50%] translate-y-[-50%] md:w-full duration-200 sm:rounded-lg`,
       `data-[state=open]:(animate-in fade-in-0 zoom-in-95 slide-in-from-left-1/2 slide-in-from-top-[48%])`,
       `data-[state=closed]:(animate-out fade-out-0 zoom-out-95 slide-out-to-left-1/2 slide-out-to-top-[48%])`
     ],
@@ -34,7 +34,7 @@ export const dialogVariants = tv({
         header: 'gap-y-2',
         title: 'gap-x-1.75 text-sm',
         description: 'text-xs',
-        closeIcon: 'right-2 top-2',
+        closeIcon: 'right-1.75 top-1.75',
         footer: 'gap-2'
       },
       md: {
@@ -42,7 +42,7 @@ export const dialogVariants = tv({
         header: 'gap-y-3',
         title: 'gap-x-2 text-base',
         description: 'text-sm',
-        closeIcon: 'right-3 top-3',
+        closeIcon: 'right-2 top-2',
         footer: 'gap-3'
       },
       lg: {
@@ -50,7 +50,7 @@ export const dialogVariants = tv({
         header: 'gap-y-4',
         title: 'gap-x-2.5 text-lg',
         description: 'text-base',
-        closeIcon: 'right-4 top-4',
+        closeIcon: 'right-2.5 top-2.5',
         footer: 'gap-4'
       },
       xl: {
@@ -58,7 +58,7 @@ export const dialogVariants = tv({
         header: 'gap-y-5',
         title: 'gap-x-3 text-xl',
         description: 'text-lg',
-        closeIcon: 'right-5 top-5',
+        closeIcon: 'right-3 top-3',
         footer: 'gap-5'
       },
       '2xl': {
@@ -66,7 +66,7 @@ export const dialogVariants = tv({
         header: 'gap-y-6',
         title: 'gap-x-3.5 text-2xl',
         description: 'text-xl',
-        closeIcon: 'right-6 top-6',
+        closeIcon: 'right-4 top-4',
         footer: 'gap-6'
       }
     }
