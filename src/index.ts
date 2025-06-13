@@ -20,5 +20,6 @@ export * from './components/roving-focus';
 export * from './components/separator';
 export * from './components/slot';
 export * from './components/tooltip';
+export * from './components/visually-hidden';
 
 export type * from './types';
