@@ -20,3 +20,5 @@ export const OPPOSITE_SIDE: Record<Side, Side> = {
   bottom: 'top',
   left: 'right'
 };
+
+export const SELECTION_KEYS = ['Enter', ' '];

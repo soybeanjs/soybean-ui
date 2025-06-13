@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { nextTick } from 'vue';
+import { SELECTION_KEYS } from '../../constants';
 import { useForwardElement } from '../../composables';
 import MenuItemImpl from './menu-item-impl.vue';
 import { useMenuContentContext, useMenuRootContext } from './context';
-import { ITEM_SELECT, SELECTION_KEYS } from './shared';
+import { ITEM_SELECT } from './shared';
 import type { MenuItemEmits, MenuItemProps } from './types';
 
 defineOptions({

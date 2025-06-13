@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
+import { SELECTION_KEYS } from '../../constants';
 import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
-import { SELECTION_KEYS } from '../menu/shared';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
 
