@@ -1,14 +1,17 @@
 import type { Component, VNode } from 'vue';
 import type {
+  AcceptableValue,
   AccordionContentProps,
   AccordionRootEmits as AccordionEmits,
   AccordionHeaderProps,
   AccordionItemProps,
+  AccordionRootEmits,
   AccordionRootProps,
   AccordionSlot,
-  AccordionTriggerProps
-} from '@headless/components/accordion';
-import type { AcceptableValue, ClassValue, SingleOrMultipleType } from '@headless/types';
+  AccordionTriggerProps,
+  ClassValue,
+  SingleOrMultipleType
+} from '@headless';
 import type { ThemeSize } from '@theme';
 
 export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
@@ -40,4 +43,13 @@ export type AccordionProps<
   contentProps?: AccordionContentProps;
 };
 
-export type { AccordionEmits };
+export type {
+  AccordionEmits,
+  AccordionRootProps,
+  AccordionRootEmits,
+  AccordionItemProps,
+  AccordionTriggerProps,
+  AccordionHeaderProps,
+  AccordionContentProps,
+  AccordionSlot
+};

@@ -8,21 +8,25 @@
   "
 >
 import { computed } from 'vue';
-import { mergeSlotVariants } from '@theme';
-import { useForwardListeners, useOmitProps } from '@headless/composables';
-import type { AcceptableValue, SingleOrMultipleType } from '@headless/types';
 import {
   AccordionContent,
   AccordionHeader,
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  Slot,
   provideAccordionThemeContext
-} from '@headless/components/accordion';
-import { Slot } from '@headless/components/slot';
+} from '@headless';
+import { useForwardListeners, useOmitProps } from '@headless/composables';
+import type { AcceptableValue, SingleOrMultipleType } from '@headless';
+import { mergeSlotVariants } from '@theme';
 import { accordionVariants } from '@variants/accordion';
 import Icon from '../icon/icon.vue';
 import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
+
+defineOptions({
+  name: 'SAccordion'
+});
 
 const props = defineProps<AccordionProps<T, V, S>>();
 
