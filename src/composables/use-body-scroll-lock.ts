@@ -18,6 +18,7 @@ const SCROLL_LOCK_CSS = `
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
+    height: auto !important;
   }
 
   .${CSS_CLASSES.BODY_WITH_SCROLLBAR} {
