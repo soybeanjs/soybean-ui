@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Icon } from '@iconify/vue';
-import { useConfigProvider } from '../config-provider/context';
+import { useConfigProvider } from '../config-provider';
 import type { IconProps } from './types';
 
 defineOptions({
-  name: 'Icon'
+  name: 'SIcon'
 });
 
 const props = withDefaults(defineProps<IconProps>(), {

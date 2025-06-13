@@ -1,5 +1,5 @@
-import Icon from './icon.vue';
+import SIcon from './icon.vue';
 
-export { Icon };
+export { SIcon };
 
 export type { IconProps } from './types';
