@@ -47,33 +47,19 @@ const isExternal = computed(() => {
   return false;
 });
 
-const forwarded = computed(() => {
-  let to;
-  let href;
+const forwardedProps = computed(() => {
+  const href = props.to || props.href;
 
-  if (props.disabled) {
-    to = undefined;
-    href = undefined;
-  } else if (isExternal.value) {
-    to = undefined;
-    href = props.to || props.href;
-  } else {
-    to = props.to;
-    href = props.href;
-  }
-
-  const baseProps = {
-    ...attrs,
+  return {
     ...props,
-    to,
+    ...attrs,
+    to: isExternal.value ? undefined : href,
     href,
     'data-disabled': props.disabled ? '' : undefined,
     'aria-disabled': props.disabled ? 'true' : undefined,
     role: props.disabled ? 'link' : undefined,
-    tabindex: props.disabled ? -1 : undefined
+    tabindex: props.disabled ? '-1' : props.tabindex
   };
-
-  return baseProps;
 });
 
 const handleClick = (event: Event) => {
@@ -85,20 +71,10 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive v-if="isExternal" v-bind="forwarded" @click="handleClick">
+  <Primitive v-if="isExternal" v-bind="forwardedProps" @click="handleClick">
     <slot />
   </Primitive>
-  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwarded" @click="handleClick">
-    <template v-if="custom">
-      <Primitive
-        v-bind="forwarded"
-        :class="slotProps?.isActive ? activeClass : inactiveClass"
-        :href="props.disabled ? undefined : slotProps?.href"
-        @click="props.disabled ? handleClick : slotProps?.navigate"
-      >
-        <slot />
-      </Primitive>
-    </template>
-    <slot v-else />
+  <component :is="LinkComponent" v-else v-bind="forwardedProps" @click="handleClick">
+    <slot />
   </component>
 </template>
