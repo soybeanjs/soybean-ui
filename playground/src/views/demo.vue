@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Link } from '@ui';
+import { SLink } from '@ui';
 </script>
 
 <template>
   <div>
-    <Link to="/">To Home</Link>
+    <SLink to="/">To Home</SLink>
   </div>
 </template>

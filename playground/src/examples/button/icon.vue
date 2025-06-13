@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ButtonIcon, Card } from '@ui';
+import { SButtonIcon, SCard } from '@ui';
 </script>
 
 <template>
-  <Card title="Icon" split>
+  <SCard title="Icon" split>
     <div class="flex flex-wrap gap-3">
-      <ButtonIcon icon="lucide:skip-back" />
-      <ButtonIcon icon="lucide:skip-forward" />
-      <ButtonIcon icon="lucide:pause" />
+      <SButtonIcon icon="lucide:skip-back" />
+      <SButtonIcon icon="lucide:skip-forward" />
+      <SButtonIcon icon="lucide:pause" />
     </div>
-  </Card>
+  </SCard>
 </template>

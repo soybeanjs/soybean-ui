@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { Card, Link } from '@ui';
+import { SCard, SLink } from '@ui';
 </script>
 
 <template>
-  <Card title="Router Link or Nuxt Link">
+  <SCard title="Router Link or Nuxt Link">
     <div class="flex flex-col gap-2">
-      <Link to="/demo">Demo</Link>
-      <Link to="/demo" disabled>Disabled</Link>
-      <Link to="/demo" external target="_blank">External</Link>
+      <SLink to="/demo">Demo</SLink>
+      <SLink to="/demo" disabled>Disabled</SLink>
+      <SLink to="/demo" external target="_blank">External</SLink>
     </div>
-  </Card>
-  <Card title="Normal Link: href">
-    <Link href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">SoybeanJS</Link>
-  </Card>
+  </SCard>
+  <SCard title="Normal Link: href">
+    <SLink href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">SoybeanJS</SLink>
+  </SCard>
 </template>

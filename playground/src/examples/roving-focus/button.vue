@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { RovingFocusItem } from '@headless/components/roving-focus';
-import { buttonVariants } from '../../../../ui/variants/button';
+import { SButton } from '@ui';
+import { RovingFocusItem } from '@headless';
 import { useButtonRovingFocusContext } from './context';
 
 interface Props {
@@ -16,8 +16,6 @@ const { modelValue, onModelValueChange } = useButtonRovingFocusContext('Button')
 const isSelected = computed(
   () => modelValue.value !== undefined && props.value !== undefined && modelValue.value === props.value
 );
-
-const buttonClasses = computed(() => buttonVariants({ variant: isSelected.value ? 'solid' : 'pure' }));
 
 const onClick = () => {
   if (props.disabled) {
@@ -36,8 +34,14 @@ const onFocus = () => {
 
 <template>
   <RovingFocusItem as="template" :active="isSelected" :focusable="!disabled">
-    <button :class="buttonClasses" :value="value" :disabled="disabled" @click="onClick" @focus="onFocus">
+    <SButton
+      :variant="isSelected ? 'solid' : 'pure'"
+      :value="value"
+      :disabled="disabled"
+      @click="onClick"
+      @focus="onFocus"
+    >
       <slot />
-    </button>
+    </SButton>
   </RovingFocusItem>
 </template>

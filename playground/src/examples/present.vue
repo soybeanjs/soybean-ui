@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { usePresence } from '@headless/composables/use-presence';
+import { usePresence } from '@headless/composables';
 
 const isPresent = ref(false);
 const elementRef = ref<HTMLElement>();

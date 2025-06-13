@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Arrow } from '@headless/components/arrow';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard } from '@ui';
+import { Arrow } from '@headless';
 </script>
 
 <template>
-  <SectionWrapper title="Arrow">
+  <SCard title="Arrow">
     <Arrow class="fill-popover stroke-border" />
     <Arrow class="fill-popover-foreground" />
-  </SectionWrapper>
+  </SCard>
 </template>

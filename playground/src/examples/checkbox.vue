@@ -1,16 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Icon } from '@iconify/vue';
-import {
-  CheckboxControl,
-  CheckboxGroupRoot,
-  CheckboxIndicator,
-  CheckboxLabel,
-  CheckboxRoot
-} from '@headless/components/checkbox';
-import type { CheckedState } from '@headless/types';
-import { checkboxVariants } from '../../../ui/variants/checkbox';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard, SIcon } from '@ui';
+import { CheckboxControl, CheckboxGroupRoot, CheckboxIndicator, CheckboxLabel, CheckboxRoot } from '@headless';
+import type { CheckedState } from '@headless';
+import { checkboxVariants } from '@variants/checkbox';
 
 const css = checkboxVariants();
 
@@ -38,14 +31,14 @@ const checked = computed<CheckedState>({
 </script>
 
 <template>
-  <SectionWrapper title="Checkbox">
+  <SCard title="Checkbox">
     <div>Checkbox Single:</div>
     <CheckboxRoot v-slot="{ modelValue }" :class="css.root()">
       <CheckboxControl id="checkbox-1" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
-            <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
-            <Icon v-else icon="lucide:check" class="size-full" />
+            <SIcon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+            <SIcon v-else icon="lucide:check" class="size-full" />
           </CheckboxIndicator>
         </Transition>
       </CheckboxControl>
@@ -56,8 +49,8 @@ const checked = computed<CheckedState>({
       <CheckboxControl id="checkbox-2" :class="css.control()">
         <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
           <CheckboxIndicator :class="css.indicator()">
-            <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
-            <Icon v-else icon="lucide:check" class="size-full" />
+            <SIcon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+            <SIcon v-else icon="lucide:check" class="size-full" />
           </CheckboxIndicator>
         </Transition>
       </CheckboxControl>
@@ -74,13 +67,13 @@ const checked = computed<CheckedState>({
         <CheckboxControl :id="`checkbox-${item.value}`" :class="css.control()">
           <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
             <CheckboxIndicator :class="css.indicator()">
-              <Icon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
-              <Icon v-else icon="lucide:check" class="size-full" />
+              <SIcon v-if="modelValue === 'indeterminate'" icon="lucide:minus" class="size-full" />
+              <SIcon v-else icon="lucide:check" class="size-full" />
             </CheckboxIndicator>
           </Transition>
         </CheckboxControl>
         <CheckboxLabel :class="css.label()">{{ item.label }}</CheckboxLabel>
       </CheckboxRoot>
     </CheckboxGroupRoot>
-  </SectionWrapper>
+  </SCard>
 </template>

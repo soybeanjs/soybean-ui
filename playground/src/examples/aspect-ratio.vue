@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { AspectRatio } from '@headless/components/aspect-ratio';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard } from '@ui';
+import { AspectRatio } from '@headless';
 </script>
 
 <template>
-  <SectionWrapper title="Aspect Ratio">
+  <SCard title="Aspect Ratio">
     <div class="w-100 lt-sm:w-full">
       <AspectRatio :ratio="16 / 9" class="bg-muted">
         <img
@@ -13,5 +13,5 @@ import SectionWrapper from '../components/section-wrapper.vue';
         />
       </AspectRatio>
     </div>
-  </SectionWrapper>
+  </SCard>
 </template>

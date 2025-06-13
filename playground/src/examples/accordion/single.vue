@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Accordion, Card } from '@ui';
+import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 
 defineOptions({
@@ -34,11 +34,11 @@ const items: AccordionItemData[] = [
 
 <template>
   <div class="flex-c gap-4">
-    <Card title="Single Collapse" split>
-      <Accordion v-model="single" type="single" collapsible :items="items" />
-    </Card>
-    <Card title="Single Collapse (always open one)" split>
-      <Accordion v-model="single2" type="single" :items="items" />
-    </Card>
+    <SCard title="Single Collapse" split>
+      <SAccordion v-model="single" type="single" collapsible :items="items" />
+    </SCard>
+    <SCard title="Single Collapse (always open one)" split>
+      <SAccordion v-model="single2" type="single" :items="items" />
+    </SCard>
   </div>
 </template>

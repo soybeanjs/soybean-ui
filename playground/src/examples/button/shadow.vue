@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Card } from '@ui';
+import { SButton, SCard } from '@ui';
 import type { ButtonShadow } from '@variants/button';
 
 defineOptions({
@@ -10,11 +10,11 @@ const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>
 
 <template>
-  <Card title="Shadow" split>
+  <SCard title="Shadow" split>
     <div class="flex flex-wrap gap-3">
-      <Button v-for="item in shadows" :key="item" variant="pure" :shadow="item">
+      <SButton v-for="item in shadows" :key="item" variant="pure" :shadow="item">
         {{ item }}
-      </Button>
+      </SButton>
     </div>
-  </Card>
+  </SCard>
 </template>

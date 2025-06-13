@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import SectionWrapper from '../../components/section-wrapper.vue';
+import { SCard } from '@ui';
 import CollectionList from './collection-list.vue';
 import CollectionItem from './collection-item.vue';
+
+defineOptions({
+  name: 'DemoCollection'
+});
 
 const items = [
   {
@@ -20,7 +24,7 @@ const items = [
 </script>
 
 <template>
-  <SectionWrapper title="Collection">
+  <SCard title="Collection">
     <CollectionList>
       <template v-for="item in items" :key="item.value">
         <CollectionItem v-bind="item">
@@ -28,5 +32,5 @@ const items = [
         </CollectionItem>
       </template>
     </CollectionList>
-  </SectionWrapper>
+  </SCard>
 </template>

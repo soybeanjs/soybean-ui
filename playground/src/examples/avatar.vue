@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { AvatarFallback, AvatarImage, AvatarRoot } from '@headless/components/avatar';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard } from '@ui';
+import { AvatarFallback, AvatarImage, AvatarRoot } from '@headless';
 
 function onLoadingStatusChange(_status: string) {}
 </script>
 
 <template>
-  <SectionWrapper title="Avatar">
+  <SCard title="Avatar">
     <div class="space-y-6">
       <section>
         <h2 class="text-lg font-semibold mb-4">Basic Avatar with Image</h2>
@@ -132,5 +132,5 @@ function onLoadingStatusChange(_status: string) {}
         </div>
       </section>
     </div>
-  </SectionWrapper>
+  </SCard>
 </template>

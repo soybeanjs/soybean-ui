@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { RovingFocusGroup } from '@headless/components/roving-focus';
-import type { RovingFocusGroupProps } from '@headless/components/roving-focus';
+import { SButtonGroup } from '@ui';
+import type { ButtonGroupProps } from '@ui';
+import { RovingFocusGroup } from '@headless';
+import type { RovingFocusGroupProps } from '@headless';
 import { provideButtonRovingFocusContext } from './context';
 
-interface Props extends RovingFocusGroupProps {
+interface Props extends Omit<ButtonGroupProps, 'dir'>, Omit<RovingFocusGroupProps, 'color'> {
   defaultValue?: string;
 }
 
@@ -20,12 +22,9 @@ provideButtonRovingFocusContext({ modelValue });
 </script>
 
 <template>
-  <RovingFocusGroup
-    :loop="props.loop"
-    :orientation="props.orientation"
-    class="inline-flex gap-2"
-    :class="props.orientation === 'horizontal' ? 'flex-row' : 'flex-col'"
-  >
-    <slot />
+  <RovingFocusGroup v-bind="props" as="template">
+    <SButtonGroup>
+      <slot />
+    </SButtonGroup>
   </RovingFocusGroup>
 </template>

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { Separator } from '@headless/components/separator';
-import { separatorVariants } from '../../../ui/variants/separator';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard } from '@ui';
+import { Separator } from '@headless';
+import { separatorVariants } from '@variants/separator';
 
 const { root, label } = separatorVariants();
 </script>
 
 <template>
-  <SectionWrapper title="Separator">
+  <SCard title="Separator">
     <div>Horizontal</div>
     <Separator :class="root()" :label-props="{ class: label() }">Label</Separator>
     <div>Vertical</div>
@@ -16,5 +16,5 @@ const { root, label } = separatorVariants();
       <Separator :class="root({ orientation: 'vertical' })" />
       <div>SoybeanHeadless</div>
     </div>
-  </SectionWrapper>
+  </SCard>
 </template>

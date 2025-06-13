@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Card, Icon } from '@ui';
+import { SButton, SCard, SIcon } from '@ui';
 
 defineOptions({
   name: 'DemoButtonSlot'
@@ -7,29 +7,29 @@ defineOptions({
 </script>
 
 <template>
-  <Card title="Slot" split>
+  <SCard title="Slot" split>
     <div class="flex flex-wrap gap-12px">
-      <Button color="primary">
+      <SButton color="primary">
         <template #leading>
-          <Icon icon="lucide:plus" />
+          <SIcon icon="lucide:plus" />
         </template>
         leading
-      </Button>
-      <Button color="destructive" variant="outline">
+      </SButton>
+      <SButton color="destructive" variant="outline">
         After
         <template #trailing>
-          <Icon icon="lucide:minus" />
+          <SIcon icon="lucide:minus" />
         </template>
-      </Button>
-      <Button color="success" variant="dashed">
+      </SButton>
+      <SButton color="success" variant="dashed">
         <template #leading>
-          <Icon icon="lucide:plus" />
+          <SIcon icon="lucide:plus" />
         </template>
         Both
         <template #trailing>
-          <Icon icon="lucide:minus" />
+          <SIcon icon="lucide:minus" />
         </template>
-      </Button>
+      </SButton>
     </div>
-  </Card>
+  </SCard>
 </template>

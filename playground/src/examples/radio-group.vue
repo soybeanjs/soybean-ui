@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import {
-  RadioGroupControl,
-  RadioGroupIndicator,
-  RadioGroupItem,
-  RadioGroupLabel,
-  RadioGroupRoot
-} from '@headless/components/radio-group';
-import { radioVariants } from '../../../ui/variants/radio';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SCard } from '@ui';
+import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel, RadioGroupRoot } from '@headless';
+import { radioVariants } from '@variants/radio';
 
 const css = radioVariants();
 
@@ -23,7 +17,7 @@ const items = [
 </script>
 
 <template>
-  <SectionWrapper title="RadioGroup">
+  <SCard title="RadioGroup">
     <RadioGroupRoot v-model="selected">
       <RadioGroupItem v-for="item in items" :key="item.value" :value="item.value" :class="css.root()">
         <RadioGroupControl :id="`radio-${item.value}`" :class="css.control()">
@@ -34,5 +28,5 @@ const items = [
         <RadioGroupLabel :class="css.label()">{{ item.label }}</RadioGroupLabel>
       </RadioGroupItem>
     </RadioGroupRoot>
-  </SectionWrapper>
+  </SCard>
 </template>

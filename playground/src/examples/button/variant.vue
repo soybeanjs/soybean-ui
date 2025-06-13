@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Card } from '@ui';
+import { SButton, SCard } from '@ui';
 import type { ButtonVariant } from '@variants/button';
 
 defineOptions({
@@ -10,9 +10,9 @@ const variants: ButtonVariant[] = ['solid', 'pure', 'plain', 'outline', 'dashed'
 </script>
 
 <template>
-  <Card title="Variant" split>
+  <SCard title="Variant" split>
     <div class="flex flex-wrap gap-3">
-      <Button v-for="variant in variants" :key="variant" color="destructive" :variant="variant">{{ variant }}</Button>
+      <SButton v-for="variant in variants" :key="variant" color="destructive" :variant="variant">{{ variant }}</SButton>
     </div>
-  </Card>
+  </SCard>
 </template>

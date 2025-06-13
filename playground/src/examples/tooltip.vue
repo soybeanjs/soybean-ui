@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { TooltipArrow, TooltipContent, TooltipPortal, TooltipRoot, TooltipTrigger } from '@headless/components/tooltip';
-import { tooltipVariants } from '../../../ui/variants/tooltip';
-import { buttonVariants } from '../../../ui/variants/button';
-import SectionWrapper from '../components/section-wrapper.vue';
+import { SButton, SCard } from '@ui';
+import { TooltipArrow, TooltipContent, TooltipPortal, TooltipRoot, TooltipTrigger } from '@headless';
+import { tooltipVariants } from '@variants/tooltip';
 
 const { content, arrow } = tooltipVariants();
 </script>
 
 <template>
-  <SectionWrapper title="Tooltip">
+  <SCard title="Tooltip">
     <TooltipRoot>
       <TooltipTrigger as="template">
-        <button :class="buttonVariants({ variant: 'pure' })" class="w-30">Hover me</button>
+        <SButton variant="pure" class="w-30">Hover me</SButton>
       </TooltipTrigger>
       <TooltipPortal>
         <TooltipContent side="top" :class="content()">
@@ -20,5 +19,5 @@ const { content, arrow } = tooltipVariants();
         </TooltipContent>
       </TooltipPortal>
     </TooltipRoot>
-  </SectionWrapper>
+  </SCard>
 </template>

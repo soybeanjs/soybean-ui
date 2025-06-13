@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Card } from '@ui';
+import { SCard } from '@ui';
 import DemoButtonColor from './color.vue';
 import DemoButtonVariant from './variant.vue';
 import DemoButtonSize from './size.vue';
@@ -11,10 +11,14 @@ import DemoButtonLoading from './loading.vue';
 import DemoButtonIcon from './icon.vue';
 import DemoButtonLink from './link.vue';
 import DemoButtonGroup from './group.vue';
+
+defineOptions({
+  name: 'DemoButton'
+});
 </script>
 
 <template>
-  <Card title="Button" split :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Button" split :ui="{ content: 'flex-c gap-3' }">
     <DemoButtonColor />
     <DemoButtonVariant />
     <DemoButtonSize />
@@ -26,5 +30,5 @@ import DemoButtonGroup from './group.vue';
     <DemoButtonIcon />
     <DemoButtonLink />
     <DemoButtonGroup />
-  </Card>
+  </SCard>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, ButtonIcon, Card } from '@ui';
+import { SButton, SButtonIcon, SCard } from '@ui';
 
 defineOptions({
   name: 'DemoButtonShape'
@@ -7,25 +7,25 @@ defineOptions({
 </script>
 
 <template>
-  <Card title="Shape" split>
+  <SCard title="Shape" split>
     <div class="flex flex-wrap gap-3">
-      <Button color="primary" variant="solid" shape="rounded">rounded</Button>
+      <SButton color="primary" variant="solid" shape="rounded">rounded</SButton>
       <div class="flex-c-center">
-        <ButtonIcon icon="lucide:minus" color="destructive" variant="plain" shape="square" />
+        <SButtonIcon icon="lucide:minus" color="destructive" variant="plain" shape="square" />
         <div class="text-12px text-#666">square</div>
       </div>
       <div class="flex-c-center">
-        <ButtonIcon icon="lucide:plus" color="success" variant="outline" shape="circle" />
+        <SButtonIcon icon="lucide:plus" color="success" variant="outline" shape="circle" />
         <div class="text-12px text-#666">circle</div>
       </div>
       <div class="flex-c-center">
-        <ButtonIcon icon="lucide:plus" color="warning" variant="dashed" shape="square" />
+        <SButtonIcon icon="lucide:plus" color="warning" variant="dashed" shape="square" />
         <div class="text-12px text-#666">square</div>
       </div>
       <div class="flex-c-center">
-        <ButtonIcon icon="lucide:minus" shape="circle" />
+        <SButtonIcon icon="lucide:minus" shape="circle" />
         <div class="text-12px text-#666">circle</div>
       </div>
     </div>
-  </Card>
+  </SCard>
 </template>

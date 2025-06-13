@@ -1,42 +1,45 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue';
-import { Card } from '@ui';
+import { SCard, SIcon } from '@ui';
+
+defineOptions({
+  name: 'DemoCard'
+});
 </script>
 
 <template>
-  <Card title="Card" :ui="{ content: 'flex-c-stretch gap-4' }">
-    <Card title="More" split :ui="{ content: 'flex-c-stretch gap-4' }">
-      <Card>
+  <SCard title="Card" :ui="{ content: 'flex-c-stretch gap-4' }">
+    <SCard title="More" split :ui="{ content: 'flex-c-stretch gap-4' }">
+      <SCard>
         <p class="text-gray-500 dark:text-neutral-400">Only Content</p>
-      </Card>
-      <Card title="Title" split>
+      </SCard>
+      <SCard title="Title" split>
         <p class="text-gray-500 dark:text-neutral-400">Content</p>
-      </Card>
-      <Card split>
+      </SCard>
+      <SCard split>
         <p class="text-gray-500 dark:text-neutral-400">Content</p>
         <template #footer>Footer</template>
-      </Card>
-      <Card title="Title Slot" split>
+      </SCard>
+      <SCard title="Title Slot" split>
         <template #title-leading>
-          <Icon icon="lucide:rocket" />
+          <SIcon icon="lucide:rocket" />
         </template>
         <template #title-trailing>
           <span>Trailing</span>
         </template>
         <p class="text-gray-500 dark:text-neutral-400">Content</p>
-      </Card>
-    </Card>
-    <Card title="Description" split description="this is a description">
+      </SCard>
+    </SCard>
+    <SCard title="Description" split description="this is a description">
       <template #title-leading>
-        <Icon icon="lucide:rocket" />
+        <SIcon icon="lucide:rocket" />
       </template>
       <template #title-trailing>
         <span>Trailing</span>
       </template>
       <template #extra>
-        <Icon icon="lucide:x" />
+        <SIcon icon="lucide:x" />
       </template>
       <p class="text-gray-500 dark:text-neutral-400">Content</p>
-    </Card>
-  </Card>
+    </SCard>
+  </SCard>
 </template>

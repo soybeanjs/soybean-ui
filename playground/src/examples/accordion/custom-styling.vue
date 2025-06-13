@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Accordion, Card } from '@ui';
+import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 
 defineOptions({
@@ -32,8 +32,8 @@ const items: AccordionItemData[] = [
 </script>
 
 <template>
-  <Card title="Custom Styling" split>
-    <Accordion
+  <SCard title="Custom Styling" split>
+    <SAccordion
       v-model="single"
       type="single"
       collapsible
@@ -44,5 +44,5 @@ const items: AccordionItemData[] = [
         trigger: `mb-2 rounded-md px-3 text-left underline-offset-2 data-[state=closed]:(bg-muted/50 no-underline) data-[state=open]:(bg-secondary-foreground/20 underline hover:bg-secondary-foreground/20 hover:underline) hover:bg-muted`
       }"
     />
-  </Card>
+  </SCard>
 </template>

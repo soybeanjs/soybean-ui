@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Card } from '@ui';
+import { SButton, SCard } from '@ui';
 
 defineOptions({
   name: 'DemoButtonDisabled'
@@ -7,9 +7,9 @@ defineOptions({
 </script>
 
 <template>
-  <Card title="Disabled" split>
+  <SCard title="Disabled" split>
     <div class="flex flex-wrap gap-3">
-      <Button disabled>Disabled</Button>
+      <SButton disabled>Disabled</SButton>
     </div>
-  </Card>
+  </SCard>
 </template>

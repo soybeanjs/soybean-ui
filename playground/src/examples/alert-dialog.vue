@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SButton, SCard } from '@ui';
 import {
   AlertDialogCancel,
   AlertDialogContent,
@@ -8,19 +9,17 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger
-} from '@headless/components/alert-dialog';
-import { buttonVariants } from '../../../ui/variants/button';
-import { dialogVariants } from '../../../ui/variants/dialog';
-import SectionWrapper from '../components/section-wrapper.vue';
+} from '@headless';
+import { dialogVariants } from '@variants/dialog';
 
 const { content, description, overlay, title } = dialogVariants();
 </script>
 
 <template>
-  <SectionWrapper title="Alert Dialog">
+  <SCard title="Alert Dialog">
     <AlertDialogRoot>
       <AlertDialogTrigger as="template">
-        <button :class="buttonVariants({ variant: 'pure' })" class="w-20">Open</button>
+        <SButton variant="pure" class="w-20">Open</SButton>
       </AlertDialogTrigger>
       <AlertDialogPortal>
         <AlertDialogOverlay :class="overlay()" />
@@ -29,14 +28,14 @@ const { content, description, overlay, title } = dialogVariants();
           <AlertDialogDescription :class="description()">Alert Dialog Description</AlertDialogDescription>
           <div class="flex justify-end gap-2">
             <AlertDialogCancel as="template">
-              <button :class="buttonVariants({ variant: 'outline' })">Cancel</button>
+              <SButton variant="outline">Cancel</SButton>
             </AlertDialogCancel>
             <AlertDialogCancel as="template">
-              <button :class="buttonVariants()">Confirm</button>
+              <SButton>Confirm</SButton>
             </AlertDialogCancel>
           </div>
         </AlertDialogContent>
       </AlertDialogPortal>
     </AlertDialogRoot>
-  </SectionWrapper>
+  </SCard>
 </template>

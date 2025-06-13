@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { buttonVariants } from '../../../../ui/variants/button';
-import SectionWrapper from '../../components/section-wrapper.vue';
+import { SButton, SCard } from '@ui';
 import ButtonGroup from './button-group.vue';
 import Button from './button.vue';
+
+defineOptions({
+  name: 'DemoRovingFocus'
+});
 
 const dir = shallowRef<'ltr' | 'rtl'>('ltr');
 
@@ -13,65 +16,73 @@ function setDir() {
 </script>
 
 <template>
-  <SectionWrapper title="Roving Focus">
-    <div :dir="dir">
-      <h1>
-        Direction:
-        {{ dir }}
-        <button type="button" :class="buttonVariants({ variant: 'pure' })" @click="setDir">
+  <SCard title="Roving Focus" split :dir="dir" :ui="{ content: 'flex-c gap-3' }">
+    <template #extra>
+      <div class="flex items-center gap-3">
+        <span>
+          Direction:
+          {{ dir }}
+        </span>
+        <SButton variant="pure" @click="setDir">
           Toggle to
           {{ dir === 'ltr' ? 'rtl' : 'ltr' }}
-        </button>
-      </h1>
+        </SButton>
+      </div>
+    </template>
 
-      <h2>no orientation (both) + no looping</h2>
+    <SCard title="no orientation (both) + no looping" split>
       <ButtonGroup :dir="dir" default-value="two">
         <Button value="one">One</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
+    </SCard>
 
-      <h2>no orientation (both) + looping</h2>
+    <SCard title="no orientation (both) + looping" split>
       <ButtonGroup :dir="dir" loop>
-        <Button value="hidden" :style="{ display: 'none' }">Hidden</Button>
         <Button value="one">One</Button>
+        <Button value="hidden" :style="{ display: 'none' }">Hidden</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
+    </SCard>
 
-      <h2>horizontal orientation + no looping</h2>
+    <SCard title="horizontal orientation + no looping" split>
       <ButtonGroup orientation="horizontal" :dir="dir">
         <Button value="one">One</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
+    </SCard>
 
-      <h2>horizontal orientation + looping</h2>
+    <SCard title="horizontal orientation + looping" split>
       <ButtonGroup orientation="horizontal" :dir="dir" loop>
         <Button value="one">One</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
+    </SCard>
 
-      <h2>vertical orientation + no looping</h2>
-      <ButtonGroup orientation="vertical" :dir="dir">
+    <SCard title="vertical orientation + no looping" split>
+      <ButtonGroup orientation="vertical" :dir="dir" class="w-fit">
         <Button value="one">One</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
+    </SCard>
 
-      <h2>vertical orientation + looping</h2>
-      <ButtonGroup orientation="vertical" :dir="dir" loop>
+    <SCard title="vertical orientation + looping" split>
+      <ButtonGroup orientation="vertical" :dir="dir" loop class="w-fit">
         <Button value="one">One</Button>
         <Button value="two">Two</Button>
         <Button disabled value="three">Three</Button>
         <Button value="four">Four</Button>
       </ButtonGroup>
-    </div>
-  </SectionWrapper>
+    </SCard>
+  </SCard>
 </template>

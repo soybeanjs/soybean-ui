@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button, Card } from '@ui';
+import { SButton, SCard } from '@ui';
 import type { ThemeColor } from '@theme';
 
 defineOptions({
@@ -10,9 +10,9 @@ const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'i
 </script>
 
 <template>
-  <Card title="Color" split>
+  <SCard title="Color" split>
     <div class="flex flex-wrap gap-3">
-      <Button v-for="color in colors" :key="color" :color="color">{{ color }}</Button>
+      <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
     </div>
-  </Card>
+  </SCard>
 </template>

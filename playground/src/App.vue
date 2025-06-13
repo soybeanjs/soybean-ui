@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import { ConfigProvider } from '@headless';
+import { SConfigProvider } from '@ui';
 
 defineOptions({
   name: 'App'
@@ -8,9 +8,9 @@ defineOptions({
 </script>
 
 <template>
-  <ConfigProvider>
+  <SConfigProvider>
     <RouterView />
-  </ConfigProvider>
+  </SConfigProvider>
 </template>
 
 <style>
