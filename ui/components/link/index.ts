@@ -1,5 +1,5 @@
-import Link from './link.vue';
+import SLink from './link.vue';
 
-export { Link };
+export { SLink };
 
 export type { LinkProps } from './types';

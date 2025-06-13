@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Link } from '@headless';
-import { linkVariants } from '@ui/variants/link';
 import { cn } from '@theme';
+import { linkVariants } from '@variants/link';
 import type { LinkProps } from './types';
 
 defineOptions({
-  name: 'Link'
+  name: 'SLink'
 });
 
 const props = withDefaults(defineProps<LinkProps>(), {

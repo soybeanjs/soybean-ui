@@ -1,3 +1,3 @@
-import type { LinkProps } from '@headless/components/link';
+import type { LinkProps } from '@headless';
 
 export type { LinkProps };
