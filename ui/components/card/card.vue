@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { mergeSlotVariants } from '@theme';
-import { useOmitProps } from '@headless/composables';
 import {
   CardContent,
   CardDescription,
@@ -11,7 +9,9 @@ import {
   CardTitle,
   CardTitleRoot,
   provideCardThemeContext
-} from '@headless/components/card';
+} from '@headless';
+import { useOmitProps } from '@headless/composables';
+import { mergeSlotVariants } from '@theme';
 import { cardVariants } from '@variants/card';
 import type { CardProps } from './types';
 

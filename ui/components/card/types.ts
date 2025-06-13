@@ -6,9 +6,9 @@ import type {
   CardRootProps,
   CardSlot,
   CardTitleProps,
-  CardTitleRootProps
-} from '@headless/components/card';
-import type { ClassValue } from '@headless/types';
+  CardTitleRootProps,
+  ClassValue
+} from '@headless';
 import type { ThemeSize } from '@theme';
 
 export type CardUi = Partial<Record<CardSlot, ClassValue>>;
@@ -37,3 +37,13 @@ export interface CardProps extends CardRootProps {
   titleProps?: CardTitleProps;
   descriptionProps?: CardDescriptionProps;
 }
+
+export type {
+  CardRootProps,
+  CardHeaderProps,
+  CardContentProps,
+  CardFooterProps,
+  CardTitleRootProps,
+  CardTitleProps,
+  CardDescriptionProps
+};
