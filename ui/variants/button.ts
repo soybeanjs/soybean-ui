@@ -352,6 +352,36 @@ export const buttonVariants = tv({
   }
 });
 
+export const buttonGroupVariants = tv({
+  base: `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rd-0`,
+  variants: {
+    orientation: {
+      horizontal: `inline-flex not-last:[&>*]:border-r-0 first:[&>*]:rd-r-0 last:[&>*]:rd-l-0 rtl:flex-row-reverse`,
+      vertical: `flex flex-col not-last:[&>*]:border-b-0 first:[&>*]:rd-b-0 last:[&>*]:rd-t-0`
+    }
+  },
+  defaultVariants: {
+    orientation: 'horizontal'
+  }
+});
+
+export const buttonIconVariants = tv({
+  base: 'w-fit h-fit',
+  variants: {
+    size: {
+      xs: 'p-0.75',
+      sm: 'p-0.875',
+      md: 'p-1',
+      lg: 'p-1.25',
+      xl: 'p-1.5',
+      '2xl': 'p-1.75'
+    }
+  },
+  defaultVariants: {
+    size: 'md'
+  }
+});
+
 type ButtonVariants = VariantProps<typeof buttonVariants>;
 
 export type ButtonVariant = NonNullable<ButtonVariants['variant']>;

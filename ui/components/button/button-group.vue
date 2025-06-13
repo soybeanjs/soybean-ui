@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { Primitive } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { transformPropsToContext } from '@headless/shared';
-import { buttonGroupVariants } from '@variants/button-group';
+import { buttonGroupVariants } from '@variants/button';
 import { useConfigProvider } from '../config-provider';
 import { provideButtonGroupContext } from './context';
 import type { ButtonGroupProps } from './types';
