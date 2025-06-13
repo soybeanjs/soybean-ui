@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
-import { useDialogRootContext } from './context';
+import { useDialogRootContext, useDialogThemeContext } from './context';
 import type { DialogContentImplEmits, DialogContentImplProps } from './types';
 
 defineOptions({
@@ -26,6 +26,10 @@ const {
   titleId,
   descriptionId
 } = useDialogRootContext('DialogContentImpl');
+
+const themeContext = useDialogThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
@@ -83,6 +87,7 @@ onMounted(() => {
     v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
+    :class="cls"
     role="dialog"
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"

@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
 import type {
+  ClassValue,
   DismissableLayerEmits,
   DismissableLayerProps,
   FocusScopeEmits,
@@ -58,8 +59,18 @@ export interface DialogDescriptionProps extends /** @vue-ignore */ HTMLAttribute
 
 export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
+export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface DialogFooterProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal'> {
   open: Ref<boolean | undefined>;
+}
+
+export type DialogSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description' | 'closeIcon';
+
+export interface DialogThemeContextParams {
+  ui: ComputedRef<Record<DialogSlot, ClassValue>>;
 }
 
 export type { DialogPortalProps };

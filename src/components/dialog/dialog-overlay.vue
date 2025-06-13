@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onWatcherCleanup, shallowRef, useTemplateRef, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, shallowRef, useTemplateRef, watchEffect } from 'vue';
 import { useBodyScrollLock, useOmitProps, usePresence } from '../../composables';
-import { useDialogRootContext } from './context';
+import { useDialogRootContext, useDialogThemeContext } from './context';
 import type { DialogOverlayProps } from './types';
 
 defineOptions({
@@ -15,6 +15,10 @@ const forwardedProps = useOmitProps(props, ['forceMount']);
 const overlayElement = useTemplateRef('overlayRef');
 const { open, dataState } = useDialogRootContext('DialogOverlay');
 
+const themeContext = useDialogThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.overlay, props.class]);
+
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(overlayElement, open);
 
 watchEffect(() => {
@@ -27,7 +31,14 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div v-if="isPresent" v-bind="forwardedProps" ref="overlayRef" :data-state="dataState" style="pointer-events: auto">
+  <div
+    v-if="isPresent"
+    v-bind="forwardedProps"
+    ref="overlayRef"
+    :class="cls"
+    :data-state="dataState"
+    style="pointer-events: auto"
+  >
     <slot />
   </div>
 </template>

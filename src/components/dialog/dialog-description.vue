@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useDialogRootContext } from './context';
+import { computed } from 'vue';
+import { useDialogRootContext, useDialogThemeContext } from './context';
 import type { DialogDescriptionProps } from './types';
 
 defineOptions({
@@ -10,11 +11,15 @@ const props = defineProps<DialogDescriptionProps>();
 
 const { descriptionId, initDescriptionId } = useDialogRootContext('DialogDescription');
 
+const themeContext = useDialogThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.description, props.class]);
+
 initDescriptionId();
 </script>
 
 <template>
-  <p v-bind="props" :id="descriptionId">
+  <p v-bind="props" :id="descriptionId" :class="cls">
     <slot />
   </p>
 </template>

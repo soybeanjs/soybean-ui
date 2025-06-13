@@ -2,7 +2,7 @@ import { computed, shallowRef, useId } from 'vue';
 import { useContext, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { DialogRootContextParams } from './types';
+import type { DialogRootContextParams, DialogThemeContextParams } from './types';
 
 export const [provideDialogRootContext, useDialogRootContext] = useContext(
   'DialogRoot',
@@ -57,4 +57,9 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       initDescriptionId
     };
   }
+);
+
+export const [provideDialogThemeContext, useDialogThemeContext] = useContext(
+  'DialogTheme',
+  (params: DialogThemeContextParams) => params
 );
