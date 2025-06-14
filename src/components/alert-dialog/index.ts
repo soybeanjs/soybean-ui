@@ -1,5 +1,7 @@
 import {
   DialogDescription as AlertDialogDescription,
+  DialogFooter as AlertDialogFooter,
+  DialogHeader as AlertDialogHeader,
   DialogOverlay as AlertDialogOverlay,
   DialogPortal as AlertDialogPortal,
   DialogTitle as AlertDialogTitle,
@@ -15,16 +17,24 @@ export {
   AlertDialogPortal,
   AlertDialogOverlay,
   AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogCancel
 };
 
 export type {
-  DialogTriggerProps as AlertDialogTriggerProps,
-  DialogPortalProps as AlertDialogPortalProps,
-  DialogOverlayProps as AlertDialogOverlayProps,
-  DialogTitleProps as AlertDialogTitleProps,
-  DialogDescriptionProps as AlertDialogDescriptionProps
-} from '../dialog';
-export type { AlertDialogRootProps, AlertDialogContentProps, AlertDialogCancelProps } from './types';
+  AlertDialogRootProps,
+  AlertDialogRootEmits,
+  AlertDialogContentProps,
+  AlertDialogContentEmits,
+  AlertDialogCancelProps,
+  AlertDialogTriggerProps,
+  AlertDialogPortalProps,
+  AlertDialogOverlayProps,
+  AlertDialogTitleProps,
+  AlertDialogDescriptionProps,
+  AlertDialogHeaderProps,
+  AlertDialogFooterProps
+} from './types';

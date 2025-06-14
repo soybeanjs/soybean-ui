@@ -8,9 +8,7 @@ defineOptions({
   name: 'DialogTrigger'
 });
 
-const props = withDefaults(defineProps<DialogTriggerProps>(), {
-  as: 'button'
-});
+const props = defineProps<DialogTriggerProps>();
 
 const { open, onOpenToggle, dataState, contentId, setTriggerElement } = useDialogRootContext('DialogTrigger');
 

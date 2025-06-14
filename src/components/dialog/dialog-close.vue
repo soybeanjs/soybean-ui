@@ -8,9 +8,7 @@ defineOptions({
   name: 'DialogClose'
 });
 
-const props = withDefaults(defineProps<DialogCloseProps>(), {
-  as: 'button'
-});
+const props = defineProps<DialogCloseProps>();
 
 const { onOpenChange } = useDialogRootContext('DialogClose');
 

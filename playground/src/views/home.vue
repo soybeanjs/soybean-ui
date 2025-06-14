@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import DemoAccordion from '../examples/accordion/index.vue';
-import DemoAlertDialog from '../examples/alert-dialog.vue';
+import DemoAlertDialog from '../examples/alert-dialog/index.vue';
 import DemoArrow from '../examples/arrow.vue';
 import DemoAspectRatio from '../examples/aspect-ratio.vue';
 import DemoAvatar from '../examples/avatar.vue';
