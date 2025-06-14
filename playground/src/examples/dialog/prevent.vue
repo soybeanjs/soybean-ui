@@ -14,7 +14,7 @@ defineOptions({
       @escape-key-down="e => e.preventDefault()"
     >
       <template #trigger>
-        <SButton variant="outline">Open</SButton>
+        <SButton variant="pure">Open</SButton>
       </template>
       <div>Dialog Content</div>
       <template #footer>

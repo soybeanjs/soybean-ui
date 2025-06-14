@@ -13,7 +13,7 @@ const open = ref(false);
   <SCard title="State" description="Control open state" split>
     <SDialog v-model:open="open" title="Dialog Title">
       <template #trigger>
-        <SButton variant="outline">Open</SButton>
+        <SButton variant="pure">Open</SButton>
       </template>
       <div>Dialog Content</div>
     </SDialog>

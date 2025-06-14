@@ -9,6 +9,7 @@ import DemoCard from '../examples/card/index.vue';
 import DemoCheckbox from '../examples/checkbox.vue';
 import DemoCollapsible from '../examples/collapsible/index.vue';
 import DemoDialog from '../examples/dialog/index.vue';
+import DemoDrawer from '../examples/drawer/index.vue';
 import DemoDropdownMenu from '../examples/dropdown-menu.vue';
 import DemoLink from '../examples/link.vue';
 import DemoPopover from '../examples/popover.vue';
@@ -32,6 +33,7 @@ import DemoTooltip from '../examples/tooltip.vue';
       <DemoCard />
       <DemoCollapsible />
       <DemoDialog />
+      <DemoDrawer />
       <DemoDropdownMenu />
       <DemoLink />
       <DemoPopover />

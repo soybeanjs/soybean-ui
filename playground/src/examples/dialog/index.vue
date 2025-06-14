@@ -11,7 +11,7 @@ defineOptions({
 </script>
 
 <template>
-  <SCard title="Dialog" :ui="{ content: 'flex flex-col gap-3' }">
+  <SCard title="Dialog" :ui="{ content: 'flex-c gap-3' }">
     <DemoDialogDefault />
     <DemoDialogFooter />
     <DemoDialogState />

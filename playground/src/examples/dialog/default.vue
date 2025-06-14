@@ -10,7 +10,7 @@ defineOptions({
   <SCard title="Default" split>
     <SDialog title="Dialog Title" description="Dialog Description">
       <template #trigger>
-        <SButton variant="outline">Open</SButton>
+        <SButton variant="pure">Open</SButton>
       </template>
       <div>Dialog Content</div>
     </SDialog>

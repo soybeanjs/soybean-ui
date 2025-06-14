@@ -5,6 +5,7 @@ export * from './components/card';
 export * from './components/collapsible';
 export * from './components/config-provider';
 export * from './components/dialog';
+export * from './components/drawer';
 export * from './components/icon';
 export * from './components/label';
 export * from './components/link';
