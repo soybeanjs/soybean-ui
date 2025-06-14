@@ -1,13 +1,10 @@
 <script setup lang="ts">
-import { SConfigProvider, SLink } from '@ui';
+import { SConfigProvider } from '@ui';
+import DemoHome from '../playground/src/views/home.vue';
 </script>
 
 <template>
   <SConfigProvider nuxt>
-    <div>
-      <h3>Hello World Nuxt 3</h3>
-      <SLink href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">SoybeanJS</SLink>
-      <SLink to="/demo" disabled>Demo</SLink>
-    </div>
+    <DemoHome />
   </SConfigProvider>
 </template>
