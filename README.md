@@ -12,7 +12,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
 | 1        | Accordion       | ✅ Completed   |                      |                       |
 | 1        | Alert           |                |                      |                       |
-| 1        | AlertDialog     | 🚧 In Progress |                      |                       |
+| 1        | AlertDialog     | ✅ Completed   |                      |                       |
 | 1        | Arrow           | 🚧 In Progress |                      |                       |
 | 1        | AspectRatio     | 🚧 In Progress |                      |                       |
 | 1        | Avatar          | 🚧 In Progress |                      |                       |
