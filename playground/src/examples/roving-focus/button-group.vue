@@ -6,9 +6,10 @@ import { RovingFocusGroup } from '@headless';
 import type { RovingFocusGroupProps } from '@headless';
 import { provideButtonRovingFocusContext } from './context';
 
-interface Props extends Omit<ButtonGroupProps, 'dir'>, Omit<RovingFocusGroupProps, 'color'> {
-  defaultValue?: string;
-}
+type Props = Omit<ButtonGroupProps, 'dir'> &
+  RovingFocusGroupProps & {
+    defaultValue?: string;
+  };
 
 const props = withDefaults(defineProps<Props>(), {
   defaultValue: '',
