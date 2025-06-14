@@ -13,7 +13,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Accordion       | ✅ Completed   |                      |                       |
 | 1        | Alert           |                |                      |                       |
 | 1        | AlertDialog     | ✅ Completed   |                      |                       |
-| 1        | Arrow           | 🚧 In Progress |                      |                       |
+| 1        | Arrow           | 🚫 No Need     |                      |                       |
 | 1        | AspectRatio     | 🚧 In Progress |                      |                       |
 | 1        | Avatar          | 🚧 In Progress |                      |                       |
 | 1        | Badge           |                | Chip                 |                       |
@@ -44,7 +44,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Icon            | ✅ Completed   |                      | based on iconify      |
 | 1        | Input           |                |                      |                       |
 | 1        | Kbd             |                |                      |                       |
-| 1        | Label           | 🚧 In Progress |                      |                       |
+| 1        | Label           | ✅ Completed   |                      |                       |
 | 1        | Layout          |                |                      |                       |
 | 1        | Link            | ✅ Completed   |                      |                       |
 | 1        | List            |                |                      |                       |
