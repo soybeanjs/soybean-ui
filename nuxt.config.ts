@@ -16,6 +16,12 @@ export default defineNuxtConfig({
     '@theme': '../ui/theme/index.ts',
     '@variants/*': '../ui/variants/*'
   },
+  imports: {
+    autoImport: false,
+    global: false,
+    scan: false,
+    dirs: []
+  },
   vite: {
     resolve: {
       alias: {

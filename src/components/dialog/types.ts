@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref } from 'vue';
 import type {
   ClassValue,
   DismissableLayerEmits,

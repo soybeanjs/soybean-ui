@@ -1,3 +1,4 @@
+import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
   DialogCloseProps,
