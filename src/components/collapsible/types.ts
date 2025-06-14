@@ -1,6 +1,6 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref } from 'vue';
+import type { ClassValue, ForceMountProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
-import type { ForceMountProps, PropsToContext } from '../../types';
 
 export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
@@ -29,4 +29,10 @@ export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore
 export interface CollapsibleRootContextParams
   extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
   open: Ref<boolean | undefined>;
+}
+
+export type CollapsibleSlot = 'root' | 'trigger' | 'content';
+
+export interface CollapsibleThemeContextParams {
+  ui: ComputedRef<Record<CollapsibleSlot, ClassValue>>;
 }

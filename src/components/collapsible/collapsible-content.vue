@@ -2,7 +2,7 @@
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
 import { useForwardElement, useOmitProps, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { useCollapsibleRootContext } from './context';
+import { useCollapsibleRootContext, useCollapsibleThemeContext } from './context';
 import { collapsibleContentCssVars } from './shared';
 import type { CollapsibleContentProps } from './types';
 
@@ -16,6 +16,10 @@ const [contentElement, setContentElement] = useForwardElement();
 
 const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide } =
   useCollapsibleRootContext('CollapsibleContent');
+
+const themeContext = useCollapsibleThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
 
@@ -86,6 +90,7 @@ onMounted(() => {
     v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
+    :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :hidden="hidden"

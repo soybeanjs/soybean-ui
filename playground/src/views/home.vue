@@ -7,7 +7,7 @@ import DemoAvatar from '../examples/avatar.vue';
 import DemoButton from '../examples/button/index.vue';
 import DemoCard from '../examples/card/index.vue';
 import DemoCheckbox from '../examples/checkbox.vue';
-import DemoCollapsible from '../examples/collapsible.vue';
+import DemoCollapsible from '../examples/collapsible/index.vue';
 import DemoDialog from '../examples/dialog/index.vue';
 import DemoDropdownMenu from '../examples/dropdown-menu.vue';
 import DemoLink from '../examples/link.vue';

@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
-import { provideCollapsibleRootContext } from './context';
+import { provideCollapsibleRootContext, useCollapsibleThemeContext } from './context';
 import type { CollapsibleRootEmits, CollapsibleRootProps } from './types';
 
 defineOptions({
@@ -18,6 +19,10 @@ const props = withDefaults(defineProps<CollapsibleRootProps>(), {
 const emit = defineEmits<CollapsibleRootEmits>();
 
 const forwardedProps = useOmitProps(props, ['open', 'defaultOpen', 'disabled', 'unmountOnHide']);
+
+const themeContext = useCollapsibleThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
 const open = useControllableState(
   () => props.open,
@@ -39,7 +44,7 @@ defineExpose({
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive v-bind="forwardedProps" :class="cls" :data-disabled="dataDisabled" :data-state="dataState">
     <slot :open="open" />
   </Primitive>
 </template>

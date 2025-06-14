@@ -4,9 +4,12 @@ import CollapsibleTrigger from './collapsible-trigger.vue';
 
 export { CollapsibleRoot, CollapsibleContent, CollapsibleTrigger };
 
+export { provideCollapsibleThemeContext } from './context';
+
 export type {
   CollapsibleRootProps,
   CollapsibleRootEmits,
   CollapsibleContentProps,
-  CollapsibleTriggerProps
+  CollapsibleTriggerProps,
+  CollapsibleSlot
 } from './types';

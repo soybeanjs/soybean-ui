@@ -1,11 +1,24 @@
-import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '@headless';
+import {
+  CollapsibleContent as SCollapsibleContent,
+  CollapsibleRoot as SCollapsibleRoot,
+  CollapsibleTrigger as SCollapsibleTrigger
+} from '@headless';
 import type {
   CollapsibleContentProps,
   CollapsibleRootEmits,
   CollapsibleRootProps,
   CollapsibleTriggerProps
 } from '@headless';
+import SCollapsible from './collapsible.vue';
+import type { CollapsibleEmits, CollapsibleProps } from './types';
 
-export { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger };
+export { SCollapsible, SCollapsibleContent, SCollapsibleRoot, SCollapsibleTrigger };
 
-export type { CollapsibleRootProps, CollapsibleRootEmits, CollapsibleContentProps, CollapsibleTriggerProps };
+export type {
+  CollapsibleProps,
+  CollapsibleEmits,
+  CollapsibleRootProps,
+  CollapsibleRootEmits,
+  CollapsibleContentProps,
+  CollapsibleTriggerProps
+};
