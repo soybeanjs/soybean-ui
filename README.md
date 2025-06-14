@@ -36,7 +36,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | DateRangePicker |                |                      |                       |
 | 1        | Dialog          | ✅ Completed   |                      |                       |
 | 1        | Divider         |                | Separator            |                       |
-| 1        | Drawer          |                | Sheet                |                       |
+| 1        | Drawer          | ✅ Completed   | Sheet                |                       |
 | 1        | DropdownMenu    | 🚧 In Progress |                      | support hover trigger |
 | 1        | Editable        |                |                      |                       |
 | 1        | Form            |                |                      |                       |
