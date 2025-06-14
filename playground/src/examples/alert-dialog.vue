@@ -18,7 +18,7 @@ const { content, description, overlay, title } = dialogVariants();
 <template>
   <SCard title="Alert Dialog">
     <AlertDialogRoot>
-      <AlertDialogTrigger as="template">
+      <AlertDialogTrigger as-child>
         <SButton variant="pure" class="w-20">Open</SButton>
       </AlertDialogTrigger>
       <AlertDialogPortal>
@@ -27,10 +27,10 @@ const { content, description, overlay, title } = dialogVariants();
           <AlertDialogTitle :class="title()">Alert Dialog Title</AlertDialogTitle>
           <AlertDialogDescription :class="description()">Alert Dialog Description</AlertDialogDescription>
           <div class="flex justify-end gap-2">
-            <AlertDialogCancel as="template">
+            <AlertDialogCancel as-child>
               <SButton variant="outline">Cancel</SButton>
             </AlertDialogCancel>
-            <AlertDialogCancel as="template">
+            <AlertDialogCancel as-child>
               <SButton>Confirm</SButton>
             </AlertDialogCancel>
           </div>

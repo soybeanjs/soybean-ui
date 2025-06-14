@@ -6,22 +6,21 @@ const SELF_CLOSING_TAGS = new Set(['area', 'input', 'img']);
 
 export const Primitive = defineComponent<PrimitiveProps>(
   (props, { slots, attrs }) => {
-    const asChild = props.as === 'template';
-    if (asChild) {
-      return () => h(Slot, attrs, { default: slots.default });
+    const asTag = props.asChild ? 'template' : props.as;
+
+    if (typeof asTag === 'string' && SELF_CLOSING_TAGS.has(asTag)) {
+      return () => h(asTag, attrs);
     }
 
-    const isSingleHtmlTag = typeof props.as === 'string' && SELF_CLOSING_TAGS.has(props.as);
-
-    if (isSingleHtmlTag) {
-      return () => h(props.as!, attrs);
+    if (asTag !== 'template') {
+      return () => h(props.as || 'div', attrs, { default: slots.default });
     }
 
-    return () => h(props.as || 'div', attrs, { default: slots.default });
+    return () => h(Slot, attrs, { default: slots.default });
   },
   {
     name: 'Primitive',
     inheritAttrs: false,
-    props: ['as']
+    props: ['as', 'asChild']
   }
 );

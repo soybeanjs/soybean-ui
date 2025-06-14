@@ -9,7 +9,7 @@ const { content, arrow } = tooltipVariants();
 <template>
   <SCard title="Tooltip">
     <TooltipRoot>
-      <TooltipTrigger as="template">
+      <TooltipTrigger as-child>
         <SButton variant="pure" class="w-30">Hover me</SButton>
       </TooltipTrigger>
       <TooltipPortal>

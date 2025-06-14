@@ -22,7 +22,7 @@ provideButtonRovingFocusContext({ modelValue });
 </script>
 
 <template>
-  <RovingFocusGroup v-bind="props" as="template">
+  <RovingFocusGroup v-bind="props" as-child>
     <SButtonGroup>
       <slot />
     </SButtonGroup>

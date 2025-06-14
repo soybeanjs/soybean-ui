@@ -50,7 +50,7 @@ const radioValue = ref('1');
 <template>
   <SCard title="Dropdown">
     <DropdownMenuRoot trigger="hover">
-      <DropdownMenuTrigger as="template">
+      <DropdownMenuTrigger as-child>
         <SButton variant="pure" class="w-20">Open</SButton>
       </DropdownMenuTrigger>
       <DropdownMenuPortal>

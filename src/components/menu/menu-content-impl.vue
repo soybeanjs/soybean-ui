@@ -187,7 +187,7 @@ watchEffect(() => {
   <RovingFocusGroup
     ref="rovingFocusGroupRef"
     v-model:current-tab-stop-id="currentItemId"
-    as="template"
+    as-child
     orientation="vertical"
     :dir="dir"
     :loop="loop"

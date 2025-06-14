@@ -95,7 +95,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <RovingFocusItem as="template" :checked="checked" :focusable="!disabled" :active="checked">
+  <RovingFocusItem as-child :checked="checked" :focusable="!disabled" :active="checked">
     <button
       v-bind="{ ...props, ...attrs }"
       ref="controlElement"

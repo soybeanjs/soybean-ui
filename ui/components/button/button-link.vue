@@ -24,7 +24,7 @@ const linkProps = useOmitProps(props, ['color', 'size', 'variant', 'shape', 'sha
 </script>
 
 <template>
-  <Button v-bind="buttonProps" as="template" variant="link">
+  <Button v-bind="buttonProps" as-child variant="link">
     <Link v-slot="slotProps" v-bind="linkProps">
       <slot v-bind="slotProps" />
     </Link>

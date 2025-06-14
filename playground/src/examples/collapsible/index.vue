@@ -17,7 +17,7 @@ defineOptions({
     >
       <div class="flex-y-center justify-between px-2 space-x-4">
         <h4 class="text-sm font-semibold">@soybeanjs starred 3 repositories</h4>
-        <SCollapsibleTrigger as="template">
+        <SCollapsibleTrigger as-child>
           <SButtonIcon :icon="open ? 'lucide:chevron-up' : 'lucide:chevron-down'" />
         </SCollapsibleTrigger>
       </div>

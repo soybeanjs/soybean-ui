@@ -33,7 +33,7 @@ const onFocus = () => {
 </script>
 
 <template>
-  <RovingFocusItem as="template" :active="isSelected" :focusable="!disabled">
+  <RovingFocusItem as-child :active="isSelected" :focusable="!disabled">
     <SButton
       :variant="isSelected ? 'solid' : 'pure'"
       :value="value"

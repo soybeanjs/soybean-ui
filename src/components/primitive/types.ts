@@ -21,6 +21,8 @@ export type AsTag =
   | ({} & string);
 
 export interface PrimitiveProps {
+  /** Change the default rendered element for the one passed as a child, merging their props and behavior. */
+  asChild?: boolean;
   /**
    * The element or component this component should render as. Can be overwrite by `asChild`
    *

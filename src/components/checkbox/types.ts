@@ -45,7 +45,7 @@ export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps,
 export interface CheckboxGroupRootProps<T = AcceptableValue>
   extends Omit<
       RovingFocusGroupProps,
-      'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as'
+      'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
     >,
     FormFieldProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */

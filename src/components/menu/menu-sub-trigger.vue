@@ -120,7 +120,7 @@ initSubTriggerId();
 </script>
 
 <template>
-  <PopperAnchor as="template">
+  <PopperAnchor as-child>
     <MenuItemImpl
       v-bind="props"
       :id="subTriggerId"

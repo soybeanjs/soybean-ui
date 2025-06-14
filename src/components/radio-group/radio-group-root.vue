@@ -52,7 +52,7 @@ provideRadioGroupRootContext({
 </script>
 
 <template>
-  <RovingFocusGroup as="template" :orientation="orientation" :dir="dir" :loop="loop">
+  <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
     <div
       v-bind="forwardedProps"
       ref="rootElement"

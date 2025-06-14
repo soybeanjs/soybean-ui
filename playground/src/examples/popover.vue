@@ -17,13 +17,13 @@ const { content, arrow } = popoverVariants();
 <template>
   <SCard title="Popover">
     <PopoverRoot>
-      <PopoverTrigger as="template">
+      <PopoverTrigger as-child>
         <SButton variant="pure" class="w-20 mr-3">Open</SButton>
       </PopoverTrigger>
       <PopoverPortal>
         <PopoverContent :class="content()">
           <PopoverArrow :class="arrow()" />
-          <PopoverClose as="template">
+          <PopoverClose as-child>
             <SIcon icon="lucide:x" class="absolute top-1 right-1 size-3 cursor-pointer" />
           </PopoverClose>
           <p>This is a popover</p>
@@ -31,16 +31,16 @@ const { content, arrow } = popoverVariants();
       </PopoverPortal>
     </PopoverRoot>
     <PopoverRoot>
-      <PopoverTrigger as="template">
+      <PopoverTrigger as-child>
         <SButton variant="pure" class="w-fit mr-3">Open Custom Anchor</SButton>
       </PopoverTrigger>
-      <PopoverAnchor as="template">
+      <PopoverAnchor as-child>
         <SButton variant="soft" class="w-fit cursor-default">Custom Anchor</SButton>
       </PopoverAnchor>
       <PopoverPortal>
         <PopoverContent :class="content()">
           <PopoverArrow :class="arrow()" />
-          <PopoverClose as="template">
+          <PopoverClose as-child>
             <SIcon icon="lucide:x" class="absolute top-1 right-1 size-3 cursor-pointer" />
           </PopoverClose>
           <p>This is a popover</p>
