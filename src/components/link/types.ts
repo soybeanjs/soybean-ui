@@ -5,7 +5,7 @@ import type { PrimitiveProps } from '../primitive/types';
 export interface LinkProps
   extends PrimitiveProps,
     Omit<NuxtLinkProps<boolean>, 'custom'>,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'color'> {
+    /** @vue-ignore */ HTMLAttributes {
   disabled?: boolean;
   inactiveClass?: string;
 }

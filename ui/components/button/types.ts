@@ -61,7 +61,7 @@ export interface ButtonLoadingProps extends ButtonProps {
   loadingPosition?: Align;
 }
 
-export interface ButtonLinkProps extends ButtonProps, LinkProps {}
+export type ButtonLinkProps = ButtonProps & LinkProps;
 
 export interface ButtonGroupProps extends ButtonProps {
   /**
