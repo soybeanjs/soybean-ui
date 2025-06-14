@@ -71,7 +71,7 @@ provideDialogSizeContext({
 </script>
 
 <template>
-  <DialogRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <DialogRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
     <DialogTrigger v-bind="triggerProps" :size="size" as-child>
       <slot name="trigger" />
     </DialogTrigger>
@@ -80,10 +80,10 @@ provideDialogSizeContext({
       <DialogContent v-bind="contentProps" v-on="listeners">
         <DialogHeader v-bind="headerProps">
           <DialogTitle v-bind="titleProps">
-            <slot name="title">{{ title }}</slot>
+            <slot name="title" v-bind="slotProps">{{ title }}</slot>
           </DialogTitle>
           <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
-            <slot name="description">{{ description }}</slot>
+            <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </DialogDescription>
           <DialogClose v-if="closable" :class="ui.closeIcon" as-child>
             <slot name="closeIcon">
@@ -91,9 +91,9 @@ provideDialogSizeContext({
             </slot>
           </DialogClose>
         </DialogHeader>
-        <slot />
+        <slot v-bind="slotProps" />
         <DialogFooter v-if="slots.footer" v-bind="footerProps">
-          <slot name="footer" />
+          <slot name="footer" v-bind="slotProps" />
         </DialogFooter>
       </DialogContent>
     </DialogPortal>

@@ -42,17 +42,17 @@ export type DialogSizeContextParams = {
 };
 
 export type {
-  DialogContentEmits,
-  DialogContentProps,
-  DialogDescriptionProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-  DialogOverlayProps,
-  DialogPortalProps,
-  DialogRootEmits,
   DialogRootProps,
-  DialogSlot,
-  DialogTitleProps,
+  DialogRootEmits,
   DialogTriggerProps,
-  DialogCloseProps
+  DialogPortalProps,
+  DialogContentProps,
+  DialogContentEmits,
+  DialogOverlayProps,
+  DialogHeaderProps,
+  DialogFooterProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
+  DialogCloseProps,
+  DialogSlot
 };

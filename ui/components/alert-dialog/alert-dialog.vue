@@ -93,7 +93,7 @@ provideAlertDialogSizeContext({
 </script>
 
 <template>
-  <AlertDialogRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <AlertDialogRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
     <AlertDialogTrigger v-bind="triggerProps" :size="size">
       <slot name="trigger" />
     </AlertDialogTrigger>
@@ -103,15 +103,15 @@ provideAlertDialogSizeContext({
         <AlertDialogHeader v-bind="headerProps">
           <AlertDialogTitle v-bind="titleProps">
             <Icon v-if="iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
-            <slot name="title">{{ title }}</slot>
+            <slot name="title" v-bind="slotProps">{{ title }}</slot>
           </AlertDialogTitle>
           <AlertDialogDescription v-if="slots.description || description" v-bind="descriptionProps">
-            <slot name="description">{{ description }}</slot>
+            <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <slot />
+        <slot v-bind="slotProps" />
         <AlertDialogFooter v-if="slots.footer" v-bind="footerProps">
-          <slot name="footer" />
+          <slot name="footer" v-bind="slotProps" />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialogPortal>

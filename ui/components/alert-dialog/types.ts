@@ -47,15 +47,15 @@ export type AlertDialogSizeContextParams = {
 };
 
 export type {
-  AlertDialogContentEmits,
-  AlertDialogContentProps,
-  AlertDialogDescriptionProps,
-  AlertDialogFooterProps,
-  AlertDialogHeaderProps,
-  AlertDialogOverlayProps,
-  AlertDialogPortalProps,
-  AlertDialogRootEmits,
   AlertDialogRootProps,
+  AlertDialogRootEmits,
+  AlertDialogTriggerProps,
+  AlertDialogPortalProps,
+  AlertDialogContentProps,
+  AlertDialogContentEmits,
+  AlertDialogOverlayProps,
+  AlertDialogHeaderProps,
+  AlertDialogFooterProps,
   AlertDialogTitleProps,
-  AlertDialogTriggerProps
+  AlertDialogDescriptionProps
 };
