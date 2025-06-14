@@ -72,7 +72,7 @@ provideDialogSizeContext({
 
 <template>
   <DialogRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
-    <DialogTrigger v-bind="triggerProps" as-child :size="size">
+    <DialogTrigger v-bind="triggerProps" :size="size" as-child>
       <slot name="trigger" />
     </DialogTrigger>
     <DialogPortal v-bind="portalProps">
@@ -85,7 +85,7 @@ provideDialogSizeContext({
           <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
             <slot name="description">{{ description }}</slot>
           </DialogDescription>
-          <DialogClose v-if="closable" as-child :class="ui.closeIcon">
+          <DialogClose v-if="closable" :class="ui.closeIcon" as-child>
             <slot name="closeIcon">
               <ButtonIcon :size="size" icon="lucide:x" />
             </slot>

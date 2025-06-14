@@ -16,7 +16,7 @@ const size = computed(() => sizeContext?.size?.value ?? 'md');
 </script>
 
 <template>
-  <DialogClose v-bind="props" as-child :size="size">
+  <DialogClose v-bind="props" :size="size" as-child>
     <slot />
   </DialogClose>
 </template>
