@@ -54,7 +54,7 @@ const forwardedProps = computed(() => {
     ...props,
     ...attrs,
     to: isExternal.value ? undefined : href,
-    href,
+    href: nuxt.value ? undefined : href,
     'data-disabled': props.disabled ? '' : undefined,
     'aria-disabled': props.disabled ? 'true' : undefined,
     role: props.disabled ? 'link' : undefined,
