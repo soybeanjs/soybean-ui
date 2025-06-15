@@ -1,12 +1,5 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type {
-  AcceptableValue,
-  CheckedState,
-  ForceMountProps,
-  FormFieldProps,
-  PropsToContext,
-  StringOrNumber
-} from '../../types';
+import type { AcceptableValue, CheckedState, ForceMountProps, FormFieldProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
@@ -21,7 +14,7 @@ export interface CheckboxRootProps extends FormFieldProps, /** @vue-ignore */ HT
    *
    * @defaultValue on
    */
-  value?: StringOrNumber;
+  value?: NonNullable<AcceptableValue>;
   /**
    * When `true`, prevents the user from interacting with the checkbox
    *
@@ -42,7 +35,7 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 
 export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface CheckboxGroupRootProps<T = AcceptableValue>
+export interface CheckboxGroupRootProps<T = NonNullable<AcceptableValue>>
   extends Omit<
       RovingFocusGroupProps,
       'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
@@ -72,7 +65,7 @@ export type CheckboxGroupRootEmits<T = AcceptableValue> = {
 };
 
 export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
-  modelValue: ShallowRef<AcceptableValue[] | undefined>;
+  modelValue: ShallowRef<NonNullable<AcceptableValue>[] | undefined>;
 };
 
 export type CheckboxRootContextParams = PropsToContext<

@@ -1,7 +1,8 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish } from '../../shared';
+import type { AcceptableBooleanValue } from '../../types';
 import { provideMenuRadioGroupContext } from './context';
 import MenuGroup from './menu-group.vue';
 import type { MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
@@ -10,9 +11,9 @@ defineOptions({
   name: 'MenuRadioGroup'
 });
 
-const props = defineProps<MenuRadioGroupProps>();
+const props = defineProps<MenuRadioGroupProps<T>>();
 
-const emit = defineEmits<MenuRadioGroupEmits>();
+const emit = defineEmits<MenuRadioGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
 
@@ -20,7 +21,7 @@ const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     if (isNullish(value)) return;
-    emit('update:modelValue', value);
+    emit('update:modelValue', value as NonNullable<T>);
   },
   props.defaultValue
 );

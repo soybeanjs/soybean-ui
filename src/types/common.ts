@@ -1,7 +1,7 @@
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
 
-export type StringOrNumber = string | number;
-export type AcceptableValue = StringOrNumber | null | undefined;
+export type AcceptableValue = string | number | bigint | null | undefined;
+export type AcceptableBooleanValue = AcceptableValue | boolean;
 
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';
@@ -63,7 +63,7 @@ type GetSingleOrMultipleType<T, S> = T extends AcceptableValue
         ? 'multiple'
         : never;
 
-export interface SingleOrMultipleProps<T = AcceptableValue | AcceptableValue[], S = SingleOrMultipleType> {
+export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<AcceptableValue>[], S = SingleOrMultipleType> {
   /**
    * Determines whether a "single" or "multiple" items can be selected at a time.
    *
@@ -84,6 +84,6 @@ export interface SingleOrMultipleProps<T = AcceptableValue | AcceptableValue[], 
   defaultValue?: T;
 }
 
-export type SingleOrMultipleEmits<T = AcceptableValue | AcceptableValue[]> = {
-  'update:modelValue': [value: T];
+export type SingleOrMultipleEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = {
+  'update:modelValue': [value: T extends NonNullable<AcceptableValue>[] ? T : NonNullable<T>];
 };

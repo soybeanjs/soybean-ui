@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+<script setup lang="ts" generic="T extends NonNullable<AcceptableValue>">
 import { computed } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
@@ -35,7 +35,7 @@ const modelValue = useControllableState(
   () => props.modelValue,
   value => {
     if (value) {
-      emit('update:modelValue', value as NonNullable<T>[]);
+      emit('update:modelValue', value);
     }
   },
   props.defaultValue

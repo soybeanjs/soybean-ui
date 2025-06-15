@@ -31,7 +31,7 @@ export type AccordionUi = Partial<Record<AccordionSlot | 'triggerLeadingIcon' | 
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
-  V extends AcceptableValue | AcceptableValue[] = AcceptableValue | AcceptableValue[],
+  V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
   S = SingleOrMultipleType
 > = AccordionRootProps<V, S> & {
   size?: ThemeSize;

@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
+  AcceptableBooleanValue,
   AcceptableValue,
   CheckedState,
   Direction,
@@ -8,7 +9,6 @@ import type {
   FocusScopeEmits,
   ForceMountProps,
   PropsToContext,
-  StringOrNumber,
   TrapFocusProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
@@ -101,7 +101,7 @@ export interface MenuCheckboxItemProps extends MenuItemProps {
    *
    * @defaultValue on
    */
-  value?: StringOrNumber;
+  value?: NonNullable<AcceptableValue>;
 }
 export type MenuCheckboxItemEmits = MenuItemEmits & {
   /** Event handler called when the checked state of the item changes. */
@@ -109,7 +109,7 @@ export type MenuCheckboxItemEmits = MenuItemEmits & {
 };
 
 // MenuCheckboxGroup
-export interface MenuCheckboxGroupProps<T = StringOrNumber> extends MenuGroupProps {
+export interface MenuCheckboxGroupProps<T = NonNullable<AcceptableValue>> extends MenuGroupProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
@@ -121,20 +121,20 @@ export interface MenuCheckboxGroupProps<T = StringOrNumber> extends MenuGroupPro
    */
   disabled?: boolean;
 }
-export type MenuCheckboxGroupEmits<T = StringOrNumber> = {
+export type MenuCheckboxGroupEmits<T = AcceptableValue> = {
   /** Event handler called when the value of the checkbox group changes. */
-  'update:modelValue': [value: T[]];
+  'update:modelValue': [value: NonNullable<T>[]];
 };
 
 // MenuRadioItem
 export interface MenuRadioItemProps extends MenuItemProps {
   /** The value given as data when submitted with a `name`. */
-  value?: StringOrNumber;
+  value: NonNullable<AcceptableBooleanValue>;
 }
 export type MenuRadioItemEmits = MenuItemEmits;
 
 // MenuRadioGroup
-export interface MenuRadioGroupProps<T = AcceptableValue> extends MenuGroupProps {
+export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGroupProps {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
   /**
@@ -145,9 +145,9 @@ export interface MenuRadioGroupProps<T = AcceptableValue> extends MenuGroupProps
   /** When `true`, prevents the user from interacting with radio items. */
   disabled?: boolean;
 }
-export type MenuRadioGroupEmits<T = StringOrNumber> = {
+export type MenuRadioGroupEmits<T = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: T];
+  'update:modelValue': [payload: NonNullable<T>];
 };
 
 // MenuSubTrigger
@@ -171,11 +171,11 @@ export interface MenuContentContextParams {
   contentElement: ShallowRef<HTMLElement | undefined>;
 }
 export interface MenuCheckboxGroupContextParams {
-  modelValue: ShallowRef<StringOrNumber[] | undefined>;
+  modelValue: ShallowRef<NonNullable<AcceptableValue>[] | undefined>;
   disabled: ComputedRef<boolean>;
 }
 export interface MenuRadioGroupContextParams {
-  modelValue: ShallowRef<AcceptableValue>;
+  modelValue: ShallowRef<AcceptableBooleanValue>;
   disabled: ComputedRef<boolean>;
 }
 export interface MenuItemIndicatorContextParams {

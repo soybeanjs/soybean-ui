@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableValue">
+<script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed, useTemplateRef } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import { isFormControl, transformPropsToContext } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import type { AcceptableBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupRootContext } from './context';
@@ -38,7 +38,8 @@ const rootElement = useTemplateRef('rootElement');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value as T);
+    if (isNullish(value)) return;
+    emit('update:modelValue', value as NonNullable<T>);
   },
   props.defaultValue
 );

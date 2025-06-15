@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableValue | AcceptableValue[], S extends SingleOrMultipleType">
+<script
+  setup
+  lang="ts"
+  generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], S extends SingleOrMultipleType"
+>
 import { computed, useTemplateRef } from 'vue';
 import { useDirection, useOmitProps, useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';

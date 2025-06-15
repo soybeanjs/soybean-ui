@@ -19,7 +19,7 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
     getDefaultValue(props)
   );
 
-  function toggleModelValue(value: AcceptableValue) {
+  function toggleModelValue(value: NonNullable<AcceptableValue>) {
     if (type.value === 'single') {
       modelValue.value = isEqual(value, modelValue.value) ? undefined : value;
       return;

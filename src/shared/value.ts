@@ -1,4 +1,4 @@
-import type { AcceptableValue, StringOrNumber } from '../types';
+import type { AcceptableValue } from '../types';
 
 /**
  * Check if value is enabled based on single or multiple selection mode
@@ -9,8 +9,8 @@ import type { AcceptableValue, StringOrNumber } from '../types';
  * @returns Whether it's enabled
  */
 export function getOpenFromSingleOrMultiple(
-  value: StringOrNumber,
-  modelValue: AcceptableValue | AcceptableValue[],
+  value: NonNullable<AcceptableValue>,
+  modelValue: AcceptableValue | NonNullable<AcceptableValue>[],
   isSingle: boolean
 ) {
   if (isSingle) {

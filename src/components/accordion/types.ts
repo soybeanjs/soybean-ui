@@ -7,8 +7,7 @@ import type {
   PropsToContext,
   SingleOrMultipleEmits,
   SingleOrMultipleProps,
-  SingleOrMultipleType,
-  StringOrNumber
+  SingleOrMultipleType
 } from '../../types';
 import type {
   CollapsibleContentProps as AccordionContentProps,
@@ -20,10 +19,10 @@ export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes 
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** A string or number value for the accordion item. All items within an accordion should use a unique value. */
-  value: StringOrNumber;
+  value: NonNullable<AcceptableValue>;
 }
 
-export interface AccordionRootProps<T = AcceptableValue | AcceptableValue[], S = SingleOrMultipleType>
+export interface AccordionRootProps<T = AcceptableValue | NonNullable<AcceptableValue>[], S = SingleOrMultipleType>
   extends SingleOrMultipleProps<T, S>,
     /** @vue-ignore */ HTMLAttributes {
   /**
@@ -60,14 +59,14 @@ export interface AccordionRootProps<T = AcceptableValue | AcceptableValue[], S =
   unmountOnHide?: boolean;
 }
 
-export type AccordionRootEmits<T = AcceptableValue | AcceptableValue[]> = SingleOrMultipleEmits<T>;
+export type AccordionRootEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = SingleOrMultipleEmits<T>;
 
 export interface AccordionRootContextParams
   extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'unmountOnHide'> {
   rootElement: Ref<HTMLElement | null | undefined>;
-  modelValue: Ref<AcceptableValue | AcceptableValue[]>;
+  modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
   isSingle: ComputedRef<boolean>;
-  toggleModelValue: (value: AcceptableValue) => void;
+  toggleModelValue: (value: NonNullable<AcceptableValue>) => void;
   direction: ComputedRef<Direction>;
 }
 

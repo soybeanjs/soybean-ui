@@ -3,7 +3,7 @@
   lang="ts"
   generic="
     T extends AccordionItemData = AccordionItemData,
-    V extends AcceptableValue | AcceptableValue[] = AcceptableValue | AcceptableValue[],
+    V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
     S extends SingleOrMultipleType = SingleOrMultipleType
   "
 >

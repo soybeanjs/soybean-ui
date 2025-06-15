@@ -1,18 +1,19 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  AcceptableValue,
+  AcceptableBooleanValue,
   DataOrientation,
   Direction,
   EmitsToHookProps,
   ForceMountProps,
   FormFieldProps,
-  PropsToContext,
-  StringOrNumber
+  PropsToContext
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
-export interface RadioGroupRootProps<T = AcceptableValue> extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface RadioGroupRootProps<T = AcceptableBooleanValue>
+  extends FormFieldProps,
+    /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
   /**
@@ -30,28 +31,28 @@ export interface RadioGroupRootProps<T = AcceptableValue> extends FormFieldProps
   loop?: boolean;
 }
 
-export type RadioGroupRootEmits<T = AcceptableValue> = {
+export type RadioGroupRootEmits<T = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: T];
+  'update:modelValue': [payload: NonNullable<T>];
 };
 
 export type RadioGroupRootContextParams = PropsToContext<
   RadioGroupRootProps,
   'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {
-  modelValue: ShallowRef<AcceptableValue>;
+  modelValue: ShallowRef<AcceptableBooleanValue>;
 };
 
 export interface RadioGroupItemProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */
-  value?: StringOrNumber;
+  value: NonNullable<AcceptableBooleanValue>;
   /** When `true`, prevents the user from interacting with the radio item. */
   disabled?: boolean;
 }
 
 export type RadioSelectEvent = CustomEvent<{
   originalEvent: MouseEvent;
-  value?: AcceptableValue;
+  value: NonNullable<AcceptableBooleanValue>;
 }>;
 
 export type RadioGroupItemEmits = {

@@ -1,7 +1,7 @@
-<script setup lang="ts" generic="T extends StringOrNumber">
+<script setup lang="ts" generic="T extends NonNullable<AcceptableValue>">
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import type { StringOrNumber } from '../../types';
+import type { AcceptableValue } from '../../types';
 import { provideMenuCheckboxGroupContext } from './context';
 import MenuGroup from './menu-group.vue';
 import type { MenuCheckboxGroupEmits, MenuCheckboxGroupProps } from './types';

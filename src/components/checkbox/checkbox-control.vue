@@ -34,7 +34,7 @@ const onClick = () => {
     if (isValueEqualOrExist(modelValueArray, value.value)) {
       const index = modelValueArray.findIndex(i => isEqual(i, value.value));
       modelValueArray.splice(index, 1);
-    } else {
+    } else if (!isNullish(value.value)) {
       modelValueArray.push(value.value);
     }
     groupContext.modelValue.value = modelValueArray;
@@ -65,11 +65,7 @@ watchEffect(() => {
     :aria-required="required"
     :data-state="dataState"
     :focusable="focusable"
-    @keydown.enter.prevent="
-      () => {
-        // According to WAI ARIA, Checkboxes don't activate on enter keypress
-      }
-    "
+    @keydown.enter.prevent
     @click="onClick"
   >
     <slot :model-value="modelValue" :state="state" />
