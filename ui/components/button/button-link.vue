@@ -9,6 +9,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ButtonLinkProps>(), {
+  variant: 'link',
   external: undefined,
   prefetch: undefined,
   noPrefetch: undefined,
@@ -24,7 +25,7 @@ const linkProps = useOmitProps(props, ['color', 'size', 'variant', 'shape', 'sha
 </script>
 
 <template>
-  <Button v-bind="buttonProps" as-child variant="link">
+  <Button v-bind="buttonProps" as-child>
     <Link v-slot="slotProps" v-bind="linkProps">
       <slot v-bind="slotProps" />
     </Link>
