@@ -3,9 +3,13 @@ import { shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { useRouteQuery } from '@vueuse/router';
-import { SButtonIcon, SButtonLink, SCard, SIcon, STabs } from '@ui';
+import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
 import type { TabsOptionData } from '@ui';
 import { toKebabCase, toPascalCase } from '@headless/shared';
+import ThemeCustomizer from '../components/theme-customizer.vue';
+import { useTheme } from '../theme';
+
+const { color, radius, size } = useTheme('HomePage');
 
 const activeTab = useRouteQuery<string>('tab', 'accordion');
 
@@ -58,6 +62,12 @@ watchEffect(async () => {
     <SCard title="SoybeanHeadless" class="h-full">
       <template #extra>
         <div class="flex items-center gap-2">
+          <SPopover :ui="{ content: 'z-15' }" placement="bottom-end">
+            <template #trigger>
+              <SButtonIcon icon="lucide:swatch-book" size="lg" />
+            </template>
+            <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
+          </SPopover>
           <SButtonLink
             variant="ghost"
             color="accent"
