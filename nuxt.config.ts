@@ -8,6 +8,17 @@ export default defineNuxtConfig({
   modules: ['@unocss/nuxt'],
   css: ['@unocss/reset/tailwind.css'],
   devtools: { enabled: true },
+  app: {
+    head: {
+      link: [
+        {
+          rel: 'icon',
+          href: '/favicon.svg',
+          type: 'image/svg+xml'
+        }
+      ]
+    }
+  },
   alias: {
     '@headless': '../src/index.ts',
     '@headless/*': '../src/*',
