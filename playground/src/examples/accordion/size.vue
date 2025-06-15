@@ -3,10 +3,6 @@ import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 import type { ThemeSize } from '@theme';
 
-defineOptions({
-  name: 'DemoAccordionSize'
-});
-
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
 const items: AccordionItemData[] = [

@@ -4,10 +4,6 @@ import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 import { Icon } from '@iconify/vue';
 
-defineOptions({
-  name: 'DemoAccordionCustomIcon'
-});
-
 const multi = ref<string[]>([]);
 
 const items: AccordionItemData[] = [

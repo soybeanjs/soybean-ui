@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButton, SCard, SDialog } from '@ui';
-
-defineOptions({
-  name: 'DemoDialogDefault'
-});
 </script>
 
 <template>

@@ -3,10 +3,6 @@ import { ref } from 'vue';
 import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 
-defineOptions({
-  name: 'DemoAccordionMultiple'
-});
-
 const multi = ref<string[]>([]);
 
 const items: AccordionItemData[] = [

@@ -11,10 +11,6 @@ import DemoButtonLoading from './loading.vue';
 import DemoButtonIcon from './icon.vue';
 import DemoButtonLink from './link.vue';
 import DemoButtonGroup from './group.vue';
-
-defineOptions({
-  name: 'DemoButton'
-});
 </script>
 
 <template>

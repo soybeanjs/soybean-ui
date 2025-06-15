@@ -3,10 +3,6 @@ import { ref } from 'vue';
 import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 
-defineOptions({
-  name: 'DemoAccordionSingle'
-});
-
 const single = ref('');
 const single2 = ref('');
 

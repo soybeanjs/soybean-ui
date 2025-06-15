@@ -2,10 +2,6 @@
 import { SButton, SCard } from '@ui';
 import type { ButtonShadow } from '@variants/button';
 
-defineOptions({
-  name: 'DemoButtonShadow'
-});
-
 const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>
 

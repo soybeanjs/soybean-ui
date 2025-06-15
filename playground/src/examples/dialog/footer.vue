@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButton, SCard, SDialog, SDialogClose } from '@ui';
-
-defineOptions({
-  name: 'DemoDialogFooter'
-});
 </script>
 
 <template>

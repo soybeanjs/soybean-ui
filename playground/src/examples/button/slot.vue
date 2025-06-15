@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButton, SCard, SIcon } from '@ui';
-
-defineOptions({
-  name: 'DemoButtonSlot'
-});
 </script>
 
 <template>

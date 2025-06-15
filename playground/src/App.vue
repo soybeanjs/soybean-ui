@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import { SConfigProvider } from '@ui';
+import { provideThemeContext } from './theme';
 
 defineOptions({
   name: 'App'
 });
+
+const { configProviderProps } = provideThemeContext();
 </script>
 
 <template>
-  <SConfigProvider>
+  <SConfigProvider v-bind="configProviderProps">
     <RouterView />
   </SConfigProvider>
 </template>

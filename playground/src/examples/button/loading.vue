@@ -2,10 +2,6 @@
 import { ref } from 'vue';
 import { SButton, SButtonLoading, SCard } from '@ui';
 
-defineOptions({
-  name: 'DemoButtonLoading'
-});
-
 const loading = ref(false);
 
 const startLoading = () => {

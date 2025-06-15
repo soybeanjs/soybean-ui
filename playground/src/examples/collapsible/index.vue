@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@ui';
-
-defineOptions({
-  name: 'DemoCollapsible'
-});
 </script>
 
 <template>

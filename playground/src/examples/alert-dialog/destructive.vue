@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton, SCard } from '@ui';
-
-defineOptions({
-  name: 'DemoAlertDialogDestructive'
-});
 </script>
 
 <template>

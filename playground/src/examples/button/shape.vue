@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButton, SButtonIcon, SCard } from '@ui';
-
-defineOptions({
-  name: 'DemoButtonShape'
-});
 </script>
 
 <template>

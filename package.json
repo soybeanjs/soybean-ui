@@ -86,6 +86,7 @@
     "@unocss/reset": "66.2.0",
     "@vue/shared": "3.5.16",
     "@vueuse/core": "13.3.0",
+    "@vueuse/router": "^13.3.0",
     "aria-hidden": "1.2.6",
     "clsx": "2.1.1",
     "tailwind-merge": "3.3.1",

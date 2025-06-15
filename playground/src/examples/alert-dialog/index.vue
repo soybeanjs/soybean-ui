@@ -5,10 +5,6 @@ import DemoAlertDialogInfo from './info.vue';
 import DemoAlertDialogSuccess from './success.vue';
 import DemoAlertDialogWarning from './warning.vue';
 import DemoAlertDialogAction from './action.vue';
-
-defineOptions({
-  name: 'DemoAlertDialog'
-});
 </script>
 
 <template>

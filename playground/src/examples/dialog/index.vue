@@ -4,10 +4,6 @@ import DemoDialogDefault from './default.vue';
 import DemoDialogFooter from './footer.vue';
 import DemoDialogState from './state.vue';
 import DemoDialogPrevent from './prevent.vue';
-
-defineOptions({
-  name: 'DemoDialog'
-});
 </script>
 
 <template>

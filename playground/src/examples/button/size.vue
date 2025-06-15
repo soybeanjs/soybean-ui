@@ -2,10 +2,6 @@
 import { SButton, SCard } from '@ui';
 import type { ThemeSize } from '@theme';
 
-defineOptions({
-  name: 'DemoButtonSize'
-});
-
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 </script>
 

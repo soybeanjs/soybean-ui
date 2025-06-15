@@ -2,10 +2,6 @@
 import { SButton, SCard } from '@ui';
 import type { ButtonVariant } from '@variants/button';
 
-defineOptions({
-  name: 'DemoButtonColor'
-});
-
 const variants: ButtonVariant[] = ['solid', 'pure', 'plain', 'outline', 'dashed', 'soft', 'ghost', 'link'];
 </script>
 

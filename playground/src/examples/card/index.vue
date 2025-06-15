@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SCard, SIcon } from '@ui';
-
-defineOptions({
-  name: 'DemoCard'
-});
 </script>
 
 <template>

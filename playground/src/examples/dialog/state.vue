@@ -2,10 +2,6 @@
 import { ref } from 'vue';
 import { SButton, SCard, SDialog } from '@ui';
 
-defineOptions({
-  name: 'DemoDialogState'
-});
-
 const open = ref(false);
 </script>
 

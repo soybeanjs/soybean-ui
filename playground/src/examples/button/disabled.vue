@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import { SButton, SCard } from '@ui';
-
-defineOptions({
-  name: 'DemoButtonDisabled'
-});
 </script>
 
 <template>

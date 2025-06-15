@@ -4,10 +4,6 @@ import { SButton, SCard } from '@ui';
 import ButtonGroup from './button-group.vue';
 import Button from './button.vue';
 
-defineOptions({
-  name: 'DemoRovingFocus'
-});
-
 const dir = shallowRef<'ltr' | 'rtl'>('ltr');
 
 function setDir() {

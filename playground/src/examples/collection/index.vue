@@ -3,10 +3,6 @@ import { SCard } from '@ui';
 import CollectionList from './collection-list.vue';
 import CollectionItem from './collection-item.vue';
 
-defineOptions({
-  name: 'DemoCollection'
-});
-
 const items = [
   {
     label: 'Item 1',
