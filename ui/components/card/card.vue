@@ -27,7 +27,6 @@ const forwardedProps = useOmitProps(props, [
   'title',
   'description',
   'split',
-  'flexHeight',
   'headerProps',
   'contentProps',
   'footerProps',
@@ -57,8 +56,7 @@ const showHeader = computed(() => {
 const ui = computed(() => {
   const variants = cardVariants({
     size: props.size,
-    split: props.split,
-    flexHeight: props.flexHeight
+    split: props.split
   });
 
   return mergeSlotVariants(variants, props.ui);

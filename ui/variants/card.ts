@@ -72,16 +72,11 @@ export const cardVariants = tv({
       true: {
         root: 'divide-y divide-border'
       }
-    },
-    flexHeight: {
-      true: {
-        content: 'overflow-hidden'
-      }
     }
   },
   defaultVariants: {
     size: 'md',
-    flexHeight: false
+    split: false
   }
 });
 
