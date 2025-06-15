@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { provideAvatarRootContext } from './context';
+import { computed } from 'vue';
+import { provideAvatarRootContext, useAvatarThemeContext } from './context';
 import type { AvatarRootProps } from './types';
 
 defineOptions({
@@ -8,11 +9,15 @@ defineOptions({
 
 const props = defineProps<AvatarRootProps>();
 
+const themeContext = useAvatarThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+
 provideAvatarRootContext();
 </script>
 
 <template>
-  <span v-bind="props">
+  <span v-bind="props" :class="cls">
     <slot />
   </span>
 </template>

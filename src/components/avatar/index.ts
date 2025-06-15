@@ -4,4 +4,6 @@ import AvatarFallback from './avatar-fallback.vue';
 
 export { AvatarRoot, AvatarImage, AvatarFallback };
 
-export type { AvatarRootProps, AvatarImageProps, AvatarImageEmits, AvatarFallbackProps } from './types';
+export { provideAvatarThemeContext } from './context';
+
+export type { AvatarRootProps, AvatarImageProps, AvatarImageEmits, AvatarFallbackProps, AvatarSlot } from './types';

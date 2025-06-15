@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ImgHTMLAttributes } from 'vue';
-import type { ImageLoadingStatus } from '../../types';
+import type { ComputedRef, HTMLAttributes, ImgHTMLAttributes } from 'vue';
+import type { ClassValue, ImageLoadingStatus } from '../../types';
 
 export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -26,4 +26,10 @@ export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
    * @defaultValue undefined
    */
   delayMs?: number;
+}
+
+export type AvatarSlot = 'root' | 'image' | 'fallback';
+
+export interface AvatarThemeContextParams {
+  ui: ComputedRef<Record<AvatarSlot, ClassValue>>;
 }
