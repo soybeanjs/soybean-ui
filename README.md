@@ -63,7 +63,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | RangeCalendar   |                |                      | v-calendar            |
 | 1        | Resizable       |                |                      |                       |
 | 1        | ScrollArea      |                |                      |                       |
-| 1        | Segment         |                |                      |                       |
+| 1        | Segment         | ✅ Completed   |                      |                       |
 | 1        | Select          |                |                      | support virtualized   |
 | 1        | Skeleton        |                |                      |                       |
 | 1        | Slider          |                |                      |                       |
@@ -71,7 +71,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Stepper         |                |                      |                       |
 | 1        | Switch          |                |                      |                       |
 | 1        | Table           |                |                      |                       |
-| 1        | Tabs            |                |                      |                       |
+| 1        | Tabs            | ✅ Completed   |                      |                       |
 | 1        | Tag             |                | Badge(shadcn-ui)     |                       |
 | 1        | TagsInput       |                |                      |                       |
 | 1        | Textarea        |                |                      | support auto size     |
