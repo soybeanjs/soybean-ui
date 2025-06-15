@@ -4,6 +4,7 @@ export * from './components/arrow';
 export * from './components/aspect-ratio';
 export * from './components/button';
 export * from './components/card';
+export * from './components/checkbox';
 export * from './components/collapsible';
 export * from './components/config-provider';
 export * from './components/dialog';

@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
 import { useContext } from '../../composables';
 import { getCheckedState, isIndeterminate } from './shared';
-import type { CheckboxGroupRootContextParams, CheckboxRootContextParams } from './types';
+import type { CheckboxGroupRootContextParams, CheckboxRootContextParams, CheckboxThemeContextParams } from './types';
 
 export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = useContext(
   'CheckboxGroupRoot',
@@ -40,4 +40,9 @@ export const [provideCheckboxRootContext, useCheckboxRootContext] = useContext(
       initControlId
     };
   }
+);
+
+export const [provideCheckboxThemeContext, useCheckboxThemeContext] = useContext(
+  'CheckboxTheme',
+  (params: CheckboxThemeContextParams) => params
 );

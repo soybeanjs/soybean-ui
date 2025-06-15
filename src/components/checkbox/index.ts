@@ -6,6 +6,8 @@ import CheckboxGroupRoot from './checkbox-group-root.vue';
 
 export { CheckboxRoot, CheckboxControl, CheckboxIndicator, CheckboxLabel, CheckboxGroupRoot };
 
+export { provideCheckboxThemeContext } from './context';
+
 export type {
   CheckboxRootProps,
   CheckboxRootEmits,
@@ -13,5 +15,6 @@ export type {
   CheckboxIndicatorProps,
   CheckboxLabelProps,
   CheckboxGroupRootProps,
-  CheckboxGroupRootEmits
+  CheckboxGroupRootEmits,
+  CheckboxSlot
 } from './types';

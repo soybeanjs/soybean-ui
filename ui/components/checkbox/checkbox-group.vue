@@ -1,0 +1,64 @@
+<script
+  setup
+  lang="ts"
+  generic="
+    T extends AcceptableValue = AcceptableValue,
+    S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
+  "
+>
+import { computed } from 'vue';
+import { CheckboxGroupRoot, provideCheckboxThemeContext } from '@headless';
+import type { AcceptableValue } from '@headless';
+import { useOmitProps } from '@headless/composables';
+import { mergeSlotVariants } from '@theme';
+import { checkboxVariants } from '@variants/checkbox';
+import Checkbox from './checkbox.vue';
+import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
+
+defineOptions({
+  name: 'SCheckboxGroup'
+});
+
+const props = defineProps<CheckboxGroupProps<T, S>>();
+
+const emit = defineEmits<CheckboxGroupEmits<T>>();
+
+const forwardedProps = useOmitProps(props, [
+  'color',
+  'size',
+  'ui',
+  'items',
+  'rootProps',
+  'controlProps',
+  'indicatorProps',
+  'labelProps'
+]);
+
+const ui = computed(() => {
+  const variants = checkboxVariants();
+
+  return mergeSlotVariants(variants, props.ui);
+});
+
+provideCheckboxThemeContext({
+  ui
+});
+</script>
+
+<template>
+  <CheckboxGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <Checkbox
+      v-for="(item, index) in items"
+      :key="index"
+      v-bind="rootProps"
+      :color="color"
+      :size="size"
+      :label="item.label"
+      :value="item.value"
+      :disabled="disabled || item.disabled"
+      :control-props="controlProps"
+      :indicator-props="indicatorProps"
+      :label-props="labelProps"
+    />
+  </CheckboxGroupRoot>
+</template>

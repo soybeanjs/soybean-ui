@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { useCheckboxRootContext } from './context';
+import { useCheckboxRootContext, useCheckboxThemeContext } from './context';
 import { isIndeterminate } from './shared';
 import type { CheckboxIndicatorProps } from './types';
 
@@ -13,6 +13,10 @@ defineOptions({
 const props = withDefaults(defineProps<CheckboxIndicatorProps>(), {
   as: 'span'
 });
+
+const themeContext = useCheckboxThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 
@@ -28,6 +32,7 @@ const isPresent = props.forceMount
     v-if="isPresent"
     v-bind="props"
     :ref="setIndicatorElement"
+    :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :style="{ pointerEvents: 'none' }"

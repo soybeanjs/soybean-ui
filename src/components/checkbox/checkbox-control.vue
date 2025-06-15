@@ -3,7 +3,7 @@ import { computed, useAttrs, watchEffect } from 'vue';
 import { useForwardElement } from '../../composables';
 import { getAriaLabel, isEqual, isNullish, isValueEqualOrExist } from '../../shared';
 import { RovingFocusItem } from '../roving-focus';
-import { useCheckboxGroupRootContext, useCheckboxRootContext } from './context';
+import { useCheckboxGroupRootContext, useCheckboxRootContext, useCheckboxThemeContext } from './context';
 import { isIndeterminate } from './shared';
 import type { CheckboxControlProps } from './types';
 
@@ -14,6 +14,10 @@ defineOptions({
 const props = defineProps<CheckboxControlProps>();
 
 const attrs = useAttrs();
+
+const themeContext = useCheckboxThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.control, props.class]);
 
 const groupContext = useCheckboxGroupRootContext();
 
@@ -55,6 +59,7 @@ watchEffect(() => {
     :is="rovingFocus ? RovingFocusItem : 'button'"
     v-bind="props"
     :ref="setControlElement"
+    :class="cls"
     as="button"
     role="checkbox"
     type="button"
