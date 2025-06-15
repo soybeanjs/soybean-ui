@@ -13,6 +13,7 @@ export * from './components/label';
 export * from './components/link';
 export * from './components/popover';
 export * from './components/segment';
+export * from './components/tooltip';
 export * from './components/tabs';
 export * from './components/visually-hidden';
 

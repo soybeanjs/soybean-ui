@@ -1,0 +1,37 @@
+import type {
+  ClassValue,
+  PopperSlot,
+  TooltipArrowProps,
+  TooltipContentEmits,
+  TooltipContentProps,
+  TooltipPortalProps,
+  TooltipRootEmits,
+  TooltipRootProps,
+  TooltipTriggerProps
+} from '@headless';
+import type { ThemeSize } from '@theme';
+
+export type TooltipUi = Partial<Record<PopperSlot, ClassValue>>;
+
+export interface TooltipProps extends TooltipRootProps {
+  size?: ThemeSize;
+  ui?: TooltipUi;
+  content?: string;
+  showArrow?: boolean;
+  contentProps?: TooltipContentProps;
+  triggerProps?: TooltipTriggerProps;
+  portalProps?: TooltipPortalProps;
+  arrowProps?: TooltipArrowProps;
+}
+
+export type TooltipEmits = TooltipRootEmits & TooltipContentEmits;
+
+export type {
+  TooltipRootProps,
+  TooltipRootEmits,
+  TooltipArrowProps,
+  TooltipContentProps,
+  TooltipContentEmits,
+  TooltipPortalProps,
+  TooltipTriggerProps
+};

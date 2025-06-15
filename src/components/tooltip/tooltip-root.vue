@@ -14,7 +14,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<TooltipRootProps>(), {
   defaultOpen: false,
-  open: undefined
+  open: undefined,
+  avoidCollisions: true
 });
 
 const emit = defineEmits<TooltipRootEmits>();
