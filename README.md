@@ -6,7 +6,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅ - / total: 110
+✅ 16 / 🚫 2 / total: 110
 
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
@@ -56,7 +56,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Pagination      |                |                      |                       |
 | 1        | PinInput        |                | InputOPT, OPTInput   |                       |
 | 1        | Popconfirm      |                |                      |                       |
-| 1        | Popover         | 🚧 In Progress |                      |                       |
+| 1        | Popover         | ✅ Completed   |                      |                       |
 | 1        | Progress        |                |                      |                       |
 | 1        | ProgressCircle  |                |                      |                       |
 | 1        | RadioGroup      | 🚧 In Progress |                      |                       |
@@ -82,7 +82,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Toggle          |                |                      |                       |
 | 1        | ToggleGroup     |                |                      |                       |
 | 1        | Toolbar         |                |                      |                       |
-| 1        | Tooltip         | 🚧 In Progress |                      |                       |
+| 1        | Tooltip         | ✅ Completed   |                      |                       |
 | 1        | Tree            |                |                      | support virtualized   |
 | 1        | TreeMenu        |                |                      |                       |
 | 1        | Viewport        |                |                      |                       |
