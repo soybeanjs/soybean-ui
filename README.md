@@ -6,7 +6,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅ 16 / 🚫 2 / total: 110
+✅ 19 / 🚫 2 / total: 110
 
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
@@ -15,7 +15,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | AlertDialog     | ✅ Completed   |                      |                       |
 | 1        | Arrow           | 🚫 No Need     |                      |                       |
 | 1        | AspectRatio     | 🚫 No Need     |                      |                       |
-| 1        | Avatar          | 🚧 In Progress |                      |                       |
+| 1        | Avatar          | ✅ Completed   |                      |                       |
 | 1        | Badge           |                | Chip                 |                       |
 | 1        | BottomSheet     |                | Drawer(shadcn-ui)    |                       |
 | 1        | Breadcrumb      |                |                      |                       |
@@ -23,7 +23,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Calendar        |                |                      | v-calendar            |
 | 1        | Card            | ✅ Completed   |                      |                       |
 | 1        | Carousel        |                |                      |                       |
-| 1        | Checkbox        | 🚧 In Progress |                      |                       |
+| 1        | Checkbox        | ✅ Completed   |                      |                       |
 | 1        | Collapsible     | ✅ Completed   |                      |                       |
 | 1        | Combobox        |                |                      |                       |
 | 1        | Command         |                |                      | support virtualized   |
@@ -59,7 +59,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Popover         | ✅ Completed   |                      |                       |
 | 1        | Progress        |                |                      |                       |
 | 1        | ProgressCircle  |                |                      |                       |
-| 1        | RadioGroup      | 🚧 In Progress |                      |                       |
+| 1        | RadioGroup      | ✅ Completed   |                      |                       |
 | 1        | RangeCalendar   |                |                      | v-calendar            |
 | 1        | Resizable       |                |                      |                       |
 | 1        | ScrollArea      |                |                      |                       |
