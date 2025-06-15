@@ -1,6 +1,3 @@
-import { AspectRatio as SAspectRatio } from '@headless';
-import type { AspectRatioProps } from '@headless';
+export { AspectRatio } from '@headless';
 
-export { SAspectRatio };
-
-export type { AspectRatioProps };
+export type { AspectRatioProps } from '@headless';

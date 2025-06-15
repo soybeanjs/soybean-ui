@@ -1,9 +1,7 @@
 import type {
   AcceptableValue,
   ClassValue,
-  TabsActivationMode,
   TabsContentProps,
-  TabsRootEmits as TabsEmits,
   TabsIndicatorProps,
   TabsListProps,
   TabsRootEmits,
@@ -37,14 +35,4 @@ export interface TabsProps<
   indicatorProps?: TabsIndicatorProps;
 }
 
-export type {
-  TabsEmits,
-  TabsRootProps,
-  TabsRootEmits,
-  TabsContentProps,
-  TabsIndicatorProps,
-  TabsListProps,
-  TabsTriggerProps,
-  TabsSlot,
-  TabsActivationMode
-};
+export type TabsEmits<T = AcceptableValue> = TabsRootEmits<T>;

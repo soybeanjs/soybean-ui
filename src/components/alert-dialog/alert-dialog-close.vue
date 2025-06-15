@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { DialogClose } from '../dialog';
-import type { AlertDialogCancelProps } from './types';
+import type { AlertDialogCloseProps } from './types';
 import { useAlertDialogContentContext } from './context';
 
 defineOptions({
-  name: 'AlertDialogCancel'
+  name: 'AlertDialogClose'
 });
 
-const props = defineProps<AlertDialogCancelProps>();
+const props = defineProps<AlertDialogCloseProps>();
 
-const { setCancelElement } = useAlertDialogContentContext('AlertDialogCancel');
+const { setCancelElement } = useAlertDialogContentContext('AlertDialogClose');
 </script>
 
 <template>

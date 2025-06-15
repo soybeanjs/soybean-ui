@@ -1,18 +1,6 @@
 import type { ComputedRef } from 'vue';
 import type { ThemeColor, ThemeSize } from '@theme';
-import type {
-  AlertDialogContentEmits,
-  AlertDialogContentProps,
-  AlertDialogDescriptionProps,
-  AlertDialogFooterProps,
-  AlertDialogHeaderProps,
-  AlertDialogOverlayProps,
-  AlertDialogPortalProps,
-  AlertDialogRootEmits,
-  AlertDialogRootProps,
-  AlertDialogTitleProps,
-  AlertDialogTriggerProps
-} from '@headless';
+import type { AlertDialogRootEmits } from '@headless';
 import type { DialogProps } from '../dialog/types';
 import type { ButtonProps } from '../button/types';
 
@@ -44,18 +32,4 @@ export interface AlertDialogActionProps extends ButtonProps {
 
 export type AlertDialogSizeContextParams = {
   size: ComputedRef<ThemeSize>;
-};
-
-export type {
-  AlertDialogRootProps,
-  AlertDialogRootEmits,
-  AlertDialogTriggerProps,
-  AlertDialogPortalProps,
-  AlertDialogContentProps,
-  AlertDialogContentEmits,
-  AlertDialogOverlayProps,
-  AlertDialogHeaderProps,
-  AlertDialogFooterProps,
-  AlertDialogTitleProps,
-  AlertDialogDescriptionProps
 };

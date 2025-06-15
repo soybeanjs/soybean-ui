@@ -1,7 +1,6 @@
 import type {
   ClassValue,
   Placement,
-  PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseProps,
   PopoverContentEmits,
@@ -29,15 +28,3 @@ export interface PopoverProps extends PopoverRootProps {
 }
 
 export type PopoverEmits = PopoverRootEmits & PopoverContentEmits;
-
-export type {
-  PopoverRootProps,
-  PopoverRootEmits,
-  PopoverAnchorProps,
-  PopoverArrowProps,
-  PopoverCloseProps,
-  PopoverContentProps,
-  PopoverContentEmits,
-  PopoverPortalProps,
-  PopoverTriggerProps
-};

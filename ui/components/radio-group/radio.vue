@@ -2,13 +2,13 @@
 import { computed, useId } from 'vue';
 import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel } from '@headless';
 import { useOmitProps } from '@headless/composables';
-import type { RadioGroupItemProps } from './types';
+import type { RadioProps } from './types';
 
 defineOptions({
-  name: 'SRadioGroupItem'
+  name: 'SRadio'
 });
 
-const props = defineProps<RadioGroupItemProps>();
+const props = defineProps<RadioProps>();
 
 const forwardedProps = useOmitProps(props, ['color', 'size', 'controlProps', 'indicatorProps', 'labelProps']);
 

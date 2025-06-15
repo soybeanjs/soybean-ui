@@ -1,7 +1,6 @@
 import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
-  DialogCloseProps,
   DialogContentEmits,
   DialogContentProps,
   DialogDescriptionProps,
@@ -39,20 +38,4 @@ export type DialogEmits = DialogRootEmits & DialogContentEmits;
 
 export type DialogSizeContextParams = {
   size: ComputedRef<ThemeSize>;
-};
-
-export type {
-  DialogRootProps,
-  DialogRootEmits,
-  DialogTriggerProps,
-  DialogPortalProps,
-  DialogContentProps,
-  DialogContentEmits,
-  DialogOverlayProps,
-  DialogHeaderProps,
-  DialogFooterProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
-  DialogCloseProps,
-  DialogSlot
 };

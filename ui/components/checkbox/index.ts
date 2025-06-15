@@ -1,15 +1,4 @@
-import { CheckboxControl, CheckboxGroupRoot, CheckboxIndicator, CheckboxLabel, CheckboxRoot } from '@headless';
-import SCheckboxGroup from './checkbox-group.vue';
-import SCheckbox from './checkbox.vue';
-
-export {
-  CheckboxRoot,
-  CheckboxControl,
-  CheckboxIndicator,
-  CheckboxLabel,
-  CheckboxGroupRoot,
-  SCheckboxGroup,
-  SCheckbox
-};
-
+export { default as SCheckboxGroup } from './checkbox-group.vue';
+export { default as SCheckbox } from './checkbox.vue';
+export * from '@headless/components/checkbox';
 export type * from './types';

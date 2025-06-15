@@ -1,8 +1,10 @@
 import type {
   ClassValue,
-  CollapsibleRootEmits as CollapsibleEmits,
+  CollapsibleContentProps,
+  CollapsibleRootEmits,
   CollapsibleRootProps,
-  CollapsibleSlot
+  CollapsibleSlot,
+  CollapsibleTriggerProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
@@ -13,4 +15,6 @@ export interface CollapsibleProps extends CollapsibleRootProps {
   ui?: CollapsibleUi;
 }
 
-export type { CollapsibleEmits };
+export type CollapsibleEmits = CollapsibleRootEmits;
+
+export type { CollapsibleRootProps, CollapsibleRootEmits, CollapsibleContentProps, CollapsibleTriggerProps };

@@ -1,15 +1,4 @@
-import { RadioGroupControl, RadioGroupIndicator, RadioGroupItem, RadioGroupLabel, RadioGroupRoot } from '@headless';
-import SRadioGroup from './radio-group.vue';
-import SRadioGroupItem from './radio-group-item.vue';
-
-export {
-  SRadioGroup,
-  SRadioGroupItem,
-  RadioGroupRoot,
-  RadioGroupItem,
-  RadioGroupControl,
-  RadioGroupIndicator,
-  RadioGroupLabel
-};
-
+export { default as SRadioGroup } from './radio-group.vue';
+export { default as SRadio } from './radio.vue';
+export * from '@headless/components/radio-group';
 export type * from './types';

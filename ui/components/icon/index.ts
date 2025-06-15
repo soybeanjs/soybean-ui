@@ -1,5 +1,2 @@
-import SIcon from './icon.vue';
-
-export { SIcon };
-
-export type { IconProps } from './types';
+export { default as SIcon } from './icon.vue';
+export type * from './types';

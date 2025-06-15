@@ -1,5 +1,5 @@
 import type {
-  DialogCloseProps as AlertDialogCancelProps,
+  DialogCloseProps as AlertDialogCloseProps,
   DialogContentEmits as AlertDialogContentEmits,
   DialogContentProps as AlertDialogContentProps,
   DialogDescriptionProps as AlertDialogDescriptionProps,
@@ -19,7 +19,7 @@ export type {
   AlertDialogRootEmits,
   AlertDialogContentProps,
   AlertDialogContentEmits,
-  AlertDialogCancelProps,
+  AlertDialogCloseProps,
   AlertDialogTriggerProps,
   AlertDialogPortalProps,
   AlertDialogOverlayProps,

@@ -1,6 +1,3 @@
-import { AvatarFallback, AvatarImage, AvatarRoot } from '@headless';
-import SAvatar from './avatar.vue';
-
-export { SAvatar, AvatarRoot, AvatarImage, AvatarFallback };
-
+export { default as SAvatar } from './avatar.vue';
+export * from '@headless/components/avatar';
 export type * from './types';

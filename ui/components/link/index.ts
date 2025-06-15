@@ -1,5 +1,2 @@
-import SLink from './link.vue';
-
-export { SLink };
-
-export type { LinkProps } from './types';
+export { default as SLink } from './link.vue';
+export type * from './types';

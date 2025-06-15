@@ -8,12 +8,12 @@
 >
 import { computed } from 'vue';
 import { RadioGroupRoot, provideRadioGroupThemeContext } from '@headless';
-import type { AcceptableBooleanValue } from '@headless';
+import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
 import { radioGroupVariants } from '@variants/radio-group';
-import type { RadioGroupOptionData, RadioGroupProps, RadioGroupRootEmits } from './types';
-import RadioGroupItem from './radio-group-item.vue';
+import type { RadioGroupOptionData, RadioGroupProps } from './types';
+import Radio from './radio.vue';
 
 defineOptions({
   name: 'SRadioGroup'
@@ -21,7 +21,7 @@ defineOptions({
 
 const props = defineProps<RadioGroupProps<T, S>>();
 
-const emit = defineEmits<RadioGroupRootEmits<T>>();
+const emit = defineEmits<RadioGroupRootEmits>();
 
 const forwardedProps = useOmitProps(props, [
   'color',
@@ -47,7 +47,7 @@ provideRadioGroupThemeContext({
 
 <template>
   <RadioGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <RadioGroupItem
+    <Radio
       v-for="item in items"
       :key="String(item.value)"
       v-bind="itemProps"

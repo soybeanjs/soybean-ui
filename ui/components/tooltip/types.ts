@@ -27,13 +27,3 @@ export interface TooltipProps extends TooltipRootProps {
 }
 
 export type TooltipEmits = TooltipRootEmits & TooltipContentEmits;
-
-export type {
-  TooltipRootProps,
-  TooltipRootEmits,
-  TooltipArrowProps,
-  TooltipContentProps,
-  TooltipContentEmits,
-  TooltipPortalProps,
-  TooltipTriggerProps
-};

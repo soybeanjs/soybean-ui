@@ -1,5 +1,2 @@
-import SLabel from './label.vue';
-
-export { SLabel };
-
-export * from './types';
+export { default as SLabel } from './label.vue';
+export type * from './types';

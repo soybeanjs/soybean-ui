@@ -1,6 +1,3 @@
-import { Arrow as SArrow } from '@headless';
-import type { ArrowProps } from '@headless';
+export { Arrow } from '@headless';
 
-export { SArrow };
-
-export type { ArrowProps };
+export type { ArrowProps } from '@headless';

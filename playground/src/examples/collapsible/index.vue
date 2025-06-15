@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@ui';
+import { CollapsibleContent, CollapsibleTrigger, SButtonIcon, SCard, SCollapsible } from '@ui';
 </script>
 
 <template>
@@ -13,15 +13,15 @@ import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrig
     >
       <div class="flex-y-center justify-between px-2 space-x-4">
         <h4 class="text-sm font-semibold">@soybeanjs starred 3 repositories</h4>
-        <SCollapsibleTrigger as-child>
+        <CollapsibleTrigger as-child>
           <SButtonIcon :icon="open ? 'lucide:chevron-up' : 'lucide:chevron-down'" />
-        </SCollapsibleTrigger>
+        </CollapsibleTrigger>
       </div>
       <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-headless</div>
-      <SCollapsibleContent>
+      <CollapsibleContent>
         <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-ui</div>
         <div class="border rounded-md px-4 py-3 text-sm font-mono">soybean-market</div>
-      </SCollapsibleContent>
+      </CollapsibleContent>
     </SCollapsible>
   </SCard>
 </template>

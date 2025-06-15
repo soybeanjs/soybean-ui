@@ -9,7 +9,7 @@ import {
 } from '../dialog';
 import AlertDialogRoot from './alert-dialog-root.vue';
 import AlertDialogContent from './alert-dialog-content.vue';
-import AlertDialogCancel from './alert-dialog-cancel.vue';
+import AlertDialogClose from './alert-dialog-close.vue';
 
 export {
   AlertDialogRoot,
@@ -21,7 +21,7 @@ export {
   AlertDialogFooter,
   AlertDialogTitle,
   AlertDialogDescription,
-  AlertDialogCancel
+  AlertDialogClose
 };
 
 export type {
@@ -29,7 +29,7 @@ export type {
   AlertDialogRootEmits,
   AlertDialogContentProps,
   AlertDialogContentEmits,
-  AlertDialogCancelProps,
+  AlertDialogCloseProps,
   AlertDialogTriggerProps,
   AlertDialogPortalProps,
   AlertDialogOverlayProps,

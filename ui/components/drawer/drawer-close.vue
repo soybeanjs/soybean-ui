@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { DialogClose } from '@headless';
+import type { DialogCloseProps } from '@headless';
 import { useDrawerSizeContext } from './context';
-import type { DrawerCloseProps } from './types';
 
 defineOptions({
   name: 'SDrawerClose'
 });
 
-const props = defineProps<DrawerCloseProps>();
+const props = defineProps<DialogCloseProps>();
 
 const sizeContext = useDrawerSizeContext();
 

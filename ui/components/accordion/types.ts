@@ -2,7 +2,6 @@ import type { Component, VNode } from 'vue';
 import type {
   AcceptableValue,
   AccordionContentProps,
-  AccordionRootEmits as AccordionEmits,
   AccordionHeaderProps,
   AccordionItemProps,
   AccordionRootEmits,
@@ -43,13 +42,4 @@ export type AccordionProps<
   contentProps?: AccordionContentProps;
 };
 
-export type {
-  AccordionEmits,
-  AccordionRootProps,
-  AccordionRootEmits,
-  AccordionItemProps,
-  AccordionTriggerProps,
-  AccordionHeaderProps,
-  AccordionContentProps,
-  AccordionSlot
-};
+export type AccordionEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = AccordionRootEmits<T>;

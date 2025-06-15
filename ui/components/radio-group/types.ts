@@ -3,19 +3,16 @@ import type {
   ClassValue,
   RadioGroupControlProps,
   RadioGroupIndicatorProps,
-  RadioGroupItemEmits,
+  RadioGroupItemProps,
   RadioGroupLabelProps,
-  RadioGroupRootEmits,
   RadioGroupRootProps,
-  RadioGroupSlot,
-  RadioSelectEvent,
-  RadioGroupItemProps as _RadioGroupItemProps
+  RadioGroupSlot
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 
 export type RadioGroupUi = Partial<Record<RadioGroupSlot, ClassValue>>;
 
-export interface RadioGroupItemProps extends _RadioGroupItemProps {
+export interface RadioProps extends RadioGroupItemProps {
   color?: ThemeColor;
   size?: ThemeSize;
   label?: string;
@@ -38,19 +35,8 @@ export interface RadioGroupProps<
   size?: ThemeSize;
   ui?: RadioGroupUi;
   items: S[];
-  itemProps?: _RadioGroupItemProps;
+  itemProps?: RadioGroupItemProps;
   controlProps?: RadioGroupControlProps;
   indicatorProps?: RadioGroupIndicatorProps;
   labelProps?: RadioGroupLabelProps;
 }
-
-export type {
-  RadioGroupRootProps,
-  RadioGroupRootEmits,
-  RadioGroupItemEmits,
-  RadioGroupControlProps,
-  RadioGroupIndicatorProps,
-  RadioSelectEvent,
-  RadioGroupLabelProps,
-  RadioGroupSlot
-};

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertDialogCancel } from '@headless';
+import { AlertDialogClose } from '@headless';
 import Button from '../button/button.vue';
 import { useAlertDialogSizeContext } from './context';
 import type { AlertDialogCancelProps } from './types';
@@ -20,11 +20,11 @@ const size = computed(() => sizeContext?.size?.value ?? 'md');
 </script>
 
 <template>
-  <AlertDialogCancel as-child>
+  <AlertDialogClose as-child>
     <slot name="content">
       <Button v-bind="props" :size="size">
         <slot>{{ text }}</slot>
       </Button>
     </slot>
-  </AlertDialogCancel>
+  </AlertDialogClose>
 </template>

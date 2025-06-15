@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { DialogClose } from '@headless';
+import type { DialogCloseProps } from '@headless';
 import { useDialogSizeContext } from './context';
-import type { DialogCloseProps } from './types';
 
 defineOptions({
   name: 'SDialogClose'

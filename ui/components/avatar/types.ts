@@ -19,5 +19,3 @@ export interface AvatarProps extends AvatarRootProps {
 }
 
 export type AvatarEmits = AvatarImageEmits;
-
-export type { AvatarRootProps, AvatarImageProps, AvatarImageEmits, AvatarFallbackProps, AvatarSlot };
