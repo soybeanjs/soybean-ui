@@ -14,7 +14,7 @@ import DemoButtonGroup from './group.vue';
 </script>
 
 <template>
-  <SCard title="Button" split :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Button" :ui="{ content: 'flex-c gap-3' }">
     <DemoButtonColor />
     <DemoButtonVariant />
     <DemoButtonSize />

@@ -38,12 +38,14 @@ const weekends = [
 </script>
 
 <template>
-  <SCard title="Segment" split>
-    <SSegment v-model="day" :items="weekends" />
-  </SCard>
-  <SCard title="Vertical" split>
-    <div class="w-80 lt-sm:w-auto">
-      <SSegment v-model="day" :items="weekends" orientation="vertical" />
-    </div>
+  <SCard title="Segment" :ui="{ content: 'flex-c gap-3' }">
+    <SCard title="Horizontal">
+      <SSegment v-model="day" :items="weekends" />
+    </SCard>
+    <SCard title="Vertical">
+      <div class="w-80 lt-sm:w-auto">
+        <SSegment v-model="day" :items="weekends" orientation="vertical" />
+      </div>
+    </SCard>
   </SCard>
 </template>

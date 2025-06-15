@@ -12,7 +12,7 @@ function setDir() {
 </script>
 
 <template>
-  <SCard title="Roving Focus" split>
+  <SCard title="Roving Focus">
     <template #extra>
       <div class="flex items-center gap-3">
         <span>

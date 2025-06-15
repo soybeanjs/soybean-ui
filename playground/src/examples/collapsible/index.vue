@@ -3,7 +3,7 @@ import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrig
 </script>
 
 <template>
-  <SCard title="Collapsible" split>
+  <SCard title="Collapsible">
     <SCollapsible
       v-slot="{ open }"
       class="w-350px lt-sm:w-auto space-y-2"

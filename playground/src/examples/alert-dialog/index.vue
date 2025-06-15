@@ -8,7 +8,7 @@ import DemoAlertDialogAction from './action.vue';
 </script>
 
 <template>
-  <SCard title="Alert Dialog" split :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Alert Dialog" :ui="{ content: 'flex-c gap-3' }">
     <DemoAlertDialogDestructive />
     <DemoAlertDialogInfo />
     <DemoAlertDialogSuccess />

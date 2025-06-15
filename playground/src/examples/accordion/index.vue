@@ -8,7 +8,7 @@ import DemoAccordionCustomStyling from './custom-styling.vue';
 </script>
 
 <template>
-  <SCard title="Accordion" split :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Accordion" :ui="{ content: 'flex-c gap-3' }">
     <DemoAccordionSingle />
     <DemoAccordionMultiple />
     <DemoAccordionSize />
