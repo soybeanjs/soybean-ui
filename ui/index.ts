@@ -17,4 +17,5 @@ export * from './components/tooltip';
 export * from './components/tabs';
 export * from './components/visually-hidden';
 
-export * from './theme';
+export type { ThemeColor, ThemeSize } from './theme/types';
+export type { Align, Side } from '@headless';
