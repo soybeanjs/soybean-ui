@@ -8,8 +8,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<ArrowProps>(), {
   as: 'svg',
-  width: 12,
-  height: 6
+  width: '1em',
+  height: '0.5em'
 });
 </script>
 

@@ -5,13 +5,13 @@ export interface ArrowProps extends PrimitiveProps, /** @vue-ignore */ SVGAttrib
   /**
    * The width of the arrow in pixels.
    *
-   * @defaultValue 10
+   * @defaultValue 1em
    */
-  width?: number;
+  width?: number | string;
   /**
    * The height of the arrow in pixels.
    *
-   * @defaultValue 5
+   * @defaultValue 0.5em
    */
-  height?: number;
+  height?: number | string;
 }
