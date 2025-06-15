@@ -16,6 +16,7 @@ import DemoPopover from '../examples/popover.vue';
 import DemoRadioGroup from '../examples/radio-group.vue';
 import DemoRovingFocus from '../examples/roving-focus/index.vue';
 import DemoSeparator from '../examples/separator.vue';
+import DemoTabs from '../examples/tabs/index.vue';
 import DemoTooltip from '../examples/tooltip.vue';
 </script>
 
@@ -40,6 +41,7 @@ import DemoTooltip from '../examples/tooltip.vue';
       <DemoRadioGroup />
       <DemoRovingFocus />
       <DemoSeparator />
+      <DemoTabs />
       <DemoTooltip />
     </div>
   </div>

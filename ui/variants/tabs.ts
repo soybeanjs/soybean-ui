@@ -11,8 +11,8 @@ export const tabsVariants = tv({
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
-    indicatorRoot: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
-    indicator: `size-full rounded-md bg-background shadow`,
+    indicator: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
+    indicatorContent: `size-full rounded-md bg-background shadow`,
     content: `flex-grow self-stretch overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
   },
   variants: {
@@ -51,11 +51,11 @@ export const tabsVariants = tv({
     orientation: {
       horizontal: {
         root: `flex-col`,
-        indicatorRoot: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position]`
+        indicator: `h-full w-[--soybean-tabs-indicator-size] translate-x-[--soybean-tabs-indicator-position]`
       },
       vertical: {
-        list: `flex-col`,
-        indicatorRoot: `w-full h-[--soybean-tabs-indicator-size] translate-y-[--soybean-tabs-indicator-position]`
+        list: `flex-col items-stretch`,
+        indicator: `w-full h-[--soybean-tabs-indicator-size] translate-y-[--soybean-tabs-indicator-position]`
       }
     },
     fill: {
@@ -77,7 +77,7 @@ export const tabsVariants = tv({
       size: 'xs',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-0.75',
+        indicator: 'py-0.75',
         content: 'mt-1.5'
       }
     },
@@ -85,7 +85,7 @@ export const tabsVariants = tv({
       size: 'xs',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-0.75',
+        indicator: 'px-0.75',
         content: 'ml-1.5'
       }
     },
@@ -93,7 +93,7 @@ export const tabsVariants = tv({
       size: 'sm',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-1',
+        indicator: 'py-1',
         content: 'mt-1.75'
       }
     },
@@ -101,7 +101,7 @@ export const tabsVariants = tv({
       size: 'sm',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-1',
+        indicator: 'px-1',
         content: 'ml-1.75'
       }
     },
@@ -109,7 +109,7 @@ export const tabsVariants = tv({
       size: 'md',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-1',
+        indicator: 'py-1',
         content: 'mt-2'
       }
     },
@@ -117,7 +117,7 @@ export const tabsVariants = tv({
       size: 'md',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-1',
+        indicator: 'px-1',
         content: 'ml-2'
       }
     },
@@ -125,7 +125,7 @@ export const tabsVariants = tv({
       size: 'lg',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-1.125',
+        indicator: 'py-1.125',
         content: 'mt-2.5'
       }
     },
@@ -133,7 +133,7 @@ export const tabsVariants = tv({
       size: 'lg',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-1.125',
+        indicator: 'px-1.125',
         content: 'ml-2.5'
       }
     },
@@ -141,7 +141,7 @@ export const tabsVariants = tv({
       size: 'xl',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-1.25',
+        indicator: 'py-1.25',
         content: 'mt-3'
       }
     },
@@ -149,7 +149,7 @@ export const tabsVariants = tv({
       size: 'xl',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-1.25',
+        indicator: 'px-1.25',
         content: 'ml-3'
       }
     },
@@ -157,7 +157,7 @@ export const tabsVariants = tv({
       size: '2xl',
       orientation: 'horizontal',
       class: {
-        indicatorRoot: 'py-1.5',
+        indicator: 'py-1.5',
         content: 'mt-3.5'
       }
     },
@@ -165,7 +165,7 @@ export const tabsVariants = tv({
       size: '2xl',
       orientation: 'vertical',
       class: {
-        indicatorRoot: 'px-1.5',
+        indicator: 'px-1.5',
         content: 'ml-3.5'
       }
     }
@@ -178,8 +178,6 @@ export const tabsVariants = tv({
   }
 });
 
-export type TabsSlots = keyof typeof tabsVariants.slots;
-
-export type TabsProps = VariantProps<typeof tabsVariants>;
+type TabsProps = VariantProps<typeof tabsVariants>;
 
 export type TabsFill = NonNullable<TabsProps['fill']>;
