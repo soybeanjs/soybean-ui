@@ -81,8 +81,9 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
     const rovingFocusGroupProps = computed(() => {
       return {
         tabindex: isTabbingBackOut.value || focusableItemsCount.value === 0 ? '-1' : '0',
-        dataOrientation: orientation.value,
+        'data-orientation': orientation.value,
         dir: dir.value,
+        'data-loop': loop.value ? '' : undefined,
         style: 'outline: none'
       };
     });
