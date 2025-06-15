@@ -16,9 +16,9 @@ const { modelValue, unmountOnHide, getId } = useTabsRootContext('TabsContent');
 
 const [contentElement, setContentElement] = useForwardElement();
 
-const theme = useTabsThemeContext();
+const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [theme?.ui?.value?.content, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 
 const { contentId, triggerId } = getId(props.value);
 

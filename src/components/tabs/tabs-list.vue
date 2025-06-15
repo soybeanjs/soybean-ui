@@ -15,9 +15,9 @@ const { orientation, dir, loop, onListElementChange } = useTabsRootContext('Tabs
 
 const [_, setListElement] = useForwardElement(onListElementChange);
 
-const theme = useTabsThemeContext();
+const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [theme?.ui?.value?.list, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.list, props.class]);
 </script>
 
 <template>

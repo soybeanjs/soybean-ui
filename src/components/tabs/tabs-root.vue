@@ -37,9 +37,9 @@ const modelValue = useControllableState(
   props.defaultValue
 );
 
-const theme = useTabsThemeContext();
+const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [theme?.ui?.value?.root, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
 const { dir } = provideTabsRootContext({
   ...transformPropsToContext(props, ['dir', 'loop', 'orientation', 'unmountOnHide', 'activationMode']),

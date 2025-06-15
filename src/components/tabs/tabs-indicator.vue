@@ -14,9 +14,9 @@ const props = defineProps<TabsIndicatorProps>();
 
 const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIndicator');
 
-const theme = useTabsThemeContext();
+const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [theme?.ui?.value?.indicator, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
 
 const activeTab = ref<HTMLElement | null>();
 

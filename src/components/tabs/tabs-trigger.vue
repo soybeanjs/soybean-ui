@@ -19,9 +19,9 @@ const forwardedProps = useOmitProps(props, ['value']);
 
 const { modelValue, orientation, changeModelValue, activationMode, getId } = useTabsRootContext('TabsTrigger');
 
-const theme = useTabsThemeContext();
+const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [theme?.ui?.value?.trigger, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
 
 const { contentId, triggerId } = getId(props.value);
 
