@@ -12,7 +12,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<PopoverRootProps>(), {
   open: undefined,
-  defaultOpen: false
+  defaultOpen: false,
+  avoidCollisions: true
 });
 
 const emit = defineEmits<PopoverRootEmits>();

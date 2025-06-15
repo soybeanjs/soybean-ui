@@ -5,4 +5,6 @@ import PopperArrow from './popper-arrow.vue';
 
 export { PopperRoot, PopperAnchor, PopperContent, PopperArrow };
 
-export type { PopperAnchorProps, PopperContentProps, PopperContentEmits, PopperArrowProps } from './types';
+export { providePopoverThemeContext } from './context';
+
+export type { PopperAnchorProps, PopperContentProps, PopperContentEmits, PopperArrowProps, PopperSlot } from './types';

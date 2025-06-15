@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
 import { useExposedElement, useForwardElement, useOmitProps } from '../../composables';
-import { providePopperContentContext, usePopperRootContext } from './context';
+import { providePopperContentContext, usePopoverThemeContext, usePopperRootContext } from './context';
 import {
   createPopperContentPropsDefaultValue,
   getFloatingUIMiddleware,
@@ -47,6 +47,9 @@ const forwardedProps = useOmitProps(
   ],
   attrs
 );
+
+const themeContext = usePopoverThemeContext();
+const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 
 const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();
@@ -124,6 +127,7 @@ watchPostEffect(() => {
     <div
       v-bind="forwardedProps"
       :ref="setContentElement"
+      :class="cls"
       :data-side="placedSide"
       :data-align="placedAlign"
       :style="style"

@@ -11,6 +11,7 @@ export * from './components/drawer';
 export * from './components/icon';
 export * from './components/label';
 export * from './components/link';
+export * from './components/popover';
 export * from './components/segment';
 export * from './components/tabs';
 export * from './components/visually-hidden';
