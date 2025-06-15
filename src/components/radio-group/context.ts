@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
 import { getCheckedState } from '../checkbox/shared';
 import { useContext } from '../../composables';
-import type { RadioGroupItemContextParams, RadioGroupRootContextParams } from './types';
+import type { RadioGroupItemContextParams, RadioGroupRootContextParams, RadioGroupThemeContextParams } from './types';
 
 export const [provideRadioGroupRootContext, useRadioGroupRootContext] = useContext(
   'RadioGroupRoot',
@@ -26,4 +26,9 @@ export const [provideRadioGroupItemContext, useRadioGroupItemContext] = useConte
       initControlId
     };
   }
+);
+
+export const [provideRadioGroupThemeContext, useRadioGroupThemeContext] = useContext(
+  'RadioGroupTheme',
+  (params: RadioGroupThemeContextParams) => params
 );

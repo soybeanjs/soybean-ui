@@ -3,7 +3,7 @@ import { computed, onBeforeMount, onMounted, useAttrs, useTemplateRef, watchEffe
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
 import type { NavigationKey } from '../../types';
 import { RovingFocusItem } from '../roving-focus';
-import { useRadioGroupItemContext, useRadioGroupRootContext } from './context';
+import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeContext } from './context';
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 
 defineOptions({
@@ -14,6 +14,10 @@ defineOptions({
 const props = defineProps<RadioGroupControlProps>();
 
 const attrs = useAttrs();
+
+const themeContext = useRadioGroupThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.control, props.class]);
 
 const controlElement = useTemplateRef<HTMLButtonElement>('controlElement');
 const rootContext = useRadioGroupRootContext('RadioGroupControl');
@@ -99,6 +103,7 @@ onBeforeMount(() => {
     <button
       v-bind="{ ...props, ...attrs }"
       ref="controlElement"
+      :class="cls"
       role="radio"
       type="button"
       :disabled="disabled"

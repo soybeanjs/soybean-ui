@@ -1,15 +1,15 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
 
-export const radioVariants = tv({
+export const radioGroupVariants = tv({
   slots: {
-    root: 'flex items-center',
+    root: 'flex',
+    item: 'flex items-center',
     control: [
       'peer relative shrink-0 rounded-full border shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 rounded-full',
-    group: 'flex',
     label: ''
   },
   variants: {
@@ -49,42 +49,42 @@ export const radioVariants = tv({
     },
     size: {
       xs: {
-        root: 'gap-1.5',
-        control: 'size-3',
-        group: 'gap-x-2 gap-y-1.5'
+        root: 'gap-x-2 gap-y-1.5',
+        item: 'gap-1.5',
+        control: 'size-3'
       },
       sm: {
-        root: 'gap-1.75',
-        control: 'size-3.5',
-        group: 'gap-x-2.5 gap-y-1.75'
+        root: 'gap-x-2.5 gap-y-1.75',
+        item: 'gap-1.75',
+        control: 'size-3.5'
       },
       md: {
-        root: 'gap-2',
-        control: 'size-4',
-        group: 'gap-x-3 gap-y-2'
+        root: 'gap-x-3 gap-y-2',
+        item: 'gap-2',
+        control: 'size-4'
       },
       lg: {
-        root: 'gap-2.5',
-        control: 'size-4.5',
-        group: 'gap-x-3.5 gap-y-2.5'
+        root: 'gap-x-3.5 gap-y-2.5',
+        item: 'gap-2.5',
+        control: 'size-4.5'
       },
       xl: {
-        root: 'gap-3',
-        control: 'size-5',
-        group: 'gap-x-4 gap-y-3'
+        root: 'gap-x-4 gap-y-3',
+        item: 'gap-3',
+        control: 'size-5'
       },
       '2xl': {
-        root: 'gap-3.5',
-        control: 'size-6',
-        group: 'gap-x-4.5 gap-y-3.5'
+        root: 'gap-x-4.5 gap-y-3.5',
+        item: 'gap-3.5',
+        control: 'size-6'
       }
     },
     orientation: {
       horizontal: {
-        group: 'items-center'
+        root: 'items-center'
       },
       vertical: {
-        group: 'flex-col'
+        root: 'flex-col'
       }
     }
   },
@@ -94,5 +94,3 @@ export const radioVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-export type RadioSlots = keyof typeof radioVariants.slots;

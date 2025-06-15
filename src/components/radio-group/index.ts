@@ -6,6 +6,8 @@ import RadioGroupLabel from './radio-group-label.vue';
 
 export { RadioGroupRoot, RadioGroupItem, RadioGroupControl, RadioGroupIndicator, RadioGroupLabel };
 
+export { provideRadioGroupThemeContext } from './context';
+
 export type {
   RadioGroupRootProps,
   RadioGroupRootEmits,
@@ -14,5 +16,6 @@ export type {
   RadioGroupControlProps,
   RadioGroupIndicatorProps,
   RadioSelectEvent,
-  RadioGroupLabelProps
+  RadioGroupLabelProps,
+  RadioGroupSlot
 } from './types';

@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { useForwardElement, useOmitProps, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { getCheckedState } from '../checkbox/shared';
-import { useRadioGroupItemContext } from './context';
+import { useRadioGroupItemContext, useRadioGroupThemeContext } from './context';
 import type { RadioGroupIndicatorProps } from './types';
 
 defineOptions({
@@ -15,6 +15,10 @@ const props = withDefaults(defineProps<RadioGroupIndicatorProps>(), {
 });
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
+
+const themeContext = useRadioGroupThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 const { checked, disabled } = useRadioGroupItemContext('RadioGroupIndicator');
@@ -29,6 +33,7 @@ const dataState = computed(() => getCheckedState(checked.value));
     v-if="isPresent"
     v-bind="forwardedProps"
     :ref="setIndicatorElement"
+    :class="cls"
     :data-state="dataState"
     :data-disabled="disabled ? '' : undefined"
   >

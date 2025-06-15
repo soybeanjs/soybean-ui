@@ -13,6 +13,7 @@ export * from './components/icon';
 export * from './components/label';
 export * from './components/link';
 export * from './components/popover';
+export * from './components/radio-group';
 export * from './components/segment';
 export * from './components/tooltip';
 export * from './components/tabs';

@@ -5,7 +5,7 @@ import { isFormControl, isNullish, transformPropsToContext } from '../../shared'
 import type { AcceptableBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideRadioGroupRootContext } from './context';
+import { provideRadioGroupRootContext, useRadioGroupThemeContext } from './context';
 import type { RadioGroupRootEmits, RadioGroupRootProps } from './types';
 
 defineOptions({
@@ -33,6 +33,10 @@ const forwardedProps = useOmitProps(props, [
   'required'
 ]);
 
+const themeContext = useRadioGroupThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+
 const rootElement = useTemplateRef('rootElement');
 
 const modelValue = useControllableState(
@@ -57,6 +61,7 @@ provideRadioGroupRootContext({
     <div
       v-bind="forwardedProps"
       ref="rootElement"
+      :class="cls"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"
       :aria-orientation="orientation"

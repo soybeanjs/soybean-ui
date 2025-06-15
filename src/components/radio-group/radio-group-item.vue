@@ -3,7 +3,7 @@ import { computed, useTemplateRef } from 'vue';
 import { useOmitProps } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideRadioGroupItemContext, useRadioGroupRootContext } from './context';
+import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeContext } from './context';
 import type { RadioGroupItemEmits, RadioGroupItemProps, RadioSelectEvent } from './types';
 
 defineOptions({
@@ -15,6 +15,10 @@ const props = defineProps<RadioGroupItemProps>();
 const emit = defineEmits<RadioGroupItemEmits>();
 
 const forwardedProps = useOmitProps(props, ['name', 'required', 'value', 'disabled']);
+
+const themeContext = useRadioGroupThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
 
 const rootContext = useRadioGroupRootContext('RadioGroupItem');
 const itemElement = useTemplateRef<HTMLDivElement>('itemElement');
@@ -36,7 +40,7 @@ provideRadioGroupItemContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="itemElement">
+  <div v-bind="forwardedProps" ref="itemElement" :class="cls">
     <slot :checked="checked" />
 
     <VisuallyHiddenInput

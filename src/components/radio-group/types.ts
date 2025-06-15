@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableBooleanValue,
+  ClassValue,
   DataOrientation,
   Direction,
   EmitsToHookProps,
@@ -11,7 +12,7 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
-export interface RadioGroupRootProps<T = AcceptableBooleanValue>
+export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
   extends FormFieldProps,
     /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
@@ -31,7 +32,7 @@ export interface RadioGroupRootProps<T = AcceptableBooleanValue>
   loop?: boolean;
 }
 
-export type RadioGroupRootEmits<T = AcceptableBooleanValue> = {
+export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
   /** Event handler called when the radio group value changes */
   'update:modelValue': [payload: NonNullable<T>];
 };
@@ -80,5 +81,11 @@ export type RadioGroupItemContextParams = PropsToContext<
   };
 
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+
+export type RadioGroupSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
+
+export interface RadioGroupThemeContextParams {
+  ui: ComputedRef<Record<RadioGroupSlot, ClassValue>>;
+}
 
 export type { RadioGroupLabelProps };
