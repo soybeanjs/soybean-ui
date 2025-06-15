@@ -5,7 +5,7 @@ export const cardVariants = tv({
   slots: {
     root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
-    content: 'flex-grow',
+    content: 'flex-grow overflow-auto',
     footer: 'flex items-center justify-between',
     titleRoot: 'flex items-center',
     title: 'font-semibold tracking-tight',
