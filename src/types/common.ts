@@ -28,6 +28,20 @@ export type HorizontalSide = Extract<Side, 'left' | 'right'>;
 
 export type Align = 'start' | 'center' | 'end';
 
+export type Placement =
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left'
+  | 'top-start'
+  | 'top-end'
+  | 'right-start'
+  | 'right-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'left-start'
+  | 'left-end';
+
 export interface Size {
   width: number;
   height: number;

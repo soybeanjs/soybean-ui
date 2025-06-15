@@ -127,6 +127,7 @@ export function getPlacementFromSideAndAlign(side: Side, align: Align) {
 
 export function createPopperContentPropsDefaultValue() {
   const props: InferDefaults<PopperContentProps> = {
+    placement: undefined,
     side: 'bottom',
     sideOffset: 0,
     align: 'center',

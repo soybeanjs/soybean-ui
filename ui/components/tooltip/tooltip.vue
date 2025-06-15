@@ -47,6 +47,13 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
+const contentProps = computed(() => {
+  return {
+    placement: props.placement,
+    ...props.contentProps
+  };
+});
+
 providePopoverThemeContext({
   ui
 });

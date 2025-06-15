@@ -1,6 +1,6 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
-import type { Align, Side, VNodeRef } from '../../types';
+import type { Align, Placement, Side, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { ArrowProps as PopperArrowProps } from '../arrow/types';
 
@@ -19,6 +19,14 @@ export interface PopperContentProps extends /** @vue-ignore */ HTMLAttributes {
    * @param el - The floating element.
    */
   floatingRef?: (el: HTMLElement) => void;
+  /**
+   * The placement of the floating element.
+   *
+   * If used, it will override the `side` and `align` props.
+   *
+   * @defaultValue undefined
+   */
+  placement?: Placement;
   /**
    * The preferred side of the trigger to render against when open. Will be reversed when collisions occur and
    * avoidCollisions is enabled.

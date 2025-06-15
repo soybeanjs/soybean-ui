@@ -1,5 +1,6 @@
 import type {
   ClassValue,
+  Placement,
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseProps,
@@ -18,6 +19,7 @@ export type PopoverUi = Partial<Record<PopperSlot, ClassValue>>;
 export interface PopoverProps extends PopoverRootProps {
   size?: ThemeSize;
   ui?: PopoverUi;
+  placement?: Placement;
   showArrow?: boolean;
   contentProps?: PopoverContentProps;
   triggerProps?: PopoverTriggerProps;

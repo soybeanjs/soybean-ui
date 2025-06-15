@@ -1,5 +1,6 @@
 import type {
   ClassValue,
+  Placement,
   PopperSlot,
   TooltipArrowProps,
   TooltipContentEmits,
@@ -17,6 +18,7 @@ export interface TooltipProps extends TooltipRootProps {
   size?: ThemeSize;
   ui?: TooltipUi;
   content?: string;
+  placement?: Placement;
   showArrow?: boolean;
   contentProps?: TooltipContentProps;
   triggerProps?: TooltipTriggerProps;

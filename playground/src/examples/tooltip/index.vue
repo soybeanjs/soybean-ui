@@ -1,35 +1,33 @@
 <script setup lang="ts">
 import { SButton, SCard, STooltip } from '@ui';
-import type { Align, Side } from '@ui';
+import type { Placement } from '@ui';
 
 defineOptions({
   name: 'DemoTooltip'
 });
 
-const sides: Side[] = ['top', 'right', 'bottom', 'left'];
-
-const aligns: Align[] = ['start', 'center', 'end'];
+const placements: Placement[] = [
+  'top-start',
+  'top',
+  'top-end',
+  'right-start',
+  'right',
+  'right-end',
+  'bottom-start',
+  'bottom',
+  'bottom-end',
+  'left-start',
+  'left',
+  'left-end'
+];
 </script>
 
 <template>
   <SCard title="Tooltip" :ui="{ content: 'flex-c gap-3' }">
-    <SCard title="Tooltip Position" split>
-      <div v-for="side in sides" :key="side">
-        <div class="py-12px text-18px">Side: {{ side }}</div>
-        <div class="flex flex-wrap gap-12px">
-          <STooltip v-for="align in aligns" :key="align" :content-props="{ side: side, align: align }">
-            <template #trigger>
-              <SButton variant="pure">align: {{ align }}</SButton>
-            </template>
-            <p>Tooltip content</p>
-          </STooltip>
-        </div>
-      </div>
-    </SCard>
-    <SCard title="Tooltip Arrow" split>
-      <STooltip show-arrow>
+    <SCard title="Tooltip Position" split :ui="{ content: 'flex gap-3' }">
+      <STooltip v-for="placement in placements" :key="placement" :content-props="{ placement }">
         <template #trigger>
-          <SButton variant="pure">with arrow</SButton>
+          <SButton variant="pure">{{ placement }}</SButton>
         </template>
         <p>Tooltip content</p>
       </STooltip>

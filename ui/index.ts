@@ -18,4 +18,4 @@ export * from './components/tabs';
 export * from './components/visually-hidden';
 
 export type { ThemeColor, ThemeSize } from './theme/types';
-export type { Align, Side } from '@headless';
+export type * from '@headless/types';

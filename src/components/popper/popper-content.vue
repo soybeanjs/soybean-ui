@@ -29,6 +29,7 @@ const forwardedProps = useOmitProps(
   props,
   [
     'floatingRef',
+    'placement',
     'side',
     'sideOffset',
     'align',
@@ -62,7 +63,7 @@ const contentZIndex = shallowRef('');
 
 const { floatingStyles, placement, isPositioned, middlewareData } = useFloating(referenceElement, floatingRef, {
   strategy: () => props.positionStrategy,
-  placement: () => getPlacementFromSideAndAlign(props.side, props.align),
+  placement: () => props.placement ?? getPlacementFromSideAndAlign(props.side, props.align),
   whileElementsMounted: (...args) => {
     const cleanup = autoUpdate(...args, {
       layoutShift: !props.disableUpdateOnLayoutShift,
