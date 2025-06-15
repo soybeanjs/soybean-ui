@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, shallowRef, useAttrs, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
+import { useElementSize } from '@vueuse/core';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
-import { useElementSize, useExposedElement, useForwardElement, useOmitProps } from '../../composables';
+import { useExposedElement, useForwardElement, useOmitProps } from '../../composables';
 import { providePopperContentContext, usePopperRootContext } from './context';
 import {
   createPopperContentPropsDefaultValue,

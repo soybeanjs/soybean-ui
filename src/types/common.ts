@@ -51,10 +51,6 @@ export type ScrollBodyOption = {
   margin?: boolean | number | string;
 };
 
-/** Void function */
-export type Fn = () => void;
-export type AnyFn = (...args: any[]) => any;
-
 export type SingleOrMultipleType = 'single' | 'multiple';
 
 type GetSingleOrMultipleType<T, S> = T extends AcceptableValue

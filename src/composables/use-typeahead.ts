@@ -1,4 +1,5 @@
-import { getActiveElement, getNextMatch, refAutoReset } from '../shared';
+import { refAutoReset } from '@vueuse/core';
+import { getActiveElement, getNextMatch } from '../shared';
 import type { CollectionItemData } from './use-collection';
 
 export function useTypeahead(callback?: (search: string) => void) {

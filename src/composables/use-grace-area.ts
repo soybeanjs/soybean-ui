@@ -1,13 +1,13 @@
 import { onWatcherCleanup, ref, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
+import { refAutoReset } from '@vueuse/core';
 import {
   getExitSideFromRect,
   getHull,
   getPaddedExitPoints,
   getPointsFromRect,
   isClient,
-  isPointInPolygon,
-  refAutoReset
+  isPointInPolygon
 } from '../shared';
 import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
 import type { Point, Polygon } from '../types';

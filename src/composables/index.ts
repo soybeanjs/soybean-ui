@@ -5,7 +5,6 @@ export * from './use-context';
 export * from './use-controllable-state';
 export * from './use-direction';
 export * from './use-dismissable-layer';
-export * from './use-element-size';
 export * from './use-escape-key-down';
 export * from './use-exposed-element';
 export * from './use-focus-guards';
