@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import { shallowRef, watchEffect } from 'vue';
+import { onMounted, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
-import { useRouteQuery } from '@vueuse/router';
 import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
 import type { TabsOptionData } from '@ui';
-import { toKebabCase, toPascalCase } from '@headless/shared';
+import { isClient, toKebabCase, toPascalCase } from '@headless/shared';
 import ThemeCustomizer from '../components/theme-customizer.vue';
 import { useTheme } from '../theme';
 
 const { color, radius, size } = useTheme('HomePage');
 
-const activeTab = useRouteQuery<string>('tab', 'accordion');
+const activeTab = shallowRef('accordion');
 
 const isDark = useDark();
 
@@ -48,12 +47,45 @@ function getTabs() {
   return componentTabs.sort((a, b) => a.label.localeCompare(b.label));
 }
 
+// for nuxt
+function getQuery() {
+  const query = location.search
+    ?.split('?')?.[1]
+    ?.split('&')
+    ?.reduce(
+      (acc, item) => {
+        const [key, value] = item.split('=');
+        acc[key] = value;
+        return acc;
+      },
+      {} as Record<string, string>
+    );
+
+  return query || {};
+}
+
 watchEffect(async () => {
   const tab = tabs.find(t => t.value === activeTab.value);
   if (tab) {
     const mod = await tab.component();
     loadedComponent.value = mod.default || mod;
   }
+});
+
+watchEffect(() => {
+  if (!isClient) return;
+  const query = getQuery();
+  const newUrl = new URL(location.href);
+  const search = new URLSearchParams(query);
+  search.delete('tab');
+  search.append('tab', activeTab.value);
+  newUrl.search = search.toString();
+  history.replaceState({}, '', newUrl.toString());
+});
+
+onMounted(() => {
+  const query = getQuery();
+  activeTab.value = query.tab || 'accordion';
 });
 </script>
 

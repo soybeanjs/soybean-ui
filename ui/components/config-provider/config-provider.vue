@@ -4,7 +4,7 @@ import { useStyleTag } from '@vueuse/core';
 import { generateCSSVars } from '@soybean-ui/unocss-preset';
 import { ConfigProvider } from '@headless';
 import { useOmitProps } from '@headless/composables';
-import { transformPropsToContext } from '@headless/shared';
+import { isClient, transformPropsToContext } from '@headless/shared';
 import type { ThemeSize } from '@theme';
 import { provideConfigProviderContext } from './context';
 import { getThemeName, isIncludeByDefaultTheme } from './shared';
@@ -34,6 +34,7 @@ provideConfigProviderContext(transformPropsToContext(props));
 useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
 
 function addThemeClass(newThemeName: string, oldThemeName: string) {
+  if (!isClient) return;
   if (newThemeName === oldThemeName) {
     return;
   }
@@ -46,6 +47,7 @@ function addThemeClass(newThemeName: string, oldThemeName: string) {
 }
 
 function addSizeClass(_size: ThemeSize) {
+  if (!isClient) return;
   const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 
   document.documentElement.classList.add(`size-${_size}`);
