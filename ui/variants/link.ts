@@ -2,5 +2,5 @@
 import { tv } from 'tailwind-variants';
 
 export const linkVariants = tv({
-  base: 'w-fit outline-none cursor-pointer decoration-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
+  base: 'outline-none cursor-pointer decoration-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
 });
