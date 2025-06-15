@@ -15,6 +15,7 @@ import DemoLink from '../examples/link.vue';
 import DemoPopover from '../examples/popover.vue';
 import DemoRadioGroup from '../examples/radio-group.vue';
 import DemoRovingFocus from '../examples/roving-focus/index.vue';
+import DemoSegment from '../examples/segment/index.vue';
 import DemoSeparator from '../examples/separator.vue';
 import DemoTabs from '../examples/tabs/index.vue';
 import DemoTooltip from '../examples/tooltip.vue';
@@ -40,6 +41,7 @@ import DemoTooltip from '../examples/tooltip.vue';
       <DemoPopover />
       <DemoRadioGroup />
       <DemoRovingFocus />
+      <DemoSegment />
       <DemoSeparator />
       <DemoTabs />
       <DemoTooltip />
