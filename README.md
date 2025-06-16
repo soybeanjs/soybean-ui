@@ -54,7 +54,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Select          |                |                      | support virtualized   |
 | 1        | Skeleton        |                |                      |                       |
 | 1        | Slider          |                |                      |                       |
-| 1        | Switch          |                |                      |                       |
+| 1        | Switch          | ✅ Completed   |                      | support switch card   |
 | 1        | Tabs            | ✅ Completed   |                      |                       |
 | 1        | Tag             |                | Badge(shadcn-ui)     |                       |
 | 1        | Textarea        |                |                      | support auto size     |
