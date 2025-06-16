@@ -20,6 +20,7 @@ export * from './components/radio-group';
 export * from './components/roving-focus';
 export * from './components/separator';
 export * from './components/slot';
+export * from './components/switch';
 export * from './components/tabs';
 export * from './components/tooltip';
 export * from './components/visually-hidden';
