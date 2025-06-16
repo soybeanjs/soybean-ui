@@ -37,8 +37,6 @@ const defaultId = useId();
 
 const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
 
-const isIndeterminate = computed(() => props.modelValue === 'indeterminate');
-
 const ui = computed(() => {
   const variants = checkboxVariants();
 
@@ -51,16 +49,16 @@ provideCheckboxThemeContext({
 </script>
 
 <template>
-  <CheckboxRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+  <CheckboxRoot v-slot="slotProps" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <CheckboxControl v-bind="controlProps" :id="checkboxId">
       <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
         <CheckboxIndicator v-bind="indicatorProps">
-          <Icon :icon="isIndeterminate ? 'lucide:minus' : 'lucide:check'" class="size-full" />
+          <Icon :icon="slotProps.state === 'indeterminate' ? 'lucide:minus' : 'lucide:check'" class="size-full" />
         </CheckboxIndicator>
       </Transition>
     </CheckboxControl>
     <CheckboxLabel v-bind="labelProps" :for="checkboxId">
-      <slot :id="checkboxId">{{ label }}</slot>
+      <slot v-bind="slotProps" :id="checkboxId">{{ label }}</slot>
     </CheckboxLabel>
   </CheckboxRoot>
 </template>

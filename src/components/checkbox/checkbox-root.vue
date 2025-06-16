@@ -61,7 +61,7 @@ provideCheckboxRootContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="rootElement" :class="cls">
+  <div v-bind="forwardedProps" ref="rootElement" :class="cls" :data-checked="state ? '' : undefined">
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { onMounted, shallowRef, watchEffect } from 'vue';
+import { onMounted, shallowRef, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
 import type { TabsOptionData } from '@ui';
-import { isClient, toKebabCase, toPascalCase } from '@headless/shared';
+import { toKebabCase, toPascalCase } from '@headless/shared';
 import ThemeCustomizer from '../components/theme-customizer.vue';
 import { useTheme } from '../theme';
 
 const { color, radius, size } = useTheme('HomePage');
 
-const activeTab = shallowRef('accordion');
+const activeTab = shallowRef('');
 
 const isDark = useDark();
 
@@ -64,16 +64,7 @@ function getQuery() {
   return query || {};
 }
 
-watchEffect(async () => {
-  const tab = tabs.find(t => t.value === activeTab.value);
-  if (tab) {
-    const mod = await tab.component();
-    loadedComponent.value = mod.default || mod;
-  }
-});
-
-watchEffect(() => {
-  if (!isClient) return;
+function updateUrl() {
   const query = getQuery();
   const newUrl = new URL(location.href);
   const search = new URLSearchParams(query);
@@ -81,11 +72,25 @@ watchEffect(() => {
   search.append('tab', activeTab.value);
   newUrl.search = search.toString();
   history.replaceState({}, '', newUrl.toString());
+}
+
+function initTab() {
+  const query = getQuery();
+  activeTab.value = query.tab || 'accordion';
+
+  updateUrl();
+}
+
+watchPostEffect(async () => {
+  const tab = tabs.find(t => t.value === activeTab.value);
+  if (tab) {
+    const mod = await tab.component();
+    loadedComponent.value = mod.default || mod;
+  }
 });
 
 onMounted(() => {
-  const query = getQuery();
-  activeTab.value = query.tab || 'accordion';
+  initTab();
 });
 </script>
 

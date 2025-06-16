@@ -26,6 +26,18 @@ export interface CheckboxProps extends CheckboxRootProps {
 
 export type CheckboxEmits = CheckboxRootEmits;
 
+export type CheckboxCardSlot = CheckboxSlot | 'content' | 'textContent' | 'icon' | 'description';
+
+export type CheckboxCardUi = Partial<Record<CheckboxCardSlot, ClassValue>>;
+
+export interface CheckboxCardProps extends CheckboxProps {
+  ui?: CheckboxCardUi;
+  icon?: string;
+  description?: string;
+}
+
+export type CheckboxCardEmits = CheckboxEmits;
+
 export interface CheckboxGroupOptionData<T extends AcceptableValue = AcceptableValue> {
   value: NonNullable<T>;
   label: string;
@@ -47,6 +59,22 @@ export interface CheckboxGroupProps<
 }
 
 export type CheckboxGroupEmits<T extends AcceptableValue = AcceptableValue> = CheckboxGroupRootEmits<T>;
+
+export interface CheckboxCardGroupOptionData<T extends AcceptableValue = AcceptableValue>
+  extends CheckboxGroupOptionData<T> {
+  icon?: string;
+  description?: string;
+}
+
+export type CheckboxCardGroupProps<
+  T extends AcceptableValue = AcceptableValue,
+  S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
+> = CheckboxGroupProps<T, S> & {
+  ui?: CheckboxCardUi;
+  items: S[];
+};
+
+export type CheckboxCardGroupEmits<T extends AcceptableValue = AcceptableValue> = CheckboxGroupEmits<T>;
 
 export type {
   CheckboxRootProps,

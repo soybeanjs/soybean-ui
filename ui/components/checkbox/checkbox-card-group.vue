@@ -3,7 +3,7 @@
   lang="ts"
   generic="
     T extends AcceptableValue = AcceptableValue,
-    S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
+    S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
   "
 >
 import { computed } from 'vue';
@@ -11,17 +11,17 @@ import { CheckboxGroupRoot } from '@headless';
 import type { AcceptableValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
-import { checkboxVariants } from '@variants/checkbox';
-import Checkbox from './checkbox.vue';
-import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
+import { checkboxCardVariants } from '@variants/checkbox';
+import CheckboxCard from './checkbox-card.vue';
+import type { CheckboxCardGroupEmits, CheckboxCardGroupOptionData, CheckboxCardGroupProps } from './types';
 
 defineOptions({
-  name: 'SCheckboxGroup'
+  name: 'SCheckboxCardGroup'
 });
 
-const props = defineProps<CheckboxGroupProps<T, S>>();
+const props = defineProps<CheckboxCardGroupProps<T, S>>();
 
-const emit = defineEmits<CheckboxGroupEmits<T>>();
+const emit = defineEmits<CheckboxCardGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
   'color',
@@ -35,7 +35,7 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const ui = computed(() => {
-  const variants = checkboxVariants();
+  const variants = checkboxCardVariants();
 
   return mergeSlotVariants(variants, props.ui);
 });
@@ -47,7 +47,7 @@ const ui = computed(() => {
     :class="ui.groupRoot"
     @update:model-value="emit('update:modelValue', $event)"
   >
-    <Checkbox
+    <CheckboxCard
       v-for="(item, index) in items"
       :key="index"
       v-bind="rootProps"
@@ -55,6 +55,8 @@ const ui = computed(() => {
       :size="size"
       :label="item.label"
       :value="item.value"
+      :icon="item.icon"
+      :description="item.description"
       :disabled="disabled || item.disabled"
       :control-props="controlProps"
       :indicator-props="indicatorProps"

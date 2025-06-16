@@ -6,7 +6,7 @@ import type { AcceptableValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideCheckboxGroupRootContext, useCheckboxThemeContext } from './context';
+import { provideCheckboxGroupRootContext } from './context';
 import type { CheckboxGroupRootEmits, CheckboxGroupRootProps } from './types';
 
 defineOptions({
@@ -19,10 +19,6 @@ const props = withDefaults(defineProps<CheckboxGroupRootProps<T>>(), {
 });
 
 const emit = defineEmits<CheckboxGroupRootEmits<T>>();
-
-const themeContext = useCheckboxThemeContext();
-
-const cls = computed(() => [themeContext?.ui?.value?.groupRoot, props.class]);
 
 const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
   const { rovingFocus, loop, dir, orientation } = props;
@@ -57,13 +53,7 @@ const formControl = computed(() => isFormControl(groupElement.value));
 </script>
 
 <template>
-  <component
-    :is="rovingFocus ? RovingFocusGroup : 'div'"
-    v-bind="forwardedProps"
-    :ref="setGroupElement"
-    :class="cls"
-    as="div"
-  >
+  <component :is="rovingFocus ? RovingFocusGroup : 'div'" v-bind="forwardedProps" :ref="setGroupElement" as="div">
     <slot />
     <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
   </component>
