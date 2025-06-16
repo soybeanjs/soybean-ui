@@ -6,7 +6,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅ 19 / 🚫 2 / total: 107
+✅ 19 / 🚫 2 / total: 106
 
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
@@ -64,7 +64,6 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Tooltip         | ✅ Completed   |                      |                       |
 | 1        | Tree            |                |                      | support virtualized   |
 | 1        | TreeMenu        |                |                      |                       |
-| 1        | Viewport        |                |                      |                       |
 | 1        | VisuallyHidden  | ✅ Completed   |                      |                       |
 | 2        | BottomSheet     |                | Drawer(shadcn-ui)    |                       |
 | 2        | Calendar        |                |                      | v-calendar            |
