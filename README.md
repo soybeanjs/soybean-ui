@@ -6,7 +6,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅ 19 / 🚫 2 / total: 109
+✅ 19 / 🚫 2 / total: 107
 
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
@@ -91,7 +91,6 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 3        | AutoComplete    |                |                      | support virtualized   |
 | 3        | Backtop         |                |                      |                       |
 | 3        | Cascader        |                |                      | support virtualized   |
-| 3        | CheckboxCard    |                |                      |                       |
 | 3        | Clipboard       |                |                      |                       |
 | 3        | Code            |                |                      |                       |
 | 3        | ColorPicker     |                |                      |                       |
@@ -108,7 +107,6 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 3        | NumberAnimation |                |                      | naive-ui              |
 | 3        | PageTab         |                |                      |                       |
 | 3        | QRCode          |                |                      |                       |
-| 3        | RadioCard       |                |                      |                       |
 | 3        | Rating          |                | Rate                 | element-plus          |
 | 3        | Result          |                |                      |                       |
 | 3        | Spinner         |                | Loader, Spin         | github ldrs           |
