@@ -3,7 +3,7 @@ import { SCard, SSwitch } from '@ui';
 </script>
 
 <template>
-  <SCard title="Separator">
+  <SCard title="Switch">
     <SSwitch />
   </SCard>
 </template>
