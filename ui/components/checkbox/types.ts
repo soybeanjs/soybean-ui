@@ -11,13 +11,15 @@ import type {
   ClassValue
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
+import type { CheckboxShape } from '@variants/checkbox';
 
 export type CheckboxUi = Partial<Record<CheckboxSlot, ClassValue>>;
 
 export interface CheckboxProps extends CheckboxRootProps {
+  ui?: CheckboxUi;
   color?: ThemeColor;
   size?: ThemeSize;
-  ui?: CheckboxUi;
+  shape?: CheckboxShape;
   label?: string;
   controlProps?: CheckboxControlProps;
   indicatorProps?: CheckboxIndicatorProps;
@@ -48,9 +50,10 @@ export interface CheckboxGroupProps<
   T extends AcceptableValue = AcceptableValue,
   S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
 > extends CheckboxGroupRootProps<T> {
+  ui?: CheckboxUi;
   color?: ThemeColor;
   size?: ThemeSize;
-  ui?: CheckboxUi;
+  shape?: CheckboxShape;
   items: S[];
   rootProps?: CheckboxRootProps;
   controlProps?: CheckboxControlProps;

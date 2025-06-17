@@ -3,6 +3,8 @@ import { SCard } from '@ui';
 import CheckboxSingle from './single.vue';
 import CheckboxColor from './color.vue';
 import CheckboxSize from './size.vue';
+import CheckboxShape from './shape.vue';
+import CheckboxIcon from './icon.vue';
 import CheckboxGroup from './group.vue';
 import CheckboxCard from './card.vue';
 import CheckboxCardGroup from './card-group.vue';
@@ -13,6 +15,8 @@ import CheckboxCardGroup from './card-group.vue';
     <CheckboxSingle />
     <CheckboxColor />
     <CheckboxSize />
+    <CheckboxShape />
+    <CheckboxIcon />
     <CheckboxGroup />
     <CheckboxCard />
     <CheckboxCardGroup />

@@ -1,15 +1,16 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
+import type { VariantProps } from 'tailwind-variants';
 
 export const checkboxVariants = tv({
   slots: {
-    root: 'inline-flex items-center w-fit',
+    groupRoot: 'flex',
+    root: 'inline-flex items-center',
     control: [
-      'peer shrink-0 rounded-sm border shadow',
+      'peer shrink-0 border shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
-    groupRoot: 'flex',
     label: ''
   },
   variants: {
@@ -41,34 +42,34 @@ export const checkboxVariants = tv({
     },
     size: {
       xs: {
+        groupRoot: 'gap-x-2 gap-y-1.5',
         root: 'gap-1.5',
-        control: 'size-3',
-        groupRoot: 'gap-x-2 gap-y-1.5'
+        control: 'size-3'
       },
       sm: {
+        groupRoot: 'gap-x-2.5 gap-y-1.75',
         root: 'gap-1.75',
-        control: 'size-3.5',
-        groupRoot: 'gap-x-2.5 gap-y-1.75'
+        control: 'size-3.5'
       },
       md: {
+        groupRoot: 'gap-x-3 gap-y-2',
         root: 'gap-2',
-        control: 'size-4',
-        groupRoot: 'gap-x-3 gap-y-2'
+        control: 'size-4'
       },
       lg: {
+        groupRoot: 'gap-x-3.5 gap-y-2.5',
         root: 'gap-2.5',
-        control: 'size-4.5',
-        groupRoot: 'gap-x-3.5 gap-y-2.5'
+        control: 'size-4.5'
       },
       xl: {
+        groupRoot: 'gap-x-4 gap-y-3',
         root: 'gap-3',
-        control: 'size-5',
-        groupRoot: 'gap-x-4 gap-y-3'
+        control: 'size-5'
       },
       '2xl': {
+        groupRoot: 'gap-x-4.5 gap-y-3.5',
         root: 'gap-3.5',
-        control: 'size-6',
-        groupRoot: 'gap-x-4.5 gap-y-3.5'
+        control: 'size-6'
       }
     },
     orientation: {
@@ -78,12 +79,21 @@ export const checkboxVariants = tv({
       vertical: {
         groupRoot: 'flex-col'
       }
+    },
+    shape: {
+      square: {
+        control: 'rounded-sm'
+      },
+      rounded: {
+        control: 'rounded-full'
+      }
     }
   },
   defaultVariants: {
     color: 'primary',
     size: 'md',
-    orientation: 'horizontal'
+    orientation: 'horizontal',
+    shape: 'square'
   }
 });
 
@@ -97,7 +107,7 @@ export const checkboxCardVariants = tv({
     label: 'font-medium',
     description: 'text-muted-foreground',
     control: [
-      'peer shrink-0 rounded-sm border shadow',
+      'peer shrink-0 border shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
@@ -193,10 +203,23 @@ export const checkboxCardVariants = tv({
         description: 'text-lg',
         control: 'size-6'
       }
+    },
+    shape: {
+      square: {
+        control: 'rounded-sm'
+      },
+      rounded: {
+        control: 'rounded-full'
+      }
     }
   },
   defaultVariants: {
     color: 'primary',
-    size: 'md'
+    size: 'md',
+    shape: 'square'
   }
 });
+
+type CheckboxProps = VariantProps<typeof checkboxVariants>;
+
+export type CheckboxShape = NonNullable<CheckboxProps['shape']>;

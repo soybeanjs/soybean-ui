@@ -24,9 +24,10 @@ const props = defineProps<CheckboxCardGroupProps<T, S>>();
 const emit = defineEmits<CheckboxCardGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
+  'ui',
   'color',
   'size',
-  'ui',
+  'shape',
   'items',
   'rootProps',
   'controlProps',
@@ -53,6 +54,7 @@ const ui = computed(() => {
       v-bind="rootProps"
       :color="color"
       :size="size"
+      :shape="shape"
       :label="item.label"
       :value="item.value"
       :icon="item.icon"

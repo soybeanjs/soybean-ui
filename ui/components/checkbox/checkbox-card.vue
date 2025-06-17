@@ -27,9 +27,10 @@ const emit = defineEmits<CheckboxEmits>();
 const slots = useSlots();
 
 const forwardedProps = useOmitProps(props, [
+  'ui',
   'color',
   'size',
-  'ui',
+  'shape',
   'label',
   'icon',
   'description',
@@ -47,7 +48,8 @@ const isIndeterminate = computed(() => props.modelValue === 'indeterminate');
 const ui = computed(() => {
   const variants = checkboxCardVariants({
     color: props.color,
-    size: props.size
+    size: props.size,
+    shape: props.shape
   });
 
   return mergeSlotVariants(variants, props.ui);

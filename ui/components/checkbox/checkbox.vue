@@ -40,7 +40,8 @@ const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
 const ui = computed(() => {
   const variants = checkboxVariants({
     color: props.color,
-    size: props.size
+    size: props.size,
+    shape: props.shape
   });
 
   return mergeSlotVariants(variants, props.ui);
@@ -56,7 +57,9 @@ provideCheckboxThemeContext({
     <CheckboxControl v-bind="controlProps" :id="checkboxId">
       <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
         <CheckboxIndicator v-bind="indicatorProps">
-          <Icon :icon="slotProps.state === 'indeterminate' ? 'lucide:minus' : 'lucide:check'" class="size-full" />
+          <slot name="indicator" v-bind="slotProps">
+            <Icon :icon="slotProps.state === 'indeterminate' ? 'lucide:minus' : 'lucide:check'" class="size-full" />
+          </slot>
         </CheckboxIndicator>
       </Transition>
     </CheckboxControl>
