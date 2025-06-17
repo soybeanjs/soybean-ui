@@ -45,7 +45,10 @@ const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
 const isIndeterminate = computed(() => props.modelValue === 'indeterminate');
 
 const ui = computed(() => {
-  const variants = checkboxCardVariants();
+  const variants = checkboxCardVariants({
+    color: props.color,
+    size: props.size
+  });
 
   return mergeSlotVariants(variants, props.ui);
 });

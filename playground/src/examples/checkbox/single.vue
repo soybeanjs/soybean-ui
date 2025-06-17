@@ -8,7 +8,7 @@ const checked = ref<CheckedState | null>(null);
 
 <template>
   <SCard title="Single" :ui="{ content: 'flex gap-3' }">
-    <SCheckbox v-model="checked" />
-    <SCheckbox default-value="indeterminate" />
+    <SCheckbox v-model="checked" :label="checked ? 'Checked' : 'Unchecked'" />
+    <SCheckbox default-value="indeterminate" label="Indeterminate" />
   </SCard>
 </template>

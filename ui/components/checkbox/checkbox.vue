@@ -38,7 +38,10 @@ const defaultId = useId();
 const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
 
 const ui = computed(() => {
-  const variants = checkboxVariants();
+  const variants = checkboxVariants({
+    color: props.color,
+    size: props.size
+  });
 
   return mergeSlotVariants(variants, props.ui);
 });

@@ -28,7 +28,7 @@ const checked = computed<CheckedState>({
 
 <template>
   <SCard title="Card Group" :ui="{ content: 'flex-c gap-3' }">
-    <SCheckbox v-model="checked">Check All</SCheckbox>
-    <SCheckboxCardGroup v-model="selected" :items="items" />
+    <SCheckbox v-model="checked" color="warning">Check All</SCheckbox>
+    <SCheckboxCardGroup v-model="selected" :items="items" color="warning" />
   </SCard>
 </template>

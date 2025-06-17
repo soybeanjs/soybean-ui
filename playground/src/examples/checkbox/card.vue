@@ -8,6 +8,12 @@ const model = ref<CheckedState | null>(null);
 
 <template>
   <SCard title="Checkbox Card">
-    <SCheckboxCard v-model="model" icon="lucide:swatch-book" label="Label" description="this is a description" />
+    <SCheckboxCard
+      v-model="model"
+      color="carbon"
+      icon="lucide:swatch-book"
+      label="Label"
+      description="this is a description"
+    />
   </SCard>
 </template>
