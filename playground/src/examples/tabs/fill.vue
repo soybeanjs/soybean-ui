@@ -11,9 +11,9 @@ const tabs = [
 </script>
 
 <template>
-  <SCard title="Fill: full" description="TabsList width will be same as TabsContent width" split>
+  <SCard title="Fill: auto" description="TabsList width is controlled by the content width" split>
     <div class="w-320px lt-sm:w-auto">
-      <STabs v-model="tabValue" :items="tabs" fill="full" :ui="{ content: 'p-4 border border-border rounded-1' }">
+      <STabs v-model="tabValue" :items="tabs" fill="auto" :ui="{ content: 'p-4 border border-border rounded-1' }">
         <template #content="{ value }">
           <div>The Tab Content: {{ value }}</div>
         </template>

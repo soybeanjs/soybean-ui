@@ -24,7 +24,7 @@ const placements: Placement[] = [
 
 <template>
   <SCard title="Popover" :ui="{ content: 'flex-c gap-3' }">
-    <SCard title="Popover Position" split :ui="{ content: 'flex gap-3' }">
+    <SCard title="Popover Position" split :ui="{ content: 'flex flex-wrap gap-3' }">
       <SPopover v-for="placement in placements" :key="placement" :placement="placement">
         <template #trigger>
           <SButton variant="pure">{{ placement }}</SButton>

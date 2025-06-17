@@ -4,7 +4,7 @@ import { SButton, SButtonGroup, SCard } from '@ui';
 
 <template>
   <SCard title="Button Group" split>
-    <SButtonGroup variant="pure" color="accent">
+    <SButtonGroup variant="pure" color="accent" class="whitespace-nowrap">
       <SButton v-for="i in 5" :key="i">Button {{ i }}</SButton>
     </SButtonGroup>
   </SCard>

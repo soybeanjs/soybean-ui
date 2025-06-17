@@ -24,7 +24,7 @@ const placements: Placement[] = [
 
 <template>
   <SCard title="Tooltip" :ui="{ content: 'flex-c gap-3' }">
-    <SCard title="Tooltip Position" split :ui="{ content: 'flex gap-3' }">
+    <SCard title="Tooltip Position" split :ui="{ content: 'flex flex-wrap gap-3' }">
       <STooltip v-for="placement in placements" :key="placement" :content-props="{ placement }">
         <template #trigger>
           <SButton variant="pure">{{ placement }}</SButton>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, shallowRef, watchPostEffect } from 'vue';
+import { onMounted, shallowRef, watch, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
 import { useDark } from '@vueuse/core';
 import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
@@ -77,8 +77,6 @@ function updateUrl() {
 function initTab() {
   const query = getQuery();
   activeTab.value = query.tab || 'accordion';
-
-  updateUrl();
 }
 
 watchPostEffect(async () => {
@@ -87,6 +85,10 @@ watchPostEffect(async () => {
     const mod = await tab.component();
     loadedComponent.value = mod.default || mod;
   }
+});
+
+watch(activeTab, () => {
+  updateUrl();
 });
 
 onMounted(() => {
@@ -131,7 +133,7 @@ onMounted(() => {
         <template #content>
           <Suspense>
             <template #default>
-              <component :is="loadedComponent" v-if="loadedComponent" />
+              <component :is="loadedComponent" v-if="loadedComponent" class="h-full" />
             </template>
             <template #fallback>
               <div class="text-center text-gray-400">Loading...</div>
