@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<RadioProps>();
 
-const forwardedProps = useOmitProps(props, ['color', 'size', 'controlProps', 'indicatorProps', 'labelProps']);
+const forwardedProps = useOmitProps(props, ['controlProps', 'indicatorProps', 'labelProps']);
 
 const defaultId = useId();
 
@@ -24,7 +24,7 @@ const radioId = computed(() => props.id || `radio-${defaultId}`);
         <RadioGroupIndicator v-bind="indicatorProps" />
       </Transition>
     </RadioGroupControl>
-    <RadioGroupLabel v-bind="labelProps" :for="radioId" :size="size">
+    <RadioGroupLabel v-bind="labelProps" :for="radioId">
       <slot>{{ label }}</slot>
     </RadioGroupLabel>
   </RadioGroupItem>

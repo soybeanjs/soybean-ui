@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { SCard, SRadioGroup } from '@ui';
-import type { RadioGroupOptionData } from '@ui';
-
-const selected = ref<string>('apple');
-
-const items: RadioGroupOptionData<string>[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'orange', label: 'Orange' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'grape', label: 'Grape' }
-];
+import { SCard } from '@ui';
+import DemoRadioGroupColor from './color.vue';
+import DemoRadioGroupSize from './size.vue';
+import DemoRadioGroupVariant from './variant.vue';
+import DemoRadioGroupCard from './card.vue';
 </script>
 
 <template>
-  <SCard title="RadioGroup">
-    <SRadioGroup v-model="selected" :items="items" />
+  <SCard title="RadioGroup" :ui="{ content: 'flex-c gap-3' }">
+    <DemoRadioGroupColor />
+    <DemoRadioGroupSize />
+    <DemoRadioGroupVariant />
+    <DemoRadioGroupCard />
   </SCard>
 </template>

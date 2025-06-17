@@ -3,7 +3,7 @@
   lang="ts"
   generic="
     T extends AcceptableBooleanValue = AcceptableBooleanValue,
-    S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
+    S extends RadioCardGroupOptionData<T> = RadioCardGroupOptionData<T>
   "
 >
 import { computed } from 'vue';
@@ -11,15 +11,15 @@ import { RadioGroupRoot, provideRadioGroupThemeContext } from '@headless';
 import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
-import { radioGroupVariants } from '@variants/radio-group';
-import type { RadioGroupOptionData, RadioGroupProps } from './types';
-import Radio from './radio.vue';
+import { radioCardGroupVariants } from '@variants/radio-group';
+import type { RadioCardGroupOptionData, RadioCardGroupProps } from './types';
+import RadioCard from './radio-card.vue';
 
 defineOptions({
-  name: 'SRadioGroup'
+  name: 'SRadioCardGroup'
 });
 
-const props = defineProps<RadioGroupProps<T, S>>();
+const props = defineProps<RadioCardGroupProps<T, S>>();
 
 const emit = defineEmits<RadioGroupRootEmits>();
 
@@ -36,7 +36,7 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const ui = computed(() => {
-  const variants = radioGroupVariants({
+  const variants = radioCardGroupVariants({
     variant: props.variant,
     color: props.color,
     size: props.size
@@ -52,15 +52,18 @@ provideRadioGroupThemeContext({
 
 <template>
   <RadioGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <Radio
+    <RadioCard
       v-for="item in items"
       :key="String(item.value)"
       v-bind="itemProps"
-      :color="color"
+      :ui="ui"
+      :variant="variant"
       :size="size"
       :value="item.value"
       :label="item.label"
       :disabled="disabled || item.disabled"
+      :icon="item.icon"
+      :description="item.description"
       :control-props="controlProps"
       :indicator-props="indicatorProps"
       :label-props="labelProps"

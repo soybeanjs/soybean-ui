@@ -30,7 +30,7 @@ const checked = computed(
   () => !isNullish(rootContext.modelValue.value) && rootContext.modelValue.value === props.value
 );
 
-provideRadioGroupItemContext({
+const { dataState } = provideRadioGroupItemContext({
   ...transformPropsToContext(props, ['name', 'required', 'value', 'disabled']),
   checked,
   onSelect: (event: RadioSelectEvent) => {
@@ -40,7 +40,7 @@ provideRadioGroupItemContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="itemElement" :class="cls">
+  <div v-bind="forwardedProps" ref="itemElement" :class="cls" :data-state="dataState">
     <slot :checked="checked" />
 
     <VisuallyHiddenInput
