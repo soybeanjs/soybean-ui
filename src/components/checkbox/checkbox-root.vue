@@ -52,7 +52,7 @@ const state = computed<CheckedState>(() => {
   return modelValue.value === 'indeterminate' ? 'indeterminate' : modelValue.value;
 });
 
-provideCheckboxRootContext({
+const { dataState } = provideCheckboxRootContext({
   ...transformPropsToContext(props, ['value', 'name', 'required']),
   modelValue,
   disabled,
@@ -61,7 +61,7 @@ provideCheckboxRootContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="rootElement" :class="cls" :data-checked="state ? '' : undefined">
+  <div v-bind="forwardedProps" ref="rootElement" :class="cls" :data-state="dataState">
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput

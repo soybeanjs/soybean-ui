@@ -116,35 +116,35 @@ export const checkboxCardVariants = tv({
   variants: {
     color: {
       primary: {
-        root: 'data-[checked]:(border-primary)',
+        root: 'data-[state=checked]:border-primary',
         control: `border-primary focus-visible:ring-primary data-[state=checked]:(bg-primary text-primary-foreground) data-[state=indeterminate]:(bg-primary text-primary-foreground)`
       },
       destructive: {
-        root: 'data-[checked]:(border-destructive)',
+        root: 'data-[state=checked]:border-destructive',
         control: `border-destructive focus-visible:ring-destructive data-[state=checked]:(bg-destructive text-destructive-foreground) data-[state=indeterminate]:(bg-destructive text-destructive-foreground)`
       },
       success: {
-        root: 'data-[checked]:(border-success)',
+        root: 'data-[state=checked]:border-success',
         control: `border-success focus-visible:ring-success data-[state=checked]:(bg-success text-success-foreground) data-[state=indeterminate]:(bg-success text-success-foreground)`
       },
       warning: {
-        root: 'data-[checked]:(border-warning)',
+        root: 'data-[state=checked]:border-warning',
         control: `border-warning focus-visible:ring-warning data-[state=checked]:(bg-warning text-warning-foreground) data-[state=indeterminate]:(bg-warning text-warning-foreground)`
       },
       info: {
-        root: 'data-[checked]:(border-info)',
+        root: 'data-[state=checked]:border-info',
         control: `border-info focus-visible:ring-info data-[state=checked]:(bg-info text-info-foreground) data-[state=indeterminate]:(bg-info text-info-foreground)`
       },
       carbon: {
-        root: 'data-[checked]:(border-carbon)',
+        root: 'data-[state=checked]:border-carbon',
         control: `border-carbon focus-visible:ring-carbon data-[state=checked]:(bg-carbon text-carbon-foreground) data-[state=indeterminate]:(bg-carbon text-carbon-foreground)`
       },
       secondary: {
-        root: 'data-[checked]:(border-secondary-foreground/50)',
+        root: 'data-[state=checked]:border-secondary-foreground/50',
         control: `border-secondary-foreground/50 focus-visible:ring-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/5 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/5 text-secondary-foreground)`
       },
       accent: {
-        root: 'data-[checked]:(border-accent-foreground/50)',
+        root: 'data-[state=checked]:border-accent-foreground/50',
         control: `border-accent-foreground/50 focus-visible:ring-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/5 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/5 text-accent-foreground)`
       }
     },
