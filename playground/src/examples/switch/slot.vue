@@ -64,5 +64,8 @@ import { SCard, SIcon, SSwitch } from '@ui';
         </span>
       </template>
     </SSwitch>
+    <SSwitch v-slot="{ modelValue }" :default-value="true" color="carbon" size="2xl" :ui="{ root: 'relative' }">
+      <SIcon :icon="modelValue ? 'lucide:moon' : 'lucide:sun'" />
+    </SSwitch>
   </SCard>
 </template>
