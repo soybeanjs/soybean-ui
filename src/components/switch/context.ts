@@ -19,7 +19,7 @@ export const [provideSwitchRootContext, useSwitchRootContext] = useContext(
       }
     }
 
-    const dataState = computed(() => (modelValue?.value ? 'checked' : 'unchecked'));
+    const dataState = computed(() => (modelValue?.value === trueValue.value ? 'checked' : 'unchecked'));
 
     const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 

@@ -3,7 +3,7 @@ import { SCard, SSwitch } from '@ui';
 </script>
 
 <template>
-  <SCard title="Switch">
-    <SSwitch />
+  <SCard title="Default">
+    <SSwitch :default-value="true" />
   </SCard>
 </template>

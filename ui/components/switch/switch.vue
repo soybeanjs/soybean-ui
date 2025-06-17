@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
 import { computed, useId } from 'vue';
-import { SwitchRoot, SwitchThumb, provideSwitchThemeContext } from '@headless';
+import { SwitchControl, SwitchRoot, SwitchThumb, provideSwitchThemeContext } from '@headless';
 import type { AcceptableBooleanValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<SwitchProps<T>>(), {
 
 const emit = defineEmits<SwitchEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['ui', 'size', 'thumbProps']);
+const forwardedProps = useOmitProps(props, ['ui', 'color', 'size', 'shape', 'controlProps', 'thumbProps']);
 
 const defaultId = useId();
 
@@ -27,7 +27,9 @@ const switchId = computed(() => props.id || `switch-${defaultId}`);
 
 const ui = computed(() => {
   const variants = switchVariants({
-    size: props.size
+    color: props.color,
+    size: props.size,
+    shape: props.shape
   });
 
   return mergeSlotVariants(variants, props.ui);
@@ -39,9 +41,13 @@ provideSwitchThemeContext({
 </script>
 
 <template>
-  <SwitchRoot v-bind="forwardedProps" :id="switchId" @update:model-value="emit('update:modelValue', $event)">
-    <SwitchThumb v-bind="thumbProps">
-      <slot />
-    </SwitchThumb>
+  <SwitchRoot v-slot="slotProps" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <slot name="leading" v-bind="slotProps" />
+    <SwitchControl v-bind="controlProps" :id="switchId">
+      <SwitchThumb v-bind="thumbProps">
+        <slot v-bind="slotProps" />
+      </SwitchThumb>
+    </SwitchControl>
+    <slot name="trailing" v-bind="slotProps" />
   </SwitchRoot>
 </template>

@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, HtmlHTMLAttributes, ShallowRef } from 'vue';
 import type { AcceptableBooleanValue, ClassValue, FormFieldProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
@@ -20,15 +20,13 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
   extends FormFieldProps,
     SwitchValueConfig<T>,
-    /** @vue-ignore */ ButtonHTMLAttributes {
+    /** @vue-ignore */ HtmlHTMLAttributes {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: NonNullable<T>;
   /** The controlled state of the switch. Can be bind as `v-model`. */
   modelValue?: T;
   /** When `true`, prevents the user from interacting with the switch. */
   disabled?: boolean;
-  /** The id of the switch. */
-  id?: string;
   /** The value given as data when submitted with a `name`. */
   value?: string;
 }
@@ -38,14 +36,19 @@ export type SwitchRootEmits<T extends AcceptableBooleanValue = boolean> = {
   'update:modelValue': [payload: NonNullable<T>];
 };
 
+export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
+  /** Id of the element */
+  id?: string;
+}
+
 export interface SwitchThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean>
-  extends PropsToContext<SwitchRootProps<T>, 'disabled' | 'trueValue' | 'falseValue'> {
+  extends PropsToContext<SwitchRootProps<T>, 'disabled' | 'required' | 'trueValue' | 'falseValue'> {
   modelValue: ShallowRef<T>;
 }
 
-export type SwitchSlot = 'root' | 'thumb';
+export type SwitchSlot = 'root' | 'control' | 'thumb';
 
 export interface SwitchThemeContextParams {
   ui: ComputedRef<Record<SwitchSlot, ClassValue>>;

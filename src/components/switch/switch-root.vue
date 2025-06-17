@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
-import { getAriaLabel, isFormControl, isNullish, transformPropsToContext } from '../../shared';
+import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSwitchRootContext, useSwitchThemeContext } from './context';
@@ -19,8 +19,6 @@ const props = withDefaults(defineProps<SwitchRootProps<T>>(), {
 });
 
 const emit = defineEmits<SwitchRootEmits<T>>();
-
-const attrs = useAttrs();
 
 const [rootElement, setRootElement] = useForwardElement();
 
@@ -40,8 +38,6 @@ const modelValue = useControllableState(
 
 const formControl = computed(() => isFormControl(rootElement.value));
 
-const ariaLabel = computed(() => getAriaLabel(rootElement.value, props.id, attrs['aria-label'] as string));
-
 function checkSwitchValue() {
   if (isNullish(props.trueValue) || isNullish(props.falseValue)) {
     throw new Error('trueValue and falseValue cannot be nullish');
@@ -50,28 +46,15 @@ function checkSwitchValue() {
 
 checkSwitchValue();
 
-const { toggleCheck, dataState, dataDisabled } = provideSwitchRootContext({
-  ...transformPropsToContext(props, ['modelValue', 'disabled', 'trueValue', 'falseValue']),
+const { dataState } = provideSwitchRootContext({
+  ...transformPropsToContext(props, ['modelValue', 'disabled', 'required', 'trueValue', 'falseValue']),
   // @ts-expect-error ignore type
   modelValue
 });
 </script>
 
 <template>
-  <button
-    v-bind="props"
-    :id="id"
-    :ref="setRootElement"
-    :class="cls"
-    :aria-checked="modelValue"
-    :aria-label="ariaLabel"
-    :aria-required="required"
-    :data-disabled="dataDisabled"
-    :data-state="dataState"
-    role="switch"
-    @click="toggleCheck"
-    @keydown.enter.prevent="toggleCheck"
-  >
+  <div v-bind="props" :ref="setRootElement" :class="cls" :data-state="dataState">
     <slot :model-value="modelValue" />
     <VisuallyHiddenInput
       v-if="formControl && name"
@@ -82,5 +65,5 @@ const { toggleCheck, dataState, dataDisabled } = provideSwitchRootContext({
       :value="value"
       :checked="!!modelValue"
     />
-  </button>
+  </div>
 </template>
