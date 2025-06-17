@@ -11,18 +11,15 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
 | 1        | Accordion       | ✅ Completed   |                      |                       |
-| 1        | Alert           |                |                      |                       |
 | 1        | AlertDialog     | ✅ Completed   |                      |                       |
 | 1        | Arrow           | 🚫 No Need     |                      |                       |
 | 1        | AspectRatio     | 🚫 No Need     |                      |                       |
 | 1        | Avatar          | ✅ Completed   |                      |                       |
-| 1        | Badge           |                | Chip                 |                       |
 | 1        | Breadcrumb      |                |                      |                       |
 | 1        | Button          | ✅ Completed   |                      | support loading       |
 | 1        | Card            | ✅ Completed   |                      |                       |
 | 1        | Checkbox        | ✅ Completed   |                      | support checkbox card |
 | 1        | Collapsible     | ✅ Completed   |                      |                       |
-| 1        | Combobox        |                |                      | support virtualized   |
 | 1        | Command         |                |                      | support virtualized   |
 | 1        | ConfigProvider  | ✅ Completed   |                      |                       |
 | 1        | ContextMenu     | 🚧 In Progress |                      |                       |
@@ -40,82 +37,85 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | List            |                |                      |                       |
 | 1        | Listbox         |                |                      |                       |
 | 1        | Menu            | 🚧 In Progress |                      |                       |
-| 1        | Menubar         | 🚧 In Progress |                      |                       |
 | 1        | NavigationMenu  | 🚧 In Progress |                      |                       |
 | 1        | NumberInput     |                | NumberField          |                       |
-| 1        | Pagination      |                |                      |                       |
-| 1        | PinInput        |                | InputOPT, OPTInput   |                       |
-| 1        | Popconfirm      |                |                      |                       |
 | 1        | Popover         | ✅ Completed   |                      |                       |
-| 1        | Progress        |                |                      | include circle        |
 | 1        | RadioGroup      | ✅ Completed   |                      | support radio card    |
-| 1        | ScrollArea      |                |                      |                       |
 | 1        | Segment         | ✅ Completed   |                      |                       |
 | 1        | Select          |                |                      | support virtualized   |
-| 1        | Skeleton        |                |                      |                       |
-| 1        | Slider          |                |                      |                       |
 | 1        | Switch          | ✅ Completed   |                      | support switch card   |
 | 1        | Tabs            | ✅ Completed   |                      |                       |
-| 1        | Tag             |                | Badge(shadcn-ui)     |                       |
 | 1        | Textarea        |                |                      | support auto size     |
 | 1        | Toast           |                | Sonner               |                       |
-| 1        | Toggle          |                |                      |                       |
-| 1        | ToggleGroup     |                |                      |                       |
 | 1        | Tooltip         | ✅ Completed   |                      |                       |
-| 1        | Tree            |                |                      | support virtualized   |
 | 1        | TreeMenu        |                |                      |                       |
 | 1        | VisuallyHidden  | ✅ Completed   |                      |                       |
-| 2        | BottomSheet     |                | Drawer(shadcn-ui)    |                       |
-| 2        | Calendar        |                |                      | v-calendar            |
-| 2        | Carousel        |                |                      |                       |
-| 2        | DataTable       |                |                      | support virtualized   |
-| 2        | DateField       |                |                      |                       |
-| 2        | DatePicker      |                |                      |                       |
-| 2        | DateRangeField  |                |                      |                       |
-| 2        | DateRangePicker |                |                      |                       |
-| 2        | Editable        |                |                      |                       |
-| 2        | HoverCard       |                |                      |                       |
-| 2        | RangeCalendar   |                |                      | v-calendar            |
-| 2        | Resizable       |                |                      |                       |
-| 2        | Splitter        |                |                      |                       |
-| 2        | Stepper         |                |                      |                       |
-| 2        | Table           |                |                      |                       |
-| 2        | TagsInput       |                |                      |                       |
-| 2        | TimeField       |                |                      |                       |
-| 2        | Timeline        |                |                      | ui things             |
-| 2        | TimePicker      |                |                      | element-plus          |
-| 2        | Toolbar         |                |                      |                       |
-| 3        | Affix           |                |                      |                       |
-| 3        | Anchor          |                |                      |                       |
-| 3        | AutoComplete    |                |                      | support virtualized   |
-| 3        | Backtop         |                |                      |                       |
-| 3        | Cascader        |                |                      | support virtualized   |
-| 3        | Clipboard       |                |                      |                       |
-| 3        | Code            |                |                      |                       |
-| 3        | ColorPicker     |                |                      |                       |
-| 3        | Comment         |                |                      |                       |
-| 3        | Countdown       |                |                      |                       |
-| 3        | CurrencyInput   |                |                      |                       |
-| 3        | Descriptions    |                |                      |                       |
-| 3        | Ellipsis        |                |                      |                       |
-| 3        | Empty           |                |                      |                       |
-| 3        | Equation        |                |                      | based on katex        |
-| 3        | InfiniteScroll  |                |                      |                       |
-| 3        | Mention         |                |                      | element-plus          |
-| 3        | Navbar          |                |                      |                       |
-| 3        | NumberAnimation |                |                      | naive-ui              |
-| 3        | PageTab         |                |                      |                       |
-| 3        | QRCode          |                |                      |                       |
-| 3        | Rating          |                | Rate                 | element-plus          |
-| 3        | Result          |                |                      |                       |
-| 3        | Spinner         |                | Loader, Spin         | github ldrs           |
-| 3        | Statistic       |                |                      |                       |
-| 3        | Tour            |                |                      |                       |
-| 3        | Transfer        |                |                      |                       |
-| 3        | TreeSelect      |                |                      |                       |
-| 3        | Typography      |                |                      | shadcn-ui             |
-| 3        | Upload          |                | FileUpload, Dropfile |                       |
-| 3        | Watermark       |                |                      |                       |
+| 2        | Alert           |                |                      |                       |
+| 2        | Badge           |                | Chip                 |                       |
+| 2        | Combobox        |                |                      | support virtualized   |
+| 2        | Menubar         |                |                      |                       |
+| 2        | Pagination      |                |                      |                       |
+| 2        | PinInput        |                | InputOPT, OPTInput   |                       |
+| 2        | Popconfirm      |                |                      |                       |
+| 2        | Progress        |                |                      | include circle        |
+| 2        | ScrollArea      |                |                      |                       |
+| 2        | Skeleton        |                |                      |                       |
+| 2        | Slider          |                |                      |                       |
+| 2        | Tag             |                | Badge(shadcn-ui)     |                       |
+| 2        | Toggle          |                |                      |                       |
+| 2        | ToggleGroup     |                |                      |                       |
+| 2        | Tree            |                |                      | support virtualized   |
+| 3        | BottomSheet     |                | Drawer(shadcn-ui)    |                       |
+| 3        | Calendar        |                |                      | v-calendar            |
+| 3        | Carousel        |                |                      |                       |
+| 3        | DataTable       |                |                      | support virtualized   |
+| 3        | DateField       |                |                      |                       |
+| 3        | DatePicker      |                |                      |                       |
+| 3        | DateRangeField  |                |                      |                       |
+| 3        | DateRangePicker |                |                      |                       |
+| 3        | Editable        |                |                      |                       |
+| 3        | HoverCard       |                |                      |                       |
+| 3        | RangeCalendar   |                |                      | v-calendar            |
+| 3        | Resizable       |                |                      |                       |
+| 3        | Splitter        |                |                      |                       |
+| 3        | Stepper         |                |                      |                       |
+| 3        | Table           |                |                      |                       |
+| 3        | TagsInput       |                |                      |                       |
+| 3        | TimeField       |                |                      |                       |
+| 3        | Timeline        |                |                      | ui things             |
+| 3        | TimePicker      |                |                      | element-plus          |
+| 3        | Toolbar         |                |                      |                       |
+| 4        | Affix           |                |                      |                       |
+| 4        | Anchor          |                |                      |                       |
+| 4        | AutoComplete    |                |                      | support virtualized   |
+| 4        | Backtop         |                |                      |                       |
+| 4        | Cascader        |                |                      | support virtualized   |
+| 4        | Clipboard       |                |                      |                       |
+| 4        | Code            |                |                      |                       |
+| 4        | ColorPicker     |                |                      |                       |
+| 4        | Comment         |                |                      |                       |
+| 4        | Countdown       |                |                      |                       |
+| 4        | CurrencyInput   |                |                      |                       |
+| 4        | Descriptions    |                |                      |                       |
+| 4        | Ellipsis        |                |                      |                       |
+| 4        | Empty           |                |                      |                       |
+| 4        | Equation        |                |                      | based on katex        |
+| 4        | InfiniteScroll  |                |                      |                       |
+| 4        | Mention         |                |                      | element-plus          |
+| 4        | Navbar          |                |                      |                       |
+| 4        | NumberAnimation |                |                      | naive-ui              |
+| 4        | PageTab         |                |                      |                       |
+| 4        | QRCode          |                |                      |                       |
+| 4        | Rating          |                | Rate                 | element-plus          |
+| 4        | Result          |                |                      |                       |
+| 4        | Spinner         |                | Loader, Spin         | github ldrs           |
+| 4        | Statistic       |                |                      |                       |
+| 4        | Tour            |                |                      |                       |
+| 4        | Transfer        |                |                      |                       |
+| 4        | TreeSelect      |                |                      |                       |
+| 4        | Typography      |                |                      | shadcn-ui             |
+| 4        | Upload          |                | FileUpload, Dropfile |                       |
+| 4        | Watermark       |                |                      |                       |
 
 ### Utilities
 
