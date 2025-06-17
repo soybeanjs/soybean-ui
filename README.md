@@ -24,7 +24,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | ConfigProvider  | ✅ Completed   |                      |                       |
 | 1        | ContextMenu     | 🚧 In Progress |                      |                       |
 | 1        | Dialog          | ✅ Completed   |                      |                       |
-| 1        | Divider         |                | Separator            |                       |
+| 1        | Divider         | ✅ Completed   | Separator            |                       |
 | 1        | Drawer          | ✅ Completed   | Sheet                |                       |
 | 1        | DropdownMenu    | 🚧 In Progress |                      | support hover trigger |
 | 1        | Form            |                |                      |                       |
