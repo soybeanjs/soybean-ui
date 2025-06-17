@@ -5,14 +5,14 @@ import type { VariantProps } from 'tailwind-variants';
 export const tabsVariants = tv({
   slots: {
     root: `flex`,
-    list: 'relative inline-flex justify-center items-center rounded-md bg-muted text-muted-foreground',
+    list: 'relative inline-flex justify-center items-center bg-muted text-muted-foreground',
     trigger: [
       `relative z-3 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
       `disabled:(pointer-events-none opacity-50)`
     ],
     indicator: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
-    indicatorContent: `size-full rounded-md bg-background shadow`,
+    indicatorContent: `size-full bg-background shadow`,
     content: `flex-grow self-stretch overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
   },
   variants: {
@@ -56,6 +56,16 @@ export const tabsVariants = tv({
       vertical: {
         list: `flex-col items-stretch`,
         indicator: `w-full h-[--soybean-tabs-indicator-size] translate-y-[--soybean-tabs-indicator-position]`
+      }
+    },
+    shape: {
+      square: {
+        list: 'rounded-md',
+        indicatorContent: 'rounded-md'
+      },
+      rounded: {
+        list: 'rounded-full',
+        indicatorContent: 'rounded-full'
       }
     },
     fill: {
@@ -173,11 +183,14 @@ export const tabsVariants = tv({
   defaultVariants: {
     size: 'md',
     orientation: 'horizontal',
+    shape: 'square',
     fill: 'auto',
     enableIndicator: true
   }
 });
 
 type TabsProps = VariantProps<typeof tabsVariants>;
+
+export type TabsShape = NonNullable<TabsProps['shape']>;
 
 export type TabsFill = NonNullable<TabsProps['fill']>;

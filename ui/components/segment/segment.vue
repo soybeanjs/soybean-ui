@@ -45,6 +45,7 @@ const ui = computed(() => {
   const variants = tabsVariants({
     size: props.size,
     orientation: props.orientation,
+    shape: props.shape,
     fill: props.fill,
     enableIndicator: props.enableIndicator
   });
@@ -68,7 +69,7 @@ provideTabsThemeContext({
         :value="item.value"
         :disabled="item.disabled"
       >
-        <slot name="trigger" v-bind="{ ...item, ...slotProps }">{{ item.label }}</slot>
+        <slot name="item" v-bind="{ ...item, ...slotProps }">{{ item.label }}</slot>
       </TabsTrigger>
       <TabsIndicator v-if="enableIndicator" v-bind="indicatorProps">
         <div :class="ui.indicatorContent" />

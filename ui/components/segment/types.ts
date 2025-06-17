@@ -8,7 +8,7 @@ import type {
   TabsTriggerProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
-import type { TabsFill as SegmentFill } from '@variants/tabs';
+import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '@variants/tabs';
 
 export interface SegmentOptionData<T extends NonNullable<AcceptableValue> = NonNullable<AcceptableValue>> {
   value: T;
@@ -22,8 +22,9 @@ export interface SegmentProps<
   T extends AcceptableValue,
   S extends SegmentOptionData<NonNullable<T>> = SegmentOptionData<NonNullable<T>>
 > extends TabsRootProps<T> {
-  size?: ThemeSize;
   ui?: SegmentUi;
+  size?: ThemeSize;
+  shape?: SegmentShape;
   items: S[];
   fill?: SegmentFill;
   enableIndicator?: boolean;
