@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import type { DataOrientation } from '../../types';
-import { Primitive } from '../primitive';
-import type { SeparatorProps } from './types';
+import { useDividerThemeContext } from './context';
+import type { DividerRootProps } from './types';
 
 defineOptions({
-  name: 'Separator'
+  name: 'Divider'
 });
 
-const props = withDefaults(defineProps<SeparatorProps>(), {
+const props = withDefaults(defineProps<DividerRootProps>(), {
   orientation: 'horizontal',
   decorative: false
 });
 
-const slots = useSlots();
+const forwardedProps = useOmitProps(props, ['orientation', 'decorative']);
 
-const rootProps = useOmitProps(props, ['orientation', 'decorative', 'label', 'labelProps']);
+const themeContext = useDividerThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 
@@ -26,19 +28,16 @@ const computedOrientation = computed(() =>
 
 // `aria-orientation` defaults to `horizontal` so we only need it if `orientation` is vertical
 const ariaOrientation = computed(() => (computedOrientation.value === 'vertical' ? props.orientation : undefined));
-
-const showLabel = computed(() => props.orientation === 'horizontal' && (slots.default || props.label));
 </script>
 
 <template>
-  <Primitive
-    v-bind="rootProps"
+  <div
+    v-bind="forwardedProps"
+    :class="cls"
     :data-orientation="computedOrientation"
     :aria-orientation="ariaOrientation"
     :role="decorative ? 'none' : 'separator'"
   >
-    <span v-if="showLabel" v-bind="labelProps">
-      <slot>{{ label }}</slot>
-    </span>
-  </Primitive>
+    <slot />
+  </div>
 </template>

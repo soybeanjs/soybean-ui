@@ -1,6 +1,6 @@
 import { Portal as MenuPortal } from '../portal';
 import { PopperAnchor as MenuAnchor, PopperArrow as MenuArrow } from '../popper';
-import { Separator as MenuSeparator } from '../separator';
+import { DividerRoot as MenuSeparator } from '../divider';
 import MenuRoot from './menu-root.vue';
 import MenuContent from './menu-content.vue';
 import MenuSub from './menu-sub.vue';

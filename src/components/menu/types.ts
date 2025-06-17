@@ -24,7 +24,7 @@ import type {
 } from '../popper/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';
 import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
-import type { SeparatorProps as MenuSeparatorProps } from '../separator/types';
+import type { DividerRootProps as MenuSeparatorProps } from '../divider/types';
 
 // MenuRoot
 export interface MenuRootProps extends DialogRootProps {
