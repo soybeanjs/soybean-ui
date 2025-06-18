@@ -70,6 +70,7 @@
     "lint": "eslint . --fix",
     "play": "vite -c vite.play.config.ts",
     "prepare": "simple-git-hooks",
+    "preview": "vite preview -c vite.play.config.ts",
     "publish-pkg": "pnpm publish --access public",
     "rei": "pnpm cleanup && pnpm install",
     "release": "soy release",
