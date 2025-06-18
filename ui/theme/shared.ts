@@ -7,7 +7,7 @@ export function mergeSlotVariants<T extends Record<string, (...args: any[]) => s
   return Object.entries(variants).reduce(
     (acc, [$key, variant]) => {
       const key = $key as keyof T;
-      acc[key] = cn(variant(props?.[key]), props?.[key]);
+      acc[key] = cn(variant(), props?.[key]);
       return acc;
     },
     {} as Record<keyof T, string>
