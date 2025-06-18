@@ -6,7 +6,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅ 19 / 🚫 2 / total: 106
+✅ 22 / 🚫 2 / total: 106
 
 | Priority | Name            | Status         | Alias                | 📝 Note               |
 | -------- | --------------- | -------------- | -------------------- | --------------------- |
@@ -39,6 +39,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Menu            | 🚧 In Progress |                      |                       |
 | 1        | NavigationMenu  | 🚧 In Progress |                      |                       |
 | 1        | NumberInput     |                | NumberField          |                       |
+| 1        | Pagination      | ✅ Completed   |                      |                       |
 | 1        | Popover         | ✅ Completed   |                      |                       |
 | 1        | RadioGroup      | ✅ Completed   |                      | support radio card    |
 | 1        | Segment         | ✅ Completed   |                      |                       |
@@ -54,7 +55,6 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 2        | Badge           |                | Chip                 |                       |
 | 2        | Combobox        |                |                      | support virtualized   |
 | 2        | Menubar         |                |                      |                       |
-| 2        | Pagination      |                |                      |                       |
 | 2        | PinInput        |                | InputOPT, OPTInput   |                       |
 | 2        | Popconfirm      |                |                      |                       |
 | 2        | Progress        |                |                      | include circle        |
