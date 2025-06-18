@@ -13,6 +13,7 @@ export * from './components/divider';
 export * from './components/dropdown-menu';
 export * from './components/label';
 export * from './components/link';
+export * from './components/pagination';
 export * from './components/popover';
 export * from './components/popper';
 export * from './components/portal';

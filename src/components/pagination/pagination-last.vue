@@ -1,0 +1,30 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { usePaginationRootContext, usePaginationThemeContext } from './context';
+import type { PaginationButtonProps } from './types';
+
+defineOptions({
+  name: 'PaginationLast'
+});
+
+const props = defineProps<PaginationButtonProps>();
+
+const { page, onPageChange, pageCount, disabled } = usePaginationRootContext('PaginationLast');
+
+const themeContext = usePaginationThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.last, props.class]);
+
+const isDisabled = computed(() => disabled.value || page.value === pageCount.value);
+
+const onClick = () => {
+  if (isDisabled.value) return;
+  onPageChange(pageCount.value);
+};
+</script>
+
+<template>
+  <button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="Last Page" @click="onClick">
+    <slot>Last page</slot>
+  </button>
+</template>

@@ -14,6 +14,7 @@ export * from './components/drawer';
 export * from './components/icon';
 export * from './components/label';
 export * from './components/link';
+export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio-group';
 export * from './components/segment';
