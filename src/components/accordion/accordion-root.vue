@@ -3,8 +3,8 @@
   lang="ts"
   generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], S extends SingleOrMultipleType"
 >
-import { computed, useTemplateRef } from 'vue';
-import { useDirection, useOmitProps, useSingleOrMultipleValue } from '../../composables';
+import { computed, shallowRef } from 'vue';
+import { useOmitProps, useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import type { AcceptableValue, SingleOrMultipleType } from '../../types';
 import { provideAccordionRootContext, useAccordionThemeContext } from './context';
@@ -29,26 +29,23 @@ const themeContext = useAccordionThemeContext();
 
 const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
-const rootElement = useTemplateRef('rootRef');
+const rootElement = shallowRef<HTMLElement>();
 
 const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, value => {
   emit('update:modelValue', value);
 });
-
-const direction = useDirection(() => props.dir);
 
 provideAccordionRootContext({
   rootElement,
   modelValue,
   isSingle,
   toggleModelValue,
-  direction,
-  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide'])
+  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'dir', 'unmountOnHide'])
 });
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="rootRef" :class="cls">
+  <div v-bind="forwardedProps" ref="rootElement" :class="cls">
     <slot :model-value="modelValue as T" />
   </div>
 </template>

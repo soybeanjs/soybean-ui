@@ -1,12 +1,19 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { useContext, useDirection, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
 import type { AccordionItemContextParams, AccordionRootContextParams, AccordionThemeContextParams } from './types';
 
 export const [provideAccordionRootContext, useAccordionRootContext] = useContext(
   'AccordionRoot',
-  (params: AccordionRootContextParams) => params
+  (params: AccordionRootContextParams) => {
+    const direction = useDirection(() => params.dir.value);
+
+    return {
+      ...params,
+      direction
+    };
+  }
 );
 
 export const [provideAccordionItemContext, useAccordionItemContext] = useContext(

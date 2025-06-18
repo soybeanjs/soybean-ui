@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes, Ref } from 'vue';
+import type { ComputedRef, HTMLAttributes, Ref, ShallowRef } from 'vue';
 import type {
   AcceptableValue,
   ClassValue,
@@ -62,12 +62,11 @@ export interface AccordionRootProps<T = AcceptableValue | NonNullable<Acceptable
 export type AccordionRootEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = SingleOrMultipleEmits<T>;
 
 export interface AccordionRootContextParams
-  extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'unmountOnHide'> {
-  rootElement: Ref<HTMLElement | null | undefined>;
+  extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'> {
+  rootElement: ShallowRef<HTMLElement | undefined>;
   modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
   isSingle: ComputedRef<boolean>;
   toggleModelValue: (value: NonNullable<AcceptableValue>) => void;
-  direction: ComputedRef<Direction>;
 }
 
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {
