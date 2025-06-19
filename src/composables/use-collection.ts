@@ -89,17 +89,21 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     const itemElement = shallowRef<HTMLElement>();
 
-    /** Set the item element reference */
-    const registerItemElement = (nodeRef: VNodeRef): void => {
-      const element = getElFromTemplateRef(nodeRef);
-      if (!element) return;
-
+    const onItemElementChange = (element: HTMLElement) => {
       // Clean up previous registration if element changed
       if (itemElement.value && itemElement.value !== element) {
         itemRegistry.delete(itemElement.value);
       }
 
       itemElement.value = element;
+    };
+
+    /** Set the item element reference */
+    const registerItemElement = (nodeRef: VNodeRef): void => {
+      const element = getElFromTemplateRef(nodeRef);
+      if (!element) return;
+
+      onItemElementChange(element);
     };
 
     /** Handle item registration and data updates */
@@ -123,6 +127,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     return {
       itemElement,
+      onItemElementChange,
       setItemElement: registerItemElement,
       itemProps: {
         [COLLECTION_ITEM_ATTRIBUTE]: ''
