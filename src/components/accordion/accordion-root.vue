@@ -1,12 +1,8 @@
-<script
-  setup
-  lang="ts"
-  generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], S extends SingleOrMultipleType"
->
+<script setup lang="ts" generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], M extends boolean">
 import { computed, shallowRef } from 'vue';
 import { useOmitProps, useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import type { AcceptableValue, SingleOrMultipleType } from '../../types';
+import type { AcceptableValue } from '../../types';
 import { provideAccordionRootContext, useAccordionThemeContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
@@ -14,14 +10,14 @@ defineOptions({
   name: 'AccordionRoot'
 });
 
-const props = withDefaults(defineProps<AccordionRootProps<T, S>>(), {
+const props = withDefaults(defineProps<AccordionRootProps<T, M>>(), {
   disabled: false,
   orientation: 'vertical',
   collapsible: false,
   unmountOnHide: true
 });
 
-const emit = defineEmits<AccordionRootEmits>();
+const emit = defineEmits<AccordionRootEmits<T>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'collapsible', 'disabled', 'orientation', 'unmountOnHide']);
 
@@ -31,14 +27,14 @@ const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
 const rootElement = shallowRef<HTMLElement>();
 
-const { modelValue, isSingle, toggleModelValue } = useSingleOrMultipleValue(props, value => {
+const { modelValue, isMultiple, toggleModelValue } = useSingleOrMultipleValue(props, value => {
   emit('update:modelValue', value);
 });
 
 provideAccordionRootContext({
   rootElement,
   modelValue,
-  isSingle,
+  isMultiple,
   toggleModelValue,
   ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'dir', 'unmountOnHide'])
 });

@@ -6,8 +6,7 @@ import type {
   Direction,
   PropsToContext,
   SingleOrMultipleEmits,
-  SingleOrMultipleProps,
-  SingleOrMultipleType
+  SingleOrMultipleProps
 } from '../../types';
 import type {
   CollapsibleContentProps as AccordionContentProps,
@@ -22,8 +21,8 @@ export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 
   value: NonNullable<AcceptableValue>;
 }
 
-export interface AccordionRootProps<T = AcceptableValue | NonNullable<AcceptableValue>[], S = SingleOrMultipleType>
-  extends SingleOrMultipleProps<T, S>,
+export interface AccordionRootProps<T = AcceptableValue | NonNullable<AcceptableValue>[], M = false>
+  extends SingleOrMultipleProps<T, M>,
     /** @vue-ignore */ HTMLAttributes {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
@@ -65,7 +64,7 @@ export interface AccordionRootContextParams
   extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'> {
   rootElement: ShallowRef<HTMLElement | undefined>;
   modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
-  isSingle: ComputedRef<boolean>;
+  isMultiple: ComputedRef<boolean>;
   toggleModelValue: (value: NonNullable<AcceptableValue>) => void;
 }
 

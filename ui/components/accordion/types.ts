@@ -8,8 +8,7 @@ import type {
   AccordionRootProps,
   AccordionSlot,
   AccordionTriggerProps,
-  ClassValue,
-  SingleOrMultipleType
+  ClassValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
@@ -31,8 +30,8 @@ export type AccordionUi = Partial<Record<AccordionSlot | 'triggerLeadingIcon' | 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
   V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
-  S = SingleOrMultipleType
-> = AccordionRootProps<V, S> & {
+  M extends boolean = false
+> = AccordionRootProps<V, M> & {
   size?: ThemeSize;
   ui?: AccordionUi;
   items: T[];

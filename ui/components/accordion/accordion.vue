@@ -4,7 +4,7 @@
   generic="
     T extends AccordionItemData = AccordionItemData,
     V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
-    S extends SingleOrMultipleType = SingleOrMultipleType
+    M extends boolean = false
   "
 >
 import { computed } from 'vue';
@@ -18,7 +18,7 @@ import {
   provideAccordionThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import type { AcceptableValue, SingleOrMultipleType } from '@headless';
+import type { AcceptableValue } from '@headless';
 import { mergeSlotVariants } from '@theme';
 import { accordionVariants } from '@variants/accordion';
 import Icon from '../icon/icon.vue';
@@ -28,7 +28,7 @@ defineOptions({
   name: 'SAccordion'
 });
 
-const props = defineProps<AccordionProps<T, V, S>>();
+const props = defineProps<AccordionProps<T, V, M>>();
 
 const emit = defineEmits<AccordionEmits<V>>();
 

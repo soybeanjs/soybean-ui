@@ -29,6 +29,6 @@ const items: AccordionItemData[] = [
 
 <template>
   <SCard title="Multi Collapse" split>
-    <SAccordion v-model="multi" type="multiple" :items="items" />
+    <SAccordion v-model="multi" :items="items" />
   </SCard>
 </template>

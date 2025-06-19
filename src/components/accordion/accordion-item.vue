@@ -21,14 +21,14 @@ const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
 const {
   modelValue,
   disabled: rootDisabled,
-  isSingle,
+  isMultiple,
   rootElement,
   orientation,
   direction,
   unmountOnHide
 } = useAccordionRootContext('AccordionItem');
 
-const open = computed(() => getOpenFromSingleOrMultiple(props.value, modelValue.value, isSingle.value));
+const open = computed(() => getOpenFromSingleOrMultiple(props.value, modelValue.value, isMultiple.value));
 const disabled = computed(() => rootDisabled.value || props.disabled);
 
 const { dataDisabled, dataState, triggerElement } = provideAccordionItemContext({

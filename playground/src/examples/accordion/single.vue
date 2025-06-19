@@ -4,7 +4,7 @@ import { SAccordion, SCard } from '@ui';
 import type { AccordionItemData } from '@ui';
 
 const single = ref('');
-const single2 = ref('');
+const single2 = ref<string | null>('');
 
 const items: AccordionItemData[] = [
   {
@@ -31,10 +31,10 @@ const items: AccordionItemData[] = [
 <template>
   <div class="flex-c gap-4">
     <SCard title="Single Collapse" split>
-      <SAccordion v-model="single" type="single" collapsible :items="items" />
+      <SAccordion v-model="single" collapsible :items="items" />
     </SCard>
     <SCard title="Single Collapse (always open one)" split>
-      <SAccordion v-model="single2" type="single" :items="items" />
+      <SAccordion v-model="single2" :items="items" />
     </SCard>
   </div>
 </template>
