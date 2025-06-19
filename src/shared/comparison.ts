@@ -43,7 +43,7 @@ export function isEqual(a: unknown, b: unknown): boolean {
  * @param current - Current value (can be a single value, array, or undefined)
  * @returns Whether it's equal or exists
  */
-export function isValueEqualOrExist<T>(base: T | T[] | undefined, current: T | T[] | undefined) {
+export function isValueEqualOrExist<T>(base: T | T[] | undefined, current: T | undefined) {
   if (isNullish(base)) return false;
   if (Array.isArray(base)) {
     return base.some(val => isEqual(val, current));
