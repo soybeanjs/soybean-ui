@@ -1,4 +1,5 @@
 import { computed } from 'vue';
+import type { ShallowRef } from 'vue';
 import { isEqual, isNullish, isValueEqualOrExist } from '../shared';
 import type { AcceptableValue, SingleOrMultipleProps } from '../types';
 import { useControllableState } from './use-controllable-state';
@@ -15,9 +16,16 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
       onUpdateModelValue(value);
     },
     getDefaultValue(props)
-  );
+  ) as ShallowRef<P['modelValue']>;
 
-  function toggleModelValue(value: NonNullable<AcceptableValue>) {
+  const isEmptyModelValue = computed(() => {
+    if (isMultiple.value && Array.isArray(modelValue.value)) {
+      return modelValue.value?.length === 0;
+    }
+    return isNullish(modelValue.value);
+  });
+
+  function onModelValueChange(value: NonNullable<AcceptableValue>) {
     if (!isMultiple.value) {
       modelValue.value = isEqual(value, modelValue.value) ? undefined : value;
       return;
@@ -39,8 +47,9 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
 
   return {
     modelValue,
-    toggleModelValue,
-    isMultiple
+    onModelValueChange,
+    isMultiple,
+    isEmptyModelValue
   };
 }
 

@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<AccordionTriggerProps>();
 
-const { collapsible, orientation, toggleModelValue, isMultiple } = useAccordionRootContext('AccordionTrigger');
+const { collapsible, orientation, onModelValueChange, isMultiple } = useAccordionRootContext('AccordionTrigger');
 const { setTriggerElement, triggerId, initTriggerId, open, value, dataDisabled, dataState, disabled } =
   useAccordionItemContext('AccordionTrigger');
 
@@ -24,7 +24,7 @@ const onClick = () => {
   const disabledTrigger = !isMultiple.value && open.value && !collapsible.value;
   if (disabledTrigger) return;
 
-  toggleModelValue(value.value);
+  onModelValueChange(value.value);
 };
 
 initTriggerId();

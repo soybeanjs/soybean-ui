@@ -65,7 +65,7 @@ export interface AccordionRootContextParams
   rootElement: ShallowRef<HTMLElement | undefined>;
   modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
   isMultiple: ComputedRef<boolean>;
-  toggleModelValue: (value: NonNullable<AcceptableValue>) => void;
+  onModelValueChange: (value: NonNullable<AcceptableValue>) => void;
 }
 
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {

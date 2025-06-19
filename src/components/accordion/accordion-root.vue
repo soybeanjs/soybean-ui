@@ -27,7 +27,7 @@ const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
 
 const rootElement = shallowRef<HTMLElement>();
 
-const { modelValue, isMultiple, toggleModelValue } = useSingleOrMultipleValue(props, value => {
+const { modelValue, isMultiple, onModelValueChange } = useSingleOrMultipleValue(props, value => {
   emit('update:modelValue', value);
 });
 
@@ -35,7 +35,7 @@ provideAccordionRootContext({
   rootElement,
   modelValue,
   isMultiple,
-  toggleModelValue,
+  onModelValueChange,
   ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'dir', 'unmountOnHide'])
 });
 </script>
