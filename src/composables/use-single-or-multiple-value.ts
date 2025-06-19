@@ -7,9 +7,7 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
   props: P,
   onUpdateModelValue: (value: P['modelValue']) => void
 ) {
-  const type = computed(() => getDefaultType(props));
-
-  const isSingle = computed(() => type.value === 'single');
+  const isMultiple = computed(() => getIsMultiple(props));
 
   const modelValue = useControllableState(
     () => props.modelValue,
@@ -20,7 +18,7 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
   );
 
   function toggleModelValue(value: NonNullable<AcceptableValue>) {
-    if (type.value === 'single') {
+    if (!isMultiple.value) {
       modelValue.value = isEqual(value, modelValue.value) ? undefined : value;
       return;
     }
@@ -42,40 +40,35 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
   return {
     modelValue,
     toggleModelValue,
-    isSingle
+    isMultiple
   };
 }
 
 /**
  * Validates the props and it makes sure that the types are coherent with each other
  *
- * 1. If type, defaultValue, and modelValue are all undefined, throw an error.
+ * 1. If multiple is defined, return it.
  * 2. If modelValue and defaultValue are defined and not of the same type, throw an error.
- * 3. If type is defined: a. If type is 'single' and either modelValue or defaultValue is an array, log an error and return
- *    'multiple'. b. If type is 'multiple' and neither modelValue nor defaultValue is an array, log an error and return
- *    'single'.
- * 4. Return 'multiple' if modelValue is an array, else return 'single'.
+ * 3. If multiple is not defined: a. If modelValue is an array, return true. b. If modelValue is not an array, return
+ *    false.
+ * 4. Return true if modelValue is an array, else return false.
  */
-function validateProps(props: SingleOrMultipleProps) {
-  const { modelValue, defaultValue, type } = props;
+function getIsMultiple(props: SingleOrMultipleProps) {
+  const { modelValue, defaultValue, multiple } = props;
+
+  if (!isNullish(multiple)) {
+    return multiple;
+  }
 
   const value = isNullish(modelValue) ? defaultValue : modelValue;
   const canTypeBeInferred = !isNullish(modelValue) || !isNullish(defaultValue);
 
   if (canTypeBeInferred) {
-    return Array.isArray(value) ? 'multiple' : 'single';
+    return Boolean(Array.isArray(value));
   }
 
-  // always fallback to `single`
-  return type ?? 'single';
-}
-
-function getDefaultType(props: SingleOrMultipleProps) {
-  if (props.type) {
-    return props.type;
-  }
-
-  return validateProps(props);
+  // always fallback to false
+  return multiple ?? false;
 }
 
 function getDefaultValue(props: SingleOrMultipleProps) {
@@ -83,5 +76,5 @@ function getDefaultValue(props: SingleOrMultipleProps) {
     return props.defaultValue;
   }
 
-  return props.type === 'single' ? undefined : [];
+  return props.multiple ? [] : undefined;
 }

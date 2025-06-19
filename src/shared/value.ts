@@ -11,9 +11,9 @@ import type { AcceptableValue } from '../types';
 export function getOpenFromSingleOrMultiple(
   value: NonNullable<AcceptableValue>,
   modelValue: AcceptableValue | NonNullable<AcceptableValue>[],
-  isSingle: boolean
+  isMultiple: boolean
 ) {
-  if (isSingle) {
+  if (!isMultiple) {
     return value === modelValue;
   }
 

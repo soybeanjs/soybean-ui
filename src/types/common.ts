@@ -65,25 +65,17 @@ export type ScrollBodyOption = {
   margin?: boolean | number | string;
 };
 
-export type SingleOrMultipleType = 'single' | 'multiple';
-
-type GetSingleOrMultipleType<T, S> = T extends AcceptableValue
-  ? 'single'
+type IsMultiple<T, M> = T extends AcceptableValue
+  ? false
   : T extends AcceptableValue[]
-    ? 'multiple'
-    : S extends 'single'
-      ? 'single'
-      : S extends 'multiple'
-        ? 'multiple'
+    ? true
+    : M extends false
+      ? false
+      : M extends true
+        ? true
         : never;
 
-export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<AcceptableValue>[], S = SingleOrMultipleType> {
-  /**
-   * Determines whether a "single" or "multiple" items can be selected at a time.
-   *
-   * This prop will overwrite the inferred type from `modelValue` and `defaultValue`.
-   */
-  type?: GetSingleOrMultipleType<T, S>;
+export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<AcceptableValue>[], M = false> {
   /**
    * The controlled value of the active item(s).
    *
@@ -96,8 +88,14 @@ export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<Accepta
    * Use this when you need to set the initial state of the items.
    */
   defaultValue?: T;
+  /**
+   * Determines whether a "single" or "multiple" items can be selected at a time.
+   *
+   * This prop will overwrite the inferred type from `modelValue` and `defaultValue`.
+   */
+  multiple?: IsMultiple<T, M>;
 }
 
 export type SingleOrMultipleEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = {
-  'update:modelValue': [value: T extends NonNullable<AcceptableValue>[] ? T : NonNullable<T>];
+  'update:modelValue': [value: NonNullable<T>];
 };
