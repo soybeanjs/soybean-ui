@@ -13,7 +13,7 @@ import { isClient } from '../shared';
  */
 export function useHideOthers(
   target: MaybeRefOrGetter<HTMLElement | undefined>,
-  enabled: MaybeRefOrGetter<boolean | undefined>
+  enabled: MaybeRefOrGetter<boolean | undefined> = true
 ) {
   watchPostEffect(() => {
     // Ensure we're in a browser environment
