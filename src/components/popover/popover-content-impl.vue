@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, watchEffect } from 'vue';
+import type { CSSProperties } from 'vue';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -61,7 +62,7 @@ const { onKeydown, focusScopeProps } = useFocusScope(floatingElement, {
 
 const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus'], layerProps, focusScopeProps);
 
-const cssVarsStyle = {
+const cssVarsStyle: CSSProperties = {
   [popoverCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
   [popoverCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
   [popoverCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,

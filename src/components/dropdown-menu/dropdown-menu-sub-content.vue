@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useForwardListeners } from '../../composables';
 import { MenuSubContent } from '../menu';
 import { popperCssVars } from '../popper/shared';
@@ -16,13 +16,13 @@ const emit = defineEmits<DropdownMenuSubContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const style = computed<Record<string, string>>(() => ({
+const style: CSSProperties = {
   [dropdownMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
   [dropdownMenuCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
   [dropdownMenuCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
   [dropdownMenuCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
   [dropdownMenuCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
-}));
+};
 </script>
 
 <template>

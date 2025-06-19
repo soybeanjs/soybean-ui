@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, shallowRef, watchPostEffect } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useForwardListeners, useGraceArea } from '../../composables';
 import { MenuContent } from '../menu';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
@@ -41,13 +42,13 @@ useGraceArea({
   disabled: computed(() => !hoverable.value)
 });
 
-const style = computed(() => ({
+const style: CSSProperties = {
   [dropdownMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
   [dropdownMenuCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
   [dropdownMenuCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
   [dropdownMenuCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
   [dropdownMenuCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
-}));
+};
 
 let hasInteractedOutsideRef = false;
 

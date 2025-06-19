@@ -20,10 +20,10 @@ const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 const { orientation } = useAccordionRootContext('AccordionContent');
 const { triggerId, dataDisabled, dataState } = useAccordionItemContext('AccordionContent');
 
-const style = computed<CSSProperties>(() => ({
+const style: CSSProperties = {
   [accordionContentCssVars.width]: `var(${collapsibleContentCssVars.width})`,
   [accordionContentCssVars.height]: `var(${collapsibleContentCssVars.height})`
-}));
+};
 </script>
 
 <template>
