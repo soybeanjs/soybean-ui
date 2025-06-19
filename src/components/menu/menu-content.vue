@@ -21,6 +21,8 @@ const listeners = useForwardListeners(emit);
 const { open } = useMenuContext('MenuContent');
 const { modal } = useMenuRootContext('MenuContent');
 
+// eslint-disable-next-line no-warning-comments
+// TODO: use exposed element
 const [contentElement, setContentElement] = useForwardElement(props.elRef);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
