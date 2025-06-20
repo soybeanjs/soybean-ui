@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useSelectGroupContext } from './context';
+import { computed } from 'vue';
+import { useSelectGroupContext, useSelectThemeContext } from './context';
 import type { SelectLabelProps } from './types';
 
 defineOptions({
@@ -8,11 +9,15 @@ defineOptions({
 
 const props = defineProps<SelectLabelProps>();
 
-const { groupId } = useSelectGroupContext('SelectLabel');
+const { labelId } = useSelectGroupContext('SelectLabel');
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.label, props.class]);
 </script>
 
 <template>
-  <div v-bind="props" :id="groupId">
+  <div v-bind="props" :id="labelId" :class="cls">
     <slot />
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useSelectItemContext } from './context';
+import { useSelectItemContext, useSelectThemeContext } from './context';
 import type { SelectItemIndicatorProps } from './types';
 
 defineOptions({
@@ -12,10 +13,14 @@ const props = withDefaults(defineProps<SelectItemIndicatorProps>(), {
 });
 
 const { isSelected } = useSelectItemContext('SelectItemIndicator');
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.itemIndicator, props.class]);
 </script>
 
 <template>
-  <Primitive v-if="isSelected" v-bind="props" aria-hidden="true">
+  <Primitive v-if="isSelected" v-bind="props" :class="cls" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

@@ -9,7 +9,13 @@ import {
 } from '../../shared';
 import type { AcceptableValue } from '../../types';
 import { Primitive } from '../primitive';
-import { provideSelectItemContext, useCollectionItem, useSelectContentContext, useSelectRootContext } from './context';
+import {
+  provideSelectItemContext,
+  useCollectionItem,
+  useSelectContentContext,
+  useSelectRootContext,
+  useSelectThemeContext
+} from './context';
 import { SELECTION_KEYS, SELECT_EVENT } from './shared';
 import type { SelectItemEmits, SelectItemEvent, SelectItemProps } from './types';
 
@@ -22,6 +28,10 @@ const props = defineProps<SelectItemProps<T>>();
 const emit = defineEmits<SelectItemEmits<T>>();
 
 const { modelValue, onModelValueChange, onOpenChange, isMultiple } = useSelectRootContext('SelectItem');
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
 
 const isSelected = computed(() => isValueEqualOrExist(modelValue.value, props.value));
 
@@ -36,7 +46,7 @@ const { onItemElementChange, itemProps } = useCollectionItem(() => ({
 }));
 
 const { onSelectedItemElementChange, onItemElementLeave, search } = useSelectContentContext('SelectItem');
-const [_, setItemRef] = useForwardElement(node => {
+const [_, setItemElement] = useForwardElement(node => {
   onSelectedItemElementChange(node, props.value, props.disabled);
   onItemElementChange(node);
 });
@@ -117,8 +127,9 @@ if (props.value === '') {
 
 <template>
   <Primitive
-    :ref="setItemRef"
     v-bind="itemProps"
+    :ref="setItemElement"
+    :class="cls"
     :aria-disabled="disabled || undefined"
     :data-highlighted="isFocused ? '' : undefined"
     :aria-labelledby="textId"

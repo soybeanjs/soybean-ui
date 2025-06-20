@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardElement, useOmitProps, useTypeahead } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
-import { useCollectionContext, useSelectRootContext } from './context';
+import { useCollectionContext, useSelectRootContext, useSelectThemeContext } from './context';
 import { OPEN_KEYS, shouldShowPlaceholder } from './shared';
 import type { SelectTriggerProps } from './types';
 
@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<SelectTriggerProps>(), {
 
 const {
   open,
+  dataState,
   modelValue,
   disabled,
   required,
@@ -33,6 +34,10 @@ const { getOrderedItems } = useCollectionContext('SelectTrigger');
 const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
 
 const forwardedProps = useOmitProps(props, ['reference']);
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
 
 const isDisabled = computed(() => disabled.value || props.disabled);
 const dataPlaceholder = computed(() => (shouldShowPlaceholder(modelValue.value) ? '' : undefined));
@@ -121,13 +126,14 @@ initContentId();
     <Primitive
       v-bind="forwardedProps"
       :ref="setTriggerElement"
+      :class="cls"
       :aria-controls="contentId"
       :aria-expanded="open || false"
       :aria-required="required"
       aria-autocomplete="none"
       :disabled="isDisabled"
       :dir="dir"
-      :data-state="open ? 'open' : 'closed'"
+      :data-state="dataState"
       :data-disabled="isDisabled ? '' : undefined"
       :data-placeholder="dataPlaceholder"
       role="combobox"

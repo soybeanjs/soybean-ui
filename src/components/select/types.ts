@@ -213,20 +213,17 @@ export type SelectSlot =
   | 'trigger'
   | 'value'
   | 'icon'
-  | 'portal'
   | 'content'
   | 'viewport'
-  | 'popperPosition'
-  | 'itemAlignedPosition'
   | 'group'
   | 'label'
   | 'item'
   | 'itemText'
   | 'itemIndicator'
   | 'separator'
-  | 'arrow'
   | 'scrollUpButton'
-  | 'scrollDownButton';
+  | 'scrollDownButton'
+  | 'arrow';
 
 export interface SelectThemeContextParams {
   ui: ComputedRef<Record<SelectSlot, ClassValue>>;

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useSelectContentContext, useSelectItemContext, useSelectRootContext } from './context';
+import { useSelectContentContext, useSelectItemContext, useSelectRootContext, useSelectThemeContext } from './context';
 import type { SelectItemTextProps } from './types';
 
 defineOptions({
@@ -18,6 +18,10 @@ const [itemTextElement, setItemTextElement] = useForwardElement(node => {
   onItemTextElementChange(node);
   onSelectedItemTextElementChange(node, value, disabled.value ?? false);
 });
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.itemText, props.class]);
 
 const optionProps = computed(() => {
   return {
@@ -39,7 +43,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <span v-bind="props" :id="textId" :ref="setItemTextElement">
+  <span v-bind="props" :id="textId" :ref="setItemTextElement" :class="cls">
     <slot />
   </span>
 </template>

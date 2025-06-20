@@ -10,7 +10,12 @@ import {
   useTypeahead
 } from '../../composables';
 import { tryFocusFirst } from '../../shared';
-import { provideSelectContentContext, useCollectionContext, useSelectRootContext } from './context';
+import {
+  provideSelectContentContext,
+  useCollectionContext,
+  useSelectRootContext,
+  useSelectThemeContext
+} from './context';
 import SelectItemAlignedPosition from './select-item-aligned-position.vue';
 import SelectPopperPosition from './select-popper-position.vue';
 import type { SelectContentImplEmits, SelectContentImplProps } from './types';
@@ -30,9 +35,13 @@ const emit = defineEmits<SelectContentImplEmits>();
 
 const attrs = useAttrs();
 
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+
 const {
-  open,
   onOpenChange,
+  dataState,
   modelValue,
   isMultiple,
   dir,
@@ -195,8 +204,9 @@ watchEffect(() => {
     v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
+    :class="cls"
     role="listbox"
-    :data-state="open ? 'open' : 'closed'"
+    :data-state="dataState"
     :dir="dir"
     style="display: flex; flex-direction: column; outline: none"
     :style="computedStyle"

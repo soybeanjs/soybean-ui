@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useAttrs } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { useForwardElement, useNonce, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import { useSelectContentContext, useSelectItemAlignedPositionContext } from './context';
+import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectThemeContext } from './context';
 import { CONTENT_MARGIN } from './shared';
 import type { SelectViewportProps } from './types';
 
@@ -22,6 +22,10 @@ const [_, setViewportElement] = useForwardElement(onViewportElementChange);
 const alignedPositionContext = useSelectItemAlignedPositionContext();
 
 const nonce = useNonce(() => props.nonce);
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.viewport, props.class]);
 
 /**
  * we use position: 'relative' here on the `viewport` so that when we call `selectedItem.offsetTop` in calculations
@@ -84,8 +88,9 @@ function onScroll(event: WheelEvent) {
 
 <template>
   <Primitive
-    :ref="setViewportElement"
     v-bind="forwardedProps"
+    :ref="setViewportElement"
+    :class="cls"
     data-soybean-select-viewport
     role="presentation"
     :style="style"

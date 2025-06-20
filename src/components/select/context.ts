@@ -1,6 +1,6 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { useCollection, useContext, useDirection } from '../../composables';
-import { isValueEqualOrExist, tryFocusFirst } from '../../shared';
+import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
 import type { AcceptableValue, Point } from '../../types';
 import type {
   SelectContentContextParams,
@@ -17,11 +17,13 @@ export const [provideSelectRootContext, useSelectRootContext] = useContext(
   (params: SelectRootContextParams) => {
     const { open } = params;
 
-    const dir = useDirection(params.dir);
-
     const onOpenChange = (value: boolean) => {
       open.value = value;
     };
+
+    const dataState = computed(() => getDisclosureState(open.value));
+
+    const dir = useDirection(params.dir);
 
     const contentId = shallowRef('');
     const initContentId = () => {
@@ -74,8 +76,9 @@ export const [provideSelectRootContext, useSelectRootContext] = useContext(
 
     return {
       ...params,
-      dir,
+      dataState,
       onOpenChange,
+      dir,
       contentId,
       initContentId,
       triggerElement,
@@ -180,17 +183,17 @@ export const [provideSelectContentContext, useSelectContentContext] = useContext
 );
 
 export const [provideSelectGroupContext, useSelectGroupContext] = useContext('SelectGroup', () => {
-  const groupId = shallowRef('');
+  const labelId = shallowRef('');
 
-  const initGroupId = () => {
-    if (groupId.value) return;
+  const initLabelId = () => {
+    if (labelId.value) return;
 
-    groupId.value = `soybean-select-group-${useId()}`;
+    labelId.value = `soybean-select-group-label-${useId()}`;
   };
 
   return {
-    groupId,
-    initGroupId
+    labelId,
+    initLabelId
   };
 });
 

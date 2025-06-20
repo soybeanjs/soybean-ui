@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import type { AcceptableValue } from '../../types';
-import { useSelectRootContext } from './context';
+import { useSelectRootContext, useSelectThemeContext } from './context';
 import type { SelectValueProps } from './types';
 
 defineOptions({
@@ -15,6 +15,10 @@ const props = withDefaults(defineProps<SelectValueProps>(), {
 
 const { modelValue, options, onValueElementChange } = useSelectRootContext('SelectValue');
 const [_, setValueElement] = useForwardElement(onValueElementChange);
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.value, props.class]);
 
 const selectedLabel = computed(() => {
   let list: string[] = [];
@@ -37,6 +41,7 @@ const slotText = computed(() => {
 <template>
   <span
     :ref="setValueElement"
+    :class="cls"
     :data-placeholder="selectedLabel.length ? undefined : props.placeholder"
     :style="{ pointerEvents: 'none' }"
   >

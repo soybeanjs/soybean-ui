@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onWatcherCleanup, shallowRef, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useSelectContentContext, useSelectItemAlignedPositionContext } from './context';
+import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectThemeContext } from './context';
 import SelectScrollButtonImpl from './select-scroll-button-impl.vue';
 import type { SelectScrollUpButtonProps } from './types';
 
@@ -17,6 +17,10 @@ const alignedPositionContext = useSelectItemAlignedPositionContext();
 const [_, setButtonElement] = useForwardElement(node => {
   alignedPositionContext?.onScrollButtonChange(node);
 });
+
+const themeContext = useSelectThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.scrollUpButton, props.class]);
 
 const onAutoScroll = () => {
   if (viewportElement.value && selectedItemElement.value) {
@@ -44,7 +48,13 @@ watchEffect(() => {
 </script>
 
 <template>
-  <SelectScrollButtonImpl v-if="canScrollUp" v-bind="props" :ref="setButtonElement" @auto-scroll="onAutoScroll">
+  <SelectScrollButtonImpl
+    v-if="canScrollUp"
+    v-bind="props"
+    :ref="setButtonElement"
+    :class="cls"
+    @auto-scroll="onAutoScroll"
+  >
     <slot />
   </SelectScrollButtonImpl>
 </template>
