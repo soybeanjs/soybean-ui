@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue';
-import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useTabsRootContext, useTabsThemeContext } from './context';
@@ -26,10 +25,12 @@ const indicatorStyle = ref<IndicatorStyle>({
   position: null
 });
 
-const style: CSSProperties = {
-  [tabsCssVars.indicatorSize]: `${indicatorStyle.value.size}px`,
-  [tabsCssVars.indicatorPosition]: `${indicatorStyle.value.position}px`
-};
+const style = computed(() => {
+  return {
+    [tabsCssVars.indicatorSize]: `${indicatorStyle.value.size}px`,
+    [tabsCssVars.indicatorPosition]: `${indicatorStyle.value.position}px`
+  };
+});
 
 function updateIndicatorStyle() {
   activeTab.value = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-state="active"]');
