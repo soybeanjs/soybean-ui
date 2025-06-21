@@ -1,6 +1,7 @@
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
 
-export type AcceptableValue = string | number | bigint | null | undefined;
+export type DefinedValue = string | number;
+export type AcceptableValue = DefinedValue | null | undefined;
 export type AcceptableBooleanValue = AcceptableValue | boolean;
 
 export type DataOrientation = 'vertical' | 'horizontal';
@@ -9,7 +10,6 @@ export type Direction = 'ltr' | 'rtl';
 export type DisclosureState = 'open' | 'closed';
 
 export type FocusIntent = 'first' | 'last' | 'prev' | 'next';
-
 export type CheckedState = boolean | 'indeterminate';
 
 export type NavigationKey =
@@ -65,9 +65,11 @@ export type ScrollBodyOption = {
   margin?: boolean | number | string;
 };
 
+export type SingleOrMultipleValue = AcceptableValue | DefinedValue[];
+
 type IsMultiple<T, M> = T extends AcceptableValue
   ? false
-  : T extends AcceptableValue[]
+  : T extends DefinedValue[]
     ? true
     : M extends false
       ? false
@@ -75,7 +77,7 @@ type IsMultiple<T, M> = T extends AcceptableValue
         ? true
         : never;
 
-export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<AcceptableValue>[], M = false> {
+export interface SingleOrMultipleProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M = false> {
   /**
    * The controlled value of the active item(s).
    *
@@ -96,6 +98,6 @@ export interface SingleOrMultipleProps<T = AcceptableValue | NonNullable<Accepta
   multiple?: IsMultiple<T, M>;
 }
 
-export type SingleOrMultipleEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = {
+export type SingleOrMultipleEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = {
   'update:modelValue': [value: NonNullable<T>];
 };

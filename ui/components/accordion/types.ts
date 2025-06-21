@@ -1,6 +1,5 @@
 import type { Component, VNode } from 'vue';
 import type {
-  AcceptableValue,
   AccordionContentProps,
   AccordionHeaderProps,
   AccordionItemProps,
@@ -8,7 +7,8 @@ import type {
   AccordionRootProps,
   AccordionSlot,
   AccordionTriggerProps,
-  ClassValue
+  ClassValue,
+  SingleOrMultipleValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
@@ -29,7 +29,7 @@ export type AccordionUi = Partial<Record<AccordionSlot | 'triggerLeadingIcon' | 
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,
-  V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
+  V extends SingleOrMultipleValue = SingleOrMultipleValue,
   M extends boolean = false
 > = AccordionRootProps<V, M> & {
   size?: ThemeSize;
@@ -41,4 +41,4 @@ export type AccordionProps<
   contentProps?: AccordionContentProps;
 };
 
-export type AccordionEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = AccordionRootEmits<T>;
+export type AccordionEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = AccordionRootEmits<T>;

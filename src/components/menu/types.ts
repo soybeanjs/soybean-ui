@@ -1,8 +1,8 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableBooleanValue,
-  AcceptableValue,
   CheckedState,
+  DefinedValue,
   Direction,
   DismissableLayerEmits,
   DismissableLayerProps,
@@ -101,7 +101,7 @@ export interface MenuCheckboxItemProps extends MenuItemProps {
    *
    * @defaultValue on
    */
-  value?: NonNullable<AcceptableValue>;
+  value?: DefinedValue;
 }
 export type MenuCheckboxItemEmits = MenuItemEmits & {
   /** Event handler called when the checked state of the item changes. */
@@ -109,7 +109,7 @@ export type MenuCheckboxItemEmits = MenuItemEmits & {
 };
 
 // MenuCheckboxGroup
-export interface MenuCheckboxGroupProps<T = NonNullable<AcceptableValue>> extends MenuGroupProps {
+export interface MenuCheckboxGroupProps<T extends DefinedValue = DefinedValue> extends MenuGroupProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
@@ -121,9 +121,9 @@ export interface MenuCheckboxGroupProps<T = NonNullable<AcceptableValue>> extend
    */
   disabled?: boolean;
 }
-export type MenuCheckboxGroupEmits<T = AcceptableValue> = {
+export type MenuCheckboxGroupEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the value of the checkbox group changes. */
-  'update:modelValue': [value: NonNullable<T>[]];
+  'update:modelValue': [value: T[]];
 };
 
 // MenuRadioItem
@@ -171,7 +171,7 @@ export interface MenuContentContextParams {
   contentElement: ShallowRef<HTMLElement | undefined>;
 }
 export interface MenuCheckboxGroupContextParams {
-  modelValue: ShallowRef<NonNullable<AcceptableValue>[] | undefined>;
+  modelValue: ShallowRef<DefinedValue[] | undefined>;
   disabled: ComputedRef<boolean>;
 }
 export interface MenuRadioGroupContextParams {

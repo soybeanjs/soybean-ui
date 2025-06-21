@@ -1,6 +1,7 @@
 import type {
   AcceptableValue,
   ClassValue,
+  DefinedValue,
   TabsContentProps,
   TabsIndicatorProps,
   TabsListProps,
@@ -12,7 +13,7 @@ import type {
 import type { ThemeSize } from '@theme';
 import type { TabsFill } from '@variants/tabs';
 
-export interface TabsOptionData<T extends NonNullable<AcceptableValue> = NonNullable<AcceptableValue>> {
+export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   value: T;
   label: string;
   disabled?: boolean;

@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], M extends boolean">
+<script setup lang="ts" generic="T extends SingleOrMultipleValue, M extends boolean">
 import { computed, shallowRef } from 'vue';
 import { useOmitProps, useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import type { SingleOrMultipleValue } from '../../types';
 import { provideAccordionRootContext, useAccordionThemeContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 

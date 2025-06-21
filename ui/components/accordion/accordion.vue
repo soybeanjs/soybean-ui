@@ -3,7 +3,7 @@
   lang="ts"
   generic="
     T extends AccordionItemData = AccordionItemData,
-    V extends AcceptableValue | NonNullable<AcceptableValue>[] = AcceptableValue | NonNullable<AcceptableValue>[],
+    V extends SingleOrMultipleValue = SingleOrMultipleValue,
     M extends boolean = false
   "
 >
@@ -18,7 +18,7 @@ import {
   provideAccordionThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import type { AcceptableValue } from '@headless';
+import type { SingleOrMultipleValue } from '@headless';
 import { mergeSlotVariants } from '@theme';
 import { accordionVariants } from '@variants/accordion';
 import Icon from '../icon/icon.vue';

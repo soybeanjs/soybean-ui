@@ -1,7 +1,7 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { useContext, useDirection } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
-import type { AcceptableBooleanValue, AcceptableValue, GraceIntent, HorizontalSide } from '../../types';
+import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
@@ -123,7 +123,7 @@ export const [provideMenuCheckboxGroupContext, useMenuCheckboxGroupContext] = us
   (params: MenuCheckboxGroupContextParams) => {
     const { modelValue } = params;
 
-    const onModelValueChange = (v: NonNullable<AcceptableValue>) => {
+    const onModelValueChange = (v: DefinedValue) => {
       if (!modelValue.value) {
         modelValue.value = [];
       }

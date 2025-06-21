@@ -1,12 +1,13 @@
 import type { ComputedRef, HTMLAttributes, Ref, ShallowRef } from 'vue';
 import type {
-  AcceptableValue,
   ClassValue,
   DataOrientation,
+  DefinedValue,
   Direction,
   PropsToContext,
   SingleOrMultipleEmits,
-  SingleOrMultipleProps
+  SingleOrMultipleProps,
+  SingleOrMultipleValue
 } from '../../types';
 import type {
   CollapsibleContentProps as AccordionContentProps,
@@ -18,10 +19,10 @@ export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes 
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** A string or number value for the accordion item. All items within an accordion should use a unique value. */
-  value: NonNullable<AcceptableValue>;
+  value: DefinedValue;
 }
 
-export interface AccordionRootProps<T = AcceptableValue | NonNullable<AcceptableValue>[], M = false>
+export interface AccordionRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M = false>
   extends SingleOrMultipleProps<T, M>,
     /** @vue-ignore */ HTMLAttributes {
   /**
@@ -58,14 +59,14 @@ export interface AccordionRootProps<T = AcceptableValue | NonNullable<Acceptable
   unmountOnHide?: boolean;
 }
 
-export type AccordionRootEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = SingleOrMultipleEmits<T>;
+export type AccordionRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SingleOrMultipleEmits<T>;
 
 export interface AccordionRootContextParams
   extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'> {
   rootElement: ShallowRef<HTMLElement | undefined>;
-  modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
+  modelValue: Ref<SingleOrMultipleValue>;
   isMultiple: ComputedRef<boolean>;
-  onModelValueChange: (value: NonNullable<AcceptableValue>) => void;
+  onModelValueChange: (value: DefinedValue) => void;
 }
 
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {

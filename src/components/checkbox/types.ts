@@ -1,8 +1,8 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  AcceptableValue,
   CheckedState,
   ClassValue,
+  DefinedValue,
   ForceMountProps,
   FormFieldProps,
   PropsToContext
@@ -21,7 +21,7 @@ export interface CheckboxRootProps extends FormFieldProps, /** @vue-ignore */ HT
    *
    * @defaultValue on
    */
-  value?: NonNullable<AcceptableValue>;
+  value?: DefinedValue;
   /**
    * When `true`, prevents the user from interacting with the checkbox
    *
@@ -42,16 +42,16 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 
 export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface CheckboxGroupRootProps<T extends AcceptableValue = AcceptableValue>
+export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
   extends Omit<
       RovingFocusGroupProps,
       'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
     >,
     FormFieldProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
-  modelValue?: NonNullable<T>[];
+  modelValue?: T[];
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
-  defaultValue?: NonNullable<T>[];
+  defaultValue?: T[];
   /**
    * When `false`, navigating through the items using arrow keys will be disabled.
    *
@@ -66,13 +66,13 @@ export interface CheckboxGroupRootProps<T extends AcceptableValue = AcceptableVa
   disabled?: boolean;
 }
 
-export type CheckboxGroupRootEmits<T extends AcceptableValue = AcceptableValue> = {
+export type CheckboxGroupRootEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the value of the checkbox group changes. */
-  'update:modelValue': [value: NonNullable<T>[]];
+  'update:modelValue': [value: T[]];
 };
 
 export type CheckboxGroupRootContextParams = PropsToContext<CheckboxGroupRootProps, 'rovingFocus' | 'disabled'> & {
-  modelValue: ShallowRef<NonNullable<AcceptableValue>[] | undefined>;
+  modelValue: ShallowRef<DefinedValue[] | undefined>;
 };
 
 export type CheckboxRootContextParams = PropsToContext<

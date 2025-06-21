@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import type { DefinedValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import { VisuallyHiddenInput } from '../visually-hidden';

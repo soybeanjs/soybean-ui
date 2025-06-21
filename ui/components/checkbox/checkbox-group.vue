@@ -1,14 +1,11 @@
 <script
   setup
   lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
-  "
+  generic="T extends DefinedValue = DefinedValue, S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>"
 >
 import { computed } from 'vue';
 import { CheckboxGroupRoot } from '@headless';
-import type { AcceptableValue } from '@headless';
+import type { DefinedValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
 import { checkboxVariants } from '@variants/checkbox';

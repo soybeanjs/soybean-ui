@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableValue, ClassValue, ForceMountProps, PropsToContext } from '../../types';
+import type { AcceptableValue, ClassValue, DefinedValue, ForceMountProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
@@ -40,12 +40,12 @@ export interface TabsListProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface TabsContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the content with a trigger. */
-  value: NonNullable<AcceptableValue>;
+  value: DefinedValue;
 }
 
 export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** A unique value that associates the trigger with a content. */
-  value: NonNullable<AcceptableValue>;
+  value: DefinedValue;
   /** When `true`, prevents the user from interacting with the tab. */
   disabled?: boolean;
 }

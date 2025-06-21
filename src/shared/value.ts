@@ -1,4 +1,4 @@
-import type { AcceptableValue, CheckedState } from '../types';
+import type { CheckedState, DefinedValue, SingleOrMultipleValue } from '../types';
 
 export function isIndeterminate(checked?: CheckedState | null): checked is 'indeterminate' {
   return checked === 'indeterminate';
@@ -24,8 +24,8 @@ export function getBinaryCheckedState(checked?: CheckedState | null) {
  * @returns Whether it's enabled
  */
 export function getOpenFromSingleOrMultiple(
-  value: NonNullable<AcceptableValue>,
-  modelValue: AcceptableValue | NonNullable<AcceptableValue>[],
+  value: DefinedValue,
+  modelValue: SingleOrMultipleValue,
   isMultiple: boolean
 ) {
   if (!isMultiple) {

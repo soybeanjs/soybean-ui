@@ -1,5 +1,4 @@
 import type {
-  AcceptableValue,
   CheckboxControlProps,
   CheckboxGroupRootEmits,
   CheckboxGroupRootProps,
@@ -8,7 +7,8 @@ import type {
   CheckboxRootEmits,
   CheckboxRootProps,
   CheckboxSlot,
-  ClassValue
+  ClassValue,
+  DefinedValue
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { CheckboxShape } from '@variants/checkbox';
@@ -40,14 +40,14 @@ export interface CheckboxCardProps extends CheckboxProps {
 
 export type CheckboxCardEmits = CheckboxEmits;
 
-export interface CheckboxGroupOptionData<T extends AcceptableValue = AcceptableValue> {
-  value: NonNullable<T>;
+export interface CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> {
+  value: T;
   label: string;
   disabled?: boolean;
 }
 
 export interface CheckboxGroupProps<
-  T extends AcceptableValue = AcceptableValue,
+  T extends DefinedValue = DefinedValue,
   S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
 > extends CheckboxGroupRootProps<T> {
   ui?: CheckboxUi;
@@ -61,23 +61,22 @@ export interface CheckboxGroupProps<
   labelProps?: CheckboxLabelProps;
 }
 
-export type CheckboxGroupEmits<T extends AcceptableValue = AcceptableValue> = CheckboxGroupRootEmits<T>;
+export type CheckboxGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupRootEmits<T>;
 
-export interface CheckboxCardGroupOptionData<T extends AcceptableValue = AcceptableValue>
-  extends CheckboxGroupOptionData<T> {
+export interface CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> extends CheckboxGroupOptionData<T> {
   icon?: string;
   description?: string;
 }
 
 export type CheckboxCardGroupProps<
-  T extends AcceptableValue = AcceptableValue,
+  T extends DefinedValue = DefinedValue,
   S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
 > = CheckboxGroupProps<T, S> & {
   ui?: CheckboxCardUi;
   items: S[];
 };
 
-export type CheckboxCardGroupEmits<T extends AcceptableValue = AcceptableValue> = CheckboxGroupEmits<T>;
+export type CheckboxCardGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupEmits<T>;
 
 export type {
   CheckboxRootProps,

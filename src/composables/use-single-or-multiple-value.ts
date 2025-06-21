@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { isEqual, isNullish, isValueEqualOrExist } from '../shared';
-import type { AcceptableValue, SingleOrMultipleProps } from '../types';
+import type { DefinedValue, SingleOrMultipleProps } from '../types';
 import { useControllableState } from './use-controllable-state';
 
 export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
@@ -25,7 +25,7 @@ export function useSingleOrMultipleValue<P extends SingleOrMultipleProps>(
     return isNullish(modelValue.value);
   });
 
-  function onModelValueChange(value: NonNullable<AcceptableValue>) {
+  function onModelValueChange(value: DefinedValue) {
     if (!isMultiple.value) {
       modelValue.value = isEqual(value, modelValue.value) ? undefined : value;
       return;

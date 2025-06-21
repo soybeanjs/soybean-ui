@@ -2,7 +2,7 @@ import { computed, shallowRef, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
 import { useContext, useDirection } from '../../composables';
 import { isNullish } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import type { AcceptableValue, DefinedValue } from '../../types';
 import type { TabsRootContextParams, TabsThemeContextParams } from './types';
 
 export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot', (params: TabsRootContextParams) => {
@@ -19,7 +19,7 @@ export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot
     params.modelValue.value = v;
   };
 
-  const getId = (value: MaybeRefOrGetter<NonNullable<AcceptableValue>>) => {
+  const getId = (value: MaybeRefOrGetter<DefinedValue>) => {
     const id = toValue(value);
 
     return {

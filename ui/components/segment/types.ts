@@ -1,6 +1,7 @@
 import type {
   AcceptableValue,
   ClassValue,
+  DefinedValue,
   TabsIndicatorProps,
   TabsListProps,
   TabsRootProps,
@@ -10,7 +11,7 @@ import type {
 import type { ThemeSize } from '@theme';
 import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '@variants/tabs';
 
-export interface SegmentOptionData<T extends NonNullable<AcceptableValue> = NonNullable<AcceptableValue>> {
+export interface SegmentOptionData<T extends DefinedValue = DefinedValue> {
   value: T;
   label: string;
   disabled?: boolean;
