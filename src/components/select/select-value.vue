@@ -43,7 +43,7 @@ const slotText = computed(() => {
     :ref="setValueElement"
     :class="cls"
     :data-placeholder="selectedLabel.length ? undefined : props.placeholder"
-    :style="{ pointerEvents: 'none' }"
+    style="pointer-events: none"
   >
     <slot :model-value="modelValue" :selected-label="selectedLabel" :slot-text="slotText">
       {{ slotText }}

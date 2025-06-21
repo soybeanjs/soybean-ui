@@ -205,13 +205,7 @@ onMounted(async () => {
     <Primitive
       v-bind="{ ...$attrs, ...props }"
       :ref="setContentElement"
-      :style="{
-        // When we get the height of the content, it includes borders. If we were to set
-        // the height without having `boxSizing: 'border-box'` it would be too big.
-        boxSizing: 'border-box',
-        // We need to ensure the content doesn't get taller than the wrapper
-        maxHeight: '100%'
-      }"
+      style="box-sizing: border-box; max-height: 100%"
     >
       <slot />
     </Primitive>

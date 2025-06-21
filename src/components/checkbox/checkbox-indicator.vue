@@ -35,7 +35,7 @@ const isPresent = props.forceMount
     :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"
-    :style="{ pointerEvents: 'none' }"
+    style="pointer-events: none"
   >
     <slot />
   </Primitive>

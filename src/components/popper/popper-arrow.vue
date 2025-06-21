@@ -39,7 +39,6 @@ const TRANSFORM: Record<Side, string> = {
 };
 
 const style = computed<CSSProperties>(() => ({
-  position: 'absolute',
   left: arrowX.value ? `${arrowX.value}px` : undefined,
   top: arrowY.value ? `${arrowY.value}px` : undefined,
   [baseSide.value]: 0,
@@ -50,7 +49,7 @@ const style = computed<CSSProperties>(() => ({
 </script>
 
 <template>
-  <span :ref="setArrowElement" :style="style">
+  <span :ref="setArrowElement" style="position: absolute" :style="style">
     <Arrow v-bind="{ ...props, ...attrs }" :class="cls" style="display: block">
       <slot />
     </Arrow>

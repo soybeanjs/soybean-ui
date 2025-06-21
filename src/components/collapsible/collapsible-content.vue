@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useForwardElement, useOmitProps, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
 import { useCollapsibleRootContext, useCollapsibleThemeContext } from './context';
@@ -24,6 +25,11 @@ const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
 const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open, handleNodeStyle);
+
+const style: CSSProperties = {
+  [collapsibleContentCssVars.width]: '0px',
+  [collapsibleContentCssVars.height]: '0px'
+};
 
 // when opening we want it to immediately open to retrieve dimensions
 // when closing we delay `present` to retrieve dimensions before closing
@@ -94,10 +100,7 @@ onMounted(() => {
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :hidden="hidden"
-    :style="{
-      [collapsibleContentCssVars.width]: '0px',
-      [collapsibleContentCssVars.height]: '0px'
-    }"
+    :style="style"
   >
     <slot v-if="unmountOnHide ? isOpen : true" />
   </Primitive>

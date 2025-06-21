@@ -21,14 +21,12 @@ const forwardedProps = useOmitProps(props, ['ratio'], attrs);
 const aspect = computed(() => (1 / props.ratio) * 100);
 
 const style = computed<CSSProperties>(() => ({
-  position: 'relative',
-  width: '100%',
   paddingBottom: `${aspect.value}%`
 }));
 </script>
 
 <template>
-  <div data-soybean-aspect-ratio-wrapper :style="style">
+  <div data-soybean-aspect-ratio-wrapper style="position: relative; width: 100%" :style="style">
     <Primitive v-bind="forwardedProps" style="position: absolute; inset: 0px">
       <slot :aspect="aspect" />
     </Primitive>
