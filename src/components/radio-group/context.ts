@@ -1,6 +1,6 @@
 import { computed, shallowRef } from 'vue';
-import { getCheckedState } from '../checkbox/shared';
 import { useContext } from '../../composables';
+import { getCheckedState } from '../../shared';
 import type { RadioGroupItemContextParams, RadioGroupRootContextParams, RadioGroupThemeContextParams } from './types';
 
 export const [provideRadioGroupRootContext, useRadioGroupRootContext] = useContext(

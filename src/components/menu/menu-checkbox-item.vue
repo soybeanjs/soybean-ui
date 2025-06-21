@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import { isNullish, isValueEqualOrExist } from '../../shared';
+import { getCheckedState, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
 import type { CheckedState } from '../../types';
-import { getCheckedState, isIndeterminate } from '../checkbox/shared';
 import { provideMenuItemIndicatorContext, useMenuCheckboxGroupContext } from './context';
 import MenuItem from './menu-item.vue';
 import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from './types';

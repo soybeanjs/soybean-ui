@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
-import { isIndeterminate } from '../checkbox/shared';
+import { isIndeterminate } from '../../shared';
 import { Primitive } from '../primitive';
 import { useMenuItemIndicatorContext } from './context';
 import type { MenuItemIndicatorProps } from './types';

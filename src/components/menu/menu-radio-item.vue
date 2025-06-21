@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
-import { getCheckedState, isIndeterminate } from '../checkbox/shared';
+import { getCheckedState, isIndeterminate } from '../../shared';
 import { provideMenuItemIndicatorContext, useMenuRadioGroupContext } from './context';
 import MenuItem from './menu-item.vue';
 import type { MenuRadioItemEmits, MenuRadioItemProps } from './types';
