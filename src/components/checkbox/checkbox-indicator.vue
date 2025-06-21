@@ -2,8 +2,8 @@
 import { computed, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
+import { isIndeterminate } from '../../shared';
 import { useCheckboxRootContext, useCheckboxThemeContext } from './context';
-import { isIndeterminate } from './shared';
 import type { CheckboxIndicatorProps } from './types';
 
 defineOptions({

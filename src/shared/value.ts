@@ -1,4 +1,19 @@
-import type { AcceptableValue } from '../types';
+import type { AcceptableValue, CheckedState } from '../types';
+
+export function isIndeterminate(checked?: CheckedState | null): checked is 'indeterminate' {
+  return checked === 'indeterminate';
+}
+
+export function getCheckedState(checked?: CheckedState | null) {
+  if (isIndeterminate(checked)) {
+    return 'indeterminate';
+  }
+  return checked ? 'checked' : 'unchecked';
+}
+
+export function getBinaryCheckedState(checked?: CheckedState | null) {
+  return checked === true ? 'checked' : 'unchecked';
+}
 
 /**
  * Check if value is enabled based on single or multiple selection mode
