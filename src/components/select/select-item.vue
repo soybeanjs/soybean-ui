@@ -1,13 +1,14 @@
-<script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
+<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed, nextTick, shallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
 import {
   getActiveElement,
+  getBinaryCheckedState,
   handleAndDispatchCustomEvent,
   isValueEqualOrExist,
   transformPropsToContext
 } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
 import {
   provideSelectItemContext,
@@ -51,6 +52,8 @@ const [_, setItemElement] = useForwardElement(node => {
   onItemElementChange(node);
 });
 
+const dataState = computed(() => getBinaryCheckedState(isSelected.value));
+
 const isFocused = shallowRef(false);
 const onFocus = () => {
   isFocused.value = true;
@@ -66,7 +69,7 @@ async function onCustomSelect(event: PointerEvent | KeyboardEvent) {
   handleAndDispatchCustomEvent(SELECT_EVENT, onSelect, eventDetail);
 }
 
-async function onSelect(event: SelectItemEvent<NonNullable<T>>) {
+async function onSelect(event: SelectItemEvent<T>) {
   await nextTick();
   emit('select', event);
   if (event.defaultPrevented) return;
@@ -135,7 +138,7 @@ if (props.value === '') {
     :aria-labelledby="textId"
     :aria-selected="isSelected"
     :data-disabled="disabled ? '' : undefined"
-    :data-state="isSelected ? 'checked' : 'unchecked'"
+    :data-state="dataState"
     role="option"
     :tabindex="disabled ? undefined : -1"
     @focus="onFocus"

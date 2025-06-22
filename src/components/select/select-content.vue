@@ -3,6 +3,7 @@ import { onMounted, ref, shallowRef, useAttrs } from 'vue';
 import { useForwardElement, useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import { useSelectRootContext } from './context';
 import SelectContentImpl from './select-content-impl.vue';
+import SelectTeleportProvider from './select-teleport-provider.vue';
 import type { SelectContentEmits, SelectContentProps } from './types';
 
 defineOptions({
@@ -10,7 +11,11 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<SelectContentProps>();
+const props = withDefaults(defineProps<SelectContentProps>(), {
+  position: 'popper',
+  avoidCollisions: true,
+  bodyLock: true
+});
 
 const emit = defineEmits<SelectContentEmits>();
 
@@ -27,6 +32,7 @@ const [contentElement, setContentElement] = useForwardElement();
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const fragment = ref<DocumentFragment>();
+
 onMounted(() => {
   fragment.value = new DocumentFragment();
 });
@@ -38,7 +44,9 @@ onMounted(() => {
   </SelectContentImpl>
   <div v-else-if="fragment">
     <Teleport :to="fragment">
-      <slot />
+      <SelectTeleportProvider :position="position">
+        <slot />
+      </SelectTeleportProvider>
     </Teleport>
   </div>
 </template>

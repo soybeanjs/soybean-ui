@@ -160,9 +160,9 @@ export const [provideSelectContentContext, useSelectContentContext] = useContext
     };
 
     function focusSelectedItem() {
-      if (selectedItemElement.value && contentElement.value) {
-        tryFocusFirst([selectedItemElement.value, contentElement.value]);
-      }
+      if (!selectedItemElement.value || !contentElement.value) return;
+
+      tryFocusFirst([selectedItemElement.value, contentElement.value]);
     }
 
     return {

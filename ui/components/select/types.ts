@@ -1,16 +1,16 @@
 import type { Component, VNode } from 'vue';
 import type {
-  AcceptableValue,
   ClassValue,
+  DefinedValue,
   SelectArrowProps,
   SelectContentEmits,
   SelectContentProps,
+  SelectGroupLabelProps,
   SelectGroupProps,
-  SelectIconProps,
+  SelectItemEmits,
   SelectItemIndicatorProps,
   SelectItemProps,
   SelectItemTextProps,
-  SelectLabelProps,
   SelectPortalProps,
   SelectRootEmits,
   SelectRootProps,
@@ -18,12 +18,15 @@ import type {
   SelectScrollUpButtonProps,
   SelectSeparatorProps,
   SelectSlot,
+  SelectTriggerIconProps,
   SelectTriggerProps,
-  SelectViewportProps
+  SelectValueProps,
+  SelectViewportProps,
+  SingleOrMultipleValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export interface SelectSingleOptionData<T extends AcceptableValue = AcceptableValue>
+export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue>
   extends Pick<SelectItemProps<T>, 'value' | 'disabled' | 'textValue'> {
   /**
    * The icon of the dropdown item.
@@ -37,46 +40,70 @@ export interface SelectSingleOptionData<T extends AcceptableValue = AcceptableVa
   separator?: boolean;
 }
 
-export interface SelectGroupOptionData<T extends AcceptableValue = AcceptableValue>
+export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue>
   extends Pick<SelectSingleOptionData, 'separator' | 'label'> {
   items: SelectSingleOptionData<T>[];
 }
 
-export type SelectOptionData<T extends AcceptableValue = AcceptableValue> =
+export type SelectOptionData<T extends DefinedValue = DefinedValue> =
   | SelectSingleOptionData<T>
   | SelectGroupOptionData<T>;
 
-export interface SelectSingleOptionProps<T extends AcceptableValue = AcceptableValue> extends SelectItemProps<T> {
+export interface SelectSingleOptionProps<T extends DefinedValue = DefinedValue> extends SelectItemProps<T> {
   item: SelectSingleOptionData<T>;
   itemTextProps?: SelectItemTextProps;
   itemIndicatorProps?: SelectItemIndicatorProps;
   separatorProps?: SelectSeparatorProps;
 }
 
-export interface SelectGroupOptionProps<T extends AcceptableValue = AcceptableValue> extends SelectGroupProps {
+export type SelectSingleOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
+
+export interface SelectGroupOptionProps<T extends DefinedValue = DefinedValue> extends SelectGroupProps {
   item: SelectGroupOptionData<T>;
-  labelProps?: SelectLabelProps;
+  groupLabelProps?: SelectGroupLabelProps;
+  itemProps?: SelectItemProps;
   itemTextProps?: SelectItemTextProps;
   itemIndicatorProps?: SelectItemIndicatorProps;
   separatorProps?: SelectSeparatorProps;
 }
 
+export type SelectGroupOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
+
+export interface SelectOptionProps<T extends DefinedValue = DefinedValue> {
+  item: SelectOptionData<T>;
+  groupProps?: SelectGroupProps;
+  groupLabelProps?: SelectGroupLabelProps;
+  itemProps?: SelectItemProps;
+  itemTextProps?: SelectItemTextProps;
+  itemIndicatorProps?: SelectItemIndicatorProps;
+  separatorProps?: SelectSeparatorProps;
+}
+
+export type SelectOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
+
 export type SelectUi = Partial<Record<SelectSlot, ClassValue>>;
 
-export interface SelectProps<T extends AcceptableValue, S extends SelectOptionData<T>, M extends boolean>
-  extends SelectRootProps<T, M> {
+export type GetSelectOptionValue<T> = T extends any[] ? T[number] : NonNullable<T>;
+
+export interface SelectProps<
+  T extends SingleOrMultipleValue = SingleOrMultipleValue,
+  S extends SelectOptionData<GetSelectOptionValue<T>> = SelectOptionData<GetSelectOptionValue<T>>,
+  M extends boolean = false
+> extends SelectRootProps<T, M> {
   ui?: SelectUi;
   size?: ThemeSize;
   items: S[];
+  showArrow?: boolean;
   triggerProps?: SelectTriggerProps;
-  iconProps?: SelectIconProps;
+  triggerIconProps?: SelectTriggerIconProps;
+  valueProps?: SelectValueProps;
   portalProps?: SelectPortalProps;
   contentProps?: SelectContentProps;
   viewportProps?: SelectViewportProps;
   scrollDownButtonProps?: SelectScrollDownButtonProps;
   scrollUpButtonProps?: SelectScrollUpButtonProps;
   groupProps?: SelectGroupProps;
-  labelProps?: SelectLabelProps;
+  groupLabelProps?: SelectGroupLabelProps;
   itemProps?: SelectItemProps;
   itemTextProps?: SelectItemTextProps;
   itemIndicatorProps?: SelectItemIndicatorProps;
@@ -84,5 +111,6 @@ export interface SelectProps<T extends AcceptableValue, S extends SelectOptionDa
   arrowProps?: SelectArrowProps;
 }
 
-export type SelectEmits<T extends AcceptableValue | NonNullable<AcceptableValue>[]> = SelectRootEmits<T> &
-  SelectContentEmits;
+export type SelectEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SelectRootEmits<T> &
+  SelectContentEmits &
+  SelectOptionEmits<GetSelectOptionValue<T>>;

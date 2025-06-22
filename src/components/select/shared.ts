@@ -1,4 +1,5 @@
-import type { AcceptableValue } from '../../types';
+import { isNullish } from '../../shared';
+import type { SingleOrMultipleValue } from '../../types';
 
 export const selectCssVars = {
   contentTransformOrigin: '--soybean-select-content-transform-origin',
@@ -14,6 +15,6 @@ export const CONTENT_MARGIN = 10;
 
 export const SELECT_EVENT = 'select.select';
 
-export function shouldShowPlaceholder(value?: AcceptableValue | AcceptableValue[]): boolean {
-  return value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0);
+export function shouldShowPlaceholder(value?: SingleOrMultipleValue): boolean {
+  return isNullish(value) || value === '' || (Array.isArray(value) && value.length === 0);
 }

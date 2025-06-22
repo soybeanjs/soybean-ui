@@ -6,6 +6,7 @@ import {
   useExposedElement,
   useFocusGuards,
   useFocusScope,
+  useForwardElement,
   useHideOthers,
   useTypeahead
 } from '../../composables';
@@ -27,7 +28,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<SelectContentImplProps>(), {
   align: 'start',
-  position: 'item-aligned',
+  position: 'popper',
+  avoidCollisions: true,
   bodyLock: true
 });
 
@@ -52,15 +54,17 @@ const {
 } = useSelectRootContext('SelectContentImpl');
 
 const { onContainerElementChange, getOrderedItems, getOrderedElements } = useCollectionContext('SelectContentImpl');
-const [contentElement, setContentElement] = useExposedElement(onContainerElementChange);
-
+const [floatingElement, setFloatingElement] = useForwardElement(props.floatingRef);
 const { search, handleTypeaheadSearch } = useTypeahead();
-
-const { isPositioned, focusSelectedItem } = provideSelectContentContext({
+const { isPositioned, focusSelectedItem, onContentElementChange } = provideSelectContentContext({
   position: computed(() => props.position),
   modelValue,
   isMultiple,
   search
+});
+const [contentElement, setContentElement] = useExposedElement(node => {
+  onContentElementChange(node);
+  onContainerElementChange(node);
 });
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
@@ -79,7 +83,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   }
 });
 
-const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(contentElement, {
+const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floatingElement, {
   onOpenAutoFocus: event => {
     event.preventDefault();
   },
@@ -204,6 +208,7 @@ watchEffect(() => {
     v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
+    :floating-ref="setFloatingElement"
     :class="cls"
     role="listbox"
     :data-state="dataState"

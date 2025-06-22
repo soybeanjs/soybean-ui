@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useSelectGroupContext, useSelectThemeContext } from './context';
-import type { SelectLabelProps } from './types';
+import type { SelectGroupLabelProps } from './types';
 
 defineOptions({
-  name: 'SelectLabel'
+  name: 'SelectGroupLabel'
 });
 
-const props = defineProps<SelectLabelProps>();
+const props = defineProps<SelectGroupLabelProps>();
 
-const { labelId } = useSelectGroupContext('SelectLabel');
+const { labelId } = useSelectGroupContext('SelectGroupLabel');
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.label, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.groupLabel, props.class]);
 </script>
 
 <template>

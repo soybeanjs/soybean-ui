@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
+import { useExposedElement } from '../../composables';
 import { PopperContent } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { CONTENT_MARGIN, selectCssVars } from './shared';
-import type { SelectPopperPositionProps } from './types';
+import type { SelectPopperPositionEmits, SelectPopperPositionProps } from './types';
 
 defineOptions({
   name: 'SelectPopperPosition'
@@ -14,6 +15,10 @@ const props = withDefaults(defineProps<SelectPopperPositionProps>(), {
   collisionPadding: CONTENT_MARGIN,
   avoidCollisions: true
 });
+
+const emit = defineEmits<SelectPopperPositionEmits>();
+
+const [_, setContentElement] = useExposedElement();
 
 const style: CSSProperties = {
   boxSizing: 'border-box',
@@ -26,7 +31,7 @@ const style: CSSProperties = {
 </script>
 
 <template>
-  <PopperContent v-bind="props" :style="style">
+  <PopperContent v-bind="props" :ref="setContentElement" :style="style" @placed="emit('placed')">
     <slot />
   </PopperContent>
 </template>

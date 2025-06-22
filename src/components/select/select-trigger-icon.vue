@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useSelectThemeContext } from './context';
-import type { SelectIconProps } from './types';
+import type { SelectTriggerIconProps } from './types';
 
 defineOptions({
-  name: 'SelectIcon'
+  name: 'SelectTriggerIcon'
 });
 
-const props = defineProps<SelectIconProps>();
+const props = defineProps<SelectTriggerIconProps>();
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.icon, props.class]);
+const cls = computed(() => [themeContext?.ui?.value?.triggerIcon, props.class]);
 </script>
 
 <template>

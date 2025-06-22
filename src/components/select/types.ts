@@ -2,21 +2,23 @@ import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref, ShallowRef
 import type {
   AcceptableValue,
   ClassValue,
+  DefinedValue,
   Direction,
   ForceMountProps,
   FormFieldProps,
   PointerDownOutsideEvent,
   PropsToContext,
   SingleOrMultipleEmits,
-  SingleOrMultipleProps
+  SingleOrMultipleProps,
+  SingleOrMultipleValue
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
-import type { PopperAnchorProps, PopperArrowProps, PopperContentProps } from '../popper/types';
+import type { PopperAnchorProps, PopperArrowProps, PopperContentEmits, PopperContentProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
 import type { DividerRootProps } from '../divider/types';
 
 // SelectRoot
-export interface SelectRootProps<T = AcceptableValue | NonNullable<AcceptableValue>[], M extends boolean = false>
+export interface SelectRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
   extends SingleOrMultipleProps<T, M>,
     FormFieldProps {
   /** The controlled open state of the Select. Can be bind as `v-model:open`. */
@@ -34,7 +36,7 @@ export interface SelectRootProps<T = AcceptableValue | NonNullable<AcceptableVal
   disabled?: boolean;
 }
 
-export type SelectRootEmits<T = AcceptableValue | NonNullable<AcceptableValue>[]> = SingleOrMultipleEmits<T> & {
+export type SelectRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SingleOrMultipleEmits<T> & {
   /** Event handler called when the open state of the context menu changes. */
   'update:open': [value: boolean];
 };
@@ -81,6 +83,8 @@ export interface SelectContentProps extends SelectContentImplProps, ForceMountPr
 
 export type SelectContentEmits = SelectContentImplEmits;
 
+export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps, 'position'> {}
+
 // Viewport
 export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
   /**
@@ -93,21 +97,30 @@ export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
 // PopperPosition
 export interface SelectPopperPositionProps extends PopperContentProps {}
 
+export type SelectPopperPositionEmits = PopperContentEmits;
+
 // SelectItemAlignedPosition
 export interface SelectItemAlignedPositionProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 // SelectGroup
-export interface SelectGroupProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SelectGroupProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {}
+
+// SelectGroupLabel
+export interface SelectGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectTrigger
 export interface SelectTriggerProps extends PopperAnchorProps {
   disabled?: boolean;
 }
 
+// SelectTriggerIcon
+export interface SelectTriggerIconProps extends /** @vue-ignore */ HTMLAttributes {}
+
 // SelectItem
-export interface SelectItemProps<T = AcceptableValue> extends /** @vue-ignore */ HTMLAttributes {
+export interface SelectItemProps<T extends DefinedValue = DefinedValue>
+  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
-  value: NonNullable<T>;
+  value: T;
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
   /**
@@ -117,14 +130,14 @@ export interface SelectItemProps<T = AcceptableValue> extends /** @vue-ignore */
   textValue?: string;
 }
 
-export type SelectItemEvent<T> = CustomEvent<{ originalEvent: PointerEvent | KeyboardEvent; value?: T }>;
-export type SelectItemEmits<T = AcceptableValue> = {
+export type SelectItemEvent<T extends DefinedValue = DefinedValue> = CustomEvent<{
+  originalEvent: PointerEvent | KeyboardEvent;
+  value: T;
+}>;
+export type SelectItemEmits<T extends DefinedValue = DefinedValue> = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
-  select: [event: SelectItemEvent<NonNullable<T>>];
+  select: [event: SelectItemEvent<T>];
 };
-
-// SelectLabel
-export interface SelectLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectItemText
 export interface SelectItemTextProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -141,9 +154,6 @@ export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
   /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
   placeholder?: string;
 }
-
-// SelectIcon
-export interface SelectIconProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectSeparator
 export interface SelectSeparatorProps extends DividerRootProps {}
@@ -180,8 +190,8 @@ export interface BubbleSelectProps {
 export interface SelectRootContextParams
   extends PropsToContext<SelectRootProps, 'dir' | 'autocomplete' | 'disabled' | 'required'> {
   open: ShallowRef<boolean | undefined>;
-  modelValue: Ref<AcceptableValue | NonNullable<AcceptableValue>[]>;
-  onModelValueChange: (value: NonNullable<AcceptableValue>) => void;
+  modelValue: Ref<AcceptableValue | DefinedValue[]>;
+  onModelValueChange: (value: DefinedValue) => void;
   isMultiple: ShallowRef<boolean>;
   isEmptyModelValue: ShallowRef<boolean>;
 }
@@ -198,7 +208,7 @@ export interface SelectItemAlignedPositionContextParams {
   onScrollButtonChange: (node: HTMLElement | undefined) => void;
 }
 
-export interface SelectItemContextParams<T = AcceptableValue>
+export interface SelectItemContextParams<T extends DefinedValue = DefinedValue>
   extends PropsToContext<SelectItemProps<T>, 'textValue' | 'disabled'> {
   value: T;
   isSelected: ShallowRef<boolean>;
@@ -211,12 +221,12 @@ export interface SelectItemCollectionItemData {
 // Theme Context
 export type SelectSlot =
   | 'trigger'
+  | 'triggerIcon'
   | 'value'
-  | 'icon'
   | 'content'
   | 'viewport'
   | 'group'
-  | 'label'
+  | 'groupLabel'
   | 'item'
   | 'itemText'
   | 'itemIndicator'

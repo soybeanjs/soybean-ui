@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends AcceptableValue | NonNullable<AcceptableValue>[], M extends boolean">
+<script setup lang="ts" generic="T extends SingleOrMultipleValue, M extends boolean">
 import { computed } from 'vue';
 import { useControllableState, useSingleOrMultipleValue } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
-import type { AcceptableValue } from '../../types';
+import type { SingleOrMultipleValue } from '../../types';
 import { PopperRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';
 import BubbleSelect from './bubble-select.vue';
@@ -21,7 +21,7 @@ const props = withDefaults(defineProps<SelectRootProps<T, M>>(), {
 const emit = defineEmits<SelectRootEmits<T>>();
 
 type Slots = {
-  default: (props: { modelValue: SelectRootProps<T, M>['modelValue']; open: boolean }) => any;
+  default: (props: { modelValue: T | undefined; open: boolean }) => any;
 };
 
 defineSlots<Slots>();

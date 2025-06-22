@@ -5,12 +5,12 @@ import type { VariantProps } from 'tailwind-variants';
 export const selectVariants = tv({
   slots: {
     trigger: [
-      `flex items-center justify-between w-full rounded-md border border-input bg-background [&_span]:truncate`,
+      `flex items-center justify-between w-full rounded-md border border-input bg-background`,
       `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary) focus:(ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(pointer-events-none opacity-50)`,
       `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
     ],
-    selectedValue: '',
     triggerIcon: `shrink-0 text-muted-foreground opacity-70`,
+    value: 'truncate',
     content: [
       `relative z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md`,
       `data-[state=open]:(animate-in fade-in-0 zoom-in-95)`,
@@ -19,7 +19,7 @@ export const selectVariants = tv({
     ],
     viewport: '',
     group: '',
-    groupLabel: `font-semibold`,
+    groupLabel: `font-medium text-muted-foreground`,
     item: [
       `relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
@@ -28,7 +28,8 @@ export const selectVariants = tv({
     itemIndicator: `ml-auto shrink-0 text-muted-foreground`,
     separator: `-mx-1 my-1 h-px bg-muted`,
     scrollUpButton: `flex items-center justify-center cursor-default`,
-    scrollDownButton: `flex items-center justify-center cursor-default`
+    scrollDownButton: `flex items-center justify-center cursor-default`,
+    arrow: 'w-1em h-0.5em fill-popover stroke-border'
   },
   variants: {
     size: {
@@ -37,10 +38,11 @@ export const selectVariants = tv({
         trigger: 'h-6 px-1.5 text-2xs',
         viewport: 'p-0.75',
         item: 'gap-1 px-1 py-1',
-        groupLabel: 'p-1',
+        groupLabel: 'p-1 text-3xs',
         separator: '-mx-0.75 my-0.375',
         scrollUpButton: 'py-0.75',
-        scrollDownButton: 'py-0.75'
+        scrollDownButton: 'py-0.75',
+        arrow: 'text-3xs'
       },
       sm: {
         content: 'max-h-75 text-xs',
@@ -48,9 +50,10 @@ export const selectVariants = tv({
         viewport: 'p-0.875',
         item: 'gap-1.5 px-1.5 py-1',
         separator: '-mx-0.875 my-0.4375',
-        groupLabel: 'p-1.25',
+        groupLabel: 'p-1.25 text-2xs',
         scrollUpButton: 'py-0.875',
-        scrollDownButton: 'py-0.875'
+        scrollDownButton: 'py-0.875',
+        arrow: 'text-2xs'
       },
       md: {
         content: 'max-h-80 text-sm',
@@ -58,9 +61,10 @@ export const selectVariants = tv({
         viewport: 'p-1',
         item: 'gap-2 px-2 py-1.5',
         separator: '-mx-1 my-0.5',
-        groupLabel: 'p-1.75',
+        groupLabel: 'p-1.75 text-xs',
         scrollUpButton: 'py-1',
-        scrollDownButton: 'py-1'
+        scrollDownButton: 'py-1',
+        arrow: 'text-xs'
       },
       lg: {
         content: 'max-h-90 text-base',
@@ -68,9 +72,10 @@ export const selectVariants = tv({
         viewport: 'p-1.25',
         item: 'gap-2.5 px-2.5 py-1.5',
         separator: '-mx-1.25 my-0.625',
-        groupLabel: 'p-2',
+        groupLabel: 'p-2 text-xs',
         scrollUpButton: 'py-1.25',
-        scrollDownButton: 'py-1.25'
+        scrollDownButton: 'py-1.25',
+        arrow: 'text-sm'
       },
       xl: {
         content: 'max-h-100 text-lg',
@@ -78,9 +83,10 @@ export const selectVariants = tv({
         viewport: 'p-1.5',
         item: 'gap-3 px-3 py-2',
         separator: '-mx-1.5 my-0.75',
-        groupLabel: 'p-2.5',
+        groupLabel: 'p-2.5 text-sm',
         scrollUpButton: 'py-1.5',
-        scrollDownButton: 'py-1.5'
+        scrollDownButton: 'py-1.5',
+        arrow: 'text-base'
       },
       '2xl': {
         content: 'max-h-115 text-xl',
@@ -88,9 +94,10 @@ export const selectVariants = tv({
         viewport: 'p-1.75',
         item: 'gap-3.5 px-3.5 py-2.5',
         separator: '-mx-1.75 my-0.875',
-        groupLabel: 'p-3',
+        groupLabel: 'p-3 text-base',
         scrollUpButton: 'py-1.75',
-        scrollDownButton: 'py-1.75'
+        scrollDownButton: 'py-1.75',
+        arrow: 'text-lg'
       }
     },
     position: {
