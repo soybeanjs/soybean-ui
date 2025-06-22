@@ -45,7 +45,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 1        | Popover         | ✅ Completed   |                      |                          |
 | 1        | RadioGroup      | ✅ Completed   |                      | ✨ support radio card    |
 | 1        | Segment         | ✅ Completed   |                      |                          |
-| 1        | Select          |                |                      | support virtualized      |
+| 1        | Select          | ✅ Completed   |                      | support virtualized      |
 | 1        | Switch          | ✅ Completed   |                      | support switch card      |
 | 1        | Tabs            | ✅ Completed   |                      |                          |
 | 1        | Textarea        |                |                      | support auto size        |
