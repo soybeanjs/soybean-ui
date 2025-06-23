@@ -94,7 +94,7 @@ onMounted(() => {
   <div class="h-full p-4">
     <SCard title="SoybeanHeadless" class="h-full">
       <template #extra>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-3">
           <SPopover :ui="{ content: 'z-15' }" placement="bottom-end">
             <template #trigger>
               <SButtonIcon icon="lucide:swatch-book" size="lg" />
@@ -102,14 +102,16 @@ onMounted(() => {
             <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
           </SPopover>
           <SButtonLink
+            size="lg"
             variant="ghost"
             color="accent"
             shape="square"
+            fit-content
             href="https://github.com/soybean-ui/soybean-headless"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SIcon icon="lucide:github" size="lg" />
+            <SIcon icon="lucide:github" />
           </SButtonLink>
           <ThemeSchemaToggler />
         </div>
