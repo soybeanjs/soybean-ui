@@ -18,14 +18,15 @@ const buttonGroupContext = useButtonGroupContext();
 const forwardedProps = useOmitProps(props, ['size', 'color', 'variant', 'shape', 'shadow', 'disabled']);
 
 const cls = computed(() => {
-  const { size, color, variant, shape, shadow } = buttonGroupContext || {};
+  const { size, color, variant, shape, shadow, fitContent } = buttonGroupContext || {};
 
   const variants = buttonVariants({
     size: props.size || size?.value,
     color: props.color || color?.value,
     variant: props.variant || variant?.value,
     shape: props.shape || shape?.value,
-    shadow: props.shadow || shadow?.value
+    shadow: props.shadow || shadow?.value,
+    fitContent: props.fitContent || fitContent?.value
   });
 
   return cn(variants, props.class);

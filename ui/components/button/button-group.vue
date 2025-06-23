@@ -29,7 +29,9 @@ const cls = computed(() =>
 
 const dir = computed(() => props.dir ?? config.dir.value);
 
-provideButtonGroupContext(transformPropsToContext(props, ['color', 'size', 'variant', 'shape', 'shadow', 'disabled']));
+provideButtonGroupContext(
+  transformPropsToContext(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent', 'disabled'])
+);
 </script>
 
 <template>

@@ -30,12 +30,12 @@ export const buttonVariants = tv({
       link: 'bg-transparent underline-offset-4 hover:underline'
     },
     size: {
-      xs: 'h-6 px-1.5 gap-1 text-2xs',
-      sm: 'h-7 px-2 gap-2 text-xs',
-      md: 'h-8 px-4 gap-3 text-sm',
-      lg: 'h-9 px-6 gap-4 text-base',
-      xl: 'h-10 px-8 gap-5 text-lg',
-      '2xl': 'h-12 px-10 gap-6 text-xl'
+      xs: 'gap-1 text-2xs',
+      sm: 'gap-2 text-xs',
+      md: 'gap-3 text-sm',
+      lg: 'gap-4 text-base',
+      xl: 'gap-5 text-lg',
+      '2xl': 'gap-6 text-xl'
     },
     shape: {
       auto: 'rounded-md',
@@ -48,6 +48,10 @@ export const buttonVariants = tv({
       sm: 'shadow-sm',
       md: 'shadow-md',
       lg: 'shadow-lg'
+    },
+    fitContent: {
+      true: 'w-fit h-fit',
+      false: ''
     }
   },
   compoundVariants: [
@@ -283,28 +287,93 @@ export const buttonVariants = tv({
     },
     {
       size: 'xs',
-      shape: ['square', 'circle'],
-      class: 'h-6 w-6'
+      fitContent: true,
+      class: 'p-0.75'
     },
     {
       size: 'sm',
-      shape: ['square', 'circle'],
-      class: 'h-7 w-7'
+      fitContent: true,
+      class: 'p-0.875'
+    },
+    {
+      size: 'md',
+      fitContent: true,
+      class: 'p-1'
     },
     {
       size: 'lg',
-      shape: ['square', 'circle'],
-      class: 'h-9 w-9'
+      fitContent: true,
+      class: 'p-1.25'
     },
     {
       size: 'xl',
-      shape: ['square', 'circle'],
-      class: 'h-10 w-10'
+      fitContent: true,
+      class: 'p-1.5'
     },
     {
       size: '2xl',
+      fitContent: true,
+      class: 'p-1.75'
+    },
+    {
+      size: 'xs',
+      fitContent: false,
+      class: 'h-6 px-1.5'
+    },
+    {
+      size: 'sm',
+      fitContent: false,
+      class: 'h-7 px-2'
+    },
+    {
+      size: 'md',
+      fitContent: false,
+      class: 'h-8 px-4'
+    },
+    {
+      size: 'lg',
+      fitContent: false,
+      class: 'h-9 px-6'
+    },
+    {
+      size: 'xl',
+      fitContent: false,
+      class: 'h-10 px-8'
+    },
+    {
+      size: '2xl',
+      fitContent: false,
+      class: 'h-12 px-10'
+    },
+    {
+      size: 'xs',
+      fitContent: false,
       shape: ['square', 'circle'],
-      class: 'h-12 w-12'
+      class: 'w-6'
+    },
+    {
+      size: 'sm',
+      fitContent: false,
+      shape: ['square', 'circle'],
+      class: 'w-7'
+    },
+    {
+      size: 'lg',
+      fitContent: false,
+      shape: ['square', 'circle'],
+      class: 'w-9'
+    },
+    {
+      size: 'xl',
+      fitContent: false,
+      shape: ['square', 'circle'],
+      class: 'w-10'
+    },
+    {
+      size: '2xl',
+      fitContent: false,
+      shape: ['square', 'circle'],
+      class: 'w-12'
     },
     {
       variant: ['ghost', 'link'],
@@ -362,23 +431,6 @@ export const buttonGroupVariants = tv({
   },
   defaultVariants: {
     orientation: 'horizontal'
-  }
-});
-
-export const buttonIconVariants = tv({
-  base: 'w-fit h-fit',
-  variants: {
-    size: {
-      xs: 'p-0.75',
-      sm: 'p-0.875',
-      md: 'p-1',
-      lg: 'p-1.25',
-      xl: 'p-1.5',
-      '2xl': 'p-1.75'
-    }
-  },
-  defaultVariants: {
-    size: 'md'
   }
 });
 

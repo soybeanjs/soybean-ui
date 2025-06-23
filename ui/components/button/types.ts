@@ -10,6 +10,7 @@ export interface ButtonProps extends _ButtonProps {
   variant?: ButtonVariant;
   shape?: ButtonShape;
   shadow?: ButtonShadow;
+  fitContent?: boolean;
 }
 
 export interface ButtonIconProps extends ButtonProps {
@@ -79,6 +80,9 @@ export interface ButtonGroupProps extends ButtonProps {
 }
 
 export interface ButtonGroupContextParams
-  extends PropsToContext<ButtonGroupProps, 'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled'> {}
+  extends PropsToContext<
+    ButtonGroupProps,
+    'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'
+  > {}
 
 export type { ButtonVariant, ButtonShape, ButtonShadow };
