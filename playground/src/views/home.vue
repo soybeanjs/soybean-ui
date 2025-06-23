@@ -1,22 +1,16 @@
 <script setup lang="ts">
 import { onMounted, shallowRef, watch, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
-import { useDark } from '@vueuse/core';
 import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
 import type { TabsOptionData } from '@ui';
 import { toKebabCase, toPascalCase } from '@headless/shared';
 import ThemeCustomizer from '../components/theme-customizer.vue';
+import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 import { useTheme } from '../theme';
 
 const { color, radius, size } = useTheme('HomePage');
 
 const activeTab = shallowRef('');
-
-const isDark = useDark();
-
-function toggleDark() {
-  isDark.value = !isDark.value;
-}
 
 interface TabConfig extends TabsOptionData<string> {
   component: () => Promise<Record<string, Component>>;
@@ -117,7 +111,7 @@ onMounted(() => {
           >
             <SIcon icon="lucide:github" size="lg" />
           </SButtonLink>
-          <SButtonIcon :icon="isDark ? 'lucide:sun' : 'lucide:moon'" size="lg" @click="toggleDark" />
+          <ThemeSchemaToggler />
         </div>
       </template>
       <STabs
