@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 import { useForwardElement } from '../../composables';
 import { useSelectContentContext, useSelectItemContext, useSelectRootContext, useSelectThemeContext } from './context';
 import type { SelectItemTextProps } from './types';
@@ -37,7 +37,7 @@ onMounted(() => {
   onOptionAdd(optionProps.value);
 });
 
-onBeforeUnmount(() => {
+onUnmounted(() => {
   onOptionRemove(optionProps.value);
 });
 </script>
