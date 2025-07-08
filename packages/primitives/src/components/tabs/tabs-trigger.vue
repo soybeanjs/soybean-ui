@@ -42,7 +42,7 @@ const isSelected = computed(() => props.value === rootContext.modelValue.value);
       role="tab"
       :type="as === 'button' ? 'button' : undefined"
       @mousedown.left="
-        event => {
+        (event: MouseEvent) => {
           // only call handler if it's the left button (mousedown gets triggered by all mouse buttons)
           // but not when the control key is pressed (avoiding MacOS right click)
           if (!disabled && event.ctrlKey === false) {

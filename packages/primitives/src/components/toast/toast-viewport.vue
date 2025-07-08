@@ -150,8 +150,8 @@ function getSortedTabbableCandidates({ tabbingDirection }: { tabbingDirection: '
     <FocusProxy
       v-if="hasToasts"
       :ref="
-        (node: ComponentPublicInstance) => {
-          headFocusProxyRef = unrefElement(node) as HTMLElement;
+        (node: ComponentPublicInstance | Element | null) => {
+          headFocusProxyRef = unrefElement(node as any) as HTMLElement;
           return undefined;
         }
       "
@@ -172,8 +172,8 @@ function getSortedTabbableCandidates({ tabbingDirection }: { tabbingDirection: '
     <FocusProxy
       v-if="hasToasts"
       :ref="
-        (node: ComponentPublicInstance) => {
-          tailFocusProxyRef = unrefElement(node) as HTMLElement;
+        (node: ComponentPublicInstance | Element | null) => {
+          tailFocusProxyRef = unrefElement(node as any) as HTMLElement;
           return undefined;
         }
       "

@@ -22,8 +22,8 @@ const contentContext = injectMenuContentContext();
 
 const openTimerRef = ref<number | null>(null);
 
-function refTrigger(vnode: ComponentPublicInstance) {
-  subContext.onTriggerChange(vnode?.$el);
+function refTrigger(vnode: ComponentPublicInstance | Element | null) {
+  subContext.onTriggerChange((vnode as ComponentPublicInstance)?.$el);
   return undefined;
 }
 

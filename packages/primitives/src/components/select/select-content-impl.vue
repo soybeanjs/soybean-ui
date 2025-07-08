@@ -50,8 +50,8 @@ const isPositioned = ref(false);
 const firstValidItemFoundRef = ref(false);
 const firstSelectedItemInArrayFoundRef = ref(false);
 
-function refTrigger(vnode: ComponentPublicInstance) {
-  content.value = unrefElement(vnode) as HTMLElement;
+function refTrigger(vnode: ComponentPublicInstance | Element | null) {
+  content.value = unrefElement(vnode as any);
   return undefined;
 }
 

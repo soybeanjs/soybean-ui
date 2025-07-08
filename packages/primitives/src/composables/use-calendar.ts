@@ -31,7 +31,7 @@ export type UseCalendarProps = {
 export type UseCalendarStateProps = {
   isDateDisabled: Matcher;
   isDateUnavailable: Matcher;
-  date: Ref<DateValue | DateValue[] | undefined>;
+  date: Ref<DateValue | DateValue[] | undefined | null>;
 };
 
 export function useCalendarState(props: UseCalendarStateProps) {

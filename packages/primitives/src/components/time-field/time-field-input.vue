@@ -21,6 +21,7 @@ const { handleSegmentClick, handleSegmentKeydown, attributes } = useDateField({
   lastKeyZero,
   placeholder: rootContext.placeholder,
   hourCycle: rootContext.hourCycle,
+  step: rootContext.step,
   segmentValues: rootContext.segmentValues,
   formatter: rootContext.formatter,
   part: props.part,

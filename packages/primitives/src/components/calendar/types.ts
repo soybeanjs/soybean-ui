@@ -61,7 +61,7 @@ export interface CalendarRootProps extends ClassValueProp {
    */
   prevPage?: (placeholder: DateValue) => DateValue;
   /** The controlled checked state of the calendar */
-  modelValue?: DateValue | DateValue[] | undefined;
+  modelValue?: DateValue | DateValue[] | null;
   /** Whether multiple dates can be selected */
   multiple?: boolean;
   /** Whether or not to disable days outside the current view. */
@@ -129,7 +129,7 @@ export type CalendarRootEmits = {
 
 export interface CalendarRootContext {
   locale: Ref<string>;
-  modelValue: Ref<DateValue | DateValue[] | undefined>;
+  modelValue: Ref<DateValue | DateValue[] | undefined | null>;
   placeholder: Ref<DateValue>;
   pagedNavigation: Ref<boolean>;
   preventDeselect: Ref<boolean>;

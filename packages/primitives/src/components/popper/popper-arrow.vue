@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 import { useForwardExpose } from '../../composables';
 import type { Side } from '../../types';
 import { Arrow } from '../arrow';
@@ -16,8 +17,8 @@ const props = defineProps<PopperArrowPropsWithPrimitive>();
 const { forwardRef } = useForwardExpose();
 const contentContext = injectPopperContentContext();
 
-function refTrigger(el: HTMLElement) {
-  contentContext.onArrowChange(el);
+function refTrigger(el: Element | ComponentPublicInstance | null) {
+  contentContext.onArrowChange(el as HTMLElement);
   return undefined;
 }
 

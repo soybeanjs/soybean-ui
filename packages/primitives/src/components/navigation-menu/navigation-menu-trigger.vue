@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import type { VNode } from 'vue';
+import type { ComponentPublicInstance } from 'vue';
 import { refAutoReset, unrefElement } from '@vueuse/core';
 import { useCollection, useForwardExpose } from '../../composables';
 import { Primitive } from '../primitive';
@@ -95,7 +95,7 @@ function handleKeydown(ev: KeyboardEvent) {
   }
 }
 
-function setFocusProxyRef(node: VNode) {
+function setFocusProxyRef(node: Element | ComponentPublicInstance | null) {
   // @ts-expect-error unrefElement expect MaybeRef, but also support Vnode
   itemContext.focusProxyRef.value = unrefElement(node);
   return undefined;
