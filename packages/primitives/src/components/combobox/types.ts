@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import type { EventHookOn } from '@vueuse/core';
 import type { AcceptableValue, ClassValueProp, PrimitiveProps } from '../../types';
 import type { TeleportProps } from '../teleport';
@@ -61,10 +61,8 @@ export interface ComboboxRootContext<T> {
   onResetSearchTerm: EventHookOn;
   allItems: Ref<Map<string, string>>;
   allGroups: Ref<Map<string, Set<string>>>;
-  filterState: {
-    search: string;
-    filtered: { count: number; items: Map<string, number>; groups: Set<string> };
-  };
+  filterSearch: Ref<string>;
+  filterState: ComputedRef<{ count: number; items: Map<string, number>; groups: Set<string> }>;
   ignoreFilter: Ref<boolean>;
 }
 

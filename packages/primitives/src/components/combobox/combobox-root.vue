@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends AcceptableValue = AcceptableValue">
-import { computed, getCurrentInstance, nextTick, onMounted, reactive, ref, toRefs, watch } from 'vue';
+import { computed, getCurrentInstance, nextTick, onMounted, ref, toRefs } from 'vue';
 import type { Ref } from 'vue';
 import { createEventHook, useVModel } from '@vueuse/core';
 import { useDirection, useFilter, usePrimitiveElement } from '../../composables';
@@ -63,21 +63,53 @@ const allGroups = ref<Map<string, Set<string>>>(new Map());
 
 const { contains } = useFilter({ sensitivity: 'base' });
 
-const filterState = reactive({
-  search: '',
-  filtered: {
-    /** The count of all visible items. */
-    count: 0,
-    /** Map from visible item id to its search score. */
-    items: new Map() as Map<string, number>,
-    /** Set of groups with at least one visible item. */
-    groups: new Set() as Set<string>
+const filterSearch = ref('');
+
+const filterState = computed<{
+  count: number;
+  items: Map<string, number>;
+  groups: Set<string>;
+}>(oldValue => {
+  if (!filterSearch.value || props.ignoreFilter || isVirtual.value) {
+    // Do nothing, each item will know to show itself because search is empty
+    return {
+      count: allItems.value.size,
+      items: oldValue?.items ?? new Map(),
+      groups: oldValue?.groups ?? new Set(allGroups.value.keys())
+    };
   }
+
+  let itemCount = 0;
+  const filteredItems = new Map<string, number>();
+  const filteredGroups = new Set<string>();
+
+  // Check which items should be included
+  for (const [id, value] of allItems.value) {
+    const score = contains(value, filterSearch.value);
+    filteredItems.set(id, score ? 1 : 0);
+    if (score) itemCount++;
+  }
+
+  // Check which groups have at least 1 item shown
+  for (const [groupId, group] of allGroups.value) {
+    for (const itemId of group) {
+      if (filteredItems.get(itemId)! > 0) {
+        filteredGroups.add(groupId);
+        break;
+      }
+    }
+  }
+
+  return {
+    count: itemCount,
+    items: filteredItems,
+    groups: filteredGroups
+  };
 });
 
 async function onOpenChange(val: boolean) {
   open.value = val;
-  filterState.search = '';
+  filterSearch.value = '';
 
   if (val) {
     // make sure dom is ready then only highlight the selected
@@ -94,68 +126,17 @@ async function onOpenChange(val: boolean) {
   }, 1);
 }
 
-function filterItems() {
-  if (!filterState.search || props.ignoreFilter || isVirtual.value) {
-    filterState.filtered.count = allItems.value.size;
-    // Do nothing, each item will know to show itself because search is empty
-    return;
-  }
-
-  // Reset the groups
-  filterState.filtered.groups = new Set();
-  let itemCount = 0;
-
-  // Check which items should be included
-  for (const [id, value] of allItems.value) {
-    const score = contains(value, filterState.search);
-    filterState.filtered.items.set(id, score ? 1 : 0);
-    if (score) itemCount++;
-  }
-
-  // Check which groups have at least 1 item shown
-  for (const [groupId, group] of allGroups.value) {
-    for (const itemId of group) {
-      if (filterState.filtered.items.get(itemId)! > 0) {
-        filterState.filtered.groups.add(groupId);
-        break;
-      }
-    }
-  }
-
-  filterState.filtered.count = itemCount;
-}
-
-watch(
-  [() => filterState.search, () => allItems.value.size],
-  () => {
-    filterItems();
-  },
-  { immediate: true }
-);
-
-watch(
-  () => open.value,
-  () => {
-    // nextTick to allow multiple items to be mounted first
-    nextTick(() => {
-      if (open.value) filterItems();
-    });
-  },
-  { flush: 'post' }
-);
-
-const instance = getCurrentInstance();
-
+const inst = getCurrentInstance();
 onMounted(() => {
-  if (instance?.exposed) {
-    instance.exposed.highlightItem = primitiveElement.value?.highlightItem;
-    instance.exposed.highlightFirstItem = primitiveElement.value?.highlightFirstItem;
-    instance.exposed.highlightSelected = primitiveElement.value?.highlightSelected;
+  if (inst?.exposed) {
+    inst.exposed.highlightItem = primitiveElement.value?.highlightItem;
+    inst.exposed.highlightFirstItem = primitiveElement.value?.highlightFirstItem;
+    inst.exposed.highlightSelected = primitiveElement.value?.highlightSelected;
   }
 });
 
 defineExpose({
-  filtered: computed(() => filterState.filtered),
+  filtered: filterState,
   highlightedElement,
   highlightItem: primitiveElement.value?.highlightItem,
   highlightFirstItem: primitiveElement.value?.highlightFirstItem,
@@ -185,6 +166,7 @@ provideComboboxRootContext({
   onResetSearchTerm: resetSearchTerm.on,
   allItems,
   allGroups,
+  filterSearch,
   filterState,
   ignoreFilter
 });

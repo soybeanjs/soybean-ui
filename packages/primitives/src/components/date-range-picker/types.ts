@@ -53,6 +53,7 @@ export type DateRangePickerRootProps = DateRangeFieldRootProps &
     | 'isDateHighlightable'
     | 'allowNonContiguousRanges'
     | 'fixedDate'
+    | 'maximumDays'
   >;
 
 export type DateRangePickerRootEmits = PopoverRootEmits & {
@@ -99,6 +100,7 @@ export type DateRangePickerRootContext = {
   dir: Ref<Direction>;
   allowNonContiguousRanges: Ref<boolean>;
   fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
+  maximumDays?: Ref<number | undefined>;
 };
 
 // DateRangePickerTrigger

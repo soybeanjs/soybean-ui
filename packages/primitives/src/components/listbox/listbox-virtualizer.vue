@@ -111,7 +111,7 @@ rootContext.virtualFocusHook.on(event => {
       }
     });
   } else {
-    rootContext.highlightFirstItem(event as InputEvent);
+    rootContext.highlightFirstItem();
   }
 });
 

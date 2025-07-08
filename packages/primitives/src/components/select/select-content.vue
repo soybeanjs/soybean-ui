@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useForwardPropsEmits } from '../../composables';
 import { Presence } from '../presence';
 import { injectSelectRootContext } from './context';
@@ -25,17 +25,28 @@ onMounted(() => {
 });
 
 const presenceRef = ref<InstanceType<typeof Presence>>();
-const renderPresence = computed(() => props.forceMount || rootContext.open.value);
+const present = computed(() => props.forceMount || rootContext.open.value);
+const renderPresence = ref(present.value);
+
+watch(present, () => {
+  // Toggle render presence after a delay (nextTick is not enough)
+  // to allow children to re-render with the latest state.
+  // Otherwise, they would remain in the old state during the transition,
+  // which would prevent the animation that depend on state (e.g., data-[state=closed])
+  // from being applied accurately.
+  // @see https://github.com/unovue/reka-ui/issues/1865
+  setTimeout(() => (renderPresence.value = present.value));
+});
 </script>
 
 <template>
-  <Presence v-if="renderPresence" ref="presenceRef" :present="true">
+  <Presence v-if="present || renderPresence || presenceRef?.present" ref="presenceRef" :present="present">
     <SelectContentImpl v-bind="{ ...forwarded, ...$attrs }">
       <slot />
     </SelectContentImpl>
   </Presence>
 
-  <div v-else-if="!presenceRef?.present && fragment">
+  <div v-else-if="fragment">
     <Teleport :to="fragment">
       <SelectProvider :context="rootContext">
         <slot />

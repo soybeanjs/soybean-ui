@@ -34,7 +34,8 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   isDateDisabled: undefined,
   isDateUnavailable: undefined,
   isDateHighlightable: undefined,
-  allowNonContiguousRanges: false
+  allowNonContiguousRanges: false,
+  maximumDays: undefined
 });
 
 const emit = defineEmits<DateRangePickerRootEmits>();
@@ -64,7 +65,8 @@ const {
   hourCycle,
   dir: propsDir,
   allowNonContiguousRanges,
-  fixedDate
+  fixedDate,
+  maximumDays
 } = toRefs(props);
 
 const dir = useDirection(propsDir);
@@ -129,6 +131,7 @@ provideDateRangePickerRootContext({
   dateFieldRef,
   dir,
   fixedDate,
+  maximumDays,
   onStartValueChange(date: DateValue | undefined) {
     emit('update:startValue', date);
   },

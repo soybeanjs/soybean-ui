@@ -14,11 +14,10 @@ const id = useId(undefined, 'soybean-combobox-group');
 const rootContext = injectComboboxRootContext();
 
 const isRender = computed(() => {
-  const { ignoreFilter, filterState } = rootContext;
+  const { ignoreFilter, filterSearch, filterState } = rootContext;
   if (ignoreFilter.value) return true;
-  if (!filterState.search) return true;
-
-  return filterState.filtered.groups.has(id);
+  if (!filterSearch.value) return true;
+  return filterState.value.groups.has(id);
 });
 
 const context = provideComboboxGroupContext({

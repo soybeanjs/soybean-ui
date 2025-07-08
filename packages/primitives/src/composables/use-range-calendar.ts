@@ -5,7 +5,7 @@
 import { computed } from 'vue';
 import type { Ref } from 'vue';
 import { isSameDay } from '@internationalized/date';
-import { areAllDaysBetweenValid, isBefore, isBetween } from '../date';
+import { areAllDaysBetweenValid, getDaysBetween, isBefore, isBetween } from '../date';
 import type { DateValue, Matcher, RangeCalendarFixedDatePart } from '../date';
 
 export type UseRangeCalendarProps = {
@@ -66,15 +66,31 @@ export function useRangeCalendarState(props: UseRangeCalendarProps) {
   const rangeIsDateDisabled = (date: DateValue) => {
     if (props.isDateDisabled(date)) return true;
 
-    if (!props.maximumDays?.value || !props.start.value || props.end.value || isSameDay(props.start.value, date))
-      return false;
-
     // Check if exceeds maximum days limit
-    if (Math.abs(date.compare(props.start.value)) > props.maximumDays.value) return true;
+    if (props.maximumDays?.value) {
+      if (props.start.value && props.end.value) {
+        if (props.fixedDate.value) {
+          const diff = getDaysBetween(props.start.value, props.end.value).length;
+          if (diff <= props.maximumDays.value) {
+            const daysLeft = props.maximumDays.value - diff - 1;
+            const startLimit = props.start.value.subtract({ days: daysLeft });
+            const endLimit = props.end.value.add({ days: daysLeft });
+            return !isBetween(date, startLimit, endLimit);
+          }
+        }
+        return false;
+      }
+      if (props.start.value) {
+        const maxDate = props.start.value.add({ days: props.maximumDays.value });
+        const minDate = props.start.value.subtract({ days: props.maximumDays.value });
+        return !isBetween(date, minDate, maxDate);
+      }
+    }
+
+    if (!props.start.value || props.end.value || isSameDay(props.start.value, date)) return false;
 
     return false;
   };
-
   const highlightedRange = computed(() => {
     if (props.start.value && props.end.value && !props.fixedDate.value) return null;
     if (!props.start.value || !props.focusedValue.value) return null;
@@ -92,7 +108,7 @@ export function useRangeCalendarState(props: UseRangeCalendarProps) {
 
     // If maximum days is set and the range exceeds it, limit the highlight
     // We only apply this when we're in the middle of a selection (no end date yet)
-    if (props.maximumDays?.value && !props.end.value && Math.abs(end.compare(start)) > props.maximumDays.value) {
+    if (props.maximumDays?.value && !props.end.value) {
       // Determine the direction of selection and limit to maximum days
       const cappedEnd = isStartBeforeFocused
         ? start.add({ days: props.maximumDays.value })

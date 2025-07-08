@@ -46,7 +46,7 @@ function handleArrowKey(e: KeyboardEvent) {
     return null;
   }
 
-  useArrowNavigation(e, currentElement.value, parentElement.value!, {
+  useArrowNavigation(e, target, parentElement.value!, {
     arrowKeyOptions: orientation.value,
     dir: direction.value,
     focus: true

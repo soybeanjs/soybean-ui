@@ -12,9 +12,7 @@ const props = defineProps<ComboboxEmptyPropsWithPrimitive>();
 const rootContext = injectComboboxRootContext();
 
 const isRender = computed(() =>
-  rootContext.ignoreFilter.value
-    ? rootContext.allItems.value.size === 0
-    : Boolean(rootContext.filterState.search) && rootContext.filterState.filtered.count === 0
+  rootContext.ignoreFilter.value ? rootContext.allItems.value.size === 0 : rootContext.filterState.value.count === 0
 );
 </script>
 

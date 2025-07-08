@@ -33,7 +33,7 @@ watchSyncEffect(() => {
 
 function onInput(event: InputEvent) {
   modelValue.value = (event.target as HTMLInputElement).value;
-  rootContext.highlightFirstItem(event);
+  rootContext.highlightFirstItem();
 }
 
 onMounted(() => {
