@@ -31,7 +31,7 @@ const {
 const open = computed(() => getOpenFromSingleOrMultiple(props.value, modelValue.value, isMultiple.value));
 const disabled = computed(() => rootDisabled.value || props.disabled);
 
-const { dataDisabled, dataState, triggerElement } = provideAccordionItemContext({
+const { dataDisabled, dataState } = provideAccordionItemContext({
   open,
   disabled,
   ...transformPropsToContext(props, ['value'])
@@ -45,9 +45,7 @@ const onKeydown = (e: KeyboardEvent) => {
   const collectionItemIndex = allCollectionItems.findIndex(item => item === target);
   if (collectionItemIndex === -1) return;
 
-  if (!triggerElement.value || !rootElement.value) return;
-
-  useArrowNavigation(e, triggerElement.value, rootElement.value, {
+  useArrowNavigation(e, target, rootElement.value, {
     arrowKeyOptions: orientation.value,
     dir: direction.value,
     focus: true
