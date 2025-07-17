@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
-import { SelectItem, SelectItemIndicator, SelectItemText } from '@headless';
+import { SelectItem, SelectItemIndicator, SelectItemText, SelectSeparator } from '@headless';
 import type { DefinedValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
-import SDivider from '../divider/divider.vue';
 import Icon from '../icon/icon.vue';
 import type { SelectSingleOptionEmits, SelectSingleOptionProps } from './types';
 
@@ -40,5 +39,5 @@ const forwardedProps = useOmitProps(props, ['item', 'itemTextProps', 'itemIndica
       </slot>
     </SelectItemIndicator>
   </SelectItem>
-  <SDivider v-if="item.separator" v-bind="separatorProps" />
+  <SelectSeparator v-if="item.separator" v-bind="separatorProps" />
 </template>

@@ -1,8 +1,7 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
-import { SelectGroup, SelectGroupLabel } from '@headless';
+import { SelectGroup, SelectGroupLabel, SelectSeparator } from '@headless';
 import type { DefinedValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
-import SDivider from '../divider/divider.vue';
 import SSelectSingleOption from './select-single-option.vue';
 import type { SelectGroupOptionEmits, SelectGroupOptionProps } from './types';
 
@@ -30,7 +29,7 @@ const forwardedProps = useOmitProps(props, [
     <SelectGroupLabel v-bind="groupLabelProps">
       <slot name="group-label">{{ item.label }}</slot>
     </SelectGroupLabel>
-    <SDivider v-if="item.separator" v-bind="separatorProps" />
+    <SelectSeparator v-if="item.separator" v-bind="separatorProps" />
     <SSelectSingleOption
       v-for="child in item.items"
       :key="String(child.value)"

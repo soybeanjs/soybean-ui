@@ -15,7 +15,6 @@ import type {
 import type { PrimitiveProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentEmits, PopperContentProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
-import type { DividerRootProps } from '../divider/types';
 
 // SelectRoot
 export interface SelectRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
@@ -156,7 +155,7 @@ export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 // SelectSeparator
-export interface SelectSeparatorProps extends DividerRootProps {}
+export interface SelectSeparatorProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectArrow
 export interface SelectArrowProps extends PopperArrowProps {}
