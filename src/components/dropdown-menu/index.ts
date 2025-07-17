@@ -4,9 +4,9 @@ import {
   MenuCheckboxGroup as DropdownMenuCheckboxGroup,
   MenuCheckboxItem as DropdownMenuCheckboxItem,
   MenuGroup as DropdownMenuGroup,
+  MenuGroupLabel as DropdownMenuGroupLabel,
   MenuItem as DropdownMenuItem,
   MenuItemIndicator as DropdownMenuItemIndicator,
-  MenuLabel as DropdownMenuLabel,
   MenuPortal as DropdownMenuPortal,
   MenuRadioGroup as DropdownMenuRadioGroup,
   MenuRadioItem as DropdownMenuRadioItem,
@@ -36,7 +36,7 @@ export {
   DropdownMenuItemIndicator,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuLabel,
+  DropdownMenuGroupLabel,
   DropdownMenuSeparator
 };
 
@@ -66,6 +66,6 @@ export type {
   DropdownMenuRadioItemProps,
   DropdownMenuRadioItemEmits,
   DropdownMenuItemIndicatorProps,
-  DropdownMenuLabelProps,
+  DropdownMenuGroupLabelProps,
   DropdownMenuSeparatorProps
 } from './types';

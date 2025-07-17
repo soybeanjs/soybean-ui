@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { nextTick } from 'vue';
+import { computed, nextTick } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
 import { useForwardElement } from '../../composables';
 import MenuItemImpl from './menu-item-impl.vue';
-import { useMenuContentContext, useMenuRootContext } from './context';
+import { useMenuContentContext, useMenuRootContext, useMenuThemeContext } from './context';
 import { ITEM_SELECT } from './shared';
 import type { MenuItemEmits, MenuItemProps } from './types';
 
@@ -18,6 +18,10 @@ const emit = defineEmits<MenuItemEmits>();
 const [menuItemElement, setMenuItemElement] = useForwardElement();
 const { onClose } = useMenuRootContext('MenuItem');
 const { searchRef } = useMenuContentContext('MenuItem');
+
+const themeContext = useMenuThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
 
 let isPointerDownRef = false;
 
@@ -74,6 +78,7 @@ const onKeyDown = async (event: KeyboardEvent) => {
   <MenuItemImpl
     v-bind="props"
     :ref="setMenuItemElement"
+    :class="cls"
     @click="onSelect"
     @pointerdown="onPointerDown"
     @pointerup="onPointerUp"

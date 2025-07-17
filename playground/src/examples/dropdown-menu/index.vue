@@ -7,9 +7,9 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuGroup,
+  DropdownMenuGroupLabel,
   DropdownMenuItem,
   DropdownMenuItemIndicator,
-  DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
@@ -55,7 +55,7 @@ const radioValue = ref('1');
       </DropdownMenuTrigger>
       <DropdownMenuPortal>
         <DropdownMenuContent :class="content()" side="right">
-          <DropdownMenuLabel :class="label()">My Account</DropdownMenuLabel>
+          <DropdownMenuGroupLabel :class="label()">My Account</DropdownMenuGroupLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem :class="item()">
               <SIcon icon="lucide:user" :class="itemIcon()" />
@@ -116,7 +116,7 @@ const radioValue = ref('1');
               <SIcon icon="lucide:chevron-right" :class="subTriggerIcon()" />
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent :class="subContent()">
-              <DropdownMenuLabel :class="label()">Checkbox Group</DropdownMenuLabel>
+              <DropdownMenuGroupLabel :class="label()">Checkbox Group</DropdownMenuGroupLabel>
               <DropdownMenuCheckboxGroup v-model="checkboxValue">
                 <DropdownMenuCheckboxItem value="1" :class="checkboxItem()">
                   <DropdownMenuItemIndicator :class="itemIndicator()">
@@ -146,7 +146,7 @@ const radioValue = ref('1');
               <SIcon icon="lucide:chevron-right" :class="subTriggerIcon()" />
             </DropdownMenuSubTrigger>
             <DropdownMenuSubContent :class="subContent()">
-              <DropdownMenuLabel :class="label()">Radio Group</DropdownMenuLabel>
+              <DropdownMenuGroupLabel :class="label()">Radio Group</DropdownMenuGroupLabel>
               <DropdownMenuRadioGroup v-model="radioValue">
                 <DropdownMenuRadioItem value="1" :class="radioItem()">
                   <DropdownMenuItemIndicator :class="itemIndicator()">

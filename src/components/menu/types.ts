@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } fr
 import type {
   AcceptableBooleanValue,
   CheckedState,
+  ClassValue,
   DefinedValue,
   Direction,
   DismissableLayerEmits,
@@ -70,6 +71,9 @@ export type MenuSubContentEmits = MenuContentEmits;
 
 // MenuGroup
 export interface MenuGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+
+// MenuGroupLabel
+export interface MenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // MenuItemImpl
 export interface MenuItemImplProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -156,9 +160,6 @@ export interface MenuSubTriggerProps extends MenuItemImplProps {}
 // MenuItemIndicator
 export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-// MenuLabel
-export interface MenuLabelProps extends /** @vue-ignore */ HTMLAttributes {}
-
 // Context
 export interface MenuRootContextParams extends PropsToContext<MenuRootProps, 'dir' | 'modal'> {
   onClose: () => void;
@@ -180,6 +181,26 @@ export interface MenuRadioGroupContextParams {
 }
 export interface MenuItemIndicatorContextParams {
   modelValue: ComputedRef<CheckedState | undefined>;
+}
+
+export type MenuSlot =
+  | 'content'
+  | 'trigger'
+  | 'subContent'
+  | 'subTrigger'
+  | 'arrow'
+  | 'group'
+  | 'groupLabel'
+  | 'item'
+  | 'checkboxGroup'
+  | 'checkboxItem'
+  | 'radioGroup'
+  | 'radioItem'
+  | 'itemIndicator'
+  | 'separator';
+
+export interface MenuThemeContextParams {
+  ui: ComputedRef<Record<MenuSlot, ClassValue>>;
 }
 
 // Collection

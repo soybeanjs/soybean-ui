@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import { getCheckedState, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
 import type { CheckedState } from '../../types';
-import { provideMenuItemIndicatorContext, useMenuCheckboxGroupContext } from './context';
+import { provideMenuItemIndicatorContext, useMenuCheckboxGroupContext, useMenuThemeContext } from './context';
 import MenuItem from './menu-item.vue';
 import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from './types';
 
@@ -16,6 +16,10 @@ const props = defineProps<MenuCheckboxItemProps>();
 const emit = defineEmits<MenuCheckboxItemEmits>();
 
 const forwardedProps = useOmitProps(props, ['modelValue', 'value', 'disabled']);
+
+const themeContext = useMenuThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.checkboxItem, props.class]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -68,6 +72,7 @@ provideMenuItemIndicatorContext({
 <template>
   <MenuItem
     v-bind="forwardedProps"
+    :class="cls"
     role="menu-checkbox-item"
     :disabled="disabled"
     :data-state="dataState"

@@ -9,11 +9,11 @@ import type {
   MenuCheckboxItemProps as DropdownMenuCheckboxItemProps,
   MenuContentEmits as DropdownMenuContentEmits,
   MenuContentProps as DropdownMenuContentProps,
+  MenuGroupLabelProps as DropdownMenuGroupLabelProps,
   MenuGroupProps as DropdownMenuGroupProps,
   MenuItemEmits as DropdownMenuItemEmits,
   MenuItemIndicatorProps as DropdownMenuItemIndicatorProps,
   MenuItemProps as DropdownMenuItemProps,
-  MenuLabelProps as DropdownMenuLabelProps,
   MenuPortalProps as DropdownMenuPortalProps,
   MenuRadioGroupEmits as DropdownMenuRadioGroupEmits,
   MenuRadioGroupProps as DropdownMenuRadioGroupProps,
@@ -92,6 +92,6 @@ export type {
   DropdownMenuRadioItemProps,
   DropdownMenuRadioItemEmits,
   DropdownMenuItemIndicatorProps,
-  DropdownMenuLabelProps,
+  DropdownMenuGroupLabelProps,
   DropdownMenuSeparatorProps
 };

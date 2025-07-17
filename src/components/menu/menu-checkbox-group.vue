@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import { provideMenuCheckboxGroupContext } from './context';
-import MenuGroup from './menu-group.vue';
+import { Primitive } from '../primitive';
+import { provideMenuCheckboxGroupContext, useMenuThemeContext } from './context';
 import type { MenuCheckboxGroupEmits, MenuCheckboxGroupProps } from './types';
 
 defineOptions({
@@ -15,6 +15,10 @@ const props = defineProps<MenuCheckboxGroupProps<T>>();
 const emit = defineEmits<MenuCheckboxGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
+
+const themeContext = useMenuThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.checkboxGroup, props.class]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -31,7 +35,7 @@ provideMenuCheckboxGroupContext({
 </script>
 
 <template>
-  <MenuGroup v-bind="forwardedProps" role="menu-checkbox-group">
+  <Primitive v-bind="forwardedProps" :class="cls" role="menu-checkbox-group">
     <slot :model-value="modelValue" />
-  </MenuGroup>
+  </Primitive>
 </template>

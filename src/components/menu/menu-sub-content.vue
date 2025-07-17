@@ -2,7 +2,7 @@
 import { computed, shallowRef } from 'vue';
 import { useForwardElement, useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent, HorizontalSide } from '../../types';
-import { useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
+import { useMenuContext, useMenuRootContext, useMenuSubContext, useMenuThemeContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuSubContentEmits, MenuSubContentProps } from './types';
 import { SUB_CLOSE_KEYS } from './shared';
@@ -22,6 +22,10 @@ const [subContentElement, setSubContentElement] = useForwardElement();
 const { open, onOpenChange } = useMenuContext('MenuSubContent');
 const { dir, isUsingKeyboard, onClose } = useMenuRootContext('MenuSubContent');
 const { subContentId, subTriggerId, subTriggerElement, initSubContentId } = useMenuSubContext('MenuSubContent');
+
+const themeContext = useMenuThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.subContent, props.class]);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(subContentElement, open);
 
@@ -73,6 +77,7 @@ initSubContentId();
     v-bind="props"
     :id="subContentId"
     :ref="setSubContentElement"
+    :class="cls"
     :trap-focus="false"
     :disable-outside-pointer-events="false"
     :aria-labelledby="subTriggerId"

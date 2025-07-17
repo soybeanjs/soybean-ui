@@ -7,13 +7,13 @@ import MenuSub from './menu-sub.vue';
 import MenuSubContent from './menu-sub-content.vue';
 import MenuSubTrigger from './menu-sub-trigger.vue';
 import MenuGroup from './menu-group.vue';
+import MenuGroupLabel from './menu-group-label.vue';
 import MenuItem from './menu-item.vue';
 import MenuCheckboxGroup from './menu-checkbox-group.vue';
 import MenuCheckboxItem from './menu-checkbox-item.vue';
 import MenuRadioGroup from './menu-radio-group.vue';
 import MenuRadioItem from './menu-radio-item.vue';
 import MenuItemIndicator from './menu-item-indicator.vue';
-import MenuLabel from './menu-label.vue';
 
 export {
   MenuRoot,
@@ -25,15 +25,17 @@ export {
   MenuAnchor,
   MenuArrow,
   MenuGroup,
+  MenuGroupLabel,
   MenuItem,
   MenuCheckboxGroup,
   MenuCheckboxItem,
   MenuRadioGroup,
   MenuRadioItem,
   MenuItemIndicator,
-  MenuLabel,
   MenuSeparator
 };
+
+export { provideMenuThemeContext, useMenuThemeContext } from './context';
 
 export type {
   MenuRootProps,
@@ -50,6 +52,7 @@ export type {
   MenuAnchorProps,
   MenuArrowProps,
   MenuGroupProps,
+  MenuGroupLabelProps,
   MenuItemProps,
   MenuItemEmits,
   MenuCheckboxGroupProps,
@@ -61,6 +64,5 @@ export type {
   MenuRadioItemProps,
   MenuRadioItemEmits,
   MenuItemIndicatorProps,
-  MenuLabelProps,
   MenuSeparatorProps
 } from './types';

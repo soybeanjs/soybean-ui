@@ -8,7 +8,8 @@ import type {
   MenuContextParams,
   MenuItemIndicatorContextParams,
   MenuRadioGroupContextParams,
-  MenuRootContextParams
+  MenuRootContextParams,
+  MenuThemeContextParams
 } from './types';
 
 export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: MenuContextParams) => {
@@ -161,4 +162,9 @@ export const [provideMenuRadioGroupContext, useMenuRadioGroupContext] = useConte
 export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] = useContext(
   'MenuItemIndicator',
   (params: MenuItemIndicatorContextParams) => params
+);
+
+export const [provideMenuThemeContext, useMenuThemeContext] = useContext(
+  'MenuTheme',
+  (params: MenuThemeContextParams) => params
 );

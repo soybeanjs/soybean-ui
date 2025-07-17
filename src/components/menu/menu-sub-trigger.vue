@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { nextTick } from 'vue';
+import { computed, nextTick } from 'vue';
 import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import type { HorizontalSide } from '../../types';
 import { PopperAnchor } from '../popper';
-import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
+import {
+  useMenuContentContext,
+  useMenuContext,
+  useMenuRootContext,
+  useMenuSubContext,
+  useMenuThemeContext
+} from './context';
 import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
@@ -23,6 +29,10 @@ const {
 } = useMenuContentContext('MenuSubTrigger');
 const { subTriggerId, subContentId, onSubTriggerElementChange, initSubTriggerId } = useMenuSubContext('MenuSubTrigger');
 const [_, setSubTriggerElement] = useForwardElement(onSubTriggerElementChange);
+
+const themeContext = useMenuThemeContext();
+
+const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
 
 let openTimer: number | null = null;
 
@@ -125,6 +135,7 @@ initSubTriggerId();
       v-bind="props"
       :id="subTriggerId"
       :ref="setSubTriggerElement"
+      :class="cls"
       aria-haspopup="menu"
       :aria-expanded="open"
       :aria-controls="subContentId"
