@@ -12,6 +12,7 @@ export * from './components/divider';
 export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/icon';
+export * from './components/kbd';
 export * from './components/label';
 export * from './components/link';
 export * from './components/pagination';

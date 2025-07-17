@@ -22,6 +22,29 @@ export type NavigationKey =
   | 'PageDown'
   | 'PageUp';
 
+export type KbdKey =
+  | 'meta'
+  | 'ctrl'
+  | 'alt'
+  | 'win'
+  | 'command'
+  | 'shift'
+  | 'option'
+  | 'enter'
+  | 'delete'
+  | 'backspace'
+  | 'escape'
+  | 'tab'
+  | 'capslock'
+  | 'arrowup'
+  | 'arrowright'
+  | 'arrowdown'
+  | 'arrowleft'
+  | 'pageup'
+  | 'pagedown'
+  | 'home'
+  | 'end';
+
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 
 export type HorizontalSide = Extract<Side, 'left' | 'right'>;
