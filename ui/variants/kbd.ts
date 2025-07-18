@@ -11,12 +11,12 @@ export const kbdVariants = tv({
       ghost: 'border-border bg-muted text-muted-foreground'
     },
     size: {
-      xs: 'h-4 min-w-4 px-0.5 text-2xs data-[group]:tracking-0.5',
-      sm: 'h-4.5 min-w-4.5 px-0.625 text-xs data-[group]:tracking-0.625',
-      md: 'h-5 min-w-5 px-0.75 text-sm data-[group]:tracking-0.75',
-      lg: 'h-6 min-w-6 px-1 text-base data-[group]:tracking-1',
-      xl: 'h-7 min-w-7 px-1.25 text-lg data-[group]:tracking-1.25',
-      '2xl': 'h-8 min-w-8 px-1.5 text-xl data-[group]:tracking-1.5'
+      xs: 'h-4 min-w-4 px-0.5 text-3xs data-[tag=kbd]:text-2xs data-[group]:tracking-0.5',
+      sm: 'h-4.5 min-w-4.5 px-0.625 text-2xs data-[tag=kbd]:text-xs data-[group]:tracking-0.625',
+      md: 'h-5 min-w-5 px-0.75 text-xs data-[tag=kbd]:text-sm data-[group]:tracking-0.75',
+      lg: 'h-6 min-w-6 px-1 text-sm data-[tag=kbd]:text-base data-[group]:tracking-1',
+      xl: 'h-7 min-w-7 px-1.25 text-base data-[tag=kbd]:text-lg data-[group]:tracking-1.25',
+      '2xl': 'h-8 min-w-8 px-1.5 text-xl data-[tag=kbd]:text-2xl data-[group]:tracking-1.5'
     }
   },
   defaultVariants: {

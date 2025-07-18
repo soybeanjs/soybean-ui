@@ -9,7 +9,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<KbdProps>(), {
-  as: 'kbd'
+  as: 'span'
 });
 
 const forwardProps = useOmitProps(props, ['value', 'iconization']);
@@ -29,10 +29,12 @@ const formattedValue = computed(() => {
     })
     .join('');
 });
+
+const dataTag = computed(() => (props.as === 'kbd' ? 'kbd' : undefined));
 </script>
 
 <template>
-  <Primitive v-bind="forwardProps" :data-group="Array.isArray(value) ? '' : undefined">
+  <Primitive v-bind="forwardProps" :data-tag="dataTag" :data-group="Array.isArray(value) ? '' : undefined">
     <slot>{{ formattedValue }}</slot>
   </Primitive>
 </template>
