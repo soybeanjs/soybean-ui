@@ -130,8 +130,10 @@ export function createPopperContentPropsDefaultValue() {
     placement: undefined,
     side: 'bottom',
     sideOffset: 0,
+    sideFlip: true,
     align: 'center',
     alignOffset: 0,
+    alignFlip: true,
     arrowPadding: 0,
     avoidCollisions: true,
     collisionPadding: 0,
@@ -166,10 +168,10 @@ export function getFloatingUIMiddleware(
       }),
     props.avoidCollisions &&
       shift({
+        ...detectOverflowOptions,
         mainAxis: true,
         crossAxis: Boolean(props.prioritizePosition),
-        limiter: props.sticky === 'partial' ? limitShift() : undefined,
-        ...detectOverflowOptions
+        limiter: props.sticky === 'partial' ? limitShift() : undefined
       }),
     !props.prioritizePosition &&
       props.avoidCollisions &&
@@ -208,6 +210,8 @@ function getDetectOverflowOptions(props: PopperContentProps) {
   const hasExplicitBoundaries = boundary.length > 0;
 
   return {
+    mainAxis: props.sideFlip,
+    crossAxis: props.alignFlip,
     padding: collisionPadding,
     boundary: boundary.filter(item => !isNullish(item)),
     // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
