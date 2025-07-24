@@ -39,7 +39,8 @@ function onUpdatePlaceholder(date: DateValue) {
       locale: rootContext.locale.value,
       isDateUnavailable: rootContext.isDateUnavailable,
       required: rootContext.required.value,
-      dir: rootContext.dir.value
+      dir: rootContext.dir.value,
+      step: rootContext.step.value
     }"
     @update:model-value="onUpdateModelValue"
     @update:placeholder="onUpdatePlaceholder"

@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import type {
   DateFormatter,
   DateRange,
@@ -144,6 +144,7 @@ export type RangeCalendarRootContext = {
   disableDaysOutsideCurrentView: Ref<boolean>;
   fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
   maximumDays: Ref<number | undefined>;
+  startingWeekNumberPerMonth: ComputedRef<number[][]>;
 };
 // Grid
 export interface RangeCalendarGridProps extends ClassValueProp {}

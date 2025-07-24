@@ -39,7 +39,7 @@ const virtualKeydownHook = createEventHook<KeyboardEvent>();
 const modelValue = useVModel(props, 'modelValue', emit, {
   // @ts-expect-error ignore type
   defaultValue: props.defaultValue ?? (multiple.value ? [] : undefined),
-  passive: (props.modelValue === undefined) as false,
+  passive: true,
   deep: true
 }) as Ref<U | U[]>;
 

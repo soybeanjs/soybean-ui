@@ -64,6 +64,13 @@ const detectOverflowOptions = computed(() => {
   };
 });
 
+const flipOptions = computed(() => {
+  return {
+    mainAxis: props.sideFlip,
+    crossAxis: props.alignFlip
+  };
+});
+
 const computedMiddleware = computedEager(() => {
   return [
     offset({
@@ -73,7 +80,8 @@ const computedMiddleware = computedEager(() => {
     props.prioritizePosition &&
       props.avoidCollisions &&
       flip({
-        ...detectOverflowOptions.value
+        ...detectOverflowOptions.value,
+        ...flipOptions.value
       }),
     props.avoidCollisions &&
       shift({
@@ -85,7 +93,8 @@ const computedMiddleware = computedEager(() => {
     !props.prioritizePosition &&
       props.avoidCollisions &&
       flip({
-        ...detectOverflowOptions.value
+        ...detectOverflowOptions.value,
+        ...flipOptions.value
       }),
     size({
       ...detectOverflowOptions.value,

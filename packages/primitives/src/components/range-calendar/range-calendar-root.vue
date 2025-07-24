@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useEventListener, useVModel } from '@vueuse/core';
-import { isEqualDay } from '@internationalized/date';
+import { isEqualDay, startOfWeek, startOfYear } from '@internationalized/date';
 import { isNullish } from '../../shared';
 import { getDefaultDate, handleCalendarInitialFocus, isBefore } from '../../date';
 import type { DateRange, DateValue } from '../../date';
@@ -159,6 +159,24 @@ const {
   maximumDays
 });
 
+const startingWeekNumberPerMonth = computed((): number[][] => {
+  return grid.value.map(month => {
+    const firstDayOfMonth = startOfWeek(month.rows[0][0], locale.value);
+
+    return Array.from({ length: month.rows.length })
+      .fill(null)
+      .map((_, idx) => {
+        const firstDayOfWeek = firstDayOfMonth.add({ weeks: idx });
+
+        const thursday = firstDayOfWeek.add({ days: 3 });
+        const firstDayOfYear = startOfYear(thursday);
+
+        // eslint-disable-next-line no-bitwise
+        return ((thursday.compare(firstDayOfYear) / 7) | 0) + 1;
+      });
+  });
+});
+
 // eslint-disable-next-line complexity
 watch(modelValue, (_modelValue, _prevValue) => {
   if (
@@ -273,7 +291,8 @@ provideRangeCalendarRootContext({
   isHighlightedEnd,
   disableDaysOutsideCurrentView,
   fixedDate,
-  maximumDays
+  maximumDays,
+  startingWeekNumberPerMonth
 });
 
 onMounted(() => {

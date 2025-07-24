@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRefs, watch, watchEffect } from 'vue';
 import { Primitive } from '../primitive';
-import { useForwardExpose, useId } from '../../composables';
+import { useForwardExpose, useId, useNonce } from '../../composables';
 import { isBrowser } from '../../shared';
 import { useWindowSplitterResizeHandlerBehavior } from './composables';
 import { injectSplitterGroupContext } from './context';
@@ -26,7 +26,8 @@ const props = withDefaults(defineProps<SplitterResizeHandlePropsWithPrimitive>()
 const emit = defineEmits<SplitterResizeHandleEmits>();
 
 const { forwardRef, currentElement } = useForwardExpose();
-const { disabled } = toRefs(props);
+const { disabled, nonce: propNonce } = toRefs(props);
+const nonce = useNonce(propNonce);
 
 const panelGroupContext = injectSplitterGroupContext();
 if (panelGroupContext === null) {
@@ -106,6 +107,7 @@ watchEffect(onCleanup => {
         // Fine inputs (e.g. mouse)
         fine: props.hitAreaMargins?.fine ?? 5
       },
+      nonce,
       setResizeHandlerState
     )
   );

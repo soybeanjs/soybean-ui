@@ -29,6 +29,13 @@ export interface PopperContentProps extends ClassValueProp {
   sideOffset?: number;
 
   /**
+   * Flip to the opposite side when colliding with boundary.
+   *
+   * @defaultValue true
+   */
+  sideFlip?: boolean;
+
+  /**
    * The preferred alignment against the trigger. May change when collisions occur.
    *
    * @defaultValue 'center'
@@ -41,6 +48,14 @@ export interface PopperContentProps extends ClassValueProp {
    * @defaultValue 0
    */
   alignOffset?: number;
+
+  /**
+   * Flip alignment when colliding with boundary.
+   * May only occur when `prioritizePosition` is true.
+   *
+   * @defaultValue true
+   */
+  alignFlip?: boolean;
 
   /**
    * When `true`, overrides the side and align preferences to prevent collisions with boundary edges.

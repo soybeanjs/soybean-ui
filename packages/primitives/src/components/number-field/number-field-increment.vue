@@ -16,7 +16,8 @@ const props = withDefaults(defineProps<NumberFieldIncrementPropsWithPrimitive>()
 
 const rootContext = injectNumberFieldRootContext();
 const isDisabled = computed(
-  () => rootContext.disabled?.value || props.disabled || rootContext.isIncreaseDisabled.value
+  () =>
+    rootContext.disabled?.value || rootContext.readonly?.value || props.disabled || rootContext.isIncreaseDisabled.value
 );
 
 const { primitiveElement, currentElement } = usePrimitiveElement();

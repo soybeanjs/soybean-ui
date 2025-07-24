@@ -3,7 +3,14 @@ import type { ClassValueProp, Direction, FormFieldProps, PrimitiveProps } from '
 
 export type PinInputType = 'text' | 'number';
 
-export type PinInputValue<Type extends PinInputType = 'text'> = Type extends 'number' ? number[] : string[];
+export type PinInputValue<Type extends PinInputType = 'text'> = [Type] extends ['number'] ? number[] : string[];
+
+// provide the mixed arrays because the `type` is dynamic in the context
+export type PinInputContextValue<Type extends PinInputType = 'text'> = Type extends 'number'
+  ? Type extends 'string'
+    ? string[] | number[]
+    : number[]
+  : string[];
 
 export type PinInputRootEmits<T extends PinInputType = 'text'> = {
   'update:modelValue': [value: PinInputValue<T>];
@@ -38,9 +45,9 @@ export interface PinInputRootProps<T extends PinInputType = 'text'> extends Clas
 }
 export type PinInputRootPropsWithPrimitive<T extends PinInputType = 'text'> = PinInputRootProps<T> & PrimitiveProps;
 
-export interface PinInputRootContext<T extends PinInputType = 'text'> {
-  modelValue: Ref<PinInputValue<T>>;
-  currentModelValue: ComputedRef<PinInputValue<T>>;
+export interface PinInputRootContext<Type extends PinInputType = 'text'> {
+  modelValue: Ref<PinInputContextValue<Type>>;
+  currentModelValue: ComputedRef<PinInputContextValue<Type>>;
   mask: Ref<boolean>;
   otp: Ref<boolean>;
   placeholder: Ref<string>;

@@ -28,7 +28,6 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
   numberOfMonths: 1,
   disabled: false,
   readonly: false,
-  initialFocus: false,
   placeholder: undefined,
   locale: 'en',
   isDateDisabled: undefined,
@@ -66,7 +65,8 @@ const {
   dir: propsDir,
   allowNonContiguousRanges,
   fixedDate,
-  maximumDays
+  maximumDays,
+  step
 } = toRefs(props);
 
 const dir = useDirection(propsDir);
@@ -132,6 +132,7 @@ provideDateRangePickerRootContext({
   dir,
   fixedDate,
   maximumDays,
+  step,
   onStartValueChange(date: DateValue | undefined) {
     emit('update:startValue', date);
   },

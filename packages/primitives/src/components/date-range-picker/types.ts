@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
 import type {
   DateRange,
+  DateStep,
   DateValue,
   Granularity,
   HourCycle,
@@ -101,6 +102,7 @@ export type DateRangePickerRootContext = {
   allowNonContiguousRanges: Ref<boolean>;
   fixedDate: Ref<RangeCalendarFixedDatePart | undefined>;
   maximumDays?: Ref<number | undefined>;
+  step: Ref<DateStep | undefined>;
 };
 
 // DateRangePickerTrigger

@@ -1,5 +1,5 @@
 import type { Ref } from 'vue';
-import type { DateValue, Granularity, HourCycle, Matcher, WeekDayFormat } from '../../date';
+import type { DateStep, DateValue, Granularity, HourCycle, Matcher, WeekDayFormat } from '../../date';
 import type { Direction, PrimitiveProps } from '../../types';
 import type { DateFieldInputProps, DateFieldRootProps } from '../date-field';
 import type {
@@ -81,6 +81,7 @@ export type DatePickerRootContext = {
   onDateChange: (date: DateValue | undefined) => void;
   onPlaceholderChange: (date: DateValue) => void;
   dir: Ref<Direction>;
+  step: Ref<DateStep | undefined>;
 };
 
 // DatePickerTrigger

@@ -18,7 +18,9 @@ const props = withDefaults(defineProps<ComboboxRootPropsWithPrimitive<T>>(), {
   modelValue: undefined,
   open: undefined,
   resetSearchTermOnBlur: true,
-  resetSearchTermOnSelect: true
+  resetSearchTermOnSelect: true,
+  openOnFocus: false,
+  openOnClick: false
 });
 
 const emit = defineEmits<ComboboxRootEmits<T>>();
@@ -31,7 +33,15 @@ defineSlots<Slots>();
 
 const { primitiveElement, currentElement: parentElement } =
   usePrimitiveElement<GenericComponentInstance<typeof ListboxRoot>>();
-const { multiple, disabled, ignoreFilter, resetSearchTermOnSelect, dir: propDir } = toRefs(props);
+const {
+  multiple,
+  disabled,
+  ignoreFilter,
+  resetSearchTermOnSelect,
+  openOnFocus,
+  openOnClick,
+  dir: propDir
+} = toRefs(props);
 
 const dir = useDirection(propDir);
 
@@ -168,7 +178,9 @@ provideComboboxRootContext({
   allGroups,
   filterSearch,
   filterState,
-  ignoreFilter
+  ignoreFilter,
+  openOnFocus,
+  openOnClick
 });
 </script>
 

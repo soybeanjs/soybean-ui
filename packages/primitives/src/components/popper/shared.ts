@@ -57,8 +57,10 @@ export function createPopperContentPropsDefaultValue() {
   const props: InferDefaults<PopperContentProps> = {
     side: 'bottom',
     sideOffset: 8,
+    sideFlip: true,
     align: 'center',
     alignOffset: 0,
+    alignFlip: true,
     arrowPadding: 0,
     avoidCollisions: true,
     collisionPadding: 0,

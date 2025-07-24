@@ -28,6 +28,10 @@ const open = useVModel(props, 'open', emit, {
 const triggerElement = ref<HTMLElement>();
 const hasCustomAnchor = ref(false);
 
+const close = () => {
+  open.value = false;
+};
+
 providePopoverRootContext({
   contentId: '',
   triggerId: '',
@@ -46,6 +50,6 @@ providePopoverRootContext({
 
 <template>
   <PopperRoot>
-    <slot :open="open" />
+    <slot :open="open" :close="close" />
   </PopperRoot>
 </template>

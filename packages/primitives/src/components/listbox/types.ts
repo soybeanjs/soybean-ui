@@ -78,6 +78,8 @@ export type ListboxRootContext<T = AcceptableValue> = {
   onKeydownNavigation: (event: KeyboardEvent) => void;
   onKeydownEnter: (event: KeyboardEvent) => void;
   onKeydownTypeahead: (event: KeyboardEvent) => void;
+  onCompositionStart: () => void;
+  onCompositionEnd: () => void;
   highlightFirstItem: () => void;
 };
 

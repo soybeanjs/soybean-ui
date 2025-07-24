@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends PinInputType = 'text'">
+<script setup lang="ts" generic="T extends PinInputType">
 import { computed, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { useVModel } from '@vueuse/core';

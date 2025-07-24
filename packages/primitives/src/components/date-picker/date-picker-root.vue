@@ -28,7 +28,6 @@ const props = withDefaults(defineProps<DatePickerRootProps>(), {
   numberOfMonths: 1,
   disabled: false,
   readonly: false,
-  initialFocus: false,
   placeholder: undefined,
   locale: 'en',
   isDateDisabled: undefined,
@@ -60,7 +59,8 @@ const {
   hideTimeZone,
   hourCycle,
   defaultValue,
-  dir: propDir
+  dir: propDir,
+  step
 } = toRefs(props);
 
 const dir = useDirection(propDir);
@@ -124,6 +124,7 @@ provideDatePickerRootContext({
   hourCycle,
   dateFieldRef,
   dir,
+  step,
   onDateChange(date: DateValue | undefined) {
     if (!date || !modelValue.value) {
       modelValue.value = date?.copy() ?? undefined;

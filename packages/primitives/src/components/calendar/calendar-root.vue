@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onMounted, toRefs, watch } from 'vue';
+import { computed, onMounted, toRefs, watch } from 'vue';
 import type { WritableComputedRef } from 'vue';
 import { useVModel } from '@vueuse/core';
-import { isEqualDay, isSameDay } from '@internationalized/date';
+import { isEqualDay, isSameDay, startOfWeek, startOfYear } from '@internationalized/date';
 import { getDefaultDate, handleCalendarInitialFocus } from '../../date';
 import type { DateValue } from '../../date';
 import { useCalendar, useCalendarState, useDirection, useLocale, usePrimitiveElement } from '../../composables';
@@ -122,6 +122,22 @@ const { isInvalid, isDateSelected } = useCalendarState({
   isDateUnavailable
 });
 
+const startingWeekNumber = computed(() => {
+  const firstDayOfGrid = startOfWeek(grid.value[0].rows[0][0], locale.value);
+
+  return Array.from({ length: grid.value[0].rows.length })
+    .fill(null)
+    .map((_, idx) => {
+      const firstDayOfWeek = firstDayOfGrid.add({ weeks: idx });
+
+      const thursday = firstDayOfWeek.add({ days: 3 });
+      const firstDayOfYear = startOfYear(thursday);
+
+      // eslint-disable-next-line no-bitwise
+      return ((thursday.compare(firstDayOfYear) / 7) | 0) + 1;
+    });
+});
+
 function onDateChange(value: DateValue) {
   if (!multiple.value) {
     if (!modelValue.value) {
@@ -198,7 +214,8 @@ provideCalendarRootContext({
   parentElement,
   onPlaceholderChange,
   onDateChange,
-  disableDaysOutsideCurrentView
+  disableDaysOutsideCurrentView,
+  startingWeekNumber
 });
 </script>
 

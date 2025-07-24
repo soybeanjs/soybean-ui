@@ -35,6 +35,7 @@ export function registerResizeHandle(
   element: HTMLElement,
   direction: Ref<DataOrientation>,
   hitAreaMargins: PointerHitAreaMargins,
+  nonce: Ref<string | undefined>,
   setResizeHandlerState: SetResizeHandlerState
 ) {
   const { ownerDocument } = element;
@@ -43,6 +44,7 @@ export function registerResizeHandle(
     direction,
     element,
     hitAreaMargins,
+    nonce,
     setResizeHandlerState
   };
 
@@ -186,12 +188,15 @@ export function reportConstraintsViolation(resizeHandleId: string, flag: number)
 function updateCursor() {
   let intersectsHorizontal = false;
   let intersectsVertical = false;
+  let nonce: string | undefined;
 
   intersectingHandles.forEach(data => {
-    const { direction } = data;
+    const { direction, nonce: _nonce } = data;
 
     if (direction.value === 'horizontal') intersectsHorizontal = true;
     else intersectsVertical = true;
+
+    nonce = _nonce.value;
   });
 
   let constraintFlags = 0;
@@ -200,9 +205,9 @@ function updateCursor() {
     constraintFlags |= flag;
   });
 
-  if (intersectsHorizontal && intersectsVertical) setGlobalCursorStyle('intersection', constraintFlags);
-  else if (intersectsHorizontal) setGlobalCursorStyle('horizontal', constraintFlags);
-  else if (intersectsVertical) setGlobalCursorStyle('vertical', constraintFlags);
+  if (intersectsHorizontal && intersectsVertical) setGlobalCursorStyle('intersection', constraintFlags, nonce);
+  else if (intersectsHorizontal) setGlobalCursorStyle('horizontal', constraintFlags, nonce);
+  else if (intersectsVertical) setGlobalCursorStyle('vertical', constraintFlags, nonce);
   else resetGlobalCursorStyle();
 }
 

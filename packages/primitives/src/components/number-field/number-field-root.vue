@@ -26,6 +26,7 @@ const emit = defineEmits<NumberFieldRootEmits>();
 
 const {
   disabled,
+  readonly,
   min,
   max,
   step,
@@ -69,8 +70,8 @@ const numberParser = useNumberParser(locale, formatOptions);
 
 function handleChangingValue(type: 'increase' | 'decrease', multiplier = 1) {
   inputEl.value?.focus();
+  if (props.disabled || props.readonly) return;
   const currentInputValue = numberParser.parse(inputEl.value?.value ?? '');
-  if (props.disabled) return;
   if (Number.isNaN(currentInputValue)) {
     modelValue.value = min.value ?? 0;
   } else if (type === 'increase')
@@ -152,6 +153,7 @@ provideNumberFieldRootContext({
   validate,
   applyInputValue,
   disabled,
+  readonly,
   max,
   min,
   isDecreaseDisabled,
@@ -171,6 +173,7 @@ provideNumberFieldRootContext({
     :as-child="asChild"
     role="group"
     :data-disabled="disabled ? '' : undefined"
+    :data-readonly="readonly ? '' : undefined"
   >
     <slot :model-value="modelValue" :text-value="textValue" />
 
@@ -180,6 +183,7 @@ provideNumberFieldRootContext({
       :value="modelValue"
       :name="name"
       :disabled="disabled"
+      :readonly="readonly"
       :required="required"
     />
   </Primitive>

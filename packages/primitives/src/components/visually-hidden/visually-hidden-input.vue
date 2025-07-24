@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T">
 import { computed } from 'vue';
+import { isNullish } from '../../shared';
 import VisuallyHiddenInputBubble from './visually-hidden-input-bubble.vue';
 import type { VisuallyHiddenInputBubbleProps } from './types';
 
@@ -16,7 +17,12 @@ const isFormArrayEmptyAndRequired = computed(
 
 const parsedValue = computed(() => {
   // if primitive value
-  if (typeof props.value === 'string' || typeof props.value === 'number' || typeof props.value === 'boolean') {
+  if (
+    typeof props.value === 'string' ||
+    typeof props.value === 'number' ||
+    typeof props.value === 'boolean' ||
+    isNullish(props.value)
+  ) {
     return [{ name: props.name, value: props.value }];
   }
 

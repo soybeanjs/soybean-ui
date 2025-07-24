@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect } from 'vue';
+import { computed, watchEffect } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import { useForwardExpose, useStateMachine } from '../../composables';
 import { Presence } from '../presence';
@@ -38,6 +38,8 @@ const { state, dispatch } = useStateMachine('hidden', {
   }
 });
 
+const visible = computed(() => state.value !== 'hidden');
+
 watchEffect(onCleanup => {
   if (state.value === 'idle') {
     const timeId = window.setTimeout(() => dispatch('HIDE'), rootContext.scrollHideDelay.value);
@@ -75,8 +77,8 @@ watchEffect(onCleanup => {
 </script>
 
 <template>
-  <Presence :present="forceMount || state !== 'hidden'">
-    <ScrollAreaScrollbarVisible v-bind="$attrs" :ref="forwardRef">
+  <Presence :present="forceMount || visible">
+    <ScrollAreaScrollbarVisible v-bind="$attrs" :ref="forwardRef" :data-state="visible ? 'visible' : 'hidden'">
       <slot />
     </ScrollAreaScrollbarVisible>
   </Presence>

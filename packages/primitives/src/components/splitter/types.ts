@@ -83,6 +83,10 @@ export interface SplitterResizeHandleProps extends ClassValueProp {
   tabindex?: number;
   /** Disable drag handle */
   disabled?: boolean;
+  /**
+   * Will add `nonce` attribute to the style tag which can be used by Content Security Policy. <br> If omitted, inherits globally from `ConfigProvider`.
+   */
+  nonce?: string;
 }
 export type SplitterResizeHandlePropsWithPrimitive = SplitterResizeHandleProps & PrimitiveProps;
 
@@ -142,5 +146,6 @@ export type ResizeHandlerData = {
   direction: Ref<DataOrientation>;
   element: HTMLElement;
   hitAreaMargins: PointerHitAreaMargins;
+  nonce: Ref<string | undefined>;
   setResizeHandlerState: SetResizeHandlerState;
 };

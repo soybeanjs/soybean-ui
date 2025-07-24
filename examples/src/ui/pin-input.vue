@@ -23,7 +23,7 @@ function handleChange(value: string[]) {
   <SonnerToaster position="top-center" />
   <div class="demo-pin-input flex-c gap-4">
     <SCard title="Default" split>
-      <SPinInput v-model="numberValue" type="number" placeholder="○" @complete="handleComplete" />
+      <SPinInput v-model="numberValue" type="text" placeholder="○" @complete="handleComplete" />
     </SCard>
     <SCard title="Custom Input Count" split>
       <SPinInput :input-count="8" placeholder="○" />

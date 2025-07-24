@@ -22,6 +22,8 @@ export interface NumberFieldRootProps extends ClassValueProp {
   locale?: string;
   /** When `true`, prevents the user from interacting with the Number Field. */
   disabled?: boolean;
+  /** When `true`, the Number Field is read-only. */
+  readonly?: boolean;
   /** When `true`, prevents the value from changing on wheel scroll. */
   disableWheelChange?: boolean;
   /** When `true`, inverts the direction of the wheel change. */
@@ -47,6 +49,7 @@ export interface NumberFieldRootContext {
   validate: (val: string) => boolean;
   applyInputValue: (val: string) => void;
   disabled: Ref<boolean>;
+  readonly: Ref<boolean>;
   disableWheelChange: Ref<boolean>;
   invertWheelChange: Ref<boolean>;
   max: Ref<number | undefined>;

@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { ComputedRef, Ref } from 'vue';
 import type { DateFormatter, DateValue, DaysOfWeekNumber, Grid, Matcher, WeekDayFormat } from '../../date';
 import type { ClassValueProp, Direction, PrimitiveProps } from '../../types';
 
@@ -160,4 +160,5 @@ export interface CalendarRootContext {
   formatter: DateFormatter;
   dir: Ref<Direction>;
   disableDaysOutsideCurrentView: Ref<boolean>;
+  startingWeekNumber: ComputedRef<number[]>;
 }

@@ -36,6 +36,16 @@ export type ComboboxRootProps<T = AcceptableValue> = ClassValueProp &
      * @defaultValue `true`
      */
     resetSearchTermOnSelect?: boolean;
+    /**
+     * Whether to open the combobox when the input is focused
+     * @defaultValue `false`
+     */
+    openOnFocus?: boolean;
+    /**
+     * Whether to open the combobox when the input is clicked
+     * @defaultValue `false`
+     */
+    openOnClick?: boolean;
     /** When `true`, disable the default filters */
     ignoreFilter?: boolean;
   };
@@ -64,6 +74,8 @@ export interface ComboboxRootContext<T> {
   filterSearch: Ref<string>;
   filterState: ComputedRef<{ count: number; items: Map<string, number>; groups: Set<string> }>;
   ignoreFilter: Ref<boolean>;
+  openOnFocus: Ref<boolean>;
+  openOnClick: Ref<boolean>;
 }
 
 export type ComboboxRootEmits<T = AcceptableValue> = {

@@ -36,7 +36,7 @@ function handleInput(event: InputEvent) {
     return;
   }
 
-  target.value = target.value.slice(-1);
+  target.value = target.value.slice(-1) ?? '';
   updateModelValueAt(props.index, target.value);
 
   const nextEl = inputElements.value[props.index + 1];
