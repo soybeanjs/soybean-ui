@@ -4,9 +4,10 @@
  * @param value - The value to check
  * @returns Whether the value is string | number | boolean
  */
-export function isPrimitive(value: unknown): value is string | number | boolean {
+export function isPrimitive(value: unknown): value is string | number | boolean | null | undefined {
   const type = typeof value;
-  return type === 'string' || type === 'number' || type === 'boolean';
+
+  return type === 'string' || type === 'number' || type === 'boolean' || isNullish(value);
 }
 
 /**

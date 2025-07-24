@@ -23,7 +23,10 @@ export function createFieldName(baseName: string, ...paths: (string | number)[])
  * @param value - Primitive value
  * @returns Array of form fields
  */
-export function parsePrimitiveValue(name: string, value: string | number | boolean): FormNameValueProps[] {
+export function parsePrimitiveValue(
+  name: string,
+  value: string | number | boolean | null | undefined
+): FormNameValueProps[] {
   return [{ name, value }];
 }
 
