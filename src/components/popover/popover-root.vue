@@ -26,6 +26,10 @@ const open = useControllableState(
   props.defaultOpen
 );
 
+const close = () => {
+  open.value = false;
+};
+
 providePopoverRootContext({
   ...transformPropsToContext(props, ['modal']),
   open
@@ -34,6 +38,6 @@ providePopoverRootContext({
 
 <template>
   <PopperRoot>
-    <slot />
+    <slot :open="open" :close="close" />
   </PopperRoot>
 </template>
