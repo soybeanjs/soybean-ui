@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useForwardElement, useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent, HorizontalSide } from '../../types';
+import { popperCssVars } from '../popper/shared';
 import { useMenuContext, useMenuRootContext, useMenuSubContext, useMenuThemeContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuSubContentEmits, MenuSubContentProps } from './types';
-import { SUB_CLOSE_KEYS } from './shared';
+import { SUB_CLOSE_KEYS, subMenuCssVars } from './shared';
 
 defineOptions({
   name: 'MenuSubContent'
@@ -26,6 +28,14 @@ const { subContentId, subTriggerId, subTriggerElement, initSubContentId } = useM
 const themeContext = useMenuThemeContext();
 
 const cls = computed(() => [themeContext?.ui?.value?.subContent, props.class]);
+
+const style: CSSProperties = {
+  [subMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
+  [subMenuCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
+  [subMenuCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
+  [subMenuCssVars.triggerWidth]: `var(${popperCssVars.anchorWidth})`,
+  [subMenuCssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`
+};
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(subContentElement, open);
 
@@ -78,6 +88,7 @@ initSubContentId();
     :id="subContentId"
     :ref="setSubContentElement"
     :class="cls"
+    :style="style"
     :trap-focus="false"
     :disable-outside-pointer-events="false"
     :aria-labelledby="subTriggerId"

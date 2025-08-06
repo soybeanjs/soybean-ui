@@ -183,9 +183,8 @@ export interface MenuItemIndicatorContextParams {
   modelValue: ComputedRef<CheckedState | undefined>;
 }
 
-export type MenuSlot =
+export type MenuThemeSlot =
   | 'content'
-  | 'trigger'
   | 'subContent'
   | 'subTrigger'
   | 'arrow'
@@ -200,7 +199,7 @@ export type MenuSlot =
   | 'separator';
 
 export interface MenuThemeContextParams {
-  ui: ComputedRef<Record<MenuSlot, ClassValue>>;
+  ui: ComputedRef<Record<MenuThemeSlot, ClassValue>>;
 }
 
 // Collection

@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { PropsToContext } from '../../types';
+import type { ClassValue, PropsToContext } from '../../types';
 import type {
   MenuAnchorProps as DropdownMenuAnchorProps,
   MenuArrowProps as DropdownMenuArrowProps,
@@ -27,7 +27,8 @@ import type {
   MenuSubProps as DropdownMenuSubProps,
   MenuSubTriggerProps as DropdownMenuSubTriggerProps,
   MenuTriggerProps as DropdownMenuTriggerProps,
-  MenuRootProps
+  MenuRootProps,
+  MenuThemeSlot
 } from '../menu';
 
 export type DropdownMenuTriggerType = 'click' | 'hover';
@@ -65,6 +66,12 @@ export interface DropdownMenuHoverContextParams
   extends PropsToContext<DropdownMenuRootProps, 'delayDuration' | 'skipDelayDuration'> {
   hoverable: ComputedRef<boolean>;
   open: ShallowRef<boolean | undefined>;
+}
+
+export type DropdownMenuThemeSlot = MenuThemeSlot | 'trigger';
+
+export interface DropdownMenuThemeContextParams {
+  ui: ComputedRef<Record<DropdownMenuThemeSlot, ClassValue>>;
 }
 
 export type {

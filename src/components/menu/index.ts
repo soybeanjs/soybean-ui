@@ -37,32 +37,4 @@ export {
 
 export { provideMenuThemeContext, useMenuThemeContext } from './context';
 
-export type {
-  MenuRootProps,
-  MenuRootEmits,
-  MenuPortalProps,
-  MenuContentProps,
-  MenuContentEmits,
-  MenuTriggerProps,
-  MenuSubProps,
-  MenuSubEmits,
-  MenuSubContentProps,
-  MenuSubContentEmits,
-  MenuSubTriggerProps,
-  MenuAnchorProps,
-  MenuArrowProps,
-  MenuGroupProps,
-  MenuGroupLabelProps,
-  MenuItemProps,
-  MenuItemEmits,
-  MenuCheckboxGroupProps,
-  MenuCheckboxGroupEmits,
-  MenuCheckboxItemProps,
-  MenuCheckboxItemEmits,
-  MenuRadioGroupProps,
-  MenuRadioGroupEmits,
-  MenuRadioItemProps,
-  MenuRadioItemEmits,
-  MenuItemIndicatorProps,
-  MenuSeparatorProps
-} from './types';
+export type * from './types';

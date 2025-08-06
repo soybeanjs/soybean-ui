@@ -12,12 +12,12 @@ import {
   MenuRadioItem as DropdownMenuRadioItem,
   MenuSeparator as DropdownMenuSeparator,
   MenuSub as DropdownMenuSub,
+  MenuSubContent as DropdownMenuSubContent,
   MenuSubTrigger as DropdownMenuSubTrigger
 } from '../menu';
 import DropdownMenuRoot from './dropdown-menu-root.vue';
 import DropdownMenuTrigger from './dropdown-menu-trigger.vue';
 import DropdownMenuContent from './dropdown-menu-content.vue';
-import DropdownMenuSubContent from './dropdown-menu-sub-content.vue';
 
 export {
   DropdownMenuRoot,
@@ -39,6 +39,8 @@ export {
   DropdownMenuGroupLabel,
   DropdownMenuSeparator
 };
+
+export { provideDropdownMenuThemeContext } from './context';
 
 export type {
   DropdownMenuRootProps,

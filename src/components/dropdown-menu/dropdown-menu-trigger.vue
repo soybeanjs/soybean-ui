@@ -3,7 +3,7 @@ import { computed, nextTick } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
 import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
-import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
+import { useDropdownMenuHoverContext, useDropdownMenuRootContext, useDropdownMenuThemeContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
 
 defineOptions({
@@ -13,6 +13,9 @@ defineOptions({
 const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
   as: 'button'
 });
+
+const themeContext = useDropdownMenuThemeContext();
+const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
 
 const { open, dataState, onOpenToggle, onOpenChange, triggerId, contentId, initTriggerId, setTriggerElement } =
   useDropdownMenuRootContext('DropdownMenuTrigger');
@@ -98,6 +101,7 @@ initTriggerId();
       v-bind="props"
       :id="triggerId"
       :ref="setTriggerElement"
+      :class="cls"
       :disabled="disabled"
       :type="tag"
       :aria-controls="ariaControls"

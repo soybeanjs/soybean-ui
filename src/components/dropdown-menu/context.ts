@@ -1,8 +1,13 @@
 import { computed, shallowRef, useId, watchEffect } from 'vue';
 import { useContext, useDirection, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { provideMenuThemeContext } from '../menu';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
-import type { DropdownMenuHoverContextParams, DropdownMenuRootContextParams } from './types';
+import type {
+  DropdownMenuHoverContextParams,
+  DropdownMenuRootContextParams,
+  DropdownMenuThemeContextParams
+} from './types';
 
 export const [provideDropdownMenuRootContext, useDropdownMenuRootContext] = useContext(
   'DropdownMenuRoot',
@@ -146,5 +151,21 @@ export const [provideDropdownMenuHoverContext, useDropdownMenuHoverContext] = us
       onTriggerEnter,
       onTriggerLeave
     };
+  }
+);
+
+export const [provideDropdownMenuThemeContext, useDropdownMenuThemeContext] = useContext(
+  'DropdownMenuTheme',
+  (params: DropdownMenuThemeContextParams): DropdownMenuThemeContextParams => {
+    const menuThemeContext = provideMenuThemeContext(params);
+
+    const context: DropdownMenuThemeContextParams = {
+      ui: computed(() => ({
+        ...menuThemeContext.ui.value,
+        trigger: params.ui.value.trigger
+      }))
+    };
+
+    return context;
   }
 );
