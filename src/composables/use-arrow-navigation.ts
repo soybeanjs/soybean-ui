@@ -275,7 +275,7 @@ function findNextFocusableElement(
 
   // If current element is not in the list, start from beginning or end
   if (currentIndex === -1) {
-    return goForward ? elements[0] : elements[elementsLength - 1];
+    return (goForward ? elements[0] : elements[elementsLength - 1]) || null;
   }
 
   // Use iterative approach instead of recursion for better performance

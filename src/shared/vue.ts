@@ -28,7 +28,7 @@ export function getRawChildren(children: VNode[]): VNode[] {
   // bail if there are multiple keyed fragments
   if (keyedFragmentCount > 1) {
     for (let i = 0; i < ret.length; i++) {
-      ret[i].patchFlag = PatchFlags.BAIL;
+      ret[i]!.patchFlag = PatchFlags.BAIL;
     }
   }
 

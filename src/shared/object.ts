@@ -59,8 +59,11 @@ export function arrayRemove<T>(array: T[], item: T) {
  * Wraps an array around itself at a given start index Example: `wrapArray(['a', 'b', 'c', 'd'], 2) === ['c', 'd', 'a',
  * 'b']`
  */
-export function wrapArray<T>(array: T[], startIndex: number) {
-  return array.map((_, index) => array[(startIndex + index) % array.length]);
+export function wrapArray<T>(array: T[], startIndex: number): T[] {
+  if (array.length === 0) return [];
+
+  const normalizedStartIndex = ((startIndex % array.length) + array.length) % array.length;
+  return array.map((_, index) => array[(normalizedStartIndex + index) % array.length]!);
 }
 
 /**
@@ -108,7 +111,7 @@ export function getNextMatch(values?: string[], search?: string, currentMatch?: 
   }
 
   // Normalize repeated characters (e.g., "aaa" -> "a")
-  const normalizedSearch = search.length > 1 && search[0].repeat(search.length) === search ? search[0] : search;
+  const normalizedSearch = search.length > 1 && search[0]?.repeat(search.length) === search ? search[0] : search;
 
   const normalizedSearchLower = normalizedSearch.toLowerCase();
   const excludeCurrentMatch = normalizedSearch.length === 1;
@@ -124,7 +127,7 @@ export function getNextMatch(values?: string[], search?: string, currentMatch?: 
     const value = values[index];
 
     // Skip current match if we're excluding it and check if value starts with normalized search
-    if ((!excludeCurrentMatch || value !== currentMatch) && value.toLowerCase().startsWith(normalizedSearchLower)) {
+    if ((!excludeCurrentMatch || value !== currentMatch) && value?.toLowerCase().startsWith(normalizedSearchLower)) {
       // Return undefined if it's the same as current match (no change needed)
       return value !== currentMatch ? value : undefined;
     }

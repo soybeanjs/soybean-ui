@@ -15,12 +15,12 @@ export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
   // Quick exclusion: boundary box check
   if (polygon.length < 3) return false;
 
-  let { x: minX, y: minY } = polygon[0];
-  let { x: maxX, y: maxY } = polygon[0];
+  let { x: minX, y: minY } = polygon[0]!;
+  let { x: maxX, y: maxY } = polygon[0]!;
 
   // Calculate boundary box
   for (let i = 1; i < polygon.length; i++) {
-    const vertex = polygon[i];
+    const vertex = polygon[i]!;
     minX = Math.min(minX, vertex.x);
     maxX = Math.max(maxX, vertex.x);
     minY = Math.min(minY, vertex.y);
@@ -36,8 +36,8 @@ export function isPointInPolygon(point: Point, polygon: Polygon): boolean {
   let intersectionCount = 0;
 
   for (let i = 0; i < polygon.length; i++) {
-    const currentVertex = polygon[i];
-    const nextVertex = polygon[(i + 1) % polygon.length];
+    const currentVertex = polygon[i]!;
+    const nextVertex = polygon[(i + 1) % polygon.length]!;
 
     const { x: x1, y: y1 } = currentVertex;
     const { x: x2, y: y2 } = nextVertex;
@@ -174,16 +174,16 @@ export function getHull<P extends Point>(points: Readonly<Array<P>>): Array<P> {
   if (points.length === 3) {
     // For three points, check if they are collinear, if so return endpoints
     const [p1, p2, p3] = points;
-    const cross = crossProduct(p1, p2, p3);
+    const cross = crossProduct(p1!, p2!, p3!);
     if (Math.abs(cross) < 1e-10) {
       // Collinear, return the two farthest points
-      const dist12 = getDistanceSquared(p1, p2);
-      const dist13 = getDistanceSquared(p1, p3);
-      const dist23 = getDistanceSquared(p2, p3);
+      const dist12 = getDistanceSquared(p1!, p2!);
+      const dist13 = getDistanceSquared(p1!, p3!);
+      const dist23 = getDistanceSquared(p2!, p3!);
       const maxDist = Math.max(dist12, dist13, dist23);
-      if (maxDist === dist12) return [p1, p2];
-      if (maxDist === dist13) return [p1, p3];
-      return [p2, p3];
+      if (maxDist === dist12) return [p1!, p2!];
+      if (maxDist === dist13) return [p1!, p3!];
+      return [p2!, p3!];
     }
     return [...points];
   }
@@ -209,7 +209,7 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
   // Build lower convex hull
   const lower: P[] = [];
   for (const point of points) {
-    while (lower.length >= 2 && crossProduct(lower[lower.length - 2], lower[lower.length - 1], point) <= 0) {
+    while (lower.length >= 2 && crossProduct(lower[lower.length - 2]!, lower[lower.length - 1]!, point) <= 0) {
       lower.pop();
     }
     lower.push(point);
@@ -218,8 +218,8 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
   // Build upper convex hull
   const upper: P[] = [];
   for (let i = points.length - 1; i >= 0; i--) {
-    const point = points[i];
-    while (upper.length >= 2 && crossProduct(upper[upper.length - 2], upper[upper.length - 1], point) <= 0) {
+    const point = points[i]!;
+    while (upper.length >= 2 && crossProduct(upper[upper.length - 2]!, upper[upper.length - 1]!, point) <= 0) {
       upper.pop();
     }
     upper.push(point);
@@ -230,7 +230,7 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
   upper.pop();
 
   // If only one point, avoid duplication
-  if (lower.length === 1 && upper.length === 1 && lower[0].x === upper[0].x && lower[0].y === upper[0].y) {
+  if (lower.length === 1 && upper.length === 1 && lower[0]!.x === upper[0]!.x && lower[0]!.y === upper[0]!.y) {
     return lower;
   }
 
