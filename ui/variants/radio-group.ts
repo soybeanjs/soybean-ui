@@ -181,11 +181,11 @@ export const radioCardGroupVariants = tv({
     label: 'font-medium',
     description: 'text-muted-foreground',
     control: [
-      'peer shrink-0 inline-flex items-center justify-center rounded-full border border-solid shadow',
+      'peer shrink-0 inline-flex items-start justify-start rounded-full border border-solid shadow',
       'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
-    indicator: 'size-1/2 rounded-full'
+    indicator: 'relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex size-1/2 rounded-full'
   },
   variants: {
     color: {
