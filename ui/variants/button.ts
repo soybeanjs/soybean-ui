@@ -4,7 +4,7 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const buttonVariants = tv({
   base: [
-    'inline-flex items-center justify-center font-medium transition-all-200',
+    'inline-flex items-center justify-center font-medium',
     'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background)',
     'data-[disabled]:(cursor-not-allowed opacity-50)'
   ],
@@ -425,8 +425,8 @@ export const buttonGroupVariants = tv({
   base: `[&>*]:relative focus-visible:[&>*]:z-2 not-first:not-last:[&>*]:rd-0`,
   variants: {
     orientation: {
-      horizontal: `inline-flex not-last:[&>*]:border-r-0 first:[&>*]:rd-r-0 last:[&>*]:rd-l-0 rtl:flex-row-reverse`,
-      vertical: `flex flex-col not-last:[&>*]:border-b-0 first:[&>*]:rd-b-0 last:[&>*]:rd-t-0`
+      horizontal: `inline-flex not-last:[&>*]:border-r-0 focus-visible:[&>*]:border-r first:[&>*]:rd-r-0 last:[&>*]:rd-l-0 rtl:flex-row-reverse`,
+      vertical: `flex flex-col not-last:[&>*]:border-b-0 focus-visible:[&>*]:border-b first:[&>*]:rd-b-0 last:[&>*]:rd-t-0`
     }
   },
   defaultVariants: {
