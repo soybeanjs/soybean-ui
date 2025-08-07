@@ -38,7 +38,6 @@ src/components/accordion/
 #### types.ts
 
 1. 导入顺序：
-
    - 第三方类型（如 `vue`）
    - 公共类型（`../../types`）
    - 基础组件类型
@@ -118,7 +117,6 @@ src/components/accordion/
   ```
 
 - 导入顺序：
-
   1. 第三方（vue）
   2. 组合式函数（`../../composables`）
   3. 类型（`../../types`）
@@ -215,7 +213,6 @@ ui/components/accordion/
 #### types.ts
 
 1. 导入顺序：
-
    - 第三方（vue）
    - `@headless`
    - `@theme`
@@ -259,7 +256,6 @@ ui/components/accordion/
   ```
 
 - 导入顺序：
-
   1. 第三方（vue）
   2. `@headless`
   3. `@headless/composables`

@@ -38,7 +38,6 @@ src/components/accordion/
 #### types.ts
 
 1. Import order:
-
    - Third-party types (e.g. `vue`)
    - Common types from `../../types`
    - Base component types
@@ -118,7 +117,6 @@ src/components/accordion/
   ```
 
 - Import order:
-
   1. Third-party (vue)
   2. Composables from `../../composables`
   3. Types from `../../types`
@@ -215,7 +213,6 @@ ui/components/accordion/
 #### types.ts
 
 1. Import order:
-
    - Third-party (vue)
    - From `@headless`
    - From `@theme`
@@ -259,7 +256,6 @@ ui/components/accordion/
   ```
 
 - Import order:
-
   1. Third-party (vue)
   2. From `@headless`
   3. From `@headless/composables`
