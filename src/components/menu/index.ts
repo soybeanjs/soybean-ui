@@ -1,6 +1,5 @@
 import { Portal as MenuPortal } from '../portal';
-import { PopperAnchor as MenuAnchor, PopperArrow as MenuArrow } from '../popper';
-import { DividerRoot as MenuSeparator } from '../divider';
+import { PopperAnchor as MenuAnchor } from '../popper';
 import MenuRoot from './menu-root.vue';
 import MenuContent from './menu-content.vue';
 import MenuSub from './menu-sub.vue';
@@ -14,6 +13,8 @@ import MenuCheckboxItem from './menu-checkbox-item.vue';
 import MenuRadioGroup from './menu-radio-group.vue';
 import MenuRadioItem from './menu-radio-item.vue';
 import MenuItemIndicator from './menu-item-indicator.vue';
+import MenuArrow from './menu-arrow.vue';
+import MenuSeparator from './menu-separator.vue';
 
 export {
   MenuRoot,

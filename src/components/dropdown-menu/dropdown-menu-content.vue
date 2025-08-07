@@ -13,7 +13,12 @@ defineOptions({
   name: 'DropdownMenuContent'
 });
 
-const props = defineProps<DropdownMenuContentProps>();
+const props = withDefaults(defineProps<DropdownMenuContentProps>(), {
+  sideOffset: 8,
+  sideFlip: true,
+  alignFlip: true,
+  avoidCollisions: true
+});
 
 const emit = defineEmits<DropdownMenuContentEmits>();
 

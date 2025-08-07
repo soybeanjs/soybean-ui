@@ -40,8 +40,6 @@ export {
   DropdownMenuSeparator
 };
 
-export { provideDropdownMenuThemeContext } from './context';
-
 export type {
   DropdownMenuRootProps,
   DropdownMenuRootEmits,

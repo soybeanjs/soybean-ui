@@ -11,6 +11,7 @@ export * from './components/config-provider';
 export * from './components/divider';
 export * from './components/dialog';
 export * from './components/drawer';
+export * from './components/dropdown-menu';
 export * from './components/icon';
 export * from './components/kbd';
 export * from './components/label';
@@ -27,3 +28,4 @@ export * from './components/visually-hidden';
 
 export type { ThemeColor, ThemeSize } from './theme/types';
 export type * from '@headless/types';
+export type * from './components/menu/types';

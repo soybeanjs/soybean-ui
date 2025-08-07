@@ -1,5 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { ClassValue, PropsToContext } from '../../types';
+import type { PropsToContext } from '../../types';
 import type {
   MenuAnchorProps as DropdownMenuAnchorProps,
   MenuArrowProps as DropdownMenuArrowProps,
@@ -19,7 +19,6 @@ import type {
   MenuRadioGroupProps as DropdownMenuRadioGroupProps,
   MenuRadioItemEmits as DropdownMenuRadioItemEmits,
   MenuRadioItemProps as DropdownMenuRadioItemProps,
-  MenuRootEmits as DropdownMenuRootEmits,
   MenuSeparatorProps as DropdownMenuSeparatorProps,
   MenuSubContentEmits as DropdownMenuSubContentEmits,
   MenuSubContentProps as DropdownMenuSubContentProps,
@@ -27,8 +26,8 @@ import type {
   MenuSubProps as DropdownMenuSubProps,
   MenuSubTriggerProps as DropdownMenuSubTriggerProps,
   MenuTriggerProps as DropdownMenuTriggerProps,
-  MenuRootProps,
-  MenuThemeSlot
+  MenuRootEmits,
+  MenuRootProps
 } from '../menu';
 
 export type DropdownMenuTriggerType = 'click' | 'hover';
@@ -56,6 +55,7 @@ export interface DropdownMenuRootProps extends MenuRootProps {
    */
   skipDelayDuration?: number;
 }
+export type DropdownMenuRootEmits = MenuRootEmits;
 
 // Context
 export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMenuRootProps, 'dir' | 'modal'> {
@@ -68,14 +68,7 @@ export interface DropdownMenuHoverContextParams
   open: ShallowRef<boolean | undefined>;
 }
 
-export type DropdownMenuThemeSlot = MenuThemeSlot | 'trigger';
-
-export interface DropdownMenuThemeContextParams {
-  ui: ComputedRef<Record<DropdownMenuThemeSlot, ClassValue>>;
-}
-
 export type {
-  DropdownMenuRootEmits,
   DropdownMenuPortalProps,
   DropdownMenuContentProps,
   DropdownMenuContentEmits,

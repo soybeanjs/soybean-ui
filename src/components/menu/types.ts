@@ -13,11 +13,7 @@ import type {
   TrapFocusProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
-import type {
-  DialogRootProps,
-  DialogRootEmits as MenuRootEmits,
-  DialogRootEmits as MenuSubEmits
-} from '../dialog/types';
+import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
 import type {
   PopperAnchorProps as MenuAnchorProps,
   PopperArrowProps as MenuArrowProps,
@@ -36,6 +32,7 @@ export interface MenuRootProps extends DialogRootProps {
    */
   dir?: Direction;
 }
+export type MenuRootEmits = DialogRootEmits;
 
 // MenuContentImpl
 export interface MenuContentImplProps
@@ -64,6 +61,7 @@ export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ But
 
 // MenuSub
 export interface MenuSubProps extends Pick<MenuRootProps, 'open' | 'defaultOpen'> {}
+export type MenuSubEmits = MenuRootEmits;
 
 // MenuSubContent
 export interface MenuSubContentProps extends Omit<MenuContentProps, 'side' | 'align'> {}
@@ -205,4 +203,4 @@ export interface MenuThemeContextParams {
 // Collection
 export type MenuCollectionItemData = Pick<MenuItemImplProps, 'textValue'>;
 
-export type { MenuRootEmits, MenuSubEmits, MenuPortalProps, MenuAnchorProps, MenuArrowProps, MenuSeparatorProps };
+export type { MenuPortalProps, MenuAnchorProps, MenuArrowProps, MenuSeparatorProps };

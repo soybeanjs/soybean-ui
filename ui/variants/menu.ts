@@ -4,7 +4,6 @@ import { tv } from 'tailwind-variants';
 export const menuVariants = tv({
   slots: {
     arrow: 'fill-popover stroke-border',
-    label: 'flex items-center font-semibold',
     content: [
       `z-50 min-w-48 rounded-md border bg-popover text-popover-foreground shadow-md will-change-transform`,
       `data-[state=open]:(animate-in fade-in-0 zoom-in-95) data-[state=closed]:(fade-out-0 zoom-out-95)`,
@@ -16,6 +15,9 @@ export const menuVariants = tv({
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     group: '',
+    groupLabel: 'flex items-center font-semibold',
+    checkboxGroup: '',
+    radioGroup: '',
     item: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-default select-none`,
       `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
@@ -45,7 +47,7 @@ export const menuVariants = tv({
     size: {
       xs: {
         content: 'text-2xs p-0.75',
-        label: 'gap-1 px-1 py-1',
+        groupLabel: 'gap-1 px-1 py-1',
         item: 'gap-1 px-1 py-1',
         itemLink: 'gap-1 px-1 py-1',
         itemLinkIcon: 'size-2 -ml-1',
@@ -58,7 +60,7 @@ export const menuVariants = tv({
       },
       sm: {
         content: 'text-xs p-0.875',
-        label: 'gap-1.5 px-1.5 py-1',
+        groupLabel: 'gap-1.5 px-1.5 py-1',
         item: 'gap-1.5 px-1.5 py-1',
         itemLink: 'gap-1.5 px-1.5 py-1',
         itemLinkIcon: 'size-2.5 -ml-1.5',
@@ -71,7 +73,7 @@ export const menuVariants = tv({
       },
       md: {
         content: 'text-sm p-1',
-        label: 'gap-2 px-2 py-1.5',
+        groupLabel: 'gap-2 px-2 py-1.5',
         item: 'gap-2 px-2 py-1.5',
         itemLink: 'gap-2 px-2 py-1.5',
         itemLinkIcon: 'size-3 -ml-2',
@@ -84,7 +86,7 @@ export const menuVariants = tv({
       },
       lg: {
         content: 'text-base p-1.25',
-        label: 'gap-2.5 px-2.5 py-1.5',
+        groupLabel: 'gap-2.5 px-2.5 py-1.5',
         item: 'gap-2.5 px-2.5 py-1.5',
         itemLink: 'gap-2.5 px-2.5 py-1.5',
         itemLinkIcon: 'size-3.5 -ml-2.5',
@@ -97,7 +99,7 @@ export const menuVariants = tv({
       },
       xl: {
         content: 'text-lg p-1.5',
-        label: 'gap-3 px-3 py-2',
+        groupLabel: 'gap-3 px-3 py-2',
         item: 'gap-3 px-3 py-2',
         itemLink: 'gap-3 px-3 py-2',
         itemLinkIcon: 'size-4 -ml-3',
@@ -110,7 +112,7 @@ export const menuVariants = tv({
       },
       '2xl': {
         content: 'text-xl p-1.75',
-        label: 'gap-3.5 px-3.5 py-2.5',
+        groupLabel: 'gap-3.5 px-3.5 py-2.5',
         item: 'gap-3.5 px-3.5 py-2.5',
         itemLink: 'gap-3.5 px-3.5 py-2.5',
         itemLinkIcon: 'size-4.5 -ml-3.5',
@@ -127,5 +129,3 @@ export const menuVariants = tv({
     size: 'md'
   }
 });
-
-export type MenuSlots = keyof typeof menuVariants.slots;
