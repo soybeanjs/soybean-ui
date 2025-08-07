@@ -4,6 +4,6 @@
     "source.organizeImports": "never"
   },
   "editor.formatOnSave": false,
-  "eslint.validate": ["json", "jsonc"],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "json", "jsonc"],
   "prettier.enable": false
 }
