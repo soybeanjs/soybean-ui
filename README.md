@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed, 🚫: No Need Implement, ✨: Implemented
 
-✅ 23 / 🚫 2 / total: 106
+✅ 24 / 🚫 2 / total: 106
 
 | No  | Priority | Name            | Status         | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | -------------- | -------------------- | ------------------------ |
@@ -28,7 +28,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 14  | 1        | Dialog          | ✅ Completed   |                      |                          |
 | 15  | 1        | Divider         | ✅ Completed   | Separator            |                          |
 | 16  | 1        | Drawer          | ✅ Completed   | Sheet                |                          |
-| 17  | 1        | DropdownMenu    | 🚧 In Progress |                      | ✨ support hover trigger |
+| 17  | 1        | DropdownMenu    | ✅ Completed   |                      | ✨ support hover trigger |
 | 18  | 1        | Form            |                |                      |                          |
 | 19  | 1        | Icon            | ✅ Completed   |                      | ✨ based on iconify      |
 | 20  | 1        | Input           |                |                      |                          |
@@ -38,7 +38,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 24  | 1        | Link            | ✅ Completed   |                      |                          |
 | 25  | 1        | List            |                |                      |                          |
 | 26  | 1        | Listbox         |                |                      |                          |
-| 27  | 1        | Menu            | 🚧 In Progress |                      |                          |
+| 27  | 1        | Menu            | ✅ Completed   |                      |                          |
 | 28  | 1        | NavigationMenu  | 🚧 In Progress |                      |                          |
 | 29  | 1        | NumberInput     |                | NumberField          |                          |
 | 30  | 1        | Pagination      | ✅ Completed   |                      |                          |
