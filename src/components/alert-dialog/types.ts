@@ -7,16 +7,17 @@ import type {
   DialogHeaderProps as AlertDialogHeaderProps,
   DialogOverlayProps as AlertDialogOverlayProps,
   DialogPortalProps as AlertDialogPortalProps,
-  DialogRootEmits as AlertDialogRootEmits,
   DialogTitleProps as AlertDialogTitleProps,
   DialogTriggerProps as AlertDialogTriggerProps,
+  DialogRootEmits,
   DialogRootProps
 } from '../dialog';
 
 export interface AlertDialogRootProps extends Omit<DialogRootProps, 'modal'> {}
 
+export type AlertDialogRootEmits = DialogRootEmits;
+
 export type {
-  AlertDialogRootEmits,
   AlertDialogContentProps,
   AlertDialogContentEmits,
   AlertDialogCloseProps,

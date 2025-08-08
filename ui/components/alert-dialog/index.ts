@@ -1,5 +1,7 @@
-export { default as SAlertDialog } from './alert-dialog.vue';
-export { default as SAlertDialogCancel } from './alert-dialog-cancel.vue';
-export { default as SAlertDialogAction } from './alert-dialog-action.vue';
-export * from '@headless/components/alert-dialog';
+import SAlertDialog from './alert-dialog.vue';
+import SAlertDialogCancel from './alert-dialog-cancel.vue';
+import SAlertDialogAction from './alert-dialog-action.vue';
+
+export { SAlertDialog, SAlertDialogCancel, SAlertDialogAction };
+
 export type * from './types';
