@@ -72,7 +72,7 @@ export const selectVariants = tv({
         viewport: 'p-1.25',
         item: 'gap-2.5 px-2.5 py-1.5',
         separator: '-mx-1.25 my-0.625',
-        groupLabel: 'p-2 text-xs',
+        groupLabel: 'p-2 text-sm',
         scrollUpButton: 'py-1.25',
         scrollDownButton: 'py-1.25',
         arrow: 'text-sm'
@@ -83,7 +83,7 @@ export const selectVariants = tv({
         viewport: 'p-1.5',
         item: 'gap-3 px-3 py-2',
         separator: '-mx-1.5 my-0.75',
-        groupLabel: 'p-2.5 text-sm',
+        groupLabel: 'p-2.5 text-base',
         scrollUpButton: 'py-1.5',
         scrollDownButton: 'py-1.5',
         arrow: 'text-base'
@@ -94,7 +94,7 @@ export const selectVariants = tv({
         viewport: 'p-1.75',
         item: 'gap-3.5 px-3.5 py-2.5',
         separator: '-mx-1.75 my-0.875',
-        groupLabel: 'p-3 text-base',
+        groupLabel: 'p-3 text-lg',
         scrollUpButton: 'py-1.75',
         scrollDownButton: 'py-1.75',
         arrow: 'text-lg'
