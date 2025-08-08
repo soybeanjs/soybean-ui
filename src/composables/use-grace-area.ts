@@ -13,37 +13,38 @@ import { GRACE_AREA_TRIGGER_ATTR } from '../constants';
 import type { Point, Polygon } from '../types';
 
 export interface UseGraceAreaOptions {
-  /** 触发元素的响应式引用 */
+  /** Reactive reference to the trigger element */
   triggerElement: ShallowRef<HTMLElement | undefined>;
-  /** 内容元素的响应式引用 */
+  /** Reactive reference to the content element */
   contentElement: ShallowRef<HTMLElement | undefined>;
-  /** 指针在过渡状态变化时的回调函数 */
+  /** Callback invoked when the pointer in-transit state changes */
   onPointerInTransitChange?: (v: boolean) => void;
-  /** 指针退出 grace area 时的回调函数 */
+  /** Callback invoked when the pointer exits the grace area */
   onPointerExit: () => void;
-  /** 是否禁用 grace area 功能 */
+  /** Whether to disable the grace area feature */
   disabled?: ShallowRef<boolean | undefined>;
-  /** 二级区域的 DOM 属性名，用于识别子区域元素 */
+  /** DOM attribute name for secondary areas used to identify sub-area elements */
   subAreaAttribute?: string;
-  /** 进入二级区域时的回调函数 */
+  /** Callback invoked when entering a sub-area */
   onSubAreaEnter?: (subArea: HTMLElement) => void;
-  /** 离开二级区域时的回调函数 */
+  /** Callback invoked when leaving a sub-area */
   onSubAreaExit?: (subArea: HTMLElement) => void;
 }
 
 /**
- * 使用 Grace Area 组合函数，用于创建智能的悬浮区域管理
+ * Grace Area composable that provides intelligent hover area management.
  *
- * Grace Area 是一个几何区域，允许用户在从触发器移动到内容区域时
- * 不会意外关闭悬浮内容。现已支持二级区域功能。
+ * A grace area is a geometric region that allows the user to move
+ * from the trigger to the content without accidentally closing the
+ * floating content. Secondary area support is included.
  *
- * @param options - 配置选项
+ * @param options - Configuration options
  *
- * 功能特性：
- * - 自动创建从触发器到内容区域的安全过渡区域
- * - 支持二级悬浮区域的检测和管理
- * - 智能的指针跟踪和状态管理
- * - 自动清理和性能优化
+ * Features:
+ * - Automatically creates a safe transition area from trigger to content
+ * - Supports detection and management of secondary hover areas
+ * - Intelligent pointer tracking and state management
+ * - Automatic cleanup and performance optimizations
  */
 export function useGraceArea(options: UseGraceAreaOptions) {
   const {
@@ -101,7 +102,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       const subArea = target.closest(`[${subAreaAttribute}]`) as HTMLElement;
 
       if (subArea && contentElement.value?.contains(subArea)) {
-        // 进入二级区域
+        // Enter sub-area
         if (currentSubArea.value !== subArea) {
           if (currentSubArea.value) {
             onSubAreaExit?.(currentSubArea.value);
@@ -109,7 +110,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
           currentSubArea.value = subArea;
           onSubAreaEnter?.(subArea);
 
-          // 为二级区域创建 grace area
+          // Create a grace area for the sub-area
           const { clientX: x, clientY: y } = event;
           const exitPoint: Point = { x, y };
           const graceArea = createGraceAreaGeometry(exitPoint, trigger!, subArea);
@@ -118,7 +119,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
           isPointerInTransit.value = true;
         }
       } else if (currentSubArea.value) {
-        // 离开二级区域
+        // Leave sub-area
         onSubAreaExit?.(currentSubArea.value);
         currentSubArea.value = undefined;
       }
@@ -132,7 +133,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     trigger.addEventListener('pointerleave', handleTriggerLeave);
     content.addEventListener('pointerleave', handleContentLeave);
 
-    // 监听内容区域的鼠标移动以处理二级区域
+    // Listen for pointer movement on the content area to handle sub-areas
     if (subAreaAttribute) {
       content.addEventListener('pointermove', handleSubContentMove);
     }
@@ -152,7 +153,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       return;
     }
 
-    // Conditional creation of tracking function
+    // Conditional creation of the tracking function
     const trackPointerGrace = (event: PointerEvent) => {
       if (!pointerGraceArea.value) return;
 
@@ -162,12 +163,12 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       const { clientX: x, clientY: y } = event;
       const hasEnteredTarget = triggerElement.value?.contains(target) || contentElement.value?.contains(target);
 
-      // 检查是否进入了二级区域
+      // Check whether the pointer has entered a sub-area
       const hasEnteredSubArea =
         subAreaAttribute && target.closest(`[${subAreaAttribute}]`) && contentElement.value?.contains(target);
 
       if (hasEnteredTarget || hasEnteredSubArea) {
-        // 如果进入了主要目标区域或二级区域，清理当前的 grace area
+        // If entered the primary target area or a sub-area, clean up the current grace area
         if (hasEnteredTarget) {
           cleanupGraceArea();
         }
@@ -178,7 +179,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       const isPointerOutsideGraceArea = !isPointInPolygon(pointerPosition, pointerGraceArea.value);
       const isAnotherGraceAreaTrigger = Boolean(target.closest(`[${GRACE_AREA_TRIGGER_ATTR}]`));
 
-      // 检查是否离开了所有相关区域（包括二级区域）
+      // Check whether the pointer has left all related areas (including sub-areas)
       const isOutsideAllAreas =
         !triggerElement.value?.contains(target) &&
         !contentElement.value?.contains(target) &&
