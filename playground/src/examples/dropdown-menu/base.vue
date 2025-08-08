@@ -6,8 +6,7 @@ const menus: MenuOptionData<string>[] = [
   {
     isGroupLabel: true,
     value: 'myAccount',
-    label: 'My Account',
-    separator: true
+    label: 'My Account'
   },
   { value: '01', label: 'Profile', icon: 'lucide:user', shortcut: ['command', 'shift', 'p'] },
   { value: '02', label: 'Billing', icon: 'lucide:credit-card', shortcut: ['command', 'b'] },

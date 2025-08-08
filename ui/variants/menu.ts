@@ -15,7 +15,7 @@ export const menuVariants = tv({
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     group: '',
-    groupLabel: 'flex items-center font-semibold',
+    groupLabel: 'flex items-center font-medium text-muted-foreground',
     checkboxGroup: '',
     radioGroup: '',
     item: [
@@ -47,7 +47,7 @@ export const menuVariants = tv({
     size: {
       xs: {
         content: 'text-2xs p-0.75',
-        groupLabel: 'gap-1 px-1 py-1',
+        groupLabel: 'gap-1 p-1 text-3xs',
         item: 'gap-1 px-1 py-1',
         itemLink: 'gap-1 px-1 py-1',
         itemLinkIcon: 'size-2 -ml-1',
@@ -60,7 +60,7 @@ export const menuVariants = tv({
       },
       sm: {
         content: 'text-xs p-0.875',
-        groupLabel: 'gap-1.5 px-1.5 py-1',
+        groupLabel: 'gap-1.25 p-1.25 text-2xs',
         item: 'gap-1.5 px-1.5 py-1',
         itemLink: 'gap-1.5 px-1.5 py-1',
         itemLinkIcon: 'size-2.5 -ml-1.5',
@@ -73,7 +73,7 @@ export const menuVariants = tv({
       },
       md: {
         content: 'text-sm p-1',
-        groupLabel: 'gap-2 px-2 py-1.5',
+        groupLabel: 'gap-1.75 p-1.75 text-xs',
         item: 'gap-2 px-2 py-1.5',
         itemLink: 'gap-2 px-2 py-1.5',
         itemLinkIcon: 'size-3 -ml-2',
@@ -86,7 +86,7 @@ export const menuVariants = tv({
       },
       lg: {
         content: 'text-base p-1.25',
-        groupLabel: 'gap-2.5 px-2.5 py-1.5',
+        groupLabel: 'gap-2 p-2 text-sm',
         item: 'gap-2.5 px-2.5 py-1.5',
         itemLink: 'gap-2.5 px-2.5 py-1.5',
         itemLinkIcon: 'size-3.5 -ml-2.5',
@@ -99,7 +99,7 @@ export const menuVariants = tv({
       },
       xl: {
         content: 'text-lg p-1.5',
-        groupLabel: 'gap-3 px-3 py-2',
+        groupLabel: 'gap-2.5 p-2.5 text-base',
         item: 'gap-3 px-3 py-2',
         itemLink: 'gap-3 px-3 py-2',
         itemLinkIcon: 'size-4 -ml-3',
@@ -112,7 +112,7 @@ export const menuVariants = tv({
       },
       '2xl': {
         content: 'text-xl p-1.75',
-        groupLabel: 'gap-3.5 px-3.5 py-2.5',
+        groupLabel: 'gap-3 p-3 text-lg',
         item: 'gap-3.5 px-3.5 py-2.5',
         itemLink: 'gap-3.5 px-3.5 py-2.5',
         itemLinkIcon: 'size-4.5 -ml-3.5',

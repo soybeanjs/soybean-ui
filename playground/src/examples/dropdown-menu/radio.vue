@@ -6,7 +6,7 @@ import type { MenuRadioOptionData } from '@ui';
 const placement = ref('top-start');
 
 const placements: MenuRadioOptionData<string>[] = [
-  { isGroupLabel: true, value: 'tooltipPlacement', label: 'Tooltip Placement', separator: true },
+  { isGroupLabel: true, value: 'tooltipPlacement', label: 'Tooltip Placement' },
   { value: 'top-start', label: 'Top Start' },
   { value: 'top', label: 'Top' },
   { value: 'top-end', label: 'Top End' },

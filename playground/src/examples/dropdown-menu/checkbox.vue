@@ -3,10 +3,10 @@ import { ref } from 'vue';
 import { SButton, SCard, SDropdownMenuCheckbox } from '@ui';
 import type { MenuCheckboxOptionData } from '@ui';
 
-const modelValue = ref<string[]>(['Vue', 'Solid']);
+const modelValue = ref<string[]>(['vue', 'solid']);
 
 const items = ref<MenuCheckboxOptionData<string>[]>([
-  { isGroupLabel: true, value: 'JSFramework', label: 'JS Frameworks', separator: true },
+  { isGroupLabel: true, value: 'JSFramework', label: 'JS Frameworks' },
   { value: 'vue', label: 'Vue', icon: 'logos:vue' },
   { value: 'react', label: 'React', icon: 'logos:react' },
   { value: 'angular', label: 'Angular', icon: 'logos:angular' },

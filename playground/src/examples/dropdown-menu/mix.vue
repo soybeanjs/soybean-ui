@@ -43,14 +43,14 @@ const checkboxes: MenuCheckboxOptionData<string>[] = [
   { value: 'preact', label: 'Preact', icon: 'logos:preact', separator: true }
 ];
 
-const radio = ref('left');
+const radio = ref('top');
 
 const radios: MenuRadioOptionData<string>[] = [
   { isGroupLabel: true, value: 'Side', label: 'Side' },
-  { value: 'top', label: 'Top' },
-  { value: 'right', label: 'Right' },
-  { value: 'bottom', label: 'Bottom' },
-  { value: 'left', label: 'Left' }
+  { value: 'top', label: 'Top', icon: 'lucide:arrow-up' },
+  { value: 'right', label: 'Right', icon: 'lucide:arrow-right' },
+  { value: 'bottom', label: 'Bottom', icon: 'lucide:arrow-down' },
+  { value: 'left', label: 'Left', icon: 'lucide:arrow-left' }
 ];
 </script>
 
