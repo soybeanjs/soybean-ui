@@ -2,6 +2,8 @@ import { computed, ref, shallowRef, useId } from 'vue';
 import { useContext, useDirection } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
+import { provideArrowThemeContext } from '../arrow/context';
+import { provideDividerThemeContext } from '../divider/context';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
@@ -166,5 +168,15 @@ export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] = us
 
 export const [provideMenuThemeContext, useMenuThemeContext] = useContext(
   'MenuTheme',
-  (params: MenuThemeContextParams) => params
+  (params: MenuThemeContextParams) => {
+    const arrowCls = computed(() => params.ui.value.arrow);
+    const separatorUi = computed(() => ({ root: params.ui.value.separator, label: null }));
+
+    provideArrowThemeContext(arrowCls);
+    provideDividerThemeContext({
+      ui: separatorUi
+    });
+
+    return params;
+  }
 );

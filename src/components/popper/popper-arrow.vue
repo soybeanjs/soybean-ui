@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { OPPOSITE_SIDE } from '../../constants';
 import type { Side } from '../../types';
 import { Arrow } from '../arrow';
-import { usePopoverThemeContext, usePopperContentContext } from './context';
+import { usePopperContentContext } from './context';
 import type { PopperArrowProps } from './types';
 
 defineOptions({
@@ -17,10 +17,6 @@ const props = defineProps<PopperArrowProps>();
 const attrs = useAttrs();
 
 const { setArrowElement, placedSide, arrowX, arrowY, shouldHideArrow } = usePopperContentContext('PopperArrow');
-
-const themeContext = usePopoverThemeContext();
-
-const cls = computed(() => [themeContext?.ui?.value?.arrow, props.class]);
 
 const baseSide = computed(() => OPPOSITE_SIDE[placedSide.value]);
 
@@ -50,7 +46,7 @@ const style = computed<CSSProperties>(() => ({
 
 <template>
   <span :ref="setArrowElement" style="position: absolute" :style="style">
-    <Arrow v-bind="{ ...props, ...attrs }" :class="cls" style="display: block">
+    <Arrow v-bind="{ ...props, ...attrs }" style="display: block">
       <slot />
     </Arrow>
   </span>

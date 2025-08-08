@@ -1,6 +1,7 @@
-import { shallowRef } from 'vue';
+import { computed, shallowRef } from 'vue';
 import type { ReferenceElement } from '@floating-ui/vue';
 import { useContext } from '../../composables';
+import { provideArrowThemeContext } from '../arrow/context';
 import type { PopoverThemeContextParams, PopperContentContextParams } from './types';
 
 export const [providePopperRootContext, usePopperRootContext] = useContext('PopperRoot', () => {
@@ -23,5 +24,11 @@ export const [providePopperContentContext, usePopperContentContext] = useContext
 
 export const [providePopoverThemeContext, usePopoverThemeContext] = useContext(
   'PopoverTheme',
-  (params: PopoverThemeContextParams) => params
+  (params: PopoverThemeContextParams) => {
+    const arrowCls = computed(() => params.ui.value.arrow);
+
+    provideArrowThemeContext(arrowCls);
+
+    return params;
+  }
 );

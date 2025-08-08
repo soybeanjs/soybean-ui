@@ -2,6 +2,7 @@ import { computed, ref, shallowRef, useId } from 'vue';
 import { useCollection, useContext, useDirection } from '../../composables';
 import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
 import type { AcceptableValue, Point } from '../../types';
+import { provideArrowThemeContext } from '../arrow/context';
 import type {
   SelectContentContextParams,
   SelectItemAlignedPositionContextParams,
@@ -235,5 +236,11 @@ export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPosit
 
 export const [provideSelectThemeContext, useSelectThemeContext] = useContext(
   'SelectTheme',
-  (params: SelectThemeContextParams) => params
+  (params: SelectThemeContextParams) => {
+    const arrowCls = computed(() => params.ui.value.arrow);
+
+    provideArrowThemeContext(arrowCls);
+
+    return params;
+  }
 );
