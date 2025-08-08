@@ -23,11 +23,11 @@ const cls = computed(() => [themeContext?.value, props.class]);
   <Primitive
     v-bind="props"
     :class="cls"
-    :viewBox="as === 'template' ? undefined : '0 0 30 10'"
+    :viewBox="as === 'template' ? undefined : '0 0 12 6'"
     :preserveAspectRatio="as === 'template' ? undefined : 'none'"
   >
     <slot>
-      <polygon points="0,0 30,0 15,10" />
+      <path d="M0 0L6 6L12 0" />
     </slot>
   </Primitive>
 </template>
