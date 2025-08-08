@@ -43,7 +43,7 @@ const onClick = async (event: MouseEvent) => {
 
 const forwardedProps = useOmitProps(
   props,
-  ['loading', 'loadingDuration', 'autoLoading', 'loadingIcon', 'loadingIconProps', 'loadingPosition'],
+  ['loading', 'loadingText', 'loadingDuration', 'autoLoading', 'loadingIcon', 'loadingIconProps', 'loadingPosition'],
   attrs,
   { onClick }
 );
@@ -54,13 +54,23 @@ watchEffect(() => {
 </script>
 
 <template>
-  <Button v-bind="forwardedProps" :disabled="disabled" @click="onClick">
+  <Button v-bind="forwardedProps" :disabled="disabled" style="position: relative" @click="onClick">
     <template #leading>
       <Icon v-if="internalLoading && loadingPosition === 'start'" :icon="loadingIcon" v-bind="loadingIconProps" />
       <slot v-else name="leading" />
     </template>
     <span v-if="internalLoading && loadingPosition === 'center'" style="display: contents">
-      <span style="position: absolute; justify-content: center; align-items: center; display: flex; gap: 0.25rem">
+      <span
+        style="
+          position: absolute;
+          inset: 0;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          gap: 0.25rem;
+          z-index: 1;
+        "
+      >
         <Icon :icon="loadingIcon" v-bind="loadingIconProps" />
         <span v-if="loadingText">{{ loadingText }}</span>
       </span>
