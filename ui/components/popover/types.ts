@@ -9,11 +9,11 @@ import type {
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps,
-  PopperSlot
+  PopperThemeSlot
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type PopoverUi = Partial<Record<PopperSlot, ClassValue>>;
+export type PopoverUi = Partial<Record<PopperThemeSlot, ClassValue>>;
 
 export interface PopoverProps extends PopoverRootProps {
   size?: ThemeSize;

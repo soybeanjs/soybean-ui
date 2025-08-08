@@ -7,7 +7,7 @@ import type {
   TabsListProps,
   TabsRootEmits,
   TabsRootProps,
-  TabsSlot,
+  TabsThemeSlot,
   TabsTriggerProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
@@ -19,7 +19,7 @@ export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   disabled?: boolean;
 }
 
-export type TabsUi = Partial<Record<TabsSlot | 'indicatorContent', ClassValue>>;
+export type TabsUi = Partial<Record<TabsThemeSlot | 'indicatorContent', ClassValue>>;
 
 export interface TabsProps<
   T extends AcceptableValue,

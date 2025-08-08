@@ -74,10 +74,10 @@ export interface AccordionItemContextParams extends PropsToContext<AccordionItem
   disabled: ComputedRef<boolean>;
 }
 
-export type AccordionSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
+export type AccordionThemeSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
 
 export interface AccordionThemeContextParams {
-  ui: ComputedRef<Record<AccordionSlot, ClassValue>>;
+  ui: ComputedRef<Record<AccordionThemeSlot, ClassValue>>;
 }
 
 export type { AccordionContentProps, AccordionTriggerProps };

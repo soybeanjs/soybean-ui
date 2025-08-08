@@ -3,12 +3,12 @@ import type {
   AvatarImageEmits,
   AvatarImageProps,
   AvatarRootProps,
-  AvatarSlot,
+  AvatarThemeSlot,
   ClassValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type AvatarUi = Partial<Record<AvatarSlot, ClassValue>>;
+export type AvatarUi = Partial<Record<AvatarThemeSlot, ClassValue>>;
 
 export interface AvatarProps extends AvatarRootProps {
   size?: ThemeSize;

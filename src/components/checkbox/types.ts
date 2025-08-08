@@ -83,10 +83,10 @@ export type CheckboxRootContextParams = PropsToContext<
   state: ComputedRef<CheckedState>;
 };
 
-export type CheckboxSlot = 'root' | 'indicator' | 'groupRoot' | 'label' | 'control';
+export type CheckboxThemeSlot = 'root' | 'indicator' | 'groupRoot' | 'label' | 'control';
 
 export interface CheckboxThemeContextParams {
-  ui: ComputedRef<Record<CheckboxSlot, ClassValue>>;
+  ui: ComputedRef<Record<CheckboxThemeSlot, ClassValue>>;
 }
 
 export type { CheckboxLabelProps };

@@ -17,7 +17,7 @@ import type {
   SelectScrollDownButtonProps,
   SelectScrollUpButtonProps,
   SelectSeparatorProps,
-  SelectSlot,
+  SelectThemeSlot,
   SelectTriggerIconProps,
   SelectTriggerProps,
   SelectValueProps,
@@ -81,7 +81,7 @@ export interface SelectOptionProps<T extends DefinedValue = DefinedValue> {
 
 export type SelectOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
 
-export type SelectUi = Partial<Record<SelectSlot, ClassValue>>;
+export type SelectUi = Partial<Record<SelectThemeSlot, ClassValue>>;
 
 export type GetSelectOptionValue<T> = T extends any[] ? T[number] : NonNullable<T>;
 

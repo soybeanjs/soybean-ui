@@ -82,10 +82,10 @@ export type RadioGroupItemContextParams = PropsToContext<
 
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export type RadioGroupSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
+export type RadioGroupThemeSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
 
 export interface RadioGroupThemeContextParams {
-  ui: ComputedRef<Record<RadioGroupSlot, ClassValue>>;
+  ui: ComputedRef<Record<RadioGroupThemeSlot, ClassValue>>;
 }
 
 export type { RadioGroupLabelProps };

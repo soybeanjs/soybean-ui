@@ -17,8 +17,8 @@ export interface DividerRootProps extends /** @vue-ignore */ HTMLAttributes {
   decorative?: boolean;
 }
 
-export type DividerSlot = 'root' | 'label';
+export type DividerThemeSlot = 'root' | 'label';
 
 export interface DividerThemeContextParams {
-  ui: ComputedRef<Record<DividerSlot, ClassValue>>;
+  ui: ComputedRef<Record<DividerThemeSlot, ClassValue>>;
 }

@@ -6,14 +6,14 @@ import type {
   CheckboxLabelProps,
   CheckboxRootEmits,
   CheckboxRootProps,
-  CheckboxSlot,
+  CheckboxThemeSlot,
   ClassValue,
   DefinedValue
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { CheckboxShape } from '@variants/checkbox';
 
-export type CheckboxUi = Partial<Record<CheckboxSlot, ClassValue>>;
+export type CheckboxUi = Partial<Record<CheckboxThemeSlot, ClassValue>>;
 
 export interface CheckboxProps extends CheckboxRootProps {
   ui?: CheckboxUi;
@@ -28,9 +28,9 @@ export interface CheckboxProps extends CheckboxRootProps {
 
 export type CheckboxEmits = CheckboxRootEmits;
 
-export type CheckboxCardSlot = CheckboxSlot | 'content' | 'textContent' | 'icon' | 'description';
+export type CheckboxCardThemeSlot = CheckboxThemeSlot | 'content' | 'textContent' | 'icon' | 'description';
 
-export type CheckboxCardUi = Partial<Record<CheckboxCardSlot, ClassValue>>;
+export type CheckboxCardUi = Partial<Record<CheckboxCardThemeSlot, ClassValue>>;
 
 export interface CheckboxCardProps extends CheckboxProps {
   ui?: CheckboxCardUi;
@@ -86,5 +86,5 @@ export type {
   CheckboxLabelProps,
   CheckboxGroupRootProps,
   CheckboxGroupRootEmits,
-  CheckboxSlot
+  CheckboxThemeSlot
 };

@@ -5,7 +5,7 @@ import type {
   TabsIndicatorProps,
   TabsListProps,
   TabsRootProps,
-  TabsSlot,
+  TabsThemeSlot,
   TabsTriggerProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
@@ -17,7 +17,7 @@ export interface SegmentOptionData<T extends DefinedValue = DefinedValue> {
   disabled?: boolean;
 }
 
-type SegmentUi = Partial<Record<TabsSlot | 'indicatorContent', ClassValue>>;
+type SegmentUi = Partial<Record<TabsThemeSlot | 'indicatorContent', ClassValue>>;
 
 export interface SegmentProps<
   T extends AcceptableValue,

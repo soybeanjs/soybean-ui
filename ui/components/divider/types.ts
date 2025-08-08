@@ -1,8 +1,8 @@
-import type { Align, ClassValue, DividerLabelProps, DividerRootProps, DividerSlot } from '@headless';
+import type { Align, ClassValue, DividerLabelProps, DividerRootProps, DividerThemeSlot } from '@headless';
 import type { ThemeSize } from '@theme';
 import type { DividerBorder } from '@variants/divider';
 
-export type DividerUi = Partial<Record<DividerSlot, ClassValue>>;
+export type DividerUi = Partial<Record<DividerThemeSlot, ClassValue>>;
 
 export interface DividerProps extends DividerRootProps {
   size?: ThemeSize;

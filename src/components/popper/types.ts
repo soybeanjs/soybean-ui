@@ -155,10 +155,10 @@ export interface PopperContentContextParams {
   setArrowElement: (nodeRef: VNodeRef) => void;
 }
 
-export type PopperSlot = 'content' | 'arrow';
+export type PopperThemeSlot = 'content' | 'arrow';
 
 export interface PopoverThemeContextParams {
-  ui: ComputedRef<Record<PopperSlot, string>>;
+  ui: ComputedRef<Record<PopperThemeSlot, string>>;
 }
 
 export type { PopperArrowProps };

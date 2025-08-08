@@ -31,8 +31,8 @@ export interface CollapsibleRootContextParams
   open: Ref<boolean | undefined>;
 }
 
-export type CollapsibleSlot = 'root' | 'trigger' | 'content';
+export type CollapsibleThemeSlot = 'root' | 'trigger' | 'content';
 
 export interface CollapsibleThemeContextParams {
-  ui: ComputedRef<Record<CollapsibleSlot, ClassValue>>;
+  ui: ComputedRef<Record<CollapsibleThemeSlot, ClassValue>>;
 }

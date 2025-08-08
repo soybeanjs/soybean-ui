@@ -48,8 +48,8 @@ export interface SwitchRootContextParams<T extends AcceptableBooleanValue = bool
   modelValue: ShallowRef<T>;
 }
 
-export type SwitchSlot = 'root' | 'control' | 'thumb';
+export type SwitchThemeSlot = 'root' | 'control' | 'thumb';
 
 export interface SwitchThemeContextParams {
-  ui: ComputedRef<Record<SwitchSlot, ClassValue>>;
+  ui: ComputedRef<Record<SwitchThemeSlot, ClassValue>>;
 }

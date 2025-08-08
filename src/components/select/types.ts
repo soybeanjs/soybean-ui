@@ -218,7 +218,7 @@ export interface SelectItemCollectionItemData {
 }
 
 // Theme Context
-export type SelectSlot =
+export type SelectThemeSlot =
   | 'trigger'
   | 'triggerIcon'
   | 'value'
@@ -235,5 +235,5 @@ export type SelectSlot =
   | 'arrow';
 
 export interface SelectThemeContextParams {
-  ui: ComputedRef<Record<SelectSlot, ClassValue>>;
+  ui: ComputedRef<Record<SelectThemeSlot, ClassValue>>;
 }

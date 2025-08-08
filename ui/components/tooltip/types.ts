@@ -1,7 +1,7 @@
 import type {
   ClassValue,
   Placement,
-  PopperSlot,
+  PopperThemeSlot,
   TooltipArrowProps,
   TooltipContentEmits,
   TooltipContentProps,
@@ -12,7 +12,7 @@ import type {
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type TooltipUi = Partial<Record<PopperSlot, ClassValue>>;
+export type TooltipUi = Partial<Record<PopperThemeSlot, ClassValue>>;
 
 export interface TooltipProps extends TooltipRootProps {
   size?: ThemeSize;

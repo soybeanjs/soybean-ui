@@ -7,12 +7,12 @@ import type {
   RadioGroupLabelProps,
   RadioGroupRootEmits,
   RadioGroupRootProps,
-  RadioGroupSlot
+  RadioGroupThemeSlot
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { RadioGroupVariant } from '@variants/radio-group';
 
-export type RadioGroupUi = Partial<Record<RadioGroupSlot, ClassValue>>;
+export type RadioGroupUi = Partial<Record<RadioGroupThemeSlot, ClassValue>>;
 
 export interface RadioProps extends RadioGroupItemProps {
   label?: string;
@@ -44,9 +44,9 @@ export interface RadioGroupProps<
 
 export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 
-export type RadioGroupCardSlot = RadioGroupSlot | 'content' | 'textContent' | 'icon' | 'description';
+export type RadioGroupCardThemeSlot = RadioGroupThemeSlot | 'content' | 'textContent' | 'icon' | 'description';
 
-export type RadioGroupCardUi = Partial<Record<RadioGroupCardSlot, ClassValue>>;
+export type RadioGroupCardUi = Partial<Record<RadioGroupCardThemeSlot, ClassValue>>;
 
 export interface RadioCardProps extends RadioProps {
   ui?: RadioGroupCardUi;

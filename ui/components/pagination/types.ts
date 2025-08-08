@@ -6,12 +6,12 @@ import type {
   PaginationListProps,
   PaginationRootEmits,
   PaginationRootProps,
-  PaginationSlot
+  PaginationThemeSlot
 } from '@headless';
 import type { ThemeSize } from '@theme';
 import type { PaginationShape, PaginationVariant } from '@variants/pagination';
 
-export type PaginationUi = Partial<Record<PaginationSlot, ClassValue>>;
+export type PaginationUi = Partial<Record<PaginationThemeSlot, ClassValue>>;
 
 export interface PaginationProps extends PaginationRootProps {
   /** The custom ui class names */

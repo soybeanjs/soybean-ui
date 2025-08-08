@@ -5,7 +5,7 @@ import type {
   AccordionItemProps,
   AccordionRootEmits,
   AccordionRootProps,
-  AccordionSlot,
+  AccordionThemeSlot,
   AccordionTriggerProps,
   ClassValue,
   SingleOrMultipleValue
@@ -25,7 +25,7 @@ export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'd
   icon?: VNode | Component | string;
 }
 
-export type AccordionUi = Partial<Record<AccordionSlot | 'triggerLeadingIcon' | 'triggerIcon', ClassValue>>;
+export type AccordionUi = Partial<Record<AccordionThemeSlot | 'triggerLeadingIcon' | 'triggerIcon', ClassValue>>;
 
 export type AccordionProps<
   T extends AccordionItemData = AccordionItemData,

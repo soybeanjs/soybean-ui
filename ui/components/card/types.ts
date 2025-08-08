@@ -4,14 +4,14 @@ import type {
   CardFooterProps,
   CardHeaderProps,
   CardRootProps,
-  CardSlot,
+  CardThemeSlot,
   CardTitleProps,
   CardTitleRootProps,
   ClassValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type CardUi = Partial<Record<CardSlot, ClassValue>>;
+export type CardUi = Partial<Record<CardThemeSlot, ClassValue>>;
 
 export interface CardProps extends CardRootProps {
   size?: ThemeSize;

@@ -57,10 +57,10 @@ export interface TabsRootContextParams
   modelValue: ShallowRef<AcceptableValue>;
 }
 
-export type TabsSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator';
+export type TabsThemeSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator';
 
 export interface TabsThemeContextParams {
-  ui: ComputedRef<Record<TabsSlot, ClassValue>>;
+  ui: ComputedRef<Record<TabsThemeSlot, ClassValue>>;
 }
 
 export interface IndicatorStyle {

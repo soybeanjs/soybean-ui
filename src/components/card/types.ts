@@ -15,8 +15,8 @@ export interface CardTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface CardDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export type CardSlot = 'root' | 'header' | 'content' | 'footer' | 'titleRoot' | 'title' | 'description';
+export type CardThemeSlot = 'root' | 'header' | 'content' | 'footer' | 'titleRoot' | 'title' | 'description';
 
 export interface CardThemeContextParams {
-  ui: ComputedRef<Record<CardSlot, ClassValue>>;
+  ui: ComputedRef<Record<CardThemeSlot, ClassValue>>;
 }

@@ -3,12 +3,12 @@ import type {
   CollapsibleContentProps,
   CollapsibleRootEmits,
   CollapsibleRootProps,
-  CollapsibleSlot,
+  CollapsibleThemeSlot,
   CollapsibleTriggerProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type CollapsibleUi = Partial<Record<CollapsibleSlot, ClassValue>>;
+export type CollapsibleUi = Partial<Record<CollapsibleThemeSlot, ClassValue>>;
 
 export interface CollapsibleProps extends CollapsibleRootProps {
   size?: ThemeSize;

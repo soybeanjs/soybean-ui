@@ -67,10 +67,10 @@ export interface DialogRootContextParams extends PropsToContext<DialogRootProps,
   open: Ref<boolean | undefined>;
 }
 
-export type DialogSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description' | 'closeIcon';
+export type DialogThemeSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description' | 'closeIcon';
 
 export interface DialogThemeContextParams {
-  ui: ComputedRef<Record<DialogSlot, ClassValue>>;
+  ui: ComputedRef<Record<DialogThemeSlot, ClassValue>>;
 }
 
 export type { DialogPortalProps };

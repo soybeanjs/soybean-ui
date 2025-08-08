@@ -45,10 +45,10 @@ export interface PaginationRootContextParams
   page: ShallowRef<number>;
 }
 
-export type PaginationSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
+export type PaginationThemeSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
 
 export interface PaginationThemeContextParams {
-  ui: ComputedRef<Record<PaginationSlot, ClassValue>>;
+  ui: ComputedRef<Record<PaginationThemeSlot, ClassValue>>;
 }
 
 export interface PageEllipsis {

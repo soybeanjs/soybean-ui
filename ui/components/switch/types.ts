@@ -4,13 +4,13 @@ import type {
   SwitchControlProps,
   SwitchRootEmits,
   SwitchRootProps,
-  SwitchSlot,
+  SwitchThemeSlot,
   SwitchThumbProps
 } from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { SwitchShape } from '@variants/switch';
 
-export type SwitchUi = Partial<Record<SwitchSlot, ClassValue>>;
+export type SwitchUi = Partial<Record<SwitchThemeSlot, ClassValue>>;
 
 export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
   ui?: SwitchUi;

@@ -11,7 +11,7 @@ import {
   PaginationRoot,
   providePaginationThemeContext
 } from '@headless';
-import type { PaginationSlot } from '@headless';
+import type { PaginationThemeSlot } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { cn, mergeSlotVariants } from '@theme';
 import { paginationVariants } from '@variants/pagination';
@@ -54,7 +54,7 @@ const ui = computed(() => {
     actionAsSelected: props.actionAsSelected
   });
 
-  const slots: PaginationSlot[] = ['listItem', 'first', 'prev', 'next', 'last'];
+  const slots: PaginationThemeSlot[] = ['listItem', 'first', 'prev', 'next', 'last'];
 
   return {
     ...mergeSlotVariants(variants, props.ui),
@@ -63,7 +63,7 @@ const ui = computed(() => {
         acc[slot] = cn(slot === 'listItem' ? variants.button() : variants.navigationButton(), props.ui?.[slot]);
         return acc;
       },
-      {} as Record<PaginationSlot, string>
+      {} as Record<PaginationThemeSlot, string>
     )
   };
 });

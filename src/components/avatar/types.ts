@@ -28,8 +28,8 @@ export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
   delayMs?: number;
 }
 
-export type AvatarSlot = 'root' | 'image' | 'fallback';
+export type AvatarThemeSlot = 'root' | 'image' | 'fallback';
 
 export interface AvatarThemeContextParams {
-  ui: ComputedRef<Record<AvatarSlot, ClassValue>>;
+  ui: ComputedRef<Record<AvatarThemeSlot, ClassValue>>;
 }
