@@ -7,7 +7,6 @@ import type {
   MenuCheckboxGroupProps as DropdownMenuCheckboxGroupProps,
   MenuCheckboxItemEmits as DropdownMenuCheckboxItemEmits,
   MenuCheckboxItemProps as DropdownMenuCheckboxItemProps,
-  MenuContentEmits as DropdownMenuContentEmits,
   MenuContentProps as DropdownMenuContentProps,
   MenuGroupLabelProps as DropdownMenuGroupLabelProps,
   MenuGroupProps as DropdownMenuGroupProps,
@@ -26,6 +25,7 @@ import type {
   MenuSubProps as DropdownMenuSubProps,
   MenuSubTriggerProps as DropdownMenuSubTriggerProps,
   MenuTriggerProps as DropdownMenuTriggerProps,
+  MenuContentEmits,
   MenuRootEmits,
   MenuRootProps
 } from '../menu';
@@ -68,10 +68,11 @@ export interface DropdownMenuHoverContextParams
   open: ShallowRef<boolean | undefined>;
 }
 
+export type DropdownMenuContentEmits = MenuContentEmits;
+
 export type {
   DropdownMenuPortalProps,
   DropdownMenuContentProps,
-  DropdownMenuContentEmits,
   DropdownMenuTriggerProps,
   DropdownMenuSubEmits,
   DropdownMenuSubProps,

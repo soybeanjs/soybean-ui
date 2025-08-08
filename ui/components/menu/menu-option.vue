@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+import { computed } from 'vue';
 import {
   MenuGroup,
   MenuGroupLabel,
@@ -16,6 +17,7 @@ import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import SMenuItemSlot from './menu-item-slot.vue';
 import { useCommonSlotKeys } from './shared';
+import { useMenuExtraThemeContext } from './context';
 import type { MenuOptionData, MenuOptionEmits, MenuOptionProps } from './types';
 
 defineOptions({
@@ -42,10 +44,14 @@ const forwardedItemProps = useOmitProps(props, ['item']);
 const forwardedListeners = useForwardListeners(emit);
 
 const commonSlotKeys = useCommonSlotKeys(slots);
+
+const themeContext = useMenuExtraThemeContext();
+
+const ui = computed(() => ({ ...themeContext?.ui?.value }));
 </script>
 
 <template>
-  <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps" :class="ui?.groupLabel">
+  <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
     <SMenuItemSlot :icon="item.icon" :label="item.label">
       <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
         <slot :name="slotKey" :item="item" />
@@ -60,14 +66,14 @@ const commonSlotKeys = useCommonSlotKeys(slots);
     :text-value="item.textValue"
     @select="emit('select', item, $event)"
   >
-    <Link v-bind="item.linkProps" :disabled="item.disabled" :class="ui?.item">
+    <Link v-bind="item.linkProps" :disabled="item.disabled">
       <SMenuItemSlot :icon="item.icon" :label="item.label">
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" />
         </template>
         <template #link-icon>
           <slot name="item-link-icon" :item="item">
-            <Icon icon="lucide:arrow-up-right" :class="ui?.itemLinkIcon" />
+            <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
           </slot>
         </template>
       </SMenuItemSlot>
@@ -78,7 +84,6 @@ const commonSlotKeys = useCommonSlotKeys(slots);
     v-bind="itemProps"
     :disabled="item.disabled"
     :text-value="item.textValue"
-    :class="ui?.item"
     @select="emit('select', item, $event)"
   >
     <SMenuItemSlot :icon="item.icon" :label="item.label">
@@ -86,32 +91,27 @@ const commonSlotKeys = useCommonSlotKeys(slots);
         <slot :name="slotKey" :item="item" />
       </template>
       <template #shortcut>
-        <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="ui?.shortcut" />
+        <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="ui.shortcut" />
       </template>
     </SMenuItemSlot>
   </MenuItem>
   <MenuSub v-else v-bind="subProps" @update:open="emit('update:open', $event)">
-    <MenuSubTrigger
-      v-bind="subTriggerProps"
-      :disabled="item.disabled"
-      :text-value="item.textValue"
-      :class="ui?.subTrigger"
-    >
+    <MenuSubTrigger v-bind="subTriggerProps" :disabled="item.disabled" :text-value="item.textValue">
       <SMenuItemSlot :icon="item.icon" :label="item.label">
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" :is-trigger="true" />
         </template>
         <template #trigger-icon>
           <slot name="item-trigger-icon" :item="item">
-            <Icon icon="lucide:chevron-right" :class="ui?.subTriggerIcon" />
+            <Icon icon="lucide:chevron-right" :class="ui.subTriggerIcon" />
           </slot>
         </template>
       </SMenuItemSlot>
     </MenuSubTrigger>
-    <MenuSeparator v-if="item.separator" :class="ui?.separator" />
+    <MenuSeparator v-if="item.separator" />
     <MenuPortal v-bind="portalProps">
-      <MenuSubContent v-bind="subContentProps" :class="ui?.subContent" v-on="forwardedListeners">
-        <MenuGroup v-bind="groupProps" :class="ui?.group">
+      <MenuSubContent v-bind="subContentProps" v-on="forwardedListeners">
+        <MenuGroup v-bind="groupProps">
           <SMenuOption
             v-for="child in item.children"
             :key="child.value"
@@ -123,5 +123,5 @@ const commonSlotKeys = useCommonSlotKeys(slots);
       </MenuSubContent>
     </MenuPortal>
   </MenuSub>
-  <MenuSeparator v-if="item.separator && !item.children" v-bind="separatorProps" :class="ui?.separator" />
+  <MenuSeparator v-if="item.separator && !item.children" v-bind="separatorProps" />
 </template>

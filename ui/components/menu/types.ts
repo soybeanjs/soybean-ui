@@ -1,15 +1,12 @@
-import type { Component, VNode } from 'vue';
+import type { Component, ComputedRef, VNode } from 'vue';
 import type {
-  AcceptableValue,
+  AcceptableBooleanValue,
   ClassValue,
   DefinedValue,
   KbdValue,
-  MenuArrowProps,
   MenuCheckboxGroupEmits,
   MenuCheckboxGroupProps,
   MenuCheckboxItemProps,
-  MenuContentEmits,
-  MenuContentProps,
   MenuGroupLabelProps,
   MenuGroupProps,
   MenuItemIndicatorProps,
@@ -18,8 +15,6 @@ import type {
   MenuRadioGroupEmits,
   MenuRadioGroupProps,
   MenuRadioItemProps,
-  MenuRootEmits,
-  MenuRootProps,
   MenuSeparatorProps,
   MenuSubContentEmits,
   MenuSubContentProps,
@@ -28,12 +23,10 @@ import type {
   MenuSubTriggerProps,
   MenuThemeSlot
 } from '@headless';
-import type { ThemeSize } from '@theme';
 import type { LinkProps } from '../link/types';
 import type { KbdProps } from '../kbd/types';
 
-export interface MenuOptionData<T extends DefinedValue = DefinedValue>
-  extends Pick<MenuItemProps, 'disabled' | 'textValue'> {
+export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'disabled' | 'textValue'> {
   /** The label to display in the menu. */
   label: string;
   /** The value of the option. */
@@ -66,12 +59,13 @@ export interface MenuOptionData<T extends DefinedValue = DefinedValue>
 
 export interface MenuShortcutProps extends Omit<KbdProps, 'value'> {}
 
-export type MenuUi = Partial<
-  Record<MenuThemeSlot | 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon', ClassValue>
->;
+export type MenuExtraThemeSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon';
+
+export type MenuExtraUi = Partial<Record<MenuExtraThemeSlot, ClassValue>>;
+
+export type MenuUi = Partial<Record<MenuThemeSlot | MenuExtraThemeSlot, ClassValue>>;
 
 export interface MenuOptionProps<T extends DefinedValue = DefinedValue> {
-  ui?: MenuUi;
   item: MenuOptionData<T>;
   itemProps?: MenuItemProps;
   groupProps?: MenuGroupProps;
@@ -101,28 +95,6 @@ export interface MenuOptionsProps<
 
 export type MenuOptionsEmits<T extends MenuOptionData = MenuOptionData> = MenuOptionEmits<T>;
 
-/**
- * The props of the menu wrapper.
- *
- * @description This is a wrapper component for the menu, it is combined with MenuRoot, MenuContent, MenuPortal, MenuArrow.
- */
-export interface MenuWrapperProps extends MenuRootProps {
-  size?: ThemeSize;
-  ui?: MenuUi;
-  showArrow?: boolean;
-  portalProps?: MenuPortalProps;
-  contentProps?: MenuContentProps;
-  arrowProps?: MenuArrowProps;
-}
-
-export type MenuWrapperEmits = MenuRootEmits & MenuContentEmits;
-
-export interface MenuProps<T extends DefinedValue = DefinedValue, S extends MenuOptionData<T> = MenuOptionData<T>>
-  extends MenuWrapperProps,
-    MenuOptionsProps<T, S> {}
-
-export type MenuEmits<T extends MenuOptionData = MenuOptionData> = MenuRootEmits & MenuOptionsEmits<T>;
-
 export interface MenuCheckboxOptionData<T extends DefinedValue = DefinedValue>
   extends Omit<MenuOptionData<T>, 'linkProps' | 'children'> {}
 
@@ -130,7 +102,6 @@ export interface MenuCheckboxOptionsProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
 > extends Omit<MenuCheckboxGroupProps<T>, 'dir' | 'onSelect'> {
-  ui?: MenuUi;
   items: S[];
   groupLabelProps?: MenuGroupLabelProps;
   checkboxItemProps?: MenuCheckboxItemProps;
@@ -147,13 +118,13 @@ export type MenuCheckboxOptionsEmits<
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
 > = MenuCheckboxGroupEmits<T> & MenuCheckboxSelectEmits<S>;
 
-export type MenuRadioOptionData<T extends DefinedValue = DefinedValue> = MenuCheckboxOptionData<T>;
+export interface MenuRadioOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
+  extends Omit<MenuOptionData<NonNullable<T>>, 'linkProps' | 'children'> {}
 
 export interface MenuRadioOptionsProps<
-  T extends AcceptableValue = AcceptableValue,
-  S extends MenuRadioOptionData<NonNullable<T>> = MenuRadioOptionData<NonNullable<T>>
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 > extends Omit<MenuRadioGroupProps<T>, 'dir' | 'onSelect'> {
-  ui?: MenuUi;
   items: S[];
   groupLabelProps?: MenuGroupLabelProps;
   radioItemProps?: MenuRadioItemProps;
@@ -166,6 +137,10 @@ export type MenuRadioSelectEmits<T extends MenuRadioOptionData = MenuRadioOption
   select: [item: T, event: Event];
 };
 export type MenuRadioOptionsEmits<
-  T extends DefinedValue = DefinedValue,
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 > = MenuRadioGroupEmits<T> & MenuRadioSelectEmits<S>;
+
+export interface MenuExtraThemeContextParams {
+  ui: ComputedRef<Record<MenuExtraThemeSlot, ClassValue>>;
+}

@@ -16,6 +16,7 @@ export * from './components/icon';
 export * from './components/kbd';
 export * from './components/label';
 export * from './components/link';
+export * from './components/menu';
 export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio-group';
@@ -28,4 +29,3 @@ export * from './components/visually-hidden';
 
 export type { ThemeColor, ThemeSize } from './theme/types';
 export type * from '@headless/types';
-export type * from './components/menu/types';

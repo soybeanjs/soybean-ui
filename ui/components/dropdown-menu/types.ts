@@ -1,52 +1,71 @@
-import type { AcceptableValue, DefinedValue, DropdownMenuRootProps, DropdownMenuTriggerProps } from '@headless';
+import type {
+  AcceptableBooleanValue,
+  DefinedValue,
+  DropdownMenuArrowProps,
+  DropdownMenuContentEmits,
+  DropdownMenuContentProps,
+  DropdownMenuPortalProps,
+  DropdownMenuRootEmits,
+  DropdownMenuRootProps,
+  DropdownMenuTriggerProps
+} from '@headless';
+import type { ThemeSize } from '@theme';
 import type {
   MenuCheckboxOptionData,
   MenuCheckboxOptionsEmits,
   MenuCheckboxOptionsProps,
-  MenuEmits,
   MenuOptionData,
-  MenuProps,
+  MenuOptionsEmits,
+  MenuOptionsProps,
   MenuRadioOptionData,
   MenuRadioOptionsEmits,
   MenuRadioOptionsProps,
-  MenuWrapperEmits,
-  MenuWrapperProps
+  MenuUi
 } from '../menu/types';
 
-interface DropdownMenuCommonProps
-  extends Pick<DropdownMenuRootProps, 'trigger' | 'delayDuration' | 'skipDelayDuration'> {
+// Menu Wrapper
+export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
+  size?: ThemeSize;
+  ui?: MenuUi;
   disabled?: boolean;
+  showArrow?: boolean;
   triggerProps?: DropdownMenuTriggerProps;
+  portalProps?: DropdownMenuPortalProps;
+  contentProps?: DropdownMenuContentProps;
+  arrowProps?: DropdownMenuArrowProps;
 }
 
+export type DropdownMenuWrapperEmits = DropdownMenuRootEmits & DropdownMenuContentEmits;
+
+// Menu
 export interface DropdownMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
-> extends MenuProps<T, S>,
-    DropdownMenuCommonProps {}
+> extends DropdownMenuWrapperProps,
+    MenuOptionsProps<T, S> {}
+export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = DropdownMenuWrapperEmits &
+  MenuOptionsEmits<T>;
 
-export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = MenuEmits<T>;
-
+// Menu Checkbox
 export interface DropdownMenuCheckboxProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> extends MenuWrapperProps,
-    MenuCheckboxOptionsProps<T, S>,
-    DropdownMenuCommonProps {}
+> extends DropdownMenuWrapperProps,
+    MenuCheckboxOptionsProps<T, S> {}
 
 export type DropdownMenuCheckboxEmits<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> = MenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
+> = DropdownMenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
 
+// Menu Radio
 export interface DropdownMenuRadioProps<
-  T extends AcceptableValue = AcceptableValue,
-  S extends MenuRadioOptionData<NonNullable<T>> = MenuRadioOptionData<NonNullable<T>>
-> extends MenuWrapperProps,
-    MenuRadioOptionsProps<T, S>,
-    DropdownMenuCommonProps {}
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> extends DropdownMenuWrapperProps,
+    MenuRadioOptionsProps<T, S> {}
 
 export type DropdownMenuRadioEmits<
-  T extends DefinedValue = DefinedValue,
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-> = MenuWrapperEmits & MenuRadioOptionsEmits<T, S>;
+> = DropdownMenuWrapperEmits & MenuRadioOptionsEmits<T, S>;

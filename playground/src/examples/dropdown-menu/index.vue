@@ -5,6 +5,7 @@ import DemoDropdownMenuTrigger from './trigger.vue';
 import DemoDropdownMenuArrow from './arrow.vue';
 import DemoDropdownMenuCheckbox from './checkbox.vue';
 import DemoDropdownMenuRadio from './radio.vue';
+import DemoDropdownMenuMix from './mix.vue';
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import DemoDropdownMenuRadio from './radio.vue';
     <DemoDropdownMenuArrow />
     <DemoDropdownMenuCheckbox />
     <DemoDropdownMenuRadio />
+    <DemoDropdownMenuMix />
   </SCard>
 </template>

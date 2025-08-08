@@ -3,14 +3,16 @@ import { ref } from 'vue';
 import { SButton, SCard, SDropdownMenuCheckbox } from '@ui';
 import type { MenuCheckboxOptionData } from '@ui';
 
-const modelValue = ref<string[]>([]);
+const modelValue = ref<string[]>(['Vue', 'Solid']);
 
 const items = ref<MenuCheckboxOptionData<string>[]>([
-  { isGroupLabel: true, value: 'myAccount', label: 'My Account', separator: true },
-  { value: '01', label: 'Profile', icon: 'lucide:user', shortcut: ['command', 'shift', 'p'] },
-  { value: '02', label: 'Billing', icon: 'lucide:credit-card', shortcut: ['command', 'b'] },
-  { value: '03', label: 'Settings', icon: 'lucide:settings', shortcut: ['command', 's'], separator: true },
-  { value: '04', label: 'Keyboard shortcuts', icon: 'lucide:keyboard', shortcut: ['command', 'k'] }
+  { isGroupLabel: true, value: 'JSFramework', label: 'JS Frameworks', separator: true },
+  { value: 'vue', label: 'Vue', icon: 'logos:vue' },
+  { value: 'react', label: 'React', icon: 'logos:react' },
+  { value: 'angular', label: 'Angular', icon: 'logos:angular' },
+  { value: 'svelte', label: 'Svelte', icon: 'logos:svelte' },
+  { value: 'solid', label: 'Solid', icon: 'logos:solid' },
+  { value: 'preact', label: 'Preact', icon: 'logos:preact' }
 ]);
 </script>
 

@@ -37,7 +37,7 @@ const forwardedListeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <MenuGroup v-bind="groupProps" :class="ui?.group">
+  <MenuGroup v-bind="groupProps">
     <SMenuOption
       v-for="item in items"
       :key="item.value"
