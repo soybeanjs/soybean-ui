@@ -8,13 +8,4 @@ export { CheckboxRoot, CheckboxControl, CheckboxIndicator, CheckboxLabel, Checkb
 
 export { provideCheckboxThemeContext } from './context';
 
-export type {
-  CheckboxRootProps,
-  CheckboxRootEmits,
-  CheckboxControlProps,
-  CheckboxIndicatorProps,
-  CheckboxLabelProps,
-  CheckboxGroupRootProps,
-  CheckboxGroupRootEmits,
-  CheckboxSlot
-} from './types';
+export type * from './types';

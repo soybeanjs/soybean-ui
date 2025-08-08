@@ -3,4 +3,4 @@ import VisuallyHiddenInput from './visually-hidden-input.vue';
 
 export { VisuallyHidden, VisuallyHiddenInput };
 
-export type { VisuallyHiddenProps, VisuallyHiddenInputProps } from './types';
+export type * from './types';

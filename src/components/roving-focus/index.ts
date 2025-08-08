@@ -3,4 +3,4 @@ import RovingFocusItem from './roving-focus-item.vue';
 
 export { RovingFocusGroup, RovingFocusItem };
 
-export type { RovingFocusGroupProps, RovingFocusGroupEmits, RovingFocusItemProps } from './types';
+export type * from './types';

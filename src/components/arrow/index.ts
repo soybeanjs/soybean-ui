@@ -1,4 +1,4 @@
 import Arrow from './arrow.vue';
 
 export { Arrow };
-export type { ArrowProps } from './types';
+export type * from './types';

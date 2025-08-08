@@ -8,12 +8,4 @@ export { AccordionRoot, AccordionItem, AccordionTrigger, AccordionHeader, Accord
 
 export { provideAccordionThemeContext } from './context';
 
-export type {
-  AccordionRootProps,
-  AccordionRootEmits,
-  AccordionItemProps,
-  AccordionTriggerProps,
-  AccordionHeaderProps,
-  AccordionContentProps,
-  AccordionSlot
-} from './types';
+export type * from './types';

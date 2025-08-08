@@ -7,7 +7,7 @@ export interface VisuallyHiddenProps extends PrimitiveProps, /** @vue-ignore */ 
   feature?: VisuallyHiddenFeature;
 }
 
-export interface VisuallyHiddenInputBubbleProps<T> extends /** @vue-ignore */ InputHTMLAttributes {
+export interface VisuallyHiddenInputProps<T> extends /** @vue-ignore */ InputHTMLAttributes {
   name: string;
   value: T;
   checked?: boolean;
@@ -15,5 +15,3 @@ export interface VisuallyHiddenInputBubbleProps<T> extends /** @vue-ignore */ In
   disabled?: boolean;
   feature?: VisuallyHiddenFeature;
 }
-
-export type VisuallyHiddenInputProps<T> = VisuallyHiddenInputBubbleProps<T>;

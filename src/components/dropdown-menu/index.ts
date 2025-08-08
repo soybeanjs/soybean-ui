@@ -40,32 +40,4 @@ export {
   DropdownMenuSeparator
 };
 
-export type {
-  DropdownMenuRootProps,
-  DropdownMenuRootEmits,
-  DropdownMenuPortalProps,
-  DropdownMenuContentProps,
-  DropdownMenuContentEmits,
-  DropdownMenuTriggerProps,
-  DropdownMenuSubProps,
-  DropdownMenuSubEmits,
-  DropdownMenuSubContentProps,
-  DropdownMenuSubContentEmits,
-  DropdownMenuSubTriggerProps,
-  DropdownMenuAnchorProps,
-  DropdownMenuArrowProps,
-  DropdownMenuGroupProps,
-  DropdownMenuItemProps,
-  DropdownMenuItemEmits,
-  DropdownMenuCheckboxGroupProps,
-  DropdownMenuCheckboxGroupEmits,
-  DropdownMenuCheckboxItemProps,
-  DropdownMenuCheckboxItemEmits,
-  DropdownMenuRadioGroupProps,
-  DropdownMenuRadioGroupEmits,
-  DropdownMenuRadioItemProps,
-  DropdownMenuRadioItemEmits,
-  DropdownMenuItemIndicatorProps,
-  DropdownMenuGroupLabelProps,
-  DropdownMenuSeparatorProps
-} from './types';
+export type * from './types';

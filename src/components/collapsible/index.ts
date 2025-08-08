@@ -6,10 +6,4 @@ export { CollapsibleRoot, CollapsibleContent, CollapsibleTrigger };
 
 export { provideCollapsibleThemeContext } from './context';
 
-export type {
-  CollapsibleRootProps,
-  CollapsibleRootEmits,
-  CollapsibleContentProps,
-  CollapsibleTriggerProps,
-  CollapsibleSlot
-} from './types';
+export type * from './types';

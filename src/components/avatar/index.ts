@@ -6,4 +6,4 @@ export { AvatarRoot, AvatarImage, AvatarFallback };
 
 export { provideAvatarThemeContext } from './context';
 
-export type { AvatarRootProps, AvatarImageProps, AvatarImageEmits, AvatarFallbackProps, AvatarSlot } from './types';
+export type * from './types';

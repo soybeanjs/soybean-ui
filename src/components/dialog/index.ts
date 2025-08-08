@@ -24,18 +24,4 @@ export {
 
 export { provideDialogThemeContext } from './context';
 
-export type {
-  DialogRootProps,
-  DialogRootEmits,
-  DialogTriggerProps,
-  DialogOverlayProps,
-  DialogContentProps,
-  DialogContentEmits,
-  DialogTitleProps,
-  DialogDescriptionProps,
-  DialogCloseProps,
-  DialogHeaderProps,
-  DialogFooterProps,
-  DialogPortalProps,
-  DialogSlot
-} from './types';
+export type * from './types';

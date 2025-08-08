@@ -8,14 +8,4 @@ export { RadioGroupRoot, RadioGroupItem, RadioGroupControl, RadioGroupIndicator,
 
 export { provideRadioGroupThemeContext } from './context';
 
-export type {
-  RadioGroupRootProps,
-  RadioGroupRootEmits,
-  RadioGroupItemProps,
-  RadioGroupItemEmits,
-  RadioGroupControlProps,
-  RadioGroupIndicatorProps,
-  RadioSelectEvent,
-  RadioGroupLabelProps,
-  RadioGroupSlot
-} from './types';
+export type * from './types';

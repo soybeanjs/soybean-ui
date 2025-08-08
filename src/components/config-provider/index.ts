@@ -2,4 +2,4 @@ import ConfigProvider from './config-provider.vue';
 
 export { ConfigProvider };
 
-export type { ConfigProviderProps } from './types';
+export type * from './types';

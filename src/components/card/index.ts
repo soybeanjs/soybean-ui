@@ -10,13 +10,4 @@ export { CardRoot, CardHeader, CardContent, CardFooter, CardTitleRoot, CardTitle
 
 export { provideCardThemeContext } from './context';
 
-export type {
-  CardRootProps,
-  CardHeaderProps,
-  CardContentProps,
-  CardFooterProps,
-  CardTitleRootProps,
-  CardTitleProps,
-  CardDescriptionProps,
-  CardSlot
-} from './types';
+export type * from './types';

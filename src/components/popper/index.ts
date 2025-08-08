@@ -7,4 +7,4 @@ export { PopperRoot, PopperAnchor, PopperContent, PopperArrow };
 
 export { providePopoverThemeContext } from './context';
 
-export type { PopperAnchorProps, PopperContentProps, PopperContentEmits, PopperArrowProps, PopperSlot } from './types';
+export type * from './types';

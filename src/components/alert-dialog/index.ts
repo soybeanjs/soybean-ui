@@ -24,17 +24,4 @@ export {
   AlertDialogClose
 };
 
-export type {
-  AlertDialogRootProps,
-  AlertDialogRootEmits,
-  AlertDialogContentProps,
-  AlertDialogContentEmits,
-  AlertDialogCloseProps,
-  AlertDialogTriggerProps,
-  AlertDialogPortalProps,
-  AlertDialogOverlayProps,
-  AlertDialogTitleProps,
-  AlertDialogDescriptionProps,
-  AlertDialogHeaderProps,
-  AlertDialogFooterProps
-} from './types';
+export type * from './types';
