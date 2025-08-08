@@ -8,13 +8,4 @@ export { TabsRoot, TabsContent, TabsIndicator, TabsList, TabsTrigger };
 
 export { provideTabsThemeContext } from './context';
 
-export type {
-  TabsRootProps,
-  TabsRootEmits,
-  TabsContentProps,
-  TabsIndicatorProps,
-  TabsListProps,
-  TabsTriggerProps,
-  TabsSlot,
-  TabsActivationMode
-} from './types';
+export type * from './types';
