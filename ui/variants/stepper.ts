@@ -207,5 +207,3 @@ export const stepperVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-export type StepperSlots = keyof typeof stepperVariants.slots;

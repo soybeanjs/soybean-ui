@@ -158,8 +158,6 @@ export const comboboxVariants = tv({
   }
 });
 
-export type ComboboxSlots = keyof typeof comboboxVariants.slots;
-
 type ComboboxVariants = VariantProps<typeof comboboxVariants>;
 
 export type ComboboxMode = NonNullable<ComboboxVariants['mode']>;

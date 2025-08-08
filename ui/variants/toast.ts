@@ -95,5 +95,3 @@ export const toastVariants = tv({
     richColor: 'default'
   }
 });
-
-export type ToastSlots = keyof typeof toastVariants.slots;

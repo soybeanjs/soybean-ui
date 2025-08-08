@@ -152,5 +152,3 @@ export const carouselVariants = tv({
     orientation: 'horizontal'
   }
 });
-
-export type CarouselSlots = keyof typeof carouselVariants.slots;

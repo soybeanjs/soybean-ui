@@ -62,5 +62,3 @@ export const tagsInputVariants = tv({
     size: 'md'
   }
 });
-
-export type TagsInputSlots = keyof typeof tagsInputVariants.slots;

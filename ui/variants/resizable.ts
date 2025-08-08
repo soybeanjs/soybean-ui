@@ -45,5 +45,3 @@ export const resizableVariants = tv({
     size: 'md'
   }
 });
-
-export type ResizableSlots = keyof typeof resizableVariants.slots;

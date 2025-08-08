@@ -118,5 +118,3 @@ export const scrollAreaVariants = tv({
     orientation: 'vertical'
   }
 });
-
-export type ScrollAreaSlots = keyof typeof scrollAreaVariants.slots;

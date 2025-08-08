@@ -108,5 +108,3 @@ export const sidebarMenuVariants = tv({
     size: 'md'
   }
 });
-
-export type SidebarMenuSlots = keyof typeof sidebarMenuVariants.slots;

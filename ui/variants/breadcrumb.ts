@@ -49,5 +49,3 @@ export const breadcrumbVariants = tv({
     size: 'md'
   }
 });
-
-export type BreadcrumbSlots = keyof typeof breadcrumbVariants.slots;

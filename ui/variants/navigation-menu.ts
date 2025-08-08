@@ -132,5 +132,3 @@ export const navigationMenuVariants = tv({
     size: 'md'
   }
 });
-
-export type NavigationMenuSlots = keyof typeof navigationMenuVariants.slots;

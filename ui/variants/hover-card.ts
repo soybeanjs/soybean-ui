@@ -12,5 +12,3 @@ export const hoverCardVariants = tv({
     arrow: 'fill-popover stroke-border'
   }
 });
-
-export type HoverCardSlots = keyof typeof hoverCardVariants.slots;

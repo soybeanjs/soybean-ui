@@ -93,5 +93,3 @@ export const sliderVariants = tv({
     size: 'md'
   }
 });
-
-export type SliderSlots = keyof typeof sliderVariants.slots;

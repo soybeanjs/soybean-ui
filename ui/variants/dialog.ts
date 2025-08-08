@@ -75,5 +75,3 @@ export const dialogVariants = tv({
     size: 'md'
   }
 });
-
-export type DialogSlots = keyof typeof dialogVariants.slots;

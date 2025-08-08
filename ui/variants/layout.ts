@@ -128,5 +128,3 @@ type LayoutVariants = VariantProps<typeof layoutVariants>;
 export type LayoutVariant = NonNullable<LayoutVariants['variant']>;
 export type LayoutCollapsible = NonNullable<LayoutVariants['collapsible']>;
 export type LayoutSide = NonNullable<LayoutVariants['side']>;
-
-export type LayoutSlots = keyof typeof layoutVariants.slots;

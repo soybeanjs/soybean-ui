@@ -94,5 +94,3 @@ export const commandVariants = tv({
     size: 'md'
   }
 });
-
-export type CommandSlots = keyof typeof commandVariants.slots;

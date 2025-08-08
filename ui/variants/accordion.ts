@@ -57,5 +57,3 @@ export const accordionVariants = tv({
     size: 'md'
   }
 });
-
-export type AccordionSlots = keyof typeof accordionVariants.slots;

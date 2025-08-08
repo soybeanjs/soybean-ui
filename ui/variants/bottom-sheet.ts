@@ -47,5 +47,3 @@ export const bottomSheetVariants = tv({
     size: 'md'
   }
 });
-
-export type BottomSheetSlots = keyof typeof bottomSheetVariants.slots;

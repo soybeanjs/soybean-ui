@@ -79,5 +79,3 @@ export const cardVariants = tv({
     split: false
   }
 });
-
-export type CardSlots = keyof typeof cardVariants.slots;

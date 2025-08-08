@@ -46,5 +46,3 @@ export const formVariants = tv({
     error: false
   }
 });
-
-export type FormSlots = keyof typeof formVariants.slots;

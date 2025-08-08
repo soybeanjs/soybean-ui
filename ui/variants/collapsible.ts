@@ -33,5 +33,3 @@ export const collapsibleVariants = tv({
     }
   }
 });
-
-export type CollapsibleSlots = keyof typeof collapsibleVariants.slots;

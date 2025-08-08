@@ -117,5 +117,3 @@ export const selectVariants = tv({
 type SelectVariants = VariantProps<typeof selectVariants>;
 
 export type SelectPosition = NonNullable<SelectVariants['position']>;
-
-export type SelectSlots = keyof typeof selectVariants.slots;

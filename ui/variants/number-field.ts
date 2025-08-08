@@ -107,5 +107,3 @@ export const numberFieldVariants = tv({
     center: false
   }
 });
-
-export type NumberFieldSlots = keyof typeof numberFieldVariants.slots;

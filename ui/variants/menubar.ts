@@ -53,5 +53,3 @@ export const menubarVariants = tv({
     size: 'md'
   }
 });
-
-export type MenubarSlots = keyof typeof menubarVariants.slots;
