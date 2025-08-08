@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { SButton, SCard, SDropdownMenuRadio } from '@ui';
 import type { MenuRadioOptionData } from '@ui';
 
@@ -20,13 +20,15 @@ const placements: MenuRadioOptionData<string>[] = [
   { value: 'left', label: 'Left' },
   { value: 'left-end', label: 'Left End' }
 ];
+
+const activeLabel = computed(() => placements.find(item => item.value === placement.value)?.label);
 </script>
 
 <template>
   <SCard title="Radio">
     <SDropdownMenuRadio v-model="placement" :items="placements">
       <template #trigger>
-        <SButton variant="pure">Radio</SButton>
+        <SButton variant="pure" class="w-30">{{ activeLabel }}</SButton>
       </template>
     </SDropdownMenuRadio>
   </SCard>
