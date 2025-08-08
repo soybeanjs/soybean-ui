@@ -44,6 +44,7 @@ useGraceArea({
   onPointerExit: () => {
     onClose();
   },
+  subAreaAttribute: 'data-soybean-menu-sub-content',
   disabled: computed(() => !hoverable.value)
 });
 
