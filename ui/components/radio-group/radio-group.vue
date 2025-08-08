@@ -21,7 +21,7 @@ defineOptions({
 
 const props = defineProps<RadioGroupProps<T, S>>();
 
-const emit = defineEmits<RadioGroupRootEmits>();
+const emit = defineEmits<RadioGroupRootEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
   'ui',
