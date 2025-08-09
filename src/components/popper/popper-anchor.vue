@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { watchEffect } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { usePopperRootContext } from './context';
@@ -14,7 +15,15 @@ const forwardedProps = useOmitProps(props, ['reference']);
 
 const { onAnchorElementChange } = usePopperRootContext('PopperAnchor');
 const [_, setAnchorElement] = useForwardElement(el => {
-  onAnchorElementChange(props.reference ?? el);
+  if (props.reference) return;
+
+  onAnchorElementChange(el);
+});
+
+watchEffect(() => {
+  if (props.reference) {
+    onAnchorElementChange(props.reference);
+  }
 });
 </script>
 
