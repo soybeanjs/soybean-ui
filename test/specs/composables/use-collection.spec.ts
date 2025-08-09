@@ -268,9 +268,9 @@ describe('useCollection', () => {
       // Each collection should be unique
       for (let i = 0; i < collections.length; i++) {
         for (let j = i + 1; j < collections.length; j++) {
-          expect(collections[i].provideCollectionContext).not.toBe(collections[j].provideCollectionContext);
-          expect(collections[i].useCollectionContext).not.toBe(collections[j].useCollectionContext);
-          expect(collections[i].useCollectionItem).not.toBe(collections[j].useCollectionItem);
+          expect(collections[i]?.provideCollectionContext).not.toBe(collections[j]?.provideCollectionContext);
+          expect(collections[i]?.useCollectionContext).not.toBe(collections[j]?.useCollectionContext);
+          expect(collections[i]?.useCollectionItem).not.toBe(collections[j]?.useCollectionItem);
         }
       }
     });

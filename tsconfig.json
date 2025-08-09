@@ -3,5 +3,5 @@
   "compilerOptions": {
     "types": ["vite/client"]
   },
-  "include": ["./playground/**/*", "./ui/**/*", "./src/**/*"]
+  "include": ["./**/*"]
 }

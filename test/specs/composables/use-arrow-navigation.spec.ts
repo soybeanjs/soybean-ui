@@ -31,7 +31,7 @@ describe('useArrowNavigation', () => {
       item.setAttribute(COLLECTION_ITEM_ATTRIBUTE, '');
     });
 
-    currentElement = collectionItems[0];
+    currentElement = collectionItems[0]!;
 
     // Mock parentElement.querySelectorAll
     parentElement.querySelectorAll = vi.fn().mockReturnValue(collectionItems);
@@ -49,7 +49,7 @@ describe('useArrowNavigation', () => {
 
     it('should navigate to previous element with left arrow', () => {
       const mockEvent = createKeyboardEvent('ArrowLeft');
-      currentElement = collectionItems[1]; // Start from middle
+      currentElement = collectionItems[1]!; // Start from middle
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement);
 
@@ -68,7 +68,7 @@ describe('useArrowNavigation', () => {
 
     it('should navigate to previous element with up arrow', () => {
       const mockEvent = createKeyboardEvent('ArrowUp');
-      currentElement = collectionItems[1]; // Start from middle
+      currentElement = collectionItems[1]!; // Start from middle
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement);
 
@@ -78,7 +78,7 @@ describe('useArrowNavigation', () => {
 
     it('should navigate to first element with Home key', () => {
       const mockEvent = createKeyboardEvent('Home');
-      currentElement = collectionItems[2]; // Start from last
+      currentElement = collectionItems[2]!; // Start from last
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement);
 
@@ -99,7 +99,7 @@ describe('useArrowNavigation', () => {
   describe('loop navigation', () => {
     it('should loop to first element when at end with loop enabled', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
-      currentElement = collectionItems[2]; // Start from last
+      currentElement = collectionItems[2]!; // Start from last
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
         loop: true
@@ -110,7 +110,7 @@ describe('useArrowNavigation', () => {
 
     it('should not loop when at end with loop disabled', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
-      currentElement = collectionItems[2]; // Start from last
+      currentElement = collectionItems[2]!; // Start from last
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
         loop: false
@@ -121,7 +121,7 @@ describe('useArrowNavigation', () => {
 
     it('should loop to last element when at beginning with loop enabled', () => {
       const mockEvent = createKeyboardEvent('ArrowLeft');
-      currentElement = collectionItems[0]; // Start from first
+      currentElement = collectionItems[0]!; // Start from first
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
         loop: true
@@ -132,7 +132,7 @@ describe('useArrowNavigation', () => {
 
     it('should not loop when at beginning with loop disabled', () => {
       const mockEvent = createKeyboardEvent('ArrowLeft');
-      currentElement = collectionItems[0]; // Start from first
+      currentElement = collectionItems[0]!; // Start from first
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
         loop: false
@@ -147,7 +147,7 @@ describe('useArrowNavigation', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
 
       // In RTL, right arrow should go backward
-      const result = useArrowNavigation(mockEvent, collectionItems[1], parentElement, {
+      const result = useArrowNavigation(mockEvent, collectionItems[1]!, parentElement, {
         dir: 'rtl'
       });
 
@@ -206,7 +206,7 @@ describe('useArrowNavigation', () => {
     it('should always allow Home/End keys regardless of arrowKeyOptions', () => {
       const mockEvent = createKeyboardEvent('Home');
 
-      const result = useArrowNavigation(mockEvent, collectionItems[2], parentElement, {
+      const result = useArrowNavigation(mockEvent, collectionItems[2]!, parentElement, {
         arrowKeyOptions: 'horizontal'
       });
 
@@ -219,7 +219,7 @@ describe('useArrowNavigation', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
 
       // Disable the next element
-      collectionItems[1].setAttribute('disabled', 'true');
+      collectionItems[1]!.setAttribute('disabled', 'true');
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement);
 
@@ -230,7 +230,7 @@ describe('useArrowNavigation', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
 
       // Set disabled="false" (should be treated as enabled)
-      collectionItems[1].setAttribute('disabled', 'false');
+      collectionItems[1]!.setAttribute('disabled', 'false');
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement);
 
@@ -256,7 +256,7 @@ describe('useArrowNavigation', () => {
   describe('focus management', () => {
     it('should focus element when focus option is true', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
-      const targetElement = collectionItems[1];
+      const targetElement = collectionItems[1]!;
       targetElement.focus = vi.fn();
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
@@ -269,7 +269,7 @@ describe('useArrowNavigation', () => {
 
     it('should not focus element when focus option is false', () => {
       const mockEvent = createKeyboardEvent('ArrowRight');
-      const targetElement = collectionItems[1];
+      const targetElement = collectionItems[1]!;
       targetElement.focus = vi.fn();
 
       const result = useArrowNavigation(mockEvent, currentElement, parentElement, {
@@ -375,7 +375,7 @@ describe('useArrowNavigation', () => {
 
       parentElement.querySelectorAll = vi.fn().mockReturnValue(customItems);
 
-      const result = useArrowNavigation(mockEvent, customItems[0], parentElement, {
+      const result = useArrowNavigation(mockEvent, customItems[0]!, parentElement, {
         attributeName: '[data-custom-item]'
       });
 
