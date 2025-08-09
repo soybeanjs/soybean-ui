@@ -1,13 +1,5 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "soybean-headless",
-  "compatibility_date": "2025-04-01",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": {
-    "enabled": true
-  },
-  "upload_source_maps": true,
-  "assets": {
-    "directory": "./playground/dist"
-  }
+  "pages_build_output_dir": "./playground/dist"
 }

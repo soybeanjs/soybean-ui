@@ -63,7 +63,7 @@
     "build:play": "vite build -c vite.play.config.ts",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
-    "deploy:play": "wrangler deploy",
+    "deploy:play": "wrangler pages deploy",
     "dev": "tsdown --watch",
     "dev:nuxt": "nuxt dev",
     "dev:play": "pnpm play",
