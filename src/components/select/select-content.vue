@@ -14,6 +14,7 @@ defineOptions({
 const props = withDefaults(defineProps<SelectContentProps>(), {
   position: 'popper',
   avoidCollisions: true,
+  prioritizePosition: true,
   bodyLock: true
 });
 
