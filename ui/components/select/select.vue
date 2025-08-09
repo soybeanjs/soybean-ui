@@ -84,8 +84,8 @@ provideSelectThemeContext({
   <SelectRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <SelectTrigger v-bind="triggerProps">
       <slot name="trigger-leading" />
-      <SelectValue v-bind="valueProps">
-        <slot name="trigger-value" />
+      <SelectValue v-slot="slotProps" v-bind="valueProps">
+        <slot name="trigger-value" v-bind="slotProps" />
       </SelectValue>
       <slot name="trigger-trailing" />
       <SelectTriggerIcon v-bind="triggerIconProps">

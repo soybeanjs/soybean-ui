@@ -5,6 +5,7 @@ import DemoSelectDefaultValue from './default-value.vue';
 import DemoSelectDisabled from './disabled.vue';
 import DemoSelectSeparator from './separator.vue';
 import DemoSelectGroup from './group.vue';
+import DemoSelectMultiple from './multiple.vue';
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import DemoSelectGroup from './group.vue';
     <DemoSelectDisabled />
     <DemoSelectSeparator />
     <DemoSelectGroup />
+    <DemoSelectMultiple />
   </SCard>
 </template>
