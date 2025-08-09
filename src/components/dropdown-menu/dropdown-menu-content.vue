@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, shallowRef, watchPostEffect } from 'vue';
-import type { CSSProperties } from 'vue';
 import { useForwardListeners, useGraceArea } from '../../composables';
 import { MenuContent } from '../menu';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
-import { popperCssVars } from '../popper/shared';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
-import { DROPDOWN_MENU_HOVER_OPEN, dropdownMenuCssVars } from './shared';
+import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
 import type { DropdownMenuContentEmits, DropdownMenuContentProps } from './types';
 
 defineOptions({
@@ -47,14 +45,6 @@ useGraceArea({
   subAreaAttribute: 'data-soybean-menu-sub-content',
   disabled: computed(() => !hoverable.value)
 });
-
-const style: CSSProperties = {
-  [dropdownMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
-  [dropdownMenuCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
-  [dropdownMenuCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
-  [dropdownMenuCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
-  [dropdownMenuCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
-};
 
 let hasInteractedOutsideRef = false;
 
@@ -113,7 +103,6 @@ watchPostEffect(() => {
     :id="contentId"
     :el-ref="setContentElement"
     :aria-labelledby="triggerId"
-    :style="style"
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
     @interact-outside="onInteractOutside"

@@ -1,6 +1,14 @@
 import { SELECTION_KEYS } from '../../constants';
 import type { Direction, NavigationKey } from '../../types';
 
+export const menuContentCssVars = {
+  transformOrigin: '--soybean-menu-content-transform-origin',
+  availableWidth: '--soybean-menu-content-available-width',
+  availableHeight: '--soybean-menu-content-available-height',
+  triggerWidth: '--soybean-menu-content-trigger-width',
+  triggerHeight: '--soybean-menu-content-trigger-height'
+};
+
 export const subMenuCssVars = {
   transformOrigin: '--soybean-sub-menu-content-transform-origin',
   availableWidth: '--soybean-sub-menu-content-available-width',

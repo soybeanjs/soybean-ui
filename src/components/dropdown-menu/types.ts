@@ -28,7 +28,7 @@ import type {
   MenuContentEmits,
   MenuRootEmits,
   MenuRootProps
-} from '../menu';
+} from '../menu/types';
 
 export type DropdownMenuTriggerType = 'click' | 'hover';
 
