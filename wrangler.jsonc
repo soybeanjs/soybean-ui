@@ -8,7 +8,6 @@
   },
   "upload_source_maps": true,
   "assets": {
-    "directory": "./playground/dist",
-    "not_found_handling": "single-page-application"
+    "directory": "./playground/dist"
   }
 }
