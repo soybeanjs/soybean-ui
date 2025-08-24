@@ -1,10 +1,9 @@
 import type { HTMLAttributes } from 'vue';
 import type { KbdKey } from '../../types';
-import type { PrimitiveProps } from '../primitive';
 
 export type KbdValue = KbdKey | (string & {});
 
-export interface KbdProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface KbdProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * The value of the component.
    */

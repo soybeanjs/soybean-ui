@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { useKbd, useOmitProps } from '../../composables';
 import type { KbdProps } from './types';
 
@@ -8,9 +7,7 @@ defineOptions({
   name: 'Kbd'
 });
 
-const props = withDefaults(defineProps<KbdProps>(), {
-  as: 'span'
-});
+const props = defineProps<KbdProps>();
 
 const forwardProps = useOmitProps(props, ['value', 'iconization']);
 
@@ -29,12 +26,10 @@ const formattedValue = computed(() => {
     })
     .join('');
 });
-
-const dataTag = computed(() => (props.as === 'kbd' ? 'kbd' : undefined));
 </script>
 
 <template>
-  <Primitive v-bind="forwardProps" :data-tag="dataTag" :data-group="Array.isArray(value) ? '' : undefined">
+  <kbd v-bind="forwardProps" :data-group="Array.isArray(value) ? '' : undefined">
     <slot>{{ formattedValue }}</slot>
-  </Primitive>
+  </kbd>
 </template>
