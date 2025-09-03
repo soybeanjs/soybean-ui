@@ -27,6 +27,19 @@ export function tryFocusFirst(candidates: HTMLElement[], preventScroll = false) 
   });
 }
 
+export function removeFromTabOrder(candidates: HTMLElement[]) {
+  candidates.forEach(candidate => {
+    candidate.dataset.tabindex = candidate.getAttribute('tabindex') || '';
+    candidate.setAttribute('tabindex', '-1');
+  });
+  return () => {
+    candidates.forEach(candidate => {
+      const prevTabIndex = candidate.dataset.tabindex as string;
+      candidate.setAttribute('tabindex', prevTabIndex);
+    });
+  };
+}
+
 /** Returns the first and last tabbable elements inside a container. */
 export function getTabbableEdges(container: HTMLElement) {
   const candidates = getTabbableCandidates(container);
