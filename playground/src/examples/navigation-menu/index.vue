@@ -209,6 +209,6 @@ const menus: NavigationMenuOptionData[] = [
 
 <template>
   <SCard title="Navigation Menu">
-    <SNavigationMenu :viewport-props="{ align: 'end' }" :items="menus" :ui="{ subLink: 'w-80' }" />
+    <SNavigationMenu :items="menus" :ui="{ subLink: 'w-80' }" />
   </SCard>
 </template>
