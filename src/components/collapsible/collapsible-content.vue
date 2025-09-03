@@ -102,6 +102,6 @@ onMounted(() => {
     :hidden="hidden"
     :style="style"
   >
-    <slot v-if="unmountOnHide ? isOpen : true" />
+    <slot v-if="!unmountOnHide || isOpen" />
   </Primitive>
 </template>
