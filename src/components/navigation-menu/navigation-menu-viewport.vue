@@ -1,0 +1,146 @@
+<script setup lang="ts">
+import { computed, shallowRef, useAttrs, watch, watchEffect } from 'vue';
+import type { CSSProperties } from 'vue';
+import { useResizeObserver } from '@vueuse/core';
+import { useOmitProps, usePresence } from '../../composables';
+import { getDisclosureState, isMouseEvent } from '../../shared';
+import type { Size } from '../../types';
+import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { getNavigationMenuViewportPosition, navigationMenuViewportCssVars } from './shared';
+import type { NavigationMenuViewportPosition, NavigationMenuViewportProps } from './types';
+
+defineOptions({
+  name: 'NavigationMenuViewport',
+  inheritAttrs: false
+});
+
+const props = withDefaults(defineProps<NavigationMenuViewportProps>(), {
+  align: 'start'
+});
+
+const attrs = useAttrs();
+
+const forwardedProps = useOmitProps(props, ['forceMount', 'align'], attrs);
+
+const {
+  isRoot,
+  open,
+  orientation,
+  unmountOnHide,
+  rootElement,
+  activeTriggerElement,
+  modelValue,
+  viewportElement,
+  setViewportElement,
+  onContentEnter,
+  onContentLeave
+} = useNavigationMenuRootContext('NavigationMenuViewport');
+
+const themeContext = useNavigationMenuThemeContext();
+
+const cls = computed(() => (isRoot ? themeContext?.ui?.value?.viewport : themeContext?.ui?.value?.subViewport));
+
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(viewportElement, open);
+
+const dataState = computed(() => getDisclosureState(open.value));
+
+const size = shallowRef<Size>();
+
+const position = shallowRef<NavigationMenuViewportPosition>();
+
+const style = computed<CSSProperties>(() => {
+  const { width, height } = size.value || {};
+  const { left, top } = position.value || {};
+
+  return {
+    // Prevent interaction when animating out
+    pointerEvents: !open.value && isRoot ? 'none' : undefined,
+    [navigationMenuViewportCssVars.width]: width && `${width}px`,
+    [navigationMenuViewportCssVars.height]: height && `${height}px`,
+    [navigationMenuViewportCssVars.left]: left && `${left}px`,
+    [navigationMenuViewportCssVars.top]: top && `${top}px`
+  };
+});
+
+function updatePosition() {
+  if (!rootElement.value || !viewportElement.value || !activeTriggerElement.value) {
+    return;
+  }
+
+  position.value = getNavigationMenuViewportPosition({
+    rootElement: rootElement.value,
+    contentElement: viewportElement.value,
+    activeTriggerElement: activeTriggerElement.value,
+    align: props.align
+  });
+}
+
+const contentElement = shallowRef<HTMLElement | null>(null);
+
+function getContentElement() {
+  if (!viewportElement.value) return;
+
+  requestAnimationFrame(() => {
+    const el = viewportElement.value?.querySelector('[data-state=open]');
+    contentElement.value = el as HTMLElement | null;
+  });
+}
+
+const onPointerEnter = () => {
+  if (!modelValue.value) return;
+  onContentEnter(modelValue.value);
+};
+
+const onPointerLeave = (event: PointerEvent) => {
+  if (!isMouseEvent(event)) return;
+  onContentLeave();
+};
+
+useResizeObserver(contentElement, () => {
+  if (!contentElement.value) return;
+  const { offsetWidth: width, offsetHeight: height } = contentElement.value;
+
+  size.value = {
+    width,
+    height
+  };
+
+  updatePosition();
+});
+
+watch(
+  [viewportElement, modelValue, open],
+  () => {
+    getContentElement();
+  },
+  { immediate: true, flush: 'post' }
+);
+
+useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
+  updatePosition();
+});
+
+watchEffect(() => {
+  if (activeTriggerElement.value) {
+    const rect = activeTriggerElement.value.getBoundingClientRect();
+    console.log(rect);
+  }
+});
+</script>
+
+<template>
+  <div
+    v-if="isPresent"
+    v-bind="forwardedProps"
+    :ref="setViewportElement"
+    :class="cls"
+    :data-state="dataState"
+    :data-orientation="orientation"
+    :hidden="!isPresent"
+    :style="style"
+    @pointerenter="onPointerEnter"
+    @pointerleave="onPointerLeave"
+  >
+    <slot v-if="!unmountOnHide || isPresent" />
+  </div>
+</template>
