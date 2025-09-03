@@ -17,7 +17,8 @@ const props = withDefaults(defineProps<LinkProps>(), {
   noRel: undefined,
   viewTransition: undefined,
   replace: undefined,
-  disabled: undefined
+  disabled: undefined,
+  target: '_blank'
 });
 
 const attrs = useAttrs();
@@ -31,7 +32,7 @@ const LinkComponent = computed(() => {
   return resolveComponent('RouterLink');
 });
 
-const isExternal = computed(() => {
+const isHref = computed(() => {
   if (props.external || props.disabled) {
     return true;
   }
@@ -40,7 +41,7 @@ const isExternal = computed(() => {
     return true;
   }
 
-  if (!props.to && props.href && props.target === '_blank') {
+  if (!props.to && props.href) {
     return true;
   }
 
@@ -53,8 +54,8 @@ const forwardedProps = computed(() => {
   return {
     ...props,
     ...attrs,
-    to: isExternal.value ? undefined : href,
-    href: nuxt.value ? undefined : href,
+    to: isHref.value ? undefined : href,
+    href: !isHref.value && nuxt.value ? undefined : href,
     'data-disabled': props.disabled ? '' : undefined,
     'aria-disabled': props.disabled ? 'true' : undefined,
     role: props.disabled ? 'link' : undefined,
@@ -71,7 +72,7 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive v-if="isExternal" v-bind="forwardedProps" @click="handleClick">
+  <Primitive v-if="isHref" v-bind="forwardedProps" @click="handleClick">
     <slot />
   </Primitive>
   <component :is="LinkComponent" v-else v-bind="forwardedProps" @click="handleClick">
