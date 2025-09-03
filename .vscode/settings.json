@@ -14,7 +14,8 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "vue"
+    "vue",
+    "markdown"
   ],
   "prettier.enable": false
 }
