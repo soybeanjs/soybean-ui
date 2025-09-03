@@ -1,5 +1,5 @@
-import { onBeforeUnmount, onWatcherCleanup, shallowRef, toValue, watchPostEffect } from 'vue';
-import type { MaybeRefOrGetter } from 'vue';
+import { onBeforeUnmount, onWatcherCleanup, ref, shallowRef, toValue, watchPostEffect } from 'vue';
+import type { MaybeRefOrGetter, Ref } from 'vue';
 import { getCollectionItemElements, getElFromTemplateRef, isElementHasAttribute, toPascalCase } from '../shared';
 import { COLLECTION_ITEM_ATTRIBUTE } from '../constants';
 import type { VNodeRef } from '../types';
@@ -26,7 +26,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
       containerElement.value = element;
     };
 
-    const itemRegistry = new Map<HTMLElement, CollectionItemData<ItemData>>();
+    const itemRegistry = ref(new Map()) as Ref<Map<HTMLElement, CollectionItemData<ItemData>>>;
 
     /**
      * Get collection items ordered by their DOM position
@@ -42,7 +42,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
       // Iterate through DOM-ordered elements for optimal performance
       for (const element of domOrderedElements) {
-        const itemData = itemRegistry.get(element);
+        const itemData = itemRegistry.value.get(element);
         if (itemData) {
           const shouldInclude = !excludeDisabled || !isElementHasAttribute(element, 'disabled');
           if (shouldInclude) {
@@ -65,7 +65,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
 
     // Clean up registry on component unmount
     onBeforeUnmount(() => {
-      itemRegistry.clear();
+      itemRegistry.value.clear();
     });
 
     return {
@@ -92,7 +92,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
     const onItemElementChange = (element: HTMLElement) => {
       // Clean up previous registration if element changed
       if (itemElement.value && itemElement.value !== element) {
-        itemRegistry.delete(itemElement.value);
+        itemRegistry.value.delete(itemElement.value);
       }
 
       itemElement.value = element;
@@ -110,7 +110,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
     watchPostEffect(() => {
       if (itemElement.value) {
         // Register or update the item in the registry
-        itemRegistry.set(itemElement.value, {
+        itemRegistry.value.set(itemElement.value, {
           element: itemElement.value,
           data: toValue(itemData)
         });
@@ -119,7 +119,7 @@ export function useCollection<ItemData = Record<string, any>>(collectionName: st
       /** Unregister the item from the collection registry when watcher is cleaned up */
       onWatcherCleanup(() => {
         if (itemElement.value) {
-          itemRegistry.delete(itemElement.value);
+          itemRegistry.value.delete(itemElement.value);
           itemElement.value = undefined;
         }
       });
