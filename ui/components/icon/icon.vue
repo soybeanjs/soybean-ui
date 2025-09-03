@@ -33,5 +33,5 @@ const forwardedProps = computed(() => ({
 </script>
 
 <template>
-  <Icon v-bind="forwardedProps" />
+  <Icon v-bind="forwardedProps" style="flex-shrink: 0" />
 </template>
