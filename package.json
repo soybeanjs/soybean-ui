@@ -107,7 +107,7 @@
     "lint-staged": "16.1.6",
     "nuxt": "4.1.1",
     "simple-git-hooks": "2.13.1",
-    "tsdown": "0.14.2",
+    "tsdown": "0.15.0",
     "tsx": "4.20.5",
     "typescript": "5.9.2",
     "unocss": "66.5.1",
