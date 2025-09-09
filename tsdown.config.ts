@@ -2,7 +2,7 @@ import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
 import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
 import fg from 'fast-glob';
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   entry: [
