@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed, 🚫: No Need Implement, ✨: Implemented
 
-✅ 28 / 🚫 2 / total: 106
+✅ 29 / 🚫 2 / total: 106
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -17,7 +17,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 3   | 1        | Arrow           | 🚫 No Need   |                      |                          |
 | 4   | 1        | AspectRatio     | 🚫 No Need   |                      |                          |
 | 5   | 1        | Avatar          | ✅ Completed |                      |                          |
-| 6   | 1        | Breadcrumb      |              |                      |                          |
+| 6   | 1        | Breadcrumb      | ✅ Completed |                      |                          |
 | 7   | 1        | Button          | ✅ Completed |                      | ✨ support loading       |
 | 8   | 1        | Card            | ✅ Completed |                      |                          |
 | 9   | 1        | Checkbox        | ✅ Completed |                      | ✨ support checkbox card |
