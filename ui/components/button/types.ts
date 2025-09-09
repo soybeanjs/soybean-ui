@@ -1,4 +1,11 @@
-import type { Align, DataOrientation, Direction, PropsToContext, ButtonProps as _ButtonProps } from '@headless';
+import type {
+  Align,
+  ButtonEmits,
+  DataOrientation,
+  Direction,
+  PropsToContext,
+  ButtonProps as _ButtonProps
+} from '@headless';
 import type { ThemeColor, ThemeSize } from '@theme';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '@variants/button';
 import type { IconProps } from '../icon/types';
@@ -85,4 +92,4 @@ export interface ButtonGroupContextParams
     'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'
   > {}
 
-export type { ButtonVariant, ButtonShape, ButtonShadow };
+export type { ButtonEmits, ButtonVariant, ButtonShape, ButtonShadow };

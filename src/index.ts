@@ -3,6 +3,7 @@ export * from './components/alert-dialog';
 export * from './components/arrow';
 export * from './components/aspect-ratio';
 export * from './components/avatar';
+export * from './components/breadcrumb';
 export * from './components/button';
 export * from './components/card';
 export * from './components/checkbox';

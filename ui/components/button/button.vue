@@ -5,13 +5,15 @@ import { useOmitProps } from '@headless/composables';
 import { cn } from '@theme';
 import { buttonVariants } from '@variants/button';
 import { useButtonGroupContext } from './context';
-import type { ButtonProps } from './types';
+import type { ButtonEmits, ButtonProps } from './types';
 
 defineOptions({
   name: 'SButton'
 });
 
 const props = defineProps<ButtonProps>();
+
+const emit = defineEmits<ButtonEmits>();
 
 const buttonGroupContext = useButtonGroupContext();
 
@@ -36,9 +38,9 @@ const disabled = computed(() => props.disabled || buttonGroupContext?.disabled.v
 </script>
 
 <template>
-  <Button v-slot="slotProps" v-bind="forwardedProps" :class="cls" :disabled="disabled">
+  <Button v-bind="forwardedProps" :class="cls" :disabled="disabled" @click="emit('click', $event)">
     <slot name="leading" />
-    <slot v-bind="slotProps" />
+    <slot />
     <slot name="trailing" />
   </Button>
 </template>
