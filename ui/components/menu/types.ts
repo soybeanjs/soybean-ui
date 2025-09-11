@@ -1,4 +1,4 @@
-import type { Component, ComputedRef, VNode } from 'vue';
+import type { ComputedRef } from 'vue';
 import type {
   AcceptableBooleanValue,
   ClassValue,
@@ -25,6 +25,7 @@ import type {
 } from '@headless';
 import type { LinkProps } from '../link/types';
 import type { KbdProps } from '../kbd/types';
+import type { IconValue } from '../icon/types';
 
 export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'disabled' | 'textValue'> {
   /** The label to display in the menu. */
@@ -42,7 +43,7 @@ export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'd
    *
    * if it is a string, it will be used as the icon name of the iconify.
    */
-  icon?: VNode | Component | string;
+  icon?: IconValue;
   /** Whether to show a separator above this option. */
   separator?: boolean;
   /** The shortcut of the option. */

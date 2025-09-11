@@ -1,4 +1,3 @@
-import type { Component, VNode } from 'vue';
 import type {
   BreadcrumbEllipsisProps,
   BreadcrumbItemProps,
@@ -11,6 +10,7 @@ import type {
   ClassValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
+import type { IconValue } from '../icon/types';
 
 export interface BreadcrumbOptionData {
   /** The value of the option. */
@@ -22,7 +22,7 @@ export interface BreadcrumbOptionData {
    *
    * if it is a string, it will be used as the icon name of the iconify.
    */
-  icon?: VNode | Component | string;
+  icon?: IconValue;
   /** Whether the option is disabled. */
   disabled?: boolean;
   /**

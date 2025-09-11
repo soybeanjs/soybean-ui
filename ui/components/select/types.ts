@@ -1,4 +1,3 @@
-import type { Component, VNode } from 'vue';
 import type {
   ClassValue,
   DefinedValue,
@@ -25,6 +24,7 @@ import type {
   SingleOrMultipleValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
+import type { IconValue } from '../icon/types';
 
 export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue>
   extends Pick<SelectItemProps<T>, 'value' | 'disabled' | 'textValue'> {
@@ -33,7 +33,7 @@ export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue>
    *
    * if it is a string, it will be used as the icon name of the iconify.
    */
-  icon?: VNode | Component | string;
+  icon?: IconValue;
   /** The label to display in the dropdown. */
   label: string;
   /** whether to show a separator above this option */

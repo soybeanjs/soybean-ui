@@ -1,4 +1,3 @@
-import type { Component, VNode } from 'vue';
 import type {
   AccordionContentProps,
   AccordionHeaderProps,
@@ -11,6 +10,7 @@ import type {
   SingleOrMultipleValue
 } from '@headless';
 import type { ThemeSize } from '@theme';
+import type { IconValue } from '../icon/types';
 
 export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */
@@ -22,7 +22,7 @@ export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'd
    *
    * if it is a string, it will be used as the icon name of the iconify.
    */
-  icon?: VNode | Component | string;
+  icon?: IconValue;
 }
 
 export type AccordionUi = Partial<Record<AccordionThemeSlot | 'triggerLeadingIcon' | 'triggerIcon', ClassValue>>;
