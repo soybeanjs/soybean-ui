@@ -14,7 +14,7 @@ const emit = defineEmits<AvatarImageEmits>();
 
 const themeContext = useAvatarThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.image, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.image);
 
 const { updateImageLoadingStatus } = useAvatarRootContext('AvatarImage');
 

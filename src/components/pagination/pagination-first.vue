@@ -13,7 +13,7 @@ const { page, onPageChange, disabled } = usePaginationRootContext('PaginationFir
 
 const themeContext = usePaginationThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.first, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.first);
 
 const isDisabled = computed(() => disabled.value || page.value === 1);
 

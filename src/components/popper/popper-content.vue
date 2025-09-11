@@ -52,7 +52,7 @@ const forwardedProps = useOmitProps(
 );
 
 const themeContext = usePopoverThemeContext();
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const [contentElement, setContentElement] = useExposedElement();
 const [arrowElement, setArrowElement] = useForwardElement();

@@ -32,7 +32,7 @@ const [_, setSubTriggerElement] = useForwardElement(onSubTriggerElementChange);
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.subTrigger, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.subTrigger);
 
 let openTimer: number | null = null;
 

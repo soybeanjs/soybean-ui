@@ -24,7 +24,7 @@ const [rootElement, setRootElement] = useForwardElement();
 
 const themeContext = useSwitchThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const modelValue = useControllableState(
   () => props.modelValue,

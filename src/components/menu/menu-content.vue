@@ -23,7 +23,7 @@ const listeners = useForwardListeners(emit);
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const style: CSSProperties = {
   [menuContentCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,

@@ -16,7 +16,7 @@ const { isSelected } = useSelectItemContext('SelectItemIndicator');
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.itemIndicator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
 </script>
 
 <template>

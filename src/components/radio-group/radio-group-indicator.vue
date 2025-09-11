@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const themeContext = useRadioGroupThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.indicator);
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 const { checked, disabled } = useRadioGroupItemContext('RadioGroupIndicator');

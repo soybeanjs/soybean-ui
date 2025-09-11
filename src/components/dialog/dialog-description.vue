@@ -13,7 +13,7 @@ const { descriptionId, initDescriptionId } = useDialogRootContext('DialogDescrip
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.description, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.description);
 
 initDescriptionId();
 </script>

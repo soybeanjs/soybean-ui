@@ -13,7 +13,7 @@ const { labelId } = useSelectGroupContext('SelectGroupLabel');
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.groupLabel, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.groupLabel);
 </script>
 
 <template>

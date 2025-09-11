@@ -14,7 +14,7 @@ const { page, pageCount, siblingCount, showEdges } = usePaginationRootContext('P
 
 const themeContext = usePaginationThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.list, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.list);
 
 const transformedRange = computed(() =>
   transform(getRange(page.value, pageCount.value, siblingCount.value, showEdges.value))

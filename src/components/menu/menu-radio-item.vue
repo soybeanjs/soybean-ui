@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['value', 'disabled']);
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.radioItem, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.radioItem);
 
 const {
   modelValue: radioGroupModelValue,

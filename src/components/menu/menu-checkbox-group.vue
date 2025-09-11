@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disab
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.checkboxGroup, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.checkboxGroup);
 
 const modelValue = useControllableState(
   () => props.modelValue,

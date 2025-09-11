@@ -27,7 +27,7 @@ const { subContentId, subTriggerId, subTriggerElement, initSubContentId } = useM
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.subContent, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.subContent);
 
 const style: CSSProperties = {
   [subMenuCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,

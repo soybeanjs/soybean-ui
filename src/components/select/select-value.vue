@@ -18,7 +18,7 @@ const [_, setValueElement] = useForwardElement(onValueElementChange);
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.value, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.value);
 
 const selectedLabel = computed(() => {
   let list: string[] = [];

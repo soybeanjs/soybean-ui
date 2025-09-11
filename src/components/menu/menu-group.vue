@@ -12,7 +12,7 @@ const props = defineProps<MenuGroupProps>();
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.group, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.group);
 </script>
 
 <template>

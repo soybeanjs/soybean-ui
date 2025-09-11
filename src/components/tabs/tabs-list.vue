@@ -17,7 +17,7 @@ const [_, setListElement] = useForwardElement(onListElementChange);
 
 const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.list, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.list);
 </script>
 
 <template>

@@ -39,7 +39,7 @@ const attrs = useAttrs();
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const {
   onOpenChange,

@@ -14,7 +14,7 @@ const { labelId, initLabelId } = provideSelectGroupContext();
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.group, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.group);
 
 initLabelId();
 </script>

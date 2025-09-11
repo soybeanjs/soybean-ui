@@ -17,7 +17,7 @@ const { open, dataState } = useDialogRootContext('DialogOverlay');
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.overlay, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.overlay);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(overlayElement, open);
 

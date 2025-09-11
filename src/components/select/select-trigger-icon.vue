@@ -11,7 +11,7 @@ const props = defineProps<SelectTriggerIconProps>();
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.triggerIcon, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.triggerIcon);
 </script>
 
 <template>

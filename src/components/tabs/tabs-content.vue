@@ -18,7 +18,7 @@ const [contentElement, setContentElement] = useForwardElement();
 
 const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { contentId, triggerId } = getId(props.value);
 

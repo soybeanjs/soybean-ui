@@ -17,7 +17,7 @@ const attrs = useAttrs();
 
 const themeContext = useRadioGroupThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.control, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.control);
 
 const controlElement = useTemplateRef<HTMLButtonElement>('controlElement');
 const rootContext = useRadioGroupRootContext('RadioGroupControl');

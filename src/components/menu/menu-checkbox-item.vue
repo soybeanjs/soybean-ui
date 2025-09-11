@@ -19,7 +19,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'value', 'disabled']);
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.checkboxItem, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.checkboxItem);
 
 const modelValue = useControllableState(
   () => props.modelValue,

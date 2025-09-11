@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['orientation', 'decorative']);
 
 const themeContext = useDividerThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 

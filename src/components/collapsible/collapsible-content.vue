@@ -20,7 +20,7 @@ const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide }
 
 const themeContext = useCollapsibleThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
 

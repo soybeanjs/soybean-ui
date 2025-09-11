@@ -13,7 +13,7 @@ const { titleId, initTitleId } = useDialogRootContext('DialogTitle');
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.title, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.title);
 
 initTitleId();
 </script>

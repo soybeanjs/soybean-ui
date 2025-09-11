@@ -11,7 +11,7 @@ const props = defineProps<SelectSeparatorProps>();
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.separator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.separator);
 </script>
 
 <template>

@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<MenuItemIndicatorProps>(), {
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.itemIndicator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 

@@ -19,7 +19,7 @@ const [controlElement, setControlElement] = useForwardElement();
 
 const themeContext = useSwitchThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.control, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.control);
 
 const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
 </script>

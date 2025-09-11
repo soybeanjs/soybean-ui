@@ -15,7 +15,7 @@ const props = defineProps<AccordionContentProps>();
 
 const themeContext = useAccordionThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { orientation } = useAccordionRootContext('AccordionContent');
 const { triggerId, dataDisabled, dataState } = useAccordionItemContext('AccordionContent');

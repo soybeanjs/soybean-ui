@@ -19,7 +19,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disab
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.radioGroup, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.radioGroup);
 
 const modelValue = useControllableState(
   () => props.modelValue,

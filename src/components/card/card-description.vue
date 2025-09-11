@@ -11,7 +11,7 @@ const props = defineProps<CardDescriptionProps>();
 
 const themeContext = useCardThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.description, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.description);
 </script>
 
 <template>

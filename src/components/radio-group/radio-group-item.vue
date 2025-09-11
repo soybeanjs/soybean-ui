@@ -18,7 +18,7 @@ const forwardedProps = useOmitProps(props, ['name', 'required', 'value', 'disabl
 
 const themeContext = useRadioGroupThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.item);
 
 const rootContext = useRadioGroupRootContext('RadioGroupItem');
 const itemElement = useTemplateRef<HTMLDivElement>('itemElement');

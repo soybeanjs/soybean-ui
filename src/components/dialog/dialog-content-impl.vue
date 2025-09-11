@@ -29,7 +29,7 @@ const {
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,

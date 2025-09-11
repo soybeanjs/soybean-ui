@@ -23,7 +23,7 @@ const forwardedProps = useOmitProps(props, ['class', 'collapsible', 'disabled', 
 
 const themeContext = useAccordionThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const rootElement = shallowRef<HTMLElement>();
 

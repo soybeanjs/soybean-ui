@@ -11,7 +11,7 @@ const props = defineProps<AccordionHeaderProps>();
 
 const themeContext = useAccordionThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.header, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.header);
 
 const { orientation } = useAccordionRootContext('AccordionHeader');
 const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');

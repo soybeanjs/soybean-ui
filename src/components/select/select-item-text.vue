@@ -21,7 +21,7 @@ const [itemTextElement, setItemTextElement] = useForwardElement(node => {
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.itemText, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.itemText);
 
 const optionProps = computed(() => {
   return {

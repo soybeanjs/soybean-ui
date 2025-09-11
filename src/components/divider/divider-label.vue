@@ -11,7 +11,7 @@ const props = defineProps<DividerLabelProps>();
 
 const themeContext = useDividerThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.label, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.label);
 </script>
 
 <template>

@@ -37,7 +37,7 @@ const forwardedProps = useOmitProps(props, ['reference']);
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const isDisabled = computed(() => disabled.value || props.disabled);
 const dataPlaceholder = computed(() => (shouldShowPlaceholder(modelValue.value) ? '' : undefined));

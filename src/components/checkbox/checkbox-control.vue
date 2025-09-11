@@ -16,7 +16,7 @@ const attrs = useAttrs();
 
 const themeContext = useCheckboxThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.control, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.control);
 
 const groupContext = useCheckboxGroupRootContext();
 

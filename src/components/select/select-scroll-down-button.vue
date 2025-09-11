@@ -20,7 +20,7 @@ const [_, setButtonElement] = useForwardElement(node => {
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.scrollDownButton, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.scrollDownButton);
 
 const onAutoScroll = () => {
   if (viewportElement.value && selectedItemElement.value) {

@@ -17,7 +17,7 @@ const { open, onOpenToggle, contentId, disabled, dataDisabled, dataState } =
 
 const themeContext = useCollapsibleThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>

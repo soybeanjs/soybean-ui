@@ -14,7 +14,7 @@ const { page, onPageChange, disabled } = usePaginationRootContext('PaginationLis
 
 const themeContext = usePaginationThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.listItem, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.listItem);
 
 const forwardedProps = useOmitProps(props, ['value']);
 

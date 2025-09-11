@@ -16,7 +16,7 @@ const { setTriggerElement, triggerId, initTriggerId, open, value, dataDisabled, 
 
 const themeContext = useAccordionThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const onClick = () => {
   if (disabled.value) return;

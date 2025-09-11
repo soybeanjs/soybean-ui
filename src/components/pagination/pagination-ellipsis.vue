@@ -11,7 +11,7 @@ const props = defineProps<PaginationEllipsisProps>();
 
 const themeContext = usePaginationThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.ellipsis, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.ellipsis);
 </script>
 
 <template>

@@ -21,7 +21,7 @@ const { modelValue, orientation, changeModelValue, activationMode, getId } = use
 
 const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.trigger, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const { contentId, triggerId } = getId(props.value);
 

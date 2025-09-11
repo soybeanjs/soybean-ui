@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<ArrowProps>(), {
 
 const themeContext = useArrowThemeContext();
 
-const cls = computed(() => [themeContext?.value, props.class]);
+const cls = computed(() => themeContext?.value);
 </script>
 
 <template>

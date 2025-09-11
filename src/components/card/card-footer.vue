@@ -11,7 +11,7 @@ const props = defineProps<CardFooterProps>();
 
 const themeContext = useCardThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.footer, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.footer);
 </script>
 
 <template>

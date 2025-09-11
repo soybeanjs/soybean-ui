@@ -11,7 +11,7 @@ const props = defineProps<DialogHeaderProps>();
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.header, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.header);
 </script>
 
 <template>

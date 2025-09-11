@@ -22,7 +22,7 @@ const forwardedProps = useOmitProps(props, ['open', 'defaultOpen', 'disabled', '
 
 const themeContext = useCollapsibleThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const open = useControllableState(
   () => props.open,

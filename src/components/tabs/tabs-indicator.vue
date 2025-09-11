@@ -16,7 +16,7 @@ const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIn
 
 const themeContext = useTabsThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.indicator);
 
 const activeTab = ref<HTMLElement | null>();
 

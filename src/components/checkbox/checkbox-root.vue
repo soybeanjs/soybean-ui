@@ -22,7 +22,7 @@ const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'value
 
 const themeContext = useCheckboxThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const rootElement = useTemplateRef<HTMLDivElement>('rootElement');
 

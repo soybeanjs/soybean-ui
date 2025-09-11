@@ -11,7 +11,7 @@ const props = defineProps<MenuGroupLabelProps>();
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.groupLabel, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.groupLabel);
 </script>
 
 <template>

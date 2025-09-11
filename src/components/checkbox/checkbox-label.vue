@@ -12,7 +12,7 @@ const props = defineProps<CheckboxLabelProps>();
 
 const themeContext = useCheckboxThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.label, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.label);
 
 const { controlId } = useCheckboxRootContext('CheckboxLabel');
 </script>

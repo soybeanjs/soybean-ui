@@ -21,7 +21,7 @@ const { searchRef } = useMenuContentContext('MenuItem');
 
 const themeContext = useMenuThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.item);
 
 let isPointerDownRef = false;
 

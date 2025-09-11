@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<CheckboxIndicatorProps>(), {
 
 const themeContext = useCheckboxThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.indicator, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.indicator);
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 

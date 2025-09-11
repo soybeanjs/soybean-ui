@@ -16,7 +16,7 @@ const { dataState, dataDisabled } = useSwitchRootContext('SwitchThumb');
 
 const themeContext = useSwitchThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.thumb, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.thumb);
 </script>
 
 <template>

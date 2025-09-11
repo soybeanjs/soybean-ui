@@ -25,7 +25,7 @@ const nonce = useNonce(() => props.nonce);
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.viewport, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.viewport);
 
 /**
  * we use position: 'relative' here on the `viewport` so that when we call `selectedItem.offsetTop` in calculations

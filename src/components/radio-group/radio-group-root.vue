@@ -35,7 +35,7 @@ const forwardedProps = useOmitProps(props, [
 
 const themeContext = useRadioGroupThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const rootElement = useTemplateRef('rootElement');
 

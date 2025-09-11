@@ -12,7 +12,7 @@ const props = defineProps<RadioGroupLabelProps>();
 
 const themeContext = useRadioGroupThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.label, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.label);
 
 const { controlId } = useRadioGroupItemContext('RadioGroupLabel');
 </script>

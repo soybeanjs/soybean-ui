@@ -15,7 +15,7 @@ const forwardedProps = useOmitProps(props, ['delayMs']);
 
 const themeContext = useAvatarThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.fallback, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.fallback);
 
 const { imageLoadingStatus } = useAvatarRootContext('AvatarFallback');
 

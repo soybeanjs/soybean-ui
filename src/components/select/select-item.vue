@@ -32,7 +32,7 @@ const { modelValue, onModelValueChange, onOpenChange, isMultiple } = useSelectRo
 
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.item, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.item);
 
 const isSelected = computed(() => isValueEqualOrExist(modelValue.value, props.value));
 

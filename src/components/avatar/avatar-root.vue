@@ -11,7 +11,7 @@ const props = defineProps<AvatarRootProps>();
 
 const themeContext = useAvatarThemeContext();
 
-const cls = computed(() => [themeContext?.ui?.value?.root, props.class]);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 provideAvatarRootContext();
 </script>
