@@ -141,7 +141,7 @@ src/components/accordion/
   const emit = defineEmits<AccordionRootEmits<T, S>>();
   const { orientation } = useAccordionRootContext('AccordionContent');
   const themeContext = useAccordionThemeContext();
-  const cls = computed(() => [themeContext?.ui?.value?.content, props.class]);
+  const cls = computed(() => themeContext?.ui?.value?.content);
   const forwardedProps = useOmitProps(props, ['class', ...]);
   ```
 
