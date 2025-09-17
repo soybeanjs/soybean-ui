@@ -1,4 +1,5 @@
-import type { CheckedState, DefinedValue, SingleOrMultipleValue } from '../types';
+import type { CheckedState, DefinedValue, SingleOrMultipleProps, SingleOrMultipleValue } from '../types';
+import { isNullish } from './guard';
 
 export function isIndeterminate(checked?: CheckedState | null): checked is 'indeterminate' {
   return checked === 'indeterminate';
@@ -62,4 +63,39 @@ export function clamp(
   max: number = Number.POSITIVE_INFINITY
 ): number {
   return Math.min(max, Math.max(min, value));
+}
+
+/**
+ * Validates the props and it makes sure that the types are coherent with each other
+ *
+ * 1. If multiple is defined, return it.
+ * 2. If modelValue and defaultValue are defined and not of the same type, throw an error.
+ * 3. If multiple is not defined: a. If modelValue is an array, return true. b. If modelValue is not an array, return
+ *    false.
+ * 4. Return true if modelValue is an array, else return false.
+ */
+export function getIsMultiple(props: SingleOrMultipleProps) {
+  const { modelValue, defaultValue, multiple } = props;
+
+  if (!isNullish(multiple)) {
+    return multiple;
+  }
+
+  const value = isNullish(modelValue) ? defaultValue : modelValue;
+  const canTypeBeInferred = !isNullish(modelValue) || !isNullish(defaultValue);
+
+  if (canTypeBeInferred) {
+    return Boolean(Array.isArray(value));
+  }
+
+  // always fallback to false
+  return multiple ?? false;
+}
+
+export function getSingleOrMultipleDefaultValue(props: SingleOrMultipleProps) {
+  if (!isNullish(props.defaultValue)) {
+    return props.defaultValue;
+  }
+
+  return props.multiple ? [] : undefined;
 }

@@ -124,3 +124,5 @@ export interface SingleOrMultipleProps<T extends SingleOrMultipleValue = SingleO
 export type SingleOrMultipleEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = {
   'update:modelValue': [value: NonNullable<T>];
 };
+
+export type GetSingleValue<T extends SingleOrMultipleValue> = T extends DefinedValue[] ? T[number] : NonNullable<T>;
