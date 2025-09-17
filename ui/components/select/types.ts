@@ -1,6 +1,7 @@
 import type {
   ClassValue,
   DefinedValue,
+  GetSingleValue,
   SelectArrowProps,
   SelectContentEmits,
   SelectContentProps,
@@ -83,11 +84,9 @@ export type SelectOptionEmits<T extends DefinedValue = DefinedValue> = SelectIte
 
 export type SelectUi = Partial<Record<SelectThemeSlot, ClassValue>>;
 
-export type GetSelectOptionValue<T> = T extends any[] ? T[number] : NonNullable<T>;
-
 export interface SelectProps<
   T extends SingleOrMultipleValue = SingleOrMultipleValue,
-  S extends SelectOptionData<GetSelectOptionValue<T>> = SelectOptionData<GetSelectOptionValue<T>>,
+  S extends SelectOptionData<GetSingleValue<T>> = SelectOptionData<GetSingleValue<T>>,
   M extends boolean = false
 > extends SelectRootProps<T, M> {
   ui?: SelectUi;
@@ -113,4 +112,4 @@ export interface SelectProps<
 
 export type SelectEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SelectRootEmits<T> &
   SelectContentEmits &
-  SelectOptionEmits<GetSelectOptionValue<T>>;
+  SelectOptionEmits<GetSingleValue<T>>;

@@ -3,3 +3,5 @@ export type PointerDownOutsideEvent = CustomEvent<{
 }>;
 
 export type FocusOutsideEvent = CustomEvent<{ originalEvent: FocusEvent }>;
+
+export type SelectEvent<T> = CustomEvent<{ originalEvent: MouseEvent; value?: T }>;

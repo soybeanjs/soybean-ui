@@ -1,7 +1,7 @@
 <script
   setup
   lang="ts"
-  generic="T extends SingleOrMultipleValue, S extends SelectOptionData<GetSelectOptionValue<T>>, M extends boolean"
+  generic="T extends SingleOrMultipleValue, S extends SelectOptionData<GetSingleValue<T>>, M extends boolean"
 >
 import { computed } from 'vue';
 import {
@@ -18,13 +18,13 @@ import {
   provideSelectThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import type { SingleOrMultipleValue } from '@headless';
+import type { GetSingleValue, SingleOrMultipleValue } from '@headless';
 import { mergeSlotVariants } from '@theme';
 import { selectVariants } from '@variants/select';
 import Icon from '../icon/icon.vue';
 import SSelectOption from './select-option.vue';
 import { isGroupOption } from './shared';
-import type { GetSelectOptionValue, SelectEmits, SelectOptionData, SelectProps } from './types';
+import type { SelectEmits, SelectOptionData, SelectProps } from './types';
 
 defineOptions({
   name: 'SSelect',
