@@ -15,6 +15,7 @@ export * from './components/divider';
 export * from './components/dropdown-menu';
 export * from './components/kbd';
 export * from './components/label';
+export * from './components/listbox';
 export * from './components/link';
 export * from './components/menu';
 export * from './components/navigation-menu';
