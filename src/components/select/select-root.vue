@@ -57,7 +57,7 @@ const formControl = computed(() => isFormControl(triggerElement.value));
 
 <template>
   <PopperRoot>
-    <slot :model-value="modelValue" :open="open" />
+    <slot :model-value="modelValue" :open="Boolean(open)" />
 
     <BubbleSelect
       v-if="formControl"
