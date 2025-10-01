@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed, 🚫: No Need Implement, ✨: Implemented
 
-✅ 29 / 🚫 2 / total: 106
+✅ 33 / 🚫 0 / total: 106
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -31,13 +31,13 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 17  | 1        | DropdownMenu    | ✅ Completed |                      | ✨ support hover trigger |
 | 18  | 1        | Form            |              |                      |                          |
 | 19  | 1        | Icon            | ✅ Completed |                      | ✨ based on iconify      |
-| 20  | 1        | Input           |              |                      |                          |
+| 20  | 1        | Input           | ✅ Completed |                      |                          |
 | 21  | 1        | Kbd             | ✅ Completed |                      |                          |
 | 22  | 1        | Label           | ✅ Completed |                      |                          |
 | 23  | 1        | Layout          |              |                      |                          |
 | 24  | 1        | Link            | ✅ Completed |                      |                          |
 | 25  | 1        | List            |              |                      |                          |
-| 26  | 1        | Listbox         |              |                      |                          |
+| 26  | 1        | Listbox         | ✅ Completed |                      |                          |
 | 27  | 1        | Menu            | ✅ Completed |                      |                          |
 | 28  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
 | 29  | 1        | NumberInput     |              | NumberField          |                          |
