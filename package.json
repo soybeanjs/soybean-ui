@@ -83,6 +83,8 @@
   "dependencies": {
     "@floating-ui/vue": "1.1.9",
     "@iconify/vue": "5.0.0",
+    "@internationalized/date": "3.9.0",
+    "@internationalized/number": "3.6.5",
     "@tanstack/vue-virtual": "3.13.12",
     "@unocss/reset": "66.5.2",
     "@vue/shared": "3.5.22",

@@ -21,6 +21,7 @@ export * from './components/label';
 export * from './components/link';
 export * from './components/menu';
 export * from './components/navigation-menu';
+export * from './components/number-input';
 export * from './components/pagination';
 export * from './components/popover';
 export * from './components/radio-group';

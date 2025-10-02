@@ -14,8 +14,8 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
 | 1   | 1        | Accordion       | ✅ Completed |                      |                          |
 | 2   | 1        | AlertDialog     | ✅ Completed |                      |                          |
-| 3   | 1        | Arrow           | 🚫 No Need   |                      |                          |
-| 4   | 1        | AspectRatio     | 🚫 No Need   |                      |                          |
+| 3   | 1        | Arrow           | ✅ Completed |                      |                          |
+| 4   | 1        | AspectRatio     | ✅ Completed |                      |                          |
 | 5   | 1        | Avatar          | ✅ Completed |                      |                          |
 | 6   | 1        | Breadcrumb      | ✅ Completed |                      |                          |
 | 7   | 1        | Button          | ✅ Completed |                      | ✨ support loading       |
@@ -40,7 +40,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 26  | 1        | Listbox         | ✅ Completed |                      |                          |
 | 27  | 1        | Menu            | ✅ Completed |                      |                          |
 | 28  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
-| 29  | 1        | NumberInput     |              | NumberField          |                          |
+| 29  | 1        | NumberInput     | ✅ Completed | NumberField          |                          |
 | 30  | 1        | Pagination      | ✅ Completed |                      |                          |
 | 31  | 1        | Popover         | ✅ Completed |                      |                          |
 | 32  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |

@@ -16,6 +16,7 @@ export * from './use-hide-others';
 export * from './use-image-loading-status';
 export * from './use-is-using-keyboard';
 export * from './use-kbd';
+export * from './use-locale';
 export * from './use-nonce';
 export * from './use-presence';
 export * from './use-props';
