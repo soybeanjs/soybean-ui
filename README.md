@@ -6,9 +6,9 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ### Components
 
-✅: Completed, 🚫: No Need Implement, ✨: Implemented
+✅: Completed ✨: Implemented
 
-✅ 33 / 🚫 0 / total: 106
+✅ 35 / total: 106
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
