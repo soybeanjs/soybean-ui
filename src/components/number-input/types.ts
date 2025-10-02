@@ -22,9 +22,9 @@ export interface NumberInputRootProps extends FormFieldProps, /** @vue-ignore */
   formatOptions?: Intl.NumberFormatOptions;
   /** The locale to use for formatting dates */
   locale?: string;
-  /** When `true`, prevents the user from interacting with the Number Field. */
+  /** When `true`, prevents the user from interacting with the Number Input. */
   disabled?: boolean;
-  /** When `true`, the Number Field is read-only. */
+  /** When `true`, the Number Input is read-only. */
   readonly?: boolean;
   /** When `true`, prevents the value from changing on wheel scroll. */
   disableWheelChange?: boolean;

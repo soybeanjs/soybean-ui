@@ -60,7 +60,6 @@ provideNumberInputRootContext({
 
 <template>
   <div
-    v-bind="props"
     :ref="setRootElement"
     :class="cls"
     role="group"
