@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { InputControl, InputRoot, provideInputThemeContext } from '@headless';
-import { useControllableState, useForwardElement, useOmitProps } from '@headless/composables';
+import { useForwardElement, useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
 import { inputVariants } from '@variants/input';
 import Icon from '../icon/icon.vue';
 import type { InputEmits, InputProps } from './types';
 
 defineOptions({
-  name: 'SInput',
-  inheritAttrs: false
+  name: 'SInput'
 });
 
 const props = defineProps<InputProps>();
@@ -18,18 +17,7 @@ const emit = defineEmits<InputEmits>();
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
-const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(props, ['rootProps', 'modelValue', 'clearable'], attrs);
-
-const inputValue = useControllableState(
-  () => props.modelValue,
-  value => {
-    emit('update:modelValue', value as string);
-  },
-  props.defaultValue
-);
-
+const forwardedProps = useOmitProps(props, ['inputRef', 'size', 'ui', 'controlProps', 'modelValue', 'clearable']);
 const ui = computed(() => {
   const variants = inputVariants({
     size: props.size
@@ -38,20 +26,16 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-const onClear = () => {
-  inputValue.value = '';
-};
-
 provideInputThemeContext({
   ui
 });
 </script>
 
 <template>
-  <InputRoot v-bind="rootProps">
+  <InputRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <slot name="leading" />
-    <InputControl v-bind="forwardedProps" :ref="setInputElement" v-model="inputValue" />
-    <Icon v-if="clearable" icon="lucide:x" :class="ui.clearable" @click="onClear" />
+    <InputControl v-bind="controlProps" :ref="setInputElement" />
+    <Icon v-if="clearable" icon="lucide:x" :class="ui.clearable" @click="clear" />
     <slot name="trailing" />
   </InputRoot>
 </template>

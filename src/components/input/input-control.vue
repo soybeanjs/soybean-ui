@@ -1,38 +1,43 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
-import { useInputThemeContext } from './context';
-import type { InputControlEmits, InputControlProps } from './types';
+import { useInputRootContext, useInputThemeContext } from './context';
+import type { InputControlProps } from './types';
 
 defineOptions({
   name: 'InputControl'
 });
 
-const props = withDefaults(defineProps<InputControlProps>(), {
-  modelValue: undefined
-});
+defineProps<InputControlProps>();
 
-const emit = defineEmits<InputControlEmits>();
-
-const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue']);
+const { modelValue, id, type, placeholder, autoFocus, disabled, readonly } = useInputRootContext('InputControl');
 
 const themeContext = useInputThemeContext();
 
 const cls = computed(() => themeContext?.ui?.value?.control);
 
-const inputValue = useControllableState(
-  () => props.modelValue,
-  value => {
-    emit('update:modelValue', value as string);
-  },
-  props.defaultValue
-);
-
 const onInput = (event: Event) => {
-  inputValue.value = (event.target as HTMLInputElement).value;
+  modelValue.value = (event.target as HTMLInputElement).value;
 };
 </script>
 
 <template>
-  <input v-bind="forwardedProps" :class="cls" :value="inputValue" @input="onInput" />
+  <input
+    :id="id"
+    :class="cls"
+    :type="type"
+    :value="modelValue"
+    tabindex="0"
+    :placeholder="placeholder"
+    :autofocus="autoFocus"
+    :disabled="disabled"
+    :data-disabled="disabled ? '' : undefined"
+    :readonly="readonly"
+    :data-readonly="readonly ? '' : undefined"
+    autocomplete="off"
+    autocorrect="off"
+    spellcheck="false"
+    aria-roledescription="Input"
+    :aria-valuenow="modelValue ?? undefined"
+    @input="onInput"
+  />
 </template>

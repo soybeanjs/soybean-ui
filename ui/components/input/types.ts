@@ -1,9 +1,9 @@
-import type { ClassValue, InputControlEmits, InputControlProps, InputRootProps, InputThemeSlot } from '@headless';
+import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputThemeSlot } from '@headless';
 import type { ThemeSize } from '@theme';
 
 type InputUi = Partial<Record<InputThemeSlot | 'clearable', ClassValue>>;
 
-export interface InputProps extends InputControlProps {
+export interface InputProps extends InputRootProps {
   /**
    * The function to set the input element.
    *
@@ -12,8 +12,8 @@ export interface InputProps extends InputControlProps {
   inputRef?: (el: HTMLInputElement) => void;
   size?: ThemeSize;
   ui?: InputUi;
-  rootProps?: InputRootProps;
+  controlProps?: InputControlProps;
   clearable?: boolean;
 }
 
-export type InputEmits = InputControlEmits;
+export type InputEmits = InputRootEmits;
