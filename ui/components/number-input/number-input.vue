@@ -14,8 +14,7 @@ import Icon from '../icon/icon.vue';
 import type { NumberInputEmits, NumberInputProps } from './types';
 
 defineOptions({
-  name: 'SNumberInput',
-  inheritAttrs: false
+  name: 'SNumberInput'
 });
 
 const props = defineProps<NumberInputProps>();
@@ -25,10 +24,11 @@ const emit = defineEmits<NumberInputEmits>();
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
 const forwardedProps = useOmitProps(props, [
-  'inputRef',
   'size',
   'ui',
   'center',
+  'clearable',
+  'inputRef',
   'controlProps',
   'incrementProps',
   'decrementProps'

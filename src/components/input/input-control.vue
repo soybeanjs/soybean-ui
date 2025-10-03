@@ -9,7 +9,8 @@ defineOptions({
 
 defineProps<InputControlProps>();
 
-const { modelValue, id, type, placeholder, autoFocus, disabled, readonly } = useInputRootContext('InputControl');
+const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, pattern } =
+  useInputRootContext('InputControl');
 
 const themeContext = useInputThemeContext();
 
@@ -24,20 +25,21 @@ const onInput = (event: Event) => {
   <input
     :id="id"
     :class="cls"
-    :type="type"
-    :value="modelValue"
-    tabindex="0"
-    :placeholder="placeholder"
-    :autofocus="autoFocus"
-    :disabled="disabled"
-    :data-disabled="disabled ? '' : undefined"
-    :readonly="readonly"
-    :data-readonly="readonly ? '' : undefined"
-    autocomplete="off"
-    autocorrect="off"
-    spellcheck="false"
     aria-roledescription="Input"
     :aria-valuenow="modelValue ?? undefined"
+    autocorrect="off"
+    :autofocus="autofocus"
+    :data-disabled="disabled ? '' : undefined"
+    :data-readonly="readonly ? '' : undefined"
+    :disabled="disabled"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :pattern="pattern"
+    :placeholder="placeholder"
+    :readonly="readonly"
+    spellcheck="false"
+    tabindex="0"
+    :value="modelValue"
     @input="onInput"
   />
 </template>

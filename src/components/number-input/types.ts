@@ -1,8 +1,9 @@
 import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { ClassValue, FormFieldProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
+import type { InputBaseProps } from '../input/types';
 
-export interface NumberInputRootProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface NumberInputRootProps extends InputBaseProps, FormFieldProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: number;
   /** The controlled value of the input */
@@ -22,20 +23,10 @@ export interface NumberInputRootProps extends FormFieldProps, /** @vue-ignore */
   formatOptions?: Intl.NumberFormatOptions;
   /** The locale to use for formatting dates */
   locale?: string;
-  /** When `true`, prevents the user from interacting with the Number Input. */
-  disabled?: boolean;
-  /** When `true`, the Number Input is read-only. */
-  readonly?: boolean;
   /** When `true`, prevents the value from changing on wheel scroll. */
   disableWheelChange?: boolean;
   /** When `true`, inverts the direction of the wheel change. */
   invertWheelChange?: boolean;
-  /** Id of the element */
-  id?: string;
-  /** The placeholder of the input */
-  placeholder?: string;
-  /** When `true`, the input is auto-focused. */
-  autoFocus?: boolean;
 }
 
 export type NumberInputRootEmits = {
@@ -55,19 +46,22 @@ export interface NumberInputDecrementProps extends PrimitiveProps, /** @vue-igno
 export interface NumberInputRootContextParams
   extends PropsToContext<
     NumberInputRootProps,
+    | 'id'
+    | 'autofocus'
+    | 'disabled'
+    | 'maxlength'
+    | 'minlength'
+    | 'pattern'
+    | 'placeholder'
+    | 'readonly'
     | 'locale'
     | 'formatOptions'
-    | 'disabled'
-    | 'readonly'
     | 'max'
     | 'min'
     | 'step'
     | 'stepSnapping'
     | 'disableWheelChange'
     | 'invertWheelChange'
-    | 'id'
-    | 'placeholder'
-    | 'autoFocus'
   > {
   modelValue: ShallowRef<number | null | undefined>;
 }

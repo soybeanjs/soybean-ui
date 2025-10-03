@@ -4,7 +4,6 @@ import DemoInputBase from './base.vue';
 import DemoInputDisabled from './disabled.vue';
 import DemoInputSlot from './slot.vue';
 import DemoInputClearable from './clearable.vue';
-import DemoInputFile from './file.vue';
 </script>
 
 <template>
@@ -13,6 +12,5 @@ import DemoInputFile from './file.vue';
     <DemoInputDisabled />
     <DemoInputSlot />
     <DemoInputClearable />
-    <DemoInputFile />
   </SCard>
 </template>

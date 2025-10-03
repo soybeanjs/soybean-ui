@@ -12,21 +12,22 @@ import type { ThemeSize } from '@theme';
 export type NumberInputUi = Partial<Record<NumberInputThemeSlot, ClassValue>>;
 
 export interface NumberInputProps extends NumberInputRootProps {
-  /**
-   * The function to set the input element.
-   *
-   * @param el - The input element.
-   */
-  inputRef?: (el: HTMLInputElement) => void;
   size?: ThemeSize;
   ui?: NumberInputUi;
-  clearable?: boolean;
   /**
    * Whether to center the input.
    *
    * @defaultValue false
    */
   center?: boolean;
+  /** Whether to show the clear icon */
+  clearable?: boolean;
+  /**
+   * The function to set the input element.
+   *
+   * @param el - The input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
   controlProps?: NumberInputControlProps;
   incrementProps?: NumberInputIncrementProps;
   decrementProps?: NumberInputDecrementProps;

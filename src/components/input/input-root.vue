@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
 import { provideInputRootContext, useInputThemeContext } from './context';
@@ -11,14 +11,12 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<InputRootProps>(), {
-  defaultValue: undefined
+  modelValue: undefined
 });
 
 const emit = defineEmits<InputRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
-
-const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'id', 'placeholder', 'autoFocus']);
 
 const themeContext = useInputThemeContext();
 
@@ -39,14 +37,22 @@ const onClear = () => {
 };
 
 provideInputRootContext({
-  modelValue,
-  ...transformPropsToContext(props, ['id', 'type', 'placeholder', 'autoFocus', 'disabled', 'readonly'])
+  ...transformPropsToContext(props, [
+    'id',
+    'autofocus',
+    'placeholder',
+    'disabled',
+    'readonly',
+    'maxlength',
+    'minlength',
+    'pattern'
+  ]),
+  modelValue
 });
 </script>
 
 <template>
   <div
-    v-bind="forwardedProps"
     :ref="setRootElement"
     :class="cls"
     role="group"

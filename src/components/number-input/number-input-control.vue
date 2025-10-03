@@ -16,8 +16,11 @@ const cls = computed(() => themeContext?.ui?.value?.control);
 
 const {
   id,
+  autofocus,
+  maxlength,
+  minlength,
+  pattern,
   placeholder,
-  autoFocus,
   setInputElement,
   modelValue,
   disabled,
@@ -121,35 +124,38 @@ watch(
     :id="id"
     :ref="setInputElement"
     :class="cls"
-    role="spinbutton"
-    type="text"
-    tabindex="0"
-    :value="inputValue"
-    :inputmode="inputMode"
-    :placeholder="placeholder"
-    :autofocus="autoFocus"
-    :disabled="disabled"
-    :data-disabled="disabled ? '' : undefined"
-    :readonly="readonly"
-    :data-readonly="readonly ? '' : undefined"
-    autocomplete="off"
-    autocorrect="off"
-    spellcheck="false"
     aria-roledescription="Number Input"
-    :aria-valuenow="modelValue ?? undefined"
     :aria-valuemin="min"
     :aria-valuemax="max"
-    @keydown.up.prevent="onIncrease"
+    :aria-valuenow="modelValue ?? undefined"
+    autocomplete="off"
+    autocorrect="off"
+    :autofocus="autofocus"
+    :data-disabled="disabled ? '' : undefined"
+    :data-readonly="readonly ? '' : undefined"
+    :disabled="disabled"
+    :inputmode="inputMode"
+    :maxlength="maxlength"
+    :minlength="minlength"
+    :pattern="pattern"
+    :placeholder="placeholder"
+    :value="inputValue"
+    :readonly="readonly"
+    role="spinbutton"
+    spellcheck="false"
+    tabindex="0"
+    type="text"
+    @beforeinput="onBeforeInput"
+    @blur="onBlur"
+    @change="onChange"
+    @input="onInput"
     @keydown.down.prevent="onDecrease"
+    @keydown.end.prevent="onMinMaxValue('max')"
+    @keydown.home.prevent="onMinMaxValue('min')"
     @keydown.page-up.prevent="onIncrease(10)"
     @keydown.page-down.prevent="onDecrease(10)"
-    @keydown.home.prevent="onMinMaxValue('min')"
-    @keydown.end.prevent="onMinMaxValue('max')"
-    @wheel="onWheelEvent"
-    @beforeinput="onBeforeInput"
-    @input="onInput"
-    @change="onChange"
+    @keydown.up.prevent="onIncrease"
     @keydown.enter="onKeydownEnter"
-    @blur="onBlur"
+    @wheel="onWheelEvent"
   />
 </template>

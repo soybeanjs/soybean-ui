@@ -11,7 +11,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
-  defaultValue: undefined,
+  modelValue: undefined,
   step: 1,
   stepSnapping: true
 });
@@ -41,19 +41,22 @@ const onClear = () => {
 provideNumberInputRootContext({
   modelValue,
   ...transformPropsToContext(props, [
+    'id',
+    'autofocus',
+    'disabled',
+    'maxlength',
+    'minlength',
+    'pattern',
+    'placeholder',
+    'readonly',
     'locale',
     'formatOptions',
-    'disabled',
-    'readonly',
     'max',
     'min',
     'step',
     'stepSnapping',
     'disableWheelChange',
-    'invertWheelChange',
-    'id',
-    'placeholder',
-    'autoFocus'
+    'invertWheelChange'
   ])
 });
 </script>

@@ -1,33 +1,39 @@
-import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, InputTypeHTMLAttribute, ShallowRef } from 'vue';
+import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
 import type { ClassValue, FormFieldProps, PropsToContext } from '../../types';
 
-export interface InputRootProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
-  /** The default value of the input */
-  defaultValue?: string;
-  /** The controlled value of the input */
-  modelValue?: string;
+export interface InputBaseProps {
   /** Id of the input element */
   id?: string;
-  /** The type of the input */
-  type?: InputTypeHTMLAttribute | undefined;
-  /** The placeholder of the input */
-  placeholder?: string;
   /** When `true`, the input is auto-focused. */
-  autoFocus?: boolean;
+  autofocus?: boolean;
   /** When `true`, prevents the user from interacting with the input. */
   disabled?: boolean;
+  /** The maximum number of characters allowed in the input */
+  maxlength?: number;
+  /** The minimum number of characters allowed in the input */
+  minlength?: number;
+  /** The pattern attribute of the input */
+  pattern?: string;
+  /** The placeholder of the input */
+  placeholder?: string;
   /** When `true`, the input is read-only. */
   readonly?: boolean;
 }
 
-export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
+export interface InputRootProps extends InputBaseProps, FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+  /** The default value of the input */
+  defaultValue?: string;
+  /** The controlled value of the input */
+  modelValue?: string;
+}
 
 export type InputRootEmits = {
   'update:modelValue': [value: string];
 };
 
-export interface InputRootContextParams
-  extends PropsToContext<InputRootProps, 'id' | 'type' | 'placeholder' | 'autoFocus' | 'disabled' | 'readonly'> {
+export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
+
+export interface InputRootContextParams extends PropsToContext<InputBaseProps> {
   modelValue: ShallowRef<string | undefined>;
 }
 

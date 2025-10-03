@@ -17,7 +17,8 @@ const emit = defineEmits<InputEmits>();
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
-const forwardedProps = useOmitProps(props, ['inputRef', 'size', 'ui', 'controlProps', 'modelValue', 'clearable']);
+const forwardedProps = useOmitProps(props, ['inputRef', 'size', 'ui', 'controlProps', 'clearable']);
+
 const ui = computed(() => {
   const variants = inputVariants({
     size: props.size
