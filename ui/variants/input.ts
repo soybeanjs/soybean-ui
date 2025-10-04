@@ -13,7 +13,8 @@ export const inputVariants = tv({
       'disabled:(cursor-not-allowed opacity-50)',
       'file:(border-0 bg-transparent font-medium)'
     ],
-    clearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100'
+    clearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
+    visible: 'cursor-pointer'
   },
   variants: {
     size: {

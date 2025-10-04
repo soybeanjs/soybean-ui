@@ -1,11 +1,13 @@
 import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputThemeSlot } from '@headless';
 import type { ThemeSize } from '@theme';
 
-type InputUi = Partial<Record<InputThemeSlot | 'clearable', ClassValue>>;
+type PasswordUi = Partial<Record<InputThemeSlot | 'clearable' | 'visible', ClassValue>>;
 
-export interface InputProps extends InputRootProps {
+export interface PasswordProps extends InputRootProps {
   size?: ThemeSize;
-  ui?: InputUi;
+  ui?: PasswordUi;
+  /** Whether to show the password */
+  visible?: boolean;
   /** Whether to show the clear icon */
   clearable?: boolean;
   /**
@@ -20,4 +22,6 @@ export interface InputProps extends InputRootProps {
   controlProps?: InputControlProps;
 }
 
-export type InputEmits = InputRootEmits;
+export type PasswordEmits = InputRootEmits & {
+  'update:visible': [visible: boolean];
+};
