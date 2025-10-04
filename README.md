@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 35 / total: 106
+✅ 36 / total: 106
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -48,7 +48,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 34  | 1        | Select          | ✅ Completed |                      | support virtualized      |
 | 35  | 1        | Switch          | ✅ Completed |                      | support switch card      |
 | 36  | 1        | Tabs            | ✅ Completed |                      |                          |
-| 37  | 1        | Textarea        |              |                      | support auto size        |
+| 37  | 1        | Textarea        | ✅ Completed |                      | support auto size        |
 | 38  | 1        | Toast           |              | Sonner               |                          |
 | 39  | 1        | Tooltip         | ✅ Completed |                      |                          |
 | 41  | 1        | VisuallyHidden  | ✅ Completed |                      |                          |

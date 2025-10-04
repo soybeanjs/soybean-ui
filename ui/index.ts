@@ -28,8 +28,9 @@ export * from './components/radio-group';
 export * from './components/segment';
 export * from './components/select';
 export * from './components/switch';
-export * from './components/tooltip';
 export * from './components/tabs';
+export * from './components/textarea';
+export * from './components/tooltip';
 export * from './components/visually-hidden';
 
 export type { ThemeColor, ThemeSize } from './theme/types';
