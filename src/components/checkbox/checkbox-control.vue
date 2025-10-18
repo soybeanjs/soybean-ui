@@ -32,7 +32,7 @@ const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, at
 const focusable = computed(() => (rovingFocus.value ? !disabled.value : undefined));
 
 const onClick = () => {
-  if (!isNullish(groupContext?.modelValue?.value)) {
+  if (groupContext) {
     const modelValueArray = [...(groupContext.modelValue.value || [])];
     if (isValueEqualOrExist(modelValueArray, value.value)) {
       const index = modelValueArray.findIndex(i => isEqual(i, value.value));
