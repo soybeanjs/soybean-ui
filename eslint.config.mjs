@@ -14,7 +14,8 @@ export default defineConfig(
       '@typescript-eslint/no-empty-object-type': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-static-inline-styles': 'off',
-      'vue/no-reserved-component-names': 'off'
+      'vue/no-reserved-component-names': 'off',
+      '@typescript-eslint/no-invalid-void-type': 'off'
     }
   }
 );
