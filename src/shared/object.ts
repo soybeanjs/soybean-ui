@@ -69,30 +69,6 @@ export function wrapArray<T>(array: T[], startIndex: number): T[] {
 }
 
 /**
- * Deep clone using JSON serialization
- *
- * @param value - Value to clone
- * @returns Cloned value
- */
-export function jsonClone<T>(value: T) {
-  return JSON.parse(JSON.stringify(value)) as T;
-}
-
-/**
- * Deep clone using structured clone or JSON clone
- *
- * @param value - Value to clone
- * @returns Cloned value
- */
-export function cloneValue<T>(value: T) {
-  if (typeof structuredClone === 'undefined') {
-    return jsonClone(value);
-  }
-
-  return structuredClone(value);
-}
-
-/**
  * This is the "meat" of the typeahead matching logic. It takes in all the values, the search and the current match, and
  * returns the next match (or `undefined`).
  *
