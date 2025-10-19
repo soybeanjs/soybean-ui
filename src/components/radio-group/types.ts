@@ -6,14 +6,14 @@ import type {
   Direction,
   EmitsToHookProps,
   ForceMountProps,
-  FormFieldProps,
+  FormFieldCommonProps,
   PropsToContext
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends FormFieldProps,
+  extends FormFieldCommonProps,
     /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
@@ -44,7 +44,7 @@ export type RadioGroupRootContextParams = PropsToContext<
   modelValue: ShallowRef<AcceptableBooleanValue>;
 };
 
-export interface RadioGroupItemProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The value given as data when submitted with a `name`. */
   value: NonNullable<AcceptableBooleanValue>;
   /** When `true`, prevents the user from interacting with the radio item. */

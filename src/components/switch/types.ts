@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, HtmlHTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableBooleanValue, ClassValue, FormFieldProps, PropsToContext } from '../../types';
+import type { AcceptableBooleanValue, ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
@@ -18,7 +18,7 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
 }
 
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
-  extends FormFieldProps,
+  extends FormFieldCommonProps,
     SwitchValueConfig<T>,
     /** @vue-ignore */ HtmlHTMLAttributes {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */

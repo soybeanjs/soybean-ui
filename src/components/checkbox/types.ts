@@ -4,14 +4,14 @@ import type {
   ClassValue,
   DefinedValue,
   ForceMountProps,
-  FormFieldProps,
+  FormFieldCommonProps,
   PropsToContext
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
 
-export interface CheckboxRootProps extends FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
@@ -47,7 +47,7 @@ export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
       RovingFocusGroupProps,
       'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
     >,
-    FormFieldProps {
+    FormFieldCommonProps {
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: T[];
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */

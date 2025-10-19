@@ -5,7 +5,7 @@ import type {
   DefinedValue,
   Direction,
   ForceMountProps,
-  FormFieldProps,
+  FormFieldCommonProps,
   PointerDownOutsideEvent,
   PropsToContext,
   SingleOrMultipleEmits,
@@ -19,7 +19,7 @@ import type { PortalProps } from '../portal/types';
 // SelectRoot
 export interface SelectRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
   extends SingleOrMultipleProps<T, M>,
-    FormFieldProps {
+    FormFieldCommonProps {
   /** The controlled open state of the Select. Can be bind as `v-model:open`. */
   open?: boolean;
   /** The open state of the select when it is initially rendered. Use when you do not need to control its open state. */

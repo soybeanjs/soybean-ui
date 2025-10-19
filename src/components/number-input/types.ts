@@ -1,9 +1,9 @@
 import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, FormFieldProps, PropsToContext } from '../../types';
+import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
-export interface NumberInputRootProps extends InputBaseProps, FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface NumberInputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: number;
   /** The controlled value of the input */

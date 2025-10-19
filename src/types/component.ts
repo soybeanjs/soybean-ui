@@ -53,7 +53,7 @@ export interface FormNameValueProps<T = unknown> {
   value: T;
 }
 
-export interface FormFieldProps {
+export interface FormFieldCommonProps {
   /** The name of the field. Submitted with its owning form as part of a name/value pair. */
   name?: string;
   /** When `true`, indicates that the user must set the value before the owning form can be submitted. */

@@ -5,7 +5,7 @@ import type {
   DataOrientation,
   DefinedValue,
   Direction,
-  FormFieldProps,
+  FormFieldCommonProps,
   GetSingleValue,
   PropsToContext,
   SelectEvent,
@@ -17,7 +17,7 @@ import type { PrimitiveProps } from '../primitive/types';
 
 export interface ListboxRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
   extends SingleOrMultipleProps<T, M>,
-    FormFieldProps,
+    FormFieldCommonProps,
     /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;

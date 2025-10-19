@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, FormFieldProps, PropsToContext } from '../../types';
+import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
 
 export interface InputBaseProps {
   /** Id of the input element */
@@ -20,7 +20,7 @@ export interface InputBaseProps {
   readonly?: boolean;
 }
 
-export interface InputRootProps extends InputBaseProps, FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: string;
   /** The controlled value of the input */

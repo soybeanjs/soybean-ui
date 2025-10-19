@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef, TextareaHTMLAttributes } from 'vue';
-import type { ClassValue, FormFieldProps, PropsToContext } from '../../types';
+import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
 
 export interface TextareaAutosizeOptions {
   /** The minimum number of rows to display */
@@ -25,7 +25,7 @@ export interface TextareaBaseProps {
   readonly?: boolean;
 }
 
-export interface TextareaRootProps extends TextareaBaseProps, FormFieldProps, /** @vue-ignore */ HTMLAttributes {
+export interface TextareaRootProps extends TextareaBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the textarea */
   defaultValue?: string;
   /** The controlled value of the textarea */
