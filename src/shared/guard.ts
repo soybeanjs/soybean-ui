@@ -1,4 +1,14 @@
 /**
+ * Type guard: check if value is a string
+ *
+ * @param value
+ * @returns
+ */
+export function isString(value: unknown): value is string {
+  return typeof value === 'string';
+}
+
+/**
  * Type guard: check if value is a primitive type
  *
  * @param value - The value to check
@@ -48,4 +58,28 @@ export function isNullish(value: unknown): value is null | undefined {
  */
 export function isBlankString(value: unknown | undefined): value is string {
   return typeof value === 'string' && value === '';
+}
+
+export function isDateObject(value: unknown): value is Date {
+  return value instanceof Date;
+}
+
+export function isObjectType(value: unknown) {
+  return typeof value === 'object';
+}
+
+export function isFunction(value: unknown): value is (...args: any[]) => any {
+  return typeof value === 'function';
+}
+
+export function isObject(value: unknown) {
+  return !isNullish(value) && !Array.isArray(value) && isObjectType(value) && !isDateObject(value);
+}
+
+export function isPromise(value: any): value is PromiseLike<any> {
+  return isObject(value) && isFunction(value?.then);
+}
+
+export function keysOf<TRecord extends Record<string, unknown>>(record: TRecord) {
+  return Object.keys(record) as (keyof TRecord)[];
 }

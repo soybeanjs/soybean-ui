@@ -1,5 +1,7 @@
 import type { CheckedState, DefinedValue, SingleOrMultipleProps, SingleOrMultipleValue } from '../types';
-import { isNullish } from './guard';
+import { isNullish, isObject } from './guard';
+import { compact } from './object';
+import { isKey, stringToPath } from './string';
 
 export function isIndeterminate(checked?: CheckedState | null): checked is 'indeterminate' {
   return checked === 'indeterminate';
@@ -157,4 +159,52 @@ export function getSingleOrMultipleDefaultValue(props: SingleOrMultipleProps) {
   }
 
   return props.multiple ? [] : undefined;
+}
+
+export function setValue(obj: Record<string, any>, path: string, value?: any) {
+  let index = -1;
+  const tempPath = isKey(path) ? [path] : stringToPath(path);
+  const length = tempPath.length;
+  const lastIndex = length - 1;
+
+  while (++index < length) {
+    const key = tempPath[index];
+    let newValue = value;
+
+    if (key) {
+      if (index !== lastIndex) {
+        const objValue = obj[key];
+        if (isObject(objValue) || Array.isArray(objValue)) {
+          newValue = objValue;
+        } else if (!Number.isNaN(Number(tempPath[index + 1]))) {
+          newValue = [];
+        } else {
+          newValue = {};
+        }
+      }
+      obj[key] = newValue;
+      // eslint-disable-next-line no-param-reassign
+      obj = obj[key];
+    }
+  }
+  return obj;
+}
+
+export function getValue<T>(obj: T, path: string, defaultValue?: unknown): any {
+  if (!path || !isObject(obj)) {
+    return defaultValue;
+  }
+
+  const result = compact(path.split(/[,[\].]+?/)).reduce(
+    (res, key) => (isNullish(res) ? res : res[key as keyof {}]),
+    obj
+  );
+
+  if (result === undefined || result === obj) {
+    const objValue = obj[path as keyof T];
+
+    return objValue === undefined ? defaultValue : objValue;
+  }
+
+  return result;
 }

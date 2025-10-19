@@ -39,6 +39,10 @@ export function omit<T extends Record<string, any>, K extends keyof T>(obj: T, k
   return result;
 }
 
+export function compact<T>(value: T[]) {
+  return Array.isArray(value) ? value.filter(Boolean) : [];
+}
+
 /**
  * Remove specified element from an array
  *
@@ -66,6 +70,45 @@ export function wrapArray<T>(array: T[], startIndex: number): T[] {
 
   const normalizedStartIndex = ((startIndex % array.length) + array.length) % array.length;
   return array.map((_, index) => array[(normalizedStartIndex + index) % array.length]!);
+}
+
+export function appendAt<T>(data: T[], value: T) {
+  return [...data, value];
+}
+
+export function prependAt<T>(data: T[], value: T) {
+  return [value, ...data];
+}
+
+export function removeAt<T>(data: T[], index?: number): T[] {
+  if (index === undefined) return [];
+
+  const clone = [...data];
+  clone.splice(index, 1);
+  return clone;
+}
+
+export function swapAt<T>(data: T[], indexA: number, indexB: number) {
+  const aValue = data[indexA];
+  const bValue = data[indexB];
+  data[indexA] = bValue!;
+  data[indexB] = aValue!;
+}
+
+export function moveAt<T>(data: T[], from: number, to: number) {
+  const [fromValue] = data.splice(from, 1);
+  data.splice(to, 0, fromValue!);
+}
+
+export function insertAt<T>(data: T[], index: number, value: T): T[] {
+  return [...data.slice(0, index), value, ...data.slice(index)];
+}
+
+export function updateAt<T>(data: T[], index: number, value: T): T[] {
+  const clone = [...data];
+  clone[index] = value;
+
+  return clone;
 }
 
 /**

@@ -1,8 +1,12 @@
+export type PrimitiveType = null | undefined | string | number | boolean | symbol | bigint;
+
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
 
 export type DefinedValue = string | number;
 export type AcceptableValue = DefinedValue | null | undefined;
 export type AcceptableBooleanValue = AcceptableValue | boolean;
+
+export type MaybePromise<T> = T | Promise<T>;
 
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';

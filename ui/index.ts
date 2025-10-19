@@ -14,6 +14,7 @@ export * from './components/divider';
 export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
+export * from './components/form';
 export * from './components/icon';
 export * from './components/input';
 export * from './components/kbd';
@@ -34,5 +35,6 @@ export * from './components/textarea';
 export * from './components/tooltip';
 export * from './components/visually-hidden';
 
+export * from '@headless/form';
 export type { ThemeColor, ThemeSize } from './theme/types';
 export type * from '@headless/types';

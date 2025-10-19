@@ -13,6 +13,7 @@ export * from './components/context-menu';
 export * from './components/dialog';
 export * from './components/divider';
 export * from './components/dropdown-menu';
+export * from './components/form';
 export * from './components/input';
 export * from './components/kbd';
 export * from './components/label';
@@ -35,5 +36,7 @@ export * from './components/tabs';
 export * from './components/textarea';
 export * from './components/tooltip';
 export * from './components/visually-hidden';
+
+export * from './form';
 
 export type * from './types';
