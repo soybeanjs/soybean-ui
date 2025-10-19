@@ -15,7 +15,6 @@ export default defineConfig<Theme>({
     presetWind3({ dark: 'class' }),
     presetTypography(),
     presetAnimations(),
-    // @ts-expect-error ignore type
     presetSoybeanJS(),
     // @ts-expect-error ignore type
     presetSoybeanUI()
