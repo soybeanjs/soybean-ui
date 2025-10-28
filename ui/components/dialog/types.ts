@@ -36,6 +36,18 @@ export interface DialogProps extends DialogRootProps {
 
 export type DialogEmits = DialogRootEmits & DialogContentEmits;
 
+export interface DialogPureProps extends DialogRootProps {
+  size?: ThemeSize;
+  ui?: DialogUi;
+  closable?: boolean;
+  triggerProps?: DialogTriggerProps;
+  contentProps?: DialogContentProps;
+  overlayProps?: DialogOverlayProps;
+  portalProps?: DialogPortalProps;
+}
+
+export type DialogPureEmits = DialogEmits;
+
 export type DialogSizeContextParams = {
   size: ComputedRef<ThemeSize>;
 };

@@ -3,7 +3,7 @@ import { SButton, SCard, SDialog } from '@ui';
 </script>
 
 <template>
-  <SCard title="Default" split>
+  <SCard title="Base" split>
     <SDialog title="Dialog Title" description="Dialog Description">
       <template #trigger>
         <SButton variant="pure">Open</SButton>

@@ -69,6 +69,11 @@ export const dialogVariants = tv({
         closeIcon: 'right-4 top-4',
         footer: 'gap-6'
       }
+    },
+    pure: {
+      true: {
+        content: 'p-0 gap-0 border-none'
+      }
     }
   },
   defaultVariants: {
