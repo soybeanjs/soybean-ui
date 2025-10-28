@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { SCard } from '@ui';
-import DemoSwitchDefault from './default.vue';
+import DemoSwitchBase from './base.vue';
 import DemoSwitchSize from './size.vue';
 import DemoSwitchShape from './shape.vue';
 import DemoSwitchSlot from './slot.vue';
@@ -8,7 +8,7 @@ import DemoSwitchSlot from './slot.vue';
 
 <template>
   <SCard title="Switch" :ui="{ content: 'flex-c gap-3' }">
-    <DemoSwitchDefault />
+    <DemoSwitchBase />
     <DemoSwitchSize />
     <DemoSwitchShape />
     <DemoSwitchSlot />
