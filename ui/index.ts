@@ -8,6 +8,7 @@ export * from './components/button';
 export * from './components/card';
 export * from './components/checkbox';
 export * from './components/collapsible';
+export * from './components/command';
 export * from './components/config-provider';
 export * from './components/context-menu';
 export * from './components/divider';

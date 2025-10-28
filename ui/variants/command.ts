@@ -4,9 +4,10 @@ import { tv } from 'tailwind-variants';
 export const commandVariants = tv({
   slots: {
     root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground`,
-    inputWrapper: 'flex items-center border-b',
-    input: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:(cursor-not-allowed opacity-50)`,
+    inputRoot: 'group flex items-center border-b',
+    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:(cursor-not-allowed opacity-50)`,
     inputIcon: `shrink-0 opacity-50`,
+    inputClearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
     empty: `text-center`,
     list: `overflow-y-auto overflow-x-hidden`,
     group: `overflow-hidden text-foreground`,
@@ -15,17 +16,17 @@ export const commandVariants = tv({
       `relative flex cursor-default select-none items-center rounded-sm outline-none`,
       `data-[highlighted]:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
     ],
+    itemLabel: '',
     itemIcon: 'shrink-0',
     separator: `h-px bg-border`,
-    shortcut: `ml-auto`,
-    dialog: `p-0 gap-0`
+    shortcut: `ml-auto`
   },
   variants: {
     size: {
       xs: {
         root: 'text-2xs',
-        inputWrapper: 'px-1.5 py-0.5',
-        input: 'h-6',
+        inputRoot: 'px-1.5 py-0.5',
+        inputControl: 'h-6',
         inputIcon: 'mr-1.5',
         empty: 'py-3',
         list: 'max-h-70 p-0.75',
@@ -35,8 +36,8 @@ export const commandVariants = tv({
       },
       sm: {
         root: 'text-xs',
-        inputWrapper: 'px-2 py-0.625',
-        input: 'h-7',
+        inputRoot: 'px-2 py-0.625',
+        inputControl: 'h-7',
         inputIcon: 'mr-1.75',
         empty: 'py-3.5',
         list: 'max-h-75 p-0.875',
@@ -46,8 +47,8 @@ export const commandVariants = tv({
       },
       md: {
         root: 'text-sm',
-        inputWrapper: 'px-2.5 py-0.75',
-        input: 'h-8',
+        inputRoot: 'px-2.5 py-0.75',
+        inputControl: 'h-8',
         inputIcon: 'mr-2',
         empty: 'py-4 text-sm',
         list: 'max-h-80 p-1',
@@ -57,8 +58,8 @@ export const commandVariants = tv({
       },
       lg: {
         root: 'text-base',
-        inputWrapper: 'px-3.5 py-0.875',
-        input: 'h-9',
+        inputRoot: 'px-3.5 py-0.875',
+        inputControl: 'h-9',
         inputIcon: 'mr-2.5',
         empty: 'py-4.5',
         list: 'max-h-90 p-1.25',
@@ -68,8 +69,8 @@ export const commandVariants = tv({
       },
       xl: {
         root: 'text-lg',
-        inputWrapper: 'px-4 py-1',
-        input: 'h-10',
+        inputRoot: 'px-4 py-1',
+        inputControl: 'h-10',
         inputIcon: 'mr-3',
         empty: 'py-5',
         list: 'max-h-100 p-1.5',
@@ -79,8 +80,8 @@ export const commandVariants = tv({
       },
       '2xl': {
         root: 'text-xl',
-        inputWrapper: 'px-4.5 py-1.25',
-        input: 'h-12',
+        inputRoot: 'px-4.5 py-1.25',
+        inputControl: 'h-12',
         inputIcon: 'mr-3.5',
         empty: 'py-6',
         list: 'max-h-115 p-1.75',

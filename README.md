@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 38 / total: 107
+✅ 39 / total: 107
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -22,7 +22,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 8   | 1        | Card            | ✅ Completed |                      |                          |
 | 9   | 1        | Checkbox        | ✅ Completed |                      | ✨ support checkbox card |
 | 10  | 1        | Collapsible     | ✅ Completed |                      |                          |
-| 11  | 1        | Command         |              |                      | support virtualized      |
+| 11  | 1        | Command         | ✅ Completed |                      |                          |
 | 12  | 1        | ConfigProvider  | ✅ Completed |                      |                          |
 | 13  | 1        | ContextMenu     | ✅ Completed |                      |                          |
 | 14  | 1        | Dialog          | ✅ Completed |                      |                          |
