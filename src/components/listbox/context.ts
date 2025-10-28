@@ -1,8 +1,9 @@
-import { nextTick, shallowRef, useId } from 'vue';
+import { computed, nextTick, shallowRef, useId } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useCollection, useContext, useDirection, useForwardElement, useTypeahead } from '../../composables';
 import { findValuesBetween, getFocusIntent, isEqual } from '../../shared';
 import type { DefinedValue } from '../../types';
+import { provideInputThemeContext } from '../input/context';
 import type {
   ListboxCollectionItemData,
   ListboxItemContextParams,
@@ -305,5 +306,16 @@ export const [provideListboxItemContext, useListboxItemContext] = useContext(
 
 export const [provideListboxThemeContext, useListboxThemeContext] = useContext(
   'ListboxTheme',
-  (params: ListboxThemeContextParams) => params
+  (params: ListboxThemeContextParams) => {
+    const inputUi = computed(() => ({
+      root: params.ui.value.filterRoot,
+      control: params.ui.value.filterControl
+    }));
+
+    provideInputThemeContext({
+      ui: inputUi
+    });
+
+    return params;
+  }
 );

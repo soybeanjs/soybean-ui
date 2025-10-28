@@ -14,6 +14,7 @@ import type {
 } from '../../types';
 import type { CollectionItemData } from '../../composables';
 import type { PrimitiveProps } from '../primitive/types';
+import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
 export interface ListboxRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
   extends SingleOrMultipleProps<T, M>,
@@ -50,7 +51,9 @@ export type ListboxRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleV
   leave: [event: Event];
 };
 
-export interface ListboxItemProps<T = DefinedValue> extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface ListboxItemProps<T = DefinedValue>
+  extends PrimitiveProps,
+    /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
   value: T;
   /** When `true`, prevents the user from interacting with the item. */
@@ -68,18 +71,20 @@ export interface ListboxGroupProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface ListboxGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface ListboxFilterProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
-  /** The controlled value of the filter. Can be bound-with with v-model. */
-  modelValue?: string;
-  /** Focus on element when mounted. */
-  autoFocus?: boolean;
-  /** When `true`, prevents the user from interacting with item */
-  disabled?: boolean;
+export interface ListboxFilterProps extends InputRootProps {
+  /**
+   * The function to set the input element.
+   *
+   * @param el - The input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
+  /**
+   * The props of the input extra props.
+   */
+  controlProps?: InputControlProps;
 }
 
-export type ListboxFilterEmits = {
-  'update:modelValue': [string];
-};
+export type ListboxFilterEmits = InputRootEmits;
 
 export interface ListboxContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -127,7 +132,8 @@ export interface ListboxItemContextParams {
 export type ListboxThemeSlot =
   | 'root'
   | 'content'
-  | 'filter'
+  | 'filterRoot'
+  | 'filterControl'
   | 'item'
   | 'itemIndicator'
   | 'group'
@@ -135,5 +141,5 @@ export type ListboxThemeSlot =
   | 'virtualizer';
 
 export interface ListboxThemeContextParams {
-  ui: ComputedRef<Record<ListboxThemeSlot, ClassValue>>;
+  ui: ComputedRef<Partial<Record<ListboxThemeSlot, ClassValue>>>;
 }
