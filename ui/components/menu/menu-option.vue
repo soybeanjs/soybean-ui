@@ -108,7 +108,7 @@ const ui = computed(() => ({ ...themeContext?.ui?.value }));
         </template>
       </SMenuItemSlot>
     </MenuSubTrigger>
-    <MenuSeparator v-if="item.separator" />
+    <MenuSeparator v-if="item.separator" v-bind="separatorProps" />
     <MenuPortal v-bind="portalProps">
       <MenuSubContent v-bind="subContentProps" v-on="forwardedListeners">
         <MenuGroup v-bind="groupProps">
