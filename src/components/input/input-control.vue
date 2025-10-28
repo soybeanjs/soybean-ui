@@ -25,6 +25,7 @@ const onInput = (event: Event) => {
   <input
     :id="id"
     :class="cls"
+    :aria-disabled="disabled ?? undefined"
     aria-roledescription="Input"
     :aria-valuenow="modelValue ?? undefined"
     autocorrect="off"
