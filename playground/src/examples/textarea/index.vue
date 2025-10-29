@@ -5,6 +5,7 @@ import DemoTextareaAutosize from './autosize.vue';
 import DemoTextareaClearable from './clearable.vue';
 import DemoTextareaDisabled from './disabled.vue';
 import DemoTextareaCounter from './counter.vue';
+import DemoTextareaFooter from './footer.vue';
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import DemoTextareaCounter from './counter.vue';
     <DemoTextareaClearable />
     <DemoTextareaDisabled />
     <DemoTextareaCounter />
+    <DemoTextareaFooter />
   </SCard>
 </template>

@@ -49,5 +49,6 @@ provideTextareaThemeContext({
     <TextareaCounter v-if="showCounter" v-slot="slotProps">
       <slot name="counter" v-bind="slotProps" />
     </TextareaCounter>
+    <slot name="footer" />
   </TextareaRoot>
 </template>

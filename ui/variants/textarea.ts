@@ -4,10 +4,14 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const textareaVariants = tv({
   slots: {
-    root: 'group relative',
+    root: [
+      'group relative flex flex-col',
+      `rounded-md border border-solid border-input bg-background`,
+      `focus-within:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
+    ],
     control: [
-      `w-full rounded-md border border-solid border-input bg-background`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
+      'w-full bg-transparent outline-none',
+      'placeholder:text-muted-foreground',
       `disabled:(cursor-not-allowed opacity-50)`
     ],
     counter: 'absolute z-2 leading-none text-muted-foreground',
@@ -16,32 +20,38 @@ export const textareaVariants = tv({
   variants: {
     size: {
       xs: {
-        control: 'min-h-6 px-1.5 py-1 text-2xs',
+        root: 'text-2xs',
+        control: 'min-h-6 px-1.5 py-1',
         counter: 'text-2xs right-1.75 bottom-1.5',
         clearable: 'right-1.5 top-1.5'
       },
       sm: {
-        control: 'min-h-7 px-1.75 py-1 text-xs',
+        root: 'text-xs',
+        control: 'min-h-7 px-1.75 py-1',
         counter: 'text-xs right-2 bottom-1.75',
         clearable: 'right-1.75 top-1.75'
       },
       md: {
-        control: 'min-h-8 px-2 py-1 text-sm',
+        root: 'text-sm',
+        control: 'min-h-8 px-2 py-1',
         counter: 'text-sm right-2.5 bottom-2',
         clearable: 'right-2 top-2'
       },
       lg: {
-        control: 'min-h-9 px-2.5 py-1 text-base',
+        root: 'text-base',
+        control: 'min-h-9 px-2.5 py-1',
         counter: 'text-base right-3 bottom-2.5',
         clearable: 'right-2.5 top-2.5'
       },
       xl: {
-        control: 'min-h-10 px-3 py-1 text-lg',
+        root: 'text-lg',
+        control: 'min-h-10 px-3 py-1',
         counter: 'text-lg right-3.5 bottom-3',
         clearable: 'right-3 top-3'
       },
       '2xl': {
-        control: 'min-h-12 px-4 py-2 text-xl',
+        root: 'text-xl',
+        control: 'min-h-12 px-4 py-2',
         counter: 'text-xl right-4 bottom-3.5',
         clearable: 'right-3.5 top-3.5'
       }
