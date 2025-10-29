@@ -13,89 +13,89 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
 | 1   | 1        | Accordion       | ✅ Completed |                      |                          |
-| 2   | 1        | AlertDialog     | ✅ Completed |                      |                          |
-| 3   | 1        | Arrow           | ✅ Completed |                      |                          |
-| 4   | 1        | AspectRatio     | ✅ Completed |                      |                          |
-| 5   | 1        | Avatar          | ✅ Completed |                      |                          |
-| 6   | 1        | Breadcrumb      | ✅ Completed |                      |                          |
-| 7   | 1        | Button          | ✅ Completed |                      | ✨ support loading       |
-| 8   | 1        | Card            | ✅ Completed |                      |                          |
-| 9   | 1        | Checkbox        | ✅ Completed |                      | ✨ support checkbox card |
-| 10  | 1        | Collapsible     | ✅ Completed |                      |                          |
-| 11  | 1        | Command         | ✅ Completed |                      |                          |
-| 12  | 1        | ConfigProvider  | ✅ Completed |                      |                          |
-| 13  | 1        | ContextMenu     | ✅ Completed |                      |                          |
-| 14  | 1        | Dialog          | ✅ Completed |                      |                          |
-| 15  | 1        | Divider         | ✅ Completed | Separator            |                          |
-| 16  | 1        | Drawer          | ✅ Completed | Sheet                |                          |
-| 17  | 1        | DropdownMenu    | ✅ Completed |                      | ✨ support hover trigger |
-| 18  | 1        | Form            | ✅ Completed |                      |                          |
-| 19  | 1        | Icon            | ✅ Completed |                      | ✨ based on iconify      |
-| 20  | 1        | Input           | ✅ Completed |                      |                          |
-| 21  | 1        | Kbd             | ✅ Completed |                      |                          |
-| 22  | 1        | Label           | ✅ Completed |                      |                          |
-| 23  | 1        | Layout          |              |                      |                          |
-| 24  | 1        | Link            | ✅ Completed |                      |                          |
-| 25  | 1        | List            |              |                      |                          |
-| 26  | 1        | Listbox         | ✅ Completed |                      |                          |
-| 27  | 1        | Menu            | ✅ Completed |                      |                          |
-| 28  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
-| 29  | 1        | NumberInput     | ✅ Completed | NumberField          |                          |
-| 30  | 1        | Pagination      | ✅ Completed |                      |                          |
-| 31  | 1        | Password        | ✅ Completed |                      |                          |
-| 32  | 1        | Popover         | ✅ Completed |                      |                          |
-| 33  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |
-| 34  | 1        | Segment         | ✅ Completed |                      |                          |
-| 35  | 1        | Select          | ✅ Completed |                      | support virtualized      |
-| 36  | 1        | Switch          | ✅ Completed |                      | support switch card      |
-| 37  | 1        | Tabs            | ✅ Completed |                      |                          |
-| 38  | 1        | Textarea        | ✅ Completed |                      | support auto size        |
-| 39  | 1        | Toast           |              | Sonner               |                          |
-| 41  | 1        | Tooltip         | ✅ Completed |                      |                          |
-| 42  | 1        | VisuallyHidden  | ✅ Completed |                      |                          |
-| 43  | 2        | Alert           |              |                      |                          |
-| 44  | 2        | Badge           |              | Chip                 |                          |
-| 45  | 2        | Combobox        |              |                      | support virtualized      |
-| 46  | 2        | Menubar         |              |                      |                          |
-| 47  | 2        | PinInput        |              | InputOPT, OPTInput   |                          |
-| 48  | 2        | Popconfirm      |              |                      |                          |
-| 49  | 2        | Progress        |              |                      | include circle           |
-| 50  | 2        | ScrollArea      |              |                      |                          |
-| 51  | 2        | Skeleton        |              |                      |                          |
-| 52  | 2        | Slider          |              |                      |                          |
-| 53  | 2        | Tag             |              | Badge(shadcn-ui)     |                          |
-| 54  | 2        | Toggle          |              |                      |                          |
-| 55  | 2        | ToggleGroup     |              |                      |                          |
-| 40  | 2        | Tree            |              |                      | support virtualized      |
-| 56  | 2        | TreeMenu        |              |                      |                          |
-| 57  | 3        | BottomSheet     |              | Drawer(shadcn-ui)    |                          |
-| 58  | 3        | Calendar        |              |                      | v-calendar               |
-| 59  | 3        | Carousel        |              |                      |                          |
-| 60  | 3        | DataTable       |              |                      | support virtualized      |
-| 61  | 3        | DateField       |              |                      |                          |
-| 62  | 3        | DatePicker      |              |                      |                          |
-| 63  | 3        | DateRangeField  |              |                      |                          |
-| 64  | 3        | DateRangePicker |              |                      |                          |
-| 65  | 3        | Editable        |              |                      |                          |
-| 66  | 3        | HoverCard       |              |                      |                          |
-| 67  | 3        | RangeCalendar   |              |                      | v-calendar               |
-| 68  | 3        | Resizable       |              |                      |                          |
-| 69  | 3        | Splitter        |              |                      |                          |
-| 70  | 3        | Stepper         |              |                      |                          |
-| 71  | 3        | Table           |              |                      |                          |
-| 72  | 3        | TagsInput       |              |                      |                          |
-| 73  | 3        | TimeField       |              |                      |                          |
-| 74  | 3        | Timeline        |              |                      | ui things                |
-| 75  | 3        | TimePicker      |              |                      | element-plus             |
-| 76  | 3        | Toolbar         |              |                      |                          |
-| 77  | 4        | Affix           |              |                      |                          |
-| 78  | 4        | Anchor          |              |                      |                          |
-| 79  | 4        | AutoComplete    |              |                      | support virtualized      |
-| 80  | 4        | Backtop         |              |                      |                          |
-| 81  | 4        | Cascader        |              |                      | support virtualized      |
-| 82  | 4        | Clipboard       |              |                      |                          |
-| 83  | 4        | Code            |              |                      |                          |
-| 84  | 4        | ColorPicker     |              |                      |                          |
+| 2   | 1        | Alert           |              |                      |                          |
+| 3   | 1        | AlertDialog     | ✅ Completed |                      |                          |
+| 4   | 1        | Arrow           | ✅ Completed |                      |                          |
+| 5   | 1        | AspectRatio     | ✅ Completed |                      |                          |
+| 6   | 1        | Avatar          | ✅ Completed |                      |                          |
+| 7   | 1        | Badge           |              | Chip                 |                          |
+| 8   | 1        | Breadcrumb      | ✅ Completed |                      |                          |
+| 9   | 1        | Button          | ✅ Completed |                      | ✨ support loading       |
+| 10  | 1        | Card            | ✅ Completed |                      |                          |
+| 11  | 1        | Checkbox        | ✅ Completed |                      | ✨ support checkbox card |
+| 12  | 1        | Collapsible     | ✅ Completed |                      |                          |
+| 13  | 1        | Command         | ✅ Completed |                      |                          |
+| 14  | 1        | ConfigProvider  | ✅ Completed |                      |                          |
+| 15  | 1        | ContextMenu     | ✅ Completed |                      |                          |
+| 16  | 1        | Dialog          | ✅ Completed |                      |                          |
+| 17  | 1        | Divider         | ✅ Completed | Separator            |                          |
+| 18  | 1        | Drawer          | ✅ Completed | Sheet                |                          |
+| 19  | 1        | DropdownMenu    | ✅ Completed |                      | ✨ support hover trigger |
+| 20  | 1        | Form            | ✅ Completed |                      |                          |
+| 21  | 1        | Icon            | ✅ Completed |                      | ✨ based on iconify      |
+| 22  | 1        | Input           | ✅ Completed |                      |                          |
+| 23  | 1        | Kbd             | ✅ Completed |                      |                          |
+| 24  | 1        | Label           | ✅ Completed |                      |                          |
+| 25  | 1        | Layout          |              |                      |                          |
+| 26  | 1        | Link            | ✅ Completed |                      |                          |
+| 27  | 1        | List            |              |                      |                          |
+| 28  | 1        | Listbox         | ✅ Completed |                      |                          |
+| 29  | 1        | Menu            | ✅ Completed |                      |                          |
+| 30  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
+| 31  | 1        | NumberInput     | ✅ Completed | NumberField          |                          |
+| 32  | 1        | Pagination      | ✅ Completed |                      |                          |
+| 33  | 1        | Password        | ✅ Completed |                      |                          |
+| 34  | 1        | Popover         | ✅ Completed |                      |                          |
+| 35  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |
+| 36  | 1        | Segment         | ✅ Completed |                      |                          |
+| 37  | 1        | Select          | ✅ Completed |                      | support virtualized      |
+| 38  | 1        | Switch          | ✅ Completed |                      | support switch card      |
+| 39  | 1        | Tabs            | ✅ Completed |                      |                          |
+| 40  | 1        | Tag             |              | Badge(shadcn-ui)     |                          |
+| 41  | 1        | Textarea        | ✅ Completed |                      | support auto size        |
+| 42  | 1        | Toast           |              | Sonner               |                          |
+| 43  | 1        | Tooltip         | ✅ Completed |                      |                          |
+| 44  | 1        | Tree            |              |                      | support virtualized      |
+| 45  | 1        | TreeMenu        |              |                      |                          |
+| 46  | 1        | VisuallyHidden  | ✅ Completed |                      |                          |
+| 47  | 2        | ColorPicker     |              |                      |                          |
+| 48  | 2        | Combobox        |              |                      | support virtualized      |
+| 49  | 2        | DataTable       |              |                      | support virtualized      |
+| 50  | 2        | Menubar         |              |                      |                          |
+| 51  | 2        | PinInput        |              | InputOPT, OPTInput   |                          |
+| 52  | 2        | Popconfirm      |              |                      |                          |
+| 53  | 2        | Progress        |              |                      | include circle           |
+| 54  | 2        | ScrollArea      |              |                      |                          |
+| 55  | 2        | Skeleton        |              |                      |                          |
+| 56  | 2        | Slider          |              |                      |                          |
+| 57  | 2        | Table           |              |                      |                          |
+| 58  | 2        | Toggle          |              |                      |                          |
+| 59  | 2        | ToggleGroup     |              |                      |                          |
+| 60  | 3        | BottomSheet     |              | Drawer(shadcn-ui)    |                          |
+| 61  | 3        | Calendar        |              |                      | v-calendar               |
+| 62  | 3        | Carousel        |              |                      |                          |
+| 63  | 3        | DateField       |              |                      |                          |
+| 64  | 3        | DatePicker      |              |                      |                          |
+| 65  | 3        | DateRangeField  |              |                      |                          |
+| 66  | 3        | DateRangePicker |              |                      |                          |
+| 67  | 3        | Editable        |              |                      |                          |
+| 68  | 3        | HoverCard       |              |                      |                          |
+| 69  | 3        | RangeCalendar   |              |                      | v-calendar               |
+| 70  | 3        | Resizable       |              |                      |                          |
+| 71  | 3        | Splitter        |              |                      |                          |
+| 72  | 3        | Stepper         |              |                      |                          |
+| 73  | 3        | TagsInput       |              |                      |                          |
+| 74  | 3        | TimeField       |              |                      |                          |
+| 75  | 3        | Timeline        |              |                      | ui things                |
+| 76  | 3        | TimePicker      |              |                      | element-plus             |
+| 77  | 3        | Toolbar         |              |                      |                          |
+| 78  | 4        | Affix           |              |                      |                          |
+| 79  | 4        | Anchor          |              |                      |                          |
+| 80  | 4        | AutoComplete    |              |                      | support virtualized      |
+| 81  | 4        | Backtop         |              |                      |                          |
+| 82  | 4        | Cascader        |              |                      | support virtualized      |
+| 83  | 4        | Clipboard       |              |                      |                          |
+| 84  | 4        | Code            |              |                      |                          |
 | 85  | 4        | Comment         |              |                      |                          |
 | 86  | 4        | Countdown       |              |                      |                          |
 | 87  | 4        | CurrencyInput   |              |                      |                          |
