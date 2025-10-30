@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 42 / total: 107
+✅ 43 / total: 107
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -38,7 +38,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 24  | 1        | Label           | ✅ Completed |                      |                          |
 | 25  | 1        | Layout          |              |                      |                          |
 | 26  | 1        | Link            | ✅ Completed |                      |                          |
-| 27  | 1        | List            |              |                      |                          |
+| 27  | 1        | List            | ✅ Completed |                      |                          |
 | 28  | 1        | Listbox         | ✅ Completed |                      |                          |
 | 29  | 1        | Menu            | ✅ Completed |                      |                          |
 | 30  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
