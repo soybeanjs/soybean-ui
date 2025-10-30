@@ -12,7 +12,7 @@ export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
 }
 
 export type AlertRootEmits = {
-  'update:open': [boolean];
+  'update:open': [open: boolean];
 };
 
 export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -23,12 +23,12 @@ export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
-export interface AlertRootContentParams {
+export interface AlertRootContextParams {
   open: ShallowRef<boolean | undefined>;
 }
 
 export type AlertThemeSlot = 'root' | 'title' | 'description' | 'content' | 'closable';
 
-export interface AlertThemeContentParams {
+export interface AlertThemeContextParams {
   ui: ComputedRef<Record<AlertThemeSlot, ClassValue>>;
 }

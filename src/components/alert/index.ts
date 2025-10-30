@@ -6,4 +6,5 @@ import AlertClose from './alert-close.vue';
 
 export { AlertRoot, AlertContent, AlertTitle, AlertDescription, AlertClose };
 export { provideAlertThemeContext } from './context';
+
 export type * from './types';

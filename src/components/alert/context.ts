@@ -1,9 +1,9 @@
 import { useContext } from '../../composables';
-import type { AlertRootContentParams, AlertThemeContentParams } from './types';
+import type { AlertRootContextParams, AlertThemeContextParams } from './types';
 
 export const [provideAlertRootContext, useAlertRootContext] = useContext(
   'AlertRoot',
-  (params: AlertRootContentParams) => {
+  (params: AlertRootContextParams) => {
     const { open } = params;
 
     const onOpenChange = (value: boolean) => {
@@ -19,5 +19,5 @@ export const [provideAlertRootContext, useAlertRootContext] = useContext(
 
 export const [provideAlertThemeContext, useAlertThemeContext] = useContext(
   'AlertTheme',
-  (params: AlertThemeContentParams) => params
+  (params: AlertThemeContextParams) => params
 );
