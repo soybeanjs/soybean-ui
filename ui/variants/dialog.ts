@@ -16,7 +16,7 @@ export const dialogVariants = tv({
     header: `flex flex-col text-center sm:text-left`,
     title: `flex items-center font-semibold leading-none tracking-tight`,
     description: `text-muted-foreground`,
-    closeIcon: `absolute`,
+    closable: `absolute`,
     footer: `flex flex-col-reverse sm:flex-row sm:justify-end`
   },
   variants: {
@@ -26,7 +26,7 @@ export const dialogVariants = tv({
         header: 'gap-y-1.5',
         title: 'gap-x-1.5 text-xs',
         description: 'text-2xs',
-        closeIcon: 'right-1.5 top-1.5',
+        closable: 'right-1.5 top-1.5',
         footer: 'gap-1.5'
       },
       sm: {
@@ -34,7 +34,7 @@ export const dialogVariants = tv({
         header: 'gap-y-2',
         title: 'gap-x-1.75 text-sm',
         description: 'text-xs',
-        closeIcon: 'right-1.75 top-1.75',
+        closable: 'right-1.75 top-1.75',
         footer: 'gap-2'
       },
       md: {
@@ -42,7 +42,7 @@ export const dialogVariants = tv({
         header: 'gap-y-3',
         title: 'gap-x-2 text-base',
         description: 'text-sm',
-        closeIcon: 'right-2 top-2',
+        closable: 'right-2 top-2',
         footer: 'gap-3'
       },
       lg: {
@@ -50,7 +50,7 @@ export const dialogVariants = tv({
         header: 'gap-y-4',
         title: 'gap-x-2.5 text-lg',
         description: 'text-base',
-        closeIcon: 'right-2.5 top-2.5',
+        closable: 'right-2.5 top-2.5',
         footer: 'gap-4'
       },
       xl: {
@@ -58,7 +58,7 @@ export const dialogVariants = tv({
         header: 'gap-y-5',
         title: 'gap-x-3 text-xl',
         description: 'text-lg',
-        closeIcon: 'right-3 top-3',
+        closable: 'right-3 top-3',
         footer: 'gap-5'
       },
       '2xl': {
@@ -66,7 +66,7 @@ export const dialogVariants = tv({
         header: 'gap-y-6',
         title: 'gap-x-3.5 text-2xl',
         description: 'text-xl',
-        closeIcon: 'right-4 top-4',
+        closable: 'right-4 top-4',
         footer: 'gap-6'
       }
     },

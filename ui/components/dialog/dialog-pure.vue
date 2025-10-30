@@ -67,8 +67,8 @@ provideDialogSizeContext({
     <DialogPortal v-bind="portalProps">
       <DialogOverlay v-bind="overlayProps" />
       <DialogContent v-bind="contentProps" v-on="listeners">
-        <DialogClose v-if="closable" :class="ui.closeIcon" as-child>
-          <slot name="closeIcon">
+        <DialogClose v-if="closable" as-child>
+          <slot name="close">
             <ButtonIcon :size="size" icon="lucide:x" />
           </slot>
         </DialogClose>
