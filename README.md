@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 41 / total: 107
+✅ 42 / total: 107
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -51,7 +51,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 37  | 1        | Select          | ✅ Completed |                      | support virtualized      |
 | 38  | 1        | Switch          | ✅ Completed |                      | support switch card      |
 | 39  | 1        | Tabs            | ✅ Completed |                      |                          |
-| 40  | 1        | Tag             |              | Badge(shadcn-ui)     |                          |
+| 40  | 1        | Tag             | ✅ Completed | Badge(shadcn-ui)     |                          |
 | 41  | 1        | Textarea        | ✅ Completed |                      | support auto size        |
 | 42  | 1        | Toast           |              | Sonner               |                          |
 | 43  | 1        | Tooltip         | ✅ Completed |                      |                          |
