@@ -1,4 +1,5 @@
 export * from './components/accordion';
+export * from './components/alert';
 export * from './components/alert-dialog';
 export * from './components/arrow';
 export * from './components/aspect-ratio';
