@@ -16,7 +16,9 @@ import type {
 } from '@headless';
 import type { ThemeSize } from '@theme';
 
-export type DialogUi = Partial<Record<DialogThemeSlot, ClassValue>>;
+export type DialogExtraThemeSlot = 'closable';
+
+export type DialogUi = Partial<Record<DialogThemeSlot | DialogExtraThemeSlot, ClassValue>>;
 
 export interface DialogProps extends DialogRootProps {
   size?: ThemeSize;

@@ -85,7 +85,7 @@ provideDialogSizeContext({
           <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
             <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </DialogDescription>
-          <DialogClose v-if="closable" as-child>
+          <DialogClose v-if="closable" :class="ui.closable" as-child>
             <slot name="close">
               <ButtonIcon :size="size" icon="lucide:x" />
             </slot>
