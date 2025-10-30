@@ -27,7 +27,7 @@ function getTabs() {
   // eslint-disable-next-line guard-for-in
   for (const path in demoModules) {
     const match = path.match(/examples\/([^/]+)\/index\.vue$/);
-    if (match && match[1]) {
+    if (match && match[1] && !match[1].startsWith('_')) {
       const componentName = match[1];
       const label = toPascalCase(componentName);
       componentTabs.push({
