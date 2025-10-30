@@ -8,12 +8,12 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 39 / total: 107
+✅ 40 / total: 107
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
 | 1   | 1        | Accordion       | ✅ Completed |                      |                          |
-| 2   | 1        | Alert           |              |                      |                          |
+| 2   | 1        | Alert           | ✅ Completed |                      |                          |
 | 3   | 1        | AlertDialog     | ✅ Completed |                      |                          |
 | 4   | 1        | Arrow           | ✅ Completed |                      |                          |
 | 5   | 1        | AspectRatio     | ✅ Completed |                      |                          |
