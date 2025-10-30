@@ -19,6 +19,7 @@ export * from './components/form';
 export * from './components/input';
 export * from './components/kbd';
 export * from './components/label';
+export * from './components/list';
 export * from './components/listbox';
 export * from './components/link';
 export * from './components/menu';

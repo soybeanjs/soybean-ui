@@ -23,6 +23,7 @@ export * from './components/input';
 export * from './components/kbd';
 export * from './components/label';
 export * from './components/link';
+export * from './components/list';
 export * from './components/menu';
 export * from './components/navigation-menu';
 export * from './components/number-input';
