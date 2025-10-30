@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { BadgeContent, BadgeRoot, provideBadgeThemeContext } from '@headless';
-import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
 import { badgeVariants } from '@variants/badge';
 import type { BadgeEmits, BadgeProps } from './types';
@@ -15,8 +14,6 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 });
 
 const emit = defineEmits<BadgeEmits>();
-
-const forwardedProps = useOmitProps(props, ['color', 'size', 'ui', 'position', 'content', 'contentProps']);
 
 const ui = computed(() => {
   const variants = badgeVariants({
@@ -34,7 +31,7 @@ provideBadgeThemeContext({
 </script>
 
 <template>
-  <BadgeRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+  <BadgeRoot :open="open" @update:open="emit('update:open', $event)">
     <slot />
     <BadgeContent v-bind="contentProps">
       <slot name="content">{{ content }}</slot>
