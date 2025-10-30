@@ -16,7 +16,7 @@ import { cardVariants } from '@variants/card';
 import type { CardProps } from './types';
 
 defineOptions({
-  name: 'Card'
+  name: 'SCard'
 });
 
 const props = defineProps<CardProps>();
