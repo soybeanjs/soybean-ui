@@ -6,6 +6,7 @@ export type DefinedValue = string | number;
 export type AcceptableValue = DefinedValue | null | undefined;
 export type AcceptableBooleanValue = AcceptableValue | boolean;
 
+export type MaybeArray<T> = T | Array<T>;
 export type MaybePromise<T> = T | Promise<T>;
 
 export type DataOrientation = 'vertical' | 'horizontal';

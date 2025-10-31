@@ -180,3 +180,19 @@ export function findValuesBetween<T>(array: T[], start: T, end: T) {
 
   return array.slice(minIndex, maxIndex + 1);
 }
+
+export function flattenChildren<T extends { children?: any[] }>(items?: T[]) {
+  if (!items) return [];
+
+  return items.reduce(
+    (acc, item) => {
+      acc.push(item);
+
+      if (item.children) {
+        acc.push(...flattenChildren(item.children));
+      }
+      return acc;
+    },
+    [] as Omit<T, 'children'>[]
+  );
+}
