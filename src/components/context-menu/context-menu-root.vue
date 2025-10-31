@@ -11,7 +11,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ContextMenuRootProps>(), {
-  modal: true
+  modal: true,
+  pressOpenDelay: 700
 });
 
 const emit = defineEmits<ContextMenuRootEmits>();
@@ -23,7 +24,7 @@ watch(open, value => {
 });
 
 provideContextMenuRootContext({
-  ...transformPropsToContext(props, ['dir', 'modal']),
+  ...transformPropsToContext(props, ['dir', 'modal', 'pressOpenDelay']),
   open
 });
 </script>

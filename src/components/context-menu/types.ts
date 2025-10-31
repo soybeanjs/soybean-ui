@@ -30,7 +30,14 @@ import type {
   MenuRootProps
 } from '../menu/types';
 
-export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {}
+export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {
+  /**
+   * The duration from when the trigger is pressed until the menu opens.
+   *
+   * @defaultValue 700
+   */
+  pressOpenDelay?: number;
+}
 export type ContextMenuRootEmits = MenuRootEmits;
 
 export type ContextMenuContentProps = Omit<
@@ -39,7 +46,8 @@ export type ContextMenuContentProps = Omit<
 >;
 export type ContextMenuContentEmits = MenuContentEmits;
 
-export interface ContextMenuRootContextParams extends PropsToContext<ContextMenuRootProps, 'dir' | 'modal'> {
+export interface ContextMenuRootContextParams
+  extends PropsToContext<ContextMenuRootProps, 'dir' | 'modal' | 'pressOpenDelay'> {
   open: ShallowRef<boolean | undefined>;
 }
 

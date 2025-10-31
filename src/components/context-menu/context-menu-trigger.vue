@@ -15,7 +15,7 @@ const props = withDefaults(defineProps<ContextMenuTriggerProps>(), {
   as: 'span'
 });
 
-const { dataState, onOpenChange, setTriggerElement } = useContextMenuRootContext('ContextMenuTrigger');
+const { dataState, pressOpenDelay, onOpenChange, setTriggerElement } = useContextMenuRootContext('ContextMenuTrigger');
 
 const attrs = useAttrs();
 
@@ -76,7 +76,7 @@ const onPointerDown = async (event: PointerEvent) => {
   clearLongPressTimer();
   longPressTimer = window.setTimeout(() => {
     onOpen(event);
-  }, 700);
+  }, pressOpenDelay.value);
 };
 
 const onPointerEvent = async (event: PointerEvent) => {
