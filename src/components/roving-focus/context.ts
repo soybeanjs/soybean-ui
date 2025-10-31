@@ -124,7 +124,7 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
 function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
   const { getOrderedElements } = useCollectionContext('RovingFocusItem');
-  const { setItemElement, itemProps } = useCollectionItem();
+  const { setItemElement, itemProps } = useCollectionItem(options.itemData);
   const {
     currentTabStopId,
     orientation,

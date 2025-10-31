@@ -14,10 +14,14 @@ const props = withDefaults(defineProps<RovingFocusItemProps>(), {
 });
 
 const { setItemElement, rovingFocusItemProps, rovingFocusItemListeners } = useRovingFocusItem(
-  transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey'])
+  transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'])
 );
 
-const forwardedProps = useOmitProps(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey'], rovingFocusItemProps);
+const forwardedProps = useOmitProps(
+  props,
+  ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'],
+  rovingFocusItemProps
+);
 </script>
 
 <template>

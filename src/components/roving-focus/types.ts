@@ -42,6 +42,8 @@ export interface RovingFocusItemProps extends PrimitiveProps, /** @vue-ignore */
   active?: boolean;
   /** When `true`, shift + arrow key will allow focusing on next/previous item. */
   allowShiftKey?: boolean;
+  /** Additional data to be passed to the collection item. */
+  itemData?: Record<string, any>;
 }
 
 export type RovingFocusGroupContextParams = PropsToContext<
@@ -51,5 +53,5 @@ export type RovingFocusGroupContextParams = PropsToContext<
   EmitsToHookProps<RovingFocusGroupEmits>;
 
 export type RovingFocusItemOptions = Partial<
-  PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey'>
+  PropsToContext<RovingFocusItemProps, 'tabStopId' | 'focusable' | 'active' | 'allowShiftKey' | 'itemData'>
 >;
