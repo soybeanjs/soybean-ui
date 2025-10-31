@@ -24,7 +24,7 @@ const {
   isMultiple,
   rootElement,
   orientation,
-  direction,
+  dir,
   unmountOnHide
 } = useAccordionRootContext('AccordionItem');
 
@@ -47,7 +47,7 @@ const onKeydown = (e: KeyboardEvent) => {
 
   useArrowNavigation(e, target, rootElement.value, {
     arrowKeyOptions: orientation.value,
-    dir: direction.value,
+    dir: dir.value,
     focus: true
   });
 };

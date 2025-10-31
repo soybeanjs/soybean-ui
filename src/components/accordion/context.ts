@@ -7,11 +7,11 @@ import type { AccordionItemContextParams, AccordionRootContextParams, AccordionT
 export const [provideAccordionRootContext, useAccordionRootContext] = useContext(
   'AccordionRoot',
   (params: AccordionRootContextParams) => {
-    const direction = useDirection(() => params.dir.value);
+    const dir = useDirection(() => params.dir.value);
 
     return {
       ...params,
-      direction
+      dir
     };
   }
 );
