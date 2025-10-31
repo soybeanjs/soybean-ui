@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef, useAttrs, watch, watchEffect } from 'vue';
+import { computed, nextTick, shallowRef, useAttrs, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useOmitProps, usePresence } from '../../composables';
@@ -111,20 +111,15 @@ useResizeObserver(contentElement, () => {
 watch(
   [viewportElement, modelValue, open],
   () => {
-    getContentElement();
+    nextTick(() => {
+      getContentElement();
+    });
   },
-  { immediate: true, flush: 'post' }
+  { immediate: true }
 );
 
 useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
   updatePosition();
-});
-
-watchEffect(() => {
-  if (activeTriggerElement.value) {
-    const rect = activeTriggerElement.value.getBoundingClientRect();
-    console.log(rect);
-  }
 });
 </script>
 

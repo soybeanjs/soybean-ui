@@ -2,7 +2,7 @@
 import { computed, useAttrs } from 'vue';
 import { refAutoReset } from '@vueuse/core';
 import { useForwardElement, useOmitProps } from '../../composables';
-import { isMouseEvent } from '../../shared';
+import { isMouseEvent, isNullish } from '../../shared';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
 import {
@@ -92,7 +92,9 @@ const onPointerLeave = (event: PointerEvent) => {
 };
 
 const onClick = (event: PointerEvent) => {
-  if (isMouseEvent(event) && disableClickTrigger.value) return;
+  const matchEvent = isNullish(event.pointerType) || event.pointerType === 'mouse';
+
+  if (matchEvent && disableClickTrigger.value) return;
 
   // if open via pointermove, we prevent click event
   if (hasPointerMoveOpenedRef.value) return;
