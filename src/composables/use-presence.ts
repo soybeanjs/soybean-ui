@@ -34,7 +34,7 @@ export function usePresence(
    */
   const handleAnimationEnd = (event: AnimationEvent) => {
     const currentAnimationName = getAnimationName(styles);
-    const isCurrentAnimation = currentAnimationName.includes(event.animationName);
+    const isCurrentAnimation = currentAnimationName.includes(CSS.escape(event.animationName));
     if (event.target === elRef.value && isCurrentAnimation) {
       // With React 18 concurrency this update is applied
       // a frame after the animation ends, creating a flash of visible content.
