@@ -17,11 +17,13 @@ const props = withDefaults(defineProps<VisuallyHiddenProps>(), {
     v-bind="props"
     style="
       position: absolute;
-      border: 0;
+      top: -1px;
+      left: -1px;
       width: 1px;
       height: 1px;
       padding: 0;
       margin: -1px;
+      border: 0;
       overflow: hidden;
       clip: rect(0, 0, 0, 0);
       clip-path: inset(50%);
