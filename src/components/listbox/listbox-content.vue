@@ -32,7 +32,7 @@ const cls = computed(() => themeContext?.ui?.value?.content);
 const isClickFocus = refAutoReset(false, 10);
 
 const tabindex = computed(() => {
-  if (!focusable.value) return undefined;
+  if (!focusable.value) return '-1';
 
   return highlightedElement.value ? '-1' : '0';
 });
@@ -43,6 +43,16 @@ const onFocus = (event: FocusEvent) => {
 };
 
 const onKeydownNav = (event: KeyboardEvent) => {
+  if (orientation.value === 'vertical' && ['ArrowLeft', 'ArrowRight'].includes(event.key)) {
+    return;
+  }
+
+  if (orientation.value === 'horizontal' && ['ArrowUp', 'ArrowDown'].includes(event.key)) {
+    return;
+  }
+
+  event.preventDefault();
+
   if (!focusable.value) return;
   onKeydownNavigation(event);
 };
