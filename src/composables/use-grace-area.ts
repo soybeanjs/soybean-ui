@@ -158,7 +158,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       if (!pointerGraceArea.value) return;
 
       const target = event.target;
-      if (!(target instanceof HTMLElement)) return;
+      if (!(target instanceof Element)) return;
 
       const { clientX: x, clientY: y } = event;
       const hasEnteredTarget = triggerElement.value?.contains(target) || contentElement.value?.contains(target);
