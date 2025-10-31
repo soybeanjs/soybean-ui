@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { VisuallyHidden } from '../visually-hidden';
+import { useSelectRootContext } from './context';
 import type { BubbleSelectProps } from './types';
 
 defineOptions({
@@ -9,7 +10,17 @@ defineOptions({
 
 const props = defineProps<BubbleSelectProps>();
 
+const { onModelValueChange } = useSelectRootContext('BubbleSelect');
+
 const selectElement = ref<HTMLElement>();
+
+/**
+ * Form autofill will trigger an `input` event on the `select` element.
+ * We listen to that event and update our internal state to support it.
+ */
+const onInput = (event: Event) => {
+  onModelValueChange((event.target as HTMLSelectElement).value);
+};
 
 // This would bubble "change" event to form, with the target as Select element.
 watch(
@@ -41,7 +52,7 @@ watch(
 
 <template>
   <VisuallyHidden as-child>
-    <select ref="selectElement" v-bind="props">
+    <select ref="selectElement" v-bind="props" @input="onInput">
       <slot />
     </select>
   </VisuallyHidden>
