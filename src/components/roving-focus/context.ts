@@ -72,8 +72,9 @@ const [provideRovingFocusGroupContext, useRovingFocusGroupContext] = useContext(
 
       const items = getOrderedElements();
       const activeItem = items.find(item => isElementHasAttribute(item, 'active'));
+      const highlightedItem = items.find(item => isElementHasAttribute(item, 'highlighted'));
       const currentItem = items.find(item => item.id === currentTabStopId.value);
-      const candidateItems = [activeItem, currentItem, ...items].filter(Boolean) as HTMLElement[];
+      const candidateItems = [activeItem, highlightedItem, currentItem, ...items].filter(Boolean) as HTMLElement[];
 
       tryFocusFirst(candidateItems, preventScrollOnEntryFocus.value);
     };
