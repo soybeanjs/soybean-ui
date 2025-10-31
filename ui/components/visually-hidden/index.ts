@@ -1,1 +1,5 @@
-export * from '@headless/components/visually-hidden';
+import { VisuallyHidden as SVisuallyHidden, VisuallyHiddenInput as SVisuallyHiddenInput } from '@headless';
+
+export { SVisuallyHidden, SVisuallyHiddenInput };
+
+export type { VisuallyHiddenProps, VisuallyHiddenInputProps, VisuallyHiddenFeature } from '@headless';
