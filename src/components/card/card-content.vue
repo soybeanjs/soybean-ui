@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.content);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div v-bind="props" :class="cls" tabindex="-1">
     <slot />
   </div>
 </template>
