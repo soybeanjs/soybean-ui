@@ -69,7 +69,7 @@
     "lint": "eslint . --fix",
     "nuxt:gen": "nuxt generate",
     "play": "vite -c vite.play.config.ts",
-    "prepare": "simple-git-hooks && pnpm nuxt:gen",
+    "prepare": "simple-git-hooks",
     "preview": "vite preview -c vite.play.config.ts",
     "publish-pkg": "pnpm publish --access public",
     "release": "soy release",
