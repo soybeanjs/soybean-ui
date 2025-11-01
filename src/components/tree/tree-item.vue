@@ -27,9 +27,7 @@ const {
   getItems
 } = useTreeRootContext('TreeItem');
 
-const itemData = computed(() => ({
-  value: props.value
-}));
+const itemData = { value: props.value };
 
 const currentItem = computed(() => expandedItems.value.find(item => item.value === props.value));
 
