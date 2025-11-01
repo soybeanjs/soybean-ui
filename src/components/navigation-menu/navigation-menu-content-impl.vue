@@ -106,7 +106,7 @@ const motionAttribute = computed(() => {
   if (dir.value === 'rtl') {
     values.reverse();
   }
-  const prevIndex = values.indexOf(previousValue.value);
+  const prevIndex = values.indexOf(previousValue.value ?? '');
   const isSelected = value === modelValue.value;
   const wasSelected = prevIndex === values.indexOf(value);
 
