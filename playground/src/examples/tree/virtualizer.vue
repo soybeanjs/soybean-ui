@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { vAutoAnimate } from '@formkit/auto-animate';
-import { SCard, SIcon, STree, STreeItem } from '@ui';
+import { SCard, SIcon, STreeVirtualizer, STreeVirtualizerItem } from '@ui';
 import type { TreeItemData } from '@ui';
 
 type DemoTree = TreeItemData<{
@@ -36,24 +36,28 @@ const items: DemoTree[] = [
     ]
   },
   { value: 'app', title: 'app.vue', icon: 'vscode-icons:file-type-vue' },
-  { value: 'nuxt', title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' }
+  { value: 'nuxt', title: 'nuxt.config.ts', icon: 'vscode-icons:file-type-nuxt' },
+  ...Array.from({ length: 1000 }, (_, index) => ({
+    value: `item-${index}`,
+    title: `item-${index}`,
+    icon: 'lucide:file'
+  }))
 ];
 </script>
 
 <template>
-  <SCard title="Base">
-    <STree
+  <SCard title="Virtualizer">
+    <STreeVirtualizer
       v-auto-animate
+      height="240px"
       class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
       :items="items"
       :default-expanded="['components']"
     >
-      <template #top>
-        <h2 class="font-semibold text-sm text-stone-400 px-2 pt-1 pb-3">Directory Structure</h2>
-      </template>
-      <template #item="{ item }">
-        <STreeItem
+      <template #item="{ virtualItem, item }">
+        <STreeVirtualizerItem
           v-slot="{ isExpanded }"
+          :data="virtualItem"
           :style="{ 'padding-left': `${item.level - 0.5}rem` }"
           :value="item.value"
           :level="item.level"
@@ -67,8 +71,8 @@ const items: DemoTree[] = [
           <div class="pl-2">
             {{ item.data.title }}
           </div>
-        </STreeItem>
+        </STreeVirtualizerItem>
       </template>
-    </STree>
+    </STreeVirtualizer>
   </SCard>
 </template>

@@ -4,7 +4,7 @@ import { flattenChildren, getActiveElement, handleAndDispatchCustomEvent } from 
 import type { HorizontalSide, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import { Primitive } from '../primitive';
 import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
-import { useTreeRootContext, useTreeThemeContext } from './context';
+import { useTreeRootContext } from './context';
 import { TREE_SELECT, TREE_TOGGLE } from './shared';
 import type { TreeItemEmits, TreeItemProps } from './types';
 
@@ -26,10 +26,6 @@ const {
   onToggle,
   getItems
 } = useTreeRootContext('TreeItem');
-
-const theme = useTreeThemeContext();
-
-const cls = computed(() => theme?.ui?.value?.item);
 
 const itemData = computed(() => ({
   value: props.value
@@ -171,7 +167,6 @@ const toggle = () => {
 <template>
   <RovingFocusItem as-child :item-data="itemData" allow-shift-key>
     <Primitive
-      :class="cls"
       :as="as"
       :as-child="asChild"
       :aria-selected="isSelected"

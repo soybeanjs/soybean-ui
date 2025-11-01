@@ -8,7 +8,7 @@ import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
 import type { MaybeArray, NavigationKey } from '../../types';
 import { Primitive } from '../primitive';
 import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
-import { provideTreeRootContext, useTreeThemeContext } from './context';
+import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
 import { flattenItems } from './shared';
 import type { FlattenedItem, TreeItemData, TreeRootEmits, TreeRootProps } from './types';
@@ -26,9 +26,6 @@ const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
 
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { handleTypeaheadSearch } = useTypeahead();
-
-const theme = useTreeThemeContext();
-const cls = computed(() => theme?.ui?.value?.root);
 
 // Virtualizer
 const isVirtual = shallowRef(false);
@@ -183,7 +180,6 @@ provideTreeRootContext({
 <template>
   <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir">
     <Primitive
-      :class="cls"
       :as="as"
       :as-child="asChild"
       :aria-multiselectable="multiple ? true : undefined"

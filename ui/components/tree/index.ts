@@ -1,5 +1,7 @@
-import { TreeItem as STreeItem, TreeRoot as STreeRoot } from '@headless';
+import { TreeItem as STreeItem, TreeVirtualizerItem as STreeVirtualizerItem } from '@headless';
+import STree from './tree.vue';
+import STreeVirtualizer from './tree-virtualizer.vue';
 
-export { STreeRoot, STreeItem };
+export { STree, STreeItem, STreeVirtualizer, STreeVirtualizerItem };
 
-export type { TreeRootProps, TreeRootEmits, TreeItemProps, TreeItemEmits, TreeItemData } from '@headless';
+export type * from '@headless/components/tree';

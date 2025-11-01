@@ -1,16 +1,9 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { EventHook } from '@vueuse/core';
-import type {
-  ClassValue,
-  Direction,
-  FocusIntent,
-  MaybeArray,
-  PropsToContext,
-  TreeSelectEvent,
-  TreeToggleEvent
-} from '../../types';
+import type { Direction, FocusIntent, MaybeArray, PropsToContext, TreeSelectEvent, TreeToggleEvent } from '../../types';
 import type { CollectionItemData } from '../../composables/use-collection';
 import type { PrimitiveProps } from '../primitive/types';
+import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/types';
 
 export interface TreeItemBaseData {
   /** Value given to this item */
@@ -94,6 +87,19 @@ export type TreeItemEmits = {
   toggle: [event: TreeToggleEvent<string>];
 };
 
+export interface TreeVirtualizerRootProps<
+  T extends TreeItemData = TreeItemData,
+  U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
+  M extends boolean = boolean
+> extends TreeRootProps<T, U, M>,
+    Omit<VirtualizerRootProps<FlattenedItem<T>>, 'dir' | 'items'> {}
+
+export type TreeVirtualizerRootEmits<M extends boolean | undefined> = TreeRootEmits<M>;
+
+export interface TreeVirtualizerItemProps extends TreeItemProps, VirtualizerItemProps {}
+
+export type TreeVirtualizerItemEmits = TreeItemEmits;
+
 export interface TreeRootContextParams
   extends PropsToContext<
     TreeRootProps,
@@ -114,10 +120,4 @@ export interface TreeRootContextParams
     expanded: string[],
     getItems?: () => CollectionItemData[] | undefined
   ) => void;
-}
-
-export type TreeThemeSlot = 'root' | 'item';
-
-export interface TreeThemeContextParams {
-  ui: ComputedRef<Record<TreeThemeSlot, ClassValue>>;
 }
