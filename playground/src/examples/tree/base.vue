@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { vAutoAnimate } from '@formkit/auto-animate';
 import { SCard, SIcon, STree, STreeItem } from '@ui';
 import type { TreeItemData } from '@ui';
 
@@ -43,7 +42,6 @@ const items: DemoTree[] = [
 <template>
   <SCard title="Base">
     <STree
-      v-auto-animate
       class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
       :items="items"
       :default-expanded="['components']"
