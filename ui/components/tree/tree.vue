@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends TreeItemData, U extends MaybeArray<string> | undefined, M extends boolean">
+import { vAutoAnimate } from '@formkit/auto-animate';
 import { TreeRoot } from '@headless';
 import { useForwardListeners } from '@headless/composables';
 import type { MaybeArray, TreeItemData, TreeRootEmits, TreeRootProps } from '@headless';
@@ -7,7 +8,9 @@ defineOptions({
   name: 'STree'
 });
 
-const props = defineProps<TreeRootProps<T, U, M>>();
+const props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {
+  loop: true
+});
 
 const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
 
@@ -15,7 +18,7 @@ const listeners = useForwardListeners(emit);
 </script>
 
 <template>
-  <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-bind="props" v-on="listeners">
+  <TreeRoot v-slot="{ flattenItems, modelValue, expanded }" v-auto-animate v-bind="props" v-on="listeners">
     <slot name="top" />
     <slot
       v-for="item in flattenItems"

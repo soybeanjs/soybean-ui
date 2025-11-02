@@ -45,6 +45,12 @@ export interface TreeRootProps<
   selectionBehavior?: SelectBehavior;
   /** The reading direction. */
   dir?: Direction;
+  /**
+   * When `true`, keyboard navigation will loop from last item to first, and vice versa.
+   *
+   * @defaultValue true
+   */
+  loop?: boolean;
   /** When `true`, prevents the user from interacting with tree */
   disabled?: boolean;
   /** When `true`, selecting parent will select the descendants. */

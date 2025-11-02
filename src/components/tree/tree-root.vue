@@ -19,7 +19,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {
   as: 'ul',
-  selectionBehavior: 'toggle'
+  selectionBehavior: 'toggle',
+  loop: true
 });
 
 const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
@@ -27,7 +28,6 @@ const emit = defineEmits<TreeRootEmits<TreeRootProps<T, U, M>['multiple']>>();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 const { handleTypeaheadSearch } = useTypeahead();
 
-// Virtualizer
 const isVirtual = shallowRef(false);
 const virtualKeydownHook = createEventHook<KeyboardEvent>();
 
@@ -178,7 +178,7 @@ provideTreeRootContext({
 </script>
 
 <template>
-  <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir">
+  <RovingFocusGroup ref="rovingFocusGroupRef" as-child orientation="vertical" :dir="dir" :loop="loop">
     <Primitive
       :as="as"
       :as-child="asChild"
