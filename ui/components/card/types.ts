@@ -19,6 +19,12 @@ export interface CardProps extends CardRootProps {
   title?: string;
   description?: string;
   /**
+   * If true, the content will be scrollable when the root has height and content is taller than the root
+   *
+   * @default false
+   */
+  scrollable?: boolean;
+  /**
    * If true, the card will add divider between title and content and footer
    *
    * @default false

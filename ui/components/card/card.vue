@@ -19,13 +19,16 @@ defineOptions({
   name: 'SCard'
 });
 
-const props = defineProps<CardProps>();
+const props = withDefaults(defineProps<CardProps>(), {
+  scrollable: true
+});
 
 const forwardedProps = useOmitProps(props, [
   'size',
   'ui',
   'title',
   'description',
+  'scrollable',
   'split',
   'headerProps',
   'contentProps',
@@ -56,6 +59,7 @@ const showHeader = computed(() => {
 const ui = computed(() => {
   const variants = cardVariants({
     size: props.size,
+    scrollable: props.scrollable,
     split: props.split
   });
 

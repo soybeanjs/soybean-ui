@@ -5,7 +5,7 @@ export const cardVariants = tv({
   slots: {
     root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
-    content: 'flex-grow overflow-auto',
+    content: 'grow',
     footer: 'flex items-center justify-between',
     titleRoot: 'flex items-center',
     title: 'font-semibold tracking-tight',
@@ -68,6 +68,11 @@ export const cardVariants = tv({
         description: 'text-xl'
       }
     },
+    scrollable: {
+      true: {
+        content: 'overflow-auto'
+      }
+    },
     split: {
       true: {
         root: 'divide-y divide-border'
@@ -76,6 +81,7 @@ export const cardVariants = tv({
   },
   defaultVariants: {
     size: 'md',
+    scrollable: true,
     split: false
   }
 });
