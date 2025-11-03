@@ -20,7 +20,7 @@ const props = defineProps<NavigationMenuContentImplProps>();
 
 const emit = defineEmits<NavigationMenuContentImplEmits>();
 
-const { dir, orientation, modelValue, previousValue, rootElement, viewportElement, isRoot, onItemDismiss } =
+const { dir, modelValue, previousValue, rootElement, viewportElement, isRoot, onItemDismiss } =
   useNavigationMenuRootContext('NavigationMenuContentImpl');
 const {
   value,
@@ -37,7 +37,7 @@ const {
 
 const themeContext = useNavigationMenuThemeContext();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.content : themeContext?.ui?.value?.subContent));
+const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { getOrderedElements } = useCollectionContext('NavigationMenuContentImpl');
 
@@ -207,7 +207,6 @@ watchEffect(cleanupFn => {
     :class="cls"
     :aria-labelledby="triggerId"
     :data-motion="motionAttribute"
-    :data-orientation="orientation"
     :data-state="dataState"
     :style="style"
     @keydown="onKeydown"

@@ -25,7 +25,6 @@ const forwardedProps = useOmitProps(props, ['forceMount', 'align'], attrs);
 const {
   isRoot,
   open,
-  orientation,
   unmountOnHide,
   rootElement,
   activeTriggerElement,
@@ -38,7 +37,7 @@ const {
 
 const themeContext = useNavigationMenuThemeContext();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.viewport : themeContext?.ui?.value?.subViewport));
+const cls = computed(() => themeContext?.ui?.value?.viewport);
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(viewportElement, open);
 
@@ -130,7 +129,6 @@ useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
     :ref="setViewportElement"
     :class="cls"
     :data-state="dataState"
-    :data-orientation="orientation"
     :hidden="!isPresent"
     :style="style"
     @pointerenter="onPointerEnter"

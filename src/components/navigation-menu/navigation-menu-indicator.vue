@@ -18,7 +18,7 @@ const attrs = useAttrs();
 
 const forwardedProps = useOmitProps(props, ['forceMount'], attrs);
 
-const { orientation, activeTriggerElement, modelValue, indicatorTrackElement } =
+const { activeTriggerElement, modelValue, indicatorTrackElement } =
   useNavigationMenuRootContext('NavigationMenuIndicator');
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 
@@ -28,7 +28,6 @@ const cls = computed(() => themeContext?.ui?.value?.indicator);
 
 const isVisible = computed(() => Boolean(modelValue.value));
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(indicatorElement, () => isVisible.value);
-const isHorizontal = computed(() => orientation.value === 'horizontal');
 
 interface SizePosition {
   size: number;
@@ -51,11 +50,11 @@ const indicatorStyle = computed<CSSProperties>(() => {
 const onPositionChange = () => {
   if (!activeTriggerElement.value) return;
 
-  const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = activeTriggerElement.value;
+  const { offsetWidth, offsetLeft } = activeTriggerElement.value;
 
   sizePosition.value = {
-    size: isHorizontal.value ? offsetWidth : offsetHeight,
-    position: isHorizontal.value ? offsetLeft : offsetTop
+    size: offsetWidth,
+    position: offsetLeft
   };
 };
 
@@ -80,7 +79,6 @@ useResizeObserver(indicatorTrackElement, onPositionChange);
       :class="cls"
       aria-hidden="true"
       :data-state="isVisible ? 'visible' : 'hidden'"
-      :data-orientation="orientation"
       :style="indicatorStyle"
     >
       <slot />

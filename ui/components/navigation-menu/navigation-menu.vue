@@ -11,15 +11,14 @@ import { useForwardListeners, useOmitProps, usePickProps } from '@headless/compo
 import { mergeSlotVariants } from '@theme';
 import { navigationMenuVariants } from '@variants/navigation-menu';
 import NavigationMenuOption from './navigation-menu-option.vue';
+import { provideNavigationMenuExtraThemeContext } from './context';
 import type { NavigationMenuEmits, NavigationMenuOptionData, NavigationMenuProps } from './types';
 
 defineOptions({
   name: 'SNavigationMenu'
 });
 
-const props = withDefaults(defineProps<NavigationMenuProps>(), {
-  modelValue: undefined
-});
+const props = defineProps<NavigationMenuProps>();
 
 const emit = defineEmits<NavigationMenuEmits>();
 
@@ -27,33 +26,27 @@ type Slots = {
   item: (props: { item: NavigationMenuOptionData; isTrigger?: boolean }) => any;
   'item-leading': (props: { item: NavigationMenuOptionData }) => any;
   'item-trailing': (props: { item: NavigationMenuOptionData }) => any;
+  'item-children': (props: { item: NavigationMenuOptionData }) => any;
   'item-trigger-icon': (props: { item: NavigationMenuOptionData }) => any;
   'item-link-icon': (props: { item: NavigationMenuOptionData }) => any;
 };
 
 const slots = defineSlots<Slots>();
 
-const forwardedRootProps = useOmitProps(props, [
-  'size',
-  'items',
-  'ui',
+const optionPropKeys = [
   'itemProps',
   'triggerProps',
   'contentProps',
-  'subProps',
   'viewportProps',
   'indicatorProps',
-  'listProps'
-]);
-const forwardedOptionProps = usePickProps(props, [
-  'itemProps',
-  'triggerProps',
-  'contentProps',
-  'subProps',
-  'viewportProps',
-  'indicatorProps',
-  'listProps'
-]);
+  'listProps',
+  'subListProps',
+  'subItemProps'
+] as const;
+
+const forwardedRootProps = useOmitProps(props, ['size', 'ui', 'items', ...optionPropKeys]);
+
+const forwardedOptionProps = usePickProps(props, [...optionPropKeys]);
 
 const forwardedListeners = useForwardListeners(emit);
 
@@ -70,21 +63,27 @@ const ui = computed(() => {
 provideNavigationMenuThemeContext({
   ui
 });
+
+provideNavigationMenuExtraThemeContext({
+  ui
+});
 </script>
 
 <template>
   <NavigationMenuRoot v-bind="forwardedRootProps" @update:model-value="emit('update:modelValue', $event)">
-    <NavigationMenuList>
+    <NavigationMenuList v-bind="listProps">
       <NavigationMenuOption
         v-for="item in items"
         :key="item.value"
         v-bind="forwardedOptionProps"
         :item="item"
-        :ui="ui"
         v-on="forwardedListeners"
       >
         <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
+        </template>
+        <template #item-children="slotProps">
+          <slot name="item-children" :item="slotProps.item" />
         </template>
       </NavigationMenuOption>
     </NavigationMenuList>

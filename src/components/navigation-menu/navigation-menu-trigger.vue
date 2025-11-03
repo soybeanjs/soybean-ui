@@ -24,17 +24,8 @@ const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
 
 const attrs = useAttrs();
 
-const {
-  dir,
-  orientation,
-  isRoot,
-  disableClickTrigger,
-  disableHoverTrigger,
-  viewportElement,
-  onItemSelect,
-  onTriggerEnter,
-  onTriggerLeave
-} = useNavigationMenuRootContext('NavigationMenuTrigger');
+const { disableClickTrigger, disableHoverTrigger, viewportElement, onItemSelect, onTriggerEnter, onTriggerLeave } =
+  useNavigationMenuRootContext('NavigationMenuTrigger');
 const {
   value,
   triggerId,
@@ -50,7 +41,7 @@ const {
 
 const themeContext = useNavigationMenuThemeContext();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.trigger : themeContext?.ui?.value?.subTrigger));
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const { itemProps, onItemElementChange } = useCollectionItem();
 const [triggerElement, setTriggerElement] = useForwardElement(el => {
@@ -109,10 +100,7 @@ const onClick = (event: PointerEvent) => {
 };
 
 const onKeydown = (event: KeyboardEvent) => {
-  const verticalEntryKey = dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
-  const entryKey = orientation.value === 'vertical' ? verticalEntryKey : 'ArrowDown';
-
-  if (open.value && event.key === entryKey) {
+  if (open.value && event.key === 'ArrowDown') {
     onEntryKeyDown();
     // Prevent FocusGroupItem from handling the event
     event.preventDefault();

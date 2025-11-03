@@ -10,16 +10,16 @@ defineOptions({
 
 const props = defineProps<NavigationMenuListProps>();
 
-const { isRoot, orientation, setIndicatorTrackElement } = useNavigationMenuRootContext('NavigationMenuList');
+const { setIndicatorTrackElement } = useNavigationMenuRootContext('NavigationMenuList');
 
 const themeContext = useNavigationMenuThemeContext();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.list : themeContext?.ui?.value?.subList));
+const cls = computed(() => themeContext?.ui?.value?.list);
 </script>
 
 <template>
   <div :ref="setIndicatorTrackElement" style="position: relative">
-    <ul v-bind="{ ...props, ...$attrs }" :class="cls" :data-orientation="orientation">
+    <ul v-bind="{ ...props, ...$attrs }" :class="cls">
       <slot />
     </ul>
   </div>

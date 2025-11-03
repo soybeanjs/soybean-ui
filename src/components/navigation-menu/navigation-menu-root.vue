@@ -12,11 +12,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
   dir: 'ltr',
-  modelValue: undefined,
-  defaultValue: '',
   delayDuration: 200,
   skipDelayDuration: 300,
-  orientation: 'horizontal',
   unmountOnHide: true
 });
 
@@ -41,7 +38,6 @@ const { onRootElementChange, onActiveTriggerElementChange } = provideNavigationM
   modelValue,
   ...transformPropsToContext(props, [
     'dir',
-    'orientation',
     'unmountOnHide',
     'skipDelayDuration',
     'delayDuration',
@@ -70,14 +66,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <nav
-    :ref="setRootElement"
-    :class="cls"
-    aria-label="Main"
-    :data-orientation="orientation"
-    data-soybean-navigation-menu
-    :dir="dir"
-  >
+  <nav :ref="setRootElement" :class="cls" aria-label="Main" data-soybean-navigation-menu :dir="dir">
     <slot :model-value="modelValue" />
   </nav>
 </template>

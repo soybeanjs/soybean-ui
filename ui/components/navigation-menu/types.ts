@@ -1,3 +1,4 @@
+import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
   NavigationMenuContentEmits,
@@ -10,7 +11,6 @@ import type {
   NavigationMenuRootEmits,
   NavigationMenuRootProps,
   NavigationMenuSubEmits,
-  NavigationMenuSubProps,
   NavigationMenuThemeSlot,
   NavigationMenuTriggerProps,
   NavigationMenuViewportProps
@@ -48,42 +48,44 @@ export type NavigationMenuExtraThemeSlot =
   | 'linkIcon'
   | 'arrow'
   | 'viewportRoot'
+  | 'subItemContent'
   | 'subLinkContent'
   | 'subLinkLabel'
   | 'subLinkDescription';
-export type NavigationMenuExtraUi = Partial<Record<NavigationMenuExtraThemeSlot, ClassValue>>;
 
 export type NavigationMenuUi = Partial<Record<NavigationMenuThemeSlot | NavigationMenuExtraThemeSlot, ClassValue>>;
 
 export interface NavigationMenuSubOptionProps {
-  ui?: NavigationMenuUi;
   subItem: NavigationMenuOptionData;
   subItemProps?: NavigationMenuItemProps;
-  subProps?: NavigationMenuSubProps;
-  subTriggerProps?: NavigationMenuTriggerProps;
-  subContentProps?: NavigationMenuContentProps;
-  subViewportProps?: NavigationMenuViewportProps;
-  subIndicatorProps?: NavigationMenuIndicatorProps;
-  subListProps?: NavigationMenuListProps;
 }
 
-export interface NavigationMenuOptionProps extends Omit<NavigationMenuSubOptionProps, 'subItem'> {
-  ui?: NavigationMenuUi;
+export type NavigationMenuSubOptionEmits = NavigationMenuLinkEmits;
+
+export interface NavigationMenuOptionProps {
   item: NavigationMenuOptionData;
   itemProps?: NavigationMenuItemProps;
   triggerProps?: NavigationMenuTriggerProps;
   contentProps?: NavigationMenuContentProps;
-  subProps?: NavigationMenuSubProps;
   viewportProps?: NavigationMenuViewportProps;
   indicatorProps?: NavigationMenuIndicatorProps;
   listProps?: NavigationMenuListProps;
+  subListProps?: NavigationMenuListProps;
+  subItemProps?: NavigationMenuItemProps;
 }
 
 export type NavigationMenuOptionEmits = NavigationMenuSubEmits & NavigationMenuContentEmits & NavigationMenuLinkEmits;
 
 export interface NavigationMenuProps extends NavigationMenuRootProps, Omit<NavigationMenuOptionProps, 'item'> {
   size?: ThemeSize;
+  ui?: NavigationMenuUi;
   items: NavigationMenuOptionData[];
 }
 
 export type NavigationMenuEmits = NavigationMenuRootEmits & NavigationMenuOptionEmits;
+
+export type NavigationMenuExtraUi = Partial<Record<NavigationMenuExtraThemeSlot, ClassValue>>;
+
+export interface NavigationMenuExtraThemeContextParams {
+  ui: ComputedRef<NavigationMenuExtraUi>;
+}

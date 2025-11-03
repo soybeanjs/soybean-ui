@@ -2,7 +2,6 @@ import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   Align,
   ClassValue,
-  DataOrientation,
   Direction,
   DismissableLayerEmits,
   DismissableLayerProps,
@@ -27,8 +26,6 @@ export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttribut
    * If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.
    */
   dir?: Direction;
-  /** The orientation of the menu. */
-  orientation?: DataOrientation;
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened.
    *
@@ -89,6 +86,8 @@ export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ign
 
 export interface NavigationMenuListProps extends /** @vue-ignore */ HTMLAttributes {}
 
+export interface NavigationMenuSubListProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface NavigationMenuItemProps extends /** @vue-ignore */ HTMLAttributes {
   value?: string;
 }
@@ -107,7 +106,6 @@ export interface NavigationMenuIndicatorProps extends ForceMountProps, /** @vue-
 export interface NavigationMenuSubProps extends /** @vue-ignore */ HTMLAttributes {
   modelValue?: string;
   defaultValue?: string;
-  orientation?: DataOrientation;
 }
 export type NavigationMenuSubEmits = NavigationMenuRootEmits;
 
@@ -130,7 +128,6 @@ export interface NavigationMenuRootContextParams
     | 'disablePointerLeaveClose'
   > {
   isRoot: boolean;
-  orientation: ComputedRef<DataOrientation>;
   modelValue: ShallowRef<string>;
 }
 
@@ -147,7 +144,6 @@ export interface NavigationMenuItemContextParams {
 
 export type NavigationMenuThemeSlot =
   | 'root'
-  | 'sub'
   | 'trigger'
   | 'content'
   | 'list'
@@ -155,9 +151,6 @@ export type NavigationMenuThemeSlot =
   | 'viewport'
   | 'item'
   | 'link'
-  | 'subTrigger'
-  | 'subContent'
-  | 'subViewport'
   | 'subList'
   | 'subItem'
   | 'subLink';

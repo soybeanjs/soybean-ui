@@ -4,7 +4,6 @@ import type { NavigationMenuOptionData } from './types';
 
 interface Props {
   icon: NavigationMenuOptionData['icon'];
-  label: NavigationMenuOptionData['label'];
 }
 
 defineProps<Props>();
@@ -14,6 +13,7 @@ defineOptions({
 });
 
 type Slots = {
+  default: () => any;
   item: () => any;
   'item-leading': () => any;
   'item-trailing': () => any;
@@ -30,7 +30,7 @@ defineSlots<Slots>();
       <Icon v-if="typeof icon === 'string'" :icon="icon" />
       <component :is="icon" v-else />
     </slot>
-    <span>{{ label }}</span>
+    <slot />
     <slot name="link-icon" />
     <slot name="item-trailing" />
     <slot name="trigger-icon" />
