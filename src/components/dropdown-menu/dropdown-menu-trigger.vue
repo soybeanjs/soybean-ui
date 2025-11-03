@@ -23,6 +23,7 @@ const { isPointerInTransitRef, hoverable, onTriggerEnter, onTriggerLeave, onClos
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const ariaControls = computed(() => (open.value ? contentId : undefined));
+const ariaDisabled = computed(() => (props.disabled ? true : undefined));
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
 const onClick = async (event: MouseEvent) => {
@@ -95,12 +96,13 @@ initTriggerId();
 <template>
   <MenuAnchor as-child>
     <Primitive
-      v-bind="props"
       :id="triggerId"
       :ref="setTriggerElement"
-      :disabled="disabled"
+      :as="as"
+      :as-child="asChild"
       :type="tag"
       :aria-controls="ariaControls"
+      :aria-disabled="ariaDisabled"
       :aria-expanded="open"
       aria-haspopup="menu"
       :data-disabled="dataDisabled"
