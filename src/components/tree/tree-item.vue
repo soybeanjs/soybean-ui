@@ -174,7 +174,7 @@ const toggle = () => {
       :data-selected="isSelected ? '' : undefined"
       :data-expanded="isExpanded ? '' : undefined"
       role="treeitem"
-      @keydown.enter.space.self.prevent="handleSelectCustomEvent"
+      @keydown.enter.space.self.prevent="onClick"
       @keydown.right.prevent="onKeydown($event, 'right')"
       @keydown.left.prevent="onKeydown($event, 'left')"
       @click.stop="onClick"
