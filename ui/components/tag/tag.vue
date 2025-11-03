@@ -30,7 +30,7 @@ const cls = computed(() => {
 <template>
   <Tag v-slot="{ close }" :open="open" :class="cls" @update:open="emit('update:open', $event)">
     <slot name="leading" />
-    <slot />
+    <slot>{{ content }}</slot>
     <slot name="trailing" />
     <slot v-if="closable" name="close" :close="close">
       <Icon icon="lucide:x" style="flex-shrink: 0; cursor: pointer" @click="close" />
