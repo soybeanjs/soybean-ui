@@ -3,12 +3,12 @@ import type { MaybeRefOrGetter, ShallowRef } from 'vue';
 import { findValuesBetween } from '../../shared';
 import type { FocusIntent, MaybeArray } from '../../types';
 import type { CollectionItemData } from '../../composables/use-collection';
-import type { SelectBehavior } from './types';
+import type { TreeSelectBehavior } from './types';
 
 export function useSelectionBehavior(
   modelValue: ShallowRef<MaybeArray<string> | undefined>,
   _multiple: MaybeRefOrGetter<boolean | undefined>,
-  _selectionBehavior: MaybeRefOrGetter<SelectBehavior | undefined>
+  _selectionBehavior: MaybeRefOrGetter<TreeSelectBehavior | undefined>
 ) {
   const firstValue = shallowRef('');
   const multiple = computed(() => toValue(_multiple));

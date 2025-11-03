@@ -8,6 +8,8 @@ import type { VirtualizerItemProps, VirtualizerRootProps } from '../virtualizer/
 export interface TreeItemBaseData {
   /** Value given to this item */
   value: string;
+  /** When `true`, prevents the user from interacting with the item. */
+  disabled?: boolean;
 }
 
 export type TreeItemData<T extends TreeItemBaseData = TreeItemBaseData> = T & {
@@ -15,7 +17,9 @@ export type TreeItemData<T extends TreeItemBaseData = TreeItemBaseData> = T & {
   children?: TreeItemData<T>[];
 };
 
-export type SelectBehavior = 'toggle' | 'replace';
+export type TreeSelectBehavior = 'toggle' | 'replace';
+
+export type TreeToggleBehavior = 'single' | 'multiple';
 
 type IsMultiple<U extends MaybeArray<string> | undefined, M extends boolean> = U extends string
   ? false
@@ -42,7 +46,13 @@ export interface TreeRootProps<
   /** The value of the expanded tree when initially rendered. */
   defaultExpanded?: string[];
   /** How multiple selection should behave in the collection. */
-  selectionBehavior?: SelectBehavior;
+  selectionBehavior?: TreeSelectBehavior;
+  /**
+   * Determines whether a "single" or "multiple" items can be toggled at a time.
+   *
+   * @defaultValue 'multiple'
+   * */
+  toggleBehavior?: TreeToggleBehavior;
   /** The reading direction. */
   dir?: Direction;
   /**
@@ -57,6 +67,8 @@ export interface TreeRootProps<
   propagateSelect?: boolean;
   /** When `true`, selecting children will update the parent state. */
   bubbleSelect?: boolean;
+  /** When `true`, parent can be selected. */
+  allowParentSelect?: boolean;
 }
 
 export type TreeRootEmits<M extends boolean | undefined> = {
@@ -84,6 +96,12 @@ export interface TreeItemProps
     /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
   value: string;
   level: number;
+  /** When `true`, prevents the user from selecting or toggling the item. */
+  disabled?: boolean;
+  /** When `true`, prevents the user from selecting the item. */
+  disabledSelect?: boolean;
+  /** When `true`, prevents the user from toggling the item. */
+  disabledToggle?: boolean;
 }
 
 export type TreeItemEmits = {
@@ -109,7 +127,7 @@ export type TreeVirtualizerItemEmits = TreeItemEmits;
 export interface TreeRootContextParams
   extends PropsToContext<
     TreeRootProps,
-    'items' | 'multiple' | 'disabled' | 'propagateSelect' | 'bubbleSelect' | 'selectionBehavior' | 'dir'
+    'items' | 'dir' | 'multiple' | 'disabled' | 'selectionBehavior' | 'propagateSelect' | 'bubbleSelect'
   > {
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
   expanded: ShallowRef<string[]>;

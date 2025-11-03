@@ -5,8 +5,12 @@ import type { HorizontalSide, TreeSelectEvent, TreeToggleEvent } from '../../typ
 import { Primitive } from '../primitive';
 import RovingFocusItem from '../roving-focus/roving-focus-item.vue';
 import { useTreeRootContext } from './context';
-import { TREE_SELECT, TREE_TOGGLE } from './shared';
+import { TREE_SELECT, TREE_TOGGLE, recurseCheckChildren } from './shared';
 import type { TreeItemEmits, TreeItemProps } from './types';
+
+defineOptions({
+  name: 'TreeItem'
+});
 
 const props = withDefaults(defineProps<TreeItemProps>(), {
   as: 'li'
@@ -16,6 +20,7 @@ const emit = defineEmits<TreeItemEmits>();
 
 const {
   modelValue,
+  disabled: rootDisabled,
   dir,
   selectedKeys,
   expanded,
@@ -31,11 +36,15 @@ const itemData = { value: props.value };
 
 const currentItem = computed(() => expandedItems.value.find(item => item.value === props.value));
 
+const disabled = computed(() => rootDisabled.value || props.disabled);
+
 const hasChildren = computed(() => Boolean(currentItem.value?.hasChildren));
 
 const isExpanded = computed(() => expanded.value?.includes(props.value) ?? false);
 
 const isSelected = computed(() => selectedKeys.value.includes(props.value));
+
+const hasSelectedChildren = computed(() => recurseCheckChildren(selectedKeys.value, currentItem.value?.data?.children));
 
 const isIndeterminate = computed(() => {
   if (!currentItem.value || !hasChildren.value || !Array.isArray(modelValue.value)) return undefined;
@@ -55,7 +64,7 @@ const isIndeterminate = computed(() => {
 });
 
 const onKeydownRight = (event: KeyboardEvent) => {
-  if (!hasChildren.value) return;
+  if (disabled.value || !hasChildren.value) return;
 
   if (isExpanded.value) {
     const nextElement = getNextElement('right');
@@ -66,6 +75,8 @@ const onKeydownRight = (event: KeyboardEvent) => {
 };
 
 const onKeydownLeft = (event: KeyboardEvent) => {
+  if (disabled.value) return;
+
   if (isExpanded.value) {
     handleToggleCustomEvent(event);
   } else {
@@ -75,6 +86,8 @@ const onKeydownLeft = (event: KeyboardEvent) => {
 };
 
 const onKeydown = (event: KeyboardEvent, direction: HorizontalSide) => {
+  if (disabled.value) return;
+
   if (direction === 'right') {
     if (dir.value === 'ltr') {
       onKeydownRight(event);
@@ -125,6 +138,7 @@ function handleToggle(event: TreeToggleEvent<string>) {
 }
 
 async function handleSelectCustomEvent(event?: PointerEvent | KeyboardEvent) {
+  if (props.disabledSelect) return;
   if (!event) return;
 
   const eventDetail = {
@@ -137,6 +151,7 @@ async function handleSelectCustomEvent(event?: PointerEvent | KeyboardEvent) {
 }
 
 function handleToggleCustomEvent(event?: PointerEvent | KeyboardEvent) {
+  if (props.disabledToggle) return;
   if (!event) return;
 
   const eventDetail = {
@@ -149,16 +164,10 @@ function handleToggleCustomEvent(event?: PointerEvent | KeyboardEvent) {
 }
 
 const onClick = (event: PointerEvent) => {
+  if (disabled.value) return;
+
   handleSelectCustomEvent(event);
   handleToggleCustomEvent(event);
-};
-
-const select = () => {
-  onSelect(props.value);
-};
-
-const toggle = () => {
-  onToggle(props.value);
 };
 </script>
 
@@ -167,25 +176,22 @@ const toggle = () => {
     <Primitive
       :as="as"
       :as-child="asChild"
+      :aria-disabled="disabled ? true : undefined"
       :aria-selected="isSelected"
       :aria-expanded="hasChildren ? isExpanded : undefined"
       :aria-level="level"
+      :data-disabled="disabled ? '' : undefined"
       :data-indent="level"
       :data-selected="isSelected ? '' : undefined"
       :data-expanded="isExpanded ? '' : undefined"
+      :data-contains-selected="hasSelectedChildren ? '' : undefined"
       role="treeitem"
       @keydown.enter.space.self.prevent="onClick"
       @keydown.right.prevent="onKeydown($event, 'right')"
       @keydown.left.prevent="onKeydown($event, 'left')"
       @click.stop="onClick"
     >
-      <slot
-        :is-expanded="isExpanded"
-        :is-selected="isSelected"
-        :is-indeterminate="isIndeterminate"
-        :select="select"
-        :toggle="toggle"
-      />
+      <slot :is-expanded="isExpanded" :is-selected="isSelected" :is-indeterminate="isIndeterminate" />
     </Primitive>
   </RovingFocusItem>
 </template>

@@ -10,7 +10,7 @@ import { Primitive } from '../primitive';
 import RovingFocusGroup from '../roving-focus/roving-focus-group.vue';
 import { provideTreeRootContext } from './context';
 import { useSelectionBehavior } from './hooks';
-import { flattenItems } from './shared';
+import { findParentPath, flattenItems } from './shared';
 import type { FlattenedItem, TreeItemData, TreeRootEmits, TreeRootProps } from './types';
 
 defineOptions({
@@ -20,6 +20,7 @@ defineOptions({
 const props = withDefaults(defineProps<TreeRootProps<T, U, M>>(), {
   as: 'ul',
   selectionBehavior: 'toggle',
+  toggleBehavior: 'multiple',
   loop: true
 });
 
@@ -73,6 +74,8 @@ const expanded = useControllableState(
 const expandedItems = computed(() => flattenItems(props.items, expanded.value));
 
 const onKeydown = (event: KeyboardEvent) => {
+  if (props.disabled) return;
+
   if (isVirtual.value) {
     virtualKeydownHook.trigger(event);
   } else {
@@ -82,7 +85,7 @@ const onKeydown = (event: KeyboardEvent) => {
 };
 
 const onKeydownNavigation = (event: KeyboardEvent) => {
-  if (isVirtual.value) return;
+  if (props.disabled || isVirtual.value) return;
 
   const intent = MAP_KEY_TO_FOCUS_INTENT[event.key as NavigationKey];
   nextTick(() => {
@@ -96,7 +99,7 @@ const onKeydownNavigation = (event: KeyboardEvent) => {
 };
 
 const onBubbleSelect = (item: FlattenedItem<T>) => {
-  if (!item.parent || !props.multiple || !Array.isArray(modelValue.value)) return;
+  if (props.disabled || !item.parent || !props.multiple || !Array.isArray(modelValue.value)) return;
 
   const parentItem = expandedItems.value.find(i => {
     return item.parent && i.value === item.parent.value;
@@ -118,17 +121,21 @@ const onBubbleSelect = (item: FlattenedItem<T>) => {
 };
 
 const onSelect = (value: string) => {
+  if (props.disabled) return;
+
+  const item = expandedItems.value.find(i => i.value === value);
+
+  if (item?.hasChildren && !props.allowParentSelect) return;
+
   onSelectItem(value);
 
   if (props.bubbleSelect && props.multiple && Array.isArray(modelValue.value)) {
-    const item = expandedItems.value.find(i => i.value === value);
     if (item) {
       onBubbleSelect(item);
     }
   }
 
   if (props.propagateSelect && props.multiple && Array.isArray(modelValue.value)) {
-    const item = expandedItems.value.find(i => i.value === value);
     if (!item) return;
 
     const children = flattenChildren(item.data.children);
@@ -143,12 +150,26 @@ const onSelect = (value: string) => {
 };
 
 const onToggle = (value: string) => {
+  if (props.disabled) return;
+
   const item = expandedItems.value.find(i => i.value === value);
 
   if (!item?.data?.children) return;
 
   if (expanded.value.includes(value)) {
     expanded.value = expanded.value.filter(v => v !== value);
+
+    return;
+  }
+
+  if (props.toggleBehavior === 'single') {
+    const parentPath = findParentPath(value, props.items);
+
+    if (parentPath) {
+      expanded.value = [...parentPath, value];
+    } else {
+      expanded.value = [value];
+    }
   } else {
     expanded.value = [...expanded.value, value];
   }
@@ -169,10 +190,10 @@ provideTreeRootContext({
     'items',
     'multiple',
     'disabled',
+    'dir',
     'selectionBehavior',
     'propagateSelect',
-    'bubbleSelect',
-    'dir'
+    'bubbleSelect'
   ])
 });
 </script>
@@ -182,12 +203,20 @@ provideTreeRootContext({
     <Primitive
       :as="as"
       :as-child="asChild"
+      :aria-disabled="disabled ? true : undefined"
       :aria-multiselectable="multiple ? true : undefined"
+      :data-disabled="disabled ? '' : undefined"
       role="tree"
       @keydown="onKeydown"
       @keydown.up.down.shift="onKeydownNavigation"
     >
-      <slot :flatten-items="expandedItems" :model-value="modelValue" :expanded="expanded" />
+      <slot
+        :flatten-items="expandedItems"
+        :model-value="modelValue"
+        :expanded="expanded"
+        :select="onSelect"
+        :toggle="onToggle"
+      />
     </Primitive>
   </RovingFocusGroup>
 </template>
