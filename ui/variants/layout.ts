@@ -6,50 +6,77 @@ export const layoutVariants = tv({
   slots: {
     root: 'group relative flex w-full min-h-full data-[side=right]:flex-row-reverse',
     sidebarRoot: 'hidden md:block',
-    sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
+    sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
       `flex flex-col size-full bg-sidebar-background`,
       `group-data-[variant=floating]:(rounded-lg border border-border border-solid shadow)`
     ],
     sidebarGapHandler: [
-      `relative h-full w-[--sidebar-width] bg-transparent transition-width duration-200 ease-linear`,
+      `relative h-full w-[--soybean-sidebar-width] bg-transparent transition-width duration-200 ease-linear`,
       `group-data-[collapsible=offcanvas]:w-0`,
       `group-data-[side=right]:rotate-180`
     ],
-    mobileRoot: 'w-[--sidebar-width] bg-sidebar-background p-0 [&>button]:hidden',
+    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar-background p-0 [&>button]:hidden',
+    mobileOverlay: [
+      `fixed inset-0 z-50 bg-black/80`,
+      `data-[state=open]:(animate-in fade-in-0)`,
+      `data-[state=closed]:(animate-out fade-out-0)`
+    ],
     mobile: 'flex flex-col size-full',
-    trigger: '',
-    main: 'relative flex flex-1 flex-col min-h-full bg-background',
-    header: 'relative flex items-center',
     rail: [
-      'absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear',
-      `after:(absolute inset-y-0 left-1/2 w-[2px]) hover:after:bg-border sm:flex`
-    ]
+      'absolute inset-y-0 z-20 hidden w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear sm:flex',
+      'after:(absolute inset-y-0 left-1/2 content-empty w-[calc(var(--soybean-layout-spacing)/8)]) hover:after:bg-sidebar-border'
+    ],
+    trigger: '',
+    main: 'relative flex flex-1 flex-col items-stretch min-h-full bg-background',
+    header: 'relative flex items-center shrink-0',
+    tab: 'shrink-0',
+    footer: 'shrink-0'
   },
   variants: {
+    size: {
+      xs: {
+        root: 'text-2xs [--soybean-layout-spacing:0.75rem]'
+      },
+      sm: {
+        root: 'text-xs [--soybean-layout-spacing:0.875rem]'
+      },
+      md: {
+        root: 'text-sm [--soybean-layout-spacing:1rem]'
+      },
+      lg: {
+        root: 'text-base [--soybean-layout-spacing:1.25rem]'
+      },
+      xl: {
+        root: 'text-lg [--soybean-layout-spacing:1.5rem]'
+      },
+      '2xl': {
+        root: 'text-xl [--soybean-layout-spacing:1.75rem]'
+      }
+    },
     variant: {
       sidebar: {
-        sidebarGapHandler: 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
-        sidebarWrapper: `group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l`
+        sidebarGapHandler: 'group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width]',
+        sidebarWrapper: `group-data-[collapsible=icon]:w-[--soybean-collapsed-sidebar-width] group-data-[side=left]:border-r group-data-[side=right]:border-l`
       },
       floating: {
-        sidebarGapHandler: `w-[calc(var(--sidebar-width)+1rem)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)]`,
-        sidebarWrapper: `p-2 w-[calc(var(--sidebar-width)+1rem)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)]`
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
+        sidebarWrapper: `p-[calc(var(--soybean-layout-spacing)/2)] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`
       },
       inset: {
         root: 'bg-sidebar-background',
-        sidebarGapHandler: `w-[calc(var(--sidebar-width)+1rem)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)]`,
-        sidebarWrapper: `p-2 w-[calc(var(--sidebar-width)+1rem)] group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+1rem)]`,
-        main: `md:(m-2 ml-0 rounded-xl shadow)`
+        sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
+        sidebarWrapper: `p-[calc(var(--soybean-layout-spacing)/2)] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
+        main: `md:(m-[calc(var(--soybean-layout-spacing)/2)] ml-0 rounded-xl shadow)`
       }
     },
     side: {
       left: {
-        sidebarWrapper: 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]',
-        rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -right-4'
+        sidebarWrapper: 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--soybean-sidebar-width)*-1)]',
+        rail: 'cursor-w-resize group-data-[state=collapsed]:cursor-e-resize -right-[var(--soybean-layout-spacing)]'
       },
       right: {
-        sidebarWrapper: 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
+        sidebarWrapper: 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--soybean-sidebar-width)*-1)]',
         rail: 'cursor-e-resize group-data-[state=collapsed]:cursor-w-resize left-0'
       }
     },
@@ -66,14 +93,14 @@ export const layoutVariants = tv({
       side: 'left',
       collapsible: 'offcanvas',
       class: {
-        rail: '-right-2'
+        rail: '-right-[var(--soybean-layout-spacing)/2]'
       }
     },
     {
       side: 'right',
       collapsible: 'offcanvas',
       class: {
-        rail: '-left-2'
+        rail: '-left-[var(--soybean-layout-spacing)/2]'
       }
     },
     {
@@ -97,7 +124,7 @@ export const layoutVariants = tv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:right-2'
+        rail: 'group-data-[state=collapsed]:right-[calc(var(--soybean-layout-spacing)/2)]'
       }
     },
     {
@@ -105,14 +132,14 @@ export const layoutVariants = tv({
       variant: 'floating',
       collapsible: 'offcanvas',
       class: {
-        rail: 'group-data-[state=collapsed]:left-2'
+        rail: 'group-data-[state=collapsed]:left-[calc(var(--soybean-layout-spacing)/2)]'
       }
     },
     {
       variant: 'inset',
       collapsible: 'offcanvas',
       class: {
-        main: 'md:group-data-[state=collapsed]:ml-2'
+        main: 'md:group-data-[state=collapsed]:ml-[calc(var(--soybean-layout-spacing)/2)]'
       }
     }
   ],
