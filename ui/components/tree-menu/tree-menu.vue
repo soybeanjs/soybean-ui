@@ -131,9 +131,11 @@ watch(collapsed, value => {
     v-on="listeners"
   >
     <template v-for="{ data, value, level } in flattenItems" :key="value">
-      <div v-if="isTreeMenuGroupOption(data)" :class="ui.groupLabel">
-        <slot name="group-label" :item="data">{{ data.label }}</slot>
-      </div>
+      <li v-if="isTreeMenuGroupOption(data)" :class="ui.groupLabel">
+        <slot name="group-label" :item="data">
+          <span>{{ data.label }}</span>
+        </slot>
+      </li>
       <TreeMenuItem
         v-else
         v-bind="data"

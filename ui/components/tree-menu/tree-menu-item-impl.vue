@@ -25,14 +25,15 @@ const attrs = useAttrs();
 
 const listeners = useForwardListeners(emit);
 
-const { size } = useTreeMenuContext('TreeMenuItem');
+const { size } = useTreeMenuContext('TreeMenuItemImpl');
 
-const { ui } = useTreeMenuThemeContext('TreeMenuItem');
+const { ui } = useTreeMenuThemeContext('TreeMenuItemImpl');
 
 const isLink = computed(() => Boolean(props.to || props.href || props.linkProps));
 
 const linkProps = computed(() => {
-  const p = { ...props.linkProps };
+  const p = { disabled: props.disabled, ...props.linkProps };
+
   if (props.to) {
     p.to = props.to;
   }
@@ -42,14 +43,9 @@ const linkProps = computed(() => {
   return p;
 });
 
-const extraProps = computed(() => (isLink.value ? linkProps.value : {}));
+const contentProps = computed(() => (isLink.value ? linkProps.value : {}));
 
-const forwardedProps = usePickProps(
-  props,
-  ['value', 'level', 'disabled', 'disabledSelect', 'disabledToggle'],
-  attrs,
-  extraProps
-);
+const forwardedProps = usePickProps(props, ['value', 'level', 'disabled', 'disabledSelect', 'disabledToggle'], attrs);
 
 const as = computed(() => (isLink.value ? Link : 'button'));
 
@@ -74,41 +70,42 @@ const tagProps = computed(() => ({
     v-slot="{ isExpanded }"
     :class="ui.item"
     v-bind="forwardedProps"
-    :as="as"
-    :data-link="isLink ? '' : undefined"
     :data-level="level"
     :style="style"
     v-on="listeners"
   >
-    <slot name="leading">
-      <Icon v-if="typeof icon === 'string'" :icon="icon" />
-      <component :is="icon" v-else />
-    </slot>
-    <slot>
-      <Badge v-if="badge" v-bind="badgeProps" :size="size" :content="badge" :class="ui.itemBadge">
-        <span :class="ui.itemLabel">{{ label }}</span>
-      </Badge>
-      <span v-else :class="ui.itemLabel">{{ label }}</span>
-    </slot>
-    <Icon v-if="isLink" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
-    <Tag v-if="tag" v-bind="tagProps" :size="size" :content="tag" :class="ui.itemTag" />
-    <DropdownMenu
-      v-if="actions?.length"
-      v-bind="actionMenuProps"
-      :size="size"
-      :items="actions"
-      @select="onActionSelect"
-    >
-      <template #trigger>
-        <ButtonIcon icon="lucide:ellipsis" :size="size" :class="ui.itemAction" @click.stop />
-      </template>
-    </DropdownMenu>
-    <slot name="trailing" />
-    <Icon
-      v-if="hasChildren"
-      icon="lucide:chevron-right"
-      :data-expanded="isExpanded ? '' : undefined"
-      :class="ui.collapsibleIcon"
-    />
+    <component :is="as" v-bind="contentProps" :class="ui.itemContent" :data-link="isLink ? '' : undefined">
+      <slot name="leading">
+        <Icon v-if="typeof icon === 'string'" :icon="icon" />
+        <component :is="icon" v-else />
+      </slot>
+      <slot>
+        <Badge v-if="badge" v-bind="badgeProps" :size="size" :content="badge" :class="ui.itemBadge">
+          <span :class="ui.itemLabel">{{ label }}</span>
+        </Badge>
+        <span v-else :class="ui.itemLabel">{{ label }}</span>
+      </slot>
+      <Icon v-if="isLink" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+      <Tag v-if="tag" v-bind="tagProps" :size="size" :content="tag" :class="ui.itemTag" />
+      <DropdownMenu
+        v-if="actions?.length"
+        v-bind="actionMenuProps"
+        :size="size"
+        :items="actions"
+        @select="onActionSelect"
+      >
+        <template #trigger>
+          <ButtonIcon icon="lucide:ellipsis" :size="size" :class="ui.itemAction" @click.stop />
+        </template>
+      </DropdownMenu>
+      <slot name="trailing" />
+      <Icon
+        v-if="hasChildren"
+        icon="lucide:chevron-right"
+        :data-expanded="isExpanded ? '' : undefined"
+        :class="ui.collapsibleIcon"
+      />
+    </component>
+    <slot name="absolute" />
   </TreeItem>
 </template>

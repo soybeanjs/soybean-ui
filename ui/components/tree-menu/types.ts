@@ -37,12 +37,14 @@ export type TreeMenuThemeSlot =
   | 'root'
   | 'groupLabel'
   | 'item'
+  | 'itemContent'
+  | 'itemAbsolute'
   | 'itemLabel'
   | 'itemLinkIcon'
-  | 'collapsibleIcon'
   | 'itemBadge'
   | 'itemTag'
-  | 'itemAction';
+  | 'itemAction'
+  | 'collapsibleIcon';
 
 export type TreeMenuUi = Partial<Record<TreeMenuThemeSlot, ClassValue>>;
 
