@@ -8,7 +8,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 
 ✅: Completed ✨: Implemented
 
-✅ 44 / total: 107
+✅ 45 / total: 107
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -56,7 +56,7 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 42  | 1        | Toast           |              | Sonner               |                          |
 | 43  | 1        | Tooltip         | ✅ Completed |                      |                          |
 | 44  | 1        | Tree            | ✅ Completed |                      | ✨ support virtualized   |
-| 45  | 1        | TreeMenu        |              |                      |                          |
+| 45  | 1        | TreeMenu        | ✅ Completed |                      |                          |
 | 46  | 1        | Virtualizer     | ✅ Completed |                      |                          |
 | 47  | 1        | VisuallyHidden  | ✅ Completed |                      |                          |
 | 48  | 2        | ColorPicker     |              |                      |                          |
