@@ -6,7 +6,6 @@ import {
   DropdownMenuPortal,
   DropdownMenuRoot,
   DropdownMenuTrigger,
-  Slot,
   provideMenuThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
@@ -58,9 +57,7 @@ provideMenuExtraThemeContext({
 <template>
   <DropdownMenuRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
     <DropdownMenuTrigger v-bind="triggerProps" as-child :disabled="disabled">
-      <Slot :size="size">
-        <slot name="trigger" />
-      </Slot>
+      <slot name="trigger" />
     </DropdownMenuTrigger>
     <DropdownMenuPortal v-bind="portalProps">
       <DropdownMenuContent v-bind="contentProps" v-on="forwardedListeners">
