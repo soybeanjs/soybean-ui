@@ -15,11 +15,10 @@ import {
   provideDialogThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import { mergeSlotVariants } from '@theme';
+import { mergeSlotVariants, provideSizeContext } from '@theme';
 import { dialogVariants } from '@variants/dialog';
 import { drawerContentVariants } from '@variants/drawer';
 import ButtonIcon from '../button/button-icon.vue';
-import { provideDrawerSizeContext } from './context';
 import type { DrawerEmits, DrawerProps } from './types';
 
 defineOptions({
@@ -75,9 +74,7 @@ provideDialogThemeContext({
   ui
 });
 
-provideDrawerSizeContext({
-  size: computed(() => props.size ?? 'md')
-});
+provideSizeContext(() => props.size);
 </script>
 
 <template>

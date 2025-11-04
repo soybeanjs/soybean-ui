@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { AlertDialogClose } from '@headless';
+import { useSizeContext } from '@theme';
 import Button from '../button/button.vue';
-import { useAlertDialogSizeContext } from './context';
 import type { AlertDialogCancelProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ const props = withDefaults(defineProps<AlertDialogCancelProps>(), {
   variant: 'plain'
 });
 
-const sizeContext = useAlertDialogSizeContext();
-
-const size = computed(() => sizeContext?.size?.value ?? 'md');
+const { size } = useSizeContext('AlertDialogCancel');
 </script>
 
 <template>

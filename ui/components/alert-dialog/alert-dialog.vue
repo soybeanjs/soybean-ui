@@ -13,10 +13,9 @@ import {
   provideDialogThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import { mergeSlotVariants } from '@theme';
+import { mergeSlotVariants, provideSizeContext } from '@theme';
 import { dialogVariants } from '@variants/dialog';
 import Icon from '../icon/icon.vue';
-import { provideAlertDialogSizeContext } from './context';
 import type { AlertDialogEmits, AlertDialogProps, AlertDialogType } from './types';
 
 defineOptions({
@@ -87,9 +86,7 @@ provideDialogThemeContext({
   ui
 });
 
-provideAlertDialogSizeContext({
-  size: computed(() => props.size ?? 'md')
-});
+provideSizeContext(() => props.size);
 </script>
 
 <template>

@@ -1,4 +1,3 @@
-import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
   DialogContentEmits,
@@ -49,7 +48,3 @@ export interface DialogPureProps extends DialogRootProps {
 }
 
 export type DialogPureEmits = DialogEmits;
-
-export type DialogSizeContextParams = {
-  size: ComputedRef<ThemeSize>;
-};

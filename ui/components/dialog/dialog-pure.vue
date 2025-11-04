@@ -10,10 +10,9 @@ import {
   provideDialogThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import { mergeSlotVariants } from '@theme';
+import { mergeSlotVariants, provideSizeContext } from '@theme';
 import { dialogVariants } from '@variants/dialog';
 import ButtonIcon from '../button/button-icon.vue';
-import { provideDialogSizeContext } from './context';
 import type { DialogPureEmits, DialogPureProps } from './types';
 
 defineOptions({
@@ -54,9 +53,7 @@ provideDialogThemeContext({
   ui
 });
 
-provideDialogSizeContext({
-  size: computed(() => props.size ?? 'md')
-});
+provideSizeContext(() => props.size);
 </script>
 
 <template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { DialogClose } from '@headless';
 import type { DialogCloseProps } from '@headless';
-import { useDrawerSizeContext } from './context';
+import { useSizeContext } from '@theme';
 
 defineOptions({
   name: 'SDrawerClose'
@@ -10,9 +9,7 @@ defineOptions({
 
 const props = defineProps<DialogCloseProps>();
 
-const sizeContext = useDrawerSizeContext();
-
-const size = computed(() => sizeContext?.size?.value ?? 'md');
+const { size } = useSizeContext('DrawerClose');
 </script>
 
 <template>
