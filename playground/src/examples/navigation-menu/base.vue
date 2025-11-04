@@ -190,7 +190,7 @@ const menus: NavigationMenuOptionData[] = [
 </script>
 
 <template>
-  <SCard title="Base">
+  <SCard title="Base" :scrollable="false">
     <SNavigationMenu :items="menus" :ui="{ subLink: 'w-80' }" />
   </SCard>
 </template>
