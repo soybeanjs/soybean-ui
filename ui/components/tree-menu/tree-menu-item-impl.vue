@@ -74,7 +74,13 @@ const tagProps = computed(() => ({
     :style="style"
     v-on="listeners"
   >
-    <component :is="as" v-bind="contentProps" :class="ui.itemContent" :data-link="isLink ? '' : undefined">
+    <component
+      :is="as"
+      v-bind="contentProps"
+      :class="ui.itemContent"
+      :data-link="isLink ? '' : undefined"
+      tabindex="-1"
+    >
       <slot name="leading">
         <Icon v-if="typeof icon === 'string'" :icon="icon" />
         <component :is="icon" v-else />
