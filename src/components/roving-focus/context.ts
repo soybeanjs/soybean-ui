@@ -186,9 +186,9 @@ function useRovingFocusItem(options: RovingFocusItemOptions = {}) {
     return {
       ...itemProps,
       tabindex: isCurrentTabStop.value ? '0' : '-1',
-      dataOrientation: orientation.value,
-      dataActive: active?.value ? '' : undefined,
-      dataDisabled: !focusable.value ? '' : undefined
+      'data-orientation': orientation.value,
+      'data-active': active?.value ? '' : undefined,
+      'data-disabled': !focusable.value ? '' : undefined
     };
   });
 
