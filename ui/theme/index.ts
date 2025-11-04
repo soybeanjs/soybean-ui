@@ -1,3 +1,5 @@
 export * from './merge';
 export * from './shared';
-export * from './types';
+export * from './config';
+
+export type * from './types';
