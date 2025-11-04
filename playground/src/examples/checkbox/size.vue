@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { SCard, SCheckbox } from '@ui';
-import type { ThemeColor, ThemeSize } from '@ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
+import { themeColorOptions, themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <SCard title="Size" :ui="{ content: 'flex gap-3' }">
     <SCheckbox
-      v-for="(size, index) in sizes"
-      :key="size"
+      v-for="(size, index) in themeSizeOptions"
+      :key="size.value"
       :default-value="true"
-      :size="size"
-      :label="size"
-      :color="colors[index]"
+      :size="size.value"
+      :label="size.label"
+      :color="themeColorOptions[index].value"
     />
   </SCard>
 </template>

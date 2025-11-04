@@ -1,20 +1,17 @@
 <script setup lang="ts">
 import { SAlert, SCard } from '@ui';
-import type { ThemeColor, ThemeSize } from '@ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
+import { themeColorOptions, themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <SCard title="Size" split :ui="{ content: 'flex-c gap-3' }">
     <SAlert
-      v-for="(size, index) in sizes"
-      :key="size"
-      :color="colors[index]"
-      :size="size"
+      v-for="(size, index) in themeSizeOptions"
+      :key="size.value"
+      :color="themeColorOptions[index].value"
+      :size="size.value"
       variant="soft"
-      :title="size"
+      :title="size.label"
       icon="lucide:terminal"
       closable
     />

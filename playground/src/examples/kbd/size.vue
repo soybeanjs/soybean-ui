@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { SCard, SKbd } from '@ui';
-import type { ThemeSize } from '@ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+import { themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <SCard title="Size" :ui="{ content: 'flex gap-2' }">
-    <SKbd v-for="size in sizes" :key="size" :size="size" value="command" />
+    <SKbd v-for="size in themeSizeOptions" :key="size.value" :size="size.value" value="command" />
   </SCard>
 </template>

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { SCard, STag } from '@ui';
-import type { ThemeSize } from '@ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+import { themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <SCard title="Size" split :ui="{ content: 'flex gap-3' }">
-    <STag v-for="size in sizes" :key="size" :size="size" variant="ghost">
-      {{ size }}
+    <STag v-for="size in themeSizeOptions" :key="size.value" :size="size.value" variant="ghost">
+      {{ size.label }}
     </STag>
   </SCard>
 </template>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { SCard, SRadioGroup } from '@ui';
-import type { RadioGroupOptionData, ThemeSize } from '@ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+import type { RadioGroupOptionData } from '@ui';
+import { themeSizeOptions } from '../../constants/theme';
 
 const items: RadioGroupOptionData<string>[] = [
   { value: 'A', label: 'A' },
@@ -13,6 +12,6 @@ const items: RadioGroupOptionData<string>[] = [
 
 <template>
   <SCard title="Size" :ui="{ content: 'flex-c gap-2' }">
-    <SRadioGroup v-for="size in sizes" :key="size" :items="items" :size="size" />
+    <SRadioGroup v-for="size in themeSizeOptions" :key="size.value" :items="items" :size="size.value" />
   </SCard>
 </template>
