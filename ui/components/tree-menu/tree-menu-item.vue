@@ -138,7 +138,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
     </component>
 
     <template v-if="showAbsolute">
-      <Tooltip v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
+      <Tooltip v-if="tooltip" v-bind="tooltipProps" :size="size" :content="tooltip">
         <template #trigger>
           <div :class="ui.itemAbsolute"></div>
         </template>
@@ -148,6 +148,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         v-bind="dropdownMenuProps"
         :items="children ?? []"
         :disabled="disabled"
+        :size="size"
         @select="onDropdownMenuSelect"
       >
         <template #trigger>

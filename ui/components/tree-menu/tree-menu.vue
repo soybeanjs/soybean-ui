@@ -118,6 +118,7 @@ watch(collapsed, value => {
     :style="style"
     v-on="listeners"
   >
+    <slot name="top" />
     <template v-for="{ data, value, level } in flattenItems" :key="value">
       <li v-if="isTreeMenuGroupOption(data)" :class="ui.groupLabel">
         <slot name="group-label" :item="data">
@@ -149,5 +150,6 @@ watch(collapsed, value => {
         </template>
       </TreeMenuItem>
     </template>
+    <slot name="bottom" />
   </TreeRoot>
 </template>
