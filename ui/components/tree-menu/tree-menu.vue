@@ -1,9 +1,9 @@
 <script setup lang="ts" generic="T extends TreeMenuOptionData = TreeMenuOptionData">
-import { computed, nextTick, watch } from 'vue';
+import { computed, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import { TreeRoot } from '@headless';
-import { useControllableState, useForwardElement, useForwardListeners, useOmitProps } from '@headless/composables';
+import { useControllableState, useForwardListeners, useOmitProps } from '@headless/composables';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@theme';
 import { treeMenuVariants } from '@variants/tree-menu';
 import { provideTreeMenuContext, provideTreeMenuThemeContext } from './context';
@@ -40,8 +40,6 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const listeners = useForwardListeners(emit);
-
-const [rootElement, setRootElement] = useForwardElement();
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
@@ -91,12 +89,10 @@ provideTreeMenuThemeContext({
 });
 
 let backupExpanded: string[] | null = null;
-let scrollTop: number | undefined;
 
 watch(collapsed, value => {
   if (value) {
     backupExpanded = [...(expandedKeys.value ?? [])];
-    scrollTop = rootElement.value?.scrollTop;
     expandedKeys.value = [];
 
     return;
@@ -106,13 +102,6 @@ watch(collapsed, value => {
     expandedKeys.value = [...backupExpanded];
     backupExpanded = null;
   }
-
-  nextTick(() => {
-    if (scrollTop) {
-      rootElement.value?.scrollTo(0, scrollTop);
-      scrollTop = undefined;
-    }
-  });
 });
 </script>
 
@@ -120,7 +109,6 @@ watch(collapsed, value => {
   <TreeRoot
     v-slot="{ flattenItems, select, toggle }"
     v-bind="forwardedProps"
-    :ref="setRootElement"
     v-model:expanded="expandedKeys"
     v-auto-animate
     :items="items"

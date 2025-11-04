@@ -1,40 +1,60 @@
 <script setup lang="ts">
-import { computed, defineSlots, useAttrs } from 'vue';
-import { useForwardListeners, useOmitProps } from '@headless/composables';
+import { computed, useAttrs } from 'vue';
+import type { CSSProperties } from 'vue';
+import { TreeItem } from '@headless';
+import { useForwardListeners, usePickProps } from '@headless/composables';
+import Icon from '../icon/icon.vue';
+import Link from '../link/link.vue';
+import Badge from '../badge/badge.vue';
+import Tag from '../tag/tag.vue';
 import Tooltip from '../tooltip/tooltip.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';
+import ButtonIcon from '../button/button-icon.vue';
 import { useTreeMenuContext, useTreeMenuThemeContext } from './context';
-import TreeMenuItemImpl from './tree-menu-item-impl.vue';
+import { treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuItemEmits, TreeMenuItemProps } from './types';
 
 defineOptions({
-  name: 'STreeMenuItem',
-  inheritAttrs: false
+  name: 'STreeMenuItem'
 });
 
 const props = defineProps<TreeMenuItemProps>();
 
 const emit = defineEmits<TreeMenuItemEmits>();
 
-type Slots = {
-  default: () => any;
-  leading: () => any;
-  trailing: () => any;
-};
-
-const slots = defineSlots<Slots>();
-
-const slotsKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
+const attrs = useAttrs();
 
 const listeners = useForwardListeners(emit);
 
-const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(props, ['tooltipProps', 'dropdownMenuProps'], attrs);
-
-const { collapsed } = useTreeMenuContext('TreeMenuItem');
+const { size, collapsed } = useTreeMenuContext('TreeMenuItem');
 
 const { ui } = useTreeMenuThemeContext('TreeMenuItem');
+
+const isLink = computed(() => Boolean(props.to || props.href || props.linkProps));
+
+const linkProps = computed(() => {
+  const p = { disabled: props.disabled, ...props.linkProps };
+
+  if (props.to) {
+    p.to = props.to;
+  }
+  if (props.href) {
+    p.href = props.href;
+  }
+  return p;
+});
+
+const forwardedProps = usePickProps(props, ['value', 'level', 'disabled', 'disabledSelect', 'disabledToggle'], attrs);
+
+const as = computed(() => (isLink.value ? Link : 'button'));
+
+const contentProps = computed(() => (isLink.value ? linkProps.value : {}));
+
+const itemStyle = computed<CSSProperties>(() => {
+  return {
+    [treeMenuCssVars.indent]: props.level - 1
+  };
+});
 
 const hasChildren = computed(() => Boolean(props.children?.length));
 
@@ -57,23 +77,67 @@ const dropdownMenuProps = computed(() => ({
   ...props.dropdownMenuProps
 }));
 
+const tagProps = computed(() => ({
+  color: 'accent' as const,
+  variant: 'raw' as const,
+  ...props.tagProps,
+  content: props.tag
+}));
+
 const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   emit('selectDropdown', item.value);
 };
 </script>
 
 <template>
-  <TreeMenuItemImpl
+  <TreeItem
+    v-slot="{ isExpanded }"
+    :class="ui.item"
     v-bind="forwardedProps"
-    :disabled-toggle="showDropdown"
-    data-tree-menu-item-trigger
+    :data-level="level"
+    :style="itemStyle"
     v-on="listeners"
   >
-    <template v-for="slotKey in slotsKeys" :key="slotKey" #[slotKey]>
-      <slot :name="slotKey" />
-    </template>
+    <component
+      :is="as"
+      v-bind="contentProps"
+      :class="ui.itemContent"
+      :data-link="isLink ? '' : undefined"
+      tabindex="-1"
+    >
+      <slot name="leading">
+        <Icon v-if="typeof icon === 'string'" :icon="icon" />
+        <component :is="icon" v-else />
+      </slot>
+      <slot>
+        <Badge v-if="badge" v-bind="badgeProps" :size="size" :content="badge" :class="ui.itemBadge">
+          <span :class="ui.itemLabel">{{ label }}</span>
+        </Badge>
+        <span v-else :class="ui.itemLabel">{{ label }}</span>
+      </slot>
+      <Icon v-if="isLink" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+      <Tag v-if="tag" v-bind="tagProps" :size="size" :content="tag" :class="ui.itemTag" />
+      <DropdownMenu
+        v-if="actions?.length"
+        v-bind="actionMenuProps"
+        :size="size"
+        :items="actions"
+        @select="onActionSelect"
+      >
+        <template #trigger>
+          <ButtonIcon icon="lucide:ellipsis" :size="size" :class="ui.itemAction" @click.stop />
+        </template>
+      </DropdownMenu>
+      <slot name="trailing" />
+      <Icon
+        v-if="hasChildren"
+        icon="lucide:chevron-right"
+        :data-expanded="isExpanded ? '' : undefined"
+        :class="ui.collapsibleIcon"
+      />
+    </component>
 
-    <template v-if="showAbsolute" #absolute>
+    <template v-if="showAbsolute">
       <Tooltip v-if="tooltip" v-bind="tooltipProps" :content="tooltip">
         <template #trigger>
           <div :class="ui.itemAbsolute"></div>
@@ -91,5 +155,5 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </template>
       </DropdownMenu>
     </template>
-  </TreeMenuItemImpl>
+  </TreeItem>
 </template>

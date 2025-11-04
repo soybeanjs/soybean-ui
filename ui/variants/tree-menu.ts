@@ -14,7 +14,7 @@ export const treeMenuVariants = tv({
       `data-[disabled]:(pointer-events-none opacity-50)`,
       `group-data-[state=collapsed]:overflow-hidden`
     ],
-    itemContent: `flex items-center w-full data-[link]:decoration-none`,
+    itemContent: `flex items-center w-full outline-none data-[link]:decoration-none`,
     itemAbsolute: `absolute top-0 left-0 w-full h-full z-1`,
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,

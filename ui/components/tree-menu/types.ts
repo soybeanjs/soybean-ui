@@ -48,13 +48,8 @@ export type TreeMenuThemeSlot =
 
 export type TreeMenuUi = Partial<Record<TreeMenuThemeSlot, ClassValue>>;
 
-export interface TreeMenuItemImplProps extends TreeItemProps, TreeMenuBaseOptionData {
+export interface TreeMenuItemProps extends TreeItemProps, TreeMenuBaseOptionData {
   actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
-}
-
-export type TreeMenuItemImplEmits = TreeItemEmits;
-
-export interface TreeMenuItemProps extends TreeMenuItemImplProps {
   tooltipProps?: TooltipProps;
   dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>;
 }
