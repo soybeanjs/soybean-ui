@@ -1,6 +1,560 @@
 # Changelog
 
 
+## [v0.0.1-beta.1](https://github.com/soybeanjs/soybean-headless/compare/v0.0.1-alpha.5...v0.0.1-beta.1) (2025-11-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- add markdown formatter to ESLint config and expand README with component roadmap &nbsp;-&nbsp; by @soybeanjs [<samp>(3785d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3785d9b)
+- **App**:
+  - add Accordion and Collapsible examples to showcase new components &nbsp;-&nbsp; by @soybeanjs [<samp>(47e88)</samp>](https://github.com/soybeanjs/soybean-headless/commit/47e8879)
+- **accordion**:
+  - implement Accordion component with customizable slots and props, enhancing accordion functionality and theming support &nbsp;-&nbsp; by @soybeanjs [<samp>(be778)</samp>](https://github.com/soybeanjs/soybean-headless/commit/be7782d)
+- **alert**:
+  - implement alert component with various examples and context management &nbsp;-&nbsp; by @soybeanjs [<samp>(2d3b5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2d3b5af)
+- **alert-dialog**:
+  - introduce new alert dialog components and examples, including action, destructive, info, success, and warning variants &nbsp;-&nbsp; by @soybeanjs [<samp>(95f2e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/95f2e59)
+- **aspect-ratio, arrow**:
+  - add new AspectRatio and Arrow components with props and types for enhanced UI flexibility; update README to reflect AspectRatio status as 'No Need' &nbsp;-&nbsp; by @soybeanjs [<samp>(001a2)</samp>](https://github.com/soybeanjs/soybean-headless/commit/001a23f)
+- **avatar**:
+  - introduce SAvatar component with theme context support and refactor avatar structure for improved usability &nbsp;-&nbsp; by @soybeanjs [<samp>(94542)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9454224)
+- **badge**:
+  - implement badge component with various examples &nbsp;-&nbsp; by @soybeanjs [<samp>(04ec2)</samp>](https://github.com/soybeanjs/soybean-headless/commit/04ec2ca)
+- **bottom-sheet**:
+  - add new bottom sheet component with size variants and default settings &nbsp;-&nbsp; by @soybeanjs [<samp>(fa3f6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/fa3f6b7)
+- **button**:
+  - add Button component with various states and configurations, including loading, icon, and group functionalities &nbsp;-&nbsp; by @soybeanjs [<samp>(62bf7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/62bf713)
+  - add ButtonLink component and integrate it into the button example, enhancing link functionalities &nbsp;-&nbsp; by @soybeanjs [<samp>(81d56)</samp>](https://github.com/soybeanjs/soybean-headless/commit/81d56a5)
+  - add fitContent prop to button components for improved layout flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(5479b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5479b37)
+- **button-link**:
+  - set default variant to 'link' for improved button styling &nbsp;-&nbsp; by @soybeanjs [<samp>(b38b9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b38b910)
+- **card**:
+  - introduce Card component with customizable slots and props, enhancing card functionality and theming support &nbsp;-&nbsp; by @soybeanjs [<samp>(da0c5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/da0c5f1)
+  - add scrollable prop to Card component for enhanced content management &nbsp;-&nbsp; by @soybeanjs [<samp>(cfc07)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cfc0732)
+- **checkbox**:
+  - refactor checkbox components to utilize new theme context and improve structure with SCheckbox and SCheckboxGroup &nbsp;-&nbsp; by @soybeanjs [<samp>(81075)</samp>](https://github.com/soybeanjs/soybean-headless/commit/810758c)
+  - add CheckboxCard and CheckboxCardGroup components, enhancing checkbox functionality with card layouts and improved UI integration &nbsp;-&nbsp; by @soybeanjs [<samp>(1b764)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1b76456)
+  - add color and size examples, enhance checkbox card and group components with color support, and improve checkbox labels &nbsp;-&nbsp; by @soybeanjs [<samp>(ac32d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ac32df1)
+  - introduce shape and icon examples, enhance checkbox components with shape support, and update card group styling &nbsp;-&nbsp; by @soybeanjs [<samp>(bbd07)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bbd0768)
+- **collapsible, visually-hidden**:
+  - add Collapsible and VisuallyHidden components with associated exports for enhanced accessibility and UI functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(c3766)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c37667c)
+- **command**:
+  - implement SCommand component with options and dialog examples &nbsp;-&nbsp; by @soybeanjs [<samp>(8f948)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8f948a9)
+- **components**:
+  - dropdown-menu support mix options &nbsp;-&nbsp; by @soybeanjs [<samp>(797b6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/797b66c)
+  - enhance radio dropdown menu to display active label &nbsp;-&nbsp; by @soybeanjs [<samp>(9a32e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9a32e19)
+  - implement breadcrumb &nbsp;-&nbsp; by @soybeanjs [<samp>(89007)</samp>](https://github.com/soybeanjs/soybean-headless/commit/89007c0)
+  - implement Form, FormField, FormFieldArray and useForm &nbsp;-&nbsp; by @soybeanjs [<samp>(3ab09)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3ab09c8)
+  - update component name constants &nbsp;-&nbsp; by @soybeanjs [<samp>(16486)</samp>](https://github.com/soybeanjs/soybean-headless/commit/164861c)
+- **config**:
+  - add wrangler configuration file for soybean-headless project &nbsp;-&nbsp; by @soybeanjs [<samp>(ddfe7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ddfe757)
+  - update nuxt.config.ts and tsconfig.json for improved type safety and configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(e55c2)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e55c20a)
+- **config-provider**:
+  - add nuxt prop to ConfigProvider for Nuxt application support &nbsp;-&nbsp; by @soybeanjs [<samp>(7da82)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7da8225)
+  - wrap main components in ConfigProvider for consistent theming and configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(f466e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f466ef9)
+  - implement ConfigProvider component with context and type definitions for enhanced configuration management &nbsp;-&nbsp; by @soybeanjs [<samp>(8f219)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8f21988)
+  - enhance theme and size management with dynamic class updates and new utility functions &nbsp;-&nbsp; by @soybeanjs [<samp>(a1023)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a10239e)
+- **context-menu**:
+  - implement context menu components including base, checkbox, radio, and mix examples &nbsp;-&nbsp; by @soybeanjs [<samp>(2c854)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2c8541f)
+  - add pressOpenDelay prop to ContextMenuRoot and update ContextMenuTrigger to utilize it &nbsp;-&nbsp; by @soybeanjs [<samp>(64b96)</samp>](https://github.com/soybeanjs/soybean-headless/commit/64b9678)
+- **dialog**:
+  - introduce DialogThemeContext for theming support and add DialogHeader and DialogFooter components &nbsp;-&nbsp; by @soybeanjs [<samp>(f2b65)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f2b652b)
+  - add Dialog component and related context, close, and types for enhanced dialog functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(8378a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8378a2f)
+  - add multiple dialog examples with default, footer, state control, and prevent close functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(9bdd9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9bdd9ed)
+  - add SDialogPure component with customizable properties and variants &nbsp;-&nbsp; by @soybeanjs [<samp>(5ff73)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5ff730d)
+- **dismissable-layer**:
+  - enhance usePointerdownOutside and useFocusOutside for improved enable/disable functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(adc62)</samp>](https://github.com/soybeanjs/soybean-headless/commit/adc627d)
+- **divider**:
+  - add Divider component with alignment, border styles, and context support &nbsp;-&nbsp; by @soybeanjs [<samp>(015b8)</samp>](https://github.com/soybeanjs/soybean-headless/commit/015b8f6)
+- **docs**:
+  - add comprehensive development handbook for SoybeanHeadless components in English and Chinese &nbsp;-&nbsp; by @soybeanjs [<samp>(61373)</samp>](https://github.com/soybeanjs/soybean-headless/commit/613733f)
+- **drawer**:
+  - introduce new drawer component with side and scroll variants, update dialog examples to use pure button variant &nbsp;-&nbsp; by @soybeanjs [<samp>(b2042)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b2042a9)
+  - add scrollable functionality to drawer component and update related styles &nbsp;-&nbsp; by @soybeanjs [<samp>(e199f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e199fbc)
+- **dropdown-menu**:
+  - add aria-disabled attribute to dropdown menu trigger for better accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(0da08)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0da087c)
+- **examples**:
+  - add multiple select demo and integrate into examples &nbsp;-&nbsp; by @soybeanjs [<samp>(19126)</samp>](https://github.com/soybeanjs/soybean-headless/commit/191260c)
+- **favicon**:
+  - add favicon support with SVG icon in nuxt.config and HTML files &nbsp;-&nbsp; by @soybeanjs [<samp>(2cd8e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2cd8e5a)
+- **focus**:
+  - add removeFromTabOrder function to manage tabindex for focusable elements &nbsp;-&nbsp; by @soybeanjs [<samp>(577df)</samp>](https://github.com/soybeanjs/soybean-headless/commit/577dfe6)
+- **form**:
+  - extend parsePrimitiveValue and isPrimitive to handle null and undefined values &nbsp;-&nbsp; by @soybeanjs [<samp>(b3b52)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b3b5269)
+- **grace-area**:
+  - enhance functionality with sub-area detection and management &nbsp;-&nbsp; by @soybeanjs [<samp>(8eff0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8eff02a)
+- **home**:
+  - integrate ThemeCustomizer with SPopover for enhanced theme customization options &nbsp;-&nbsp; by @soybeanjs [<samp>(7a02f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7a02f6d)
+- **icon**:
+  - replace lucide-vue-next icons with @iconify/vue in examples and components, and update package dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(47f24)</samp>](https://github.com/soybeanjs/soybean-headless/commit/47f246c)
+  - introduce Icon component with configurable properties and integration with ConfigProvider for dynamic sizing &nbsp;-&nbsp; by @soybeanjs [<samp>(ac117)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ac11762)
+- **index**:
+  - add exports for Card, DropdownMenu, and RovingFocus components to the main entry point &nbsp;-&nbsp; by @soybeanjs [<samp>(c1f9e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c1f9ed3)
+- **input**:
+  - implement Input component with various examples and context support &nbsp;-&nbsp; by @soybeanjs [<samp>(2df28)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2df289e)
+  - add aria-disabled attribute to input control for improved accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(e1e7e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e1e7ed9)
+- **kbd**:
+  - implement kbd component &nbsp;-&nbsp; by @soybeanjs [<samp>(d445d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d445dca)
+- **label**:
+  - add new label component with props and types for enhanced UI flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(6c618)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6c618a2)
+- **layout**:
+  - implement Layout components &nbsp;-&nbsp; by @soybeanjs [<samp>(cf0ee)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cf0ee48)
+- **link**:
+  - introduce Link component for enhanced navigation and update app examples to utilize it &nbsp;-&nbsp; by @soybeanjs [<samp>(3f7f3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3f7f3ef)
+  - add Link component and examples for improved navigation in the playground &nbsp;-&nbsp; by @soybeanjs [<samp>(b3a24)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b3a245e)
+  - enhance Link component with disabled state handling &nbsp;-&nbsp; by @soybeanjs [<samp>(42d18)</samp>](https://github.com/soybeanjs/soybean-headless/commit/42d182b)
+  - rename Link component file and implement new link.vue with props and computed class handling &nbsp;-&nbsp; by @soybeanjs [<samp>(2eebf)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2eebfa7)
+  - add target prop and refactor isExternal to isHref for improved link handling &nbsp;-&nbsp; by @soybeanjs [<samp>(bd126)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bd126ad)
+- **list**:
+  - implement List component &nbsp;-&nbsp; by @soybeanjs [<samp>(1bc4a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1bc4a72)
+- **listbox**:
+  - add Listbox component with context, item, and virtualizer support &nbsp;-&nbsp; by @soybeanjs [<samp>(7ca24)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7ca241f)
+  - enhance ListboxFilter and context with Input integration and improved theming &nbsp;-&nbsp; by @soybeanjs [<samp>(a6634)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a663451)
+- **menu**:
+  - replace MenuLabel with MenuGroupLabel and add theme context support for menu components &nbsp;-&nbsp; by @soybeanjs [<samp>(02a5b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/02a5b14)
+- **namespaced**:
+  - add new namespaced components and update package configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(ac3d6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ac3d6a2)
+- **navigation-menu**:
+  - implement navigation-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(7344b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7344b9b)
+- **nonce**:
+  - add useNonce composable to retrieve nonce value from context or fallback &nbsp;-&nbsp; by @soybeanjs [<samp>(40048)</samp>](https://github.com/soybeanjs/soybean-headless/commit/40048b8)
+- **number-input**:
+  - add NumberInput component with increment/decrement functionality and examples &nbsp;-&nbsp; by @soybeanjs [<samp>(52a14)</samp>](https://github.com/soybeanjs/soybean-headless/commit/52a14fc)
+- **nuxt.config**:
+  - add imports configuration to disable auto-import and scanning &nbsp;-&nbsp; by @soybeanjs [<samp>(a1d53)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a1d5392)
+- **package**:
+  - add deploy script and update wrangler dependency &nbsp;-&nbsp; by @soybeanjs [<samp>(5b7bd)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5b7bd35)
+- **package.json**:
+  - add preview script for Vite to enhance development workflow &nbsp;-&nbsp; by @soybeanjs [<samp>(b0de0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b0de063)
+- **pagination**:
+  - implement pagination component with various features including action buttons, size, shape, and slot customization &nbsp;-&nbsp; by @soybeanjs [<samp>(d2cf6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d2cf608)
+- **password**:
+  - implement Password component with various examples including base, clearable, disabled, and icon visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(92544)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9254467)
+- **playground**:
+  - update build scripts for Vite configuration and add playground setup with Vue and Unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(c0bd5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c0bd558)
+- **popover**:
+  - introduce SPopover component with customizable positioning and theming support &nbsp;-&nbsp; by @soybeanjs [<samp>(902c0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/902c088)
+  - add close method and pass it to slot for improved popover control &nbsp;-&nbsp; by @soybeanjs [<samp>(d4520)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d4520df)
+  - add new props 'sideFlip' and 'alignFlip' to popper-content component &nbsp;-&nbsp; by @soybeanjs [<samp>(d8115)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d8115bb)
+- **popover, tooltip**:
+  - update positioning logic to use placements instead of sides and aligns for improved flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(fb3c0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/fb3c0c5)
+- **popper**:
+  - add sideFlip and alignFlip properties to enhance collision handling &nbsp;-&nbsp; by @soybeanjs [<samp>(bc252)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bc2527f)
+- **projects**:
+  - make nuxt compatible &nbsp;-&nbsp; by @soybeanjs [<samp>(66ca2)</samp>](https://github.com/soybeanjs/soybean-headless/commit/66ca203)
+  - add ui dropdown-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(20d21)</samp>](https://github.com/soybeanjs/soybean-headless/commit/20d2163)
+- **radio-group**:
+  - implement SRadioGroup and SRadioGroupItem components with theme context support and improved structure &nbsp;-&nbsp; by @soybeanjs [<samp>(4f21e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4f21ecc)
+  - add radio card and color examples, enhance radio group components with card support, and refactor index.vue to include new demo components &nbsp;-&nbsp; by @soybeanjs [<samp>(7c817)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7c8172b)
+- **readme**:
+  - update component status for DropdownMenu and Menu to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(9fd13)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9fd131b)
+- **router**:
+  - implement Vue Router for navigation and restructure App component to utilize RouterView &nbsp;-&nbsp; by @soybeanjs [<samp>(22c61)</samp>](https://github.com/soybeanjs/soybean-headless/commit/22c6115)
+- **segment**:
+  - add SSegment component for selecting days with customizable options and integrate into home view &nbsp;-&nbsp; by @soybeanjs [<samp>(31a08)</samp>](https://github.com/soybeanjs/soybean-headless/commit/31a084d)
+  - add new segment examples for orientation, shape, and icon; refactor index.vue to include new demo components &nbsp;-&nbsp; by @soybeanjs [<samp>(eff24)</samp>](https://github.com/soybeanjs/soybean-headless/commit/eff24bb)
+- **select**:
+  - implement select component with bubble select, context management, and various sub components for enhanced functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(ccf79)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ccf794d)
+  - add select component with theme context support and various sub components for enhanced styling and functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(ed802)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ed80247)
+  - introduce new select examples and enhance select component with group options, default values, and disabled states for improved usability &nbsp;-&nbsp; by @soybeanjs [<samp>(8ddf0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8ddf045)
+  - add SelectSeparator component and update imports in select components &nbsp;-&nbsp; by @soybeanjs [<samp>(97629)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9762903)
+  - add prioritizePosition prop to enhance positioning behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(1719b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1719b94)
+- **shared**:
+  - add findValuesBetween function to extract subarray between two values &nbsp;-&nbsp; by @soybeanjs [<samp>(87dcc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/87dcc83)
+- **switch**:
+  - introduce SSwitch component along with SwitchRoot and SwitchThumb, implementing theme context and enhancing switch functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(aad68)</samp>](https://github.com/soybeanjs/soybean-headless/commit/aad68e9)
+  - enhance switch examples with new size, shape, and slot variations; update default switch value and card title &nbsp;-&nbsp; by @soybeanjs [<samp>(862dd)</samp>](https://github.com/soybeanjs/soybean-headless/commit/862ddb7)
+  - add base example for SSwitch component in playground &nbsp;-&nbsp; by @soybeanjs [<samp>(603cc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/603cc2c)
+- **tabs**:
+  - introduce tab components with customizable styles and functionality, including horizontal, vertical, and fill options &nbsp;-&nbsp; by @soybeanjs [<samp>(c407c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c407c47)
+- **tag**:
+  - implement Tag component with various examples &nbsp;-&nbsp; by @soybeanjs [<samp>(1cb71)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1cb71e4)
+- **textarea**:
+  - implement Textarea component with autosize, clearable, and counter features &nbsp;-&nbsp; by @soybeanjs [<samp>(48636)</samp>](https://github.com/soybeanjs/soybean-headless/commit/486366d)
+  - add footer slot to textarea component and implement DemoTextareaFooter example &nbsp;-&nbsp; by @soybeanjs [<samp>(52223)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5222309)
+- **theme**:
+  - add mergeSlotVariants utility and integrate it into Accordion and Card components for improved variant management &nbsp;-&nbsp; by @soybeanjs [<samp>(916e4)</samp>](https://github.com/soybeanjs/soybean-headless/commit/916e4f1)
+  - add theme schema toggler component for dark mode support in the home view &nbsp;-&nbsp; by @soybeanjs [<samp>(1dbd5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1dbd5f8)
+- **tooltip**:
+  - implement STooltip component with customizable positioning, arrow support, and enhanced theming &nbsp;-&nbsp; by @soybeanjs [<samp>(77bd5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/77bd5ae)
+- **tree**:
+  - implement tree component with selection and expansion behavior, including context and hooks for enhanced functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(d6ab7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d6ab729)
+  - enhance tree component with new virtualizer functionality and refactor existing structure for improved usability &nbsp;-&nbsp; by @soybeanjs [<samp>(cf8e7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cf8e755)
+  - add loop prop for keyboard navigation in TreeRoot component &nbsp;-&nbsp; by @soybeanjs [<samp>(e9f2a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e9f2a81)
+  - enhance tree component with selection behavior and parent path finding functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(bb1ce)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bb1ce18)
+- **tree-item**:
+  - update event handler for keyboard interactions to improve clarity and functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(458db)</samp>](https://github.com/soybeanjs/soybean-headless/commit/458db5f)
+- **tree-menu**:
+  - implement TreeMenu component with collapsible functionality and customizable items &nbsp;-&nbsp; by @soybeanjs [<samp>(5d47a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5d47a11)
+  - implement TreeMenuItemWrapper to reuse the style of TreeMenuItem &nbsp;-&nbsp; by @soybeanjs [<samp>(d1b8e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d1b8e7c)
+- **types**:
+  - add SelectEvent type and update SelectProps to use GetSingleValue &nbsp;-&nbsp; by @soybeanjs [<samp>(effa4)</samp>](https://github.com/soybeanjs/soybean-headless/commit/effa47d)
+- **value**:
+  - add clamp function to restrict a number within a specified range with detailed documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(85399)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8539968)
+- **virtualizer**:
+  - implement Virtualizer component with base, dynamic, and horizontal examples &nbsp;-&nbsp; by @soybeanjs [<samp>(02aaa)</samp>](https://github.com/soybeanjs/soybean-headless/commit/02aaa48)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **README**:
+  - update Select component status to completed, indicating support for virtualized options &nbsp;-&nbsp; by @soybeanjs [<samp>(663a8)</samp>](https://github.com/soybeanjs/soybean-headless/commit/663a8b0)
+- **accordion**:
+  - enhance content slot by wrapping description in a paragraph and update accordion variant styles for better spacing &nbsp;-&nbsp; by @soybeanjs [<samp>(7a4cc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7a4cc9c)
+  - adjust padding and gap values for trigger elements across all size variants for improved layout consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(db0e7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/db0e7ae)
+- **alert**:
+  - correct alert context params name &nbsp;-&nbsp; by @soybeanjs [<samp>(6958e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6958ed2)
+- **bubble-select**:
+  - handle input event for form autofill by updating internal state &nbsp;-&nbsp; by @soybeanjs [<samp>(3a571)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3a571a9)
+- **card**:
+  - add overflow-auto to content slot for improved layout handling &nbsp;-&nbsp; by @soybeanjs [<samp>(9845e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9845efe)
+  - correct component name &nbsp;-&nbsp; by @soybeanjs [<samp>(8156c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8156c91)
+- **card-content**:
+  - add tabindex attribute to card content div for improved accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(46524)</samp>](https://github.com/soybeanjs/soybean-headless/commit/46524dd)
+- **checkbox**:
+  - update click handler to check for groupContext existence before accessing modelValue &nbsp;-&nbsp; by @soybeanjs [<samp>(78fda)</samp>](https://github.com/soybeanjs/soybean-headless/commit/78fda71)
+- **collapse**:
+  - update slot rendering logic to handle unmountOnHide condition correctly &nbsp;-&nbsp; by @soybeanjs [<samp>(6e770)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6e770a3)
+- **comparison**:
+  - update isValueEqualOrExist function to accept current as a single value instead of an array &nbsp;-&nbsp; by @soybeanjs [<samp>(79a52)</samp>](https://github.com/soybeanjs/soybean-headless/commit/79a5226)
+- **components**:
+  - update button-loading component to include loadingText prop and improve loading indicator styling &nbsp;-&nbsp; by @soybeanjs [<samp>(f839c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f839c24)
+- **dialog**:
+  - adjust closeIcon positioning and add outline-none to dialog content for improved accessibility and visual consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(40fc9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/40fc9c5)
+  - remove unused theme context and update DialogClose class binding &nbsp;-&nbsp; by @soybeanjs [<samp>(be3ae)</samp>](https://github.com/soybeanjs/soybean-headless/commit/be3aede)
+- **drawer**:
+  - update DialogClose class binding for closable state &nbsp;-&nbsp; by @soybeanjs [<samp>(2958b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2958ba5)
+- **icon**:
+  - add style to prevent icon from shrinking &nbsp;-&nbsp; by @soybeanjs [<samp>(1db8e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1db8ef6)
+- **kbd**:
+  - change default element from 'kbd' to 'span' and update data attributes for styling &nbsp;-&nbsp; by @soybeanjs [<samp>(4acd9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4acd940)
+- **link**:
+  - update href handling to conditionally set based on Nuxt context for improved link behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(6c99e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6c99e72)
+  - remove unnecessary width utility from linkVariants base styles for cleaner implementation &nbsp;-&nbsp; by @soybeanjs [<samp>(cd211)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cd211e1)
+- **listbox**:
+  - update tabindex handling and improve keyboard navigation for vertical and horizontal orientations &nbsp;-&nbsp; by @soybeanjs [<samp>(15716)</samp>](https://github.com/soybeanjs/soybean-headless/commit/157167a)
+- **menu**:
+  - update filter logic to include only common slots &nbsp;-&nbsp; by @soybeanjs [<samp>(b4810)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b4810fe)
+  - bind separatorProps to MenuSeparator for improved functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(da975)</samp>](https://github.com/soybeanjs/soybean-headless/commit/da9753b)
+  - adjust content min-width in menu variants for better layout &nbsp;-&nbsp; by @soybeanjs [<samp>(50e8b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/50e8b15)
+- **merge**:
+  - update import path for ClassValue type from '@headless/types' to '@headless' &nbsp;-&nbsp; by @soybeanjs [<samp>(bd26e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bd26ebb)
+- **mergeSlotVariants**:
+  - update variant merging logic to call variant function without props, ensuring correct behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(e894f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e894fbb)
+- **navigation-menu**:
+  - remove unnecessary viewport-props from SNavigationMenu component &nbsp;-&nbsp; by @soybeanjs [<samp>(dda70)</samp>](https://github.com/soybeanjs/soybean-headless/commit/dda70aa)
+  - enhance click handling in navigation menu trigger and optimize viewport element updates &nbsp;-&nbsp; by @soybeanjs [<samp>(d300e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d300eca)
+  - handle undefined previousValue in computed motionAttribute for improved stability &nbsp;-&nbsp; by @soybeanjs [<samp>(286d9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/286d97c)
+  - set SCard scrollable prop to false for improved layout control &nbsp;-&nbsp; by @soybeanjs [<samp>(fe2c7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/fe2c702)
+  - fix NavigationMenuContentProps to extend from NavigationMenuContentImplProps &nbsp;-&nbsp; by @soybeanjs [<samp>(081fc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/081fc50)
+- **packages**:
+  - fix select styles &nbsp;-&nbsp; by @soybeanjs [<samp>(261fc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/261fcc7)
+- **popper**:
+  - enhance PopperAnchor to reactively update anchor element based on reference prop &nbsp;-&nbsp; by @soybeanjs [<samp>(e9548)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e95480d)
+- **projects**:
+  - prevent focus trap during arrow key navigation &nbsp;-&nbsp; by @soybeanjs [<samp>(edced)</samp>](https://github.com/soybeanjs/soybean-headless/commit/edced48)
+  - fix import json &nbsp;-&nbsp; by @soybeanjs [<samp>(60a6b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/60a6ba0)
+- **radio-group**:
+  - prevent click event when the control is disabled &nbsp;-&nbsp; by @soybeanjs [<samp>(d0937)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d0937b4)
+- **readme**:
+  - update AlertDialog status to completed in the component list &nbsp;-&nbsp; by @soybeanjs [<samp>(a789e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a789eca)
+  - update Arrow status to 'No Need' and Label status to 'Completed' in the component list &nbsp;-&nbsp; by @soybeanjs [<samp>(5b558)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5b5581d)
+  - update Drawer status to 'Completed' in the component list &nbsp;-&nbsp; by @soybeanjs [<samp>(59529)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5952971)
+- **roving-focus**:
+  - update context properties to use data attributes for improved accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(851ba)</samp>](https://github.com/soybeanjs/soybean-headless/commit/851ba7d)
+  - include highlighted item in candidate items for improved focus management &nbsp;-&nbsp; by @soybeanjs [<samp>(89baa)</samp>](https://github.com/soybeanjs/soybean-headless/commit/89baa0d)
+  - pass itemData to useCollectionItem for enhanced context handling &nbsp;-&nbsp; by @soybeanjs [<samp>(5d867)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5d8678a)
+  - fix data attributes to kebab-case &nbsp;-&nbsp; by @soybeanjs [<samp>(b81c2)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b81c260)
+- **select**:
+  - replace onBeforeUnmount with onUnmounted for proper lifecycle handling in select-item-text component &nbsp;-&nbsp; by @soybeanjs [<samp>(a4527)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a4527c7)
+  - extend SelectScrollButtonImplProps to include PrimitiveProps &nbsp;-&nbsp; by @soybeanjs [<samp>(2f080)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2f08059)
+- **switch**:
+  - update card title from 'Separator' to 'Switch' for clarity in the switch example &nbsp;-&nbsp; by @soybeanjs [<samp>(4c05d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4c05d6a)
+- **tag**:
+  - update default slot content to display 'content' prop for improved usability &nbsp;-&nbsp; by @soybeanjs [<samp>(b0273)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b0273b4)
+- **tree-item**:
+  - simplify itemData computation by changing from computed to direct object assignment &nbsp;-&nbsp; by @soybeanjs [<samp>(5b901)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5b90117)
+- **types**:
+  - fix ts types error &nbsp;-&nbsp; by @soybeanjs [<samp>(e444a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e444a45)
+  - update emit definition in radio-group component to include generic type parameters &nbsp;-&nbsp; by @soybeanjs [<samp>(8bc30)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8bc3075)
+  - fix unocss types &nbsp;-&nbsp; by @soybeanjs [<samp>(96d3f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/96d3faa)
+  - fix types &nbsp;-&nbsp; by @soybeanjs [<samp>(84e98)</samp>](https://github.com/soybeanjs/soybean-headless/commit/84e980f)
+  - export FormRegister interface for improved accessibility in form handling &nbsp;-&nbsp; by @soybeanjs [<samp>(2b80c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2b80c70)
+- **uno.config**:
+  - add TypeScript ignore comment for presetSoybeanUI to suppress type errors &nbsp;-&nbsp; by @soybeanjs [<samp>(873e9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/873e9a9)
+- **use-body-scroll-lock**:
+  - ensure body scroll lock height is set to auto for better layout handling &nbsp;-&nbsp; by @soybeanjs [<samp>(c81cf)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c81cf14)
+- **use-exposed-element**:
+  - ensure proper instance handling and reactivity for exposed elements in setup &nbsp;-&nbsp; by @soybeanjs [<samp>(78670)</samp>](https://github.com/soybeanjs/soybean-headless/commit/786705c)
+- **use-grace-area**:
+  - change type check from HTMLElement to Element for broader compatibility &nbsp;-&nbsp; by @soybeanjs [<samp>(65a54)</samp>](https://github.com/soybeanjs/soybean-headless/commit/65a54b1)
+- **use-presence**:
+  - escape animation name for accurate animation end detection &nbsp;-&nbsp; by @soybeanjs [<samp>(b81f0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b81f049)
+- **useHideOthers**:
+  - set default value of enabled parameter to true for improved usability &nbsp;-&nbsp; by @soybeanjs [<samp>(ba0ac)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ba0ac4e)
+- **visually-hidden**:
+  - adjust positioning styles for improved accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(662d5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/662d5a2)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **accordion**:
+  - optimize accordion with useSelection &nbsp;-&nbsp; by @soybeanjs [<samp>(220ac)</samp>](https://github.com/soybeanjs/soybean-headless/commit/220ac88)
+- **badge**:
+  - remove unused props and bind open state directly in BadgeRoot &nbsp;-&nbsp; by @soybeanjs [<samp>(3a105)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3a10546)
+- **checkbox, navigation-menu**:
+  - simplify modelValue update logic and remove unused props handling &nbsp;-&nbsp; by @soybeanjs [<samp>(194d3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/194d30b)
+- **command**:
+  - optimize command option data types &nbsp;-&nbsp; by @soybeanjs [<samp>(72fc7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/72fc77a)
+- **components**:
+  - optimize alert-dialog types &nbsp;-&nbsp; by @soybeanjs [<samp>(3a27f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3a27fc7)
+  - optimize input &nbsp;-&nbsp; by @soybeanjs [<samp>(5eac0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5eac0f7)
+  - optimize number-input &nbsp;-&nbsp; by @soybeanjs [<samp>(a4d12)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a4d126c)
+  - optimize input, number-input &nbsp;-&nbsp; by @soybeanjs [<samp>(38272)</samp>](https://github.com/soybeanjs/soybean-headless/commit/382727d)
+  - replace custom size context with unified size context from theme for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(13d79)</samp>](https://github.com/soybeanjs/soybean-headless/commit/13d7932)
+  - update imports to use Vue component files directly for improved clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(87249)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8724973)
+  - remove v-bind from templates and replace with specific props for improved clarity and performance &nbsp;-&nbsp; by @soybeanjs [<samp>(6ac59)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6ac591a)
+  - simplify icon rendering logic across multiple components &nbsp;-&nbsp; by @soybeanjs [<samp>(d9652)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d96522a)
+- **dialog**:
+  - update DialogClose component to use theme context and rename closeIcon to closable &nbsp;-&nbsp; by @soybeanjs [<samp>(82210)</samp>](https://github.com/soybeanjs/soybean-headless/commit/822109d)
+- **drawer**:
+  - update DialogClose slot name from closeIcon to close for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(c72e3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c72e3b7)
+- **dropdown-menu**:
+  - remove unnecessary Slot wrapper from dropdown menu trigger for cleaner markup &nbsp;-&nbsp; by @soybeanjs [<samp>(0d9f3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0d9f33d)
+- **example**:
+  - hide some examples &nbsp;-&nbsp; by @soybeanjs [<samp>(8e464)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8e46408)
+- **examples**:
+  - replace Arrow and AspectRatio components with SArrow and SAspectRatio for consistency in UI component usage &nbsp;-&nbsp; by @soybeanjs [<samp>(54ec9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/54ec9dd)
+- **layout**:
+  - rename theme variable to themeContext for consistency across layout components &nbsp;-&nbsp; by @soybeanjs [<samp>(270ed)</samp>](https://github.com/soybeanjs/soybean-headless/commit/270edee)
+- **listbox**:
+  - replace DefinedValue type with string for improved type consistency across listbox components &nbsp;-&nbsp; by @soybeanjs [<samp>(221af)</samp>](https://github.com/soybeanjs/soybean-headless/commit/221af18)
+- **packages**:
+  - optimize menu group-label style &nbsp;-&nbsp; by @soybeanjs [<samp>(fd93f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/fd93fc0)
+- **projects**:
+  - add @vueuse/core to replace use-element-size composable and related tests for simplification &nbsp;-&nbsp; by @soybeanjs [<samp>(7d97e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7d97e19)
+  - optimize radio style &nbsp;-&nbsp; by @soybeanjs [<samp>(f8d9b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f8d9bfb)
+  - optimize button style &nbsp;-&nbsp; by @soybeanjs [<samp>(79ef7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/79ef7b2)
+  - optimize menu & dropdown-menu &nbsp;-&nbsp; by @soybeanjs [<samp>(58138)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5813823)
+  - optimize components theme context &nbsp;-&nbsp; by @soybeanjs [<samp>(9be3e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9be3ebd)
+  - remove slot type from variants &nbsp;-&nbsp; by @soybeanjs [<samp>(4eccd)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4eccdf0)
+  - move cssVars to menu-content &nbsp;-&nbsp; by @soybeanjs [<samp>(12436)</samp>](https://github.com/soybeanjs/soybean-headless/commit/12436a9)
+  - optimize kbd &nbsp;-&nbsp; by @soybeanjs [<samp>(bc31c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bc31cc7)
+  - optimize themeContext class value &nbsp;-&nbsp; by @soybeanjs [<samp>(363e6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/363e6e6)
+- **select**:
+  - optimize select with useSelection &nbsp;-&nbsp; by @soybeanjs [<samp>(f813a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f813aa4)
+- **switch**:
+  - improve type handling in context and update aria-checked logic for better accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(22fcf)</samp>](https://github.com/soybeanjs/soybean-headless/commit/22fcf36)
+- **theme**:
+  - add theme size and color constants with transformation utility for options &nbsp;-&nbsp; by @soybeanjs [<samp>(4519c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4519cf0)
+- **tree**:
+  - remove v-auto-animate directive from Base and Virtualizer examples for cleaner implementation &nbsp;-&nbsp; by @soybeanjs [<samp>(5b391)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5b391d0)
+- **tree-menu**:
+  - enhance TreeMenuItem implementation with improved props handling and structure &nbsp;-&nbsp; by @soybeanjs [<samp>(c5d34)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c5d3423)
+  - update TreeMenuItem styles for improved accessibility and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(9c465)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9c46500)
+  - remove TreeMenuItemImpl component and integrate its functionality into TreeMenuItem for cleaner structure &nbsp;-&nbsp; by @soybeanjs [<samp>(60131)</samp>](https://github.com/soybeanjs/soybean-headless/commit/60131e5)
+- **types**:
+  - use AcceptableValue and AcceptableBooleanValue &nbsp;-&nbsp; by @soybeanjs [<samp>(47cc0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/47cc072)
+  - optimize headless types &nbsp;-&nbsp; by @soybeanjs [<samp>(a0127)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a01279c)
+  - optimize tabs export types &nbsp;-&nbsp; by @soybeanjs [<samp>(a9314)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a9314bb)
+  - optimize icon types &nbsp;-&nbsp; by @soybeanjs [<samp>(1ecdc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1ecdc89)
+- **ui**:
+  - rename exports for consistency and enhance visually-hidden component structure &nbsp;-&nbsp; by @soybeanjs [<samp>(e8277)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e827772)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- rename components to use 'S' prefix for consistency, replace deprecated components, and enhance examples with new structure &nbsp;-&nbsp; by @soybeanjs [<samp>(950a0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/950a0bf)
+- update component triggers to use 'as-child' for improved structure and consistency across examples &nbsp;-&nbsp; by @soybeanjs [<samp>(3a5b9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3a5b977)
+- **accordion**:
+  - update accordion context to use shallowRef for rootElement and improve direction handling &nbsp;-&nbsp; by @soybeanjs [<samp>(273cc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/273ccd8)
+  - simplify accordion component props by removing unnecessary type parameters and improving clarity in single/multiple handling &nbsp;-&nbsp; by @soybeanjs [<samp>(5d201)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5d2012c)
+  - rename toggleModelValue to onModelValueChange for improved clarity in value handling &nbsp;-&nbsp; by @soybeanjs [<samp>(f3161)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f316193)
+  - rename 'direction' to 'dir' for consistency in context handling &nbsp;-&nbsp; by @soybeanjs [<samp>(99efc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/99efcee)
+  - rename type AccordionItemData to AccordionOptionData &nbsp;-&nbsp; by @soybeanjs [<samp>(13ef9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/13ef95a)
+- **alert-dialog, dialog**:
+  - update slot bindings to use v-slot for improved flexibility and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(ed68c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ed68c34)
+- **arrow**:
+  - update default width and height props to use responsive units &nbsp;-&nbsp; by @soybeanjs [<samp>(26139)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2613954)
+- **button**:
+  - rename button components to use 'S' prefix, enhance ButtonGroup with default props for orientation and direction &nbsp;-&nbsp; by @soybeanjs [<samp>(5be48)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5be4863)
+  - consolidate button group and button icon variants into a single file, update imports, and enhance button icon class binding &nbsp;-&nbsp; by @soybeanjs [<samp>(b2fee)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b2feedf)
+- **button-group**:
+  - add RTL support to horizontal orientation variant for improved layout consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(79c18)</samp>](https://github.com/soybeanjs/soybean-headless/commit/79c18e4)
+  - update Props type definition to improve clarity and structure by using intersection types &nbsp;-&nbsp; by @soybeanjs [<samp>(34d73)</samp>](https://github.com/soybeanjs/soybean-headless/commit/34d73a8)
+- **card**:
+  - remove flexHeight prop and update cardVariants for cleaner implementation &nbsp;-&nbsp; by @soybeanjs [<samp>(41926)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4192636)
+- **checkbox**:
+  - update checkbox context and styling to use data-state attribute for improved state management &nbsp;-&nbsp; by @soybeanjs [<samp>(ca1b5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ca1b53b)
+  - move isIndeterminate function to shared utility and clean up imports &nbsp;-&nbsp; by @soybeanjs [<samp>(61449)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6144916)
+- **collapsible**:
+  - replace old collapsible component with new structure, update imports, and enhance theming support &nbsp;-&nbsp; by @soybeanjs [<samp>(e4b97)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e4b979d)
+- **components**:
+  - streamline component exports and enhance structure by integrating headless components across various modules &nbsp;-&nbsp; by @soybeanjs [<samp>(b67cc)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b67cc67)
+  - convert inline styles to static attributes for improved readability and performance &nbsp;-&nbsp; by @soybeanjs [<samp>(c9aaf)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c9aaf27)
+  - update import paths for shared utilities to improve consistency across checkbox and radio group components &nbsp;-&nbsp; by @soybeanjs [<samp>(67d8a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/67d8ab0)
+  - fix arrow style &nbsp;-&nbsp; by @soybeanjs [<samp>(0be75)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0be7536)
+  - rename FormFieldProps to FormFieldCommonProps &nbsp;-&nbsp; by @soybeanjs [<samp>(9e2be)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9e2bee8)
+  - rename Vue component files for consistency and update imports accordingly &nbsp;-&nbsp; by @soybeanjs [<samp>(abcd3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/abcd3bc)
+  - remove unused component imports and update component constants for clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(8522b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8522b5b)
+  - reintroduce vAutoAnimate directive in form-field and form-field-array components for enhanced animations &nbsp;-&nbsp; by @soybeanjs [<samp>(ee755)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ee7558a)
+- **composables**:
+  - replace default value logic and move validation functions to shared module &nbsp;-&nbsp; by @soybeanjs [<samp>(9e967)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9e96774)
+- **config-provider**:
+  - rename ConfigProvider to SConfigProvider, omit 'iconify' prop, and enhance default props handling &nbsp;-&nbsp; by @soybeanjs [<samp>(380f0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/380f074)
+- **dialog**:
+  - streamline dialog component structure by updating prop bindings and consolidating context imports &nbsp;-&nbsp; by @soybeanjs [<samp>(a4447)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a44472c)
+- **env**:
+  - remove Nuxt environment detection function to streamline code &nbsp;-&nbsp; by @soybeanjs [<samp>(3e89d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3e89d0d)
+- **examples**:
+  - update SCard components to remove unnecessary 'split' prop and enhance layout consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(08f1e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/08f1e93)
+  - update button group and popover layouts, remove unused separator example, and adjust tab and tooltip descriptions &nbsp;-&nbsp; by @soybeanjs [<samp>(1da50)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1da5007)
+- **icon**:
+  - rename Icon component to SIcon for consistency with naming conventions &nbsp;-&nbsp; by @soybeanjs [<samp>(f05a9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f05a943)
+  - remove default color prop for improved icon customization &nbsp;-&nbsp; by @soybeanjs [<samp>(47d42)</samp>](https://github.com/soybeanjs/soybean-headless/commit/47d42a3)
+  - enhance icon component to support IconifyIcon type and improve template logic &nbsp;-&nbsp; by @soybeanjs [<samp>(043aa)</samp>](https://github.com/soybeanjs/soybean-headless/commit/043aa56)
+- **imports**:
+  - update component imports to use '@headless' namespace for consistency across the project &nbsp;-&nbsp; by @soybeanjs [<samp>(160c8)</samp>](https://github.com/soybeanjs/soybean-headless/commit/160c879)
+- **index**:
+  - update exports to include specific theme types and alignments from theme and headless &nbsp;-&nbsp; by @soybeanjs [<samp>(00e01)</samp>](https://github.com/soybeanjs/soybean-headless/commit/00e0107)
+- **kbd**:
+  - replace iconization prop with symbolize and remove unused props handling for clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(509e1)</samp>](https://github.com/soybeanjs/soybean-headless/commit/509e106)
+- **link**:
+  - consolidate Nuxt and Router link components into a single Link component with dynamic resolution &nbsp;-&nbsp; by @soybeanjs [<samp>(5812f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5812f45)
+  - simplify forwarded props handling and update types for improved clarity and functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(b856a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b856adb)
+  - rename Link component to SLink for consistency with naming conventions &nbsp;-&nbsp; by @soybeanjs [<samp>(20057)</samp>](https://github.com/soybeanjs/soybean-headless/commit/20057e9)
+  - change LinkProps to use HTMLAttributes directly and update ButtonLinkProps to use type alias for clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(82304)</samp>](https://github.com/soybeanjs/soybean-headless/commit/8230447)
+- **menu**:
+  - move SELECTION_KEYS import to constants for better organization and consistency across components &nbsp;-&nbsp; by @soybeanjs [<samp>(a4d33)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a4d33ba)
+- **menu-content**:
+  - add TODO comment for future implementation of exposed element &nbsp;-&nbsp; by @soybeanjs [<samp>(a8241)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a8241a2)
+  - remove TODO comment regarding exposed element for cleaner code &nbsp;-&nbsp; by @soybeanjs [<samp>(c9c5e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c9c5e7b)
+- **navigation-menu**:
+  - refactor navigation menu structure by separating base and sub-list components, enhancing modularity and maintainability &nbsp;-&nbsp; by @soybeanjs [<samp>(66042)</samp>](https://github.com/soybeanjs/soybean-headless/commit/660428c)
+- **object**:
+  - remove jsonClone and cloneValue functions to simplify cloning logic &nbsp;-&nbsp; by @soybeanjs [<samp>(222e5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/222e59d)
+- **projects**:
+  - refactor example page &nbsp;-&nbsp; by @soybeanjs [<samp>(45624)</samp>](https://github.com/soybeanjs/soybean-headless/commit/45624da)
+- **roving-focus**:
+  - simplify ButtonGroup examples by removing redundant cards and enhancing layout with looping options &nbsp;-&nbsp; by @soybeanjs [<samp>(d8a3b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d8a3b13)
+- **select**:
+  - remove unused valueComparator and compare functions to streamline code &nbsp;-&nbsp; by @soybeanjs [<samp>(26eca)</samp>](https://github.com/soybeanjs/soybean-headless/commit/26ecace)
+- **selection**:
+  - replace use-single-or-multiple-value with use-selection for improved selection handling &nbsp;-&nbsp; by @soybeanjs [<samp>(cfec5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cfec51d)
+- **styles**:
+  - use static style &nbsp;-&nbsp; by @soybeanjs [<samp>(148cd)</samp>](https://github.com/soybeanjs/soybean-headless/commit/148cd86)
+- **tabs**:
+  - rename theme variable to themeContext for consistency across tab components &nbsp;-&nbsp; by @soybeanjs [<samp>(084e8)</samp>](https://github.com/soybeanjs/soybean-headless/commit/084e81a)
+- **tabs-indicator**:
+  - convert style definition to computed property for dynamic updates &nbsp;-&nbsp; by @soybeanjs [<samp>(bb86b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/bb86ba7)
+- **tooltip**:
+  - replace TooltipProvider with TooltipOpenDelayed context and enhance tooltip configuration management &nbsp;-&nbsp; by @soybeanjs [<samp>(0eda5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0eda5b4)
+- **tsdown.config**:
+  - streamline external dependencies array for improved readability &nbsp;-&nbsp; by @soybeanjs [<samp>(c7043)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c704360)
+- **types**:
+  - replace AcceptableValue with DefinedValue for improved type clarity across components &nbsp;-&nbsp; by @soybeanjs [<samp>(061ee)</samp>](https://github.com/soybeanjs/soybean-headless/commit/061eef2)
+  - rename components ThemeSlot &nbsp;-&nbsp; by @soybeanjs [<samp>(5d368)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5d3687d)
+- **use-collection**:
+  - change itemRegistry to a reactive ref for improved state management &nbsp;-&nbsp; by @soybeanjs [<samp>(46162)</samp>](https://github.com/soybeanjs/soybean-headless/commit/46162ac)
+- **use-grace-area**:
+  - update comments and documentation for clarity and consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(2f218)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2f218d3)
+- **useCollection**:
+  - rename and restructure item element registration for improved clarity and functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(fbf8c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/fbf8ccb)
+- **useSingleOrMultipleValue**:
+  - rename type handling to improve clarity and update logic for single/multiple value management &nbsp;-&nbsp; by @soybeanjs [<samp>(d3635)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d3635ff)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**:
+  - update component status for Kbd to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(475a6)</samp>](https://github.com/soybeanjs/soybean-headless/commit/475a6aa)
+  - update component status and add new completed components &nbsp;-&nbsp; by @soybeanjs [<samp>(ad0b5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/ad0b549)
+  - update component status summary and remove unnecessary symbols &nbsp;-&nbsp; by @soybeanjs [<samp>(1f63a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1f63aa2)
+  - update component completion status for Layout &nbsp;-&nbsp; by @soybeanjs [<samp>(f2303)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f2303b6)
+- **migration**:
+  - add migration guide for transitioning old code &nbsp;-&nbsp; by @soybeanjs [<samp>(279b1)</samp>](https://github.com/soybeanjs/soybean-headless/commit/279b1f0)
+- **projects**:
+  - update Roadmap &nbsp;-&nbsp; by @soybeanjs [<samp>(dfc9a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/dfc9adf)
+  - update README &nbsp;-&nbsp; by @soybeanjs [<samp>(11153)</samp>](https://github.com/soybeanjs/soybean-headless/commit/111537e)
+  - update README &nbsp;-&nbsp; by @soybeanjs [<samp>(e40c9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e40c9ef)
+  - update guide docs for cursor &nbsp;-&nbsp; by @soybeanjs [<samp>(5ea4c)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5ea4c59)
+- **readme**:
+  - update Divider component status to '✅ Completed' and clarify its role as a separator &nbsp;-&nbsp; by @soybeanjs [<samp>(577a3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/577a38f)
+  - update Switch component description to remove redundant information and clarify its status &nbsp;-&nbsp; by @soybeanjs [<samp>(72187)</samp>](https://github.com/soybeanjs/soybean-headless/commit/7218724)
+  - update component status to reflect completion of Pagination component &nbsp;-&nbsp; by @soybeanjs [<samp>(c970a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c970a28)
+  - update component status table for clarity and add notes on loading support, checkbox card, and iconify integration &nbsp;-&nbsp; by @soybeanjs [<samp>(25502)</samp>](https://github.com/soybeanjs/soybean-headless/commit/25502fe)
+  - update Alert component status to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(17852)</samp>](https://github.com/soybeanjs/soybean-headless/commit/17852e0)
+  - update Badge component status to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(0d372)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0d372d4)
+  - update Tag component status to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(00a82)</samp>](https://github.com/soybeanjs/soybean-headless/commit/00a8210)
+  - update List component status to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(eeaf0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/eeaf08d)
+  - update TreeMenu status to completed in README &nbsp;-&nbsp; by @soybeanjs [<samp>(9bfe4)</samp>](https://github.com/soybeanjs/soybean-headless/commit/9bfe4d1)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(3c011)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3c01116)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(b077d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/b077dbd)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(0eed3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0eed311)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c2a53)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c2a5363)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(877c5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/877c51f)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(5f920)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5f920d4)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d22e0)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d22e0a2)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(2c53e)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2c53efa)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(cff8b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cff8b5f)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d8b25)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d8b2518)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(03728)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0372815)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(740ce)</samp>](https://github.com/soybeanjs/soybean-headless/commit/740cee8)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(2b957)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2b95709)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(a8923)</samp>](https://github.com/soybeanjs/soybean-headless/commit/a892301)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(f1544)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f15449f)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(775bf)</samp>](https://github.com/soybeanjs/soybean-headless/commit/775bfa2)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(920f3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/920f3bb)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(87b53)</samp>](https://github.com/soybeanjs/soybean-headless/commit/87b53e6)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(e0a0f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/e0a0f3a)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(0acfd)</samp>](https://github.com/soybeanjs/soybean-headless/commit/0acfdd0)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(81920)</samp>](https://github.com/soybeanjs/soybean-headless/commit/81920a5)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4f600)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4f600cc)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(d84a9)</samp>](https://github.com/soybeanjs/soybean-headless/commit/d84a966)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c9717)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c9717c9)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(16318)</samp>](https://github.com/soybeanjs/soybean-headless/commit/16318f7)
+- **eslint**:
+  - disable additional ESLint rules for TypeScript and Vue &nbsp;-&nbsp; by @soybeanjs [<samp>(47c00)</samp>](https://github.com/soybeanjs/soybean-headless/commit/47c0026)
+- **nuxt**:
+  - configure Nuxt setup and update project dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(3434f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3434f0a)
+  - update Nuxt configuration to include Unocss module and reset CSS, and bump @types/node version &nbsp;-&nbsp; by @soybeanjs [<samp>(3c7ae)</samp>](https://github.com/soybeanjs/soybean-headless/commit/3c7aecb)
+- **package**:
+  - update deploy script and modify wrangler configuration for pages deployment &nbsp;-&nbsp; by @soybeanjs [<samp>(817e5)</samp>](https://github.com/soybeanjs/soybean-headless/commit/817e51d)
+  - update scripts for Nuxt generation and prepare step &nbsp;-&nbsp; by @soybeanjs [<samp>(23626)</samp>](https://github.com/soybeanjs/soybean-headless/commit/23626b7)
+  - remove nuxt:gen from prepare script in package.json &nbsp;-&nbsp; by @soybeanjs [<samp>(6d051)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6d0515c)
+  - update homepage and repository URLs to reflect new GitHub organization &nbsp;-&nbsp; by @soybeanjs [<samp>(c7b95)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c7b95cc)
+- **projects**:
+  - update tsconfig &nbsp;-&nbsp; by @soybeanjs [<samp>(5730f)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5730f1d)
+  - update eslint config &nbsp;-&nbsp; by @soybeanjs [<samp>(496d7)</samp>](https://github.com/soybeanjs/soybean-headless/commit/496d74c)
+  - remove wrangler &nbsp;-&nbsp; by @soybeanjs [<samp>(6c3a3)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6c3a39c)
+  - update vscode settings &nbsp;-&nbsp; by @soybeanjs [<samp>(24683)</samp>](https://github.com/soybeanjs/soybean-headless/commit/24683cb)
+- **readme**:
+  - update component status for Segment and Tabs to 'Completed' &nbsp;-&nbsp; by @soybeanjs [<samp>(01a52)</samp>](https://github.com/soybeanjs/soybean-headless/commit/01a52c4)
+  - update component status for Popover and Tooltip to reflect completion &nbsp;-&nbsp; by @soybeanjs [<samp>(cbf0b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/cbf0b1e)
+  - update component status for Avatar, Checkbox, and RadioGroup to reflect completion &nbsp;-&nbsp; by @soybeanjs [<samp>(11174)</samp>](https://github.com/soybeanjs/soybean-headless/commit/111748d)
+  - update component status and notes for various components including Checkbox, Progress, and Calendar &nbsp;-&nbsp; by @soybeanjs [<samp>(78a98)</samp>](https://github.com/soybeanjs/soybean-headless/commit/78a9826)
+  - correct total component count and remove CheckboxCard and RadioCard from the list &nbsp;-&nbsp; by @soybeanjs [<samp>(f5328)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f5328f0)
+  - update total component count to reflect removal of Viewport component &nbsp;-&nbsp; by @soybeanjs [<samp>(67825)</samp>](https://github.com/soybeanjs/soybean-headless/commit/6782551)
+  - update Switch component status to '✅ Completed' and add note for switch card support &nbsp;-&nbsp; by @soybeanjs [<samp>(f2b10)</samp>](https://github.com/soybeanjs/soybean-headless/commit/f2b1077)
+  - update component status and add new components to the documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(5fb19)</samp>](https://github.com/soybeanjs/soybean-headless/commit/5fb19c9)
+  - update component status for Tree to completed &nbsp;-&nbsp; by @soybeanjs [<samp>(1442a)</samp>](https://github.com/soybeanjs/soybean-headless/commit/1442a00)
+  - update component status and enhance descriptions for clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(c1250)</samp>](https://github.com/soybeanjs/soybean-headless/commit/c1250a1)
+- **tsconfig**:
+  - add noUncheckedIndexedAccess option to compilerOptions &nbsp;-&nbsp; by @soybeanjs [<samp>(4dd8b)</samp>](https://github.com/soybeanjs/soybean-headless/commit/4dd8b9e)
+- **tsdown**:
+  - add Nuxt dependencies to external configuration &nbsp;-&nbsp; by @soybeanjs [<samp>(53e79)</samp>](https://github.com/soybeanjs/soybean-headless/commit/53e7976)
+- **vscode**:
+  - add markdown support to editor settings &nbsp;-&nbsp; by @soybeanjs [<samp>(58aec)</samp>](https://github.com/soybeanjs/soybean-headless/commit/58aeccd)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **home**: adjust spacing in header and update button icon size for better alignment &nbsp;-&nbsp; by @soybeanjs [<samp>(56a9d)</samp>](https://github.com/soybeanjs/soybean-headless/commit/56a9d64)
+- **projects**: update file style &nbsp;-&nbsp; by @soybeanjs [<samp>(2cd18)</samp>](https://github.com/soybeanjs/soybean-headless/commit/2cd188d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-alpha.5](https://github.com/soybean-ui/soybean-headless/compare/v0.0.1-alpha.4...v0.0.1-alpha.5) (2025-06-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
