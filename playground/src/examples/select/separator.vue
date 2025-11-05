@@ -4,7 +4,7 @@ import type { SelectOptionData } from '@ui';
 
 const fruits = ['apple', 'banana', 'cherry', 'orange', 'pear', 'plum', 'strawberry', 'watermelon'];
 
-const items: SelectOptionData<string>[] = fruits.map(fruit => ({
+const items: SelectOptionData[] = fruits.map(fruit => ({
   label: fruit,
   value: fruit,
   separator: fruit === 'cherry'

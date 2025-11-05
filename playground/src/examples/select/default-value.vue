@@ -2,11 +2,9 @@
 import { SCard, SSelect } from '@ui';
 import type { SelectOptionData } from '@ui';
 
-const fruits = ['apple', 'banana', 'cherry', 'orange', 'pear', 'plum', 'strawberry', 'watermelon'] as const;
+const fruits = ['apple', 'banana', 'cherry', 'orange', 'pear', 'plum', 'strawberry', 'watermelon'];
 
-type Fruit = (typeof fruits)[number];
-
-const items: SelectOptionData<Fruit>[] = fruits.map(fruit => ({
+const items: SelectOptionData<string>[] = fruits.map(fruit => ({
   label: fruit,
   value: fruit
 }));

@@ -1,7 +1,7 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts" generic="T extends DefinedValue">
+import { useAttrs } from 'vue';
 import { SelectItem, SelectItemIndicator, SelectItemText, SelectSeparator } from '@headless';
 import type { DefinedValue } from '@headless';
-import { useOmitProps } from '@headless/composables';
 import Icon from '../icon/icon.vue';
 import type { SelectSingleOptionEmits, SelectSingleOptionProps } from './types';
 
@@ -10,20 +10,20 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<SelectSingleOptionProps<T>>();
+defineProps<SelectSingleOptionProps<T>>();
 
 const emit = defineEmits<SelectSingleOptionEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['item', 'itemTextProps', 'itemIndicatorProps', 'separatorProps']);
+const attrs = useAttrs();
 </script>
 
 <template>
   <SelectItem
-    v-bind="forwardedProps"
+    v-bind="attrs"
     :value="item.value"
     :text-value="item.textValue"
     :disabled="item.disabled"
-    @select="emit('select', $event)"
+    @select="emit('select', $event as any)"
   >
     <slot name="item-leading">
       <Icon v-if="item.icon" :icon="item.icon" />

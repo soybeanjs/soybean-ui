@@ -1,5 +1,5 @@
 import { isNullish } from '../../shared';
-import type { SingleOrMultipleValue } from '../../types';
+import type { DefinedValue, MaybeArray } from '../../types';
 
 export const selectCssVars = {
   contentTransformOrigin: '--soybean-select-content-transform-origin',
@@ -15,6 +15,6 @@ export const CONTENT_MARGIN = 10;
 
 export const SELECT_EVENT = 'select.select';
 
-export function shouldShowPlaceholder(value?: SingleOrMultipleValue): boolean {
+export function shouldShowPlaceholder(value?: MaybeArray<DefinedValue> | undefined): boolean {
   return isNullish(value) || value === '' || (Array.isArray(value) && value.length === 0);
 }

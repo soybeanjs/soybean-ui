@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends SingleOrMultipleValue, M extends boolean">
+<script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
-import { useControllableState, useSingleOrMultipleValue } from '../../composables';
+import { useControllableState, useSelection } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
-import type { SingleOrMultipleValue } from '../../types';
+import type { DefinedValue } from '../../types';
 import { PopperRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';
 import BubbleSelect from './bubble-select.vue';
@@ -18,25 +18,16 @@ const props = withDefaults(defineProps<SelectRootProps<T, M>>(), {
   open: undefined
 });
 
-const emit = defineEmits<SelectRootEmits<T>>();
+const emit = defineEmits<SelectRootEmits<T, M>>();
 
-type Slots = {
-  default: (props: { modelValue: T | undefined; open: boolean }) => any;
-};
-
-defineSlots<Slots>();
-
-const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSingleOrMultipleValue<
-  SelectRootProps<T, M>
->(props, value => {
-  emit('update:modelValue', value as NonNullable<T>);
+const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSelection(props, value => {
+  emit('update:modelValue', value);
 });
 
 const open = useControllableState(
   () => props.open,
   value => {
-    if (isNullish(value)) return;
-    emit('update:open', value);
+    emit('update:open', value!);
   },
   props.defaultOpen
 );
@@ -45,6 +36,7 @@ const { triggerElement, options, nativeSelectKey } = provideSelectRootContext({
   ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required']),
   open,
   modelValue,
+  // @ts-expect-error ignore type
   onModelValueChange,
   isMultiple,
   isEmptyModelValue

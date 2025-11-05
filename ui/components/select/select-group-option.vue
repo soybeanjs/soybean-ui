@@ -1,31 +1,20 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts" generic="T extends DefinedValue">
 import { SelectGroup, SelectGroupLabel, SelectSeparator } from '@headless';
 import type { DefinedValue } from '@headless';
-import { useOmitProps } from '@headless/composables';
 import SSelectSingleOption from './select-single-option.vue';
 import type { SelectGroupOptionEmits, SelectGroupOptionProps } from './types';
 
 defineOptions({
-  name: 'SSelectGroupOption',
-  inheritAttrs: false
+  name: 'SSelectGroupOption'
 });
 
-const props = defineProps<SelectGroupOptionProps<T>>();
+defineProps<SelectGroupOptionProps<T>>();
 
 const emit = defineEmits<SelectGroupOptionEmits<T>>();
-
-const forwardedProps = useOmitProps(props, [
-  'item',
-  'groupLabelProps',
-  'itemProps',
-  'itemTextProps',
-  'itemIndicatorProps',
-  'separatorProps'
-]);
 </script>
 
 <template>
-  <SelectGroup v-bind="forwardedProps">
+  <SelectGroup>
     <SelectGroupLabel v-bind="groupLabelProps">
       <slot name="group-label">{{ item.label }}</slot>
     </SelectGroupLabel>

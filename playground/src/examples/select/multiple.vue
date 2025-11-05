@@ -6,7 +6,7 @@ const fruits = ['apple', 'banana', 'cherry', 'orange', 'pear', 'plum', 'strawber
 
 const vegetables = ['carrot', 'potato', 'onion', 'garlic', 'tomato', 'lettuce', 'broccoli', 'cauliflower'];
 
-const groups: SelectOptionData<string>[] = [
+const groups: SelectOptionData[] = [
   {
     label: 'Fruits',
     items: fruits.map(fruit => ({ label: fruit, value: fruit }))

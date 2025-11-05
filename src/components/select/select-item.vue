@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed, nextTick, shallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
 import {
@@ -24,9 +24,9 @@ defineOptions({
   name: 'SelectItem'
 });
 
-const props = defineProps<SelectItemProps<T>>();
+const props = defineProps<SelectItemProps>();
 
-const emit = defineEmits<SelectItemEmits<T>>();
+const emit = defineEmits<SelectItemEmits>();
 
 const { modelValue, onModelValueChange, onOpenChange, isMultiple } = useSelectRootContext('SelectItem');
 
@@ -69,7 +69,7 @@ async function onCustomSelect(event: PointerEvent | KeyboardEvent) {
   handleAndDispatchCustomEvent(SELECT_EVENT, onSelect, eventDetail);
 }
 
-async function onSelect(event: SelectItemEvent<T>) {
+async function onSelect(event: SelectItemEvent<DefinedValue>) {
   await nextTick();
   emit('select', event);
   if (event.defaultPrevented) return;
@@ -132,6 +132,8 @@ if (props.value === '') {
   <Primitive
     v-bind="itemProps"
     :ref="setItemElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :aria-disabled="disabled || undefined"
     :data-highlighted="isFocused ? '' : undefined"

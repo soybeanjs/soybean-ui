@@ -1,24 +1,23 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref, ShallowRef } from 'vue';
+import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  AcceptableValue,
   ClassValue,
   DefinedValue,
   Direction,
   ForceMountProps,
   FormFieldCommonProps,
+  MaybeArray,
   PointerDownOutsideEvent,
   PropsToContext,
-  SingleOrMultipleEmits,
-  SingleOrMultipleProps,
-  SingleOrMultipleValue
+  SelectionEmits,
+  SelectionProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperContentEmits, PopperContentProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
 
 // SelectRoot
-export interface SelectRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
-  extends SingleOrMultipleProps<T, M>,
+export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
+  extends SelectionProps<M, T>,
     FormFieldCommonProps {
   /** The controlled open state of the Select. Can be bind as `v-model:open`. */
   open?: boolean;
@@ -35,13 +34,13 @@ export interface SelectRootProps<T extends SingleOrMultipleValue = SingleOrMulti
   disabled?: boolean;
 }
 
-export type SelectRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SingleOrMultipleEmits<T> & {
+export type SelectRootEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectionEmits<M, T> & {
   /** Event handler called when the open state of the context menu changes. */
   'update:open': [value: boolean];
 };
 
-export interface SelectOption<T = any> {
-  value: T;
+export interface SelectOption {
+  value: DefinedValue;
   disabled?: boolean;
   textContent: string;
 }
@@ -116,10 +115,9 @@ export interface SelectTriggerProps extends PopperAnchorProps {
 export interface SelectTriggerIconProps extends /** @vue-ignore */ HTMLAttributes {}
 
 // SelectItem
-export interface SelectItemProps<T extends DefinedValue = DefinedValue>
-  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+export interface SelectItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
-  value: T;
+  value: DefinedValue;
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
   /**
@@ -189,10 +187,10 @@ export interface BubbleSelectProps {
 export interface SelectRootContextParams
   extends PropsToContext<SelectRootProps, 'dir' | 'autocomplete' | 'disabled' | 'required'> {
   open: ShallowRef<boolean | undefined>;
-  modelValue: Ref<AcceptableValue | DefinedValue[]>;
+  modelValue: ShallowRef<MaybeArray<DefinedValue> | undefined>;
   onModelValueChange: (value: DefinedValue) => void;
-  isMultiple: ShallowRef<boolean>;
-  isEmptyModelValue: ShallowRef<boolean>;
+  isMultiple: ComputedRef<boolean>;
+  isEmptyModelValue: ComputedRef<boolean>;
 }
 
 export interface SelectContentContextParams
@@ -207,10 +205,9 @@ export interface SelectItemAlignedPositionContextParams {
   onScrollButtonChange: (node: HTMLElement | undefined) => void;
 }
 
-export interface SelectItemContextParams<T extends DefinedValue = DefinedValue>
-  extends PropsToContext<SelectItemProps<T>, 'textValue' | 'disabled'> {
-  value: T;
-  isSelected: ShallowRef<boolean>;
+export interface SelectItemContextParams extends PropsToContext<SelectItemProps, 'textValue' | 'disabled'> {
+  value: DefinedValue;
+  isSelected: ComputedRef<boolean>;
 }
 
 export interface SelectItemCollectionItemData {

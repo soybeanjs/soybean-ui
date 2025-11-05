@@ -1,7 +1,7 @@
+import type { HTMLAttributes } from 'vue';
 import type {
   ClassValue,
   DefinedValue,
-  GetSingleValue,
   SelectArrowProps,
   SelectContentEmits,
   SelectContentProps,
@@ -21,14 +21,14 @@ import type {
   SelectTriggerIconProps,
   SelectTriggerProps,
   SelectValueProps,
-  SelectViewportProps,
-  SingleOrMultipleValue
+  SelectViewportProps
 } from '@headless';
 import type { ThemeSize } from '@theme';
 import type { IconValue } from '../icon/types';
 
 export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue>
-  extends Pick<SelectItemProps<T>, 'value' | 'disabled' | 'textValue'> {
+  extends Pick<SelectItemProps, 'disabled' | 'textValue'> {
+  value: T;
   /**
    * The icon of the dropdown item.
    *
@@ -42,7 +42,7 @@ export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue>
 }
 
 export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue>
-  extends Pick<SelectSingleOptionData, 'separator' | 'label'> {
+  extends Pick<SelectSingleOptionData<T>, 'separator' | 'label'> {
   items: SelectSingleOptionData<T>[];
 }
 
@@ -50,7 +50,8 @@ export type SelectOptionData<T extends DefinedValue = DefinedValue> =
   | SelectSingleOptionData<T>
   | SelectGroupOptionData<T>;
 
-export interface SelectSingleOptionProps<T extends DefinedValue = DefinedValue> extends SelectItemProps<T> {
+export interface SelectSingleOptionProps<T extends DefinedValue = DefinedValue>
+  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   item: SelectSingleOptionData<T>;
   itemTextProps?: SelectItemTextProps;
   itemIndicatorProps?: SelectItemIndicatorProps;
@@ -70,7 +71,8 @@ export interface SelectGroupOptionProps<T extends DefinedValue = DefinedValue> e
 
 export type SelectGroupOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
 
-export interface SelectOptionProps<T extends DefinedValue = DefinedValue> {
+export interface SelectOptionProps<T extends DefinedValue = DefinedValue>
+  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   item: SelectOptionData<T>;
   groupProps?: SelectGroupProps;
   groupLabelProps?: SelectGroupLabelProps;
@@ -85,9 +87,9 @@ export type SelectOptionEmits<T extends DefinedValue = DefinedValue> = SelectIte
 export type SelectUi = Partial<Record<SelectThemeSlot, ClassValue>>;
 
 export interface SelectProps<
-  T extends SingleOrMultipleValue = SingleOrMultipleValue,
-  S extends SelectOptionData<GetSingleValue<T>> = SelectOptionData<GetSingleValue<T>>,
-  M extends boolean = false
+  T extends DefinedValue = DefinedValue,
+  M extends boolean = false,
+  S extends SelectOptionData<T> = SelectOptionData<T>
 > extends SelectRootProps<T, M> {
   ui?: SelectUi;
   size?: ThemeSize;
@@ -110,6 +112,6 @@ export interface SelectProps<
   arrowProps?: SelectArrowProps;
 }
 
-export type SelectEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SelectRootEmits<T> &
+export type SelectEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectRootEmits<T, M> &
   SelectContentEmits &
-  SelectOptionEmits<GetSingleValue<T>>;
+  SelectOptionEmits<T>;
