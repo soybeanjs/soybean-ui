@@ -6,7 +6,7 @@ import type { SwitchRootContextParams, SwitchThemeContextParams } from './types'
 
 export const [provideSwitchRootContext, useSwitchRootContext] = useContext(
   'SwitchRoot',
-  <T extends AcceptableBooleanValue = boolean>(params: SwitchRootContextParams<T>) => {
+  <T extends AcceptableBooleanValue>(params: SwitchRootContextParams<T>) => {
     const { modelValue, disabled, trueValue, falseValue } = params;
 
     function toggleCheck() {

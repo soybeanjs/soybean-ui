@@ -29,7 +29,7 @@ const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, at
     :id="id"
     :ref="setControlElement"
     :class="cls"
-    :aria-checked="modelValue"
+    :aria-checked="dataState === 'checked'"
     :aria-label="ariaLabel"
     :aria-required="required"
     :data-disabled="dataDisabled"

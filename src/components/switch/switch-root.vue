@@ -29,8 +29,6 @@ const cls = computed(() => themeContext?.ui?.value?.root);
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (isNullish(value)) return;
-
     emit('update:modelValue', value as NonNullable<T>);
   },
   props.defaultValue
@@ -48,7 +46,6 @@ checkSwitchValue();
 
 const { dataState } = provideSwitchRootContext({
   ...transformPropsToContext(props, ['modelValue', 'disabled', 'required', 'trueValue', 'falseValue']),
-  // @ts-expect-error ignore type
   modelValue
 });
 </script>
