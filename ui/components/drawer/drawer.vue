@@ -11,13 +11,12 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
-  Slot,
   provideDialogThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@theme';
 import { dialogVariants } from '@variants/dialog';
-import { drawerContentVariants } from '@variants/drawer';
+import { drawerContentVariants, drawerScrollableVariants } from '@variants/drawer';
 import ButtonIcon from '../button/button-icon.vue';
 import type { DrawerEmits, DrawerProps } from './types';
 
@@ -29,7 +28,8 @@ const props = withDefaults(defineProps<DrawerProps>(), {
   open: undefined,
   defaultOpen: false,
   modal: true,
-  closable: true
+  closable: true,
+  scrollable: true
 });
 
 const forwardedProps = useOmitProps(props, [
@@ -67,7 +67,18 @@ const ui = computed(() => {
 
   variants.content = () => content;
 
-  return mergeSlotVariants(variants, props.ui);
+  const scrollable = () =>
+    drawerScrollableVariants({
+      scrollable: props.scrollable
+    });
+
+  return mergeSlotVariants(
+    {
+      ...variants,
+      scrollable
+    },
+    props.ui
+  );
 });
 
 provideDialogThemeContext({
@@ -98,9 +109,9 @@ provideSizeContext(() => props.size);
             </slot>
           </DialogClose>
         </DialogHeader>
-        <Slot class="flex-grow overflow-auto">
+        <div :class="ui.scrollable">
           <slot v-bind="slotProps" />
-        </Slot>
+        </div>
         <DialogFooter v-if="slots.footer" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps" />
         </DialogFooter>
