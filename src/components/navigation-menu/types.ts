@@ -77,7 +77,7 @@ export interface NavigationMenuViewportProps extends ForceMountProps, /** @vue-i
 export interface NavigationMenuContentImplProps extends DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
 export type NavigationMenuContentImplEmits = DismissableLayerEmits;
 
-export interface NavigationMenuContentProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export interface NavigationMenuContentProps extends NavigationMenuContentImplProps, ForceMountProps {}
 export type NavigationMenuContentEmits = NavigationMenuContentImplEmits;
 
 export interface NavigationMenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
