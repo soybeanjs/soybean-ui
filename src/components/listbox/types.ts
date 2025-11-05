@@ -1,23 +1,22 @@
-import type { ComputedRef, HTMLAttributes, WritableComputedRef } from 'vue';
+import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import type {
   ClassValue,
   DataOrientation,
-  DefinedValue,
   Direction,
   FormFieldCommonProps,
-  GetSingleValue,
+  MaybeArray,
   PropsToContext,
   SelectEvent,
-  SingleOrMultipleProps,
-  SingleOrMultipleValue
+  SelectionEmits,
+  SelectionProps
 } from '../../types';
 import type { CollectionItemData } from '../../composables';
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
-export interface ListboxRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M extends boolean = false>
-  extends SingleOrMultipleProps<T, M>,
+export interface ListboxRootProps<M extends boolean = false>
+  extends SelectionProps<M>,
     FormFieldCommonProps,
     /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
@@ -39,30 +38,27 @@ export interface ListboxRootProps<T extends SingleOrMultipleValue = SingleOrMult
   highlightOnHover?: boolean;
 }
 
-export type ListboxCollectionItemData<T = any> = { value: T };
+export type ListboxCollectionItemData = { value: string };
 
-export type ListboxRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = {
-  'update:modelValue': [value: T];
+export type ListboxRootEmits<M extends boolean = false> = SelectionEmits<M> & {
   /** Event handler when highlighted element changes. */
-  highlight: [payload?: CollectionItemData<ListboxCollectionItemData<GetSingleValue<T>>>];
+  highlight: [payload?: CollectionItemData<ListboxCollectionItemData>];
   /** Event handler called when container is being focused. Can be prevented. */
   entryFocus: [event: CustomEvent];
   /** Event handler called when the mouse leave the container */
   leave: [event: Event];
 };
 
-export interface ListboxItemProps<T = DefinedValue>
-  extends PrimitiveProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
+export interface ListboxItemProps extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   /** The value given as data when submitted with a `name`. */
-  value: T;
+  value: string;
   /** When `true`, prevents the user from interacting with the item. */
   disabled?: boolean;
 }
 
-export type ListboxItemEmits<T = DefinedValue> = {
+export type ListboxItemEmits = {
   /** Event handler called when the selecting item. <br> It can be prevented by calling `event.preventDefault`. */
-  select: [event: SelectEvent<T>];
+  select: [event: SelectEvent<string>];
 };
 
 export interface ListboxItemIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
@@ -88,33 +84,33 @@ export type ListboxFilterEmits = InputRootEmits;
 
 export interface ListboxContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface ListboxVirtualizerProps<T extends DefinedValue = DefinedValue> {
+export interface ListboxVirtualizerProps {
   /** List of items */
-  options: T[];
+  options: string[];
   /** Number of items rendered outside the visible area */
   overscan?: number;
   /** Estimated size (in px) of each item */
   estimateSize?: number;
   /** Text content for each item to achieve type-ahead feature */
-  textContent?: (option: T) => string;
+  textContent?: (option: string) => string;
 }
 
-export type ListboxVirtualizerSlotsProps<T extends DefinedValue = DefinedValue> = {
-  option: T;
+export type ListboxVirtualizerSlotsProps = {
+  option: string;
   virtualizer: Virtualizer<HTMLElement, Element>;
   virtualItem: VirtualItem;
 };
 
-export type ListboxVirtualizerSlots<T extends DefinedValue = DefinedValue> = {
-  default: (props: ListboxVirtualizerSlotsProps<T>) => any;
+export type ListboxVirtualizerSlots = {
+  default: (props: ListboxVirtualizerSlotsProps) => any;
 };
 
 export interface ListboxRootContextParams
   extends PropsToContext<
     ListboxRootProps,
-    'dir' | 'orientation' | 'disabled' | 'multiple' | 'highlightOnHover' | 'selectionBehavior'
+    'dir' | 'orientation' | 'disabled' | 'highlightOnHover' | 'selectionBehavior'
   > {
-  modelValue: WritableComputedRef<SingleOrMultipleValue>;
+  modelValue: ShallowRef<MaybeArray<string> | undefined>;
   isMultiple: ComputedRef<boolean>;
   onHighlight: (item: CollectionItemData<ListboxCollectionItemData> | undefined) => void;
   onEntryFocus: (event: CustomEvent<unknown>) => void;

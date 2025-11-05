@@ -1,8 +1,8 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useOmitProps } from '../../composables';
 import { handleAndDispatchCustomEvent, isEqual } from '../../shared';
-import type { DefinedValue, SelectEvent } from '../../types';
+import type { SelectEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxThemeContext } from './context';
 import type { ListboxItemEmits, ListboxItemProps } from './types';
@@ -11,11 +11,11 @@ defineOptions({
   name: 'ListboxItem'
 });
 
-const props = withDefaults(defineProps<ListboxItemProps<T>>(), {
+const props = withDefaults(defineProps<ListboxItemProps>(), {
   as: 'div'
 });
 
-const emit = defineEmits<ListboxItemEmits<T>>();
+const emit = defineEmits<ListboxItemEmits>();
 
 const themeContext = useListboxThemeContext();
 
@@ -46,7 +46,7 @@ const tabindex = computed(() => {
   return isHighlighted.value ? '0' : '-1';
 });
 
-const handleSelect = async (event: SelectEvent<T>) => {
+const handleSelect = async (event: SelectEvent<string>) => {
   emit('select', event);
   if (event?.defaultPrevented) return;
   if (disabled.value || !event) return;
@@ -57,7 +57,7 @@ const handleSelect = async (event: SelectEvent<T>) => {
 };
 
 const onSelectCustomEvent = (ev: PointerEvent) => {
-  const eventDetail = { originalEvent: ev, value: props.value as T };
+  const eventDetail = { originalEvent: ev, value: props.value };
   handleAndDispatchCustomEvent('listbox.select', handleSelect, eventDetail);
 };
 

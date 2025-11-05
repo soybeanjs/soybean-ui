@@ -2,7 +2,6 @@ import { computed, nextTick, shallowRef, useId } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useCollection, useContext, useDirection, useForwardElement, useTypeahead } from '../../composables';
 import { findValuesBetween, getFocusIntent, isEqual } from '../../shared';
-import type { DefinedValue } from '../../types';
 import { provideInputThemeContext } from '../input/context';
 import type {
   ListboxCollectionItemData,
@@ -23,7 +22,7 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
     const { modelValue, orientation, selectionBehavior, isMultiple, onHighlight, onEntryFocus } = params;
     const dir = useDirection(params.dir);
 
-    const firstValue = shallowRef<DefinedValue>();
+    const firstValue = shallowRef<string>();
     const isUserAction = shallowRef(false);
     const focusable = shallowRef(true);
     const highlightedElement = shallowRef<HTMLElement | null>(null);
@@ -32,9 +31,9 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
     const isComposing = shallowRef(false);
     const virtualFocusHook = createEventHook<Event | null | undefined>();
     const virtualKeydownHook = createEventHook<KeyboardEvent>();
-    const virtualHighlightHook = createEventHook<DefinedValue>();
+    const virtualHighlightHook = createEventHook<string>();
 
-    const onModelValueChange = (value: DefinedValue) => {
+    const onModelValueChange = (value: string) => {
       isUserAction.value = true;
       if (isMultiple.value) {
         const updated = Array.isArray(modelValue.value) ? [...modelValue.value] : [];
@@ -76,7 +75,7 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
       onHighlight(highlightedItem);
     };
 
-    const highlightItem = (value: DefinedValue) => {
+    const highlightItem = (value: string) => {
       if (isVirtual.value) {
         virtualHighlightHook.trigger(value);
       } else {

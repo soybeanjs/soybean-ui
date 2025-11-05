@@ -1,11 +1,11 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
 import { findValuesBetween, getActiveElement, getNextMatch, isEqual } from '../../shared';
-import type { DefinedValue, NavigationKey } from '../../types';
+import type { MaybeArray, NavigationKey } from '../../types';
 import { useCollectionContext, useListboxRootContext, useListboxThemeContext } from './context';
 import { getVirtualizerItems, getVirtualizerPadding, queryCheckedElement } from './shared';
 import type { ListboxVirtualizerProps, ListboxVirtualizerSlots } from './types';
@@ -14,9 +14,9 @@ defineOptions({
   name: 'ListboxVirtualizer'
 });
 
-const props = defineProps<ListboxVirtualizerProps<T>>();
+const props = defineProps<ListboxVirtualizerProps>();
 
-const slots = defineSlots<ListboxVirtualizerSlots<T>>();
+const slots = defineSlots<ListboxVirtualizerSlots>();
 
 const {
   modelValue,
@@ -43,7 +43,7 @@ const { getOrderedItems, getOrderedElements } = useCollectionContext('ListboxVir
 const search = refAutoReset('', 1000);
 
 const optionsWithMetadata = computed(() => {
-  const parseTextContent = (option: T) => {
+  const parseTextContent = (option: string) => {
     if (props.textContent) {
       return props.textContent(option);
     }
@@ -76,7 +76,7 @@ const height = computed(() => virtualizer.value.getTotalSize());
 
 const style = computed(() => `position:relative;width:100%;height:${height.value}px;`);
 
-const virtualizedItems = computed(() => getVirtualizerItems<T>(virtualizer.value, props.options, slots.default));
+const virtualizedItems = computed(() => getVirtualizerItems(virtualizer.value, props.options, slots.default));
 
 virtualFocusHook.on(event => {
   const index = props.options.findIndex(option => {
@@ -168,8 +168,7 @@ function handleMultipleReplace(_event: Event, intent: 'first' | 'last' | 'prev' 
   const lastValue = collection.find(item => item.element === highlightedElement.value)?.data?.value;
   if (!lastValue) return;
 
-  let value: (DefinedValue | undefined)[] | null = null;
-  // eslint-disable-next-line default-case
+  let value: MaybeArray<string> | null = null;
   switch (intent) {
     case 'prev':
     case 'next': {
@@ -184,8 +183,10 @@ function handleMultipleReplace(_event: Event, intent: 'first' | 'last' | 'prev' 
       value = findValuesBetween(props.options, firstValue.value, props.options?.[props.options.length - 1]);
       break;
     }
+    default:
   }
-  modelValue.value = value as T[];
+
+  modelValue.value = value ?? undefined;
 }
 </script>
 

@@ -1,7 +1,6 @@
 import { Fragment, cloneVNode } from 'vue';
 import type { VNode } from 'vue';
 import type { Virtualizer } from '@tanstack/vue-virtual';
-import type { DefinedValue } from '../../types';
 import type { ListboxVirtualizerSlots } from './types';
 
 export function getVirtualizerPadding(parentElement?: HTMLElement | null) {
@@ -17,14 +16,14 @@ export function getVirtualizerPadding(parentElement?: HTMLElement | null) {
   };
 }
 
-export function getVirtualizerItems<T extends DefinedValue = DefinedValue>(
+export function getVirtualizerItems(
   virtualizer: Virtualizer<HTMLElement, Element>,
-  options: DefinedValue[],
-  defaultSlot: ListboxVirtualizerSlots<T>['default']
+  options: string[],
+  defaultSlot: ListboxVirtualizerSlots['default']
 ) {
   return virtualizer.getVirtualItems().map(item => {
     const defaultNode = defaultSlot({
-      option: options[item.index] as T,
+      option: options[item.index],
       virtualizer,
       virtualItem: item
     })[0] as VNode;
