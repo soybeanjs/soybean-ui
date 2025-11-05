@@ -112,24 +112,25 @@ export const components = {
     'ListboxVirtualizer'
   ],
   menu: [
+    'MenuAnchor',
+    'MenuArrow',
     'MenuCheckboxGroup',
     'MenuCheckboxItem',
-    'MenuContentImpl',
     'MenuContent',
     'MenuGroupLabel',
     'MenuGroup',
-    'MenuItemImpl',
     'MenuItemIndicator',
     'MenuItem',
+    'MenuPortal',
     'MenuRadioGroup',
     'MenuRadioItem',
     'MenuRoot',
+    'MenuSub',
+    'MenuSeparator',
     'MenuSubContent',
-    'MenuSubTrigger',
-    'MenuSub'
+    'MenuSubTrigger'
   ],
   navigationMenu: [
-    'NavigationMenuContentImpl',
     'NavigationMenuContent',
     'NavigationMenuIndicator',
     'NavigationMenuItem',
