@@ -161,7 +161,7 @@ export interface SelectSeparatorProps extends /** @vue-ignore */ HTMLAttributes 
 export interface SelectArrowProps extends PopperArrowProps {}
 
 // SelectScrollButtonImpl
-export interface SelectScrollButtonImplProps extends /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface SelectScrollButtonImplProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
 export type SelectScrollButtonImplEmits = {
   autoScroll: [];
