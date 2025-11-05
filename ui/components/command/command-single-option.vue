@@ -1,7 +1,6 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed } from 'vue';
 import { DividerRoot, ListboxItem } from '@headless';
-import type { DefinedValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
@@ -13,9 +12,9 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<CommandSingleOptionProps<T>>();
+const props = defineProps<CommandSingleOptionProps>();
 
-const emit = defineEmits<CommandSingleOptionEmits<T>>();
+const emit = defineEmits<CommandSingleOptionEmits>();
 
 const forwardedProps = useOmitProps(props, ['item', 'itemLabelProps', 'shortcutProps', 'separatorProps']);
 

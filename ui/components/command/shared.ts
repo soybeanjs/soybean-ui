@@ -1,5 +1,4 @@
 import type { FuseResult, FuseResultMatch } from 'fuse.js';
-import type { DefinedValue } from '@headless';
 import type {
   CommandGroupOptionData,
   CommandHighlightSearchOptionData,
@@ -7,20 +6,18 @@ import type {
   CommandSearchOptionData
 } from './types';
 
-export function isCommandGroupOption<T extends DefinedValue = DefinedValue>(
-  item: CommandOptionData<T>
-): item is CommandGroupOptionData<T> {
-  return Boolean((item as CommandGroupOptionData<T>)?.items);
+export function isCommandGroupOption(item: CommandOptionData): item is CommandGroupOptionData {
+  return Boolean((item as CommandGroupOptionData)?.items);
 }
 
-export function getCommandSearchOptions<T extends DefinedValue = DefinedValue>(items: CommandOptionData<T>[]) {
+export function getCommandSearchOptions(items: CommandOptionData[]) {
   const searchOptions = items.flatMap(item => {
     if (!isCommandGroupOption(item)) {
-      return [item as CommandSearchOptionData<T>];
+      return [item as CommandSearchOptionData];
     }
 
     return item.items.map(groupItem => {
-      const searchOption: CommandSearchOptionData<T> = {
+      const searchOption: CommandSearchOptionData = {
         groupLabel: item.label,
         groupSeparator: item.separator,
         ...groupItem
@@ -33,11 +30,8 @@ export function getCommandSearchOptions<T extends DefinedValue = DefinedValue>(i
   return searchOptions;
 }
 
-export function getCommandHighlightSearchOption<T extends DefinedValue>(
-  item: CommandSearchOptionData<T>,
-  searchTerm: string
-) {
-  const searchOption: CommandHighlightSearchOptionData<T> = {
+export function getCommandHighlightSearchOption(item: CommandSearchOptionData, searchTerm: string) {
+  const searchOption: CommandHighlightSearchOptionData = {
     ...item,
     labelHtml: highlightCommandOption(item, searchTerm, 'label')
   };
@@ -45,7 +39,7 @@ export function getCommandHighlightSearchOption<T extends DefinedValue>(
   return searchOption;
 }
 
-export function getCommandItemOptions<T extends DefinedValue>(options: CommandHighlightSearchOptionData<T>[]) {
+export function getCommandItemOptions(options: CommandHighlightSearchOptionData[]) {
   const itemsByGroup = options.reduce(
     (acc, item) => {
       const { groupLabel, groupSeparator, ...rest } = item;
@@ -59,14 +53,14 @@ export function getCommandItemOptions<T extends DefinedValue>(options: CommandHi
           };
         }
 
-        (acc[groupLabel] as CommandGroupOptionData<T>).items.push(rest);
+        (acc[groupLabel] as CommandGroupOptionData).items.push(rest);
       } else {
-        acc[item.label] = rest as CommandOptionData<T>;
+        acc[item.label] = rest as CommandOptionData;
       }
 
       return acc;
     },
-    {} as Record<string, CommandOptionData<T>>
+    {} as Record<string, CommandOptionData>
   );
 
   return Object.values(itemsByGroup);

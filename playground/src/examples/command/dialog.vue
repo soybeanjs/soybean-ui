@@ -6,7 +6,7 @@ import type { CommandOptionData } from '@ui';
 
 const keys = useMagicKeys();
 
-const items: CommandOptionData<string>[] = [
+const items: CommandOptionData[] = [
   {
     label: 'Suggestions',
     separator: true,

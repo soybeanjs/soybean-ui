@@ -1,7 +1,6 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed } from 'vue';
 import { DividerRoot, ListboxGroup, ListboxGroupLabel } from '@headless';
-import type { DefinedValue } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import SCommandSingleOption from './command-single-option.vue';
 import { useCommandExtraThemeContext } from './context';
@@ -12,9 +11,9 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<CommandGroupOptionProps<T>>();
+const props = defineProps<CommandGroupOptionProps>();
 
-const emit = defineEmits<CommandGroupOptionEmits<T>>();
+const emit = defineEmits<CommandGroupOptionEmits>();
 
 const forwardedProps = useOmitProps(props, [
   'item',
@@ -26,9 +25,9 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 type Slots = {
-  'item-leading': (props: { item: CommandSingleOptionData<T> }) => any;
-  'item-trailing': (props: { item: CommandSingleOptionData<T> }) => any;
-  'item-label': (props: { item: CommandSingleOptionData<T> }) => any;
+  'item-leading': (props: { item: CommandSingleOptionData }) => any;
+  'item-trailing': (props: { item: CommandSingleOptionData }) => any;
+  'item-label': (props: { item: CommandSingleOptionData }) => any;
 };
 
 const slots = defineSlots<Slots>();

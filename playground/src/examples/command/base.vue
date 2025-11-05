@@ -2,7 +2,7 @@
 import { SCard, SCommand } from '@ui';
 import type { CommandOptionData, SelectEvent } from '@ui';
 
-const items: CommandOptionData<string>[] = [
+const items: CommandOptionData[] = [
   {
     label: 'Suggestions',
     separator: true,

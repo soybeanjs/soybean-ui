@@ -1,6 +1,5 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts">
 import { computed } from 'vue';
-import type { DefinedValue } from '@headless';
 import SCommandGroupOption from './command-group-option.vue';
 import SCommandSingleOption from './command-single-option.vue';
 import { isCommandGroupOption } from './shared';
@@ -11,14 +10,14 @@ defineOptions({
   inheritAttrs: false
 });
 
-defineProps<CommandOptionProps<T>>();
+defineProps<CommandOptionProps>();
 
-const emit = defineEmits<CommandOptionEmits<T>>();
+const emit = defineEmits<CommandOptionEmits>();
 
 type Slots = {
-  'item-leading': (props: { item: CommandSingleOptionData<T> }) => any;
-  'item-trailing': (props: { item: CommandSingleOptionData<T> }) => any;
-  'item-label': (props: { item: CommandSingleOptionData<T> }) => any;
+  'item-leading': (props: { item: CommandSingleOptionData }) => any;
+  'item-trailing': (props: { item: CommandSingleOptionData }) => any;
+  'item-label': (props: { item: CommandSingleOptionData }) => any;
 };
 
 const slots = defineSlots<Slots>();

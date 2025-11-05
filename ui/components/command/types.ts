@@ -1,7 +1,6 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type {
-  AcceptableValue,
   ClassValue,
   ListboxGroupLabelProps as CommandGroupLabelProps,
   ListboxGroupProps as CommandGroupProps,
@@ -11,7 +10,6 @@ import type {
   ListboxContentProps as CommandListProps,
   ListboxRootEmits as CommandRootEmits,
   ListboxRootProps as CommandRootProps,
-  DefinedValue,
   DividerRootProps,
   KbdProps,
   KbdValue,
@@ -20,7 +18,7 @@ import type {
 import type { ThemeSize } from '@theme';
 import type { IconValue } from '../icon/types';
 
-export interface CommandSingleOptionData<T = DefinedValue> extends Pick<CommandItemProps<T>, 'value' | 'disabled'> {
+export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' | 'disabled'> {
   /**
    * The icon of the command item.
    *
@@ -35,11 +33,11 @@ export interface CommandSingleOptionData<T = DefinedValue> extends Pick<CommandI
   shortcut?: KbdValue | KbdValue[];
 }
 
-export interface CommandGroupOptionData<T = DefinedValue> extends Pick<CommandSingleOptionData, 'separator' | 'label'> {
-  items: CommandSingleOptionData<T>[];
+export interface CommandGroupOptionData extends Pick<CommandSingleOptionData, 'separator' | 'label'> {
+  items: CommandSingleOptionData[];
 }
 
-export type CommandOptionData<T = DefinedValue> = CommandSingleOptionData<T> | CommandGroupOptionData<T>;
+export type CommandOptionData = CommandSingleOptionData | CommandGroupOptionData;
 
 export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -47,45 +45,44 @@ export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
 
 export interface CommandSeparatorProps extends DividerRootProps {}
 
-export interface CommandSingleOptionProps<T = DefinedValue> extends Omit<CommandItemProps<T>, 'value' | 'disabled'> {
-  item: CommandSingleOptionData<T>;
+export interface CommandSingleOptionProps extends Omit<CommandItemProps, 'value' | 'disabled'> {
+  item: CommandSingleOptionData;
   itemLabelProps?: CommandItemLabelProps;
   shortcutProps?: CommandShortcutProps;
   separatorProps?: CommandSeparatorProps;
 }
 
-export type CommandSingleOptionEmits<T = DefinedValue> = CommandItemEmits<T>;
+export type CommandSingleOptionEmits = CommandItemEmits;
 
-export interface CommandGroupOptionProps<T = DefinedValue> extends Omit<CommandGroupProps, 'onSelect'> {
-  item: CommandGroupOptionData<T>;
+export interface CommandGroupOptionProps extends Omit<CommandGroupProps, 'onSelect'> {
+  item: CommandGroupOptionData;
   groupLabelProps?: CommandGroupLabelProps;
-  itemProps?: CommandItemProps<T>;
+  itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;
   shortcutProps?: CommandShortcutProps;
   separatorProps?: CommandSeparatorProps;
 }
 
-export type CommandGroupOptionEmits<T = DefinedValue> = CommandItemEmits<T>;
+export type CommandGroupOptionEmits = CommandItemEmits;
 
-export interface CommandOptionProps<T = DefinedValue> {
-  item: CommandOptionData<T>;
+export interface CommandOptionProps {
+  item: CommandOptionData;
   groupProps?: CommandGroupProps;
   groupLabelProps?: CommandGroupLabelProps;
-  itemProps?: CommandItemProps<T>;
+  itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;
   shortcutProps?: CommandShortcutProps;
   separatorProps?: CommandSeparatorProps;
 }
 
-export type CommandOptionEmits<T = DefinedValue> = CommandItemEmits<T>;
+export type CommandOptionEmits = CommandItemEmits;
 
-export interface CommandSearchOptionData<T extends DefinedValue = DefinedValue> extends CommandSingleOptionData<T> {
+export interface CommandSearchOptionData extends CommandSingleOptionData {
   groupLabel?: string;
   groupSeparator?: boolean;
 }
 
-export interface CommandHighlightSearchOptionData<T extends DefinedValue = DefinedValue>
-  extends CommandSearchOptionData<T> {
+export interface CommandHighlightSearchOptionData extends CommandSearchOptionData {
   labelHtml?: string;
 }
 
@@ -101,13 +98,13 @@ export type CommandExtraThemeSlot = 'inputClearable' | 'itemLabel' | 'shortcut' 
 
 export type CommandUi = Partial<Record<CommandThemeSlot | CommandExtraThemeSlot, ClassValue>>;
 
-export interface CommandProps<T extends AcceptableValue = AcceptableValue>
-  extends Omit<CommandRootProps<T, false>, 'onSelect'> {
+export interface CommandProps<T extends CommandOptionData = CommandOptionData>
+  extends Omit<CommandRootProps, 'onSelect'> {
   size?: ThemeSize;
   ui?: CommandUi;
-  items: CommandOptionData<NonNullable<T>>[];
+  items: T[];
   listProps?: CommandListProps;
-  itemProps?: CommandItemProps<NonNullable<T>>;
+  itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;
   groupProps?: CommandGroupProps;
   groupLabelProps?: CommandGroupLabelProps;
@@ -116,7 +113,7 @@ export interface CommandProps<T extends AcceptableValue = AcceptableValue>
   inputProps?: CommandInputProps;
   searchTerm?: string;
   clearable?: boolean;
-  fuseOptions?: UseFuseOptions<CommandSearchOptionData<NonNullable<T>>>;
+  fuseOptions?: UseFuseOptions<CommandSearchOptionData>;
   emptyProps?: CommandEmptyProps;
   emptyLabel?: string;
 }
@@ -125,9 +122,7 @@ export type CommandSearchTermEmits = {
   'update:searchTerm': [value: string];
 };
 
-export type CommandEmits<T extends AcceptableValue = AcceptableValue> = CommandRootEmits<T> &
-  CommandOptionEmits<NonNullable<T>> &
-  CommandSearchTermEmits;
+export type CommandEmits = CommandRootEmits & CommandOptionEmits & CommandSearchTermEmits;
 
 export interface CommandExtraThemeContextParams {
   ui: ComputedRef<Record<CommandExtraThemeSlot, ClassValue>>;

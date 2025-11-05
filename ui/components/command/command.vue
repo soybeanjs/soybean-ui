@@ -1,10 +1,9 @@
-<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+<script setup lang="ts" generic="T extends CommandOptionData = CommandOptionData">
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { ListboxContent, ListboxFilter, ListboxRoot, provideListboxThemeContext } from '@headless';
-import type { DefinedValue } from '@headless';
 import { useControllableState, useOmitProps, usePickProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
 import { commandVariants } from '@variants/command';
@@ -12,7 +11,7 @@ import Icon from '../icon/icon.vue';
 import { provideCommandExtraThemeContext } from './context';
 import SCommandOption from './command-option.vue';
 import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions } from './shared';
-import type { CommandEmits, CommandProps } from './types';
+import type { CommandEmits, CommandOptionData, CommandProps } from './types';
 
 defineOptions({
   name: 'SCommand'
@@ -20,7 +19,7 @@ defineOptions({
 
 const props = defineProps<CommandProps<T>>();
 
-const emit = defineEmits<CommandEmits<T>>();
+const emit = defineEmits<CommandEmits>();
 
 const forwardedProps = useOmitProps(props, [
   'size',
@@ -69,7 +68,7 @@ const fuseOptions = computed(() =>
   })
 );
 
-const searchItems = computed(() => getCommandSearchOptions<T>(props.items));
+const searchItems = computed(() => getCommandSearchOptions(props.items));
 
 const { results } = useFuse(searchTerm, searchItems, fuseOptions);
 
