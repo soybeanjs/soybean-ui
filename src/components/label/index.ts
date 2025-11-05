@@ -1,4 +1,4 @@
-import Label from './index.vue';
+import Label from './label.vue';
 
 export { Label };
 

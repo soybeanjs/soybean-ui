@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import Link from '../link/index.vue';
+import Link from '../link/link.vue';
 import { useBreadcrumbThemeContext } from './context';
 import type { BreadcrumbLinkProps } from './types';
 
