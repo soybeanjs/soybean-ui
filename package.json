@@ -10,12 +10,12 @@
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/soybean-ui/soybean-headless",
+  "homepage": "https://github.com/soybeanjs/soybean-headless",
   "repository": {
-    "url": "https://github.com/soybean-ui/soybean-headless.git"
+    "url": "https://github.com/soybeanjs/soybean-headless.git"
   },
   "bugs": {
-    "url": "https://github.com/soybean-ui/soybean-headless/issues"
+    "url": "https://github.com/soybeanjs/soybean-headless/issues"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
