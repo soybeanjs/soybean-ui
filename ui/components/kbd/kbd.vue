@@ -10,7 +10,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<KbdProps>(), {
-  iconization: true
+  symbolize: true
 });
 
 const delegatedProps = useOmitProps(props, ['class', 'size', 'variant']);

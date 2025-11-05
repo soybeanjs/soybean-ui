@@ -9,9 +9,9 @@ export interface KbdProps extends /** @vue-ignore */ HTMLAttributes {
    */
   value?: KbdValue | KbdValue[];
   /**
-   * Whether to convert the command value to icon representation.
+   * Whether to convert the command value to symbol representation.
    *
    * @defaultValue true
    */
-  iconization?: boolean;
+  symbolize?: boolean;
 }

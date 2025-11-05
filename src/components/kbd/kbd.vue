@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useKbd, useOmitProps } from '../../composables';
+import { useKbd } from '../../composables';
 import type { KbdProps } from './types';
 
 defineOptions({
@@ -9,8 +9,6 @@ defineOptions({
 
 const props = defineProps<KbdProps>();
 
-const forwardProps = useOmitProps(props, ['value', 'iconization']);
-
 const { getKeyboardKey } = useKbd();
 
 const formattedValue = computed(() => {
@@ -18,7 +16,7 @@ const formattedValue = computed(() => {
 
   return values
     .map(value => {
-      if (props.iconization) {
+      if (props.symbolize) {
         return getKeyboardKey(value);
       }
 
@@ -29,7 +27,7 @@ const formattedValue = computed(() => {
 </script>
 
 <template>
-  <kbd v-bind="forwardProps" :data-group="Array.isArray(value) ? '' : undefined">
+  <kbd :data-group="Array.isArray(value) ? '' : undefined">
     <slot>{{ formattedValue }}</slot>
   </kbd>
 </template>
