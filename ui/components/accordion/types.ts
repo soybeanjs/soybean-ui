@@ -12,7 +12,7 @@ import type {
 import type { ThemeSize } from '@theme';
 import type { IconValue } from '../icon/types';
 
-export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
+export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */
   title?: string;
   /** The description of the accordion content. */
@@ -28,8 +28,7 @@ export interface AccordionItemData extends Pick<AccordionItemProps, 'value' | 'd
 export type AccordionUi = Partial<Record<AccordionThemeSlot | 'triggerLeadingIcon' | 'triggerIcon', ClassValue>>;
 
 export type AccordionProps<
-  T extends AccordionItemData = AccordionItemData,
-  V extends SingleOrMultipleValue = SingleOrMultipleValue,
+  T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
 > = AccordionRootProps<V, M> & {
   size?: ThemeSize;

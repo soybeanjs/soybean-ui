@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SAccordion, SCard } from '@ui';
-import type { AccordionItemData } from '@ui';
+import type { AccordionOptionData } from '@ui';
 import { Icon } from '@iconify/vue';
 
 const multi = ref<string[]>([]);
 
-const items: AccordionItemData[] = [
+const items: AccordionOptionData[] = [
   {
     value: '1',
     title: 'Is it accessible?',
@@ -30,7 +30,7 @@ const items: AccordionItemData[] = [
 
 <template>
   <SCard title="Custom Icon" split>
-    <SAccordion v-model="multi" type="multiple" :items="items">
+    <SAccordion v-model="multi" multiple :items="items">
       <template #trigger-icon="{ open }">
         <Icon v-if="open" icon="lucide:minus" />
         <Icon v-else icon="lucide:plus" />

@@ -2,7 +2,7 @@
   setup
   lang="ts"
   generic="
-    T extends AccordionItemData = AccordionItemData,
+    T extends AccordionOptionData = AccordionOptionData,
     V extends SingleOrMultipleValue = SingleOrMultipleValue,
     M extends boolean = false
   "
@@ -22,7 +22,7 @@ import type { SingleOrMultipleValue } from '@headless';
 import { mergeSlotVariants } from '@theme';
 import { accordionVariants } from '@variants/accordion';
 import Icon from '../icon/icon.vue';
-import type { AccordionEmits, AccordionItemData, AccordionProps } from './types';
+import type { AccordionEmits, AccordionOptionData, AccordionProps } from './types';
 
 defineOptions({
   name: 'SAccordion'

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SAccordion, SCard } from '@ui';
-import type { AccordionItemData } from '@ui';
+import type { AccordionOptionData } from '@ui';
 
 const multi = ref<string[]>([]);
 
-const items: AccordionItemData[] = [
+const items: AccordionOptionData[] = [
   {
     value: '1',
     title: 'Is it accessible?',
@@ -29,6 +29,6 @@ const items: AccordionItemData[] = [
 
 <template>
   <SCard title="Multi Collapse" split>
-    <SAccordion v-model="multi" :items="items" />
+    <SAccordion v-model="multi" multiple :items="items" />
   </SCard>
 </template>

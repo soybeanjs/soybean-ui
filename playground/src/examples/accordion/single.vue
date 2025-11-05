@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { SAccordion, SCard } from '@ui';
-import type { AccordionItemData } from '@ui';
+import type { AccordionOptionData } from '@ui';
 
 const single = ref('');
-const single2 = ref<string | null>('');
+const single2 = ref('');
 
-const items: AccordionItemData[] = [
+const items: AccordionOptionData[] = [
   {
     value: '1',
     title: 'Is it accessible?',
