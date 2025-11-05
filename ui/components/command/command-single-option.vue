@@ -27,8 +27,7 @@ const ui = computed(() => themeContext?.ui?.value);
 <template>
   <ListboxItem v-bind="forwardedProps" :value="item.value" :disabled="item.disabled" @select="emit('select', $event)">
     <slot name="item-leading">
-      <Icon v-if="typeof item.icon === 'string'" :icon="item.icon" />
-      <component :is="item.icon" v-else />
+      <Icon v-if="item.icon" :icon="item.icon" />
     </slot>
     <span :class="ui?.itemLabel" v-bind="itemLabelProps">
       <slot name="item-label">{{ item.label }}</slot>

@@ -26,8 +26,7 @@ const forwardedProps = useOmitProps(props, ['item', 'itemTextProps', 'itemIndica
     @select="emit('select', $event)"
   >
     <slot name="item-leading">
-      <Icon v-if="typeof item.icon === 'string'" :icon="item.icon" />
-      <component :is="item.icon" v-else />
+      <Icon v-if="item.icon" :icon="item.icon" />
     </slot>
     <SelectItemText v-bind="itemTextProps">
       <slot name="item-text">{{ item.label }}</slot>

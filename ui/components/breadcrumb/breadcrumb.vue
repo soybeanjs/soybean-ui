@@ -94,8 +94,7 @@ provideBreadcrumbThemeContext({
         </template>
         <BreadcrumbItem v-bind="itemProps" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item">
-            <Icon v-if="typeof item.icon === 'string'" :icon="item.icon" />
-            <component :is="item.icon" v-else />
+            <Icon v-if="item.icon" :icon="item.icon" />
           </slot>
           <slot :item="item">
             <BreadcrumbLink v-if="item.linkProps" v-bind="item.linkProps">

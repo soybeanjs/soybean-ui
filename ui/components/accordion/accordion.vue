@@ -65,17 +65,12 @@ provideAccordionThemeContext({
           <AccordionHeader v-bind="props.headerProps">
             <AccordionTrigger v-bind="props.triggerProps">
               <slot name="leading" :item="item" :model-value="modelValue" :open="open">
-                <Slot :class="ui.triggerLeadingIcon">
-                  <Icon v-if="typeof item.icon === 'string'" :icon="item.icon" />
-                  <component :is="item.icon" v-else />
-                </Slot>
+                <Icon v-if="item.icon" :icon="item.icon" :class="ui.triggerLeadingIcon" />
               </slot>
               <slot name="title" :item="item" :model-value="modelValue" :open="open">{{ item.title }}</slot>
-              <Slot :class="ui.triggerIcon">
-                <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">
-                  <Icon icon="lucide:chevron-down" />
-                </slot>
-              </Slot>
+              <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">
+                <Icon icon="lucide:chevron-down" :class="ui.triggerIcon" />
+              </slot>
             </AccordionTrigger>
           </AccordionHeader>
           <AccordionContent v-bind="props.contentProps">

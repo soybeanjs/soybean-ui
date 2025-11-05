@@ -106,8 +106,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
       tabindex="-1"
     >
       <slot name="leading">
-        <Icon v-if="typeof icon === 'string'" :icon="icon" />
-        <component :is="icon" v-else />
+        <Icon v-if="icon" :icon="icon" />
       </slot>
       <slot>
         <Badge v-if="badge" v-bind="badgeProps" :size="size" :content="badge" :class="ui.itemBadge">

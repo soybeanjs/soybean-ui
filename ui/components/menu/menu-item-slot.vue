@@ -30,8 +30,7 @@ defineSlots<Slots>();
   <slot name="indicator" />
   <slot name="item">
     <slot name="item-leading">
-      <Icon v-if="typeof icon === 'string'" :icon="icon" />
-      <component :is="icon" v-else />
+      <Icon v-if="icon" :icon="icon" />
     </slot>
     <span>{{ label }}</span>
     <slot name="link-icon" />
