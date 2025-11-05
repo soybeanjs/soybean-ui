@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
+import { vAutoAnimate } from '@formkit/auto-animate';
 import { FormDescription, FormError, FormField, FormLabel, Slot, provideFormThemeContext, useField } from '@headless';
 import { useOmitProps } from '@headless/composables';
 import { mergeSlotVariants } from '@theme';
@@ -52,6 +53,7 @@ const errorProps = computed(() => ({ ...formContext.errorProps.value, ...props.e
 <template>
   <FormField
     v-slot="{ modelValue, updateModelValue, attrs, dirty, touched, ariaDescribedBy, ariaInvalid }"
+    v-auto-animate
     v-bind="forwardedProps"
   >
     <FormLabel v-if="slots.label || label" v-bind="labelProps">

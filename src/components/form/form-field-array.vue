@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { vAutoAnimate } from '@formkit/auto-animate';
 import { useField, useFieldArray } from '../../form/core';
 import { provideFormFieldContext, useFormThemeContext } from './context';
 import type { FormFieldArrayProps } from './types';
@@ -23,7 +22,7 @@ const { formFieldId, formDescriptionId, formErrorId } = provideFormFieldContext(
 </script>
 
 <template>
-  <div v-auto-animate :class="cls">
+  <div :class="cls">
     <slot
       v-bind="methods"
       :fields="fields"

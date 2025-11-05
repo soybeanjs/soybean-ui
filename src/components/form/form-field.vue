@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { vAutoAnimate } from '@formkit/auto-animate';
 import { useField } from '../../form/core';
 import { provideFormFieldContext, useFormThemeContext } from './context';
 import type { FormFieldProps } from './types';
@@ -29,7 +28,7 @@ function updateModelValue(val: any) {
 </script>
 
 <template>
-  <div v-auto-animate :class="cls">
+  <div :class="cls">
     <slot
       :model-value="modelValue"
       :attrs="attrs"
