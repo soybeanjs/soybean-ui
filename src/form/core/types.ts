@@ -144,7 +144,7 @@ export interface FormSubmitHelper<Values extends FormValues> {
   readonly initialValues: Values;
 }
 
-interface FormRegister<Values extends FormValues, Name extends Path<Values>>
+export interface FormRegister<Values extends FormValues, Name extends Path<Values>>
   extends FormFieldMeta<PathValue<Values, Name>> {
   value: WritableComputedRef<PathValue<Values, Name>>;
   attrs: ComputedRef<FormFieldAttrs>;
