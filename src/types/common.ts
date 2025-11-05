@@ -93,41 +93,27 @@ export type ScrollBodyOption = {
   margin?: boolean | number | string;
 };
 
-export type SingleOrMultipleValue = AcceptableValue | DefinedValue[];
-
-type IsMultiple<T, M> = T extends AcceptableValue
-  ? false
-  : T extends DefinedValue[]
-    ? true
-    : M extends false
-      ? false
-      : M extends true
-        ? true
-        : never;
-
-export interface SingleOrMultipleProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M = false> {
+export interface SelectionProps<M extends boolean = false, N extends DefinedValue = string> {
   /**
-   * The controlled value of the active item(s).
+   * The controlled value of the selected item(s).
    *
    * Use this when you need to control the state of the items. Can be bound with `v-model`
    */
-  modelValue?: T;
+  modelValue?: M extends true ? N[] : N;
   /**
-   * The default value of the active item(s).
+   * The default value of the selected item(s).
    *
    * Use this when you need to set the initial state of the items.
    */
-  defaultValue?: T;
+  defaultValue?: M extends true ? N[] : N;
   /**
    * Determines whether a "single" or "multiple" items can be selected at a time.
    *
    * This prop will overwrite the inferred type from `modelValue` and `defaultValue`.
    */
-  multiple?: IsMultiple<T, M>;
+  multiple?: M;
 }
 
-export type SingleOrMultipleEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = {
-  'update:modelValue': [value: NonNullable<T>];
+export type SelectionEmits<M extends boolean = false, N extends DefinedValue = string> = {
+  'update:modelValue': [value: M extends true ? N[] : N];
 };
-
-export type GetSingleValue<T extends SingleOrMultipleValue> = T extends DefinedValue[] ? T[number] : NonNullable<T>;

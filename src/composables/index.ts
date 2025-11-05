@@ -20,6 +20,6 @@ export * from './use-locale';
 export * from './use-nonce';
 export * from './use-presence';
 export * from './use-props';
-export * from './use-single-or-multiple-value';
+export * from './use-selection';
 export * from './use-state-machine';
 export * from './use-typeahead';
