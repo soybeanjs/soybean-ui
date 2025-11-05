@@ -1,13 +1,12 @@
-import type { ComputedRef, HTMLAttributes, Ref, ShallowRef } from 'vue';
+import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   ClassValue,
   DataOrientation,
-  DefinedValue,
   Direction,
+  MaybeArray,
   PropsToContext,
-  SingleOrMultipleEmits,
-  SingleOrMultipleProps,
-  SingleOrMultipleValue
+  SelectionEmits,
+  SelectionProps
 } from '../../types';
 import type {
   CollapsibleContentProps as AccordionContentProps,
@@ -18,12 +17,12 @@ import type {
 export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
-  /** A string or number value for the accordion item. All items within an accordion should use a unique value. */
-  value: DefinedValue;
+  /** Value of the accordion item. All items within an accordion should use a unique value. */
+  value: string;
 }
 
-export interface AccordionRootProps<T extends SingleOrMultipleValue = SingleOrMultipleValue, M = false>
-  extends SingleOrMultipleProps<T, M>,
+export interface AccordionRootProps<M extends boolean = false>
+  extends SelectionProps<M>,
     /** @vue-ignore */ HTMLAttributes {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
@@ -59,14 +58,14 @@ export interface AccordionRootProps<T extends SingleOrMultipleValue = SingleOrMu
   unmountOnHide?: boolean;
 }
 
-export type AccordionRootEmits<T extends SingleOrMultipleValue = SingleOrMultipleValue> = SingleOrMultipleEmits<T>;
+export type AccordionRootEmits<M extends boolean = false> = SelectionEmits<M>;
 
 export interface AccordionRootContextParams
   extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'> {
   rootElement: ShallowRef<HTMLElement | undefined>;
-  modelValue: Ref<SingleOrMultipleValue>;
+  modelValue: ShallowRef<MaybeArray<string> | undefined>;
   isMultiple: ComputedRef<boolean>;
-  onModelValueChange: (value: DefinedValue) => void;
+  onModelValueChange: (value: string) => void;
 }
 
 export interface AccordionItemContextParams extends PropsToContext<AccordionItemProps, 'value'> {

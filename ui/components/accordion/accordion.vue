@@ -1,12 +1,4 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AccordionOptionData = AccordionOptionData,
-    V extends SingleOrMultipleValue = SingleOrMultipleValue,
-    M extends boolean = false
-  "
->
+<script setup lang="ts" generic="T extends AccordionOptionData = AccordionOptionData, M extends boolean = false">
 import { computed } from 'vue';
 import {
   AccordionContent,
@@ -14,11 +6,9 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
-  Slot,
   provideAccordionThemeContext
 } from '@headless';
 import { useForwardListeners, useOmitProps } from '@headless/composables';
-import type { SingleOrMultipleValue } from '@headless';
 import { mergeSlotVariants } from '@theme';
 import { accordionVariants } from '@variants/accordion';
 import Icon from '../icon/icon.vue';
@@ -28,9 +18,9 @@ defineOptions({
   name: 'SAccordion'
 });
 
-const props = defineProps<AccordionProps<T, V, M>>();
+const props = defineProps<AccordionProps<T, M>>();
 
-const emit = defineEmits<AccordionEmits<V>>();
+const emit = defineEmits<AccordionEmits<M>>();
 
 const forwardedProps = useOmitProps(props, [
   'size',

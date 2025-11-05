@@ -1,8 +1,7 @@
-<script setup lang="ts" generic="T extends SingleOrMultipleValue, M extends boolean">
+<script setup lang="ts" generic="M extends boolean = false">
 import { computed, shallowRef } from 'vue';
-import { useSingleOrMultipleValue } from '../../composables';
+import { useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import type { SingleOrMultipleValue } from '../../types';
 import { provideAccordionRootContext, useAccordionThemeContext } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
@@ -10,14 +9,14 @@ defineOptions({
   name: 'AccordionRoot'
 });
 
-const props = withDefaults(defineProps<AccordionRootProps<T, M>>(), {
+const props = withDefaults(defineProps<AccordionRootProps<M>>(), {
   disabled: false,
   orientation: 'vertical',
   collapsible: false,
   unmountOnHide: true
 });
 
-const emit = defineEmits<AccordionRootEmits<T>>();
+const emit = defineEmits<AccordionRootEmits<M>>();
 
 const themeContext = useAccordionThemeContext();
 
@@ -25,7 +24,7 @@ const cls = computed(() => themeContext?.ui?.value?.root);
 
 const rootElement = shallowRef<HTMLElement>();
 
-const { modelValue, isMultiple, onModelValueChange } = useSingleOrMultipleValue(props, value => {
+const { modelValue, isMultiple, onModelValueChange } = useSelection(props, value => {
   emit('update:modelValue', value);
 });
 
@@ -40,6 +39,6 @@ provideAccordionRootContext({
 
 <template>
   <div ref="rootElement" :class="cls">
-    <slot :model-value="modelValue as T" />
+    <slot :model-value="modelValue" />
   </div>
 </template>
