@@ -1,4 +1,4 @@
-import { Portal as SelectPortal } from '../portal';
+import SelectPortal from '../portal/portal.vue';
 import SelectRoot from './select-root.vue';
 import SelectContent from './select-content.vue';
 import SelectViewport from './select-viewport.vue';

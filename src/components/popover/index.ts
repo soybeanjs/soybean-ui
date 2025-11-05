@@ -1,5 +1,5 @@
 import PopoverPortal from '../portal/portal.vue';
-import { PopperArrow as PopoverArrow } from '../popper';
+import PopoverArrow from '../popper/popper-arrow.vue';
 import PopoverRoot from './popover-root.vue';
 import PopoverAnchor from './popover-anchor.vue';
 import PopoverClose from './popover-close.vue';
