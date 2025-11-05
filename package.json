@@ -47,6 +47,11 @@
       "import": "./dist/resolver/index.js",
       "require": "./dist/resolver/index.js"
     },
+    "./namespaced": {
+      "types": "./dist/namespaced/index.d.ts",
+      "import": "./dist/namespaced/index.js",
+      "require": "./dist/namespaced/index.js"
+    },
     "./*": {
       "types": "./dist/components/*/index.d.ts",
       "import": "./dist/components/*/index.js",
@@ -93,6 +98,7 @@
     "@vueuse/core": "^14.0.0",
     "@vueuse/integrations": "^14.0.0",
     "@vueuse/router": "^14.0.0",
+    "@vueuse/shared": "^14.0.0",
     "aria-hidden": "^1.2.6",
     "clsx": "^2.1.1",
     "deepmerge": "^4.3.1",
