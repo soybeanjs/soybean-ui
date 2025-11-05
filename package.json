@@ -63,7 +63,7 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "tsdown",
+    "build": "pnpm nuxt:gen && pnpm tsdown",
     "build:nuxt": "nuxt build",
     "build:play": "vite build -c vite.play.config.ts",
     "cleanup": "soy cleanup",
