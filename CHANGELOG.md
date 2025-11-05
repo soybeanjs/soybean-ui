@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.1-beta.2](https://github.com/soybeanjs/soybean-headless/compare/v0.0.1-beta.1...v0.0.1-beta.2) (2025-11-05)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **projects**: fix build scripts &nbsp;-&nbsp; by @soybeanjs [<samp>(61eda)</samp>](https://github.com/soybeanjs/soybean-headless/commit/61eda7c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.1-beta.1](https://github.com/soybeanjs/soybean-headless/compare/v0.0.1-alpha.5...v0.0.1-beta.1) (2025-11-05)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
