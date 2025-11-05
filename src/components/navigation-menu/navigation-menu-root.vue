@@ -26,9 +26,7 @@ const cls = computed(() => themeContext?.ui?.value?.root);
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    if (value) {
-      emit('update:modelValue', value);
-    }
+    emit('update:modelValue', value ?? '');
   },
   props.defaultValue
 ) as ShallowRef<string>;
