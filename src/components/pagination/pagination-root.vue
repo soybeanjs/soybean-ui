@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useControllableState } from '../../composables';
 import { isNullish, transformPropsToContext } from '../../shared';
 import { providePaginationRootContext, usePaginationThemeContext } from './context';
 import type { PaginationRootEmits, PaginationRootProps } from './types';
@@ -36,20 +36,10 @@ const { pageCount } = providePaginationRootContext({
   ...transformPropsToContext(props, ['total', 'siblingCount', 'disabled', 'showEdges', 'itemsPerPage']),
   page
 });
-
-const forwardedProps = useOmitProps(props, [
-  'page',
-  'defaultPage',
-  'itemsPerPage',
-  'total',
-  'siblingCount',
-  'disabled',
-  'showEdges'
-]);
 </script>
 
 <template>
-  <nav v-bind="forwardedProps" :class="cls">
+  <nav :class="cls">
     <slot :page="page" :page-count="pageCount" />
   </nav>
 </template>

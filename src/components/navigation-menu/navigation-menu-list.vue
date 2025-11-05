@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
 import type { NavigationMenuListProps } from './types';
 
@@ -8,7 +8,9 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<NavigationMenuListProps>();
+defineProps<NavigationMenuListProps>();
+
+const attrs = useAttrs();
 
 const { setIndicatorTrackElement } = useNavigationMenuRootContext('NavigationMenuList');
 
@@ -19,7 +21,7 @@ const cls = computed(() => themeContext?.ui?.value?.list);
 
 <template>
   <div :ref="setIndicatorTrackElement" style="position: relative">
-    <ul v-bind="{ ...props, ...$attrs }" :class="cls">
+    <ul v-bind="attrs" :class="cls">
       <slot />
     </ul>
   </div>

@@ -2,7 +2,7 @@
 import { computed, shallowRef, useAttrs, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { useForwardElement, useOmitProps, usePresence } from '../../composables';
+import { useForwardElement, usePresence } from '../../composables';
 import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
 import { navigationMenuIndicatorCssVars } from './shared';
 import type { NavigationMenuIndicatorProps } from './types';
@@ -15,8 +15,6 @@ defineOptions({
 const props = defineProps<NavigationMenuIndicatorProps>();
 
 const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(props, ['forceMount'], attrs);
 
 const { activeTriggerElement, modelValue, indicatorTrackElement } =
   useNavigationMenuRootContext('NavigationMenuIndicator');
@@ -74,7 +72,7 @@ useResizeObserver(indicatorTrackElement, onPositionChange);
   <Teleport v-if="indicatorTrackElement" :to="indicatorTrackElement">
     <div
       v-if="isPresent"
-      v-bind="forwardedProps"
+      v-bind="attrs"
       :ref="setIndicatorElement"
       :class="cls"
       aria-hidden="true"

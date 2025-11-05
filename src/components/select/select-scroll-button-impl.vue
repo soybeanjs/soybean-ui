@@ -9,7 +9,7 @@ defineOptions({
   name: 'SelectScrollButtonImpl'
 });
 
-const props = defineProps<SelectScrollButtonImplProps>();
+defineProps<SelectScrollButtonImplProps>();
 
 const emit = defineEmits<SelectScrollButtonImplEmits>();
 
@@ -62,7 +62,8 @@ onBeforeUnmount(() => {
 
 <template>
   <Primitive
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
     aria-hidden="true"
     style="flex-shrink: 0"
     @pointerdown="onPointerDown"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useControllableState } from '../../composables';
 import { isNullish, transformPropsToContext } from '../../shared';
 import { provideTabsRootContext, useTabsThemeContext } from './context';
 import type { TabsRootEmits, TabsRootProps } from './types';
@@ -18,15 +18,6 @@ const props = withDefaults(defineProps<TabsRootProps>(), {
 });
 
 const emit = defineEmits<TabsRootEmits>();
-
-const forwardedProps = useOmitProps(props, [
-  'modelValue',
-  'defaultValue',
-  'dir',
-  'orientation',
-  'activationMode',
-  'unmountOnHide'
-]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -48,7 +39,7 @@ const { dir } = provideTabsRootContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" :class="cls" :dir="dir" :data-orientation="orientation">
+  <div :class="cls" :dir="dir" :data-orientation="orientation">
     <slot :model-value="modelValue" />
   </div>
 </template>

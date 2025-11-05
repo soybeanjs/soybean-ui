@@ -8,7 +8,7 @@ defineOptions({
   name: 'MenuGroup'
 });
 
-const props = defineProps<MenuGroupProps>();
+defineProps<MenuGroupProps>();
 
 const themeContext = useMenuThemeContext();
 
@@ -16,7 +16,7 @@ const cls = computed(() => themeContext?.ui?.value?.group);
 </script>
 
 <template>
-  <Primitive v-bind="props" :class="cls" role="group">
+  <Primitive :as="as" :as-child="asChild" :class="cls" role="group">
     <slot />
   </Primitive>
 </template>

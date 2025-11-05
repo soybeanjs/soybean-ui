@@ -7,7 +7,7 @@ defineOptions({
   name: 'BreadcrumbList'
 });
 
-const props = defineProps<BreadcrumbListProps>();
+defineProps<BreadcrumbListProps>();
 
 const themeContext = useBreadcrumbThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.list);
 </script>
 
 <template>
-  <ol v-bind="props" :class="cls">
+  <ol :class="cls">
     <slot />
   </ol>
 </template>

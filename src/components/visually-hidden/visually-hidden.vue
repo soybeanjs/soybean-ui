@@ -6,7 +6,7 @@ defineOptions({
   name: 'VisuallyHidden'
 });
 
-const props = withDefaults(defineProps<VisuallyHiddenProps>(), {
+withDefaults(defineProps<VisuallyHiddenProps>(), {
   as: 'span',
   feature: 'focusable'
 });
@@ -14,7 +14,11 @@ const props = withDefaults(defineProps<VisuallyHiddenProps>(), {
 
 <template>
   <Primitive
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
+    :aria-hidden="feature === 'focusable' ? 'true' : undefined"
+    :data-hidden="feature === 'fully-hidden' ? '' : undefined"
+    :tabindex="feature === 'fully-hidden' ? '-1' : undefined"
     style="
       position: absolute;
       top: -1px;

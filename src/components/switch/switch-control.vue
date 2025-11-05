@@ -26,7 +26,6 @@ const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, at
 
 <template>
   <button
-    v-bind="props"
     :id="id"
     :ref="setControlElement"
     :class="cls"

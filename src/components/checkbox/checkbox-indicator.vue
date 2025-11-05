@@ -30,8 +30,9 @@ const isPresent = props.forceMount
 <template>
   <Primitive
     v-if="isPresent"
-    v-bind="props"
     :ref="setIndicatorElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :data-disabled="dataDisabled"
     :data-state="dataState"

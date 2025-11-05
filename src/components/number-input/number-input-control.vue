@@ -46,7 +46,7 @@ const onWheelEvent = (event: WheelEvent) => {
   // only handle when in focus
   if (event.target !== getActiveElement()) return;
 
-  // if on a trackpad, users can scroll in both X and Y at once, check the magnitude of the change
+  // if on a track pad, users can scroll in both X and Y at once, check the magnitude of the change
   // if it's mostly in the X direction, then just return, the user probably doesn't mean to inc/dec
   // this isn't perfect, events come in fast with small deltas and a part of the scroll may give a false indication
   // especially if the user is scrolling near 45deg

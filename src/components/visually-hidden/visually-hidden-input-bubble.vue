@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T">
 import { computed, watch } from 'vue';
-import { useForwardElement, useOmitProps } from '../../composables';
+import { useForwardElement } from '../../composables';
 import VisuallyHidden from './visually-hidden.vue';
 import type { VisuallyHiddenInputProps } from './types';
 
@@ -12,8 +12,6 @@ const props = withDefaults(defineProps<VisuallyHiddenInputProps<T>>(), {
   feature: 'fully-hidden',
   checked: undefined
 });
-
-const forwardedProps = useOmitProps(props, ['name', 'value', 'checked', 'required', 'disabled']);
 
 const [element, setElement] = useForwardElement<HTMLInputElement>();
 
@@ -39,5 +37,5 @@ watch(valueState, (newValue, prevValue) => {
 </script>
 
 <template>
-  <VisuallyHidden :ref="setElement" v-bind="forwardedProps" as="input" />
+  <VisuallyHidden :ref="setElement" :feature="feature" as="input" />
 </template>

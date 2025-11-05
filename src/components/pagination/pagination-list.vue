@@ -8,7 +8,7 @@ defineOptions({
   name: 'PaginationList'
 });
 
-const props = defineProps<PaginationListProps>();
+defineProps<PaginationListProps>();
 
 const { page, pageCount, siblingCount, showEdges } = usePaginationRootContext('PaginationList');
 
@@ -22,7 +22,7 @@ const transformedRange = computed(() =>
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div :class="cls">
     <slot :items="transformedRange" />
   </div>
 </template>

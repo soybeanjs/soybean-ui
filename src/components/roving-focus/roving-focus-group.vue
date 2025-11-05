@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useForwardElement, useOmitProps } from '../../composables';
+import { useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideRovingFocusGroupContext } from './context';
@@ -37,19 +37,19 @@ const { onContainerElementChange, rovingFocusGroupProps, rovingFocusGroupListene
 
 const [_, setContainerElement] = useForwardElement(onContainerElementChange);
 
-const forwardedProps = useOmitProps(
-  props,
-  ['loop', 'dir', 'currentTabStopId', 'defaultCurrentTabStopId', 'preventScrollOnEntryFocus'],
-  rovingFocusGroupProps
-);
-
 defineExpose({
   getItems: getOrderedItems
 });
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :ref="setContainerElement" v-on="rovingFocusGroupListeners">
+  <Primitive
+    v-bind="rovingFocusGroupProps"
+    :ref="setContainerElement"
+    :as="as"
+    :as-child="asChild"
+    v-on="rovingFocusGroupListeners"
+  >
     <slot />
   </Primitive>
 </template>

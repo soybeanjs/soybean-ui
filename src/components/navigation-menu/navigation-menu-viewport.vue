@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, nextTick, shallowRef, useAttrs, watch } from 'vue';
+import { computed, nextTick, shallowRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { useOmitProps, usePresence } from '../../composables';
+import { usePresence } from '../../composables';
 import { getDisclosureState, isMouseEvent } from '../../shared';
 import type { Size } from '../../types';
 import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
@@ -10,17 +10,12 @@ import { getNavigationMenuViewportPosition, navigationMenuViewportCssVars } from
 import type { NavigationMenuViewportPosition, NavigationMenuViewportProps } from './types';
 
 defineOptions({
-  name: 'NavigationMenuViewport',
-  inheritAttrs: false
+  name: 'NavigationMenuViewport'
 });
 
 const props = withDefaults(defineProps<NavigationMenuViewportProps>(), {
   align: 'start'
 });
-
-const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(props, ['forceMount', 'align'], attrs);
 
 const {
   isRoot,
@@ -125,7 +120,6 @@ useResizeObserver([() => globalThis?.document?.body, rootElement], () => {
 <template>
   <div
     v-if="isPresent"
-    v-bind="forwardedProps"
     :ref="setViewportElement"
     :class="cls"
     :data-state="dataState"

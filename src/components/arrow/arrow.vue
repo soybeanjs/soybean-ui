@@ -17,14 +17,19 @@ const props = withDefaults(defineProps<ArrowProps>(), {
 const themeContext = useArrowThemeContext();
 
 const cls = computed(() => themeContext?.value);
+
+const isTemplate = computed(() => props.as === 'template');
 </script>
 
 <template>
   <Primitive
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
+    :width="isTemplate ? undefined : width"
+    :height="isTemplate ? undefined : height"
     :class="cls"
-    :viewBox="as === 'template' ? undefined : '0 0 12 6'"
-    :preserveAspectRatio="as === 'template' ? undefined : 'none'"
+    :viewBox="isTemplate ? undefined : '0 0 12 6'"
+    :preserveAspectRatio="isTemplate ? undefined : 'none'"
   >
     <slot>
       <path d="M0 0L6 6L12 0" />

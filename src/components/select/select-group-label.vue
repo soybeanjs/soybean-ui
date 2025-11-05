@@ -7,7 +7,7 @@ defineOptions({
   name: 'SelectGroupLabel'
 });
 
-const props = defineProps<SelectGroupLabelProps>();
+defineProps<SelectGroupLabelProps>();
 
 const { labelId } = useSelectGroupContext('SelectGroupLabel');
 
@@ -17,7 +17,7 @@ const cls = computed(() => themeContext?.ui?.value?.groupLabel);
 </script>
 
 <template>
-  <div v-bind="props" :id="labelId" :class="cls">
+  <div :id="labelId" :class="cls">
     <slot />
   </div>
 </template>

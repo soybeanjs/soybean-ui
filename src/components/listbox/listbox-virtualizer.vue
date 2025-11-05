@@ -34,6 +34,7 @@ const {
 isVirtual.value = true;
 
 const themeContext = useListboxThemeContext();
+
 const cls = computed(() => themeContext?.ui?.value?.virtualizer);
 
 const { getOrderedItems, getOrderedElements } = useCollectionContext('ListboxVirtualizer');

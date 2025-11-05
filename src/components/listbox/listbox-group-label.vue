@@ -12,6 +12,7 @@ defineProps<ListboxGroupLabelProps>();
 const { id } = useListboxGroupContext('ListboxGroupLabel');
 
 const themeContext = useListboxThemeContext();
+
 const cls = computed(() => themeContext?.ui?.value?.groupLabel);
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { refAutoReset } from '@vueuse/core';
-import { useForwardElement, useOmitProps } from '../../composables';
+import { useForwardElement } from '../../composables';
 import { isMouseEvent, isNullish } from '../../shared';
 import { Primitive } from '../primitive';
 import { VisuallyHidden } from '../visually-hidden';
@@ -48,8 +48,6 @@ const [triggerElement, setTriggerElement] = useForwardElement(el => {
   onTriggerElementChange(el);
   onItemElementChange(el);
 });
-
-const forwardedProps = useOmitProps(props, ['disabled'], attrs, itemProps);
 
 const hasPointerMoveOpenedRef = refAutoReset(false, 300);
 let wasClickCloseRef = false;
@@ -123,7 +121,7 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
 
 <template>
   <Primitive
-    v-bind="forwardedProps"
+    v-bind="{ ...attrs, ...itemProps }"
     :id="triggerId"
     :ref="setTriggerElement"
     :class="cls"

@@ -9,7 +9,7 @@ defineOptions({
   name: 'TooltipTrigger'
 });
 
-const props = withDefaults(defineProps<TooltipTriggerProps>(), {
+withDefaults(defineProps<TooltipTriggerProps>(), {
   as: 'button'
 });
 
@@ -98,8 +98,10 @@ const tooltipListeners = computed(() => {
 
 <template>
   <PopperAnchor
-    v-bind="props"
     :ref="setTriggerElement"
+    :as="as"
+    :as-child="asChild"
+    :reference="reference"
     :aria-describedby="open ? contentId : undefined"
     :data-state="dataState"
     data-grace-area-trigger

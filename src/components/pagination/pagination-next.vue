@@ -7,7 +7,7 @@ defineOptions({
   name: 'PaginationNext'
 });
 
-const props = defineProps<PaginationButtonProps>();
+defineProps<PaginationButtonProps>();
 
 const { page, onPageChange, pageCount, disabled } = usePaginationRootContext('PaginationNext');
 
@@ -24,7 +24,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="Next Page" @click="onClick">
+  <button
+    :class="cls"
+    :disabled="isDisabled"
+    :data-disabled="isDisabled ? '' : undefined"
+    aria-label="Next Page"
+    @click="onClick"
+  >
     <slot>Next page</slot>
   </button>
 </template>

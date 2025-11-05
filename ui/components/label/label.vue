@@ -15,7 +15,7 @@ const cls = computed(() => cn(labelVariants({ size: props.size }), props.class))
 </script>
 
 <template>
-  <Label v-bind="props" :class="cls">
+  <Label :for="props.for" :class="cls">
     <slot />
   </Label>
 </template>

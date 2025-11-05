@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { AlertDialogClose } from '@headless';
+import { useOmitProps } from '@headless/composables';
 import { useSizeContext } from '@theme';
 import Button from '../button/button.vue';
 import type { AlertDialogCancelProps } from './types';
@@ -13,13 +14,15 @@ const props = withDefaults(defineProps<AlertDialogCancelProps>(), {
   variant: 'plain'
 });
 
+const forwardedProps = useOmitProps(props, ['text']);
+
 const { size } = useSizeContext('AlertDialogCancel');
 </script>
 
 <template>
   <AlertDialogClose as-child>
     <slot name="content">
-      <Button v-bind="props" :size="size">
+      <Button v-bind="forwardedProps" :size="size">
         <slot>{{ text }}</slot>
       </Button>
     </slot>

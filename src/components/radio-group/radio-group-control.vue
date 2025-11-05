@@ -7,8 +7,7 @@ import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeC
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 
 defineOptions({
-  name: 'RadioGroupControl',
-  inheritAttrs: false
+  name: 'RadioGroupControl'
 });
 
 const props = defineProps<RadioGroupControlProps>();
@@ -101,7 +100,7 @@ onBeforeMount(() => {
 <template>
   <RovingFocusItem as-child :checked="checked" :focusable="!disabled" :active="checked">
     <button
-      v-bind="{ ...props, ...attrs }"
+      :id="id"
       ref="controlElement"
       :class="cls"
       role="radio"

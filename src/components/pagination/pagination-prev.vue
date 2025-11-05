@@ -7,7 +7,7 @@ defineOptions({
   name: 'PaginationPrev'
 });
 
-const props = defineProps<PaginationButtonProps>();
+defineProps<PaginationButtonProps>();
 
 const { page, onPageChange, disabled } = usePaginationRootContext('PaginationPrev');
 
@@ -24,7 +24,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="Previous Page" @click="onClick">
+  <button
+    :class="cls"
+    :disabled="isDisabled"
+    :data-disabled="isDisabled ? '' : undefined"
+    aria-label="Previous Page"
+    @click="onClick"
+  >
     <slot>Prev page</slot>
   </button>
 </template>

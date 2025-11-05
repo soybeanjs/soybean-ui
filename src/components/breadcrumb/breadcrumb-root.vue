@@ -7,7 +7,7 @@ defineOptions({
   name: 'BreadcrumbRoot'
 });
 
-const props = defineProps<BreadcrumbRootProps>();
+defineProps<BreadcrumbRootProps>();
 
 const themeContext = useBreadcrumbThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.root);
 </script>
 
 <template>
-  <nav v-bind="props" :class="cls" aria-label="breadcrumb">
+  <nav :class="cls" aria-label="breadcrumb">
     <slot />
   </nav>
 </template>

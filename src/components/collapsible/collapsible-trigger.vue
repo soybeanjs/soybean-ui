@@ -24,7 +24,8 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 <template>
   <Primitive
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :type="tag"
     :aria-controls="contentId"

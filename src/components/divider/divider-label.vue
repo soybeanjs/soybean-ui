@@ -7,7 +7,7 @@ defineOptions({
   name: 'DividerLabel'
 });
 
-const props = defineProps<DividerLabelProps>();
+defineProps<DividerLabelProps>();
 
 const themeContext = useDividerThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.label);
 </script>
 
 <template>
-  <span v-bind="props" :class="cls">
+  <span :class="cls">
     <slot />
   </span>
 </template>

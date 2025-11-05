@@ -7,13 +7,13 @@ defineOptions({
   name: 'SDialogClose'
 });
 
-const props = defineProps<DialogCloseProps>();
+defineProps<DialogCloseProps>();
 
 const { size } = useSizeContext('DialogClose');
 </script>
 
 <template>
-  <DialogClose v-bind="props" :size="size" as-child>
+  <DialogClose :size="size" as-child>
     <slot />
   </DialogClose>
 </template>

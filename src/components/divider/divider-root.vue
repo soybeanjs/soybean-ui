@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
 import type { DataOrientation } from '../../types';
 import { useDividerThemeContext } from './context';
 import type { DividerRootProps } from './types';
@@ -13,8 +12,6 @@ const props = withDefaults(defineProps<DividerRootProps>(), {
   orientation: 'horizontal',
   decorative: false
 });
-
-const forwardedProps = useOmitProps(props, ['orientation', 'decorative']);
 
 const themeContext = useDividerThemeContext();
 
@@ -32,7 +29,6 @@ const ariaOrientation = computed(() => (computedOrientation.value === 'vertical'
 
 <template>
   <div
-    v-bind="forwardedProps"
     :class="cls"
     :data-orientation="computedOrientation"
     :aria-orientation="ariaOrientation"

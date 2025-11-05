@@ -7,7 +7,7 @@ defineOptions({
   name: 'DialogDescription'
 });
 
-const props = defineProps<DialogDescriptionProps>();
+defineProps<DialogDescriptionProps>();
 
 const { descriptionId, initDescriptionId } = useDialogRootContext('DialogDescription');
 
@@ -19,7 +19,7 @@ initDescriptionId();
 </script>
 
 <template>
-  <p v-bind="props" :id="descriptionId" :class="cls">
+  <p :id="descriptionId" :class="cls">
     <slot />
   </p>
 </template>

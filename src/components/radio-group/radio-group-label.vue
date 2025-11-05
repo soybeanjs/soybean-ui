@@ -15,10 +15,12 @@ const themeContext = useRadioGroupThemeContext();
 const cls = computed(() => themeContext?.ui?.value?.label);
 
 const { controlId } = useRadioGroupItemContext('RadioGroupLabel');
+
+const id = computed(() => props.for || controlId.value);
 </script>
 
 <template>
-  <Label v-bind="props" :for="props.for || controlId" :class="cls">
+  <Label :for="id" :class="cls">
     <slot />
   </Label>
 </template>

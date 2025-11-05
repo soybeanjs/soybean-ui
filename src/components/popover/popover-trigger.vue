@@ -27,8 +27,9 @@ initTriggerId();
 <template>
   <component
     :is="hasCustomAnchor ? Primitive : PopperAnchor"
-    v-bind="props"
     :ref="setTriggerElement"
+    :as="as"
+    :as-child="asChild"
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"

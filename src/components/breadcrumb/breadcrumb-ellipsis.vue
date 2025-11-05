@@ -7,7 +7,7 @@ defineOptions({
   name: 'BreadcrumbEllipsis'
 });
 
-const props = defineProps<BreadcrumbEllipsisProps>();
+defineProps<BreadcrumbEllipsisProps>();
 
 const themeContext = useBreadcrumbThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.ellipsis);
 </script>
 
 <template>
-  <span v-bind="props" :class="cls" role="presentation" aria-hidden="true">
+  <span :class="cls" role="presentation" aria-hidden="true">
     <slot>…</slot>
   </span>
 </template>

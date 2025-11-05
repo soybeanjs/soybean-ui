@@ -8,18 +8,19 @@ defineOptions({
   name: 'ListboxItemIndicator'
 });
 
-const props = withDefaults(defineProps<ListboxItemIndicatorProps>(), {
+withDefaults(defineProps<ListboxItemIndicatorProps>(), {
   as: 'span'
 });
 
 const { isSelected } = useListboxItemContext('ListboxItemIndicator');
 
 const themeContext = useListboxThemeContext();
+
 const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
 </script>
 
 <template>
-  <Primitive v-if="isSelected" v-bind="props" :class="cls" aria-hidden="true">
+  <Primitive v-if="isSelected" :as="as" :as-child="asChild" :class="cls" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

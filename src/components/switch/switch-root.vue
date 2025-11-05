@@ -54,7 +54,7 @@ const { dataState } = provideSwitchRootContext({
 </script>
 
 <template>
-  <div v-bind="props" :ref="setRootElement" :class="cls" :data-state="dataState">
+  <div :ref="setRootElement" :class="cls" :data-state="dataState">
     <slot :model-value="modelValue" />
     <VisuallyHiddenInput
       v-if="formControl && name"

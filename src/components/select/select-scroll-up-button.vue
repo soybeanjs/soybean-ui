@@ -9,7 +9,7 @@ defineOptions({
   name: 'SelectScrollUpButton'
 });
 
-const props = defineProps<SelectScrollUpButtonProps>();
+defineProps<SelectScrollUpButtonProps>();
 
 const { selectedItemElement, viewportElement, isPositioned } = useSelectContentContext('SelectScrollDownButton');
 const alignedPositionContext = useSelectItemAlignedPositionContext();
@@ -50,8 +50,9 @@ watchEffect(() => {
 <template>
   <SelectScrollButtonImpl
     v-if="canScrollUp"
-    v-bind="props"
     :ref="setButtonElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     @auto-scroll="onAutoScroll"
   >

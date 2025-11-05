@@ -36,5 +36,12 @@ watch(
 </script>
 
 <template>
-  <img v-show="imageLoadingStatus === 'loaded'" v-bind="props" :class="cls" role="img" />
+  <img
+    v-show="imageLoadingStatus === 'loaded'"
+    :class="cls"
+    :src="src"
+    :referrerpolicy="referrerpolicy"
+    :crossorigin="crossorigin"
+    role="img"
+  />
 </template>

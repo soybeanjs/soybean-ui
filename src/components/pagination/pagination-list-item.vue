@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
 import { usePaginationRootContext, usePaginationThemeContext } from './context';
 import type { PaginationListItemProps } from './types';
 
@@ -16,8 +15,6 @@ const themeContext = usePaginationThemeContext();
 
 const cls = computed(() => themeContext?.ui?.value?.listItem);
 
-const forwardedProps = useOmitProps(props, ['value']);
-
 const isSelected = computed(() => page.value === props.value);
 
 const onClick = () => {
@@ -29,13 +26,13 @@ const onClick = () => {
 
 <template>
   <button
-    v-bind="forwardedProps"
     :class="cls"
     data-type="page"
     :aria-label="`Page ${value}`"
     :aria-current="isSelected ? 'page' : undefined"
     :data-selected="isSelected ? '' : undefined"
     :disabled="disabled"
+    :data-disabled="disabled ? '' : undefined"
     @click="onClick"
   >
     <slot>{{ value }}</slot>

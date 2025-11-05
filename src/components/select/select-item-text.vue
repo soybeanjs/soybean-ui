@@ -8,7 +8,7 @@ defineOptions({
   name: 'SelectItemText'
 });
 
-const props = defineProps<SelectItemTextProps>();
+defineProps<SelectItemTextProps>();
 
 const { onOptionAdd, onOptionRemove } = useSelectRootContext('SelectItemText');
 const { onSelectedItemTextElementChange } = useSelectContentContext('SelectItemText');
@@ -43,7 +43,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <span v-bind="props" :id="textId" :ref="setItemTextElement" :class="cls">
+  <span :id="textId" :ref="setItemTextElement" :class="cls">
     <slot />
   </span>
 </template>

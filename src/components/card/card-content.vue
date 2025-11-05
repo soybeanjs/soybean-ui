@@ -4,10 +4,10 @@ import { useCardThemeContext } from './context';
 import type { CardContentProps } from './types';
 
 defineOptions({
-  name: 'SCardContent'
+  name: 'CardContent'
 });
 
-const props = defineProps<CardContentProps>();
+defineProps<CardContentProps>();
 
 const themeContext = useCardThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.content);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls" tabindex="-1">
+  <div :class="cls" tabindex="-1">
     <slot />
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed, useTemplateRef } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useControllableState } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -21,17 +21,6 @@ const props = withDefaults(defineProps<RadioGroupRootProps<T>>(), {
 });
 
 const emit = defineEmits<RadioGroupRootEmits<T>>();
-
-const forwardedProps = useOmitProps(props, [
-  'modelValue',
-  'defaultValue',
-  'disabled',
-  'orientation',
-  'dir',
-  'loop',
-  'name',
-  'required'
-]);
 
 const themeContext = useRadioGroupThemeContext();
 
@@ -59,7 +48,6 @@ provideRadioGroupRootContext({
 <template>
   <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
     <div
-      v-bind="forwardedProps"
       ref="rootElement"
       :class="cls"
       role="radiogroup"

@@ -7,7 +7,7 @@ defineOptions({
   name: 'DialogTitle'
 });
 
-const props = defineProps<DialogTitleProps>();
+defineProps<DialogTitleProps>();
 
 const { titleId, initTitleId } = useDialogRootContext('DialogTitle');
 
@@ -19,7 +19,7 @@ initTitleId();
 </script>
 
 <template>
-  <h2 v-bind="props" :id="titleId" :class="cls">
+  <h2 :id="titleId" :class="cls">
     <slot />
   </h2>
 </template>

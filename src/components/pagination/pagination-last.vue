@@ -7,7 +7,7 @@ defineOptions({
   name: 'PaginationLast'
 });
 
-const props = defineProps<PaginationButtonProps>();
+defineProps<PaginationButtonProps>();
 
 const { page, onPageChange, pageCount, disabled } = usePaginationRootContext('PaginationLast');
 
@@ -24,7 +24,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="Last Page" @click="onClick">
+  <button
+    :class="cls"
+    :disabled="isDisabled"
+    :data-disabled="isDisabled ? '' : undefined"
+    aria-label="Last Page"
+    @click="onClick"
+  >
     <slot>Last page</slot>
   </button>
 </template>

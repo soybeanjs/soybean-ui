@@ -7,7 +7,7 @@ defineOptions({
   name: 'MenuGroupLabel'
 });
 
-const props = defineProps<MenuGroupLabelProps>();
+defineProps<MenuGroupLabelProps>();
 
 const themeContext = useMenuThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.groupLabel);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div :class="cls">
     <slot />
   </div>
 </template>

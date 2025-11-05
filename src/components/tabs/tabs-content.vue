@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, shallowRef } from 'vue';
-import { useForwardElement, useOmitProps, usePresence } from '../../composables';
+import { useForwardElement, usePresence } from '../../composables';
 import { useTabsRootContext, useTabsThemeContext } from './context';
 import type { TabsContentProps } from './types';
 
@@ -9,8 +9,6 @@ defineOptions({
 });
 
 const props = defineProps<TabsContentProps>();
-
-const forwardedProps = useOmitProps(props, ['value', 'forceMount']);
 
 const { modelValue, unmountOnHide, getId } = useTabsRootContext('TabsContent');
 
@@ -40,7 +38,6 @@ onMounted(() => {
 
 <template>
   <div
-    v-bind="forwardedProps"
     :id="contentId"
     :ref="setContentElement"
     :class="cls"

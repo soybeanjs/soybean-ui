@@ -17,8 +17,9 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 <template>
   <Primitive
-    v-bind="props"
     :ref="setTriggerElement"
+    :as="as"
+    :as-child="asChild"
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"

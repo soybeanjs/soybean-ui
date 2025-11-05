@@ -7,7 +7,7 @@ defineOptions({
   name: 'AvatarRoot'
 });
 
-const props = defineProps<AvatarRootProps>();
+defineProps<AvatarRootProps>();
 
 const themeContext = useAvatarThemeContext();
 
@@ -17,7 +17,7 @@ provideAvatarRootContext();
 </script>
 
 <template>
-  <span v-bind="props" :class="cls">
+  <span :class="cls">
     <slot />
   </span>
 </template>

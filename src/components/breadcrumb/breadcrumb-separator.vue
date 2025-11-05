@@ -7,7 +7,7 @@ defineOptions({
   name: 'BreadcrumbSeparator'
 });
 
-const props = defineProps<BreadcrumbSeparatorProps>();
+defineProps<BreadcrumbSeparatorProps>();
 
 const themeContext = useBreadcrumbThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.separator);
 </script>
 
 <template>
-  <li v-bind="props" :class="cls" role="presentation" aria-hidden="true">
+  <li :class="cls" role="presentation" aria-hidden="true">
     <slot />
   </li>
 </template>

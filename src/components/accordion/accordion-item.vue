@@ -14,7 +14,7 @@ const props = defineProps<AccordionItemProps>();
 
 const themeContext = useAccordionThemeContext();
 
-const forwardedProps = useOmitProps(props, ['class', 'value']);
+const forwardedProps = useOmitProps(props, ['value']);
 
 const cls = computed(() => themeContext?.ui?.value?.item);
 

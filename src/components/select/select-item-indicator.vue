@@ -8,7 +8,7 @@ defineOptions({
   name: 'SelectItemIndicator'
 });
 
-const props = withDefaults(defineProps<SelectItemIndicatorProps>(), {
+withDefaults(defineProps<SelectItemIndicatorProps>(), {
   as: 'span'
 });
 
@@ -20,7 +20,7 @@ const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
 </script>
 
 <template>
-  <Primitive v-if="isSelected" v-bind="props" :class="cls" aria-hidden="true">
+  <Primitive v-if="isSelected" :as="as" :as-child="asChild" :class="cls" aria-hidden="true">
     <slot />
   </Primitive>
 </template>

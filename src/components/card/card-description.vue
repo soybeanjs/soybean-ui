@@ -7,7 +7,7 @@ defineOptions({
   name: 'CardDescription'
 });
 
-const props = defineProps<CardDescriptionProps>();
+defineProps<CardDescriptionProps>();
 
 const themeContext = useCardThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.description);
 </script>
 
 <template>
-  <p v-bind="props" :class="cls">
+  <p :class="cls">
     <slot />
   </p>
 </template>

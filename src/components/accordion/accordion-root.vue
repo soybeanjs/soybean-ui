@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends SingleOrMultipleValue, M extends boolean">
 import { computed, shallowRef } from 'vue';
-import { useOmitProps, useSingleOrMultipleValue } from '../../composables';
+import { useSingleOrMultipleValue } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import type { SingleOrMultipleValue } from '../../types';
 import { provideAccordionRootContext, useAccordionThemeContext } from './context';
@@ -18,8 +18,6 @@ const props = withDefaults(defineProps<AccordionRootProps<T, M>>(), {
 });
 
 const emit = defineEmits<AccordionRootEmits<T>>();
-
-const forwardedProps = useOmitProps(props, ['class', 'collapsible', 'disabled', 'orientation', 'unmountOnHide']);
 
 const themeContext = useAccordionThemeContext();
 
@@ -41,7 +39,7 @@ provideAccordionRootContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="rootElement" :class="cls">
+  <div ref="rootElement" :class="cls">
     <slot :model-value="modelValue as T" />
   </div>
 </template>

@@ -56,7 +56,7 @@ watchEffect(() => {
 <template>
   <component
     :is="rovingFocus ? RovingFocusItem : 'button'"
-    v-bind="props"
+    :id="id"
     :ref="setControlElement"
     :class="cls"
     as="button"

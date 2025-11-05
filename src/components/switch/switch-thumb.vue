@@ -8,7 +8,7 @@ defineOptions({
   name: 'SwitchThumb'
 });
 
-const props = withDefaults(defineProps<SwitchThumbProps>(), {
+withDefaults(defineProps<SwitchThumbProps>(), {
   as: 'span'
 });
 
@@ -20,7 +20,7 @@ const cls = computed(() => themeContext?.ui?.value?.thumb);
 </script>
 
 <template>
-  <Primitive v-bind="props" :class="cls" :data-disabled="dataDisabled" :data-state="dataState">
+  <Primitive :as="as" :as-child="asChild" :class="cls" :data-disabled="dataDisabled" :data-state="dataState">
     <slot />
   </Primitive>
 </template>

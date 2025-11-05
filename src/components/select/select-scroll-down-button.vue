@@ -9,7 +9,7 @@ defineOptions({
   name: 'SelectScrollDownButton'
 });
 
-const props = defineProps<SelectScrollDownButtonProps>();
+defineProps<SelectScrollDownButtonProps>();
 
 const { selectedItemElement, viewportElement, isPositioned } = useSelectContentContext('SelectScrollDownButton');
 const alignedPositionContext = useSelectItemAlignedPositionContext();
@@ -55,8 +55,9 @@ watchEffect(() => {
 <template>
   <SelectScrollButtonImpl
     v-if="canScrollDown"
-    v-bind="props"
     :ref="setButtonElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     @auto-scroll="onAutoScroll"
   >

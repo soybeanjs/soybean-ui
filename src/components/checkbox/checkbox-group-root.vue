@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import type { DefinedValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
@@ -26,12 +26,6 @@ const rovingFocusProps = computed<RovingFocusGroupProps>(() => {
   return rovingFocus ? { loop, dir, orientation } : {};
 });
 
-const forwardedProps = useOmitProps(
-  props,
-  ['modelValue', 'defaultValue', 'rovingFocus', 'disabled', 'loop', 'dir', 'orientation', 'name', 'required'],
-  rovingFocusProps
-);
-
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
@@ -51,7 +45,7 @@ const formControl = computed(() => isFormControl(groupElement.value));
 </script>
 
 <template>
-  <component :is="rovingFocus ? RovingFocusGroup : 'div'" v-bind="forwardedProps" :ref="setGroupElement" as="div">
+  <component :is="rovingFocus ? RovingFocusGroup : 'div'" v-bind="rovingFocusProps" :ref="setGroupElement" as="div">
     <slot />
     <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" />
   </component>

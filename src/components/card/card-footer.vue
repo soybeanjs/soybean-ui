@@ -7,7 +7,7 @@ defineOptions({
   name: 'CardFooter'
 });
 
-const props = defineProps<CardFooterProps>();
+defineProps<CardFooterProps>();
 
 const themeContext = useCardThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.footer);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div :class="cls">
     <slot />
   </div>
 </template>

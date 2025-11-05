@@ -3,7 +3,7 @@ import { computed, shallowRef, useAttrs, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useElementSize } from '@vueuse/core';
 import { autoUpdate, useFloating } from '@floating-ui/vue';
-import { useExposedElement, useForwardElement, useOmitProps } from '../../composables';
+import { useExposedElement, useForwardElement } from '../../composables';
 import { providePopperContentContext, usePopoverThemeContext, usePopperRootContext } from './context';
 import {
   createPopperContentPropsDefaultValue,
@@ -24,32 +24,6 @@ const props = withDefaults(defineProps<PopperContentProps>(), createPopperConten
 const emit = defineEmits<PopperContentEmits>();
 
 const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(
-  props,
-  [
-    'floatingRef',
-    'placement',
-    'side',
-    'sideOffset',
-    'sideFlip',
-    'align',
-    'alignOffset',
-    'alignFlip',
-    'avoidCollisions',
-    'collisionBoundary',
-    'collisionPadding',
-    'arrowPadding',
-    'sticky',
-    'hideWhenDetached',
-    'positionStrategy',
-    'updatePositionStrategy',
-    'disableUpdateOnLayoutShift',
-    'prioritizePosition',
-    'reference'
-  ],
-  attrs
-);
 
 const themeContext = usePopoverThemeContext();
 const cls = computed(() => themeContext?.ui?.value?.content);
@@ -128,7 +102,7 @@ watchPostEffect(() => {
 <template>
   <div :ref="setFloatingRef" data-soybean-popper-content-wrapper :style="wrapperStyle">
     <div
-      v-bind="forwardedProps"
+      v-bind="attrs"
       :ref="setContentElement"
       :class="cls"
       :data-side="placedSide"

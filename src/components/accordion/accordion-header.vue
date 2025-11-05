@@ -7,7 +7,7 @@ defineOptions({
   name: 'AccordionHeader'
 });
 
-const props = defineProps<AccordionHeaderProps>();
+defineProps<AccordionHeaderProps>();
 
 const themeContext = useAccordionThemeContext();
 
@@ -18,7 +18,7 @@ const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');
 </script>
 
 <template>
-  <h3 v-bind="props" :class="cls" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
+  <div :class="cls" :data-disabled="dataDisabled" :data-orientation="orientation" :data-state="dataState">
     <slot />
-  </h3>
+  </div>
 </template>

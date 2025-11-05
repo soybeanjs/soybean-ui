@@ -7,7 +7,7 @@ defineOptions({
   name: 'CardRoot'
 });
 
-const props = defineProps<CardRootProps>();
+defineProps<CardRootProps>();
 
 const themeContext = useCardThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.root);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div :class="cls">
     <slot />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, onMounted, shallowRef } from 'vue';
+import { nextTick, onMounted, shallowRef, useAttrs } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useExposedElement } from '../../composables';
 import { clamp } from '../../shared';
@@ -18,9 +18,11 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = defineProps<SelectItemAlignedPositionProps>();
+defineProps<SelectItemAlignedPositionProps>();
 
 const emit = defineEmits<SelectItemAlignedPositionEmits>();
+
+const attrs = useAttrs();
 
 const { dir, triggerElement, valueElement } = useSelectRootContext('SelectItemAlignedPosition');
 const { viewportElement, selectedItemElement, selectedItemTextElement, focusSelectedItem } =
@@ -203,8 +205,10 @@ onMounted(async () => {
     }"
   >
     <Primitive
-      v-bind="{ ...$attrs, ...props }"
+      v-bind="attrs"
       :ref="setContentElement"
+      :as="as"
+      :as-child="asChild"
       style="box-sizing: border-box; max-height: 100%"
     >
       <slot />

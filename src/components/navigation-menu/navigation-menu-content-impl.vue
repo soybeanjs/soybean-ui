@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useArrowNavigation, useDismissableLayer, useExposedElement, useOmitProps } from '../../composables';
+import { useArrowNavigation, useDismissableLayer, useExposedElement } from '../../composables';
 import { getActiveElement, getTabbableCandidates, tryFocusFirst } from '../../shared';
 import {
   useCollectionContext,
@@ -94,8 +94,6 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
     contentElement.value?.dispatchEvent(event);
   }
 });
-
-const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents'], layerProps);
 
 const prevMotionAttribute = shallowRef<MotionAttribute | null>(null);
 
@@ -201,7 +199,7 @@ watchEffect(cleanupFn => {
 
 <template>
   <div
-    v-bind="forwardedProps"
+    v-bind="layerProps"
     :id="contentId"
     :ref="setContentElement"
     :class="cls"

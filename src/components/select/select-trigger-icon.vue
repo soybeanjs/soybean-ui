@@ -7,7 +7,7 @@ defineOptions({
   name: 'SelectTriggerIcon'
 });
 
-const props = defineProps<SelectTriggerIconProps>();
+defineProps<SelectTriggerIconProps>();
 
 const themeContext = useSelectThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.triggerIcon);
 </script>
 
 <template>
-  <span v-bind="props" :class="cls" aria-hidden="true">
+  <span :class="cls" aria-hidden="true">
     <slot />
   </span>
 </template>

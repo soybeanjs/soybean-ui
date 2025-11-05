@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useControllableState } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
 import { provideMenuCheckboxGroupContext, useMenuThemeContext } from './context';
@@ -13,8 +13,6 @@ defineOptions({
 const props = defineProps<MenuCheckboxGroupProps<T>>();
 
 const emit = defineEmits<MenuCheckboxGroupEmits<T>>();
-
-const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
 
 const themeContext = useMenuThemeContext();
 
@@ -35,7 +33,7 @@ provideMenuCheckboxGroupContext({
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :class="cls" role="menu-checkbox-group">
+  <Primitive :as="as" :as-child="asChild" :class="cls" role="menu-checkbox-group">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

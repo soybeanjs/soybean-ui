@@ -11,7 +11,7 @@ defineOptions({
   name: 'AccordionContent'
 });
 
-const props = defineProps<AccordionContentProps>();
+defineProps<AccordionContentProps>();
 
 const themeContext = useAccordionThemeContext();
 
@@ -28,8 +28,10 @@ const style: CSSProperties = {
 
 <template>
   <CollapsibleContent
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
+    :force-mount="forceMount"
     role="region"
     :aria-labelledby="triggerId"
     :data-disabled="dataDisabled"

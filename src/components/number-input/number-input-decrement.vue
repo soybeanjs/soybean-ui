@@ -26,6 +26,10 @@ const isDisabled = computed(() => disabled.value || readonly.value || props.disa
 
 const { isPressed, onTrigger } = usePressedHold({ target: decrementElement, disabled: isDisabled });
 
+const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const style = computed(() => (isPressed.value ? 'user-select:none;' : undefined));
+
 onTrigger(() => {
   onDecrease();
 });
@@ -34,16 +38,16 @@ onTrigger(() => {
 <template>
   <Primitive
     :ref="setDecrementElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
-    :type="as === 'button' ? 'button' : undefined"
+    :type="tag"
     tabindex="-1"
     aria-label="Decrease"
     :disabled="isDisabled ? '' : undefined"
     :data-disabled="isDisabled ? '' : undefined"
     :data-pressed="isPressed ? 'true' : undefined"
-    :style="{
-      userSelect: isPressed ? 'none' : undefined
-    }"
+    :style="style"
     @contextmenu.prevent
   >
     <slot />

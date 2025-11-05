@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForwardElement, useOmitProps, useTypeahead } from '../../composables';
+import { useForwardElement, useTypeahead } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
 import { useCollectionContext, useSelectRootContext, useSelectThemeContext } from './context';
@@ -32,8 +32,6 @@ const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 
 const { getOrderedItems } = useCollectionContext('SelectTrigger');
 const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
-
-const forwardedProps = useOmitProps(props, ['reference']);
 
 const themeContext = useSelectThemeContext();
 
@@ -124,8 +122,9 @@ initContentId();
 <template>
   <PopperAnchor as-child :reference="reference">
     <Primitive
-      v-bind="forwardedProps"
       :ref="setTriggerElement"
+      :as="as"
+      :as-child="asChild"
       :class="cls"
       :aria-controls="contentId"
       :aria-expanded="open || false"

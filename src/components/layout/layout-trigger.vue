@@ -8,7 +8,7 @@ defineOptions({
   name: 'LayoutTrigger'
 });
 
-const props = defineProps<LayoutTriggerProps>();
+defineProps<LayoutTriggerProps>();
 
 const { open, toggleSidebar } = useLayoutRootContext('LayoutTrigger');
 
@@ -18,7 +18,7 @@ const cls = computed(() => theme?.ui?.value?.trigger);
 </script>
 
 <template>
-  <Primitive v-bind="props" :class="cls" data-sidebar="trigger" @click="toggleSidebar">
+  <Primitive :as="as" :as-child="asChild" :class="cls" data-sidebar="trigger" @click="toggleSidebar">
     <slot :open="open" />
   </Primitive>
 </template>

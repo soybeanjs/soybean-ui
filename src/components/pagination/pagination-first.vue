@@ -7,7 +7,7 @@ defineOptions({
   name: 'PaginationFirst'
 });
 
-const props = defineProps<PaginationButtonProps>();
+defineProps<PaginationButtonProps>();
 
 const { page, onPageChange, disabled } = usePaginationRootContext('PaginationFirst');
 
@@ -24,7 +24,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <button v-bind="props" :class="cls" :disabled="isDisabled" aria-label="First Page" @click="onClick">
+  <button
+    :class="cls"
+    :disabled="isDisabled"
+    :data-disabled="isDisabled ? '' : undefined"
+    aria-label="First Page"
+    @click="onClick"
+  >
     <slot>First page</slot>
   </button>
 </template>

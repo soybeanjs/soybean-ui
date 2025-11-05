@@ -7,7 +7,7 @@ defineOptions({
   name: 'DialogFooter'
 });
 
-const props = defineProps<DialogFooterProps>();
+defineProps<DialogFooterProps>();
 
 const themeContext = useDialogThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.footer);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls">
+  <div :class="cls">
     <slot />
   </div>
 </template>

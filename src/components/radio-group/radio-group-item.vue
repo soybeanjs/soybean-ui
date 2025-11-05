@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, useTemplateRef } from 'vue';
-import { useOmitProps } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeContext } from './context';
@@ -13,8 +12,6 @@ defineOptions({
 const props = defineProps<RadioGroupItemProps>();
 
 const emit = defineEmits<RadioGroupItemEmits>();
-
-const forwardedProps = useOmitProps(props, ['name', 'required', 'value', 'disabled']);
 
 const themeContext = useRadioGroupThemeContext();
 
@@ -40,7 +37,7 @@ const { dataState } = provideRadioGroupItemContext({
 </script>
 
 <template>
-  <div v-bind="forwardedProps" ref="itemElement" :class="cls" :data-state="dataState">
+  <div ref="itemElement" :class="cls" :data-state="dataState">
     <slot :checked="checked" />
 
     <VisuallyHiddenInput

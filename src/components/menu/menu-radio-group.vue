@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue">
 import { computed } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { useControllableState } from '../../composables';
 import { isNullish } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { Primitive } from '../primitive';
@@ -14,8 +14,6 @@ defineOptions({
 const props = defineProps<MenuRadioGroupProps<T>>();
 
 const emit = defineEmits<MenuRadioGroupEmits<T>>();
-
-const forwardedProps = useOmitProps(props, ['modelValue', 'defaultValue', 'disabled']);
 
 const themeContext = useMenuThemeContext();
 
@@ -37,7 +35,7 @@ provideMenuRadioGroupContext({
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :class="cls" role="menu-radio-group">
+  <Primitive :as="as" :as-child="asChild" :class="cls" role="menu-radio-group">
     <slot :model-value="modelValue" />
   </Primitive>
 </template>

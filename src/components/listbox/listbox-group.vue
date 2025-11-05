@@ -12,6 +12,7 @@ defineProps<ListboxGroupProps>();
 const { id } = provideListboxGroupContext();
 
 const themeContext = useListboxThemeContext();
+
 const cls = computed(() => themeContext?.ui?.value?.group);
 </script>
 

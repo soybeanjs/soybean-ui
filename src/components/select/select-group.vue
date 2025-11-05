@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Primitive } from '../primitive';
 import { provideSelectGroupContext, useSelectThemeContext } from './context';
 import type { SelectGroupProps } from './types';
 
@@ -8,7 +7,7 @@ defineOptions({
   name: 'SelectGroup'
 });
 
-const props = defineProps<SelectGroupProps>();
+defineProps<SelectGroupProps>();
 
 const { labelId, initLabelId } = provideSelectGroupContext();
 
@@ -20,7 +19,7 @@ initLabelId();
 </script>
 
 <template>
-  <Primitive v-bind="props" :class="cls" :aria-labelledby="labelId" role="group">
+  <div :class="cls" :aria-labelledby="labelId" role="group">
     <slot />
-  </Primitive>
+  </div>
 </template>

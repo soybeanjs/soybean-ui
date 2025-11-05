@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { useRovingFocusItem } from './context';
@@ -16,16 +15,16 @@ const props = withDefaults(defineProps<RovingFocusItemProps>(), {
 const { setItemElement, rovingFocusItemProps, rovingFocusItemListeners } = useRovingFocusItem(
   transformPropsToContext(props, ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'])
 );
-
-const forwardedProps = useOmitProps(
-  props,
-  ['tabStopId', 'focusable', 'active', 'allowShiftKey', 'itemData'],
-  rovingFocusItemProps
-);
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :ref="setItemElement" v-on="rovingFocusItemListeners">
+  <Primitive
+    v-bind="rovingFocusItemProps"
+    :ref="setItemElement"
+    :as="as"
+    :as-child="asChild"
+    v-on="rovingFocusItemListeners"
+  >
     <slot />
   </Primitive>
 </template>

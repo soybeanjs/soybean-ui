@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
 import { useTabsRootContext, useTabsThemeContext } from './context';
@@ -14,8 +13,6 @@ const props = withDefaults(defineProps<TabsTriggerProps>(), {
   as: 'button',
   disabled: false
 });
-
-const forwardedProps = useOmitProps(props, ['value']);
 
 const { modelValue, orientation, changeModelValue, activationMode, getId } = useTabsRootContext('TabsTrigger');
 
@@ -56,8 +53,9 @@ const onFocus = () => {
 <template>
   <RovingFocusItem as-child :focusable="!disabled" :active="isSelected">
     <Primitive
-      v-bind="forwardedProps"
       :id="triggerId"
+      :as="as"
+      :as-child="asChild"
       :class="cls"
       :aria-controls="contentId"
       :aria-selected="isSelected ? 'true' : 'false'"

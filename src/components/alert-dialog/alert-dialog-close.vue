@@ -7,13 +7,13 @@ defineOptions({
   name: 'AlertDialogClose'
 });
 
-const props = defineProps<AlertDialogCloseProps>();
+defineProps<AlertDialogCloseProps>();
 
 const { setCancelElement } = useAlertDialogContentContext('AlertDialogClose');
 </script>
 
 <template>
-  <DialogClose v-bind="props" :ref="setCancelElement">
+  <DialogClose :ref="setCancelElement" :as="as" :as-child="asChild">
     <slot />
   </DialogClose>
 </template>

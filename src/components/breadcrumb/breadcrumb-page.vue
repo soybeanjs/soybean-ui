@@ -7,7 +7,7 @@ defineOptions({
   name: 'BreadcrumbPage'
 });
 
-const props = defineProps<BreadcrumbPageProps>();
+defineProps<BreadcrumbPageProps>();
 
 const themeContext = useBreadcrumbThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.page);
 </script>
 
 <template>
-  <span v-bind="props" :class="cls" role="link" aria-disabled="true" aria-current="page">
+  <span :class="cls" role="link" aria-disabled="true" aria-current="page">
     <slot />
   </span>
 </template>

@@ -8,7 +8,7 @@ defineOptions({
   name: 'AccordionTrigger'
 });
 
-const props = defineProps<AccordionTriggerProps>();
+defineProps<AccordionTriggerProps>();
 
 const { collapsible, orientation, onModelValueChange, isMultiple } = useAccordionRootContext('AccordionTrigger');
 const { setTriggerElement, triggerId, initTriggerId, open, value, dataDisabled, dataState, disabled } =
@@ -32,9 +32,10 @@ initTriggerId();
 
 <template>
   <CollapsibleTrigger
-    v-bind="props"
     :id="triggerId"
     :ref="setTriggerElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     data-soybean-collection-item
     :aria-disabled="disabled || undefined"

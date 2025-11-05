@@ -10,7 +10,7 @@ defineOptions({
   name: 'TabsIndicator'
 });
 
-const props = defineProps<TabsIndicatorProps>();
+defineProps<TabsIndicatorProps>();
 
 const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIndicator');
 
@@ -63,7 +63,7 @@ watch(
 </script>
 
 <template>
-  <Primitive v-if="typeof indicatorStyle.size === 'number'" v-bind="props" :class="cls" :style="style">
+  <Primitive v-if="typeof indicatorStyle.size === 'number'" :as="as" :as-child="asChild" :class="cls" :style="style">
     <slot />
   </Primitive>
 </template>

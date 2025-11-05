@@ -15,10 +15,12 @@ const themeContext = useCheckboxThemeContext();
 const cls = computed(() => themeContext?.ui?.value?.label);
 
 const { controlId } = useCheckboxRootContext('CheckboxLabel');
+
+const id = computed(() => props.for || controlId.value);
 </script>
 
 <template>
-  <Label v-bind="props" :for="props.for || controlId" :class="cls">
+  <Label :for="id" :class="cls">
     <slot />
   </Label>
 </template>

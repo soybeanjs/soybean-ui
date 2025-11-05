@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<ListboxItemProps<T>>(), {
 const emit = defineEmits<ListboxItemEmits<T>>();
 
 const themeContext = useListboxThemeContext();
+
 const cls = computed(() => themeContext?.ui?.value?.item);
 
 const {

@@ -7,7 +7,7 @@ defineOptions({
   name: 'PaginationEllipsis'
 });
 
-const props = defineProps<PaginationEllipsisProps>();
+defineProps<PaginationEllipsisProps>();
 
 const themeContext = usePaginationThemeContext();
 
@@ -15,7 +15,7 @@ const cls = computed(() => themeContext?.ui?.value?.ellipsis);
 </script>
 
 <template>
-  <div v-bind="props" :class="cls" data-type="ellipsis">
+  <div :class="cls" data-type="ellipsis">
     <slot>...</slot>
   </div>
 </template>

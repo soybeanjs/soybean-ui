@@ -9,7 +9,7 @@ defineOptions({
   name: 'TabsList'
 });
 
-const props = defineProps<TabsListProps>();
+defineProps<TabsListProps>();
 
 const { orientation, dir, loop, onListElementChange } = useTabsRootContext('TabsList');
 
@@ -22,7 +22,7 @@ const cls = computed(() => themeContext?.ui?.value?.list);
 
 <template>
   <RovingFocusGroup as-child :dir="dir" :orientation="orientation" :loop="loop">
-    <div :ref="setListElement" v-bind="props" :class="cls" role="tablist" :aria-orientation="orientation">
+    <div :ref="setListElement" :class="cls" role="tablist" :aria-orientation="orientation">
       <slot />
     </div>
   </RovingFocusGroup>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
-import { useForwardElement, useNonce, useOmitProps } from '../../composables';
+import { useForwardElement, useNonce } from '../../composables';
 import { Primitive } from '../primitive';
 import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectThemeContext } from './context';
 import { CONTENT_MARGIN } from './shared';
@@ -14,8 +14,6 @@ defineOptions({
 const props = defineProps<SelectViewportProps>();
 
 const attrs = useAttrs();
-
-const forwardedProps = useOmitProps(props, ['nonce'], attrs);
 
 const { onViewportElementChange } = useSelectContentContext('SelectViewport');
 const [_, setViewportElement] = useForwardElement(onViewportElementChange);
@@ -32,11 +30,7 @@ const cls = computed(() => themeContext?.ui?.value?.viewport);
  *
  * the offset is relative to the viewport (independent of the scrollUpButton).
  */
-const style = {
-  position: 'relative',
-  flex: 1,
-  overflow: 'hidden auto'
-};
+const style = 'position:relative;flex:1;overflow:hidden auto;';
 
 // Hide scrollbars cross-browser and enable momentum scroll for touch devices
 const css = `
@@ -51,7 +45,7 @@ const css = `
 
 let prevScrollTop = 0;
 
-function onScroll(event: WheelEvent) {
+function onScroll(event: Event) {
   const viewport = event.currentTarget as HTMLElement;
 
   const { contentWrapperElement, shouldExpandOnScroll } = alignedPositionContext ?? {};
@@ -87,8 +81,8 @@ function onScroll(event: WheelEvent) {
 </script>
 
 <template>
-  <Primitive
-    v-bind="forwardedProps"
+  <div
+    v-bind="attrs"
     :ref="setViewportElement"
     :class="cls"
     data-soybean-select-viewport
@@ -97,6 +91,6 @@ function onScroll(event: WheelEvent) {
     @scroll="onScroll"
   >
     <slot />
-  </Primitive>
+  </div>
   <Primitive as="style" :nonce="nonce">{{ css }}</Primitive>
 </template>
