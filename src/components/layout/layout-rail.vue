@@ -11,9 +11,9 @@ defineProps<LayoutRailProps>();
 
 const { toggleSidebar } = useLayoutRootContext('LayoutRail');
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.rail);
+const cls = computed(() => themeContext?.ui?.value?.rail);
 </script>
 
 <template>

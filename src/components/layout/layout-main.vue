@@ -9,9 +9,9 @@ defineOptions({
 
 defineProps<LayoutMainProps>();
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.main);
+const cls = computed(() => themeContext?.ui?.value?.main);
 </script>
 
 <template>

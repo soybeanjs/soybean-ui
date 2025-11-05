@@ -9,9 +9,9 @@ defineOptions({
 
 defineProps<LayoutFooterProps>();
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.footer);
+const cls = computed(() => themeContext?.ui?.value?.footer);
 </script>
 
 <template>

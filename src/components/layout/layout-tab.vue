@@ -9,9 +9,9 @@ defineOptions({
 
 defineProps<LayoutTabProps>();
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.tab);
+const cls = computed(() => themeContext?.ui?.value?.tab);
 </script>
 
 <template>

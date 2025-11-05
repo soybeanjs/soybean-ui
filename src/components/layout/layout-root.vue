@@ -24,9 +24,9 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
 
 const emit = defineEmits<LayoutRootEmits>();
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.root);
+const cls = computed(() => themeContext?.ui?.value?.root);
 
 const open = useControllableState(
   () => props.open,

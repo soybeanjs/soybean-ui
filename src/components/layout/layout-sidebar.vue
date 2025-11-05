@@ -16,9 +16,9 @@ const attrs = useAttrs();
 
 const { isMobile } = useLayoutRootContext('LayoutSidebar');
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const ui = computed<Partial<Record<LayoutThemeSlot, ClassValue>>>(() => theme?.ui?.value ?? {});
+const ui = computed<Partial<Record<LayoutThemeSlot, ClassValue>>>(() => themeContext?.ui?.value ?? {});
 </script>
 
 <template>

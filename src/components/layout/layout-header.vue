@@ -9,9 +9,9 @@ defineOptions({
 
 defineProps<LayoutHeaderProps>();
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.header);
+const cls = computed(() => themeContext?.ui?.value?.header);
 </script>
 
 <template>

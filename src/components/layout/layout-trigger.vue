@@ -12,9 +12,9 @@ defineProps<LayoutTriggerProps>();
 
 const { open, toggleSidebar } = useLayoutRootContext('LayoutTrigger');
 
-const theme = useLayoutThemeContext();
+const themeContext = useLayoutThemeContext();
 
-const cls = computed(() => theme?.ui?.value?.trigger);
+const cls = computed(() => themeContext?.ui?.value?.trigger);
 </script>
 
 <template>
