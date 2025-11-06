@@ -1,11 +1,11 @@
 import { computed, onMounted, reactive, ref, shallowRef, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import isEqual from 'fast-deep-equal/es6';
 import { klona } from 'klona/full';
-import deepmerge from 'deepmerge';
+import { defu } from 'defu';
+import { isEqual } from 'ohash';
 import { getValue, isFunction, isNullish, isPromise, isString, keysOf, setValue } from '../../shared';
 import type { Path, PathValue } from '../../types';
-import { arrayMerge, updateFormState } from './shared';
+import { updateFormState } from './shared';
 import { provideFormContext, provideFormFieldContext } from './context';
 import type {
   FormContext,
@@ -172,9 +172,7 @@ export function useForm<Vn extends FormValidateFn<any>>(options: UseFormOptions<
 
     return Promise.all([runFieldValidateHandler(values), runValidateHandler(values)])
       .then(([fieldErrors, validateErrors]) => {
-        const errors = deepmerge.all<FormErrors<Values>>([fieldErrors, validateErrors], {
-          arrayMerge
-        });
+        const errors = defu(fieldErrors, validateErrors);
 
         setErrors(errors);
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useOmitProps } from '../../composables';
-import { handleAndDispatchCustomEvent, isEqual } from '../../shared';
+import { handleAndDispatchCustomEvent } from '../../shared';
 import type { SelectEvent } from '../../types';
 import { Primitive } from '../primitive';
 import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxThemeContext } from './context';
@@ -38,7 +38,12 @@ const id = `soybean-listbox-item-${useId()}`;
 
 const disabled = computed(() => rootDisabled.value || props.disabled);
 const isHighlighted = computed(() => itemElement.value === highlightedElement.value);
-const isSelected = computed(() => isEqual(modelValue.value, props.value));
+const isSelected = computed(() => {
+  if (Array.isArray(modelValue.value)) {
+    return modelValue.value.includes(props.value);
+  }
+  return modelValue.value === props.value;
+});
 
 const tabindex = computed(() => {
   if (!focusable.value) return '-1';

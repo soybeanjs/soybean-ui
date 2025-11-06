@@ -1,5 +1,3 @@
-import deepmerge from 'deepmerge';
-import type { ArrayMergeOptions } from 'deepmerge';
 import { klona } from 'klona/full';
 import { keysOf, setValue } from '../../shared';
 import type { FormErrors, FormMessage, FormState, FormValues } from './types';
@@ -55,25 +53,6 @@ export function updateFormState<Values extends FormValues>(state: FormState<Valu
       break;
     default:
   }
-}
-
-/**
- * deepmerge array merging algorithm
- * https://github.com/TehShrike/deepmerge#arraymerge-example-combine-arrays
- */
-export function arrayMerge<T extends any[]>(target: T, source: T, options: ArrayMergeOptions) {
-  const destination = [...target];
-
-  source.forEach((item, index) => {
-    if (typeof destination[index] === 'undefined') {
-      destination[index] = options.cloneUnlessOtherwiseSpecified(item, options);
-    } else if (options.isMergeableObject(item)) {
-      destination[index] = deepmerge(target[index], item, options);
-    } else if (!target.includes(item)) {
-      destination.push(item);
-    }
-  });
-  return destination;
 }
 
 export function toNestError<Values>(errors: Record<string, string>) {

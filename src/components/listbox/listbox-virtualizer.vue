@@ -4,7 +4,7 @@ import type { ShallowRef } from 'vue';
 import { refAutoReset, useParentElement } from '@vueuse/core';
 import { useVirtualizer } from '@tanstack/vue-virtual';
 import { MAP_KEY_TO_FOCUS_INTENT } from '../../constants';
-import { findValuesBetween, getActiveElement, getNextMatch, isEqual } from '../../shared';
+import { findValuesBetween, getActiveElement, getNextMatch } from '../../shared';
 import type { MaybeArray, NavigationKey } from '../../types';
 import { useCollectionContext, useListboxRootContext, useListboxThemeContext } from './context';
 import { getVirtualizerItems, getVirtualizerPadding, queryCheckedElement } from './shared';
@@ -81,7 +81,7 @@ const virtualizedItems = computed(() => getVirtualizerItems(virtualizer.value, p
 virtualFocusHook.on(event => {
   const index = props.options.findIndex(option => {
     const value = Array.isArray(modelValue.value) ? modelValue.value[0] : modelValue.value;
-    return isEqual(option, value);
+    return option === value;
   });
   if (index !== -1) {
     event?.preventDefault();
@@ -102,7 +102,7 @@ virtualFocusHook.on(event => {
 
 virtualHighlightHook.on(value => {
   const index = props.options.findIndex(option => {
-    return isEqual(option, value);
+    return option === value;
   });
   virtualizer.value.scrollToIndex(index, { align: 'start' });
   requestAnimationFrame(() => {

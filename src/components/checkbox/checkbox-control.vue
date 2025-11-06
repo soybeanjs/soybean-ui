@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs, watchEffect } from 'vue';
 import { useForwardElement } from '../../composables';
-import { getAriaLabel, isEqual, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
+import { getAriaLabel, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
 import { RovingFocusItem } from '../roving-focus';
 import { useCheckboxGroupRootContext, useCheckboxRootContext, useCheckboxThemeContext } from './context';
 import type { CheckboxControlProps } from './types';
@@ -35,7 +35,7 @@ const onClick = () => {
   if (groupContext) {
     const modelValueArray = [...(groupContext.modelValue.value || [])];
     if (isValueEqualOrExist(modelValueArray, value.value)) {
-      const index = modelValueArray.findIndex(i => isEqual(i, value.value));
+      const index = modelValueArray.findIndex(i => i === value.value);
       modelValueArray.splice(index, 1);
     } else if (!isNullish(value.value)) {
       modelValueArray.push(value.value);

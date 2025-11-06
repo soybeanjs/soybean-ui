@@ -1,7 +1,7 @@
 import { computed, nextTick, shallowRef, useId } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useCollection, useContext, useDirection, useForwardElement, useTypeahead } from '../../composables';
-import { findValuesBetween, getFocusIntent, isEqual } from '../../shared';
+import { findValuesBetween, getFocusIntent } from '../../shared';
 import { provideInputThemeContext } from '../input/context';
 import type {
   ListboxCollectionItemData,
@@ -37,7 +37,7 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
       isUserAction.value = true;
       if (isMultiple.value) {
         const updated = Array.isArray(modelValue.value) ? [...modelValue.value] : [];
-        const index = updated.findIndex(i => isEqual(i, value));
+        const index = updated.findIndex(i => i === value);
         if (selectionBehavior.value === 'toggle') {
           if (index === -1) {
             updated.push(value);
@@ -51,7 +51,7 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
           firstValue.value = value;
         }
       } else if (selectionBehavior.value === 'toggle') {
-        modelValue.value = isEqual(modelValue.value, value) ? undefined : value;
+        modelValue.value = modelValue.value === value ? undefined : value;
       } else {
         modelValue.value = value;
       }
@@ -79,7 +79,7 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
       if (isVirtual.value) {
         virtualHighlightHook.trigger(value);
       } else {
-        const item = getOrderedItems().find(i => isEqual(i.data.value, value));
+        const item = getOrderedItems().find(i => i.data.value === value);
         if (item) {
           highlightedElement.value = item.element;
           changeHighlight(item.element);

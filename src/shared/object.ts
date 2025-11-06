@@ -1,4 +1,4 @@
-import { isEqual } from './comparison';
+import { isEqual } from 'ohash';
 
 /**
  * Select specified properties from an object
