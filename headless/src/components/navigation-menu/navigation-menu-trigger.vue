@@ -124,6 +124,8 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
     v-bind="{ ...attrs, ...itemProps }"
     :id="triggerId"
     :ref="setTriggerElement"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"
