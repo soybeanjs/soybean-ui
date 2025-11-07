@@ -1,42 +1,20 @@
 import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
 import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
+import pkg from './package.json' with { type: 'json' };
+import headlessPkg from './headless/package.json' with { type: 'json' };
 
 export default defineConfig({
   entry: ['src/index.ts'],
   platform: 'neutral',
   external: [
-    '@floating-ui/core',
-    '@floating-ui/vue',
-    '@formkit/auto-animate',
-    '@iconify/vue',
-    '@internationalized/date',
-    '@internationalized/number',
+    ...Object.keys(headlessPkg.dependencies),
+    ...Object.keys(headlessPkg.devDependencies),
+    ...Object.keys(pkg.dependencies),
+    ...Object.keys(pkg.devDependencies),
     '@nuxt/kit',
     '@nuxt/schema',
-    '@soybeanjs/color-palette',
-    '@soybeanjs/unocss-shadcn',
-    '@standard-schema/spec',
-    '@tanstack/vue-virtual',
-    '@vue/shared',
-    '@vueuse/core',
-    '@vueuse/integrations',
-    '@vueuse/integrations/useFuse',
-    '@vueuse/router',
-    '@vueuse/shared',
-    'aria-hidden',
-    'clsx',
-    'defu',
-    'fuse.js',
-    'klona',
-    'nuxt',
-    'ohash',
-    'tailwind-merge',
-    'tailwind-variants',
-    'valibot',
-    'vue',
-    'vue-router',
-    'zod'
+    '@vueuse/integrations/useFuse'
   ],
   clean: true,
   dts: {

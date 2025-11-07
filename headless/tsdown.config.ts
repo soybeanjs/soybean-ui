@@ -11,13 +11,7 @@ export default defineConfig({
     'src/index.ts'
   ],
   platform: 'neutral',
-  external: [
-    ...Object.keys(pkg.peerDependencies),
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.devDependencies),
-    '@nuxt/kit',
-    '@nuxt/schema'
-  ],
+  external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies), '@nuxt/kit', '@nuxt/schema'],
   noExternal: ['aria-hidden'],
   clean: true,
   dts: {
