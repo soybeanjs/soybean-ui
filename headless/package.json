@@ -103,7 +103,7 @@
     "@internationalized/number": "^3.6.5",
     "@standard-schema/spec": "^1.0.0",
     "@tanstack/vue-virtual": "^3.13.12",
-    "@vue/shared": "^3.5.23",
+    "@vue/shared": "^3.5.24",
     "@vueuse/core": "^14.0.0",
     "@vueuse/integrations": "^14.0.0",
     "@vueuse/router": "^14.0.0",
@@ -114,11 +114,11 @@
     "ohash": "^2.0.11"
   },
   "devDependencies": {
-    "tsdown": "0.16.0",
+    "tsdown": "0.16.1",
     "typescript": "5.9.3",
     "unplugin-vue": "7.0.4",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.23",
+    "vue": "3.5.24",
     "vue-router": "4.6.3"
   },
   "simple-git-hooks": {
