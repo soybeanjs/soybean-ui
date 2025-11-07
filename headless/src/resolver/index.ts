@@ -1,14 +1,14 @@
 import type { ComponentResolver } from 'unplugin-vue-components';
 import { components } from '../constants';
-import { toKebabCase } from '../shared';
+import { toKebabCase, toPascalCase } from '../shared';
 
 export interface ResolverOptions {
   /**
    * Whether to use standalone components
    *
-   * "true" means use `import { AccordionRoot } from 'soybean-headless/accordion'`
+   * "true" means use `import { AccordionRoot } from '@soybeanjs/headless/accordion'`
    *
-   * "false" means use `import { AccordionRoot } from 'soybean-headless'`
+   * "false" means use `import { AccordionRoot } from '@soybeanjs/headless'`
    *
    * @defaultValue false
    */
@@ -20,14 +20,15 @@ function createResolver(options: ResolverOptions = {}) {
     type: 'component',
     resolve: (name: string) => {
       const values = Object.values(components).flat();
+      const $name = toPascalCase(name);
 
-      if (values.includes(name)) {
-        const moduleName = toKebabCase(name).split('-')[0];
+      if (values.includes($name)) {
+        const moduleName = toKebabCase($name).split('-')[0];
 
-        const $from = options.standalone ? `soybean-headless/${moduleName}` : `soybean-headless`;
+        const $from = options.standalone ? `@soybeanjs/headless/${moduleName}` : `@soybeanjs/headless`;
 
         return {
-          name,
+          name: $name,
           from: $from
         };
       }

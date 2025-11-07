@@ -1,5 +1,5 @@
 import { addComponent, defineNuxtModule } from '@nuxt/kit';
-import { components } from '../constants';
+import { components } from '../constants/components';
 
 export interface ModuleOptions {
   components: Partial<Record<keyof typeof components, boolean>> | boolean;
@@ -7,8 +7,8 @@ export interface ModuleOptions {
 
 export default defineNuxtModule({
   meta: {
-    name: '@soybeanjs/headless/nuxt',
-    configKey: '@soybeanjs/headless',
+    name: '@soybeanjs/ui/nuxt',
+    configKey: '@soybeanjs/ui',
     compatibility: {
       nuxt: '>=3.14'
     }
@@ -35,7 +35,7 @@ export default defineNuxtModule({
       addComponent({
         name: `${component}`,
         export: component,
-        filePath: '@soybeanjs/headless'
+        filePath: '@soybeanjs/ui'
       });
     }
   }

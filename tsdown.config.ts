@@ -5,7 +5,7 @@ import pkg from './package.json' with { type: 'json' };
 import headlessPkg from './headless/package.json' with { type: 'json' };
 
 export default defineConfig({
-  entry: ['src/index.ts'],
+  entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
   platform: 'neutral',
   external: [
     ...Object.keys(headlessPkg.dependencies),
