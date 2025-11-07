@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.2-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.8...v0.0.2-beta.9) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **variants**: separate grouped styles into individual ones to generate valid style outputs. &nbsp;-&nbsp; by @soybeanjs [<samp>(d0338)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d0338e50)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.7...v0.0.2-beta.8) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
