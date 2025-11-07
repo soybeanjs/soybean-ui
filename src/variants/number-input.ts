@@ -3,13 +3,13 @@ import { tv } from 'tailwind-variants';
 
 export const numberInputVariants = tv({
   slots: {
-    root: 'group flex items-center w-full rounded-md border border-input bg-background focus-within:(border-input ring-2 ring-offset-2 ring-offset-background ring-primary) disabled:(cursor-not-allowed opacity-50)',
-    decrement: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:(cursor-not-allowed opacity-20)`,
-    increment: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:(cursor-not-allowed opacity-20)`,
+    root: 'group flex items-center w-full rounded-md border border-input bg-background focus-within:border-input focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-background focus-within:ring-primary disabled:cursor-not-allowed disabled:opacity-50',
+    decrement: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-20`,
+    increment: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-20`,
     control: [
       `h-full w-full grow bg-transparent outline-none`,
       `placeholder:text-muted-foreground`,
-      'disabled:(cursor-not-allowed opacity-50)'
+      'disabled:cursor-not-allowed disabled:opacity-50'
     ],
     clearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100'
   },

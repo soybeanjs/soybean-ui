@@ -4,8 +4,8 @@ import { tv } from 'tailwind-variants';
 export const drawerContentVariants = tv({
   base: [
     `fixed z-50 flex flex-col justify-between items-stretch border bg-background rounded-md outline-none transition ease-in-out`,
-    `data-[state=open]:(animate-in duration-500)`,
-    `data-[state=closed]:(animate-out duration-300)`
+    `data-[state=open]:animate-in data-[state=open]:duration-500`,
+    `data-[state=closed]:animate-out data-[state=closed]:duration-300`
   ],
   variants: {
     size: {

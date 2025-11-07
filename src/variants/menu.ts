@@ -6,12 +6,12 @@ export const menuVariants = tv({
     arrow: 'fill-popover stroke-border',
     content: [
       `z-50 min-w-max rounded-md border bg-popover text-popover-foreground shadow-md will-change-transform`,
-      `data-[state=open]:(animate-in fade-in-0 zoom-in-95) data-[state=closed]:(fade-out-0 zoom-out-95)`,
+      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     subContent: [
       `z-50 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg will-change-transform`,
-      `data-[state=open]:(animate-in fade-in-0 zoom-in-95) data-[state=closed]:(animate-out fade-out-0 zoom-out-95)`,
+      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     group: '',
@@ -20,12 +20,12 @@ export const menuVariants = tv({
     radioGroup: '',
     item: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-default select-none`,
-      `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemIcon: `shrink-0 text-muted-foreground`,
     itemLink: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none decoration-none`,
-      `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     subTrigger: `flex items-center rounded-sm outline-none cursor-default select-none focus:bg-accent data-[state=open]:bg-accent`,
@@ -34,12 +34,12 @@ export const menuVariants = tv({
     separator: `h-px bg-border`,
     checkboxItem: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
-      `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemIndicator: `absolute flex items-center justify-center text-primary`,
     radioItem: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
-      `focus:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     radioIndicatorIcon: `shrink-0 fill-current`
   },

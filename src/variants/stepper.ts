@@ -13,13 +13,13 @@ export const stepperVariants = tv({
     item: 'group relative flex w-full data-[disabled]:pointer-events-none',
     separator: [
       `absolute block shrink-0 rounded-full bg-muted`,
-      'group-data-[disabled]:(bg-muted opacity-50)',
+      'group-data-[disabled]:bg-muted group-data-[disabled]:opacity-50',
       'group-data-[state=completed]:bg-primary'
     ],
     titleDescWrapper: 'flex flex-col',
     title: 'font-semibold whitespace-nowrap',
     description: 'text-muted-foreground',
-    trigger: `shrink-0 flex flex-col items-center text-center z-10 data-[state=active]:(ring-2 ring-primary ring-offset-2 ring-offset-background)`
+    trigger: `shrink-0 flex flex-col items-center text-center z-10 data-[state=active]:ring-2 data-[state=active]:ring-primary data-[state=active]:ring-offset-2 data-[state=active]:ring-offset-background`
   },
   variants: {
     size: {

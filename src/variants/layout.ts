@@ -9,7 +9,7 @@ export const layoutVariants = tv({
     sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
       `flex flex-col size-full bg-sidebar-background`,
-      `group-data-[variant=floating]:(rounded-lg border border-border border-solid shadow)`
+      `group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:border-solid group-data-[variant=floating]:shadow`
     ],
     sidebarGapHandler: [
       `relative h-full w-[--soybean-sidebar-width] bg-transparent transition-width duration-200 ease-linear`,
@@ -19,13 +19,13 @@ export const layoutVariants = tv({
     mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar-background p-0 [&>button]:hidden',
     mobileOverlay: [
       `fixed inset-0 z-50 bg-black/80`,
-      `data-[state=open]:(animate-in fade-in-0)`,
-      `data-[state=closed]:(animate-out fade-out-0)`
+      `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
+      `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
     ],
     mobile: 'flex flex-col size-full',
     rail: [
       'absolute inset-y-0 z-20 hidden w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear sm:flex',
-      'after:(absolute inset-y-0 left-1/2 content-empty w-[calc(var(--soybean-layout-spacing)/8)]) hover:after:bg-sidebar-border'
+      'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
     main: 'relative flex flex-1 flex-col items-stretch min-h-full bg-background',
@@ -67,7 +67,7 @@ export const layoutVariants = tv({
         root: 'bg-sidebar-background',
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
         sidebarWrapper: `p-[calc(var(--soybean-layout-spacing)/2)] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
-        main: `md:(m-[calc(var(--soybean-layout-spacing)/2)] ml-0 rounded-xl shadow)`
+        main: `md:m-[calc(var(--soybean-layout-spacing)/2)] md:ml-0 md:rounded-xl md:shadow`
       }
     },
     side: {

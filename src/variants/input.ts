@@ -5,13 +5,13 @@ export const inputVariants = tv({
   slots: {
     root: [
       `group flex items-center w-full rounded-md border border-solid border-input bg-background`,
-      `focus-within:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
+      `focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-background focus-within:ring-primary`
     ],
     control: [
       'grow bg-transparent outline-none',
       'placeholder:text-muted-foreground',
-      'disabled:(cursor-not-allowed opacity-50)',
-      'file:(border-0 bg-transparent font-medium)'
+      'disabled:cursor-not-allowed disabled:opacity-50',
+      'file:border-0 file:bg-transparent file:font-medium'
     ],
     clearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
     visible: 'cursor-pointer'

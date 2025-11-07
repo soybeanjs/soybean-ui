@@ -9,7 +9,7 @@ export const comboboxVariants = tv({
     empty: `text-center`,
     content: [
       `z-50 w-[--soybean-combobox-trigger-width] rounded-md border bg-popover text-popover-foreground shadow-md outline-none`,
-      `data-[state=open]:(animate-in fade-in-0 zoom-in-95) data-[state=closed]:(animate-out fade-out-0 zoom-out-95)`,
+      `data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
       `data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2`
     ],
     list: `overflow-y-auto overflow-x-hidden`,
@@ -18,11 +18,11 @@ export const comboboxVariants = tv({
     inputWrapper: `flex items-center`,
     input: [
       `flex w-full bg-transparent transition-colors-200`,
-      `placeholder:text-muted-foreground outline-none disabled:(cursor-not-allowed opacity-50)`
+      `placeholder:text-muted-foreground outline-none disabled:cursor-not-allowed disabled:opacity-50`
     ],
     item: [
       `relative flex justify-start items-center cursor-default select-none rounded-sm outline-none`,
-      `data-[highlighted]:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemIcon: 'shrink-0',
     itemIndicator: 'ml-auto',

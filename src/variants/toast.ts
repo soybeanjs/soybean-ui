@@ -6,15 +6,15 @@ export const toastVariants = tv({
     viewport: [
       `fixed top-0 z-100 flex max-h-screen w-full flex-col-reverse`,
       `focus-visible:outline-none`,
-      `sm:(bottom-0 right-0 top-auto flex-col) md:max-w-105`
+      `sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-105`
     ],
     root: [
       `group pointer-events-auto relative flex w-full items-center justify-between overflow-hidden rounded-md border shadow-lg transition-all-200`,
       `data-[swipe=cancel]:translate-x-0`,
-      `data-[swipe=end]:(translate-x-[var(--soybean-toast-swipe-end-x)] animate-out)`,
-      `data-[swipe=move]:(translate-x-[var(--soybean-toast-swipe-move-x)] transition-none)`,
-      `data-[state=open]:(slide-in-from-top-full sm:slide-in-from-bottom-full animate-in)`,
-      `data-[state=closed]:(fade-out-80 slide-out-to-right-full animate-out)`
+      `data-[swipe=end]:translate-x-[var(--soybean-toast-swipe-end-x)] data-[swipe=end]:animate-out`,
+      `data-[swipe=move]:translate-x-[var(--soybean-toast-swipe-move-x)] data-[swipe=move]:transition-none`,
+      `data-[state=open]:slide-in-from-top-full sm:slide-in-from-bottom-full data-[state=open]:animate-in`,
+      `data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=closed]:animate-out`
     ],
     title: `flex items-center font-semibold`,
     description: `opacity-90`,

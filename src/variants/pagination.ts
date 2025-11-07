@@ -9,15 +9,15 @@ export const paginationVariants = tv({
     ellipsis: `flex justify-center items-center`,
     button: [
       `inline-flex items-center justify-center flex-shrink-0 font-medium`,
-      `hover:(bg-accent text-accent-foreground)`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
-      `disabled:(cursor-not-allowed opacity-50)`
+      `hover:bg-accent hover:text-accent-foreground`,
+      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`,
+      `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     navigationButton: [
       `inline-flex items-center justify-center flex-shrink-0 font-medium`,
-      `hover:(bg-accent text-accent-foreground)`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
-      `disabled:(cursor-not-allowed opacity-50)`
+      `hover:bg-accent hover:text-accent-foreground`,
+      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`,
+      `disabled:cursor-not-allowed disabled:opacity-50`
     ]
   },
   variants: {
@@ -61,16 +61,16 @@ export const paginationVariants = tv({
     },
     variant: {
       pure: {
-        button: `data-[selected]:(border border-border bg-background text-accent-foreground hover:bg-accent/60 active:bg-accent)`
+        button: `data-[selected]:border-border data-[selected]:bg-background data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
       },
       solid: {
-        button: `data-[selected]:(border-transparent bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground active:bg-primary-600)`
+        button: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-600`
       },
       outline: {
-        button: `data-[selected]:(border border-primary bg-background text-primary hover:bg-transparent)`
+        button: `data-[selected]:border-primary data-[selected]:bg-background data-[selected]:text-primary data-[selected]:hover:bg-transparent`
       },
       soft: {
-        button: `data-[selected]:(bg-primary/10 hover:bg-primary/10 active:bg-primary/20)`
+        button: `data-[selected]:bg-primary/10 data-[selected]:hover:bg-primary/10 data-[selected]:active:bg-primary/20`
       }
     },
     shape: {
@@ -94,28 +94,28 @@ export const paginationVariants = tv({
       variant: 'pure',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:(border border-border bg-background text-accent-foreground hover:bg-accent/60 active:bg-accent)`
+        navigationButton: `data-[selected]:border-border data-[selected]:bg-background data-[selected]:text-accent-foreground data-[selected]:hover:bg-accent/60 data-[selected]:active:bg-accent`
       }
     },
     {
       variant: 'solid',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:(border-transparent bg-primary text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground active:bg-primary-600)`
+        navigationButton: `data-[selected]:border-transparent data-[selected]:bg-primary data-[selected]:text-primary-foreground data-[selected]:hover:bg-primary/80 data-[selected]:hover:text-primary-foreground data-[selected]:active:bg-primary-600`
       }
     },
     {
       variant: 'outline',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:(border border-primary bg-background text-primary hover:bg-transparent)`
+        navigationButton: `data-[selected]:border-primary data-[selected]:bg-background data-[selected]:text-primary data-[selected]:hover:bg-transparent`
       }
     },
     {
       variant: 'soft',
       actionAsSelected: true,
       class: {
-        navigationButton: `data-[selected]:(bg-primary/10 hover:bg-primary/10 active:bg-primary/20)`
+        navigationButton: `data-[selected]:bg-primary/10 data-[selected]:hover:bg-primary/10 data-[selected]:active:bg-primary/20`
       }
     }
   ],

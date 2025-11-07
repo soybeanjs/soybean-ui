@@ -8,7 +8,7 @@ export const checkboxVariants = tv({
     root: 'inline-flex items-center',
     control: [
       'peer shrink-0 border shadow',
-      'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)'
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'size-full flex items-center justify-center text-current',
     label: ''
@@ -16,28 +16,28 @@ export const checkboxVariants = tv({
   variants: {
     color: {
       primary: {
-        control: `border-primary focus-visible:ring-primary data-[state=checked]:(bg-primary text-primary-foreground) data-[state=indeterminate]:(bg-primary text-primary-foreground)`
+        control: `border-primary focus-visible:ring-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground`
       },
       destructive: {
-        control: `border-destructive focus-visible:ring-destructive data-[state=checked]:(bg-destructive text-destructive-foreground) data-[state=indeterminate]:(bg-destructive text-destructive-foreground)`
+        control: `border-destructive focus-visible:ring-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:text-destructive-foreground`
       },
       success: {
-        control: `border-success focus-visible:ring-success data-[state=checked]:(bg-success text-success-foreground) data-[state=indeterminate]:(bg-success text-success-foreground)`
+        control: `border-success focus-visible:ring-success data-[state=checked]:bg-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:text-success-foreground`
       },
       warning: {
-        control: `border-warning focus-visible:ring-warning data-[state=checked]:(bg-warning text-warning-foreground) data-[state=indeterminate]:(bg-warning text-warning-foreground)`
+        control: `border-warning focus-visible:ring-warning data-[state=checked]:bg-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:text-warning-foreground`
       },
       info: {
-        control: `border-info focus-visible:ring-info data-[state=checked]:(bg-info text-info-foreground) data-[state=indeterminate]:(bg-info text-info-foreground)`
+        control: `border-info focus-visible:ring-info data-[state=checked]:bg-info data-[state=checked]:text-info-foreground data-[state=indeterminate]:bg-info data-[state=indeterminate]:text-info-foreground`
       },
       carbon: {
-        control: `border-carbon focus-visible:ring-carbon data-[state=checked]:(bg-carbon text-carbon-foreground) data-[state=indeterminate]:(bg-carbon text-carbon-foreground)`
+        control: `border-carbon focus-visible:ring-carbon data-[state=checked]:bg-carbon data-[state=checked]:text-carbon-foreground data-[state=indeterminate]:bg-carbon data-[state=indeterminate]:text-carbon-foreground`
       },
       secondary: {
-        control: `border-secondary-foreground/50 focus-visible:ring-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/5 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/5 text-secondary-foreground)`
+        control: `border-secondary-foreground/50 focus-visible:ring-secondary-foreground/20 data-[state=checked]:bg-secondary-foreground/5 data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary-foreground/5 data-[state=indeterminate]:text-secondary-foreground`
       },
       accent: {
-        control: `border-accent-foreground/50 focus-visible:ring-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/5 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/5 text-accent-foreground)`
+        control: `border-accent-foreground/50 focus-visible:ring-accent-foreground/20 data-[state=checked]:bg-accent-foreground/5 data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent-foreground/5 data-[state=indeterminate]:text-accent-foreground`
       }
     },
     size: {
@@ -108,7 +108,7 @@ export const checkboxCardVariants = tv({
     description: 'text-muted-foreground',
     control: [
       'peer shrink-0 border shadow',
-      'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50)',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
     indicator: 'size-full flex items-center justify-center text-current'
@@ -117,35 +117,35 @@ export const checkboxCardVariants = tv({
     color: {
       primary: {
         root: 'data-[state=checked]:border-primary',
-        control: `border-primary focus-visible:ring-primary data-[state=checked]:(bg-primary text-primary-foreground) data-[state=indeterminate]:(bg-primary text-primary-foreground)`
+        control: `border-primary focus-visible:ring-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground`
       },
       destructive: {
         root: 'data-[state=checked]:border-destructive',
-        control: `border-destructive focus-visible:ring-destructive data-[state=checked]:(bg-destructive text-destructive-foreground) data-[state=indeterminate]:(bg-destructive text-destructive-foreground)`
+        control: `border-destructive focus-visible:ring-destructive data-[state=checked]:bg-destructive data-[state=checked]:text-destructive-foreground data-[state=indeterminate]:bg-destructive data-[state=indeterminate]:text-destructive-foreground`
       },
       success: {
         root: 'data-[state=checked]:border-success',
-        control: `border-success focus-visible:ring-success data-[state=checked]:(bg-success text-success-foreground) data-[state=indeterminate]:(bg-success text-success-foreground)`
+        control: `border-success focus-visible:ring-success data-[state=checked]:bg-success data-[state=checked]:text-success-foreground data-[state=indeterminate]:bg-success data-[state=indeterminate]:text-success-foreground`
       },
       warning: {
         root: 'data-[state=checked]:border-warning',
-        control: `border-warning focus-visible:ring-warning data-[state=checked]:(bg-warning text-warning-foreground) data-[state=indeterminate]:(bg-warning text-warning-foreground)`
+        control: `border-warning focus-visible:ring-warning data-[state=checked]:bg-warning data-[state=checked]:text-warning-foreground data-[state=indeterminate]:bg-warning data-[state=indeterminate]:text-warning-foreground`
       },
       info: {
         root: 'data-[state=checked]:border-info',
-        control: `border-info focus-visible:ring-info data-[state=checked]:(bg-info text-info-foreground) data-[state=indeterminate]:(bg-info text-info-foreground)`
+        control: `border-info focus-visible:ring-info data-[state=checked]:bg-info data-[state=checked]:text-info-foreground data-[state=indeterminate]:bg-info data-[state=indeterminate]:text-info-foreground`
       },
       carbon: {
         root: 'data-[state=checked]:border-carbon',
-        control: `border-carbon focus-visible:ring-carbon data-[state=checked]:(bg-carbon text-carbon-foreground) data-[state=indeterminate]:(bg-carbon text-carbon-foreground)`
+        control: `border-carbon focus-visible:ring-carbon data-[state=checked]:bg-carbon data-[state=checked]:text-carbon-foreground data-[state=indeterminate]:bg-carbon data-[state=indeterminate]:text-carbon-foreground`
       },
       secondary: {
         root: 'data-[state=checked]:border-secondary-foreground/50',
-        control: `border-secondary-foreground/50 focus-visible:ring-secondary-foreground/20 data-[state=checked]:(bg-secondary-foreground/5 text-secondary-foreground) data-[state=indeterminate]:(bg-secondary-foreground/5 text-secondary-foreground)`
+        control: `border-secondary-foreground/50 focus-visible:ring-secondary-foreground/20 data-[state=checked]:bg-secondary-foreground/5 data-[state=checked]:text-secondary-foreground data-[state=indeterminate]:bg-secondary-foreground/5 data-[state=indeterminate]:text-secondary-foreground`
       },
       accent: {
         root: 'data-[state=checked]:border-accent-foreground/50',
-        control: `border-accent-foreground/50 focus-visible:ring-accent-foreground/20 data-[state=checked]:(bg-accent-foreground/5 text-accent-foreground) data-[state=indeterminate]:(bg-accent-foreground/5 text-accent-foreground)`
+        control: `border-accent-foreground/50 focus-visible:ring-accent-foreground/20 data-[state=checked]:bg-accent-foreground/5 data-[state=checked]:text-accent-foreground data-[state=indeterminate]:bg-accent-foreground/5 data-[state=indeterminate]:text-accent-foreground`
       }
     },
     size: {

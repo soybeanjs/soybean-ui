@@ -6,13 +6,13 @@ export const menubarVariants = tv({
     root: `flex items-center rounded-md border bg-background shadow-sm`,
     trigger: [
       `flex cursor-default select-none items-center rounded-sm font-medium outline-none`,
-      `focus:(bg-accent text-accent-foreground)`,
-      `data-[state=open]:(bg-accent text-accent-foreground)`
+      `focus:bg-accent focus:text-accent-foreground`,
+      `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`
     ],
     triggerLink: [
       `flex cursor-pointer select-none items-center rounded-sm font-medium outline-none decoration-none`,
-      `focus:(bg-accent text-accent-foreground)`,
-      `data-[state=open]:(bg-accent text-accent-foreground)`
+      `focus:bg-accent focus:text-accent-foreground`,
+      `data-[state=open]:bg-accent data-[state=open]:text-accent-foreground`
     ]
   },
   variants: {

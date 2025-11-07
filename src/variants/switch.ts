@@ -8,7 +8,7 @@ export const switchVariants = tv({
     root: 'inline-flex',
     control: [
       `peer shrink-0 inline-flex items-center rounded-full border-0 shadow-sm transition-colors-200`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background) disabled:(cursor-not-allowed opacity-50) data-[state=unchecked]:bg-input`
+      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input`
     ],
     thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform-200 bg-background pointer-events-none data-[state=unchecked]:translate-x-0.5`
   },

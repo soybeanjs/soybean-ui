@@ -5,7 +5,7 @@ export const commandVariants = tv({
   slots: {
     root: `flex w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground`,
     inputRoot: 'group flex items-center border-b',
-    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:(cursor-not-allowed opacity-50)`,
+    inputControl: `flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,
     inputIcon: `shrink-0 opacity-50`,
     inputClearable: 'hidden group-hover:block size-1em cursor-pointer opacity-50 hover:opacity-100',
     empty: `text-center`,
@@ -14,7 +14,7 @@ export const commandVariants = tv({
     groupLabel: `font-medium text-muted-foreground`,
     item: [
       `relative flex cursor-default select-none items-center rounded-sm outline-none`,
-      `data-[highlighted]:(bg-accent text-accent-foreground) data-[disabled]:(pointer-events-none opacity-50)`
+      `data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemLabel: '',
     itemIcon: 'shrink-0',

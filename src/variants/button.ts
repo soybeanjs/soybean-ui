@@ -5,8 +5,8 @@ import type { VariantProps } from 'tailwind-variants';
 export const buttonVariants = tv({
   base: [
     'inline-flex items-center justify-center font-medium',
-    'focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background)',
-    'data-[disabled]:(cursor-not-allowed opacity-50)'
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+    'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
   ],
   variants: {
     color: {
@@ -173,42 +173,42 @@ export const buttonVariants = tv({
     {
       color: 'primary',
       variant: 'plain',
-      class: 'hover:(border-primary text-primary)'
+      class: 'hover:border-primary hover:text-primary'
     },
     {
       color: 'destructive',
       variant: 'plain',
-      class: 'hover:(border-destructive text-destructive)'
+      class: 'hover:border-destructive hover:text-destructive'
     },
     {
       color: 'success',
       variant: 'plain',
-      class: 'hover:(border-success text-success)'
+      class: 'hover:border-success hover:text-success'
     },
     {
       color: 'warning',
       variant: 'plain',
-      class: 'hover:(border-warning text-warning)'
+      class: 'hover:border-warning hover:text-warning'
     },
     {
       color: 'info',
       variant: 'plain',
-      class: 'hover:(border-info text-info)'
+      class: 'hover:border-info hover:text-info'
     },
     {
       color: 'carbon',
       variant: 'plain',
-      class: 'hover:(border-carbon text-carbon)'
+      class: 'hover:border-carbon hover:text-carbon'
     },
     {
       color: 'secondary',
       variant: 'plain',
-      class: 'hover:(border-secondary-foreground text-secondary-foreground)'
+      class: 'hover:border-secondary-foreground hover:text-secondary-foreground'
     },
     {
       color: 'accent',
       variant: 'plain',
-      class: 'hover:(border-accent-foreground text-accent-foreground)'
+      class: 'hover:border-accent-foreground hover:text-accent-foreground'
     },
     {
       color: 'primary',

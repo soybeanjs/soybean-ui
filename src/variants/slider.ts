@@ -3,13 +3,16 @@ import { tv } from 'tailwind-variants';
 
 export const sliderVariants = tv({
   slots: {
-    root: [`relative flex w-full touch-none select-none items-center`, `data-[orientation=vertical]:(flex-col h-full)`],
+    root: [
+      `relative flex w-full touch-none select-none items-center`,
+      `data-[orientation=vertical]:flex-col data-[orientation=vertical]:h-full`
+    ],
     track: `relative w-full grow overflow-hidden rounded-full`,
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
       `block rounded-full bg-background transition-colors-200`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background)`,
-      `disabled:(pointer-events-none opacity-50)`
+      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background`,
+      `disabled:cursor-not-allowed disabled:opacity-50`
     ]
   },
   variants: {

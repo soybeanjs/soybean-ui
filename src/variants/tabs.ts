@@ -8,12 +8,12 @@ export const tabsVariants = tv({
     list: 'relative inline-flex justify-center items-center bg-muted text-muted-foreground',
     trigger: [
       `relative z-3 inline-flex items-center justify-center flex-1 whitespace-nowrap rounded-md font-medium transition-all-200`,
-      `focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`,
-      `disabled:(pointer-events-none opacity-50)`
+      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`,
+      `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     indicator: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
     indicatorContent: `size-full bg-background shadow`,
-    content: `flex-grow self-stretch overflow-hidden focus-visible:(outline-none ring-2 ring-offset-2 ring-offset-background ring-primary)`
+    content: `flex-grow self-stretch overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`
   },
   variants: {
     size: {
@@ -78,7 +78,7 @@ export const tabsVariants = tv({
     },
     enableIndicator: {
       false: {
-        trigger: `data-[state=active]:(bg-background text-foreground shadow)`
+        trigger: `data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow`
       }
     }
   },
