@@ -1,7 +1,7 @@
-import { useContext } from '../../composables';
+import { useContext } from '@soybeanjs/headless/composables';
 import type { ConfigProviderContextParams } from './types';
 
 export const [provideConfigProviderContext, useConfigProvider] = useContext(
-  'ConfigProvider',
+  'UIConfigProvider',
   (params: ConfigProviderContextParams) => params
 );

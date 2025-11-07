@@ -1,7 +1,4 @@
-import DividerRoot from './divider-root.vue';
-import DividerLabel from './divider-label.vue';
+export { default as SDivider } from './divider.vue';
 
-export { DividerRoot, DividerLabel };
-export { provideDividerThemeContext } from './context';
-
+export type { DividerRootProps, DividerLabelProps } from '@soybeanjs/headless/divider';
 export type * from './types';

@@ -215,7 +215,7 @@ ui/components/accordion/
 1. 导入顺序：
    - 第三方（vue）
    - `@headless`
-   - `@theme`
+   - `@/theme`
    - `@variants`
    - 基础组件类型
 
@@ -260,7 +260,7 @@ ui/components/accordion/
   2. `@headless`
   3. `@headless/composables`
   4. `@headless/shared`
-  5. `@theme`
+  5. `@/theme`
   6. `@variants`
   7. 基础组件
   8. 本地类型
@@ -325,7 +325,7 @@ ui/components/accordion/
 #### index.ts
 
 ```ts
-export * from '@headless/components/accordion';
+export * from '@soybeanjs/headless/components/accordion';
 export { default as SAccordion } from './accordion.vue';
 export type * from './types';
 ```

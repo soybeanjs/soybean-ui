@@ -1,5 +1,3 @@
-import Tag from './tag.vue';
-
-export { Tag };
+export { default as STag } from './tag.vue';
 
 export type * from './types';

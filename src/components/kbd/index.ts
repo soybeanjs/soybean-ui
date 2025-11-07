@@ -1,5 +1,3 @@
-import Kbd from './kbd.vue';
-
-export { Kbd };
+export { default as SKbd } from './kbd.vue';
 
 export * from './types';

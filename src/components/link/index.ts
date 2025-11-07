@@ -1,5 +1,3 @@
-import Link from './link.vue';
-
-export { Link };
+export { default as SLink } from './link.vue';
 
 export type * from './types';

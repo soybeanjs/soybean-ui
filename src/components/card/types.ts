@@ -1,22 +1,42 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue } from '../../types';
+import type {
+  CardContentProps,
+  CardDescriptionProps,
+  CardFooterProps,
+  CardHeaderProps,
+  CardRootProps,
+  CardTitleProps,
+  CardTitleRootProps,
+  CardUi
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface CardRootProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardContentProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardFooterProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardTitleRootProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardTitleProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CardDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export type CardThemeSlot = 'root' | 'header' | 'content' | 'footer' | 'titleRoot' | 'title' | 'description';
-
-export interface CardThemeContextParams {
-  ui: ComputedRef<Record<CardThemeSlot, ClassValue>>;
+export interface CardProps extends CardRootProps {
+  size?: ThemeSize;
+  ui?: Partial<CardUi>;
+  title?: string;
+  description?: string;
+  /**
+   * If true, the content will be scrollable when the root has height and content is taller than the root
+   *
+   * @default false
+   */
+  scrollable?: boolean;
+  /**
+   * If true, the card will add divider between title and content and footer
+   *
+   * @default false
+   */
+  split?: boolean;
+  /**
+   * If true, the content will be flex-grow and overflow-hidden
+   *
+   * @default false
+   */
+  flexHeight?: boolean;
+  headerProps?: CardHeaderProps;
+  contentProps?: CardContentProps;
+  footerProps?: CardFooterProps;
+  titleRootProps?: CardTitleRootProps;
+  titleProps?: CardTitleProps;
+  descriptionProps?: CardDescriptionProps;
 }

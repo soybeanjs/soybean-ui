@@ -1,206 +1,147 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef } from 'vue';
 import type {
   AcceptableBooleanValue,
-  CheckedState,
   ClassValue,
   DefinedValue,
-  Direction,
-  DismissableLayerEmits,
-  DismissableLayerProps,
-  FocusScopeEmits,
-  ForceMountProps,
-  PropsToContext,
-  TrapFocusProps
-} from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
-import type {
-  PopperAnchorProps as MenuAnchorProps,
-  PopperArrowProps as MenuArrowProps,
-  PopperContentProps
-} from '../popper/types';
-import type { PortalProps as MenuPortalProps } from '../portal/types';
-import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
-import type { DividerRootProps as MenuSeparatorProps } from '../divider/types';
+  KbdValue,
+  MenuCheckboxGroupEmits,
+  MenuCheckboxGroupProps,
+  MenuCheckboxItemProps,
+  MenuGroupLabelProps,
+  MenuGroupProps,
+  MenuItemIndicatorProps,
+  MenuItemProps,
+  MenuPortalProps,
+  MenuRadioGroupEmits,
+  MenuRadioGroupProps,
+  MenuRadioItemProps,
+  MenuSeparatorProps,
+  MenuSubContentEmits,
+  MenuSubContentProps,
+  MenuSubEmits,
+  MenuSubProps,
+  MenuSubTriggerProps,
+  MenuUi
+} from '@soybeanjs/headless';
+import type { LinkProps } from '../link/types';
+import type { KbdProps } from '../kbd/types';
+import type { IconValue } from '../icon/types';
 
-// MenuRoot
-export interface MenuRootProps extends DialogRootProps {
+export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'disabled' | 'textValue'> {
+  /** The label to display in the menu. */
+  label: string;
+  /** The value of the option. */
+  value: T;
   /**
-   * The reading direction of the combobox when applicable.
+   * whether is group label
    *
-   * If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.
+   * if true, the option will be a group label.
    */
-  dir?: Direction;
-}
-export type MenuRootEmits = DialogRootEmits;
-
-// MenuContentImpl
-export interface MenuContentImplProps
-  extends PopperContentProps,
-    TrapFocusProps,
-    DismissableLayerProps,
-    Pick<RovingFocusGroupProps, 'loop'> {}
-export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pick<RovingFocusGroupEmits, 'entryFocus'>;
-
-// MenuContent
-export interface MenuContentProps extends PopperContentProps, ForceMountProps {}
-export interface MenuContentPrivateProps extends MenuContentProps {
+  isGroupLabel?: boolean;
   /**
-   * The function to set the menu content element.
+   * The icon of the dropdown item.
    *
-   * @param el - The menu content element.
+   * if it is a string, it will be used as the icon name of the iconify.
    */
-  elRef?: (el: HTMLElement) => void;
-}
-export type MenuContentEmits = MenuContentImplEmits;
-
-export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
-  /** When `true`, the menu would not open when triggered. */
-  disabled?: boolean;
-}
-
-// MenuSub
-export interface MenuSubProps extends Pick<MenuRootProps, 'open' | 'defaultOpen'> {}
-export type MenuSubEmits = MenuRootEmits;
-
-// MenuSubContent
-export interface MenuSubContentProps extends Omit<MenuContentProps, 'side' | 'align'> {}
-export type MenuSubContentEmits = MenuContentEmits;
-
-// MenuGroup
-export interface MenuGroupProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
-
-// MenuGroupLabel
-export interface MenuGroupLabelProps extends /** @vue-ignore */ HTMLAttributes {}
-
-// MenuItemImpl
-export interface MenuItemImplProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
-  /** When `true`, prevents the user from interacting with the item. */
-  disabled?: boolean;
+  icon?: IconValue;
+  /** Whether to show a separator above this option. */
+  separator?: boolean;
+  /** The shortcut of the option. */
+  shortcut?: KbdValue | KbdValue[];
   /**
-   * Optional text used for typeahead purposes. By default the typeahead behavior will use the `.textContent` of the
-   * item. <br> Use this when the content is complex, or you have non-textual content inside.
+   * The link props
+   *
+   * if provided, the option will be a link.
    */
-  textValue?: string;
+  linkProps?: LinkProps;
+  /** The children of the option. */
+  children?: MenuOptionData<T>[];
 }
 
-// MenuItem
-export interface MenuItemProps extends MenuItemImplProps {}
-export type MenuItemEmits = {
-  /**
-   * Event handler called when the user selects an item (via mouse or keyboard). <br> Calling `event.preventDefault` in
-   * this handler will prevent the menu from closing when selecting that item.
-   */
-  select: [event: Event];
+export interface MenuShortcutProps extends Omit<KbdProps, 'value'> {}
+
+export type MenuExtraThemeSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon';
+
+export type MenuExtraUi = Record<MenuExtraThemeSlot, ClassValue>;
+
+export type MenuExtendedUi = MenuUi & MenuExtraUi;
+
+export interface MenuOptionProps<T extends DefinedValue = DefinedValue> {
+  item: MenuOptionData<T>;
+  itemProps?: MenuItemProps;
+  groupProps?: MenuGroupProps;
+  groupLabelProps?: MenuGroupLabelProps;
+  subProps?: MenuSubProps;
+  subTriggerProps?: MenuSubTriggerProps;
+  portalProps?: MenuPortalProps;
+  subContentProps?: MenuSubContentProps;
+  separatorProps?: MenuSeparatorProps;
+  shortcutProps?: MenuShortcutProps;
+}
+
+export type MenuOptionSelectEmits<T extends MenuOptionData = MenuOptionData> = {
+  select: [item: T, event: Event];
 };
 
-// MenuCheckboxItem
-export interface MenuCheckboxItemProps extends MenuItemProps {
-  /** The controlled checked state of the item. Can be used as `v-model`. */
-  modelValue?: CheckedState;
-  /**
-   * The value given as data when submitted with a `name`.
-   *
-   * @defaultValue on
-   */
-  value?: DefinedValue;
+export type MenuOptionEmits<T extends MenuOptionData = MenuOptionData> = MenuSubEmits &
+  MenuSubContentEmits &
+  MenuOptionSelectEmits<T>;
+
+export interface MenuOptionsProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuOptionData<T> = MenuOptionData<T>
+> extends Omit<MenuOptionProps<T>, 'item'> {
+  items: S[];
 }
-export type MenuCheckboxItemEmits = MenuItemEmits & {
-  /** Event handler called when the checked state of the item changes. */
-  'update:modelValue': [value: CheckedState];
+
+export type MenuOptionsEmits<T extends MenuOptionData = MenuOptionData> = MenuOptionEmits<T>;
+
+export interface MenuCheckboxOptionData<T extends DefinedValue = DefinedValue>
+  extends Omit<MenuOptionData<T>, 'linkProps' | 'children'> {}
+
+export interface MenuCheckboxOptionsProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> extends Omit<MenuCheckboxGroupProps<T>, 'dir' | 'onSelect'> {
+  items: S[];
+  groupLabelProps?: MenuGroupLabelProps;
+  checkboxItemProps?: MenuCheckboxItemProps;
+  indicatorProps?: MenuItemIndicatorProps;
+  shortcutProps?: MenuShortcutProps;
+  separatorProps?: MenuSeparatorProps;
+}
+
+export type MenuCheckboxSelectEmits<T extends MenuCheckboxOptionData = MenuCheckboxOptionData> = {
+  select: [item: T, event: Event];
 };
+export type MenuCheckboxOptionsEmits<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> = MenuCheckboxGroupEmits<T> & MenuCheckboxSelectEmits<S>;
 
-// MenuCheckboxGroup
-export interface MenuCheckboxGroupProps<T extends DefinedValue = DefinedValue> extends MenuGroupProps {
-  /** The controlled value of the checkbox. Can be bound with v-model. */
-  modelValue?: T[];
-  /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
-  defaultValue?: T[];
-  /**
-   * When `true`, prevents the user from interacting with the checkboxes
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
+export interface MenuRadioOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
+  extends Omit<MenuOptionData<NonNullable<T>>, 'linkProps' | 'children'> {}
+
+export interface MenuRadioOptionsProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> extends Omit<MenuRadioGroupProps<T>, 'dir' | 'onSelect'> {
+  items: S[];
+  groupLabelProps?: MenuGroupLabelProps;
+  radioItemProps?: MenuRadioItemProps;
+  indicatorProps?: MenuItemIndicatorProps;
+  shortcutProps?: MenuShortcutProps;
+  separatorProps?: MenuSeparatorProps;
 }
-export type MenuCheckboxGroupEmits<T extends DefinedValue = DefinedValue> = {
-  /** Event handler called when the value of the checkbox group changes. */
-  'update:modelValue': [value: T[]];
+
+export type MenuRadioSelectEmits<T extends MenuRadioOptionData = MenuRadioOptionData> = {
+  select: [item: T, event: Event];
 };
+export type MenuRadioOptionsEmits<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> = MenuRadioGroupEmits<T> & MenuRadioSelectEmits<S>;
 
-// MenuRadioItem
-export interface MenuRadioItemProps extends MenuItemProps {
-  /** The value given as data when submitted with a `name`. */
-  value: NonNullable<AcceptableBooleanValue>;
+export interface MenuExtraThemeContextParams {
+  ui: ComputedRef<MenuExtraUi>;
 }
-export type MenuRadioItemEmits = MenuItemEmits;
-
-// MenuRadioGroup
-export interface MenuRadioGroupProps<T = AcceptableBooleanValue> extends MenuGroupProps {
-  /** The controlled value of the radio item to check. Can be bound as `v-model`. */
-  modelValue?: T;
-  /**
-   * The value of the radio item that should be checked when initially rendered. Use when you do not need to control the
-   * state of the radio items.
-   */
-  defaultValue?: T;
-  /** When `true`, prevents the user from interacting with radio items. */
-  disabled?: boolean;
-}
-export type MenuRadioGroupEmits<T = AcceptableBooleanValue> = {
-  /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: NonNullable<T>];
-};
-
-// MenuSubTrigger
-export interface MenuSubTriggerProps extends MenuItemImplProps {}
-
-// MenuItemIndicator
-export interface MenuItemIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
-
-// Context
-export interface MenuRootContextParams extends PropsToContext<MenuRootProps, 'dir' | 'modal'> {
-  onClose: () => void;
-  isUsingKeyboard: ComputedRef<boolean>;
-}
-export interface MenuContextParams {
-  open: ShallowRef<boolean | undefined>;
-}
-export interface MenuContentContextParams {
-  contentElement: ShallowRef<HTMLElement | undefined>;
-}
-export interface MenuCheckboxGroupContextParams {
-  modelValue: ShallowRef<DefinedValue[] | undefined>;
-  disabled: ComputedRef<boolean>;
-}
-export interface MenuRadioGroupContextParams {
-  modelValue: ShallowRef<AcceptableBooleanValue>;
-  disabled: ComputedRef<boolean>;
-}
-export interface MenuItemIndicatorContextParams {
-  modelValue: ComputedRef<CheckedState | undefined>;
-}
-
-export type MenuThemeSlot =
-  | 'content'
-  | 'subContent'
-  | 'subTrigger'
-  | 'arrow'
-  | 'group'
-  | 'groupLabel'
-  | 'item'
-  | 'checkboxGroup'
-  | 'checkboxItem'
-  | 'radioGroup'
-  | 'radioItem'
-  | 'itemIndicator'
-  | 'separator';
-
-export interface MenuThemeContextParams {
-  ui: ComputedRef<Record<MenuThemeSlot, ClassValue>>;
-}
-
-// Collection
-export type MenuCollectionItemData = Pick<MenuItemImplProps, 'textValue'>;
-
-export type { MenuPortalProps, MenuAnchorProps, MenuArrowProps, MenuSeparatorProps };

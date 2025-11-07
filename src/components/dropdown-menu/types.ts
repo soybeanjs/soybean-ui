@@ -1,98 +1,71 @@
-import type { ComputedRef, ShallowRef } from 'vue';
-import type { PropsToContext } from '../../types';
 import type {
-  MenuAnchorProps as DropdownMenuAnchorProps,
-  MenuArrowProps as DropdownMenuArrowProps,
-  MenuCheckboxGroupEmits as DropdownMenuCheckboxGroupEmits,
-  MenuCheckboxGroupProps as DropdownMenuCheckboxGroupProps,
-  MenuCheckboxItemEmits as DropdownMenuCheckboxItemEmits,
-  MenuCheckboxItemProps as DropdownMenuCheckboxItemProps,
-  MenuContentProps as DropdownMenuContentProps,
-  MenuGroupLabelProps as DropdownMenuGroupLabelProps,
-  MenuGroupProps as DropdownMenuGroupProps,
-  MenuItemEmits as DropdownMenuItemEmits,
-  MenuItemIndicatorProps as DropdownMenuItemIndicatorProps,
-  MenuItemProps as DropdownMenuItemProps,
-  MenuPortalProps as DropdownMenuPortalProps,
-  MenuRadioGroupEmits as DropdownMenuRadioGroupEmits,
-  MenuRadioGroupProps as DropdownMenuRadioGroupProps,
-  MenuRadioItemEmits as DropdownMenuRadioItemEmits,
-  MenuRadioItemProps as DropdownMenuRadioItemProps,
-  MenuSeparatorProps as DropdownMenuSeparatorProps,
-  MenuSubContentEmits as DropdownMenuSubContentEmits,
-  MenuSubContentProps as DropdownMenuSubContentProps,
-  MenuSubEmits as DropdownMenuSubEmits,
-  MenuSubProps as DropdownMenuSubProps,
-  MenuSubTriggerProps as DropdownMenuSubTriggerProps,
-  MenuTriggerProps as DropdownMenuTriggerProps,
-  MenuContentEmits,
-  MenuRootEmits,
-  MenuRootProps
+  AcceptableBooleanValue,
+  DefinedValue,
+  DropdownMenuArrowProps,
+  DropdownMenuContentEmits,
+  DropdownMenuContentProps,
+  DropdownMenuPortalProps,
+  DropdownMenuRootEmits,
+  DropdownMenuRootProps,
+  DropdownMenuTriggerProps
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
+import type {
+  MenuCheckboxOptionData,
+  MenuCheckboxOptionsEmits,
+  MenuCheckboxOptionsProps,
+  MenuExtendedUi,
+  MenuOptionData,
+  MenuOptionsEmits,
+  MenuOptionsProps,
+  MenuRadioOptionData,
+  MenuRadioOptionsEmits,
+  MenuRadioOptionsProps
 } from '../menu/types';
 
-export type DropdownMenuTriggerType = 'click' | 'hover';
-
-export interface DropdownMenuRootProps extends MenuRootProps {
-  /**
-   * The trigger type of the dropdown menu.
-   *
-   * - `click`: The dropdown menu will be opened when the trigger is clicked.
-   * - `hover`: The dropdown menu will be opened when the trigger is hovered.
-   *
-   * @defaultValue 'click'
-   */
-  trigger?: DropdownMenuTriggerType;
-  /**
-   * The duration from when the pointer enters the trigger until the dropdown menu gets opened.
-   *
-   * @defaultValue 150
-   */
-  delayDuration?: number;
-  /**
-   * How much time a user has to enter another trigger without incurring a delay again.
-   *
-   * @defaultValue 300
-   */
-  skipDelayDuration?: number;
-}
-export type DropdownMenuRootEmits = MenuRootEmits;
-
-// Context
-export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMenuRootProps, 'dir' | 'modal'> {
-  open: ShallowRef<boolean | undefined>;
+// Menu Wrapper
+export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
+  size?: ThemeSize;
+  ui?: Partial<MenuExtendedUi>;
+  disabled?: boolean;
+  showArrow?: boolean;
+  triggerProps?: DropdownMenuTriggerProps;
+  portalProps?: DropdownMenuPortalProps;
+  contentProps?: DropdownMenuContentProps;
+  arrowProps?: DropdownMenuArrowProps;
 }
 
-export interface DropdownMenuHoverContextParams
-  extends PropsToContext<DropdownMenuRootProps, 'delayDuration' | 'skipDelayDuration'> {
-  hoverable: ComputedRef<boolean>;
-  open: ShallowRef<boolean | undefined>;
-}
+export type DropdownMenuWrapperEmits = DropdownMenuRootEmits & DropdownMenuContentEmits;
 
-export type DropdownMenuContentEmits = MenuContentEmits;
+// Menu
+export interface DropdownMenuProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuOptionData<T> = MenuOptionData<T>
+> extends DropdownMenuWrapperProps,
+    MenuOptionsProps<T, S> {}
+export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = DropdownMenuWrapperEmits &
+  MenuOptionsEmits<T>;
 
-export type {
-  DropdownMenuPortalProps,
-  DropdownMenuContentProps,
-  DropdownMenuTriggerProps,
-  DropdownMenuSubEmits,
-  DropdownMenuSubProps,
-  DropdownMenuSubContentProps,
-  DropdownMenuSubContentEmits,
-  DropdownMenuSubTriggerProps,
-  DropdownMenuAnchorProps,
-  DropdownMenuArrowProps,
-  DropdownMenuGroupProps,
-  DropdownMenuItemProps,
-  DropdownMenuItemEmits,
-  DropdownMenuCheckboxGroupProps,
-  DropdownMenuCheckboxGroupEmits,
-  DropdownMenuCheckboxItemProps,
-  DropdownMenuCheckboxItemEmits,
-  DropdownMenuRadioGroupProps,
-  DropdownMenuRadioGroupEmits,
-  DropdownMenuRadioItemProps,
-  DropdownMenuRadioItemEmits,
-  DropdownMenuItemIndicatorProps,
-  DropdownMenuGroupLabelProps,
-  DropdownMenuSeparatorProps
-};
+// Menu Checkbox
+export interface DropdownMenuCheckboxProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> extends DropdownMenuWrapperProps,
+    MenuCheckboxOptionsProps<T, S> {}
+
+export type DropdownMenuCheckboxEmits<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> = DropdownMenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
+
+// Menu Radio
+export interface DropdownMenuRadioProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> extends DropdownMenuWrapperProps,
+    MenuRadioOptionsProps<T, S> {}
+
+export type DropdownMenuRadioEmits<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> = DropdownMenuWrapperEmits & MenuRadioOptionsEmits<T, S>;

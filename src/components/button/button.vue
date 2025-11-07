@@ -1,45 +1,46 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
-import { Primitive } from '../primitive';
+import { Button } from '@soybeanjs/headless';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { cn } from '@/theme';
+import { buttonVariants } from '@/variants/button';
+import { useButtonGroupContext } from './context';
 import type { ButtonEmits, ButtonProps } from './types';
 
 defineOptions({
-  name: 'Button'
+  name: 'SButton'
 });
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  as: 'button'
-});
+const props = defineProps<ButtonProps>();
 
 const emit = defineEmits<ButtonEmits>();
 
-const dataDisabled = computed(() => (props.disabled ? '' : undefined));
+const buttonGroupContext = useButtonGroupContext();
 
-const ariaDisabled = computed(() => (props.disabled ? true : undefined));
+const forwardedProps = useOmitProps(props, ['size', 'color', 'variant', 'shape', 'shadow', 'disabled']);
 
-const forwardedProps = useOmitProps(props, ['disabled']);
+const cls = computed(() => {
+  const { size, color, variant, shape, shadow, fitContent } = buttonGroupContext || {};
 
-const onClick = (event: MouseEvent) => {
-  if (props.disabled) {
-    event.preventDefault();
-    event.stopPropagation();
+  const variants = buttonVariants({
+    size: props.size || size?.value,
+    color: props.color || color?.value,
+    variant: props.variant || variant?.value,
+    shape: props.shape || shape?.value,
+    shadow: props.shadow || shadow?.value,
+    fitContent: props.fitContent || fitContent?.value
+  });
 
-    return;
-  }
+  return cn(variants, props.class);
+});
 
-  emit('click', event);
-};
+const disabled = computed(() => props.disabled || buttonGroupContext?.disabled.value);
 </script>
 
 <template>
-  <Primitive
-    v-bind="forwardedProps"
-    :data-disabled="dataDisabled"
-    :aria-disabled="ariaDisabled"
-    :tabindex="disabled ? '-1' : undefined"
-    @click="onClick"
-  >
+  <Button v-bind="forwardedProps" :class="cls" :disabled="disabled" @click="emit('click', $event)">
+    <slot name="leading" />
     <slot />
-  </Primitive>
+    <slot name="trailing" />
+  </Button>
 </template>

@@ -1,78 +1,70 @@
-import type { ShallowRef } from 'vue';
-import type { PropsToContext } from '../../types';
 import type {
-  MenuAnchorProps as ContextMenuAnchorProps,
-  MenuArrowProps as ContextMenuArrowProps,
-  MenuCheckboxGroupEmits as ContextMenuCheckboxGroupEmits,
-  MenuCheckboxGroupProps as ContextMenuCheckboxGroupProps,
-  MenuCheckboxItemEmits as ContextMenuCheckboxItemEmits,
-  MenuCheckboxItemProps as ContextMenuCheckboxItemProps,
-  MenuGroupLabelProps as ContextMenuGroupLabelProps,
-  MenuGroupProps as ContextMenuGroupProps,
-  MenuItemEmits as ContextMenuItemEmits,
-  MenuItemIndicatorProps as ContextMenuItemIndicatorProps,
-  MenuItemProps as ContextMenuItemProps,
-  MenuPortalProps as ContextMenuPortalProps,
-  MenuRadioGroupEmits as ContextMenuRadioGroupEmits,
-  MenuRadioGroupProps as ContextMenuRadioGroupProps,
-  MenuRadioItemEmits as ContextMenuRadioItemEmits,
-  MenuRadioItemProps as ContextMenuRadioItemProps,
-  MenuSeparatorProps as ContextMenuSeparatorProps,
-  MenuSubContentEmits as ContextMenuSubContentEmits,
-  MenuSubContentProps as ContextMenuSubContentProps,
-  MenuSubEmits as ContextMenuSubEmits,
-  MenuSubProps as ContextMenuSubProps,
-  MenuSubTriggerProps as ContextMenuSubTriggerProps,
-  MenuTriggerProps as ContextMenuTriggerProps,
-  MenuContentEmits,
-  MenuContentProps,
-  MenuRootEmits,
-  MenuRootProps
+  AcceptableBooleanValue,
+  ContextMenuArrowProps,
+  ContextMenuContentEmits,
+  ContextMenuContentProps,
+  ContextMenuPortalProps,
+  ContextMenuRootEmits,
+  ContextMenuRootProps,
+  ContextMenuTriggerProps,
+  DefinedValue
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
+import type {
+  MenuCheckboxOptionData,
+  MenuCheckboxOptionsEmits,
+  MenuCheckboxOptionsProps,
+  MenuExtendedUi,
+  MenuOptionData,
+  MenuOptionsEmits,
+  MenuOptionsProps,
+  MenuRadioOptionData,
+  MenuRadioOptionsEmits,
+  MenuRadioOptionsProps
 } from '../menu/types';
 
-export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {
-  /**
-   * The duration from when the trigger is pressed until the menu opens.
-   *
-   * @defaultValue 700
-   */
-  pressOpenDelay?: number;
-}
-export type ContextMenuRootEmits = MenuRootEmits;
-
-export type ContextMenuContentProps = Omit<
-  MenuContentProps,
-  'side' | 'sideOffset' | 'align' | 'arrowPadding' | 'updatePositionStrategy'
->;
-export type ContextMenuContentEmits = MenuContentEmits;
-
-export interface ContextMenuRootContextParams
-  extends PropsToContext<ContextMenuRootProps, 'dir' | 'modal' | 'pressOpenDelay'> {
-  open: ShallowRef<boolean | undefined>;
+// Menu Wrapper
+export interface ContextMenuWrapperProps extends ContextMenuRootProps {
+  size?: ThemeSize;
+  ui?: Partial<MenuExtendedUi>;
+  disabled?: boolean;
+  showArrow?: boolean;
+  triggerProps?: ContextMenuTriggerProps;
+  portalProps?: ContextMenuPortalProps;
+  contentProps?: ContextMenuContentProps;
+  arrowProps?: ContextMenuArrowProps;
 }
 
-export type {
-  ContextMenuPortalProps,
-  ContextMenuTriggerProps,
-  ContextMenuSubEmits,
-  ContextMenuSubProps,
-  ContextMenuSubContentProps,
-  ContextMenuSubContentEmits,
-  ContextMenuSubTriggerProps,
-  ContextMenuAnchorProps,
-  ContextMenuArrowProps,
-  ContextMenuGroupProps,
-  ContextMenuItemProps,
-  ContextMenuItemEmits,
-  ContextMenuCheckboxGroupProps,
-  ContextMenuCheckboxGroupEmits,
-  ContextMenuCheckboxItemProps,
-  ContextMenuCheckboxItemEmits,
-  ContextMenuRadioGroupProps,
-  ContextMenuRadioGroupEmits,
-  ContextMenuRadioItemProps,
-  ContextMenuRadioItemEmits,
-  ContextMenuItemIndicatorProps,
-  ContextMenuGroupLabelProps,
-  ContextMenuSeparatorProps
-};
+export type ContextMenuWrapperEmits = ContextMenuRootEmits & ContextMenuContentEmits;
+
+// Menu
+export interface ContextMenuProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuOptionData<T> = MenuOptionData<T>
+> extends ContextMenuWrapperProps,
+    MenuOptionsProps<T, S> {}
+export type ContextMenuEmits<T extends MenuOptionData = MenuOptionData> = ContextMenuWrapperEmits & MenuOptionsEmits<T>;
+
+// Menu Checkbox
+export interface ContextMenuCheckboxProps<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> extends ContextMenuWrapperProps,
+    MenuCheckboxOptionsProps<T, S> {}
+
+export type ContextMenuCheckboxEmits<
+  T extends DefinedValue = DefinedValue,
+  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
+> = ContextMenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
+
+// Menu Radio
+export interface ContextMenuRadioProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> extends ContextMenuWrapperProps,
+    MenuRadioOptionsProps<T, S> {}
+
+export type ContextMenuRadioEmits<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
+> = ContextMenuWrapperEmits & MenuRadioOptionsEmits<T, S>;

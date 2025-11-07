@@ -1,7 +1,11 @@
-import VirtualizerRoot from './virtualizer-root.vue';
-import VirtualizerItem from './virtualizer-item.vue';
-import VirtualizerContent from './virtualizer-content.vue';
+export { VirtualizerItem as SVirtualizerItem } from '@soybeanjs/headless/virtualizer';
+export { default as SVirtualizer } from './virtualizer.vue';
 
-export { VirtualizerRoot, VirtualizerItem, VirtualizerContent };
-
+export type {
+  VirtualizerRootProps,
+  VirtualizerItemProps,
+  VirtualizerContentProps,
+  VirtualizerDynamicContentProps,
+  VirtualizerOptions
+} from '@soybeanjs/headless/virtualizer';
 export type * from './types';

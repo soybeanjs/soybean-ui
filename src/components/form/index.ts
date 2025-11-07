@@ -1,11 +1,6 @@
-import FormField from './form-field.vue';
-import FormFieldArray from './form-field-array.vue';
-import FormLabel from './form-label.vue';
-import FormDescription from './form-description.vue';
-import FormError from './form-error.vue';
+export { default as SForm } from './form.vue';
+export { default as SFormField } from './form-field.vue';
+export { default as SFormFieldArray } from './form-field-array.vue';
 
-export { FormField, FormFieldArray, FormLabel, FormDescription, FormError };
-
-export { provideFormThemeContext } from './context';
-
+export type { FormLabelProps, FormDescriptionProps, FormErrorProps } from '@soybeanjs/headless/form';
 export type * from './types';

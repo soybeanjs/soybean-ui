@@ -1,9 +1,9 @@
-import SwitchRoot from './switch-root.vue';
-import SwitchControl from './switch-control.vue';
-import SwitchThumb from './switch-thumb.vue';
+export { default as SSwitch } from './switch.vue';
 
-export { SwitchRoot, SwitchControl, SwitchThumb };
-
-export { provideSwitchThemeContext } from './context';
-
-export * from './types';
+export type {
+  SwitchRootProps,
+  SwitchRootEmits,
+  SwitchControlProps,
+  SwitchThumbProps
+} from '@soybeanjs/headless/switch';
+export type * from './types';

@@ -1,7 +1,2 @@
-import Arrow from './arrow.vue';
-
-export { Arrow };
-
-export { provideArrowThemeContext } from './context';
-
-export type * from './types';
+export { Arrow as SArrow } from '@soybeanjs/headless/arrow';
+export type { ArrowProps } from '@soybeanjs/headless/arrow';

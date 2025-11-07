@@ -1,8 +1,9 @@
-import TextareaRoot from './textarea-root.vue';
-import TextareaControl from './textarea-control.vue';
-import TextareaCounter from './textarea-counter.vue';
-
-export { TextareaRoot, TextareaControl, TextareaCounter };
-export { provideTextareaThemeContext } from './context';
+export { default as STextarea } from './textarea.vue';
+export type {
+  TextareaRootProps,
+  TextareaRootEmits,
+  TextareaControlProps,
+  TextareaCounterProps
+} from '@soybeanjs/headless/textarea';
 
 export type * from './types';

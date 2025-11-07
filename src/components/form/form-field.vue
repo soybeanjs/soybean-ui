@@ -1,46 +1,80 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useField } from '../../form/core';
-import { provideFormFieldContext, useFormThemeContext } from './context';
+import { computed, useSlots } from 'vue';
+import { FormDescription, FormError, FormField, FormLabel, Slot, provideFormThemeContext } from '@soybeanjs/headless';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useField } from '@soybeanjs/headless/forms';
+import { vAutoAnimate } from '@formkit/auto-animate';
+import { mergeSlotVariants } from '@/theme';
+import { formVariants } from '@/variants/form';
+import { useFormContext } from './context';
 import type { FormFieldProps } from './types';
 
 defineOptions({
-  name: 'FormField'
+  name: 'SFormField'
 });
 
 const props = defineProps<FormFieldProps>();
 
-const themeContext = useFormThemeContext();
+const slots = useSlots();
 
-const cls = computed(() => themeContext?.ui?.value?.field);
+const forwardedProps = useOmitProps(props, [
+  'size',
+  'ui',
+  'label',
+  'description',
+  'labelProps',
+  'descriptionProps',
+  'errorProps'
+]);
 
-const { value: modelValue, attrs, dirty, error, touched } = useField(() => props.name);
+const formContext = useFormContext('FormField');
 
-const { formFieldId, formDescriptionId, formErrorId } = provideFormFieldContext();
+const { error } = useField(() => props.name);
 
-const ariaDescribedBy = computed(() => (error.value ? `${formDescriptionId} ${formErrorId}` : formDescriptionId));
+const size = computed(() => props.size ?? formContext.size.value);
 
-const ariaInvalid = computed(() => Boolean(error.value));
+const ui = computed(() => {
+  const variants = formVariants({
+    size: size.value,
+    error: Boolean(error.value)
+  });
 
-function updateModelValue(val: any) {
-  modelValue.value = val;
-}
+  return mergeSlotVariants(variants, { ...formContext.ui.value, ...props.ui });
+});
+
+provideFormThemeContext({
+  ui
+});
+
+const labelProps = computed(() => ({ ...formContext.labelProps.value, ...props.labelProps }));
+const descriptionProps = computed(() => ({ ...formContext.descriptionProps.value, ...props.descriptionProps }));
+const errorProps = computed(() => ({ ...formContext.errorProps.value, ...props.errorProps }));
 </script>
 
 <template>
-  <div :class="cls">
-    <slot
+  <FormField
+    v-slot="{ modelValue, updateModelValue, attrs, dirty, touched, ariaDescribedBy, ariaInvalid }"
+    v-auto-animate
+    v-bind="forwardedProps"
+  >
+    <FormLabel v-if="slots.label || label" v-bind="labelProps">
+      <slot name="label">{{ label }}</slot>
+    </FormLabel>
+    <Slot
+      :size="size"
       :model-value="modelValue"
-      :attrs="attrs"
-      :dirty="dirty"
-      :error="error"
-      :touched="touched"
-      :form-field-id="formFieldId"
-      :form-description-id="formDescriptionId"
-      :form-error-id="formErrorId"
       :aria-described-by="ariaDescribedBy"
       :aria-invalid="ariaInvalid"
-      :update-model-value="updateModelValue"
-    />
-  </div>
+      @update:model-value="updateModelValue"
+      @change="attrs.onChange"
+      @input="attrs.onInput"
+      @blur="attrs.onBlur"
+    >
+      <slot :dirty="dirty" :error="error" :touched="touched" />
+    </Slot>
+    <FormDescription v-if="slots.description || description" v-bind="descriptionProps">
+      <slot name="description">{{ description }}</slot>
+    </FormDescription>
+    <FormError v-if="error" v-bind="errorProps">{{ error }}</FormError>
+  </FormField>
 </template>

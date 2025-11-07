@@ -1,31 +1,30 @@
-import type {
-  DialogCloseProps as AlertDialogCloseProps,
-  DialogContentEmits as AlertDialogContentEmits,
-  DialogContentProps as AlertDialogContentProps,
-  DialogDescriptionProps as AlertDialogDescriptionProps,
-  DialogFooterProps as AlertDialogFooterProps,
-  DialogHeaderProps as AlertDialogHeaderProps,
-  DialogOverlayProps as AlertDialogOverlayProps,
-  DialogPortalProps as AlertDialogPortalProps,
-  DialogTitleProps as AlertDialogTitleProps,
-  DialogTriggerProps as AlertDialogTriggerProps,
-  DialogRootEmits,
-  DialogRootProps
-} from '../dialog';
+import type { AlertDialogRootEmits } from '@soybeanjs/headless';
+import type { ThemeColor } from '@/theme';
+import type { DialogProps } from '../dialog/types';
+import type { ButtonProps } from '../button/types';
 
-export interface AlertDialogRootProps extends Omit<DialogRootProps, 'modal'> {}
+export type AlertDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
-export type AlertDialogRootEmits = DialogRootEmits;
+export interface AlertDialogProps extends Omit<DialogProps, 'modal' | 'closable'> {
+  type?: AlertDialogType;
+}
 
-export type {
-  AlertDialogContentProps,
-  AlertDialogContentEmits,
-  AlertDialogCloseProps,
-  AlertDialogTriggerProps,
-  AlertDialogPortalProps,
-  AlertDialogOverlayProps,
-  AlertDialogTitleProps,
-  AlertDialogDescriptionProps,
-  AlertDialogHeaderProps,
-  AlertDialogFooterProps
-};
+export type AlertDialogEmits = AlertDialogRootEmits;
+
+export interface AlertDialogCancelProps extends ButtonProps {
+  /**
+   * The text of the cancel button.
+   *
+   * @defaultValue 'Cancel'
+   */
+  text?: string;
+}
+
+export interface AlertDialogActionProps extends ButtonProps {
+  /**
+   * The text of the action button.
+   *
+   * @defaultValue 'Confirm'
+   */
+  text?: string;
+}

@@ -1,7 +1,4 @@
-import BadgeRoot from './badge-root.vue';
-import BadgeContent from './badge-content.vue';
+export { default as SBadge } from './badge.vue';
 
-export { BadgeRoot, BadgeContent };
-export { provideBadgeThemeContext } from './context';
-
+export type { BadgeRootProps, BadgeRootEmits, BadgeContentProps } from '@soybeanjs/headless/badge';
 export type * from './types';

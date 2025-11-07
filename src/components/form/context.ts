@@ -1,22 +1,4 @@
-import { useId } from 'vue';
-import { useContext } from '../../composables';
-import type { FormThemeParams } from './types';
+import { useContext } from '@soybeanjs/headless/composables';
+import type { FormContextParams } from './types';
 
-export const [provideFormFieldContext, useFormFieldContext] = useContext('FormField', () => {
-  const id = useId();
-
-  const formFieldId = `form-field-${id}`;
-  const formDescriptionId = `form-field-description-${id}`;
-  const formErrorId = `form-field-error-${id}`;
-
-  return {
-    formFieldId,
-    formDescriptionId,
-    formErrorId
-  };
-});
-
-export const [provideFormThemeContext, useFormThemeContext] = useContext(
-  'FormTheme',
-  (params: FormThemeParams) => params
-);
+export const [provideFormContext, useFormContext] = useContext('Form', (params: FormContextParams) => params);

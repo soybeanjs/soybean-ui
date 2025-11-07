@@ -1,6 +1,6 @@
-import type { LabelHTMLAttributes } from 'vue';
+import type { LabelProps as _LabelProps } from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface LabelProps extends /** @vue-ignore */ LabelHTMLAttributes {
-  /** The id of the element the label is associated with. */
-  for?: string;
+export interface LabelProps extends _LabelProps {
+  size?: ThemeSize;
 }

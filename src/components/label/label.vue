@@ -1,22 +1,21 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { Label } from '@soybeanjs/headless';
+import { cn } from '@/theme';
+import { labelVariants } from '@/variants/label';
 import type { LabelProps } from './types';
 
 defineOptions({
-  name: 'Label'
+  name: 'SLabel'
 });
 
 const props = defineProps<LabelProps>();
 
-const onMouseDown = (event: MouseEvent) => {
-  // prevent text selection when double clicking label
-  if (!event.defaultPrevented && event.detail > 1) {
-    event.preventDefault();
-  }
-};
+const cls = computed(() => cn(labelVariants({ size: props.size }), props.class));
 </script>
 
 <template>
-  <label v-bind="props" @mousedown="onMouseDown">
+  <Label :for="props.for" :class="cls">
     <slot />
-  </label>
+  </Label>
 </template>

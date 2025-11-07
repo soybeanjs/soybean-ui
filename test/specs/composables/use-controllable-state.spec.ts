@@ -1,6 +1,6 @@
 import { nextTick, ref } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
-import { useControllableState } from '@headless/composables/use-controllable-state';
+import { useControllableState } from '../../../headless/src/composables/use-controllable-state';
 
 describe('useControllableState', () => {
   it('should work in controlled mode', async () => {

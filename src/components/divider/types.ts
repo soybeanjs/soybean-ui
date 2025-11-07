@@ -1,24 +1,12 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue, DataOrientation } from '../../types';
+import type { Align, DividerLabelProps, DividerRootProps, DividerUi } from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
+import type { DividerBorder } from '@/variants/divider';
 
-export interface DividerLabelProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface DividerRootProps extends /** @vue-ignore */ HTMLAttributes {
-  /**
-   * Orientation of the component.
-   *
-   * Either `vertical` or `horizontal`. Defaults to `horizontal`.
-   */
-  orientation?: DataOrientation;
-  /**
-   * Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so
-   * that that the rendered element is removed from the accessibility tree.
-   */
-  decorative?: boolean;
-}
-
-export type DividerThemeSlot = 'root' | 'label';
-
-export interface DividerThemeContextParams {
-  ui: ComputedRef<Record<DividerThemeSlot, ClassValue>>;
+export interface DividerProps extends DividerRootProps {
+  size?: ThemeSize;
+  ui?: Partial<DividerUi>;
+  align?: Align;
+  border?: DividerBorder;
+  label?: string;
+  labelProps?: DividerLabelProps;
 }

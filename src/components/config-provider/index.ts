@@ -1,5 +1,4 @@
-import ConfigProvider from './config-provider.vue';
+export { default as SConfigProvider } from './config-provider.vue';
+export { useConfigProvider } from './context';
 
-export { ConfigProvider };
-
-export type * from './types';
+export type { ConfigProviderProps } from './types';

@@ -1,10 +1,10 @@
 import { nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useFocusGuards } from '@headless/composables/use-focus-guards';
+import { useFocusGuards } from '../../../headless/src/composables/use-focus-guards';
 
 // Mock the shared/env module
-vi.mock('@headless/shared/env', () => ({
+vi.mock('../../../headless/src/shared/env', () => ({
   isClient: true
 }));
 

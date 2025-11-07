@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { COLLECTION_ITEM_ATTRIBUTE } from '@headless/constants';
-import { useArrowNavigation } from '@headless/composables/use-arrow-navigation';
+import { useArrowNavigation } from '../../../headless/src/composables/use-arrow-navigation';
+import { COLLECTION_ITEM_ATTRIBUTE } from '../../../headless/src/constants';
 import { createMockElement } from '../../shared';
 
 describe('useArrowNavigation', () => {

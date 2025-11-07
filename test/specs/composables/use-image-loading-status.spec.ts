@@ -1,6 +1,6 @@
 import { nextTick, ref } from 'vue';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { useImageLoadingStatus } from '@headless/composables/use-image-loading-status';
+import { useImageLoadingStatus } from '../../../headless/src/composables/use-image-loading-status';
 import { TEST_DELAYS, delay, setupMockImage } from '../../shared';
 
 describe('useImageLoadingStatus', () => {
@@ -15,19 +15,19 @@ describe('useImageLoadingStatus', () => {
   });
 
   it('should set error status for empty src', async () => {
-    const status = useImageLoadingStatus('');
+    const status = useImageLoadingStatus({ src: '' });
     await nextTick();
     expect(status.value).toBe('error');
   });
 
   it('should set loading status when src is provided', async () => {
-    const status = useImageLoadingStatus('https://example.com/image.jpg');
+    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg' });
     await nextTick();
     expect(status.value).toBe('loading');
   });
 
   it('should set loaded status when image loads successfully', async () => {
-    const status = useImageLoadingStatus('https://example.com/image.jpg');
+    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg' });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -38,7 +38,7 @@ describe('useImageLoadingStatus', () => {
   });
 
   it('should set error status when image fails to load', async () => {
-    const status = useImageLoadingStatus('https://example.com/error.jpg');
+    const status = useImageLoadingStatus({ src: 'https://example.com/error.jpg' });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -50,7 +50,7 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle reactive src changes', async () => {
     const src = ref('https://example.com/image1.jpg');
-    const status = useImageLoadingStatus(src);
+    const status = useImageLoadingStatus({ src });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -71,9 +71,7 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle referrerPolicy option', async () => {
     const referrerPolicy = ref<'no-referrer' | undefined>('no-referrer');
-    const status = useImageLoadingStatus('https://example.com/image.jpg', {
-      referrerPolicy
-    });
+    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg', referrerpolicy: referrerPolicy });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -81,9 +79,7 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle crossOrigin option', async () => {
     const crossOrigin = ref<'anonymous' | undefined>('anonymous');
-    const status = useImageLoadingStatus('https://example.com/image.jpg', {
-      crossOrigin
-    });
+    const status = useImageLoadingStatus({ src: 'https://example.com/image.jpg', crossorigin: crossOrigin });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -93,9 +89,10 @@ describe('useImageLoadingStatus', () => {
     const referrerPolicy = ref<'no-referrer' | undefined>(undefined);
     const crossOrigin = ref<'anonymous' | undefined>(undefined);
 
-    const status = useImageLoadingStatus('https://example.com/image.jpg', {
-      referrerPolicy,
-      crossOrigin
+    const status = useImageLoadingStatus({
+      src: 'https://example.com/image.jpg',
+      referrerpolicy: referrerPolicy,
+      crossorigin: crossOrigin
     });
 
     await nextTick();
@@ -111,7 +108,7 @@ describe('useImageLoadingStatus', () => {
 
   it('should handle getter function for src', async () => {
     const currentSrc = 'https://example.com/image1.jpg';
-    const status = useImageLoadingStatus(() => currentSrc);
+    const status = useImageLoadingStatus({ src: currentSrc });
 
     await nextTick();
     expect(status.value).toBe('loading');
@@ -123,7 +120,7 @@ describe('useImageLoadingStatus', () => {
 
   it('should clean up properly when src changes', async () => {
     const src = ref('https://example.com/image1.jpg');
-    const status = useImageLoadingStatus(src);
+    const status = useImageLoadingStatus({ src });
 
     await nextTick();
     expect(status.value).toBe('loading');

@@ -1,33 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useKbd } from '../../composables';
+import { Kbd } from '@soybeanjs/headless';
+import { useOmitProps } from '@soybeanjs/headless/composables';
+import { kbdVariants } from '@/variants/kbd';
 import type { KbdProps } from './types';
 
 defineOptions({
-  name: 'Kbd'
+  name: 'SKbd'
 });
 
-const props = defineProps<KbdProps>();
-
-const { getKeyboardKey } = useKbd();
-
-const formattedValue = computed(() => {
-  const values = Array.isArray(props.value) ? props.value : [props.value];
-
-  return values
-    .map(value => {
-      if (props.symbolize) {
-        return getKeyboardKey(value);
-      }
-
-      return value;
-    })
-    .join('');
+const props = withDefaults(defineProps<KbdProps>(), {
+  symbolize: true
 });
+
+const delegatedProps = useOmitProps(props, ['class', 'size', 'variant']);
+
+const cls = computed(() =>
+  kbdVariants({
+    size: props.size,
+    variant: props.variant
+  })
+);
 </script>
 
 <template>
-  <kbd :data-group="Array.isArray(value) ? '' : undefined">
-    <slot>{{ formattedValue }}</slot>
-  </kbd>
+  <Kbd v-bind="delegatedProps" :class="cls" />
 </template>

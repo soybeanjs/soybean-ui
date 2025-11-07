@@ -1,23 +1,43 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue } from '../../types';
-import type { LabelProps } from '../label/types';
+import type { FormHTMLAttributes } from 'vue';
+import type {
+  FormDescriptionProps,
+  FormErrorProps,
+  FormFieldUi,
+  FormLabelProps,
+  PropsToContext,
+  FormFieldArrayProps as _FormFieldArrayProps,
+  FormFieldProps as _FormFieldProps
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
-  name: string;
+export interface FormFieldProps extends _FormFieldProps {
+  size?: ThemeSize;
+  ui?: Partial<FormFieldUi>;
+  label?: string;
+  description?: string;
+  labelProps?: FormLabelProps;
+  descriptionProps?: FormDescriptionProps;
+  errorProps?: FormErrorProps;
 }
 
-export interface FormFieldArrayProps extends /** @vue-ignore */ HTMLAttributes {
-  name: string;
+export interface FormFieldArrayProps extends _FormFieldArrayProps {
+  size?: ThemeSize;
+  ui?: Partial<FormFieldUi>;
+  label?: string;
+  description?: string;
+  labelProps?: FormLabelProps;
+  descriptionProps?: FormDescriptionProps;
+  errorProps?: FormErrorProps;
 }
 
-export interface FormLabelProps extends LabelProps {}
-
-export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export type FormFieldThemeSlot = 'field' | 'fieldArray' | 'label' | 'description' | 'error';
-
-export interface FormThemeParams {
-  ui?: ComputedRef<Record<FormFieldThemeSlot, ClassValue>>;
+export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
+  size?: ThemeSize;
+  ui?: Partial<FormFieldUi>;
+  fieldProps?: FormFieldProps;
+  fieldArrayProps?: FormFieldArrayProps;
+  labelProps?: FormLabelProps;
+  descriptionProps?: FormDescriptionProps;
+  errorProps?: FormErrorProps;
 }
+
+export interface FormContextParams extends PropsToContext<FormProps> {}

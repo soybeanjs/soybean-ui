@@ -1,34 +1,36 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue } from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
+import type {
+  AlertCloseProps,
+  AlertContentProps,
+  AlertDescriptionProps,
+  AlertRootEmits,
+  AlertRootProps,
+  AlertTitleProps,
+  AlertUi,
+  ClassValue
+} from '@soybeanjs/headless';
+import type { ThemeColor, ThemeSize } from '@/theme';
+import type { AlertVariant } from '@/variants/alert';
+import type { IconValue } from '../icon/types';
 
-export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
-  /**
-   * The controlled open state of the alert. Can be bound with `v-model:open`.
-   *
-   * @defaultValue true
-   */
-  open?: boolean;
+type AlertExtraThemeSlot = 'icon';
+
+export type AlertExtendedUi = AlertUi & Record<AlertExtraThemeSlot, ClassValue>;
+
+export interface AlertProps extends AlertRootProps {
+  size?: ThemeSize;
+  color?: ThemeColor;
+  variant?: AlertVariant;
+  ui?: Partial<AlertExtendedUi>;
+  title?: string;
+  description?: string;
+  icon?: IconValue;
+  closable?: boolean;
+  contentProps?: AlertContentProps;
+  titleProps?: AlertTitleProps;
+  descriptionProps?: AlertDescriptionProps;
+  closeProps?: AlertCloseProps;
 }
 
-export type AlertRootEmits = {
-  'update:open': [open: boolean];
-};
+export type AlertEmits = AlertRootEmits;
 
-export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AlertDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
-
-export interface AlertRootContextParams {
-  open: ShallowRef<boolean | undefined>;
-}
-
-export type AlertThemeSlot = 'root' | 'title' | 'description' | 'content' | 'closable';
-
-export interface AlertThemeContextParams {
-  ui: ComputedRef<Record<AlertThemeSlot, ClassValue>>;
-}
+export type { AlertVariant };

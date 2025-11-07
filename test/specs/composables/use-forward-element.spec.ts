@@ -1,10 +1,10 @@
 import { describe, expect, it, vi } from 'vitest';
-import { useForwardElement } from '@headless/composables/use-forward-element';
-import { getElFromTemplateRef } from '@headless/shared';
+import { useForwardElement } from '../../../headless/src/composables/use-forward-element';
+import { getElFromTemplateRef } from '../../../headless/src/shared';
 import { createMockElement } from '../../shared';
 
 // Mock the getElFromTemplateRef function
-vi.mock('@headless/shared', () => ({
+vi.mock('../../../headless/src/shared', () => ({
   getElFromTemplateRef: vi.fn()
 }));
 

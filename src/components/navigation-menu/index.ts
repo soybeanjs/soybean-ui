@@ -1,25 +1,19 @@
-import NavigationMenuRoot from './navigation-menu-root.vue';
-import NavigationMenuList from './navigation-menu-list.vue';
-import NavigationMenuSubList from './navigation-menu-sub-list.vue';
-import NavigationMenuItem from './navigation-menu-item.vue';
-import NavigationMenuLink from './navigation-menu-link.vue';
-import NavigationMenuContent from './navigation-menu-content.vue';
-import NavigationMenuTrigger from './navigation-menu-trigger.vue';
-import NavigationMenuViewport from './navigation-menu-viewport.vue';
-import NavigationMenuIndicator from './navigation-menu-indicator.vue';
+export { default as SNavigationMenu } from './navigation-menu.vue';
 
-export {
-  NavigationMenuRoot,
-  NavigationMenuList,
-  NavigationMenuSubList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-  NavigationMenuIndicator
-};
-
-export { provideNavigationMenuThemeContext } from './context';
-
+export type {
+  NavigationMenuRootProps,
+  NavigationMenuRootEmits,
+  NavigationMenuViewportProps,
+  NavigationMenuContentProps,
+  NavigationMenuContentEmits,
+  NavigationMenuTriggerProps,
+  NavigationMenuListProps,
+  NavigationMenuItemProps,
+  NavigationMenuLinkProps,
+  NavigationMenuLinkEmits,
+  NavigationMenuIndicatorProps,
+  NavigationMenuSubProps,
+  NavigationMenuSubEmits,
+  NavigationMenuSubListProps
+} from '@soybeanjs/headless/navigation-menu';
 export type * from './types';

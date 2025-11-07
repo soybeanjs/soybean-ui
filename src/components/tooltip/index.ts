@@ -1,13 +1,6 @@
-import TooltipPortal from '../portal/portal.vue';
-import TooltipArrow from '../popper/popper-arrow.vue';
-import TooltipRoot from './tooltip-root.vue';
-import TooltipTrigger from './tooltip-trigger.vue';
-import TooltipContent from './tooltip-content.vue';
-
-export { TooltipRoot, TooltipTrigger, TooltipContent, TooltipPortal, TooltipArrow };
+export { default as STooltip } from './tooltip.vue';
 
 export type {
-  TooltipProviderProps,
   TooltipRootProps,
   TooltipRootEmits,
   TooltipTriggerProps,
@@ -15,4 +8,5 @@ export type {
   TooltipContentEmits,
   TooltipPortalProps,
   TooltipArrowProps
-} from './types';
+} from '@soybeanjs/headless/tooltip';
+export type * from './types';

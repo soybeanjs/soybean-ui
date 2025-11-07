@@ -1,30 +1,48 @@
 import { defineConfig } from 'tsdown';
 import unpluginVue from 'unplugin-vue/rolldown';
 import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
-import fg from 'fast-glob';
-import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
-  entry: [
-    ...fg.sync('src/components/**/index.ts'),
-    ...fg.sync('src/*/index.ts').filter(glob => glob !== 'src/types/index.ts'),
-    'src/index.ts'
-  ],
+  entry: ['src/index.ts'],
   platform: 'neutral',
   external: [
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.devDependencies),
-    '@vueuse/shared',
+    '@floating-ui/core',
+    '@floating-ui/vue',
+    '@formkit/auto-animate',
+    '@iconify/vue',
+    '@internationalized/date',
+    '@internationalized/number',
     '@nuxt/kit',
-    '@nuxt/schema'
+    '@nuxt/schema',
+    '@soybeanjs/color-palette',
+    '@soybeanjs/unocss-shadcn',
+    '@standard-schema/spec',
+    '@tanstack/vue-virtual',
+    '@vue/shared',
+    '@vueuse/core',
+    '@vueuse/integrations',
+    '@vueuse/integrations/useFuse',
+    '@vueuse/router',
+    '@vueuse/shared',
+    'aria-hidden',
+    'clsx',
+    'defu',
+    'fuse.js',
+    'klona',
+    'nuxt',
+    'ohash',
+    'tailwind-merge',
+    'tailwind-variants',
+    'valibot',
+    'vue',
+    'vue-router',
+    'zod'
   ],
-  noExternal: ['aria-hidden'],
   clean: true,
   dts: {
     vue: true
   },
-  unbundle: true,
   plugins: [unpluginVue({ isProduction: true }), unpluginVueJsx()],
   sourcemap: false,
-  minify: false
+  minify: true
 });

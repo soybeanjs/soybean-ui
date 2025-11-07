@@ -1,8 +1,20 @@
-import TreeRoot from './tree-root.vue';
-import TreeItem from './tree-item.vue';
-import TreeVirtualizerRoot from './tree-virtualizer-root.vue';
-import TreeVirtualizerItem from './tree-virtualizer-item.vue';
+export { TreeItem as STreeItem, TreeVirtualizerItem as STreeVirtualizerItem } from '@soybeanjs/headless/tree';
+export { default as STree } from './tree.vue';
+export { default as STreeVirtualizer } from './tree-virtualizer.vue';
 
-export { TreeRoot, TreeItem, TreeVirtualizerRoot, TreeVirtualizerItem };
-
+export type {
+  TreeRootProps,
+  TreeRootEmits,
+  TreeItemProps,
+  TreeItemEmits,
+  TreeItemBaseData,
+  TreeItemData,
+  TreeSelectBehavior,
+  TreeToggleBehavior,
+  TreeVirtualizerRootProps,
+  TreeVirtualizerRootEmits,
+  TreeVirtualizerItemProps,
+  TreeVirtualizerItemEmits,
+  FlattenedItem
+} from '@soybeanjs/headless/tree';
 export type * from './types';

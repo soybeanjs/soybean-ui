@@ -1,21 +1,21 @@
 {
-  "name": "soybean-headless",
+  "name": "@soybeanjs/ui",
   "type": "module",
   "version": "0.0.1-beta.2",
   "packageManager": "pnpm@10.20.0",
-  "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
+  "description": "SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
   "license": "MIT",
-  "homepage": "https://github.com/soybeanjs/soybean-headless",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
   "repository": {
-    "url": "https://github.com/soybeanjs/soybean-headless.git"
+    "url": "https://github.com/soybeanjs/soybean-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-headless/issues"
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -26,36 +26,6 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
-    },
-    "./constant": {
-      "types": "./dist/constant/index.d.ts",
-      "import": "./dist/constant/index.js",
-      "require": "./dist/constant/index.js"
-    },
-    "./composables": {
-      "types": "./dist/composables/index.d.ts",
-      "import": "./dist/composables/index.js",
-      "require": "./dist/composables/index.js"
-    },
-    "./nuxt": {
-      "types": "./dist/nuxt/index.d.ts",
-      "import": "./dist/nuxt/index.js",
-      "require": "./dist/nuxt/index.js"
-    },
-    "./resolver": {
-      "types": "./dist/resolver/index.d.ts",
-      "import": "./dist/resolver/index.js",
-      "require": "./dist/resolver/index.js"
-    },
-    "./namespaced": {
-      "types": "./dist/namespaced/index.d.ts",
-      "import": "./dist/namespaced/index.js",
-      "require": "./dist/namespaced/index.js"
-    },
-    "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "import": "./dist/components/*/index.js",
-      "require": "./dist/components/*/index.js"
     }
   },
   "main": "./dist/index.js",
@@ -63,21 +33,20 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "pnpm nuxt:gen && pnpm tsdown",
-    "build:nuxt": "nuxt build",
-    "build:play": "vite build -c vite.play.config.ts",
+    "build": "pnpm tsdown",
+    "build:all": "pnpm build:headless && pnpm build",
+    "build:headless": "pnpm --filter @soybeanjs/headless build",
+    "build:play": "vite build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
-    "dev": "tsdown --watch",
-    "dev:nuxt": "nuxt dev",
-    "dev:play": "pnpm play",
+    "dev": "vite",
     "lint": "eslint . --fix",
-    "nuxt:gen": "nuxt generate",
-    "play": "vite -c vite.play.config.ts",
     "prepare": "simple-git-hooks",
-    "preview": "vite preview -c vite.play.config.ts",
+    "preview": "vite preview",
     "publish-pkg": "pnpm publish --access public",
     "release": "soy release",
+    "reset-stub": "tsx scripts/stub.ts --reset",
+    "stub": "tsx scripts/stub.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
@@ -86,61 +55,43 @@
     "update-pkg": "soy ncu"
   },
   "dependencies": {
-    "@floating-ui/vue": "^1.1.9",
     "@formkit/auto-animate": "^0.9.0",
     "@iconify/vue": "^5.0.0",
-    "@internationalized/date": "^3.10.0",
-    "@internationalized/number": "^3.6.5",
-    "@standard-schema/spec": "^1.0.0",
-    "@tanstack/vue-virtual": "^3.13.12",
-    "@unocss/reset": "^66.5.4",
-    "@vue/shared": "^3.5.22",
-    "@vueuse/core": "^14.0.0",
-    "@vueuse/integrations": "^14.0.0",
-    "@vueuse/router": "^14.0.0",
-    "@vueuse/shared": "^14.0.0",
-    "aria-hidden": "^1.2.6",
+    "@soybeanjs/headless": "workspace:^",
     "clsx": "^2.1.1",
-    "defu": "^6.1.4",
     "fuse.js": "^7.1.0",
-    "klona": "^2.0.6",
-    "ohash": "^2.0.11",
     "tailwind-merge": "^3.3.1",
-    "tailwind-variants": "^3.1.1",
-    "valibot": "^1.1.0",
-    "zod": "^4.1.12"
+    "tailwind-variants": "^3.1.1"
   },
   "devDependencies": {
-    "@soybean-ui/unocss-preset": "0.0.2-beta.5",
-    "@soybeanjs/cli": "1.4.1",
-    "@soybeanjs/eslint-config": "1.7.1",
-    "@soybeanjs/unocss-preset": "0.1.5",
-    "@types/node": "24.10.0",
-    "@unocss/nuxt": "66.5.4",
-    "@vitest/coverage-v8": "4.0.7",
-    "@vue/test-utils": "2.4.6",
-    "eslint": "9.39.1",
-    "eslint-plugin-vue": "10.5.1",
-    "happy-dom": "20.0.10",
-    "lint-staged": "16.2.6",
-    "nuxt": "4.2.0",
-    "simple-git-hooks": "2.13.1",
-    "tsdown": "0.16.0",
-    "tsx": "4.20.6",
-    "typescript": "5.9.3",
-    "unocss": "66.5.4",
-    "unocss-preset-animations": "1.3.0",
-    "unplugin-vue": "7.0.4",
-    "unplugin-vue-components": "30.0.0",
-    "unplugin-vue-jsx": "0.8.1",
-    "vite": "7.2.0",
-    "vite-plugin-vue-devtools": "8.0.3",
-    "vite-tsconfig-paths": "6.0.0-beta.3",
-    "vitest": "4.0.7",
-    "vue": "3.5.22",
-    "vue-eslint-parser": "10.2.0",
-    "vue-router": "4.6.3",
-    "vue-tsc": "3.1.3"
+    "@soybeanjs/cli": "^1.4.1",
+    "@soybeanjs/eslint-config": "^1.7.1",
+    "@soybeanjs/unocss-preset": "^0.1.5",
+    "@soybeanjs/unocss-shadcn": "^0.0.1",
+    "@types/node": "^24.10.0",
+    "@vitest/coverage-v8": "^4.0.7",
+    "@vue/test-utils": "^2.4.6",
+    "eslint": "^9.39.1",
+    "eslint-plugin-vue": "^10.5.1",
+    "happy-dom": "^20.0.10",
+    "lint-staged": "^16.2.6",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.16.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "unocss": "^66.5.4",
+    "unocss-preset-animations": "^1.3.0",
+    "unplugin-vue": "^7.0.4",
+    "unplugin-vue-components": "^30.0.0",
+    "unplugin-vue-jsx": "^0.8.1",
+    "vite": "^7.2.1",
+    "vite-plugin-vue-devtools": "^8.0.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^4.0.7",
+    "vue": "^3.5.23",
+    "vue-eslint-parser": "^10.2.0",
+    "vue-router": "^4.6.3",
+    "vue-tsc": "^3.1.3"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",

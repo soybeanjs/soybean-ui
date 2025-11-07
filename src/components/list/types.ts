@@ -1,18 +1,22 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue } from '../../types';
+import type {
+  ListContentProps,
+  ListDescriptionProps,
+  ListRootProps,
+  ListTitleProps,
+  ListUi,
+  ListItemProps as _ListItemProps
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface ListRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface ListProps extends ListRootProps {
+  size?: ThemeSize;
+  ui?: Partial<ListUi>;
+}
 
-export interface ListItemProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface ListContentProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface ListTitleProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface ListDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export type ListThemeSlot = 'root' | 'item' | 'content' | 'title' | 'description';
-
-export interface ListThemeContextParams {
-  ui: ComputedRef<Record<ListThemeSlot, ClassValue>>;
+export interface ListItemProps extends _ListItemProps {
+  title?: string;
+  description?: string;
+  contentProps?: ListContentProps;
+  titleProps?: ListTitleProps;
+  descriptionProps?: ListDescriptionProps;
 }

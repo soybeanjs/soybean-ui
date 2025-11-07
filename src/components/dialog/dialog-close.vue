@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
-import { useDialogRootContext } from './context';
-import type { DialogCloseProps } from './types';
+import { DialogClose } from '@soybeanjs/headless';
+import type { DialogCloseProps } from '@soybeanjs/headless';
+import { useSizeContext } from '@/theme';
 
 defineOptions({
-  name: 'DialogClose'
+  name: 'SDialogClose'
 });
 
-const props = defineProps<DialogCloseProps>();
+defineProps<DialogCloseProps>();
 
-const { onOpenChange } = useDialogRootContext('DialogClose');
-
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+const { size } = useSizeContext('DialogClose');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :type="tag" @click="onOpenChange(false)">
+  <DialogClose :size="size" as-child>
     <slot />
-  </Primitive>
+  </DialogClose>
 </template>

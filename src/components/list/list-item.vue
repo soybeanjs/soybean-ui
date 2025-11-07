@@ -1,21 +1,29 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useListThemeContext } from './context';
+import { useSlots } from 'vue';
+import { ListContent, ListDescription, ListItem, ListTitle } from '@soybeanjs/headless';
 import type { ListItemProps } from './types';
 
 defineOptions({
-  name: 'ListItem'
+  name: 'SListItem'
 });
 
 defineProps<ListItemProps>();
 
-const themeContext = useListThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.item);
+const slots = useSlots();
 </script>
 
 <template>
-  <li :class="cls">
-    <slot />
-  </li>
+  <ListItem>
+    <slot name="leading" />
+    <ListContent v-bind="contentProps">
+      <ListTitle v-if="slots.title || title" v-bind="titleProps">
+        <slot name="title">{{ title }}</slot>
+      </ListTitle>
+      <ListDescription v-if="slots.description || description" v-bind="descriptionProps">
+        <slot name="description">{{ description }}</slot>
+      </ListDescription>
+      <slot />
+    </ListContent>
+    <slot name="trailing" />
+  </ListItem>
 </template>

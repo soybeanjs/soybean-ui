@@ -1,5 +1,3 @@
-import Label from './label.vue';
-
-export { Label };
+export { default as SLabel } from './label.vue';
 
 export type * from './types';

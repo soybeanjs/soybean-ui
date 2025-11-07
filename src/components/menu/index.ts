@@ -1,41 +1,31 @@
-import MenuPortal from '../portal/portal.vue';
-import MenuAnchor from '../popper/popper-anchor.vue';
-import MenuArrow from '../popper/popper-arrow.vue';
-import MenuSeparator from '../divider/divider-root.vue';
-import MenuRoot from './menu-root.vue';
-import MenuContent from './menu-content.vue';
-import MenuSub from './menu-sub.vue';
-import MenuSubContent from './menu-sub-content.vue';
-import MenuSubTrigger from './menu-sub-trigger.vue';
-import MenuGroup from './menu-group.vue';
-import MenuGroupLabel from './menu-group-label.vue';
-import MenuItem from './menu-item.vue';
-import MenuCheckboxGroup from './menu-checkbox-group.vue';
-import MenuCheckboxItem from './menu-checkbox-item.vue';
-import MenuRadioGroup from './menu-radio-group.vue';
-import MenuRadioItem from './menu-radio-item.vue';
-import MenuItemIndicator from './menu-item-indicator.vue';
+export { default as SMenuOption } from './menu-option.vue';
+export { default as SMenuOptions } from './menu-options.vue';
+export { default as SMenuCheckboxOptions } from './menu-checkbox-options.vue';
+export { default as SMenuRadioOptions } from './menu-radio-options.vue';
 
-export {
-  MenuRoot,
-  MenuPortal,
-  MenuContent,
-  MenuSub,
-  MenuSubContent,
-  MenuSubTrigger,
-  MenuAnchor,
-  MenuArrow,
-  MenuGroup,
-  MenuGroupLabel,
-  MenuItem,
-  MenuCheckboxGroup,
-  MenuCheckboxItem,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuItemIndicator,
-  MenuSeparator
-};
-
-export { provideMenuThemeContext, useMenuThemeContext } from './context';
-
+export type {
+  MenuRootProps,
+  MenuRootEmits,
+  MenuContentProps,
+  MenuContentEmits,
+  MenuTriggerProps,
+  MenuSubProps,
+  MenuSubEmits,
+  MenuSubTriggerProps,
+  MenuSubContentProps,
+  MenuSubContentEmits,
+  MenuGroupProps,
+  MenuGroupLabelProps,
+  MenuItemProps,
+  MenuItemEmits,
+  MenuCheckboxGroupProps,
+  MenuCheckboxGroupEmits,
+  MenuCheckboxItemProps,
+  MenuCheckboxItemEmits,
+  MenuRadioGroupProps,
+  MenuRadioGroupEmits,
+  MenuRadioItemProps,
+  MenuRadioItemEmits,
+  MenuItemIndicatorProps
+} from '@soybeanjs/headless/menu';
 export type * from './types';

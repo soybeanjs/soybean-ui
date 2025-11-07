@@ -1,22 +1,16 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue } from '../../types';
+import type { BadgeContentProps, BadgeRootEmits, BadgeRootProps, BadgeUi } from '@soybeanjs/headless';
+import type { ThemeColor, ThemeSize } from '@/theme';
+import type { BadgePosition } from '@/variants/badge';
 
-export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
-  open?: boolean;
+export interface BadgeProps extends BadgeRootProps {
+  color?: ThemeColor;
+  size?: ThemeSize;
+  ui?: Partial<BadgeUi>;
+  position?: BadgePosition;
+  content?: string;
+  contentProps?: BadgeContentProps;
 }
 
-export type BadgeRootEmits = {
-  'update:open': [open: boolean];
-};
+export type BadgeEmits = BadgeRootEmits;
 
-export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface BadgeRootContextParams {
-  open: ShallowRef<boolean | undefined>;
-}
-
-export type BadgeThemeSlot = 'root' | 'content';
-
-export interface BadgeThemeContextParams {
-  ui: ComputedRef<Record<BadgeThemeSlot, ClassValue>>;
-}
+export type { BadgePosition };

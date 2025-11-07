@@ -1,11 +1,15 @@
-import CheckboxRoot from './checkbox-root.vue';
-import CheckboxControl from './checkbox-control.vue';
-import CheckboxIndicator from './checkbox-indicator.vue';
-import CheckboxLabel from './checkbox-label.vue';
-import CheckboxGroupRoot from './checkbox-group-root.vue';
+export { default as SCheckboxGroup } from './checkbox-group.vue';
+export { default as SCheckbox } from './checkbox.vue';
+export { default as SCheckboxCardGroup } from './checkbox-card-group.vue';
+export { default as SCheckboxCard } from './checkbox-card.vue';
 
-export { CheckboxRoot, CheckboxControl, CheckboxIndicator, CheckboxLabel, CheckboxGroupRoot };
-
-export { provideCheckboxThemeContext } from './context';
-
+export type {
+  CheckboxRootProps,
+  CheckboxRootEmits,
+  CheckboxControlProps,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps,
+  CheckboxGroupRootProps,
+  CheckboxGroupRootEmits
+} from '@soybeanjs/headless/checkbox';
 export type * from './types';

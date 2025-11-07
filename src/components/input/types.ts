@@ -1,44 +1,25 @@
-import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface InputBaseProps {
-  /** Id of the input element */
-  id?: string;
-  /** When `true`, the input is auto-focused. */
-  autofocus?: boolean;
-  /** When `true`, prevents the user from interacting with the input. */
-  disabled?: boolean;
-  /** The maximum number of characters allowed in the input */
-  maxlength?: number;
-  /** The minimum number of characters allowed in the input */
-  minlength?: number;
-  /** The pattern attribute of the input */
-  pattern?: string;
-  /** The placeholder of the input */
-  placeholder?: string;
-  /** When `true`, the input is read-only. */
-  readonly?: boolean;
+type InputExtraThemeSlot = 'clearable';
+
+type InputExtendedUi = InputUi & Record<InputExtraThemeSlot, ClassValue>;
+
+export interface InputProps extends InputRootProps {
+  size?: ThemeSize;
+  ui?: Partial<InputExtendedUi>;
+  /** Whether to show the clear icon */
+  clearable?: boolean;
+  /**
+   * The function to set the input element.
+   *
+   * @param el - The input element.
+   */
+  inputRef?: (el: HTMLInputElement) => void;
+  /**
+   * The props of the input extra props.
+   */
+  controlProps?: InputControlProps;
 }
 
-export interface InputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
-  /** The default value of the input */
-  defaultValue?: string;
-  /** The controlled value of the input */
-  modelValue?: string;
-}
-
-export type InputRootEmits = {
-  'update:modelValue': [value: string];
-};
-
-export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
-
-export interface InputRootContextParams extends PropsToContext<InputBaseProps> {
-  modelValue: ShallowRef<string | undefined>;
-}
-
-export type InputThemeSlot = 'root' | 'control';
-
-export interface InputThemeContextParams {
-  ui: ComputedRef<Record<InputThemeSlot, ClassValue>>;
-}
+export type InputEmits = InputRootEmits;

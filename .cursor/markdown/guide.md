@@ -215,7 +215,7 @@ ui/components/accordion/
 1. Import order:
    - Third-party (vue)
    - From `@headless`
-   - From `@theme`
+   - From `@/theme`
    - From `@variants`
    - Base component types
 
@@ -260,7 +260,7 @@ ui/components/accordion/
   2. From `@headless`
   3. From `@headless/composables`
   4. From `@headless/shared`
-  5. From `@theme`
+  5. From `@/theme`
   6. From `@variants`
   7. Base components
   8. Local types
@@ -325,7 +325,7 @@ ui/components/accordion/
 #### index.ts
 
 ```ts
-export * from '@headless/components/accordion';
+export * from '@soybeanjs/headless/components/accordion';
 export { default as SAccordion } from './accordion.vue';
 export type * from './types';
 ```

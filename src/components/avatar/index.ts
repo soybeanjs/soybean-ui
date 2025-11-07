@@ -1,9 +1,9 @@
-import AvatarRoot from './avatar-root.vue';
-import AvatarImage from './avatar-image.vue';
-import AvatarFallback from './avatar-fallback.vue';
+export { default as SAvatar } from './avatar.vue';
 
-export { AvatarRoot, AvatarImage, AvatarFallback };
-
-export { provideAvatarThemeContext } from './context';
-
+export type {
+  AvatarRootProps,
+  AvatarImageProps,
+  AvatarImageEmits,
+  AvatarFallbackProps
+} from '@soybeanjs/headless/avatar';
 export type * from './types';

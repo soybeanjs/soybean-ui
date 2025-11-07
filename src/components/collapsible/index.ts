@@ -1,9 +1,13 @@
-import CollapsibleRoot from './collapsible-root.vue';
-import CollapsibleContent from './collapsible-content.vue';
-import CollapsibleTrigger from './collapsible-trigger.vue';
+export {
+  CollapsibleContent as SCollapsibleContent,
+  CollapsibleTrigger as SCollapsibleTrigger
+} from '@soybeanjs/headless/collapsible';
+export { default as SCollapsible } from './collapsible.vue';
 
-export { CollapsibleRoot, CollapsibleContent, CollapsibleTrigger };
-
-export { provideCollapsibleThemeContext } from './context';
-
+export type {
+  CollapsibleRootProps,
+  CollapsibleRootEmits,
+  CollapsibleContentProps,
+  CollapsibleTriggerProps
+} from '@soybeanjs/headless/collapsible';
 export type * from './types';

@@ -1,7 +1,4 @@
-import InputRoot from './input-root.vue';
-import InputControl from './input-control.vue';
+export { default as SInput } from './input.vue';
 
-export { provideInputThemeContext } from './context';
-export { InputRoot, InputControl };
-
+export type { InputRootProps, InputRootEmits, InputControlProps } from '@soybeanjs/headless/input';
 export type * from './types';

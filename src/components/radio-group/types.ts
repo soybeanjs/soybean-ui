@@ -1,91 +1,69 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableBooleanValue,
   ClassValue,
-  DataOrientation,
-  Direction,
-  EmitsToHookProps,
-  ForceMountProps,
-  FormFieldCommonProps,
-  PropsToContext
-} from '../../types';
-import type { PrimitiveProps } from '../primitive/types';
-import type { LabelProps as RadioGroupLabelProps } from '../label/types';
-
-export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends FormFieldCommonProps,
-    /** @vue-ignore */ HTMLAttributes {
-  /** The controlled value of the radio item to check. Can be bound as `v-model`. */
-  modelValue?: T;
-  /**
-   * The value of the radio item that should be checked when initially rendered. Use when you do not need to control the
-   * state of the radio items.
-   */
-  defaultValue?: T;
-  /** When `true`, prevents the user from interacting with radio items. */
-  disabled?: boolean;
-  /** The orientation of the component. */
-  orientation?: DataOrientation;
-  /** The reading direction of the radio group when applicable. */
-  dir?: Direction;
-  /** When `true`, keyboard navigation will loop from last item to first, and vice versa. */
-  loop?: boolean;
-}
-
-export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = {
-  /** Event handler called when the radio group value changes */
-  'update:modelValue': [payload: NonNullable<T>];
-};
-
-export type RadioGroupRootContextParams = PropsToContext<
+  RadioGroupControlProps,
+  RadioGroupIndicatorProps,
+  RadioGroupItemProps,
+  RadioGroupLabelProps,
+  RadioGroupRootEmits,
   RadioGroupRootProps,
-  'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
-> & {
-  modelValue: ShallowRef<AcceptableBooleanValue>;
-};
+  RadioGroupUi
+} from '@soybeanjs/headless';
+import type { ThemeColor, ThemeSize } from '@/theme';
+import type { RadioGroupVariant } from '@/variants/radio-group';
 
-export interface RadioGroupItemProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
-  /** The value given as data when submitted with a `name`. */
-  value: NonNullable<AcceptableBooleanValue>;
-  /** When `true`, prevents the user from interacting with the radio item. */
+export interface RadioProps extends RadioGroupItemProps {
+  label?: string;
+  controlProps?: RadioGroupControlProps;
+  indicatorProps?: RadioGroupIndicatorProps;
+  labelProps?: RadioGroupLabelProps;
+}
+
+export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
+  value: NonNullable<T>;
+  label: string;
   disabled?: boolean;
 }
 
-export type RadioSelectEvent = CustomEvent<{
-  originalEvent: MouseEvent;
-  value: NonNullable<AcceptableBooleanValue>;
-}>;
-
-export type RadioGroupItemEmits = {
-  /** Event handler called when the radio item is selected */
-  select: [event: RadioSelectEvent];
-};
-
-export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAttributes {
-  /** Id of the element */
-  id?: string;
+export interface RadioGroupProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
+> extends RadioGroupRootProps<T> {
+  ui?: Partial<RadioGroupUi>;
+  variant?: RadioGroupVariant;
+  color?: ThemeColor;
+  size?: ThemeSize;
+  items: S[];
+  itemProps?: RadioGroupItemProps;
+  controlProps?: RadioGroupControlProps;
+  indicatorProps?: RadioGroupIndicatorProps;
+  labelProps?: RadioGroupLabelProps;
 }
 
-export type RadioGroupItemContextParams = PropsToContext<
-  Pick<RadioGroupItemProps, 'name' | 'required' | 'value' | 'disabled'>
-> &
-  EmitsToHookProps<RadioGroupItemEmits> & {
-    /** Whether the radio item is checked */
-    checked: ComputedRef<boolean>;
-    /**
-     * Event handler called when the radio item is selected
-     *
-     * @param event - The event object
-     */
-    onSelect: (event: RadioSelectEvent) => void;
-  };
+export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 
-export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
+export type RadioGroupCardThemeSlot = 'content' | 'textContent' | 'icon' | 'description';
 
-export type RadioGroupThemeSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
+export type RadioGroupCardUi = RadioGroupUi & Record<RadioGroupCardThemeSlot, ClassValue>;
 
-export interface RadioGroupThemeContextParams {
-  ui: ComputedRef<Record<RadioGroupThemeSlot, ClassValue>>;
+export interface RadioCardProps extends RadioProps {
+  ui?: Partial<RadioGroupCardUi>;
+  icon?: string;
+  description?: string;
 }
 
-export type { RadioGroupLabelProps };
+export interface RadioCardGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
+  extends RadioGroupOptionData<T> {
+  icon?: string;
+  description?: string;
+}
+
+export interface RadioCardGroupProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends RadioCardGroupOptionData<T> = RadioCardGroupOptionData<T>
+> extends RadioGroupProps<T, S> {
+  ui?: Partial<RadioGroupCardUi>;
+  items: S[];
+}
+
+export type RadioGroupCardEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupEmits<T>;

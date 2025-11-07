@@ -1,35 +1,18 @@
-import type { ComputedRef, HTMLAttributes, ImgHTMLAttributes } from 'vue';
-import type { ClassValue, ImageLoadingStatus } from '../../types';
+import type {
+  AvatarFallbackProps,
+  AvatarImageEmits,
+  AvatarImageProps,
+  AvatarRootProps,
+  AvatarUi
+} from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
 
-export interface AvatarRootProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AvatarImageProps extends /** @vue-ignore */ ImgHTMLAttributes {
-  /** The image source URL */
-  src: string;
-  /** The referrer policy for the image */
-  referrerpolicy?: ImgHTMLAttributes['referrerpolicy'];
-  /** The cross-origin setting for the image */
-  crossorigin?: ImgHTMLAttributes['crossorigin'];
-}
-export type AvatarImageEmits = {
-  /**
-   * Event handler called when the image loading status changes. This is useful for controlling what to render as the
-   * image is loading.
-   */
-  loadingStatusChange: [status: ImageLoadingStatus];
-};
-
-export interface AvatarFallbackProps extends /** @vue-ignore */ HTMLAttributes {
-  /**
-   * Useful for delaying rendering so it only appears for those with slower connections.
-   *
-   * @defaultValue undefined
-   */
-  delayMs?: number;
+export interface AvatarProps extends AvatarRootProps {
+  size?: ThemeSize;
+  ui?: Partial<AvatarUi>;
+  fallbackLabel?: string;
+  imageProps: AvatarImageProps;
+  fallbackProps?: AvatarFallbackProps;
 }
 
-export type AvatarThemeSlot = 'root' | 'image' | 'fallback';
-
-export interface AvatarThemeContextParams {
-  ui: ComputedRef<Record<AvatarThemeSlot, ClassValue>>;
-}
+export type AvatarEmits = AvatarImageEmits;

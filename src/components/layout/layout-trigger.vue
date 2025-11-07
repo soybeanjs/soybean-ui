@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
-import { useLayoutRootContext, useLayoutThemeContext } from './context';
-import type { LayoutTriggerProps } from './types';
+import { LayoutTrigger } from '@soybeanjs/headless';
+import type { LayoutTriggerProps } from '@soybeanjs/headless';
+import { useSizeContext } from '@/theme';
+import ButtonIcon from '../button/button-icon.vue';
 
 defineOptions({
-  name: 'LayoutTrigger'
+  name: 'SLayoutTrigger'
 });
 
 defineProps<LayoutTriggerProps>();
 
-const { open, toggleSidebar } = useLayoutRootContext('LayoutTrigger');
-
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const { size } = useSizeContext('LayoutTrigger');
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" data-sidebar="trigger" @click="toggleSidebar">
-    <slot :open="open" />
-  </Primitive>
+  <LayoutTrigger v-slot="{ open }" as-child>
+    <slot>
+      <ButtonIcon :icon="open ? 'lucide:panel-right' : 'lucide:panel-left'" :size="size" />
+    </slot>
+  </LayoutTrigger>
 </template>
