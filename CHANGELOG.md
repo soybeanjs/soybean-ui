@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.0.2-beta.10](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.9...v0.0.2-beta.10) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **projects**: add Nuxt module and resolver components with updated paths and types &nbsp;-&nbsp; by @soybeanjs [<samp>(f7502)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f75026e2)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **navigation-menu**: add 'as' and 'asChild' props &nbsp;-&nbsp; by @soybeanjs [<samp>(cc31c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cc31cbe8)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.9](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.8...v0.0.2-beta.9) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
