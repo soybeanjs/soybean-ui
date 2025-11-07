@@ -1,6 +1,28 @@
 # Changelog
 
 
+## [v0.0.2-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.6...v0.0.2-beta.7) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **button-loading**: specify loadingPosition type as Align for better type safety &nbsp;-&nbsp; by @soybeanjs [<samp>(43235)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4323581c)
+- **command**: add useForwardListeners for improved event handling in ListboxRoot &nbsp;-&nbsp; by @soybeanjs [<samp>(fffca)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fffca042)
+- **types**: add types ImageLoadingStatus, ListboxCollectionItemData, and FormErrors for enhanced type definitions &nbsp;-&nbsp; by @soybeanjs [<samp>(abf7b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/abf7bc7c)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tsdown**: streamline external dependencies by dynamically importing from package.json files &nbsp;-&nbsp; by @soybeanjs [<samp>(a7a0d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a7a0d398)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(0fef9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0fef9f44)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(81587)</samp>](https://github.com/soybeanjs/soybean-ui/commit/81587758)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.6](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.5...v0.0.2-beta.6) (2025-11-07)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
