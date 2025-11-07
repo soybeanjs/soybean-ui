@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, useAttrs, watchEffect } from 'vue';
+import type { Align } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import Button from './button.vue';
@@ -12,7 +13,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<ButtonLoadingProps>(), {
   loadingIcon: 'svg-spinners:270-ring',
-  loadingPosition: 'start'
+  loadingPosition: 'start' as Align
 });
 
 const attrs = useAttrs();
