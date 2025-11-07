@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.2-beta.8](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.7...v0.0.2-beta.8) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **scripts**: update build scripts to streamline UI and CSS builds &nbsp;-&nbsp; by @soybeanjs [<samp>(f383a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f383a6a3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.7](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.6...v0.0.2-beta.7) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
