@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { ListboxContent, ListboxFilter, ListboxRoot, provideListboxThemeContext } from '@soybeanjs/headless';
-import { useControllableState, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
+import { useControllableState, useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { defu } from 'defu';
 import { mergeSlotVariants } from '@/theme';
 import { commandVariants } from '@/variants/command';
@@ -38,6 +38,8 @@ const forwardedProps = useOmitProps(props, [
   'emptyProps',
   'emptyLabel'
 ]);
+
+const listeners = useForwardListeners(emit);
 
 const forwardedOptionsProps = usePickProps(props, [
   'itemProps',
@@ -105,7 +107,7 @@ provideCommandExtraThemeContext({
 </script>
 
 <template>
-  <ListboxRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+  <ListboxRoot v-bind="forwardedProps" v-on="listeners">
     <ListboxFilter v-bind="inputProps" v-model="searchTerm" autofocus>
       <template #leading>
         <slot name="input-leading">
