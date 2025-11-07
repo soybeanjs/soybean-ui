@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useDividerThemeContext } from './context';
-import type { DividerLabelProps } from './types';
+import { useSeparatorThemeContext } from './context';
+import type { SeparatorLabelProps } from './types';
 
 defineOptions({
-  name: 'DividerLabel'
+  name: 'SeparatorLabel'
 });
 
-defineProps<DividerLabelProps>();
+defineProps<SeparatorLabelProps>();
 
-const themeContext = useDividerThemeContext();
+const themeContext = useSeparatorThemeContext();
 
 const cls = computed(() => themeContext?.ui?.value?.label);
 </script>

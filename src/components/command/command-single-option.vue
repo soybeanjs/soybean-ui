@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DividerRoot, ListboxItem } from '@soybeanjs/headless';
+import { ListboxItem, SeparatorRoot } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
@@ -34,5 +34,5 @@ const ui = computed(() => themeContext?.ui?.value);
     <slot name="item-trailing" />
     <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="ui?.shortcut" />
   </ListboxItem>
-  <DividerRoot v-if="item.separator" v-bind="separatorProps" :class="ui?.separator" />
+  <SeparatorRoot v-if="item.separator" v-bind="separatorProps" :class="ui?.separator" />
 </template>

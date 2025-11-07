@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { DividerLabel, DividerRoot, provideDividerThemeContext } from '@soybeanjs/headless';
+import { SeparatorLabel, SeparatorRoot, provideSeparatorThemeContext } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { dividerVariants } from '@/variants/divider';
-import type { DividerProps } from './types';
+import { separatorVariants } from '@/variants/separator';
+import type { SeparatorProps } from './types';
 
 defineOptions({
-  name: 'SDivider'
+  name: 'SSeparator'
 });
 
-const props = withDefaults(defineProps<DividerProps>(), {
+const props = withDefaults(defineProps<SeparatorProps>(), {
   orientation: 'horizontal'
 });
 
@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['size', 'ui', 'align', 'border', 'la
 const showLabel = computed(() => props.orientation === 'horizontal' && (slots.default || props.label));
 
 const ui = computed(() => {
-  const variants = dividerVariants({
+  const variants = separatorVariants({
     size: props.size,
     orientation: props.orientation,
     align: props.align,
@@ -31,15 +31,15 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-provideDividerThemeContext({
+provideSeparatorThemeContext({
   ui
 });
 </script>
 
 <template>
-  <DividerRoot v-bind="forwardedProps">
-    <DividerLabel v-if="showLabel" v-bind="labelProps">
+  <SeparatorRoot v-bind="forwardedProps">
+    <SeparatorLabel v-if="showLabel" v-bind="labelProps">
       {{ label }}
-    </DividerLabel>
-  </DividerRoot>
+    </SeparatorLabel>
+  </SeparatorRoot>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { DividerRoot, ListboxGroup, ListboxGroupLabel } from '@soybeanjs/headless';
+import { ListboxGroup, ListboxGroupLabel, SeparatorRoot } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import SCommandSingleOption from './command-single-option.vue';
 import { useCommandExtraThemeContext } from './context';
@@ -57,5 +57,5 @@ const ui = computed(() => themeContext?.ui?.value);
       </template>
     </SCommandSingleOption>
   </ListboxGroup>
-  <DividerRoot v-if="item.separator" v-bind="separatorProps" :class="ui?.separator" />
+  <SeparatorRoot v-if="item.separator" v-bind="separatorProps" :class="ui?.separator" />
 </template>

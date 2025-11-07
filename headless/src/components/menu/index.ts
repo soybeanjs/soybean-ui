@@ -1,4 +1,4 @@
-export { default as MenuSeparator } from '../divider/divider-root.vue';
+export { default as MenuSeparator } from '../separator/separator-root.vue';
 export { default as MenuPortal } from '../portal/portal.vue';
 export { default as MenuAnchor } from '../popper/popper-anchor.vue';
 export { default as MenuArrow } from '../popper/popper-arrow.vue';
@@ -18,7 +18,7 @@ export { default as MenuItemIndicator } from './menu-item-indicator.vue';
 
 export { provideMenuThemeContext, useMenuThemeContext } from './context';
 
-export type { DividerRootProps as MenuSeparatorProps } from '../divider/types';
+export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types';
 export type { PortalProps as MenuPortalProps } from '../portal/types';
 export type {

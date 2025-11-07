@@ -10,10 +10,10 @@ import type {
   ListboxContentProps as CommandListProps,
   ListboxRootEmits as CommandRootEmits,
   ListboxRootProps as CommandRootProps,
-  DividerRootProps,
   KbdProps,
   KbdValue,
-  ListboxThemeSlot
+  ListboxThemeSlot,
+  SeparatorRootProps
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -43,7 +43,7 @@ export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes
 
 export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
 
-export interface CommandSeparatorProps extends DividerRootProps {}
+export interface CommandSeparatorProps extends SeparatorRootProps {}
 
 export interface CommandSingleOptionProps extends Omit<CommandItemProps, 'value' | 'disabled'> {
   item: CommandSingleOptionData;

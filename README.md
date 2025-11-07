@@ -1,6 +1,6 @@
-# SoybeanHeadless
+# SoybeanUI
 
-SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.
+SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.
 
 ## Roadmap
 
@@ -28,27 +28,27 @@ SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to
 | 14  | 1        | ConfigProvider  | ✅ Completed |                      |                          |
 | 15  | 1        | ContextMenu     | ✅ Completed |                      |                          |
 | 16  | 1        | Dialog          | ✅ Completed |                      |                          |
-| 17  | 1        | Divider         | ✅ Completed | Separator            |                          |
-| 18  | 1        | Drawer          | ✅ Completed | Sheet                |                          |
-| 19  | 1        | DropdownMenu    | ✅ Completed |                      | ✨ support hover trigger |
-| 20  | 1        | Form            | ✅ Completed |                      |                          |
-| 21  | 1        | Icon            | ✅ Completed |                      | ✨ based on iconify      |
-| 22  | 1        | Input           | ✅ Completed |                      |                          |
-| 23  | 1        | Kbd             | ✅ Completed |                      |                          |
-| 24  | 1        | Label           | ✅ Completed |                      |                          |
-| 25  | 1        | Layout          | ✅ Completed |                      |                          |
-| 26  | 1        | Link            | ✅ Completed |                      |                          |
-| 27  | 1        | List            | ✅ Completed |                      |                          |
-| 28  | 1        | Listbox         | ✅ Completed |                      |                          |
-| 29  | 1        | Menu            | ✅ Completed |                      |                          |
-| 30  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
-| 31  | 1        | NumberInput     | ✅ Completed | NumberField          |                          |
-| 32  | 1        | Pagination      | ✅ Completed |                      |                          |
-| 33  | 1        | Password        | ✅ Completed |                      |                          |
-| 34  | 1        | Popover         | ✅ Completed |                      |                          |
-| 35  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |
-| 36  | 1        | Segment         | ✅ Completed |                      |                          |
-| 37  | 1        | Select          | ✅ Completed |                      | support virtualized      |
+| 17  | 1        | Drawer          | ✅ Completed | Sheet                |                          |
+| 18  | 1        | DropdownMenu    | ✅ Completed |                      | ✨ support hover trigger |
+| 19  | 1        | Form            | ✅ Completed |                      |                          |
+| 20  | 1        | Icon            | ✅ Completed |                      | ✨ based on iconify      |
+| 21  | 1        | Input           | ✅ Completed |                      |                          |
+| 22  | 1        | Kbd             | ✅ Completed |                      |                          |
+| 23  | 1        | Label           | ✅ Completed |                      |                          |
+| 24  | 1        | Layout          | ✅ Completed |                      |                          |
+| 25  | 1        | Link            | ✅ Completed |                      |                          |
+| 26  | 1        | List            | ✅ Completed |                      |                          |
+| 27  | 1        | Listbox         | ✅ Completed |                      |                          |
+| 28  | 1        | Menu            | ✅ Completed |                      |                          |
+| 29  | 1        | NavigationMenu  | ✅ Completed |                      |                          |
+| 30  | 1        | NumberInput     | ✅ Completed | NumberField          |                          |
+| 31  | 1        | Pagination      | ✅ Completed |                      |                          |
+| 32  | 1        | Password        | ✅ Completed |                      |                          |
+| 33  | 1        | Popover         | ✅ Completed |                      |                          |
+| 34  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |
+| 35  | 1        | Segment         | ✅ Completed |                      |                          |
+| 36  | 1        | Select          | ✅ Completed |                      | support virtualized      |
+| 37  | 1        | Separator       | ✅ Completed | Divider              |                          |
 | 38  | 1        | Switch          | ✅ Completed |                      | support switch card      |
 | 39  | 1        | Tabs            | ✅ Completed |                      |                          |
 | 40  | 1        | Tag             | ✅ Completed | Badge(shadcn-ui)     |                          |

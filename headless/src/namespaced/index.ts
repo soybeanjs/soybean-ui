@@ -78,8 +78,6 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
-  DividerLabel,
-  DividerRoot,
   DropdownMenuAnchor,
   DropdownMenuArrow,
   DropdownMenuCheckboxGroup,
@@ -204,6 +202,8 @@ import {
   SelectTriggerIcon,
   SelectValue,
   SelectViewport,
+  SeparatorLabel,
+  SeparatorRoot,
   Slot,
   SwitchControl,
   SwitchRoot,
@@ -431,14 +431,6 @@ export const Dialog = {
   Root: typeof DialogRoot;
   Title: typeof DialogTitle;
   Trigger: typeof DialogTrigger;
-};
-
-export const Divider = {
-  Label: DividerLabel,
-  Root: DividerRoot
-} as {
-  Label: typeof DividerLabel;
-  Root: typeof DividerRoot;
 };
 
 export const DropdownMenu = {
@@ -747,6 +739,14 @@ export const Select = {
   TriggerIcon: typeof SelectTriggerIcon;
   Value: typeof SelectValue;
   Viewport: typeof SelectViewport;
+};
+
+export const Separator = {
+  Label: SeparatorLabel,
+  Root: SeparatorRoot
+} as {
+  Label: typeof SeparatorLabel;
+  Root: typeof SeparatorRoot;
 };
 
 export { Slot };

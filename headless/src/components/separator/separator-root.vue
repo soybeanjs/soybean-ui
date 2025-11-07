@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { DataOrientation } from '../../types';
-import { useDividerThemeContext } from './context';
-import type { DividerRootProps } from './types';
+import { useSeparatorThemeContext } from './context';
+import type { SeparatorRootProps } from './types';
 
 defineOptions({
-  name: 'Divider'
+  name: 'SeparatorRoot'
 });
 
-const props = withDefaults(defineProps<DividerRootProps>(), {
+const props = withDefaults(defineProps<SeparatorRootProps>(), {
   orientation: 'horizontal',
   decorative: false
 });
 
-const themeContext = useDividerThemeContext();
+const themeContext = useSeparatorThemeContext();
 
 const cls = computed(() => themeContext?.ui?.value?.root);
 

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { SCard, SDivider } from '@ui';
+import { SCard, SSeparator } from '@ui';
 </script>
 
 <template>
   <SCard title="Orientation" :ui="{ content: 'flex-c gap-3' }">
     <SCard title="Horizontal">
-      <SDivider label="Label" />
+      <SSeparator label="Label" />
     </SCard>
     <SCard title="Vertical">
       <div class="flex items-center gap-2 h-6">
         <div>Vue</div>
-        <SDivider orientation="vertical" />
+        <SSeparator orientation="vertical" />
         <div>SoybeanHeadless</div>
-        <SDivider orientation="vertical" />
+        <SSeparator orientation="vertical" />
         <div>SoybeanUI</div>
       </div>
     </SCard>

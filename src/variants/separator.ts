@@ -2,7 +2,7 @@
 import { tv } from 'tailwind-variants';
 import type { VariantProps } from 'tailwind-variants';
 
-export const dividerVariants = tv({
+export const separatorVariants = tv({
   slots: {
     root: `relative shrink-0 border-border`,
     label: `absolute top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-muted-foreground bg-background`
@@ -155,6 +155,6 @@ export const dividerVariants = tv({
   }
 });
 
-type DividerVariants = VariantProps<typeof dividerVariants>;
+type SeparatorVariants = VariantProps<typeof separatorVariants>;
 
-export type DividerBorder = NonNullable<DividerVariants['border']>;
+export type SeparatorBorder = NonNullable<SeparatorVariants['border']>;

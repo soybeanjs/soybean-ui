@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SDivider, SIcon, SList, SListItem } from '@ui';
+import { SCard, SIcon, SList, SListItem, SSeparator } from '@ui';
 
 const listItems = [
   {
@@ -27,7 +27,7 @@ const listItems = [
   <SCard title="Base" split>
     <SList class="w-80 lt-sm:w-auto">
       <template v-for="(item, index) in listItems" :key="item.title">
-        <SDivider v-if="index !== 0" />
+        <SSeparator v-if="index !== 0" />
         <SListItem :title="item.title" :description="item.description">
           <template #leading>
             <SIcon :icon="item.leading" />

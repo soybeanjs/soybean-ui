@@ -1,9 +1,9 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { ClassValue, DataOrientation } from '../../types';
 
-export interface DividerLabelProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface SeparatorLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface DividerRootProps extends /** @vue-ignore */ HTMLAttributes {
+export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * Orientation of the component.
    *
@@ -17,10 +17,10 @@ export interface DividerRootProps extends /** @vue-ignore */ HTMLAttributes {
   decorative?: boolean;
 }
 
-export type DividerThemeSlot = 'root' | 'label';
+export type SeparatorThemeSlot = 'root' | 'label';
 
-export type DividerUi = Record<DividerThemeSlot, ClassValue>;
+export type SeparatorUi = Record<SeparatorThemeSlot, ClassValue>;
 
-export interface DividerThemeContextParams {
-  ui: ComputedRef<DividerUi>;
+export interface SeparatorThemeContextParams {
+  ui: ComputedRef<SeparatorUi>;
 }

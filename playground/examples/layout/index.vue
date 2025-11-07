@@ -5,12 +5,12 @@ import {
   SButton,
   SButtonGroup,
   SCard,
-  SDivider,
   SDropdownMenu,
   SIcon,
   SLayout,
   SLayoutTrigger,
   SSelect,
+  SSeparator,
   STreeMenu,
   STreeMenuItemWrapper
 } from '@ui';
@@ -182,7 +182,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
         <template #header>
           <div class="w-full flex items-center gap-2">
             <SLayoutTrigger v-if="side === 'left'" :size="size" />
-            <SDivider orientation="vertical" class="h-4" />
+            <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" />
             <SLayoutTrigger v-if="side === 'right'" :size="size" class="ml-auto" />
           </div>

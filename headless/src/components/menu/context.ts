@@ -3,7 +3,7 @@ import { useContext, useDirection } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
 import { provideArrowThemeContext } from '../arrow/context';
-import { provideDividerThemeContext } from '../divider/context';
+import { provideSeparatorThemeContext } from '../separator/context';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
@@ -173,7 +173,7 @@ export const [provideMenuThemeContext, useMenuThemeContext] = useContext(
     const separatorUi = computed(() => ({ root: params.ui.value.separator, label: null }));
 
     provideArrowThemeContext(arrowCls);
-    provideDividerThemeContext({
+    provideSeparatorThemeContext({
       ui: separatorUi
     });
 
