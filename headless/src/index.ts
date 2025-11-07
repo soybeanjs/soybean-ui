@@ -55,6 +55,7 @@ export type {
   Direction,
   DisclosureState,
   FocusIntent,
+  ImageLoadingStatus,
   CheckedState,
   NavigationKey,
   KbdKey,

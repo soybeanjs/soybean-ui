@@ -13,5 +13,6 @@ export type {
   FormValidateFn,
   FormRegisterOptions,
   UseFormOptions,
+  FormErrors,
   FormContext
 } from './types';

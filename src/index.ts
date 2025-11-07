@@ -61,6 +61,7 @@ export type {
   KbdKey,
   Side,
   HorizontalSide,
+  ImageLoadingStatus,
   Align,
   Placement,
   SelectionProps,

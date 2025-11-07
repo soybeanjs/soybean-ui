@@ -21,6 +21,7 @@ export type {
   ListboxFilterProps,
   ListboxFilterEmits,
   ListboxVirtualizerProps,
+  ListboxCollectionItemData,
   ListboxThemeSlot,
   ListboxUi
 } from './types';
