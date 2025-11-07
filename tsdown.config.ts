@@ -42,6 +42,7 @@ export default defineConfig({
   dts: {
     vue: true
   },
+  unbundle: true,
   plugins: [unpluginVue({ isProduction: true }), unpluginVueJsx()],
   sourcemap: false,
   minify: true

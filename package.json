@@ -26,7 +26,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
-    }
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -34,9 +35,10 @@
   "files": ["dist"],
   "scripts": {
     "build": "pnpm tsdown",
-    "build:all": "pnpm build:headless && pnpm build",
+    "build:all": "pnpm build:headless && pnpm build && pnpm build:uno",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:play": "vite build",
+    "build:uno": "unocss build",
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
@@ -69,6 +71,7 @@
     "@soybeanjs/unocss-preset": "^0.1.5",
     "@soybeanjs/unocss-shadcn": "^0.0.1",
     "@types/node": "^24.10.0",
+    "@unocss/cli": "^66.5.4",
     "@vitest/coverage-v8": "^4.0.7",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.1",

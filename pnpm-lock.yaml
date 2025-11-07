@@ -45,6 +45,9 @@ importers:
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.0
+      '@unocss/cli':
+        specifier: ^66.5.4
+        version: 66.5.4
       '@vitest/coverage-v8':
         specifier: ^4.0.7
         version: 4.0.7(vitest@4.0.7(@types/node@24.10.0)(happy-dom@20.0.10)(jiti@2.6.1)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.1))
