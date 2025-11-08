@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.0.2-beta.12](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.11...v0.0.2-beta.12) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **button**: include 'fitContent' in omitted props for button component &nbsp;-&nbsp; by @soybeanjs [<samp>(a1cf7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a1cf7e7e)
+- **docs**: fix markdown build &nbsp;-&nbsp; by @soybeanjs [<samp>(98039)</samp>](https://github.com/soybeanjs/soybean-ui/commit/98039c47)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **card**: remove unused 'flexHeight' prop from CardProps interface &nbsp;-&nbsp; by @soybeanjs [<samp>(ae236)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ae2365ce)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.11](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.10...v0.0.2-beta.11) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
