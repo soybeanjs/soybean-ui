@@ -99,7 +99,6 @@
     "unplugin-vue-jsx": "^0.8.1",
     "vite": "^7.2.2",
     "vite-plugin-vue-devtools": "^8.0.3",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.8",
     "vue": "^3.5.24",
     "vue-eslint-parser": "^10.2.0",

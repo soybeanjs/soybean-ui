@@ -17,5 +17,10 @@
     "vue",
     "markdown"
   ],
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.sourceLanguage": "zh-CN",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": "docs/locales",
+  "i18n-ally.sortKeys": true,
   "prettier.enable": false
 }

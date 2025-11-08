@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@playground/*": ["../playground/*"]
+    },
+    "types": ["vite/client", "vite-plugin-vue-layouts/client", "unplugin-vue-router/client"]
+  },
+  "include": ["./src/**/*", "vite.config.ts"]
+}

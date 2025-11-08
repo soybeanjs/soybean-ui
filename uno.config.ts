@@ -14,5 +14,14 @@ export default defineConfig<Theme>({
     }
   },
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  presets: [presetWind3({ dark: 'class' }), presetTypography(), presetAnimations(), presetSoybeanJS(), presetShadcn()]
+  presets: [
+    presetWind3({ dark: 'class' }),
+    presetTypography({
+      selectorName: 'prose-slate'
+    }),
+    presetAnimations(),
+    presetSoybeanJS(),
+    presetShadcn()
+  ],
+  safelist: 'prose-slate dark:prose-slate-invert m-auto text-left'.split(' ')
 });
