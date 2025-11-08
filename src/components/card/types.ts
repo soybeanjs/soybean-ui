@@ -27,12 +27,6 @@ export interface CardProps extends CardRootProps {
    * @default false
    */
   split?: boolean;
-  /**
-   * If true, the content will be flex-grow and overflow-hidden
-   *
-   * @default false
-   */
-  flexHeight?: boolean;
   headerProps?: CardHeaderProps;
   contentProps?: CardContentProps;
   footerProps?: CardFooterProps;
