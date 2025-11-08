@@ -18,7 +18,7 @@ useHead({
   <div class="h-full p-4">
     <SCard :title="t('not-found')" class="h-full">
       <template #extra>
-        <ThemeSchemaToggler />
+        <ToolBar />
       </template>
       <div>
         <h3 class="text-center">The page {{ route.path }} is {{ t('not-found') }}</h3>

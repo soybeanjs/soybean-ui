@@ -12,3 +12,10 @@ intro:
   aka: Also known as
   whats-your-name: What's your name?
 not-found: Not found
+locale:
+  en: English
+  zh-CN: Chinese
+layout:
+  default: Default Layout
+  home: Home Layout
+  about: About Layout

@@ -1,8 +1,16 @@
+<script setup lang="ts">
+const { t } = useI18n();
+
+useHead({
+  title: () => t('layout.home')
+});
+</script>
+
 <template>
   <div class="h-full p-4">
-    <SCard title="Home Layout" class="h-full">
+    <SCard :title="t('layout.home')" class="h-full">
       <template #extra>
-        <ThemeSchemaToggler />
+        <ToolBar />
       </template>
       <RouterView />
     </SCard>
