@@ -46,6 +46,7 @@
   "scripts": {
     "build": "pnpm build:headless && pnpm build:ui && pnpm build:css",
     "build:css": "unocss build",
+    "build:docs": "pnpm --filter @soybeanjs/ui-docs build",
     "build:headless": "pnpm --filter @soybeanjs/headless build",
     "build:play": "vite build",
     "build:ui": "pnpm tsdown",
