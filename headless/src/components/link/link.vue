@@ -17,8 +17,7 @@ const props = withDefaults(defineProps<LinkProps>(), {
   noRel: undefined,
   viewTransition: undefined,
   replace: undefined,
-  disabled: undefined,
-  target: '_blank'
+  disabled: undefined
 });
 
 const attrs = useAttrs();
@@ -45,7 +44,18 @@ const isHref = computed(() => {
     return true;
   }
 
+  if (!props.to && !props.href) {
+    return true;
+  }
+
   return false;
+});
+
+const target = computed(() => {
+  if (props.target) {
+    return props.target;
+  }
+  return isHref.value ? '_blank' : '_self';
 });
 
 const forwardedProps = computed(() => {
@@ -54,6 +64,7 @@ const forwardedProps = computed(() => {
   return {
     ...props,
     ...attrs,
+    target: target.value,
     to: isHref.value ? undefined : href,
     href: !isHref.value && nuxt.value ? undefined : href,
     'data-disabled': props.disabled ? '' : undefined,
