@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [v0.0.2-beta.11](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.10...v0.0.2-beta.11) (2025-11-08)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**: add locale toggler component and support for multiple languages in layouts &nbsp;-&nbsp; by @soybeanjs [<samp>(7b81b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7b81b25f)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **link**: update target behavior to default to '_blank' for external links &nbsp;-&nbsp; by @soybeanjs [<samp>(374d7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/374d7bd3)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(a2104)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a2104b84)
+- **docs**: initialize documentation structure with Vite, Vue, and i18n support, including multiple locales and layout components &nbsp;-&nbsp; by @soybeanjs [<samp>(4de2b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4de2bbff)
+- **package**: add @nuxt/kit as a development dependency &nbsp;-&nbsp; by @soybeanjs [<samp>(85761)</samp>](https://github.com/soybeanjs/soybean-ui/commit/857617c4)
+- **tsconfig**: refactor TypeScript configuration by introducing a base config and extending it in project-specific tsconfig files &nbsp;-&nbsp; by @soybeanjs [<samp>(7a745)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a7456e3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.10](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.9...v0.0.2-beta.10) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
