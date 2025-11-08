@@ -79,7 +79,7 @@
   "devDependencies": {
     "@soybeanjs/cli": "^1.4.1",
     "@soybeanjs/eslint-config": "^1.7.3",
-    "@soybeanjs/unocss-preset": "^0.1.5",
+    "@soybeanjs/unocss-preset": "^0.1.7",
     "@types/node": "^24.10.0",
     "@unocss/cli": "^66.5.5",
     "@vitest/coverage-v8": "^4.0.8",
