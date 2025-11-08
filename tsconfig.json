@@ -1,28 +1,10 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
     "paths": {
       "@/*": ["./src/*"],
       "@ui": ["./src/index.ts"]
-    },
-    "resolveJsonModule": true,
-    "types": ["vite/client", "node"],
-    "strict": true,
-    "strictNullChecks": true,
-    "noImplicitThis": true,
-    "noUncheckedIndexedAccess": false,
-    "noUnusedLocals": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true
+    }
   },
-  "include": ["src/**/*", "playground/**/*", "headless/**/*", "docs", "test/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"]
 }
