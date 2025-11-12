@@ -14,7 +14,7 @@ intro:
 not-found: Not found
 locale:
   en: English
-  zh-CN: Chinese
+  zhCN: Chinese
 layout:
   default: Default Layout
   home: Home Layout

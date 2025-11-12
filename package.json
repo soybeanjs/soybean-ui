@@ -53,6 +53,7 @@
     "cleanup": "soy cleanup",
     "commit": "soy git-commit",
     "dev": "vite",
+    "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",

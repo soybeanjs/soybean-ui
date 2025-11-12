@@ -14,7 +14,7 @@ intro:
 not-found: 未找到页面
 locale:
   en: 英语
-  zh-CN: 中文
+  zhCN: 中文
 layout:
   default: 默认布局
   home: 首页布局

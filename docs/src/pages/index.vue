@@ -8,6 +8,7 @@
     <div>Dialog Content</div>
   </SDialog>
   <SButtonLink to="/home">To Home</SButtonLink>
+  <SButtonLink to="/components/button">To Button Components</SButtonLink>
   <SButtonLink to="/about">To About</SButtonLink>
   <SButtonLink to="/aaaa">To 404</SButtonLink>
 </template>
