@@ -6,5 +6,6 @@
       "@ui": ["./src/index.ts"]
     }
   },
-  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"]
+  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"],
+  "exclude": ["dist/*"]
 }
