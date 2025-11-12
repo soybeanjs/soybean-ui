@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
+import Pages from 'vite-plugin-pages';
 import Layouts from 'vite-plugin-vue-layouts';
 import { VueRouterAutoImports } from 'unplugin-vue-router';
 import UiResolver from '@soybeanjs/ui/resolver';
@@ -14,12 +15,14 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import Shiki from '@shikijs/markdown-it';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
+import { loadDemoModules } from './src/modules/demo-loader';
 
 export default defineConfig({
   resolve: {
     alias: {
       '@/': `${path.resolve(__dirname, 'src')}/`,
-      '@playground/': `${path.resolve(__dirname, '../playground')}/`
+      '@playground/': `${path.resolve(__dirname, '../playground')}/`,
+      '@components/': `${path.resolve(__dirname, '../src/components')}/`
     }
   },
   plugins: [
@@ -27,6 +30,7 @@ export default defineConfig({
       extensions: ['.vue', '.md'],
       dts: 'src/typings/typed-router.d.ts'
     }),
+    Pages(),
     Layouts(),
     Vue({ include: [/\.vue$/, /\.md$/] }),
     Unocss(),
@@ -70,6 +74,8 @@ export default defineConfig({
             }
           })
         );
+
+        loadDemoModules(md);
       }
     }),
     VueI18n({
