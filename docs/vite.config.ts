@@ -22,7 +22,7 @@ export default defineConfig({
     alias: {
       '@/': `${path.resolve(__dirname, 'src')}/`,
       '@playground/': `${path.resolve(__dirname, '../playground')}/`,
-      '@components/': `${path.resolve(__dirname, '../src/components')}/`
+      '@docs-content/': `${path.resolve(__dirname, 'src/content/components')}/`
     }
   },
   plugins: [

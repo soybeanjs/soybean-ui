@@ -11,8 +11,7 @@ interface Props {
 
 const props = defineProps<Props>();
 
-// 收集所有 docs 下的示例 .vue 文件，供动态解析使用
-const demoModules = import.meta.glob<{ default: Component }>('@components/**/docs/**/*.vue');
+const demoModules = import.meta.glob<{ default: Component }>('@docs-content/**/*.vue');
 const components = computed(() => {
   return props.files.map(file => {
     const candidates = `${props.docsRoot}/${file}`;
