@@ -19,3 +19,9 @@ layout:
   default: Default Layout
   home: Home Layout
   about: About Layout
+components:
+  common:
+    demo: Demos
+  button:
+    title: Button
+    desc: Button component

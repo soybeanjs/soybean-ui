@@ -14,6 +14,7 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import Shiki from '@shikijs/markdown-it';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
+import { loadDemoModules } from './src/modules/demo-loader';
 
 export default defineConfig({
   resolve: {
@@ -70,6 +71,7 @@ export default defineConfig({
             }
           })
         );
+        loadDemoModules(md);
       }
     }),
     VueI18n({
