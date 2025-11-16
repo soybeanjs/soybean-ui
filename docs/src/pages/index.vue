@@ -11,4 +11,5 @@
   <SButtonLink to="/components/button">To Button Components</SButtonLink>
   <SButtonLink to="/about">To About</SButtonLink>
   <SButtonLink to="/aaaa">To 404</SButtonLink>
+  <SButtonLink to="/components/button">To Button Components</SButtonLink>
 </template>

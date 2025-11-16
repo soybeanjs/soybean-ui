@@ -19,14 +19,11 @@ export function loadDemoModules(md: MarkdownItAsync) {
       const p = (env as Partial<MarkdownEnv>)?.id;
       let docsRoot = '';
       if (typeof p === 'string') {
-        const match = p.match(/\/src\/content\/components\/([^/]+)\/index\.md$/);
-        if (match) {
-          const component = match[1];
-          docsRoot = `/src/content/components/${component}`;
-        }
+        const noIndex = p.replace(/\/index\.md$/, '');
+        const match = noIndex.match(/\/src\/docs\/(.+)$/);
+        docsRoot = match ? `/src/docs/${match[1]}` : noIndex;
       }
       const safeDocsRoot = (docsRoot || '').replace(/'/g, "\\'");
-      console.log('safeDocsRoot', safeDocsRoot);
       return `<DemoGallery :docsRoot="'${safeDocsRoot}'" :files='${JSON.stringify(files)}' />`;
     }
     return origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);

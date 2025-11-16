@@ -11,7 +11,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   language: 'vue',
-  collapsible: true
+  collapsible: true,
+  filename: ''
 });
 
 const expanded = ref(false);
