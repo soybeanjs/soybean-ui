@@ -13,7 +13,7 @@ const { size } = useSizeContext('DialogClose');
 </script>
 
 <template>
-  <DialogClose :size="size" as-child>
+  <DialogClose :size="size" as-child :before-close="beforeClose">
     <slot />
   </DialogClose>
 </template>

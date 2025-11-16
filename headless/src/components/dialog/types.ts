@@ -5,6 +5,7 @@ import type {
   DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
+  MaybePromise,
   PropsToContext,
   TrapFocusProps
 } from '../../types';
@@ -56,7 +57,13 @@ export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface DialogDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+  /**
+   * Called before the dialog is closed. Can be used to prevent the dialog from closing.
+   * @returns A boolean or a promise that resolves to a boolean. if returns `false`, the dialog will not close.
+   */
+  beforeClose?: () => MaybePromise<boolean>;
+}
 
 export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 

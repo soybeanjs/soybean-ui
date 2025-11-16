@@ -13,7 +13,7 @@ const { setCancelElement } = useAlertDialogContentContext('AlertDialogClose');
 </script>
 
 <template>
-  <DialogClose :ref="setCancelElement" :as="as" :as-child="asChild">
+  <DialogClose :ref="setCancelElement" :as="as" :as-child="asChild" :before-close="beforeClose">
     <slot />
   </DialogClose>
 </template>

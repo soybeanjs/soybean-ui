@@ -1,4 +1,4 @@
-import type { AlertDialogRootEmits } from '@soybeanjs/headless';
+import type { AlertDialogRootEmits, MaybePromise } from '@soybeanjs/headless';
 import type { ThemeColor } from '@/theme';
 import type { DialogProps } from '../dialog/types';
 import type { ButtonProps } from '../button/types';
@@ -27,4 +27,9 @@ export interface AlertDialogActionProps extends ButtonProps {
    * @defaultValue 'Confirm'
    */
   text?: string;
+  /**
+   * Called before the dialog is closed. Can be used to prevent the dialog from closing.
+   * @returns A boolean or a promise that resolves to a boolean. if returns `false`, the dialog will not close.
+   */
+  beforeClose?: () => MaybePromise<boolean>;
 }
