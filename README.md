@@ -2,6 +2,35 @@
 
 SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.
 
+## Installation
+
+```bash
+pnpm add @soybeanjs/ui
+```
+
+## Usage
+
+- import styles
+
+```ts
+import '@soybeanjs/ui/styles.css';
+```
+
+- use with `unplugin-vue-components`
+
+```ts
+import Components from 'unplugin-vue-components/vite';
+import UiResolver from '@soybeanjs/ui/resolver';
+
+export default defineConfig({
+  plugins: [
+    Components({
+      resolvers: [UiResolver()]
+    })
+  ]
+});
+```
+
 ## Roadmap
 
 ### Components
