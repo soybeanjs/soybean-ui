@@ -137,7 +137,7 @@ SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled c
 | 8   | 1        | useFocusGuards      | ✅ Completed |                |
 | 9   | 1        | useFocusScope       | ✅ Completed |                |
 | 10  | 1        | useMessage          |              |                |
-| 11  | 1        | useModal            |              |                |
+| 11  | 1        | useDialog           |              |                |
 | 12  | 1        | useNotification     |              |                |
 | 13  | 1        | usePresence         | ✅ Completed |                |
 | 14  | 2        | useLoadingBar       |              |                |
