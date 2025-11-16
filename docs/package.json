@@ -13,7 +13,8 @@
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "dependencies": {
     "@soybeanjs/ui": "workspace:^",
