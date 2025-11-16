@@ -19,3 +19,9 @@ layout:
   default: 默认布局
   home: 首页布局
   about: 关于布局
+components:
+  common:
+    demo: 演示
+  button:
+    title: 按钮
+    desc: 按钮组件
