@@ -12,6 +12,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    CodeBlock: typeof import('./../components/code-block.vue')['default']
+    DemoGallery: typeof import('./../components/demo-gallery.vue')['default']
     LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
@@ -31,6 +33,8 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const CodeBlock: typeof import('./../components/code-block.vue')['default']
+  const DemoGallery: typeof import('./../components/demo-gallery.vue')['default']
   const LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
