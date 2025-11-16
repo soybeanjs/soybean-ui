@@ -97,6 +97,17 @@
     "vue-router": ">=4.0.0",
     "zod": ">=4.0.0"
   },
+  "peerDependenciesMeta": {
+    "nuxt": {
+      "optional": true
+    },
+    "valibot": {
+      "optional": true
+    },
+    "zod": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "@floating-ui/vue": "^1.1.9",
     "@internationalized/date": "^3.10.0",
