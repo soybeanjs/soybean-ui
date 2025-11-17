@@ -7,6 +7,7 @@ export type AlertDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'w
 
 export interface AlertDialogProps extends Omit<DialogProps, 'modal' | 'closable'> {
   type?: AlertDialogType;
+  showIcon?: boolean;
 }
 
 export type AlertDialogEmits = AlertDialogRootEmits;

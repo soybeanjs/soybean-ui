@@ -24,7 +24,8 @@ defineOptions({
 
 const props = withDefaults(defineProps<AlertDialogProps>(), {
   open: undefined,
-  defaultOpen: false
+  defaultOpen: false,
+  showIcon: true
 });
 
 const forwardedProps = useOmitProps(props, [
@@ -99,7 +100,7 @@ provideSizeContext(() => props.size);
       <AlertDialogContent v-bind="contentProps" v-on="listeners">
         <AlertDialogHeader v-bind="headerProps">
           <AlertDialogTitle v-bind="titleProps">
-            <Icon v-if="iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
+            <Icon v-if="showIcon && iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
             <slot name="title" v-bind="slotProps">{{ title }}</slot>
           </AlertDialogTitle>
           <AlertDialogDescription v-if="slots.description || description" v-bind="descriptionProps">
