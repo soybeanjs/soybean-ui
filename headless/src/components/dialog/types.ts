@@ -62,7 +62,7 @@ export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ But
    * Called before the dialog is closed. Can be used to prevent the dialog from closing.
    * @returns A boolean or a promise that resolves to a boolean. if returns `false`, the dialog will not close.
    */
-  beforeClose?: () => MaybePromise<boolean>;
+  beforeClose?: () => MaybePromise<boolean | void>;
 }
 
 export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}

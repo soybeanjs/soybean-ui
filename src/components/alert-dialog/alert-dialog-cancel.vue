@@ -20,7 +20,7 @@ const { size } = useSizeContext('AlertDialogCancel');
 </script>
 
 <template>
-  <AlertDialogClose as-child>
+  <AlertDialogClose as-child :before-close="beforeClose">
     <slot name="content">
       <Button v-bind="forwardedProps" :size="size">
         <slot>{{ text }}</slot>
