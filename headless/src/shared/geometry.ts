@@ -1,4 +1,4 @@
-import type { Point, Polygon, Side } from '../types';
+import type { Point, Polygon, Side, SwipeDirection } from '../types';
 
 export function isPointerInGraceArea(event: PointerEvent, area?: Polygon) {
   if (!area) return false;
@@ -235,4 +235,16 @@ function getHullPresorted<P extends Point>(points: Readonly<Array<P>>): Array<P>
   }
 
   return lower.concat(upper);
+}
+
+export function isDeltaInDirection(delta: Point, direction: SwipeDirection, threshold = 0) {
+  const deltaX = Math.abs(delta.x);
+  const deltaY = Math.abs(delta.y);
+  const isDeltaX = deltaX > deltaY;
+
+  if (direction === 'left' || direction === 'right') {
+    return isDeltaX && deltaX > threshold;
+  }
+
+  return !isDeltaX && deltaY > threshold;
 }

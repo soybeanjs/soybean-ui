@@ -21,3 +21,8 @@ export type TreeToggleEvent<T = AcceptableValue> = CustomEvent<{
   isExpanded: boolean;
   isSelected: boolean;
 }>;
+
+export type SwipeEvent = Omit<
+  CustomEvent<{ originalEvent: PointerEvent; delta: { x: number; y: number } }>,
+  'currentTarget'
+> & { currentTarget: EventTarget & HTMLElement };

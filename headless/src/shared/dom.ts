@@ -107,3 +107,7 @@ export function getAriaLabelByVNodeList(nodes?: VNode[] | null): string {
     .replace(/\s+/g, ' ')
     .trim();
 }
+
+export function isHTMLElement(node: any): node is HTMLElement {
+  return node.nodeType === node.ELEMENT_NODE;
+}

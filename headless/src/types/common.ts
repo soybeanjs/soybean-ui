@@ -52,6 +52,8 @@ export type KbdKey =
 
 export type Side = 'top' | 'right' | 'bottom' | 'left';
 
+export type SwipeDirection = 'up' | 'down' | 'left' | 'right';
+
 export type HorizontalSide = Extract<Side, 'left' | 'right'>;
 
 export type Align = 'start' | 'center' | 'end';
