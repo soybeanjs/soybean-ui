@@ -5,6 +5,7 @@ import DemoDialogFooter from './footer.vue';
 import DemoDialogState from './state.vue';
 import DemoDialogPrevent from './prevent.vue';
 import DemoDialogPure from './pure.vue';
+import DemoDialogUseDialog from './use-dialog.vue';
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import DemoDialogPure from './pure.vue';
     <DemoDialogState />
     <DemoDialogPrevent />
     <DemoDialogPure />
+    <DemoDialogUseDialog />
   </SCard>
 </template>

@@ -8,6 +8,7 @@ import { generateCSSVars } from '@soybeanjs/unocss-shadcn';
 import type { ThemeSize } from '@/theme';
 import { provideConfigProviderContext } from './context';
 import { getThemeName, isIncludeByDefaultTheme } from './shared';
+import DialogProvider from './dialog-provider.vue';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -79,6 +80,8 @@ watch(
 
 <template>
   <ConfigProvider v-bind="forwardedProps">
-    <slot />
+    <DialogProvider>
+      <slot />
+    </DialogProvider>
   </ConfigProvider>
 </template>

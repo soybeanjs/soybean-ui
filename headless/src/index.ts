@@ -77,5 +77,6 @@ export type {
   TreeSelectEvent,
   TreeToggleEvent,
   VNodeRef,
-  PropsToContext
+  PropsToContext,
+  EmitsToHookProps
 } from './types';

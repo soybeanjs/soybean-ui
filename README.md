@@ -152,7 +152,7 @@ export default defineConfig({
 
 ### Utilities
 
-✅ 10 / total: 14
+✅ 11 / total: 14
 
 | No. | Priority | Name                | Status       | 📝 Note        |
 | --- | -------- | ------------------- | ------------ | -------------- |
@@ -166,7 +166,7 @@ export default defineConfig({
 | 8   | 1        | useFocusGuards      | ✅ Completed |                |
 | 9   | 1        | useFocusScope       | ✅ Completed |                |
 | 10  | 1        | useMessage          |              |                |
-| 11  | 1        | useDialog           |              |                |
+| 11  | 1        | useDialog           | ✅ Completed |                |
 | 12  | 1        | useNotification     |              |                |
 | 13  | 1        | usePresence         | ✅ Completed |                |
 | 14  | 2        | useLoadingBar       |              |                |
