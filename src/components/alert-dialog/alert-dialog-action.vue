@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DialogClose } from '@soybeanjs/headless';
+import { AlertDialogClose } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { useSizeContext } from '@/theme';
 import Button from '../button/button.vue';
@@ -19,11 +19,11 @@ const { size } = useSizeContext('AlertDialogAction');
 </script>
 
 <template>
-  <DialogClose as-child :before-close="beforeClose">
+  <AlertDialogClose as-child :before-close="beforeClose">
     <slot name="content">
       <Button v-bind="forwardedProps" :size="size">
         <slot>{{ text }}</slot>
       </Button>
     </slot>
-  </DialogClose>
+  </AlertDialogClose>
 </template>
