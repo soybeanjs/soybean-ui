@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.0.2-beta.14](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.13...v0.0.2-beta.14) (2025-11-18)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **README**: correct typo in Toast component migration note &nbsp;-&nbsp; by @soybeanjs [<samp>(390d0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/390d0692)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: update installation instructions and remove component roadmap &nbsp;-&nbsp; by @soybeanjs [<samp>(aabdc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/aabdcc13)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.13](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.12...v0.0.2-beta.13) (2025-11-18)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
