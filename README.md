@@ -76,13 +76,13 @@ export default defineConfig({
 | 33  | 1        | Popover         | ✅ Completed |                      |                          |
 | 34  | 1        | RadioGroup      | ✅ Completed |                      | ✨ support radio card    |
 | 35  | 1        | Segment         | ✅ Completed |                      |                          |
-| 36  | 1        | Select          | ✅ Completed |                      | support virtualized      |
+| 36  | 1        | Select          | ✅ Completed |                      |                          |
 | 37  | 1        | Separator       | ✅ Completed | Divider              |                          |
-| 38  | 1        | Switch          | ✅ Completed |                      | support switch card      |
+| 38  | 1        | Switch          | ✅ Completed |                      | ✨ support switch card   |
 | 39  | 1        | Tabs            | ✅ Completed |                      |                          |
 | 40  | 1        | Tag             | ✅ Completed | Badge(shadcn-ui)     |                          |
-| 41  | 1        | Textarea        | ✅ Completed |                      | support auto size        |
-| 42  | 1        | Toast           |              | Sonner               |                          |
+| 41  | 1        | Textarea        | ✅ Completed |                      | ✨ support auto size     |
+| 42  | 1        | Toast           | ✅ Completed | Sonner               | migrant from vue-sonner  |
 | 43  | 1        | Tooltip         | ✅ Completed |                      |                          |
 | 44  | 1        | Tree            | ✅ Completed |                      | ✨ support virtualized   |
 | 45  | 1        | TreeMenu        | ✅ Completed |                      |                          |
@@ -152,7 +152,7 @@ export default defineConfig({
 
 ### Utilities
 
-✅ 11 / total: 14
+✅ 12 / total: 13
 
 | No. | Priority | Name                | Status       | 📝 Note        |
 | --- | -------- | ------------------- | ------------ | -------------- |
@@ -165,8 +165,7 @@ export default defineConfig({
 | 7   | 1        | useDismissableLayer | ✅ Completed |                |
 | 8   | 1        | useFocusGuards      | ✅ Completed |                |
 | 9   | 1        | useFocusScope       | ✅ Completed |                |
-| 10  | 1        | useMessage          |              |                |
+| 10  | 1        | usePresence         | ✅ Completed |                |
 | 11  | 1        | useDialog           | ✅ Completed |                |
-| 12  | 1        | useNotification     |              |                |
-| 13  | 1        | usePresence         | ✅ Completed |                |
-| 14  | 2        | useLoadingBar       |              |                |
+| 12  | 1        | useToast            | ✅ Completed |                |
+| 13  | 2        | useLoadingBar       |              |                |
