@@ -2,7 +2,7 @@
   "name": "@soybeanjs/headless",
   "type": "module",
   "version": "0.0.2-beta.12",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.22.0",
   "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {
     "name": "Soybean",
@@ -22,51 +22,15 @@
   },
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    },
-    "./constants": {
-      "types": "./dist/constants/index.d.ts",
-      "import": "./dist/constants/index.js",
-      "require": "./dist/constants/index.js"
-    },
-    "./composables": {
-      "types": "./dist/composables/index.d.ts",
-      "import": "./dist/composables/index.js",
-      "require": "./dist/composables/index.js"
-    },
-    "./shared": {
-      "types": "./dist/shared/index.d.ts",
-      "import": "./dist/shared/index.js",
-      "require": "./dist/shared/index.js"
-    },
-    "./forms": {
-      "types": "./dist/forms/index.d.ts",
-      "import": "./dist/forms/index.js",
-      "require": "./dist/forms/index.js"
-    },
-    "./nuxt": {
-      "types": "./dist/nuxt/index.d.ts",
-      "import": "./dist/nuxt/index.js",
-      "require": "./dist/nuxt/index.js"
-    },
-    "./resolver": {
-      "types": "./dist/resolver/index.d.ts",
-      "import": "./dist/resolver/index.js",
-      "require": "./dist/resolver/index.js"
-    },
-    "./namespaced": {
-      "types": "./dist/namespaced/index.d.ts",
-      "import": "./dist/namespaced/index.js",
-      "require": "./dist/namespaced/index.js"
-    },
-    "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "import": "./dist/components/*/index.js",
-      "require": "./dist/components/*/index.js"
-    }
+    ".": "./src/index.ts",
+    "./constants": "./src/constants/index.ts",
+    "./composables": "./src/composables/index.ts",
+    "./shared": "./src/shared/index.ts",
+    "./forms": "./src/forms/index.ts",
+    "./nuxt": "./src/nuxt/index.ts",
+    "./resolver": "./src/resolver/index.ts",
+    "./namespaced": "./src/namespaced/index.ts",
+    "./*": "./src/components/*/index.ts"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -126,9 +90,9 @@
   },
   "devDependencies": {
     "@nuxt/kit": "^4.2.1",
-    "tsdown": "0.16.1",
+    "tsdown": "0.16.5",
     "typescript": "5.9.3",
-    "unplugin-vue": "7.0.4",
+    "unplugin-vue": "7.0.7",
     "unplugin-vue-jsx": "0.8.1",
     "vue": "3.5.24",
     "vue-router": "4.6.3"
