@@ -1,3 +1,4 @@
+import type { ClassValue } from '@soybeanjs/headless';
 import { cn } from './merge';
 
 export function mergeSlotVariants<T extends Record<string, (...args: any[]) => string>, P extends Record<keyof T, any>>(
@@ -12,4 +13,11 @@ export function mergeSlotVariants<T extends Record<string, (...args: any[]) => s
     },
     {} as Record<keyof T, string>
   );
+}
+
+export function mergeUi<S extends Record<string, ClassValue>, T extends Partial<S>>(target: T, source: S) {
+  return Object.entries(target).reduce((acc, [key, value]) => {
+    Object.assign(acc, { [key]: cn(value, source[key]) });
+    return acc;
+  }, {} as S);
 }
