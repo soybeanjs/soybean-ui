@@ -1,6 +1,51 @@
 # Changelog
 
 
+## [v0.0.2-beta.13](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.12...v0.0.2-beta.13) (2025-11-18)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **alert-dialog**:
+  - add showIcon prop to control icon visibility in AlertDialog component &nbsp;-&nbsp; by @soybeanjs [<samp>(c8b70)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c8b70a44)
+- **dialog**:
+  - add beforeClose prop to DialogClose component to control closing behavior &nbsp;-&nbsp; by @soybeanjs [<samp>(35bd1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/35bd150d)
+  - update beforeClose prop to allow returning void in Dialog and AlertDialog components &nbsp;-&nbsp; by @soybeanjs [<samp>(f295b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f295be27)
+  - implement useDialog composable and integrate DialogProvider for enhanced dialog management &nbsp;-&nbsp; by @soybeanjs [<samp>(2041c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2041c072)
+- **docs**:
+  - add demo components and enhance button documentation with new examples &nbsp;-&nbsp; by @soybeanjs [<samp>(9c51e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9c51ee7f)
+- **theme**:
+  - add mergeUi function for combining UI class values from target and source objects &nbsp;-&nbsp; by @soybeanjs [<samp>(fe58d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fe58dad9)
+- **toast**:
+  - introduce Toast component with context management and swipe functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(54299)</samp>](https://github.com/soybeanjs/soybean-ui/commit/542997a1)
+  - enhance Toast component with viewport context, new props, and demo examples &nbsp;-&nbsp; by @soybeanjs [<samp>(af068)</samp>](https://github.com/soybeanjs/soybean-ui/commit/af0680d5)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **alert-dialog**: rename DialogClose to AlertDialogClose for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(10de6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/10de6819)
+- **docs**: update 'useModal' entry to 'useDialog' in README &nbsp;-&nbsp; by @soybeanjs [<samp>(3bd6f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3bd6fa7c)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **dialog**: restructure dialog context and provider, removing legacy code and enhancing dialog management &nbsp;-&nbsp; by @soybeanjs [<samp>(de4f2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/de4f28d2)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**:
+  - add installation and usage instructions for SoybeanUI &nbsp;-&nbsp; by @soybeanjs [<samp>(a6843)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a6843c82)
+  - update component statuses &nbsp;-&nbsp; by @soybeanjs [<samp>(2a1ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2a1eaaf2)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c8263)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c826316d)
+- **package**:
+  - add optional peer dependencies for nuxt, valibot, and zod &nbsp;-&nbsp; by @soybeanjs [<samp>(d5639)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d5639ac5)
+  - add dev:docs script for documentation development and typecheck script in docs &nbsp;-&nbsp; by @soybeanjs [<samp>(5eaba)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5eabac48)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.2-beta.12](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2-beta.11...v0.0.2-beta.12) (2025-11-08)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
