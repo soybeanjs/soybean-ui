@@ -29,7 +29,7 @@ const openDestructive = () => {
 };
 
 const openCustomTextDialog = () => {
-  dialog.create({
+  dialog({
     type: 'warning',
     title: 'Dialog Title',
     description: 'Dialog Description',
@@ -40,7 +40,7 @@ const openCustomTextDialog = () => {
 };
 
 const openCustomFooterDialog = () => {
-  dialog.create({
+  dialog({
     type: 'warning',
     title: 'Dialog Title',
     description: 'Dialog Description',

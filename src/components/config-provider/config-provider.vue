@@ -6,9 +6,9 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { generateCSSVars } from '@soybeanjs/unocss-shadcn';
 import type { ThemeSize } from '@/theme';
+import DialogProvider from '../dialog/dialog-provider.vue';
 import { provideConfigProviderContext } from './context';
 import { getThemeName, isIncludeByDefaultTheme } from './shared';
-import DialogProvider from './dialog-provider.vue';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({

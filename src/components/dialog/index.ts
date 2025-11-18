@@ -2,6 +2,8 @@ export { default as SDialog } from './dialog.vue';
 export { default as SDialogClose } from './dialog-close.vue';
 export { default as SDialogPure } from './dialog-pure.vue';
 
+export { useDialog } from './context';
+
 export type {
   DialogRootProps,
   DialogRootEmits,

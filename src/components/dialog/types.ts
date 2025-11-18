@@ -1,3 +1,4 @@
+import type { VNode } from 'vue';
 import type {
   ClassValue,
   DialogContentEmits,
@@ -11,9 +12,11 @@ import type {
   DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
-  DialogUi
+  DialogUi,
+  EmitsToHookProps,
+  MaybePromise
 } from '@soybeanjs/headless';
-import type { ThemeSize } from '@/theme';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 export type DialogExtraThemeSlot = 'closable';
 
@@ -48,3 +51,29 @@ export interface DialogPureProps extends DialogRootProps {
 }
 
 export type DialogPureEmits = DialogEmits;
+
+export type UseDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
+
+export interface UseDialogOptions extends Partial<EmitsToHookProps<DialogContentEmits>> {
+  size?: ThemeSize;
+  ui?: Partial<DialogExtendedUi>;
+  type: UseDialogType;
+  title?: string | VNode;
+  showIcon?: boolean;
+  description?: string | VNode;
+  content?: VNode;
+  footer?: VNode;
+  confirmText?: string;
+  cancelText?: string;
+  onConfirm?: () => MaybePromise<boolean | void>;
+  onCancel?: () => MaybePromise<boolean | void>;
+}
+
+export interface DialogState extends UseDialogOptions {
+  id: number;
+}
+
+export interface UseDialogReturn extends Record<UseDialogType, (options: Omit<UseDialogOptions, 'type'>) => void> {
+  (options: UseDialogOptions): void;
+  clear: () => void;
+}
