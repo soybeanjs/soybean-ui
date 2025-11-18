@@ -1,6 +1,7 @@
 import type { PropsToContext, ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless';
 import type { ThemeOptions } from '@soybeanjs/unocss-shadcn';
 import type { ThemeSize } from '@/theme';
+import type { ToastProviderProps } from '../toast/types';
 
 export interface ConfigProviderProps extends _ConfigProviderProps {
   /** The theme options. */
@@ -22,6 +23,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
      */
     height?: string;
   };
+  toast?: ToastProviderProps;
 }
 
 export interface ConfigProviderContextParams extends PropsToContext<ConfigProviderProps> {}

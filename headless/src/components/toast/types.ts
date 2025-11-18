@@ -29,14 +29,19 @@ export interface ToastProviderProps {
   swipeThreshold?: number;
 }
 
-export interface ToastRootProps extends ForceMountProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export type ToastLiveType = 'foreground' | 'background';
+
+export interface ToastRootProps
+  extends ForceMountProps,
+    PrimitiveProps,
+    /** @vue-ignore */ Omit<HTMLAttributes, 'onPause'> {
   /**
    * Control the sensitivity of the toast for accessibility purposes.
    *
    * For toasts that are the result of a user action, choose `foreground`. Toasts generated from background tasks should
    * use `background`.
    */
-  type?: 'foreground' | 'background';
+  liveType?: ToastLiveType;
   /** The controlled open state of the dialog. Can be bind as `v-model:open`. */
   open?: boolean;
   /** The open state of the dialog when it is initially rendered. Use when you do not need to control its open state. */
@@ -117,7 +122,7 @@ export interface ToastRootContextParams {
   onClose: () => void;
 }
 
-export type ToastThemeSlot = 'root' | 'viewport' | 'title' | 'description' | 'action' | 'close';
+export type ToastThemeSlot = 'root' | 'title' | 'description' | 'action' | 'close';
 
 export type ToastUi = Record<ToastThemeSlot, ClassValue>;
 

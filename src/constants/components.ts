@@ -39,6 +39,7 @@ export const components = {
   select: ['SSelect'],
   textarea: ['STextarea'],
   tag: ['STag'],
+  toast: ['SToast', 'SToastAction', 'SToastClose'],
   tooltip: ['STooltip'],
   treeMenu: ['STreeMenu', 'STreeMenuItemWrapper'],
   tree: ['STree', 'STreeVirtualizer'],

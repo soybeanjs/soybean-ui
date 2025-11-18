@@ -4,7 +4,7 @@ import { onKeyStroke } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import { getActiveElement, getTabbableCandidates, tryFocusFirst } from '../../shared';
 import { Primitive } from '../primitive';
-import { useCollectionContext, useToastProviderContext, useToastThemeContext } from './context';
+import { useCollectionContext, useToastProviderContext, useToastViewportThemeContext } from './context';
 import ToastFocusProxy from './toast-focus-proxy.vue';
 import { VIEWPORT_PAUSE, VIEWPORT_RESUME } from './shared';
 import type { TabbingDirection, ToastViewportProps } from './types';
@@ -22,7 +22,9 @@ const props = withDefaults(defineProps<ToastViewportProps>(), {
 
 const attrs = useAttrs();
 
-const themeContext = useToastThemeContext();
+const themeContext = useToastViewportThemeContext();
+const cls = computed(() => themeContext?.value);
+
 const { onViewportElementChange, toastCount, isClosePausedRef } = useToastProviderContext('ToastViewport');
 const { onContainerElementChange, getOrderedElements } = useCollectionContext('ToastViewport');
 const [headFocusProxyElement, setHeadFocusProxyElement] = useForwardElement();
@@ -31,8 +33,6 @@ const [viewportElement, setViewportElement] = useForwardElement(el => {
   onViewportElementChange(el);
   onContainerElementChange(el);
 });
-
-const cls = computed(() => themeContext?.ui?.value?.viewport);
 
 const hasToasts = computed(() => toastCount.value > 0);
 const hotkeyMessage = computed(() => props.hotkey.join('+').replace(/Key/g, '').replace(/Digit/g, ''));

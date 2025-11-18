@@ -34,7 +34,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<ToastRootProps>(), {
   as: 'li',
-  type: 'foreground',
+  liveType: 'foreground',
   open: undefined,
   defaultOpen: true
 });
@@ -295,7 +295,7 @@ onUnmounted(() => {
     <ToastAnnounce
       v-if="announceTextContent"
       role="alert"
-      :aria-live="type === 'foreground' ? 'assertive' : 'polite'"
+      :aria-live="liveType === 'foreground' ? 'assertive' : 'polite'"
       aria-atomic="true"
     >
       {{ announceTextContent }}

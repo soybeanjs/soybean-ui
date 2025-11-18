@@ -7,6 +7,7 @@ import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { generateCSSVars } from '@soybeanjs/unocss-shadcn';
 import type { ThemeSize } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
+import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
 import { getThemeName, isIncludeByDefaultTheme } from './shared';
 import type { ConfigProviderProps } from './types';
@@ -23,7 +24,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   dir: 'ltr'
 });
 
-const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify']);
+const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']);
 
 const cssVars = computed(() => {
   if (isIncludeByDefaultTheme(props.theme)) return '';
@@ -81,7 +82,9 @@ watch(
 <template>
   <ConfigProvider v-bind="forwardedProps">
     <DialogProvider>
-      <slot />
+      <ToastProvider v-bind="toast">
+        <slot />
+      </ToastProvider>
     </DialogProvider>
   </ConfigProvider>
 </template>
