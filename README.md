@@ -82,7 +82,7 @@ export default defineConfig({
 | 39  | 1        | Tabs            | ✅ Completed |                      |                          |
 | 40  | 1        | Tag             | ✅ Completed | Badge(shadcn-ui)     |                          |
 | 41  | 1        | Textarea        | ✅ Completed |                      | ✨ support auto size     |
-| 42  | 1        | Toast           | ✅ Completed | Sonner               | migrant from vue-sonner  |
+| 42  | 1        | Toast           | ✅ Completed | Sonner               | migrate from vue-sonner  |
 | 43  | 1        | Tooltip         | ✅ Completed |                      |                          |
 | 44  | 1        | Tree            | ✅ Completed |                      | ✨ support virtualized   |
 | 45  | 1        | TreeMenu        | ✅ Completed |                      |                          |
