@@ -2,17 +2,67 @@
 
 本指南专为 AI 模型设计，旨在提供标准化的代码模板和明确的步骤，以生成符合 SoybeanUI 架构规范的高质量组件代码。
 
-## 核心架构原则
+## 1. 项目架构概览
 
-1.  **Headless (逻辑层)**: 位于 `headless/`。负责状态、交互、A11y。**严禁包含 CSS/样式**。
-2.  **UI (表现层)**: 位于 `src/`。负责视觉样式、主题变体。使用 `tailwind-variants`。
-3.  **单向依赖**: UI 层依赖 Headless 层，Headless 层**不**依赖 UI 层。
+SoybeanUI 采用 **Headless UI (逻辑层)** 与 **Styled UI (表现层)** 分离的架构模式。
+
+### 1.1 核心分层
+
+- **Headless 层 (`headless/`)**:
+  - **职责**: 负责组件的状态管理、交互逻辑、无障碍访问 (A11y) 和 DOM 结构。
+  - **原则**: **严禁包含任何 CSS 样式**。只关注功能，不关注长相。
+  - **技术**: Vue 3 (Composition API), TypeScript.
+- **UI 层 (`src/`)**:
+  - **职责**: 负责组件的视觉样式、主题变体、动画效果。
+  - **原则**: 依赖 Headless 层提供的逻辑组件，通过 `tailwind-variants` 注入样式。
+  - **技术**: Vue 3, Tailwind CSS (UnoCSS), Tailwind Variants.
+
+### 1.2 依赖关系
+
+`UI 层` -> `Headless 层` (单向依赖)
 
 ---
 
-## 第一阶段：Headless 层开发 (`headless/src/components/{component}/`)
+## 2. 目录结构详解
 
-### 1. 定义类型 (`types.ts`)
+```
+soybean-ui/
+├── headless/                 # [逻辑层] Headless 组件库 workspace
+│   └── src/
+│       ├── components/       # Headless 组件源码
+│       │   └── {component}/  # 单个组件目录
+│       │       ├── {component}-root.vue  # 根组件
+│       │       ├── {component}-item.vue  # 子组件
+│       │       ├── context.ts            # 依赖注入上下文
+│       │       ├── types.ts              # 类型定义
+│       │       └── index.ts              # 导出文件
+│       ├── composables/      # 共享组合式函数 (useContext, useId 等)
+│       └── primitive/        # 基础图元组件
+├── src/                      # [表现层] UI 组件库 workspace
+│   ├── components/           # UI 组件源码
+│   │   └── {component}/      # 单个组件目录
+│   │       ├── {component}.vue # UI 组件实现
+│   │       ├── types.ts        # UI 组件类型定义
+│   │       ├── context.ts      # (可选) UI 层上下文
+│   │       └── index.ts        # 导出文件
+│   ├── variants/             # [关键] 样式变体定义
+│   │   └── {component}.ts    # 使用 tailwind-variants 定义样式
+│   └── theme/                # 主题配置与工具函数
+├── package.json              # 项目根配置
+└── uno.config.ts             # UnoCSS 配置
+```
+
+---
+
+## 3. 开发流程与代码规范
+
+开发一个新组件通常分为两个阶段：首先实现 Headless 逻辑，然后实现 UI 样式。
+
+---
+
+### 第一阶段：Headless 层开发 (`headless/src/components/{component}/`)
+
+#### 1. 定义类型 (`types.ts`)
 
 **目标**: 定义组件的 Props, Emits, Context 参数以及样式槽 (Theme Slots)。
 
@@ -66,7 +116,7 @@ export interface {ComponentName}ThemeContextParams {
 }
 ```
 
-### 2. 定义上下文 (`context.ts`)
+#### 2. 定义上下文 (`context.ts`)
 
 **目标**: 创建类型安全的 Provide/Inject 对。
 
@@ -94,7 +144,7 @@ export const [provide{ComponentName}ThemeContext, use{ComponentName}ThemeContext
 );
 ```
 
-### 3. 实现 Root 组件 (`{component}-root.vue`)
+#### 3: 实现组件 (`{component}-root.vue`, `{component}-item.vue`)
 
 **目标**: 初始化状态，提供 Context，渲染根元素。
 
@@ -104,6 +154,8 @@ export const [provide{ComponentName}ThemeContext, use{ComponentName}ThemeContext
 - **不要**写 `<style>`。
 - 使用 `use{ComponentName}ThemeContext` 获取样式并应用 `ui.root`。
 - 使用 `transformPropsToContext` 传递 Props。
+
+**Root 组件示例**:
 
 ```vue
 <script setup lang="ts">
@@ -143,7 +195,7 @@ provide{ComponentName}RootContext({
 </template>
 ```
 
-### 4. 实现子组件 (如 `{component}-item.vue`)
+**Item 组件示例**:
 
 **目标**: 消费 Context，渲染子元素。
 
@@ -170,7 +222,7 @@ const cls = computed(() => themeContext?.ui?.value?.item);
 </template>
 ```
 
-### 5. 导出 Headless 组件 (`index.ts`)
+#### 5. 导出 Headless 组件 (`index.ts`)
 
 ```typescript
 export { default as {ComponentName}Root } from './{component}-root.vue';
@@ -186,9 +238,9 @@ export * from './types';
 
 ---
 
-## 第二阶段：UI 层开发 (`src/components/{component}/`)
+### 第二阶段：UI 层开发 (`src/components/{component}/`)
 
-### 1. 定义样式变体 (`src/variants/{component}.ts`)
+#### 1. 定义样式变体 (`src/variants/{component}.ts`)
 
 **目标**: 使用 Tailwind CSS 定义组件样式。
 
@@ -217,7 +269,7 @@ export const {componentName}Variants = tv({
 });
 ```
 
-### 2. 定义 UI 类型 (`src/components/{component}/types.ts`)
+#### 2. 定义 UI 类型 (`src/components/{component}/types.ts`)
 
 **目标**: 扩展 Headless Props，添加 UI 属性。
 
@@ -241,7 +293,7 @@ export type {ComponentName}Props = {ComponentName}RootProps & {
 export type {ComponentName}Emits = {ComponentName}RootEmits;
 ```
 
-### 3. 实现 UI 组件 (`src/components/{component}/{component}.vue`)
+#### 3. 实现 UI 组件 (`src/components/{component}/{component}.vue`)
 
 **目标**: 组合 Headless 组件，注入样式 Context。
 
@@ -298,7 +350,7 @@ provide{ComponentName}ThemeContext({ ui });
 </template>
 ```
 
-### 4. 导出 UI 组件 (`index.ts`)
+#### 4. 导出 UI 组件 (`index.ts`)
 
 ```typescript
 export { default as S{ComponentName} } from './{component}.vue';
@@ -314,18 +366,24 @@ export * from './types';
 | 函数名                 | 用途                                      |
 | :--------------------- | :---------------------------------------- |
 | `useContext`           | 创建 Provide/Inject 对。                  |
-| `useId`                | 生成唯一 ID。                             |
 | `useForwardElement`    | 在组件间传递 DOM 元素引用。               |
 | `useForwardListeners`  | 转发事件监听器。                          |
 | `useOmitProps`         | 剔除 Props 中的特定属性，返回响应式对象。 |
 | `useSelection`         | 处理 v-model 选择逻辑 (单选/多选)。       |
 | `useControllableState` | 处理受控/非受控状态。                     |
 
-## 检查清单
+## 关键注意事项
 
-1.  [ ] **Headless**: `types.ts` 定义了 `ThemeSlot` 和 `Ui` 类型？
-2.  [ ] **Headless**: `context.ts` 导出了 `ThemeContext`？
-3.  [ ] **Headless**: 组件内部使用了 `use{ComponentName}ThemeContext` 获取样式？
-4.  [ ] **UI**: `variants` 定义了所有 `ThemeSlot`？
-5.  [ ] **UI**: 组件使用了 `useOmitProps` 过滤 UI 属性？
-6.  [ ] **UI**: 组件提供了 `ThemeContext`？
+1.  **Headless**: `types.ts` 定义了 `ThemeSlot` 和 `Ui` 类型？
+2.  **Headless**: `context.ts` 导出了 `ThemeContext`？
+3.  **Props 透传**: 使用 `useOmitProps` 确保 UI 特有的 Props (如 `size`, `variant`) 不会被透传到 DOM 节点上导致 HTML 属性污染。
+4.  **事件转发**: 使用 `useForwardListeners` 确保组件上的事件监听器能正确绑定到 Headless 组件内部的元素上。
+5.  **Slot 一致性**: `headless/**/types.ts` 中的 `ThemeSlot` 定义必须与 `src/variants/**.ts` 中的 `slots` 键名完全一致。
+6.  **Headless**: 组件内部使用了 `use{ComponentName}ThemeContext` 获取样式？
+7.  **UI**: `variants` 定义了所有 `ThemeSlot`？
+8.  **UI**: 组件使用了 `useOmitProps` 过滤 UI 属性？
+9.  **UI**: 组件提供了 `ThemeContext`？
+10. **命名规范**:
+    - Headless 组件: `{ComponentName}Root`, `{ComponentName}Item`
+    - UI 组件: `S{ComponentName}` (S 前缀)
+    - Context: `provide{ComponentName}Context`, `use{ComponentName}Context`
