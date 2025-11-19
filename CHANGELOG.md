@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [v0.0.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.3...v0.0.4) (2025-11-19)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **CHANGELOG**: update to reflect SoybeanUI v0.0.2 release, summarizing new features, enhancements, and bug fixes &nbsp;-&nbsp; by **Soybean** [<samp>(a592a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a592a27f)
+- **llm**: update developer guide &nbsp;-&nbsp; by **Soybean** [<samp>(c9a55)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c9a559c3)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **package**: update exports and publishConfig for better module resolution &nbsp;-&nbsp; by **Soybean** [<samp>(5fcc5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fcc557b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.0.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2...v0.0.3) (2025-11-19)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
