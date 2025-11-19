@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [v0.0.3](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2...v0.0.3) (2025-11-19)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **focus-scope**: simplify focus management by removing unnecessary event dispatching and timeout logic &nbsp;-&nbsp; by @soybeanjs [<samp>(630c3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/630c3ff1)
+- **tree-menu**: improve item action positioning and tooltip logic for better usability &nbsp;-&nbsp; by @soybeanjs [<samp>(8fd11)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8fd11d1b)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**:
+  - enhance documentation for SoybeanUI and SoybeanHeadless &nbsp;-&nbsp; by @soybeanjs [<samp>(b109f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b109f541)
+  - update descriptions and add credits section for SoybeanUI and SoybeanHeadless &nbsp;-&nbsp; by @soybeanjs [<samp>(641b4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/641b40e4)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **docs**: remove outdated markdown guides and migration documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(b41a9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b41a90b7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.3-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.2...v0.0.3-beta.1) (2025-11-19)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
