@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
 
-SoybeanUI 是一个基于 Vue 3 的现代化、高质量 UI 组件库，构建在强大的 Headless 基础之上。它提供了一套全面、可访问、可定制且高性能的组件。
+SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，具有 shadcn-like 设计，适用于 Vue 3，构建在强大的 Headless 基础之上。它提供了一套全面、可访问、可定制且高性能的组件。
 
 ## 📚 架构
 
@@ -101,6 +101,15 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 - **类型安全**: 使用 TypeScript 编写，提供完整的类型支持。
 - **可定制**: 基于 UnoCSS 和 `tailwind-variants` 构建，易于主题化。
 - **轻量级**: 支持 Tree-shaking 的组件。
+
+## 💝 致谢
+
+- [reka-ui](https://github.com/unovue/reka-ui)
+- [oku-ui](https://github.com/oku-ui/primitives)
+- [shadcn-vue](https://github.com/unovue/shadcn-vue)
+- [shadcn/ui](https://github.com/shadcn/ui)
+- [nuxt-ui](https://github.com/nuxt/ui)
+- [unocss](https://github.com/unocss/unocss)
 
 ## 🗺️ 路线图
 

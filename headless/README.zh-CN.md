@@ -7,17 +7,17 @@
 
 一套用于 Vue 3 的无样式、可访问的 UI 组件集合。
 
-## 简介
+## 📖 简介
 
 `@soybeanjs/headless` 为 UI 组件提供了核心逻辑和可访问性功能，但不包含任何样式。它专为希望构建自己的设计系统并完全控制视觉外观的开发者而设计。
 
-## 安装
+## 📦 安装
 
 ```bash
 pnpm add @soybeanjs/headless
 ```
 
-## 使用方法
+## 🚀 使用方法
 
 引入组件并组合它们以构建您的 UI。
 
@@ -50,13 +50,18 @@ import {
 </template>
 ```
 
-## 特性
+## ✨ 特性
 
 - **无样式**: 不包含 CSS。您可以使用自己的样式。
 - **可访问性**: 处理 WAI-ARIA 角色、焦点管理和键盘导航。
 - **可组合**: 组件设计为可组合使用。
 - **Vue 3**: 使用 Composition API 为 Vue 3 构建。
 
-## 文档
+## 📚 文档
 
 有关完整文档和带样式的组件，请访问 [SoybeanUI 仓库](https://github.com/soybeanjs/soybean-ui)。
+
+## 💝 致谢
+
+- [reka-ui](https://github.com/unovue/reka-ui)
+- [oku-ui](https://github.com/oku-ui/primitives)

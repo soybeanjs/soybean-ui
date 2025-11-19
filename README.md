@@ -5,7 +5,7 @@ English | [中文](./README.zh-CN.md)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
 
-SoybeanUI is a modern, high-quality UI component library for Vue 3, built on top of a robust headless foundation. It provides a comprehensive set of accessible, customizable, and performant components.
+SoybeanUI is an elegant, modern, accessible and high-quality UI component library with shadcn-like design for Vue 3, built on top of a robust headless foundation. It provides a comprehensive set of accessible, customizable, and performant components.
 
 ## 📚 Architecture
 
@@ -101,6 +101,15 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 - **Type Safe**: Written in TypeScript with full type support.
 - **Customizable**: Built with UnoCSS and `tailwind-variants` for easy theming.
 - **Lightweight**: Tree-shakable components.
+
+## 💝 Credits
+
+- [reka-ui](https://github.com/unovue/reka-ui)
+- [oku-ui](https://github.com/oku-ui/primitives)
+- [shadcn-vue](https://github.com/unovue/shadcn-vue)
+- [shadcn/ui](https://github.com/shadcn/ui)
+- [nuxt-ui](https://github.com/nuxt/ui)
+- [unocss](https://github.com/unocss/unocss)
 
 ## 🗺️ Roadmap
 

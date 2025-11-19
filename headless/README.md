@@ -7,17 +7,17 @@ English | [中文](./README.zh-CN.md)
 
 A collection of unstyled, accessible UI primitives for Vue 3.
 
-## Introduction
+## 📖 Introduction
 
 `@soybeanjs/headless` provides the core logic and accessibility features for UI components, without any styles. It is designed for developers who want to build their own design systems with full control over the visual appearance.
 
-## Installation
+## 📦 Installation
 
 ```bash
 pnpm add @soybeanjs/headless
 ```
 
-## Usage
+## 🚀 Usage
 
 Import the components and compose them to build your UI.
 
@@ -50,13 +50,18 @@ import {
 </template>
 ```
 
-## Features
+## ✨ Features
 
 - **Unstyled**: No CSS included. You bring your own styles.
 - **Accessible**: Handles WAI-ARIA roles, focus management, and keyboard navigation.
 - **Composable**: Components are designed to be composed together.
 - **Vue 3**: Built for Vue 3 using Composition API.
 
-## Documentation
+## 📚 Documentation
 
 For full documentation and styled components, visit the [SoybeanUI repository](https://github.com/soybeanjs/soybean-ui).
+
+## 💝 Credits
+
+- [reka-ui](https://github.com/unovue/reka-ui)
+- [oku-ui](https://github.com/oku-ui/primitives)
