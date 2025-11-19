@@ -1,4 +1,3 @@
-import { safeParseAsync } from 'valibot';
 import type { BaseIssue, BaseSchema, BaseSchemaAsync, InferOutput } from 'valibot';
 import { toNestError } from '../../core/shared';
 import type { FormErrors } from '../../core/types';
@@ -10,6 +9,8 @@ export type ValibotResolver = <
 ) => (values: InferOutput<T>) => Promise<FormErrors<InferOutput<T>>>;
 
 export const valibotResolver: ValibotResolver = schema => async values => {
+  const { safeParseAsync } = await import('valibot');
+
   try {
     const result = await safeParseAsync(schema, values);
     if (!result.success) {
