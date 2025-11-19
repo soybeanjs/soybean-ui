@@ -1,24 +1,59 @@
 # SoybeanUI
 
-SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.
+English | [中文](./README.zh-CN.md)
 
-## Installation
+[![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
+[![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
+
+SoybeanUI is a modern, high-quality UI component library for Vue 3, built on top of a robust headless foundation. It provides a comprehensive set of accessible, customizable, and performant components.
+
+## 📚 Architecture
+
+SoybeanUI consists of two main packages:
+
+- **@soybeanjs/headless**: The logic layer. It handles state management, accessibility (A11y), keyboard interactions, and focus management. It is completely unstyled, giving you maximum control if you want to build your own design system.
+- **@soybeanjs/ui**: The presentation layer. It wraps the headless components with beautiful, customizable styles using UnoCSS (via `tailwind-variants`). It is ready to use out of the box.
+
+## 📦 Installation
+
+### Using the Styled UI Library (Recommended)
+
+If you want ready-to-use components with a modern design:
 
 ```bash
 pnpm add @soybeanjs/ui
 ```
 
-## Usage
+### Using the Headless Library
 
-- import styles
+If you want to build your own design system from scratch:
+
+```bash
+pnpm add @soybeanjs/headless
+```
+
+## 🚀 Usage
+
+### @soybeanjs/ui
+
+1. **Import Styles**
+
+   Import the CSS file in your main entry file (e.g., `main.ts`):
 
 ```ts
 import '@soybeanjs/ui/styles.css';
 ```
 
-- use with `unplugin-vue-components`
+2. **Global Registration (Optional)**
+
+   You can register components globally or import them on demand.
+
+3. **On-demand Import (Recommended)**
+
+   We recommend using `unplugin-vue-components` for auto-importing components.
 
 ```ts
+// vite.config.ts
 import Components from 'unplugin-vue-components/vite';
 import UiResolver from '@soybeanjs/ui/resolver';
 
@@ -31,7 +66,43 @@ export default defineConfig({
 });
 ```
 
-## Roadmap
+4. **Nuxt Module**
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['@soybeanjs/ui/nuxt']
+});
+```
+
+### @soybeanjs/headless
+
+The headless components provide the functionality without the styles.
+
+```vue
+<script setup>
+import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from '@soybeanjs/headless';
+</script>
+
+<template>
+  <AccordionRoot>
+    <AccordionItem value="item-1">
+      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+      <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
+    </AccordionItem>
+  </AccordionRoot>
+</template>
+```
+
+## ✨ Features
+
+- **Accessible**: Follows WAI-ARIA patterns for accessibility.
+- **Headless**: Logic and styles are separated.
+- **Type Safe**: Written in TypeScript with full type support.
+- **Customizable**: Built with UnoCSS and `tailwind-variants` for easy theming.
+- **Lightweight**: Tree-shakable components.
+
+## 🗺️ Roadmap
 
 ### Components
 

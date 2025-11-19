@@ -1,25 +1,25 @@
 # @soybeanjs/headless
 
-English | [中文](./README.zh-CN.md)
+## [English](./README.md) | 中文
 
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![github stars](https://img.shields.io/github/stars/soybeanjs/soybean-ui)](https://github.com/soybeanjs/soybean-ui)
 
-A collection of unstyled, accessible UI primitives for Vue 3.
+一套用于 Vue 3 的无样式、可访问的 UI 组件集合。
 
-## Introduction
+## 简介
 
-`@soybeanjs/headless` provides the core logic and accessibility features for UI components, without any styles. It is designed for developers who want to build their own design systems with full control over the visual appearance.
+`@soybeanjs/headless` 为 UI 组件提供了核心逻辑和可访问性功能，但不包含任何样式。它专为希望构建自己的设计系统并完全控制视觉外观的开发者而设计。
 
-## Installation
+## 安装
 
 ```bash
 pnpm add @soybeanjs/headless
 ```
 
-## Usage
+## 使用方法
 
-Import the components and compose them to build your UI.
+引入组件并组合它们以构建您的 UI。
 
 ```vue
 <script setup>
@@ -50,13 +50,13 @@ import {
 </template>
 ```
 
-## Features
+## 特性
 
-- **Unstyled**: No CSS included. You bring your own styles.
-- **Accessible**: Handles WAI-ARIA roles, focus management, and keyboard navigation.
-- **Composable**: Components are designed to be composed together.
-- **Vue 3**: Built for Vue 3 using Composition API.
+- **无样式**: 不包含 CSS。您可以使用自己的样式。
+- **可访问性**: 处理 WAI-ARIA 角色、焦点管理和键盘导航。
+- **可组合**: 组件设计为可组合使用。
+- **Vue 3**: 使用 Composition API 为 Vue 3 构建。
 
-## Documentation
+## 文档
 
-For full documentation and styled components, visit the [SoybeanUI repository](https://github.com/soybeanjs/soybean-ui).
+有关完整文档和带样式的组件，请访问 [SoybeanUI 仓库](https://github.com/soybeanjs/soybean-ui)。
