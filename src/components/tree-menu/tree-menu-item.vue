@@ -62,7 +62,7 @@ const showDropdown = computed(() => collapsed.value && hasChildren.value);
 
 const tooltip = computed(() => (collapsed.value && !showDropdown.value ? props.label : undefined));
 
-const showAbsolute = computed(() => showDropdown.value || tooltip.value);
+const showAbsolute = computed(() => Boolean(showDropdown.value || tooltip.value));
 
 const tooltipProps = computed(() => ({
   placement: 'right' as const,
@@ -95,6 +95,8 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
     :class="ui.item"
     v-bind="forwardedProps"
     :data-level="level"
+    :disabled-toggle="showAbsolute"
+    :disabled-select="showAbsolute"
     :style="itemStyle"
     v-on="listeners"
   >
@@ -124,7 +126,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         @select="onActionSelect"
       >
         <template #trigger>
-          <ButtonIcon icon="lucide:ellipsis" :size="size" :class="ui.itemAction" @click.stop />
+          <ButtonIcon v-if="!collapsed" icon="lucide:ellipsis" :size="size" :class="ui.itemAction" @click.stop />
         </template>
       </DropdownMenu>
       <slot name="trailing" />
@@ -148,6 +150,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         :items="children ?? []"
         :disabled="disabled"
         :size="size"
+        :data-menu="label"
         @select="onDropdownMenuSelect"
       >
         <template #trigger>
