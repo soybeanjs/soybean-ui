@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.5-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.4...v0.0.5-beta.1) (2025-11-19)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **valibot**: dynamically import safeParseAsync for improved performance &nbsp;-&nbsp; by @soybeanjs [<samp>(4ccc6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4ccc64d3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.4](https://github.com/soybeanjs/soybean-ui/compare/v0.0.3...v0.0.4) (2025-11-19)
 
 ### &nbsp;&nbsp;&nbsp;📖 Documentation
