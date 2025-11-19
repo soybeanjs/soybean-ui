@@ -146,30 +146,10 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
         if (onOpenAutoFocus) {
           container.removeEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
         }
-
-        // We hit a react bug (fixed in v17) with focusing in unmount.
-        // We need to delay the focus a little to get around it for now.
-        // See: https://github.com/facebook/react/issues/17894
-        const unmountEvent = new CustomEvent(AUTOFOCUS_ON_CLOSE, AUTOFOCUS_EVENT_OPTIONS);
         if (onCloseAutoFocus) {
-          container.addEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
+          container.removeEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
         }
-        container.dispatchEvent(unmountEvent);
-
-        const timerId = window.setTimeout(() => {
-          if (!unmountEvent.defaultPrevented) {
-            focus(previouslyFocusedElement ?? document.body, { select: true });
-          }
-
-          // we need to remove the listener after we `dispatchEvent`
-          if (onCloseAutoFocus) {
-            container.removeEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
-          }
-
-          focusScopesStack.remove(focusScope);
-
-          window.clearTimeout(timerId);
-        }, 0);
+        focusScopesStack.remove(focusScope);
       });
     });
   }
