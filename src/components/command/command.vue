@@ -120,7 +120,7 @@ provideCommandExtraThemeContext({
       </template>
     </ListboxFilter>
     <ListboxContent v-bind="listProps">
-      <div v-if="!filteredItems.length && searchTerm" :class="ui.empty">
+      <div v-if="!filteredItems.length" :class="ui.empty">
         <slot name="empty">{{ emptyLabel }}</slot>
       </div>
       <SCommandOption
