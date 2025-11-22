@@ -44,6 +44,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/components/': RouteRecordInfo<
+      '/components/',
+      '/components',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/components/[name]': RouteRecordInfo<
       '/components/[name]',
       '/components/:name',
@@ -51,9 +58,23 @@ declare module 'vue-router/auto-routes' {
       { name: ParamValue<false> },
       | never
     >,
-    '/components/button/': RouteRecordInfo<
-      '/components/button/',
-      '/components/button',
+    '/overview/': RouteRecordInfo<
+      '/overview/',
+      '/overview',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/overview/introduction': RouteRecordInfo<
+      '/overview/introduction',
+      '/overview/introduction',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/overview/quick-start': RouteRecordInfo<
+      '/overview/quick-start',
+      '/overview/quick-start',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -89,15 +110,33 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/components/index.vue': {
+      routes:
+        | '/components/'
+      views:
+        | never
+    }
     'src/pages/components/[name].vue': {
       routes:
         | '/components/[name]'
       views:
         | never
     }
-    'src/pages/components/button/index.md': {
+    'src/pages/overview/index.vue': {
       routes:
-        | '/components/button/'
+        | '/overview/'
+      views:
+        | never
+    }
+    'src/pages/overview/introduction.md': {
+      routes:
+        | '/overview/introduction'
+      views:
+        | never
+    }
+    'src/pages/overview/quick-start.md': {
+      routes:
+        | '/overview/quick-start'
       views:
         | never
     }

@@ -66,7 +66,7 @@ export default defineConfig({
           await Shiki({
             defaultColor: false,
             themes: {
-              light: 'one-dark-pro',
+              light: 'one-light',
               dark: 'one-dark-pro'
             }
           })

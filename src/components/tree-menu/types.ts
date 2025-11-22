@@ -2,6 +2,7 @@ import type { ComputedRef, ShallowRef } from 'vue';
 import type {
   ClassValue,
   LinkProps,
+  PropsToContext,
   TreeItemEmits,
   TreeItemProps,
   TreeRootEmits,
@@ -90,13 +91,14 @@ export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData
   badgeProps?: Omit<BadgeProps, 'content'>;
   tagProps?: Omit<TagProps, 'content'>;
   actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
+  showLinkIcon?: boolean;
 }
 
 export type TreeMenuEmits = TreeRootEmits<false> & {
   'update:collapsed': [value: boolean];
 };
 
-export interface TreeMenuContextParams {
+export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'showLinkIcon'> {
   collapsed: ShallowRef<boolean | undefined>;
   size?: ComputedRef<ThemeSize>;
 }

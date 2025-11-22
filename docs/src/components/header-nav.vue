@@ -18,8 +18,7 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     label: t('layout.header.docs'),
     icon: 'lucide:book-open',
     linkProps: {
-      href: '#',
-      target: '_self',
+      to: '/overview',
       activeClass: 'text-primary font-semibold dark:text-primary'
     }
   },
@@ -28,7 +27,7 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     label: t('layout.header.components'),
     icon: 'lucide:layout-grid',
     linkProps: {
-      to: '/components/button',
+      to: '/components',
       activeClass: 'text-primary font-semibold dark:text-primary'
     }
   }

@@ -11,7 +11,7 @@ const drawerVisible = shallowRef(false);
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
+    class="fixed top-0 left-0 right-0 z-50 h-[--app-header] bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
   >
     <div class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto h-full">
       <div class="flex items-center gap-8">

@@ -3,6 +3,7 @@ import { computed, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { TreeRoot } from '@soybeanjs/headless';
 import { useControllableState, useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
@@ -81,7 +82,8 @@ const size = computed(() => props.size ?? 'md');
 
 provideTreeMenuContext({
   collapsed,
-  size
+  size,
+  ...transformPropsToContext(props, ['showLinkIcon'])
 });
 
 provideTreeMenuThemeContext({

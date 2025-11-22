@@ -26,7 +26,7 @@ const attrs = useAttrs();
 
 const listeners = useForwardListeners(emit);
 
-const { size, collapsed } = useTreeMenuContext('TreeMenuItem');
+const { size, collapsed, showLinkIcon } = useTreeMenuContext('TreeMenuItem');
 
 const { ui } = useTreeMenuThemeContext('TreeMenuItem');
 
@@ -116,7 +116,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </Badge>
         <span v-else :class="ui.itemLabel">{{ label }}</span>
       </slot>
-      <Icon v-if="isLink" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+      <Icon v-if="isLink && showLinkIcon" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
       <Tag v-if="tag" v-bind="tagProps" :size="size" :content="tag" :class="ui.itemTag" />
       <DropdownMenu
         v-if="actions?.length"

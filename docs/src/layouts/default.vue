@@ -1,17 +1,11 @@
-<script setup lang="ts">
-import AppHeader from '@/components/app-header.vue';
-const { t } = useI18n();
-
-useHead({
-  title: () => t('layout.default')
-});
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="h-full pt-16 p-4 text-sm">
+  <div class="[--app-header:3.75rem] h-full pt-[calc(var(--app-header)+1rem)] text-sm">
     <AppHeader />
-    <SCard :title="t('layout.default')" class="h-full">
-      <RouterView />
-    </SCard>
+    <div class="fixed top-[--app-header] left-0 w-50 h-[calc(100vh-var(--app-header))]">
+      <SiderMenu />
+    </div>
+    <RouterView />
   </div>
 </template>

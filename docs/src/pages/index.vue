@@ -67,7 +67,7 @@ const features = computed(() => [
         </div>
 
         <div class="flex flex-wrap gap-6 justify-center mb-24">
-          <SButtonLink to="/components/button" size="lg" variant="solid" shape="rounded" class="group w-45">
+          <SButtonLink to="/overview/quick-start" size="lg" variant="solid" shape="rounded" class="group w-45">
             {{ t('components.home.actions.start') }}
             <SIcon icon="lucide:arrow-right" class="group-hover:translate-x-1 transition-transform" />
           </SButtonLink>
