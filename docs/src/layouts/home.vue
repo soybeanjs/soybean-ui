@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppHeader from '@/components/app-header.vue';
+</script>
 
 <template>
   <div class="relative h-full text-sm">
-    <ToolBar class="absolute top-5 right-5 z-50" />
+    <AppHeader />
     <RouterView />
   </div>
 </template>

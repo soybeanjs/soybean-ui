@@ -19,6 +19,13 @@ layout:
   default: 默认布局
   home: 首页布局
   about: 关于布局
+  header:
+    search: 搜索文档...
+    docs: 文档
+    components: 组件
+    version: 版本
+    github: GitHub
+    theme_language: 主题 / 语言
 components:
   common:
     demo: 演示

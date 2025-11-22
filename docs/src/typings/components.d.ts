@@ -12,15 +12,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AppHeader: typeof import('./../components/app-header.vue')['default']
     CodeBlock: typeof import('./../components/code-block.vue')['default']
     DemoGallery: typeof import('./../components/demo-gallery.vue')['default']
     LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SButton: typeof import('@soybeanjs/ui')['SButton']
     SButtonIcon: typeof import('@soybeanjs/ui')['SButtonIcon']
     SButtonLink: typeof import('@soybeanjs/ui')['SButtonLink']
     SCard: typeof import('@soybeanjs/ui')['SCard']
     SConfigProvider: typeof import('@soybeanjs/ui')['SConfigProvider']
+    SDrawer: typeof import('@soybeanjs/ui')['SDrawer']
     SDropdownMenuRadio: typeof import('@soybeanjs/ui')['SDropdownMenuRadio']
     SIcon: typeof import('@soybeanjs/ui')['SIcon']
     SSwitch: typeof import('@soybeanjs/ui')['SSwitch']
@@ -31,15 +34,18 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const AppHeader: typeof import('./../components/app-header.vue')['default']
   const CodeBlock: typeof import('./../components/code-block.vue')['default']
   const DemoGallery: typeof import('./../components/demo-gallery.vue')['default']
   const LocaleToggler: typeof import('./../components/locale-toggler.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
+  const SButton: typeof import('@soybeanjs/ui')['SButton']
   const SButtonIcon: typeof import('@soybeanjs/ui')['SButtonIcon']
   const SButtonLink: typeof import('@soybeanjs/ui')['SButtonLink']
   const SCard: typeof import('@soybeanjs/ui')['SCard']
   const SConfigProvider: typeof import('@soybeanjs/ui')['SConfigProvider']
+  const SDrawer: typeof import('@soybeanjs/ui')['SDrawer']
   const SDropdownMenuRadio: typeof import('@soybeanjs/ui')['SDropdownMenuRadio']
   const SIcon: typeof import('@soybeanjs/ui')['SIcon']
   const SSwitch: typeof import('@soybeanjs/ui')['SSwitch']

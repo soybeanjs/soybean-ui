@@ -19,6 +19,13 @@ layout:
   default: Default Layout
   home: Home Layout
   about: About Layout
+  header:
+    search: Search documentation...
+    docs: Docs
+    components: Components
+    version: Version
+    github: GitHub
+    theme_language: Theme / Language
 components:
   common:
     demo: Demos
