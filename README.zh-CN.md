@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://github.com/soybeanjs/soybean-ui">
+    <img src="./public/favicon.svg" alt="Logo" width="150" />
+  </a>
+</p>
+
 # SoybeanUI
 
 [English](./README.md) | 中文
