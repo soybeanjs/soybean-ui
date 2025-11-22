@@ -59,7 +59,7 @@ function getDelay(index: number) {
           :initial="{ opacity: 0, scale: 0.5 }"
           :animate="{ opacity: 1, scale: 1 }"
           :transition="{ duration: 0.8, ease: 'easeOut' }"
-          class="my-4 inline-block relative z-20"
+          class="lg:!mt-4 mt-28 mb-4 inline-block relative z-20"
         >
           <Motion :animate="{ y: [0, -20, 0] }" :transition="{ duration: 2, repeat: Infinity, ease: 'easeInOut' }">
             <div class="group relative">
