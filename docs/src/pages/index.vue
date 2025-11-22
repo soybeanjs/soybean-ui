@@ -130,7 +130,7 @@ function getDelay(index: number) {
             :initial="{ opacity: 0, y: 20 }"
             :animate="{ opacity: 1, y: 0 }"
             :transition="getDelay(index)"
-            class="group bg-white/40 dark:bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-white/50 dark:border-white/10 shadow-lg shadow-gray-200/20 dark:shadow-none hover:bg-white/60 dark:hover:bg-white/10 hover:border-white/80 dark:hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+            class="group bg-white/40 dark:bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-border shadow-lg shadow-gray-200/20 dark:shadow-none hover:bg-white/60 dark:hover:bg-white/10 hover:border-white/80 dark:hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
           >
             <div class="text-3xl mb-4 p-3 rounded-xl bg-gray-50 dark:bg-white/5 w-fit" :class="feature.class">
               <SIcon :icon="feature.icon" />
