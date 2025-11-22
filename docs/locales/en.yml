@@ -25,3 +25,22 @@ components:
   button:
     title: Button
     desc: Button component
+  home:
+    title: Soybean UI
+    description: A modern, headless-first UI component library for Vue 3. Crafted for performance, accessibility, and developer experience.
+    actions:
+      start: Get Started
+      github: GitHub
+    features:
+      accessible:
+        title: Accessible
+        desc: Follows WAI-ARIA patterns for accessibility.
+      headless:
+        title: Headless
+        desc: Logic and styles are separated.
+      type-safe:
+        title: Type Safe
+        desc: Written in TypeScript with full type support.
+      customizable:
+        title: Customizable
+        desc: Built with UnoCSS and tailwind-variants for easy theming.

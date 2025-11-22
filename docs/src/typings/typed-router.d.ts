@@ -51,6 +51,13 @@ declare module 'vue-router/auto-routes' {
       { name: ParamValue<false> },
       | never
     >,
+    '/components/button/': RouteRecordInfo<
+      '/components/button/',
+      '/components/button',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/home': RouteRecordInfo<
       '/home',
       '/home',
@@ -92,6 +99,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/components/[name].vue': {
       routes:
         | '/components/[name]'
+      views:
+        | never
+    }
+    'src/pages/components/button/index.md': {
+      routes:
+        | '/components/button/'
       views:
         | never
     }

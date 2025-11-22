@@ -25,3 +25,22 @@ components:
   button:
     title: 按钮
     desc: 按钮组件
+  home:
+    title: Soybean UI
+    description: 一个现代化的、无头优先的 Vue 3 UI 组件库。专为性能、可访问性和开发体验而打造。
+    actions:
+      start: 开始使用
+      github: GitHub
+    features:
+      accessible:
+        title: 可访问性
+        desc: 遵循 WAI-ARIA 模式，确保无障碍访问。
+      headless:
+        title: 无头组件
+        desc: 逻辑与样式分离，提供最大的灵活性。
+      type-safe:
+        title: 类型安全
+        desc: 使用 TypeScript 编写，提供完整的类型支持。
+      customizable:
+        title: 高度可定制
+        desc: 基于 UnoCSS 和 tailwind-variants 构建，轻松定制主题。
