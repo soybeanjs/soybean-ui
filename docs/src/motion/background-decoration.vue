@@ -64,7 +64,7 @@ const particles = computed(() => {
 </script>
 
 <template>
-  <div class="absolute inset-0 overflow-hidden pointer-events-none select-none">
+  <div class="bg-decoration absolute inset-0 overflow-hidden pointer-events-none select-none">
     <!-- Grid Background -->
     <div
       class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
@@ -74,7 +74,7 @@ const particles = computed(() => {
     <div
       v-for="(orb, index) in orbs"
       :key="index"
-      class="absolute rounded-full blur-[100px]"
+      class="absolute rounded-full blur-[100px] will-change-transform"
       :class="[orb.size, orb.color]"
       :style="{
         left: `${(index + 1) * 20}%`,
@@ -92,9 +92,33 @@ const particles = computed(() => {
           top: `${particle.top}%`,
           animationDelay: `${particle.delay}ms`
         }"
-        class="absolute rounded-full animate-ping"
+        class="absolute rounded-full animate-ping will-change-transform"
         :class="[particle.color, particle.size]"
       />
     </div>
   </div>
 </template>
+
+<style scoped>
+.bg-decoration {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 移动端优化：减少初始渲染闪烁 */
+@media (max-width: 768px) {
+  .bg-decoration {
+    animation: fadeIn 0.5s ease-out forwards;
+    will-change: opacity;
+  }
+}
+</style>

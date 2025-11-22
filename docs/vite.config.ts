@@ -95,6 +95,7 @@ export default defineConfig({
     noExternal: ['workbox-window', /vue-i18n/]
   },
   server: {
+    host: '0.0.0.0',
     port: 5174,
     open: true
   }
