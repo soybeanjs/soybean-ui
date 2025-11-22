@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppHeader from '@/components/app-header.vue';
 const { t } = useI18n();
 
 useHead({
@@ -7,11 +8,9 @@ useHead({
 </script>
 
 <template>
-  <div class="h-full p-4">
+  <div class="h-full pt-16 p-4">
+    <AppHeader />
     <SCard :title="t('layout.default')" class="h-full">
-      <template #extra>
-        <ToolBar />
-      </template>
       <RouterView />
     </SCard>
   </div>
