@@ -1,41 +1,66 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v';
+import { computed } from 'vue';
 
 const orbs = [
   {
     size: 'w-[500px] h-[500px]',
-    color: 'bg-blue-400/20 dark:bg-blue-600/20',
-    initial: { x: -100, y: -100 },
-    animate: {
-      x: [0, 100, -50, 0],
-      y: [0, -50, 100, 0],
-      scale: [1, 1.2, 0.9, 1]
-    },
-    duration: 20
+    color: 'bg-blue-400/20 dark:bg-blue-600/20'
   },
   {
     size: 'w-[400px] h-[400px]',
-    color: 'bg-purple-400/20 dark:bg-purple-600/20',
-    initial: { x: 400, y: 200 },
-    animate: {
-      x: [0, -100, 50, 0],
-      y: [0, 100, -50, 0],
-      scale: [1, 0.8, 1.1, 1]
-    },
-    duration: 25
+    color: 'bg-purple-400/20 dark:bg-purple-600/20'
   },
   {
     size: 'w-[300px] h-[300px]',
-    color: 'bg-cyan-400/20 dark:bg-cyan-600/20',
-    initial: { x: 100, y: 400 },
-    animate: {
-      x: [0, 50, -100, 0],
-      y: [0, -100, 50, 0],
-      scale: [1, 1.1, 0.9, 1]
-    },
-    duration: 18
+    color: 'bg-cyan-400/20 dark:bg-cyan-600/20'
   }
 ];
+
+// Tech Particles 配置
+const particleColors = [
+  'bg-primary',
+  'bg-purple-500',
+  'bg-cyan-500',
+  'bg-pink-500',
+  'bg-indigo-500',
+  'bg-teal-500',
+  'bg-rose-500',
+  'bg-amber-500',
+  'bg-emerald-500'
+];
+
+const particleSizes = ['w-1 h-1', 'w-1.5 h-1.5', 'w-2 h-2'];
+
+// 生成9个粒子，使用3x3网格均匀分布
+const gridCols = 3;
+const gridRows = 3;
+const totalParticles = gridCols * gridRows;
+
+const particles = computed(() => {
+  return Array.from({ length: totalParticles }, (_, index) => {
+    const col = index % gridCols;
+    const row = Math.floor(index / gridCols);
+
+    // 计算均匀分布的位置（留出边距，避免太靠边）
+    const leftPercent = 10 + col * (80 / (gridCols - 1));
+    const topPercent = 10 + row * (80 / (gridRows - 1));
+
+    // 随机选择颜色和大小
+    const color = particleColors[index % particleColors.length];
+    const size = particleSizes[index % particleSizes.length];
+
+    // 延迟时间（0-2000ms之间，每个粒子间隔约200ms）
+    const delay = index * 200;
+
+    return {
+      color,
+      size,
+      left: leftPercent,
+      top: topPercent,
+      delay
+    };
+  });
+});
 </script>
 
 <template>
@@ -46,16 +71,9 @@ const orbs = [
     />
 
     <!-- Floating Orbs -->
-    <Motion
+    <div
       v-for="(orb, index) in orbs"
       :key="index"
-      :initial="orb.initial"
-      :animate="orb.animate"
-      :transition="{
-        duration: orb.duration,
-        repeat: Infinity,
-        ease: 'linear'
-      }"
       class="absolute rounded-full blur-[100px]"
       :class="[orb.size, orb.color]"
       :style="{
@@ -66,9 +84,17 @@ const orbs = [
 
     <!-- Tech Particles / Accents -->
     <div class="absolute inset-0 opacity-30 dark:opacity-50">
-      <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-ping" />
-      <div class="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-purple-500 rounded-full animate-ping delay-700" />
-      <div class="absolute bottom-1/4 left-1/2 w-1 h-1 bg-cyan-500 rounded-full animate-ping delay-1000" />
+      <div
+        v-for="(particle, index) in particles"
+        :key="index"
+        :style="{
+          left: `${particle.left}%`,
+          top: `${particle.top}%`,
+          animationDelay: `${particle.delay}ms`
+        }"
+        class="absolute rounded-full animate-ping"
+        :class="[particle.color, particle.size]"
+      />
     </div>
   </div>
 </template>

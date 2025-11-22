@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { SButton, SDrawer, SIcon } from '@soybeanjs/ui';
 import { useI18n } from 'vue-i18n';
+import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const router = useRouter();
@@ -64,7 +65,7 @@ function goHome() {
         <div
           class="hidden md:block text-xs font-mono text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full"
         >
-          v0.0.1
+          {{ pkg.version }}
         </div>
 
         <!-- Tools -->
