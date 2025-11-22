@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
-import { useDark } from '@vueuse/core';
 import { SIcon } from '@soybeanjs/ui';
 import { useI18n } from 'vue-i18n';
 import BackgroundDecoration from '@/motion/background-decoration.vue';
 
-const router = useRouter();
 const { t } = useI18n();
-const isDark = useDark();
 
 const features = computed(() => [
   {
@@ -64,29 +60,29 @@ const features = computed(() => [
             {{ t('components.home.title') }}
           </h1>
           <p
-            class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
+            class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
           >
             {{ t('components.home.description') }}
           </p>
         </div>
 
         <div class="flex flex-wrap gap-6 justify-center mb-24">
-          <button
-            class="group flex-center gap-2 w-45 px-4 py-2 rounded-full text-center bg-primary text-white font-semibold text-lg hover:bg-primary-600 transition-all shadow-lg hover:shadow-primary/30 active:scale-95 flex items-center"
-            @click="router.push('/components/button')"
-          >
+          <SButtonLink to="/components/button" size="lg" variant="solid" shape="rounded" class="group w-45">
             {{ t('components.home.actions.start') }}
             <SIcon icon="lucide:arrow-right" class="group-hover:translate-x-1 transition-transform" />
-          </button>
-          <a
+          </SButtonLink>
+          <SButtonLink
             href="https://github.com/soybeanjs/soybean-ui"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex-center gap-2 w-45 px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 font-semibold text-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center gap-2"
+            size="lg"
+            variant="pure"
+            shape="rounded"
+            class="group w-45"
           >
-            <SIcon :icon="isDark ? 'skill-icons:github-light' : 'skill-icons:github-dark'" />
+            <SIcon icon="lucide:github" class="group-hover:translate-x-1 transition-transform" />
             {{ t('components.home.actions.github') }}
-          </a>
+          </SButtonLink>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
@@ -96,7 +92,7 @@ const features = computed(() => [
             :style="{ animationDelay: `${index * 0.1 + 0.5}s` }"
             class="feature-card group bg-white/40 dark:bg-white/5 backdrop-blur-xl p-6 rounded-2xl border border-border shadow-lg shadow-gray-200/20 dark:shadow-none hover:bg-white/60 dark:hover:bg-white/10 hover:border-white/80 dark:hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
           >
-            <div class="text-3xl mb-4 p-3 rounded-xl bg-gray-50 dark:bg-white/5 w-fit" :class="feature.class">
+            <div class="text-3xl mb-4 p-3 rounded-xl bg-gray-100 dark:bg-white/5 w-fit" :class="feature.class">
               <SIcon :icon="feature.icon" />
             </div>
             <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">

@@ -20,12 +20,15 @@ layout:
   home: Home Layout
   about: About Layout
   header:
-    search: Search documentation...
+    search: Search documentation
+    search-empty: No related documents found
     docs: Docs
     components: Components
     version: Version
     github: GitHub
-    theme_language: Theme / Language
+    theme: Theme
+    language: Language
+    others: Others
 components:
   common:
     demo: Demos

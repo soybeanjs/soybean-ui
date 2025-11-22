@@ -58,13 +58,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/home': RouteRecordInfo<
-      '/home',
-      '/home',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
   }
 
   /**
@@ -105,12 +98,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/components/button/index.md': {
       routes:
         | '/components/button/'
-      views:
-        | never
-    }
-    'src/pages/home.vue': {
-      routes:
-        | '/home'
       views:
         | never
     }

@@ -20,12 +20,15 @@ layout:
   home: 首页布局
   about: 关于布局
   header:
-    search: 搜索文档...
+    search: 搜索文档
+    search-empty: 没有找到相关文档
     docs: 文档
     components: 组件
     version: 版本
     github: GitHub
-    theme_language: 主题 / 语言
+    theme: 主题
+    language: 语言
+    others: 其他
 components:
   common:
     demo: 演示

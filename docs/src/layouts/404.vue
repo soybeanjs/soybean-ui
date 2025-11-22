@@ -15,7 +15,7 @@ useHead({
 </script>
 
 <template>
-  <div class="h-full p-4">
+  <div class="h-full p-4 text-sm">
     <SCard :title="t('not-found')" class="h-full">
       <template #extra>
         <ToolBar />

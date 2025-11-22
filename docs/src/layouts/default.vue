@@ -8,7 +8,7 @@ useHead({
 </script>
 
 <template>
-  <div class="h-full pt-16 p-4">
+  <div class="h-full pt-16 p-4 text-sm">
     <AppHeader />
     <SCard :title="t('layout.default')" class="h-full">
       <RouterView />
