@@ -1,6 +1,49 @@
 # Changelog
 
 
+## [v0.0.6-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6-beta.1) (2025-11-23)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - enhance header navigation and search functionality with new components &nbsp;-&nbsp; by @soybeanjs [<samp>(ec936)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec936708)
+  - update Vite server configuration and enhance background decoration with fade-in animation &nbsp;-&nbsp; by @soybeanjs [<samp>(e35bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e35bbc7c)
+  - add introduction and quick start documentation, implement sider menu component, and update app header styles &nbsp;-&nbsp; by @soybeanjs [<samp>(fb2e0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb2e0e55)
+- **link**:
+  - enhance slot functionality in link components to pass isHref prop for better context handling &nbsp;-&nbsp; by @soybeanjs [<samp>(d5c7a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d5c7a202)
+- **projects**:
+  - implement navbar for the header section. &nbsp;-&nbsp; by **Azir-11** [<samp>(293bd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/293bdce0)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **command**: remove searchTerm condition from empty state display logic &nbsp;-&nbsp; by @soybeanjs [<samp>(199bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/199bc04e)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **styles**: optimize the responsive design of the homepage logo. &nbsp;-&nbsp; by **Azir-11** [<samp>(12b6d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/12b6d365)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **docs**: remove motion-v dependency and enhance background decoration with particle effects &nbsp;-&nbsp; by @soybeanjs [<samp>(71796)</samp>](https://github.com/soybeanjs/soybean-ui/commit/71796ebd)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: add logo to README files for better branding &nbsp;-&nbsp; by @soybeanjs [<samp>(943d7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/943d7c55)
+- **projects**: add docs home page &nbsp;-&nbsp; by @soybeanjs [<samp>(8d380)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8d380557)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**: remove npm registry url && update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(24126)</samp>](https://github.com/soybeanjs/soybean-ui/commit/24126c5c)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **docs**: update border color for improved UI consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(5fbc9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fbc939f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[Azir-11](mailto:2075125282@qq.com)
+
 ## [v0.0.5](https://github.com/soybeanjs/soybean-ui/compare/v0.0.4...v0.0.5) (2025-11-19)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
