@@ -47,6 +47,7 @@ const { ui } = useNavigationMenuExtraThemeContext('NavigationMenuOption');
   <NavigationMenuItem v-bind="itemProps" :value="item.value">
     <NavigationMenuLink
       v-if="!item.children?.length"
+      v-slot="{ isHref }"
       v-bind="item.linkProps"
       :disabled="item.disabled"
       @select="emit('select', $event)"
@@ -56,7 +57,7 @@ const { ui } = useNavigationMenuExtraThemeContext('NavigationMenuOption');
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" />
         </template>
-        <template #link-icon>
+        <template v-if="isHref" #link-icon>
           <slot name="item-link-icon" :item="item">
             <Icon icon="lucide:arrow-up-right" :class="ui.linkIcon" />
           </slot>

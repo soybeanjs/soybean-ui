@@ -26,7 +26,7 @@ const attrs = useAttrs();
 
 const listeners = useForwardListeners(emit);
 
-const { size, collapsed, showLinkIcon } = useTreeMenuContext('TreeMenuItem');
+const { size, collapsed } = useTreeMenuContext('TreeMenuItem');
 
 const { ui } = useTreeMenuThemeContext('TreeMenuItem');
 
@@ -102,6 +102,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   >
     <component
       :is="as"
+      v-slot="slotProps"
       v-bind="contentProps"
       :class="ui.itemContent"
       :data-link="isLink ? '' : undefined"
@@ -116,7 +117,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </Badge>
         <span v-else :class="ui.itemLabel">{{ label }}</span>
       </slot>
-      <Icon v-if="isLink && showLinkIcon" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+      <Icon v-if="isLink && slotProps?.isHref" icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
       <Tag v-if="tag" v-bind="tagProps" :size="size" :content="tag" :class="ui.itemTag" />
       <DropdownMenu
         v-if="actions?.length"

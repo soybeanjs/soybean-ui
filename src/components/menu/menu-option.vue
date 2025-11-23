@@ -66,12 +66,12 @@ const ui = computed(() => ({ ...themeContext?.ui?.value }));
     :text-value="item.textValue"
     @select="emit('select', item, $event)"
   >
-    <Link v-bind="item.linkProps" :disabled="item.disabled">
+    <Link v-slot="{ isHref }" v-bind="item.linkProps" :disabled="item.disabled">
       <SMenuItemSlot :icon="item.icon" :label="item.label">
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" />
         </template>
-        <template #link-icon>
+        <template v-if="isHref" #link-icon>
           <slot name="item-link-icon" :item="item">
             <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
           </slot>
