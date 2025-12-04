@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SInput } from '@soybeanjs/ui';
+import { SIcon, SInput } from '@soybeanjs/ui';
 
 const value = ref('');
 </script>
@@ -11,7 +11,7 @@ const value = ref('');
     <SInput v-model="value" placeholder="Clearable input" clearable />
     <SInput v-model="value" placeholder="With icon">
       <template #leading>
-        <div class="i-ph-user-bold text-gray-400" />
+        <SIcon icon="lucide:user" class="text-gray-400" />
       </template>
     </SInput>
   </div>
