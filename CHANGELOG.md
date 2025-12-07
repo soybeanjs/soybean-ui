@@ -1,6 +1,37 @@
 # Changelog
 
 
+## [v0.0.6-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.6-beta.1...v0.0.6-beta.2) (2025-12-07)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **header**: replace mobile drawer with popover and adjust layout for improved responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(efb08)</samp>](https://github.com/soybeanjs/soybean-ui/commit/efb08c24)
+- **packages**: modify the width of the page center within the document. &nbsp;-&nbsp; by **Azir-11** [<samp>(a9fa3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a9fa32b8)
+- **tree-menu**: enhance dropdown selection handling and update type definitions for better integration &nbsp;-&nbsp; by @soybeanjs [<samp>(350ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/350edcb4)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **components**: fix input with icon &nbsp;-&nbsp; by @paynezhuang [<samp>(1f2aa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1f2aaaee)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4511f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4511f0d1)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c1182)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c1182272)
+- **package.json**:
+  - add 'unstub' script for resetting stubs &nbsp;-&nbsp; by @soybeanjs [<samp>(2bbd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2bbd4779)
+- **tsconfig**:
+  - update TypeScript configuration with new compiler options and exclude settings &nbsp;-&nbsp; by @soybeanjs [<samp>(e4fcc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e4fcc2fb)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: format code &nbsp;-&nbsp; by @soybeanjs [<samp>(82c4f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/82c4f390)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![paynezhuang](https://github.com/paynezhuang.png?size=48)](https://github.com/paynezhuang)&nbsp;&nbsp;
+[Azir-11](mailto:2075125282@qq.com)
+
 ## [v0.0.6-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6-beta.1) (2025-11-23)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

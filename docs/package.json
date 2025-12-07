@@ -1,7 +1,7 @@
 {
   "name": "@soybeanjs/ui-docs",
   "type": "module",
-  "version": "0.0.6-beta.1",
+  "version": "0.0.6-beta.2",
   "private": true,
   "packageManager": "pnpm@10.24.0",
   "description": "SoybeanUI Docs is a documentation for SoybeanUI. It is designed to be easy to use and understand.",
