@@ -37,6 +37,6 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
 <template>
   <SNavigationMenu
     :items="menus"
-    :ui="{ list: props.orientation === 'vertical' ? 'flex-col items-start' : 'flex-row' }"
+    :ui="{ list: props.orientation === 'vertical' ? 'flex-col items-start' : 'flex-row', item: 'w-full' }"
   />
 </template>

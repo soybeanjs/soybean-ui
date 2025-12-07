@@ -5,6 +5,12 @@ import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { components } from '../../../src/constants/components';
 
+type Emits = {
+  select: [];
+};
+
+const emit = defineEmits<Emits>();
+
 const route = useRoute();
 
 const expanded = ref<string[]>([]);
@@ -61,5 +67,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <STreeMenu v-model:expanded="expanded" :model-value="selected" :items="menus" />
+  <STreeMenu v-model:expanded="expanded" :model-value="selected" :items="menus" @update:model-value="emit('select')" />
 </template>

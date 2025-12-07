@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { shallowRef } from 'vue';
 import { useI18n } from 'vue-i18n';
 import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const { t } = useI18n();
-
-const drawerVisible = shallowRef(false);
 </script>
 
 <template>
   <header
-    class="fixed top-0 left-0 right-0 z-50 h-[--app-header] bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
+    class="fixed top-0 left-0 right-0 z-50 w-100vw h-[--app-header] bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300"
   >
     <div class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto h-full">
       <div class="flex items-center gap-8">
@@ -32,8 +29,8 @@ const drawerVisible = shallowRef(false);
         <SSeparator orientation="vertical" class="h-8 lt-md:!hidden" />
         <ToolBar class="lt-md:!hidden" />
 
-        <!-- Mobile Drawer -->
-        <SDrawer v-model:open="drawerVisible" placement="right">
+        <!-- Mobile -->
+        <SPopover placement="bottom-end">
           <template #trigger>
             <SButtonIcon icon="lucide:menu" class="md:!hidden text-xl" />
           </template>
@@ -43,7 +40,7 @@ const drawerVisible = shallowRef(false);
             <SSeparator />
             <ToolBar />
           </div>
-        </SDrawer>
+        </SPopover>
       </div>
     </div>
   </header>
