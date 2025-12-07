@@ -59,13 +59,13 @@
     "preview": "vite preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release",
-    "reset-stub": "tsx scripts/stub.ts --reset",
     "stub": "tsx scripts/stub.ts",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest watch",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
+    "unstub": "tsx scripts/stub.ts --reset",
     "update-pkg": "soy ncu"
   },
   "dependencies": {
