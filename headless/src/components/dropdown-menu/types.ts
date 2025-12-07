@@ -34,8 +34,10 @@ export interface DropdownMenuRootContextParams extends PropsToContext<DropdownMe
   open: ShallowRef<boolean | undefined>;
 }
 
-export interface DropdownMenuHoverContextParams
-  extends PropsToContext<DropdownMenuRootProps, 'delayDuration' | 'skipDelayDuration'> {
+export interface DropdownMenuHoverContextParams extends PropsToContext<
+  DropdownMenuRootProps,
+  'delayDuration' | 'skipDelayDuration'
+> {
   hoverable: ComputedRef<boolean>;
   open: ShallowRef<boolean | undefined>;
 }

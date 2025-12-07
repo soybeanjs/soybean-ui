@@ -11,8 +11,7 @@ import type {
 import type { CollapsibleRootProps } from '../collapsible/types';
 
 export interface AccordionRootProps<M extends boolean = false>
-  extends SelectionProps<M>,
-    /** @vue-ignore */ HTMLAttributes {
+  extends SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
    *
@@ -56,8 +55,10 @@ export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 
   value: string;
 }
 
-export interface AccordionRootContextParams
-  extends PropsToContext<AccordionRootProps, 'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'> {
+export interface AccordionRootContextParams extends PropsToContext<
+  AccordionRootProps,
+  'collapsible' | 'disabled' | 'orientation' | 'dir' | 'unmountOnHide'
+> {
   rootElement: ShallowRef<HTMLElement | undefined>;
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
   isMultiple: ComputedRef<boolean>;

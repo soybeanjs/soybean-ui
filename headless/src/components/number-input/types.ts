@@ -43,26 +43,25 @@ export interface NumberInputDecrementProps extends PrimitiveProps, /** @vue-igno
   disabled?: boolean;
 }
 
-export interface NumberInputRootContextParams
-  extends PropsToContext<
-    NumberInputRootProps,
-    | 'id'
-    | 'autofocus'
-    | 'disabled'
-    | 'maxlength'
-    | 'minlength'
-    | 'pattern'
-    | 'placeholder'
-    | 'readonly'
-    | 'locale'
-    | 'formatOptions'
-    | 'max'
-    | 'min'
-    | 'step'
-    | 'stepSnapping'
-    | 'disableWheelChange'
-    | 'invertWheelChange'
-  > {
+export interface NumberInputRootContextParams extends PropsToContext<
+  NumberInputRootProps,
+  | 'id'
+  | 'autofocus'
+  | 'disabled'
+  | 'maxlength'
+  | 'minlength'
+  | 'pattern'
+  | 'placeholder'
+  | 'readonly'
+  | 'locale'
+  | 'formatOptions'
+  | 'max'
+  | 'min'
+  | 'step'
+  | 'stepSnapping'
+  | 'disableWheelChange'
+  | 'invertWheelChange'
+> {
   modelValue: ShallowRef<number | null | undefined>;
 }
 

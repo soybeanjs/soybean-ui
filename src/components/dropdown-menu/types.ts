@@ -41,8 +41,8 @@ export type DropdownMenuWrapperEmits = DropdownMenuRootEmits & DropdownMenuConte
 export interface DropdownMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
-> extends DropdownMenuWrapperProps,
-    MenuOptionsProps<T, S> {}
+>
+  extends DropdownMenuWrapperProps, MenuOptionsProps<T, S> {}
 export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = DropdownMenuWrapperEmits &
   MenuOptionsEmits<T>;
 
@@ -50,8 +50,8 @@ export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = Dropd
 export interface DropdownMenuCheckboxProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> extends DropdownMenuWrapperProps,
-    MenuCheckboxOptionsProps<T, S> {}
+>
+  extends DropdownMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {}
 
 export type DropdownMenuCheckboxEmits<
   T extends DefinedValue = DefinedValue,
@@ -62,8 +62,8 @@ export type DropdownMenuCheckboxEmits<
 export interface DropdownMenuRadioProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-> extends DropdownMenuWrapperProps,
-    MenuRadioOptionsProps<T, S> {}
+>
+  extends DropdownMenuWrapperProps, MenuRadioOptionsProps<T, S> {}
 
 export type DropdownMenuRadioEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,

@@ -13,8 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
 
 export interface RadioGroupRootProps<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends FormFieldCommonProps,
-    /** @vue-ignore */ HTMLAttributes {
+  extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the radio item to check. Can be bound as `v-model`. */
   modelValue?: T;
   /**

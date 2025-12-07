@@ -144,8 +144,9 @@ export interface FormSubmitHelper<Values extends FormValues> {
   readonly initialValues: Values;
 }
 
-export interface FormRegister<Values extends FormValues, Name extends Path<Values>>
-  extends FormFieldMeta<PathValue<Values, Name>> {
+export interface FormRegister<Values extends FormValues, Name extends Path<Values>> extends FormFieldMeta<
+  PathValue<Values, Name>
+> {
   value: WritableComputedRef<PathValue<Values, Name>>;
   attrs: ComputedRef<FormFieldAttrs>;
 }
@@ -188,8 +189,10 @@ export interface FormContext<Values extends FormValues> {
   validateField<Name extends Path<Values>>(name: Name): Promise<FormFieldError<PathValue<Values, Name>> | void>;
 }
 
-export interface FormFieldContext<Values extends FormValues>
-  extends Pick<FormContext<Values>, 'register' | 'setFieldValue' | 'setFieldTouched'> {
+export interface FormFieldContext<Values extends FormValues> extends Pick<
+  FormContext<Values>,
+  'register' | 'setFieldValue' | 'setFieldTouched'
+> {
   getFieldValue<Name extends Path<Values>>(
     name: MaybeRefOrGetter<Name>
   ): WritableComputedRef<PathValue<Values, Name>, PathValue<Values, Name>>;

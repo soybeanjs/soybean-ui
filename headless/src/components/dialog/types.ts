@@ -42,15 +42,11 @@ export interface DialogTriggerProps extends PrimitiveProps, /** @vue-ignore */ B
 export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 export interface DialogContentImplProps
-  extends PrimitiveProps,
-    TrapFocusProps,
-    DismissableLayerProps,
-    /** @vue-ignore */ HTMLAttributes {}
+  extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
 export type DialogContentImplEmits = DismissableLayerEmits & FocusScopeEmits;
 
 export interface DialogContentProps
-  extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>,
-    ForceMountProps {}
+  extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>, ForceMountProps {}
 export type DialogContentEmits = DialogContentImplEmits;
 
 export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}

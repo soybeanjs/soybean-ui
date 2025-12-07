@@ -42,7 +42,8 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
 export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
-  extends Omit<
+  extends
+    Omit<
       RovingFocusGroupProps,
       'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus' | 'as' | 'asChild'
     >,

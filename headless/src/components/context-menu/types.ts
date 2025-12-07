@@ -18,8 +18,10 @@ export type ContextMenuContentProps = Omit<
 >;
 export type ContextMenuContentEmits = MenuContentEmits;
 
-export interface ContextMenuRootContextParams
-  extends PropsToContext<ContextMenuRootProps, 'dir' | 'modal' | 'pressOpenDelay'> {
+export interface ContextMenuRootContextParams extends PropsToContext<
+  ContextMenuRootProps,
+  'dir' | 'modal' | 'pressOpenDelay'
+> {
   open: ShallowRef<boolean | undefined>;
 }
 

@@ -16,9 +16,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
 
 export interface ListboxRootProps<M extends boolean = false>
-  extends SelectionProps<M>,
-    FormFieldCommonProps,
-    /** @vue-ignore */ HTMLAttributes {
+  extends SelectionProps<M>, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The orientation of the listbox. <br>Mainly so arrow navigation is done accordingly (left & right vs. up & down) */
   orientation?: DataOrientation;
   /**
@@ -105,11 +103,10 @@ export type ListboxVirtualizerSlots = {
   default: (props: ListboxVirtualizerSlotsProps) => any;
 };
 
-export interface ListboxRootContextParams
-  extends PropsToContext<
-    ListboxRootProps,
-    'dir' | 'orientation' | 'disabled' | 'highlightOnHover' | 'selectionBehavior'
-  > {
+export interface ListboxRootContextParams extends PropsToContext<
+  ListboxRootProps,
+  'dir' | 'orientation' | 'disabled' | 'highlightOnHover' | 'selectionBehavior'
+> {
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
   isMultiple: ComputedRef<boolean>;
   onHighlight: (item: CollectionItemData<ListboxCollectionItemData> | undefined) => void;

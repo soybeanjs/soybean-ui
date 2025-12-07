@@ -65,8 +65,11 @@ export type TreeMenuItemEmits = TreeItemEmits & {
   selectDropdown: [value: string];
 };
 
-export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData>
-  extends TreeRootProps<T, string, false> {
+export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData> extends TreeRootProps<
+  T,
+  string,
+  false
+> {
   size?: ThemeSize;
   ui?: Partial<TreeMenuUi>;
   /**

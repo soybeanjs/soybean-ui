@@ -65,7 +65,8 @@ export interface ToastProps extends ToastRootProps {
 export type ToastEmits = ToastRootEmits;
 
 export interface UseToastOptions
-  extends Pick<
+  extends
+    Pick<
       ToastProps,
       'size' | 'ui' | 'type' | 'color' | 'showIcon' | 'duration' | 'forceMount' | 'liveType' | 'position'
     >,
@@ -88,7 +89,8 @@ export interface UseToastReturn extends Record<ToastType, (options: Omit<UseToas
   clear: () => void;
 }
 
-export interface ToastProviderContextParams
-  extends PropsToContext<Required<Pick<ToastProviderProps, 'size' | 'ui' | 'limits' | 'removeDelay' | 'position'>>> {}
+export interface ToastProviderContextParams extends PropsToContext<
+  Required<Pick<ToastProviderProps, 'size' | 'ui' | 'limits' | 'removeDelay' | 'position'>>
+> {}
 
 export type { ToastPosition };

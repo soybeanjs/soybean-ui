@@ -26,8 +26,10 @@ export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps
 
 export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
-export interface CollapsibleRootContextParams
-  extends PropsToContext<CollapsibleRootProps, 'disabled' | 'unmountOnHide'> {
+export interface CollapsibleRootContextParams extends PropsToContext<
+  CollapsibleRootProps,
+  'disabled' | 'unmountOnHide'
+> {
   open: Ref<boolean | undefined>;
 }
 

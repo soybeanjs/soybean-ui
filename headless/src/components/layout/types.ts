@@ -78,8 +78,10 @@ export interface LayoutTriggerProps extends PrimitiveProps, /* @vue-ignore */ HT
 
 export interface LayoutMobileProps extends /* @vue-ignore */ HTMLAttributes {}
 
-export interface LayoutRootContextParams
-  extends PropsToContext<LayoutRootProps, 'sidebarWidth' | 'collapsedSidebarWidth'> {
+export interface LayoutRootContextParams extends PropsToContext<
+  LayoutRootProps,
+  'sidebarWidth' | 'collapsedSidebarWidth'
+> {
   open: ShallowRef<boolean | undefined>;
   isMobile: ComputedRef<boolean>;
   mobileOpen: ShallowRef<boolean>;

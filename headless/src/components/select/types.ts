@@ -16,8 +16,7 @@ import type { PopperAnchorProps, PopperContentEmits, PopperContentProps } from '
 
 // SelectRoot
 export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
-  extends SelectionProps<M, T>,
-    FormFieldCommonProps {
+  extends SelectionProps<M, T>, FormFieldCommonProps {
   /** The controlled open state of the Select. Can be bind as `v-model:open`. */
   open?: boolean;
   /** The open state of the select when it is initially rendered. Use when you do not need to control its open state. */
@@ -177,8 +176,10 @@ export interface BubbleSelectProps {
   value?: any;
 }
 
-export interface SelectRootContextParams
-  extends PropsToContext<SelectRootProps, 'dir' | 'autocomplete' | 'disabled' | 'required'> {
+export interface SelectRootContextParams extends PropsToContext<
+  SelectRootProps,
+  'dir' | 'autocomplete' | 'disabled' | 'required'
+> {
   open: ShallowRef<boolean | undefined>;
   modelValue: ShallowRef<MaybeArray<DefinedValue> | undefined>;
   onModelValueChange: (value: DefinedValue) => void;
@@ -187,8 +188,7 @@ export interface SelectRootContextParams
 }
 
 export interface SelectContentContextParams
-  extends PropsToContext<SelectContentProps, 'position'>,
-    Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
+  extends PropsToContext<SelectContentProps, 'position'>, Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
   search: ShallowRef<string>;
 }
 

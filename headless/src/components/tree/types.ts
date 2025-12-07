@@ -31,8 +31,8 @@ export interface TreeRootProps<
   T extends TreeItemData = TreeItemData,
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
   M extends boolean = boolean
-> extends PrimitiveProps,
-    /** @vue-ignore */ HTMLAttributes {
+>
+  extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U;
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
@@ -92,8 +92,7 @@ export type FlattenedItem<T extends TreeItemData> = {
 };
 
 export interface TreeItemProps
-  extends PrimitiveProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
   value: string;
   level: number;
   /** When `true`, prevents the user from selecting or toggling the item. */
@@ -115,8 +114,8 @@ export interface TreeVirtualizerRootProps<
   T extends TreeItemData = TreeItemData,
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
   M extends boolean = boolean
-> extends TreeRootProps<T, U, M>,
-    Omit<VirtualizerRootProps<FlattenedItem<T>>, 'dir' | 'items'> {}
+>
+  extends TreeRootProps<T, U, M>, Omit<VirtualizerRootProps<FlattenedItem<T>>, 'dir' | 'items'> {}
 
 export type TreeVirtualizerRootEmits<M extends boolean | undefined> = TreeRootEmits<M>;
 
@@ -124,11 +123,10 @@ export interface TreeVirtualizerItemProps extends TreeItemProps, VirtualizerItem
 
 export type TreeVirtualizerItemEmits = TreeItemEmits;
 
-export interface TreeRootContextParams
-  extends PropsToContext<
-    TreeRootProps,
-    'items' | 'dir' | 'multiple' | 'disabled' | 'selectionBehavior' | 'propagateSelect' | 'bubbleSelect'
-  > {
+export interface TreeRootContextParams extends PropsToContext<
+  TreeRootProps,
+  'items' | 'dir' | 'multiple' | 'disabled' | 'selectionBehavior' | 'propagateSelect' | 'bubbleSelect'
+> {
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
   expanded: ShallowRef<string[]>;
   selectedKeys: ComputedRef<string[]>;

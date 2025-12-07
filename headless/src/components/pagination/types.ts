@@ -37,11 +37,10 @@ export interface PaginationEllipsisProps extends /** @vue-ignore */ HTMLAttribut
 
 export interface PaginationButtonProps extends /** @vue-ignore */ ButtonHTMLAttributes {}
 
-export interface PaginationRootContextParams
-  extends PropsToContext<
-    Required<PaginationRootProps>,
-    'total' | 'siblingCount' | 'disabled' | 'showEdges' | 'itemsPerPage'
-  > {
+export interface PaginationRootContextParams extends PropsToContext<
+  Required<PaginationRootProps>,
+  'total' | 'siblingCount' | 'disabled' | 'showEdges' | 'itemsPerPage'
+> {
   page: ShallowRef<number>;
 }
 

@@ -32,9 +32,7 @@ export interface ToastProviderProps {
 export type ToastLiveType = 'foreground' | 'background';
 
 export interface ToastRootProps
-  extends ForceMountProps,
-    PrimitiveProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'onPause'> {
+  extends ForceMountProps, PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onPause'> {
   /**
    * Control the sensitivity of the toast for accessibility purposes.
    *

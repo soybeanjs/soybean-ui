@@ -52,8 +52,9 @@ export interface RadioCardProps extends RadioProps {
   description?: string;
 }
 
-export interface RadioCardGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends RadioGroupOptionData<T> {
+export interface RadioCardGroupOptionData<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue
+> extends RadioGroupOptionData<T> {
   icon?: string;
   description?: string;
 }

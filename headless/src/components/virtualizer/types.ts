@@ -8,18 +8,16 @@ import type {
 import type { PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive';
 
-export interface VirtualizerOptions
-  extends Omit<
-    PartialKeys<
-      _VirtualizerOptions<HTMLElement, Element>,
-      'observeElementRect' | 'observeElementOffset' | 'scrollToFn' | 'estimateSize'
-    >,
-    'count' | 'getScrollElement'
-  > {}
+export interface VirtualizerOptions extends Omit<
+  PartialKeys<
+    _VirtualizerOptions<HTMLElement, Element>,
+    'observeElementRect' | 'observeElementOffset' | 'scrollToFn' | 'estimateSize'
+  >,
+  'count' | 'getScrollElement'
+> {}
 
 export interface VirtualizerRootProps<T extends Record<string, any> = Record<string, any>>
-  extends PrimitiveProps,
-    /** @vue-ignore */ HTMLAttributes {
+  extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * The height of the virtualizer root
    */

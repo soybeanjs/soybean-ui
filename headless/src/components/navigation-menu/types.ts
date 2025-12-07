@@ -116,17 +116,16 @@ export interface NavigationMenuViewportPosition {
   top: number;
 }
 
-export interface NavigationMenuRootContextParams
-  extends PropsToContext<
-    Required<NavigationMenuRootProps>,
-    | 'dir'
-    | 'unmountOnHide'
-    | 'skipDelayDuration'
-    | 'delayDuration'
-    | 'disableClickTrigger'
-    | 'disableHoverTrigger'
-    | 'disablePointerLeaveClose'
-  > {
+export interface NavigationMenuRootContextParams extends PropsToContext<
+  Required<NavigationMenuRootProps>,
+  | 'dir'
+  | 'unmountOnHide'
+  | 'skipDelayDuration'
+  | 'delayDuration'
+  | 'disableClickTrigger'
+  | 'disableHoverTrigger'
+  | 'disablePointerLeaveClose'
+> {
   isRoot: boolean;
   modelValue: ShallowRef<string>;
 }

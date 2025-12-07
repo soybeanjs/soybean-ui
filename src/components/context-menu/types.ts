@@ -41,16 +41,16 @@ export type ContextMenuWrapperEmits = ContextMenuRootEmits & ContextMenuContentE
 export interface ContextMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
-> extends ContextMenuWrapperProps,
-    MenuOptionsProps<T, S> {}
+>
+  extends ContextMenuWrapperProps, MenuOptionsProps<T, S> {}
 export type ContextMenuEmits<T extends MenuOptionData = MenuOptionData> = ContextMenuWrapperEmits & MenuOptionsEmits<T>;
 
 // Menu Checkbox
 export interface ContextMenuCheckboxProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> extends ContextMenuWrapperProps,
-    MenuCheckboxOptionsProps<T, S> {}
+>
+  extends ContextMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {}
 
 export type ContextMenuCheckboxEmits<
   T extends DefinedValue = DefinedValue,
@@ -61,8 +61,8 @@ export type ContextMenuCheckboxEmits<
 export interface ContextMenuRadioProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-> extends ContextMenuWrapperProps,
-    MenuRadioOptionsProps<T, S> {}
+>
+  extends ContextMenuWrapperProps, MenuRadioOptionsProps<T, S> {}
 
 export type ContextMenuRadioEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,

@@ -30,10 +30,7 @@ export type MenuRootEmits = DialogRootEmits;
 
 // MenuContentImpl
 export interface MenuContentImplProps
-  extends PopperContentProps,
-    TrapFocusProps,
-    DismissableLayerProps,
-    Pick<RovingFocusGroupProps, 'loop'> {}
+  extends PopperContentProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {}
 export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pick<RovingFocusGroupEmits, 'entryFocus'>;
 
 // MenuContent

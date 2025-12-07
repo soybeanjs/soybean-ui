@@ -100,8 +100,10 @@ export type CommandExtraUi = Record<CommandExtraThemeSlot, ClassValue>;
 
 export type CommandUi = Record<CommandThemeSlot | CommandExtraThemeSlot, ClassValue>;
 
-export interface CommandProps<T extends CommandOptionData = CommandOptionData>
-  extends Omit<CommandRootProps, 'onSelect'> {
+export interface CommandProps<T extends CommandOptionData = CommandOptionData> extends Omit<
+  CommandRootProps,
+  'onSelect'
+> {
   size?: ThemeSize;
   ui?: Partial<CommandUi>;
   items: T[];

@@ -77,11 +77,10 @@ export type TooltipContentImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown
 export interface TooltipContentProps extends TooltipContentImplProps, ForceMountProps {}
 export type TooltipContentEmits = TooltipContentImplEmits;
 
-export interface TooltipRootContextParams
-  extends PropsToContext<
-    TooltipProviderProps,
-    'delayDuration' | 'disableHoverableContent' | 'disableClosingTrigger' | 'disabled' | 'ignoreNonKeyboardFocus'
-  > {
+export interface TooltipRootContextParams extends PropsToContext<
+  TooltipProviderProps,
+  'delayDuration' | 'disableHoverableContent' | 'disableClosingTrigger' | 'disabled' | 'ignoreNonKeyboardFocus'
+> {
   open: ShallowRef<boolean | undefined>;
   isOpenDelayed: Ref<boolean>;
 }

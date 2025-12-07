@@ -86,10 +86,9 @@ export interface ButtonGroupProps extends ButtonProps {
   dir?: Direction;
 }
 
-export interface ButtonGroupContextParams
-  extends PropsToContext<
-    ButtonGroupProps,
-    'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'
-  > {}
+export interface ButtonGroupContextParams extends PropsToContext<
+  ButtonGroupProps,
+  'color' | 'size' | 'variant' | 'shape' | 'shadow' | 'disabled' | 'fitContent'
+> {}
 
 export type { ButtonEmits, ButtonVariant, ButtonShape, ButtonShadow };

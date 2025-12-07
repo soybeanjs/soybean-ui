@@ -96,8 +96,10 @@ export interface MenuOptionsProps<
 
 export type MenuOptionsEmits<T extends MenuOptionData = MenuOptionData> = MenuOptionEmits<T>;
 
-export interface MenuCheckboxOptionData<T extends DefinedValue = DefinedValue>
-  extends Omit<MenuOptionData<T>, 'linkProps' | 'children'> {}
+export interface MenuCheckboxOptionData<T extends DefinedValue = DefinedValue> extends Omit<
+  MenuOptionData<T>,
+  'linkProps' | 'children'
+> {}
 
 export interface MenuCheckboxOptionsProps<
   T extends DefinedValue = DefinedValue,
@@ -119,8 +121,10 @@ export type MenuCheckboxOptionsEmits<
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
 > = MenuCheckboxGroupEmits<T> & MenuCheckboxSelectEmits<S>;
 
-export interface MenuRadioOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue>
-  extends Omit<MenuOptionData<NonNullable<T>>, 'linkProps' | 'children'> {}
+export interface MenuRadioOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> extends Omit<
+  MenuOptionData<NonNullable<T>>,
+  'linkProps' | 'children'
+> {}
 
 export interface MenuRadioOptionsProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,

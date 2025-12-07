@@ -32,8 +32,10 @@ export interface BreadcrumbOptionData {
   linkProps?: BreadcrumbLinkProps;
 }
 
-export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOptionData>
-  extends Omit<BreadcrumbRootProps, 'onClick'> {
+export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends Omit<
+  BreadcrumbRootProps,
+  'onClick'
+> {
   size?: ThemeSize;
   ui?: Partial<BreadcrumbUi>;
   items: T[];

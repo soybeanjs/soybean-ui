@@ -18,9 +18,7 @@ export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
 }
 
 export interface SwitchRootProps<T extends AcceptableBooleanValue>
-  extends FormFieldCommonProps,
-    SwitchValueConfig<T>,
-    /** @vue-ignore */ HtmlHTMLAttributes {
+  extends FormFieldCommonProps, SwitchValueConfig<T>, /** @vue-ignore */ HtmlHTMLAttributes {
   /** The state of the switch when it is initially rendered. Use when you do not need to control its state. */
   defaultValue?: NonNullable<T>;
   /** The controlled state of the switch. Can be bind as `v-model`. */
@@ -43,8 +41,10 @@ export interface SwitchControlProps extends /** @vue-ignore */ ButtonHTMLAttribu
 
 export interface SwitchThumbProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean>
-  extends PropsToContext<SwitchRootProps<T>, 'disabled' | 'required' | 'trueValue' | 'falseValue'> {
+export interface SwitchRootContextParams<T extends AcceptableBooleanValue = boolean> extends PropsToContext<
+  SwitchRootProps<T>,
+  'disabled' | 'required' | 'trueValue' | 'falseValue'
+> {
   modelValue: ShallowRef<T>;
 }
 

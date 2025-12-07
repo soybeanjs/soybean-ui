@@ -5,11 +5,10 @@ import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 export type TabsActivationMode = 'automatic' | 'manual';
 
-export interface TabsRootProps<T extends AcceptableValue = AcceptableValue>
-  extends Omit<
-    RovingFocusGroupProps,
-    'as' | 'asChild' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
-  > {
+export interface TabsRootProps<T extends AcceptableValue = AcceptableValue> extends Omit<
+  RovingFocusGroupProps,
+  'as' | 'asChild' | 'currentTabStopId' | 'defaultCurrentTabStopId' | 'preventScrollOnEntryFocus'
+> {
   /** The controlled value of the tab to activate. Can be bind as `v-model`. */
   modelValue?: T;
   /**
@@ -52,8 +51,10 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
 
 export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface TabsRootContextParams
-  extends PropsToContext<TabsRootProps, 'orientation' | 'dir' | 'loop' | 'unmountOnHide' | 'activationMode'> {
+export interface TabsRootContextParams extends PropsToContext<
+  TabsRootProps,
+  'orientation' | 'dir' | 'loop' | 'unmountOnHide' | 'activationMode'
+> {
   modelValue: ShallowRef<AcceptableValue>;
 }
 
