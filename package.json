@@ -91,7 +91,7 @@
     "happy-dom": "^20.0.11",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
-    "tsdown": "^0.16.8",
+    "tsdown": "^0.17.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "unocss": "^66.5.10",
@@ -105,7 +105,7 @@
     "vue": "^3.5.25",
     "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.6.3",
-    "vue-tsc": "^3.1.5"
+    "vue-tsc": "^3.1.6"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
