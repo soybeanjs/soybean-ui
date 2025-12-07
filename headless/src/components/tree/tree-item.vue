@@ -191,7 +191,12 @@ const onClick = (event: PointerEvent) => {
       @keydown.left.prevent="onKeydown($event, 'left')"
       @click.stop="onClick"
     >
-      <slot :is-expanded="isExpanded" :is-selected="isSelected" :is-indeterminate="isIndeterminate" />
+      <slot
+        :is-expanded="isExpanded"
+        :is-selected="isSelected"
+        :is-indeterminate="isIndeterminate"
+        :has-children="hasChildren"
+      />
     </Primitive>
   </RovingFocusItem>
 </template>

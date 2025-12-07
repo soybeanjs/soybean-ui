@@ -79,6 +79,16 @@ const state = computed<TreeMenuState>(() => (collapsed.value ? 'collapsed' : 'ex
 
 const size = computed(() => props.size ?? 'md');
 
+const onSelectDropdown = (
+  value: string,
+  actions: { select: (value: string) => void; toggle: (value: string) => void }
+) => {
+  actions.select(value);
+  actions.toggle(value);
+
+  emit('selectDropdown', value);
+};
+
 provideTreeMenuContext({
   collapsed,
   size
@@ -132,12 +142,7 @@ watch(collapsed, value => {
         :tooltip-props="tooltipProps"
         :dropdown-menu-props="dropdownMenuProps"
         :action-menu-props="actionMenuProps"
-        @select-dropdown="
-          value => {
-            select(value);
-            toggle(value);
-          }
-        "
+        @select-dropdown="onSelectDropdown($event, { select, toggle })"
       >
         <template #default>
           <slot name="item" :item="data" :level="level" />

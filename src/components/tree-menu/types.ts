@@ -1,12 +1,5 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type {
-  ClassValue,
-  LinkProps,
-  TreeItemEmits,
-  TreeItemProps,
-  TreeRootEmits,
-  TreeRootProps
-} from '@soybeanjs/headless';
+import type { ClassValue, LinkProps, TreeItemProps, TreeRootEmits, TreeRootProps } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 import type { TooltipProps } from '../tooltip/types';
@@ -61,7 +54,7 @@ export interface TreeMenuItemProps extends TreeItemProps, TreeMenuBaseOptionData
   dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>;
 }
 
-export type TreeMenuItemEmits = TreeItemEmits & {
+export type TreeMenuItemEmits = {
   selectDropdown: [value: string];
 };
 
@@ -95,9 +88,10 @@ export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData
   actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
 }
 
-export type TreeMenuEmits = TreeRootEmits<false> & {
-  'update:collapsed': [value: boolean];
-};
+export type TreeMenuEmits = TreeRootEmits<false> &
+  TreeMenuItemEmits & {
+    'update:collapsed': [value: boolean];
+  };
 
 export interface TreeMenuContextParams {
   collapsed: ShallowRef<boolean | undefined>;

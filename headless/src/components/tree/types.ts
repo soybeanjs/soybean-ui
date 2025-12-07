@@ -32,7 +32,7 @@ export interface TreeRootProps<
   U extends MaybeArray<string> | undefined = MaybeArray<string> | undefined,
   M extends boolean = boolean
 >
-  extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  extends PrimitiveProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect' | 'onToggle'> {
   /** The controlled value of the tree. Can be bound-with with `v-model`. */
   modelValue?: U;
   /** The value of the tree when initially rendered. Use when you do not need to control the state of the tree */
