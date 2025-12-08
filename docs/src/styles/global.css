@@ -4,6 +4,47 @@ body,
   height: 100%;
 }
 
+html {
+  --scrollbar-color-light: rgba(0, 0, 0, 0.5);
+  --scrollbar-color-dark: rgba(255, 255, 255, 0.5);
+  --scrollbar-size: 8px;
+  --scrollbar-color: var(--scrollbar-color-light);
+}
+
+html.dark {
+  --scrollbar-color: var(--scrollbar-color-dark);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+/* for safari */
+.dark * {
+  color-scheme: dark;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-color);
+  border-radius: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-color);
+  border-radius: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+*::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  border-radius: 0;
+}
+
 #nprogress {
   pointer-events: none;
 }
