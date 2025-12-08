@@ -1,6 +1,68 @@
 # Changelog
 
 
+## [v0.0.6](https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6) (2025-12-09)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - enhance header navigation and search functionality with new components &nbsp;-&nbsp; by @soybeanjs [<samp>(ec936)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec936708)
+  - update Vite server configuration and enhance background decoration with fade-in animation &nbsp;-&nbsp; by @soybeanjs [<samp>(e35bb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e35bbc7c)
+  - add introduction and quick start documentation, implement sider menu component, and update app header styles &nbsp;-&nbsp; by @soybeanjs [<samp>(fb2e0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fb2e0e55)
+- **header**:
+  - replace mobile drawer with popover and adjust layout for improved responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(efb08)</samp>](https://github.com/soybeanjs/soybean-ui/commit/efb08c24)
+- **link**:
+  - enhance slot functionality in link components to pass isHref prop for better context handling &nbsp;-&nbsp; by @soybeanjs [<samp>(d5c7a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d5c7a202)
+- **packages**:
+  - modify the width of the page center within the document. &nbsp;-&nbsp; by **Azir-11** [<samp>(a9fa3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a9fa32b8)
+- **projects**:
+  - implement navbar for the header section. &nbsp;-&nbsp; by **Azir-11** [<samp>(293bd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/293bdce0)
+- **styles**:
+  - add custom scrollbar styles for light and dark themes &nbsp;-&nbsp; by @soybeanjs [<samp>(b46c6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b46c6df8)
+- **tree-menu**:
+  - enhance dropdown selection handling and update type definitions for better integration &nbsp;-&nbsp; by @soybeanjs [<samp>(350ed)</samp>](https://github.com/soybeanjs/soybean-ui/commit/350edcb4)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **command**: remove searchTerm condition from empty state display logic &nbsp;-&nbsp; by @soybeanjs [<samp>(199bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/199bc04e)
+- **layout**: adjust header and layout styles for improved consistency and overflow handling &nbsp;-&nbsp; by @soybeanjs [<samp>(6996b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6996b132)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **styles**: optimize the responsive design of the homepage logo. &nbsp;-&nbsp; by **Azir-11** [<samp>(12b6d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/12b6d365)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **docs**: remove motion-v dependency and enhance background decoration with particle effects &nbsp;-&nbsp; by @soybeanjs [<samp>(71796)</samp>](https://github.com/soybeanjs/soybean-ui/commit/71796ebd)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **README**: add logo to README files for better branding &nbsp;-&nbsp; by @soybeanjs [<samp>(943d7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/943d7c55)
+- **components**: fix input with icon &nbsp;-&nbsp; by @paynezhuang [<samp>(1f2aa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1f2aaaee)
+- **projects**: add docs home page &nbsp;-&nbsp; by @soybeanjs [<samp>(8d380)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8d380557)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(4511f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4511f0d1)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(c1182)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c1182272)
+- **package.json**:
+  - add 'unstub' script for resetting stubs &nbsp;-&nbsp; by @soybeanjs [<samp>(2bbd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2bbd4779)
+- **projects**:
+  - remove npm registry url && update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(24126)</samp>](https://github.com/soybeanjs/soybean-ui/commit/24126c5c)
+- **tsconfig**:
+  - update TypeScript configuration with new compiler options and exclude settings &nbsp;-&nbsp; by @soybeanjs [<samp>(e4fcc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e4fcc2fb)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **docs**: update border color for improved UI consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(5fbc9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fbc939f)
+- **projects**: format code &nbsp;-&nbsp; by @soybeanjs [<samp>(82c4f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/82c4f390)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![paynezhuang](https://github.com/paynezhuang.png?size=48)](https://github.com/paynezhuang)&nbsp;&nbsp;
+[Azir-11](mailto:2075125282@qq.com)
+
 ## [v0.0.6-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.0.6-beta.1...v0.0.6-beta.2) (2025-12-07)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
