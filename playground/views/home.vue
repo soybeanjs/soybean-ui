@@ -94,15 +94,9 @@ onMounted(() => {
 
 <template>
   <div class="h-full p-4">
-    <SCard title="SoybeanHeadless" class="h-full">
+    <SCard title="SoybeanUI Playground" class="h-full">
       <template #extra>
         <div class="flex items-center gap-3">
-          <SPopover :ui="{ content: 'z-15' }" placement="bottom-end">
-            <template #trigger>
-              <SButtonIcon icon="lucide:swatch-book" size="lg" />
-            </template>
-            <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
-          </SPopover>
           <SButtonLink
             size="lg"
             variant="ghost"
@@ -115,6 +109,12 @@ onMounted(() => {
           >
             <SIcon icon="lucide:github" />
           </SButtonLink>
+          <SPopover :ui="{ content: 'z-15' }" placement="bottom-end">
+            <template #trigger>
+              <SButtonIcon icon="lucide:swatch-book" size="lg" />
+            </template>
+            <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
+          </SPopover>
           <ThemeSchemaToggler />
         </div>
       </template>
@@ -123,7 +123,7 @@ onMounted(() => {
         :items="tabs"
         :enable-indicator="false"
         :ui="{
-          root: 'h-full',
+          root: 'md:h-full',
           list: 'grid grid-cols-10 gap-y-1 lt-sm:grid-cols-3 lt-md:grid-cols-6 lt-lg:grid-cols-8',
           content: 'overflow-auto'
         }"
@@ -131,7 +131,7 @@ onMounted(() => {
         <template #content>
           <Suspense>
             <template #default>
-              <component :is="loadedComponent" v-if="loadedComponent" class="h-full" />
+              <component :is="loadedComponent" v-if="loadedComponent" class="md:h-full" />
             </template>
             <template #fallback>
               <div class="text-center text-gray-400">Loading...</div>
