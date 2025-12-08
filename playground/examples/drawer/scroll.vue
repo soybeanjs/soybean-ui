@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard, SDrawer } from '@ui';
+import { SButton, SCard, SDrawer } from '@soybeanjs/ui';
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useDark } from '@vueuse/core';
-import { SIcon, SSwitch } from '@ui';
+import { SIcon, SSwitch } from '@soybeanjs/ui';
 
 const isDark = useDark();
 </script>

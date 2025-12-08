@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SIcon, SList, SListItem, SSeparator } from '@ui';
+import { SCard, SIcon, SList, SListItem, SSeparator } from '@soybeanjs/ui';
 
 const listItems = [
   {

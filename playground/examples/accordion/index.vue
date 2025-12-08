@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoAccordionSingle from './single.vue';
 import DemoAccordionMultiple from './multiple.vue';
 import DemoAccordionSize from './size.vue';

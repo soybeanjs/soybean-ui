@@ -1,4 +1,4 @@
-import type { TreeMenuOptionData } from '@ui';
+import type { TreeMenuOptionData } from '@soybeanjs/ui';
 
 export const treeMenuItems: TreeMenuOptionData[] = [
   {

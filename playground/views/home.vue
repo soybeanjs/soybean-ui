@@ -2,8 +2,8 @@
 import { onMounted, shallowRef, watch, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
-import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@ui';
-import type { TabsOptionData } from '@ui';
+import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@soybeanjs/ui';
+import type { TabsOptionData } from '@soybeanjs/ui';
 import ThemeCustomizer from '../components/theme-customizer.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 import { useTheme } from '../theme';

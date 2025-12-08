@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SRadioGroup } from '@ui';
-import type { RadioGroupOptionData } from '@ui';
+import { SCard, SRadioGroup } from '@soybeanjs/ui';
+import type { RadioGroupOptionData } from '@soybeanjs/ui';
 import { themeSizeOptions } from '../../constants/theme';
 
 const items: RadioGroupOptionData<string>[] = [

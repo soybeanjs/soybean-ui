@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@ui';
+import { SButtonIcon, SCard, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } from '@soybeanjs/ui';
 </script>
 
 <template>

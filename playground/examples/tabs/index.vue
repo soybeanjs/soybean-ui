@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoTabsHorizontal from './horizontal.vue';
 import DemoTabsVertical from './vertical.vue';
 import DemoTabsFill from './fill.vue';

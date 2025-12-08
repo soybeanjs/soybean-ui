@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SCard, SDropdownMenu } from '@ui';
-import type { MenuOptionData } from '@ui';
+import { SButton, SCard, SDropdownMenu } from '@soybeanjs/ui';
+import type { MenuOptionData } from '@soybeanjs/ui';
 
 const menus: MenuOptionData<string>[] = [
   {

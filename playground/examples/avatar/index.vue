@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAvatar, SCard } from '@ui';
+import { SAvatar, SCard } from '@soybeanjs/ui';
 </script>
 
 <template>

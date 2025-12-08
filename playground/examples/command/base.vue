@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SCommand } from '@ui';
-import type { CommandOptionData, SelectEvent } from '@ui';
+import { SCard, SCommand } from '@soybeanjs/ui';
+import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 
 const items: CommandOptionData[] = [
   {

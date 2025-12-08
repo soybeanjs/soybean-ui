@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SAccordion, SCard } from '@ui';
-import type { AccordionOptionData } from '@ui';
+import { SAccordion, SCard } from '@soybeanjs/ui';
+import type { AccordionOptionData } from '@soybeanjs/ui';
 import { themeSizeOptions } from '../../constants/theme';
 
 const items: AccordionOptionData[] = [

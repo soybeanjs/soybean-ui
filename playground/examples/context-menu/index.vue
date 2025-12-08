@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoContextMenuBase from './base.vue';
 import DemoContextMenuCheckbox from './checkbox.vue';
 import DemoContextMenuRadio from './radio.vue';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SButton, SCard, SDropdownMenuRadio } from '@ui';
-import type { MenuRadioOptionData } from '@ui';
+import { SButton, SCard, SDropdownMenuRadio } from '@soybeanjs/ui';
+import type { MenuRadioOptionData } from '@soybeanjs/ui';
 
 const placement = ref('top-start');
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SSwitch } from '@ui';
+import { SCard, SSwitch } from '@soybeanjs/ui';
 </script>
 
 <template>

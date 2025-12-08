@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SArrow, SCard } from '@ui';
+import { SArrow, SCard } from '@soybeanjs/ui';
 </script>
 
 <template>

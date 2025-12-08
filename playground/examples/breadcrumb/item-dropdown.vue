@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBreadcrumb, SBreadcrumbPage, SCard, SDropdownMenu } from '@ui';
-import type { BreadcrumbOptionData, MenuOptionData } from '@ui';
+import { SBreadcrumb, SBreadcrumbPage, SCard, SDropdownMenu } from '@soybeanjs/ui';
+import type { BreadcrumbOptionData, MenuOptionData } from '@soybeanjs/ui';
 
 interface DropdownItem extends BreadcrumbOptionData {
   items?: MenuOptionData[];

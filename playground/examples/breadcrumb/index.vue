@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import BreadcrumbBase from './base.vue';
 import BreadcrumbSeparator from './separator.vue';
 import BreadcrumbLink from './link.vue';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBadge, SButton, SCard } from '@ui';
-import type { BadgePosition } from '@ui';
+import { SBadge, SButton, SCard } from '@soybeanjs/ui';
+import type { BadgePosition } from '@soybeanjs/ui';
 
 const positions: BadgePosition[] = ['top-right', 'bottom-right', 'top-left', 'bottom-left'];
 </script>

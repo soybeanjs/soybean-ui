@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoPaginationVariant from './variant.vue';
 import DemoPaginationSize from './size.vue';
 import DemoPaginationShape from './shape.vue';

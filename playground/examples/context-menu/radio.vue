@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SContextMenuRadio } from '@ui';
-import type { MenuRadioOptionData } from '@ui';
+import { SCard, SContextMenuRadio } from '@soybeanjs/ui';
+import type { MenuRadioOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
 const placement = ref('top-start');

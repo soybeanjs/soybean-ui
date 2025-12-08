@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Fragment, h } from 'vue';
-import { SAlertDialogAction, SAlertDialogCancel, SButton, SCard, useDialog } from '@ui';
+import { SAlertDialogAction, SAlertDialogCancel, SButton, SCard, useDialog } from '@soybeanjs/ui';
 
 const dialog = useDialog();
 

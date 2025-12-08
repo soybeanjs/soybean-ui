@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoVirtualizerBase from './base.vue';
 import DemoVirtualizerHorizontal from './horizontal.vue';
 import DemoVirtualizerDynamic from './dynamic.vue';

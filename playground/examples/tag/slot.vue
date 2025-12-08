@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SIcon, STag } from '@ui';
+import { SCard, SIcon, STag } from '@soybeanjs/ui';
 </script>
 
 <template>

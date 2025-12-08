@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoTreeBase from './base.vue';
 import DemoTreeVirtualizer from './virtualizer.vue';
 </script>

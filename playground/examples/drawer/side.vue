@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SCard, SDrawer } from '@ui';
-import type { Side } from '@ui';
+import { SButton, SCard, SDrawer } from '@soybeanjs/ui';
+import type { Side } from '@soybeanjs/ui';
 
 const sides: Side[] = ['left', 'right', 'top', 'bottom'];
 </script>

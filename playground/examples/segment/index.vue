@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoSegmentOrientation from './orientation.vue';
 import DemoSegmentShape from './shape.vue';
 import DemoSegmentIcon from './icon.vue';

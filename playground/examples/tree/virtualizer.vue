@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SIcon, STreeVirtualizer, STreeVirtualizerItem } from '@ui';
-import type { TreeItemData } from '@ui';
+import { SCard, SIcon, STreeVirtualizer, STreeVirtualizerItem } from '@soybeanjs/ui';
+import type { TreeItemData } from '@soybeanjs/ui';
 
 type DemoTree = TreeItemData<{
   value: string;

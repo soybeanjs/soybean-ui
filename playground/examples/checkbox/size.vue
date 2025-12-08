@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SCheckbox } from '@ui';
+import { SCard, SCheckbox } from '@soybeanjs/ui';
 import { themeColorOptions, themeSizeOptions } from '../../constants/theme';
 </script>
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { useToggle } from '@vueuse/core';
-import { SButtonIcon, SCard, SSelect, STreeMenu } from '@ui';
-import type { ThemeSize } from '@ui';
+import { SButtonIcon, SCard, SSelect, STreeMenu } from '@soybeanjs/ui';
+import type { ThemeSize } from '@soybeanjs/ui';
 import { themeSizeMap } from '@/theme';
 import { themeSizeOptions } from '../../constants/theme';
 import { treeMenuItems } from './data';

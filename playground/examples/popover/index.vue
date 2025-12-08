@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SCard, SPopover } from '@ui';
-import type { Placement } from '@ui';
+import { SButton, SCard, SPopover } from '@soybeanjs/ui';
+import type { Placement } from '@soybeanjs/ui';
 
 defineOptions({
   name: 'DemoPopover'

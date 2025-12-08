@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
-import { SCard, SCommand, SDialogPure, SKbd } from '@ui';
-import type { CommandOptionData } from '@ui';
+import { SCard, SCommand, SDialogPure, SKbd } from '@soybeanjs/ui';
+import type { CommandOptionData } from '@soybeanjs/ui';
 
 const keys = useMagicKeys();
 

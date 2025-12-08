@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { z } from 'zod';
 import {
   SButton,
   SButtonIcon,
@@ -14,8 +13,9 @@ import {
   SSwitch,
   useForm,
   zodResolver
-} from '@ui';
-import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@ui';
+} from '@soybeanjs/ui';
+import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
+import { z } from 'zod';
 
 const user = z.object({
   username: z.string('Username is required').nonempty('Username is required'),

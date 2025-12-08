@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import CheckboxSingle from './single.vue';
 import CheckboxColor from './color.vue';
 import CheckboxSize from './size.vue';

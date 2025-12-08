@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard, useToast } from '@ui';
+import { SButton, SCard, useToast } from '@soybeanjs/ui';
 
 const toast = useToast();
 </script>

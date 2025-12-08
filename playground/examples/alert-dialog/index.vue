@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoAlertDialogDestructive from './destructive.vue';
 import DemoAlertDialogInfo from './info.vue';
 import DemoAlertDialogSuccess from './success.vue';

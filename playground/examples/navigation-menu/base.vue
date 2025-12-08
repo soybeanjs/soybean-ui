@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SNavigationMenu } from '@ui';
-import type { NavigationMenuOptionData } from '@ui';
+import { SCard, SNavigationMenu } from '@soybeanjs/ui';
+import type { NavigationMenuOptionData } from '@soybeanjs/ui';
 
 const menus: NavigationMenuOptionData[] = [
   {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDialog } from '@ui';
+import { SButton, SCard, SDialog } from '@soybeanjs/ui';
 
 const open = ref(false);
 </script>

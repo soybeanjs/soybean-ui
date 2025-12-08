@@ -2,7 +2,7 @@
 import { useVModel } from '@vueuse/core';
 import { builtinColorMap, builtinRadiuses } from '@soybeanjs/unocss-shadcn';
 import type { ThemeConfigColor } from '@soybeanjs/unocss-shadcn';
-import { SButton, SIcon, SLabel } from '@ui';
+import { SButton, SIcon, SLabel } from '@soybeanjs/ui';
 import type { ThemeSize } from '@/theme';
 
 interface ThemeCustomizeProps {
@@ -41,19 +41,23 @@ function setSize(item: ThemeSize) {
 </script>
 
 <template>
-  <div class="p-4">
+  <div>
     <div class="grid space-y-1">
       <h1 class="text-md text-foreground font-semibold">Customize</h1>
       <p class="text-xs text-muted-foreground">Pick a style and color for your components.</p>
     </div>
     <div class="pt-6 space-y-1.5">
       <SLabel for="color" class="text-xs">Color</SLabel>
-      <div class="grid grid-cols-3 gap-2 py-1.5">
-        <div v-for="(value, key) in builtinColorMap" :key="key" :class="{ 'col-span-3': key === 'default' }">
+      <div class="grid md:grid-cols-3 grid-cols-2 gap-2 py-1.5">
+        <div
+          v-for="(value, key) in builtinColorMap"
+          :key="key"
+          :class="{ 'md:col-span-3 col-span-2': key === 'default' }"
+        >
           <SButton
             :variant="color === key ? 'outline' : 'pure'"
             size="sm"
-            class="justify-start"
+            class="justify-between!"
             :class="{ 'w-full': key !== 'default' }"
             @click="setTheme(key)"
           >
@@ -63,7 +67,7 @@ function setSize(item: ThemeSize) {
             >
               <SIcon v-if="color === key" icon="lucide:check" class="size-3 text-white" />
             </span>
-            <span class="ml-2 text-xs capitalize">
+            <span class="capitalize">
               {{ key }}
             </span>
           </SButton>

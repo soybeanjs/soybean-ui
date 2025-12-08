@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoDialogBase from './base.vue';
 import DemoDialogFooter from './footer.vue';
 import DemoDialogState from './state.vue';

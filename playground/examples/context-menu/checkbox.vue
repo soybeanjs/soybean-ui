@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SContextMenuCheckbox } from '@ui';
-import type { MenuCheckboxOptionData } from '@ui';
+import { SCard, SContextMenuCheckbox } from '@soybeanjs/ui';
+import type { MenuCheckboxOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
 const modelValue = ref<string[]>(['vue', 'solid']);

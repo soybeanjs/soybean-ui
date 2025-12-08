@@ -1,4 +1,4 @@
-import type { ThemeColor, ThemeSize } from '@ui';
+import type { ThemeColor, ThemeSize } from '@soybeanjs/ui';
 import { transformRecordToOption } from '../shared';
 
 export const themeSizeRecord: Record<ThemeSize, string> = {

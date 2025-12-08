@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 import { RovingFocusGroup } from '@soybeanjs/headless';
 import type { RovingFocusGroupProps } from '@soybeanjs/headless';
-import { SButtonGroup } from '@ui';
-import type { ButtonGroupProps } from '@ui';
+import { SButtonGroup } from '@soybeanjs/ui';
+import type { ButtonGroupProps } from '@soybeanjs/ui';
 import { provideButtonRovingFocusContext } from './context';
 
 type Props = Omit<ButtonGroupProps, 'dir'> &

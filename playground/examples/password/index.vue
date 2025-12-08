@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoPasswordBase from './base.vue';
 import DemoPasswordDisabled from './disabled.vue';
 import DemoPasswordClearable from './clearable.vue';

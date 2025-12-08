@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoNumberInputBase from './base.vue';
 import DemoNumberInputCenter from './center.vue';
 import DemoNumberInputSlot from './slot.vue';

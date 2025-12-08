@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoSelectBase from './base.vue';
 import DemoSelectDefaultValue from './default-value.vue';
 import DemoSelectDisabled from './disabled.vue';

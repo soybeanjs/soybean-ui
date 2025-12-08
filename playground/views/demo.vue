@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SLink } from '@ui';
+import { SLink } from '@soybeanjs/ui';
 </script>
 
 <template>

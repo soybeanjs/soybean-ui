@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoSeparatorOrientation from './orientation.vue';
 import DemoSeparatorAlign from './align.vue';
 import DemoSeparatorBorder from './border.vue';

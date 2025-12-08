@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton, SCard, SIcon } from '@ui';
+import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton, SCard, SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>

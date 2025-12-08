@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SSelect } from '@ui';
-import type { SelectOptionData } from '@ui';
+import { SCard, SSelect } from '@soybeanjs/ui';
+import type { SelectOptionData } from '@soybeanjs/ui';
 
 const fruits = ['apple', 'banana', 'cherry', 'orange', 'pear', 'plum', 'strawberry', 'watermelon'];
 

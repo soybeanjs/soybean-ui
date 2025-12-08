@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SPagination } from '@ui';
+import { SCard, SPagination } from '@soybeanjs/ui';
 </script>
 
 <template>

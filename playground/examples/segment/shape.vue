@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SSegment } from '@ui';
-import type { SegmentOptionData } from '@ui';
+import { SCard, SSegment } from '@soybeanjs/ui';
+import type { SegmentOptionData } from '@soybeanjs/ui';
 
 const day = shallowRef('monday');
 

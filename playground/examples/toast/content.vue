@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue';
-import { SButton, SCard, SToastAction, useToast } from '@ui';
+import { SButton, SCard, SToastAction, useToast } from '@soybeanjs/ui';
 
 const toast = useToast();
 

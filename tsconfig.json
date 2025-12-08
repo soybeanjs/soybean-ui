@@ -3,7 +3,7 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"],
-      "@ui": ["./src/index.ts"]
+      "@soybeanjs/ui": ["./src/index.ts"]
     }
   },
   "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"]

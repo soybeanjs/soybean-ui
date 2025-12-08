@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SSwitch, STag } from '@ui';
+import { SCard, SSwitch, STag } from '@soybeanjs/ui';
 
 const open = shallowRef(true);
 </script>

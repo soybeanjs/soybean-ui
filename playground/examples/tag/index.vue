@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoTagColor from './color.vue';
 import DemoTagVariant from './variant.vue';
 import DemoTagShape from './shape.vue';

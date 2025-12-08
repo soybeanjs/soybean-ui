@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, STabs } from '@ui';
+import { SCard, STabs } from '@soybeanjs/ui';
 
 const tabValue = ref('1');
 const tabs = [

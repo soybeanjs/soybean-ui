@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoRadioGroupColor from './color.vue';
 import DemoRadioGroupSize from './size.vue';
 import DemoRadioGroupVariant from './variant.vue';

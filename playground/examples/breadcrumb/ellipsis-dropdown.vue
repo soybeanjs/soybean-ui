@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SBreadcrumb, SBreadcrumbEllipsis, SCard, SDropdownMenu, SIcon } from '@ui';
-import type { BreadcrumbOptionData } from '@ui';
+import { SBreadcrumb, SBreadcrumbEllipsis, SCard, SDropdownMenu, SIcon } from '@soybeanjs/ui';
+import type { BreadcrumbOptionData } from '@soybeanjs/ui';
 
 const items = [
   {

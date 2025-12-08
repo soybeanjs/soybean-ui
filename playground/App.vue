@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import { SConfigProvider } from '@ui';
+import { SConfigProvider } from '@soybeanjs/ui';
 import { provideThemeContext } from './theme';
 
 defineOptions({

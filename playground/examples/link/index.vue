@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SLink } from '@ui';
+import { SCard, SLink } from '@soybeanjs/ui';
 </script>
 
 <template>

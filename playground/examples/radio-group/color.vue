@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SRadioGroup } from '@ui';
-import type { RadioGroupOptionData, ThemeColor } from '@ui';
+import { SCard, SRadioGroup } from '@soybeanjs/ui';
+import type { RadioGroupOptionData, ThemeColor } from '@soybeanjs/ui';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 

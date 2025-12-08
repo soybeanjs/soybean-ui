@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SPassword } from '@ui';
+import { SCard, SPassword } from '@soybeanjs/ui';
 </script>
 
 <template>

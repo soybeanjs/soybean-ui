@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoButtonColor from './color.vue';
 import DemoButtonVariant from './variant.vue';
 import DemoButtonSize from './size.vue';

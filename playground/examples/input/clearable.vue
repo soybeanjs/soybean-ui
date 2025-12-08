@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SInput } from '@ui';
+import { SCard, SInput } from '@soybeanjs/ui';
 </script>
 
 <template>

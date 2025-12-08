@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDropdownMenuCheckbox } from '@ui';
-import type { MenuCheckboxOptionData } from '@ui';
+import { SButton, SCard, SDropdownMenuCheckbox } from '@soybeanjs/ui';
+import type { MenuCheckboxOptionData } from '@soybeanjs/ui';
 
 const modelValue = ref<string[]>(['vue', 'solid']);
 

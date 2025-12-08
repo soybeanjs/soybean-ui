@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SCard, SCheckbox } from '@ui';
-import type { ThemeColor } from '@ui';
+import { SCard, SCheckbox } from '@soybeanjs/ui';
+import type { ThemeColor } from '@soybeanjs/ui';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 </script>

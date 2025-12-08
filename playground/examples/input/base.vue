@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SInput } from '@ui';
+import { SCard, SInput } from '@soybeanjs/ui';
 
 const modelValue = ref('');
 </script>

@@ -13,7 +13,7 @@ import {
   SSeparator,
   STreeMenu,
   STreeMenuItemWrapper
-} from '@ui';
+} from '@soybeanjs/ui';
 import type {
   BreadcrumbOptionData,
   LayoutCollapsible,
@@ -22,7 +22,7 @@ import type {
   MenuOptionData,
   SelectOptionData,
   ThemeSize
-} from '@ui';
+} from '@soybeanjs/ui';
 import { themeSizeOptions } from '../../constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
 

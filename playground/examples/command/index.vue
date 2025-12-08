@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoCommandBase from './base.vue';
 import DemoCommandDialog from './dialog.vue';
 </script>

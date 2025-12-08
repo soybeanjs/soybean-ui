@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoBadgeColor from './color.vue';
 import DemoBadgeContent from './content.vue';
 import DemoBadgePosition from './position.vue';

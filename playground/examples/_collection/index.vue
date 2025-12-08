@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import CollectionList from './collection-list.vue';
 import CollectionItem from './collection-item.vue';
 

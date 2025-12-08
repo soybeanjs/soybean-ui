@@ -1,5 +1,5 @@
 <!-- <script setup lang="ts">
-import { SButton, SButtonGroup, SSelect } from '@ui';
+import { SButton, SButtonGroup, SSelect } from '@soybeanjs/ui';
 import type { SelectOptionData, ThemeSize } from '@/theme';
 
 const size = defineModel<ThemeSize>('size', { default: 'md' });

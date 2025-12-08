@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, STag } from '@ui';
+import { SCard, STag } from '@soybeanjs/ui';
 import { themeSizeOptions } from '../../constants/theme';
 </script>
 

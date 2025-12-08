@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SVirtualizer, SVirtualizerItem } from '@ui';
+import { SCard, SVirtualizer, SVirtualizerItem } from '@soybeanjs/ui';
 
 const items = Array.from({ length: 1000 }, (_, index) => ({
   value: `item-${index}`,

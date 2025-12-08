@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoFormZod from './zod.vue';
 import DemoFormValibot from './valibot.vue';
 </script>

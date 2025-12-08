@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoTextareaBase from './base.vue';
 import DemoTextareaAutosize from './autosize.vue';
 import DemoTextareaClearable from './clearable.vue';

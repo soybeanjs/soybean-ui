@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButtonLink, SCard } from '@ui';
+import { SButtonLink, SCard } from '@soybeanjs/ui';
 </script>
 
 <template>

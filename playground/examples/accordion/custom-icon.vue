@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion, SCard } from '@ui';
-import type { AccordionOptionData } from '@ui';
+import { SAccordion, SCard } from '@soybeanjs/ui';
+import type { AccordionOptionData } from '@soybeanjs/ui';
 import { Icon } from '@iconify/vue';
 
 const multi = ref<string[]>([]);

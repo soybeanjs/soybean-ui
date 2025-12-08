@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SIcon, SSegment } from '@ui';
-import type { SegmentOptionData } from '@ui';
+import { SCard, SIcon, SSegment } from '@soybeanjs/ui';
+import type { SegmentOptionData } from '@soybeanjs/ui';
 
 interface ThemeSchema extends SegmentOptionData<string> {
   value: string;

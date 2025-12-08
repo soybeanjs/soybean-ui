@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@ui': fileURLToPath(new URL('./src/index.ts', import.meta.url))
+      '@soybeanjs/ui': fileURLToPath(new URL('./src/index.ts', import.meta.url))
     }
   },
   plugins: [vue(), unocss(), devtools()],

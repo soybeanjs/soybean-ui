@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@ui';
+import { SButton, SCard } from '@soybeanjs/ui';
 import type { ThemeColor } from '@/theme';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

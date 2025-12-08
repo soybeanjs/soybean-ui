@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SAlert, SCard } from '@ui';
-import type { AlertVariant, ThemeColor } from '@ui';
+import { SAlert, SCard } from '@soybeanjs/ui';
+import type { AlertVariant, ThemeColor } from '@soybeanjs/ui';
 
 const variants: AlertVariant[] = ['solid', 'pure', 'outline', 'soft', 'ghost'];
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];

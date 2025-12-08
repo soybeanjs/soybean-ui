@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAspectRatio, SCard } from '@ui';
+import { SAspectRatio, SCard } from '@soybeanjs/ui';
 </script>
 
 <template>

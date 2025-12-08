@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoAlertColor from './color.vue';
 import DemoAlertVariant from './variant.vue';
 import DemoAlertDescription from './description.vue';

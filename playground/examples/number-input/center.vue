@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SNumberInput } from '@ui';
+import { SCard, SNumberInput } from '@soybeanjs/ui';
 </script>
 
 <template>

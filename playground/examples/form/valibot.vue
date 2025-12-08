@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import * as v from 'valibot';
 import {
   SButton,
   SButtonIcon,
@@ -14,8 +13,9 @@ import {
   SSwitch,
   useForm,
   valibotResolver
-} from '@ui';
-import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@ui';
+} from '@soybeanjs/ui';
+import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
+import * as v from 'valibot';
 
 const user = v.object({
   username: v.pipe(v.string('Username is required'), v.nonEmpty('Username is required')),

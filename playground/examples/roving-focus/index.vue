@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SButton, SCard } from '@ui';
+import { SButton, SCard } from '@soybeanjs/ui';
 import ButtonGroup from './button-group.vue';
 import Button from './button.vue';
 

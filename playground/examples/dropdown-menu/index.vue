@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoDropdownMenuBase from './base.vue';
 import DemoDropdownMenuTrigger from './trigger.vue';
 import DemoDropdownMenuArrow from './arrow.vue';

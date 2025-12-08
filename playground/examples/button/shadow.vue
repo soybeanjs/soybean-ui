@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@ui';
-import type { ButtonShadow } from '@ui';
+import { SButton, SCard } from '@soybeanjs/ui';
+import type { ButtonShadow } from '@soybeanjs/ui';
 
 const shadows: ButtonShadow[] = ['none', 'sm', 'md', 'lg'];
 </script>

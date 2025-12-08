@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, STextarea } from '@ui';
+import { SCard, STextarea } from '@soybeanjs/ui';
 </script>
 
 <template>

@@ -1,7 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDropdownMenuWrapper, SMenuCheckboxOptions, SMenuOptions, SMenuRadioOptions } from '@ui';
-import type { MenuCheckboxOptionData, MenuOptionData, MenuRadioOptionData } from '@ui';
+import {
+  SButton,
+  SCard,
+  SDropdownMenuWrapper,
+  SMenuCheckboxOptions,
+  SMenuOptions,
+  SMenuRadioOptions
+} from '@soybeanjs/ui';
+import type { MenuCheckboxOptionData, MenuOptionData, MenuRadioOptionData } from '@soybeanjs/ui';
 
 const menus: MenuOptionData<string>[] = [
   {

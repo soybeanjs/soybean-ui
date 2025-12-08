@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SCheckbox, SIcon } from '@ui';
+import { SCard, SCheckbox, SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>

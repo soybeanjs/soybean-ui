@@ -2,7 +2,7 @@ import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import type { ThemeConfigColor } from '@soybeanjs/unocss-shadcn';
 import { useContext } from '@soybeanjs/headless/composables';
-import type { ConfigProviderProps, ThemeSize } from '@ui';
+import type { ConfigProviderProps, ThemeSize } from '@soybeanjs/ui';
 
 export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => {
   const color = useStorage<ThemeConfigColor>('color', 'default');

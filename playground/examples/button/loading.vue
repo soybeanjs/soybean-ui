@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SButtonLoading, SCard } from '@ui';
+import { SButton, SButtonLoading, SCard } from '@soybeanjs/ui';
 
 const loading = ref(false);
 

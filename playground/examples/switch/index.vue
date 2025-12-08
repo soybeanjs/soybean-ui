@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoSwitchBase from './base.vue';
 import DemoSwitchSize from './size.vue';
 import DemoSwitchShape from './shape.vue';

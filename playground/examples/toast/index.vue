@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard } from '@ui';
+import { SCard } from '@soybeanjs/ui';
 import DemoToastBase from './base.vue';
 import DemoToastType from './type.vue';
 import DemoToastColor from './color.vue';
