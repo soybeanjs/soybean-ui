@@ -15,7 +15,7 @@ const closeDrawer = () => {
       <SiderMenu />
     </div>
     <div
-      class="md:hidden fixed top-[--app-header] left-0 right-0 pl-2 py-1 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50"
+      class="md:hidden fixed top-[--app-header] left-0 right-0 z-50 pl-2 py-1 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50"
     >
       <SDrawer v-model:open="visible" side="left">
         <template #trigger>
