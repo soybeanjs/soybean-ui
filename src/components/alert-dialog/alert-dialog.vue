@@ -92,7 +92,7 @@ provideSizeContext(() => props.size);
 
 <template>
   <AlertDialogRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
-    <AlertDialogTrigger v-bind="triggerProps" :size="size">
+    <AlertDialogTrigger v-bind="triggerProps" :size="size" as-child>
       <slot name="trigger" />
     </AlertDialogTrigger>
     <AlertDialogPortal v-bind="portalProps">
