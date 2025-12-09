@@ -1,6 +1,52 @@
 # Changelog
 
 
+## [v0.0.7](https://github.com/soybeanjs/soybean-ui/compare/v0.0.6...v0.0.7) (2025-12-09)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **avatar**: add image source and delay properties to AvatarProps for enhanced image handling &nbsp;-&nbsp; by @soybeanjs [<samp>(f55e1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f55e1e9d)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - show playground examples in docs and update related docs &nbsp;-&nbsp; by @soybeanjs [<samp>(d439a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d439a14b)
+  - introduce theme customizer component and update theme context for dynamic styling &nbsp;-&nbsp; by @soybeanjs [<samp>(f0ce2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f0ce2c3c)
+- **playground**:
+  - add About route and create about.vue component &nbsp;-&nbsp; by @soybeanjs [<samp>(33948)</samp>](https://github.com/soybeanjs/soybean-ui/commit/33948361)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **alert-dialog**: add 'as-child' prop to AlertDialogTrigger for improved slot handling &nbsp;-&nbsp; by @soybeanjs [<samp>(d18ac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d18ac6d1)
+- **layout**: add z-index to mobile drawer for improved visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(43a1c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/43a1c135)
+- **pagination**: update border styles for selected button states in pagination variants &nbsp;-&nbsp; by @soybeanjs [<samp>(e817f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e817ff24)
+- **selection**: update boolean handling for multiple selection logic &nbsp;-&nbsp; by @soybeanjs [<samp>(2dda1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2dda10d5)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **docs**:
+  - correct not-found page and simplify 404 layout &nbsp;-&nbsp; by @soybeanjs [<samp>(e84da)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e84da949)
+- **playground**:
+  - optimize playground examples &nbsp;-&nbsp; by @soybeanjs [<samp>(ea6d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ea6d44d9)
+  - optimize style and introduce themeSizeRatioMap for consistent size ratios and update related components &nbsp;-&nbsp; by @soybeanjs [<samp>(d8ed8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d8ed82f5)
+- **projects**:
+  - replace `ui` with `@soybeanjs/ui` in playground &nbsp;-&nbsp; by @soybeanjs [<samp>(3a7b1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3a7b1285)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(6d10b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d10b1a6)
+- **docs**: unocss config: add shortcuts for playground title styling &nbsp;-&nbsp; by @soybeanjs [<samp>(ccb14)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ccb140a2)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **breadcrumb**: adjust padding in list variant for improved layout &nbsp;-&nbsp; by @soybeanjs [<samp>(88be2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/88be2285)
+- **playground**: update style for improved mobile layout &nbsp;-&nbsp; by @soybeanjs [<samp>(ab6c8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ab6c884c)
+- **variants**: update description and title styles across multiple components to include margin reset &nbsp;-&nbsp; by @soybeanjs [<samp>(a9344)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a9344e0d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.6](https://github.com/soybeanjs/soybean-ui/compare/v0.0.5...v0.0.6) (2025-12-09)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
