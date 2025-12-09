@@ -40,6 +40,7 @@ declare module 'vue' {
     SSwitch: typeof import('@soybeanjs/ui')['SSwitch']
     STag: typeof import('@soybeanjs/ui')['STag']
     STreeMenu: typeof import('@soybeanjs/ui')['STreeMenu']
+    ThemeCustomizer: typeof import('./../components/theme-customizer.vue')['default']
     ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
     ToolBar: typeof import('./../components/tool-bar.vue')['default']
   }
@@ -75,6 +76,7 @@ declare global {
   const SSwitch: typeof import('@soybeanjs/ui')['SSwitch']
   const STag: typeof import('@soybeanjs/ui')['STag']
   const STreeMenu: typeof import('@soybeanjs/ui')['STreeMenu']
+  const ThemeCustomizer: typeof import('./../components/theme-customizer.vue')['default']
   const ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
   const ToolBar: typeof import('./../components/tool-bar.vue')['default']
 }

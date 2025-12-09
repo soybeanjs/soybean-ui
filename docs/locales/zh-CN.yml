@@ -29,6 +29,7 @@ layout:
     version: 版本
     github: GitHub
     theme: 主题
+    theme-customizer: 主题配置
     language: 语言
     others: 其他
 components:

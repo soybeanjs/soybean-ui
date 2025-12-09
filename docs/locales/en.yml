@@ -29,6 +29,7 @@ layout:
     version: Version
     github: GitHub
     theme: Theme
+    theme-customizer: Theme Customizer
     language: Language
     others: Others
 components:

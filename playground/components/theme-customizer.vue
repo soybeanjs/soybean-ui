@@ -3,7 +3,7 @@ import { useVModel } from '@vueuse/core';
 import { builtinColorMap, builtinRadiuses } from '@soybeanjs/unocss-shadcn';
 import type { ThemeConfigColor } from '@soybeanjs/unocss-shadcn';
 import { SButton, SIcon, SLabel } from '@soybeanjs/ui';
-import type { ThemeSize } from '@/theme';
+import type { ThemeSize } from '@soybeanjs/ui';
 
 interface ThemeCustomizeProps {
   color: ThemeConfigColor;
