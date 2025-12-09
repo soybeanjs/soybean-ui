@@ -4,6 +4,8 @@ import pkg from '../../package.json' with { type: 'json' };
 import ToolBar from './tool-bar.vue';
 
 const { t } = useI18n();
+
+const { version } = pkg;
 </script>
 
 <template>
@@ -25,7 +27,7 @@ const { t } = useI18n();
 
       <div class="flex items-center gap-4">
         <HeaderNav class="lt-md:!hidden" />
-        <STag size="lg" variant="soft" color="carbon" shape="rounded" class="lt-md:!hidden">v{{ pkg.version }}</STag>
+        <STag size="lg" variant="soft" color="carbon" shape="rounded" class="lt-md:!hidden">v{{ version }}</STag>
         <SSeparator orientation="vertical" class="h-8 lt-md:!hidden" />
         <ToolBar class="lt-md:!hidden" />
 

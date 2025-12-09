@@ -1,0 +1,7 @@
+# Collapsible
+
+## Demos
+
+```playground
+base
+```

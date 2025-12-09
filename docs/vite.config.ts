@@ -14,7 +14,7 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import Shiki from '@shikijs/markdown-it';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
-import { loadDemoModules } from './src/modules/demo-loader';
+import { loadPlaygroundModules } from './src/modules/playground';
 
 export default defineConfig({
   resolve: {
@@ -52,7 +52,7 @@ export default defineConfig({
       resolvers: [UiResolver()]
     }),
     Markdown({
-      wrapperClasses: 'prose-slate dark:prose-slate-invert m-auto text-left',
+      wrapperClasses: 'prose-slate dark:prose-slate-invert md:max-w-80ch! m-auto text-left',
       headEnabled: true,
       async markdownItSetup(md) {
         md.use(LinkAttributes, {
@@ -71,7 +71,7 @@ export default defineConfig({
             }
           })
         );
-        loadDemoModules(md);
+        loadPlaygroundModules(md);
       }
     }),
     VueI18n({

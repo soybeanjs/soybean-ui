@@ -1,22 +1,27 @@
 <script setup lang="ts">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
+import { pascalCase } from 'es-toolkit';
 
 const route = useRoute('/components/[name]');
 
+const { t, locale } = useI18n();
+
 const name = computed(() => route.params.name);
 
-const mdModules = import.meta.glob<{ default: Component }>('/src/docs/**/index.md');
+const alertTitle = computed(() => t('not-found-component-doc', { name: pascalCase(name.value) }));
+
+const mdModules = import.meta.glob<{ default: Component }>('/src/docs/**/*.md');
 
 const docComp = shallowRef<Component | null>(null);
 
 async function loadDoc() {
-  const candidates = [`/src/docs/${name.value}/index.md`];
-  const match = candidates.find(p => mdModules[p]);
-  if (match) {
-    const load = mdModules[match]!;
+  const key = `/src/docs/${locale.value}/${name.value}.md`;
+  const load = mdModules[key];
+  if (load) {
     const mod = await load();
     docComp.value = mod.default;
+
     return;
   }
 
@@ -31,6 +36,6 @@ watchEffect(() => {
 <template>
   <div>
     <component :is="docComp" v-if="docComp" />
-    <div v-else class="text-center text-sm text-red-6">该组件文档未找到：{{ name }}</div>
+    <SAlert v-else color="destructive" :title="alertTitle" icon="lucide:alert-circle" class="w-fit" />
   </div>
 </template>

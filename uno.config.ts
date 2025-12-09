@@ -23,7 +23,7 @@ export default defineConfig<Theme>({
     presetSoybeanJS(),
     presetShadcn()
   ],
-  safelist: 'prose-slate dark:prose-slate-invert m-auto text-left'.split(' '),
+  safelist: 'prose-slate dark:prose-slate-invert md:max-w-80ch! m-auto text-left'.split(' '),
   shortcuts: {
     'playground-title': 'mb-3 text-base font-semibold'
   }

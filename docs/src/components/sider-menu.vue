@@ -17,6 +17,18 @@ const expanded = ref<string[]>([]);
 
 const selected = ref<string>('');
 
+const excludes: string[] = ['configProvider', 'label', 'icon', 'menu'];
+
+const componentMenus = Object.keys(components)
+  .filter(key => !excludes.includes(key))
+  .map(key => ({
+    label: toPascalCase(key),
+    value: toKebabCase(key),
+    linkProps: {
+      to: `/components/${toKebabCase(key)}`
+    }
+  }));
+
 const menus: TreeMenuOptionData[] = [
   {
     label: 'Overview',
@@ -43,13 +55,7 @@ const menus: TreeMenuOptionData[] = [
     label: 'Components',
     value: 'components',
     icon: 'lucide:layout-grid',
-    children: Object.keys(components).map(key => ({
-      label: toPascalCase(key),
-      value: toKebabCase(key),
-      linkProps: {
-        to: `/components/${toKebabCase(key)}`
-      }
-    }))
+    children: componentMenus
   }
 ];
 

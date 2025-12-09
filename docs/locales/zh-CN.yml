@@ -11,7 +11,9 @@ intro:
   hi: 你好，{name}
   aka: 也叫
   whats-your-name: 输入你的名字
-not-found: 未找到页面
+not-found-page: 未找到页面
+not-found: 未找到
+not-found-component-doc: 未找到组件 {name} 的文档。
 locale:
   en: 英语
   zh-CN: 中文
