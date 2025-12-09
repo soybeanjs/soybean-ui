@@ -25,6 +25,16 @@ const ui = computed(() => {
 provideAvatarThemeContext({
   ui
 });
+
+const imageProps = computed(() => ({
+  src: props.src,
+  ...props.imageProps
+}));
+
+const fallbackProps = computed(() => ({
+  delayMs: props.delayMs,
+  ...props.fallbackProps
+}));
 </script>
 
 <template>
