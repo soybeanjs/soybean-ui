@@ -34,4 +34,20 @@ export function loadPlaygroundModules(md: MarkdownItAsync) {
 
     return origFence ? origFence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options);
   };
+
+  // 替换语法：{? 提示内容 }
+  const defaultRule = md.renderer.rules.text;
+  md.renderer.rules.text = (tokens, idx, options, env, self) => {
+    const content = tokens[idx].content;
+
+    const prefixIdx = content.indexOf('{?');
+    const suffixIdx = content.lastIndexOf('}');
+    if (prefixIdx !== -1 && suffixIdx !== -1) {
+      const contentBefore = content.slice(0, prefixIdx);
+      const tooltipContent = content.slice(prefixIdx + 2, suffixIdx);
+      return `${contentBefore} <PlaygroundTooltip :content="'${tooltipContent}'" />`;
+    }
+
+    return defaultRule ? defaultRule(tokens, idx, options, env, self) : self.renderToken(tokens, idx, options);
+  };
 }
