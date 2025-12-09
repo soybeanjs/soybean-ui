@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const breadcrumbVariants = tv({
   slots: {
     root: '',
-    list: 'flex flex-wrap items-center my-0 break-words text-muted-foreground',
+    list: 'flex flex-wrap items-center my-0 px-0 break-words text-muted-foreground',
     item: 'inline-flex items-center list-none',
     page: 'font-normal text-foreground',
     separator: 'text-muted-foreground flex-shrink-0 list-none',
