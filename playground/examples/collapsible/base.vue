@@ -12,7 +12,7 @@ import { SButtonIcon, SCollapsible, SCollapsibleContent, SCollapsibleTrigger } f
       }"
     >
       <div class="flex-y-center justify-between px-2 space-x-4">
-        <h4 class="text-sm font-semibold">@soybeanjs starred 3 repositories</h4>
+        <div class="text-sm font-semibold">@soybeanjs starred 3 repositories</div>
         <SCollapsibleTrigger as-child>
           <SButtonIcon :icon="open ? 'lucide:chevron-up' : 'lucide:chevron-down'" />
         </SCollapsibleTrigger>

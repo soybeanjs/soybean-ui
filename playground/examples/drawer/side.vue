@@ -7,7 +7,7 @@ const sides: Side[] = ['left', 'right', 'top', 'bottom'];
 
 <template>
   <div>
-    <h3 class="playground-title">Drawer Side</h3>
+    <h3 class="playground-title">Side</h3>
     <div class="flex flex-wrap gap-3">
       <SDrawer v-for="side in sides" :key="side" :title="`Side: ${side}`" :side="side" description="Drawer Description">
         <template #trigger>

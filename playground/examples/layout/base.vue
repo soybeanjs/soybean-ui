@@ -98,11 +98,6 @@ const collapsibleOptions: SelectOptionData<LayoutCollapsible>[] = [
 
 const breadcrumbItems: BreadcrumbOptionData[] = [
   {
-    label: 'Home',
-    value: 'home',
-    icon: 'lucide:home'
-  },
-  {
     label: 'Components',
     value: 'components',
     icon: 'lucide:component'
@@ -117,7 +112,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
 
 <template>
   <div class="space-y-4">
-    <div class="flex-y-center justify-end gap-2">
+    <div class="flex-y-center flex-wrap justify-end gap-2">
       <SButtonGroup>
         <SButton variant="pure" class="cursor-default">side</SButton>
         <SSelect v-model="side" :items="sides" placeholder="Select side" :ui="{ trigger: 'w-30' }" />
@@ -179,7 +174,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
           <div class="w-full flex items-center gap-2">
             <SLayoutTrigger v-if="side === 'left'" :size="size" />
             <SSeparator orientation="vertical" class="h-4" />
-            <SBreadcrumb :items="breadcrumbItems" :size="size" />
+            <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-0' }" />
             <SLayoutTrigger v-if="side === 'right'" :size="size" class="ml-auto" />
           </div>
         </template>

@@ -1,6 +1,15 @@
 import type { ThemeColor, ThemeSize } from '@soybeanjs/ui';
 import { transformRecordToOption } from '../shared';
 
+export const themeSizeRatioMap: Record<ThemeSize, number> = {
+  xs: 12,
+  sm: 14,
+  md: 16,
+  lg: 18,
+  xl: 20,
+  '2xl': 24
+};
+
 export const themeSizeRecord: Record<ThemeSize, string> = {
   xs: 'xs',
   sm: 'sm',

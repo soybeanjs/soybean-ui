@@ -3,8 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { useToggle } from '@vueuse/core';
 import { SButtonIcon, SSelect, STreeMenu } from '@soybeanjs/ui';
 import type { ThemeSize } from '@soybeanjs/ui';
-import { themeSizeMap } from '@/theme';
-import { themeSizeOptions } from '../../constants/theme';
+import { themeSizeOptions, themeSizeRatioMap } from '../../constants/theme';
 import { treeMenuItems } from './data';
 
 const [collapsed, toggleCollapsible] = useToggle(false);
@@ -13,7 +12,7 @@ const size = shallowRef<ThemeSize>('md');
 
 const BASE_WIDTH = 240;
 
-const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeMap[size.value]) / themeSizeMap.md / 16}rem`);
+const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeRatioMap[size.value]) / themeSizeRatioMap.md / 16}rem`);
 </script>
 
 <template>
