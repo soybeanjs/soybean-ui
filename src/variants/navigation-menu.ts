@@ -19,8 +19,8 @@ export const navigationMenuVariants = tv({
     arrow: 'relative top-70% rotate-45 border border-border bg-background rounded-2px',
     list: `group grow flex items-center justify-center my-0 list-none`,
     subList: `grid grid-cols-[auto_auto] list-none my-0`,
-    item: `list-none`,
-    subItem: `list-none`,
+    item: `list-none m-0`,
+    subItem: `list-none m-0`,
     itemIcon: 'shrink-0 text-muted-foreground',
     trigger: [
       `group inline-flex items-center rounded-md bg-background font-medium transition-colors-200 decoration-none`,
@@ -50,7 +50,7 @@ export const navigationMenuVariants = tv({
     linkIcon: 'shrink-0 self-start text-muted-foreground',
     subLinkContent: `grow flex flex-col items-start`,
     subLinkLabel: `font-medium leading-none`,
-    subLinkDescription: `line-clamp-2 text-muted-foreground leading-snug`
+    subLinkDescription: `line-clamp-2 text-muted-foreground leading-snug m-0`
   },
   variants: {
     size: {
