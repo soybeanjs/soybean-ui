@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import {
-  SButton,
-  SCard,
-  SDropdownMenuWrapper,
-  SMenuCheckboxOptions,
-  SMenuOptions,
-  SMenuRadioOptions
-} from '@soybeanjs/ui';
+import { SButton, SDropdownMenuWrapper, SMenuCheckboxOptions, SMenuOptions, SMenuRadioOptions } from '@soybeanjs/ui';
 import type { MenuCheckboxOptionData, MenuOptionData, MenuRadioOptionData } from '@soybeanjs/ui';
 
 const menus: MenuOptionData<string>[] = [
@@ -62,7 +55,8 @@ const radios: MenuRadioOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Mix">
+  <div>
+    <h3 class="playground-title">Mix</h3>
     <SDropdownMenuWrapper>
       <template #trigger>
         <SButton variant="pure">Open Mix Dropdown</SButton>
@@ -71,5 +65,5 @@ const radios: MenuRadioOptionData<string>[] = [
       <SMenuCheckboxOptions v-model="checkbox" :items="checkboxes" />
       <SMenuRadioOptions v-model="radio" :items="radios" />
     </SDropdownMenuWrapper>
-  </SCard>
+  </div>
 </template>

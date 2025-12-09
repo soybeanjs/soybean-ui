@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { SCard, SNumberInput } from '@soybeanjs/ui';
+import { SNumberInput } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Center" split>
-    <SNumberInput center />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Center</h3>
+    <div class="w-60 lt-md:w-auto">
+      <SNumberInput center />
+    </div>
+  </div>
 </template>

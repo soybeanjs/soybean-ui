@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SButton, SCard, SIcon } from '@soybeanjs/ui';
+import { SButton, SIcon } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Slot" split>
+  <div>
+    <h3 class="playground-title">Slot</h3>
     <div class="flex flex-wrap gap-12px">
       <SButton color="primary">
         <template #leading>
@@ -27,5 +28,5 @@ import { SButton, SCard, SIcon } from '@soybeanjs/ui';
         </template>
       </SButton>
     </div>
-  </SCard>
+  </div>
 </template>

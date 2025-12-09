@@ -8,7 +8,7 @@ import DemoBadgeOpen from './open.vue';
 </script>
 
 <template>
-  <SCard title="Badge" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Badge" split :ui="{ content: 'flex-c gap-4' }">
     <DemoBadgeColor />
     <DemoBadgeContent />
     <DemoBadgePosition />

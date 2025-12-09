@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { SCard, STextarea } from '@soybeanjs/ui';
+import { STextarea } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Counter" split>
-    <STextarea show-counter :maxlength="20" default-value="default value" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Counter</h3>
+    <div class="w-80 lt-md:w-auto">
+      <STextarea show-counter :maxlength="20" default-value="default value" />
+    </div>
+  </div>
 </template>

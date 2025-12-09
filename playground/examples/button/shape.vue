@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SButton, SButtonIcon, SCard } from '@soybeanjs/ui';
+import { SButton, SButtonIcon } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Shape" split>
+  <div>
+    <h3 class="playground-title">Shape</h3>
     <div class="flex flex-wrap gap-3">
       <SButton color="primary" variant="solid" shape="rounded">rounded</SButton>
       <div class="flex-c-center">
@@ -23,5 +24,5 @@ import { SButton, SButtonIcon, SCard } from '@soybeanjs/ui';
         <div class="text-12px text-#666">circle</div>
       </div>
     </div>
-  </SCard>
+  </div>
 </template>

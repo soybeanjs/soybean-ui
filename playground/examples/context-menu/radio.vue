@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SContextMenuRadio } from '@soybeanjs/ui';
+import { SContextMenuRadio } from '@soybeanjs/ui';
 import type { MenuRadioOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
@@ -24,11 +24,12 @@ const placements: MenuRadioOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Radio">
+  <div>
+    <h3 class="playground-title">Radio</h3>
     <SContextMenuRadio v-model="placement" :items="placements">
       <template #trigger>
         <ContextMenuTrigger />
       </template>
     </SContextMenuRadio>
-  </SCard>
+  </div>
 </template>

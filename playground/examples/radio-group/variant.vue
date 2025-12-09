@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SRadioGroup } from '@soybeanjs/ui';
+import { SRadioGroup } from '@soybeanjs/ui';
 import type { RadioGroupOptionData } from '@soybeanjs/ui';
 
 const selected = ref<string>('apple');
@@ -14,7 +14,8 @@ const items: RadioGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Variant: outline">
+  <div>
+    <h3 class="playground-title">Variant: outline</h3>
     <SRadioGroup v-model="selected" :items="items" variant="outline" />
-  </SCard>
+  </div>
 </template>

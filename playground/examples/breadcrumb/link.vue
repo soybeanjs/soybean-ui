@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SBreadcrumb, SCard } from '@soybeanjs/ui';
+import { SBreadcrumb } from '@soybeanjs/ui';
 import type { BreadcrumbOptionData } from '@soybeanjs/ui';
 
 const items = [
@@ -23,7 +23,8 @@ const items = [
 </script>
 
 <template>
-  <SCard title="Link">
+  <div>
+    <h3 class="playground-title">Link</h3>
     <SBreadcrumb :items="items" />
-  </SCard>
+  </div>
 </template>

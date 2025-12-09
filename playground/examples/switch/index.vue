@@ -7,7 +7,7 @@ import DemoSwitchSlot from './slot.vue';
 </script>
 
 <template>
-  <SCard title="Switch" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Switch" split :ui="{ content: 'flex-c gap-4' }">
     <DemoSwitchBase />
     <DemoSwitchSize />
     <DemoSwitchShape />

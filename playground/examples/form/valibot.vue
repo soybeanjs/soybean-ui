@@ -2,7 +2,6 @@
 import {
   SButton,
   SButtonIcon,
-  SCard,
   SCheckboxGroup,
   SForm,
   SFormField,
@@ -66,7 +65,8 @@ const citiesItems: SelectOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Valibot">
+  <div>
+    <h3 class="playground-title">Valibot</h3>
     <SForm class="w-480px space-y-4" @submit="handleSubmit">
       <SFormField name="username" label="Username">
         <SInput placeholder="Please input username" />
@@ -103,5 +103,5 @@ const citiesItems: SelectOptionData<string>[] = [
       </SFormFieldArray>
       <SButton type="submit">Submit</SButton>
     </SForm>
-  </SCard>
+  </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, STabs } from '@soybeanjs/ui';
+import { STabs } from '@soybeanjs/ui';
 
 const tabValue = ref('1');
 const tabs = [
@@ -11,8 +11,9 @@ const tabs = [
 </script>
 
 <template>
-  <SCard title="Vertical" split>
-    <div class="w-320px lt-sm:w-auto">
+  <div>
+    <h3 class="playground-title">Vertical</h3>
+    <div class="w-320px lt-md:w-auto">
       <STabs
         v-model="tabValue"
         orientation="vertical"
@@ -24,5 +25,5 @@ const tabs = [
         </template>
       </STabs>
     </div>
-  </SCard>
+  </div>
 </template>

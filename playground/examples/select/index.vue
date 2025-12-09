@@ -9,7 +9,7 @@ import DemoSelectMultiple from './multiple.vue';
 </script>
 
 <template>
-  <SCard title="Select" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Select" split :ui="{ content: 'flex-c gap-4' }">
     <DemoSelectBase />
     <DemoSelectDefaultValue />
     <DemoSelectDisabled />

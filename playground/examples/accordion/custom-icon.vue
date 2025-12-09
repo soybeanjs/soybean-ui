@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion, SCard } from '@soybeanjs/ui';
+import { SAccordion } from '@soybeanjs/ui';
 import type { AccordionOptionData } from '@soybeanjs/ui';
 import { Icon } from '@iconify/vue';
 
@@ -29,12 +29,13 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <SCard title="Custom Icon" split>
+  <div>
+    <h3 class="playground-title">Custom Icon</h3>
     <SAccordion v-model="multi" multiple :items="items">
       <template #trigger-icon="{ open }">
         <Icon v-if="open" icon="lucide:minus" />
         <Icon v-else icon="lucide:plus" />
       </template>
     </SAccordion>
-  </SCard>
+  </div>
 </template>

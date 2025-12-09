@@ -7,7 +7,7 @@ import DemoInputClearable from './clearable.vue';
 </script>
 
 <template>
-  <SCard title="Input" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Input" split :ui="{ content: 'flex-c gap-4' }">
     <DemoInputBase />
     <DemoInputDisabled />
     <DemoInputSlot />

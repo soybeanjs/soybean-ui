@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDropdownMenuCheckbox } from '@soybeanjs/ui';
+import { SButton, SDropdownMenuCheckbox } from '@soybeanjs/ui';
 import type { MenuCheckboxOptionData } from '@soybeanjs/ui';
 
 const modelValue = ref<string[]>(['vue', 'solid']);
@@ -17,11 +17,12 @@ const items = ref<MenuCheckboxOptionData<string>[]>([
 </script>
 
 <template>
-  <SCard title="Checkbox">
+  <div>
+    <h3 class="playground-title">Checkbox</h3>
     <SDropdownMenuCheckbox v-model="modelValue" :items="items">
       <template #trigger>
         <SButton variant="pure">Checkbox</SButton>
       </template>
     </SDropdownMenuCheckbox>
-  </SCard>
+  </div>
 </template>

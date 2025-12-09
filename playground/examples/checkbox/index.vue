@@ -11,7 +11,7 @@ import CheckboxCardGroup from './card-group.vue';
 </script>
 
 <template>
-  <SCard title="Checkbox" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Checkbox" split :ui="{ content: 'flex-c gap-4' }">
     <CheckboxSingle />
     <CheckboxColor />
     <CheckboxSize />

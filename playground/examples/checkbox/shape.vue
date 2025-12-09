@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SCard, SCheckbox } from '@soybeanjs/ui';
+import { SCheckbox } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Shape">
+  <div>
+    <h3 class="playground-title">Shape</h3>
     <SCheckbox :default-value="true" shape="rounded" label="Rounded" />
-  </SCard>
+  </div>
 </template>

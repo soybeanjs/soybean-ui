@@ -5,7 +5,7 @@ import DemoFormValibot from './valibot.vue';
 </script>
 
 <template>
-  <SCard title="Form" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Form" split :ui="{ content: 'flex-c gap-4' }">
     <DemoFormZod />
     <DemoFormValibot />
   </SCard>

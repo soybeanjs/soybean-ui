@@ -7,7 +7,7 @@ import DemoContextMenuMix from './mix.vue';
 </script>
 
 <template>
-  <SCard title="Context Menu" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Context Menu" split :ui="{ content: 'flex-c gap-4' }">
     <DemoContextMenuBase />
     <DemoContextMenuCheckbox />
     <DemoContextMenuRadio />

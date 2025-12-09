@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { SCard, STextarea } from '@soybeanjs/ui';
+import { STextarea } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Clearable" split>
-    <STextarea clearable default-value="default value" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Clearable</h3>
+    <div class="w-80 lt-md:w-auto">
+      <STextarea clearable default-value="default value" />
+    </div>
+  </div>
 </template>

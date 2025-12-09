@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SButton, SCard, SDialogPure } from '@soybeanjs/ui';
+import { SButton, SDialogPure } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Pure" description="Pure dialog" split>
+  <div>
+    <h3 class="playground-title">Pure Dialog</h3>
     <SDialogPure>
       <template #trigger>
         <SButton variant="pure">Open</SButton>
@@ -14,5 +15,5 @@ import { SButton, SCard, SDialogPure } from '@soybeanjs/ui';
         <p>no Title and Description</p>
       </div>
     </SDialogPure>
-  </SCard>
+  </div>
 </template>

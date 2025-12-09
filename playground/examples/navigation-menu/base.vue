@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SNavigationMenu } from '@soybeanjs/ui';
+import { SNavigationMenu } from '@soybeanjs/ui';
 import type { NavigationMenuOptionData } from '@soybeanjs/ui';
 
 const menus: NavigationMenuOptionData[] = [
@@ -190,7 +190,5 @@ const menus: NavigationMenuOptionData[] = [
 </script>
 
 <template>
-  <SCard title="Base" :scrollable="false">
-    <SNavigationMenu :items="menus" :ui="{ subLink: 'w-80' }" />
-  </SCard>
+  <SNavigationMenu :items="menus" :ui="{ subLink: 'w-80' }" />
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SRadioCardGroup } from '@soybeanjs/ui';
+import { SRadioCardGroup } from '@soybeanjs/ui';
 import type { RadioCardGroupOptionData } from '@soybeanjs/ui';
 
 const selected = ref<string>('apple');
@@ -14,7 +14,8 @@ const items: RadioCardGroupOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Card Group" :ui="{ content: 'flex-c gap-3' }">
+  <div>
+    <h3 class="playground-title">Card Group</h3>
     <SRadioCardGroup v-model="selected" :items="items" color="destructive" shape="rounded" />
-  </SCard>
+  </div>
 </template>

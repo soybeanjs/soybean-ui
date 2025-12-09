@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Fragment, h } from 'vue';
-import { SAlertDialogAction, SAlertDialogCancel, SButton, SCard, useDialog } from '@soybeanjs/ui';
+import { SAlertDialogAction, SAlertDialogCancel, SButton, useDialog } from '@soybeanjs/ui';
 
 const dialog = useDialog();
 
@@ -51,12 +51,15 @@ const openCustomFooterDialog = () => {
 </script>
 
 <template>
-  <SCard title="useDialog" split :ui="{ content: 'flex gap-3' }">
-    <SButton color="warning" @click="openWarning">Open Warning Dialog</SButton>
-    <SButton color="info" @click="openInfo">Open Info Dialog</SButton>
-    <SButton color="success" @click="openSuccess">Open Success Dialog</SButton>
-    <SButton color="destructive" @click="openDestructive">Open Destructive Dialog</SButton>
-    <SButton @click="openCustomTextDialog">Custom Text Dialog</SButton>
-    <SButton @click="openCustomFooterDialog">Custom Footer Dialog</SButton>
-  </SCard>
+  <div>
+    <h3 class="playground-title">useDialog</h3>
+    <div class="flex flex-wrap gap-3">
+      <SButton color="warning" @click="openWarning">Warning</SButton>
+      <SButton color="info" @click="openInfo">Info</SButton>
+      <SButton color="success" @click="openSuccess">Success</SButton>
+      <SButton color="destructive" @click="openDestructive">Destructive</SButton>
+      <SButton @click="openCustomTextDialog">Custom Text</SButton>
+      <SButton @click="openCustomFooterDialog">Custom Footer</SButton>
+    </div>
+  </div>
 </template>

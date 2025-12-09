@@ -5,7 +5,7 @@ import DemoTreeVirtualizer from './virtualizer.vue';
 </script>
 
 <template>
-  <SCard title="Tree" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Tree" split :ui="{ content: 'flex-c gap-4' }">
     <DemoTreeBase />
     <DemoTreeVirtualizer />
   </SCard>

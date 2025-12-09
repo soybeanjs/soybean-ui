@@ -9,7 +9,7 @@ import DemoTagSlot from './slot.vue';
 </script>
 
 <template>
-  <SCard title="Tag" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Tag" :ui="{ content: 'flex-c gap-4' }">
     <DemoTagColor />
     <DemoTagVariant />
     <DemoTagShape />

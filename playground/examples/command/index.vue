@@ -5,7 +5,7 @@ import DemoCommandDialog from './dialog.vue';
 </script>
 
 <template>
-  <SCard title="Command" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Command" split :ui="{ content: 'flex-c gap-4' }">
     <DemoCommandBase />
     <DemoCommandDialog />
   </SCard>

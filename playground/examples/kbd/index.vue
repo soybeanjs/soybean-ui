@@ -6,7 +6,7 @@ import DemoKbdVariant from './variant.vue';
 </script>
 
 <template>
-  <SCard title="Kbd" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Kbd" :ui="{ content: 'flex-c gap-4' }">
     <DemoKbdBase />
     <DemoKbdSize />
     <DemoKbdVariant />

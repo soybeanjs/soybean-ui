@@ -5,7 +5,7 @@ import DemoDrawerScroll from './scroll.vue';
 </script>
 
 <template>
-  <SCard title="Drawer" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Drawer" split :ui="{ content: 'flex-c gap-4' }">
     <DemoDrawerSide />
     <DemoDrawerScroll />
   </SCard>

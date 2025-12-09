@@ -4,7 +4,7 @@ import DemoListBase from './base.vue';
 </script>
 
 <template>
-  <SCard title="List" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="List" split>
     <DemoListBase />
   </SCard>
 </template>

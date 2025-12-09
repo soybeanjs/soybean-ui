@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { SCard, SPassword } from '@soybeanjs/ui';
+import { SPassword } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Disabled" split>
-    <SPassword default-value="abc123" disabled placeholder="Please input" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Disabled</h3>
+    <div class="w-60 lt-md:w-auto">
+      <SPassword default-value="abc123" disabled placeholder="Please input" />
+    </div>
+  </div>
 </template>

@@ -9,7 +9,7 @@ import DemoDialogUseDialog from './use-dialog.vue';
 </script>
 
 <template>
-  <SCard title="Dialog" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Dialog" split :ui="{ content: 'flex-c gap-4' }">
     <DemoDialogBase />
     <DemoDialogFooter />
     <DemoDialogState />

@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { SAccordion, SCard } from '@soybeanjs/ui';
+import { ref } from 'vue';
+import { SAccordion } from '@soybeanjs/ui';
 import type { AccordionOptionData } from '@soybeanjs/ui';
-import { themeSizeOptions } from '../../constants/theme';
+
+const alwaysOne = ref('');
 
 const items: AccordionOptionData[] = [
   {
@@ -26,17 +28,8 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <SCard title="Size" split>
-    <div class="flex flex-wrap justify-between gap-4">
-      <SCard
-        v-for="size in themeSizeOptions"
-        :key="size.value"
-        :title="size.label"
-        split
-        class="basis-48% lt-sm:basis-100%"
-      >
-        <SAccordion :size="size.value" :items="items" collapsible />
-      </SCard>
-    </div>
-  </SCard>
+  <div>
+    <h3 class="playground-title">Always open one</h3>
+    <SAccordion v-model="alwaysOne" :items="items" />
+  </div>
 </template>

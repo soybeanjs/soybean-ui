@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { SBadge, SButton, SCard } from '@soybeanjs/ui';
+import { SBadge, SButton } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Slot" split>
+  <div>
+    <h3 class="playground-title">Slot</h3>
     <SBadge>
       <template #content>New!</template>
       <SButton variant="pure">99+</SButton>
     </SBadge>
-  </SCard>
+  </div>
 </template>

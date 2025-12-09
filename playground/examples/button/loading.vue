@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SButtonLoading, SCard } from '@soybeanjs/ui';
+import { SButton, SButtonLoading } from '@soybeanjs/ui';
 
 const loading = ref(false);
 
@@ -14,7 +14,8 @@ const endLoading = () => {
 </script>
 
 <template>
-  <SCard title="Loading" split>
+  <div>
+    <h3 class="playground-title">Loading</h3>
     <div class="flex flex-wrap gap-3">
       <SButtonLoading variant="pure" auto-loading :loading-duration="1000">Loading in Start</SButtonLoading>
       <SButtonLoading
@@ -29,6 +30,8 @@ const endLoading = () => {
       <SButtonLoading variant="soft" auto-loading :loading-duration="1000" loading-position="end">
         Loading in End
       </SButtonLoading>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-4">
       <SButtonLoading color="accent" variant="solid" :loading="loading" @click="startLoading">
         Control Loading
       </SButtonLoading>
@@ -37,5 +40,5 @@ const endLoading = () => {
         Loading end in 2s
       </SButtonLoading>
     </div>
-  </SCard>
+  </div>
 </template>

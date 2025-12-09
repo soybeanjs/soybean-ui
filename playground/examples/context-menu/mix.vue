@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SContextMenuWrapper, SMenuCheckboxOptions, SMenuOptions, SMenuRadioOptions } from '@soybeanjs/ui';
+import { SContextMenuWrapper, SMenuCheckboxOptions, SMenuOptions, SMenuRadioOptions } from '@soybeanjs/ui';
 import type { MenuCheckboxOptionData, MenuOptionData, MenuRadioOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
@@ -56,7 +56,8 @@ const radios: MenuRadioOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Mix">
+  <div>
+    <h3 class="playground-title">Mix</h3>
     <SContextMenuWrapper>
       <template #trigger>
         <ContextMenuTrigger />
@@ -65,5 +66,5 @@ const radios: MenuRadioOptionData<string>[] = [
       <SMenuCheckboxOptions v-model="checkbox" :items="checkboxes" />
       <SMenuRadioOptions v-model="radio" :items="radios" />
     </SContextMenuWrapper>
-  </SCard>
+  </div>
 </template>

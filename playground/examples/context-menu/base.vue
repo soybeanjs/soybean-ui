@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SContextMenu } from '@soybeanjs/ui';
+import { SContextMenu } from '@soybeanjs/ui';
 import type { MenuOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
@@ -44,11 +44,12 @@ const menus: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Base">
+  <div>
+    <h3 class="playground-title">Base</h3>
     <SContextMenu :items="menus">
       <template #trigger>
         <ContextMenuTrigger />
       </template>
     </SContextMenu>
-  </SCard>
+  </div>
 </template>

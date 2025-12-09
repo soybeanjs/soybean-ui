@@ -9,7 +9,7 @@ import DemoDropdownMenuMix from './mix.vue';
 </script>
 
 <template>
-  <SCard title="Dropdown Menu" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Dropdown Menu" split :ui="{ content: 'flex-c gap-4' }">
     <DemoDropdownMenuBase />
     <DemoDropdownMenuTrigger />
     <DemoDropdownMenuArrow />

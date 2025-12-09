@@ -4,7 +4,7 @@ import DemoNavigationMenuBase from './base.vue';
 </script>
 
 <template>
-  <SCard title="Navigation Menu" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Navigation Menu" split>
     <DemoNavigationMenuBase />
   </SCard>
 </template>

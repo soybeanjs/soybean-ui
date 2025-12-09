@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@soybeanjs/ui';
+import { SButton } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Disabled" split>
+  <div>
+    <h3 class="playground-title">Disabled</h3>
     <div class="flex flex-wrap gap-3">
       <SButton disabled>Disabled</SButton>
     </div>
-  </SCard>
+  </div>
 </template>

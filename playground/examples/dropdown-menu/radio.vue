@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SButton, SCard, SDropdownMenuRadio } from '@soybeanjs/ui';
+import { SButton, SDropdownMenuRadio } from '@soybeanjs/ui';
 import type { MenuRadioOptionData } from '@soybeanjs/ui';
 
 const placement = ref('top-start');
@@ -25,11 +25,12 @@ const activeLabel = computed(() => placements.find(item => item.value === placem
 </script>
 
 <template>
-  <SCard title="Radio">
+  <div>
+    <h3 class="playground-title">Radio</h3>
     <SDropdownMenuRadio v-model="placement" :items="placements">
       <template #trigger>
         <SButton variant="pure" class="w-30">{{ activeLabel }}</SButton>
       </template>
     </SDropdownMenuRadio>
-  </SCard>
+  </div>
 </template>

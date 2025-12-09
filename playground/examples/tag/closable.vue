@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SSwitch, STag } from '@soybeanjs/ui';
+import { SSwitch, STag } from '@soybeanjs/ui';
 
 const open = shallowRef(true);
 </script>
 
 <template>
-  <SCard title="Closable" split>
-    <template #extra>
-      <SSwitch v-model="open" />
-    </template>
-    <STag v-model:open="open" variant="soft" closable>closable tag</STag>
-  </SCard>
+  <div>
+    <h3 class="playground-title">Closable</h3>
+    <div class="flex-y-center">
+      <SSwitch v-model="open" class="mr-4" />
+      <STag v-model:open="open" variant="soft" closable>closable tag</STag>
+    </div>
+  </div>
 </template>

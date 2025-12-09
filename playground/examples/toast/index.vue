@@ -8,7 +8,7 @@ import DemoToastContent from './content.vue';
 </script>
 
 <template>
-  <SCard title="Toast" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Toast" :ui="{ content: 'flex-c gap-4' }">
     <DemoToastBase />
     <DemoToastType />
     <DemoToastColor />

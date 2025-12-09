@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SIcon, STree, STreeItem } from '@soybeanjs/ui';
+import { SIcon, STree, STreeItem } from '@soybeanjs/ui';
 import type { TreeItemData } from '@soybeanjs/ui';
 
 type DemoTree = TreeItemData<{
@@ -40,7 +40,8 @@ const items: DemoTree[] = [
 </script>
 
 <template>
-  <SCard title="Base">
+  <div>
+    <h3 class="playground-title">Base</h3>
     <STree
       class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
       :items="items"
@@ -68,5 +69,5 @@ const items: DemoTree[] = [
         </STreeItem>
       </template>
     </STree>
-  </SCard>
+  </div>
 </template>

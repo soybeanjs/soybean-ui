@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue';
-import { SButton, SCard, SToastAction, useToast } from '@soybeanjs/ui';
+import { SButton, SToastAction, useToast } from '@soybeanjs/ui';
 
 const toast = useToast();
 
@@ -25,7 +25,8 @@ const openWithContent = () => {
 </script>
 
 <template>
-  <SCard title="Custom Content" :ui="{ content: 'flex gap-3' }">
+  <div>
+    <h3 class="playground-title">Custom Content</h3>
     <SButton variant="pure" @click="openWithContent">Default</SButton>
-  </SCard>
+  </div>
 </template>

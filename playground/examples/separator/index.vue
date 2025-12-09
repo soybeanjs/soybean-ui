@@ -6,7 +6,7 @@ import DemoSeparatorBorder from './border.vue';
 </script>
 
 <template>
-  <SCard title="Separator" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Separator" split :ui="{ content: 'flex-c gap-4' }">
     <DemoSeparatorOrientation />
     <DemoSeparatorAlign />
     <DemoSeparatorBorder />

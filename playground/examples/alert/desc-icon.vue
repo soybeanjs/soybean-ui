@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SAlert, SCard } from '@soybeanjs/ui';
+import { SAlert } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="With description and icon" split>
+  <div>
+    <h3 class="playground-title">With description and icon</h3>
     <SAlert
       color="destructive"
       variant="ghost"
@@ -11,5 +12,5 @@ import { SAlert, SCard } from '@soybeanjs/ui';
       description="Your session has expired. Please log in again."
       icon="lucide:triangle-alert"
     />
-  </SCard>
+  </div>
 </template>

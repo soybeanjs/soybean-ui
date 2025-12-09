@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SCard, SIcon, STag } from '@soybeanjs/ui';
+import { SIcon, STag } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Slot" split>
+  <div>
+    <h3 class="playground-title">Slot</h3>
     <STag variant="ghost">
       <template #leading>
         <SIcon icon="lucide:arrow-left" />
@@ -13,5 +14,5 @@ import { SCard, SIcon, STag } from '@soybeanjs/ui';
         <SIcon icon="lucide:arrow-right" />
       </template>
     </STag>
-  </SCard>
+  </div>
 </template>

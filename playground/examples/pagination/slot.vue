@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { SCard, SIcon, SPagination } from '@soybeanjs/ui';
+import { SIcon, SPagination } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard
-    title="Slot"
-    description="You can use the slot to customize the first, prev, next, and last buttons"
-    :ui="{ content: 'flex-c gap-3' }"
-  >
+  <div>
+    <h3 class="playground-title">Slot</h3>
+    <p>You can use the slot to customize the first, prev, next, and last buttons</p>
     <SPagination show-edges :sibling-count="1" :items-per-page="10" :total="200">
       <template #first>
         <SIcon icon="lucide:chevrons-left" />
@@ -24,5 +22,5 @@ import { SCard, SIcon, SPagination } from '@soybeanjs/ui';
         <SIcon icon="lucide:chevrons-right" />
       </template>
     </SPagination>
-  </SCard>
+  </div>
 </template>

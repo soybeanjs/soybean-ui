@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { SButton, SCard, useToast } from '@soybeanjs/ui';
+import { SButton, useToast } from '@soybeanjs/ui';
 
 const toast = useToast();
 </script>
 
 <template>
-  <SCard title="Base" :ui="{ content: 'flex gap-3' }">
+  <div>
+    <h3 class="playground-title">Base</h3>
     <SButton variant="pure" @click="toast({ title: 'Toast Title', description: 'Toast Description' })">Default</SButton>
-  </SCard>
+  </div>
 </template>

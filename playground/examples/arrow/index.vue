@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { SArrow, SCard } from '@soybeanjs/ui';
+import { SCard } from '@soybeanjs/ui';
+import DemoArrowBase from './base.vue';
 </script>
 
 <template>
-  <SCard title="Arrow" :ui="{ content: 'flex gap-4' }">
-    <SArrow class="text-2xl fill-popover stroke-border" />
-    <SArrow class="text-2xl fill-popover-foreground" />
+  <SCard title="Arrow" split>
+    <DemoArrowBase />
   </SCard>
 </template>

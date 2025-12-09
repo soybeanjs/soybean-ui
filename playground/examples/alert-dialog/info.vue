@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SAlertDialog, SAlertDialogAction, SButton, SCard } from '@soybeanjs/ui';
+import { SAlertDialog, SAlertDialogAction, SButton } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Info" split>
+  <div>
+    <h3 class="playground-title">Info</h3>
     <SAlertDialog title="Information" type="info">
       <template #trigger>
         <SButton color="info" variant="outline">Show Dialog</SButton>
@@ -13,5 +14,5 @@ import { SAlertDialog, SAlertDialogAction, SButton, SCard } from '@soybeanjs/ui'
         <SAlertDialogAction />
       </template>
     </SAlertDialog>
-  </SCard>
+  </div>
 </template>

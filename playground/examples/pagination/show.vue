@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { SCard, SPagination } from '@soybeanjs/ui';
+import { SPagination } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard
-    title="Show first and last"
-    description="When showFirstOrLast is false, the first and last buttons will not be shown"
-    :ui="{ content: 'flex-c gap-3' }"
-  >
+  <div>
+    <h3 class="playground-title">Show first and last</h3>
+    <p>When showFirstOrLast is false, the first and last buttons will not be shown</p>
     <SPagination
       show-edges
       :sibling-count="1"
@@ -16,5 +14,5 @@ import { SCard, SPagination } from '@soybeanjs/ui';
       action-as-selected
       :show-first-or-last="false"
     />
-  </SCard>
+  </div>
 </template>

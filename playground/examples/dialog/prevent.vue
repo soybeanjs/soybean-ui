@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SButton, SCard, SDialog, SDialogClose } from '@soybeanjs/ui';
+import { SButton, SDialog, SDialogClose } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Prevent Close" description="Prevent close when click outside or press escape key" split>
+  <div>
+    <h3 class="playground-title">Prevent Close</h3>
     <SDialog
       title="Dialog Title"
       @pointer-down-outside="e => e.preventDefault()"
@@ -20,5 +21,5 @@ import { SButton, SCard, SDialog, SDialogClose } from '@soybeanjs/ui';
         <SButton>Confirm</SButton>
       </template>
     </SDialog>
-  </SCard>
+  </div>
 </template>

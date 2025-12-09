@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SBreadcrumb, SBreadcrumbPage, SCard, SDropdownMenu } from '@soybeanjs/ui';
+import { SBreadcrumb, SBreadcrumbPage, SDropdownMenu } from '@soybeanjs/ui';
 import type { BreadcrumbOptionData, MenuOptionData } from '@soybeanjs/ui';
 
 interface DropdownItem extends BreadcrumbOptionData {
@@ -44,7 +44,8 @@ const dropdownItems: DropdownItem[] = [
 </script>
 
 <template>
-  <SCard title="Item Dropdown">
+  <div>
+    <h3 class="playground-title">Item Dropdown</h3>
     <SBreadcrumb :items="dropdownItems">
       <template #default="{ item }">
         <SDropdownMenu v-if="item.items" :items="item.items" :modal="false" trigger="hover">
@@ -55,5 +56,5 @@ const dropdownItems: DropdownItem[] = [
         <SBreadcrumbPage v-else>{{ item.label }}</SBreadcrumbPage>
       </template>
     </SBreadcrumb>
-  </SCard>
+  </div>
 </template>

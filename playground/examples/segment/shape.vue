@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SSegment } from '@soybeanjs/ui';
+import { SSegment } from '@soybeanjs/ui';
 import type { SegmentOptionData } from '@soybeanjs/ui';
 
 const day = shallowRef('monday');
@@ -38,7 +38,8 @@ const weekends = [
 </script>
 
 <template>
-  <SCard title="Shape: rounded">
+  <div>
+    <h3 class="playground-title">Shape: rounded</h3>
     <SSegment v-model="day" :items="weekends" shape="rounded" />
-  </SCard>
+  </div>
 </template>

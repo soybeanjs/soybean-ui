@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { SButtonLink, SCard } from '@soybeanjs/ui';
+import { SButtonLink } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Button Link">
-    <SButtonLink to="/demo">Link to demo</SButtonLink>
-    <SButtonLink to="/demo" target="_blank">New tab Link to demo</SButtonLink>
-    <SButtonLink to="/demo" disabled>Disabled</SButtonLink>
-    <SButtonLink href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">soybeanjs.cn</SButtonLink>
-  </SCard>
+  <div>
+    <h3 class="playground-title">Button Link</h3>
+    <div class="flex flex-wrap gap-3">
+      <SButtonLink to="/about">Link to about</SButtonLink>
+      <SButtonLink to="/about" target="_blank">New tab Link to about</SButtonLink>
+      <SButtonLink to="/about" disabled>Disabled</SButtonLink>
+      <SButtonLink href="https://soybeanjs.cn">soybeanjs.cn</SButtonLink>
+    </div>
+  </div>
 </template>

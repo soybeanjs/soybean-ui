@@ -7,7 +7,7 @@ import DemoRadioGroupCard from './card.vue';
 </script>
 
 <template>
-  <SCard title="RadioGroup" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="RadioGroup" split :ui="{ content: 'flex-c gap-4' }">
     <DemoRadioGroupColor />
     <DemoRadioGroupSize />
     <DemoRadioGroupVariant />

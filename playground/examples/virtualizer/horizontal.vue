@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SVirtualizer, SVirtualizerItem } from '@soybeanjs/ui';
+import { SVirtualizer, SVirtualizerItem } from '@soybeanjs/ui';
 
 const items = Array.from({ length: 1000 }, (_, index) => ({
   value: `item-${index}`,
@@ -8,8 +8,9 @@ const items = Array.from({ length: 1000 }, (_, index) => ({
 </script>
 
 <template>
-  <SCard title="Horizontal" split>
-    <div class="w-80 lt-sm:w-auto border rounded-md">
+  <div>
+    <h3 class="playground-title">Horizontal</h3>
+    <div class="w-80 lt-md:w-auto border rounded-md">
       <SVirtualizer :items="items" height="60px" :options="{ horizontal: true, estimateSize: () => 100 }">
         <template #item="{ virtualItem, item }">
           <SVirtualizerItem :data="virtualItem" class="px-2 py-1 border-r">
@@ -18,5 +19,5 @@ const items = Array.from({ length: 1000 }, (_, index) => ({
         </template>
       </SVirtualizer>
     </div>
-  </SCard>
+  </div>
 </template>

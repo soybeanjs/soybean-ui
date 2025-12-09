@@ -7,7 +7,7 @@ import DemoTabsCustom from './custom.vue';
 </script>
 
 <template>
-  <SCard title="Tabs" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Tabs" split :ui="{ content: 'flex-c gap-4' }">
     <DemoTabsHorizontal />
     <DemoTabsVertical />
     <DemoTabsFill />

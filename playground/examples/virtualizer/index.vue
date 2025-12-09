@@ -6,7 +6,7 @@ import DemoVirtualizerDynamic from './dynamic.vue';
 </script>
 
 <template>
-  <SCard title="Virtualizer" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Virtualizer" split :ui="{ content: 'flex-c gap-4' }">
     <DemoVirtualizerBase />
     <DemoVirtualizerHorizontal />
     <DemoVirtualizerDynamic />

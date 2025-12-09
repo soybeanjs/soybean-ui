@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SInput } from '@soybeanjs/ui';
+import { SInput } from '@soybeanjs/ui';
 
 const modelValue = ref('');
 </script>
 
 <template>
-  <SCard title="Base" split>
+  <div>
+    <h3 class="playground-title">Base</h3>
     <div class="leading-loose text-sm text-gray-500">modelValue: {{ modelValue }}</div>
-    <SInput v-model="modelValue" placeholder="Please input" />
-  </SCard>
+    <div class="w-60 lt-md:w-auto">
+      <SInput v-model="modelValue" placeholder="Please input" />
+    </div>
+  </div>
 </template>

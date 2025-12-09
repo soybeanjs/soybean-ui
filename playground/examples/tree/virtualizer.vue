@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SIcon, STreeVirtualizer, STreeVirtualizerItem } from '@soybeanjs/ui';
+import { SIcon, STreeVirtualizer, STreeVirtualizerItem } from '@soybeanjs/ui';
 import type { TreeItemData } from '@soybeanjs/ui';
 
 type DemoTree = TreeItemData<{
@@ -45,7 +45,8 @@ const items: DemoTree[] = [
 </script>
 
 <template>
-  <SCard title="Virtualizer">
+  <div>
+    <h3 class="playground-title">Virtualizer</h3>
     <STreeVirtualizer
       height="240px"
       class="list-none select-none w-56 bg-white text-stone-700 rounded-lg border shadow-sm p-2 text-sm font-medium"
@@ -72,5 +73,5 @@ const items: DemoTree[] = [
         </STreeVirtualizerItem>
       </template>
     </STreeVirtualizer>
-  </SCard>
+  </div>
 </template>

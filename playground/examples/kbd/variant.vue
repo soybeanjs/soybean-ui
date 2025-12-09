@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { SCard, SKbd } from '@soybeanjs/ui';
+import { SKbd } from '@soybeanjs/ui';
 import type { KbdVariant } from '@soybeanjs/ui';
 
 const variants: KbdVariant[] = ['solid', 'outline', 'ghost'];
 </script>
 
 <template>
-  <SCard title="Variant" :ui="{ content: 'flex gap-2' }">
-    <SKbd v-for="variant in variants" :key="variant" :variant="variant" value="command" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Variant</h3>
+    <div class="flex flex-wrap gap-3">
+      <SKbd v-for="variant in variants" :key="variant" :variant="variant" value="command" />
+    </div>
+  </div>
 </template>

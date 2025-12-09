@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCard, SCommand } from '@soybeanjs/ui';
+import { SCommand } from '@soybeanjs/ui';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 
 const items: CommandOptionData[] = [
@@ -62,9 +62,10 @@ function handleSelect(item: SelectEvent<string>) {
 </script>
 
 <template>
-  <SCard title="Base">
-    <div class="w-80 lt-sm:w-auto">
+  <div>
+    <h3 class="playground-title">Base</h3>
+    <div class="w-80 lt-md:w-auto">
       <SCommand class="border rounded-lg shadow-md" :items="items" @select="handleSelect" />
     </div>
-  </SCard>
+  </div>
 </template>

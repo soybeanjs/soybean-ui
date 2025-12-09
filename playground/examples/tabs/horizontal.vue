@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, STabs } from '@soybeanjs/ui';
+import { STabs } from '@soybeanjs/ui';
 
 const tabValue = ref('1');
 const tabs = [
@@ -11,13 +11,14 @@ const tabs = [
 </script>
 
 <template>
-  <SCard title="Horizontal" split>
-    <div class="w-320px lt-sm:w-auto">
+  <div>
+    <h3 class="playground-title">Horizontal</h3>
+    <div class="w-320px lt-md:w-auto">
       <STabs v-model="tabValue" :items="tabs" :ui="{ content: 'p-4 border border-border rounded-1' }">
         <template #content="{ value }">
           <div>The Tab Content: {{ value }}</div>
         </template>
       </STabs>
     </div>
-  </SCard>
+  </div>
 </template>

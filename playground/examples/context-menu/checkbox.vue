@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SContextMenuCheckbox } from '@soybeanjs/ui';
+import { SContextMenuCheckbox } from '@soybeanjs/ui';
 import type { MenuCheckboxOptionData } from '@soybeanjs/ui';
 import ContextMenuTrigger from './trigger.vue';
 
@@ -18,11 +18,12 @@ const items = ref<MenuCheckboxOptionData<string>[]>([
 </script>
 
 <template>
-  <SCard title="Checkbox">
+  <div>
+    <h3 class="playground-title">Checkbox</h3>
     <SContextMenuCheckbox v-model="modelValue" :items="items">
       <template #trigger>
         <ContextMenuTrigger />
       </template>
     </SContextMenuCheckbox>
-  </SCard>
+  </div>
 </template>

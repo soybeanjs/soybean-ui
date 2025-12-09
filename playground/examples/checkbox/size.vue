@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { SCard, SCheckbox } from '@soybeanjs/ui';
+import { SCheckbox } from '@soybeanjs/ui';
 import { themeColorOptions, themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
-  <SCard title="Size" :ui="{ content: 'flex gap-3' }">
-    <SCheckbox
-      v-for="(size, index) in themeSizeOptions"
-      :key="size.value"
-      :default-value="true"
-      :size="size.value"
-      :label="size.label"
-      :color="themeColorOptions[index].value"
-    />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Size</h3>
+    <div class="flex flex-wrap gap-4">
+      <SCheckbox
+        v-for="(size, index) in themeSizeOptions"
+        :key="size.value"
+        :default-value="true"
+        :size="size.value"
+        :label="size.label"
+        :color="themeColorOptions[index].value"
+      />
+    </div>
+  </div>
 </template>

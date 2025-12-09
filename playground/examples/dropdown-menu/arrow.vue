@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SCard, SDropdownMenu } from '@soybeanjs/ui';
+import { SButton, SDropdownMenu } from '@soybeanjs/ui';
 import type { MenuOptionData } from '@soybeanjs/ui';
 
 const menus: MenuOptionData<string>[] = [
@@ -43,11 +43,12 @@ const menus: MenuOptionData<string>[] = [
 </script>
 
 <template>
-  <SCard title="Arrow">
+  <div>
+    <h3 class="playground-title">Arrow</h3>
     <SDropdownMenu :items="menus" :show-arrow="true">
       <template #trigger>
         <SButton variant="pure">With Arrow</SButton>
       </template>
     </SDropdownMenu>
-  </SCard>
+  </div>
 </template>

@@ -7,7 +7,7 @@ import DemoPasswordVisibleIcon from './icon.vue';
 </script>
 
 <template>
-  <SCard title="Password" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Password" split :ui="{ content: 'flex-c gap-4' }">
     <DemoPasswordBase />
     <DemoPasswordDisabled />
     <DemoPasswordClearable />

@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SButton, SCard, SDialog } from '@soybeanjs/ui';
+import { SButton, SDialog } from '@soybeanjs/ui';
 
 const open = ref(false);
 </script>
 
 <template>
-  <SCard title="State" description="Control open state" split>
+  <div>
+    <h3 class="playground-title">State</h3>
     <SDialog v-model:open="open" title="Dialog Title">
       <template #trigger>
         <SButton variant="pure">Open</SButton>
       </template>
       <div>Dialog Content</div>
     </SDialog>
-  </SCard>
+  </div>
 </template>

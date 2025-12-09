@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue';
-import { SCard, SIcon, SSegment } from '@soybeanjs/ui';
+import { SIcon, SSegment } from '@soybeanjs/ui';
 import type { SegmentOptionData } from '@soybeanjs/ui';
 
 interface ThemeSchema extends SegmentOptionData<string> {
@@ -31,11 +31,12 @@ const themeSchemas: ThemeSchema[] = [
 </script>
 
 <template>
-  <SCard title="Icon">
+  <div>
+    <h3 class="playground-title">Icon</h3>
     <SSegment v-model="themeSchema" :items="themeSchemas" shape="rounded">
       <template #item="{ icon }">
         <SIcon :icon="icon" />
       </template>
     </SSegment>
-  </SCard>
+  </div>
 </template>

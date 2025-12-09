@@ -9,7 +9,7 @@ import DemoPaginationShow from './show.vue';
 </script>
 
 <template>
-  <SCard title="Pagination" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Pagination" split :ui="{ content: 'flex-c gap-4' }">
     <DemoPaginationVariant />
     <DemoPaginationSize />
     <DemoPaginationShape />

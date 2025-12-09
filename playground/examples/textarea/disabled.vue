@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { SCard, STextarea } from '@soybeanjs/ui';
+import { STextarea } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Disabled" split>
-    <STextarea model-value="the textarea is disabled" disabled placeholder="Please input" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Disabled</h3>
+    <div class="w-80 lt-md:w-auto">
+      <STextarea model-value="the textarea is disabled" disabled placeholder="Please input" />
+    </div>
+  </div>
 </template>

@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SCheckboxCard } from '@soybeanjs/ui';
+import { SCheckboxCard } from '@soybeanjs/ui';
 import type { CheckedState } from '@soybeanjs/ui';
 
 const model = ref<CheckedState | null>(null);
 </script>
 
 <template>
-  <SCard title="Checkbox Card">
+  <div>
+    <h3 class="playground-title">Checkbox Card</h3>
     <SCheckboxCard
       v-model="model"
       color="carbon"
@@ -15,5 +16,5 @@ const model = ref<CheckedState | null>(null);
       label="Label"
       description="this is a description"
     />
-  </SCard>
+  </div>
 </template>

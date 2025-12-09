@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SCard, SPassword } from '@soybeanjs/ui';
+import { SPassword } from '@soybeanjs/ui';
 
 const modelValue = ref('abc123');
 </script>
 
 <template>
-  <SCard title="Base" split>
-    <SPassword v-model="modelValue" placeholder="Please input" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Base</h3>
+    <div class="w-60 lt-md:w-auto">
+      <SPassword v-model="modelValue" placeholder="Please input" />
+    </div>
+  </div>
 </template>

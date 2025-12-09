@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { SButton, SCard } from '@soybeanjs/ui';
-import type { ThemeColor } from '@/theme';
+import { SButton } from '@soybeanjs/ui';
+import type { ThemeColor } from '@soybeanjs/ui';
 
 const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
 </script>
 
 <template>
-  <SCard title="Color" split>
+  <div>
+    <h3 class="playground-title">Color</h3>
     <div class="flex flex-wrap gap-3">
       <SButton v-for="color in colors" :key="color" :color="color">{{ color }}</SButton>
     </div>
-  </SCard>
+  </div>
 </template>

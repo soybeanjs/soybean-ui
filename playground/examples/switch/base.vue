@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SCard, SSwitch } from '@soybeanjs/ui';
+import { SSwitch } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Base">
+  <div>
+    <h3 class="playground-title">Base</h3>
     <SSwitch :default-value="true" />
-  </SCard>
+  </div>
 </template>

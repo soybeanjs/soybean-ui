@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SAccordion, SCard } from '@soybeanjs/ui';
+import { SAccordion } from '@soybeanjs/ui';
 import type { AccordionOptionData } from '@soybeanjs/ui';
 
 const single = ref('');
@@ -28,7 +28,8 @@ const items: AccordionOptionData[] = [
 </script>
 
 <template>
-  <SCard title="Custom Styling" split>
+  <div>
+    <h3 class="playground-title">Custom Styling</h3>
     <SAccordion
       v-model="single"
       type="single"
@@ -40,5 +41,5 @@ const items: AccordionOptionData[] = [
         trigger: `mb-2 rounded-md px-3 text-left underline-offset-2 data-[state=closed]:(bg-muted/50 no-underline) data-[state=open]:(bg-secondary-foreground/20 underline hover:bg-secondary-foreground/20 hover:underline) hover:bg-muted`
       }"
     />
-  </SCard>
+  </div>
 </template>

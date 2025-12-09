@@ -11,7 +11,7 @@ import DemoAlertSize from './size.vue';
 </script>
 
 <template>
-  <SCard title="Accordion" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Alert" split :ui="{ content: 'flex-c gap-4' }">
     <DemoAlertColor />
     <DemoAlertVariant />
     <DemoAlertDescription />

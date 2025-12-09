@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { SAlert, SCard } from '@soybeanjs/ui';
+import { SAlert } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="With Icon" split>
+  <div>
+    <h3 class="playground-title">With Icon</h3>
     <SAlert color="success" variant="outline" title="Flighting !!!" icon="lucide:rocket" />
-  </SCard>
+  </div>
 </template>

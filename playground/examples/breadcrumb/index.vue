@@ -8,7 +8,7 @@ import BreadcrumbEllipsis from './ellipsis-dropdown.vue';
 </script>
 
 <template>
-  <SCard title="Breadcrumb" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Breadcrumb" split :ui="{ content: 'flex-c gap-4' }">
     <BreadcrumbBase />
     <BreadcrumbSeparator />
     <BreadcrumbLink />

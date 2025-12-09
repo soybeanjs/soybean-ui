@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { SCard, SCheckbox, SCheckboxCardGroup } from '@soybeanjs/ui';
+import { SCheckbox, SCheckboxCardGroup } from '@soybeanjs/ui';
 import type { CheckboxCardGroupOptionData, CheckedState } from '@soybeanjs/ui';
 
 const selected = ref<string[]>(['apple', 'orange']);
@@ -27,8 +27,11 @@ const checked = computed<CheckedState>({
 </script>
 
 <template>
-  <SCard title="Card Group" :ui="{ content: 'flex-c gap-3' }">
-    <SCheckbox v-model="checked" color="warning">Check All</SCheckbox>
-    <SCheckboxCardGroup v-model="selected" :items="items" color="warning" shape="rounded" />
-  </SCard>
+  <div>
+    <h3 class="playground-title">Card Group</h3>
+    <div class="flex flex-col gap-4">
+      <SCheckbox v-model="checked" color="warning">Check All</SCheckbox>
+      <SCheckboxCardGroup v-model="selected" :items="items" color="warning" shape="rounded" />
+    </div>
+  </div>
 </template>

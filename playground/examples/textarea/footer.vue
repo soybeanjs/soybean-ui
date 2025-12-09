@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import { SButton, SButtonIcon, SCard, SDropdownMenuRadio, STextarea } from '@soybeanjs/ui';
+import { SButton, SButtonIcon, SDropdownMenuRadio, STextarea } from '@soybeanjs/ui';
 import type { MenuRadioOptionData } from '@soybeanjs/ui';
 
 const mode = shallowRef('auto');
@@ -24,8 +24,9 @@ const activeLabel = computed(() => modes.find(item => item.value === mode.value)
 </script>
 
 <template>
-  <SCard title="Footer Slot" split>
-    <div class="w-80 lt-sm:w-auto">
+  <div>
+    <h3 class="playground-title">Footer Slot</h3>
+    <div class="w-80 lt-md:w-auto">
       <STextarea :maxlength="200" placeholder="Ask, Search or Chat..." autosize>
         <template #footer>
           <div class="flex-y-center justify-between gap-2 px-2 py-1">
@@ -42,5 +43,5 @@ const activeLabel = computed(() => modes.find(item => item.value === mode.value)
         </template>
       </STextarea>
     </div>
-  </SCard>
+  </div>
 </template>

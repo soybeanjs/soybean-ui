@@ -9,7 +9,7 @@ import DemoTextareaFooter from './footer.vue';
 </script>
 
 <template>
-  <SCard title="Textarea" :ui="{ content: 'flex-c gap-3' }">
+  <SCard title="Textarea" split :ui="{ content: 'flex-c gap-4' }">
     <DemoTextareaBase />
     <DemoTextareaAutosize />
     <DemoTextareaClearable />

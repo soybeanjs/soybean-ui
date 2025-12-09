@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { SCard, SSeparator } from '@soybeanjs/ui';
+import { SSeparator } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCard title="Border" :ui="{ content: 'flex-c gap-3' }">
-    <SCard title="Solid">
+  <div>
+    <h3 class="playground-title">Border</h3>
+    <div class="flex-c gap-4">
       <SSeparator label="Solid" border="solid" />
-    </SCard>
-    <SCard title="Dashed">
       <SSeparator label="Dashed" border="dashed" />
-    </SCard>
-    <SCard title="Dotted">
       <SSeparator label="Dotted" border="dotted" />
-    </SCard>
-  </SCard>
+    </div>
+  </div>
 </template>
