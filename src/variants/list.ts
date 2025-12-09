@@ -6,8 +6,8 @@ export const listVariants = tv({
     root: 'flex flex-col',
     item: 'flex list-none',
     content: 'grow flex flex-col',
-    title: 'font-medium tracking-tight',
-    description: '[&_p]:leading-relaxed text-muted-foreground'
+    title: 'font-medium tracking-tight m-0',
+    description: '[&_p]:leading-relaxed text-muted-foreground m-0'
   },
   variants: {
     size: {

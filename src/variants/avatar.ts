@@ -5,7 +5,7 @@ export const avatarVariants = tv({
   slots: {
     root: 'relative flex shrink-0 overflow-hidden rounded-full',
     fallback: 'flex justify-center items-center size-full rounded-full bg-muted font-medium',
-    image: 'aspect-square size-full object-cover'
+    image: 'aspect-square size-full object-cover m-0'
   },
   variants: {
     size: {

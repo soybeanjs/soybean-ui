@@ -6,7 +6,7 @@ export const treeMenuVariants = tv({
     root: 'group flex-1 size-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out data-[state=collapsed]:space-y-0',
     groupLabel: `flex items-center text-foreground/70 list-none group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
     item: [
-      `relative rounded-sm outline-none cursor-pointer select-none outline-none`,
+      `relative rounded-sm outline-none cursor-pointer select-none list-none`,
       `data-[selected]:bg-primary/10 data-[selected]:text-primary`,
       `[&:not([data-selected])]:hover:bg-accent [&:not([data-selected])]:hover:text-accent-foreground`,
       `[&:not([data-selected])]:focus:bg-accent [&:not([data-selected])]:focus:text-accent-foreground`,

@@ -10,7 +10,7 @@ export const accordionVariants = tv({
       `overflow-hidden transition will-change-auto`,
       `data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up`
     ],
-    description: '',
+    description: 'm-0',
     trigger: [
       `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,
       `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`,

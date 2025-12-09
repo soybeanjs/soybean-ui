@@ -14,8 +14,8 @@ export const dialogVariants = tv({
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-left-1/2`
     ],
     header: `flex flex-col text-center sm:text-left`,
-    title: `flex items-center font-semibold leading-none tracking-tight`,
-    description: `text-muted-foreground`,
+    title: `flex items-center font-semibold leading-none tracking-tight m-0`,
+    description: `text-muted-foreground m-0`,
     closable: `absolute`,
     footer: `flex flex-col-reverse sm:flex-row sm:justify-end`
   },

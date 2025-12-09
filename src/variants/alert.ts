@@ -7,8 +7,8 @@ export const alertVariants = tv({
     root: 'relative flex w-full rounded-lg border',
     content: 'flex-1 flex flex-col',
     icon: 'shrink-0',
-    title: 'font-medium tracking-tight',
-    description: '[&_p]:leading-relaxed',
+    title: 'font-medium tracking-tight m-0',
+    description: '[&_p]:leading-relaxed m-0',
     closable: 'absolute'
   },
   variants: {

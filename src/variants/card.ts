@@ -8,8 +8,8 @@ export const cardVariants = tv({
     content: 'grow',
     footer: 'flex items-center justify-between',
     titleRoot: 'flex items-center',
-    title: 'font-semibold tracking-tight',
-    description: 'w-full text-muted-foreground'
+    title: 'font-semibold tracking-tight m-0',
+    description: 'w-full text-muted-foreground m-0'
   },
   variants: {
     size: {

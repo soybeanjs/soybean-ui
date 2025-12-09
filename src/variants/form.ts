@@ -7,8 +7,8 @@ export const formVariants = tv({
     field: '',
     fieldArray: '',
     label: 'flex items-center',
-    description: `text-muted-foreground`,
-    error: `font-medium text-destructive`
+    description: `text-muted-foreground m-0`,
+    error: `font-medium text-destructive m-0`
   },
   variants: {
     size: {
