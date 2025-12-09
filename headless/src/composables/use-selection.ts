@@ -7,7 +7,8 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
   props: SelectionProps<M, N>,
   onUpdateModelValue: (value: NonNullable<SelectionProps<M, N>['modelValue']>) => void
 ) {
-  const isMultiple = computed(() => Boolean(props.multiple));
+  // @ts-expect-error ignore type: Vue props Boolean Casting [https://vuejs.org/guide/components/props.html#boolean-casting]
+  const isMultiple = computed(() => Boolean(props.multiple) || props.multiple === '');
 
   const modelValue = useControllableState(
     () => props.modelValue,
@@ -22,7 +23,7 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
       return props.defaultValue;
     }
 
-    return (props.multiple ? [] : undefined) as SelectionProps<M, N>['modelValue'];
+    return (isMultiple.value ? [] : undefined) as SelectionProps<M, N>['modelValue'];
   }
 
   const isEmptyModelValue = computed(() => {
@@ -33,7 +34,7 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
   });
 
   const onModelValueChange = (value: N) => {
-    if (!props.multiple) {
+    if (!isMultiple.value) {
       const updated = modelValue.value === value ? undefined : value;
 
       modelValue.value = updated as SelectionProps<M, N>['modelValue'];
