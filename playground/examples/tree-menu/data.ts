@@ -197,17 +197,17 @@ export const treeMenuItems: TreeMenuOptionData[] = [
         value: 'soybean-ui',
         icon: 'lucide:book-open',
         linkProps: {
-          href: 'https://soybean-ui.com'
+          href: 'https://ui.soybeanjs.cn'
         }
       },
       {
-        label: 'Route Demo',
-        value: 'route-demo',
+        label: 'Route About',
+        value: 'route-about',
         icon: 'lucide:route',
         linkProps: {
           // vitepress 不支持 router-link 在 ssr 下使用
-          // to: '/demo',
-          href: '/demo',
+          // to: '/about',
+          href: '/about',
           target: '_self'
         }
       }

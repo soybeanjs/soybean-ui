@@ -16,7 +16,7 @@ const items = [
   {
     label: 'SoybeanUI',
     linkProps: {
-      href: 'https://soybean-ui.com'
+      href: 'https://ui.soybeanjs.cn'
     }
   }
 ] satisfies BreadcrumbOptionData[];
