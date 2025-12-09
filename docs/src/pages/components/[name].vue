@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { computed, shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
-import { pascalCase } from 'es-toolkit';
 
+const router = useRouter();
 const route = useRoute('/components/[name]');
 
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 
 const name = computed(() => route.params.name);
-
-const alertTitle = computed(() => t('not-found-component-doc', { name: pascalCase(name.value) }));
 
 const mdModules = import.meta.glob<{ default: Component }>('/src/docs/**/*.md');
 
@@ -25,7 +23,7 @@ async function loadDoc() {
     return;
   }
 
-  docComp.value = null;
+  router.replace('/404');
 }
 
 watchEffect(() => {
@@ -34,8 +32,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
-    <component :is="docComp" v-if="docComp" />
-    <SAlert v-else color="destructive" :title="alertTitle" icon="lucide:alert-circle" class="w-fit" />
-  </div>
+  <component :is="docComp" v-if="docComp" />
 </template>

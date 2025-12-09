@@ -11,14 +11,7 @@ const { t } = useI18n();
 
 <template>
   <div class="h-full p-4 text-sm">
-    <SCard :title="t('not-found-page')" class="h-full">
-      <template #extra>
-        <ToolBar />
-      </template>
-      <div>
-        <h3 class="text-center">The page {{ route.path }} is {{ t('not-found') }}</h3>
-        <SButtonLink @click="router.back()">{{ t('button.back') }}</SButtonLink>
-      </div>
-    </SCard>
+    <h3 class="text-center">The page {{ route.path }} is {{ t('not-found') }}</h3>
+    <SButtonLink @click="router.back">{{ t('button.back') }}</SButtonLink>
   </div>
 </template>

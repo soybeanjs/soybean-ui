@@ -11,9 +11,8 @@ intro:
   hi: Hi, {name}!
   aka: Also known as
   whats-your-name: What's your name?
-not-found-page: Not found page
 not-found: Not found
-not-found-component-doc: The component documentation for {name} was not found.
+not-found-page: Not found page
 locale:
   en: English
   zh-CN: Chinese
