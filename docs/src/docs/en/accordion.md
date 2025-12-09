@@ -1,6 +1,6 @@
 # Accordion
 
-## 示例
+## Demos
 
 ```playground
 single

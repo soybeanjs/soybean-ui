@@ -10,7 +10,7 @@ const { content, triggerContent = '?' } = defineProps<Props>();
 </script>
 
 <template>
-  <STooltip :content-props="{ placement: 'top' }">
+  <STooltip placement="top">
     <template #trigger>
       <SButton variant="pure" size="xs">{{ triggerContent }}</SButton>
     </template>
