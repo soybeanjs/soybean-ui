@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
+import VueJsx from '@vitejs/plugin-vue-jsx';
 import Layouts from 'vite-plugin-vue-layouts';
 import { VueRouterAutoImports } from 'unplugin-vue-router';
 import UiResolver from '@soybeanjs/ui/resolver';
@@ -30,6 +31,7 @@ export default defineConfig({
     }),
     Layouts(),
     Vue({ include: [/\.vue$/, /\.md$/] }),
+    VueJsx(),
     Unocss(),
     AutoImport({
       include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
