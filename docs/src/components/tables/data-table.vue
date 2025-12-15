@@ -116,7 +116,12 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
         key: 'name',
         title: 'Prop',
         cellWrapperClass: 'table-code-btn-primary',
-        render: row => `${row.name}${row.required ? '*' : ''}`
+        render: row => (
+          <>
+            <span>{row.name}</span>
+            {row.required && <span class="ml-1 text-destructive/80">*</span>}
+          </>
+        )
       },
       {
         key: 'type',
