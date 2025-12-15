@@ -40,7 +40,10 @@ const anchorId = computed(() => toTypeAnchorId(props.name));
       <tbody>
         <tr v-for="field in fields" :key="field.name">
           <td>
-            <div class="table-code-btn-primary">{{ field.name }}{{ field.required ? '*' : null }}</div>
+            <div class="table-code-btn-primary">
+              <span>{{ field.name }}</span>
+              <span v-if="field.required" class="ml-1 text-destructive/80">*</span>
+            </div>
           </td>
           <td>
             <div class="table-code-btn-outline">

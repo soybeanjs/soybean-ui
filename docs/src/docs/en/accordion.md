@@ -45,9 +45,9 @@ custom-styling
     name: 'AccordionSlotProps',
     description: 'Slot props for accordion slots.',
     fields: [
-      { name: 'item', type: 'AccordionOptionData', required: true, description: 'Current item data.' },
-      { name: 'modelValue', type: 'string | string[]', required: true, description: 'Current active value(s).' },
-      { name: 'open', type: 'boolean', required: true, description: 'Whether current item is open.' },
+      { name: 'item', type: 'AccordionOptionData', description: 'Current item data.' },
+      { name: 'modelValue', type: 'string | string[]', description: 'Current active value(s).' },
+      { name: 'open', type: 'boolean', description: 'Whether current item is open.' },
     ]
   },
   {
