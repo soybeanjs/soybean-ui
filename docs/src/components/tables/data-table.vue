@@ -24,6 +24,7 @@ type EmitsOrSlotsRow = {
   name: string;
   parameters?: string;
   description: string;
+  required?: boolean;
 };
 
 interface Props<Row = any> {
@@ -75,7 +76,8 @@ const BUILTIN_TYPE_NAMES = new Set([
   'RegExp',
   'VNode',
   'Component',
-  'IconifyIcon'
+  'IconifyIcon',
+  'MaybePromise'
 ]);
 
 function splitTypeParts(typeText: string): TypePart[] {
@@ -166,7 +168,13 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'name',
         title,
-        cellWrapperClass: 'table-code-btn-primary'
+        cellWrapperClass: 'table-code-btn-primary',
+        render: row => (
+          <>
+            <span>{row.name}</span>
+            {row.required && <span class="ml-1 text-destructive/80">*</span>}
+          </>
+        )
       },
       {
         key: 'parameters',
