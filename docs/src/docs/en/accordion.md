@@ -38,7 +38,7 @@ custom-styling
   { name: 'trigger-icon', parameters: 'AccordionSlotProps', description: 'trigger icon of the AccordingItem' },
 ]"/>
 
-### Type
+### Types
 
 <TypeTable :data="[
   {
