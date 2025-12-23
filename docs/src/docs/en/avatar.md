@@ -26,7 +26,7 @@ size
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'fallback', type: 'string', default: '-', description: 'custom avatar load failed text' },
+  { name: 'fallback', parameters: '-', description: 'custom avatar load failed text' },
 ]"/>
 
 ### Emits

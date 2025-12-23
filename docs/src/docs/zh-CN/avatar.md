@@ -26,7 +26,7 @@ size
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'fallback', type: 'string', default: '-', description: '自定义头像加载失败时显示的内容' },
+  { name: 'fallback', parameters: '-', description: '自定义头像加载失败时显示的内容' },
 ]"/>
 
 ### Emits
