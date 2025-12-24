@@ -2,7 +2,7 @@
   "name": "@soybeanjs/headless",
   "type": "module",
   "version": "0.0.7",
-  "packageManager": "pnpm@10.26.1",
+  "packageManager": "pnpm@10.26.2",
   "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {
     "name": "Soybean",
@@ -120,22 +120,7 @@
   "types": "./dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "pnpm tsdown",
-    "build:play": "vite build",
-    "cleanup": "soy cleanup",
-    "commit": "soy git-commit",
-    "dev": "vite",
-    "lint": "eslint . --fix",
-    "prepare": "simple-git-hooks",
-    "preview": "vite preview",
-    "publish-pkg": "pnpm publish --access public",
-    "release": "soy release",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:ui": "vitest --ui",
-    "test:watch": "vitest watch",
-    "typecheck": "vue-tsc --noEmit --skipLibCheck",
-    "update-pkg": "soy ncu"
+    "build": "pnpm tsdown"
   },
   "peerDependencies": {
     "nuxt": ">=4.0.0",
@@ -173,18 +158,11 @@
   },
   "devDependencies": {
     "@nuxt/kit": "^4.2.2",
-    "tsdown": "0.18.2",
+    "tsdown": "0.18.3",
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.0",
     "unplugin-vue-jsx": "0.8.1",
     "vue": "3.5.26",
     "vue-router": "4.6.4"
-  },
-  "simple-git-hooks": {
-    "commit-msg": "pnpm soy git-commit-verify",
-    "pre-commit": "pnpm typecheck && pnpm lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
   }
 }
