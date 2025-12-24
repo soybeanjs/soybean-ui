@@ -15,7 +15,7 @@ const { version } = pkg;
     <div class="flex items-center justify-between px-6 py-3 max-w-[1440px] mx-auto h-full">
       <div class="flex items-center gap-8">
         <SLink to="/" class="group flex items-center gap-3">
-          <img src="/logo.svg" alt="Logo" class="size-8 transition-transform duration-300 group-hover:scale-110" />
+          <AppLogo class="size-8 transition-transform duration-300 group-hover:scale-110" />
           <h1
             class="text-lg font-bold bg-clip-text text-transparent whitespace-nowrap bg-gradient-to-r from-primary-600 to-primary dark:from-primary dark:to-primary-300"
           >

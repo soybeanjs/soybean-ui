@@ -46,9 +46,7 @@ const features = computed(() => [
           <div
             class="absolute inset-0 bg-primary/20 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
-          <img
-            src="/logo.svg"
-            alt="Logo"
+          <AppLogo
             class="size-28 md:size-36 mx-auto drop-shadow-2xl filter relative z-10 transition-transform duration-300 group-hover:scale-105"
           />
         </div>

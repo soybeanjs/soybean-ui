@@ -13,6 +13,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppHeader: typeof import('./../components/app-header.vue')['default']
+    AppLogo: typeof import('./../components/app-logo.vue')['default']
     CodeBlock: typeof import('./../components/code-block.vue')['default']
     DataTable: typeof import('./../components/tables/data-table.vue')['default']
     HeaderNav: typeof import('./../components/header-nav.vue')['default']
@@ -50,6 +51,7 @@ declare module 'vue' {
 // For TSX support
 declare global {
   const AppHeader: typeof import('./../components/app-header.vue')['default']
+  const AppLogo: typeof import('./../components/app-logo.vue')['default']
   const CodeBlock: typeof import('./../components/code-block.vue')['default']
   const DataTable: typeof import('./../components/tables/data-table.vue')['default']
   const HeaderNav: typeof import('./../components/header-nav.vue')['default']
