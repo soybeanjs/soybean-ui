@@ -84,7 +84,7 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-400)" />
+          <stop offset="0" stop-color="var(--logo-color-300)" />
           <stop offset="1" stop-color="var(--logo-color-500)" />
         </linearGradient>
         <linearGradient
@@ -108,7 +108,7 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-500)" />
+          <stop offset="0" stop-color="var(--logo-color-400)" />
           <stop offset="1" stop-color="var(--logo-color-600)" />
         </linearGradient>
         <linearGradient
@@ -121,7 +121,7 @@
           y2="0"
         >
           <stop offset="0" stop-color="var(--logo-color-500)" />
-          <stop offset="1" stop-color="var(--logo-color-400)" />
+          <stop offset="1" stop-color="var(--logo-color-300)" />
         </linearGradient>
         <linearGradient
           id="LinearGradient_6"
@@ -132,7 +132,7 @@
           y1="0"
           y2="0"
         >
-          <stop offset="0" stop-color="var(--logo-color-400)" />
+          <stop offset="0" stop-color="var(--logo-color-300)" />
           <stop offset="1" stop-color="var(--logo-color-500)" />
         </linearGradient>
         <linearGradient
@@ -154,10 +154,10 @@
 
 <style scoped>
 .app-logo {
-  --logo-color-400: hsl(var(--primary-300) / 1);
-  --logo-color-400: hsl(var(--primary-400) / 1);
-  --logo-color-500: hsl(var(--primary-500) / 1);
-  --logo-color-600: hsl(var(--primary-600) / 1);
-  --logo-color-700: hsl(var(--primary-700) / 1);
+  --logo-color-300: hsl(var(--primary-300));
+  --logo-color-400: hsl(var(--primary-400));
+  --logo-color-500: hsl(var(--primary-500));
+  --logo-color-600: hsl(var(--primary-600));
+  --logo-color-700: hsl(var(--primary-700));
 }
 </style>
