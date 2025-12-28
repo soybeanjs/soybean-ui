@@ -148,6 +148,12 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
           </>
         )
       },
+      // {
+      //   key: 'parameters',
+      //   title: 'Parameters',
+      //   cellWrapperClass: 'table-code-btn-outline',
+      //   render: '——'
+      // },
       {
         key: 'default',
         title: 'Default',

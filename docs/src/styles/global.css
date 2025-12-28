@@ -91,5 +91,6 @@ html.dark .shiki span {
 }
 
 .table-code-btn-outline {
-  @apply inline border-gray-200 border-1 px-2 py-1 rounded-md font-mono text-sm text-nowrap;
+  @apply inline border-gray-200 border-1 px-2 py-1 rounded-md font-mono text-sm;
+  box-decoration-break: clone;
 }
