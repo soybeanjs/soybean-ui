@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import { defineComponent } from 'vue';
-import { toTypeAnchorId } from './type-anchor';
+import { typeToVNode } from './type-anchor';
 
 type PropsPreset = 'props' | 'emits' | 'slots';
 
@@ -56,61 +56,6 @@ function getCellValue(row: any, key: string) {
   return row?.[key];
 }
 
-type TypePart = { text: string; isLink?: boolean };
-
-const BUILTIN_TYPE_NAMES = new Set([
-  'Array',
-  'Record',
-  'Partial',
-  'Pick',
-  'Omit',
-  'Exclude',
-  'Extract',
-  'NonNullable',
-  'Readonly',
-  'Required',
-  'Promise',
-  'Map',
-  'Set',
-  'Date',
-  'RegExp',
-  'VNode',
-  'Component',
-  'IconifyIcon',
-  'MaybePromise'
-]);
-
-function splitTypeParts(typeText: string): TypePart[] {
-  if (!typeText) {
-    return [{ text: '—' }];
-  }
-
-  const parts: TypePart[] = [];
-
-  const re = /\b[A-Z][A-Za-z0-9_]*\b/g;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-
-  while ((match = re.exec(typeText))) {
-    const [word] = match;
-    const start = match.index;
-
-    if (start > lastIndex) {
-      parts.push({ text: typeText.slice(lastIndex, start) });
-    }
-
-    const isLink = !BUILTIN_TYPE_NAMES.has(word);
-    parts.push({ text: word, isLink });
-    lastIndex = start + word.length;
-  }
-
-  if (lastIndex < typeText.length) {
-    parts.push({ text: typeText.slice(lastIndex) });
-  }
-
-  return parts.length ? parts : [{ text: typeText }];
-}
-
 function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<any>[] {
   if (preset === 'props') {
     const cols: DataTableColumn<PropsRow>[] = [
@@ -129,31 +74,8 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
         key: 'type',
         title: 'Type',
         cellWrapperClass: 'table-code-btn-outline',
-        render: row => (
-          <>
-            {splitTypeParts(row.type).map((part, idx) =>
-              part.isLink ? (
-                <SLink
-                  key={idx}
-                  href={`#${toTypeAnchorId(part.text)}`}
-                  target="_self"
-                  class="text-primary border-b-2 border-dashed border-primary/50 hover:border-primary duration-200"
-                >
-                  {part.text}
-                </SLink>
-              ) : (
-                <span key={idx}>{part.text}</span>
-              )
-            )}
-          </>
-        )
+        render: row => typeToVNode(row.type)
       },
-      // {
-      //   key: 'parameters',
-      //   title: 'Parameters',
-      //   cellWrapperClass: 'table-code-btn-outline',
-      //   render: '——'
-      // },
       {
         key: 'default',
         title: 'Default',
@@ -186,7 +108,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
         key: 'parameters',
         title: 'Parameters',
         cellWrapperClass: 'table-code-btn-outline',
-        render: row => row.parameters || '——'
+        render: row => typeToVNode(row.parameters)
       },
       {
         key: 'description',
