@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { toTypeAnchorId } from './type-anchor';
+import { toTypeAnchorId, typeToVNode } from './type-anchor';
 
 export type TypeFieldDef = {
   name: string;
@@ -47,7 +47,7 @@ const anchorId = computed(() => toTypeAnchorId(props.name));
           </td>
           <td>
             <div class="table-code-btn-outline">
-              {{ field.type }}
+              <component :is="typeToVNode(field.type)" />
             </div>
           </td>
           <td>{{ field.description || '—' }}</td>
