@@ -161,7 +161,7 @@ export const components = {
     'PopoverRoot',
     'PopoverTrigger'
   ],
-  popper: ['PopperAnchor', 'PopperArrow', 'PopperContent', 'PopperRoot'],
+  popper: ['PopperAnchor', 'PopperArrow', 'PopperPopup', 'PopperPositioner', 'PopperRoot'],
   portal: ['Portal'],
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupItem', 'RadioGroupLabel', 'RadioGroupRoot'],

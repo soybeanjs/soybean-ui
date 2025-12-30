@@ -175,7 +175,8 @@ import {
   PopoverTrigger,
   PopperAnchor,
   PopperArrow,
-  PopperContent,
+  PopperPopup,
+  PopperPositioner,
   PopperRoot,
   Portal,
   Primitive,
@@ -670,12 +671,14 @@ export const Popover = {
 export const Popper = {
   Anchor: PopperAnchor,
   Arrow: PopperArrow,
-  Content: PopperContent,
+  Popup: PopperPopup,
+  Positioner: PopperPositioner,
   Root: PopperRoot
 } as {
   Anchor: typeof PopperAnchor;
   Arrow: typeof PopperArrow;
-  Content: typeof PopperContent;
+  Popup: typeof PopperPopup;
+  Positioner: typeof PopperPositioner;
   Root: typeof PopperRoot;
 };
 

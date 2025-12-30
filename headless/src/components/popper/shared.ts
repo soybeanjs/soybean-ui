@@ -1,8 +1,9 @@
-import { arrow, flip, hide, limitShift, offset, shift, size } from '@floating-ui/vue';
-import type { Middleware, Placement } from '@floating-ui/vue';
+import { arrow, flip, hide, limitShift, offset, shift, size } from '@floating-ui/dom';
+import type { Middleware, MiddlewareState, Side, SideObject } from '@floating-ui/dom';
+import { getAlignment, getSide } from '@floating-ui/utils';
 import { isNullish } from '../../shared';
-import type { Align, InferDefaults, Side } from '../../types';
-import type { PopperContentProps } from './types';
+import type { Align, InferDefaults, Placement } from '../../types';
+import type { PopperPositionerProps } from './types';
 
 export const popperCssVars = {
   transformOrigin: '--soybean-popper-transform-origin',
@@ -11,6 +12,29 @@ export const popperCssVars = {
   anchorWidth: '--soybean-popper-anchor-width',
   anchorHeight: '--soybean-popper-anchor-height'
 };
+
+export function createPopperPositionerDefaultProps() {
+  const props: InferDefaults<PopperPositionerProps> = {
+    placement: undefined,
+    side: 'bottom',
+    sideOffset: 0,
+    sideFlip: true,
+    align: 'center',
+    alignOffset: 0,
+    alignFlip: true,
+    arrowPadding: 0,
+    avoidCollisions: true,
+    collisionPadding: 0,
+    collisionBoundary: () => [],
+    sticky: 'partial',
+    hideWhenDetached: false,
+    positionStrategy: 'fixed',
+    updatePositionStrategy: 'optimized',
+    prioritizePosition: false
+  };
+
+  return props;
+}
 
 // Alignment to percentage mapping
 const ALIGN_TO_PERCENTAGE: Record<Align, string> = {
@@ -54,58 +78,154 @@ const TRANSFORM_ORIGIN_STRATEGIES: Record<Side, TransformOriginStrategy> = {
   }
 };
 
-/**
- * Transform origin middleware for floating-ui Calculates the transform origin based on arrow position
- *
- * @param options - Arrow dimensions
- * @returns Middleware for floating-ui
- */
-export function transformOrigin(options: { arrowWidth: number; arrowHeight: number }): Middleware {
-  return {
-    name: 'transformOrigin',
-    options,
-    fn(data) {
-      const { placement, rects, middlewareData } = data;
+export function getFloatingUiMiddleware(props: PopperPositionerProps, arrowElement: Element | null | undefined) {
+  const {
+    sideOffset = 0,
+    alignOffset = 0,
+    sideFlip,
+    alignFlip,
+    prioritizePosition,
+    sticky,
+    avoidCollisions,
+    arrowPadding,
+    hideWhenDetached
+  } = props;
 
-      const cannotCenterArrow = middlewareData.arrow?.centerOffset !== 0;
-      const isArrowHidden = cannotCenterArrow;
-      const arrowWidth = isArrowHidden ? 0 : options.arrowWidth;
-      const arrowHeight = isArrowHidden ? 0 : options.arrowHeight;
+  const detectOverflowOptions = getDetectOverflowOptions(props);
 
-      const [placedSide, placedAlign] = getSideAndAlignFromPlacement(placement);
-      const noArrowAlign = ALIGN_TO_PERCENTAGE[placedAlign];
+  const middlewares: (Middleware | false | null | undefined)[] = [
+    offset(() => {
+      const arrowHeight = arrowElement?.clientHeight ?? 0;
 
-      const arrowXCenter = (middlewareData.arrow?.x ?? 0) + arrowWidth / 2;
-      const arrowYCenter = (middlewareData.arrow?.y ?? 0) + arrowHeight / 2;
-
-      const strategy = TRANSFORM_ORIGIN_STRATEGIES[placedSide];
-      const params: TransformOriginParams = {
-        isArrowHidden,
-        noArrowAlign,
-        arrowXCenter,
-        arrowYCenter,
-        arrowHeight,
-        floatingWidth: rects.floating.width,
-        floatingHeight: rects.floating.height
+      return {
+        mainAxis: sideOffset + arrowHeight,
+        crossAxis: alignOffset,
+        alignmentAxis: alignOffset
       };
+    })
+  ];
 
-      const x = strategy.getX(params);
-      const y = strategy.getY(params);
+  if (avoidCollisions) {
+    const $middlewares: Middleware[] = [
+      shift({
+        mainAxis: true,
+        crossAxis: Boolean(prioritizePosition),
+        limiter: sticky === 'partial' ? limitShift() : undefined,
+        ...detectOverflowOptions
+      })
+    ];
 
-      return { data: { x, y } };
+    const flipMiddleware: Middleware = flip({
+      mainAxis: sideFlip,
+      crossAxis: alignFlip,
+      ...detectOverflowOptions
+    });
+
+    if (prioritizePosition) {
+      $middlewares.unshift(flipMiddleware);
+    } else {
+      $middlewares.push(flipMiddleware);
     }
-  };
+
+    middlewares.push(...$middlewares);
+  }
+
+  middlewares.push(
+    size({
+      ...detectOverflowOptions,
+      apply: ({ elements: { floating }, rects, availableWidth, availableHeight }) => {
+        const { width: anchorWidth, height: anchorHeight } = rects.reference;
+
+        floating.style.setProperty(popperCssVars.availableWidth, `${availableWidth}px`);
+        floating.style.setProperty(popperCssVars.availableHeight, `${availableHeight}px`);
+        floating.style.setProperty(popperCssVars.anchorWidth, `${anchorWidth}px`);
+        floating.style.setProperty(popperCssVars.anchorHeight, `${anchorHeight}px`);
+      }
+    })
+  );
+
+  if (arrowElement) {
+    const transformOrigin: Middleware = {
+      name: 'transformOrigin',
+      fn(data: MiddlewareState) {
+        const { placement, rects, middlewareData } = data;
+
+        const cannotCenterArrow = middlewareData.arrow?.centerOffset !== 0;
+        const isArrowHidden = cannotCenterArrow;
+        const { width: arrowWidth, height: arrowHeight } = arrowElement.getBoundingClientRect();
+        const arrowW = isArrowHidden ? 0 : arrowWidth;
+        const arrowH = isArrowHidden ? 0 : arrowHeight;
+
+        const placedSide = getSide(placement);
+        const placedAlign = getAlignment(placement) ?? 'center';
+        const noArrowAlign = ALIGN_TO_PERCENTAGE[placedAlign];
+
+        const arrowXCenter = (middlewareData.arrow?.x ?? 0) + arrowW / 2;
+        const arrowYCenter = (middlewareData.arrow?.y ?? 0) + arrowH / 2;
+
+        const strategy = TRANSFORM_ORIGIN_STRATEGIES[placedSide];
+        const params: TransformOriginParams = {
+          isArrowHidden,
+          noArrowAlign,
+          arrowXCenter,
+          arrowYCenter,
+          arrowHeight,
+          floatingWidth: rects.floating.width,
+          floatingHeight: rects.floating.height
+        };
+
+        const x = strategy.getX(params);
+        const y = strategy.getY(params);
+
+        return { data: { x, y } };
+      }
+    };
+
+    middlewares.push(arrow({ element: arrowElement, padding: arrowPadding }), transformOrigin);
+  }
+
+  if (hideWhenDetached) {
+    middlewares.push(hide({ strategy: 'referenceHidden', ...detectOverflowOptions }));
+  }
+
+  return middlewares.filter(Boolean) as Middleware[];
 }
 
-/**
- * Get side and align from floating-ui placement
- *
- * @param placement - The floating-ui placement
- * @returns Tuple of side and align
- */
-export function getSideAndAlignFromPlacement(placement: Placement) {
-  const [side, align = 'center'] = placement.split('-');
-  return [side as Side, align as Align] as const;
+function getDetectOverflowOptions(props: PopperPositionerProps) {
+  const { collisionPadding, collisionBoundary } = props;
+
+  // Create a bias to the preferred side.
+  // On iOS, when the mobile software keyboard opens, the input is exactly centered
+  // in the viewport, but this can cause it to flip to the top undesirably.
+  const bias = 1;
+
+  const padding: SideObject = {
+    top: bias,
+    right: bias,
+    bottom: bias,
+    left: bias
+  };
+  if (typeof collisionPadding === 'number') {
+    padding.top += collisionPadding;
+    padding.right += collisionPadding;
+    padding.bottom += collisionPadding;
+    padding.left += collisionPadding;
+  } else if (collisionPadding) {
+    padding.top += collisionPadding.top ?? 0;
+    padding.right += collisionPadding.right ?? 0;
+    padding.bottom += collisionPadding.bottom ?? 0;
+    padding.left += collisionPadding.left ?? 0;
+  }
+
+  const boundary = Array.isArray(collisionBoundary) ? collisionBoundary : [collisionBoundary];
+  const hasExplicitBoundaries = boundary.length > 0;
+
+  return {
+    padding,
+    boundary: boundary.filter(item => !isNullish(item)),
+    // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
+    altBoundary: hasExplicitBoundaries
+  };
 }
 
 /**
@@ -115,7 +235,7 @@ export function getSideAndAlignFromPlacement(placement: Placement) {
  * @param align - The align
  * @returns The placement
  */
-export function getPlacementFromSideAndAlign(side: Side, align: Align) {
+export function getPlacement(side: Side, align: Align) {
   let placement: Placement = side;
 
   if (align !== 'center') {
@@ -123,98 +243,4 @@ export function getPlacementFromSideAndAlign(side: Side, align: Align) {
   }
 
   return placement as Placement;
-}
-
-export function createPopperContentPropsDefaultValue() {
-  const props: InferDefaults<PopperContentProps> = {
-    placement: undefined,
-    side: 'bottom',
-    sideOffset: 0,
-    sideFlip: true,
-    align: 'center',
-    alignOffset: 0,
-    alignFlip: true,
-    arrowPadding: 0,
-    avoidCollisions: true,
-    collisionPadding: 0,
-    collisionBoundary: () => [],
-    sticky: 'partial',
-    hideWhenDetached: false,
-    positionStrategy: 'fixed',
-    updatePositionStrategy: 'optimized',
-    prioritizePosition: false
-  };
-
-  return props;
-}
-
-export function getFloatingUIMiddleware(
-  props: PopperContentProps,
-  arrowElement: HTMLElement | null | undefined,
-  arrowWidth: number,
-  arrowHeight: number
-) {
-  const detectOverflowOptions = getDetectOverflowOptions(props);
-
-  const middlewares: (Middleware | false | null | undefined)[] = [
-    offset({
-      mainAxis: (props.sideOffset ?? 0) + arrowHeight,
-      alignmentAxis: props.alignOffset
-    }),
-    props.prioritizePosition &&
-      props.avoidCollisions &&
-      flip({
-        ...detectOverflowOptions
-      }),
-    props.avoidCollisions &&
-      shift({
-        ...detectOverflowOptions,
-        mainAxis: true,
-        crossAxis: Boolean(props.prioritizePosition),
-        limiter: props.sticky === 'partial' ? limitShift() : undefined
-      }),
-    !props.prioritizePosition &&
-      props.avoidCollisions &&
-      flip({
-        ...detectOverflowOptions
-      }),
-    size({
-      ...detectOverflowOptions,
-      apply: ({ elements, rects, availableWidth, availableHeight }) => {
-        const { width: anchorWidth, height: anchorHeight } = rects.reference;
-        const contentStyle = elements.floating.style;
-        contentStyle.setProperty(popperCssVars.availableWidth, `${availableWidth}px`);
-        contentStyle.setProperty(popperCssVars.availableHeight, `${availableHeight}px`);
-        contentStyle.setProperty(popperCssVars.anchorWidth, `${anchorWidth}px`);
-        contentStyle.setProperty(popperCssVars.anchorHeight, `${anchorHeight}px`);
-      }
-    }),
-    arrowElement && arrow({ element: arrowElement, padding: props.arrowPadding }),
-    transformOrigin({
-      arrowWidth,
-      arrowHeight
-    }),
-    props.hideWhenDetached && hide({ strategy: 'referenceHidden', ...detectOverflowOptions })
-  ];
-
-  return middlewares.filter(Boolean) as Middleware[];
-}
-
-function getDetectOverflowOptions(props: PopperContentProps) {
-  const collisionPadding =
-    typeof props.collisionPadding === 'number'
-      ? props.collisionPadding
-      : { top: 0, right: 0, bottom: 0, left: 0, ...props.collisionPadding };
-
-  const boundary = Array.isArray(props.collisionBoundary) ? props.collisionBoundary : [props.collisionBoundary];
-  const hasExplicitBoundaries = boundary.length > 0;
-
-  return {
-    mainAxis: props.sideFlip,
-    crossAxis: props.alignFlip,
-    padding: collisionPadding,
-    boundary: boundary.filter(item => !isNullish(item)),
-    // with `strategy: 'fixed'`, this is the only way to get it to respect boundaries
-    altBoundary: hasExplicitBoundaries
-  };
 }
