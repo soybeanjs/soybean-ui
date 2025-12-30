@@ -169,8 +169,9 @@ import {
   PopoverAnchor,
   PopoverArrow,
   PopoverClose,
-  PopoverContent,
+  PopoverPopup,
   PopoverPortal,
+  PopoverPositioner,
   PopoverRoot,
   PopoverTrigger,
   PopperAnchor,
@@ -654,7 +655,8 @@ export const Popover = {
   Anchor: PopoverAnchor,
   Arrow: PopoverArrow,
   Close: PopoverClose,
-  Content: PopoverContent,
+  Positioner: PopoverPositioner,
+  Popup: PopoverPopup,
   Portal: PopoverPortal,
   Root: PopoverRoot,
   Trigger: PopoverTrigger
@@ -662,7 +664,8 @@ export const Popover = {
   Anchor: typeof PopoverAnchor;
   Arrow: typeof PopoverArrow;
   Close: typeof PopoverClose;
-  Content: typeof PopoverContent;
+  Positioner: typeof PopoverPositioner;
+  Popup: typeof PopoverPopup;
   Portal: typeof PopoverPortal;
   Root: typeof PopoverRoot;
   Trigger: typeof PopoverTrigger;

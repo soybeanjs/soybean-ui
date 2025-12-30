@@ -2,7 +2,7 @@ import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { PopoverRootContextParams } from './types';
+import type { PopoverPositionerContextParams, PopoverRootContextParams } from './types';
 
 export const [providePopoverRootContext, usePopoverRootContext] = useContext(
   'PopoverRoot',
@@ -30,15 +30,15 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
       triggerId.value = `soybean-popover-trigger-${useId()}`;
     };
 
-    const contentElement = shallowRef<HTMLElement>();
-    const onContentElementChange = (element: HTMLElement) => {
-      contentElement.value = element;
+    const popupElement = shallowRef<HTMLElement>();
+    const onPopupElementChange = (element: HTMLElement) => {
+      popupElement.value = element;
     };
 
-    const contentId = shallowRef('');
-    const initContentId = () => {
-      if (contentId.value) return;
-      contentId.value = `soybean-popover-content-${useId()}`;
+    const popupId = shallowRef('');
+    const initPopupId = () => {
+      if (popupId.value) return;
+      popupId.value = `soybean-popover-popup-${useId()}`;
     };
 
     const hasCustomAnchor = shallowRef(false);
@@ -53,11 +53,16 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
       onTriggerElementChange,
       triggerId,
       initTriggerId,
-      contentElement,
-      onContentElementChange,
-      contentId,
-      initContentId,
+      popupElement,
+      onPopupElementChange,
+      popupId,
+      initPopupId,
       hasCustomAnchor
     };
   }
+);
+
+export const [providePopoverPositionerContext, usePopoverPositionerContext] = useContext(
+  'PopoverPositioner',
+  (params: PopoverPositionerContextParams) => params
 );
