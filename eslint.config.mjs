@@ -12,10 +12,11 @@ export default defineConfig(
       'max-params': 'off',
       'no-plusplus': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-invalid-void-type': 'off',
+      'n/prefer-global/process': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/no-static-inline-styles': 'off',
-      'vue/no-reserved-component-names': 'off',
-      '@typescript-eslint/no-invalid-void-type': 'off'
+      'vue/no-reserved-component-names': 'off'
     }
   }
 );
