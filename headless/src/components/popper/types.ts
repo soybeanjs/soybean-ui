@@ -1,6 +1,6 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ReferenceElement } from '@floating-ui/vue';
-import type { Align, Placement, Side, VNodeRef } from '../../types';
+import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
+import type { Align, Placement, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -11,13 +11,7 @@ export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HT
   reference?: ReferenceElement;
 }
 
-export interface PopperContentProps extends /** @vue-ignore */ HTMLAttributes {
-  /**
-   * The function to set the floating element.
-   *
-   * @param el - The floating element.
-   */
-  floatingRef?: (el: HTMLElement) => void;
+export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes {
   /**
    * The placement of the floating element.
    *
@@ -83,7 +77,7 @@ export interface PopperContentProps extends /** @vue-ignore */ HTMLAttributes {
    *
    * @defaultValue 0
    */
-  collisionPadding?: number | Partial<Record<Side, number>>;
+  collisionPadding?: Padding;
   /**
    * The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it
    * from overflowing the corners.
@@ -135,31 +129,37 @@ export interface PopperContentProps extends /** @vue-ignore */ HTMLAttributes {
   reference?: ReferenceElement;
 }
 
-export interface PopperContentEmits {
-  /** Event handler called when the content is placed */
+export interface PopperPositionerEmits {
+  /** Event handler called when the positioner is placed */
   placed: [];
 }
 
-/** Context interface for PopperContent */
-export interface PopperContentContextParams {
-  /** The side where the content is placed */
-  placedSide: ComputedRef<Side>;
+export interface PopperPopupProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface PopperArrowProps extends /** @vue-ignore */ HTMLAttributes {}
+
+/** Context interface for PopperPositioner */
+export interface PopperPositionerContextParams {
   /** X position of the arrow */
   arrowX: ComputedRef<number>;
   /** Y position of the arrow */
   arrowY: ComputedRef<number>;
-  /** Whether the arrow should be hidden */
-  shouldHideArrow: ComputedRef<boolean>;
-  /** Function to set the arrow element */
+  /** Whether the arrow is centered */
+  arrowCentered: ComputedRef<boolean>;
+  /** Set the arrow element */
   setArrowElement: (nodeRef: VNodeRef) => void;
+  /** The side where the content is placed */
+  placedSide: ComputedRef<Side>;
+  /** The alignment where the content is placed */
+  placedAlign: ComputedRef<Align>;
+  /** Whether the positioner is positioned */
+  isPositioned: ComputedRef<boolean>;
 }
 
-export type PopperThemeSlot = 'content' | 'arrow';
+export type PopperThemeSlot = 'positioner' | 'popup' | 'arrow';
 
 export type PopperUi = Record<PopperThemeSlot, string>;
 
 export interface PopperThemeContextParams {
   ui: ComputedRef<PopperUi>;
 }
-
-export type { ArrowProps as PopperArrowProps } from '../arrow/types';
