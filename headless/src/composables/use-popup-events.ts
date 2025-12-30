@@ -1,18 +1,26 @@
 import type { ComputedRef, ShallowRef } from 'vue';
-import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
+import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 
-interface UseDialogContentOptions {
+export interface UsePopupEventsOptions {
+  /**
+   * Whether the popup is modal.
+   */
   modal: ComputedRef<boolean | undefined>;
+  /**
+   * The trigger element.
+   */
   triggerElement: ShallowRef<HTMLElement | undefined>;
 }
 
-export function useDialogContentEvents(options: UseDialogContentOptions) {
+export function usePopupEvents(options: UsePopupEventsOptions) {
   const { modal, triggerElement } = options;
 
   let hasInteractedOutsideRef = false;
   let hasPointerDownOutsideRef = false;
 
   const onPointerDownOutside = (event: PointerDownOutsideEvent) => {
+    if (!modal.value) return;
+
     if (event.defaultPrevented) return;
     const originalEvent = event.detail.originalEvent;
     const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
@@ -26,12 +34,16 @@ export function useDialogContentEvents(options: UseDialogContentOptions) {
   };
 
   const onFocusOutside = (event: FocusOutsideEvent) => {
+    if (!modal.value) return;
+
     // When focus is trapped, a `focusout` event may still happen.
     // We make sure we don't trigger our `onDismiss` in such case.
     event.preventDefault();
   };
 
   const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) => {
+    if (modal.value) return;
+
     if (!event.defaultPrevented) {
       hasInteractedOutsideRef = true;
       if (event.detail.originalEvent.type === 'pointerdown') {
