@@ -3,7 +3,8 @@ export { default as PopoverPortal } from '../portal/portal.vue';
 export { default as PopoverRoot } from './popover-root.vue';
 export { default as PopoverAnchor } from './popover-anchor.vue';
 export { default as PopoverClose } from './popover-close.vue';
-export { default as PopoverContent } from './popover-content.vue';
+export { default as PopoverPositioner } from './popover-positioner.vue';
+export { default as PopoverPopup } from './popover-popup.vue';
 export { default as PopoverTrigger } from './popover-trigger.vue';
 
 export { providePopperThemeContext as providePopoverThemeContext } from '../popper/context';
@@ -13,8 +14,9 @@ export type {
   PopoverRootEmits,
   PopoverAnchorProps,
   PopoverCloseProps,
-  PopoverContentProps,
-  PopoverContentEmits,
+  PopoverPositionerProps,
+  PopoverPositionerEmits,
+  PopoverPopupProps,
   PopoverTriggerProps
 } from './types';
 export type {

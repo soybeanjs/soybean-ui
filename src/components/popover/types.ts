@@ -2,9 +2,10 @@ import type {
   Placement,
   PopoverArrowProps,
   PopoverCloseProps,
-  PopoverContentEmits,
-  PopoverContentProps,
+  PopoverPopupProps,
   PopoverPortalProps,
+  PopoverPositionerEmits,
+  PopoverPositionerProps,
   PopoverRootEmits,
   PopoverRootProps,
   PopoverTriggerProps,
@@ -17,11 +18,12 @@ export interface PopoverProps extends PopoverRootProps {
   ui?: Partial<PopperUi>;
   placement?: Placement;
   showArrow?: boolean;
-  contentProps?: PopoverContentProps;
+  positionerProps?: PopoverPositionerProps;
+  popupProps?: PopoverPopupProps;
   triggerProps?: PopoverTriggerProps;
   closeProps?: PopoverCloseProps;
   portalProps?: PopoverPortalProps;
   arrowProps?: PopoverArrowProps;
 }
 
-export type PopoverEmits = PopoverRootEmits & PopoverContentEmits;
+export type PopoverEmits = PopoverRootEmits & PopoverPositionerEmits;

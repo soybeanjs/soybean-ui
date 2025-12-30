@@ -156,8 +156,9 @@ export const components = {
     'PopoverAnchor',
     'PopoverArrow',
     'PopoverClose',
-    'PopoverContent',
+    'PopoverPopup',
     'PopoverPortal',
+    'PopoverPositioner',
     'PopoverRoot',
     'PopoverTrigger'
   ],

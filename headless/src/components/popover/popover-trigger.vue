@@ -14,8 +14,8 @@ const props = withDefaults(defineProps<PopoverTriggerProps>(), {
   as: 'button'
 });
 
-const { open, onOpenToggle, dataState, contentId, initTriggerId, onTriggerElementChange, hasCustomAnchor } =
-  usePopoverRootContext('DialogTrigger');
+const { open, onOpenToggle, dataState, popupId, initTriggerId, onTriggerElementChange, hasCustomAnchor } =
+  usePopoverRootContext('PopoverTrigger');
 
 const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 
@@ -33,7 +33,7 @@ initTriggerId();
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"
-    :aria-controls="open ? contentId : undefined"
+    :aria-controls="open ? popupId : undefined"
     :data-state="dataState"
     @click="onOpenToggle"
   >

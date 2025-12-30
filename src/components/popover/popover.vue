@@ -3,8 +3,9 @@ import { computed } from 'vue';
 import {
   PopoverArrow,
   PopoverClose,
-  PopoverContent,
+  PopoverPopup,
   PopoverPortal,
+  PopoverPositioner,
   PopoverRoot,
   PopoverTrigger,
   providePopoverThemeContext
@@ -39,10 +40,10 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-const contentProps = computed(() => {
+const positionerProps = computed(() => {
   return {
     placement: props.placement,
-    ...props.contentProps
+    ...props.positionerProps
   };
 });
 
@@ -57,13 +58,15 @@ providePopoverThemeContext({
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal v-bind="portalProps">
-      <PopoverContent v-bind="contentProps" v-on="listeners">
-        <slot />
+      <PopoverPositioner v-bind="positionerProps" v-on="listeners">
+        <PopoverPopup v-bind="popupProps">
+          <slot />
+          <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
+        </PopoverPopup>
         <PopoverClose v-if="$slots.close" as-child>
           <slot name="close" />
         </PopoverClose>
-        <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
-      </PopoverContent>
+      </PopoverPositioner>
     </PopoverPortal>
   </PopoverRoot>
 </template>
