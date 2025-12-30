@@ -1,9 +1,10 @@
 import type {
   Placement,
   TooltipArrowProps,
-  TooltipContentEmits,
-  TooltipContentProps,
+  TooltipPopupProps,
   TooltipPortalProps,
+  TooltipPositionerEmits,
+  TooltipPositionerProps,
   TooltipRootEmits,
   TooltipRootProps,
   TooltipTriggerProps,
@@ -17,10 +18,11 @@ export interface TooltipProps extends TooltipRootProps {
   content?: string;
   placement?: Placement;
   showArrow?: boolean;
-  contentProps?: TooltipContentProps;
+  popupProps?: TooltipPopupProps;
+  positionerProps?: TooltipPositionerProps;
   triggerProps?: TooltipTriggerProps;
   portalProps?: TooltipPortalProps;
   arrowProps?: TooltipArrowProps;
 }
 
-export type TooltipEmits = TooltipRootEmits & TooltipContentEmits;
+export type TooltipEmits = TooltipRootEmits & TooltipPositionerEmits;

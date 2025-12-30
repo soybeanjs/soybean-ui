@@ -1,6 +1,6 @@
-import type { Ref, ShallowRef } from 'vue';
+import type { ComputedRef, Ref, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
-import type { PopperContentProps } from '../popper/types';
+import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 
 export interface TooltipProviderProps {
   /**
@@ -63,7 +63,13 @@ export interface TooltipRootEmits {
 
 export type TooltipDataState = 'closed' | 'delayed-open' | 'instant-open';
 
-export interface TooltipContentImplProps extends PopperContentProps {
+export interface TooltipPositionerImplProps extends PopperPositionerProps {}
+export type TooltipPositionerImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
+
+export interface TooltipPositionerProps extends TooltipPositionerImplProps, ForceMountProps {}
+export type TooltipPositionerEmits = TooltipPositionerImplEmits;
+
+export interface TooltipPopupProps extends PopperPopupProps {
   /**
    * By default, screen readers will announce the content inside the component.
    *
@@ -72,10 +78,6 @@ export interface TooltipContentImplProps extends PopperContentProps {
    */
   ariaLabel?: string;
 }
-export type TooltipContentImplEmits = Pick<DismissableLayerEmits, 'escapeKeyDown' | 'pointerDownOutside'>;
-
-export interface TooltipContentProps extends TooltipContentImplProps, ForceMountProps {}
-export type TooltipContentEmits = TooltipContentImplEmits;
 
 export interface TooltipRootContextParams extends PropsToContext<
   TooltipProviderProps,
@@ -83,6 +85,10 @@ export interface TooltipRootContextParams extends PropsToContext<
 > {
   open: ShallowRef<boolean | undefined>;
   isOpenDelayed: Ref<boolean>;
+}
+
+export interface TooltipPositionerContextParams {
+  pointerEvents: ComputedRef<'auto' | 'none' | undefined>;
 }
 
 export type { PopperAnchorProps as TooltipTriggerProps } from '../popper/types';

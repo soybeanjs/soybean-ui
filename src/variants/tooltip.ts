@@ -3,7 +3,8 @@ import { tv } from 'tailwind-variants';
 
 export const tooltipVariants = tv({
   slots: {
-    content: [
+    positioner: 'w-max',
+    popup: [
       `w-auto rounded-md border bg-popover  text-popover-foreground shadow-md outline-none z-50 will-change-transform`,
       `animate-in fade-in-0 zoom-in-95`,
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95`,
@@ -14,27 +15,27 @@ export const tooltipVariants = tv({
   variants: {
     size: {
       xs: {
-        content: 'px-2 py-1 text-2xs',
+        popup: 'px-2 py-1 text-2xs',
         arrow: 'text-3xs'
       },
       sm: {
-        content: 'px-2.5 py-1.25 text-xs',
+        popup: 'px-2.5 py-1.25 text-xs',
         arrow: 'text-2xs'
       },
       md: {
-        content: 'px-3 py-1.5 text-sm',
+        popup: 'px-3 py-1.5 text-sm',
         arrow: 'text-xs'
       },
       lg: {
-        content: 'px-3.5 py-1.75 text-base',
+        popup: 'px-3.5 py-1.75 text-base',
         arrow: 'text-sm'
       },
       xl: {
-        content: 'px-4 py-2 text-lg',
+        popup: 'px-4 py-2 text-lg',
         arrow: 'text-base'
       },
       '2xl': {
-        content: 'px-4.5 py-2.5 text-xl',
+        popup: 'px-4.5 py-2.5 text-xl',
         arrow: 'text-lg'
       }
     }

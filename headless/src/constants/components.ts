@@ -191,7 +191,7 @@ export const components = {
   tag: ['Tag'],
   textarea: ['TextareaControl', 'TextareaCounter', 'TextareaRoot'],
   toast: ['ToastRoot', 'ToastViewport', 'ToastPortal', 'ToastClose', 'ToastAction', 'ToastTitle', 'ToastDescription'],
-  tooltip: ['TooltipArrow', 'TooltipContent', 'TooltipPortal', 'TooltipRoot', 'TooltipTrigger'],
+  tooltip: ['TooltipArrow', 'TooltipPopup', 'TooltipPortal', 'TooltipPositioner', 'TooltipRoot', 'TooltipTrigger'],
   tree: ['TreeItem', 'TreeRoot', 'TreeVirtualizerItem', 'TreeVirtualizerRoot'],
   virtualizer: ['VirtualizerContent', 'VirtualizerItem', 'VirtualizerRoot'],
   visuallyHidden: ['VisuallyHiddenInput', 'VisuallyHidden']

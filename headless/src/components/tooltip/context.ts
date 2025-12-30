@@ -1,6 +1,11 @@
 import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
-import type { TooltipDataState, TooltipOpenDelayedContextParams, TooltipRootContextParams } from './types';
+import type {
+  TooltipDataState,
+  TooltipOpenDelayedContextParams,
+  TooltipPositionerContextParams,
+  TooltipRootContextParams
+} from './types';
 
 export const [provideTooltipOpenDelayedContext, useTooltipOpenDelayedContext] = useContext(
   'TooltipOpenDelayed',
@@ -49,10 +54,10 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
   (params: TooltipRootContextParams) => {
     const { open, delayDuration, isOpenDelayed, disableHoverableContent } = params;
 
-    const contentId = shallowRef('');
-    const initContentId = () => {
-      if (contentId.value) return;
-      contentId.value = `soybean-tooltip-content-${useId()}`;
+    const popupId = shallowRef('');
+    const initPopupId = () => {
+      if (popupId.value) return;
+      popupId.value = `soybean-tooltip-popup-${useId()}`;
     };
 
     const wasOpenDelayedRef = shallowRef(false);
@@ -62,14 +67,14 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
       return wasOpenDelayedRef.value ? 'delayed-open' : 'instant-open';
     });
 
+    const popupElement = shallowRef<HTMLElement>();
+    const onPopupElementChange = (element: HTMLElement) => {
+      popupElement.value = element;
+    };
+
     const triggerElement = shallowRef<HTMLElement>();
     const onTriggerElementChange = (element: HTMLElement) => {
       triggerElement.value = element;
-    };
-
-    const contentElement = shallowRef<HTMLElement>();
-    const onContentElementChange = (element: HTMLElement) => {
-      contentElement.value = element;
     };
 
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
@@ -119,17 +124,22 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
 
     return {
       ...params,
-      contentId,
       dataState,
+      popupId,
+      initPopupId,
+      popupElement,
+      onPopupElementChange,
       triggerElement,
       onTriggerElementChange,
-      initContentId,
-      contentElement,
-      onContentElementChange,
       onTriggerEnter,
       onTriggerLeave,
       onOpen,
       onClose
     };
   }
+);
+
+export const [provideTooltipPositionerContext, useTooltipPositionerContext] = useContext(
+  'TooltipPositioner',
+  (params: TooltipPositionerContextParams) => params
 );
