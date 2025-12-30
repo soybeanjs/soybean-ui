@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import {
   DialogClose,
-  DialogContent,
   DialogOverlay,
+  DialogPopup,
   DialogPortal,
   DialogRoot,
   DialogTrigger,
@@ -31,7 +31,7 @@ const forwardedProps = useOmitProps(props, [
   'ui',
   'closable',
   'triggerProps',
-  'contentProps',
+  'popupProps',
   'overlayProps',
   'portalProps'
 ]);
@@ -63,14 +63,14 @@ provideSizeContext(() => props.size);
     </DialogTrigger>
     <DialogPortal v-bind="portalProps">
       <DialogOverlay v-bind="overlayProps" />
-      <DialogContent v-bind="contentProps" v-on="listeners">
+      <DialogPopup v-bind="popupProps" v-on="listeners">
+        <slot v-bind="slotProps" />
         <DialogClose v-if="closable" :class="ui.closable" as-child>
           <slot name="close">
             <ButtonIcon :size="size" icon="lucide:x" />
           </slot>
         </DialogClose>
-        <slot v-bind="slotProps" />
-      </DialogContent>
+      </DialogPopup>
     </DialogPortal>
   </DialogRoot>
 </template>

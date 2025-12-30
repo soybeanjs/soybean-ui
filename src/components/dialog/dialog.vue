@@ -2,11 +2,11 @@
 import { computed, useSlots } from 'vue';
 import {
   DialogClose,
-  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
+  DialogPopup,
   DialogPortal,
   DialogRoot,
   DialogTitle,
@@ -37,7 +37,7 @@ const forwardedProps = useOmitProps(props, [
   'description',
   'closable',
   'triggerProps',
-  'contentProps',
+  'popupProps',
   'headerProps',
   'footerProps',
   'titleProps',
@@ -74,7 +74,7 @@ provideSizeContext(() => props.size);
     </DialogTrigger>
     <DialogPortal v-bind="portalProps">
       <DialogOverlay v-bind="overlayProps" />
-      <DialogContent v-bind="contentProps" v-on="listeners">
+      <DialogPopup v-bind="popupProps" v-on="listeners">
         <DialogHeader v-bind="headerProps">
           <DialogTitle v-bind="titleProps">
             <slot name="title" v-bind="slotProps">{{ title }}</slot>
@@ -92,7 +92,7 @@ provideSizeContext(() => props.size);
         <DialogFooter v-if="slots.footer" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps" />
         </DialogFooter>
-      </DialogContent>
+      </DialogPopup>
     </DialogPortal>
   </DialogRoot>
 </template>

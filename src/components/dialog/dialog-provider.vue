@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
       </template>
       <component :is="state.description" v-else />
     </template>
-    <component :is="state.content" v-if="state.content" />
+    <component :is="state.popup" v-if="state.popup" />
     <template #footer>
       <component :is="state.footer" v-if="state.footer" />
       <template v-else>

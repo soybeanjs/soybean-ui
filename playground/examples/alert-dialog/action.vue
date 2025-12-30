@@ -2,7 +2,6 @@
 import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton, SIcon } from '@soybeanjs/ui';
 
 const handleBeforeClose = () => {
-  console.log(5, 'handleBeforeClose');
   return true;
 };
 </script>

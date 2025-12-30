@@ -41,13 +41,13 @@ export interface DialogTriggerProps extends PrimitiveProps, /** @vue-ignore */ B
 
 export interface DialogOverlayProps extends ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface DialogContentImplProps
+export interface DialogPopupImplProps
   extends PrimitiveProps, TrapFocusProps, DismissableLayerProps, /** @vue-ignore */ HTMLAttributes {}
-export type DialogContentImplEmits = DismissableLayerEmits & FocusScopeEmits;
+export type DialogPopupImplEmits = DismissableLayerEmits & FocusScopeEmits;
 
-export interface DialogContentProps
-  extends Omit<DialogContentImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>, ForceMountProps {}
-export type DialogContentEmits = DialogContentImplEmits;
+export interface DialogPopupProps
+  extends Omit<DialogPopupImplProps, 'trapFocus' | 'disableOutsidePointerEvents'>, ForceMountProps {}
+export type DialogPopupEmits = DialogPopupImplEmits;
 
 export interface DialogTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -69,7 +69,7 @@ export interface DialogRootContextParams extends PropsToContext<DialogRootProps,
   open: Ref<boolean | undefined>;
 }
 
-export type DialogThemeSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description';
+export type DialogThemeSlot = 'overlay' | 'header' | 'popup' | 'footer' | 'title' | 'description';
 
 export type DialogUi = Record<DialogThemeSlot, ClassValue>;
 

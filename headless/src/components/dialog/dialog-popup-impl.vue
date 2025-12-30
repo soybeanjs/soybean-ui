@@ -1,37 +1,38 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { useDialogRootContext, useDialogThemeContext } from './context';
-import type { DialogContentImplEmits, DialogContentImplProps } from './types';
+import type { DialogPopupImplEmits, DialogPopupImplProps } from './types';
 
 defineOptions({
-  name: 'DialogContentImpl'
+  name: 'DialogPopupImpl'
 });
 
-const props = defineProps<DialogContentImplProps>();
+const props = defineProps<DialogPopupImplProps>();
 
-const emit = defineEmits<DialogContentImplEmits>();
+const emit = defineEmits<DialogPopupImplEmits>();
 
 const {
   modal,
   onOpenChange,
   setTriggerElement,
-  contentElement,
-  setContentElement,
-  contentId,
-  initContentId,
+  popupElement,
+  setPopupElement,
+  popupId,
+  initPopupId,
   dataState,
   titleId,
   descriptionId
-} = useDialogRootContext('DialogContentImpl');
+} = useDialogRootContext('DialogPopupImpl');
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = computed(() => themeContext?.ui?.value?.popup);
 
-const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
+const { pointerEvents } = useDismissableLayer(popupElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -50,7 +51,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   }
 });
 
-const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
+const { onKeydown } = useFocusScope(popupElement, {
   trapped: () => props.trapFocus,
   loop: true,
   onOpenAutoFocus: event => {
@@ -61,7 +62,11 @@ const { onKeydown, focusScopeProps } = useFocusScope(contentElement, {
   }
 });
 
-const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents'], layerProps, focusScopeProps);
+const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents']);
+
+const style = computed<CSSProperties>(() => ({
+  pointerEvents: pointerEvents.value
+}));
 
 const preserveTriggerElement = () => {
   const activeElement = getActiveElement();
@@ -75,8 +80,8 @@ const preserveTriggerElement = () => {
 // Make sure the whole tree has focus guards as our `Dialog` will be
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
-useHideOthers(contentElement, modal);
-initContentId();
+useHideOthers(popupElement, modal);
+initPopupId();
 onMounted(() => {
   preserveTriggerElement();
 });
@@ -85,14 +90,16 @@ onMounted(() => {
 <template>
   <Primitive
     v-bind="forwardedProps"
-    :id="contentId"
-    :ref="setContentElement"
+    :id="popupId"
+    :ref="setPopupElement"
     :class="cls"
-    role="dialog"
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"
+    data-dismissable-layer
     :data-state="dataState"
-    :style="computedStyle"
+    role="dialog"
+    tabindex="-1"
+    :style="style"
     @keydown="onKeydown"
   >
     <slot />

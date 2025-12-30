@@ -6,6 +6,6 @@ export type AlertDialogRootEmits = DialogRootEmits;
 
 export type {
   DialogCloseProps as AlertDialogCloseProps,
-  DialogContentProps as AlertDialogContentProps,
-  DialogContentEmits as AlertDialogContentEmits
+  DialogPopupProps as AlertDialogPopupProps,
+  DialogPopupEmits as AlertDialogPopupEmits
 } from '../dialog/types';
