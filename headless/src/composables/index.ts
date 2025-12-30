@@ -19,6 +19,7 @@ export * from './use-is-using-keyboard';
 export * from './use-kbd';
 export * from './use-locale';
 export * from './use-nonce';
+export * from './use-popup-events';
 export * from './use-presence';
 export * from './use-props';
 export * from './use-selection';
