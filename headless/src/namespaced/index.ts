@@ -220,8 +220,9 @@ import {
   TextareaCounter,
   TextareaRoot,
   TooltipArrow,
-  TooltipContent,
+  TooltipPopup,
   TooltipPortal,
+  TooltipPositioner,
   TooltipRoot,
   TooltipTrigger,
   TreeItem,
@@ -795,14 +796,16 @@ export const Textarea = {
 
 export const Tooltip = {
   Arrow: TooltipArrow,
-  Content: TooltipContent,
+  Popup: TooltipPopup,
   Portal: TooltipPortal,
+  Positioner: TooltipPositioner,
   Root: TooltipRoot,
   Trigger: TooltipTrigger
 } as {
   Arrow: typeof TooltipArrow;
-  Content: typeof TooltipContent;
+  Popup: typeof TooltipPopup;
   Portal: typeof TooltipPortal;
+  Positioner: typeof TooltipPositioner;
   Root: typeof TooltipRoot;
   Trigger: typeof TooltipTrigger;
 };

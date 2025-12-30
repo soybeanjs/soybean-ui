@@ -2,11 +2,12 @@
 import { computed } from 'vue';
 import {
   TooltipArrow,
-  TooltipContent,
+  TooltipPopup,
   TooltipPortal,
+  TooltipPositioner,
   TooltipRoot,
   TooltipTrigger,
-  providePopoverThemeContext
+  provideTooltipThemeContext
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -31,7 +32,8 @@ const forwardedRootProps = useOmitProps(props, [
   'ui',
   'content',
   'showArrow',
-  'contentProps',
+  'popupProps',
+  'positionerProps',
   'triggerProps',
   'portalProps',
   'arrowProps'
@@ -47,14 +49,14 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-const contentProps = computed(() => {
+const positionerProps = computed(() => {
   return {
     placement: props.placement,
-    ...props.contentProps
+    ...props.positionerProps
   };
 });
 
-providePopoverThemeContext({
+provideTooltipThemeContext({
   ui
 });
 </script>
@@ -65,10 +67,12 @@ providePopoverThemeContext({
       <slot name="trigger" />
     </TooltipTrigger>
     <TooltipPortal v-bind="portalProps">
-      <TooltipContent v-bind="contentProps" v-on="listeners">
-        <slot>{{ content }}</slot>
-        <TooltipArrow v-if="showArrow" v-bind="arrowProps" />
-      </TooltipContent>
+      <TooltipPositioner v-bind="positionerProps" v-on="listeners">
+        <TooltipPopup v-bind="popupProps">
+          <slot>{{ content }}</slot>
+          <TooltipArrow v-if="showArrow" v-bind="arrowProps" />
+        </TooltipPopup>
+      </TooltipPositioner>
     </TooltipPortal>
   </TooltipRoot>
 </template>

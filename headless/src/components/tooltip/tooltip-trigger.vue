@@ -17,7 +17,7 @@ const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipTrigger')
 const {
   open,
   disabled,
-  contentId,
+  popupId,
   dataState,
   disableClosingTrigger,
   ignoreNonKeyboardFocus,
@@ -102,7 +102,7 @@ const tooltipListeners = computed(() => {
     :as="as"
     :as-child="asChild"
     :reference="reference"
-    :aria-describedby="open ? contentId : undefined"
+    :aria-describedby="open ? popupId : undefined"
     :data-state="dataState"
     data-grace-area-trigger
     v-on="tooltipListeners"
