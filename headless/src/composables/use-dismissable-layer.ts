@@ -9,7 +9,7 @@ import {
   watch,
   watchEffect
 } from 'vue';
-import type { CSSProperties, MaybeRefOrGetter, ShallowRef } from 'vue';
+import type { MaybeRefOrGetter, ShallowRef } from 'vue';
 import { handleAndDispatchCustomEvent, isClient } from '../shared';
 import type { DismissableLayerEmits, EmitsToHookProps, FocusOutsideEvent, PointerDownOutsideEvent } from '../types';
 import { useEscapeKeyDown } from './use-escape-key-down';
@@ -41,12 +41,12 @@ let originalBodyPointerEvents: string | undefined;
 /**
  * Composable for creating dismissable layers with outside interaction handling
  *
- * @param layerElementRef - Reference to the dismissable layer element
+ * @param layerElement - Reference to the dismissable layer element
  * @param options - Configuration options for the dismissable layer
  * @returns Properties and handlers for the dismissable layer
  */
 export function useDismissableLayer(
-  layerElementRef: ShallowRef<HTMLElement | undefined>,
+  layerElement: ShallowRef<HTMLElement | undefined>,
   options: UseDismissableLayerOptions = {}
 ) {
   const {
@@ -58,11 +58,9 @@ export function useDismissableLayer(
     onDismiss
   } = options;
 
-  const ownerDocument = (): Document => layerElementRef.value?.ownerDocument ?? globalThis?.document;
+  const ownerDocument = (): Document => layerElement.value?.ownerDocument ?? globalThis?.document;
 
-  const index = computed(() =>
-    layerElementRef.value ? Array.from(layerContext.layers).indexOf(layerElementRef.value) : -1
-  );
+  const index = computed(() => (layerElement.value ? Array.from(layerContext.layers).indexOf(layerElement.value) : -1));
 
   const isBodyPointerEventsDisabled = computed(() => layerContext.layersWithOutsidePointerEventsDisabled.size > 0);
 
@@ -78,16 +76,12 @@ export function useDismissableLayer(
     return index.value >= highestLayerWithOutsidePointerEventsDisabledIndex;
   });
 
-  const computedPointerEvents = computed(() => {
+  const pointerEvents = computed(() => {
     if (!isBodyPointerEventsDisabled.value) return undefined;
     return isPointerEventsEnabled.value ? 'auto' : 'none';
   });
 
-  const computedStyle = computed<CSSProperties>(() => ({
-    pointerEvents: computedPointerEvents.value
-  }));
-
-  usePointerdownOutside(layerElementRef, event => {
+  usePointerdownOutside(layerElement, event => {
     if (!isPointerEventsEnabled.value) return;
 
     const target = event.target as HTMLElement;
@@ -103,7 +97,7 @@ export function useDismissableLayer(
     }
   });
 
-  useFocusOutside(layerElementRef, event => {
+  useFocusOutside(layerElement, event => {
     const target = event.target as HTMLElement;
 
     const isFocusInBranch = [...layerContext.branches].some(branch => branch.contains(target));
@@ -130,7 +124,7 @@ export function useDismissableLayer(
     }
   });
 
-  watch(layerElementRef, nodeVal => {
+  watch(layerElement, nodeVal => {
     if (!nodeVal) return;
 
     const ownerNode = ownerDocument();
@@ -168,11 +162,7 @@ export function useDismissableLayer(
   });
 
   return {
-    computedPointerEvents,
-    computedStyle,
-    layerProps: {
-      [DISMISSABLE_LAYER_DATA_ATTRIBUTE]: ''
-    }
+    pointerEvents
   };
 }
 
