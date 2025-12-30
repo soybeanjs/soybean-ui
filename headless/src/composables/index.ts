@@ -7,6 +7,7 @@ export * from './use-direction';
 export * from './use-dismissable-layer';
 export * from './use-escape-key-down';
 export * from './use-exposed-element';
+export * from './use-floating';
 export * from './use-focus-guards';
 export * from './use-focus-scope';
 export * from './use-forward-element';

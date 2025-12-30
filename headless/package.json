@@ -141,7 +141,8 @@
     }
   },
   "dependencies": {
-    "@floating-ui/vue": "^1.1.9",
+    "@floating-ui/dom": "^1.7.4",
+    "@floating-ui/utils": "^0.2.10",
     "@internationalized/date": "^3.10.1",
     "@internationalized/number": "^3.6.5",
     "@standard-schema/spec": "^1.1.0",
