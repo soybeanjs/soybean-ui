@@ -192,10 +192,7 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
   }
 
   return {
-    onKeydown,
-    focusScopeProps: {
-      tabindex: '-1'
-    }
+    onKeydown
   };
 }
 
