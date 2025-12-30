@@ -5,7 +5,7 @@ import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from '@
 <template>
   <div>
     <h3 class="playground-title">Destructive</h3>
-    <SAlertDialog>
+    <SAlertDialog title="Destructive" type="destructive">
       <template #trigger>
         <SButton color="destructive" variant="outline">Show Dialog</SButton>
       </template>

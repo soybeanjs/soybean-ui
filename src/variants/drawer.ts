@@ -1,7 +1,7 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
 
-export const drawerContentVariants = tv({
+export const drawerPopupVariants = tv({
   base: [
     `fixed z-50 flex flex-col justify-between items-stretch border bg-background rounded-md outline-none transition ease-in-out`,
     `data-[state=open]:animate-in data-[state=open]:duration-500`,
