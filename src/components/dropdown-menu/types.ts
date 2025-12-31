@@ -4,6 +4,7 @@ import type {
   DropdownMenuArrowProps,
   DropdownMenuContentEmits,
   DropdownMenuContentProps,
+  DropdownMenuPopupProps,
   DropdownMenuPortalProps,
   DropdownMenuRootEmits,
   DropdownMenuRootProps,
@@ -32,6 +33,7 @@ export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
   triggerProps?: DropdownMenuTriggerProps;
   portalProps?: DropdownMenuPortalProps;
   contentProps?: DropdownMenuContentProps;
+  popupProps?: DropdownMenuPopupProps;
   arrowProps?: DropdownMenuArrowProps;
 }
 

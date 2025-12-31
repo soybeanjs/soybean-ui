@@ -27,6 +27,7 @@ export type {
   MenuContentProps,
   MenuContentEmits,
   MenuTriggerProps,
+  MenuPopupProps,
   MenuSubProps,
   MenuSubEmits,
   MenuSubTriggerProps,
