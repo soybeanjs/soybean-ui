@@ -2,24 +2,24 @@
 import { computed, shallowRef } from 'vue';
 import { useForwardListeners, useOmitProps, usePopupEvents, usePresence } from '../../composables';
 import { useDialogRootContext } from './context';
-import DialogPopupImpl from './dialog-popup-impl.vue';
-import type { DialogPopupEmits, DialogPopupProps } from './types';
+import DialogPopupImpl from './dialog-content-impl.vue';
+import type { DialogContentEmits, DialogContentProps } from './types';
 
 defineOptions({
   name: 'DialogPopup'
 });
 
-const props = defineProps<DialogPopupProps>();
+const props = defineProps<DialogContentProps>();
 
-const emit = defineEmits<DialogPopupEmits>();
+const emit = defineEmits<DialogContentEmits>();
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const listeners = useForwardListeners(emit);
 
-const { popupElement, open, modal, triggerElement } = useDialogRootContext('DialogPopup');
+const { contentElement, open, modal, triggerElement } = useDialogRootContext('DialogContent');
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 

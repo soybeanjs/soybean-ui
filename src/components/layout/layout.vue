@@ -13,7 +13,7 @@ import {
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext, themeSizeRatio } from '@/theme';
 import { layoutVariants } from '@/variants/layout';
-import { drawerPopupVariants } from '@/variants/drawer';
+import { drawerContentVariants } from '@/variants/drawer';
 import type { LayoutEmits, LayoutProps } from './types';
 
 defineOptions({
@@ -48,7 +48,7 @@ const ui = computed(() => {
     collapsible: props.collapsible
   });
 
-  const drawer = drawerPopupVariants({
+  const drawer = drawerContentVariants({
     size: props.size,
     side: props.side
   });

@@ -8,7 +8,7 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
   'DialogRoot',
   (params: DialogRootContextParams) => {
     const [triggerElement, setTriggerElement] = useForwardElement();
-    const [popupElement, setPopupElement] = useForwardElement();
+    const [contentElement, setContentElement] = useForwardElement();
 
     const { open, modal } = params;
 
@@ -21,10 +21,10 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
 
     const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
 
-    const popupId = shallowRef('');
-    const initPopupId = () => {
-      if (popupId.value) return;
-      popupId.value = `soybean-dialog-popup-${useId()}`;
+    const contentId = shallowRef('');
+    const initContentId = () => {
+      if (contentId.value) return;
+      contentId.value = `soybean-dialog-content-${useId()}`;
     };
 
     const titleId = shallowRef('');
@@ -47,10 +47,10 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
       dataState,
       triggerElement,
       setTriggerElement,
-      popupElement,
-      setPopupElement,
-      popupId,
-      initPopupId,
+      contentElement,
+      setContentElement,
+      contentId,
+      initContentId,
       titleId,
       initTitleId,
       descriptionId,

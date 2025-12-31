@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import type { ClassValue } from '../../types';
-import { DialogOverlay, DialogPopup, DialogPortal, DialogRoot } from '../dialog';
+import { DialogContent, DialogOverlay, DialogPortal, DialogRoot } from '../dialog';
 import { useLayoutRootContext, useLayoutThemeContext } from './context';
 import type { LayoutMobileProps, LayoutThemeSlot } from './types';
 
@@ -25,11 +25,11 @@ const ui = computed<Partial<Record<LayoutThemeSlot, ClassValue>>>(() => themeCon
   <DialogRoot :open="mobileOpen" @update:open="onMobileOpenChange">
     <DialogPortal>
       <DialogOverlay :class="ui.mobileOverlay" />
-      <DialogPopup :class="ui.mobileDrawer" :style="mobileStyle">
+      <DialogContent :class="ui.mobileDrawer" :style="mobileStyle">
         <div v-bind="attrs" :class="ui.mobile" data-sidebar="sidebar" data-mobile>
           <slot />
         </div>
-      </DialogPopup>
+      </DialogContent>
     </DialogPortal>
   </DialogRoot>
 </template>

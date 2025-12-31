@@ -8,11 +8,11 @@ import {
   AlertContent,
   AlertDescription,
   AlertDialogClose,
+  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  AlertDialogPopup,
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTitle,
@@ -69,11 +69,11 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
   DialogClose,
+  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
-  DialogPopup,
   DialogPortal,
   DialogRoot,
   DialogTitle,
@@ -264,22 +264,22 @@ export const Alert = {
 
 export const AlertDialog = {
   Close: AlertDialogClose,
+  Content: AlertDialogContent,
   Description: AlertDialogDescription,
   Footer: AlertDialogFooter,
   Header: AlertDialogHeader,
   Overlay: AlertDialogOverlay,
-  Popup: AlertDialogPopup,
   Portal: AlertDialogPortal,
   Root: AlertDialogRoot,
   Title: AlertDialogTitle,
   Trigger: AlertDialogTrigger
 } as {
   Close: typeof AlertDialogClose;
+  Content: typeof AlertDialogContent;
   Description: typeof AlertDialogDescription;
   Footer: typeof AlertDialogFooter;
   Header: typeof AlertDialogHeader;
   Overlay: typeof AlertDialogOverlay;
-  Popup: typeof AlertDialogPopup;
   Portal: typeof AlertDialogPortal;
   Root: typeof AlertDialogRoot;
   Title: typeof AlertDialogTitle;
@@ -414,22 +414,22 @@ export const ContextMenu = {
 
 export const Dialog = {
   Close: DialogClose,
+  Content: DialogContent,
   Description: DialogDescription,
   Footer: DialogFooter,
   Header: DialogHeader,
   Overlay: DialogOverlay,
-  Popup: DialogPopup,
   Portal: DialogPortal,
   Root: DialogRoot,
   Title: DialogTitle,
   Trigger: DialogTrigger
 } as {
   Close: typeof DialogClose;
+  Content: typeof DialogContent;
   Description: typeof DialogDescription;
   Footer: typeof DialogFooter;
   Header: typeof DialogHeader;
   Overlay: typeof DialogOverlay;
-  Popup: typeof DialogPopup;
   Portal: typeof DialogPortal;
   Root: typeof DialogRoot;
   Title: typeof DialogTitle;

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '../../composables';
-import DialogPopup from '../dialog/dialog-popup.vue';
+import DialogContent from '../dialog/dialog-content.vue';
 import { provideAlertDialogContentContext } from './context';
-import type { AlertDialogPopupEmits, AlertDialogPopupProps } from './types';
+import type { AlertDialogContentEmits, AlertDialogContentProps } from './types';
 
 defineOptions({
-  name: 'AlertDialogPopup'
+  name: 'AlertDialogContent'
 });
 
-const props = defineProps<AlertDialogPopupProps>();
+const props = defineProps<AlertDialogContentProps>();
 
-const emit = defineEmits<AlertDialogPopupEmits>();
+const emit = defineEmits<AlertDialogContentEmits>();
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
 
@@ -26,7 +26,7 @@ const openAutoFocus = (event: Event) => {
 </script>
 
 <template>
-  <DialogPopup
+  <DialogContent
     v-bind="forwardedProps"
     role="alertdialog"
     v-on="listeners"
@@ -35,5 +35,5 @@ const openAutoFocus = (event: Event) => {
     @interact-outside.prevent
   >
     <slot />
-  </DialogPopup>
+  </DialogContent>
 </template>
