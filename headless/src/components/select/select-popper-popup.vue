@@ -19,9 +19,9 @@ const [_, setPopupElement] = useForwardElement(onPopupElementChange);
 
 const style: CSSProperties = {
   boxSizing: 'border-box',
-  [selectCssVars.contentTransformOrigin]: `var(${popperCssVars.transformOrigin})`,
-  [selectCssVars.contentAvailableWidth]: `var(${popperCssVars.availableWidth})`,
-  [selectCssVars.contentAvailableHeight]: `var(${popperCssVars.availableHeight})`,
+  [selectCssVars.popupTransformOrigin]: `var(${popperCssVars.transformOrigin})`,
+  [selectCssVars.popupAvailableWidth]: `var(${popperCssVars.availableWidth})`,
+  [selectCssVars.popupAvailableHeight]: `var(${popperCssVars.availableHeight})`,
   [selectCssVars.triggerWidth]: `var(${popperCssVars.anchorWidth})`,
   [selectCssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`
 };

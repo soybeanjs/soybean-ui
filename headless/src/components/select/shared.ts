@@ -2,9 +2,9 @@ import { isNullish } from '../../shared';
 import type { DefinedValue, MaybeArray } from '../../types';
 
 export const selectCssVars = {
-  contentTransformOrigin: '--soybean-select-content-transform-origin',
-  contentAvailableWidth: '--soybean-select-content-available-width',
-  contentAvailableHeight: '--soybean-select-content-available-height',
+  popupTransformOrigin: '--soybean-select-popup-transform-origin',
+  popupAvailableWidth: '--soybean-select-popup-available-width',
+  popupAvailableHeight: '--soybean-select-popup-available-height',
   triggerWidth: '--soybean-select-trigger-width',
   triggerHeight: '--soybean-select-trigger-height'
 };
