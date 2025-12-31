@@ -1,12 +1,12 @@
 import type { VNode } from 'vue';
 import type {
   ClassValue,
+  DialogContentEmits,
+  DialogContentProps,
   DialogDescriptionProps,
   DialogFooterProps,
   DialogHeaderProps,
   DialogOverlayProps,
-  DialogPopupEmits,
-  DialogPopupProps,
   DialogPortalProps,
   DialogRootEmits,
   DialogRootProps,
@@ -29,7 +29,7 @@ export interface DialogProps extends DialogRootProps {
   description?: string;
   closable?: boolean;
   triggerProps?: DialogTriggerProps;
-  popupProps?: DialogPopupProps;
+  contentProps?: DialogContentProps;
   headerProps?: DialogHeaderProps;
   footerProps?: DialogFooterProps;
   titleProps?: DialogTitleProps;
@@ -38,14 +38,14 @@ export interface DialogProps extends DialogRootProps {
   portalProps?: DialogPortalProps;
 }
 
-export type DialogEmits = DialogRootEmits & DialogPopupEmits;
+export type DialogEmits = DialogRootEmits & DialogContentEmits;
 
 export interface DialogPureProps extends DialogRootProps {
   size?: ThemeSize;
   ui?: Partial<DialogExtendedUi>;
   closable?: boolean;
   triggerProps?: DialogTriggerProps;
-  popupProps?: DialogPopupProps;
+  contentProps?: DialogContentProps;
   overlayProps?: DialogOverlayProps;
   portalProps?: DialogPortalProps;
 }
@@ -54,14 +54,14 @@ export type DialogPureEmits = DialogEmits;
 
 export type UseDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
-export interface UseDialogOptions extends Partial<EmitsToHookProps<DialogPopupEmits>> {
+export interface UseDialogOptions extends Partial<EmitsToHookProps<DialogContentEmits>> {
   size?: ThemeSize;
   ui?: Partial<DialogExtendedUi>;
   type: UseDialogType;
   title?: string | VNode;
   showIcon?: boolean;
   description?: string | VNode;
-  popup?: VNode;
+  content?: VNode;
   footer?: VNode;
   confirmText?: string;
   cancelText?: string;

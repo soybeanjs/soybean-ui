@@ -2,11 +2,11 @@
 import { computed, useSlots } from 'vue';
 import {
   DialogClose,
+  DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
-  DialogPopup,
   DialogPortal,
   DialogRoot,
   DialogTitle,
@@ -16,7 +16,7 @@ import {
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
 import { dialogVariants } from '@/variants/dialog';
-import { drawerPopupVariants, drawerScrollableVariants } from '@/variants/drawer';
+import { drawerContentVariants, drawerScrollableVariants } from '@/variants/drawer';
 import ButtonIcon from '../button/button-icon.vue';
 import type { DrawerEmits, DrawerProps } from './types';
 
@@ -40,7 +40,7 @@ const forwardedProps = useOmitProps(props, [
   'description',
   'closable',
   'triggerProps',
-  'popupProps',
+  'contentProps',
   'headerProps',
   'footerProps',
   'titleProps',
@@ -60,12 +60,12 @@ const ui = computed(() => {
     size: props.size
   });
 
-  const popup = drawerPopupVariants({
+  const content = drawerContentVariants({
     size: props.size,
     side: props.side
   });
 
-  variants.popup = () => popup;
+  variants.content = () => content;
 
   const scrollable = () =>
     drawerScrollableVariants({
@@ -95,7 +95,7 @@ provideSizeContext(() => props.size);
     </DialogTrigger>
     <DialogPortal v-bind="portalProps">
       <DialogOverlay v-bind="overlayProps" />
-      <DialogPopup v-bind="popupProps" v-on="listeners">
+      <DialogContent v-bind="contentProps" v-on="listeners">
         <DialogHeader v-bind="headerProps">
           <DialogTitle v-bind="titleProps">
             <slot name="title" v-bind="slotProps">{{ title }}</slot>
@@ -115,7 +115,7 @@ provideSizeContext(() => props.size);
         <DialogFooter v-if="slots.footer" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps" />
         </DialogFooter>
-      </DialogPopup>
+      </DialogContent>
     </DialogPortal>
   </DialogRoot>
 </template>

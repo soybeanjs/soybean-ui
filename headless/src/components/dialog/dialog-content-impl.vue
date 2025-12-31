@@ -5,34 +5,34 @@ import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useO
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
 import { useDialogRootContext, useDialogThemeContext } from './context';
-import type { DialogPopupImplEmits, DialogPopupImplProps } from './types';
+import type { DialogContentImplEmits, DialogContentImplProps } from './types';
 
 defineOptions({
-  name: 'DialogPopupImpl'
+  name: 'DialogContentImpl'
 });
 
-const props = defineProps<DialogPopupImplProps>();
+const props = defineProps<DialogContentImplProps>();
 
-const emit = defineEmits<DialogPopupImplEmits>();
+const emit = defineEmits<DialogContentImplEmits>();
 
 const {
   modal,
   onOpenChange,
   setTriggerElement,
-  popupElement,
-  setPopupElement,
-  popupId,
-  initPopupId,
+  contentElement,
+  setContentElement,
+  contentId,
+  initContentId,
   dataState,
   titleId,
   descriptionId
-} = useDialogRootContext('DialogPopupImpl');
+} = useDialogRootContext('DialogContentImpl');
 
 const themeContext = useDialogThemeContext();
 
-const cls = computed(() => themeContext?.ui?.value?.popup);
+const cls = computed(() => themeContext?.ui?.value?.content);
 
-const { pointerEvents } = useDismissableLayer(popupElement, {
+const { pointerEvents } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -51,7 +51,7 @@ const { pointerEvents } = useDismissableLayer(popupElement, {
   }
 });
 
-const { onKeydown } = useFocusScope(popupElement, {
+const { onKeydown } = useFocusScope(contentElement, {
   trapped: () => props.trapFocus,
   loop: true,
   onOpenAutoFocus: event => {
@@ -80,8 +80,8 @@ const preserveTriggerElement = () => {
 // Make sure the whole tree has focus guards as our `Dialog` will be
 // the last element in the DOM (because of the `Portal`)
 useFocusGuards();
-useHideOthers(popupElement, modal);
-initPopupId();
+useHideOthers(contentElement, modal);
+initContentId();
 onMounted(() => {
   preserveTriggerElement();
 });
@@ -90,8 +90,8 @@ onMounted(() => {
 <template>
   <Primitive
     v-bind="forwardedProps"
-    :id="popupId"
-    :ref="setPopupElement"
+    :id="contentId"
+    :ref="setContentElement"
     :class="cls"
     :aria-labelledby="titleId"
     :aria-describedby="descriptionId"

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
 import {
+  AlertDialogContent,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  AlertDialogPopup,
   AlertDialogPortal,
   AlertDialogRoot,
   AlertDialogTitle,
@@ -35,7 +35,7 @@ const forwardedProps = useOmitProps(props, [
   'title',
   'description',
   'triggerProps',
-  'popupProps',
+  'contentProps',
   'headerProps',
   'footerProps',
   'titleProps',
@@ -97,7 +97,7 @@ provideSizeContext(() => props.size);
     </AlertDialogTrigger>
     <AlertDialogPortal v-bind="portalProps">
       <AlertDialogOverlay v-bind="overlayProps" />
-      <AlertDialogPopup v-bind="popupProps" v-on="listeners">
+      <AlertDialogContent v-bind="contentProps" v-on="listeners">
         <AlertDialogHeader v-bind="headerProps">
           <AlertDialogTitle v-bind="titleProps">
             <Icon v-if="showIcon && iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
@@ -111,7 +111,7 @@ provideSizeContext(() => props.size);
         <AlertDialogFooter v-if="slots.footer" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps" />
         </AlertDialogFooter>
-      </AlertDialogPopup>
+      </AlertDialogContent>
     </AlertDialogPortal>
   </AlertDialogRoot>
 </template>
