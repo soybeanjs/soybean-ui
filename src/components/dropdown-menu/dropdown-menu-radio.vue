@@ -51,6 +51,7 @@ const propKeys = [
   'triggerProps',
   'portalProps',
   'contentProps',
+  'popupProps',
   'arrowProps'
 ] satisfies (keyof DropdownMenuRadioProps<T, S>)[];
 

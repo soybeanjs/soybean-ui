@@ -6,8 +6,9 @@ export { default as SDropdownMenuWrapper } from './dropdown-menu-wrapper.vue';
 export type {
   DropdownMenuRootProps,
   DropdownMenuRootEmits,
-  DropdownMenuContentEmits,
   DropdownMenuContentProps,
+  DropdownMenuContentEmits,
+  DropdownMenuPopupProps,
   DropdownMenuTriggerType,
   DropdownMenuTriggerProps,
   DropdownMenuPortalProps,
