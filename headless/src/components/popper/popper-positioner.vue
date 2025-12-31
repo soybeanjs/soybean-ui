@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watchPostEffect } from 'vue';
+import { computed, shallowRef, watchPostEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { autoUpdate } from '@floating-ui/dom';
 import { getAlignment, getSide } from '@floating-ui/utils';
@@ -21,7 +21,7 @@ const cls = computed(() => themeContext?.ui?.value?.positioner);
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 const [arrowElement, setArrowElement] = useForwardElement();
-const { anchorElement } = usePopperRootContext('PopperPositioner');
+const { anchorElement, popupElement } = usePopperRootContext('PopperPositioner');
 
 const referenceElement = computed(() => props.reference ?? anchorElement.value);
 
@@ -42,11 +42,14 @@ const arrowCentered = computed(() => middlewareData.value.arrow?.centerOffset ==
 const arrowX = computed(() => middlewareData.value.arrow?.x ?? 0);
 const arrowY = computed(() => middlewareData.value.arrow?.y ?? 0);
 
+const popupZIndex = shallowRef<string>();
+
 const positionerStyle = computed<CSSProperties>(() => {
   const { transformOrigin, hide } = middlewareData.value;
 
   return {
     ...floatingStyles.value,
+    zIndex: popupZIndex.value,
     transform: isPositioned.value ? floatingStyles.value.transform : 'translate(0, -200%)',
     [popperCssVars.transformOrigin]: [transformOrigin?.x, transformOrigin?.y].join(' '),
     ...(hide?.referenceHidden && {
@@ -69,6 +72,12 @@ providePopperPositionerContext({
 watchPostEffect(() => {
   if (isPositioned.value) {
     emit('placed');
+  }
+});
+
+watchPostEffect(() => {
+  if (popupElement.value) {
+    popupZIndex.value = window.getComputedStyle(popupElement.value).zIndex;
   }
 });
 </script>
