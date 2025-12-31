@@ -2,6 +2,7 @@ import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   Align,
   ClassValue,
+  DataOrientation,
   Direction,
   DismissableLayerEmits,
   DismissableLayerProps,
@@ -26,6 +27,8 @@ export interface NavigationMenuRootProps extends /** @vue-ignore */ HTMLAttribut
    * If omitted, inherits globally from `ConfigProvider` or assumes LTR (left-to-right) reading mode.
    */
   dir?: Direction;
+  /** The orientation of the menu. */
+  orientation?: DataOrientation;
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened.
    *
@@ -119,6 +122,7 @@ export interface NavigationMenuViewportPosition {
 export interface NavigationMenuRootContextParams extends PropsToContext<
   Required<NavigationMenuRootProps>,
   | 'dir'
+  | 'orientation'
   | 'unmountOnHide'
   | 'skipDelayDuration'
   | 'delayDuration'

@@ -16,7 +16,7 @@ const props = defineProps<NavigationMenuIndicatorProps>();
 
 const attrs = useAttrs();
 
-const { activeTriggerElement, modelValue, indicatorTrackElement } =
+const { orientation, activeTriggerElement, modelValue, indicatorTrackElement } =
   useNavigationMenuRootContext('NavigationMenuIndicator');
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 
@@ -48,11 +48,13 @@ const indicatorStyle = computed<CSSProperties>(() => {
 const onPositionChange = () => {
   if (!activeTriggerElement.value) return;
 
-  const { offsetWidth, offsetLeft } = activeTriggerElement.value;
+  const { offsetWidth, offsetHeight, offsetLeft, offsetTop } = activeTriggerElement.value;
+
+  const isHorizontal = orientation.value === 'horizontal';
 
   sizePosition.value = {
-    size: offsetWidth,
-    position: offsetLeft
+    size: isHorizontal ? offsetWidth : offsetHeight,
+    position: isHorizontal ? offsetLeft : offsetTop
   };
 };
 

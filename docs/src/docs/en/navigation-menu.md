@@ -3,5 +3,6 @@
 ## Demos
 
 ```playground
-base
+horizontal
+vertical
 ```

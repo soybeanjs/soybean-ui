@@ -3,5 +3,6 @@
 ## 示例
 
 ```playground
-base
+horizontal
+vertical
 ```

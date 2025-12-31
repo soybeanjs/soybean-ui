@@ -156,7 +156,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
                 :size="size"
                 :side="open ? 'bottom' : 'right'"
                 :items="frameworks"
-                :ui="{ content: 'w-[var(--soybean-popper-anchor-width)]' }"
+                :ui="{ popup: 'w-[var(--soybean-popper-anchor-width)]' }"
                 @select="setActiveFramework"
               >
                 <template #trigger>
