@@ -39,6 +39,7 @@ export type {
   MenuItemIndicatorProps as ContextMenuItemIndicatorProps,
   MenuItemProps as ContextMenuItemProps,
   MenuPortalProps as ContextMenuPortalProps,
+  MenuPopupProps as ContextMenuPopupProps,
   MenuRadioGroupEmits as ContextMenuRadioGroupEmits,
   MenuRadioGroupProps as ContextMenuRadioGroupProps,
   MenuRadioItemEmits as ContextMenuRadioItemEmits,

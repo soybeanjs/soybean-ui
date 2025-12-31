@@ -3,6 +3,7 @@ import type {
   ContextMenuArrowProps,
   ContextMenuContentEmits,
   ContextMenuContentProps,
+  ContextMenuPopupProps,
   ContextMenuPortalProps,
   ContextMenuRootEmits,
   ContextMenuRootProps,
@@ -32,6 +33,7 @@ export interface ContextMenuWrapperProps extends ContextMenuRootProps {
   triggerProps?: ContextMenuTriggerProps;
   portalProps?: ContextMenuPortalProps;
   contentProps?: ContextMenuContentProps;
+  popupProps?: ContextMenuPopupProps;
   arrowProps?: ContextMenuArrowProps;
 }
 
