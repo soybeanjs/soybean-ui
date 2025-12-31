@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onWatcherCleanup, watchEffect } from 'vue';
+import { onWatcherCleanup, watchEffect, watchPostEffect } from 'vue';
 import {
   useBodyScrollLock,
   useDismissableLayer,
@@ -10,7 +10,7 @@ import {
   useOmitProps
 } from '../../composables';
 import { PopperPositioner } from '../popper';
-import { providePopoverPositionerContext, usePopoverRootContext } from './context';
+import { usePopoverRootContext } from './context';
 import type { PopoverPositionerImplEmits, PopoverPositionerImplProps } from './types';
 
 defineOptions({
@@ -21,7 +21,7 @@ const props = defineProps<PopoverPositionerImplProps>();
 
 const emit = defineEmits<PopoverPositionerImplEmits>();
 
-const { onOpenChange, modal } = usePopoverRootContext('PopoverPositionerImpl');
+const { modal, popupElement, onOpenChange } = usePopoverRootContext('PopoverPositionerImpl');
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 
@@ -57,8 +57,6 @@ const { onKeydown } = useFocusScope(positionerElement, {
 
 const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus']);
 
-providePopoverPositionerContext({ pointerEvents });
-
 // Make sure the whole tree has focus guards as our `Dialog` will be the last element in the DOM (because of the `Portal`)
 useFocusGuards();
 useHideOthers(positionerElement, modal);
@@ -67,6 +65,12 @@ watchEffect(() => {
   if (modal.value) {
     const cleanup = useBodyScrollLock();
     onWatcherCleanup(cleanup);
+  }
+});
+
+watchPostEffect(() => {
+  if (popupElement.value && pointerEvents.value) {
+    popupElement.value.style.pointerEvents = pointerEvents.value;
   }
 });
 </script>

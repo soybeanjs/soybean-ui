@@ -2,7 +2,7 @@ import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { PopoverPositionerContextParams, PopoverRootContextParams } from './types';
+import type { PopoverRootContextParams } from './types';
 
 export const [providePopoverRootContext, usePopoverRootContext] = useContext(
   'PopoverRoot',
@@ -60,9 +60,4 @@ export const [providePopoverRootContext, usePopoverRootContext] = useContext(
       hasCustomAnchor
     };
   }
-);
-
-export const [providePopoverPositionerContext, usePopoverPositionerContext] = useContext(
-  'PopoverPositioner',
-  (params: PopoverPositionerContextParams) => params
 );

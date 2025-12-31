@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement } from '../../composables';
 import { PopperPopup } from '../popper';
 import { popperCssVars } from '../popper/shared';
-import { usePopoverPositionerContext, usePopoverRootContext } from './context';
+import { usePopoverRootContext } from './context';
 import { popoverCssVars } from './shared';
 import type { PopoverPopupProps } from './types';
 
@@ -15,7 +14,6 @@ defineOptions({
 defineProps<PopoverPopupProps>();
 
 const { dataState, triggerId, popupId, initPopupId, onPopupElementChange } = usePopoverRootContext('PopoverPopup');
-const { pointerEvents } = usePopoverPositionerContext('PopoverPopup');
 
 const [_, setPopupElement] = useForwardElement(onPopupElementChange);
 
@@ -26,11 +24,6 @@ const cssVarsStyle: CSSProperties = {
   [popoverCssVars.anchorWidth]: `var(${popperCssVars.anchorWidth})`,
   [popoverCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
 };
-
-const style = computed<CSSProperties>(() => ({
-  ...cssVarsStyle,
-  pointerEvents: pointerEvents.value
-}));
 
 initPopupId();
 </script>
@@ -44,7 +37,7 @@ initPopupId();
     :data-state="dataState"
     role="dialog"
     tabindex="-1"
-    :style="style"
+    :style="cssVarsStyle"
   >
     <slot />
   </PopperPopup>
