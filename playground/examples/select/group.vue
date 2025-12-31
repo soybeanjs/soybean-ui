@@ -22,11 +22,7 @@ const groups: SelectOptionData[] = [
   <div>
     <h3 class="playground-title">Group</h3>
     <div class="w-60 lt-md:w-auto">
-      <SSelect
-        :items="groups"
-        :value-props="{ placeholder: 'Please select a fruit or vegetable' }"
-        @update:model-value="console.log"
-      />
+      <SSelect :items="groups" placeholder="Please select a fruit or vegetable" @update:model-value="console.log" />
     </div>
   </div>
 </template>

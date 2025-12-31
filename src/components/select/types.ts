@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'vue';
 import type {
   DefinedValue,
+  Placement,
   SelectArrowProps,
   SelectContentEmits,
   SelectContentProps,
@@ -10,6 +11,7 @@ import type {
   SelectItemIndicatorProps,
   SelectItemProps,
   SelectItemTextProps,
+  SelectPopupProps,
   SelectPortalProps,
   SelectRootEmits,
   SelectRootProps,
@@ -102,9 +104,17 @@ export interface SelectProps<
   showArrow?: boolean;
   triggerProps?: SelectTriggerProps;
   triggerIconProps?: SelectTriggerIconProps;
+  /**
+   * The placeholder to display in the select value.
+   *
+   * the priority is higher than the prop in the `valueProps`.
+   */
+  placeholder?: string;
   valueProps?: SelectValueProps;
   portalProps?: SelectPortalProps;
   contentProps?: SelectContentProps;
+  placement?: Placement;
+  popupProps?: SelectPopupProps;
   viewportProps?: SelectViewportProps;
   scrollDownButtonProps?: SelectScrollDownButtonProps;
   scrollUpButtonProps?: SelectScrollUpButtonProps;

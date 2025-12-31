@@ -2,15 +2,15 @@
 import { ref, watch } from 'vue';
 import { VisuallyHidden } from '../visually-hidden';
 import { useSelectRootContext } from './context';
-import type { BubbleSelectProps } from './types';
+import type { SelectBubbleSelectProps } from './types';
 
 defineOptions({
-  name: 'BubbleSelect'
+  name: 'SelectBubbleSelect'
 });
 
-const props = defineProps<BubbleSelectProps>();
+const props = defineProps<SelectBubbleSelectProps>();
 
-const { onModelValueChange } = useSelectRootContext('BubbleSelect');
+const { onModelValueChange } = useSelectRootContext('SelectBubbleSelect');
 
 const selectElement = ref<HTMLElement>();
 

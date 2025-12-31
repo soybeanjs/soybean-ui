@@ -24,6 +24,7 @@ export type {
   SelectArrowProps,
   SelectContentProps,
   SelectContentEmits,
+  SelectPopupProps,
   SelectGroupLabelProps,
   SelectGroupProps,
   SelectItemProps,

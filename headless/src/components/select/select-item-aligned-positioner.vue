@@ -1,37 +1,33 @@
 <script setup lang="ts">
-import { nextTick, onMounted, shallowRef, useAttrs } from 'vue';
+import { nextTick, onMounted, shallowRef } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { useExposedElement } from '../../composables';
 import { clamp } from '../../shared';
-import { Primitive } from '../primitive';
 import {
   provideSelectItemAlignedPositionContext,
   useCollectionContext,
   useSelectContentContext,
+  useSelectPopupElementContext,
   useSelectRootContext
 } from './context';
 import { CONTENT_MARGIN } from './shared';
 import type { SelectItemAlignedPositionEmits, SelectItemAlignedPositionProps } from './types';
 
 defineOptions({
-  name: 'SelectItemAlignedPosition',
-  inheritAttrs: false
+  name: 'SelectItemAlignedPosition'
 });
 
 defineProps<SelectItemAlignedPositionProps>();
 
 const emit = defineEmits<SelectItemAlignedPositionEmits>();
 
-const attrs = useAttrs();
-
 const { dir, triggerElement, valueElement } = useSelectRootContext('SelectItemAlignedPosition');
 const { viewportElement, selectedItemElement, selectedItemTextElement, focusSelectedItem } =
   useSelectContentContext('SelectItemAlignedPosition');
 const { getOrderedElements } = useCollectionContext('SelectItemAlignedPosition');
 
-const [contentElement, setContentElement] = useExposedElement();
+const positionerElement = shallowRef<HTMLElement>();
 
-const contentWrapperElement = shallowRef<HTMLElement>();
+const { popupElement } = useSelectPopupElementContext('SelectItemAlignedPosition');
 
 const shouldExpandOnScroll = shallowRef(false);
 
@@ -41,8 +37,8 @@ function position() {
   if (
     !triggerElement.value ||
     !valueElement.value ||
-    !contentWrapperElement.value ||
-    !contentElement.value ||
+    !positionerElement.value ||
+    !popupElement.value ||
     !viewportElement.value ||
     !selectedItemElement.value ||
     !selectedItemTextElement.value
@@ -54,32 +50,32 @@ function position() {
   // -----------------------------------------------------------------------------------------
   //  Horizontal positioning
   // -----------------------------------------------------------------------------------------
-  const contentRect = contentElement.value.getBoundingClientRect();
+  const popupRect = popupElement.value.getBoundingClientRect();
   const valueNodeRect = valueElement.value.getBoundingClientRect();
   const itemTextRect = selectedItemTextElement.value.getBoundingClientRect();
 
   if (dir.value !== 'rtl') {
-    const itemTextOffset = itemTextRect.left - contentRect.left;
+    const itemTextOffset = itemTextRect.left - popupRect.left;
     const left = valueNodeRect.left - itemTextOffset;
     const leftDelta = triggerRect.left - left;
     const minContentWidth = triggerRect.width + leftDelta;
-    const contentWidth = Math.max(minContentWidth, contentRect.width);
+    const contentWidth = Math.max(minContentWidth, popupRect.width);
     const rightEdge = window.innerWidth - CONTENT_MARGIN;
     const clampedLeft = clamp(left, CONTENT_MARGIN, Math.max(CONTENT_MARGIN, rightEdge - contentWidth));
 
-    contentWrapperElement.value.style.minWidth = `${minContentWidth}px`;
-    contentWrapperElement.value.style.left = `${clampedLeft}px`;
+    positionerElement.value.style.minWidth = `${minContentWidth}px`;
+    positionerElement.value.style.left = `${clampedLeft}px`;
   } else {
-    const itemTextOffset = contentRect.right - itemTextRect.right;
+    const itemTextOffset = popupRect.right - itemTextRect.right;
     const right = window.innerWidth - valueNodeRect.right - itemTextOffset;
     const rightDelta = window.innerWidth - triggerRect.right - right;
     const minContentWidth = triggerRect.width + rightDelta;
-    const contentWidth = Math.max(minContentWidth, contentRect.width);
+    const contentWidth = Math.max(minContentWidth, popupRect.width);
     const leftEdge = window.innerWidth - CONTENT_MARGIN;
     const clampedRight = clamp(right, CONTENT_MARGIN, Math.max(CONTENT_MARGIN, leftEdge - contentWidth));
 
-    contentWrapperElement.value.style.minWidth = `${minContentWidth}px`;
-    contentWrapperElement.value.style.right = `${clampedRight}px`;
+    positionerElement.value.style.minWidth = `${minContentWidth}px`;
+    positionerElement.value.style.right = `${clampedRight}px`;
   }
 
   // -----------------------------------------------------------------------------------------
@@ -89,14 +85,14 @@ function position() {
   const availableHeight = window.innerHeight - CONTENT_MARGIN * 2;
   const itemsHeight = viewportElement.value.scrollHeight;
 
-  const contentStyles = window.getComputedStyle(contentElement.value);
-  const contentBorderTopWidth = Number.parseInt(contentStyles.borderTopWidth, 10);
-  const contentPaddingTop = Number.parseInt(contentStyles.paddingTop, 10);
-  const contentBorderBottomWidth = Number.parseInt(contentStyles.borderBottomWidth, 10);
-  const contentPaddingBottom = Number.parseInt(contentStyles.paddingBottom, 10);
+  const popupStyles = window.getComputedStyle(popupElement.value);
+  const popupBorderTopWidth = Number.parseInt(popupStyles.borderTopWidth, 10);
+  const popupPaddingTop = Number.parseInt(popupStyles.paddingTop, 10);
+  const popupBorderBottomWidth = Number.parseInt(popupStyles.borderBottomWidth, 10);
+  const popupPaddingBottom = Number.parseInt(popupStyles.paddingBottom, 10);
 
   const fullContentHeight =
-    contentBorderTopWidth + contentPaddingTop + itemsHeight + contentPaddingBottom + contentBorderBottomWidth;
+    popupBorderTopWidth + popupPaddingTop + itemsHeight + popupPaddingBottom + popupBorderBottomWidth;
   const minContentHeight = Math.min(selectedItemElement.value.offsetHeight * 5, fullContentHeight);
 
   const viewportStyles = window.getComputedStyle(viewportElement.value);
@@ -108,45 +104,45 @@ function position() {
 
   const selectedItemHalfHeight = selectedItemElement.value.offsetHeight / 2;
   const itemOffsetMiddle = selectedItemElement.value.offsetTop + selectedItemHalfHeight;
-  const contentTopToItemMiddle = contentBorderTopWidth + contentPaddingTop + itemOffsetMiddle;
+  const contentTopToItemMiddle = popupBorderTopWidth + popupPaddingTop + itemOffsetMiddle;
   const itemMiddleToContentBottom = fullContentHeight - contentTopToItemMiddle;
 
   const willAlignWithoutTopOverflow = contentTopToItemMiddle <= topEdgeToTriggerMiddle;
 
   if (willAlignWithoutTopOverflow) {
     const isLastItem = selectedItemElement.value === items[items.length - 1];
-    contentWrapperElement.value.style.bottom = `${0}px`;
+    positionerElement.value.style.bottom = `${0}px`;
     const viewportOffsetBottom =
-      contentElement.value.clientHeight - viewportElement.value.offsetTop - viewportElement.value.offsetHeight;
+      popupElement.value.clientHeight - viewportElement.value.offsetTop - viewportElement.value.offsetHeight;
     const clampedTriggerMiddleToBottomEdge = Math.max(
       triggerMiddleToBottomEdge,
       selectedItemHalfHeight +
         // viewport might have padding bottom, include it to avoid a scrollable viewport
         (isLastItem ? viewportPaddingBottom : 0) +
         viewportOffsetBottom +
-        contentBorderBottomWidth
+        popupBorderBottomWidth
     );
     const height = contentTopToItemMiddle + clampedTriggerMiddleToBottomEdge;
-    contentWrapperElement.value.style.height = `${height}px`;
+    positionerElement.value.style.height = `${height}px`;
   } else {
     const isFirstItem = selectedItemElement.value === items[0];
-    contentWrapperElement.value.style.top = `${0}px`;
+    positionerElement.value.style.top = `${0}px`;
     const clampedTopEdgeToTriggerMiddle = Math.max(
       topEdgeToTriggerMiddle,
-      contentBorderTopWidth +
+      popupBorderTopWidth +
         viewportElement.value.offsetTop +
         // viewport might have padding top, include it to avoid a scrollable viewport
         (isFirstItem ? viewportPaddingTop : 0) +
         selectedItemHalfHeight
     );
     const height = clampedTopEdgeToTriggerMiddle + itemMiddleToContentBottom;
-    contentWrapperElement.value.style.height = `${height}px`;
+    positionerElement.value.style.height = `${height}px`;
     viewportElement.value.scrollTop = contentTopToItemMiddle - topEdgeToTriggerMiddle + viewportElement.value.offsetTop;
   }
 
-  contentWrapperElement.value.style.margin = `${CONTENT_MARGIN}px 0`;
-  contentWrapperElement.value.style.minHeight = `${minContentHeight}px`;
-  contentWrapperElement.value.style.maxHeight = `${availableHeight}px`;
+  positionerElement.value.style.margin = `${CONTENT_MARGIN}px 0`;
+  positionerElement.value.style.minHeight = `${minContentHeight}px`;
+  positionerElement.value.style.maxHeight = `${availableHeight}px`;
   // -----------------------------------------------------------------------------------------
 
   emit('placed');
@@ -158,11 +154,11 @@ function position() {
   });
 }
 
-// copy z-index from content to wrapper
-const contentZIndex = shallowRef('');
-const getContentZIndex = () => {
-  if (contentElement.value) {
-    contentZIndex.value = window.getComputedStyle(contentElement.value).zIndex;
+// copy z-index from popup to positioner
+const popupZIndex = shallowRef('');
+const getPopupZIndex = () => {
+  if (popupElement.value) {
+    popupZIndex.value = window.getComputedStyle(popupElement.value).zIndex;
   }
 };
 
@@ -179,7 +175,7 @@ function onScrollButtonChange(node: HTMLElement | undefined) {
 }
 
 provideSelectItemAlignedPositionContext({
-  contentWrapperElement,
+  positionerElement,
   shouldExpandOnScroll,
   onScrollButtonChange
 });
@@ -192,26 +188,18 @@ useResizeObserver(triggerElement, () => {
 onMounted(async () => {
   await nextTick();
   position();
-  getContentZIndex();
+  getPopupZIndex();
 });
 </script>
 
 <template>
   <div
-    ref="contentWrapperElement"
+    ref="positionerElement"
     style="display: flex; flex-direction: column; position: fixed"
     :style="{
-      zIndex: contentZIndex
+      zIndex: popupZIndex
     }"
   >
-    <Primitive
-      v-bind="attrs"
-      :ref="setContentElement"
-      :as="as"
-      :as-child="asChild"
-      style="box-sizing: border-box; max-height: 100%"
-    >
-      <slot />
-    </Primitive>
+    <slot />
   </div>
 </template>
