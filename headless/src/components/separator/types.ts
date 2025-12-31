@@ -19,7 +19,7 @@ export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
 
 export type SeparatorThemeSlot = 'root' | 'label';
 
-export type SeparatorUi = Record<SeparatorThemeSlot, ClassValue>;
+export type SeparatorUi = Partial<Record<SeparatorThemeSlot, ClassValue>>;
 
 export interface SeparatorThemeContextParams {
   ui: ComputedRef<SeparatorUi>;

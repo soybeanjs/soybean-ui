@@ -1,6 +1,6 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { Padding, ReferenceElement, Side } from '@floating-ui/dom';
-import type { Align, Placement, VNodeRef } from '../../types';
+import type { Align, ClassValue, Placement, VNodeRef } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface PopperAnchorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -158,7 +158,7 @@ export interface PopperPositionerContextParams {
 
 export type PopperThemeSlot = 'positioner' | 'popup' | 'arrow';
 
-export type PopperUi = Record<PopperThemeSlot, string>;
+export type PopperUi = Partial<Record<PopperThemeSlot, ClassValue>>;
 
 export interface PopperThemeContextParams {
   ui: ComputedRef<PopperUi>;
