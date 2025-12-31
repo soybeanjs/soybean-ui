@@ -4,7 +4,7 @@ import { SArrow } from '@soybeanjs/ui';
 
 <template>
   <div class="flex gap-3">
-    <SArrow class="text-2xl fill-popover stroke-border" />
-    <SArrow class="text-2xl fill-popover-foreground" />
+    <SArrow class="w-8 h-4 fill-popover stroke-border" />
+    <SArrow class="w-8 h-4 fill-popover-foreground" />
   </div>
 </template>
