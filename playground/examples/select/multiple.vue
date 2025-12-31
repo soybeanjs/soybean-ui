@@ -24,7 +24,7 @@ const groups: SelectOptionData[] = [
     <div class="w-60 lt-md:w-auto">
       <SSelect
         :items="groups"
-        :value-props="{ placeholder: 'Please select a fruit or vegetable' }"
+        placeholder="Please select a fruit or vegetable"
         :multiple="true"
         @update:model-value="console.log"
       />

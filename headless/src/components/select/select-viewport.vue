@@ -48,8 +48,8 @@ let prevScrollTop = 0;
 function onScroll(event: Event) {
   const viewport = event.currentTarget as HTMLElement;
 
-  const { contentWrapperElement, shouldExpandOnScroll } = alignedPositionContext ?? {};
-  if (!contentWrapperElement?.value || !shouldExpandOnScroll?.value) {
+  const { positionerElement, shouldExpandOnScroll } = alignedPositionContext ?? {};
+  if (!positionerElement?.value || !shouldExpandOnScroll?.value) {
     prevScrollTop = viewport.scrollTop;
 
     return;
@@ -59,8 +59,8 @@ function onScroll(event: Event) {
   if (scrolledBy <= 0) return;
 
   const availableHeight = window.innerHeight - CONTENT_MARGIN * 2;
-  const cssMinHeight = Number.parseFloat(contentWrapperElement.value.style.minHeight);
-  const cssHeight = Number.parseFloat(contentWrapperElement.value.style.height);
+  const cssMinHeight = Number.parseFloat(positionerElement.value.style.minHeight);
+  const cssHeight = Number.parseFloat(positionerElement.value.style.height);
   const prevHeight = Math.max(cssMinHeight, cssHeight);
 
   if (prevHeight < availableHeight) {
@@ -68,11 +68,11 @@ function onScroll(event: Event) {
     const clampedNextHeight = Math.min(availableHeight, nextHeight);
     const heightDiff = nextHeight - clampedNextHeight;
 
-    contentWrapperElement.value.style.height = `${clampedNextHeight}px`;
-    if (contentWrapperElement.value.style.bottom === '0px') {
+    positionerElement.value.style.height = `${clampedNextHeight}px`;
+    if (positionerElement.value.style.bottom === '0px') {
       viewport.scrollTop = heightDiff > 0 ? heightDiff : 0;
       // ensure the content stays pinned to the bottom
-      contentWrapperElement.value.style.justifyContent = 'flex-end';
+      positionerElement.value.style.justifyContent = 'flex-end';
     }
   }
 

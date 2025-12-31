@@ -5,7 +5,7 @@ import { isFormControl, isNullish, transformPropsToContext } from '../../shared'
 import type { DefinedValue } from '../../types';
 import { PopperRoot } from '../popper';
 import { provideCollectionContext, provideSelectRootContext } from './context';
-import BubbleSelect from './bubble-select.vue';
+import SelectBubbleSelect from './select-bubble-select.vue';
 import type { SelectRootEmits, SelectRootProps } from './types';
 
 defineOptions({
@@ -20,9 +20,13 @@ const props = withDefaults(defineProps<SelectRootProps<T, M>>(), {
 
 const emit = defineEmits<SelectRootEmits<T, M>>();
 
-const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSelection(props, value => {
-  emit('update:modelValue', value);
-});
+const { modelValue, isMultiple, onModelValueChange, isEmptyModelValue } = useSelection<boolean, DefinedValue>(
+  props,
+  value => {
+    // @ts-expect-error ignore type
+    emit('update:modelValue', value);
+  }
+);
 
 const open = useControllableState(
   () => props.open,
@@ -36,7 +40,6 @@ const { triggerElement, options, nativeSelectKey } = provideSelectRootContext({
   ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required']),
   open,
   modelValue,
-  // @ts-expect-error ignore type
   onModelValueChange,
   isMultiple,
   isEmptyModelValue
@@ -51,7 +54,7 @@ const formControl = computed(() => isFormControl(triggerElement.value));
   <PopperRoot>
     <slot :model-value="modelValue" :open="Boolean(open)" />
 
-    <BubbleSelect
+    <SelectBubbleSelect
       v-if="formControl"
       :key="nativeSelectKey"
       aria-hidden="true"
@@ -65,6 +68,6 @@ const formControl = computed(() => isFormControl(triggerElement.value));
     >
       <option v-if="isNullish(modelValue)" value="" />
       <option v-for="option in options" :key="option.value ?? ''" v-bind="option" />
-    </BubbleSelect>
+    </SelectBubbleSelect>
   </PopperRoot>
 </template>

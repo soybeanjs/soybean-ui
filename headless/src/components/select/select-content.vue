@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, shallowRef, useAttrs } from 'vue';
-import { useForwardElement, useForwardListeners, useOmitProps, usePresence } from '../../composables';
-import { useSelectRootContext } from './context';
+import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
+import { provideSelectPopupElementContext, useSelectRootContext } from './context';
 import SelectContentImpl from './select-content-impl.vue';
 import SelectTeleportProvider from './select-teleport-provider.vue';
 import type { SelectContentEmits, SelectContentProps } from './types';
@@ -28,9 +28,9 @@ const listeners = useForwardListeners(emit);
 
 const { open } = useSelectRootContext('SelectContent');
 
-const [contentElement, setContentElement] = useForwardElement();
+const { popupElement } = provideSelectPopupElementContext();
 
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
 
 const fragment = ref<DocumentFragment>();
 
@@ -40,12 +40,12 @@ onMounted(() => {
 </script>
 
 <template>
-  <SelectContentImpl v-if="isPresent" :ref="setContentElement" v-bind="forwardedProps" v-on="listeners">
+  <SelectContentImpl v-if="isPresent" v-bind="forwardedProps" v-on="listeners">
     <slot />
   </SelectContentImpl>
   <div v-else-if="fragment">
     <Teleport :to="fragment">
-      <SelectTeleportProvider :position="position">
+      <SelectTeleportProvider :position="position" :popup-element="popupElement">
         <slot />
       </SelectTeleportProvider>
     </Teleport>

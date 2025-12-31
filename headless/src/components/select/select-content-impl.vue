@@ -1,45 +1,49 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, useAttrs, watch, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, watch, watchEffect } from 'vue';
+import type { CSSProperties } from 'vue';
 import {
   useBodyScrollLock,
   useDismissableLayer,
-  useExposedElement,
   useFocusGuards,
   useFocusScope,
   useForwardElement,
   useHideOthers,
+  useOmitProps,
   useTypeahead
 } from '../../composables';
 import { tryFocusFirst } from '../../shared';
+import { PopperPositioner } from '../popper';
 import {
   provideSelectContentContext,
   useCollectionContext,
+  useSelectPopupElementContext,
   useSelectRootContext,
   useSelectThemeContext
 } from './context';
-import SelectItemAlignedPosition from './select-item-aligned-position.vue';
-import SelectPopperPosition from './select-popper-position.vue';
+import { CONTENT_MARGIN } from './shared';
+import SelectPopperPopup from './select-popper-popup.vue';
+import SelectItemAlignedPopup from './select-item-aligned-popup.vue';
+import SelectItemAlignedPositioner from './select-item-aligned-positioner.vue';
 import type { SelectContentImplEmits, SelectContentImplProps } from './types';
 
 defineOptions({
-  name: 'SelectContentImpl',
-  inheritAttrs: false
+  name: 'SelectContentImpl'
 });
 
 const props = withDefaults(defineProps<SelectContentImplProps>(), {
   align: 'start',
   position: 'popper',
+  collisionPadding: CONTENT_MARGIN,
   avoidCollisions: true,
   bodyLock: true
 });
 
 const emit = defineEmits<SelectContentImplEmits>();
 
-const attrs = useAttrs();
-
 const themeContext = useSelectThemeContext();
 
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = computed(() => themeContext?.ui?.value?.positioner);
+const popupCls = computed(() => themeContext?.ui?.value?.popup);
 
 const {
   onOpenChange,
@@ -52,22 +56,17 @@ const {
   triggerPointerDownPosition,
   resetTriggerPointerDownPosition
 } = useSelectRootContext('SelectContentImpl');
+const { onPopupElementChange } = useSelectPopupElementContext('SelectContentImpl');
 
 const { onContainerElementChange, getOrderedItems, getOrderedElements } = useCollectionContext('SelectContentImpl');
-const [floatingElement, setFloatingElement] = useForwardElement(props.floatingRef);
-const { search, handleTypeaheadSearch } = useTypeahead();
-const { isPositioned, focusSelectedItem, onContentElementChange } = provideSelectContentContext({
-  position: computed(() => props.position),
-  modelValue,
-  isMultiple,
-  search
-});
-const [contentElement, setContentElement] = useExposedElement(node => {
-  onContentElementChange(node);
+const [positionerElement, setPositionerElement] = useForwardElement();
+const [popupElement, setPopupElement] = useForwardElement(node => {
+  onPopupElementChange(node);
   onContainerElementChange(node);
 });
+const { search, handleTypeaheadSearch } = useTypeahead();
 
-const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
+const { pointerEvents } = useDismissableLayer(positionerElement, {
   disableOutsidePointerEvents: true,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -83,7 +82,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
   }
 });
 
-const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floatingElement, {
+const { onKeydown: onFocusScopeKeydown } = useFocusScope(positionerElement, {
   onOpenAutoFocus: event => {
     event.preventDefault();
   },
@@ -95,11 +94,23 @@ const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floati
   }
 });
 
-const forwardedProps = computed(() => ({
-  ...attrs,
-  ...layerProps,
-  ...focusScopeProps,
-  ...(props.position === 'popper' ? props : {})
+const { isPositioned, focusSelectedItem } = provideSelectContentContext({
+  position: computed(() => props.position),
+  modelValue,
+  isMultiple,
+  search,
+  popupElement
+});
+
+const popperPositionerProps = useOmitProps(props, ['position', 'bodyLock', 'popupProps']);
+
+const popupStyle = computed<CSSProperties>(() => ({
+  // flex layout so we can place the scroll buttons properly
+  display: 'flex',
+  flexDirection: 'column',
+  // reset the outline by default as the content MAY get focused
+  outline: 'none',
+  pointerEvents: pointerEvents.value
 }));
 
 const onKeyDown = (event: KeyboardEvent) => {
@@ -139,7 +150,7 @@ const onPlaced = () => {
 };
 
 useFocusGuards();
-useHideOthers(contentElement);
+useHideOthers(popupElement);
 
 watch(isPositioned, () => {
   focusSelectedItem();
@@ -155,7 +166,7 @@ watchEffect(() => {
 // prevent selecting items on `pointerup` in some cases after opening from `pointerdown`
 // and close on `pointerup` outside.
 watchEffect(() => {
-  if (!contentElement.value) return;
+  if (!popupElement.value) return;
   let pointerMoveDelta = { x: 0, y: 0 };
 
   const onPointerMove = (event: PointerEvent) => {
@@ -177,7 +188,7 @@ watchEffect(() => {
       event.preventDefault();
     }
     // otherwise, if the event was outside the content, close.
-    else if (!contentElement.value?.contains(event.target as HTMLElement)) {
+    else if (!popupElement.value?.contains(event.target as HTMLElement)) {
       onOpenChange(false);
     }
 
@@ -203,22 +214,51 @@ watchEffect(() => {
 </script>
 
 <template>
-  <component
-    :is="position === 'popper' ? SelectPopperPosition : SelectItemAlignedPosition"
-    v-bind="forwardedProps"
-    :id="contentId"
-    :ref="setContentElement"
-    :floating-ref="setFloatingElement"
+  <PopperPositioner
+    v-if="position === 'popper'"
+    :ref="setPositionerElement"
+    v-bind="popperPositionerProps"
     :class="cls"
-    role="listbox"
-    :data-state="dataState"
-    :dir="dir"
-    style="display: flex; flex-direction: column; outline: none"
-    :style="computedStyle"
     @contextmenu.prevent
     @placed="onPlaced"
     @keydown="onKeyDown"
   >
-    <slot />
-  </component>
+    <SelectPopperPopup
+      :id="contentId"
+      :ref="setPopupElement"
+      v-bind="popupProps"
+      :class="popupCls"
+      data-dismissable-layer
+      :data-state="dataState"
+      :dir="dir"
+      role="listbox"
+      tabindex="-1"
+      :style="popupStyle"
+    >
+      <slot />
+    </SelectPopperPopup>
+  </PopperPositioner>
+  <SelectItemAlignedPositioner
+    v-else
+    :ref="setPositionerElement"
+    :class="cls"
+    @contextmenu.prevent
+    @placed="onPlaced"
+    @keydown="onKeyDown"
+  >
+    <SelectItemAlignedPopup
+      :id="contentId"
+      :ref="setPopupElement"
+      v-bind="popupProps"
+      :class="popupCls"
+      data-dismissable-layer
+      :data-state="dataState"
+      :dir="dir"
+      role="listbox"
+      tabindex="-1"
+      :style="popupStyle"
+    >
+      <slot />
+    </SelectItemAlignedPopup>
+  </SelectItemAlignedPositioner>
 </template>

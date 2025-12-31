@@ -15,7 +15,8 @@ provideSelectContentContext({
   search: shallowRef(''),
   position: computed(() => props.position),
   modelValue,
-  isMultiple
+  isMultiple,
+  popupElement: computed(() => props.popupElement)
 });
 </script>
 

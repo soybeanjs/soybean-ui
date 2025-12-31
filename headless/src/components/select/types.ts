@@ -12,7 +12,7 @@ import type {
   SelectionProps
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
-import type { PopperAnchorProps, PopperContentEmits, PopperContentProps } from '../popper/types';
+import type { PopperAnchorProps, PopperPositionerProps } from '../popper/types';
 
 // SelectRoot
 export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
@@ -43,10 +43,15 @@ export interface SelectOption {
   textContent: string;
 }
 
+export interface SelectPopupProps extends /** @vue-ignore */ HTMLAttributes {}
+
+// SelectItemAlignedPosition
+export interface SelectItemAlignedPositionProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export type SelectPosition = 'item-aligned' | 'popper';
 
 // SelectContentImpl
-export interface SelectContentImplProps extends PopperContentProps {
+export interface SelectContentImplProps extends PopperPositionerProps {
   /**
    * The positioning mode to use
    *
@@ -61,6 +66,7 @@ export interface SelectContentImplProps extends PopperContentProps {
    * @defaultValue true
    */
   bodyLock?: boolean;
+  popupProps?: SelectPopupProps;
 }
 
 export type SelectContentImplEmits = {
@@ -76,7 +82,9 @@ export interface SelectContentProps extends SelectContentImplProps, ForceMountPr
 
 export type SelectContentEmits = SelectContentImplEmits;
 
-export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps, 'position'> {}
+export interface SelectTeleportProviderProps extends Pick<SelectContentImplProps, 'position'> {
+  popupElement?: HTMLElement;
+}
 
 // Viewport
 export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
@@ -86,14 +94,6 @@ export interface SelectViewportProps extends /** @vue-ignore */ HTMLAttributes {
    */
   nonce?: string;
 }
-
-// PopperPosition
-export interface SelectPopperPositionProps extends PopperContentProps {}
-
-export type SelectPopperPositionEmits = PopperContentEmits;
-
-// SelectItemAlignedPosition
-export interface SelectItemAlignedPositionProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
 // SelectGroup
 export interface SelectGroupProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {}
@@ -164,7 +164,7 @@ export interface SelectScrollDownButtonProps extends SelectScrollButtonImplProps
 export interface SelectScrollUpButtonProps extends SelectScrollButtonImplProps {}
 
 // BubbleSelect
-export interface BubbleSelectProps {
+export interface SelectBubbleSelectProps {
   autocomplete?: string;
   autofocus?: boolean;
   disabled?: boolean;
@@ -190,10 +190,11 @@ export interface SelectRootContextParams extends PropsToContext<
 export interface SelectContentContextParams
   extends PropsToContext<SelectContentProps, 'position'>, Pick<SelectRootContextParams, 'modelValue' | 'isMultiple'> {
   search: ShallowRef<string>;
+  popupElement: ShallowRef<HTMLElement | undefined>;
 }
 
 export interface SelectItemAlignedPositionContextParams {
-  contentWrapperElement: ShallowRef<HTMLElement | undefined>;
+  positionerElement: ShallowRef<HTMLElement | undefined>;
   shouldExpandOnScroll: ShallowRef<boolean>;
   onScrollButtonChange: (node: HTMLElement | undefined) => void;
 }
@@ -212,7 +213,8 @@ export type SelectThemeSlot =
   | 'trigger'
   | 'triggerIcon'
   | 'value'
-  | 'content'
+  | 'positioner'
+  | 'popup'
   | 'viewport'
   | 'group'
   | 'groupLabel'

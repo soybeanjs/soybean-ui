@@ -67,9 +67,12 @@ const forwardedProps = useOmitProps(props, [
   'items',
   'triggerProps',
   'triggerIconProps',
+  'placeholder',
   'valueProps',
   'portalProps',
   'contentProps',
+  'popupProps',
+  'placement',
   'viewportProps',
   'scrollDownButtonProps',
   'scrollUpButtonProps',
@@ -97,6 +100,21 @@ const ui = computed(() => {
   });
 
   return mergeSlotVariants(variants, props.ui);
+});
+
+const valueProps = computed(() => {
+  return {
+    ...props.valueProps,
+    placeholder: props.placeholder ?? props.valueProps?.placeholder
+  };
+});
+
+const contentProps = computed(() => {
+  return {
+    ...props.contentProps,
+    placement: props.placement ?? props.contentProps?.placement,
+    popupProps: props.popupProps ?? props.contentProps?.popupProps
+  };
 });
 
 provideSelectThemeContext({
