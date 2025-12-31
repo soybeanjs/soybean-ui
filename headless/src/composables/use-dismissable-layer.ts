@@ -30,7 +30,7 @@ export interface UseDismissableLayerOptions extends EmitsToHookProps<Dismissable
   onDismiss?: () => void;
 }
 
-export const layerContext = {
+const layerContext = {
   layers: shallowReactive(new Set<HTMLElement>()),
   layersWithOutsidePointerEventsDisabled: shallowReactive(new Set<HTMLElement>()),
   branches: shallowReactive(new Set<HTMLElement>())
