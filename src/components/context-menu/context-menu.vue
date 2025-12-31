@@ -42,6 +42,7 @@ const propKeys = [
   'triggerProps',
   'portalProps',
   'contentProps',
+  'popupProps',
   'arrowProps'
 ] satisfies (keyof ContextMenuProps<T, S>)[];
 

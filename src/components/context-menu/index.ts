@@ -7,6 +7,8 @@ export type {
   ContextMenuRootProps,
   ContextMenuRootEmits,
   ContextMenuContentProps,
+  ContextMenuContentEmits,
+  ContextMenuPopupProps,
   ContextMenuTriggerProps,
   ContextMenuAnchorProps,
   ContextMenuArrowProps,

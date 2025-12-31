@@ -33,10 +33,18 @@ const forwardedRootProps = useOmitProps(props, [
   'triggerProps',
   'portalProps',
   'contentProps',
+  'popupProps',
   'arrowProps'
 ]);
 
 const forwardedListeners = useForwardListeners(emit);
+
+const contentProps = computed(() => {
+  return {
+    ...props.contentProps,
+    popupProps: props.popupProps ?? props.contentProps?.popupProps
+  };
+});
 
 const ui = computed(() => {
   const variants = menuVariants({
