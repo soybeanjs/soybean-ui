@@ -1,5 +1,5 @@
-import { computed, shallowRef, useId, watchEffect } from 'vue';
-import { useContext, useDirection, useForwardElement } from '../../composables';
+import { computed, shallowRef, watchEffect } from 'vue';
+import { useContext, useDirection } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
 import type { DropdownMenuHoverContextParams, DropdownMenuRootContextParams } from './types';
@@ -7,8 +7,6 @@ import type { DropdownMenuHoverContextParams, DropdownMenuRootContextParams } fr
 export const [provideDropdownMenuRootContext, useDropdownMenuRootContext] = useContext(
   'DropdownMenuRoot',
   (params: DropdownMenuRootContextParams) => {
-    const [triggerElement, setTriggerElement] = useForwardElement();
-
     const { open } = params;
 
     const onOpenChange = (v: boolean) => {
@@ -23,30 +21,12 @@ export const [provideDropdownMenuRootContext, useDropdownMenuRootContext] = useC
 
     const dataState = computed(() => getDisclosureState(open.value));
 
-    const triggerId = shallowRef('');
-    const initTriggerId = () => {
-      if (triggerId.value) return;
-      triggerId.value = `soybean-dropdown-menu-trigger-${useId()}`;
-    };
-
-    const contentId = shallowRef('');
-    const initContentId = () => {
-      if (contentId.value) return;
-      contentId.value = `soybean-dropdown-menu-content-${useId()}`;
-    };
-
     return {
       ...params,
       dir,
       dataState,
       onOpenChange,
-      onOpenToggle,
-      triggerElement,
-      setTriggerElement,
-      triggerId,
-      initTriggerId,
-      contentId,
-      initContentId
+      onOpenToggle
     };
   }
 );
