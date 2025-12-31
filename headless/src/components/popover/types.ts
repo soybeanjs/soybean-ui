@@ -31,8 +31,4 @@ export interface PopoverRootContextParams {
   open: ShallowRef<boolean | undefined>;
 }
 
-export interface PopoverPositionerContextParams {
-  pointerEvents: ComputedRef<'auto' | 'none' | undefined>;
-}
-
 export type { PopperAnchorProps as PopoverAnchorProps } from '../popper/types';
