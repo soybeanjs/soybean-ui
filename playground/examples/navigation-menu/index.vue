@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
-import DemoNavigationMenuBase from './base.vue';
+import DemoNavigationMenuHorizontal from './horizontal.vue';
+import DemoNavigationMenuVertical from './vertical.vue';
 </script>
 
 <template>
   <SCard title="Navigation Menu" split>
-    <DemoNavigationMenuBase />
+    <DemoNavigationMenuHorizontal />
+    <DemoNavigationMenuVertical />
   </SCard>
 </template>

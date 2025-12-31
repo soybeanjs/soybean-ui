@@ -24,8 +24,16 @@ const props = withDefaults(defineProps<NavigationMenuTriggerProps>(), {
 
 const attrs = useAttrs();
 
-const { disableClickTrigger, disableHoverTrigger, viewportElement, onItemSelect, onTriggerEnter, onTriggerLeave } =
-  useNavigationMenuRootContext('NavigationMenuTrigger');
+const {
+  dir,
+  orientation,
+  disableClickTrigger,
+  disableHoverTrigger,
+  viewportElement,
+  onItemSelect,
+  onTriggerEnter,
+  onTriggerLeave
+} = useNavigationMenuRootContext('NavigationMenuTrigger');
 const {
   value,
   triggerId,
@@ -98,7 +106,10 @@ const onClick = (event: PointerEvent) => {
 };
 
 const onKeydown = (event: KeyboardEvent) => {
-  if (open.value && event.key === 'ArrowDown') {
+  const verticalEntryKey = dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
+  const entryKey = { horizontal: 'ArrowDown', vertical: verticalEntryKey }[orientation.value];
+
+  if (open.value && event.key === entryKey) {
     onEntryKeyDown();
     // Prevent FocusGroupItem from handling the event
     event.preventDefault();
@@ -130,7 +141,7 @@ const onVisuallyHiddenFocus = (event: FocusEvent) => {
     :disabled="disabled"
     :data-disabled="disabled ? '' : undefined"
     :data-state="dataState"
-    data-navigation-menu-trigger
+    data-soybean-navigation-menu-trigger
     :aria-expanded="open"
     :aria-controls="contentId"
     @pointerenter="onPointerEnter"

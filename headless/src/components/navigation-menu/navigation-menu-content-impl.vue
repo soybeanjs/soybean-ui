@@ -20,14 +20,13 @@ const props = defineProps<NavigationMenuContentImplProps>();
 
 const emit = defineEmits<NavigationMenuContentImplEmits>();
 
-const { dir, modelValue, previousValue, rootElement, viewportElement, isRoot, onItemDismiss } =
+const { dir, orientation, modelValue, previousValue, rootElement, viewportElement, isRoot, onItemDismiss } =
   useNavigationMenuRootContext('NavigationMenuContentImpl');
 const {
   value,
   triggerId,
   contentId,
   triggerElement,
-  open,
   dataState,
   wasEscapeCloseRef,
   focusProxyElement,
@@ -43,7 +42,7 @@ const { getOrderedElements } = useCollectionContext('NavigationMenuContentImpl')
 
 const [contentElement, setContentElement] = useExposedElement();
 
-const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
+const { pointerEvents } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -73,7 +72,7 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
 
     const target = event.detail.originalEvent.target as HTMLElement;
 
-    if (target.hasAttribute('data-navigation-menu-trigger')) {
+    if (target.hasAttribute('data-soybean-navigation-menu-trigger')) {
       event.preventDefault();
     }
 
@@ -133,8 +132,7 @@ const motionAttribute = computed(() => {
 });
 
 const style = computed<CSSProperties>(() => ({
-  ...computedStyle.value,
-  pointerEvents: !open.value && isRoot ? 'none' : undefined
+  pointerEvents: pointerEvents.value
 }));
 
 const onKeydown = (event: KeyboardEvent) => {
@@ -199,11 +197,12 @@ watchEffect(cleanupFn => {
 
 <template>
   <div
-    v-bind="layerProps"
     :id="contentId"
     :ref="setContentElement"
     :class="cls"
     :aria-labelledby="triggerId"
+    data-dismissable-layer
+    :data-orientation="orientation"
     :data-motion="motionAttribute"
     :data-state="dataState"
     :style="style"
