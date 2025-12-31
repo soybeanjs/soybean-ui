@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick } from 'vue';
+import { useForwardElement } from '../../composables';
 import { SELECTION_KEYS } from '../../constants';
 import { MenuAnchor } from '../menu';
+import { useMenuContext } from '../menu/context';
 import { Primitive } from '../primitive';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import type { DropdownMenuTriggerProps } from './types';
@@ -14,15 +16,17 @@ const props = withDefaults(defineProps<DropdownMenuTriggerProps>(), {
   as: 'button'
 });
 
-const { open, dataState, onOpenToggle, onOpenChange, triggerId, contentId, initTriggerId, setTriggerElement } =
-  useDropdownMenuRootContext('DropdownMenuTrigger');
+const { popupId, triggerId, initTriggerId, onTriggerElementChange } = useMenuContext('DropdownMenuTrigger');
+const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
+
+const { open, dataState, onOpenToggle, onOpenChange } = useDropdownMenuRootContext('DropdownMenuTrigger');
 
 const { isPointerInTransitRef, hoverable, onTriggerEnter, onTriggerLeave, onClose } =
   useDropdownMenuHoverContext('DropdownMenuTrigger');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
-const ariaControls = computed(() => (open.value ? contentId : undefined));
+const ariaControls = computed(() => (open.value ? popupId : undefined));
 const ariaDisabled = computed(() => (props.disabled ? true : undefined));
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 

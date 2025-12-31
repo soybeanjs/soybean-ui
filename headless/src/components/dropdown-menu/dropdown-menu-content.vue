@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, shallowRef, watchPostEffect } from 'vue';
+import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
 import { useForwardListeners, useGraceArea } from '../../composables';
 import { MenuContent } from '../menu';
+import { useMenuContext } from '../menu/context';
 import type { FocusOutsideEvent, PointerDownOutsideEvent } from '../../types';
 import { useDropdownMenuHoverContext, useDropdownMenuRootContext } from './context';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
@@ -22,27 +23,21 @@ const emit = defineEmits<DropdownMenuContentEmits>();
 
 const listeners = useForwardListeners(emit);
 
-const contentElement = shallowRef<HTMLElement>();
-
-const setContentElement = (el: HTMLElement) => {
-  contentElement.value = el;
-};
-
-const { modal, initContentId, triggerElement, triggerId, contentId } =
-  useDropdownMenuRootContext('DropdownMenuContent');
+const { popupElement, triggerElement } = useMenuContext('DropdownMenuContent');
+const { modal } = useDropdownMenuRootContext('DropdownMenuContent');
 
 const { isPointerInTransitRef, hoverable, onClose } = useDropdownMenuHoverContext('DropdownMenuContent');
 
 useGraceArea({
   triggerElement,
-  contentElement,
+  areaElement: popupElement,
   onPointerInTransitChange: v => {
     isPointerInTransitRef.value = v;
   },
   onPointerExit: () => {
     onClose();
   },
-  subAreaAttribute: 'data-soybean-menu-sub-content',
+  subAreaAttribute: 'data-soybean-menu-sub-popup',
   disabled: computed(() => !hoverable.value)
 });
 
@@ -76,8 +71,6 @@ const onInteractOutside = (event: PointerDownOutsideEvent | FocusOutsideEvent) =
   }
 };
 
-initContentId();
-
 watchPostEffect(() => {
   if (!hoverable.value) return;
 
@@ -100,9 +93,6 @@ watchPostEffect(() => {
 <template>
   <MenuContent
     v-bind="props"
-    :id="contentId"
-    :el-ref="setContentElement"
-    :aria-labelledby="triggerId"
     v-on="listeners"
     @close-auto-focus="onCloseAutoFocus"
     @interact-outside="onInteractOutside"
