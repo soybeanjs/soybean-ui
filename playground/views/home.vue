@@ -109,7 +109,7 @@ onMounted(() => {
           >
             <SIcon icon="lucide:github" />
           </SButtonLink>
-          <SPopover :ui="{ content: 'z-15' }" placement="bottom-end">
+          <SPopover :ui="{ popup: 'z-15' }" placement="bottom-end">
             <template #trigger>
               <SButtonIcon icon="lucide:swatch-book" size="lg" />
             </template>

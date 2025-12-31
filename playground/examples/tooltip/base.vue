@@ -25,7 +25,7 @@ const placements: Placement[] = [
 <template>
   <div>
     <div class="flex flex-wrap gap-3">
-      <STooltip v-for="placement in placements" :key="placement" :content-props="{ placement }">
+      <STooltip v-for="placement in placements" :key="placement" :placement="placement">
         <template #trigger>
           <SButton variant="pure">{{ placement }}</SButton>
         </template>
