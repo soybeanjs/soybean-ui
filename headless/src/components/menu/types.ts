@@ -14,7 +14,7 @@ import type {
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
-import type { PopperContentProps } from '../popper/types';
+import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 import type { RovingFocusGroupEmits, RovingFocusGroupProps } from '../roving-focus/types';
 
 // MenuRoot
@@ -30,19 +30,13 @@ export type MenuRootEmits = DialogRootEmits;
 
 // MenuContentImpl
 export interface MenuContentImplProps
-  extends PopperContentProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {}
+  extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {
+  popupProps?: PopperPopupProps;
+}
 export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pick<RovingFocusGroupEmits, 'entryFocus'>;
 
 // MenuContent
-export interface MenuContentProps extends PopperContentProps, ForceMountProps {}
-export interface MenuContentPrivateProps extends MenuContentProps {
-  /**
-   * The function to set the menu content element.
-   *
-   * @param el - The menu content element.
-   */
-  elRef?: (el: HTMLElement) => void;
-}
+export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {}
 export type MenuContentEmits = MenuContentImplEmits;
 
 export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
@@ -157,10 +151,11 @@ export interface MenuRootContextParams extends PropsToContext<MenuRootProps, 'di
   isUsingKeyboard: ComputedRef<boolean>;
 }
 export interface MenuContextParams {
+  isRoot?: boolean;
   open: ShallowRef<boolean | undefined>;
 }
 export interface MenuContentContextParams {
-  contentElement: ShallowRef<HTMLElement | undefined>;
+  popupElement: ShallowRef<HTMLElement | undefined>;
 }
 export interface MenuCheckboxGroupContextParams {
   modelValue: ShallowRef<DefinedValue[] | undefined>;
@@ -175,8 +170,10 @@ export interface MenuItemIndicatorContextParams {
 }
 
 export type MenuThemeSlot =
-  | 'content'
-  | 'subContent'
+  | 'positioner'
+  | 'popup'
+  | 'subPositioner'
+  | 'subPopup'
   | 'subTrigger'
   | 'arrow'
   | 'group'

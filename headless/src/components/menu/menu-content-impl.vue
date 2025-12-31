@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onWatcherCleanup, useAttrs, useTemplateRef, watchEffect } from 'vue';
+import { computed, onWatcherCleanup, useTemplateRef, watchEffect } from 'vue';
+import type { CSSProperties } from 'vue';
 import {
   useArrowNavigation,
   useBodyScrollLock,
   useDismissableLayer,
-  useExposedElement,
   useFocusGuards,
   useFocusScope,
   useForwardElement,
@@ -15,35 +15,40 @@ import {
 import { COLLECTION_ITEM_ATTRIBUTE } from '../../constants';
 import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
-import { PopperContent } from '../popper';
-import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuSubContext } from './context';
-import { FIRST_LAST_KEYS, LAST_KEYS, MENU_CONTENT_DATA_ATTRIBUTE } from './shared';
+import { PopperPopup, PopperPositioner } from '../popper';
+import { popperCssVars } from '../popper/shared';
+import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuThemeContext } from './context';
+import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
 import type { MenuContentImplEmits, MenuContentImplProps } from './types';
 
 defineOptions({
-  name: 'MenuContentImpl',
-  inheritAttrs: false
+  name: 'MenuContentImpl'
 });
 
 const props = defineProps<MenuContentImplProps>();
 
 const emit = defineEmits<MenuContentImplEmits>();
 
-const attrs = useAttrs();
-
-const { onOpenChange, dataState, onContentElementChange } = useMenuContext('MenuContentImpl');
 const { modal, dir, isUsingKeyboard } = useMenuRootContext('MenuContentImpl');
-const [floatingElement, setFloatingElement] = useForwardElement(props.floatingRef);
-const [contentElement, setContentElement] = useExposedElement(onContentElementChange);
-const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
-  contentElement
+const { isRoot, dataState, popupId, triggerId, dataPopupAttr, initPopupId, onOpenChange, onPopupElementChange } =
+  useMenuContext('MenuContentImpl');
+
+const [positionerElement, setPositionerElement] = useForwardElement();
+const [popupElement, setPopupElement] = useForwardElement(node => {
+  onPopupElementChange(node);
 });
-const subContext = useMenuSubContext();
+const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
+  popupElement
+});
+
+const themeContext = useMenuThemeContext();
+const cls = computed(() => (isRoot ? themeContext?.ui?.value?.positioner : themeContext?.ui?.value?.subPositioner));
+const popupCls = computed(() => (isRoot ? themeContext?.ui?.value?.popup : themeContext?.ui?.value?.subPopup));
 
 const { handleTypeaheadSearch } = useTypeahead();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');
 
-const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
+const { pointerEvents } = useDismissableLayer(popupElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
@@ -58,20 +63,20 @@ const { computedStyle, layerProps } = useDismissableLayer(contentElement, {
     emit('interactOutside', event);
   },
   onDismiss: () => {
-    if (subContext) return;
+    if (!isRoot) return;
     onOpenChange(false);
   }
 });
 
-const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floatingElement, {
+const { onKeydown: onFocusScopeKeydown } = useFocusScope(positionerElement, {
   trapped: () => props.trapFocus,
   onOpenAutoFocus: event => {
     emit('openAutoFocus', event);
     if (event.defaultPrevented) return;
-    // when opening, explicitly focus the content area only and leave
+    // when opening, explicitly focus the popup area only and leave
     // `onEntryFocus` in  control of focusing first item
     event.preventDefault();
-    contentElement.value?.focus({
+    popupElement.value?.focus({
       preventScroll: true
     });
   },
@@ -80,13 +85,27 @@ const { onKeydown: onFocusScopeKeydown, focusScopeProps } = useFocusScope(floati
   }
 });
 
-const forwardedProps = useOmitProps(
-  props,
-  ['disableOutsidePointerEvents', 'trapFocus', 'loop'],
-  attrs,
-  layerProps,
-  focusScopeProps
-);
+const forwardedProps = useOmitProps(props, ['disableOutsidePointerEvents', 'trapFocus', 'loop', 'popupProps']);
+
+const popupProps = computed(() => {
+  return {
+    ...props.popupProps,
+    [dataPopupAttr]: ''
+  };
+});
+
+const popupStyle = computed<CSSProperties>(() => {
+  const cssVars = isRoot ? menuCssVars : subMenuCssVars;
+
+  return {
+    [cssVars.popupTransformOrigin]: `var(${popperCssVars.transformOrigin})`,
+    [cssVars.popupAvailableWidth]: `var(${popperCssVars.availableWidth})`,
+    [cssVars.popupAvailableHeight]: `var(${popperCssVars.availableHeight})`,
+    [cssVars.triggerWidth]: `var(${popperCssVars.anchorWidth})`,
+    [cssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`,
+    pointerEvents: pointerEvents.value
+  };
+});
 
 const onEntryFocus = (event: Event) => {
   emit('entryFocus', event);
@@ -102,11 +121,11 @@ const onKeyDown = (event: KeyboardEvent) => {
   if (event.defaultPrevented) return;
   // submenu key events bubble through portals. We only care about keys in this menu.
   const target = event.target as HTMLElement;
-  const isKeyDownInside = target.closest(`[${MENU_CONTENT_DATA_ATTRIBUTE}]`) === event.currentTarget;
+  const isKeyDownInside = target.closest(`[${MENU_POPUP_DATA_ATTRIBUTE}]`) === event.currentTarget;
   const isModifierKey = event.ctrlKey || event.altKey || event.metaKey;
   const isCharacterKey = event.key.length === 1;
 
-  const el = useArrowNavigation(event, getActiveElement() as HTMLElement, contentElement.value, {
+  const el = useArrowNavigation(event, getActiveElement() as HTMLElement, popupElement.value, {
     loop: props.loop,
     arrowKeyOptions: 'vertical',
     dir: dir.value,
@@ -134,7 +153,7 @@ const onKeyDown = (event: KeyboardEvent) => {
   }
 
   // focus first/last item based on key pressed
-  if (event.target !== contentElement.value) return;
+  if (event.target !== popupElement.value) return;
   if (!FIRST_LAST_KEYS.includes(event.key)) return;
 
   event.preventDefault();
@@ -172,8 +191,9 @@ function onPointerMove(event: PointerEvent) {
   }
 }
 
+initPopupId();
 useFocusGuards();
-useHideOthers(contentElement, () => modal.value && !subContext);
+useHideOthers(positionerElement, () => modal.value && isRoot);
 
 watchEffect(() => {
   if (!props.disableOutsidePointerEvents) return;
@@ -193,21 +213,30 @@ watchEffect(() => {
     :loop="loop"
     @entry-focus="onEntryFocus"
   >
-    <PopperContent
+    <PopperPositioner
       v-bind="forwardedProps"
-      :ref="setContentElement"
-      :floating-ref="setFloatingElement"
-      role="menu"
-      data-soybean-menu-content
-      aria-orientation="vertical"
-      :data-state="dataState"
-      :dir="dir"
-      :style="computedStyle"
+      :ref="setPositionerElement"
+      :class="cls"
       @keydown="onKeyDown"
       @blur="onBlur"
       @pointermove="onPointerMove"
     >
-      <slot />
-    </PopperContent>
+      <PopperPopup
+        v-bind="popupProps"
+        :id="popupId"
+        :ref="setPopupElement"
+        :class="popupCls"
+        :aria-labelledby="triggerId"
+        aria-orientation="vertical"
+        data-dismissable-layer
+        :data-state="dataState"
+        :dir="dir"
+        role="menu"
+        tabindex="-1"
+        :style="popupStyle"
+      >
+        <slot />
+      </PopperPopup>
+    </PopperPositioner>
   </RovingFocusGroup>
 </template>

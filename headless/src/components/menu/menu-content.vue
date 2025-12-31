@@ -1,44 +1,27 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
-import type { CSSProperties } from 'vue';
-import { useForwardElement, useForwardListeners, useOmitProps, usePresence } from '../../composables';
+import { useForwardListeners, useOmitProps, usePresence } from '../../composables';
 import type { FocusOutsideEvent } from '../../types';
-import { popperCssVars } from '../popper/shared';
-import { useMenuContext, useMenuRootContext, useMenuThemeContext } from './context';
+import { useMenuContext, useMenuRootContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
-import { menuContentCssVars } from './shared';
-import type { MenuContentEmits, MenuContentPrivateProps } from './types';
+import type { MenuContentEmits, MenuContentProps } from './types';
 
 defineOptions({
   name: 'MenuContent'
 });
 
-const props = defineProps<MenuContentPrivateProps>();
+const props = defineProps<MenuContentProps>();
 
 const emit = defineEmits<MenuContentEmits>();
 
-const forwardedProps = useOmitProps(props, ['forceMount', 'elRef']);
+const forwardedProps = useOmitProps(props, ['forceMount']);
 
 const listeners = useForwardListeners(emit);
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
-
-const style: CSSProperties = {
-  [menuContentCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
-  [menuContentCssVars.availableWidth]: `var(${popperCssVars.availableWidth})`,
-  [menuContentCssVars.availableHeight]: `var(${popperCssVars.availableHeight})`,
-  [menuContentCssVars.triggerWidth]: `var(${popperCssVars.anchorWidth})`,
-  [menuContentCssVars.triggerHeight]: `var(${popperCssVars.anchorHeight})`
-};
-
-const { open } = useMenuContext('MenuContent');
+const { open, popupElement } = useMenuContext('MenuContent');
 const { modal } = useMenuRootContext('MenuContent');
 
-const [contentElement, setContentElement] = useForwardElement(props.elRef);
-
-const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open);
+const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
 
 const trapFocus = computed(() => modal.value && open.value);
 
@@ -53,9 +36,6 @@ const focusOutside = (event: FocusOutsideEvent) => {
   <MenuContentImpl
     v-if="isPresent"
     v-bind="forwardedProps"
-    :ref="setContentElement"
-    :class="cls"
-    :style="style"
     :trap-focus="trapFocus"
     :disable-outside-pointer-events="trapFocus"
     v-on="listeners"

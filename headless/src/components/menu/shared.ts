@@ -1,23 +1,23 @@
 import { SELECTION_KEYS } from '../../constants';
 import type { Direction, NavigationKey } from '../../types';
 
-export const menuContentCssVars = {
-  transformOrigin: '--soybean-menu-content-transform-origin',
-  availableWidth: '--soybean-menu-content-available-width',
-  availableHeight: '--soybean-menu-content-available-height',
-  triggerWidth: '--soybean-menu-content-trigger-width',
-  triggerHeight: '--soybean-menu-content-trigger-height'
+export const menuCssVars = {
+  popupTransformOrigin: '--soybean-menu-popup-transform-origin',
+  popupAvailableWidth: '--soybean-menu-popup-available-width',
+  popupAvailableHeight: '--soybean-menu-popup-available-height',
+  triggerWidth: '--soybean-menu-trigger-width',
+  triggerHeight: '--soybean-menu-trigger-height'
 };
 
 export const subMenuCssVars = {
-  transformOrigin: '--soybean-sub-menu-content-transform-origin',
-  availableWidth: '--soybean-sub-menu-content-available-width',
-  availableHeight: '--soybean-sub-menu-content-available-height',
+  popupTransformOrigin: '--soybean-sub-menu-popup-transform-origin',
+  popupAvailableWidth: '--soybean-sub-menu-popup-available-width',
+  popupAvailableHeight: '--soybean-sub-menu-popup-available-height',
   triggerWidth: '--soybean-sub-menu-trigger-width',
   triggerHeight: '--soybean-sub-menu-trigger-height'
 };
 
-export const MENU_CONTENT_DATA_ATTRIBUTE = 'data-soybean-menu-content';
+export const MENU_POPUP_DATA_ATTRIBUTE = 'data-soybean-menu-popup';
 
 export const ITEM_NAME = 'MenuItem';
 export const ITEM_SELECT = 'menu.itemSelect';

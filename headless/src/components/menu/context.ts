@@ -2,7 +2,6 @@ import { computed, ref, shallowRef, useId } from 'vue';
 import { useContext, useDirection } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
-import { provideArrowThemeContext } from '../arrow/context';
 import { provideSeparatorThemeContext } from '../separator/context';
 import type {
   MenuCheckboxGroupContextParams,
@@ -15,12 +14,7 @@ import type {
 } from './types';
 
 export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: MenuContextParams) => {
-  const { open } = params;
-
-  const contentElement = shallowRef<HTMLElement>();
-  const onContentElementChange = (el: HTMLElement) => {
-    contentElement.value = el;
-  };
+  const { isRoot, open } = params;
 
   const onOpenChange = (v: boolean) => {
     open.value = v;
@@ -28,12 +22,46 @@ export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: 
 
   const dataState = computed(() => getDisclosureState(open.value));
 
+  const dataPopupAttr = isRoot ? 'data-soybean-menu-popup' : 'data-soybean-menu-sub-popup';
+
+  const popupElement = shallowRef<HTMLElement>();
+  const onPopupElementChange = (el: HTMLElement) => {
+    popupElement.value = el;
+  };
+
+  const triggerElement = shallowRef<HTMLElement>();
+  const onTriggerElementChange = (el: HTMLElement) => {
+    triggerElement.value = el;
+  };
+
+  const prefix = isRoot ? 'soybean-menu' : 'soybean-menu-sub';
+
+  const popupId = shallowRef('');
+  const initPopupId = () => {
+    if (popupId.value) return;
+    popupId.value = `${prefix}-popup-${useId()}`;
+  };
+
+  const triggerId = shallowRef('');
+  const initTriggerId = () => {
+    if (triggerId.value) return;
+    triggerId.value = `${prefix}-trigger-${useId()}`;
+  };
+
   return {
+    isRoot,
     open,
     onOpenChange,
     dataState,
-    contentElement,
-    onContentElementChange
+    dataPopupAttr,
+    popupElement,
+    onPopupElementChange,
+    triggerElement,
+    onTriggerElementChange,
+    popupId,
+    initPopupId,
+    triggerId,
+    initTriggerId
   };
 });
 
@@ -46,39 +74,10 @@ export const [provideMenuRootContext, useMenuRootContext] = useContext('MenuRoot
   };
 });
 
-export const [provideMenuSubContext, useMenuSubContext] = useContext('MenuSub', () => {
-  const subTriggerElement = shallowRef<HTMLElement>();
-
-  const onSubTriggerElementChange = (el: HTMLElement) => {
-    subTriggerElement.value = el;
-  };
-
-  const subTriggerId = shallowRef('');
-  const initSubTriggerId = () => {
-    if (subTriggerId.value) return;
-    subTriggerId.value = `soybean-menu-sub-trigger-${useId()}`;
-  };
-
-  const subContentId = shallowRef('');
-  const initSubContentId = () => {
-    if (subContentId.value) return;
-    subContentId.value = `soybean-menu-sub-content-${useId()}`;
-  };
-
-  return {
-    subContentId,
-    initSubContentId,
-    subTriggerElement,
-    onSubTriggerElementChange,
-    subTriggerId,
-    initSubTriggerId
-  };
-});
-
 export const [provideMenuContentContext, useMenuContentContext] = useContext(
   'MenuContent',
   (params: MenuContentContextParams) => {
-    const { contentElement } = params;
+    const { popupElement } = params;
 
     const searchRef = shallowRef('');
     const currentItemId = ref<string | null>(null);
@@ -95,20 +94,21 @@ export const [provideMenuContentContext, useMenuContentContext] = useContext(
 
     const isPointerMovingToSubmenu = (event: PointerEvent) => {
       const isMovingTowards = pointerSide.value === pointerGraceIntent.value?.side;
+      const isInGraceArea = isPointerInGraceArea(event, pointerGraceIntent.value?.area);
 
-      return isMovingTowards && isPointerInGraceArea(event, pointerGraceIntent.value?.area);
+      return isMovingTowards && isInGraceArea;
     };
 
     const onItemLeave = (event: PointerEvent) => {
       if (isPointerMovingToSubmenu(event)) return;
-      contentElement.value?.focus();
+      popupElement.value?.focus();
       currentItemId.value = null;
     };
 
     return {
       searchRef,
       currentItemId,
-      contentElement,
+      popupElement,
       pointerSide,
       pointerGraceTimer,
       pointerGraceIntent,
@@ -169,10 +169,8 @@ export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] = us
 export const [provideMenuThemeContext, useMenuThemeContext] = useContext(
   'MenuTheme',
   (params: MenuThemeContextParams) => {
-    const arrowCls = computed(() => params.ui.value.arrow);
     const separatorUi = computed(() => ({ root: params.ui.value.separator, label: null }));
 
-    provideArrowThemeContext(arrowCls);
     provideSeparatorThemeContext({
       ui: separatorUi
     });
