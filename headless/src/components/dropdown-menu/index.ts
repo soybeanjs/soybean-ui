@@ -28,6 +28,7 @@ export type {
   DropdownMenuTriggerProps
 } from './types';
 export type {
+  MenuPopupProps as DropdownMenuPopupProps,
   MenuPortalProps as DropdownMenuPortalProps,
   MenuSubEmits as DropdownMenuSubEmits,
   MenuSubProps as DropdownMenuSubProps,

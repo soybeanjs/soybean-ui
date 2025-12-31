@@ -28,15 +28,19 @@ export interface MenuRootProps extends DialogRootProps {
 }
 export type MenuRootEmits = DialogRootEmits;
 
+export interface MenuPopupProps extends PopperPopupProps {}
+
 // MenuContentImpl
 export interface MenuContentImplProps
   extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps, Pick<RovingFocusGroupProps, 'loop'> {
-  popupProps?: PopperPopupProps;
+  popupProps?: MenuPopupProps;
 }
 export type MenuContentImplEmits = DismissableLayerEmits & FocusScopeEmits & Pick<RovingFocusGroupEmits, 'entryFocus'>;
 
 // MenuContent
-export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {}
+export interface MenuContentProps extends PopperPositionerProps, ForceMountProps, Pick<RovingFocusGroupProps, 'loop'> {
+  popupProps?: MenuPopupProps;
+}
 export type MenuContentEmits = MenuContentImplEmits;
 
 export interface MenuTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {

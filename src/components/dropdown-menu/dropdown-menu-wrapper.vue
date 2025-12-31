@@ -33,10 +33,19 @@ const forwardedRootProps = useOmitProps(props, [
   'triggerProps',
   'portalProps',
   'contentProps',
+  'popupProps',
   'arrowProps'
 ]);
 
 const forwardedListeners = useForwardListeners(emit);
+
+const contentProps = computed(() => {
+  return {
+    ...props.contentProps,
+    popupProps: props.popupProps ?? props.contentProps?.popupProps,
+    sideOffset: props.contentProps?.sideOffset ?? (props.showArrow ? 0 : 8)
+  };
+});
 
 const ui = computed(() => {
   const variants = menuVariants({
@@ -60,7 +69,7 @@ provideMenuExtraThemeContext({
       <slot name="trigger" />
     </DropdownMenuTrigger>
     <DropdownMenuPortal v-bind="portalProps">
-      <DropdownMenuContent v-bind="contentProps" v-on="forwardedListeners">
+      <DropdownMenuContent v-bind="contentProps" :popup-props="popupProps" v-on="forwardedListeners">
         <slot />
         <DropdownMenuArrow v-if="showArrow" v-bind="arrowProps" />
       </DropdownMenuContent>
