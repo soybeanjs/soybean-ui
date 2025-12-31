@@ -4,20 +4,15 @@ import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import type { HorizontalSide } from '../../types';
 import { PopperAnchor } from '../popper';
-import {
-  useMenuContentContext,
-  useMenuContext,
-  useMenuRootContext,
-  useMenuSubContext,
-  useMenuThemeContext
-} from './context';
+import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuThemeContext } from './context';
 import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
 
 const props = defineProps<MenuSubTriggerProps>();
 
-const { open, dataState, contentElement, onOpenChange } = useMenuContext('MenuSubTrigger');
+const { open, dataState, popupElement, popupId, triggerId, onTriggerElementChange, initTriggerId, onOpenChange } =
+  useMenuContext('MenuSubTrigger');
 const { dir } = useMenuRootContext('MenuSubTrigger');
 const {
   pointerGraceTimer,
@@ -27,8 +22,7 @@ const {
   onItemEnter,
   onTriggerLeave
 } = useMenuContentContext('MenuSubTrigger');
-const { subTriggerId, subContentId, onSubTriggerElementChange, initSubTriggerId } = useMenuSubContext('MenuSubTrigger');
-const [_, setSubTriggerElement] = useForwardElement(onSubTriggerElementChange);
+const [_, setSubTriggerElement] = useForwardElement(onTriggerElementChange);
 
 const themeContext = useMenuThemeContext();
 
@@ -74,25 +68,25 @@ const onPointerLeave = (event: PointerEvent) => {
   if (!isMouseEvent(event)) return;
   clearOpenTimer();
 
-  const contentRect = contentElement.value?.getBoundingClientRect();
-  if (contentRect?.width) {
+  const popupRect = popupElement.value?.getBoundingClientRect();
+  if (popupRect?.width) {
     // make sure to update this when we change positioning logic
-    const side = contentElement.value?.dataset.side as HorizontalSide;
+    const side = popupElement.value?.dataset.side as HorizontalSide;
 
     const rightSide = side === 'right';
     const bleed = rightSide ? -5 : +5;
-    const contentNearEdge = contentRect[rightSide ? 'left' : 'right'];
-    const contentFarEdge = contentRect[rightSide ? 'right' : 'left'];
+    const contentNearEdge = popupRect[rightSide ? 'left' : 'right'];
+    const contentFarEdge = popupRect[rightSide ? 'right' : 'left'];
 
     onPointerGraceIntentChange({
       area: [
         // Apply a bleed on clientX to ensure that our exit point is
         // consistently within polygon bounds
         { x: event.clientX + bleed, y: event.clientY },
-        { x: contentNearEdge, y: contentRect.top },
-        { x: contentFarEdge, y: contentRect.top },
-        { x: contentFarEdge, y: contentRect.bottom },
-        { x: contentNearEdge, y: contentRect.bottom }
+        { x: contentNearEdge, y: popupRect.top },
+        { x: contentFarEdge, y: popupRect.top },
+        { x: contentFarEdge, y: popupRect.bottom },
+        { x: contentNearEdge, y: popupRect.bottom }
       ],
       side
     });
@@ -121,24 +115,24 @@ const onKeyDown = async (event: KeyboardEvent) => {
   await nextTick();
   // The trigger may hold focus if opened via pointer interaction
   // so we ensure content is given focus again when switching to keyboard.
-  contentElement.value?.focus();
+  popupElement.value?.focus();
   // prevent window from scrolling
   event.preventDefault();
 };
 
-initSubTriggerId();
+initTriggerId();
 </script>
 
 <template>
   <PopperAnchor as-child>
     <MenuItemImpl
       v-bind="props"
-      :id="subTriggerId"
+      :id="triggerId"
       :ref="setSubTriggerElement"
       :class="cls"
       aria-haspopup="menu"
       :aria-expanded="open"
-      :aria-controls="subContentId"
+      :aria-controls="popupId"
       :data-state="dataState"
       @click="onClick"
       @pointermove="onPointerMove"

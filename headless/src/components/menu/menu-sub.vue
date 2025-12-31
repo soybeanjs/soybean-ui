@@ -2,7 +2,7 @@
 import { onWatcherCleanup, watchEffect } from 'vue';
 import { useControllableState } from '../../composables';
 import { PopperRoot } from '../popper';
-import { provideMenuContext, provideMenuSubContext, useMenuContext } from './context';
+import { provideMenuContext, useMenuContext } from './context';
 import type { MenuSubEmits, MenuSubProps } from './types';
 
 defineOptions({
@@ -40,8 +40,6 @@ watchEffect(() => {
 provideMenuContext({
   open
 });
-
-provideMenuSubContext();
 </script>
 
 <template>

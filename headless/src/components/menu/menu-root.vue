@@ -32,7 +32,8 @@ const onClose = () => {
 };
 
 provideMenuContext({
-  open
+  open,
+  isRoot: true
 });
 
 provideMenuRootContext({
