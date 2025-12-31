@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.7",
   "private": true,
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@10.27.0",
   "description": "SoybeanUI Docs is a documentation for SoybeanUI. It is designed to be easy to use and understand.",
   "author": {
     "name": "Soybean",
@@ -18,12 +18,12 @@
   },
   "dependencies": {
     "@soybeanjs/ui": "workspace:^",
-    "@unocss/reset": "^66.5.10",
+    "@unocss/reset": "^66.5.12",
     "es-toolkit": "^1.43.0",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.4",
     "vue": "^3.5.26",
-    "vue-i18n": "^11.2.7",
+    "vue-i18n": "^11.2.8",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "unplugin-vue": "^7.1.0",
     "unplugin-vue-components": "^30.0.0",
     "unplugin-vue-markdown": "^29.2.0",
-    "unplugin-vue-router": "^0.19.1",
+    "unplugin-vue-router": "^0.19.2",
     "vite": "^7.3.0",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-ssg": "^28.2.2",
