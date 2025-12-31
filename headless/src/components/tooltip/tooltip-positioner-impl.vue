@@ -3,7 +3,7 @@ import { onWatcherCleanup, watchPostEffect } from 'vue';
 import { useDismissableLayer, useForwardElement, useGraceArea } from '../../composables';
 import { PopperPositioner } from '../popper';
 import { TOOLTIP_OPEN } from './shared';
-import { provideTooltipPositionerContext, useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
+import { useTooltipOpenDelayedContext, useTooltipRootContext } from './context';
 import type { TooltipPositionerImplEmits, TooltipPositionerImplProps } from './types';
 
 defineOptions({
@@ -25,14 +25,14 @@ const props = withDefaults(defineProps<TooltipPositionerImplProps>(), {
 const emit = defineEmits<TooltipPositionerImplEmits>();
 
 const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipPositionerImpl');
-const { triggerElement, disableClosingTrigger, disableHoverableContent, onClose } =
+const { triggerElement, popupElement, disableClosingTrigger, disableHoverableContent, onClose } =
   useTooltipRootContext('TooltipPositionerImpl');
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 
 useGraceArea({
   triggerElement,
-  contentElement: positionerElement,
+  areaElement: positionerElement,
   onPointerInTransitChange: v => {
     isPointerInTransitRef.value = v;
   },
@@ -61,8 +61,6 @@ const { pointerEvents } = useDismissableLayer(positionerElement, {
   }
 });
 
-provideTooltipPositionerContext({ pointerEvents });
-
 watchPostEffect(() => {
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
@@ -77,6 +75,12 @@ watchPostEffect(() => {
     window.removeEventListener('scroll', handleScroll);
     window.removeEventListener(TOOLTIP_OPEN, onClose);
   });
+});
+
+watchPostEffect(() => {
+  if (popupElement.value && pointerEvents.value) {
+    popupElement.value.style.pointerEvents = pointerEvents.value;
+  }
 });
 </script>
 

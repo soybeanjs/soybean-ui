@@ -1,11 +1,6 @@
 import { computed, shallowRef, useId } from 'vue';
 import { useContext } from '../../composables';
-import type {
-  TooltipDataState,
-  TooltipOpenDelayedContextParams,
-  TooltipPositionerContextParams,
-  TooltipRootContextParams
-} from './types';
+import type { TooltipDataState, TooltipOpenDelayedContextParams, TooltipRootContextParams } from './types';
 
 export const [provideTooltipOpenDelayedContext, useTooltipOpenDelayedContext] = useContext(
   'TooltipOpenDelayed',
@@ -137,9 +132,4 @@ export const [provideTooltipRootContext, useTooltipRootContext] = useContext(
       onClose
     };
   }
-);
-
-export const [provideTooltipPositionerContext, useTooltipPositionerContext] = useContext(
-  'TooltipPositioner',
-  (params: TooltipPositionerContextParams) => params
 );

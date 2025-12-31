@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref, ShallowRef } from 'vue';
+import type { Ref, ShallowRef } from 'vue';
 import type { DismissableLayerEmits, ForceMountProps, PropsToContext } from '../../types';
 import type { PopperPopupProps, PopperPositionerProps } from '../popper/types';
 
@@ -85,10 +85,6 @@ export interface TooltipRootContextParams extends PropsToContext<
 > {
   open: ShallowRef<boolean | undefined>;
   isOpenDelayed: Ref<boolean>;
-}
-
-export interface TooltipPositionerContextParams {
-  pointerEvents: ComputedRef<'auto' | 'none' | undefined>;
 }
 
 export type { PopperAnchorProps as TooltipTriggerProps } from '../popper/types';
