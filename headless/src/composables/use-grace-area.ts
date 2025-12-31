@@ -15,8 +15,8 @@ import type { Point, Polygon } from '../types';
 export interface UseGraceAreaOptions {
   /** Reactive reference to the trigger element */
   triggerElement: ShallowRef<HTMLElement | undefined>;
-  /** Reactive reference to the content element */
-  contentElement: ShallowRef<HTMLElement | undefined>;
+  /** Reactive reference to the area element */
+  areaElement: ShallowRef<HTMLElement | undefined>;
   /** Callback invoked when the pointer in-transit state changes */
   onPointerInTransitChange?: (v: boolean) => void;
   /** Callback invoked when the pointer exits the grace area */
@@ -49,7 +49,7 @@ export interface UseGraceAreaOptions {
 export function useGraceArea(options: UseGraceAreaOptions) {
   const {
     triggerElement,
-    contentElement,
+    areaElement,
     onPointerInTransitChange,
     onPointerExit,
     disabled,
@@ -76,9 +76,9 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     }
 
     const trigger = triggerElement.value;
-    const content = contentElement.value;
+    const area = areaElement.value;
 
-    if (!trigger || !content) {
+    if (!trigger || !area) {
       return;
     }
 
@@ -101,7 +101,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       const target = event.target as HTMLElement;
       const subArea = target.closest(`[${subAreaAttribute}]`) as HTMLElement;
 
-      if (subArea && contentElement.value?.contains(subArea)) {
+      if (subArea && areaElement.value?.contains(subArea)) {
         // Enter sub-area
         if (currentSubArea.value !== subArea) {
           if (currentSubArea.value) {
@@ -126,23 +126,23 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     }
 
     // Setup event listeners with consistent pattern
-    const handleTriggerLeave = (event: PointerEvent) => createGraceAreaSafely(event, content);
-    const handleContentLeave = (event: PointerEvent) => createGraceAreaSafely(event, trigger);
+    const handleTriggerLeave = (event: PointerEvent) => createGraceAreaSafely(event, area);
+    const handleAreaLeave = (event: PointerEvent) => createGraceAreaSafely(event, trigger);
     const handleSubContentMove = (event: PointerEvent) => handleSubAreaInteraction(event);
 
     trigger.addEventListener('pointerleave', handleTriggerLeave);
-    content.addEventListener('pointerleave', handleContentLeave);
+    area.addEventListener('pointerleave', handleAreaLeave);
 
     // Listen for pointer movement on the content area to handle sub-areas
     if (subAreaAttribute) {
-      content.addEventListener('pointermove', handleSubContentMove);
+      area.addEventListener('pointermove', handleSubContentMove);
     }
 
     onWatcherCleanup(() => {
       trigger.removeEventListener('pointerleave', handleTriggerLeave);
-      content.removeEventListener('pointerleave', handleContentLeave);
+      area.removeEventListener('pointerleave', handleAreaLeave);
       if (subAreaAttribute) {
-        content.removeEventListener('pointermove', handleSubContentMove);
+        area.removeEventListener('pointermove', handleSubContentMove);
       }
     });
   });
@@ -161,11 +161,11 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       if (!(target instanceof Element)) return;
 
       const { clientX: x, clientY: y } = event;
-      const hasEnteredTarget = triggerElement.value?.contains(target) || contentElement.value?.contains(target);
+      const hasEnteredTarget = triggerElement.value?.contains(target) || areaElement.value?.contains(target);
 
       // Check whether the pointer has entered a sub-area
       const hasEnteredSubArea =
-        subAreaAttribute && target.closest(`[${subAreaAttribute}]`) && contentElement.value?.contains(target);
+        subAreaAttribute && target.closest(`[${subAreaAttribute}]`) && areaElement.value?.contains(target);
 
       if (hasEnteredTarget || hasEnteredSubArea) {
         // If entered the primary target area or a sub-area, clean up the current grace area
@@ -182,7 +182,7 @@ export function useGraceArea(options: UseGraceAreaOptions) {
       // Check whether the pointer has left all related areas (including sub-areas)
       const isOutsideAllAreas =
         !triggerElement.value?.contains(target) &&
-        !contentElement.value?.contains(target) &&
+        !areaElement.value?.contains(target) &&
         !(subAreaAttribute && target.closest(`[${subAreaAttribute}]`));
 
       if ((isPointerOutsideGraceArea && isOutsideAllAreas) || isAnotherGraceAreaTrigger) {
