@@ -6,7 +6,7 @@ interface Props {
   orientation?: DataOrientation;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   orientation: 'horizontal'
 });
 
@@ -35,8 +35,5 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
 </script>
 
 <template>
-  <SNavigationMenu
-    :items="menus"
-    :ui="{ list: props.orientation === 'vertical' ? 'flex-col items-start' : 'flex-row', item: 'w-full' }"
-  />
+  <SNavigationMenu :items="menus" :orientation="orientation" />
 </template>
