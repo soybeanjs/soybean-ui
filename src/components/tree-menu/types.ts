@@ -1,5 +1,20 @@
-import type { ComputedRef, ShallowRef } from 'vue';
-import type { ClassValue, LinkProps, TreeItemProps, TreeRootEmits, TreeRootProps } from '@soybeanjs/headless';
+import type { ComputedRef } from 'vue';
+import type {
+  ClassValue,
+  HorizontalSide,
+  LinkBaseProps,
+  PropsToContext,
+  TreeMenuBaseItemProps,
+  TreeMenuButtonProps,
+  TreeMenuCollapsibleProps,
+  TreeMenuGroupLabelProps,
+  TreeMenuGroupProps,
+  TreeMenuGroupRootProps,
+  TreeMenuRootEmits,
+  TreeMenuRootProps,
+  TreeMenuSubProps,
+  TreeMenuUi
+} from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 import type { TooltipProps } from '../tooltip/types';
@@ -8,96 +23,121 @@ import type { TagProps } from '../tag/types';
 import type { MenuOptionData } from '../menu/types';
 import type { DropdownMenuProps } from '../dropdown-menu/types';
 
-export type TreeMenuState = 'expanded' | 'collapsed';
-
-export interface TreeMenuBaseOptionData {
+export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
+  /**
+   * The label of the option.
+   */
   label: string;
-  value: string;
+  /**
+   * The icon of the option.
+   */
   icon?: IconValue;
-  disabled?: boolean;
-  to?: LinkProps['to'];
-  href?: LinkProps['href'];
-  linkProps?: LinkProps;
+  /**
+   * The badge of the option.
+   */
   badge?: string;
-  badgeProps?: BadgeProps;
+  /**
+   * The badge props of the option.
+   */
+  badgeProps?: Omit<BadgeProps, 'content'>;
+  /**
+   * The tag of the option.
+   */
   tag?: string;
-  tagProps?: TagProps;
+  /**
+   * The tag props of the option.
+   */
+  tagProps?: Omit<TagProps, 'content'>;
+  /**
+   * The tooltip props of the option.
+   */
+  tooltipProps?: TooltipProps;
+  /**
+   * The dropdown menu props of the option.
+   */
+  dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>;
+  /**
+   * The actions of the option.
+   */
   actions?: MenuOptionData[];
+  /**
+   * The action menu props of the option.
+   */
+  actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
+  /**
+   * The callback function when an action is selected.
+   */
   onActionSelect?: (action: MenuOptionData) => void;
+  /**
+   * The children of the option.
+   */
   children?: TreeMenuBaseOptionData[];
 }
 
-export interface TreeMenuGroupOptionData extends TreeMenuBaseOptionData {
+export interface TreeMenuGroupOptionData {
   isGroup: true;
+  label: string;
+  value: string;
+  children: TreeMenuBaseOptionData[];
 }
 
 export type TreeMenuOptionData = TreeMenuBaseOptionData | TreeMenuGroupOptionData;
 
-export type TreeMenuThemeSlot =
-  | 'root'
-  | 'groupLabel'
-  | 'item'
-  | 'itemContent'
-  | 'itemAbsolute'
+export interface TreeMenuOptionProps {
+  item: TreeMenuBaseOptionData;
+}
+
+export type TreeMenuExtraThemeSlot =
   | 'itemLabel'
-  | 'itemLinkIcon'
+  | 'itemAbsolute'
   | 'itemBadge'
   | 'itemTag'
   | 'itemAction'
+  | 'itemLinkIcon'
   | 'collapsibleIcon';
 
-export type TreeMenuUi = Record<TreeMenuThemeSlot, ClassValue>;
+export type TreeMenuExtendedUi = TreeMenuUi & Record<TreeMenuExtraThemeSlot, ClassValue>;
 
-export interface TreeMenuItemProps extends TreeItemProps, TreeMenuBaseOptionData {
-  actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
-  tooltipProps?: TooltipProps;
-  dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>;
-}
-
-export type TreeMenuItemEmits = {
-  selectDropdown: [value: string];
-};
-
-export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData> extends TreeRootProps<
-  T,
-  string,
-  false
-> {
+export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData> extends TreeMenuRootProps {
   size?: ThemeSize;
-  ui?: Partial<TreeMenuUi>;
+  ui?: Partial<TreeMenuExtendedUi>;
   /**
-   * Whether the sidebar menu is collapsed.
+   * The side of the tree menu.
    *
-   * @default false
+   * @default 'left'
    */
-  collapsed?: boolean;
-  /**
-   * The value of the sidebar menu when it's collapsed.
-   */
-  defaultCollapsed?: boolean;
+  side?: HorizontalSide;
+  items?: T[];
   /**
    * The width of the sidebar menu when it's collapsed.
    *
    * @default 50
    */
   collapsedWidth?: number;
-  tooltipProps?: TooltipProps;
-  dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>;
-  badgeProps?: Omit<BadgeProps, 'content'>;
-  tagProps?: Omit<TagProps, 'content'>;
-  actionMenuProps?: Omit<DropdownMenuProps, 'items'>;
+  /**
+   * The width of the indent.
+   *
+   * @default 16
+   */
+  indent?: number;
+  groupRootProps?: TreeMenuGroupRootProps;
+  groupProps?: TreeMenuGroupProps;
+  groupLabelProps?: TreeMenuGroupLabelProps;
+  buttonProps?: Omit<TreeMenuButtonProps, 'disabledActive'>;
+  collapsibleProps?: Omit<TreeMenuCollapsibleProps, 'as' | 'asChild'>;
+  subProps?: Omit<TreeMenuSubProps, 'as' | 'asChild'>;
 }
 
-export type TreeMenuEmits = TreeRootEmits<false> &
-  TreeMenuItemEmits & {
-    'update:collapsed': [value: boolean];
-  };
-
-export interface TreeMenuContextParams {
-  collapsed: ShallowRef<boolean | undefined>;
-  size?: ComputedRef<ThemeSize>;
+export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
+  showLinkIcon?: boolean;
 }
 
-export interface TreeMenuThemeContextParams {
-  ui: ComputedRef<TreeMenuUi>;
-}
+export type TreeMenuItemEmits = {
+  selectDropdown: [value: string];
+};
+
+export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
+
+export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuItemEmits;
+
+export type TreeMenuExtraThemeContextParams = ComputedRef<Partial<TreeMenuExtendedUi>>;

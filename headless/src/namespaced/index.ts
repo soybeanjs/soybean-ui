@@ -226,6 +226,14 @@ import {
   TooltipRoot,
   TooltipTrigger,
   TreeItem,
+  TreeMenuButton,
+  TreeMenuCollapsible,
+  TreeMenuGroup,
+  TreeMenuGroupLabel,
+  TreeMenuGroupRoot,
+  TreeMenuItem,
+  TreeMenuRoot,
+  TreeMenuSub,
   TreeRoot,
   TreeVirtualizerItem,
   TreeVirtualizerRoot,
@@ -820,6 +828,26 @@ export const Tree = {
   Root: typeof TreeRoot;
   VirtualizerItem: typeof TreeVirtualizerItem;
   VirtualizerRoot: typeof TreeVirtualizerRoot;
+};
+
+export const TreeMenu = {
+  Root: TreeMenuRoot,
+  GroupRoot: TreeMenuGroupRoot,
+  Group: TreeMenuGroup,
+  GroupLabel: TreeMenuGroupLabel,
+  Item: TreeMenuItem,
+  Button: TreeMenuButton,
+  Collapsible: TreeMenuCollapsible,
+  Sub: TreeMenuSub
+} as {
+  Root: typeof TreeMenuRoot;
+  GroupRoot: typeof TreeMenuGroupRoot;
+  Group: typeof TreeMenuGroup;
+  GroupLabel: typeof TreeMenuGroupLabel;
+  Item: typeof TreeMenuItem;
+  Button: typeof TreeMenuButton;
+  Collapsible: typeof TreeMenuCollapsible;
+  Sub: typeof TreeMenuSub;
 };
 
 export const Virtualizer = {

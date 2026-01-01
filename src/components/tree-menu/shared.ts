@@ -5,23 +5,14 @@ export const treeMenuCssVars = {
   indent: '--soybean-tree-menu-indent'
 };
 
-export function isTreeMenuGroupOption<T extends TreeMenuOptionData = TreeMenuOptionData>(
-  data: T
-): data is T & TreeMenuGroupOptionData {
-  return 'isGroup' in data && data.isGroup;
+export function isGroupTreeMenu(item: TreeMenuOptionData): item is TreeMenuGroupOptionData {
+  return 'isGroup' in item && item.isGroup;
 }
 
-export function transformTreeMenuItems<T extends TreeMenuOptionData = TreeMenuOptionData>(items: T[]) {
-  const result: T[] = [];
+export function isChildActive(item: TreeMenuOptionData, activeValue: string, isRoot = true): boolean {
+  const match = !isRoot && item.value === activeValue;
 
-  for (const item of items) {
-    if (isTreeMenuGroupOption(item)) {
-      const { children, ...rest } = item;
+  if (match) return true;
 
-      result.push(rest as T, ...((children ?? []) as T[]));
-    } else {
-      result.push(item);
-    }
-  }
-  return result;
+  return item?.children?.some(child => isChildActive(child, activeValue, false)) ?? false;
 }

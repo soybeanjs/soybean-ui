@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { Link } from '@soybeanjs/headless';
 import { cn } from '@/theme';
 import { linkVariants } from '@/variants/link';
@@ -19,9 +19,11 @@ const props = withDefaults(defineProps<LinkProps>(), {
   disabled: undefined
 });
 
+const attrs = useAttrs() as Record<string, any>;
+
 const variants = linkVariants();
 
-const cls = computed(() => cn(variants, props.class));
+const cls = computed(() => cn(variants, attrs.class));
 </script>
 
 <template>

@@ -21,13 +21,14 @@ const excludes: string[] = ['configProvider', 'label', 'icon', 'menu'];
 
 const componentMenus = Object.keys(components)
   .filter(key => !excludes.includes(key))
-  .map(key => ({
-    label: toPascalCase(key),
-    value: toKebabCase(key),
-    linkProps: {
-      to: `/components/${toKebabCase(key)}`
-    }
-  }));
+  .map(
+    key =>
+      ({
+        label: toPascalCase(key),
+        value: toKebabCase(key),
+        to: `/components/${toKebabCase(key)}`
+      }) satisfies TreeMenuOptionData
+  );
 
 const menus: TreeMenuOptionData[] = [
   {
@@ -38,16 +39,12 @@ const menus: TreeMenuOptionData[] = [
       {
         label: 'Introduction',
         value: 'introduction',
-        linkProps: {
-          to: '/overview/introduction'
-        }
+        to: '/overview/introduction'
       },
       {
         label: 'Quick Start',
         value: 'quick-start',
-        linkProps: {
-          to: '/overview/quick-start'
-        }
+        to: '/overview/quick-start'
       }
     ]
   },

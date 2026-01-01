@@ -1,45 +1,75 @@
 <script setup lang="ts" generic="T extends TreeMenuOptionData = TreeMenuOptionData">
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { TreeRoot } from '@soybeanjs/headless';
-import { useControllableState, useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { vAutoAnimate } from '@formkit/auto-animate';
+import {
+  TreeMenuGroup,
+  TreeMenuGroupLabel,
+  TreeMenuGroupRoot,
+  TreeMenuRoot,
+  provideTreeMenuThemeContext
+} from '@soybeanjs/headless';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
-import { provideTreeMenuContext, provideTreeMenuThemeContext } from './context';
-import { isTreeMenuGroupOption, transformTreeMenuItems, treeMenuCssVars } from './shared';
-import TreeMenuItem from './tree-menu-item.vue';
-import type { TreeMenuEmits, TreeMenuOptionData, TreeMenuProps, TreeMenuState } from './types';
+import TreeMenuOption from './tree-menu-option.vue';
+import { provideTreeMenuContext, provideTreeMenuExtraThemeContext } from './context';
+import { isGroupTreeMenu, treeMenuCssVars } from './shared';
+import type { TreeMenuEmits, TreeMenuOptionData, TreeMenuProps } from './types';
 
 defineOptions({
-  name: 'TreeMenu'
+  name: 'STreeMenu'
 });
 
 const props = withDefaults(defineProps<TreeMenuProps<T>>(), {
+  size: 'md',
+  side: 'left',
+  loop: true,
   collapsed: undefined,
-  defaultCollapsed: false,
-  collapsedWidth: 50
+  collapsedWidth: 50,
+  indent: 16
 });
 
 const emit = defineEmits<TreeMenuEmits>();
 
+type Slots = {
+  top: () => any;
+  bottom: () => any;
+  item: (props: { item: T }) => any;
+  'item-leading': (props: { item: T }) => any;
+  'item-trailing': (props: { item: T }) => any;
+};
+
+const slots = defineSlots<Slots>();
+
+const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item-')) as (keyof Slots)[]);
+
 const forwardedProps = useOmitProps(props, [
   'size',
+  'side',
   'ui',
   'items',
-  'expanded',
-  'defaultExpanded',
-  'collapsed',
-  'defaultCollapsed',
   'collapsedWidth',
-  'tooltipProps',
-  'dropdownMenuProps',
-  'badgeProps',
-  'tagProps',
-  'actionMenuProps'
+  'indent',
+  'groupRootProps',
+  'groupProps',
+  'groupLabelProps',
+  'buttonProps',
+  'collapsibleProps',
+  'subProps'
 ]);
 
 const listeners = useForwardListeners(emit);
+
+const style = computed<CSSProperties>(() => {
+  const collapsedWidth = props.collapsedWidth * themeSizeRatio[props.size];
+  const indent = props.indent * themeSizeRatio[props.size];
+
+  return {
+    [treeMenuCssVars.collapsedWidth]: `${collapsedWidth / themeSizeMap.md}rem`,
+    [treeMenuCssVars.indent]: `${indent / themeSizeMap.md}rem`
+  };
+});
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
@@ -49,112 +79,32 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-const items = computed(() => transformTreeMenuItems(props.items ?? []));
+provideTreeMenuThemeContext(ui);
+provideTreeMenuExtraThemeContext(ui);
 
-const expandedKeys = useControllableState(
-  () => props.expanded,
-  value => {
-    emit('update:expanded', value ?? []);
-  },
-  props.defaultExpanded ?? []
-);
-
-const collapsed = useControllableState(
-  () => props.collapsed,
-  value => {
-    emit('update:collapsed', value ?? false);
-  },
-  props.defaultCollapsed
-);
-
-const style = computed<CSSProperties>(() => {
-  const collapsedWidth = props.collapsedWidth * themeSizeRatio[props.size || 'md'];
-
-  return {
-    [treeMenuCssVars.collapsedWidth]: `${collapsedWidth / themeSizeMap.md}rem`
-  };
-});
-
-const state = computed<TreeMenuState>(() => (collapsed.value ? 'collapsed' : 'expanded'));
-
-const size = computed(() => props.size ?? 'md');
-
-const onSelectDropdown = (
-  value: string,
-  actions: { select: (value: string) => void; toggle: (value: string) => void }
-) => {
-  actions.select(value);
-  actions.toggle(value);
-
-  emit('selectDropdown', value);
-};
-
-provideTreeMenuContext({
-  collapsed,
-  size
-});
-
-provideTreeMenuThemeContext({
-  ui
-});
-
-let backupExpanded: string[] | null = null;
-
-watch(collapsed, value => {
-  if (value) {
-    backupExpanded = [...(expandedKeys.value ?? [])];
-    expandedKeys.value = [];
-
-    return;
-  }
-
-  if (backupExpanded?.length) {
-    expandedKeys.value = [...backupExpanded];
-    backupExpanded = null;
-  }
-});
+provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
 </script>
 
 <template>
-  <TreeRoot
-    v-slot="{ flattenItems, select, toggle }"
-    v-bind="forwardedProps"
-    v-model:expanded="expandedKeys"
-    v-auto-animate
-    :items="items"
-    :class="ui.root"
-    :data-state="state"
-    :data-collapsed="collapsed ? '' : undefined"
-    :style="style"
-    v-on="listeners"
-  >
+  <TreeMenuRoot v-bind="forwardedProps" :style="style" v-on="listeners">
     <slot name="top" />
-    <template v-for="{ data, value, level } in flattenItems" :key="value">
-      <li v-if="isTreeMenuGroupOption(data)" :class="ui.groupLabel">
-        <slot name="group-label" :item="data">
-          <span>{{ data.label }}</span>
-        </slot>
-      </li>
-      <TreeMenuItem
-        v-else
-        v-bind="data"
-        :level="level"
-        :tooltip-props="tooltipProps"
-        :dropdown-menu-props="dropdownMenuProps"
-        :action-menu-props="actionMenuProps"
-        @select-dropdown="onSelectDropdown($event, { select, toggle })"
-      >
-        <template #default>
-          <slot name="item" :item="data" :level="level" />
+    <template v-for="item in items" :key="item.value">
+      <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)">
+        <TreeMenuGroupLabel>{{ item.label }}</TreeMenuGroupLabel>
+        <TreeMenuGroup>
+          <TreeMenuOption v-for="child in item.children" :key="child.value" :item="child">
+            <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
+              <slot :name="slotKey" v-bind="slotProps" />
+            </template>
+          </TreeMenuOption>
+        </TreeMenuGroup>
+      </TreeMenuGroupRoot>
+      <TreeMenuOption v-else :item="item">
+        <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
+          <slot :name="slotKey" v-bind="slotProps" />
         </template>
-        <template #leading>
-          <slot name="item-leading" :item="data" :level="level" />
-        </template>
-        <template #trailing>
-          <slot name="item-trailing" :item="data" :level="level" />
-        </template>
-      </TreeMenuItem>
+      </TreeMenuOption>
     </template>
     <slot name="bottom" />
-  </TreeRoot>
+  </TreeMenuRoot>
 </template>

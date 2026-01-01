@@ -41,7 +41,7 @@ export const components = {
   tag: ['STag'],
   toast: ['SToast', 'SToastAction', 'SToastClose'],
   tooltip: ['STooltip'],
-  treeMenu: ['STreeMenu', 'STreeMenuItemWrapper'],
+  treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],
   tree: ['STree', 'STreeVirtualizer'],
   virtualizer: ['SVirtualizer']
 };

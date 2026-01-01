@@ -11,7 +11,7 @@ import {
   SSelect,
   SSeparator,
   STreeMenu,
-  STreeMenuItemWrapper
+  STreeMenuStyledItem
 } from '@soybeanjs/ui';
 import type {
   BreadcrumbOptionData,
@@ -160,11 +160,11 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
                 @select="setActiveFramework"
               >
                 <template #trigger>
-                  <STreeMenuItemWrapper class="truncate font-medium">
+                  <STreeMenuStyledItem>
                     <SIcon :icon="activeFramework.icon" class="text-primary" />
-                    <span>{{ activeFramework.label }}</span>
+                    <span class="truncate font-medium">{{ activeFramework.label }}</span>
                     <SIcon icon="lucide:chevrons-up-down" class="ml-auto" />
-                  </STreeMenuItemWrapper>
+                  </STreeMenuStyledItem>
                 </template>
               </SDropdownMenu>
             </template>
