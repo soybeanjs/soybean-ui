@@ -29,6 +29,7 @@ const forwardedRootProps = useOmitProps(props, [
   'size',
   'ui',
   'disabled',
+  'placement',
   'showArrow',
   'triggerProps',
   'portalProps',
@@ -43,6 +44,7 @@ const contentProps = computed(() => {
   return {
     ...props.contentProps,
     popupProps: props.popupProps ?? props.contentProps?.popupProps,
+    placement: props.placement ?? props.contentProps?.placement,
     sideOffset: props.contentProps?.sideOffset ?? (props.showArrow ? 0 : 8)
   };
 });

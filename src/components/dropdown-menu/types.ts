@@ -8,7 +8,8 @@ import type {
   DropdownMenuPortalProps,
   DropdownMenuRootEmits,
   DropdownMenuRootProps,
-  DropdownMenuTriggerProps
+  DropdownMenuTriggerProps,
+  Placement
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type {
@@ -29,6 +30,7 @@ export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
   size?: ThemeSize;
   ui?: Partial<MenuExtendedUi>;
   disabled?: boolean;
+  placement?: Placement;
   showArrow?: boolean;
   triggerProps?: DropdownMenuTriggerProps;
   portalProps?: DropdownMenuPortalProps;
