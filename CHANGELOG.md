@@ -1,6 +1,24 @@
 # Changelog
 
 
+## [v0.0.9](https://github.com/soybeanjs/soybean-ui/compare/v0.0.8...v0.0.9) (2026-01-02)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **badge**: integrate useAttrs for enhanced class merging in mergeSlotVariants &nbsp;-&nbsp; by @soybeanjs [<samp>(1b456)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1b456e6a)
+- **collapse**: add disabledCollapsible prop to prevent toggling and update click handler &nbsp;-&nbsp; by @soybeanjs [<samp>(ac19e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ac19e8c9)
+- **dropdown-menu**: add placement prop to DropdownMenuWrapper and DropdownMenu components &nbsp;-&nbsp; by @soybeanjs [<samp>(04e0b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/04e0bf29)
+- **link**: extend LinkProps to include LinkBaseProps and LinkExtraProps, and set default rel attribute &nbsp;-&nbsp; by @soybeanjs [<samp>(7b3f1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7b3f1596)
+- **theme**: enhance mergeSlotVariants function to include root class merging &nbsp;-&nbsp; by @soybeanjs [<samp>(81dff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/81dff657)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **tree-menu**: implement TreeMenu headless component with enhanced structure and styling, including new TreeMenuOption and TreeMenuGroup components &nbsp;-&nbsp; by @soybeanjs [<samp>(21708)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2170869a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.8](https://github.com/soybeanjs/soybean-ui/compare/v0.0.7...v0.0.8) (2026-01-01)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
