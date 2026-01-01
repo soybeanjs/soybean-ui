@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, useAttrs } from 'vue';
 import { BadgeContent, BadgeRoot, provideBadgeThemeContext } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
 import { badgeVariants } from '@/variants/badge';
@@ -15,6 +15,8 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 
 const emit = defineEmits<BadgeEmits>();
 
+const attrs = useAttrs();
+
 const ui = computed(() => {
   const variants = badgeVariants({
     color: props.color,
@@ -22,7 +24,7 @@ const ui = computed(() => {
     position: props.position
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, attrs.class);
 });
 
 provideBadgeThemeContext({
