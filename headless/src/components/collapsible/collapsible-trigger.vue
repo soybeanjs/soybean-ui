@@ -20,6 +20,11 @@ const themeContext = useCollapsibleThemeContext();
 const cls = computed(() => themeContext?.ui?.value?.trigger);
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const onTriggerClick = () => {
+  if (props.disabledCollapsible) return;
+  onOpenToggle();
+};
 </script>
 
 <template>
@@ -33,7 +38,7 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :disabled="disabled"
-    @click="onOpenToggle"
+    @click="onTriggerClick"
   >
     <slot />
   </Primitive>

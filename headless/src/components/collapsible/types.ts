@@ -24,7 +24,10 @@ export type CollapsibleRootEmits = {
 
 export interface CollapsibleContentProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface CollapsibleTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+  /** When `true`, prevents the user from toggling the collapsible. */
+  disabledCollapsible?: boolean;
+}
 
 export interface CollapsibleRootContextParams extends PropsToContext<
   CollapsibleRootProps,
