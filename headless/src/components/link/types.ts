@@ -29,6 +29,8 @@ export interface LinkProps extends PrimitiveProps, Omit<RouterLinkProps, 'to'>, 
   target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null;
   /**
    * A rel attribute value to apply on the link. Defaults to "noopener noreferrer" for external links.
+   *
+   * @default 'noopener noreferrer'
    */
   rel?: 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | (string & {}) | null;
   /**
@@ -63,3 +65,9 @@ export interface LinkProps extends PrimitiveProps, Omit<RouterLinkProps, 'to'>, 
    */
   trailingSlash?: 'append' | 'remove';
 }
+
+export type LinkBasePropsKey = Extract<keyof LinkProps, 'to' | 'href' | 'external' | 'target'>;
+
+export interface LinkBaseProps extends Pick<LinkProps, LinkBasePropsKey> {}
+
+export interface LinkExtraProps extends Omit<LinkProps, LinkBasePropsKey> {}

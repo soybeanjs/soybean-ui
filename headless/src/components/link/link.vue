@@ -17,7 +17,8 @@ const props = withDefaults(defineProps<LinkProps>(), {
   noRel: undefined,
   viewTransition: undefined,
   replace: undefined,
-  disabled: undefined
+  disabled: undefined,
+  rel: 'noopener noreferrer'
 });
 
 const attrs = useAttrs();
