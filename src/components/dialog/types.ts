@@ -20,7 +20,9 @@ import type { ThemeColor, ThemeSize } from '@/theme';
 
 export type DialogExtraUiSlot = 'closable';
 
-export type DialogExtendedUi = UiClass<DialogUiSlot | DialogExtraUiSlot>;
+export type DialogExtendedUiSlot = DialogUiSlot | DialogExtraUiSlot;
+
+export type DialogExtendedUi = UiClass<DialogExtendedUiSlot>;
 
 export interface DialogProps extends DialogRootProps {
   size?: ThemeSize;

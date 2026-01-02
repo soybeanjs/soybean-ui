@@ -13,7 +13,7 @@ import {
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext, themeSizeMap, themeSizeRatio } from '@/theme';
 import { layoutVariants } from '@/variants/layout';
-import { drawerContentVariants } from '@/variants/drawer';
+import { drawerVariants } from '@/variants/drawer';
 import type { LayoutEmits, LayoutProps } from './types';
 
 defineOptions({
@@ -57,14 +57,19 @@ const ui = computed(() => {
     collapsible: props.collapsible
   });
 
-  const drawer = drawerContentVariants({
+  const drawer = drawerVariants({
     size: props.size,
     side: props.side
   });
 
-  variants.mobileDrawer = () => drawer;
-
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeSlotVariants(
+    {
+      ...variants,
+      mobileDrawer: drawer.content
+    },
+    props.ui,
+    { root: props.class }
+  );
 });
 
 provideLayoutUi(ui);
