@@ -11,7 +11,7 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
-  provideDialogThemeContext
+  provideDialogUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
@@ -60,9 +60,7 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-provideDialogThemeContext({
-  ui
-});
+provideDialogUi(ui);
 
 provideSizeContext(() => props.size);
 </script>

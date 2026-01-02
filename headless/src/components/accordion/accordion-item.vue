@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CollapsibleRoot } from '../collapsible';
 import { useArrowNavigation, useOmitProps } from '../../composables';
 import { getCollectionItemElements, getOpenFromSingleOrMultiple, transformPropsToContext } from '../../shared';
-import { provideAccordionItemContext, useAccordionRootContext, useAccordionThemeContext } from './context';
+import { provideAccordionItemContext, useAccordionRootContext } from './context';
 import type { AccordionItemProps } from './types';
 
 defineOptions({
@@ -12,11 +12,7 @@ defineOptions({
 
 const props = defineProps<AccordionItemProps>();
 
-const themeContext = useAccordionThemeContext();
-
 const forwardedProps = useOmitProps(props, ['value']);
-
-const cls = computed(() => themeContext?.ui?.value?.item);
 
 const {
   modelValue,
@@ -61,7 +57,6 @@ defineExpose({
 <template>
   <CollapsibleRoot
     v-bind="forwardedProps"
-    :class="cls"
     :open="open"
     :disabled="disabled"
     :unmount-on-hide="unmountOnHide"

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { watch } from 'vue';
 import { useImageLoadingStatus } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { useAvatarRootContext, useAvatarThemeContext } from './context';
+import { useAvatarRootContext, useAvatarUi } from './context';
 import type { AvatarImageEmits, AvatarImageProps } from './types';
 
 defineOptions({
@@ -13,9 +13,7 @@ const props = defineProps<AvatarImageProps>();
 
 const emit = defineEmits<AvatarImageEmits>();
 
-const themeContext = useAvatarThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.image);
+const cls = useAvatarUi('image');
 
 const { updateImageLoadingStatus } = useAvatarRootContext('AvatarImage');
 

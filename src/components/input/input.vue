@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputControl, InputRoot, provideInputThemeContext } from '@soybeanjs/headless';
+import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { inputVariants } from '@/variants/input';
@@ -17,19 +17,17 @@ const emit = defineEmits<InputEmits>();
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
-const forwardedProps = useOmitProps(props, ['inputRef', 'size', 'ui', 'controlProps', 'clearable']);
+const forwardedProps = useOmitProps(props, ['class', 'inputRef', 'size', 'ui', 'controlProps', 'clearable']);
 
 const ui = computed(() => {
   const variants = inputVariants({
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideInputThemeContext({
-  ui
-});
+provideInputUi(ui);
 </script>
 
 <template>

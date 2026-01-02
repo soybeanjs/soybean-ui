@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { provideSelectGroupContext, useSelectThemeContext } from './context';
+import { provideSelectGroupContext, useSelectUi } from './context';
 import type { SelectGroupProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<SelectGroupProps>();
 
 const { labelId, initLabelId } = provideSelectGroupContext();
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.group);
+const cls = useSelectUi('group');
 
 initLabelId();
 </script>

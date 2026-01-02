@@ -5,18 +5,23 @@ import type {
   AlertRootEmits,
   AlertRootProps,
   AlertTitleProps,
-  AlertUi,
-  ClassValue
+  AlertUiSlot,
+  ClassValue,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { AlertVariant } from '@/variants/alert';
 import type { IconValue } from '../icon/types';
 
-type AlertExtraThemeSlot = 'icon';
+type AlertExtraUiSlot = 'icon';
 
-export type AlertExtendedUi = AlertUi & Record<AlertExtraThemeSlot, ClassValue>;
+export type AlertExtendedUi = UiClass<AlertUiSlot | AlertExtraUiSlot>;
 
 export interface AlertProps extends AlertRootProps {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   color?: ThemeColor;
   variant?: AlertVariant;

@@ -8,7 +8,7 @@ import {
   PopoverPositioner,
   PopoverRoot,
   PopoverTrigger,
-  providePopoverThemeContext
+  providePopoverUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -37,7 +37,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
 const positionerProps = computed(() => {
@@ -47,9 +47,7 @@ const positionerProps = computed(() => {
   };
 });
 
-providePopoverThemeContext({
-  ui
-});
+providePopoverUi(ui);
 </script>
 
 <template>

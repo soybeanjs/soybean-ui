@@ -4,7 +4,7 @@ export { default as ListContent } from './list-content.vue';
 export { default as ListTitle } from './list-title.vue';
 export { default as ListDescription } from './list-description.vue';
 
-export { provideListThemeContext } from './context';
+export { provideListUi } from './context';
 
 export type {
   ListRootProps,
@@ -12,6 +12,6 @@ export type {
   ListContentProps,
   ListTitleProps,
   ListDescriptionProps,
-  ListThemeSlot,
+  ListUiSlot,
   ListUi
 } from './types';

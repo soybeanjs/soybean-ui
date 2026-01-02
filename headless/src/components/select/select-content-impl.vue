@@ -18,7 +18,7 @@ import {
   useCollectionContext,
   useSelectPopupElementContext,
   useSelectRootContext,
-  useSelectThemeContext
+  useSelectUi
 } from './context';
 import { CONTENT_MARGIN } from './shared';
 import SelectPopperPopup from './select-popper-popup.vue';
@@ -40,10 +40,10 @@ const props = withDefaults(defineProps<SelectContentImplProps>(), {
 
 const emit = defineEmits<SelectContentImplEmits>();
 
-const themeContext = useSelectThemeContext();
+const ui = useSelectUi();
 
-const cls = computed(() => themeContext?.ui?.value?.positioner);
-const popupCls = computed(() => themeContext?.ui?.value?.popup);
+const cls = computed(() => ui.value?.positioner);
+const popupCls = computed(() => ui.value?.popup);
 
 const {
   onOpenChange,

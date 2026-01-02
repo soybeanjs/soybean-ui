@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useAlertRootContext, useAlertThemeContext } from './context';
+import { useAlertRootContext, useAlertUi } from './context';
 import type { AlertCloseProps } from './types';
 
 defineOptions({
@@ -12,9 +12,7 @@ const props = defineProps<AlertCloseProps>();
 
 const { onOpenChange } = useAlertRootContext('AlertClose');
 
-const themeContext = useAlertThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.closable);
+const cls = useAlertUi('close');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>

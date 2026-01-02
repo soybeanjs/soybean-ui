@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useSwitchRootContext, useSwitchThemeContext } from './context';
+import { useSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchThumbProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ withDefaults(defineProps<SwitchThumbProps>(), {
 
 const { dataState, dataDisabled } = useSwitchRootContext('SwitchThumb');
 
-const themeContext = useSwitchThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.thumb);
+const cls = useSwitchUi('thumb');
 </script>
 
 <template>

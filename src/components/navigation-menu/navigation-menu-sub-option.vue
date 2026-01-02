@@ -2,7 +2,7 @@
 import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless';
 import Icon from '../icon/icon.vue';
 import SNavigationMenuItemSlot from './navigation-menu-item-slot.vue';
-import { useNavigationMenuExtraThemeContext } from './context';
+import { useNavigationMenuExtraUi } from './context';
 import { useCommonSlotKeys } from './shared';
 import type { NavigationMenuOptionData, NavigationMenuSubOptionEmits, NavigationMenuSubOptionProps } from './types';
 
@@ -26,7 +26,7 @@ const slots = defineSlots<Slots>();
 
 const commonSlotKeys = useCommonSlotKeys(slots);
 
-const { ui } = useNavigationMenuExtraThemeContext('NavigationMenuSubOption');
+const ui = useNavigationMenuExtraUi();
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, HorizontalSide, PropsToContext } from '../../types';
+import type { HorizontalSide, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type LayoutVariant = 'sidebar' | 'floating' | 'inset';
@@ -94,7 +94,7 @@ export interface LayoutRootContextParams extends PropsToContext<
   sidebarState: ComputedRef<LayoutSidebarState>;
 }
 
-export type LayoutThemeSlot =
+export type LayoutUiSlot =
   | 'root'
   | 'sidebar'
   | 'sidebarRoot'
@@ -110,8 +110,4 @@ export type LayoutThemeSlot =
   | 'mobileDrawer'
   | 'mobileOverlay';
 
-export type LayoutUi = Record<LayoutThemeSlot, ClassValue>;
-
-export interface LayoutThemeContextParams {
-  ui: ComputedRef<LayoutUi>;
-}
+export type LayoutUi = UiClass<LayoutUiSlot>;

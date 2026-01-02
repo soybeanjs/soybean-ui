@@ -5,7 +5,7 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot,
-  provideCheckboxThemeContext
+  provideCheckboxUi
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -47,9 +47,7 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-provideCheckboxThemeContext({
-  ui
-});
+provideCheckboxUi(ui);
 </script>
 
 <template>

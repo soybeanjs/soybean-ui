@@ -4,13 +4,13 @@ export { default as PopperPositioner } from './popper-positioner.vue';
 export { default as PopperPopup } from './popper-popup.vue';
 export { default as PopperArrow } from './popper-arrow.vue';
 
-export { providePopperThemeContext as providePopoverThemeContext } from '../popper/context';
+export { providePopperUi } from '../popper/context';
 
 export type {
   PopperAnchorProps,
   PopperPositionerProps,
   PopperPopupProps,
   PopperArrowProps,
-  PopperThemeSlot,
+  PopperUiSlot,
   PopperUi
 } from './types';

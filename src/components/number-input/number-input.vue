@@ -5,7 +5,7 @@ import {
   NumberInputDecrement,
   NumberInputIncrement,
   NumberInputRoot,
-  provideNumberInputThemeContext
+  provideNumberInputUi
 } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -24,6 +24,7 @@ const emit = defineEmits<NumberInputEmits>();
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'center',
@@ -40,12 +41,10 @@ const ui = computed(() => {
     center: props.center
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideNumberInputThemeContext({
-  ui
-});
+provideNumberInputUi(ui);
 </script>
 
 <template>

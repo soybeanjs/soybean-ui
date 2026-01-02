@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePaginationRootContext, usePaginationThemeContext } from './context';
+import { usePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationButtonProps } from './types';
 
 defineOptions({
@@ -11,9 +11,7 @@ defineProps<PaginationButtonProps>();
 
 const { page, onPageChange, pageCount, disabled } = usePaginationRootContext('PaginationNext');
 
-const themeContext = usePaginationThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.next);
+const cls = usePaginationUi('next');
 
 const isDisabled = computed(() => disabled.value || page.value === pageCount.value);
 

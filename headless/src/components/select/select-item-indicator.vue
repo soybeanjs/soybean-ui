@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useSelectItemContext, useSelectThemeContext } from './context';
+import { useSelectItemContext, useSelectUi } from './context';
 import type { SelectItemIndicatorProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ withDefaults(defineProps<SelectItemIndicatorProps>(), {
 
 const { isSelected } = useSelectItemContext('SelectItemIndicator');
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
+const cls = useSelectUi('itemIndicator');
 </script>
 
 <template>

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { provideNumberInputRootContext, useNumberInputThemeContext } from './context';
+import { provideNumberInputRootContext, useNumberInputUi } from './context';
 import type { NumberInputRootEmits, NumberInputRootProps } from './types';
 
 defineOptions({
@@ -20,9 +20,7 @@ const emit = defineEmits<NumberInputRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const themeContext = useNumberInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useNumberInputUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,

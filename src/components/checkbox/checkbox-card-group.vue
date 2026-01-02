@@ -24,6 +24,7 @@ const props = defineProps<CheckboxCardGroupProps<T, S>>();
 const emit = defineEmits<CheckboxCardGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'ui',
   'color',
   'size',
@@ -38,7 +39,7 @@ const forwardedProps = useOmitProps(props, [
 const ui = computed(() => {
   const variants = checkboxCardVariants();
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { groupRoot: props.class });
 });
 </script>
 

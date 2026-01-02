@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useSelectContentContext, useSelectItemContext, useSelectRootContext, useSelectThemeContext } from './context';
+import { useSelectContentContext, useSelectItemContext, useSelectRootContext, useSelectUi } from './context';
 import type { SelectItemTextProps } from './types';
 
 defineOptions({
@@ -19,9 +19,7 @@ const [itemTextElement, setItemTextElement] = useForwardElement(node => {
   onSelectedItemTextElementChange(node, value, disabled.value ?? false);
 });
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.itemText);
+const cls = useSelectUi('itemText');
 
 const optionProps = computed(() => {
   return {

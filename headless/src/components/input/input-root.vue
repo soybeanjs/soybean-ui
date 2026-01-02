@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { provideInputRootContext, useInputThemeContext } from './context';
+import { provideInputRootContext, useInputUi } from './context';
 import type { InputRootEmits, InputRootProps } from './types';
 
 defineOptions({
@@ -18,9 +18,7 @@ const emit = defineEmits<InputRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const themeContext = useInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useInputUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -62,10 +60,10 @@ provideInputRootContext({
     <slot :model-value="modelValue" :clear="onClear" />
 
     <VisuallyHiddenInput
-      v-if="formControl && name"
+      v-if="formControl && props.name"
       type="text"
       :value="modelValue"
-      :name="name"
+      :name="props.name"
       :disabled="disabled"
       :readonly="readonly"
       :required="required"

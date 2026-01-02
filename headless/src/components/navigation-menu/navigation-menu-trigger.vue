@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { useAttrs } from 'vue';
 import { refAutoReset } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import { isMouseEvent, isNullish } from '../../shared';
@@ -9,7 +9,7 @@ import {
   useCollectionItem,
   useNavigationMenuItemContext,
   useNavigationMenuRootContext,
-  useNavigationMenuThemeContext
+  useNavigationMenuUi
 } from './context';
 import type { NavigationMenuTriggerProps } from './types';
 
@@ -47,9 +47,7 @@ const {
   onFocusProxyEnter
 } = useNavigationMenuItemContext('NavigationMenuTrigger');
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const cls = useNavigationMenuUi('trigger');
 
 const { itemProps, onItemElementChange } = useCollectionItem();
 const [triggerElement, setTriggerElement] = useForwardElement(el => {

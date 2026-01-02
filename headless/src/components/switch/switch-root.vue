@@ -4,7 +4,7 @@ import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideSwitchRootContext, useSwitchThemeContext } from './context';
+import { provideSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchRootEmits, SwitchRootProps } from './types';
 
 defineOptions({
@@ -22,9 +22,7 @@ const emit = defineEmits<SwitchRootEmits<T>>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const themeContext = useSwitchThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useSwitchUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,

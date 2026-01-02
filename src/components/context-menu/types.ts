@@ -1,5 +1,6 @@
 import type {
   AcceptableBooleanValue,
+  ClassValue,
   ContextMenuArrowProps,
   ContextMenuContentEmits,
   ContextMenuContentProps,
@@ -26,6 +27,10 @@ import type {
 
 // Menu Wrapper
 export interface ContextMenuWrapperProps extends ContextMenuRootProps {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<MenuExtendedUi>;
   disabled?: boolean;
@@ -44,7 +49,12 @@ export interface ContextMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
 >
-  extends ContextMenuWrapperProps, MenuOptionsProps<T, S> {}
+  extends ContextMenuWrapperProps, MenuOptionsProps<T, S> {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
+}
 export type ContextMenuEmits<T extends MenuOptionData = MenuOptionData> = ContextMenuWrapperEmits & MenuOptionsEmits<T>;
 
 // Menu Checkbox
@@ -52,7 +62,12 @@ export interface ContextMenuCheckboxProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
 >
-  extends ContextMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {}
+  extends ContextMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
+}
 
 export type ContextMenuCheckboxEmits<
   T extends DefinedValue = DefinedValue,
@@ -64,7 +79,12 @@ export interface ContextMenuRadioProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 >
-  extends ContextMenuWrapperProps, MenuRadioOptionsProps<T, S> {}
+  extends ContextMenuWrapperProps, MenuRadioOptionsProps<T, S> {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
+}
 
 export type ContextMenuRadioEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,

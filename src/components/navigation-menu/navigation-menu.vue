@@ -5,13 +5,13 @@ import {
   NavigationMenuList,
   NavigationMenuRoot,
   NavigationMenuViewport,
-  provideNavigationMenuThemeContext
+  provideNavigationMenuUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { navigationMenuVariants } from '@/variants/navigation-menu';
 import NavigationMenuOption from './navigation-menu-option.vue';
-import { provideNavigationMenuExtraThemeContext } from './context';
+import { provideNavigationMenuExtraUi } from './context';
 import type { NavigationMenuEmits, NavigationMenuOptionData, NavigationMenuProps } from './types';
 
 defineOptions({
@@ -44,7 +44,7 @@ const optionPropKeys = [
   'subItemProps'
 ] as const;
 
-const forwardedRootProps = useOmitProps(props, ['size', 'ui', 'items', ...optionPropKeys]);
+const forwardedRootProps = useOmitProps(props, ['class', 'size', 'ui', 'items', ...optionPropKeys]);
 
 const forwardedOptionProps = usePickProps(props, [...optionPropKeys]);
 
@@ -57,16 +57,11 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideNavigationMenuThemeContext({
-  ui
-});
-
-provideNavigationMenuExtraThemeContext({
-  ui
-});
+provideNavigationMenuUi(ui);
+provideNavigationMenuExtraUi(ui);
 </script>
 
 <template>

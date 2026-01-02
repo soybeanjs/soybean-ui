@@ -7,7 +7,7 @@ export { default as PaginationPrev } from './pagination-prev.vue';
 export { default as PaginationNext } from './pagination-next.vue';
 export { default as PaginationLast } from './pagination-last.vue';
 
-export { providePaginationThemeContext } from './context';
+export { providePaginationUi } from './context';
 
 export type {
   PaginationRootProps,
@@ -16,6 +16,6 @@ export type {
   PaginationListItemProps,
   PaginationEllipsisProps,
   PaginationButtonProps,
-  PaginationThemeSlot,
+  PaginationUiSlot,
   PaginationUi
 } from './types';

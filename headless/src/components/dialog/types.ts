@@ -1,13 +1,13 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref } from 'vue';
+import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
 import type {
-  ClassValue,
   DismissableLayerEmits,
   DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
   MaybePromise,
   PropsToContext,
-  TrapFocusProps
+  TrapFocusProps,
+  UiClass
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
@@ -69,10 +69,6 @@ export interface DialogRootContextParams extends PropsToContext<DialogRootProps,
   open: Ref<boolean | undefined>;
 }
 
-export type DialogThemeSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description';
+export type DialogUiSlot = 'overlay' | 'header' | 'content' | 'footer' | 'title' | 'description';
 
-export type DialogUi = Record<DialogThemeSlot, ClassValue>;
-
-export interface DialogThemeContextParams {
-  ui: ComputedRef<DialogUi>;
-}
+export type DialogUi = UiClass<DialogUiSlot>;

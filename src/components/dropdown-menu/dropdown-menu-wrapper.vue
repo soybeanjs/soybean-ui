@@ -6,12 +6,12 @@ import {
   DropdownMenuPortal,
   DropdownMenuRoot,
   DropdownMenuTrigger,
-  provideMenuThemeContext
+  provideMenuUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { menuVariants } from '@/variants/menu';
-import { provideMenuExtraThemeContext } from '../menu/context';
+import { provideMenuExtraUi } from '../menu/context';
 import type { DropdownMenuWrapperEmits, DropdownMenuWrapperProps } from './types';
 
 defineOptions({
@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<DropdownMenuWrapperProps>(), {
 const emit = defineEmits<DropdownMenuWrapperEmits>();
 
 const forwardedRootProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'disabled',
@@ -54,15 +55,11 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
-provideMenuThemeContext({
-  ui
-});
-provideMenuExtraThemeContext({
-  ui
-});
+provideMenuUi(ui);
+provideMenuExtraUi(ui);
 </script>
 
 <template>

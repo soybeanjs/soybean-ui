@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { FormDescription, FormError, FormField, FormLabel, Slot, provideFormThemeContext } from '@soybeanjs/headless';
+import { FormDescription, FormError, FormField, FormLabel, Slot, provideFormFieldUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { useField } from '@soybeanjs/headless/forms';
 import { vAutoAnimate } from '@formkit/auto-animate';
@@ -18,6 +18,7 @@ const props = defineProps<FormFieldProps>();
 const slots = useSlots();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'label',
@@ -39,16 +40,14 @@ const ui = computed(() => {
     error: Boolean(error.value)
   });
 
-  return mergeSlotVariants(variants, { ...formContext.ui.value, ...props.ui });
-});
-
-provideFormThemeContext({
-  ui
+  return mergeSlotVariants(variants, formContext.ui.value, props.ui, { field: props.class });
 });
 
 const labelProps = computed(() => ({ ...formContext.labelProps.value, ...props.labelProps }));
 const descriptionProps = computed(() => ({ ...formContext.descriptionProps.value, ...props.descriptionProps }));
 const errorProps = computed(() => ({ ...formContext.errorProps.value, ...props.errorProps }));
+
+provideFormFieldUi(ui);
 </script>
 
 <template>

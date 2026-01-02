@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { isIndeterminate } from '../../shared';
 import { Primitive } from '../primitive';
-import { useMenuItemIndicatorContext, useMenuThemeContext } from './context';
+import { useMenuItemIndicatorContext, useMenuUi } from './context';
 import type { MenuItemIndicatorProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const props = withDefaults(defineProps<MenuItemIndicatorProps>(), {
   as: 'span'
 });
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
+const cls = useMenuUi('itemIndicator');
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 

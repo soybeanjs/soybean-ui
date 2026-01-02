@@ -1,9 +1,9 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useContext, useDirection } from '../../composables';
+import { useContext, useDirection, useUiContext } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
-import { providePopperThemeContext } from '../popper/context';
-import { provideSeparatorThemeContext } from '../separator/context';
+import { providePopperUi } from '../popper/context';
+import { provideSeparatorUi } from '../separator/context';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
@@ -11,7 +11,7 @@ import type {
   MenuItemIndicatorContextParams,
   MenuRadioGroupContextParams,
   MenuRootContextParams,
-  MenuThemeContextParams
+  MenuUiSlot
 } from './types';
 
 export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: MenuContextParams) => {
@@ -167,19 +167,12 @@ export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] = us
   (params: MenuItemIndicatorContextParams) => params
 );
 
-export const [provideMenuThemeContext, useMenuThemeContext] = useContext(
-  'MenuTheme',
-  (params: MenuThemeContextParams) => {
-    const popperUi = computed(() => ({ arrow: params.ui.value.arrow }));
-    providePopperThemeContext({
-      ui: popperUi
-    });
+export const [provideMenuUi, useMenuUi] = useUiContext<MenuUiSlot>('MenuUi', ui => {
+  const popperUi = computed(() => ({ arrow: ui.value?.arrow }));
+  providePopperUi(popperUi);
 
-    const separatorUi = computed(() => ({ root: params.ui.value.separator }));
-    provideSeparatorThemeContext({
-      ui: separatorUi
-    });
+  const separatorUi = computed(() => ({ root: ui.value?.separator }));
+  provideSeparatorUi(separatorUi);
 
-    return params;
-  }
-);
+  return ui;
+});

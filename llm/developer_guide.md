@@ -103,17 +103,12 @@ export interface {ComponentName}ItemContextParams {
   // ...
 }
 
-// 4. Theme Slots (关键)
+// 4. Ui Slots (关键)
 // 定义组件中所有需要样式的部分
-export type {ComponentName}ThemeSlot = 'root' | 'trigger' | 'content' | 'item';
+export type {ComponentName}UiSlot = 'root' | 'trigger' | 'content' | 'item';
 
 // 5. UI 类型
-export type {ComponentName}Ui = Record<{ComponentName}ThemeSlot, ClassValue>;
-
-// 6. Theme Context
-export interface {ComponentName}ThemeContextParams {
-  ui: ComputedRef<{ComponentName}Ui>;
-}
+export type {ComponentName}Ui = Record<{ComponentName}UiSlot, ClassValue>;
 ```
 
 #### 2. 定义上下文 (`context.ts`)
@@ -122,10 +117,10 @@ export interface {ComponentName}ThemeContextParams {
 
 ```typescript
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { useContext, useUiContext, useForwardElement } from '../../composables';
 import type {
   {ComponentName}RootContextParams,
-  {ComponentName}ThemeContextParams
+  {ComponentName}UiSlot
 } from './types';
 
 // Root Context
@@ -137,11 +132,8 @@ export const [provide{ComponentName}RootContext, use{ComponentName}RootContext] 
   }
 );
 
-// Theme Context (必须)
-export const [provide{ComponentName}ThemeContext, use{ComponentName}ThemeContext] = useContext(
-  '{ComponentName}Theme',
-  (params: {ComponentName}ThemeContextParams) => params
-);
+// Ui Context (必须)
+export const [provide{ComponentName}Ui, use{ComponentName}Ui] = useUiContext<{ComponentName}UiSlot>('{ComponentName}Ui');
 ```
 
 #### 3: 实现组件 (`{component}-root.vue`, `{component}-item.vue`)
@@ -152,7 +144,7 @@ export const [provide{ComponentName}ThemeContext, use{ComponentName}ThemeContext
 
 - 使用 `defineOptions({ name: '{ComponentName}Root' })`。
 - **不要**写 `<style>`。
-- 使用 `use{ComponentName}ThemeContext` 获取样式并应用 `ui.root`。
+- 使用 `use{ComponentName}Ui` 获取样式并应用。
 - 使用 `transformPropsToContext` 传递 Props。
 
 **Root 组件示例**:
@@ -161,7 +153,7 @@ export const [provide{ComponentName}ThemeContext, use{ComponentName}ThemeContext
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { transformPropsToContext } from '../../shared';
-import { provide{ComponentName}RootContext, use{ComponentName}ThemeContext } from './context';
+import { provide{ComponentName}RootContext, use{ComponentName}Ui } from './context';
 import type { {ComponentName}RootProps, {ComponentName}RootEmits } from './types';
 
 defineOptions({
@@ -175,8 +167,7 @@ const props = withDefaults(defineProps<{ComponentName}RootProps>(), {
 const emit = defineEmits<{ComponentName}RootEmits>();
 
 // 1. 获取样式
-const themeContext = use{ComponentName}ThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = use{ComponentName}Ui('root');
 
 // 2. 元素引用
 const rootElement = shallowRef<HTMLElement>();
@@ -202,17 +193,16 @@ provide{ComponentName}RootContext({
 ```vue
 <script setup lang="ts">
 import { computed } from 'vue';
-import { use{ComponentName}RootContext, use{ComponentName}ThemeContext } from './context';
+import { use{ComponentName}RootContext, use{ComponentName}Ui } from './context';
 
 defineOptions({
   name: '{ComponentName}Item'
 });
 
 const rootContext = use{ComponentName}RootContext();
-const themeContext = use{ComponentName}ThemeContext();
 
 // 获取对应 Slot 的样式
-const cls = computed(() => themeContext?.ui?.value?.item);
+const cls = use{ComponentName}Ui('item');
 </script>
 
 <template>
@@ -230,8 +220,8 @@ export { default as {ComponentName}Item } from './{component}-item.vue';
 export {
   provide{ComponentName}RootContext,
   use{ComponentName}RootContext,
-  provide{ComponentName}ThemeContext,
-  use{ComponentName}ThemeContext
+  provide{ComponentName}Ui,
+  use{ComponentName}Ui
 } from './context';
 export * from './types';
 ```
@@ -249,7 +239,7 @@ export * from './types';
 import { tv } from 'tailwind-variants';
 
 export const {componentName}Variants = tv({
-  // 这里的 key 必须与 Headless types.ts 中的 ThemeSlot 一致
+  // 这里的 key 必须与 Headless types.ts 中的 UiSlot 一致
   slots: {
     root: 'base-styles...',
     item: '...',
@@ -302,7 +292,7 @@ export type {ComponentName}Emits = {ComponentName}RootEmits;
 - 组件名以 `S` 开头 (e.g., `SButton`)。
 - 使用 `useOmitProps` 分离 UI Props 和 Headless Props。
 - 使用 `useForwardListeners` 转发事件。
-- 使用 `provide{ComponentName}ThemeContext` 注入计算好的样式。
+- 使用 `provide{ComponentName}Ui` 注入计算好的样式。
 
 ```vue
 <script setup lang="ts">
@@ -310,7 +300,7 @@ import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import {
   {ComponentName}Root,
-  provide{ComponentName}ThemeContext
+  provide{ComponentName}Ui
 } from '@soybeanjs/headless';
 import { {componentName}Variants } from '@/variants/{component}';
 import { mergeSlotVariants } from '@/theme';
@@ -340,7 +330,7 @@ const ui = computed(() => {
 });
 
 // 4. 提供样式 Context
-provide{ComponentName}ThemeContext({ ui });
+provide{ComponentName}Ui(ui);
 </script>
 
 <template>
@@ -374,15 +364,15 @@ export * from './types';
 
 ## 关键注意事项
 
-1.  **Headless**: `types.ts` 定义了 `ThemeSlot` 和 `Ui` 类型？
-2.  **Headless**: `context.ts` 导出了 `ThemeContext`？
+1.  **Headless**: `types.ts` 定义了 `UiSlot` 和 `Ui` 类型？
+2.  **Headless**: `context.ts` 导出了 `UiContext`？
 3.  **Props 透传**: 使用 `useOmitProps` 确保 UI 特有的 Props (如 `size`, `variant`) 不会被透传到 DOM 节点上导致 HTML 属性污染。
 4.  **事件转发**: 使用 `useForwardListeners` 确保组件上的事件监听器能正确绑定到 Headless 组件内部的元素上。
-5.  **Slot 一致性**: `headless/**/types.ts` 中的 `ThemeSlot` 定义必须与 `src/variants/**.ts` 中的 `slots` 键名完全一致。
-6.  **Headless**: 组件内部使用了 `use{ComponentName}ThemeContext` 获取样式？
-7.  **UI**: `variants` 定义了所有 `ThemeSlot`？
+5.  **Slot 一致性**: `headless/**/types.ts` 中的 `UiSlot` 定义必须与 `src/variants/**.ts` 中的 `slots` 键名完全一致。
+6.  **Headless**: 组件内部使用了 `use{ComponentName}Ui` 获取样式？
+7.  **UI**: `variants` 定义了所有 `UiSlot`？
 8.  **UI**: 组件使用了 `useOmitProps` 过滤 UI 属性？
-9.  **UI**: 组件提供了 `ThemeContext`？
+9.  **UI**: 组件提供了 `UiContext`？
 10. **命名规范**:
     - Headless 组件: `{ComponentName}Root`, `{ComponentName}Item`
     - UI 组件: `S{ComponentName}` (S 前缀)

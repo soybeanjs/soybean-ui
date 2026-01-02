@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
+import { onWatcherCleanup, shallowRef, watchEffect } from 'vue';
 import { useForwardElement } from '../../composables';
-import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectThemeContext } from './context';
+import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectUi } from './context';
 import SelectScrollButtonImpl from './select-scroll-button-impl.vue';
 import type { SelectScrollDownButtonProps } from './types';
 
@@ -18,9 +18,7 @@ const [_, setButtonElement] = useForwardElement(node => {
   alignedPositionContext?.onScrollButtonChange(node);
 });
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.scrollDownButton);
+const cls = useSelectUi('scrollDownButton');
 
 const onAutoScroll = () => {
   if (viewportElement.value && selectedItemElement.value) {

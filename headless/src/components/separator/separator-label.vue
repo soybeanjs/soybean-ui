@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useSeparatorThemeContext } from './context';
+import { useSeparatorUi } from './context';
 import type { SeparatorLabelProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<SeparatorLabelProps>();
 
-const themeContext = useSeparatorThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.label);
+const cls = useSeparatorUi('label');
 </script>
 
 <template>

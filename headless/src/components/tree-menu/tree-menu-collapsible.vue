@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '../collapsible';
-import { useTreeMenuItemContext, useTreeMenuThemeContext } from './context';
+import { useTreeMenuItemContext, useTreeMenuUi } from './context';
 import type { TreeMenuCollapsibleProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ defineProps<TreeMenuCollapsibleProps>();
 
 const { isExpanded, onExpandedToggle } = useTreeMenuItemContext('TreeMenuCollapsible');
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.collapsibleContent);
+const cls = useTreeMenuUi('collapsibleContent');
 </script>
 
 <template>

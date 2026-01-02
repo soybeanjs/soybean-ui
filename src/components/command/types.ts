@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue';
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type {
   ClassValue,
@@ -12,8 +12,9 @@ import type {
   ListboxRootProps as CommandRootProps,
   KbdProps,
   KbdValue,
-  ListboxThemeSlot,
-  SeparatorRootProps
+  ListboxUiSlot,
+  SeparatorRootProps,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -88,22 +89,26 @@ export interface CommandHighlightSearchOptionData extends CommandSearchOptionDat
 
 export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export type CommandThemeSlot =
-  | Extract<ListboxThemeSlot, 'root' | 'item' | 'group' | 'groupLabel'>
+export type CommandUiSlot =
+  | Extract<ListboxUiSlot, 'root' | 'item' | 'group' | 'groupLabel'>
   | 'list'
   | 'inputRoot'
   | 'inputControl';
 
-export type CommandExtraThemeSlot = 'inputClearable' | 'itemLabel' | 'shortcut' | 'separator' | 'empty';
+export type CommandExtraUiSlot = 'inputClearable' | 'itemLabel' | 'shortcut' | 'separator' | 'empty';
 
-export type CommandExtraUi = Record<CommandExtraThemeSlot, ClassValue>;
+export type CommandExtraUi = UiClass<CommandExtraUiSlot>;
 
-export type CommandUi = Record<CommandThemeSlot | CommandExtraThemeSlot, ClassValue>;
+export type CommandUi = UiClass<CommandUiSlot | CommandExtraUiSlot>;
 
 export interface CommandProps<T extends CommandOptionData = CommandOptionData> extends Omit<
   CommandRootProps,
   'onSelect'
 > {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<CommandUi>;
   items: T[];
@@ -127,10 +132,6 @@ export type CommandSearchTermEmits = {
 };
 
 export type CommandEmits = CommandRootEmits & CommandOptionEmits & CommandSearchTermEmits;
-
-export interface CommandExtraThemeContextParams {
-  ui: ComputedRef<CommandExtraUi>;
-}
 
 export type {
   CommandRootProps,

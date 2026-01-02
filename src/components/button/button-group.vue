@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { cn } from '@/theme';
 import { buttonGroupVariants } from '@/variants/button';
 import { useConfigProvider } from '../config-provider';
 import { provideButtonGroupContext } from './context';
@@ -17,15 +18,26 @@ const props = withDefaults(defineProps<ButtonGroupProps>(), {
   dir: 'ltr'
 });
 
-const forwardedProps = useOmitProps(props, ['orientation', 'color', 'size', 'variant', 'shape', 'shadow', 'disabled']);
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'orientation',
+  'color',
+  'size',
+  'variant',
+  'shape',
+  'shadow',
+  'disabled'
+]);
 
 const config = useConfigProvider('ButtonGroup');
 
-const cls = computed(() =>
-  buttonGroupVariants({
+const cls = computed(() => {
+  const variants = buttonGroupVariants({
     orientation: props.orientation
-  })
-);
+  });
+
+  return cn(variants, props.class);
+});
 
 const dir = computed(() => props.dir ?? config.dir.value);
 

@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue } from '../../types';
+import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
+import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
@@ -27,10 +27,6 @@ export interface AlertRootContextParams {
   open: ShallowRef<boolean | undefined>;
 }
 
-export type AlertThemeSlot = 'root' | 'title' | 'description' | 'content' | 'closable';
+export type AlertUiSlot = 'root' | 'title' | 'description' | 'content' | 'close';
 
-export type AlertUi = Record<AlertThemeSlot, ClassValue>;
-
-export interface AlertThemeContextParams {
-  ui: ComputedRef<AlertUi>;
-}
+export type AlertUi = UiClass<AlertUiSlot>;

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { ListboxGroup, ListboxGroupLabel, SeparatorRoot } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import SCommandSingleOption from './command-single-option.vue';
-import { useCommandExtraThemeContext } from './context';
+import { useCommandExtraUi } from './context';
 import type { CommandGroupOptionEmits, CommandGroupOptionProps, CommandSingleOptionData } from './types';
 
 defineOptions({
@@ -34,9 +34,7 @@ const slots = defineSlots<Slots>();
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const themeContext = useCommandExtraThemeContext();
-
-const ui = computed(() => themeContext?.ui?.value);
+const ui = useCommandExtraUi();
 </script>
 
 <template>

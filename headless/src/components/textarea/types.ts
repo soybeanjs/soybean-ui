@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef, TextareaHTMLAttributes } from 'vue';
-import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
 export interface TextareaAutosizeOptions {
   /** The minimum number of rows to display */
@@ -48,10 +48,6 @@ export interface TextareaRootContextParams extends PropsToContext<TextareaBasePr
   autosizeOptions: ComputedRef<TextareaAutosizeOptions | undefined>;
 }
 
-export type TextareaThemeSlot = 'root' | 'control' | 'counter';
+export type TextareaUiSlot = 'root' | 'control' | 'counter';
 
-export type TextareaUi = Record<TextareaThemeSlot, ClassValue>;
-
-export interface TextareaThemeContextParams {
-  ui: ComputedRef<TextareaUi>;
-}
+export type TextareaUi = UiClass<TextareaUiSlot>;

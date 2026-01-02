@@ -1,7 +1,7 @@
 import { shallowRef } from 'vue';
 import type { ReferenceElement } from '@floating-ui/dom';
-import { useContext } from '../../composables';
-import type { PopperPositionerContextParams, PopperThemeContextParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { PopperPositionerContextParams, PopperUiSlot } from './types';
 
 export const [providePopperRootContext, usePopperRootContext] = useContext('PopperRoot', () => {
   const popupElement = shallowRef<HTMLElement>();
@@ -39,7 +39,4 @@ export const [providePopperPositionerContext, usePopperPositionerContext] = useC
   }
 );
 
-export const [providePopperThemeContext, usePopperThemeContext] = useContext(
-  'PopperTheme',
-  (params: PopperThemeContextParams) => params
-);
+export const [providePopperUi, usePopperUi] = useUiContext<PopperUiSlot>('PopperUi');

@@ -6,7 +6,6 @@
     S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
   "
 >
-import { computed } from 'vue';
 import { MenuGroupLabel, MenuItemIndicator, MenuRadioGroup, MenuRadioItem, MenuSeparator } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
@@ -14,7 +13,7 @@ import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import SMenuItemSlot from './menu-item-slot.vue';
 import { useCommonSlotKeys } from './shared';
-import { useMenuExtraThemeContext } from './context';
+import { useMenuExtraUi } from './context';
 import type { MenuRadioOptionData, MenuRadioOptionsEmits, MenuRadioOptionsProps } from './types';
 
 defineOptions({
@@ -38,9 +37,7 @@ const commonSlotKeys = useCommonSlotKeys(slots);
 
 const forwardedProps = useOmitProps(props, ['items', 'radioItemProps', 'groupLabelProps', 'indicatorProps']);
 
-const themeContext = useMenuExtraThemeContext();
-
-const ui = computed(() => ({ ...themeContext?.ui?.value }));
+const ui = useMenuExtraUi();
 </script>
 
 <template>

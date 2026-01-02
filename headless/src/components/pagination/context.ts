@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useContext } from '../../composables';
-import type { PaginationRootContextParams, PaginationThemeContextParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { PaginationRootContextParams, PaginationUiSlot } from './types';
 
 export const [providePaginationRootContext, usePaginationRootContext] = useContext(
   'PaginationRoot',
@@ -21,7 +21,4 @@ export const [providePaginationRootContext, usePaginationRootContext] = useConte
   }
 );
 
-export const [providePaginationThemeContext, usePaginationThemeContext] = useContext(
-  'PaginationTheme',
-  (params: PaginationThemeContextParams) => params
-);
+export const [providePaginationUi, usePaginationUi] = useUiContext<PaginationUiSlot>('PaginationUi');

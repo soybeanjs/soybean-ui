@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { DataOrientation } from '../../types';
-import { useSeparatorThemeContext } from './context';
+import { useSeparatorUi } from './context';
 import type { SeparatorRootProps } from './types';
 
 defineOptions({
@@ -13,9 +13,7 @@ const props = withDefaults(defineProps<SeparatorRootProps>(), {
   decorative: false
 });
 
-const themeContext = useSeparatorThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useSeparatorUi('root');
 
 const ORIENTATIONS: DataOrientation[] = ['horizontal', 'vertical'];
 

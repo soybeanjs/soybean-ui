@@ -4,7 +4,7 @@ export { default as CheckboxIndicator } from './checkbox-indicator.vue';
 export { default as CheckboxLabel } from './checkbox-label.vue';
 export { default as CheckboxGroupRoot } from './checkbox-group-root.vue';
 
-export { provideCheckboxThemeContext } from './context';
+export { provideCheckboxUi } from './context';
 
 export type {
   CheckboxRootProps,
@@ -14,6 +14,6 @@ export type {
   CheckboxLabelProps,
   CheckboxGroupRootProps,
   CheckboxGroupRootEmits,
-  CheckboxThemeSlot,
+  CheckboxUiSlot,
   CheckboxUi
 } from './types';

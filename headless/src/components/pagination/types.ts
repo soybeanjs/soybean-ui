@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, PropsToContext } from '../../types';
+import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
+import type { PropsToContext, UiClass } from '../../types';
 
 export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the current page. Can be bound as `v-model:page`. */
@@ -44,13 +44,9 @@ export interface PaginationRootContextParams extends PropsToContext<
   page: ShallowRef<number>;
 }
 
-export type PaginationThemeSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
+export type PaginationUiSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';
 
-export type PaginationUi = Record<PaginationThemeSlot, ClassValue>;
-
-export interface PaginationThemeContextParams {
-  ui: ComputedRef<PaginationUi>;
-}
+export type PaginationUi = UiClass<PaginationUiSlot>;
 
 export interface PageEllipsis {
   type: 'ellipsis';

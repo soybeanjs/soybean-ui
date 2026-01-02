@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { autoUpdate } from '@floating-ui/dom';
 import { getAlignment, getSide } from '@floating-ui/utils';
 import { useFloating, useForwardElement } from '../../composables';
-import { providePopperPositionerContext, usePopperRootContext, usePopperThemeContext } from './context';
+import { providePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import { createPopperPositionerDefaultProps, getFloatingUiMiddleware, getPlacement, popperCssVars } from './shared';
 import type { PopperPositionerEmits, PopperPositionerProps } from './types';
 
@@ -16,8 +16,7 @@ const props = withDefaults(defineProps<PopperPositionerProps>(), createPopperPos
 
 const emit = defineEmits<PopperPositionerEmits>();
 
-const themeContext = usePopperThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.positioner);
+const cls = usePopperUi('positioner');
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 const [arrowElement, setArrowElement] = useForwardElement();

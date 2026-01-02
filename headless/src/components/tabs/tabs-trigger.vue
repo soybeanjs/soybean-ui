@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { RovingFocusItem } from '../roving-focus';
-import { useTabsRootContext, useTabsThemeContext } from './context';
+import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsTriggerProps } from './types';
 
 defineOptions({
@@ -16,9 +16,7 @@ const props = withDefaults(defineProps<TabsTriggerProps>(), {
 
 const { modelValue, orientation, changeModelValue, activationMode, getId } = useTabsRootContext('TabsTrigger');
 
-const themeContext = useTabsThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const cls = useTabsUi('trigger');
 
 const { contentId, triggerId } = getId(props.value);
 

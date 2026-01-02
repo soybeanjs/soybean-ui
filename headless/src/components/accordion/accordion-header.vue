@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useAccordionItemContext, useAccordionRootContext, useAccordionThemeContext } from './context';
+import { useAccordionItemContext, useAccordionRootContext, useAccordionUi } from './context';
 import type { AccordionHeaderProps } from './types';
 
 defineOptions({
@@ -9,9 +9,9 @@ defineOptions({
 
 defineProps<AccordionHeaderProps>();
 
-const themeContext = useAccordionThemeContext();
+const ui = useAccordionUi();
 
-const cls = computed(() => themeContext?.ui?.value?.header);
+const cls = computed(() => ui?.value?.header);
 
 const { orientation } = useAccordionRootContext('AccordionHeader');
 const { dataDisabled, dataState } = useAccordionItemContext('AccordionHeader');

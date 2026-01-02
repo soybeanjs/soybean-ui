@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TextareaControl, TextareaCounter, TextareaRoot, provideTextareaThemeContext } from '@soybeanjs/headless';
+import { TextareaControl, TextareaCounter, TextareaRoot, provideTextareaUi } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { textareaVariants } from '@/variants/textarea';
@@ -18,6 +18,7 @@ const emit = defineEmits<TextareaEmits>();
 const [_, setTextareaElement] = useForwardElement(el => props.textareaRef?.(el as HTMLTextAreaElement));
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'resize',
@@ -34,12 +35,10 @@ const ui = computed(() => {
     resize: !props.autosize ? props.resize : false
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideTextareaThemeContext({
-  ui
-});
+provideTextareaUi(ui);
 </script>
 
 <template>

@@ -4,7 +4,7 @@ export { default as TabsIndicator } from './tabs-indicator.vue';
 export { default as TabsList } from './tabs-list.vue';
 export { default as TabsTrigger } from './tabs-trigger.vue';
 
-export { provideTabsThemeContext } from './context';
+export { provideTabsUi } from './context';
 
 export type {
   TabsRootProps,
@@ -13,6 +13,6 @@ export type {
   TabsContentProps,
   TabsIndicatorProps,
   TabsTriggerProps,
-  TabsThemeSlot,
+  TabsUiSlot,
   TabsUi
 } from './types';

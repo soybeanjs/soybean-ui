@@ -1,7 +1,5 @@
-import type { ComputedRef } from 'vue';
 import type {
   AcceptableBooleanValue,
-  ClassValue,
   DefinedValue,
   KbdValue,
   MenuCheckboxGroupEmits,
@@ -21,7 +19,8 @@ import type {
   MenuSubEmits,
   MenuSubProps,
   MenuSubTriggerProps,
-  MenuUi
+  MenuUi,
+  UiClass
 } from '@soybeanjs/headless';
 import type { LinkProps } from '../link/types';
 import type { KbdProps } from '../kbd/types';
@@ -60,9 +59,9 @@ export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'd
 
 export interface MenuShortcutProps extends Omit<KbdProps, 'value'> {}
 
-export type MenuExtraThemeSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon';
+export type MenuExtraUiSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon';
 
-export type MenuExtraUi = Record<MenuExtraThemeSlot, ClassValue>;
+export type MenuExtraUi = UiClass<MenuExtraUiSlot>;
 
 export type MenuExtendedUi = MenuUi & MenuExtraUi;
 
@@ -145,7 +144,3 @@ export type MenuRadioOptionsEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 > = MenuRadioGroupEmits<T> & MenuRadioSelectEmits<S>;
-
-export interface MenuExtraThemeContextParams {
-  ui: ComputedRef<MenuExtraUi>;
-}

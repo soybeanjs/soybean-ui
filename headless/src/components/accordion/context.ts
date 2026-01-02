@@ -1,8 +1,9 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useDirection, useForwardElement } from '../../composables';
+import { useContext, useDirection, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { AccordionItemContextParams, AccordionRootContextParams, AccordionThemeContextParams } from './types';
+import { provideCollapsibleUi } from '../collapsible/context';
+import type { AccordionItemContextParams, AccordionRootContextParams, AccordionUiSlot } from './types';
 
 export const [provideAccordionRootContext, useAccordionRootContext] = useContext(
   'AccordionRoot',
@@ -44,7 +45,14 @@ export const [provideAccordionItemContext, useAccordionItemContext] = useContext
   }
 );
 
-export const [provideAccordionThemeContext, useAccordionThemeContext] = useContext(
-  'AccordionTheme',
-  (params: AccordionThemeContextParams) => params
-);
+export const [provideAccordionUi, useAccordionUi] = useUiContext<AccordionUiSlot>('AccordionUi', ui => {
+  const collapsibleUi = computed(() => ({
+    root: ui.value?.item,
+    trigger: ui.value?.trigger,
+    content: ui.value?.content
+  }));
+
+  provideCollapsibleUi(collapsibleUi);
+
+  return ui;
+});

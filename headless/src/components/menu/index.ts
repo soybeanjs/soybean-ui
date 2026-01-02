@@ -16,7 +16,7 @@ export { default as MenuRadioGroup } from './menu-radio-group.vue';
 export { default as MenuRadioItem } from './menu-radio-item.vue';
 export { default as MenuItemIndicator } from './menu-item-indicator.vue';
 
-export { provideMenuThemeContext, useMenuThemeContext } from './context';
+export { provideMenuUi, useMenuUi } from './context';
 
 export type { SeparatorRootProps as MenuSeparatorProps } from '../separator/types';
 export type { PopperAnchorProps as MenuAnchorProps, PopperArrowProps as MenuArrowProps } from '../popper/types';
@@ -46,6 +46,6 @@ export type {
   MenuRadioItemProps,
   MenuRadioItemEmits,
   MenuItemIndicatorProps,
-  MenuThemeSlot,
+  MenuUiSlot,
   MenuUi
 } from './types';

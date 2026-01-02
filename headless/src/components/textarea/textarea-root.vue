@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { provideTextareaRootContext, useTextareaThemeContext } from './context';
+import { provideTextareaRootContext, useTextareaUi } from './context';
 import type { TextareaRootEmits, TextareaRootProps } from './types';
 
 defineOptions({
@@ -18,9 +18,7 @@ const emit = defineEmits<TextareaRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const themeContext = useTextareaThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useTextareaUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,

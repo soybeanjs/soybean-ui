@@ -1,9 +1,9 @@
 import { computed, shallowRef, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { useContext, useDirection } from '../../composables';
+import { useContext, useDirection, useUiContext } from '../../composables';
 import { isNullish } from '../../shared';
 import type { AcceptableValue, DefinedValue } from '../../types';
-import type { TabsRootContextParams, TabsThemeContextParams } from './types';
+import type { TabsRootContextParams, TabsUiSlot } from './types';
 
 export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot', (params: TabsRootContextParams) => {
   const dir = useDirection(params.dir);
@@ -38,7 +38,4 @@ export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot
   };
 });
 
-export const [provideTabsThemeContext, useTabsThemeContext] = useContext(
-  'TabsTheme',
-  (params: TabsThemeContextParams) => params
-);
+export const [provideTabsUi, useTabsUi] = useUiContext<TabsUiSlot>('TabsUi');

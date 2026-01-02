@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useLayoutRootContext, useLayoutThemeContext } from './context';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutTriggerProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ defineProps<LayoutTriggerProps>();
 
 const { open, toggleSidebar } = useLayoutRootContext('LayoutTrigger');
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const cls = useLayoutUi('trigger');
 </script>
 
 <template>

@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   Placement,
   PopoverArrowProps,
   PopoverCloseProps,
@@ -14,6 +15,10 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface PopoverProps extends PopoverRootProps {
+  /**
+   * class of popup
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<PopperUi>;
   placement?: Placement;

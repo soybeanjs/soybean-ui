@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useForwardElement, useTypeahead } from '../../composables';
 import { PopperAnchor } from '../popper';
 import { Primitive } from '../primitive';
-import { useCollectionContext, useSelectRootContext, useSelectThemeContext } from './context';
+import { useCollectionContext, useSelectRootContext, useSelectUi } from './context';
 import { OPEN_KEYS, shouldShowPlaceholder } from './shared';
 import type { SelectTriggerProps } from './types';
 
@@ -33,9 +33,7 @@ const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 const { getOrderedItems } = useCollectionContext('SelectTrigger');
 const { search, handleTypeaheadSearch, resetTypeahead } = useTypeahead();
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const cls = useSelectUi('trigger');
 
 const isDisabled = computed(() => disabled.value || props.disabled);
 const dataPlaceholder = computed(() => (shouldShowPlaceholder(modelValue.value) ? '' : undefined));

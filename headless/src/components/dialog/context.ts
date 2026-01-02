@@ -1,8 +1,8 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { DialogRootContextParams, DialogThemeContextParams } from './types';
+import type { DialogRootContextParams, DialogUiSlot } from './types';
 
 export const [provideDialogRootContext, useDialogRootContext] = useContext(
   'DialogRoot',
@@ -59,7 +59,4 @@ export const [provideDialogRootContext, useDialogRootContext] = useContext(
   }
 );
 
-export const [provideDialogThemeContext, useDialogThemeContext] = useContext(
-  'DialogTheme',
-  (params: DialogThemeContextParams) => params
-);
+export const [provideDialogUi, useDialogUi] = useUiContext<DialogUiSlot>('DialogUi');

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useField, useFieldArray } from '../../forms/core';
-import { provideFormFieldContext, useFormThemeContext } from './context';
+import { provideFormFieldContext, useFormFieldUi } from './context';
 import type { FormFieldArrayProps } from './types';
 
 defineOptions({
@@ -10,9 +9,7 @@ defineOptions({
 
 const props = defineProps<FormFieldArrayProps>();
 
-const themeContext = useFormThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.field);
+const cls = useFormFieldUi('fieldArray');
 
 const { dirty, error, touched } = useField(() => props.name);
 

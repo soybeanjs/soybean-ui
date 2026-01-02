@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useListboxGroupContext, useListboxThemeContext } from './context';
+import { useListboxGroupContext, useListboxUi } from './context';
 import type { ListboxGroupLabelProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<ListboxGroupLabelProps>();
 
 const { id } = useListboxGroupContext('ListboxGroupLabel');
 
-const themeContext = useListboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.groupLabel);
+const cls = useListboxUi('groupLabel');
 </script>
 
 <template>

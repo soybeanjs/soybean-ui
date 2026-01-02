@@ -1,5 +1,6 @@
 import type {
   AcceptableValue,
+  ClassValue,
   DefinedValue,
   TabsIndicatorProps,
   TabsListProps,
@@ -22,6 +23,7 @@ export interface SegmentProps<
   T extends AcceptableValue,
   S extends SegmentOptionData<NonNullable<T>> = SegmentOptionData<NonNullable<T>>
 > extends TabsRootProps<T> {
+  class?: ClassValue;
   ui?: Partial<SegmentExtendedUi>;
   size?: ThemeSize;
   shape?: SegmentShape;

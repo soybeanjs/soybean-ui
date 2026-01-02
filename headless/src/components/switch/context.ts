@@ -1,8 +1,8 @@
 import { computed } from 'vue';
-import { useContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import { isNullish } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
-import type { SwitchRootContextParams, SwitchThemeContextParams } from './types';
+import type { SwitchRootContextParams, SwitchUiSlot } from './types';
 
 export const [provideSwitchRootContext, useSwitchRootContext] = useContext(
   'SwitchRoot',
@@ -32,7 +32,4 @@ export const [provideSwitchRootContext, useSwitchRootContext] = useContext(
   }
 );
 
-export const [provideSwitchThemeContext, useSwitchThemeContext] = useContext(
-  'SwitchTheme',
-  (params: SwitchThemeContextParams) => params
-);
+export const [provideSwitchUi, useSwitchUi] = useUiContext<SwitchUiSlot>('SwitchUi');

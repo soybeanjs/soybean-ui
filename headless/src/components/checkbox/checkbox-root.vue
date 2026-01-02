@@ -4,7 +4,7 @@ import { useControllableState } from '../../composables';
 import { isFormControl, isNullish, isValueEqualOrExist, transformPropsToContext } from '../../shared';
 import type { CheckedState } from '../../types';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideCheckboxRootContext, useCheckboxGroupRootContext, useCheckboxThemeContext } from './context';
+import { provideCheckboxRootContext, useCheckboxGroupRootContext, useCheckboxUi } from './context';
 import type { CheckboxRootEmits, CheckboxRootProps } from './types';
 
 defineOptions({
@@ -18,9 +18,7 @@ const props = withDefaults(defineProps<CheckboxRootProps>(), {
 
 const emit = defineEmits<CheckboxRootEmits>();
 
-const themeContext = useCheckboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useCheckboxUi('root');
 
 const rootElement = useTemplateRef<HTMLDivElement>('rootElement');
 
@@ -63,10 +61,10 @@ const { dataState } = provideCheckboxRootContext({
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput
-      v-if="formControl && name && !groupContext"
+      v-if="formControl && props.name && !groupContext"
       type="checkbox"
       :checked="!!state"
-      :name="name"
+      :name="props.name"
       :value="value"
       :disabled="disabled"
       :required="required"

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { RovingFocusGroup } from '../roving-focus';
-import { useTabsRootContext, useTabsThemeContext } from './context';
+import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsListProps } from './types';
 
 defineOptions({
@@ -15,9 +14,7 @@ const { orientation, dir, loop, onListElementChange } = useTabsRootContext('Tabs
 
 const [_, setListElement] = useForwardElement(onListElementChange);
 
-const themeContext = useTabsThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.list);
+const cls = useTabsUi('list');
 </script>
 
 <template>

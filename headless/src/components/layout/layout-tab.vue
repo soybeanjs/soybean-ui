@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useLayoutThemeContext } from './context';
+import { useLayoutUi } from './context';
 import type { LayoutTabProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<LayoutTabProps>();
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.tab);
+const cls = useLayoutUi('tab');
 </script>
 
 <template>

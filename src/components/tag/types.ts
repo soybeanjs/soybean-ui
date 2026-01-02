@@ -1,8 +1,9 @@
-import type { TagEmits, TagProps as _TagProps } from '@soybeanjs/headless';
+import type { ClassValue, TagEmits, TagProps as _TagProps } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { TagShape, TagVariant } from '@/variants/tag';
 
 export interface TagProps extends _TagProps {
+  class?: ClassValue;
   color?: ThemeColor;
   size?: ThemeSize;
   variant?: TagVariant;

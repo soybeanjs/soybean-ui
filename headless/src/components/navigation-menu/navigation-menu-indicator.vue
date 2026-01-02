@@ -3,7 +3,7 @@ import { computed, shallowRef, useAttrs, watchEffect } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { useForwardElement, usePresence } from '../../composables';
-import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { navigationMenuIndicatorCssVars } from './shared';
 import type { NavigationMenuIndicatorProps } from './types';
 
@@ -20,9 +20,7 @@ const { orientation, activeTriggerElement, modelValue, indicatorTrackElement } =
   useNavigationMenuRootContext('NavigationMenuIndicator');
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.indicator);
+const cls = useNavigationMenuUi('indicator');
 
 const isVisible = computed(() => Boolean(modelValue.value));
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(indicatorElement, () => isVisible.value);

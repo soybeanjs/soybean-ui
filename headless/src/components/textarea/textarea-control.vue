@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue';
-import { useTextareaRootContext, useTextareaThemeContext } from './context';
+import { nextTick, ref, watch } from 'vue';
+import { useTextareaRootContext, useTextareaUi } from './context';
 import { adjustHeight } from './shared';
 import type { TextareaControlProps } from './types';
 
@@ -13,9 +13,7 @@ defineProps<TextareaControlProps>();
 const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, autosizeOptions } =
   useTextareaRootContext('TextareaControl');
 
-const themeContext = useTextareaThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.control);
+const cls = useTextareaUi('control');
 
 const textareaRef = ref<HTMLTextAreaElement | null>(null);
 

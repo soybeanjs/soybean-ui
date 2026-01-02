@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { provideCollectionContext, provideNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuRootEmits, NavigationMenuRootProps } from './types';
 
 defineOptions({
@@ -20,9 +20,7 @@ const props = withDefaults(defineProps<NavigationMenuRootProps>(), {
 
 const emit = defineEmits<NavigationMenuRootEmits>();
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useNavigationMenuUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -70,7 +68,7 @@ watchEffect(() => {
     :ref="setRootElement"
     :class="cls"
     aria-label="Main"
-    :data-orientation="orientation"
+    :data-orientation="props.orientation"
     data-soybean-navigation-menu
     :dir="dir"
   >

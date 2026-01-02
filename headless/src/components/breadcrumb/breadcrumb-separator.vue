@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useBreadcrumbThemeContext } from './context';
+import { useBreadcrumbUi } from './context';
 import type { BreadcrumbSeparatorProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<BreadcrumbSeparatorProps>();
 
-const themeContext = useBreadcrumbThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.separator);
+const cls = useBreadcrumbUi('separator');
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
-import { useContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import { getCheckedState } from '../../shared';
-import type { RadioGroupItemContextParams, RadioGroupRootContextParams, RadioGroupThemeContextParams } from './types';
+import type { RadioGroupItemContextParams, RadioGroupRootContextParams, RadioGroupUiSlot } from './types';
 
 export const [provideRadioGroupRootContext, useRadioGroupRootContext] = useContext(
   'RadioGroupRoot',
@@ -28,7 +28,4 @@ export const [provideRadioGroupItemContext, useRadioGroupItemContext] = useConte
   }
 );
 
-export const [provideRadioGroupThemeContext, useRadioGroupThemeContext] = useContext(
-  'RadioGroupTheme',
-  (params: RadioGroupThemeContextParams) => params
-);
+export const [provideRadioGroupUi, useRadioGroupUi] = useUiContext<RadioGroupUiSlot>('RadioGroupUi');

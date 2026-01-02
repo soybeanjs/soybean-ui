@@ -1,7 +1,5 @@
-import { useContext } from '@soybeanjs/headless/composables';
-import type { NavigationMenuExtraThemeContextParams } from './types';
+import { useUiContext } from '@soybeanjs/headless/composables';
+import type { NavigationMenuExtraUiSlot } from './types';
 
-export const [provideNavigationMenuExtraThemeContext, useNavigationMenuExtraThemeContext] = useContext(
-  'NavigationMenuExtraTheme',
-  (params: NavigationMenuExtraThemeContextParams) => params
-);
+export const [provideNavigationMenuExtraUi, useNavigationMenuExtraUi] =
+  useUiContext<NavigationMenuExtraUiSlot>('NavigationMenuExtraUi');

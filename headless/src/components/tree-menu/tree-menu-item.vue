@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { provideTreeMenuItemContext, useTreeMenuRootContext, useTreeMenuThemeContext } from './context';
+import { provideTreeMenuItemContext, useTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuItemProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const props = withDefaults(defineProps<TreeMenuItemProps>(), {
 
 const { modelValue, expanded, onExpandedToggle, onModelValueChange } = useTreeMenuRootContext('TreeMenuItem');
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.item);
+const cls = useTreeMenuUi('item');
 
 const isActive = computed(() => modelValue.value === props.value);
 

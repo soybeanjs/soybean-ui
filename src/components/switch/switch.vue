@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T extends AcceptableBooleanValue = boolean">
 import { computed, useId } from 'vue';
-import { SwitchControl, SwitchRoot, SwitchThumb, provideSwitchThemeContext } from '@soybeanjs/headless';
+import { SwitchControl, SwitchRoot, SwitchThumb, provideSwitchUi } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<SwitchProps<T>>(), {
 
 const emit = defineEmits<SwitchEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['ui', 'color', 'size', 'shape', 'controlProps', 'thumbProps']);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape', 'controlProps', 'thumbProps']);
 
 const defaultId = useId();
 
@@ -32,12 +32,10 @@ const ui = computed(() => {
     shape: props.shape
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideSwitchThemeContext({
-  ui
-});
+provideSwitchUi(ui);
 </script>
 
 <template>

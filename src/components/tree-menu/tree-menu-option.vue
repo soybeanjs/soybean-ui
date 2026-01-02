@@ -11,7 +11,7 @@ import type { Placement } from '@soybeanjs/headless';
 import Link from '../link/link.vue';
 import Tooltip from '../tooltip/tooltip.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';
-import { useTreeMenuContext, useTreeMenuExtraThemeContext } from './context';
+import { useTreeMenuContext, useTreeMenuExtraUi } from './context';
 import STreeMenuOptionSlot from './tree-menu-option-slot.vue';
 import { isChildActive } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuItemEmits, TreeMenuOptionProps } from './types';
@@ -34,7 +34,7 @@ const slots = defineSlots<Slots>();
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuOption');
 const { size, side } = useTreeMenuContext('TreeMenuOption');
-const ui = useTreeMenuExtraThemeContext('TreeMenuOption');
+const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 const hasChildren = computed(() => Boolean(props.item.children?.length));
@@ -106,7 +106,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
     </TreeMenuButton>
     <Tooltip v-if="tooltip" v-bind="tooltipProps" :size="size" :content="tooltip">
       <template #trigger>
-        <component :is="isLink ? Link : 'div'" v-bind="linkProps" :class="ui.itemAbsolute" @click="onActive" />
+        <component :is="isLink ? Link : 'div'" v-bind="linkProps" :class="absoluteCls" @click="onActive" />
       </template>
     </Tooltip>
   </TreeMenuItem>
@@ -139,7 +139,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           @select="onDropdownMenuSelect"
         >
           <template #trigger>
-            <div :class="ui.itemAbsolute"></div>
+            <div :class="absoluteCls"></div>
           </template>
         </DropdownMenu>
       </template>

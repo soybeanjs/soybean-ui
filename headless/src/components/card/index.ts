@@ -6,7 +6,7 @@ export { default as CardTitleRoot } from './card-title-root.vue';
 export { default as CardTitle } from './card-title.vue';
 export { default as CardDescription } from './card-description.vue';
 
-export { provideCardThemeContext } from './context';
+export { provideCardUi } from './context';
 
 export type {
   CardRootProps,
@@ -16,6 +16,6 @@ export type {
   CardTitleRootProps,
   CardTitleProps,
   CardDescriptionProps,
-  CardThemeSlot,
+  CardUiSlot,
   CardUi
 } from './types';

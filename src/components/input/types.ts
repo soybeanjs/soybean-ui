@@ -1,11 +1,15 @@
 import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-type InputExtraThemeSlot = 'clearable';
+type InputExtraUiSlot = 'clearable';
 
-type InputExtendedUi = InputUi & Record<InputExtraThemeSlot, ClassValue>;
+type InputExtendedUi = InputUi & Record<InputExtraUiSlot, ClassValue>;
 
 export interface InputProps extends InputRootProps {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<InputExtendedUi>;
   /** Whether to show the clear icon */

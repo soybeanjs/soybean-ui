@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useToastThemeContext } from './context';
+import { useToastUi } from './context';
 import type { ToastDescriptionProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<ToastDescriptionProps>();
 
-const themeContext = useToastThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.description);
+const cls = useToastUi('description');
 </script>
 
 <template>

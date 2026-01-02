@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { usePaginationThemeContext } from './context';
+import { usePaginationUi } from './context';
 import type { PaginationEllipsisProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<PaginationEllipsisProps>();
 
-const themeContext = usePaginationThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.ellipsis);
+const cls = usePaginationUi('ellipsis');
 </script>
 
 <template>

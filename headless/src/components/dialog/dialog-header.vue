@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useDialogThemeContext } from './context';
+import { useDialogUi } from './context';
 import type { DialogHeaderProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<DialogHeaderProps>();
 
-const themeContext = useDialogThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.header);
+const cls = useDialogUi('header');
 </script>
 
 <template>

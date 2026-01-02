@@ -29,6 +29,7 @@ export interface RadioGroupProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
 > extends RadioGroupRootProps<T> {
+  class?: ClassValue;
   ui?: Partial<RadioGroupUi>;
   variant?: RadioGroupVariant;
   color?: ThemeColor;
@@ -42,9 +43,9 @@ export interface RadioGroupProps<
 
 export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
 
-export type RadioGroupCardThemeSlot = 'content' | 'textContent' | 'icon' | 'description';
+export type RadioGroupCardUiSlot = 'content' | 'textContent' | 'icon' | 'description';
 
-export type RadioGroupCardUi = RadioGroupUi & Record<RadioGroupCardThemeSlot, ClassValue>;
+export type RadioGroupCardUi = RadioGroupUi & Record<RadioGroupCardUiSlot, ClassValue>;
 
 export interface RadioCardProps extends RadioProps {
   ui?: Partial<RadioGroupCardUi>;

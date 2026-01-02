@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   LayoutFooterProps,
   LayoutHeaderProps,
   LayoutMainProps,
@@ -13,6 +14,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface LayoutProps extends LayoutRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<LayoutUi>;
   sidebarProps?: LayoutSidebarProps;

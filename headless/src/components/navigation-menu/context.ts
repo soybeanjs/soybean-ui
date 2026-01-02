@@ -1,12 +1,8 @@
 import { computed, shallowRef } from 'vue';
 import { refAutoReset, useDebounceFn } from '@vueuse/core';
-import { useCollection, useContext, useDirection, useForwardElement } from '../../composables';
+import { useCollection, useContext, useDirection, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
-import type {
-  NavigationMenuItemContextParams,
-  NavigationMenuRootContextParams,
-  NavigationMenuThemeContextParams
-} from './types';
+import type { NavigationMenuItemContextParams, NavigationMenuRootContextParams, NavigationMenuUiSlot } from './types';
 
 export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = useContext(
   'NavigationMenuRoot',
@@ -149,7 +145,4 @@ export const [provideNavigationMenuItemContext, useNavigationMenuItemContext] = 
   }
 );
 
-export const [provideNavigationMenuThemeContext, useNavigationMenuThemeContext] = useContext(
-  'NavigationMenuTheme',
-  (params: NavigationMenuThemeContextParams) => params
-);
+export const [provideNavigationMenuUi, useNavigationMenuUi] = useUiContext<NavigationMenuUiSlot>('NavigationMenuUi');

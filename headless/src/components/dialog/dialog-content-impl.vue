@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { useDismissableLayer, useFocusGuards, useFocusScope, useHideOthers, useOmitProps } from '../../composables';
 import { getActiveElement } from '../../shared';
 import { Primitive } from '../primitive';
-import { useDialogRootContext, useDialogThemeContext } from './context';
+import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogContentImplEmits, DialogContentImplProps } from './types';
 
 defineOptions({
@@ -27,10 +27,6 @@ const {
   titleId,
   descriptionId
 } = useDialogRootContext('DialogContentImpl');
-
-const themeContext = useDialogThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { pointerEvents } = useDismissableLayer(contentElement, {
   disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
@@ -63,6 +59,8 @@ const { onKeydown } = useFocusScope(contentElement, {
 });
 
 const forwardedProps = useOmitProps(props, ['trapFocus', 'disableOutsidePointerEvents']);
+
+const cls = useDialogUi('content');
 
 const style = computed<CSSProperties>(() => ({
   pointerEvents: pointerEvents.value

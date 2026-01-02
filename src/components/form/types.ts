@@ -1,5 +1,6 @@
 import type { FormHTMLAttributes } from 'vue';
 import type {
+  ClassValue,
   FormDescriptionProps,
   FormErrorProps,
   FormFieldUi,
@@ -11,6 +12,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface FormFieldProps extends _FormFieldProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<FormFieldUi>;
   label?: string;
@@ -21,6 +23,7 @@ export interface FormFieldProps extends _FormFieldProps {
 }
 
 export interface FormFieldArrayProps extends _FormFieldArrayProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<FormFieldUi>;
   label?: string;
@@ -31,6 +34,7 @@ export interface FormFieldArrayProps extends _FormFieldArrayProps {
 }
 
 export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<FormFieldUi>;
   fieldProps?: FormFieldProps;

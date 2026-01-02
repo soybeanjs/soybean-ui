@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, nextTick } from 'vue';
+import { nextTick } from 'vue';
 import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import type { HorizontalSide } from '../../types';
 import { PopperAnchor } from '../popper';
-import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuThemeContext } from './context';
+import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
@@ -24,9 +24,7 @@ const {
 } = useMenuContentContext('MenuSubTrigger');
 const [_, setSubTriggerElement] = useForwardElement(onTriggerElementChange);
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.subTrigger);
+const cls = useMenuUi('subTrigger');
 
 let openTimer: number | null = null;
 

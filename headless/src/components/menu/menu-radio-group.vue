@@ -4,7 +4,7 @@ import { useControllableState } from '../../composables';
 import { isNullish } from '../../shared';
 import type { AcceptableBooleanValue } from '../../types';
 import { Primitive } from '../primitive';
-import { provideMenuRadioGroupContext, useMenuThemeContext } from './context';
+import { provideMenuRadioGroupContext, useMenuUi } from './context';
 import type { MenuRadioGroupEmits, MenuRadioGroupProps } from './types';
 
 defineOptions({
@@ -15,9 +15,7 @@ const props = defineProps<MenuRadioGroupProps<T>>();
 
 const emit = defineEmits<MenuRadioGroupEmits<T>>();
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.radioGroup);
+const cls = useMenuUi('radioGroup');
 
 const modelValue = useControllableState(
   () => props.modelValue,

@@ -2,13 +2,13 @@
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
-import { ListboxContent, ListboxFilter, ListboxRoot, provideListboxThemeContext } from '@soybeanjs/headless';
+import { ListboxContent, ListboxFilter, ListboxRoot, provideListboxUi } from '@soybeanjs/headless';
 import { useControllableState, useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { defu } from 'defu';
 import { mergeSlotVariants } from '@/theme';
 import { commandVariants } from '@/variants/command';
 import Icon from '../icon/icon.vue';
-import { provideCommandExtraThemeContext } from './context';
+import { provideCommandExtraUi } from './context';
 import SCommandOption from './command-option.vue';
 import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions } from './shared';
 import type { CommandEmits, CommandOptionData, CommandProps } from './types';
@@ -22,6 +22,7 @@ const props = defineProps<CommandProps<T>>();
 const emit = defineEmits<CommandEmits>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'items',
@@ -85,7 +86,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 const listboxUi = computed(() => ({
@@ -97,13 +98,8 @@ const listboxUi = computed(() => ({
   virtualizer: ''
 }));
 
-provideListboxThemeContext({
-  ui: listboxUi
-});
-
-provideCommandExtraThemeContext({
-  ui
-});
+provideListboxUi(listboxUi);
+provideCommandExtraUi(ui);
 </script>
 
 <template>

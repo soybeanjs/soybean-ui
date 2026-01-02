@@ -1,6 +1,7 @@
 import type {
   Align,
   ButtonEmits,
+  ClassValue,
   DataOrientation,
   Direction,
   PropsToContext,
@@ -12,6 +13,7 @@ import type { IconProps } from '../icon/types';
 import type { LinkProps } from '../link/types';
 
 export interface ButtonProps extends _ButtonProps {
+  class?: ClassValue;
   color?: ThemeColor;
   size?: ThemeSize;
   variant?: ButtonVariant;

@@ -3,7 +3,7 @@ import { computed, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { getCheckedState } from '../../shared';
 import { Primitive } from '../primitive';
-import { useRadioGroupItemContext, useRadioGroupThemeContext } from './context';
+import { useRadioGroupItemContext, useRadioGroupUi } from './context';
 import type { RadioGroupIndicatorProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const props = withDefaults(defineProps<RadioGroupIndicatorProps>(), {
   as: 'span'
 });
 
-const themeContext = useRadioGroupThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.indicator);
+const cls = useRadioGroupUi('indicator');
 
 const [indicatorElement, setIndicatorElement] = useForwardElement();
 const { checked, disabled } = useRadioGroupItemContext('RadioGroupIndicator');

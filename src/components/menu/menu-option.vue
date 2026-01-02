@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
-import { computed } from 'vue';
 import {
   MenuGroup,
   MenuGroupLabel,
@@ -17,7 +16,7 @@ import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import SMenuItemSlot from './menu-item-slot.vue';
 import { useCommonSlotKeys } from './shared';
-import { useMenuExtraThemeContext } from './context';
+import { useMenuExtraUi } from './context';
 import type { MenuOptionData, MenuOptionEmits, MenuOptionProps } from './types';
 
 defineOptions({
@@ -45,9 +44,7 @@ const forwardedListeners = useForwardListeners(emit);
 
 const commonSlotKeys = useCommonSlotKeys(slots);
 
-const themeContext = useMenuExtraThemeContext();
-
-const ui = computed(() => ({ ...themeContext?.ui?.value }));
+const ui = useMenuExtraUi();
 </script>
 
 <template>

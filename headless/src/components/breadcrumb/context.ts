@@ -1,7 +1,4 @@
-import { useContext } from '../../composables';
-import type { BreadcrumbThemeContextParams } from './types';
+import { useUiContext } from '../../composables';
+import type { BreadcrumbUiSlot } from './types';
 
-export const [provideBreadcrumbThemeContext, useBreadcrumbThemeContext] = useContext(
-  'BreadcrumbTheme',
-  (params: BreadcrumbThemeContextParams) => params
-);
+export const [provideBreadcrumbUi, useBreadcrumbUi] = useUiContext<BreadcrumbUiSlot>('BreadcrumbUi');

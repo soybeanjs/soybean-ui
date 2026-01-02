@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, Ref } from 'vue';
-import type { ClassValue, ForceMountProps, PropsToContext } from '../../types';
+import type { ButtonHTMLAttributes, HTMLAttributes, Ref } from 'vue';
+import type { ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface CollapsibleRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
@@ -36,10 +36,6 @@ export interface CollapsibleRootContextParams extends PropsToContext<
   open: Ref<boolean | undefined>;
 }
 
-export type CollapsibleThemeSlot = 'root' | 'trigger' | 'content';
+export type CollapsibleUiSlot = 'root' | 'trigger' | 'content';
 
-export type CollapsibleUi = Record<CollapsibleThemeSlot, ClassValue>;
-
-export interface CollapsibleThemeContextParams {
-  ui: ComputedRef<CollapsibleUi>;
-}
+export type CollapsibleUi = UiClass<CollapsibleUiSlot>;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ListRoot, provideListThemeContext } from '@soybeanjs/headless';
+import { ListRoot, provideListUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
 import { listVariants } from '@/variants/list';
 import type { ListProps } from './types';
@@ -16,12 +16,10 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideListThemeContext({
-  ui
-});
+provideListUi(ui);
 </script>
 
 <template>

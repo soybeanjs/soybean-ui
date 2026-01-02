@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { ListboxItem, SeparatorRoot } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
-import { useCommandExtraThemeContext } from './context';
+import { useCommandExtraUi } from './context';
 import type { CommandSingleOptionEmits, CommandSingleOptionProps } from './types';
 
 defineOptions({
@@ -18,9 +17,7 @@ const emit = defineEmits<CommandSingleOptionEmits>();
 
 const forwardedProps = useOmitProps(props, ['item', 'itemLabelProps', 'shortcutProps', 'separatorProps']);
 
-const themeContext = useCommandExtraThemeContext();
-
-const ui = computed(() => themeContext?.ui?.value);
+const ui = useCommandExtraUi();
 </script>
 
 <template>

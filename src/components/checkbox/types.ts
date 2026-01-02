@@ -6,10 +6,11 @@ import type {
   CheckboxLabelProps,
   CheckboxRootEmits,
   CheckboxRootProps,
-  CheckboxThemeSlot,
   CheckboxUi,
+  CheckboxUiSlot,
   ClassValue,
-  DefinedValue
+  DefinedValue,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { CheckboxShape } from '@/variants/checkbox';
@@ -27,9 +28,9 @@ export interface CheckboxProps extends CheckboxRootProps {
 
 export type CheckboxEmits = CheckboxRootEmits;
 
-export type CheckboxCardThemeSlot = CheckboxThemeSlot | 'content' | 'textContent' | 'icon' | 'description';
+export type CheckboxCardUiSlot = CheckboxUiSlot | 'content' | 'textContent' | 'icon' | 'description';
 
-export type CheckboxCardUi = Record<CheckboxCardThemeSlot, ClassValue>;
+export type CheckboxCardUi = UiClass<CheckboxCardUiSlot>;
 
 export interface CheckboxCardProps extends CheckboxProps {
   ui?: Partial<CheckboxCardUi>;
@@ -67,12 +68,13 @@ export interface CheckboxCardGroupOptionData<T extends DefinedValue = DefinedVal
   description?: string;
 }
 
-export type CheckboxCardGroupProps<
+export interface CheckboxCardGroupProps<
   T extends DefinedValue = DefinedValue,
   S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
-> = CheckboxGroupProps<T, S> & {
+> extends CheckboxGroupProps<T, S> {
+  class?: ClassValue;
   ui?: Partial<CheckboxCardUi>;
   items: S[];
-};
+}
 
 export type CheckboxCardGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupEmits<T>;

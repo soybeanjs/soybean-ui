@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement } from '../../composables';
-import { usePopperPositionerContext, usePopperRootContext, usePopperThemeContext } from './context';
+import { usePopperPositionerContext, usePopperRootContext, usePopperUi } from './context';
 import type { PopperPopupProps } from './types';
 
 defineOptions({
@@ -11,8 +11,7 @@ defineOptions({
 
 defineProps<PopperPopupProps>();
 
-const themeContext = usePopperThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.popup);
+const cls = usePopperUi('popup');
 
 const { onPopupElementChange } = usePopperRootContext('PopperPopup');
 const { placedSide, placedAlign, isPositioned } = usePopperPositionerContext('PopperPopup');

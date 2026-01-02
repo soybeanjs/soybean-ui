@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  ClassValue,
   DefinedValue,
   Direction,
   ForceMountProps,
@@ -9,7 +8,8 @@ import type {
   PointerDownOutsideEvent,
   PropsToContext,
   SelectionEmits,
-  SelectionProps
+  SelectionProps,
+  UiClass
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperPositionerProps } from '../popper/types';
@@ -209,7 +209,7 @@ export interface SelectItemCollectionItemData {
 }
 
 // Theme Context
-export type SelectThemeSlot =
+export type SelectUiSlot =
   | 'trigger'
   | 'triggerIcon'
   | 'value'
@@ -226,10 +226,6 @@ export type SelectThemeSlot =
   | 'scrollDownButton'
   | 'arrow';
 
-export type SelectUi = Record<SelectThemeSlot, ClassValue>;
-
-export interface SelectThemeContextParams {
-  ui: ComputedRef<SelectUi>;
-}
+export type SelectUi = UiClass<SelectUiSlot>;
 
 export type { PopperArrowProps as SelectArrowProps } from '../popper/types';

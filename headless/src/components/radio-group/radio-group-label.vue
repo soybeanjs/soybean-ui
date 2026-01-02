@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Label } from '../label';
-import { useRadioGroupItemContext, useRadioGroupThemeContext } from './context';
+import { useRadioGroupItemContext, useRadioGroupUi } from './context';
 import type { RadioGroupLabelProps } from './types';
 
 defineOptions({
@@ -10,9 +10,7 @@ defineOptions({
 
 const props = defineProps<RadioGroupLabelProps>();
 
-const themeContext = useRadioGroupThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.label);
+const cls = useRadioGroupUi('label');
 
 const { controlId } = useRadioGroupItemContext('RadioGroupLabel');
 

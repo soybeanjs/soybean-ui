@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useTreeMenuThemeContext } from './context';
+import { useTreeMenuUi } from './context';
 import type { TreeMenuGroupRootProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<TreeMenuGroupRootProps>();
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.groupRoot);
+const cls = useTreeMenuUi('groupRoot');
 </script>
 
 <template>

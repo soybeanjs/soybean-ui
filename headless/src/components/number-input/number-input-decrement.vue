@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { useNumberInputRootContext, useNumberInputThemeContext } from './context';
+import { useNumberInputRootContext, useNumberInputUi } from './context';
 import { usePressedHold } from './shared';
 import type { NumberInputDecrementProps } from './types';
 
@@ -16,9 +16,7 @@ const props = withDefaults(defineProps<NumberInputDecrementProps>(), {
 
 const { disabled, readonly, isIncreaseDisabled, onDecrease } = useNumberInputRootContext('NumberInputDecrement');
 
-const themeContext = useNumberInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.decrement);
+const cls = useNumberInputUi('decrement');
 
 const [decrementElement, setDecrementElement] = useForwardElement();
 

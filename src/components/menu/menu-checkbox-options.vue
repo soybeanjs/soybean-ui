@@ -3,7 +3,6 @@
   lang="ts"
   generic="T extends DefinedValue = DefinedValue, S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>"
 >
-import { computed } from 'vue';
 import {
   MenuCheckboxGroup,
   MenuCheckboxItem,
@@ -17,7 +16,7 @@ import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import SMenuItemSlot from './menu-item-slot.vue';
 import { useCommonSlotKeys } from './shared';
-import { useMenuExtraThemeContext } from './context';
+import { useMenuExtraUi } from './context';
 import type { MenuCheckboxOptionData, MenuCheckboxOptionsEmits, MenuCheckboxOptionsProps } from './types';
 
 defineOptions({
@@ -41,9 +40,7 @@ const commonSlotKeys = useCommonSlotKeys(slots);
 
 const forwardedProps = useOmitProps(props, ['items', 'checkboxItemProps', 'groupLabelProps', 'indicatorProps']);
 
-const themeContext = useMenuExtraThemeContext();
-
-const ui = computed(() => ({ ...themeContext?.ui?.value }));
+const shortcutCls = useMenuExtraUi('shortcut');
 </script>
 
 <template>
@@ -76,7 +73,7 @@ const ui = computed(() => ({ ...themeContext?.ui?.value }));
             <slot :name="slotKey" v-bind="item" />
           </template>
           <template #shortcut>
-            <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="ui.shortcut" />
+            <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="shortcutCls" />
           </template>
         </SMenuItemSlot>
       </MenuCheckboxItem>

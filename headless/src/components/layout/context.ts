@@ -1,5 +1,5 @@
-import { useContext } from '../../composables';
-import type { LayoutRootContextParams, LayoutThemeContextParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { LayoutRootContextParams, LayoutUiSlot } from './types';
 
 export const [provideLayoutRootContext, useLayoutRootContext] = useContext(
   'LayoutRoot',
@@ -31,7 +31,4 @@ export const [provideLayoutRootContext, useLayoutRootContext] = useContext(
   }
 );
 
-export const [provideLayoutThemeContext, useLayoutThemeContext] = useContext(
-  'LayoutTheme',
-  (params: LayoutThemeContextParams) => params
-);
+export const [provideLayoutUi, useLayoutUi] = useUiContext<LayoutUiSlot>('LayoutUi');

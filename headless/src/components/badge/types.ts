@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue } from '../../types';
+import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { UiClass } from '../../types';
 
 export interface BadgeRootProps extends /** @vue-ignore */ HTMLAttributes {
   open?: boolean;
@@ -15,10 +15,6 @@ export interface BadgeRootContextParams {
   open: ShallowRef<boolean | undefined>;
 }
 
-export type BadgeThemeSlot = 'root' | 'content';
+export type BadgeUiSlot = 'root' | 'content';
 
-export type BadgeUi = Record<BadgeThemeSlot, ClassValue>;
-
-export interface BadgeThemeContextParams {
-  ui: ComputedRef<BadgeUi>;
-}
+export type BadgeUi = UiClass<BadgeUiSlot>;

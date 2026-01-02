@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTextareaRootContext, useTextareaThemeContext } from './context';
+import { useTextareaRootContext, useTextareaUi } from './context';
 import type { TextareaCounterProps } from './types';
 
 defineOptions({
@@ -11,9 +11,7 @@ defineProps<TextareaCounterProps>();
 
 const { maxlength, count } = useTextareaRootContext('TextareaCounter');
 
-const themeContext = useTextareaThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.counter);
+const cls = useTextareaUi('counter');
 
 const countText = computed(() => {
   if (maxlength.value) {

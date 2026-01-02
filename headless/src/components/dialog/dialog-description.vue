@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useDialogRootContext, useDialogThemeContext } from './context';
+import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogDescriptionProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<DialogDescriptionProps>();
 
 const { descriptionId, initDescriptionId } = useDialogRootContext('DialogDescription');
 
-const themeContext = useDialogThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.description);
+const cls = useDialogUi('description');
 
 initDescriptionId();
 </script>

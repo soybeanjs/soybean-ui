@@ -1,13 +1,13 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   AcceptableBooleanValue,
-  ClassValue,
   DataOrientation,
   Direction,
   EmitsToHookProps,
   ForceMountProps,
   FormFieldCommonProps,
-  PropsToContext
+  PropsToContext,
+  UiClass
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as RadioGroupLabelProps } from '../label/types';
@@ -81,12 +81,8 @@ export type RadioGroupItemContextParams = PropsToContext<
     onSelect: (event: RadioSelectEvent) => void;
   };
 
-export type RadioGroupThemeSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
+export type RadioGroupUiSlot = 'root' | 'item' | 'indicator' | 'label' | 'control';
 
-export type RadioGroupUi = Record<RadioGroupThemeSlot, ClassValue>;
-
-export interface RadioGroupThemeContextParams {
-  ui: ComputedRef<RadioGroupUi>;
-}
+export type RadioGroupUi = UiClass<RadioGroupUiSlot>;
 
 export type { RadioGroupLabelProps };

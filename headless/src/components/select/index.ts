@@ -15,7 +15,7 @@ export { default as SelectArrow } from './select-arrow.vue';
 export { default as SelectScrollUpButton } from './select-scroll-up-button.vue';
 export { default as SelectScrollDownButton } from './select-scroll-down-button.vue';
 
-export { provideSelectThemeContext } from './context';
+export { provideSelectUi } from './context';
 
 export type { PortalProps as SelectPortalProps } from '../portal/types';
 export type {
@@ -40,6 +40,6 @@ export type {
   SelectScrollDownButtonProps,
   SelectItemEvent,
   SelectPosition,
-  SelectThemeSlot,
+  SelectUiSlot,
   SelectUi
 } from './types';

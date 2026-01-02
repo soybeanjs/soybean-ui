@@ -7,7 +7,7 @@ import {
   TooltipPositioner,
   TooltipRoot,
   TooltipTrigger,
-  provideTooltipThemeContext
+  provideTooltipUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<TooltipProps>(), {
 const emit = defineEmits<TooltipEmits>();
 
 const forwardedRootProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'content',
@@ -46,7 +47,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
 const positionerProps = computed(() => {
@@ -56,9 +57,7 @@ const positionerProps = computed(() => {
   };
 });
 
-provideTooltipThemeContext({
-  ui
-});
+provideTooltipUi(ui);
 </script>
 
 <template>

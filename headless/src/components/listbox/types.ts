@@ -1,7 +1,6 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { VirtualItem, Virtualizer } from '@tanstack/vue-virtual';
 import type {
-  ClassValue,
   DataOrientation,
   Direction,
   FormFieldCommonProps,
@@ -9,7 +8,8 @@ import type {
   PropsToContext,
   SelectEvent,
   SelectionEmits,
-  SelectionProps
+  SelectionProps,
+  UiClass
 } from '../../types';
 import type { CollectionItemData } from '../../composables';
 import type { PrimitiveProps } from '../primitive/types';
@@ -122,7 +122,7 @@ export interface ListboxItemContextParams {
   isSelected: ComputedRef<boolean>;
 }
 
-export type ListboxThemeSlot =
+export type ListboxUiSlot =
   | 'root'
   | 'content'
   | 'filterRoot'
@@ -133,8 +133,4 @@ export type ListboxThemeSlot =
   | 'groupLabel'
   | 'virtualizer';
 
-export type ListboxUi = Record<ListboxThemeSlot, ClassValue>;
-
-export interface ListboxThemeContextParams {
-  ui: ComputedRef<ListboxUi>;
-}
+export type ListboxUi = UiClass<ListboxUiSlot>;

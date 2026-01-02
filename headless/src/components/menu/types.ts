@@ -2,7 +2,6 @@ import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } fr
 import type {
   AcceptableBooleanValue,
   CheckedState,
-  ClassValue,
   DefinedValue,
   Direction,
   DismissableLayerEmits,
@@ -10,7 +9,8 @@ import type {
   FocusScopeEmits,
   ForceMountProps,
   PropsToContext,
-  TrapFocusProps
+  TrapFocusProps,
+  UiClass
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
@@ -173,13 +173,13 @@ export interface MenuItemIndicatorContextParams {
   modelValue: ComputedRef<CheckedState | undefined>;
 }
 
-export type MenuThemeSlot =
+export type MenuUiSlot =
   | 'positioner'
   | 'popup'
+  | 'arrow'
   | 'subPositioner'
   | 'subPopup'
   | 'subTrigger'
-  | 'arrow'
   | 'group'
   | 'groupLabel'
   | 'item'
@@ -190,8 +190,4 @@ export type MenuThemeSlot =
   | 'itemIndicator'
   | 'separator';
 
-export type MenuUi = Record<MenuThemeSlot, ClassValue>;
-
-export interface MenuThemeContextParams {
-  ui: ComputedRef<MenuUi>;
-}
+export type MenuUi = UiClass<MenuUiSlot>;

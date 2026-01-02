@@ -5,7 +5,7 @@ import { isFormControl, isNullish, transformPropsToContext } from '../../shared'
 import type { AcceptableBooleanValue } from '../../types';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideRadioGroupRootContext, useRadioGroupThemeContext } from './context';
+import { provideRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupRootEmits, RadioGroupRootProps } from './types';
 
 defineOptions({
@@ -22,9 +22,7 @@ const props = withDefaults(defineProps<RadioGroupRootProps<T>>(), {
 
 const emit = defineEmits<RadioGroupRootEmits<T>>();
 
-const themeContext = useRadioGroupThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useRadioGroupUi('root');
 
 const rootElement = useTemplateRef('rootElement');
 
@@ -46,23 +44,23 @@ provideRadioGroupRootContext({
 </script>
 
 <template>
-  <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
+  <RovingFocusGroup as-child :orientation="props.orientation" :dir="dir" :loop="loop">
     <div
       ref="rootElement"
       :class="cls"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"
-      :aria-orientation="orientation"
+      :aria-orientation="props.orientation"
       :aria-required="required"
     >
       <slot :model-value="modelValue" />
 
       <VisuallyHiddenInput
-        v-if="formControl && name"
+        v-if="formControl && props.name"
         :required="required"
         :disabled="disabled"
         :value="modelValue"
-        :name="name"
+        :name="props.name"
       />
     </div>
   </RovingFocusGroup>

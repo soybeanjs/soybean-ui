@@ -1,7 +1,4 @@
-import { useContext } from '../../composables';
-import type { ListThemeContextParams } from './types';
+import { useUiContext } from '../../composables';
+import type { ListUiSlot } from './types';
 
-export const [provideListThemeContext, useListThemeContext] = useContext(
-  'ListTheme',
-  (params: ListThemeContextParams) => params
-);
+export const [provideListUi, useListUi] = useUiContext<ListUiSlot>('ListUi');

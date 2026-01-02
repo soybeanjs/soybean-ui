@@ -17,7 +17,16 @@ const emit = defineEmits<ButtonEmits>();
 
 const buttonGroupContext = useButtonGroupContext();
 
-const forwardedProps = useOmitProps(props, ['size', 'color', 'variant', 'shape', 'shadow', 'disabled', 'fitContent']);
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'size',
+  'color',
+  'variant',
+  'shape',
+  'shadow',
+  'disabled',
+  'fitContent'
+]);
 
 const cls = computed(() => {
   const { size, color, variant, shape, shadow, fitContent } = buttonGroupContext || {};

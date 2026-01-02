@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
+import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 
 export interface InputBaseProps {
   /** Id of the input element */
@@ -37,10 +37,6 @@ export interface InputRootContextParams extends PropsToContext<InputBaseProps> {
   modelValue: ShallowRef<string | undefined>;
 }
 
-export type InputThemeSlot = 'root' | 'control';
+export type InputUiSlot = 'root' | 'control';
 
-export type InputUi = Record<InputThemeSlot, ClassValue>;
-
-export interface InputThemeContextParams {
-  ui: ComputedRef<InputUi>;
-}
+export type InputUi = UiClass<InputUiSlot>;

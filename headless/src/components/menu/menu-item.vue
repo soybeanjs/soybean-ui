@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, nextTick } from 'vue';
+import { nextTick } from 'vue';
 import { SELECTION_KEYS } from '../../constants';
 import { useForwardElement } from '../../composables';
 import MenuItemImpl from './menu-item-impl.vue';
-import { useMenuContentContext, useMenuRootContext, useMenuThemeContext } from './context';
+import { useMenuContentContext, useMenuRootContext, useMenuUi } from './context';
 import { ITEM_SELECT } from './shared';
 import type { MenuItemEmits, MenuItemProps } from './types';
 
@@ -19,9 +19,7 @@ const [menuItemElement, setMenuItemElement] = useForwardElement();
 const { onClose } = useMenuRootContext('MenuItem');
 const { searchRef } = useMenuContentContext('MenuItem');
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.item);
+const cls = useMenuUi('item');
 
 let isPointerDownRef = false;
 

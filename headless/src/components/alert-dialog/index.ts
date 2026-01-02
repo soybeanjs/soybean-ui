@@ -11,7 +11,7 @@ export { default as AlertDialogRoot } from './alert-dialog-root.vue';
 export { default as AlertDialogContent } from './alert-dialog-content.vue';
 export { default as AlertDialogClose } from './alert-dialog-close.vue';
 
-export { provideDialogThemeContext as provideAlertDialogThemeContext } from '../dialog/context';
+export { provideDialogUi as provideAlertDialogUi } from '../dialog/context';
 
 export type {
   AlertDialogRootProps,
@@ -28,6 +28,6 @@ export type {
   DialogPortalProps as AlertDialogPortalProps,
   DialogTitleProps as AlertDialogTitleProps,
   DialogTriggerProps as AlertDialogTriggerProps,
-  DialogThemeSlot as AlertDialogThemeSlot,
+  DialogUiSlot as AlertDialogUiSlot,
   DialogUi as AlertDialogUi
 } from '../dialog';

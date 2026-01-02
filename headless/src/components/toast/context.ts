@@ -1,8 +1,8 @@
 import { shallowRef } from 'vue';
 import type { ComputedRef } from 'vue';
 import type { ClassValue } from '../../types';
-import { useCollection, useContext } from '../../composables';
-import type { ToastProviderContextParams, ToastRootContextParams, ToastThemeContextParams } from './types';
+import { useCollection, useContext, useUiContext } from '../../composables';
+import type { ToastProviderContextParams, ToastRootContextParams, ToastUiSlot } from './types';
 
 export const { provideCollectionContext, useCollectionContext, useCollectionItem } = useCollection('Toast');
 
@@ -46,12 +46,9 @@ export const [provideToastRootContext, useToastRootContext] = useContext(
   (params: ToastRootContextParams) => params
 );
 
-export const [provideToastThemeContext, useToastThemeContext] = useContext(
-  'ToastTheme',
-  (params: ToastThemeContextParams) => params
-);
+export const [provideToastUi, useToastUi] = useUiContext<ToastUiSlot>('ToastUi');
 
-export const [provideToastViewportThemeContext, useToastViewportThemeContext] = useContext(
+export const [provideToastViewportUi, useToastViewportUi] = useContext(
   'ToastViewportTheme',
   (cls: ComputedRef<ClassValue>) => cls
 );

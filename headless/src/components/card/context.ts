@@ -1,7 +1,4 @@
-import { useContext } from '../../composables';
-import type { CardThemeContextParams } from './types';
+import { useUiContext } from '../../composables';
+import type { CardUiSlot } from './types';
 
-export const [provideCardThemeContext, useCardThemeContext] = useContext(
-  'CardTheme',
-  (params: CardThemeContextParams) => params
-);
+export const [provideCardUi, useCardUi] = useUiContext<CardUiSlot>('CardUi');

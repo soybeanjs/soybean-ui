@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { provideAvatarRootContext, useAvatarThemeContext } from './context';
+import { provideAvatarRootContext, useAvatarUi } from './context';
 import type { AvatarRootProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<AvatarRootProps>();
 
-const themeContext = useAvatarThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useAvatarUi('root');
 
 provideAvatarRootContext();
 </script>

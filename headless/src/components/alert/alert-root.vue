@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useControllableState } from '../../composables';
-import { provideAlertRootContext, useAlertThemeContext } from './context';
+import { provideAlertRootContext, useAlertUi } from './context';
 import type { AlertRootEmits, AlertRootProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ const props = withDefaults(defineProps<AlertRootProps>(), {
 
 const emit = defineEmits<AlertRootEmits>();
 
-const themeContext = useAlertThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useAlertUi('root');
 
 const open = useControllableState(
   () => props.open,

@@ -1,5 +1,5 @@
-import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, HtmlHTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableBooleanValue, ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { ButtonHTMLAttributes, HTMLAttributes, HtmlHTMLAttributes, ShallowRef } from 'vue';
+import type { AcceptableBooleanValue, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface SwitchValueConfig<T extends AcceptableBooleanValue = boolean> {
@@ -48,10 +48,6 @@ export interface SwitchRootContextParams<T extends AcceptableBooleanValue = bool
   modelValue: ShallowRef<T>;
 }
 
-export type SwitchThemeSlot = 'root' | 'control' | 'thumb';
+export type SwitchUiSlot = 'root' | 'control' | 'thumb';
 
-export type SwitchUi = Record<SwitchThemeSlot, ClassValue>;
-
-export interface SwitchThemeContextParams {
-  ui: ComputedRef<SwitchUi>;
-}
+export type SwitchUi = UiClass<SwitchUiSlot>;

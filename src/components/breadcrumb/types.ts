@@ -6,7 +6,8 @@ import type {
   BreadcrumbPageProps,
   BreadcrumbRootProps,
   BreadcrumbSeparatorProps,
-  BreadcrumbUi
+  BreadcrumbUi,
+  ClassValue
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -36,6 +37,10 @@ export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOpti
   BreadcrumbRootProps,
   'onClick'
 > {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<BreadcrumbUi>;
   items: T[];

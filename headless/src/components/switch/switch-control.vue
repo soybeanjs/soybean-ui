@@ -2,7 +2,7 @@
 import { computed, useAttrs } from 'vue';
 import { useForwardElement } from '../../composables';
 import { getAriaLabel } from '../../shared';
-import { useSwitchRootContext, useSwitchThemeContext } from './context';
+import { useSwitchRootContext, useSwitchUi } from './context';
 import type { SwitchControlProps } from './types';
 
 defineOptions({
@@ -17,9 +17,7 @@ const { modelValue, dataDisabled, dataState, toggleCheck, required } = useSwitch
 
 const [controlElement, setControlElement] = useForwardElement();
 
-const themeContext = useSwitchThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.control);
+const cls = useSwitchUi('control');
 
 const ariaLabel = computed(() => getAriaLabel(controlElement.value, props.id, attrs['aria-label'] as string));
 </script>

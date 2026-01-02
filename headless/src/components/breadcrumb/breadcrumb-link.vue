@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import Link from '../link/link.vue';
-import { useBreadcrumbThemeContext } from './context';
+import { useBreadcrumbUi } from './context';
 import type { BreadcrumbLinkProps } from './types';
 
 defineOptions({
@@ -10,9 +9,7 @@ defineOptions({
 
 const props = defineProps<BreadcrumbLinkProps>();
 
-const themeContext = useBreadcrumbThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.link);
+const cls = useBreadcrumbUi('link');
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue } from '../../types';
+import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type TreeMenuCollapsedState = 'expanded' | 'collapsed';
@@ -94,7 +94,7 @@ export interface TreeMenuSubContextParams {
   isSub: boolean;
 }
 
-export type TreeMenuThemeSlot =
+export type TreeMenuUiSlot =
   | 'root'
   | 'groupRoot'
   | 'groupLabel'
@@ -106,6 +106,4 @@ export type TreeMenuThemeSlot =
   | 'subButton'
   | 'collapsibleContent';
 
-export type TreeMenuUi = Record<TreeMenuThemeSlot, ClassValue>;
-
-export type TreeMenuThemeContextParams = ComputedRef<Partial<TreeMenuUi>>;
+export type TreeMenuUi = UiClass<TreeMenuUiSlot>;

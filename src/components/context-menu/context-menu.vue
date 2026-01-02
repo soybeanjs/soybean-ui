@@ -33,6 +33,7 @@ type Slots = {
 const slots = defineSlots<Slots>();
 
 const propKeys = [
+  'class',
   'dir',
   'modal',
   'size',
@@ -44,11 +45,11 @@ const propKeys = [
   'contentProps',
   'popupProps',
   'arrowProps'
-] satisfies (keyof ContextMenuProps<T, S>)[];
+] as const;
 
-const forwardedWrapperProps = usePickProps(props, propKeys);
+const forwardedWrapperProps = usePickProps(props, [...propKeys]);
 
-const forwardedOptionsProps = useOmitProps(props, propKeys);
+const forwardedOptionsProps = useOmitProps(props, [...propKeys]);
 
 const forwardedListeners = useForwardListeners(emit);
 

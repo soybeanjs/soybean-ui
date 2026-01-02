@@ -8,7 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbRoot,
   BreadcrumbSeparator,
-  provideBreadcrumbThemeContext
+  provideBreadcrumbUi
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -26,6 +26,7 @@ const props = defineProps<BreadcrumbProps<T>>();
 const emit = defineEmits<BreadcrumbEmits<T>>();
 
 const forwardedRootProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'items',
@@ -42,7 +43,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 const ellipsisRange = computed(() => getEllipsisRange(props.items, props.ellipsis));
@@ -69,9 +70,7 @@ function handleItemClick(item: T) {
   emit('click', item);
 }
 
-provideBreadcrumbThemeContext({
-  ui
-});
+provideBreadcrumbUi(ui);
 </script>
 
 <template>

@@ -15,7 +15,7 @@ import {
   SelectTriggerIcon,
   SelectValue,
   SelectViewport,
-  provideSelectThemeContext
+  provideSelectUi
 } from '@soybeanjs/headless';
 import type { DefinedValue } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
@@ -62,6 +62,7 @@ const optionSlotKeys = computed(
 );
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'ui',
   'size',
   'items',
@@ -99,7 +100,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { trigger: props.class });
 });
 
 const valueProps = computed(() => {
@@ -117,9 +118,7 @@ const contentProps = computed(() => {
   };
 });
 
-provideSelectThemeContext({
-  ui
-});
+provideSelectUi(ui);
 </script>
 
 <template>

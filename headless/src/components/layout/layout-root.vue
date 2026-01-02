@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { provideLayoutRootContext, useLayoutThemeContext } from './context';
+import { provideLayoutRootContext, useLayoutUi } from './context';
 import { layoutCssVars } from './shared';
 import type { LayoutRootEmits, LayoutRootProps, LayoutSidebarState } from './types';
 
@@ -24,9 +24,7 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
 
 const emit = defineEmits<LayoutRootEmits>();
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useLayoutUi('root');
 
 const open = useControllableState(
   () => props.open,

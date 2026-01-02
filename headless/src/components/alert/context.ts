@@ -1,5 +1,5 @@
-import { useContext } from '../../composables';
-import type { AlertRootContextParams, AlertThemeContextParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { AlertRootContextParams, AlertUiSlot } from './types';
 
 export const [provideAlertRootContext, useAlertRootContext] = useContext(
   'AlertRoot',
@@ -17,7 +17,4 @@ export const [provideAlertRootContext, useAlertRootContext] = useContext(
   }
 );
 
-export const [provideAlertThemeContext, useAlertThemeContext] = useContext(
-  'AlertTheme',
-  (params: AlertThemeContextParams) => params
-);
+export const [provideAlertUi, useAlertUi] = useUiContext<AlertUiSlot>('AlertUi');

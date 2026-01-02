@@ -4,7 +4,7 @@ export { default as FormLabel } from './form-label.vue';
 export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
-export { provideFormThemeContext } from './context';
+export { provideFormFieldUi } from './context';
 
 export type {
   FormFieldProps,
@@ -12,6 +12,6 @@ export type {
   FormLabelProps,
   FormDescriptionProps,
   FormErrorProps,
-  FormFieldThemeSlot,
+  FormFieldUiSlot,
   FormFieldUi
 } from './types';

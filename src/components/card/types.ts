@@ -6,11 +6,16 @@ import type {
   CardRootProps,
   CardTitleProps,
   CardTitleRootProps,
-  CardUi
+  CardUi,
+  ClassValue
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
 export interface CardProps extends CardRootProps {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<CardUi>;
   title?: string;

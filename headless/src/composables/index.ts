@@ -25,3 +25,4 @@ export * from './use-props';
 export * from './use-selection';
 export * from './use-state-machine';
 export * from './use-typeahead';
+export * from './use-ui-context';

@@ -1,5 +1,6 @@
 import type {
   AcceptableBooleanValue,
+  ClassValue,
   DefinedValue,
   DropdownMenuArrowProps,
   DropdownMenuContentEmits,
@@ -27,6 +28,10 @@ import type {
 
 // Menu Wrapper
 export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<MenuExtendedUi>;
   disabled?: boolean;
@@ -55,7 +60,12 @@ export interface DropdownMenuCheckboxProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
 >
-  extends DropdownMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {}
+  extends DropdownMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
+}
 
 export type DropdownMenuCheckboxEmits<
   T extends DefinedValue = DefinedValue,
@@ -67,7 +77,12 @@ export interface DropdownMenuRadioProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 >
-  extends DropdownMenuWrapperProps, MenuRadioOptionsProps<T, S> {}
+  extends DropdownMenuWrapperProps, MenuRadioOptionsProps<T, S> {
+  /**
+   * class of menu popup
+   */
+  class?: ClassValue;
+}
 
 export type DropdownMenuRadioEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,

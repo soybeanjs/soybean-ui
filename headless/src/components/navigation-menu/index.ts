@@ -8,7 +8,7 @@ export { default as NavigationMenuTrigger } from './navigation-menu-trigger.vue'
 export { default as NavigationMenuViewport } from './navigation-menu-viewport.vue';
 export { default as NavigationMenuIndicator } from './navigation-menu-indicator.vue';
 
-export { provideNavigationMenuThemeContext } from './context';
+export { provideNavigationMenuUi } from './context';
 
 export type {
   NavigationMenuRootProps,
@@ -25,6 +25,6 @@ export type {
   NavigationMenuSubProps,
   NavigationMenuSubEmits,
   NavigationMenuSubListProps,
-  NavigationMenuThemeSlot,
+  NavigationMenuUiSlot,
   NavigationMenuUi
 } from './types';

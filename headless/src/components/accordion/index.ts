@@ -4,7 +4,7 @@ export { default as AccordionTrigger } from './accordion-trigger.vue';
 export { default as AccordionHeader } from './accordion-header.vue';
 export { default as AccordionContent } from './accordion-content.vue';
 
-export { provideAccordionThemeContext } from './context';
+export { provideAccordionUi } from './context';
 
 export type {
   AccordionRootProps,
@@ -13,6 +13,6 @@ export type {
   AccordionTriggerProps,
   AccordionHeaderProps,
   AccordionContentProps,
-  AccordionThemeSlot,
+  AccordionUiSlot,
   AccordionUi
 } from './types';

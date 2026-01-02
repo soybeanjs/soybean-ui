@@ -1,12 +1,12 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  ClassValue,
   DataOrientation,
   Direction,
   MaybeArray,
   PropsToContext,
   SelectionEmits,
-  SelectionProps
+  SelectionProps,
+  UiClass
 } from '../../types';
 import type { CollapsibleRootProps } from '../collapsible/types';
 
@@ -70,13 +70,9 @@ export interface AccordionItemContextParams extends PropsToContext<AccordionItem
   disabled: ComputedRef<boolean>;
 }
 
-export type AccordionThemeSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
+export type AccordionUiSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
 
-export type AccordionUi = Record<AccordionThemeSlot, ClassValue>;
-
-export interface AccordionThemeContextParams {
-  ui: ComputedRef<AccordionUi>;
-}
+export type AccordionUi = UiClass<AccordionUiSlot>;
 
 export type {
   CollapsibleContentProps as AccordionContentProps,

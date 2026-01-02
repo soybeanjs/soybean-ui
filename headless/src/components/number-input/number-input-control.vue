@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, shallowRef, watch } from 'vue';
+import { shallowRef, watch } from 'vue';
 import { getActiveElement } from '../../shared';
 import type { NumberInputControlProps } from './types';
-import { useNumberInputRootContext, useNumberInputThemeContext } from './context';
+import { useNumberInputRootContext, useNumberInputUi } from './context';
 
 defineOptions({
   name: 'NumberInputControl'
@@ -10,9 +10,7 @@ defineOptions({
 
 defineProps<NumberInputControlProps>();
 
-const themeContext = useNumberInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.control);
+const cls = useNumberInputUi('control');
 
 const {
   id,

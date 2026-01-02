@@ -7,7 +7,7 @@ export { default as ToastAction } from './toast-action.vue';
 export { default as ToastTitle } from './toast-title.vue';
 export { default as ToastDescription } from './toast-description.vue';
 
-export { provideToastThemeContext, provideToastViewportThemeContext } from './context';
+export { provideToastUi, provideToastViewportUi } from './context';
 
 export type { PortalProps as ToastPortalProps } from '../portal/types';
 export type {
@@ -19,6 +19,6 @@ export type {
   ToastActionProps,
   ToastTitleProps,
   ToastDescriptionProps,
-  ToastThemeSlot,
+  ToastUiSlot,
   ToastUi
 } from './types';

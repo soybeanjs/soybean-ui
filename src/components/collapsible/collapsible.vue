@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { CollapsibleRoot, provideCollapsibleThemeContext } from '@soybeanjs/headless';
+import { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { collapsibleVariants } from '@/variants/collapsible';
@@ -28,9 +28,7 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-provideCollapsibleThemeContext({
-  ui
-});
+provideCollapsibleUi(ui);
 </script>
 
 <template>

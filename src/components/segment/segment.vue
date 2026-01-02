@@ -7,7 +7,7 @@
   "
 >
 import { computed } from 'vue';
-import { TabsIndicator, TabsList, TabsRoot, TabsTrigger, provideTabsThemeContext } from '@soybeanjs/headless';
+import { TabsIndicator, TabsList, TabsRoot, TabsTrigger, provideTabsUi } from '@soybeanjs/headless';
 import type { AcceptableValue, TabsRootEmits } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -29,6 +29,7 @@ const props = withDefaults(defineProps<SegmentProps<T, S>>(), {
 const emit = defineEmits<TabsRootEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'items',
@@ -50,12 +51,10 @@ const ui = computed(() => {
     enableIndicator: props.enableIndicator
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideTabsThemeContext({
-  ui
-});
+provideTabsUi(ui);
 </script>
 
 <template>

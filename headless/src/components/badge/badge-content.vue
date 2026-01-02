@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useBadgeRootContext, useBadgeThemeContext } from './context';
+import { useBadgeRootContext, useBadgeUi } from './context';
 import type { BadgeContentProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<BadgeContentProps>();
 
 const { open } = useBadgeRootContext('BadgeContent');
 
-const themeContext = useBadgeThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useBadgeUi('content');
 </script>
 
 <template>

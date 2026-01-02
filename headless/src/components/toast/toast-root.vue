@@ -12,7 +12,7 @@ import { useControllableState, usePresence } from '../../composables';
 import type { Point, SwipeEvent } from '../../types';
 import { Primitive } from '../primitive';
 import ToastAnnounce from './toast-announce.vue';
-import { provideToastRootContext, useCollectionItem, useToastProviderContext, useToastThemeContext } from './context';
+import { provideToastRootContext, useCollectionItem, useToastProviderContext, useToastUi } from './context';
 import {
   TOAST_DATA_SWIPE,
   TOAST_SWIPE_CANCEL,
@@ -43,8 +43,7 @@ const emit = defineEmits<ToastRootEmits>();
 
 const attrs = useAttrs();
 
-const themeContext = useToastThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useToastUi('root');
 
 const {
   swipeDirection,

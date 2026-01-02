@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
-import { useTabsRootContext, useTabsThemeContext } from './context';
+import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsContentProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const { modelValue, unmountOnHide, getId } = useTabsRootContext('TabsContent');
 
 const [contentElement, setContentElement] = useForwardElement();
 
-const themeContext = useTabsThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useTabsUi('content');
 
 const { contentId, triggerId } = getId(props.value);
 

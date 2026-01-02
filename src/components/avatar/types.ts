@@ -3,11 +3,16 @@ import type {
   AvatarImageEmits,
   AvatarImageProps,
   AvatarRootProps,
-  AvatarUi
+  AvatarUi,
+  ClassValue
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
 export interface AvatarProps extends AvatarRootProps {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<AvatarUi>;
   /** The image source URL */

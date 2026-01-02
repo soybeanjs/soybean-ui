@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useFormFieldContext, useFormThemeContext } from './context';
+import { useFormFieldContext, useFormFieldUi } from './context';
 import type { FormDescriptionProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<FormDescriptionProps>();
 
 const { formDescriptionId } = useFormFieldContext('FormDescription');
 
-const themeContext = useFormThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.description);
+const cls = useFormFieldUi('description');
 </script>
 
 <template>

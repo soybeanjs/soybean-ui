@@ -28,15 +28,3 @@ export const drawerContentVariants = tv({
     side: 'right'
   }
 });
-
-export const drawerScrollableVariants = tv({
-  base: `flex-grow`,
-  variants: {
-    scrollable: {
-      true: `overflow-auto`
-    }
-  },
-  defaultVariants: {
-    scrollable: true
-  }
-});

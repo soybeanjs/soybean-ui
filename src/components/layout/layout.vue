@@ -8,7 +8,7 @@ import {
   LayoutRoot,
   LayoutSidebar,
   LayoutTab,
-  provideLayoutThemeContext
+  provideLayoutUi
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext, themeSizeMap, themeSizeRatio } from '@/theme';
@@ -28,6 +28,7 @@ const props = withDefaults(defineProps<LayoutProps>(), {
 const emit = defineEmits<LayoutEmits>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'pxToRem',
@@ -63,13 +64,10 @@ const ui = computed(() => {
 
   variants.mobileDrawer = () => drawer;
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideLayoutThemeContext({
-  ui
-});
-
+provideLayoutUi(ui);
 provideSizeContext(() => props.size);
 </script>
 

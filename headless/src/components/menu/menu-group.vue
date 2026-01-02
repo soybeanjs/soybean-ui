@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useMenuThemeContext } from './context';
+import { useMenuUi } from './context';
 import type { MenuGroupProps } from './types';
 
 defineOptions({
@@ -10,9 +9,7 @@ defineOptions({
 
 defineProps<MenuGroupProps>();
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.group);
+const cls = useMenuUi('group');
 </script>
 
 <template>

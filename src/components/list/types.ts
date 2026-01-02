@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   ListContentProps,
   ListDescriptionProps,
   ListRootProps,
@@ -9,6 +10,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface ListProps extends ListRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<ListUi>;
 }

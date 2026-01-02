@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
-import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { useAttrs } from 'vue';
+import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuListProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const attrs = useAttrs();
 
 const { setIndicatorTrackElement } = useNavigationMenuRootContext('NavigationMenuList');
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.list);
+const cls = useNavigationMenuUi('list');
 </script>
 
 <template>

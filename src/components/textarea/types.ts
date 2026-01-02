@@ -9,11 +9,12 @@ import type {
 import type { ThemeSize } from '@/theme';
 import type { TextareaResize } from '@/variants/textarea';
 
-export type TextareaExtraThemeSlot = 'clearable';
+export type TextareaExtraUiSlot = 'clearable';
 
-type TextareaExtendedUi = TextareaUi & Record<TextareaExtraThemeSlot, ClassValue>;
+type TextareaExtendedUi = TextareaUi & Record<TextareaExtraUiSlot, ClassValue>;
 
 export interface TextareaProps extends TextareaRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TextareaExtendedUi>;
   /**

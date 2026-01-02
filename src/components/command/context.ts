@@ -1,7 +1,4 @@
-import { useContext } from '@soybeanjs/headless/composables';
-import type { CommandExtraThemeContextParams } from './types';
+import { useUiContext } from '@soybeanjs/headless/composables';
+import type { CommandExtraUiSlot } from './types';
 
-export const [provideCommandExtraThemeContext, useCommandExtraThemeContext] = useContext(
-  'CommandExtraTheme',
-  (params: CommandExtraThemeContextParams) => params
-);
+export const [provideCommandExtraUi, useCommandExtraUi] = useUiContext<CommandExtraUiSlot>('CommandExtraUi');

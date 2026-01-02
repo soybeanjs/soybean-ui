@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onWatcherCleanup, shallowRef, watchEffect } from 'vue';
 import { isClient } from '../../shared';
-import { useAvatarRootContext, useAvatarThemeContext } from './context';
+import { useAvatarRootContext, useAvatarUi } from './context';
 import type { AvatarFallbackProps } from './types';
 
 defineOptions({
@@ -10,9 +10,7 @@ defineOptions({
 
 const props = defineProps<AvatarFallbackProps>();
 
-const themeContext = useAvatarThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.fallback);
+const cls = useAvatarUi('fallback');
 
 const { imageLoadingStatus } = useAvatarRootContext('AvatarFallback');
 

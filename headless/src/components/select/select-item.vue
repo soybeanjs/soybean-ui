@@ -15,7 +15,7 @@ import {
   useCollectionItem,
   useSelectContentContext,
   useSelectRootContext,
-  useSelectThemeContext
+  useSelectUi
 } from './context';
 import { SELECTION_KEYS, SELECT_EVENT } from './shared';
 import type { SelectItemEmits, SelectItemEvent, SelectItemProps } from './types';
@@ -30,9 +30,7 @@ const emit = defineEmits<SelectItemEmits>();
 
 const { modelValue, onModelValueChange, onOpenChange, isMultiple } = useSelectRootContext('SelectItem');
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.item);
+const cls = useSelectUi('item');
 
 const isSelected = computed(() => isValueEqualOrExist(modelValue.value, props.value));
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Label } from '../label';
-import { useFormFieldContext, useFormThemeContext } from './context';
+import { useFormFieldContext, useFormFieldUi } from './context';
 import type { FormLabelProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ defineProps<FormLabelProps>();
 
 const { formFieldId } = useFormFieldContext('FormLabel');
 
-const themeContext = useFormThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.label);
+const cls = useFormFieldUi('label');
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import {
   CardRoot,
   CardTitle,
   CardTitleRoot,
-  provideCardThemeContext
+  provideCardUi
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -24,6 +24,7 @@ const props = withDefaults(defineProps<CardProps>(), {
 });
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'title',
@@ -63,12 +64,10 @@ const ui = computed(() => {
     split: props.split
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideCardThemeContext({
-  ui
-});
+provideCardUi(ui);
 </script>
 
 <template>

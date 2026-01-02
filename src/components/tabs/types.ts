@@ -19,14 +19,15 @@ export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   disabled?: boolean;
 }
 
-export type TabsExtraThemeSlot = 'indicatorContent';
+export type TabsExtraUiSlot = 'indicatorContent';
 
-export type TabsExtendedUi = TabsUi & Record<TabsExtraThemeSlot, ClassValue>;
+export type TabsExtendedUi = TabsUi & Record<TabsExtraUiSlot, ClassValue>;
 
 export interface TabsProps<
   T extends AcceptableValue,
   S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
 > extends TabsRootProps<T> {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TabsExtendedUi>;
   items: S[];

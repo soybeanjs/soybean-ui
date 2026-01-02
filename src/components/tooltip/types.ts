@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   Placement,
   TooltipArrowProps,
   TooltipPopupProps,
@@ -13,6 +14,10 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface TooltipProps extends TooltipRootProps {
+  /**
+   * class of popup
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TooltipUi>;
   content?: string;

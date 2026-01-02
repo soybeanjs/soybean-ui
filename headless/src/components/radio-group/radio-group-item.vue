@@ -2,7 +2,7 @@
 import { computed, useTemplateRef } from 'vue';
 import { isFormControl, isNullish, transformPropsToContext } from '../../shared';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeContext } from './context';
+import { provideRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupItemEmits, RadioGroupItemProps, RadioSelectEvent } from './types';
 
 defineOptions({
@@ -13,9 +13,7 @@ const props = defineProps<RadioGroupItemProps>();
 
 const emit = defineEmits<RadioGroupItemEmits>();
 
-const themeContext = useRadioGroupThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.item);
+const cls = useRadioGroupUi('item');
 
 const rootContext = useRadioGroupRootContext('RadioGroupItem');
 const itemElement = useTemplateRef<HTMLDivElement>('itemElement');

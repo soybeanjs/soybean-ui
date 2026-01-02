@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useTreeMenuItemContext, useTreeMenuThemeContext } from './context';
+import { useTreeMenuItemContext, useTreeMenuUi } from './context';
 import type { TreeMenuButtonProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ const props = withDefaults(defineProps<TreeMenuButtonProps>(), {
   as: 'button'
 });
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.button);
+const cls = useTreeMenuUi('button');
 
 const { isActive, onActive } = useTreeMenuItemContext('TreeMenuButton');
 

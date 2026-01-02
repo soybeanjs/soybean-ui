@@ -1,8 +1,8 @@
 import { computed, shallowRef, useId } from 'vue';
-import { useContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import type { DisclosureState } from '../../types';
-import type { CollapsibleRootContextParams, CollapsibleThemeContextParams } from './types';
+import type { CollapsibleRootContextParams, CollapsibleUiSlot } from './types';
 
 export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useContext(
   'CollapsibleRoot',
@@ -37,7 +37,4 @@ export const [provideCollapsibleRootContext, useCollapsibleRootContext] = useCon
   }
 );
 
-export const [provideCollapsibleThemeContext, useCollapsibleThemeContext] = useContext(
-  'CollapsibleTheme',
-  (params: CollapsibleThemeContextParams) => params
-);
+export const [provideCollapsibleUi, useCollapsibleUi] = useUiContext<CollapsibleUiSlot>('CollapsibleUi');

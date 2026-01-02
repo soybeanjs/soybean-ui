@@ -3,7 +3,7 @@ import { computed, onBeforeMount, onMounted, useAttrs, useTemplateRef, watchEffe
 import { getAriaLabel, handleAndDispatchCustomEvent, isFormControl } from '../../shared';
 import type { NavigationKey } from '../../types';
 import { RovingFocusItem } from '../roving-focus';
-import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupThemeContext } from './context';
+import { useRadioGroupItemContext, useRadioGroupRootContext, useRadioGroupUi } from './context';
 import type { RadioGroupControlProps, RadioSelectEvent } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const props = defineProps<RadioGroupControlProps>();
 
 const attrs = useAttrs();
 
-const themeContext = useRadioGroupThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.control);
+const cls = useRadioGroupUi('control');
 
 const controlElement = useTemplateRef<HTMLButtonElement>('controlElement');
 const rootContext = useRadioGroupRootContext('RadioGroupControl');

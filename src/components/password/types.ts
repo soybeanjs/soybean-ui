@@ -1,11 +1,12 @@
 import type { ClassValue, InputControlProps, InputRootEmits, InputRootProps, InputUi } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-type PasswordThemeSlot = 'clearable' | 'visible';
+type PasswordUiSlot = 'clearable' | 'visible';
 
-type PasswordUi = InputUi & Record<PasswordThemeSlot, ClassValue>;
+type PasswordUi = InputUi & Record<PasswordUiSlot, ClassValue>;
 
 export interface PasswordProps extends InputRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<PasswordUi>;
   /** Whether to show the password */

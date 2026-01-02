@@ -4,7 +4,7 @@ import { useOmitProps } from '../../composables';
 import { handleAndDispatchCustomEvent } from '../../shared';
 import type { SelectEvent } from '../../types';
 import { Primitive } from '../primitive';
-import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxThemeContext } from './context';
+import { provideListboxItemContext, useCollectionItem, useListboxRootContext, useListboxUi } from './context';
 import type { ListboxItemEmits, ListboxItemProps } from './types';
 
 defineOptions({
@@ -17,9 +17,7 @@ const props = withDefaults(defineProps<ListboxItemProps>(), {
 
 const emit = defineEmits<ListboxItemEmits>();
 
-const themeContext = useListboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.item);
+const cls = useListboxUi('item');
 
 const {
   modelValue,

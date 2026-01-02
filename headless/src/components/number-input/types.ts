@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
-import type { ClassValue, FormFieldCommonProps, PropsToContext } from '../../types';
+import type { HTMLAttributes, InputHTMLAttributes, ShallowRef } from 'vue';
+import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
@@ -65,10 +65,6 @@ export interface NumberInputRootContextParams extends PropsToContext<
   modelValue: ShallowRef<number | null | undefined>;
 }
 
-export type NumberInputThemeSlot = 'root' | 'increment' | 'decrement' | 'control';
+export type NumberInputUiSlot = 'root' | 'increment' | 'decrement' | 'control';
 
-export type NumberInputUi = Record<NumberInputThemeSlot, ClassValue>;
-
-export interface NumberInputThemeContextParams {
-  ui: ComputedRef<NumberInputUi>;
-}
+export type NumberInputUi = UiClass<NumberInputUiSlot>;

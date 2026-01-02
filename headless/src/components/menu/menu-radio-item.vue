@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import { getCheckedState, isIndeterminate } from '../../shared';
-import { provideMenuItemIndicatorContext, useMenuRadioGroupContext, useMenuThemeContext } from './context';
+import { provideMenuItemIndicatorContext, useMenuRadioGroupContext, useMenuUi } from './context';
 import MenuItem from './menu-item.vue';
 import type { MenuRadioItemEmits, MenuRadioItemProps } from './types';
 
@@ -16,9 +16,7 @@ const emit = defineEmits<MenuRadioItemEmits>();
 
 const forwardedProps = useOmitProps(props, ['value', 'disabled']);
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.radioItem);
+const cls = useMenuUi('radioItem');
 
 const {
   modelValue: radioGroupModelValue,

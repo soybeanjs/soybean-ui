@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { AcceptableValue, ClassValue, DefinedValue, ForceMountProps, PropsToContext } from '../../types';
+import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { AcceptableValue, DefinedValue, ForceMountProps, PropsToContext, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
@@ -58,10 +58,6 @@ export interface TabsRootContextParams extends PropsToContext<
   modelValue: ShallowRef<AcceptableValue>;
 }
 
-export type TabsThemeSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator';
+export type TabsUiSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator';
 
-export type TabsUi = Record<TabsThemeSlot, ClassValue>;
-
-export interface TabsThemeContextParams {
-  ui: ComputedRef<TabsUi>;
-}
+export type TabsUi = UiClass<TabsUiSlot>;

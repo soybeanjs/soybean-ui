@@ -49,5 +49,7 @@ export type {
   MenuSubContentProps as ContextMenuSubContentProps,
   MenuSubEmits as ContextMenuSubEmits,
   MenuSubProps as ContextMenuSubProps,
-  MenuSubTriggerProps as ContextMenuSubTriggerProps
+  MenuSubTriggerProps as ContextMenuSubTriggerProps,
+  MenuUiSlot as ContextMenuUiSlot,
+  MenuUi as ContextMenuUi
 } from '../menu';

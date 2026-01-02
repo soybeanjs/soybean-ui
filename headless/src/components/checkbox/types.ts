@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
   CheckedState,
-  ClassValue,
   DefinedValue,
   ForceMountProps,
   FormFieldCommonProps,
-  PropsToContext
+  PropsToContext,
+  UiClass
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
@@ -83,12 +83,8 @@ export type CheckboxRootContextParams = PropsToContext<
   state: ComputedRef<CheckedState>;
 };
 
-export type CheckboxThemeSlot = 'root' | 'indicator' | 'groupRoot' | 'label' | 'control';
+export type CheckboxUiSlot = 'root' | 'indicator' | 'groupRoot' | 'label' | 'control';
 
-export type CheckboxUi = Record<CheckboxThemeSlot, ClassValue>;
-
-export interface CheckboxThemeContextParams {
-  ui: ComputedRef<CheckboxUi>;
-}
+export type CheckboxUi = UiClass<CheckboxUiSlot>;
 
 export type { LabelProps as CheckboxLabelProps } from '../label/types';

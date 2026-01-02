@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
+import { computed } from 'vue';
 import { Link } from '@soybeanjs/headless';
 import { cn } from '@/theme';
 import { linkVariants } from '@/variants/link';
@@ -10,20 +10,19 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<LinkProps>(), {
+  disabled: undefined,
   external: undefined,
+  noRel: undefined,
   prefetch: undefined,
   noPrefetch: undefined,
-  noRel: undefined,
+  custom: undefined,
   viewTransition: undefined,
-  replace: undefined,
-  disabled: undefined
+  replace: undefined
 });
-
-const attrs = useAttrs() as Record<string, any>;
 
 const variants = linkVariants();
 
-const cls = computed(() => cn(variants, attrs.class));
+const cls = computed(() => cn(variants, props.class));
 </script>
 
 <template>

@@ -3,7 +3,7 @@ export { default as NumberInputControl } from './number-input-control.vue';
 export { default as NumberInputIncrement } from './number-input-increment.vue';
 export { default as NumberInputDecrement } from './number-input-decrement.vue';
 
-export { provideNumberInputThemeContext } from './context';
+export { provideNumberInputUi } from './context';
 
 export type {
   NumberInputRootProps,
@@ -11,6 +11,6 @@ export type {
   NumberInputControlProps,
   NumberInputIncrementProps,
   NumberInputDecrementProps,
-  NumberInputThemeSlot,
+  NumberInputUiSlot,
   NumberInputUi
 } from './types';

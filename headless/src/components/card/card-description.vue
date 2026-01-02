@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useCardThemeContext } from './context';
+import { useCardUi } from './context';
 import type { CardDescriptionProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<CardDescriptionProps>();
 
-const themeContext = useCardThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.description);
+const cls = useCardUi('description');
 </script>
 
 <template>

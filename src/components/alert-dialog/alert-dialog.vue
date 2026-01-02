@@ -10,7 +10,7 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
-  provideDialogThemeContext
+  provideAlertDialogUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
@@ -83,10 +83,7 @@ const iconConfig = computed(() => {
   return iconRecord[props.type];
 });
 
-provideDialogThemeContext({
-  ui
-});
-
+provideAlertDialogUi(ui);
 provideSizeContext(() => props.size);
 </script>
 

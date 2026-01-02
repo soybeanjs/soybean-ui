@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Label } from '../label';
-import { useCheckboxRootContext, useCheckboxThemeContext } from './context';
+import { useCheckboxRootContext, useCheckboxUi } from './context';
 import type { CheckboxLabelProps } from './types';
 
 defineOptions({
@@ -10,9 +10,7 @@ defineOptions({
 
 const props = defineProps<CheckboxLabelProps>();
 
-const themeContext = useCheckboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.label);
+const cls = useCheckboxUi('label');
 
 const { controlId } = useCheckboxRootContext('CheckboxLabel');
 

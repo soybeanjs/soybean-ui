@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useMenuThemeContext } from './context';
+import { useMenuUi } from './context';
 import type { MenuGroupLabelProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<MenuGroupLabelProps>();
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.groupLabel);
+const cls = useMenuUi('groupLabel');
 </script>
 
 <template>

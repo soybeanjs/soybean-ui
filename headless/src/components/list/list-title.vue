@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useListThemeContext } from './context';
+import { useListUi } from './context';
 import type { ListTitleProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<ListTitleProps>();
 
-const themeContext = useListThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.title);
+const cls = useListUi('title');
 </script>
 
 <template>

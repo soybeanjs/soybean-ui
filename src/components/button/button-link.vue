@@ -19,9 +19,11 @@ const props = withDefaults(defineProps<ButtonLinkProps>(), {
   disabled: undefined
 });
 
-const buttonProps = usePickProps(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent']);
+const propKeys = ['class', 'color', 'size', 'variant', 'shape', 'shadow', 'fitContent'] as const;
 
-const linkProps = useOmitProps(props, ['color', 'size', 'variant', 'shape', 'shadow', 'fitContent']);
+const buttonProps = usePickProps(props, [...propKeys]);
+
+const linkProps = useOmitProps(props, [...propKeys]);
 </script>
 
 <template>

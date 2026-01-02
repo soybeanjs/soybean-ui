@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { InputControl, InputRoot, provideInputThemeContext } from '@soybeanjs/headless';
+import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
 import { useControllableState, useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { inputVariants } from '@/variants/input';
@@ -19,7 +19,7 @@ const emit = defineEmits<PasswordEmits>();
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
-const forwardedProps = useOmitProps(props, ['size', 'ui', 'clearable', 'visible', 'inputRef', 'controlProps']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'clearable', 'visible', 'inputRef', 'controlProps']);
 
 const visible = useControllableState(
   () => props.visible,
@@ -38,12 +38,10 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideInputThemeContext({
-  ui
-});
+provideInputUi(ui);
 </script>
 
 <template>

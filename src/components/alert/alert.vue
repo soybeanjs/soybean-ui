@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import {
-  AlertClose,
-  AlertContent,
-  AlertDescription,
-  AlertRoot,
-  AlertTitle,
-  provideAlertThemeContext
-} from '@soybeanjs/headless';
+import { AlertClose, AlertContent, AlertDescription, AlertRoot, AlertTitle, provideAlertUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
 import { alertVariants } from '@/variants/alert';
 import ButtonIcon from '../button/button-icon.vue';
@@ -33,12 +26,10 @@ const ui = computed(() => {
     variant: props.variant
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideAlertThemeContext({
-  ui
-});
+provideAlertUi(ui);
 </script>
 
 <template>

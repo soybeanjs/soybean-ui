@@ -7,7 +7,7 @@ import {
   provideNavigationMenuItemContext,
   useCollectionContext,
   useNavigationMenuRootContext,
-  useNavigationMenuThemeContext
+  useNavigationMenuUi
 } from './context';
 import { createContentId, createTriggerId } from './shared';
 import type { NavigationMenuItemProps } from './types';
@@ -22,9 +22,9 @@ const { isRoot, baseId, modelValue, onItemDismiss, addValue, removeValue } =
   useNavigationMenuRootContext('NavigationMenuItem');
 const { getOrderedElements } = useCollectionContext('NavigationMenuItem');
 
-const themeContext = useNavigationMenuThemeContext();
+const ui = useNavigationMenuUi();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.item : themeContext?.ui?.value?.subItem));
+const cls = computed(() => (isRoot ? ui.value?.item : ui.value?.subItem));
 
 const value = props.value ?? useId();
 

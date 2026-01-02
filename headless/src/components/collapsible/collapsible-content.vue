@@ -3,7 +3,7 @@ import { computed, nextTick, onMounted, shallowRef, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { Primitive } from '../primitive';
-import { useCollapsibleRootContext, useCollapsibleThemeContext } from './context';
+import { useCollapsibleRootContext, useCollapsibleUi } from './context';
 import { collapsibleContentCssVars } from './shared';
 import type { CollapsibleContentProps } from './types';
 
@@ -18,9 +18,7 @@ const [contentElement, setContentElement] = useForwardElement();
 const { contentId, initContentId, open, dataDisabled, dataState, unmountOnHide } =
   useCollapsibleRootContext('CollapsibleContent');
 
-const themeContext = useCollapsibleThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useCollapsibleUi('content');
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(contentElement, open, handleNodeStyle);
 

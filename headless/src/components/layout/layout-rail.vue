@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useLayoutRootContext, useLayoutThemeContext } from './context';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import type { LayoutRailProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<LayoutRailProps>();
 
 const { toggleSidebar } = useLayoutRootContext('LayoutRail');
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.rail);
+const cls = useLayoutUi('rail');
 </script>
 
 <template>

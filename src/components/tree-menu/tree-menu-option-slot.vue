@@ -6,7 +6,7 @@ import Badge from '../badge/badge.vue';
 import Tag from '../tag/tag.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';
 import ButtonIcon from '../button/button-icon.vue';
-import { useTreeMenuContext, useTreeMenuExtraThemeContext } from './context';
+import { useTreeMenuContext, useTreeMenuExtraUi } from './context';
 import type { TreeMenuOptionSlotProps } from './types';
 
 defineOptions({
@@ -17,7 +17,7 @@ const props = defineProps<TreeMenuOptionSlotProps>();
 
 const { collapsed } = useTreeMenuRootContext('TreeMenuOptionSlot');
 const { size } = useTreeMenuContext('TreeMenuOptionSlot');
-const ui = useTreeMenuExtraThemeContext('TreeMenuOptionSlot');
+const ui = useTreeMenuExtraUi();
 
 const hasChildren = computed(() => Boolean(props.item.children?.length));
 

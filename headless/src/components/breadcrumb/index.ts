@@ -16,7 +16,7 @@ export {
   BreadcrumbLink
 };
 
-export { provideBreadcrumbThemeContext } from './context';
+export { provideBreadcrumbUi } from './context';
 
 export type {
   BreadcrumbRootProps,
@@ -26,6 +26,6 @@ export type {
   BreadcrumbSeparatorProps,
   BreadcrumbEllipsisProps,
   BreadcrumbLinkProps,
-  BreadcrumbThemeSlot,
+  BreadcrumbUiSlot,
   BreadcrumbUi
 } from './types';

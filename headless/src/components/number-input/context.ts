@@ -2,10 +2,10 @@ import { computed } from 'vue';
 import type { HTMLAttributes } from 'vue';
 import { reactiveComputed } from '@vueuse/core';
 import { NumberFormatter, NumberParser } from '@internationalized/number';
-import { useContext, useForwardElement, useLocale } from '../../composables';
+import { useContext, useForwardElement, useLocale, useUiContext } from '../../composables';
 import { clamp, isNullish, snapValueToStep } from '../../shared';
 import { handleDecimalOperation } from './shared';
-import type { NumberInputRootContextParams, NumberInputThemeContextParams } from './types';
+import type { NumberInputRootContextParams, NumberInputUiSlot } from './types';
 
 export const [provideNumberInputRootContext, useNumberInputRootContext] = useContext(
   'NumberInputRoot',
@@ -135,7 +135,4 @@ export const [provideNumberInputRootContext, useNumberInputRootContext] = useCon
   }
 );
 
-export const [provideNumberInputThemeContext, useNumberInputThemeContext] = useContext(
-  'NumberInputTheme',
-  (params: NumberInputThemeContextParams) => params
-);
+export const [provideNumberInputUi, useNumberInputUi] = useUiContext<NumberInputUiSlot>('NumberInputUi');

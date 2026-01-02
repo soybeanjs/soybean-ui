@@ -51,7 +51,7 @@ export const [provideToastProviderContext, useToastProvider] = useContext(
       const id = $id;
       $id++;
 
-      const ui = mergeUi(providerUi.value, $ui ?? {});
+      const ui = mergeUi(providerUi.value, $ui);
 
       return { id, size, showIcon, ui, ...rest };
     };

@@ -18,7 +18,7 @@ export {
   TreeMenuSub
 };
 
-export { provideTreeMenuThemeContext, useTreeMenuThemeContext, useTreeMenuRootContext } from './context';
+export { provideTreeMenuUi, useTreeMenuUi, useTreeMenuRootContext } from './context';
 
 export type {
   TreeMenuCollapsedState,
@@ -32,6 +32,6 @@ export type {
   TreeMenuButtonProps,
   TreeMenuCollapsibleProps,
   TreeMenuSubProps,
-  TreeMenuThemeSlot,
+  TreeMenuUiSlot,
   TreeMenuUi
 } from './types';

@@ -17,7 +17,7 @@ import { getActiveElement, isMouseEvent, tryFocusFirst } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
 import { PopperPopup, PopperPositioner } from '../popper';
 import { popperCssVars } from '../popper/shared';
-import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuThemeContext } from './context';
+import { provideMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
 import { FIRST_LAST_KEYS, LAST_KEYS, MENU_POPUP_DATA_ATTRIBUTE, menuCssVars, subMenuCssVars } from './shared';
 import type { MenuContentImplEmits, MenuContentImplProps } from './types';
 
@@ -41,9 +41,9 @@ const { currentItemId, searchRef, pointerSide } = provideMenuContentContext({
   popupElement
 });
 
-const themeContext = useMenuThemeContext();
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.positioner : themeContext?.ui?.value?.subPositioner));
-const popupCls = computed(() => (isRoot ? themeContext?.ui?.value?.popup : themeContext?.ui?.value?.subPopup));
+const ui = useMenuUi();
+const cls = computed(() => (isRoot ? ui.value?.positioner : ui.value?.subPositioner));
+const popupCls = computed(() => (isRoot ? ui.value?.popup : ui.value?.subPopup));
 
 const { handleTypeaheadSearch } = useTypeahead();
 const rovingFocusGroupRef = useTemplateRef('rovingFocusGroupRef');

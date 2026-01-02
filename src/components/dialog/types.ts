@@ -1,6 +1,5 @@
 import type { VNode } from 'vue';
 import type {
-  ClassValue,
   DialogContentEmits,
   DialogContentProps,
   DialogDescriptionProps,
@@ -12,15 +11,16 @@ import type {
   DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
-  DialogUi,
+  DialogUiSlot,
   EmitsToHookProps,
-  MaybePromise
+  MaybePromise,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
-export type DialogExtraThemeSlot = 'closable';
+export type DialogExtraUiSlot = 'closable';
 
-export type DialogExtendedUi = DialogUi & Record<DialogExtraThemeSlot, ClassValue>;
+export type DialogExtendedUi = UiClass<DialogUiSlot | DialogExtraUiSlot>;
 
 export interface DialogProps extends DialogRootProps {
   size?: ThemeSize;

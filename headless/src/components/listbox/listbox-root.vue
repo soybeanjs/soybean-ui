@@ -3,7 +3,7 @@ import { computed, nextTick, watch } from 'vue';
 import { useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { provideListboxRootContext, useListboxThemeContext } from './context';
+import { provideListboxRootContext, useListboxUi } from './context';
 import type { ListboxRootEmits, ListboxRootProps } from './types';
 
 defineOptions({
@@ -18,9 +18,7 @@ const props = withDefaults(defineProps<ListboxRootProps<M>>(), {
 
 const emit = defineEmits<ListboxRootEmits<M>>();
 
-const themeContext = useListboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useListboxUi('root');
 
 const { modelValue, isMultiple } = useSelection(props, value => {
   emit('update:modelValue', value);

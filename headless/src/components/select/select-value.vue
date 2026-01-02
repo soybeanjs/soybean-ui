@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import type { AcceptableValue } from '../../types';
-import { useSelectRootContext, useSelectThemeContext } from './context';
+import { useSelectRootContext, useSelectUi } from './context';
 import type { SelectValueProps } from './types';
 
 defineOptions({
@@ -16,9 +16,7 @@ const props = withDefaults(defineProps<SelectValueProps>(), {
 const { modelValue, options, onValueElementChange } = useSelectRootContext('SelectValue');
 const [_, setValueElement] = useForwardElement(onValueElementChange);
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.value);
+const cls = useSelectUi('value');
 
 const selectedLabel = computed(() => {
   let list: string[] = [];

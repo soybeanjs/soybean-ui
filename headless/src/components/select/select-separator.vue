@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { SelectSeparatorProps } from './types';
-import { useSelectThemeContext } from './context';
+import { useSelectUi } from './context';
 
 defineOptions({
   name: 'SelectSeparator'
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<SelectSeparatorProps>();
 
-const themeContext = useSelectThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.separator);
+const cls = useSelectUi('separator');
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 import type { HTMLAttributes } from 'vue';
 import type {
+  ClassValue,
   DefinedValue,
   Placement,
   SelectArrowProps,
@@ -98,6 +99,10 @@ export interface SelectProps<
   M extends boolean = false,
   S extends SelectOptionData<T> = SelectOptionData<T>
 > extends SelectRootProps<T, M> {
+  /**
+   * the class of select trigger
+   */
+  class?: ClassValue;
   ui?: Partial<SelectUi>;
   size?: ThemeSize;
   items: S[];

@@ -4,7 +4,7 @@ export { default as RadioGroupControl } from './radio-group-control.vue';
 export { default as RadioGroupIndicator } from './radio-group-indicator.vue';
 export { default as RadioGroupLabel } from './radio-group-label.vue';
 
-export { provideRadioGroupThemeContext } from './context';
+export { provideRadioGroupUi } from './context';
 
 export type {
   RadioGroupRootProps,
@@ -15,6 +15,6 @@ export type {
   RadioGroupIndicatorProps,
   RadioGroupLabelProps,
   RadioSelectEvent,
-  RadioGroupThemeSlot,
+  RadioGroupUiSlot,
   RadioGroupUi
 } from './types';

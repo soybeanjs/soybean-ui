@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useCollapsibleRootContext, useCollapsibleThemeContext } from './context';
+import { useCollapsibleRootContext, useCollapsibleUi } from './context';
 import type { CollapsibleTriggerProps } from './types';
 
 defineOptions({
@@ -15,9 +15,7 @@ const props = withDefaults(defineProps<CollapsibleTriggerProps>(), {
 const { open, onOpenToggle, contentId, disabled, dataDisabled, dataState } =
   useCollapsibleRootContext('CollapsibleTrigger');
 
-const themeContext = useCollapsibleThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.trigger);
+const cls = useCollapsibleUi('trigger');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 

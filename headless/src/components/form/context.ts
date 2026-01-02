@@ -1,6 +1,6 @@
 import { useId } from 'vue';
-import { useContext } from '../../composables';
-import type { FormThemeParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { FormFieldUiSlot } from './types';
 
 export const [provideFormFieldContext, useFormFieldContext] = useContext('FormField', () => {
   const id = useId();
@@ -16,7 +16,4 @@ export const [provideFormFieldContext, useFormFieldContext] = useContext('FormFi
   };
 });
 
-export const [provideFormThemeContext, useFormThemeContext] = useContext(
-  'FormTheme',
-  (params: FormThemeParams) => params
-);
+export const [provideFormFieldUi, useFormFieldUi] = useUiContext<FormFieldUiSlot>('FormFieldUi');

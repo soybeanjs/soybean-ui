@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue';
 import { OPPOSITE_SIDE } from '../../constants';
 import type { Side } from '../../types';
 import { Arrow } from '../arrow';
-import { usePopperPositionerContext, usePopperThemeContext } from './context';
+import { usePopperPositionerContext, usePopperUi } from './context';
 import type { PopperArrowProps } from './types';
 
 defineOptions({
@@ -13,8 +13,7 @@ defineOptions({
 
 defineProps<PopperArrowProps>();
 
-const themeContext = usePopperThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.arrow);
+const cls = usePopperUi('arrow');
 
 const { setArrowElement, arrowX, arrowY, arrowCentered, placedSide } = usePopperPositionerContext('PopperArrow');
 

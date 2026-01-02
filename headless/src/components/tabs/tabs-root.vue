@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useControllableState } from '../../composables';
 import { isNullish, transformPropsToContext } from '../../shared';
-import { provideTabsRootContext, useTabsThemeContext } from './context';
+import { provideTabsRootContext, useTabsUi } from './context';
 import type { TabsRootEmits, TabsRootProps } from './types';
 
 defineOptions({
@@ -28,9 +27,7 @@ const modelValue = useControllableState(
   props.defaultValue
 );
 
-const themeContext = useTabsThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useTabsUi('root');
 
 const { dir } = provideTabsRootContext({
   ...transformPropsToContext(props, ['dir', 'loop', 'orientation', 'unmountOnHide', 'activationMode']),
@@ -39,7 +36,7 @@ const { dir } = provideTabsRootContext({
 </script>
 
 <template>
-  <div :class="cls" :dir="dir" :data-orientation="orientation">
+  <div :class="cls" :dir="dir" :data-orientation="props.orientation">
     <slot :model-value="modelValue" />
   </div>
 </template>

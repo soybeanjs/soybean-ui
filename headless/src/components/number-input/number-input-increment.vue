@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { useNumberInputRootContext, useNumberInputThemeContext } from './context';
+import { useNumberInputRootContext, useNumberInputUi } from './context';
 import { usePressedHold } from './shared';
 import type { NumberInputIncrementProps } from './types';
 
@@ -16,9 +16,7 @@ const props = withDefaults(defineProps<NumberInputIncrementProps>(), {
 
 const { disabled, readonly, isIncreaseDisabled, onIncrease } = useNumberInputRootContext('NumberInputIncrement');
 
-const themeContext = useNumberInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.increment);
+const cls = useNumberInputUi('increment');
 
 const [incrementElement, setIncrementElement] = useForwardElement();
 

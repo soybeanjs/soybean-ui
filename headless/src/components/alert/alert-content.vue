@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useAlertThemeContext } from './context';
+import { useAlertUi } from './context';
 import type { AlertContentProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<AlertContentProps>();
 
-const themeContext = useAlertThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useAlertUi('content');
 </script>
 
 <template>

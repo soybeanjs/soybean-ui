@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { isNullish, transformPropsToContext } from '../../shared';
-import { providePaginationRootContext, usePaginationThemeContext } from './context';
+import { providePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationRootEmits, PaginationRootProps } from './types';
 
 defineOptions({
@@ -19,9 +18,7 @@ const props = withDefaults(defineProps<PaginationRootProps>(), {
 
 const emit = defineEmits<PaginationRootEmits>();
 
-const themeContext = usePaginationThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = usePaginationUi('root');
 
 const page = useControllableState(
   () => props.page,

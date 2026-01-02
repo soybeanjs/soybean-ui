@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarThemeContext } from '@soybeanjs/headless';
+import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { avatarVariants } from '@/variants/avatar';
@@ -14,26 +14,24 @@ const props = defineProps<AvatarProps>();
 
 const emit = defineEmits<AvatarEmits>();
 
-const forwardedProps = useOmitProps(props, ['size', 'ui', 'fallbackLabel', 'imageProps', 'fallbackProps']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fallbackLabel', 'imageProps', 'fallbackProps']);
 
 const ui = computed(() => {
   const variants = avatarVariants({ size: props.size });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideAvatarThemeContext({
-  ui
-});
+provideAvatarUi(ui);
 
 const imageProps = computed(() => ({
-  src: props.src,
-  ...props.imageProps
+  ...props.imageProps,
+  src: props.src
 }));
 
 const fallbackProps = computed(() => ({
-  delayMs: props.delayMs,
-  ...props.fallbackProps
+  ...props.fallbackProps,
+  delayMs: props.delayMs
 }));
 </script>
 

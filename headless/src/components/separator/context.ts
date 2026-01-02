@@ -1,7 +1,4 @@
-import { useContext } from '../../composables';
-import type { SeparatorThemeContextParams } from './types';
+import { useUiContext } from '../../composables';
+import type { SeparatorUiSlot } from './types';
 
-export const [provideSeparatorThemeContext, useSeparatorThemeContext] = useContext(
-  'SeparatorTheme',
-  (params: SeparatorThemeContextParams) => params
-);
+export const [provideSeparatorUi, useSeparatorUi] = useUiContext<SeparatorUiSlot>('SeparatorUi');

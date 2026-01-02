@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue, ForceMountProps, PropsToContext, SwipeDirection, SwipeEvent } from '../../types';
+import type { HTMLAttributes } from 'vue';
+import type { ForceMountProps, PropsToContext, SwipeDirection, SwipeEvent, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface ToastProviderProps {
@@ -120,10 +120,6 @@ export interface ToastRootContextParams {
   onClose: () => void;
 }
 
-export type ToastThemeSlot = 'root' | 'title' | 'description' | 'action' | 'close';
+export type ToastUiSlot = 'root' | 'title' | 'description' | 'action' | 'close';
 
-export type ToastUi = Record<ToastThemeSlot, ClassValue>;
-
-export interface ToastThemeContextParams {
-  ui: ComputedRef<ToastUi>;
-}
+export type ToastUi = UiClass<ToastUiSlot>;

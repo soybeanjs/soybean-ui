@@ -1,6 +1,6 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue } from '../../types';
+import type { HTMLAttributes } from 'vue';
 import type { LinkProps } from '../link/types';
+import type { UiClass } from '../../types';
 
 export interface BreadcrumbRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -16,10 +16,6 @@ export interface BreadcrumbEllipsisProps extends /** @vue-ignore */ HTMLAttribut
 
 export interface BreadcrumbLinkProps extends LinkProps {}
 
-export type BreadcrumbThemeSlot = 'root' | 'list' | 'item' | 'page' | 'separator' | 'ellipsis' | 'link';
+export type BreadcrumbUiSlot = 'root' | 'list' | 'item' | 'page' | 'separator' | 'ellipsis' | 'link';
 
-export type BreadcrumbUi = Record<BreadcrumbThemeSlot, ClassValue>;
-
-export interface BreadcrumbThemeContextParams {
-  ui: ComputedRef<BreadcrumbUi>;
-}
+export type BreadcrumbUi = UiClass<BreadcrumbUiSlot>;

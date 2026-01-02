@@ -9,7 +9,7 @@ export { default as DialogTitle } from './dialog-title.vue';
 export { default as DialogDescription } from './dialog-description.vue';
 export { default as DialogClose } from './dialog-close.vue';
 
-export { provideDialogThemeContext } from './context';
+export { provideDialogUi } from './context';
 
 export type {
   DialogRootProps,
@@ -23,7 +23,7 @@ export type {
   DialogTitleProps,
   DialogDescriptionProps,
   DialogCloseProps,
-  DialogThemeSlot,
+  DialogUiSlot,
   DialogUi
 } from './types';
 export type { PortalProps as DialogPortalProps } from '../portal/types';

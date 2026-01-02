@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import Link from '../link/link.vue';
-import { useCollectionItem, useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { useCollectionItem, useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { EVENT_ROOT_CONTENT_DISMISS, LINK_SELECT } from './shared';
 import type { NavigationMenuLinkEmits, NavigationMenuLinkProps } from './types';
 
@@ -16,9 +16,9 @@ const emit = defineEmits<NavigationMenuLinkEmits>();
 
 const { isRoot } = useNavigationMenuRootContext('NavigationMenuLink');
 
-const themeContext = useNavigationMenuThemeContext();
+const ui = useNavigationMenuUi();
 
-const cls = computed(() => (isRoot ? themeContext?.ui?.value?.link : themeContext?.ui?.value?.subLink));
+const cls = computed(() => (isRoot ? ui.value?.link : ui.value?.subLink));
 
 const { itemProps, setItemElement } = useCollectionItem();
 

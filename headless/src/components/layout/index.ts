@@ -8,7 +8,7 @@ export { default as LayoutRail } from './layout-rail.vue';
 export { default as LayoutTrigger } from './layout-trigger.vue';
 export { default as LayoutMobile } from './layout-mobile.vue';
 
-export { provideLayoutThemeContext } from './context';
+export { provideLayoutUi } from './context';
 
 export type {
   LayoutRootProps,
@@ -25,6 +25,6 @@ export type {
   LayoutSide,
   LayoutCollapsible,
   LayoutSidebarState,
-  LayoutThemeSlot,
+  LayoutUiSlot,
   LayoutUi
 } from './types';

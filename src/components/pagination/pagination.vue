@@ -9,11 +9,10 @@ import {
   PaginationNext,
   PaginationPrev,
   PaginationRoot,
-  providePaginationThemeContext
+  providePaginationUi
 } from '@soybeanjs/headless';
-import type { PaginationThemeSlot } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { cn, mergeSlotVariants } from '@/theme';
+import { mergeSlotVariants } from '@/theme';
 import { paginationVariants } from '@/variants/pagination';
 import Icon from '../icon/icon.vue';
 import type { PaginationEmits, PaginationProps } from './types';
@@ -29,6 +28,7 @@ const props = withDefaults(defineProps<PaginationProps>(), {
 const emit = defineEmits<PaginationEmits>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'ui',
   'size',
   'variant',
@@ -54,23 +54,23 @@ const ui = computed(() => {
     actionAsSelected: props.actionAsSelected
   });
 
-  const slots: PaginationThemeSlot[] = ['listItem', 'first', 'prev', 'next', 'last'];
+  const { button, navigationButton } = variants;
 
-  return {
-    ...mergeSlotVariants(variants, props.ui),
-    ...slots.reduce(
-      (acc, slot) => {
-        acc[slot] = cn(slot === 'listItem' ? variants.button() : variants.navigationButton(), props.ui?.[slot]);
-        return acc;
-      },
-      {} as Record<PaginationThemeSlot, string>
-    )
-  };
+  return mergeSlotVariants(
+    {
+      ...variants,
+      listItem: button,
+      first: navigationButton,
+      prev: navigationButton,
+      next: navigationButton,
+      last: navigationButton
+    },
+    props.ui,
+    { root: props.class }
+  );
 });
 
-providePaginationThemeContext({
-  ui
-});
+providePaginationUi(ui);
 </script>
 
 <template>

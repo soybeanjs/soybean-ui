@@ -2,7 +2,7 @@
 import { computed, nextTick, ref, watch } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
-import { useTabsRootContext, useTabsThemeContext } from './context';
+import { useTabsRootContext, useTabsUi } from './context';
 import { tabsCssVars } from './shared';
 import type { TabsIndicatorProps } from './types';
 
@@ -14,9 +14,7 @@ defineProps<TabsIndicatorProps>();
 
 const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIndicator');
 
-const themeContext = useTabsThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.indicator);
+const cls = useTabsUi('indicator');
 
 const activeTab = ref<HTMLElement | null>();
 

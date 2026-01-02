@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { SeparatorLabel, SeparatorRoot, provideSeparatorThemeContext } from '@soybeanjs/headless';
+import { SeparatorLabel, SeparatorRoot, provideSeparatorUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { separatorVariants } from '@/variants/separator';
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<SeparatorProps>(), {
 
 const slots = useSlots();
 
-const forwardedProps = useOmitProps(props, ['size', 'ui', 'align', 'border', 'label', 'labelProps']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'align', 'border', 'label', 'labelProps']);
 
 const showLabel = computed(() => props.orientation === 'horizontal' && (slots.default || props.label));
 
@@ -28,12 +28,10 @@ const ui = computed(() => {
     border: props.border
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideSeparatorThemeContext({
-  ui
-});
+provideSeparatorUi(ui);
 </script>
 
 <template>

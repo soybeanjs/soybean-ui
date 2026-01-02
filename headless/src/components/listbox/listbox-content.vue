@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { refAutoReset } from '@vueuse/shared';
 import { useForwardElement } from '../../composables';
-import { useCollectionContext, useListboxRootContext, useListboxThemeContext } from './context';
+import { useCollectionContext, useListboxRootContext, useListboxUi } from './context';
 import type { ListboxContentProps } from './types';
 
 defineOptions({
@@ -26,8 +26,7 @@ const [_, setContentElement] = useForwardElement(el => {
   onContainerElementChange(el);
 });
 
-const themeContext = useListboxThemeContext();
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useListboxUi('content');
 
 const isClickFocus = refAutoReset(false, 10);
 

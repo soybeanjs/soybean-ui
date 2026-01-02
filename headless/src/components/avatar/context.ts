@@ -1,7 +1,7 @@
 import { shallowRef } from 'vue';
-import { useContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import type { ImageLoadingStatus } from '../../types';
-import type { AvatarThemeContextParams } from './types';
+import type { AvatarUiSlot } from './types';
 
 export const [provideAvatarRootContext, useAvatarRootContext] = useContext('AvatarRoot', () => {
   const imageLoadingStatus = shallowRef<ImageLoadingStatus>('idle');
@@ -16,7 +16,4 @@ export const [provideAvatarRootContext, useAvatarRootContext] = useContext('Avat
   };
 });
 
-export const [provideAvatarThemeContext, useAvatarThemeContext] = useContext(
-  'AvatarTheme',
-  (params: AvatarThemeContextParams) => params
-);
+export const [provideAvatarUi, useAvatarUi] = useUiContext<AvatarUiSlot>('AvatarUi');

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useTreeMenuThemeContext } from './context';
+import { useTreeMenuUi } from './context';
 import type { TreeMenuSubProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ withDefaults(defineProps<TreeMenuSubProps>(), {
   as: 'ul'
 });
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.sub);
+const cls = useTreeMenuUi('sub');
 </script>
 
 <template>

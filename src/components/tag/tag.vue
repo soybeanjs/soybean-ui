@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Tag } from '@soybeanjs/headless';
+import { cn } from '@/theme';
 import { tagVariants } from '@/variants/tag';
 import Icon from '../icon/icon.vue';
 import type { TagEmits, TagProps } from './types';
@@ -23,7 +24,7 @@ const cls = computed(() => {
     shape: props.shape
   });
 
-  return variants;
+  return cn(variants, props.class);
 });
 </script>
 

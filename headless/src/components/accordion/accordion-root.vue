@@ -2,7 +2,7 @@
 import { computed, shallowRef } from 'vue';
 import { useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
-import { provideAccordionRootContext, useAccordionThemeContext } from './context';
+import { provideAccordionRootContext, useAccordionUi } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
 defineOptions({
@@ -18,9 +18,9 @@ const props = withDefaults(defineProps<AccordionRootProps<M>>(), {
 
 const emit = defineEmits<AccordionRootEmits<M>>();
 
-const themeContext = useAccordionThemeContext();
+const ui = useAccordionUi();
 
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = computed(() => ui?.value?.root);
 
 const rootElement = shallowRef<HTMLElement>();
 

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { CollapsibleContent } from '../collapsible';
 import { collapsibleContentCssVars } from '../collapsible/shared';
-import { useAccordionItemContext, useAccordionRootContext, useAccordionThemeContext } from './context';
+import { useAccordionItemContext, useAccordionRootContext } from './context';
 import { accordionContentCssVars } from './shared';
 import type { AccordionContentProps } from './types';
 
@@ -12,10 +11,6 @@ defineOptions({
 });
 
 defineProps<AccordionContentProps>();
-
-const themeContext = useAccordionThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
 
 const { orientation } = useAccordionRootContext('AccordionContent');
 const { triggerId, dataDisabled, dataState } = useAccordionItemContext('AccordionContent');
@@ -30,7 +25,6 @@ const style: CSSProperties = {
   <CollapsibleContent
     :as="as"
     :as-child="asChild"
-    :class="cls"
     :force-mount="forceMount"
     role="region"
     :aria-labelledby="triggerId"

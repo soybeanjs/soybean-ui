@@ -7,7 +7,7 @@ export { default as PopoverPositioner } from './popover-positioner.vue';
 export { default as PopoverPopup } from './popover-popup.vue';
 export { default as PopoverTrigger } from './popover-trigger.vue';
 
-export { providePopperThemeContext as providePopoverThemeContext } from '../popper/context';
+export { providePopperUi as providePopoverUi } from '../popper/context';
 
 export type {
   PopoverRootProps,
@@ -21,7 +21,7 @@ export type {
 } from './types';
 export type {
   PopperArrowProps as PopoverArrowProps,
-  PopperThemeSlot as PopoverThemeSlot,
+  PopperUiSlot as PopoverUiSlot,
   PopperUi as PopoverUi
 } from '../popper/types';
 export type { PortalProps as PopoverPortalProps } from '../portal/types';

@@ -6,14 +6,14 @@ import {
   TreeMenuGroupLabel,
   TreeMenuGroupRoot,
   TreeMenuRoot,
-  provideTreeMenuThemeContext
+  provideTreeMenuUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
 import TreeMenuOption from './tree-menu-option.vue';
-import { provideTreeMenuContext, provideTreeMenuExtraThemeContext } from './context';
+import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
 import { isGroupTreeMenu, treeMenuCssVars } from './shared';
 import type { TreeMenuEmits, TreeMenuOptionData, TreeMenuProps } from './types';
 
@@ -45,6 +45,7 @@ const slots = defineSlots<Slots>();
 const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item-')) as (keyof Slots)[]);
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'side',
   'ui',
@@ -76,11 +77,11 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideTreeMenuThemeContext(ui);
-provideTreeMenuExtraThemeContext(ui);
+provideTreeMenuUi(ui);
+provideTreeMenuExtraUi(ui);
 
 provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
 </script>

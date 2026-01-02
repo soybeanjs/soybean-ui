@@ -5,8 +5,9 @@ import type {
   AccordionRootEmits,
   AccordionRootProps,
   AccordionTriggerProps,
-  AccordionUi,
-  ClassValue
+  AccordionUiSlot,
+  ClassValue,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -24,14 +25,18 @@ export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 
   icon?: IconValue;
 }
 
-export type AccordionExtraThemeSlot = 'triggerLeadingIcon' | 'triggerIcon';
+export type AccordionExtraUiSlot = 'triggerLeadingIcon' | 'triggerIcon';
 
-export type AccordionExtendedUi = AccordionUi & Record<AccordionExtraThemeSlot, ClassValue>;
+export type AccordionExtendedUi = UiClass<AccordionUiSlot | AccordionExtraUiSlot>;
 
-export type AccordionProps<
+export interface AccordionProps<
   T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
-> = AccordionRootProps<M> & {
+> extends AccordionRootProps<M> {
+  /**
+   * root class
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<AccordionExtendedUi>;
   items: T[];
@@ -39,6 +44,6 @@ export type AccordionProps<
   headerProps?: AccordionHeaderProps;
   triggerProps?: AccordionTriggerProps;
   contentProps?: AccordionContentProps;
-};
+}
 
 export type AccordionEmits<M extends boolean = false> = AccordionRootEmits<M>;

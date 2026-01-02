@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useLayoutThemeContext } from './context';
+import { useLayoutUi } from './context';
 import type { LayoutFooterProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<LayoutFooterProps>();
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.footer);
+const cls = useLayoutUi('footer');
 </script>
 
 <template>

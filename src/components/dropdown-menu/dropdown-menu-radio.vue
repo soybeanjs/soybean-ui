@@ -53,11 +53,11 @@ const propKeys = [
   'contentProps',
   'popupProps',
   'arrowProps'
-] satisfies (keyof DropdownMenuRadioProps<T, S>)[];
+] as const;
 
-const forwardedWrapperProps = usePickProps(props, propKeys);
+const forwardedWrapperProps = usePickProps(props, [...propKeys]);
 
-const forwardedOptionsProps = useOmitProps(props, propKeys);
+const forwardedOptionsProps = useOmitProps(props, [...propKeys]);
 
 const forwardedListeners = useForwardListeners(emit);
 

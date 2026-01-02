@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePaginationRootContext, usePaginationThemeContext } from './context';
+import { usePaginationRootContext, usePaginationUi } from './context';
 import { getRange, transform } from './shared';
 import type { PaginationListProps } from './types';
 
@@ -12,9 +12,7 @@ defineProps<PaginationListProps>();
 
 const { page, pageCount, siblingCount, showEdges } = usePaginationRootContext('PaginationList');
 
-const themeContext = usePaginationThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.list);
+const cls = usePaginationUi('list');
 
 const transformedRange = computed(() =>
   transform(getRange(page.value, pageCount.value, siblingCount.value, showEdges.value))

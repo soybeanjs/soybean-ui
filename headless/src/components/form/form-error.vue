@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useFormFieldContext, useFormThemeContext } from './context';
+import { useFormFieldContext, useFormFieldUi } from './context';
 import type { FormErrorProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<FormErrorProps>();
 
 const { formErrorId } = useFormFieldContext('FormError');
 
-const themeContext = useFormThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.error);
+const cls = useFormFieldUi('error');
 </script>
 
 <template>

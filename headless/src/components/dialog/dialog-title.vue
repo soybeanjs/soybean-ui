@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useDialogRootContext, useDialogThemeContext } from './context';
+import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogTitleProps } from './types';
 
 defineOptions({
@@ -11,9 +10,7 @@ defineProps<DialogTitleProps>();
 
 const { titleId, initTitleId } = useDialogRootContext('DialogTitle');
 
-const themeContext = useDialogThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.title);
+const cls = useDialogUi('title');
 
 initTitleId();
 </script>

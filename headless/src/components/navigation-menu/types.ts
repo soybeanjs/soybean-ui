@@ -1,13 +1,13 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { HTMLAttributes, ShallowRef } from 'vue';
 import type {
   Align,
-  ClassValue,
   DataOrientation,
   Direction,
   DismissableLayerEmits,
   DismissableLayerProps,
   ForceMountProps,
-  PropsToContext
+  PropsToContext,
+  UiClass
 } from '../../types';
 import type { LinkProps } from '../link/types';
 import type { PrimitiveProps } from '../primitive/types';
@@ -145,7 +145,7 @@ export interface NavigationMenuItemContextParams {
   onRootContentClose: () => void;
 }
 
-export type NavigationMenuThemeSlot =
+export type NavigationMenuUiSlot =
   | 'root'
   | 'trigger'
   | 'content'
@@ -158,8 +158,4 @@ export type NavigationMenuThemeSlot =
   | 'subItem'
   | 'subLink';
 
-export type NavigationMenuUi = Record<NavigationMenuThemeSlot, ClassValue>;
-
-export interface NavigationMenuThemeContextParams {
-  ui: ComputedRef<NavigationMenuUi>;
-}
+export type NavigationMenuUi = UiClass<NavigationMenuUiSlot>;

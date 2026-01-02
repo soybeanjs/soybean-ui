@@ -1,12 +1,9 @@
-import { useContext } from '../../composables';
-import type { TextareaRootContextParams, TextareaThemeContextParams } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { TextareaRootContextParams, TextareaUiSlot } from './types';
 
 export const [provideTextareaRootContext, useTextareaRootContext] = useContext(
   'TextareaRoot',
   (params: TextareaRootContextParams) => params
 );
 
-export const [provideTextareaThemeContext, useTextareaThemeContext] = useContext(
-  'TextareaTheme',
-  (params: TextareaThemeContextParams) => params
-);
+export const [provideTextareaUi, useTextareaUi] = useUiContext<TextareaUiSlot>('TextareaUi');

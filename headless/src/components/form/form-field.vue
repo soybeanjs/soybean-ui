@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useField } from '../../forms/core';
-import { provideFormFieldContext, useFormThemeContext } from './context';
+import { provideFormFieldContext, useFormFieldUi } from './context';
 import type { FormFieldProps } from './types';
 
 defineOptions({
@@ -10,9 +10,7 @@ defineOptions({
 
 const props = defineProps<FormFieldProps>();
 
-const themeContext = useFormThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.field);
+const cls = useFormFieldUi('field');
 
 const { value: modelValue, attrs, dirty, error, touched } = useField(() => props.name);
 

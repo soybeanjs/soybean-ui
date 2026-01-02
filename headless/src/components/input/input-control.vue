@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useInputRootContext, useInputThemeContext } from './context';
+import { useInputRootContext, useInputUi } from './context';
 import type { InputControlProps } from './types';
 
 defineOptions({
@@ -12,9 +11,7 @@ defineProps<InputControlProps>();
 const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, pattern } =
   useInputRootContext('InputControl');
 
-const themeContext = useInputThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.control);
+const cls = useInputUi('control');
 
 const onInput = (event: Event) => {
   modelValue.value = (event.target as HTMLInputElement).value;

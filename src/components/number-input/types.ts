@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   NumberInputControlProps,
   NumberInputDecrementProps,
   NumberInputIncrementProps,
@@ -9,6 +10,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 
 export interface NumberInputProps extends NumberInputRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<NumberInputUi>;
   /**

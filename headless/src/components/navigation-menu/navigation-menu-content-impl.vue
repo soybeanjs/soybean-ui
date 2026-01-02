@@ -7,7 +7,7 @@ import {
   useCollectionContext,
   useNavigationMenuItemContext,
   useNavigationMenuRootContext,
-  useNavigationMenuThemeContext
+  useNavigationMenuUi
 } from './context';
 import { EVENT_ROOT_CONTENT_DISMISS } from './shared';
 import type { MotionAttribute, NavigationMenuContentImplEmits, NavigationMenuContentImplProps } from './types';
@@ -34,9 +34,7 @@ const {
   onRootContentClose
 } = useNavigationMenuItemContext('NavigationMenuContentImpl');
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.content);
+const cls = useNavigationMenuUi('content');
 
 const { getOrderedElements } = useCollectionContext('NavigationMenuContentImpl');
 

@@ -2,6 +2,7 @@
 import { computed } from 'vue';
 import { Kbd } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { cn } from '@/theme';
 import { kbdVariants } from '@/variants/kbd';
 import type { KbdProps } from './types';
 
@@ -16,10 +17,13 @@ const props = withDefaults(defineProps<KbdProps>(), {
 const delegatedProps = useOmitProps(props, ['class', 'size', 'variant']);
 
 const cls = computed(() =>
-  kbdVariants({
-    size: props.size,
-    variant: props.variant
-  })
+  cn(
+    kbdVariants({
+      size: props.size,
+      variant: props.variant
+    }),
+    props.class
+  )
 );
 </script>
 

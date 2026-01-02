@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import {
-  provideNavigationMenuRootContext,
-  useNavigationMenuRootContext,
-  useNavigationMenuThemeContext
-} from './context';
+import { provideNavigationMenuRootContext, useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import type { NavigationMenuSubListProps } from './types';
 
 defineOptions({
@@ -13,9 +8,7 @@ defineOptions({
 
 defineProps<NavigationMenuSubListProps>();
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.subList);
+const cls = useNavigationMenuUi('subList');
 
 const rootContext = useNavigationMenuRootContext('NavigationMenuSubList');
 

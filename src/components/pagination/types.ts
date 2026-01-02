@@ -1,4 +1,5 @@
 import type {
+  ClassValue,
   PaginationButtonProps,
   PaginationEllipsisProps,
   PaginationListItemProps,
@@ -11,6 +12,7 @@ import type { ThemeSize } from '@/theme';
 import type { PaginationShape, PaginationVariant } from '@/variants/pagination';
 
 export interface PaginationProps extends PaginationRootProps {
+  class?: ClassValue;
   /** The custom ui class names */
   ui?: Partial<PaginationUi>;
   /** The size of the pagination */

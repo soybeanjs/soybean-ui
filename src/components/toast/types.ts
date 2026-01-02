@@ -47,6 +47,7 @@ export type ToastColor = 'default' | ThemeColor;
 export type ToastType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
 export interface ToastProps extends ToastRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<ToastUi>;
   type?: ToastType;

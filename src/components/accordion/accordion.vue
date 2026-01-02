@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
-  provideAccordionThemeContext
+  provideAccordionUi
 } from '@soybeanjs/headless';
 import { accordionVariants } from '@/variants/accordion';
 import { mergeSlotVariants } from '@/theme';
@@ -23,6 +23,7 @@ const props = defineProps<AccordionProps<T, M>>();
 const emit = defineEmits<AccordionEmits<M>>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'items',
@@ -39,12 +40,10 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideAccordionThemeContext({
-  ui
-});
+provideAccordionUi(ui);
 </script>
 
 <template>

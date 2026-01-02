@@ -11,7 +11,7 @@ import { useForwardListeners } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import NavigationMenuItemSlot from './navigation-menu-item-slot.vue';
 import NavigationMenuSubOption from './navigation-menu-sub-option.vue';
-import { useNavigationMenuExtraThemeContext } from './context';
+import { useNavigationMenuExtraUi } from './context';
 import { useCommonSlotKeys } from './shared';
 import type { NavigationMenuOptionData, NavigationMenuOptionEmits, NavigationMenuOptionProps } from './types';
 
@@ -40,7 +40,7 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
 const commonSlotKeys = useCommonSlotKeys(slots);
 
-const { ui } = useNavigationMenuExtraThemeContext('NavigationMenuOption');
+const ui = useNavigationMenuExtraUi();
 </script>
 
 <template>

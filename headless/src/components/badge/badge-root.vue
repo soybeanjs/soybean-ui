@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useControllableState } from '../../composables';
-import { provideBadgeRootContext, useBadgeThemeContext } from './context';
+import { provideBadgeRootContext, useBadgeUi } from './context';
 import type { BadgeRootEmits, BadgeRootProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ const props = withDefaults(defineProps<BadgeRootProps>(), {
 
 const emit = defineEmits<BadgeRootEmits>();
 
-const themeContext = useBadgeThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.root);
+const cls = useBadgeUi('root');
 
 const open = useControllableState(
   () => props.open,

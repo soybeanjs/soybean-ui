@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePaginationRootContext, usePaginationThemeContext } from './context';
+import { usePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationListItemProps } from './types';
 
 defineOptions({
@@ -11,9 +11,7 @@ const props = defineProps<PaginationListItemProps>();
 
 const { page, onPageChange, disabled } = usePaginationRootContext('PaginationListItem');
 
-const themeContext = usePaginationThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.listItem);
+const cls = usePaginationUi('listItem');
 
 const isSelected = computed(() => page.value === props.value);
 

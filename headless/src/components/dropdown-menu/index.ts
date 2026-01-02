@@ -50,5 +50,7 @@ export type {
   MenuRadioItemEmits as DropdownMenuRadioItemEmits,
   MenuItemIndicatorProps as DropdownMenuItemIndicatorProps,
   MenuGroupLabelProps as DropdownMenuGroupLabelProps,
-  MenuSeparatorProps as DropdownMenuSeparatorProps
+  MenuSeparatorProps as DropdownMenuSeparatorProps,
+  MenuUiSlot as DropdownMenuUiSlot,
+  MenuUi as DropdownMenuUi
 } from '../menu';

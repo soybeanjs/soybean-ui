@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useTreeMenuThemeContext } from '@soybeanjs/headless';
+import { useTreeMenuUi } from '@soybeanjs/headless';
 
 defineOptions({
   name: 'STreeMenuStyledItem'
 });
 
-const ui = useTreeMenuThemeContext('TreeMenuStyledItem');
+const ui = useTreeMenuUi();
 </script>
 
 <template>

@@ -7,7 +7,7 @@
   "
 >
 import { computed } from 'vue';
-import { RadioGroupRoot, provideRadioGroupThemeContext } from '@soybeanjs/headless';
+import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
@@ -24,6 +24,7 @@ const props = defineProps<RadioCardGroupProps<T, S>>();
 const emit = defineEmits<RadioGroupRootEmits>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'ui',
   'variant',
   'color',
@@ -42,12 +43,10 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideRadioGroupThemeContext({
-  ui
-});
+provideRadioGroupUi(ui);
 </script>
 
 <template>

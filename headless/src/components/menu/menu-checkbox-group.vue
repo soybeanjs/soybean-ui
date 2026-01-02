@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useControllableState } from '../../composables';
 import type { DefinedValue } from '../../types';
 import { Primitive } from '../primitive';
-import { provideMenuCheckboxGroupContext, useMenuThemeContext } from './context';
+import { provideMenuCheckboxGroupContext, useMenuUi } from './context';
 import type { MenuCheckboxGroupEmits, MenuCheckboxGroupProps } from './types';
 
 defineOptions({
@@ -14,9 +14,7 @@ const props = defineProps<MenuCheckboxGroupProps<T>>();
 
 const emit = defineEmits<MenuCheckboxGroupEmits<T>>();
 
-const themeContext = useMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.checkboxGroup);
+const cls = useMenuUi('checkboxGroup');
 
 const modelValue = useControllableState(
   () => props.modelValue,

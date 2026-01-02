@@ -1,4 +1,3 @@
-import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
   HorizontalSide,
@@ -13,7 +12,8 @@ import type {
   TreeMenuRootEmits,
   TreeMenuRootProps,
   TreeMenuSubProps,
-  TreeMenuUi
+  TreeMenuUiSlot,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -87,7 +87,7 @@ export interface TreeMenuOptionProps {
   item: TreeMenuBaseOptionData;
 }
 
-export type TreeMenuExtraThemeSlot =
+export type TreeMenuExtraUiSlot =
   | 'itemLabel'
   | 'itemAbsolute'
   | 'itemBadge'
@@ -96,9 +96,10 @@ export type TreeMenuExtraThemeSlot =
   | 'itemLinkIcon'
   | 'collapsibleIcon';
 
-export type TreeMenuExtendedUi = TreeMenuUi & Record<TreeMenuExtraThemeSlot, ClassValue>;
+export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
 export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData> extends TreeMenuRootProps {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TreeMenuExtendedUi>;
   /**
@@ -139,5 +140,3 @@ export type TreeMenuItemEmits = {
 export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
 
 export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuItemEmits;
-
-export type TreeMenuExtraThemeContextParams = ComputedRef<Partial<TreeMenuExtendedUi>>;

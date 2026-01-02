@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useListboxItemContext, useListboxThemeContext } from './context';
+import { useListboxItemContext, useListboxUi } from './context';
 import type { ListboxItemIndicatorProps } from './types';
 
 defineOptions({
@@ -14,9 +13,7 @@ withDefaults(defineProps<ListboxItemIndicatorProps>(), {
 
 const { isSelected } = useListboxItemContext('ListboxItemIndicator');
 
-const themeContext = useListboxThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.itemIndicator);
+const cls = useListboxUi('itemIndicator');
 </script>
 
 <template>

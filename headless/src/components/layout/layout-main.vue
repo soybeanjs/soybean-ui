@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useLayoutThemeContext } from './context';
+import { useLayoutUi } from './context';
 import type { LayoutMainProps } from './types';
 
 defineOptions({
@@ -9,9 +8,7 @@ defineOptions({
 
 defineProps<LayoutMainProps>();
 
-const themeContext = useLayoutThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.main);
+const cls = useLayoutUi('main');
 </script>
 
 <template>

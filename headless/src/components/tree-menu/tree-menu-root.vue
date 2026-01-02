@@ -2,7 +2,7 @@
 import { computed, watch } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
-import { provideTreeMenuRootContext, useTreeMenuThemeContext } from './context';
+import { provideTreeMenuRootContext, useTreeMenuUi } from './context';
 import type { TreeMenuCollapsedState, TreeMenuRootEmits, TreeMenuRootProps } from './types';
 
 defineOptions({
@@ -19,9 +19,7 @@ const props = withDefaults(defineProps<TreeMenuRootProps>(), {
 
 const emit = defineEmits<TreeMenuRootEmits>();
 
-const ui = useTreeMenuThemeContext();
-
-const cls = computed(() => ui?.value?.root);
+const cls = useTreeMenuUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,

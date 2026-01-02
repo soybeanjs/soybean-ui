@@ -1,5 +1,5 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useCollection, useContext, useDirection } from '../../composables';
+import { useCollection, useContext, useDirection, useUiContext } from '../../composables';
 import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
 import type { AcceptableValue, Point } from '../../types';
 import type {
@@ -9,7 +9,7 @@ import type {
   SelectItemContextParams,
   SelectOption,
   SelectRootContextParams,
-  SelectThemeContextParams
+  SelectUiSlot
 } from './types';
 
 export const [provideSelectRootContext, useSelectRootContext] = useContext(
@@ -238,7 +238,4 @@ export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPosit
   (params: SelectItemAlignedPositionContextParams) => params
 );
 
-export const [provideSelectThemeContext, useSelectThemeContext] = useContext(
-  'SelectTheme',
-  (params: SelectThemeContextParams) => params
-);
+export const [provideSelectUi, useSelectUi] = useUiContext<SelectUiSlot>('SelectUi');

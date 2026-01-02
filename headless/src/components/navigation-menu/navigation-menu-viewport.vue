@@ -5,7 +5,7 @@ import { useResizeObserver } from '@vueuse/core';
 import { usePresence } from '../../composables';
 import { getDisclosureState, isMouseEvent } from '../../shared';
 import type { Size } from '../../types';
-import { useNavigationMenuRootContext, useNavigationMenuThemeContext } from './context';
+import { useNavigationMenuRootContext, useNavigationMenuUi } from './context';
 import { getNavigationMenuViewportPosition, navigationMenuViewportCssVars } from './shared';
 import type { NavigationMenuViewportPosition, NavigationMenuViewportProps } from './types';
 
@@ -30,9 +30,7 @@ const {
   onContentLeave
 } = useNavigationMenuRootContext('NavigationMenuViewport');
 
-const themeContext = useNavigationMenuThemeContext();
-
-const cls = computed(() => themeContext?.ui?.value?.viewport);
+const cls = useNavigationMenuUi('viewport');
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(viewportElement, open);
 

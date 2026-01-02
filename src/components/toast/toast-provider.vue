@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount } from 'vue';
-import { ToastProvider, ToastViewport, provideToastViewportThemeContext } from '@soybeanjs/headless';
+import { ToastProvider, ToastViewport, provideToastViewportUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
@@ -36,7 +36,7 @@ const viewportUi = computed(() => {
   return cn(variants, props.ui?.viewport);
 });
 
-provideToastViewportThemeContext(viewportUi);
+provideToastViewportUi(viewportUi);
 
 onBeforeUnmount(() => {
   clear();

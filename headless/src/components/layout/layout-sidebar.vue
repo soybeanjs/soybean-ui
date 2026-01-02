@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, useAttrs } from 'vue';
-import type { ClassValue } from '../../types';
-import { useLayoutRootContext, useLayoutThemeContext } from './context';
+import { useAttrs } from 'vue';
+import { useLayoutRootContext, useLayoutUi } from './context';
 import LayoutMobile from './layout-mobile.vue';
-import type { LayoutSidebarProps, LayoutThemeSlot } from './types';
+import type { LayoutSidebarProps } from './types';
 
 defineOptions({
   name: 'LayoutSidebar',
@@ -16,9 +15,7 @@ const attrs = useAttrs();
 
 const { isMobile } = useLayoutRootContext('LayoutSidebar');
 
-const themeContext = useLayoutThemeContext();
-
-const ui = computed<Partial<Record<LayoutThemeSlot, ClassValue>>>(() => themeContext?.ui?.value ?? {});
+const ui = useLayoutUi();
 </script>
 
 <template>

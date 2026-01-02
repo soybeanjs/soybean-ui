@@ -1,4 +1,3 @@
-import type { ComputedRef } from 'vue';
 import type {
   ClassValue,
   NavigationMenuContentEmits,
@@ -13,7 +12,8 @@ import type {
   NavigationMenuSubEmits,
   NavigationMenuTriggerProps,
   NavigationMenuUi,
-  NavigationMenuViewportProps
+  NavigationMenuViewportProps,
+  UiClass
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
@@ -43,7 +43,7 @@ export interface NavigationMenuOptionData {
   children?: NavigationMenuOptionData[];
 }
 
-export type NavigationMenuExtraThemeSlot =
+export type NavigationMenuExtraUiSlot =
   | 'triggerIcon'
   | 'linkIcon'
   | 'arrow'
@@ -53,7 +53,7 @@ export type NavigationMenuExtraThemeSlot =
   | 'subLinkLabel'
   | 'subLinkDescription';
 
-export type NavigationMenuExtraUi = Record<NavigationMenuExtraThemeSlot, ClassValue>;
+export type NavigationMenuExtraUi = UiClass<NavigationMenuExtraUiSlot>;
 
 export type NavigationMenuExtendedUi = NavigationMenuUi & NavigationMenuExtraUi;
 
@@ -79,13 +79,10 @@ export interface NavigationMenuOptionProps {
 export type NavigationMenuOptionEmits = NavigationMenuSubEmits & NavigationMenuContentEmits & NavigationMenuLinkEmits;
 
 export interface NavigationMenuProps extends NavigationMenuRootProps, Omit<NavigationMenuOptionProps, 'item'> {
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<NavigationMenuExtendedUi>;
   items: NavigationMenuOptionData[];
 }
 
 export type NavigationMenuEmits = NavigationMenuRootEmits & NavigationMenuOptionEmits;
-
-export interface NavigationMenuExtraThemeContextParams {
-  ui: ComputedRef<NavigationMenuExtraUi>;
-}

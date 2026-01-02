@@ -7,7 +7,7 @@ export { default as ListboxGroup } from './listbox-group.vue';
 export { default as ListboxGroupLabel } from './listbox-group-label.vue';
 export { default as ListboxVirtualizer } from './listbox-virtualizer.vue';
 
-export { provideListboxThemeContext } from './context';
+export { provideListboxUi } from './context';
 
 export type {
   ListboxRootProps,
@@ -22,6 +22,6 @@ export type {
   ListboxFilterEmits,
   ListboxVirtualizerProps,
   ListboxCollectionItemData,
-  ListboxThemeSlot,
+  ListboxUiSlot,
   ListboxUi
 } from './types';

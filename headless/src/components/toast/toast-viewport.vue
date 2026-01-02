@@ -4,7 +4,7 @@ import { onKeyStroke } from '@vueuse/core';
 import { useForwardElement } from '../../composables';
 import { getActiveElement, getTabbableCandidates, tryFocusFirst } from '../../shared';
 import { Primitive } from '../primitive';
-import { useCollectionContext, useToastProviderContext, useToastViewportThemeContext } from './context';
+import { useCollectionContext, useToastProviderContext, useToastViewportUi } from './context';
 import ToastFocusProxy from './toast-focus-proxy.vue';
 import { VIEWPORT_PAUSE, VIEWPORT_RESUME } from './shared';
 import type { TabbingDirection, ToastViewportProps } from './types';
@@ -22,8 +22,7 @@ const props = withDefaults(defineProps<ToastViewportProps>(), {
 
 const attrs = useAttrs();
 
-const themeContext = useToastViewportThemeContext();
-const cls = computed(() => themeContext?.value);
+const cls = useToastViewportUi();
 
 const { onViewportElementChange, toastCount, isClosePausedRef } = useToastProviderContext('ToastViewport');
 const { onContainerElementChange, getOrderedElements } = useCollectionContext('ToastViewport');

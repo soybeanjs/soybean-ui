@@ -5,7 +5,7 @@ export { default as TooltipTrigger } from './tooltip-trigger.vue';
 export { default as TooltipPopup } from './tooltip-popup.vue';
 export { default as TooltipPositioner } from './tooltip-positioner.vue';
 
-export { providePopperThemeContext as provideTooltipThemeContext } from '../popper/context';
+export { providePopperUi as provideTooltipUi } from '../popper/context';
 
 export type {
   TooltipProviderProps,
@@ -20,7 +20,7 @@ export type {
 
 export type {
   PopperArrowProps as TooltipArrowProps,
-  PopperThemeSlot as TooltipThemeSlot,
+  PopperUiSlot as TooltipUiSlot,
   PopperUi as TooltipUi
 } from '../popper/types';
 export type { PortalProps as TooltipPortalProps } from '../portal/types';

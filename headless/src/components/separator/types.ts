@@ -1,5 +1,5 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { ClassValue, DataOrientation } from '../../types';
+import type { HTMLAttributes } from 'vue';
+import type { DataOrientation, UiClass } from '../../types';
 
 export interface SeparatorLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -17,10 +17,6 @@ export interface SeparatorRootProps extends /** @vue-ignore */ HTMLAttributes {
   decorative?: boolean;
 }
 
-export type SeparatorThemeSlot = 'root' | 'label';
+export type SeparatorUiSlot = 'root' | 'label';
 
-export type SeparatorUi = Partial<Record<SeparatorThemeSlot, ClassValue>>;
-
-export interface SeparatorThemeContextParams {
-  ui: ComputedRef<SeparatorUi>;
-}
+export type SeparatorUi = UiClass<SeparatorUiSlot>;

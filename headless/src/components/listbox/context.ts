@@ -1,13 +1,20 @@
 import { computed, nextTick, shallowRef, useId } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import { useCollection, useContext, useDirection, useForwardElement, useTypeahead } from '../../composables';
+import {
+  useCollection,
+  useContext,
+  useDirection,
+  useForwardElement,
+  useTypeahead,
+  useUiContext
+} from '../../composables';
 import { findValuesBetween, getFocusIntent } from '../../shared';
-import { provideInputThemeContext } from '../input/context';
+import { provideInputUi } from '../input/context';
 import type {
   ListboxCollectionItemData,
   ListboxItemContextParams,
   ListboxRootContextParams,
-  ListboxThemeContextParams
+  ListboxUiSlot
 } from './types';
 
 export const { provideCollectionContext, useCollectionContext, useCollectionItem } =
@@ -303,18 +310,13 @@ export const [provideListboxItemContext, useListboxItemContext] = useContext(
   (params: ListboxItemContextParams) => params
 );
 
-export const [provideListboxThemeContext, useListboxThemeContext] = useContext(
-  'ListboxTheme',
-  (params: ListboxThemeContextParams) => {
-    const inputUi = computed(() => ({
-      root: params.ui.value.filterRoot,
-      control: params.ui.value.filterControl
-    }));
+export const [provideListboxUi, useListboxUi] = useUiContext<ListboxUiSlot>('ListboxUi', ui => {
+  const inputUi = computed(() => ({
+    root: ui.value?.filterRoot,
+    control: ui.value?.filterControl
+  }));
 
-    provideInputThemeContext({
-      ui: inputUi
-    });
+  provideInputUi(inputUi);
 
-    return params;
-  }
-);
+  return ui;
+});

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
-import { useToastRootContext, useToastThemeContext } from './context';
+import { useToastRootContext, useToastUi } from './context';
 import type { ToastActionProps } from './types';
 
 defineOptions({
@@ -12,10 +12,9 @@ const props = withDefaults(defineProps<ToastActionProps>(), {
   as: 'button'
 });
 
-const themeContext = useToastThemeContext();
-const { onClose } = useToastRootContext('ToastAction');
+const cls = useToastUi('action');
 
-const cls = computed(() => themeContext?.ui?.value?.action);
+const { onClose } = useToastRootContext('ToastAction');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>

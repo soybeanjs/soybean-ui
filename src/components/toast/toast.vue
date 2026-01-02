@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToastClose, ToastDescription, ToastRoot, ToastTitle, provideToastThemeContext } from '@soybeanjs/headless';
+import { ToastClose, ToastDescription, ToastRoot, ToastTitle, provideToastUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { toastVariants } from '@/variants/toast';
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<ToastProps>(), {
 
 const emit = defineEmits<ToastEmits>();
 
-const forwardedProps = useOmitProps(props, ['size', 'ui', 'color', 'titleProps', 'descriptionProps']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'color', 'titleProps', 'descriptionProps']);
 
 const listeners = useForwardListeners(emit);
 
@@ -29,7 +29,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 const iconRecord: Record<ToastType, { icon: string; class: string }> = {
@@ -59,9 +59,7 @@ const iconConfig = computed(() => {
   return null;
 });
 
-provideToastThemeContext({
-  ui
-});
+provideToastUi(ui);
 </script>
 
 <template>
