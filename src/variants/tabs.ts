@@ -12,7 +12,7 @@ export const tabsVariants = tv({
       `disabled:cursor-not-allowed disabled:opacity-50`
     ],
     indicator: `absolute top-0 left-0 z-2 transition-[width,height,transform] duration-300`,
-    indicatorContent: `size-full bg-background shadow`,
+    indicatorContent: `w-full h-full bg-background shadow`,
     content: `flex-grow self-stretch overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`
   },
   variants: {

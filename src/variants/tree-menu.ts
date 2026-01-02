@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const treeMenuVariants = tv({
   slots: {
-    root: 'group flex-1 flex flex-col size-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
+    root: 'group flex-1 flex flex-col w-full h-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
     groupRoot: '',
     group: 'flex flex-col m-0 p-0 list-none',
     groupLabel: `flex items-center text-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,

@@ -8,7 +8,7 @@ export const layoutVariants = tv({
     sidebarRoot: 'hidden md:block',
     sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
-      `flex flex-col size-full bg-sidebar-background`,
+      `flex flex-col w-full h-full bg-sidebar-background`,
       `group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:border-solid group-data-[variant=floating]:shadow`
     ],
     sidebarGapHandler: [
@@ -22,7 +22,7 @@ export const layoutVariants = tv({
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
       `data-[state=closed]:animate-out data-[state=closed]:fade-out-0`
     ],
-    mobile: 'flex flex-col size-full',
+    mobile: 'flex flex-col w-full h-full',
     rail: [
       'absolute inset-y-0 z-20 hidden w-[--soybean-layout-spacing] -translate-x-1/2 transition-all ease-linear sm:flex',
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'

@@ -17,7 +17,7 @@ export const navigationMenuVariants = tv({
       `data-[motion^=to-]:animate-out data-[motion^=to-]:fade-out`,
       `data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52`
     ],
-    arrow: 'relative top-70% rotate-45 border border-border bg-background rounded-2px',
+    arrow: 'relative top-70% rotate-45 border border-border bg-background rounded-0.5',
     list: [
       `group grow flex items-center justify-center my-0 list-none`,
       `group-data-[orientation=vertical]:flex-col group-data-[orientation=vertical]:items-stretch`
@@ -37,7 +37,7 @@ export const navigationMenuVariants = tv({
     subItemContent: `flex items-start rounded-md outline-none cursor-default select-none`,
     triggerIcon: `ml-auto transition duration-200 group-data-[state=open]:rotate-180`,
     indicator: [
-      `absolute top-full z-2 flex mt-1px w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
+      `absolute top-full z-2 flex mt-0.25 w-[--soybean-navigation-menu-indicator-size] items-end justify-center overflow-hidden transition-transform-200 ease-out translate-x-[--soybean-navigation-menu-indicator-position]`,
       `data-[state=visible]:animate-in data-[state=visible]:fade-in-0 data-[state=hidden]:animate-out data-[state=hidden]:fade-out-0`,
       `group-data-[orientation=vertical]:top-[calc(var(--soybean-navigation-menu-indicator-size)/2)] group-data-[orientation=vertical]:left-full`,
       `group-data-[orientation=vertical]:translate-y-[--soybean-navigation-menu-indicator-position]`,

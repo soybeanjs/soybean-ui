@@ -18,9 +18,9 @@ const tabs = [
         v-model="tabValue"
         :items="tabs"
         :ui="{
-          list: 'border-border border-b-2px bg-transparent rounded-none',
+          list: 'border-border border-b-0.5 bg-transparent rounded-none',
           content: 'p-4 border border-border rounded-1',
-          indicatorContent: 'absolute -bottom-2px h-2px! rounded-1 bg-primary'
+          indicatorContent: 'absolute -bottom-0.5 h-0.5 rounded-1 bg-primary'
         }"
       >
         <template #trigger="{ label, active }">
@@ -40,9 +40,9 @@ const tabs = [
           orientation="vertical"
           class="mt-24px"
           :ui="{
-            list: 'border-border border-l-2px bg-transparent rounded-none',
+            list: 'border-border border-l-0.5 bg-transparent rounded-none',
             content: 'p-4 border border-border rounded-1',
-            indicatorContent: 'absolute -left-2px w-2px! rounded-1 bg-primary'
+            indicatorContent: 'absolute -left-0.5 w-0.5 rounded-1 bg-primary'
           }"
         >
           <template #trigger="{ label, active }">

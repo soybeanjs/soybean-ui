@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const progressVariants = tv({
   slots: {
     root: 'relative w-full overflow-hidden rounded-full',
-    indicator: 'flex-1 size-full transition-all-200'
+    indicator: 'flex-1 w-full h-full transition-all-200'
   },
   variants: {
     color: {
