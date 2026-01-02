@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useMediaQuery } from '@vueuse/core';
-import { builtinColorMap, builtinRadiuses } from '@soybeanjs/unocss-shadcn';
+import { builtinColorMap } from '@soybeanjs/unocss-shadcn';
 import type { ThemeConfigColor } from '@soybeanjs/unocss-shadcn';
 import { SButton, SIcon, SLabel } from '@soybeanjs/ui';
 import type { ThemeSize } from '@soybeanjs/ui';
@@ -11,6 +11,8 @@ const { color, radius, size } = useTheme('ThemeCustomizer');
 const isMobile = useMediaQuery('(max-width: 768px)');
 
 const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+
+const radiuses: number[] = [0, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1];
 
 function setTheme(item: ThemeConfigColor) {
   color.value = item;
@@ -26,7 +28,7 @@ function setSize(item: ThemeSize) {
 </script>
 
 <template>
-  <SPopover :ui="{ content: 'z-51' }" :placement="isMobile ? 'left' : 'bottom-end'">
+  <SPopover :ui="{ popup: 'z-51' }" :placement="isMobile ? 'left' : 'bottom-end'">
     <template #trigger>
       <SButtonIcon icon="lucide:swatch-book" size="lg" />
     </template>
@@ -65,9 +67,9 @@ function setSize(item: ThemeSize) {
       </div>
       <div class="pt-6 space-y-1.5">
         <SLabel for="radius" class="text-xs">Radius</SLabel>
-        <div class="grid grid-cols-5 gap-2 py-1.5">
+        <div class="grid grid-cols-4 gap-2 py-1.5">
           <SButton
-            v-for="(r, index) in builtinRadiuses"
+            v-for="(r, index) in radiuses"
             :key="index"
             :variant="r === radius ? 'outline' : 'pure'"
             size="sm"
@@ -79,7 +81,7 @@ function setSize(item: ThemeSize) {
       </div>
       <div class="pt-6 space-y-1.5">
         <SLabel for="size" class="text-xs">Size</SLabel>
-        <div class="grid grid-cols-5 gap-2 py-1.5">
+        <div class="grid grid-cols-3 gap-2 py-1.5">
           <SButton
             v-for="(s, index) in sizes"
             :key="index"

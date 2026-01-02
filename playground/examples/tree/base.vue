@@ -48,7 +48,7 @@ const items: DemoTree[] = [
       :default-expanded="['components']"
     >
       <template #top>
-        <h2 class="font-semibold text-sm text-stone-400 px-2 pt-1 pb-3">Directory Structure</h2>
+        <h2 class="font-semibold text-sm text-stone-400 m-0 px-2 pt-1 pb-3">Directory Structure</h2>
       </template>
       <template #item="{ item }">
         <STreeItem

@@ -192,8 +192,6 @@ const menus: NavigationMenuOptionData[] = [
 <template>
   <div>
     <h3 class="playground-title">Horizontal</h3>
-    <div class="w-100 lt-md:w-auto">
-      <SNavigationMenu :items="menus" :ui="{ root: 'z-10', subLink: 'w-80' }" />
-    </div>
+    <SNavigationMenu :items="menus" :ui="{ root: 'z-10', subLink: 'w-60' }" />
   </div>
 </template>

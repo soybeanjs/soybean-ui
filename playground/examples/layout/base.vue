@@ -150,7 +150,13 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
         }"
       >
         <template #sidebar="{ open, collapsedSidebarWidth }">
-          <STreeMenu :size="size" :collapsed="!open" :items="treeMenuItems" :collapsed-width="collapsedSidebarWidth">
+          <STreeMenu
+            :size="size"
+            :side="side"
+            :collapsed="!open"
+            :items="treeMenuItems"
+            :collapsed-width="collapsedSidebarWidth"
+          >
             <template #top>
               <SDropdownMenu
                 :size="size"

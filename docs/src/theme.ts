@@ -6,7 +6,7 @@ import type { ConfigProviderProps, ThemeSize } from '@soybeanjs/ui';
 
 export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => {
   const color = useStorage<ThemeConfigColor>('color', 'default');
-  const radius = useStorage('radius', 0.5);
+  const radius = useStorage('radius', 0.625);
   const size = useStorage<ThemeSize>('size', 'md');
 
   const configProviderProps = computed<ConfigProviderProps>(() => ({

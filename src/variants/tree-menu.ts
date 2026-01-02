@@ -5,9 +5,9 @@ export const treeMenuVariants = tv({
   slots: {
     root: 'group flex-1 flex flex-col size-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
     groupRoot: '',
-    group: 'flex flex-col m-0',
+    group: 'flex flex-col m-0 p-0 list-none',
     groupLabel: `flex items-center text-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
-    item: 'relative group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
+    item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
     button: [
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
       `data-[active=true]:bg-primary/10 data-[active=true]:text-primary`,
@@ -20,7 +20,7 @@ export const treeMenuVariants = tv({
       'overflow-hidden transition will-change-auto',
       'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
     ],
-    sub: 'flex flex-col m-0 ml-[--soybean-tree-menu-indent] border-l border-sidebar-border border-solid',
+    sub: 'flex flex-col m-0 list-none ml-[--soybean-tree-menu-indent] border-l border-sidebar-border border-solid',
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     itemBadge: ``,
