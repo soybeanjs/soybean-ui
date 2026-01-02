@@ -5,7 +5,7 @@ import DemoNavigationMenuVertical from './vertical.vue';
 </script>
 
 <template>
-  <SCard title="Navigation Menu" split>
+  <SCard title="Navigation Menu" split :ui="{ content: 'flex-c gap-4' }">
     <DemoNavigationMenuHorizontal />
     <DemoNavigationMenuVertical />
   </SCard>
