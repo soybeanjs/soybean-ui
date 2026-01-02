@@ -1,4 +1,4 @@
-import type { CSSProperties, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type { ClassValue, HorizontalSide, PropsToContext } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
@@ -25,13 +25,13 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
   /** The collapsible state of the layout. */
   collapsible?: LayoutCollapsible;
   /**
-   * The width of the sidebar.
+   * The width of the sidebar. (px)
    *
    * @default 240
    */
   sidebarWidth?: number;
   /**
-   * The width of the sidebar when it is collapsed.
+   * The width of the sidebar when it is collapsed. (px)
    *
    * @default 50
    */
@@ -45,17 +45,19 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
    */
   mobileMediaQuery?: string;
   /**
-   * The width of the sidebar in the mobile view.
+   * The width of the sidebar in the mobile view. (px)
    *
    * @default 240
    */
   mobileSidebarWidth?: number;
   /**
-   * The size ratio of the layout.
+   * The function to convert pixels to rem.
    *
-   * @default 1
+   * @param px - The width in pixels
+   * @default (px: number) => px / 16 (16 is the base font size)
+   * @returns The width in rem
    */
-  sizeRatio?: number;
+  pxToRem?: (px: number) => number;
 }
 
 export type LayoutRootEmits = {
@@ -85,7 +87,10 @@ export interface LayoutRootContextParams extends PropsToContext<
   open: ShallowRef<boolean | undefined>;
   isMobile: ComputedRef<boolean>;
   mobileOpen: ShallowRef<boolean>;
-  mobileStyle: ComputedRef<CSSProperties>;
+  /**
+   * The width of the sidebar in the mobile view. (rem)
+   */
+  mobileSidebarWidth: ComputedRef<number>;
   sidebarState: ComputedRef<LayoutSidebarState>;
 }
 

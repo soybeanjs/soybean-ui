@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
   collapsedSidebarWidth: 50,
   mobileMediaQuery: '(max-width: 768px)',
   mobileSidebarWidth: 240,
-  sizeRatio: 1
+  pxToRem: (px: number) => px / 16
 });
 
 const emit = defineEmits<LayoutRootEmits>();
@@ -45,8 +45,8 @@ const sidebarState = computed<LayoutSidebarState>(() => (open.value ? 'expanded'
 const dataCollapsible = computed(() => (sidebarState.value === 'collapsed' ? props.collapsible : ''));
 
 const style = computed<CSSProperties>(() => {
-  const sidebarWidth = (props.sidebarWidth * props.sizeRatio) / 16;
-  const collapsedSidebarWidth = (props.collapsedSidebarWidth * props.sizeRatio) / 16;
+  const sidebarWidth = props.pxToRem(props.sidebarWidth);
+  const collapsedSidebarWidth = props.pxToRem(props.collapsedSidebarWidth);
 
   return {
     [layoutCssVars.sidebarWidth]: `${sidebarWidth}rem`,
@@ -54,19 +54,14 @@ const style = computed<CSSProperties>(() => {
   };
 });
 
-const mobileStyle = computed<CSSProperties>(() => {
-  const mobileSidebarWidth = (props.mobileSidebarWidth * props.sizeRatio) / 16;
-  return {
-    [layoutCssVars.sidebarWidth]: `${mobileSidebarWidth}rem`
-  };
-});
+const mobileSidebarWidth = computed(() => props.pxToRem(props.mobileSidebarWidth));
 
 provideLayoutRootContext({
   ...transformPropsToContext(props, ['sidebarWidth', 'collapsedSidebarWidth']),
   open,
   isMobile,
   mobileOpen,
-  mobileStyle,
+  mobileSidebarWidth,
   sidebarState
 });
 </script>
@@ -74,10 +69,10 @@ provideLayoutRootContext({
 <template>
   <div
     :class="cls"
-    :data-state="sidebarState"
     :data-collapsible="dataCollapsible"
-    :data-variant="variant"
     :data-side="side"
+    :data-state="sidebarState"
+    :data-variant="variant"
     :style="style"
   >
     <slot :open="open" :collapsed-sidebar-width="collapsedSidebarWidth" />

@@ -11,7 +11,7 @@ import {
   provideLayoutThemeContext
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants, provideSizeContext, themeSizeRatio } from '@/theme';
+import { mergeSlotVariants, provideSizeContext, themeSizeMap, themeSizeRatio } from '@/theme';
 import { layoutVariants } from '@/variants/layout';
 import { drawerContentVariants } from '@/variants/drawer';
 import type { LayoutEmits, LayoutProps } from './types';
@@ -21,7 +21,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<LayoutProps>(), {
-  open: undefined
+  open: undefined,
+  size: 'md'
 });
 
 const emit = defineEmits<LayoutEmits>();
@@ -29,6 +30,7 @@ const emit = defineEmits<LayoutEmits>();
 const forwardedProps = useOmitProps(props, [
   'size',
   'ui',
+  'pxToRem',
   'sidebarProps',
   'headerProps',
   'mainProps',
@@ -38,7 +40,13 @@ const forwardedProps = useOmitProps(props, [
   'mobileProps'
 ]);
 
-const sizeRatio = computed(() => themeSizeRatio[props.size || 'md']);
+const pxToRem = (px: number) => {
+  if (props.pxToRem) {
+    return props.pxToRem(px);
+  }
+
+  return (px * themeSizeRatio[props.size]) / themeSizeMap.md;
+};
 
 const ui = computed(() => {
   const variants = layoutVariants({
@@ -69,7 +77,7 @@ provideSizeContext(() => props.size);
   <LayoutRoot
     v-slot="slotProps"
     v-bind="forwardedProps"
-    :size-ratio="sizeRatio"
+    :px-to-rem="pxToRem"
     @update:open="emit('update:open', $event)"
   >
     <LayoutSidebar v-bind="sidebarProps">
