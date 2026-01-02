@@ -48,6 +48,7 @@ export * from './components/visually-hidden';
 
 export type {
   ClassValue,
+  UiClass,
   DefinedValue,
   AcceptableValue,
   AcceptableBooleanValue,

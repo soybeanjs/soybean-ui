@@ -2,6 +2,8 @@ export type PrimitiveType = null | undefined | string | number | boolean | symbo
 
 export type ClassValue = string | null | undefined | Record<string, boolean> | ClassValue[];
 
+export type UiClass<UiSlot extends string> = Record<UiSlot, ClassValue>;
+
 export type DefinedValue = string | number;
 export type AcceptableValue = DefinedValue | null | undefined;
 export type AcceptableBooleanValue = AcceptableValue | boolean;
