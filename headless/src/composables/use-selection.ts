@@ -38,6 +38,11 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
       const updated = modelValue.value === value ? undefined : value;
 
       modelValue.value = updated as SelectionProps<M, N>['modelValue'];
+
+      if (updated === undefined) {
+        // @ts-expect-error ignore type
+        onUpdateModelValue(updated);
+      }
       return;
     }
 
