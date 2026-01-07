@@ -20,7 +20,9 @@ export default defineConfig<Theme>({
       selectorName: 'prose-slate'
     }),
     presetAnimations(),
+    // @ts-expect-error ignore type
     presetSoybeanJS(),
+    // @ts-expect-error ignore type
     presetShadcn()
   ],
   safelist: 'prose-slate dark:prose-slate-invert md:max-w-80ch! m-auto text-left'.split(' '),
