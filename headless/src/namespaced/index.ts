@@ -99,7 +99,6 @@ import {
   FormDescription,
   FormError,
   FormField,
-  FormFieldArray,
   FormLabel,
   InputControl,
   InputRoot,
@@ -487,13 +486,11 @@ export const DropdownMenu = {
 export const Form = {
   Description: FormDescription,
   Error: FormError,
-  FieldArray: FormFieldArray,
   Field: FormField,
   Label: FormLabel
 } as {
   Description: typeof FormDescription;
   Error: typeof FormError;
-  FieldArray: typeof FormFieldArray;
   Field: typeof FormField;
   Label: typeof FormLabel;
 };

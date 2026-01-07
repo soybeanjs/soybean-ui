@@ -1,19 +1,29 @@
-import { useId } from 'vue';
+import { computed, useId } from 'vue';
 import { useContext, useUiContext } from '../../composables';
-import type { FormFieldUiSlot } from './types';
+import type { FormFieldContextParams, FormFieldUiSlot } from './types';
 
-export const [provideFormFieldContext, useFormFieldContext] = useContext('FormField', () => {
-  const id = useId();
+export const [provideFormFieldContext, useFormFieldContext] = useContext(
+  'FormField',
+  (params: FormFieldContextParams) => {
+    const { error } = params;
 
-  const formFieldId = `form-field-${id}`;
-  const formDescriptionId = `form-field-description-${id}`;
-  const formErrorId = `form-field-error-${id}`;
+    const id = useId();
 
-  return {
-    formFieldId,
-    formDescriptionId,
-    formErrorId
-  };
-});
+    const formFieldId = `form-field-${id}`;
+    const formDescriptionId = `form-field-description-${id}`;
+    const formErrorId = `form-field-error-${id}`;
+
+    const ariaDescribedBy = computed(() => (error.value ? `${formDescriptionId} ${formErrorId}` : formDescriptionId));
+    const ariaInvalid = computed(() => Boolean(error.value));
+
+    return {
+      formFieldId,
+      formDescriptionId,
+      formErrorId,
+      ariaDescribedBy,
+      ariaInvalid
+    };
+  }
+);
 
 export const [provideFormFieldUi, useFormFieldUi] = useUiContext<FormFieldUiSlot>('FormFieldUi');

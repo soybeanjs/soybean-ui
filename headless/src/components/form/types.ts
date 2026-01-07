@@ -1,13 +1,10 @@
-import type { HTMLAttributes } from 'vue';
+import type { ComputedRef, HTMLAttributes } from 'vue';
 import type { UiClass } from '../../types';
 import type { LabelProps } from '../label/types';
 
 export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
-  name: string;
-}
-
-export interface FormFieldArrayProps extends /** @vue-ignore */ HTMLAttributes {
-  name: string;
+  error?: string;
+  isFieldArray?: boolean;
 }
 
 export interface FormLabelProps extends LabelProps {}
@@ -15,6 +12,10 @@ export interface FormLabelProps extends LabelProps {}
 export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface FormFieldContextParams {
+  error: ComputedRef<string | undefined>;
+}
 
 export type FormFieldUiSlot = 'field' | 'fieldArray' | 'label' | 'description' | 'error';
 

@@ -11,6 +11,8 @@ export type AcceptableBooleanValue = AcceptableValue | boolean;
 export type MaybeArray<T> = T | Array<T>;
 export type MaybePromise<T> = T | Promise<T>;
 
+export type ArrayElement<T> = T extends (infer U)[] ? U : never;
+
 export type DataOrientation = 'vertical' | 'horizontal';
 export type Direction = 'ltr' | 'rtl';
 

@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { computed, useSlots } from 'vue';
-import { FormDescription, FormError, FormField, FormLabel, Slot, provideFormFieldUi } from '@soybeanjs/headless';
+import { FormDescription, FormError, FormField, FormLabel, provideFormFieldUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { useField } from '@soybeanjs/headless/forms';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import { mergeSlotVariants } from '@/theme';
 import { formVariants } from '@/variants/form';
 import { useFormContext } from './context';
-import type { FormFieldProps } from './types';
+import type { FormFieldBaseProps } from './types';
 
 defineOptions({
-  name: 'SFormField'
+  name: 'SFormFieldBase'
 });
 
-const props = defineProps<FormFieldProps>();
+const props = defineProps<FormFieldBaseProps>();
 
 const slots = useSlots();
 
@@ -30,17 +29,17 @@ const forwardedProps = useOmitProps(props, [
 
 const formContext = useFormContext('FormField');
 
-const { error } = useField(() => props.name);
-
 const size = computed(() => props.size ?? formContext.size.value);
 
 const ui = computed(() => {
   const variants = formVariants({
-    size: size.value,
-    error: Boolean(error.value)
+    size: size.value
   });
 
-  return mergeSlotVariants(variants, formContext.ui.value, props.ui, { field: props.class });
+  return mergeSlotVariants(variants, formContext.ui.value, props.ui, {
+    field: props.isFieldArray ? undefined : props.class,
+    fieldArray: props.isFieldArray ? props.class : undefined
+  });
 });
 
 const labelProps = computed(() => ({ ...formContext.labelProps.value, ...props.labelProps }));
@@ -51,26 +50,11 @@ provideFormFieldUi(ui);
 </script>
 
 <template>
-  <FormField
-    v-slot="{ modelValue, updateModelValue, attrs, dirty, touched, ariaDescribedBy, ariaInvalid }"
-    v-auto-animate
-    v-bind="forwardedProps"
-  >
+  <FormField v-slot="slotProps" v-auto-animate v-bind="forwardedProps">
     <FormLabel v-if="slots.label || label" v-bind="labelProps">
       <slot name="label">{{ label }}</slot>
     </FormLabel>
-    <Slot
-      :size="size"
-      :model-value="modelValue"
-      :aria-described-by="ariaDescribedBy"
-      :aria-invalid="ariaInvalid"
-      @update:model-value="updateModelValue"
-      @change="attrs.onChange"
-      @input="attrs.onInput"
-      @blur="attrs.onBlur"
-    >
-      <slot :dirty="dirty" :error="error" :touched="touched" />
-    </Slot>
+    <slot v-bind="slotProps" />
     <FormDescription v-if="slots.description || description" v-bind="descriptionProps">
       <slot name="description">{{ description }}</slot>
     </FormDescription>

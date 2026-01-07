@@ -40,11 +40,6 @@
         "import": "./dist/shared/index.js",
         "require": "./dist/shared/index.js"
       },
-      "./forms": {
-        "types": "./dist/forms/index.d.ts",
-        "import": "./dist/forms/index.js",
-        "require": "./dist/forms/index.js"
-      },
       "./nuxt": {
         "types": "./dist/nuxt/index.d.ts",
         "import": "./dist/nuxt/index.js",
@@ -124,19 +119,11 @@
   },
   "peerDependencies": {
     "nuxt": ">=4.0.0",
-    "valibot": ">=1.0.0",
     "vue": ">=3.2.0",
-    "vue-router": ">=4.0.0",
-    "zod": ">=4.0.0"
+    "vue-router": ">=4.0.0"
   },
   "peerDependenciesMeta": {
     "nuxt": {
-      "optional": true
-    },
-    "valibot": {
-      "optional": true
-    },
-    "zod": {
       "optional": true
     }
   },
@@ -145,7 +132,6 @@
     "@floating-ui/utils": "^0.2.10",
     "@internationalized/date": "^3.10.1",
     "@internationalized/number": "^3.6.5",
-    "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.14",
     "@vue/shared": "^3.5.26",
     "@vueuse/core": "^14.1.0",
@@ -159,6 +145,7 @@
   },
   "devDependencies": {
     "@nuxt/kit": "^4.2.2",
+    "@standard-schema/spec": "^1.1.0",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.0",

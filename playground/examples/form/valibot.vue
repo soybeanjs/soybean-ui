@@ -4,14 +4,11 @@ import {
   SButtonIcon,
   SCheckboxGroup,
   SForm,
-  SFormField,
-  SFormFieldArray,
   SInput,
   SRadioGroup,
   SSelect,
   SSwitch,
-  useForm,
-  valibotResolver
+  useForm
 } from '@soybeanjs/ui';
 import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
 import * as v from 'valibot';
@@ -34,14 +31,18 @@ const user = v.object({
   )
 });
 
-const validate = valibotResolver(user);
-
-const { handleSubmit } = useForm({
-  validate,
-  onSubmit: async vals => {
-    console.log(vals);
+const state = useForm({
+  schema: user,
+  onSubmit: async values => {
+    console.log(values);
+  },
+  onInvalid: errors => {
+    console.log(errors);
+    console.log(state);
   }
 });
+
+const { handleSubmit, SFormField, SFormFieldArray } = state;
 
 type Gender = 'male' | 'female';
 
@@ -89,11 +90,11 @@ const citiesItems: SelectOptionData<string>[] = [
           <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />
         </template>
         <template #default="{ fields, append, remove }">
-          <div v-for="(field, index) in fields" :key="field.key" class="flex gap-12px">
-            <SFormField :name="`${field.name}.name`" label="Name">
+          <div v-for="(field, index) in fields" :key="index" class="flex gap-12px">
+            <SFormField :name="`${field.name}.${index}.name`" label="Name">
               <SInput />
             </SFormField>
-            <SFormField :name="`${field.name}.url`" label="URL">
+            <SFormField :name="`${field.name}.${index}.url`" label="URL">
               <SInput />
             </SFormField>
             <SButtonIcon icon="lucide:minus" class="mt-7 flex-shrink-0" @click="remove(index)" />

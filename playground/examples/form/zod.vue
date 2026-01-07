@@ -4,14 +4,11 @@ import {
   SButtonIcon,
   SCheckboxGroup,
   SForm,
-  SFormField,
-  SFormFieldArray,
   SInput,
   SRadioGroup,
   SSelect,
   SSwitch,
-  useForm,
-  zodResolver
+  useForm
 } from '@soybeanjs/ui';
 import type { CheckboxGroupOptionData, RadioGroupOptionData, SelectOptionData } from '@soybeanjs/ui';
 import { z } from 'zod';
@@ -33,12 +30,13 @@ const user = z.object({
     .min(1, 'Social is required')
 });
 
-const validate = zodResolver(user);
-
-const { handleSubmit } = useForm({
-  validate,
+const { handleSubmit, SFormField, SFormFieldArray } = useForm({
+  schema: user,
   onSubmit: async vals => {
     console.log(vals);
+  },
+  onInvalid: errors => {
+    console.log(errors);
   }
 });
 
@@ -88,11 +86,11 @@ const citiesItems: SelectOptionData<string>[] = [
           <SButtonIcon v-if="!fields.length" icon="lucide:plus" @click="append({ name: '', url: '' })" />
         </template>
         <template #default="{ fields, append, remove }">
-          <div v-for="(field, index) in fields" :key="field.key" class="flex gap-12px">
-            <SFormField :name="`${field.name}.name`" label="Name">
+          <div v-for="(field, index) in fields" :key="index" class="flex gap-12px">
+            <SFormField :name="`${field.name}.${index}.name`" label="Name">
               <SInput />
             </SFormField>
-            <SFormField :name="`${field.name}.url`" label="URL">
+            <SFormField :name="`${field.name}.${index}.url`" label="URL">
               <SInput />
             </SFormField>
             <SButtonIcon icon="lucide:minus" class="mt-7 flex-shrink-0" @click="remove(index)" />

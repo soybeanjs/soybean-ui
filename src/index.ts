@@ -44,8 +44,6 @@ export * from './components/tree';
 export * from './components/tree-menu';
 export * from './components/virtualizer';
 
-export * from '@soybeanjs/headless/forms';
-
 export type {
   ClassValue,
   DefinedValue,

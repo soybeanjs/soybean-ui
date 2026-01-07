@@ -23,11 +23,6 @@ const originExports = {
     import: './dist/shared/index.js',
     require: './dist/shared/index.js'
   },
-  './forms': {
-    types: './dist/forms/index.d.ts',
-    import: './dist/forms/index.js',
-    require: './dist/forms/index.js'
-  },
   './nuxt': {
     types: './dist/nuxt/index.d.ts',
     import: './dist/nuxt/index.js',
@@ -55,7 +50,6 @@ const stubExports = {
   './constants': './src/constants/index.ts',
   './composables': './src/composables/index.ts',
   './shared': './src/shared/index.ts',
-  './forms': './src/forms/index.ts',
   './nuxt': './src/nuxt/index.ts',
   './resolver': './src/resolver/index.ts',
   './namespaced': './src/namespaced/index.ts',

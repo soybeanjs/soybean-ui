@@ -66,6 +66,8 @@ export type {
   HorizontalSide,
   Align,
   Placement,
+  Path,
+  PathValue,
   SelectionProps,
   SelectionEmits,
   ForceMountProps,

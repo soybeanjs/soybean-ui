@@ -1,8 +1,12 @@
 import { klona } from 'klona/full';
-import { keysOf, setValue } from '../../shared';
-import type { FormErrors, FormMessage, FormState, FormValues } from './types';
+import { keysOf, setValue } from '../../../shared';
+import type { Path } from '../../../types';
+import type { FormMessage, FormState, FormValues } from './types';
 
-export function updateFormState<Values extends FormValues>(state: FormState<Values>, message: FormMessage<Values>) {
+export function updateFormState<Values extends FormValues, Name extends Path<Values>>(
+  state: FormState<Values>,
+  message: FormMessage<Values, Name>
+) {
   switch (message.type) {
     case 'SubmitAttempt':
       state.isSubmitting.value = true;
@@ -15,26 +19,25 @@ export function updateFormState<Values extends FormValues>(state: FormState<Valu
       state.isSubmitting.value = false;
       break;
     case 'SetValues':
-      Object.keys(state.values).forEach(key => {
+      keysOf(state.values).forEach(key => {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete state.values[key];
       });
-      Object.keys(message.payload).forEach(path => {
-        // @ts-expect-error ignore type error
+      keysOf(message.payload).forEach(path => {
         state.values[path] = message.payload[path];
       });
       break;
     case 'SetFieldValue':
-      setValue(state.values, message.payload.path, klona(message.payload.value));
+      setValue(state.values, message.payload.name, klona(message.payload.value));
       break;
     case 'SetTouched':
-      setValue(state.touched.value, message.payload.path, message.payload.touched);
+      setValue(state.touched.value, message.payload.name, message.payload.touched);
       break;
     case 'SetErrors':
       state.errors.value = message.payload;
       break;
     case 'SetFieldError':
-      setValue(state.errors.value, message.payload.path, message.payload.error);
+      setValue(state.errors.value, message.payload.name, message.payload.error);
       break;
     case 'SetIsSubmitting':
       state.isSubmitting.value = message.payload;
@@ -53,14 +56,4 @@ export function updateFormState<Values extends FormValues>(state: FormState<Valu
       break;
     default:
   }
-}
-
-export function toNestError<Values>(errors: Record<string, string>) {
-  const fieldErrors: FormErrors<Values> = {};
-
-  keysOf(errors).forEach(path => {
-    setValue(fieldErrors, path, errors[path]);
-  });
-
-  return fieldErrors;
 }

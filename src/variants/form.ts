@@ -42,15 +42,9 @@ export const formVariants = tv({
         fieldArray: 'text-xl space-y-3.5',
         label: 'gap-3.5'
       }
-    },
-    error: {
-      true: {
-        error: `text-destructive`
-      }
     }
   },
   defaultVariants: {
-    size: 'md',
-    error: false
+    size: 'md'
   }
 });
