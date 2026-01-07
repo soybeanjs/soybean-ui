@@ -20,7 +20,9 @@ defineOptions({
   name: 'STreeMenuOption'
 });
 
-const props = defineProps<TreeMenuOptionProps>();
+const props = withDefaults(defineProps<TreeMenuOptionProps>(), {
+  as: 'li'
+});
 
 const emit = defineEmits<TreeMenuItemEmits>();
 
@@ -87,7 +89,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
 </script>
 
 <template>
-  <TreeMenuItem v-if="!hasChildren" :value="item.value" :disabled="item.disabled">
+  <TreeMenuItem v-if="!hasChildren" :as="as" :value="item.value" :disabled="item.disabled">
     <TreeMenuButton v-if="isLink" as-child>
       <Link v-slot="{ isHref }" v-bind="linkProps">
         <STreeMenuOptionSlot :item="item" :show-link-icon="isHref">
@@ -111,7 +113,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
     </Tooltip>
   </TreeMenuItem>
   <TreeMenuItem v-else as-child :value="item.value" :disabled="item.disabled">
-    <TreeMenuCollapsible as="li" :disabled-collapsible="collapsed">
+    <TreeMenuCollapsible :as="as" :disabled-collapsible="collapsed">
       <template #trigger>
         <TreeMenuButton disabled-active :data-child-active="childActive">
           <STreeMenuOptionSlot :item="item">

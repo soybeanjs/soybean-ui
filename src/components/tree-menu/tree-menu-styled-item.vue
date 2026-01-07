@@ -9,9 +9,9 @@ const ui = useTreeMenuUi();
 </script>
 
 <template>
-  <li :class="ui.item">
+  <div :class="ui.item">
     <button :class="ui.button">
       <slot />
     </button>
-  </li>
+  </div>
 </template>

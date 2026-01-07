@@ -100,7 +100,7 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
           </TreeMenuOption>
         </TreeMenuGroup>
       </TreeMenuGroupRoot>
-      <TreeMenuOption v-else :item="item">
+      <TreeMenuOption v-else as="div" :item="item">
         <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
         </template>

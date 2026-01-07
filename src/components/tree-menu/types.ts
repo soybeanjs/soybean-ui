@@ -1,4 +1,5 @@
 import type {
+  AsTag,
   ClassValue,
   HorizontalSide,
   LinkBaseProps,
@@ -84,6 +85,7 @@ export interface TreeMenuGroupOptionData {
 export type TreeMenuOptionData = TreeMenuBaseOptionData | TreeMenuGroupOptionData;
 
 export interface TreeMenuOptionProps {
+  as?: AsTag;
   item: TreeMenuBaseOptionData;
 }
 
