@@ -1,6 +1,49 @@
 # Changelog
 
 
+## [v0.0.10](https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10) (2026-01-07)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **composable**: introduce useUiContext composable for managing UI class values and context &nbsp;-&nbsp; by @soybeanjs [<samp>(bed68)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bed6859b)
+- **form**: add FormResetState type to form component exports for enhanced form state management &nbsp;-&nbsp; by @soybeanjs [<samp>(57e07)</samp>](https://github.com/soybeanjs/soybean-ui/commit/57e072ff)
+- **input**: add name and required props to InputControl and InputRoot for enhanced form handling &nbsp;-&nbsp; by @soybeanjs [<samp>(f28c6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f28c6415)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **selection**: handle model value update correctly by ensuring onUpdateModelValue is called when value is undefined &nbsp;-&nbsp; by @soybeanjs [<samp>(01b95)</samp>](https://github.com/soybeanjs/soybean-ui/commit/01b954c5)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **components**: unify name prop usage across form elements for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(d3f79)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d3f79121)
+- **constants**: sort the component constants alphabetically. &nbsp;-&nbsp; by @soybeanjs [<samp>(14c31)</samp>](https://github.com/soybeanjs/soybean-ui/commit/14c312b3)
+- **playground**: optimize NavigationMenu example style &nbsp;-&nbsp; by @soybeanjs [<samp>(ecb10)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ecb10b98)
+- **variants**: optimize the class enables the class merge to take effect &nbsp;-&nbsp; by @soybeanjs [<samp>(b2fbb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b2fbbf3e)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **drawer**: update drawer component structure and styling, replacing drawerContentVariants with drawerVariants for improved UI management &nbsp;-&nbsp; by @soybeanjs [<samp>(cfb41)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cfb4111d)
+- **form**: restructure form components &nbsp;-&nbsp; by @soybeanjs [<samp>(1af2b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1af2b6c3)
+- **layout**: replace sizeRatio with pxToRem function for improved sidebar width calculations and update mobile layout styles &nbsp;-&nbsp; by @soybeanjs [<samp>(ca234)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca2346d1)
+- **projects**: refactor components ui context managing &nbsp;-&nbsp; by @soybeanjs [<samp>(c12aa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c12aad4b)
+- **theme**: update mergeSlotVariants and mergeUi functions to support multiple UI sources for improved class merging &nbsp;-&nbsp; by @soybeanjs [<samp>(8f079)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8f079dd1)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: optimize docs &nbsp;-&nbsp; by @soybeanjs [<samp>(a8a5c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a8a5c47b)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(7a196)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a19693b)
+  - add valibot and zod dependencies to examples &nbsp;-&nbsp; by @soybeanjs [<samp>(324e3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/324e30aa)
+- **package**:
+  - remove unused forms entry from package.json to streamline exports &nbsp;-&nbsp; by @soybeanjs [<samp>(2be97)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2be9750d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.9](https://github.com/soybeanjs/soybean-ui/compare/v0.0.8...v0.0.9) (2026-01-02)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
