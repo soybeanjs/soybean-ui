@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { computed, shallowRef, useAttrs, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { useMagicKeys } from '@vueuse/core';
-import type { CommandOptionData } from '@soybeanjs/ui';
+import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
+import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
+import { components } from '../../../src/constants/components';
 
 defineOptions({
   name: 'SearchDocument',
@@ -9,12 +12,48 @@ defineOptions({
 });
 
 const attrs = useAttrs();
+const router = useRouter();
 const { t } = useI18n();
 const keys = useMagicKeys();
 
 const search = shallowRef('');
 
-const searched = shallowRef<CommandOptionData[]>([]);
+const excludes: string[] = ['configProvider', 'label', 'icon', 'menu'];
+
+const componentMenus = Object.keys(components)
+  .filter(key => !excludes.includes(key))
+  .map(
+    key =>
+      ({
+        label: toPascalCase(key),
+        value: `components_${toKebabCase(key)}`
+      }) satisfies CommandOptionData
+  );
+
+const searched: CommandOptionData[] = [
+  {
+    label: 'Overview',
+    value: 'overview',
+    icon: 'lucide:home',
+    separator: true,
+    items: [
+      {
+        label: 'Introduction',
+        value: 'overview_introduction'
+      },
+      {
+        label: 'Quick Start',
+        value: 'overview_quick-start'
+      }
+    ]
+  },
+  {
+    label: 'Components',
+    value: 'components',
+    icon: 'lucide:layout-grid',
+    items: componentMenus
+  }
+];
 
 const searchOpen = shallowRef(false);
 
@@ -29,6 +68,16 @@ watch(CmdK, v => {
     handleOpenChange();
   }
 });
+
+function handleSelect(item: SelectEvent<string>) {
+  const value = item.detail.value;
+  if (!value) return;
+
+  const path = `/${value.split('_').join('/')}`;
+  router.push(path);
+  searchOpen.value = false;
+  search.value = '';
+}
 </script>
 
 <template>
@@ -50,6 +99,11 @@ watch(CmdK, v => {
       :items="searched"
       :input-props="{ placeholder: t('layout.header.search') }"
       :empty-label="t('layout.header.search-empty')"
-    />
+      @select="handleSelect"
+    >
+      <template #item-leading>
+        <SIcon icon="lucide:arrow-right" />
+      </template>
+    </SCommand>
   </SDialogPure>
 </template>
