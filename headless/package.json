@@ -84,11 +84,6 @@
       "import": "./dist/shared/index.js",
       "require": "./dist/shared/index.js"
     },
-    "./forms": {
-      "types": "./dist/forms/index.d.ts",
-      "import": "./dist/forms/index.js",
-      "require": "./dist/forms/index.js"
-    },
     "./nuxt": {
       "types": "./dist/nuxt/index.d.ts",
       "import": "./dist/nuxt/index.js",
