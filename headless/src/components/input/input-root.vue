@@ -43,7 +43,9 @@ provideInputRootContext({
     'readonly',
     'maxlength',
     'minlength',
-    'pattern'
+    'pattern',
+    'name',
+    'required'
   ]),
   modelValue
 });

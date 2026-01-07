@@ -8,7 +8,7 @@ defineOptions({
 
 defineProps<InputControlProps>();
 
-const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, pattern } =
+const { modelValue, id, autofocus, placeholder, disabled, readonly, maxlength, minlength, pattern, name, required } =
   useInputRootContext('InputControl');
 
 const cls = useInputUi('control');
@@ -35,6 +35,8 @@ const onInput = (event: Event) => {
     :pattern="pattern"
     :placeholder="placeholder"
     :readonly="readonly"
+    :name="name"
+    :required="required"
     spellcheck="false"
     tabindex="0"
     :value="modelValue"
