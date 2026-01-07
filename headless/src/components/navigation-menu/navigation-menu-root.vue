@@ -68,7 +68,7 @@ watchEffect(() => {
     :ref="setRootElement"
     :class="cls"
     aria-label="Main"
-    :data-orientation="props.orientation"
+    :data-orientation="orientation"
     data-soybean-navigation-menu
     :dir="dir"
   >

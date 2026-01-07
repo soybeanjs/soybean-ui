@@ -61,10 +61,10 @@ const { dataState } = provideCheckboxRootContext({
     <slot :model-value="modelValue" :state="state" />
 
     <VisuallyHiddenInput
-      v-if="formControl && props.name && !groupContext"
+      v-if="formControl && name && !groupContext"
       type="checkbox"
       :checked="!!state"
-      :name="props.name"
+      :name="name"
       :value="value"
       :disabled="disabled"
       :required="required"

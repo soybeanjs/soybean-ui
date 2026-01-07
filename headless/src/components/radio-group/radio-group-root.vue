@@ -44,23 +44,23 @@ provideRadioGroupRootContext({
 </script>
 
 <template>
-  <RovingFocusGroup as-child :orientation="props.orientation" :dir="dir" :loop="loop">
+  <RovingFocusGroup as-child :orientation="orientation" :dir="dir" :loop="loop">
     <div
       ref="rootElement"
       :class="cls"
       role="radiogroup"
       :data-disabled="disabled ? '' : undefined"
-      :aria-orientation="props.orientation"
+      :aria-orientation="orientation"
       :aria-required="required"
     >
       <slot :model-value="modelValue" />
 
       <VisuallyHiddenInput
-        v-if="formControl && props.name"
+        v-if="formControl && name"
         :required="required"
         :disabled="disabled"
         :value="modelValue"
-        :name="props.name"
+        :name="name"
       />
     </div>
   </RovingFocusGroup>

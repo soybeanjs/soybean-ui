@@ -36,7 +36,7 @@ const { dir } = provideTabsRootContext({
 </script>
 
 <template>
-  <div :class="cls" :dir="dir" :data-orientation="props.orientation">
+  <div :class="cls" :dir="dir" :data-orientation="orientation">
     <slot :model-value="modelValue" />
   </div>
 </template>

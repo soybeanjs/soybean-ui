@@ -62,10 +62,10 @@ provideInputRootContext({
     <slot :model-value="modelValue" :clear="onClear" />
 
     <VisuallyHiddenInput
-      v-if="formControl && props.name"
+      v-if="formControl && name"
       type="text"
       :value="modelValue"
-      :name="props.name"
+      :name="name"
       :disabled="disabled"
       :readonly="readonly"
       :required="required"

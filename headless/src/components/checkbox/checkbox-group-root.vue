@@ -47,11 +47,6 @@ const formControl = computed(() => isFormControl(groupElement.value));
 <template>
   <component :is="rovingFocus ? RovingFocusGroup : 'div'" v-bind="rovingFocusProps" :ref="setGroupElement" as="div">
     <slot />
-    <VisuallyHiddenInput
-      v-if="formControl && props.name"
-      :name="props.name"
-      :value="modelValue"
-      :required="props.required"
-    />
+    <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="props.required" />
   </component>
 </template>
