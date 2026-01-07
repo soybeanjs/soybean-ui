@@ -105,7 +105,7 @@
     "vue": "^3.5.26",
     "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.6.4",
-    "vue-tsc": "^3.2.1"
+    "vue-tsc": "^3.2.2"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
