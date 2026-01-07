@@ -54,7 +54,7 @@ export default defineConfig({
       resolvers: [UiResolver()]
     }),
     Markdown({
-      wrapperClasses: 'prose-slate dark:prose-slate-invert md:max-w-80ch! m-auto text-left',
+      wrapperClasses: 'prose-slate dark:prose-slate-invert md:max-w-270! m-auto text-left',
       headEnabled: true,
       async markdownItSetup(md) {
         md.use(LinkAttributes, {

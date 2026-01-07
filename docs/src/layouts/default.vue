@@ -24,7 +24,7 @@ const closeDrawer = () => {
         <SiderMenu @select="closeDrawer" />
       </SDrawer>
     </div>
-    <div class="md:ml-50 p-6 lt-md:pt-12!">
+    <div class="lt-md:ml-0 lt-2xl:ml-50 p-6 lt-md:pt-12!">
       <RouterView />
     </div>
   </div>
