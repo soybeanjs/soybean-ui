@@ -21,5 +21,6 @@ export type {
   FormFieldArrayStates,
   FormFieldState,
   InferStandardSchemaInput,
-  FormRegisterOptions
+  FormRegisterOptions,
+  FormResetState
 } from './core/types';
