@@ -76,7 +76,9 @@
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "tailwind-merge": "^3.4.0",
-    "tailwind-variants": "^3.2.2"
+    "tailwind-variants": "^3.2.2",
+    "valibot": "^1.2.0",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@soybeanjs/cli": "^1.4.4",
