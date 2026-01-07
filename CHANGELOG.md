@@ -1,6 +1,27 @@
 # Changelog
 
 
+## [v0.0.11](https://github.com/soybeanjs/soybean-ui/compare/v0.0.10...v0.0.11) (2026-01-08)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **app**: add smooth scroll behavior and adjust layout styles for improved user experience &nbsp;-&nbsp; by @soybeanjs [<samp>(23f05)</samp>](https://github.com/soybeanjs/soybean-ui/commit/23f050c0)
+- **tree-menu**: add 'as' prop to TreeMenuOption and update related components for improved flexibility in rendering &nbsp;-&nbsp; by @soybeanjs [<samp>(18c0f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/18c0f72b)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **form**: expand form component exports with additional types for improved type safety and flexibility &nbsp;-&nbsp; by @soybeanjs [<samp>(9b8e0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9b8e0ff5)
+- **layout**: update max-width values in configuration and layout files for consistent styling &nbsp;-&nbsp; by @soybeanjs [<samp>(861cc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/861cc3cc)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**: add presetSoybeanJS and presetShadcn with type errors ignored &nbsp;-&nbsp; by @soybeanjs [<samp>(3793c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3793c71f)
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(f8f90)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f8f90eb7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.10](https://github.com/soybeanjs/soybean-ui/compare/v0.0.9...v0.0.10) (2026-01-07)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
