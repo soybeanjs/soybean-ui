@@ -137,5 +137,6 @@ provideCommandExtraUi(ui);
         </template>
       </SCommandOption>
     </ListboxContent>
+    <slot name="bottom" />
   </ListboxRoot>
 </template>
