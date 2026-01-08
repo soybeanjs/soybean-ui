@@ -95,7 +95,7 @@
     "@floating-ui/utils": "^0.2.10",
     "@internationalized/date": "^3.10.1",
     "@internationalized/number": "^3.6.5",
-    "@tanstack/vue-virtual": "^3.13.17",
+    "@tanstack/vue-virtual": "^3.13.18",
     "@vue/shared": "^3.5.26",
     "@vueuse/core": "^14.1.0",
     "@vueuse/integrations": "^14.1.0",
