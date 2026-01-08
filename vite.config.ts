@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import devtools from 'vite-plugin-vue-devtools';
@@ -14,5 +15,10 @@ export default defineConfig({
   plugins: [vue(), unocss(), devtools()],
   server: {
     open: true
+  },
+  test: {
+    globals: true,
+    include: ['test/specs/**/*.spec.ts'],
+    environment: 'happy-dom'
   }
 });
