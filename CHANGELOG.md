@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [v0.0.12](https://github.com/soybeanjs/soybean-ui/compare/v0.0.11...v0.0.12) (2026-01-08)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **command**: add bottom slot to command component and refine groupLabel styles for improved layout &nbsp;-&nbsp; by @soybeanjs [<samp>(1f199)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1f199dbb)
+- **docs**: search-document: add bottom slot to enhance user interaction with navigation options &nbsp;-&nbsp; by @soybeanjs [<samp>(9b550)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9b550b24)
+- **search**: enhance search-document component with dynamic menu items and routing functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(2e5a8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2e5a8a37)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **config**: integrate Vitest configuration into vite.config.ts and remove vitest.config.ts &nbsp;-&nbsp; by @soybeanjs [<samp>(cd05f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cd05f270)
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(5afd3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5afd32e3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.11](https://github.com/soybeanjs/soybean-ui/compare/v0.0.10...v0.0.11) (2026-01-08)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
