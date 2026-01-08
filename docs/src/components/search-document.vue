@@ -104,6 +104,12 @@ function handleSelect(item: SelectEvent<string>) {
       <template #item-leading>
         <SIcon icon="lucide:arrow-right" />
       </template>
+      <template #bottom>
+        <div class="flex-y-center gap-2 h-10 px-4 bg-accent text-accent-foreground border-t border-solid border-border">
+          <SKbd value="enter" />
+          <span>Go to Page</span>
+        </div>
+      </template>
     </SCommand>
   </SDialogPure>
 </template>
