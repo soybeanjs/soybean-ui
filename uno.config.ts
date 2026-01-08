@@ -1,6 +1,6 @@
 import { defineConfig, presetTypography, presetWind3, transformerDirectives, transformerVariantGroup } from 'unocss';
 import { presetShadcn } from '@soybeanjs/unocss-shadcn';
-import { presetSoybeanJS } from '@soybeanjs/unocss-preset';
+import { presetSoybean } from '@soybeanjs/unocss-preset';
 import { presetAnimations } from 'unocss-preset-animations';
 import type { Theme } from 'unocss/preset-mini';
 
@@ -20,9 +20,7 @@ export default defineConfig<Theme>({
       selectorName: 'prose-slate'
     }),
     presetAnimations(),
-    // @ts-expect-error ignore type
-    presetSoybeanJS(),
-    // @ts-expect-error ignore type
+    presetSoybean(),
     presetShadcn()
   ],
   safelist: 'prose-slate dark:prose-slate-invert md:max-w-270! m-auto text-left'.split(' '),

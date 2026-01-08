@@ -72,7 +72,7 @@
     "@formkit/auto-animate": "^0.9.0",
     "@iconify/vue": "^5.0.0",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/unocss-shadcn": "^0.0.3",
+    "@soybeanjs/unocss-shadcn": "^0.0.4",
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "tailwind-merge": "^3.4.0",
@@ -83,7 +83,7 @@
   "devDependencies": {
     "@soybeanjs/cli": "^1.4.4",
     "@soybeanjs/eslint-config": "^1.7.5",
-    "@soybeanjs/unocss-preset": "^0.1.7",
+    "@soybeanjs/unocss-preset": "^0.2.0",
     "@types/node": "^25.0.3",
     "@unocss/cli": "^66.5.12",
     "@vitest/coverage-v8": "^4.0.16",
