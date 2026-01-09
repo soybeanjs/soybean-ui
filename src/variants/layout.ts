@@ -4,8 +4,8 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const layoutVariants = tv({
   slots: {
-    root: 'group relative flex w-full min-h-full data-[side=right]:flex-row-reverse',
-    sidebarRoot: 'hidden md:block',
+    root: 'group relative flex w-full h-full data-[side=right]:flex-row-reverse',
+    sidebarRoot: 'h-full hidden md:block',
     sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
       `flex flex-col w-full h-full bg-sidebar-background`,
@@ -28,7 +28,7 @@ export const layoutVariants = tv({
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
-    main: 'relative flex flex-1 flex-col items-stretch min-h-full bg-background',
+    main: 'relative flex flex-1 flex-col items-stretch h-full bg-background',
     header: 'relative flex items-center shrink-0',
     tab: 'shrink-0',
     footer: 'shrink-0'

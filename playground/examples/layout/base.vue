@@ -180,7 +180,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
           <div class="w-full flex items-center gap-2">
             <SLayoutTrigger v-if="side === 'left'" :size="size" />
             <SSeparator orientation="vertical" class="h-4" />
-            <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-0' }" />
+            <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
             <SLayoutTrigger v-if="side === 'right'" :size="size" class="ml-auto" />
           </div>
         </template>
@@ -189,7 +189,9 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
             This is Tab
           </div>
         </template>
-        <div class="h-full grow px-[--soybean-layout-spacing] border border-border rounded-md">This is Content</div>
+        <div class="grow px-[--soybean-layout-spacing] border border-border rounded-md overflow-y-auto">
+          <p v-for="i in 100" :key="i">This is Content {{ i }}</p>
+        </div>
         <template #footer>
           <div class="flex-y-center h-full px-[--soybean-layout-spacing] border border-border rounded-md">
             This is Footer
