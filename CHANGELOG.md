@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.0.13](https://github.com/soybeanjs/soybean-ui/compare/v0.0.12...v0.0.13) (2026-01-09)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **layout**: adjust breadcrumb spacing and enhance content area for better layout consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(c595b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c595bba4)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**: update @soybeanjs/unocss-shadcn and @soybeanjs/unocss-preset & update unocss config &nbsp;-&nbsp; by @soybeanjs [<samp>(ba5b4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ba5b49d4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.12](https://github.com/soybeanjs/soybean-ui/compare/v0.0.11...v0.0.12) (2026-01-08)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
