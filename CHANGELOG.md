@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [v0.0.15](https://github.com/soybeanjs/soybean-ui/compare/v0.0.14...v0.0.15) (2026-01-14)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**:
+  - fix headless package.json exports &nbsp;-&nbsp; by @soybeanjs [<samp>(0ef4c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0ef4cf60)
+  - update @soybeanjs/unocss-shadcn and adjust imports in theme customizer components &nbsp;-&nbsp; by @soybeanjs [<samp>(76bf4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/76bf4ace)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.14](https://github.com/soybeanjs/soybean-ui/compare/v0.0.13...v0.0.14) (2026-01-14)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
