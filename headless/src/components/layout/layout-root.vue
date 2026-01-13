@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
-import { useMediaQuery } from '@vueuse/core';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideLayoutRootContext, useLayoutUi } from './context';
@@ -17,7 +16,7 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
   defaultOpen: false,
   sidebarWidth: 240,
   collapsedSidebarWidth: 50,
-  mobileMediaQuery: '(max-width: 768px)',
+  isMobile: false,
   mobileSidebarWidth: 240,
   pxToRem: (px: number) => px / 16
 });
@@ -33,8 +32,6 @@ const open = useControllableState(
   },
   props.defaultOpen
 );
-
-const isMobile = useMediaQuery(() => props.mobileMediaQuery);
 
 const mobileOpen = shallowRef(false);
 
@@ -55,9 +52,8 @@ const style = computed<CSSProperties>(() => {
 const mobileSidebarWidth = computed(() => props.pxToRem(props.mobileSidebarWidth));
 
 provideLayoutRootContext({
-  ...transformPropsToContext(props, ['sidebarWidth', 'collapsedSidebarWidth']),
+  ...transformPropsToContext(props, ['sidebarWidth', 'collapsedSidebarWidth', 'isMobile']),
   open,
-  isMobile,
   mobileOpen,
   mobileSidebarWidth,
   sidebarState

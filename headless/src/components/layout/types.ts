@@ -37,13 +37,11 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
    */
   collapsedSidebarWidth?: number;
   /**
-   * The media query to use for the mobile view.
+   * Whether the layout is in mobile view.
    *
-   * @default '(max-width: 768px)'
-   *
-   * @see https://vueuse.org/core/useMediaQuery/
+   * @default false
    */
-  mobileMediaQuery?: string;
+  isMobile?: boolean;
   /**
    * The width of the sidebar in the mobile view. (px)
    *
@@ -82,10 +80,9 @@ export interface LayoutMobileProps extends /* @vue-ignore */ HTMLAttributes {}
 
 export interface LayoutRootContextParams extends PropsToContext<
   LayoutRootProps,
-  'sidebarWidth' | 'collapsedSidebarWidth'
+  'sidebarWidth' | 'collapsedSidebarWidth' | 'isMobile'
 > {
   open: ShallowRef<boolean | undefined>;
-  isMobile: ComputedRef<boolean>;
   mobileOpen: ShallowRef<boolean>;
   /**
    * The width of the sidebar in the mobile view. (rem)
