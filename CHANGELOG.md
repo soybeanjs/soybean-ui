@@ -1,6 +1,25 @@
 # Changelog
 
 
+## [v0.0.14](https://github.com/soybeanjs/soybean-ui/compare/v0.0.13...v0.0.14) (2026-01-14)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **layout**: replace mobile media query with isMobile boolean for improved layout handling &nbsp;-&nbsp; by @soybeanjs [<samp>(3718f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3718f891)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **components**: modify Badge docs. &nbsp;-&nbsp; by **skyfeiz** [<samp>(bc59a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bc59a4cd)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(78876)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7887614c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[skyfeiz](mailto:webzhangfei@163.com)
+
 ## [v0.0.13](https://github.com/soybeanjs/soybean-ui/compare/v0.0.12...v0.0.13) (2026-01-09)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
