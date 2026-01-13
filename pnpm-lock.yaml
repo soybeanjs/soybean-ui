@@ -18,8 +18,8 @@ importers:
         specifier: workspace:^
         version: link:headless
       '@soybeanjs/unocss-shadcn':
-        specifier: ^0.1.1
-        version: 0.1.1(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
+        specifier: ^0.2.0
+        version: 0.2.0(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1914,8 +1914,8 @@ packages:
   '@soybeanjs/unocss-preset@0.2.0':
     resolution: {integrity: sha512-ELjt4BKoU3NsrvzPHK7EsMMz2ZC8F4Qtpny38qeRvvrS7YzHEj5CwD6LeQF2USEo9msJRYU2uwLTIJRFOClNxA==}
 
-  '@soybeanjs/unocss-shadcn@0.1.1':
-    resolution: {integrity: sha512-fKQ4SBGYcDAzJy7hH3oq0Idz0BbHsudim8Jre/Tdn/bz9PMBfWFxQPPhRbMvRAWt7pQ4me+aPYebQ2KCF6Tszw==}
+  '@soybeanjs/unocss-shadcn@0.2.0':
+    resolution: {integrity: sha512-06TJHJcoE+jR7gS1hNvC1XjPtFTLgSXyBLwdlIxY89GkbPmkwi5N5GXfKvpB+QU9tgjUoR/QvMlW9ehl9jC0xw==}
 
   '@speed-highlight/core@1.2.14':
     resolution: {integrity: sha512-G4ewlBNhUtlLvrJTb88d2mdy2KRijzs4UhnlrOSRT4bmjh/IqNElZa3zkrZ+TC47TwtlDWzVLFADljF1Ijp5hA==}
@@ -7524,7 +7524,7 @@ snapshots:
       - supports-color
       - vite
 
-  '@soybeanjs/unocss-shadcn@0.1.1(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
+  '@soybeanjs/unocss-shadcn@0.2.0(postcss@8.5.6)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))':
     dependencies:
       '@soybeanjs/color-palette': 0.2.1
       colord: 2.9.3

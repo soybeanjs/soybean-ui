@@ -72,7 +72,7 @@
     "@formkit/auto-animate": "^0.9.0",
     "@iconify/vue": "^5.0.0",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/unocss-shadcn": "^0.1.1",
+    "@soybeanjs/unocss-shadcn": "^0.2.0",
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "tailwind-merge": "^3.4.0",

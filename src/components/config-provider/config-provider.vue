@@ -4,7 +4,7 @@ import { useStyleTag } from '@vueuse/core';
 import { ConfigProvider } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { generateCSSVars } from '@soybeanjs/unocss-shadcn';
+import { generateCSSVars } from '@soybeanjs/unocss-shadcn/shared';
 import type { ThemeSize } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';

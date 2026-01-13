@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useMediaQuery } from '@vueuse/core';
-import { builtinColorMap } from '@soybeanjs/unocss-shadcn';
+import { builtinColorMap } from '@soybeanjs/unocss-shadcn/shared';
 import type { ThemeConfigColor } from '@soybeanjs/unocss-shadcn';
 import { SButton, SIcon, SLabel } from '@soybeanjs/ui';
 import type { ThemeSize } from '@soybeanjs/ui';
