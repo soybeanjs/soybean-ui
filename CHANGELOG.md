@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.16](https://github.com/soybeanjs/soybean-ui/compare/v0.0.15...v0.0.16) (2026-01-17)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **theme**: refactor theme &nbsp;-&nbsp; by @soybeanjs [<samp>(4b6b3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4b6b3faa)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.15](https://github.com/soybeanjs/soybean-ui/compare/v0.0.14...v0.0.15) (2026-01-14)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
