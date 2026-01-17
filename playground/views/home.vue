@@ -2,13 +2,10 @@
 import { onMounted, shallowRef, watch, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
-import { SButtonIcon, SButtonLink, SCard, SIcon, SPopover, STabs } from '@soybeanjs/ui';
+import { SButtonLink, SCard, SIcon, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
 import ThemeCustomizer from '../components/theme-customizer.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
-import { useTheme } from '../theme';
-
-const { color, radius, size } = useTheme('HomePage');
 
 const activeTab = shallowRef('');
 
@@ -109,12 +106,7 @@ onMounted(() => {
           >
             <SIcon icon="lucide:github" />
           </SButtonLink>
-          <SPopover :ui="{ popup: 'z-15' }" placement="bottom-end">
-            <template #trigger>
-              <SButtonIcon icon="lucide:swatch-book" size="lg" />
-            </template>
-            <ThemeCustomizer v-model:color="color" v-model:radius="radius" v-model:size="size" />
-          </SPopover>
+          <ThemeCustomizer />
           <ThemeSchemaToggler />
         </div>
       </template>

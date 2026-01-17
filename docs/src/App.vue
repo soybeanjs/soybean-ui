@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provideThemeContext } from './theme';
+import { provideThemeContext } from '../../playground/theme';
 
 const { configProviderProps } = provideThemeContext();
 </script>

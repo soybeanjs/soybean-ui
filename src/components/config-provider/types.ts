@@ -1,5 +1,5 @@
 import type { PropsToContext, ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless';
-import type { ThemeOptions } from '@soybeanjs/unocss-shadcn';
+import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import type { ToastProviderProps } from '../toast/types';
 

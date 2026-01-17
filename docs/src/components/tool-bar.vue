@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ThemeCustomizer from '../../../playground/components/theme-customizer.vue';
+
 const { t } = useI18n();
 </script>
 

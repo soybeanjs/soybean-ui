@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { useStyleTag } from '@vueuse/core';
+import { watch } from 'vue';
 import { ConfigProvider } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
-import { generateCSSVars } from '@soybeanjs/unocss-shadcn/shared';
+import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
-import { getThemeName, isIncludeByDefaultTheme } from './shared';
 import type { ConfigProviderProps } from './types';
 
 defineOptions({
@@ -17,36 +15,13 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
-  theme: () => ({
-    color: 'default'
-  }),
   size: 'md',
   dir: 'ltr'
 });
 
 const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']);
 
-const cssVars = computed(() => {
-  if (isIncludeByDefaultTheme(props.theme)) return '';
-
-  return generateCSSVars(props.theme, getThemeName(props.theme.color) === 'default');
-});
-
 provideConfigProviderContext(transformPropsToContext(props));
-useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
-
-function addThemeClass(newThemeName: string, oldThemeName: string) {
-  if (!isClient) return;
-  if (newThemeName === oldThemeName) {
-    return;
-  }
-
-  if (newThemeName !== 'default') {
-    document.documentElement.classList.add(`theme-${newThemeName}`);
-  }
-
-  document.documentElement.classList.remove(`theme-${oldThemeName}`);
-}
 
 function addSizeClass(_size: ThemeSize) {
   if (!isClient) return;
@@ -60,14 +35,11 @@ function addSizeClass(_size: ThemeSize) {
 }
 
 watch(
-  () => props.theme.color,
-  (newVal, oldVal) => {
-    const newThemeName = getThemeName(newVal);
-    const oldThemeName = getThemeName(oldVal);
-
-    addThemeClass(newThemeName, oldThemeName);
+  () => props.theme,
+  () => {
+    createShadcnTheme(props.theme);
   },
-  { immediate: true, flush: 'post' }
+  { immediate: true, deep: true, flush: 'post' }
 );
 
 watch(
