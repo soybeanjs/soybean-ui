@@ -1,6 +1,36 @@
 # Changelog
 
 
+## [v0.0.17](https://github.com/soybeanjs/soybean-ui/compare/v0.0.16...v0.0.17) (2026-01-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **package**: add preview:docs script for documentation preview &nbsp;-&nbsp; by @soybeanjs [<samp>(9f7b3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9f7b3bfb)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **popover**: add disable-outside-pointer-events binding to PopoverPositionerImpl &nbsp;-&nbsp; by @soybeanjs [<samp>(1c945)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1c945f8b)
+- **select**: bind slot names correctly in SSelectSingleOption &nbsp;-&nbsp; by @soybeanjs [<samp>(5e278)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e278ca1)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **config-provider**: cache theme CSS variables &nbsp;-&nbsp; by @soybeanjs [<samp>(78e49)</samp>](https://github.com/soybeanjs/soybean-ui/commit/78e49459)
+- **projects**: optimize docs theme configurator &nbsp;-&nbsp; by @soybeanjs [<samp>(35273)</samp>](https://github.com/soybeanjs/soybean-ui/commit/35273f19)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **config-provider**:
+  - add theme styling support with Shadcn theme integration &nbsp;-&nbsp; by @soybeanjs [<samp>(cb4dd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cb4dd886)
+  - remove unused useStyleTag and bind cssVars to Primitive &nbsp;-&nbsp; by @soybeanjs [<samp>(a3ee0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a3ee007e)
+  - remove unused theme options from props &nbsp;-&nbsp; by @soybeanjs [<samp>(b731c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b731c8c9)
+- **select**:
+  - simplify type definitions and improve variant styles &nbsp;-&nbsp; by @soybeanjs [<samp>(219c5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/219c5344)
+  - integrate useSelectUi in various components for improved styling &nbsp;-&nbsp; by @soybeanjs [<samp>(088f9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/088f9986)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.16](https://github.com/soybeanjs/soybean-ui/compare/v0.0.15...v0.0.16) (2026-01-17)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
