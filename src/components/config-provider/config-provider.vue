@@ -5,7 +5,6 @@ import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
-import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
@@ -17,13 +16,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
-  theme: () =>
-    ({
-      base: 'gray',
-      primary: 'indigo',
-      feedback: 'classic',
-      radius: '0.625rem'
-    }) satisfies ThemeOptions,
+  theme: () => ({}),
   size: 'md',
   dir: 'ltr'
 });
