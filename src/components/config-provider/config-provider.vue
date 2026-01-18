@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch, watchEffect } from 'vue';
-import { useStorage, useStyleTag } from '@vueuse/core';
-import { ConfigProvider } from '@soybeanjs/headless';
+import { useStorage } from '@vueuse/core';
+import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
@@ -36,8 +36,6 @@ const { getCss } = createShadcnTheme(props.theme);
 
 const cssVars = useStorage('themeCssVars', getCss(props.theme, props.theme.radius));
 
-useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
-
 function addSizeClass(_size: ThemeSize) {
   if (!isClient) return;
   const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
@@ -54,7 +52,7 @@ watch(
   newVal => {
     addSizeClass(newVal);
   },
-  { immediate: true, flush: 'post' }
+  { immediate: true, flush: 'sync' }
 );
 
 watchEffect(() => {
@@ -65,6 +63,9 @@ watchEffect(() => {
 
 <template>
   <ConfigProvider v-bind="forwardedProps">
+    <Primitive id="__SOYBEAN_UI_THEME_VARS__" as="style">
+      {{ cssVars }}
+    </Primitive>
     <DialogProvider>
       <ToastProvider v-bind="toast">
         <slot />
