@@ -17,8 +17,7 @@ import {
   provideSelectContentContext,
   useCollectionContext,
   useSelectPopupElementContext,
-  useSelectRootContext,
-  useSelectUi
+  useSelectRootContext
 } from './context';
 import { CONTENT_MARGIN } from './shared';
 import SelectPopperPopup from './select-popper-popup.vue';
@@ -39,11 +38,6 @@ const props = withDefaults(defineProps<SelectContentImplProps>(), {
 });
 
 const emit = defineEmits<SelectContentImplEmits>();
-
-const ui = useSelectUi();
-
-const cls = computed(() => ui.value?.positioner);
-const popupCls = computed(() => ui.value?.popup);
 
 const {
   onOpenChange,
@@ -218,7 +212,6 @@ watchEffect(() => {
     v-if="position === 'popper'"
     :ref="setPositionerElement"
     v-bind="popperPositionerProps"
-    :class="cls"
     @contextmenu.prevent
     @placed="onPlaced"
     @keydown="onKeyDown"
@@ -227,7 +220,6 @@ watchEffect(() => {
       :id="contentId"
       :ref="setPopupElement"
       v-bind="popupProps"
-      :class="popupCls"
       data-dismissable-layer
       :data-state="dataState"
       :dir="dir"
@@ -241,7 +233,6 @@ watchEffect(() => {
   <SelectItemAlignedPositioner
     v-else
     :ref="setPositionerElement"
-    :class="cls"
     @contextmenu.prevent
     @placed="onPlaced"
     @keydown="onKeyDown"
@@ -250,7 +241,6 @@ watchEffect(() => {
       :id="contentId"
       :ref="setPopupElement"
       v-bind="popupProps"
-      :class="popupCls"
       data-dismissable-layer
       :data-state="dataState"
       :dir="dir"

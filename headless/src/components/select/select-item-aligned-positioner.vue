@@ -7,7 +7,8 @@ import {
   useCollectionContext,
   useSelectContentContext,
   useSelectPopupElementContext,
-  useSelectRootContext
+  useSelectRootContext,
+  useSelectUi
 } from './context';
 import { CONTENT_MARGIN } from './shared';
 import type { SelectItemAlignedPositionEmits, SelectItemAlignedPositionProps } from './types';
@@ -19,6 +20,8 @@ defineOptions({
 defineProps<SelectItemAlignedPositionProps>();
 
 const emit = defineEmits<SelectItemAlignedPositionEmits>();
+
+const cls = useSelectUi('positioner');
 
 const { dir, triggerElement, valueElement } = useSelectRootContext('SelectItemAlignedPosition');
 const { viewportElement, selectedItemElement, selectedItemTextElement, focusSelectedItem } =
@@ -195,6 +198,7 @@ onMounted(async () => {
 <template>
   <div
     ref="positionerElement"
+    :class="cls"
     style="display: flex; flex-direction: column; position: fixed"
     :style="{
       zIndex: popupZIndex

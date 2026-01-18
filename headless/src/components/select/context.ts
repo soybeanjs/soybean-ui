@@ -1,6 +1,7 @@
 import { computed, ref, shallowRef, useId } from 'vue';
 import { useCollection, useContext, useDirection, useUiContext } from '../../composables';
 import { getDisclosureState, isValueEqualOrExist, tryFocusFirst } from '../../shared';
+import { providePopperUi } from '../popper/context';
 import type { AcceptableValue, Point } from '../../types';
 import type {
   SelectContentContextParams,
@@ -238,4 +239,8 @@ export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPosit
   (params: SelectItemAlignedPositionContextParams) => params
 );
 
-export const [provideSelectUi, useSelectUi] = useUiContext<SelectUiSlot>('SelectUi');
+export const [provideSelectUi, useSelectUi] = useUiContext<SelectUiSlot>('SelectUi', ui => {
+  providePopperUi(ui);
+
+  return ui;
+});
