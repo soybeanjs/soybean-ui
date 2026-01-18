@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { useStyleTag } from '@vueuse/core';
+import { watch, watchEffect } from 'vue';
+import { useStorage, useStyleTag } from '@vueuse/core';
 import { ConfigProvider } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
+import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
@@ -16,6 +17,13 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
+  theme: () =>
+    ({
+      base: 'gray',
+      primary: 'indigo',
+      feedback: 'classic',
+      radius: '0.625rem'
+    }) satisfies ThemeOptions,
   size: 'md',
   dir: 'ltr'
 });
@@ -26,7 +34,7 @@ provideConfigProviderContext(transformPropsToContext(props));
 
 const { getCss } = createShadcnTheme(props.theme);
 
-const cssVars = computed(() => getCss(props.theme || {}));
+const cssVars = useStorage('themeCssVars', getCss(props.theme, props.theme.radius));
 
 useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
 
@@ -48,6 +56,11 @@ watch(
   },
   { immediate: true, flush: 'post' }
 );
+
+watchEffect(() => {
+  const theme = props.theme || {};
+  cssVars.value = getCss(theme, theme.radius);
+});
 </script>
 
 <template>
