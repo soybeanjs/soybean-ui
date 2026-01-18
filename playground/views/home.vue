@@ -2,9 +2,9 @@
 import { onMounted, shallowRef, watch, watchPostEffect } from 'vue';
 import type { Component } from 'vue';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
-import { SButtonLink, SCard, SIcon, STabs } from '@soybeanjs/ui';
+import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
-import ThemeCustomizer from '../components/theme-customizer.vue';
+import ThemeConfigurator from '../components/theme-configurator.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
 
 const activeTab = shallowRef('');
@@ -94,8 +94,7 @@ onMounted(() => {
     <SCard title="SoybeanUI Playground" class="h-full">
       <template #extra>
         <div class="flex items-center gap-3">
-          <SButtonLink
-            size="lg"
+          <SLink
             variant="ghost"
             color="accent"
             shape="square"
@@ -104,9 +103,9 @@ onMounted(() => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SIcon icon="lucide:github" />
-          </SButtonLink>
-          <ThemeCustomizer />
+            <SButtonIcon icon="lucide:github" size="lg" />
+          </SLink>
+          <ThemeConfigurator />
           <ThemeSchemaToggler />
         </div>
       </template>

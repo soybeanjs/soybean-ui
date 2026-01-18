@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ThemeCustomizer from '../../../playground/components/theme-customizer.vue';
+import ThemeConfigurator from '../../../playground/components/theme-configurator.vue';
 
 const { t } = useI18n();
 </script>
@@ -18,7 +18,7 @@ const { t } = useI18n();
     </div>
     <div class="flex-y-center lt-md:justify-between">
       <span class="md:hidden text-sm text-gray-500">{{ t('layout.header.theme-customizer') }}</span>
-      <ThemeCustomizer />
+      <ThemeConfigurator />
     </div>
     <div class="flex-y-center lt-md:justify-between">
       <span class="md:hidden text-sm text-gray-500">{{ t('layout.header.theme') }}</span>
