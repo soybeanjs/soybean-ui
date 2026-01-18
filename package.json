@@ -57,6 +57,7 @@
     "lint": "eslint . --fix",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
+    "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",
     "publish-pkg": "pnpm publish -r --access public",
     "release": "soy release",
     "stub": "tsx scripts/stub.ts",
