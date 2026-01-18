@@ -60,7 +60,7 @@ const singleSlotKeys = computed(() => Object.keys(slots).filter(key => key !== '
     :separator-props="separatorProps"
     @select="emit('select', $event)"
   >
-    <template v-for="slotKey in singleSlotKeys" :key="slotKey">
+    <template v-for="slotKey in singleSlotKeys" :key="slotKey" #[slotKey]>
       <slot :name="slotKey" :item="item" />
     </template>
   </SSelectSingleOption>
