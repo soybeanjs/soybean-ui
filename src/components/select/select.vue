@@ -1,8 +1,4 @@
-<script
-  setup
-  lang="ts"
-  generic="T extends DefinedValue, M extends boolean = false, S extends SelectOptionData<T> = SelectOptionData<T>"
->
+<script setup lang="ts" generic="T extends DefinedValue, M extends boolean = false">
 import { computed } from 'vue';
 import {
   SelectArrow,
@@ -24,14 +20,20 @@ import { selectVariants } from '@/variants/select';
 import Icon from '../icon/icon.vue';
 import SSelectOption from './select-option.vue';
 import { isGroupOption } from './shared';
-import type { SelectEmits, SelectOptionData, SelectProps } from './types';
+import type {
+  SelectEmits,
+  SelectGroupOptionData,
+  SelectOptionData,
+  SelectProps,
+  SelectSingleOptionData
+} from './types';
 
 defineOptions({
   name: 'SSelect',
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<SelectProps<T, M, S>>(), {
+const props = withDefaults(defineProps<SelectProps<T, M>>(), {
   open: undefined
 });
 
@@ -40,7 +42,7 @@ const emit = defineEmits<SelectEmits<T, M>>();
 type Slots = {
   'trigger-leading'?: () => any;
   'trigger-value'?: (props: {
-    modelValue: SelectProps<T, M, S>['modelValue'];
+    modelValue: SelectProps<T, M>['modelValue'];
     selectedLabel: string[];
     slotText: string;
   }) => any;
@@ -48,11 +50,11 @@ type Slots = {
   'trigger-icon'?: () => any;
   'scroll-up-button'?: () => any;
   'scroll-down-button'?: () => any;
-  'group-label'?: (props: { item: S }) => any;
-  'item-text'?: (props: { item: S }) => any;
-  'item-leading'?: (props: { item: S }) => any;
-  'item-trailing'?: (props: { item: S }) => any;
-  'item-indicator'?: (props: { item: S }) => any;
+  'group-label'?: (props: { item: SelectGroupOptionData<T> }) => any;
+  'item-text'?: (props: { item: SelectSingleOptionData<T> }) => any;
+  'item-leading'?: (props: { item: SelectSingleOptionData<T> }) => any;
+  'item-trailing'?: (props: { item: SelectSingleOptionData<T> }) => any;
+  'item-indicator'?: (props: { item: SelectSingleOptionData<T> }) => any;
 };
 
 const slots = defineSlots<Slots>();
@@ -88,7 +90,7 @@ const forwardedProps = useOmitProps(props, [
 
 const listeners = useForwardListeners(emit);
 
-const getItemKey = (item: S) => {
+const getItemKey = (item: SelectOptionData<T>) => {
   if (isGroupOption(item)) {
     return `group-${item.label}`;
   }

@@ -10,7 +10,7 @@ export const selectVariants = tv({
       `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
     ],
     triggerIcon: `shrink-0 text-muted-foreground opacity-70`,
-    value: 'truncate',
+    value: 'grow truncate text-left',
     positioner: '',
     popup: [
       `relative z-50 min-w-32 rounded-md border bg-popover text-popover-foreground shadow-md`,
@@ -36,7 +36,7 @@ export const selectVariants = tv({
     size: {
       xs: {
         popup: 'max-h-70 text-2xs',
-        trigger: 'h-6 px-1.5 text-2xs',
+        trigger: 'gap-1 h-6 px-1.5 text-2xs',
         viewport: 'p-0.75',
         item: 'gap-1 px-1 py-1',
         groupLabel: 'p-1 text-3xs',
@@ -47,7 +47,7 @@ export const selectVariants = tv({
       },
       sm: {
         popup: 'max-h-75 text-xs',
-        trigger: 'h-7 px-2 text-xs',
+        trigger: 'gap-1.5 h-7 px-2 text-xs',
         viewport: 'p-0.875',
         item: 'gap-1.5 px-1.5 py-1',
         separator: '-mx-0.875 my-0.4375',
@@ -58,7 +58,7 @@ export const selectVariants = tv({
       },
       md: {
         popup: 'max-h-80 text-sm',
-        trigger: 'h-8 px-2.5 text-sm',
+        trigger: 'gap-2 h-8 px-2.5 text-sm',
         viewport: 'p-1',
         item: 'gap-2 px-2 py-1.5',
         separator: '-mx-1 my-0.5',
@@ -69,7 +69,7 @@ export const selectVariants = tv({
       },
       lg: {
         popup: 'max-h-90 text-base',
-        trigger: 'h-9 px-3 text-base',
+        trigger: 'gap-2.5 h-9 px-3 text-base',
         viewport: 'p-1.25',
         item: 'gap-2.5 px-2.5 py-1.5',
         separator: '-mx-1.25 my-0.625',
@@ -80,7 +80,7 @@ export const selectVariants = tv({
       },
       xl: {
         popup: 'max-h-100 text-lg',
-        trigger: 'h-10 px-3.5 text-lg',
+        trigger: 'gap-3 h-10 px-3.5 text-lg',
         viewport: 'p-1.5',
         item: 'gap-3 px-3 py-2',
         separator: '-mx-1.5 my-0.75',
@@ -91,7 +91,7 @@ export const selectVariants = tv({
       },
       '2xl': {
         popup: 'max-h-115 text-xl',
-        trigger: 'h-12 px-4 text-xl',
+        trigger: 'gap-3.5 h-12 px-4 text-xl',
         viewport: 'p-1.75',
         item: 'gap-3.5 px-3.5 py-2.5',
         separator: '-mx-1.75 my-0.875',

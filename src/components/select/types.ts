@@ -94,18 +94,17 @@ export interface SelectOptionProps<T extends DefinedValue = DefinedValue> extend
 
 export type SelectOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
 
-export interface SelectProps<
-  T extends DefinedValue = DefinedValue,
-  M extends boolean = false,
-  S extends SelectOptionData<T> = SelectOptionData<T>
-> extends SelectRootProps<T, M> {
+export interface SelectProps<T extends DefinedValue = DefinedValue, M extends boolean = false> extends SelectRootProps<
+  T,
+  M
+> {
   /**
    * the class of select trigger
    */
   class?: ClassValue;
   ui?: Partial<SelectUi>;
   size?: ThemeSize;
-  items: S[];
+  items: SelectOptionData<T>[];
   showArrow?: boolean;
   triggerProps?: SelectTriggerProps;
   triggerIconProps?: SelectTriggerIconProps;
