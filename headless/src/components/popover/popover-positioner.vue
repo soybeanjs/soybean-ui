@@ -34,6 +34,7 @@ const { onPointerDownOutside, onFocusOutside, onInteractOutside, onCloseAutoFocu
     v-if="isPresent"
     v-bind="forwardedProps"
     :trap-focus="trapFocus"
+    :disable-outside-pointer-events="modal"
     v-on="listeners"
     @pointer-down-outside="onPointerDownOutside"
     @focus-outside="onFocusOutside"
