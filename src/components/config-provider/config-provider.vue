@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
+import { useStyleTag } from '@vueuse/core';
 import { ConfigProvider } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
@@ -23,6 +24,12 @@ const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']
 
 provideConfigProviderContext(transformPropsToContext(props));
 
+const { getCss } = createShadcnTheme(props.theme);
+
+const cssVars = computed(() => getCss(props.theme || {}));
+
+useStyleTag(cssVars, { id: '__SOYBEAN_UI_THEME_VARS__' });
+
 function addSizeClass(_size: ThemeSize) {
   if (!isClient) return;
   const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
@@ -33,14 +40,6 @@ function addSizeClass(_size: ThemeSize) {
 
   document.documentElement.classList.remove(...removedSizes);
 }
-
-watch(
-  () => props.theme,
-  () => {
-    createShadcnTheme(props.theme);
-  },
-  { immediate: true, deep: true, flush: 'post' }
-);
 
 watch(
   () => props.size,
