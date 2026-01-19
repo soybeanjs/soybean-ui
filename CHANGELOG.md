@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.0.19](https://github.com/soybeanjs/soybean-ui/compare/v0.0.18...v0.0.19) (2026-01-19)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **checkbox**: support enter keyboard to toggle checked state &nbsp;-&nbsp; by @soybeanjs [<samp>(75ddd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75ddd2de)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **projects**: remove unocss presetTypography & optimize docs style &nbsp;-&nbsp; by @soybeanjs [<samp>(2dd6a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2dd6a3e9)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.18](https://github.com/soybeanjs/soybean-ui/compare/v0.0.17...v0.0.18) (2026-01-19)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
