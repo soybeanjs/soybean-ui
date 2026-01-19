@@ -5,6 +5,7 @@ import VueJsx from '@vitejs/plugin-vue-jsx';
 import Layouts from 'vite-plugin-vue-layouts';
 import { VueRouterAutoImports } from 'unplugin-vue-router';
 import UiResolver from '@soybeanjs/ui/resolver';
+// import { Features } from 'lightningcss';
 import { unheadVueComposablesImports } from '@unhead/vue';
 import VueRouter from 'unplugin-vue-router/vite';
 import Unocss from 'unocss/vite';
@@ -23,6 +24,9 @@ export default defineConfig({
       '@/': `${path.resolve(__dirname, 'src')}/`,
       '@playground/': `${path.resolve(__dirname, '../playground')}/`
     }
+  },
+  css: {
+    transformer: 'lightningcss'
   },
   plugins: [
     VueRouter({
@@ -54,7 +58,7 @@ export default defineConfig({
       resolvers: [UiResolver()]
     }),
     Markdown({
-      wrapperClasses: 'prose-slate dark:prose-slate-invert md:max-w-270! m-auto text-left',
+      wrapperClasses: 'markdown-wrapper',
       headEnabled: true,
       async markdownItSetup(md) {
         md.use(LinkAttributes, {

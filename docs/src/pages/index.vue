@@ -35,9 +35,7 @@ const features = computed(() => [
 </script>
 
 <template>
-  <div
-    class="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900 font-sans"
-  >
+  <div class="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
     <BackgroundDecoration />
 
     <div class="container mx-auto px-4 relative z-10">

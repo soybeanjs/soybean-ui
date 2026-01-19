@@ -80,11 +80,83 @@ html.dark .shiki span {
   background: var(--shiki-dark-bg);
 }
 
-.table-code-btn-primary {
-  @apply inline bg-primary/10 rounded-md text-primary font-bold text-center px-2.5 py-1.5 text-nowrap;
-}
+.markdown-wrapper {
+  --uno: 'md:max-w-270 m-auto text-base text-left';
 
-.table-code-btn-outline {
-  @apply inline border-gray-200 border-1 px-2 py-1 rounded-md font-mono text-sm;
-  box-decoration-break: clone;
+  > h1 {
+    --uno: text-4xl font-bold mb-8;
+  }
+
+  > h2 {
+    --uno: text-2xl font-bold mt-12 my-6;
+  }
+
+  > h3 {
+    --uno: text-xl font-semibold my-3;
+  }
+
+  > h4 {
+    --uno: text-lg font-semibold my-2;
+  }
+
+  > p {
+    --uno: text-4 leading-7 my-5;
+  }
+
+  > ul {
+    --uno: list-disc list-inside my-5 pl-4 space-y-2;
+
+    > li {
+      --uno: 'marker:text-foreground/20';
+    }
+  }
+
+  > ol {
+    --uno: list-decimal list-inside my-5 pl-4 space-y-2;
+
+    > li {
+      --uno: 'marker:text-foreground/50';
+    }
+  }
+
+  code {
+    --uno: font-mono text-3.5 leading-6;
+  }
+
+  code:not(pre code) {
+    --uno: px-2 py-0.5 font-semibold text-primary bg-accent rounded-md;
+  }
+
+  pre {
+    --uno: my-6 px-4 py-3 text-sm rounded-lg;
+  }
+
+  table {
+    --uno: w-full border-none text-sm;
+
+    tr {
+      --uno: 'm-0 border-b';
+    }
+
+    tr:not(thead tr) {
+      --uno: 'last:border-b-none ';
+    }
+
+    th {
+      --uno: px-4 p-2 text-left font-semibold;
+    }
+
+    td {
+      --uno: px-4 p-2 text-left whitespace-nowrap;
+    }
+
+    .code-btn {
+      --uno: 'inline px-2 py-1 text-accent-foreground bg-accent rounded-md font-semibold text-center text-nowrap';
+    }
+
+    .code-btn-outline {
+      --uno: 'inline px-2 py-1 font-mono text-accent-foreground border border-accent-foreground/15 rounded-md text-nowrap';
+      box-decoration-break: clone;
+    }
+  }
 }

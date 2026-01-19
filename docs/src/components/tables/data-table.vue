@@ -62,7 +62,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'name',
         title: 'Prop',
-        cellWrapperClass: 'table-code-btn-primary',
+        cellWrapperClass: 'code-btn',
         render: row => (
           <>
             <span>{row.name}</span>
@@ -73,13 +73,13 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'type',
         title: 'Type',
-        cellWrapperClass: 'table-code-btn-outline',
+        cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.type)
       },
       {
         key: 'default',
         title: 'Default',
-        cellWrapperClass: 'table-code-btn-outline'
+        cellWrapperClass: 'code-btn-outline'
       },
       {
         key: 'description',
@@ -96,7 +96,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'name',
         title,
-        cellWrapperClass: 'table-code-btn-primary',
+        cellWrapperClass: 'code-btn',
         render: row => (
           <>
             <span>{row.name}</span>
@@ -107,7 +107,7 @@ function buildPresetColumns(preset: PropsPreset | undefined): DataTableColumn<an
       {
         key: 'parameters',
         title: 'Parameters',
-        cellWrapperClass: 'table-code-btn-outline',
+        cellWrapperClass: 'code-btn-outline',
         render: row => typeToVNode(row.parameters)
       },
       {
