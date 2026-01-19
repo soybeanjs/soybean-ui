@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.0.18](https://github.com/soybeanjs/soybean-ui/compare/v0.0.17...v0.0.18) (2026-01-19)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **variants**: update focus ring styles for improved accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(7fe60)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7fe608eb)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.17](https://github.com/soybeanjs/soybean-ui/compare/v0.0.16...v0.0.17) (2026-01-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
