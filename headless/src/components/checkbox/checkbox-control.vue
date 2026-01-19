@@ -67,8 +67,8 @@ watchEffect(() => {
     :aria-required="required"
     :data-state="dataState"
     :focusable="focusable"
-    @keydown.enter.prevent
     @click="onClick"
+    @keydown.enter.prevent="onClick"
   >
     <slot :model-value="modelValue" :state="state" />
   </component>
