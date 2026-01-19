@@ -13,7 +13,7 @@ export const accordionVariants = tv({
     description: 'm-0',
     trigger: [
       `flex-1 flex items-center justify-start font-medium transition-all-200 bg-transparent`,
-      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary`,
+      `focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30`,
       `hover:underline [&[data-state=open]>.trigger-icon]:rotate-180`
     ],
     triggerLeadingIcon: `shrink-0`,

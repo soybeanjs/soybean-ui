@@ -11,7 +11,7 @@ export const sliderVariants = tv({
     range: `absolute h-full data-[orientation=vertical]:w-full`,
     thumb: [
       `block rounded-full bg-background transition-colors-200`,
-      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background`,
+      `focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background`,
       `disabled:cursor-not-allowed disabled:opacity-50`
     ]
   },
@@ -20,32 +20,32 @@ export const sliderVariants = tv({
       primary: {
         track: 'bg-primary/20',
         range: 'bg-primary',
-        thumb: 'border-primary focus-visible:ring-primary'
+        thumb: 'border-primary focus-visible:ring-primary/30'
       },
       destructive: {
         track: 'bg-destructive/20',
         range: 'bg-destructive',
-        thumb: 'border-destructive focus-visible:ring-destructive'
+        thumb: 'border-destructive focus-visible:ring-destructive/30'
       },
       success: {
         track: 'bg-success/20',
         range: 'bg-success',
-        thumb: 'border-success focus-visible:ring-success'
+        thumb: 'border-success focus-visible:ring-success/30'
       },
       warning: {
         track: 'bg-warning/20',
         range: 'bg-warning',
-        thumb: 'border-warning focus-visible:ring-warning'
+        thumb: 'border-warning focus-visible:ring-warning/30'
       },
       info: {
         track: 'bg-info/20',
         range: 'bg-info',
-        thumb: 'border-info focus-visible:ring-info'
+        thumb: 'border-info focus-visible:ring-info/30'
       },
       carbon: {
         track: 'bg-carbon/20',
         range: 'bg-carbon',
-        thumb: 'border-carbon focus-visible:ring-carbon'
+        thumb: 'border-carbon focus-visible:ring-carbon/30'
       },
       secondary: {
         track: 'bg-secondary-foreground/20',

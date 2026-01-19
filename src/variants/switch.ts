@@ -8,29 +8,29 @@ export const switchVariants = tv({
     root: 'inline-flex',
     control: [
       `peer shrink-0 inline-flex items-center rounded-full border-0 shadow-sm transition-colors-200`,
-      `focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input`
+      `focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=unchecked]:bg-input`
     ],
     thumb: `flex justify-center items-center rounded-full shadow-lg transition-transform-200 bg-background pointer-events-none data-[state=unchecked]:translate-x-0.5`
   },
   variants: {
     color: {
       primary: {
-        control: `data-[state=checked]:bg-primary focus-visible:ring-primary`
+        control: `data-[state=checked]:bg-primary focus-visible:ring-primary/30`
       },
       destructive: {
-        control: `data-[state=checked]:bg-destructive focus-visible:ring-destructive`
+        control: `data-[state=checked]:bg-destructive focus-visible:ring-destructive/30`
       },
       success: {
-        control: `data-[state=checked]:bg-success focus-visible:ring-success`
+        control: `data-[state=checked]:bg-success focus-visible:ring-success/30`
       },
       warning: {
-        control: `data-[state=checked]:bg-warning focus-visible:ring-warning`
+        control: `data-[state=checked]:bg-warning focus-visible:ring-warning/30`
       },
       info: {
-        control: `data-[state=checked]:bg-info focus-visible:ring-info`
+        control: `data-[state=checked]:bg-info focus-visible:ring-info/30`
       },
       carbon: {
-        control: `data-[state=checked]:bg-carbon focus-visible:ring-carbon`
+        control: `data-[state=checked]:bg-carbon focus-visible:ring-carbon/30`
       },
       secondary: {
         control: `data-[state=checked]:bg-secondary-foreground/20 focus-visible:ring-secondary-foreground/20`

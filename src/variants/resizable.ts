@@ -7,7 +7,7 @@ export const resizableVariants = tv({
     handle: [
       'relative flex w-px items-center justify-center bg-border',
       'after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary',
+      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background focus-visible:ring-primary/30',
       '[&[data-orientation=vertical]]:h-px [&[data-orientation=vertical]]:w-full [&[data-orientation=vertical]]:after:left-0 [&[data-orientation=vertical]]:after:h-1 [&[data-orientation=vertical]]:after:w-full [&[data-orientation=vertical]]:after:-translate-y-1 [&[data-orientation=vertical]]:after:translate-x-0 [&[data-orientation=vertical]>div]:rotate-90'
     ],
     handleIconRoot: 'z-2 flex items-center justify-center rounded-sm border bg-border',

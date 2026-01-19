@@ -5,17 +5,17 @@ import type { VariantProps } from 'tailwind-variants';
 export const buttonVariants = tv({
   base: [
     'inline-flex items-center justify-center font-medium',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+    'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background',
     'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
   ],
   variants: {
     color: {
-      primary: `focus-visible:ring-primary`,
-      destructive: `focus-visible:ring-destructive`,
-      success: `focus-visible:ring-success`,
-      warning: `focus-visible:ring-warning`,
-      info: `focus-visible:ring-info`,
-      carbon: `focus-visible:ring-carbon`,
+      primary: `focus-visible:ring-primary/30`,
+      destructive: `focus-visible:ring-destructive/30`,
+      success: `focus-visible:ring-success/30`,
+      warning: `focus-visible:ring-warning/30`,
+      info: `focus-visible:ring-info/30`,
+      carbon: `focus-visible:ring-carbon/30`,
       secondary: `focus-visible:ring-secondary-foreground/20`,
       accent: `focus-visible:ring-accent-foreground/20`
     },

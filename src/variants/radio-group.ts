@@ -8,7 +8,7 @@ export const radioGroupVariants = tv({
     item: 'flex items-center',
     control: [
       'peer relative shrink-0 rounded-full border border-solid shadow',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
+      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 rounded-full',
     label: ''
@@ -16,27 +16,27 @@ export const radioGroupVariants = tv({
   variants: {
     color: {
       primary: {
-        control: `border-primary focus-visible:ring-primary`,
+        control: `border-primary focus-visible:ring-primary/30`,
         indicator: `bg-primary`
       },
       destructive: {
-        control: `border-destructive focus-visible:ring-destructive`,
+        control: `border-destructive focus-visible:ring-destructive/30`,
         indicator: `bg-destructive`
       },
       success: {
-        control: `border-success focus-visible:ring-success`,
+        control: `border-success focus-visible:ring-success/30`,
         indicator: `bg-success`
       },
       warning: {
-        control: `border-warning focus-visible:ring-warning`,
+        control: `border-warning focus-visible:ring-warning/30`,
         indicator: `bg-warning`
       },
       info: {
-        control: `border-info focus-visible:ring-info`,
+        control: `border-info focus-visible:ring-info/30`,
         indicator: `bg-info`
       },
       carbon: {
-        control: `border-carbon focus-visible:ring-carbon`,
+        control: `border-carbon focus-visible:ring-carbon/30`,
         indicator: `bg-carbon`
       },
       secondary: {
@@ -182,7 +182,7 @@ export const radioCardGroupVariants = tv({
     description: 'text-muted-foreground',
     control: [
       'peer shrink-0 inline-flex items-start justify-start rounded-full border border-solid shadow',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
+      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
     indicator: 'relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex size-1/2 rounded-full'
@@ -191,32 +191,32 @@ export const radioCardGroupVariants = tv({
     color: {
       primary: {
         item: 'data-[state=checked]:border-primary',
-        control: `border-primary focus-visible:ring-primary`,
+        control: `border-primary focus-visible:ring-primary/30`,
         indicator: `bg-primary`
       },
       destructive: {
         item: 'data-[state=checked]:border-destructive',
-        control: `border-destructive focus-visible:ring-destructive`,
+        control: `border-destructive focus-visible:ring-destructive/30`,
         indicator: `bg-destructive`
       },
       success: {
         item: 'data-[state=checked]:border-success',
-        control: `border-success focus-visible:ring-success`,
+        control: `border-success focus-visible:ring-success/30`,
         indicator: `bg-success`
       },
       warning: {
         item: 'data-[state=checked]:border-warning',
-        control: `border-warning focus-visible:ring-warning`,
+        control: `border-warning focus-visible:ring-warning/30`,
         indicator: `bg-warning`
       },
       info: {
         item: 'data-[state=checked]:border-info',
-        control: `border-info focus-visible:ring-info`,
+        control: `border-info focus-visible:ring-info/30`,
         indicator: `bg-info`
       },
       carbon: {
         item: 'data-[state=checked]:border-carbon',
-        control: `border-carbon focus-visible:ring-carbon`,
+        control: `border-carbon focus-visible:ring-carbon/30`,
         indicator: `bg-carbon`
       },
       secondary: {
