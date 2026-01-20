@@ -5,11 +5,22 @@ import { availableLocales, loadLanguageAsync } from '@/modules/i18n';
 
 const { t, locale } = useI18n();
 
-const items = computed(() => {
-  return availableLocales.map(item => {
+const iconMap: Record<string, string> = {
+  en: 'twemoji:flag-united-states',
+  'zh-CN': 'twemoji:flag-china'
+};
+const locales = [...availableLocales].sort((a, b) => {
+  if (a === 'zh-CN') return -1;
+  if (b === 'zh-CN') return 1;
+  return a.localeCompare(b);
+});
+
+const items = computed<MenuOptionData<string>[]>(() => {
+  return locales.map(item => {
     return {
       label: t(`locale.${item}`),
-      value: item
+      value: item,
+      icon: iconMap[item] || undefined
     };
   });
 });
@@ -23,9 +34,12 @@ const onSelectLocale = async (item: MenuOptionData<string>) => {
 </script>
 
 <template>
-  <SDropdownMenuRadio :model-value="locale" :items="items" @select="onSelectLocale">
+  <SDropdownMenuRadio :model-value="locale" :items="items" indicator-position="end" @select="onSelectLocale">
     <template #trigger>
       <SButtonIcon icon="lucide:languages" size="lg" />
+    </template>
+    <template #item-indicator-icon>
+      <SIcon icon="lucide:check" />
     </template>
   </SDropdownMenuRadio>
 </template>
