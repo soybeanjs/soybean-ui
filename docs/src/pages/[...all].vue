@@ -4,7 +4,7 @@ const { t } = useI18n();
 
 <template>
   <div>
-    {{ t('not-found-page') }}
+    {{ t('not_found_page') }}
   </div>
 </template>
 

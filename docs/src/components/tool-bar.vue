@@ -17,7 +17,7 @@ const { t } = useI18n();
       <LocaleToggler />
     </div>
     <div class="flex-y-center lt-md:justify-between">
-      <span class="md:hidden text-sm text-gray-500">{{ t('layout.header.theme-configurator') }}</span>
+      <span class="md:hidden text-sm text-gray-500">{{ t('layout.header.theme_configurator') }}</span>
       <ThemeConfigurator />
     </div>
     <div class="flex-y-center lt-md:justify-between">

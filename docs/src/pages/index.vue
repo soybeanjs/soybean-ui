@@ -20,8 +20,8 @@ const features = computed(() => [
     class: 'text-purple-500'
   },
   {
-    title: t('components.home.features.type-safe.title'),
-    description: t('components.home.features.type-safe.desc'),
+    title: t('components.home.features.type_safe.title'),
+    description: t('components.home.features.type_safe.desc'),
     icon: 'lucide:file-type-2',
     class: 'text-blue-500'
   },

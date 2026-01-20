@@ -1,3 +1,6 @@
+common:
+  copy_to_clipboard: 复制到剪贴板
+  copied: 已复制
 button:
   about: 关于
   back: 返回
@@ -5,24 +8,24 @@ button:
   home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
-not-found: 未找到
-not-found-page: 未找到页面
+not_found: 未找到
+not_found_page: 未找到页面
 locale:
   en: 英语
-  zh-CN: 中文
+  zh_cn: 中文
 layout:
   default: 默认布局
   home: 首页布局
   about: 关于布局
   header:
     search: 搜索文档
-    search-empty: 没有找到相关文档
+    search_empty: 没有找到相关文档
     docs: 文档
     components: 组件
     version: 版本
     github: GitHub
     theme: 主题
-    theme-configurator: 主题配置
+    theme_configurator: 主题配置
     language: 语言
     others: 其他
 components:
@@ -44,7 +47,7 @@ components:
       headless:
         title: 无头组件
         desc: 逻辑与样式分离，提供最大的灵活性。
-      type-safe:
+      type_safe:
         title: 类型安全
         desc: 使用 TypeScript 编写，提供完整的类型支持。
       customizable:
@@ -53,14 +56,14 @@ components:
 sidebar:
   overview: 概览
   introduction: 介绍
-  quick-start: 快速开始
+  quick_start: 快速开始
   components: 组件
   theming: 主题定制
   general: 通用
   layout: 布局
   navigation: 导航
-  dataEntry: 数据录入
-  dataDisplay: 数据展示
+  data_entry: 数据录入
+  data_display: 数据展示
   feedback: 反馈
   overlay: 浮层
   utilities: 工具

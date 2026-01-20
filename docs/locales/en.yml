@@ -1,3 +1,6 @@
+common:
+  copy_to_clipboard: Copy to clipboard
+  copied: Copied
 button:
   about: About
   back: Back
@@ -5,24 +8,24 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
-not-found: Not found
-not-found-page: Not found page
+not_found: Not found
+not_found_page: Not found page
 locale:
   en: English
-  zh-CN: Chinese
+  zh_cn: Chinese
 layout:
   default: Default Layout
   home: Home Layout
   about: About Layout
   header:
     search: Search documentation
-    search-empty: No related documents found
+    search_empty: No related documents found
     docs: Docs
     components: Components
     version: Version
     github: GitHub
     theme: Theme
-    theme-configurator: Theme Customizer
+    theme_configurator: Theme Configurator
     language: Language
     others: Others
 components:
@@ -44,7 +47,7 @@ components:
       headless:
         title: Headless
         desc: Logic and styles are separated.
-      type-safe:
+      type_safe:
         title: Type Safe
         desc: Written in TypeScript with full type support.
       customizable:
@@ -53,14 +56,14 @@ components:
 sidebar:
   overview: Overview
   introduction: Introduction
-  quick-start: Quick Start
+  quick_start: Quick Start
   components: Components
   theming: Theming
   general: General
   layout: Layout
   navigation: Navigation
-  dataEntry: Data Entry
-  dataDisplay: Data Display
+  data_entry: Data Entry
+  data_display: Data Display
   feedback: Feedback
   overlay: Overlay
   utilities: Utilities

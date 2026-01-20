@@ -98,7 +98,7 @@ function handleSelect(item: SelectEvent<string>) {
       class="border rounded-lg shadow-md"
       :items="searched"
       :input-props="{ placeholder: t('layout.header.search') }"
-      :empty-label="t('layout.header.search-empty')"
+      :empty-label="t('layout.header.search_empty')"
       @select="handleSelect"
     >
       <template #item-leading>

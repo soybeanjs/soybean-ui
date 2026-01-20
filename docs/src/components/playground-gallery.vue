@@ -28,7 +28,7 @@ const components = computed(() => {
   <div class="space-y-4">
     <template v-for="(file, index) in files" :key="index">
       <component :is="components[index]" v-if="components[index]" />
-      <SAlert v-else color="destructive" :title="`${component}/${file} ${t('not-found')}`" icon="lucide:alert-circle" />
+      <SAlert v-else color="destructive" :title="`${component}/${file} ${t('not_found')}`" icon="lucide:alert-circle" />
     </template>
   </div>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { MenuOptionData } from '@soybeanjs/ui';
+import { snakeCase } from 'es-toolkit';
 import { availableLocales, loadLanguageAsync } from '@/modules/i18n';
 
 const { t, locale } = useI18n();
@@ -18,7 +19,7 @@ const locales = [...availableLocales].sort((a, b) => {
 const items = computed<MenuOptionData<string>[]>(() => {
   return locales.map(item => {
     return {
-      label: t(`locale.${item}`),
+      label: t(`locale.${snakeCase(item)}`),
       value: item,
       icon: iconMap[item] || undefined
     };
