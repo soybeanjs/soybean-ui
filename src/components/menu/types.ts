@@ -59,7 +59,7 @@ export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'd
 
 export interface MenuShortcutProps extends Omit<KbdProps, 'value'> {}
 
-export type MenuExtraUiSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut' | 'radioIndicatorIcon';
+export type MenuExtraUiSlot = 'subTriggerIcon' | 'itemLinkIcon' | 'shortcut';
 
 export type MenuExtraUi = UiClass<MenuExtraUiSlot>;
 

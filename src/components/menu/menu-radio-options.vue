@@ -62,7 +62,7 @@ const ui = useMenuExtraUi();
           <template #indicator>
             <MenuItemIndicator v-bind="indicatorProps">
               <slot name="item-indicator-icon" v-bind="item">
-                <Icon icon="icon-park-outline:dot" :class="ui.radioIndicatorIcon" />
+                <Icon icon="icon-park-outline:dot" />
               </slot>
             </MenuItemIndicator>
           </template>

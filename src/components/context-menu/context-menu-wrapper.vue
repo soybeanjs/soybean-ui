@@ -30,6 +30,7 @@ const forwardedRootProps = useOmitProps(props, [
   'size',
   'ui',
   'disabled',
+  'indicatorPosition',
   'showArrow',
   'triggerProps',
   'portalProps',
@@ -49,7 +50,8 @@ const contentProps = computed(() => {
 
 const ui = computed(() => {
   const variants = menuVariants({
-    size: props.size
+    size: props.size,
+    indicatorPosition: props.indicatorPosition
   });
 
   return mergeSlotVariants(variants, props.ui, { popup: props.class });

@@ -47,6 +47,8 @@ const propKeys = [
   'size',
   'ui',
   'disabled',
+  'placement',
+  'indicatorPosition',
   'showArrow',
   'triggerProps',
   'portalProps',

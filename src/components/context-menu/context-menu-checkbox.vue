@@ -40,6 +40,7 @@ const propKeys = [
   'ui',
   'disabled',
   'showArrow',
+  'indicatorPosition',
   'triggerProps',
   'portalProps',
   'contentProps',

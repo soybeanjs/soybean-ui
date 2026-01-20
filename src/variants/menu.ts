@@ -42,8 +42,7 @@ export const menuVariants = tv({
     radioItem: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-pointer select-none`,
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
-    ],
-    radioIndicatorIcon: `shrink-0 fill-current`
+    ]
   },
   variants: {
     size: {
@@ -56,9 +55,8 @@ export const menuVariants = tv({
         separator: '-mx-0.75 my-0.75',
         subTrigger: 'gap-1 px-1 py-1',
         subPopup: 'text-2xs p-0.75',
-        checkboxItem: 'gap-1 pl-6 pr-1 py-1',
-        itemIndicator: 'left-1',
-        radioItem: 'gap-1 pl-6 pr-1 py-1'
+        checkboxItem: 'gap-1 py-1',
+        radioItem: 'gap-1 py-1'
       },
       sm: {
         popup: 'text-xs p-0.875',
@@ -69,9 +67,8 @@ export const menuVariants = tv({
         separator: '-mx-0.875 my-0.875',
         subTrigger: 'gap-1.5 px-1.5 py-1',
         subPopup: 'text-xs p-0.875',
-        checkboxItem: 'gap-1.5 pl-7 pr-1.5 py-1',
-        itemIndicator: 'left-1.5',
-        radioItem: 'gap-1.5 pl-7 pr-1.5 py-1'
+        checkboxItem: 'gap-1.5 py-1',
+        radioItem: 'gap-1.5 py-1'
       },
       md: {
         popup: 'text-sm p-1',
@@ -82,9 +79,8 @@ export const menuVariants = tv({
         separator: '-mx-1 my-1',
         subTrigger: 'gap-2 px-2 py-1.5',
         subPopup: 'text-sm p-1',
-        checkboxItem: 'gap-2 pl-8 pr-2 py-1.5',
-        itemIndicator: 'left-2',
-        radioItem: 'gap-2 pl-8 pr-2 py-1.5'
+        checkboxItem: 'gap-2 py-1.5',
+        radioItem: 'gap-2 py-1.5'
       },
       lg: {
         popup: 'text-base p-1.25',
@@ -95,9 +91,8 @@ export const menuVariants = tv({
         separator: '-mx-1.25 my-1.25',
         subTrigger: 'gap-2.5 px-2.5 py-1.5',
         subPopup: 'text-base p-1.25',
-        checkboxItem: 'gap-2.5 pl-9 pr-2.5 py-1.5',
-        itemIndicator: 'left-2.5',
-        radioItem: 'gap-2.5 pl-9 pr-2.5 py-1.5'
+        checkboxItem: 'gap-2.5 py-1.5',
+        radioItem: 'gap-2.5 py-1.5'
       },
       xl: {
         popup: 'text-lg p-1.5',
@@ -108,9 +103,8 @@ export const menuVariants = tv({
         separator: '-mx-1.5 my-1.5',
         subTrigger: 'gap-3 px-3 py-2',
         subPopup: 'text-lg p-1.5',
-        checkboxItem: 'gap-3 pl-10 pr-3 py-2',
-        itemIndicator: 'left-3',
-        radioItem: 'gap-3 pl-10 pr-3 py-2'
+        checkboxItem: 'gap-3 py-2',
+        radioItem: 'gap-3 py-2'
       },
       '2xl': {
         popup: 'text-xl p-1.75',
@@ -121,13 +115,117 @@ export const menuVariants = tv({
         separator: '-mx-1.75 my-1.75',
         subTrigger: 'gap-3.5 px-3.5 py-2.5',
         subPopup: 'text-xl p-1.75',
-        checkboxItem: 'gap-3.5 pl-12 pr-3.5 py-2.5',
-        itemIndicator: 'left-3.5',
-        radioItem: 'gap-3.5 pl-12 pr-3.5 py-2.5'
+        checkboxItem: 'gap-3.5 py-2.5',
+        radioItem: 'gap-3.5 py-2.5'
+      }
+    },
+    indicatorPosition: {
+      start: {
+        itemIndicator: 'left-2',
+        checkboxItem: 'pl-8 pr-2',
+        radioItem: 'pl-8 pr-2'
+      },
+      end: {
+        itemIndicator: 'right-2',
+        checkboxItem: 'pl-2 pr-8',
+        radioItem: 'pl-2 pr-8'
       }
     }
   },
+  compoundVariants: [
+    {
+      indicatorPosition: 'start',
+      size: 'xs',
+      class: {
+        itemIndicator: 'left-1',
+        checkboxItem: 'pl-6 pr-1',
+        radioItem: 'pl-6 pr-1'
+      }
+    },
+    {
+      indicatorPosition: 'end',
+      size: 'xs',
+      class: {
+        itemIndicator: 'right-1',
+        checkboxItem: 'pl-1 pr-6',
+        radioItem: 'pl-1 pr-6'
+      }
+    },
+    {
+      indicatorPosition: 'start',
+      size: 'sm',
+      class: {
+        itemIndicator: 'left-1.5',
+        checkboxItem: 'pl-7 pr-1.5',
+        radioItem: 'pl-7 pr-1.5'
+      }
+    },
+    {
+      indicatorPosition: 'end',
+      size: 'sm',
+      class: {
+        itemIndicator: 'right-1.5',
+        checkboxItem: 'pl-1.5 pr-7',
+        radioItem: 'pl-1.5 pr-7'
+      }
+    },
+    {
+      indicatorPosition: 'start',
+      size: 'lg',
+      class: {
+        itemIndicator: 'left-2.5',
+        checkboxItem: 'pl-9 pr-2.5',
+        radioItem: 'pl-9 pr-2.5'
+      }
+    },
+    {
+      indicatorPosition: 'end',
+      size: 'lg',
+      class: {
+        itemIndicator: 'right-2.5',
+        checkboxItem: 'pl-2.5 pr-9',
+        radioItem: 'pl-2.5 pr-9'
+      }
+    },
+    {
+      indicatorPosition: 'start',
+      size: 'xl',
+      class: {
+        itemIndicator: 'left-3',
+        checkboxItem: 'pl-10 pr-3',
+        radioItem: 'pl-10 pr-3'
+      }
+    },
+    {
+      indicatorPosition: 'end',
+      size: 'xl',
+      class: {
+        itemIndicator: 'right-3',
+        checkboxItem: 'pl-3 pr-10',
+        radioItem: 'pl-3 pr-10'
+      }
+    },
+    {
+      indicatorPosition: 'start',
+      size: '2xl',
+      class: {
+        itemIndicator: 'left-3.5',
+        checkboxItem: 'pl-12 pr-3.5',
+        radioItem: 'pl-12 pr-3.5'
+      }
+    },
+    {
+      indicatorPosition: 'end',
+      size: '2xl',
+      class: {
+        itemIndicator: 'right-3.5',
+        checkboxItem: 'pl-3.5 pr-12',
+        radioItem: 'pl-3.5 pr-12'
+      }
+    }
+  ],
   defaultVariants: {
-    size: 'md'
+    size: 'md',
+    indicatorPosition: 'start'
   }
 });

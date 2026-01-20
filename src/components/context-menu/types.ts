@@ -34,6 +34,7 @@ export interface ContextMenuWrapperProps extends ContextMenuRootProps {
   size?: ThemeSize;
   ui?: Partial<MenuExtendedUi>;
   disabled?: boolean;
+  indicatorPosition?: 'start' | 'end';
   showArrow?: boolean;
   triggerProps?: ContextMenuTriggerProps;
   portalProps?: ContextMenuPortalProps;
@@ -49,7 +50,7 @@ export interface ContextMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
 >
-  extends ContextMenuWrapperProps, MenuOptionsProps<T, S> {
+  extends Omit<ContextMenuWrapperProps, 'indicatorPosition'>, MenuOptionsProps<T, S> {
   /**
    * class of menu popup
    */

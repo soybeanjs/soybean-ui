@@ -36,6 +36,7 @@ export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
   ui?: Partial<MenuExtendedUi>;
   disabled?: boolean;
   placement?: Placement;
+  indicatorPosition?: 'start' | 'end';
   showArrow?: boolean;
   triggerProps?: DropdownMenuTriggerProps;
   portalProps?: DropdownMenuPortalProps;
@@ -51,7 +52,7 @@ export interface DropdownMenuProps<
   T extends DefinedValue = DefinedValue,
   S extends MenuOptionData<T> = MenuOptionData<T>
 >
-  extends DropdownMenuWrapperProps, MenuOptionsProps<T, S> {}
+  extends Omit<DropdownMenuWrapperProps, 'indicatorPosition'>, MenuOptionsProps<T, S> {}
 export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = DropdownMenuWrapperEmits &
   MenuOptionsEmits<T>;
 
