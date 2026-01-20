@@ -21,6 +21,12 @@ const props = withDefaults(defineProps<LinkProps>(), {
   rel: 'noopener noreferrer'
 });
 
+type Slots = {
+  default: (args: { isHref: boolean; isActive?: boolean; isExactActive?: boolean }) => any;
+};
+
+defineSlots<Slots>();
+
 const attrs = useAttrs();
 
 const { nuxt } = useConfigProvider('Link');
@@ -60,10 +66,12 @@ const target = computed(() => {
 });
 
 const forwardedProps = computed(() => {
+  const { as: _as, asChild: _asChild, ...rest } = props;
+
   const href = props.to || props.href;
 
   return {
-    ...props,
+    ...rest,
     ...attrs,
     target: target.value,
     to: isHref.value ? undefined : href,
@@ -84,10 +92,10 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive v-if="isHref" v-bind="forwardedProps" @click="handleClick">
+  <Primitive v-if="isHref" v-bind="forwardedProps" :as="as" :as-child="asChild" @click="handleClick">
     <slot :is-href="true" />
   </Primitive>
-  <component :is="LinkComponent" v-else v-bind="forwardedProps" @click="handleClick">
-    <slot :is-href="false" />
+  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwardedProps" @click="handleClick">
+    <slot :is-href="false" :is-active="slotProps?.isActive" :is-exact-active="slotProps?.isExactActive" />
   </component>
 </template>
