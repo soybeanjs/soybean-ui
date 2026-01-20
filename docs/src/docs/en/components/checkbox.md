@@ -36,18 +36,18 @@ card-group
 ### SCheckbox Props
 
 <DataTable preset="props" :data="[
-{ name: 'checked', type: 'boolean | "indeterminate"', default: '-', description: 'The checked state.' },
-{ name: 'defaultChecked', type: 'boolean', default: '-', description: 'The default checked state.' },
-{ name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the checkbox is disabled.' },
-{ name: 'required', type: 'boolean', default: 'false', description: 'Whether the checkbox is required.' },
-{ name: 'name', type: 'string', default: '-', description: 'The name of the checkbox.' },
-{ name: 'value', type: 'string', default: 'on', description: 'The value given as data when submitted with a name.' },
-{ name: 'id', type: 'string', default: '-', description: 'The unique id of the checkbox.' },
-{ name: 'label', type: 'string', default: '-', description: 'Label text.' },
-{ name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: 'Checkbox color.' },
-{ name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Checkbox size.' },
-{ name: 'shape', type: `'rounded' \| 'circle' \| 'square'`, default: `'rounded'`, description: 'Checkbox shape.' },
-{ name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
+  { name: 'checked', type: `boolean | 'indeterminate'`, default: '-', description: 'The checked state.' },
+  { name: 'defaultChecked', type: 'boolean', default: '-', description: 'The default checked state.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the checkbox is disabled.' },
+  { name: 'required', type: 'boolean', default: 'false', description: 'Whether the checkbox is required.' },
+  { name: 'name', type: 'string', default: '-', description: 'The name of the checkbox.' },
+  { name: 'value', type: 'string', default: 'on', description: 'The value given as data when submitted with a name.' },
+  { name: 'id', type: 'string', default: '-', description: 'The unique id of the checkbox.' },
+  { name: 'label', type: 'string', default: '-', description: 'Label text.' },
+  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: 'Checkbox color.' },
+  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Checkbox size.' },
+  { name: 'shape', type: `'rounded' \| 'circle' \| 'square'`, default: `'rounded'`, description: 'Checkbox shape.' },
+  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
 ### SCheckbox Emits
