@@ -1,7 +1,17 @@
-import { Buffer } from 'Buffer';
 import type { MarkdownItAsync, PluginSimple } from 'markdown-it-async';
 import type { RenderRule } from 'markdown-it/lib/renderer.mjs';
 import type { MarkdownEnv } from 'unplugin-vue-markdown/dist/types.js';
+
+function encodeBase64Utf8(raw: string): string {
+  if (typeof btoa === 'function' && typeof TextEncoder !== 'undefined') {
+    const bytes = new TextEncoder().encode(raw);
+    let binary = '';
+    for (const b of bytes) binary += String.fromCharCode(b);
+    return btoa(binary);
+  }
+
+  return raw;
+}
 
 export const customMarkdownPlugin: PluginSimple = md => {
   playgroundPlugin(md);
@@ -60,7 +70,7 @@ function copyCodePlugin(md: MarkdownItAsync) {
       if (renderedHtml.includes('md-code-block') || renderedHtml.includes('md-code-copy')) return renderedHtml;
 
       const lang = (tokenInfo || '').trim().split(/\s+/)[0] || '';
-      const codeBase64 = Buffer.from(rawCode, 'utf-8').toString('base64');
+      const codeBase64 = encodeBase64Utf8(rawCode);
 
       return `\n<div class="md-code-block" data-lang="${lang}">\n  <CopyButton code-base64="${codeBase64}" />\n  ${renderedHtml}\n</div>\n`;
     };
