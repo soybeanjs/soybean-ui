@@ -1,23 +1,28 @@
 export interface MenuData {
-  label: string;
+  value: string;
+  i18n: string;
   items: string[];
 }
 
 export const menuData: MenuData[] = [
   {
-    label: 'general',
+    value: 'general',
+    i18n: 'sidebar.general',
     items: ['configProvider', 'button', 'icon', 'link']
   },
   {
-    label: 'layout',
+    value: 'groupLayout',
+    i18n: 'sidebar.layout',
     items: ['layout', 'aspectRatio', 'separator']
   },
   {
-    label: 'navigation',
+    value: 'navigation',
+    i18n: 'sidebar.navigation',
     items: ['breadcrumb', 'navigationMenu', 'menu', 'command', 'tabs', 'pagination', 'tree', 'treeMenu']
   },
   {
-    label: 'dataEntry',
+    value: 'dataEntry',
+    i18n: 'sidebar.data_entry',
     items: [
       'form',
       'label',
@@ -33,19 +38,23 @@ export const menuData: MenuData[] = [
     ]
   },
   {
-    label: 'dataDisplay',
+    value: 'dataDisplay',
+    i18n: 'sidebar.data_display',
     items: ['accordion', 'collapsible', 'card', 'list', 'avatar', 'badge', 'kbd', 'tag', 'virtualizer']
   },
   {
-    label: 'feedback',
+    value: 'feedback',
+    i18n: 'sidebar.feedback',
     items: ['alert', 'toast']
   },
   {
-    label: 'overlay',
+    value: 'overlay',
+    i18n: 'sidebar.overlay',
     items: ['dialog', 'alertDialog', 'drawer', 'popover', 'tooltip', 'dropdownMenu', 'contextMenu']
   },
   {
-    label: 'utilities',
+    value: 'utilities',
+    i18n: 'sidebar.utilities',
     items: ['arrow', 'visuallyHidden']
   }
 ];

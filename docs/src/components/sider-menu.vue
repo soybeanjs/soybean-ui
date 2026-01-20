@@ -3,7 +3,6 @@ import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
-import { snakeCase } from 'es-toolkit';
 import { menuData } from '../constants/menus';
 
 type Emits = {
@@ -21,8 +20,8 @@ const selected = ref<string>('');
 
 const componentMenus = computed<TreeMenuOptionData[]>(() =>
   menuData.map(group => ({
-    label: t(`sidebar.${snakeCase(group.label)}`),
-    value: group.label,
+    label: t(`${group.i18n}`),
+    value: group.value,
     children: group.items.map(item => ({
       label: toPascalCase(item),
       value: toKebabCase(item),
@@ -68,7 +67,7 @@ watchEffect(() => {
       const group = menuData.find(g => g.items.some(item => toKebabCase(item) === value));
 
       if (group) {
-        expanded.value = ['components', group.label];
+        expanded.value = ['components', group.value];
       } else {
         expanded.value = ['components'];
       }
