@@ -15,7 +15,7 @@ import Markdown from 'unplugin-vue-markdown/vite';
 import Shiki from '@shikijs/markdown-it';
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import generateSitemap from 'vite-ssg-sitemap';
-import { loadPlaygroundModules } from './src/modules/playground';
+import { customMarkdownPlugin } from './src/modules/markdown';
 
 export default defineConfig({
   resolve: {
@@ -76,7 +76,7 @@ export default defineConfig({
             }
           })
         );
-        loadPlaygroundModules(md);
+        md.use(customMarkdownPlugin);
       }
     }),
     VueI18n({

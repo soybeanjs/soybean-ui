@@ -131,6 +131,14 @@ html.dark .shiki span {
     --uno: my-6 px-4 py-3 text-sm rounded-lg;
   }
 
+  .md-code-block {
+    --uno: relative my-6;
+  }
+
+  .md-code-block > pre {
+    --uno: my-0;
+  }
+
   table {
     --uno: w-full border-none text-sm;
 
