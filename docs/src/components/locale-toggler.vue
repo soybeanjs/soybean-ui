@@ -17,6 +17,8 @@ const items = computed(() => {
 const onSelectLocale = async (item: MenuOptionData<string>) => {
   await loadLanguageAsync(item.value);
   locale.value = item.value;
+
+  localStorage.setItem('locale', item.value);
 };
 </script>
 

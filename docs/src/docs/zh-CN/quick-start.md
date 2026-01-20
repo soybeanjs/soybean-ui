@@ -1,7 +1,3 @@
----
-title: Quick Start
----
-
 # 快速开始
 
 本指南将帮助你快速在项目中集成 SoybeanUI，让你在几分钟内开始使用我们的组件。
@@ -173,9 +169,10 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 const themeConfig = {
   theme: {
-    color: 'slate',
-    radius: 0.2
-    // ...更多配置选项
+    base: 'gray',
+    primary: 'indigo',
+    feedback: 'classic',
+    radius: '0.625rem'
   },
   size: 'md'
 };

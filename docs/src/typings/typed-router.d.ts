@@ -128,13 +128,13 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/overview/introduction.md': {
+    'src/pages/overview/introduction.vue': {
       routes:
         | '/overview/introduction'
       views:
         | never
     }
-    'src/pages/overview/quick-start.md': {
+    'src/pages/overview/quick-start.vue': {
       routes:
         | '/overview/quick-start'
       views:

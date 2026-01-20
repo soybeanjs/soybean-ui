@@ -5,12 +5,6 @@ button:
   home: 首页
   toggle_dark: 切换深色模式
   toggle_langs: 切换语言
-intro:
-  desc: 固执己见的 Vite 项目模板
-  dynamic-route: 动态路由演示
-  hi: 你好，{name}
-  aka: 也叫
-  whats-your-name: 输入你的名字
 not-found: 未找到
 not-found-page: 未找到页面
 locale:
@@ -28,7 +22,7 @@ layout:
     version: 版本
     github: GitHub
     theme: 主题
-    theme-customizer: 主题配置
+    theme-configurator: 主题配置
     language: 语言
     others: 其他
 components:
@@ -56,3 +50,9 @@ components:
       customizable:
         title: 高度可定制
         desc: 基于 UnoCSS 和 tailwind-variants 构建，轻松定制主题。
+sidebar:
+  overview: 概览
+  introduction: 介绍
+  quick-start: 快速开始
+  components: 组件
+  theming: 主题定制

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
@@ -12,6 +12,7 @@ type Emits = {
 const emit = defineEmits<Emits>();
 
 const route = useRoute();
+const { t } = useI18n();
 
 const expanded = ref<string[]>([]);
 
@@ -30,31 +31,31 @@ const componentMenus = Object.keys(components)
       }) satisfies TreeMenuOptionData
   );
 
-const menus: TreeMenuOptionData[] = [
+const menus = computed<TreeMenuOptionData[]>(() => [
   {
-    label: 'Overview',
+    label: t('sidebar.overview'),
     value: 'overview',
     icon: 'lucide:home',
     children: [
       {
-        label: 'Introduction',
+        label: t('sidebar.introduction'),
         value: 'introduction',
         to: '/overview/introduction'
       },
       {
-        label: 'Quick Start',
+        label: t('sidebar.quick-start'),
         value: 'quick-start',
         to: '/overview/quick-start'
       }
     ]
   },
   {
-    label: 'Components',
+    label: t('sidebar.components'),
     value: 'components',
     icon: 'lucide:layout-grid',
     children: componentMenus
   }
-];
+]);
 
 watchEffect(() => {
   const [dir, value] = route.path.split('/').filter(Boolean);

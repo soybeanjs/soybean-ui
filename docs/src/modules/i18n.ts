@@ -21,16 +21,22 @@ const loadedLanguages: string[] = [];
 
 function setI18nLanguage(lang: Locale) {
   i18n.global.locale.value = lang as any;
-  if (typeof document !== 'undefined') document.querySelector('html')?.setAttribute('lang', lang);
+  if (typeof document !== 'undefined') {
+    document.querySelector('html')?.setAttribute('lang', lang);
+  }
   return lang;
 }
 
 export async function loadLanguageAsync(lang: string): Promise<Locale> {
   // If the same language
-  if (i18n.global.locale.value === lang) return setI18nLanguage(lang);
+  if (i18n.global.locale.value === lang) {
+    return setI18nLanguage(lang);
+  }
 
   // If the language was already loaded
-  if (loadedLanguages.includes(lang)) return setI18nLanguage(lang);
+  if (loadedLanguages.includes(lang)) {
+    return setI18nLanguage(lang);
+  }
 
   // If the language hasn't been loaded yet
   const messages = await localesMap[lang]();
@@ -41,5 +47,15 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
 
 export const install: UserModule = ({ app }) => {
   app.use(i18n);
-  loadLanguageAsync('en');
+
+  let locale = 'en';
+
+  if (!import.meta.env.SSR) {
+    const storageLocale = localStorage.getItem('locale');
+    if (storageLocale) {
+      locale = storageLocale;
+    }
+  }
+
+  loadLanguageAsync(locale);
 };

@@ -23,9 +23,9 @@ export function loadPlaygroundModules(md: MarkdownItAsync) {
 
       let component = '';
       if (typeof id === 'string') {
-        const match = id.match(/\/src\/docs\/(.+)$/);
-        if (match?.[1]) {
-          component = match[1].split('/')?.[1]?.replace('.md', '') ?? '';
+        const match = id.match(/\/src\/docs\/(.+)\/components\/(.+)$/);
+        if (match?.[2]) {
+          component = match[2].replace('.md', '') ?? '';
         }
       }
 

@@ -5,12 +5,6 @@ button:
   home: Home
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
-intro:
-  desc: Opinionated Vite Starter Template
-  dynamic-route: Demo of dynamic route
-  hi: Hi, {name}!
-  aka: Also known as
-  whats-your-name: What's your name?
 not-found: Not found
 not-found-page: Not found page
 locale:
@@ -28,7 +22,7 @@ layout:
     version: Version
     github: GitHub
     theme: Theme
-    theme-customizer: Theme Customizer
+    theme-configurator: Theme Customizer
     language: Language
     others: Others
 components:
@@ -56,3 +50,9 @@ components:
       customizable:
         title: Customizable
         desc: Built with UnoCSS and tailwind-variants for easy theming.
+sidebar:
+  overview: Overview
+  introduction: Introduction
+  quick-start: Quick Start
+  components: Components
+  theming: Theming

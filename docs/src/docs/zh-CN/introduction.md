@@ -1,7 +1,3 @@
----
-title: Introduction
----
-
 # 介绍
 
 SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，专为 Vue 3 设计，采用 shadcn-like 设计风格，构建在强大的 Headless 基础之上。它提供了一套全面、可访问、可定制且高性能的组件，帮助开发者快速构建现代化的 Web 应用。
