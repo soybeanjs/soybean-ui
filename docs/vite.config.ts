@@ -5,7 +5,6 @@ import VueJsx from '@vitejs/plugin-vue-jsx';
 import Layouts from 'vite-plugin-vue-layouts';
 import { VueRouterAutoImports } from 'unplugin-vue-router';
 import UiResolver from '@soybeanjs/ui/resolver';
-// import { Features } from 'lightningcss';
 import { unheadVueComposablesImports } from '@unhead/vue';
 import VueRouter from 'unplugin-vue-router/vite';
 import Unocss from 'unocss/vite';
