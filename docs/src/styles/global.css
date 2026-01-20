@@ -149,14 +149,22 @@ html.dark .shiki span {
     td {
       --uno: px-4 p-2 text-left whitespace-nowrap;
     }
+  }
 
-    .code-btn {
-      --uno: 'inline px-2 py-1 text-accent-foreground bg-accent rounded-md font-semibold text-center text-nowrap';
-    }
+  blockquote {
+    --uno: border-l-4 border-primary border-opacity-50 pl-4 py-2 my-6;
 
-    .code-btn-outline {
-      --uno: 'inline px-2 py-1 font-mono text-accent-foreground border border-accent-foreground/15 rounded-md text-nowrap';
-      box-decoration-break: clone;
+    * {
+      --uno: italic text-foreground text-opacity-50;
     }
+  }
+
+  .code-btn {
+    --uno: 'inline px-2 py-1 text-accent-foreground bg-accent rounded-md font-semibold text-center text-nowrap';
+  }
+
+  .code-btn-outline {
+    --uno: 'inline px-2 py-1 font-mono text-accent-foreground border border-accent-foreground/15 rounded-md text-nowrap';
+    box-decoration-break: clone;
   }
 }

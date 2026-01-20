@@ -2,26 +2,9 @@
 
 ## Overview
 
-The Button component family includes the following components:
+A button component that can be used to trigger an action.
 
-- **SButton** - Basic button component
-- **SButtonLink** - Link button, supports route navigation
-- **SButtonIcon** - Icon button, compact design
-- **SButtonLoading** - Loading state button
-- **SButtonGroup** - Button group component
-
-## Main Features
-
-- 🎨 8 variants: solid, outline, dashed, soft, ghost, link, plain, pure
-- 🌈 8 colors: primary, destructive, success, warning, info, carbon, secondary, accent
-- 📏 6 sizes: xs, sm, md, lg, xl, 2xl
-- 🔲 4 shapes: auto, rounded, square, circle
-- ⚡ Loading state support
-- 🌐 Link function support (SButtonLink)
-- ♿ Full accessibility support
-- 🎯 TypeScript type safety
-
-## Basic Usage
+## Usage
 
 ```vue
 <script setup lang="ts">
@@ -32,6 +15,25 @@ import { SButton } from '@soybeanjs/ui';
   <SButton>Default Button</SButton>
 </template>
 ```
+
+## Features
+
+- 🎨 8 variants: solid, outline, dashed, soft, ghost, link, plain, pure
+- 🌈 8 colors: primary, destructive, success, warning, info, carbon, secondary, accent
+- 📏 6 sizes: xs, sm, md, lg, xl, 2xl
+- 🔲 4 shapes: auto, rounded, square, circle
+- ⚡ Loading state support
+- 🌐 Link function support (SButtonLink)
+- ♿ Full accessibility support
+- 🎯 TypeScript type safety
+
+## Button component family
+
+- **SButton** - Basic button component
+- **SButtonLink** - Link button, supports route navigation
+- **SButtonIcon** - Icon button, compact design
+- **SButtonLoading** - Loading state button
+- **SButtonGroup** - Button group component
 
 ## Demos
 
@@ -57,23 +59,21 @@ group
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class name' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: 'Button color' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Button size' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'solid'`, description: 'Button variant' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: `'auto'`, description: 'Button shape' },
-  { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, default: `'sm'`, description: 'Shadow effect' },
+  { name: 'color', type: 'ThemeColor', default: `'primary'`, description: 'Button color' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Button size' },
+  { name: 'variant', type: 'ButtonVariant', default: `'solid'`, description: 'Button variant' },
+  { name: 'shape', type: 'ButtonShape', default: `'auto'`, description: 'Button shape' },
+  { name: 'shadow', type: 'ButtonShadow', default: `'sm'`, description: 'Shadow effect' },
   { name: 'fitContent', type: 'boolean', default: 'false', description: 'Fit content to size' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Disabled' },
   { name: 'as', type: 'string | Component', default: `'button'`, description: 'Rendered element/component' },
   { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props/behavior into the child element' },
 ]"/>
 
-> Note: `SButton` also supports native button attributes (e.g. `type`, `name`, `value`, `form*`, etc.).
-
 ### Events
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: 'Triggered when button is clicked (won\'t fire when disabled)' }
+  { name: 'click', parameters: 'MouseEvent', description: 'Triggered when button is clicked (won\'t fire when disabled)' }
 ]"/>
 
 ### Slots
@@ -91,11 +91,9 @@ group
 <DataTable preset="props" :data="[
   { name: 'icon', type: 'string', default: '-', description: 'Iconify icon name', required: true },
   { name: 'iconProps', type: 'Partial<IconProps>', default: '-', description: 'Props passed to `SIcon`' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'accent'`, description: 'Button color' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'ghost'`, description: 'Button variant' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: `'square'`, description: 'Button shape' },
-  { name: 'fitContent', type: 'boolean', default: 'true', description: 'Fit content to size' },
 ]"/>
+
+> Inherits all props, events, and slots from `SButton`.
 
 ## SButtonLoading API
 
@@ -111,10 +109,12 @@ group
   { name: 'loadingPosition', type: `'start' \| 'center' \| 'end'`, default: `'start'`, description: 'Loading icon position' },
 ]"/>
 
+> Inherits all props, events, and slots from `SButton`.
+
 ### Events
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: 'Click handler (supports `autoLoading`)' }
+  { name: 'click', parameters: 'MouseEvent', description: 'Click handler (supports `autoLoading`)' }
 ]"/>
 
 ### Slots
@@ -137,8 +137,7 @@ group
   { name: 'rel', type: 'string', default: `'noopener noreferrer'`, description: 'Rel attribute (defaults for external links)' },
   { name: 'noRel', type: 'boolean', default: 'false', description: 'Disable automatic rel handling' },
   { name: 'prefetch', type: 'boolean', default: '-', description: 'Enable prefetch behavior (framework dependent)' },
-  { name: 'noPrefetch', type: 'boolean', default: '-', description: 'Disable prefetch behavior' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'link'`, description: 'Button variant' },
+  { name: 'noPrefetch', type: 'boolean', default: '-', description: 'Disable prefetch behavior' }
 ]"/>
 
 ### Slots
@@ -153,15 +152,10 @@ group
 
 <DataTable preset="props" :data="[
   { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: 'Group orientation' },
-  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: '-', description: 'Provide default color for child `SButton`' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: '-', description: 'Provide default size for child `SButton`' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: '-', description: 'Provide default variant for child `SButton`' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: '-', description: 'Provide default shape for child `SButton`' },
-  { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, default: '-', description: 'Provide default shadow for child `SButton`' },
-  { name: 'fitContent', type: 'boolean', default: '-', description: 'Provide default fitContent for child `SButton`' },
-  { name: 'disabled', type: 'boolean', default: '-', description: 'Provide default disabled for child `SButton`' },
+  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' }
 ]"/>
+
+> Inherits all props from `SButton`, which are passed to each child button.
 
 ### Slots
 
@@ -177,11 +171,11 @@ group
     description: 'Props for `SButton`.',
     fields: [
       { name: 'class', type: 'ClassValue', description: 'Custom class name.' },
-      { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, description: 'Button color.' },
-      { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, description: 'Button size.' },
-      { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, description: 'Button variant.' },
-      { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, description: 'Button shape.' },
-      { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, description: 'Shadow effect.' },
+      { name: 'color', type: 'ThemeColor', description: 'Button color.' },
+      { name: 'size', type: 'ThemeSize', description: 'Button size.' },
+      { name: 'variant', type: 'ButtonVariant', description: 'Button variant.' },
+      { name: 'shape', type: 'ButtonShape', description: 'Button shape.' },
+      { name: 'shadow', type: 'ButtonShadow', description: 'Shadow effect.' },
       { name: 'fitContent', type: 'boolean', description: 'Fit content to size.' },
       { name: 'disabled', type: 'boolean', description: 'Disabled.' },
       { name: 'as', type: 'string | Component', description: 'Rendered element/component.' },
@@ -215,6 +209,32 @@ group
     fields: [
       { name: 'orientation', type: `'horizontal' \| 'vertical'`, description: 'Group orientation.' },
       { name: 'dir', type: `'ltr' \| 'rtl'`, description: 'Text direction.' },
+    ]
+  }
+]"/>
+
+<UnionType name="ClassValue" description="Class value type" type="string | null | undefined | Record<string, boolean> | ClassValue[]" />
+
+<UnionType name="ThemeColor" description="Button color" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />
+
+<UnionType name="ThemeSize" description="Button size" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+
+<UnionType name="ButtonVariant" description="Button variant" type="'solid' | 'outline' | 'dashed' | 'soft' | 'ghost' | 'link' | 'plain' | 'pure'" />
+
+<UnionType name="ButtonShape" description="Button shape" type="'auto' | 'rounded' | 'square' | 'circle'" />
+
+<UnionType name="ButtonShadow" description="Button shadow effect" type="'none' | 'sm' | 'md' | 'lg'" />
+
+<TypeTable :data="[
+  {
+    name: 'IconProps',
+    description: 'Props for Icon component.',
+    fields: [
+      { name: 'icon', type: 'string', description: 'Iconify icon name.' },
+      { name: 'width', type: 'number | string', description: 'Icon width.' },
+      { name: 'height', type: 'number | string', description: 'Icon height.' },
+      { name: 'color', type: 'string', description: 'Icon color.' },
+      { name: 'inline', type: 'boolean', description: 'Whether to display the icon inline.' },
     ]
   }
 ]"/>

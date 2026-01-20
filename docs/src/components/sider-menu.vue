@@ -3,7 +3,7 @@ import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
-import { components } from '../../../src/constants/components';
+import { menuData } from '../constants/menus';
 
 type Emits = {
   select: [];
@@ -18,21 +18,21 @@ const expanded = ref<string[]>([]);
 
 const selected = ref<string>('');
 
-const excludes: string[] = ['configProvider', 'label', 'icon', 'menu'];
-
-const componentMenus = Object.keys(components)
-  .filter(key => !excludes.includes(key))
-  .map(
-    key =>
-      ({
-        label: toPascalCase(key),
-        value: toKebabCase(key),
-        to: `/components/${toKebabCase(key)}`
-      }) satisfies TreeMenuOptionData
-  );
+const componentMenus = computed<TreeMenuOptionData[]>(() =>
+  menuData.map(group => ({
+    label: t(`sidebar.${group.label}`),
+    value: group.label,
+    children: group.items.map(item => ({
+      label: toPascalCase(item),
+      value: toKebabCase(item),
+      to: `/components/${toKebabCase(item)}`
+    }))
+  }))
+);
 
 const menus = computed<TreeMenuOptionData[]>(() => [
   {
+    isGroup: true,
     label: t('sidebar.overview'),
     value: 'overview',
     icon: 'lucide:home',
@@ -50,10 +50,11 @@ const menus = computed<TreeMenuOptionData[]>(() => [
     ]
   },
   {
+    isGroup: true,
     label: t('sidebar.components'),
     value: 'components',
     icon: 'lucide:layout-grid',
-    children: componentMenus
+    children: componentMenus.value
   }
 ]);
 
@@ -61,7 +62,18 @@ watchEffect(() => {
   const [dir, value] = route.path.split('/').filter(Boolean);
 
   if (dir) {
-    expanded.value = [dir];
+    if (dir === 'components') {
+      // Find which group the current component belongs to
+      const group = menuData.find(g => g.items.some(item => toKebabCase(item) === value));
+
+      if (group) {
+        expanded.value = ['components', group.label];
+      } else {
+        expanded.value = ['components'];
+      }
+    } else {
+      expanded.value = [dir];
+    }
   }
 
   if (value) {

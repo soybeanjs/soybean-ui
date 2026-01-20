@@ -1,5 +1,23 @@
 # Breadcrumb
 
+## Overview
+
+Breadcrumbs allow users to navigate through the hierarchy of pages. It displays the current location within the application structure.
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { SBreadcrumb } from '@soybeanjs/ui';
+
+const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/components' }, { label: 'Breadcrumb' }];
+</script>
+
+<template>
+  <SBreadcrumb :items="items" />
+</template>
+```
+
 ## Demos
 
 ```playground
@@ -10,39 +28,37 @@ item-dropdown
 ellipsis-dropdown
 ```
 
-## Breadcrumb API
+## API
 
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'items', type: 'Array<BreadcrumbOptionData>', default: '—', description: 'data of breadcrumb items', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'breadcrumb size' },
-  { name: 'ellipsis', type: 'true | [number, number] | null', default: 'null', description: 'whether to enable ellipsis, true means to enable ellipsis when more than 4 items, [number, number] means to enable ellipsis at the start and end positions' },
-  { name: 'listProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb list' },
-  { name: 'itemProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb item' },
-  { name: 'linkProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb link' },
-  { name: 'pageProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb text' },
-  { name: 'separatorProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb separator' },
-  { name: 'ellipsisProps', type: 'HTMLAttributes', default: '{}', description: 'add attributes to breadcrumb ellipsis' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'add class name to the corresponding container' },
+  { name: 'items', type: 'BreadcrumbOptionData[]', default: '-', description: 'Data array for breadcrumb items.', required: true },
+  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Breadcrumb size.' },
+  { name: 'ellipsis', type: 'boolean | [number, number]', default: 'false', description: 'Enable ellipsis for long paths. True collapses middle items. Array specifies start/end count.' },
+  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' },
+  { name: 'listProps', type: 'object', default: '{}', description: 'Props for the list container.' },
+  { name: 'itemProps', type: 'object', default: '{}', description: 'Props for item wrapper.' },
+  { name: 'linkProps', type: 'object', default: '{}', description: 'Props for link element.' },
+  { name: 'pageProps', type: 'object', default: '{}', description: 'Props for current page text.' },
+  { name: 'separatorProps', type: 'object', default: '{}', description: 'Props for separator.' },
+  { name: 'ellipsisProps', type: 'object', default: '{}', description: 'Props for ellipsis item.' }
 ]"/>
 
 ### Events
 
-<DataTable preset="events" :data="[
-  { name: 'click', parameters: '(e: BreadcrumbOptionData) => void', description: 'breadcrumb item click event' },
+<DataTable preset="emits" :data="[
+  { name: 'click', parameters: '(item: BreadcrumbOptionData) => void', description: 'Triggers when a breadcrumb item is clicked.' }
 ]"/>
 
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'ellipsis', parameters: 'ellipsisItems: BreadcrumbOptionData[]', description: 'custom breadcrumb ellipsis' },
-  { name: 'ellipsis-icon', parameters: '-', description: 'custom breadcrumb ellipsis icon' },
-  { name: 'separator', parameters: '-', description: 'custom breadcrumb separator' },
-  { name: 'item-leading', parameters: 'item: BreadcrumbOptionData', description: 'custom breadcrumb item leading content' },
-  { name: 'item-link', parameters: 'item: BreadcrumbOptionData', description: 'custom breadcrumb item link content' },
-  { name: 'item-label', parameters: 'item: BreadcrumbOptionData', description: 'custom breadcrumb item label content' },
-  { name: 'item-trailing', parameters: 'item: BreadcrumbOptionData', description: 'custom breadcrumb item trailing content' },
+  { name: 'separator', parameters: '-', description: 'Custom separator content.' },
+  { name: 'ellipsis', parameters: '{ ellipsisItems: BreadcrumbOptionData[] }', description: 'Custom ellipsis content.' },
+  { name: 'item-leading', parameters: '{ item: BreadcrumbOptionData }', description: 'Content before item label.' },
+  { name: 'item-label', parameters: '{ item: BreadcrumbOptionData }', description: 'Custom label content.' },
+  { name: 'item-trailing', parameters: '{ item: BreadcrumbOptionData }', description: 'Content after item label.' }
 ]"/>
 
 ### Types
@@ -50,46 +66,27 @@ ellipsis-dropdown
 <TypeTable :data="[
   {
     name: 'BreadcrumbOptionData',
-    description: 'breadcrumb item data type',
+    description: 'Data structure for breadcrumb items.',
     fields: [
-      { name: 'value', type: 'string', description: 'breadcrumb item value' },
-      { name: 'label', type: 'string', description: 'breadcrumb item label' },
-      { name: 'link', type: 'string', description: 'breadcrumb item link' },
-      { name: 'icon', type: 'string', description: 'breadcrumb item icon' },
-      { name: 'disabled', type: 'boolean', description: 'whether the breadcrumb item is disabled' },
-      { name: 'linkProps', type: 'BreadcrumbLinkProps', description: 'breadcrumb item link props' },
-    ],
-  },
-  {
-    name: 'BreadcrumbLinkProps',
-    description: 'breadcrumb item link props type',
-    fields: [
-      { name: 'to', type: 'string', description: 'breadcrumb item link target' },
-      { name: 'href', type: 'string', description: 'breadcrumb item link' },
-      { name: 'disabled', type: 'boolean', description: 'whether the breadcrumb item link is disabled' },
-      { name: 'inaciveClass', type: 'string', description: 'class added to the breadcrumb item link when it is disabled' },
-      { name: 'external', type: 'boolean', description: 'whether the breadcrumb item link is external' },
-      { name: 'target', type: `'_blank' \| '_parent' \| '_self' \| '_top' \| (string & {}) \| null`, description: 'breadcrumb item link target' },
-      { name: 'rel', type: `'noopener' \| 'noreferrer' \| 'nofollow' \| 'sponsored' \| 'ugc' \| (string & {}) \| null`, description: 'breadcrumb item link rel attribute' },
-      { name: 'noRel', type: 'boolean', description: 'whether to disable the rel attribute' },
-      { name: 'prefetchedClass', type: 'string', description: 'class added to the breadcrumb item link when it is prefetched' },
-      { name: 'prefetch', type: 'boolean', description: 'whether to prefetch the link' },
-      { name: 'prefetchOn', type: `'visibility' \| 'interaction' \| {visibility?: boolean; interaction?: boolean;}`, description: 'control when to prefetch the link. by default, prefetch is triggered only on visibility' },
-      { name: 'noPrefetch', type: 'boolean', description: 'whether to disable the prefetch' },
-      { name: 'trailingSlash', type: `'append' \| 'remove'`, description: 'whether to add a trailing slash' },
-    ],
+      { name: 'label', type: 'string', description: 'Display text.' },
+      { name: 'value', type: 'string', description: 'Unique identifier.' },
+      { name: 'link', type: 'string', description: 'URL or route path.' },
+      { name: 'icon', type: 'string', description: 'Icon name (Iconify).' },
+      { name: 'disabled', type: 'boolean', description: 'Whether the item is disabled.' },
+      { name: 'linkProps', type: 'BreadcrumbLinkProps', description: 'Props for the link.' },
+    ]
   },
   {
     name: 'Ui',
-    description: 'custom class name for Breadcrumb component',
+    description: 'Custom styling classes.',
     fields: [
-      { name: 'root', type: 'string', description: 'class name applied to the root container' },
-      { name: 'list', type: 'string', description: 'class name applied to the breadcrumb list' },
-      { name: 'item', type: 'string', description: 'class name applied to the breadcrumb item' },
-      { name: 'link', type: 'string', description: 'class name applied to the breadcrumb link' },
-      { name: 'page', type: 'string', description: 'class name applied to the breadcrumb text' },
-      { name: 'separator', type: 'string', description: 'class name applied to the breadcrumb separator' },
-      { name: 'ellipsis', type: 'string', description: 'class name applied to the breadcrumb ellipsis' },
-    ],
+      { name: 'root', type: 'string', description: 'Root element class.' },
+      { name: 'list', type: 'string', description: 'List container class.' },
+      { name: 'item', type: 'string', description: 'Item wrapper class.' },
+      { name: 'link', type: 'string', description: 'Link element class.' },
+      { name: 'page', type: 'string', description: 'Current page text class.' },
+      { name: 'separator', type: 'string', description: 'Separator element class.' },
+      { name: 'ellipsis', type: 'string', description: 'Ellipsis element class.' },
+    ]
   }
 ]"/>

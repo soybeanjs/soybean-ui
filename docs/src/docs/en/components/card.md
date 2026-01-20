@@ -1,5 +1,28 @@
 # Card
 
+## Overview
+
+A container component that groups related content and actions. It supports headers, footers, titles, descriptions, and can be split into sections.
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { SCard, SButton } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <SCard title="Notifications" description="You have 3 unread messages.">
+    <div class="py-4">
+      <p>Your subscription expires soon.</p>
+    </div>
+    <template #footer>
+      <SButton class="w-full">Mark all as read</SButton>
+    </template>
+  </SCard>
+</template>
+```
+
 ## Demos
 
 ```playground
@@ -14,30 +37,26 @@ title-slot
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: 'md', description: 'Card size' },
-  { name: 'title', type: 'string', default: '-', description: 'Card title' },
-  { name: 'description', type: 'string', default: '-', description: 'Card description' },
-  { name: 'split', type: 'boolean', default: false, description: 'Show split line' },
-  { name: 'scrollable', type: 'boolean', default: false, description: 'Whether the content is scrollable' },
-  { name: 'headerProps', type: 'object', default: '{}', description: 'Header container properties' },
-  { name: 'contentProps', type: 'object', default: '{}', description: 'Content container properties' },
-  { name: 'footerProps', type: 'object', default: '{}', description: 'Footer container properties' },
-  { name: 'titleRootProps', type: 'object', default: '{}', description: 'Title root container properties' },
-  { name: 'titleProps', type: 'object', default: '{}', description: 'Title container properties' },
-  { name: 'descriptionProps', type: 'object', default: '{}', description: 'Description container properties' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'Add class name to the corresponding container' },
+  { name: 'title', type: 'string', default: '-', description: 'Card title.' },
+  { name: 'description', type: 'string', default: '-', description: 'Card description text.' },
+  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Padding size of the card.' },
+  { name: 'split', type: 'boolean', default: 'false', description: 'Whether to show dividers between sections.' },
+  { name: 'scrollable', type: 'boolean', default: 'false', description: 'Whether the content area is scrollable.' },
+  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' },
+  { name: 'headerProps', type: 'object', default: '{}', description: 'Props passed to the header container.' },
+  { name: 'contentProps', type: 'object', default: '{}', description: 'Props passed to the content container.' },
+  { name: 'footerProps', type: 'object', default: '{}', description: 'Props passed to the footer container.' }
 ]"/>
 
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'default', params: '-', description: 'Custom default content' },
-  { name: 'title-leading', params: '-', description: 'Custom title leading content' },
-  { name: 'title', params: '-', description: 'Custom title' },
-  { name: 'title-trailing', params: '-', description: 'Custom title trailing content' },
-  { name: 'extra', params: '-', description: 'Custom extra content' },
-  { name: 'footer', params: '-', description: 'Custom footer content' },
-  { name: 'description', params: '-', description: 'Custom description content' },
+  { name: 'default', parameters: '-', description: 'Main content area.' },
+  { name: 'header', parameters: '-', description: 'Header content (replaces title/desc).' },
+  { name: 'footer', parameters: '-', description: 'Footer content.' },
+  { name: 'title', parameters: '-', description: 'Custom title content.' },
+  { name: 'description', parameters: '-', description: 'Custom description content.' },
+  { name: 'extra', parameters: '-', description: 'Extra content in the header (top-right).' }
 ]"/>
 
 ### Types
@@ -45,15 +64,15 @@ title-slot
 <TypeTable :data="[
   {
     name: 'Ui',
-    description: 'Custom class name for Card component',
+    description: 'Custom styling classes.',
     fields: [
-      { name: 'root', type: 'string', description: 'Class name for root container' },
-      { name: 'header', type: 'string', description: 'Class name for header container' },
-      { name: 'titleRoot', type: 'string', description: 'Class name for title root container' },
-      { name: 'title', type: 'string', description: 'Class name for title container' },
-      { name: 'description', type: 'string', description: 'Class name for description container' },
-      { name: 'content', type: 'string', description: 'Class name for content container' },
-      { name: 'footer', type: 'string', description: 'Class name for footer container' },
+      { name: 'root', type: 'string', description: 'Root element class.' },
+      { name: 'header', type: 'string', description: 'Header container class.' },
+      { name: 'titleRoot', type: 'string', description: 'Title wrapper class.' },
+      { name: 'title', type: 'string', description: 'Title text class.' },
+      { name: 'description', type: 'string', description: 'Description text class.' },
+      { name: 'content', type: 'string', description: 'Content area class.' },
+      { name: 'footer', type: 'string', description: 'Footer container class.' },
     ],
   }
 ]"/>

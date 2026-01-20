@@ -45,6 +45,7 @@ declare module 'vue' {
     ToolBar: typeof import('./../components/tool-bar.vue')['default']
     TypeData: typeof import('./../components/tables/type-data.vue')['default']
     TypeTable: typeof import('./../components/tables/type-table.vue')['default']
+    UnionType: typeof import('./../components/tables/union-type.vue')['default']
   }
 }
 
@@ -83,4 +84,5 @@ declare global {
   const ToolBar: typeof import('./../components/tool-bar.vue')['default']
   const TypeData: typeof import('./../components/tables/type-data.vue')['default']
   const TypeTable: typeof import('./../components/tables/type-table.vue')['default']
+  const UnionType: typeof import('./../components/tables/union-type.vue')['default']
 }

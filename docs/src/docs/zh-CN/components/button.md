@@ -1,27 +1,10 @@
-# 按钮 Button
+# 按钮
 
 ## 概述
 
-Button 组件族包含以下组件：
+一个可用于触发动作的按钮组件。
 
-- **SButton** - 基础按钮组件
-- **SButtonLink** - 链接按钮，支持路由导航
-- **SButtonIcon** - 图标按钮，紧凑设计
-- **SButtonLoading** - 加载状态按钮
-- **SButtonGroup** - 按钮组组件
-
-## 主要特性
-
-- 🎨 8 种样式变体：solid、outline、dashed、soft、ghost、link、plain、pure
-- 🌈 8 种颜色主题：primary、destructive、success、warning、info、carbon、secondary、accent
-- 📏 6 种尺寸：xs、sm、md、lg、xl、2xl
-- 🔲 4 种形状：auto、rounded、square、circle
-- ⚡ 加载状态支持（SButtonLoading）
-- 🌐 链接功能支持（SButtonLink）
-- ♿ 完全可访问性支持
-- 🎯 TypeScript 类型安全
-
-## 基础用法
+## 用法
 
 ```vue
 <script setup lang="ts">
@@ -29,11 +12,30 @@ import { SButton } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SButton>Default Button</SButton>
+  <SButton>默认按钮</SButton>
 </template>
 ```
 
-## 示例
+## 特性
+
+- 🎨 8 种变体：solid、outline、dashed、soft、ghost、link、plain、pure
+- 🌈 8 种颜色：primary、destructive、success、warning、info、carbon、secondary、accent
+- 📏 6 种尺寸：xs、sm、md、lg、xl、2xl
+- 🔲 4 种形状：auto、rounded、square、circle
+- ⚡ 支持加载状态
+- 🌐 支持链接功能 (SButtonLink)
+- ♿ 完全支持无障碍访问
+- 🎯 TypeScript 类型安全
+
+## 按钮组件系列
+
+- **SButton** - 基础按钮组件
+- **SButtonLink** - 链接按钮，支持路由导航
+- **SButtonIcon** - 图标按钮，紧凑设计
+- **SButtonLoading** - 加载状态按钮
+- **SButtonGroup** - 按钮组组件
+
+## 演示
 
 ```playground
 color
@@ -49,39 +51,35 @@ link
 group
 ```
 
-## API
-
 ## SButton API
 
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: '自定义 class 名' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: '按钮颜色' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '按钮尺寸' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'solid'`, description: '样式变体' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: `'auto'`, description: '按钮形状' },
-  { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, default: `'sm'`, description: '阴影效果' },
-  { name: 'fitContent', type: 'boolean', default: 'false', description: '根据内容自适应尺寸' },
-  { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用' },
-  { name: 'as', type: 'string | Component', default: `'button'`, description: '渲染为指定元素/组件' },
-  { name: 'asChild', type: 'boolean', default: 'false', description: '将 props/行为合并到子元素上' },
+  { name: 'class', type: 'ClassValue', default: '-', description: '自定义类名' },
+  { name: 'color', type: 'ThemeColor', default: `'primary'`, description: '按钮颜色' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '按钮尺寸' },
+  { name: 'variant', type: 'ButtonVariant', default: `'solid'`, description: '按钮变体' },
+  { name: 'shape', type: 'ButtonShape', default: `'auto'`, description: '按钮形状' },
+  { name: 'shadow', type: 'ButtonShadow', default: `'sm'`, description: '阴影效果' },
+  { name: 'fitContent', type: 'boolean', default: 'false', description: '适应内容尺寸' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: '禁用' },
+  { name: 'as', type: 'string | Component', default: `'button'`, description: '渲染的元素/组件' },
+  { name: 'asChild', type: 'boolean', default: 'false', description: '将属性/行为合并到子元素中' },
 ]"/>
-
-> 说明：`SButton` 同时支持原生 button 属性（例如 `type`、`name`、`value`、`form*` 等）。
 
 ### 事件
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: '点击按钮时触发（禁用时不会触发）' }
+  { name: 'click', parameters: 'MouseEvent', description: '点击按钮时触发（禁用时不会触发）' }
 ]"/>
 
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'leading', parameters: '-', description: '前置内容（位于默认插槽之前）' },
+  { name: 'leading', parameters: '-', description: '前导内容（默认插槽之前）' },
   { name: 'default', parameters: '-', description: '按钮内容' },
-  { name: 'trailing', parameters: '-', description: '后置内容（位于默认插槽之后）' },
+  { name: 'trailing', parameters: '-', description: '尾随内容（默认插槽之后）' },
 ]"/>
 
 ## SButtonIcon API
@@ -90,39 +88,39 @@ group
 
 <DataTable preset="props" :data="[
   { name: 'icon', type: 'string', default: '-', description: 'Iconify 图标名称', required: true },
-  { name: 'iconProps', type: 'Partial<IconProps>', default: '-', description: '透传给图标组件的 props' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'accent'`, description: '按钮颜色' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'ghost'`, description: '样式变体' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: `'square'`, description: '按钮形状' },
-  { name: 'fitContent', type: 'boolean', default: 'true', description: '根据内容自适应尺寸' },
+  { name: 'iconProps', type: 'Partial<IconProps>', default: '-', description: '传递给 `SIcon` 的属性' },
 ]"/>
+
+> 继承了 `SButton` 的所有属性、事件和插槽。
 
 ## SButtonLoading API
 
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'loading', type: 'boolean', default: 'false', description: '受控加载状态' },
-  { name: 'autoLoading', type: 'boolean', default: 'false', description: '点击事件执行期间自动显示 loading（需配合 @click）' },
-  { name: 'loadingText', type: 'string', default: '-', description: '加载文案（仅当 loadingPosition 为 center 时展示）' },
-  { name: 'loadingDuration', type: 'number', default: '-', description: '自动 loading 结束前的延迟（毫秒）' },
-  { name: 'loadingIcon', type: 'string', default: `'svg-spinners:270-ring'`, description: '加载图标（Iconify）' },
-  { name: 'loadingIconProps', type: 'Partial<IconProps>', default: '-', description: '透传给加载图标的 props' },
+  { name: 'loading', type: 'boolean', default: 'false', description: '控制的加载状态' },
+  { name: 'autoLoading', type: 'boolean', default: 'false', description: '在点击处理程序执行期间自动切换加载状态' },
+  { name: 'loadingText', type: 'string', default: '-', description: '当加载且 `loadingPosition` 为 `center` 时显示的文本' },
+  { name: 'loadingDuration', type: 'number', default: '-', description: '离开自动加载状态前的延迟（毫秒）' },
+  { name: 'loadingIcon', type: 'string', default: `'svg-spinners:270-ring'`, description: '加载图标名称 (Iconify)' },
+  { name: 'loadingIconProps', type: 'Partial<IconProps>', default: '-', description: '传递给加载图标的属性' },
   { name: 'loadingPosition', type: `'start' \| 'center' \| 'end'`, default: `'start'`, description: '加载图标位置' },
 ]"/>
+
+> 继承了 `SButton` 的所有属性、事件和插槽。
 
 ### 事件
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: '点击事件（支持 autoLoading）' }
+  { name: 'click', parameters: 'MouseEvent', description: '点击处理程序（支持 `autoLoading`）' }
 ]"/>
 
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'leading', parameters: '-', description: '前置内容（当 loadingPosition 为 start 时会被 loading 图标替换）' },
-  { name: 'default', parameters: '{ loading: boolean }', description: '按钮内容，可获取当前 loading 状态' },
-  { name: 'trailing', parameters: '-', description: '后置内容（当 loadingPosition 为 end 时会被 loading 图标替换）' },
+  { name: 'leading', parameters: '-', description: '前导内容（当 `loadingPosition` 为 `start` 时被加载图标隐藏）' },
+  { name: 'default', parameters: '{ loading: boolean }', description: '按钮内容；接收当前加载状态' },
+  { name: 'trailing', parameters: '-', description: '尾随内容（当 `loadingPosition` 为 `end` 时被加载图标隐藏）' },
 ]"/>
 
 ## SButtonLink API
@@ -130,21 +128,22 @@ group
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'to', type: 'RouteLocationRaw', default: '-', description: '点击后导航到的路由地址' },
-  { name: 'href', type: 'RouteLocationRaw', default: '-', description: '`to` 的别名（同时存在时以 `to` 为准）' },
-  { name: 'external', type: 'boolean', default: '-', description: '强制作为外链/内链处理' },
-  { name: 'target', type: 'string', default: '-', description: '外链打开方式（target）' },
-  { name: 'rel', type: 'string', default: `'noopener noreferrer'`, description: 'rel 属性（外链默认值）' },
+  { name: 'to', type: 'RouteLocationRaw', default: '-', description: '要导航到的路由位置' },
+  { name: 'href', type: 'RouteLocationRaw', default: '-', description: ' `to` 的别名（当两者都提供时，`href` 被忽略）' },
+  { name: 'external', type: 'boolean', default: '-', description: '强制链接为外部/内部' },
+  { name: 'target', type: 'string', default: '-', description: '外部链接的目标属性' },
+  { name: 'rel', type: 'string', default: `'noopener noreferrer'`, description: 'Rel 属性（外部链接的默认值）' },
   { name: 'noRel', type: 'boolean', default: 'false', description: '禁用自动 rel 处理' },
-  { name: 'prefetch', type: 'boolean', default: '-', description: '是否预取（与框架相关）' },
-  { name: 'noPrefetch', type: 'boolean', default: '-', description: '禁用预取' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'link'`, description: '样式变体' },
+  { name: 'prefetch', type: 'boolean', default: '-', description: '启用预取行为（框架依赖）' },
+  { name: 'noPrefetch', type: 'boolean', default: '-', description: '禁用预取行为' }
 ]"/>
+
+> 继承了 `SButton` 的所有属性、事件和插槽。
 
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'default', parameters: '{ isHref: boolean }', description: '链接内容，可获取当前是否以 href 形式渲染' },
+  { name: 'default', parameters: '{ isHref: boolean }', description: '链接内容；接收当前链接是否渲染为 href' },
 ]"/>
 
 ## SButtonGroup API
@@ -152,21 +151,16 @@ group
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: '按钮组方向' },
-  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文字方向' },
-  { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: '-', description: '为子按钮提供默认 color' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: '-', description: '为子按钮提供默认 size' },
-  { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: '-', description: '为子按钮提供默认 variant' },
-  { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, default: '-', description: '为子按钮提供默认 shape' },
-  { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, default: '-', description: '为子按钮提供默认 shadow' },
-  { name: 'fitContent', type: 'boolean', default: '-', description: '为子按钮提供默认 fitContent' },
-  { name: 'disabled', type: 'boolean', default: '-', description: '为子按钮提供默认 disabled' },
+  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: '组方向' },
+  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向' }
 ]"/>
+
+> 继承了 `SButton` 的所有属性, 会传递给每个子按钮。
 
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'default', parameters: '-', description: '按钮组内容（通常放多个按钮）' },
+  { name: 'default', parameters: '-', description: '组内容（通常是多个按钮）' },
 ]"/>
 
 ## 类型
@@ -174,47 +168,73 @@ group
 <TypeTable :data="[
   {
     name: 'ButtonProps',
-    description: '`SButton` 的 props。',
+    description: '`SButton` 的属性。',
     fields: [
-      { name: 'class', type: 'ClassValue', description: '自定义 class 名。' },
-      { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, description: '按钮颜色。' },
-      { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, description: '按钮尺寸。' },
-      { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, description: '样式变体。' },
-      { name: 'shape', type: `'auto' \| 'rounded' \| 'square' \| 'circle'`, description: '按钮形状。' },
-      { name: 'shadow', type: `'none' \| 'sm' \| 'md' \| 'lg'`, description: '阴影效果。' },
-      { name: 'fitContent', type: 'boolean', description: '根据内容自适应尺寸。' },
-      { name: 'disabled', type: 'boolean', description: '是否禁用。' },
-      { name: 'as', type: 'string | Component', description: '渲染为指定元素/组件。' },
-      { name: 'asChild', type: 'boolean', description: '将 props/行为合并到子元素上。' },
+      { name: 'class', type: 'ClassValue', description: '自定义类名。' },
+      { name: 'color', type: 'ThemeColor', description: '按钮颜色。' },
+      { name: 'size', type: 'ThemeSize', description: '按钮尺寸。' },
+      { name: 'variant', type: 'ButtonVariant', description: '按钮变体。' },
+      { name: 'shape', type: 'ButtonShape', description: '按钮形状。' },
+      { name: 'shadow', type: 'ButtonShadow', description: '阴影效果。' },
+      { name: 'fitContent', type: 'boolean', description: '适应内容尺寸。' },
+      { name: 'disabled', type: 'boolean', description: '禁用。' },
+      { name: 'as', type: 'string | Component', description: '渲染的元素/组件。' },
+      { name: 'asChild', type: 'boolean', description: '合并到子元素。' },
     ]
   },
   {
     name: 'ButtonIconProps',
-    description: '`SButtonIcon` 的 props。',
+    description: '`SButtonIcon` 的属性。',
     fields: [
       { name: 'icon', type: 'string', required: true, description: 'Iconify 图标名称。' },
-      { name: 'iconProps', type: 'Partial<IconProps>', description: '透传给图标组件的 props。' },
+      { name: 'iconProps', type: 'Partial<IconProps>', description: '传递给图标组件的属性。' },
     ]
   },
   {
     name: 'ButtonLoadingProps',
-    description: '`SButtonLoading` 的 props。',
+    description: '`SButtonLoading` 的属性。',
     fields: [
-      { name: 'loading', type: 'boolean', description: '受控加载状态。' },
-      { name: 'autoLoading', type: 'boolean', description: '点击事件执行期间自动 loading。' },
-      { name: 'loadingText', type: 'string', description: '加载文案（center 时展示）。' },
-      { name: 'loadingDuration', type: 'number', description: '自动 loading 结束前的延迟（毫秒）。' },
+      { name: 'loading', type: 'boolean', description: '控制的加载状态。' },
+      { name: 'autoLoading', type: 'boolean', description: '在点击处理程序期间自动加载。' },
+      { name: 'loadingText', type: 'string', description: '加载文本（仅中心位置）。' },
+      { name: 'loadingDuration', type: 'number', description: '离开自动加载状态前的延迟（毫秒）。' },
       { name: 'loadingIcon', type: 'string', description: '加载图标名称。' },
-      { name: 'loadingIconProps', type: 'Partial<IconProps>', description: '透传给加载图标的 props。' },
+      { name: 'loadingIconProps', type: 'Partial<IconProps>', description: '加载图标的属性。' },
       { name: 'loadingPosition', type: `'start' \| 'center' \| 'end'`, description: '加载图标位置。' },
     ]
   },
   {
     name: 'ButtonGroupProps',
-    description: '`SButtonGroup` 的 props。',
+    description: '`SButtonGroup` 的属性。',
     fields: [
-      { name: 'orientation', type: `'horizontal' \| 'vertical'`, description: '按钮组方向。' },
-      { name: 'dir', type: `'ltr' \| 'rtl'`, description: '文字方向。' },
+      { name: 'orientation', type: `'horizontal' \| 'vertical'`, description: '组方向。' },
+      { name: 'dir', type: `'ltr' \| 'rtl'`, description: '文本方向。' },
+    ]
+  }
+]"/>
+
+<UnionType name="ClassValue" description="类名类型" type="string | null | undefined | Record<string, boolean> | ClassValue[]" />
+
+<UnionType name="ThemeColor" description="按钮颜色" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />
+
+<UnionType name="ThemeSize" description="按钮尺寸" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+
+<UnionType name="ButtonVariant" description="按钮变体" type="'solid' | 'outline' | 'dashed' | 'soft' | 'ghost' | 'link' | 'plain' | 'pure'" />
+
+<UnionType name="ButtonShape" description="按钮形状" type="'auto' | 'rounded' | 'square' | 'circle'" />
+
+<UnionType name="ButtonShadow" description="按钮阴影效果" type="'none' | 'sm' | 'md' | 'lg'" />
+
+<TypeTable :data="[
+  {
+    name: 'IconProps',
+    description: 'Icon 组件的属性。',
+    fields: [
+      { name: 'icon', type: 'string', description: 'Iconify 图标名称。' },
+      { name: 'width', type: 'number | string', description: '图标宽度。' },
+      { name: 'height', type: 'number | string', description: '图标高度。' },
+      { name: 'color', type: 'string', description: '图标颜色。' },
+      { name: 'inline', type: 'boolean', description: '是否以内联方式显示图标。' },
     ]
   }
 ]"/>

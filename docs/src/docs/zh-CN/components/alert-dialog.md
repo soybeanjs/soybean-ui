@@ -1,6 +1,32 @@
-# AlertDialog
+# 警告对话框
 
-## 示例
+## 概述
+
+一种模态对话框：用重要内容打断用户，并期望用户做出响应。常用于需要确认的场景（例如删除操作）。
+
+## 用法
+
+```vue
+<script setup lang="ts">
+import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel } from '@soybeanjs/ui';
+
+const open = ref(false);
+</script>
+
+<template>
+  <SAlertDialog v-model:open="open" title="确定吗？" description="此操作无法撤销。">
+    <template #trigger>
+      <button>删除</button>
+    </template>
+    <template #footer>
+      <SAlertDialogCancel />
+      <SAlertDialogAction @click="handleDelete" />
+    </template>
+  </SAlertDialog>
+</template>
+```
+
+## 演示
 
 ```playground
 destructive
@@ -10,35 +36,53 @@ warning
 action
 ```
 
-## AlertDialog API
+## SAlertDialog API
 
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'v-model:open', type: 'boolean', default: 'undefined', description: 'v-model 绑定值'},
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'AlertDialog 尺寸' },
-  { name: 'title', type: 'string', default: '—', description: '标题'},
-  { name: 'type', type: `'destructive' \| 'success' \| 'warning' \| 'info'`, default: '—', description: '类型'},
-  { name: 'description', type: 'string', default: '—', description: '描述'},
-  { name: 'show-icon', type: 'boolean', default: 'true', description: '是否显示图标'},
-  { name: 'default-open', type: 'boolean', default: 'false', description: '是否默认打开, 设置 v-model:open 时无效'},
-  { name: 'ui', type: 'Ui', default: '{}', description: '给对应容器添加 class 类名' },
+  { name: 'v-model:open', type: 'boolean', default: '-', description: '可见性的绑定值。' },
+  { name: 'title', type: 'string', default: '-', description: '对话框标题。' },
+  { name: 'description', type: 'string', default: '-', description: '对话框描述。' },
+  { name: 'type', type: `'destructive' \| 'success' \| 'warning' \| 'info'`, default: '-', description: '语义类型（影响图标/颜色）。' },
+  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '对话框尺寸。' },
+  { name: 'show-icon', type: 'boolean', default: 'true', description: '是否显示状态图标。' },
+  { name: 'default-open', type: 'boolean', default: 'false', description: '是否默认打开（非受控）。' },
+  { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
 ### 事件
 
 <DataTable preset="emits" :data="[
-  { name: 'update:open', parameters: '(value: boolean) => void', description: '当 open 发生变化时触发' },
+  { name: 'update:open', parameters: '(value: boolean) => void', description: '打开状态变化时触发。' }
 ]"/>
 
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '-', description: '触发器的插槽', required: true },
-  { name: 'default', parameters: '-', description: '内容的插槽', required: true },
-  { name: 'footer', parameters: '-', description: '尾部的插槽', required: true },
-  { name: 'title', parameters: '-', description: '标题的插槽' },
-  { name: 'description', parameters: '-', description: '描述的插槽' },
+  { name: 'trigger', parameters: '-', description: '用于打开对话框的元素。', required: true },
+  { name: 'default', parameters: '-', description: '主要内容。', required: true },
+  { name: 'footer', parameters: '-', description: '底部内容（通常是按钮）。', required: true },
+  { name: 'title', parameters: '-', description: '自定义标题内容。' },
+  { name: 'description', parameters: '-', description: '自定义描述内容。' }
+]"/>
+
+## SAlertDialogCancel API
+
+### 属性
+
+<DataTable preset="props" :data="[
+  { name: 'text', type: 'string', default: '取消', description: '按钮文案。' },
+  { name: 'before-close', type: '() => MaybePromise<boolean | void>', default: '() => true', description: '关闭前钩子。返回 false 可阻止关闭。' }
+]"/>
+
+## SAlertDialogAction API
+
+### 属性
+
+<DataTable preset="props" :data="[
+  { name: 'text', type: 'string', default: '确认', description: '按钮文案。' },
+  { name: 'before-close', type: '() => MaybePromise<boolean | void>', default: '() => true', description: '关闭前钩子。返回 false 可阻止关闭。' }
 ]"/>
 
 ### 类型
@@ -46,42 +90,10 @@ action
 <TypeTable :data="[
   {
     name: 'Ui',
-    description: 'AlertDialog 组件的自定义 class 名',
+    description: '自定义样式类。',
     fields: [
-      { name: 'header', type: 'string', description: '应用到头部的 class 名' },
-      { name: 'footer', type: 'string', description: '应用到尾部的 class 名' },
+      { name: 'header', type: 'string', description: '头部容器类名。' },
+      { name: 'footer', type: 'string', description: '底部容器类名。' },
     ]
   }
-]"/>
-
-## AlertDialogCancel API
-
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'text', type: 'string', default: 'Cancel', description: '取消按钮的文本' },
-  { name: 'before-close', type: '() => MaybePromise<boolean | void>', default: '() => true', description: '在关闭之前执行的函数' },
-]"/>
-
-### 插槽
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '—', description: '取消按钮内容的插槽' },
-  { name: 'content', parameters: '—', description: '内容的插槽，优先级高于默认插槽' },
-]"/>
-
-## AlertDialogAction API
-
-### 属性
-
-<DataTable preset="props" :data="[
-  { name: 'text', type: 'string', default: 'Confirm', description: '确认按钮的文本' },
-  { name: 'before-close', type: '() => MaybePromise<boolean | void>', default: '() => true', description: '在关闭之前执行的函数' },
-]"/>
-
-### 插槽
-
-<DataTable preset="slots" :data="[
-  { name: 'default', parameters: '—', description: '确认按钮内容的插槽' },
-  { name: 'content', parameters: '—', description: '内容的插槽，优先级高于默认插槽' },
 ]"/>

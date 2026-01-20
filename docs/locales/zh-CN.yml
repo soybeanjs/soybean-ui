@@ -56,3 +56,11 @@ sidebar:
   quick-start: 快速开始
   components: 组件
   theming: 主题定制
+  general: 通用
+  layout: 布局
+  navigation: 导航
+  dataEntry: 数据录入
+  dataDisplay: 数据展示
+  feedback: 反馈
+  overlay: 浮层
+  utilities: 工具

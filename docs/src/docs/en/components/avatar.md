@@ -1,5 +1,21 @@
 # Avatar
 
+## Overview
+
+An image element with a fallback for representing the user.
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { SAvatar } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <SAvatar src="https://github.com/soybeanjs.png" fallback-label="SB" />
+</template>
+```
+
 ## Demos
 
 ```playground
@@ -9,30 +25,30 @@ delay
 size
 ```
 
-## Avatar Api
+## API
 
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'src', type: 'string', default: '-', description: 'avatar image src', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: 'md', description: 'avatar size' },
-  { name: 'delay-ms', type: 'number', default: 0, description: 'avatar image load delay time, unit: milliseconds' },
-  { name: 'fallback-label', type: 'string', default: '{}', description: 'avatar image load failed text' },
-  { name: 'image-props', type: 'object', default: '{}', description: 'add attributes to image tag' },
-  { name: 'fallback-props', type: 'object', default: '{}', description: 'add attributes to fallback tag' },
-  { name: 'ui', type: 'Ui', default: '{}', description: 'add class name to the corresponding container' },
+  { name: 'src', type: 'string', default: '-', description: 'Image source URL.', required: true },
+  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Avatar size.' },
+  { name: 'fallback-label', type: 'string', default: '-', description: 'Text to show when image fails to load.' },
+  { name: 'delay-ms', type: 'number', default: '0', description: 'Delay in ms before showing the fallback.' },
+  { name: 'image-props', type: 'object', default: '{}', description: 'Props passed to the internal image element.' },
+  { name: 'fallback-props', type: 'object', default: '{}', description: 'Props passed to the internal fallback element.' },
+  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'fallback', parameters: '-', description: 'custom avatar load failed text' },
+  { name: 'fallback', parameters: '-', description: 'Custom fallback content.' }
 ]"/>
 
 ### Emits
 
 <DataTable preset="emits" :data="[
-  { name: 'loading-status-change', parameters: `(status: 'loading' | 'loaded' | 'error') => void`, description: `triggers when avatar loading status changes` },
+  { name: 'loading-status-change', parameters: `(status: 'loading' | 'loaded' | 'error') => void`, description: 'Triggers when image loading status changes.' }
 ]"/>
 
 ### Types
@@ -40,11 +56,11 @@ size
 <TypeTable :data="[
   {
     name: 'Ui',
-    description: 'custom class name for Avatar component',
+    description: 'Custom styling classes.',
     fields: [
-      { name: 'root', type: 'string', description: 'class name for root container' },
-      { name: 'image', type: 'string', description: 'class name for image element' },
-      { name: 'fallback', type: 'string', description: 'class name for fallback element' },
-    ],
+      { name: 'root', type: 'string', description: 'Root element class.' },
+      { name: 'image', type: 'string', description: 'Image element class.' },
+      { name: 'fallback', type: 'string', description: 'Fallback element class.' },
+    ]
   }
 ]"/>
