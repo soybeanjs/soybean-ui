@@ -39,7 +39,7 @@ import { SIcon } from '@soybeanjs/ui';
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'icon', type: 'string | Component | VNode', required: true, description: 'Icon name (Iconify) or component' },
+  { name: 'icon', type: 'IconValue', required: true, description: 'Icon name (Iconify) or component' },
   { name: 'width', type: 'string | number', default: `'1.25em'`, description: 'Icon width' },
   { name: 'height', type: 'string | number', default: `'1.25em'`, description: 'Icon height' },
   { name: 'flip', type: 'string', default: '-', description: 'Flip icon (horizontal, vertical)' },
@@ -51,10 +51,4 @@ import { SIcon } from '@soybeanjs/ui';
 
 ## Types
 
-<TypeTable :data="[
-  {
-    name: 'IconValue',
-    description: 'Type definition for the icon prop',
-    type: 'string | Component | VNode | IconifyIcon'
-  }
-]"/>
+<UnionType name="IconValue" type="string | Component | VNode | IconifyIcon" />
