@@ -22,7 +22,7 @@ const anchorId = computed(() => toTypeAnchorId(props.name));
 
 <template>
   <div>
-    <h4 :id="anchorId" class="scroll-mt-24">
+    <h4 :id="anchorId" class="text-lg font-semibold my-3 scroll-mt-24">
       {{ name }}
     </h4>
     <p v-if="description" class="text-sm text-muted-foreground">

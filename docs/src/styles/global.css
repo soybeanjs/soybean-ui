@@ -92,15 +92,15 @@ html.dark .shiki span {
   }
 
   > h3 {
-    --uno: text-xl font-semibold my-3;
+    --uno: text-xl font-semibold my-4;
   }
 
   > h4 {
-    --uno: text-lg font-semibold my-2;
+    --uno: text-lg font-semibold my-3;
   }
 
   > p {
-    --uno: text-4 leading-7 my-5;
+    --uno: text-4 leading-7 my-4;
   }
 
   > ul {
