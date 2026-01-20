@@ -19,7 +19,7 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     icon: 'lucide:book-open',
     linkProps: {
       to: '/overview',
-      activeClass: 'text-primary font-semibold dark:text-primary'
+      activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!'
     }
   },
   {
@@ -28,7 +28,7 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     icon: 'lucide:layout-grid',
     linkProps: {
       to: '/components',
-      activeClass: 'text-primary font-semibold dark:text-primary'
+      activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!'
     }
   }
 ]);
