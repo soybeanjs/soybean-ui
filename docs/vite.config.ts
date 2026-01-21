@@ -20,8 +20,7 @@ import { customMarkdownPlugin } from './src/modules/markdown';
 export default defineConfig({
   resolve: {
     alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`,
-      '@playground/': `${path.resolve(__dirname, '../playground')}/`
+      '@/': `${path.resolve(__dirname, 'src')}/`
     }
   },
   css: {

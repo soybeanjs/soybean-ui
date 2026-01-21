@@ -10,6 +10,9 @@ button:
   toggle_langs: Change languages
 not_found: Not found
 not_found_page: Not found page
+playground:
+  preview: Preview
+  code: Code
 locale:
   en: English
   zh_cn: Chinese

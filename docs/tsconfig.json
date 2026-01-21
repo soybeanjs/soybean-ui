@@ -2,8 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
-      "@playground/*": ["../playground/*"]
+      "@/*": ["./src/*"]
     },
     "types": ["vite/client", "vite-plugin-vue-layouts/client", "unplugin-vue-router/client"]
   },
