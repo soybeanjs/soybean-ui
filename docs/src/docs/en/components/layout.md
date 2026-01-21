@@ -33,7 +33,7 @@ base
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Layout size configuration.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Layout size configuration.' },
   { name: 'sidebarProps', type: 'LayoutSidebarProps', default: '{}', description: 'Props for the sidebar.' },
   { name: 'headerProps', type: 'LayoutHeaderProps', default: '{}', description: 'Props for the header.' },
   { name: 'mainProps', type: 'LayoutMainProps', default: '{}', description: 'Props for the main area.' },
@@ -69,3 +69,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

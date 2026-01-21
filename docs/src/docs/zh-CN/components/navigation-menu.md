@@ -43,7 +43,7 @@ vertical
   { name: 'items', type: 'NavigationMenuOptionData[]', default: '-', description: '菜单数据。', required: true },
   { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: '菜单方向。' },
   { name: 'modelValue', type: 'string', default: '-', description: '选中的值。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '菜单尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '菜单尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -67,3 +67,5 @@ vertical
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

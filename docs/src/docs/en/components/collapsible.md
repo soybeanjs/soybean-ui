@@ -37,7 +37,7 @@ base
   { name: 'open', type: 'boolean', default: '-', description: 'The controlled open state of the collapsible.' },
   { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'The default open state when initially rendered.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'When true, prevents the user from interacting with the collapsible.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Collapsible size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Collapsible size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -67,3 +67,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

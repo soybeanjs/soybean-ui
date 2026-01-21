@@ -80,3 +80,5 @@ card
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -38,7 +38,7 @@ clearable
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the input is disabled.' },
   { name: 'readonly', type: 'boolean', default: 'false', description: 'Whether the input is read-only.' },
   { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show a clear button when value is present.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'The size of the input.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'The size of the input.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' },
   { name: 'inputRef', type: '(el: HTMLInputElement) => void', default: '-', description: 'Function to get the native input element.' }
 ]"/>
@@ -78,3 +78,5 @@ clearable
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -31,7 +31,7 @@ size
 
 <DataTable preset="props" :data="[
   { name: 'src', type: 'string', default: '-', description: '图片资源地址（URL）。', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '头像尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '头像尺寸。' },
   { name: 'fallback-label', type: 'string', default: '-', description: '图片加载失败时显示的文本。' },
   { name: 'delay-ms', type: 'number', default: '0', description: '显示回退内容前的延迟（毫秒）。' },
   { name: 'image-props', type: 'object', default: '{}', description: '传递给内部图片元素的属性。' },
@@ -64,3 +64,5 @@ size
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

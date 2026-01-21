@@ -37,7 +37,7 @@ base
   { name: 'open', type: 'boolean', default: '-', description: '受控的打开状态。' },
   { name: 'defaultOpen', type: 'boolean', default: 'false', description: '首次渲染时的默认打开状态。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '为 true 时，阻止用户与折叠面板交互。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '折叠面板尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '折叠面板尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -67,3 +67,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

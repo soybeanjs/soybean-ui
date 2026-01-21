@@ -37,7 +37,7 @@ size
 <DataTable preset="props" :data="[
   { name: 'title', type: 'string', default: '-', description: 'Alert title.' },
   { name: 'description', type: 'string', default: '-', description: 'Alert description.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Alert size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Alert size.' },
   { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: '主题颜色。' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'soft'`, description: '视觉样式变体。' },
   { name: 'icon', type: 'string | Component', default: '-', description: 'Custom icon.' },
@@ -71,3 +71,5 @@ size
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

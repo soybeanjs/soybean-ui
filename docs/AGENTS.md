@@ -23,7 +23,7 @@ The documentation site for SoybeanUI, providing comprehensive guides and compone
 
 ## CONVENTIONS
 
-- **Frontmatter**: Required for all `.md` files (e.g., `title: ComponentName`).
+- **FrontMatter**: Required for all `.md` files (e.g., `title: ComponentName`).
 - **Demos**: Must be in separate `.vue` files within the `playground` package.
 - **Playground Blocks**: Use ` ```playground ` to include demos by filename.
 - **Language Parity**: Keep `en` and `zh-CN` structures perfectly synchronized.

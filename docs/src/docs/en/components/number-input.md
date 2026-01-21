@@ -39,7 +39,7 @@ clearable
   { name: 'center', type: 'boolean', default: 'false', description: 'Center align text.' },
   { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show clear button.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether input is disabled.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Input size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Input size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -71,3 +71,5 @@ clearable
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -43,7 +43,7 @@ footer
   { name: 'clearable', type: 'boolean', default: 'false', description: '是否显示清除按钮。' },
   { name: 'showCounter', type: 'boolean', default: 'false', description: '是否显示 character count.' },
   { name: 'maxlength', type: 'number', default: '-', description: 'Maximum number of characters.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Textarea size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Textarea size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -78,3 +78,5 @@ footer
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

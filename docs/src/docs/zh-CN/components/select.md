@@ -45,7 +45,7 @@ multiple
   { name: 'disabled', type: 'boolean', default: 'false', description: '选择器是否禁用。' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许多选。' },
   { name: 'showArrow', type: 'boolean', default: 'false', description: '是否显示箭头。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Select size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Select size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -88,3 +88,5 @@ multiple
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

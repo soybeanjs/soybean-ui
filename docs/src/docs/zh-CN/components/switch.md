@@ -36,7 +36,7 @@ slot
   { name: 'defaultChecked', type: 'boolean', default: 'false', description: '默认选中状态。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '开关是否禁用。' },
   { name: 'required', type: 'boolean', default: 'false', description: '开关是否必填。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '开关尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '开关尺寸。' },
   { name: 'shape', type: `'rounded' \| 'square' \| 'circle'`, default: `'circle'`, description: '开关滑块形状。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
@@ -65,3 +65,5 @@ slot
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

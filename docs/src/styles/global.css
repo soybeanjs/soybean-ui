@@ -54,20 +54,6 @@ html.dark {
   height: 2px;
 }
 
-.prose pre:not(.shiki) {
-  padding: 0;
-}
-
-.prose .shiki {
-  font-family: 'DM Mono', monospace;
-  font-size: 1.2em;
-  line-height: 1.4;
-}
-
-.prose img {
-  width: 100%;
-}
-
 .shiki,
 .shiki span {
   color: var(--shiki-light);
@@ -84,23 +70,23 @@ html.dark .shiki span {
   --uno: 'md:max-w-270 m-auto text-base text-left';
 
   > h1 {
-    --uno: text-4xl font-bold mb-8;
+    --uno: mb-8 text-4xl font-bold;
   }
 
   > h2 {
-    --uno: text-2xl font-bold mt-12 my-6;
+    --uno: mt-12 my-6 text-2xl font-bold;
   }
 
   > h3 {
-    --uno: text-xl font-semibold my-4;
+    --uno: my-4 text-xl font-semibold;
   }
 
   > h4 {
-    --uno: text-lg font-semibold my-3;
+    --uno: my-3 text-lg font-semibold;
   }
 
   > p {
-    --uno: text-4 leading-7 my-4;
+    --uno: my-4 text-4 leading-7 text-muted-foreground;
   }
 
   > ul {
@@ -129,6 +115,10 @@ html.dark .shiki span {
 
   pre {
     --uno: my-6 px-4 py-3 text-sm rounded-lg;
+  }
+
+  a {
+    --uno: 'text-info hover:underline';
   }
 
   .md-code-block {

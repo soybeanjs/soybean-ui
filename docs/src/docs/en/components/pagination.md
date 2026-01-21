@@ -42,7 +42,7 @@ show
   { name: 'showFirstOrLast', type: 'boolean', default: 'false', description: 'Whether to show first/last arrow buttons.' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'ghost' \| 'light'`, default: `'outline'`, description: 'Visual style variant.' },
   { name: 'shape', type: `'rounded' \| 'square' \| 'circle'`, default: `'rounded'`, description: 'Button shape.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Pagination size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Pagination size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -78,3 +78,5 @@ show
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

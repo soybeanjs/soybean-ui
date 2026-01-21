@@ -45,7 +45,7 @@ card-group
   { name: 'id', type: 'string', default: '-', description: 'The unique id of the checkbox.' },
   { name: 'label', type: 'string', default: '-', description: 'Label text.' },
   { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: 'Checkbox color.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Checkbox size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Checkbox size.' },
   { name: 'shape', type: `'rounded' \| 'circle' \| 'square'`, default: `'rounded'`, description: 'Checkbox shape.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
@@ -88,3 +88,5 @@ card-group
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

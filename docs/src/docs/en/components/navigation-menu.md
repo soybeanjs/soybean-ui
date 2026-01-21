@@ -43,7 +43,7 @@ vertical
   { name: 'items', type: 'NavigationMenuOptionData[]', default: '-', description: 'Menu data.', required: true },
   { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: 'Menu orientation.' },
   { name: 'modelValue', type: 'string', default: '-', description: 'Selected value.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Menu size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Menu size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -67,3 +67,5 @@ vertical
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

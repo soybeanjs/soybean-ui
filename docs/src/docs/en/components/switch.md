@@ -36,7 +36,7 @@ slot
   { name: 'defaultChecked', type: 'boolean', default: 'false', description: 'The default checked state.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the switch is disabled.' },
   { name: 'required', type: 'boolean', default: 'false', description: 'Whether the switch is required.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Switch size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Switch size.' },
   { name: 'shape', type: `'rounded' \| 'square' \| 'circle'`, default: `'circle'`, description: 'Switch thumb shape.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
@@ -65,3 +65,5 @@ slot
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

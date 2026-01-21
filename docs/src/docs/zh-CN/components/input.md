@@ -38,7 +38,7 @@ clearable
   { name: 'disabled', type: 'boolean', default: 'false', description: '输入框是否禁用。' },
   { name: 'readonly', type: 'boolean', default: 'false', description: '输入框是否只读。' },
   { name: 'clearable', type: 'boolean', default: 'false', description: '当有值时是否显示清除按钮。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '输入框尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '输入框尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '为内部元素自定义类名。' },
   { name: 'inputRef', type: '(el: HTMLInputElement) => void', default: '-', description: '用于获取原生 input 元素的函数。' }
 ]"/>
@@ -78,3 +78,5 @@ clearable
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

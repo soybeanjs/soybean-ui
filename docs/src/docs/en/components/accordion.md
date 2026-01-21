@@ -46,9 +46,10 @@ custom-styling
 ### Props
 
 <DataTable preset="props" :data="[
+  { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class name for the root element.' },
   { name: 'v-model', type: 'string | string[]', default: '-', description: 'The controlled value of the item(s) to expand.', required: true },
   { name: 'items', type: 'AccordionOptionData[]', default: '-', description: 'The data array to render items.', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'The size of the accordion.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'The size of the accordion.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether to allow multiple items to be expanded at the same time.' },
   { name: 'collapsible', type: 'boolean', default: 'false', description: 'Whether an expanded item can be collapsed.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' }
@@ -57,7 +58,7 @@ custom-styling
 ### Events
 
 <DataTable preset="emits" :data="[
-  { name: 'update:modelValue', parameters: '(value: string | string[]) => void', description: 'Emitted when the expanded state changes.' }
+  { name: 'update:modelValue', parameters: 'string | string[]', description: 'Emitted when the expanded state changes.' }
 ]"/>
 
 ### Slots
@@ -96,13 +97,17 @@ custom-styling
     name: 'Ui',
     description: 'Custom styling classes.',
     fields: [
-      { name: 'root', type: 'string', description: 'Root element class.' },
-      { name: 'item', type: 'string', description: 'Item container class.' },
-      { name: 'header', type: 'string', description: 'Header container class.' },
-      { name: 'trigger', type: 'string', description: 'Trigger button class.' },
-      { name: 'content', type: 'string', description: 'Content container class.' },
-      { name: 'triggerIcon', type: 'string', description: 'Trigger icon class.' },
-      { name: 'triggerLeadingIcon', type: 'string', description: 'Leading icon class.' },
+      { name: 'root', type: 'ClassValue', description: 'Root element class.' },
+      { name: 'item', type: 'ClassValue', description: 'Item class.' },
+      { name: 'header', type: 'ClassValue', description: 'Header class.' },
+      { name: 'trigger', type: 'ClassValue', description: 'Trigger button class.' },
+      { name: 'content', type: 'ClassValue', description: 'Content class.' },
+      { name: 'triggerIcon', type: 'ClassValue', description: 'Trigger icon class.' },
+      { name: 'triggerLeadingIcon', type: 'ClassValue', description: 'Leading icon class.' },
     ]
   }
 ]" />
+
+<UnionType name="ClassValue" description="Class value type" type="string | null | undefined | Record<string, boolean> | ClassValue[]" />
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

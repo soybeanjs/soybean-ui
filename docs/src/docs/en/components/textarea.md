@@ -43,7 +43,7 @@ footer
   { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show clear button.' },
   { name: 'showCounter', type: 'boolean', default: 'false', description: 'Whether to show character count.' },
   { name: 'maxlength', type: 'number', default: '-', description: 'Maximum number of characters.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Textarea size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Textarea size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -78,3 +78,5 @@ footer
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

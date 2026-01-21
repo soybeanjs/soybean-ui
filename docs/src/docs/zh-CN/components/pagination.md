@@ -42,7 +42,7 @@ show
   { name: 'showFirstOrLast', type: 'boolean', default: 'false', description: '是否显示首/末箭头按钮。' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'ghost' \| 'light'`, default: `'outline'`, description: '视觉样式变体。' },
   { name: 'shape', type: `'rounded' \| 'square' \| 'circle'`, default: `'rounded'`, description: '按钮形状。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '分页尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '分页尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -78,3 +78,5 @@ show
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

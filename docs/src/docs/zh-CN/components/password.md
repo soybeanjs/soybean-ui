@@ -37,7 +37,7 @@ icon
   { name: 'clearable', type: 'boolean', default: 'false', description: '是否显示清除按钮。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '输入框是否禁用。' },
   { name: 'placeholder', type: 'string', default: '-', description: '占位符文本。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '输入框尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '输入框尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -66,3 +66,5 @@ icon
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -33,7 +33,7 @@ base
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '布局尺寸配置。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '布局尺寸配置。' },
   { name: 'sidebarProps', type: 'LayoutSidebarProps', default: '{}', description: '侧边栏的属性。' },
   { name: 'headerProps', type: 'LayoutHeaderProps', default: '{}', description: '头部的属性。' },
   { name: 'mainProps', type: 'LayoutMainProps', default: '{}', description: '主区域的属性。' },
@@ -69,3 +69,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

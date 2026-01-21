@@ -52,7 +52,7 @@ zod
 ### SForm Props
 
 <DataTable preset="props" :data="[
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Form size (affects spacing).' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Form size (affects spacing).' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -89,3 +89,5 @@ zod
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

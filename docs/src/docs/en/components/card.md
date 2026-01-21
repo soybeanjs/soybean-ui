@@ -39,7 +39,7 @@ title-slot
 <DataTable preset="props" :data="[
   { name: 'title', type: 'string', default: '-', description: 'Card title.' },
   { name: 'description', type: 'string', default: '-', description: 'Card description text.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Padding size of the card.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Padding size of the card.' },
   { name: 'split', type: 'boolean', default: 'false', description: 'Whether to show dividers between sections.' },
   { name: 'scrollable', type: 'boolean', default: 'false', description: 'Whether the content area is scrollable.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' },
@@ -76,3 +76,5 @@ title-slot
     ],
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -52,7 +52,7 @@ base
   { name: 'collapsedWidth', type: 'number', default: '50', description: 'Width when collapsed.' },
   { name: 'indent', type: 'number', default: '16', description: 'Indentation width for nested items.' },
   { name: 'side', type: `'left' \| 'right'`, default: `'left'`, description: 'Side position (affects indentation direction).' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Menu size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Menu size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -81,3 +81,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

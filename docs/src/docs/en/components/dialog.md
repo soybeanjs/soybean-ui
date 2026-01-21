@@ -48,7 +48,7 @@ use-dialog
   { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'The default open state (uncontrolled).' },
   { name: 'title', type: 'string', default: '-', description: 'Dialog title.' },
   { name: 'description', type: 'string', default: '-', description: 'Dialog description.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Dialog size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Dialog size.' },
   { name: 'closable', type: 'boolean', default: 'true', description: 'Whether to show close button.' },
   { name: 'modal', type: 'boolean', default: 'true', description: 'The modality of the dialog.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
@@ -95,3 +95,5 @@ use-dialog
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

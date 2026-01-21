@@ -25,7 +25,7 @@ import { SLabel, SInput } from '@soybeanjs/ui';
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class name' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Label size' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Label size' },
   { name: 'for', type: 'string', default: '-', description: 'ID of the associated form element' },
   { name: 'as', type: 'string | Component', default: `'label'`, description: 'Rendered element' },
   { name: 'asChild', type: 'boolean', default: 'false', description: '将属性合并到子元素' }
@@ -36,3 +36,7 @@ import { SLabel, SInput } from '@soybeanjs/ui';
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '-', description: 'Label content' }
 ]"/>
+
+### 类型
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

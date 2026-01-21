@@ -40,7 +40,7 @@ scroll
   { name: 'side', type: `'top' \| 'right' \| 'bottom' \| 'left'`, default: `'right'`, description: 'The side of the screen from which the drawer appears.' },
   { name: 'open', type: 'boolean', default: '-', description: 'The controlled open state.' },
   { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'The default open state.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Drawer size (width/height depending on side).' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Drawer size (width/height depending on side).' },
   { name: 'title', type: 'string', default: '-', description: 'Drawer title.' },
   { name: 'description', type: 'string', default: '-', description: 'Drawer description.' },
   { name: 'closable', type: 'boolean', default: 'true', description: 'Whether to show close button.' },
@@ -74,3 +74,5 @@ scroll
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

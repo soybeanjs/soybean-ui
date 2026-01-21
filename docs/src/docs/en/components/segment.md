@@ -39,7 +39,7 @@ icon
 <DataTable preset="props" :data="[
   { name: 'items', type: 'SegmentOptionData[]', default: '-', description: 'Segment items data.', required: true },
   { name: 'modelValue', type: 'string | number', default: '-', description: 'Selected value.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Segment size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Segment size.' },
   { name: 'shape', type: `'rounded' \| 'square' \| 'circle'`, default: `'rounded'`, description: 'Segment shape.' },
   { name: 'fill', type: `'solid' \| 'outline' \| 'ghost'`, default: `'solid'`, description: 'Fill style.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
@@ -74,3 +74,5 @@ icon
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

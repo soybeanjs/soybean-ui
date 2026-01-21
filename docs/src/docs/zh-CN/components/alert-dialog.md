@@ -45,7 +45,7 @@ action
   { name: 'title', type: 'string', default: '-', description: '对话框标题。' },
   { name: 'description', type: 'string', default: '-', description: '对话框描述。' },
   { name: 'type', type: `'destructive' \| 'success' \| 'warning' \| 'info'`, default: '-', description: '语义类型（影响图标/颜色）。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '对话框尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '对话框尺寸。' },
   { name: 'show-icon', type: 'boolean', default: 'true', description: '是否显示状态图标。' },
   { name: 'default-open', type: 'boolean', default: 'false', description: '是否默认打开（非受控）。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
@@ -97,3 +97,5 @@ action
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

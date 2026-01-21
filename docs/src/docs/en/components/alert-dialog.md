@@ -45,7 +45,7 @@ action
   { name: 'title', type: 'string', default: '-', description: 'Dialog title.' },
   { name: 'description', type: 'string', default: '-', description: 'Dialog description.' },
   { name: 'type', type: `'destructive' \| 'success' \| 'warning' \| 'info'`, default: '-', description: 'Semantic type (affects icon/color).' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Size of the dialog.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Size of the dialog.' },
   { name: 'show-icon', type: 'boolean', default: 'true', description: 'Whether to show status icon.' },
   { name: 'default-open', type: 'boolean', default: 'false', description: 'Whether to open by default (uncontrolled).' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
@@ -97,3 +97,5 @@ action
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="AlertDialog size" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

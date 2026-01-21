@@ -30,7 +30,7 @@ base
 ### SList Props
 
 <DataTable preset="props" :data="[
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'List size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'List size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -61,3 +61,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

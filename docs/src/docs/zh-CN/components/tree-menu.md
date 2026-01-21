@@ -52,7 +52,7 @@ base
   { name: 'collapsedWidth', type: 'number', default: '50', description: 'Width when collapsed.' },
   { name: 'indent', type: 'number', default: '16', description: 'Indentation width for nested items.' },
   { name: 'side', type: `'left' \| 'right'`, default: `'left'`, description: 'Side position (affects indentation direction).' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '菜单尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '菜单尺寸。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 
@@ -81,3 +81,5 @@ base
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

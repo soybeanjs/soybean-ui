@@ -45,7 +45,7 @@ multiple
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the select is disabled.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether to allow multiple selection.' },
   { name: 'showArrow', type: 'boolean', default: 'false', description: 'Whether to show the arrow.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Select size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Select size.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -88,3 +88,5 @@ multiple
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

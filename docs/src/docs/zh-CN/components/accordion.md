@@ -48,7 +48,7 @@ custom-styling
 <DataTable preset="props" :data="[
   { name: 'v-model', type: 'string | string[]', default: '-', description: 'The controlled value of the item(s) to expand.', required: true },
   { name: 'items', type: 'AccordionOptionData[]', default: '-', description: 'The data array to render items.', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'The size of the accordion.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'The size of the accordion.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许同时展开多个条目。' },
   { name: 'collapsible', type: 'boolean', default: 'false', description: '已展开的条目是否允许收起。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '为内部元素自定义类名。' }
@@ -106,3 +106,5 @@ custom-styling
     ]
   }
 ]" />
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

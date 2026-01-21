@@ -30,6 +30,8 @@ import { SConfigProvider } from '@soybeanjs/ui';
       feedback: 'modern',
       radius: '0.625rem'
     }"
+    :iconify="{ width: '1.25em', height: '1.25em' }"
+    dir="ltr"
   >
     <App />
   </SConfigProvider>
@@ -38,57 +40,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 ## Advanced Theme Configuration
 
-You can fully customize the theme using the `theme` prop, which accepts a `ThemeOptions` object.
-
-```vue
-<template>
-  <SConfigProvider
-    :theme="{
-      // Built-in presets
-      base: 'gray',
-      primary: 'violet',
-      feedback: 'modern',
-
-      // Global radius
-      radius: '0.625rem',
-
-      // Output format (hsl or oklch)
-      format: 'oklch',
-
-      // Dark mode strategy
-      darkSelector: 'class',
-
-      // Custom presets
-      preset: {
-        primary: {
-          brandPrimary: {
-            light: {
-              primary: 'blue.600',
-              ring: 'blue.400',
-              chart1: 'orange.600',
-              chart2: 'teal.600',
-              chart3: 'cyan.900',
-              chart4: 'amber.400',
-              chart5: 'amber.500'
-            },
-            dark: {
-              primary: 'blue.400',
-              ring: 'blue.500',
-              chart1: 'orange.500',
-              chart2: 'teal.500',
-              chart3: 'cyan.400',
-              chart4: 'amber.500',
-              chart5: 'amber.600'
-            }
-          }
-        }
-      }
-    }"
-  >
-    <App />
-  </SConfigProvider>
-</template>
-```
+You can fully customize the theme using the `theme` prop. more details can be found in the [theming documentation](/overview/theming).
 
 ## API
 
@@ -96,10 +48,14 @@ You can fully customize the theme using the `theme` prop, which accepts a `Theme
 
 <DataTable preset="props" :data="[
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: 'Global theme configuration (colors, radius)' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Global component size' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Global component size' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'Default configuration for SIcon' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: 'Global toast configuration' },
-  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' }
+  { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' },
+  { name: 'locale', type: 'string', default: `'en'`, description: 'Locale identifier' },
+  { name: 'nonce', type: 'string', default: 'false', description: 'Nonce for inline styles' },
+  { name: 'tooltip', type: 'TooltipProviderProps', default: '-', description: 'Global tooltip configuration' },
+  { name: 'nuxt', type: 'boolean', default: 'false', description: 'Nuxt.js integration flag' }
 ]"/>
 
 ### Slots
@@ -127,3 +83,5 @@ You can fully customize the theme using the `theme` prop, which accepts a `Theme
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

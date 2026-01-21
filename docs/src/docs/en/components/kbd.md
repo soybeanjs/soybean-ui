@@ -33,7 +33,7 @@ variant
 
 <DataTable preset="props" :data="[
   { name: 'value', type: 'string', default: '-', description: 'The text value to display.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Kbd size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Kbd size.' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'plain'`, default: `'solid'`, description: 'Visual style variant.' },
   { name: 'as', type: 'string | Component', default: `'kbd'`, description: 'The rendered element.' },
   { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props into child element.' }
@@ -44,3 +44,7 @@ variant
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '-', description: 'Content of the kbd.' }
 ]"/>
+
+### Types
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

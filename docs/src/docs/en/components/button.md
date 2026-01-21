@@ -217,7 +217,7 @@ group
 
 <UnionType name="ThemeColor" description="Button color" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />
 
-<UnionType name="ThemeSize" description="Button size" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
 
 <UnionType name="ButtonVariant" description="Button variant" type="'solid' | 'outline' | 'dashed' | 'soft' | 'ghost' | 'link' | 'plain' | 'pure'" />
 

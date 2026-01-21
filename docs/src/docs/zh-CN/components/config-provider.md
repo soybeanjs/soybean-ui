@@ -2,19 +2,19 @@
 
 ## 概述
 
-用于为组件库提供全局配置与默认值的配置提供者。
+`SConfigProvider` 组件是 SoybeanUI 库的根配置提供者。它管理全局主题、本地化、图标设置以及其他上下文感知功能。它应包裹整个应用程序或需要隔离配置的特定部分。
 
-## Features
+## 功能
 
-- 🎨 **Theme System**: Configure global colors and radius via `theme` prop.
-- 📏 **Size Control**: Manage global component sizing (`xs`, `sm`, `md`, `lg`, `xl`, `2xl`).
+- 🎨 **主题系统**：通过 `theme` 属性配置全局颜色和圆角。
+- 📏 **尺寸控制**：管理全局组件尺寸（`xs`、`sm`、`md`、`lg`、`xl`、`2xl`）。
 - 🖼️ **图标配置**：为所有 `SIcon` 组件设置默认宽高。
-- 🍞 **Toast Integration**: Configure global toast settings.
-- 🌐 **Direction**: Support for LTR/RTL layouts.
+- 🍞 **通知集成**：配置全局通知设置。
+- 🌐 **方向**：支持 LTR/RTL 布局。
 
-## Basic Usage
+## 基本用法
 
-Wrap your application root with `SConfigProvider`.
+将应用程序根组件包裹在 `SConfigProvider` 中。
 
 ```vue
 <script setup lang="ts">
@@ -36,59 +36,9 @@ import { SConfigProvider } from '@soybeanjs/ui';
 </template>
 ```
 
-## Advanced Theme Configuration
+## 高级主题配置
 
-你可以通过 `theme` 属性完全自定义主题，它接收一个 `ThemeOptions` 对象。
-
-```vue
-<template>
-  <SConfigProvider
-    :theme="{
-      // Built-in presets
-      base: 'gray',
-      primary: 'violet',
-      feedback: 'modern',
-
-      // Global radius
-      radius: '0.625rem',
-
-      // Output format (hsl or oklch)
-      format: 'oklch',
-
-      // Dark mode strategy
-      darkSelector: 'class',
-
-      // Custom presets
-      preset: {
-        primary: {
-          brandPrimary: {
-            light: {
-              primary: 'blue.600',
-              ring: 'blue.400',
-              chart1: 'orange.600',
-              chart2: 'teal.600',
-              chart3: 'cyan.900',
-              chart4: 'amber.400',
-              chart5: 'amber.500'
-            },
-            dark: {
-              primary: 'blue.400',
-              ring: 'blue.500',
-              chart1: 'orange.500',
-              chart2: 'teal.500',
-              chart3: 'cyan.400',
-              chart4: 'amber.500',
-              chart5: 'amber.600'
-            }
-          }
-        }
-      }
-    }"
-  >
-    <App />
-  </SConfigProvider>
-</template>
-```
+你可以使用 `theme` 属性完全自定义主题。更多细节请参见[主题文档](/overview/theming)。
 
 ## API
 
@@ -96,7 +46,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
 
 <DataTable preset="props" :data="[
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: '全局主题配置（颜色、圆角）' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '全局组件尺寸' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '全局组件尺寸' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'SIcon 的默认配置' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: '全局通知配置' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向' }
@@ -108,22 +58,22 @@ import { SConfigProvider } from '@soybeanjs/ui';
   { name: 'default', parameters: '-', description: '需要包裹的内容（通常是 App 组件）' }
 ]"/>
 
-## Types
-
-### ThemeOptions
+### 类型
 
 <TypeTable :data="[
   {
     name: 'ThemeOptions',
-    description: 'Theme system configuration object.',
+    description: '主题系统配置对象。',
     fields: [
-      { name: 'base', type: 'string', description: 'Base color preset (e.g. slate, gray, zinc)' },
-      { name: 'primary', type: 'string', description: 'Primary color preset (e.g. indigo, blue)' },
-      { name: 'feedback', type: 'string', description: 'Feedback color preset (e.g. classic, modern)' },
-      { name: 'radius', type: 'string', description: 'Global radius (e.g. 0.5rem)' },
-      { name: 'darkSelector', type: `'class' | 'media' | string`, description: 'Dark mode switching strategy.' },
-      { name: 'format', type: `'hsl' | 'oklch'`, description: 'CSS variable output format.' },
+      { name: 'base', type: 'string', description: '基础颜色预设（例如 slate、gray、zinc）' },
+      { name: 'primary', type: 'string', description: '主颜色预设（例如 indigo、blue）' },
+      { name: 'feedback', type: 'string', description: '反馈颜色预设（例如 classic、modern）' },
+      { name: 'radius', type: 'string', description: '全局圆角（例如 0.625rem）' },
+      { name: 'darkSelector', type: `'class' | 'media' | string`, description: '暗黑模式切换策略。' },
+      { name: 'format', type: `'hsl' | 'oklch'`, description: 'CSS 变量输出格式。' },
       { name: 'preset', type: 'CustomPreset', description: '用于注入自定义颜色预设的对象。' },
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

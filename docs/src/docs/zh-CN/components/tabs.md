@@ -44,7 +44,7 @@ custom
   { name: 'items', type: 'TabsOptionData[]', default: '-', description: 'Tabs data.', required: true },
   { name: 'modelValue', type: 'string', default: '-', description: 'Selected tab value.' },
   { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: `'horizontal'`, description: 'Tabs orientation.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Tabs size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Tabs size.' },
   { name: 'fill', type: `'solid' \| 'outline' \| 'ghost'`, default: `'ghost'`, description: 'Fill style.' },
   { name: 'enableIndicator', type: 'boolean', default: 'true', description: '是否显示 the active indicator.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
@@ -88,3 +88,5 @@ custom
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

@@ -35,7 +35,7 @@ slot
 <DataTable preset="props" :data="[
   { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: 'Tag color.' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'soft'`, description: 'Tag variant.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Tag size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Tag size.' },
   { name: 'shape', type: `'rounded' \| 'circle' \| 'square'`, default: `'rounded'`, description: 'Tag shape.' },
   { name: 'closable', type: 'boolean', default: 'false', description: 'Whether to show close button.' },
   { name: 'content', type: 'string', default: '-', description: 'Tag content (prop alternative to default slot).' },
@@ -68,3 +68,5 @@ slot
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

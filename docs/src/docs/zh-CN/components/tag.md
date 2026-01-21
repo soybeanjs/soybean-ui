@@ -35,7 +35,7 @@ slot
 <DataTable preset="props" :data="[
   { name: 'color', type: `'primary' \| 'destructive' \| 'success' \| 'warning' \| 'info' \| 'carbon' \| 'secondary' \| 'accent'`, default: `'primary'`, description: '标签颜色。' },
   { name: 'variant', type: `'solid' \| 'outline' \| 'dashed' \| 'soft' \| 'ghost' \| 'link' \| 'plain' \| 'pure'`, default: `'soft'`, description: '标签变体。' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: '标签尺寸。' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '标签尺寸。' },
   { name: 'shape', type: `'rounded' \| 'circle' \| 'square'`, default: `'rounded'`, description: '标签形状。' },
   { name: 'closable', type: 'boolean', default: 'false', description: '是否显示关闭按钮。' },
   { name: 'content', type: 'string', default: '-', description: '标签内容（作为默认插槽的 prop 替代）。' },
@@ -68,3 +68,5 @@ slot
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

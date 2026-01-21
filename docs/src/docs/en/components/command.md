@@ -40,7 +40,7 @@ dialog
   { name: 'searchTerm', type: 'string', default: '-', description: 'The controlled search term.' },
   { name: 'placeholder', type: 'string', default: '-', description: 'Placeholder text for the input.' },
   { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show clear button.' },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Command menu size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Command menu size.' },
   { name: 'emptyLabel', type: 'string', default: `'No results found.'`, description: 'Text to show when no items match.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
@@ -77,3 +77,5 @@ dialog
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

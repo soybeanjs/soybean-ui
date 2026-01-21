@@ -31,7 +31,7 @@ size
 
 <DataTable preset="props" :data="[
   { name: 'src', type: 'string', default: '-', description: 'Image source URL.', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Avatar size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Avatar size.' },
   { name: 'fallback-label', type: 'string', default: '-', description: 'Text to show when image fails to load.' },
   { name: 'delay-ms', type: 'number', default: '0', description: 'Delay in ms before showing the fallback.' },
   { name: 'image-props', type: 'object', default: '{}', description: 'Props passed to the internal image element.' },
@@ -64,3 +64,5 @@ size
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

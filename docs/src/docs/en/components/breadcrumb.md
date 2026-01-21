@@ -34,7 +34,7 @@ ellipsis-dropdown
 
 <DataTable preset="props" :data="[
   { name: 'items', type: 'BreadcrumbOptionData[]', default: '-', description: 'Data array for breadcrumb items.', required: true },
-  { name: 'size', type: `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'`, default: `'md'`, description: 'Breadcrumb size.' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Breadcrumb size.' },
   { name: 'ellipsis', type: 'boolean | [number, number]', default: 'false', description: 'Enable ellipsis for long paths. True collapses middle items. Array specifies start/end count.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' },
   { name: 'listProps', type: 'object', default: '{}', description: 'Props for the list container.' },
@@ -90,3 +90,5 @@ ellipsis-dropdown
     ]
   }
 ]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
