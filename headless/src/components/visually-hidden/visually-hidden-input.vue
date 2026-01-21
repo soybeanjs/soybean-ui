@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T">
+<script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { isArrayValue, parseFormValue } from '../../shared';
 import type { FormNameValueProps } from '../../types';
@@ -10,7 +10,7 @@ defineOptions({
   inheritAttrs: false
 });
 
-const props = withDefaults(defineProps<VisuallyHiddenInputProps<T>>(), {
+const props = withDefaults(defineProps<VisuallyHiddenInputProps>(), {
   feature: 'fully-hidden',
   checked: undefined
 });

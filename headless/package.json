@@ -2,7 +2,7 @@
   "name": "@soybeanjs/headless",
   "type": "module",
   "version": "0.0.19",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.1",
   "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {
     "name": "Soybean",
@@ -128,7 +128,7 @@
     "@internationalized/date": "^3.10.1",
     "@internationalized/number": "^3.6.5",
     "@tanstack/vue-virtual": "^3.13.18",
-    "@vue/shared": "^3.5.26",
+    "@vue/shared": "^3.5.27",
     "@vueuse/core": "^14.1.0",
     "@vueuse/integrations": "^14.1.0",
     "@vueuse/router": "^14.1.0",
@@ -145,7 +145,7 @@
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.0",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.26",
+    "vue": "3.5.27",
     "vue-router": "4.6.4"
   }
 }

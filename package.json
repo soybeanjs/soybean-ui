@@ -2,7 +2,7 @@
   "name": "@soybeanjs/ui",
   "type": "module",
   "version": "0.0.19",
-  "packageManager": "pnpm@10.28.0",
+  "packageManager": "pnpm@10.28.1",
   "description": "SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.",
   "author": {
     "name": "Soybean",
@@ -93,7 +93,7 @@
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.39.2",
     "eslint-plugin-vue": "^10.7.0",
-    "happy-dom": "^20.3.1",
+    "happy-dom": "^20.3.4",
     "lint-staged": "^16.2.7",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "^0.19.0",
@@ -107,7 +107,7 @@
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.5",
     "vitest": "^4.0.17",
-    "vue": "^3.5.26",
+    "vue": "^3.5.27",
     "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.6.4",
     "vue-tsc": "^3.2.2"

@@ -1,4 +1,4 @@
-import type { HTMLAttributes, InputHTMLAttributes } from 'vue';
+import type { HTMLAttributes } from 'vue';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type VisuallyHiddenFeature = 'focusable' | 'fully-hidden';
@@ -7,9 +7,9 @@ export interface VisuallyHiddenProps extends PrimitiveProps, /** @vue-ignore */ 
   feature?: VisuallyHiddenFeature;
 }
 
-export interface VisuallyHiddenInputProps<T> extends /** @vue-ignore */ InputHTMLAttributes {
+export interface VisuallyHiddenInputProps {
   name: string;
-  value: T;
+  value: any;
   checked?: boolean;
   required?: boolean;
   disabled?: boolean;
