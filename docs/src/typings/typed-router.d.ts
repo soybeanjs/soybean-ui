@@ -79,6 +79,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/overview/theming': RouteRecordInfo<
+      '/overview/theming',
+      '/overview/theming',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
   }
 
   /**
@@ -137,6 +144,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/overview/quick-start.vue': {
       routes:
         | '/overview/quick-start'
+      views:
+        | never
+    }
+    'src/pages/overview/theming.vue': {
+      routes:
+        | '/overview/theming'
       views:
         | never
     }

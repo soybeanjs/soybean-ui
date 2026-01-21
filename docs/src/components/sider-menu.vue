@@ -46,6 +46,11 @@ const menus = computed<TreeMenuOptionData[]>(() => [
         label: t('sidebar.quick_start'),
         value: 'quick-start',
         to: '/overview/quick-start'
+      },
+      {
+        label: t('sidebar.theming'),
+        value: 'theming',
+        to: '/overview/theming'
       }
     ]
   },
