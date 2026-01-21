@@ -9,10 +9,7 @@ defineOptions({
   name: 'SIcon'
 });
 
-const props = withDefaults(defineProps<IconProps>(), {
-  width: '1.25em',
-  height: '1.25em'
-});
+const props = defineProps<IconProps>();
 
 const configProvider = useConfigProvider();
 

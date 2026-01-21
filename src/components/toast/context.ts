@@ -2,15 +2,18 @@ import { computed, nextTick, shallowRef, watch } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 import { useContext } from '@soybeanjs/headless/composables';
 import { mergeUi } from '@/theme';
+import { useThemeSize } from '../config-provider/context';
 import { toastTypes } from './shared';
 import type { ToastPosition, ToastProviderContextParams, ToastState, UseToastOptions, UseToastReturn } from './types';
 
 export const [provideToastProviderContext, useToastProvider] = useContext(
   'UiToastProvider',
   (params: ToastProviderContextParams) => {
-    const { size: providerSize, ui: providerUi, limits, removeDelay } = params;
+    const { ui: providerUi, limits, removeDelay } = params;
 
     const position = shallowRef<ToastPosition>(params.position.value);
+
+    const providerSize = useThemeSize();
 
     const states = shallowRef<ToastState[]>([]);
 

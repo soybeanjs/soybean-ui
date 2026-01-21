@@ -18,7 +18,11 @@ defineOptions({
 const props = withDefaults(defineProps<ConfigProviderProps>(), {
   theme: () => ({}),
   size: 'md',
-  dir: 'ltr'
+  dir: 'ltr',
+  iconify: () => ({
+    width: '1.25em',
+    height: '1.25em'
+  })
 });
 
 const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']);

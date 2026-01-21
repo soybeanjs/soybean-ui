@@ -5,6 +5,7 @@ import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
 import { toastViewportVariants } from '@/variants/toast';
+import { useThemeSize } from '../config-provider/context';
 import { provideToastProviderContext } from './context';
 import Toast from './toast.vue';
 import type { ToastProviderProps } from './types';
@@ -14,22 +15,23 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ToastProviderProps>(), {
-  size: 'md',
   ui: () => ({}),
   limits: 3,
   removeDelay: 5000,
   position: 'top-right'
 });
 
-const forwardedProps = useOmitProps(props, ['size', 'ui', 'limits', 'removeDelay', 'position', 'viewportProps']);
+const forwardedProps = useOmitProps(props, ['ui', 'limits', 'removeDelay', 'position', 'viewportProps']);
 
 const { states, ids, clear, remove, position } = provideToastProviderContext(
-  transformPropsToContext(props, ['size', 'ui', 'limits', 'removeDelay', 'position'])
+  transformPropsToContext(props, ['ui', 'limits', 'removeDelay', 'position'])
 );
+
+const size = useThemeSize();
 
 const viewportUi = computed(() => {
   const variants = toastViewportVariants({
-    size: props.size,
+    size: size.value,
     position: position.value
   });
 

@@ -19,7 +19,6 @@ type ToastExtraSlot = 'viewport';
 type ToastExtendedTheme = ToastUi & Record<ToastExtraSlot, ClassValue>;
 
 export interface ToastProviderProps extends _ToastProviderProps {
-  size?: ThemeSize;
   ui?: Partial<ToastExtendedTheme>;
   /**
    * The maximum number of toasts that can be displayed at the same time.
@@ -91,7 +90,7 @@ export interface UseToastReturn extends Record<ToastType, (options: Omit<UseToas
 }
 
 export interface ToastProviderContextParams extends PropsToContext<
-  Required<Pick<ToastProviderProps, 'size' | 'ui' | 'limits' | 'removeDelay' | 'position'>>
+  Required<Pick<ToastProviderProps, 'ui' | 'limits' | 'removeDelay' | 'position'>>
 > {}
 
 export type { ToastPosition };

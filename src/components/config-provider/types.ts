@@ -13,13 +13,13 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
     /**
      * The default width of the icon.
      *
-     * @defaultValue '1.2em'
+     * @defaultValue '1.25em'
      */
     width?: string;
     /**
      * The default height of the icon.
      *
-     * @defaultValue '1.2em'
+     * @defaultValue '1.25em'
      */
     height?: string;
   };
