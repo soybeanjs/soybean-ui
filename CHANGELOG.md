@@ -1,6 +1,68 @@
 # Changelog
 
 
+## [v0.0.20](https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20) (2026-01-21)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**:
+  - add CopyButton component to code block and integrate with markdown rendering &nbsp;-&nbsp; by @soybeanjs [<samp>(e7153)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e7153d4e)
+  - playground components support preview code &nbsp;-&nbsp; by @soybeanjs [<samp>(00422)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00422ca4)
+  - add theming documentation and related components &nbsp;-&nbsp; by @soybeanjs [<samp>(31cbb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/31cbbc3e)
+- **link**:
+  - enhance slot functionality and improve forwarded props handling &nbsp;-&nbsp; by @soybeanjs [<samp>(384df)</samp>](https://github.com/soybeanjs/soybean-ui/commit/384df908)
+- **locale-toggler**:
+  - add locale icons and sort locales for improved display &nbsp;-&nbsp; by @soybeanjs [<samp>(0e59d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0e59d67b)
+- **menu**:
+  - support indicator position &nbsp;-&nbsp; by @soybeanjs [<samp>(f7da3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f7da3c39)
+- **opencode**:
+  - add GitHub Actions workflow for opencode functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(820fe)</samp>](https://github.com/soybeanjs/soybean-ui/commit/820fe9fe)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **deps**: move shiki to dependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(ca0a7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca0a71a7)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **docs**:
+  - optimize sidebar menu data define &nbsp;-&nbsp; by @soybeanjs [<samp>(edb12)</samp>](https://github.com/soybeanjs/soybean-ui/commit/edb1249f)
+  - optimize docs &nbsp;-&nbsp; by @soybeanjs [<samp>(47240)</samp>](https://github.com/soybeanjs/soybean-ui/commit/472404e8)
+- **headless**:
+  - optimize config-provider context &nbsp;-&nbsp; by @soybeanjs [<samp>(876d9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/876d9e95)
+- **locales**:
+  - standardize key naming conventions and update translations &nbsp;-&nbsp; by @soybeanjs [<samp>(553b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/553b6e8e)
+- **markdown**:
+  - implement base64 encoding for code snippets in copyCodePlugin &nbsp;-&nbsp; by @soybeanjs [<samp>(8213a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8213a0ba)
+- **ui**:
+  - optimize config-provider context &nbsp;-&nbsp; by @soybeanjs [<samp>(d9187)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d91872c0)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **projects**: refactor i18n for pages and optimize other i18n &nbsp;-&nbsp; by @soybeanjs [<samp>(ee2ac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ee2acba0)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **agents**: add comprehensive documentation for SoybeanUI architecture, including headless and styled UI layers, conventions, and development workflows &nbsp;-&nbsp; by @soybeanjs [<samp>(a681b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a681bf34)
+- **button**: update documentation for Button component, including overview, main features, and API details &nbsp;-&nbsp; by @soybeanjs [<samp>(4d06f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4d06fc31)
+- **checkbox**: fix markdown format &nbsp;-&nbsp; by @soybeanjs [<samp>(762c9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/762c96f8)
+- **icon**: update type definition format for IconValue prop &nbsp;-&nbsp; by @soybeanjs [<samp>(58ec2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/58ec2303)
+- **projects**: update components docs &nbsp;-&nbsp; by @soybeanjs [<samp>(f577c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f577ca2c)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**:
+  - optimize code &nbsp;-&nbsp; by @soybeanjs [<samp>(49645)</samp>](https://github.com/soybeanjs/soybean-ui/commit/496453c2)
+  - update deps & fix ts types error &nbsp;-&nbsp; by @soybeanjs [<samp>(b6e3b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b6e3bdfd)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **header-nav**: update activeClass for navigation links to enhance styling &nbsp;-&nbsp; by @soybeanjs [<samp>(fcfd4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fcfd4bab)
+- **tables**: update heading styles for improved readability &nbsp;-&nbsp; by @soybeanjs [<samp>(3fb7d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3fb7d490)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.19](https://github.com/soybeanjs/soybean-ui/compare/v0.0.18...v0.0.19) (2026-01-19)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
