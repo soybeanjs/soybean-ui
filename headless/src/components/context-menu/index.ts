@@ -1,23 +1,21 @@
 export { default as ContextMenuRoot } from './context-menu-root.vue';
 export { default as ContextMenuTrigger } from './context-menu-trigger.vue';
+export { MenuPortal as ContextMenuPortal } from '../menu';
 export { default as ContextMenuContent } from './context-menu-content.vue';
-export {
-  MenuAnchor as ContextMenuAnchor,
-  MenuArrow as ContextMenuArrow,
-  MenuCheckboxGroup as ContextMenuCheckboxGroup,
-  MenuCheckboxItem as ContextMenuCheckboxItem,
-  MenuGroup as ContextMenuGroup,
-  MenuGroupLabel as ContextMenuGroupLabel,
-  MenuItem as ContextMenuItem,
-  MenuItemIndicator as ContextMenuItemIndicator,
-  MenuPortal as ContextMenuPortal,
-  MenuRadioGroup as ContextMenuRadioGroup,
-  MenuRadioItem as ContextMenuRadioItem,
-  MenuSeparator as ContextMenuSeparator,
-  MenuSub as ContextMenuSub,
-  MenuSubContent as ContextMenuSubContent,
-  MenuSubTrigger as ContextMenuSubTrigger
-} from '../menu';
+export { MenuAnchor as ContextMenuAnchor } from '../menu';
+export { MenuArrow as ContextMenuArrow } from '../menu';
+export { MenuGroup as ContextMenuGroup } from '../menu';
+export { MenuGroupLabel as ContextMenuGroupLabel } from '../menu';
+export { MenuItem as ContextMenuItem } from '../menu';
+export { MenuItemIndicator as ContextMenuItemIndicator } from '../menu';
+export { MenuCheckboxItem as ContextMenuCheckboxItem } from '../menu';
+export { MenuRadioItem as ContextMenuRadioItem } from '../menu';
+export { MenuSub as ContextMenuSub } from '../menu';
+export { MenuSubTrigger as ContextMenuSubTrigger } from '../menu';
+export { MenuSubContent as ContextMenuSubContent } from '../menu';
+export { MenuSeparator as ContextMenuSeparator } from '../menu';
+export { MenuCheckboxGroup as ContextMenuCheckboxGroup } from '../menu';
+export { MenuRadioGroup as ContextMenuRadioGroup } from '../menu';
 
 export type {
   ContextMenuRootProps,

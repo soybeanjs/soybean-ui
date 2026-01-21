@@ -218,6 +218,14 @@ import {
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastPortal,
+  ToastProvider,
+  ToastRoot,
+  ToastTitle,
+  ToastViewport,
   TooltipArrow,
   TooltipPopup,
   TooltipPortal,
@@ -238,59 +246,61 @@ import {
   TreeVirtualizerRoot,
   VirtualizerContent,
   VirtualizerItem,
-  VirtualizerRoot
+  VirtualizerRoot,
+  VisuallyHidden,
+  VisuallyHiddenInput
 } from '../index';
 
 export const Accordion = {
-  Content: AccordionContent,
-  Header: AccordionHeader,
-  Item: AccordionItem,
   Root: AccordionRoot,
-  Trigger: AccordionTrigger
+  Item: AccordionItem,
+  Trigger: AccordionTrigger,
+  Header: AccordionHeader,
+  Content: AccordionContent
 } as {
-  Content: typeof AccordionContent;
-  Header: typeof AccordionHeader;
-  Item: typeof AccordionItem;
   Root: typeof AccordionRoot;
+  Item: typeof AccordionItem;
   Trigger: typeof AccordionTrigger;
+  Header: typeof AccordionHeader;
+  Content: typeof AccordionContent;
 };
 
 export const Alert = {
-  Close: AlertClose,
-  Content: AlertContent,
-  Description: AlertDescription,
   Root: AlertRoot,
-  Title: AlertTitle
+  Title: AlertTitle,
+  Description: AlertDescription,
+  Content: AlertContent,
+  Close: AlertClose
 } as {
-  Close: typeof AlertClose;
-  Content: typeof AlertContent;
-  Description: typeof AlertDescription;
   Root: typeof AlertRoot;
   Title: typeof AlertTitle;
+  Description: typeof AlertDescription;
+  Content: typeof AlertContent;
+  Close: typeof AlertClose;
 };
 
 export const AlertDialog = {
-  Close: AlertDialogClose,
+  Root: AlertDialogRoot,
+  Trigger: AlertDialogTrigger,
+  Portal: AlertDialogPortal,
+  Overlay: AlertDialogOverlay,
   Content: AlertDialogContent,
+  Header: AlertDialogHeader,
+  Title: AlertDialogTitle,
   Description: AlertDialogDescription,
   Footer: AlertDialogFooter,
-  Header: AlertDialogHeader,
-  Overlay: AlertDialogOverlay,
-  Portal: AlertDialogPortal,
-  Root: AlertDialogRoot,
-  Title: AlertDialogTitle,
-  Trigger: AlertDialogTrigger
+  Close: AlertDialogClose
 } as {
-  Close: typeof AlertDialogClose;
+  Root: typeof AlertDialogRoot;
+  Trigger: typeof AlertDialogTrigger;
+  Portal: typeof AlertDialogPortal;
+  Overlay: typeof AlertDialogOverlay;
   Content: typeof AlertDialogContent;
+  Header: typeof AlertDialogHeader;
+  Title: typeof AlertDialogTitle;
   Description: typeof AlertDialogDescription;
   Footer: typeof AlertDialogFooter;
-  Header: typeof AlertDialogHeader;
-  Overlay: typeof AlertDialogOverlay;
-  Portal: typeof AlertDialogPortal;
-  Root: typeof AlertDialogRoot;
-  Title: typeof AlertDialogTitle;
-  Trigger: typeof AlertDialogTrigger;
+  Close: typeof AlertDialogClose;
 };
 
 export { Arrow };
@@ -298,209 +308,209 @@ export { Arrow };
 export { AspectRatio };
 
 export const Avatar = {
-  Fallback: AvatarFallback,
+  Root: AvatarRoot,
   Image: AvatarImage,
-  Root: AvatarRoot
+  Fallback: AvatarFallback
 } as {
-  Fallback: typeof AvatarFallback;
-  Image: typeof AvatarImage;
   Root: typeof AvatarRoot;
+  Image: typeof AvatarImage;
+  Fallback: typeof AvatarFallback;
 };
 
 export const Badge = {
-  Content: BadgeContent,
-  Root: BadgeRoot
+  Root: BadgeRoot,
+  Content: BadgeContent
 } as {
-  Content: typeof BadgeContent;
   Root: typeof BadgeRoot;
+  Content: typeof BadgeContent;
 };
 
 export const Breadcrumb = {
-  Ellipsis: BreadcrumbEllipsis,
+  Root: BreadcrumbRoot,
+  List: BreadcrumbList,
   Item: BreadcrumbItem,
   Link: BreadcrumbLink,
-  List: BreadcrumbList,
   Page: BreadcrumbPage,
-  Root: BreadcrumbRoot,
-  Separator: BreadcrumbSeparator
+  Separator: BreadcrumbSeparator,
+  Ellipsis: BreadcrumbEllipsis
 } as {
-  Ellipsis: typeof BreadcrumbEllipsis;
+  Root: typeof BreadcrumbRoot;
+  List: typeof BreadcrumbList;
   Item: typeof BreadcrumbItem;
   Link: typeof BreadcrumbLink;
-  List: typeof BreadcrumbList;
   Page: typeof BreadcrumbPage;
-  Root: typeof BreadcrumbRoot;
   Separator: typeof BreadcrumbSeparator;
+  Ellipsis: typeof BreadcrumbEllipsis;
 };
 
 export { Button };
 
 export const Card = {
-  Content: CardContent,
-  Description: CardDescription,
-  Footer: CardFooter,
-  Header: CardHeader,
   Root: CardRoot,
+  Header: CardHeader,
+  Title: CardTitle,
   TitleRoot: CardTitleRoot,
-  Title: CardTitle
+  Description: CardDescription,
+  Content: CardContent,
+  Footer: CardFooter
 } as {
-  Content: typeof CardContent;
-  Description: typeof CardDescription;
-  Footer: typeof CardFooter;
-  Header: typeof CardHeader;
   Root: typeof CardRoot;
-  TitleRoot: typeof CardTitleRoot;
+  Header: typeof CardHeader;
   Title: typeof CardTitle;
+  TitleRoot: typeof CardTitleRoot;
+  Description: typeof CardDescription;
+  Content: typeof CardContent;
+  Footer: typeof CardFooter;
 };
 
 export const Checkbox = {
-  Control: CheckboxControl,
   GroupRoot: CheckboxGroupRoot,
+  Root: CheckboxRoot,
+  Control: CheckboxControl,
   Indicator: CheckboxIndicator,
-  Label: CheckboxLabel,
-  Root: CheckboxRoot
+  Label: CheckboxLabel
 } as {
-  Control: typeof CheckboxControl;
   GroupRoot: typeof CheckboxGroupRoot;
+  Root: typeof CheckboxRoot;
+  Control: typeof CheckboxControl;
   Indicator: typeof CheckboxIndicator;
   Label: typeof CheckboxLabel;
-  Root: typeof CheckboxRoot;
 };
 
 export const Collapsible = {
-  Content: CollapsibleContent,
   Root: CollapsibleRoot,
-  Trigger: CollapsibleTrigger
+  Trigger: CollapsibleTrigger,
+  Content: CollapsibleContent
 } as {
-  Content: typeof CollapsibleContent;
   Root: typeof CollapsibleRoot;
   Trigger: typeof CollapsibleTrigger;
+  Content: typeof CollapsibleContent;
 };
 
 export { ConfigProvider };
 
 export const ContextMenu = {
+  Root: ContextMenuRoot,
+  Trigger: ContextMenuTrigger,
+  Portal: ContextMenuPortal,
+  Content: ContextMenuContent,
   Anchor: ContextMenuAnchor,
   Arrow: ContextMenuArrow,
-  CheckboxGroup: ContextMenuCheckboxGroup,
-  CheckboxItem: ContextMenuCheckboxItem,
-  Content: ContextMenuContent,
   Group: ContextMenuGroup,
   GroupLabel: ContextMenuGroupLabel,
   Item: ContextMenuItem,
   ItemIndicator: ContextMenuItemIndicator,
-  Portal: ContextMenuPortal,
-  RadioGroup: ContextMenuRadioGroup,
+  CheckboxItem: ContextMenuCheckboxItem,
   RadioItem: ContextMenuRadioItem,
-  Root: ContextMenuRoot,
-  Separator: ContextMenuSeparator,
   Sub: ContextMenuSub,
-  SubContent: ContextMenuSubContent,
   SubTrigger: ContextMenuSubTrigger,
-  Trigger: ContextMenuTrigger
+  SubContent: ContextMenuSubContent,
+  Separator: ContextMenuSeparator,
+  CheckboxGroup: ContextMenuCheckboxGroup,
+  RadioGroup: ContextMenuRadioGroup
 } as {
+  Root: typeof ContextMenuRoot;
+  Trigger: typeof ContextMenuTrigger;
+  Portal: typeof ContextMenuPortal;
+  Content: typeof ContextMenuContent;
   Anchor: typeof ContextMenuAnchor;
   Arrow: typeof ContextMenuArrow;
-  CheckboxGroup: typeof ContextMenuCheckboxGroup;
-  CheckboxItem: typeof ContextMenuCheckboxItem;
-  Content: typeof ContextMenuContent;
   Group: typeof ContextMenuGroup;
   GroupLabel: typeof ContextMenuGroupLabel;
   Item: typeof ContextMenuItem;
   ItemIndicator: typeof ContextMenuItemIndicator;
-  Portal: typeof ContextMenuPortal;
-  RadioGroup: typeof ContextMenuRadioGroup;
+  CheckboxItem: typeof ContextMenuCheckboxItem;
   RadioItem: typeof ContextMenuRadioItem;
-  Root: typeof ContextMenuRoot;
-  Separator: typeof ContextMenuSeparator;
   Sub: typeof ContextMenuSub;
-  SubContent: typeof ContextMenuSubContent;
   SubTrigger: typeof ContextMenuSubTrigger;
-  Trigger: typeof ContextMenuTrigger;
+  SubContent: typeof ContextMenuSubContent;
+  Separator: typeof ContextMenuSeparator;
+  CheckboxGroup: typeof ContextMenuCheckboxGroup;
+  RadioGroup: typeof ContextMenuRadioGroup;
 };
 
 export const Dialog = {
-  Close: DialogClose,
+  Root: DialogRoot,
+  Trigger: DialogTrigger,
+  Portal: DialogPortal,
+  Overlay: DialogOverlay,
   Content: DialogContent,
+  Header: DialogHeader,
+  Title: DialogTitle,
   Description: DialogDescription,
   Footer: DialogFooter,
-  Header: DialogHeader,
-  Overlay: DialogOverlay,
-  Portal: DialogPortal,
-  Root: DialogRoot,
-  Title: DialogTitle,
-  Trigger: DialogTrigger
+  Close: DialogClose
 } as {
-  Close: typeof DialogClose;
+  Root: typeof DialogRoot;
+  Trigger: typeof DialogTrigger;
+  Portal: typeof DialogPortal;
+  Overlay: typeof DialogOverlay;
   Content: typeof DialogContent;
+  Header: typeof DialogHeader;
+  Title: typeof DialogTitle;
   Description: typeof DialogDescription;
   Footer: typeof DialogFooter;
-  Header: typeof DialogHeader;
-  Overlay: typeof DialogOverlay;
-  Portal: typeof DialogPortal;
-  Root: typeof DialogRoot;
-  Title: typeof DialogTitle;
-  Trigger: typeof DialogTrigger;
+  Close: typeof DialogClose;
 };
 
 export const DropdownMenu = {
+  Root: DropdownMenuRoot,
+  Trigger: DropdownMenuTrigger,
+  Portal: DropdownMenuPortal,
+  Content: DropdownMenuContent,
   Anchor: DropdownMenuAnchor,
   Arrow: DropdownMenuArrow,
-  CheckboxGroup: DropdownMenuCheckboxGroup,
-  CheckboxItem: DropdownMenuCheckboxItem,
-  Content: DropdownMenuContent,
   Group: DropdownMenuGroup,
   GroupLabel: DropdownMenuGroupLabel,
   Item: DropdownMenuItem,
   ItemIndicator: DropdownMenuItemIndicator,
-  Portal: DropdownMenuPortal,
-  RadioGroup: DropdownMenuRadioGroup,
+  CheckboxItem: DropdownMenuCheckboxItem,
   RadioItem: DropdownMenuRadioItem,
-  Root: DropdownMenuRoot,
-  Separator: DropdownMenuSeparator,
   Sub: DropdownMenuSub,
-  SubContent: DropdownMenuSubContent,
   SubTrigger: DropdownMenuSubTrigger,
-  Trigger: DropdownMenuTrigger
+  SubContent: DropdownMenuSubContent,
+  Separator: DropdownMenuSeparator,
+  CheckboxGroup: DropdownMenuCheckboxGroup,
+  RadioGroup: DropdownMenuRadioGroup
 } as {
+  Root: typeof DropdownMenuRoot;
+  Trigger: typeof DropdownMenuTrigger;
+  Portal: typeof DropdownMenuPortal;
+  Content: typeof DropdownMenuContent;
   Anchor: typeof DropdownMenuAnchor;
   Arrow: typeof DropdownMenuArrow;
-  CheckboxGroup: typeof DropdownMenuCheckboxGroup;
-  CheckboxItem: typeof DropdownMenuCheckboxItem;
-  Content: typeof DropdownMenuContent;
   Group: typeof DropdownMenuGroup;
   GroupLabel: typeof DropdownMenuGroupLabel;
   Item: typeof DropdownMenuItem;
   ItemIndicator: typeof DropdownMenuItemIndicator;
-  Portal: typeof DropdownMenuPortal;
-  RadioGroup: typeof DropdownMenuRadioGroup;
+  CheckboxItem: typeof DropdownMenuCheckboxItem;
   RadioItem: typeof DropdownMenuRadioItem;
-  Root: typeof DropdownMenuRoot;
-  Separator: typeof DropdownMenuSeparator;
   Sub: typeof DropdownMenuSub;
-  SubContent: typeof DropdownMenuSubContent;
   SubTrigger: typeof DropdownMenuSubTrigger;
-  Trigger: typeof DropdownMenuTrigger;
+  SubContent: typeof DropdownMenuSubContent;
+  Separator: typeof DropdownMenuSeparator;
+  CheckboxGroup: typeof DropdownMenuCheckboxGroup;
+  RadioGroup: typeof DropdownMenuRadioGroup;
 };
 
 export const Form = {
-  Description: FormDescription,
-  Error: FormError,
   Field: FormField,
-  Label: FormLabel
+  Label: FormLabel,
+  Description: FormDescription,
+  Error: FormError
 } as {
-  Description: typeof FormDescription;
-  Error: typeof FormError;
   Field: typeof FormField;
   Label: typeof FormLabel;
+  Description: typeof FormDescription;
+  Error: typeof FormError;
 };
 
 export const Input = {
-  Control: InputControl,
-  Root: InputRoot
+  Root: InputRoot,
+  Control: InputControl
 } as {
-  Control: typeof InputControl;
   Root: typeof InputRoot;
+  Control: typeof InputControl;
 };
 
 export { Kbd };
@@ -508,23 +518,23 @@ export { Kbd };
 export { Label };
 
 export const Layout = {
-  Footer: LayoutFooter,
+  Root: LayoutRoot,
   Header: LayoutHeader,
   Main: LayoutMain,
-  Mobile: LayoutMobile,
-  Rail: LayoutRail,
-  Root: LayoutRoot,
   Sidebar: LayoutSidebar,
+  Footer: LayoutFooter,
+  Rail: LayoutRail,
+  Mobile: LayoutMobile,
   Tab: LayoutTab,
   Trigger: LayoutTrigger
 } as {
-  Footer: typeof LayoutFooter;
+  Root: typeof LayoutRoot;
   Header: typeof LayoutHeader;
   Main: typeof LayoutMain;
-  Mobile: typeof LayoutMobile;
-  Rail: typeof LayoutRail;
-  Root: typeof LayoutRoot;
   Sidebar: typeof LayoutSidebar;
+  Footer: typeof LayoutFooter;
+  Rail: typeof LayoutRail;
+  Mobile: typeof LayoutMobile;
   Tab: typeof LayoutTab;
   Trigger: typeof LayoutTrigger;
 };
@@ -532,163 +542,163 @@ export const Layout = {
 export { Link };
 
 export const List = {
-  Content: ListContent,
-  Description: ListDescription,
-  Item: ListItem,
   Root: ListRoot,
-  Title: ListTitle
+  Item: ListItem,
+  Title: ListTitle,
+  Description: ListDescription,
+  Content: ListContent
 } as {
-  Content: typeof ListContent;
-  Description: typeof ListDescription;
-  Item: typeof ListItem;
   Root: typeof ListRoot;
+  Item: typeof ListItem;
   Title: typeof ListTitle;
+  Description: typeof ListDescription;
+  Content: typeof ListContent;
 };
 
 export const Listbox = {
-  Content: ListboxContent,
-  Filter: ListboxFilter,
-  GroupLabel: ListboxGroupLabel,
-  Group: ListboxGroup,
-  ItemIndicator: ListboxItemIndicator,
-  Item: ListboxItem,
   Root: ListboxRoot,
+  Content: ListboxContent,
+  Group: ListboxGroup,
+  GroupLabel: ListboxGroupLabel,
+  Item: ListboxItem,
+  ItemIndicator: ListboxItemIndicator,
+  Filter: ListboxFilter,
   Virtualizer: ListboxVirtualizer
 } as {
-  Content: typeof ListboxContent;
-  Filter: typeof ListboxFilter;
-  GroupLabel: typeof ListboxGroupLabel;
-  Group: typeof ListboxGroup;
-  ItemIndicator: typeof ListboxItemIndicator;
-  Item: typeof ListboxItem;
   Root: typeof ListboxRoot;
+  Content: typeof ListboxContent;
+  Group: typeof ListboxGroup;
+  GroupLabel: typeof ListboxGroupLabel;
+  Item: typeof ListboxItem;
+  ItemIndicator: typeof ListboxItemIndicator;
+  Filter: typeof ListboxFilter;
   Virtualizer: typeof ListboxVirtualizer;
 };
 
 export const Menu = {
+  Root: MenuRoot,
+  Portal: MenuPortal,
+  Content: MenuContent,
   Anchor: MenuAnchor,
   Arrow: MenuArrow,
-  CheckboxGroup: MenuCheckboxGroup,
-  CheckboxItem: MenuCheckboxItem,
-  Content: MenuContent,
-  GroupLabel: MenuGroupLabel,
   Group: MenuGroup,
-  ItemIndicator: MenuItemIndicator,
+  GroupLabel: MenuGroupLabel,
   Item: MenuItem,
-  Portal: MenuPortal,
-  RadioGroup: MenuRadioGroup,
+  ItemIndicator: MenuItemIndicator,
+  CheckboxItem: MenuCheckboxItem,
   RadioItem: MenuRadioItem,
-  Root: MenuRoot,
   Sub: MenuSub,
-  Separator: MenuSeparator,
+  SubTrigger: MenuSubTrigger,
   SubContent: MenuSubContent,
-  SubTrigger: MenuSubTrigger
+  Separator: MenuSeparator,
+  CheckboxGroup: MenuCheckboxGroup,
+  RadioGroup: MenuRadioGroup
 } as {
+  Root: typeof MenuRoot;
+  Portal: typeof MenuPortal;
+  Content: typeof MenuContent;
   Anchor: typeof MenuAnchor;
   Arrow: typeof MenuArrow;
-  CheckboxGroup: typeof MenuCheckboxGroup;
-  CheckboxItem: typeof MenuCheckboxItem;
-  Content: typeof MenuContent;
-  GroupLabel: typeof MenuGroupLabel;
   Group: typeof MenuGroup;
-  ItemIndicator: typeof MenuItemIndicator;
+  GroupLabel: typeof MenuGroupLabel;
   Item: typeof MenuItem;
-  Portal: typeof MenuPortal;
-  RadioGroup: typeof MenuRadioGroup;
+  ItemIndicator: typeof MenuItemIndicator;
+  CheckboxItem: typeof MenuCheckboxItem;
   RadioItem: typeof MenuRadioItem;
-  Root: typeof MenuRoot;
   Sub: typeof MenuSub;
-  Separator: typeof MenuSeparator;
-  SubContent: typeof MenuSubContent;
   SubTrigger: typeof MenuSubTrigger;
+  SubContent: typeof MenuSubContent;
+  Separator: typeof MenuSeparator;
+  CheckboxGroup: typeof MenuCheckboxGroup;
+  RadioGroup: typeof MenuRadioGroup;
 };
 
 export const NavigationMenu = {
-  Content: NavigationMenuContent,
-  Indicator: NavigationMenuIndicator,
-  Item: NavigationMenuItem,
-  Link: NavigationMenuLink,
-  List: NavigationMenuList,
   Root: NavigationMenuRoot,
-  SubList: NavigationMenuSubList,
+  List: NavigationMenuList,
+  Item: NavigationMenuItem,
   Trigger: NavigationMenuTrigger,
-  Viewport: NavigationMenuViewport
+  Content: NavigationMenuContent,
+  Link: NavigationMenuLink,
+  SubList: NavigationMenuSubList,
+  Viewport: NavigationMenuViewport,
+  Indicator: NavigationMenuIndicator
 } as {
-  Content: typeof NavigationMenuContent;
-  Indicator: typeof NavigationMenuIndicator;
-  Item: typeof NavigationMenuItem;
-  Link: typeof NavigationMenuLink;
-  List: typeof NavigationMenuList;
   Root: typeof NavigationMenuRoot;
-  SubList: typeof NavigationMenuSubList;
+  List: typeof NavigationMenuList;
+  Item: typeof NavigationMenuItem;
   Trigger: typeof NavigationMenuTrigger;
+  Content: typeof NavigationMenuContent;
+  Link: typeof NavigationMenuLink;
+  SubList: typeof NavigationMenuSubList;
   Viewport: typeof NavigationMenuViewport;
+  Indicator: typeof NavigationMenuIndicator;
 };
 
 export const NumberInput = {
+  Root: NumberInputRoot,
   Control: NumberInputControl,
-  Decrement: NumberInputDecrement,
   Increment: NumberInputIncrement,
-  Root: NumberInputRoot
+  Decrement: NumberInputDecrement
 } as {
-  Control: typeof NumberInputControl;
-  Decrement: typeof NumberInputDecrement;
-  Increment: typeof NumberInputIncrement;
   Root: typeof NumberInputRoot;
+  Control: typeof NumberInputControl;
+  Increment: typeof NumberInputIncrement;
+  Decrement: typeof NumberInputDecrement;
 };
 
 export const Pagination = {
-  Ellipsis: PaginationEllipsis,
-  First: PaginationFirst,
-  Last: PaginationLast,
-  ListItem: PaginationListItem,
+  Root: PaginationRoot,
   List: PaginationList,
-  Next: PaginationNext,
+  ListItem: PaginationListItem,
+  First: PaginationFirst,
   Prev: PaginationPrev,
-  Root: PaginationRoot
+  Next: PaginationNext,
+  Last: PaginationLast,
+  Ellipsis: PaginationEllipsis
 } as {
-  Ellipsis: typeof PaginationEllipsis;
-  First: typeof PaginationFirst;
-  Last: typeof PaginationLast;
-  ListItem: typeof PaginationListItem;
-  List: typeof PaginationList;
-  Next: typeof PaginationNext;
-  Prev: typeof PaginationPrev;
   Root: typeof PaginationRoot;
+  List: typeof PaginationList;
+  ListItem: typeof PaginationListItem;
+  First: typeof PaginationFirst;
+  Prev: typeof PaginationPrev;
+  Next: typeof PaginationNext;
+  Last: typeof PaginationLast;
+  Ellipsis: typeof PaginationEllipsis;
 };
 
 export const Popover = {
+  Root: PopoverRoot,
+  Trigger: PopoverTrigger,
   Anchor: PopoverAnchor,
-  Arrow: PopoverArrow,
-  Close: PopoverClose,
+  Portal: PopoverPortal,
   Positioner: PopoverPositioner,
   Popup: PopoverPopup,
-  Portal: PopoverPortal,
-  Root: PopoverRoot,
-  Trigger: PopoverTrigger
+  Arrow: PopoverArrow,
+  Close: PopoverClose
 } as {
-  Anchor: typeof PopoverAnchor;
-  Arrow: typeof PopoverArrow;
-  Close: typeof PopoverClose;
-  Positioner: typeof PopoverPositioner;
-  Popup: typeof PopoverPopup;
-  Portal: typeof PopoverPortal;
   Root: typeof PopoverRoot;
   Trigger: typeof PopoverTrigger;
+  Anchor: typeof PopoverAnchor;
+  Portal: typeof PopoverPortal;
+  Positioner: typeof PopoverPositioner;
+  Popup: typeof PopoverPopup;
+  Arrow: typeof PopoverArrow;
+  Close: typeof PopoverClose;
 };
 
 export const Popper = {
+  Root: PopperRoot,
   Anchor: PopperAnchor,
-  Arrow: PopperArrow,
   Popup: PopperPopup,
-  Positioner: PopperPositioner,
-  Root: PopperRoot
+  Arrow: PopperArrow,
+  Positioner: PopperPositioner
 } as {
-  Anchor: typeof PopperAnchor;
-  Arrow: typeof PopperArrow;
-  Popup: typeof PopperPopup;
-  Positioner: typeof PopperPositioner;
   Root: typeof PopperRoot;
+  Anchor: typeof PopperAnchor;
+  Popup: typeof PopperPopup;
+  Arrow: typeof PopperArrow;
+  Positioner: typeof PopperPositioner;
 };
 
 export { Portal };
@@ -696,17 +706,17 @@ export { Portal };
 export { Primitive };
 
 export const RadioGroup = {
+  Root: RadioGroupRoot,
+  Item: RadioGroupItem,
   Control: RadioGroupControl,
   Indicator: RadioGroupIndicator,
-  Item: RadioGroupItem,
-  Label: RadioGroupLabel,
-  Root: RadioGroupRoot
+  Label: RadioGroupLabel
 } as {
+  Root: typeof RadioGroupRoot;
+  Item: typeof RadioGroupItem;
   Control: typeof RadioGroupControl;
   Indicator: typeof RadioGroupIndicator;
-  Item: typeof RadioGroupItem;
   Label: typeof RadioGroupLabel;
-  Root: typeof RadioGroupRoot;
 };
 
 export const RovingFocus = {
@@ -718,113 +728,133 @@ export const RovingFocus = {
 };
 
 export const Select = {
-  Arrow: SelectArrow,
+  Root: SelectRoot,
+  Trigger: SelectTrigger,
+  Portal: SelectPortal,
   Content: SelectContent,
-  GroupLabel: SelectGroupLabel,
+  Viewport: SelectViewport,
   Group: SelectGroup,
+  GroupLabel: SelectGroupLabel,
   Item: SelectItem,
   ItemIndicator: SelectItemIndicator,
   ItemText: SelectItemText,
-  Portal: SelectPortal,
-  Root: SelectRoot,
-  ScrollDownButton: SelectScrollDownButton,
-  ScrollUpButton: SelectScrollUpButton,
-  Separator: SelectSeparator,
-  Trigger: SelectTrigger,
-  TriggerIcon: SelectTriggerIcon,
   Value: SelectValue,
-  Viewport: SelectViewport
+  TriggerIcon: SelectTriggerIcon,
+  ScrollUpButton: SelectScrollUpButton,
+  ScrollDownButton: SelectScrollDownButton,
+  Separator: SelectSeparator,
+  Arrow: SelectArrow
 } as {
-  Arrow: typeof SelectArrow;
+  Root: typeof SelectRoot;
+  Trigger: typeof SelectTrigger;
+  Portal: typeof SelectPortal;
   Content: typeof SelectContent;
-  GroupLabel: typeof SelectGroupLabel;
+  Viewport: typeof SelectViewport;
   Group: typeof SelectGroup;
+  GroupLabel: typeof SelectGroupLabel;
   Item: typeof SelectItem;
   ItemIndicator: typeof SelectItemIndicator;
   ItemText: typeof SelectItemText;
-  Portal: typeof SelectPortal;
-  Root: typeof SelectRoot;
-  ScrollDownButton: typeof SelectScrollDownButton;
-  ScrollUpButton: typeof SelectScrollUpButton;
-  Separator: typeof SelectSeparator;
-  Trigger: typeof SelectTrigger;
-  TriggerIcon: typeof SelectTriggerIcon;
   Value: typeof SelectValue;
-  Viewport: typeof SelectViewport;
+  TriggerIcon: typeof SelectTriggerIcon;
+  ScrollUpButton: typeof SelectScrollUpButton;
+  ScrollDownButton: typeof SelectScrollDownButton;
+  Separator: typeof SelectSeparator;
+  Arrow: typeof SelectArrow;
 };
 
 export const Separator = {
-  Label: SeparatorLabel,
-  Root: SeparatorRoot
+  Root: SeparatorRoot,
+  Label: SeparatorLabel
 } as {
-  Label: typeof SeparatorLabel;
   Root: typeof SeparatorRoot;
+  Label: typeof SeparatorLabel;
 };
 
 export { Slot };
 
 export const Switch = {
-  Control: SwitchControl,
   Root: SwitchRoot,
+  Control: SwitchControl,
   Thumb: SwitchThumb
 } as {
-  Control: typeof SwitchControl;
   Root: typeof SwitchRoot;
+  Control: typeof SwitchControl;
   Thumb: typeof SwitchThumb;
 };
 
 export const Tabs = {
-  Content: TabsContent,
-  Indicator: TabsIndicator,
-  List: TabsList,
   Root: TabsRoot,
-  Trigger: TabsTrigger
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+  Indicator: TabsIndicator
 } as {
+  Root: typeof TabsRoot;
+  List: typeof TabsList;
+  Trigger: typeof TabsTrigger;
   Content: typeof TabsContent;
   Indicator: typeof TabsIndicator;
-  List: typeof TabsList;
-  Root: typeof TabsRoot;
-  Trigger: typeof TabsTrigger;
 };
 
 export { Tag };
 
 export const Textarea = {
+  Root: TextareaRoot,
   Control: TextareaControl,
-  Counter: TextareaCounter,
-  Root: TextareaRoot
+  Counter: TextareaCounter
 } as {
+  Root: typeof TextareaRoot;
   Control: typeof TextareaControl;
   Counter: typeof TextareaCounter;
-  Root: typeof TextareaRoot;
+};
+
+export const Toast = {
+  Provider: ToastProvider,
+  Root: ToastRoot,
+  Viewport: ToastViewport,
+  Portal: ToastPortal,
+  Action: ToastAction,
+  Title: ToastTitle,
+  Description: ToastDescription,
+  Close: ToastClose
+} as {
+  Provider: typeof ToastProvider;
+  Root: typeof ToastRoot;
+  Viewport: typeof ToastViewport;
+  Portal: typeof ToastPortal;
+  Action: typeof ToastAction;
+  Title: typeof ToastTitle;
+  Description: typeof ToastDescription;
+  Close: typeof ToastClose;
 };
 
 export const Tooltip = {
-  Arrow: TooltipArrow,
-  Popup: TooltipPopup,
+  Root: TooltipRoot,
+  Trigger: TooltipTrigger,
   Portal: TooltipPortal,
   Positioner: TooltipPositioner,
-  Root: TooltipRoot,
-  Trigger: TooltipTrigger
+  Popup: TooltipPopup,
+  Arrow: TooltipArrow
 } as {
-  Arrow: typeof TooltipArrow;
-  Popup: typeof TooltipPopup;
-  Portal: typeof TooltipPortal;
-  Positioner: typeof TooltipPositioner;
   Root: typeof TooltipRoot;
   Trigger: typeof TooltipTrigger;
+  Portal: typeof TooltipPortal;
+  Positioner: typeof TooltipPositioner;
+  Popup: typeof TooltipPopup;
+  Arrow: typeof TooltipArrow;
 };
 
 export const Tree = {
-  Item: TreeItem,
   Root: TreeRoot,
-  VirtualizerItem: TreeVirtualizerItem,
-  VirtualizerRoot: TreeVirtualizerRoot
+  Item: TreeItem,
+  VirtualizerRoot: TreeVirtualizerRoot,
+  VirtualizerItem: TreeVirtualizerItem
 } as {
-  Item: typeof TreeItem;
   Root: typeof TreeRoot;
-  VirtualizerItem: typeof TreeVirtualizerItem;
+  Item: typeof TreeItem;
   VirtualizerRoot: typeof TreeVirtualizerRoot;
+  VirtualizerItem: typeof TreeVirtualizerItem;
 };
 
 export const TreeMenu = {
@@ -848,11 +878,13 @@ export const TreeMenu = {
 };
 
 export const Virtualizer = {
+  Root: VirtualizerRoot,
   Content: VirtualizerContent,
-  Item: VirtualizerItem,
-  Root: VirtualizerRoot
+  Item: VirtualizerItem
 } as {
+  Root: typeof VirtualizerRoot;
   Content: typeof VirtualizerContent;
   Item: typeof VirtualizerItem;
-  Root: typeof VirtualizerRoot;
 };
+
+export { VisuallyHidden, VisuallyHiddenInput };

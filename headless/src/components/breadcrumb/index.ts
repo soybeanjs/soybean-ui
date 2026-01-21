@@ -1,20 +1,10 @@
-import BreadcrumbRoot from './breadcrumb-root.vue';
-import BreadcrumbList from './breadcrumb-list.vue';
-import BreadcrumbItem from './breadcrumb-item.vue';
-import BreadcrumbPage from './breadcrumb-page.vue';
-import BreadcrumbSeparator from './breadcrumb-separator.vue';
-import BreadcrumbEllipsis from './breadcrumb-ellipsis.vue';
-import BreadcrumbLink from './breadcrumb-link.vue';
-
-export {
-  BreadcrumbRoot,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
-  BreadcrumbLink
-};
+export { default as BreadcrumbRoot } from './breadcrumb-root.vue';
+export { default as BreadcrumbList } from './breadcrumb-list.vue';
+export { default as BreadcrumbItem } from './breadcrumb-item.vue';
+export { default as BreadcrumbLink } from './breadcrumb-link.vue';
+export { default as BreadcrumbPage } from './breadcrumb-page.vue';
+export { default as BreadcrumbSeparator } from './breadcrumb-separator.vue';
+export { default as BreadcrumbEllipsis } from './breadcrumb-ellipsis.vue';
 
 export { provideBreadcrumbUi } from './context';
 

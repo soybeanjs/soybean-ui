@@ -1,6 +1,4 @@
-import VisuallyHidden from './visually-hidden.vue';
-import VisuallyHiddenInput from './visually-hidden-input.vue';
-
-export { VisuallyHidden, VisuallyHiddenInput };
+export { default as VisuallyHidden } from './visually-hidden.vue';
+export { default as VisuallyHiddenInput } from './visually-hidden-input.vue';
 
 export type * from './types';

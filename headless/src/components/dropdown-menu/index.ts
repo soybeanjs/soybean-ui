@@ -1,23 +1,21 @@
 export { default as DropdownMenuRoot } from './dropdown-menu-root.vue';
 export { default as DropdownMenuTrigger } from './dropdown-menu-trigger.vue';
+export { MenuPortal as DropdownMenuPortal } from '../menu';
 export { default as DropdownMenuContent } from './dropdown-menu-content.vue';
-export {
-  MenuAnchor as DropdownMenuAnchor,
-  MenuArrow as DropdownMenuArrow,
-  MenuCheckboxGroup as DropdownMenuCheckboxGroup,
-  MenuCheckboxItem as DropdownMenuCheckboxItem,
-  MenuGroup as DropdownMenuGroup,
-  MenuGroupLabel as DropdownMenuGroupLabel,
-  MenuItem as DropdownMenuItem,
-  MenuItemIndicator as DropdownMenuItemIndicator,
-  MenuPortal as DropdownMenuPortal,
-  MenuRadioGroup as DropdownMenuRadioGroup,
-  MenuRadioItem as DropdownMenuRadioItem,
-  MenuSeparator as DropdownMenuSeparator,
-  MenuSub as DropdownMenuSub,
-  MenuSubContent as DropdownMenuSubContent,
-  MenuSubTrigger as DropdownMenuSubTrigger
-} from '../menu';
+export { MenuAnchor as DropdownMenuAnchor } from '../menu';
+export { MenuArrow as DropdownMenuArrow } from '../menu';
+export { MenuGroup as DropdownMenuGroup } from '../menu';
+export { MenuGroupLabel as DropdownMenuGroupLabel } from '../menu';
+export { MenuItem as DropdownMenuItem } from '../menu';
+export { MenuItemIndicator as DropdownMenuItemIndicator } from '../menu';
+export { MenuCheckboxItem as DropdownMenuCheckboxItem } from '../menu';
+export { MenuRadioItem as DropdownMenuRadioItem } from '../menu';
+export { MenuSub as DropdownMenuSub } from '../menu';
+export { MenuSubTrigger as DropdownMenuSubTrigger } from '../menu';
+export { MenuSubContent as DropdownMenuSubContent } from '../menu';
+export { MenuSeparator as DropdownMenuSeparator } from '../menu';
+export { MenuCheckboxGroup as DropdownMenuCheckboxGroup } from '../menu';
+export { MenuRadioGroup as DropdownMenuRadioGroup } from '../menu';
 
 export type {
   DropdownMenuRootProps,

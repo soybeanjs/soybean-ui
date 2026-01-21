@@ -1,22 +1,11 @@
-import TreeMenuRoot from './tree-menu-root.vue';
-import TreeMenuGroupRoot from './tree-menu-group-root.vue';
-import TreeMenuGroup from './tree-menu-group.vue';
-import TreeMenuGroupLabel from './tree-menu-group-label.vue';
-import TreeMenuItem from './tree-menu-item.vue';
-import TreeMenuButton from './tree-menu-button.vue';
-import TreeMenuCollapsible from './tree-menu-collapsible.vue';
-import TreeMenuSub from './tree-menu-sub.vue';
-
-export {
-  TreeMenuRoot,
-  TreeMenuGroupRoot,
-  TreeMenuGroup,
-  TreeMenuGroupLabel,
-  TreeMenuItem,
-  TreeMenuButton,
-  TreeMenuCollapsible,
-  TreeMenuSub
-};
+export { default as TreeMenuRoot } from './tree-menu-root.vue';
+export { default as TreeMenuGroupRoot } from './tree-menu-group-root.vue';
+export { default as TreeMenuGroup } from './tree-menu-group.vue';
+export { default as TreeMenuGroupLabel } from './tree-menu-group-label.vue';
+export { default as TreeMenuItem } from './tree-menu-item.vue';
+export { default as TreeMenuButton } from './tree-menu-button.vue';
+export { default as TreeMenuCollapsible } from './tree-menu-collapsible.vue';
+export { default as TreeMenuSub } from './tree-menu-sub.vue';
 
 export { provideTreeMenuUi, useTreeMenuUi, useTreeMenuRootContext } from './context';
 

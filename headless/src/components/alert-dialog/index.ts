@@ -1,14 +1,12 @@
-export {
-  DialogTrigger as AlertDialogTrigger,
-  DialogOverlay as AlertDialogOverlay,
-  DialogHeader as AlertDialogHeader,
-  DialogFooter as AlertDialogFooter,
-  DialogTitle as AlertDialogTitle,
-  DialogDescription as AlertDialogDescription
-} from '../dialog';
-export { default as AlertDialogPortal } from '../portal/portal.vue';
 export { default as AlertDialogRoot } from './alert-dialog-root.vue';
+export { DialogTrigger as AlertDialogTrigger } from '../dialog';
+export { default as AlertDialogPortal } from '../portal/portal.vue';
+export { DialogOverlay as AlertDialogOverlay } from '../dialog';
 export { default as AlertDialogContent } from './alert-dialog-content.vue';
+export { DialogHeader as AlertDialogHeader } from '../dialog';
+export { DialogTitle as AlertDialogTitle } from '../dialog';
+export { DialogDescription as AlertDialogDescription } from '../dialog';
+export { DialogFooter as AlertDialogFooter } from '../dialog';
 export { default as AlertDialogClose } from './alert-dialog-close.vue';
 
 export { provideDialogUi as provideAlertDialogUi } from '../dialog/context';
