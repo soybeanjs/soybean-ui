@@ -1,7 +1,8 @@
 import { computed, shallowRef } from 'vue';
 import { refAutoReset, useDebounceFn } from '@vueuse/core';
-import { useCollection, useContext, useDirection, useForwardElement, useUiContext } from '../../composables';
+import { useCollection, useContext, useForwardElement, useUiContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import type { NavigationMenuItemContextParams, NavigationMenuRootContextParams, NavigationMenuUiSlot } from './types';
 
 export const [provideNavigationMenuRootContext, useNavigationMenuRootContext] = useContext(

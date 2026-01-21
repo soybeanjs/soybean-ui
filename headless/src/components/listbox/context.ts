@@ -1,14 +1,8 @@
 import { computed, nextTick, shallowRef, useId } from 'vue';
 import { createEventHook } from '@vueuse/core';
-import {
-  useCollection,
-  useContext,
-  useDirection,
-  useForwardElement,
-  useTypeahead,
-  useUiContext
-} from '../../composables';
+import { useCollection, useContext, useForwardElement, useTypeahead, useUiContext } from '../../composables';
 import { findValuesBetween, getFocusIntent } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { provideInputUi } from '../input/context';
 import type {
   ListboxCollectionItemData,

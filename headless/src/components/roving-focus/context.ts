@@ -1,6 +1,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId } from 'vue';
 import { getFocusIntent, isElementHasAttribute, isNullish, tryFocusFirst, wrapArray } from '../../shared';
-import { useCollection, useContext, useControllableState, useDirection } from '../../composables';
+import { useCollection, useContext, useControllableState } from '../../composables';
+import { useDirection } from '../config-provider/context';
 import type { RovingFocusGroupContextParams, UseRovingFocusItemOptions } from './types';
 
 const ON_ENTRY_FOCUS = 'rovingFocusGroup.onEntryFocus';

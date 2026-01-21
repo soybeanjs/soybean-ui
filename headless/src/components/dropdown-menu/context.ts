@@ -1,6 +1,7 @@
 import { computed, shallowRef, watchEffect } from 'vue';
-import { useContext, useDirection } from '../../composables';
+import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { DROPDOWN_MENU_HOVER_OPEN } from './shared';
 import type { DropdownMenuHoverContextParams, DropdownMenuRootContextParams } from './types';
 

@@ -90,15 +90,6 @@ export interface GraceIntent {
   side: HorizontalSide;
 }
 
-/**
- * if padding or margin is number, it will be in px if padding or margin is true, it will be var(--scrollbar-width)
- * otherwise, it will be passed string
- */
-export type ScrollBodyOption = {
-  padding?: boolean | number | string;
-  margin?: boolean | number | string;
-};
-
 export interface SelectionProps<M extends boolean = false, N extends DefinedValue = string> {
   /**
    * The controlled value of the selected item(s).

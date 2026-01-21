@@ -1,7 +1,8 @@
 import { computed, ref, shallowRef, useId } from 'vue';
-import { useContext, useDirection, useUiContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
+import { useDirection } from '../config-provider/context';
 import { providePopperUi } from '../popper/context';
 import { provideSeparatorUi } from '../separator/context';
 import type {

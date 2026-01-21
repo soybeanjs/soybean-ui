@@ -1,7 +1,8 @@
 import { computed, shallowRef, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { useContext, useDirection, useUiContext } from '../../composables';
+import { useContext, useUiContext } from '../../composables';
 import { isNullish } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import type { AcceptableValue, DefinedValue } from '../../types';
 import type { TabsRootContextParams, TabsUiSlot } from './types';
 

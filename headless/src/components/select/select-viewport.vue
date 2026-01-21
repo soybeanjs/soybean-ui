@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
-import { useForwardElement, useNonce } from '../../composables';
+import { useForwardElement } from '../../composables';
+import { useNonce } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { useSelectContentContext, useSelectItemAlignedPositionContext, useSelectUi } from './context';
 import { CONTENT_MARGIN } from './shared';

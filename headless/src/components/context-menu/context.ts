@@ -1,6 +1,7 @@
 import { computed } from 'vue';
-import { useContext, useDirection, useForwardElement } from '../../composables';
+import { useContext, useForwardElement } from '../../composables';
 import { getDisclosureState } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import type { ContextMenuRootContextParams } from './types';
 
 export const [provideContextMenuRootContext, useContextMenuRootContext] = useContext(

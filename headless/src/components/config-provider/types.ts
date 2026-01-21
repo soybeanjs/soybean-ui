@@ -1,4 +1,4 @@
-import type { Direction, PropsToContext, ScrollBodyOption } from '../../types';
+import type { Direction, PropsToContext } from '../../types';
 import type { TooltipProviderProps } from '../tooltip/types';
 
 export interface ConfigProviderProps {
@@ -14,14 +14,6 @@ export interface ConfigProviderProps {
    * @defaultValue 'en'
    */
   locale?: string;
-  /**
-   * The global scroll body behavior of your application. This will be inherited by the related components.
-   *
-   * @type boolean
-   *
-   *   | ScrollBodyOption
-   */
-  scrollBody?: boolean | ScrollBodyOption;
   /**
    * The global `nonce` value of your application. This will be inherited by the related components.
    *
