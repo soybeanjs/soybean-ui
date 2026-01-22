@@ -1,6 +1,30 @@
 # Changelog
 
 
+## [v0.1.0](https://github.com/soybeanjs/soybean-ui/compare/v0.0.20...v0.1.0) (2026-01-22)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **docs**: add component development workflow documentation &nbsp;-&nbsp; by @soybeanjs [<samp>(162c2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/162c2114)
+- **link**: enhance slot binding for Link component and update styles &nbsp;-&nbsp; by @soybeanjs [<samp>(d41b3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d41b39e7)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **headless**: optimize components order and add missing components &nbsp;-&nbsp; by @soybeanjs [<samp>(06f22)</samp>](https://github.com/soybeanjs/soybean-ui/commit/06f22d55)
+- **variants**: remove unnecessary classes from layout and tabs content &nbsp;-&nbsp; by @soybeanjs [<samp>(57dc8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/57dc82b0)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **menus**: rename data entry to forms and reorder menu items &nbsp;-&nbsp; by @soybeanjs [<samp>(d2dcd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d2dcd8c8)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(45c3a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/45c3aeb3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.0.20](https://github.com/soybeanjs/soybean-ui/compare/v0.0.19...v0.0.20) (2026-01-21)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
