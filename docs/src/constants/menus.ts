@@ -13,16 +13,27 @@ export const menuData: MenuData[] = [
   {
     value: 'groupLayout',
     i18n: 'sidebar.layout',
-    items: ['layout', 'aspectRatio', 'separator']
+    items: ['aspectRatio', 'layout', 'separator']
   },
   {
     value: 'navigation',
     i18n: 'sidebar.navigation',
-    items: ['breadcrumb', 'navigationMenu', 'menu', 'command', 'tabs', 'pagination', 'tree', 'treeMenu']
+    items: [
+      'breadcrumb',
+      'command',
+      'contextMenu',
+      'dropdownMenu',
+      'menu',
+      'navigationMenu',
+      'pagination',
+      'tabs',
+      'tree',
+      'treeMenu'
+    ]
   },
   {
-    value: 'dataEntry',
-    i18n: 'sidebar.data_entry',
+    value: 'forms',
+    i18n: 'sidebar.forms',
     items: [
       'form',
       'label',
@@ -50,7 +61,7 @@ export const menuData: MenuData[] = [
   {
     value: 'overlay',
     i18n: 'sidebar.overlay',
-    items: ['dialog', 'alertDialog', 'drawer', 'popover', 'tooltip', 'dropdownMenu', 'contextMenu']
+    items: ['dialog', 'alertDialog', 'drawer', 'popover', 'tooltip']
   },
   {
     value: 'utilities',
