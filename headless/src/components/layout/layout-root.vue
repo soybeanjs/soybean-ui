@@ -14,6 +14,9 @@ defineOptions({
 const props = withDefaults(defineProps<LayoutRootProps>(), {
   open: undefined,
   defaultOpen: false,
+  side: 'left',
+  variant: 'sidebar',
+  collapsible: 'icon',
   sidebarWidth: 240,
   collapsedSidebarWidth: 50,
   isMobile: false,
