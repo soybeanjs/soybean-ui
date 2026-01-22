@@ -87,7 +87,7 @@
     "@soybeanjs/eslint-config": "^1.7.5",
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@soybeanjs/unocss-shadcn": "^0.3.3",
-    "@types/node": "^25.0.9",
+    "@types/node": "^25.0.10",
     "@unocss/cli": "^66.6.0",
     "@vitest/coverage-v8": "^4.0.17",
     "@vue/test-utils": "^2.4.6",
