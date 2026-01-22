@@ -47,7 +47,7 @@ const onClick = async (event: MouseEvent) => {
 
 <template>
   <Link
-    v-slot="{ isHref }"
+    v-slot="slotProps"
     v-bind="forwardedProps"
     :ref="setItemElement"
     :class="cls"
@@ -55,6 +55,6 @@ const onClick = async (event: MouseEvent) => {
     :aria-current="active ? 'page' : undefined"
     @click="onClick"
   >
-    <slot :is-href="isHref" />
+    <slot v-bind="slotProps" />
   </Link>
 </template>

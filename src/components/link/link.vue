@@ -26,7 +26,7 @@ const cls = computed(() => cn(variants, props.class));
 </script>
 
 <template>
-  <Link v-slot="{ isHref }" v-bind="props" :class="cls">
-    <slot :is-href="isHref" />
+  <Link v-slot="slotProps" v-bind="props" :class="cls">
+    <slot v-bind="slotProps" />
   </Link>
 </template>

@@ -11,6 +11,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<LinkProps>(), {
   as: 'a',
+  custom: undefined,
   external: undefined,
   prefetch: undefined,
   noPrefetch: undefined,
@@ -66,7 +67,7 @@ const target = computed(() => {
 });
 
 const forwardedProps = computed(() => {
-  const { as: _as, asChild: _asChild, ...rest } = props;
+  const { as: _as, asChild: _asChild, custom: _custom, ...rest } = props;
 
   const href = props.to || props.href;
 
@@ -92,10 +93,18 @@ const handleClick = (event: Event) => {
 </script>
 
 <template>
-  <Primitive v-if="isHref" v-bind="forwardedProps" :as="as" :as-child="asChild" @click="handleClick">
+  <Primitive v-if="isHref" v-bind="forwardedProps" :as="as" :as-child="asChild" data-link @click="handleClick">
     <slot :is-href="true" />
   </Primitive>
-  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwardedProps" @click="handleClick">
+  <component
+    :is="LinkComponent"
+    v-else
+    v-slot="slotProps"
+    v-bind="forwardedProps"
+    :custom="custom"
+    data-link
+    @click="handleClick"
+  >
     <slot :is-href="false" :is-active="slotProps?.isActive" :is-exact-active="slotProps?.isExactActive" />
   </component>
 </template>

@@ -13,7 +13,7 @@ const cls = useBreadcrumbUi('link');
 </script>
 
 <template>
-  <Link v-bind="props" :class="cls">
-    <slot />
+  <Link v-slot="slotProps" v-bind="props" :class="cls">
+    <slot v-bind="slotProps" />
   </Link>
 </template>
