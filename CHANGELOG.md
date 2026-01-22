@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.1.1](https://github.com/soybeanjs/soybean-ui/compare/v0.1.0...v0.1.1) (2026-01-23)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **layout**: add default props for side, variant, and collapsible &nbsp;-&nbsp; by @soybeanjs [<samp>(203e7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/203e7b0d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **types**: export ThemeOptions type from config provider &nbsp;-&nbsp; by @soybeanjs [<samp>(95f29)</samp>](https://github.com/soybeanjs/soybean-ui/commit/95f296e4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.0](https://github.com/soybeanjs/soybean-ui/compare/v0.0.20...v0.1.0) (2026-01-22)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
