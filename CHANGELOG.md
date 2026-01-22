@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.2](https://github.com/soybeanjs/soybean-ui/compare/v0.1.1...v0.1.2) (2026-01-23)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **types**: export ThemeOptions type from config provider &nbsp;-&nbsp; by @soybeanjs [<samp>(09613)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0961309f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.1](https://github.com/soybeanjs/soybean-ui/compare/v0.1.0...v0.1.1) (2026-01-23)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
