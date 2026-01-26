@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.1.3](https://github.com/soybeanjs/soybean-ui/compare/v0.1.2...v0.1.3) (2026-01-26)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tree-menu**: enhance TreeMenuStyledItem with computed classes and props interface &nbsp;-&nbsp; by @soybeanjs [<samp>(c6bc8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c6bc8082)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(75a7f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/75a7ffcb)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.2](https://github.com/soybeanjs/soybean-ui/compare/v0.1.1...v0.1.2) (2026-01-23)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
