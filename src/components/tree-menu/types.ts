@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue';
 import type {
   AsTag,
   ClassValue,
@@ -138,6 +139,10 @@ export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
 export type TreeMenuItemEmits = {
   selectDropdown: [value: string];
 };
+
+export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
+  ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>;
+}
 
 export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
 
