@@ -27,7 +27,7 @@
     "vue": "^3.5.27",
     "vue-i18n": "^11.2.8",
     "vue-router": "^4.6.4",
-    "zod": "^4.3.5"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^11.0.3",
@@ -41,7 +41,7 @@
     "markdown-it-link-attributes": "^4.0.1",
     "typescript": "^5.9.3",
     "unplugin-auto-import": "^21.0.0",
-    "unplugin-vue": "^7.1.0",
+    "unplugin-vue": "^7.1.1",
     "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-markdown": "^29.2.0",
     "unplugin-vue-router": "^0.19.2",
