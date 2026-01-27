@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.4](https://github.com/soybeanjs/soybean-ui/compare/v0.1.3...v0.1.4) (2026-01-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tree-menu**: extend TreeMenuOptionData with custom properties and update type definitions &nbsp;-&nbsp; by @soybeanjs [<samp>(12721)</samp>](https://github.com/soybeanjs/soybean-ui/commit/12721d8f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.3](https://github.com/soybeanjs/soybean-ui/compare/v0.1.2...v0.1.3) (2026-01-26)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
