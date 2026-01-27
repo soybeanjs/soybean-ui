@@ -13,8 +13,7 @@ const props = withDefaults(defineProps<TreeMenuRootProps>(), {
   defaultValue: '',
   defaultExpanded: () => [] as string[],
   collapsed: undefined,
-  defaultCollapsed: false,
-  collapsedWidth: 50
+  defaultCollapsed: false
 });
 
 const emit = defineEmits<TreeMenuRootEmits>();
