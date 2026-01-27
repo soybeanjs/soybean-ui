@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [v0.1.10](https://github.com/soybeanjs/soybean-ui/compare/v0.1.9...v0.1.10) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tree-menu**:
+  - add showGroupIcon prop to control group icon visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(62193)</samp>](https://github.com/soybeanjs/soybean-ui/commit/621932d1)
+  - enhance TreeMenuOption with new props for better customization &nbsp;-&nbsp; by @soybeanjs [<samp>(69033)</samp>](https://github.com/soybeanjs/soybean-ui/commit/69033371)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.9](https://github.com/soybeanjs/soybean-ui/compare/v0.1.8...v0.1.9) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
