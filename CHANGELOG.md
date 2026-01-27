@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.11](https://github.com/soybeanjs/soybean-ui/compare/v0.1.10...v0.1.11) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **menu**: add focus-visible outline to popup for better accessibility &nbsp;-&nbsp; by @soybeanjs [<samp>(f5509)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5509564)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.10](https://github.com/soybeanjs/soybean-ui/compare/v0.1.9...v0.1.10) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
