@@ -144,6 +144,8 @@ export type TreeMenuItemEmits = {
 };
 
 export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
+  class?: ClassValue;
+  size?: ThemeSize;
   ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>;
 }
 

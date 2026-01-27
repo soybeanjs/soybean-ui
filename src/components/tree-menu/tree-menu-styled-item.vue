@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useTreeMenuUi } from '@soybeanjs/headless';
-import { cn } from '@/theme/merge';
+import { mergeSlotVariants } from '@/theme';
+import { treeMenuVariants } from '@/variants/tree-menu';
 import type { TreeMenuStyledItemProps } from './types';
 
 defineOptions({
@@ -10,15 +10,18 @@ defineOptions({
 
 const props = defineProps<TreeMenuStyledItemProps>();
 
-const ui = useTreeMenuUi();
+const ui = computed(() => {
+  const variants = treeMenuVariants({
+    size: props.size
+  });
 
-const itemCls = computed(() => cn(ui.value.item, props.ui?.item));
-const buttonCls = computed(() => cn(ui.value.button, props.ui?.button));
+  return mergeSlotVariants(variants, props.ui, { item: props.class });
+});
 </script>
 
 <template>
-  <div :class="itemCls">
-    <button :class="buttonCls">
+  <div :class="ui.item">
+    <button :class="ui.button">
       <slot />
     </button>
   </div>
