@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.7](https://github.com/soybeanjs/soybean-ui/compare/v0.1.6...v0.1.7) (2026-01-27)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: update groupRoot margin styles for better layout &nbsp;-&nbsp; by @soybeanjs [<samp>(e3fb2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e3fb2eb4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.6](https://github.com/soybeanjs/soybean-ui/compare/v0.1.5...v0.1.6) (2026-01-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
