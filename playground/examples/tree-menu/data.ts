@@ -1,6 +1,10 @@
-import type { TreeMenuOptionData } from '@soybeanjs/ui';
+import type { TreeMenuBaseOptionData, TreeMenuOptionData } from '@soybeanjs/ui';
 
-export const treeMenuItems: TreeMenuOptionData[] = [
+interface TreeMenuExtendedOptionData extends TreeMenuBaseOptionData {
+  customProp?: string;
+}
+
+export const treeMenuItems: TreeMenuOptionData<TreeMenuExtendedOptionData>[] = [
   {
     label: 'Platform',
     value: 'platform',

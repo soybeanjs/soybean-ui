@@ -76,14 +76,17 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
   children?: TreeMenuBaseOptionData[];
 }
 
-export interface TreeMenuGroupOptionData {
+export interface TreeMenuGroupOptionData<T = TreeMenuBaseOptionData> {
   isGroup: true;
   label: string;
   value: string;
-  children: TreeMenuBaseOptionData[];
+  icon?: IconValue;
+  children: T[];
 }
 
-export type TreeMenuOptionData = TreeMenuBaseOptionData | TreeMenuGroupOptionData;
+export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> =
+  | T
+  | TreeMenuGroupOptionData<T>;
 
 export interface TreeMenuOptionProps {
   as?: AsTag;
@@ -101,7 +104,7 @@ export type TreeMenuExtraUiSlot =
 
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
-export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData> extends TreeMenuRootProps {
+export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> extends TreeMenuRootProps {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TreeMenuExtendedUi>;
@@ -111,7 +114,7 @@ export interface TreeMenuProps<T extends TreeMenuOptionData = TreeMenuOptionData
    * @default 'left'
    */
   side?: HorizontalSide;
-  items?: T[];
+  items?: TreeMenuOptionData<T>[];
   /**
    * The width of the sidebar menu when it's collapsed.
    *

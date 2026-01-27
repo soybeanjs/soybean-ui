@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends TreeMenuOptionData = TreeMenuOptionData">
+<script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import {
@@ -12,10 +12,11 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
+import Icon from '../icon/icon.vue';
 import TreeMenuOption from './tree-menu-option.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
 import { isGroupTreeMenu, treeMenuCssVars } from './shared';
-import type { TreeMenuEmits, TreeMenuOptionData, TreeMenuProps } from './types';
+import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 
 defineOptions({
   name: 'STreeMenu'
@@ -91,7 +92,10 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
     <slot name="top" />
     <template v-for="item in items" :key="item.value">
       <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)">
-        <TreeMenuGroupLabel>{{ item.label }}</TreeMenuGroupLabel>
+        <TreeMenuGroupLabel>
+          <Icon v-if="item.icon" :icon="item.icon" />
+          <span>{{ item.label }}</span>
+        </TreeMenuGroupLabel>
         <TreeMenuGroup>
           <TreeMenuOption v-for="child in item.children" :key="child.value" :item="child">
             <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
