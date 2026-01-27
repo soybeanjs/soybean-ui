@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const treeMenuVariants = tv({
   slots: {
     root: 'group flex-1 flex flex-col w-full h-full overflow-auto data-[state=collapsed]:w-[--soybean-tree-menu-collapsed-width] transition-[width,height]-200 ease-out',
-    groupRoot: '',
+    groupRoot: 'group-data-[state=collapsed]:mb-0',
     group: 'flex flex-col m-0 p-0 list-none',
     groupLabel: `flex items-center text-foreground/70 group-data-[state=collapsed]:size-0 group-data-[state=collapsed]:p-0 group-data-[state=collapsed]:opacity-0 group-data-[state=collapsed]:overflow-hidden transition-[height,padding,opacity]-200`,
     item: 'relative m-0 p-0 group-data-[state=collapsed]:hover:bg-sidebar-accent group-data-[state=collapsed]:hover:rounded-sm',
@@ -32,6 +32,7 @@ export const treeMenuVariants = tv({
     size: {
       xs: {
         root: 'gap-2 p-1.5 text-2xs data-[state=collapsed]:gap-0.75',
+        groupRoot: 'mb-0.75',
         groupLabel: 'h-6 gap-1 px-1.5 py-1 text-3xs',
         group: 'gap-0.75',
         button: 'gap-1.5 h-6 px-1.5 py-1 group-data-[state=collapsed]:w-6',
@@ -42,6 +43,7 @@ export const treeMenuVariants = tv({
       },
       sm: {
         root: 'gap-2.5 p-1.75 text-xs data-[state=collapsed]:gap-0.875',
+        groupRoot: 'mb-0.875',
         groupLabel: 'h-7 gap-1.5 px-1.75 py-1 text-2xs',
         group: 'gap-0.875',
         button: 'gap-1.75 h-7 px-1.75 py-1 group-data-[state=collapsed]:w-7',
@@ -51,7 +53,8 @@ export const treeMenuVariants = tv({
         itemAction: 'right-1.75'
       },
       md: {
-        root: 'gap-3 p-2 text-sm data-[state=collapsed]:gap-1',
+        root: 'gap-1 p-2 text-sm data-[state=collapsed]:gap-1',
+        groupRoot: 'mb-1',
         groupLabel: 'h-8 gap-2 px-2 py-1.5 text-xs',
         group: 'gap-1',
         button: 'gap-2 h-8 px-2 py-1.5 group-data-[state=collapsed]:w-8',
@@ -62,6 +65,7 @@ export const treeMenuVariants = tv({
       },
       lg: {
         root: 'gap-3.5 p-2.25 text-base data-[state=collapsed]:gap-1.25',
+        groupRoot: 'mb-1.25',
         groupLabel: 'h-9 gap-2.5 px-2.25 py-1.5 text-sm',
         group: 'gap-1.25',
         button: 'gap-2.25 h-9 px-2.25 py-1.5 group-data-[state=collapsed]:w-9',
@@ -72,6 +76,7 @@ export const treeMenuVariants = tv({
       },
       xl: {
         root: 'gap-4 p-2.5 text-lg data-[state=collapsed]:gap-1.5',
+        groupRoot: 'mb-1.5',
         groupLabel: 'h-10 gap-3 px-2.5 py-1.5 text-base',
         group: 'gap-1.5',
         button: 'gap-2.5 h-10 px-2.5 py-2 group-data-[state=collapsed]:w-10',
@@ -82,6 +87,7 @@ export const treeMenuVariants = tv({
       },
       '2xl': {
         root: 'gap-5 p-3 text-xl data-[state=collapsed]:gap-2',
+        groupRoot: 'mb-2',
         groupLabel: 'h-12 gap-3.5 px-3 py-2.5 text-lg',
         group: 'gap-2',
         button: 'gap-3 h-12 px-3 py-2.5 group-data-[state=collapsed]:w-12',
