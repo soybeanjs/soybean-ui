@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.9](https://github.com/soybeanjs/soybean-ui/compare/v0.1.8...v0.1.9) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **ui**: simplify linkProps handling and enhance link integration &nbsp;-&nbsp; by @soybeanjs [<samp>(ec72f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec72f06f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.8](https://github.com/soybeanjs/soybean-ui/compare/v0.1.7...v0.1.8) (2026-01-27)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
