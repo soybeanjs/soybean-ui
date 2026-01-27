@@ -14,9 +14,9 @@ const { size } = useSizeContext('LayoutTrigger');
 </script>
 
 <template>
-  <LayoutTrigger v-slot="{ open }" as-child>
-    <slot>
-      <ButtonIcon :icon="open ? 'lucide:panel-right' : 'lucide:panel-left'" :size="size" />
+  <LayoutTrigger v-slot="{ open }" as-child :size="size">
+    <slot :open="open">
+      <ButtonIcon :icon="open ? 'lucide:panel-right' : 'lucide:panel-left'" />
     </slot>
   </LayoutTrigger>
 </template>

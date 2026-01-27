@@ -21,6 +21,9 @@ const props = withDefaults(defineProps<LayoutRootProps>(), {
   collapsedSidebarWidth: 50,
   isMobile: false,
   mobileSidebarWidth: 240,
+  headerHeight: 56,
+  tabHeight: 44,
+  footerHeight: 48,
   pxToRem: (px: number) => px / 16
 });
 
@@ -45,10 +48,16 @@ const dataCollapsible = computed(() => (sidebarState.value === 'collapsed' ? pro
 const style = computed<CSSProperties>(() => {
   const sidebarWidth = props.pxToRem(props.sidebarWidth);
   const collapsedSidebarWidth = props.pxToRem(props.collapsedSidebarWidth);
+  const headerHeight = props.pxToRem(props.headerHeight);
+  const tabHeight = props.pxToRem(props.tabHeight);
+  const footerHeight = props.pxToRem(props.footerHeight);
 
   return {
     [layoutCssVars.sidebarWidth]: `${sidebarWidth}rem`,
-    [layoutCssVars.collapsedSidebarWidth]: `${collapsedSidebarWidth}rem`
+    [layoutCssVars.collapsedSidebarWidth]: `${collapsedSidebarWidth}rem`,
+    [layoutCssVars.headerHeight]: `${headerHeight}rem`,
+    [layoutCssVars.tabHeight]: `${tabHeight}rem`,
+    [layoutCssVars.footerHeight]: `${footerHeight}rem`
   };
 });
 

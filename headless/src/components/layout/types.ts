@@ -49,6 +49,21 @@ export interface LayoutRootProps extends /* @vue-ignore */ HTMLAttributes {
    */
   mobileSidebarWidth?: number;
   /**
+   * The height of the header. (px)
+   * @default 56
+   */
+  headerHeight?: number;
+  /**
+   * The height of the tab. (px)
+   * @default 44
+   */
+  tabHeight?: number;
+  /**
+   * The height of the footer. (px)
+   * @default 48
+   */
+  footerHeight?: number;
+  /**
    * The function to convert pixels to rem.
    *
    * @param px - The width in pixels

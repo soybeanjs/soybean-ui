@@ -143,10 +143,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
         :variant="variant"
         :collapsible="collapsible"
         :ui="{
-          main: 'gap-[--soybean-layout-spacing] px-[--soybean-layout-spacing] pb-[--soybean-layout-spacing]',
-          header: 'h-[calc(var(--soybean-layout-spacing)*3)]',
-          tab: 'h-[calc(var(--soybean-layout-spacing)*3)]',
-          footer: 'h-[calc(var(--soybean-layout-spacing)*3)]'
+          main: 'gap-[--soybean-layout-spacing] px-[--soybean-layout-spacing] pb-[--soybean-layout-spacing]'
         }"
       >
         <template #sidebar="{ open, collapsedSidebarWidth }">

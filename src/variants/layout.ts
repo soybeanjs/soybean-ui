@@ -29,9 +29,9 @@ export const layoutVariants = tv({
     ],
     trigger: '',
     main: 'relative flex flex-1 flex-col items-stretch bg-background',
-    header: 'relative flex items-center shrink-0',
-    tab: 'shrink-0',
-    footer: 'shrink-0'
+    header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
+    tab: 'shrink-0 h-[--soybean-layout-tab-height]',
+    footer: 'shrink-0 h-[--soybean-layout-footer-height]'
   },
   variants: {
     size: {
