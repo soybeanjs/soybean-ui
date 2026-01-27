@@ -94,15 +94,7 @@ onMounted(() => {
     <SCard title="SoybeanUI Playground" class="h-full">
       <template #extra>
         <div class="flex items-center gap-3">
-          <SLink
-            variant="ghost"
-            color="accent"
-            shape="square"
-            fit-content
-            href="https://github.com/soybean-ui/soybean-headless"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <SLink href="https://github.com/soybeanjs/soybean-ui">
             <SButtonIcon icon="lucide:github" size="lg" />
           </SLink>
           <ThemeConfigurator />
