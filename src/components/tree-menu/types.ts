@@ -127,6 +127,12 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
    * @default 16
    */
   indent?: number;
+  /**
+   * Whether to show the group icon.
+   *
+   * @default false
+   */
+  showGroupIcon?: boolean;
   groupRootProps?: TreeMenuGroupRootProps;
   groupProps?: TreeMenuGroupProps;
   groupLabelProps?: TreeMenuGroupLabelProps;

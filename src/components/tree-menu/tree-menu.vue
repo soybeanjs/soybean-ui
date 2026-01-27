@@ -53,6 +53,7 @@ const forwardedProps = useOmitProps(props, [
   'items',
   'collapsedWidth',
   'indent',
+  'showGroupIcon',
   'groupRootProps',
   'groupProps',
   'groupLabelProps',
@@ -93,7 +94,7 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
     <template v-for="item in items" :key="item.value">
       <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)">
         <TreeMenuGroupLabel>
-          <Icon v-if="item.icon" :icon="item.icon" />
+          <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
           <span>{{ item.label }}</span>
         </TreeMenuGroupLabel>
         <TreeMenuGroup>
