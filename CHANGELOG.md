@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.8](https://github.com/soybeanjs/soybean-ui/compare/v0.1.7...v0.1.8) (2026-01-27)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: remove unused useTreeMenuUi import and refactor styled item component &nbsp;-&nbsp; by @soybeanjs [<samp>(7e505)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7e505bb1)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.7](https://github.com/soybeanjs/soybean-ui/compare/v0.1.6...v0.1.7) (2026-01-27)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
