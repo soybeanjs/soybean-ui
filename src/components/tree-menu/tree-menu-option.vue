@@ -7,6 +7,7 @@ import {
   TreeMenuSub,
   useTreeMenuRootContext
 } from '@soybeanjs/headless';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import type { Placement } from '@soybeanjs/headless';
 import Link from '../link/link.vue';
 import Tooltip from '../tooltip/tooltip.vue';
@@ -33,6 +34,8 @@ type Slots = {
 };
 
 const slots = defineSlots<Slots>();
+
+const forwardedOptionProps = useOmitProps(props, ['as', 'item']);
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuOption');
 const { size, side } = useTreeMenuContext('TreeMenuOption');
@@ -89,8 +92,8 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
 </script>
 
 <template>
-  <TreeMenuItem v-if="!hasChildren" :as="as" :value="item.value" :disabled="item.disabled">
-    <TreeMenuButton v-if="isLink" as-child>
+  <TreeMenuItem v-if="!hasChildren" v-bind="itemProps" :as="as" :value="item.value" :disabled="item.disabled">
+    <TreeMenuButton v-if="isLink" v-bind="buttonProps" as-child>
       <Link v-slot="{ isHref }" v-bind="linkProps">
         <STreeMenuOptionSlot :item="item" :show-link-icon="isHref">
           <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
@@ -99,7 +102,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </STreeMenuOptionSlot>
       </Link>
     </TreeMenuButton>
-    <TreeMenuButton v-else>
+    <TreeMenuButton v-else v-bind="buttonProps">
       <STreeMenuOptionSlot :item="item">
         <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
@@ -112,10 +115,10 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
       </template>
     </Tooltip>
   </TreeMenuItem>
-  <TreeMenuItem v-else as-child :value="item.value" :disabled="item.disabled">
-    <TreeMenuCollapsible :as="as" :disabled-collapsible="collapsed">
+  <TreeMenuItem v-else v-bind="itemProps" as-child :value="item.value" :disabled="item.disabled">
+    <TreeMenuCollapsible v-bind="collapsibleProps" :as="as" :disabled-collapsible="collapsed">
       <template #trigger>
-        <TreeMenuButton disabled-active :data-child-active="childActive">
+        <TreeMenuButton v-bind="buttonProps" disabled-active :data-child-active="childActive">
           <STreeMenuOptionSlot :item="item">
             <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
               <slot :name="slotKey" v-bind="slotProps" />
@@ -123,8 +126,8 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           </STreeMenuOptionSlot>
         </TreeMenuButton>
       </template>
-      <TreeMenuSub>
-        <STreeMenuOption v-for="child in item.children" :key="child.value" :item="child">
+      <TreeMenuSub v-bind="subProps">
+        <STreeMenuOption v-for="child in item.children" :key="child.value" v-bind="forwardedOptionProps" :item="child">
           <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
             <slot :name="slotKey" v-bind="slotProps" />
           </template>

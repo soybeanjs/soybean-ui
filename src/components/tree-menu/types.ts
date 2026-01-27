@@ -4,6 +4,7 @@ import type {
   ClassValue,
   HorizontalSide,
   LinkBaseProps,
+  LinkProps,
   PropsToContext,
   TreeMenuBaseItemProps,
   TreeMenuButtonProps,
@@ -11,6 +12,7 @@ import type {
   TreeMenuGroupLabelProps,
   TreeMenuGroupProps,
   TreeMenuGroupRootProps,
+  TreeMenuItemProps,
   TreeMenuRootEmits,
   TreeMenuRootProps,
   TreeMenuSubProps,
@@ -91,6 +93,11 @@ export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 export interface TreeMenuOptionProps {
   as?: AsTag;
   item: TreeMenuBaseOptionData;
+  itemProps?: TreeMenuItemProps;
+  buttonProps?: TreeMenuButtonProps;
+  linkProps?: LinkProps;
+  collapsibleProps?: TreeMenuCollapsibleProps;
+  subProps?: TreeMenuSubProps;
 }
 
 export type TreeMenuExtraUiSlot =
@@ -104,7 +111,8 @@ export type TreeMenuExtraUiSlot =
 
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
-export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> extends TreeMenuRootProps {
+export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData>
+  extends TreeMenuRootProps, Omit<TreeMenuOptionProps, 'as' | 'item'> {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TreeMenuExtendedUi>;
@@ -136,9 +144,6 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
   groupRootProps?: TreeMenuGroupRootProps;
   groupProps?: TreeMenuGroupProps;
   groupLabelProps?: TreeMenuGroupLabelProps;
-  buttonProps?: Omit<TreeMenuButtonProps, 'disabledActive'>;
-  collapsibleProps?: Omit<TreeMenuCollapsibleProps, 'as' | 'asChild'>;
-  subProps?: Omit<TreeMenuSubProps, 'as' | 'asChild'>;
 }
 
 export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {

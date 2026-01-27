@@ -8,7 +8,7 @@ import {
   TreeMenuRoot,
   provideTreeMenuUi
 } from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
@@ -16,7 +16,7 @@ import Icon from '../icon/icon.vue';
 import TreeMenuOption from './tree-menu-option.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
 import { isGroupTreeMenu, treeMenuCssVars } from './shared';
-import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
+import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuGroupOptionData, TreeMenuProps } from './types';
 
 defineOptions({
   name: 'STreeMenu'
@@ -39,13 +39,14 @@ type Slots = {
   item: (props: { item: T }) => any;
   'item-leading': (props: { item: T }) => any;
   'item-trailing': (props: { item: T }) => any;
+  'group-label': (props: { item: TreeMenuGroupOptionData<T> }) => any;
 };
 
 const slots = defineSlots<Slots>();
 
 const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item-')) as (keyof Slots)[]);
 
-const forwardedProps = useOmitProps(props, [
+const forwardedRootProps = useOmitProps(props, [
   'class',
   'size',
   'side',
@@ -57,7 +58,17 @@ const forwardedProps = useOmitProps(props, [
   'groupRootProps',
   'groupProps',
   'groupLabelProps',
+  'itemProps',
   'buttonProps',
+  'linkProps',
+  'collapsibleProps',
+  'subProps'
+]);
+
+const forwardedOptionProps = usePickProps(props, [
+  'itemProps',
+  'buttonProps',
+  'linkProps',
   'collapsibleProps',
   'subProps'
 ]);
@@ -89,23 +100,25 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
 </script>
 
 <template>
-  <TreeMenuRoot v-bind="forwardedProps" :style="style" v-on="listeners">
+  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners">
     <slot name="top" />
     <template v-for="item in items" :key="item.value">
-      <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)">
-        <TreeMenuGroupLabel>
-          <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
-          <span>{{ item.label }}</span>
+      <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)" v-bind="groupRootProps">
+        <TreeMenuGroupLabel v-bind="groupLabelProps">
+          <slot name="group-label" :item="item">
+            <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
+            <span>{{ item.label }}</span>
+          </slot>
         </TreeMenuGroupLabel>
-        <TreeMenuGroup>
-          <TreeMenuOption v-for="child in item.children" :key="child.value" :item="child">
+        <TreeMenuGroup v-bind="groupProps">
+          <TreeMenuOption v-for="child in item.children" :key="child.value" v-bind="forwardedOptionProps" :item="child">
             <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
               <slot :name="slotKey" v-bind="slotProps" />
             </template>
           </TreeMenuOption>
         </TreeMenuGroup>
       </TreeMenuGroupRoot>
-      <TreeMenuOption v-else as="div" :item="item">
+      <TreeMenuOption v-else as="div" v-bind="forwardedOptionProps" :item="item">
         <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
         </template>
