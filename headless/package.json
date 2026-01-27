@@ -1,7 +1,7 @@
 {
   "name": "@soybeanjs/headless",
   "type": "module",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "packageManager": "pnpm@10.28.1",
   "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "author": {
@@ -64,46 +64,14 @@
   },
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    },
-    "./constants": {
-      "types": "./dist/constants/index.d.ts",
-      "import": "./dist/constants/index.js",
-      "require": "./dist/constants/index.js"
-    },
-    "./composables": {
-      "types": "./dist/composables/index.d.ts",
-      "import": "./dist/composables/index.js",
-      "require": "./dist/composables/index.js"
-    },
-    "./shared": {
-      "types": "./dist/shared/index.d.ts",
-      "import": "./dist/shared/index.js",
-      "require": "./dist/shared/index.js"
-    },
-    "./nuxt": {
-      "types": "./dist/nuxt/index.d.ts",
-      "import": "./dist/nuxt/index.js",
-      "require": "./dist/nuxt/index.js"
-    },
-    "./resolver": {
-      "types": "./dist/resolver/index.d.ts",
-      "import": "./dist/resolver/index.js",
-      "require": "./dist/resolver/index.js"
-    },
-    "./namespaced": {
-      "types": "./dist/namespaced/index.d.ts",
-      "import": "./dist/namespaced/index.js",
-      "require": "./dist/namespaced/index.js"
-    },
-    "./*": {
-      "types": "./dist/components/*/index.d.ts",
-      "import": "./dist/components/*/index.js",
-      "require": "./dist/components/*/index.js"
-    }
+    ".": "./src/index.ts",
+    "./constants": "./src/constants/index.ts",
+    "./composables": "./src/composables/index.ts",
+    "./shared": "./src/shared/index.ts",
+    "./nuxt": "./src/nuxt/index.ts",
+    "./resolver": "./src/resolver/index.ts",
+    "./namespaced": "./src/namespaced/index.ts",
+    "./*": "./src/components/*/index.ts"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",

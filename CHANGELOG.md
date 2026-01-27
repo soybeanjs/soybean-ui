@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [v0.1.5](https://github.com/soybeanjs/soybean-ui/compare/v0.1.4...v0.1.5) (2026-01-27)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **link**: remove unused custom prop and simplify href handling &nbsp;-&nbsp; by @soybeanjs [<samp>(98386)</samp>](https://github.com/soybeanjs/soybean-ui/commit/98386b20)
+- **tree-menu**: remove unused collapsedWidth prop from TreeMenuRootProps &nbsp;-&nbsp; by @soybeanjs [<samp>(7a4fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7a4fd36e)
+- **vite**: remove vite-plugin-vue-devtools from plugins &nbsp;-&nbsp; by @soybeanjs [<samp>(9c789)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9c7891ee)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.4](https://github.com/soybeanjs/soybean-ui/compare/v0.1.3...v0.1.4) (2026-01-27)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
