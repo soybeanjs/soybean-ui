@@ -9,15 +9,11 @@ const items = [
   },
   {
     label: 'Vue',
-    linkProps: {
-      href: 'https://vuejs.org'
-    }
+    href: 'https://vuejs.org'
   },
   {
     label: 'SoybeanUI',
-    linkProps: {
-      href: 'https://ui.soybeanjs.cn'
-    }
+    href: 'https://ui.soybeanjs.cn'
   }
 ] satisfies BreadcrumbOptionData[];
 </script>

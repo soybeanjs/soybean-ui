@@ -56,14 +56,22 @@ const ui = useMenuExtraUi();
     </SMenuItemSlot>
   </MenuGroupLabel>
   <MenuItem
-    v-else-if="item.linkProps"
+    v-else-if="item.to || item.href"
     v-bind="itemProps"
     as-child
     :disabled="item.disabled"
     :text-value="item.textValue"
     @select="emit('select', item, $event)"
   >
-    <Link v-slot="{ isHref }" v-bind="item.linkProps" :disabled="item.disabled">
+    <Link
+      v-slot="{ isHref }"
+      v-bind="linkProps"
+      :disabled="item.disabled"
+      :to="item.to"
+      :href="item.href"
+      :target="item.target"
+      :external="item.external"
+    >
       <SMenuItemSlot :icon="item.icon" :label="item.label">
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" />

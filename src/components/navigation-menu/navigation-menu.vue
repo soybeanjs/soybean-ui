@@ -35,6 +35,7 @@ const slots = defineSlots<Slots>();
 
 const optionPropKeys = [
   'itemProps',
+  'linkProps',
   'triggerProps',
   'contentProps',
   'viewportProps',

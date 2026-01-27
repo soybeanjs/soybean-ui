@@ -7,12 +7,13 @@ import type {
   BreadcrumbRootProps,
   BreadcrumbSeparatorProps,
   BreadcrumbUi,
-  ClassValue
+  ClassValue,
+  LinkBaseProps
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 
-export interface BreadcrumbOptionData {
+export interface BreadcrumbOptionData extends LinkBaseProps {
   /** The value of the option. */
   value?: string;
   /** The label to display in the option. */
@@ -25,12 +26,6 @@ export interface BreadcrumbOptionData {
   icon?: IconValue;
   /** Whether the option is disabled. */
   disabled?: boolean;
-  /**
-   * The link props
-   *
-   * if provided, the option will be a link.
-   */
-  linkProps?: BreadcrumbLinkProps;
 }
 
 export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends Omit<
@@ -56,6 +51,7 @@ export interface BreadcrumbProps<T extends BreadcrumbOptionData = BreadcrumbOpti
   ellipsis?: true | [number, number] | null;
   listProps?: BreadcrumbListProps;
   itemProps?: BreadcrumbItemProps;
+  linkProps?: BreadcrumbLinkProps;
   pageProps?: BreadcrumbPageProps;
   separatorProps?: BreadcrumbSeparatorProps;
   ellipsisProps?: BreadcrumbEllipsisProps;

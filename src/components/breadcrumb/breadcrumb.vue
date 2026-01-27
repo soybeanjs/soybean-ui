@@ -33,6 +33,7 @@ const forwardedRootProps = useOmitProps(props, [
   'ellipsis',
   'listProps',
   'itemProps',
+  'linkProps',
   'pageProps',
   'separatorProps',
   'ellipsisProps'
@@ -96,7 +97,15 @@ provideBreadcrumbUi(ui);
             <Icon v-if="item.icon" :icon="item.icon" />
           </slot>
           <slot :item="item">
-            <BreadcrumbLink v-if="item.linkProps" v-bind="item.linkProps">
+            <BreadcrumbLink
+              v-if="item.to || item.href"
+              v-bind="linkProps"
+              :disabled="item.disabled"
+              :to="item.to"
+              :href="item.href"
+              :target="item.target"
+              :external="item.external"
+            >
               <slot name="item-link" :item="item">{{ item.label }}</slot>
             </BreadcrumbLink>
             <BreadcrumbPage v-else v-bind="pageProps">

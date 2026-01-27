@@ -1,5 +1,6 @@
 import type {
   ClassValue,
+  LinkBaseProps,
   NavigationMenuContentEmits,
   NavigationMenuContentProps,
   NavigationMenuIndicatorProps,
@@ -18,7 +19,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 
-export interface NavigationMenuOptionData {
+export interface NavigationMenuOptionData extends LinkBaseProps {
   /** The value of the option. */
   value: string;
   /** The label to display in the option. */
@@ -33,12 +34,6 @@ export interface NavigationMenuOptionData {
   icon?: IconValue;
   /** Whether the option is disabled. */
   disabled?: boolean;
-  /**
-   * The link props
-   *
-   * if provided, the option will be a link.
-   */
-  linkProps?: NavigationMenuLinkProps;
   /** The children of the option. */
   children?: NavigationMenuOptionData[];
 }
@@ -60,6 +55,7 @@ export type NavigationMenuExtendedUi = NavigationMenuUi & NavigationMenuExtraUi;
 export interface NavigationMenuSubOptionProps {
   subItem: NavigationMenuOptionData;
   subItemProps?: NavigationMenuItemProps;
+  linkProps?: NavigationMenuLinkProps;
 }
 
 export type NavigationMenuSubOptionEmits = NavigationMenuLinkEmits;
@@ -67,6 +63,7 @@ export type NavigationMenuSubOptionEmits = NavigationMenuLinkEmits;
 export interface NavigationMenuOptionProps {
   item: NavigationMenuOptionData;
   itemProps?: NavigationMenuItemProps;
+  linkProps?: NavigationMenuLinkProps;
   triggerProps?: NavigationMenuTriggerProps;
   contentProps?: NavigationMenuContentProps;
   viewportProps?: NavigationMenuViewportProps;

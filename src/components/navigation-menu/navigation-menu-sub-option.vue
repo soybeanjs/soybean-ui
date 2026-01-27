@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { NavigationMenuItem, NavigationMenuLink } from '@soybeanjs/headless';
 import Icon from '../icon/icon.vue';
 import SNavigationMenuItemSlot from './navigation-menu-item-slot.vue';
@@ -10,7 +11,7 @@ defineOptions({
   name: 'SNavigationMenuSubOption'
 });
 
-defineProps<NavigationMenuSubOptionProps>();
+const props = defineProps<NavigationMenuSubOptionProps>();
 
 const emit = defineEmits<NavigationMenuSubOptionEmits>();
 
@@ -27,14 +28,29 @@ const slots = defineSlots<Slots>();
 const commonSlotKeys = useCommonSlotKeys(slots);
 
 const ui = useNavigationMenuExtraUi();
+
+const isLink = computed(() => Boolean(props.subItem.to || props.subItem.href));
+
+const linkProps = computed(() =>
+  isLink.value
+    ? {
+        ...props.linkProps,
+        disabled: props.subItem.disabled,
+        to: props.subItem.to,
+        href: props.subItem.href,
+        target: props.subItem.target,
+        external: props.subItem.external
+      }
+    : {}
+);
 </script>
 
 <template>
   <NavigationMenuItem v-bind="subItemProps" :value="subItem.value">
     <component
-      :is="subItem.linkProps ? NavigationMenuLink : 'div'"
-      v-bind="subItem.linkProps"
-      :disabled="subItem.linkProps ? subItem.disabled : undefined"
+      :is="isLink ? NavigationMenuLink : 'div'"
+      v-slot="slotProps"
+      v-bind="linkProps"
       @select="emit('select', $event)"
     >
       <SNavigationMenuItemSlot :icon="subItem.icon">
@@ -45,7 +61,7 @@ const ui = useNavigationMenuExtraUi();
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="subItem" />
         </template>
-        <template v-if="subItem.linkProps" #link-icon>
+        <template v-if="slotProps?.isHref" #link-icon>
           <slot name="item-link-icon" :item="subItem">
             <Icon icon="lucide:arrow-up-right" :class="ui.linkIcon" />
           </slot>

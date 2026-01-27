@@ -35,7 +35,7 @@ const menus: MenuOptionData<string>[] = [
     value: '07',
     label: 'Github',
     icon: 'simple-icons:github',
-    linkProps: { href: 'https://github.com', target: '_blank' }
+    href: 'https://github.com'
   },
   { value: '08', label: 'Support', icon: 'lucide:life-buoy' },
   { value: '09', label: 'API', icon: 'lucide:cloud', disabled: true, separator: true },

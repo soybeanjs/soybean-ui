@@ -2,6 +2,7 @@ import type {
   AcceptableBooleanValue,
   DefinedValue,
   KbdValue,
+  LinkBaseProps,
   MenuCheckboxGroupEmits,
   MenuCheckboxGroupProps,
   MenuCheckboxItemProps,
@@ -26,7 +27,7 @@ import type { LinkProps } from '../link/types';
 import type { KbdProps } from '../kbd/types';
 import type { IconValue } from '../icon/types';
 
-export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'disabled' | 'textValue'> {
+export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'disabled' | 'textValue'>, LinkBaseProps {
   /** The label to display in the menu. */
   label: string;
   /** The value of the option. */
@@ -47,12 +48,6 @@ export interface MenuOptionData<T = DefinedValue> extends Pick<MenuItemProps, 'd
   separator?: boolean;
   /** The shortcut of the option. */
   shortcut?: KbdValue | KbdValue[];
-  /**
-   * The link props
-   *
-   * if provided, the option will be a link.
-   */
-  linkProps?: LinkProps;
   /** The children of the option. */
   children?: MenuOptionData<T>[];
 }
@@ -68,6 +63,7 @@ export type MenuExtendedUi = MenuUi & MenuExtraUi;
 export interface MenuOptionProps<T extends DefinedValue = DefinedValue> {
   item: MenuOptionData<T>;
   itemProps?: MenuItemProps;
+  linkProps?: LinkProps;
   groupProps?: MenuGroupProps;
   groupLabelProps?: MenuGroupLabelProps;
   subProps?: MenuSubProps;

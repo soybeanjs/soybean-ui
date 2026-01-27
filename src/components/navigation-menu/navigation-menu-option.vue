@@ -19,7 +19,7 @@ defineOptions({
   name: 'SNavigationMenuOption'
 });
 
-defineProps<NavigationMenuOptionProps>();
+const props = defineProps<NavigationMenuOptionProps>();
 
 const emit = defineEmits<NavigationMenuOptionEmits>();
 
@@ -41,6 +41,21 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 const commonSlotKeys = useCommonSlotKeys(slots);
 
 const ui = useNavigationMenuExtraUi();
+
+const isLink = computed(() => Boolean(props.item.to || props.item.href));
+
+const linkProps = computed(() =>
+  isLink.value
+    ? {
+        ...props.linkProps,
+        disabled: props.item.disabled,
+        to: props.item.to,
+        href: props.item.href,
+        target: props.item.target,
+        external: props.item.external
+      }
+    : {}
+);
 </script>
 
 <template>
@@ -48,8 +63,7 @@ const ui = useNavigationMenuExtraUi();
     <NavigationMenuLink
       v-if="!item.children?.length"
       v-slot="{ isHref }"
-      v-bind="item.linkProps"
-      :disabled="item.disabled"
+      v-bind="linkProps"
       @select="emit('select', $event)"
     >
       <NavigationMenuItemSlot :icon="item.icon">
@@ -65,12 +79,8 @@ const ui = useNavigationMenuExtraUi();
       </NavigationMenuItemSlot>
     </NavigationMenuLink>
     <template v-else>
-      <NavigationMenuTrigger v-bind="triggerProps" :disabled="item.disabled" :as-child="Boolean(item.linkProps)">
-        <component
-          :is="item.linkProps ? NavigationMenuLink : 'template'"
-          v-bind="item.linkProps"
-          @select="emit('select', $event)"
-        >
+      <NavigationMenuTrigger v-bind="triggerProps" :disabled="item.disabled" :as-child="isLink">
+        <component :is="isLink ? NavigationMenuLink : 'template'" v-bind="linkProps" @select="emit('select', $event)">
           <NavigationMenuItemSlot :icon="item.icon">
             <span>{{ item.label }}</span>
             <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
