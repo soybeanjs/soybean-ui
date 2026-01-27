@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.1.6](https://github.com/soybeanjs/soybean-ui/compare/v0.1.5...v0.1.6) (2026-01-27)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **layout**: add customizable header, tab, and footer heights &nbsp;-&nbsp; by @soybeanjs [<samp>(17258)</samp>](https://github.com/soybeanjs/soybean-ui/commit/17258af0)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **home**: update GitHub link in the playground component &nbsp;-&nbsp; by @soybeanjs [<samp>(64e03)</samp>](https://github.com/soybeanjs/soybean-ui/commit/64e0322e)
+- **projects**: revert headless package.json exports &nbsp;-&nbsp; by @soybeanjs [<samp>(732c5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/732c5a88)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.5](https://github.com/soybeanjs/soybean-ui/compare/v0.1.4...v0.1.5) (2026-01-27)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
