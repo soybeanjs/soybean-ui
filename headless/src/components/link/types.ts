@@ -2,7 +2,8 @@ import type { HTMLAttributes } from 'vue';
 import type { RouteLocationRaw, RouterLinkProps } from 'vue-router';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface LinkProps extends PrimitiveProps, Omit<RouterLinkProps, 'to'>, /** @vue-ignore */ HTMLAttributes {
+export interface LinkProps
+  extends PrimitiveProps, Omit<RouterLinkProps, 'custom' | 'to'>, /** @vue-ignore */ HTMLAttributes {
   /**
    * Route Location the link should navigate to when clicked on.
    */

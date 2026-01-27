@@ -11,7 +11,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<LinkProps>(), {
   as: 'a',
-  custom: undefined,
   external: undefined,
   prefetch: undefined,
   noPrefetch: undefined,
@@ -48,11 +47,7 @@ const isHref = computed(() => {
     return true;
   }
 
-  if (!props.to && props.href) {
-    return true;
-  }
-
-  if (!props.to && !props.href) {
+  if (!props.to) {
     return true;
   }
 
@@ -67,21 +62,31 @@ const target = computed(() => {
 });
 
 const forwardedProps = computed(() => {
-  const { as: _as, asChild: _asChild, custom: _custom, ...rest } = props;
+  const { as: _as, asChild: _asChild, href: _href, to: _to, ...rest } = props;
 
-  const href = props.to || props.href;
+  const href = (typeof props.to === 'string' && props.to) || props.href;
 
-  return {
+  const result: Record<string, any> = {};
+
+  if (!isHref.value) {
+    result.to = props.to;
+  }
+
+  if ((isHref.value || !nuxt.value) && href) {
+    result.href = href;
+  }
+
+  Object.assign(result, {
     ...rest,
-    ...attrs,
     target: target.value,
-    to: isHref.value ? undefined : href,
-    href: !isHref.value && nuxt.value ? undefined : href,
     'data-disabled': props.disabled ? '' : undefined,
     'aria-disabled': props.disabled ? 'true' : undefined,
     role: props.disabled ? 'link' : undefined,
-    tabindex: props.disabled ? '-1' : props.tabindex
-  };
+    tabindex: props.disabled ? '-1' : props.tabindex,
+    ...attrs
+  });
+
+  return result;
 });
 
 const handleClick = (event: Event) => {
@@ -96,15 +101,7 @@ const handleClick = (event: Event) => {
   <Primitive v-if="isHref" v-bind="forwardedProps" :as="as" :as-child="asChild" data-link @click="handleClick">
     <slot :is-href="true" />
   </Primitive>
-  <component
-    :is="LinkComponent"
-    v-else
-    v-slot="slotProps"
-    v-bind="forwardedProps"
-    :custom="custom"
-    data-link
-    @click="handleClick"
-  >
+  <component :is="LinkComponent" v-else v-slot="slotProps" v-bind="forwardedProps" data-link @click="handleClick">
     <slot :is-href="false" :is-active="slotProps?.isActive" :is-exact-active="slotProps?.isExactActive" />
   </component>
 </template>
