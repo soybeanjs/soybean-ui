@@ -42,7 +42,10 @@ const { size, side } = useTreeMenuContext('TreeMenuOption');
 const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
-const hasChildren = computed(() => Boolean(props.item.children?.filter(child => !child.hidden)?.length));
+
+const children = computed(() => props.item.children?.filter(child => !child.hidden) ?? []);
+
+const hasChildren = computed(() => Boolean(children.value.length));
 
 const childActive = computed(() => isChildActive(props.item, modelValue.value));
 
@@ -127,8 +130,8 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </TreeMenuButton>
       </template>
       <TreeMenuSub v-bind="subProps">
-        <template v-for="child in item.children" :key="child.value">
-          <STreeMenuOption v-if="!child.hidden" v-bind="forwardedOptionProps" :item="child">
+        <template v-for="child in children" :key="child.value">
+          <STreeMenuOption v-bind="forwardedOptionProps" :item="child">
             <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
               <slot :name="slotKey" v-bind="slotProps" />
             </template>
@@ -139,7 +142,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         <DropdownMenu
           v-if="showDropdown"
           v-bind="dropdownMenuProps"
-          :items="item.children ?? []"
+          :items="children"
           :disabled="item.disabled"
           :size="size"
           :data-menu="item.label"
