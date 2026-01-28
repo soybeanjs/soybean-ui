@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.12](https://github.com/soybeanjs/soybean-ui/compare/v0.1.11...v0.1.12) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: change TreeMenuGroupOptionData to a type and remove redundant properties &nbsp;-&nbsp; by @soybeanjs [<samp>(40685)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4068590e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.11](https://github.com/soybeanjs/soybean-ui/compare/v0.1.10...v0.1.11) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
