@@ -29,6 +29,10 @@ import type { DropdownMenuProps } from '../dropdown-menu/types';
 
 export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {
   /**
+   * Whether the option is a group. only the first-level options can be groups.
+   */
+  isGroup?: boolean;
+  /**
    * The label of the option.
    */
   label: string;
@@ -36,6 +40,10 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
    * The icon of the option.
    */
   icon?: IconValue;
+  /**
+   * Whether the option is hidden.
+   */
+  hidden?: boolean;
   /**
    * The badge of the option.
    */
@@ -72,32 +80,18 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
    * The callback function when an action is selected.
    */
   onActionSelect?: (action: MenuOptionData) => void;
+}
+
+export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> = T & {
   /**
    * The children of the option.
    */
-  children?: TreeMenuBaseOptionData[];
-}
-
-export type TreeMenuGroupOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> = T & {
-  isGroup: true;
-  children: T[];
+  children?: TreeMenuOptionData<T>[];
 };
-
-export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> =
-  | T
-  | TreeMenuGroupOptionData<T>;
 
 export interface TreeMenuOptionProps {
   as?: AsTag;
-  item: TreeMenuBaseOptionData;
-  /**
-   * The function to determine if an item is visible.
-   * @param item
-   * @param isGroup
-   *
-   * @default () => true
-   */
-  itemVisible?: (item: TreeMenuBaseOptionData, isGroup?: boolean) => boolean;
+  item: TreeMenuOptionData;
   itemProps?: TreeMenuItemProps;
   buttonProps?: TreeMenuButtonProps;
   linkProps?: LinkProps;
@@ -128,14 +122,6 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
    */
   side?: HorizontalSide;
   items?: TreeMenuOptionData<T>[];
-  /**
-   * The function to determine if an item is visible.
-   * @param item
-   * @param isGroup
-   *
-   * @default () => true
-   */
-  itemVisible?: (item: T, isGroup?: boolean) => boolean;
   /**
    * The width of the sidebar menu when it's collapsed.
    *

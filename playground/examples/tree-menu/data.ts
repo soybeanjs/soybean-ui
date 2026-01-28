@@ -2,7 +2,6 @@ import type { TreeMenuBaseOptionData, TreeMenuOptionData } from '@soybeanjs/ui';
 
 interface TreeMenuExtendedOptionData extends TreeMenuBaseOptionData {
   customProp?: string;
-  isHidden?: boolean;
 }
 
 export const treeMenuItems: TreeMenuOptionData<TreeMenuExtendedOptionData>[] = [
