@@ -113,14 +113,26 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
           </slot>
         </TreeMenuGroupLabel>
         <TreeMenuGroup v-bind="groupProps">
-          <TreeMenuOption v-for="child in item.children" :key="child.value" v-bind="forwardedOptionProps" :item="child">
+          <TreeMenuOption
+            v-for="child in item.children"
+            :key="child.value"
+            v-bind="forwardedOptionProps"
+            :item="child"
+            @select-dropdown="emit('selectDropdown', $event)"
+          >
             <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
               <slot :name="slotKey" v-bind="slotProps" />
             </template>
           </TreeMenuOption>
         </TreeMenuGroup>
       </TreeMenuGroupRoot>
-      <TreeMenuOption v-else as="div" v-bind="forwardedOptionProps" :item="item">
+      <TreeMenuOption
+        v-else
+        as="div"
+        v-bind="forwardedOptionProps"
+        :item="item"
+        @select-dropdown="emit('selectDropdown', $event)"
+      >
         <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
           <slot :name="slotKey" v-bind="slotProps" />
         </template>
