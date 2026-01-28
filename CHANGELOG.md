@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.0](https://github.com/soybeanjs/soybean-ui/compare/v0.1.13...v0.2.0) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **tree-menu**: refactor type definition and add hidden property &nbsp;-&nbsp; by @soybeanjs [<samp>(23110)</samp>](https://github.com/soybeanjs/soybean-ui/commit/23110eb3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.13](https://github.com/soybeanjs/soybean-ui/compare/v0.1.12...v0.1.13) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
