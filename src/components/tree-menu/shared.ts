@@ -19,7 +19,7 @@ export function filterHiddenMenus<T extends TreeMenuBaseOptionData>(menus?: Tree
   return menus
     ?.filter(menu => !menu.hidden)
     .map(menu => {
-      const newMenu = menu;
+      const newMenu = { ...menu };
       if (newMenu.children && newMenu.children.length > 0) {
         newMenu.children = filterHiddenMenus(newMenu.children);
       }
