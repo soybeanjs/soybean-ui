@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.5](https://github.com/soybeanjs/soybean-ui/compare/v0.2.4...v0.2.5) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: adjust spacing and padding for size variants in TreeMenu &nbsp;-&nbsp; by @soybeanjs [<samp>(f9249)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f924960c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.4](https://github.com/soybeanjs/soybean-ui/compare/v0.2.3...v0.2.4) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
