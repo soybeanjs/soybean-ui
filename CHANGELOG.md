@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.6](https://github.com/soybeanjs/soybean-ui/compare/v0.2.5...v0.2.6) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tree-menu**: enhance filtering logic for hidden menus and update child visibility checks &nbsp;-&nbsp; by @soybeanjs [<samp>(4bd8a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4bd8a2ee)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.5](https://github.com/soybeanjs/soybean-ui/compare/v0.2.4...v0.2.5) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
