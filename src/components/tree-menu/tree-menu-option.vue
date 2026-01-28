@@ -22,7 +22,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TreeMenuOptionProps>(), {
-  as: 'li'
+  as: 'li',
+  itemVisible: () => true
 });
 
 const emit = defineEmits<TreeMenuItemEmits>();
@@ -127,11 +128,13 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
         </TreeMenuButton>
       </template>
       <TreeMenuSub v-bind="subProps">
-        <STreeMenuOption v-for="child in item.children" :key="child.value" v-bind="forwardedOptionProps" :item="child">
-          <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
-            <slot :name="slotKey" v-bind="slotProps" />
-          </template>
-        </STreeMenuOption>
+        <template v-for="child in item.children" :key="child.value">
+          <STreeMenuOption v-if="itemVisible(child)" v-bind="forwardedOptionProps" :item="child">
+            <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
+              <slot :name="slotKey" v-bind="slotProps" />
+            </template>
+          </STreeMenuOption>
+        </template>
       </TreeMenuSub>
       <template #extra>
         <DropdownMenu

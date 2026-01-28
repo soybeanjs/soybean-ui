@@ -62,7 +62,8 @@ const forwardedRootProps = useOmitProps(props, [
   'buttonProps',
   'linkProps',
   'collapsibleProps',
-  'subProps'
+  'subProps',
+  'itemVisible'
 ]);
 
 const forwardedOptionProps = usePickProps(props, [
@@ -93,6 +94,14 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
+const getItemVisible = <S extends TreeMenuBaseOptionData>(item: S, isGroup?: boolean) => {
+  if (props.itemVisible !== undefined) {
+    return props.itemVisible(item as unknown as T, isGroup);
+  }
+
+  return true;
+};
+
 provideTreeMenuUi(ui);
 provideTreeMenuExtraUi(ui);
 
@@ -103,26 +112,42 @@ provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
   <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners">
     <slot name="top" />
     <template v-for="item in items" :key="item.value">
-      <TreeMenuGroupRoot v-if="isGroupTreeMenu(item)" v-bind="groupRootProps">
-        <TreeMenuGroupLabel v-bind="groupLabelProps">
-          <slot name="group-label" :item="item">
-            <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
-            <span>{{ item.label }}</span>
-          </slot>
-        </TreeMenuGroupLabel>
-        <TreeMenuGroup v-bind="groupProps">
-          <TreeMenuOption v-for="child in item.children" :key="child.value" v-bind="forwardedOptionProps" :item="child">
-            <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
-              <slot :name="slotKey" v-bind="slotProps" />
-            </template>
-          </TreeMenuOption>
-        </TreeMenuGroup>
-      </TreeMenuGroupRoot>
-      <TreeMenuOption v-else as="div" v-bind="forwardedOptionProps" :item="item">
-        <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
-          <slot :name="slotKey" v-bind="slotProps" />
-        </template>
-      </TreeMenuOption>
+      <template v-if="isGroupTreeMenu(item)">
+        <TreeMenuGroupRoot v-if="getItemVisible(item, true)" v-bind="groupRootProps">
+          <TreeMenuGroupLabel v-bind="groupLabelProps">
+            <slot name="group-label" :item="item">
+              <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
+              <span>{{ item.label }}</span>
+            </slot>
+          </TreeMenuGroupLabel>
+          <TreeMenuGroup v-bind="groupProps">
+            <TreeMenuOption
+              v-for="child in item.children"
+              :key="child.value"
+              v-bind="forwardedOptionProps"
+              :item="child"
+              :item-visible="getItemVisible"
+            >
+              <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
+                <slot :name="slotKey" v-bind="slotProps" />
+              </template>
+            </TreeMenuOption>
+          </TreeMenuGroup>
+        </TreeMenuGroupRoot>
+      </template>
+      <template v-else>
+        <TreeMenuOption
+          v-if="getItemVisible(item)"
+          as="div"
+          v-bind="forwardedOptionProps"
+          :item="item"
+          :item-visible="getItemVisible"
+        >
+          <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
+            <slot :name="slotKey" v-bind="slotProps" />
+          </template>
+        </TreeMenuOption>
+      </template>
     </template>
     <slot name="bottom" />
   </TreeMenuRoot>

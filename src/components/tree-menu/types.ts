@@ -90,6 +90,14 @@ export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
 export interface TreeMenuOptionProps {
   as?: AsTag;
   item: TreeMenuBaseOptionData;
+  /**
+   * The function to determine if an item is visible.
+   * @param item
+   * @param isGroup
+   *
+   * @default () => true
+   */
+  itemVisible?: (item: TreeMenuBaseOptionData, isGroup?: boolean) => boolean;
   itemProps?: TreeMenuItemProps;
   buttonProps?: TreeMenuButtonProps;
   linkProps?: LinkProps;
@@ -109,7 +117,7 @@ export type TreeMenuExtraUiSlot =
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
 export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData>
-  extends TreeMenuRootProps, Omit<TreeMenuOptionProps, 'as' | 'item'> {
+  extends TreeMenuRootProps, Omit<TreeMenuOptionProps, 'as' | 'item' | 'itemVisible'> {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TreeMenuExtendedUi>;
@@ -120,6 +128,14 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
    */
   side?: HorizontalSide;
   items?: TreeMenuOptionData<T>[];
+  /**
+   * The function to determine if an item is visible.
+   * @param item
+   * @param isGroup
+   *
+   * @default () => true
+   */
+  itemVisible?: (item: T, isGroup?: boolean) => boolean;
   /**
    * The width of the sidebar menu when it's collapsed.
    *
