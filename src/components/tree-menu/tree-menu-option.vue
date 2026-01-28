@@ -43,7 +43,7 @@ const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
-const children = computed(() => props.item.children?.filter(child => !child.hidden) ?? []);
+const children = computed(() => props.item.children ?? []);
 
 const hasChildren = computed(() => Boolean(children.value.length));
 

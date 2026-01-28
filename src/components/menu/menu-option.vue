@@ -85,7 +85,7 @@ const ui = useMenuExtraUi();
     </Link>
   </MenuItem>
   <MenuItem
-    v-else-if="!item.children"
+    v-else-if="!item.children?.length"
     v-bind="itemProps"
     :disabled="item.disabled"
     :text-value="item.textValue"

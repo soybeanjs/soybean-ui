@@ -15,7 +15,7 @@ import { treeMenuVariants } from '@/variants/tree-menu';
 import Icon from '../icon/icon.vue';
 import TreeMenuOption from './tree-menu-option.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
-import { treeMenuCssVars } from './shared';
+import { filterHiddenMenus, treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 
 defineOptions({
@@ -85,7 +85,7 @@ const style = computed<CSSProperties>(() => {
   };
 });
 
-const items = computed(() => props.items?.filter(item => !item.hidden) ?? []);
+const items = computed(() => filterHiddenMenus(props.items));
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
