@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.7](https://github.com/soybeanjs/soybean-ui/compare/v0.2.6...v0.2.7) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tree-menu**: ensure new menu objects are created in filterHiddenMenus function &nbsp;-&nbsp; by @soybeanjs [<samp>(5579b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5579b369)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.6](https://github.com/soybeanjs/soybean-ui/compare/v0.2.5...v0.2.6) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
