@@ -9,9 +9,9 @@ export interface LinkProps
    */
   to?: RouteLocationRaw;
   /**
-   * An alias for `to`. If used with `to`, `href` will be ignored
+   * The URL the link should navigate to when clicked on.
    */
-  href?: LinkProps['to'];
+  href?: string;
   /**
    * When `true`, the link is disabled.
    */
