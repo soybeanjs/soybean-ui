@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [v0.2.4](https://github.com/soybeanjs/soybean-ui/compare/v0.2.3...v0.2.4) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tree-menu**: update hasChildren computation to exclude hidden children &nbsp;-&nbsp; by @soybeanjs [<samp>(f3343)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f3343a51)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: improve children filtering logic in TreeMenuOption and TreeMenu &nbsp;-&nbsp; by @soybeanjs [<samp>(7955e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7955e36e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.3](https://github.com/soybeanjs/soybean-ui/compare/v0.2.2...v0.2.3) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
