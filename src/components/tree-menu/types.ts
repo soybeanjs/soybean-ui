@@ -78,13 +78,10 @@ export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseP
   children?: TreeMenuBaseOptionData[];
 }
 
-export interface TreeMenuGroupOptionData<T = TreeMenuBaseOptionData> {
+export type TreeMenuGroupOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> = T & {
   isGroup: true;
-  label: string;
-  value: string;
-  icon?: IconValue;
   children: T[];
-}
+};
 
 export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> =
   | T
