@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.1.13](https://github.com/soybeanjs/soybean-ui/compare/v0.1.12...v0.1.13) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tree-menu**: add item visibility control to tree menu options &nbsp;-&nbsp; by @soybeanjs [<samp>(70ac1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/70ac1c83)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.1.12](https://github.com/soybeanjs/soybean-ui/compare/v0.1.11...v0.1.12) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
