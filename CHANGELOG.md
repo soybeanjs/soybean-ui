@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [v0.2.3](https://github.com/soybeanjs/soybean-ui/compare/v0.2.2...v0.2.3) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **link**: update href prop description and type &nbsp;-&nbsp; by @soybeanjs [<samp>(3d935)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3d935300)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.2](https://github.com/soybeanjs/soybean-ui/compare/v0.2.1...v0.2.2) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
