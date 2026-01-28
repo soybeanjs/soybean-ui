@@ -26,6 +26,10 @@ const forwardedProps = useOmitProps(props, [
   'size',
   'ui',
   'items',
+  'placeholder',
+  'searchTerm',
+  'fuseOptions',
+  'emptyLabel',
   'listProps',
   'itemProps',
   'itemLabelProps',
@@ -34,10 +38,7 @@ const forwardedProps = useOmitProps(props, [
   'shortcutProps',
   'separatorProps',
   'inputProps',
-  'searchTerm',
-  'fuseOptions',
-  'emptyProps',
-  'emptyLabel'
+  'emptyProps'
 ]);
 
 const listeners = useForwardListeners(emit);
@@ -96,6 +97,11 @@ const listboxUi = computed(() => ({
   filterControl: ui.value.inputControl,
   itemIndicator: '',
   virtualizer: ''
+}));
+
+const inputProps = computed(() => ({
+  ...props.inputProps,
+  placeholder: props.placeholder ?? props.inputProps?.placeholder
 }));
 
 provideListboxUi(listboxUi);

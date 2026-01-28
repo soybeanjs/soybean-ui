@@ -112,6 +112,10 @@ export interface CommandProps<T extends CommandBaseOptionData = CommandBaseOptio
   size?: ThemeSize;
   ui?: Partial<CommandUi>;
   items: CommandOptionData<T>[];
+  placeholder?: string;
+  searchTerm?: string;
+  clearable?: boolean;
+  fuseOptions?: UseFuseOptions<CommandSearchOptionData>;
   listProps?: CommandListProps;
   itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;
@@ -120,9 +124,6 @@ export interface CommandProps<T extends CommandBaseOptionData = CommandBaseOptio
   shortcutProps?: CommandShortcutProps;
   separatorProps?: CommandSeparatorProps;
   inputProps?: CommandInputProps;
-  searchTerm?: string;
-  clearable?: boolean;
-  fuseOptions?: UseFuseOptions<CommandSearchOptionData>;
   emptyProps?: CommandEmptyProps;
   emptyLabel?: string;
 }
