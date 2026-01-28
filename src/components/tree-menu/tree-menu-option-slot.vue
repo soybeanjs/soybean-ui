@@ -19,7 +19,7 @@ const { collapsed } = useTreeMenuRootContext('TreeMenuOptionSlot');
 const { size } = useTreeMenuContext('TreeMenuOptionSlot');
 const ui = useTreeMenuExtraUi();
 
-const hasChildren = computed(() => Boolean(props.item.children?.length));
+const hasChildren = computed(() => Boolean(props.item.children?.filter(child => !child.hidden)?.length));
 
 const tagProps = computed(() => ({
   color: 'accent' as const,

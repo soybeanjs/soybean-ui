@@ -42,7 +42,7 @@ const { size, side } = useTreeMenuContext('TreeMenuOption');
 const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
-const hasChildren = computed(() => Boolean(props.item.children?.length));
+const hasChildren = computed(() => Boolean(props.item.children?.filter(child => !child.hidden)?.length));
 
 const childActive = computed(() => isChildActive(props.item, modelValue.value));
 
