@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [v0.2.8](https://github.com/soybeanjs/soybean-ui/compare/v0.2.7...v0.2.8) (2026-01-28)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tree-menu**:
+  - update open state logic in TreeMenuCollapsible component &nbsp;-&nbsp; by @soybeanjs [<samp>(5e892)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e892eb6)
+  - add select-dropdown event emission in TreeMenuOption component &nbsp;-&nbsp; by @soybeanjs [<samp>(7852c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7852cb0c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.7](https://github.com/soybeanjs/soybean-ui/compare/v0.2.6...v0.2.7) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
