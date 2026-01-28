@@ -19,7 +19,7 @@ import type {
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
 
-export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' | 'disabled'> {
+export interface CommandBaseOptionData extends Pick<CommandItemProps, 'value' | 'disabled'> {
   /**
    * The icon of the command item.
    *
@@ -34,11 +34,12 @@ export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' 
   shortcut?: KbdValue | KbdValue[];
 }
 
-export interface CommandGroupOptionData extends Pick<CommandSingleOptionData, 'separator' | 'label'> {
-  items: CommandSingleOptionData[];
-}
-
-export type CommandOptionData = CommandSingleOptionData | CommandGroupOptionData;
+export type CommandOptionData<T extends CommandBaseOptionData = CommandBaseOptionData> = T & {
+  /**
+   * The group option data. only the first level can be a group.
+   */
+  items?: T[];
+};
 
 export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -47,7 +48,7 @@ export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
 export interface CommandSeparatorProps extends SeparatorRootProps {}
 
 export interface CommandSingleOptionProps extends Omit<CommandItemProps, 'value' | 'disabled'> {
-  item: CommandSingleOptionData;
+  item: CommandBaseOptionData;
   itemLabelProps?: CommandItemLabelProps;
   shortcutProps?: CommandShortcutProps;
   separatorProps?: CommandSeparatorProps;
@@ -56,7 +57,7 @@ export interface CommandSingleOptionProps extends Omit<CommandItemProps, 'value'
 export type CommandSingleOptionEmits = CommandItemEmits;
 
 export interface CommandGroupOptionProps extends Omit<CommandGroupProps, 'onSelect'> {
-  item: CommandGroupOptionData;
+  item: CommandOptionData;
   groupLabelProps?: CommandGroupLabelProps;
   itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;
@@ -78,9 +79,8 @@ export interface CommandOptionProps {
 
 export type CommandOptionEmits = CommandItemEmits;
 
-export interface CommandSearchOptionData extends CommandSingleOptionData {
-  groupLabel?: string;
-  groupSeparator?: boolean;
+export interface CommandSearchOptionData extends CommandBaseOptionData {
+  isGroup?: boolean;
 }
 
 export interface CommandHighlightSearchOptionData extends CommandSearchOptionData {
@@ -101,7 +101,7 @@ export type CommandExtraUi = UiClass<CommandExtraUiSlot>;
 
 export type CommandUi = UiClass<CommandUiSlot | CommandExtraUiSlot>;
 
-export interface CommandProps<T extends CommandOptionData = CommandOptionData> extends Omit<
+export interface CommandProps<T extends CommandBaseOptionData = CommandBaseOptionData> extends Omit<
   CommandRootProps,
   'onSelect'
 > {
@@ -111,7 +111,7 @@ export interface CommandProps<T extends CommandOptionData = CommandOptionData> e
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<CommandUi>;
-  items: T[];
+  items: CommandOptionData<T>[];
   listProps?: CommandListProps;
   itemProps?: CommandItemProps;
   itemLabelProps?: CommandItemLabelProps;

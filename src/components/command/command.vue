@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends CommandOptionData = CommandOptionData">
+<script setup lang="ts" generic="T extends CommandBaseOptionData = CommandBaseOptionData">
 import { computed } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
@@ -11,7 +11,7 @@ import Icon from '../icon/icon.vue';
 import { provideCommandExtraUi } from './context';
 import SCommandOption from './command-option.vue';
 import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions } from './shared';
-import type { CommandEmits, CommandOptionData, CommandProps } from './types';
+import type { CommandBaseOptionData, CommandEmits, CommandProps } from './types';
 
 defineOptions({
   name: 'SCommand'
@@ -64,7 +64,7 @@ const fuseOptions = computed(() =>
     fuseOptions: {
       ignoreLocation: true,
       threshold: 0.1,
-      keys: ['label', 'groupLabel']
+      keys: ['label']
     },
     resultLimit: 12,
     matchAllWhenSearchEmpty: true

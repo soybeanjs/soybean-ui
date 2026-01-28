@@ -2,8 +2,7 @@
 import { computed } from 'vue';
 import SCommandGroupOption from './command-group-option.vue';
 import SCommandSingleOption from './command-single-option.vue';
-import { isCommandGroupOption } from './shared';
-import type { CommandOptionEmits, CommandOptionProps, CommandSingleOptionData } from './types';
+import type { CommandBaseOptionData, CommandOptionEmits, CommandOptionProps } from './types';
 
 defineOptions({
   name: 'SCommandOption',
@@ -15,9 +14,9 @@ defineProps<CommandOptionProps>();
 const emit = defineEmits<CommandOptionEmits>();
 
 type Slots = {
-  'item-leading': (props: { item: CommandSingleOptionData }) => any;
-  'item-trailing': (props: { item: CommandSingleOptionData }) => any;
-  'item-label': (props: { item: CommandSingleOptionData }) => any;
+  'item-leading': (props: { item: CommandBaseOptionData }) => any;
+  'item-trailing': (props: { item: CommandBaseOptionData }) => any;
+  'item-label': (props: { item: CommandBaseOptionData }) => any;
 };
 
 const slots = defineSlots<Slots>();
@@ -27,7 +26,7 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 
 <template>
   <SCommandGroupOption
-    v-if="isCommandGroupOption(item)"
+    v-if="item.items"
     v-bind="groupProps"
     :item="item"
     :group-label-props="groupLabelProps"

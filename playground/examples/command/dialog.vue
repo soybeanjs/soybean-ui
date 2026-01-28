@@ -9,6 +9,7 @@ const keys = useMagicKeys();
 const items: CommandOptionData[] = [
   {
     label: 'Suggestions',
+    value: 'suggestions',
     separator: true,
     items: [
       {
@@ -30,6 +31,7 @@ const items: CommandOptionData[] = [
   },
   {
     label: 'Settings',
+    value: 'settings',
     separator: true,
     items: [
       {

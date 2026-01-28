@@ -4,7 +4,7 @@ import { ListboxGroup, ListboxGroupLabel, SeparatorRoot } from '@soybeanjs/headl
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import SCommandSingleOption from './command-single-option.vue';
 import { useCommandExtraUi } from './context';
-import type { CommandGroupOptionEmits, CommandGroupOptionProps, CommandSingleOptionData } from './types';
+import type { CommandBaseOptionData, CommandGroupOptionEmits, CommandGroupOptionProps } from './types';
 
 defineOptions({
   name: 'SCommandGroupOption',
@@ -25,9 +25,9 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 type Slots = {
-  'item-leading': (props: { item: CommandSingleOptionData }) => any;
-  'item-trailing': (props: { item: CommandSingleOptionData }) => any;
-  'item-label': (props: { item: CommandSingleOptionData }) => any;
+  'item-leading': (props: { item: CommandBaseOptionData }) => any;
+  'item-trailing': (props: { item: CommandBaseOptionData }) => any;
+  'item-label': (props: { item: CommandBaseOptionData }) => any;
 };
 
 const slots = defineSlots<Slots>();

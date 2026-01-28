@@ -5,6 +5,7 @@ import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 const items: CommandOptionData[] = [
   {
     label: 'Suggestions',
+    value: 'suggestions',
     separator: true,
     items: [
       {
@@ -26,6 +27,7 @@ const items: CommandOptionData[] = [
   },
   {
     label: 'Settings',
+    value: 'settings',
     separator: true,
     items: [
       {

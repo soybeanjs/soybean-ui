@@ -1,26 +1,16 @@
 import type { FuseResult, FuseResultMatch } from 'fuse.js';
-import type {
-  CommandGroupOptionData,
-  CommandHighlightSearchOptionData,
-  CommandOptionData,
-  CommandSearchOptionData
-} from './types';
-
-export function isCommandGroupOption(item: CommandOptionData): item is CommandGroupOptionData {
-  return Boolean((item as CommandGroupOptionData)?.items);
-}
+import type { CommandHighlightSearchOptionData, CommandOptionData, CommandSearchOptionData } from './types';
 
 export function getCommandSearchOptions(items: CommandOptionData[]) {
   const searchOptions = items.flatMap(item => {
-    if (!isCommandGroupOption(item)) {
+    if (!item.items) {
       return [item as CommandSearchOptionData];
     }
 
-    return item.items.map(groupItem => {
+    return item.items.map(gItem => {
       const searchOption: CommandSearchOptionData = {
-        groupLabel: item.label,
-        groupSeparator: item.separator,
-        ...groupItem
+        ...gItem,
+        isGroup: true
       };
 
       return searchOption;
@@ -42,20 +32,26 @@ export function getCommandHighlightSearchOption(item: CommandSearchOptionData, s
 export function getCommandItemOptions(options: CommandHighlightSearchOptionData[]) {
   const itemsByGroup = options.reduce(
     (acc, item) => {
-      const { groupLabel, groupSeparator, ...rest } = item;
+      const { isGroup, ...rest } = item;
 
-      if (groupLabel) {
-        if (!acc[groupLabel]) {
-          acc[groupLabel] = {
-            label: groupLabel,
-            separator: groupSeparator,
-            items: []
+      if (isGroup) {
+        const { value, label, separator } = rest;
+
+        if (!acc[value]) {
+          acc[value] = {
+            value,
+            label,
+            separator
           };
         }
 
-        (acc[groupLabel] as CommandGroupOptionData).items.push(rest);
+        if (!acc[value].items) {
+          acc[value].items = [];
+        }
+
+        acc[value].items.push(rest);
       } else {
-        acc[item.label] = rest as CommandOptionData;
+        acc[item.label] = rest;
       }
 
       return acc;
