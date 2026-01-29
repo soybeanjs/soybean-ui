@@ -3,6 +3,7 @@ import { computed, shallowRef } from 'vue';
 import {
   SBreadcrumb,
   SButton,
+  SButtonIcon,
   SButtonGroup,
   SDropdownMenu,
   SIcon,
@@ -108,6 +109,8 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
     icon: 'lucide:dock'
   }
 ];
+
+const fullContent = shallowRef(false);
 </script>
 
 <template>
@@ -142,8 +145,11 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
         :side="side"
         :variant="variant"
         :collapsible="collapsible"
+        :full-content="fullContent"
         :ui="{
-          main: 'gap-[--soybean-layout-spacing] px-[--soybean-layout-spacing] pb-[--soybean-layout-spacing]'
+          header: 'border-b border-border',
+          tab: 'bg-background',
+          content: 'px-[--soybean-layout-spacing] border-y border-border bg-background'
         }"
       >
         <template #sidebar="{ open, collapsedSidebarWidth }">
@@ -174,7 +180,7 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
           </STreeMenu>
         </template>
         <template #header>
-          <div class="w-full flex items-center gap-2">
+          <div class="w-full flex items-center gap-2 px-[--soybean-layout-spacing]">
             <SLayoutTrigger v-if="side === 'left'" :size="size" />
             <SSeparator orientation="vertical" class="h-4" />
             <SBreadcrumb :items="breadcrumbItems" :size="size" :ui="{ list: 'gap-2' }" />
@@ -182,17 +188,16 @@ const breadcrumbItems: BreadcrumbOptionData[] = [
           </div>
         </template>
         <template #tab>
-          <div class="flex-y-center h-full px-[--soybean-layout-spacing] border border-border rounded-md">
-            This is Tab
+          <div class="flex-y-center justify-between h-full px-[--soybean-layout-spacing]">
+            <span>This is Tab</span>
+            <SButtonIcon :icon="fullContent ? 'lucide:shrink' : 'lucide:expand'" @click="fullContent = !fullContent" />
           </div>
         </template>
-        <div class="grow px-[--soybean-layout-spacing] border border-border rounded-md overflow-y-auto">
+        <div>
           <p v-for="i in 100" :key="i">This is Content {{ i }}</p>
         </div>
         <template #footer>
-          <div class="flex-y-center h-full px-[--soybean-layout-spacing] border border-border rounded-md">
-            This is Footer
-          </div>
+          <div class="flex-y-center h-full px-[--soybean-layout-spacing]">This is Footer</div>
         </template>
       </SLayout>
     </div>

@@ -31,6 +31,7 @@ export const layoutVariants = tv({
     main: 'relative flex flex-1 flex-col items-stretch bg-background',
     header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
     tab: 'shrink-0 h-[--soybean-layout-tab-height]',
+    content: 'grow overflow-auto',
     footer: 'shrink-0 h-[--soybean-layout-footer-height]'
   },
   variants: {
@@ -86,6 +87,12 @@ export const layoutVariants = tv({
         rail: `translate-x-0 after:left-full hover:bg-sidebar-background`
       },
       icon: {}
+    },
+    fullContent: {
+      true: {
+        tab: 'fixed left-0 top-0 z-10 w-full',
+        content: 'fixed inset-0 z-10 mt-[--soybean-layout-tab-height]'
+      }
     }
   },
   compoundVariants: [

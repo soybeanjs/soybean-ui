@@ -3,6 +3,7 @@ import type {
   LayoutFooterProps,
   LayoutHeaderProps,
   LayoutMainProps,
+  LayoutContentProps,
   LayoutMobileProps,
   LayoutRailProps,
   LayoutRootEmits,
@@ -17,12 +18,14 @@ export interface LayoutProps extends LayoutRootProps {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<LayoutUi>;
+  fullContent?: boolean;
   sidebarProps?: LayoutSidebarProps;
-  headerProps?: LayoutHeaderProps;
-  mainProps?: LayoutMainProps;
-  tabProps?: LayoutTabProps;
-  footerProps?: LayoutFooterProps;
   railProps?: LayoutRailProps;
+  mainProps?: LayoutMainProps;
+  headerProps?: LayoutHeaderProps;
+  tabProps?: LayoutTabProps;
+  contentProps?: LayoutContentProps;
+  footerProps?: LayoutFooterProps;
   mobileProps?: LayoutMobileProps;
 }
 

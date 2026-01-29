@@ -79,15 +79,17 @@ export type LayoutRootEmits = {
 
 export interface LayoutSidebarProps extends /* @vue-ignore */ HTMLAttributes {}
 
-export interface LayoutHeaderProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutRailProps extends /* @vue-ignore */ HTMLAttributes {}
 
 export interface LayoutMainProps extends /* @vue-ignore */ HTMLAttributes {}
 
+export interface LayoutHeaderProps extends /* @vue-ignore */ HTMLAttributes {}
+
 export interface LayoutTabProps extends /* @vue-ignore */ HTMLAttributes {}
 
-export interface LayoutFooterProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutContentProps extends /* @vue-ignore */ HTMLAttributes {}
 
-export interface LayoutRailProps extends /* @vue-ignore */ HTMLAttributes {}
+export interface LayoutFooterProps extends /* @vue-ignore */ HTMLAttributes {}
 
 export interface LayoutTriggerProps extends PrimitiveProps, /* @vue-ignore */ HTMLAttributes {}
 
@@ -112,9 +114,10 @@ export type LayoutUiSlot =
   | 'sidebarRoot'
   | 'sidebarWrapper'
   | 'sidebarGapHandler'
-  | 'header'
   | 'main'
+  | 'header'
   | 'tab'
+  | 'content'
   | 'footer'
   | 'rail'
   | 'trigger'

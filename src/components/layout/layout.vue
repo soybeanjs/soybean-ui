@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import {
   LayoutFooter,
   LayoutHeader,
+  LayoutContent,
   LayoutMain,
   LayoutRail,
   LayoutRoot,
@@ -54,7 +55,8 @@ const ui = computed(() => {
     size: props.size,
     variant: props.variant,
     side: props.side,
-    collapsible: props.collapsible
+    collapsible: props.collapsible,
+    fullContent: props.fullContent
   });
 
   const drawer = drawerVariants({
@@ -94,7 +96,9 @@ provideSizeContext(() => props.size);
       <LayoutTab v-bind="tabProps">
         <slot name="tab" />
       </LayoutTab>
-      <slot />
+      <LayoutContent v-bind="contentProps">
+        <slot />
+      </LayoutContent>
       <LayoutFooter v-bind="footerProps">
         <slot name="footer" />
       </LayoutFooter>
