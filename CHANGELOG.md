@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [v0.3.0](https://github.com/soybeanjs/soybean-ui/compare/v0.2.8...v0.3.0) (2026-01-29)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **menu**: support active state &nbsp;-&nbsp; by @soybeanjs [<samp>(32476)</samp>](https://github.com/soybeanjs/soybean-ui/commit/32476719)
+- **tree-menu**: implement active path tracking and update child active state logic &nbsp;-&nbsp; by @soybeanjs [<samp>(6d5e8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6d5e886d)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tree-menu**: add getTreePaths function and update tree-menu component to use it &nbsp;-&nbsp; by @soybeanjs [<samp>(c6391)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c6391c9e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.2.8](https://github.com/soybeanjs/soybean-ui/compare/v0.2.7...v0.2.8) (2026-01-28)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
