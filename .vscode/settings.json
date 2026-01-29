@@ -1,26 +1,12 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.oxc": "explicit"
   },
-  "editor.formatOnSave": false,
-  "eslint.validate": [
-    "html",
-    "css",
-    "scss",
-    "json",
-    "jsonc",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "markdown"
-  ],
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
   "i18n-ally.enabledFrameworks": ["vue"],
   "i18n-ally.sourceLanguage": "zh-CN",
   "i18n-ally.keystyle": "nested",
   "i18n-ally.localesPaths": "docs/locales",
-  "i18n-ally.sortKeys": true,
-  "prettier.enable": false
+  "i18n-ally.sortKeys": true
 }

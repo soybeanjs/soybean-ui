@@ -1,15 +1,14 @@
 {
   "name": "@soybeanjs/ui-docs",
-  "type": "module",
   "version": "0.3.0",
   "private": true,
-  "packageManager": "pnpm@10.28.2",
   "description": "SoybeanUI Docs is a documentation for SoybeanUI. It is designed to be easy to use and understand.",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
+  "type": "module",
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite",
@@ -49,5 +48,6 @@
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-ssg": "^28.2.2",
     "vite-ssg-sitemap": "^0.10.0"
-  }
+  },
+  "packageManager": "pnpm@10.28.2"
 }

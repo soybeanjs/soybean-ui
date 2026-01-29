@@ -1,26 +1,28 @@
 {
   "name": "@soybeanjs/ui",
-  "type": "module",
   "version": "0.3.0",
-  "packageManager": "pnpm@10.28.2",
   "description": "SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.",
+  "homepage": "https://github.com/soybeanjs/soybean-ui",
+  "bugs": {
+    "url": "https://github.com/soybeanjs/soybean-ui/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Soybean",
     "email": "soybeanjs@outlook.com",
     "url": "https://github.com/soybeanjs"
   },
-  "license": "MIT",
-  "homepage": "https://github.com/soybeanjs/soybean-ui",
   "repository": {
     "url": "https://github.com/soybeanjs/soybean-ui.git"
   },
-  "bugs": {
-    "url": "https://github.com/soybeanjs/soybean-ui/issues"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -39,10 +41,9 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "pnpm build:headless && pnpm build:ui && pnpm build:css",
     "build:css": "unocss build",
@@ -54,7 +55,8 @@
     "commit": "soy git-commit",
     "dev": "vite",
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
-    "lint": "eslint . --fix",
+    "lint": "oxlint --fix",
+    "fmt": "oxfmt",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",
@@ -84,17 +86,16 @@
   },
   "devDependencies": {
     "@soybeanjs/cli": "^1.4.4",
-    "@soybeanjs/eslint-config": "^1.7.5",
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@soybeanjs/unocss-shadcn": "^0.3.3",
     "@types/node": "^25.1.0",
     "@unocss/cli": "^66.6.0",
     "@vitest/coverage-v8": "^4.0.18",
     "@vue/test-utils": "^2.4.6",
-    "eslint": "^9.39.2",
-    "eslint-plugin-vue": "^10.7.0",
     "happy-dom": "^20.4.0",
     "lint-staged": "^16.2.7",
+    "oxfmt": "^0.27.0",
+    "oxlint": "^1.42.0",
     "simple-git-hooks": "^2.13.1",
     "tsdown": "0.19.0",
     "tsx": "^4.21.0",
@@ -107,7 +108,6 @@
     "vite": "^7.3.1",
     "vitest": "^4.0.18",
     "vue": "^3.5.27",
-    "vue-eslint-parser": "^10.2.0",
     "vue-router": "^4.6.4",
     "vue-tsc": "^3.2.4"
   },
@@ -116,6 +116,7 @@
     "pre-commit": "pnpm typecheck && pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --fix"
-  }
+    "*": "pnpm lint && pnpm fmt"
+  },
+  "packageManager": "pnpm@10.28.2"
 }

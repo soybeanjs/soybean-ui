@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## [v0.3.0](https://github.com/soybeanjs/soybean-ui/compare/v0.2.8...v0.3.0) (2026-01-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
@@ -889,7 +888,6 @@
 - **package**: update exports and publishConfig for better module resolution &nbsp;-&nbsp; by **Soybean** [<samp>(5fcc5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fcc557b)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
-
 
 [Soybean](mailto:soybeanjs@outlook.com)
 

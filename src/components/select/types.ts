@@ -56,10 +56,8 @@ export type SelectOptionData<T extends DefinedValue = DefinedValue> =
   | SelectSingleOptionData<T>
   | SelectGroupOptionData<T>;
 
-export interface SelectSingleOptionProps<T extends DefinedValue = DefinedValue> extends /** @vue-ignore */ Omit<
-  HTMLAttributes,
-  'onSelect'
-> {
+export interface SelectSingleOptionProps<T extends DefinedValue = DefinedValue>
+  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   item: SelectSingleOptionData<T>;
   itemTextProps?: SelectItemTextProps;
   itemIndicatorProps?: SelectItemIndicatorProps;
@@ -79,10 +77,8 @@ export interface SelectGroupOptionProps<T extends DefinedValue = DefinedValue> e
 
 export type SelectGroupOptionEmits<T extends DefinedValue = DefinedValue> = SelectItemEmits<T>;
 
-export interface SelectOptionProps<T extends DefinedValue = DefinedValue> extends /** @vue-ignore */ Omit<
-  HTMLAttributes,
-  'onSelect'
-> {
+export interface SelectOptionProps<T extends DefinedValue = DefinedValue>
+  extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   item: SelectOptionData<T>;
   groupProps?: SelectGroupProps;
   groupLabelProps?: SelectGroupLabelProps;

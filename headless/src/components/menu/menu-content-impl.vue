@@ -157,7 +157,7 @@ const onKeyDown = (event: KeyboardEvent) => {
   if (!FIRST_LAST_KEYS.includes(event.key)) return;
 
   event.preventDefault();
-  const candidateNodes = [...collectionItems.map(item => item.element)];
+  const candidateNodes = collectionItems.map(item => item.element);
   if (LAST_KEYS.includes(event.key)) {
     candidateNodes.reverse();
   }

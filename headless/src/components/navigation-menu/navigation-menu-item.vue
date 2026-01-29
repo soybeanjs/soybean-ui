@@ -40,7 +40,7 @@ const onContentEntry = async (side: Exclude<Align, 'center'> = 'start') => {
   restoreContentTabOrder();
   const candidates = getTabbableCandidates(el);
   if (candidates.length) {
-    tryFocusFirst(side === 'start' ? candidates : candidates.reverse());
+    tryFocusFirst(side === 'start' ? candidates : candidates.slice().reverse());
   }
 };
 

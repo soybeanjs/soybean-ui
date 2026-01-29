@@ -10,7 +10,8 @@ export default defineConfig({
     ...fg.sync('src/*/index.ts').filter(glob => glob !== 'src/types/index.ts'),
     'src/index.ts'
   ],
-  platform: 'neutral',
+  platform: 'browser',
+  target: 'es2020',
   external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies), '@nuxt/kit', '@nuxt/schema'],
   noExternal: ['aria-hidden'],
   clean: true,

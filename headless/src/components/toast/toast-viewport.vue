@@ -144,9 +144,9 @@ function getSortedTabbableCandidates(tabbingDirection: TabbingDirection) {
   const toastItems = getOrderedElements();
   const tabbableCandidates = toastItems.map(toastNode => {
     const toastTabbableCandidates = [toastNode, ...getTabbableCandidates(toastNode)];
-    return tabbingDirection === 'forwards' ? toastTabbableCandidates : toastTabbableCandidates.reverse();
+    return tabbingDirection === 'forwards' ? toastTabbableCandidates : toastTabbableCandidates.slice().reverse();
   });
-  return (tabbingDirection === 'forwards' ? tabbableCandidates.reverse() : tabbableCandidates).flat();
+  return (tabbingDirection === 'forwards' ? tabbableCandidates.slice().reverse() : tabbableCandidates).flat();
 }
 </script>
 

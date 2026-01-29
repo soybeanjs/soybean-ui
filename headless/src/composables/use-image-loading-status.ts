@@ -52,8 +52,11 @@ export function useImageLoadingStatus(options: ImageLoadingOptions) {
     }
 
     // Set up event listeners
-    image.onload = updateStatus('loaded');
-    image.onerror = updateStatus('error');
+    const onLoad = updateStatus('loaded');
+    const onError = updateStatus('error');
+
+    image.addEventListener('load', onLoad);
+    image.addEventListener('error', onError);
 
     // Start loading
     image.src = srcValue;
@@ -61,8 +64,8 @@ export function useImageLoadingStatus(options: ImageLoadingOptions) {
     onWatcherCleanup(() => {
       isMounted = false;
       // Clean up image to prevent memory leaks
-      image.onload = null;
-      image.onerror = null;
+      image.removeEventListener('load', onLoad);
+      image.removeEventListener('error', onError);
     });
   });
 
