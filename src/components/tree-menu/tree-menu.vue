@@ -9,13 +9,13 @@ import {
   provideTreeMenuUi
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { getTreePaths, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
 import Icon from '../icon/icon.vue';
 import TreeMenuOption from './tree-menu-option.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
-import { filterHiddenMenus, getActivePaths, treeMenuCssVars } from './shared';
+import { filterHiddenMenus, treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 
 defineOptions({
@@ -93,7 +93,7 @@ const updateModelValue = (value: string) => {
 
 const items = computed(() => filterHiddenMenus(props.items));
 
-const activePaths = computed(() => getActivePaths(modelValue.value, items.value));
+const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
