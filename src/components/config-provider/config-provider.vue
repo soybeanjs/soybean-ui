@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { watch, watchEffect } from 'vue';
-import { useStorage } from '@vueuse/core';
+import { shallowRef, watch, watchEffect } from 'vue';
 import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
+import { themeSizes } from '@/constants/common';
 import DialogProvider from '../dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
@@ -29,19 +29,15 @@ const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']
 
 provideConfigProviderContext(transformPropsToContext(props));
 
+const cssVars = shallowRef('');
+
 const { getCss } = createShadcnTheme(props.theme);
 
-const cssVars = useStorage('themeCssVars', getCss(props.theme, props.theme.radius));
-
-function addSizeClass(_size: ThemeSize) {
+function addSizeClass(size: ThemeSize) {
   if (!isClient) return;
-  const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-
-  document.documentElement.classList.add(`size-${_size}`);
-
-  const removedSizes = sizes.filter(s => s !== _size).map(s => `size-${s}`);
-
-  document.documentElement.classList.remove(...removedSizes);
+  document.documentElement.classList.add(`size-${size}`);
+  const removes = themeSizes.filter(s => s !== size).map(s => `size-${s}`);
+  document.documentElement.classList.remove(...removes);
 }
 
 watch(
