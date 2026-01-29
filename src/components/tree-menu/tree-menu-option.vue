@@ -14,7 +14,6 @@ import Tooltip from '../tooltip/tooltip.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';
 import { useTreeMenuContext, useTreeMenuExtraUi } from './context';
 import STreeMenuOptionSlot from './tree-menu-option-slot.vue';
-import { isChildActive } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuItemEmits, TreeMenuOptionProps } from './types';
 
 defineOptions({
@@ -38,7 +37,7 @@ const slots = defineSlots<Slots>();
 const forwardedOptionProps = useOmitProps(props, ['as', 'item']);
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuOption');
-const { size, side } = useTreeMenuContext('TreeMenuOption');
+const { size, side, activePaths } = useTreeMenuContext('TreeMenuOption');
 const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
@@ -47,7 +46,15 @@ const children = computed(() => props.item.children ?? []);
 
 const hasChildren = computed(() => Boolean(children.value.length));
 
-const childActive = computed(() => isChildActive(props.item, modelValue.value));
+const childActive = computed(() => {
+  const currentValue = props.item.value;
+
+  if (modelValue.value === currentValue) {
+    return false;
+  }
+
+  return activePaths.value.includes(currentValue);
+});
 
 const isLink = computed(() => Boolean(props.item.to || props.item.href));
 
@@ -121,7 +128,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
   <TreeMenuItem v-else v-bind="itemProps" as-child :value="item.value" :disabled="item.disabled">
     <TreeMenuCollapsible v-bind="collapsibleProps" :as="as" :disabled-collapsible="collapsed">
       <template #trigger>
-        <TreeMenuButton v-bind="buttonProps" disabled-active :data-child-active="childActive">
+        <TreeMenuButton v-bind="buttonProps" disabled-active :data-child-active="childActive ? '' : undefined">
           <STreeMenuOptionSlot :item="item">
             <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
               <slot :name="slotKey" v-bind="slotProps" />

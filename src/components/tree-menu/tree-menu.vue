@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
-import { computed } from 'vue';
+import { computed, shallowRef } from 'vue';
 import type { CSSProperties } from 'vue';
 import {
   TreeMenuGroup,
@@ -15,7 +15,7 @@ import { treeMenuVariants } from '@/variants/tree-menu';
 import Icon from '../icon/icon.vue';
 import TreeMenuOption from './tree-menu-option.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
-import { filterHiddenMenus, treeMenuCssVars } from './shared';
+import { filterHiddenMenus, getActivePaths, treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 
 defineOptions({
@@ -85,7 +85,15 @@ const style = computed<CSSProperties>(() => {
   };
 });
 
+const modelValue = shallowRef(props.modelValue ?? props.defaultValue ?? '');
+
+const updateModelValue = (value: string) => {
+  modelValue.value = value;
+};
+
 const items = computed(() => filterHiddenMenus(props.items));
+
+const activePaths = computed(() => getActivePaths(modelValue.value, items.value));
 
 const ui = computed(() => {
   const variants = treeMenuVariants({
@@ -98,11 +106,14 @@ const ui = computed(() => {
 provideTreeMenuUi(ui);
 provideTreeMenuExtraUi(ui);
 
-provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
+provideTreeMenuContext({
+  ...transformPropsToContext(props, ['size', 'side']),
+  activePaths
+});
 </script>
 
 <template>
-  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners">
+  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners" @update:model-value="updateModelValue">
     <slot name="top" />
     <template v-for="item in items" :key="item.value">
       <TreeMenuGroupRoot v-if="item.isGroup" v-bind="groupRootProps">

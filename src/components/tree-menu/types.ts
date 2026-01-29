@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'vue';
+import type { ComputedRef, HTMLAttributes } from 'vue';
 import type {
   AsTag,
   ClassValue,
@@ -159,6 +159,8 @@ export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttribut
   ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>;
 }
 
-export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
+export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {
+  activePaths: ComputedRef<string[]>;
+}
 
 export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuItemEmits;

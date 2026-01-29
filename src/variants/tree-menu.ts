@@ -12,10 +12,10 @@ export const treeMenuVariants = tv({
       `group/button relative flex items-center w-full rounded-sm outline-none cursor-pointer select-none group-data-[state=collapsed]:overflow-hidden`,
       `data-[active=true]:bg-primary/10 data-[active=true]:text-primary`,
       `data-[active=false]:hover:bg-sidebar-accent data-[active=false]:focus:bg-sidebar-accent`,
-      `data-[child-active=true]:text-primary`,
+      `data-[child-active]:text-primary`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
-    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active=true]/button:text-primary`,
+    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     collapsibleContent: [
       'overflow-hidden transition will-change-auto',
       'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'

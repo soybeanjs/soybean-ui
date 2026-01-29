@@ -5,14 +5,6 @@ export const treeMenuCssVars = {
   indent: '--soybean-tree-menu-indent'
 };
 
-export function isChildActive(item: TreeMenuOptionData, activeValue: string, isRoot = true): boolean {
-  const match = !isRoot && item.value === activeValue;
-
-  if (match) return true;
-
-  return item?.children?.some(child => isChildActive(child, activeValue, false)) ?? false;
-}
-
 export function filterHiddenMenus<T extends TreeMenuBaseOptionData>(menus?: TreeMenuOptionData<T>[]) {
   if (!menus) return [];
 
@@ -25,4 +17,44 @@ export function filterHiddenMenus<T extends TreeMenuBaseOptionData>(menus?: Tree
       }
       return newMenu;
     });
+}
+
+export function getActivePaths(targetValue: string, items: TreeMenuOptionData[]) {
+  const paths: string[] = [];
+
+  if (!targetValue) {
+    return paths;
+  }
+
+  function dfs(node: TreeMenuOptionData, path: string[]): string[] | null {
+    const currentPath = [...path, node.value];
+
+    // if find the target value, return the path
+    if (node.value === targetValue) {
+      return currentPath;
+    }
+
+    // if there are child nodes, recursively search
+    if (node.children && node.children.length > 0) {
+      for (const child of node.children) {
+        const result = dfs(child, currentPath);
+        if (result) {
+          return result;
+        }
+      }
+    }
+
+    // if not found, return null
+    return null;
+  }
+
+  for (const item of items) {
+    const result = dfs(item, []);
+    if (result) {
+      paths.push(...result);
+      break; // exit loop once found
+    }
+  }
+
+  return paths;
 }
