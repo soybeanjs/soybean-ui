@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
+import { computed } from 'vue';
 import {
   MenuGroup,
   MenuGroupLabel,
@@ -16,7 +17,7 @@ import Icon from '../icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import SMenuItemSlot from './menu-item-slot.vue';
 import { useCommonSlotKeys } from './shared';
-import { useMenuExtraUi } from './context';
+import { useMenuExtraUi, useMenuOptionsContext } from './context';
 import type { MenuOptionData, MenuOptionEmits, MenuOptionProps } from './types';
 
 defineOptions({
@@ -45,6 +46,12 @@ const forwardedListeners = useForwardListeners(emit);
 const commonSlotKeys = useCommonSlotKeys(slots);
 
 const ui = useMenuExtraUi();
+
+const { activeValue, activePaths } = useMenuOptionsContext('MenuOption');
+
+const dataActive = computed(() => activeValue.value === props.item.value);
+
+const childActive = computed(() => activePaths.value.includes(props.item.value));
 </script>
 
 <template>
@@ -61,6 +68,7 @@ const ui = useMenuExtraUi();
     as-child
     :disabled="item.disabled"
     :text-value="item.textValue"
+    :data-active="dataActive"
     @select="emit('select', item, $event)"
   >
     <Link
@@ -89,6 +97,7 @@ const ui = useMenuExtraUi();
     v-bind="itemProps"
     :disabled="item.disabled"
     :text-value="item.textValue"
+    :data-active="dataActive"
     @select="emit('select', item, $event)"
   >
     <SMenuItemSlot :icon="item.icon" :label="item.label">
@@ -101,7 +110,12 @@ const ui = useMenuExtraUi();
     </SMenuItemSlot>
   </MenuItem>
   <MenuSub v-else v-bind="subProps" @update:open="emit('update:open', $event)">
-    <MenuSubTrigger v-bind="subTriggerProps" :disabled="item.disabled" :text-value="item.textValue">
+    <MenuSubTrigger
+      v-bind="subTriggerProps"
+      :disabled="item.disabled"
+      :text-value="item.textValue"
+      :data-child-active="childActive ? '' : undefined"
+    >
       <SMenuItemSlot :icon="item.icon" :label="item.label">
         <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
           <slot :name="slotKey" :item="item" :is-trigger="true" />

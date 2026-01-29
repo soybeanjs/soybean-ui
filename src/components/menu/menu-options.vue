@@ -7,6 +7,8 @@ import { computed } from 'vue';
 import { MenuGroup } from '@soybeanjs/headless';
 import type { DefinedValue } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { getTreePaths, transformPropsToContext } from '@soybeanjs/headless/shared';
+import { provideMenuOptionsContext } from './context';
 import SMenuOption from './menu-option.vue';
 import type { MenuOptionData, MenuOptionsEmits, MenuOptionsProps } from './types';
 
@@ -34,6 +36,18 @@ const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);
 const forwardedItemProps = useOmitProps(props, ['items']);
 
 const forwardedListeners = useForwardListeners(emit);
+
+const activePaths = computed(() => {
+  if (props.activeValue === undefined) {
+    return [];
+  }
+  return getTreePaths(props.activeValue, props.items);
+});
+
+provideMenuOptionsContext({
+  ...transformPropsToContext(props, ['activeValue']),
+  activePaths
+});
 </script>
 
 <template>

@@ -1,3 +1,4 @@
+import type { ComputedRef } from 'vue';
 import type {
   AcceptableBooleanValue,
   DefinedValue,
@@ -87,6 +88,10 @@ export interface MenuOptionsProps<
   S extends MenuOptionData<T> = MenuOptionData<T>
 > extends Omit<MenuOptionProps<T>, 'item'> {
   items: S[];
+  /**
+   * The active value of the menu.
+   */
+  activeValue?: DefinedValue;
 }
 
 export type MenuOptionsEmits<T extends MenuOptionData = MenuOptionData> = MenuOptionEmits<T>;
@@ -140,3 +145,8 @@ export type MenuRadioOptionsEmits<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 > = MenuRadioGroupEmits<T> & MenuRadioSelectEmits<S>;
+
+export interface MenuOptionsContextParams {
+  activeValue: ComputedRef<DefinedValue | undefined>;
+  activePaths: ComputedRef<DefinedValue[]>;
+}

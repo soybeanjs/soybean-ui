@@ -22,7 +22,9 @@ export const menuVariants = tv({
     radioGroup: '',
     item: [
       `relative flex items-center rounded-sm outline-none transition-colors-200 cursor-default select-none`,
-      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
+      `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`,
+      `data-[active=true]:bg-primary/10 data-[active=true]:text-primary`,
+      `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`
     ],
     itemIcon: `shrink-0 text-muted-foreground`,
     itemLink: [
@@ -30,8 +32,8 @@ export const menuVariants = tv({
       `focus:bg-accent focus:text-accent-foreground data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
-    subTrigger: `flex items-center rounded-sm outline-none cursor-default select-none focus:bg-accent data-[state=open]:bg-accent`,
-    subTriggerIcon: `ml-auto text-muted-foreground`,
+    subTrigger: `group/trigger flex items-center rounded-sm outline-none cursor-default select-none focus:bg-accent data-[state=open]:bg-accent data-[child-active]:text-primary`,
+    subTriggerIcon: `ml-auto text-muted-foreground group-data-[child-active]/trigger:text-primary`,
     shortcut: `ml-auto tracking-widest opacity-60`,
     separator: `h-px bg-border`,
     checkboxItem: [
