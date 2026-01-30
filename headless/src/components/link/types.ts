@@ -1,13 +1,16 @@
 import type { HTMLAttributes } from 'vue';
-import type { RouteLocationRaw, RouterLinkProps } from 'vue-router';
+import type { RouteLocationRaw } from 'vue-router';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface LinkProps
-  extends PrimitiveProps, Omit<RouterLinkProps, 'custom' | 'to'>, /** @vue-ignore */ HTMLAttributes {
+export interface LinkProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /**
    * Route Location the link should navigate to when clicked on.
    */
   to?: RouteLocationRaw;
+  /**
+   * Calls `router.replace` instead of `router.push`.
+   */
+  replace?: boolean;
   /**
    * The URL the link should navigate to when clicked on.
    */
@@ -17,13 +20,35 @@ export interface LinkProps
    */
   disabled?: boolean;
   /**
+   * Class to apply when the link is active
+   */
+  activeClass?: string;
+  /**
+   * Class to apply when the link is exact active
+   */
+  exactActiveClass?: string;
+  /**
    * The class to apply to the link when it is inactive.
    */
   inactiveClass?: string;
   /**
+   * A class to apply to links that have been prefetched.
+   */
+  prefetchedClass?: string;
+  /**
    * Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases
    */
   external?: boolean;
+  /**
+   * Value passed to the attribute `aria-current` when the link is exact active.
+   *
+   * @defaultValue `'page'`
+   */
+  ariaCurrentValue?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
+  /**
+   * Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.
+   */
+  viewTransition?: boolean;
   /**
    * Where to display the linked URL, as the name for a browsing context.
    */
@@ -38,10 +63,6 @@ export interface LinkProps
    * If set to true, no rel attribute will be added to the link
    */
   noRel?: boolean;
-  /**
-   * A class to apply to links that have been prefetched.
-   */
-  prefetchedClass?: string;
   /**
    * When enabled will prefetch middleware, layouts and payloads of links in the viewport.
    */

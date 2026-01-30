@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const orbs = [
   {
     size: 'w-[500px] h-[500px]',

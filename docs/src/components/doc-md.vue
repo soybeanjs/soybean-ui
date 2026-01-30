@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { shallowRef, watchEffect } from 'vue';
 import type { Component } from 'vue';
 
 interface Props {

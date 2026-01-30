@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { toTypeAnchorId, typeToVNode } from './type-anchor';
 
 export type TypeFieldDef = {

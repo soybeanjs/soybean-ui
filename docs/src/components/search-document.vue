@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, shallowRef, useAttrs, watch } from 'vue';
-import { useRouter } from 'vue-router';
 import { useMagicKeys } from '@vueuse/core';
 import type { CommandOptionData, SelectEvent } from '@soybeanjs/ui';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';

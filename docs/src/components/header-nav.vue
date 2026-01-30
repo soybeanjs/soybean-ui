@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import type { DataOrientation, NavigationMenuOptionData } from '@soybeanjs/ui';
 
 interface Props {

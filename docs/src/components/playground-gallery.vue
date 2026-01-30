@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { SAlert, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
-import { useI18n } from 'vue-i18n';
 import { getPlaygroundComponent, getPlaygroundComponentCode } from '../constants/globs';
 
 interface Props {

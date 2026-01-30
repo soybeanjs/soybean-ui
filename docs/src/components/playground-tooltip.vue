@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { STooltip } from '@soybeanjs/ui';
-
 interface Props {
   content: string;
   triggerContent?: string;

@@ -137,7 +137,7 @@
     "unplugin-vue": "7.1.1",
     "unplugin-vue-jsx": "0.8.1",
     "vue": "3.5.27",
-    "vue-router": "4.6.4"
+    "vue-router": "5.0.0"
   },
   "peerDependencies": {
     "nuxt": ">=4.0.0",

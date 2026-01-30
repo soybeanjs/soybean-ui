@@ -1,5 +1,4 @@
 <script setup lang="tsx">
-import { defineComponent } from 'vue';
 import { typeToVNode } from './type-anchor';
 
 type PropsPreset = 'props' | 'emits' | 'slots';

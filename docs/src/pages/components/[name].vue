@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const router = useRouter();
 const route = useRoute('/components/[name]');
 

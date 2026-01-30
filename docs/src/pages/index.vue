@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { SIcon } from '@soybeanjs/ui';
-import { useI18n } from 'vue-i18n';
 import BackgroundDecoration from '@/motion/background-decoration.vue';
 
 const { t } = useI18n();

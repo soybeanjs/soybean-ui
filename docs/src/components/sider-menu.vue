@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue';
-import { useRoute } from 'vue-router';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import type { TreeMenuOptionData } from '@soybeanjs/ui';
 import { menuData } from '../constants/menus';

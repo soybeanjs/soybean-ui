@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted, useTemplateRef } from 'vue';
 import { codeToHtml } from 'shiki';
 
 interface Props {

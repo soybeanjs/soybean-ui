@@ -1,8 +1,8 @@
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
+import type { ConfigProviderProps, ThemeSize } from '@soybeanjs/ui';
 import type { BuiltinBasePresetKey, BuiltinFeedbackPresetKey, BuiltinPrimaryPresetKey } from '@soybeanjs/shadcn-theme';
 import { useContext } from '@soybeanjs/headless/composables';
-import type { ConfigProviderProps, ThemeSize } from '@soybeanjs/ui';
 
 export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => {
   const base = useStorage<BuiltinBasePresetKey>('base', 'gray');

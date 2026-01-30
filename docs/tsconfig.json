@@ -4,7 +4,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vite/client", "vite-plugin-vue-layouts/client", "unplugin-vue-router/client"]
+    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client"]
   },
   "include": ["./src/**/*", "vite.config.ts"]
 }

@@ -4,7 +4,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@soybeanjs/ui": ["./src/index.ts"]
-    }
+    },
+    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client"]
   },
   "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"]
 }

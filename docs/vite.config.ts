@@ -2,11 +2,11 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
-import Layouts from 'vite-plugin-vue-layouts';
-import { VueRouterAutoImports } from 'unplugin-vue-router';
 import UiResolver from '@soybeanjs/ui/resolver';
 import { unheadVueComposablesImports } from '@unhead/vue';
-import VueRouter from 'unplugin-vue-router/vite';
+import VueRouter from 'vue-router/vite';
+import { VueRouterAutoImports } from 'vue-router/unplugin';
+import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Unocss from 'unocss/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -31,22 +31,23 @@ export default defineConfig({
       extensions: ['.vue', '.md'],
       dts: 'src/typings/typed-router.d.ts'
     }),
-    Layouts(),
+    MetaLayouts(),
     Vue({ include: [/\.vue$/, /\.md$/] }),
     VueJsx(),
     Unocss(),
     AutoImport({
       include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
+      exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /headless[\\/]dist/],
       imports: [
+        'vue',
         'vue-i18n',
-        unheadVueComposablesImports,
         VueRouterAutoImports,
+        unheadVueComposablesImports,
         {
           'vue-router/auto': ['useLink']
         }
       ],
       dts: 'src/typings/auto-imports.d.ts',
-      dirs: [],
       vueTemplate: true
     }),
     Components({
