@@ -153,6 +153,7 @@ const onDropdownMenuSelect = (item: TreeMenuBaseOptionData) => {
           :disabled="item.disabled"
           :size="size"
           :data-menu="item.label"
+          :active-value="modelValue"
           @select="onDropdownMenuSelect"
         >
           <template #trigger>
