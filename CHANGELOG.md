@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.3.3](https://github.com/soybeanjs/soybean-ui/compare/v0.3.2...v0.3.3) (2026-01-30)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **examples**: add demo menu data &nbsp;-&nbsp; by @soybeanjs [<samp>(ceb58)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ceb58781)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tree-menu**: add active-value binding to dropdown menu &nbsp;-&nbsp; by @soybeanjs [<samp>(18f74)</samp>](https://github.com/soybeanjs/soybean-ui/commit/18f74c15)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.2](https://github.com/soybeanjs/soybean-ui/compare/v0.3.1...v0.3.2) (2026-01-29)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
