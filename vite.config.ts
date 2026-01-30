@@ -40,6 +40,7 @@ export default defineConfig({
       target: 'playground/layouts'
     }),
     Components({
+      dirs: ['playground/components'],
       dts: 'playground/typings/components.d.ts',
       resolvers: [UiResolver()]
     })
