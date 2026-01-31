@@ -123,7 +123,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ✅: Completed ✨: Implemented
 
-✅ 46 / total: 107
+✅ 48 / total: 109
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -174,67 +174,68 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 45  | 1        | TreeMenu        | ✅ Completed |                      |                          |
 | 46  | 1        | Virtualizer     | ✅ Completed |                      |                          |
 | 47  | 1        | VisuallyHidden  | ✅ Completed |                      |                          |
-| 48  | 2        | ColorPicker     |              |                      |                          |
-| 49  | 2        | Combobox        |              |                      | support virtualized      |
-| 50  | 2        | DataTable       |              |                      | support virtualized      |
-| 51  | 2        | Menubar         |              |                      |                          |
-| 52  | 2        | PinInput        |              | InputOPT, OPTInput   |                          |
-| 53  | 2        | Popconfirm      |              |                      |                          |
-| 54  | 2        | Progress        |              |                      | include circle           |
-| 55  | 2        | ScrollArea      |              |                      |                          |
-| 56  | 2        | Skeleton        |              |                      |                          |
-| 57  | 2        | Slider          |              |                      |                          |
-| 58  | 2        | Table           |              |                      |                          |
-| 59  | 2        | Toggle          |              |                      |                          |
-| 60  | 2        | ToggleGroup     |              |                      |                          |
-| 61  | 3        | BottomSheet     |              | Drawer(shadcn-ui)    |                          |
-| 62  | 3        | Calendar        |              |                      | v-calendar               |
-| 63  | 3        | Carousel        |              |                      |                          |
-| 64  | 3        | DateField       |              |                      |                          |
-| 65  | 3        | DatePicker      |              |                      |                          |
-| 66  | 3        | DateRangeField  |              |                      |                          |
-| 67  | 3        | DateRangePicker |              |                      |                          |
-| 68  | 3        | Editable        |              |                      |                          |
-| 69  | 3        | HoverCard       |              |                      |                          |
-| 70  | 3        | RangeCalendar   |              |                      | v-calendar               |
-| 71  | 3        | Resizable       |              |                      |                          |
-| 72  | 3        | Splitter        |              |                      |                          |
-| 73  | 3        | Stepper         |              |                      |                          |
-| 74  | 3        | TagsInput       |              |                      |                          |
-| 75  | 3        | TimeField       |              |                      |                          |
-| 76  | 3        | Timeline        |              |                      | ui things                |
-| 77  | 3        | TimePicker      |              |                      | element-plus             |
-| 78  | 3        | Toolbar         |              |                      |                          |
-| 79  | 4        | Affix           |              |                      |                          |
-| 80  | 4        | Anchor          |              |                      |                          |
-| 81  | 4        | AutoComplete    |              |                      | support virtualized      |
-| 82  | 4        | Backtop         |              |                      |                          |
-| 83  | 4        | Cascader        |              |                      | support virtualized      |
-| 84  | 4        | Clipboard       |              |                      |                          |
-| 85  | 4        | Code            |              |                      |                          |
-| 86  | 4        | Comment         |              |                      |                          |
-| 87  | 4        | Countdown       |              |                      |                          |
-| 88  | 4        | CurrencyInput   |              |                      |                          |
-| 89  | 4        | Descriptions    |              |                      |                          |
-| 90  | 4        | Ellipsis        |              |                      |                          |
-| 91  | 4        | Empty           |              |                      |                          |
-| 92  | 4        | Equation        |              |                      | based on katex           |
-| 93  | 4        | InfiniteScroll  |              |                      |                          |
-| 94  | 4        | Mention         |              |                      | element-plus             |
-| 95  | 4        | Navbar          |              |                      |                          |
-| 96  | 4        | NumberAnimation |              |                      | naive-ui                 |
-| 97  | 4        | PageTab         |              |                      |                          |
-| 98  | 4        | QRCode          |              |                      |                          |
-| 99  | 4        | Rating          |              | Rate                 | element-plus             |
-| 100 | 4        | Result          |              |                      |                          |
-| 101 | 4        | Spinner         |              | Loader, Spin         | github ldrs              |
-| 102 | 4        | Statistic       |              |                      |                          |
-| 103 | 4        | Tour            |              |                      |                          |
-| 104 | 4        | Transfer        |              |                      |                          |
-| 105 | 4        | TreeSelect      |              |                      |                          |
-| 106 | 4        | Typography      |              |                      | shadcn-ui                |
-| 107 | 4        | Upload          |              | FileUpload, Dropfile |                          |
-| 108 | 4        | Watermark       |              |                      |                          |
+| 48  | 2        | PageTabs        | ✅ Completed |                      |                          |
+| 49  | 2        | ColorPicker     |              |                      |                          |
+| 50  | 2        | Combobox        |              |                      | support virtualized      |
+| 51  | 2        | DataTable       |              |                      | support virtualized      |
+| 52  | 2        | Menubar         |              |                      |                          |
+| 53  | 2        | PinInput        |              | InputOPT, OPTInput   |                          |
+| 54  | 2        | Popconfirm      |              |                      |                          |
+| 55  | 2        | Progress        |              |                      | include circle           |
+| 56  | 2        | ScrollArea      |              |                      |                          |
+| 57  | 2        | Skeleton        |              |                      |                          |
+| 58  | 2        | Slider          |              |                      |                          |
+| 59  | 2        | Table           |              |                      |                          |
+| 60  | 2        | Toggle          |              |                      |                          |
+| 61  | 2        | ToggleGroup     |              |                      |                          |
+| 62  | 3        | BottomSheet     |              | Drawer(shadcn-ui)    |                          |
+| 63  | 3        | Calendar        |              |                      | v-calendar               |
+| 64  | 3        | Carousel        |              |                      |                          |
+| 65  | 3        | DateField       |              |                      |                          |
+| 66  | 3        | DatePicker      |              |                      |                          |
+| 67  | 3        | DateRangeField  |              |                      |                          |
+| 68  | 3        | DateRangePicker |              |                      |                          |
+| 69  | 3        | Editable        |              |                      |                          |
+| 70  | 3        | HoverCard       |              |                      |                          |
+| 71  | 3        | RangeCalendar   |              |                      | v-calendar               |
+| 72  | 3        | Resizable       |              |                      |                          |
+| 73  | 3        | Splitter        |              |                      |                          |
+| 74  | 3        | Stepper         |              |                      |                          |
+| 75  | 3        | TagsInput       |              |                      |                          |
+| 76  | 3        | TimeField       |              |                      |                          |
+| 77  | 3        | Timeline        |              |                      | ui things                |
+| 78  | 3        | TimePicker      |              |                      | element-plus             |
+| 79  | 3        | Toolbar         |              |                      |                          |
+| 80  | 4        | Affix           |              |                      |                          |
+| 81  | 4        | Anchor          |              |                      |                          |
+| 82  | 4        | AutoComplete    |              |                      | support virtualized      |
+| 83  | 4        | Backtop         |              |                      |                          |
+| 84  | 4        | Cascader        |              |                      | support virtualized      |
+| 85  | 4        | Clipboard       |              |                      |                          |
+| 86  | 4        | Code            |              |                      |                          |
+| 87  | 4        | Comment         |              |                      |                          |
+| 88  | 4        | Countdown       |              |                      |                          |
+| 89  | 4        | CurrencyInput   |              |                      |                          |
+| 90  | 4        | Descriptions    |              |                      |                          |
+| 91  | 4        | Ellipsis        |              |                      |                          |
+| 92  | 4        | Empty           |              |                      |                          |
+| 93  | 4        | Equation        |              |                      | based on katex           |
+| 94  | 4        | InfiniteScroll  |              |                      |                          |
+| 95  | 4        | Mention         |              |                      | element-plus             |
+| 96  | 4        | Navbar          |              |                      |                          |
+| 97  | 4        | NumberAnimation |              |                      | naive-ui                 |
+| 98  | 4        | PageTab         |              |                      |                          |
+| 99  | 4        | QRCode          |              |                      |                          |
+| 100 | 4        | Rating          |              | Rate                 | element-plus             |
+| 101 | 4        | Result          |              |                      |                          |
+| 102 | 4        | Spinner         |              | Loader, Spin         | github ldrs              |
+| 103 | 4        | Statistic       |              |                      |                          |
+| 104 | 4        | Tour            |              |                      |                          |
+| 105 | 4        | Transfer        |              |                      |                          |
+| 106 | 4        | TreeSelect      |              |                      |                          |
+| 107 | 4        | Typography      |              |                      | shadcn-ui                |
+| 108 | 4        | Upload          |              | FileUpload, Dropfile |                          |
+| 109 | 4        | Watermark       |              |                      |                          |
 
 ### Utilities
 
