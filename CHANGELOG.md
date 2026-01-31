@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.4.0](https://github.com/soybeanjs/soybean-ui/compare/v0.3.3...v0.4.0) (2026-02-01)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **components**: implement components PageTabs &nbsp;-&nbsp; by @soybeanjs [<samp>(d2c4a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d2c4a1d1)
+- **docs**: update component status and add PageTabs to the README &nbsp;-&nbsp; by @soybeanjs [<samp>(02c40)</samp>](https://github.com/soybeanjs/soybean-ui/commit/02c406d3)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **typings**: clean up auto-imports and components type declarations &nbsp;-&nbsp; by @soybeanjs [<samp>(dc394)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dc394713)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **projects**: update vue-router to v5, use vite-plugin-vue-meta-layouts &nbsp;-&nbsp; by @soybeanjs [<samp>(bfb6b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bfb6b66e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.3.3](https://github.com/soybeanjs/soybean-ui/compare/v0.3.2...v0.3.3) (2026-01-30)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
