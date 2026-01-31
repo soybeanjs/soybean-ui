@@ -141,6 +141,7 @@ export const components = {
     'NavigationMenuIndicator'
   ],
   numberInput: ['NumberInputRoot', 'NumberInputControl', 'NumberInputIncrement', 'NumberInputDecrement'],
+  pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin'],
   pagination: [
     'PaginationRoot',
     'PaginationList',

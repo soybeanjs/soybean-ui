@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, useAttrs } from 'vue';
+import { computed, nextTick, ref, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
+import { useForwardElement } from '../../composables';
 import type { Point } from '../../types';
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
-import type { ContextMenuTriggerProps } from './types';
 import { useContextMenuRootContext } from './context';
+import type { ContextMenuTriggerProps } from './types';
 
 defineOptions({
   name: 'ContextMenuTrigger',
@@ -15,7 +16,12 @@ const props = withDefaults(defineProps<ContextMenuTriggerProps>(), {
   as: 'span'
 });
 
-const { dataState, pressOpenDelay, onOpenChange, setTriggerElement } = useContextMenuRootContext('ContextMenuTrigger');
+const { dataState, pressOpenDelay, onOpenChange, triggerElement, onTriggerElementChange } =
+  useContextMenuRootContext('ContextMenuTrigger');
+
+const [_, setTriggerElement] = useForwardElement(el => {
+  onTriggerElementChange(el);
+});
 
 const attrs = useAttrs();
 
@@ -88,11 +94,31 @@ const onPointerEvent = async (event: PointerEvent) => {
 
   clearLongPressTimer();
 };
+
+watchEffect(() => {
+  if (!props.reference) return;
+  onTriggerElementChange(props.reference);
+
+  props.reference.addEventListener('contextmenu', onContextMenu);
+  props.reference.addEventListener('pointerdown', onPointerDown);
+  props.reference.addEventListener('pointermove', onPointerEvent);
+  props.reference.addEventListener('pointercancel', onPointerEvent);
+  props.reference.addEventListener('pointerup', onPointerEvent);
+
+  onWatcherCleanup(() => {
+    props.reference?.removeEventListener('contextmenu', onContextMenu);
+    props.reference?.removeEventListener('pointerdown', onPointerDown);
+    props.reference?.removeEventListener('pointermove', onPointerEvent);
+    props.reference?.removeEventListener('pointercancel', onPointerEvent);
+    props.reference?.removeEventListener('pointerup', onPointerEvent);
+  });
+});
 </script>
 
 <template>
   <MenuAnchor as="template" :reference="virtualEl" />
   <Primitive
+    v-if="!reference"
     :ref="setTriggerElement"
     v-bind="{ ...props, ...attrs }"
     :data-disabled="dataDisabled"

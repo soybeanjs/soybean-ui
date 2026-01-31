@@ -28,6 +28,7 @@ export const components = {
   menu: ['SMenuOption', 'SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],
   navigationMenu: ['SNavigationMenu'],
   numberInput: ['SNumberInput'],
+  pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
   password: ['SPassword'],
   popover: ['SPopover'],

@@ -78,7 +78,7 @@ async function start() {
   const isReset = process.argv.includes('--reset');
 
   await handleStub(isReset);
-  await execCommand('pnpm', [`eslint --fix ${pkgPath}`], { shell: true });
+  await execCommand('pnpm', [`pnpm oxfmt ${pkgPath}`], { shell: true });
 }
 
 start();

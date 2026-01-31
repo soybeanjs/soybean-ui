@@ -1,5 +1,5 @@
-import { computed } from 'vue';
-import { useContext, useForwardElement } from '../../composables';
+import { computed, shallowRef } from 'vue';
+import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import type { ContextMenuRootContextParams } from './types';
@@ -7,7 +7,6 @@ import type { ContextMenuRootContextParams } from './types';
 export const [provideContextMenuRootContext, useContextMenuRootContext] = useContext(
   'ContextMenuRoot',
   (params: ContextMenuRootContextParams) => {
-    const [triggerElement, setTriggerElement] = useForwardElement();
     const { open } = params;
 
     const onOpenChange = (v: boolean) => {
@@ -18,13 +17,19 @@ export const [provideContextMenuRootContext, useContextMenuRootContext] = useCon
 
     const dataState = computed(() => getDisclosureState(open.value));
 
+    const triggerElement = shallowRef<HTMLElement | null>(null);
+
+    const onTriggerElementChange = (el: HTMLElement | null) => {
+      triggerElement.value = el;
+    };
+
     return {
       ...params,
       dir,
       dataState,
       onOpenChange,
       triggerElement,
-      setTriggerElement
+      onTriggerElementChange
     };
   }
 );

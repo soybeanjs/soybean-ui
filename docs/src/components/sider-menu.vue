@@ -16,6 +16,8 @@ const expanded = ref<string[]>([]);
 
 const selected = ref<string>('');
 
+const newlyComponents = ['pageTabs'];
+
 const componentMenus = computed<TreeMenuOptionData[]>(() =>
   menuData.map(group => ({
     label: t(`${group.i18n}`),
@@ -23,7 +25,8 @@ const componentMenus = computed<TreeMenuOptionData[]>(() =>
     children: group.items.map(item => ({
       label: toPascalCase(item),
       value: toKebabCase(item),
-      to: `/components/${toKebabCase(item)}`
+      to: `/components/${toKebabCase(item)}`,
+      tag: newlyComponents.includes(item) ? '🎉new' : undefined
     }))
   }))
 );

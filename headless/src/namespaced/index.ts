@@ -157,6 +157,10 @@ import {
   NumberInputDecrement,
   NumberInputIncrement,
   NumberInputRoot,
+  PageTabsRoot,
+  PageTabsItem,
+  PageTabsClose,
+  PageTabsPin,
   PaginationEllipsis,
   PaginationFirst,
   PaginationLast,
@@ -645,6 +649,18 @@ export const NumberInput = {
   Control: typeof NumberInputControl;
   Increment: typeof NumberInputIncrement;
   Decrement: typeof NumberInputDecrement;
+};
+
+export const PageTabs = {
+  Root: PageTabsRoot,
+  Item: PageTabsItem,
+  Close: PageTabsClose,
+  Pin: PageTabsPin
+} as {
+  Root: typeof PageTabsRoot;
+  Item: typeof PageTabsItem;
+  Close: typeof PageTabsClose;
+  Pin: typeof PageTabsPin;
 };
 
 export const Pagination = {

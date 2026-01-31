@@ -1,6 +1,6 @@
 import type { ShallowRef } from 'vue';
 import type { PropsToContext } from '../../types';
-import type { MenuContentEmits, MenuContentProps, MenuRootEmits, MenuRootProps } from '../menu/types';
+import type { MenuContentEmits, MenuContentProps, MenuRootEmits, MenuRootProps, MenuTriggerProps } from '../menu/types';
 
 export interface ContextMenuRootProps extends Omit<MenuRootProps, 'open' | 'defaultOpen'> {
   /**
@@ -24,5 +24,9 @@ export interface ContextMenuRootContextParams extends PropsToContext<
 > {
   open: ShallowRef<boolean | undefined>;
 }
-
-export type { MenuTriggerProps as ContextMenuTriggerProps } from '../menu/types';
+export interface ContextMenuTriggerProps extends MenuTriggerProps {
+  /**
+   * The reference element for the context menu trigger.
+   */
+  reference?: HTMLElement | null;
+}
