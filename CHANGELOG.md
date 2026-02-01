@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.4.3](https://github.com/soybeanjs/soybean-ui/compare/v0.4.2...v0.4.3) (2026-02-01)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **page-tabs**: fix tab closing functions &nbsp;-&nbsp; by @soybeanjs [<samp>(ca73e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ca73e49e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.2](https://github.com/soybeanjs/soybean-ui/compare/v0.4.1...v0.4.2) (2026-02-01)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
