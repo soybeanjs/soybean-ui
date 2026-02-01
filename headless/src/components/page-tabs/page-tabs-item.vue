@@ -13,12 +13,11 @@ const emit = defineEmits<PageTabsItemEmits>();
 
 const cls = usePageTabsUi('item');
 const {
-  modelValue,
   middleClickClose,
-  operations: { setActiveTab, isTabPinned, closeTab, togglePinTab, canCloseTab }
+  operations: { isActiveTab, setActiveTab, isTabPinned, closeTab, togglePinTab, canCloseTab }
 } = usePageTabsRootContext('PageTabsItem');
 
-const isActive = computed(() => modelValue.value === props.value);
+const isActive = computed(() => isActiveTab(props.value));
 const pinned = computed(() => isTabPinned(props.value));
 const closable = computed(() => canCloseTab(props.value));
 

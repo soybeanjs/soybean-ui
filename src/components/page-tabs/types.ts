@@ -15,17 +15,15 @@ export interface PageTabsOptionData extends PageTabsItemProps {
   label: string;
   icon?: IconValue;
   /**
-   * Whether the tab is closable or not.
-   *
-   * @default true
-   */
-  closable?: boolean;
-  /**
    * Whether the tab is pinned or not.
    *
    * @default false
    */
   pinned?: boolean;
+  /**
+   * Whether to hide the pinned icon on the tab
+   */
+  hidePinnedIcon?: boolean;
 }
 
 export type PageTabsExtraUiSlot = 'itemText' | 'chromeBgLeft' | 'chromeBgRight' | 'sliderIndicator';
@@ -40,8 +38,6 @@ export interface PageTabsState {
   closeRightTabs: () => void;
   closeOtherTabs: () => void;
   closeAllTabs: () => void;
-  canPinTab: boolean;
-  canUnpinTab: boolean;
   canCloseTab: boolean;
   canCloseLeftTabs: boolean;
   canCloseRightTabs: boolean;
@@ -65,7 +61,12 @@ export interface PageTabsProps<T extends PageTabsOptionData> extends Omit<
   variant?: PageTabsVariant;
   ui?: Partial<PageTabsExtendedUi>;
   items: T[];
-  contextMenuFactory?: (tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[];
+  /**
+   * A factory function to generate context menu options for each tab.
+   * @param tab The tab data
+   * @param state The current state and operations for the tab
+   */
+  menuFactory?: (tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[];
 }
 
 export type PageTabsEmits<T> = {

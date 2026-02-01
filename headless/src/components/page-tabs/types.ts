@@ -16,10 +16,6 @@ export interface PageTabsRootProps extends /** @vue-ignore */ HTMLAttributes {
    */
   pins?: string[];
   /**
-   * The resident tab values. cannot be closed, pinned, or unpinned.
-   */
-  residents?: string[];
-  /**
    * Callback invoked before closing the tab. Return `false` or a promise that resolves to `false` to prevent closing.
    */
   beforeClose?: (value: string) => MaybePromise<boolean | void>;
@@ -70,7 +66,6 @@ export interface PageTabsRootContextParams extends PropsToContext<PageTabsRootPr
   modelValue: ShallowRef<string>;
   values: ShallowRef<string[]>;
   pins: ShallowRef<string[]>;
-  residents: ComputedRef<string[]>;
   beforeClose: (value: string) => MaybePromise<boolean | void>;
 }
 
@@ -88,6 +83,7 @@ export type PageTabsUiSlot = 'root' | 'item' | 'close' | 'pin';
 export type PageTabsUi = UiClass<PageTabsUiSlot>;
 
 export interface PageTabsOperations {
+  isActiveTab: (value: string) => boolean;
   setActiveTab: (value: string) => void;
   addTab: (value: string) => void;
   removeTab: (value: string) => void;
@@ -100,8 +96,6 @@ export interface PageTabsOperations {
   closeRightTabs: (value: string) => void;
   closeOtherTabs: (value: string) => void;
   closeAllTabs: () => void;
-  canPinTab: (value: string) => boolean;
-  canUnpinTab: (value: string) => boolean;
   canCloseTab: (value: string) => boolean;
   canCloseLeftTabs: (value: string) => boolean;
   canCloseRightTabs: (value: string) => boolean;

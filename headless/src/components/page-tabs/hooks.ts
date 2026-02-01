@@ -32,9 +32,9 @@ export function usePageTabsScroll(activeValue: ShallowRef<string>) {
 }
 
 export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
-  const { modelValue, pins, values, residents, beforeClose } = options;
+  const { modelValue, pins, values, beforeClose } = options;
 
-  const isTabResident = (value: string) => residents.value.includes(value);
+  const isActiveTab = (value: string) => modelValue.value === value;
 
   const setActiveTab = (value: string) => {
     if (modelValue.value === value) return;
@@ -57,15 +57,11 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
 
   const isTabPinned = (value: string) => pins.value.includes(value);
 
-  const canPinTab = (value: string) => !isTabResident(value) && !isTabPinned(value);
-
   const pinTab = (value: string) => {
-    if (canPinTab(value)) {
+    if (!isTabPinned(value)) {
       pins.value = [...pins.value, value];
     }
   };
-
-  const canUnpinTab = (value: string) => !isTabResident(value) && isTabPinned(value);
 
   const unpinTab = (value: string) => {
     const index = pins.value.indexOf(value);
@@ -82,7 +78,7 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
     }
   };
 
-  const canCloseTab = (value: string) => !isTabResident(value) && !isTabPinned(value);
+  const canCloseTab = (value: string) => !isTabPinned(value);
 
   const closeTab = async (value: string, onClose?: () => void) => {
     const closeable = canCloseTab(value);
@@ -160,6 +156,7 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
   };
 
   return {
+    isActiveTab,
     setActiveTab,
     addTab,
     removeTab,
@@ -172,8 +169,6 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
     closeRightTabs,
     closeOtherTabs,
     closeAllTabs,
-    canPinTab,
-    canUnpinTab,
     canCloseTab,
     canCloseLeftTabs,
     canCloseRightTabs,

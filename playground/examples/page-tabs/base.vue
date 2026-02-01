@@ -21,13 +21,14 @@ const variants: SelectOptionData<PageTabsVariant>[] = [
 const modelValue = ref<string>('home');
 
 const items: Ref<PageTabsOptionData[]> = ref([
-  { value: 'home', label: 'Home', icon: 'lucide:house', closable: false },
+  { value: 'home', label: 'Home', icon: 'lucide:house', pinned: true, hidePinnedIcon: true },
+  { value: 'profile', label: 'Profile', icon: 'lucide:user' },
   { value: 'manage', label: 'Manage', icon: 'lucide:settings', pinned: true },
   { value: 'doc', label: 'Doc', icon: 'lucide:file-text' },
   { value: 'about', label: 'About', icon: 'lucide:info' }
 ]);
 
-const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
+const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
   const {
     closeTab,
     pinTab,
@@ -37,8 +38,6 @@ const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
     closeOtherTabs,
     closeAllTabs,
     canCloseTab,
-    canPinTab,
-    canUnpinTab,
     canCloseLeftTabs,
     canCloseRightTabs,
     canCloseOtherTabs,
@@ -60,7 +59,6 @@ const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
       label: 'Unpin',
       value: 'unpin',
       icon: 'lucide:pin-off',
-      disabled: !canUnpinTab,
       action: unpinTab
     });
   } else {
@@ -68,7 +66,6 @@ const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
       label: 'Pin',
       value: 'pin',
       icon: 'lucide:pin',
-      disabled: !canPinTab,
       action: pinTab
     });
   }
@@ -118,7 +115,7 @@ const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
       v-model="modelValue"
       v-model:items="items"
       :variant="variant"
-      :context-menu-factory="getContextMenus"
+      :menu-factory="menuFactory"
       class="h-12 px-2 border rounded-sm"
     />
   </div>

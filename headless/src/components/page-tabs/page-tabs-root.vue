@@ -63,7 +63,7 @@ const css = `
 `;
 
 const context = providePageTabsRootContext({
-  ...transformPropsToContext(props, ['residents', 'middleClickClose']),
+  ...transformPropsToContext(props, ['middleClickClose']),
   modelValue,
   values,
   pins,

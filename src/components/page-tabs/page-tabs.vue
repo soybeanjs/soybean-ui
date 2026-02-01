@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<PageTabsProps<T>>(), {
 
 const emit = defineEmits<PageTabsEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'items', 'contextMenuFactory']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'items', 'menuFactory']);
 
 const rootRef = useTemplateRef('root');
 
@@ -56,8 +56,6 @@ const pins = computed({
   }
 });
 
-const residents = computed(() => items.value.filter(item => item.closable === false).map(item => item.value));
-
 const currentTab: ShallowRef<T | null> = shallowRef(null);
 
 const contextMenus = computed(() => {
@@ -73,8 +71,6 @@ const contextMenus = computed(() => {
     closeRightTabs,
     closeOtherTabs,
     closeAllTabs,
-    canPinTab,
-    canUnpinTab,
     canCloseTab,
     canCloseLeftTabs,
     canCloseRightTabs,
@@ -106,8 +102,6 @@ const contextMenus = computed(() => {
     closeAllTabs: () => {
       closeAllTabs();
     },
-    canPinTab: canPinTab(value),
-    canUnpinTab: canUnpinTab(value),
     canCloseTab: canCloseTab(value),
     canCloseLeftTabs: canCloseLeftTabs(value),
     canCloseRightTabs: canCloseRightTabs(value),
@@ -115,7 +109,7 @@ const contextMenus = computed(() => {
     canCloseAllTabs: canCloseAllTabs()
   };
 
-  return props.contextMenuFactory?.(currentTab.value, state) ?? [];
+  return props.menuFactory?.(currentTab.value, state) ?? [];
 });
 
 const reference = shallowRef<HTMLElement | null>(null);
@@ -134,21 +128,23 @@ const handleSelect = (menu: PageTabsContextMenuOptionData) => {
 };
 
 function sortItems(items: T[]) {
-  const residentItems: T[] = [];
+  const hidePinnedItems: T[] = [];
   const pinnedItems: T[] = [];
   const normalItems: T[] = [];
 
   items.forEach(item => {
-    if (item.closable === false) {
-      residentItems.push(item);
-    } else if (item.pinned) {
-      pinnedItems.push(item);
+    if (item.pinned) {
+      if (item.hidePinnedIcon) {
+        hidePinnedItems.push(item);
+      } else {
+        pinnedItems.push(item);
+      }
     } else {
       normalItems.push(item);
     }
   });
 
-  const result = [...residentItems, ...pinnedItems, ...normalItems];
+  const result = [...hidePinnedItems, ...pinnedItems, ...normalItems];
 
   const hasChanged =
     result.length !== items.length ||
@@ -186,21 +182,19 @@ defineExpose({
     v-bind="forwardedProps"
     v-model:values="values"
     v-model:pins="pins"
-    :residents="residents"
     @update:model-value="emit('update:modelValue', $event)"
   >
     <PageTabsItem
       v-for="item in items"
       :key="item.value"
       :value="item.value"
-      :closable="item.closable"
       @close="emit('close', item)"
       @pin="emit('pin', item)"
       @pointerenter="event => onPointerEnter(event, item)"
     >
       <Icon v-if="item.icon" :icon="item.icon" />
       <span :class="ui.itemText">{{ item.label }}</span>
-      <PageTabsPin as-child>
+      <PageTabsPin as-child v-if="!item.hidePinnedIcon">
         <Icon icon="lucide:pin" />
       </PageTabsPin>
       <PageTabsClose as-child>
