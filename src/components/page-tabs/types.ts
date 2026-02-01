@@ -1,10 +1,10 @@
 import type {
   PageTabsRootProps,
-  PageTabsRootEmits,
   PageTabsItemProps,
   PageTabsUiSlot,
+  PageTabsOperations,
   ClassValue,
-  DefinedValue
+  MaybePromise
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { PageTabsVariant } from '@/variants/page-tabs';
@@ -14,17 +14,49 @@ import type { MenuOptionData } from '../menu/types';
 export interface PageTabsOptionData extends PageTabsItemProps {
   label: string;
   icon?: IconValue;
+  /**
+   * Whether the tab is closable or not.
+   *
+   * @default true
+   */
+  closable?: boolean;
+  /**
+   * Whether the tab is pinned or not.
+   *
+   * @default false
+   */
+  pinned?: boolean;
 }
 
 export type PageTabsExtraUiSlot = 'itemText' | 'chromeBgLeft' | 'chromeBgRight' | 'sliderIndicator';
 
 export type PageTabsExtendedUi = Record<PageTabsUiSlot | PageTabsExtraUiSlot, ClassValue>;
 
-export interface PageTabsProps<
-  T extends PageTabsOptionData,
-  S extends DefinedValue,
-  U extends MenuOptionData<S>
-> extends PageTabsRootProps {
+export interface PageTabsState {
+  pinTab: () => void;
+  unpinTab: () => void;
+  closeTab: () => Promise<void>;
+  closeLeftTabs: () => void;
+  closeRightTabs: () => void;
+  closeOtherTabs: () => void;
+  closeAllTabs: () => void;
+  canPinTab: boolean;
+  canUnpinTab: boolean;
+  canCloseTab: boolean;
+  canCloseLeftTabs: boolean;
+  canCloseRightTabs: boolean;
+  canCloseOtherTabs: boolean;
+  canCloseAllTabs: boolean;
+}
+
+export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
+  action: () => MaybePromise<void>;
+}
+
+export interface PageTabsProps<T extends PageTabsOptionData> extends Omit<
+  PageTabsRootProps,
+  'values' | 'pins' | 'residents'
+> {
   /**
    * root element class
    */
@@ -33,13 +65,14 @@ export interface PageTabsProps<
   variant?: PageTabsVariant;
   ui?: Partial<PageTabsExtendedUi>;
   items: T[];
-  contextMenus?: U[];
+  contextMenuFactory?: (tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[];
 }
 
-export type PageTabsEmits<T> = PageTabsRootEmits & {
-  (e: 'close', value: string): void;
-  (e: 'enterItem', value: string): void;
-  (e: 'selectContextMenu', menu: T, pageValue: string): void;
+export type PageTabsEmits<T> = {
+  (e: 'update:modelValue', value: string): void;
+  (e: 'update:items', value: T[]): void;
+  (e: 'close', tab: T): void;
+  (e: 'pin', tab: T): void;
 };
 
-export type { PageTabsVariant };
+export type { PageTabsOperations, PageTabsVariant };

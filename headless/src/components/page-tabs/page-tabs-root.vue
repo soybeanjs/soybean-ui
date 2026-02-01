@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, ref, useTemplateRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
-import type { PageTabsRootProps, PageTabsRootEmits } from './types';
+import { usePageTabsScroll } from './hooks';
+import type { PageTabsRootProps, PageTabsRootEmits, PageTabsOperations } from './types';
 
 defineOptions({
   name: 'PageTabsRoot'
@@ -14,7 +14,8 @@ defineOptions({
 const props = withDefaults(defineProps<PageTabsRootProps>(), {
   modelValue: undefined,
   pins: undefined,
-  defaultPins: () => [],
+  values: undefined,
+  residents: () => [],
   beforeClose: () => true
 });
 
@@ -25,35 +26,28 @@ const cls = usePageTabsUi('root');
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
-    emit('update:modelValue', value);
+    emit('update:modelValue', value ?? '');
   },
-  props.defaultValue
-);
+  ''
+) as ShallowRef<string>;
+
+const values = useControllableState(
+  () => props.values,
+  value => {
+    emit('update:values', value ?? []);
+  },
+  []
+) as ShallowRef<string[]>;
 
 const pins = useControllableState(
   () => props.pins,
   value => {
     emit('update:pins', value ?? []);
   },
-  props.defaultPins
+  []
 ) as ShallowRef<string[]>;
 
-const values = ref<string[]>([]);
-
-const rootRef = useTemplateRef<HTMLDivElement>('rootRef');
-
-const centerX = computed(() => {
-  if (rootRef.value) {
-    return rootRef.value.offsetWidth / 2;
-  }
-  return 0;
-});
-
-const onWheel = (event: WheelEvent) => {
-  if (rootRef.value) {
-    rootRef.value.scrollLeft += event.deltaY;
-  }
-};
+const { setRootElement, onWheel } = usePageTabsScroll(modelValue);
 
 const css = `
 .page-tabs-root {
@@ -68,28 +62,23 @@ const css = `
 }
 `;
 
-watchEffect(() => {
-  if (!rootRef.value || !centerX.value || !modelValue.value) return;
-
-  const activeElement = rootRef.value.querySelector<HTMLElement>(`[data-value="${modelValue.value}"]`);
-  if (!activeElement) return;
-
-  const offsetX = activeElement.offsetLeft + activeElement.offsetWidth / 2 - centerX.value;
-
-  rootRef.value.scrollTo({ left: offsetX, behavior: 'smooth' });
+const context = providePageTabsRootContext({
+  ...transformPropsToContext(props, ['residents', 'middleClickClose']),
+  modelValue,
+  values,
+  pins,
+  beforeClose: props.beforeClose
 });
 
-providePageTabsRootContext({
-  ...transformPropsToContext(props, ['middleClickClose']),
-  modelValue,
-  pins,
-  values,
-  beforeClose: props.beforeClose
+const operations: PageTabsOperations = context.operations;
+
+defineExpose({
+  operations
 });
 </script>
 
 <template>
-  <div ref="rootRef" :class="cls" class="page-tabs-root" @wheel="onWheel">
+  <div :ref="setRootElement" :class="cls" class="page-tabs-root" @wheel="onWheel">
     <slot />
     <Primitive as="style">{{ css }}</Primitive>
   </div>

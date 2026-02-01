@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import type { Ref } from 'vue';
 import { SPageTabs, SSelect } from '@soybeanjs/ui';
-import type { PageTabsOptionData, SelectOptionData, PageTabsVariant, MenuOptionData } from '@soybeanjs/ui';
+import type {
+  PageTabsOptionData,
+  SelectOptionData,
+  PageTabsVariant,
+  PageTabsState,
+  PageTabsContextMenuOptionData
+} from '@soybeanjs/ui';
 
 const variant = ref<PageTabsVariant>('chrome');
 
@@ -12,61 +18,93 @@ const variants: SelectOptionData<PageTabsVariant>[] = [
   { value: 'slider', label: 'Slider' }
 ];
 
+const modelValue = ref<string>('home');
+
 const items: Ref<PageTabsOptionData[]> = ref([
   { value: 'home', label: 'Home', icon: 'lucide:house', closable: false },
-  { value: 'tab2', label: 'Tab 2', icon: 'lucide:file-text' },
-  { value: 'tab3', label: 'Tab 3', icon: 'lucide:file-text' }
+  { value: 'manage', label: 'Manage', icon: 'lucide:settings', pinned: true },
+  { value: 'doc', label: 'Doc', icon: 'lucide:file-text' },
+  { value: 'about', label: 'About', icon: 'lucide:info' }
 ]);
 
-const pins = ref<string[]>(['tab2']);
+const getContextMenus = (tab: PageTabsOptionData, state: PageTabsState) => {
+  const {
+    closeTab,
+    pinTab,
+    unpinTab,
+    closeLeftTabs,
+    closeRightTabs,
+    closeOtherTabs,
+    closeAllTabs,
+    canCloseTab,
+    canPinTab,
+    canUnpinTab,
+    canCloseLeftTabs,
+    canCloseRightTabs,
+    canCloseOtherTabs,
+    canCloseAllTabs
+  } = state;
 
-const enterValue = ref<string>('');
-
-const setEnterValue = (value: string) => {
-  enterValue.value = value;
-};
-
-const pinned = computed(() => {
-  return pins.value.includes(enterValue.value);
-});
-
-type Action = 'close' | 'closeAll' | 'pin' | 'unpin';
-
-const menus = computed(() => {
-  const items: MenuOptionData<Action>[] = [
-    { value: 'close', label: 'Close Tab', icon: 'lucide:x', disabled: pinned.value },
-    { value: 'closeAll', label: 'Close All Tabs', icon: 'lucide:trash' },
-    pinned.value
-      ? { value: 'unpin', label: 'Unpin Tab', icon: 'lucide:pin-off' }
-      : { value: 'pin', label: 'Pin Tab', icon: 'lucide:pin' }
+  const menus: PageTabsContextMenuOptionData[] = [
+    {
+      label: 'Close',
+      value: 'close',
+      icon: 'lucide:x',
+      disabled: !canCloseTab,
+      action: closeTab
+    }
   ];
 
-  return items;
-});
-
-const actions: Record<Action, () => void> = {
-  close: () => {
-    onClose(enterValue.value);
-  },
-  closeAll: () => {
-    items.value = items.value.filter(item => pins.value.includes(item.value) || item.closable === false);
-  },
-  pin: () => {
-    if (!pins.value.includes(enterValue.value)) {
-      pins.value.push(enterValue.value);
-    }
-  },
-  unpin: () => {
-    pins.value = pins.value.filter(value => value !== enterValue.value);
+  if (tab.pinned) {
+    menus.push({
+      label: 'Unpin',
+      value: 'unpin',
+      icon: 'lucide:pin-off',
+      disabled: !canUnpinTab,
+      action: unpinTab
+    });
+  } else {
+    menus.push({
+      label: 'Pin',
+      value: 'pin',
+      icon: 'lucide:pin',
+      disabled: !canPinTab,
+      action: pinTab
+    });
   }
-};
 
-const onClose = (value: string) => {
-  items.value = items.value.filter(item => item.value !== value);
-};
+  menus.push(
+    {
+      label: 'Close Left',
+      value: 'closeLeft',
+      icon: 'lucide:arrow-left-to-line',
+      disabled: !canCloseLeftTabs,
+      action: closeLeftTabs
+    },
+    {
+      label: 'Close Right',
+      value: 'closeRight',
+      icon: 'lucide:arrow-right-to-line',
+      disabled: !canCloseRightTabs,
+      action: closeRightTabs
+    },
+    {
+      label: 'Close Others',
+      value: 'closeOther',
+      icon: 'lucide:fold-horizontal',
+      disabled: !canCloseOtherTabs,
+      action: closeOtherTabs
+    },
+    {
+      label: 'Close All',
+      value: 'closeAll',
+      icon: 'lucide:arrow-right-left',
+      disabled: !canCloseAllTabs,
+      action: closeAllTabs
+    }
+  );
 
-const onSelect = (menu: MenuOptionData<Action>) => {
-  actions[menu.value]();
+  return menus;
 };
 </script>
 
@@ -77,15 +115,11 @@ const onSelect = (menu: MenuOptionData<Action>) => {
       <SSelect v-model="variant" :items="variants" class="w-30" />
     </div>
     <SPageTabs
-      default-value="home"
-      v-model:pins="pins"
+      v-model="modelValue"
+      v-model:items="items"
       :variant="variant"
-      :items="items"
-      :context-menus="menus"
+      :context-menu-factory="getContextMenus"
       class="h-12 px-2 border rounded-sm"
-      @close="onClose"
-      @enter-item="setEnterValue"
-      @select-context-menu="onSelect"
     />
   </div>
 </template>
