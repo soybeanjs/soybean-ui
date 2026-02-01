@@ -84,7 +84,7 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
     const closeable = canCloseTab(value);
     if (!closeable) return;
 
-    const beforeCloseResult = await beforeClose?.(value);
+    const beforeCloseResult = await beforeClose(value);
     if (beforeCloseResult === false) return;
 
     const isActive = modelValue.value === value;
@@ -111,14 +111,15 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
     return values.value.slice(0, current).some(tab => canCloseTab(tab));
   };
 
-  const closeLeftTabs = (value: string) => {
+  const closeLeftTabs = async (value: string) => {
     const current = values.value.indexOf(value);
     if (current <= 0) return;
 
     const leftTabs = values.value.slice(0, current);
-    leftTabs.forEach(tab => {
-      closeTab(tab);
-    });
+
+    for await (const tab of leftTabs) {
+      await closeTab(tab);
+    }
   };
 
   const canCloseRightTabs = (value: string) => {
@@ -128,31 +129,33 @@ export function usePageTabsOperation(options: UsePageTabsOperationOptions) {
     return values.value.slice(current + 1).some(tab => canCloseTab(tab));
   };
 
-  const closeRightTabs = (value: string) => {
+  const closeRightTabs = async (value: string) => {
     const current = values.value.indexOf(value);
     if (current === -1 || current === values.value.length - 1) return;
 
     const rightTabs = values.value.slice(current + 1);
-    rightTabs.forEach(tab => {
-      closeTab(tab);
-    });
+
+    for await (const tab of rightTabs) {
+      await closeTab(tab);
+    }
   };
 
   const canCloseOtherTabs = (value: string) => values.value.some(tab => tab !== value && canCloseTab(tab));
 
-  const closeOtherTabs = (value: string) => {
-    values.value.forEach(tab => {
-      if (tab === value) return;
-      closeTab(tab);
-    });
+  const closeOtherTabs = async (value: string) => {
+    for await (const tab of values.value) {
+      if (tab !== value) {
+        await closeTab(tab);
+      }
+    }
   };
 
   const canCloseAllTabs = () => values.value.some(tab => canCloseTab(tab));
 
-  const closeAllTabs = () => {
-    values.value.forEach(tab => {
-      closeTab(tab);
-    });
+  const closeAllTabs = async () => {
+    for await (const tab of values.value) {
+      await closeTab(tab);
+    }
   };
 
   return {
