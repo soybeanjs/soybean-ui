@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.4.2](https://github.com/soybeanjs/soybean-ui/compare/v0.4.1...v0.4.2) (2026-02-01)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **page-tabs**: optimize page-tabs logic &nbsp;-&nbsp; by @soybeanjs [<samp>(a2a1c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a2a1c3d5)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.1](https://github.com/soybeanjs/soybean-ui/compare/v0.4.0...v0.4.1) (2026-02-01)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
