@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.4.1](https://github.com/soybeanjs/soybean-ui/compare/v0.4.0...v0.4.1) (2026-02-01)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **page-tabs**: refactor context and operations for improved tab management &nbsp;-&nbsp; by @soybeanjs [<samp>(2b884)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2b884ccf)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.0](https://github.com/soybeanjs/soybean-ui/compare/v0.3.3...v0.4.0) (2026-02-01)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
