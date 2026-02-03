@@ -120,10 +120,10 @@
     "@internationalized/number": "^3.6.5",
     "@tanstack/vue-virtual": "^3.13.18",
     "@vue/shared": "^3.5.27",
-    "@vueuse/core": "^14.1.0",
-    "@vueuse/integrations": "^14.1.0",
-    "@vueuse/router": "^14.1.0",
-    "@vueuse/shared": "^14.1.0",
+    "@vueuse/core": "^14.2.0",
+    "@vueuse/integrations": "^14.2.0",
+    "@vueuse/router": "^14.2.0",
+    "@vueuse/shared": "^14.2.0",
     "aria-hidden": "^1.2.6",
     "defu": "^6.1.4",
     "klona": "^2.0.6",
@@ -137,7 +137,7 @@
     "unplugin-vue": "7.1.1",
     "unplugin-vue-jsx": "0.8.1",
     "vue": "3.5.27",
-    "vue-router": "5.0.0"
+    "vue-router": "5.0.2"
   },
   "peerDependencies": {
     "nuxt": ">=4.0.0",
