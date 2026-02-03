@@ -73,17 +73,19 @@ provideCardUi(ui);
 <template>
   <CardRoot v-bind="forwardedProps">
     <CardHeader v-if="showHeader" v-bind="props.headerProps">
-      <CardTitleRoot v-bind="props.titleRootProps">
-        <slot name="title-leading" />
-        <CardTitle v-bind="props.titleProps">
-          <slot name="title">{{ title }}</slot>
-        </CardTitle>
-        <slot name="title-trailing" />
-      </CardTitleRoot>
-      <slot name="extra" />
-      <CardDescription v-if="slots.description || description" v-bind="props.descriptionProps">
-        <slot name="description">{{ description }}</slot>
-      </CardDescription>
+      <slot name="header">
+        <CardTitleRoot v-bind="props.titleRootProps">
+          <slot name="title-leading" />
+          <CardTitle v-bind="props.titleProps">
+            <slot name="title">{{ title }}</slot>
+          </CardTitle>
+          <slot name="title-trailing" />
+        </CardTitleRoot>
+        <slot name="extra" />
+        <CardDescription v-if="slots.description || description" v-bind="props.descriptionProps">
+          <slot name="description">{{ description }}</slot>
+        </CardDescription>
+      </slot>
     </CardHeader>
     <CardContent v-bind="props.contentProps">
       <slot />
