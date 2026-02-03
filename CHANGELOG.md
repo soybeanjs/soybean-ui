@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.4.4](https://github.com/soybeanjs/soybean-ui/compare/v0.4.3...v0.4.4) (2026-02-03)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **icons**: support nullish icon value and remove unnecessary v-if checks for icon rendering &nbsp;-&nbsp; by @soybeanjs [<samp>(43f54)</samp>](https://github.com/soybeanjs/soybean-ui/commit/43f54fd4)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(b07ff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b07ffa02)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.3](https://github.com/soybeanjs/soybean-ui/compare/v0.4.2...v0.4.3) (2026-02-01)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
