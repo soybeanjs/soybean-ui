@@ -94,7 +94,7 @@ provideBreadcrumbUi(ui);
         </template>
         <BreadcrumbItem v-bind="itemProps" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item">
-            <Icon v-if="item.icon" :icon="item.icon" />
+            <Icon :icon="item.icon" />
           </slot>
           <slot :item="item">
             <BreadcrumbLink

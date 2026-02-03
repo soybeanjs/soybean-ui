@@ -61,7 +61,7 @@ provideCheckboxUi(ui);
 <template>
   <CheckboxRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <div :class="ui.content">
-      <Icon v-if="icon" :icon="icon" :class="ui.icon" />
+      <Icon :icon="icon" :class="ui.icon" />
       <div :class="ui.textContent">
         <CheckboxLabel v-bind="labelProps" :for="checkboxId">
           <slot :id="checkboxId">{{ label }}</slot>

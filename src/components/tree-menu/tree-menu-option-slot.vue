@@ -31,7 +31,7 @@ const tagProps = computed(() => ({
 
 <template>
   <slot name="leading" :item="item">
-    <Icon v-if="item.icon" :icon="item.icon" />
+    <Icon :icon="item.icon" />
   </slot>
   <slot :item="item">
     <Badge v-if="item.badge" v-bind="item.badgeProps" :size="size" :content="item.badge" :class="ui.itemBadge">

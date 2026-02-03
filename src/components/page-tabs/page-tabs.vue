@@ -192,7 +192,7 @@ defineExpose({
       @pin="emit('pin', item)"
       @pointerenter="event => onPointerEnter(event, item)"
     >
-      <Icon v-if="item.icon" :icon="item.icon" />
+      <Icon :icon="item.icon" />
       <span :class="ui.itemText">{{ item.label }}</span>
       <PageTabsPin as-child v-if="!item.hidePinnedIcon">
         <Icon icon="lucide:pin" />

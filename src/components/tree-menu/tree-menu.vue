@@ -119,7 +119,7 @@ provideTreeMenuContext({
       <TreeMenuGroupRoot v-if="item.isGroup" v-bind="groupRootProps">
         <TreeMenuGroupLabel v-bind="groupLabelProps">
           <slot name="group-label" :item="item">
-            <Icon v-if="showGroupIcon && item.icon" :icon="item.icon" />
+            <Icon v-if="showGroupIcon" :icon="item.icon" />
             <span>{{ item.label }}</span>
           </slot>
         </TreeMenuGroupLabel>

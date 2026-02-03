@@ -30,7 +30,7 @@ defineSlots<Slots>();
   <slot name="indicator" />
   <slot name="item">
     <slot name="item-leading">
-      <Icon v-if="icon" :icon="icon" />
+      <Icon :icon="icon" />
     </slot>
     <span>{{ label }}</span>
     <slot name="link-icon" />

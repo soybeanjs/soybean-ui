@@ -54,7 +54,7 @@ provideAccordionUi(ui);
           <AccordionHeader v-bind="props.headerProps">
             <AccordionTrigger v-bind="props.triggerProps">
               <slot name="leading" :item="item" :model-value="modelValue" :open="open">
-                <Icon v-if="item.icon" :icon="item.icon" :class="ui.triggerLeadingIcon" />
+                <Icon :icon="item.icon" :class="ui.triggerLeadingIcon" />
               </slot>
               <slot name="title" :item="item" :model-value="modelValue" :open="open">{{ item.title }}</slot>
               <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">

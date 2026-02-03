@@ -30,7 +30,7 @@ const radioId = computed(() => props.id || `radio-${defaultId}`);
 <template>
   <RadioGroupItem v-bind="forwardedProps">
     <div :class="ui?.content">
-      <Icon v-if="icon" :icon="icon" :class="ui?.icon" />
+      <Icon :icon="icon" :class="ui?.icon" />
       <div :class="ui?.textContent">
         <RadioGroupLabel v-bind="labelProps" :for="radioId">
           <slot :id="radioId">{{ label }}</slot>

@@ -27,7 +27,7 @@ defineSlots<Slots>();
 <template>
   <slot name="item">
     <slot name="item-leading">
-      <Icon v-if="icon" :icon="icon" />
+      <Icon :icon="icon" />
     </slot>
     <slot />
     <slot name="link-icon" />

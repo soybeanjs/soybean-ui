@@ -23,7 +23,7 @@ const ui = useCommandExtraUi();
 <template>
   <ListboxItem v-bind="forwardedProps" :value="item.value" :disabled="item.disabled" @select="emit('select', $event)">
     <slot name="item-leading">
-      <Icon v-if="item.icon" :icon="item.icon" />
+      <Icon :icon="item.icon" />
     </slot>
     <span :class="ui?.itemLabel" v-bind="itemLabelProps">
       <slot name="item-label">{{ item.label }}</slot>

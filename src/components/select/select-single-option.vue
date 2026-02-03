@@ -26,7 +26,7 @@ const attrs = useAttrs();
     @select="emit('select', $event as any)"
   >
     <slot name="item-leading">
-      <Icon v-if="item.icon" :icon="item.icon" />
+      <Icon :icon="item.icon" />
     </slot>
     <SelectItemText v-bind="itemTextProps">
       <slot name="item-text">{{ item.label }}</slot>

@@ -35,7 +35,7 @@ provideAlertUi(ui);
 <template>
   <AlertRoot :open="open" @update:open="value => emit('update:open', value)">
     <slot name="leading">
-      <Icon v-if="icon" :icon="icon" :class="ui.icon" />
+      <Icon :icon="icon" :class="ui.icon" />
     </slot>
     <AlertContent v-bind="contentProps">
       <AlertTitle v-if="slots.title || title" v-bind="titleProps">
