@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.4.5](https://github.com/soybeanjs/soybean-ui/compare/v0.4.4...v0.4.5) (2026-02-04)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **ui**: expose useDialog and useToast globally for external access &nbsp;-&nbsp; by @soybeanjs [<samp>(92eaf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/92eafb3d)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **card**: wrap header slot content for improved structure and rendering &nbsp;-&nbsp; by @soybeanjs [<samp>(c07bf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c07bff3f)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.4](https://github.com/soybeanjs/soybean-ui/compare/v0.4.3...v0.4.4) (2026-02-03)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
