@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<ToastProviderProps>(), {
 
 const forwardedProps = useOmitProps(props, ['ui', 'limits', 'removeDelay', 'position', 'viewportProps']);
 
-const { states, ids, clear, remove, position } = provideToastProviderContext(
+const { states, ids, clear, position } = provideToastProviderContext(
   transformPropsToContext(props, ['ui', 'limits', 'removeDelay', 'position'])
 );
 
@@ -49,11 +49,11 @@ onBeforeUnmount(() => {
   <ToastProvider v-bind="forwardedProps">
     <ToastViewport v-bind="viewportProps" />
     <Toast
-      v-for="{ id, title, description, content, ...rest } in states"
+      v-for="{ id, title, description, content, onClose, ...rest } in states"
       :key="id"
       v-bind="rest"
       :open="ids.includes(id)"
-      @update:open="remove(id)"
+      @update:open="onClose"
     >
       <template v-if="title" #title>
         <template v-if="typeof title === 'string'">{{ title }}</template>

@@ -49,14 +49,21 @@ export const [provideToastProviderContext, useToastProvider] = useContext(
     let $id = 0;
 
     const factory = (options: UseToastOptions) => {
-      const { showIcon = true, size = providerSize.value, ui: $ui, ...rest } = options;
+      const { showIcon = true, size = providerSize.value, ui: $ui, onClose: _onClose, ...rest } = options;
 
       const id = $id;
       $id++;
 
       const ui = mergeUi(providerUi.value, $ui);
 
-      return { id, size, showIcon, ui, ...rest };
+      const onClose = (open?: boolean) => {
+        if (open) return;
+
+        remove(id);
+        _onClose?.();
+      };
+
+      return { id, size, showIcon, ui, onClose, ...rest };
     };
 
     const create = (options: UseToastOptions) => {

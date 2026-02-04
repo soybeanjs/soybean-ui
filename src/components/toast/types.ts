@@ -1,7 +1,6 @@
 import type { VNode } from 'vue';
 import type {
   ClassValue,
-  EmitsToHookProps,
   PropsToContext,
   ToastDescriptionProps,
   ToastRootEmits,
@@ -64,20 +63,19 @@ export interface ToastProps extends ToastRootProps {
 
 export type ToastEmits = ToastRootEmits;
 
-export interface UseToastOptions
-  extends
-    Pick<
-      ToastProps,
-      'size' | 'ui' | 'type' | 'color' | 'showIcon' | 'duration' | 'forceMount' | 'liveType' | 'position'
-    >,
-    Partial<EmitsToHookProps<ToastRootEmits>> {
+export interface UseToastOptions extends Pick<
+  ToastProps,
+  'size' | 'ui' | 'type' | 'color' | 'showIcon' | 'duration' | 'forceMount' | 'liveType' | 'position'
+> {
   title?: string | VNode;
   description?: string | VNode;
   content?: VNode;
+  onClose?: () => void;
 }
 
-export interface ToastState extends UseToastOptions {
+export interface ToastState extends Omit<UseToastOptions, 'onClose'> {
   id: number;
+  onClose: (open?: boolean) => void;
 }
 
 export interface ToastStateWithVisible extends ToastState {
