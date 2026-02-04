@@ -9,7 +9,7 @@ defineOptions({
   name: 'SDialogProvider'
 });
 
-const { states, ids, remove, clear } = provideDialogProviderContext();
+const { states, ids, clear } = provideDialogProviderContext();
 
 onBeforeUnmount(() => {
   clear();
@@ -25,7 +25,7 @@ onBeforeUnmount(() => {
     :size="state.size"
     :ui="state.ui"
     :show-icon="state.showIcon"
-    @update:open="remove(state.id)"
+    @update:open="state.onClose"
   >
     <template v-if="state.title" #title>
       <template v-if="typeof state.title === 'string'">

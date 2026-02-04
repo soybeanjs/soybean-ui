@@ -12,7 +12,6 @@ import type {
   DialogTitleProps,
   DialogTriggerProps,
   DialogUiSlot,
-  EmitsToHookProps,
   MaybePromise,
   UiClass
 } from '@soybeanjs/headless';
@@ -56,7 +55,7 @@ export type DialogPureEmits = DialogEmits;
 
 export type UseDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
 
-export interface UseDialogOptions extends Partial<EmitsToHookProps<DialogContentEmits>> {
+export interface UseDialogOptions {
   size?: ThemeSize;
   ui?: Partial<DialogExtendedUi>;
   type: UseDialogType;
@@ -69,10 +68,12 @@ export interface UseDialogOptions extends Partial<EmitsToHookProps<DialogContent
   cancelText?: string;
   onConfirm?: () => MaybePromise<boolean | void>;
   onCancel?: () => MaybePromise<boolean | void>;
+  onClose?: () => void;
 }
 
-export interface DialogState extends UseDialogOptions {
+export interface DialogState extends Omit<UseDialogOptions, 'onClose'> {
   id: number;
+  onClose: (open?: boolean) => void;
 }
 
 export interface UseDialogReturn extends Record<UseDialogType, (options: Omit<UseDialogOptions, 'type'>) => void> {

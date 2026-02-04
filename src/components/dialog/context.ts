@@ -37,14 +37,21 @@ export const [provideDialogProviderContext, useDialogProvider] = useContext('UiD
   let $id = 0;
 
   const factory = (options: UseDialogOptions) => {
-    const { showIcon = true, ...rest } = options;
+    const { showIcon = true, onClose: _onClose, ...rest } = options;
 
     const id = $id;
     $id++;
 
+    const onClose = (open?: boolean) => {
+      if (open) return;
+      remove(id);
+      _onClose?.();
+    };
+
     const state: DialogState = {
       id,
       showIcon,
+      onClose,
       ...rest
     };
 
