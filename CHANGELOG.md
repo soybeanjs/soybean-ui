@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.5.0](https://github.com/soybeanjs/soybean-ui/compare/v0.4.6...v0.5.0) (2026-02-04)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **ui**:
+  - add onClose callback to dialog state and update dialog-provider to use it &nbsp;-&nbsp; by @soybeanjs [<samp>(cab93)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cab93a37)
+  - enhance useToast options with onClose callback and refactor toast handling &nbsp;-&nbsp; by @soybeanjs [<samp>(944c2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/944c28f9)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.4.6](https://github.com/soybeanjs/soybean-ui/compare/v0.4.5...v0.4.6) (2026-02-04)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
