@@ -2,7 +2,7 @@ import type { MarkdownItAsync, PluginSimple } from 'markdown-it-async';
 import type { RenderRule } from 'markdown-it/lib/renderer.mjs';
 import type { MarkdownEnv } from 'unplugin-vue-markdown/dist/types.js';
 
-function encodeBase64Utf8(raw: string): string {
+export function encodeBase64Utf8(raw: string): string {
   if (typeof btoa === 'function' && typeof TextEncoder !== 'undefined') {
     const bytes = new TextEncoder().encode(raw);
     let binary = '';

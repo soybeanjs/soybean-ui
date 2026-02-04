@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { codeToHtml } from 'shiki';
+import { encodeBase64Utf8 } from '@/modules/markdown';
 
 interface Props {
   code: string;
@@ -30,5 +31,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="wrapper" class="md-code-block"></div>
+  <div class="relative">
+    <div ref="wrapper" class="md-code-block"></div>
+    <CopyButton :code-base64="encodeBase64Utf8(props.code)" />
+  </div>
 </template>
