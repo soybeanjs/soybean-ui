@@ -84,6 +84,11 @@ export const [provideToastProviderContext, useToastProvider] = useContext(
       };
     }
 
+    // setup to window for usage outside of setup function
+    if (typeof window !== 'undefined') {
+      window.__Soybean__useToast = useToast;
+    }
+
     return {
       useToast,
       clear,
@@ -96,6 +101,11 @@ export const [provideToastProviderContext, useToastProvider] = useContext(
 );
 
 export const useToast = () => {
+  // read from window first to avoid provide/inject limitations when called outside of setup
+  if (typeof window !== 'undefined' && window.__Soybean__useToast) {
+    return window.__Soybean__useToast;
+  }
+
   const { useToast: $useToast } = useToastProvider('UiToastConsumer');
 
   return $useToast;
