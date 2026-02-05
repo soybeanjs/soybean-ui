@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.5.3](https://github.com/soybeanjs/soybean-ui/compare/v0.5.2...v0.5.3) (2026-02-05)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tabs**: add nextTick to watchEffect to get dom &nbsp;-&nbsp; by @soybeanjs [<samp>(00dcd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/00dcd86e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.2](https://github.com/soybeanjs/soybean-ui/compare/v0.5.1...v0.5.2) (2026-02-05)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
