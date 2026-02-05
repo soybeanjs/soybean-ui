@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.5.1](https://github.com/soybeanjs/soybean-ui/compare/v0.5.0...v0.5.1) (2026-02-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **ui**: enhance pageTabsVariants for dark mode support and improve hover effects &nbsp;-&nbsp; by @soybeanjs [<samp>(a66d8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a66d8697)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **components**: add a copy button to the demo code. &nbsp;-&nbsp; by **skyfeiz** [<samp>(5b9ff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5b9ffac1)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(5e6b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5e6b99a7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+[skyfeiz](mailto:webzhangfei@163.com)
+
 ## [v0.5.0](https://github.com/soybeanjs/soybean-ui/compare/v0.4.6...v0.5.0) (2026-02-04)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
