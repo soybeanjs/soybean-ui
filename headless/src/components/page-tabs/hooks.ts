@@ -1,4 +1,4 @@
-import { computed, watchEffect } from 'vue';
+import { computed, watchEffect, nextTick } from 'vue';
 import type { ShallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
 import type { UsePageTabsOperationOptions } from './types';
@@ -14,8 +14,10 @@ export function usePageTabsScroll(activeValue: ShallowRef<string>) {
     }
   };
 
-  watchEffect(() => {
+  watchEffect(async () => {
     if (!rootElement.value || !centerX.value || !activeValue.value) return;
+
+    await nextTick();
 
     const activeElement = rootElement.value.querySelector<HTMLElement>(`[data-value="${activeValue.value}"]`);
     if (!activeElement) return;

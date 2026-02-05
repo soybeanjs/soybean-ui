@@ -7,7 +7,8 @@ import type {
   SelectOptionData,
   PageTabsVariant,
   PageTabsState,
-  PageTabsContextMenuOptionData
+  PageTabsContextMenuOptionData,
+  SButton
 } from '@soybeanjs/ui';
 
 const variant = ref<PageTabsVariant>('chrome');
@@ -27,6 +28,16 @@ const items: Ref<PageTabsOptionData[]> = ref([
   { value: 'doc', label: 'Doc', icon: 'lucide:file-text' },
   { value: 'about', label: 'About', icon: 'lucide:info' }
 ]);
+
+const addTab = () => {
+  const newTab: PageTabsOptionData = {
+    value: `new-tab-${items.value.length + 1}`,
+    label: `New Tab ${items.value.length + 1}`,
+    icon: 'lucide:file-plus'
+  };
+  items.value.push(newTab);
+  modelValue.value = newTab.value;
+};
 
 const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
   const {
@@ -118,5 +129,6 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
       :menu-factory="menuFactory"
       class="h-12 px-2 border rounded-sm"
     />
+    <SButton variant="pure" class="mt-4" @click="addTab">Add Tab</SButton>
   </div>
 </template>
