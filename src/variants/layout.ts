@@ -28,7 +28,7 @@ export const layoutVariants = tv({
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
-    main: 'relative flex flex-1 flex-col items-stretch bg-background',
+    main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden',
     header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
     tab: 'shrink-0 h-[--soybean-layout-tab-height]',
     content: 'grow overflow-auto',
