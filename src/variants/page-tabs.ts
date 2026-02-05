@@ -8,21 +8,23 @@ export const pageTabsVariants = tv({
     item: [
       `group/item relative flex items-center cursor-pointer select-none outline-none`,
       `data-[active=true]:bg-primary-50 data-[active=true]:text-primary data-[active=true]:z-2`,
-      `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`
+      `data-[active=false]:hover:bg-accent data-[active=false]:focus:bg-accent`,
+      `dark:data-[active=true]:bg-accent dark:data-[active=true]:text-foreground`
     ],
     itemText: 'grow truncate',
     close: [
       `rounded-full hover:text-muted group-data-[active=true]/item:hover:bg-primary/50`,
-      `group-data-[active=false]/item:hover:bg-accent-foreground/20`
+      `group-data-[active=false]/item:hover:bg-accent-foreground/20`,
+      `dark:hover:text-foreground dark:group-data-[active=true]/item:hover:bg-accent-foreground/20`
     ],
     pin: ``,
     chromeBgLeft: [
       `absolute right-full bottom-0 fill-transparent`,
-      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 group-data-[active=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
     ],
     chromeBgRight: [
       `absolute left-full bottom-0 fill-transparent`,
-      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 group-data-[active=true]/item:z-2`
+      `group-hover/item:fill-accent group-data-[active=true]/item:fill-primary-50 dark:group-data-[active=true]/item:fill-accent group-data-[active=true]/item:z-2`
     ],
     sliderIndicator: `absolute bottom-0 left-0 w-full h-0.5 group-data-[active=true]/item:bg-primary`
   },
