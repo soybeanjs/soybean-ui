@@ -132,7 +132,7 @@
   "devDependencies": {
     "@nuxt/kit": "^4.3.0",
     "@standard-schema/spec": "^1.1.0",
-    "tsdown": "0.19.0",
+    "tsdown": "0.20.3",
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.1",
     "unplugin-vue-jsx": "0.8.1",

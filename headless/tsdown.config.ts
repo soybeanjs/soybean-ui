@@ -12,7 +12,13 @@ export default defineConfig({
   ],
   platform: 'browser',
   target: 'es2020',
-  external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies), '@nuxt/kit', '@nuxt/schema'],
+  external: [
+    ...Object.keys(pkg.peerDependencies),
+    ...Object.keys(pkg.dependencies),
+    '@nuxt/kit',
+    '@nuxt/schema',
+    'unplugin-vue-components'
+  ],
   noExternal: ['aria-hidden'],
   clean: true,
   dts: {
