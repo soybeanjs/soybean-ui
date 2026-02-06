@@ -33,7 +33,7 @@
     "@shikijs/markdown-it": "^3.22.0",
     "@types/markdown-it-link-attributes": "^3.0.5",
     "@types/nprogress": "^0.2.3",
-    "@unhead/vue": "^2.1.2",
+    "@unhead/vue": "^2.1.3",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vitejs/plugin-vue-jsx": "^5.1.4",
     "lightningcss": "^1.31.1",

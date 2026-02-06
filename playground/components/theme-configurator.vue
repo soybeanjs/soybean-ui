@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useMediaQuery } from '@vueuse/core';
-import { tailwindPaletteHsl } from '@soybeanjs/colord/palette';
+import { tailwindPalette } from '@soybeanjs/colord/palette';
 import { builtinBasePresetKeys, builtinFeedbackPresetKeys, builtinPrimaryPresetKeys } from '@soybeanjs/shadcn-theme';
 import type { BuiltinBasePresetKey, BuiltinFeedbackPresetKey, BuiltinPrimaryPresetKey } from '@soybeanjs/shadcn-theme';
 import { SButton, SButtonIcon, SLabel, SPopover, SSelect } from '@soybeanjs/ui';
@@ -35,7 +35,7 @@ const randomColor = () => {
 
   const key = builtinPrimaryPresetKeys[index];
 
-  return tailwindPaletteHsl[key][500];
+  return tailwindPalette[key][500].hsl;
 };
 
 const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key, randomColor()])) as Record<
@@ -60,13 +60,13 @@ const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key,
           <template #trigger-leading>
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPaletteHsl[base][500] }"
+              :style="{ backgroundColor: tailwindPalette[base][500].hsl }"
             />
           </template>
           <template #item-leading="{ item }">
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPaletteHsl[item.value][500] }"
+              :style="{ backgroundColor: tailwindPalette[item.value][500].hsl }"
             />
           </template>
         </SSelect>
@@ -77,13 +77,13 @@ const feedbackBg = Object.fromEntries(builtinFeedbackPresetKeys.map(key => [key,
           <template #trigger-leading>
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPaletteHsl[primary][500] }"
+              :style="{ backgroundColor: tailwindPalette[primary][500].hsl }"
             />
           </template>
           <template #item-leading="{ item }">
             <span
               class="size-4 flex shrink-0 items-center justify-center rounded-full"
-              :style="{ backgroundColor: tailwindPaletteHsl[item.value][500] }"
+              :style="{ backgroundColor: tailwindPalette[item.value][500].hsl }"
             />
           </template>
         </SSelect>

@@ -73,9 +73,9 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.9.0",
     "@iconify/vue": "^5.0.0",
-    "@soybeanjs/colord": "^0.3.5",
+    "@soybeanjs/colord": "^0.4.2",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/shadcn-theme": "^0.1.0",
+    "@soybeanjs/shadcn-theme": "^0.2.2",
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
     "tailwind-merge": "^3.4.0",
