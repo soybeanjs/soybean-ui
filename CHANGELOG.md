@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.5.9](https://github.com/soybeanjs/soybean-ui/compare/v0.5.8...v0.5.9) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **layout**: update main and root styles for layout variants &nbsp;-&nbsp; by @soybeanjs [<samp>(4bea2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4bea25d1)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.8](https://github.com/soybeanjs/soybean-ui/compare/v0.5.7...v0.5.8) (2026-02-07)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
