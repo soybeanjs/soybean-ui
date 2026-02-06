@@ -117,6 +117,7 @@
     "@floating-ui/utils": "^0.2.10",
     "@internationalized/date": "^3.11.0",
     "@internationalized/number": "^3.6.5",
+    "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.18",
     "@vue/shared": "^3.5.27",
     "@vueuse/core": "^14.2.0",
@@ -131,7 +132,6 @@
   "devDependencies": {
     "@nuxt/kit": "^4.3.0",
     "@nuxt/schema": "^4.3.0",
-    "@standard-schema/spec": "^1.1.0",
     "tsdown": "0.20.3",
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.1",
