@@ -28,7 +28,7 @@ export const layoutVariants = tv({
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
-    main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden group-data-[variant=inset]:border',
+    main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden',
     header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
     tab: 'shrink-0 h-[--soybean-layout-tab-height]',
     content: `grow overflow-auto`,
@@ -65,7 +65,7 @@ export const layoutVariants = tv({
         sidebarWrapper: `p-[calc(var(--soybean-layout-spacing)/2)] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`
       },
       inset: {
-        root: 'bg-sidebar-background',
+        root: 'bg-sidebar',
         sidebarGapHandler: `w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
         sidebarWrapper: `p-[calc(var(--soybean-layout-spacing)/2)] w-[calc(var(--soybean-sidebar-width)+var(--soybean-layout-spacing))] group-data-[collapsible=icon]:w-[calc(var(--soybean-collapsed-sidebar-width)+var(--soybean-layout-spacing))]`,
         main: `md:m-[calc(var(--soybean-layout-spacing)/2)] md:ml-0 md:rounded-xl md:shadow`
