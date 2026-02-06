@@ -23,7 +23,9 @@ defineOptions({
 
 const props = withDefaults(defineProps<LayoutProps>(), {
   open: undefined,
-  size: 'md'
+  size: 'md',
+  tabVisible: true,
+  footerVisible: true
 });
 
 const emit = defineEmits<LayoutEmits>();
@@ -33,6 +35,9 @@ const forwardedProps = useOmitProps(props, [
   'size',
   'ui',
   'pxToRem',
+  'fullContent',
+  'tabVisible',
+  'footerVisible',
   'sidebarProps',
   'headerProps',
   'mainProps',
@@ -56,6 +61,7 @@ const ui = computed(() => {
     variant: props.variant,
     side: props.side,
     collapsible: props.collapsible,
+    tabVisible: props.tabVisible,
     fullContent: props.fullContent
   });
 

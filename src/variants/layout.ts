@@ -8,7 +8,7 @@ export const layoutVariants = tv({
     sidebarRoot: 'h-full hidden md:block',
     sidebarWrapper: `absolute inset-y-0 z-10 hidden h-full w-[--soybean-sidebar-width] transition-[left,right,width,opacity] duration-200 ease-linear md:flex`,
     sidebar: [
-      `flex flex-col w-full h-full bg-sidebar-background`,
+      `flex flex-col w-full h-full bg-sidebar`,
       `group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-border group-data-[variant=floating]:border-solid group-data-[variant=floating]:shadow`
     ],
     sidebarGapHandler: [
@@ -16,7 +16,7 @@ export const layoutVariants = tv({
       `group-data-[collapsible=offcanvas]:w-0`,
       `group-data-[side=right]:rotate-180`
     ],
-    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar-background p-0 [&>button]:hidden',
+    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0 [&>button]:hidden',
     mobileOverlay: [
       `fixed inset-0 z-50 bg-black/80`,
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
@@ -28,10 +28,10 @@ export const layoutVariants = tv({
       'after:absolute after:inset-y-0 after:left-1/2 after:content-empty after:w-[calc(var(--soybean-layout-spacing)/8)] hover:after:bg-sidebar-border'
     ],
     trigger: '',
-    main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden',
+    main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden group-data-[variant=inset]:border',
     header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
     tab: 'shrink-0 h-[--soybean-layout-tab-height]',
-    content: 'grow overflow-auto',
+    content: `grow overflow-auto`,
     footer: 'shrink-0 h-[--soybean-layout-footer-height]'
   },
   variants: {
@@ -84,14 +84,19 @@ export const layoutVariants = tv({
     collapsible: {
       offcanvas: {
         sidebarWrapper: 'group-data-[state=collapsed]:opacity-0',
-        rail: `translate-x-0 after:left-full hover:bg-sidebar-background`
+        rail: `translate-x-0 after:left-full hover:bg-sidebar`
       },
       icon: {}
+    },
+    tabVisible: {
+      true: {
+        content: ''
+      }
     },
     fullContent: {
       true: {
         tab: 'fixed left-0 top-0 z-10 w-full',
-        content: 'fixed inset-0 z-10 mt-[--soybean-layout-tab-height]'
+        content: 'fixed inset-0 z-10'
       }
     }
   },
@@ -148,12 +153,20 @@ export const layoutVariants = tv({
       class: {
         main: 'md:group-data-[state=collapsed]:ml-[calc(var(--soybean-layout-spacing)/2)]'
       }
+    },
+    {
+      tabVisible: true,
+      fullContent: true,
+      class: {
+        content: 'mt-[--soybean-layout-tab-height]'
+      }
     }
   ],
   defaultVariants: {
     variant: 'sidebar',
     side: 'left',
-    collapsible: 'icon'
+    collapsible: 'icon',
+    tabVisible: true
   }
 });
 

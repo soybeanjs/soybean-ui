@@ -18,7 +18,24 @@ export interface LayoutProps extends LayoutRootProps {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<LayoutUi>;
+  /**
+   * whether the content takes the full height of the layout (include).
+   *
+   * @default false
+   */
   fullContent?: boolean;
+  /**
+   * whether to show the tab.
+   *
+   * @default true
+   */
+  tabVisible?: boolean;
+  /**
+   * whether to show the footer.
+   *
+   * @default true
+   */
+  footerVisible?: boolean;
   sidebarProps?: LayoutSidebarProps;
   railProps?: LayoutRailProps;
   mainProps?: LayoutMainProps;

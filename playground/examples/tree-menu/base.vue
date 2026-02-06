@@ -32,7 +32,7 @@ const menuWidth = computed(() => `${(BASE_WIDTH * themeSizeRatioMap[size.value])
         :size="size"
         toggle-behavior="single"
         :items="treeMenuItems"
-        class="bg-sidebar-background"
+        class="bg-sidebar border rounded-md"
       />
     </div>
   </div>
