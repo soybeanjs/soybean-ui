@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.5.5](https://github.com/soybeanjs/soybean-ui/compare/v0.5.4...v0.5.5) (2026-02-06)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.4](https://github.com/soybeanjs/soybean-ui/compare/v0.5.3...v0.5.4) (2026-02-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
