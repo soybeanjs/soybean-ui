@@ -36,28 +36,10 @@ function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
 
   return typeof icon === 'string' || (typeof icon === 'object' && 'body' in icon);
 }
-
-const localIconValue = computed(() => {
-  const prefix = configProvider?.iconify?.value?.localPrefix;
-
-  if (!prefix || typeof props.icon !== 'string') {
-    return null;
-  }
-
-  return `${prefix}:${props.icon}`;
-});
-
-const iconValue = computed(() => {
-  if (!isIconifyIcon(props.icon)) {
-    return '';
-  }
-
-  return localIconValue.value || props.icon;
-});
 </script>
 
 <template>
-  <Icon v-if="isIconifyIcon(icon)" v-bind="forwardedProps" :icon="iconValue" style="flex-shrink: 0" />
+  <Icon v-if="isIconifyIcon(icon)" v-bind="forwardedProps" :icon="icon" style="flex-shrink: 0" />
   <component
     v-else-if="icon"
     :is="icon"

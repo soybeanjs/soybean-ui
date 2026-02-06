@@ -22,12 +22,6 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
      * @defaultValue '1.25em'
      */
     height?: string;
-    /**
-     * Prefix for local icons
-     *
-     * format: "prefix:iconName"
-     */
-    localPrefix?: string;
   };
   toast?: ToastProviderProps;
 }
