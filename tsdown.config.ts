@@ -12,9 +12,6 @@ export default defineConfig({
     ...Object.keys(headlessPkg.devDependencies),
     ...Object.keys(pkg.dependencies),
     ...Object.keys(pkg.devDependencies),
-    '@nuxt/kit',
-    '@nuxt/schema',
-    'unplugin-vue-components',
     '@vueuse/integrations/useFuse'
   ],
   clean: true,

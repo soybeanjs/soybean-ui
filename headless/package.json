@@ -19,7 +19,6 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -131,21 +130,32 @@
   },
   "devDependencies": {
     "@nuxt/kit": "^4.3.0",
+    "@nuxt/schema": "^4.3.0",
     "@standard-schema/spec": "^1.1.0",
     "tsdown": "0.20.3",
     "typescript": "5.9.3",
     "unplugin-vue": "7.1.1",
+    "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-jsx": "0.8.1",
     "vue": "3.5.27",
     "vue-router": "5.0.2"
   },
   "peerDependencies": {
+    "@nuxt/kit": "^4.3.0",
+    "@nuxt/schema": "^4.3.0",
     "nuxt": ">=4.0.0",
+    "unplugin-vue-components": "^31.0.0",
     "vue": ">=3.2.0",
     "vue-router": ">=4.0.0"
   },
   "peerDependenciesMeta": {
     "nuxt": {
+      "optional": true
+    },
+    "unplugin-vue-components": {
+      "optional": true
+    },
+    "vue-router": {
       "optional": true
     }
   },

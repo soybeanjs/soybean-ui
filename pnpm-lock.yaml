@@ -266,6 +266,9 @@ importers:
       '@nuxt/kit':
         specifier: ^4.3.0
         version: 4.3.0(magicast@0.5.2)
+      '@nuxt/schema':
+        specifier: ^4.3.0
+        version: 4.3.0
       '@standard-schema/spec':
         specifier: ^1.1.0
         version: 1.1.0
@@ -278,6 +281,9 @@ importers:
       unplugin-vue:
         specifier: 7.1.1
         version: 7.1.1(@types/node@25.2.1)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.46.0)(tsx@4.21.0)(vue@3.5.27(typescript@5.9.3))(yaml@2.8.2)
+      unplugin-vue-components:
+        specifier: ^31.0.0
+        version: 31.0.0(@nuxt/kit@4.3.0(magicast@0.5.2))(vue@3.5.27(typescript@5.9.3))
       unplugin-vue-jsx:
         specifier: 0.8.1
         version: 0.8.1
