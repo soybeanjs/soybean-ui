@@ -1,5 +1,30 @@
 # Changelog
 
+## [v0.5.4](https://github.com/soybeanjs/soybean-ui/compare/v0.5.3...v0.5.4) (2026-02-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **ui**: add localPrefix support for local icon names &nbsp;-&nbsp; by @soybeanjs [<samp>(fd6bc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fd6bc8e9)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dependencies**: add @standard-schema/spec to dependencies and remove from devDependencies &nbsp;-&nbsp; by @soybeanjs [<samp>(2a5ec)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2a5ec2c2)
+- **projects**: add external deps to fix build &nbsp;-&nbsp; by @soybeanjs [<samp>(da0ea)</samp>](https://github.com/soybeanjs/soybean-ui/commit/da0eae01)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **vite.config**: correct import casing for Vue and Unocss &nbsp;-&nbsp; by @soybeanjs [<samp>(dad63)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dad639d0)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**:
+  - rename update-pkg script to upkg for consistency &nbsp;-&nbsp; by @soybeanjs [<samp>(bf815)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bf815bf4)
+  - add necessary deps and update tsdown config &nbsp;-&nbsp; by @soybeanjs [<samp>(8685b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8685bf1d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.3](https://github.com/soybeanjs/soybean-ui/compare/v0.5.2...v0.5.3) (2026-02-05)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
