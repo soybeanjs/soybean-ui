@@ -69,7 +69,7 @@
     "test:watch": "vitest watch",
     "typecheck": "vue-tsc --noEmit --skipLibCheck",
     "unstub": "tsx scripts/stub.ts --reset",
-    "update-pkg": "soy ncu"
+    "upkg": "soy ncu"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.9.0",
