@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.5.6](https://github.com/soybeanjs/soybean-ui/compare/v0.5.5...v0.5.6) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **projects**: optimize theme &nbsp;-&nbsp; by @soybeanjs [<samp>(5fcbb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5fcbb9cf)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.5](https://github.com/soybeanjs/soybean-ui/compare/v0.5.4...v0.5.5) (2026-02-06)
 
 ### &nbsp;&nbsp;&nbsp;❤️ Contributors
