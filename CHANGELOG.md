@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.5.8](https://github.com/soybeanjs/soybean-ui/compare/v0.5.7...v0.5.8) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **layout**: add tabVisible and footerVisible props to LayoutProps &nbsp;-&nbsp; by @soybeanjs [<samp>(af2b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/af2b6b7e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.7](https://github.com/soybeanjs/soybean-ui/compare/v0.5.6...v0.5.7) (2026-02-07)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
