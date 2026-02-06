@@ -1,8 +1,8 @@
 /// <reference types="vitest/config" />
 import { URL, fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
-import vue from 'unplugin-vue/vite';
-import unocss from 'unocss/vite';
+import Vue from 'unplugin-vue/vite';
+import Unocss from 'unocss/vite';
 import VueRouter from 'vue-router/vite';
 import { VueRouterAutoImports } from 'vue-router/unplugin';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
@@ -18,8 +18,8 @@ export default defineConfig({
     }
   },
   plugins: [
-    vue(),
-    unocss(),
+    Vue(),
+    Unocss(),
     VueRouter({
       routesFolder: 'playground/pages',
       dts: 'playground/typings/typed-router.d.ts'
