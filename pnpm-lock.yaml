@@ -21,8 +21,8 @@ importers:
         specifier: workspace:^
         version: link:headless
       '@soybeanjs/shadcn-theme':
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.3.1
+        version: 0.3.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -2142,8 +2142,8 @@ packages:
       vue-eslint-parser:
         optional: true
 
-  '@soybeanjs/shadcn-theme@0.2.2':
-    resolution: {integrity: sha512-J7tOJbQTvvgpmtkaayHYW2Y13H2xIxg/tEhSrz+ET8NM7btclyaVF+96VXugQMQgTQOkIA557CafMuX8kNsdvQ==}
+  '@soybeanjs/shadcn-theme@0.3.1':
+    resolution: {integrity: sha512-yfVMq0d4gArzxNXfCUtSDHZ1PkajECcT2Rprpp77B0wWoCm9Xotcd03mIJ//s32IgaoYktDdVNOg0IAl+RJzLw==}
 
   '@soybeanjs/unocss-preset@0.2.0':
     resolution: {integrity: sha512-ELjt4BKoU3NsrvzPHK7EsMMz2ZC8F4Qtpny38qeRvvrS7YzHEj5CwD6LeQF2USEo9msJRYU2uwLTIJRFOClNxA==}
@@ -7856,7 +7856,7 @@ snapshots:
       - eslint-import-resolver-node
       - supports-color
 
-  '@soybeanjs/shadcn-theme@0.2.2':
+  '@soybeanjs/shadcn-theme@0.3.1':
     dependencies:
       '@soybeanjs/colord': 0.4.2
 
