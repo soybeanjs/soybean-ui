@@ -30,8 +30,8 @@ export const layoutVariants = tv({
     trigger: '',
     main: 'relative flex flex-1 flex-col items-stretch bg-background overflow-hidden',
     header: 'relative flex items-center shrink-0 h-[--soybean-layout-header-height]',
-    tab: 'shrink-0 h-[--soybean-layout-tab-height]',
-    content: `grow overflow-auto`,
+    tab: 'shrink-0 h-[--soybean-layout-tab-height] bg-background',
+    content: `grow overflow-auto bg-background`,
     footer: 'shrink-0 h-[--soybean-layout-footer-height]'
   },
   variants: {
