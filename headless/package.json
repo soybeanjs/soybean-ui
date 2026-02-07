@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/headless",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "SoybeanHeadless is a collection unstyled components for Vue 3. It is designed to be lightweight and easy to use.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {

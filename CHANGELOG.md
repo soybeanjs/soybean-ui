@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.6.1](https://github.com/soybeanjs/soybean-ui/compare/v0.6.0...v0.6.1) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **page-tabs**: add sorting functionality for tabs based on pinned status &nbsp;-&nbsp; by @soybeanjs [<samp>(f5bac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5bacad3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.0](https://github.com/soybeanjs/soybean-ui/compare/v0.5.9...v0.6.0) (2026-02-07)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
