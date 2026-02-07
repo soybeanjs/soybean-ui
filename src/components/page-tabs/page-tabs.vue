@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData">
-import { computed, shallowRef } from 'vue';
+import { computed, shallowRef, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
 import { PageTabsRoot, PageTabsItem, PageTabsClose, PageTabsPin, providePageTabsUi } from '@soybeanjs/headless';
 import { useOmitProps, useControllableState } from '@soybeanjs/headless/composables';
@@ -38,7 +38,7 @@ const items = useControllableState(
   },
   []
 );
-const { closeTab, pinTab, getState } = usePageTabsState<T>({
+const { closeTab, pinTab, sortTabs, getState } = usePageTabsState<T>({
   items,
   modelValue,
   beforeClose: props.beforeClose
@@ -88,6 +88,10 @@ const ui = computed(() => {
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
+});
+
+watchEffect(() => {
+  sortTabs();
 });
 
 providePageTabsUi(ui);

@@ -130,9 +130,28 @@ export function usePageTabsState<T extends PageTabsOptionData>(options: UsePageS
   };
 
   const sortTabs = () => {
-    const pinned = items.value.filter(item => item.pinned);
-    const unpinned = items.value.filter(item => !item.pinned);
-    items.value = [...pinned, ...unpinned];
+    const hidePinnedItems: T[] = [];
+    const pinnedItems: T[] = [];
+    const normalItems: T[] = [];
+
+    items.value.forEach(item => {
+      if (item.pinned) {
+        if (item.hidePinnedIcon) {
+          hidePinnedItems.push(item);
+        } else {
+          pinnedItems.push(item);
+        }
+      } else {
+        normalItems.push(item);
+      }
+    });
+
+    const updated = [...hidePinnedItems, ...pinnedItems, ...normalItems];
+    const hasChanged = updated.some((item, index) => item.value !== items.value[index].value);
+
+    if (hasChanged) {
+      items.value = updated;
+    }
   };
 
   const getState = (tab: T): PageTabsState => {
@@ -175,6 +194,7 @@ export function usePageTabsState<T extends PageTabsOptionData>(options: UsePageS
   return {
     closeTab,
     pinTab,
+    sortTabs,
     getState
   };
 }
