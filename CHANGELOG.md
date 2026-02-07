@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.6.2](https://github.com/soybeanjs/soybean-ui/compare/v0.6.1...v0.6.2) (2026-02-08)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **page-tabs**: fix scroll centerX value &nbsp;-&nbsp; by @soybeanjs [<samp>(1dadd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1dadda7b)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.1](https://github.com/soybeanjs/soybean-ui/compare/v0.6.0...v0.6.1) (2026-02-07)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
