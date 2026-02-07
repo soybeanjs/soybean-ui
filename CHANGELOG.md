@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.6.0](https://github.com/soybeanjs/soybean-ui/compare/v0.5.9...v0.6.0) (2026-02-07)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **page-tabs**: simplify context and state management, remove unused operations &nbsp;-&nbsp; by @soybeanjs [<samp>(ded83)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ded83e90)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**: update oxlint,oxfmt config &nbsp;-&nbsp; by @soybeanjs [<samp>(d7bdf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7bdff81)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.5.9](https://github.com/soybeanjs/soybean-ui/compare/v0.5.8...v0.5.9) (2026-02-07)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
