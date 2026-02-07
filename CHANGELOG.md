@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.6.3](https://github.com/soybeanjs/soybean-ui/compare/v0.6.2...v0.6.3) (2026-02-08)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **layout**: add background color to tab and content variants &nbsp;-&nbsp; by @soybeanjs [<samp>(d7ab2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d7ab267e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.2](https://github.com/soybeanjs/soybean-ui/compare/v0.6.1...v0.6.2) (2026-02-08)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
