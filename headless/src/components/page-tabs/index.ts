@@ -13,6 +13,5 @@ export type {
   PageTabsCloseProps,
   PageTabsPinProps,
   PageTabsUiSlot,
-  PageTabsUi,
-  PageTabsOperations
+  PageTabsUi
 } from './types';

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
+import { klona } from 'klona/full';
 import { SPageTabs, SSelect } from '@soybeanjs/ui';
 import type {
   PageTabsOptionData,
@@ -24,7 +25,7 @@ const modelValue = ref<string>('home');
 const items: Ref<PageTabsOptionData[]> = ref([
   { value: 'home', label: 'Home', icon: 'lucide:house', pinned: true, hidePinnedIcon: true },
   { value: 'profile', label: 'Profile', icon: 'lucide:user' },
-  { value: 'manage', label: 'Manage', icon: 'lucide:settings', pinned: true },
+  { value: 'manage', label: 'Manage', icon: 'lucide:settings' },
   { value: 'doc', label: 'Doc', icon: 'lucide:file-text' },
   { value: 'about', label: 'About', icon: 'lucide:info' }
 ]);
@@ -41,18 +42,18 @@ const addTab = () => {
 
 const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
   const {
-    closeTab,
-    pinTab,
-    unpinTab,
-    closeLeftTabs,
-    closeRightTabs,
-    closeOtherTabs,
-    closeAllTabs,
-    canCloseTab,
-    canCloseLeftTabs,
-    canCloseRightTabs,
-    canCloseOtherTabs,
-    canCloseAllTabs
+    closable,
+    close,
+    pin,
+    unpin,
+    leftClosable,
+    closeLeft,
+    rightClosable,
+    closeRight,
+    otherClosable,
+    closeOther,
+    allClosable,
+    closeAll
   } = state;
 
   const menus: PageTabsContextMenuOptionData[] = [
@@ -60,8 +61,8 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
       label: 'Close',
       value: 'close',
       icon: 'lucide:x',
-      disabled: !canCloseTab,
-      action: closeTab
+      disabled: !closable,
+      action: close
     }
   ];
 
@@ -70,14 +71,14 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
       label: 'Unpin',
       value: 'unpin',
       icon: 'lucide:pin-off',
-      action: unpinTab
+      action: unpin
     });
   } else {
     menus.push({
       label: 'Pin',
       value: 'pin',
       icon: 'lucide:pin',
-      action: pinTab
+      action: pin
     });
   }
 
@@ -86,29 +87,29 @@ const menuFactory = (tab: PageTabsOptionData, state: PageTabsState) => {
       label: 'Close Left',
       value: 'closeLeft',
       icon: 'lucide:arrow-left-to-line',
-      disabled: !canCloseLeftTabs,
-      action: closeLeftTabs
+      disabled: !leftClosable,
+      action: closeLeft
     },
     {
       label: 'Close Right',
       value: 'closeRight',
       icon: 'lucide:arrow-right-to-line',
-      disabled: !canCloseRightTabs,
-      action: closeRightTabs
+      disabled: !rightClosable,
+      action: closeRight
     },
     {
       label: 'Close Others',
       value: 'closeOther',
       icon: 'lucide:fold-horizontal',
-      disabled: !canCloseOtherTabs,
-      action: closeOtherTabs
+      disabled: !otherClosable,
+      action: closeOther
     },
     {
       label: 'Close All',
       value: 'closeAll',
       icon: 'lucide:arrow-right-left',
-      disabled: !canCloseAllTabs,
-      action: closeAllTabs
+      disabled: !allClosable,
+      action: closeAll
     }
   );
 

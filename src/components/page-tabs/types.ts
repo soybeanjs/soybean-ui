@@ -1,8 +1,8 @@
 import type {
   PageTabsRootProps,
+  PageTabsRootEmits,
   PageTabsItemProps,
   PageTabsUiSlot,
-  PageTabsOperations,
   ClassValue,
   MaybePromise
 } from '@soybeanjs/headless';
@@ -15,12 +15,6 @@ export interface PageTabsOptionData extends PageTabsItemProps {
   label: string;
   icon?: IconValue;
   /**
-   * Whether the tab is pinned or not.
-   *
-   * @default false
-   */
-  pinned?: boolean;
-  /**
    * Whether to hide the pinned icon on the tab
    */
   hidePinnedIcon?: boolean;
@@ -31,28 +25,28 @@ export type PageTabsExtraUiSlot = 'itemText' | 'chromeBgLeft' | 'chromeBgRight' 
 export type PageTabsExtendedUi = Record<PageTabsUiSlot | PageTabsExtraUiSlot, ClassValue>;
 
 export interface PageTabsState {
-  pinTab: () => void;
-  unpinTab: () => void;
-  closeTab: () => Promise<void>;
-  closeLeftTabs: () => void;
-  closeRightTabs: () => void;
-  closeOtherTabs: () => void;
-  closeAllTabs: () => void;
-  canCloseTab: boolean;
-  canCloseLeftTabs: boolean;
-  canCloseRightTabs: boolean;
-  canCloseOtherTabs: boolean;
-  canCloseAllTabs: boolean;
+  pin: () => void;
+  unpin: () => void;
+  closable: boolean;
+  close: () => Promise<void>;
+  leftClosable: boolean;
+  closeLeft: () => void;
+  rightClosable: boolean;
+  closeRight: () => void;
+  otherClosable: boolean;
+  closeOther: () => void;
+  allClosable: boolean;
+  closeAll: () => void;
 }
 
 export interface PageTabsContextMenuOptionData extends MenuOptionData<string> {
-  action: () => MaybePromise<void>;
+  /**
+   * Action to perform when the menu item is selected.
+   */
+  action?: () => MaybePromise<void>;
 }
 
-export interface PageTabsProps<T extends PageTabsOptionData> extends Omit<
-  PageTabsRootProps,
-  'values' | 'pins' | 'residents'
-> {
+export interface PageTabsProps<T extends PageTabsOptionData> extends PageTabsRootProps {
   /**
    * root element class
    */
@@ -67,13 +61,20 @@ export interface PageTabsProps<T extends PageTabsOptionData> extends Omit<
    * @param state The current state and operations for the tab
    */
   menuFactory?: (tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[];
+  /**
+   * Callback invoked before closing the tab. Return `false` or a promise that resolves to `false` to prevent closing.
+   * @param value
+   */
+  beforeClose?: (value: string) => MaybePromise<boolean | void>;
 }
 
-export type PageTabsEmits<T> = {
-  (e: 'update:modelValue', value: string): void;
-  (e: 'update:items', value: T[]): void;
+export type PageTabsEmits<T> = PageTabsRootEmits & {
+  (e: 'update:items', items: T[]): void;
+  (e: 'click', tab: T): void;
   (e: 'close', tab: T): void;
   (e: 'pin', tab: T): void;
+  (e: 'contextmenu', tab: T): void;
+  (e: 'select-context-menu', menu: PageTabsContextMenuOptionData, tab: T): void;
 };
 
-export type { PageTabsOperations, PageTabsVariant };
+export type { PageTabsVariant };

@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends PageTabsOptionData">
-import { computed, shallowRef, useTemplateRef, watchEffect } from 'vue';
+import { computed, shallowRef } from 'vue';
 import type { ShallowRef } from 'vue';
 import { PageTabsRoot, PageTabsItem, PageTabsClose, PageTabsPin, providePageTabsUi } from '@soybeanjs/headless';
 import { useOmitProps, useControllableState } from '@soybeanjs/headless/composables';
@@ -7,27 +7,29 @@ import { mergeSlotVariants } from '@/theme';
 import { pageTabsVariants } from '@/variants/page-tabs';
 import Icon from '../icon/icon.vue';
 import ContextMenu from '../context-menu/context-menu.vue';
-import type {
-  PageTabsProps,
-  PageTabsEmits,
-  PageTabsOptionData,
-  PageTabsState,
-  PageTabsContextMenuOptionData
-} from './types';
+import { usePageTabsState } from './hooks';
+import type { PageTabsProps, PageTabsEmits, PageTabsOptionData, PageTabsContextMenuOptionData } from './types';
 
 defineOptions({
   name: 'SPageTabs'
 });
 
 const props = withDefaults(defineProps<PageTabsProps<T>>(), {
-  variant: 'chrome'
+  variant: 'chrome',
+  beforeClose: () => true
 });
 
 const emit = defineEmits<PageTabsEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'items', 'menuFactory']);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'modelValue', 'items', 'menuFactory']);
 
-const rootRef = useTemplateRef('root');
+const modelValue = useControllableState(
+  () => props.modelValue,
+  value => {
+    emit('update:modelValue', value ?? '');
+  },
+  ''
+) as ShallowRef<string>;
 
 const items = useControllableState(
   () => props.items,
@@ -36,124 +38,48 @@ const items = useControllableState(
   },
   []
 );
-
-const values = computed({
-  get: () => items.value.map(item => item.value),
-  set: (vals: string[]) => {
-    const updated = items.value.filter(item => vals.includes(item.value));
-    items.value = updated;
-  }
-});
-
-const pins = computed({
-  get: () => items.value.filter(item => item.pinned).map(item => item.value),
-  set: (vals: string[]) => {
-    const updated = items.value.map(item => ({
-      ...item,
-      pinned: vals.includes(item.value)
-    }));
-    items.value = updated;
-  }
+const { closeTab, pinTab, getState } = usePageTabsState<T>({
+  items,
+  modelValue,
+  beforeClose: props.beforeClose
 });
 
 const currentTab: ShallowRef<T | null> = shallowRef(null);
+const reference = shallowRef<HTMLElement | null>(null);
 
 const contextMenus = computed(() => {
-  if (!currentTab.value || !rootRef.value?.operations) {
-    return [];
-  }
+  if (!currentTab.value || !props.menuFactory) return [];
 
-  const {
-    pinTab,
-    unpinTab,
-    closeTab,
-    closeLeftTabs,
-    closeRightTabs,
-    closeOtherTabs,
-    closeAllTabs,
-    canCloseTab,
-    canCloseLeftTabs,
-    canCloseRightTabs,
-    canCloseOtherTabs,
-    canCloseAllTabs
-  } = rootRef.value.operations;
+  const state = getState(currentTab.value);
 
-  const value = currentTab.value.value;
-
-  const state: PageTabsState = {
-    pinTab: () => {
-      pinTab(value);
-    },
-    unpinTab: () => {
-      unpinTab(value);
-    },
-    closeTab: async () => {
-      await closeTab(value);
-    },
-    closeLeftTabs: () => {
-      closeLeftTabs(value);
-    },
-    closeRightTabs: () => {
-      closeRightTabs(value);
-    },
-    closeOtherTabs: () => {
-      closeOtherTabs(value);
-    },
-    closeAllTabs: () => {
-      closeAllTabs();
-    },
-    canCloseTab: canCloseTab(value),
-    canCloseLeftTabs: canCloseLeftTabs(value),
-    canCloseRightTabs: canCloseRightTabs(value),
-    canCloseOtherTabs: canCloseOtherTabs(value),
-    canCloseAllTabs: canCloseAllTabs()
-  };
-
-  return props.menuFactory?.(currentTab.value, state) ?? [];
+  return props.menuFactory(currentTab.value, state);
 });
 
-const reference = shallowRef<HTMLElement | null>(null);
+const onCloseTab = (tab: T) => {
+  closeTab(tab.value, () => {
+    emit('close', tab);
+  });
+};
+
+const onPinTab = (tab: T, pinned: boolean) => {
+  pinTab(tab, pinned);
+
+  emit('pin', tab);
+};
 
 const onPointerEnter = (event: PointerEvent, tab: T) => {
   reference.value = event.currentTarget as HTMLElement;
   currentTab.value = tab;
+
+  emit('contextmenu', tab);
 };
 
-const handleSelect = (menu: PageTabsContextMenuOptionData) => {
-  if (!currentTab.value) {
-    return;
-  }
+const handleSelect = async (menu: PageTabsContextMenuOptionData) => {
+  if (!currentTab.value) return;
 
-  menu.action();
+  await menu.action?.();
+  emit('select-context-menu', menu, currentTab.value);
 };
-
-function sortItems(items: T[]) {
-  const hidePinnedItems: T[] = [];
-  const pinnedItems: T[] = [];
-  const normalItems: T[] = [];
-
-  items.forEach(item => {
-    if (item.pinned) {
-      if (item.hidePinnedIcon) {
-        hidePinnedItems.push(item);
-      } else {
-        pinnedItems.push(item);
-      }
-    } else {
-      normalItems.push(item);
-    }
-  });
-
-  const result = [...hidePinnedItems, ...pinnedItems, ...normalItems];
-
-  const hasChanged =
-    result.length !== items.length ||
-    result.some((item, index) => {
-      return item.value !== items[index].value;
-    });
-
-  return hasChanged ? result : items;
-}
 
 const ui = computed(() => {
   const variants = pageTabsVariants({
@@ -164,32 +90,19 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-watchEffect(() => {
-  // Ensure items are sorted when items change
-  items.value = sortItems(items.value);
-});
-
 providePageTabsUi(ui);
-
-defineExpose({
-  operations: rootRef.value?.operations
-});
 </script>
 
 <template>
-  <PageTabsRoot
-    ref="root"
-    v-bind="forwardedProps"
-    v-model:values="values"
-    v-model:pins="pins"
-    @update:model-value="emit('update:modelValue', $event)"
-  >
+  <PageTabsRoot ref="root" v-bind="forwardedProps" v-model="modelValue">
     <PageTabsItem
       v-for="item in items"
       :key="item.value"
       :value="item.value"
-      @close="emit('close', item)"
-      @pin="emit('pin', item)"
+      :pinned="item.pinned"
+      @click="emit('click', item)"
+      @close="onCloseTab(item)"
+      @pin="onPinTab(item, $event)"
       @pointerenter="event => onPointerEnter(event, item)"
     >
       <Icon :icon="item.icon" />
@@ -212,6 +125,12 @@ defineExpose({
       <div v-if="variant === 'slider'" :class="ui.sliderIndicator"></div>
     </PageTabsItem>
 
-    <ContextMenu :modal="false" :items="contextMenus" :trigger-props="{ reference }" @select="handleSelect" />
+    <ContextMenu
+      v-if="contextMenus.length"
+      :modal="false"
+      :items="contextMenus"
+      :trigger-props="{ reference }"
+      @select="handleSelect"
+    />
   </PageTabsRoot>
 </template>

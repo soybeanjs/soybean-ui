@@ -5,7 +5,7 @@ import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
 import { providePageTabsRootContext, usePageTabsUi } from './context';
 import { usePageTabsScroll } from './hooks';
-import type { PageTabsRootProps, PageTabsRootEmits, PageTabsOperations } from './types';
+import type { PageTabsRootProps, PageTabsRootEmits } from './types';
 
 defineOptions({
   name: 'PageTabsRoot'
@@ -13,9 +13,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<PageTabsRootProps>(), {
   modelValue: undefined,
-  pins: undefined,
-  values: undefined,
-  residents: () => [],
   beforeClose: () => true
 });
 
@@ -30,22 +27,6 @@ const modelValue = useControllableState(
   },
   ''
 ) as ShallowRef<string>;
-
-const values = useControllableState(
-  () => props.values,
-  value => {
-    emit('update:values', value ?? []);
-  },
-  []
-) as ShallowRef<string[]>;
-
-const pins = useControllableState(
-  () => props.pins,
-  value => {
-    emit('update:pins', value ?? []);
-  },
-  []
-) as ShallowRef<string[]>;
 
 const { setRootElement, onWheel } = usePageTabsScroll(modelValue);
 
@@ -62,18 +43,9 @@ const css = `
 }
 `;
 
-const context = providePageTabsRootContext({
+providePageTabsRootContext({
   ...transformPropsToContext(props, ['middleClickClose']),
-  modelValue,
-  values,
-  pins,
-  beforeClose: props.beforeClose
-});
-
-const operations: PageTabsOperations = context.operations;
-
-defineExpose({
-  operations
+  modelValue
 });
 </script>
 

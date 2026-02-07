@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { transformPropsToContext } from '../../shared';
 import { usePageTabsUi, usePageTabsRootContext, providePageTabsItemContext } from './context';
 import type { PageTabsItemProps, PageTabsItemEmits } from './types';
 
@@ -12,23 +13,22 @@ const props = defineProps<PageTabsItemProps>();
 const emit = defineEmits<PageTabsItemEmits>();
 
 const cls = usePageTabsUi('item');
-const {
-  middleClickClose,
-  operations: { isActiveTab, setActiveTab, isTabPinned, closeTab, togglePinTab, canCloseTab }
-} = usePageTabsRootContext('PageTabsItem');
+const { middleClickClose, modelValue } = usePageTabsRootContext('PageTabsItem');
 
-const isActive = computed(() => isActiveTab(props.value));
-const pinned = computed(() => isTabPinned(props.value));
-const closable = computed(() => canCloseTab(props.value));
+const isActive = computed(() => props.value === modelValue.value);
+const closable = computed(() => !props.pinned);
 
 const onClick = () => {
-  setActiveTab(props.value);
+  if (isActive.value) return;
+
+  modelValue.value = props.value;
+  emit('click');
 };
 
 const onClose = async () => {
-  closeTab(props.value, () => {
-    emit('close');
-  });
+  if (!closable.value) return;
+
+  emit('close');
 };
 
 const onMouseDown = (event: MouseEvent) => {
@@ -39,16 +39,12 @@ const onMouseDown = (event: MouseEvent) => {
 };
 
 const onPin = () => {
-  const state = pinned.value;
-
-  togglePinTab(props.value);
-
-  emit('pin', !state);
+  emit('pin', !props.pinned);
 };
 
 providePageTabsItemContext({
+  ...transformPropsToContext(props, ['pinned']),
   closable,
-  pinned,
   onClose,
   onPin
 });

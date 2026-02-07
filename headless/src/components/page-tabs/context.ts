@@ -1,17 +1,9 @@
 import { useContext, useUiContext } from '../../composables';
-import { usePageTabsOperation } from './hooks';
 import type { PageTabsUiSlot, PageTabsRootContextParams, PageTabsItemContextParams } from './types';
 
 export const [providePageTabsRootContext, usePageTabsRootContext] = useContext(
   'PageTabsRoot',
-  (params: PageTabsRootContextParams) => {
-    const operations = usePageTabsOperation(params);
-
-    return {
-      ...params,
-      operations
-    };
-  }
+  (params: PageTabsRootContextParams) => params
 );
 
 export const [providePageTabsItemContext, usePageTabsItemContext] = useContext(
