@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { shallowRef, watch, watchEffect } from 'vue';
+import { useStorage } from '@vueuse/core';
 import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
@@ -29,9 +30,11 @@ const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']
 
 provideConfigProviderContext(transformPropsToContext(props));
 
-const cssVars = shallowRef('');
-
 const { getCss } = createShadcnTheme(props.theme);
+
+const generateCss = () => getCss(props.theme, props.theme.radius);
+
+const cssVars = useStorage('__SoybeanUI_themeVars', generateCss());
 
 function addSizeClass(size: ThemeSize) {
   if (!isClient) return;
@@ -49,14 +52,13 @@ watch(
 );
 
 watchEffect(() => {
-  const theme = props.theme || {};
-  cssVars.value = getCss(theme, theme.radius);
+  cssVars.value = generateCss();
 });
 </script>
 
 <template>
   <ConfigProvider v-bind="forwardedProps">
-    <Primitive id="__SOYBEAN_UI_THEME_VARS__" as="style">
+    <Primitive id="__SoybeanUI_themeVars" as="style">
       {{ cssVars }}
     </Primitive>
     <DialogProvider>
