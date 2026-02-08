@@ -77,7 +77,7 @@ export const [provideDialogProviderContext, useDialogProvider] = useContext('UiD
 
   // setup to window for usage outside of setup function
   if (typeof window !== 'undefined') {
-    window.__Soybean__useDialog = useDialog;
+    window.__SoybeanUI_useDialog = useDialog;
   }
 
   return {
@@ -91,8 +91,8 @@ export const [provideDialogProviderContext, useDialogProvider] = useContext('UiD
 
 export const useDialog = (): UseDialogReturn => {
   // read from window first to avoid provide/inject limitations when called outside of setup
-  if (typeof window !== 'undefined' && window.__Soybean__useDialog) {
-    return window.__Soybean__useDialog;
+  if (typeof window !== 'undefined' && window.__SoybeanUI_useDialog) {
+    return window.__SoybeanUI_useDialog;
   }
 
   const { useDialog: $useDialog } = useDialogProvider('UiDialogConsumer');

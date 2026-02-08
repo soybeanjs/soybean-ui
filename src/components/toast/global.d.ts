@@ -7,7 +7,7 @@ declare global {
      *
      * Can be used outside of setup function to avoid provide/inject limitations
      */
-    __Soybean__useToast?: UseToastReturn;
+    __SoybeanUI_useToast?: UseToastReturn;
   }
 }
 
