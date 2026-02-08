@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.6.5](https://github.com/soybeanjs/soybean-ui/compare/v0.6.4...v0.6.5) (2026-02-08)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **page-tabs**: omit beforeClose prop from forwardedProps &nbsp;-&nbsp; by @soybeanjs [<samp>(37fba)</samp>](https://github.com/soybeanjs/soybean-ui/commit/37fba8dd)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.4](https://github.com/soybeanjs/soybean-ui/compare/v0.6.3...v0.6.4) (2026-02-08)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
