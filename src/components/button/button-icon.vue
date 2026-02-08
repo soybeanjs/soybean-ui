@@ -15,11 +15,11 @@ const props = withDefaults(defineProps<ButtonIconProps>(), {
   fitContent: true
 });
 
-const forwardedProps = useOmitProps(props, ['icon', 'iconProps']);
+const forwardedProps = useOmitProps(props, ['icon', 'iconClass', 'iconProps']);
 </script>
 
 <template>
   <Button v-bind="forwardedProps">
-    <Icon :icon="icon" v-bind="iconProps" />
+    <Icon v-bind="iconProps" :icon="icon" :class="iconClass" />
   </Button>
 </template>

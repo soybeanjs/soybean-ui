@@ -25,6 +25,10 @@ export interface ButtonProps extends _ButtonProps {
 export interface ButtonIconProps extends ButtonProps {
   /** The icon name of iconify. */
   icon: string;
+  /**
+   * The class of the icon.
+   */
+  iconClass?: ClassValue;
   /** The props of the icon. */
   iconProps?: Partial<IconProps>;
 }
