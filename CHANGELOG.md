@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.6.6](https://github.com/soybeanjs/soybean-ui/compare/v0.6.5...v0.6.6) (2026-02-09)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **config-provider**: enhance theme variable management with useStorage &nbsp;-&nbsp; by @soybeanjs [<samp>(1a002)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1a002016)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dialog, toast**: update global window properties to use __SoybeanUI_ prefix &nbsp;-&nbsp; by @soybeanjs [<samp>(0e3d4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0e3d49dd)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.5](https://github.com/soybeanjs/soybean-ui/compare/v0.6.4...v0.6.5) (2026-02-08)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
