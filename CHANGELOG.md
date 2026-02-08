@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.6.4](https://github.com/soybeanjs/soybean-ui/compare/v0.6.3...v0.6.4) (2026-02-08)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **button-icon**: support iconClass prop &nbsp;-&nbsp; by @soybeanjs [<samp>(d96ec)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d96ece31)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(2f80e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2f80e81c)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.3](https://github.com/soybeanjs/soybean-ui/compare/v0.6.2...v0.6.3) (2026-02-08)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
