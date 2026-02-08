@@ -21,7 +21,16 @@ const props = withDefaults(defineProps<PageTabsProps<T>>(), {
 
 const emit = defineEmits<PageTabsEmits<T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui', 'modelValue', 'items', 'menuFactory']);
+const forwardedProps = useOmitProps(props, [
+  'class',
+  'size',
+  'variant',
+  'ui',
+  'modelValue',
+  'items',
+  'menuFactory',
+  'beforeClose'
+]);
 
 const modelValue = useControllableState(
   () => props.modelValue,
