@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<ContextMenuTriggerProps>(), {
   as: 'span'
 });
 
-const { dataState, pressOpenDelay, onOpenChange, triggerElement, onTriggerElementChange } =
+const { dataState, pressOpenDelay, onOpenChange, onTriggerElementChange } =
   useContextMenuRootContext('ContextMenuTrigger');
 
 const [_, setTriggerElement] = useForwardElement(el => {
