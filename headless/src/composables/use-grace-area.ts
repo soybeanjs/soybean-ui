@@ -1,6 +1,6 @@
 import { onWatcherCleanup, ref, watchEffect } from 'vue';
 import type { ShallowRef } from 'vue';
-import { refAutoReset } from '@vueuse/core';
+import { refAutoReset, tryOnScopeDispose } from '@vueuse/core';
 import {
   getExitSideFromRect,
   getHull,
@@ -202,11 +202,15 @@ export function useGraceArea(options: UseGraceAreaOptions) {
     const updated = isPointerInTransit.value;
     onPointerInTransitChange?.(updated);
   });
+
+  tryOnScopeDispose(() => {
+    isPointerInTransit.value = false;
+  });
 }
 
 function createGraceAreaGeometry(exitPoint: Point, currentTarget: HTMLElement, hoverTarget: HTMLElement): Polygon {
   const exitSide = getExitSideFromRect(exitPoint, currentTarget.getBoundingClientRect());
-  const paddedExitPoints = getPaddedExitPoints(exitPoint, exitSide);
+  const paddedExitPoints = getPaddedExitPoints(exitPoint, exitSide, 1);
   const hoverTargetPoints = getPointsFromRect(hoverTarget.getBoundingClientRect());
   return getHull([...paddedExitPoints, ...hoverTargetPoints]);
 }
