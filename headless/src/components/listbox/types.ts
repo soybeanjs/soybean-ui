@@ -88,7 +88,7 @@ export interface ListboxVirtualizerProps {
   /** Number of items rendered outside the visible area */
   overscan?: number;
   /** Estimated size (in px) of each item */
-  estimateSize?: number;
+  estimateSize?: number | ((index: number) => number);
   /** Text content for each item to achieve type-ahead feature */
   textContent?: (option: string) => string;
 }
