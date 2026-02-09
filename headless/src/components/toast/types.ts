@@ -16,6 +16,12 @@ export interface ToastProviderProps {
    */
   duration?: number;
   /**
+   * Whether to disable the ability to swipe to close the toast.
+   *
+   * @defaultValue false
+   */
+  disableSwipe?: boolean;
+  /**
    * Direction of pointer swipe that should close the toast.
    *
    * @defaultValue 'right'

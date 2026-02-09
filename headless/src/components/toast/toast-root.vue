@@ -48,6 +48,7 @@ const cls = useToastUi('root');
 const {
   swipeDirection,
   swipeThreshold,
+  disableSwipe,
   viewportElement,
   isFocusedToastEscapeKeyDownRef,
   isClosePausedRef,
@@ -66,6 +67,8 @@ const open = useControllableState(
 );
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(itemElement, open);
+
+const style = computed(() => (disableSwipe.value ? '' : 'user-select: none; touch-action: none'));
 
 const duration = computed(() => (typeof props.duration === 'number' ? props.duration : providerDuration.value || 5000));
 const dataState = computed(() => getDisclosureState(open.value));
@@ -162,12 +165,14 @@ const onSwipeEnd = (event: SwipeEvent) => {
 };
 
 const onPointerDown = (event: PointerEvent) => {
+  if (disableSwipe.value) return;
+
   const { clientX: x, clientY: y } = event;
   pointerStartRef.value = { x, y };
 };
 
 const onPointerMove = (event: PointerEvent) => {
-  if (!pointerStartRef.value) return;
+  if (disableSwipe.value || !pointerStartRef.value) return;
 
   const { clientX, clientY } = event;
   const { x: startX, y: startY } = pointerStartRef.value;
@@ -205,6 +210,8 @@ const onPointerMove = (event: PointerEvent) => {
 };
 
 const onPointerUp = (event: PointerEvent) => {
+  if (disableSwipe.value) return;
+
   const delta = swipeDeltaRef.value;
   const target = event.target as HTMLElement;
   if (target.hasPointerCapture(event.pointerId)) {
@@ -313,7 +320,7 @@ onUnmounted(() => {
         :data-state="dataState"
         role="alert"
         tabindex="0"
-        style="user-select: none; touch-action: none"
+        :style="style"
         @pointerdown.left="onPointerDown"
         @pointermove="onPointerMove"
         @pointerup="onPointerUp"
