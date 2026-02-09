@@ -72,7 +72,7 @@ const onMousedown = () => {
     :data-orientation="orientation"
     @mousedown.left="onMousedown"
     @focus="onFocus"
-    @keydown.down.up.left.right.home.end.prevent="onKeydownNav"
+    @keydown.down.up.left.right.home.end="onKeydownNav"
     @keydown.enter="onKeydownEnter"
     @keydown="onKeydownTypeahead"
   >
