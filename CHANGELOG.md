@@ -1,5 +1,44 @@
 # Changelog
 
+## [v0.8.0](https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0) (2026-02-10)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **number-input**: add focusOnChange prop to enhance user experience &nbsp;-&nbsp; by @soybeanjs [<samp>(38523)</samp>](https://github.com/soybeanjs/soybean-ui/commit/38523803)
+- **popper**: add hideShiftedArrow prop to control arrow visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(6ce45)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6ce45594)
+- **tabs**: add registerContentId and unregisterContentId for dynamic content management &nbsp;-&nbsp; by @soybeanjs [<samp>(c58fa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c58fa207)
+- **toast**: add disableSwipe prop to control swipe-to-close functionality &nbsp;-&nbsp; by @soybeanjs [<samp>(32d53)</samp>](https://github.com/soybeanjs/soybean-ui/commit/32d53a74)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **accordion**:
+  - add default value for unmountOnHide prop &nbsp;-&nbsp; by @soybeanjs [<samp>(1f86b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1f86b28f)
+- **listbox**:
+  - remove prevent default from keydown event handler &nbsp;-&nbsp; by @soybeanjs [<samp>(cb095)</samp>](https://github.com/soybeanjs/soybean-ui/commit/cb09572a)
+  - support dynamic estimateSize function in ListboxVirtualizerProps &nbsp;-&nbsp; by @soybeanjs [<samp>(751b6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/751b61a3)
+- **navigation-menu**:
+  - add event listener for root content dismiss in context &nbsp;-&nbsp; by @soybeanjs [<samp>(0e1cf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0e1cf983)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **context-menu**: remove unused triggerElement from context menu props &nbsp;-&nbsp; by @soybeanjs [<samp>(0c3c1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0c3c10a6)
+- **dom**: remove unused function getAriaLabelByVNode &nbsp;-&nbsp; by @soybeanjs [<samp>(b5dfa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b5dfa4bf)
+- **grace-area**: add cleanup for pointer in transit state on component dispose &nbsp;-&nbsp; by @soybeanjs [<samp>(73aa8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/73aa8fad)
+- **select**: add disableOutsidePointerEvents prop to enhance interaction and simplify arrow visibility logic &nbsp;-&nbsp; by @soybeanjs [<samp>(f5048)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5048445)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **tooltip**: simplify ariaLabel computation and remove unused slots &nbsp;-&nbsp; by @soybeanjs [<samp>(2fa29)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2fa29ef0)
+- **ui**: split variants to every components &nbsp;-&nbsp; by @soybeanjs [<samp>(944db)</samp>](https://github.com/soybeanjs/soybean-ui/commit/944db498)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update skills and README &nbsp;-&nbsp; by @soybeanjs [<samp>(a26fd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a26fdc05)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.7.1](https://github.com/soybeanjs/soybean-ui/compare/v0.7.0...v0.7.1) (2026-02-09)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
