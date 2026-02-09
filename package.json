@@ -1,6 +1,6 @@
 {
   "name": "@soybeanjs/ui",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "SoybeanUI is built on top of SoybeanHeadless, providing a collection of styled components for Vue 3.",
   "homepage": "https://github.com/soybeanjs/soybean-ui",
   "bugs": {

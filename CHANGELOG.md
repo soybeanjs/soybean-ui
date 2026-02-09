@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.7.1](https://github.com/soybeanjs/soybean-ui/compare/v0.7.0...v0.7.1) (2026-02-09)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **projects**: fix missing methods &nbsp;-&nbsp; by @soybeanjs [<samp>(60712)</samp>](https://github.com/soybeanjs/soybean-ui/commit/60712bb9)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.7.0](https://github.com/soybeanjs/soybean-ui/compare/v0.6.6...v0.7.0) (2026-02-09)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
