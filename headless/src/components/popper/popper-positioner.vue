@@ -41,6 +41,8 @@ const arrowCentered = computed(() => middlewareData.value.arrow?.centerOffset ==
 const arrowX = computed(() => middlewareData.value.arrow?.x ?? 0);
 const arrowY = computed(() => middlewareData.value.arrow?.y ?? 0);
 
+const hideArrow = computed(() => props.hideShiftedArrow && !arrowCentered.value);
+
 const popupZIndex = shallowRef<string>();
 
 const positionerStyle = computed<CSSProperties>(() => {
@@ -61,7 +63,7 @@ const positionerStyle = computed<CSSProperties>(() => {
 providePopperPositionerContext({
   arrowX,
   arrowY,
-  arrowCentered,
+  hideArrow,
   placedSide,
   placedAlign,
   isPositioned: computed(() => isPositioned.value),

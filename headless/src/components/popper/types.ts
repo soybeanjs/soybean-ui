@@ -86,6 +86,13 @@ export interface PopperPositionerProps extends /** @vue-ignore */ HTMLAttributes
    */
   arrowPadding?: number;
   /**
+   * When `true`, hides the arrow when it cannot be centered
+   * to the reference element.
+   *
+   * @defaultValue true
+   */
+  hideShiftedArrow?: boolean;
+  /**
    * The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at
    * least partially in the boundary whilst "always" will keep the content in the boundary regardless.
    *
@@ -144,8 +151,8 @@ export interface PopperPositionerContextParams {
   arrowX: ComputedRef<number>;
   /** Y position of the arrow */
   arrowY: ComputedRef<number>;
-  /** Whether the arrow is centered */
-  arrowCentered: ComputedRef<boolean>;
+  /** Whether to hide the arrow*/
+  hideArrow: ComputedRef<boolean>;
   /** Set the arrow element */
   setArrowElement: (nodeRef: VNodeRef) => void;
   /** The side where the content is placed */

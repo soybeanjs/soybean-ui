@@ -15,7 +15,7 @@ defineProps<PopperArrowProps>();
 
 const cls = usePopperUi('arrow');
 
-const { setArrowElement, arrowX, arrowY, arrowCentered, placedSide } = usePopperPositionerContext('PopperArrow');
+const { setArrowElement, arrowX, arrowY, hideArrow, placedSide } = usePopperPositionerContext('PopperArrow');
 
 const TRANSFORM_ORIGIN: Record<Side, string> = {
   top: '',
@@ -40,7 +40,7 @@ const style = computed<CSSProperties>(() => ({
   [baseSide.value]: 0,
   transformOrigin: TRANSFORM_ORIGIN[placedSide.value],
   transform: TRANSFORM[placedSide.value],
-  visibility: arrowCentered.value ? undefined : 'hidden'
+  visibility: hideArrow.value ? 'hidden' : undefined
 }));
 </script>
 
