@@ -2,6 +2,7 @@ import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } fr
 import type {
   DefinedValue,
   Direction,
+  DismissableLayerProps,
   ForceMountProps,
   FormFieldCommonProps,
   MaybeArray,
@@ -51,7 +52,7 @@ export interface SelectItemAlignedPositionProps extends /** @vue-ignore */ HTMLA
 export type SelectPosition = 'item-aligned' | 'popper';
 
 // SelectContentImpl
-export interface SelectContentImplProps extends PopperPositionerProps {
+export interface SelectContentImplProps extends PopperPositionerProps, DismissableLayerProps {
   /**
    * The positioning mode to use
    *

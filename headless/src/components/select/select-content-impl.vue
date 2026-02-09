@@ -34,7 +34,8 @@ const props = withDefaults(defineProps<SelectContentImplProps>(), {
   position: 'popper',
   collisionPadding: CONTENT_MARGIN,
   avoidCollisions: true,
-  bodyLock: true
+  bodyLock: true,
+  disableOutsidePointerEvents: true
 });
 
 const emit = defineEmits<SelectContentImplEmits>();
@@ -61,7 +62,7 @@ const [popupElement, setPopupElement] = useForwardElement(node => {
 const { search, handleTypeaheadSearch } = useTypeahead();
 
 const { pointerEvents } = useDismissableLayer(positionerElement, {
-  disableOutsidePointerEvents: true,
+  disableOutsidePointerEvents: () => props.disableOutsidePointerEvents,
   onEscapeKeyDown: event => {
     emit('escapeKeyDown', event);
   },

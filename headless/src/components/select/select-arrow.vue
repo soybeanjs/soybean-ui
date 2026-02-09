@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { PopperArrow } from '../popper';
-import { useSelectContentContext, useSelectRootContext } from './context';
+import { useSelectContentContext } from './context';
 import type { SelectArrowProps } from './types';
 
 defineOptions({
@@ -10,10 +10,9 @@ defineOptions({
 
 defineProps<SelectArrowProps>();
 
-const { open } = useSelectRootContext('SelectArrow');
 const { position } = useSelectContentContext('SelectArrow');
 
-const showArrow = computed(() => open.value && position.value === 'popper');
+const showArrow = computed(() => position.value === 'popper');
 </script>
 
 <template>
