@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
-import { getAriaLabelByVNodeList } from '../../shared';
 import { PopperPopup } from '../popper';
 import { popperCssVars } from '../popper/shared';
 import { VisuallyHidden } from '../visually-hidden';
@@ -15,11 +14,8 @@ defineOptions({
 
 const props = defineProps<TooltipPopupProps>();
 
-const slots = useSlots();
-const defaultSlot = computed(() => slots.default?.());
-
 const { popupId, dataState, initPopupId, onPopupElementChange } = useTooltipRootContext('TooltipPopup');
-const [, setPopupElement] = useForwardElement(onPopupElementChange);
+const [popupElement, setPopupElement] = useForwardElement(onPopupElementChange);
 
 const cssVarsStyle = {
   [tooltipCssVars.transformOrigin]: `var(${popperCssVars.transformOrigin})`,
@@ -29,13 +25,7 @@ const cssVarsStyle = {
   [tooltipCssVars.anchorHeight]: `var(${popperCssVars.anchorHeight})`
 };
 
-const ariaLabel = computed(() => {
-  if (props.ariaLabel) {
-    return props.ariaLabel;
-  }
-
-  return getAriaLabelByVNodeList(defaultSlot.value);
-});
+const ariaLabel = computed(() => props.ariaLabel ?? popupElement.value?.textContent);
 
 initPopupId();
 </script>
