@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.7.0](https://github.com/soybeanjs/soybean-ui/compare/v0.6.6...v0.7.0) (2026-02-09)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **tree-menu**: add TreeMenuOptions component and enhance context management &nbsp;-&nbsp; by @soybeanjs [<samp>(4878f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4878f0ba)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.6.6](https://github.com/soybeanjs/soybean-ui/compare/v0.6.5...v0.6.6) (2026-02-09)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
