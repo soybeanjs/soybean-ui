@@ -10,7 +10,9 @@ defineOptions({
   name: 'AccordionItem'
 });
 
-const props = defineProps<AccordionItemProps>();
+const props = withDefaults(defineProps<AccordionItemProps>(), {
+  unmountOnHide: undefined
+});
 
 const forwardedProps = useOmitProps(props, ['value']);
 
@@ -21,11 +23,12 @@ const {
   rootElement,
   orientation,
   dir,
-  unmountOnHide
+  unmountOnHide: rootUnmountOnHide
 } = useAccordionRootContext('AccordionItem');
 
 const open = computed(() => getOpenFromSingleOrMultiple(props.value, modelValue.value, isMultiple.value));
 const disabled = computed(() => rootDisabled.value || props.disabled);
+const unmountOnHide = computed(() => props.unmountOnHide ?? rootUnmountOnHide.value);
 
 const { dataDisabled, dataState } = provideAccordionItemContext({
   open,
