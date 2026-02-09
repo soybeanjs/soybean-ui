@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, shallowRef } from 'vue';
+import { computed, onBeforeUnmount, onMounted, shallowRef } from 'vue';
 import { useForwardElement, usePresence } from '../../composables';
 import { useTabsRootContext, useTabsUi } from './context';
 import type { TabsContentProps } from './types';
@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<TabsContentProps>();
 
-const { modelValue, unmountOnHide, getId } = useTabsRootContext('TabsContent');
+const { modelValue, unmountOnHide, getId, registerContentId, unregisterContentId } = useTabsRootContext('TabsContent');
 
 const [contentElement, setContentElement] = useForwardElement();
 
@@ -28,9 +28,15 @@ const isMountAnimationPreventedRef = shallowRef(isSelected.value);
 const style = computed(() => ({ animationDuration: isMountAnimationPreventedRef.value ? '0s' : undefined }));
 
 onMounted(() => {
+  registerContentId(contentId.value);
+
   requestAnimationFrame(() => {
     isMountAnimationPreventedRef.value = false;
   });
+});
+
+onBeforeUnmount(() => {
+  unregisterContentId(contentId.value);
 });
 </script>
 

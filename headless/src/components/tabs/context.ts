@@ -1,4 +1,4 @@
-import { computed, shallowRef, toValue } from 'vue';
+import { ref, computed, shallowRef, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import { isNullish } from '../../shared';
@@ -20,12 +20,31 @@ export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot
     params.modelValue.value = v;
   };
 
+  const contentIds = ref<string[]>([]);
+
+  const registerContentId = (id: string) => {
+    contentIds.value.push(id);
+  };
+
+  const unregisterContentId = (id: string) => {
+    const index = contentIds.value.indexOf(id);
+    if (index !== -1) {
+      contentIds.value.splice(index, 1);
+    }
+  };
+
   const getId = (value: MaybeRefOrGetter<DefinedValue>) => {
     const id = toValue(value);
 
+    const contentId = computed(() => `soybean-tabs-content-${id}`);
+    const triggerId = computed(() => `soybean-tabs-trigger-${id}`);
+
+    const existContentId = computed(() => contentIds.value.includes(contentId.value));
+
     return {
-      contentId: computed(() => `soybean-tabs-content-${id}`),
-      triggerId: computed(() => `soybean-tabs-trigger-${id}`)
+      contentId,
+      triggerId,
+      existContentId
     };
   };
 
@@ -35,7 +54,9 @@ export const [provideTabsRootContext, useTabsRootContext] = useContext('TabsRoot
     changeModelValue,
     listElement,
     onListElementChange,
-    getId
+    getId,
+    registerContentId,
+    unregisterContentId
   };
 });
 

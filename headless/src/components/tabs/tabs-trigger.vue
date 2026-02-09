@@ -18,11 +18,13 @@ const { modelValue, orientation, changeModelValue, activationMode, getId } = use
 
 const cls = useTabsUi('trigger');
 
-const { contentId, triggerId } = getId(props.value);
+const { contentId, triggerId, existContentId } = getId(props.value);
 
 const isSelected = computed(() => props.value === modelValue.value);
 const dataState = computed(() => (isSelected.value ? 'active' : 'inactive'));
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+
+const ariaControls = computed(() => (existContentId.value ? contentId.value : undefined));
 
 const onMouseDown = (event: MouseEvent) => {
   if (!props.disabled && event.ctrlKey === false) {
@@ -55,7 +57,7 @@ const onFocus = () => {
       :as="as"
       :as-child="asChild"
       :class="cls"
-      :aria-controls="contentId"
+      :aria-controls="ariaControls"
       :aria-selected="isSelected ? 'true' : 'false'"
       :data-disabled="disabled ? '' : undefined"
       :data-orientation="orientation"

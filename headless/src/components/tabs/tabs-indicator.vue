@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue';
+import { computed, nextTick, ref, watch, watchPostEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useTabsRootContext, useTabsUi } from './context';
@@ -15,8 +15,6 @@ defineProps<TabsIndicatorProps>();
 const { listElement, modelValue, dir, orientation } = useTabsRootContext('TabsIndicator');
 
 const cls = useTabsUi('indicator');
-
-const activeTab = ref<HTMLElement | null>();
 
 interface IndicatorStyle {
   size: number | null;
@@ -35,33 +33,41 @@ const style = computed(() => {
   };
 });
 
-function updateIndicatorStyle() {
-  activeTab.value = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-state="active"]');
+const tabs = ref<Array<HTMLElement>>([]);
 
-  if (!activeTab.value) return;
+function updateIndicatorStyle() {
+  const activeTab = listElement.value?.querySelector<HTMLButtonElement>('[role="tab"][data-state="active"]');
+
+  if (!activeTab) return;
 
   if (orientation.value === 'horizontal') {
     indicatorStyle.value = {
-      size: activeTab.value.offsetWidth,
-      position: activeTab.value.offsetLeft
+      size: activeTab.offsetWidth,
+      position: activeTab.offsetLeft
     };
   } else {
     indicatorStyle.value = {
-      size: activeTab.value.offsetHeight,
-      position: activeTab.value.offsetTop
+      size: activeTab.offsetHeight,
+      position: activeTab.offsetTop
     };
   }
 }
 
-useResizeObserver([listElement, activeTab], updateIndicatorStyle);
+useResizeObserver(
+  computed(() => [listElement.value, ...tabs.value]),
+  updateIndicatorStyle
+);
+
+watchPostEffect(() => {
+  tabs.value = Array.from(listElement.value?.querySelectorAll<HTMLElement>('[role="tab"]') ?? []);
+});
 
 watch(
   () => [modelValue.value, dir.value],
-  async () => {
-    await nextTick();
+  () => {
     updateIndicatorStyle();
   },
-  { immediate: true }
+  { immediate: true, flush: 'post' }
 );
 </script>
 
