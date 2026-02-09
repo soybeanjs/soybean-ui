@@ -64,14 +64,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <nav
-    :ref="setRootElement"
-    :class="cls"
-    aria-label="Main"
-    :data-orientation="orientation"
-    data-soybean-navigation-menu
-    :dir="dir"
-  >
+  <nav :ref="setRootElement" :class="cls" :data-orientation="orientation" data-soybean-navigation-menu :dir="dir">
     <slot :model-value="modelValue" />
   </nav>
 </template>
