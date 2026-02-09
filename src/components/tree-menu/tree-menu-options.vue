@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
+import { computed } from 'vue';
 import { TreeMenuGroup, TreeMenuGroupLabel, TreeMenuGroupRoot, useTreeMenuRootContext } from '@soybeanjs/headless';
 import { usePickProps } from '@soybeanjs/headless/composables';
 import { getTreePaths } from '@soybeanjs/headless/shared';

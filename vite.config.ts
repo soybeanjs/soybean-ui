@@ -4,9 +4,7 @@ import { defineConfig } from 'vite';
 import Vue from 'unplugin-vue/vite';
 import Unocss from 'unocss/vite';
 import VueRouter from 'vue-router/vite';
-import { VueRouterAutoImports } from 'vue-router/unplugin';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
-import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import UiResolver from './src/resolver/index.ts';
 
@@ -23,18 +21,6 @@ export default defineConfig({
     VueRouter({
       routesFolder: 'playground/pages',
       dts: 'playground/typings/typed-router.d.ts'
-    }),
-    AutoImport({
-      exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /headless[\\/]dist/],
-      imports: [
-        'vue',
-        'vue-i18n',
-        VueRouterAutoImports,
-        {
-          'vue-router/auto': ['useLink']
-        }
-      ],
-      dts: 'playground/typings/auto-imports.d.ts'
     }),
     MetaLayouts({
       target: 'playground/layouts'

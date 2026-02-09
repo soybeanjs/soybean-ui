@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { shallowRef, watch, watchPostEffect, onMounted } from 'vue';
 import type { Component } from 'vue';
 import { toKebabCase, toPascalCase } from '@soybeanjs/headless/shared';
 import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
