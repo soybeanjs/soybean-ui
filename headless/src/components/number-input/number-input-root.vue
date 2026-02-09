@@ -13,7 +13,8 @@ defineOptions({
 const props = withDefaults(defineProps<NumberInputRootProps>(), {
   modelValue: undefined,
   step: 1,
-  stepSnapping: true
+  stepSnapping: true,
+  focusOnChange: true
 });
 
 const emit = defineEmits<NumberInputRootEmits>();
@@ -48,6 +49,7 @@ provideNumberInputRootContext({
     'placeholder',
     'readonly',
     'locale',
+    'focusOnChange',
     'formatOptions',
     'max',
     'min',

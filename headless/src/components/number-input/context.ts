@@ -11,7 +11,7 @@ import type { NumberInputRootContextParams, NumberInputUiSlot } from './types';
 export const [provideNumberInputRootContext, useNumberInputRootContext] = useContext(
   'NumberInputRoot',
   (params: NumberInputRootContextParams) => {
-    const { disabled, readonly, modelValue, formatOptions, min, max, step, stepSnapping } = params;
+    const { disabled, readonly, modelValue, focusOnChange, formatOptions, min, max, step, stepSnapping } = params;
 
     const [inputElement, setInputElement] = useForwardElement<HTMLInputElement>();
 
@@ -72,7 +72,9 @@ export const [provideNumberInputRootContext, useNumberInputRootContext] = useCon
     }
 
     function onChangingValue(type: 'increase' | 'decrease', multiplier = 1) {
-      inputElement.value?.focus();
+      if (focusOnChange.value) {
+        inputElement.value?.focus();
+      }
       if (disabled.value || readonly.value) return;
 
       const currentInputValue = numberParser.parse(inputElement.value?.value ?? '') as number;

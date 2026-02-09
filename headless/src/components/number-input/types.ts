@@ -16,6 +16,8 @@ export interface NumberInputRootProps extends InputBaseProps, FormFieldCommonPro
   step?: number;
   /** When `false`, prevents the value from snapping to the nearest increment of the step value */
   stepSnapping?: boolean;
+  /** When `true`, the input will be focused when the value changes. */
+  focusOnChange?: boolean;
   /**
    * Formatting options for the value displayed in the number field. This also affects what characters are allowed to be
    * typed by the user.
@@ -54,6 +56,7 @@ export interface NumberInputRootContextParams extends PropsToContext<
   | 'placeholder'
   | 'readonly'
   | 'locale'
+  | 'focusOnChange'
   | 'formatOptions'
   | 'max'
   | 'min'
