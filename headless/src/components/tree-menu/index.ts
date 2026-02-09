@@ -7,7 +7,7 @@ export { default as TreeMenuButton } from './tree-menu-button.vue';
 export { default as TreeMenuCollapsible } from './tree-menu-collapsible.vue';
 export { default as TreeMenuSub } from './tree-menu-sub.vue';
 
-export { provideTreeMenuUi, useTreeMenuRootContext } from './context';
+export { provideTreeMenuUi, provideTreeMenuRootContext, useTreeMenuRootContext } from './context';
 
 export type {
   TreeMenuCollapsedState,

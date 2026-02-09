@@ -89,6 +89,10 @@ export type TreeMenuOptionData<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
   children?: TreeMenuOptionData<T>[];
 };
 
+export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
+  showLinkIcon?: boolean;
+}
+
 export interface TreeMenuOptionProps {
   as?: AsTag;
   item: TreeMenuOptionData;
@@ -98,6 +102,28 @@ export interface TreeMenuOptionProps {
   collapsibleProps?: TreeMenuCollapsibleProps;
   subProps?: TreeMenuSubProps;
 }
+
+export type TreeMenuOptionEmits = {
+  selectDropdown: [value: string];
+};
+
+export interface TreeMenuOptionsProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData> extends Omit<
+  TreeMenuOptionProps,
+  'as' | 'item'
+> {
+  items: TreeMenuOptionData<T>[];
+  groupRootProps?: TreeMenuGroupRootProps;
+  groupProps?: TreeMenuGroupProps;
+  groupLabelProps?: TreeMenuGroupLabelProps;
+  /**
+   * Whether to show the group icon.
+   *
+   * @default false
+   */
+  showGroupIcon?: boolean;
+}
+
+export type TreeMenuOptionsEmits = TreeMenuOptionEmits;
 
 export type TreeMenuExtraUiSlot =
   | 'itemLabel'
@@ -111,7 +137,7 @@ export type TreeMenuExtraUiSlot =
 export type TreeMenuExtendedUi = UiClass<TreeMenuUiSlot | TreeMenuExtraUiSlot>;
 
 export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData>
-  extends TreeMenuRootProps, Omit<TreeMenuOptionProps, 'as' | 'item' | 'itemVisible'> {
+  extends TreeMenuRootProps, TreeMenuOptionsProps<T> {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TreeMenuExtendedUi>;
@@ -121,7 +147,6 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
    * @default 'left'
    */
   side?: HorizontalSide;
-  items?: TreeMenuOptionData<T>[];
   /**
    * The width of the sidebar menu when it's collapsed.
    *
@@ -134,24 +159,9 @@ export interface TreeMenuProps<T extends TreeMenuBaseOptionData = TreeMenuBaseOp
    * @default 16
    */
   indent?: number;
-  /**
-   * Whether to show the group icon.
-   *
-   * @default false
-   */
-  showGroupIcon?: boolean;
-  groupRootProps?: TreeMenuGroupRootProps;
-  groupProps?: TreeMenuGroupProps;
-  groupLabelProps?: TreeMenuGroupLabelProps;
 }
 
-export interface TreeMenuOptionSlotProps extends TreeMenuOptionProps {
-  showLinkIcon?: boolean;
-}
-
-export type TreeMenuItemEmits = {
-  selectDropdown: [value: string];
-};
+export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuOptionEmits;
 
 export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttributes {
   class?: ClassValue;
@@ -159,8 +169,8 @@ export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttribut
   ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>;
 }
 
-export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {
+export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
+
+export interface TreeMenuOptionsContextParams {
   activePaths: ComputedRef<string[]>;
 }
-
-export type TreeMenuEmits = TreeMenuRootEmits & TreeMenuItemEmits;

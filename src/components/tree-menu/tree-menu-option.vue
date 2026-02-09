@@ -12,9 +12,9 @@ import type { Placement } from '@soybeanjs/headless';
 import Link from '../link/link.vue';
 import Tooltip from '../tooltip/tooltip.vue';
 import DropdownMenu from '../dropdown-menu/dropdown-menu.vue';
-import { useTreeMenuContext, useTreeMenuExtraUi } from './context';
+import { useTreeMenuContext, useTreeMenuOptionsContext, useTreeMenuExtraUi } from './context';
 import STreeMenuOptionSlot from './tree-menu-option-slot.vue';
-import type { TreeMenuBaseOptionData, TreeMenuItemEmits, TreeMenuOptionProps } from './types';
+import type { TreeMenuBaseOptionData, TreeMenuOptionEmits, TreeMenuOptionProps } from './types';
 
 defineOptions({
   name: 'STreeMenuOption'
@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<TreeMenuOptionProps>(), {
   as: 'li'
 });
 
-const emit = defineEmits<TreeMenuItemEmits>();
+const emit = defineEmits<TreeMenuOptionEmits>();
 
 type Slots = {
   default: (props: { item: TreeMenuBaseOptionData }) => any;
@@ -37,7 +37,8 @@ const slots = defineSlots<Slots>();
 const forwardedOptionProps = useOmitProps(props, ['as', 'item']);
 
 const { collapsed, modelValue, onModelValueChange } = useTreeMenuRootContext('TreeMenuOption');
-const { size, side, activePaths } = useTreeMenuContext('TreeMenuOption');
+const { size, side } = useTreeMenuContext('TreeMenuOption');
+const { activePaths } = useTreeMenuOptionsContext('TreeMenuOption');
 const absoluteCls = useTreeMenuExtraUi('itemAbsolute');
 
 const slotKeys = computed(() => Object.keys(slots) as (keyof Slots)[]);

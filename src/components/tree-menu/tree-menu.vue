@@ -1,21 +1,14 @@
 <script setup lang="ts" generic="T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData">
-import { computed, shallowRef } from 'vue';
+import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import {
-  TreeMenuGroup,
-  TreeMenuGroupLabel,
-  TreeMenuGroupRoot,
-  TreeMenuRoot,
-  provideTreeMenuUi
-} from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
-import { getTreePaths, transformPropsToContext } from '@soybeanjs/headless/shared';
+import { TreeMenuRoot, provideTreeMenuUi } from '@soybeanjs/headless';
+import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
+import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
 import { treeMenuVariants } from '@/variants/tree-menu';
-import Icon from '../icon/icon.vue';
-import TreeMenuOption from './tree-menu-option.vue';
+import TreeMenuOptions from './tree-menu-options.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
-import { filterHiddenMenus, treeMenuCssVars } from './shared';
+import { treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 
 defineOptions({
@@ -44,28 +37,23 @@ type Slots = {
 
 const slots = defineSlots<Slots>();
 
-const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item-')) as (keyof Slots)[]);
+const itemSlotKeys = computed(() => Object.keys(slots).filter(key => key.startsWith('item')) as (keyof Slots)[]);
 
-const forwardedRootProps = useOmitProps(props, [
-  'class',
-  'size',
-  'side',
-  'ui',
+const forwardedRootProps = usePickProps(props, [
+  'modelValue',
+  'defaultValue',
+  'expanded',
+  'defaultExpanded',
+  'collapsed',
+  'defaultCollapsed'
+]);
+
+const forwardedOptionsProps = usePickProps(props, [
   'items',
-  'collapsedWidth',
-  'indent',
-  'showGroupIcon',
   'groupRootProps',
   'groupProps',
   'groupLabelProps',
-  'itemProps',
-  'buttonProps',
-  'linkProps',
-  'collapsibleProps',
-  'subProps'
-]);
-
-const forwardedOptionProps = usePickProps(props, [
+  'showGroupIcon',
   'itemProps',
   'buttonProps',
   'linkProps',
@@ -85,16 +73,6 @@ const style = computed<CSSProperties>(() => {
   };
 });
 
-const modelValue = shallowRef(props.modelValue ?? props.defaultValue ?? '');
-
-const updateModelValue = (value: string) => {
-  modelValue.value = value;
-};
-
-const items = computed(() => filterHiddenMenus(props.items));
-
-const activePaths = computed(() => getTreePaths(modelValue.value, items.value));
-
 const ui = computed(() => {
   const variants = treeMenuVariants({
     size: props.size
@@ -106,49 +84,17 @@ const ui = computed(() => {
 provideTreeMenuUi(ui);
 provideTreeMenuExtraUi(ui);
 
-provideTreeMenuContext({
-  ...transformPropsToContext(props, ['size', 'side']),
-  activePaths
-});
+provideTreeMenuContext(transformPropsToContext(props, ['size', 'side']));
 </script>
 
 <template>
-  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners" @update:model-value="updateModelValue">
+  <TreeMenuRoot v-bind="forwardedRootProps" :style="style" v-on="listeners">
     <slot name="top" />
-    <template v-for="item in items" :key="item.value">
-      <TreeMenuGroupRoot v-if="item.isGroup" v-bind="groupRootProps">
-        <TreeMenuGroupLabel v-bind="groupLabelProps">
-          <slot name="group-label" :item="item">
-            <Icon v-if="showGroupIcon" :icon="item.icon" />
-            <span>{{ item.label }}</span>
-          </slot>
-        </TreeMenuGroupLabel>
-        <TreeMenuGroup v-bind="groupProps">
-          <TreeMenuOption
-            v-for="child in item.children"
-            :key="child.value"
-            v-bind="forwardedOptionProps"
-            :item="child"
-            @select-dropdown="emit('selectDropdown', $event)"
-          >
-            <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
-              <slot :name="slotKey" v-bind="slotProps" />
-            </template>
-          </TreeMenuOption>
-        </TreeMenuGroup>
-      </TreeMenuGroupRoot>
-      <TreeMenuOption
-        v-else
-        as="div"
-        v-bind="forwardedOptionProps"
-        :item="item"
-        @select-dropdown="emit('selectDropdown', $event)"
-      >
-        <template v-for="slotKey in itemSlotKeys" :key="slotKey" #[slotKey]="slotProps">
-          <slot :name="slotKey" v-bind="slotProps" />
-        </template>
-      </TreeMenuOption>
-    </template>
+    <TreeMenuOptions v-bind="forwardedOptionsProps" @select-dropdown="emit('selectDropdown', $event)">
+      <template v-for="slot in itemSlotKeys" :key="slot" #[slot]="slotProps">
+        <slot :name="slot" v-bind="slotProps" />
+      </template>
+    </TreeMenuOptions>
     <slot name="bottom" />
   </TreeMenuRoot>
 </template>
