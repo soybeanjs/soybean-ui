@@ -123,7 +123,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ✅: 已完成 ✨: 已实现
 
-✅ 48 / 总计: 109
+✅ 48 / 总计: 108
 
 | No  | Priority | Name            | Status       | Alias                | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | -------------------- | ------------------------ |
@@ -224,18 +224,17 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 95  | 4        | Mention         |              |                      | element-plus             |
 | 96  | 4        | Navbar          |              |                      |                          |
 | 97  | 4        | NumberAnimation |              |                      | naive-ui                 |
-| 98  | 4        | PageTab         |              |                      |                          |
-| 99  | 4        | QRCode          |              |                      |                          |
-| 100 | 4        | Rating          |              | Rate                 | element-plus             |
-| 101 | 4        | Result          |              |                      |                          |
-| 102 | 4        | Spinner         |              | Loader, Spin         | github ldrs              |
-| 103 | 4        | Statistic       |              |                      |                          |
-| 104 | 4        | Tour            |              |                      |                          |
-| 105 | 4        | Transfer        |              |                      |                          |
-| 106 | 4        | TreeSelect      |              |                      |                          |
-| 107 | 4        | Typography      |              |                      | shadcn-ui                |
-| 108 | 4        | Upload          |              | FileUpload, Dropfile |                          |
-| 109 | 4        | Watermark       |              |                      |                          |
+| 98  | 4        | QRCode          |              |                      |                          |
+| 99  | 4        | Rating          |              | Rate                 | element-plus             |
+| 100 | 4        | Result          |              |                      |                          |
+| 101 | 4        | Spinner         |              | Loader, Spin         | github ldrs              |
+| 102 | 4        | Statistic       |              |                      |                          |
+| 103 | 4        | Tour            |              |                      |                          |
+| 104 | 4        | Transfer        |              |                      |                          |
+| 105 | 4        | TreeSelect      |              |                      |                          |
+| 106 | 4        | Typography      |              |                      | shadcn-ui                |
+| 107 | 4        | Upload          |              | FileUpload, Dropfile |                          |
+| 108 | 4        | Watermark       |              |                      |                          |
 
 ### Utilities
 

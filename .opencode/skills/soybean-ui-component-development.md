@@ -100,7 +100,7 @@ export * from './types';
 
 ### Phase 2: UI Layer (`src/components/{component}/`)
 
-**Step 1: Define Variants (`src/variants/{component}.ts`)**
+**Step 1: Define Variants (`src/components/{component}/variants.ts`)**
 
 ```typescript
 import { tv } from 'tailwind-variants';
