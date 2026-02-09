@@ -13,8 +13,8 @@ import {
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { paginationVariants } from '@/variants/pagination';
 import Icon from '../icon/icon.vue';
+import { paginationVariants } from './variants';
 import type { PaginationEmits, PaginationProps } from './types';
 
 defineOptions({

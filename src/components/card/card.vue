@@ -12,7 +12,7 @@ import {
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { cardVariants } from '@/variants/card';
+import { cardVariants } from './variants';
 import type { CardProps } from './types';
 
 defineOptions({

@@ -13,7 +13,7 @@ import type {
   UiClass
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { CheckboxShape } from '@/variants/checkbox';
+import type { CheckboxShape } from './variants';
 
 export interface CheckboxProps extends CheckboxRootProps {
   ui?: Partial<CheckboxUi>;

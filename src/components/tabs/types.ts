@@ -11,7 +11,7 @@ import type {
   TabsUi
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { TabsFill } from '@/variants/tabs';
+import type { TabsFill } from './variants';
 
 export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   value: T;

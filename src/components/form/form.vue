@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
-import { formVariants } from '@/variants/form';
+import { formVariants } from './variants';
 import { provideFormContext } from './context';
 import type { FormProps } from './types';
 

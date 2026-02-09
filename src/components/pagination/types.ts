@@ -9,7 +9,7 @@ import type {
   PaginationUi
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { PaginationShape, PaginationVariant } from '@/variants/pagination';
+import type { PaginationShape, PaginationVariant } from './variants';
 
 export interface PaginationProps extends PaginationRootProps {
   class?: ClassValue;

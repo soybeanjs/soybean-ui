@@ -1,6 +1,6 @@
 import type { Align, ClassValue, SeparatorLabelProps, SeparatorRootProps, SeparatorUi } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { SeparatorBorder } from '@/variants/separator';
+import type { SeparatorBorder } from './variants';
 
 export interface SeparatorProps extends SeparatorRootProps {
   class?: ClassValue;

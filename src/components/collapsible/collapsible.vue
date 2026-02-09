@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { CollapsibleRoot, provideCollapsibleUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { collapsibleVariants } from '@/variants/collapsible';
+import { collapsibleVariants } from './variants';
 import type { CollapsibleEmits, CollapsibleProps } from './types';
 
 defineOptions({

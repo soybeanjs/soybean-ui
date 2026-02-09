@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { Button } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
-import { buttonVariants } from '@/variants/button';
 import { useButtonGroupContext } from './context';
+import { buttonVariants } from './variants';
 import type { ButtonEmits, ButtonProps } from './types';
 
 defineOptions({

@@ -11,7 +11,7 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { tooltipVariants } from '@/variants/tooltip';
+import { tooltipVariants } from './variants';
 import type { TooltipEmits, TooltipProps } from './types';
 
 defineOptions({

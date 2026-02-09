@@ -11,7 +11,7 @@ import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger, provideTab
 import type { AcceptableValue } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { tabsVariants } from '@/variants/tabs';
+import { tabsVariants } from './variants';
 import type { TabsEmits, TabsOptionData, TabsProps } from './types';
 
 defineOptions({

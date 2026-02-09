@@ -11,9 +11,9 @@ import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { radioCardGroupVariants } from '@/variants/radio-group';
-import type { RadioCardGroupOptionData, RadioCardGroupProps } from './types';
+import { radioCardGroupVariants } from './variants';
 import RadioCard from './radio-card.vue';
+import type { RadioCardGroupOptionData, RadioCardGroupProps } from './types';
 
 defineOptions({
   name: 'SRadioCardGroup'

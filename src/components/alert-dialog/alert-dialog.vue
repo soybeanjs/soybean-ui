@@ -14,7 +14,7 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
-import { dialogVariants } from '@/variants/dialog';
+import { dialogVariants } from '../dialog/variants';
 import Icon from '../icon/icon.vue';
 import type { AlertDialogEmits, AlertDialogProps, AlertDialogType } from './types';
 

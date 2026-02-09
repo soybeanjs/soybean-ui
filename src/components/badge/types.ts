@@ -1,6 +1,6 @@
 import type { BadgeContentProps, BadgeRootEmits, BadgeRootProps, BadgeUi, ClassValue } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { BadgePosition } from '@/variants/badge';
+import type { BadgePosition } from './variants';
 
 export interface BadgeProps extends BadgeRootProps {
   /**

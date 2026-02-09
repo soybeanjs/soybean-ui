@@ -9,8 +9,8 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { numberInputVariants } from '@/variants/number-input';
 import Icon from '../icon/icon.vue';
+import { numberInputVariants } from './variants';
 import type { NumberInputEmits, NumberInputProps } from './types';
 
 defineOptions({

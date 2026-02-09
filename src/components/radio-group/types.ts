@@ -10,7 +10,7 @@ import type {
   RadioGroupUi
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { RadioGroupVariant } from '@/variants/radio-group';
+import type { RadioGroupVariant } from './variants';
 
 export interface RadioProps extends RadioGroupItemProps {
   label?: string;

@@ -3,8 +3,8 @@ import { computed, useAttrs } from 'vue';
 import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { inputVariants } from '@/variants/input';
 import Icon from '../icon/icon.vue';
+import { inputVariants } from './variants';
 import type { InputEmits, InputProps } from './types';
 
 defineOptions({

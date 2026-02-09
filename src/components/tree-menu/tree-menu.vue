@@ -5,9 +5,9 @@ import { TreeMenuRoot, provideTreeMenuUi } from '@soybeanjs/headless';
 import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { mergeSlotVariants, themeSizeMap, themeSizeRatio } from '@/theme';
-import { treeMenuVariants } from '@/variants/tree-menu';
-import TreeMenuOptions from './tree-menu-options.vue';
 import { provideTreeMenuContext, provideTreeMenuExtraUi } from './context';
+import { treeMenuVariants } from './variants';
+import TreeMenuOptions from './tree-menu-options.vue';
 import { treeMenuCssVars } from './shared';
 import type { TreeMenuBaseOptionData, TreeMenuEmits, TreeMenuProps } from './types';
 

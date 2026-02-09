@@ -11,7 +11,7 @@ import type {
   ToastProviderProps as _ToastProviderProps
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { ToastPosition } from '@/variants/toast';
+import type { ToastPosition } from './variants';
 
 type ToastExtraSlot = 'viewport';
 

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { Kbd } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
-import { kbdVariants } from '@/variants/kbd';
+import { kbdVariants } from './variants';
 import type { KbdProps } from './types';
 
 defineOptions({

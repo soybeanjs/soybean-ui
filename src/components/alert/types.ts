@@ -10,8 +10,8 @@ import type {
   UiClass
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { AlertVariant } from '@/variants/alert';
 import type { IconValue } from '../icon/types';
+import type { AlertVariant } from './variants';
 
 type AlertExtraUiSlot = 'icon';
 

@@ -9,9 +9,9 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { navigationMenuVariants } from '@/variants/navigation-menu';
-import NavigationMenuOption from './navigation-menu-option.vue';
 import { provideNavigationMenuExtraUi } from './context';
+import { navigationMenuVariants } from './variants';
+import NavigationMenuOption from './navigation-menu-option.vue';
 import type { NavigationMenuEmits, NavigationMenuOptionData, NavigationMenuProps } from './types';
 
 defineOptions({

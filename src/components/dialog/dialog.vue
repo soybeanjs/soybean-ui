@@ -15,8 +15,8 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
-import { dialogVariants } from '@/variants/dialog';
 import ButtonIcon from '../button/button-icon.vue';
+import { dialogVariants } from './variants';
 import type { DialogEmits, DialogProps } from './types';
 
 defineOptions({

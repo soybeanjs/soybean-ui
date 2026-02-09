@@ -11,9 +11,9 @@ import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { radioGroupVariants } from '@/variants/radio-group';
-import type { RadioGroupOptionData, RadioGroupProps } from './types';
+import { radioGroupVariants } from './variants';
 import Radio from './radio.vue';
+import type { RadioGroupOptionData, RadioGroupProps } from './types';
 
 defineOptions({
   name: 'SRadioGroup'

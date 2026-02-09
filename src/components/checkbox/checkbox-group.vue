@@ -8,7 +8,7 @@ import { CheckboxGroupRoot } from '@soybeanjs/headless';
 import type { DefinedValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { checkboxVariants } from '@/variants/checkbox';
+import { checkboxVariants } from './variants';
 import Checkbox from './checkbox.vue';
 import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
 

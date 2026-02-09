@@ -8,7 +8,7 @@ import type {
   TabsTriggerProps
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '@/variants/tabs';
+import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '../tabs/variants';
 import type { TabsExtendedUi } from '../tabs/types';
 
 export interface SegmentOptionData<T extends DefinedValue = DefinedValue> {

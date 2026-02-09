@@ -7,7 +7,7 @@ import type {
   TextareaUi
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { TextareaResize } from '@/variants/textarea';
+import type { TextareaResize } from './variants';
 
 export type TextareaExtraUiSlot = 'clearable';
 

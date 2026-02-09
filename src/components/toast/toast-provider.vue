@@ -4,9 +4,9 @@ import { ToastProvider, ToastViewport, provideToastViewportUi } from '@soybeanjs
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
-import { toastViewportVariants } from '@/variants/toast';
 import { useThemeSize } from '../config-provider/context';
 import { provideToastProviderContext } from './context';
+import { toastViewportVariants } from './variants';
 import Toast from './toast.vue';
 import type { ToastProviderProps } from './types';
 

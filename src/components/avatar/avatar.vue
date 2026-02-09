@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { AvatarFallback, AvatarImage, AvatarRoot, provideAvatarUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { avatarVariants } from '@/variants/avatar';
+import { avatarVariants } from './variants';
 import type { AvatarEmits, AvatarProps } from './types';
 
 defineOptions({

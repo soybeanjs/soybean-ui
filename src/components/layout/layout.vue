@@ -13,8 +13,8 @@ import {
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext, themeSizeMap, themeSizeRatio } from '@/theme';
-import { layoutVariants } from '@/variants/layout';
-import { drawerVariants } from '@/variants/drawer';
+import { drawerVariants } from '../drawer/variants';
+import { layoutVariants } from './variants';
 import type { LayoutEmits, LayoutProps } from './types';
 
 defineOptions({

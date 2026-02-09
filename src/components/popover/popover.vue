@@ -12,7 +12,7 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { popoverVariants } from '@/variants/popover';
+import { popoverVariants } from './variants';
 import type { PopoverEmits, PopoverProps } from './types';
 
 defineOptions({

@@ -6,9 +6,9 @@ import { ListboxContent, ListboxFilter, ListboxRoot, provideListboxUi } from '@s
 import { useControllableState, useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
 import { defu } from 'defu';
 import { mergeSlotVariants } from '@/theme';
-import { commandVariants } from '@/variants/command';
 import Icon from '../icon/icon.vue';
 import { provideCommandExtraUi } from './context';
+import { commandVariants } from './variants';
 import SCommandOption from './command-option.vue';
 import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions } from './shared';
 import type { CommandBaseOptionData, CommandEmits, CommandProps } from './types';

@@ -8,7 +8,7 @@ import type {
   SwitchUi
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { SwitchShape } from '@/variants/switch';
+import type { SwitchShape } from './variants';
 
 export interface SwitchProps<T extends AcceptableBooleanValue = boolean> extends SwitchRootProps<T> {
   class?: ClassValue;

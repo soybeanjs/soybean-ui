@@ -12,8 +12,8 @@ import {
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { breadcrumbVariants } from '@/variants/breadcrumb';
 import Icon from '../icon/icon.vue';
+import { breadcrumbVariants } from './variants';
 import { getEllipsisRange } from './shared';
 import type { BreadcrumbEmits, BreadcrumbOptionData, BreadcrumbProps } from './types';
 

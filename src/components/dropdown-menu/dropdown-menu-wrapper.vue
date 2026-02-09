@@ -10,8 +10,8 @@ import {
 } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { menuVariants } from '@/variants/menu';
 import { provideMenuExtraUi } from '../menu/context';
+import { menuVariants } from '../menu/variants';
 import type { DropdownMenuWrapperEmits, DropdownMenuWrapperProps } from './types';
 
 defineOptions({

@@ -3,9 +3,9 @@ import { computed } from 'vue';
 import { ToastClose, ToastDescription, ToastRoot, ToastTitle, provideToastUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { toastVariants } from '@/variants/toast';
 import ButtonIcon from '../button/button-icon.vue';
 import Icon from '../icon/icon.vue';
+import { toastVariants } from './variants';
 import type { ToastEmits, ToastProps, ToastType } from './types';
 
 defineOptions({

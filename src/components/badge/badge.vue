@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { BadgeContent, BadgeRoot, provideBadgeUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
-import { badgeVariants } from '@/variants/badge';
+import { badgeVariants } from './variants';
 import type { BadgeEmits, BadgeProps } from './types';
 
 defineOptions({

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { ListRoot, provideListUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
-import { listVariants } from '@/variants/list';
+import { listVariants } from './variants';
 import type { ListProps } from './types';
 
 defineOptions({

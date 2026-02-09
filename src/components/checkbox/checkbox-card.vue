@@ -10,8 +10,8 @@ import {
 } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { checkboxCardVariants } from '@/variants/checkbox';
 import Icon from '../icon/icon.vue';
+import { checkboxCardVariants } from './variants';
 import type { CheckboxCardProps, CheckboxEmits } from './types';
 
 defineOptions({

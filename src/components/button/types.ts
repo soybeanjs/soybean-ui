@@ -8,9 +8,9 @@ import type {
   ButtonProps as _ButtonProps
 } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
-import type { ButtonShadow, ButtonShape, ButtonVariant } from '@/variants/button';
 import type { IconProps } from '../icon/types';
 import type { LinkProps } from '../link/types';
+import type { ButtonShadow, ButtonShape, ButtonVariant } from './variants';
 
 export interface ButtonProps extends _ButtonProps {
   class?: ClassValue;

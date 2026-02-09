@@ -16,8 +16,8 @@ import {
 import type { DefinedValue } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { selectVariants } from '@/variants/select';
 import Icon from '../icon/icon.vue';
+import { selectVariants } from './variants';
 import SSelectOption from './select-option.vue';
 import { isGroupOption } from './shared';
 import type {

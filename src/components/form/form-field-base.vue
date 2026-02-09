@@ -4,8 +4,8 @@ import { FormDescription, FormError, FormField, FormLabel, provideFormFieldUi } 
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { vAutoAnimate } from '@formkit/auto-animate';
 import { mergeSlotVariants } from '@/theme';
-import { formVariants } from '@/variants/form';
 import { useFormContext } from './context';
+import { formVariants } from './variants';
 import type { FormFieldBaseProps } from './types';
 
 defineOptions({

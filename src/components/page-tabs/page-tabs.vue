@@ -4,10 +4,10 @@ import type { ShallowRef } from 'vue';
 import { PageTabsRoot, PageTabsItem, PageTabsClose, PageTabsPin, providePageTabsUi } from '@soybeanjs/headless';
 import { useOmitProps, useControllableState } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { pageTabsVariants } from '@/variants/page-tabs';
 import Icon from '../icon/icon.vue';
 import ContextMenu from '../context-menu/context-menu.vue';
 import { usePageTabsState } from './hooks';
+import { pageTabsVariants } from './variants';
 import type { PageTabsProps, PageTabsEmits, PageTabsOptionData, PageTabsContextMenuOptionData } from './types';
 
 defineOptions({

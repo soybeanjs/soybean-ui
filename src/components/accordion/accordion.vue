@@ -9,9 +9,9 @@ import {
   AccordionTrigger,
   provideAccordionUi
 } from '@soybeanjs/headless';
-import { accordionVariants } from '@/variants/accordion';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';
+import { accordionVariants } from './variants';
 import type { AccordionEmits, AccordionOptionData, AccordionProps } from './types';
 
 defineOptions({

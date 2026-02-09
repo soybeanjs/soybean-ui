@@ -4,7 +4,7 @@ import { SwitchControl, SwitchRoot, SwitchThumb, provideSwitchUi } from '@soybea
 import type { AcceptableBooleanValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { switchVariants } from '@/variants/switch';
+import { switchVariants } from './variants';
 import type { SwitchEmits, SwitchProps } from './types';
 
 defineOptions({

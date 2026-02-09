@@ -3,8 +3,8 @@ import { computed } from 'vue';
 import { TextareaControl, TextareaCounter, TextareaRoot, provideTextareaUi } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { textareaVariants } from '@/variants/textarea';
 import Icon from '../icon/icon.vue';
+import { textareaVariants } from './variants';
 import type { TextareaEmits, TextareaProps } from './types';
 
 defineOptions({

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Label } from '@soybeanjs/headless';
 import { cn } from '@/theme';
-import { labelVariants } from '@/variants/label';
+import { labelVariants } from './variants';
 import type { LabelProps } from './types';
 
 defineOptions({

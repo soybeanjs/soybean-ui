@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { InputControl, InputRoot, provideInputUi } from '@soybeanjs/headless';
 import { useControllableState, useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { inputVariants } from '@/variants/input';
+import { inputVariants } from '../input/variants';
 import Icon from '../icon/icon.vue';
 import type { PasswordEmits, PasswordProps } from './types';
 

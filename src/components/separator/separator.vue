@@ -3,7 +3,7 @@ import { computed, useSlots } from 'vue';
 import { SeparatorLabel, SeparatorRoot, provideSeparatorUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { separatorVariants } from '@/variants/separator';
+import { separatorVariants } from './variants';
 import type { SeparatorProps } from './types';
 
 defineOptions({

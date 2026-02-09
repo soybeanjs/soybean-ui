@@ -4,9 +4,9 @@ import { Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { transformPropsToContext } from '@soybeanjs/headless/shared';
 import { cn } from '@/theme';
-import { buttonGroupVariants } from '@/variants/button';
 import { useConfigProvider } from '../config-provider';
 import { provideButtonGroupContext } from './context';
+import { buttonGroupVariants } from './variants';
 import type { ButtonGroupProps } from './types';
 
 defineOptions({

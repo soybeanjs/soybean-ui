@@ -2,9 +2,9 @@
 import { computed, useSlots } from 'vue';
 import { AlertClose, AlertContent, AlertDescription, AlertRoot, AlertTitle, provideAlertUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
-import { alertVariants } from '@/variants/alert';
 import ButtonIcon from '../button/button-icon.vue';
 import Icon from '../icon/icon.vue';
+import { alertVariants } from './variants';
 import type { AlertEmits, AlertProps } from './types';
 
 defineOptions({

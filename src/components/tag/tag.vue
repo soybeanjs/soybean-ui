@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import { Tag } from '@soybeanjs/headless';
 import { cn } from '@/theme';
-import { tagVariants } from '@/variants/tag';
 import Icon from '../icon/icon.vue';
+import { tagVariants } from './variants';
 import type { TagEmits, TagProps } from './types';
 
 defineOptions({

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { mergeSlotVariants } from '@/theme';
-import { treeMenuVariants } from '@/variants/tree-menu';
+import { treeMenuVariants } from './variants';
 import type { TreeMenuStyledItemProps } from './types';
 
 defineOptions({
