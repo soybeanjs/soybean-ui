@@ -6,7 +6,7 @@ import type { Theme } from 'unocss/preset-mini';
 
 export default defineConfig<Theme>({
   cli: {
-    entry: [{ patterns: ['src/components/**/*.vue', 'src/variants/*.ts'], outFile: 'dist/styles.css' }]
+    entry: [{ patterns: ['src/components/**/*.vue', 'src/components/**/variants.ts'], outFile: 'dist/styles.css' }]
   },
   content: {
     pipeline: {
