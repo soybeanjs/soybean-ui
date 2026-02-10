@@ -6,11 +6,11 @@ import { useContext, useForwardElement, useUiContext } from '../../composables';
 import { clamp, isNullish, snapValueToStep } from '../../shared';
 import { useLocale } from '../config-provider/context';
 import { handleDecimalOperation } from './shared';
-import type { NumberInputRootContextParams, NumberInputUiSlot } from './types';
+import type { InputNumberRootContextParams, InputNumberUiSlot } from './types';
 
-export const [provideNumberInputRootContext, useNumberInputRootContext] = useContext(
-  'NumberInputRoot',
-  (params: NumberInputRootContextParams) => {
+export const [provideInputNumberRootContext, useInputNumberRootContext] = useContext(
+  'InputNumberRoot',
+  (params: InputNumberRootContextParams) => {
     const { disabled, readonly, modelValue, focusOnChange, formatOptions, min, max, step, stepSnapping } = params;
 
     const [inputElement, setInputElement] = useForwardElement<HTMLInputElement>();
@@ -138,4 +138,4 @@ export const [provideNumberInputRootContext, useNumberInputRootContext] = useCon
   }
 );
 
-export const [provideNumberInputUi, useNumberInputUi] = useUiContext<NumberInputUiSlot>('NumberInputUi');
+export const [provideInputNumberUi, useInputNumberUi] = useUiContext<InputNumberUiSlot>('InputNumberUi');

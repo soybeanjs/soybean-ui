@@ -1,4 +1,4 @@
-# NumberInput
+# InputNumber
 
 ## Overview
 
@@ -8,13 +8,13 @@ A text input field that only accepts numeric input. Supports increment/decrement
 
 ```vue
 <script setup lang="ts">
-import { SNumberInput } from '@soybeanjs/ui';
+import { SInputNumber } from '@soybeanjs/ui';
 
 const value = ref(0);
 </script>
 
 <template>
-  <SNumberInput v-model="value" :min="0" :max="100" />
+  <SInputNumber v-model="value" :min="0" :max="100" />
 </template>
 ```
 

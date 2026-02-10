@@ -1,18 +1,18 @@
 import type {
   ClassValue,
-  NumberInputControlProps,
-  NumberInputDecrementProps,
-  NumberInputIncrementProps,
-  NumberInputRootEmits,
-  NumberInputRootProps,
-  NumberInputUi
+  InputNumberControlProps,
+  InputNumberDecrementProps,
+  InputNumberIncrementProps,
+  InputNumberRootEmits,
+  InputNumberRootProps,
+  InputNumberUi
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export interface NumberInputProps extends NumberInputRootProps {
+export interface InputNumberProps extends InputNumberRootProps {
   class?: ClassValue;
   size?: ThemeSize;
-  ui?: Partial<NumberInputUi>;
+  ui?: Partial<InputNumberUi>;
   /**
    * Whether to center the input.
    *
@@ -27,9 +27,9 @@ export interface NumberInputProps extends NumberInputRootProps {
    * @param el - The input element.
    */
   inputRef?: (el: HTMLInputElement) => void;
-  controlProps?: NumberInputControlProps;
-  incrementProps?: NumberInputIncrementProps;
-  decrementProps?: NumberInputDecrementProps;
+  controlProps?: InputNumberControlProps;
+  incrementProps?: InputNumberIncrementProps;
+  decrementProps?: InputNumberDecrementProps;
 }
 
-export type NumberInputEmits = NumberInputRootEmits;
+export type InputNumberEmits = InputNumberRootEmits;

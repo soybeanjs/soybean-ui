@@ -85,6 +85,7 @@ export const components = {
   ],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   input: ['InputRoot', 'InputControl'],
+  inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [
@@ -140,7 +141,6 @@ export const components = {
     'NavigationMenuViewport',
     'NavigationMenuIndicator'
   ],
-  numberInput: ['NumberInputRoot', 'NumberInputControl', 'NumberInputIncrement', 'NumberInputDecrement'],
   pageTabs: ['PageTabsRoot', 'PageTabsItem', 'PageTabsClose', 'PageTabsPin'],
   pagination: [
     'PaginationRoot',

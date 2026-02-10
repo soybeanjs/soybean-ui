@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import {
-  NumberInputControl,
-  NumberInputDecrement,
-  NumberInputIncrement,
-  NumberInputRoot,
-  provideNumberInputUi
+  InputNumberControl,
+  InputNumberDecrement,
+  InputNumberIncrement,
+  InputNumberRoot,
+  provideInputNumberUi
 } from '@soybeanjs/headless';
 import { useForwardElement, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import Icon from '../icon/icon.vue';
-import { numberInputVariants } from './variants';
-import type { NumberInputEmits, NumberInputProps } from './types';
+import { inputNumberVariants } from './variants';
+import type { InputNumberEmits, InputNumberProps } from './types';
 
 defineOptions({
-  name: 'SNumberInput'
+  name: 'SInputNumber'
 });
 
-const props = defineProps<NumberInputProps>();
+const props = defineProps<InputNumberProps>();
 
-const emit = defineEmits<NumberInputEmits>();
+const emit = defineEmits<InputNumberEmits>();
 
 const [_, setInputElement] = useForwardElement(el => props.inputRef?.(el as HTMLInputElement));
 
@@ -36,7 +36,7 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const ui = computed(() => {
-  const variants = numberInputVariants({
+  const variants = inputNumberVariants({
     size: props.size,
     center: props.center
   });
@@ -44,24 +44,24 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideNumberInputUi(ui);
+provideInputNumberUi(ui);
 </script>
 
 <template>
-  <NumberInputRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+  <InputNumberRoot v-slot="{ clear }" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
     <slot name="leading" />
-    <NumberInputControl v-bind="controlProps" :ref="setInputElement" />
+    <InputNumberControl v-bind="controlProps" :ref="setInputElement" />
     <Icon v-if="clearable" icon="lucide:x" :class="ui.clearable" @click="clear" />
     <slot name="trailing" />
-    <NumberInputDecrement v-bind="decrementProps">
+    <InputNumberDecrement v-bind="decrementProps">
       <slot name="decrement">
         <Icon icon="lucide:minus" />
       </slot>
-    </NumberInputDecrement>
-    <NumberInputIncrement v-bind="incrementProps">
+    </InputNumberDecrement>
+    <InputNumberIncrement v-bind="incrementProps">
       <slot name="increment">
         <Icon icon="lucide:plus" />
       </slot>
-    </NumberInputIncrement>
-  </NumberInputRoot>
+    </InputNumberIncrement>
+  </InputNumberRoot>
 </template>

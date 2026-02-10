@@ -2,46 +2,46 @@
 import { computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { Primitive } from '../primitive';
-import { useNumberInputRootContext, useNumberInputUi } from './context';
+import { useInputNumberRootContext, useInputNumberUi } from './context';
 import { usePressedHold } from './shared';
-import type { NumberInputIncrementProps } from './types';
+import type { InputNumberDecrementProps } from './types';
 
 defineOptions({
-  name: 'NumberInputIncrement'
+  name: 'InputNumberDecrement'
 });
 
-const props = withDefaults(defineProps<NumberInputIncrementProps>(), {
+const props = withDefaults(defineProps<InputNumberDecrementProps>(), {
   as: 'button'
 });
 
-const { disabled, readonly, isIncreaseDisabled, onIncrease } = useNumberInputRootContext('NumberInputIncrement');
+const { disabled, readonly, isIncreaseDisabled, onDecrease } = useInputNumberRootContext('InputNumberDecrement');
 
-const cls = useNumberInputUi('increment');
+const cls = useInputNumberUi('decrement');
 
-const [incrementElement, setIncrementElement] = useForwardElement();
+const [decrementElement, setDecrementElement] = useForwardElement();
 
 const isDisabled = computed(() => disabled.value || readonly.value || props.disabled || isIncreaseDisabled.value);
 
-const { isPressed, onTrigger } = usePressedHold({ target: incrementElement, disabled: isDisabled });
+const { isPressed, onTrigger } = usePressedHold({ target: decrementElement, disabled: isDisabled });
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const style = computed(() => (isPressed.value ? 'user-select:none;' : undefined));
 
 onTrigger(() => {
-  onIncrease();
+  onDecrease();
 });
 </script>
 
 <template>
   <Primitive
-    :ref="setIncrementElement"
+    :ref="setDecrementElement"
     :as="as"
     :as-child="asChild"
     :class="cls"
     :type="tag"
     tabindex="-1"
-    aria-label="Increase"
+    aria-label="Decrease"
     :disabled="isDisabled ? '' : undefined"
     :data-disabled="isDisabled ? '' : undefined"
     :data-pressed="isPressed ? 'true' : undefined"

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { shallowRef, watch } from 'vue';
 import { getActiveElement } from '../../shared';
-import type { NumberInputControlProps } from './types';
-import { useNumberInputRootContext, useNumberInputUi } from './context';
+import type { InputNumberControlProps } from './types';
+import { useInputNumberRootContext, useInputNumberUi } from './context';
 
 defineOptions({
-  name: 'NumberInputControl'
+  name: 'InputNumberControl'
 });
 
-defineProps<NumberInputControlProps>();
+defineProps<InputNumberControlProps>();
 
-const cls = useNumberInputUi('control');
+const cls = useInputNumberUi('control');
 
 const {
   id,
@@ -34,7 +34,7 @@ const {
   validate,
   onMinMaxValue,
   applyInputValue
-} = useNumberInputRootContext('NumberInputControl');
+} = useInputNumberRootContext('InputNumberControl');
 
 const inputValue = shallowRef(textValue.value);
 

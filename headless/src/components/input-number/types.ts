@@ -3,7 +3,7 @@ import type { FormFieldCommonProps, PropsToContext, UiClass } from '../../types'
 import type { PrimitiveProps } from '../primitive/types';
 import type { InputBaseProps } from '../input/types';
 
-export interface NumberInputRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberRootProps extends InputBaseProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The default value of the input */
   defaultValue?: number;
   /** The controlled value of the input */
@@ -31,22 +31,22 @@ export interface NumberInputRootProps extends InputBaseProps, FormFieldCommonPro
   invertWheelChange?: boolean;
 }
 
-export type NumberInputRootEmits = {
+export type InputNumberRootEmits = {
   'update:modelValue': [val: number];
 };
 
-export interface NumberInputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
+export interface InputNumberControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
-export interface NumberInputIncrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberIncrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   disabled?: boolean;
 }
 
-export interface NumberInputDecrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export interface InputNumberDecrementProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   disabled?: boolean;
 }
 
-export interface NumberInputRootContextParams extends PropsToContext<
-  NumberInputRootProps,
+export interface InputNumberRootContextParams extends PropsToContext<
+  InputNumberRootProps,
   | 'id'
   | 'autofocus'
   | 'disabled'
@@ -68,6 +68,6 @@ export interface NumberInputRootContextParams extends PropsToContext<
   modelValue: ShallowRef<number | null | undefined>;
 }
 
-export type NumberInputUiSlot = 'root' | 'increment' | 'decrement' | 'control';
+export type InputNumberUiSlot = 'root' | 'increment' | 'decrement' | 'control';
 
-export type NumberInputUi = UiClass<NumberInputUiSlot>;
+export type InputNumberUi = UiClass<InputNumberUiSlot>;

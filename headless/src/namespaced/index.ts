@@ -102,6 +102,10 @@ import {
   FormLabel,
   InputControl,
   InputRoot,
+  InputNumberControl,
+  InputNumberDecrement,
+  InputNumberIncrement,
+  InputNumberRoot,
   Kbd,
   Label,
   LayoutFooter,
@@ -153,10 +157,6 @@ import {
   NavigationMenuSubList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-  NumberInputControl,
-  NumberInputDecrement,
-  NumberInputIncrement,
-  NumberInputRoot,
   PageTabsRoot,
   PageTabsItem,
   PageTabsClose,
@@ -517,6 +517,18 @@ export const Input = {
   Control: typeof InputControl;
 };
 
+export const InputNumber = {
+  Root: InputNumberRoot,
+  Control: InputNumberControl,
+  Increment: InputNumberIncrement,
+  Decrement: InputNumberDecrement
+} as {
+  Root: typeof InputNumberRoot;
+  Control: typeof InputNumberControl;
+  Increment: typeof InputNumberIncrement;
+  Decrement: typeof InputNumberDecrement;
+};
+
 export { Kbd };
 
 export { Label };
@@ -637,18 +649,6 @@ export const NavigationMenu = {
   SubList: typeof NavigationMenuSubList;
   Viewport: typeof NavigationMenuViewport;
   Indicator: typeof NavigationMenuIndicator;
-};
-
-export const NumberInput = {
-  Root: NumberInputRoot,
-  Control: NumberInputControl,
-  Increment: NumberInputIncrement,
-  Decrement: NumberInputDecrement
-} as {
-  Root: typeof NumberInputRoot;
-  Control: typeof NumberInputControl;
-  Increment: typeof NumberInputIncrement;
-  Decrement: typeof NumberInputDecrement;
 };
 
 export const PageTabs = {

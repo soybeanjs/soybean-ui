@@ -3,25 +3,25 @@ import { computed } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import VisuallyHiddenInput from '../visually-hidden/visually-hidden-input.vue';
-import { provideNumberInputRootContext, useNumberInputUi } from './context';
-import type { NumberInputRootEmits, NumberInputRootProps } from './types';
+import { provideInputNumberRootContext, useInputNumberUi } from './context';
+import type { InputNumberRootEmits, InputNumberRootProps } from './types';
 
 defineOptions({
-  name: 'NumberInputRoot'
+  name: 'InputNumberRoot'
 });
 
-const props = withDefaults(defineProps<NumberInputRootProps>(), {
+const props = withDefaults(defineProps<InputNumberRootProps>(), {
   modelValue: undefined,
   step: 1,
   stepSnapping: true,
   focusOnChange: true
 });
 
-const emit = defineEmits<NumberInputRootEmits>();
+const emit = defineEmits<InputNumberRootEmits>();
 
 const [rootElement, setRootElement] = useForwardElement();
 
-const cls = useNumberInputUi('root');
+const cls = useInputNumberUi('root');
 
 const modelValue = useControllableState(
   () => props.modelValue,
@@ -37,7 +37,7 @@ const onClear = () => {
   modelValue.value = null;
 };
 
-provideNumberInputRootContext({
+provideInputNumberRootContext({
   modelValue,
   ...transformPropsToContext(props, [
     'id',
