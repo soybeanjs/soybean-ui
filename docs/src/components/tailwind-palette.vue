@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { tailwindPaletteHsl } from '@soybeanjs/colord/palette';
+import { tailwindPalette } from '@soybeanjs/colord/palette';
 import type { PaletteColorLevel } from '@soybeanjs/colord/palette';
 
 const levels: PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
@@ -13,12 +13,12 @@ const levels: PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800,
         {{ level }}
       </div>
     </div>
-    <div v-for="(palette, name) in tailwindPaletteHsl" :key="name" class="flex-y-center gap-2">
+    <div v-for="(palette, name) in tailwindPalette" :key="name" class="flex-y-center gap-2">
       <div class="w-20">{{ name }}</div>
       <div
         v-for="level in levels"
         :key="level"
-        :style="{ backgroundColor: palette[level] }"
+        :style="{ backgroundColor: palette[level].hsl }"
         class="size-10 rounded-md border border-border"
       ></div>
     </div>
