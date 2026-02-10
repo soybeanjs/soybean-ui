@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.8.1](https://github.com/soybeanjs/soybean-ui/compare/v0.8.0...v0.8.1) (2026-02-11)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **config**: update entry pattern for component variants in uno.config.ts &nbsp;-&nbsp; by @soybeanjs [<samp>(314e5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/314e5839)
+- **projects**: fix import tailwindPalette from '@soybeanjs/colord/palette' in docs &nbsp;-&nbsp; by @soybeanjs [<samp>(309e7)</samp>](https://github.com/soybeanjs/soybean-ui/commit/309e7ca0)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(1aa0b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1aa0bffe)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.8.0](https://github.com/soybeanjs/soybean-ui/compare/v0.7.1...v0.8.0) (2026-02-10)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
