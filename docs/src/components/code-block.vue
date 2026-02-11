@@ -14,6 +14,7 @@ const wrapper = useTemplateRef('wrapper');
 async function renderCode() {
   const html = await codeToHtml(props.code, {
     lang: props.lang,
+    defaultColor: false,
     themes: {
       light: 'one-light',
       dark: 'one-dark-pro'
@@ -23,6 +24,7 @@ async function renderCode() {
   if (wrapper.value) {
     wrapper.value.innerHTML = html;
   }
+  console.log('html: ', html);
 }
 
 onMounted(() => {
