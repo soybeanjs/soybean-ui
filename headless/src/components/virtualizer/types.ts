@@ -29,7 +29,7 @@ export interface VirtualizerRootProps<T extends Record<string, any> = Record<str
 
 export interface VirtualizerDynamicContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface VirtualizerContentProps extends /** @vue-ignore */ HTMLAttributes {
+export interface VirtualizerContentProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   dynamicContentProps?: VirtualizerDynamicContentProps;
 }
 

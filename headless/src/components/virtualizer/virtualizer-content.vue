@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { Primitive } from '../primitive';
 import { useVirtualizerContext } from './context';
 import type { VirtualizerContentProps } from './types';
 
@@ -19,10 +20,10 @@ const dynamicContentStyle = computed(
 </script>
 
 <template>
-  <div :style="contentStyle">
+  <Primitive :as="as" :as-child="asChild" :style="contentStyle">
     <div v-if="isVerticalDynamic" v-bind="dynamicContentProps" :style="dynamicContentStyle">
       <slot />
     </div>
     <slot v-else />
-  </div>
+  </Primitive>
 </template>

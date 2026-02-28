@@ -39,12 +39,12 @@ const itemStyle = computed(() => {
 
 <template>
   <Primitive
-    :style="itemStyle"
     :as="as"
     :as-child="asChild"
     :data-index="data.index"
     :aria-setsize="totalSize"
     :aria-posinset="data.index + 1"
+    :style="itemStyle"
   >
     <slot />
   </Primitive>
