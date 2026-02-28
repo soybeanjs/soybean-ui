@@ -36,6 +36,7 @@ export * from './components/segment';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/switch';
+export * from './components/table';
 export * from './components/tabs';
 export * from './components/tag';
 export * from './components/textarea';
