@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const checkboxVariants = tv({
   slots: {
     groupRoot: 'flex',
-    root: 'inline-flex items-center',
+    root: 'flex items-center w-fit',
     control: [
       'peer shrink-0 border shadow',
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'

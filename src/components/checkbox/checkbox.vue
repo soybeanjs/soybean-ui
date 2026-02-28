@@ -61,7 +61,7 @@ provideCheckboxUi(ui);
         </CheckboxIndicator>
       </Transition>
     </CheckboxControl>
-    <CheckboxLabel v-bind="labelProps" :for="checkboxId">
+    <CheckboxLabel v-if="$slots.default || label" v-bind="labelProps" :for="checkboxId">
       <slot v-bind="slotProps" :id="checkboxId">{{ label }}</slot>
     </CheckboxLabel>
   </CheckboxRoot>
