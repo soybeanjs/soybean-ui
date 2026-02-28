@@ -7,7 +7,6 @@ import {
   TableHeadProps,
   TableRowProps,
   TableCellProps,
-  TableCaptionProps,
   TableUi
 } from '@soybeanjs/headless';
 import type { Path, PathValue } from '@soybeanjs/headless';
@@ -59,7 +58,6 @@ export interface TableProps<
   headProps?: TableHeadProps;
   rowProps?: TableRowProps;
   cellProps?: TableCellProps;
-  captionProps?: TableCaptionProps;
 }
 
 export type TableEmits<R extends string | number, M extends boolean = false> = {
