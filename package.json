@@ -54,7 +54,7 @@
     "commit": "soy git-commit",
     "dev": "vite",
     "dev:docs": "pnpm --filter @soybeanjs/ui-docs dev",
-    "lint": "oxlint --fix",
+    "lint": "oxlint --fix && eslint --fix .",
     "fmt": "oxfmt",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
