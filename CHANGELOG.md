@@ -1,5 +1,44 @@
 # Changelog
 
+## [v0.9.0](https://github.com/soybeanjs/soybean-ui/compare/v0.8.1...v0.9.0) (2026-03-01)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **components**: rename NumberInput to InputNumber &nbsp;-&nbsp; by @soybeanjs [<samp>(6de5a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6de5a8f1)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **table**: add table component with context, variants, and example usage &nbsp;-&nbsp; by @soybeanjs [<samp>(0fdfd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/0fdfdb6c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **checkbox**: conditionally render CheckboxLabel based on slot or label presence; update root variant style &nbsp;-&nbsp; by @soybeanjs [<samp>(78f2b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/78f2bfbe)
+- **docs**: fix code-block style &nbsp;-&nbsp; by @soybeanjs [<samp>(643db)</samp>](https://github.com/soybeanjs/soybean-ui/commit/643dbce1)
+- **lint**: update lint script to include eslint for code formatting &nbsp;-&nbsp; by @soybeanjs [<samp>(be24e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/be24e042)
+- **lint-staged**: update lint-staged command to use oxlint and oxfmt &nbsp;-&nbsp; by @soybeanjs [<samp>(46817)</samp>](https://github.com/soybeanjs/soybean-ui/commit/46817e5f)
+- **table**: remove unused TableCaptionProps from types &nbsp;-&nbsp; by @soybeanjs [<samp>(8dde2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/8dde2c21)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **composables**: update useSelection to support MaybeRefOrGetter for props &nbsp;-&nbsp; by @soybeanjs [<samp>(3ded4)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3ded4f75)
+- **headless**: update VirtualizerContent to extend PrimitiveProps &nbsp;-&nbsp; by @soybeanjs [<samp>(3832f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3832f27c)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(f4eac)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f4eac405)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(1290d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1290de29)
+- **projects**:
+  - use eslint to lint vue &nbsp;-&nbsp; by @soybeanjs [<samp>(f8077)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f8077a75)
+
+### &nbsp;&nbsp;&nbsp;🎨 Styles
+
+- **projects**: fix eslint lint code &nbsp;-&nbsp; by @soybeanjs [<samp>(d9cbb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d9cbbe2a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.8.1](https://github.com/soybeanjs/soybean-ui/compare/v0.8.0...v0.8.1) (2026-02-11)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
