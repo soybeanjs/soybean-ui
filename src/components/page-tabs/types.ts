@@ -74,7 +74,7 @@ export type PageTabsEmits<T> = PageTabsRootEmits & {
   (e: 'close', tab: T): void;
   (e: 'pin', tab: T): void;
   (e: 'contextmenu', tab: T): void;
-  (e: 'select-context-menu', menu: PageTabsContextMenuOptionData, tab: T): void;
+  (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T): void;
 };
 
 export type { PageTabsVariant };

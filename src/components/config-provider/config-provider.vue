@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { shallowRef, watch, watchEffect } from 'vue';
+import { watch, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';

@@ -41,8 +41,8 @@ function isIconifyIcon(icon: IconValue): icon is IconifyIcon | string {
 <template>
   <Icon v-if="isIconifyIcon(icon)" v-bind="forwardedProps" :icon="icon" style="flex-shrink: 0" />
   <component
-    v-else-if="icon"
     :is="icon"
+    v-else-if="icon"
     style="flex-shrink: 0"
     :style="{
       width: iconifySize.width,

@@ -20,7 +20,7 @@ const levels: PaletteColorLevel[] = [50, 100, 200, 300, 400, 500, 600, 700, 800,
         :key="level"
         :style="{ backgroundColor: palette[level].hsl }"
         class="size-10 rounded-md border border-border"
-      ></div>
+      />
     </div>
   </div>
 </template>

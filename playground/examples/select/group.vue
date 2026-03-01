@@ -16,13 +16,21 @@ const groups: SelectOptionData[] = [
     items: vegetables.map(vegetable => ({ label: vegetable, value: vegetable }))
   }
 ];
+
+const onUpdateModelValue = (value: string | number) => {
+  console.log('Selected value:', value);
+};
 </script>
 
 <template>
   <div>
     <h3 class="playground-title">Group</h3>
     <div class="w-60 lt-md:w-auto">
-      <SSelect :items="groups" placeholder="Please select a fruit or vegetable" @update:model-value="console.log" />
+      <SSelect
+        :items="groups"
+        placeholder="Please select a fruit or vegetable"
+        @update:model-value="onUpdateModelValue"
+      />
     </div>
   </div>
 </template>

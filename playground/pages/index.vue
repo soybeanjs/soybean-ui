@@ -21,7 +21,6 @@ function getTabs() {
   const componentTabs: TabConfig[] = [];
   const demoModules = import.meta.glob('../examples/**/index.vue');
 
-  // eslint-disable-next-line guard-for-in
   for (const path in demoModules) {
     const match = path.match(/examples\/([^/]+)\/index\.vue$/);
     if (match && match[1] && !match[1].startsWith('_')) {

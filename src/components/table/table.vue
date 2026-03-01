@@ -232,7 +232,7 @@ provideTableUi(ui);
                   :column="column"
                   :row="item"
                   :expanded="expanded.includes(rowKey(item))"
-                  :toggleExpand="() => toggleExpand(rowKey(item))"
+                  :toggle-expand="() => toggleExpand(rowKey(item))"
                 >
                   <SButtonIcon
                     v-if="expanded.includes(rowKey(item))"

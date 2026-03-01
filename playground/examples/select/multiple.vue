@@ -16,6 +16,10 @@ const groups: SelectOptionData[] = [
     items: vegetables.map(vegetable => ({ label: vegetable, value: vegetable }))
   }
 ];
+
+const onUpdateModelValue = (value: Array<string | number>) => {
+  console.log('Selected value:', value);
+};
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const groups: SelectOptionData[] = [
         :items="groups"
         placeholder="Please select a fruit or vegetable"
         :multiple="true"
-        @update:model-value="console.log"
+        @update:model-value="onUpdateModelValue"
       />
     </div>
   </div>

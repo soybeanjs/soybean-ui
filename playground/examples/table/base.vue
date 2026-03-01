@@ -40,7 +40,7 @@ const data: TableData[] = [
 <template>
   <div>
     <h3 class="playground-title">Base</h3>
-    <STable caption="Table Caption" :columns="columns" :data="data" :rowKey="row => row.id" multiple class="h-60">
+    <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" multiple class="h-60">
       <template #header-address>Header Address</template>
       <template #address="{ value }">
         <span class="text-red">{{ value }}</span>

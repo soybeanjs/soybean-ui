@@ -34,7 +34,7 @@ onMounted(() => {
 
 <template>
   <div class="relative">
-    <div ref="wrapper" class="md-code-block"></div>
+    <div ref="wrapper" class="md-code-block" />
     <CopyButton :code-base64="encodeBase64Utf8(props.code)" />
   </div>
 </template>

@@ -7,5 +7,5 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div></div>
+  <div />
 </template>

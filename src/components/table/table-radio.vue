@@ -21,6 +21,6 @@ const ui = computed(() => {
 
 <template>
   <button :class="ui.radioRoot">
-    <span :class="ui.radioIndicator" v-if="checked"></span>
+    <span v-if="checked" :class="ui.radioIndicator"></span>
   </button>
 </template>

@@ -7,7 +7,7 @@ defineOptions({
   name: 'PageTabsPin'
 });
 
-const props = defineProps<PageTabsPinProps>();
+defineProps<PageTabsPinProps>();
 
 const cls = usePageTabsUi('pin');
 

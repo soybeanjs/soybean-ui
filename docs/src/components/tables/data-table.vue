@@ -136,15 +136,15 @@ const resolvedColumns = () => {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(row, rowIndex) in props.data" :key="rowIndex">
+      <tr v-for="(item, rowIndex) in props.data" :key="rowIndex">
         <td v-for="col in resolvedColumns()" :key="col.key">
           <div v-if="col.cellWrapperClass" :class="col.cellWrapperClass">
-            <CellRenderer v-if="col.render" :render="col.render" :row="row" />
-            <span v-else>{{ getCellValue(row, col.key) }}</span>
+            <CellRenderer v-if="col.render" :render="col.render" :row="item" />
+            <span v-else>{{ getCellValue(item, col.key) }}</span>
           </div>
           <template v-else>
-            <CellRenderer v-if="col.render" :render="col.render" :row="row" />
-            <span v-else>{{ getCellValue(row, col.key) }}</span>
+            <CellRenderer v-if="col.render" :render="col.render" :row="item" />
+            <span v-else>{{ getCellValue(item, col.key) }}</span>
           </template>
         </td>
       </tr>

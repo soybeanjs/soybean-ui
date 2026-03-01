@@ -87,7 +87,7 @@ const handleSelect = async (menu: PageTabsContextMenuOptionData) => {
   if (!currentTab.value) return;
 
   await menu.action?.();
-  emit('select-context-menu', menu, currentTab.value);
+  emit('selectContextMenu', menu, currentTab.value);
 };
 
 const ui = computed(() => {
@@ -107,7 +107,7 @@ providePageTabsUi(ui);
 </script>
 
 <template>
-  <PageTabsRoot ref="root" v-bind="forwardedProps" v-model="modelValue">
+  <PageTabsRoot v-bind="forwardedProps" v-model="modelValue">
     <PageTabsItem
       v-for="item in items"
       :key="item.value"
@@ -120,7 +120,7 @@ providePageTabsUi(ui);
     >
       <Icon :icon="item.icon" />
       <span :class="ui.itemText">{{ item.label }}</span>
-      <PageTabsPin as-child v-if="!item.hidePinnedIcon">
+      <PageTabsPin v-if="!item.hidePinnedIcon" as-child>
         <Icon icon="lucide:pin" />
       </PageTabsPin>
       <PageTabsClose as-child>

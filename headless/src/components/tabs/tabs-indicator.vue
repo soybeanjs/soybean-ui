@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, watch, watchPostEffect } from 'vue';
+import { computed, ref, watch, watchPostEffect } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
 import { Primitive } from '../primitive';
 import { useTabsRootContext, useTabsUi } from './context';

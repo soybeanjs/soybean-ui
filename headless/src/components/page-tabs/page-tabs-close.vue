@@ -7,7 +7,7 @@ defineOptions({
   name: 'PageTabsClose'
 });
 
-const props = defineProps<PageTabsCloseProps>();
+defineProps<PageTabsCloseProps>();
 
 const cls = usePageTabsUi('close');
 

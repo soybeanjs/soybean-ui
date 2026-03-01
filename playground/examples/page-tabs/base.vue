@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import { klona } from 'klona/full';
 import { SPageTabs, SSelect } from '@soybeanjs/ui';
 import type {
   PageTabsOptionData,
