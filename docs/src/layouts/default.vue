@@ -9,7 +9,7 @@ const closeDrawer = () => {
 <template>
   <div class="[--app-header:3.75rem] min-h-full pt-[--app-header] text-sm">
     <AppHeader />
-    <div class="lt-md:!hidden fixed top-[--app-header] left-0 w-50 h-[calc(100vh-var(--app-header))]">
+    <div class="lt-md:!hidden fixed top-[--app-header] left-0 z-49 w-50 h-[calc(100vh-var(--app-header))] bg-sidebar">
       <SiderMenu />
     </div>
     <div
