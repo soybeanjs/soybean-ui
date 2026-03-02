@@ -5,7 +5,7 @@ import type { BuiltinBasePresetKey, BuiltinFeedbackPresetKey, BuiltinPrimaryPres
 import { useContext } from '@soybeanjs/headless/composables';
 
 export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => {
-  const base = useStorage<BuiltinBasePresetKey>('base', 'gray');
+  const base = useStorage<BuiltinBasePresetKey>('base', 'zinc');
   const primary = useStorage<BuiltinPrimaryPresetKey>('primary', 'indigo');
   const feedback = useStorage<BuiltinFeedbackPresetKey>('feedback', 'classic');
   const radius = useStorage('radius', 0.625);
