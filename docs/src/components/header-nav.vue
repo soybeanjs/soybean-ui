@@ -16,23 +16,21 @@ const menus = computed<NavigationMenuOptionData[]>(() => [
     value: 'docs',
     label: t('layout.header.docs'),
     icon: 'lucide:book-open',
-    linkProps: {
-      to: '/overview',
-      activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!'
-    }
+    to: '/overview'
   },
   {
     value: 'components',
     label: t('layout.header.components'),
     icon: 'lucide:layout-grid',
-    linkProps: {
-      to: '/components',
-      activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!'
-    }
+    to: '/components'
   }
 ]);
 </script>
 
 <template>
-  <SNavigationMenu :items="menus" :orientation="orientation" />
+  <SNavigationMenu
+    :items="menus"
+    :orientation="orientation"
+    :link-props="{ activeClass: 'text-primary! font-semibold dark:text-primary! bg-transparent!' }"
+  />
 </template>
