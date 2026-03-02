@@ -41,7 +41,9 @@ const slots = defineSlots<TableSlots<T>>();
 
 const ui = computed(() => {
   const variants = tableVariants({
-    size: props.size
+    size: props.size,
+    bordered: props.bordered,
+    striped: props.striped
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });
@@ -130,7 +132,7 @@ provideTableUi(ui);
 </script>
 
 <template>
-  <TableRoot :style="style">
+  <TableRoot>
     <TableContent v-bind="contentProps">
       <TableHeader v-bind="headerProps">
         <TableRow v-bind="rowProps">
@@ -252,7 +254,7 @@ provideTableUi(ui);
         </template>
       </TableBody>
       <TableFooter v-if="slots.footer" v-bind="footerProps">
-        <slot name="footer" />
+        <slot name="footer" :column-size="filteredColumns.length" />
       </TableFooter>
     </TableContent>
   </TableRoot>

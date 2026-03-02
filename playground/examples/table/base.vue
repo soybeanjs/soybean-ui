@@ -15,8 +15,6 @@ interface TableData {
 
 const columns: TableColumn<TableData>[] = [
   { type: 'index', width: '50px' },
-  { type: 'selection', width: '50px' },
-  { type: 'expand', width: '50px' },
   { title: 'Name', dataIndex: 'name' },
   { title: 'Age', dataIndex: 'age', align: 'center' },
   { title: 'Address', dataIndex: 'address' },
@@ -40,13 +38,10 @@ const data: TableData[] = [
 <template>
   <div>
     <h3 class="playground-title">Base</h3>
-    <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" multiple class="h-60">
+    <STable caption="Table Caption" :columns="columns" :data="data" :row-key="row => row.id" class="h-60">
       <template #header-address>Header Address</template>
       <template #address="{ value }">
         <span class="text-red">{{ value }}</span>
-      </template>
-      <template #expanded-row="{ row }">
-        <div class="p-4">Expanded content for {{ row.name }}</div>
       </template>
       <template #details.description="{ value }">
         <span class="text-blue">{{ value }}</span>

@@ -48,6 +48,8 @@ export interface TableProps<
   columns: TableColumn<T>[];
   data: T[];
   rowKey: (row: T) => R;
+  bordered?: boolean | 'all';
+  striped?: boolean;
   defaultExpanded?: R[];
   expanded?: R[];
   defaultExpandAll?: boolean;
@@ -83,7 +85,7 @@ export type TableSlots<T extends BaseTableData> = {
     toggleExpand: () => void;
   }) => any;
   'expanded-row'?: (props: { index: number; row: T }) => any;
-  footer?: () => any;
+  footer?: (props: { columnSize: number }) => any;
 };
 
 export interface TableRadioProps {

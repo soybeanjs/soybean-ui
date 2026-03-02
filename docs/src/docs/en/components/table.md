@@ -1,0 +1,133 @@
+# Table
+
+## Overview
+
+A data table component for displaying row and column data. Supports sorting, selection, expansion, and more.
+
+## Usage
+
+```vue
+<script setup lang="ts">
+import { STable } from '@soybeanjs/ui';
+import type { TableColumn } from '@soybeanjs/ui';
+
+interface TableData {
+  id: number;
+  name: string;
+  age: number;
+  address: string;
+}
+
+const columns: TableColumn<TableData>[] = [
+  { type: 'index', width: '50px' },
+  { title: 'Name', dataIndex: 'name' },
+  { title: 'Age', dataIndex: 'age', align: 'center' },
+  { title: 'Address', dataIndex: 'address' }
+];
+
+const data: TableData[] = [
+  { id: 1, name: 'John Doe', age: 30, address: '123 Main St' },
+  { id: 2, name: 'Jane Smith', age: 25, address: '456 Elm St' },
+  { id: 3, name: 'Bob Johnson', age: 40, address: '789 Oak St' }
+];
+</script>
+
+<template>
+  <STable :columns="columns" :data="data" :row-key="row => row.id" />
+</template>
+```
+
+## Demos
+
+```playground
+base
+expandable
+bordered
+striped
+single-selection
+multiple-selection
+footer
+```
+
+## API
+
+### Props
+
+<DataTable preset="props" :data="[
+  { name: 'columns', type: 'TableColumn<T>[]', default: '-', description: 'Array of column definitions.', required: true },
+  { name: 'data', type: 'T[]', default: '-', description: 'Array of table data.', required: true },
+  { name: 'rowKey', type: '(row: T) => R', default: '-', description: 'Function to generate unique key for each row.', required: true },
+  { name: 'size', type: 'ThemeSize', default: 'md', description: 'Table size.' },
+  { name: 'bordered', type: `'all' | boolean`, default: 'false', description: 'Whether to show borders.' },
+  { name: 'striped', type: 'boolean', default: 'false', description: 'Whether to show striped rows.' },
+  { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether to allow multiple selection.' },
+  { name: 'selected', type: 'R | R[]', default: '-', description: 'Selected row key (controlled).' },
+  { name: 'defaultSelected', type: 'R | R[]', default: '-', description: 'Default selected row key (uncontrolled).' },
+  { name: 'expanded', type: 'R[]', default: '-', description: 'Expanded row keys (controlled).' },
+  { name: 'defaultExpanded', type: 'R[]', default: '-', description: 'Default expanded row keys (uncontrolled).' },
+  { name: 'defaultExpandAll', type: 'boolean', default: 'false', description: 'Whether to expand all rows by default.' },
+  { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' },
+  { name: 'class', type: 'string', default: '-', description: 'Additional class name for root element.' },
+  { name: 'contentProps', type: 'TableContentProps', default: '-', description: 'Content container props.' },
+  { name: 'headerProps', type: 'TableHeaderProps', default: '-', description: 'Header container props.' },
+  { name: 'bodyProps', type: 'TableBodyProps', default: '-', description: 'Body container props.' },
+  { name: 'footerProps', type: 'TableFooterProps', default: '-', description: 'Footer container props.' },
+  { name: 'headProps', type: 'TableHeadProps', default: '-', description: 'Head cell props.' },
+  { name: 'rowProps', type: 'TableRowProps', default: '-', description: 'Row props.' },
+  { name: 'cellProps', type: 'TableCellProps', default: '-', description: 'Cell props.' }
+]"/>
+
+### Emits
+
+<DataTable preset="emits" :data="[
+  { name: 'update:selected', parameters: '(value: R | R[]) => void', description: 'Triggers when selected row changes.' },
+  { name: 'update:expanded', parameters: '(value: R[]) => void', description: 'Triggers when expanded rows change.' }
+]"/>
+
+### Slots
+
+<DataTable preset="slots" :data="[
+  { name: 'header-[dataIndex]', parameters: '{ column: TableColumn<T> }', description: 'Custom column header rendering.' },
+  { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any }', description: 'Custom cell rendering.' },
+  { name: 'header-index', parameters: '{ column: TableColumn<T> }', description: 'Custom index column header.' },
+  { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T }', description: 'Custom index cell.' },
+  { name: 'header-selection', parameters: '{ column: TableColumn<T>; multiple: boolean }', description: 'Custom selection column header.' },
+  { name: 'selection', parameters: '{ index: number; column: TableColumn<T>; row: T; multiple: boolean }', description: 'Custom selection cell.' },
+  { name: 'header-expand', parameters: '{ column: TableColumn<T> }', description: 'Custom expand column header.' },
+  { name: 'expand', parameters: '{ index: number; column: TableColumn<T>; row: T; expanded: boolean; toggleExpand: () => void }', description: 'Custom expand cell.' },
+  { name: 'expanded-row', parameters: '{ index: number; row: T }', description: 'Custom expanded row content.' },
+  { name: 'footer', parameters: '{ columnSize: number }', description: 'Custom footer content.' }
+]"/>
+
+### Types
+
+#### TableColumn
+
+Column definition interface.
+
+<DataTable :data="[
+  { name: 'type', type: `'index' | 'selection' | 'expand'`, default: '-', description: 'Special column type.' },
+  { name: 'dataIndex', type: 'string', default: '-', description: 'Data field path, supports nesting like `user.name`.' },
+  { name: 'title', type: 'string', default: '-', description: 'Column title.' },
+  { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: 'Alignment.' },
+  { name: 'width', type: 'string', default: '-', description: 'Column width.' },
+  { name: 'hidden', type: 'boolean', default: 'false', description: 'Whether to hide the column.' }
+]"/>
+
+#### Ui
+
+Custom styling classes.
+
+<DataTable :data="[
+  { name: 'root', type: 'string', description: 'Root container class.' },
+  { name: 'content', type: 'string', description: 'Content container class.' },
+  { name: 'header', type: 'string', description: 'Header container class.' },
+  { name: 'body', type: 'string', description: 'Body container class.' },
+  { name: 'footer', type: 'string', description: 'Footer container class.' },
+  { name: 'row', type: 'string', description: 'Row class.' },
+  { name: 'head', type: 'string', description: 'Header cell class.' },
+  { name: 'cell', type: 'string', description: 'Cell class.' },
+  { name: 'selection', type: 'string', description: 'Selection checkbox class.' }
+]"/>
+
+<UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

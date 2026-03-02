@@ -67,7 +67,7 @@ export const tableVariants = tv({
     },
     bordered: {
       all: {
-        root: 'border border-border border-collapse',
+        content: 'border border-border border-collapse',
         head: 'border border-border',
         cell: 'border border-border'
       },
