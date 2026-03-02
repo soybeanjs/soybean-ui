@@ -7,10 +7,12 @@ export function getCommandSearchOptions(items: CommandOptionData[]) {
       return [item as CommandSearchOptionData];
     }
 
-    return item.items.map(gItem => {
+    return item.items.map(gItems => {
       const searchOption: CommandSearchOptionData = {
-        ...gItem,
-        isGroup: true
+        groupValue: item.value,
+        groupLabel: item.label,
+        groupSeparator: item.separator,
+        ...gItems
       };
 
       return searchOption;
@@ -32,24 +34,22 @@ export function getCommandHighlightSearchOption(item: CommandSearchOptionData, s
 export function getCommandItemOptions(options: CommandHighlightSearchOptionData[]) {
   const itemsByGroup = options.reduce(
     (acc, item) => {
-      const { isGroup, ...rest } = item;
+      const { groupValue, groupLabel, groupSeparator, ...rest } = item;
 
-      if (isGroup) {
-        const { value, label, separator } = rest;
-
-        if (!acc[value]) {
-          acc[value] = {
-            value,
-            label,
-            separator
+      if (groupValue) {
+        if (!acc[groupValue]) {
+          acc[groupValue] = {
+            value: groupValue,
+            label: groupLabel ?? groupValue,
+            separator: groupSeparator
           };
         }
 
-        if (!acc[value].items) {
-          acc[value].items = [];
+        if (!acc[groupValue].items) {
+          acc[groupValue].items = [];
         }
 
-        acc[value].items.push(rest);
+        acc[groupValue].items.push(rest);
       } else {
         acc[item.label] = rest;
       }

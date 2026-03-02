@@ -65,7 +65,7 @@ const fuseOptions = computed(() =>
     fuseOptions: {
       ignoreLocation: true,
       threshold: 0.1,
-      keys: ['label']
+      keys: ['label', 'groupLabel']
     },
     resultLimit: 12,
     matchAllWhenSearchEmpty: true

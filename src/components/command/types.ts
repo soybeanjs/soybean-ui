@@ -80,7 +80,9 @@ export interface CommandOptionProps {
 export type CommandOptionEmits = CommandItemEmits;
 
 export interface CommandSearchOptionData extends CommandBaseOptionData {
-  isGroup?: boolean;
+  groupValue?: string;
+  groupLabel?: string;
+  groupSeparator?: boolean;
 }
 
 export interface CommandHighlightSearchOptionData extends CommandSearchOptionData {
