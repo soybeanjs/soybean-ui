@@ -24,7 +24,6 @@ async function renderCode() {
   if (wrapper.value) {
     wrapper.value.innerHTML = html;
   }
-  console.log('html: ', html);
 }
 
 onMounted(() => {
