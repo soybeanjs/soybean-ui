@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
+import { useMediaQuery } from '@vueuse/core';
 import {
   SBreadcrumb,
   SButton,
@@ -25,6 +26,8 @@ import type {
 } from '@soybeanjs/ui';
 import { themeSizeOptions } from '../../constants/theme';
 import { treeMenuItems } from '../tree-menu/data';
+
+const isMobile = useMediaQuery('(max-width: 768px)');
 
 const side = shallowRef<LayoutSide>('left');
 
@@ -146,6 +149,7 @@ const fullContent = shallowRef(false);
         :variant="variant"
         :collapsible="collapsible"
         :full-content="fullContent"
+        :is-mobile="isMobile"
         :ui="{
           header: 'border-b border-border',
           tab: 'bg-background',

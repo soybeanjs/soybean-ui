@@ -79,6 +79,7 @@ provideLayoutRootContext({
     :data-side="side"
     :data-state="sidebarState"
     :data-variant="variant"
+    :data-mobile="Boolean(isMobile)"
     :style="style"
   >
     <slot :open="open" :collapsed-sidebar-width="collapsedSidebarWidth" />

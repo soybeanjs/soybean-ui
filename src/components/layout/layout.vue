@@ -61,7 +61,6 @@ const ui = computed(() => {
     variant: props.variant,
     side: props.side,
     collapsible: props.collapsible,
-    tabVisible: props.tabVisible,
     fullContent: props.fullContent
   });
 
@@ -73,7 +72,11 @@ const ui = computed(() => {
   return mergeSlotVariants(
     {
       ...variants,
-      mobileDrawer: drawer.content
+      mobileDrawer: () => {
+        const base = drawer.content();
+        const current = variants.mobileDrawer();
+        return `${base} ${current}`;
+      }
     },
     props.ui,
     { root: props.class }
@@ -89,6 +92,9 @@ provideSizeContext(() => props.size);
     v-slot="slotProps"
     v-bind="forwardedProps"
     :px-to-rem="pxToRem"
+    :data-tab-visible="Boolean(tabVisible)"
+    :data-footer-visible="Boolean(footerVisible)"
+    :data-full-content="Boolean(fullContent)"
     @update:open="emit('update:open', $event)"
   >
     <LayoutSidebar v-bind="sidebarProps">
@@ -99,13 +105,13 @@ provideSizeContext(() => props.size);
       <LayoutHeader v-bind="headerProps">
         <slot name="header" />
       </LayoutHeader>
-      <LayoutTab v-bind="tabProps">
+      <LayoutTab v-if="tabVisible" v-bind="tabProps">
         <slot name="tab" />
       </LayoutTab>
       <LayoutContent v-bind="contentProps">
         <slot />
       </LayoutContent>
-      <LayoutFooter v-bind="footerProps">
+      <LayoutFooter v-if="footerVisible" v-bind="footerProps">
         <slot name="footer" />
       </LayoutFooter>
     </LayoutMain>

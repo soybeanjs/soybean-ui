@@ -16,7 +16,7 @@ export const layoutVariants = tv({
       `group-data-[collapsible=offcanvas]:w-0`,
       `group-data-[side=right]:rotate-180`
     ],
-    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0 [&>button]:hidden',
+    mobileDrawer: 'w-[--soybean-sidebar-width] bg-sidebar p-0',
     mobileOverlay: [
       `fixed inset-0 z-50 bg-black/80`,
       `data-[state=open]:animate-in data-[state=open]:fade-in-0`,
@@ -88,15 +88,13 @@ export const layoutVariants = tv({
       },
       icon: {}
     },
-    tabVisible: {
-      true: {
-        content: ''
-      }
-    },
     fullContent: {
       true: {
-        tab: 'fixed left-0 top-0 z-10 w-full',
-        content: 'fixed inset-0 z-10'
+        tab: 'fixed left-0 top-0 z-9999 w-full',
+        content: 'fixed inset-0 z-9999 group-data-[tab-visible=true]:mt-[--soybean-layout-tab-height]'
+      },
+      false: {
+        content: 'relative'
       }
     }
   },
@@ -153,20 +151,12 @@ export const layoutVariants = tv({
       class: {
         main: 'md:group-data-[state=collapsed]:ml-[calc(var(--soybean-layout-spacing)/2)]'
       }
-    },
-    {
-      tabVisible: true,
-      fullContent: true,
-      class: {
-        content: 'mt-[--soybean-layout-tab-height]'
-      }
     }
   ],
   defaultVariants: {
     variant: 'sidebar',
     side: 'left',
-    collapsible: 'icon',
-    tabVisible: true
+    collapsible: 'icon'
   }
 });
 
