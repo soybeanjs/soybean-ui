@@ -1,5 +1,27 @@
 # Changelog
 
+## [v0.9.1](https://github.com/soybeanjs/soybean-ui/compare/v0.9.0...v0.9.1) (2026-03-03)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **code-block**: remove debug log from renderCode function &nbsp;-&nbsp; by @soybeanjs [<samp>(7491f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7491f375)
+- **command**: fix search options &nbsp;-&nbsp; by @soybeanjs [<samp>(2e26c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2e26c75c)
+- **header-nav**: simplify menu item linkProps and update SNavigationMenu usage &nbsp;-&nbsp; by @soybeanjs [<samp>(592cb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/592cb4e2)
+- **layout**: add background color to sidebar for better visibility &nbsp;-&nbsp; by @soybeanjs [<samp>(1ce3f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1ce3f00b)
+- **theme**: update default base color from gray to zinc &nbsp;-&nbsp; by @soybeanjs [<samp>(4b5fa)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4b5fac5f)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **layout**: optimize layout styles &nbsp;-&nbsp; by @soybeanjs [<samp>(f5d4d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f5d4d710)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **table**: add table docs and examples &nbsp;-&nbsp; by @soybeanjs [<samp>(43882)</samp>](https://github.com/soybeanjs/soybean-ui/commit/43882d6a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.9.0](https://github.com/soybeanjs/soybean-ui/compare/v0.8.1...v0.9.0) (2026-03-01)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
