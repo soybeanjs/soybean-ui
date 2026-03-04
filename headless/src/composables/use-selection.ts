@@ -13,6 +13,8 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
   // @ts-expect-error ignore type: Vue props Boolean Casting [https://vuejs.org/guide/components/props.html#boolean-casting]
   const isMultiple = computed(() => Boolean(propsRef.value.multiple) || propsRef.value.multiple === '');
 
+  const singleClearable = computed(() => propsRef.value.singleClearable ?? true);
+
   const modelValue = useControllableState(
     () => propsRef.value.modelValue,
     value => {
@@ -46,6 +48,10 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
   const onModelValueChange = (value: N) => {
     if (!isMultiple.value) {
       const updated = modelValue.value === value ? undefined : value;
+
+      if (updated === undefined && !singleClearable.value) {
+        return;
+      }
 
       modelValue.value = updated as SelectionProps<M, N>['modelValue'];
 

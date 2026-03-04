@@ -109,6 +109,12 @@ export interface SelectionProps<M extends boolean = false, N extends DefinedValu
    * This prop will overwrite the inferred type from `modelValue` and `defaultValue`.
    */
   multiple?: M;
+  /**
+   * Whether selected item can be cleared when `multiple` is false.
+   *
+   * @default true
+   */
+  singleClearable?: boolean;
 }
 
 export type SelectionEmits<M extends boolean = false, N extends DefinedValue = string> = {

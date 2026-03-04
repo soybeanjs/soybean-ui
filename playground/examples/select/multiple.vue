@@ -29,7 +29,7 @@ const onUpdateModelValue = (value: Array<string | number>) => {
       <SSelect
         :items="groups"
         placeholder="Please select a fruit or vegetable"
-        :multiple="true"
+        multiple
         @update:model-value="onUpdateModelValue"
       />
     </div>

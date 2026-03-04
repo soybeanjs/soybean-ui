@@ -6,6 +6,7 @@ import DemoSelectDisabled from './disabled.vue';
 import DemoSelectSeparator from './separator.vue';
 import DemoSelectGroup from './group.vue';
 import DemoSelectMultiple from './multiple.vue';
+import DemoSelectSingleClearable from './single-clearable.vue';
 </script>
 
 <template>
@@ -16,5 +17,6 @@ import DemoSelectMultiple from './multiple.vue';
     <DemoSelectSeparator />
     <DemoSelectGroup />
     <DemoSelectMultiple />
+    <DemoSelectSingleClearable />
   </SCard>
 </template>

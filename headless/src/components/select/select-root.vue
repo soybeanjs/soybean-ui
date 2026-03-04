@@ -37,7 +37,7 @@ const open = useControllableState(
 );
 
 const { triggerElement, options, nativeSelectKey } = provideSelectRootContext({
-  ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required']),
+  ...transformPropsToContext(props, ['dir', 'autocomplete', 'disabled', 'required', 'singleClearable']),
   open,
   modelValue,
   onModelValueChange,
