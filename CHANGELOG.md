@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.10.2](https://github.com/soybeanjs/soybean-ui/compare/v0.10.1...v0.10.2) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **form**: update label style to prevent text wrapping &nbsp;-&nbsp; by @soybeanjs [<samp>(2bbce)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2bbce25e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.1](https://github.com/soybeanjs/soybean-ui/compare/v0.10.0...v0.10.1) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
