@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.10.1](https://github.com/soybeanjs/soybean-ui/compare/v0.10.0...v0.10.1) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **card**: add default prop 'asChild' to SCardCollapsibleTrigger &nbsp;-&nbsp; by @soybeanjs [<samp>(3201c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3201cc25)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **card**: add 'SCardCollapsibleTrigger' to card components &nbsp;-&nbsp; by @soybeanjs [<samp>(d070a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d070a917)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.0](https://github.com/soybeanjs/soybean-ui/compare/v0.9.4...v0.10.0) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
