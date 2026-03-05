@@ -10,7 +10,13 @@ export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
    */
   defaultPage?: number;
   /** Number of items per page */
-  itemsPerPage: number;
+  pageSize?: number;
+  /**
+   * The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.
+   *
+   * @default 10
+   */
+  defaultPageSize?: number;
   /** Number of items in your list */
   total?: number;
   /** Number of sibling should be shown around the current page */
@@ -24,6 +30,8 @@ export interface PaginationRootProps extends /** @vue-ignore */ HTMLAttributes {
 export type PaginationRootEmits = {
   /** Event handler called when the page value changes */
   'update:page': [value: number];
+  /** Event handler called when the page size value changes */
+  'update:pageSize': [value: number];
 };
 
 export interface PaginationListProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -39,9 +47,10 @@ export interface PaginationButtonProps extends /** @vue-ignore */ ButtonHTMLAttr
 
 export interface PaginationRootContextParams extends PropsToContext<
   Required<PaginationRootProps>,
-  'total' | 'siblingCount' | 'disabled' | 'showEdges' | 'itemsPerPage'
+  'total' | 'siblingCount' | 'disabled' | 'showEdges'
 > {
   page: ShallowRef<number>;
+  pageSize: ShallowRef<number>;
 }
 
 export type PaginationUiSlot = 'root' | 'list' | 'listItem' | 'ellipsis' | 'first' | 'prev' | 'next' | 'last';

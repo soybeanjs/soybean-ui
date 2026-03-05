@@ -36,7 +36,7 @@ show
 <DataTable preset="props" :data="[
   { name: 'page', type: 'number', default: '1', description: '当前页码。', required: true },
   { name: 'total', type: 'number', default: '0', description: '总条目数。', required: true },
-  { name: 'itemsPerPage', type: 'number', default: '10', description: '每页条目数。' },
+  { name: 'pageSize', type: 'number', default: '10', description: '每页条目数。' },
   { name: 'siblingCount', type: 'number', default: '1', description: '当前页两侧显示的相邻页数。' },
   { name: 'showEdges', type: 'boolean', default: 'false', description: '是否显示首页/末页按钮。' },
   { name: 'showFirstOrLast', type: 'boolean', default: 'false', description: '是否显示首/末箭头按钮。' },
@@ -49,7 +49,8 @@ show
 ### 事件
 
 <DataTable preset="emits" :data="[
-  { name: 'update:page', parameters: '(page: number) => void', description: '页码变化时触发。' }
+  { name: 'update:page', parameters: '(page: number) => void', description: '页码变化时触发。' },
+  { name: 'update:pageSize', parameters: '(pageSize: number) => void', description: '每页条目数变化时触发。' }
 ]"/>
 
 ### 插槽

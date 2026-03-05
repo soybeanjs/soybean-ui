@@ -74,7 +74,11 @@ providePaginationUi(ui);
 </script>
 
 <template>
-  <PaginationRoot v-bind="forwardedProps" @update:page="emit('update:page', $event)">
+  <PaginationRoot
+    v-bind="forwardedProps"
+    @update:page="emit('update:page', $event)"
+    @update:page-size="emit('update:pageSize', $event)"
+  >
     <PaginationList v-slot="{ items }" v-bind="props.listProps">
       <PaginationFirst v-if="showFirstOrLast" v-bind="props.firstProps" :data-selected="dataSelected">
         <slot name="first">

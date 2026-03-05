@@ -36,7 +36,7 @@ show
 <DataTable preset="props" :data="[
   { name: 'page', type: 'number', default: '1', description: 'Current page number.', required: true },
   { name: 'total', type: 'number', default: '0', description: 'Total number of items.', required: true },
-  { name: 'itemsPerPage', type: 'number', default: '10', description: 'Number of items per page.' },
+  { name: 'pageSize', type: 'number', default: '10', description: 'Number of items per page.' },
   { name: 'siblingCount', type: 'number', default: '1', description: 'Number of siblings to show around current page.' },
   { name: 'showEdges', type: 'boolean', default: 'false', description: 'Whether to show first/last page buttons.' },
   { name: 'showFirstOrLast', type: 'boolean', default: 'false', description: 'Whether to show first/last arrow buttons.' },
@@ -49,7 +49,8 @@ show
 ### Emits
 
 <DataTable preset="emits" :data="[
-  { name: 'update:page', parameters: '(page: number) => void', description: 'Triggers when page changes.' }
+  { name: 'update:page', parameters: '(page: number) => void', description: 'Triggers when page changes.' },
+  { name: 'update:pageSize', parameters: '(pageSize: number) => void', description: 'Triggers when page size changes.' }
 ]"/>
 
 ### Slots

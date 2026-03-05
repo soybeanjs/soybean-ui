@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { ShallowRef } from 'vue';
 import { useControllableState } from '../../composables';
-import { isNullish, transformPropsToContext } from '../../shared';
+import { transformPropsToContext } from '../../shared';
 import { providePaginationRootContext, usePaginationUi } from './context';
 import type { PaginationRootEmits, PaginationRootProps } from './types';
 
@@ -13,6 +12,7 @@ const props = withDefaults(defineProps<PaginationRootProps>(), {
   total: 0,
   siblingCount: 2,
   defaultPage: 1,
+  defaultPageSize: 10,
   showEdges: false
 });
 
@@ -21,17 +21,25 @@ const emit = defineEmits<PaginationRootEmits>();
 const cls = usePaginationUi('root');
 
 const page = useControllableState(
-  () => props.page,
+  () => props.page as number,
   value => {
-    if (isNullish(value)) return;
     emit('update:page', value);
   },
   props.defaultPage
-) as ShallowRef<number>;
+);
+
+const pageSize = useControllableState(
+  () => props.pageSize as number,
+  value => {
+    emit('update:pageSize', value);
+  },
+  props.defaultPageSize
+);
 
 const { pageCount } = providePaginationRootContext({
-  ...transformPropsToContext(props, ['total', 'siblingCount', 'disabled', 'showEdges', 'itemsPerPage']),
-  page
+  ...transformPropsToContext(props, ['total', 'siblingCount', 'disabled', 'showEdges']),
+  page,
+  pageSize
 });
 </script>
 
