@@ -4,6 +4,7 @@ import {
   SButtonIcon,
   SCheckboxGroup,
   SForm,
+  SFormFieldBase,
   SInput,
   SRadioGroup,
   SSelect,
@@ -68,7 +69,7 @@ const citiesItems: SelectOptionData<string>[] = [
 <template>
   <div>
     <h3 class="playground-title">Valibot</h3>
-    <SForm inline :ui="{ label: 'w-25' }" class="w-120" @submit="handleSubmit">
+    <SForm inline :ui="{ label: 'w-25' }" class="w-120 gap-7" @submit="handleSubmit">
       <SFormField name="username" label="Username">
         <SInput placeholder="Please input username" />
       </SFormField>
@@ -102,7 +103,9 @@ const citiesItems: SelectOptionData<string>[] = [
           </div>
         </template>
       </SFormFieldArray>
-      <SButton type="submit">Submit</SButton>
+      <SFormFieldBase>
+        <SButton type="submit">Submit</SButton>
+      </SFormFieldBase>
     </SForm>
   </div>
 </template>

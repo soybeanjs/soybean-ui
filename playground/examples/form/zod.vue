@@ -4,6 +4,7 @@ import {
   SButtonIcon,
   SCheckboxGroup,
   SForm,
+  SFormFieldBase,
   SInput,
   SRadioGroup,
   SSelect,
@@ -64,7 +65,7 @@ const citiesItems: SelectOptionData<string>[] = [
 <template>
   <div>
     <h3 class="playground-title">Zod</h3>
-    <SForm class="w-90" @submit="handleSubmit">
+    <SForm class="w-90 gap-3" @submit="handleSubmit">
       <SFormField name="username" label="Username">
         <SInput placeholder="Please input username" />
       </SFormField>
@@ -98,7 +99,9 @@ const citiesItems: SelectOptionData<string>[] = [
           </div>
         </template>
       </SFormFieldArray>
-      <SButton type="submit">Submit</SButton>
+      <SFormFieldBase>
+        <SButton type="submit">Submit</SButton>
+      </SFormFieldBase>
     </SForm>
   </div>
 </template>
