@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.10.4](https://github.com/soybeanjs/soybean-ui/compare/v0.10.3...v0.10.4) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **select**: set singleClearable prop default to true &nbsp;-&nbsp; by @soybeanjs [<samp>(9ebd1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9ebd10da)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.3](https://github.com/soybeanjs/soybean-ui/compare/v0.10.2...v0.10.3) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
