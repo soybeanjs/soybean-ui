@@ -7,7 +7,9 @@ defineOptions({
   name: 'SCardCollapsibleTrigger'
 });
 
-const props = defineProps<CardCollapsibleTriggerProps>();
+const props = withDefaults(defineProps<CardCollapsibleTriggerProps>(), {
+  asChild: true
+});
 </script>
 
 <template>
