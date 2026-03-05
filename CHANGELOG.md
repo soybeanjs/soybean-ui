@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.11.0](https://github.com/soybeanjs/soybean-ui/compare/v0.10.6...v0.11.0) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **pagination**: rename itemsPerPage to pageSize and support update pageSize by event &nbsp;-&nbsp; by @soybeanjs [<samp>(7817c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7817c828)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.6](https://github.com/soybeanjs/soybean-ui/compare/v0.10.5...v0.10.6) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
