@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.11.1](https://github.com/soybeanjs/soybean-ui/compare/v0.11.0...v0.11.1) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **pagination**: add leading and trailing slots &nbsp;-&nbsp; by @soybeanjs [<samp>(b03ba)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b03baf86)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.11.0](https://github.com/soybeanjs/soybean-ui/compare/v0.10.6...v0.11.0) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;💅 Refactors
