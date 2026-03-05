@@ -8,7 +8,7 @@ export const components = {
   badge: ['SBadge'],
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
-  card: ['SCard'],
+  card: ['SCard', 'SCardCollapsibleTrigger'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   collapsible: ['SCollapsible', 'SCollapsibleContent', 'SCollapsibleTrigger'],
   command: ['SCommand'],
