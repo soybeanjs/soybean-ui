@@ -14,6 +14,7 @@ import type {
   FormFieldState,
   FormFieldUi,
   FormLabelProps,
+  FormControlProps,
   FormRegisterOptions,
   FormValues,
   Path,
@@ -27,9 +28,14 @@ export interface FormFieldBaseProps extends Omit<_FormFieldProps, 'class'> {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<FormFieldUi>;
+  /**
+   * Whether the label is inline with the control.
+   */
+  inline?: boolean;
   label?: string;
   description?: string;
   labelProps?: FormLabelProps;
+  controlProps?: FormControlProps;
   descriptionProps?: FormDescriptionProps;
   errorProps?: FormErrorProps;
 }
@@ -99,9 +105,14 @@ export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<FormFieldUi>;
+  /**
+   * Whether the label is inline with the control.
+   */
+  inline?: boolean;
   fieldProps?: FormFieldBaseProps;
   fieldArrayProps?: FormFieldBaseProps;
   labelProps?: FormLabelProps;
+  controlProps?: FormControlProps;
   descriptionProps?: FormDescriptionProps;
   errorProps?: FormErrorProps;
 }

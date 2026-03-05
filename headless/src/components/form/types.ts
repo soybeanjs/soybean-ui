@@ -9,6 +9,8 @@ export interface FormFieldProps extends /** @vue-ignore */ HTMLAttributes {
 
 export interface FormLabelProps extends LabelProps {}
 
+export interface FormControlProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface FormDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface FormErrorProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -17,6 +19,6 @@ export interface FormFieldContextParams {
   error: ComputedRef<string | undefined>;
 }
 
-export type FormFieldUiSlot = 'field' | 'fieldArray' | 'label' | 'description' | 'error';
+export type FormFieldUiSlot = 'field' | 'fieldArray' | 'label' | 'control' | 'description' | 'error';
 
 export type FormFieldUi = UiClass<FormFieldUiSlot>;

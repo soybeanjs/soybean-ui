@@ -64,7 +64,7 @@ const citiesItems: SelectOptionData<string>[] = [
 <template>
   <div>
     <h3 class="playground-title">Zod</h3>
-    <SForm class="w-480px space-y-4" @submit="handleSubmit">
+    <SForm class="w-90" @submit="handleSubmit">
       <SFormField name="username" label="Username">
         <SInput placeholder="Please input username" />
       </SFormField>

@@ -1,5 +1,6 @@
 export { default as FormField } from './form-field.vue';
 export { default as FormLabel } from './form-label.vue';
+export { default as FormControl } from './form-control.vue';
 export { default as FormDescription } from './form-description.vue';
 export { default as FormError } from './form-error.vue';
 
@@ -10,6 +11,7 @@ export type { StandardSchemaV1 } from '@standard-schema/spec';
 export type {
   FormFieldProps,
   FormLabelProps,
+  FormControlProps,
   FormDescriptionProps,
   FormErrorProps,
   FormFieldUiSlot,

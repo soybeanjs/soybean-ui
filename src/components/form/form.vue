@@ -24,7 +24,7 @@ provideFormContext(transformPropsToContext(props));
 </script>
 
 <template>
-  <form :class="cls">
+  <form :data-inline="inline ? '' : undefined" :class="cls">
     <slot />
   </form>
 </template>

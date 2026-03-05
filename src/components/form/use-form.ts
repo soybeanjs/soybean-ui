@@ -28,7 +28,7 @@ export function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(opti
           },
           {
             label: () => slots.label?.(state.value),
-            description: () => slots.description?.(state.value),
+            description: slots.description ? () => slots.description(state.value) : undefined,
             default: (slotProps: FormFieldBaseSlotProps) => {
               return h(
                 Slot,
@@ -69,7 +69,7 @@ export function useForm<S extends StandardSchemaV1<FormValues, FormValues>>(opti
           },
           {
             label: () => slots.label?.(state.value),
-            description: () => slots.description?.(state.value),
+            description: slots.description ? () => slots.description(state.value) : undefined,
             default: () => slots.default?.(state.value)
           }
         );
