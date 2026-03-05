@@ -5,7 +5,10 @@ export const cardVariants = tv({
   slots: {
     root: 'flex flex-col items-stretch rounded-md border bg-card text-card-foreground shadow-sm',
     header: 'flex items-center justify-between flex-wrap',
-    content: 'grow data-[state=closed]:p-0',
+    content: [
+      'grow transition will-change-auto data-[state=closed]:p-0',
+      `data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up`
+    ],
     footer: 'flex items-center justify-between',
     titleRoot: 'flex items-center',
     title: 'font-semibold tracking-tight m-0',
