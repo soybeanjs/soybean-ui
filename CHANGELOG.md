@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.10.3](https://github.com/soybeanjs/soybean-ui/compare/v0.10.2...v0.10.3) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dialog**: remove unnecessary sm: prefix from rounded-lg class &nbsp;-&nbsp; by @soybeanjs [<samp>(30fd6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/30fd60fa)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.2](https://github.com/soybeanjs/soybean-ui/compare/v0.10.1...v0.10.2) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
