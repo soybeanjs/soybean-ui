@@ -213,6 +213,14 @@ import {
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
+  TableRoot,
+  TableContent,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
   TabsContent,
   TabsIndicator,
   TabsList,
@@ -797,6 +805,26 @@ export const Switch = {
   Root: typeof SwitchRoot;
   Control: typeof SwitchControl;
   Thumb: typeof SwitchThumb;
+};
+
+export const Table = {
+  Root: TableRoot,
+  Content: TableContent,
+  Header: TableHeader,
+  Body: TableBody,
+  Footer: TableFooter,
+  Row: TableRow,
+  Head: TableHead,
+  Cell: TableCell
+} as {
+  Root: typeof TableRoot;
+  Content: typeof TableContent;
+  Header: typeof TableHeader;
+  Body: typeof TableBody;
+  Footer: typeof TableFooter;
+  Row: typeof TableRow;
+  Head: typeof TableHead;
+  Cell: typeof TableCell;
 };
 
 export const Tabs = {

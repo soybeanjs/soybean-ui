@@ -188,6 +188,7 @@ export const components = {
   separator: ['SeparatorRoot', 'SeparatorLabel'],
   slot: ['Slot'],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
+  table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
