@@ -6,7 +6,7 @@ export const formVariants = tv({
     form: 'grid',
     field: 'flex',
     fieldArray: 'flex',
-    label: 'flex items-center',
+    label: 'flex items-center whitespace-nowrap',
     control: '',
     description: `text-muted-foreground m-0`,
     error: `font-medium text-destructive m-0`
