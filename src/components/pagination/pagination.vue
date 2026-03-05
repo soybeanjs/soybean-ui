@@ -79,6 +79,7 @@ providePaginationUi(ui);
     @update:page="emit('update:page', $event)"
     @update:page-size="emit('update:pageSize', $event)"
   >
+    <slot name="leading" />
     <PaginationList v-slot="{ items }" v-bind="props.listProps">
       <PaginationFirst v-if="showFirstOrLast" v-bind="props.firstProps" :data-selected="dataSelected">
         <slot name="first">
@@ -109,5 +110,6 @@ providePaginationUi(ui);
         </slot>
       </PaginationLast>
     </PaginationList>
+    <slot name="trailing" />
   </PaginationRoot>
 </template>
