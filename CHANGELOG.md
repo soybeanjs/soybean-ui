@@ -1,5 +1,24 @@
 # Changelog
 
+## [v0.10.0](https://github.com/soybeanjs/soybean-ui/compare/v0.9.4...v0.10.0) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **card**: add collapsible functionality and update API props &nbsp;-&nbsp; by @soybeanjs [<samp>(e7891)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e78917d2)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **form**: simplify inline field styles in formVariants &nbsp;-&nbsp; by @soybeanjs [<samp>(bafd3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/bafd3bc2)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(6defb)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6defbac1)
+- **tsdown**: update config &nbsp;-&nbsp; by @soybeanjs [<samp>(eec64)</samp>](https://github.com/soybeanjs/soybean-ui/commit/eec645a4)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.9.4](https://github.com/soybeanjs/soybean-ui/compare/v0.9.3...v0.9.4) (2026-03-05)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
