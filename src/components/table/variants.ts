@@ -6,7 +6,7 @@ export const tableVariants = tv({
   slots: {
     root: 'relative overflow-auto',
     content: 'w-full',
-    header: 'sticky top-0 left-0 bg-accent',
+    header: 'sticky top-0 left-0 z-10 bg-accent',
     body: '',
     footer: 'bg-accent font-medium',
     row: 'data-[row]:hover:bg-accent transition-colors',

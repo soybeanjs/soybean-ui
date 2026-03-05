@@ -29,7 +29,7 @@ const selectedIds = ref<number[]>([1, 2]);
 <template>
   <div>
     <h3 class="playground-title">Multiple Selection</h3>
-    <STable v-model:selected="selectedIds" :columns="columns" :data="data" :row-key="row => row.id" multiple />
+    <STable v-model:selected="selectedIds" :columns="columns" :data="data" :row-key="row => row.id" />
     <div class="mt-4">Selected IDs: {{ selectedIds }}</div>
   </div>
 </template>
