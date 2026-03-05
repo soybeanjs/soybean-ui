@@ -6,6 +6,7 @@ import Unocss from 'unocss/vite';
 import VueRouter from 'vue-router/vite';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Components from 'unplugin-vue-components/vite';
+import VueDevtools from 'vite-plugin-vue-devtools';
 import UiResolver from './src/resolver/index.ts';
 
 export default defineConfig({
@@ -29,7 +30,8 @@ export default defineConfig({
       dirs: ['playground/components'],
       dts: 'playground/typings/components.d.ts',
       resolvers: [UiResolver()]
-    })
+    }),
+    VueDevtools()
   ],
   server: {
     open: true
