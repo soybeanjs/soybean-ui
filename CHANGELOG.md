@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.10.6](https://github.com/soybeanjs/soybean-ui/compare/v0.10.5...v0.10.6) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: adjust header z-index and set multiple default to true &nbsp;-&nbsp; by @soybeanjs [<samp>(f56cf)</samp>](https://github.com/soybeanjs/soybean-ui/commit/f56cfc90)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.10.5](https://github.com/soybeanjs/soybean-ui/compare/v0.10.4...v0.10.5) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
