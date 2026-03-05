@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { useCardUi } from './context';
+import CollapsibleContent from '../collapsible/collapsible-content.vue';
 import type { CardContentProps } from './types';
 
 defineOptions({
   name: 'CardContent'
 });
 
-defineProps<CardContentProps>();
-
-const cls = useCardUi('content');
+const props = defineProps<CardContentProps>();
 </script>
 
 <template>
-  <div :class="cls" tabindex="-1">
+  <CollapsibleContent v-bind="props" tabindex="-1">
     <slot />
-  </div>
+  </CollapsibleContent>
 </template>

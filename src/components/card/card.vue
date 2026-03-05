@@ -20,6 +20,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<CardProps>(), {
+  defaultOpen: true,
+  open: undefined,
   scrollable: true
 });
 

@@ -84,7 +84,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@soybeanjs/cli": "^1.6.0",
+    "@soybeanjs/cli": "^1.6.1",
     "@soybeanjs/eslint-config-vue": "^0.0.2",
     "@soybeanjs/unocss-preset": "^0.2.0",
     "@soybeanjs/unocss-shadcn": "^0.3.4",

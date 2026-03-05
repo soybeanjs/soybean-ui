@@ -30,6 +30,7 @@ base
 only-content
 split
 title-slot
+collapsible
 ```
 
 ## API
@@ -37,6 +38,10 @@ title-slot
 ### Props
 
 <DataTable preset="props" :data="[
+  { name: 'defaultOpen', type: 'boolean', default: 'true', description: 'Whether the card content is expanded by default.' },
+  { name: 'open', type: 'boolean', default: 'undefined', description: 'Controlled open state of the card content.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the card content collapsible is disabled.' },
+  { name: 'unmountOnHide', type: 'boolean', default: 'false', description: 'Whether to unmount the content when hidden.' },
   { name: 'title', type: 'string', default: '-', description: 'Card title.' },
   { name: 'description', type: 'string', default: '-', description: 'Card description text.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Padding size of the card.' },
@@ -46,6 +51,12 @@ title-slot
   { name: 'headerProps', type: 'object', default: '{}', description: 'Props passed to the header container.' },
   { name: 'contentProps', type: 'object', default: '{}', description: 'Props passed to the content container.' },
   { name: 'footerProps', type: 'object', default: '{}', description: 'Props passed to the footer container.' }
+]"/>
+
+### Emits
+
+<DataTable preset="emits" :data="[
+{ name: 'update:open', parameters: 'open: boolean', description: 'Emitted when the open state changes.' }
 ]"/>
 
 ### Slots

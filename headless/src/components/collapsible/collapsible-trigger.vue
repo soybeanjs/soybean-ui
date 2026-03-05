@@ -38,6 +38,6 @@ const onTriggerClick = () => {
     :disabled="disabled"
     @click="onTriggerClick"
   >
-    <slot />
+    <slot :open="open" />
   </Primitive>
 </template>

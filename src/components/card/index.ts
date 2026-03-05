@@ -1,4 +1,5 @@
 export { default as SCard } from './card.vue';
+export { default as SCardCollapsibleTrigger } from './card-collapsible-trigger.vue';
 
 export type {
   CardRootProps,
@@ -7,6 +8,7 @@ export type {
   CardFooterProps,
   CardTitleRootProps,
   CardTitleProps,
-  CardDescriptionProps
+  CardDescriptionProps,
+  CardCollapsibleTriggerProps
 } from '@soybeanjs/headless/card';
 export type * from './types';

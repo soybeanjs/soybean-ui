@@ -4,6 +4,7 @@ import DemoCardBase from './base.vue';
 import DemoCardSplit from './split.vue';
 import DemoCardTitleSlot from './title-slot.vue';
 import DemoCardOnlyContent from './only-content.vue';
+import DemoCardCollapsible from './collapsible.vue';
 </script>
 
 <template>
@@ -12,5 +13,6 @@ import DemoCardOnlyContent from './only-content.vue';
     <DemoCardSplit />
     <DemoCardTitleSlot />
     <DemoCardOnlyContent />
+    <DemoCardCollapsible />
   </SCard>
 </template>

@@ -30,6 +30,7 @@ base
 only-content
 split
 title-slot
+collapsible
 ```
 
 ## API
@@ -37,6 +38,10 @@ title-slot
 ### 属性
 
 <DataTable preset="props" :data="[
+  { name: 'defaultOpen', type: 'boolean', default: 'true', description: '卡片内容默认是否展开。' },
+  { name: 'open', type: 'boolean', default: 'undefined', description: '卡片内容受控展开状态。' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用卡片内容可折叠功能。' },
+  { name: 'unmountOnHide', type: 'boolean', default: 'false', description: '隐藏内容时是否卸载组件。' },
   { name: 'title', type: 'string', default: '-', description: 'Card title.' },
   { name: 'description', type: 'string', default: '-', description: 'Card description text.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Padding size of the card.' },
@@ -46,6 +51,12 @@ title-slot
   { name: 'headerProps', type: 'object', default: '{}', description: 'Props passed to the header container.' },
   { name: 'contentProps', type: 'object', default: '{}', description: 'Props passed to the content container.' },
   { name: 'footerProps', type: 'object', default: '{}', description: 'Props passed to the footer container.' }
+]"/>
+
+### 事件
+
+<DataTable preset="emits" :data="[
+{ name: 'update:open', parameters: 'open: boolean', description: '卡片内容展开状态变化时触发。' }
 ]"/>
 
 ### 插槽

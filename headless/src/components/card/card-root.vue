@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { useCardUi } from './context';
-import type { CardRootProps } from './types';
+import CollapsibleRoot from '../collapsible/collapsible-root.vue';
+import type { CardRootProps, CardRootEmits } from './types';
 
 defineOptions({
   name: 'CardRoot'
 });
 
-defineProps<CardRootProps>();
+const props = withDefaults(defineProps<CardRootProps>(), {
+  open: undefined,
+  defaultOpen: true
+});
 
-const cls = useCardUi('root');
+const emit = defineEmits<CardRootEmits>();
 </script>
 
 <template>
-  <div :class="cls">
+  <CollapsibleRoot v-bind="props" @update:open="emit('update:open', $event)">
     <slot />
-  </div>
+  </CollapsibleRoot>
 </template>
