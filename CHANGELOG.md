@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.9.3](https://github.com/soybeanjs/soybean-ui/compare/v0.9.2...v0.9.3) (2026-03-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **form**: add SFormFieldBase component export &nbsp;-&nbsp; by @soybeanjs [<samp>(c0ee8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c0ee8467)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **names**: add Table component and update form component exports &nbsp;-&nbsp; by @soybeanjs [<samp>(1a4f5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1a4f5fc3)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.9.2](https://github.com/soybeanjs/soybean-ui/compare/v0.9.1...v0.9.2) (2026-03-05)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
