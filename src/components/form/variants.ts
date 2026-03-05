@@ -46,8 +46,8 @@ export const formVariants = tv({
     },
     inline: {
       true: {
-        field: 'flex-wrap justify-between items-center',
-        fieldArray: 'flex-wrap justify-between items-center',
+        field: 'justify-between items-center',
+        fieldArray: 'justify-between',
         label: 'justify-end',
         control: 'flex-1',
         description: 'w-full',
