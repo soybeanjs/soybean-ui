@@ -7,13 +7,15 @@ import headlessPkg from './headless/package.json' with { type: 'json' };
 export default defineConfig({
   entry: ['src/index.ts', 'src/nuxt/index.ts', 'src/resolver/index.ts'],
   platform: 'neutral',
-  external: [
-    ...Object.keys(headlessPkg.dependencies),
-    ...Object.keys(headlessPkg.devDependencies),
-    ...Object.keys(pkg.dependencies),
-    ...Object.keys(pkg.devDependencies),
-    '@vueuse/integrations/useFuse'
-  ],
+  deps: {
+    neverBundle: [
+      ...Object.keys(headlessPkg.dependencies),
+      ...Object.keys(headlessPkg.devDependencies),
+      ...Object.keys(pkg.dependencies),
+      ...Object.keys(pkg.devDependencies),
+      '@vueuse/integrations/useFuse'
+    ]
+  },
   clean: true,
   dts: {
     vue: true

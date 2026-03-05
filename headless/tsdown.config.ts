@@ -12,8 +12,10 @@ export default defineConfig({
   ],
   platform: 'browser',
   target: 'es2020',
-  external: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)],
-  noExternal: ['aria-hidden'],
+  deps: {
+    neverBundle: [...Object.keys(pkg.peerDependencies), ...Object.keys(pkg.dependencies)],
+    alwaysBundle: ['aria-hidden']
+  },
   clean: true,
   dts: {
     vue: true
