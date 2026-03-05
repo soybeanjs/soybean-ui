@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.9.2](https://github.com/soybeanjs/soybean-ui/compare/v0.9.1...v0.9.2) (2026-03-05)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **form**: add FormControl component and update form structure &nbsp;-&nbsp; by **Soybean** [<samp>(58c98)</samp>](https://github.com/soybeanjs/soybean-ui/commit/58c982c1)
+- **select**: add single clearable option and example &nbsp;-&nbsp; by **Soybean** [<samp>(d24b2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/d24b2172)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **projects**: add Vue Devtools plugin to Vite configuration &nbsp;-&nbsp; by **Soybean** [<samp>(6f989)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6f98942d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.9.1](https://github.com/soybeanjs/soybean-ui/compare/v0.9.0...v0.9.1) (2026-03-03)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
