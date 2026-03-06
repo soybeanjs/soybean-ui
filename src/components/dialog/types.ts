@@ -1,5 +1,6 @@
 import type { VNode } from 'vue';
 import type {
+  ClassValue,
   DialogContentEmits,
   DialogContentProps,
   DialogDescriptionProps,
@@ -24,6 +25,10 @@ export type DialogExtendedUiSlot = DialogUiSlot | DialogExtraUiSlot;
 export type DialogExtendedUi = UiClass<DialogExtendedUiSlot>;
 
 export interface DialogProps extends DialogRootProps {
+  /**
+   * the content class of the dialog
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<DialogExtendedUi>;
   title?: string;
@@ -42,6 +47,10 @@ export interface DialogProps extends DialogRootProps {
 export type DialogEmits = DialogRootEmits & DialogContentEmits;
 
 export interface DialogPureProps extends DialogRootProps {
+  /**
+   * the content class of the dialog
+   */
+  class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<DialogExtendedUi>;
   closable?: boolean;

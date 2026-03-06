@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<DialogPureProps>(), {
 });
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'size',
   'ui',
   'closable',
@@ -46,7 +47,7 @@ const ui = computed(() => {
     pure: true
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { content: props.class });
 });
 
 provideDialogUi(ui);
