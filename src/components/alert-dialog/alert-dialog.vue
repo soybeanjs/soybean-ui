@@ -55,7 +55,7 @@ const ui = computed(() => {
     size: props.size
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { content: props.class });
 });
 
 const iconRecord: Record<AlertDialogType, { icon: string; class: string }> = {
