@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.11.4](https://github.com/soybeanjs/soybean-ui/compare/v0.11.3...v0.11.4) (2026-03-06)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **alert-dialog**: bind content class to merged slot variants &nbsp;-&nbsp; by @soybeanjs [<samp>(2ed12)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2ed12324)
+- **dialog**: add min-width constraints to dialog content sizes &nbsp;-&nbsp; by @soybeanjs [<samp>(9a5e1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9a5e1989)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.11.3](https://github.com/soybeanjs/soybean-ui/compare/v0.11.2...v0.11.3) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
