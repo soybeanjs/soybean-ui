@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.12.2](https://github.com/soybeanjs/soybean-ui/compare/v0.12.1...v0.12.2) (2026-03-07)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dismissable-layer**:
+  - improve DOM tree containment check and add helper function &nbsp;-&nbsp; by @soybeanjs [<samp>(ec5dd)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ec5dd25c)
+- **select**:
+  - omit 'disableOutsidePointerEvents' from popperPositionerProps &nbsp;-&nbsp; by @soybeanjs [<samp>(57e0a)</samp>](https://github.com/soybeanjs/soybean-ui/commit/57e0a5aa)
+  - prevent triggering click event when dropdown is open &nbsp;-&nbsp; by @soybeanjs [<samp>(a26f3)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a26f3d25)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.12.1](https://github.com/soybeanjs/soybean-ui/compare/v0.12.0...v0.12.1) (2026-03-07)
 
 ### &nbsp;&nbsp;&nbsp;🛠 Optimizations
