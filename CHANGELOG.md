@@ -1,5 +1,25 @@
 # Changelog
 
+## [v0.12.0](https://github.com/soybeanjs/soybean-ui/compare/v0.11.4...v0.12.0) (2026-03-07)
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **alert-dialog**: rename Action to Confirm, update props, update useDialog file position &nbsp;-&nbsp; by @soybeanjs [<samp>(65e59)</samp>](https://github.com/soybeanjs/soybean-ui/commit/65e59349)
+- **hooks**: refactor `useContext` and update related usage &nbsp;-&nbsp; by @soybeanjs [<samp>(9e741)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9e74124b)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **popover**: add PopoverCloseEmits and beforeClose prop; update PopoverPositioner default props &nbsp;-&nbsp; by @soybeanjs [<samp>(08e1c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/08e1c498)
+- **ui**: implement component Popconfirm &nbsp;-&nbsp; by @soybeanjs [<samp>(6e917)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6e917009)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **tooltip**: add default prop for avoidCollisions in TooltipPositioner; bind triggerProps to TooltipTrigger &nbsp;-&nbsp; by @soybeanjs [<samp>(e024c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/e024c231)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.11.4](https://github.com/soybeanjs/soybean-ui/compare/v0.11.3...v0.11.4) (2026-03-06)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
