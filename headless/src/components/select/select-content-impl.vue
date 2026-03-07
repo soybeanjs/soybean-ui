@@ -41,6 +41,7 @@ const props = withDefaults(defineProps<SelectContentImplProps>(), {
 const emit = defineEmits<SelectContentImplEmits>();
 
 const {
+  open,
   onOpenChange,
   dataState,
   modelValue,
@@ -150,7 +151,7 @@ const onPlaced = () => {
 };
 
 useFocusGuards();
-useHideOthers(popupElement);
+useHideOthers(popupElement, open);
 
 watch(isPositioned, () => {
   focusSelectedItem();

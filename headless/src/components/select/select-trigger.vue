@@ -59,6 +59,7 @@ const onPointerOpen = (event: PointerEvent) => {
 };
 
 const onClick = (event: MouseEvent) => {
+  if (open.value) return;
   // Whilst browsers generally have no issue focusing the trigger when clicking
   // on a label, Safari seems to struggle with the fact that there's no `onClick`.
   // We force `focus` in this case. Note: this doesn't create any other side-effect
