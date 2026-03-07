@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.12.3](https://github.com/soybeanjs/soybean-ui/compare/v0.12.2...v0.12.3) (2026-03-07)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **tsconfig**: add 'vite/client' to types for improved type support &nbsp;-&nbsp; by @soybeanjs [<samp>(38151)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3815125d)
+- **ui**: fix beforeConfirm and beforeCancel of Popconfirm and AlertDialog &nbsp;-&nbsp; by @soybeanjs [<samp>(51070)</samp>](https://github.com/soybeanjs/soybean-ui/commit/510705ae)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.12.2](https://github.com/soybeanjs/soybean-ui/compare/v0.12.1...v0.12.2) (2026-03-07)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
