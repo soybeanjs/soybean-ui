@@ -90,15 +90,10 @@ export type AlertDialogEmits = AlertDialogRootEmits & {
 
 export interface AlertDialogContext extends PropsToContext<
   AlertDialogProps,
-  | 'size'
-  | 'confirmText'
-  | 'cancelText'
-  | 'beforeCancel'
-  | 'beforeConfirm'
-  | 'showCancel'
-  | 'cancelProps'
-  | 'confirmProps'
+  'size' | 'confirmText' | 'cancelText' | 'showCancel' | 'confirmProps' | 'cancelProps'
 > {
+  beforeConfirm?: () => MaybePromise<boolean | void>;
+  beforeCancel?: () => MaybePromise<boolean | void>;
   onClose: () => void;
 }
 

@@ -88,7 +88,9 @@ const onClose = () => {
 
 provideAlertDialogUi(ui);
 provideAlertDialogContext({
-  ...transformPropsToContext(props),
+  ...transformPropsToContext(props, ['size', 'confirmText', 'cancelText', 'showCancel', 'confirmProps', 'cancelProps']),
+  beforeConfirm: props.beforeConfirm,
+  beforeCancel: props.beforeCancel,
   onClose
 });
 </script>

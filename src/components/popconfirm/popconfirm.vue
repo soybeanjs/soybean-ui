@@ -95,16 +95,9 @@ const onClose = () => {
 
 providePopoverUi(ui);
 providePopconfirmContext({
-  ...transformPropsToContext(props, [
-    'size',
-    'confirmText',
-    'cancelText',
-    'beforeCancel',
-    'beforeConfirm',
-    'showCancel',
-    'cancelProps',
-    'confirmProps'
-  ]),
+  ...transformPropsToContext(props, ['size', 'confirmText', 'cancelText', 'showCancel', 'cancelProps', 'confirmProps']),
+  beforeConfirm: props.beforeConfirm,
+  beforeCancel: props.beforeCancel,
   onClose
 });
 </script>

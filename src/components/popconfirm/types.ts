@@ -115,14 +115,9 @@ export type PopconfirmEmits = PopoverRootEmits &
 
 export interface PopconfirmContext extends PropsToContext<
   PopconfirmProps,
-  | 'size'
-  | 'confirmText'
-  | 'cancelText'
-  | 'beforeCancel'
-  | 'beforeConfirm'
-  | 'showCancel'
-  | 'cancelProps'
-  | 'confirmProps'
+  'size' | 'confirmText' | 'cancelText' | 'showCancel' | 'confirmProps' | 'cancelProps'
 > {
+  beforeConfirm?: () => MaybePromise<boolean | void>;
+  beforeCancel?: () => MaybePromise<boolean | void>;
   onClose: () => void;
 }
