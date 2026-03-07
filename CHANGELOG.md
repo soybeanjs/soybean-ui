@@ -1,5 +1,19 @@
 # Changelog
 
+## [v0.12.1](https://github.com/soybeanjs/soybean-ui/compare/v0.12.0...v0.12.1) (2026-03-07)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **dialog**: update dialog content styles to use w-max for better responsiveness &nbsp;-&nbsp; by @soybeanjs [<samp>(eb13c)</samp>](https://github.com/soybeanjs/soybean-ui/commit/eb13c50d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @MicrosoftCopilot [<samp>(b30b1)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b30b1ba7)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![MicrosoftCopilot](https://github.com/MicrosoftCopilot.png?size=48)](https://github.com/MicrosoftCopilot)&nbsp;&nbsp;
+
 ## [v0.12.0](https://github.com/soybeanjs/soybean-ui/compare/v0.11.4...v0.12.0) (2026-03-07)
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
