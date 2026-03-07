@@ -31,6 +31,7 @@ export const components = {
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],
   password: ['SPassword'],
+  popconfirm: ['SPopconfirm', 'SPopconfirmCancel', 'SPopconfirmConfirm'],
   popover: ['SPopover'],
   radioGroup: ['SRadioGroup', 'SRadio', 'SRadioCard', 'SRadioCardGroup'],
   segment: ['SSegment'],

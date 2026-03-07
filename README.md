@@ -123,7 +123,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ✅: Completed ✨: Implemented
 
-✅ 48 / total: 108
+✅ 49 / total: 108
 
 | No  | Priority | Name            | Status       | Alias                    | 📝 Note                  |
 | --- | -------- | --------------- | ------------ | ------------------------ | ------------------------ |
@@ -175,12 +175,12 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 46  | 1        | Virtualizer     | ✅ Completed |                          |                          |
 | 47  | 1        | VisuallyHidden  | ✅ Completed |                          |                          |
 | 48  | 2        | PageTabs        | ✅ Completed |                          |                          |
-| 49  | 2        | ColorPicker     |              |                          |                          |
-| 50  | 2        | Combobox        |              |                          | support virtualized      |
-| 51  | 2        | DataTable       |              |                          | support virtualized      |
-| 52  | 2        | Menubar         |              |                          |                          |
-| 53  | 2        | PinInput        |              | InputOPT, OPTInput       |                          |
-| 54  | 2        | Popconfirm      |              |                          |                          |
+| 49  | 2        | Popconfirm      | ✅ Completed |                          |                          |
+| 50  | 2        | ColorPicker     |              |                          |                          |
+| 51  | 2        | Combobox        |              |                          | support virtualized      |
+| 52  | 2        | DataTable       |              |                          | support virtualized      |
+| 53  | 2        | Menubar         |              |                          |                          |
+| 54  | 2        | PinInput        |              | InputOPT, OPTInput       |                          |
 | 55  | 2        | Progress        |              |                          | include circle           |
 | 56  | 2        | ScrollArea      |              |                          |                          |
 | 57  | 2        | Skeleton        |              |                          |                          |
