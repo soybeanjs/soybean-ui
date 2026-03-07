@@ -97,7 +97,12 @@ const { isPositioned, focusSelectedItem } = provideSelectContentContext({
   popupElement
 });
 
-const popperPositionerProps = useOmitProps(props, ['position', 'bodyLock', 'popupProps']);
+const popperPositionerProps = useOmitProps(props, [
+  'position',
+  'bodyLock',
+  'popupProps',
+  'disableOutsidePointerEvents'
+]);
 
 const popupStyle = computed<CSSProperties>(() => ({
   // flex layout so we can place the scroll buttons properly
