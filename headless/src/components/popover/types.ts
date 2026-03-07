@@ -4,7 +4,8 @@ import type {
   DismissableLayerProps,
   FocusScopeEmits,
   ForceMountProps,
-  TrapFocusProps
+  TrapFocusProps,
+  MaybePromise
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { DialogRootEmits, DialogRootProps } from '../dialog/types';
@@ -14,7 +15,12 @@ export interface PopoverRootProps extends DialogRootProps {}
 
 export type PopoverRootEmits = DialogRootEmits;
 
-export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
+export interface PopoverCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {
+  beforeClose?: () => MaybePromise<boolean | void>;
+}
+export type PopoverCloseEmits = {
+  close: [];
+};
 
 export interface PopoverPositionerImplProps extends PopperPositionerProps, TrapFocusProps, DismissableLayerProps {}
 export type PopoverPositionerImplEmits = DismissableLayerEmits & FocusScopeEmits;

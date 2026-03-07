@@ -14,6 +14,7 @@ export type {
   PopoverRootEmits,
   PopoverAnchorProps,
   PopoverCloseProps,
+  PopoverCloseEmits,
   PopoverPositionerProps,
   PopoverPositionerEmits,
   PopoverPopupProps,

@@ -9,7 +9,9 @@ defineOptions({
   name: 'PopoverPositioner'
 });
 
-const props = defineProps<PopoverPositionerProps>();
+const props = withDefaults(defineProps<PopoverPositionerProps>(), {
+  avoidCollisions: true
+});
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
 

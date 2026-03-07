@@ -22,7 +22,6 @@ defineOptions({
 const props = withDefaults(defineProps<PopoverProps>(), {
   open: undefined,
   defaultOpen: false,
-  avoidCollisions: true,
   showArrow: true
 });
 
@@ -52,7 +51,7 @@ providePopoverUi(ui);
 
 <template>
   <PopoverRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <PopoverTrigger as-child>
+    <PopoverTrigger v-bind="triggerProps" as-child>
       <slot name="trigger" />
     </PopoverTrigger>
     <PopoverPortal v-bind="portalProps">
@@ -61,7 +60,7 @@ providePopoverUi(ui);
           <slot />
           <PopoverArrow v-if="showArrow" v-bind="arrowProps" />
         </PopoverPopup>
-        <PopoverClose v-if="$slots.close" as-child>
+        <PopoverClose v-if="$slots.close" v-bind="closeProps" as-child>
           <slot name="close" />
         </PopoverClose>
       </PopoverPositioner>
