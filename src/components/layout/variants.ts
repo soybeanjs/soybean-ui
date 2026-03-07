@@ -90,8 +90,8 @@ export const layoutVariants = tv({
     },
     fullContent: {
       true: {
-        tab: 'fixed left-0 top-0 z-9999 w-full',
-        content: 'fixed inset-0 z-9999 group-data-[tab-visible=true]:mt-[--soybean-layout-tab-height]'
+        tab: 'fixed left-0 top-0 z-49 w-full',
+        content: 'fixed inset-0 z-49 group-data-[tab-visible=true]:mt-[--soybean-layout-tab-height]'
       },
       false: {
         content: 'relative'
