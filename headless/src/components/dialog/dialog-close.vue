@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Primitive } from '../primitive';
 import { useDialogRootContext } from './context';
-import type { DialogCloseProps } from './types';
+import type { DialogCloseProps, DialogCloseEmits } from './types';
 
 defineOptions({
   name: 'DialogClose'
@@ -10,15 +10,18 @@ defineOptions({
 
 const props = defineProps<DialogCloseProps>();
 
+const emit = defineEmits<DialogCloseEmits>();
+
 const { onOpenChange } = useDialogRootContext('DialogClose');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const onClose = async () => {
   const result = await props.beforeClose?.();
-  if (result !== false) {
-    onOpenChange(false);
-  }
+  if (result === false) return;
+
+  onOpenChange(false);
+  emit('close');
 };
 </script>
 

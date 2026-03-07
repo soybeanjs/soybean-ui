@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Fragment, h } from 'vue';
-import { SAlertDialogAction, SAlertDialogCancel, SButton, useDialog } from '@soybeanjs/ui';
+import { SAlertDialogConfirm, SAlertDialogCancel, SButton, useDialog } from '@soybeanjs/ui';
 
 const dialog = useDialog();
 
@@ -45,7 +45,7 @@ const openCustomFooterDialog = () => {
     title: 'Dialog Title',
     description: 'Dialog Description',
     content: h('div', 'Dialog Content'),
-    footer: h(Fragment, [h(SAlertDialogCancel, { text: 'Cancel' }), h(SAlertDialogAction, { text: 'Confirm' })])
+    footer: h(Fragment, [h(SAlertDialogCancel, { text: 'No' }), h(SAlertDialogConfirm, { text: 'Ok' })])
   });
 };
 </script>

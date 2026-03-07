@@ -12,10 +12,14 @@ import {
   AlertDialogTrigger,
   provideAlertDialogUi
 } from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants, provideSizeContext } from '@/theme';
+import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
+import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { mergeSlotVariants } from '@/theme';
 import { dialogVariants } from '../dialog/variants';
 import Icon from '../icon/icon.vue';
+import { provideAlertDialogContext } from './context';
+import SAlertDialogConfirm from './alert-dialog-confirm.vue';
+import SAlertDialogCancel from './alert-dialog-cancel.vue';
 import type { AlertDialogEmits, AlertDialogProps, AlertDialogType } from './types';
 
 defineOptions({
@@ -25,24 +29,11 @@ defineOptions({
 const props = withDefaults(defineProps<AlertDialogProps>(), {
   open: undefined,
   defaultOpen: false,
-  showIcon: true
+  showIcon: true,
+  showCancel: 'onlyWarning'
 });
 
-const forwardedProps = useOmitProps(props, [
-  'size',
-  'ui',
-  'type',
-  'title',
-  'description',
-  'triggerProps',
-  'contentProps',
-  'headerProps',
-  'footerProps',
-  'titleProps',
-  'descriptionProps',
-  'overlayProps',
-  'portalProps'
-]);
+const forwardedProps = usePickProps(props, ['open', 'defaultOpen']);
 
 const emit = defineEmits<AlertDialogEmits>();
 
@@ -83,8 +74,23 @@ const iconConfig = computed(() => {
   return iconRecord[props.type];
 });
 
+const cancelVisible = computed(() => {
+  if (typeof props.showCancel === 'boolean') {
+    return props.showCancel;
+  }
+
+  return props.type === 'warning';
+});
+
+const onClose = () => {
+  emit('close');
+};
+
 provideAlertDialogUi(ui);
-provideSizeContext(() => props.size);
+provideAlertDialogContext({
+  ...transformPropsToContext(props),
+  onClose
+});
 </script>
 
 <template>
@@ -98,15 +104,18 @@ provideSizeContext(() => props.size);
         <AlertDialogHeader v-bind="headerProps">
           <AlertDialogTitle v-bind="titleProps">
             <Icon v-if="showIcon && iconConfig" :icon="iconConfig.icon" :class="iconConfig.class" />
-            <slot name="title" v-bind="slotProps">{{ title }}</slot>
+            <slot name="title" :close="slotProps.close">{{ title }}</slot>
           </AlertDialogTitle>
           <AlertDialogDescription v-if="slots.description || description" v-bind="descriptionProps">
-            <slot name="description" v-bind="slotProps">{{ description }}</slot>
+            <slot name="description" :close="slotProps.close">{{ description }}</slot>
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <slot v-bind="slotProps" />
-        <AlertDialogFooter v-if="slots.footer" v-bind="footerProps">
-          <slot name="footer" v-bind="slotProps" />
+        <slot :close="slotProps.close" />
+        <AlertDialogFooter v-bind="footerProps">
+          <slot name="footer" :close="slotProps.close">
+            <SAlertDialogCancel v-if="cancelVisible" />
+            <SAlertDialogConfirm />
+          </slot>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialogPortal>

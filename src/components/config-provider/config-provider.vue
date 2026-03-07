@@ -7,7 +7,7 @@ import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import { themeSizes } from '@/constants/common';
-import DialogProvider from '../dialog/dialog-provider.vue';
+import DialogProvider from '../alert-dialog/dialog-provider.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';

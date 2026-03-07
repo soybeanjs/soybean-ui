@@ -60,6 +60,10 @@ export interface DialogCloseProps extends PrimitiveProps, /** @vue-ignore */ But
    */
   beforeClose?: () => MaybePromise<boolean | void>;
 }
+export type DialogCloseEmits = {
+  /** Event handler called when the dialog is requested to be closed. */
+  close: [];
+};
 
 export interface DialogHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 

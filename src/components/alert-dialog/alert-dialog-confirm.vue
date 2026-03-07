@@ -4,27 +4,25 @@ import { AlertDialogClose } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Button from '../button/button.vue';
 import { useAlertDialogContext } from './context';
-import type { AlertDialogCancelProps, AlertDialogCancelEmits } from './types';
+import type { AlertDialogConfirmProps, AlertDialogConfirmEmits } from './types';
 
 defineOptions({
-  name: 'SAlertDialogCancel'
+  name: 'SAlertDialogConfirm'
 });
 
-const props = withDefaults(defineProps<AlertDialogCancelProps>(), {
-  variant: 'pure'
-});
+const props = defineProps<AlertDialogConfirmProps>();
 
-const emit = defineEmits<AlertDialogCancelEmits>();
+const emit = defineEmits<AlertDialogConfirmEmits>();
 
 const forwardedProps = useOmitProps(props, ['text', 'beforeClose']);
 
-const { size, cancelText, cancelProps, beforeCancel, onClose } = useAlertDialogContext('AlertDialogCancel');
+const { size, confirmText, confirmProps, beforeConfirm, onClose } = useAlertDialogContext('AlertDialogConfirm');
 
 const mergedProps = computed(() => ({
-  ...cancelProps.value,
+  ...confirmProps.value,
   ...forwardedProps.value
 }));
-const text = computed(() => props.text ?? cancelText.value ?? 'Cancel');
+const text = computed(() => props.text ?? confirmText.value ?? 'Confirm');
 
 const mergedSize = computed(() => props.size ?? size.value);
 
@@ -35,7 +33,7 @@ const handleClose = () => {
 </script>
 
 <template>
-  <AlertDialogClose as-child :before-close="beforeClose ?? beforeCancel" @close="handleClose">
+  <AlertDialogClose as-child :before-close="beforeClose ?? beforeConfirm" @close="handleClose">
     <Button v-bind="mergedProps" :size="mergedSize">
       <slot>{{ text }}</slot>
     </Button>

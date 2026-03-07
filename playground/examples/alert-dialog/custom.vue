@@ -4,12 +4,12 @@ import { SAlertDialog, SButton } from '@soybeanjs/ui';
 
 <template>
   <div>
-    <h3 class="playground-title">Info</h3>
-    <SAlertDialog title="Information" type="info">
+    <h3 class="playground-title">Custom Confirm or Cancel Text</h3>
+    <SAlertDialog title="Action" type="info" show-cancel confirm-text="ok" cancel-text="no">
       <template #trigger>
         <SButton color="info" variant="outline">Show Dialog</SButton>
       </template>
-      <p>Here is some information for you</p>
+      <p>Here is some action information for you</p>
     </SAlertDialog>
   </div>
 </template>

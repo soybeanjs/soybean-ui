@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from '@soybeanjs/ui';
+import { SAlertDialog, SButton } from '@soybeanjs/ui';
 </script>
 
 <template>
@@ -10,10 +10,6 @@ import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel, SButton } from '@
         <SButton color="destructive" variant="outline">Show Dialog</SButton>
       </template>
       <p>Here is some destructive information for you</p>
-      <template #footer>
-        <SAlertDialogCancel />
-        <SAlertDialogAction />
-      </template>
     </SAlertDialog>
   </div>
 </template>

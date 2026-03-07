@@ -15,6 +15,7 @@ export type {
   AlertDialogRootProps,
   AlertDialogRootEmits,
   AlertDialogCloseProps,
+  AlertDialogCloseEmits,
   AlertDialogContentProps,
   AlertDialogContentEmits
 } from './types';

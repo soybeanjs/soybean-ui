@@ -1,7 +1,7 @@
 export const components = {
   accordion: ['SAccordion'],
   alert: ['SAlert'],
-  alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogAction'],
+  alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogConfirm'],
   arrow: ['SArrow'],
   aspectRatio: ['SAspectRatio'],
   avatar: ['SAvatar'],

@@ -1,4 +1,3 @@
-import type { VNode } from 'vue';
 import type {
   ClassValue,
   DialogContentEmits,
@@ -13,10 +12,9 @@ import type {
   DialogTitleProps,
   DialogTriggerProps,
   DialogUiSlot,
-  MaybePromise,
   UiClass
 } from '@soybeanjs/headless';
-import type { ThemeColor, ThemeSize } from '@/theme';
+import type { ThemeSize } from '@/theme';
 
 export type DialogExtraUiSlot = 'closable';
 
@@ -61,31 +59,3 @@ export interface DialogPureProps extends DialogRootProps {
 }
 
 export type DialogPureEmits = DialogEmits;
-
-export type UseDialogType = Extract<ThemeColor, 'destructive' | 'success' | 'warning' | 'info'>;
-
-export interface UseDialogOptions {
-  size?: ThemeSize;
-  ui?: Partial<DialogExtendedUi>;
-  type: UseDialogType;
-  title?: string | VNode;
-  showIcon?: boolean;
-  description?: string | VNode;
-  content?: VNode;
-  footer?: VNode;
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm?: () => MaybePromise<boolean | void>;
-  onCancel?: () => MaybePromise<boolean | void>;
-  onClose?: () => void;
-}
-
-export interface DialogState extends Omit<UseDialogOptions, 'onClose'> {
-  id: number;
-  onClose: (open?: boolean) => void;
-}
-
-export interface UseDialogReturn extends Record<UseDialogType, (options: Omit<UseDialogOptions, 'type'>) => void> {
-  (options: UseDialogOptions): void;
-  clear: () => void;
-}

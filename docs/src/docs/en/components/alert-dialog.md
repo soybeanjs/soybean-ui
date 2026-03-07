@@ -8,7 +8,7 @@ A modal dialog that interrupts the user with important content and expects a res
 
 ```vue
 <script setup lang="ts">
-import { SAlertDialog, SAlertDialogAction, SAlertDialogCancel } from '@soybeanjs/ui';
+import { SAlertDialog, SAlertDialogConfirm, SAlertDialogCancel } from '@soybeanjs/ui';
 
 const open = ref(false);
 </script>
@@ -20,7 +20,7 @@ const open = ref(false);
     </template>
     <template #footer>
       <SAlertDialogCancel />
-      <SAlertDialogAction @click="handleDelete" />
+      <SAlertDialogConfirm @click="handleDelete" />
     </template>
   </SAlertDialog>
 </template>
@@ -33,7 +33,7 @@ destructive
 info
 success
 warning
-action
+custom
 ```
 
 ## SAlertDialog API
@@ -76,7 +76,7 @@ action
   { name: 'before-close', type: '() => MaybePromise<boolean | void>', default: '() => true', description: 'Hook before closing. Return false to prevent close.' }
 ]"/>
 
-## SAlertDialogAction API
+## SAlertDialogConfirm API
 
 ### Props
 

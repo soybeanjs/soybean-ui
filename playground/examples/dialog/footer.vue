@@ -12,7 +12,7 @@ import { SButton, SDialog, SDialogClose } from '@soybeanjs/ui';
       <div>Dialog Content</div>
       <template #footer>
         <SDialogClose as-child>
-          <SButton variant="plain">Cancel</SButton>
+          <SButton variant="pure">Cancel</SButton>
         </SDialogClose>
         <SButton>Confirm</SButton>
       </template>

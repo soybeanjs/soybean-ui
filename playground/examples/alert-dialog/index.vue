@@ -4,7 +4,7 @@ import DemoAlertDialogDestructive from './destructive.vue';
 import DemoAlertDialogInfo from './info.vue';
 import DemoAlertDialogSuccess from './success.vue';
 import DemoAlertDialogWarning from './warning.vue';
-import DemoAlertDialogAction from './action.vue';
+import DemoAlertDialogAction from './custom.vue';
 </script>
 
 <template>

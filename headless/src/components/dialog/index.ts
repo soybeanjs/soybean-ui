@@ -23,6 +23,7 @@ export type {
   DialogTitleProps,
   DialogDescriptionProps,
   DialogCloseProps,
+  DialogCloseEmits,
   DialogUiSlot,
   DialogUi
 } from './types';
