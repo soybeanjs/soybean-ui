@@ -327,17 +327,28 @@ export function useFocusOutside(
 function isInsideDOMTree(mainLayer: HTMLElement, targetElement: HTMLElement) {
   if (!mainLayer) return false;
 
+  if (mainLayer.contains(targetElement)) return true;
+
+  const mainDismissableLayer = getDismissableLayerElement(mainLayer);
   const targetLayer = targetElement.closest<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`);
 
-  if (!targetLayer) return false;
+  if (!mainDismissableLayer || !targetLayer) return false;
 
-  if (mainLayer === targetLayer) return true;
+  if (mainDismissableLayer === targetLayer) return true;
 
   const layerList = Array.from(
-    mainLayer.ownerDocument.querySelectorAll<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`)
+    mainDismissableLayer.ownerDocument.querySelectorAll<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`)
   );
 
-  if (layerList.indexOf(mainLayer) < layerList.indexOf(targetLayer)) return true;
+  if (layerList.indexOf(mainDismissableLayer) < layerList.indexOf(targetLayer)) return true;
 
   return false;
+}
+
+function getDismissableLayerElement(layerElement: HTMLElement) {
+  if (layerElement.hasAttribute(DISMISSABLE_LAYER_DATA_ATTRIBUTE)) {
+    return layerElement;
+  }
+
+  return layerElement.querySelector<HTMLElement>(`[${DISMISSABLE_LAYER_DATA_ATTRIBUTE}]`);
 }
