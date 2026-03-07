@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@soybeanjs/ui": "workspace:^",
-    "@unocss/reset": "^66.6.5",
+    "@unocss/reset": "^66.6.6",
     "es-toolkit": "^1.45.1",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.4",
