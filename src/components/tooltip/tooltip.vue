@@ -62,7 +62,7 @@ provideTooltipUi(ui);
 
 <template>
   <TooltipRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <TooltipTrigger as-child>
+    <TooltipTrigger v-bind="triggerProps" as-child>
       <slot name="trigger" />
     </TooltipTrigger>
     <TooltipPortal v-bind="portalProps">
