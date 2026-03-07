@@ -42,7 +42,7 @@ export interface TextareaControlProps extends /** @vue-ignore */ TextareaHTMLAtt
 
 export interface TextareaCounterProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface TextareaRootContextParams extends PropsToContext<TextareaBaseProps> {
+export interface TextareaRootContext extends PropsToContext<TextareaBaseProps> {
   modelValue: ShallowRef<string | undefined>;
   count: ComputedRef<number>;
   autosizeOptions: ComputedRef<TextareaAutosizeOptions | undefined>;

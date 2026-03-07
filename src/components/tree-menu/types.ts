@@ -169,8 +169,8 @@ export interface TreeMenuStyledItemProps extends /** @vue-ignore */ HTMLAttribut
   ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>;
 }
 
-export interface TreeMenuContextParams extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
+export interface TreeMenuContext extends PropsToContext<TreeMenuProps, 'size' | 'side'> {}
 
-export interface TreeMenuOptionsContextParams {
+export interface TreeMenuOptionsContext {
   activePaths: ComputedRef<string[]>;
 }

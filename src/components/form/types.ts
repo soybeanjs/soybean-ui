@@ -117,4 +117,4 @@ export interface FormProps extends /** @vue-ignore */ FormHTMLAttributes {
   errorProps?: FormErrorProps;
 }
 
-export interface FormContextParams extends PropsToContext<FormProps> {}
+export interface FormContext extends PropsToContext<FormProps> {}

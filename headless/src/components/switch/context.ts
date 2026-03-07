@@ -6,16 +6,16 @@ import type { SwitchRootContextParams, SwitchUiSlot } from './types';
 
 export const [provideSwitchRootContext, useSwitchRootContext] = useContext(
   'SwitchRoot',
-  <T extends AcceptableBooleanValue>(params: SwitchRootContextParams<T>) => {
+  (params: SwitchRootContextParams<AcceptableBooleanValue>) => {
     const { modelValue, disabled, trueValue, falseValue } = params;
 
     function toggleCheck() {
       if (disabled.value) return;
 
       if (isNullish(modelValue.value)) {
-        modelValue.value = trueValue.value as T;
+        modelValue.value = trueValue.value;
       } else {
-        modelValue.value = modelValue.value === trueValue.value ? (falseValue.value as T) : (trueValue.value as T);
+        modelValue.value = modelValue.value === trueValue.value ? falseValue.value : trueValue.value;
       }
     }
 

@@ -1,9 +1,6 @@
 import { useContext, useUiContext } from '../../composables';
-import type { InputRootContextParams, InputUiSlot } from './types';
+import type { InputRootContext, InputUiSlot } from './types';
 
-export const [provideInputRootContext, useInputRootContext] = useContext(
-  'InputRoot',
-  (params: InputRootContextParams) => params
-);
+export const [provideInputRootContext, useInputRootContext] = useContext<InputRootContext>('InputRoot');
 
 export const [provideInputUi, useInputUi] = useUiContext<InputUiSlot>('InputUi');

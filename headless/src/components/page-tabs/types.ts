@@ -50,11 +50,11 @@ export interface PageTabsCloseProps extends PrimitiveProps, /** @vue-ignore */ H
 
 export interface PageTabsPinProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface PageTabsRootContextParams extends PropsToContext<PageTabsRootProps, 'middleClickClose'> {
+export interface PageTabsRootContext extends PropsToContext<PageTabsRootProps, 'middleClickClose'> {
   modelValue: ShallowRef<string>;
 }
 
-export interface PageTabsItemContextParams extends PropsToContext<PageTabsItemProps, 'pinned'> {
+export interface PageTabsItemContext extends PropsToContext<PageTabsItemProps, 'pinned'> {
   closable: ComputedRef<boolean>;
   onClose: () => Promise<void>;
   onPin: () => void;

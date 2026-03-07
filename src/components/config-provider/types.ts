@@ -26,6 +26,6 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   toast?: ToastProviderProps;
 }
 
-export interface ConfigProviderContextParams extends PropsToContext<ConfigProviderProps> {}
+export interface ConfigProviderContext extends PropsToContext<ConfigProviderProps> {}
 
 export type { ThemeOptions };

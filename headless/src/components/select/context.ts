@@ -6,7 +6,7 @@ import { providePopperUi } from '../popper/context';
 import type { AcceptableValue, Point } from '../../types';
 import type {
   SelectContentContextParams,
-  SelectItemAlignedPositionContextParams,
+  SelectItemAlignedPositionContext,
   SelectItemCollectionItemData,
   SelectItemContextParams,
   SelectOption,
@@ -235,10 +235,8 @@ export const [provideSelectPopupElementContext, useSelectPopupElementContext] = 
   };
 });
 
-export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPositionContext] = useContext(
-  'SelectItemAlignedPosition',
-  (params: SelectItemAlignedPositionContextParams) => params
-);
+export const [provideSelectItemAlignedPositionContext, useSelectItemAlignedPositionContext] =
+  useContext<SelectItemAlignedPositionContext>('SelectItemAlignedPosition');
 
 export const [provideSelectUi, useSelectUi] = useUiContext<SelectUiSlot>('SelectUi', ui => {
   providePopperUi(ui);

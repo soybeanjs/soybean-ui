@@ -11,7 +11,7 @@ export type BadgeRootEmits = {
 
 export interface BadgeContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
-export interface BadgeRootContextParams {
+export interface BadgeRootContext {
   open: ShallowRef<boolean | undefined>;
 }
 

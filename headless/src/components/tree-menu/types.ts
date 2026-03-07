@@ -82,7 +82,7 @@ export interface TreeMenuRootContextParams {
   collapsed: ShallowRef<boolean>;
 }
 
-export interface TreeMenuItemContextParams {
+export interface TreeMenuItemContext {
   value: string;
   isActive: ComputedRef<boolean>;
   isExpanded: ComputedRef<boolean>;

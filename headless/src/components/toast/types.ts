@@ -122,7 +122,7 @@ export type TabbingDirection = 'forwards' | 'backwards';
 
 export interface ToastProviderContextParams extends PropsToContext<ToastProviderProps> {}
 
-export interface ToastRootContextParams {
+export interface ToastRootContext {
   onClose: () => void;
 }
 

@@ -146,7 +146,7 @@ export type MenuRadioOptionsEmits<
   S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
 > = MenuRadioGroupEmits<T> & MenuRadioSelectEmits<S>;
 
-export interface MenuOptionsContextParams {
+export interface MenuOptionsContext {
   activeValue: ComputedRef<DefinedValue | undefined>;
   activePaths: ComputedRef<DefinedValue[]>;
 }

@@ -33,7 +33,7 @@ export type InputRootEmits = {
 
 export interface InputControlProps extends /** @vue-ignore */ InputHTMLAttributes {}
 
-export interface InputRootContextParams extends PropsToContext<InputBaseProps & FormFieldCommonProps> {
+export interface InputRootContext extends PropsToContext<InputBaseProps & FormFieldCommonProps> {
   modelValue: ShallowRef<string | undefined>;
 }
 

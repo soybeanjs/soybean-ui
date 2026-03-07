@@ -1,5 +1,5 @@
 import { useContext, useUiContext } from '../../composables';
-import type { TreeMenuItemContextParams, TreeMenuRootContextParams, TreeMenuUiSlot } from './types';
+import type { TreeMenuItemContext, TreeMenuRootContextParams, TreeMenuUiSlot } from './types';
 
 export const [provideTreeMenuRootContext, useTreeMenuRootContext] = useContext(
   'TreeMenuRoot',
@@ -36,9 +36,6 @@ export const [provideTreeMenuRootContext, useTreeMenuRootContext] = useContext(
   }
 );
 
-export const [provideTreeMenuItemContext, useTreeMenuItemContext] = useContext(
-  'TreeMenuItem',
-  (params: TreeMenuItemContextParams) => params
-);
+export const [provideTreeMenuItemContext, useTreeMenuItemContext] = useContext<TreeMenuItemContext>('TreeMenuItem');
 
 export const [provideTreeMenuUi, useTreeMenuUi] = useUiContext<TreeMenuUiSlot>('TreeMenuUi');

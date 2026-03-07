@@ -27,7 +27,7 @@ export interface {ComponentName}RootProps extends /** @vue-ignore */ HTMLAttribu
 export type {ComponentName}RootEmits = {};
 
 // 3. Context Params - use PropsToContext to extract injectable props
-export interface {ComponentName}RootContextParams
+export interface {ComponentName}RootContext
   extends PropsToContext<{ComponentName}RootProps, 'disabled'> {
   rootElement: ShallowRef<HTMLElement | undefined>;
 }
@@ -43,10 +43,7 @@ export type {ComponentName}Ui = Record<{ComponentName}UiSlot, ClassValue>;
 
 ```typescript
 // Root Context for state sharing
-export const [provide{ComponentName}RootContext, use{ComponentName}RootContext] = useContext(
-  '{ComponentName}Root',
-  (params: {ComponentName}RootContextParams) => params
-);
+export const [provide{ComponentName}RootContext, use{ComponentName}RootContext] = useContext<{ComponentName}RootContext>('{ComponentName}Root');
 
 // Ui Context for style injection (REQUIRED)
 export const [provide{ComponentName}Ui, use{ComponentName}Ui] = useUiContext<{ComponentName}UiSlot>('{ComponentName}Ui');

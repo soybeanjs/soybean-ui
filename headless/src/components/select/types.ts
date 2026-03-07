@@ -194,7 +194,7 @@ export interface SelectContentContextParams
   popupElement: ShallowRef<HTMLElement | undefined>;
 }
 
-export interface SelectItemAlignedPositionContextParams {
+export interface SelectItemAlignedPositionContext {
   positionerElement: ShallowRef<HTMLElement | undefined>;
   shouldExpandOnScroll: ShallowRef<boolean>;
   onScrollButtonChange: (node: HTMLElement | undefined) => void;

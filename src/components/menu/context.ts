@@ -1,9 +1,6 @@
 import { useContext, useUiContext } from '@soybeanjs/headless/composables';
-import type { MenuExtraUiSlot, MenuOptionsContextParams } from './types';
+import type { MenuExtraUiSlot, MenuOptionsContext } from './types';
 
-export const [provideMenuOptionsContext, useMenuOptionsContext] = useContext(
-  'MenuOptionsContext',
-  (params: MenuOptionsContextParams) => params
-);
+export const [provideMenuOptionsContext, useMenuOptionsContext] = useContext<MenuOptionsContext>('MenuOptionsContext');
 
 export const [provideMenuExtraUi, useMenuExtraUi] = useUiContext<MenuExtraUiSlot>('MenuExtraUi');

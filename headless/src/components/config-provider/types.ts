@@ -34,4 +34,4 @@ export interface ConfigProviderProps {
   nuxt?: boolean;
 }
 
-export interface ConfigProviderContextParams extends PropsToContext<ConfigProviderProps> {}
+export interface ConfigProviderContext extends PropsToContext<ConfigProviderProps> {}

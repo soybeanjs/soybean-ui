@@ -36,7 +36,7 @@ export type RadioGroupRootEmits<T extends AcceptableBooleanValue = AcceptableBoo
   'update:modelValue': [payload: NonNullable<T>];
 };
 
-export type RadioGroupRootContextParams = PropsToContext<
+export type RadioGroupRootContext = PropsToContext<
   RadioGroupRootProps,
   'disabled' | 'orientation' | 'dir' | 'loop' | 'name' | 'required'
 > & {

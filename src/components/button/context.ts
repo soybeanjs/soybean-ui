@@ -1,7 +1,4 @@
 import { useContext } from '@soybeanjs/headless/composables';
-import type { ButtonGroupContextParams } from './types';
+import type { ButtonGroupContext } from './types';
 
-export const [provideButtonGroupContext, useButtonGroupContext] = useContext(
-  'ButtonGroup',
-  (params: ButtonGroupContextParams) => params
-);
+export const [provideButtonGroupContext, useButtonGroupContext] = useContext<ButtonGroupContext>('ButtonGroup');
