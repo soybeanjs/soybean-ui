@@ -1,46 +1,35 @@
-# HEADLESS LOGIC BASE (The "Brain")
+# HEADLESS PACKAGE — @soybeanjs/headless
 
-**Directory:** `headless/`
-**Context:** Logic layer, unstyled primitives, state management.
+**Package:** `headless/` → publishes as `@soybeanjs/headless`
+**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero styles.
 
-## OVERVIEW
+## EXPORTS
 
-The "Brain" of SoybeanUI. It provides the behavioral foundation for all components, handling:
+Dev mode resolves to `./src/...` (source); publishConfig switches to `./dist/...`.
+Three sub-path exports: root, `/composables`, `/shared` — each has own barrel.
 
-- **State Management**: Complex UI states (e.g., selection, expansion, focus).
-- **Accessibility (A11y)**: WAI-ARIA roles, attributes, and keyboard navigation.
-- **Interactions**: Logic for pointer events, dismissable layers, and floating elements.
+## KEY PATTERNS
+
+- **useContext**: Factory returning `[provideX, injectX]` pair via `Symbol` key. Components call `injectX('ComponentName')` — throws if missing provider.
+- **useUiContext**: Bridge to UI layer. Returns `[provideXUi, useUi]`. Headless reads class tokens injected by UI layer. Only file with `@ts-expect-error`.
+- **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
+- **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
 
 ## STRUCTURE
 
 ```
 headless/src/
-├── components/   # Primitive SFCs (e.g., AccordionRoot, DialogTrigger)
-├── composables/  # Reusable logic hooks (e.g., useSelection, useFloating)
-├── shared/       # DOM, Vue, and State utilities
-├── constants/    # Common ARIA attributes and component constants
-└── types/        # Global TypeScript interfaces and component props
+├── components/   # 50 primitives (one dir each). See components/AGENTS.md
+├── composables/  # 26 reusable hooks. See composables/AGENTS.md
+├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
+├── constants/    # ARIA attrs, collection markers, component constants
+├── types/        # Global types: ClassValue, UiClass, component/DOM/event types
+└── index.ts      # Barrel: re-exports components + composables + shared + types
 ```
-
-## WHERE TO LOOK
-
-| Target              | Path                                                  |
-| ------------------- | ----------------------------------------------------- |
-| **Component Logic** | `src/components/[name]/` (Logic SFCs, context, types) |
-| **Shared Hooks**    | `src/composables/` (Standalone behavioral logic)      |
-| **Logic Utilities** | `src/shared/` (Non-Vue specific helper functions)     |
-| **Component Entry** | `src/index.ts` (Main package exports)                 |
-
-## CONVENTIONS
-
-- **Strictly Unstyled**: No `<style>` blocks, UnoCSS classes, or hardcoded styles.
-- **Accessibility First**: Must adhere to WAI-ARIA design patterns for all primitives.
-- **Logic Encapsulation**: Use composables to share behavior between components.
-- **Context-Driven**: Use `provide`/`inject` for state sharing between nested parts.
 
 ## ANTI-PATTERNS
 
-- **Importing from @soybeanjs/ui**: Forbidden to prevent circular dependencies.
-- **UI-Specific Logic**: Do not include presentation concerns like colors or sizing.
-- **Hardcoded CSS Classes**: Even functional classes (like `hidden`) should be handled via logic.
-- **Direct DOM Manipulation**: Always prefer Vue refs and `useForwardElement`.
+- **NO imports from `@soybeanjs/ui`** — circular dependency
+- **NO styles** — not even `hidden`, `sr-only`, or inline styles
+- **NO presentation logic** — colors, sizing, spacing belong in UI layer
+- **NO direct DOM mutation** — use Vue refs + `useForwardElement`

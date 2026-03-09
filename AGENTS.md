@@ -1,76 +1,63 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-01-20
-**Monorepo:** Yes (pnpm workspaces)
+**Generated:** 2026-03-09
+**Monorepo:** pnpm workspaces (`headless/`, `docs/`; root = `@soybeanjs/ui`)
+**Stack:** Vue 3 + TypeScript (strict) + UnoCSS + tailwind-variants ^3.2.2
 
-## OVERVIEW
+## ARCHITECTURE
 
-SoybeanUI is a Vue 3 component library using a headless architecture.
+Headless/Styled separation. Two packages ship independently:
 
-- **@soybeanjs/headless**: Logic, state, a11y (unstyled primitives).
-- **@soybeanjs/ui**: Styled components (UnoCSS + Tailwind Variants).
-- **@soybeanjs/ui-docs**: Documentation site.
+- **@soybeanjs/headless** (`headless/`): Logic, state, a11y. Zero styles. 50 primitives, 26 composables.
+- **@soybeanjs/ui** (`src/`): Styled wrappers. UnoCSS + `tv()`. 48 components, `S`-prefixed.
+- **@soybeanjs/ui-docs** (`docs/`): Vite + vite-ssg + unplugin-vue-markdown. NOT VitePress.
 
-## STRUCTURE
-
-```
-.
-├── headless/         # Logic layer (The "Brain")
-│   └── src/
-│       ├── components/   # Primitives (Accordion, Dialog, etc.)
-│       ├── composables/  # Shared logic
-│       └── index.ts      # Main export
-├── src/              # UI layer (The "Skin")
-│   ├── components/   # Styled wrappers
-│   ├── variants/     # Tailwind variants definitions
-│   └── index.ts      # Main export
-└── docs/             # Documentation site
-```
+Data flow: `headless` → `src` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
 
 ## WHERE TO LOOK
 
-| Task              | Location                   | Notes                       |
-| ----------------- | -------------------------- | --------------------------- |
-| **New Primitive** | `headless/src/components/` | Logic first, no styles      |
-| **New Style**     | `src/components/`          | Wraps headless, adds UnoCSS |
-| **Theme Logic**   | `src/variants/`            | Tailwind variants           |
-| **Docs**          | `docs/src/docs/`           | Markdown files              |
+| Task                   | Location                            | Key Pattern                                                         |
+| ---------------------- | ----------------------------------- | ------------------------------------------------------------------- | ------------------------------------ |
+| New component (logic)  | `headless/src/components/[name]/`   | types.ts → context.ts → \*.vue → index.ts                           |
+| New component (styled) | `src/components/[name]/`            | Import headless → `useOmitProps` → `cn(variants(...), props.class)` |
+| Variant definitions    | `src/components/[name]/variants.ts` | `tv()` with `// @unocss-include` at top                             |
+| Shared hooks           | `headless/src/composables/`         | `use-*.ts`, pure Vue composables                                    |
+| Theme/sizing           | `src/theme/`                        | `cn()`, `provideSizeContext`, `ThemeColor`, `ThemeSize`             |
+| Utility functions      | `headless/src/shared/`              | Pure TS helpers (DOM, focus, tree, form)                            |
+| Docs content           | `docs/src/docs/[en                  | zh-CN]/`                                                            | Markdown with ````playground` blocks |
+| Demo source            | `playground/examples/[component]/`  | Vue SFCs referenced by docs                                         |
 
-## CONVENTIONS
-
-- **Separation of Concerns**: Logic in `headless`, Styles in `src`.
-- **Component Anatomy**:
-  - `index.ts`: Exports
-  - `*.vue`: SFCs (Root, Item, Trigger)
-  - `context.ts`: Injection keys/providers
-  - `types.ts`: Props/Emits definitions
-- **Styling**: UnoCSS with `tailwind-variants` (tv). No raw CSS files.
-
-## ANTI-PATTERNS (THIS PROJECT)
-
-- **DO NOT** add styles to `headless` components.
-- **DO NOT** mix business logic into `src` (UI) components.
-- **DO NOT** use raw CSS/SCSS (use UnoCSS classes).
-
-## COMMANDS
+## BUILD & CI
 
 ```bash
-pnpm dev              # Start playground
-pnpm build            # Build all packages
-pnpm lint             # Run ESLint
-pnpm test             # Run Vitest
-pnpm release          # Release packages
+pnpm dev              # Playground (Vite)
+pnpm build            # headless (tsdown) → ui (tsdown) → css (unocss build)
+pnpm lint             # oxlint --fix && eslint --fix (uses @soybeanjs/eslint-config-vue)
+pnpm test             # vitest run (happy-dom, @vue/test-utils)
+pnpm typecheck        # vue-tsc --noEmit
+pnpm release          # Publish packages
 ```
 
-## DEVELOPMENT SKILL
+- **Pre-commit hook** (simple-git-hooks): `pnpm typecheck && pnpm lint-staged`
+- **CI**: Tag-triggered release only (`release.yml`). No PR check workflow.
+- **Formatter**: `oxfmt`
 
-**Skill**: `/soybeanui-component-development`
+## DEPENDENCY RULES
 
-Use this skill when developing new components or modifying existing ones. It provides:
+- `headless` → MUST NOT import from `@soybeanjs/ui` (circular dep)
+- `src` → imports `@soybeanjs/headless` (via package.json alias, dev points to source)
+- Components re-exported from barrel files: `headless/src/index.ts`, `src/index.ts`
 
-- Step-by-step workflow for headless → UI development
-- Code templates for types, context, and components
-- Critical checklist before completing work
-- Common utilities reference
+## ANTI-PATTERNS
 
-Run: `skill(name="soybeanui-component-development")` to load the workflow guide.
+- **DO NOT** add styles/classes to `headless` components (not even `hidden`)
+- **DO NOT** put ARIA/state logic in `src` (UI) layer
+- **DO NOT** use raw CSS/SCSS — UnoCSS utility classes only
+- **DO NOT** use `as any` / `@ts-ignore` / `@ts-expect-error`
+- **DO NOT** modify `typed-router.d.ts` (auto-generated)
+
+## COMPONENT DEVELOPMENT
+
+**Skill**: `skill(name="soybean-ui-component-development")` — loads full workflow guide with templates.
+
+Minimal flow: headless types → headless context → headless SFCs → UI variants → UI wrapper → barrel exports → docs.

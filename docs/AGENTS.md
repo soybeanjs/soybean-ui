@@ -1,30 +1,40 @@
-# AGENTS - Documentation Site
+# DOCUMENTATION SITE — @soybeanjs/ui-docs
 
-## OVERVIEW
+**Package:** `docs/` → NOT published to npm
+**Stack:** Vite + vite-ssg + unplugin-vue-markdown (NOT VitePress)
 
-The documentation site for SoybeanUI, providing comprehensive guides and component references.
+## HOW DOCS WORK
 
-- **Tech Stack**: Vue 3, Vite, UnoCSS, and `unplugin-vue-markdown`.
-- **Architecture**: Markdown files are loaded dynamically into Vue pages.
+Markdown files in `docs/src/docs/[lang]/` → auto-converted to Vue pages via `unplugin-vue-markdown`. Routing is file-based via `vite-ssg` + `unplugin-vue-router`.
+
+## PLAYGROUND SYSTEM
+
+Demos live in `playground/examples/[component]/` (separate workspace). Referenced in markdown via:
+
+````markdown
+```playground
+demo-file-name
+```
+````
+
+Rendered by `PlaygroundGallery` component. Each demo is a standalone `.vue` SFC.
 
 ## STRUCTURE
 
-- `src/docs/`: Main markdown content organized by language.
-- `src/pages/`: Dynamic routing for documentation pages.
-- `src/components/`: Docs UI elements (Header, Sider, Playgrounds).
-- `../playground/`: Source code for interactive component demos.
-
-## WHERE TO LOOK
-
-- **English Content**: `docs/src/docs/en/`
-- **Chinese Content**: `docs/src/docs/zh-CN/`
-- **Component Docs**: `docs/src/docs/[lang]/components/`
-- **Demo Source**: `playground/examples/[component]/`
+```
+docs/src/
+├── docs/           # Markdown content
+│   ├── en/         # English docs
+│   └── zh-CN/      # Chinese docs (must mirror en/ structure exactly)
+├── pages/          # Route pages (auto-generated from file system)
+├── components/     # Docs UI: Header, Sider, PlaygroundGallery, etc.
+└── modules/        # Vite plugins, SSG setup
+```
 
 ## CONVENTIONS
 
-- **FrontMatter**: Required for all `.md` files (e.g., `title: ComponentName`).
-- **Demos**: Must be in separate `.vue` files within the `playground` package.
-- **Playground Blocks**: Use ` ```playground ` to include demos by filename.
-- **Language Parity**: Keep `en` and `zh-CN` structures perfectly synchronized.
-- **Components**: Document props, events, slots, and types for every UI component.
+- **FrontMatter required**: Every `.md` needs at minimum `title: ComponentName`
+- **Language parity**: `en/` and `zh-CN/` must have identical file structure
+- **Demo isolation**: Demos in `playground/`, never inline in markdown
+- **Component docs**: Must document props, events, slots, and types
+- **Auto-generated**: `typed-router.d.ts` — DO NOT edit manually

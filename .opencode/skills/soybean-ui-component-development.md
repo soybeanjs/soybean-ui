@@ -1,15 +1,17 @@
 # SoybeanUI Component Development
 
-Specialized workflow for creating new components in the SoybeanUI headless + styled architecture.
-
-## When to Use
-
-Use this skill when:
-
+**When to Use**:
 - Developing a new component from scratch
 - Adding features to existing components
-- Fixing bugs in headless or UI layer components
+- Fixing bugs in headless or UI layer
 - Understanding component architecture
+
+**Architecture**:
+- **@soybeanjs/headless**: Logic, state, a11y. Zero styles.
+- **@soybeanjs/ui**: Styled wrappers. UnoCSS + `tv()`. `S` prefix.
+- **Data flow**: `headless` → `src` (never reverse). UI injects styles via `provideXUi(ui)` → headless reads via `useUiContext`.
+
+---
 
 ## Workflow
 
@@ -18,42 +20,52 @@ Use this skill when:
 **Step 1: Define Types (`types.ts`)**
 
 ```typescript
-// 1. Root Props - extend HTMLAttributes or SelectionProps for v-model
-export interface {ComponentName}RootProps extends /** @vue-ignore */ HTMLAttributes {
+import type { ClassValue } from '../../types';
+
+// 1. Root Props — extend HTMLAttributes or SelectionProps as needed
+export interface {ComponentName}RootProps {
   disabled?: boolean;
 }
 
-// 2. Emits - use SelectionEmits<M> for v-model support
-export type {ComponentName}RootEmits = {};
+// 2. Emits
+export type {ComponentName}RootEmits = {
+  'update:modelValue': [value: boolean];
+};
 
-// 3. Context Params - use PropsToContext to extract injectable props
-export interface {ComponentName}RootContext
-  extends PropsToContext<{ComponentName}RootProps, 'disabled'> {
+// 3. Context — use PropsToContext to extract injectable props
+export interface {ComponentName}RootContext {
+  disabled: boolean;
   rootElement: ShallowRef<HTMLElement | undefined>;
 }
 
-// 4. Ui Slots - define all styleable parts (MUST match variants.ts slots)
-export type {ComponentName}UiSlot = 'root' | 'trigger' | 'content' | 'item';
+// 4. Ui Slots — MUST match variants.ts slots
+export type {ComponentName}UiSlot = 'root' | 'trigger' | 'content';
 
-// 5. UI Type
+// 5. UI Type — style injection interface
 export type {ComponentName}Ui = Record<{ComponentName}UiSlot, ClassValue>;
 ```
 
 **Step 2: Create Context (`context.ts`)**
 
 ```typescript
-// Root Context for state sharing
-export const [provide{ComponentName}RootContext, use{ComponentName}RootContext] = useContext<{ComponentName}RootContext>('{ComponentName}Root');
+import { useContext, useUiContext } from '../../composables';
 
-// Ui Context for style injection (REQUIRED)
-export const [provide{ComponentName}Ui, use{ComponentName}Ui] = useUiContext<{ComponentName}UiSlot>('{ComponentName}Ui');
+// State sharing
+export const [provide{ComponentName}RootContext, use{ComponentName}RootContext] =
+  useContext<{ComponentName}RootContext>('{ComponentName}Root');
+
+// Style injection (REQUIRED)
+export const [provide{ComponentName}Ui, use{ComponentName}Ui] =
+  useUiContext<{ComponentName}UiSlot>('{ComponentName}Ui');
 ```
 
-**Step 3: Implement Components (`{component}-root.vue`, `{component}-item.vue`)**
+**Step 3: Implement Component SFCs (`{component}-root.vue`, `{component}-trigger.vue`)**
 
 ```vue
 <script setup lang="ts">
 import { transformPropsToContext } from '../../shared';
+import { provide{ComponentName}RootContext, use{ComponentName}Ui } from './context';
+import type { {ComponentName}RootProps } from './types';
 
 defineOptions({ name: '{ComponentName}Root' });
 
@@ -61,16 +73,13 @@ const props = withDefaults(defineProps<{ComponentName}RootProps>(), {
   disabled: false
 });
 
-// Get style for this slot
+// Get style for current slot
 const cls = use{ComponentName}Ui('root');
-
-// Element reference for context
-const rootElement = shallowRef<HTMLElement>();
 
 // Provide context to children
 provide{ComponentName}RootContext({
-  rootElement,
-  ...transformPropsToContext(props, ['disabled'])
+  ...transformPropsToContext(props, ['disabled']),
+  rootElement: shallowRef<HTMLElement>()
 });
 </script>
 
@@ -85,7 +94,7 @@ provide{ComponentName}RootContext({
 
 ```typescript
 export { default as {ComponentName}Root } from './{component}-root.vue';
-export { default as {ComponentName}Item } from './{component}-item.vue';
+export { default as {ComponentName}Trigger } from './{component}-trigger.vue';
 export {
   provide{ComponentName}RootContext,
   use{ComponentName}RootContext,
@@ -95,32 +104,44 @@ export {
 export * from './types';
 ```
 
+---
+
 ### Phase 2: UI Layer (`src/components/{component}/`)
 
-**Step 1: Define Variants (`src/components/{component}/variants.ts`)**
+**Step 1: Define Variants (`variants.ts`)**
 
 ```typescript
+// @unocss-include  // REQUIRED! UnoCSS marker
+
 import { tv } from 'tailwind-variants';
+import type { ThemeSize } from '@/theme';
 
 export const {componentName}Variants = tv({
-  // Slots MUST match UiSlot from headless types.ts
+  // slots MUST match headless types.ts UiSlot
   slots: {
-    root: 'base-styles...',
-    item: '...',
-    trigger: '...',
-    content: '...'
+    root: 'flex items-center',
+    trigger: 'cursor-pointer',
+    content: 'mt-2'
   },
   variants: {
     size: {
-      sm: { root: 'text-sm' },
-      md: { root: 'text-base' }
+      xs: { root: 'h-6 px-2 text-xs' },
+      sm: { root: 'h-8 px-3 text-sm' },
+      md: { root: 'h-10 px-4 text-base' },
+      lg: { root: 'h-12 px-5 text-lg' },
+      xl: { root: 'h-14 px-6 text-xl' },
+      '2xl': { root: 'h-16 px-7 text-2xl' }
     }
   },
   defaultVariants: { size: 'md' }
 });
+
+export type {ComponentName}VariantProps = typeof {componentName}Variants extends tv<infer T>
+  ? T
+  : never;
 ```
 
-**Step 2: Define UI Types (`src/components/{component}/types.ts`)**
+**Step 2: Define UI Types (`types.ts`)**
 
 ```typescript
 import type {
@@ -138,13 +159,13 @@ export type {ComponentName}Props = {ComponentName}RootProps & {
 export type {ComponentName}Emits = {ComponentName}RootEmits;
 ```
 
-**Step 3: Implement UI Component (`src/components/{component}/{component}.vue`)**
+**Step 3: Implement UI Component (`{component}.vue`)**
 
 ```vue
 <script setup lang="ts">
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { {ComponentName}Root, provide{ComponentName}Ui } from '@soybeanjs/headless';
-import { {componentName}Variants } from '@/variants/{component}';
+import { {componentName}Variants } from './variants';
 import { mergeSlotVariants } from '@/theme';
 
 defineOptions({ name: 'S{ComponentName}' }); // S prefix required
@@ -154,8 +175,6 @@ const emit = defineEmits<{ComponentName}Emits>();
 
 // Separate UI props from headless props
 const forwardedProps = useOmitProps(props, ['size', 'ui']);
-
-// Forward events
 const listeners = useForwardListeners(emit);
 
 // Calculate styles
@@ -164,7 +183,7 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui);
 });
 
-// Provide styles to headless components
+// Inject styles to headless
 provide{ComponentName}Ui(ui);
 </script>
 
@@ -182,35 +201,68 @@ export { default as S{ComponentName} } from './{component}.vue';
 export * from './types';
 ```
 
+---
+
 ## Critical Checklist
 
-Before finishing, verify:
+**Headless Layer**:
+- [ ] `types.ts` defines `UiSlot` and `Ui` types
+- [ ] `context.ts` exports `provide{ComponentName}Ui` and `use{ComponentName}Ui`
+- [ ] Component SFCs use `use{ComponentName}Ui(slot)` to get styles
+- [ ] No `<style>` blocks, no UnoCSS classes, no inline styles
+- [ ] No `@soybeanjs/ui` imports (circular dependency)
 
-- [ ] Headless `types.ts` defines `UiSlot` and `Ui` types
-- [ ] Headless `context.ts` exports `provide{ComponentName}Ui` and `use{ComponentName}Ui`
-- [ ] Headless components use `use{ComponentName}Ui(slot)` to get styles
-- [ ] `headless/types.ts` UiSlot names match `src/variants/*.ts` slots exactly
-- [ ] UI component uses `useOmitProps` to filter UI-only props
-- [ ] UI component provides styles via `provide{ComponentName}Ui`
-- [ ] UI component name has `S` prefix (`S{ComponentName}`)
-- [ ] No `<style>` blocks in headless components
-- [ ] No business logic in UI components
+**UI Layer**:
+- [ ] `variants.ts` has `// @unocss-include` at top
+- [ ] `variants` slots match headless `UiSlot` exactly
+- [ ] Use `useOmitProps` to filter UI-only props
+- [ ] Use `provide{ComponentName}Ui` to inject styles
+- [ ] Component name has `S` prefix
+- [ ] No business logic/ARIA state (belongs to headless)
 
-## Common Utilities
+---
 
-| Function               | Purpose                              |
-| ---------------------- | ------------------------------------ |
-| `useContext`           | Create Provide/Inject pairs          |
-| `useForwardElement`    | Pass DOM refs between components     |
-| `useForwardListeners`  | Forward event listeners              |
-| `useOmitProps`         | Filter props before passing to child |
-| `useSelection`         | Handle v-model selection logic       |
-| `useControllableState` | Handle controlled/uncontrolled state |
+## Core Utilities
 
-## Anti-Patterns
+| Function | Source | Purpose |
+|---|---|---|
+| `useContext` | `headless/composables` | Create `[provide, inject]` pairs |
+| `useUiContext` | `headless/composables` | UI↔headless style bridge |
+| `useOmitProps` | `headless/composables` | Filter props before forwarding |
+| `useForwardListeners` | `headless/composables` | Forward event listeners |
+| `useControllableState` | `headless/composables` | Controlled/uncontrolled state |
+| `useForwardElement` | `headless/composables` | DOM ref forwarding |
+| `cn` | `@/theme/merge` | Class merge (`twMerge + clsx`) |
+| `mergeSlotVariants` | `@/theme/shared` | Merge tv() output with UI context |
 
-- **DO NOT** add styles to headless components
-- **DO NOT** import from `@soybeanjs/ui` in headless
-- **DO NOT** use raw CSS (use UnoCSS utilities)
-- **DO NOT** duplicate headless props in UI types (extend them)
-- **DO NOT** mix business logic with styling concerns
+---
+
+## Anti-Patterns (Forbidden)
+
+| Layer | Forbidden |
+|---|---|
+| **Headless** | Add styles/classes (including `hidden`) |
+| **Headless** | Import from `@soybeanjs/ui` |
+| **Headless** | Direct DOM manipulation (use `useForwardElement`) |
+| **UI** | Business logic/ARIA state |
+| **UI** | Redefine headless props (extend them) |
+| **All** | Use `as any` / `@ts-ignore` / `@ts-expect-error` |
+| **All** | Raw CSS/SCSS (use UnoCSS classes) |
+
+---
+
+## File Order Template
+
+```
+headless/src/components/{component}/
+├── types.ts       # Define types first
+├── context.ts     # Create context
+├── *.vue          # Implement SFCs
+└── index.ts       # Export last
+
+src/components/{component}/
+├── variants.ts    # Define variants first
+├── types.ts       # Define UI types
+├── {component}.vue # Implement wrapper
+└── index.ts       # Export last
+```

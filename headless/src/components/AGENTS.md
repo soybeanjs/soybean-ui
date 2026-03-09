@@ -1,31 +1,32 @@
-# HEADLESS COMPONENTS KNOWLEDGE BASE
+# HEADLESS COMPONENTS
 
-**Context**: Component primitives (Logic, State, A11y).
-**Directory**: `headless/src/components/`
+**50 primitives**, one directory each. Every component follows identical anatomy.
 
-## ARCHITECTURE
+## ANATOMY (per component dir)
 
-- **One directory per primitive**: Each component is isolated.
-- **Headless**: Strictly logic only. No styles or UnoCSS.
-- **Composition API**: Uses Vue 3 script setup.
+| File | Role |
+|---|---|
+| `types.ts` | Props/emits interfaces. Extends from `../types/` globals. |
+| `context.ts` | `useContext()` call → `[provideX, injectX]`. Optional `useUiContext()` → `[provideXUi, useXUi]`. |
+| `*.vue` | SFCs: `<ComponentName>Root`, `<ComponentName>Trigger`, `<ComponentName>Content`, etc. |
+| `index.ts` | Barrel: re-exports SFCs + types. Named exports only, no default. |
 
-## ANATOMY
+## NAMING
 
-| File         | Responsibility                                  |
-| ------------ | ----------------------------------------------- |
-| `index.ts`   | Entry point, exports components and types.      |
-| `*.vue`      | SFCs containing logic and state.                |
-| `context.ts` | Injection keys and providers for state sharing. |
-| `types.ts`   | Prop types and interfaces.                      |
+- SFC files: `kebab-case.vue` matching component part (e.g., `accordion-root.vue`)
+- Types: `<ComponentName><Part>Props`, `<ComponentName><Part>Emits`
+- Context: `provide<ComponentName>Context`, `inject<ComponentName>Context`
+
+## STATE SHARING
+
+Components use `provide`/`inject` via `useContext` factory:
+- Root provides state → children inject
+- `injectX('ChildName')` throws if used outside provider (enforces nesting)
+- UI token injection: `provideXUi(ui)` from styled layer → `useXUi('slot')` in headless
 
 ## CONVENTIONS
 
-- **Separation**: Logic in `.vue`, types in `types.ts`.
-- **Naming**: `[primitive]-[part].vue` or `[primitive].vue`.
-- **A11y**: Must follow WAI-ARIA patterns.
-- **Context**: Use `provide`/`inject` for nested components.
-
-## ANTI-PATTERNS
-
-- **NO STYLES**: Do not add `<style>` blocks or classes.
-- **NO UI LOGIC**: Keep strictly to component primitive logic.
+- WAI-ARIA roles/attrs set directly on template elements
+- Keyboard handlers in SFCs, reusable logic extracted to composables
+- `useForwardElement` for exposing DOM refs to parent
+- `useControllableState` for controlled/uncontrolled prop patterns
