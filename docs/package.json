@@ -21,22 +21,22 @@
     "es-toolkit": "^1.45.1",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.4",
-    "shiki": "^4.0.1",
+    "shiki": "^4.0.2",
     "valibot": "^1.2.0",
-    "vue": "^3.5.29",
-    "vue-i18n": "^11.2.8",
+    "vue": "^3.5.30",
+    "vue-i18n": "^11.3.0",
     "vue-router": "^5.0.3",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@intlify/unplugin-vue-i18n": "^11.0.7",
-    "@shikijs/markdown-it": "^4.0.1",
+    "@shikijs/markdown-it": "^4.0.2",
     "@types/markdown-it-link-attributes": "^3.0.5",
     "@types/nprogress": "^0.2.3",
     "@unhead/vue": "^2.1.10",
     "@vitejs/plugin-vue": "^6.0.4",
     "@vitejs/plugin-vue-jsx": "^5.1.4",
-    "lightningcss": "^1.31.1",
+    "lightningcss": "^1.32.0",
     "markdown-it-link-attributes": "^4.0.1",
     "typescript": "^5.9.3",
     "unplugin-auto-import": "^21.0.0",
@@ -48,5 +48,5 @@
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
   },
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@10.31.0"
 }
