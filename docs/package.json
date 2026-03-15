@@ -33,9 +33,9 @@
     "@shikijs/markdown-it": "^4.0.2",
     "@types/markdown-it-link-attributes": "^3.0.5",
     "@types/nprogress": "^0.2.3",
-    "@unhead/vue": "^2.1.10",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vitejs/plugin-vue-jsx": "^5.1.4",
+    "@unhead/vue": "^2.1.12",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "@vitejs/plugin-vue-jsx": "^5.1.5",
     "lightningcss": "^1.32.0",
     "markdown-it-link-attributes": "^4.0.1",
     "typescript": "^5.9.3",
@@ -43,10 +43,10 @@
     "unplugin-vue": "^7.1.1",
     "unplugin-vue-components": "^31.0.0",
     "unplugin-vue-markdown": "^30.0.0",
-    "vite": "^7.3.1",
+    "vite": "^8.0.0",
     "vite-plugin-vue-meta-layouts": "^0.6.1",
     "vite-ssg": "^28.3.0",
     "vite-ssg-sitemap": "^0.10.0"
   },
-  "packageManager": "pnpm@10.31.0"
+  "packageManager": "pnpm@10.32.1"
 }
