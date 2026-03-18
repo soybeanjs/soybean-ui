@@ -14,7 +14,7 @@ import type { ThemeSize } from '@/theme';
 
 export type BaseTableData = Record<string, any>;
 
-export type TableAlign = 'left' | 'center' | 'right' | 'justify' | 'char';
+export type TableAlign = 'left' | 'center' | 'right';
 
 type TableColumnType = 'index' | 'selection' | 'expand';
 
