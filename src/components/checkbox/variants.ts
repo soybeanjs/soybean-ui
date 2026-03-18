@@ -7,7 +7,7 @@ export const checkboxVariants = tv({
     groupRoot: 'flex',
     root: 'flex items-center w-fit',
     control: [
-      'peer shrink-0 border shadow transition-shadow-150',
+      'peer shrink-0 border shadow transition-all-150',
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'w-full h-full flex items-center justify-center text-current',
@@ -107,7 +107,7 @@ export const checkboxCardVariants = tv({
     label: 'font-medium',
     description: 'text-muted-foreground',
     control: [
-      'peer shrink-0 border shadow transition-shadow-150',
+      'peer shrink-0 border shadow transition-all-150',
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],

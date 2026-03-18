@@ -14,7 +14,7 @@ export const tableVariants = tv({
     cell: 'whitespace-nowrap',
     selection: 'text-foreground',
     radioRoot: [
-      'peer relative shrink-0 rounded-full border border-solid shadow cursor-pointer transition-shadow-150',
+      'peer relative shrink-0 rounded-full border border-solid shadow cursor-pointer transition-all-150',
       'border-primary focus-visible:ring-primary/30',
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
