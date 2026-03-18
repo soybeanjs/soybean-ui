@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const selectVariants = tv({
   slots: {
     trigger: [
-      `flex items-center justify-between w-full rounded-md border border-input bg-background`,
+      `flex items-center justify-between w-full rounded-md border border-input bg-background transition-shadow-150`,
       `focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50`,
       `placeholder:text-muted-foreground data-[placeholder]:text-muted-foreground`
     ],
