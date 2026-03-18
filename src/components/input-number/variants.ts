@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const inputNumberVariants = tv({
   slots: {
-    root: 'group flex items-center w-full rounded-md border border-input bg-background focus-within:border-input focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-50',
+    root: 'group flex items-center w-full rounded-md border border-input bg-background transition-all-150 focus-within:border-input focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-50',
     decrement: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-20`,
     increment: `flex h-full shrink-0 items-center justify-center text-muted-foreground bg-transparent outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-20`,
     control: [
