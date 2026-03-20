@@ -62,7 +62,7 @@ export function usePaginatedTable<ResponseData, ApiData>(options: UsePaginatedTa
     [page, pageSize],
     () => {
       if (fetchOnPaginationChange) {
-        result.getData();
+        result.fetchData();
       }
     },
     { flush: 'post' }

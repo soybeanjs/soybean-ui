@@ -75,7 +75,7 @@
     "@iconify/vue": "^5.0.0",
     "@soybeanjs/colord": "^0.4.2",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/hooks": "^0.0.3",
+    "@soybeanjs/hooks": "^0.0.4",
     "@soybeanjs/shadcn-theme": "^0.3.1",
     "clsx": "^2.1.1",
     "fuse.js": "^7.1.0",
