@@ -1,5 +1,46 @@
 # Changelog
 
+## [v0.13.0](https://github.com/soybeanjs/soybean-ui/compare/v0.12.4...v0.13.0) (2026-03-20)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **styles**: add transition-all-150 to interactive components for smooth hover & focus animations. closed #98 &nbsp;-&nbsp; by @MicrosoftCopilot in https://github.com/soybeanjs/soybean-ui/issues/98 [<samp>(1de7e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1de7e511)
+- **table**: implement useTable and usePaginatedTable hooks with pagination support &nbsp;-&nbsp; by @soybeanjs [<samp>(1ae61)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1ae619bd)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: update fetch method in usePaginatedTable hook &nbsp;-&nbsp; by @soybeanjs [<samp>(c54b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/c54b978b)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **composables**: simplify useUi type definition and improve type safety &nbsp;-&nbsp; by @soybeanjs [<samp>(3c077)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3c077899)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **types**: remove 'justify' and 'char' options from TableAlign type &nbsp;-&nbsp; by @soybeanjs [<samp>(eaf01)</samp>](https://github.com/soybeanjs/soybean-ui/commit/eaf014af)
+
+### &nbsp;&nbsp;&nbsp;📖 Documentation
+
+- **projects**: update AGENTS.md for improved clarity and structure across headless and UI layers &nbsp;-&nbsp; by @soybeanjs [<samp>(1b3db)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1b3db61d)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**:
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(fc0f0)</samp>](https://github.com/soybeanjs/soybean-ui/commit/fc0f0288)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(29758)</samp>](https://github.com/soybeanjs/soybean-ui/commit/29758b05)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(9fb13)</samp>](https://github.com/soybeanjs/soybean-ui/commit/9fb13ff8)
+  - update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(b67fc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b67fce8b)
+- **gitattributes**:
+  - simplify line endings configuration for all file types &nbsp;-&nbsp; by @soybeanjs [<samp>(1261f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1261fdfb)
+- **vscode**:
+  - update recommended extensions &nbsp;-&nbsp; by @soybeanjs [<samp>(ce4e6)</samp>](https://github.com/soybeanjs/soybean-ui/commit/ce4e6821)
+- **workflow**:
+  - update actions and pnpm setup to latest versions &nbsp;-&nbsp; by @soybeanjs [<samp>(b4525)</samp>](https://github.com/soybeanjs/soybean-ui/commit/b4525b96)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;[![MicrosoftCopilot](https://github.com/MicrosoftCopilot.png?size=48)](https://github.com/MicrosoftCopilot)&nbsp;&nbsp;
+
 ## [v0.13.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.12.4...v0.13.0-beta.1) (2026-03-20)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
