@@ -21,8 +21,8 @@ importers:
         specifier: workspace:^
         version: link:headless
       '@soybeanjs/hooks':
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.3
+        version: 0.0.3
       '@soybeanjs/shadcn-theme':
         specifier: ^0.3.1
         version: 0.3.1
@@ -2525,8 +2525,8 @@ packages:
   '@soybeanjs/eslint-config-vue@0.0.2':
     resolution: {integrity: sha512-s/WhPxcixfCCUNrf6p9lIRE/0Eu3GYYYcD0kjSqFCgp123OOA19Iz8zQmGXVcE5gWzlckfG6WKmNb7y34e44Gw==}
 
-  '@soybeanjs/hooks@0.0.2':
-    resolution: {integrity: sha512-DZx3RUdW2zrk2g8e0uUANMU1ZcJasrt6fO9lzzULIS1bCp22TtL/pdD/liHUr1GItX05B3pWCpVZ3333Hiourw==}
+  '@soybeanjs/hooks@0.0.3':
+    resolution: {integrity: sha512-aa6kc3chDNO2EMlBDd8yX/AQGc+1qs1wuLkOKF5Jc4HS7ucFSdqJzOYxiffanNPK3CuCxMUMN7fCYGARXJ3oYw==}
 
   '@soybeanjs/shadcn-theme@0.3.1':
     resolution: {integrity: sha512-yfVMq0d4gArzxNXfCUtSDHZ1PkajECcT2Rprpp77B0wWoCm9Xotcd03mIJ//s32IgaoYktDdVNOg0IAl+RJzLw==}
@@ -8023,7 +8023,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@soybeanjs/hooks@0.0.2': {}
+  '@soybeanjs/hooks@0.0.3': {}
 
   '@soybeanjs/shadcn-theme@0.3.1':
     dependencies:

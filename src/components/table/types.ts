@@ -16,9 +16,9 @@ export type BaseTableData = Record<string, any>;
 
 export type TableAlign = 'left' | 'center' | 'right';
 
-type TableColumnType = 'index' | 'selection' | 'expand';
+export type TableColumnType = 'index' | 'selection' | 'expand';
 
-export interface TableColumn<T extends BaseTableData = BaseTableData> {
+export interface TableColumn<T = BaseTableData> {
   type?: TableColumnType;
   dataIndex?: Path<T>;
   title?: string;
