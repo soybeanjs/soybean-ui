@@ -34,7 +34,7 @@ export type UsePaginatedTableOptions<ResponseData, ApiData> = UseTableOptions<Re
 };
 
 export function usePaginatedTable<ResponseData, ApiData>(options: UsePaginatedTableOptions<ResponseData, ApiData>) {
-  const { page: _page = 1, pageSize: _pageSize = 10, fetchOnPaginationChange = true } = options;
+  const { page: _page = 1, pageSize: _pageSize = 10, fetchOnPaginationChange = true, onFetched } = options;
 
   const page = shallowRef(_page);
   const pageSize = shallowRef(_pageSize);
@@ -55,6 +55,8 @@ export function usePaginatedTable<ResponseData, ApiData>(options: UsePaginatedTa
       if (data.pageSize && data.pageSize !== pageSize.value) {
         pageSize.value = data.pageSize;
       }
+
+      onFetched?.(data);
     }
   });
 
