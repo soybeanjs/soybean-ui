@@ -9,7 +9,7 @@ defineOptions({
 
 const props = defineProps<FormFieldProps>();
 
-const cls = computed(() => (props.isFieldArray ? useFormFieldUi('field').value : useFormFieldUi('fieldArray').value));
+const cls = computed(() => (props.isFieldArray ? useFormFieldUi('fieldArray').value : useFormFieldUi('field').value));
 
 const error = computed(() => props.error);
 
