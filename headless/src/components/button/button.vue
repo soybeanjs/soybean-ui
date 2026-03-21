@@ -9,7 +9,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<ButtonProps>(), {
-  as: 'button'
+  as: 'button',
+  type: 'button'
 });
 
 const emit = defineEmits<ButtonEmits>();
