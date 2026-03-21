@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.13.3](https://github.com/soybeanjs/soybean-ui/compare/v0.13.2...v0.13.3) (2026-03-21)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **button**: add type prop to ButtonProps interface and update default props &nbsp;-&nbsp; by @soybeanjs [<samp>(1a0b9)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1a0b9f41)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.2](https://github.com/soybeanjs/soybean-ui/compare/v0.13.1...v0.13.2) (2026-03-21)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
