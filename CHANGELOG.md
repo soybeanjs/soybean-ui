@@ -1,5 +1,20 @@
 # Changelog
 
+## [v0.13.2](https://github.com/soybeanjs/soybean-ui/compare/v0.13.1...v0.13.2) (2026-03-21)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **form-field**: correct order of useFormFieldUi calls in computed class &nbsp;-&nbsp; by @soybeanjs [<samp>(4cfd8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4cfd84e4)
+- **selection**: remove default value comment for singleClearable property &nbsp;-&nbsp; by @soybeanjs [<samp>(338a2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/338a2a52)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(30d25)</samp>](https://github.com/soybeanjs/soybean-ui/commit/30d25841)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.1](https://github.com/soybeanjs/soybean-ui/compare/v0.13.0...v0.13.1) (2026-03-20)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
