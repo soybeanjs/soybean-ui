@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.13.5](https://github.com/soybeanjs/soybean-ui/compare/v0.13.4...v0.13.5) (2026-03-22)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: ensure columns are checked by default and filter checks accordingly &nbsp;-&nbsp; by **Soybean** [<samp>(945b5)</samp>](https://github.com/soybeanjs/soybean-ui/commit/945b5e5d)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.13.4](https://github.com/soybeanjs/soybean-ui/compare/v0.13.3...v0.13.4) (2026-03-22)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
