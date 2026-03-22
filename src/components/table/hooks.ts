@@ -91,6 +91,7 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
     const column: TableColumnCheck = {
       key,
       title: title || key,
+      checked: true,
       hidden,
       fixed: false
     };
@@ -105,7 +106,9 @@ function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColum
   const checksMap = new Map<string, TableColumnCheck>();
 
   checks.forEach(check => {
-    checksMap.set(check.key, check);
+    if (check.checked) {
+      checksMap.set(check.key, check);
+    }
   });
 
   return columns.filter(col => {
