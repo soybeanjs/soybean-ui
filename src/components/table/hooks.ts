@@ -1,7 +1,7 @@
 import { shallowRef, watch } from 'vue';
 import { useTable as _useTable } from '@soybeanjs/hooks';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
-import type { TableColumn } from './types';
+import type { TableColumn, TableColumnType } from './types';
 
 export type UseTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
   _UseTableOptions<ResponseData, ApiData, TableColumn<ApiData>, Pagination>,
@@ -103,19 +103,37 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
 }
 
 function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
-  const checksMap = new Map<string, TableColumnCheck>();
+  const columnsMap = new Map<string, T>();
 
-  checks.forEach(check => {
-    if (check.checked) {
-      checksMap.set(check.key, check);
+  const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
+
+  columns.forEach((column, index) => {
+    if (column.type) {
+      typeColumnsMap.set(column.type, { column: column, index });
+      return;
+    } else if (column.dataIndex) {
+      columnsMap.set(column.dataIndex, column);
     }
   });
 
-  return columns.filter(col => {
-    if (col.type) return true;
+  const result: T[] = [];
 
-    const current = checksMap.get(col.dataIndex as string);
+  checks
+    .filter(check => check.checked)
+    .forEach(check => {
+      const column = columnsMap.get(check.key);
+      if (column) {
+        result.push(column);
+      }
+    });
 
-    return current && !current.hidden;
+  typeColumnsMap.forEach(({ column, index }) => {
+    if (index >= result.length) {
+      result.push(column);
+    } else {
+      result.splice(index, 0, column);
+    }
   });
+
+  return result;
 }
