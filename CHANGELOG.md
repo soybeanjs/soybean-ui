@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.13.4](https://github.com/soybeanjs/soybean-ui/compare/v0.13.3...v0.13.4) (2026-03-22)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: reorder exports for consistency and clarity &nbsp;-&nbsp; by @soybeanjs [<samp>(25840)</samp>](https://github.com/soybeanjs/soybean-ui/commit/25840a45)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.3](https://github.com/soybeanjs/soybean-ui/compare/v0.13.2...v0.13.3) (2026-03-21)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
