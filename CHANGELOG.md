@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.13.6](https://github.com/soybeanjs/soybean-ui/compare/v0.13.5...v0.13.6) (2026-03-22)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **table**: enhance column handling in getColumns function for improved type support &nbsp;-&nbsp; by **Soybean** [<samp>(7c72b)</samp>](https://github.com/soybeanjs/soybean-ui/commit/7c72bb64)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+
+[Soybean](mailto:soybeanjs@outlook.com)
+
 ## [v0.13.5](https://github.com/soybeanjs/soybean-ui/compare/v0.13.4...v0.13.5) (2026-03-22)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
