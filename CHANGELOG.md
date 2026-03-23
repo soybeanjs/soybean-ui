@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.13.8](https://github.com/soybeanjs/soybean-ui/compare/v0.13.7...v0.13.8) (2026-03-24)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **dialog**: update content styles for responsive design &nbsp;-&nbsp; by @soybeanjs [<samp>(77fa2)</samp>](https://github.com/soybeanjs/soybean-ui/commit/77fa2e4e)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.7](https://github.com/soybeanjs/soybean-ui/compare/v0.13.6...v0.13.7) (2026-03-23)
 
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
