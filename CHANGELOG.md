@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.13.7](https://github.com/soybeanjs/soybean-ui/compare/v0.13.6...v0.13.7) (2026-03-23)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(6b41f)</samp>](https://github.com/soybeanjs/soybean-ui/commit/6b41f473)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.6](https://github.com/soybeanjs/soybean-ui/compare/v0.13.5...v0.13.6) (2026-03-22)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
