@@ -4,7 +4,7 @@ import { useOmitProps } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import { Primitive } from '../primitive';
 import { useCollectionItem } from '../roving-focus/context';
-import { useMenuContentContext } from './context';
+import { useMenuContext, useMenuContentContext } from './context';
 import type { MenuItemImplProps } from './types';
 
 defineOptions({
@@ -13,6 +13,7 @@ defineOptions({
 
 const props = defineProps<MenuItemImplProps>();
 
+const { open } = useMenuContext('MenuItemImpl');
 const { onItemEnter, onItemLeave } = useMenuContentContext('MenuItemImpl');
 
 const { setItemElement, itemProps } = useCollectionItem(() => ({ textValue: props.textValue }));
@@ -22,7 +23,7 @@ const forwardedProps = useOmitProps(props, ['disabled', 'textValue'], itemProps)
 const isFocused = shallowRef(false);
 
 const onPointerMove = (event: PointerEvent) => {
-  if (event.defaultPrevented || !isMouseEvent(event)) return;
+  if (event.defaultPrevented || !isMouseEvent(event) || !open.value) return;
 
   if (props.disabled) {
     onItemLeave(event);
