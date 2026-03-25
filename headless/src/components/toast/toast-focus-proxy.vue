@@ -21,7 +21,7 @@ const onFocus = (event: FocusEvent) => {
 </script>
 
 <template>
-  <VisuallyHidden aria-hidden="true" tabindex="0" style="position: fixed" @focus="onFocus">
+  <VisuallyHidden tabindex="0" style="position: fixed" @focus="onFocus">
     <slot />
   </VisuallyHidden>
 </template>

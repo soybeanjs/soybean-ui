@@ -302,7 +302,6 @@ onUnmounted(() => {
       v-if="announceTextContent"
       role="alert"
       :aria-live="liveType === 'foreground' ? 'assertive' : 'polite'"
-      aria-atomic="true"
     >
       {{ announceTextContent }}
     </ToastAnnounce>
@@ -314,11 +313,8 @@ onUnmounted(() => {
         :as="as"
         :as-child="asChild"
         :class="cls"
-        aria-atomic="true"
-        aria-live="off"
         :data-swipe-direction="swipeDirection"
         :data-state="dataState"
-        role="alert"
         tabindex="0"
         :style="style"
         @pointerdown.left="onPointerDown"
