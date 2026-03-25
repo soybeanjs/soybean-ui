@@ -27,6 +27,11 @@ export function useHideOthers(
       return;
     }
 
+    if (el.closest('[popover]:not(:popover-open)')) {
+      // Skip if inside a closed native popover
+      return;
+    }
+
     const isEnabled = toValue(enabled);
     // Early return if not enabled or in test mode
     if (!isEnabled || import.meta.env.MODE === 'test') {
