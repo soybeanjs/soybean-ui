@@ -46,6 +46,10 @@ export interface TooltipProviderProps {
    * @defaultValue false
    */
   ignoreNonKeyboardFocus?: boolean;
+  /**
+   * Props to be passed down to the positioner. Useful when you need to control the positioner, such as disabling it when the trigger is disabled.
+   */
+  positionerProps?: TooltipPositionerProps;
 }
 
 export type TooltipOpenDelayedContextParams = PropsToContext<TooltipProviderProps, 'skipDelayDuration'>;
@@ -81,7 +85,12 @@ export interface TooltipPopupProps extends PopperPopupProps {
 
 export interface TooltipRootContextParams extends PropsToContext<
   TooltipProviderProps,
-  'delayDuration' | 'disableHoverableContent' | 'disableClosingTrigger' | 'disabled' | 'ignoreNonKeyboardFocus'
+  | 'delayDuration'
+  | 'disableHoverableContent'
+  | 'disableClosingTrigger'
+  | 'disabled'
+  | 'ignoreNonKeyboardFocus'
+  | 'positionerProps'
 > {
   open: ShallowRef<boolean | undefined>;
   isOpenDelayed: Ref<boolean>;

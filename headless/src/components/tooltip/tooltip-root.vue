@@ -52,7 +52,8 @@ provideTooltipRootContext({
   disableClosingTrigger,
   disabled,
   ignoreNonKeyboardFocus,
-  isOpenDelayed: providerContext.isOpenDelayed
+  isOpenDelayed: providerContext.isOpenDelayed,
+  positionerProps: computed(() => tooltipConfig.value.positionerProps)
 });
 
 watch(open, isOpen => {

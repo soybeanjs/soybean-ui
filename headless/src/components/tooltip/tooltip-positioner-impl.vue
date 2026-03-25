@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onWatcherCleanup, watchPostEffect } from 'vue';
+import { computed, onWatcherCleanup, watchPostEffect } from 'vue';
+import { defu } from 'defu';
 import { useDismissableLayer, useForwardElement, useGraceArea } from '../../composables';
 import { PopperPositioner } from '../popper';
 import { TOOLTIP_OPEN } from './shared';
@@ -10,23 +11,19 @@ defineOptions({
   name: 'TooltipPositionerImpl'
 });
 
-const props = withDefaults(defineProps<TooltipPositionerImplProps>(), {
-  side: 'top',
-  sideOffset: 0,
-  align: 'center',
-  avoidCollisions: true,
-  collisionBoundary: () => [],
-  collisionPadding: 0,
-  arrowPadding: 0,
-  sticky: 'partial',
-  hideWhenDetached: false
-});
+const props = defineProps<TooltipPositionerImplProps>();
 
 const emit = defineEmits<TooltipPositionerImplEmits>();
 
 const { isPointerInTransitRef } = useTooltipOpenDelayedContext('TooltipPositionerImpl');
-const { triggerElement, popupElement, disableClosingTrigger, disableHoverableContent, onClose } =
-  useTooltipRootContext('TooltipPositionerImpl');
+const {
+  positionerProps: contextPositionerProps,
+  triggerElement,
+  popupElement,
+  disableClosingTrigger,
+  disableHoverableContent,
+  onClose
+} = useTooltipRootContext('TooltipPositionerImpl');
 
 const [positionerElement, setPositionerElement] = useForwardElement();
 
@@ -61,6 +58,20 @@ const { pointerEvents } = useDismissableLayer(positionerElement, {
   }
 });
 
+const positionerProps = computed(() =>
+  defu(props, contextPositionerProps.value ?? {}, {
+    side: 'top',
+    sideOffset: 0,
+    align: 'center',
+    avoidCollisions: true,
+    collisionBoundary: [],
+    collisionPadding: 0,
+    arrowPadding: 0,
+    sticky: 'partial',
+    hideWhenDetached: false
+  } satisfies TooltipPositionerImplProps)
+);
+
 watchPostEffect(() => {
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
@@ -85,7 +96,7 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <PopperPositioner v-bind="props" :ref="setPositionerElement">
+  <PopperPositioner v-bind="positionerProps" :ref="setPositionerElement">
     <slot />
   </PopperPositioner>
 </template>
