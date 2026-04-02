@@ -87,25 +87,25 @@
     "@internationalized/number": "^3.6.5",
     "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.23",
-    "@vue/shared": "^3.5.30",
+    "@vue/shared": "^3.5.31",
     "@vueuse/core": "^14.2.1",
     "@vueuse/integrations": "^14.2.1",
     "@vueuse/router": "^14.2.1",
     "@vueuse/shared": "^14.2.1",
     "aria-hidden": "^1.2.6",
-    "defu": "^6.1.4",
+    "defu": "^6.1.6",
     "klona": "^2.0.6",
     "ohash": "^2.0.11"
   },
   "devDependencies": {
     "@nuxt/kit": "^4.4.2",
     "@nuxt/schema": "^4.4.2",
-    "tsdown": "0.21.4",
-    "typescript": "5.9.3",
+    "tsdown": "0.21.7",
+    "typescript": "6.0.2",
     "unplugin-vue": "7.1.1",
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.30",
+    "vue": "3.5.31",
     "vue-router": "5.0.4"
   },
   "peerDependencies": {
@@ -127,5 +127,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.32.1"
+  "packageManager": "pnpm@10.33.0"
 }
