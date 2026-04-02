@@ -48,11 +48,11 @@ provideAccordionUi(ui);
 
 <template>
   <AccordionRoot v-bind="forwardedProps" v-on="listeners">
-    <template v-for="item in props.items" :key="item.value">
+    <template v-for="item in items" :key="item.value">
       <slot name="item" :item="item" :model-value="modelValue">
-        <AccordionItem v-slot="{ open }" v-bind="props.itemProps" :value="item.value" :disabled="item.disabled">
-          <AccordionHeader v-bind="props.headerProps">
-            <AccordionTrigger v-bind="props.triggerProps">
+        <AccordionItem v-slot="{ open }" v-bind="itemProps" :value="item.value" :disabled="item.disabled">
+          <AccordionHeader v-bind="headerProps">
+            <AccordionTrigger v-bind="triggerProps">
               <slot name="leading" :item="item" :model-value="modelValue" :open="open">
                 <Icon :icon="item.icon" :class="ui.triggerLeadingIcon" />
               </slot>
@@ -62,7 +62,7 @@ provideAccordionUi(ui);
               </slot>
             </AccordionTrigger>
           </AccordionHeader>
-          <AccordionContent v-bind="props.contentProps">
+          <AccordionContent v-bind="contentProps">
             <slot name="content" :item="item" :model-value="modelValue" :open="open">
               <p :class="ui.description">{{ item.description }}</p>
             </slot>
