@@ -1,5 +1,37 @@
 # Changelog
 
+## [v0.14.0](https://github.com/soybeanjs/soybean-ui/compare/v0.13.8...v0.14.0) (2026-04-03)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **tooltip**: enhance positioner props and context integration &nbsp;-&nbsp; by @soybeanjs [<samp>(5ce78)</samp>](https://github.com/soybeanjs/soybean-ui/commit/5ce78414)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **hide-others**:
+  - add check to skip hiding elements inside closed native popovers &nbsp;-&nbsp; by @soybeanjs [<samp>(a4cf8)</samp>](https://github.com/soybeanjs/soybean-ui/commit/a4cf8226)
+- **menu-item**:
+  - integrate menu context for pointer event handling &nbsp;-&nbsp; by @soybeanjs [<samp>(2457e)</samp>](https://github.com/soybeanjs/soybean-ui/commit/2457ecc2)
+- **toast**:
+  - add feature attribute to VisuallyHidden component &nbsp;-&nbsp; by @soybeanjs [<samp>(4dc6d)</samp>](https://github.com/soybeanjs/soybean-ui/commit/4dc6d5f8)
+  - remove unnecessary aria attributes from VisuallyHidden and ToastAnnounce components &nbsp;-&nbsp; by @soybeanjs [<samp>(044dc)</samp>](https://github.com/soybeanjs/soybean-ui/commit/044dcd43)
+
+### &nbsp;&nbsp;&nbsp;🛠 Optimizations
+
+- **components**: remove props prefix in template &nbsp;-&nbsp; by @soybeanjs [<samp>(dd253)</samp>](https://github.com/soybeanjs/soybean-ui/commit/dd253c39)
+
+### &nbsp;&nbsp;&nbsp;💅 Refactors
+
+- **menu**: enhance menu item radio and checkbox components &nbsp;-&nbsp; by @soybeanjs [<samp>(233ff)</samp>](https://github.com/soybeanjs/soybean-ui/commit/233ffade)
+
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- **deps**: update deps &nbsp;-&nbsp; by @soybeanjs [<samp>(1cebe)</samp>](https://github.com/soybeanjs/soybean-ui/commit/1cebe04a)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.13.8](https://github.com/soybeanjs/soybean-ui/compare/v0.13.7...v0.13.8) (2026-03-24)
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
