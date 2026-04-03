@@ -87,7 +87,7 @@
     "@internationalized/number": "^3.6.5",
     "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.23",
-    "@vue/shared": "^3.5.31",
+    "@vue/shared": "^3.5.32",
     "@vueuse/core": "^14.2.1",
     "@vueuse/integrations": "^14.2.1",
     "@vueuse/router": "^14.2.1",
@@ -105,7 +105,7 @@
     "unplugin-vue": "7.1.1",
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.31",
+    "vue": "3.5.32",
     "vue-router": "5.0.4"
   },
   "peerDependencies": {
