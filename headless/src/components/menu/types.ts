@@ -84,7 +84,7 @@ export type MenuItemEmits = {
 };
 
 // MenuCheckboxItem
-export interface MenuCheckboxItemProps extends MenuItemProps {
+export interface MenuCheckboxItemProps extends MenuItemImplProps {
   /** The controlled checked state of the item. Can be used as `v-model`. */
   modelValue?: CheckedState;
   /**
@@ -118,7 +118,7 @@ export type MenuCheckboxGroupEmits<T extends DefinedValue = DefinedValue> = {
 };
 
 // MenuRadioItem
-export interface MenuRadioItemProps extends MenuItemProps {
+export interface MenuRadioItemProps extends MenuItemImplProps {
   /** The value given as data when submitted with a `name`. */
   value: NonNullable<AcceptableBooleanValue>;
 }

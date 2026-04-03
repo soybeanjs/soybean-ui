@@ -48,8 +48,8 @@ export const formVariants = tv({
       true: {
         field: 'justify-between items-center',
         fieldArray: 'justify-between',
-        label: 'justify-end',
-        control: 'flex-1',
+        label: 'shrink-0 justify-end',
+        control: 'grow-1 shrink-1 min-w-0',
         description: 'w-full',
         error: 'absolute left-0 top-full w-full'
       },

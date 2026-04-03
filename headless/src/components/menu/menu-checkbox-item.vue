@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
+import { computed, nextTick } from 'vue';
+import { SELECTION_KEYS } from '../../constants';
+import { useControllableState, useOmitProps, useForwardElement } from '../../composables';
 import { getCheckedState, isIndeterminate, isNullish, isValueEqualOrExist } from '../../shared';
 import type { CheckedState } from '../../types';
-import { provideMenuItemIndicatorContext, useMenuCheckboxGroupContext, useMenuUi } from './context';
-import MenuItem from './menu-item.vue';
+import {
+  useMenuContentContext,
+  useMenuRootContext,
+  provideMenuItemIndicatorContext,
+  useMenuCheckboxGroupContext,
+  useMenuUi
+} from './context';
+import { ITEM_SELECT } from './shared';
+import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuCheckboxItemEmits, MenuCheckboxItemProps } from './types';
 
 defineOptions({
@@ -16,6 +24,10 @@ const props = defineProps<MenuCheckboxItemProps>();
 const emit = defineEmits<MenuCheckboxItemEmits>();
 
 const forwardedProps = useOmitProps(props, ['modelValue', 'value', 'disabled']);
+
+const [menuItemElement, setMenuItemElement] = useForwardElement();
+const { onClose } = useMenuRootContext('MenuItem');
+const { searchRef } = useMenuContentContext('MenuItem');
 
 const cls = useMenuUi('checkboxItem');
 
@@ -47,7 +59,7 @@ const dataState = computed(() => getCheckedState(state.value));
 
 const ariaChecked = computed(() => (isIndeterminate(state.value) ? 'mixed' : state.value));
 
-const onSelect = (event: Event) => {
+const handleSelect = (event: Event) => {
   emit('select', event);
 
   if (isIndeterminate(modelValue.value)) {
@@ -62,21 +74,75 @@ const onSelect = (event: Event) => {
   }
 };
 
+let isPointerDownRef = false;
+
+const onSelect = async () => {
+  if (props.disabled || !menuItemElement.value) return;
+
+  const itemSelectEvent = new CustomEvent(ITEM_SELECT, {
+    bubbles: true,
+    cancelable: true
+  });
+  handleSelect(itemSelectEvent);
+  // let select event finish
+  await nextTick();
+  if (itemSelectEvent.defaultPrevented) {
+    isPointerDownRef = false;
+  } else {
+    onClose();
+  }
+};
+
+const onPointerDown = () => {
+  isPointerDownRef = true;
+};
+
+const onPointerUp = async (event: PointerEvent) => {
+  await nextTick();
+  if (event.defaultPrevented) return;
+  // Pointer down can move to a different menu item which should activate it on pointer up.
+  // We dispatch a click for selection to allow composition with click based triggers and to
+  // prevent Firefox from getting stuck in text selection mode when the menu closes.
+  if (isPointerDownRef) return;
+  (event.currentTarget as HTMLElement)?.click();
+};
+
+const onKeyDown = async (event: KeyboardEvent) => {
+  if (props.disabled) return;
+
+  const isTypingAhead = searchRef.value !== '';
+  if (isTypingAhead && event.key === ' ') return;
+
+  if (!SELECTION_KEYS.includes(event.key)) return;
+  (event.currentTarget as HTMLElement)?.click();
+  /**
+   * We prevent default browser behavior for selection keys as they should trigger a selection only:
+   *
+   * - prevents space from scrolling the page.
+   * - if keydown causes focus to move, prevents keydown from firing on the new target.
+   */
+  event.preventDefault();
+};
+
 provideMenuItemIndicatorContext({
   modelValue: state
 });
 </script>
 
 <template>
-  <MenuItem
+  <MenuItemImpl
     v-bind="forwardedProps"
+    :ref="setMenuItemElement"
     :class="cls"
     role="menu-checkbox-item"
     :disabled="disabled"
     :data-state="dataState"
     :aria-checked="ariaChecked"
-    @select="onSelect"
+    @click="onSelect"
+    @pointerdown="onPointerDown"
+    @pointerup="onPointerUp"
+    @keydown="onKeyDown"
   >
     <slot :model-value="state" />
-  </MenuItem>
+  </MenuItemImpl>
 </template>
