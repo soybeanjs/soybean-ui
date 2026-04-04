@@ -254,7 +254,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 58  | 2        | Slider          |              |                          |                          |
 | 59  | 2        | Table           |              |                          |                          |
 | 60  | 2        | Toggle          |              |                          |                          |
-| 61  | 2        | ToggleGroup     |              |                          |                          |
+| 61  | 2        | ToggleGroup     | ✅ Completed |                          |                          |
 | 62  | 3        | BottomSheet     |              | Drawer(shadcn-ui)        |                          |
 | 63  | 3        | Calendar        |              |                          | v-calendar               |
 | 64  | 3        | Carousel        |              |                          |                          |
