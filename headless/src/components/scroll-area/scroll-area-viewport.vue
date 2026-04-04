@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, useAttrs } from 'vue';
+import { computed, useAttrs } from 'vue';
 import type { CSSProperties } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<ScrollAreaViewportProps>(), {
 const attrs = useAttrs();
 const nonce = useNonce(() => props.nonce);
 
-const { viewportElement, scrollbarXEnabled, scrollbarYEnabled, onViewportChange, onContentChange } =
+const { scrollbarXEnabled, scrollbarYEnabled, onViewportChange, onContentChange } =
   useScrollAreaRootContext('ScrollAreaViewport');
 
 const cls = useScrollAreaUi('viewport');
@@ -30,8 +30,8 @@ const viewportProps = computed(() => ({
   tabindex: forwardedProps.value.tabindex ?? 0
 }));
 
-const [localViewportElement, setViewportElement] = useForwardElement<HTMLElement>(onViewportChange);
-const [contentElement, setContentElement] = useForwardElement<HTMLElement>(onContentChange);
+const [, setViewportElement] = useForwardElement<HTMLElement>(onViewportChange);
+const [, setContentElement] = useForwardElement<HTMLElement>(onContentChange);
 
 const style = computed<CSSProperties>(() => ({
   overflowX: scrollbarXEnabled.value ? 'scroll' : 'hidden',
@@ -42,15 +42,6 @@ const contentStyle = computed<CSSProperties>(() => ({
   minWidth: scrollbarXEnabled.value ? 'fit-content' : undefined
 }));
 
-onMounted(() => {
-  if (localViewportElement.value && viewportElement.value !== localViewportElement.value) {
-    onViewportChange(localViewportElement.value);
-  }
-
-  if (contentElement.value) {
-    onContentChange(contentElement.value);
-  }
-});
 </script>
 
 <template>

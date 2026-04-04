@@ -246,18 +246,17 @@ watch(
   { immediate: true }
 );
 
-watch(
-  () => isHovering.value,
-  value => {
-    if (value && type.value === 'glimpse') {
-      triggerTransientVisibility();
+  watch(
+    () => isHovering.value,
+    value => {
+      if (value && type.value === 'glimpse') {
+        triggerTransientVisibility();
+      }
     }
-  },
-  { immediate: true }
-);
+  );
 
-useResizeObserver(
-  computed(() => [viewportElement.value, contentElement.value, scrollbarElement.value]),
+  useResizeObserver(
+  computed(() => [viewportElement.value, contentElement.value, scrollbarElement.value].filter(Boolean)),
   updateMetrics
 );
 
