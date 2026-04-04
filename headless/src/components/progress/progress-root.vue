@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<ProgressRootProps>(), {
   getValueLabel: (value: number | null | undefined, max: number) => {
     const safeMax = typeof max === 'number' && max > 0 ? max : DEFAULT_MAX;
 
-    return typeof value === 'number' ? `${Math.round((value / safeMax) * DEFAULT_MAX)}%` : undefined;
+    return typeof value === 'number' ? `${Math.round((value / safeMax) * 100)}%` : undefined;
   },
   getValueText: undefined
 });
