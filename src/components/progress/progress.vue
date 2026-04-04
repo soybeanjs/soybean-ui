@@ -22,6 +22,8 @@ const listeners = useForwardListeners(emit);
 
 const { dir } = useConfigProvider('Progress');
 
+const getIndicatorStyle = (valuePercent: number | null) => getProgressIndicatorStyle(valuePercent, dir.value);
+
 const ui = computed(() => {
   const variants = progressVariants({
     color: props.color,
@@ -36,7 +38,7 @@ provideProgressUi(ui);
 
 <template>
   <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <ProgressIndicator v-bind="indicatorProps" :style="getProgressIndicatorStyle(slotProps.valuePercent, dir)">
+    <ProgressIndicator v-bind="indicatorProps" :style="getIndicatorStyle(slotProps.valuePercent)">
       <slot v-bind="slotProps" />
     </ProgressIndicator>
   </ProgressRoot>

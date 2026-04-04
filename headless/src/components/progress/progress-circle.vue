@@ -26,7 +26,6 @@ const attrs = useAttrs();
 const circleCls = useProgressUi('circle');
 const trackCls = useProgressUi('track');
 const indicatorCls = useProgressUi('indicator');
-const labelCls = useProgressUi('label');
 
 const { max, modelValue, progressState, valuePercent } = useProgressRootContext('ProgressCircle');
 
@@ -67,7 +66,5 @@ const circumference = computed(() => 2 * Math.PI * radius.value);
       :transform="`rotate(-90 ${PROGRESS_CIRCLE_CENTER} ${PROGRESS_CIRCLE_CENTER})`"
     />
   </svg>
-  <div v-if="$slots.default" :class="labelCls">
-    <slot :model-value="modelValue" :max="max" :progress-state="progressState" :value-percent="valuePercent" />
-  </div>
+  <slot :model-value="modelValue" :max="max" :progress-state="progressState" :value-percent="valuePercent" />
 </template>

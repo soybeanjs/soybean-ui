@@ -12,8 +12,6 @@ defineOptions({
 
 const props = defineProps<ProgressCircleProps>();
 
-const emit = defineEmits<ProgressCircleEmits>();
-
 type Slots = {
   default?: (props: {
     modelValue: ProgressCircleProps['modelValue'];
@@ -23,7 +21,9 @@ type Slots = {
   }) => any;
 };
 
-defineSlots<Slots>();
+const emit = defineEmits<ProgressCircleEmits>();
+
+const slots = defineSlots<Slots>();
 
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'strokeWidth']);
 
@@ -38,13 +38,17 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
+const hasDefaultSlot = computed(() => Boolean(slots.default));
+
 provideProgressUi(ui);
 </script>
 
 <template>
   <ProgressRoot v-bind="forwardedProps" v-on="listeners">
     <ProgressCircle v-slot="slotProps" :stroke-width="strokeWidth">
-      <slot v-bind="slotProps" />
+      <div v-if="hasDefaultSlot" :class="ui.label">
+        <slot v-bind="slotProps" />
+      </div>
     </ProgressCircle>
   </ProgressRoot>
 </template>
