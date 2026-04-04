@@ -98,7 +98,7 @@ describe('SSlider', () => {
       wrapper.unmount();
     });
 
-    it('emits update:modelValue from track pointer interaction', async () => {
+    it('emits update:modelValue while dragging from the track', async () => {
       const wrapper = mount(SSlider, {
         props: { modelValue: [0], thumbProps: { 'aria-label': 'Volume' } },
         attachTo: document.body
@@ -107,10 +107,12 @@ describe('SSlider', () => {
       const track = wrapper.find('[data-slot="slider-track"]');
 
       mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
-      dispatchPointerEvent(track.element, 'pointerdown', { clientX: 75, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(track.element, 'pointerdown', { clientX: 25, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointermove', { clientX: 75, clientY: 5, pointerId: 1 });
       dispatchPointerEvent(document, 'pointerup', { clientX: 75, clientY: 5, pointerId: 1 });
 
-      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([75]);
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([25]);
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual([75]);
       expect(wrapper.emitted('valueCommit')?.[0]?.[0]).toEqual([75]);
       wrapper.unmount();
     });

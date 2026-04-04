@@ -293,8 +293,8 @@ function moveDrag(event: PointerEvent) {
   updateValueAtIndex(value + dragOffset.value, activeThumbIndex.value);
 }
 
-function endDrag(maybePointerId?: number) {
-  if (disabled.value || (typeof maybePointerId === 'number' && !isDraggingPointer(maybePointerId))) {
+function endDrag(pointerId?: number) {
+  if (disabled.value || (typeof pointerId === 'number' && !isDraggingPointer(pointerId))) {
     return;
   }
 
