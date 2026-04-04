@@ -1,6 +1,6 @@
 ---
 name: soybean-ui-component-development
-description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn。DO NOT USE FOR：纯文档编写、路由/配置修改、样式主题调整。'
+description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
 argument-hint: '可选：组件名，例如 button、dialog、select'
 ---
 
@@ -334,6 +334,168 @@ export * from './components/{component}';
 // src/index.ts
 export * from './components/{component}';
 ```
+
+---
+
+## Phase 4：Playground 示例
+
+目录：`playground/examples/{component}/`
+
+### 目录规范
+
+每个演示场景对应一个 `.vue` 文件，`index.vue` 作为入口汇总所有场景：
+
+```
+playground/examples/{component}/
+├── index.vue        ← 入口：用 SCard 包裹所有子示例
+├── basic.vue        ← 基础用法（必须有）
+├── color.vue        ← 颜色变体（有 color prop 时）
+├── size.vue         ← 尺寸变体（有 size prop 时）
+├── disabled.vue     ← 禁用状态
+└── custom-styling.vue  ← 自定义样式（ui prop）
+```
+
+> Playground 的路由**自动发现** `examples/**/index.vue`（排除 `_` 前缀目录）。新建目录后无需手动注册路由。
+
+### index.vue 模板
+
+```vue
+<script setup lang="ts">
+import { SCard } from '@soybeanjs/ui';
+import Demo{Name}Basic from './basic.vue';
+import Demo{Name}Color from './color.vue';
+import Demo{Name}Size from './size.vue';
+import Demo{Name}Disabled from './disabled.vue';
+</script>
+
+<template>
+  <SCard title="{Name}" split :ui="{ content: 'flex-c gap-4' }">
+    <Demo{Name}Basic />
+    <Demo{Name}Color />
+    <Demo{Name}Size />
+    <Demo{Name}Disabled />
+  </SCard>
+</template>
+```
+
+### 子示例模板
+
+```vue
+<script setup lang="ts">
+import { S{Name} } from '@soybeanjs/ui';
+import type { ThemeColor } from '@soybeanjs/ui';
+
+const colors: ThemeColor[] = ['primary', 'destructive', 'success', 'warning', 'info', 'carbon', 'secondary', 'accent'];
+</script>
+
+<template>
+  <div>
+    <h3 class="playground-title">Color</h3>
+    <!-- ← 固定 class，文档系统会用 -->
+    <div class="flex flex-wrap gap-3">
+      <S{Name} v-for="color in colors" :key="color" :color="color">{{ color }}</S{Name}>
+    </div>
+  </div>
+</template>
+```
+
+**规则**：
+
+- 每个文件只演示**一个特性**，文件名即特性名（kebab-case）
+- `<h3 class="playground-title">` 是固定写法，文档系统用于生成 Demo 标题
+- 从 `@soybeanjs/ui` 导入，而非直接从源码路径
+- 受控状态用 `ref`/`shallowRef`，数据用 `const`（不可变）
+
+---
+
+## Phase 5：组件文档
+
+目录（中英文各一份）：
+
+- `docs/src/docs/zh-CN/components/{component}.md`
+- `docs/src/docs/en/components/{component}.md`
+
+### 文档结构模板（中文）
+
+````markdown
+# {中文组件名}
+
+## 概述
+
+一句话描述组件的用途。
+
+## 用法
+
+```vue
+<script setup lang="ts">
+import { S{Name} } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <S{Name}>内容</S{Name}>
+</template>
+```
+
+## 演示
+
+```playground
+basic
+color
+size
+disabled
+custom-styling
+```
+
+## API
+
+### 属性
+
+<DataTable preset="props" :data="[
+  { name: 'class', type: 'ClassValue', default: '-', description: '根元素自定义类名' },
+  { name: 'color', type: 'ThemeColor', default: `'primary'`, description: '颜色' },
+  { name: 'size', type: 'ThemeSize', default: `'md'`, description: '尺寸' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用' },
+  { name: 'ui', type: 'Ui', default: '{}', description: '为内部元素自定义类名' },
+]"/>
+
+### 事件
+
+<DataTable preset="emits" :data="[
+  { name: 'update:modelValue', parameters: '(value: string) => void', description: '值变更时触发' },
+]"/>
+
+### 插槽
+
+<DataTable preset="slots" :data="[
+  { name: 'default', parameters: '-', description: '默认内容', required: true },
+]"/>
+
+### 类型
+
+<TypeTable :data="[
+  {
+    name: 'Ui',
+    description: '自定义类名映射',
+    fields: [
+      { name: 'root', type: 'string', description: '根容器类名' },
+      { name: 'trigger', type: 'string', description: '触发器类名' },
+      { name: 'content', type: 'string', description: '内容区域类名' },
+    ],
+  }
+]"/>
+````
+
+### 关键规则
+
+| 规则                       | 说明                                                   |
+| -------------------------- | ------------------------------------------------------ |
+| `playground` 代码块        | 内容为文件名（无扩展名），每行一个；顺序即文档展示顺序 |
+| `DataTable preset="props"` | 固定写法，文档系统内置渲染器                           |
+| `DataTable preset="emits"` | 事件表格                                               |
+| `DataTable preset="slots"` | 插槽表格                                               |
+| `TypeTable`                | 自定义类型说明表格                                     |
+| `Ui` 类型字段              | 必须与 `{Name}UiSlot` 完全对应                         |
+| 中英文同步                 | 两份 `.md` 内容结构相同，仅文字语言不同                |
 
 ---
 

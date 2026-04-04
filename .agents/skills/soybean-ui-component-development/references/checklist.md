@@ -34,3 +34,23 @@
 - [ ] 无 `as any` / `@ts-ignore` / `@ts-expect-error`
 - [ ] 运行 `pnpm typecheck` 无新增报错
 - [ ] 运行 `pnpm lint` 无新增报错
+
+## Playground 示例 (`playground/examples/{component}/`)
+
+- [ ] 目录已创建，文件名为 kebab-case
+- [ ] `index.vue` 用 `<SCard title="{Name}" split :ui="{ content: 'flex-c gap-4' }">` 包裹所有子示例
+- [ ] 每个特性对应独立 `.vue` 文件（`basic.vue`、`color.vue`、`size.vue` 等）
+- [ ] 每个子示例有 `<h3 class="playground-title">` 标题
+- [ ] 所有示例从 `@soybeanjs/ui` 导入（非源码路径）
+- [ ] 在 playground 中运行 `pnpm dev` 能看到新组件 Tab 并正常渲染
+
+## 文档 (`docs/src/docs/`)
+
+- [ ] 中英文文档各一份：`zh-CN/components/{component}.md` 和 `en/components/{component}.md`
+- [ ] 文档包含：概述、用法代码块、演示（playground 代码块）、API 表格
+- [ ] `playground` 代码块中的文件名与实际 `playground/examples/{component}/` 下的文件名一一对应
+- [ ] `DataTable preset="props"` 包含所有公开 props（含 `class`、`ui`）
+- [ ] `DataTable preset="emits"` 包含所有事件
+- [ ] `DataTable preset="slots"` 包含所有插槽
+- [ ] `TypeTable` 列出 `Ui` 类型的所有字段（与 `{Name}UiSlot` 对应）
+- [ ] 中英文内容结构相同，仅语言不同
