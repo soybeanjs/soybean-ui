@@ -15,8 +15,11 @@ const DEFAULT_MAX = 100;
 
 const props = withDefaults(defineProps<ProgressRootProps>(), {
   as: 'div',
-  getValueLabel: (value: number | null | undefined, max: number) =>
-    typeof value === 'number' ? `${Math.round((value / max) * DEFAULT_MAX)}%` : undefined,
+  getValueLabel: (value: number | null | undefined, max: number) => {
+    const safeMax = typeof max === 'number' && max > 0 ? max : DEFAULT_MAX;
+
+    return typeof value === 'number' ? `${Math.round((value / safeMax) * DEFAULT_MAX)}%` : undefined;
+  },
   getValueText: undefined
 });
 
@@ -100,9 +103,15 @@ const valueLabel = computed(() => props.getValueLabel?.(normalizedModelValue.val
 
 const valueText = computed(() => props.getValueText?.(normalizedModelValue.value, normalizedMax.value));
 
-const ariaLabel = computed(() => (attrs['aria-label'] as string | undefined) ?? valueLabel.value);
+function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
+  const value = attrs[name];
 
-const ariaValueText = computed(() => (attrs['aria-valuetext'] as string | undefined) ?? valueText.value);
+  return typeof value === 'string' ? value : undefined;
+}
+
+const ariaLabel = computed(() => getStringAttr('aria-label') ?? valueLabel.value);
+
+const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? valueText.value);
 
 watch(
   normalizedMax,
