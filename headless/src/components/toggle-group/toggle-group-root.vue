@@ -24,11 +24,17 @@ const emit = defineEmits<ToggleGroupRootEmits<M, T>>();
 
 const cls = useToggleGroupUi('root');
 
-const rovingFocusProps = computed(() => {
+function getRovingFocusProps() {
   const { rovingFocus, loop, dir, orientation } = props;
 
-  return rovingFocus ? { loop, dir, orientation } : {};
-});
+  if (!rovingFocus) {
+    return {};
+  }
+
+  return { loop, dir, orientation };
+}
+
+const rovingFocusProps = computed(getRovingFocusProps);
 
 const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelection<M, T>(
   props,

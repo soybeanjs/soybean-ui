@@ -4,7 +4,7 @@ export { default as SToggleGroupItem } from './toggle-group-item.vue';
 export type {
   ToggleGroupRootProps,
   ToggleGroupRootEmits,
-  ToggleGroupItemProps as HeadlessToggleGroupItemProps,
+  ToggleGroupItemProps,
   ToggleGroupUiSlot,
   ToggleGroupUi
 } from '@soybeanjs/headless/toggle-group';

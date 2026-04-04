@@ -1,7 +1,6 @@
 import type {
   ClassValue,
   DefinedValue,
-  ToggleGroupItemProps as HeadlessToggleGroupItemProps,
   ToggleGroupRootEmits as HeadlessToggleGroupRootEmits,
   ToggleGroupRootProps as HeadlessToggleGroupRootProps,
   ToggleGroupUi
@@ -18,7 +17,3 @@ export interface ToggleGroupProps<M extends boolean = false, T extends DefinedVa
 }
 
 export type ToggleGroupEmits<M extends boolean = false, T extends DefinedValue = string> = HeadlessToggleGroupRootEmits<M, T>;
-
-export interface ToggleGroupItemProps<T extends DefinedValue = string> extends HeadlessToggleGroupItemProps<T> {
-  class?: ClassValue;
-}
