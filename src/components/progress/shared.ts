@@ -18,7 +18,7 @@ export const DEFAULT_CIRCLE_PROGRESS_STROKE_WIDTH = 8;
 
 const INDETERMINATE_CIRCLE_PROGRESS_RATIO = 0.35;
 
-const MAX_CIRCLE_PROGRESS_STROKE_WIDTH = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
+const MAX_CIRCLE_PROGRESS_STROKE_WIDTH = CIRCLE_PROGRESS_VIEWBOX_SIZE / 4;
 
 export function getValidCircleProgressStrokeWidth(value: number | undefined) {
   if (typeof value !== 'number' || Number.isNaN(value) || value <= 0 || value > MAX_CIRCLE_PROGRESS_STROKE_WIDTH) {
