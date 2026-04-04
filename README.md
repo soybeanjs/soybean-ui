@@ -15,10 +15,75 @@ SoybeanUI is an elegant, modern, accessible and high-quality UI component librar
 
 ## 📚 Architecture
 
-SoybeanUI consists of two main packages:
+SoybeanUI is built on a strict **two-layer separation** model:
 
-- **@soybeanjs/headless**: The logic layer. It handles state management, accessibility (A11y), keyboard interactions, and focus management. It is completely unstyled, giving you maximum control if you want to build your own design system.
-- **@soybeanjs/ui**: The presentation layer. It wraps the headless components with beautiful, customizable styles using UnoCSS (via `tailwind-variants`). It is ready to use out of the box.
+```
+┌─────────────────────────────────────────┐
+│           @soybeanjs/ui (src/)          │
+│  S-prefixed components   (SButton…)     │
+│  UnoCSS classes · tailwind-variants     │
+│  provideXUi(ui)  ──────────────────┐    │
+└────────────────────────────────────┼────┘
+                                     │ style injection
+┌────────────────────────────────────▼────┐
+│        @soybeanjs/headless (headless/)  │
+│  Logic · State · A11y · Keyboard nav    │
+│  useUiContext() reads injected classes  │
+│  Zero styles — works with any CSS       │
+└─────────────────────────────────────────┘
+```
+
+### Packages
+
+| Package                 | Role                              | Components                    |
+| ----------------------- | --------------------------------- | ----------------------------- |
+| **@soybeanjs/headless** | Logic, state, a11y. Zero styles.  | 50 primitives, 26 composables |
+| **@soybeanjs/ui**       | Styled wrappers. UnoCSS + `tv()`. | 48 `S`-prefixed components    |
+
+**Data flow is strictly one-way**: `headless` → `src`. The styled layer never imports from headless's internals — it injects style tokens via `provideXUi(computedUi)` which headless components read through `useUiContext()`.
+
+### Style Injection
+
+Every multi-slot headless component exposes a `provide{Name}Ui` function. The styled wrapper computes classes using `tailwind-variants` and injects them:
+
+```ts
+// In the styled wrapper (src/)
+const ui = computed(() =>
+  mergeSlotVariants(
+    accordionVariants({ size: props.size }), // tv() output
+    props.ui, // user overrides
+    { root: props.class } // class prop
+  )
+);
+provideAccordionUi(ui); // headless reads this via useAccordionUi()
+```
+
+### Theme System
+
+- **`ThemeColor`** — 8 semantic colors: `primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
+- **`ThemeSize`** — 6 sizes: `xs` · `sm` · `md` · `lg` · `xl` · `2xl` (base 16px at `md`)
+- **`ConfigProvider`** — sets global `dir`, `locale`, `nonce`, and default `tooltip` config for the entire component tree
+- **`cn()`** — Tailwind-aware class merge (`clsx` + `tailwind-merge`), used for conflict-free class composition
+
+### Package Exports
+
+**@soybeanjs/headless** ships fine-grained sub-paths:
+
+```ts
+import { AccordionRoot } from '@soybeanjs/headless'; // all components
+import { useControllableState } from '@soybeanjs/headless/composables'; // 26 composables
+import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
+import * as Headless from '@soybeanjs/headless/namespaced'; // namespace object
+import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
+```
+
+**@soybeanjs/ui** exports:
+
+```ts
+import { SButton, SAccordion } from '@soybeanjs/ui'; // all components
+import '@soybeanjs/ui/styles.css'; // pre-built UnoCSS stylesheet
+// Also: @soybeanjs/ui/nuxt · @soybeanjs/ui/resolver
+```
 
 ## 📦 Installation
 
@@ -102,11 +167,13 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ## ✨ Features
 
-- **Accessible**: Follows WAI-ARIA patterns for accessibility.
-- **Headless**: Logic and styles are separated.
-- **Type Safe**: Written in TypeScript with full type support.
-- **Customizable**: Built with UnoCSS and `tailwind-variants` for easy theming.
-- **Lightweight**: Tree-shakable components.
+- **Accessible**: Follows WAI-ARIA patterns for roles, focus management, and keyboard navigation.
+- **Headless-first**: Logic and styles are fully separated — use `@soybeanjs/headless` alone to build any design system.
+- **Type Safe**: Written in strict TypeScript. All props, emits, slots, and context values are typed.
+- **Customizable at every level**: Override individual slot classes via the `ui` prop, or swap the entire style layer.
+- **Lightweight & Tree-shakable**: Import only the components you use. Each component is individually tree-shakable.
+- **Nuxt ready**: First-class Nuxt module with auto-registration (`@soybeanjs/ui/nuxt`).
+- **unplugin support**: Auto-import resolver for `unplugin-vue-components` (`@soybeanjs/ui/resolver`).
 
 ## 💝 Credits
 

@@ -15,10 +15,75 @@ SoybeanUI 是一个优雅、现代、可访问且高质量的 UI 组件库，具
 
 ## 📚 架构
 
-SoybeanUI 由两个主要包组成：
+SoybeanUI 采用严格的**双层分离**设计：
 
-- **@soybeanjs/headless**: 逻辑层。它处理状态管理、可访问性 (A11y)、键盘交互和焦点管理。它完全不包含样式，如果您想构建自己的设计系统，它能为您提供最大的控制权。
-- **@soybeanjs/ui**: 表现层。它使用 UnoCSS (通过 `tailwind-variants`) 为 Headless 组件包装了美观、可定制的样式。它开箱即用。
+```
+┌─────────────────────────────────────────┐
+│           @soybeanjs/ui (src/)          │
+│  S 前缀组件   (SButton、SDialog…)        │
+│  UnoCSS 类名 · tailwind-variants         │
+│  provideXUi(ui)  ──────────────────┐    │
+└────────────────────────────────────┼────┘
+                                     │ 样式注入
+┌────────────────────────────────────▼────┐
+│     @soybeanjs/headless (headless/)     │
+│  逻辑 · 状态 · A11y · 键盘导航             │
+│  useUiContext() 读取注入的样式类名      │
+│  零样式 — 可配合任意 CSS 方案         │
+└─────────────────────────────────────────┘
+```
+
+### 包结构
+
+| 包                      | 职责                        | 组件数量                      |
+| ----------------------- | --------------------------- | ----------------------------- |
+| **@soybeanjs/headless** | 逻辑、状态、a11y，零样式    | 50 个原语件，26 个 composable |
+| **@soybeanjs/ui**       | 样式包装层。UnoCSS + `tv()` | 48 个带 `S` 前缀的组件        |
+
+**数据流严格单向**：`headless` → `src`。样式层不会导入 headless 的内部实现，而是通过 `provideXUi(computedUi)` 注入样式 token，headless 组件再通过 `useUiContext()` 读取。
+
+### 样式注入机制
+
+每个多橪位的 headless 组件都有对应的 `provide{Name}Ui` 函数。样式层通过 `tailwind-variants` 计算类名后注入：
+
+```ts
+// 样式包装层 (src/) 中
+const ui = computed(() =>
+  mergeSlotVariants(
+    accordionVariants({ size: props.size }), // tv() 计算结果
+    props.ui, // 用户自定义覆盖
+    { root: props.class } // class prop 合并
+  )
+);
+provideAccordionUi(ui); // headless 通过 useAccordionUi() 读取
+```
+
+### 主题系统
+
+- **`ThemeColor`** — 8 种语义色：`primary` · `destructive` · `success` · `warning` · `info` · `carbon` · `secondary` · `accent`
+- **`ThemeSize`** — 6 种尺寸：`xs` · `sm` · `md` · `lg` · `xl` · `2xl`（基准尺寸 `md` = 16px）
+- **`ConfigProvider`** — 全局设置 `dir`、`locale`、`nonce` 及默认 `tooltip` 配置，应用于整个组件树
+- **`cn()`** — Tailwind 感知的类名合并工具（`clsx` + `tailwind-merge`），解决类名冲突
+
+### 包导出
+
+**@soybeanjs/headless** 提供精细化子路径导出：
+
+```ts
+import { AccordionRoot } from '@soybeanjs/headless'; // 所有组件
+import { useControllableState } from '@soybeanjs/headless/composables'; // 26 个 composable
+import { transformPropsToContext } from '@soybeanjs/headless/shared'; // 纯 TS 工具
+import * as Headless from '@soybeanjs/headless/namespaced'; // 命名空间导入
+import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // 单组件类型
+```
+
+**@soybeanjs/ui** 导出：
+
+```ts
+import { SButton, SAccordion } from '@soybeanjs/ui'; // 所有组件
+import '@soybeanjs/ui/styles.css'; // 预构建的 UnoCSS 样式表
+// 同时提供：@soybeanjs/ui/nuxt · @soybeanjs/ui/resolver
+```
 
 ## 📦 安装
 
@@ -102,11 +167,13 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ## ✨ 特性
 
-- **可访问性**: 遵循 WAI-ARIA 模式以实现可访问性。
-- **Headless**: 逻辑与样式分离。
-- **类型安全**: 使用 TypeScript 编写，提供完整的类型支持。
-- **可定制**: 基于 UnoCSS 和 `tailwind-variants` 构建，易于主题化。
-- **轻量级**: 支持 Tree-shaking 的组件。
+- **可访问性**：遵循 WAI-ARIA 模式，内置角色、焦点管理与键盘导航。
+- **Headless 优先**：逻辑与样式完全分离—单独使用 `@soybeanjs/headless` 可构建任意设计系统。
+- **类型安全**：严格 TypeScript 编写，所有 props、emits、slot 及 context 均有完整类型。
+- **多级自定义**：通过 `ui` prop 覆盖单个橪位类名，也可替换整个样式层。
+- **轻量可摇树**：每个组件独立 Tree-shakable，按需引入。
+- **Nuxt 就绪**：提供官方 Nuxt 模块，支持组件自动注册（`@soybeanjs/ui/nuxt`）。
+- **unplugin 支持**：提供 `unplugin-vue-components` 自动导入解析器（`@soybeanjs/ui/resolver`）。
 
 ## 💝 致谢
 

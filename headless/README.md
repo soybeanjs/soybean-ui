@@ -57,7 +57,76 @@ import {
 - **Composable**: Components are designed to be composed together.
 - **Vue 3**: Built for Vue 3 using Composition API.
 
-## 📚 Documentation
+## 📚 Package Structure
+
+```
+headless/src/
+├── components/    # 50 primitives (accordion, dialog, select…)
+├── composables/   # 26 shared hooks (state, focus, floating, selection…)
+├── shared/        # Pure TS utilities (DOM, focus, tree, form, guard)
+├── constants/     # ARIA attributes, component keys
+├── types/         # Global types (ClassValue, UiClass, PropsToContext…)
+└── index.ts        # Main barrel export
+```
+
+### Sub-path Exports
+
+```ts
+import { AccordionRoot } from '@soybeanjs/headless'; // components + types
+import { useControllableState } from '@soybeanjs/headless/composables'; // 26 composables
+import { transformPropsToContext } from '@soybeanjs/headless/shared'; // pure TS utils
+import * as H from '@soybeanjs/headless/namespaced'; // namespace object
+import type { AccordionUiSlot } from '@soybeanjs/headless/accordion'; // per-component
+```
+
+## 🧩 Composables
+
+26 hooks organized by category:
+
+| Category      | Composables                                                    |
+| ------------- | -------------------------------------------------------------- |
+| **State**     | `useContext`, `useControllableState`, `useStateMachine`        |
+| **Focus**     | `useFocusScope`, `useFocusGuards`, `useArrowNavigation`        |
+| **Layer**     | `useDismissableLayer`, `useEscapeKeyDown`, `useBodyScrollLock` |
+| **Floating**  | `useFloating`, `useGraceArea`, `usePopupEvents`                |
+| **DOM**       | `useForwardElement`, `useExposedElement`, `useHideOthers`      |
+| **Selection** | `useSelection`, `useCollection`, `useTypeahead`                |
+| **Bridge**    | `useUiContext`, `useOmitProps`, `useForwardListeners`          |
+
+## 🎨 Integrating Your Own Styled Layer
+
+Every multi-slot component provides a `provide{Name}Ui` function. Call it at the top of your styled wrapper and pass a computed class map:
+
+```vue
+<script setup lang="ts">
+import { computed } from 'vue';
+import { AccordionRoot, provideAccordionUi } from '@soybeanjs/headless';
+
+const props = defineProps<{ size?: 'sm' | 'md' | 'lg' }>();
+
+// Compute your own classes however you like (CSS modules, CVA, tv(), etc.)
+const ui = computed(() => ({
+  root: 'space-y-1',
+  item: 'border rounded-md',
+  trigger: `flex w-full items-center py-3 px-4 font-medium ${props.size === 'lg' ? 'text-lg' : 'text-sm'}`,
+  content: 'px-4 pb-3 text-sm',
+  header: 'flex',
+  description: ''
+}));
+
+provideAccordionUi(ui);
+</script>
+
+<template>
+  <AccordionRoot v-bind="$props">
+    <slot />
+  </AccordionRoot>
+</template>
+```
+
+For single-element components (like `Button`), there is no UiContext — apply your classes directly via `:class`.
+
+## 📖 Documentation
 
 For full documentation and styled components, visit the [SoybeanUI repository](https://github.com/soybeanjs/soybean-ui).
 
