@@ -1,108 +1,99 @@
 import { computed, ref } from 'vue';
-import { describe, expect, it, vi } from 'vitest';
-import { useConfigProvider, useDirection } from '../../../headless/src/components/config-provider/context';
-
-// Mock the config provider context
-vi.mock('../../../headless/src/components/config-provider/context', () => ({
-  useConfigProvider: vi.fn()
-}));
-
-const mockedUseConfigProvider = vi.mocked(useConfigProvider);
+import { describe, expect, it } from 'vitest';
+import { provideConfigProviderContext, useDirection } from '../../../headless/src/components/config-provider/context';
+import { withSetup } from '../../shared';
 
 describe('useDirection', () => {
   it('should return ltr as default direction', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
-    const direction = useDirection();
+    const [direction, unmount] = withSetup(() => useDirection());
     expect(direction.value).toBe('ltr');
+    unmount();
   });
 
   it('should use provided direction', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
-    const direction = useDirection('rtl');
+    const [direction, unmount] = withSetup(() => useDirection('rtl'));
     expect(direction.value).toBe('rtl');
+    unmount();
   });
 
   it('should use reactive direction', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
     const dir = ref<'ltr' | 'rtl'>('ltr');
-    const direction = useDirection(dir);
+    const [direction, unmount] = withSetup(() => useDirection(dir));
 
     expect(direction.value).toBe('ltr');
 
     dir.value = 'rtl';
     expect(direction.value).toBe('rtl');
+    unmount();
   });
 
   it('should use computed direction', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
     const isRtl = ref(false);
     const computedDir = computed(() => (isRtl.value ? 'rtl' : 'ltr'));
-    const direction = useDirection(computedDir);
+    const [direction, unmount] = withSetup(() => useDirection(computedDir));
 
     expect(direction.value).toBe('ltr');
 
     isRtl.value = true;
     expect(direction.value).toBe('rtl');
+    unmount();
   });
 
   it('should use getter function direction', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
     const currentDir = ref<'ltr' | 'rtl'>('ltr');
-    const direction = useDirection(() => currentDir.value);
+    const [direction, unmount] = withSetup(() => useDirection(() => currentDir.value));
 
     expect(direction.value).toBe('ltr');
 
     currentDir.value = 'rtl';
     expect(direction.value).toBe('rtl');
+    unmount();
   });
 
   it('should fallback to context direction when no dir provided', () => {
     const contextDir = ref<'ltr' | 'rtl'>('rtl');
-    mockedUseConfigProvider.mockReturnValue({
-      dir: contextDir
-    } as any);
+    const [direction, unmount] = withSetup(
+      () => useDirection(),
+      () => provideConfigProviderContext({ dir: contextDir } as any)
+    );
 
-    const direction = useDirection();
     expect(direction.value).toBe('rtl');
 
     contextDir.value = 'ltr';
     expect(direction.value).toBe('ltr');
+    unmount();
   });
 
   it('should prefer provided direction over context', () => {
     const contextDir = ref<'ltr' | 'rtl'>('rtl');
-    mockedUseConfigProvider.mockReturnValue({
-      dir: contextDir
-    } as any);
+    const [direction, unmount] = withSetup(
+      () => useDirection('ltr'),
+      () => provideConfigProviderContext({ dir: contextDir } as any)
+    );
 
-    const direction = useDirection('ltr');
     expect(direction.value).toBe('ltr');
+    unmount();
   });
 
   it('should fallback to context when provided direction is undefined', () => {
     const contextDir = ref<'ltr' | 'rtl'>('rtl');
-    mockedUseConfigProvider.mockReturnValue({
-      dir: contextDir
-    } as any);
-
     const dir = ref<'ltr' | 'rtl' | undefined>(undefined);
-    const direction = useDirection(dir);
+    const [direction, unmount] = withSetup(
+      () => useDirection(dir),
+      () => provideConfigProviderContext({ dir: contextDir } as any)
+    );
+
     expect(direction.value).toBe('rtl');
 
     dir.value = 'ltr';
     expect(direction.value).toBe('ltr');
+    unmount();
   });
 
   it('should fallback to ltr when both provided and context are undefined', () => {
-    mockedUseConfigProvider.mockReturnValue(null);
-
     const dir = ref<'ltr' | 'rtl' | undefined>(undefined);
-    const direction = useDirection(dir);
+    const [direction, unmount] = withSetup(() => useDirection(dir));
     expect(direction.value).toBe('ltr');
+    unmount();
   });
 });

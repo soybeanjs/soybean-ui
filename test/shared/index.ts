@@ -2,7 +2,7 @@
 
 /** Constants for common test delays */
 // Re-export vi for convenience in test files that use shared utilities
-import { defineComponent } from 'vue';
+import { createApp, defineComponent, h } from 'vue';
 import { vi } from 'vitest';
 
 export const TEST_DELAYS = {
@@ -36,15 +36,34 @@ export class MockImage {
   onload: (() => void) | null = null;
   onerror: (() => void) | null = null;
 
+  private _listeners: Map<string, Set<() => void>> = new Map();
+
   constructor() {
-    // Simulate async loading with a delay
+    // Simulate async loading with a delay — src will be set before this fires
     setTimeout(() => {
       if (this.src.includes('error')) {
         this.onerror?.();
+        this._dispatch('error');
       } else if (this.src) {
         this.onload?.();
+        this._dispatch('load');
       }
     }, TEST_DELAYS.IMMEDIATE);
+  }
+
+  addEventListener(event: string, handler: () => void) {
+    if (!this._listeners.has(event)) {
+      this._listeners.set(event, new Set());
+    }
+    this._listeners.get(event)!.add(handler);
+  }
+
+  removeEventListener(event: string, handler: () => void) {
+    this._listeners.get(event)?.delete(handler);
+  }
+
+  private _dispatch(event: string) {
+    this._listeners.get(event)?.forEach(handler => handler());
   }
 }
 
@@ -260,3 +279,48 @@ export function createContextTestComponents<T>(
 
 // Re-export for convenience
 export { vi, defineComponent };
+
+/**
+ * Run a composable inside a minimal Vue app so that provide/inject works correctly.
+ * When `provideSetup` is given, it runs in a parent component (so its `provide()` calls
+ * are visible to the child that runs `composable` via `inject()`).
+ *
+ * @returns Tuple of [composable result, unmount app]
+ */
+export function withSetup<T>(composable: () => T, provideSetup?: () => void): [result: T, unmount: () => void] {
+  let result!: T;
+
+  const mountEl = document.createElement('div');
+
+  if (provideSetup) {
+    // Nest Provider → Consumer so inject() can see provide() from the parent scope
+    const Consumer = defineComponent({
+      setup() {
+        result = composable();
+        return () => null;
+      }
+    });
+
+    const Provider = defineComponent({
+      components: { Consumer },
+      setup() {
+        provideSetup();
+        return () => h(Consumer);
+      }
+    });
+
+    const app = createApp(Provider);
+    app.mount(mountEl);
+    return [result, () => app.unmount()];
+  }
+
+  const app = createApp({
+    setup() {
+      result = composable();
+      return () => null;
+    }
+  });
+
+  app.mount(mountEl);
+  return [result, () => app.unmount()];
+}
