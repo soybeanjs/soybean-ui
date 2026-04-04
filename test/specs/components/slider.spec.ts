@@ -108,12 +108,12 @@ describe('SSlider', () => {
 
       mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
       dispatchPointerEvent(track.element, 'pointerdown', { clientX: 25, clientY: 5, pointerId: 1 });
-      dispatchPointerEvent(document, 'pointermove', { clientX: 75, clientY: 5, pointerId: 1 });
-      dispatchPointerEvent(document, 'pointerup', { clientX: 75, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointermove', { clientX: 150, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 150, clientY: 5, pointerId: 1 });
 
       expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([25]);
-      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual([75]);
-      expect(wrapper.emitted('valueCommit')?.[0]?.[0]).toEqual([75]);
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual([100]);
+      expect(wrapper.emitted('valueCommit')?.[0]?.[0]).toEqual([100]);
       wrapper.unmount();
     });
 

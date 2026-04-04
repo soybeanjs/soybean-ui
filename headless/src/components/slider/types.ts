@@ -71,7 +71,7 @@ export interface SliderRootContext {
   beginTrackDrag: (event: PointerEvent) => void;
   beginThumbDrag: (index: number, event: PointerEvent) => void;
   moveDrag: (event: PointerEvent) => void;
-  endDrag: () => void;
+  endDrag: (pointerId?: number) => void;
   stepValue: (index: number, direction: number, multiplier?: number) => void;
   setToLimit: (index: number, limit: 'min' | 'max') => void;
 }
