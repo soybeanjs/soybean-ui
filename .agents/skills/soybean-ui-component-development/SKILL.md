@@ -745,6 +745,43 @@ custom-styling
 | `Ui` 类型字段              | 必须与 `{Name}UiSlot` 完全对应                         |
 | 中英文同步                 | 两份 `.md` 内容结构相同，仅文字语言不同                |
 
+### 侧边栏菜单注册（`docs/src/constants/menus.ts`）
+
+组件文档写完后，**必须**将组件 key 加入 `docs/src/constants/menus.ts`，否则侧边导航中看不到该组件页面。
+
+```typescript
+// docs/src/constants/menus.ts
+export const menuData: MenuData[] = [
+  {
+    value: 'general', // 分组 key
+    i18n: 'sidebar.general', // i18n 键，对应 locales/zh-CN.yml 和 locales/en.yml
+    items: ['configProvider', 'button', 'icon', 'link']
+    //       ↑ camelCase，与文档文件名（kebab-case）一一对应
+    //         e.g. 'alertDialog' → docs/zh-CN/components/alert-dialog.md
+  }
+  // ...
+];
+```
+
+**分组归属速查**：
+
+| 分组 key      | `i18n` 键              | 典型组件                        |
+| ------------- | ---------------------- | ------------------------------- |
+| `general`     | `sidebar.general`      | Button, Icon, Link              |
+| `groupLayout` | `sidebar.layout`       | AspectRatio, Layout, Separator  |
+| `navigation`  | `sidebar.navigation`   | Tabs, Breadcrumb, Pagination    |
+| `forms`       | `sidebar.forms`        | Input, Checkbox, Select, Switch |
+| `dataDisplay` | `sidebar.data_display` | Accordion, Card, Badge, Table   |
+| `feedback`    | `sidebar.feedback`     | Alert, Toast                    |
+| `overlay`     | `sidebar.overlay`      | Dialog, Popover, Tooltip        |
+| `utilities`   | `sidebar.utilities`    | Arrow, VisuallyHidden           |
+
+**操作步骤**：
+
+1. 确定组件所属分组（见上表）
+2. 将 camelCase 的组件 key **按字母顺序**插入对应分组的 `items` 数组
+3. 无需修改 i18n 文件——文档标题直接从 `.md` 文件的一级标题读取
+
 ---
 
 ## Phase 6：单元测试

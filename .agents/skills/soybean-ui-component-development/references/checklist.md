@@ -99,3 +99,4 @@
 - [ ] `DataTable preset="slots"` 包含所有插槽
 - [ ] `TypeTable` 列出 `Ui` 类型的所有字段（与 `{Name}UiSlot` 对应）
 - [ ] 中英文内容结构相同，仅语言不同
+- [ ] `docs/src/constants/menus.ts` 对应分组的 `items` 数组中已按字母顺序插入组件 camelCase key
