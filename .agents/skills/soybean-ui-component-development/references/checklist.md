@@ -15,6 +15,17 @@
 - [ ] `index.ts` 导出了组件、`provide{Name}Ui`、types
 - [ ] `headless/src/index.ts` 已添加 re-export
 
+## 无障碍（a11y）
+
+- [ ] 可交互元素绑定了正确的 `role`（参照 WAI-ARIA APG 对应模式）
+- [ ] 状态通过 `aria-expanded` / `aria-checked` / `aria-selected` / `aria-disabled` 反映（而非仅靠 class）
+- [ ] `aria-labelledby` / `aria-controls` 关联对通过 `useId()` 生成的唯一 ID 连接
+- [ ] 纯装饰性子元素（图标等）添加了 `aria-hidden="true"`
+- [ ] 状态变化通过 `data-state` 属性暴露（`open/closed`、`checked/unchecked` 等）
+- [ ] 所有可交互元素均可通过键盘（Tab / Enter / Space / Arrow）操作
+- [ ] 焦点顺序合理，复杂组件（对话框等）有焦点陷阱
+- [ ] UI 层（`src/`）**未添加**任何 ARIA 属性或键盘逻辑
+
 ## UI 层 (`src/components/{component}/`)
 
 - [ ] `variants.ts` **第一行**为 `// @unocss-include`
@@ -28,6 +39,15 @@
 - [ ] 无业务逻辑、无 ARIA 状态
 - [ ] `index.ts` 从 `@soybeanjs/headless/{component}` 子路径 re-export headless 类型
 - [ ] `src/index.ts` 已添加 re-export
+
+## RTL 适配（含方向性布局的组件必填）
+
+- [ ] `types.ts` 添加了 `dir?: Direction` prop
+- [ ] `context.ts` 使用 `useDirection(params.dir)` 解析方向（继承 ConfigProvider 全局设置）
+- [ ] `dir` 值存入 context 并向子组件传递
+- [ ] 根元素绑定了 `:dir="dir"` 属性
+- [ ] `variants.ts` 中水平方向相关类使用了 `rtl:` 修饰符或 UnoCSS 逻辑属性（`ms-*`/`me-*`/`ps-*`/`pe-*`）
+- [ ] 方向性图标（箭头、chevron）在 RTL 模式下正确翻转（`rtl:rotate-180` 等）
 
 ## Barrel 文件与 Constants 注册
 

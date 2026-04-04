@@ -1,6 +1,6 @@
 ---
 name: soybean-ui-component-development
-description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
+description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档、实现无障碍（a11y）、适配 RTL 方向。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档、aria、role、a11y、无障碍、rtl、dir、Direction、useDirection。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
 argument-hint: '可选：组件名，例如 button、dialog、select'
 ---
 
@@ -306,6 +306,180 @@ export type * from './types';
 ```typescript
 export * from './components/{component}';
 ```
+
+---
+
+## 无障碍（a11y）
+
+**原则**：所有 ARIA 属性、role、tabindex、键盘交互均属于 headless 层职责。UI 层只负责视觉样式，严禁在 `src/` 中添加任何 ARIA 逻辑。
+
+### 1. ARIA roles 与属性
+
+在 headless SFC 的 `<template>` 中直接绑定，按照 [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/) 对应模式设置：
+
+```vue
+<template>
+  <!-- 触发器：展开/折叠控件 -->
+  <button :aria-expanded="open" :aria-disabled="disabled || undefined" :aria-controls="contentId">
+    <slot />
+  </button>
+
+  <!-- 内容区：关联触发器 -->
+  <div role="region" :aria-labelledby="triggerId" :data-state="open ? 'open' : 'closed'">
+    <slot />
+  </div>
+</template>
+```
+
+**常用 ARIA 模式速查**：
+
+| 组件类型  | role                 | 关键 ARIA 属性                                                      |
+| --------- | -------------------- | ------------------------------------------------------------------- |
+| 展开/折叠 | `region`             | `aria-expanded`, `aria-controls`, `aria-labelledby`                 |
+| 选项卡    | `tab`/`tabpanel`     | `aria-selected`, `aria-controls`, `aria-labelledby`                 |
+| 复选框    | `checkbox`           | `aria-checked`, `aria-required`, `aria-invalid`                     |
+| 单选框组  | `radiogroup`/`radio` | `aria-checked`                                                      |
+| 对话框    | `dialog`             | `aria-modal="true"`, `aria-labelledby`, `aria-describedby`          |
+| 进度条    | `progressbar`        | `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-valuetext` |
+| 列表框    | `listbox`/`option`   | `aria-selected`, `aria-activedescendant`                            |
+| 菜单      | `menu`/`menuitem`    | `aria-haspopup`, `aria-expanded`                                    |
+
+### 2. data-state 状态反射
+
+组件状态通过 `data-state` 属性暴露，供 CSS 选择器和测试工具使用（**不要用 class 传状态**）：
+
+```typescript
+// shared/get-disclosure-state.ts 中的工具函数
+const dataState = computed(() => (open.value ? 'open' : 'closed'));
+// → 动画 CSS: [data-state="open"] { ... }  [data-state="closed"] { ... }
+```
+
+常见值：`'open' | 'closed'`、`'checked' | 'unchecked' | 'indeterminate'`、`'active' | 'inactive'`、`'disabled'`。
+
+### 3. useId() 关联 ID
+
+需要 `aria-labelledby` / `aria-controls` 关联时，用 Vue 内置 `useId()` 生成唯一 ID：
+
+```typescript
+import { useId } from 'vue';
+
+// 在 context.ts 的工厂函数中
+const triggerId = shallowRef('');
+const contentId = shallowRef('');
+
+const initTriggerId = () => {
+  if (triggerId.value) return;
+  triggerId.value = `soybean-{component}-trigger-${useId()}`;
+};
+```
+
+### 4. 隐藏装饰性元素
+
+纯装饰性图标或重复内容，标记 `aria-hidden="true"` 让屏幕阅读器跳过：
+
+```vue
+<Icon aria-hidden="true" />
+<span class="sr-only">无障碍描述文字</span>
+<!-- UnoCSS sr-only 等价 -->
+```
+
+### 5. 键盘导航
+
+- 使用 `useArrowNavigation` composable 处理方向键导航（已内置 RTL 支持）
+- 使用 RovingFocus 组组件管理焦点漫游（Tab/Arrow 键）
+- 对话框/弹层需要焦点陷阱（FocusTrap），参考 dialog 组件实现
+- 所有可交互元素必须在 Tab 键序中可达，或通过 `tabindex="-1"` 显式管理
+
+---
+
+## RTL 方向适配
+
+RTL 适配跨越两层：headless 层提供 `dir` 状态与 `:dir` 属性绑定，UI 层在 variants.ts 中使用 UnoCSS `rtl:` 修饰符。
+
+> **何时需要 RTL 支持**：包含水平方向布局、方向图标（箭头、chevron）、定位（left/right）、动画（translateX）的组件。
+
+### Headless 层
+
+**types.ts** — 添加 `dir` prop：
+
+```typescript
+import type { Direction } from '../../types';  // 'ltr' | 'rtl'
+
+export interface {Name}RootProps extends /** @vue-ignore */ HTMLAttributes {
+  dir?: Direction;
+}
+```
+
+**context.ts** — 用 `useDirection()` 解析方向，自动继承全局 `ConfigProvider.dir`：
+
+```typescript
+import { useDirection } from '../config-provider/context';
+
+export const [provide{Name}RootContext, use{Name}RootContext] = useContext(
+  '{Name}Root',
+  (params: {Name}RootContextParams) => {
+    const dir = useDirection(params.dir);  // ComputedRef<'ltr' | 'rtl'>
+    // ...
+    return { dir, ... };
+  }
+);
+```
+
+**{component}-root.vue** — 绑定 `:dir` 属性到根元素（浏览器据此自动调整文本方向）：
+
+```vue
+<template>
+  <div :class="cls" :dir="dir" :data-direction="dir">
+    <slot />
+  </div>
+</template>
+```
+
+> `dir` 通过 `transformPropsToContext(props, ['dir', ...])` 传入 context，或直接传入 `useDirection(params.dir)` 的响应式 getter。
+
+### UI 层
+
+**variants.ts** — 使用 UnoCSS `rtl:` 修饰符翻转方向相关的类：
+
+```typescript
+// @unocss-include
+export const {component}Variants = tv({
+  slots: {
+    root: [
+      'flex items-center gap-2',
+      'rtl:flex-row-reverse',   // 翻转水平 flex 方向
+    ],
+    icon: [
+      'ml-1',
+      'rtl:ml-0 rtl:mr-1',      // 翻转 margin 方向
+    ],
+    arrow: [
+      'rotate-0',
+      'rtl:rotate-180',          // 翻转箭头图标
+    ]
+  }
+});
+```
+
+**常用 RTL 类替换规则**：
+
+| LTR 类            | RTL 对应写法                  | 说明            |
+| ----------------- | ----------------------------- | --------------- |
+| `ml-{n}`          | `rtl:ml-0 rtl:mr-{n}`         | 左侧外距 → 右侧 |
+| `pl-{n}`          | `rtl:pl-0 rtl:pr-{n}`         | 左侧内距 → 右侧 |
+| `left-{n}`        | `rtl:left-auto rtl:right-{n}` | 定位方向翻转    |
+| `flex-row`        | `rtl:flex-row-reverse`        | flex 行方向翻转 |
+| `text-left`       | `rtl:text-right`              | 文字对齐翻转    |
+| `translate-x-{n}` | `rtl:-translate-x-{n}`        | 水平平移翻转    |
+| `border-l`        | `rtl:border-l-0 rtl:border-r` | 边框方向翻转    |
+
+> **推荐**：优先使用 UnoCSS 逻辑属性（`ms-{n}`/`me-{n}` = margin-inline-start/end，`ps-{n}` = padding-inline-start），写一次即自动适配 LTR/RTL：
+>
+> ```
+> ms-2      → LTR: ml-2 | RTL: mr-2（自动适配，无需 rtl: 前缀）
+> ps-4      → LTR: pl-4 | RTL: pr-4
+> start-0   → LTR: left-0 | RTL: right-0
+> ```
 
 ---
 
