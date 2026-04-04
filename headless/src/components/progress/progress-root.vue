@@ -4,6 +4,7 @@ import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish } from '../../shared';
 import { Primitive } from '../primitive';
 import { provideProgressRootContext, useProgressUi } from './context';
+import { DEFAULT_MAX, getValueLabel, getValidMax, getValidModelValue } from './shared';
 import type { ProgressRootEmits, ProgressRootProps, ProgressState } from './types';
 
 defineOptions({
@@ -11,29 +12,14 @@ defineOptions({
   inheritAttrs: false
 });
 
-const DEFAULT_MAX = 100;
-
 const props = withDefaults(defineProps<ProgressRootProps>(), {
   as: 'div',
-  getValueLabel: (value: number | null | undefined, max: number) => {
-    const safeMax = typeof max === 'number' && max > 0 ? max : DEFAULT_MAX;
-
-    return typeof value === 'number' ? `${Math.round((value / safeMax) * 100)}%` : undefined;
-  },
-  getValueText: undefined
+  getValueLabel
 });
 
 const emit = defineEmits<ProgressRootEmits>();
-const attrs = useAttrs();
 
-defineSlots<{
-  default?: (props: {
-    modelValue: number | null | undefined;
-    max: number;
-    progressState: ProgressState;
-    valuePercent: number | null;
-  }) => any;
-}>();
+const attrs = useAttrs();
 
 const cls = useProgressUi('root');
 
@@ -53,29 +39,20 @@ const max = useControllableState(
   DEFAULT_MAX
 );
 
-function getValidMax(value: number | undefined) {
-  if (typeof value === 'number' && !Number.isNaN(value) && value > 0) {
-    return value;
-  }
-
-  return DEFAULT_MAX;
-}
-
-function getValidModelValue(value: number | null | undefined, maxValue: number) {
-  if (isNullish(value)) {
-    return value;
-  }
-
-  if (typeof value !== 'number' || Number.isNaN(value) || value < 0 || value > maxValue) {
-    return null;
-  }
-
-  return value;
-}
-
 const normalizedMax = computed(() => getValidMax(max.value));
 
 const normalizedModelValue = computed(() => getValidModelValue(modelValue.value, normalizedMax.value));
+
+const ariaValueNowProps = computed(() =>
+  typeof normalizedModelValue.value === 'number' ? { 'aria-valuenow': normalizedModelValue.value } : {}
+);
+
+const forwardedProps = useOmitProps(
+  props,
+  ['modelValue', 'max', 'getValueLabel', 'getValueText'],
+  attrs,
+  ariaValueNowProps
+);
 
 const progressState = computed<ProgressState>(() => {
   if (isNullish(normalizedModelValue.value)) {
@@ -101,10 +78,6 @@ const valueLabel = computed(() => props.getValueLabel?.(normalizedModelValue.val
 
 const valueText = computed(() => props.getValueText?.(normalizedModelValue.value, normalizedMax.value));
 
-const ariaValueNowProps = computed(() =>
-  typeof normalizedModelValue.value === 'number' ? { 'aria-valuenow': normalizedModelValue.value } : {}
-);
-
 function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
   const value = attrs[name];
 
@@ -114,8 +87,6 @@ function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
 const ariaLabel = computed(() => getStringAttr('aria-label') ?? valueLabel.value);
 
 const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? valueText.value);
-
-const forwardedProps = useOmitProps(props, ['modelValue', 'max', 'getValueLabel', 'getValueText'], attrs, ariaValueNowProps);
 
 watch(
   normalizedMax,
@@ -158,6 +129,11 @@ provideProgressRootContext({
     :data-value="normalizedModelValue ?? undefined"
     :data-max="normalizedMax"
   >
-    <slot :model-value="normalizedModelValue" :max="normalizedMax" :progress-state="progressState" :value-percent="valuePercent" />
+    <slot
+      :model-value="normalizedModelValue"
+      :max="normalizedMax"
+      :progress-state="progressState"
+      :value-percent="valuePercent"
+    />
   </Primitive>
 </template>

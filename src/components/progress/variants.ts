@@ -1,13 +1,10 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
 
-import type { VariantProps } from 'tailwind-variants';
-
 export const progressVariants = tv({
   slots: {
     root: 'relative w-full overflow-hidden rounded-full bg-muted',
-    indicator:
-      'h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80'
+    indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`
   },
   variants: {
     color: {
@@ -62,5 +59,3 @@ export const progressVariants = tv({
     size: 'md'
   }
 });
-
-export type ProgressVariantProps = VariantProps<typeof progressVariants>;
