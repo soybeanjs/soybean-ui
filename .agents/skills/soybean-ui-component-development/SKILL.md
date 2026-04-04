@@ -325,7 +325,9 @@ export * from './components/{component}';
 
 ---
 
-## Phase 3：注册到 barrel 文件
+## Phase 3：注册到 barrel 文件与 constants
+
+### 1. Barrel 文件
 
 ```typescript
 // headless/src/index.ts
@@ -334,6 +336,37 @@ export * from './components/{component}';
 // src/index.ts
 export * from './components/{component}';
 ```
+
+### 2. Components 常量注册
+
+两个独立文件，**按字母顺序**插入新条目。
+
+```typescript
+// headless/src/constants/components.ts
+// key = camelCase，值 = headless 导出的 PascalCase 组件名（无 S 前缀）
+export const components = {
+  // ...existing...
+  {componentCamelCase}: ['{Name}Root', '{Name}Item', '{Name}Content'],
+  // ...existing...
+};
+
+// src/constants/components.ts
+// key = camelCase（与 headless 保持一致），值 = S 前缀的 UI 组件名
+export const components = {
+  // ...existing...
+  {componentCamelCase}: ['S{Name}'],
+  // ...existing...
+};
+```
+
+**Key 命名规则**：camelCase，多词组合驼峰（`alertDialog`、`inputNumber`）。
+
+**Headless 值**：该组件所有对外导出的 headless 子组件名，例如：
+
+- `accordion` → `['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent']`
+- `button` → `['Button']`（单组件时只有一个）
+
+**UI 值**：`S{Name}` 以及所有变体组件（`SButtonLoading`、`SButtonIcon` 等）。
 
 ---
 

@@ -29,6 +29,13 @@
 - [ ] `index.ts` 从 `@soybeanjs/headless/{component}` 子路径 re-export headless 类型
 - [ ] `src/index.ts` 已添加 re-export
 
+## Barrel 文件与 Constants 注册
+
+- [ ] `headless/src/index.ts` 已添加 re-export
+- [ ] `src/index.ts` 已添加 re-export
+- [ ] `headless/src/constants/components.ts` 已按字母顺序添加条目（camelCase key + 无 S 前缀的 PascalCase 组件名数组）
+- [ ] `src/constants/components.ts` 已按字母顺序添加条目（camelCase key + S 前缀组件名数组）
+
 ## TypeScript
 
 - [ ] 无 `as any` / `@ts-ignore` / `@ts-expect-error`
