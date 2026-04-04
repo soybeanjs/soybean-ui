@@ -36,6 +36,7 @@ export * from './components/radio-group';
 export * from './components/segment';
 export * from './components/select';
 export * from './components/separator';
+export * from './components/sonner';
 export * from './components/switch';
 export * from './components/table';
 export * from './components/tabs';
