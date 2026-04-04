@@ -29,9 +29,7 @@ const {
   getPercentage,
   getThumbLabel,
   setThumbElement,
-  beginThumbDrag,
-  moveDrag,
-  endDrag
+  beginThumbDrag
 } = useSliderRootContext('SliderThumb');
 
 const forwardedProps = useOmitProps(props, ['index']);
@@ -75,39 +73,16 @@ function onPointerDown(event: PointerEvent) {
     return;
   }
 
-  const target = event.currentTarget as HTMLElement;
-
-  target.setPointerCapture(event.pointerId);
   event.preventDefault();
   event.stopPropagation();
-  target.focus();
+  (event.currentTarget as HTMLElement).focus();
   beginThumbDrag(props.index, event);
-}
-
-function onPointerMove(event: PointerEvent) {
-  const target = event.currentTarget as HTMLElement;
-
-  if (target.hasPointerCapture(event.pointerId)) {
-    event.stopPropagation();
-    moveDrag(event);
-  }
 }
 
 function onFocus() {
   activeThumbIndex.value = props.index;
 }
 
-function onPointerUp(event: PointerEvent) {
-  const target = event.currentTarget as HTMLElement;
-
-  if (!target.hasPointerCapture(event.pointerId)) {
-    return;
-  }
-
-  event.stopPropagation();
-  target.releasePointerCapture(event.pointerId);
-  endDrag();
-}
 </script>
 
 <template>
@@ -130,8 +105,6 @@ function onPointerUp(event: PointerEvent) {
     :style="style"
     @focus="onFocus"
     @pointerdown="onPointerDown"
-    @pointermove="onPointerMove"
-    @pointerup="onPointerUp"
   >
     <slot />
   </Primitive>

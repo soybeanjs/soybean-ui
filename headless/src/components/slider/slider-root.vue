@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, shallowRef, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, shallowRef, watch } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import { snapValueToStep } from '../../shared';
 import { useDirection } from '../config-provider/context';
@@ -111,7 +111,9 @@ const activeThumbIndex = shallowRef(0);
 const trackElement = shallowRef<HTMLElement>();
 const thumbElements = shallowRef<(HTMLElement | undefined)[]>([]);
 const dragOffset = shallowRef(0);
+const dragPointerId = shallowRef<number | null>(null);
 const valuesBeforeDrag = shallowRef<number[]>(currentModelValue.value);
+let cleanupDragListeners: (() => void) | null = null;
 
 watch(
   () => currentModelValue.value.length,
@@ -151,6 +153,37 @@ function focusThumb(index: number) {
 
 function getClosestIndex(value: number) {
   return getClosestValueIndex(currentModelValue.value, value);
+}
+
+function isDraggingPointer(pointerId: number) {
+  return dragPointerId.value === pointerId;
+}
+
+function stopDragListeners() {
+  cleanupDragListeners?.();
+  cleanupDragListeners = null;
+}
+
+function startDragListeners(doc: Document) {
+  stopDragListeners();
+
+  const handlePointerMove = (event: PointerEvent) => {
+    moveDrag(event);
+  };
+
+  const handlePointerUp = (event: PointerEvent) => {
+    endDrag(event.pointerId);
+  };
+
+  doc.addEventListener('pointermove', handlePointerMove);
+  doc.addEventListener('pointerup', handlePointerUp);
+  doc.addEventListener('pointercancel', handlePointerUp);
+
+  cleanupDragListeners = () => {
+    doc.removeEventListener('pointermove', handlePointerMove);
+    doc.removeEventListener('pointerup', handlePointerUp);
+    doc.removeEventListener('pointercancel', handlePointerUp);
+  };
 }
 
 function emitValueCommitIfChanged() {
@@ -222,6 +255,10 @@ function beginTrackDrag(event: PointerEvent) {
     return;
   }
 
+  dragPointerId.value = event.pointerId;
+  if (trackElement.value?.ownerDocument) {
+    startDragListeners(trackElement.value.ownerDocument);
+  }
   valuesBeforeDrag.value = [...currentModelValue.value];
   dragOffset.value = 0;
 
@@ -233,6 +270,10 @@ function beginThumbDrag(index: number, event: PointerEvent) {
     return;
   }
 
+  dragPointerId.value = event.pointerId;
+  if (trackElement.value?.ownerDocument) {
+    startDragListeners(trackElement.value.ownerDocument);
+  }
   valuesBeforeDrag.value = [...currentModelValue.value];
   activeThumbIndex.value = index;
   focusThumb(index);
@@ -245,25 +286,31 @@ function beginThumbDrag(index: number, event: PointerEvent) {
 function moveDrag(event: PointerEvent) {
   const value = getValueFromPointerEvent(event);
 
-  if (disabled.value || value === null) {
+  if (disabled.value || value === null || !isDraggingPointer(event.pointerId)) {
     return;
   }
 
   updateValueAtIndex(value + dragOffset.value, activeThumbIndex.value);
 }
 
-function endDrag() {
-  if (disabled.value) {
+function endDrag(pointerId?: number) {
+  if (disabled.value || (typeof pointerId === 'number' && !isDraggingPointer(pointerId))) {
     return;
   }
 
   const nextValues = pendingModelValue.value ?? currentModelValue.value;
 
+  dragPointerId.value = null;
+  stopDragListeners();
   dragOffset.value = 0;
   emitValueCommitIfChanged();
   valuesBeforeDrag.value = [...nextValues];
   pendingModelValue.value = undefined;
 }
+
+onBeforeUnmount(() => {
+  stopDragListeners();
+});
 
 function stepValue(index: number, direction: number, multiplier = 1) {
   const currentValue = currentModelValue.value[index];

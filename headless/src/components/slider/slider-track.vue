@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<SliderTrackProps>(), {
 
 const cls = useSliderUi('track');
 
-const { disabled, orientation, setTrackElement, beginTrackDrag, moveDrag, endDrag } = useSliderRootContext('SliderTrack');
+const { disabled, orientation, setTrackElement, beginTrackDrag } = useSliderRootContext('SliderTrack');
 
 const trackElementRef = useForwardElement(node => {
   setTrackElement(node);
@@ -26,31 +26,8 @@ function onPointerDown(event: PointerEvent) {
   if (disabled.value) {
     return;
   }
-
-  const target = event.currentTarget as HTMLElement;
-
-  target.setPointerCapture(event.pointerId);
   event.preventDefault();
   beginTrackDrag(event);
-}
-
-function onPointerMove(event: PointerEvent) {
-  const target = event.currentTarget as HTMLElement;
-
-  if (target.hasPointerCapture(event.pointerId)) {
-    moveDrag(event);
-  }
-}
-
-function onPointerUp(event: PointerEvent) {
-  const target = event.currentTarget as HTMLElement;
-
-  if (!target.hasPointerCapture(event.pointerId)) {
-    return;
-  }
-
-  target.releasePointerCapture(event.pointerId);
-  endDrag();
 }
 </script>
 
@@ -62,8 +39,6 @@ function onPointerUp(event: PointerEvent) {
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"
     @pointerdown="onPointerDown"
-    @pointermove="onPointerMove"
-    @pointerup="onPointerUp"
   >
     <slot />
   </Primitive>

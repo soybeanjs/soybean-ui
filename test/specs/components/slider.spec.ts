@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import SSlider from '../../../src/components/slider/slider.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -20,21 +20,8 @@ function mockRect(element: Element, rect: { x?: number; y?: number; width?: numb
   });
 }
 
-function mockPointerCapture(element: Element) {
-  const pointerIds = new Set<number>();
-  const target = element as HTMLElement & {
-    setPointerCapture?: (pointerId: number) => void;
-    releasePointerCapture?: (pointerId: number) => void;
-    hasPointerCapture?: (pointerId: number) => boolean;
-  };
-
-  target.setPointerCapture = vi.fn(pointerId => {
-    pointerIds.add(pointerId);
-  });
-  target.releasePointerCapture = vi.fn(pointerId => {
-    pointerIds.delete(pointerId);
-  });
-  target.hasPointerCapture = vi.fn(pointerId => pointerIds.has(pointerId));
+function dispatchPointerEvent(target: EventTarget, type: string, init: PointerEventInit) {
+  target.dispatchEvent(new PointerEvent(type, { bubbles: true, ...init }));
 }
 
 describe('SSlider', () => {
@@ -120,13 +107,30 @@ describe('SSlider', () => {
       const track = wrapper.find('[data-slot="slider-track"]');
 
       mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
-      mockPointerCapture(track.element);
-
-      await track.trigger('pointerdown', { clientX: 75, clientY: 5, pointerId: 1 });
-      await track.trigger('pointerup', { clientX: 75, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(track.element, 'pointerdown', { clientX: 75, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 75, clientY: 5, pointerId: 1 });
 
       expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toEqual([75]);
       expect(wrapper.emitted('valueCommit')?.[0]?.[0]).toEqual([75]);
+      wrapper.unmount();
+    });
+
+    it('emits update:modelValue while dragging a thumb', async () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20], thumbProps: { 'aria-label': 'Volume' } },
+        attachTo: document.body
+      });
+
+      const track = wrapper.find('[data-slot="slider-track"]');
+      const thumb = wrapper.find('[role="slider"]');
+
+      mockRect(track.element, { x: 0, y: 0, width: 100, height: 10 });
+      dispatchPointerEvent(thumb.element, 'pointerdown', { clientX: 20, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointermove', { clientX: 70, clientY: 5, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 70, clientY: 5, pointerId: 1 });
+
+      expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual([70]);
+      expect(wrapper.emitted('valueCommit')?.at(-1)?.[0]).toEqual([70]);
       wrapper.unmount();
     });
   });
