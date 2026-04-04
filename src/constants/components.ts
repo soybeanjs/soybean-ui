@@ -42,6 +42,7 @@ export const components = {
   progress: ['SProgress', 'SProgressCircle'],
   radioGroup: ['SRadioGroup', 'SRadio', 'SRadioCard', 'SRadioCardGroup'],
   segment: ['SSegment'],
+  scrollArea: ['SScrollArea'],
   select: ['SSelect'],
   separator: ['SSeparator'],
   skeleton: ['SSkeleton'],

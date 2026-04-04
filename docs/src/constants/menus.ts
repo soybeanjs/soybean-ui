@@ -70,6 +70,7 @@ export const menuData: MenuData[] = [
       'badge',
       'kbd',
       'progress',
+      'scrollArea',
       'skeleton',
       'tag',
       'table',

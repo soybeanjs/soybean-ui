@@ -178,6 +178,7 @@ export const components = {
   primitive: ['Primitive'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
+  scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
   select: [
     'SelectRoot',
     'SelectTrigger',
