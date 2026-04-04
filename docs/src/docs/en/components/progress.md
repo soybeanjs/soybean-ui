@@ -75,19 +75,19 @@ circle
 
 ```vue
 <script setup lang="ts">
-import { SCircleProgress } from '@soybeanjs/ui';
+import { SProgressCircle } from '@soybeanjs/ui';
 </script>
 
 <template>
-  <SCircleProgress :model-value="72" size="xl">
+  <SProgressCircle :model-value="72" size="xl">
     <template #default="{ valuePercent }">
       {{ Math.round(valuePercent ?? 0) }}%
     </template>
-  </SCircleProgress>
+  </SProgressCircle>
 </template>
 ```
 
-`SCircleProgress` supports the same props, emits, slot props, and `Ui` type as `SProgress`, and adds the following prop:
+`SProgressCircle` supports the same props, emits, slot props, and `Ui` type as `SProgress`, and adds the following prop:
 
 <DataTable preset="props" :data="[
   { name: 'strokeWidth', type: 'number', default: '8', description: 'Stroke width of the circular indicator.' },

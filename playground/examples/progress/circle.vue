@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SCircleProgress } from '@soybeanjs/ui';
+import { SProgressCircle } from '@soybeanjs/ui';
 
 const items = [
   { color: 'primary', value: 25 },
@@ -13,7 +13,7 @@ const items = [
   <div>
     <h3 class="playground-title">Circle</h3>
     <div class="flex flex-wrap gap-4">
-      <SCircleProgress
+      <SProgressCircle
         v-for="item in items"
         :key="item.color"
         :model-value="item.value"
@@ -25,7 +25,7 @@ const items = [
             {{ progressState === 'indeterminate' ? '...' : `${Math.round(valuePercent ?? 0)}%` }}
           </span>
         </template>
-      </SCircleProgress>
+      </SProgressCircle>
     </div>
   </div>
 </template>

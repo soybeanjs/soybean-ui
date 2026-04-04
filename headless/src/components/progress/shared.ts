@@ -1,6 +1,21 @@
 import { isNullish } from '../../shared';
+import type { ProgressState } from './types';
 
 export const DEFAULT_MAX = 100;
+
+export const PROGRESS_CIRCLE_VIEWBOX_SIZE = 100;
+
+export const PROGRESS_CIRCLE_CENTER = PROGRESS_CIRCLE_VIEWBOX_SIZE / 2;
+
+export const DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH = 8;
+
+const INDETERMINATE_PROGRESS_CIRCLE_RATIO = 0.35;
+
+const MAX_PROGRESS_CIRCLE_STROKE_WIDTH = PROGRESS_CIRCLE_VIEWBOX_SIZE / 4;
+
+function isValidPositiveNumber(value: number | undefined): value is number {
+  return typeof value === 'number' && !Number.isNaN(value) && value > 0;
+}
 
 export function getValueLabel(value: number | null | undefined, max: number): string | undefined {
   if (typeof value !== 'number') {
@@ -13,7 +28,7 @@ export function getValueLabel(value: number | null | undefined, max: number): st
 }
 
 export function getValidMax(value: number | undefined) {
-  if (typeof value === 'number' && !Number.isNaN(value) && value > 0) {
+  if (isValidPositiveNumber(value)) {
     return value;
   }
 
@@ -25,9 +40,49 @@ export function getValidModelValue(value: number | null | undefined, maxValue: n
     return value;
   }
 
-  if (typeof value !== 'number' || Number.isNaN(value) || value < 0 || value > maxValue) {
+  if (!isValidPositiveNumber(value) && value !== 0) {
+    return null;
+  }
+
+  if (value < 0 || value > maxValue) {
     return null;
   }
 
   return value;
+}
+
+export function getValidProgressCircleStrokeWidth(value: number | undefined) {
+  if (!isValidPositiveNumber(value) || value > MAX_PROGRESS_CIRCLE_STROKE_WIDTH) {
+    return DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH;
+  }
+
+  return value;
+}
+
+export function getProgressCircleRadius(strokeWidth: number) {
+  return (PROGRESS_CIRCLE_VIEWBOX_SIZE - strokeWidth) / 2;
+}
+
+export function getProgressCircleDasharray(circumference: number, progressState: ProgressState) {
+  if (progressState === 'indeterminate') {
+    return `${circumference * INDETERMINATE_PROGRESS_CIRCLE_RATIO} ${circumference}`;
+  }
+
+  return `${circumference} ${circumference}`;
+}
+
+export function getProgressCircleDashoffset(
+  valuePercent: number | null,
+  circumference: number,
+  progressState: ProgressState
+) {
+  if (progressState === 'indeterminate') {
+    return circumference * 0.25;
+  }
+
+  if (valuePercent === null) {
+    return circumference;
+  }
+
+  return circumference * (1 - valuePercent / 100);
 }

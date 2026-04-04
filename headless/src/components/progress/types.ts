@@ -1,4 +1,4 @@
-import type { ComputedRef, HTMLAttributes } from 'vue';
+import type { ComputedRef, HTMLAttributes, SVGAttributes } from 'vue';
 import type { UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
@@ -22,6 +22,10 @@ export type ProgressRootEmits = {
 
 export interface ProgressIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
+export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
+  strokeWidth?: number;
+}
+
 export interface ProgressRootContext {
   modelValue: ComputedRef<number | null | undefined>;
   max: ComputedRef<number>;
@@ -29,6 +33,6 @@ export interface ProgressRootContext {
   valuePercent: ComputedRef<number | null>;
 }
 
-export type ProgressUiSlot = 'root' | 'indicator';
+export type ProgressUiSlot = 'root' | 'indicator' | 'circle' | 'track' | 'label';
 
 export type ProgressUi = UiClass<ProgressUiSlot>;

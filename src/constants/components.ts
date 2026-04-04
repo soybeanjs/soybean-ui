@@ -33,7 +33,7 @@ export const components = {
   password: ['SPassword'],
   popconfirm: ['SPopconfirm', 'SPopconfirmCancel', 'SPopconfirmConfirm'],
   popover: ['SPopover'],
-  progress: ['SProgress', 'SCircleProgress'],
+  progress: ['SProgress', 'SProgressCircle'],
   radioGroup: ['SRadioGroup', 'SRadio', 'SRadioCard', 'SRadioCardGroup'],
   segment: ['SSegment'],
   select: ['SSelect'],

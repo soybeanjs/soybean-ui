@@ -16,7 +16,7 @@ export interface ProgressProps extends ProgressRootProps {
   indicatorProps?: ProgressIndicatorProps;
 }
 
-export interface CircleProgressProps extends ProgressRootProps {
+export interface ProgressCircleProps extends ProgressRootProps {
   class?: ClassValue;
   color?: ThemeColor;
   size?: ThemeSize;
@@ -25,6 +25,6 @@ export interface CircleProgressProps extends ProgressRootProps {
 }
 
 export type ProgressEmits = ProgressRootEmits;
-export type CircleProgressEmits = ProgressRootEmits;
+export type ProgressCircleEmits = ProgressRootEmits;
 
 export type { ProgressState };
