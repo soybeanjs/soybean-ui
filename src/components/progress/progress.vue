@@ -27,22 +27,15 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-function getIndicatorStyle(valuePercent: number | null) {
-  if (valuePercent === null) {
-    return undefined;
-  }
-
-  return {
-    transform: `translateX(-${100 - valuePercent}%)`
-  };
-}
-
 provideProgressUi(ui);
 </script>
 
 <template>
   <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <ProgressIndicator v-bind="indicatorProps" :style="getIndicatorStyle(slotProps.valuePercent)">
+    <ProgressIndicator
+      v-bind="indicatorProps"
+      :style="slotProps.valuePercent === null ? undefined : { transform: `translateX(-${100 - slotProps.valuePercent}%)` }"
+    >
       <slot v-bind="slotProps" />
     </ProgressIndicator>
   </ProgressRoot>
