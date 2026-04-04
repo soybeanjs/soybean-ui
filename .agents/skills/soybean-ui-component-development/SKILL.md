@@ -1,6 +1,6 @@
 ---
 name: soybean-ui-component-development
-description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档、实现无障碍（a11y）、适配 RTL 方向。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档、aria、role、a11y、无障碍、rtl、dir、Direction、useDirection。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
+description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档、实现无障碍（a11y）、适配 RTL 方向、编写单元测试。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档、aria、role、a11y、无障碍、rtl、dir、Direction、useDirection、单元测试、vitest、vue-test-utils、axe-core、getA11yViolations、spec.ts。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
 argument-hint: '可选：组件名，例如 button、dialog、select'
 ---
 
@@ -19,6 +19,10 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 - **多 slot 组件**（accordion、badge 等）：有 `UiSlot` + `UiClass`，使用 `mergeSlotVariants`
 - **单类名组件**（button 等）：无 UiContext，直接用 `cn(variants, props.class)`
+
+> **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。
+
+> **导入顺序**：所有 `.ts`/`.vue` 文件的 import 顺序由 [import-order.instructions.md](../../../../../../.github/instructions/import-order.instructions.md) 约束：`builtin → external → internal (@/) → parent (../) → sibling (./)→ index`，value import 在前、`import type` 紧随其后。`pnpm lint --fix` 会自动修正。
 
 ---
 
@@ -542,6 +546,43 @@ export const components = {
 
 **UI 值**：`S{Name}` 以及所有变体组件（`SButtonLoading`、`SButtonIcon` 等）。
 
+### 3. Namespaced 导出（`headless/src/namespaced/index.ts`）
+
+该文件允许用户通过 `Headless.Accordion.Root` 形式使用组件。需要两处修改，**均按字母顺序插入**。
+
+**① 在顶部 import 块中添加所有子组件**：
+
+```typescript
+// headless/src/namespaced/index.ts — 顶部大 import 块（按字母顺序）
+import {
+  // ...existing...
+  {Name}Content,
+  {Name}Item,
+  {Name}Root,
+  {Name}Trigger,
+  // ...existing...
+} from '../index';
+```
+
+**② 在文件底部导出 Namespace 对象**：
+
+```typescript
+// 按字母顺序，每个组件对应一个 const 导出
+export const {Name} = {
+  Root: {Name}Root,
+  Item: {Name}Item,
+  Trigger: {Name}Trigger,
+  Content: {Name}Content
+} as {
+  Root: typeof {Name}Root;
+  Item: typeof {Name}Item;
+  Trigger: typeof {Name}Trigger;
+  Content: typeof {Name}Content;
+};
+```
+
+> 字段与 headless `index.ts` 导出的子组件一一对应；单组件（如 Button）只有一个 `Root` 字段。
+
 ---
 
 ## Phase 4：Playground 示例
@@ -706,6 +747,165 @@ custom-styling
 
 ---
 
+## Phase 6：单元测试
+
+文件位置：`test/specs/components/{component}.spec.ts`
+
+测试栈：**vitest** + **@vue/test-utils** + **axe-core**，运行环境 `happy-dom`。
+
+### 测试结构模板
+
+```typescript
+import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
+import S{Name} from '../../../src/components/{component}/{component}.vue';
+import { getA11yViolations } from '../../shared/a11y';
+
+describe('S{Name}', () => {
+  describe('rendering', () => {
+    it('renders default slot content', () => {
+      const wrapper = mount(S{Name}, { slots: { default: 'Content' }, attachTo: document.body });
+      expect(wrapper.text()).toContain('Content');
+      wrapper.unmount();
+    });
+
+    it('applies custom class', () => {
+      const wrapper = mount(S{Name}, { props: { class: 'my-class' }, attachTo: document.body });
+      expect(wrapper.html()).toContain('my-class');
+      wrapper.unmount();
+    });
+  });
+
+  describe('{state name}', () => {
+    it('reflects modelValue via aria-* attribute', () => {
+      const wrapper = mount(S{Name}, { props: { modelValue: true }, attachTo: document.body });
+      expect(wrapper.find('[role="{role}"]').attributes('aria-checked')).toBe('true');
+      wrapper.unmount();
+    });
+
+    it('emits update:modelValue on interaction', async () => {
+      const wrapper = mount(S{Name}, { props: { modelValue: false }, attachTo: document.body });
+      await wrapper.find('[role="{role}"]').trigger('click');
+      expect(wrapper.emitted('update:modelValue')).toBeTruthy();
+      wrapper.unmount();
+    });
+  });
+
+  describe('disabled state', () => {
+    it('prevents interaction when disabled', async () => {
+      const wrapper = mount(S{Name}, { props: { disabled: true }, attachTo: document.body });
+      await wrapper.find('[role="{role}"]').trigger('click');
+      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessibility', () => {
+    it('has no a11y violations', async () => {
+      const wrapper = mount(S{Name}, {
+        // 为 role="switch"/"tab" 等无可见文字的控件传入 aria-label
+        props: { /* aria-label or label prop */ },
+        attachTo: document.body
+      });
+      const violations = await getA11yViolations(wrapper.element);
+      expect(violations).toHaveLength(0);
+      wrapper.unmount();
+    });
+  });
+});
+```
+
+### 必须遵守的规则
+
+**1. 始终使用 `attachTo: document.body`**
+
+ARIA 查询和 axe-core 检测都依赖真实 DOM 上下文。不挂载到 body 时，`aria-*` 关联（`aria-controls`、`aria-labelledby`）可能无法解析。
+
+**2. 每个 `it` 结束前调用 `wrapper.unmount()`**
+
+happy-dom 不自动清理 DOM；遗留节点会干扰后续测试的 axe-core 检测。
+
+**3. 每个 `it` 内部独立挂载，不跨 `it` 共享 wrapper**
+
+```typescript
+// ✅ 正确：每个 it 自己挂载、自己卸载
+it('test A', () => {
+  const wrapper = mount(...);
+  // ...
+  wrapper.unmount();
+});
+
+// ✗ 错误：使用 beforeEach 共享 wrapper（a11y 测试会互相污染）
+```
+
+### 交互触发方式速查
+
+不同 headless 组件对用户操作的实现方式不同：
+
+| 组件 / 元素                     | 触发方式                              | 说明                                   |
+| ------------------------------- | ------------------------------------- | -------------------------------------- |
+| `Button`（headless）            | `trigger('click')`                    | stopPropagation 在禁用时拦截           |
+| `CheckboxControl`               | `trigger('click')`                    | 原生 click 切换 checked                |
+| `SwitchControl`                 | `trigger('click')`                    | 内部 click handler                     |
+| `TabsTrigger`                   | `trigger('mousedown', { button: 0 })` | **mousedown.left**，非 click           |
+| `AccordionTrigger`              | `trigger('click')`                    | CollapsibleTrigger → 原生 button click |
+| 弹层触发器（Popover / Tooltip） | `trigger('click')` 或 `mouseenter`    | 按组件实现查阅 headless SFC            |
+
+### 禁用状态实现方式速查
+
+不同组件的禁用渲染方式不同，对应不同的断言写法：
+
+| 组件                 | 渲染方式                   | 断言写法                                           |
+| -------------------- | -------------------------- | -------------------------------------------------- |
+| `Button`（headless） | `aria-disabled="true"`     | `attributes('aria-disabled')` toBe `'true'`        |
+| `CheckboxControl`    | 原生 `:disabled`           | `element.disabled` toBe `true`                     |
+| `AccordionTrigger`   | 原生 `:disabled`（button） | `element.disabled` toBe `true`                     |
+| `TabsTrigger`        | `data-disabled=""`         | `attributes('data-disabled')` toBe `''`            |
+| `SwitchControl`      | `data-disabled` + 逻辑拦截 | 触发 click 后检查 `emitted()` 为 `undefined`/falsy |
+
+### a11y 测试注意事项
+
+```typescript
+// test/shared/a11y.ts 已禁用以下规则（happy-dom 限制）：
+// - color-contrast：没有计算样式，无法判断对比度
+// - svg-img-alt：@iconify/vue 在测试环境渲染 SVG 时不带 aria-hidden
+// - image-alt：同上
+
+import { getA11yViolations } from '../../shared/a11y';
+```
+
+**需要 accessible name 的控件**（否则 a11y 测试会报 violation）：
+
+| 情形                         | 解决方案                                            |
+| ---------------------------- | --------------------------------------------------- |
+| `role="switch"` 没有可见文字 | 传 `controlProps: { 'aria-label': 'xxx' }`          |
+| 独立 `<input>` 缺少 label    | 用父组件包裹：`<label for="id">` + `<SInput id="">` |
+| icon-only button             | 传 `aria-label` 或 `title`                          |
+
+**多组件组合的 a11y 测试**（例如带 label 的 input）：
+
+```typescript
+// 用匿名 Options API 对象包裹，模拟真实使用场景
+const wrapper = mount(
+  {
+    template: `<div><label for="x">Name</label><SInput id="x" /></div>`,
+    components: { SInput }
+  },
+  { attachTo: document.body }
+);
+```
+
+### describe 分组规范
+
+| describe 名      | 测试内容                                            |
+| ---------------- | --------------------------------------------------- |
+| `rendering`      | 默认渲染、slot 内容、自定义 class、关键子元素存在性 |
+| `{state} state`  | modelValue 反映到 aria-\* / data-state，emit 时机   |
+| `disabled state` | 禁用渲染方式（见上表）、禁用时不触发 emit           |
+| `accessibility`  | `getA11yViolations` 返回空数组，覆盖主要使用场景    |
+
+---
+
 ## 校验清单
 
 详见 [→ checklist.md](./references/checklist.md)
@@ -726,3 +926,8 @@ custom-styling
 | 单类名组件（无 UiContext） | [headless/button](../../../headless/src/components/button/) · [ui/button](../../../src/components/button/)             |
 | 复杂多层级组件             | [headless/accordion](../../../headless/src/components/accordion/) · [ui/accordion](../../../src/components/accordion/) |
 | 浮层/Teleport 组件         | [headless/dialog](../../../headless/src/components/dialog/)                                                            |
+| 单元测试（单类名）         | [test/specs/components/button.spec.ts](../../../test/specs/components/button.spec.ts)                                  |
+| 单元测试（多 slot）        | [test/specs/components/accordion.spec.ts](../../../test/specs/components/accordion.spec.ts)                            |
+| 单元测试（选择型）         | [test/specs/components/tabs.spec.ts](../../../test/specs/components/tabs.spec.ts)                                      |
+| a11y 辅助工具              | [test/shared/a11y.ts](../../../test/shared/a11y.ts)                                                                    |
+| Namespaced 导出            | [headless/src/namespaced/index.ts](../../../headless/src/namespaced/index.ts)                                          |
