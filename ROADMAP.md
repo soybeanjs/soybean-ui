@@ -12,18 +12,17 @@ English | [中文](#中文版)
 
 ### Testing Coverage
 
-- [ ] Add `test/specs/components/` — component-level render + interaction tests using `@vue/test-utils`
-  - [ ] Core primitives: `Button`, `Input`, `Checkbox`, `Switch`
-  - [ ] Disclosure components: `Dialog`, `Accordion`, `Collapsible`
-  - [ ] Navigation: `Tabs`, `NavigationMenu`, `Dropdown Menu`
-  - [ ] Form: `Form`, `Select`, `RadioGroup`
-- [ ] Integrate `axe-core` for automated a11y testing within vitest
+- [x] Add `test/specs/components/` — component-level render + interaction tests using `@vue/test-utils`
+  - [x] Core primitives: `Button`, `Input`, `Checkbox`, `Switch`
+  - [x] Disclosure components: `Accordion`
+  - [x] Navigation: `Tabs`
+  - [ ] (Follow-up) `Dialog`, `Collapsible`, `NavigationMenu`, `DropdownMenu`, `Form`, `Select`, `RadioGroup`
+- [x] Integrate `axe-core` for automated a11y testing within vitest (`test/shared/a11y.ts`)
 - [ ] (Long-term) Add Playwright E2E tests for critical flows: Dialog open/close, Form submit, Toast trigger
 
 ### CI / CD
 
-- [ ] Add `ci.yml` — triggered on every PR: `pnpm typecheck && pnpm lint && pnpm test`
-- [ ] Add Dependabot / Renovate for automated dependency updates
+- [x] Add `ci.yml` — triggered on every PR: `pnpm typecheck && pnpm lint && pnpm test`
 - [ ] (Long-term) Add bundle size bot — comment on PRs with per-component size change
 
 ---
@@ -150,18 +149,21 @@ Current: Zod + Valibot validation supported, but missing advanced patterns.
 
 ## Completed Reference
 
-| Area                                                  | Status |
-| ----------------------------------------------------- | ------ |
-| Headless + styled dual-layer architecture             | ✅     |
-| UnoCSS + tailwind-variants style system               | ✅     |
-| TypeScript strict mode throughout                     | ✅     |
-| Sub-path package exports                              | ✅     |
-| Nuxt module + unplugin resolver                       | ✅     |
-| ConfigProvider (theme / size / dir / iconify / toast) | ✅     |
-| RTL direction support infrastructure (`useDirection`) | ✅     |
-| Composable unit tests (12 composables)                | ✅     |
-| Conventional Commits + automated CHANGELOG            | ✅     |
-| Tag-triggered NPM release pipeline                    | ✅     |
+| Area                                                                      | Status |
+| ------------------------------------------------------------------------- | ------ |
+| Headless + styled dual-layer architecture                                 | ✅     |
+| UnoCSS + tailwind-variants style system                                   | ✅     |
+| TypeScript strict mode throughout                                         | ✅     |
+| Sub-path package exports                                                  | ✅     |
+| Nuxt module + unplugin resolver                                           | ✅     |
+| ConfigProvider (theme / size / dir / iconify / toast)                     | ✅     |
+| RTL direction support infrastructure (`useDirection`)                     | ✅     |
+| Composable unit tests (12 composables)                                    | ✅     |
+| Conventional Commits + automated CHANGELOG                                | ✅     |
+| Tag-triggered NPM release pipeline                                        | ✅     |
+| Component tests (`Button`/`Input`/`Checkbox`/`Switch`/`Accordion`/`Tabs`) | ✅     |
+| axe-core a11y integration (`test/shared/a11y.ts`)                         | ✅     |
+| PR CI workflow (`.github/workflows/ci.yml`)                               | ✅     |
 
 ---
 
@@ -179,18 +181,17 @@ Current: Zod + Valibot validation supported, but missing advanced patterns.
 
 ### 测试覆盖
 
-- [ ] 新增 `test/specs/components/` — 使用 `@vue/test-utils` 编写组件渲染 + 交互测试
-  - [ ] 核心原语：`Button`、`Input`、`Checkbox`、`Switch`
-  - [ ] 展开类：`Dialog`、`Accordion`、`Collapsible`
-  - [ ] 导航类：`Tabs`、`NavigationMenu`、`DropdownMenu`
-  - [ ] 表单类：`Form`、`Select`、`RadioGroup`
-- [ ] 集成 `axe-core`，在 vitest 中运行自动化无障碍测试
+- [x] 新增 `test/specs/components/` — 使用 `@vue/test-utils` 编写组件渲染 + 交互测试
+  - [x] 核心原语：`Button`、`Input`、`Checkbox`、`Switch`
+  - [x] 展开类：`Accordion`
+  - [x] 导航类：`Tabs`
+  - [ ] （后续）`Dialog`、`Collapsible`、`NavigationMenu`、`DropdownMenu`、`Form`、`Select`、`RadioGroup`
+- [x] 集成 `axe-core`，在 vitest 中运行自动化无障碍测试（`test/shared/a11y.ts`）
 - [ ] （长期）添加 Playwright E2E 测试，覆盖关键流程：Dialog 开关、Form 提交、Toast 触发
 
 ### CI / CD
 
-- [ ] 新增 `ci.yml` — PR 触发：`pnpm typecheck && pnpm lint && pnpm test`
-- [ ] 接入 Dependabot / Renovate 自动更新依赖
+- [x] 新增 `ci.yml` — PR 触发：`pnpm typecheck && pnpm lint && pnpm test`
 - [ ] （长期）添加 bundle size bot — PR 中评论各组件包大小变化
 
 ---
@@ -315,15 +316,18 @@ ConfigProvider 已有 `locale` prop，但无任何内置语言包内容。
 
 ## 已完成参考
 
-| 方向                                                   | 状态 |
-| ------------------------------------------------------ | ---- |
-| Headless + styled 双层架构                             | ✅   |
-| UnoCSS + tailwind-variants 样式系统                    | ✅   |
-| TypeScript strict 全程应用                             | ✅   |
-| 子路径 package exports                                 | ✅   |
-| Nuxt module + unplugin resolver                        | ✅   |
-| ConfigProvider（theme / size / dir / iconify / toast） | ✅   |
-| RTL 方向支持基础设施（`useDirection`）                 | ✅   |
-| Composable 单元测试（12 个）                           | ✅   |
-| Conventional Commits + 自动 CHANGELOG                  | ✅   |
-| tag 触发 NPM 发布流水线                                | ✅   |
+| 方向                                                                | 状态 |
+| ------------------------------------------------------------------- | ---- |
+| Headless + styled 双层架构                                          | ✅   |
+| UnoCSS + tailwind-variants 样式系统                                 | ✅   |
+| TypeScript strict 全程应用                                          | ✅   |
+| 子路径 package exports                                              | ✅   |
+| Nuxt module + unplugin resolver                                     | ✅   |
+| ConfigProvider（theme / size / dir / iconify / toast）              | ✅   |
+| RTL 方向支持基础设施（`useDirection`）                              | ✅   |
+| Composable 单元测试（12 个）                                        | ✅   |
+| Conventional Commits + 自动 CHANGELOG                               | ✅   |
+| tag 触发 NPM 发布流水线                                             | ✅   |
+| 组件测试（`Button`/`Input`/`Checkbox`/`Switch`/`Accordion`/`Tabs`） | ✅   |
+| axe-core 无障碍测试集成（`test/shared/a11y.ts`）                    | ✅   |
+| PR CI 流水线（`.github/workflows/ci.yml`）                          | ✅   |
