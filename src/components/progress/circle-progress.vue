@@ -4,6 +4,7 @@ import { ProgressRoot, provideProgressUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import {
+  CIRCLE_PROGRESS_CENTER,
   CIRCLE_PROGRESS_VIEWBOX_SIZE,
   DEFAULT_CIRCLE_PROGRESS_STROKE_WIDTH,
   getCircleProgressDasharray,
@@ -44,8 +45,6 @@ const strokeWidth = computed(() => getValidCircleProgressStrokeWidth(props.strok
 const radius = computed(() => getCircleProgressRadius(strokeWidth.value));
 
 const circumference = computed(() => 2 * Math.PI * radius.value);
-
-const center = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
 </script>
 
 <template>
@@ -57,15 +56,15 @@ const center = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
       aria-hidden="true"
     >
       <circle
-        :cx="center"
-        :cy="center"
+        :cx="CIRCLE_PROGRESS_CENTER"
+        :cy="CIRCLE_PROGRESS_CENTER"
         :r="radius"
         :stroke-width="strokeWidth"
         class="fill-none stroke-current text-muted"
       />
       <circle
-        :cx="center"
-        :cy="center"
+        :cx="CIRCLE_PROGRESS_CENTER"
+        :cy="CIRCLE_PROGRESS_CENTER"
         :r="radius"
         :stroke-width="strokeWidth"
         :stroke-dasharray="getCircleProgressDasharray(circumference, slotProps.progressState)"
@@ -76,7 +75,7 @@ const center = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
         :class="ui.indicator"
         fill="none"
         stroke-linecap="round"
-        :transform="`rotate(-90 ${center} ${center})`"
+        :transform="`rotate(-90 ${CIRCLE_PROGRESS_CENTER} ${CIRCLE_PROGRESS_CENTER})`"
       />
     </svg>
     <div v-if="$slots.default" class="pointer-events-none absolute inset-0 flex items-center justify-center">

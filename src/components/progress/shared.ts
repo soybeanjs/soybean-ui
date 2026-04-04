@@ -12,12 +12,16 @@ export function getProgressIndicatorStyle(valuePercent: number | null, direction
 
 export const CIRCLE_PROGRESS_VIEWBOX_SIZE = 100;
 
+export const CIRCLE_PROGRESS_CENTER = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
+
 export const DEFAULT_CIRCLE_PROGRESS_STROKE_WIDTH = 8;
 
 const INDETERMINATE_CIRCLE_PROGRESS_RATIO = 0.35;
 
+const MAX_CIRCLE_PROGRESS_STROKE_WIDTH = CIRCLE_PROGRESS_VIEWBOX_SIZE / 2;
+
 export function getValidCircleProgressStrokeWidth(value: number | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value) || value <= 0 || value >= CIRCLE_PROGRESS_VIEWBOX_SIZE) {
+  if (typeof value !== 'number' || Number.isNaN(value) || value <= 0 || value > MAX_CIRCLE_PROGRESS_STROKE_WIDTH) {
     return DEFAULT_CIRCLE_PROGRESS_STROKE_WIDTH;
   }
 
