@@ -16,6 +16,15 @@ export interface ProgressProps extends ProgressRootProps {
   indicatorProps?: ProgressIndicatorProps;
 }
 
+export interface CircleProgressProps extends ProgressRootProps {
+  class?: ClassValue;
+  color?: ThemeColor;
+  size?: ThemeSize;
+  ui?: Partial<ProgressUi>;
+  strokeWidth?: number;
+}
+
 export type ProgressEmits = ProgressRootEmits;
+export type CircleProgressEmits = ProgressRootEmits;
 
 export type { ProgressState };

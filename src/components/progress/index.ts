@@ -1,4 +1,5 @@
 export { default as SProgress } from './progress.vue';
+export { default as SCircleProgress } from './circle-progress.vue';
 
 export type {
   ProgressRootProps,

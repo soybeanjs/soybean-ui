@@ -59,3 +59,62 @@ export const progressVariants = tv({
     size: 'md'
   }
 });
+
+export const circleProgressVariants = tv({
+  slots: {
+    root: 'relative inline-flex shrink-0 items-center justify-center rounded-full',
+    indicator: 'fill-none stroke-current transition-[stroke-dasharray,stroke-dashoffset] duration-300 ease-in-out'
+  },
+  variants: {
+    color: {
+      primary: {
+        indicator: 'text-primary'
+      },
+      destructive: {
+        indicator: 'text-destructive'
+      },
+      success: {
+        indicator: 'text-success'
+      },
+      warning: {
+        indicator: 'text-warning'
+      },
+      info: {
+        indicator: 'text-info'
+      },
+      carbon: {
+        indicator: 'text-carbon'
+      },
+      secondary: {
+        indicator: 'text-secondary-foreground/40'
+      },
+      accent: {
+        indicator: 'text-accent-foreground/40'
+      }
+    },
+    size: {
+      xs: {
+        root: 'h-8 w-8 text-[10px]'
+      },
+      sm: {
+        root: 'h-10 w-10 text-xs'
+      },
+      md: {
+        root: 'h-12 w-12 text-sm'
+      },
+      lg: {
+        root: 'h-16 w-16 text-base'
+      },
+      xl: {
+        root: 'h-20 w-20 text-lg'
+      },
+      '2xl': {
+        root: 'h-24 w-24 text-xl'
+      }
+    }
+  },
+  defaultVariants: {
+    color: 'primary',
+    size: 'md'
+  }
+});

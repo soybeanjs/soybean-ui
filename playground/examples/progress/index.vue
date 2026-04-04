@@ -5,6 +5,7 @@ import DemoProgressSize from './size.vue';
 import DemoProgressColor from './color.vue';
 import DemoProgressState from './state.vue';
 import DemoProgressSlot from './slot.vue';
+import DemoProgressCircle from './circle.vue';
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import DemoProgressSlot from './slot.vue';
     <DemoProgressColor />
     <DemoProgressState />
     <DemoProgressSlot />
+    <DemoProgressCircle />
   </SCard>
 </template>

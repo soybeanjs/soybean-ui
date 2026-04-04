@@ -24,6 +24,7 @@ size
 color
 state
 slot
+circle
 ```
 
 ## Progress API
@@ -68,4 +69,26 @@ slot
       { name: 'complete', type: 'string', description: '进度已达到最大值。' },
     ],
   }
+]"/>
+
+## 环形进度
+
+```vue
+<script setup lang="ts">
+import { SCircleProgress } from '@soybeanjs/ui';
+</script>
+
+<template>
+  <SCircleProgress :model-value="72" size="xl">
+    <template #default="{ valuePercent }">
+      {{ Math.round(valuePercent ?? 0) }}%
+    </template>
+  </SCircleProgress>
+</template>
+```
+
+`SCircleProgress` 支持与 `SProgress` 相同的属性、事件、插槽参数和 `Ui` 类型，并额外提供以下属性：
+
+<DataTable preset="props" :data="[
+  { name: 'strokeWidth', type: 'number', default: '8', description: '环形指示器的描边宽度。' },
 ]"/>
