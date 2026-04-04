@@ -53,11 +53,23 @@ export function getValidMinStepsBetweenThumbs(value: number | undefined) {
   return 0;
 }
 
+function resolveSliderValueSource(values: number[] | undefined, defaultValue?: number[]) {
+  if (Array.isArray(values) && values.length > 0) {
+    return values;
+  }
+
+  if (defaultValue?.length) {
+    return defaultValue;
+  }
+
+  return DEFAULT_SLIDER_VALUE;
+}
+
 export function normalizeSliderValues(
   values: number[] | undefined,
   options: { min: number; max: number; step: number; defaultValue?: number[] }
 ) {
-  const source = Array.isArray(values) && values.length > 0 ? values : options.defaultValue?.length ? options.defaultValue : DEFAULT_SLIDER_VALUE;
+  const source = resolveSliderValueSource(values, options.defaultValue);
 
   return [...source]
     .map(value => snapValueToStep(value, options.min, options.max, options.step))
@@ -96,7 +108,7 @@ export function getClosestValueIndex(values: number[], nextValue: number) {
 }
 
 export function getStepsBetweenValues(values: number[]) {
-  return values.slice(0, -1).map((value, index) => values[index + 1] - value);
+  return values.slice(0, -1).map((value, index) => values[index + 1]! - value);
 }
 
 export function hasMinStepsBetweenValues(values: number[], minStepsBetweenValues: number) {

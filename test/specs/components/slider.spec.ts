@@ -72,6 +72,19 @@ describe('SSlider', () => {
       expect(thumbs[1]?.attributes('aria-label')).toBe('Maximum');
       wrapper.unmount();
     });
+
+    it('allows custom thumb aria-labels in range mode', () => {
+      const wrapper = mount(SSlider, {
+        props: { modelValue: [20, 80], thumbProps: { 'aria-label': 'Price range' } },
+        attachTo: document.body
+      });
+
+      const thumbs = wrapper.findAll('[role="slider"]');
+
+      expect(thumbs[0]?.attributes('aria-label')).toBe('Price range');
+      expect(thumbs[1]?.attributes('aria-label')).toBe('Price range');
+      wrapper.unmount();
+    });
   });
 
   describe('value state', () => {

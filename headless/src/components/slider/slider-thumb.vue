@@ -36,9 +36,11 @@ const {
 
 const forwardedProps = useOmitProps(props, ['index']);
 
-const [_, setElementRef] = useForwardElement(node => {
+const thumbElementRef = useForwardElement(node => {
   setThumbElement(props.index, node);
 });
+
+const setElementRef = thumbElementRef[1];
 
 const value = computed(() => currentModelValue.value[props.index]);
 const percent = computed(() => getPercentage(value.value ?? min.value));
@@ -49,14 +51,16 @@ const ariaLabel = computed(() => {
   return typeof attrValue === 'string' ? attrValue : label.value;
 });
 
+function getThumbTransform(isHorizontalAxis: boolean, edge: 'top' | 'right' | 'bottom' | 'left') {
+  if (isHorizontalAxis) {
+    return edge === 'left' ? 'translateX(-50%) translateY(-50%)' : 'translateX(50%) translateY(-50%)';
+  }
+
+  return edge === 'bottom' ? 'translateX(-50%) translateY(50%)' : 'translateX(-50%) translateY(-50%)';
+}
+
 const style = computed(() => {
-  const translate = isHorizontal.value
-    ? startEdge.value === 'left'
-      ? 'translateX(-50%) translateY(-50%)'
-      : 'translateX(50%) translateY(-50%)'
-    : startEdge.value === 'bottom'
-      ? 'translateX(-50%) translateY(50%)'
-      : 'translateX(-50%) translateY(-50%)';
+  const translate = getThumbTransform(isHorizontal.value, startEdge.value);
 
   return {
     position: 'absolute',

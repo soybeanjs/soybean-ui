@@ -16,9 +16,11 @@ const cls = useSliderUi('track');
 
 const { disabled, orientation, setTrackElement, beginTrackDrag, moveDrag, endDrag } = useSliderRootContext('SliderTrack');
 
-const [_, setElementRef] = useForwardElement(node => {
+const trackElementRef = useForwardElement(node => {
   setTrackElement(node);
 });
+
+const setElementRef = trackElementRef[1];
 
 function onPointerDown(event: PointerEvent) {
   if (disabled.value) {
