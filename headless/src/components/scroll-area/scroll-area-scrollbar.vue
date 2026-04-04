@@ -223,6 +223,11 @@ function onThumbPointerDown(event: PointerEvent) {
   window.addEventListener('pointerup', handlePointerUp);
 }
 
+function onScroll() {
+  updateMetrics();
+  triggerTransientVisibility();
+}
+
 watch(
   () => viewportElement.value,
   (viewport, previousViewport) => {
@@ -259,11 +264,6 @@ useResizeObserver(
   computed(() => [viewportElement.value, contentElement.value, scrollbarElement.value].filter(Boolean)),
   updateMetrics
 );
-
-function onScroll() {
-  updateMetrics();
-  triggerTransientVisibility();
-}
 
 provideScrollAreaScrollbarContext({
   orientation,
