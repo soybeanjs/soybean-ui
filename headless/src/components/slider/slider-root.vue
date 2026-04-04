@@ -113,7 +113,7 @@ const thumbElements = shallowRef<(HTMLElement | undefined)[]>([]);
 const dragOffset = shallowRef(0);
 const dragPointerId = shallowRef<number | null>(null);
 const valuesBeforeDrag = shallowRef<number[]>(currentModelValue.value);
-let cleanupDragListeners: (() => void) | null = null;
+let dragListenersCleanup: (() => void) | null = null;
 
 watch(
   () => currentModelValue.value.length,
@@ -160,8 +160,8 @@ function isDraggingPointer(pointerId: number) {
 }
 
 function stopDragListeners() {
-  cleanupDragListeners?.();
-  cleanupDragListeners = null;
+  dragListenersCleanup?.();
+  dragListenersCleanup = null;
 }
 
 function startDragListeners(doc: Document) {
@@ -179,7 +179,7 @@ function startDragListeners(doc: Document) {
   doc.addEventListener('pointerup', handlePointerUp);
   doc.addEventListener('pointercancel', handlePointerUp);
 
-  cleanupDragListeners = () => {
+  dragListenersCleanup = () => {
     doc.removeEventListener('pointermove', handlePointerMove);
     doc.removeEventListener('pointerup', handlePointerUp);
     doc.removeEventListener('pointercancel', handlePointerUp);
@@ -293,8 +293,8 @@ function moveDrag(event: PointerEvent) {
   updateValueAtIndex(value + dragOffset.value, activeThumbIndex.value);
 }
 
-function endDrag(pointerId?: number) {
-  if (disabled.value || (typeof pointerId === 'number' && !isDraggingPointer(pointerId))) {
+function endDrag(maybePointerId?: number) {
+  if (disabled.value || (typeof maybePointerId === 'number' && !isDraggingPointer(maybePointerId))) {
     return;
   }
 
