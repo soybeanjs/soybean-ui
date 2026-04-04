@@ -32,6 +32,7 @@ export * from './components/pagination';
 export * from './components/password';
 export * from './components/popconfirm';
 export * from './components/popover';
+export * from './components/progress';
 export * from './components/radio-group';
 export * from './components/segment';
 export * from './components/select';
