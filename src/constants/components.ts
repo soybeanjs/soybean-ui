@@ -38,6 +38,7 @@ export const components = {
   segment: ['SSegment'],
   select: ['SSelect'],
   separator: ['SSeparator'],
+  slider: ['SSlider'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],

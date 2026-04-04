@@ -209,6 +209,10 @@ import {
   SelectViewport,
   SeparatorLabel,
   SeparatorRoot,
+  SliderRange,
+  SliderRoot,
+  SliderThumb,
+  SliderTrack,
   Slot,
   SwitchControl,
   SwitchRoot,
@@ -793,6 +797,18 @@ export const Separator = {
 } as {
   Root: typeof SeparatorRoot;
   Label: typeof SeparatorLabel;
+};
+
+export const Slider = {
+  Root: SliderRoot,
+  Track: SliderTrack,
+  Range: SliderRange,
+  Thumb: SliderThumb
+} as {
+  Root: typeof SliderRoot;
+  Track: typeof SliderTrack;
+  Range: typeof SliderRange;
+  Thumb: typeof SliderThumb;
 };
 
 export { Slot };

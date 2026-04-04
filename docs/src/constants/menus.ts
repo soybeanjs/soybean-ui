@@ -46,6 +46,7 @@ export const menuData: MenuData[] = [
       'radioGroup',
       'segment',
       'select',
+      'slider',
       'switch'
     ]
   },
