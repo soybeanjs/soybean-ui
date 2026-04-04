@@ -9,7 +9,11 @@ export const PROGRESS_CIRCLE_CENTER = PROGRESS_CIRCLE_VIEWBOX_SIZE / 2;
 
 export const DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH = 8;
 
+const MIN_PROGRESS_CIRCLE_STROKE_WIDTH = 1;
+
 const INDETERMINATE_PROGRESS_CIRCLE_RATIO = 0.35;
+
+const INDETERMINATE_PROGRESS_CIRCLE_OFFSET_RATIO = 0.25;
 
 const MAX_PROGRESS_CIRCLE_STROKE_WIDTH = PROGRESS_CIRCLE_VIEWBOX_SIZE / 4;
 
@@ -52,7 +56,11 @@ export function getValidModelValue(value: number | null | undefined, maxValue: n
 }
 
 export function getValidProgressCircleStrokeWidth(value: number | undefined) {
-  if (!isValidPositiveNumber(value) || value > MAX_PROGRESS_CIRCLE_STROKE_WIDTH) {
+  if (
+    !isValidPositiveNumber(value) ||
+    value < MIN_PROGRESS_CIRCLE_STROKE_WIDTH ||
+    value > MAX_PROGRESS_CIRCLE_STROKE_WIDTH
+  ) {
     return DEFAULT_PROGRESS_CIRCLE_STROKE_WIDTH;
   }
 
@@ -77,7 +85,7 @@ export function getProgressCircleDashoffset(
   progressState: ProgressState
 ) {
   if (progressState === 'indeterminate') {
-    return circumference * 0.25;
+    return circumference * INDETERMINATE_PROGRESS_CIRCLE_OFFSET_RATIO;
   }
 
   if (valuePercent === null) {

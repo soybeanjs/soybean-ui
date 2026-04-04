@@ -1,3 +1,4 @@
+/** Resolve linear progress translateX for LTR and RTL layouts. */
 export function getProgressIndicatorStyle(valuePercent: number | null, direction: 'ltr' | 'rtl' = 'ltr') {
   if (valuePercent === null) {
     return undefined;
