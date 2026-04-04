@@ -37,8 +37,6 @@ defineSlots<{
 
 const cls = useProgressUi('root');
 
-const forwardedProps = useOmitProps(props, ['modelValue', 'max', 'getValueLabel', 'getValueText'], attrs);
-
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
@@ -103,6 +101,10 @@ const valueLabel = computed(() => props.getValueLabel?.(normalizedModelValue.val
 
 const valueText = computed(() => props.getValueText?.(normalizedModelValue.value, normalizedMax.value));
 
+const ariaValueNowProps = computed(() =>
+  typeof normalizedModelValue.value === 'number' ? { 'aria-valuenow': normalizedModelValue.value } : {}
+);
+
 function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
   const value = attrs[name];
 
@@ -112,6 +114,8 @@ function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
 const ariaLabel = computed(() => getStringAttr('aria-label') ?? valueLabel.value);
 
 const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? valueText.value);
+
+const forwardedProps = useOmitProps(props, ['modelValue', 'max', 'getValueLabel', 'getValueText'], attrs, ariaValueNowProps);
 
 watch(
   normalizedMax,
@@ -149,7 +153,6 @@ provideProgressRootContext({
     :aria-label="ariaLabel"
     :aria-valuemin="0"
     :aria-valuemax="normalizedMax"
-    :aria-valuenow="typeof normalizedModelValue === 'number' ? normalizedModelValue : undefined"
     :aria-valuetext="ariaValueText"
     :data-state="progressState"
     :data-value="normalizedModelValue ?? undefined"

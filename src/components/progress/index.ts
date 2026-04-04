@@ -9,3 +9,5 @@ export type {
   ProgressUi
 } from '@soybeanjs/headless/progress';
 export type * from './types';
+
+export { getProgressIndicatorStyle } from './shared';

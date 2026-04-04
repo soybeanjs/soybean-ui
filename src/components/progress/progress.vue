@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { ProgressIndicator, ProgressRoot, provideProgressUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
+import { getProgressIndicatorStyle } from './shared';
 import { progressVariants } from './variants';
 import type { ProgressEmits, ProgressProps } from './types';
 
@@ -32,10 +33,7 @@ provideProgressUi(ui);
 
 <template>
   <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <ProgressIndicator
-      v-bind="indicatorProps"
-      :style="slotProps.valuePercent === null ? undefined : { transform: `translateX(-${100 - slotProps.valuePercent}%)` }"
-    >
+    <ProgressIndicator v-bind="indicatorProps" :style="getProgressIndicatorStyle(slotProps.valuePercent)">
       <slot v-bind="slotProps" />
     </ProgressIndicator>
   </ProgressRoot>
