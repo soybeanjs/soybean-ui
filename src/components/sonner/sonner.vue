@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, nextTick, onUnmounted, ref, shallowRef, watch } from 'vue';
-import { provideSonnerUi, sonnerToasts } from '@soybeanjs/headless';
+import { computed, nextTick, onUnmounted, shallowRef, watch } from 'vue';
+import { provideSonnerUi, sonnerToasts } from '@soybeanjs/headless/sonner';
 import { cn, mergeSlotVariants } from '@/theme';
-import { sonnerVariants, sonnerToastVariants } from './variants';
-import type { SonnerProps } from './types';
+import { sonnerToastVariants, sonnerVariants } from './variants';
 import type { SonnerToastT } from '@soybeanjs/headless/sonner';
+import type { SonnerProps } from './types';
 
 defineOptions({ name: 'SSonner' });
 
@@ -18,8 +18,6 @@ const props = withDefaults(defineProps<SonnerProps>(), {
   richColors: false
 });
 
-// ─── UI ──────────────────────────────────────────────────────────────────────
-
 const ui = computed(() => {
   const variants = sonnerToastVariants({ type: 'default', richColors: props.richColors });
 
@@ -28,23 +26,24 @@ const ui = computed(() => {
 
 provideSonnerUi(ui);
 
-// ─── State ───────────────────────────────────────────────────────────────────
+const DEFAULT_TOAST_HEIGHT = 76;
 
-const expanded = shallowRef(props.expand);
-const interacting = shallowRef(false);
-const heights = ref<{ toastId: string | number; height: number }[]>([]);
-
-// Track per-toast mounted state for enter animation
+const hoverExpanded = shallowRef(false);
 const mountedToastIds = shallowRef<Set<string | number>>(new Set());
-
-// Track timer handles per toast
-const timerMap = new Map<string | number, ReturnType<typeof setTimeout>>();
-
-// Track toasts to remove after exit animation
 const removingIds = shallowRef<Set<string | number>>(new Set());
+const heights = shallowRef<Record<string, number>>({});
+const removalOffsets = shallowRef<Record<string, number>>({});
+const removalExpandedStates = shallowRef<Record<string, boolean>>({});
+const timerMap = new Map<string | number, ReturnType<typeof setTimeout>>();
+const resizeObservers = new Map<string | number, ResizeObserver>();
+const observedElements = new Map<string | number, Element>();
 
+const expanded = computed(() => props.expand || hoverExpanded.value);
+const renderedToasts = computed(() => sonnerToasts.value);
+const visibleCount = computed(() => Math.min(renderedToasts.value.length, props.visibleToasts));
 const isBottom = computed(() => props.position.startsWith('bottom'));
-const liftFactor = computed(() => (isBottom.value ? 1 : -1));
+const yDirection = computed(() => (isBottom.value ? 1 : -1));
+const yPosition = computed(() => (isBottom.value ? 'bottom' : 'top'));
 
 const containerClass = computed(() =>
   cn(
@@ -54,109 +53,45 @@ const containerClass = computed(() =>
   )
 );
 
-// ─── Derived toast list ───────────────────────────────────────────────────────
+const frontToastHeight = computed(() => {
+  const frontToast = renderedToasts.value[0];
+  if (!frontToast) return 0;
 
-/** Active (non-deleted) toasts to render */
-const activeToasts = computed(() => sonnerToasts.value.filter(t => !t.delete));
+  return getToastHeight(frontToast.id);
+});
 
-// ─── Height tracking ──────────────────────────────────────────────────────────
+const containerHeight = computed(() => {
+  if (visibleCount.value === 0) return 0;
 
-function setHeight(id: string | number, height: number) {
-  const existing = heights.value.find(h => h.toastId === id);
+  const visibleToasts = renderedToasts.value.slice(0, visibleCount.value);
 
-  if (existing) {
-    if (existing.height === height) return; // Avoid triggering re-render if unchanged
-    heights.value = heights.value.map(h => (h.toastId === id ? { ...h, height } : h));
-  } else {
-    heights.value = [{ toastId: id, height }, ...heights.value];
+  if (expanded.value) {
+    return visibleToasts.reduce((sum, toast, index) => {
+      return sum + getToastHeight(toast.id) + (index === 0 ? 0 : props.gap);
+    }, 0);
   }
-}
 
-function removeHeight(id: string | number) {
-  heights.value = heights.value.filter(h => h.toastId !== id);
-}
+  return frontToastHeight.value + Math.max(visibleCount.value - 1, 0) * props.gap;
+});
 
-// ─── Timer management ─────────────────────────────────────────────────────────
-
-function startTimer(toast: SonnerToastT) {
-  const duration = toast.duration ?? props.duration;
-
-  if (!duration || duration === Number.POSITIVE_INFINITY || toast.type === 'loading') return;
-
-  clearTimer(toast.id);
-
-  timerMap.set(
-    toast.id,
-    setTimeout(() => {
-      toast.onAutoClose?.(toast);
-      startDismissAnimation(toast.id);
-    }, duration)
-  );
-}
-
-function clearTimer(id: string | number) {
-  const handle = timerMap.get(id);
-  if (handle !== undefined) {
-    clearTimeout(handle);
-    timerMap.delete(id);
-  }
-}
-
-function pauseAllTimers() {
-  timerMap.forEach((_, id) => clearTimer(id));
-}
-
-function resumeAllTimers() {
-  activeToasts.value.forEach(toast => {
-    if (!removingIds.value.has(toast.id)) {
-      startTimer(toast);
-    }
-  });
-}
-
-// ─── Toast lifecycle ──────────────────────────────────────────────────────────
-
-function startDismissAnimation(id: string | number) {
-  if (removingIds.value.has(id)) return;
-
-  clearTimer(id);
-
-  const removing = new Set(removingIds.value);
-  removing.add(id);
-  removingIds.value = removing;
-
-  setTimeout(() => {
-    sonnerToasts.value = sonnerToasts.value.filter(t => t.id !== id);
-    removeHeight(id);
-
-    const m = new Set(mountedToastIds.value);
-    m.delete(id);
-    mountedToastIds.value = m;
-
-    const r = new Set(removingIds.value);
-    r.delete(id);
-    removingIds.value = r;
-  }, 350);
-}
-
-function deleteToast(id: string | number) {
-  startDismissAnimation(id);
-}
-
-// Watch for new toasts → mark as mounted after next tick (for enter animation)
 watch(
-  activeToasts,
+  renderedToasts,
   toasts => {
     toasts.forEach(toast => {
       if (!mountedToastIds.value.has(toast.id)) {
         nextTick(() => {
-          const m = new Set(mountedToastIds.value);
-          m.add(toast.id);
-          mountedToastIds.value = m;
+          const mounted = new Set(mountedToastIds.value);
+          mounted.add(toast.id);
+          mountedToastIds.value = mounted;
         });
       }
 
-      if (!timerMap.has(toast.id) && !removingIds.value.has(toast.id) && !expanded.value && !interacting.value) {
+      if (toast.delete) {
+        startDismissAnimation(toast.id);
+        return;
+      }
+
+      if (!expanded.value && !removingIds.value.has(toast.id) && !timerMap.has(toast.id)) {
         startTimer(toast);
       }
     });
@@ -164,63 +99,158 @@ watch(
   { immediate: true }
 );
 
-// Watch for externally dismissed toasts (e.g., via useSonner().dismiss())
-watch(sonnerToasts, toasts => {
-  toasts.forEach(toast => {
-    if (toast.delete) {
-      startDismissAnimation(toast.id);
+watch(expanded, isExpanded => {
+  if (isExpanded) {
+    pauseAllTimers();
+    return;
+  }
+
+  renderedToasts.value.forEach(toast => {
+    if (!toast.delete && !removingIds.value.has(toast.id)) {
+      startTimer(toast);
     }
   });
 });
 
-watch(expanded, val => {
-  if (val) {
-    pauseAllTimers();
-  } else {
-    resumeAllTimers();
-  }
-});
-
 onUnmounted(() => {
-  timerMap.forEach((_, id) => clearTimer(id));
+  timerMap.forEach(timeout => clearTimeout(timeout));
+  resizeObservers.forEach(observer => observer.disconnect());
 });
 
-// ─── Per-toast computed helpers ───────────────────────────────────────────────
+function getToastKey(id: string | number) {
+  return String(id);
+}
+
+function getToastHeight(id: string | number) {
+  return heights.value[getToastKey(id)] ?? DEFAULT_TOAST_HEIGHT;
+}
 
 function getToastIndex(id: string | number) {
-  return activeToasts.value.findIndex(t => t.id === id);
+  return renderedToasts.value.findIndex(toast => toast.id === id);
 }
 
-function getOffset(index: number): number {
-  if (expanded.value) {
-    return heights.value.slice(0, index).reduce((sum, h) => sum + h.height + props.gap, 0);
-  }
+function getExpandedOffset(index: number) {
+  if (index <= 0) return 0;
 
-  return index * 14;
+  return renderedToasts.value.slice(0, index).reduce((sum, toast) => {
+    return sum + getToastHeight(toast.id) + props.gap;
+  }, 0);
 }
 
-function getToastStyle(toast: SonnerToastT) {
-  const index = getToastIndex(toast.id);
-  const clampedIndex = Math.min(index, props.visibleToasts - 1);
-  const offset = getOffset(index);
-  const isVisible = index < props.visibleToasts;
+function getCollapsedOffset(index: number) {
+  return Math.max(index, 0) * props.gap;
+}
 
-  const scale = expanded.value ? 1 : 1 - clampedIndex * 0.05;
-  const translateY = liftFactor.value * offset;
+function getCollapsedScale(index: number) {
+  return 1 - Math.min(index, props.visibleToasts - 1) * 0.05;
+}
 
-  return {
-    '--index': index,
-    '--z-index': activeToasts.value.length - index,
-    position: 'absolute' as const,
-    bottom: isBottom.value ? '0' : undefined,
-    top: !isBottom.value ? '0' : undefined,
-    width: '100%',
-    zIndex: activeToasts.value.length - index,
-    transform: `translateY(${translateY}px) scale(${scale})`,
-    transformOrigin: isBottom.value ? 'bottom center' : 'top center',
-    opacity: isVisible ? 1 : 0,
-    transition: 'transform 0.3s ease, opacity 0.3s ease, scale 0.3s ease'
+function setToastHeight(id: string | number, height: number) {
+  const key = getToastKey(id);
+  if (heights.value[key] === height) return;
+
+  heights.value = {
+    ...heights.value,
+    [key]: height
   };
+}
+
+function clearToastHeight(id: string | number) {
+  const key = getToastKey(id);
+  if (!(key in heights.value)) return;
+
+  const { [key]: _removedHeight, ...nextHeights } = heights.value;
+  heights.value = nextHeights;
+}
+
+function setRemovalState(id: string | number, offset: number) {
+  const key = getToastKey(id);
+
+  removalOffsets.value = {
+    ...removalOffsets.value,
+    [key]: offset
+  };
+
+  removalExpandedStates.value = {
+    ...removalExpandedStates.value,
+    [key]: expanded.value
+  };
+}
+
+function clearRemovalState(id: string | number) {
+  const key = getToastKey(id);
+  const { [key]: _removedOffset, ...nextOffsets } = removalOffsets.value;
+  removalOffsets.value = nextOffsets;
+
+  const { [key]: _removedExpandedState, ...nextExpandedStates } = removalExpandedStates.value;
+  removalExpandedStates.value = nextExpandedStates;
+}
+
+function clearTimer(id: string | number) {
+  const timer = timerMap.get(id);
+  if (!timer) return;
+
+  clearTimeout(timer);
+  timerMap.delete(id);
+}
+
+function pauseAllTimers() {
+  timerMap.forEach(timeout => clearTimeout(timeout));
+  timerMap.clear();
+}
+
+function startTimer(toast: SonnerToastT) {
+  const duration = toast.duration ?? props.duration;
+
+  if (!duration || duration === Number.POSITIVE_INFINITY || toast.type === 'loading' || expanded.value) return;
+
+  clearTimer(toast.id);
+
+  const timeout = setTimeout(() => {
+    toast.onAutoClose?.(toast);
+    startDismissAnimation(toast.id);
+  }, duration);
+
+  timerMap.set(toast.id, timeout);
+}
+
+function cleanupToast(id: string | number) {
+  sonnerToasts.value = sonnerToasts.value.filter(toast => toast.id !== id);
+  clearTimer(id);
+  clearToastHeight(id);
+  clearRemovalState(id);
+
+  const mounted = new Set(mountedToastIds.value);
+  mounted.delete(id);
+  mountedToastIds.value = mounted;
+
+  const removing = new Set(removingIds.value);
+  removing.delete(id);
+  removingIds.value = removing;
+
+  resizeObservers.get(id)?.disconnect();
+  resizeObservers.delete(id);
+  observedElements.delete(id);
+}
+
+function startDismissAnimation(id: string | number) {
+  if (removingIds.value.has(id)) return;
+
+  const index = getToastIndex(id);
+  const removing = new Set(removingIds.value);
+  removing.add(id);
+  removingIds.value = removing;
+
+  setRemovalState(id, getExpandedOffset(index));
+  clearTimer(id);
+
+  setTimeout(() => {
+    cleanupToast(id);
+  }, 400);
+}
+
+function deleteToast(id: string | number) {
+  startDismissAnimation(id);
 }
 
 function getToastUiClass(toast: SonnerToastT) {
@@ -237,16 +267,98 @@ function getToastUiClass(toast: SonnerToastT) {
   };
 }
 
-function onToastRef(toast: SonnerToastT, el: unknown) {
-  if (!el || typeof el !== 'object') return;
-  const element = el as { getBoundingClientRect?: () => DOMRect };
-
-  if (typeof element.getBoundingClientRect === 'function') {
-    setHeight(toast.id, element.getBoundingClientRect().height);
-  }
+function getToastContentClass(index: number) {
+  return cn('flex flex-1 flex-col gap-1 min-w-0 transition-opacity duration-300', index === 0 || expanded.value ? 'opacity-100' : 'opacity-0');
 }
 
-const iconMap: Record<string, string> = {
+function getToastStyle(toast: SonnerToastT) {
+  const index = getToastIndex(toast.id);
+  const isFront = index === 0;
+  const isVisible = index > -1 && index < props.visibleToasts;
+  const isRemoving = removingIds.value.has(toast.id);
+  const isMounted = mountedToastIds.value.has(toast.id);
+  const height = getToastHeight(toast.id);
+  const baseExpandedOffset = getExpandedOffset(index);
+  const baseCollapsedOffset = getCollapsedOffset(index);
+  const removalKey = getToastKey(toast.id);
+  const removalOffset = removalOffsets.value[removalKey] ?? baseExpandedOffset;
+  const removalExpanded = removalExpandedStates.value[removalKey] ?? expanded.value;
+  const collapsedScale = getCollapsedScale(index);
+
+  let translateY = expanded.value ? yDirection.value * baseExpandedOffset : yDirection.value * baseCollapsedOffset;
+  let scale = expanded.value ? 1 : collapsedScale;
+  let opacity = isVisible ? 1 : 0;
+  let pointerEvents: 'auto' | 'none' = isVisible ? 'auto' : 'none';
+  const styleHeight = expanded.value || isFront ? height : Math.max(frontToastHeight.value, height);
+
+  if (!isMounted) {
+    translateY = yDirection.value * (height + 24);
+    scale = 0.96;
+    opacity = 0;
+  }
+
+  if (isRemoving) {
+    pointerEvents = 'none';
+    opacity = 0;
+
+    if (removalExpanded) {
+      translateY = yDirection.value * (removalOffset + height + props.gap);
+      scale = 1;
+    } else if (isFront) {
+      translateY = yDirection.value * (height + 24);
+      scale = 1;
+    } else {
+      translateY = yDirection.value * (baseCollapsedOffset + 40);
+      scale = collapsedScale;
+    }
+  }
+
+  return {
+    position: 'absolute' as const,
+    width: '100%',
+    [yPosition.value]: '0',
+    zIndex: renderedToasts.value.length - index,
+    height: `${styleHeight}px`,
+    opacity,
+    pointerEvents,
+    transform: `translateY(${translateY}px) scale(${scale})`,
+    transformOrigin: isBottom.value ? 'bottom center' : 'top center',
+    transition: 'transform 400ms ease, opacity 400ms ease, height 400ms ease, box-shadow 200ms ease'
+  };
+}
+
+function onToastRef(toast: SonnerToastT, el: unknown) {
+  const id = toast.id;
+  const element = el instanceof Element ? el : null;
+  const previous = observedElements.get(id);
+
+  if (!element) {
+    resizeObservers.get(id)?.disconnect();
+    resizeObservers.delete(id);
+    observedElements.delete(id);
+    return;
+  }
+
+  if (previous === element) return;
+
+  resizeObservers.get(id)?.disconnect();
+  observedElements.set(id, element);
+  setToastHeight(id, element.getBoundingClientRect().height);
+
+  if (typeof ResizeObserver === 'undefined') return;
+
+  const observer = new ResizeObserver(entries => {
+    const entry = entries[0];
+    if (!entry) return;
+
+    setToastHeight(id, entry.contentRect.height);
+  });
+
+  observer.observe(element);
+  resizeObservers.set(id, observer);
+}
+
+const iconMap: Partial<Record<NonNullable<SonnerToastT['type']>, string>> = {
   success: 'lucide:circle-check',
   error: 'lucide:circle-x',
   info: 'lucide:info',
@@ -254,25 +366,18 @@ const iconMap: Record<string, string> = {
   loading: 'lucide:loader-circle'
 };
 
-function getIcon(toast: SonnerToastT): string | null {
+function getIcon(toast: SonnerToastT) {
   if (!toast.type || toast.type === 'default') return null;
+
   return iconMap[toast.type] ?? null;
 }
 
-// ─── Interaction handlers ─────────────────────────────────────────────────────
-
 function onMouseEnter() {
-  expanded.value = true;
-  interacting.value = true;
-  pauseAllTimers();
+  hoverExpanded.value = true;
 }
 
 function onMouseLeave() {
-  interacting.value = false;
-  if (!props.expand) {
-    expanded.value = false;
-  }
-  resumeAllTimers();
+  hoverExpanded.value = false;
 }
 </script>
 
@@ -280,22 +385,26 @@ function onMouseLeave() {
   <Teleport to="body">
     <section
       :class="containerClass"
-      :style="{ height: expanded ? `${heights.reduce((s, h) => s + h.height + gap, 0)}px` : '96px' }"
+      :style="{ height: containerHeight ? `${containerHeight}px` : undefined }"
       aria-label="Notifications"
       aria-live="polite"
       @mouseenter="onMouseEnter"
       @mouseleave="onMouseLeave"
     >
-      <template v-for="toast in activeToasts" :key="toast.id">
+      <template v-for="toast in renderedToasts" :key="toast.id">
         <div
-          :ref="(el) => onToastRef(toast, el)"
+          :ref="el => onToastRef(toast, el as unknown)"
           role="status"
           :aria-live="toast.type === 'error' ? 'assertive' : 'polite'"
           :aria-atomic="true"
           :aria-label="typeof toast.title === 'string' ? toast.title : undefined"
           :data-mounted="mountedToastIds.has(toast.id)"
+          :data-visible="getToastIndex(toast.id) < visibleToasts"
+          :data-expanded="expanded"
+          :data-front="getToastIndex(toast.id) === 0"
+          :data-removed="removingIds.has(toast.id)"
+          :data-y-position="yPosition"
           :data-type="toast.type ?? 'default'"
-          :data-removing="removingIds.has(toast.id)"
           :class="getToastUiClass(toast).toast"
           :style="getToastStyle(toast)"
           tabindex="0"
@@ -305,10 +414,10 @@ function onMouseLeave() {
               <component :is="toast.icon" :class="getToastUiClass(toast).icon" />
             </slot>
             <span v-else-if="getIcon(toast)" :class="getToastUiClass(toast).icon">
-              <span :class="`i-${getIcon(toast)} size-4 block`" />
+              <span :class="cn(`i-${getIcon(toast)} size-4 block`, toast.type === 'loading' ? 'animate-spin' : undefined)" />
             </span>
 
-            <div class="flex flex-1 flex-col gap-1 min-w-0">
+            <div :class="getToastContentClass(getToastIndex(toast.id))">
               <div v-if="toast.title" :class="getToastUiClass(toast).title">
                 <template v-if="typeof toast.title === 'string'">{{ toast.title }}</template>
                 <component :is="toast.title" v-else />

@@ -4,8 +4,8 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const sonnerVariants = tv({
   base: [
-    'fixed z-100 w-full md:max-w-sm pointer-events-none',
-    'flex flex-col gap-0'
+    'fixed z-100 flex w-full max-w-sm list-none flex-col p-0 outline-none',
+    'pointer-events-none transition-transform duration-400 ease-out'
   ],
   variants: {
     position: {
@@ -25,56 +25,55 @@ export const sonnerVariants = tv({
 export const sonnerToastVariants = tv({
   slots: {
     toast: [
-      'group pointer-events-auto relative w-sm max-w-sm overflow-hidden',
-      'rounded-lg border shadow-lg bg-background text-foreground',
-      'transition-all duration-300 ease-in-out',
-      'data-[mounted=false]:opacity-0',
-      'data-[mounted=true]:opacity-100'
+      'group pointer-events-auto box-border overflow-hidden outline-none overflow-wrap-anywhere',
+      'relative flex w-sm max-w-sm items-start rounded-lg border shadow-lg',
+      'bg-background text-foreground',
+      'data-[mounted=false]:opacity-0 data-[mounted=true]:opacity-100',
+      'data-[visible=false]:opacity-0 data-[visible=false]:pointer-events-none',
+      'data-[expanded=false][data-front=false]:shadow-md',
+      'focus-visible:ring-2 focus-visible:ring-ring/40'
     ],
-    title: 'text-sm font-semibold leading-5',
-    description: 'mt-0.5 text-sm opacity-90',
-    icon: 'shrink-0 size-4',
+    title: 'text-sm font-medium leading-5 text-inherit',
+    description: 'text-sm leading-5 opacity-90 text-inherit',
+    icon: 'mt-0.5 shrink-0 size-4',
     close: [
-      'absolute top-1.5 right-1.5 size-5 rounded-md opacity-0 transition-opacity',
-      'hover:opacity-100 group-hover:opacity-100',
-      'flex items-center justify-center',
-      'text-foreground/50 hover:text-foreground'
+      'absolute right-2 top-2 flex size-5 items-center justify-center rounded-full',
+      'border border-border/60 bg-background text-foreground/60 transition-all duration-200',
+      'opacity-0 group-hover:opacity-100 hover:text-foreground hover:bg-muted/60'
     ],
     action: [
-      'inline-flex items-center justify-center rounded-md px-2.5 py-1 text-xs font-medium',
-      'bg-foreground text-background hover:opacity-90 transition-opacity'
+      'inline-flex h-6 items-center justify-center rounded-md px-2.5 text-xs font-medium',
+      'bg-foreground text-background transition-opacity duration-200 hover:opacity-90'
     ],
     cancel: [
-      'inline-flex items-center justify-center rounded-md px-2.5 py-1 text-xs font-medium',
-      'bg-muted text-muted-foreground hover:opacity-90 transition-opacity'
+      'inline-flex h-6 items-center justify-center rounded-md px-2.5 text-xs font-medium',
+      'bg-muted text-muted-foreground transition-opacity duration-200 hover:opacity-90'
     ]
   },
   variants: {
     type: {
-      default: {},
+      default: {
+        toast: 'border-border bg-background text-foreground'
+      },
       success: {
-        toast: 'border-success/30 bg-success-50 dark:bg-success-950',
-        icon: 'text-success',
-        title: 'text-success-900 dark:text-success-100'
+        toast: 'border-success/30 bg-success-50 text-success-900 dark:bg-success-950 dark:text-success-100',
+        icon: 'text-success'
       },
       info: {
-        toast: 'border-info/30 bg-info-50 dark:bg-info-950',
-        icon: 'text-info',
-        title: 'text-info-900 dark:text-info-100'
+        toast: 'border-info/30 bg-info-50 text-info-900 dark:bg-info-950 dark:text-info-100',
+        icon: 'text-info'
       },
       warning: {
-        toast: 'border-warning/30 bg-warning-50 dark:bg-warning-950',
-        icon: 'text-warning',
-        title: 'text-warning-900 dark:text-warning-100'
+        toast: 'border-warning/30 bg-warning-50 text-warning-900 dark:bg-warning-950 dark:text-warning-100',
+        icon: 'text-warning'
       },
       error: {
-        toast: 'border-destructive/30 bg-destructive-50 dark:bg-destructive-950',
-        icon: 'text-destructive',
-        title: 'text-destructive-900 dark:text-destructive-100'
+        toast: 'border-destructive/30 bg-destructive-50 text-destructive-900 dark:bg-destructive-950 dark:text-destructive-100',
+        icon: 'text-destructive'
       },
       loading: {
-        toast: '',
-        icon: 'text-muted-foreground animate-spin'
+        toast: 'border-border bg-background text-foreground',
+        icon: 'text-muted-foreground'
       }
     },
     richColors: {
@@ -87,4 +86,5 @@ export const sonnerToastVariants = tv({
 });
 
 type SonnerVariants = VariantProps<typeof sonnerVariants>;
+
 export type SonnerPositionVariant = NonNullable<SonnerVariants['position']>;

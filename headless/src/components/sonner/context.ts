@@ -1,13 +1,24 @@
 import { shallowRef } from 'vue';
+import type { ShallowRef, VNode } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import type { SonnerToasterProps, SonnerToastOptions, SonnerToastT, SonnerUiSlot, UseSonnerReturn } from './types';
 
-// ─── Module-level singleton state ───────────────────────────────────────────
-
 let toastsCounter = 0;
+const serverSonnerToasts = shallowRef<SonnerToastT[]>([]);
 
-/** Reactive global list of sonner toasts. All `<SSonner>` instances subscribe to this. */
-export const sonnerToasts = shallowRef<SonnerToastT[]>([]);
+function getSonnerToastsStore() {
+  if (typeof window === 'undefined') {
+    return serverSonnerToasts;
+  }
+
+  if (!window.__SoybeanUI_sonnerToasts) {
+    window.__SoybeanUI_sonnerToasts = shallowRef<SonnerToastT[]>([]);
+  }
+
+  return window.__SoybeanUI_sonnerToasts;
+}
+
+export const sonnerToasts = getSonnerToastsStore();
 
 function createToast(title: SonnerToastT['title'], options: SonnerToastOptions = {}): SonnerToastT {
   const id = options.id ?? ++toastsCounter;
@@ -22,10 +33,10 @@ function createToast(title: SonnerToastT['title'], options: SonnerToastOptions =
 }
 
 function addOrUpdateToast(toast: SonnerToastT): string | number {
-  const existing = sonnerToasts.value.find(t => t.id === toast.id);
+  const existing = sonnerToasts.value.find(item => item.id === toast.id);
 
   if (existing) {
-    sonnerToasts.value = sonnerToasts.value.map(t => (t.id === toast.id ? { ...t, ...toast } : t));
+    sonnerToasts.value = sonnerToasts.value.map(item => (item.id === toast.id ? { ...item, ...toast } : item));
   } else {
     sonnerToasts.value = [toast, ...sonnerToasts.value];
   }
@@ -35,18 +46,17 @@ function addOrUpdateToast(toast: SonnerToastT): string | number {
 
 function dismissToast(id?: string | number): string | number | undefined {
   if (id === undefined) {
-    sonnerToasts.value = sonnerToasts.value.map(t => ({ ...t, delete: true }));
+    sonnerToasts.value = sonnerToasts.value.map(toast => ({ ...toast, delete: true }));
     return undefined;
   }
 
-  sonnerToasts.value = sonnerToasts.value.map(t => (t.id === id ? { ...t, delete: true } : t));
+  sonnerToasts.value = sonnerToasts.value.map(toast => (toast.id === id ? { ...toast, delete: true } : toast));
+
   return id;
 }
 
-// ─── Public `useSonner` factory ──────────────────────────────────────────────
-
 function buildUseSonner(): UseSonnerReturn {
-  const create = (title: SonnerToastT['title'], options: SonnerToastOptions = {}): string | number => {
+  const create = (title: SonnerToastT['title'], options: SonnerToastOptions = {}) => {
     return addOrUpdateToast(createToast(title, options));
   };
 
@@ -61,20 +71,23 @@ function buildUseSonner(): UseSonnerReturn {
   sonner.promise = <T>(
     promise: Promise<T>,
     data: {
-      loading?: SonnerToastT['title'];
-      success?: SonnerToastT['title'] | ((d: T) => SonnerToastT['title']);
-      error?: SonnerToastT['title'] | ((e: unknown) => SonnerToastT['title']);
-      description?: SonnerToastT['description'];
+      loading?: string | VNode;
+      success?: string | VNode | ((result: T) => string | VNode);
+      error?: string | VNode | ((error: unknown) => string | VNode);
+      description?: string | VNode;
       duration?: number;
     } = {}
   ) => {
-    const id = create(data.loading ?? 'Loading...', { type: 'loading', duration: Number.POSITIVE_INFINITY });
+    const id = create(data.loading ?? 'Loading...', {
+      type: 'loading',
+      duration: Number.POSITIVE_INFINITY
+    });
 
     promise.then(result => {
-      const successMsg = typeof data.success === 'function' ? (data.success as (d: T) => SonnerToastT['title'])(result) : (data.success ?? 'Success');
+      const successTitle = typeof data.success === 'function' ? data.success(result) : (data.success ?? 'Success');
 
       addOrUpdateToast(
-        createToast(successMsg, {
+        createToast(successTitle, {
           id,
           type: 'success',
           description: data.description,
@@ -83,13 +96,14 @@ function buildUseSonner(): UseSonnerReturn {
       );
     });
 
-    promise.catch(err => {
-      const errorMsg = typeof data.error === 'function' ? (data.error as (e: unknown) => SonnerToastT['title'])(err) : (data.error ?? 'Something went wrong');
+    promise.catch(error => {
+      const errorTitle = typeof data.error === 'function' ? data.error(error) : (data.error ?? 'Something went wrong');
 
       addOrUpdateToast(
-        createToast(errorMsg, {
+        createToast(errorTitle, {
           id,
           type: 'error',
+          description: data.description,
           duration: data.duration
         })
       );
@@ -105,13 +119,6 @@ function buildUseSonner(): UseSonnerReturn {
 
 const globalSonner = buildUseSonner();
 
-// ─── Public composable ───────────────────────────────────────────────────────
-
-/**
- * Returns the global sonner toast creator.
- *
- * Can be called outside of setup() because it reads from module-level state.
- */
 export function useSonner(): UseSonnerReturn {
   if (typeof window !== 'undefined' && window.__SoybeanUI_useSonner) {
     return window.__SoybeanUI_useSonner;
@@ -120,8 +127,12 @@ export function useSonner(): UseSonnerReturn {
   return globalSonner;
 }
 
-// ─── Context pairs ───────────────────────────────────────────────────────────
-
 export const [provideSonnerContext, useSonnerContext] = useContext<SonnerToasterProps>('SonnerToaster');
-
 export const [provideSonnerUi, useSonnerUi] = useUiContext<SonnerUiSlot>('SonnerUi');
+
+declare global {
+  interface Window {
+    __SoybeanUI_sonnerToasts?: ShallowRef<SonnerToastT[]>;
+    __SoybeanUI_useSonner?: UseSonnerReturn;
+  }
+}
