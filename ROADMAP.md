@@ -48,7 +48,7 @@ English | [中文](#中文版)
 
 Tracking:
 
-- [ ] Skeleton
+- [x] Skeleton
 - [ ] Slider
 - [ ] ScrollArea
 - [ ] PinInput
@@ -215,7 +215,7 @@ Current: Zod + Valibot validation supported, but missing advanced patterns.
 
 进度追踪：
 
-- [ ] Skeleton
+- [x] Skeleton
 - [ ] Slider
 - [ ] ScrollArea
 - [ ] PinInput

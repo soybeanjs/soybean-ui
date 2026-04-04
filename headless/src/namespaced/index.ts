@@ -209,6 +209,7 @@ import {
   SelectViewport,
   SeparatorLabel,
   SeparatorRoot,
+  Skeleton,
   SliderRange,
   SliderRoot,
   SliderThumb,
@@ -798,6 +799,8 @@ export const Separator = {
   Root: typeof SeparatorRoot;
   Label: typeof SeparatorLabel;
 };
+
+export { Skeleton };
 
 export const Slider = {
   Root: SliderRoot,

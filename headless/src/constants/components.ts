@@ -186,6 +186,7 @@ export const components = {
     'SelectArrow'
   ],
   separator: ['SeparatorRoot', 'SeparatorLabel'],
+  skeleton: ['Skeleton'],
   slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
