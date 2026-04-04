@@ -52,7 +52,7 @@ export const menuData: MenuData[] = [
   {
     value: 'dataDisplay',
     i18n: 'sidebar.data_display',
-    items: ['accordion', 'collapsible', 'card', 'list', 'avatar', 'badge', 'kbd', 'tag', 'table', 'virtualizer']
+    items: ['accordion', 'collapsible', 'card', 'list', 'avatar', 'badge', 'kbd', 'progress', 'tag', 'table', 'virtualizer']
   },
   {
     value: 'feedback',

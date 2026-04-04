@@ -31,6 +31,7 @@ export * from './components/popover';
 export * from './components/popper';
 export * from './components/portal';
 export * from './components/primitive';
+export * from './components/progress';
 export * from './components/radio-group';
 export * from './components/roving-focus';
 export * from './components/select';
