@@ -130,6 +130,7 @@ describe('SSlider', () => {
       dispatchPointerEvent(document, 'pointerup', { clientX: 70, clientY: 5, pointerId: 1 });
 
       expect(wrapper.emitted('update:modelValue')?.at(-1)?.[0]).toEqual([70]);
+      expect(wrapper.emitted('valueCommit')).toHaveLength(1);
       expect(wrapper.emitted('valueCommit')?.at(-1)?.[0]).toEqual([70]);
       wrapper.unmount();
     });
