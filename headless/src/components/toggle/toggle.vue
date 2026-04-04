@@ -46,7 +46,7 @@ const onClick = (event: MouseEvent) => {
 <template>
   <Primitive
     v-bind="forwardedProps"
-    :type="as === 'button' ? type : undefined"
+    :type="as === 'button' ? props.type : undefined"
     :disabled="as === 'button' ? disabled : undefined"
     :aria-disabled="as === 'button' ? undefined : disabled || undefined"
     :aria-pressed="!!modelValue"
