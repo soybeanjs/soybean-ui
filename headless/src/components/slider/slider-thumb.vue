@@ -104,7 +104,6 @@ function onPointerDown(event: PointerEvent) {
 function onFocus() {
   activeThumbIndex.value = props.index;
 }
-
 </script>
 
 <template>
