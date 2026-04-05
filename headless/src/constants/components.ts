@@ -186,6 +186,7 @@ export const components = {
     'SelectArrow'
   ],
   separator: ['SeparatorRoot', 'SeparatorLabel'],
+  slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
