@@ -250,7 +250,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 54  | 2        | PinInput        |              | InputOPT, OPTInput       |                          |
 | 55  | 2        | Progress        |              |                          | include circle           |
 | 56  | 2        | ScrollArea      |              |                          |                          |
-| 57  | 2        | Skeleton        |              |                          |                          |
+| 57  | 2        | Skeleton        | ✅ Completed |                          |                          |
 | 58  | 2        | Slider          |              |                          |                          |
 | 59  | 2        | Table           |              |                          |                          |
 | 60  | 2        | Toggle          |              |                          |                          |
