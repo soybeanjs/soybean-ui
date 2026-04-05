@@ -136,7 +136,43 @@ export const [provide{Name}Ui, use{Name}Ui] =
   useUiContext<{Name}UiSlot>('{Name}Ui');
 ```
 
-> `useContext` 第二个参数可传入 composable 函数，用于派生额外状态（见 accordion context.ts）。
+**context 回调中的派生状态原则**
+
+`useContext` 的第二个参数（回调函数）可在 provide 时派生额外状态。**关键判断**：派生值放在 context 回调里，还是放在调用 `provideX` 的组件里？
+
+**原则：谁用，放在谁那里。**
+
+| 派生值类型                       | 典型示例                                       | 放在哪               | 理由                                                |
+| -------------------------------- | ---------------------------------------------- | -------------------- | --------------------------------------------------- |
+| 仅子组件消费，提供者不需要       | `triggerId`、`triggerElement`、`initTriggerId` | **context 回调**     | 提供者不关心，集中在 context 里管理 ARIA 管线       |
+| 提供者模板/`defineExpose` 也需要 | `dataDisabled`、`dataState`                    | **组件（vue 文件）** | 提供者自己要渲染/暴露，应在组件中派生并作为参数传入 |
+
+```typescript
+// ✅  context 回调只放"纯粹的 context 基础设施"
+export const [provideItemContext, useItemContext] = useContext(
+  'Item',
+  (params: ItemContextParams) => {
+    // triggerElement / triggerId 仅子组件（Trigger/Content）消费
+    const [triggerElement, setTriggerElement] = useForwardElement();
+    const triggerId = shallowRef('');
+    return { ...params, triggerElement, setTriggerElement, triggerId };
+  }
+);
+
+// ✅  提供者也需要的派生值在组件里算好，作为参数传入
+// item.vue
+const dataDisabled = computed(() => disabled.value ? '' : undefined);
+const dataState = computed<DisclosureState>(() => getDisclosureState(open.value));
+
+provideItemContext({ open, disabled, dataDisabled, dataState, ... });
+// ← provideX 无返回值，语义清晰：纯注入
+```
+
+```typescript
+// ❌  避免：提供者自己用的派生值也藏在 context 回调里，导致 provideX 需要返回值
+const { dataDisabled, dataState } = provideItemContext({ open, disabled });
+//      ↑ provideX 有返回值，"注入"函数语义变成了"工厂"函数
+```
 
 ### 3. \*.vue（SFC）
 
