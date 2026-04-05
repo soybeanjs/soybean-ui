@@ -254,6 +254,17 @@ export const {component}Variants = tv({
 export type {Name}VariantProps = VariantProps<typeof {component}Variants>;
 ```
 
+**CSS 变量命名**：组件如需定义 CSS 自定义属性，必须以 `--soybean-` 为前缀：
+
+```typescript
+// ✅ 正确前缀
+root: '[--soybean-slider-thumb-size:1rem] relative';
+
+// ❌ 禁止无前缀或使用其他前缀
+root: '[--thumb-size:1rem] relative'; // 无前缀
+root: '[--ui-slider-thumb-size:1rem] relative'; // 非 --soybean- 前缀
+```
+
 ### 2. types.ts
 
 ```typescript
