@@ -51,8 +51,8 @@ const ariaLabel = computed(() => {
   return typeof attrValue === 'string' ? attrValue : label.value;
 });
 
-function getThumbTransform(isHorizontalAxis: boolean, edge: 'top' | 'right' | 'bottom' | 'left') {
-  if (isHorizontalAxis) {
+function getThumbTransform(horizontal: boolean, edge: 'top' | 'right' | 'bottom' | 'left') {
+  if (horizontal) {
     const translateX = edge === 'right' && thumbAlignment.value === 'overflow' ? 'translateX(50%)' : 'translateX(-50%)';
 
     return `${translateX} translateY(-50%)`;

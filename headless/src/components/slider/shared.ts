@@ -53,7 +53,7 @@ export function getValidMinStepsBetweenThumbs(value: number | undefined) {
   return 0;
 }
 
-function resolveSliderValueSource(values: number[] | undefined, defaultValue?: number[]) {
+function resolveSliderValues(values: number[] | undefined, defaultValue?: number[]) {
   if (Array.isArray(values) && values.length > 0) {
     return values;
   }
@@ -69,7 +69,7 @@ export function normalizeSliderValues(
   values: number[] | undefined,
   options: { min: number; max: number; step: number; defaultValue?: number[] }
 ) {
-  const source = resolveSliderValueSource(values, options.defaultValue);
+  const source = resolveSliderValues(values, options.defaultValue);
 
   return [...source]
     .map(value => snapValueToStep(value, options.min, options.max, options.step))
