@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useElementSize } from '@vueuse/core';
 import { computed, useAttrs } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { useSliderRootContext, useSliderUi } from './context';
+import { getThumbInBoundsOffset } from './shared';
 import type { SliderThumbProps } from './types';
 
 defineOptions({
@@ -25,6 +27,7 @@ const {
   max,
   startEdge,
   isHorizontal,
+  thumbAlignment,
   activeThumbIndex,
   getPercentage,
   getThumbLabel,
@@ -34,11 +37,10 @@ const {
 
 const forwardedProps = useOmitProps(props, ['index']);
 
-const thumbElementRef = useForwardElement(node => {
+const [thumbElement, setElementRef] = useForwardElement(node => {
   setThumbElement(props.index, node);
 });
-
-const setElementRef = thumbElementRef[1];
+const { width, height } = useElementSize(thumbElement);
 
 const value = computed(() => currentModelValue.value[props.index]);
 const percent = computed(() => getPercentage(value.value ?? min.value));
@@ -51,11 +53,31 @@ const ariaLabel = computed(() => {
 
 function getThumbTransform(isHorizontalAxis: boolean, edge: 'top' | 'right' | 'bottom' | 'left') {
   if (isHorizontalAxis) {
-    return edge === 'left' ? 'translateX(-50%) translateY(-50%)' : 'translateX(50%) translateY(-50%)';
+    const translateX = edge === 'right' && thumbAlignment.value === 'overflow' ? 'translateX(50%)' : 'translateX(-50%)';
+
+    return `${translateX} translateY(-50%)`;
   }
 
-  return edge === 'bottom' ? 'translateX(-50%) translateY(50%)' : 'translateX(-50%) translateY(-50%)';
+  const translateY = edge === 'top' && thumbAlignment.value === 'overflow' ? 'translateY(-50%)' : 'translateY(50%)';
+
+  return `translateX(-50%) ${translateY}`;
 }
+
+const thumbInBoundsOffset = computed(() => {
+  if (thumbAlignment.value === 'overflow') {
+    return 0;
+  }
+
+  const size = isHorizontal.value ? width.value : height.value;
+
+  if (!size) {
+    return 0;
+  }
+
+  const direction = isHorizontal.value ? (startEdge.value === 'left' ? 1 : -1) : startEdge.value === 'bottom' ? 1 : -1;
+
+  return getThumbInBoundsOffset(size, percent.value, direction);
+});
 
 const style = computed(() => {
   const translate = getThumbTransform(isHorizontal.value, startEdge.value);
@@ -63,7 +85,7 @@ const style = computed(() => {
   return {
     position: 'absolute',
     ...(isHorizontal.value ? { top: '50%' } : { left: '50%' }),
-    [startEdge.value]: `${percent.value}%`,
+    [startEdge.value]: `calc(${percent.value}% + ${thumbInBoundsOffset.value}px)`,
     transform: translate
   };
 });

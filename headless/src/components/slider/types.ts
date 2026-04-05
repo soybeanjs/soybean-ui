@@ -1,8 +1,10 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, UiClass } from '../../types';
+import type { DataOrientation, Direction, FormFieldCommonProps, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
-export interface SliderRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+export type SliderThumbAlignment = 'contain' | 'overflow';
+
+export interface SliderRootProps extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
   /** The controlled value of the slider. Can be bind as `v-model`. */
   modelValue?: number[];
   /** The initial value of the slider when uncontrolled. */
@@ -23,6 +25,8 @@ export interface SliderRootProps extends PrimitiveProps, /** @vue-ignore */ HTML
   step?: number;
   /** The minimum permitted steps between multiple thumbs. */
   minStepsBetweenThumbs?: number;
+  /** Whether thumbs stay within the track bounds or may overflow it. */
+  thumbAlignment?: SliderThumbAlignment;
 }
 
 export type SliderRootEmits = {
@@ -56,6 +60,7 @@ export interface SliderRootContext {
   max: ComputedRef<number>;
   step: ComputedRef<number>;
   minStepsBetweenThumbs: ComputedRef<number>;
+  thumbAlignment: ComputedRef<SliderThumbAlignment>;
   isHorizontal: ComputedRef<boolean>;
   startEdge: ComputedRef<SliderSide>;
   endEdge: ComputedRef<SliderSide>;

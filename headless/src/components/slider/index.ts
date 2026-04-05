@@ -14,6 +14,7 @@ export type {
   SliderRootContext,
   SliderSide,
   SliderSlideDirection,
+  SliderThumbAlignment,
   SliderUiSlot,
   SliderUi
 } from './types';

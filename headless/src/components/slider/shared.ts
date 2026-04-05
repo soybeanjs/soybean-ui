@@ -107,6 +107,18 @@ export function getClosestValueIndex(values: number[], nextValue: number) {
   return distances.indexOf(closestDistance);
 }
 
+export function linearScale(input: readonly [number, number], output: readonly [number, number]) {
+  return (value: number) => {
+    if (input[0] === input[1] || output[0] === output[1]) {
+      return output[0];
+    }
+
+    const ratio = (output[1] - output[0]) / (input[1] - input[0]);
+
+    return output[0] + ratio * (value - input[0]);
+  };
+}
+
 export function getStepsBetweenValues(values: number[]) {
   return values.slice(0, -1).map((value, index) => values[index + 1]! - value);
 }
@@ -129,6 +141,13 @@ export function convertValueToPercentage(value: number, min: number, max: number
   }
 
   return clamp(((value - min) / maxSteps) * 100, 0, 100);
+}
+
+export function getThumbInBoundsOffset(size: number, percentage: number, direction: 1 | -1) {
+  const halfSize = size / 2;
+  const offset = linearScale([0, 50], [0, halfSize]);
+
+  return (halfSize - offset(percentage) * direction) * direction;
 }
 
 export function getThumbLabel(index: number, totalValues: number) {

@@ -37,5 +37,14 @@ watch(valueState, (newValue, prevValue) => {
 </script>
 
 <template>
-  <VisuallyHidden :ref="setElement" :feature="feature" as="input" />
+  <VisuallyHidden
+    :ref="setElement"
+    :feature="feature"
+    as="input"
+    :name="name"
+    :value="value"
+    :checked="checked"
+    :required="required"
+    :disabled="disabled"
+  />
 </template>

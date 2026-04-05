@@ -60,6 +60,23 @@ describe('SSlider', () => {
       wrapper.unmount();
     });
 
+    it('renders hidden inputs when used as a form field', () => {
+      const wrapper = mount(
+        {
+          components: { SSlider },
+          template: '<form class="form"><SSlider :default-value="[20, 80]" name="volume" /></form>'
+        },
+        { attachTo: document.body }
+      );
+
+      const inputs = wrapper.findAll('input[name^="volume"]');
+
+      expect(inputs).toHaveLength(2);
+      expect(inputs.map(input => input.element.getAttribute('name'))).toEqual(['volume[0]', 'volume[1]']);
+      expect(inputs.map(input => (input.element as HTMLInputElement).value)).toEqual(['20', '80']);
+      wrapper.unmount();
+    });
+
     it('allows custom thumb aria-labels in range mode', () => {
       const wrapper = mount(SSlider, {
         props: { modelValue: [20, 80], thumbProps: { 'aria-label': 'Price range' } },
@@ -82,6 +99,7 @@ describe('SSlider', () => {
       });
 
       expect(wrapper.find('[role="slider"]').attributes('aria-valuenow')).toBe('35');
+      expect(wrapper.find('[role="slider"]').attributes('style')).toContain('calc(');
       wrapper.unmount();
     });
 

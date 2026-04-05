@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, shallowRef, watch } from 'vue';
-import { useControllableState, useOmitProps } from '../../composables';
-import { snapValueToStep } from '../../shared';
+import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { isFormControl, snapValueToStep } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
+import { VisuallyHiddenInput } from '../visually-hidden';
 import { provideSliderRootContext, useSliderUi } from './context';
 import {
   ARROW_KEYS,
@@ -40,10 +41,13 @@ const props = withDefaults(defineProps<SliderRootProps>(), {
   min: 0,
   max: 100,
   step: 1,
-  minStepsBetweenThumbs: 0
+  minStepsBetweenThumbs: 0,
+  thumbAlignment: 'contain'
 });
 
 const emit = defineEmits<SliderRootEmits>();
+
+const [rootElement, setRootElement] = useForwardElement();
 
 const cls = useSliderUi('root');
 
@@ -57,7 +61,8 @@ const forwardedProps = useOmitProps(props, [
   'min',
   'max',
   'step',
-  'minStepsBetweenThumbs'
+  'minStepsBetweenThumbs',
+  'thumbAlignment'
 ]);
 
 const modelValue = useControllableState(
@@ -76,6 +81,7 @@ const min = computed(() => getValidSliderMin(props.min));
 const max = computed(() => getValidSliderMax(props.max, min.value));
 const step = computed(() => getValidSliderStep(props.step));
 const minStepsBetweenThumbs = computed(() => getValidMinStepsBetweenThumbs(props.minStepsBetweenThumbs));
+const thumbAlignment = computed(() => (props.thumbAlignment === 'overflow' ? 'overflow' : 'contain'));
 const normalizedModelValue = computed(() =>
   normalizeSliderValues(modelValue.value, {
     defaultValue: props.defaultValue,
@@ -86,6 +92,7 @@ const normalizedModelValue = computed(() =>
 );
 const pendingModelValue = shallowRef<number[]>();
 const currentModelValue = computed(() => pendingModelValue.value ?? normalizedModelValue.value);
+const formControl = computed(() => isFormControl(rootElement.value));
 
 watch(
   normalizedModelValue,
@@ -337,6 +344,7 @@ const context: SliderRootContext = {
   max,
   step,
   minStepsBetweenThumbs,
+  thumbAlignment,
   isHorizontal,
   startEdge,
   endEdge,
@@ -394,6 +402,7 @@ function onKeyDown(event: KeyboardEvent) {
 <template>
   <Primitive
     v-bind="forwardedProps"
+    :ref="setRootElement"
     :as="as"
     :as-child="asChild"
     :class="cls"
@@ -403,5 +412,13 @@ function onKeyDown(event: KeyboardEvent) {
     @keydown="onKeyDown"
   >
     <slot :model-value="currentModelValue" />
+    <VisuallyHiddenInput
+      v-if="formControl && name"
+      type="number"
+      :name="name"
+      :value="currentModelValue"
+      :disabled="disabled"
+      :required="required"
+    />
   </Primitive>
 </template>
