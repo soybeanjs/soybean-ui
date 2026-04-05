@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
 import DemoToggleBasic from './basic.vue';
-import DemoToggleOutline from './outline.vue';
+import DemoToggleShape from './shape.vue';
+import DemoToggleVariant from './variant.vue';
 import DemoToggleSize from './size.vue';
 import DemoToggleDisabled from './disabled.vue';
 </script>
@@ -9,7 +10,8 @@ import DemoToggleDisabled from './disabled.vue';
 <template>
   <SCard title="Toggle" split :ui="{ content: 'flex-c gap-4' }">
     <DemoToggleBasic />
-    <DemoToggleOutline />
+    <DemoToggleShape />
+    <DemoToggleVariant />
     <DemoToggleSize />
     <DemoToggleDisabled />
   </SCard>

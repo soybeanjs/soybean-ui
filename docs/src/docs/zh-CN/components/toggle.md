@@ -23,7 +23,8 @@ const pressed = ref(false);
 
 ```playground
 basic
-outline
+variant
+shape
 size
 disabled
 ```
@@ -34,8 +35,9 @@ disabled
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: '自定义类名。' },
-  { name: 'variant', type: 'ToggleVariant', default: `'default'`, description: '视觉风格变体。' },
+  { name: 'variant', type: 'ToggleVariant', default: `'ghost'`, description: '视觉风格变体。' },
   { name: 'size', type: 'ToggleSize', default: `'md'`, description: '尺寸。' },
+  { name: 'shape', type: 'ToggleShape', default: `'rounded'`, description: '圆角形状。' },
   { name: 'modelValue', type: 'boolean', default: '-', description: '受控按下状态。' },
   { name: 'defaultValue', type: 'boolean', default: 'false', description: '非受控模式下的初始按下状态。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用。' },
@@ -70,6 +72,8 @@ disabled
 
 <UnionType name="ClassValue" description="类名值类型" type="string | null | undefined | Record<string, boolean> | ClassValue[]" />
 
-<UnionType name="ToggleVariant" description="Toggle 变体" type="'default' | 'outline'" />
+<UnionType name="ToggleVariant" description="Toggle 变体" type="'outline' | 'soft' | 'ghost'" />
+
+<UnionType name="ToggleShape" description="Toggle 形状" type="'rounded' | 'square' | 'pill'" />
 
 <UnionType name="ToggleSize" description="Toggle 尺寸" type="'sm' | 'md' | 'lg'" />

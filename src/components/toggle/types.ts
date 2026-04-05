@@ -1,10 +1,13 @@
 import type { ClassValue, ToggleEmits, ToggleProps as _ToggleProps } from '@soybeanjs/headless';
-import type { ToggleSize, ToggleVariant } from './variants';
+import type { ThemeSize, ThemeColor } from '@/theme';
+import type { ToggleVariant, ToggleShape } from './variants';
 
 export interface ToggleProps extends _ToggleProps {
   class?: ClassValue;
+  color?: ThemeColor;
+  size?: ThemeSize;
   variant?: ToggleVariant;
-  size?: ToggleSize;
+  shape?: ToggleShape;
 }
 
-export type { ToggleEmits, ToggleVariant, ToggleSize };
+export type { ToggleEmits, ToggleVariant };

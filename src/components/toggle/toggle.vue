@@ -10,16 +10,20 @@ defineOptions({
   name: 'SToggle'
 });
 
-const props = defineProps<ToggleProps>();
+const props = withDefaults(defineProps<ToggleProps>(), {
+  modelValue: undefined
+});
 
 const emit = defineEmits<ToggleEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'variant', 'size']);
+const forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size']);
 
 const cls = computed(() => {
   const variants = toggleVariants({
+    color: props.color,
     variant: props.variant,
-    size: props.size
+    size: props.size,
+    shape: props.shape
   });
 
   return cn(variants, props.class);
@@ -27,7 +31,12 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <Toggle v-slot="slotProps" v-bind="forwardedProps" :class="cls" @update:model-value="emit('update:modelValue', $event)">
+  <Toggle
+    v-slot="slotProps"
+    v-bind="forwardedProps"
+    :class="cls"
+    @update:model-value="emit('update:modelValue', $event)"
+  >
     <slot v-bind="slotProps" />
   </Toggle>
 </template>

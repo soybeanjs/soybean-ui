@@ -23,7 +23,8 @@ const pressed = ref(false);
 
 ```playground
 basic
-outline
+variant
+shape
 size
 disabled
 ```
@@ -34,8 +35,9 @@ disabled
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class name.' },
-  { name: 'variant', type: 'ToggleVariant', default: `'default'`, description: 'Visual style variant.' },
+  { name: 'variant', type: 'ToggleVariant', default: `'ghost'`, description: 'Visual style variant.' },
   { name: 'size', type: 'ToggleSize', default: `'md'`, description: 'Toggle size.' },
+  { name: 'shape', type: 'ToggleShape', default: `'rounded'`, description: 'Toggle corner shape.' },
   { name: 'modelValue', type: 'boolean', default: '-', description: 'Controlled pressed state.' },
   { name: 'defaultValue', type: 'boolean', default: 'false', description: 'Initial pressed state for uncontrolled usage.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the toggle is disabled.' },
@@ -70,6 +72,8 @@ disabled
 
 <UnionType name="ClassValue" description="Class value type" type="string | null | undefined | Record<string, boolean> | ClassValue[]" />
 
-<UnionType name="ToggleVariant" description="Toggle variant" type="'default' | 'outline'" />
+<UnionType name="ToggleVariant" description="Toggle variant" type="'outline' | 'soft' | 'ghost'" />
+
+<UnionType name="ToggleShape" description="Toggle shape" type="'rounded' | 'square' | 'pill'" />
 
 <UnionType name="ToggleSize" description="Toggle size" type="'sm' | 'md' | 'lg'" />
