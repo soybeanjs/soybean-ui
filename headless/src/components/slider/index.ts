@@ -12,7 +12,6 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderRootContext,
-  SliderSide,
   SliderSlideDirection,
   SliderThumbAlignment,
   SliderUiSlot,

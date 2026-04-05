@@ -1,6 +1,6 @@
 import { clamp, snapValueToStep } from '../../shared';
-import type { DataOrientation, Direction } from '../../types';
-import type { SliderSide, SliderSlideDirection } from './types';
+import type { DataOrientation, Direction, Side } from '../../types';
+import type { SliderSlideDirection } from './types';
 
 export const DEFAULT_SLIDER_MIN = 0;
 
@@ -71,9 +71,7 @@ export function normalizeSliderValues(
 ) {
   const source = resolveSliderValues(values, options.defaultValue);
 
-  return [...source]
-    .map(value => snapValueToStep(value, options.min, options.max, options.step))
-    .sort((a, b) => a - b);
+  return [...source].map(value => snapValueToStep(value, options.min, options.max, options.step)).sort((a, b) => a - b);
 }
 
 export function isSliderValuesEqual(a: number[] | undefined, b: number[] | undefined) {
@@ -162,9 +160,13 @@ export function getThumbLabel(index: number, totalValues: number) {
   return undefined;
 }
 
-export function getSliderSideState(orientation: DataOrientation, dir: Direction, inverted: boolean): {
-  startEdge: SliderSide;
-  endEdge: SliderSide;
+export function getSliderSideState(
+  orientation: DataOrientation,
+  dir: Direction,
+  inverted: boolean
+): {
+  startEdge: Side;
+  endEdge: Side;
   slideDirection: SliderSlideDirection;
 } {
   if (orientation === 'vertical') {
@@ -183,7 +185,7 @@ export function getSliderSideState(orientation: DataOrientation, dir: Direction,
 export function getSliderValueFromPointer(
   event: PointerEvent,
   rect: DOMRect,
-  options: { min: number; max: number; orientation: DataOrientation; startEdge: SliderSide }
+  options: { min: number; max: number; orientation: DataOrientation; startEdge: Side }
 ) {
   const total = options.orientation === 'horizontal' ? rect.width : rect.height;
 
@@ -191,13 +193,14 @@ export function getSliderValueFromPointer(
     return options.min;
   }
 
-  const position = options.orientation === 'horizontal'
-    ? options.startEdge === 'left'
-      ? event.clientX - rect.left
-      : rect.right - event.clientX
-    : options.startEdge === 'bottom'
-      ? rect.bottom - event.clientY
-      : event.clientY - rect.top;
+  const position =
+    options.orientation === 'horizontal'
+      ? options.startEdge === 'left'
+        ? event.clientX - rect.left
+        : rect.right - event.clientX
+      : options.startEdge === 'bottom'
+        ? rect.bottom - event.clientY
+        : event.clientY - rect.top;
 
   const ratio = clamp(position / total, 0, 1);
 

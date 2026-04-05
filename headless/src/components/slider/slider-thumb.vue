@@ -2,6 +2,7 @@
 import { useElementSize } from '@vueuse/core';
 import { computed, useAttrs } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
+import type { Side } from '../../types';
 import { Primitive } from '../primitive';
 import { useSliderRootContext, useSliderUi } from './context';
 import { getThumbInBoundsOffset } from './shared';
@@ -51,7 +52,7 @@ const ariaLabel = computed(() => {
   return typeof attrValue === 'string' ? attrValue : label.value;
 });
 
-function getThumbTransform(horizontal: boolean, edge: 'top' | 'right' | 'bottom' | 'left') {
+function getThumbTransform(horizontal: boolean, edge: Side) {
   if (horizontal) {
     const translateX = edge === 'right' && thumbAlignment.value === 'overflow' ? 'translateX(50%)' : 'translateX(-50%)';
 

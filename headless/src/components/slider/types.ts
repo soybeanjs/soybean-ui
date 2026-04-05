@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
-import type { DataOrientation, Direction, FormFieldCommonProps, UiClass } from '../../types';
+import type { DataOrientation, Direction, FormFieldCommonProps, PropsToContext, Side, UiClass } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export type SliderThumbAlignment = 'contain' | 'overflow';
@@ -45,25 +45,17 @@ export interface SliderThumbProps extends PrimitiveProps, /** @vue-ignore */ HTM
   index: number;
 }
 
-export type SliderSide = 'top' | 'right' | 'bottom' | 'left';
-
 export type SliderSlideDirection = 'from-left' | 'from-right' | 'from-bottom' | 'from-top';
 
-export interface SliderRootContext {
+export interface SliderRootContext extends PropsToContext<
+  SliderRootProps,
+  'disabled' | 'orientation' | 'dir' | 'inverted' | 'min' | 'max' | 'step' | 'minStepsBetweenThumbs' | 'thumbAlignment'
+> {
   modelValue: ShallowRef<number[] | undefined>;
   currentModelValue: ComputedRef<number[]>;
-  disabled: ComputedRef<boolean>;
-  orientation: ComputedRef<DataOrientation>;
-  dir: ComputedRef<Direction>;
-  inverted: ComputedRef<boolean>;
-  min: ComputedRef<number>;
-  max: ComputedRef<number>;
-  step: ComputedRef<number>;
-  minStepsBetweenThumbs: ComputedRef<number>;
-  thumbAlignment: ComputedRef<SliderThumbAlignment>;
   isHorizontal: ComputedRef<boolean>;
-  startEdge: ComputedRef<SliderSide>;
-  endEdge: ComputedRef<SliderSide>;
+  startEdge: ComputedRef<Side>;
+  endEdge: ComputedRef<Side>;
   slideDirection: ComputedRef<SliderSlideDirection>;
   activeThumbIndex: ShallowRef<number>;
   trackElement: ShallowRef<HTMLElement | undefined>;
