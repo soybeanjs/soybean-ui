@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useOmitProps } from '../../composables';
+import { computed, useAttrs } from 'vue';
 import { Primitive } from '../primitive';
 import type { SkeletonProps } from './types';
 
@@ -8,15 +7,15 @@ defineOptions({
   name: 'Skeleton'
 });
 
-const props = withDefaults(defineProps<SkeletonProps>(), {
+withDefaults(defineProps<SkeletonProps>(), {
   as: 'div'
 });
 
-const forwardedProps = useOmitProps(props, ['aria-hidden']);
+const attrs = useAttrs();
 
-const ariaHidden = computed(() => props['aria-hidden'] ?? true);
+const ariaHidden = computed(() => attrs['aria-hidden'] ?? true);
 </script>
 
 <template>
-  <Primitive v-bind="forwardedProps" :aria-hidden="ariaHidden" />
+  <Primitive :as="as" :as-child="asChild" :aria-hidden="ariaHidden" />
 </template>

@@ -13,20 +13,20 @@ export const skeletonVariants = tv({
       xl: 'h-8 w-48',
       '2xl': 'h-10 w-56'
     },
+    shape: {
+      auto: 'rounded-md',
+      rounded: 'rounded-full',
+      square: 'rounded-none'
+    },
     animated: {
       true: 'animate-pulse',
       false: ''
-    },
-    shape: {
-      rounded: 'rounded-md',
-      pill: 'rounded-full',
-      square: 'rounded-none'
     }
   },
   defaultVariants: {
     size: 'md',
-    animated: true,
-    shape: 'rounded'
+    shape: 'auto',
+    animated: true
   }
 });
 

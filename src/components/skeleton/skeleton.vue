@@ -10,7 +10,9 @@ defineOptions({
   name: 'SSkeleton'
 });
 
-const props = defineProps<SkeletonProps>();
+const props = withDefaults(defineProps<SkeletonProps>(), {
+  animated: true
+});
 
 const forwardedProps = useOmitProps(props, ['class', 'size', 'animated', 'shape']);
 

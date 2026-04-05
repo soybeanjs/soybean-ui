@@ -5,6 +5,9 @@ import type { SkeletonShape } from './variants';
 export interface SkeletonProps extends _SkeletonProps {
   class?: ClassValue;
   size?: ThemeSize;
+  /**
+   * Whether the skeleton should have an animation effect. Defaults to `true`.
+   */
   animated?: boolean;
   shape?: SkeletonShape;
 }

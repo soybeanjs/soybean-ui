@@ -27,7 +27,7 @@ describe('SSkeleton', () => {
 
     it('supports preset shape and animation variants', () => {
       const wrapper = mount(SSkeleton, {
-        props: { shape: 'pill', animated: false },
+        props: { shape: 'rounded', animated: false },
         attachTo: document.body
       });
 
