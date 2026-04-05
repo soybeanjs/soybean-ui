@@ -65,6 +65,62 @@ export type {Name}Ui = UiClass<{Name}UiSlot>;
 - `SelectionProps<M>` / `SelectionEmits<M>` — 通用单/多选 props（accordion 等用）
 - `DataOrientation`, `Direction`, `DisclosureState` — 常用枚举类型
 
+**复用全局类型（优先查 `headless/src/types/common.ts`）**
+
+定义组件 props 或内部类型时，**先查 `common.ts` 是否已存在**，避免重复定义：
+
+```typescript
+// ✅ 直接复用 common.ts 中的 Side
+import type { Side } from '../../types';
+
+export interface SliderThumbProps extends /** @vue-ignore */ HTMLAttributes {
+  side?: Side; // 'top' | 'right' | 'bottom' | 'left'
+}
+
+// ❌ 不要在 types.ts 中重新定义已有的通用类型
+export type SliderSide = 'top' | 'right' | 'bottom' | 'left'; // ← 禁止
+```
+
+`common.ts` 常用类型一览：
+
+| 类型              | 值                                            |
+| ----------------- | --------------------------------------------- |
+| `Side`            | `'top' \| 'right' \| 'bottom' \| 'left'`      |
+| `Align`           | `'start' \| 'center' \| 'end'`                |
+| `Placement`       | `Side` + 带方向修饰（`'top-start'` 等 12 个） |
+| `DataOrientation` | `'vertical' \| 'horizontal'`                  |
+| `Direction`       | `'ltr' \| 'rtl'`                              |
+| `DisclosureState` | `'open' \| 'closed'`                          |
+| `CheckedState`    | `boolean \| 'indeterminate'`                  |
+| `AcceptableValue` | `string \| number \| null \| undefined`       |
+| `MaybeArray<T>`   | `T \| T[]`                                    |
+| `HorizontalSide`  | `'left' \| 'right'`                           |
+
+**用 `PropsToContext` 定义 context 类型**
+
+当 context 字段直接来自 props（通过 `transformPropsToContext` 传入），使用 `PropsToContext` 自动推导，而不是手写每个 `ComputedRef`：
+
+```typescript
+import type { ComputedRef, ShallowRef } from 'vue';
+import type { PropsToContext } from '../../types';
+import type { {Name}RootProps } from './types';
+
+// ✅ 用 PropsToContext 推导来自 props 的 context 字段
+export interface {Name}RootContext extends PropsToContext<{Name}RootProps, 'disabled' | 'orientation'> {
+  // PropsToContext 自动生成：
+  //   disabled: ComputedRef<boolean>
+  //   orientation: ComputedRef<DataOrientation>
+  open: ShallowRef<boolean>;   // 受控状态：用 ShallowRef（非 props 派生）
+}
+
+// ❌ 不要逐字段手写 ComputedRef
+export interface {Name}RootContext {
+  disabled: ComputedRef<boolean>;       // ← 重复劳动
+  orientation: ComputedRef<DataOrientation>;
+  open: ShallowRef<boolean>;
+}
+```
+
 ### 2. context.ts
 
 ```typescript
