@@ -46,6 +46,7 @@ export const components = {
   tag: ['STag'],
   textarea: ['STextarea'],
   toast: ['SToast', 'SToastAction', 'SToastClose'],
+  toggle: ['SToggle'],
   tooltip: ['STooltip'],
   tree: ['STree', 'STreeVirtualizer'],
   treeMenu: ['STreeMenu', 'STreeMenuStyledItem'],

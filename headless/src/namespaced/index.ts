@@ -243,6 +243,7 @@ import {
   ToastRoot,
   ToastTitle,
   ToastViewport,
+  Toggle,
   TooltipArrow,
   TooltipPopup,
   TooltipPortal,
@@ -845,6 +846,8 @@ export const Table = {
   Head: typeof TableHead;
   Cell: typeof TableCell;
 };
+
+export { Toggle };
 
 export const Tabs = {
   Root: TabsRoot,

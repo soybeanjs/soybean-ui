@@ -204,6 +204,7 @@ export const components = {
     'ToastDescription',
     'ToastClose'
   ],
+  toggle: ['Toggle'],
   tooltip: ['TooltipRoot', 'TooltipTrigger', 'TooltipPortal', 'TooltipPositioner', 'TooltipPopup', 'TooltipArrow'],
   tree: ['TreeRoot', 'TreeItem', 'TreeVirtualizerRoot', 'TreeVirtualizerItem'],
   treeMenu: [

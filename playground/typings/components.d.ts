@@ -16,6 +16,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SButton: typeof import('@soybeanjs/ui')['SButton']
     SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
+    SToggle: typeof import('@soybeanjs/ui')['SToggle']
     ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
     ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
   }
@@ -27,6 +28,7 @@ declare global {
   const RouterView: typeof import('vue-router')['RouterView']
   const SButton: typeof import('@soybeanjs/ui')['SButton']
   const SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
+  const SToggle: typeof import('@soybeanjs/ui')['SToggle']
   const ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
   const ThemeSchemaToggler: typeof import('./../components/theme-schema-toggler.vue')['default']
 }
