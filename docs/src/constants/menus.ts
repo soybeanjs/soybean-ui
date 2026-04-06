@@ -48,7 +48,8 @@ export const menuData: MenuData[] = [
       'select',
       'slider',
       'switch',
-      'toggle'
+      'toggle',
+      'toggleGroup'
     ]
   },
   {

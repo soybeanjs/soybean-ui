@@ -244,6 +244,8 @@ import {
   ToastTitle,
   ToastViewport,
   Toggle,
+  ToggleGroupItem,
+  ToggleGroupRoot,
   TooltipArrow,
   TooltipPopup,
   TooltipPortal,
@@ -847,8 +849,6 @@ export const Table = {
   Cell: typeof TableCell;
 };
 
-export { Toggle };
-
 export const Tabs = {
   Root: TabsRoot,
   List: TabsList,
@@ -893,6 +893,16 @@ export const Toast = {
   Title: typeof ToastTitle;
   Description: typeof ToastDescription;
   Close: typeof ToastClose;
+};
+
+export { Toggle };
+
+export const ToggleGroup = {
+  Root: ToggleGroupRoot,
+  Item: ToggleGroupItem
+} as {
+  Root: typeof ToggleGroupRoot;
+  Item: typeof ToggleGroupItem;
 };
 
 export const Tooltip = {
