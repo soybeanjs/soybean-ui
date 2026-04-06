@@ -8,11 +8,12 @@ export const sliderVariants = tv({
       'relative flex w-full touch-none select-none items-center',
       'data-[disabled]:opacity-50 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col'
     ],
-    track: 'bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
+    track:
+      'bg-muted relative grow overflow-hidden rounded-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full',
     range: 'absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
     thumb: [
       'absolute block shrink-0 rounded-full border bg-background shadow-sm transition-[color,box-shadow]',
-      'hover:ring-4 focus-visible:outline-none focus-visible:ring-4 disabled:pointer-events-none disabled:opacity-50'
+      'hover:ring-4 focus-visible:outline-none focus-visible:ring-4 data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ]
   },
   variants: {
@@ -43,7 +44,8 @@ export const sliderVariants = tv({
       },
       secondary: {
         range: 'bg-secondary-foreground/30',
-        thumb: 'border-secondary-foreground/40 focus-visible:ring-secondary-foreground/20 hover:ring-secondary-foreground/20'
+        thumb:
+          'border-secondary-foreground/40 focus-visible:ring-secondary-foreground/20 hover:ring-secondary-foreground/20'
       },
       accent: {
         range: 'bg-accent-foreground/30',

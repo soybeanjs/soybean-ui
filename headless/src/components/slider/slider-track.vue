@@ -8,7 +8,7 @@ defineOptions({
   name: 'SliderTrack'
 });
 
-const props = withDefaults(defineProps<SliderTrackProps>(), {
+withDefaults(defineProps<SliderTrackProps>(), {
   as: 'div'
 });
 
@@ -33,8 +33,9 @@ function onPointerDown(event: PointerEvent) {
 
 <template>
   <Primitive
-    v-bind="props"
     :ref="setElementRef"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"

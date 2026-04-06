@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, shallowRef, watch } from 'vue';
-import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
+import { useControllableState, useForwardElement } from '../../composables';
 import { isFormControl, snapValueToStep } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
@@ -24,7 +24,7 @@ import {
   normalizeSliderValues,
   PAGE_KEYS
 } from './shared';
-import type { SliderRootContext, SliderRootEmits, SliderRootProps } from './types';
+import type { SliderRootEmits, SliderRootProps } from './types';
 
 defineOptions({
   name: 'SliderRoot'
@@ -51,20 +51,6 @@ const [rootElement, setRootElement] = useForwardElement();
 
 const cls = useSliderUi('root');
 
-const forwardedProps = useOmitProps(props, [
-  'modelValue',
-  'defaultValue',
-  'disabled',
-  'orientation',
-  'dir',
-  'inverted',
-  'min',
-  'max',
-  'step',
-  'minStepsBetweenThumbs',
-  'thumbAlignment'
-]);
-
 const modelValue = useControllableState(
   () => props.modelValue,
   value => {
@@ -75,6 +61,7 @@ const modelValue = useControllableState(
 
 const dir = useDirection(() => props.dir);
 const disabled = computed(() => props.disabled);
+const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 const orientation = computed(() => (props.orientation === 'vertical' ? 'vertical' : 'horizontal'));
 const inverted = computed(() => props.inverted);
 const min = computed(() => getValidSliderMin(props.min));
@@ -94,20 +81,6 @@ const pendingModelValue = shallowRef<number[]>();
 const currentModelValue = computed(() => pendingModelValue.value ?? normalizedModelValue.value);
 const formControl = computed(() => isFormControl(rootElement.value));
 
-watch(
-  normalizedModelValue,
-  value => {
-    if (!isSliderValuesEqual(value, modelValue.value)) {
-      modelValue.value = value;
-    }
-
-    if (pendingModelValue.value && isSliderValuesEqual(value, pendingModelValue.value)) {
-      pendingModelValue.value = undefined;
-    }
-  },
-  { immediate: true }
-);
-
 const isHorizontal = computed(() => orientation.value === 'horizontal');
 const sliderSideState = computed(() => getSliderSideState(orientation.value, dir.value, inverted.value));
 const startEdge = computed(() => sliderSideState.value.startEdge);
@@ -120,14 +93,6 @@ const thumbElements = shallowRef<(HTMLElement | undefined)[]>([]);
 const dragOffset = shallowRef(0);
 const dragPointerId = shallowRef<number | null>(null);
 const valuesBeforeDrag = shallowRef<number[]>(currentModelValue.value);
-let dragListenersCleanup: (() => void) | null = null;
-
-watch(
-  () => currentModelValue.value.length,
-  value => {
-    thumbElements.value = thumbElements.value.slice(0, value);
-  }
-);
 
 function setTrackElement(el: HTMLElement) {
   if (trackElement.value === el) {
@@ -165,6 +130,8 @@ function getClosestIndex(value: number) {
 function isDraggingPointer(pointerId: number) {
   return dragPointerId.value === pointerId;
 }
+
+let dragListenersCleanup: (() => void) | null = null;
 
 function stopDragListeners() {
   dragListenersCleanup?.();
@@ -234,7 +201,7 @@ function updateValueAtIndex(value: number, atIndex: number, options: { commit?: 
   }
 
   if (options.commit) {
-    emit('valueCommit', nextValues);
+    emit('valueCommit', [...nextValues]);
     valuesBeforeDrag.value = nextValues;
     pendingModelValue.value = undefined;
   }
@@ -315,10 +282,6 @@ function endDrag(pointerId?: number) {
   pendingModelValue.value = undefined;
 }
 
-onBeforeUnmount(() => {
-  stopDragListeners();
-});
-
 function stepValue(index: number, direction: number, multiplier = 1) {
   const currentValue = currentModelValue.value[index];
 
@@ -332,42 +295,6 @@ function stepValue(index: number, direction: number, multiplier = 1) {
 function setToLimit(index: number, limit: 'min' | 'max') {
   updateValueAtIndex(limit === 'min' ? min.value : max.value, index, { commit: true, focus: true });
 }
-
-const context: SliderRootContext = {
-  modelValue,
-  currentModelValue,
-  disabled,
-  orientation,
-  dir,
-  inverted,
-  min,
-  max,
-  step,
-  minStepsBetweenThumbs,
-  thumbAlignment,
-  isHorizontal,
-  startEdge,
-  endEdge,
-  slideDirection,
-  activeThumbIndex,
-  trackElement,
-  thumbElements,
-  setTrackElement,
-  setThumbElement,
-  getPercentage,
-  getClosestValueIndex: getClosestIndex,
-  getThumbLabel: index => getThumbLabel(index, currentModelValue.value.length),
-  beginTrackDrag,
-  beginThumbDrag,
-  moveDrag,
-  endDrag,
-  stepValue,
-  setToLimit
-};
-
-provideSliderRootContext(context);
-
-const dataDisabled = computed(() => (disabled.value ? '' : undefined));
 
 function onKeyDown(event: KeyboardEvent) {
   if (disabled.value || typeof activeThumbIndex.value !== 'number') {
@@ -397,11 +324,67 @@ function onKeyDown(event: KeyboardEvent) {
 
   stepValue(activeThumbIndex.value, isBackKey ? -1 : 1, multiplier);
 }
+
+provideSliderRootContext({
+  modelValue,
+  currentModelValue,
+  disabled,
+  orientation,
+  dir,
+  inverted,
+  min,
+  max,
+  step,
+  minStepsBetweenThumbs,
+  thumbAlignment,
+  isHorizontal,
+  startEdge,
+  endEdge,
+  slideDirection,
+  activeThumbIndex,
+  trackElement,
+  thumbElements,
+  setTrackElement,
+  setThumbElement,
+  getPercentage,
+  getClosestValueIndex: getClosestIndex,
+  getThumbLabel: index => getThumbLabel(index, currentModelValue.value.length),
+  beginTrackDrag,
+  beginThumbDrag,
+  moveDrag,
+  endDrag,
+  stepValue,
+  setToLimit
+});
+
+watch(
+  normalizedModelValue,
+  value => {
+    if (!isSliderValuesEqual(value, modelValue.value)) {
+      modelValue.value = value;
+    }
+
+    if (pendingModelValue.value && isSliderValuesEqual(value, pendingModelValue.value)) {
+      pendingModelValue.value = undefined;
+    }
+  },
+  { immediate: true }
+);
+
+watch(
+  () => currentModelValue.value.length,
+  value => {
+    thumbElements.value = thumbElements.value.slice(0, value);
+  }
+);
+
+onBeforeUnmount(() => {
+  stopDragListeners();
+});
 </script>
 
 <template>
   <Primitive
-    v-bind="forwardedProps"
     :ref="setRootElement"
     :as="as"
     :as-child="asChild"

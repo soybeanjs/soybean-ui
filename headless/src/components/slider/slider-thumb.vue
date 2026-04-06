@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useElementSize } from '@vueuse/core';
 import { computed, useAttrs } from 'vue';
-import { useForwardElement, useOmitProps } from '../../composables';
+import { useForwardElement } from '../../composables';
 import type { Side } from '../../types';
 import { Primitive } from '../primitive';
 import { useSliderRootContext, useSliderUi } from './context';
@@ -35,8 +35,6 @@ const {
   setThumbElement,
   beginThumbDrag
 } = useSliderRootContext('SliderThumb');
-
-const forwardedProps = useOmitProps(props, ['index']);
 
 const [thumbElement, setElementRef] = useForwardElement(node => {
   setThumbElement(props.index, node);
@@ -109,7 +107,6 @@ function onFocus() {
 
 <template>
   <Primitive
-    v-bind="forwardedProps"
     :ref="setElementRef"
     :as="as"
     :as-child="asChild"

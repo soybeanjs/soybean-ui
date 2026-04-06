@@ -8,13 +8,14 @@ defineOptions({
   name: 'SliderRange'
 });
 
-const props = withDefaults(defineProps<SliderRangeProps>(), {
+withDefaults(defineProps<SliderRangeProps>(), {
   as: 'div'
 });
 
 const cls = useSliderUi('range');
 
-const { currentModelValue, disabled, orientation, startEdge, endEdge, getPercentage } = useSliderRootContext('SliderRange');
+const { currentModelValue, disabled, orientation, startEdge, endEdge, getPercentage } =
+  useSliderRootContext('SliderRange');
 
 const percentages = computed(() => currentModelValue.value.map(value => getPercentage(value)));
 
@@ -29,7 +30,8 @@ const style = computed(() => ({
 
 <template>
   <Primitive
-    v-bind="props"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :data-disabled="disabled ? '' : undefined"
     :data-orientation="orientation"
