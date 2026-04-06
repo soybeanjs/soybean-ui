@@ -15,8 +15,7 @@ export const skeletonVariants = tv({
     },
     shape: {
       auto: 'rounded-md',
-      rounded: 'rounded-full',
-      square: 'rounded-none'
+      rounded: 'rounded-full'
     },
     animated: {
       true: 'animate-pulse',

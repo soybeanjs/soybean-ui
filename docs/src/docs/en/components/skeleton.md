@@ -51,4 +51,4 @@ custom-size
 
 <UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
 
-<UnionType name="SkeletonShape" description="Skeleton shape type" type="'auto' | 'rounded' | 'square'" />
+<UnionType name="SkeletonShape" description="Skeleton shape type" type="'auto' | 'rounded'" />

@@ -51,4 +51,4 @@ custom-size
 
 <UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
 
-<UnionType name="SkeletonShape" description="骨架屏形状类型" type="'auto' | 'rounded' | 'square'" />
+<UnionType name="SkeletonShape" description="骨架屏形状类型" type="'auto' | 'rounded'" />
