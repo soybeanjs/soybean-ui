@@ -6,6 +6,24 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 # SoybeanUI 组件开发
 
+## 内置规范入口
+
+这个 skill 现在直接内聚了组件开发需要遵守的横切规范，优先使用本地 references 作为查阅入口：
+
+- [coding-standards.md](./references/coding-standards.md)：规范如何组织，以及什么时候看哪一份规则
+- [import-order.md](./references/import-order.md)：TypeScript、JavaScript、Vue 的 import 分组与类型导入规则
+- [typescript-functional-style.md](./references/typescript-functional-style.md)：TypeScript、Vue script、composable、shared helper 的实现风格
+- [git-commit-convention.md](./references/git-commit-convention.md)：commit、changelog、release summary 规范
+- [patterns.md](./references/patterns.md)：已验证的实现模式
+- [anti-patterns.md](./references/anti-patterns.md)：明确禁止的做法
+- [checklist.md](./references/checklist.md)：开发收尾检查项
+
+执行约定：
+
+- 做 soybean-ui 组件开发时，以本 skill 作为主入口，不再依赖“跨 skill 引入规范”。
+- `.github/instructions/` 可以继续保留为自动触发层，但本 skill 已内置对应规范镜像，便于集中查阅和维护。
+- 如果任务只是独立的 TypeScript 重构而不是完整组件开发，再单独使用 `typescript-functional-style` skill。
+
 ## 架构概览
 
 | 层       | 包                                      | 职责                                         |
@@ -22,7 +40,7 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 > **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。
 
-> **导入顺序**：所有 `.ts`/`.vue` 文件的 import 顺序由 [import-order.instructions.md](../../../../../../.github/instructions/import-order.instructions.md) 约束：`builtin → external → internal (@/) → parent (../) → sibling (./)→ index`，value import 在前、`import type` 紧随其后。`pnpm lint --fix` 会自动修正。
+> **导入顺序**：所有 `.ts`/`.vue` 文件的 import 顺序遵循 [import-order.md](./references/import-order.md)：`builtin → external → internal (@/) → parent (../) → sibling (./) → index`，value import 在前、`import type` 紧随其后。`pnpm lint --fix` 会自动修正。
 
 ---
 
