@@ -19,6 +19,7 @@
 | 重新定义 headless 中已有的 prop                                                           | 应用 `extends` 而非重复声明                               |
 | `variants.ts` 缺少 `// @unocss-include`                                                   | UnoCSS 无法扫描，类名不生成（无报错，样式静默失效）       |
 | `slots` key 与 `UiSlot` 不一致                                                            | 运行时样式注入失败，无任何报错                            |
+| `script setup` 中把 props/emits、hooks、provider、watch、lifecycle 随意穿插摆放           | 增加跳读成本，破坏组件脚本的可预测性                      |
 | 组件名缺少 `S` 前缀                                                                       | 违反命名约定，影响 tree-shaking 与文档                    |
 | 基于 `Primitive` 的简单组件仅有少量本层 prop 时仍强行使用 `useOmitProps` / `usePickProps` | 增加间接层，降低可读性，收益很低                          |
 | `useOmitProps` 遗漏 `class`                                                               | `class` 会传给 headless 组件，造成重复绑定或覆盖          |

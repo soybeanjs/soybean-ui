@@ -13,6 +13,7 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 - [coding-standards.md](./references/coding-standards.md)：规范如何组织，以及什么时候看哪一份规则
 - [import-order.md](./references/import-order.md)：TypeScript、JavaScript、Vue 的 import 分组与类型导入规则
 - [typescript-functional-style.md](./references/typescript-functional-style.md)：TypeScript、Vue script、composable、shared helper 的实现风格
+- [vue-sfc.md](./references/vue-sfc.md)：Vue SFC 尤其是 `script setup` 的组织顺序与分层约束
 - [git-commit-convention.md](./references/git-commit-convention.md)：commit、changelog、release summary 规范
 - [patterns.md](./references/patterns.md)：已验证的实现模式
 - [anti-patterns.md](./references/anti-patterns.md)：明确禁止的做法
@@ -41,6 +42,8 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 > **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。
 
 > **导入顺序**：所有 `.ts`/`.vue` 文件的 import 顺序遵循 [import-order.md](./references/import-order.md)：`builtin → external → internal (@/) → parent (../) → sibling (./) → index`，value import 在前、`import type` 紧随其后。`pnpm lint --fix` 会自动修正。
+
+> **SFC 组织顺序**：Vue 组件的 `script setup` 顺序遵循 [vue-sfc.md](./references/vue-sfc.md)。默认顺序是：imports → `defineOptions` → props type → `defineProps` → emits type → `defineEmits` → hooks/composables → 业务逻辑 → `init` → context provider → watch → lifecycle → `defineExpose`。
 
 > **Props 转发策略**：组件 props 很多、需要拆分到多个子组件或需要明确过滤 UI 专属 prop 时，优先使用 `useOmitProps` / `usePickProps`；如果组件基于 `Primitive`，且组件自身额外处理的 prop 只有 3 个或以下、转发目标也只有一个，优先直接显式绑定，不要为了形式强行包一层 props helper。
 
@@ -425,7 +428,37 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant']
 
 上面这种只有少量自定义 prop 的情况，直接显式绑定通常比再包一层 `useOmitProps` / `usePickProps` 更清楚。
 
-### 4. {component}.vue
+### 4. Vue SFC 组织顺序
+
+开发 `.vue` 文件时，尤其是 `script setup`，优先保持稳定顺序，减少同类定义在文件中来回跳转。
+
+**推荐顺序**：
+
+1. import statements
+2. `defineOptions`
+3. props 类型定义或 `import type`
+4. `defineProps`
+5. emits 类型定义或 `import type`
+6. `defineEmits`
+7. hooks / composables 初始化
+8. 组件业务逻辑
+9. 必要的 `init` 函数
+10. context provider
+11. `watch` / `watchEffect`
+12. 生命周期 hooks
+13. `defineExpose`
+
+**实践要求**：
+
+- 顺序服务于可读性，不要为了对齐模板保留空壳代码。
+- props / emits 类型优先来自同级 `types.ts`；简单场景可内联小型 interface。
+- 业务逻辑按语义分块组织，不要把不相关的 `ref`、`computed`、handler 混排。
+- `provideXContext` / `provideXUi` 放在状态准备完成之后、watch 与生命周期之前。
+- `defineExpose` 只有在确实需要对外暴露实例 API 时才使用。
+
+完整说明见 [vue-sfc.md](./references/vue-sfc.md)。
+
+### 5. {component}.vue
 
 **多 slot 组件（有 UiContext）**：
 
@@ -490,7 +523,7 @@ const cls = computed(() => cn(buttonVariants({ color: props.color, size: props.s
 </template>
 ```
 
-### 5. index.ts
+### 6. index.ts
 
 ```typescript
 export { default as S{Name} } from './{component}.vue';

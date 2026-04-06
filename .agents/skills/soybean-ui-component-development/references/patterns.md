@@ -186,3 +186,44 @@ const forwardedOptionsProps = usePickProps(props, ['items', 'itemProps', 'groupP
 ```
 
 这种场景强行引入 `useOmitProps` / `usePickProps`，通常只会增加一层间接性，没有实际收益。
+
+---
+
+## 10. Vue SFC script setup 顺序
+
+推荐把 `script setup` 组织成稳定的阅读顺序：
+
+```ts
+import { computed, onMounted, watch } from 'vue';
+import type { DemoEmits, DemoProps } from './types';
+
+defineOptions({ name: 'SDemo' });
+
+const props = defineProps<DemoProps>();
+const emit = defineEmits<DemoEmits>();
+
+const forwardedProps = useOmitProps(props, ['class']);
+
+const visible = computed(() => !props.disabled);
+
+async function init() {
+  // init logic
+}
+
+provideDemoContext({ visible });
+
+watch(
+  () => props.disabled,
+  () => {
+    // side effect
+  }
+);
+
+onMounted(() => {
+  init();
+});
+
+defineExpose({ visible });
+```
+
+重点不是机械照抄，而是把同类职责放在一起：类型与宏定义靠前，业务逻辑居中，provider/watch/lifecycle/expose 靠后。
