@@ -36,6 +36,11 @@ export const menuData: MenuData[] = [
     value: 'forms',
     i18n: 'sidebar.forms',
     items: [
+      'colorArea',
+      'colorField',
+      'colorPicker',
+      'colorSlider',
+      'colorSwatchPicker',
       'form',
       'label',
       'input',
@@ -57,6 +62,7 @@ export const menuData: MenuData[] = [
     i18n: 'sidebar.data_display',
     items: [
       'accordion',
+      'colorSwatch',
       'collapsible',
       'card',
       'list',

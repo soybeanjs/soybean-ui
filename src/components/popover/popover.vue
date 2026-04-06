@@ -41,8 +41,8 @@ const ui = computed(() => {
 
 const positionerProps = computed(() => {
   return {
-    placement: props.placement,
-    ...props.positionerProps
+    ...props.positionerProps,
+    placement: props.placement ?? props.positionerProps?.placement
   };
 });
 
