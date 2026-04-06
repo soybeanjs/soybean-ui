@@ -76,6 +76,8 @@ export const [provideAccordionUi, useAccordionUi] = useUiContext<AccordionUiSlot
 });
 ```
 
+> 如果新增的结构元素只存在于 UI 层，但也需要让用户通过 `ui` prop 覆盖样式，则在 UI `types.ts` 中扩展 `ExtraUiSlot` / `ExtendedUi`，不要挪用已有 slot。参考 `src/components/accordion/types.ts`。
+
 ---
 
 ## 5. 多态组件（as prop）
@@ -180,12 +182,14 @@ const forwardedOptionsProps = usePickProps(props, ['items', 'itemProps', 'groupP
 如果组件基于 `Primitive` 或只包一层单一子组件，而且当前组件真正额外处理的 prop 只有 3 个或以下，优先直接显式绑定。
 
 ```vue
-<Primitive :as="props.as" :as-child="props.asChild" :disabled="props.disabled">
+<Primitive :as="as" :as-child="asChild" :disabled="disabled">
   <slot />
 </Primitive>
 ```
 
 这种场景强行引入 `useOmitProps` / `usePickProps`，通常只会增加一层间接性，没有实际收益。
+
+> 模板里直接使用 prop 名，不写 `props.xxx`；如果有同名局部变量，优先重命名局部变量。
 
 ---
 
@@ -227,3 +231,22 @@ defineExpose({ visible });
 ```
 
 重点不是机械照抄，而是把同类职责放在一起：类型与宏定义靠前，业务逻辑居中，provider/watch/lifecycle/expose 靠后。
+
+---
+
+## 11. 访问必有值的 context
+
+当 `useXContext('ConsumerName')` 代表“当前组件必须被对应 provider 包裹”时，直接解构所需字段。
+
+```typescript
+const { open, disabled, onOpenToggle } = use{Name}RootContext('{Name}Trigger');
+```
+
+不要在这种场景下额外保留整块 context 对象：
+
+```typescript
+const rootContext = use{Name}RootContext('{Name}Trigger');
+const open = computed(() => rootContext.open.value);
+```
+
+只有可选 context 或需要先判空时，才保留整体对象。

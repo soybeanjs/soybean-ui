@@ -55,9 +55,16 @@ interface LocalProps {
 
 - 不使用 props 时可直接 `defineProps<Type>()`。
 - 需要在脚本中访问 props 时，使用 `const props = defineProps<Type>()`。
+- 即使脚本里保留了 `props` 对象，模板里也直接使用 prop 名，不写 `props.xxx`。
 
 ```ts
 const props = defineProps<DemoProps>();
+```
+
+```vue
+<template>
+  <Primitive :as="as" :disabled="disabled" />
+</template>
 ```
 
 ### 5. emits 类型定义
@@ -140,6 +147,7 @@ async function init() {
 
 - `provideXContext`、`provideXUi` 这类 provider 放在业务逻辑之后、watch 与生命周期之前。
 - 先把要提供的数据准备好，再统一注入，避免 provider 之前和之后来回穿插定义状态。
+- 消费必有值的 context 时直接解构所需状态；只有可选 context 才保留整体对象并判空。
 
 ```ts
 provideDemoContext({
@@ -184,6 +192,7 @@ defineExpose({
 
 - Headless SFC 中，ARIA 状态、context 注入、受控状态逻辑优先靠近对应逻辑块组织。
 - UI SFC 中，`useOmitProps` / `usePickProps`、variant 计算、`provideXUi(ui)` 一般会落在“hooks / composables 初始化”与“业务逻辑 / provider”之间。
+- 模板统一直接使用 prop 名；如果和局部变量冲突，优先调整局部变量命名，不回退到 `props.xxx`。
 - 在 soybean-ui 组件里，如果状态值不需要深层响应式，优先 `shallowRef`；这与仓库里大量 headless context、受控状态和元素引用的写法保持一致。
 - 若组件非常简单，不必为了凑顺序硬塞空分区；顺序是为了增强可读性，不是制造样板代码。
 

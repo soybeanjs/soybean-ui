@@ -197,6 +197,29 @@ const { dataDisabled, dataState } = provideItemContext({ open, disabled });
 //      ↑ provideX 有返回值，"注入"函数语义变成了"工厂"函数
 ```
 
+**消费必有值的 context 时直接解构状态**
+
+只要这个 context 在当前组件树中按设计一定存在，并且调用 `useXContext('ConsumerName')` 会在缺失 provider 时直接报错，就直接解构所需状态，不要额外保留整块 context 对象。
+
+```typescript
+// ✅ provider 必有值时，直接解构需要的状态
+const { open, disabled, triggerId } = use{Name}RootContext('{Name}Trigger');
+
+// ❌ 已知必有值却继续保留整个 context，只会增加 `.value` 噪音
+const rootContext = use{Name}RootContext('{Name}Trigger');
+const open = computed(() => rootContext.open.value);
+```
+
+只有可选 context 或需要先做空值分支时，才保留整体对象：
+
+```typescript
+const buttonGroupContext = useButtonGroupContext();
+
+if (buttonGroupContext) {
+  // ...
+}
+```
+
 ### 3. \*.vue（SFC）
 
 **获取 UI 类名的两种写法**：
@@ -341,12 +364,18 @@ export interface {Name}Props extends {Name}RootProps {
 export type {Name}Emits = {Name}RootEmits;
 ```
 
-> **扩展 UI slot**（如需在 UI 层添加 headless 没有的 slot）：
+> **扩展 UI slot**（UI 层新增了 headless 没有的结构元素，且该元素也需要通过 `ui` prop 暴露样式时）：
+>
+> 必须扩展样式 slot 类型，不要复用不相干的已有 slot，也不要把这类样式能力藏成写死的内部 class。参考 `src/components/accordion/types.ts` 的 `AccordionExtraUiSlot` / `AccordionExtendedUi`。
 >
 > ```typescript
 > import type { UiClass } from '@soybeanjs/headless';
 > export type {Name}ExtraSlot = 'leadingIcon' | 'trailingIcon';
 > export type {Name}ExtendedUi = UiClass<{Name}UiSlot | {Name}ExtraSlot>;
+>
+> export interface {Name}Props extends {Name}RootProps {
+>   ui?: Partial<{Name}ExtendedUi>;
+> }
 > ```
 
 ### 3. Props 转发策略
@@ -420,7 +449,7 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant']
 
 ```vue
 <template>
-  <Primitive :as="props.as" :as-child="props.asChild" :disabled="props.disabled">
+  <Primitive :as="as" :as-child="asChild" :disabled="disabled">
     <slot />
   </Primitive>
 </template>
@@ -452,6 +481,7 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant']
 
 - 顺序服务于可读性，不要为了对齐模板保留空壳代码。
 - props / emits 类型优先来自同级 `types.ts`；简单场景可内联小型 interface。
+- `<template>` 中直接使用 prop 名，如 `as`、`disabled`、`items`，不要写 `props.as` / `props.disabled` / `props.items`。
 - 业务逻辑按语义分块组织，不要把不相关的 `ref`、`computed`、handler 混排。
 - `provideXContext` / `provideXUi` 放在状态准备完成之后、watch 与生命周期之前。
 - `defineExpose` 只有在确实需要对外暴露实例 API 时才使用。

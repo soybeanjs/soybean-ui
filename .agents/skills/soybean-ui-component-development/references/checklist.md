@@ -7,6 +7,7 @@
 - [ ] `types.ts` 使用 `UiClass<{Name}UiSlot>` 定义 `{Name}Ui`（非 `Record<..., ClassValue>`）
 - [ ] Props interface extends `/** @vue-ignore */ HTMLAttributes`（或具体 HTML 属性类型）
 - [ ] Context 中所有值都是响应式（`ComputedRef` 或 `ShallowRef`），使用 `transformPropsToContext` 转换
+- [ ] 消费必有值的 context 时直接解构所需状态；只有可选 context 才保留整体对象
 - [ ] `context.ts` 导出 `provide{Name}Ui`（`use{Name}Ui` 仅内部用，不导出）
 - [ ] 所有 SFC 通过 `use{Name}Ui('root')` 或 `use{Name}Ui()` 获取类名，绑定到 `:class`
 - [ ] 受控/非受控 state 通过 `useControllableState` 处理
@@ -31,8 +32,10 @@
 - [ ] `variants.ts` **第一行**为 `// @unocss-include`
 - [ ] `variants.ts` 的 `slots` key 与 headless `{Name}UiSlot` **完全一致**
 - [ ] `.vue` 文件的 `script setup` 顺序符合 `imports → defineOptions → props/emits type → defineProps/defineEmits → hooks/composables → 业务逻辑 → init → provider → watch → lifecycle → defineExpose`
+- [ ] `<template>` 中直接使用 prop 名，不写 `props.xxx`
 - [ ] Props 用 `interface`（非 `type`），包含 `class?: ClassValue`
 - [ ] `types.ts` 中 headless 类型从 `@soybeanjs/headless`（根路径）导入；`index.ts` 中 re-export 使用 `@soybeanjs/headless/{component}`（子路径）
+- [ ] UI 层新增的额外结构元素如果也需要 `ui` 样式，已扩展 `ExtraUiSlot` / `ExtendedUi`（参考 `src/components/accordion/types.ts`）
 - [ ] props 转发策略是有意选择的：props 多或需要拆分子集时用 `useOmitProps` / `usePickProps`；基于 `Primitive` 且本层额外处理 prop <= 3 时优先直接显式绑定
 - [ ] `useOmitProps(props, ['class', 'color', 'size', 'ui', ...])` 包含所有 UI 专属 prop（含 `class`）
 - [ ] 多 slot：`mergeSlotVariants(variants, props.ui, { root: props.class })`
