@@ -78,15 +78,15 @@ const valueLabel = computed(() => props.getValueLabel?.(normalizedModelValue.val
 
 const valueText = computed(() => props.getValueText?.(normalizedModelValue.value, normalizedMax.value));
 
-function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
-  const value = attrs[name];
-
-  return typeof value === 'string' ? value : undefined;
+function getNonEmptyString(value: unknown) {
+  return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
 }
+function getStringAttr(name: 'aria-label' | 'aria-valuetext') {
+  return getNonEmptyString(attrs[name]);
+}
+const ariaLabel = computed(() => getStringAttr('aria-label') ?? getNonEmptyString(valueLabel.value) ?? 'Progress');
 
-const ariaLabel = computed(() => getStringAttr('aria-label') ?? valueLabel.value);
-
-const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? valueText.value);
+const ariaValueText = computed(() => getStringAttr('aria-valuetext') ?? getNonEmptyString(valueText.value));
 
 watch(
   normalizedMax,

@@ -54,11 +54,14 @@ circle
 <TypeTable :data="[
   {
     name: 'Ui',
-    description: 'Progress 的自定义类名',
+    description: 'Progress / ProgressCircle 的自定义类名',
     fields: [
-      { name: 'root', type: 'string', description: '为根容器添加类名' },
-      { name: 'indicator', type: 'string', description: '为指示器容器添加类名' },
-    ],
+      { name: 'root', type: 'string', description: '为根容器添加类名。' },
+      { name: 'indicator', type: 'string', description: '为指示器容器添加类名。' },
+      { name: 'circle', type: 'string', description: '为环形进度根容器添加类名，仅适用于 `SProgressCircle`。' },
+      { name: 'track', type: 'string', description: '为环形进度轨道添加类名，仅适用于 `SProgressCircle`。' },
+      { name: 'label', type: 'string', description: '为环形进度标签容器添加类名，仅适用于 `SProgressCircle`。' },
+    ]
   },
   {
     name: 'ProgressState',
@@ -80,9 +83,7 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 <template>
   <SProgressCircle :model-value="72" size="xl">
-    <template #default="{ valuePercent }">
-      {{ Math.round(valuePercent ?? 0) }}%
-    </template>
+    <template #default="{ valuePercent }">{{ Math.round(valuePercent ?? 0) }}%</template>
   </SProgressCircle>
 </template>
 ```

@@ -54,10 +54,13 @@ circle
 <TypeTable :data="[
   {
     name: 'Ui',
-    description: 'Custom class name of Progress',
+    description: 'Custom class names for Progress. `circle`, `track`, and `label` apply to `SProgressCircle`.',
     fields: [
-      { name: 'root', type: 'string', description: 'Add class name to the root container' },
-      { name: 'indicator', type: 'string', description: 'Add class name to the indicator container' },
+      { name: 'root', type: 'string', description: 'Add class name to the root container.' },
+      { name: 'indicator', type: 'string', description: 'Add class name to the indicator container.' },
+      { name: 'circle', type: 'string', description: 'Add class name to the circular progress container (`SProgressCircle` only).' },
+      { name: 'track', type: 'string', description: 'Add class name to the circular progress track (`SProgressCircle` only).' },
+      { name: 'label', type: 'string', description: 'Add class name to the circular progress label/content container (`SProgressCircle` only).' },
     ],
   },
   {
@@ -80,9 +83,7 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 <template>
   <SProgressCircle :model-value="72" size="xl">
-    <template #default="{ valuePercent }">
-      {{ Math.round(valuePercent ?? 0) }}%
-    </template>
+    <template #default="{ valuePercent }">{{ Math.round(valuePercent ?? 0) }}%</template>
   </SProgressCircle>
 </template>
 ```
