@@ -73,9 +73,9 @@ describe('SToggleGroup', () => {
       wrapper.unmount();
     });
 
-    it('marks disabled items with data-disabled', () => {
+    it('marks disabled items with native disabled attribute', () => {
       const wrapper = mountToggleGroup();
-      expect(wrapper.findAll('button')[2].attributes('data-disabled')).toBe('');
+      expect(wrapper.findAll('button')[2].attributes('disabled')).toBe('');
       wrapper.unmount();
     });
   });

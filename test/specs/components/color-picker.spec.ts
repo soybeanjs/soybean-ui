@@ -8,20 +8,12 @@ async function openPicker(wrapper: ReturnType<typeof mount<typeof SColorPicker>>
   await nextTick();
 }
 
-function findFormatSelectTrigger() {
-  return document.body.querySelector('[role="combobox"]');
-}
-
 async function selectFormat(text: string) {
-  findFormatSelectTrigger()?.dispatchEvent(
-    new PointerEvent('pointerdown', { bubbles: true, button: 0, pointerType: 'mouse' })
+  const option = Array.from(document.body.querySelectorAll<HTMLElement>('[role="tab"]')).find(
+    item => item.textContent?.trim() === text
   );
-  await nextTick();
 
-  const options = Array.from(document.body.querySelectorAll('[role="option"]'));
-  const option = options.find(item => item.textContent?.trim() === text);
-
-  option?.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, button: 0, pointerType: 'mouse' }));
+  option?.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, button: 0 }));
   await nextTick();
 }
 
