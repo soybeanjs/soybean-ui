@@ -32,6 +32,7 @@
 - [ ] `variants.ts` 的 `slots` key 与 headless `{Name}UiSlot` **完全一致**
 - [ ] Props 用 `interface`（非 `type`），包含 `class?: ClassValue`
 - [ ] `types.ts` 中 headless 类型从 `@soybeanjs/headless`（根路径）导入；`index.ts` 中 re-export 使用 `@soybeanjs/headless/{component}`（子路径）
+- [ ] props 转发策略是有意选择的：props 多或需要拆分子集时用 `useOmitProps` / `usePickProps`；基于 `Primitive` 且本层额外处理 prop <= 3 时优先直接显式绑定
 - [ ] `useOmitProps(props, ['class', 'color', 'size', 'ui', ...])` 包含所有 UI 专属 prop（含 `class`）
 - [ ] 多 slot：`mergeSlotVariants(variants, props.ui, { root: props.class })`
 - [ ] 单类名：`cn(variants({...}), props.class)`

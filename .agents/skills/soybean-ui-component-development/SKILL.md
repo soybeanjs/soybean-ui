@@ -1,6 +1,6 @@
 ---
 name: soybean-ui-component-development
-description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档、实现无障碍（a11y）、适配 RTL 方向、编写单元测试。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档、aria、role、a11y、无障碍、rtl、dir、Direction、useDirection、单元测试、vitest、vue-test-utils、axe-core、getA11yViolations、spec.ts。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
+description: 'SoybeanUI 组件开发工作流。**在以下情况下使用**：新建组件（headless + UI 两层）、为现有组件添加功能、修复 bug、理解双层架构、添加 playground 示例、编写组件文档、实现无障碍（a11y）、适配 RTL 方向、编写单元测试。适用关键词：新建组件、添加 variant、headless、tailwind-variants、tv()、UiSlot、UiClass、provideXUi、useUiContext、useOmitProps、usePickProps、mergeSlotVariants、cn、playground、DataTable、TypeTable、组件文档、aria、role、a11y、无障碍、rtl、dir、Direction、useDirection、单元测试、vitest、vue-test-utils、axe-core、getA11yViolations、spec.ts。DO NOT USE FOR：纯路由/配置修改、样式主题调整。'
 argument-hint: '可选：组件名，例如 button、dialog、select'
 ---
 
@@ -41,6 +41,8 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 > **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。
 
 > **导入顺序**：所有 `.ts`/`.vue` 文件的 import 顺序遵循 [import-order.md](./references/import-order.md)：`builtin → external → internal (@/) → parent (../) → sibling (./) → index`，value import 在前、`import type` 紧随其后。`pnpm lint --fix` 会自动修正。
+
+> **Props 转发策略**：组件 props 很多、需要拆分到多个子组件或需要明确过滤 UI 专属 prop 时，优先使用 `useOmitProps` / `usePickProps`；如果组件基于 `Primitive`，且组件自身额外处理的 prop 只有 3 个或以下、转发目标也只有一个，优先直接显式绑定，不要为了形式强行包一层 props helper。
 
 ---
 
@@ -344,7 +346,86 @@ export type {Name}Emits = {Name}RootEmits;
 > export type {Name}ExtendedUi = UiClass<{Name}UiSlot | {Name}ExtraSlot>;
 > ```
 
-### 3. {component}.vue
+### 3. Props 转发策略
+
+`useOmitProps` / `usePickProps` 的判断标准不是“能不能用”，而是“值不值得抽一层”。
+
+**优先使用的场景**：
+
+- 组件 prop 很多，手写转发名单容易漏项或难维护。
+- 一个 wrapper 需要把 props 拆分给两个或更多子组件。
+- 需要明确隔离 UI 专属 prop，避免把 `class`、`ui`、`size`、`color` 等误传给 headless 组件。
+
+**何时用 `useOmitProps`**：
+
+- 下游组件应该接收“绝大多数 props”，只有少数 props 由当前组件自己消费。
+- 典型场景：UI wrapper 把 `class`、`ui`、`size`、局部 slot props 等留在本层，其余都透传给 headless root。
+
+**何时用 `usePickProps`**：
+
+- 下游组件只应该接收一个明确子集。
+- 典型场景：一个组件同时向 `Root`、`Options`、`Link`、`Button` 等多个子组件分发不同的 prop 子集。
+
+**何时不要用**：
+
+- 组件基于 `Primitive` 或单一下游组件封装。
+- 当前组件真正额外处理的 prop 只有 3 个或以下。
+- 直接显式绑定 `as`、`asChild`、`disabled` 之类的少量 prop 会更直观。
+
+**经验法则**：
+
+- 额外处理 prop 很少时，优先“显式绑定”。
+- 额外处理 prop 变多，或需要拆成多个 props 子集时，再切到 `useOmitProps` / `usePickProps`。
+- 不要为了统一写法，把简单组件也改成大段 props 过滤逻辑。
+
+**多 props / 多子组件场景**：
+
+```vue
+<script setup lang="ts">
+import { useForwardListeners, usePickProps } from '@soybeanjs/headless/composables';
+
+const props = defineProps<TreeMenuProps>();
+const emit = defineEmits<TreeMenuEmits>();
+
+const forwardedRootProps = usePickProps(props, ['modelValue', 'defaultValue', 'expanded', 'defaultExpanded']);
+const forwardedOptionsProps = usePickProps(props, [
+  'items',
+  'groupProps',
+  'groupLabelProps',
+  'itemProps',
+  'buttonProps',
+  'linkProps'
+]);
+
+const listeners = useForwardListeners(emit);
+</script>
+```
+
+**UI wrapper 场景**：
+
+```vue
+<script setup lang="ts">
+import { useOmitProps } from '@soybeanjs/headless/composables';
+
+const props = defineProps<ButtonProps>();
+
+const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant']);
+</script>
+```
+
+**Primitive 小组件场景**：
+
+```vue
+<template>
+  <Primitive :as="props.as" :as-child="props.asChild" :disabled="props.disabled">
+    <slot />
+  </Primitive>
+</template>
+```
+
+上面这种只有少量自定义 prop 的情况，直接显式绑定通常比再包一层 `useOmitProps` / `usePickProps` 更清楚。
+
+### 4. {component}.vue
 
 **多 slot 组件（有 UiContext）**：
 
@@ -409,7 +490,7 @@ const cls = computed(() => cn(buttonVariants({ color: props.color, size: props.s
 </template>
 ```
 
-### 4. index.ts
+### 5. index.ts
 
 ```typescript
 export { default as S{Name} } from './{component}.vue';
@@ -614,7 +695,8 @@ export const {component}Variants = tv({
 | ------------------------- | ---------------------- | ---------------------------------------------- |
 | `useContext`              | `headless/composables` | 创建 provide/inject 对，支持派生状态           |
 | `useUiContext`            | `headless/composables` | UI↔headless 样式桥，返回 `[provideUi, useUi]`  |
-| `useOmitProps`            | `headless/composables` | 过滤 props（含 `class`）后转发                 |
+| `useOmitProps`            | `headless/composables` | 下游接收大多数 props 时，剔除少量本层消费 prop |
+| `usePickProps`            | `headless/composables` | 下游只接收明确子集时，挑选 props 转发          |
 | `useForwardListeners`     | `headless/composables` | 转发 emit 事件给 headless 组件                 |
 | `useControllableState`    | `headless/composables` | 受控/非受控 prop 模式                          |
 | `useForwardElement`       | `headless/composables` | 暴露内部 DOM ref 给父组件                      |

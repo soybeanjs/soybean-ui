@@ -147,3 +147,42 @@ const [triggerElement, setTriggerElement] = useForwardElement();
   <button :ref="setTriggerElement" />
 </template>
 ```
+
+---
+
+## 9. useOmitProps / usePickProps 的选择
+
+优先按“转发复杂度”选择，而不是机械统一写法。
+
+### 适合 `useOmitProps`
+
+当下游组件应接收大多数 props，只有少量 prop 由当前组件自己消费时，用 `useOmitProps` 更清楚。
+
+```typescript
+const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui']);
+```
+
+常见于：UI wrapper 把样式类、变体、局部子组件 props 留在当前层，其余直接透传给 headless root。
+
+### 适合 `usePickProps`
+
+当一个组件要把 props 拆给多个子组件，且每个子组件只应拿到明确子集时，用 `usePickProps`。
+
+```typescript
+const forwardedRootProps = usePickProps(props, ['modelValue', 'defaultValue']);
+const forwardedOptionsProps = usePickProps(props, ['items', 'itemProps', 'groupProps']);
+```
+
+常见于：`tree-menu`、`command`、`dropdown-menu` 这类“一个外壳 + 多个内部块”的组件。
+
+### 不必使用的场景
+
+如果组件基于 `Primitive` 或只包一层单一子组件，而且当前组件真正额外处理的 prop 只有 3 个或以下，优先直接显式绑定。
+
+```vue
+<Primitive :as="props.as" :as-child="props.asChild" :disabled="props.disabled">
+  <slot />
+</Primitive>
+```
+
+这种场景强行引入 `useOmitProps` / `usePickProps`，通常只会增加一层间接性，没有实际收益。
