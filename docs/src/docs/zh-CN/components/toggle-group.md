@@ -28,7 +28,7 @@ const value = ref('bold');
 ```playground
 basic
 multiple
-outline
+variant
 vertical
 ```
 
@@ -46,7 +46,7 @@ vertical
   { name: 'rovingFocus', type: 'boolean', default: 'true', description: '是否启用方向键焦点漫游。' },
   { name: 'loop', type: 'boolean', default: 'true', description: '焦点漫游是否循环。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '按钮尺寸。' },
-  { name: 'variant', type: `'default' | 'outline'`, default: `'default'`, description: '视觉样式。' },
+  { name: 'variant', type: `'outline' | 'soft' | 'ghost'`, default: `'ghost'`, description: '视觉样式。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' }
 ]"/>
 

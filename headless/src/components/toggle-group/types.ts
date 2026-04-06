@@ -9,10 +9,11 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
+import type { PrimitiveProps } from '../primitive/types';
 import type { ButtonProps } from '../button/types';
 
 export interface ToggleGroupRootProps<M extends boolean = false, T extends DefinedValue = string>
-  extends SelectionProps<M, T>, FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+  extends SelectionProps<M, T>, FormFieldCommonProps, PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   /** When `false`, navigating through items with arrow keys is disabled. */
   rovingFocus?: boolean;
   /** When `true`, prevents interaction with all items in the group. */

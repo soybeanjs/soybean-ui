@@ -28,7 +28,7 @@ const value = ref('bold');
 ```playground
 basic
 multiple
-outline
+variant
 vertical
 ```
 
@@ -46,7 +46,7 @@ vertical
   { name: 'rovingFocus', type: 'boolean', default: 'true', description: 'Whether arrow-key roving focus is enabled.' },
   { name: 'loop', type: 'boolean', default: 'true', description: 'Whether roving focus loops.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Item size.' },
-  { name: 'variant', type: `'default' | 'outline'`, default: `'default'`, description: 'Visual style.' },
+  { name: 'variant', type: `'outline' | 'soft' | 'ghost'`, default: `'ghost'`, description: 'Visual style.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 

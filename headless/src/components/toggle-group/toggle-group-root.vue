@@ -5,6 +5,7 @@ import { useForwardElement, useSelection } from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import { RovingFocusGroup } from '../roving-focus';
 import { VisuallyHiddenInput } from '../visually-hidden';
+import { Primitive } from '../primitive';
 import { provideToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupRootEmits, ToggleGroupRootProps } from './types';
 
@@ -24,6 +25,16 @@ const emit = defineEmits<ToggleGroupRootEmits<M, T>>();
 
 const cls = useToggleGroupUi('root');
 
+const [groupElement, setGroupElement] = useForwardElement();
+
+const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelection<M, T>(props, value =>
+  emit('update:modelValue', value)
+);
+
+const formControl = computed(() => isFormControl(groupElement.value));
+
+const rovingFocusProps = computed(getRovingFocusProps);
+
 function getRovingFocusProps() {
   const { rovingFocus, loop, dir, orientation } = props;
 
@@ -33,13 +44,6 @@ function getRovingFocusProps() {
 
   return { loop, dir, orientation };
 }
-
-const rovingFocusProps = computed(getRovingFocusProps);
-
-const { modelValue, onModelValueChange, isValueSelected, isMultiple } = useSelection<M, T>(
-  props,
-  value => emit('update:modelValue', value)
-);
 
 const onValueChange = (value: DefinedValue) => {
   onModelValueChange(value as T);
@@ -56,18 +60,15 @@ provideToggleGroupRootContext({
   isValueSelected: isSelected,
   isMultiple
 });
-
-const [groupElement, setGroupElement] = useForwardElement();
-
-const formControl = computed(() => isFormControl(groupElement.value));
 </script>
 
 <template>
   <component
-    :is="rovingFocus ? RovingFocusGroup : 'div'"
+    :is="rovingFocus ? RovingFocusGroup : Primitive"
     v-bind="rovingFocusProps"
     :ref="setGroupElement"
-    as="div"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :dir="dir"
     role="group"

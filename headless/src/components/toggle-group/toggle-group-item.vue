@@ -31,20 +31,24 @@ const disabled = computed(() => rootDisabled.value || props.disabled);
 const pressed = computed(() => isValueSelected(props.value));
 
 const forwardedProps = useOmitProps(props, ['as', 'value'], () =>
-  rovingFocus.value ? { as: props.as, focusable: !disabled.value, active: pressed.value } : {}
+  rovingFocus.value ? { focusable: !disabled.value, active: pressed.value } : {}
 );
 
 const dataState = computed(() => (pressed.value ? 'on' : 'off'));
 
 const onClick = () => {
+  if (disabled.value) return;
+
   onModelValueChange(props.value);
 };
 </script>
 
 <template>
-  <Primitive
+  <component
     v-bind="forwardedProps"
-    :as="rovingFocus ? RovingFocusItem : as"
+    :is="rovingFocus ? RovingFocusItem : Primitive"
+    :as="as"
+    :as-child="asChild"
     :class="cls"
     :aria-pressed="pressed ? 'true' : 'false'"
     :data-state="dataState"
@@ -53,5 +57,5 @@ const onClick = () => {
     @click="onClick"
   >
     <slot :pressed="pressed" :disabled="disabled" />
-  </Primitive>
+  </component>
 </template>
