@@ -49,6 +49,20 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  ColorAreaArea,
+  ColorAreaRoot,
+  ColorAreaThumb,
+  ColorFieldInput,
+  ColorFieldRoot,
+  ColorPickerRoot,
+  ColorSliderRoot,
+  ColorSliderThumb,
+  ColorSliderTrack,
+  ColorSwatch as ColorSwatchRoot,
+  ColorSwatchPickerItem,
+  ColorSwatchPickerItemIndicator,
+  ColorSwatchPickerItemSwatch,
+  ColorSwatchPickerRoot,
   ConfigProvider,
   ContextMenuAnchor,
   ContextMenuArrow,
@@ -405,6 +419,58 @@ export const Collapsible = {
   Root: typeof CollapsibleRoot;
   Trigger: typeof CollapsibleTrigger;
   Content: typeof CollapsibleContent;
+};
+
+export const ColorArea = {
+  Root: ColorAreaRoot,
+  Area: ColorAreaArea,
+  Thumb: ColorAreaThumb
+} as {
+  Root: typeof ColorAreaRoot;
+  Area: typeof ColorAreaArea;
+  Thumb: typeof ColorAreaThumb;
+};
+
+export const ColorField = {
+  Root: ColorFieldRoot,
+  Input: ColorFieldInput
+} as {
+  Root: typeof ColorFieldRoot;
+  Input: typeof ColorFieldInput;
+};
+
+export const ColorPicker = {
+  Root: ColorPickerRoot
+} as {
+  Root: typeof ColorPickerRoot;
+};
+
+export const ColorSlider = {
+  Root: ColorSliderRoot,
+  Track: ColorSliderTrack,
+  Thumb: ColorSliderThumb
+} as {
+  Root: typeof ColorSliderRoot;
+  Track: typeof ColorSliderTrack;
+  Thumb: typeof ColorSliderThumb;
+};
+
+export const ColorSwatch = {
+  Root: ColorSwatchRoot
+} as {
+  Root: typeof ColorSwatchRoot;
+};
+
+export const ColorSwatchPicker = {
+  Root: ColorSwatchPickerRoot,
+  Item: ColorSwatchPickerItem,
+  ItemIndicator: ColorSwatchPickerItemIndicator,
+  ItemSwatch: ColorSwatchPickerItemSwatch
+} as {
+  Root: typeof ColorSwatchPickerRoot;
+  Item: typeof ColorSwatchPickerItem;
+  ItemIndicator: typeof ColorSwatchPickerItemIndicator;
+  ItemSwatch: typeof ColorSwatchPickerItemSwatch;
 };
 
 export { ConfigProvider };

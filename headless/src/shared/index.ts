@@ -2,6 +2,7 @@ export * from './guard';
 export * from './object';
 export * from './string';
 export * from './comparison';
+export * from './color';
 export * from './value';
 export * from './form';
 export * from './dom';

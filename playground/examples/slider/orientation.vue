@@ -14,8 +14,8 @@ const verticalValue = ref([25, 70]);
         <SSlider v-model="horizontalValue" :thumb-props="{ 'aria-label': 'Horizontal slider' }" />
         <p class="text-sm text-muted-foreground">Horizontal: {{ horizontalValue[0] }}</p>
       </div>
-      <div class="flex-c gap-3 items-center h-56">
-        <SSlider v-model="verticalValue" orientation="vertical" />
+      <div class="flex-c gap-3 items-center">
+        <SSlider v-model="verticalValue" orientation="vertical" class="h-40" />
         <p class="text-sm text-muted-foreground">Vertical: {{ verticalValue.join(' - ') }}</p>
       </div>
     </div>

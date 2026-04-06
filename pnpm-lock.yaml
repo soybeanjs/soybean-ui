@@ -244,6 +244,9 @@ importers:
       '@internationalized/number':
         specifier: ^3.6.5
         version: 3.6.5
+      '@soybeanjs/colord':
+        specifier: ^0.5.0
+        version: 0.5.0
       '@standard-schema/spec':
         specifier: ^1.1.0
         version: 1.1.0

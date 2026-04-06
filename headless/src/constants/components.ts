@@ -30,6 +30,17 @@ export const components = {
   card: ['CardRoot', 'CardHeader', 'CardTitle', 'CardTitleRoot', 'CardDescription', 'CardContent', 'CardFooter'],
   checkbox: ['CheckboxGroupRoot', 'CheckboxRoot', 'CheckboxControl', 'CheckboxIndicator', 'CheckboxLabel'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
+  colorArea: ['ColorAreaRoot', 'ColorAreaArea', 'ColorAreaThumb'],
+  colorField: ['ColorFieldRoot', 'ColorFieldInput'],
+  colorPicker: ['ColorPickerRoot'],
+  colorSlider: ['ColorSliderRoot', 'ColorSliderTrack', 'ColorSliderThumb'],
+  colorSwatch: ['ColorSwatch'],
+  colorSwatchPicker: [
+    'ColorSwatchPickerRoot',
+    'ColorSwatchPickerItem',
+    'ColorSwatchPickerItemIndicator',
+    'ColorSwatchPickerItemSwatch'
+  ],
   configProvider: ['ConfigProvider'],
   contextMenu: [
     'ContextMenuRoot',
