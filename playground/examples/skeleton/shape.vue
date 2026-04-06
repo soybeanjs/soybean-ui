@@ -2,7 +2,7 @@
 import { SSkeleton } from '@soybeanjs/ui';
 import type { SkeletonShape } from '@soybeanjs/ui';
 
-const shapes: SkeletonShape[] = ['auto', 'rounded', 'square'];
+const shapes: SkeletonShape[] = ['auto', 'rounded'];
 </script>
 
 <template>
