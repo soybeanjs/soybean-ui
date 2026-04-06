@@ -10,4 +10,4 @@ export interface ToggleProps extends _ToggleProps {
   shape?: ToggleShape;
 }
 
-export type { ToggleEmits, ToggleVariant };
+export type { ToggleEmits, ToggleVariant, ToggleShape };

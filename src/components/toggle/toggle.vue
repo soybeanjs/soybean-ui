@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<ToggleProps>(), {
 
 const emit = defineEmits<ToggleEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size']);
+const forwardedProps = useOmitProps(props, ['class', 'color', 'variant', 'size', 'shape']);
 
 const cls = computed(() => {
   const variants = toggleVariants({
