@@ -37,8 +37,7 @@ export type ToggleGroupRootContextParams = PropsToContext<
   isMultiple: ComputedRef<boolean>;
 };
 
-export interface ToggleGroupItemProps<T extends DefinedValue = string>
-  extends Omit<ButtonProps, 'disabled' | 'value'> {
+export interface ToggleGroupItemProps<T extends DefinedValue = string> extends ButtonProps {
   /** A unique value that identifies the item inside the group. */
   value: T;
   /** When `true`, prevents interaction with the item. */

@@ -15,12 +15,13 @@ const props = defineProps<ToggleGroupProps<M, T>>();
 
 const emit = defineEmits<ToggleGroupEmits<M, T>>();
 
-const forwardedProps = useOmitProps(props, ['class', 'size', 'variant', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => {
   const variants = toggleGroupVariants({
+    color: props.color,
     size: props.size,
     variant: props.variant,
     orientation: props.orientation

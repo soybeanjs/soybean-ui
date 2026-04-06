@@ -2,8 +2,8 @@
 import { computed } from 'vue';
 import type { DefinedValue } from '../../types';
 import { useOmitProps } from '../../composables';
-import { Button } from '../button';
 import { RovingFocusItem } from '../roving-focus';
+import { Primitive } from '../primitive';
 import { useToggleGroupRootContext, useToggleGroupUi } from './context';
 import type { ToggleGroupItemProps } from './types';
 
@@ -19,31 +19,39 @@ const props = withDefaults(defineProps<ToggleGroupItemProps<T>>(), {
 
 const cls = useToggleGroupUi('item');
 
-const rootContext = useToggleGroupRootContext('ToggleGroupItem');
+const {
+  disabled: rootDisabled,
+  rovingFocus,
+  orientation,
+  isValueSelected,
+  onModelValueChange
+} = useToggleGroupRootContext('ToggleGroupItem');
 
-const forwardedProps = useOmitProps(props, ['class', 'disabled']);
+const disabled = computed(() => rootDisabled.value || props.disabled);
+const pressed = computed(() => isValueSelected(props.value));
 
-const disabled = computed(() => rootContext.disabled.value || props.disabled);
-const pressed = computed(() => rootContext.isValueSelected(props.value));
+const forwardedProps = useOmitProps(props, ['as', 'value'], () =>
+  rovingFocus.value ? { as: props.as, focusable: !disabled.value, active: pressed.value } : {}
+);
+
 const dataState = computed(() => (pressed.value ? 'on' : 'off'));
 
 const onClick = () => {
-  rootContext.onModelValueChange(props.value);
+  onModelValueChange(props.value);
 };
 </script>
 
 <template>
-  <component :is="rootContext.rovingFocus.value ? RovingFocusItem : 'div'" as-child :focusable="!disabled" :active="pressed">
-    <Button
-      v-bind="forwardedProps"
-      :class="[cls, props.class]"
-      :aria-pressed="pressed ? 'true' : 'false'"
-      :data-state="dataState"
-      :data-orientation="rootContext.orientation.value"
-      :disabled="disabled"
-      @click="onClick"
-    >
-      <slot :pressed="pressed" :disabled="disabled" />
-    </Button>
-  </component>
+  <Primitive
+    v-bind="forwardedProps"
+    :as="rovingFocus ? RovingFocusItem : as"
+    :class="cls"
+    :aria-pressed="pressed ? 'true' : 'false'"
+    :data-state="dataState"
+    :data-orientation="orientation"
+    :disabled="disabled"
+    @click="onClick"
+  >
+    <slot :pressed="pressed" :disabled="disabled" />
+  </Primitive>
 </template>
