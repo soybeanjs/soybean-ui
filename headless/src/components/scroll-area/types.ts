@@ -31,8 +31,8 @@ export interface ScrollAreaCornerProps extends PrimitiveProps, /** @vue-ignore *
 
 export type ScrollAreaRootEmits = {};
 
-export interface ScrollAreaRootContextParams
-  extends PropsToContext<ScrollAreaRootProps, 'dir' | 'scrollHideDelay' | 'type'> {
+export interface ScrollAreaRootContext extends PropsToContext<ScrollAreaRootProps, 'scrollHideDelay' | 'type'> {
+  dir: ComputedRef<Direction>;
   isHovering: ShallowRef<boolean>;
   rootElement: ShallowRef<HTMLElement | undefined>;
   viewportElement: ShallowRef<HTMLElement | undefined>;
@@ -48,10 +48,6 @@ export interface ScrollAreaRootContextParams
   onScrollbarEnabledChange: (orientation: ScrollAreaOrientation, enabled: boolean) => void;
   onScrollbarVisibleChange: (orientation: ScrollAreaOrientation, visible: boolean) => void;
   onScrollbarSizeChange: (orientation: ScrollAreaOrientation, size: number) => void;
-}
-
-export interface ScrollAreaRootContext extends ScrollAreaRootContextParams {
-  dir: ComputedRef<Direction>;
 }
 
 export interface ScrollAreaScrollbarContext {

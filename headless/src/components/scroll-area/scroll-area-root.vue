@@ -2,6 +2,7 @@
 import { shallowRef, useAttrs } from 'vue';
 import { useExposedElement, useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
 import { provideScrollAreaRootContext, useScrollAreaUi } from './context';
 import type { ScrollAreaOrientation, ScrollAreaRootProps } from './types';
@@ -22,6 +23,7 @@ const attrs = useAttrs();
 const forwardedProps = useOmitProps(props, ['dir', 'scrollHideDelay', 'type'], attrs);
 
 const cls = useScrollAreaUi('root');
+const dir = useDirection(() => props.dir);
 
 const [rootElement, setRootElement] = useExposedElement();
 
@@ -62,7 +64,8 @@ function onScrollbarSizeChange(orientation: ScrollAreaOrientation, size: number)
   scrollbarYSize.value = size;
 }
 
-const rootContext = provideScrollAreaRootContext({
+provideScrollAreaRootContext({
+  dir,
   isHovering,
   rootElement,
   viewportElement,
@@ -82,7 +85,7 @@ const rootContext = provideScrollAreaRootContext({
   onScrollbarEnabledChange,
   onScrollbarVisibleChange,
   onScrollbarSizeChange,
-  ...transformPropsToContext(props, ['dir', 'scrollHideDelay', 'type'])
+  ...transformPropsToContext(props, ['scrollHideDelay', 'type'])
 });
 </script>
 
@@ -93,7 +96,7 @@ const rootContext = provideScrollAreaRootContext({
     :as="as"
     :as-child="asChild"
     :class="cls"
-    :dir="rootContext.dir"
+    :dir="dir"
     @pointerenter="isHovering = true"
     @pointerleave="isHovering = false"
   >
