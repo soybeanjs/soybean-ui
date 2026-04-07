@@ -4,7 +4,7 @@ import { useResizeObserver } from '@vueuse/core';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideScrollAreaScrollbarContext, useScrollAreaRootContext, useScrollAreaUi } from './context';
-import { clamp, getScrollPosition, getScrollSize, getThumbOffset, getThumbSize } from './shared';
+import { clamp, getScrollPosition, getScrollSize, getThumbOffset, getThumbSize, setViewportScroll } from './shared';
 import type { ScrollAreaOrientation, ScrollAreaScrollbarProps, ScrollAreaState } from './types';
 
 defineOptions({
@@ -45,6 +45,7 @@ const viewportSize = shallowRef(0);
 const contentSize = shallowRef(0);
 const trackSize = shallowRef(0);
 const thumbPointerOffset = shallowRef(0);
+const enabledOrientations = shallowRef<ScrollAreaOrientation[]>([]);
 
 let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -129,7 +130,7 @@ function updateMetrics() {
   viewportSize.value = size.viewportSize;
   contentSize.value = size.contentSize;
   trackSize.value = orientation.value === 'horizontal' ? scrollbar.clientWidth : scrollbar.clientHeight;
-  scrollPosition.value = getScrollPosition(viewport, orientation.value);
+  scrollPosition.value = getScrollPosition(viewport, orientation.value, dir.value);
   onScrollbarSizeChange(orientation.value, trackSize.value);
 }
 
@@ -146,7 +147,7 @@ function triggerTransientVisibility() {
   }
 }
 
-function setViewportScroll(nextThumbOffset: number) {
+function setViewportPosition(nextThumbOffset: number) {
   const viewport = viewportElement.value;
 
   if (!viewport || maxThumbOffset.value <= 0 || maxScrollPosition.value <= 0) {
@@ -157,11 +158,7 @@ function setViewportScroll(nextThumbOffset: number) {
   const scrollRatio = orientation.value === 'horizontal' && dir.value === 'rtl' ? 1 - thumbRatio : thumbRatio;
   const nextScrollPosition = scrollRatio * maxScrollPosition.value;
 
-  if (orientation.value === 'horizontal') {
-    viewport.scrollLeft = nextScrollPosition;
-  } else {
-    viewport.scrollTop = nextScrollPosition;
-  }
+  setViewportScroll(viewport, orientation.value, nextScrollPosition, dir.value);
 }
 
 function getPointerPosition(event: PointerEvent) {
@@ -177,14 +174,23 @@ function handlePointerMove(event: PointerEvent) {
   const origin = orientation.value === 'horizontal' ? rect.left : rect.top;
   const nextOffset = getPointerPosition(event) - origin - thumbPointerOffset.value;
 
-  setViewportScroll(nextOffset);
+  setViewportPosition(nextOffset);
 }
 
-function handlePointerUp() {
+function cleanupDragListeners() {
   isDragging.value = false;
   window.removeEventListener('pointermove', handlePointerMove);
   window.removeEventListener('pointerup', handlePointerUp);
+  window.removeEventListener('pointercancel', handlePointerCancel);
   triggerTransientVisibility();
+}
+
+function handlePointerUp() {
+  cleanupDragListeners();
+}
+
+function handlePointerCancel() {
+  cleanupDragListeners();
 }
 
 function handleTrackPointerDown(event: PointerEvent) {
@@ -201,7 +207,7 @@ function handleTrackPointerDown(event: PointerEvent) {
   const origin = orientation.value === 'horizontal' ? rect.left : rect.top;
   const nextOffset = getPointerPosition(event) - origin - thumbSize.value / 2;
 
-  setViewportScroll(nextOffset);
+  setViewportPosition(nextOffset);
   triggerTransientVisibility();
 }
 
@@ -221,6 +227,7 @@ function onThumbPointerDown(event: PointerEvent) {
   clearHideTimer();
   window.addEventListener('pointermove', handlePointerMove);
   window.addEventListener('pointerup', handlePointerUp);
+  window.addEventListener('pointercancel', handlePointerCancel);
 }
 
 function onScroll() {
@@ -274,20 +281,37 @@ provideScrollAreaScrollbarContext({
   onThumbPointerUp: handlePointerUp
 });
 
+function markScrollbarEnabled(value: ScrollAreaOrientation, enabled: boolean) {
+  onScrollbarEnabledChange(value, enabled);
+
+  if (enabled) {
+    if (!enabledOrientations.value.includes(value)) {
+      enabledOrientations.value = [...enabledOrientations.value, value];
+    }
+
+    return;
+  }
+
+  enabledOrientations.value = enabledOrientations.value.filter(item => item !== value);
+}
+
 watch(
   () => props.orientation,
-  value => {
-    onScrollbarEnabledChange(value, true);
+  (value, oldValue) => {
+    if (oldValue && oldValue !== value) {
+      markScrollbarEnabled(oldValue, false);
+    }
+
+    markScrollbarEnabled(value, true);
   },
   { immediate: true }
 );
 
 onUnmounted(() => {
   clearHideTimer();
-  onScrollbarEnabledChange(orientation.value, false);
+  enabledOrientations.value.forEach(value => markScrollbarEnabled(value, false));
   onScrollbarVisibleChange(orientation.value, false);
-  window.removeEventListener('pointermove', handlePointerMove);
-  window.removeEventListener('pointerup', handlePointerUp);
+  cleanupDragListeners();
   viewportElement.value?.removeEventListener('scroll', onScroll);
 });
 </script>

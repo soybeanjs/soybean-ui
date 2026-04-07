@@ -2,6 +2,8 @@ import type { Direction } from '../../types';
 import type { ScrollAreaOrientation } from './types';
 
 const MIN_THUMB_SIZE = 18;
+type RtlScrollType = 'default' | 'negative' | 'reverse';
+const rtlScrollTypeCache = new WeakMap<Document, RtlScrollType>();
 
 export function clamp(value: number, min: number, max: number) {
   return Math.min(Math.max(value, min), max);
@@ -39,8 +41,93 @@ export function getThumbOffset(
   return ratio * maxThumbOffset;
 }
 
-export function getScrollPosition(viewport: HTMLElement, orientation: ScrollAreaOrientation) {
-  return orientation === 'horizontal' ? Math.abs(viewport.scrollLeft) : viewport.scrollTop;
+function detectRtlScrollType(doc: Document) {
+  const cachedRtlScrollType = rtlScrollTypeCache.get(doc);
+
+  if (cachedRtlScrollType) {
+    return cachedRtlScrollType;
+  }
+
+  const dummy = doc.createElement('div');
+  const child = doc.createElement('div');
+
+  dummy.dir = 'rtl';
+  dummy.style.width = '4px';
+  dummy.style.height = '1px';
+  dummy.style.position = 'absolute';
+  dummy.style.top = '-1000px';
+  dummy.style.overflow = 'scroll';
+  child.style.width = '8px';
+  child.style.height = '1px';
+
+  dummy.appendChild(child);
+  doc.body.appendChild(dummy);
+
+  const rtlScrollType: RtlScrollType = dummy.scrollLeft > 0 ? 'default' : (() => {
+    dummy.scrollLeft = 1;
+    return dummy.scrollLeft === 0 ? 'negative' : 'reverse';
+  })();
+
+  doc.body.removeChild(dummy);
+  rtlScrollTypeCache.set(doc, rtlScrollType);
+
+  return rtlScrollType;
+}
+
+function getNormalizedScrollLeft(viewport: HTMLElement) {
+  const maxScrollLeft = Math.max(viewport.scrollWidth - viewport.clientWidth, 0);
+
+  switch (detectRtlScrollType(viewport.ownerDocument)) {
+    case 'negative':
+      return -viewport.scrollLeft;
+    case 'reverse':
+      return maxScrollLeft - viewport.scrollLeft;
+    default:
+      return viewport.scrollLeft;
+  }
+}
+
+function setNormalizedScrollLeft(viewport: HTMLElement, scrollPosition: number) {
+  const maxScrollLeft = Math.max(viewport.scrollWidth - viewport.clientWidth, 0);
+
+  switch (detectRtlScrollType(viewport.ownerDocument)) {
+    case 'negative':
+      viewport.scrollLeft = -scrollPosition;
+      break;
+    case 'reverse':
+      viewport.scrollLeft = maxScrollLeft - scrollPosition;
+      break;
+    default:
+      viewport.scrollLeft = scrollPosition;
+      break;
+  }
+}
+
+export function getScrollPosition(viewport: HTMLElement, orientation: ScrollAreaOrientation, dir: Direction) {
+  if (orientation === 'horizontal' && dir === 'rtl') {
+    return getNormalizedScrollLeft(viewport);
+  }
+
+  return orientation === 'horizontal' ? viewport.scrollLeft : viewport.scrollTop;
+}
+
+export function setViewportScroll(
+  viewport: HTMLElement,
+  orientation: ScrollAreaOrientation,
+  scrollPosition: number,
+  dir: Direction
+) {
+  if (orientation === 'horizontal') {
+    if (dir === 'rtl') {
+      setNormalizedScrollLeft(viewport, scrollPosition);
+      return;
+    }
+
+    viewport.scrollLeft = scrollPosition;
+    return;
+  }
+
+  viewport.scrollTop = scrollPosition;
 }
 
 export function getScrollSize(viewport: HTMLElement, content: HTMLElement, orientation: ScrollAreaOrientation) {

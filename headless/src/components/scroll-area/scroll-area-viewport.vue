@@ -24,7 +24,7 @@ const { scrollbarXEnabled, scrollbarYEnabled, onViewportChange, onContentChange 
 
 const cls = useScrollAreaUi('viewport');
 
-const forwardedProps = useOmitProps(props, ['nonce'], attrs);
+const forwardedProps = useOmitProps(props, ['nonce', 'as', 'asChild'], attrs);
 const viewportProps = computed(() => ({
   ...forwardedProps.value,
   tabindex: forwardedProps.value.tabindex ?? 0
