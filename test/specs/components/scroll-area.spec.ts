@@ -71,6 +71,10 @@ function mockOverflowMetrics(wrapper: VueWrapper) {
   viewport.dispatchEvent(new Event('scroll'));
 }
 
+/**
+ * Simulate the three browser RTL `scrollLeft` modes so the shared helpers can be
+ * exercised without relying on the runtime behavior of the test environment.
+ */
 function createFakeDocument(mode: 'default' | 'negative' | 'reverse') {
   let createCount = 0;
 
@@ -114,6 +118,7 @@ function createFakeDocument(mode: 'default' | 'negative' | 'reverse') {
   } as unknown as Document;
 }
 
+/** Create a minimal viewport-like element for RTL scroll normalization tests. */
 function createViewport(doc: Document, scrollLeft: number) {
   return {
     ownerDocument: doc,

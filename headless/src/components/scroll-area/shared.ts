@@ -2,6 +2,12 @@ import type { Direction } from '../../types';
 import type { ScrollAreaOrientation } from './types';
 
 const MIN_THUMB_SIZE = 18;
+/**
+ * Browser RTL `scrollLeft` behavior:
+ * - `default`: leftmost = 0, rightmost = max
+ * - `negative`: leftmost = 0, rightmost = -max
+ * - `reverse`: leftmost = max, rightmost = 0
+ */
 type RtlScrollType = 'default' | 'negative' | 'reverse';
 const rtlScrollTypeCache = new WeakMap<Document, RtlScrollType>();
 
@@ -41,6 +47,10 @@ export function getThumbOffset(
   return ratio * maxThumbOffset;
 }
 
+/**
+ * Detect the RTL `scrollLeft` mode once per document by probing a temporary
+ * scroll container and caching the result for subsequent reads/writes.
+ */
 function detectRtlScrollType(doc: Document) {
   const cachedRtlScrollType = rtlScrollTypeCache.get(doc);
 
@@ -96,6 +106,7 @@ function getNormalizedScrollLeft(viewport: HTMLElement) {
   }
 }
 
+/** Convert a normalized RTL horizontal scroll position back to the browser-specific `scrollLeft` value. */
 function setNormalizedScrollLeft(viewport: HTMLElement, scrollPosition: number) {
   const maxScrollLeft = Math.max(viewport.scrollWidth - viewport.clientWidth, 0);
 
