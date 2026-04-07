@@ -205,6 +205,11 @@ import {
   RadioGroupRoot,
   RovingFocusGroup,
   RovingFocusItem,
+  ScrollAreaCorner,
+  ScrollAreaRoot,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaViewport,
   SelectArrow,
   SelectContent,
   SelectGroup,
@@ -823,6 +828,20 @@ export const RovingFocus = {
 } as {
   Group: typeof RovingFocusGroup;
   Item: typeof RovingFocusItem;
+};
+
+export const ScrollArea = {
+  Root: ScrollAreaRoot,
+  Viewport: ScrollAreaViewport,
+  Scrollbar: ScrollAreaScrollbar,
+  Thumb: ScrollAreaThumb,
+  Corner: ScrollAreaCorner
+} as {
+  Root: typeof ScrollAreaRoot;
+  Viewport: typeof ScrollAreaViewport;
+  Scrollbar: typeof ScrollAreaScrollbar;
+  Thumb: typeof ScrollAreaThumb;
+  Corner: typeof ScrollAreaCorner;
 };
 
 export const Select = {

@@ -40,6 +40,7 @@ export * from './components/primitive';
 export * from './components/progress';
 export * from './components/radio-group';
 export * from './components/roving-focus';
+export * from './components/scroll-area';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/skeleton';
