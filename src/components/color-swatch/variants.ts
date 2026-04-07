@@ -14,22 +14,22 @@ export const colorSwatchVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'size-6 text-2xs'
+        root: 'size-5 text-2xs'
       },
       sm: {
-        root: 'size-7 text-xs'
+        root: 'size-5.5 text-xs'
       },
       md: {
-        root: 'size-8 text-sm'
+        root: 'size-6 text-sm'
       },
       lg: {
-        root: 'size-9 text-base'
+        root: 'size-6.5 text-base'
       },
       xl: {
-        root: 'size-10 text-lg'
+        root: 'size-7 text-lg'
       },
       '2xl': {
-        root: 'size-12 text-xl'
+        root: 'size-8 text-xl'
       }
     },
     shape: {

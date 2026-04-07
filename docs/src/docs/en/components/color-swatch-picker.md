@@ -24,4 +24,5 @@ const colors = ['#7c3aed', '#06b6d4', '#10b981'];
 
 ```playground
 basic
+shape
 ```

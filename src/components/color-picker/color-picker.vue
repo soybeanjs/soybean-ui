@@ -141,7 +141,7 @@ function handleSwatchValueChange(value: string | string[]) {
     <template #trigger>
       <slot name="trigger" :color="currentColor" :hex="hexValue" :value="displayValue" :format="displayFormat">
         <SButton v-bind="triggerButtonProps" :size="size" :disabled="disabled" color="accent" variant="pure">
-          <SColorSwatch v-bind="swatchProps" :class="ui.triggerSwatch" :color="hexValue" size="xs" shape="circle" />
+          <SColorSwatch v-bind="swatchProps" :class="ui.triggerSwatch" :color="hexValue" :size="size" shape="circle" />
           <span :class="ui.triggerValue">{{ displayValue }}</span>
         </SButton>
       </slot>
@@ -189,11 +189,12 @@ function handleSwatchValueChange(value: string | string[]) {
             @update:color="syncColor"
           />
         </div>
-        <SColorSwatch :color="hexValue" v-bind="swatchProps" :class="ui.swatch" />
+        <SColorSwatch v-bind="swatchProps" :size="size" :color="hexValue" :class="ui.swatch" />
       </div>
       <div v-if="showFields" :class="ui.fields">
         <SColorField
           v-bind="formattedFieldProps"
+          :size="size"
           :class="ui.field"
           :model-value="hexValue"
           :format="displayFormat"
@@ -204,6 +205,7 @@ function handleSwatchValueChange(value: string | string[]) {
         <SColorField
           v-if="showAlpha"
           v-bind="alphaFieldProps"
+          :size="size"
           :class="ui.alphaField"
           :model-value="currentColor"
           channel="alpha"
@@ -216,6 +218,7 @@ function handleSwatchValueChange(value: string | string[]) {
       <SColorSwatchPicker
         v-if="showSwatches && swatches.length"
         v-bind="swatchPickerProps"
+        :size="size"
         :class="ui.swatches"
         :colors="swatches"
         :model-value="hexValue"

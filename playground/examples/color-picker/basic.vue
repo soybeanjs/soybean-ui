@@ -3,7 +3,20 @@ import { ref } from 'vue';
 import { SColorPicker } from '@soybeanjs/ui';
 
 const color = ref('#7c3aed');
-const swatches = ['#7c3aed', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#fff', '#0f172a'];
+const swatches = [
+  '#7c3aed',
+  '#06b6d4',
+  '#10b981',
+  '#f59e0b',
+  '#ef4444',
+  '#fff',
+  '#0f172a',
+  '#db2777',
+  '#3b82f6',
+  '#22c55e',
+  '#eab308',
+  '#dc2626'
+];
 </script>
 
 <template>
