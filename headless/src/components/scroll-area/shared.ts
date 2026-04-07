@@ -74,6 +74,15 @@ function detectRtlScrollType(doc: Document) {
   return rtlScrollType;
 }
 
+/**
+ * Browsers expose horizontal RTL scrolling in three different raw `scrollLeft` modes:
+ * - `default`: leftmost = 0, rightmost = max
+ * - `negative`: leftmost = 0, rightmost = -max
+ * - `reverse`: leftmost = max, rightmost = 0
+ *
+ * Normalize them so the scroll area logic can always reason about RTL positions
+ * using a consistent 0 → max coordinate space.
+ */
 function getNormalizedScrollLeft(viewport: HTMLElement) {
   const maxScrollLeft = Math.max(viewport.scrollWidth - viewport.clientWidth, 0);
 

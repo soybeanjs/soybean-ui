@@ -281,7 +281,7 @@ provideScrollAreaScrollbarContext({
   onThumbPointerUp: handlePointerUp
 });
 
-function markScrollbarEnabled(value: ScrollAreaOrientation, enabled: boolean) {
+function updateScrollbarEnabledState(value: ScrollAreaOrientation, enabled: boolean) {
   onScrollbarEnabledChange(value, enabled);
 
   if (enabled) {
@@ -299,17 +299,17 @@ watch(
   () => props.orientation,
   (value, oldValue) => {
     if (oldValue && oldValue !== value) {
-      markScrollbarEnabled(oldValue, false);
+      updateScrollbarEnabledState(oldValue, false);
     }
 
-    markScrollbarEnabled(value, true);
+    updateScrollbarEnabledState(value, true);
   },
   { immediate: true }
 );
 
 onUnmounted(() => {
   clearHideTimer();
-  enabledOrientations.value.forEach(value => markScrollbarEnabled(value, false));
+  enabledOrientations.value.forEach(value => updateScrollbarEnabledState(value, false));
   onScrollbarVisibleChange(orientation.value, false);
   cleanupDragListeners();
   viewportElement.value?.removeEventListener('scroll', onScroll);
