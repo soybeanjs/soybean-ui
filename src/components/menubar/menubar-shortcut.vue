@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<MenubarShortcutProps>();
 
-const cls = computed(() => cn(menubarVariants().shortcut(), props.class));
+const cls = computed(() => cn(menubarVariants({ size: props.size }).shortcut(), props.class));
 </script>
 
 <template>

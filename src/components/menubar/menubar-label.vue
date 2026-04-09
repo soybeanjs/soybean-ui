@@ -12,9 +12,9 @@ defineOptions({
 
 const props = defineProps<MenubarLabelProps>();
 
-const forwardedProps = useOmitProps(props, ['class', 'inset']);
+const forwardedProps = useOmitProps(props, ['class', 'inset', 'size']);
 
-const cls = computed(() => cn(menubarVariants({ inset: props.inset }).label(), props.class));
+const cls = computed(() => cn(menubarVariants({ inset: props.inset, size: props.size }).label(), props.class));
 </script>
 
 <template>

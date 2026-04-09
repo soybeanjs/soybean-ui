@@ -13,17 +13,18 @@ defineOptions({
 
 const props = defineProps<MenubarSubTriggerProps>();
 
-const forwardedProps = useOmitProps(props, ['class', 'inset']);
-const ui = menubarVariants({ inset: props.inset });
+const forwardedProps = useOmitProps(props, ['class', 'inset', 'size']);
+const ui = computed(() => menubarVariants({ inset: props.inset, size: props.size }));
 
-const cls = computed(() => cn(ui.subTrigger(), props.class));
+const cls = computed(() => cn(ui.value.subTrigger(), props.class));
+const iconCls = computed(() => ui.value.subTriggerIcon());
 </script>
 
 <template>
   <MenubarSubTrigger v-bind="forwardedProps" :class="cls">
     <slot />
     <slot name="icon">
-      <Icon :class="ui.subTriggerIcon()" icon="lucide:chevron-right" />
+      <Icon :class="iconCls" icon="lucide:chevron-right" />
     </slot>
   </MenubarSubTrigger>
 </template>

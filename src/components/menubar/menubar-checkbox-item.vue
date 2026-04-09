@@ -15,19 +15,21 @@ const props = defineProps<MenubarCheckboxItemProps>();
 
 const emit = defineEmits<MenubarCheckboxItemEmits>();
 
-const forwardedProps = useOmitProps(props, ['class']);
+const forwardedProps = useOmitProps(props, ['class', 'size']);
 const listeners = useForwardListeners(emit);
-const ui = menubarVariants();
+const ui = computed(() => menubarVariants({ size: props.size }));
 
-const cls = computed(() => cn(ui.checkboxItem(), props.class));
+const cls = computed(() => cn(ui.value.checkboxItem(), props.class));
+const indicatorCls = computed(() => ui.value.itemIndicator());
+const indicatorIconCls = computed(() => ui.value.indicatorIcon());
 </script>
 
 <template>
   <MenubarCheckboxItem v-bind="forwardedProps" :class="cls" v-on="listeners">
-    <span :class="ui.itemIndicator()">
+    <span :class="indicatorCls">
       <MenubarItemIndicator>
         <slot name="indicator-icon">
-          <Icon class="size-4" icon="lucide:check" />
+          <Icon :class="indicatorIconCls" icon="lucide:check" />
         </slot>
       </MenubarItemIndicator>
     </span>

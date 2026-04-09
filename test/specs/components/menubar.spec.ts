@@ -48,6 +48,38 @@ describe('SMenubar', () => {
 
       wrapper.unmount();
     });
+
+    it('applies size variants', () => {
+      const wrapper = mount(
+        {
+          components: {
+            SMenubar,
+            SMenubarContent,
+            SMenubarItem,
+            SMenubarMenu,
+            SMenubarTrigger
+          },
+          template: `
+            <SMenubar size="xs">
+              <SMenubarMenu value="file">
+                <SMenubarTrigger size="xs">File</SMenubarTrigger>
+                <SMenubarContent size="xs">
+                  <SMenubarItem size="xs">New Tab</SMenubarItem>
+                </SMenubarContent>
+              </SMenubarMenu>
+            </SMenubar>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      expect(wrapper.find('[role="menubar"]').classes()).toContain('min-h-7');
+      expect(wrapper.find('[role="menuitem"]').classes()).toContain('text-2xs');
+
+      wrapper.unmount();
+    });
   });
 
   describe('open state', () => {

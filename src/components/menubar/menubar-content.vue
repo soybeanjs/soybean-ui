@@ -16,9 +16,9 @@ const props = withDefaults(defineProps<MenubarContentProps>(), {
   sideOffset: 8
 });
 
-const forwardedProps = useOmitProps(props, ['class', 'portalProps']);
+const forwardedProps = useOmitProps(props, ['class', 'portalProps', 'size']);
 
-const cls = computed(() => cn(menubarVariants().content(), props.class));
+const cls = computed(() => cn(menubarVariants({ size: props.size }).content(), props.class));
 </script>
 
 <template>

@@ -16,14 +16,15 @@ const props = withDefaults(defineProps<MenubarItemProps>(), {
 
 const emit = defineEmits<MenubarItemEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'inset', 'variant']);
+const forwardedProps = useOmitProps(props, ['class', 'inset', 'size', 'variant']);
 const listeners = useForwardListeners(emit);
 
 const cls = computed(() =>
   cn(
     menubarVariants({
       destructive: props.variant === 'destructive',
-      inset: props.inset
+      inset: props.inset,
+      size: props.size
     }).item(),
     props.class
   )

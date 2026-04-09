@@ -15,19 +15,21 @@ const props = defineProps<MenubarRadioItemProps>();
 
 const emit = defineEmits<MenubarRadioItemEmits>();
 
-const forwardedProps = useOmitProps(props, ['class']);
+const forwardedProps = useOmitProps(props, ['class', 'size']);
 const listeners = useForwardListeners(emit);
-const ui = menubarVariants();
+const ui = computed(() => menubarVariants({ size: props.size }));
 
-const cls = computed(() => cn(ui.radioItem(), props.class));
+const cls = computed(() => cn(ui.value.radioItem(), props.class));
+const indicatorCls = computed(() => ui.value.itemIndicator());
+const indicatorIconCls = computed(() => ui.value.indicatorIcon());
 </script>
 
 <template>
   <MenubarRadioItem v-bind="forwardedProps" :class="cls" v-on="listeners">
-    <span :class="ui.itemIndicator()">
+    <span :class="indicatorCls">
       <MenubarItemIndicator>
         <slot name="indicator-icon">
-          <Icon class="size-2 fill-current" icon="lucide:circle" />
+          <Icon :class="cn(indicatorIconCls, 'fill-current')" icon="lucide:circle" />
         </slot>
       </MenubarItemIndicator>
     </span>
