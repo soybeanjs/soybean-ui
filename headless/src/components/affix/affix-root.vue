@@ -151,7 +151,7 @@ defineExpose({
 
 <template>
   <div ref="placeholderElement">
-    <div v-if="affixed" aria-hidden="true" :style="placeholderStyle" />
+    <div v-if="affixed" aria-hidden="true" role="presentation" :style="placeholderStyle" />
     <div
       ref="fixedElement"
       v-bind="forwardedAttrs"
