@@ -95,6 +95,7 @@
     "@vueuse/shared": "^14.2.1",
     "aria-hidden": "^1.2.6",
     "defu": "^6.1.6",
+    "embla-carousel-vue": "8.6.0",
     "klona": "^2.0.6",
     "ohash": "^2.0.11"
   },

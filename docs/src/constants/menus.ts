@@ -62,6 +62,7 @@ export const menuData: MenuData[] = [
     i18n: 'sidebar.data_display',
     items: [
       'accordion',
+      'carousel',
       'colorSwatch',
       'collapsible',
       'card',

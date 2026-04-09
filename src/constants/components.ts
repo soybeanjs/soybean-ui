@@ -9,6 +9,7 @@ export const components = {
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
+  carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   collapsible: ['SCollapsible', 'SCollapsibleContent', 'SCollapsibleTrigger'],
   colorArea: ['SColorArea'],

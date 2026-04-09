@@ -41,6 +41,11 @@ import {
   CardRoot,
   CardTitle,
   CardTitleRoot,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  CarouselRoot,
   CheckboxControl,
   CheckboxGroupRoot,
   CheckboxIndicator,
@@ -400,6 +405,20 @@ export const Card = {
   Description: typeof CardDescription;
   Content: typeof CardContent;
   Footer: typeof CardFooter;
+};
+
+export const Carousel = {
+  Root: CarouselRoot,
+  Content: CarouselContent,
+  Item: CarouselItem,
+  Previous: CarouselPrevious,
+  Next: CarouselNext
+} as {
+  Root: typeof CarouselRoot;
+  Content: typeof CarouselContent;
+  Item: typeof CarouselItem;
+  Previous: typeof CarouselPrevious;
+  Next: typeof CarouselNext;
 };
 
 export const Checkbox = {
