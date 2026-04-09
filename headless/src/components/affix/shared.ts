@@ -1,4 +1,4 @@
-export type AffixTargetElement = HTMLElement | Window | null;
+import type { AffixTargetElement } from './types';
 
 export interface RafThrottle {
   (): void;

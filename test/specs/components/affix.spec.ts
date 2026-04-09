@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import type { AffixRootExposed } from '@soybeanjs/headless/affix';
 import SAffix from '../../../src/components/affix/affix.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -37,7 +38,7 @@ async function waitForAffixUpdate() {
 }
 
 function getAffixRoot(wrapper: ReturnType<typeof mount>) {
-  return wrapper.findComponent({ name: 'AffixRoot' }).vm as { updatePosition: () => void };
+  return wrapper.findComponent({ name: 'AffixRoot' }).vm as AffixRootExposed;
 }
 
 describe('SAffix', () => {

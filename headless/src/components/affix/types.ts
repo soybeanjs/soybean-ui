@@ -29,5 +29,8 @@ export type AffixRootEmits = {
 
 export interface AffixRootExposed {
   affixed: ShallowRef<boolean>;
+  /**
+   * Schedule a position update on the next animation frame.
+   */
   updatePosition: () => void;
 }
