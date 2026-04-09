@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
+import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import SToolbar from '../../../src/components/toolbar/toolbar.vue';
 import SToolbarButton from '../../../src/components/toolbar/toolbar-button.vue';
 import SToolbarLink from '../../../src/components/toolbar/toolbar-link.vue';
@@ -9,38 +10,49 @@ import SToolbarToggleItem from '../../../src/components/toolbar/toolbar-toggle-i
 import { getA11yViolations } from '../../shared/a11y';
 
 function mountToolbar(props?: Record<string, unknown>) {
-  return mount(SToolbar, {
-    props,
-    slots: {
-      default: `
-        <SToolbarButton>Cut</SToolbarButton>
-        <SToolbarLink href="#">Website</SToolbarLink>
-        <SToolbarSeparator />
-        <SToolbarToggleGroup model-value="bold">
-          <SToolbarToggleItem value="bold">Bold</SToolbarToggleItem>
-          <SToolbarToggleItem value="italic">Italic</SToolbarToggleItem>
-        </SToolbarToggleGroup>
-      `
-    },
-    global: {
+  return mount(
+    {
       components: {
+        SConfigProvider,
+        SToolbar,
         SToolbarButton,
         SToolbarLink,
         SToolbarSeparator,
         SToolbarToggleGroup,
         SToolbarToggleItem
-      }
+      },
+      setup() {
+        return {
+          toolbarProps: props ?? {}
+        };
+      },
+      template: `
+        <SConfigProvider>
+          <SToolbar v-bind="toolbarProps">
+            <SToolbarButton>Cut</SToolbarButton>
+            <SToolbarLink href="#">Website</SToolbarLink>
+            <SToolbarSeparator />
+            <SToolbarToggleGroup model-value="bold">
+              <SToolbarToggleItem value="bold">Bold</SToolbarToggleItem>
+              <SToolbarToggleItem value="italic">Italic</SToolbarToggleItem>
+            </SToolbarToggleGroup>
+          </SToolbar>
+        </SConfigProvider>
+      `
     },
-    attachTo: document.body
-  });
+    {
+      attachTo: document.body
+    }
+  );
 }
 
 describe('SToolbar', () => {
   describe('rendering', () => {
     it('renders toolbar role and default orientation', () => {
       const wrapper = mountToolbar();
-      expect(wrapper.attributes('role')).toBe('toolbar');
-      expect(wrapper.attributes('aria-orientation')).toBe('horizontal');
+      const toolbar = wrapper.find('[role="toolbar"]');
+
+      expect(toolbar.attributes('aria-orientation')).toBe('horizontal');
       wrapper.unmount();
     });
 
@@ -52,7 +64,9 @@ describe('SToolbar', () => {
 
     it('renders a vertical toolbar', () => {
       const wrapper = mountToolbar({ orientation: 'vertical' });
-      expect(wrapper.attributes('aria-orientation')).toBe('vertical');
+      const toolbar = wrapper.find('[role="toolbar"]');
+
+      expect(toolbar.attributes('aria-orientation')).toBe('vertical');
       expect(wrapper.find('[role="separator"]').attributes('data-orientation')).toBe('horizontal');
       wrapper.unmount();
     });
@@ -60,12 +74,35 @@ describe('SToolbar', () => {
 
   describe('button and link interaction', () => {
     it('emits click when a toolbar button is clicked', async () => {
-      const wrapper = mount(SToolbarButton, {
-        slots: { default: 'Cut' },
-        attachTo: document.body
-      });
+      const onClick = vi.fn();
+      const wrapper = mount(
+        {
+          components: {
+            SConfigProvider,
+            SToolbar,
+            SToolbarButton
+          },
+          setup() {
+            return {
+              onClick
+            };
+          },
+          template: `
+            <SConfigProvider>
+              <SToolbar>
+                <SToolbarButton @click="onClick">Cut</SToolbarButton>
+              </SToolbar>
+            </SConfigProvider>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
       await wrapper.find('button').trigger('click');
-      expect(wrapper.emitted('click')).toBeTruthy();
+
+      expect(onClick).toHaveBeenCalledTimes(1);
       wrapper.unmount();
     });
 
@@ -87,6 +124,7 @@ describe('SToolbar', () => {
       const wrapper = mount(
         {
           components: {
+            SConfigProvider,
             SToolbar,
             SToolbarToggleGroup,
             SToolbarToggleItem
@@ -97,12 +135,14 @@ describe('SToolbar', () => {
             };
           },
           template: `
-            <SToolbar>
-              <SToolbarToggleGroup v-model="value">
-                <SToolbarToggleItem value="bold">Bold</SToolbarToggleItem>
-                <SToolbarToggleItem value="italic">Italic</SToolbarToggleItem>
-              </SToolbarToggleGroup>
-            </SToolbar>
+            <SConfigProvider>
+              <SToolbar>
+                <SToolbarToggleGroup v-model="value">
+                  <SToolbarToggleItem value="bold">Bold</SToolbarToggleItem>
+                  <SToolbarToggleItem value="italic">Italic</SToolbarToggleItem>
+                </SToolbarToggleGroup>
+              </SToolbar>
+            </SConfigProvider>
           `
         },
         {
@@ -110,9 +150,9 @@ describe('SToolbar', () => {
         }
       );
 
-      const buttons = wrapper.findAll('button');
+      await wrapper.findAll('button')[1].trigger('click');
 
-      await buttons[1].trigger('click');
+      const buttons = wrapper.findAll('button');
 
       expect(buttons[0].attributes('aria-pressed')).toBe('false');
       expect(buttons[1].attributes('aria-pressed')).toBe('true');
