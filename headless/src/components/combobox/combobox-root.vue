@@ -55,13 +55,13 @@ const filterState = computed(() => {
     };
   }
 
-  const keyword = filterSearch.value.trim().toLocaleLowerCase();
+  const keyword = filterSearch.value.trim().toLowerCase();
   const items = new Map<string, boolean>();
   const groups = new Set<string>();
   let count = 0;
 
   for (const [id, text] of allItems.value) {
-    const matched = text.toLocaleLowerCase().includes(keyword);
+    const matched = text.toLowerCase().includes(keyword);
 
     items.set(id, matched);
     if (matched) {
