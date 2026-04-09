@@ -65,11 +65,11 @@ export const bottomSheetVariants = tv({
         main: 'pb-6'
       },
       '2xl': {
-        content: 'gap-y-4.5 px-7 text-xl',
+        content: 'gap-y-[1.125rem] px-7 text-xl',
         header: 'pb-3.5',
         title: 'text-3xl',
         description: 'text-xl',
-        footer: 'pt-4.5 pb-7',
+        footer: 'pt-[1.125rem] pb-7',
         main: 'pb-7'
       }
     }
