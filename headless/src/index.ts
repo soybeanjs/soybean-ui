@@ -30,6 +30,7 @@ export * from './components/list';
 export * from './components/listbox';
 export * from './components/link';
 export * from './components/menu';
+export * from './components/menubar';
 export * from './components/navigation-menu';
 export * from './components/page-tabs';
 export * from './components/pagination';
