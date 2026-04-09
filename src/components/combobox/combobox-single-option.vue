@@ -29,7 +29,7 @@ const attrs = useAttrs();
     @select="emit('itemSelect', $event)"
   >
     <slot name="item-leading" :item="item">
-      <Icon v-if="item.icon" :icon="item.icon" aria-hidden="true" />
+      <Icon v-if="item.icon" :icon="item.icon" :aria-hidden="true" />
     </slot>
     <slot name="item-text" :item="item">
       <span class="truncate">{{ item.label }}</span>
@@ -37,7 +37,7 @@ const attrs = useAttrs();
     <slot name="item-trailing" :item="item" />
     <ComboboxItemIndicator v-bind="itemIndicatorProps">
       <slot name="item-indicator" :item="item">
-        <Icon icon="lucide:check" aria-hidden="true" />
+        <Icon icon="lucide:check" :aria-hidden="true" />
       </slot>
     </ComboboxItemIndicator>
   </ComboboxItem>

@@ -11,7 +11,7 @@ defineOptions({
   name: 'ComboboxContent'
 });
 
-const props = withDefaults(defineProps<ComboboxContentProps>(), {
+withDefaults(defineProps<ComboboxContentProps>(), {
   avoidCollisions: true
 });
 

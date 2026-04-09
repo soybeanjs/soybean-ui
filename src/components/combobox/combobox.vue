@@ -76,6 +76,11 @@ const inputProps = computed(() => ({
   autofocus: props.inputProps?.autofocus ?? true
 }));
 
+const triggerProps = computed(() => ({
+  ...props.triggerProps,
+  'aria-label': props.triggerProps?.['aria-label'] ?? triggerText.value
+}));
+
 provideComboboxUi(ui);
 </script>
 
@@ -95,7 +100,7 @@ provideComboboxUi(ui);
       </slot>
       <slot name="trigger-trailing" />
       <slot name="trigger-icon">
-        <Icon icon="lucide:chevrons-up-down" :class="ui.triggerIcon" aria-hidden="true" />
+        <Icon icon="lucide:chevrons-up-down" :class="ui.triggerIcon" :aria-hidden="true" />
       </slot>
     </ComboboxTrigger>
     <ComboboxPortal v-bind="portalProps">
@@ -103,7 +108,7 @@ provideComboboxUi(ui);
         <ComboboxInput v-bind="inputProps">
           <template #leading="slotProps">
             <slot name="input-leading" v-bind="slotProps">
-              <Icon icon="lucide:search" class="mr-2 shrink-0 opacity-50" aria-hidden="true" />
+              <Icon icon="lucide:search" class="mr-2 shrink-0 opacity-50" :aria-hidden="true" />
             </slot>
           </template>
           <template #trailing="slotProps">
