@@ -1,6 +1,20 @@
 export const components = {
   accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  autocomplete: [
+    'AutocompleteRoot',
+    'AutocompleteAnchor',
+    'AutocompleteInput',
+    'AutocompleteTrigger',
+    'AutocompletePortal',
+    'AutocompleteContent',
+    'AutocompleteViewport',
+    'AutocompleteGroup',
+    'AutocompleteGroupLabel',
+    'AutocompleteItem',
+    'AutocompleteItemIndicator',
+    'AutocompleteSeparator'
+  ],
   alertDialog: [
     'AlertDialogRoot',
     'AlertDialogTrigger',

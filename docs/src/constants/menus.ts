@@ -36,6 +36,7 @@ export const menuData: MenuData[] = [
     value: 'forms',
     i18n: 'sidebar.forms',
     items: [
+      'autocomplete',
       'colorArea',
       'colorField',
       'colorPicker',
