@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixRoot,
   AlertClose,
   AlertContent,
   AlertDescription,
@@ -302,6 +303,12 @@ export const Accordion = {
   Trigger: typeof AccordionTrigger;
   Header: typeof AccordionHeader;
   Content: typeof AccordionContent;
+};
+
+export const Affix = {
+  Root: AffixRoot
+} as {
+  Root: typeof AffixRoot;
 };
 
 export const Alert = {

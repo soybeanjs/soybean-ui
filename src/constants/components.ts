@@ -1,5 +1,6 @@
 export const components = {
   accordion: ['SAccordion'],
+  affix: ['SAffix'],
   alert: ['SAlert'],
   alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogConfirm'],
   arrow: ['SArrow'],

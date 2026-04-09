@@ -1,5 +1,6 @@
 export const components = {
   accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
+  affix: ['AffixRoot'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
   alertDialog: [
     'AlertDialogRoot',
