@@ -13,7 +13,7 @@ const props = defineProps<TagsInputItemDeleteProps>();
 <template>
   <TagsInputItemDelete v-bind="props">
     <slot>
-      <Icon icon="lucide:x" aria-hidden="true" />
+      <Icon icon="lucide:x" :aria-hidden="true" />
     </slot>
   </TagsInputItemDelete>
 </template>

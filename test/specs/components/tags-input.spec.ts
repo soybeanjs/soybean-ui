@@ -25,7 +25,7 @@ const TestTagsInput = {
     disabled: Boolean,
     duplicate: Boolean,
     max: Number,
-    class: String,
+    customClass: String,
     modelValue: {
       type: Array,
       default: () => ['Vue', 'TypeScript']
@@ -39,7 +39,7 @@ const TestTagsInput = {
       :disabled="disabled"
       :duplicate="duplicate"
       :max="max"
-      :class="class"
+      :class="customClass"
       @update:model-value="$emit('update:modelValue', $event)"
       @invalid="$emit('invalid', $event)"
       @add-tag="$emit('addTag', $event)"
@@ -70,7 +70,7 @@ describe('STagsInput', () => {
     it('applies custom class to the root element', () => {
       const wrapper = mount(TestTagsInput, {
         props: {
-          class: 'my-tags-input'
+          customClass: 'my-tags-input'
         },
         attachTo: document.body
       });

@@ -8,7 +8,9 @@ defineOptions({
   name: 'TagsInputInput'
 });
 
-const props = defineProps<TagsInputInputProps>();
+const props = withDefaults(defineProps<TagsInputInputProps>(), {
+  as: 'input'
+});
 
 const cls = useTagsInputUi('input');
 
@@ -121,14 +123,12 @@ const onCompositionEnd = () => {
     autocomplete="off"
     autocorrect="off"
     autocapitalize="off"
-    :as="as"
-    :as-child="asChild"
+    :as="props.as"
+    :as-child="props.asChild"
     :class="cls"
-    :style="style"
-    :title="title"
-    :autofocus="autofocus"
-    :placeholder="placeholder"
-    :maxlength="maxlength"
+    :autofocus="props.autofocus"
+    :placeholder="props.placeholder"
+    :maxlength="props.maxlength"
     :aria-label="props['aria-label']"
     :aria-controls="props['aria-controls']"
     :disabled="disabled || props.disabled"
