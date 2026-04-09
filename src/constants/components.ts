@@ -23,6 +23,7 @@ export const components = {
   dialog: ['SDialog', 'SDialogClose', 'SDialogPure'],
   drawer: ['SDrawer', 'SDrawerClose'],
   dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio', 'SDropdownMenuWrapper'],
+  empty: ['SEmpty'],
   form: ['SForm', 'SFormFieldBase'],
   input: ['SInput'],
   inputNumber: ['SInputNumber'],

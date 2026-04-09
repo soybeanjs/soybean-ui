@@ -65,6 +65,7 @@ export const menuData: MenuData[] = [
       'colorSwatch',
       'collapsible',
       'card',
+      'empty',
       'list',
       'avatar',
       'badge',

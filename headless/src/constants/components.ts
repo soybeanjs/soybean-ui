@@ -94,6 +94,7 @@ export const components = {
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
   ],
+  empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
