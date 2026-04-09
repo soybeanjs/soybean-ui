@@ -61,7 +61,7 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { trigger: props.class });
 });
 
-const selectedLabels = computed(() => getSelectedLabels(props.modelValue as string | string[] | undefined, props.items));
+const selectedLabels = computed(() => getSelectedLabels(props.modelValue, props.items));
 const triggerText = computed(() => {
   if (!selectedLabels.value.length) {
     return props.placeholder;
