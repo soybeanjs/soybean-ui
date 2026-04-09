@@ -20,6 +20,7 @@ export * from './components/config-provider';
 export * from './components/context-menu';
 export * from './components/dialog';
 export * from './components/dropdown-menu';
+export * from './components/editable';
 export * from './components/form';
 export * from './components/input';
 export * from './components/input-number';

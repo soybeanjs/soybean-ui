@@ -94,6 +94,15 @@ export const components = {
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
   ],
+  editable: [
+    'EditableRoot',
+    'EditableArea',
+    'EditablePreview',
+    'EditableInput',
+    'EditableEditTrigger',
+    'EditableSubmitTrigger',
+    'EditableCancelTrigger'
+  ],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],

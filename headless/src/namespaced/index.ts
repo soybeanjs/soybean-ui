@@ -110,6 +110,13 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableEditTrigger,
+  EditableInput,
+  EditablePreview,
+  EditableRoot,
+  EditableSubmitTrigger,
   FormDescription,
   FormError,
   FormField,
@@ -582,6 +589,24 @@ export const DropdownMenu = {
   Separator: typeof DropdownMenuSeparator;
   CheckboxGroup: typeof DropdownMenuCheckboxGroup;
   RadioGroup: typeof DropdownMenuRadioGroup;
+};
+
+export const Editable = {
+  Root: EditableRoot,
+  Area: EditableArea,
+  Preview: EditablePreview,
+  Input: EditableInput,
+  EditTrigger: EditableEditTrigger,
+  SubmitTrigger: EditableSubmitTrigger,
+  CancelTrigger: EditableCancelTrigger
+} as {
+  Root: typeof EditableRoot;
+  Area: typeof EditableArea;
+  Preview: typeof EditablePreview;
+  Input: typeof EditableInput;
+  EditTrigger: typeof EditableEditTrigger;
+  SubmitTrigger: typeof EditableSubmitTrigger;
+  CancelTrigger: typeof EditableCancelTrigger;
 };
 
 export const Form = {
