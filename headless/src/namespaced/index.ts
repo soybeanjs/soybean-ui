@@ -49,6 +49,18 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxGroupLabel,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxPortal,
+  ComboboxRoot,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxViewport,
   ColorAreaArea,
   ColorAreaRoot,
   ColorAreaThumb,
@@ -424,6 +436,34 @@ export const Collapsible = {
   Root: typeof CollapsibleRoot;
   Trigger: typeof CollapsibleTrigger;
   Content: typeof CollapsibleContent;
+};
+
+export const Combobox = {
+  Root: ComboboxRoot,
+  Trigger: ComboboxTrigger,
+  Portal: ComboboxPortal,
+  Content: ComboboxContent,
+  Viewport: ComboboxViewport,
+  Input: ComboboxInput,
+  Group: ComboboxGroup,
+  GroupLabel: ComboboxGroupLabel,
+  Item: ComboboxItem,
+  ItemIndicator: ComboboxItemIndicator,
+  Empty: ComboboxEmpty,
+  Separator: ComboboxSeparator
+} as {
+  Root: typeof ComboboxRoot;
+  Trigger: typeof ComboboxTrigger;
+  Portal: typeof ComboboxPortal;
+  Content: typeof ComboboxContent;
+  Viewport: typeof ComboboxViewport;
+  Input: typeof ComboboxInput;
+  Group: typeof ComboboxGroup;
+  GroupLabel: typeof ComboboxGroupLabel;
+  Item: typeof ComboboxItem;
+  ItemIndicator: typeof ComboboxItemIndicator;
+  Empty: typeof ComboboxEmpty;
+  Separator: typeof ComboboxSeparator;
 };
 
 export const ColorArea = {
