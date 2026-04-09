@@ -25,6 +25,7 @@ export const components = {
   drawer: ['SDrawer', 'SDrawerClose'],
   dropdownMenu: ['SDropdownMenu', 'SDropdownMenuCheckbox', 'SDropdownMenuRadio', 'SDropdownMenuWrapper'],
   form: ['SForm', 'SFormFieldBase'],
+  hoverCard: ['SHoverCard'],
   input: ['SInput'],
   inputNumber: ['SInputNumber'],
   icon: ['SIcon'],

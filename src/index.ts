@@ -24,6 +24,7 @@ export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
 export * from './components/form';
+export * from './components/hover-card';
 export * from './components/icon';
 export * from './components/input';
 export * from './components/input-number';
