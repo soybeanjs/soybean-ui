@@ -2,6 +2,7 @@ export const components = {
   accordion: ['SAccordion'],
   alert: ['SAlert'],
   alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogConfirm'],
+  anchor: ['SAnchor'],
   arrow: ['SArrow'],
   aspectRatio: ['SAspectRatio'],
   avatar: ['SAvatar'],

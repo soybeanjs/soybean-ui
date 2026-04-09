@@ -17,6 +17,8 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AnchorLink,
+  AnchorRoot,
   AlertRoot,
   AlertTitle,
   Arrow,
@@ -340,6 +342,14 @@ export const AlertDialog = {
   Description: typeof AlertDialogDescription;
   Footer: typeof AlertDialogFooter;
   Close: typeof AlertDialogClose;
+};
+
+export const Anchor = {
+  Root: AnchorRoot,
+  Link: AnchorLink
+} as {
+  Root: typeof AnchorRoot;
+  Link: typeof AnchorLink;
 };
 
 export { Arrow };

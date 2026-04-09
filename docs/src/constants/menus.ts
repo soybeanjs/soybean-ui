@@ -19,6 +19,7 @@ export const menuData: MenuData[] = [
     value: 'navigation',
     i18n: 'sidebar.navigation',
     items: [
+      'anchor',
       'breadcrumb',
       'command',
       'contextMenu',
