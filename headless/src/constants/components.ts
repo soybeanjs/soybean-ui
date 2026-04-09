@@ -216,6 +216,14 @@ export const components = {
     'ToastDescription',
     'ToastClose'
   ],
+  toolbar: [
+    'ToolbarRoot',
+    'ToolbarButton',
+    'ToolbarLink',
+    'ToolbarSeparator',
+    'ToolbarToggleGroup',
+    'ToolbarToggleItem'
+  ],
   toggle: ['Toggle'],
   toggleGroup: ['ToggleGroupRoot', 'ToggleGroupItem'],
   tooltip: ['TooltipRoot', 'TooltipTrigger', 'TooltipPortal', 'TooltipPositioner', 'TooltipPopup', 'TooltipArrow'],

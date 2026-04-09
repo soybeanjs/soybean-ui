@@ -262,6 +262,12 @@ import {
   ToastRoot,
   ToastTitle,
   ToastViewport,
+  ToolbarButton,
+  ToolbarLink,
+  ToolbarRoot,
+  ToolbarSeparator,
+  ToolbarToggleGroup,
+  ToolbarToggleItem,
   Toggle,
   ToggleGroupItem,
   ToggleGroupRoot,
@@ -978,6 +984,22 @@ export const Toast = {
   Title: typeof ToastTitle;
   Description: typeof ToastDescription;
   Close: typeof ToastClose;
+};
+
+export const Toolbar = {
+  Root: ToolbarRoot,
+  Button: ToolbarButton,
+  Link: ToolbarLink,
+  Separator: ToolbarSeparator,
+  ToggleGroup: ToolbarToggleGroup,
+  ToggleItem: ToolbarToggleItem
+} as {
+  Root: typeof ToolbarRoot;
+  Button: typeof ToolbarButton;
+  Link: typeof ToolbarLink;
+  Separator: typeof ToolbarSeparator;
+  ToggleGroup: typeof ToolbarToggleGroup;
+  ToggleItem: typeof ToolbarToggleItem;
 };
 
 export { Toggle };

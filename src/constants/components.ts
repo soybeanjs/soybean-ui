@@ -53,6 +53,14 @@ export const components = {
   tag: ['STag'],
   textarea: ['STextarea'],
   toast: ['SToast', 'SToastAction', 'SToastClose'],
+  toolbar: [
+    'SToolbar',
+    'SToolbarButton',
+    'SToolbarLink',
+    'SToolbarSeparator',
+    'SToolbarToggleGroup',
+    'SToolbarToggleItem'
+  ],
   toggle: ['SToggle'],
   toggleGroup: ['SToggleGroup', 'SToggleGroupItem'],
   tooltip: ['STooltip'],
