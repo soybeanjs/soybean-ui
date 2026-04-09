@@ -229,6 +229,9 @@ import {
   SeparatorLabel,
   SeparatorRoot,
   Skeleton,
+  SplitterGroup,
+  SplitterPanel,
+  SplitterResizeHandle,
   SliderRange,
   SliderRoot,
   SliderThumb,
@@ -889,6 +892,16 @@ export const Separator = {
 };
 
 export { Skeleton };
+
+export const Splitter = {
+  Group: SplitterGroup,
+  Panel: SplitterPanel,
+  ResizeHandle: SplitterResizeHandle
+} as {
+  Group: typeof SplitterGroup;
+  Panel: typeof SplitterPanel;
+  ResizeHandle: typeof SplitterResizeHandle;
+};
 
 export const Slider = {
   Root: SliderRoot,

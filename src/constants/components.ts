@@ -46,6 +46,7 @@ export const components = {
   select: ['SSelect'],
   separator: ['SSeparator'],
   skeleton: ['SSkeleton'],
+  splitter: ['SSplitterGroup', 'SSplitterPanel', 'SSplitterResizeHandle'],
   slider: ['SSlider'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],
