@@ -26,6 +26,7 @@ export * from './components/form';
 export * from './components/icon';
 export * from './components/input';
 export * from './components/input-number';
+export * from './components/input-opt';
 export * from './components/kbd';
 export * from './components/label';
 export * from './components/layout';

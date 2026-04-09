@@ -26,6 +26,7 @@ export const components = {
   form: ['SForm', 'SFormFieldBase'],
   input: ['SInput'],
   inputNumber: ['SInputNumber'],
+  inputOpt: ['SInputOpt', 'SInputOptGroup', 'SInputOptSeparator', 'SInputOptSlot'],
   icon: ['SIcon'],
   kbd: ['SKbd'],
   label: ['SLabel'],

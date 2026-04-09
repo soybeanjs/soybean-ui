@@ -120,6 +120,7 @@ import {
   InputNumberDecrement,
   InputNumberIncrement,
   InputNumberRoot,
+  InputOptRoot,
   Kbd,
   Label,
   LayoutFooter,
@@ -614,6 +615,12 @@ export const InputNumber = {
   Control: typeof InputNumberControl;
   Increment: typeof InputNumberIncrement;
   Decrement: typeof InputNumberDecrement;
+};
+
+export const InputOpt = {
+  Root: InputOptRoot
+} as {
+  Root: typeof InputOptRoot;
 };
 
 export { Kbd };

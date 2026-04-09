@@ -97,6 +97,7 @@ export const components = {
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
+  inputOpt: ['InputOptRoot'],
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [
