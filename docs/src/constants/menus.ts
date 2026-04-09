@@ -27,6 +27,7 @@ export const menuData: MenuData[] = [
       'navigationMenu',
       'pageTabs',
       'pagination',
+      'stepper',
       'tabs',
       'tree',
       'treeMenu'

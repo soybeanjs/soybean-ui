@@ -47,6 +47,7 @@ export const components = {
   separator: ['SSeparator'],
   skeleton: ['SSkeleton'],
   slider: ['SSlider'],
+  stepper: ['SStepper'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],

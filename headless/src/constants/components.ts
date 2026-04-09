@@ -201,6 +201,15 @@ export const components = {
   skeleton: ['Skeleton'],
   slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
+  stepper: [
+    'StepperRoot',
+    'StepperItem',
+    'StepperTrigger',
+    'StepperIndicator',
+    'StepperSeparator',
+    'StepperTitle',
+    'StepperDescription'
+  ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
