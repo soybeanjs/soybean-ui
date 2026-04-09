@@ -9,7 +9,7 @@ const rows = Array.from({ length: 12 }, (_, index) => `Row ${index + 1}`);
   <div>
     <h3 class="playground-title">Target</h3>
     <div ref="container" class="relative h-72 overflow-y-auto rounded-md border bg-muted/20 p-4">
-      <SAffix :target="() => container" :offset-top="12">
+      <SAffix :target="() => container || null" :offset-top="12">
         <div class="rounded-md border bg-background px-4 py-3 shadow-sm">
           <span class="text-sm font-medium">Sticky header inside the scroll container</span>
         </div>

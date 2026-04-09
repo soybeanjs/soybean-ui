@@ -36,6 +36,10 @@ async function waitForAffixUpdate() {
   await nextTick();
 }
 
+function getAffixRoot(wrapper: ReturnType<typeof mount>) {
+  return wrapper.findComponent({ name: 'AffixRoot' }).vm as { updatePosition: () => void };
+}
+
 describe('SAffix', () => {
   describe('rendering', () => {
     it('renders default slot content', () => {
@@ -77,7 +81,7 @@ describe('SAffix', () => {
       );
       mockRect(target, () => createRect({ top: targetTop, bottom: targetTop + 300, width: 400, height: 300 }));
 
-      (wrapper.findComponent({ name: 'AffixRoot' }).vm as { updatePosition: () => void }).updatePosition();
+      getAffixRoot(wrapper).updatePosition();
       await waitForAffixUpdate();
 
       expect(wrapper.find('[data-state]').attributes('data-state')).toBe('static');
@@ -113,7 +117,7 @@ describe('SAffix', () => {
       );
       mockRect(target, () => createRect({ top: 0, bottom: targetBottom, width: 400, height: 800 }));
 
-      (wrapper.findComponent({ name: 'AffixRoot' }).vm as { updatePosition: () => void }).updatePosition();
+      getAffixRoot(wrapper).updatePosition();
       await waitForAffixUpdate();
 
       expect(wrapper.find('[data-state]').attributes('data-state')).toBe('static');

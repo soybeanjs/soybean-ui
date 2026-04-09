@@ -1,4 +1,4 @@
-export type AffixTargetElement = HTMLElement | Window | null | undefined;
+export type AffixTargetElement = HTMLElement | Window | null;
 
 export interface RafThrottle {
   (): void;

@@ -129,9 +129,9 @@ useEventListener(resolvedTarget, 'scroll', updatePosition);
 useEventListener(resolvedTarget, 'touchstart', updatePosition);
 useEventListener(resolvedTarget, 'touchmove', updatePosition);
 useEventListener(resolvedTarget, 'touchend', updatePosition);
-useEventListener(() => globalThis?.window, 'load', updatePosition);
-useEventListener(() => globalThis?.window, 'pageshow', updatePosition);
-useEventListener(() => globalThis?.window, 'resize', updatePosition);
+useEventListener(getDefaultTarget, 'load', updatePosition);
+useEventListener(getDefaultTarget, 'pageshow', updatePosition);
+useEventListener(getDefaultTarget, 'resize', updatePosition);
 useResizeObserver(placeholderElement, updatePosition);
 useResizeObserver(fixedElement, updatePosition);
 
