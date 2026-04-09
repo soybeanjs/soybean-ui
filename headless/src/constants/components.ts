@@ -205,6 +205,7 @@ export const components = {
   table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
+  tagsInput: ['TagsInputRoot', 'TagsInputInput', 'TagsInputItem', 'TagsInputItemText', 'TagsInputItemDelete', 'TagsInputClear'],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
   toast: [
     'ToastProvider',

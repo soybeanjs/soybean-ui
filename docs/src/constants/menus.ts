@@ -50,12 +50,13 @@ export const menuData: MenuData[] = [
       'checkbox',
       'radioGroup',
       'segment',
-      'select',
-      'slider',
-      'switch',
-      'toggle',
-      'toggleGroup'
-    ]
+        'select',
+        'slider',
+        'switch',
+        'tagsInput',
+        'toggle',
+        'toggleGroup'
+      ]
   },
   {
     value: 'dataDisplay',
