@@ -12,13 +12,13 @@ const props = withDefaults(defineProps<EditablePreviewProps>(), {
   as: 'span'
 });
 
-const { activationMode, dataDisabled, dataReadonly, dataState, edit, isEditing, isEmpty, modelValue, placeholder } =
+const { activationMode, dataDisabled, dataReadonly, dataState, disabled, edit, isEditing, isEmpty, modelValue, placeholder } =
   useEditableRootContext('EditablePreview');
 
 const cls = useEditableUi('preview');
 
 const previewPlaceholder = computed(() => placeholder.value.preview);
-const tabindex = computed(() => (dataDisabled.value ? -1 : 0));
+const tabindex = computed(() => (disabled.value ? -1 : 0));
 
 function onFocusIn() {
   if (activationMode.value === 'focus') {

@@ -62,17 +62,17 @@ provideEditableUi(ui);
         <div :class="ui.controls">
           <slot name="edit-trigger" v-bind="slotProps">
             <EditableEditTrigger v-bind="editTriggerProps">
-              <Icon icon="lucide:pencil-line" aria-hidden="true" />
+              <Icon icon="lucide:pencil-line" :aria-hidden="true" />
             </EditableEditTrigger>
           </slot>
           <slot name="submit-trigger" v-bind="slotProps">
             <EditableSubmitTrigger v-bind="submitTriggerProps">
-              <Icon icon="lucide:check" aria-hidden="true" />
+              <Icon icon="lucide:check" :aria-hidden="true" />
             </EditableSubmitTrigger>
           </slot>
           <slot name="cancel-trigger" v-bind="slotProps">
             <EditableCancelTrigger v-bind="cancelTriggerProps">
-              <Icon icon="lucide:x" aria-hidden="true" />
+              <Icon icon="lucide:x" :aria-hidden="true" />
             </EditableCancelTrigger>
           </slot>
         </div>
