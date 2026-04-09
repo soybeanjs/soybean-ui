@@ -1,7 +1,7 @@
 import { computed, shallowRef } from 'vue';
-import { useContext, useUiContext } from '../../composables';
+import { useContext } from '../../composables';
 import { getDisclosureState } from '../../shared';
-import type { HoverCardRootContext, HoverCardRootContextParams, HoverCardUiSlot } from './types';
+import type { HoverCardRootContext, HoverCardRootContextParams } from './types';
 
 export const [provideHoverCardRootContext, useHoverCardRootContext] = useContext(
   'HoverCardRoot',
@@ -80,5 +80,3 @@ export const [provideHoverCardRootContext, useHoverCardRootContext] = useContext
     };
   }
 );
-
-export const [provideHoverCardUi, useHoverCardUi] = useUiContext<HoverCardUiSlot>('HoverCardUi');

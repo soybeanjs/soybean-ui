@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import SHoverCard from '../../../src/components/hover-card/hover-card.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -8,6 +9,10 @@ describe('SHoverCard', () => {
     trigger: '<button type="button">Trigger</button>',
     default: '<div>Hover card content</div>'
   };
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
 
   describe('rendering', () => {
     it('renders the trigger slot', () => {
@@ -28,7 +33,7 @@ describe('SHoverCard', () => {
         attachTo: document.body
       });
 
-      await new Promise(resolve => window.setTimeout(resolve));
+      await nextTick();
 
       expect(wrapper.text()).toContain('Hover card content');
       wrapper.unmount();
@@ -41,7 +46,7 @@ describe('SHoverCard', () => {
         attachTo: document.body
       });
 
-      await new Promise(resolve => window.setTimeout(resolve));
+      await nextTick();
 
       expect(wrapper.find('.my-popup-class').exists()).toBe(true);
       wrapper.unmount();
@@ -50,14 +55,16 @@ describe('SHoverCard', () => {
 
   describe('open state', () => {
     it('emits update:open when the trigger receives focus', async () => {
+      vi.useFakeTimers();
+
       const wrapper = mount(SHoverCard, {
-        props: { openDelay: 0 },
+        props: { openDelay: 200 },
         slots,
         attachTo: document.body
       });
 
       await wrapper.find('button').trigger('focus');
-      await new Promise(resolve => window.setTimeout(resolve));
+      await vi.advanceTimersByTimeAsync(200);
 
       expect(wrapper.emitted('update:open')).toBeTruthy();
       expect(wrapper.emitted('update:open')![0][0]).toBe(true);
@@ -65,14 +72,16 @@ describe('SHoverCard', () => {
     });
 
     it('emits update:open when the trigger loses focus', async () => {
+      vi.useFakeTimers();
+
       const wrapper = mount(SHoverCard, {
-        props: { defaultOpen: true, closeDelay: 0 },
+        props: { defaultOpen: true, closeDelay: 200 },
         slots,
         attachTo: document.body
       });
 
       await wrapper.find('button').trigger('blur');
-      await new Promise(resolve => window.setTimeout(resolve));
+      await vi.advanceTimersByTimeAsync(200);
 
       expect(wrapper.emitted('update:open')).toBeTruthy();
       expect(wrapper.emitted('update:open')!.at(-1)?.[0]).toBe(false);
@@ -93,13 +102,28 @@ describe('SHoverCard', () => {
     });
 
     it('has no a11y violations when open', async () => {
-      const wrapper = mount(SHoverCard, {
-        props: { open: true, portalProps: { disabled: true } },
-        slots,
-        attachTo: document.body
-      });
+      const wrapper = mount(
+        {
+          components: { SHoverCard },
+          template: `
+            <div data-testid="container">
+              <SHoverCard :open="true" :portal-props="{ disabled: true }">
+                <template #trigger>
+                  <button type="button">Trigger</button>
+                </template>
+                <div>Hover card content</div>
+              </SHoverCard>
+            </div>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
 
-      const violations = await getA11yViolations(wrapper.element);
+      await nextTick();
+
+      const violations = await getA11yViolations(wrapper.get('[data-testid="container"]').element);
       expect(violations).toHaveLength(0);
       wrapper.unmount();
     });

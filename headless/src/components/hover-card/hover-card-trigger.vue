@@ -9,11 +9,12 @@ defineOptions({
 });
 
 withDefaults(defineProps<HoverCardTriggerProps>(), {
-  as: 'a'
+  as: 'button'
 });
 
-const { dataState, open, isPointerInTransitRef, onTriggerElementChange, onOpen, onClose } =
-  useHoverCardRootContext('HoverCardTrigger');
+const { dataState, isPointerInTransitRef, onTriggerElementChange, onOpen, onClose } = useHoverCardRootContext(
+  'HoverCardTrigger'
+);
 
 const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 
@@ -27,7 +28,7 @@ const onPointerLeave = (event: PointerEvent) => {
   if (event.pointerType === 'touch') return;
 
   setTimeout(() => {
-    if (!isPointerInTransitRef.value && !open.value) {
+    if (!isPointerInTransitRef.value) {
       onClose();
     }
   }, 0);
