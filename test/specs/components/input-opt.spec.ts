@@ -39,7 +39,7 @@ const DemoInputOpt = {
 
 describe('SInputOpt', () => {
   describe('rendering', () => {
-    it('renders six otp slots', () => {
+    it('renders six opt slots', () => {
       const wrapper = mount(DemoInputOpt, { attachTo: document.body });
 
       expect(wrapper.findAll('[data-slot="input-opt-slot"]')).toHaveLength(6);
@@ -111,8 +111,8 @@ describe('SInputOpt', () => {
           components: { DemoInputOpt },
           template: `
             <div>
-              <label for="otp-input">Verification code</label>
-              <DemoInputOpt id="otp-input" />
+              <label for="opt-input">Verification code</label>
+              <DemoInputOpt id="opt-input" />
             </div>
           `
         },
