@@ -95,6 +95,7 @@ export const components = {
     'DropdownMenuRadioGroup'
   ],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
+  hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardPositioner', 'HoverCardPopup', 'HoverCardArrow'],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
   kbd: ['Kbd'],
