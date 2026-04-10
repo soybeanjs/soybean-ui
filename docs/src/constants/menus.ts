@@ -68,6 +68,7 @@ export const menuData: MenuData[] = [
     items: [
       'accordion',
       'affix',
+      'carousel',
       'colorSwatch',
       'collapsible',
       'card',

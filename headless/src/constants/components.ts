@@ -43,6 +43,7 @@ export const components = {
   ],
   button: ['Button'],
   card: ['CardRoot', 'CardHeader', 'CardTitle', 'CardTitleRoot', 'CardDescription', 'CardContent', 'CardFooter'],
+  carousel: ['CarouselRoot', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext'],
   checkbox: ['CheckboxGroupRoot', 'CheckboxRoot', 'CheckboxControl', 'CheckboxIndicator', 'CheckboxLabel'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   combobox: [

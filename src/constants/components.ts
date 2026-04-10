@@ -12,6 +12,7 @@ export const components = {
   bottomSheet: ['SBottomSheet', 'SBottomSheetClose'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
+  carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   collapsible: ['SCollapsible', 'SCollapsibleContent', 'SCollapsibleTrigger'],
   combobox: ['SCombobox'],
