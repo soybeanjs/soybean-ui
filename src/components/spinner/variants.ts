@@ -11,8 +11,8 @@ export const spinnerVariants = tv({
       warning: 'text-warning',
       info: 'text-info',
       carbon: 'text-carbon',
-      secondary: 'text-secondary-foreground',
-      accent: 'text-accent-foreground'
+      secondary: 'text-secondary-foreground/20',
+      accent: 'text-accent-foreground/20'
     },
     size: {
       xs: 'size-3',

@@ -14,8 +14,9 @@ const props = withDefaults(defineProps<SpinnerProps>(), {
   icon: 'svg-spinners:270-ring'
 });
 
-const cls = computed(() => cn(spinnerVariants({ color: props.color, size: props.size }), props.class));
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size']);
+
+const cls = computed(() => cn(spinnerVariants({ color: props.color, size: props.size }), props.class));
 </script>
 
 <template>
