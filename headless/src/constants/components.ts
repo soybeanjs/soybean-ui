@@ -95,6 +95,7 @@ export const components = {
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
   ],
+  empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardPositioner', 'HoverCardPopup', 'HoverCardArrow'],
   input: ['InputRoot', 'InputControl'],

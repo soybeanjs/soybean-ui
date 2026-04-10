@@ -111,6 +111,12 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyRoot,
+  EmptyTitle,
   FormDescription,
   FormError,
   FormField,
@@ -595,6 +601,22 @@ export const DropdownMenu = {
   Separator: typeof DropdownMenuSeparator;
   CheckboxGroup: typeof DropdownMenuCheckboxGroup;
   RadioGroup: typeof DropdownMenuRadioGroup;
+};
+
+export const Empty = {
+  Root: EmptyRoot,
+  Header: EmptyHeader,
+  Media: EmptyMedia,
+  Content: EmptyContent,
+  Title: EmptyTitle,
+  Description: EmptyDescription
+} as {
+  Root: typeof EmptyRoot;
+  Header: typeof EmptyHeader;
+  Media: typeof EmptyMedia;
+  Content: typeof EmptyContent;
+  Title: typeof EmptyTitle;
+  Description: typeof EmptyDescription;
 };
 
 export const Form = {
