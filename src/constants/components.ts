@@ -3,6 +3,7 @@ export const components = {
   affix: ['SAffix'],
   alert: ['SAlert'],
   alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogConfirm'],
+  anchor: ['SAnchor'],
   autocomplete: ['SAutocomplete'],
   arrow: ['SArrow'],
   aspectRatio: ['SAspectRatio'],

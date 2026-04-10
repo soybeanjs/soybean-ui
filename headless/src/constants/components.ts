@@ -28,6 +28,7 @@ export const components = {
     'AlertDialogFooter',
     'AlertDialogClose'
   ],
+  anchor: ['AnchorRoot', 'AnchorLink'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],

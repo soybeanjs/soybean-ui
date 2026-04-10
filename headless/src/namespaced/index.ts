@@ -18,6 +18,10 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AlertRoot,
+  AlertTitle,
+  AnchorLink,
+  AnchorRoot,
   AutocompleteAnchor,
   AutocompleteContent,
   AutocompleteGroup,
@@ -30,8 +34,6 @@ import {
   AutocompleteSeparator,
   AutocompleteTrigger,
   AutocompleteViewport,
-  AlertRoot,
-  AlertTitle,
   Arrow,
   AspectRatio,
   AvatarFallback,
@@ -417,6 +419,14 @@ export const AlertDialog = {
   Description: typeof AlertDialogDescription;
   Footer: typeof AlertDialogFooter;
   Close: typeof AlertDialogClose;
+};
+
+export const Anchor = {
+  Root: AnchorRoot,
+  Link: AnchorLink
+} as {
+  Root: typeof AnchorRoot;
+  Link: typeof AnchorLink;
 };
 
 export { Arrow };
