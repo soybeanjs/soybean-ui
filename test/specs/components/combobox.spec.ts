@@ -20,7 +20,7 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[role="combobox"]').text()).toContain('Select a fruit');
+      expect(wrapper.get('button').text()).toContain('Select a fruit');
       wrapper.unmount();
     });
 
@@ -33,7 +33,7 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[role="combobox"]').classes()).toContain('my-combobox');
+      expect(wrapper.get('button').classes()).toContain('my-combobox');
       wrapper.unmount();
     });
   });
@@ -48,7 +48,7 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      expect(wrapper.get('[role="combobox"]').text()).toContain('Banana');
+      expect(wrapper.get('button').text()).toContain('Banana');
       wrapper.unmount();
     });
 
@@ -61,7 +61,7 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      await wrapper.get('[role="combobox"]').trigger('click');
+      await wrapper.get('button').trigger('click');
       const option = document.body.querySelector('[role="option"]') as HTMLElement | null;
       expect(option).not.toBeNull();
 
@@ -86,8 +86,8 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      const trigger = wrapper.get('[role="combobox"]');
-      expect(trigger.attributes('data-disabled')).toBe('');
+      const trigger = wrapper.get('button');
+      expect(trigger.attributes('disabled')).toBeDefined();
 
       await trigger.trigger('click');
       expect(document.body.querySelector('[role="listbox"]')).toBeNull();
@@ -106,7 +106,13 @@ describe('SCombobox', () => {
         attachTo: document.body
       });
 
-      const violations = await getA11yViolations(wrapper.element);
+      await wrapper.get('button').trigger('click');
+
+      const violations = await getA11yViolations(document.body, {
+        rules: {
+          region: { enabled: false }
+        }
+      });
       expect(violations).toHaveLength(0);
       wrapper.unmount();
     });

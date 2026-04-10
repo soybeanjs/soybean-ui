@@ -50,7 +50,6 @@ const onClick = () => {
       :data-state="dataState"
       :data-disabled="disabled ? '' : undefined"
       :disabled="disabled"
-      role="combobox"
       @click="onClick"
     >
       <slot :trigger-icon-class="triggerIconCls" />

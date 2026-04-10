@@ -29,6 +29,7 @@ const onSelect = (event: SelectEvent<string>) => {
     </ComboboxGroupLabel>
     <SComboboxSingleOption
       v-for="child in item.items"
+      v-bind="itemProps"
       :key="child.value"
       :item="child"
       :item-indicator-props="itemIndicatorProps"

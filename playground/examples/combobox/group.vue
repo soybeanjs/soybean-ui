@@ -8,7 +8,6 @@ const value = ref('vue');
 const items: ComboboxOptionData[] = [
   {
     label: 'Frontend',
-    value: 'frontend',
     items: [
       { label: 'Vue', value: 'vue', icon: 'logos:vue' },
       { label: 'React', value: 'react', icon: 'logos:react' },
@@ -17,7 +16,6 @@ const items: ComboboxOptionData[] = [
   },
   {
     label: 'Backend',
-    value: 'backend',
     separator: true,
     items: [
       { label: 'Node.js', value: 'node', icon: 'logos:nodejs-icon' },

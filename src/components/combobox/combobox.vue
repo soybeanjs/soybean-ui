@@ -72,13 +72,23 @@ const triggerText = computed(() => {
 
 const inputProps = computed(() => ({
   ...props.inputProps,
+  controlProps: {
+    ...props.inputProps?.controlProps,
+    'aria-label': props.inputProps?.controlProps?.['aria-label'] ?? props.searchPlaceholder ?? props.placeholder ?? 'Search'
+  },
   placeholder: props.searchPlaceholder ?? props.inputProps?.placeholder,
   autofocus: props.inputProps?.autofocus ?? true
 }));
 
+const viewportProps = computed(() => ({
+  ...props.viewportProps,
+  'aria-label': props.viewportProps?.['aria-label'] ?? props.placeholder ?? 'Options'
+}));
+
 const triggerProps = computed(() => ({
   ...props.triggerProps,
-  'aria-label': props.triggerProps?.['aria-label'] ?? triggerText.value
+  'aria-label': props.triggerProps?.['aria-label'] ?? triggerText.value,
+  'data-placeholder': !selectedLabels.value.length ? '' : undefined
 }));
 
 provideComboboxUi(ui);
@@ -94,9 +104,7 @@ provideComboboxUi(ui);
         :selected-labels="selectedLabels"
         :slot-text="triggerText"
       >
-        <span class="grow truncate text-left" :data-placeholder="!selectedLabels.length ? '' : undefined">
-          {{ triggerText }}
-        </span>
+        <span class="grow truncate text-left">{{ triggerText }}</span>
       </slot>
       <slot name="trigger-trailing" />
       <slot name="trigger-icon">

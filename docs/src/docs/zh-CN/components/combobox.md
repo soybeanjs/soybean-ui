@@ -93,7 +93,8 @@ custom-styling
     description: '分组选项数据。',
     fields: [
       { name: 'label', type: 'string', description: '分组标题。' },
-      { name: 'items', type: 'ComboboxSingleOptionData[]', description: '分组内选项。' }
+      { name: 'items', type: 'ComboboxSingleOptionData[]', description: '分组内选项。' },
+      { name: 'separator', type: 'boolean', description: '是否在该分组前显示分隔线。' }
     ]
   },
   {

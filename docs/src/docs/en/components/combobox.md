@@ -93,7 +93,8 @@ custom-styling
     description: 'Grouped option data.',
     fields: [
       { name: 'label', type: 'string', description: 'Group label.' },
-      { name: 'items', type: 'ComboboxSingleOptionData[]', description: 'Options inside the group.' }
+      { name: 'items', type: 'ComboboxSingleOptionData[]', description: 'Options inside the group.' },
+      { name: 'separator', type: 'boolean', description: 'Whether to show a separator before the group.' }
     ]
   },
   {

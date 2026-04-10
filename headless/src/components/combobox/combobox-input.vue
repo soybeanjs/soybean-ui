@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import { ListboxFilter } from '../listbox';
 import { useListboxRootContext } from '../listbox/context';
+import { usePopoverRootContext } from '../popover/context';
+import type { InputControlProps } from '../input/types';
 import { useComboboxRootContext } from './context';
 import type { ComboboxInputEmits, ComboboxInputProps } from './types';
 
@@ -15,6 +17,16 @@ const emit = defineEmits<ComboboxInputEmits>();
 
 const { highlightFirstItem } = useListboxRootContext('ComboboxInput');
 const { filterSearch, onInputElementChange, open } = useComboboxRootContext('ComboboxInput');
+const { popupId } = usePopoverRootContext('ComboboxInput');
+
+const controlProps = computed<InputControlProps>(() => ({
+  ...props.controlProps,
+  role: 'combobox',
+  'aria-autocomplete': 'list',
+  autocomplete: 'off',
+  'aria-controls': popupId.value,
+  'aria-expanded': open.value || false
+}));
 
 watch(open, value => {
   if (value) {
@@ -27,10 +39,8 @@ watch(open, value => {
   <ListboxFilter
     v-bind="props"
     v-model="filterSearch"
+    :control-props="controlProps"
     :input-ref="onInputElementChange"
-    role="combobox"
-    aria-autocomplete="list"
-    autocomplete="off"
     @update:model-value="emit('update:modelValue', $event)"
   >
     <template #leading="slotProps">
