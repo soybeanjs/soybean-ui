@@ -24,7 +24,6 @@ const onInput = (event: Event) => {
     :class="cls"
     :aria-disabled="disabled ?? undefined"
     aria-roledescription="Input"
-    :aria-valuenow="modelValue ?? undefined"
     autocorrect="off"
     :autofocus="autofocus"
     :data-disabled="disabled ? '' : undefined"

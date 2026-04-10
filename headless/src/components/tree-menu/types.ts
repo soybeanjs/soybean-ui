@@ -104,6 +104,8 @@ export type TreeMenuUiSlot =
   | 'sub'
   | 'subItem'
   | 'subButton'
+  | 'collapsibleRoot'
+  | 'collapsibleTrigger'
   | 'collapsibleContent';
 
 export type TreeMenuUi = UiClass<TreeMenuUiSlot>;

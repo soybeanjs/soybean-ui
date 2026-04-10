@@ -14,7 +14,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SAffix: typeof import('@soybeanjs/ui')['SAffix']
     SButton: typeof import('@soybeanjs/ui')['SButton']
+    SEditable: typeof import('@soybeanjs/ui')['SEditable']
     SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
     SToggle: typeof import('@soybeanjs/ui')['SToggle']
     ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']
@@ -26,7 +28,9 @@ declare module 'vue' {
 declare global {
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
+  const SAffix: typeof import('@soybeanjs/ui')['SAffix']
   const SButton: typeof import('@soybeanjs/ui')['SButton']
+  const SEditable: typeof import('@soybeanjs/ui')['SEditable']
   const SMenuOption: typeof import('@soybeanjs/ui')['SMenuOption']
   const SToggle: typeof import('@soybeanjs/ui')['SToggle']
   const ThemeConfigurator: typeof import('./../components/theme-configurator.vue')['default']

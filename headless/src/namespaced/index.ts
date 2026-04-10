@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixRoot,
   AlertClose,
   AlertContent,
   AlertDescription,
@@ -17,6 +18,18 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AutocompleteAnchor,
+  AutocompleteContent,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteItemIndicator,
+  AutocompletePortal,
+  AutocompleteRoot,
+  AutocompleteSeparator,
+  AutocompleteTrigger,
+  AutocompleteViewport,
   AlertRoot,
   AlertTitle,
   Arrow,
@@ -115,10 +128,29 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableEditTrigger,
+  EditableInput,
+  EditablePreview,
+  EditableRoot,
+  EditableSubmitTrigger,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyRoot,
+  EmptyTitle,
   FormDescription,
   FormError,
   FormField,
   FormLabel,
+  HoverCardArrow,
+  HoverCardPopup,
+  HoverCardPortal,
+  HoverCardPositioner,
+  HoverCardRoot,
+  HoverCardTrigger,
   InputControl,
   InputRoot,
   InputNumberControl,
@@ -309,6 +341,12 @@ export const Accordion = {
   Content: typeof AccordionContent;
 };
 
+export const Affix = {
+  Root: AffixRoot
+} as {
+  Root: typeof AffixRoot;
+};
+
 export const Alert = {
   Root: AlertRoot,
   Title: AlertTitle,
@@ -348,6 +386,34 @@ export const AlertDialog = {
 };
 
 export { Arrow };
+
+export const Autocomplete = {
+  Root: AutocompleteRoot,
+  Anchor: AutocompleteAnchor,
+  Input: AutocompleteInput,
+  Trigger: AutocompleteTrigger,
+  Portal: AutocompletePortal,
+  Content: AutocompleteContent,
+  Viewport: AutocompleteViewport,
+  Group: AutocompleteGroup,
+  GroupLabel: AutocompleteGroupLabel,
+  Item: AutocompleteItem,
+  ItemIndicator: AutocompleteItemIndicator,
+  Separator: AutocompleteSeparator
+} as {
+  Root: typeof AutocompleteRoot;
+  Anchor: typeof AutocompleteAnchor;
+  Input: typeof AutocompleteInput;
+  Trigger: typeof AutocompleteTrigger;
+  Portal: typeof AutocompletePortal;
+  Content: typeof AutocompleteContent;
+  Viewport: typeof AutocompleteViewport;
+  Group: typeof AutocompleteGroup;
+  GroupLabel: typeof AutocompleteGroupLabel;
+  Item: typeof AutocompleteItem;
+  ItemIndicator: typeof AutocompleteItemIndicator;
+  Separator: typeof AutocompleteSeparator;
+};
 
 export { AspectRatio };
 
@@ -603,6 +669,40 @@ export const DropdownMenu = {
   RadioGroup: typeof DropdownMenuRadioGroup;
 };
 
+export const Editable = {
+  Root: EditableRoot,
+  Area: EditableArea,
+  Preview: EditablePreview,
+  Input: EditableInput,
+  EditTrigger: EditableEditTrigger,
+  SubmitTrigger: EditableSubmitTrigger,
+  CancelTrigger: EditableCancelTrigger
+} as {
+  Root: typeof EditableRoot;
+  Area: typeof EditableArea;
+  Preview: typeof EditablePreview;
+  Input: typeof EditableInput;
+  EditTrigger: typeof EditableEditTrigger;
+  SubmitTrigger: typeof EditableSubmitTrigger;
+  CancelTrigger: typeof EditableCancelTrigger;
+};
+
+export const Empty = {
+  Root: EmptyRoot,
+  Header: EmptyHeader,
+  Media: EmptyMedia,
+  Content: EmptyContent,
+  Title: EmptyTitle,
+  Description: EmptyDescription
+} as {
+  Root: typeof EmptyRoot;
+  Header: typeof EmptyHeader;
+  Media: typeof EmptyMedia;
+  Content: typeof EmptyContent;
+  Title: typeof EmptyTitle;
+  Description: typeof EmptyDescription;
+};
+
 export const Form = {
   Field: FormField,
   Label: FormLabel,
@@ -613,6 +713,22 @@ export const Form = {
   Label: typeof FormLabel;
   Description: typeof FormDescription;
   Error: typeof FormError;
+};
+
+export const HoverCard = {
+  Root: HoverCardRoot,
+  Trigger: HoverCardTrigger,
+  Portal: HoverCardPortal,
+  Positioner: HoverCardPositioner,
+  Popup: HoverCardPopup,
+  Arrow: HoverCardArrow
+} as {
+  Root: typeof HoverCardRoot;
+  Trigger: typeof HoverCardTrigger;
+  Portal: typeof HoverCardPortal;
+  Positioner: typeof HoverCardPositioner;
+  Popup: typeof HoverCardPopup;
+  Arrow: typeof HoverCardArrow;
 };
 
 export const Input = {

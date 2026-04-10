@@ -1,6 +1,21 @@
 export const components = {
   accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
+  affix: ['AffixRoot'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  autocomplete: [
+    'AutocompleteRoot',
+    'AutocompleteAnchor',
+    'AutocompleteInput',
+    'AutocompleteTrigger',
+    'AutocompletePortal',
+    'AutocompleteContent',
+    'AutocompleteViewport',
+    'AutocompleteGroup',
+    'AutocompleteGroupLabel',
+    'AutocompleteItem',
+    'AutocompleteItemIndicator',
+    'AutocompleteSeparator'
+  ],
   alertDialog: [
     'AlertDialogRoot',
     'AlertDialogTrigger',
@@ -95,7 +110,18 @@ export const components = {
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
   ],
+  editable: [
+    'EditableRoot',
+    'EditableArea',
+    'EditablePreview',
+    'EditableInput',
+    'EditableEditTrigger',
+    'EditableSubmitTrigger',
+    'EditableCancelTrigger'
+  ],
+  empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
+  hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardPositioner', 'HoverCardPopup', 'HoverCardArrow'],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
   kbd: ['Kbd'],
