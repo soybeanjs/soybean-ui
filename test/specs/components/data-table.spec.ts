@@ -45,9 +45,12 @@ describe('DataTableRoot', () => {
       attachTo: document.body
     });
 
-    await wrapper.get('input[aria-label="Select row Ada"]').trigger('click');
+    const radio = wrapper.get('input[aria-label="Select row Ada"]');
+
+    await radio.trigger('click');
 
     expect(wrapper.emitted('update:selected')?.[0]).toEqual([undefined]);
+    expect((radio.element as HTMLInputElement).checked).toBe(false);
     wrapper.unmount();
   });
 });
