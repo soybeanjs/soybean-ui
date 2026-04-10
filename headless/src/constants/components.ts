@@ -95,6 +95,15 @@ export const components = {
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
   ],
+  editable: [
+    'EditableRoot',
+    'EditableArea',
+    'EditablePreview',
+    'EditableInput',
+    'EditableEditTrigger',
+    'EditableSubmitTrigger',
+    'EditableCancelTrigger'
+  ],
   empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
   hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardPositioner', 'HoverCardPopup', 'HoverCardArrow'],

@@ -23,6 +23,7 @@ export * from './components/context-menu';
 export * from './components/dialog';
 export * from './components/drawer';
 export * from './components/dropdown-menu';
+export * from './components/editable';
 export * from './components/empty';
 export * from './components/form';
 export * from './components/hover-card';
