@@ -62,6 +62,7 @@ export const components = {
     'ContextMenuCheckboxGroup',
     'ContextMenuRadioGroup'
   ],
+  dataTable: ['DataTableRoot'],
   dialog: [
     'DialogRoot',
     'DialogTrigger',

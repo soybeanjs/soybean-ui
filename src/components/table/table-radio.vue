@@ -20,7 +20,7 @@ const ui = computed(() => {
 </script>
 
 <template>
-  <button :class="ui.radioRoot">
+  <button type="button" role="radio" :aria-checked="checked" :class="ui.radioRoot">
     <span v-if="checked" :class="ui.radioIndicator"></span>
   </button>
 </template>

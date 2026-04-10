@@ -3,4 +3,9 @@ export type { TableColumnCheck } from '@soybeanjs/hooks';
 export { default as STable } from './table.vue';
 export { useTable, usePaginatedTable } from './hooks';
 
+export type {
+  DataTableRootEmits,
+  DataTableRootProps,
+  DataTableRootSlots
+} from '@soybeanjs/headless/data-table';
 export type * from './types';
