@@ -104,7 +104,7 @@ const headerSelection = computed<CheckedState>(() => {
   return false;
 });
 
-const singleSelectionName = `table-selection-${useId()}`;
+const singleSelectionName = `soybean-table-selection-${useId()}`;
 
 function getDefaultExpanded() {
   if (props.defaultExpandAll) {
