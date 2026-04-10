@@ -101,8 +101,12 @@ describe('Splitter', () => {
         { attachTo: document.body }
       );
 
-      expect(horizontalWrapper.find('[data-slot="splitter-resize-handle"]').classes()).toContain('cursor-col-resize');
-      expect(verticalWrapper.find('[data-slot="splitter-resize-handle"]').classes()).toContain('data-[orientation=vertical]:cursor-row-resize');
+      const horizontalHandle = horizontalWrapper.find('[data-slot="splitter-resize-handle"]');
+      const verticalHandle = verticalWrapper.find('[data-slot="splitter-resize-handle"]');
+
+      expect(horizontalHandle.classes()).toContain('cursor-col-resize');
+      expect(verticalHandle.attributes('data-orientation')).toBe('vertical');
+      expect(verticalHandle.classes()).toContain('data-[orientation=vertical]:cursor-row-resize');
 
       horizontalWrapper.unmount();
       verticalWrapper.unmount();
