@@ -105,6 +105,8 @@ describe('Splitter', () => {
       const verticalHandle = verticalWrapper.find('[data-slot="splitter-resize-handle"]');
 
       expect(horizontalHandle.classes()).toContain('cursor-col-resize');
+      expect(horizontalHandle.classes()).toContain('data-[state=hover]:bg-accent');
+      expect(horizontalHandle.classes()).toContain('data-[state=drag]:bg-accent');
       expect(verticalHandle.attributes('data-orientation')).toBe('vertical');
       expect(verticalHandle.classes()).toContain('data-[orientation=vertical]:cursor-row-resize');
 
