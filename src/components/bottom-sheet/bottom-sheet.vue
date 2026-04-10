@@ -110,6 +110,7 @@ const contentStyle = computed<CSSProperties | undefined>(() => {
 
   return {
     transform: `translate3d(0, ${dragOffset.value}px, 0)`,
+    userSelect: 'none',
     transition: isDragging.value
       ? 'none'
       : `transform ${DRAG_RESET_DURATION}ms cubic-bezier(0.32, 0.72, 0, 1)`
@@ -286,6 +287,9 @@ onBeforeUnmount(() => {
         :data-dragging="isDragging || isResetting ? 'true' : undefined"
         v-on="listeners"
         @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerUp"
+        @pointercancel="onPointerCancel"
       >
         <div v-if="showHandle" :class="ui.handle" data-bottom-sheet-handle>
           <slot name="handle" v-bind="slotProps">
