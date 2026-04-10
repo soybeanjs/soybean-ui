@@ -88,7 +88,7 @@ export const menuData: MenuData[] = [
   {
     value: 'overlay',
     i18n: 'sidebar.overlay',
-    items: ['dialog', 'alertDialog', 'drawer', 'hoverCard', 'popover', 'tooltip', 'popconfirm']
+    items: ['dialog', 'alertDialog', 'bottomSheet', 'drawer', 'hoverCard', 'popover', 'tooltip', 'popconfirm']
   },
   {
     value: 'utilities',

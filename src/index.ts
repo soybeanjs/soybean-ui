@@ -7,6 +7,7 @@ export * from './components/aspect-ratio';
 export * from './components/avatar';
 export * from './components/badge';
 export * from './components/breadcrumb';
+export * from './components/bottom-sheet';
 export * from './components/button';
 export * from './components/card';
 export * from './components/checkbox';
