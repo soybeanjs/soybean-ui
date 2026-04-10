@@ -1,92 +1,43 @@
 import {
-  TableRootProps,
-  TableContentProps,
-  TableHeaderProps,
-  TableBodyProps,
-  TableFooterProps,
-  TableHeadProps,
-  TableRowProps,
-  TableCellProps,
+  BaseTableData as HeadlessBaseTableData,
+  TableColumn as HeadlessTableColumn,
+  TableColumnType as HeadlessTableColumnType,
+  TableEmits as HeadlessTableEmits,
+  TableProps as HeadlessTableProps,
+  TableSlots as HeadlessTableSlots,
   TableUi
-} from '@soybeanjs/headless';
-import type { Path, PathValue } from '@soybeanjs/headless';
+} from '@soybeanjs/headless/table';
+import type { ClassValue, UiClass } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export type BaseTableData = Record<string, any>;
+export type BaseTableData = HeadlessBaseTableData;
 
-export type TableAlign = 'left' | 'center' | 'right';
+export type TableExtraUiSlot = 'selection';
 
-export type TableColumnType = 'index' | 'selection' | 'expand';
+export type TableExtendedUi = UiClass<keyof TableUi | TableExtraUiSlot>;
 
-export interface TableColumn<T = BaseTableData> {
-  type?: TableColumnType;
-  dataIndex?: Path<T>;
-  title?: string;
-  align?: TableAlign;
-  width?: string;
-  hidden?: boolean;
-}
+export type TableColumnType = HeadlessTableColumnType;
 
-export interface TableSelectionProps<R extends string | number = string | number, M extends boolean = false> {
-  defaultSelected?: M extends true ? R[] : R;
-  selected?: M extends true ? R[] : R;
-  multiple?: M;
-}
+export type TableColumn<T = BaseTableData> = HeadlessTableColumn<T>;
 
 export interface TableProps<
   T extends BaseTableData = BaseTableData,
   R extends string | number = string | number,
   M extends boolean = false
->
-  extends TableRootProps, TableSelectionProps<R, M> {
+> extends HeadlessTableProps<T, R, M> {
   /**
    * Additional class names to apply to the table.
    */
-  class?: string;
-  ui?: Partial<TableUi>;
+  class?: ClassValue;
+  ui?: Partial<TableExtendedUi>;
   size?: ThemeSize;
-  columns: TableColumn<T>[];
-  data: T[];
-  rowKey: (row: T) => R;
   bordered?: boolean | 'all';
   striped?: boolean;
-  defaultExpanded?: R[];
-  expanded?: R[];
-  defaultExpandAll?: boolean;
-  contentProps?: TableContentProps;
-  headerProps?: TableHeaderProps;
-  bodyProps?: TableBodyProps;
-  footerProps?: TableFooterProps;
-  headProps?: TableHeadProps;
-  rowProps?: TableRowProps;
-  cellProps?: TableCellProps;
 }
 
-export type TableEmits<R extends string | number, M extends boolean = false> = {
-  'update:expanded': [expanded: R[]];
-  'update:selected': [selected: M extends true ? R[] : R | undefined];
-};
+export type TableEmits<R extends string | number, M extends boolean = false> = HeadlessTableEmits<R, M>;
 
-export type TableSlots<T extends BaseTableData> = {
-  [K in `header-${Path<T>}`]?: (props: { column: TableColumn<T> }) => any;
-} & {
-  [K in Path<T>]?: (props: { index: number; column: TableColumn<T>; row: T; value: PathValue<T, K> }) => any;
-} & {
-  'header-index'?: (props: { column: TableColumn<T> }) => any;
-  'header-selection'?: (props: { column: TableColumn<T>; multiple: boolean }) => any;
-  'header-expand'?: (props: { column: TableColumn<T> }) => any;
-  index?: (props: { index: number; column: TableColumn<T>; row: T }) => any;
-  selection?: (props: { index: number; column: TableColumn<T>; row: T; multiple: boolean }) => any;
-  expand?: (props: {
-    index: number;
-    column: TableColumn<T>;
-    row: T;
-    expanded: boolean;
-    toggleExpand: () => void;
-  }) => any;
-  'expanded-row'?: (props: { index: number; row: T }) => any;
-  footer?: (props: { columnSize: number }) => any;
-};
+export type TableSlots<T extends BaseTableData> = HeadlessTableSlots<T>;
 
 export interface TableRadioProps {
   size?: ThemeSize;

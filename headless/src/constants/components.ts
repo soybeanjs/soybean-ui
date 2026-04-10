@@ -93,6 +93,7 @@ export const components = {
     'ContextMenuCheckboxGroup',
     'ContextMenuRadioGroup'
   ],
+  dataTable: ['DataTableRoot'],
   dialog: [
     'DialogRoot',
     'DialogTrigger',
@@ -254,7 +255,7 @@ export const components = {
     'StepperDescription'
   ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
-  table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
+  table: ['Table', 'TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   tagsInput: ['TagsInputRoot', 'TagsInputInput', 'TagsInputItem', 'TagsInputItemText', 'TagsInputItemDelete', 'TagsInputClear'],

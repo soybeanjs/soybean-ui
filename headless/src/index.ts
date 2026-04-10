@@ -23,6 +23,7 @@ export * from './components/color-swatch';
 export * from './components/color-swatch-picker';
 export * from './components/config-provider';
 export * from './components/context-menu';
+export * from './components/data-table';
 export * from './components/dialog';
 export * from './components/dropdown-menu';
 export * from './components/editable';
