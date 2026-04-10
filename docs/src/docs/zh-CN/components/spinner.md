@@ -39,7 +39,7 @@ custom-styling
     description: 'Iconify `svg-spinners` 集合中的加载图标名称'
   },
   { name: 'color', type: 'ThemeColor', default: '-', description: '主题颜色' },
-  { name: 'size', type: 'ThemeSize', default: '-', description: '主题尺寸' },
+  { name: 'size', type: 'ThemeSize', default: '`md`', description: '主题尺寸' },
   { name: 'width', type: 'string | number', default: '`1.25em`', description: '加载图标宽度' },
   { name: 'height', type: 'string | number', default: '`1.25em`', description: '加载图标高度' },
   { name: 'rotate', type: 'number | string', default: '-', description: '额外旋转角度' },

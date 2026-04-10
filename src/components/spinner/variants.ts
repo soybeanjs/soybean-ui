@@ -4,6 +4,7 @@ import { tv } from 'tailwind-variants';
 export const spinnerVariants = tv({
   variants: {
     color: {
+      current: 'text-current',
       primary: 'text-primary',
       destructive: 'text-destructive',
       success: 'text-success',
@@ -21,5 +22,9 @@ export const spinnerVariants = tv({
       xl: 'size-8',
       '2xl': 'size-10'
     }
+  },
+  defaultVariants: {
+    color: 'current',
+    size: 'md'
   }
 });

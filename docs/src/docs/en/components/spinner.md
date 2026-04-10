@@ -40,7 +40,7 @@ custom-styling
     description: 'Spinner icon name from the Iconify `svg-spinners` collection'
   },
   { name: 'color', type: 'ThemeColor', default: '-', description: 'Theme color' },
-  { name: 'size', type: 'ThemeSize', default: '-', description: 'Theme size' },
+  { name: 'size', type: 'ThemeSize', default: '`md`', description: 'Theme size' },
   { name: 'width', type: 'string | number', default: '`1.25em`', description: 'Spinner width' },
   { name: 'height', type: 'string | number', default: '`1.25em`', description: 'Spinner height' },
   { name: 'rotate', type: 'number | string', default: '-', description: 'Additional rotation applied to the icon' },

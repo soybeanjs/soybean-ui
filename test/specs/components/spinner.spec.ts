@@ -13,6 +13,8 @@ describe('SSpinner', () => {
 
       expect(icon.exists()).toBe(true);
       expect(icon.props('icon')).toBe('svg-spinners:270-ring');
+      expect(icon.attributes('class')).toContain('text-current');
+      expect(icon.attributes('class')).toContain('size-5');
 
       wrapper.unmount();
     });
@@ -51,7 +53,7 @@ describe('SSpinner', () => {
       wrapper.unmount();
     });
 
-    it('applies theme color and size classes without forwarding color prop', () => {
+    it('applies theme color and size classes and omits color from forwarded props', () => {
       const wrapper = mount(SSpinner, {
         props: {
           color: 'success',
