@@ -293,6 +293,12 @@ import {
   TabsRoot,
   TabsTrigger,
   Tag,
+  TagsInputClear,
+  TagsInputInput,
+  TagsInputItem,
+  TagsInputItemDelete,
+  TagsInputItemText,
+  TagsInputRoot,
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
@@ -1103,6 +1109,22 @@ export const Tabs = {
 };
 
 export { Tag };
+
+export const TagsInput = {
+  Root: TagsInputRoot,
+  Input: TagsInputInput,
+  Item: TagsInputItem,
+  ItemText: TagsInputItemText,
+  ItemDelete: TagsInputItemDelete,
+  Clear: TagsInputClear
+} as {
+  Root: typeof TagsInputRoot;
+  Input: typeof TagsInputInput;
+  Item: typeof TagsInputItem;
+  ItemText: typeof TagsInputItemText;
+  ItemDelete: typeof TagsInputItemDelete;
+  Clear: typeof TagsInputClear;
+};
 
 export const Textarea = {
   Root: TextareaRoot,

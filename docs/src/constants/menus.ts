@@ -56,6 +56,7 @@ export const menuData: MenuData[] = [
       'select',
       'slider',
       'switch',
+      'tagsInput',
       'toggle',
       'toggleGroup'
     ]
