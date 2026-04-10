@@ -36,6 +36,7 @@ const getContainer = () => containerRef.value ?? window;
 
 ```playground
 basic
+color
 size
 sticky
 custom-styling
@@ -49,6 +50,7 @@ custom-styling
   { name: 'items', type: 'AnchorItemData[]', default: '[]', description: 'Anchor items to render.', required: true },
   { name: 'class', type: 'ClassValue', default: '-', description: 'Root container class.' },
   { name: 'bounds', type: 'number', default: '5', description: 'Extra threshold used when deciding the active anchor during scrolling.' },
+  { name: 'color', type: 'ThemeColor', default: `'primary'`, description: 'Color used for the active item and indicator.' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction.' },
   { name: 'getContainer', type: '() => HTMLElement | Window', default: '() => window', description: 'Returns the scroll container used for anchor tracking.' },
   { name: 'getCurrentAnchor', type: '(activeHref: string) => string', default: '-', description: 'Maps the internally detected active href to a custom href.' },
@@ -103,3 +105,4 @@ custom-styling
 ]"/>
 
 <UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<UnionType name="ThemeColor" description="Theme color type" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />

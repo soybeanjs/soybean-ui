@@ -36,6 +36,7 @@ const getContainer = () => containerRef.value ?? window;
 
 ```playground
 basic
+color
 size
 sticky
 custom-styling
@@ -49,6 +50,7 @@ custom-styling
   { name: 'items', type: 'AnchorItemData[]', default: '[]', description: '要渲染的锚点项。', required: true },
   { name: 'class', type: 'ClassValue', default: '-', description: '根容器类名。' },
   { name: 'bounds', type: 'number', default: '5', description: '滚动时判定当前激活锚点的额外阈值。' },
+  { name: 'color', type: 'ThemeColor', default: `'primary'`, description: '激活项与指示器颜色。' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向。' },
   { name: 'getContainer', type: '() => HTMLElement | Window', default: '() => window', description: '返回用于锚点追踪的滚动容器。' },
   { name: 'getCurrentAnchor', type: '(activeHref: string) => string', default: '-', description: '将内部检测到的激活 href 映射为自定义 href。' },
@@ -103,3 +105,4 @@ custom-styling
 ]"/>
 
 <UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
+<UnionType name="ThemeColor" description="主题颜色类型" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />

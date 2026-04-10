@@ -6,7 +6,7 @@ import type {
   ClassValue,
   UiClass
 } from '@soybeanjs/headless';
-import type { ThemeSize } from '@/theme';
+import type { ThemeColor, ThemeSize } from '@/theme';
 
 export interface AnchorItemData extends Pick<AnchorLinkProps, 'disabled' | 'href' | 'target'> {
   children?: AnchorItemData[];
@@ -19,6 +19,7 @@ export type AnchorExtendedUi = UiClass<AnchorUiSlot | AnchorExtraUiSlot>;
 
 export interface AnchorProps extends AnchorRootProps {
   class?: ClassValue;
+  color?: ThemeColor;
   items: AnchorItemData[];
   linkProps?: Omit<AnchorLinkProps, 'href'>;
   size?: ThemeSize;

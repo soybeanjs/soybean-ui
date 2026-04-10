@@ -13,6 +13,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AnchorProps>(), {
+  color: 'primary',
   linkProps: undefined,
   modelValue: undefined,
   offsetTop: 0,
@@ -23,7 +24,7 @@ const props = withDefaults(defineProps<AnchorProps>(), {
 
 const emit = defineEmits<AnchorEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'items', 'linkProps', 'size', 'sticky', 'ui']);
+const forwardedProps = useOmitProps(props, ['class', 'color', 'items', 'linkProps', 'size', 'sticky', 'ui']);
 
 const style = computed<CSSProperties>(() => ({
   '--soybean-anchor-offset-top': `${props.offsetTop}px`
@@ -31,6 +32,7 @@ const style = computed<CSSProperties>(() => ({
 
 const ui = computed(() => {
   const variants = anchorVariants({
+    color: props.color,
     orientation: props.orientation,
     size: props.size,
     sticky: props.sticky

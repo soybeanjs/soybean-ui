@@ -101,6 +101,23 @@ describe('SAnchor', () => {
 
       wrapper.unmount();
     });
+
+    it('supports themed active colors', () => {
+      const wrapper = mount(SAnchor, {
+        props: {
+          color: 'success',
+          items,
+          modelValue: '#overview',
+          sticky: false
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('a[href="#overview"]').classes()).toContain('data-[state=active]:text-success');
+      expect(wrapper.find('span[aria-hidden="true"]').classes()).toContain('bg-success');
+
+      wrapper.unmount();
+    });
   });
 
   describe('active state', () => {

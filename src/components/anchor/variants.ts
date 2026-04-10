@@ -17,6 +17,40 @@ export const anchorVariants = tv({
     children: 'ms-4 flex flex-col gap-1 border-s border-border/60 ps-3'
   },
   variants: {
+    color: {
+      primary: {
+        indicator: 'bg-primary',
+        link: 'data-[state=active]:bg-primary/10 data-[state=active]:text-primary'
+      },
+      destructive: {
+        indicator: 'bg-destructive',
+        link: 'data-[state=active]:bg-destructive/10 data-[state=active]:text-destructive'
+      },
+      success: {
+        indicator: 'bg-success',
+        link: 'data-[state=active]:bg-success/10 data-[state=active]:text-success'
+      },
+      warning: {
+        indicator: 'bg-warning',
+        link: 'data-[state=active]:bg-warning/10 data-[state=active]:text-warning'
+      },
+      info: {
+        indicator: 'bg-info',
+        link: 'data-[state=active]:bg-info/10 data-[state=active]:text-info'
+      },
+      carbon: {
+        indicator: 'bg-carbon',
+        link: 'data-[state=active]:bg-carbon/10 data-[state=active]:text-carbon'
+      },
+      secondary: {
+        indicator: 'bg-secondary-foreground/50',
+        link: 'data-[state=active]:bg-secondary-foreground/10 data-[state=active]:text-secondary-foreground'
+      },
+      accent: {
+        indicator: 'bg-accent-foreground/50',
+        link: 'data-[state=active]:bg-accent-foreground/10 data-[state=active]:text-accent-foreground'
+      }
+    },
     orientation: {
       vertical: {},
       horizontal: {
@@ -57,6 +91,7 @@ export const anchorVariants = tv({
     }
   },
   defaultVariants: {
+    color: 'primary',
     orientation: 'vertical',
     size: 'md',
     sticky: true
