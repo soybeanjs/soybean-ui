@@ -1,5 +1,6 @@
 export const components = {
   accordion: ['SAccordion'],
+  affix: ['SAffix'],
   alert: ['SAlert'],
   alertDialog: ['SAlertDialog', 'SAlertDialogCancel', 'SAlertDialogConfirm'],
   arrow: ['SArrow'],
@@ -48,6 +49,7 @@ export const components = {
   select: ['SSelect'],
   separator: ['SSeparator'],
   skeleton: ['SSkeleton'],
+  spinner: ['SSpinner'],
   slider: ['SSlider'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],

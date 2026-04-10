@@ -1,4 +1,5 @@
 export * from './components/accordion';
+export * from './components/affix';
 export * from './components/alert';
 export * from './components/alert-dialog';
 export * from './components/arrow';
@@ -47,6 +48,7 @@ export * from './components/scroll-area';
 export * from './components/select';
 export * from './components/separator';
 export * from './components/skeleton';
+export * from './components/spinner';
 export * from './components/slider';
 export * from './components/switch';
 export * from './components/table';
