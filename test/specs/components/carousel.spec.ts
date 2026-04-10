@@ -140,9 +140,18 @@ describe('SCarousel', () => {
       await nextTick();
 
       const options = toValue(emblaMock.options.current) as Record<string, unknown>;
+      const container = wrapper.find('[data-soybean-carousel-container]');
+      const previousButton = wrapper.find('[data-soybean-carousel-previous]');
+      const nextButton = wrapper.find('[data-soybean-carousel-next]');
+
       expect(options.axis).toBe('y');
       expect(options.direction).toBe('rtl');
       expect(wrapper.find('[data-soybean-carousel-content]').attributes('data-orientation')).toBe('vertical');
+      expect(container.classes()).toContain('h-full');
+      expect(previousButton.classes()).not.toContain('rotate-90');
+      expect(nextButton.classes()).not.toContain('rotate-90');
+      expect(nextButton.classes()).toContain('top-auto');
+      expect(nextButton.classes()).toContain('right-auto');
       wrapper.unmount();
     });
   });

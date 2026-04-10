@@ -24,10 +24,10 @@ export const carouselVariants = tv({
     orientation: {
       horizontal: {},
       vertical: {
-        container: '-mt-4 flex-col ml-0 rtl:mr-0 rtl:ml-0',
+        container: '-mt-4 h-full flex-col ml-0 rtl:mr-0 rtl:ml-0',
         item: 'pt-4 pl-0 rtl:pr-0 rtl:pl-0',
-        previous: '-top-12 left-1/2 -translate-x-1/2 translate-y-0 rotate-90 rtl:left-1/2 rtl:right-auto',
-        next: '-bottom-12 left-1/2 -translate-x-1/2 translate-y-0 rotate-90 rtl:left-1/2 rtl:right-auto'
+        previous: '-top-12 left-1/2 right-auto -translate-x-1/2 translate-y-0 rtl:left-1/2 rtl:right-auto',
+        next: 'top-auto -bottom-12 left-1/2 right-auto -translate-x-1/2 translate-y-0 rtl:left-1/2 rtl:right-auto'
       }
     }
   },
