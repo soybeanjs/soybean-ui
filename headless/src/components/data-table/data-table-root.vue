@@ -7,7 +7,7 @@
     M extends boolean = boolean
   "
 >
-import { computed } from 'vue';
+import { computed, useId } from 'vue';
 import type { CheckedState } from '../../types';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
 import {
@@ -106,6 +106,8 @@ const headerSelection = computed<CheckedState>(() => {
   return false;
 });
 
+const singleSelectionName = `data-table-selection-${useId()}`;
+
 function getDefaultExpanded() {
   if (props.defaultExpandAll) {
     return props.data.map(item => props.rowKey(item));
@@ -185,6 +187,7 @@ function getRowLabel(row: T) {
                     v-if="isMultiple"
                     type="checkbox"
                     :checked="headerSelection === true"
+                    :indeterminate.prop="headerSelection === 'indeterminate'"
                     :aria-checked="headerSelection === 'indeterminate' ? 'mixed' : `${headerSelection}`"
                     aria-label="Select all rows"
                     :disabled="isHeaderSelectionDisabled"
@@ -248,9 +251,10 @@ function getRowLabel(row: T) {
                   <input
                     v-else
                     type="radio"
+                    :name="singleSelectionName"
                     :checked="isValueSelected(rowKey(item))"
                     :aria-label="`Select row ${getRowLabel(item)}`"
-                    @change="onSelectedChange(rowKey(item))"
+                    @click="onSelectedChange(rowKey(item))"
                   >
                 </slot>
                 <slot

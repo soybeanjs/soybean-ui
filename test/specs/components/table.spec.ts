@@ -91,6 +91,25 @@ describe('STable', () => {
       expect(wrapper.emitted('update:selected')?.[0]?.[0]).toEqual([1]);
       wrapper.unmount();
     });
+
+    it('uses pressed button semantics for single-selection controls', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: selectionColumns,
+          data,
+          rowKey: row => row.id,
+          multiple: false,
+          selected: 1
+        },
+        attachTo: document.body
+      });
+
+      const control = wrapper.get('button[aria-label="Select row Ada"]');
+
+      expect(control.attributes('aria-pressed')).toBe('true');
+      expect(control.attributes('role')).toBeUndefined();
+      wrapper.unmount();
+    });
   });
 
   describe('expanded state', () => {
