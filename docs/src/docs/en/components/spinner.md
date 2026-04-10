@@ -21,6 +21,7 @@ import { SSpinner } from '@soybeanjs/ui';
 
 ```playground
 basic
+color
 size
 icon
 custom-styling
@@ -38,14 +39,15 @@ custom-styling
     default: '`svg-spinners:270-ring`',
     description: 'Spinner icon name from the Iconify `svg-spinners` collection'
   },
+  { name: 'color', type: 'ThemeColor', default: '-', description: 'Theme color' },
+  { name: 'size', type: 'ThemeSize', default: '-', description: 'Theme size' },
   { name: 'width', type: 'string | number', default: '`1.25em`', description: 'Spinner width' },
   { name: 'height', type: 'string | number', default: '`1.25em`', description: 'Spinner height' },
-  { name: 'color', type: 'string', default: '-', description: 'Spinner color' },
   { name: 'rotate', type: 'number | string', default: '-', description: 'Additional rotation applied to the icon' },
   { name: 'flip', type: 'string', default: '-', description: 'Flip the icon horizontally or vertically' }
 ]"/>
 
-> Inherits all other props from `SIcon`.
+> `width` and `height` override the visual size from `size`. All other props are inherited from `SIcon`.
 
 ### Slots
 

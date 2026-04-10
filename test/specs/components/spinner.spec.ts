@@ -50,6 +50,24 @@ describe('SSpinner', () => {
 
       wrapper.unmount();
     });
+
+    it('applies theme color and size classes without forwarding color prop', () => {
+      const wrapper = mount(SSpinner, {
+        props: {
+          color: 'success',
+          size: 'lg'
+        },
+        attachTo: document.body
+      });
+
+      const icon = wrapper.findComponent(SIcon);
+
+      expect(icon.attributes('class')).toContain('text-success');
+      expect(icon.attributes('class')).toContain('size-6');
+      expect(icon.props('color')).toBeUndefined();
+
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {

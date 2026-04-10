@@ -20,6 +20,7 @@ import { SSpinner } from '@soybeanjs/ui';
 
 ```playground
 basic
+color
 size
 icon
 custom-styling
@@ -37,14 +38,15 @@ custom-styling
     default: '`svg-spinners:270-ring`',
     description: 'Iconify `svg-spinners` 集合中的加载图标名称'
   },
+  { name: 'color', type: 'ThemeColor', default: '-', description: '主题颜色' },
+  { name: 'size', type: 'ThemeSize', default: '-', description: '主题尺寸' },
   { name: 'width', type: 'string | number', default: '`1.25em`', description: '加载图标宽度' },
   { name: 'height', type: 'string | number', default: '`1.25em`', description: '加载图标高度' },
-  { name: 'color', type: 'string', default: '-', description: '加载图标颜色' },
   { name: 'rotate', type: 'number | string', default: '-', description: '额外旋转角度' },
   { name: 'flip', type: 'string', default: '-', description: '水平或垂直翻转图标' }
 ]"/>
 
-> 其余属性继承自 `SIcon`。
+> `width` 和 `height` 会覆盖 `size` 对应的尺寸表现，其余属性继承自 `SIcon`。
 
 ### 插槽
 
