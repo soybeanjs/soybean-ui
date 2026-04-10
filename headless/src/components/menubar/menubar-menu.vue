@@ -33,9 +33,9 @@ watch(open, isOpen => {
     :open="open"
     :modal="false"
     :dir="dir"
-    @update:open="value => {
-      if (!value) {
-        onMenuClose();
+    @update:open="isOpen => {
+      if (!isOpen) {
+        onMenuClose(value.value);
       }
     }"
   >

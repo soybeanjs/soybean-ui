@@ -5,6 +5,9 @@ import {
   SMenubarContent,
   SMenubarItem,
   SMenubarMenu,
+  SMenubarSub,
+  SMenubarSubContent,
+  SMenubarSubTrigger,
   SMenubarTrigger
 } from '../../../src/components/menubar';
 import { getA11yViolations } from '../../shared/a11y';
@@ -23,6 +26,40 @@ const MenubarExample = {
         <SMenubarTrigger>File</SMenubarTrigger>
         <SMenubarContent>
           <SMenubarItem>New Tab</SMenubarItem>
+        </SMenubarContent>
+      </SMenubarMenu>
+      <SMenubarMenu value="edit">
+        <SMenubarTrigger>Edit</SMenubarTrigger>
+        <SMenubarContent>
+          <SMenubarItem>Undo</SMenubarItem>
+        </SMenubarContent>
+      </SMenubarMenu>
+    </SMenubar>
+  `
+};
+
+const MenubarSubmenuExample = {
+  components: {
+    SMenubar,
+    SMenubarContent,
+    SMenubarItem,
+    SMenubarMenu,
+    SMenubarSub,
+    SMenubarSubContent,
+    SMenubarSubTrigger,
+    SMenubarTrigger
+  },
+  template: `
+    <SMenubar>
+      <SMenubarMenu value="file">
+        <SMenubarTrigger>File</SMenubarTrigger>
+        <SMenubarContent>
+          <SMenubarSub>
+            <SMenubarSubTrigger>Share</SMenubarSubTrigger>
+            <SMenubarSubContent>
+              <SMenubarItem>Email Link</SMenubarItem>
+            </SMenubarSubContent>
+          </SMenubarSub>
         </SMenubarContent>
       </SMenubarMenu>
       <SMenubarMenu value="edit">
@@ -108,6 +145,52 @@ describe('SMenubar', () => {
 
       expect(editTrigger.attributes('aria-expanded')).toBe('true');
       expect(document.body.textContent).toContain('Undo');
+
+      wrapper.unmount();
+    });
+
+    it('switches to the next menu when hovering another trigger while one menu is open', async () => {
+      const wrapper = mount(MenubarExample, {
+        attachTo: document.body
+      });
+
+      const triggers = wrapper.findAll('[role="menuitem"]');
+      const fileTrigger = triggers[0]!;
+      const editTrigger = triggers[1]!;
+
+      await fileTrigger.trigger('pointerdown', { button: 0, ctrlKey: false });
+      await editTrigger.trigger('pointermove', { pointerType: 'mouse', clientX: 1, clientY: 1 });
+      await wrapper.vm.$nextTick();
+
+      expect(editTrigger.attributes('aria-expanded')).toBe('true');
+      expect(fileTrigger.attributes('aria-expanded')).toBe('false');
+      expect(document.body.textContent).toContain('Undo');
+
+      wrapper.unmount();
+    });
+
+    it('renders submenu content in a portal so it is not clipped by the parent menu', async () => {
+      const wrapper = mount(MenubarSubmenuExample, {
+        attachTo: document.body
+      });
+
+      await wrapper.find('[role="menuitem"][aria-haspopup="menu"]').trigger('pointerdown', { button: 0, ctrlKey: false });
+      await wrapper.vm.$nextTick();
+
+      const subTrigger = document.body.querySelector('[data-soybean-menubar-subtrigger]') as HTMLElement | null;
+
+      expect(subTrigger).toBeTruthy();
+
+      subTrigger?.click();
+      await wrapper.vm.$nextTick();
+
+      const menus = Array.from(document.body.querySelectorAll('[role="menu"]'));
+      const parentMenu = menus.find(menu => menu.textContent?.includes('Share'));
+      const submenu = menus.find(menu => menu.textContent?.includes('Email Link'));
+
+      expect(parentMenu).toBeTruthy();
+      expect(submenu).toBeTruthy();
+      expect(parentMenu?.contains(submenu as Node)).toBe(false);
 
       wrapper.unmount();
     });

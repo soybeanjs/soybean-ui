@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { MenubarSubContent } from '@soybeanjs/headless';
+import { MenubarPortal, MenubarSubContent } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { menubarVariants } from './variants';
@@ -15,13 +15,15 @@ const props = withDefaults(defineProps<MenubarSubContentProps>(), {
   alignOffset: -4
 });
 
-const forwardedProps = useOmitProps(props, ['class', 'size']);
+const forwardedProps = useOmitProps(props, ['class', 'portalProps', 'size']);
 
 const cls = computed(() => cn(menubarVariants({ size: props.size }).subContent(), props.class));
 </script>
 
 <template>
-  <MenubarSubContent v-bind="forwardedProps" :class="cls">
-    <slot />
-  </MenubarSubContent>
+  <MenubarPortal v-bind="portalProps">
+    <MenubarSubContent v-bind="forwardedProps" :class="cls">
+      <slot />
+    </MenubarSubContent>
+  </MenubarPortal>
 </template>

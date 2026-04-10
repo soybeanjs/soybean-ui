@@ -57,7 +57,7 @@ export interface MenubarRootContextParams extends PropsToContext<MenubarRootProp
 export interface MenubarRootContext extends Omit<MenubarRootContextParams, 'dir'> {
   dir: ComputedRef<Direction>;
   onMenuOpen: (value: string) => void;
-  onMenuClose: () => void;
+  onMenuClose: (value?: string) => void;
   onMenuToggle: (value: string) => void;
 }
 

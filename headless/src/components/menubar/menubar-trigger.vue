@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue';
 import { useForwardElement } from '../../composables';
+import { isMouseEvent } from '../../shared';
 import { RovingFocusItem } from '../roving-focus';
 import { MenuAnchor } from '../menu';
 import { Primitive } from '../primitive';
@@ -50,7 +51,9 @@ const onPointerDown = (event: PointerEvent) => {
   }
 };
 
-const onPointerEnter = () => {
+const onPointerMove = (event: PointerEvent) => {
+  if (!isMouseEvent(event)) return;
+
   const menubarOpen = Boolean(modelValue.value);
 
   if (props.disabled || !menubarOpen || open.value) return;
@@ -102,7 +105,7 @@ initTriggerId();
         @focus="isFocused = true"
         @keydown.enter.space.arrow-down="onKeyDown"
         @pointerdown="onPointerDown"
-        @pointerenter="onPointerEnter"
+        @pointermove="onPointerMove"
       >
         <slot />
       </Primitive>

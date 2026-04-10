@@ -77,6 +77,7 @@ export interface MenubarSubTriggerProps extends /** @vue-ignore */ HeadlessMenub
 
 export interface MenubarSubContentProps extends /** @vue-ignore */ HeadlessMenubarSubContentProps {
   class?: ClassValue;
+  portalProps?: MenubarPortalProps;
   size?: ThemeSize;
 }
 

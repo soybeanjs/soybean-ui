@@ -1,4 +1,4 @@
-import { shallowRef, useId } from 'vue';
+import { nextTick, shallowRef, useId } from 'vue';
 import { useCollection, useContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
 import type {
@@ -22,8 +22,12 @@ export const [provideMenubarRootContext, useMenubarRootContext] = useContext(
       currentTabStopId.value = value;
     };
 
-    const onMenuClose = () => {
-      modelValue.value = '';
+    const onMenuClose = (value?: string) => {
+      nextTick(() => {
+        if (value && modelValue.value !== value) return;
+
+        modelValue.value = '';
+      });
     };
 
     const onMenuToggle = (value: string) => {
