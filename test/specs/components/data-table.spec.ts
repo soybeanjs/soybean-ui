@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import DataTableRoot from '../../../headless/src/components/data-table/data-table-root.vue';
+import { Table } from '../../../headless/src/components/table';
 
 interface DataTableRow {
   id: number;
@@ -14,9 +14,9 @@ const data: DataTableRow[] = [
   { id: 2, name: 'Linus' }
 ];
 
-describe('DataTableRoot', () => {
+describe('Table', () => {
   it('marks the fallback header checkbox as indeterminate for partial selection', () => {
-    const wrapper = mount(DataTableRoot, {
+    const wrapper = mount(Table, {
       props: {
         columns,
         data,
@@ -34,7 +34,7 @@ describe('DataTableRoot', () => {
   });
 
   it('clears single selection when clicking the already-selected fallback radio', async () => {
-    const wrapper = mount(DataTableRoot, {
+    const wrapper = mount(Table, {
       props: {
         columns,
         data,

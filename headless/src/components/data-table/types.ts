@@ -1,93 +1,33 @@
-import type { CheckedState } from '../../types';
-import type { Path, PathValue } from '../../types';
 import type {
-  TableBodyProps,
-  TableCellProps,
-  TableContentProps,
-  TableFooterProps,
-  TableHeadProps,
-  TableHeaderProps,
-  TableRootProps,
-  TableRowProps
-} from '../table';
+  BaseTableData,
+  TableAlign,
+  TableColumn,
+  TableColumnType,
+  TableEmits,
+  TableProps,
+  TableSelectionProps,
+  TableSlots
+} from '../table/types';
 
-export type BaseDataTableRow = Record<string, any>;
+export type BaseDataTableRow = BaseTableData;
 
-export type DataTableAlign = 'left' | 'center' | 'right';
+export type DataTableAlign = TableAlign;
 
-export type DataTableColumnType = 'index' | 'selection' | 'expand';
+export type DataTableColumnType = TableColumnType;
 
-export interface DataTableColumn<T = BaseDataTableRow> {
-  type?: DataTableColumnType;
-  dataIndex?: Path<T>;
-  title?: string;
-  align?: DataTableAlign;
-  width?: string;
-  hidden?: boolean;
-}
+export type DataTableColumn<T = BaseDataTableRow> = TableColumn<T>;
 
-export interface DataTableSelectionProps<R extends string | number = string | number, M extends boolean = false> {
-  defaultSelected?: M extends true ? R[] : R;
-  selected?: M extends true ? R[] : R;
-  multiple?: M;
-}
+export type DataTableSelectionProps<R extends string | number = string | number, M extends boolean = false> = TableSelectionProps<
+  R,
+  M
+>;
 
-export interface DataTableRootProps<
+export type DataTableRootProps<
   T extends BaseDataTableRow = BaseDataTableRow,
   R extends string | number = string | number,
   M extends boolean = false
-> extends TableRootProps,
-    DataTableSelectionProps<R, M> {
-  columns: DataTableColumn<T>[];
-  data: T[];
-  rowKey: (row: T) => R;
-  defaultExpanded?: R[];
-  expanded?: R[];
-  defaultExpandAll?: boolean;
-  contentProps?: TableContentProps;
-  headerProps?: TableHeaderProps;
-  bodyProps?: TableBodyProps;
-  footerProps?: TableFooterProps;
-  headProps?: TableHeadProps;
-  rowProps?: TableRowProps;
-  cellProps?: TableCellProps;
-}
+> = TableProps<T, R, M>;
 
-export type DataTableRootEmits<R extends string | number, M extends boolean = false> = {
-  'update:expanded': [expanded: R[]];
-  'update:selected': [selected: M extends true ? R[] : R | undefined];
-};
+export type DataTableRootEmits<R extends string | number, M extends boolean = false> = TableEmits<R, M>;
 
-export type DataTableRootSlots<T extends BaseDataTableRow> = {
-  [K in `header-${Path<T>}`]?: (props: { column: DataTableColumn<T> }) => any;
-} & {
-  [K in Path<T>]?: (props: { index: number; column: DataTableColumn<T>; row: T; value: PathValue<T, K> }) => any;
-} & {
-  'header-index'?: (props: { column: DataTableColumn<T> }) => any;
-  'header-selection'?: (props: {
-    column: DataTableColumn<T>;
-    multiple: boolean;
-    checked: CheckedState;
-    disabled: boolean;
-    updateChecked: (value: CheckedState | null) => void;
-  }) => any;
-  'header-expand'?: (props: { column: DataTableColumn<T> }) => any;
-  index?: (props: { index: number; column: DataTableColumn<T>; row: T }) => any;
-  selection?: (props: {
-    index: number;
-    column: DataTableColumn<T>;
-    row: T;
-    multiple: boolean;
-    checked: boolean;
-    toggleSelect: () => void;
-  }) => any;
-  expand?: (props: {
-    index: number;
-    column: DataTableColumn<T>;
-    row: T;
-    expanded: boolean;
-    toggleExpand: () => void;
-  }) => any;
-  'expanded-row'?: (props: { index: number; row: T }) => any;
-  footer?: (props: { columnSize: number }) => any;
-};
+export type DataTableRootSlots<T extends BaseDataTableRow> = TableSlots<T>;

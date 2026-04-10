@@ -2,7 +2,7 @@
   setup
   lang="ts"
   generic="
-    T extends BaseDataTableRow = BaseDataTableRow,
+    T extends BaseTableData = BaseTableData,
     R extends string | number = string | number,
     M extends boolean = boolean
   "
@@ -10,30 +10,28 @@
 import { computed, useId } from 'vue';
 import type { CheckedState } from '../../types';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
-import {
-  TableBody,
-  TableCell,
-  TableContent,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRoot,
-  TableRow
-} from '../table';
-import { getDataTableRowLabel, getDataTableRowValueByDataIndex } from './shared';
-import type { BaseDataTableRow, DataTableRootEmits, DataTableRootProps, DataTableRootSlots } from './types';
+import { getTableRowLabel, getTableRowValueByDataIndex } from '../table/shared';
+import TableBody from '../table/table-body.vue';
+import TableCell from '../table/table-cell.vue';
+import TableContent from '../table/table-content.vue';
+import TableFooter from '../table/table-footer.vue';
+import TableHead from '../table/table-head.vue';
+import TableHeader from '../table/table-header.vue';
+import TableRoot from '../table/table-root.vue';
+import TableRow from '../table/table-row.vue';
+import type { BaseTableData, TableEmits, TableProps, TableSlots } from '../table/types';
 
 defineOptions({
-  name: 'DataTableRoot'
+  name: 'Table'
 });
 
-const props = withDefaults(defineProps<DataTableRootProps<T, R, M>>(), {
+const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
   multiple: true as any
 });
 
-const emit = defineEmits<DataTableRootEmits<R, M>>();
+const emit = defineEmits<TableEmits<R, M>>();
 
-defineSlots<DataTableRootSlots<T>>();
+defineSlots<TableSlots<T>>();
 
 const forwardedRootProps = useOmitProps(props, [
   'columns',
@@ -106,7 +104,7 @@ const headerSelection = computed<CheckedState>(() => {
   return false;
 });
 
-const singleSelectionName = `data-table-selection-${useId()}`;
+const singleSelectionName = `table-selection-${useId()}`;
 
 function getDefaultExpanded() {
   if (props.defaultExpandAll) {
@@ -145,7 +143,7 @@ function isRowExpanded(key: R) {
 }
 
 function getRowLabel(row: T) {
-  return getDataTableRowLabel(row, props.rowKey);
+  return getTableRowLabel(row, props.rowKey);
 }
 </script>
 
@@ -217,9 +215,9 @@ function getRowLabel(row: T) {
                   :index="index"
                   :column="column"
                   :row="item"
-                  :value="getDataTableRowValueByDataIndex(item, column.dataIndex)"
+                  :value="getTableRowValueByDataIndex(item, column.dataIndex)"
                 >
-                  {{ getDataTableRowValueByDataIndex(item, column.dataIndex) }}
+                  {{ getTableRowValueByDataIndex(item, column.dataIndex) }}
                 </slot>
               </TableCell>
               <TableCell

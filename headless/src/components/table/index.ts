@@ -1,3 +1,4 @@
+export { default as Table } from '../data-table/data-table-root.vue';
 export { default as TableRoot } from './table-root.vue';
 export { default as TableContent } from './table-content.vue';
 export { default as TableHeader } from './table-header.vue';
@@ -8,5 +9,6 @@ export { default as TableHead } from './table-head.vue';
 export { default as TableCell } from './table-cell.vue';
 
 export { provideTableUi } from './context';
+export { getTableRowLabel, getTableRowValueByDataIndex } from './shared';
 
 export type * from './types';

@@ -4,8 +4,8 @@ export { default as STable } from './table.vue';
 export { useTable, usePaginatedTable } from './hooks';
 
 export type {
-  DataTableRootEmits,
-  DataTableRootProps,
-  DataTableRootSlots
-} from '@soybeanjs/headless/data-table';
+  TableEmits as HeadlessTableEmits,
+  TableProps as HeadlessTableProps,
+  TableSlots as HeadlessTableSlots
+} from '@soybeanjs/headless/table';
 export type * from './types';

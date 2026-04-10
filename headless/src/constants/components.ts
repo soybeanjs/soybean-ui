@@ -204,7 +204,7 @@ export const components = {
   slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
-  table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
+  table: ['Table', 'TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],

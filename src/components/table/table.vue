@@ -8,13 +8,13 @@
   "
 >
 import { computed, useSlots } from 'vue';
-import { DataTableRoot, provideTableUi } from '@soybeanjs/headless';
-import { getDataTableRowLabel } from '@soybeanjs/headless/data-table';
+import { getTableRowLabel, provideTableUi, Table as HeadlessTable } from '@soybeanjs/headless/table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import TableRadio from './table-radio.vue';
+import type { TableProps as HeadlessTableProps } from '@soybeanjs/headless/table';
 import type { BaseTableData, TableEmits, TableProps, TableSlots } from './types';
 import { tableVariants } from './variants';
 
@@ -31,7 +31,11 @@ defineSlots<TableSlots<T>>();
 const slots = useSlots();
 const forwardedSlotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
-const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']) as unknown as HeadlessTableProps<
+  T,
+  R,
+  M
+>;
 const listeners = useForwardListeners(emit);
 
 const ui = computed(() => {
@@ -46,13 +50,13 @@ const ui = computed(() => {
 
 provideTableUi(ui);
 
-function getRowLabel(row: T) {
-  return getDataTableRowLabel(row, props.rowKey);
+function getRowLabel(row: BaseTableData) {
+  return getTableRowLabel(row, props.rowKey as (row: BaseTableData) => R);
 }
 </script>
 
 <template>
-  <DataTableRoot v-bind="forwardedProps" v-on="listeners">
+  <HeadlessTable v-bind="forwardedProps" v-on="listeners">
     <template v-for="slotName in forwardedSlotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>
@@ -99,5 +103,5 @@ function getRowLabel(row: T) {
         @click="toggleExpand()"
       />
     </template>
-  </DataTableRoot>
+  </HeadlessTable>
 </template>

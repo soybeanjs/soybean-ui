@@ -1,13 +1,13 @@
-export { default as DataTableRoot } from './data-table-root.vue';
-export { getDataTableRowLabel, getDataTableRowValueByDataIndex } from './shared';
+export { Table as DataTableRoot } from '../table';
+export { getTableRowLabel as getDataTableRowLabel, getTableRowValueByDataIndex as getDataTableRowValueByDataIndex } from '../table';
 
 export type {
-  BaseDataTableRow,
-  DataTableAlign,
-  DataTableColumn,
-  DataTableColumnType,
-  DataTableRootEmits,
-  DataTableRootProps,
-  DataTableRootSlots,
-  DataTableSelectionProps
-} from './types';
+  BaseTableData as BaseDataTableRow,
+  TableAlign as DataTableAlign,
+  TableColumn as DataTableColumn,
+  TableColumnType as DataTableColumnType,
+  TableEmits as DataTableRootEmits,
+  TableProps as DataTableRootProps,
+  TableSlots as DataTableRootSlots,
+  TableSelectionProps as DataTableSelectionProps
+} from '../table';
