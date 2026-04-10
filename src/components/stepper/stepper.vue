@@ -40,7 +40,7 @@ const forwardedProps = useOmitProps(props, [
 
 const listeners = useForwardListeners(emit);
 
-const resolvedItems = computed(() => props.items.map((item, index) => ({ ...item, step: item.step ?? index + 1 })));
+const resolvedItems = computed(() => props.items.map((item, index) => ({ ...item, step: index + 1 })));
 
 const ui = computed(() => {
   const variants = stepperVariants({

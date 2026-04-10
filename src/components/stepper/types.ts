@@ -14,7 +14,6 @@ import type {
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 export interface StepperOptionData extends Pick<StepperItemProps, 'disabled' | 'completed'> {
-  step?: number;
   title?: string;
   description?: string;
 }

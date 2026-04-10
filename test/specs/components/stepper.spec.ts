@@ -32,6 +32,27 @@ describe('SStepper', () => {
       wrapper.unmount();
     });
 
+    it('derives step numbers from item order', async () => {
+      const customStepItems = [
+        { description: 'First step', step: 4 },
+        { description: 'Second step', step: 9 }
+      ];
+      const wrapper = mount(SStepper, {
+        props: { items: customStepItems, modelValue: 1 },
+        attachTo: document.body
+      });
+      const buttons = wrapper.findAll('button');
+
+      expect(buttons[0].text()).toContain('Step 1');
+      expect(buttons[0].text()).not.toContain('Step 4');
+      expect(buttons[1].text()).toContain('Step 2');
+
+      await buttons[1].trigger('mousedown', { button: 0 });
+
+      expect(wrapper.emitted('update:modelValue')?.[0]?.[0]).toBe(2);
+      wrapper.unmount();
+    });
+
     it('stacks the connector under the indicator in vertical orientation', () => {
       const wrapper = mount(SStepper, {
         props: { items, orientation: 'vertical' },
@@ -124,6 +145,16 @@ describe('SStepper', () => {
   });
 
   describe('accessibility', () => {
+    it('allows overriding the group aria-label', () => {
+      const wrapper = mount(SStepper, {
+        props: { items, 'aria-label': 'Checkout progress' },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('[role="group"]').attributes('aria-label')).toBe('Checkout progress');
+      wrapper.unmount();
+    });
+
     it('has no a11y violations', async () => {
       const wrapper = mount(SStepper, {
         props: { items, modelValue: 2 },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
+import { computed, shallowRef, useAttrs } from 'vue';
 import { useControllableState, useForwardElement, useOmitProps } from '../../composables';
 import { getCollectionItemElements, isElementHasAttribute, transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
@@ -20,6 +20,8 @@ const props = withDefaults(defineProps<StepperRootProps>(), {
 });
 
 const emit = defineEmits<StepperRootEmits>();
+
+const attrs = useAttrs();
 
 const cls = useStepperUi('root');
 
@@ -105,6 +107,12 @@ const prevStep = () => {
 const hasNext = () => currentStep.value < totalSteps.value;
 const hasPrev = () => currentStep.value > 1;
 
+function getNonEmptyString(value: unknown) {
+  return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
+}
+
+const ariaLabel = computed(() => getNonEmptyString(attrs['aria-label']) ?? 'Progress');
+
 const registerStepperItem = (element: HTMLElement) => {
   if (registeredStepperItems.value.includes(element)) return;
 
@@ -153,7 +161,7 @@ defineExpose({
     :class="cls"
     :dir="dir"
     role="group"
-    aria-label="progress"
+    :aria-label="ariaLabel"
     :data-linear="linear ? '' : undefined"
     :data-orientation="orientation"
   >

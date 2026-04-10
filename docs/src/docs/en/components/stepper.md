@@ -39,7 +39,7 @@ custom-styling
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'items', type: 'StepperOptionData[]', default: '-', description: 'Stepper items.', required: true },
+  { name: 'items', type: 'StepperOptionData[]', default: '-', description: 'Stepper items. Step numbers are derived from array order.', required: true },
   { name: 'modelValue', type: 'number', default: '-', description: 'Active step.' },
   { name: 'defaultValue', type: 'number', default: '1', description: 'Default active step.' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: 'Layout orientation.' },
@@ -79,7 +79,6 @@ custom-styling
     name: 'StepperOptionData',
     description: 'Stepper item data.',
     fields: [
-      { name: 'step', type: 'number', description: 'Step index. Auto-generated from array order when omitted.' },
       { name: 'title', type: 'string', description: 'Step title.' },
       { name: 'description', type: 'string', description: 'Step description.' },
       { name: 'disabled', type: 'boolean', description: 'Whether the step is disabled.' },

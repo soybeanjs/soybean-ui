@@ -39,7 +39,7 @@ custom-styling
 ### 属性
 
 <DataTable preset="props" :data="[
-  { name: 'items', type: 'StepperOptionData[]', default: '-', description: '步骤数据。', required: true },
+  { name: 'items', type: 'StepperOptionData[]', default: '-', description: '步骤数据，步骤编号按数组顺序自动生成。', required: true },
   { name: 'modelValue', type: 'number', default: '-', description: '当前激活步骤。' },
   { name: 'defaultValue', type: 'number', default: '1', description: '默认激活步骤。' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: '布局方向。' },
@@ -79,7 +79,6 @@ custom-styling
     name: 'StepperOptionData',
     description: '步骤数据结构。',
     fields: [
-      { name: 'step', type: 'number', description: '步骤索引，未传时按数组顺序自动生成。' },
       { name: 'title', type: 'string', description: '步骤标题。' },
       { name: 'description', type: 'string', description: '步骤描述。' },
       { name: 'disabled', type: 'boolean', description: '是否禁用该步骤。' },
