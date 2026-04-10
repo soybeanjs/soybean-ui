@@ -31,6 +31,21 @@ describe('SStepper', () => {
       expect(wrapper.text()).toContain('Profile');
       wrapper.unmount();
     });
+
+    it('stacks the connector under the indicator in vertical orientation', () => {
+      const wrapper = mount(SStepper, {
+        props: { items, orientation: 'vertical' },
+        attachTo: document.body
+      });
+      const activeSeparator = wrapper
+        .findAll('[data-orientation="vertical"][data-state="active"]')
+        .find(node => node.classes().includes('w-0.5'));
+
+      expect(wrapper.find('[role="group"]').classes()).toContain('gap-0');
+      expect(wrapper.find('[aria-current="step"]').classes()).toContain('flex-col');
+      expect(activeSeparator?.classes()).toContain('ms-4');
+      wrapper.unmount();
+    });
   });
 
   describe('active state', () => {
