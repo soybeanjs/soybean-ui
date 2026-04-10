@@ -9,6 +9,7 @@ The `SConfigProvider` component is the root configuration provider for the Soybe
 - 🎨 **Theme System**: Configure global colors and radius via `theme` prop.
 - 📏 **Size Control**: Manage global component sizing (`xs`, `sm`, `md`, `lg`, `xl`, `2xl`).
 - 🖼️ **Icon Configuration**: Set default width and height for all `SIcon` components.
+- ⏳ **Loading Bar Integration**: Configure the global top loading bar.
 - 🍞 **Toast Integration**: Configure global toast settings.
 - 🌐 **Direction**: Support for LTR/RTL layouts.
 
@@ -50,6 +51,7 @@ You can fully customize the theme using the `theme` prop. more details can be fo
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: 'Global theme configuration (colors, radius)' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Global component size' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'Default configuration for SIcon' },
+  { name: 'loadingBar', type: 'LoadingBarProviderProps', default: '-', description: 'Global loading bar configuration' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: 'Global toast configuration' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' },
   { name: 'locale', type: 'string', default: `'en'`, description: 'Locale identifier' },

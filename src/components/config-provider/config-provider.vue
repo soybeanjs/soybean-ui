@@ -8,6 +8,7 @@ import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import { themeSizes } from '@/constants/common';
 import DialogProvider from '../alert-dialog/dialog-provider.vue';
+import LoadingBar from '../progress/loading-bar.vue';
 import ToastProvider from '../toast/toast-provider.vue';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
@@ -26,7 +27,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'toast']);
+const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'loadingBar', 'toast']);
 
 provideConfigProviderContext(transformPropsToContext(props));
 
@@ -63,7 +64,9 @@ watchEffect(() => {
     </Primitive>
     <DialogProvider>
       <ToastProvider v-bind="toast">
-        <slot />
+        <LoadingBar v-bind="loadingBar">
+          <slot />
+        </LoadingBar>
       </ToastProvider>
     </DialogProvider>
   </ConfigProvider>

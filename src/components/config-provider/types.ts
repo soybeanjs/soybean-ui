@@ -1,6 +1,7 @@
 import type { PropsToContext, ConfigProviderProps as _ConfigProviderProps } from '@soybeanjs/headless';
 import type { ThemeOptions } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
+import type { LoadingBarProviderProps } from '../progress/types';
 import type { ToastProviderProps } from '../toast/types';
 
 export interface ConfigProviderProps extends _ConfigProviderProps {
@@ -23,6 +24,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
      */
     height?: string;
   };
+  loadingBar?: LoadingBarProviderProps;
   toast?: ToastProviderProps;
 }
 
