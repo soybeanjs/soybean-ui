@@ -8,6 +8,23 @@ import {
 } from '../../../src/components/input-opt';
 import { getA11yViolations } from '../../shared/a11y';
 
+function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
+  Object.defineProperty(element, 'getBoundingClientRect', {
+    configurable: true,
+    value: () => ({
+      x: rect.x ?? 0,
+      y: rect.y ?? 0,
+      top: rect.y ?? 0,
+      left: rect.x ?? 0,
+      right: (rect.x ?? 0) + (rect.width ?? 0),
+      bottom: (rect.y ?? 0) + (rect.height ?? 0),
+      width: rect.width ?? 0,
+      height: rect.height ?? 0,
+      toJSON: () => ({})
+    })
+  });
+}
+
 const DemoInputOpt = {
   components: {
     SInputOpt,
@@ -78,6 +95,13 @@ describe('SInputOpt', () => {
       expect(slots[5]?.text()).toBe('6');
       wrapper.unmount();
     });
+
+    it('renders a styled separator without icon markup', () => {
+      const wrapper = mount(DemoInputOpt, { attachTo: document.body });
+
+      expect(wrapper.find('[data-slot="input-opt-separator"] img').exists()).toBe(false);
+      wrapper.unmount();
+    });
   });
 
   describe('value state', () => {
@@ -88,6 +112,45 @@ describe('SInputOpt', () => {
 
       expect(wrapper.emitted('update:modelValue')?.[0]).toEqual(['123456']);
       expect(wrapper.emitted('complete')?.[0]).toEqual(['123456']);
+      wrapper.unmount();
+    });
+
+    it('selects a filled slot on click so it can be replaced', async () => {
+      const wrapper = mount(DemoInputOpt, {
+        props: { modelValue: '123456' },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input');
+      const slots = wrapper.findAll('[data-slot="input-opt-slot"]');
+
+      slots.forEach((slot, index) => {
+        mockRect(slot.element, { x: index * 10, y: 0, width: 10, height: 10 });
+      });
+
+      await input.trigger('click', { clientX: 25, clientY: 5 });
+
+      expect((input.element as HTMLInputElement).selectionStart).toBe(2);
+      expect((input.element as HTMLInputElement).selectionEnd).toBe(3);
+      wrapper.unmount();
+    });
+
+    it('updates the active slot when navigating with the keyboard', async () => {
+      const wrapper = mount(DemoInputOpt, {
+        props: { modelValue: '123456' },
+        attachTo: document.body
+      });
+
+      const input = wrapper.find('input');
+
+      await input.trigger('focus');
+      (input.element as HTMLInputElement).setSelectionRange(4, 4);
+      await input.trigger('keydown', { key: 'ArrowLeft' });
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      const slots = wrapper.findAll('[data-slot="input-opt-slot"]');
+
+      expect(slots[4]?.attributes('data-active')).toBe('true');
       wrapper.unmount();
     });
   });

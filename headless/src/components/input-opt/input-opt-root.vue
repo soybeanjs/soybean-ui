@@ -68,6 +68,8 @@ const attrs = useAttrs();
 
 const [inputElement, setInputElement] = useForwardElement();
 
+const rootElement = shallowRef<HTMLElement>();
+
 const cls = useInputOptUi('root');
 const inputCls = useInputOptUi('input');
 
@@ -129,6 +131,30 @@ function updateSelectionMirror() {
   selectionEnd.value = input.selectionEnd;
 }
 
+function setSelectionRange(start: number, end = start) {
+  const input = inputElement.value as HTMLInputElement | undefined;
+
+  if (!input) return;
+
+  input.setSelectionRange(start, end);
+  selectionStart.value = start;
+  selectionEnd.value = end;
+}
+
+function getSlotIndexFromPoint(clientX: number, clientY: number) {
+  const slotElements = rootElement.value?.querySelectorAll<HTMLElement>('[data-slot="input-opt-slot"]');
+
+  if (!slotElements?.length) return null;
+
+  const index = Array.from(slotElements).findIndex(slotElement => {
+    const rect = slotElement.getBoundingClientRect();
+
+    return clientX >= rect.left && clientX <= rect.right && clientY >= rect.top && clientY <= rect.bottom;
+  });
+
+  return index === -1 ? null : index;
+}
+
 function focusActiveRange() {
   const input = inputElement.value as HTMLInputElement | undefined;
 
@@ -137,9 +163,7 @@ function focusActiveRange() {
   const valueLength = currentValue.value.length;
   const start = Math.min(valueLength, Math.max(props.maxlength - 1, 0));
 
-  input.setSelectionRange(start, valueLength);
-  selectionStart.value = start;
-  selectionEnd.value = valueLength;
+  setSelectionRange(start, valueLength);
 }
 
 function isValidValue(value: string) {
@@ -176,6 +200,38 @@ function onBlur() {
 function onFocus() {
   isFocused.value = true;
   focusActiveRange();
+}
+
+function onClick(event: MouseEvent) {
+  const slotIndex = getSlotIndexFromPoint(event.clientX, event.clientY);
+
+  if (slotIndex === null) return;
+
+  const slotValue = currentValue.value[slotIndex];
+
+  if (slotValue === undefined) {
+    setSelectionRange(slotIndex);
+    return;
+  }
+
+  setSelectionRange(slotIndex, slotIndex + 1);
+}
+
+function syncSelectionMirrorSoon() {
+  setTimeout(() => {
+    if (isFocused.value) {
+      updateSelectionMirror();
+    }
+  });
+}
+
+function onKeydown(event: KeyboardEvent) {
+  const isSelectAll = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'a';
+  const shouldSyncSelection = isSelectAll || ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key);
+
+  if (!shouldSyncSelection) return;
+
+  syncSelectionMirrorSoon();
 }
 
 function onMouseLeave() {
@@ -240,7 +296,7 @@ provideInputOptRootContext({
 </script>
 
 <template>
-  <div :class="cls" data-slot="input-opt" :data-disabled="disabled ? '' : undefined">
+  <div ref="rootElement" :class="cls" data-slot="input-opt" :data-disabled="disabled ? '' : undefined">
     <slot :slots="slots" :is-focused="isFocused" :is-hovering="isHovering" />
     <input
       v-bind="attrs"
@@ -266,9 +322,10 @@ provideInputOptRootContext({
       type="text"
       :value="currentValue"
       @blur="onBlur"
-      @click="focusActiveRange"
+      @click="onClick"
       @focus="onFocus"
       @input="onInput"
+      @keydown="onKeydown"
       @mouseleave="onMouseLeave"
       @mouseover="onMouseOver"
       @paste="onPaste"

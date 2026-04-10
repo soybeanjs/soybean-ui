@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const inputOptVariants = tv({
   slots: {
-    root: 'group relative flex items-center gap-2 has-[:disabled]:opacity-50',
+    root: 'group relative inline-flex w-fit items-center gap-2 has-[:disabled]:opacity-50',
     input: [
       'absolute inset-0 h-full w-full rounded-md border-0 bg-transparent text-transparent outline-none',
       'caret-transparent [font-variant-numeric:tabular-nums] selection:bg-transparent selection:text-transparent',
@@ -15,6 +15,8 @@ export const inputOptVariants = tv({
 export const inputOptGroupClass = 'flex items-center';
 
 export const inputOptSeparatorClass = 'flex items-center justify-center text-muted-foreground';
+
+export const inputOptSeparatorLineClass = 'h-0.5 w-3 rounded-full bg-border';
 
 export const inputOptSlotClass = [
   'relative flex size-9 items-center justify-center border-y border-r border-input bg-background text-sm shadow-xs transition-all',
