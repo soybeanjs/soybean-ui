@@ -27,6 +27,17 @@ describe('SEditable', () => {
 
       wrapper.unmount();
     });
+
+    it('applies the root id to the input element', async () => {
+      const wrapper = mount(SEditable, {
+        props: { id: 'editable-input', startWithEditMode: true },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('input').attributes('id')).toBe('editable-input');
+
+      wrapper.unmount();
+    });
   });
 
   describe('editing state', () => {
@@ -127,6 +138,25 @@ describe('SEditable', () => {
 
       expect(wrapper.find('input').element.hidden).toBe(true);
       expect((editTrigger.element as HTMLButtonElement).disabled).toBe(true);
+
+      wrapper.unmount();
+    });
+  });
+
+  describe('accessible labels', () => {
+    it('allows overriding trigger aria-labels', () => {
+      const wrapper = mount(SEditable, {
+        props: {
+          editTriggerProps: { 'aria-label': 'Rename' },
+          submitTriggerProps: { 'aria-label': 'Save changes' },
+          cancelTriggerProps: { 'aria-label': 'Discard changes' }
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.find('button[aria-label="Rename"]').exists()).toBe(true);
+      expect(wrapper.find('button[aria-label="Save changes"]').exists()).toBe(true);
+      expect(wrapper.find('button[aria-label="Discard changes"]').exists()).toBe(true);
 
       wrapper.unmount();
     });

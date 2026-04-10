@@ -43,6 +43,8 @@ const forwardedProps = useOmitProps(props, [
   'startWithEditMode',
   'maxLength',
   'id',
+  'name',
+  'required',
   'autoResize'
 ]);
 

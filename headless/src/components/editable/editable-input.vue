@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { nextTick, onMounted, watch } from 'vue';
+import { computed, nextTick, onMounted, useAttrs, watch } from 'vue';
+import { getAriaLabel } from '../../shared';
 import { Primitive } from '../primitive';
 import { useEditableRootContext, useEditableUi } from './context';
 import type { EditableInputProps } from './types';
@@ -10,10 +11,15 @@ defineOptions({
 
 const props = defineProps<EditableInputProps>();
 
+const attrs = useAttrs();
+
+const editableInputProps = props as { id?: string };
+
 const {
   dataDisabled,
   dataReadonly,
   dataState,
+  id,
   inputElement,
   inputValue,
   isEditing,
@@ -29,6 +35,18 @@ const {
 } = useEditableRootContext('EditableInput');
 
 const cls = useEditableUi('input');
+
+const inputId = computed<string | undefined>(() => {
+  return editableInputProps.id || id.value;
+});
+
+const ariaLabel = computed(() => {
+  if (attrs['aria-labelledby']) {
+    return undefined;
+  }
+
+  return getAriaLabel(inputElement.value, inputId.value, attrs['aria-label'] as string);
+});
 
 function focusInput() {
   inputElement.value?.focus({ preventScroll: true });
@@ -76,11 +94,12 @@ onMounted(() => {
 <template>
   <Primitive
     v-bind="props"
+    :id="inputId"
     :ref="setInputElement"
     :as="props.as || 'input'"
     :as-child="props.asChild"
     :class="cls"
-    aria-label="Editable input"
+    :aria-label="ariaLabel"
     :data-disabled="dataDisabled"
     :data-readonly="dataReadonly"
     :data-state="dataState"

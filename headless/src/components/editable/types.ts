@@ -60,7 +60,9 @@ export interface EditableAreaProps extends PrimitiveProps, /** @vue-ignore */ HT
 
 export interface EditablePreviewProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ InputHTMLAttributes {}
+export interface EditableInputProps extends PrimitiveProps, /** @vue-ignore */ Omit<InputHTMLAttributes, 'id'> {
+  id?: string;
+}
 
 export interface EditableEditTriggerProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
