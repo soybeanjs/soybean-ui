@@ -70,6 +70,10 @@ function setContentId(id: string) {
 }
 
 function onKeydown(event: KeyboardEvent) {
+  if (event.target !== event.currentTarget) {
+    return;
+  }
+
   const previousKey = props.orientation === 'vertical' ? 'ArrowUp' : dir.value === 'rtl' ? 'ArrowRight' : 'ArrowLeft';
   const nextKey = props.orientation === 'vertical' ? 'ArrowDown' : dir.value === 'rtl' ? 'ArrowLeft' : 'ArrowRight';
 

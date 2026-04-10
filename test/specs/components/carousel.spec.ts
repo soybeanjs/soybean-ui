@@ -197,6 +197,45 @@ describe('SCarousel', () => {
       expect(emblaMock.api.scrollPrev).toHaveBeenCalledTimes(1);
       wrapper.unmount();
     });
+
+    it('does not intercept arrow keys from descendant inputs', async () => {
+      const wrapper = mount(SCarousel, {
+        props: {
+          'aria-label': 'Interactive carousel'
+        },
+        slots: {
+          default: `
+            <SCarouselContent>
+              <SCarouselItem>
+                <input data-test-input />
+              </SCarouselItem>
+            </SCarouselContent>
+            <SCarouselPrevious />
+            <SCarouselNext />
+          `
+        },
+        attachTo: document.body,
+        global: {
+          components: {
+            SCarouselContent,
+            SCarouselItem,
+            SCarouselNext,
+            SCarouselPrevious
+          }
+        }
+      });
+      await nextTick();
+
+      const input = wrapper.find('[data-test-input]');
+      const event = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true, cancelable: true });
+
+      input.element.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(false);
+      expect(emblaMock.api.scrollPrev).not.toHaveBeenCalled();
+      expect(emblaMock.api.scrollNext).not.toHaveBeenCalled();
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
