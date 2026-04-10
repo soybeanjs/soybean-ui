@@ -1,7 +1,7 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
 
-const toolbarButtonBase = [
+const sharedButtonClasses = [
   'inline-flex h-7 min-w-7 items-center justify-center gap-1 rounded-sm px-2 text-sm font-medium transition-colors',
   'outline-none hover:bg-accent hover:text-accent-foreground',
   'focus-visible:ring-3 focus-visible:ring-primary/30',
@@ -17,13 +17,13 @@ export const toolbarVariants = tv({
       'data-[orientation=vertical]:h-auto data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col',
       'data-[orientation=horizontal]:h-9'
     ],
-    button: toolbarButtonBase,
-    link: [...toolbarButtonBase, 'select-none no-underline'],
+    button: sharedButtonClasses,
+    link: [...sharedButtonClasses, 'select-none no-underline'],
     separator: [
       'shrink-0 bg-border data-[orientation=vertical]:mx-1 data-[orientation=vertical]:h-4 data-[orientation=vertical]:w-px',
       'data-[orientation=horizontal]:my-1 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full'
     ],
     toggleGroup: 'inline-flex items-center gap-1 data-[orientation=vertical]:flex-col',
-    toggleItem: [...toolbarButtonBase, 'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground']
+    toggleItem: [...sharedButtonClasses, 'data-[state=on]:bg-accent data-[state=on]:text-accent-foreground']
   }
 });

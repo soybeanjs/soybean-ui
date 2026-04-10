@@ -117,12 +117,12 @@ vertical
     name: 'ToolbarUi',
     description: 'Toolbar slot class map.',
     fields: [
-      { name: 'root', type: 'string', description: 'Toolbar root class.' },
-      { name: 'button', type: 'string', description: 'Toolbar button class.' },
-      { name: 'link', type: 'string', description: 'Toolbar link class.' },
-      { name: 'separator', type: 'string', description: 'Toolbar separator class.' },
-      { name: 'toggleGroup', type: 'string', description: 'Toolbar toggle group class.' },
-      { name: 'toggleItem', type: 'string', description: 'Toolbar toggle item class.' }
+      { name: 'root', type: 'ClassValue', description: 'Toolbar root class.' },
+      { name: 'button', type: 'ClassValue', description: 'Toolbar button class.' },
+      { name: 'link', type: 'ClassValue', description: 'Toolbar link class.' },
+      { name: 'separator', type: 'ClassValue', description: 'Toolbar separator class.' },
+      { name: 'toggleGroup', type: 'ClassValue', description: 'Toolbar toggle group class.' },
+      { name: 'toggleItem', type: 'ClassValue', description: 'Toolbar toggle item class.' }
     ],
   }
 ]"/>

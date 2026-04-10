@@ -117,12 +117,12 @@ vertical
     name: 'ToolbarUi',
     description: 'Toolbar 的 slot 类名映射。',
     fields: [
-      { name: 'root', type: 'string', description: '工具栏根节点类名' },
-      { name: 'button', type: 'string', description: '工具栏按钮类名' },
-      { name: 'link', type: 'string', description: '工具栏链接类名' },
-      { name: 'separator', type: 'string', description: '工具栏分隔线类名' },
-      { name: 'toggleGroup', type: 'string', description: '工具栏切换组类名' },
-      { name: 'toggleItem', type: 'string', description: '工具栏切换项类名' }
+      { name: 'root', type: 'ClassValue', description: '工具栏根节点类名' },
+      { name: 'button', type: 'ClassValue', description: '工具栏按钮类名' },
+      { name: 'link', type: 'ClassValue', description: '工具栏链接类名' },
+      { name: 'separator', type: 'ClassValue', description: '工具栏分隔线类名' },
+      { name: 'toggleGroup', type: 'ClassValue', description: '工具栏切换组类名' },
+      { name: 'toggleItem', type: 'ClassValue', description: '工具栏切换项类名' }
     ],
   }
 ]"/>
