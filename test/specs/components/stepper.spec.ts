@@ -37,13 +37,16 @@ describe('SStepper', () => {
         props: { items, orientation: 'vertical' },
         attachTo: document.body
       });
-      const activeSeparator = wrapper
-        .findAll('[data-orientation="vertical"][data-state="active"]')
-        .find(node => node.classes().includes('w-0.5'));
+      const activeItem = wrapper.find('[aria-current="step"]');
+      const itemChildren = Array.from(activeItem.element.children);
+      const activeSeparator = itemChildren[1] as HTMLElement | undefined;
 
       expect(wrapper.find('[role="group"]').classes()).toContain('gap-0');
-      expect(wrapper.find('[aria-current="step"]').classes()).toContain('flex-col');
-      expect(activeSeparator?.classes()).toContain('ms-4');
+      expect(activeItem.classes()).toContain('flex-col');
+      expect(itemChildren[0]?.tagName).toBe('BUTTON');
+      expect(activeSeparator?.getAttribute('role')).toBe('none');
+      expect(activeSeparator?.dataset.orientation).toBe('vertical');
+      expect(activeSeparator?.className).toContain('ms-4');
       wrapper.unmount();
     });
   });
