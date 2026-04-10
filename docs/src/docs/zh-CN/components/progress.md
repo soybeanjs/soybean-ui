@@ -97,7 +97,7 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 ## 顶部加载条
 
-`useLoadingBar` 基于 `SProgress` 提供顶部加载条能力。应用被 `SConfigProvider` 包裹时会自动挂载加载条 provider；如有需要，也可以手动挂载 `SLoadingBar`。
+`useLoadingBar` 基于 `SProgress` 提供顶部加载条能力。应用被 `SConfigProvider` 包裹时会自动挂载加载条 provider；如有需要，也可以在已有 `SConfigProvider` 树内单独挂载 `SLoadingBar`。
 
 ```vue
 <script setup lang="ts">

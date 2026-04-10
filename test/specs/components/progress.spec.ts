@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import SProgress from '../../../src/components/progress/progress.vue';
-import SLoadingBar from '../../../src/components/progress/loading-bar.vue';
 import { useLoadingBar } from '../../../src/components/progress/context';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -13,11 +13,14 @@ describe('SProgress', () => {
 
   describe('rendering', () => {
     it('renders progressbar semantics and custom class', () => {
-      const wrapper = mount(SProgress, {
-        props: {
-          class: 'my-progress',
-          modelValue: 45
-        },
+      const wrapper = mount({
+        components: { SConfigProvider, SProgress },
+        template: `
+          <SConfigProvider>
+            <SProgress class="my-progress" :model-value="45" />
+          </SConfigProvider>
+        `
+      }, {
         attachTo: document.body
       });
 
@@ -31,10 +34,14 @@ describe('SProgress', () => {
 
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
-      const wrapper = mount(SProgress, {
-        props: {
-          modelValue: 45
-        },
+      const wrapper = mount({
+        components: { SConfigProvider, SProgress },
+        template: `
+          <SConfigProvider>
+            <SProgress :model-value="45" />
+          </SConfigProvider>
+        `
+      }, {
         attachTo: document.body
       });
 
@@ -54,7 +61,14 @@ describe('useLoadingBar', () => {
   it('shows the loading bar on start and hides it after finish', async () => {
     vi.useFakeTimers();
 
-    const wrapper = mount(SLoadingBar, {
+    const wrapper = mount({
+      components: { SConfigProvider },
+      template: `
+        <SConfigProvider>
+          <div />
+        </SConfigProvider>
+      `
+    }, {
       attachTo: document.body
     });
 
@@ -85,7 +99,14 @@ describe('useLoadingBar', () => {
   it('switches to the error color when error is called', async () => {
     vi.useFakeTimers();
 
-    const wrapper = mount(SLoadingBar, {
+    const wrapper = mount({
+      components: { SConfigProvider },
+      template: `
+        <SConfigProvider>
+          <div />
+        </SConfigProvider>
+      `
+    }, {
       attachTo: document.body
     });
 
