@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useAttrs, watch } from 'vue';
 import { useEventListener, useResizeObserver } from '@vueuse/core';
-import { createRafThrottle, getDefaultTarget, getFixedBottom, getFixedTop, getTargetRect, isZeroRect } from './shared';
+import {
+  createRafThrottle,
+  getDefaultTarget,
+  getFixedBottom,
+  getFixedTop,
+  getTargetRect,
+  isZeroRect,
+  resolveAffixTarget
+} from './shared';
 import type { AffixRootEmits, AffixRootProps } from './types';
 
 defineOptions({
@@ -21,15 +29,14 @@ const affixed = shallowRef(false);
 const affixStyle = shallowRef<Record<string, string> | undefined>();
 const placeholderStyle = shallowRef<Record<string, string> | undefined>();
 
-const forwardedAttrs = computed(() => {
-  const { class: _class, style: _style, ...rest } = attrs;
-
-  return rest;
-});
-const cls = computed(() => attrs.class);
 const dataState = computed(() => (affixed.value ? 'fixed' : 'static'));
-const mergedStyle = computed(() => [attrs.style, affixStyle.value].filter(Boolean));
-const resolvedTarget = computed(() => props.target?.() ?? getDefaultTarget());
+
+const resolvedTarget = shallowRef(resolveAffixTarget(props.target));
+
+function syncResolvedTarget() {
+  resolvedTarget.value = resolveAffixTarget(props.target);
+}
+
 const internalOffsetTop = computed(() => {
   if (props.offsetBottom === undefined && props.offsetTop === undefined) {
     return 0;
@@ -83,7 +90,6 @@ function measurePosition() {
 
   if (fixedTop !== undefined || fixedBottom !== undefined) {
     nextAffixStyle = {
-      height: `${placeholderRect.height}px`,
       left: `${placeholderRect.left}px`,
       position: 'fixed',
       width: `${placeholderRect.width}px`
@@ -119,6 +125,7 @@ const updatePosition = createRafThrottle(measurePosition);
 watch(
   [resolvedTarget, () => props.offsetTop, () => props.offsetBottom],
   async () => {
+    syncResolvedTarget();
     await nextTick();
     updatePosition();
   },
@@ -135,7 +142,9 @@ useEventListener(getDefaultTarget, 'resize', updatePosition);
 useResizeObserver(placeholderElement, updatePosition);
 useResizeObserver(fixedElement, updatePosition);
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
+  syncResolvedTarget();
   updatePosition();
 });
 
@@ -152,13 +161,7 @@ defineExpose({
 <template>
   <div ref="placeholderElement">
     <div v-if="affixed" aria-hidden="true" role="presentation" :style="placeholderStyle" />
-    <div
-      ref="fixedElement"
-      v-bind="forwardedAttrs"
-      :class="cls"
-      :style="mergedStyle"
-      :data-state="dataState"
-    >
+    <div ref="fixedElement" v-bind="attrs" :style="affixStyle" :data-state="dataState">
       <slot :affixed="affixed" />
     </div>
   </div>

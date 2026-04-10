@@ -57,7 +57,7 @@ custom-styling
     name: 'AffixTarget',
     description: '用于解析滚动容器的工厂函数',
     fields: [
-      { name: '()', type: '() => Window | HTMLElement | null', description: '返回目标容器' },
+      { name: '()', type: 'string | Window | HTMLElement | (() => HTMLElement)', description: '返回目标容器' },
     ],
   }
 ]"/>

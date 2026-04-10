@@ -14,7 +14,7 @@ const rows = Array.from({ length: 14 }, (_, index) => `Action item ${index + 1}`
           {{ row }}
         </div>
       </div>
-      <SAffix :target="() => container || null" :offset-bottom="16">
+      <SAffix :target="container" :offset-bottom="16">
         <div class="rounded-md border bg-background px-4 py-3 shadow-sm">
           <div class="flex items-center justify-between gap-3">
             <span class="text-sm font-medium">Pinned bottom actions</span>

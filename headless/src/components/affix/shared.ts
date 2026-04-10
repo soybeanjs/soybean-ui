@@ -1,4 +1,5 @@
-import type { AffixTargetElement } from './types';
+import { toValue } from 'vue';
+import type { AffixTarget } from './types';
 
 export interface RafThrottle {
   (): void;
@@ -41,7 +42,31 @@ export function getDefaultTarget(): Window | null {
   return typeof window === 'undefined' ? null : window;
 }
 
-export function getTargetRect(target: AffixTargetElement): DOMRect {
+export function queryTargetSelector(selector: string): HTMLElement | null {
+  if (typeof document === 'undefined') {
+    return null;
+  }
+
+  try {
+    return document.querySelector<HTMLElement>(selector);
+  } catch {
+    return null;
+  }
+}
+
+export function resolveAffixTarget(target?: AffixTarget | null) {
+  if (!target) {
+    return getDefaultTarget();
+  }
+
+  if (typeof target === 'string') {
+    return queryTargetSelector(target);
+  }
+
+  return toValue(target) ?? null;
+}
+
+export function getTargetRect(target: Window | HTMLElement): DOMRect {
   if (target && target !== getDefaultTarget() && 'getBoundingClientRect' in target) {
     return target.getBoundingClientRect();
   }

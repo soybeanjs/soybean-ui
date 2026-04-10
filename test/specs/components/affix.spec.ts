@@ -66,6 +66,84 @@ describe('SAffix', () => {
   });
 
   describe('affixed state', () => {
+    it('accepts a direct element target', async () => {
+      let targetTop = 0;
+      const target = document.createElement('div');
+      document.body.appendChild(target);
+
+      const wrapper = mount(SAffix, {
+        props: { offsetTop: 16, target },
+        slots: { default: 'Pinned content' },
+        attachTo: document.body
+      });
+
+      mockRect(wrapper.element as HTMLElement, () =>
+        createRect({ top: 40, bottom: 80, left: 12, width: 120, height: 40, right: 132 })
+      );
+      mockRect(target, () => createRect({ top: targetTop, bottom: targetTop + 300, width: 400, height: 300 }));
+
+      getAffixRoot(wrapper).updatePosition();
+      await waitForAffixUpdate();
+
+      expect(wrapper.find('[data-state]').attributes('data-state')).toBe('static');
+
+      targetTop = 50;
+      target.dispatchEvent(new Event('scroll'));
+      await waitForAffixUpdate();
+
+      const fixed = wrapper.find('[data-state]');
+
+      expect(fixed.attributes('data-state')).toBe('fixed');
+      expect(fixed.attributes('style')).toContain('top: 66px');
+
+      wrapper.unmount();
+      target.remove();
+    });
+
+    it('resolves a string selector target', async () => {
+      let targetTop = 0;
+      const wrapper = mount(
+        {
+          components: { SAffix },
+          template: `
+            <div id="affix-selector-target">
+              <SAffix :offset-top="16" target="#affix-selector-target">
+                Pinned content
+              </SAffix>
+            </div>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      const target = wrapper.find('#affix-selector-target').element as HTMLElement;
+      const affix = wrapper.findComponent(SAffix);
+
+      mockRect(affix.element as HTMLElement, () =>
+        createRect({ top: 40, bottom: 80, left: 12, width: 120, height: 40, right: 132 })
+      );
+      mockRect(target, () => createRect({ top: targetTop, bottom: targetTop + 300, width: 400, height: 300 }));
+
+      getAffixRoot(wrapper).updatePosition();
+      await waitForAffixUpdate();
+
+      expect(wrapper.find('[data-state]').attributes('data-state')).toBe('static');
+
+      targetTop = 50;
+      target.dispatchEvent(new Event('scroll'));
+      await waitForAffixUpdate();
+
+      const fixed = wrapper.find('[data-state]');
+
+      expect(fixed.attributes('data-state')).toBe('fixed');
+      expect(fixed.attributes('style')).toContain('top: 66px');
+      expect(affix.emitted('change')).toEqual([[true]]);
+
+      wrapper.unmount();
+    });
+
     it('affixes to the top when the offset threshold is reached', async () => {
       let targetTop = 0;
       const target = document.createElement('div');
@@ -92,10 +170,14 @@ describe('SAffix', () => {
       await waitForAffixUpdate();
 
       const fixed = wrapper.find('[data-state]');
+      const placeholder = wrapper.find('[role="presentation"]');
+
       expect(fixed.attributes('data-state')).toBe('fixed');
       expect(fixed.attributes('style')).toContain('position: fixed');
       expect(fixed.attributes('style')).toContain('top: 66px');
       expect(fixed.attributes('style')).toContain('left: 12px');
+      expect(fixed.attributes('style')).not.toContain('height: 40px');
+      expect(placeholder.attributes('style')).toContain('height: 40px');
       expect(wrapper.emitted('change')).toEqual([[true]]);
 
       wrapper.unmount();

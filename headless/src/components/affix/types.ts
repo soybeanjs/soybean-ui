@@ -1,8 +1,6 @@
 import type { HTMLAttributes, ShallowRef } from 'vue';
 
-export type AffixTargetElement = Window | HTMLElement | null;
-
-export type AffixTarget = () => AffixTargetElement;
+export type AffixTarget = string | Window | HTMLElement | (() => HTMLElement);
 
 export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onChange'> {
   /**
@@ -20,7 +18,7 @@ export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 
    *
    * @defaultValue window
    */
-  target?: AffixTarget;
+  target?: AffixTarget | null;
 }
 
 export type AffixRootEmits = {

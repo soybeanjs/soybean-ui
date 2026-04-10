@@ -57,7 +57,7 @@ custom-styling
     name: 'AffixTarget',
     description: 'Factory used to resolve the scroll container',
     fields: [
-      { name: '()', type: '() => Window | HTMLElement | null', description: 'Returns the target container' },
+      { name: '()', type: 'string | Window | HTMLElement | (() => HTMLElement)', description: 'Returns the target container' },
     ],
   }
 ]"/>

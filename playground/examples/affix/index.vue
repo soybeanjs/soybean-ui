@@ -7,10 +7,12 @@ import DemoAffixTarget from './target.vue';
 </script>
 
 <template>
-  <SCard title="Affix" split :ui="{ content: 'flex-c gap-4' }">
-    <DemoAffixBasic />
-    <DemoAffixTarget />
-    <DemoAffixOffsetBottom />
-    <DemoAffixCustomStyling />
+  <SCard title="Affix" split>
+    <div id="__DEMO_AFFIX_SCROLL" class="flex-c gap-4 h-full overflow-auto">
+      <DemoAffixBasic />
+      <DemoAffixTarget />
+      <DemoAffixOffsetBottom />
+      <DemoAffixCustomStyling />
+    </div>
   </SCard>
 </template>
