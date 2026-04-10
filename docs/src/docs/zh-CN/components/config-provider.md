@@ -9,6 +9,7 @@
 - 🎨 **主题系统**：通过 `theme` 属性配置全局颜色和圆角。
 - 📏 **尺寸控制**：管理全局组件尺寸（`xs`、`sm`、`md`、`lg`、`xl`、`2xl`）。
 - 🖼️ **图标配置**：为所有 `SIcon` 组件设置默认宽高。
+- ⏳ **顶部加载条集成**：配置全局顶部加载条。
 - 🍞 **通知集成**：配置全局通知设置。
 - 🌐 **方向**：支持 LTR/RTL 布局。
 
@@ -48,6 +49,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: '全局主题配置（颜色、圆角）' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '全局组件尺寸' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'SIcon 的默认配置' },
+  { name: 'loadingBar', type: 'LoadingBarProviderProps', default: '-', description: '全局顶部加载条配置' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: '全局通知配置' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向' }
 ]"/>

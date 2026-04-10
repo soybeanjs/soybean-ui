@@ -25,6 +25,7 @@ color
 state
 slot
 circle
+loading-bar
 ```
 
 ## Progress API
@@ -92,4 +93,47 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 <DataTable preset="props" :data="[
   { name: 'strokeWidth', type: 'number', default: '8', description: 'Stroke width of the circular indicator.' },
+]"/>
+
+## Loading Bar
+
+`useLoadingBar` controls a top loading bar built on `SProgress`. When your app is wrapped with `SConfigProvider`, the loading bar provider is mounted automatically. You can also mount `SLoadingBar` manually when needed.
+
+```vue
+<script setup lang="ts">
+import { SButton, useLoadingBar } from '@soybeanjs/ui';
+
+const loadingBar = useLoadingBar();
+
+const handleClick = () => {
+  loadingBar.start();
+
+  window.setTimeout(() => {
+    loadingBar.finish();
+  }, 1200);
+};
+</script>
+
+<template>
+  <SButton @click="handleClick">Start loading</SButton>
+</template>
+```
+
+### `useLoadingBar` Methods
+
+| Method | Description |
+| --- | --- |
+| `start()` | Show the loading bar and start the automatic trickle animation. |
+| `set(value)` | Update the loading progress with a value between `0` and `100`. |
+| `finish()` | Complete the loading bar with the provider color, then hide it. |
+| `error()` | Complete the loading bar with the error color, then hide it. |
+| `clear()` | Hide the loading bar immediately and reset its state. |
+
+### `SLoadingBar` Props
+
+<DataTable preset="props" :data="[
+  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: 'Default loading bar color.' },
+  { name: 'errorColor', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'destructive'`, description: 'Color used by `error()`.' },
+  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: 'Loading bar thickness.' },
+  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: 'Custom classes for the loading bar slots.' },
 ]"/>

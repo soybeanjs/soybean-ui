@@ -25,6 +25,7 @@ color
 state
 slot
 circle
+loading-bar
 ```
 
 ## Progress API
@@ -92,4 +93,47 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 <DataTable preset="props" :data="[
   { name: 'strokeWidth', type: 'number', default: '8', description: '环形指示器的描边宽度。' },
+]"/>
+
+## 顶部加载条
+
+`useLoadingBar` 基于 `SProgress` 提供顶部加载条能力。应用被 `SConfigProvider` 包裹时会自动挂载加载条 provider；如有需要，也可以手动挂载 `SLoadingBar`。
+
+```vue
+<script setup lang="ts">
+import { SButton, useLoadingBar } from '@soybeanjs/ui';
+
+const loadingBar = useLoadingBar();
+
+const handleClick = () => {
+  loadingBar.start();
+
+  window.setTimeout(() => {
+    loadingBar.finish();
+  }, 1200);
+};
+</script>
+
+<template>
+  <SButton @click="handleClick">开始加载</SButton>
+</template>
+```
+
+### `useLoadingBar` 方法
+
+| 方法 | 说明 |
+| --- | --- |
+| `start()` | 显示加载条并启动自动递增动画。 |
+| `set(value)` | 将加载进度更新为 `0` 到 `100` 之间的值。 |
+| `finish()` | 使用默认颜色完成加载并自动隐藏。 |
+| `error()` | 使用错误颜色完成加载并自动隐藏。 |
+| `clear()` | 立即隐藏加载条并重置状态。 |
+
+### `SLoadingBar` 属性
+
+<DataTable preset="props" :data="[
+  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: '默认加载条颜色。' },
+  { name: 'errorColor', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'destructive'`, description: '`error()` 使用的颜色。' },
+  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: '加载条粗细。' },
+  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: '为加载条插槽添加自定义类名。' },
 ]"/>
