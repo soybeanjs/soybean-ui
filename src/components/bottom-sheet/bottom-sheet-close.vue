@@ -7,13 +7,13 @@ defineOptions({
   name: 'SBottomSheetClose'
 });
 
-defineProps<DialogCloseProps>();
+const props = defineProps<DialogCloseProps>();
 
 const { size } = useSizeContext('BottomSheetClose');
 </script>
 
 <template>
-  <DialogClose :size="size" as-child>
+  <DialogClose v-bind="props" :size="size" as-child>
     <slot />
   </DialogClose>
 </template>

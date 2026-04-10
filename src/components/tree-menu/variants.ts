@@ -23,7 +23,6 @@ export const treeMenuVariants = tv({
     ],
     collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     sub: 'flex flex-col m-0 list-none ml-[--soybean-tree-menu-indent] border-l border-sidebar-border border-solid',
-    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     itemBadge: ``,

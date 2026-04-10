@@ -135,6 +135,8 @@ describe('SBottomSheet', () => {
         attachTo: document.body
       });
 
+      await nextTick();
+
       const violations = await getA11yViolations(document.body);
 
       expect(violations).toHaveLength(0);
