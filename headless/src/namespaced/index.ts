@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixRoot,
   AlertClose,
   AlertContent,
   AlertDescription,
@@ -117,10 +118,22 @@ import {
   EditablePreview,
   EditableRoot,
   EditableSubmitTrigger,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyRoot,
+  EmptyTitle,
   FormDescription,
   FormError,
   FormField,
   FormLabel,
+  HoverCardArrow,
+  HoverCardPopup,
+  HoverCardPortal,
+  HoverCardPositioner,
+  HoverCardRoot,
+  HoverCardTrigger,
   InputControl,
   InputRoot,
   InputNumberControl,
@@ -309,6 +322,12 @@ export const Accordion = {
   Trigger: typeof AccordionTrigger;
   Header: typeof AccordionHeader;
   Content: typeof AccordionContent;
+};
+
+export const Affix = {
+  Root: AffixRoot
+} as {
+  Root: typeof AffixRoot;
 };
 
 export const Alert = {
@@ -609,6 +628,22 @@ export const Editable = {
   CancelTrigger: typeof EditableCancelTrigger;
 };
 
+export const Empty = {
+  Root: EmptyRoot,
+  Header: EmptyHeader,
+  Media: EmptyMedia,
+  Content: EmptyContent,
+  Title: EmptyTitle,
+  Description: EmptyDescription
+} as {
+  Root: typeof EmptyRoot;
+  Header: typeof EmptyHeader;
+  Media: typeof EmptyMedia;
+  Content: typeof EmptyContent;
+  Title: typeof EmptyTitle;
+  Description: typeof EmptyDescription;
+};
+
 export const Form = {
   Field: FormField,
   Label: FormLabel,
@@ -619,6 +654,22 @@ export const Form = {
   Label: typeof FormLabel;
   Description: typeof FormDescription;
   Error: typeof FormError;
+};
+
+export const HoverCard = {
+  Root: HoverCardRoot,
+  Trigger: HoverCardTrigger,
+  Portal: HoverCardPortal,
+  Positioner: HoverCardPositioner,
+  Popup: HoverCardPopup,
+  Arrow: HoverCardArrow
+} as {
+  Root: typeof HoverCardRoot;
+  Trigger: typeof HoverCardTrigger;
+  Portal: typeof HoverCardPortal;
+  Positioner: typeof HoverCardPositioner;
+  Popup: typeof HoverCardPopup;
+  Arrow: typeof HoverCardArrow;
 };
 
 export const Input = {
