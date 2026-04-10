@@ -149,6 +149,7 @@ describe('SCarousel', () => {
       expect(wrapper.find('[data-soybean-carousel-content]').attributes('data-orientation')).toBe('vertical');
       expect(container.classes()).toContain('h-full');
       expect(previousButton.classes()).not.toContain('rotate-90');
+      expect(previousButton.classes()).toContain('right-auto');
       expect(nextButton.classes()).not.toContain('rotate-90');
       expect(nextButton.classes()).toContain('top-auto');
       expect(nextButton.classes()).toContain('right-auto');
