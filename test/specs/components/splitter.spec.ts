@@ -71,6 +71,42 @@ describe('Splitter', () => {
       expect(Number(panels[1]?.attributes('data-panel-size'))).toBeCloseTo(70, 1);
       wrapper.unmount();
     });
+
+    it('applies resize cursors for handle orientations', () => {
+      const horizontalWrapper = mount(
+        {
+          components: { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle },
+          template: `
+            <SSplitterGroup>
+              <SSplitterPanel :default-size="30">A</SSplitterPanel>
+              <SSplitterResizeHandle aria-label="Resize panels" />
+              <SSplitterPanel :default-size="70">B</SSplitterPanel>
+            </SSplitterGroup>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      const verticalWrapper = mount(
+        {
+          components: { SSplitterGroup, SSplitterPanel, SSplitterResizeHandle },
+          template: `
+            <SSplitterGroup direction="vertical">
+              <SSplitterPanel :default-size="30">A</SSplitterPanel>
+              <SSplitterResizeHandle aria-label="Resize panels" />
+              <SSplitterPanel :default-size="70">B</SSplitterPanel>
+            </SSplitterGroup>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      expect(horizontalWrapper.find('[data-slot="splitter-resize-handle"]').classes()).toContain('cursor-col-resize');
+      expect(verticalWrapper.find('[data-slot="splitter-resize-handle"]').classes()).toContain('data-[orientation=vertical]:cursor-row-resize');
+
+      horizontalWrapper.unmount();
+      verticalWrapper.unmount();
+    });
   });
 
   describe('layout state', () => {
