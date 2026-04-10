@@ -111,7 +111,7 @@ function toNonEmptyString(value: unknown) {
   return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
 }
 
-const ariaLabel = computed(() => toNonEmptyString(attrs['aria-label']) ?? 'Step progress');
+const ariaLabel = computed(() => toNonEmptyString(attrs['aria-label']) ?? 'Step-by-step progress');
 
 const registerStepperItem = (element: HTMLElement) => {
   if (registeredStepperItems.value.includes(element)) return;
