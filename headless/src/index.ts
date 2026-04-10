@@ -1,4 +1,5 @@
 export * from './components/accordion';
+export * from './components/affix';
 export * from './components/alert';
 export * from './components/alert-dialog';
 export * from './components/arrow';
@@ -20,7 +21,9 @@ export * from './components/config-provider';
 export * from './components/context-menu';
 export * from './components/dialog';
 export * from './components/dropdown-menu';
+export * from './components/empty';
 export * from './components/form';
+export * from './components/hover-card';
 export * from './components/input';
 export * from './components/input-number';
 export * from './components/kbd';

@@ -29,6 +29,9 @@ importers:
       '@soybeanjs/shadcn-theme':
         specifier: ^0.3.1
         version: 0.3.1
+      '@vueuse/core':
+        specifier: ^14.2.1
+        version: 14.2.1(vue@3.5.32(typescript@6.0.2))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
