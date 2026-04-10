@@ -64,6 +64,14 @@ export const components = {
   tagsInput: ['STagsInput', 'STagsInputInput', 'STagsInputItem', 'STagsInputItemText', 'STagsInputItemDelete', 'STagsInputClear'],
   textarea: ['STextarea'],
   toast: ['SToast', 'SToastAction', 'SToastClose'],
+  toolbar: [
+    'SToolbar',
+    'SToolbarButton',
+    'SToolbarLink',
+    'SToolbarSeparator',
+    'SToolbarToggleGroup',
+    'SToolbarToggleItem'
+  ],
   toggle: ['SToggle'],
   toggleGroup: ['SToggleGroup', 'SToggleGroupItem'],
   tooltip: ['STooltip'],
