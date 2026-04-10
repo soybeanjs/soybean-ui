@@ -10,16 +10,16 @@
 import { computed, useId } from 'vue';
 import type { CheckedState } from '../../types';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
-import { getTableRowLabel, getTableRowValueByDataIndex } from '../table/shared';
-import TableBody from '../table/table-body.vue';
-import TableCell from '../table/table-cell.vue';
-import TableContent from '../table/table-content.vue';
-import TableFooter from '../table/table-footer.vue';
-import TableHead from '../table/table-head.vue';
-import TableHeader from '../table/table-header.vue';
-import TableRoot from '../table/table-root.vue';
-import TableRow from '../table/table-row.vue';
-import type { BaseTableData, TableEmits, TableProps, TableSlots } from '../table/types';
+import { getTableRowLabel, getTableRowValueByDataIndex } from './shared';
+import TableBody from './table-body.vue';
+import TableCell from './table-cell.vue';
+import TableContent from './table-content.vue';
+import TableFooter from './table-footer.vue';
+import TableHead from './table-head.vue';
+import TableHeader from './table-header.vue';
+import TableRoot from './table-root.vue';
+import TableRow from './table-row.vue';
+import type { BaseTableData, TableEmits, TableProps, TableSlots } from './types';
 
 defineOptions({
   name: 'Table'

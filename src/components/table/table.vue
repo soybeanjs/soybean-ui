@@ -50,8 +50,8 @@ const ui = computed(() => {
 
 provideTableUi(ui);
 
-function getRowLabel(row: BaseTableData) {
-  return getTableRowLabel(row, props.rowKey as (row: BaseTableData) => R);
+function getRowLabel(row: T) {
+  return getTableRowLabel(row, props.rowKey);
 }
 </script>
 

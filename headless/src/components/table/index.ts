@@ -1,4 +1,4 @@
-export { default as Table } from '../data-table/data-table-root.vue';
+export { default as Table } from './table.vue';
 export { default as TableRoot } from './table-root.vue';
 export { default as TableContent } from './table-content.vue';
 export { default as TableHeader } from './table-header.vue';
