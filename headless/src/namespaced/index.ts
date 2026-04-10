@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixRoot,
   AlertClose,
   AlertContent,
   AlertDescription,
@@ -17,6 +18,18 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AutocompleteAnchor,
+  AutocompleteContent,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteItemIndicator,
+  AutocompletePortal,
+  AutocompleteRoot,
+  AutocompleteSeparator,
+  AutocompleteTrigger,
+  AutocompleteViewport,
   AlertRoot,
   AlertTitle,
   Arrow,
@@ -49,6 +62,18 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxGroup,
+  ComboboxGroupLabel,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxItemIndicator,
+  ComboboxPortal,
+  ComboboxRoot,
+  ComboboxSeparator,
+  ComboboxTrigger,
+  ComboboxViewport,
   ColorAreaArea,
   ColorAreaRoot,
   ColorAreaThumb,
@@ -110,10 +135,29 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableEditTrigger,
+  EditableInput,
+  EditablePreview,
+  EditableRoot,
+  EditableSubmitTrigger,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyRoot,
+  EmptyTitle,
   FormDescription,
   FormError,
   FormField,
   FormLabel,
+  HoverCardArrow,
+  HoverCardPopup,
+  HoverCardPortal,
+  HoverCardPositioner,
+  HoverCardRoot,
+  HoverCardTrigger,
   InputControl,
   InputRoot,
   InputNumberControl,
@@ -229,11 +273,21 @@ import {
   SeparatorLabel,
   SeparatorRoot,
   Skeleton,
+  SplitterGroup,
+  SplitterPanel,
+  SplitterResizeHandle,
   SliderRange,
   SliderRoot,
   SliderThumb,
   SliderTrack,
   Slot,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperRoot,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
@@ -251,6 +305,12 @@ import {
   TabsRoot,
   TabsTrigger,
   Tag,
+  TagsInputClear,
+  TagsInputInput,
+  TagsInputItem,
+  TagsInputItemDelete,
+  TagsInputItemText,
+  TagsInputRoot,
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
@@ -310,6 +370,12 @@ export const Accordion = {
   Content: typeof AccordionContent;
 };
 
+export const Affix = {
+  Root: AffixRoot
+} as {
+  Root: typeof AffixRoot;
+};
+
 export const Alert = {
   Root: AlertRoot,
   Title: AlertTitle,
@@ -349,6 +415,34 @@ export const AlertDialog = {
 };
 
 export { Arrow };
+
+export const Autocomplete = {
+  Root: AutocompleteRoot,
+  Anchor: AutocompleteAnchor,
+  Input: AutocompleteInput,
+  Trigger: AutocompleteTrigger,
+  Portal: AutocompletePortal,
+  Content: AutocompleteContent,
+  Viewport: AutocompleteViewport,
+  Group: AutocompleteGroup,
+  GroupLabel: AutocompleteGroupLabel,
+  Item: AutocompleteItem,
+  ItemIndicator: AutocompleteItemIndicator,
+  Separator: AutocompleteSeparator
+} as {
+  Root: typeof AutocompleteRoot;
+  Anchor: typeof AutocompleteAnchor;
+  Input: typeof AutocompleteInput;
+  Trigger: typeof AutocompleteTrigger;
+  Portal: typeof AutocompletePortal;
+  Content: typeof AutocompleteContent;
+  Viewport: typeof AutocompleteViewport;
+  Group: typeof AutocompleteGroup;
+  GroupLabel: typeof AutocompleteGroupLabel;
+  Item: typeof AutocompleteItem;
+  ItemIndicator: typeof AutocompleteItemIndicator;
+  Separator: typeof AutocompleteSeparator;
+};
 
 export { AspectRatio };
 
@@ -430,6 +524,34 @@ export const Collapsible = {
   Root: typeof CollapsibleRoot;
   Trigger: typeof CollapsibleTrigger;
   Content: typeof CollapsibleContent;
+};
+
+export const Combobox = {
+  Root: ComboboxRoot,
+  Trigger: ComboboxTrigger,
+  Portal: ComboboxPortal,
+  Content: ComboboxContent,
+  Viewport: ComboboxViewport,
+  Input: ComboboxInput,
+  Group: ComboboxGroup,
+  GroupLabel: ComboboxGroupLabel,
+  Item: ComboboxItem,
+  ItemIndicator: ComboboxItemIndicator,
+  Empty: ComboboxEmpty,
+  Separator: ComboboxSeparator
+} as {
+  Root: typeof ComboboxRoot;
+  Trigger: typeof ComboboxTrigger;
+  Portal: typeof ComboboxPortal;
+  Content: typeof ComboboxContent;
+  Viewport: typeof ComboboxViewport;
+  Input: typeof ComboboxInput;
+  Group: typeof ComboboxGroup;
+  GroupLabel: typeof ComboboxGroupLabel;
+  Item: typeof ComboboxItem;
+  ItemIndicator: typeof ComboboxItemIndicator;
+  Empty: typeof ComboboxEmpty;
+  Separator: typeof ComboboxSeparator;
 };
 
 export const ColorArea = {
@@ -590,6 +712,40 @@ export const DropdownMenu = {
   RadioGroup: typeof DropdownMenuRadioGroup;
 };
 
+export const Editable = {
+  Root: EditableRoot,
+  Area: EditableArea,
+  Preview: EditablePreview,
+  Input: EditableInput,
+  EditTrigger: EditableEditTrigger,
+  SubmitTrigger: EditableSubmitTrigger,
+  CancelTrigger: EditableCancelTrigger
+} as {
+  Root: typeof EditableRoot;
+  Area: typeof EditableArea;
+  Preview: typeof EditablePreview;
+  Input: typeof EditableInput;
+  EditTrigger: typeof EditableEditTrigger;
+  SubmitTrigger: typeof EditableSubmitTrigger;
+  CancelTrigger: typeof EditableCancelTrigger;
+};
+
+export const Empty = {
+  Root: EmptyRoot,
+  Header: EmptyHeader,
+  Media: EmptyMedia,
+  Content: EmptyContent,
+  Title: EmptyTitle,
+  Description: EmptyDescription
+} as {
+  Root: typeof EmptyRoot;
+  Header: typeof EmptyHeader;
+  Media: typeof EmptyMedia;
+  Content: typeof EmptyContent;
+  Title: typeof EmptyTitle;
+  Description: typeof EmptyDescription;
+};
+
 export const Form = {
   Field: FormField,
   Label: FormLabel,
@@ -600,6 +756,22 @@ export const Form = {
   Label: typeof FormLabel;
   Description: typeof FormDescription;
   Error: typeof FormError;
+};
+
+export const HoverCard = {
+  Root: HoverCardRoot,
+  Trigger: HoverCardTrigger,
+  Portal: HoverCardPortal,
+  Positioner: HoverCardPositioner,
+  Popup: HoverCardPopup,
+  Arrow: HoverCardArrow
+} as {
+  Root: typeof HoverCardRoot;
+  Trigger: typeof HoverCardTrigger;
+  Portal: typeof HoverCardPortal;
+  Positioner: typeof HoverCardPositioner;
+  Popup: typeof HoverCardPopup;
+  Arrow: typeof HoverCardArrow;
 };
 
 export const Input = {
@@ -896,6 +1068,16 @@ export const Separator = {
 
 export { Skeleton };
 
+export const Splitter = {
+  Group: SplitterGroup,
+  Panel: SplitterPanel,
+  ResizeHandle: SplitterResizeHandle
+} as {
+  Group: typeof SplitterGroup;
+  Panel: typeof SplitterPanel;
+  ResizeHandle: typeof SplitterResizeHandle;
+};
+
 export const Slider = {
   Root: SliderRoot,
   Track: SliderTrack,
@@ -909,6 +1091,24 @@ export const Slider = {
 };
 
 export { Slot };
+
+export const Stepper = {
+  Root: StepperRoot,
+  Item: StepperItem,
+  Trigger: StepperTrigger,
+  Indicator: StepperIndicator,
+  Separator: StepperSeparator,
+  Title: StepperTitle,
+  Description: StepperDescription
+} as {
+  Root: typeof StepperRoot;
+  Item: typeof StepperItem;
+  Trigger: typeof StepperTrigger;
+  Indicator: typeof StepperIndicator;
+  Separator: typeof StepperSeparator;
+  Title: typeof StepperTitle;
+  Description: typeof StepperDescription;
+};
 
 export const Switch = {
   Root: SwitchRoot,
@@ -955,6 +1155,22 @@ export const Tabs = {
 };
 
 export { Tag };
+
+export const TagsInput = {
+  Root: TagsInputRoot,
+  Input: TagsInputInput,
+  Item: TagsInputItem,
+  ItemText: TagsInputItemText,
+  ItemDelete: TagsInputItemDelete,
+  Clear: TagsInputClear
+} as {
+  Root: typeof TagsInputRoot;
+  Input: typeof TagsInputInput;
+  Item: typeof TagsInputItem;
+  ItemText: typeof TagsInputItemText;
+  ItemDelete: typeof TagsInputItemDelete;
+  Clear: typeof TagsInputClear;
+};
 
 export const Textarea = {
   Root: TextareaRoot,
