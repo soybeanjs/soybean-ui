@@ -97,10 +97,15 @@ vertical
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the item is disabled.' }
 ]"/>
 
-### Emits
+### SToolbarButton Emits
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: 'Triggered when a toolbar button is clicked.' },
+  { name: 'click', parameters: '(event: MouseEvent) => void', description: 'Triggered when a toolbar button is clicked.' }
+]"/>
+
+### SToolbarToggleGroup Emits
+
+<DataTable preset="emits" :data="[
   { name: 'update:modelValue', parameters: '(value: string | string[]) => void', description: 'Triggered when a toolbar toggle group selection changes.' }
 ]"/>
 

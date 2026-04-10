@@ -20,8 +20,10 @@ const forwardedProps = useOmitProps(props, ['class']);
 
 const mergedClass = computed(() => [cls.value, props.class]);
 
+const focusable = computed(() => !props.disabled && props.tabindex !== '-1' && props.tabindex !== -1);
+
 const onKeyDown = (event: KeyboardEvent) => {
-  if (event.key !== ' ') {
+  if (event.key !== ' ' || props.disabled) {
     return;
   }
 
@@ -31,7 +33,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <RovingFocusItem as-child focusable>
+  <RovingFocusItem as-child :focusable="focusable">
     <Link v-bind="forwardedProps" :class="mergedClass" @keydown="onKeyDown">
       <slot />
     </Link>

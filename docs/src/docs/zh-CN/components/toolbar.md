@@ -97,10 +97,15 @@ vertical
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用切换项' }
 ]"/>
 
-### 事件
+### SToolbarButton 事件
 
 <DataTable preset="emits" :data="[
-  { name: 'click', parameters: '(event: MouseEvent) => void', description: '点击工具栏按钮时触发' },
+  { name: 'click', parameters: '(event: MouseEvent) => void', description: '点击工具栏按钮时触发' }
+]"/>
+
+### SToolbarToggleGroup 事件
+
+<DataTable preset="emits" :data="[
   { name: 'update:modelValue', parameters: '(value: string | string[]) => void', description: '工具栏切换组值变化时触发' }
 ]"/>
 

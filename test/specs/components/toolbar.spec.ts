@@ -134,6 +134,51 @@ describe('SToolbar', () => {
       expect(onClick).toHaveBeenCalledTimes(1);
       wrapper.unmount();
     });
+
+    it('skips disabled toolbar links in roving focus and suppresses space activation', async () => {
+      const wrapper = mount(
+        {
+          components: {
+            SConfigProvider,
+            SToolbar,
+            SToolbarButton,
+            SToolbarLink,
+            SToolbarToggleGroup,
+            SToolbarToggleItem
+          },
+          template: `
+            <SConfigProvider>
+              <SToolbar>
+                <SToolbarButton>Cut</SToolbarButton>
+                <SToolbarLink href="#" disabled>Website</SToolbarLink>
+                <SToolbarToggleGroup model-value="bold">
+                  <SToolbarToggleItem value="bold">Bold</SToolbarToggleItem>
+                </SToolbarToggleGroup>
+              </SToolbar>
+            </SConfigProvider>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      const buttons = wrapper.findAll('button');
+      const link = wrapper.find('a');
+      const onClick = vi.fn((event: Event) => event.preventDefault());
+
+      link.element.addEventListener('click', onClick);
+
+      buttons[0].element.focus();
+      await buttons[0].trigger('keydown', { key: 'ArrowRight' });
+
+      expect(document.activeElement).toBe(buttons[1].element);
+
+      await link.trigger('keydown', { key: ' ' });
+
+      expect(onClick).toHaveBeenCalledTimes(0);
+      wrapper.unmount();
+    });
   });
 
   describe('toggle state', () => {
