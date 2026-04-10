@@ -15,12 +15,12 @@ export const treeMenuVariants = tv({
       `data-[child-active]:text-primary`,
       `data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50`
     ],
-    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     collapsibleContent: [
       'overflow-hidden transition will-change-auto',
       'data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down'
     ],
     sub: 'flex flex-col m-0 list-none ml-[--soybean-tree-menu-indent] border-l border-sidebar-border border-solid',
+    collapsibleIcon: `shrink-0 ml-auto text-muted-foreground transition-transform-200 group-data-[state=open]/button:rotate-90 group-data-[child-active]/button:text-primary`,
     itemLabel: 'truncate',
     itemLinkIcon: `shrink-0 self-start text-muted-foreground`,
     itemBadge: ``,

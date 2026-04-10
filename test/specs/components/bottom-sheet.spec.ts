@@ -8,6 +8,8 @@ function dispatchPointerEvent(target: EventTarget, type: string, init: PointerEv
   target.dispatchEvent(new PointerEvent(type, { bubbles: true, ...init }));
 }
 
+const DRAG_CLOSE_DISTANCE = 180; // exceeds 35% of the mocked 400px sheet height
+
 function mockRect(element: Element, height: number) {
   Object.defineProperty(element, 'getBoundingClientRect', {
     configurable: true,
@@ -109,8 +111,8 @@ describe('SBottomSheet', () => {
         button: 0,
         clientY: 0
       });
-      dispatchPointerEvent(document, 'pointermove', { pointerId: 1, clientY: 180 });
-      dispatchPointerEvent(document, 'pointerup', { pointerId: 1, clientY: 180 });
+      dispatchPointerEvent(document, 'pointermove', { pointerId: 1, clientY: DRAG_CLOSE_DISTANCE });
+      dispatchPointerEvent(document, 'pointerup', { pointerId: 1, clientY: DRAG_CLOSE_DISTANCE });
 
       await nextTick();
 

@@ -26,8 +26,9 @@ defineOptions({
   name: 'SBottomSheet'
 });
 
-const DRAG_RESET_DURATION = 200;
-const VELOCITY_CLOSE_THRESHOLD = 0.75;
+const DRAG_RESET_DURATION = 200; // milliseconds
+const MINIMUM_DRAG_DURATION = 1; // milliseconds
+const VELOCITY_CLOSE_THRESHOLD = 0.75; // pixels per millisecond
 const INTERACTIVE_SELECTOR = [
   'a',
   'button',
@@ -245,7 +246,7 @@ function onPointerUp(event: PointerEvent) {
 
   const contentElement = dragContentElement.value;
   const height = contentElement?.getBoundingClientRect().height ?? 0;
-  const timeElapsed = Math.max(Date.now() - dragStartTime.value, 1);
+  const timeElapsed = Math.max(Date.now() - dragStartTime.value, MINIMUM_DRAG_DURATION);
   const velocity = dragOffset.value / timeElapsed;
   const shouldClose = height > 0
     && (dragOffset.value >= height * props.closeThreshold || velocity >= VELOCITY_CLOSE_THRESHOLD);
