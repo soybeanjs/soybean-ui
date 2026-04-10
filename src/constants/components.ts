@@ -54,6 +54,7 @@ export const components = {
   skeleton: ['SSkeleton'],
   spinner: ['SSpinner'],
   slider: ['SSlider'],
+  stepper: ['SStepper'],
   switch: ['SSwitch'],
   table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],

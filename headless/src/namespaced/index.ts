@@ -266,6 +266,13 @@ import {
   SliderThumb,
   SliderTrack,
   Slot,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperRoot,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
@@ -1019,6 +1026,24 @@ export const Slider = {
 };
 
 export { Slot };
+
+export const Stepper = {
+  Root: StepperRoot,
+  Item: StepperItem,
+  Trigger: StepperTrigger,
+  Indicator: StepperIndicator,
+  Separator: StepperSeparator,
+  Title: StepperTitle,
+  Description: StepperDescription
+} as {
+  Root: typeof StepperRoot;
+  Item: typeof StepperItem;
+  Trigger: typeof StepperTrigger;
+  Indicator: typeof StepperIndicator;
+  Separator: typeof StepperSeparator;
+  Title: typeof StepperTitle;
+  Description: typeof StepperDescription;
+};
 
 export const Switch = {
   Root: SwitchRoot,
