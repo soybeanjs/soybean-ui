@@ -50,7 +50,8 @@ export const anchorVariants = tv({
     },
     sticky: {
       true: {
-        root: 'sticky top-[var(--soybean-anchor-offset-top,0px)] max-h-[calc(100vh-var(--soybean-anchor-offset-top,0px))] overflow-auto pe-1'
+        root:
+          'sticky self-start top-[var(--soybean-anchor-offset-top,0px)] max-h-[calc(100vh-var(--soybean-anchor-offset-top,0px))] overflow-auto pe-1'
       },
       false: {}
     }
