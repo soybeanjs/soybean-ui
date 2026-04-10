@@ -14,6 +14,7 @@ export const components = {
   card: ['SCard', 'SCardCollapsibleTrigger'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
   collapsible: ['SCollapsible', 'SCollapsibleContent', 'SCollapsibleTrigger'],
+  combobox: ['SCombobox'],
   colorArea: ['SColorArea'],
   colorField: ['SColorField'],
   colorPicker: ['SColorPicker'],
