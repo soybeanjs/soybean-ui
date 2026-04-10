@@ -12,6 +12,7 @@ defineOptions({
 
 const NAVIGATION_KEYS = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
 const SELECTION_SYNC_DELAY = 0;
+let skipModelSelectionSync = false;
 
 // eslint-disable-next-line vue/define-props-declaration
 const props = defineProps({
@@ -88,6 +89,7 @@ const isFocused = shallowRef(false);
 const isHovering = shallowRef(false);
 const selectionStart = shallowRef<number | null>(null);
 const selectionEnd = shallowRef<number | null>(null);
+const pendingSelection = shallowRef<{ start: number; end: number } | null>(null);
 
 const autocomplete = computed(() => props.autocomplete ?? 'one-time-code');
 const inputmode = computed(() => props.inputmode ?? 'numeric');
@@ -144,6 +146,26 @@ function setSelectionRange(start: number, end = start) {
   selectionEnd.value = end;
 }
 
+function restorePendingSelection() {
+  if (!pendingSelection.value) return false;
+
+  setSelectionRange(pendingSelection.value.start, pendingSelection.value.end);
+  pendingSelection.value = null;
+
+  return true;
+}
+
+function selectSlot(slotIndex: number) {
+  const slotValue = currentValue.value[slotIndex];
+
+  if (slotValue === undefined) {
+    setSelectionRange(slotIndex);
+    return;
+  }
+
+  setSelectionRange(slotIndex, slotIndex + 1);
+}
+
 function getSlotIndexFromPoint(clientX: number, clientY: number) {
   const slotElements = rootElement.value?.querySelectorAll<HTMLElement>('[data-slot="input-opt-slot"]');
 
@@ -186,18 +208,55 @@ function setValue(value: string) {
 
 function onInput(event: Event) {
   const input = event.target as HTMLInputElement;
+  const previousValue = currentValue.value;
+  const previousSelectionStart = selectionStart.value;
+  const previousSelectionEnd = selectionEnd.value;
+  let nextSelectionStart = input.selectionStart;
+  let nextSelectionEnd = input.selectionEnd;
+
+  if (previousSelectionStart !== null && previousSelectionEnd !== null && previousSelectionStart !== previousSelectionEnd) {
+    const replacedLength = previousSelectionEnd - previousSelectionStart;
+    const insertedLength = Math.max(input.value.length - (previousValue.length - replacedLength), 0);
+    const nextCaret = Math.min(previousSelectionStart + insertedLength, props.maxlength);
+
+    nextSelectionStart = nextCaret;
+    nextSelectionEnd = nextCaret;
+  }
 
   if (!setValue(input.value)) {
     input.value = currentValue.value;
+    pendingSelection.value = null;
+    skipModelSelectionSync = false;
+    nextTick(updateSelectionMirror);
+    return;
   }
 
-  nextTick(updateSelectionMirror);
+  pendingSelection.value = nextSelectionStart !== null && nextSelectionEnd !== null
+    ? {
+        start: Math.min(nextSelectionStart, props.maxlength),
+        end: Math.min(nextSelectionEnd, props.maxlength)
+      }
+    : null;
+  selectionStart.value = pendingSelection.value?.start ?? null;
+  selectionEnd.value = pendingSelection.value?.end ?? null;
+  skipModelSelectionSync = true;
+
+  nextTick(() => {
+    setTimeout(() => {
+      if (isFocused.value && !restorePendingSelection()) {
+        updateSelectionMirror();
+      }
+
+      skipModelSelectionSync = false;
+    }, SELECTION_SYNC_DELAY);
+  });
 }
 
 function onBlur() {
   isFocused.value = false;
   selectionStart.value = null;
   selectionEnd.value = null;
+  pendingSelection.value = null;
 }
 
 function onFocus() {
@@ -205,19 +264,25 @@ function onFocus() {
   focusActiveRange();
 }
 
-function onClick(event: MouseEvent) {
+function onPointerDown(event: PointerEvent) {
+  if (event.button !== 0 || props.disabled || props.readonly) return;
+
   const slotIndex = getSlotIndexFromPoint(event.clientX, event.clientY);
 
   if (slotIndex === null) return;
 
-  const slotValue = currentValue.value[slotIndex];
+  event.preventDefault();
+  (inputElement.value as HTMLInputElement | undefined)?.focus();
+  isFocused.value = true;
+  selectSlot(slotIndex);
+}
 
-  if (slotValue === undefined) {
-    setSelectionRange(slotIndex);
-    return;
+function onClick(event: MouseEvent) {
+  const slotIndex = getSlotIndexFromPoint(event.clientX, event.clientY);
+
+  if (slotIndex !== null) {
+    selectSlot(slotIndex);
   }
-
-  setSelectionRange(slotIndex, slotIndex + 1);
 }
 
 function syncSelectionMirrorSoon() {
@@ -280,7 +345,9 @@ watch(
     }
 
     nextTick(() => {
-      if (isFocused.value) {
+      if (skipModelSelectionSync) return;
+
+      if (isFocused.value && !restorePendingSelection()) {
         updateSelectionMirror();
       }
     });
@@ -332,6 +399,7 @@ provideInputOptRootContext({
       @mouseleave="onMouseLeave"
       @mouseover="onMouseOver"
       @paste="onPaste"
+      @pointerdown="onPointerDown"
       @select="updateSelectionMirror"
     />
   </div>

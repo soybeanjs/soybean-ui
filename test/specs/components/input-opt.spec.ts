@@ -115,23 +115,35 @@ describe('SInputOpt', () => {
       wrapper.unmount();
     });
 
-    it('selects a filled slot on click so it can be replaced', async () => {
-      const wrapper = mount(DemoInputOpt, {
-        props: { modelValue: '123456' },
-        attachTo: document.body
-      });
+    it('replaces a filled slot after reselection', async () => {
+      const wrapper = mount(DemoInputOpt, { attachTo: document.body });
 
       const input = wrapper.find('input');
+
+      await input.trigger('focus');
+      await input.setValue('123456');
+
       const slots = wrapper.findAll('[data-slot="input-opt-slot"]');
 
       slots.forEach((slot, index) => {
         mockRect(slot.element, { x: index * 10, y: 0, width: 10, height: 10 });
       });
 
-      await input.trigger('click', { clientX: 25, clientY: 5 });
+      await input.trigger('pointerdown', { button: 0, clientX: 5, clientY: 5 });
 
-      expect((input.element as HTMLInputElement).selectionStart).toBe(2);
-      expect((input.element as HTMLInputElement).selectionEnd).toBe(3);
+      const element = input.element as HTMLInputElement;
+
+      expect(element.selectionStart).toBe(0);
+      expect(element.selectionEnd).toBe(1);
+
+      element.setRangeText('9', element.selectionStart ?? 0, element.selectionEnd ?? 0, 'end');
+      element.dispatchEvent(new Event('input', { bubbles: true }));
+      await new Promise(resolve => setTimeout(resolve, 0));
+
+      const updatedSlots = wrapper.findAll('[data-slot="input-opt-slot"]');
+
+      expect(updatedSlots[0]?.text()).toBe('9');
+      expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['923456']);
       wrapper.unmount();
     });
 
