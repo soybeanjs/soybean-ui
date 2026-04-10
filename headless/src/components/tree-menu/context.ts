@@ -1,4 +1,6 @@
+import { computed } from 'vue';
 import { useContext, useUiContext } from '../../composables';
+import { provideCollapsibleUi } from '../collapsible/context';
 import type { TreeMenuItemContext, TreeMenuRootContextParams, TreeMenuUiSlot } from './types';
 
 export const [provideTreeMenuRootContext, useTreeMenuRootContext] = useContext(
@@ -38,4 +40,14 @@ export const [provideTreeMenuRootContext, useTreeMenuRootContext] = useContext(
 
 export const [provideTreeMenuItemContext, useTreeMenuItemContext] = useContext<TreeMenuItemContext>('TreeMenuItem');
 
-export const [provideTreeMenuUi, useTreeMenuUi] = useUiContext<TreeMenuUiSlot>('TreeMenuUi');
+export const [provideTreeMenuUi, useTreeMenuUi] = useUiContext<TreeMenuUiSlot>('TreeMenuUi', ui => {
+  const collapsibleUi = computed(() => ({
+    root: ui.value.collapsibleRoot,
+    trigger: ui.value.collapsibleTrigger,
+    content: ui.value.collapsibleContent
+  }));
+
+  provideCollapsibleUi(collapsibleUi);
+
+  return ui;
+});

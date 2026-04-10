@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { CollapsibleContent, CollapsibleRoot, CollapsibleTrigger } from '../collapsible';
-import { useTreeMenuItemContext, useTreeMenuUi } from './context';
+import { useTreeMenuItemContext } from './context';
 import type { TreeMenuCollapsibleProps } from './types';
 
 defineOptions({
@@ -12,8 +12,6 @@ const props = defineProps<TreeMenuCollapsibleProps>();
 
 const { isExpanded, onExpandedToggle } = useTreeMenuItemContext('TreeMenuCollapsible');
 
-const cls = useTreeMenuUi('collapsibleContent');
-
 const open = computed(() => !props.disabledCollapsible && isExpanded.value);
 </script>
 
@@ -23,7 +21,7 @@ const open = computed(() => !props.disabledCollapsible && isExpanded.value);
       <slot name="trigger" />
     </CollapsibleTrigger>
     <slot name="extra" />
-    <CollapsibleContent :class="cls">
+    <CollapsibleContent>
       <slot />
     </CollapsibleContent>
   </CollapsibleRoot>
