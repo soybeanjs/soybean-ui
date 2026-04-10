@@ -287,9 +287,6 @@ onBeforeUnmount(() => {
         :data-dragging="isDragging || isResetting ? 'true' : undefined"
         v-on="listeners"
         @pointerdown="onPointerDown"
-        @pointermove="onPointerMove"
-        @pointerup="onPointerUp"
-        @pointercancel="onPointerCancel"
       >
         <div v-if="showHandle" :class="ui.handle" data-bottom-sheet-handle>
           <slot name="handle" v-bind="slotProps">
