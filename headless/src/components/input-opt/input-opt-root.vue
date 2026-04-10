@@ -10,6 +10,9 @@ defineOptions({
   inheritAttrs: false
 });
 
+const NAVIGATION_KEYS = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
+const SELECTION_SYNC_DELAY = 0;
+
 // eslint-disable-next-line vue/define-props-declaration
 const props = defineProps({
   id: {
@@ -222,12 +225,12 @@ function syncSelectionMirrorSoon() {
     if (isFocused.value) {
       updateSelectionMirror();
     }
-  });
+  }, SELECTION_SYNC_DELAY);
 }
 
 function onKeydown(event: KeyboardEvent) {
   const isSelectAll = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'a';
-  const shouldSyncSelection = isSelectAll || ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key);
+  const shouldSyncSelection = isSelectAll || NAVIGATION_KEYS.includes(event.key);
 
   if (!shouldSyncSelection) return;
 
