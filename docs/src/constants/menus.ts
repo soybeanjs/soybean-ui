@@ -8,7 +8,7 @@ export const menuData: MenuData[] = [
   {
     value: 'general',
     i18n: 'sidebar.general',
-    items: ['configProvider', 'button', 'icon', 'link']
+    items: ['configProvider', 'button', 'icon', 'link', 'spinner']
   },
   {
     value: 'groupLayout',
