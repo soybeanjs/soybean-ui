@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
+import { nextTick } from 'vue';
 import {
   SInputOpt,
   SInputOptGroup,
@@ -138,7 +139,7 @@ describe('SInputOpt', () => {
 
       element.setRangeText('9', element.selectionStart ?? 0, element.selectionEnd ?? 0, 'end');
       element.dispatchEvent(new Event('input', { bubbles: true }));
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await nextTick();
 
       const updatedSlots = wrapper.findAll('[data-slot="input-opt-slot"]');
 

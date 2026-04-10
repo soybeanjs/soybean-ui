@@ -12,7 +12,6 @@ defineOptions({
 
 const NAVIGATION_KEYS = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
 const SELECTION_SYNC_DELAY = 0;
-let skipModelSelectionSync = false;
 
 // eslint-disable-next-line vue/define-props-declaration
 const props = defineProps({
@@ -90,6 +89,7 @@ const isHovering = shallowRef(false);
 const selectionStart = shallowRef<number | null>(null);
 const selectionEnd = shallowRef<number | null>(null);
 const pendingSelection = shallowRef<{ start: number; end: number } | null>(null);
+const skipModelSelectionSync = shallowRef(false);
 
 const autocomplete = computed(() => props.autocomplete ?? 'one-time-code');
 const inputmode = computed(() => props.inputmode ?? 'numeric');
@@ -144,6 +144,10 @@ function setSelectionRange(start: number, end = start) {
   input.setSelectionRange(start, end);
   selectionStart.value = start;
   selectionEnd.value = end;
+}
+
+function hasSelectionRange(start: number | null, end: number | null) {
+  return start !== null && end !== null && start !== end;
 }
 
 function restorePendingSelection() {
@@ -214,10 +218,12 @@ function onInput(event: Event) {
   let nextSelectionStart = input.selectionStart;
   let nextSelectionEnd = input.selectionEnd;
 
-  if (previousSelectionStart !== null && previousSelectionEnd !== null && previousSelectionStart !== previousSelectionEnd) {
-    const replacedLength = previousSelectionEnd - previousSelectionStart;
+  if (hasSelectionRange(previousSelectionStart, previousSelectionEnd)) {
+    const activeSelectionStart = previousSelectionStart ?? 0;
+    const activeSelectionEnd = previousSelectionEnd ?? activeSelectionStart;
+    const replacedLength = activeSelectionEnd - activeSelectionStart;
     const insertedLength = Math.max(input.value.length - (previousValue.length - replacedLength), 0);
-    const nextCaret = Math.min(previousSelectionStart + insertedLength, props.maxlength);
+    const nextCaret = Math.min(activeSelectionStart + insertedLength, props.maxlength);
 
     nextSelectionStart = nextCaret;
     nextSelectionEnd = nextCaret;
@@ -226,7 +232,7 @@ function onInput(event: Event) {
   if (!setValue(input.value)) {
     input.value = currentValue.value;
     pendingSelection.value = null;
-    skipModelSelectionSync = false;
+    skipModelSelectionSync.value = false;
     nextTick(updateSelectionMirror);
     return;
   }
@@ -239,7 +245,7 @@ function onInput(event: Event) {
     : null;
   selectionStart.value = pendingSelection.value?.start ?? null;
   selectionEnd.value = pendingSelection.value?.end ?? null;
-  skipModelSelectionSync = true;
+  skipModelSelectionSync.value = true;
 
   nextTick(() => {
     setTimeout(() => {
@@ -247,7 +253,7 @@ function onInput(event: Event) {
         updateSelectionMirror();
       }
 
-      skipModelSelectionSync = false;
+      skipModelSelectionSync.value = false;
     }, SELECTION_SYNC_DELAY);
   });
 }
@@ -345,7 +351,7 @@ watch(
     }
 
     nextTick(() => {
-      if (skipModelSelectionSync) return;
+      if (skipModelSelectionSync.value) return;
 
       if (isFocused.value && !restorePendingSelection()) {
         updateSelectionMirror();
