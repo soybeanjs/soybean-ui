@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<AutocompleteProps<T>>(), {
   emptyLabel: 'No results found.'
 });
 
-const emit = defineEmits<AutocompleteEmits>();
+const emit = defineEmits<AutocompleteEmits<T>>();
 
 type Slots = {
   'input-leading'?: () => any;
@@ -149,8 +149,10 @@ const inputProps = computed(() => ({
 provideAutocompleteUi(headlessUi);
 provideAutocompleteExtraUi(extraUi);
 
+const clearButtonLabel = 'Clear input';
+
 const onSelect = (item: AutocompleteSingleOptionData) => {
-  emit('select', item);
+  emit('select', item as T);
 };
 </script>
 
@@ -170,12 +172,15 @@ const onSelect = (item: AutocompleteSingleOptionData) => {
           </slot>
         </template>
         <template #trailing="{ clear }">
-          <Icon
+          <button
             v-if="clearable && modelValue"
-            icon="lucide:x"
+            type="button"
             :class="ui.inputClearable"
+            :aria-label="clearButtonLabel"
             @click="clear"
-          />
+          >
+            <Icon icon="lucide:x" class="size-1em" aria-hidden="true" />
+          </button>
           <slot name="input-trailing" />
         </template>
       </AutocompleteInput>
@@ -192,8 +197,8 @@ const onSelect = (item: AutocompleteSingleOptionData) => {
             <slot name="empty">{{ emptyLabel }}</slot>
           </div>
           <SAutocompleteOption
-            v-for="item in filteredItems"
-            :key="'items' in item ? `group-${item.label}` : item.value"
+            v-for="(item, index) in filteredItems"
+            :key="'items' in item ? `group-${item.label}-${index}` : item.value"
             :item="item"
             :group-props="groupProps"
             :group-label-props="groupLabelProps"

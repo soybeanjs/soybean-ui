@@ -1,7 +1,8 @@
-import { mount } from '@vue/test-utils';
+import { DOMWrapper, flushPromises, mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import SAutocomplete from '../../../src/components/autocomplete/autocomplete.vue';
+import { MockResizeObserver, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
 
 const items = [
@@ -10,24 +11,38 @@ const items = [
   { value: 'blueberry', label: 'Blueberry' }
 ];
 
-Object.defineProperty(window.HTMLElement.prototype, 'releasePointerCapture', {
-  configurable: true,
-  value: vi.fn()
+const setupHTMLElementPrototypeMock = <K extends keyof HTMLElement>(property: K, value: HTMLElement[K]) => {
+  const descriptor = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, property);
+
+  Object.defineProperty(window.HTMLElement.prototype, property, {
+    configurable: true,
+    value
+  });
+
+  return () => {
+    if (descriptor) {
+      Object.defineProperty(window.HTMLElement.prototype, property, descriptor);
+      return;
+    }
+
+    Reflect.deleteProperty(window.HTMLElement.prototype, property);
+  };
+};
+
+let cleanups: Array<() => void> = [];
+
+beforeEach(() => {
+  cleanups = [
+    setupHTMLElementPrototypeMock('releasePointerCapture', vi.fn() as HTMLElement['releasePointerCapture']),
+    setupHTMLElementPrototypeMock('hasPointerCapture', vi.fn(() => false) as HTMLElement['hasPointerCapture']),
+    setupHTMLElementPrototypeMock('scrollIntoView', vi.fn() as HTMLElement['scrollIntoView'])
+  ];
+  cleanups.push(setupMock('ResizeObserver', MockResizeObserver as typeof ResizeObserver));
 });
-Object.defineProperty(window.HTMLElement.prototype, 'hasPointerCapture', {
-  configurable: true,
-  value: vi.fn(() => false)
-});
-Object.defineProperty(window.HTMLElement.prototype, 'scrollIntoView', {
-  configurable: true,
-  value: vi.fn()
-});
-Object.defineProperty(globalThis, 'ResizeObserver', {
-  configurable: true,
-  value: class ResizeObserverMock {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
+
+afterEach(() => {
+  while (cleanups.length) {
+    cleanups.pop()?.();
   }
 });
 
@@ -93,10 +108,12 @@ describe('SAutocomplete', () => {
         attachTo: document.body
       });
       await nextTick();
+
       const option = Array.from(document.body.querySelectorAll('[role="option"]')).find(node => node.textContent?.includes('Banana'));
       expect(option).toBeTruthy();
-      option?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-      await Promise.resolve();
+      await new DOMWrapper(option as Element).trigger('click');
+      await flushPromises();
+      await nextTick();
       expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['banana']);
       expect(wrapper.emitted('select')?.[0]).toEqual([{ value: 'banana', label: 'Banana' }]);
       wrapper.unmount();

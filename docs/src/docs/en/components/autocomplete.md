@@ -50,6 +50,18 @@ custom-styling
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the component is disabled.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Component size.' },
   { name: 'emptyLabel', type: 'string', default: `'No results found.'`, description: 'Text shown when there are no matching options.' },
+  { name: 'fuseOptions', type: 'UseFuseOptions<AutocompleteSearchOptionData>', default: '-', description: 'Advanced configuration for the internal fuzzy-search behavior.' },
+  { name: 'anchorProps', type: 'AutocompleteAnchorProps', default: '-', description: 'Advanced props forwarded to the internal anchor element.' },
+  { name: 'inputProps', type: 'AutocompleteInputProps', default: '-', description: 'Advanced props forwarded to the internal input root and control.' },
+  { name: 'triggerProps', type: 'AutocompleteTriggerProps', default: '-', description: 'Advanced props forwarded to the trigger button.' },
+  { name: 'portalProps', type: 'AutocompletePortalProps', default: '-', description: 'Advanced props forwarded to the popup portal.' },
+  { name: 'contentProps', type: 'AutocompleteContentProps', default: '-', description: 'Advanced props forwarded to the popup content container.' },
+  { name: 'viewportProps', type: 'AutocompleteViewportProps', default: '-', description: 'Advanced props forwarded to the popup viewport.' },
+  { name: 'groupProps', type: 'AutocompleteGroupProps', default: '-', description: 'Advanced props forwarded to group containers.' },
+  { name: 'groupLabelProps', type: 'AutocompleteGroupLabelProps', default: '-', description: 'Advanced props forwarded to group labels.' },
+  { name: 'itemProps', type: 'Omit<AutocompleteItemProps, \'disabled\' | \'value\'>', default: '-', description: 'Advanced props forwarded to option items.' },
+  { name: 'itemIndicatorProps', type: 'AutocompleteItemIndicatorProps', default: '-', description: 'Advanced props forwarded to selected-item indicators.' },
+  { name: 'separatorProps', type: 'AutocompleteSeparatorProps', default: '-', description: 'Advanced props forwarded to separators between groups or items.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' }
 ]"/>
 

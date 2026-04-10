@@ -12,7 +12,11 @@ export const autocompleteVariants = tv({
     inputRoot: 'flex min-w-0 grow items-center gap-2 bg-transparent',
     inputControl: 'min-w-0 grow border-0 bg-transparent px-0 outline-none placeholder:text-muted-foreground',
     inputIcon: 'shrink-0 text-muted-foreground',
-    inputClearable: 'shrink-0 cursor-pointer text-muted-foreground opacity-70 transition-opacity hover:opacity-100',
+    inputClearable: [
+      'flex shrink-0 items-center justify-center rounded-sm text-muted-foreground opacity-70 outline-none transition-opacity',
+      'hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-1',
+      'disabled:cursor-not-allowed disabled:opacity-40'
+    ],
     trigger: 'flex shrink-0 items-center justify-center text-muted-foreground outline-none disabled:cursor-not-allowed',
     triggerIcon: 'size-1em',
     content: [

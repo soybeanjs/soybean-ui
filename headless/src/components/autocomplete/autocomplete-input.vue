@@ -36,7 +36,7 @@ const {
   onModelValueChange,
   onOpenChange,
   contentId,
-  inputId,
+  inputId: generatedInputId,
   initInputId,
   setInputElement
 } = useAutocompleteRootContext('AutocompleteInput');
@@ -50,6 +50,7 @@ const [inputElement, setLocalInputElement] = useForwardElement(el => {
 
 const disabled = computed(() => props.disabled || listboxDisabled.value || autocompleteDisabled.value || false);
 const activedescendant = shallowRef<string>();
+const inputId = computed(() => props.id ?? props.controlProps?.id ?? generatedInputId.value);
 
 const onUpdateModelValue = (value: string) => {
   onModelValueChange(value);

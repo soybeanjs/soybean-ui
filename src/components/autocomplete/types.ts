@@ -122,8 +122,8 @@ export interface AutocompleteProps<T extends AutocompleteSingleOptionData = Auto
   separatorProps?: AutocompleteSeparatorProps;
 }
 
-export type AutocompleteEmits = AutocompleteRootEmits & {
-  select: [item: AutocompleteSingleOptionData];
+export type AutocompleteEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> = AutocompleteRootEmits & {
+  select: [item: T];
 };
 
 export type {

@@ -50,6 +50,18 @@ custom-styling
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用组件。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '组件尺寸。' },
   { name: 'emptyLabel', type: 'string', default: `'No results found.'`, description: '无匹配结果时显示的文案。' },
+  { name: 'fuseOptions', type: 'UseFuseOptions<AutocompleteSearchOptionData>', default: '-', description: '高级配置。用于自定义内部模糊搜索行为。' },
+  { name: 'anchorProps', type: 'AutocompleteAnchorProps', default: '-', description: '高级配置。透传给内部锚点元素的 props。' },
+  { name: 'inputProps', type: 'AutocompleteInputProps', default: '-', description: '高级配置。透传给内部输入根节点和输入控件的 props。' },
+  { name: 'triggerProps', type: 'AutocompleteTriggerProps', default: '-', description: '高级配置。透传给触发按钮的 props。' },
+  { name: 'portalProps', type: 'AutocompletePortalProps', default: '-', description: '高级配置。透传给弹层 Portal 的 props。' },
+  { name: 'contentProps', type: 'AutocompleteContentProps', default: '-', description: '高级配置。透传给弹层内容容器的 props。' },
+  { name: 'viewportProps', type: 'AutocompleteViewportProps', default: '-', description: '高级配置。透传给弹层视口容器的 props。' },
+  { name: 'groupProps', type: 'AutocompleteGroupProps', default: '-', description: '高级配置。透传给分组容器的 props。' },
+  { name: 'groupLabelProps', type: 'AutocompleteGroupLabelProps', default: '-', description: '高级配置。透传给分组标题的 props。' },
+  { name: 'itemProps', type: 'Omit<AutocompleteItemProps, \'disabled\' | \'value\'>', default: '-', description: '高级配置。透传给建议项的 props。' },
+  { name: 'itemIndicatorProps', type: 'AutocompleteItemIndicatorProps', default: '-', description: '高级配置。透传给选中指示器的 props。' },
+  { name: 'separatorProps', type: 'AutocompleteSeparatorProps', default: '-', description: '高级配置。透传给分组或建议项之间分隔线的 props。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '内部元素自定义类名。' }
 ]"/>
 
