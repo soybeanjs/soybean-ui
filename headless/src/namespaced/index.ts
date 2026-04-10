@@ -18,6 +18,18 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AutocompleteAnchor,
+  AutocompleteContent,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteItemIndicator,
+  AutocompletePortal,
+  AutocompleteRoot,
+  AutocompleteSeparator,
+  AutocompleteTrigger,
+  AutocompleteViewport,
   AlertRoot,
   AlertTitle,
   Arrow,
@@ -369,6 +381,34 @@ export const AlertDialog = {
 };
 
 export { Arrow };
+
+export const Autocomplete = {
+  Root: AutocompleteRoot,
+  Anchor: AutocompleteAnchor,
+  Input: AutocompleteInput,
+  Trigger: AutocompleteTrigger,
+  Portal: AutocompletePortal,
+  Content: AutocompleteContent,
+  Viewport: AutocompleteViewport,
+  Group: AutocompleteGroup,
+  GroupLabel: AutocompleteGroupLabel,
+  Item: AutocompleteItem,
+  ItemIndicator: AutocompleteItemIndicator,
+  Separator: AutocompleteSeparator
+} as {
+  Root: typeof AutocompleteRoot;
+  Anchor: typeof AutocompleteAnchor;
+  Input: typeof AutocompleteInput;
+  Trigger: typeof AutocompleteTrigger;
+  Portal: typeof AutocompletePortal;
+  Content: typeof AutocompleteContent;
+  Viewport: typeof AutocompleteViewport;
+  Group: typeof AutocompleteGroup;
+  GroupLabel: typeof AutocompleteGroupLabel;
+  Item: typeof AutocompleteItem;
+  ItemIndicator: typeof AutocompleteItemIndicator;
+  Separator: typeof AutocompleteSeparator;
+};
 
 export { AspectRatio };
 
