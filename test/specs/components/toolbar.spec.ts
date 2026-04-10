@@ -1,12 +1,14 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it, vi } from 'vitest';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
-import SToolbar from '../../../src/components/toolbar/toolbar.vue';
-import SToolbarButton from '../../../src/components/toolbar/toolbar-button.vue';
-import SToolbarLink from '../../../src/components/toolbar/toolbar-link.vue';
-import SToolbarSeparator from '../../../src/components/toolbar/toolbar-separator.vue';
-import SToolbarToggleGroup from '../../../src/components/toolbar/toolbar-toggle-group.vue';
-import SToolbarToggleItem from '../../../src/components/toolbar/toolbar-toggle-item.vue';
+import {
+  SToolbar,
+  SToolbarButton,
+  SToolbarLink,
+  SToolbarSeparator,
+  SToolbarToggleGroup,
+  SToolbarToggleItem
+} from '../../../src/components/toolbar';
 import { getA11yViolations } from '../../shared/a11y';
 
 function mountToolbar(props?: Record<string, unknown>) {
@@ -53,6 +55,21 @@ describe('SToolbar', () => {
       const toolbar = wrapper.find('[role="toolbar"]');
 
       expect(toolbar.attributes('aria-orientation')).toBe('horizontal');
+      wrapper.unmount();
+    });
+
+    it('injects toolbar slot classes from the root ui prop', () => {
+      const wrapper = mountToolbar({
+        class: 'toolbar-root',
+        ui: {
+          button: 'toolbar-button',
+          toggleItem: 'toolbar-toggle-item'
+        }
+      });
+
+      expect(wrapper.find('[role="toolbar"]').classes()).toContain('toolbar-root');
+      expect(wrapper.find('button').classes()).toContain('toolbar-button');
+      expect(wrapper.findAll('button')[1].classes()).toContain('toolbar-toggle-item');
       wrapper.unmount();
     });
 

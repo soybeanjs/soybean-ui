@@ -42,6 +42,7 @@ vertical
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: '工具栏自定义类名' },
+  { name: 'ui', type: 'ToolbarUi', default: '{}', description: '工具栏各个 slot 的自定义类名' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: '工具栏方向' },
   { name: 'dir', type: `'ltr' | 'rtl'`, default: '-', description: '阅读方向' },
   { name: 'loop', type: 'boolean', default: 'false', description: '是否循环 roving focus' },
@@ -107,4 +108,21 @@ vertical
 
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '-', description: '工具栏内容', required: true }
+]"/>
+
+### 类型
+
+<TypeTable :data="[
+  {
+    name: 'ToolbarUi',
+    description: 'Toolbar 的 slot 类名映射。',
+    fields: [
+      { name: 'root', type: 'string', description: '工具栏根节点类名' },
+      { name: 'button', type: 'string', description: '工具栏按钮类名' },
+      { name: 'link', type: 'string', description: '工具栏链接类名' },
+      { name: 'separator', type: 'string', description: '工具栏分隔线类名' },
+      { name: 'toggleGroup', type: 'string', description: '工具栏切换组类名' },
+      { name: 'toggleItem', type: 'string', description: '工具栏切换项类名' }
+    ],
+  }
 ]"/>

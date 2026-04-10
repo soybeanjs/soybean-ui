@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { useOmitProps } from '../../composables';
 import { RovingFocusItem } from '../roving-focus';
 import { Link } from '../link';
+import { useToolbarUi } from './context';
 import type { ToolbarLinkProps } from './types';
 
 defineOptions({
@@ -10,6 +13,12 @@ defineOptions({
 const props = withDefaults(defineProps<ToolbarLinkProps>(), {
   as: 'a'
 });
+
+const cls = useToolbarUi('link');
+
+const forwardedProps = useOmitProps(props, ['class']);
+
+const mergedClass = computed(() => [cls.value, props.class]);
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (event.key !== ' ') {
@@ -23,7 +32,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 
 <template>
   <RovingFocusItem as-child focusable>
-    <Link v-bind="props" @keydown="onKeyDown">
+    <Link v-bind="forwardedProps" :class="mergedClass" @keydown="onKeyDown">
       <slot />
     </Link>
   </RovingFocusItem>

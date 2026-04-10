@@ -42,6 +42,7 @@ vertical
 
 <DataTable preset="props" :data="[
   { name: 'class', type: 'ClassValue', default: '-', description: 'Custom toolbar class name.' },
+  { name: 'ui', type: 'ToolbarUi', default: '{}', description: 'Custom classes for toolbar slots.' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: 'Toolbar orientation.' },
   { name: 'dir', type: `'ltr' | 'rtl'`, default: '-', description: 'Reading direction.' },
   { name: 'loop', type: 'boolean', default: 'false', description: 'Whether roving focus loops.' },
@@ -107,4 +108,21 @@ vertical
 
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '-', description: 'Toolbar content.', required: true }
+]"/>
+
+### Types
+
+<TypeTable :data="[
+  {
+    name: 'ToolbarUi',
+    description: 'Toolbar slot class map.',
+    fields: [
+      { name: 'root', type: 'string', description: 'Toolbar root class.' },
+      { name: 'button', type: 'string', description: 'Toolbar button class.' },
+      { name: 'link', type: 'string', description: 'Toolbar link class.' },
+      { name: 'separator', type: 'string', description: 'Toolbar separator class.' },
+      { name: 'toggleGroup', type: 'string', description: 'Toolbar toggle group class.' },
+      { name: 'toggleItem', type: 'string', description: 'Toolbar toggle item class.' }
+    ],
+  }
 ]"/>

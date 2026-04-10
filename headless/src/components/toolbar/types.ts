@@ -1,5 +1,5 @@
 import type { ComputedRef, HTMLAttributes } from 'vue';
-import type { DataOrientation, DefinedValue, Direction } from '../../types';
+import type { DataOrientation, DefinedValue, Direction, UiClass } from '../../types';
 import type {
   ToggleGroupItemProps as BaseToggleGroupItemProps,
   ToggleGroupRootEmits as BaseToggleGroupRootEmits,
@@ -28,6 +28,10 @@ export interface ToolbarRootContextParams {
   orientation: ComputedRef<DataOrientation>;
   dir: ComputedRef<Direction | undefined>;
 }
+
+export type ToolbarUiSlot = 'root' | 'button' | 'link' | 'separator' | 'toggleGroup' | 'toggleItem';
+
+export type ToolbarUi = UiClass<ToolbarUiSlot>;
 
 export interface ToolbarButtonProps extends ButtonProps {}
 

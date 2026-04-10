@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ToolbarRoot } from '@soybeanjs/headless';
+import { ToolbarRoot, provideToolbarUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import { cn } from '@/theme';
+import { mergeSlotVariants } from '@/theme';
 import { toolbarVariants } from './variants';
 import type { ToolbarProps } from './types';
 
@@ -12,13 +12,19 @@ defineOptions({
 
 const props = defineProps<ToolbarProps>();
 
-const forwardedProps = useOmitProps(props, ['class']);
+const forwardedProps = useOmitProps(props, ['class', 'ui']);
 
-const cls = computed(() => cn(toolbarVariants(), props.class));
+const ui = computed(() => {
+  const variants = toolbarVariants();
+
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
+});
+
+provideToolbarUi(ui);
 </script>
 
 <template>
-  <ToolbarRoot v-bind="forwardedProps" :class="cls">
+  <ToolbarRoot v-bind="forwardedProps">
     <slot />
   </ToolbarRoot>
 </template>
