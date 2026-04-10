@@ -107,11 +107,11 @@ const prevStep = () => {
 const hasNext = () => currentStep.value < totalSteps.value;
 const hasPrev = () => currentStep.value > 1;
 
-function getNonEmptyString(value: unknown) {
+function toNonEmptyString(value: unknown) {
   return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
 }
 
-const ariaLabel = computed(() => getNonEmptyString(attrs['aria-label']) ?? 'Progress');
+const ariaLabel = computed(() => toNonEmptyString(attrs['aria-label']) ?? 'Step progress');
 
 const registerStepperItem = (element: HTMLElement) => {
   if (registeredStepperItems.value.includes(element)) return;
