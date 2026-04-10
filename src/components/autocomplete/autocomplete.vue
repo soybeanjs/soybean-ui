@@ -34,6 +34,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<AutocompleteProps<T>>(), {
   modelValue: undefined,
+  open: undefined,
   clearable: false,
   emptyLabel: 'No results found.'
 });

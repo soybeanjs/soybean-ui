@@ -73,6 +73,20 @@ describe('SAutocomplete', () => {
       wrapper.unmount();
     });
 
+    it('opens the popup when typing', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items },
+        attachTo: document.body
+      });
+
+      await wrapper.find('input').setValue('app');
+      await nextTick();
+
+      expect(wrapper.emitted('update:open')?.at(-1)).toEqual([true]);
+      expect(document.body.querySelector('[role="listbox"]')).toBeTruthy();
+      wrapper.unmount();
+    });
+
     it('emits select with the selected item', async () => {
       const wrapper = mount(SAutocomplete, {
         props: { items, open: true },
