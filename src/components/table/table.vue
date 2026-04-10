@@ -31,6 +31,7 @@ defineSlots<TableSlots<T>>();
 const slots = useSlots();
 const forwardedSlotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
+// `useOmitProps` preserves a computed wrapper, so narrow it back to the headless table props for template binding.
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']) as unknown as HeadlessTableProps<
   T,
   R,
