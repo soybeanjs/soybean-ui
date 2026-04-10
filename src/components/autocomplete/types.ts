@@ -107,6 +107,7 @@ export interface AutocompleteProps<T extends AutocompleteSingleOptionData = Auto
   items: AutocompleteOptionData<T>[];
   placeholder?: string;
   clearable?: boolean;
+  clearLabel?: string;
   emptyLabel?: string;
   fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>;
   anchorProps?: AutocompleteAnchorProps;

@@ -36,6 +36,7 @@ const props = withDefaults(defineProps<AutocompleteProps<T>>(), {
   modelValue: undefined,
   open: undefined,
   clearable: false,
+  clearLabel: 'Clear input',
   emptyLabel: 'No results found.'
 });
 
@@ -68,6 +69,7 @@ const forwardedProps = useOmitProps(props, [
   'defaultValue',
   'placeholder',
   'clearable',
+  'clearLabel',
   'emptyLabel',
   'fuseOptions',
   'anchorProps',
@@ -149,8 +151,6 @@ const inputProps = computed(() => ({
 provideAutocompleteUi(headlessUi);
 provideAutocompleteExtraUi(extraUi);
 
-const clearButtonLabel = 'Clear input';
-
 const onSelect = (item: AutocompleteSingleOptionData) => {
   emit('select', item as T);
 };
@@ -176,7 +176,7 @@ const onSelect = (item: AutocompleteSingleOptionData) => {
             v-if="clearable && modelValue"
             type="button"
             :class="ui.inputClearable"
-            :aria-label="clearButtonLabel"
+            :aria-label="clearLabel"
             @click="clear"
           >
             <Icon icon="lucide:x" class="size-1em" aria-hidden="true" />

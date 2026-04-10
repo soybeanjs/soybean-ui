@@ -11,7 +11,7 @@ const items = [
   { value: 'blueberry', label: 'Blueberry' }
 ];
 
-const setupHTMLElementPrototypeMock = <K extends keyof HTMLElement>(property: K, value: HTMLElement[K]) => {
+const mockHTMLElementProp = <K extends keyof HTMLElement>(property: K, value: HTMLElement[K]) => {
   const descriptor = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, property);
 
   Object.defineProperty(window.HTMLElement.prototype, property, {
@@ -29,20 +29,20 @@ const setupHTMLElementPrototypeMock = <K extends keyof HTMLElement>(property: K,
   };
 };
 
-let cleanups: Array<() => void> = [];
+let cleanupFunctions: Array<() => void> = [];
 
 beforeEach(() => {
-  cleanups = [
-    setupHTMLElementPrototypeMock('releasePointerCapture', vi.fn() as HTMLElement['releasePointerCapture']),
-    setupHTMLElementPrototypeMock('hasPointerCapture', vi.fn(() => false) as HTMLElement['hasPointerCapture']),
-    setupHTMLElementPrototypeMock('scrollIntoView', vi.fn() as HTMLElement['scrollIntoView'])
+  cleanupFunctions = [
+    mockHTMLElementProp('releasePointerCapture', vi.fn() as HTMLElement['releasePointerCapture']),
+    mockHTMLElementProp('hasPointerCapture', vi.fn(() => false) as HTMLElement['hasPointerCapture']),
+    mockHTMLElementProp('scrollIntoView', vi.fn() as HTMLElement['scrollIntoView'])
   ];
-  cleanups.push(setupMock('ResizeObserver', MockResizeObserver as typeof ResizeObserver));
+  cleanupFunctions.push(setupMock('ResizeObserver', MockResizeObserver as typeof ResizeObserver));
 });
 
 afterEach(() => {
-  while (cleanups.length) {
-    cleanups.pop()?.();
+  while (cleanupFunctions.length) {
+    cleanupFunctions.pop()?.();
   }
 });
 

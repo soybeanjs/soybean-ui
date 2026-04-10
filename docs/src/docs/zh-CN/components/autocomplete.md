@@ -45,6 +45,7 @@ custom-styling
   { name: 'items', type: 'AutocompleteOptionData[]', default: '-', description: '建议项数据。', required: true },
   { name: 'placeholder', type: 'string', default: '-', description: '输入框占位文本。' },
   { name: 'clearable', type: 'boolean', default: 'false', description: '是否显示清除按钮。' },
+  { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: '清除按钮的无障碍标签。' },
   { name: 'openOnFocus', type: 'boolean', default: 'false', description: '输入框聚焦时是否自动展开。' },
   { name: 'openOnClick', type: 'boolean', default: 'false', description: '输入框点击时是否自动展开。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用组件。' },

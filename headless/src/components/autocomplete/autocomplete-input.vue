@@ -50,7 +50,7 @@ const [inputElement, setLocalInputElement] = useForwardElement(el => {
 
 const disabled = computed(() => props.disabled || listboxDisabled.value || autocompleteDisabled.value || false);
 const activedescendant = shallowRef<string>();
-const inputId = computed(() => props.id ?? props.controlProps?.id ?? generatedInputId.value);
+const resolvedInputId = computed(() => props.id ?? props.controlProps?.id ?? generatedInputId.value);
 
 const onUpdateModelValue = (value: string) => {
   onModelValueChange(value);
@@ -119,7 +119,7 @@ initInputId();
     <slot name="leading" :clear="clear" />
     <InputControl
       v-bind="controlProps"
-      :id="inputId"
+      :id="resolvedInputId"
       :ref="setLocalInputElement"
       :aria-activedescendant="activedescendant"
       :aria-controls="contentId"

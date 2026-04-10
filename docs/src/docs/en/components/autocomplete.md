@@ -45,6 +45,7 @@ custom-styling
   { name: 'items', type: 'AutocompleteOptionData[]', default: '-', description: 'Suggestion item data.', required: true },
   { name: 'placeholder', type: 'string', default: '-', description: 'Placeholder text for the input.' },
   { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show the clear button.' },
+  { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: 'Accessible label for the clear button.' },
   { name: 'openOnFocus', type: 'boolean', default: 'false', description: 'Whether to open suggestions on input focus.' },
   { name: 'openOnClick', type: 'boolean', default: 'false', description: 'Whether to open suggestions on input click.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the component is disabled.' },
