@@ -14,8 +14,6 @@ defineOptions({
 
 const props = defineProps<ToolbarToggleItemProps<T>>();
 
-const buttonClass = useToolbarUi('button');
-
 const toggleItemClass = useToolbarUi('toggleItem');
 
 const forwardedProps = useOmitProps(props, ['class']);
@@ -24,7 +22,7 @@ const { disabled: rootDisabled } = useToggleGroupRootContext('ToolbarToggleItem'
 
 const disabled = computed(() => rootDisabled.value || props.disabled);
 
-const mergedClass = computed(() => [buttonClass.value, toggleItemClass.value, props.class]);
+const mergedClass = computed(() => [toggleItemClass.value, props.class]);
 </script>
 
 <template>
