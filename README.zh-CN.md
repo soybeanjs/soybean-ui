@@ -305,7 +305,7 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 
 ### Utilities
 
-✅ 12 / 总计: 13
+✅ 13 / 总计: 13
 
 | No. | Priority | Name                | Status       | 📝 Note        |
 | --- | -------- | ------------------- | ------------ | -------------- |
@@ -321,4 +321,4 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 | 10  | 1        | usePresence         | ✅ Completed |                |
 | 11  | 1        | useDialog           | ✅ Completed |                |
 | 12  | 1        | useToast            | ✅ Completed |                |
-| 13  | 2        | useLoadingBar       |              |                |
+| 13  | 2        | useLoadingBar       | ✅ Completed |                |
