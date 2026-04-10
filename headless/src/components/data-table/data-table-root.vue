@@ -186,7 +186,7 @@ function getRowLabel(row: T) {
                   <input
                     v-if="isMultiple"
                     type="checkbox"
-                    :checked="headerSelection === true"
+                    :checked.prop="headerSelection === true"
                     :indeterminate.prop="headerSelection === 'indeterminate'"
                     :aria-checked="headerSelection === 'indeterminate' ? 'mixed' : `${headerSelection}`"
                     aria-label="Select all rows"

@@ -51,6 +51,10 @@ describe('DataTableRoot', () => {
 
     expect(wrapper.emitted('update:selected')?.[0]).toEqual([undefined]);
     expect((radio.element as HTMLInputElement).checked).toBe(false);
+
+    await radio.trigger('click');
+
+    expect(wrapper.emitted('update:selected')?.[1]).toEqual([1]);
     wrapper.unmount();
   });
 });
