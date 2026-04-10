@@ -20,7 +20,7 @@ import {
   TableRoot,
   TableRow
 } from '../table';
-import { getDataTableRowValueByDataIndex } from './shared';
+import { getDataTableRowLabel, getDataTableRowValueByDataIndex } from './shared';
 import type { BaseDataTableRow, DataTableRootEmits, DataTableRootProps, DataTableRootSlots } from './types';
 
 defineOptions({
@@ -88,8 +88,10 @@ const hasExpandColumn = computed(() => {
   return filteredColumns.value.some(column => column.type === 'expand');
 });
 
+const isHeaderSelectionDisabled = computed(() => props.data.length === 0);
+
 const headerSelection = computed<CheckedState>(() => {
-  if (!Array.isArray(selected.value) || props.data.length === 0) {
+  if (!Array.isArray(selected.value)) {
     return false;
   }
 
@@ -116,7 +118,7 @@ function toggleExpand(key: R) {
   const index = expanded.value.indexOf(key);
 
   if (index >= 0) {
-    expanded.value = expanded.value.filter(value => value !== key);
+    expanded.value = expanded.value.filter(expandedKey => expandedKey !== key);
     return;
   }
 
@@ -139,6 +141,10 @@ function updateHeaderChecked(state: CheckedState | null) {
 function isRowExpanded(key: R) {
   return expanded.value.includes(key);
 }
+
+function getRowLabel(row: T) {
+  return getDataTableRowLabel(row, props.rowKey);
+}
 </script>
 
 <template>
@@ -157,12 +163,18 @@ function isRowExpanded(key: R) {
                 {{ column.title }}
               </slot>
             </TableHead>
-            <TableHead v-else-if="column.type" v-bind="headProps" :align="column.align ?? 'center'" :style="{ width: column.width }">
+            <TableHead
+              v-else-if="column.type"
+              v-bind="headProps"
+              :align="column.align ?? 'center'"
+              :style="{ width: column.width }"
+            >
               <slot
                 :name="`header-${column.type}`"
                 :column="column"
                 :multiple="isMultiple"
                 :checked="headerSelection"
+                :disabled="isHeaderSelectionDisabled"
                 :update-checked="updateHeaderChecked"
               >
                 <template v-if="column.type === 'index'">
@@ -175,6 +187,7 @@ function isRowExpanded(key: R) {
                     :checked="headerSelection === true"
                     :aria-checked="headerSelection === 'indeterminate' ? 'mixed' : `${headerSelection}`"
                     aria-label="Select all rows"
+                    :disabled="isHeaderSelectionDisabled"
                     @change="updateHeaderChecked(($event.target as HTMLInputElement).checked)"
                   >
                 </template>
@@ -229,14 +242,14 @@ function isRowExpanded(key: R) {
                     v-if="isMultiple"
                     type="checkbox"
                     :checked="isValueSelected(rowKey(item))"
-                    aria-label="Select row"
+                    :aria-label="`Select row ${getRowLabel(item)}`"
                     @change="onSelectedChange(rowKey(item))"
                   >
                   <input
                     v-else
                     type="radio"
                     :checked="isValueSelected(rowKey(item))"
-                    aria-label="Select row"
+                    :aria-label="`Select row ${getRowLabel(item)}`"
                     @change="onSelectedChange(rowKey(item))"
                   >
                 </slot>

@@ -68,6 +68,7 @@ export type DataTableRootSlots<T extends BaseDataTableRow> = {
     column: DataTableColumn<T>;
     multiple: boolean;
     checked: CheckedState;
+    disabled: boolean;
     updateChecked: (value: CheckedState | null) => void;
   }) => any;
   'header-expand'?: (props: { column: DataTableColumn<T> }) => any;

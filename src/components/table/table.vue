@@ -7,8 +7,9 @@
     M extends boolean = boolean
   "
 >
-import { computed } from 'vue';
+import { computed, useSlots } from 'vue';
 import { DataTableRoot, provideTableUi } from '@soybeanjs/headless';
+import { getDataTableRowLabel } from '@soybeanjs/headless/data-table';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
@@ -25,7 +26,10 @@ const props = defineProps<TableProps<T, R, M>>();
 
 const emit = defineEmits<TableEmits<R, M>>();
 
-defineSlots<TableSlots<T> & Record<string, ((props: any) => any) | undefined>>();
+defineSlots<TableSlots<T>>();
+
+const slots = useSlots();
+const forwardedSlotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']);
 const listeners = useForwardListeners(emit);
@@ -41,17 +45,22 @@ const ui = computed(() => {
 });
 
 provideTableUi(ui);
+
+function getRowLabel(row: T) {
+  return getDataTableRowLabel(row, props.rowKey);
+}
 </script>
 
 <template>
   <DataTableRoot v-bind="forwardedProps" v-on="listeners">
-    <template v-for="(_, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
+    <template v-for="slotName in forwardedSlotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>
 
-    <template v-if="!$slots['header-selection']" #header-selection="{ checked, multiple, updateChecked }">
+    <template v-if="!slots['header-selection']" #header-selection="{ checked, disabled, multiple, updateChecked }">
       <SCheckbox
         v-if="multiple"
+        :disabled="disabled"
         :model-value="checked"
         :class="ui.selection"
         :control-props="{ 'aria-label': 'Select all rows' }"
@@ -59,24 +68,24 @@ provideTableUi(ui);
       />
     </template>
 
-    <template v-if="!$slots.selection" #selection="{ checked, multiple, row, toggleSelect }">
+    <template v-if="!slots.selection" #selection="{ checked, multiple, row, toggleSelect }">
       <SCheckbox
         v-if="multiple"
         :class="ui.selection"
         :model-value="checked"
-        :control-props="{ 'aria-label': `Select row ${rowKey(row)}` }"
+        :control-props="{ 'aria-label': `Select row ${getRowLabel(row)}` }"
         @update:model-value="toggleSelect()"
       />
       <TableRadio
         v-else
         :size="size"
         :checked="checked"
-        :aria-label="`Select row ${rowKey(row)}`"
+        :aria-label="`Select row ${getRowLabel(row)}`"
         @click="toggleSelect()"
       />
     </template>
 
-    <template v-if="!$slots.expand" #expand="{ expanded, toggleExpand }">
+    <template v-if="!slots.expand" #expand="{ expanded, toggleExpand }">
       <SButtonIcon
         v-if="expanded"
         icon="lucide:chevron-down"

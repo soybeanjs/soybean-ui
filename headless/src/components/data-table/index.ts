@@ -1,4 +1,5 @@
 export { default as DataTableRoot } from './data-table-root.vue';
+export { getDataTableRowLabel, getDataTableRowValueByDataIndex } from './shared';
 
 export type {
   BaseDataTableRow,

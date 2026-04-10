@@ -57,7 +57,11 @@ describe('STable', () => {
           rowKey: row => row.id
         },
         slots: {
-          age: ({ value }: { value: number }) => h('span', { 'data-testid': 'age-cell' }, `Age: ${value}`)
+          age: props => {
+            const { value } = props as { value: number };
+
+            return h('span', { 'data-testid': 'age-cell' }, `Age: ${value}`);
+          }
         },
         attachTo: document.body
       });
@@ -98,8 +102,11 @@ describe('STable', () => {
           rowKey: row => row.id
         },
         slots: {
-          'expanded-row': ({ row }: { row: Record<string, any> }) =>
-            h('div', { 'data-testid': `expanded-${row.id}` }, `Expanded ${row.name}`)
+          'expanded-row': props => {
+            const { row } = props as { row: Record<string, any> };
+
+            return h('div', { 'data-testid': `expanded-${row.id}` }, `Expanded ${row.name}`);
+          }
         },
         attachTo: document.body
       });

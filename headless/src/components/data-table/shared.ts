@@ -1,6 +1,24 @@
 import type { Path, PathValue } from '../../types';
 import type { BaseDataTableRow } from './types';
 
+/**
+ * Get a human-readable row label for built-in table a11y text.
+ *
+ * Falls back to common display fields (`name`, `title`, `label`) before using the row key.
+ */
+export function getDataTableRowLabel<T extends BaseDataTableRow, R extends string | number>(
+  row: T,
+  rowKey: (row: T) => R
+) {
+  const candidate = row.name ?? row.title ?? row.label;
+
+  if (typeof candidate === 'string' && candidate.trim().length > 0) {
+    return candidate;
+  }
+
+  return String(rowKey(row));
+}
+
 export function getDataTableRowValueByDataIndex<T extends BaseDataTableRow, K extends Path<T>>(
   row: T,
   dataIndex: K
