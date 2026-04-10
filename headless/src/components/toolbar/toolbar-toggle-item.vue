@@ -3,7 +3,8 @@ import { computed } from 'vue';
 import type { DefinedValue } from '../../types';
 import { useOmitProps } from '../../composables';
 import { ToggleGroupItem } from '../toggle-group';
-import ToolbarButton from './toolbar-button.vue';
+import { useToggleGroupRootContext } from '../toggle-group/context';
+import { RovingFocusItem } from '../roving-focus';
 import { useToolbarUi } from './context';
 import type { ToolbarToggleItemProps } from './types';
 
@@ -13,17 +14,23 @@ defineOptions({
 
 const props = defineProps<ToolbarToggleItemProps<T>>();
 
-const cls = useToolbarUi('toggleItem');
+const buttonCls = useToolbarUi('button');
+
+const toggleItemCls = useToolbarUi('toggleItem');
 
 const forwardedProps = useOmitProps(props, ['class']);
 
-const mergedClass = computed(() => [cls.value, props.class]);
+const { disabled: rootDisabled } = useToggleGroupRootContext('ToolbarToggleItem');
+
+const disabled = computed(() => rootDisabled.value || props.disabled);
+
+const mergedClass = computed(() => [buttonCls.value, toggleItemCls.value, props.class]);
 </script>
 
 <template>
-  <ToolbarButton as-child :class="mergedClass">
-    <ToggleGroupItem v-bind="forwardedProps">
+  <RovingFocusItem as-child :focusable="!disabled">
+    <ToggleGroupItem v-bind="forwardedProps" :class="mergedClass">
       <slot />
     </ToggleGroupItem>
-  </ToolbarButton>
+  </RovingFocusItem>
 </template>

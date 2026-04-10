@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { Primitive } from '../primitive';
@@ -18,6 +19,8 @@ const cls = useToolbarUi('root');
 
 const forwardedProps = useOmitProps(props, ['class']);
 
+const mergedClass = computed(() => [cls.value, props.class]);
+
 provideToolbarRootContext(transformPropsToContext(props, ['orientation', 'dir']));
 </script>
 
@@ -27,7 +30,7 @@ provideToolbarRootContext(transformPropsToContext(props, ['orientation', 'dir'])
       v-bind="forwardedProps"
       :as="as"
       :as-child="asChild"
-      :class="[cls, props.class]"
+      :class="mergedClass"
       role="toolbar"
       :aria-orientation="orientation"
       :dir="dir"
