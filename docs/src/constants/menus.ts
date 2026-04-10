@@ -27,6 +27,7 @@ export const menuData: MenuData[] = [
       'navigationMenu',
       'pageTabs',
       'pagination',
+      'stepper',
       'tabs',
       'tree',
       'treeMenu'
@@ -36,11 +37,13 @@ export const menuData: MenuData[] = [
     value: 'forms',
     i18n: 'sidebar.forms',
     items: [
+      'autocomplete',
       'colorArea',
       'colorField',
       'colorPicker',
       'colorSlider',
       'colorSwatchPicker',
+      'editable',
       'form',
       'label',
       'input',
@@ -87,7 +90,7 @@ export const menuData: MenuData[] = [
   {
     value: 'overlay',
     i18n: 'sidebar.overlay',
-    items: ['dialog', 'alertDialog', 'drawer', 'hoverCard', 'popover', 'tooltip', 'popconfirm']
+    items: ['dialog', 'alertDialog', 'bottomSheet', 'drawer', 'hoverCard', 'popover', 'tooltip', 'popconfirm']
   },
   {
     value: 'utilities',

@@ -18,6 +18,18 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
+  AutocompleteAnchor,
+  AutocompleteContent,
+  AutocompleteGroup,
+  AutocompleteGroupLabel,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteItemIndicator,
+  AutocompletePortal,
+  AutocompleteRoot,
+  AutocompleteSeparator,
+  AutocompleteTrigger,
+  AutocompleteViewport,
   AlertRoot,
   AlertTitle,
   Arrow,
@@ -111,6 +123,13 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  EditableArea,
+  EditableCancelTrigger,
+  EditableEditTrigger,
+  EditableInput,
+  EditablePreview,
+  EditableRoot,
+  EditableSubmitTrigger,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
@@ -250,6 +269,13 @@ import {
   SliderThumb,
   SliderTrack,
   Slot,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperRoot,
+  StepperSeparator,
+  StepperTitle,
+  StepperTrigger,
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
@@ -365,6 +391,34 @@ export const AlertDialog = {
 };
 
 export { Arrow };
+
+export const Autocomplete = {
+  Root: AutocompleteRoot,
+  Anchor: AutocompleteAnchor,
+  Input: AutocompleteInput,
+  Trigger: AutocompleteTrigger,
+  Portal: AutocompletePortal,
+  Content: AutocompleteContent,
+  Viewport: AutocompleteViewport,
+  Group: AutocompleteGroup,
+  GroupLabel: AutocompleteGroupLabel,
+  Item: AutocompleteItem,
+  ItemIndicator: AutocompleteItemIndicator,
+  Separator: AutocompleteSeparator
+} as {
+  Root: typeof AutocompleteRoot;
+  Anchor: typeof AutocompleteAnchor;
+  Input: typeof AutocompleteInput;
+  Trigger: typeof AutocompleteTrigger;
+  Portal: typeof AutocompletePortal;
+  Content: typeof AutocompleteContent;
+  Viewport: typeof AutocompleteViewport;
+  Group: typeof AutocompleteGroup;
+  GroupLabel: typeof AutocompleteGroupLabel;
+  Item: typeof AutocompleteItem;
+  ItemIndicator: typeof AutocompleteItemIndicator;
+  Separator: typeof AutocompleteSeparator;
+};
 
 export { AspectRatio };
 
@@ -604,6 +658,24 @@ export const DropdownMenu = {
   Separator: typeof DropdownMenuSeparator;
   CheckboxGroup: typeof DropdownMenuCheckboxGroup;
   RadioGroup: typeof DropdownMenuRadioGroup;
+};
+
+export const Editable = {
+  Root: EditableRoot,
+  Area: EditableArea,
+  Preview: EditablePreview,
+  Input: EditableInput,
+  EditTrigger: EditableEditTrigger,
+  SubmitTrigger: EditableSubmitTrigger,
+  CancelTrigger: EditableCancelTrigger
+} as {
+  Root: typeof EditableRoot;
+  Area: typeof EditableArea;
+  Preview: typeof EditablePreview;
+  Input: typeof EditableInput;
+  EditTrigger: typeof EditableEditTrigger;
+  SubmitTrigger: typeof EditableSubmitTrigger;
+  CancelTrigger: typeof EditableCancelTrigger;
 };
 
 export const Empty = {
@@ -967,6 +1039,24 @@ export const Slider = {
 };
 
 export { Slot };
+
+export const Stepper = {
+  Root: StepperRoot,
+  Item: StepperItem,
+  Trigger: StepperTrigger,
+  Indicator: StepperIndicator,
+  Separator: StepperSeparator,
+  Title: StepperTitle,
+  Description: StepperDescription
+} as {
+  Root: typeof StepperRoot;
+  Item: typeof StepperItem;
+  Trigger: typeof StepperTrigger;
+  Indicator: typeof StepperIndicator;
+  Separator: typeof StepperSeparator;
+  Title: typeof StepperTitle;
+  Description: typeof StepperDescription;
+};
 
 export const Switch = {
   Root: SwitchRoot,

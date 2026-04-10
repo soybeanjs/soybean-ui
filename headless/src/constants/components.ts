@@ -2,6 +2,20 @@ export const components = {
   accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
   affix: ['AffixRoot'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  autocomplete: [
+    'AutocompleteRoot',
+    'AutocompleteAnchor',
+    'AutocompleteInput',
+    'AutocompleteTrigger',
+    'AutocompletePortal',
+    'AutocompleteContent',
+    'AutocompleteViewport',
+    'AutocompleteGroup',
+    'AutocompleteGroupLabel',
+    'AutocompleteItem',
+    'AutocompleteItemIndicator',
+    'AutocompleteSeparator'
+  ],
   alertDialog: [
     'AlertDialogRoot',
     'AlertDialogTrigger',
@@ -94,6 +108,15 @@ export const components = {
     'DropdownMenuSeparator',
     'DropdownMenuCheckboxGroup',
     'DropdownMenuRadioGroup'
+  ],
+  editable: [
+    'EditableRoot',
+    'EditableArea',
+    'EditablePreview',
+    'EditableInput',
+    'EditableEditTrigger',
+    'EditableSubmitTrigger',
+    'EditableCancelTrigger'
   ],
   empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
@@ -205,6 +228,15 @@ export const components = {
   splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
   slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
+  stepper: [
+    'StepperRoot',
+    'StepperItem',
+    'StepperTrigger',
+    'StepperIndicator',
+    'StepperSeparator',
+    'StepperTitle',
+    'StepperDescription'
+  ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: ['TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
