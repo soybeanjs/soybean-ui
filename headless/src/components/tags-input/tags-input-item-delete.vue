@@ -18,6 +18,7 @@ const { getItems, onRemoveValue } = useTagsInputRootContext('TagsInputItemDelete
 const { disabled, isSelected, itemElement, textId } = useTagsInputItemContext('TagsInputItemDelete');
 
 const type = computed(() => (props.as === 'button' ? 'button' : undefined));
+const disabledAttr = computed(() => (props.as === 'button' ? disabled.value : undefined));
 
 const handleDelete = () => {
   if (disabled.value) return;
@@ -34,8 +35,10 @@ const handleDelete = () => {
     :class="cls"
     :aria-labelledby="textId || undefined"
     :aria-current="isSelected ? 'true' : undefined"
+    :aria-disabled="disabled ? 'true' : undefined"
     :data-state="isSelected ? 'active' : 'inactive'"
     :data-disabled="disabled ? '' : undefined"
+    :disabled="disabledAttr"
     :type="type"
     @click="handleDelete"
   >

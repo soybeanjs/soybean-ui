@@ -87,6 +87,7 @@ const onRemoveValue = (index: number) => {
 };
 
 const onAddValue = (rawValue: string) => {
+  const normalizedValue = rawValue.trim();
   const values = currentModelValue.value;
   const hasObjectValue = values.some(value => typeof value === 'object' && value !== null);
   const hasDefaultObjectValue = (props.defaultValue ?? []).some(value => typeof value === 'object' && value !== null);
@@ -95,11 +96,15 @@ const onAddValue = (rawValue: string) => {
     return false;
   }
 
+  if (!normalizedValue) {
+    return false;
+  }
+
   if ((hasObjectValue || hasDefaultObjectValue) && typeof props.convertValue !== 'function') {
     throw new Error('You must provide a `convertValue` function when using object values.');
   }
 
-  const value = (props.convertValue ? props.convertValue(rawValue) : rawValue) as T;
+  const value = (props.convertValue ? props.convertValue(normalizedValue) : normalizedValue) as T;
 
   if (props.max > 0 && values.length >= props.max) {
     isInvalidInput.value = true;

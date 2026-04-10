@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { nextTick, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import { Primitive } from '../primitive';
 import { useTagsInputRootContext, useTagsInputUi } from './context';
 import type { TagsInputInputProps } from './types';
@@ -18,6 +18,7 @@ const { id, addOnPaste, addOnBlur, addOnTab, delimiter, disabled, isInvalidInput
   useTagsInputRootContext('TagsInputInput');
 
 const isComposing = ref(false);
+const isNativeInput = computed(() => !props.asChild && (props.as === undefined || props.as === 'input'));
 
 const handleBlur = (event: FocusEvent) => {
   selectedElement.value = undefined;
@@ -33,7 +34,13 @@ const handleBlur = (event: FocusEvent) => {
 
   if (!target.value) return;
 
-  const isAdded = onAddValue(target.value);
+  const normalizedValue = target.value.trim();
+  if (!normalizedValue) {
+    target.value = '';
+    return;
+  }
+
+  const isAdded = onAddValue(normalizedValue);
   if (isAdded) {
     target.value = '';
   }
@@ -53,12 +60,13 @@ const handleInput = (event: InputEvent) => {
   const target = event.target as HTMLInputElement;
   target.value = target.value.replace(delimiterValue, '');
 
-  if (target.value.trim() === '') {
+  const normalizedValue = target.value.trim();
+  if (!normalizedValue) {
     target.value = '';
     return;
   }
 
-  const isAdded = onAddValue(target.value);
+  const isAdded = onAddValue(normalizedValue);
   if (isAdded) {
     target.value = '';
   }
@@ -77,8 +85,9 @@ const handlePaste = (event: ClipboardEvent) => {
   const values = typeof delimiterValue === 'string' ? value.split(delimiterValue) : value.split(new RegExp(delimiterValue));
 
   values.forEach(item => {
-    if (item.trim()) {
-      onAddValue(item);
+    const normalizedValue = item.trim();
+    if (normalizedValue) {
+      onAddValue(normalizedValue);
     }
   });
 };
@@ -91,7 +100,14 @@ const handleCustomKeydown = async (event: KeyboardEvent) => {
   const target = event.target as HTMLInputElement;
   if (!target.value) return;
 
-  const isAdded = onAddValue(target.value);
+  const normalizedValue = target.value.trim();
+  if (!normalizedValue) {
+    target.value = '';
+    event.preventDefault();
+    return;
+  }
+
+  const isAdded = onAddValue(normalizedValue);
   if (isAdded) {
     target.value = '';
   }
@@ -119,16 +135,16 @@ const onCompositionEnd = () => {
 <template>
   <Primitive
     :id="props.id || id"
-    type="text"
-    autocomplete="off"
-    autocorrect="off"
-    autocapitalize="off"
     :as="props.as"
     :as-child="props.asChild"
     :class="cls"
-    :autofocus="props.autofocus"
-    :placeholder="props.placeholder"
-    :maxlength="props.maxlength"
+    :type="isNativeInput ? 'text' : undefined"
+    :autocomplete="isNativeInput ? 'off' : undefined"
+    :autocorrect="isNativeInput ? 'off' : undefined"
+    :autocapitalize="isNativeInput ? 'off' : undefined"
+    :autofocus="isNativeInput ? props.autofocus : undefined"
+    :placeholder="isNativeInput ? props.placeholder : undefined"
+    :maxlength="isNativeInput ? props.maxlength : undefined"
     :aria-label="props['aria-label']"
     :aria-controls="props['aria-controls']"
     :disabled="disabled || props.disabled"

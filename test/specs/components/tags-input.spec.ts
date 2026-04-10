@@ -128,8 +128,9 @@ describe('STagsInput', () => {
 
     it('clears all tags when clear is clicked', async () => {
       const wrapper = mount(TestTagsInput, { attachTo: document.body });
-      const clearButton = wrapper.findAll('button').at(-1);
-      await clearButton?.trigger('click');
+      const clearButton = wrapper.findComponent(STagsInputClear);
+      expect(clearButton.exists()).toBe(true);
+      await clearButton.trigger('click');
       expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([[]]);
       wrapper.unmount();
     });

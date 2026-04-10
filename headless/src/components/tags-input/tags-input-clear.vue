@@ -17,12 +17,15 @@ const cls = useTagsInputUi('clear');
 const { disabled, onClear } = useTagsInputRootContext('TagsInputClear');
 
 const type = computed(() => (props.as === 'button' ? 'button' : undefined));
+const disabledAttr = computed(() => (props.as === 'button' ? disabled.value : undefined));
 </script>
 
 <template>
   <Primitive
     v-bind="props"
     :class="cls"
+    :aria-disabled="disabled ? 'true' : undefined"
+    :disabled="disabledAttr"
     :type="type"
     :data-disabled="disabled ? '' : undefined"
     @click="onClear"
