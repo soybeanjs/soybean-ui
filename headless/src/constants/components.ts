@@ -225,6 +225,7 @@ export const components = {
   ],
   separator: ['SeparatorRoot', 'SeparatorLabel'],
   skeleton: ['Skeleton'],
+  splitter: ['SplitterGroup', 'SplitterPanel', 'SplitterResizeHandle'],
   slider: ['SliderRoot', 'SliderTrack', 'SliderRange', 'SliderThumb'],
   slot: ['Slot'],
   stepper: [

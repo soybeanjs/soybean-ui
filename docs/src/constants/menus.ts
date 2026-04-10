@@ -13,7 +13,7 @@ export const menuData: MenuData[] = [
   {
     value: 'groupLayout',
     i18n: 'sidebar.layout',
-    items: ['aspectRatio', 'layout', 'separator']
+    items: ['aspectRatio', 'layout', 'separator', 'splitter']
   },
   {
     value: 'navigation',
