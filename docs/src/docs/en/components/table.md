@@ -2,7 +2,7 @@
 
 ## Overview
 
-A data table component for displaying row and column data. Supports sorting, selection, expansion, and more.
+A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, and more.
 
 ## Usage
 
@@ -44,6 +44,7 @@ base
 expandable
 bordered
 striped
+grouped-sort-filter
 single-selection
 multiple-selection
 footer
@@ -57,6 +58,10 @@ footer
   { name: 'columns', type: 'TableColumn<T>[]', default: '-', description: 'Array of column definitions.', required: true },
   { name: 'data', type: 'T[]', default: '-', description: 'Array of table data.', required: true },
   { name: 'rowKey', type: '(row: T) => R', default: '-', description: 'Function to generate unique key for each row.', required: true },
+  { name: 'sortState', type: 'TableSortState', default: '-', description: 'Current sort state (controlled).' },
+  { name: 'defaultSortState', type: 'TableSortState', default: '-', description: 'Default sort state (uncontrolled).' },
+  { name: 'filterState', type: 'TableFilterState', default: '-', description: 'Current filter state (controlled).' },
+  { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: 'Default filter state (uncontrolled).' },
   { name: 'size', type: 'ThemeSize', default: 'md', description: 'Table size.' },
   { name: 'bordered', type: `'all' | boolean`, default: 'false', description: 'Whether to show borders.' },
   { name: 'striped', type: 'boolean', default: 'false', description: 'Whether to show striped rows.' },
@@ -80,6 +85,8 @@ footer
 ### Emits
 
 <DataTable preset="emits" :data="[
+  { name: 'update:sortState', parameters: '(value: TableSortState | undefined) => void', description: 'Triggers when the sort state changes.' },
+  { name: 'update:filterState', parameters: '(value: TableFilterState) => void', description: 'Triggers when the filter state changes.' },
   { name: 'update:selected', parameters: '(value: R | R[]) => void', description: 'Triggers when selected row changes.' },
   { name: 'update:expanded', parameters: '(value: R[]) => void', description: 'Triggers when expanded rows change.' }
 ]"/>
@@ -87,7 +94,8 @@ footer
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'header-[dataIndex]', parameters: '{ column: TableColumn<T> }', description: 'Custom column header rendering.' },
+  { name: 'header', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: 'Custom rendering for any header cell.' },
+  { name: 'header-[key]', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: 'Custom rendering for a specific header cell, using a dataIndex, type, or explicit key.' },
   { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any }', description: 'Custom cell rendering.' },
   { name: 'header-index', parameters: '{ column: TableColumn<T> }', description: 'Custom index column header.' },
   { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T }', description: 'Custom index cell.' },
@@ -106,11 +114,16 @@ footer
 Column definition interface.
 
 <DataTable :data="[
+  { name: 'key', type: 'string', default: '-', description: 'Unique column key. Grouped headers should provide this explicitly.' },
   { name: 'type', type: `'index' | 'selection' | 'expand'`, default: '-', description: 'Special column type.' },
   { name: 'dataIndex', type: 'string', default: '-', description: 'Data field path, supports nesting like `user.name`.' },
   { name: 'title', type: 'string', default: '-', description: 'Column title.' },
   { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: 'Alignment.' },
   { name: 'width', type: 'string', default: '-', description: 'Column width.' },
+  { name: 'minWidth', type: 'string', default: '-', description: 'Minimum column width.' },
+  { name: 'children', type: 'TableColumn<T>[]', default: '-', description: 'Child columns for grouped headers.' },
+  { name: 'sorter', type: 'boolean | ((a, b) => number)', default: '-', description: 'Enables sorting or provides a custom sort function.' },
+  { name: 'filter', type: 'boolean | TableColumnFilter<T>', default: '-', description: 'Enables filtering or provides filter configuration.' },
   { name: 'hidden', type: 'boolean', default: 'false', description: 'Whether to hide the column.' }
 ]"/>
 
@@ -127,6 +140,9 @@ Custom styling classes.
   { name: 'row', type: 'string', description: 'Row class.' },
   { name: 'head', type: 'string', description: 'Header cell class.' },
   { name: 'cell', type: 'string', description: 'Cell class.' },
+  { name: 'headContent', type: 'string', description: 'Header content container class.' },
+  { name: 'sortTrigger', type: 'string', description: 'Sort trigger class.' },
+  { name: 'filterInput', type: 'string', description: 'Filter input class.' },
   { name: 'selection', type: 'string', description: 'Selection checkbox class.' }
 ]"/>
 

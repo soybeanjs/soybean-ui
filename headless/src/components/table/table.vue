@@ -7,19 +7,43 @@
     M extends boolean = boolean
   "
 >
-import { computed, useId } from 'vue';
+import { computed, shallowRef, useId, watch } from 'vue';
 import type { CheckedState } from '../../types';
-import { useControllableState, useOmitProps, useSelection } from '../../composables';
-import { getTableRowLabel, getTableRowValueByDataIndex } from './shared';
+import { useOmitProps, useSelection } from '../../composables';
+import {
+  filterTableColumns,
+  getNextTableFilterState,
+  getTableAriaSort,
+  getTableColumnByKey,
+  getTableColumnKey,
+  getTableFilterPlaceholder,
+  getTableHeaderRows,
+  getTableLeafColumns,
+  getTableRowLabel,
+  getTableRowValueByDataIndex,
+  isTableDataColumn,
+  matchesTableColumnFilter,
+  sortTableData,
+  toggleTableSortState
+} from './shared';
 import TableBody from './table-body.vue';
 import TableCell from './table-cell.vue';
 import TableContent from './table-content.vue';
+import { useTableUi } from './context';
 import TableFooter from './table-footer.vue';
 import TableHead from './table-head.vue';
 import TableHeader from './table-header.vue';
 import TableRoot from './table-root.vue';
 import TableRow from './table-row.vue';
-import type { BaseTableData, TableEmits, TableProps, TableSlots } from './types';
+import type {
+  BaseTableData,
+  TableDataColumn,
+  TableEmits,
+  TableFilterState,
+  TableProps,
+  TableSlots,
+  TableSortState
+} from './types';
 
 defineOptions({
   name: 'Table'
@@ -33,10 +57,16 @@ const emit = defineEmits<TableEmits<R, M>>();
 
 defineSlots<TableSlots<T>>();
 
+const tableUi = useTableUi();
+
 const forwardedRootProps = useOmitProps(props, [
   'columns',
   'data',
   'rowKey',
+  'defaultSortState',
+  'sortState',
+  'defaultFilterState',
+  'filterState',
   'defaultExpanded',
   'expanded',
   'defaultExpandAll',
@@ -52,13 +82,69 @@ const forwardedRootProps = useOmitProps(props, [
   'cellProps'
 ]);
 
-const expanded = useControllableState(
-  () => props.expanded as R[],
+const uncontrolledExpanded = shallowRef(getDefaultExpanded());
+const uncontrolledSortState = shallowRef<TableSortState | undefined>(props.defaultSortState);
+const uncontrolledFilterState = shallowRef<TableFilterState>(props.defaultFilterState ?? {});
+
+watch(
+  () => props.expanded,
   value => {
-    emit('update:expanded', value ?? []);
-  },
-  getDefaultExpanded()
+    if (value !== undefined) {
+      uncontrolledExpanded.value = value;
+    }
+  }
 );
+
+watch(
+  () => props.sortState,
+  value => {
+    if (value !== undefined) {
+      uncontrolledSortState.value = value;
+    }
+  }
+);
+
+watch(
+  () => props.filterState,
+  value => {
+    if (value !== undefined) {
+      uncontrolledFilterState.value = value;
+    }
+  }
+);
+
+const expanded = computed({
+  get: () => props.expanded ?? uncontrolledExpanded.value,
+  set: value => {
+    if (props.expanded === undefined) {
+      uncontrolledExpanded.value = value;
+    }
+
+    emit('update:expanded', value);
+  }
+});
+
+const sortState = computed({
+  get: () => props.sortState ?? uncontrolledSortState.value,
+  set: value => {
+    if (props.sortState === undefined) {
+      uncontrolledSortState.value = value;
+    }
+
+    emit('update:sortState', value);
+  }
+});
+
+const filterState = computed({
+  get: () => props.filterState ?? uncontrolledFilterState.value,
+  set: value => {
+    if (props.filterState === undefined) {
+      uncontrolledFilterState.value = value;
+    }
+
+    emit('update:filterState', value);
+  }
+});
 
 const {
   modelValue: selected,
@@ -78,30 +164,69 @@ const {
   }
 );
 
-const filteredColumns = computed(() => {
-  return props.columns.filter(column => !column.hidden);
+const visibleColumns = computed(() => filterTableColumns(props.columns));
+
+const leafColumns = computed(() => getTableLeafColumns(visibleColumns.value));
+
+const headerRows = computed(() => getTableHeaderRows(visibleColumns.value));
+
+const leafDataColumns = computed(() => leafColumns.value.filter(isTableDataColumn));
+
+const columnMap = computed(() => {
+  return new Map(leafColumns.value.map(column => [getTableColumnKey(column), column]));
+});
+
+const displayData = computed(() => {
+  const filtered = props.data.filter(row => {
+    return Object.entries(filterState.value).every(([key, keyword]) => {
+      const column = columnMap.value.get(key);
+
+      if (!column || !isTableDataColumn(column) || !column.filter) {
+        return true;
+      }
+
+      return matchesTableColumnFilter(row, column, keyword);
+    });
+  });
+
+  if (!sortState.value) {
+    return filtered;
+  }
+
+  const column = getTableColumnByKey(leafDataColumns.value, sortState.value.key);
+
+  if (!column || !isTableDataColumn(column) || !column.sorter) {
+    return filtered;
+  }
+
+  return sortTableData(filtered, column, sortState.value);
 });
 
 const hasExpandColumn = computed(() => {
-  return filteredColumns.value.some(column => column.type === 'expand');
+  return leafColumns.value.some(column => column.type === 'expand');
 });
 
-const isHeaderSelectionDisabled = computed(() => props.data.length === 0);
+const isHeaderSelectionDisabled = computed(() => displayData.value.length === 0);
 
 const headerSelection = computed<CheckedState>(() => {
-  if (!Array.isArray(selected.value)) {
+  const selectedValues = selected.value;
+
+  if (!Array.isArray(selectedValues) || displayData.value.length === 0) {
     return false;
   }
 
-  if (selected.value.length === props.data.length) {
+  const visibleRowKeys = displayData.value.map(item => props.rowKey(item));
+  const selectedCount = visibleRowKeys.filter(value => selectedValues.includes(value)).length;
+
+  if (selectedCount === 0) {
+    return false;
+  }
+
+  if (selectedCount === visibleRowKeys.length) {
     return true;
   }
 
-  if (selected.value.length > 0) {
-    return 'indeterminate';
-  }
-
-  return false;
+  return 'indeterminate';
 });
 
 const singleSelectionName = `data-table-selection-${useId()}`;
@@ -131,7 +256,7 @@ function updateHeaderChecked(state: CheckedState | null) {
   }
 
   if (state === true) {
-    setSelected(props.data.map(item => props.rowKey(item)));
+    setSelected(displayData.value.map(item => props.rowKey(item)));
     return;
   }
 
@@ -145,42 +270,130 @@ function isRowExpanded(key: R) {
 function getRowLabel(row: T) {
   return getTableRowLabel(row, props.rowKey);
 }
+
+function getColumnSlotName(column: TableProps<T, R, M>['columns'][number]) {
+  return column.dataIndex ?? column.key ?? column.type ?? getTableColumnKey(column);
+}
+
+function isColumnSortable(column: TableProps<T, R, M>['columns'][number]): column is TableDataColumn<T> {
+  return isTableDataColumn(column) && Boolean(column.sorter);
+}
+
+function isColumnFilterable(column: TableProps<T, R, M>['columns'][number]): column is TableDataColumn<T> {
+  return isTableDataColumn(column) && Boolean(column.filter);
+}
+
+function getColumnSortOrder(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isColumnSortable(column)) {
+    return undefined;
+  }
+
+  const key = getTableColumnKey(column);
+
+  return sortState.value?.key === key ? sortState.value.order : undefined;
+}
+
+function toggleColumnSort(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isColumnSortable(column)) {
+    return;
+  }
+
+  sortState.value = toggleTableSortState(sortState.value, getTableColumnKey(column));
+}
+
+function getColumnSortIndicator(column: TableProps<T, R, M>['columns'][number]) {
+  const order = getColumnSortOrder(column);
+
+  if (order === 'asc') return '↑';
+  if (order === 'desc') return '↓';
+
+  return '↕';
+}
+
+function getColumnFilterValue(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isColumnFilterable(column)) {
+    return '';
+  }
+
+  return filterState.value[getTableColumnKey(column)] ?? '';
+}
+
+function updateColumnFilter(column: TableProps<T, R, M>['columns'][number], value: string) {
+  if (!isColumnFilterable(column)) {
+    return;
+  }
+
+  filterState.value = getNextTableFilterState(filterState.value, getTableColumnKey(column), value);
+}
+
+function clearColumnFilter(column: TableProps<T, R, M>['columns'][number]) {
+  updateColumnFilter(column, '');
+}
+
+function getColumnFilterPlaceholderText(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isColumnFilterable(column)) {
+    return undefined;
+  }
+
+  return getTableFilterPlaceholder(column);
+}
+
+function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isColumnSortable(column)) {
+    return undefined;
+  }
+
+  return getTableAriaSort(getColumnSortOrder(column));
+}
 </script>
 
 <template>
   <TableRoot v-bind="forwardedRootProps">
     <TableContent v-bind="contentProps">
       <TableHeader v-bind="headerProps">
-        <TableRow v-bind="rowProps">
-          <template v-for="column in filteredColumns" :key="column.dataIndex ?? `__${column.type}`">
-            <TableHead
-              v-if="column.dataIndex"
-              v-bind="headProps"
-              :align="column.align ?? 'left'"
-              :style="{ width: column.width }"
-            >
-              <slot :name="`header-${column.dataIndex}`" :column="column">
-                {{ column.title }}
-              </slot>
-            </TableHead>
-            <TableHead
-              v-else-if="column.type"
-              v-bind="headProps"
-              :align="column.align ?? 'center'"
-              :style="{ width: column.width }"
+        <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
+          <TableHead
+            v-for="headerCell in headerRow"
+            :key="`${headerRowIndex}-${headerCell.key}`"
+            v-bind="headProps"
+            :align="headerCell.column.align ?? (headerCell.column.type ? 'center' : 'left')"
+            :style="{ width: headerCell.column.width, minWidth: headerCell.column.minWidth }"
+            :colspan="headerCell.colSpan"
+            :rowspan="headerCell.rowSpan"
+            :aria-sort="getHeaderAriaSort(headerCell.column)"
+          >
+            <slot
+              name="header"
+              :column="headerCell.column"
+              :col-span="headerCell.colSpan"
+              :row-span="headerCell.rowSpan"
+              :sortable="isColumnSortable(headerCell.column)"
+              :sort-order="getColumnSortOrder(headerCell.column)"
+              :toggle-sort="() => toggleColumnSort(headerCell.column)"
+              :filter-value="getColumnFilterValue(headerCell.column)"
+              :set-filter-value="(value: string) => updateColumnFilter(headerCell.column, value)"
+              :clear-filter="() => clearColumnFilter(headerCell.column)"
             >
               <slot
-                :name="`header-${column.type}`"
-                :column="column"
+                :name="`header-${getColumnSlotName(headerCell.column)}`"
+                :column="headerCell.column"
+                :col-span="headerCell.colSpan"
+                :row-span="headerCell.rowSpan"
+                :sortable="isColumnSortable(headerCell.column)"
+                :sort-order="getColumnSortOrder(headerCell.column)"
+                :toggle-sort="() => toggleColumnSort(headerCell.column)"
+                :filter-value="getColumnFilterValue(headerCell.column)"
+                :set-filter-value="(value: string) => updateColumnFilter(headerCell.column, value)"
+                :clear-filter="() => clearColumnFilter(headerCell.column)"
                 :multiple="isMultiple"
                 :checked="headerSelection"
                 :disabled="isHeaderSelectionDisabled"
                 :update-checked="updateHeaderChecked"
               >
-                <template v-if="column.type === 'index'">
-                  {{ column.title ?? '#' }}
+                <template v-if="headerCell.column.type === 'index'">
+                  {{ headerCell.column.title ?? '#' }}
                 </template>
-                <template v-else-if="column.type === 'selection'">
+                <template v-else-if="headerCell.column.type === 'selection'">
                   <input
                     v-if="isMultiple"
                     type="checkbox"
@@ -192,23 +405,46 @@ function getRowLabel(row: T) {
                     @change="updateHeaderChecked(($event.target as HTMLInputElement).checked)"
                   >
                 </template>
-                <template v-else-if="column.type === 'expand'">
-                  {{ column.title }}
+                <template v-else-if="headerCell.column.type === 'expand'">
+                  {{ headerCell.column.title }}
+                </template>
+                <template v-else>
+                  <div :class="tableUi.headContent">
+                    <button
+                      v-if="isColumnSortable(headerCell.column)"
+                      type="button"
+                      :class="tableUi.sortTrigger"
+                      @click="toggleColumnSort(headerCell.column)"
+                    >
+                      <span>{{ headerCell.column.title }}</span>
+                      <span aria-hidden="true">{{ getColumnSortIndicator(headerCell.column) }}</span>
+                    </button>
+                    <span v-else>{{ headerCell.column.title }}</span>
+                    <input
+                      v-if="isColumnFilterable(headerCell.column)"
+                      :class="tableUi.filterInput"
+                      type="text"
+                      :value="getColumnFilterValue(headerCell.column)"
+                      :placeholder="getColumnFilterPlaceholderText(headerCell.column)"
+                      :aria-label="`Filter ${headerCell.column.title ?? getColumnSlotName(headerCell.column)}`"
+                      @input="updateColumnFilter(headerCell.column, ($event.target as HTMLInputElement).value)"
+                    >
+                  </div>
                 </template>
               </slot>
-            </TableHead>
-          </template>
+            </slot>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody v-bind="bodyProps">
-        <template v-for="(item, index) in data" :key="rowKey(item)">
+        <template v-for="(item, index) in displayData" :key="rowKey(item)">
           <TableRow v-bind="rowProps" data-row>
-            <template v-for="column in filteredColumns" :key="column.dataIndex ?? `__${column.type}`">
+            <template v-for="column in leafColumns" :key="getTableColumnKey(column)">
               <TableCell
                 v-if="column.dataIndex"
                 v-bind="cellProps"
                 :align="column.align ?? 'left'"
-                :style="{ width: column.width }"
+                :style="{ width: column.width, minWidth: column.minWidth }"
               >
                 <slot
                   :name="column.dataIndex"
@@ -224,7 +460,7 @@ function getRowLabel(row: T) {
                 v-else-if="column.type"
                 v-bind="cellProps"
                 :align="column.align ?? 'center'"
-                :style="{ width: column.width }"
+                :style="{ width: column.width, minWidth: column.minWidth }"
               >
                 <slot v-if="column.type === 'index'" name="index" :index="index" :column="column" :row="item">
                   {{ index + 1 }}
@@ -277,14 +513,14 @@ function getRowLabel(row: T) {
             </template>
           </TableRow>
           <TableRow v-if="hasExpandColumn && isRowExpanded(rowKey(item))" v-bind="rowProps" data-expanded-row>
-            <TableCell v-bind="cellProps" :colspan="filteredColumns.length">
+            <TableCell v-bind="cellProps" :colspan="leafColumns.length">
               <slot name="expanded-row" :index="index" :row="item" />
             </TableCell>
           </TableRow>
         </template>
       </TableBody>
       <TableFooter v-if="$slots.footer" v-bind="footerProps">
-        <slot name="footer" :column-size="filteredColumns.length" />
+        <slot name="footer" :column-size="leafColumns.length" />
       </TableFooter>
     </TableContent>
   </TableRoot>

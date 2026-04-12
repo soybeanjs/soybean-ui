@@ -2,6 +2,7 @@ import { h } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import STable from '../../../src/components/table/table.vue';
+import type { TableColumn } from '../../../src/components/table/types';
 import { getA11yViolations } from '../../shared/a11y';
 
 interface TableRowData {
@@ -10,9 +11,30 @@ interface TableRowData {
   age: number;
 }
 
-const columns = [
+const columns: TableColumn<TableRowData>[] = [
   { title: 'Name', dataIndex: 'name' },
   { title: 'Age', dataIndex: 'age', align: 'center' as const }
+];
+
+const groupedColumns: TableColumn<TableRowData>[] = [
+  {
+    title: 'Profile',
+    key: 'profile',
+    children: [
+      { title: 'Name', dataIndex: 'name' },
+      { title: 'Age', dataIndex: 'age', align: 'center' }
+    ]
+  }
+];
+
+const sortableColumns: TableColumn<TableRowData>[] = [
+  { title: 'Name', dataIndex: 'name' },
+  { title: 'Age', dataIndex: 'age', align: 'center', sorter: true }
+];
+
+const filterableColumns: TableColumn<TableRowData>[] = [
+  { title: 'Name', dataIndex: 'name', filter: true },
+  { title: 'Age', dataIndex: 'age', align: 'center' }
 ];
 
 const selectionColumns = [
@@ -35,7 +57,7 @@ describe('STable', () => {
     it('renders column headers and cell values', () => {
       const wrapper = mount(STable, {
         props: {
-          columns,
+          columns: columns as any,
           data,
           rowKey: row => row.id
         },
@@ -49,10 +71,26 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
+    it('renders grouped headers within a single semantic table', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: groupedColumns as any,
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.findAll('table')).toHaveLength(1);
+      expect(wrapper.findAll('thead tr')).toHaveLength(2);
+      expect(wrapper.get('th[colspan="2"]').text()).toContain('Profile');
+      wrapper.unmount();
+    });
+
     it('forwards custom cell slots to the headless data table', () => {
       const wrapper = mount(STable, {
         props: {
-          columns,
+          columns: columns as any,
           data,
           rowKey: row => row.id
         },
@@ -76,7 +114,7 @@ describe('STable', () => {
     it('emits update:selected when a row checkbox is clicked', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns,
+          columns: selectionColumns as any,
           data,
           rowKey: row => row.id
         },
@@ -95,7 +133,7 @@ describe('STable', () => {
     it('uses pressed button semantics for single-selection controls', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns,
+          columns: selectionColumns as any,
           data,
           rowKey: row => row.id,
           multiple: false,
@@ -112,11 +150,49 @@ describe('STable', () => {
     });
   });
 
+  describe('sorting and filtering', () => {
+    it('sorts rows when a sortable header is activated', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: sortableColumns as any,
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button').trigger('click');
+
+      expect(wrapper.emitted('update:sortState')?.[0]?.[0]).toEqual({ key: 'age', order: 'asc' });
+      expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');
+      wrapper.unmount();
+    });
+
+    it('filters rows when a filterable header input changes', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: filterableColumns as any,
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('input[aria-label="Filter Name"]').setValue('Lin');
+
+      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({ name: 'Lin' });
+      expect(wrapper.findAll('tbody tr')).toHaveLength(1);
+      expect(wrapper.text()).toContain('Linus');
+      expect(wrapper.text()).not.toContain('Ada');
+      wrapper.unmount();
+    });
+  });
+
   describe('expanded state', () => {
     it('emits update:expanded and renders expanded row content', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: expandableColumns,
+          columns: expandableColumns as any,
           data,
           rowKey: row => row.id
         },
@@ -143,7 +219,7 @@ describe('STable', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns,
+          columns: selectionColumns as any,
           data,
           rowKey: row => row.id
         },

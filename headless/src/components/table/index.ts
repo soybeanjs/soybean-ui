@@ -9,6 +9,22 @@ export { default as TableHead } from './table-head.vue';
 export { default as TableCell } from './table-cell.vue';
 
 export { provideTableUi } from './context';
-export { getTableRowLabel, getTableRowValueByDataIndex } from './shared';
+export {
+  filterTableColumns,
+  getNextTableFilterState,
+  getTableAriaSort,
+  getTableColumnByKey,
+  getTableColumnKey,
+  getTableFilterPlaceholder,
+  getTableHeaderRows,
+  getTableLeafColumns,
+  getTableRowLabel,
+  getTableRowValueByDataIndex,
+  isTableDataColumn,
+  isTableGroupColumn,
+  matchesTableColumnFilter,
+  sortTableData,
+  toggleTableSortState
+} from './shared';
 
 export type * from './types';

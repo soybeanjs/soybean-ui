@@ -1,9 +1,13 @@
 import {
   BaseTableData,
   TableColumn,
+  TableColumnFilter,
+  TableFilterState,
   TableColumnType,
   TableEmits,
   TableProps as HeadlessTableProps,
+  TableSortOrder,
+  TableSortState,
   TableSlots,
   TableUi
 } from '@soybeanjs/headless/table';
@@ -34,4 +38,14 @@ export interface TableRadioProps {
   checked?: boolean;
 }
 
-export type { BaseTableData, TableColumn, TableColumnType, TableEmits, TableSlots };
+export type {
+  BaseTableData,
+  TableColumn,
+  TableColumnFilter,
+  TableColumnType,
+  TableEmits,
+  TableFilterState,
+  TableSlots,
+  TableSortOrder,
+  TableSortState
+};

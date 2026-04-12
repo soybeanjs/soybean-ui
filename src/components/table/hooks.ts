@@ -1,5 +1,6 @@
 import { shallowRef, watch } from 'vue';
 import { useTable as _useTable } from '@soybeanjs/hooks';
+import { getTableColumnKey } from '@soybeanjs/headless/table';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
 import type { TableColumn, TableColumnType } from './types';
 
@@ -82,11 +83,16 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   const cols: TableColumnCheck[] = [];
 
   columns.forEach(col => {
-    const { type, dataIndex, title, hidden } = col;
+    if (Array.isArray(col.children) && col.children.length > 0) {
+      cols.push(...getColumnChecks(col.children as T[]));
+      return;
+    }
 
-    if (type) return;
+    const { type, title, hidden } = col;
 
-    const key = dataIndex as string;
+    if (type || !col.dataIndex) return;
+
+    const key = getTableColumnKey(col);
 
     const column: TableColumnCheck = {
       key,
@@ -103,37 +109,47 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
 }
 
 function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
-  const columnsMap = new Map<string, T>();
-
   const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
+  const checksMap = new Map(checks.map(check => [check.key, check]));
 
   columns.forEach((column, index) => {
     if (column.type) {
       typeColumnsMap.set(column.type, { column: column, index });
       return;
-    } else if (column.dataIndex) {
-      columnsMap.set(column.dataIndex, column);
     }
   });
 
-  const result: T[] = [];
+  return columns.reduce<T[]>((acc, column, index) => {
+    if (column.type) {
+      const typeColumn = typeColumnsMap.get(column.type);
 
-  checks
-    .filter(check => check.checked)
-    .forEach(check => {
-      const column = columnsMap.get(check.key);
-      if (column) {
-        result.push(column);
+      if (!typeColumn || typeColumn.index !== index) {
+        return acc;
       }
-    });
 
-  typeColumnsMap.forEach(({ column, index }) => {
-    if (index >= result.length) {
-      result.push(column);
-    } else {
-      result.splice(index, 0, column);
+      acc.push(column);
+      return acc;
     }
-  });
 
-  return result;
+    if (Array.isArray(column.children) && column.children.length > 0) {
+      const nextChildren = getColumns(column.children as T[], checks);
+
+      if (nextChildren.length > 0) {
+        acc.push({
+          ...column,
+          children: nextChildren
+        });
+      }
+
+      return acc;
+    }
+
+    const check = checksMap.get(getTableColumnKey(column));
+
+    if (check?.checked !== false) {
+      acc.push(column);
+    }
+
+    return acc;
+  }, []);
 }
