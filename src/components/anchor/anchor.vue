@@ -2,29 +2,38 @@
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
 import { AnchorRoot, provideAnchorUi } from '@soybeanjs/headless';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
+import { provideExtraAnchorUi } from './context';
 import AnchorItem from './anchor-item.vue';
-import type { AnchorEmits, AnchorProps } from './types';
 import { anchorVariants } from './variants';
+import type { AnchorEmits, AnchorProps } from './types';
 
 defineOptions({
   name: 'SAnchor'
 });
 
 const props = withDefaults(defineProps<AnchorProps>(), {
-  color: 'primary',
-  linkProps: undefined,
-  modelValue: undefined,
   offsetTop: 0,
-  size: 'md',
-  sticky: true,
-  ui: undefined
+  sticky: true
 });
 
 const emit = defineEmits<AnchorEmits>();
 
-const forwardedProps = useOmitProps(props, ['class', 'color', 'items', 'linkProps', 'size', 'sticky', 'ui']);
+const forwardedProps = useOmitProps(props, [
+  'color',
+  'size',
+  'ui',
+  'class',
+  'items',
+  'sticky',
+  'linkProps',
+  'indicatorProps',
+  'titleProps',
+  'subProps'
+]);
+
+const events = useForwardListeners(emit);
 
 const style = computed<CSSProperties>(() => ({
   '--soybean-anchor-offset-top': `${props.offsetTop}px`
@@ -42,22 +51,19 @@ const ui = computed(() => {
 });
 
 provideAnchorUi(ui);
+provideExtraAnchorUi(ui);
 </script>
 
 <template>
-  <AnchorRoot
-    v-slot="{ modelValue }"
-    v-bind="forwardedProps"
-    :style="style"
-    @update:model-value="emit('update:modelValue', $event)"
-    @active-change="emit('activeChange', $event)"
-    @item-select="(event, payload) => emit('itemSelect', event, payload)"
-  >
+  <AnchorRoot v-slot="{ modelValue }" v-bind="forwardedProps" :style="style" v-on="events">
     <AnchorItem
       v-for="item in items"
       :key="item.href"
       :item="item"
       :link-props="linkProps"
+      :indicator-props="indicatorProps"
+      :title-props="titleProps"
+      :sub-props="subProps"
       :model-value="modelValue"
       :ui="ui"
     />

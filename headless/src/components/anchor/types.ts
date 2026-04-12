@@ -1,12 +1,21 @@
-import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { PrimitiveProps } from '../primitive/types';
+import type { LinkProps } from '../link/types';
 import type { DataOrientation, Direction, PropsToContext, UiClass } from '../../types';
 
 export type AnchorContainer = HTMLElement | Window;
 
-export interface AnchorRootProps extends /** @vue-ignore */ HTMLAttributes {
+export type AnchorHistoryMode = 'push' | 'replace';
+
+export interface AnchorSection {
+  href: string;
+  top: number;
+}
+
+export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   bounds?: number;
   dir?: Direction;
-  getContainer?: () => AnchorContainer;
+  getContainer?: () => AnchorContainer | null;
   getCurrentAnchor?: (activeHref: string) => string;
   modelValue?: string;
   offsetTop?: number;
@@ -21,10 +30,9 @@ export type AnchorRootEmits = {
   itemSelect: [event: MouseEvent, payload: { href: string }];
 };
 
-export interface AnchorLinkProps extends /** @vue-ignore */ HTMLAttributes {
-  disabled?: boolean;
+export interface AnchorLinkProps
+  extends PrimitiveProps, Pick<LinkProps, 'disabled' | 'target'>, /** @vue-ignore */ HTMLAttributes {
   href: string;
-  target?: string;
 }
 
 export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps, 'dir'> {
@@ -33,10 +41,6 @@ export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps,
   registerLink: (href: string) => void;
   scrollTo: (href: string) => void;
   unregisterLink: (href: string) => void;
-}
-
-export interface AnchorRootContext extends Omit<AnchorRootContextParams, 'dir'> {
-  dir: ComputedRef<Direction>;
 }
 
 export type AnchorUiSlot = 'root' | 'link';

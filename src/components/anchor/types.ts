@@ -1,3 +1,4 @@
+import type { HTMLAttributes } from 'vue';
 import type {
   AnchorLinkProps,
   AnchorRootEmits,
@@ -13,18 +14,30 @@ export interface AnchorItemData extends Pick<AnchorLinkProps, 'disabled' | 'href
   title?: string;
 }
 
-export type AnchorExtraUiSlot = 'children' | 'indicator' | 'item';
+export interface AnchorItemProps extends /** @vue-ignore */ HTMLAttributes {
+  modelValue?: string;
+  item: AnchorItemData;
+  linkProps?: AnchorLinkProps;
+  indicatorProps?: HTMLAttributes;
+  titleProps?: HTMLAttributes;
+  subProps?: HTMLAttributes;
+}
+
+export type AnchorExtraUiSlot = 'sub' | 'item' | 'indicator' | 'title';
 
 export type AnchorExtendedUi = UiClass<AnchorUiSlot | AnchorExtraUiSlot>;
 
 export interface AnchorProps extends AnchorRootProps {
-  class?: ClassValue;
   color?: ThemeColor;
-  items: AnchorItemData[];
-  linkProps?: Omit<AnchorLinkProps, 'href'>;
   size?: ThemeSize;
-  sticky?: boolean;
   ui?: Partial<AnchorExtendedUi>;
+  class?: ClassValue;
+  items: AnchorItemData[];
+  sticky?: boolean;
+  linkProps?: AnchorLinkProps;
+  indicatorProps?: HTMLAttributes;
+  titleProps?: HTMLAttributes;
+  subProps?: HTMLAttributes;
 }
 
 export type AnchorEmits = AnchorRootEmits;

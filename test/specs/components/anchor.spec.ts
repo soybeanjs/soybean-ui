@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick, onMounted, shallowRef } from 'vue';
 import { describe, expect, it, vi } from 'vitest';
 import SAnchor from '../../../src/components/anchor/anchor.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -122,6 +123,7 @@ describe('SAnchor', () => {
 
   describe('active state', () => {
     it('scrolls to the target and emits selection events on click', async () => {
+      const previousHash = window.location.hash;
       const container = createContainer();
       const overview = createSection('overview', 80);
       const usage = createSection('usage', 280);
@@ -151,14 +153,20 @@ describe('SAnchor', () => {
       usage.element.remove();
       api.element.remove();
       container.remove();
+      window.history.replaceState(null, '', previousHash || '#');
       pushState.mockRestore();
     });
 
     it('updates the active anchor when the container scrolls', async () => {
+      const previousHash = window.location.hash;
       const container = createContainer();
       const overview = createSection('overview', -40);
       const usage = createSection('usage', 120);
       const api = createSection('api', 360);
+      const pushState = vi.spyOn(window.history, 'pushState');
+      const replaceState = vi.spyOn(window.history, 'replaceState');
+
+      window.history.replaceState(null, '', previousHash || '#');
 
       const wrapper = mount(SAnchor, {
         props: {
@@ -174,6 +182,8 @@ describe('SAnchor', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.find('a[href="#overview"]').attributes('aria-current')).toBe('location');
+      expect(replaceState).toHaveBeenCalledWith(null, '', '#overview');
+      expect(pushState).not.toHaveBeenCalled();
 
       overview.setTop(-260);
       usage.setTop(-20);
@@ -183,12 +193,94 @@ describe('SAnchor', () => {
       await wrapper.vm.$nextTick();
 
       expect(wrapper.find('a[href="#usage"]').attributes('aria-current')).toBe('location');
+      expect(replaceState).toHaveBeenLastCalledWith(null, '', '#usage');
 
       wrapper.unmount();
       overview.element.remove();
       usage.element.remove();
       api.element.remove();
       container.remove();
+      window.history.replaceState(null, '', previousHash || '#');
+      pushState.mockRestore();
+      replaceState.mockRestore();
+    });
+
+    it('syncs to the current location hash on mount', async () => {
+      const previousHash = window.location.hash;
+      const container = createContainer();
+      const overview = createSection('overview', 80);
+      const usage = createSection('usage', 280);
+      const api = createSection('api', 520);
+
+      window.history.replaceState(null, '', '#api');
+
+      const wrapper = mount(SAnchor, {
+        props: {
+          getContainer: () => container,
+          items,
+          sticky: false
+        },
+        attachTo: document.body
+      });
+
+      await nextTick();
+      await nextTick();
+
+      expect(container.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'auto', top: 520 }));
+      expect(wrapper.find('a[href="#api"]').attributes('aria-current')).toBe('location');
+
+      wrapper.unmount();
+      overview.element.remove();
+      usage.element.remove();
+      api.element.remove();
+      container.remove();
+      window.history.replaceState(null, '', previousHash || '#');
+    });
+
+    it('re-syncs the location hash when the custom container replaces the initial window fallback', async () => {
+      const previousHash = window.location.hash;
+      const container = createContainer();
+      const overview = createSection('overview', 80);
+      const usage = createSection('usage', 280);
+      const api = createSection('api', 520);
+
+      window.history.replaceState(null, '', '#api');
+
+      const wrapper = mount(
+        {
+          components: { SAnchor },
+          setup() {
+            const containerRef = shallowRef<HTMLElement>();
+
+            onMounted(() => {
+              containerRef.value = container;
+            });
+
+            return {
+              getContainer: () => containerRef.value ?? window,
+              items
+            };
+          },
+          template: '<SAnchor :items="items" :get-container="getContainer" :sticky="false" />'
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      await nextTick();
+      await nextTick();
+      await nextTick();
+
+      expect(container.scrollTo).toHaveBeenCalledWith(expect.objectContaining({ behavior: 'auto', top: 520 }));
+      expect(wrapper.find('a[href="#api"]').attributes('aria-current')).toBe('location');
+
+      wrapper.unmount();
+      overview.element.remove();
+      usage.element.remove();
+      api.element.remove();
+      container.remove();
+      window.history.replaceState(null, '', previousHash || '#');
     });
   });
 

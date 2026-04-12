@@ -14,7 +14,7 @@ import { anchorItems } from './shared';
         item: 'gap-2',
         link: 'bg-transparent data-[state=active]:bg-primary/10 data-[state=active]:text-primary hover:bg-primary/5',
         indicator: 'bg-primary shadow-sm shadow-primary/50',
-        children: 'border-primary/20'
+        sub: 'border-primary/20'
       }"
     />
   </div>

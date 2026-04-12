@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
-import { useOmitProps } from '../../composables';
+import { computed, watch, onWatcherCleanup } from 'vue';
+import { Primitive } from '../primitive';
 import { useAnchorRootContext, useAnchorUi } from './context';
 import type { AnchorLinkProps } from './types';
 
@@ -9,11 +9,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AnchorLinkProps>(), {
-  disabled: false,
-  target: undefined
+  as: 'a'
 });
-
-const forwardedProps = useOmitProps(props, ['disabled', 'href', 'target']);
 
 const cls = useAnchorUi('link');
 
@@ -23,7 +20,7 @@ const active = computed(() => activeHref.value === props.href);
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 const dataState = computed(() => (active.value ? 'active' : 'inactive'));
 
-function handleClick(event: MouseEvent) {
+const onClick = (event: MouseEvent) => {
   onLinkClick(event, { href: props.href });
 
   if (props.disabled) {
@@ -38,14 +35,14 @@ function handleClick(event: MouseEvent) {
 
   event.preventDefault();
   scrollTo(props.href);
-}
+};
 
 watch(
   () => props.href,
-  (href, _, onCleanup) => {
+  href => {
     registerLink(href);
 
-    onCleanup(() => {
+    onWatcherCleanup(() => {
       unregisterLink(href);
     });
   },
@@ -56,18 +53,19 @@ watch(
 </script>
 
 <template>
-  <a
-    v-bind="forwardedProps"
+  <Primitive
+    :as="as"
+    :as-child="asChild"
     :href="href"
-    :target="target"
     :class="cls"
+    :target="target"
     :aria-current="active ? 'location' : undefined"
     :aria-disabled="disabled ? 'true' : undefined"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :tabindex="disabled ? -1 : undefined"
-    @click="handleClick"
+    @click="onClick"
   >
     <slot />
-  </a>
+  </Primitive>
 </template>

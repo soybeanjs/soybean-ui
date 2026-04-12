@@ -1,9 +1,21 @@
 <script setup lang="ts">
-import { onBeforeUnmount, shallowRef, watch } from 'vue';
+import { nextTick, onBeforeUnmount, onMounted, onWatcherCleanup, shallowRef, watch } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
-import { isClient, transformPropsToContext } from '../../shared';
+import { transformPropsToContext, isClient } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { provideAnchorRootContext, useAnchorUi } from './context';
+import {
+  getAnchorOffsetTop,
+  getAnchorScrollTop,
+  getAnchorSections,
+  getCurrentAnchorHref,
+  getLocationHash,
+  resolveAnchorContainer,
+  resolveLocationHashSyncTarget,
+  resolveAnchorTargetElement,
+  scrollContainerTo,
+  updateAnchorHistory
+} from './shared';
 import type { AnchorContainer, AnchorRootEmits, AnchorRootProps } from './types';
 
 defineOptions({
@@ -11,27 +23,16 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AnchorRootProps>(), {
-  bounds: 5,
-  dir: undefined,
-  getContainer: undefined,
-  getCurrentAnchor: undefined,
   modelValue: undefined,
+  bounds: 5,
   offsetTop: 0,
-  orientation: 'vertical',
-  replace: false,
-  targetOffset: undefined
+  orientation: 'vertical'
 });
 
 const emit = defineEmits<AnchorRootEmits>();
 
-type Slots = {
-  default: (props: { modelValue: string | undefined }) => any;
-};
-
-defineSlots<Slots>();
-
 const cls = useAnchorUi('root');
-const dir = useDirection(() => props.dir);
+
 const forwardedProps = useOmitProps(props, [
   'bounds',
   'dir',
@@ -44,6 +45,8 @@ const forwardedProps = useOmitProps(props, [
   'targetOffset'
 ]);
 
+const dir = useDirection(() => props.dir);
+
 const activeHref = useControllableState(
   () => props.modelValue,
   value => emit('update:modelValue', value ?? ''),
@@ -53,65 +56,23 @@ const activeHref = useControllableState(
 const registeredLinks = shallowRef<string[]>([]);
 const isAnimating = shallowRef(false);
 const animationTimer = shallowRef<number>();
+const syncedLocationHash = shallowRef('');
+const syncedLocationContainer = shallowRef<AnchorContainer | null>(null);
 
-function getCurrentContainer(): AnchorContainer | null {
-  if (!isClient) {
-    return null;
+const getCurrentContainer = (): AnchorContainer | null => {
+  return resolveAnchorContainer(props.getContainer);
+};
+
+const getResolvedOffsetTop = () => getAnchorOffsetTop(props.offsetTop, props.targetOffset);
+
+const clearAnimationTimer = () => {
+  if (isClient && animationTimer.value) {
+    window.clearTimeout(animationTimer.value);
+    animationTimer.value = undefined;
   }
+};
 
-  return props.getContainer?.() ?? window;
-}
-
-function getContainerScrollTop(container: AnchorContainer) {
-  if (isWindowContainer(container)) {
-    return window.scrollY || window.pageYOffset || 0;
-  }
-
-  return container.scrollTop;
-}
-
-function getElementOffsetTop(element: HTMLElement, container: AnchorContainer) {
-  if (!element.getClientRects().length) {
-    return 0;
-  }
-
-  const rect = element.getBoundingClientRect();
-
-  if (isWindowContainer(container)) {
-    return rect.top - element.ownerDocument.documentElement.clientTop;
-  }
-
-  return rect.top - container.getBoundingClientRect().top;
-}
-
-function isWindowContainer(container: AnchorContainer): container is Window {
-  return container === window;
-}
-
-function isAnchorSection(
-  section: { href: string; top: number } | null
-): section is { href: string; top: number } {
-  return Boolean(section);
-}
-
-function resolveTargetElement(href: string) {
-  if (!isClient) {
-    return null;
-  }
-
-  if (!href.startsWith('#')) {
-    return null;
-  }
-
-  const id = decodeURIComponent(href.slice(1));
-  if (!id) {
-    return null;
-  }
-
-  return document.getElementById(id);
-}
-
-function setActiveHref(href: string) {
+const setActiveHref = (href: string) => {
   const nextHref = props.getCurrentAnchor?.(href) ?? href;
 
   if (activeHref.value === nextHref) {
@@ -120,108 +81,126 @@ function setActiveHref(href: string) {
 
   activeHref.value = nextHref;
   emit('activeChange', href);
-}
+};
 
-function getCurrentAnchor() {
-  const offsetTop = props.targetOffset ?? props.offsetTop;
-  const sections = registeredLinks.value
-    .map(href => {
-      const element = resolveTargetElement(href);
-      if (!element) {
-        return null;
-      }
+const getCurrentAnchor = () => {
+  const container = getCurrentContainer();
 
-      const container = getCurrentContainer();
-      if (!container) {
-        return null;
-      }
-
-      return {
-        href,
-        top: getElementOffsetTop(element, container)
-      };
-    })
-    .filter(isAnchorSection)
-    .filter(section => section.top <= offsetTop + props.bounds);
-
-  if (!sections.length) {
+  if (!container) {
     return '';
   }
 
-  return sections.reduce((prev, curr) => (curr.top > prev.top ? curr : prev)).href;
-}
+  const offsetTop = getResolvedOffsetTop();
+  const sections = getAnchorSections(registeredLinks.value, container);
 
-function handleScroll() {
+  return getCurrentAnchorHref(sections, offsetTop + props.bounds);
+};
+
+const syncActiveAnchor = (historyMode: 'replace' | false = false) => {
   if (isAnimating.value) {
     return;
   }
 
-  setActiveHref(getCurrentAnchor());
-}
+  const href = getCurrentAnchor();
+  setActiveHref(href);
 
-function scrollContainerTo(container: AnchorContainer, top: number) {
-  const options = {
-    behavior: 'smooth' as const,
-    top
-  };
-
-  if (container === window) {
-    window.scrollTo(options);
-    return;
+  if (historyMode) {
+    updateAnchorHistory(href, historyMode);
   }
+};
 
-  container.scrollTo(options);
-}
+const handleScroll = () => {
+  syncActiveAnchor('replace');
+};
 
-function scrollTo(href: string) {
-  if (!isClient) {
-    return;
-  }
-
-  const element = resolveTargetElement(href);
+const scrollToAnchor = (href: string, behavior: ScrollBehavior = 'smooth') => {
+  const element = resolveAnchorTargetElement(href);
   if (!element) {
-    return;
+    return false;
   }
 
   const container = getCurrentContainer();
   if (!container) {
+    return false;
+  }
+
+  const offsetTop = getResolvedOffsetTop();
+  const top = getAnchorScrollTop(element, container, offsetTop);
+
+  scrollContainerTo(container, top, behavior);
+
+  return true;
+};
+
+const syncFromLocationHash = () => {
+  const target = resolveLocationHashSyncTarget(
+    getLocationHash(),
+    registeredLinks.value,
+    getCurrentContainer(),
+    syncedLocationHash.value,
+    syncedLocationContainer.value
+  );
+
+  if (!target) {
+    return false;
+  }
+
+  if (target.shouldScroll) {
+    const scrolled = scrollToAnchor(target.hash, 'auto');
+
+    if (!scrolled) {
+      return false;
+    }
+  }
+
+  setActiveHref(target.hash);
+  syncedLocationHash.value = target.hash;
+  syncedLocationContainer.value = target.container;
+  return true;
+};
+
+const initializeActiveAnchor = () => {
+  const synced = syncFromLocationHash();
+
+  if (!synced) {
+    syncActiveAnchor();
+  }
+};
+
+const scrollTo = (href: string) => {
+  if (!isClient) {
     return;
   }
 
-  const offsetTop = props.targetOffset ?? props.offsetTop;
-  const top = getContainerScrollTop(container) + getElementOffsetTop(element, container) - offsetTop;
+  const scrolled = scrollToAnchor(href);
+  if (!scrolled) {
+    return;
+  }
 
   setActiveHref(href);
   isAnimating.value = true;
 
-  if (animationTimer.value) {
-    window.clearTimeout(animationTimer.value);
-  }
-
-  scrollContainerTo(container, top);
+  clearAnimationTimer();
 
   animationTimer.value = window.setTimeout(() => {
     isAnimating.value = false;
-    handleScroll();
+    syncActiveAnchor();
   }, 300);
 
-  if (href.startsWith('#')) {
-    const method = props.replace ? 'replaceState' : 'pushState';
-    window.history[method](null, '', href);
-  }
-}
+  updateAnchorHistory(href, props.replace ? 'replace' : 'push');
+};
 
-function registerLink(href: string) {
+const registerLink = (href: string) => {
   if (registeredLinks.value.includes(href)) {
     return;
   }
 
   registeredLinks.value = [...registeredLinks.value, href];
-}
+};
 
-function unregisterLink(href: string) {
+const unregisterLink = (href: string) => {
   registeredLinks.value = registeredLinks.value.filter(link => link !== href);
-}
+};
 
 provideAnchorRootContext({
   activeHref,
@@ -236,16 +215,17 @@ provideAnchorRootContext({
 
 watch(
   () => [registeredLinks.value, props.getContainer?.()] as const,
-  (_, __, onCleanup) => {
+  () => {
     const container = getCurrentContainer();
     if (!container) {
       return;
     }
 
-    handleScroll();
+    initializeActiveAnchor();
+
     container.addEventListener('scroll', handleScroll, { passive: true });
 
-    onCleanup(() => {
+    onWatcherCleanup(() => {
       container.removeEventListener('scroll', handleScroll);
     });
   },
@@ -255,10 +235,13 @@ watch(
   }
 );
 
+onMounted(async () => {
+  await nextTick();
+  initializeActiveAnchor();
+});
+
 onBeforeUnmount(() => {
-  if (isClient && animationTimer.value) {
-    window.clearTimeout(animationTimer.value);
-  }
+  clearAnimationTimer();
 });
 </script>
 
