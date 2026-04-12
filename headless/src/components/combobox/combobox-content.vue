@@ -12,7 +12,8 @@ defineOptions({
 });
 
 withDefaults(defineProps<ComboboxContentProps>(), {
-  avoidCollisions: true
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
 const emit = defineEmits<ComboboxContentEmits>();
