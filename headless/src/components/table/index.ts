@@ -15,6 +15,7 @@ export {
   getTableAriaSort,
   getTableColumnByKey,
   getTableColumnKey,
+  getTableColumnWidthValue,
   getTableFilterPlaceholder,
   getTableHeaderRows,
   getTableLeafColumns,
@@ -23,6 +24,7 @@ export {
   isTableDataColumn,
   isTableGroupColumn,
   matchesTableColumnFilter,
+  parseTableColumnWidth,
   sortTableData,
   toggleTableSortState
 } from './shared';

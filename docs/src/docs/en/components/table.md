@@ -45,6 +45,7 @@ expandable
 bordered
 striped
 grouped-sort-filter
+fixed-resizable
 single-selection
 multiple-selection
 footer
@@ -62,6 +63,8 @@ footer
   { name: 'defaultSortState', type: 'TableSortState', default: '-', description: 'Default sort state (uncontrolled).' },
   { name: 'filterState', type: 'TableFilterState', default: '-', description: 'Current filter state (controlled).' },
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: 'Default filter state (uncontrolled).' },
+  { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: 'Current column width state (controlled).' },
+  { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: 'Default column width state (uncontrolled).' },
   { name: 'size', type: 'ThemeSize', default: 'md', description: 'Table size.' },
   { name: 'bordered', type: `'all' | boolean`, default: 'false', description: 'Whether to show borders.' },
   { name: 'striped', type: 'boolean', default: 'false', description: 'Whether to show striped rows.' },
@@ -87,6 +90,7 @@ footer
 <DataTable preset="emits" :data="[
   { name: 'update:sortState', parameters: '(value: TableSortState | undefined) => void', description: 'Triggers when the sort state changes.' },
   { name: 'update:filterState', parameters: '(value: TableFilterState) => void', description: 'Triggers when the filter state changes.' },
+  { name: 'update:columnWidths', parameters: '(value: TableColumnWidthState) => void', description: 'Triggers when the column width state changes.' },
   { name: 'update:selected', parameters: '(value: R | R[]) => void', description: 'Triggers when selected row changes.' },
   { name: 'update:expanded', parameters: '(value: R[]) => void', description: 'Triggers when expanded rows change.' }
 ]"/>
@@ -121,6 +125,8 @@ Column definition interface.
   { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: 'Alignment.' },
   { name: 'width', type: 'string', default: '-', description: 'Column width.' },
   { name: 'minWidth', type: 'string', default: '-', description: 'Minimum column width.' },
+  { name: 'fixed', type: `'left' | 'right'`, default: '-', description: 'Fixed column side.' },
+  { name: 'resizable', type: 'boolean', default: 'false', description: 'Enables column resizing.' },
   { name: 'children', type: 'TableColumn<T>[]', default: '-', description: 'Child columns for grouped headers.' },
   { name: 'sorter', type: 'boolean | ((a, b) => number)', default: '-', description: 'Enables sorting or provides a custom sort function.' },
   { name: 'filter', type: 'boolean | TableColumnFilter<T>', default: '-', description: 'Enables filtering or provides filter configuration.' },
@@ -141,8 +147,10 @@ Custom styling classes.
   { name: 'head', type: 'string', description: 'Header cell class.' },
   { name: 'cell', type: 'string', description: 'Cell class.' },
   { name: 'headContent', type: 'string', description: 'Header content container class.' },
+  { name: 'fixed', type: 'string', description: 'Fixed column class.' },
   { name: 'sortTrigger', type: 'string', description: 'Sort trigger class.' },
   { name: 'filterInput', type: 'string', description: 'Filter input class.' },
+  { name: 'resizeHandle', type: 'string', description: 'Resize handle class.' },
   { name: 'selection', type: 'string', description: 'Selection checkbox class.' }
 ]"/>
 

@@ -2,6 +2,7 @@ import type { Path, PathValue } from '../../types';
 import type {
   BaseTableData,
   TableColumn,
+  TableColumnWidthState,
   TableDataColumn,
   TableFilterState,
   TableGroupColumn,
@@ -275,4 +276,35 @@ export function getTableAriaSort(order?: TableSortOrder) {
   if (order === 'desc') return 'descending';
 
   return 'none';
+}
+
+export function parseTableColumnWidth(width?: string) {
+  if (!width) {
+    return undefined;
+  }
+
+  const normalizedWidth = width.trim();
+
+  if (!normalizedWidth) {
+    return undefined;
+  }
+
+  if (normalizedWidth.endsWith('px')) {
+    const parsedWidth = Number.parseFloat(normalizedWidth.slice(0, -2));
+
+    return Number.isFinite(parsedWidth) ? parsedWidth : undefined;
+  }
+
+  const parsedWidth = Number.parseFloat(normalizedWidth);
+
+  return Number.isFinite(parsedWidth) ? parsedWidth : undefined;
+}
+
+export function getTableColumnWidthValue<T extends BaseTableData>(
+  column: TableColumn<T>,
+  columnWidths?: TableColumnWidthState
+) {
+  const key = getTableColumnKey(column);
+
+  return columnWidths?.[key] ?? column.width;
 }

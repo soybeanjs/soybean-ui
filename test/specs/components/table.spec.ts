@@ -1,4 +1,4 @@
-import { h } from 'vue';
+import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import STable from '../../../src/components/table/table.vue';
@@ -37,6 +37,16 @@ const filterableColumns: TableColumn<TableRowData>[] = [
   { title: 'Age', dataIndex: 'age', align: 'center' }
 ];
 
+const fixedColumns: TableColumn<TableRowData>[] = [
+  { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'left' },
+  { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'right' }
+];
+
+const resizableColumns: TableColumn<TableRowData>[] = [
+  { title: 'Name', dataIndex: 'name', width: '140px', minWidth: '100px', resizable: true },
+  { title: 'Age', dataIndex: 'age', align: 'center', width: '96px' }
+];
+
 const selectionColumns = [
   { type: 'selection' as const, width: '48px' },
   ...columns
@@ -51,6 +61,27 @@ const data: TableRowData[] = [
   { id: 1, name: 'Ada', age: 32 },
   { id: 2, name: 'Linus', age: 28 }
 ];
+
+function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
+  Object.defineProperty(element, 'getBoundingClientRect', {
+    configurable: true,
+    value: () => ({
+      x: rect.x ?? 0,
+      y: rect.y ?? 0,
+      top: rect.y ?? 0,
+      left: rect.x ?? 0,
+      right: (rect.x ?? 0) + (rect.width ?? 0),
+      bottom: (rect.y ?? 0) + (rect.height ?? 0),
+      width: rect.width ?? 0,
+      height: rect.height ?? 0,
+      toJSON: () => ({})
+    })
+  });
+}
+
+function dispatchPointerEvent(target: EventTarget, type: string, init: PointerEventInit) {
+  target.dispatchEvent(new PointerEvent(type, { bubbles: true, ...init }));
+}
 
 describe('STable', () => {
   describe('rendering', () => {
@@ -182,6 +213,54 @@ describe('STable', () => {
       expect(wrapper.findAll('tbody tr')).toHaveLength(1);
       expect(wrapper.text()).toContain('Linus');
       expect(wrapper.text()).not.toContain('Ada');
+      wrapper.unmount();
+    });
+  });
+
+  describe('fixed and resizable columns', () => {
+    it('applies sticky offsets to fixed columns', () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: fixedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const leftHead = wrapper.get('th[data-fixed-side="left"]');
+      const rightHead = wrapper.get('th[data-fixed-side="right"]');
+
+      expect(leftHead.attributes('style')).toContain('position: sticky;');
+      expect(leftHead.attributes('style')).toContain('left: 0px;');
+      expect(rightHead.attributes('style')).toContain('right: 0px;');
+      expect(wrapper.get('td[data-fixed-side="left"]').attributes('style')).toContain('left: 0px;');
+      wrapper.unmount();
+    });
+
+    it('updates column widths when a resize handle is dragged', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: resizableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const head = wrapper.get('th');
+      const handle = wrapper.get('button[aria-label="Resize Name column"]');
+
+      mockRect(head.element, { x: 0, y: 0, width: 140, height: 40 });
+
+      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 140, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointermove', { clientX: 180, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 180, clientY: 20, pointerId: 1 });
+
+      await nextTick();
+
+      expect(wrapper.emitted('update:columnWidths')?.at(-1)?.[0]).toEqual({ name: '180px' });
+      expect(head.attributes('style')).toContain('width: 180px;');
       wrapper.unmount();
     });
   });

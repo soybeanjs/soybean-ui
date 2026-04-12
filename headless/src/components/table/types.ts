@@ -28,8 +28,10 @@ export type TableUiSlot =
   | 'head'
   | 'cell'
   | 'headContent'
+  | 'fixed'
   | 'sortTrigger'
-  | 'filterInput';
+  | 'filterInput'
+  | 'resizeHandle';
 
 export type TableUi = UiClass<TableUiSlot>;
 
@@ -48,6 +50,8 @@ export interface TableSortState {
 
 export type TableFilterState = Record<string, string>;
 
+export type TableColumnWidthState = Record<string, string>;
+
 export interface TableColumnFilter<T = BaseTableData> {
   placeholder?: string;
   match?: (params: { keyword: string; row: T; value: unknown; column: TableDataColumn<T> }) => boolean;
@@ -62,6 +66,7 @@ export interface TableColumnBase {
   minWidth?: string;
   hidden?: boolean;
   fixed?: 'left' | 'right';
+  resizable?: boolean;
 }
 
 export interface TableTypeColumn<_T = BaseTableData> extends TableColumnBase {
@@ -109,6 +114,8 @@ export interface TableProps<
   sortState?: TableSortState;
   defaultFilterState?: TableFilterState;
   filterState?: TableFilterState;
+  defaultColumnWidths?: TableColumnWidthState;
+  columnWidths?: TableColumnWidthState;
   defaultExpanded?: R[];
   expanded?: R[];
   defaultExpandAll?: boolean;
@@ -124,6 +131,7 @@ export interface TableProps<
 export type TableEmits<R extends string | number, M extends boolean = false> = {
   'update:sortState': [state: TableSortState | undefined];
   'update:filterState': [state: TableFilterState];
+  'update:columnWidths': [state: TableColumnWidthState];
   'update:expanded': [expanded: R[]];
   'update:selected': [selected: M extends true ? R[] : R | undefined];
 };
@@ -168,6 +176,7 @@ export interface TableHeaderSlotProps<T extends BaseTableData> {
   colSpan: number;
   rowSpan: number;
   sortable: boolean;
+  resizable: boolean;
   sortOrder?: TableSortOrder;
   multiple?: boolean;
   checked?: CheckedState;

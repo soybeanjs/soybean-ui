@@ -10,9 +10,10 @@ export const tableVariants = tv({
     body: '',
     footer: 'bg-accent font-medium',
     row: 'data-[row]:hover:bg-accent transition-colors',
-    head: 'text-foreground font-medium whitespace-nowrap bg-accent align-top',
-    cell: 'whitespace-nowrap',
-    headContent: 'flex min-w-0 flex-col gap-1',
+    head: 'text-foreground relative font-medium whitespace-nowrap bg-accent align-top data-[fixed]:bg-accent',
+    cell: 'whitespace-nowrap data-[fixed]:bg-background',
+    headContent: 'flex min-w-0 flex-col gap-1 pe-3',
+    fixed: 'shadow-[inset_0_0_0_1px_hsl(var(--border))]',
     sortTrigger: [
       'text-foreground inline-flex w-full items-center gap-1 rounded bg-transparent p-0 text-left font-medium',
       'cursor-pointer border-none outline-none transition-colors',
@@ -21,6 +22,13 @@ export const tableVariants = tv({
     filterInput: [
       'border-input bg-background ring-offset-background flex h-7 w-full rounded-md border border-solid px-2 py-1 text-xs shadow-sm',
       'placeholder:text-muted-foreground focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2'
+    ],
+    resizeHandle: [
+      'absolute end-0 top-1/2 z-10 h-[calc(100%-0.75rem)] w-3 -translate-y-1/2 translate-x-1/2 rounded bg-transparent',
+      'cursor-col-resize border-none p-0 touch-none select-none',
+      'after:bg-border hover:after:bg-primary data-[resizing]:after:bg-primary focus-visible:after:bg-primary',
+      'focus-visible:outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
+      'after:absolute after:bottom-0 after:start-1/2 after:top-0 after:w-px after:-translate-x-1/2 after:rounded-full after:content-[""]'
     ],
     selection: 'text-foreground',
     radioRoot: [

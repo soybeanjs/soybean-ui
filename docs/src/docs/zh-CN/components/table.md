@@ -44,6 +44,7 @@ base
 bordered
 striped
 grouped-sort-filter
+fixed-resizable
 single-selection
 multiple-selection
 expandable
@@ -63,6 +64,8 @@ sizes
   { name: 'defaultSortState', type: 'TableSortState', default: '-', description: '默认排序状态（非受控）。' },
   { name: 'filterState', type: 'TableFilterState', default: '-', description: '当前筛选状态（受控）。' },
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: '默认筛选状态（非受控）。' },
+  { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: '当前列宽状态（受控）。' },
+  { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: '默认列宽状态（非受控）。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '表格尺寸。' },
   { name: 'bordered', type: `'all' | boolean`, default: `false`, description: '是否显示边框。' },
   { name: 'striped', type: 'boolean', default: 'false', description: '是否显示斑马纹。' },
@@ -88,6 +91,7 @@ sizes
 <DataTable preset="emits" :data="[
   { name: 'update:sortState', parameters: '(value: TableSortState | undefined) => void', description: '排序状态变化时触发。' },
   { name: 'update:filterState', parameters: '(value: TableFilterState) => void', description: '筛选状态变化时触发。' },
+  { name: 'update:columnWidths', parameters: '(value: TableColumnWidthState) => void', description: '列宽状态变化时触发。' },
   { name: 'update:selected', parameters: '(value: R | R[]) => void', description: '选中行变化时触发。' },
   { name: 'update:expanded', parameters: '(value: R[]) => void', description: '展开行变化时触发。' }
 ]"/>
@@ -122,6 +126,8 @@ sizes
   { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: '对齐方式。' },
   { name: 'width', type: 'string', default: '-', description: '列宽度。' },
   { name: 'minWidth', type: 'string', default: '-', description: '列最小宽度。' },
+  { name: 'fixed', type: `'left' | 'right'`, default: '-', description: '固定列方向。' },
+  { name: 'resizable', type: 'boolean', default: 'false', description: '是否启用列宽拖拽调整。' },
   { name: 'children', type: 'TableColumn<T>[]', default: '-', description: '分组表头的子列。' },
   { name: 'sorter', type: 'boolean | ((a, b) => number)', default: '-', description: '是否启用排序，或提供自定义排序函数。' },
   { name: 'filter', type: 'boolean | TableColumnFilter<T>', default: '-', description: '是否启用筛选，或提供筛选配置。' },
@@ -142,8 +148,10 @@ sizes
   { name: 'head', type: 'string', description: '表头单元格类名。' },
   { name: 'cell', type: 'string', description: '单元格类名。' },
   { name: 'headContent', type: 'string', description: '表头内容容器类名。' },
+  { name: 'fixed', type: 'string', description: '固定列附加类名。' },
   { name: 'sortTrigger', type: 'string', description: '排序触发器类名。' },
   { name: 'filterInput', type: 'string', description: '筛选输入框类名。' },
+  { name: 'resizeHandle', type: 'string', description: '列宽调整手柄类名。' },
   { name: 'selection', type: 'string', description: '选择框类名。' }
 ]"/>
 

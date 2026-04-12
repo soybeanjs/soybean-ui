@@ -7,11 +7,14 @@
     M extends boolean = boolean
   "
 >
-import { computed, shallowRef, useId, watch } from 'vue';
+import { useResizeObserver } from '@vueuse/core';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue';
+import type { ComponentPublicInstance, CSSProperties } from 'vue';
 import type { CheckedState } from '../../types';
 import { useOmitProps, useSelection } from '../../composables';
 import {
   filterTableColumns,
+  getTableColumnWidthValue,
   getNextTableFilterState,
   getTableAriaSort,
   getTableColumnKey,
@@ -21,7 +24,9 @@ import {
   getTableRowLabel,
   getTableRowValueByDataIndex,
   isTableDataColumn,
+  isTableGroupColumn,
   matchesTableColumnFilter,
+  parseTableColumnWidth,
   sortTableData,
   toggleTableSortState
 } from './shared';
@@ -39,6 +44,7 @@ import type {
   TableDataColumn,
   TableEmits,
   TableFilterState,
+  TableColumnWidthState,
   TableProps,
   TableSlots,
   TableSortState
@@ -66,6 +72,8 @@ const forwardedRootProps = useOmitProps(props, [
   'sortState',
   'defaultFilterState',
   'filterState',
+  'defaultColumnWidths',
+  'columnWidths',
   'defaultExpanded',
   'expanded',
   'defaultExpandAll',
@@ -84,6 +92,11 @@ const forwardedRootProps = useOmitProps(props, [
 const uncontrolledExpanded = shallowRef(getDefaultExpanded());
 const uncontrolledSortState = shallowRef<TableSortState | undefined>(getDefaultSortState());
 const uncontrolledFilterState = shallowRef<TableFilterState>(getDefaultFilterState());
+const uncontrolledColumnWidths = shallowRef<TableColumnWidthState>(getDefaultColumnWidths());
+const tableContentTarget = shallowRef<HTMLElement | null>(null);
+const measuredColumnWidths = shallowRef<Record<string, number>>({});
+const resizingColumnKey = shallowRef<string | null>(null);
+const headCellElements: Record<string, HTMLElement | null> = {};
 
 watch(
   () => props.expanded,
@@ -108,6 +121,15 @@ watch(
   value => {
     if (value !== undefined) {
       uncontrolledFilterState.value = value;
+    }
+  }
+);
+
+watch(
+  () => props.columnWidths,
+  value => {
+    if (value !== undefined) {
+      uncontrolledColumnWidths.value = value;
     }
   }
 );
@@ -145,6 +167,17 @@ const filterState = computed({
   }
 });
 
+const columnWidths = computed({
+  get: () => props.columnWidths ?? uncontrolledColumnWidths.value,
+  set: value => {
+    if (props.columnWidths === undefined) {
+      uncontrolledColumnWidths.value = value;
+    }
+
+    emit('update:columnWidths', value);
+  }
+});
+
 const {
   modelValue: selected,
   onModelValueChange: onSelectedChange,
@@ -171,6 +204,38 @@ const headerRows = computed(() => getTableHeaderRows(visibleColumns.value));
 
 const columnMap = computed(() => {
   return new Map(leafColumns.value.map(column => [getTableColumnKey(column), column]));
+});
+
+const fixedColumnStates = computed(() => {
+  const leftOffsets: Record<string, number> = {};
+  const rightOffsets: Record<string, number> = {};
+  let accumulatedLeft = 0;
+  let accumulatedRight = 0;
+
+  leafColumns.value.forEach((column, index) => {
+    if (column.fixed !== 'left') {
+      return;
+    }
+
+    const key = getTableColumnKey(column);
+    leftOffsets[key] = accumulatedLeft;
+    accumulatedLeft += getMeasuredColumnWidth(column, index);
+  });
+
+  [...leafColumns.value].reverse().forEach((column, reverseIndex) => {
+    if (column.fixed !== 'right') {
+      return;
+    }
+
+    const key = getTableColumnKey(column);
+    rightOffsets[key] = accumulatedRight;
+    accumulatedRight += getMeasuredColumnWidth(column, leafColumns.value.length - reverseIndex - 1);
+  });
+
+  return {
+    leftOffsets,
+    rightOffsets
+  };
 });
 
 const displayData = computed(() => {
@@ -245,6 +310,46 @@ function getDefaultFilterState() {
   return props.defaultFilterState ?? {};
 }
 
+function getDefaultColumnWidths() {
+  return props.defaultColumnWidths ?? {};
+}
+
+function resolveElement(element: Element | ComponentPublicInstance | null | undefined) {
+  if (!element) {
+    return null;
+  }
+
+  if (element instanceof HTMLElement) {
+    return element;
+  }
+
+  if ('$el' in element && element.$el instanceof HTMLElement) {
+    return element.$el;
+  }
+
+  return null;
+}
+
+function setTableContentRef(element: Element | ComponentPublicInstance | null) {
+  tableContentTarget.value = resolveElement(element);
+}
+
+function setHeadCellRef(key: string, element: Element | ComponentPublicInstance | null) {
+  headCellElements[key] = resolveElement(element);
+}
+
+function syncMeasuredColumnWidths() {
+  measuredColumnWidths.value = leafColumns.value.reduce<Record<string, number>>((acc, column, index) => {
+    const key = getTableColumnKey(column);
+    const parsedWidth = parseTableColumnWidth(getColumnWidth(column));
+    const measuredWidth = headCellElements[key]?.getBoundingClientRect().width;
+
+    acc[key] = parsedWidth ?? measuredWidth ?? getMeasuredColumnWidth(column, index);
+
+    return acc;
+  }, {});
+}
+
 function toggleExpand(key: R) {
   const index = expanded.value.indexOf(key);
 
@@ -279,6 +384,26 @@ function getRowLabel(row: T) {
 
 function getColumnSlotName(column: TableProps<T, R, M>['columns'][number]) {
   return getTableColumnKey(column);
+}
+
+function getColumnWidth(column: TableProps<T, R, M>['columns'][number]) {
+  return getTableColumnWidthValue(column, columnWidths.value);
+}
+
+function getColumnMinWidth(column: TableProps<T, R, M>['columns'][number]) {
+  return column.minWidth;
+}
+
+function isColumnResizable(column: TableProps<T, R, M>['columns'][number]) {
+  return !isTableGroupColumn(column) && Boolean(column.resizable);
+}
+
+function getMeasuredColumnWidth(column: TableProps<T, R, M>['columns'][number], index: number) {
+  const key = getTableColumnKey(column);
+  const parsedWidth = parseTableColumnWidth(getColumnWidth(column));
+  const measuredWidth = measuredColumnWidths.value[key];
+
+  return parsedWidth ?? measuredWidth ?? 160 + index * 0;
 }
 
 function isColumnSortable(column: TableProps<T, R, M>['columns'][number]): column is TableDataColumn<T> {
@@ -331,6 +456,10 @@ function getColumnSortButtonLabel(column: TableProps<T, R, M>['columns'][number]
   return `Sort by ${columnLabel}`;
 }
 
+function getResizeHandleLabel(column: TableProps<T, R, M>['columns'][number]) {
+  return `Resize ${column.title ?? getColumnSlotName(column)} column`;
+}
+
 function getColumnFilterValue(column: TableProps<T, R, M>['columns'][number]) {
   if (!isColumnFilterable(column)) {
     return '';
@@ -366,22 +495,201 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
 
   return getTableAriaSort(getColumnSortOrder(column));
 }
+
+function getHeaderCellFixedState(column: TableProps<T, R, M>['columns'][number]) {
+  if (!isTableGroupColumn(column)) {
+    return getLeafCellFixedState(column);
+  }
+
+  const leaves = getTableLeafColumns([column]);
+  const fixedSides = [...new Set(leaves.map(leaf => leaf.fixed).filter(Boolean))];
+
+  if (fixedSides.length !== 1) {
+    return undefined;
+  }
+
+  const side = fixedSides[0];
+
+  if (!side) {
+    return undefined;
+  }
+
+  const boundaryColumn = side === 'left' ? leaves[0] : leaves.at(-1);
+
+  if (!boundaryColumn) {
+    return undefined;
+  }
+
+  return getLeafCellFixedState(boundaryColumn);
+}
+
+function getLeafCellFixedState(column: TableProps<T, R, M>['columns'][number]) {
+  const key = getTableColumnKey(column);
+
+  if (column.fixed === 'left') {
+    return {
+      side: 'left' as const,
+      offset: fixedColumnStates.value.leftOffsets[key] ?? 0
+    };
+  }
+
+  if (column.fixed === 'right') {
+    return {
+      side: 'right' as const,
+      offset: fixedColumnStates.value.rightOffsets[key] ?? 0
+    };
+  }
+
+  return undefined;
+}
+
+function getHeaderCellStyle(column: TableProps<T, R, M>['columns'][number]) {
+  const fixedState = getHeaderCellFixedState(column);
+
+  const style: CSSProperties = {
+    width: getColumnWidth(column),
+    minWidth: getColumnMinWidth(column),
+    position: fixedState ? 'sticky' : undefined,
+    left: fixedState?.side === 'left' ? `${fixedState.offset}px` : undefined,
+    right: fixedState?.side === 'right' ? `${fixedState.offset}px` : undefined,
+    zIndex: fixedState ? 3 : undefined
+  };
+
+  return style;
+}
+
+function getBodyCellStyle(column: TableProps<T, R, M>['columns'][number]) {
+  const fixedState = getLeafCellFixedState(column);
+
+  const style: CSSProperties = {
+    width: getColumnWidth(column),
+    minWidth: getColumnMinWidth(column),
+    position: fixedState ? 'sticky' : undefined,
+    left: fixedState?.side === 'left' ? `${fixedState.offset}px` : undefined,
+    right: fixedState?.side === 'right' ? `${fixedState.offset}px` : undefined,
+    zIndex: fixedState ? 2 : undefined
+  };
+
+  return style;
+}
+
+function updateColumnWidth(key: string, width: number) {
+  const nextWidth = `${Math.round(width)}px`;
+
+  columnWidths.value = {
+    ...columnWidths.value,
+    [key]: nextWidth
+  };
+}
+
+function getColumnResizeMinWidth(column: TableProps<T, R, M>['columns'][number]) {
+  return parseTableColumnWidth(column.minWidth) ?? 80;
+}
+
+let resizeListenersCleanup: (() => void) | null = null;
+
+function stopColumnResize() {
+  resizeListenersCleanup?.();
+  resizeListenersCleanup = null;
+  resizingColumnKey.value = null;
+}
+
+function startColumnResize(column: TableProps<T, R, M>['columns'][number], event: PointerEvent) {
+  if (!isColumnResizable(column)) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const key = getTableColumnKey(column);
+  const startX = event.clientX;
+  const startWidth = headCellElements[key]?.getBoundingClientRect().width ?? getMeasuredColumnWidth(column, 0);
+  const minWidth = getColumnResizeMinWidth(column);
+  const ownerDocument = headCellElements[key]?.ownerDocument;
+
+  if (!ownerDocument) {
+    return;
+  }
+
+  resizingColumnKey.value = key;
+
+  const handlePointerMove = (pointerEvent: PointerEvent) => {
+    const nextWidth = Math.max(minWidth, startWidth + (pointerEvent.clientX - startX));
+
+    updateColumnWidth(key, nextWidth);
+  };
+
+  const handlePointerUp = () => {
+    stopColumnResize();
+  };
+
+  ownerDocument.addEventListener('pointermove', handlePointerMove);
+  ownerDocument.addEventListener('pointerup', handlePointerUp);
+  ownerDocument.addEventListener('pointercancel', handlePointerUp);
+
+  resizeListenersCleanup = () => {
+    ownerDocument.removeEventListener('pointermove', handlePointerMove);
+    ownerDocument.removeEventListener('pointerup', handlePointerUp);
+    ownerDocument.removeEventListener('pointercancel', handlePointerUp);
+  };
+}
+
+function onResizeHandleKeydown(column: TableProps<T, R, M>['columns'][number], event: KeyboardEvent) {
+  if (!isColumnResizable(column)) {
+    return;
+  }
+
+  if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const key = getTableColumnKey(column);
+  const currentWidth = getMeasuredColumnWidth(column, 0);
+  const delta = event.key === 'ArrowRight' ? 16 : -16;
+  const nextWidth = Math.max(getColumnResizeMinWidth(column), currentWidth + delta);
+
+  updateColumnWidth(key, nextWidth);
+}
+
+watch([leafColumns, columnWidths], () => {
+  nextTick(syncMeasuredColumnWidths);
+}, { deep: true, flush: 'post' });
+
+useResizeObserver(tableContentTarget, () => {
+  syncMeasuredColumnWidths();
+});
+
+onMounted(() => {
+  nextTick(syncMeasuredColumnWidths);
+});
+
+onBeforeUnmount(() => {
+  stopColumnResize();
+});
 </script>
 
 <template>
   <TableRoot v-bind="forwardedRootProps">
-    <TableContent v-bind="contentProps">
+    <TableContent :ref="setTableContentRef" v-bind="contentProps">
       <TableHeader v-bind="headerProps">
         <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
           <TableHead
             v-for="headerCell in headerRow"
             :key="`${headerRowIndex}-${headerCell.key}`"
+            :ref="element => setHeadCellRef(headerCell.key, element)"
             v-bind="headProps"
+            :class="getHeaderCellFixedState(headerCell.column) ? tableUi.fixed : undefined"
             :align="headerCell.column.align ?? (headerCell.column.type ? 'center' : 'left')"
-            :style="{ width: headerCell.column.width, minWidth: headerCell.column.minWidth }"
+            :style="getHeaderCellStyle(headerCell.column)"
             :colspan="headerCell.colSpan"
             :rowspan="headerCell.rowSpan"
             :aria-sort="getHeaderAriaSort(headerCell.column)"
+            :data-fixed="Boolean(getHeaderCellFixedState(headerCell.column)) || undefined"
+            :data-fixed-side="getHeaderCellFixedState(headerCell.column)?.side"
           >
             <slot
               name="header"
@@ -389,6 +697,7 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
               :col-span="headerCell.colSpan"
               :row-span="headerCell.rowSpan"
               :sortable="isColumnSortable(headerCell.column)"
+              :resizable="isColumnResizable(headerCell.column)"
               :sort-order="getColumnSortOrder(headerCell.column)"
               :toggle-sort="() => toggleColumnSort(headerCell.column)"
               :filter-value="getColumnFilterValue(headerCell.column)"
@@ -401,6 +710,7 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
                 :col-span="headerCell.colSpan"
                 :row-span="headerCell.rowSpan"
                 :sortable="isColumnSortable(headerCell.column)"
+                :resizable="isColumnResizable(headerCell.column)"
                 :sort-order="getColumnSortOrder(headerCell.column)"
                 :toggle-sort="() => toggleColumnSort(headerCell.column)"
                 :filter-value="getColumnFilterValue(headerCell.column)"
@@ -452,6 +762,16 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
                       @input="updateColumnFilter(headerCell.column, ($event.target as HTMLInputElement).value)"
                     >
                   </div>
+                  <button
+                    v-if="isColumnResizable(headerCell.column)"
+                    type="button"
+                    :class="tableUi.resizeHandle"
+                    :aria-label="getResizeHandleLabel(headerCell.column)"
+                    :aria-pressed="resizingColumnKey === getTableColumnKey(headerCell.column)"
+                    :data-resizing="resizingColumnKey === getTableColumnKey(headerCell.column) || undefined"
+                    @pointerdown="startColumnResize(headerCell.column, $event)"
+                    @keydown="onResizeHandleKeydown(headerCell.column, $event)"
+                  />
                 </template>
               </slot>
             </slot>
@@ -465,8 +785,11 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
               <TableCell
                 v-if="column.dataIndex"
                 v-bind="cellProps"
+                :class="getLeafCellFixedState(column) ? tableUi.fixed : undefined"
                 :align="column.align ?? 'left'"
-                :style="{ width: column.width, minWidth: column.minWidth }"
+                :style="getBodyCellStyle(column)"
+                :data-fixed="Boolean(getLeafCellFixedState(column)) || undefined"
+                :data-fixed-side="getLeafCellFixedState(column)?.side"
               >
                 <slot
                   :name="column.dataIndex"
@@ -481,8 +804,11 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
               <TableCell
                 v-else-if="column.type"
                 v-bind="cellProps"
+                :class="getLeafCellFixedState(column) ? tableUi.fixed : undefined"
                 :align="column.align ?? 'center'"
-                :style="{ width: column.width, minWidth: column.minWidth }"
+                :style="getBodyCellStyle(column)"
+                :data-fixed="Boolean(getLeafCellFixedState(column)) || undefined"
+                :data-fixed-side="getLeafCellFixedState(column)?.side"
               >
                 <slot v-if="column.type === 'index'" name="index" :index="index" :column="column" :row="item">
                   {{ index + 1 }}
