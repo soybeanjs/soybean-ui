@@ -12,9 +12,10 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<AutocompleteContentProps>(), {
-  avoidCollisions: true,
   side: 'bottom',
-  sideOffset: 4
+  sideOffset: 4,
+  avoidCollisions: true,
+  prioritizePosition: true
 });
 
 const forwardedProps = useOmitProps(props, ['forceMount']);
