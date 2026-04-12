@@ -90,7 +90,7 @@ import {
   ColorSliderRoot,
   ColorSliderThumb,
   ColorSliderTrack,
-  ColorSwatch as ColorSwatchRoot,
+  ColorSwatch,
   ColorSwatchPickerItem,
   ColorSwatchPickerItemIndicator,
   ColorSwatchPickerItemSwatch,
@@ -611,11 +611,7 @@ export const ColorSlider = {
   Thumb: typeof ColorSliderThumb;
 };
 
-export const ColorSwatch = {
-  Root: ColorSwatchRoot
-} as {
-  Root: typeof ColorSwatchRoot;
-};
+export { ColorSwatch };
 
 export const ColorSwatchPicker = {
   Root: ColorSwatchPickerRoot,
