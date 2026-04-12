@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watchEffect } from 'vue';
+import { useTextDirection } from '@vueuse/core';
 import { transformPropsToContext } from '../../shared';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
@@ -16,6 +18,14 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
 });
 
 provideConfigProviderContext(transformPropsToContext(props));
+
+const dir = useTextDirection();
+
+watchEffect(() => {
+  if (dir.value !== props.dir) {
+    dir.value = props.dir;
+  }
+});
 </script>
 
 <template>

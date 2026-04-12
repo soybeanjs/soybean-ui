@@ -1,5 +1,4 @@
-export { ToastAction as SToastAction, ToastClose as SToastClose } from '@soybeanjs/headless/toast';
-export { default as SToast } from './toast.vue';
-export { useToast } from './context';
+export { toast } from '@soybeanjs/headless/toast';
+export { default as Toaster } from './toaster.vue';
 
-export type { ToastProps, ToastColor, UseToastOptions } from './types';
+export type * from './types';

@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { PopoverClose } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
-import type { ThemeSize } from '@/theme';
+import { miniSizeMap } from '@/theme';
 import Button from '../button/button.vue';
 import { usePopconfirmContext } from './context';
 import type { PopconfirmCancelProps, PopconfirmCancelEmits } from './types';
@@ -27,16 +27,7 @@ const mergedProps = computed(() => ({
 }));
 const text = computed(() => props.text ?? cancelText.value ?? 'Cancel');
 
-const sizeMap: Record<ThemeSize, ThemeSize> = {
-  xs: 'xs',
-  sm: 'xs',
-  md: 'sm',
-  lg: 'md',
-  xl: 'lg',
-  '2xl': 'xl'
-};
-
-const mergedSize = computed(() => props.size ?? sizeMap[size.value ?? 'md']);
+const mergedSize = computed(() => props.size ?? miniSizeMap[size.value ?? 'md']);
 
 const handleClose = () => {
   emit('close');

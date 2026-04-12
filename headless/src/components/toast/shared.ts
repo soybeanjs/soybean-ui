@@ -1,56 +1,151 @@
-import { isHTMLElement } from '../../shared';
+import { h } from 'vue';
+import type { CSSProperties, VNode } from 'vue';
+import { keysOf } from '@soybeanjs/utils';
+import type { Side, Point, SwipeDirection } from '../../types';
+import type { ToasterProps, ToastPosition, ToastOrDismiss, ToastDismiss, ToastOffset } from './types';
 
-export const toastCssVars = {
-  swipeMoveX: '--soybean-toast-swipe-move-x',
-  swipeMoveY: '--soybean-toast-swipe-move-y',
-  swipeEndX: '--soybean-toast-swipe-end-x',
-  swipeEndY: '--soybean-toast-swipe-end-y'
-};
-
-export const TOAST_DATA_SWIPE = 'data-swipe';
-
-export const toastSwipe = {
-  start: 'start',
-  move: 'move',
-  cancel: 'cancel',
-  end: 'end'
+export const toasterCssVars = {
+  gap: '--gap',
+  offsetTop: '--offset-top',
+  offsetRight: '--offset-right',
+  offsetBottom: '--offset-bottom',
+  offsetLeft: '--offset-left',
+  mobileOffsetTop: '--mobile-offset-top',
+  mobileOffsetRight: '--mobile-offset-right',
+  mobileOffsetBottom: '--mobile-offset-bottom',
+  mobileOffsetLeft: '--mobile-offset-left',
+  frontHeight: '--front-toast-height'
 } as const;
 
-export const TOAST_SWIPE_START = 'toast.swipeStart';
-export const TOAST_SWIPE_MOVE = 'toast.swipeMove';
-export const TOAST_SWIPE_CANCEL = 'toast.swipeCancel';
-export const TOAST_SWIPE_END = 'toast.swipeEnd';
+export const toastCssVars = {
+  index: '--index',
+  offset: '--offset',
+  beforeIndex: '--toasts-before',
+  zIndex: '--z-index',
+  swipeAmountX: '--swipe-amount-x',
+  swipeAmountY: '--swipe-amount-y',
+  swipeDirection: '--swipe-direction',
+  swipeOut: '--swipe-out',
+  initialHeight: '--initial-height'
+} as const;
 
-export const VIEWPORT_NAME = 'ToastViewport';
-export const VIEWPORT_DEFAULT_HOTKEY = ['F8'];
-export const VIEWPORT_PAUSE = 'toast.viewportPause';
-export const VIEWPORT_RESUME = 'toast.viewportResume';
+export const DEFAULT_POSITION: ToastPosition = 'top-right';
+export const VISIBLE_TOASTS_AMOUNT = 3;
+export const VIEWPORT_OFFSET = 24;
+export const TOAST_LIFETIME = 4000;
+export const TOAST_WIDTH = 356;
+export const GAP = 12;
+export const SWIPE_THRESHOLD = 45;
+export const TIME_BEFORE_UNMOUNT = 200;
 
-export function getAnnounceTextContent(container: HTMLElement) {
-  const textContent: string[] = [];
-  const childNodes = Array.from(container.childNodes);
+export const ALL_TOAST_POSITIONS: ToastPosition[] = [
+  'top-right',
+  'top-center',
+  'top-left',
+  'bottom-right',
+  'bottom-center',
+  'bottom-left'
+];
 
-  childNodes.forEach(node => {
-    if (node.nodeType === node.TEXT_NODE && node.textContent) {
-      textContent.push(node.textContent);
-    }
+const sideToDirection: Record<Side, SwipeDirection> = {
+  left: 'left',
+  right: 'right',
+  top: 'up',
+  bottom: 'down'
+};
 
-    if (!isHTMLElement(node)) return;
-    const isHidden = node.ariaHidden || node.hidden || node.style.display === 'none';
-    const isExcluded = node.dataset.soybeanToastAnnounceExclude === '';
+export function getDefaultSwipeDirections(position: string): SwipeDirection[] {
+  const [y, x] = position.split('-');
+  const directions: SwipeDirection[] = [];
 
-    if (isHidden) return;
+  if (y) {
+    directions.push(sideToDirection[y as Side]);
+  }
 
-    if (isExcluded) {
-      const altText = node.dataset.soybeanToastAnnounceAlt;
-      if (altText) {
-        textContent.push(altText);
-      }
-    } else {
-      textContent.push(...getAnnounceTextContent(node));
-    }
-  });
-  // We return a collection of text rather than a single concatenated string.
-  // This allows SR VO to naturally pause break between nodes while announcing.
-  return textContent;
+  if (x) {
+    directions.push(sideToDirection[x as Side]);
+  }
+
+  return directions;
 }
+
+export const resolveOffset = (offset: ToastOffset) => {
+  const cssVars: Record<Side, `--${string}`> = {
+    top: toasterCssVars.offsetTop,
+    right: toasterCssVars.offsetRight,
+    bottom: toasterCssVars.offsetBottom,
+    left: toasterCssVars.offsetLeft
+  };
+
+  const mobileCssVars: Record<Side, `--mobile-${string}`> = {
+    top: toasterCssVars.mobileOffsetTop,
+    right: toasterCssVars.mobileOffsetRight,
+    bottom: toasterCssVars.mobileOffsetBottom,
+    left: toasterCssVars.mobileOffsetLeft
+  };
+
+  const style: CSSProperties = {};
+
+  keysOf(cssVars).forEach(side => {
+    const value = typeof offset === 'number' ? offset : offset[side];
+    const val = value ?? VIEWPORT_OFFSET;
+    style[cssVars[side]] = `${val}px`;
+    style[mobileCssVars[side]] = `calc(${val}px * 0.67)`;
+  });
+
+  return style;
+};
+
+export const getSwipeAmount = (el?: HTMLElement | null) => {
+  if (!el) return { x: 0, y: 0 };
+
+  const swipeAmountX = el.style.getPropertyValue(toastCssVars.swipeAmountX);
+  const swipeAmountY = el.style.getPropertyValue(toastCssVars.swipeAmountY);
+
+  const x = Number(swipeAmountX.replace('px', '')) || 0;
+  const y = Number(swipeAmountY.replace('px', '')) || 0;
+
+  return { x, y };
+};
+
+export const setSwipeAmount = (el: HTMLElement | null, point: Point) => {
+  if (!el) return;
+
+  el.style.setProperty(toastCssVars.swipeAmountX, `${point.x}px`);
+  el.style.setProperty(toastCssVars.swipeAmountY, `${point.y}px`);
+};
+
+export const resetSwipeAmount = (el: HTMLElement | null) => {
+  if (!el) return;
+
+  setSwipeAmount(el, { x: 0, y: 0 });
+};
+
+export const isToastDismiss = (toast: ToastOrDismiss): toast is ToastDismiss =>
+  'dismiss' in toast && toast.dismiss === true;
+
+type ModifierKey = 'altKey' | 'ctrlKey' | 'metaKey' | 'shiftKey';
+
+export const isModifierHotkey = (key: string): key is ModifierKey =>
+  ['altKey', 'ctrlKey', 'metaKey', 'shiftKey'].includes(key);
+
+export const getIconNode = (icon?: VNode | string, iconRender?: ToasterProps['iconRender']) => {
+  if (!icon) return undefined;
+  if (typeof icon === 'string') {
+    return iconRender?.(icon) ?? h('span', icon);
+  }
+
+  return icon;
+};
+
+export const getButtonNode = (
+  label: string | VNode,
+  type: 'action' | 'cancel',
+  buttonRender?: ToasterProps['buttonRender']
+) => {
+  if (typeof label === 'string') {
+    return buttonRender?.(label, type) ?? h('button', label);
+  }
+
+  return label;
+};

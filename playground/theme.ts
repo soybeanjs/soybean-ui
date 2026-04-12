@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
-import type { ConfigProviderProps, ThemeSize } from '@soybeanjs/ui';
+import type { ConfigProviderProps, ThemeSize, Direction } from '@soybeanjs/ui';
 import type { BuiltinBasePresetKey, BuiltinFeedbackPresetKey, BuiltinPrimaryPresetKey } from '@soybeanjs/shadcn-theme';
 import { useContext } from '@soybeanjs/headless/composables';
 
@@ -10,6 +10,7 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
   const feedback = useStorage<BuiltinFeedbackPresetKey>('feedback', 'classic');
   const radius = useStorage('radius', 0.625);
   const size = useStorage<ThemeSize>('size', 'md');
+  const direction = useStorage<Direction>('direction', 'ltr');
 
   const configProviderProps = computed<ConfigProviderProps>(() => ({
     theme: {
@@ -18,7 +19,8 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
       feedback: feedback.value,
       radius: `${radius.value}rem`
     },
-    size: size.value
+    size: size.value,
+    dir: direction.value
   }));
 
   const setRadius = (value: number) => {
@@ -27,6 +29,9 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
   const setSize = (value: ThemeSize) => {
     size.value = value;
   };
+  const setDirection = (value: Direction) => {
+    direction.value = value;
+  };
 
   return {
     base,
@@ -34,8 +39,10 @@ export const [provideThemeContext, useTheme] = useContext('ThemeContext', () => 
     feedback,
     radius,
     size,
+    direction,
     configProviderProps,
     setRadius,
-    setSize
+    setSize,
+    setDirection
   };
 });

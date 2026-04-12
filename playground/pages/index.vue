@@ -6,6 +6,7 @@ import { SButtonIcon, SCard, SLink, STabs } from '@soybeanjs/ui';
 import type { TabsOptionData } from '@soybeanjs/ui';
 import ThemeConfigurator from '../components/theme-configurator.vue';
 import ThemeSchemaToggler from '../components/theme-schema-toggler.vue';
+import DirectionToggler from '../components/direction-toggler.vue';
 
 const activeTab = shallowRef('');
 
@@ -96,6 +97,7 @@ onMounted(() => {
           <SLink href="https://github.com/soybeanjs/soybean-ui">
             <SButtonIcon icon="lucide:github" size="lg" />
           </SLink>
+          <DirectionToggler />
           <ThemeConfigurator />
           <ThemeSchemaToggler />
         </div>

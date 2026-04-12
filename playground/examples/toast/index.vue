@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { SCard } from '@soybeanjs/ui';
+import DemoToastAction from './action.vue';
+import DemoToastAppearance from './appearance.vue';
 import DemoToastBase from './base.vue';
-import DemoToastType from './type.vue';
-import DemoToastColor from './color.vue';
+import DemoToastControl from './control.vue';
 import DemoToastPosition from './position.vue';
-import DemoToastContent from './content.vue';
+import DemoToastPromise from './promise.vue';
+import DemoToastStack from './stack.vue';
+import DemoToastTypes from './types.vue';
 </script>
 
 <template>
-  <SCard title="Toast" :ui="{ content: 'flex-c gap-4' }">
+  <SCard title="Toast" split :ui="{ content: 'flex-c gap-4' }">
     <DemoToastBase />
-    <DemoToastType />
-    <DemoToastColor />
+    <DemoToastTypes />
+    <DemoToastPromise />
+    <DemoToastAction />
+    <DemoToastControl />
+    <DemoToastAppearance />
+    <DemoToastStack />
     <DemoToastPosition />
-    <DemoToastContent />
   </SCard>
 </template>

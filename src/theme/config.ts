@@ -8,6 +8,14 @@ export const themeSizeMap: Record<ThemeSize, number> = {
   xl: 20,
   '2xl': 24
 };
+export const miniSizeMap: Record<ThemeSize, ThemeSize> = {
+  xs: 'xs',
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
+  xl: 'lg',
+  '2xl': 'xl'
+};
 
 export const themeSizeRatio = Object.fromEntries(
   Object.entries(themeSizeMap).map(([key, value]) => [key, value / themeSizeMap.md])

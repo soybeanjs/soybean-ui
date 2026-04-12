@@ -1,48 +1,32 @@
 <script setup lang="ts">
-import { SButton, useToast } from '@soybeanjs/ui';
+import { SButton, toast } from '@soybeanjs/ui';
+import type { ToastPosition } from '@soybeanjs/ui';
 
-const toast = useToast();
+const positions: ToastPosition[] = [
+  'top-left',
+  'top-center',
+  'top-right',
+  'bottom-left',
+  'bottom-center',
+  'bottom-right'
+];
+
+function openToastAt(position: ToastPosition) {
+  toast(`Toast at ${position}`, {
+    description: 'Position-specific rendering is active for this notification.',
+    position,
+    duration: 3000
+  });
+}
 </script>
 
 <template>
-  <div>
+  <div class="flex-c gap-3">
     <h3 class="playground-title">Position</h3>
-    <div class="flex flex-wrap gap-3">
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'top-left', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Top Left
-      </SButton>
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'top', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Top
-      </SButton>
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'top-right', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Top Right
-      </SButton>
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'bottom-left', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Bottom Left
-      </SButton>
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'bottom', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Bottom
-      </SButton>
-      <SButton
-        variant="pure"
-        @click="toast({ position: 'bottom-right', title: 'Toast Title', description: 'Toast Description' })"
-      >
-        Bottom Right
+
+    <div class="flex flex-wrap gap-2">
+      <SButton v-for="position in positions" :key="position" variant="outline" @click="openToastAt(position)">
+        {{ position }}
       </SButton>
     </div>
   </div>

@@ -9,7 +9,7 @@ import type { ThemeSize } from '@/theme';
 import { themeSizes } from '@/constants/common';
 import DialogProvider from '../alert-dialog/dialog-provider.vue';
 import LoadingBar from '../progress/loading-bar.vue';
-import ToastProvider from '../toast/toast-provider.vue';
+import Toaster from '../toast/toaster.vue';
 import { provideConfigProviderContext } from './context';
 import type { ConfigProviderProps } from './types';
 
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'loadingBar', 'toast']);
+const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'loadingBar', 'toast', 'customToast']);
 
 provideConfigProviderContext(transformPropsToContext(props));
 
@@ -63,11 +63,10 @@ watchEffect(() => {
       {{ cssVars }}
     </Primitive>
     <DialogProvider>
-      <ToastProvider v-bind="toast">
-        <LoadingBar v-bind="loadingBar">
-          <slot />
-        </LoadingBar>
-      </ToastProvider>
+      <LoadingBar v-bind="loadingBar">
+        <slot />
+      </LoadingBar>
     </DialogProvider>
+    <Toaster v-if="!props.customToast" v-bind="props.toast" />
   </ConfigProvider>
 </template>

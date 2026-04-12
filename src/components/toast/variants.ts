@@ -1,120 +1,88 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
-import type { VariantProps } from 'tailwind-variants';
 
 export const toastVariants = tv({
   slots: {
-    root: [
-      `group pointer-events-auto relative flex flex-col w-full overflow-hidden rounded-md border shadow-lg transition-all-200 dark:bg-background`,
-      `data-[swipe=cancel]:translate-x-0`,
-      `data-[swipe=end]:translate-x-[var(--soybean-toast-swipe-end-x)] data-[swipe=end]:animate-out`,
-      `data-[swipe=move]:translate-x-[var(--soybean-toast-swipe-move-x)] data-[swipe=move]:transition-none`,
-      `data-[state=open]:slide-in-from-top-full sm:slide-in-from-bottom-full data-[state=open]:animate-in`,
-      `data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=closed]:animate-out`
+    toaster: [
+      'fixed z-[--z-index] list-none outline-none transition-transform-400 ease',
+      'data-[x-position=right]:end-[--offset-right] data-[x-position=left]:start-[--offset-left] data-[x-position=center]:left-1/2 data-[x-position=center]:-translate-x-1/2',
+      'data-[y-position=top]:top-[--offset-top] data-[y-position=bottom]:bottom-[--offset-bottom]'
     ],
-    title: `flex items-center font-medium tracking-tight`,
-    description: '[&_p]:leading-relaxed',
-    close: `absolute`,
-    action: ''
+    toast: [
+      'group absolute w-full rounded-md bg-popover text-popover-foreground border border-transparent opacity-0 outline-none touch-none',
+      'data-[y-position=top]:top-0 data-[y-position=top]:[--y:translateY(-100%)]',
+      'data-[y-position=bottom]:[--lift:-1] data-[y-position=bottom]:bottom-0',
+      'data-[x-position=left]:start-0 data-[x-position=right]:end-0'
+    ],
+    wrapper: 'flex flex-col items-stretch',
+    content: '',
+    title: 'flex items-center font-semibold',
+    description: 'text-muted-foreground',
+    icon: [
+      'group-data-[type=info]:text-info group-data-[type=success]:text-success group-data-[type=warning]:text-warning group-data-[type=error]:text-destructive'
+    ],
+    footer: 'flex justify-end items-center',
+    action: '',
+    cancel: '',
+    close: [
+      'absolute w-fit rounded-md bg-transparent text-accent-foreground hover:bg-accent-foreground/10 active:bg-accent-foreground/20',
+      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-accent-foreground/20',
+      'group-data-[inverted=true]:text-accent group-data-[inverted=true]:hover:bg-accent/15'
+    ]
   },
   variants: {
     size: {
       xs: {
-        root: `gap-0.75 px-2 py-1.75 text-2xs`,
-        title: `gap-1.5 leading-3.125`,
-        close: `right-1 top-1`
+        toaster: 'w-80 text-2xs',
+        toast: 'p-3',
+        wrapper: 'gap-1',
+        title: 'gap-1.25',
+        footer: 'gap-1.25',
+        close: 'top-1 end-1 p-0.75'
       },
       sm: {
-        root: `gap-1 px-3 py-2.5 text-xs`,
-        title: `gap-1.75 leading-3.75`,
-        close: `right-1.25 top-1.25`
+        toaster: 'w-85 text-xs',
+        toast: 'p-3.5',
+        wrapper: 'gap-1.25',
+        title: 'gap-1.5',
+        footer: 'gap-1.5',
+        close: 'top-1.25 end-1.25 p-0.875'
       },
       md: {
-        root: `gap-1 px-4 py-3 text-sm`,
-        title: `gap-2 leading-4.375`,
-        close: `right-1.5 top-1.5`
+        toaster: 'w-90 text-sm',
+        toast: 'p-4',
+        wrapper: 'gap-1.5',
+        title: 'gap-2',
+        footer: 'gap-2',
+        close: 'top-1.5 end-1.5 p-1'
       },
       lg: {
-        root: `gap-1.25 px-5 py-3.5 text-base`,
-        title: `gap-2.5 leading-5`,
-        close: `right-1.75 top-1.75`
+        toaster: 'w-95 text-base',
+        toast: 'p-4.5',
+        wrapper: 'gap-1.75',
+        title: 'gap-2.5',
+        footer: 'gap-2.5',
+        close: 'top-1.75 end-1.75 p-1.25'
       },
       xl: {
-        root: `gap-1.5 px-6 py-4 text-lg`,
-        title: `gap-3 leading-5.625`,
-        close: `right-2 top-2`
+        toaster: 'w-100 text-lg',
+        toast: 'p-5',
+        wrapper: 'gap-2',
+        title: 'gap-3',
+        footer: 'gap-3',
+        close: 'top-2 end-2 p-1.5'
       },
       '2xl': {
-        root: `gap-2 px-7 py-4.5 text-xl`,
-        title: `gap-4 leading-6.25`,
-        close: `right-2.5 top-2.5`
-      }
-    },
-    color: {
-      default: {
-        root: 'bg-background'
-      },
-      primary: {
-        root: 'border-primary bg-primary-100  text-primary'
-      },
-      destructive: {
-        root: 'border-destructive bg-destructive-100 text-destructive'
-      },
-      success: {
-        root: 'border-success bg-success-100 text-success'
-      },
-      info: {
-        root: 'border-info bg-info-100 text-info'
-      },
-      warning: {
-        root: 'border-warning bg-warning-100 text-warning'
-      },
-      carbon: {
-        root: 'border-carbon bg-carbon-100 text-carbon'
-      },
-      secondary: {
-        root: 'border-secondary bg-secondary text-secondary-foreground'
-      },
-      accent: {
-        root: 'border-accent bg-accent text-accent-foreground'
+        toaster: 'w-110 text-xl',
+        toast: 'p-6',
+        wrapper: 'gap-2.5',
+        title: 'gap-4',
+        footer: 'gap-4',
+        close: 'top-2.5 end-2.5 p-1.75'
       }
     }
   },
   defaultVariants: {
-    size: 'md',
-    color: 'default'
+    size: 'md'
   }
 });
-
-export const toastViewportVariants = tv({
-  base: [
-    `fixed top-0 z-100 flex max-h-screen w-full flex-col-reverse pointer-events-none`,
-    `focus-visible:outline-none md:max-w-105`
-  ],
-  variants: {
-    size: {
-      xs: 'gap-1 p-3',
-      sm: 'gap-1.5 p-3.5',
-      md: 'gap-2 p-4',
-      lg: 'gap-2.5 p-4.5',
-      xl: 'gap-3 p-5',
-      '2xl': 'gap-4 p-6'
-    },
-    position: {
-      'top-left': 'top-0 left-0',
-      top: 'top-0 left-1/2 -translate-x-1/2',
-      'top-right': 'top-0 right-0',
-      bottom: 'bottom-0 left-1/2 -translate-x-1/2',
-      'bottom-left': 'bottom-0 left-0',
-      'bottom-right': 'bottom-0 right-0'
-    }
-  },
-  defaultVariants: {
-    size: 'md',
-    position: 'top-right'
-  }
-});
-
-type ToastViewportVariants = VariantProps<typeof toastViewportVariants>;
-
-export type ToastPosition = NonNullable<ToastViewportVariants['position']>;
