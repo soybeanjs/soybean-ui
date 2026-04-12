@@ -116,7 +116,6 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-  DataTableRoot,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -671,12 +670,6 @@ export const ContextMenu = {
   Separator: typeof ContextMenuSeparator;
   CheckboxGroup: typeof ContextMenuCheckboxGroup;
   RadioGroup: typeof ContextMenuRadioGroup;
-};
-
-export const DataTable = {
-  Root: DataTableRoot
-} as {
-  Root: typeof DataTableRoot;
 };
 
 export const Dialog = {
