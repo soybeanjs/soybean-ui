@@ -212,24 +212,24 @@ const fixedColumnStates = computed(() => {
   let accumulatedLeft = 0;
   let accumulatedRight = 0;
 
-  leafColumns.value.forEach((column, index) => {
+  leafColumns.value.forEach(column => {
     if (column.fixed !== 'left') {
       return;
     }
 
     const key = getTableColumnKey(column);
     leftOffsets[key] = accumulatedLeft;
-    accumulatedLeft += getMeasuredColumnWidth(column, index);
+    accumulatedLeft += getMeasuredColumnWidth(column);
   });
 
-  [...leafColumns.value].reverse().forEach((column, reverseIndex) => {
+  [...leafColumns.value].reverse().forEach(column => {
     if (column.fixed !== 'right') {
       return;
     }
 
     const key = getTableColumnKey(column);
     rightOffsets[key] = accumulatedRight;
-    accumulatedRight += getMeasuredColumnWidth(column, leafColumns.value.length - reverseIndex - 1);
+    accumulatedRight += getMeasuredColumnWidth(column);
   });
 
   return {
@@ -339,12 +339,12 @@ function setHeadCellRef(key: string, element: Element | ComponentPublicInstance 
 }
 
 function syncMeasuredColumnWidths() {
-  measuredColumnWidths.value = leafColumns.value.reduce<Record<string, number>>((acc, column, index) => {
+  measuredColumnWidths.value = leafColumns.value.reduce<Record<string, number>>((acc, column) => {
     const key = getTableColumnKey(column);
     const parsedWidth = parseTableColumnWidth(getColumnWidth(column));
     const measuredWidth = headCellElements[key]?.getBoundingClientRect().width;
 
-    acc[key] = parsedWidth ?? measuredWidth ?? getMeasuredColumnWidth(column, index);
+    acc[key] = parsedWidth ?? measuredWidth ?? getMeasuredColumnWidth(column);
 
     return acc;
   }, {});
@@ -398,12 +398,12 @@ function isColumnResizable(column: TableProps<T, R, M>['columns'][number]) {
   return !isTableGroupColumn(column) && Boolean(column.resizable);
 }
 
-function getMeasuredColumnWidth(column: TableProps<T, R, M>['columns'][number], index: number) {
+function getMeasuredColumnWidth(column: TableProps<T, R, M>['columns'][number]) {
   const key = getTableColumnKey(column);
   const parsedWidth = parseTableColumnWidth(getColumnWidth(column));
   const measuredWidth = measuredColumnWidths.value[key];
 
-  return parsedWidth ?? measuredWidth ?? 160 + index * 0;
+  return parsedWidth ?? measuredWidth ?? 160;
 }
 
 function isColumnSortable(column: TableProps<T, R, M>['columns'][number]): column is TableDataColumn<T> {
@@ -604,7 +604,7 @@ function startColumnResize(column: TableProps<T, R, M>['columns'][number], event
 
   const key = getTableColumnKey(column);
   const startX = event.clientX;
-  const startWidth = headCellElements[key]?.getBoundingClientRect().width ?? getMeasuredColumnWidth(column, 0);
+  const startWidth = headCellElements[key]?.getBoundingClientRect().width ?? getMeasuredColumnWidth(column);
   const minWidth = getColumnResizeMinWidth(column);
   const ownerDocument = headCellElements[key]?.ownerDocument;
 
@@ -648,7 +648,7 @@ function onResizeHandleKeydown(column: TableProps<T, R, M>['columns'][number], e
   event.stopPropagation();
 
   const key = getTableColumnKey(column);
-  const currentWidth = getMeasuredColumnWidth(column, 0);
+  const currentWidth = getMeasuredColumnWidth(column);
   const delta = event.key === 'ArrowRight' ? 16 : -16;
   const nextWidth = Math.max(getColumnResizeMinWidth(column), currentWidth + delta);
 

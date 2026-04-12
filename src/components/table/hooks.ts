@@ -90,6 +90,7 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
 
     const { type, title, hidden } = col;
 
+    // Group columns are flattened above, so only leaf data columns participate in visibility checks.
     if (type || !col.dataIndex) return;
 
     const key = getTableColumnKey(col);
