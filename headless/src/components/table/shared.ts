@@ -9,6 +9,10 @@ import type {
   TableSortState
 } from './types';
 
+const tableColumnFallbackKeys = new WeakMap<object, string>();
+
+let tableColumnFallbackKeyCount = 0;
+
 /**
  * Get a human-readable row label for built-in table a11y text.
  *
@@ -40,7 +44,31 @@ export function getTableRowValueByDataIndex<T extends BaseTableData, K extends P
 }
 
 export function getTableColumnKey<T extends BaseTableData>(column: TableColumn<T>) {
-  return column.key ?? column.dataIndex ?? (column.type ? `__${column.type}` : `__group-${column.title ?? 'column'}`);
+  if (column.key) {
+    return column.key;
+  }
+
+  if (column.dataIndex) {
+    return column.dataIndex;
+  }
+
+  if (column.type) {
+    return `__${column.type}`;
+  }
+
+  const cachedKey = tableColumnFallbackKeys.get(column);
+
+  if (cachedKey) {
+    return cachedKey;
+  }
+
+  tableColumnFallbackKeyCount += 1;
+
+  const fallbackKey = `__group-${tableColumnFallbackKeyCount}`;
+
+  tableColumnFallbackKeys.set(column, fallbackKey);
+
+  return fallbackKey;
 }
 
 export function isTableGroupColumn<T extends BaseTableData>(column: TableColumn<T>): column is TableGroupColumn<T> {
@@ -238,8 +266,8 @@ export function matchesTableColumnFilter<T extends BaseTableData>(row: T, column
   }
 
   return String(value ?? '')
-    .toLocaleLowerCase()
-    .includes(keyword.toLocaleLowerCase());
+    .toLowerCase()
+    .includes(keyword.toLowerCase());
 }
 
 export function getTableAriaSort(order?: TableSortOrder) {

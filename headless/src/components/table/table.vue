@@ -14,7 +14,6 @@ import {
   filterTableColumns,
   getNextTableFilterState,
   getTableAriaSort,
-  getTableColumnByKey,
   getTableColumnKey,
   getTableFilterPlaceholder,
   getTableHeaderRows,
@@ -170,8 +169,6 @@ const leafColumns = computed(() => getTableLeafColumns(visibleColumns.value));
 
 const headerRows = computed(() => getTableHeaderRows(visibleColumns.value));
 
-const leafDataColumns = computed(() => leafColumns.value.filter(isTableDataColumn));
-
 const columnMap = computed(() => {
   return new Map(leafColumns.value.map(column => [getTableColumnKey(column), column]));
 });
@@ -193,7 +190,7 @@ const displayData = computed(() => {
     return filtered;
   }
 
-  const column = getTableColumnByKey(leafDataColumns.value, sortState.value.key);
+  const column = columnMap.value.get(sortState.value.key);
 
   if (!column || !isTableDataColumn(column) || !column.sorter) {
     return filtered;
@@ -216,7 +213,8 @@ const headerSelection = computed<CheckedState>(() => {
   }
 
   const visibleRowKeys = displayData.value.map(item => props.rowKey(item));
-  const selectedCount = visibleRowKeys.filter(value => selectedValues.includes(value)).length;
+  const selectedValuesSet = new Set(selectedValues);
+  const selectedCount = visibleRowKeys.filter(value => selectedValuesSet.has(value)).length;
 
   if (selectedCount === 0) {
     return false;
