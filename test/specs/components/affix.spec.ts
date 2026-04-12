@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
+import { computed, nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import { AffixContent, AffixPlaceholder, AffixRoot } from '@soybeanjs/headless/affix';
+import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@soybeanjs/headless/affix';
 import type { AffixRootExposed } from '@soybeanjs/headless/affix';
 import SAffix from '../../../src/components/affix/affix.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -281,10 +281,16 @@ describe('SAffix', () => {
             AffixRoot
           },
           setup() {
+            provideAffixUi(
+              computed(() => ({
+                content: 'headless-affix-class'
+              }))
+            );
+
             return { target };
           },
           template: `
-            <AffixRoot class="headless-affix-class" :offset-top="16" :target="target">
+            <AffixRoot :offset-top="16" :target="target">
               <AffixPlaceholder />
               <AffixContent>Pinned content</AffixContent>
             </AffixRoot>
