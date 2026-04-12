@@ -137,7 +137,14 @@ export const components = {
   ],
   empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
   form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
-  hoverCard: ['HoverCardRoot', 'HoverCardTrigger', 'HoverCardPortal', 'HoverCardPositioner', 'HoverCardPopup', 'HoverCardArrow'],
+  hoverCard: [
+    'HoverCardRoot',
+    'HoverCardTrigger',
+    'HoverCardPortal',
+    'HoverCardPositioner',
+    'HoverCardPopup',
+    'HoverCardArrow'
+  ],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
   kbd: ['Kbd'],
@@ -255,21 +262,29 @@ export const components = {
     'StepperDescription'
   ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
-  table: ['Table', 'TableRoot', 'TableContent', 'TableHeader', 'TableBody', 'TableFooter', 'TableRow', 'TableHead', 'TableCell'],
+  table: [
+    'Table',
+    'TableRoot',
+    'TableContent',
+    'TableHeader',
+    'TableBody',
+    'TableFooter',
+    'TableRow',
+    'TableHead',
+    'TableCell'
+  ],
   tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
-  tagsInput: ['TagsInputRoot', 'TagsInputInput', 'TagsInputItem', 'TagsInputItemText', 'TagsInputItemDelete', 'TagsInputClear'],
-  textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
-  toast: [
-    'ToastProvider',
-    'ToastRoot',
-    'ToastViewport',
-    'ToastPortal',
-    'ToastAction',
-    'ToastTitle',
-    'ToastDescription',
-    'ToastClose'
+  tagsInput: [
+    'TagsInputRoot',
+    'TagsInputInput',
+    'TagsInputItem',
+    'TagsInputItemText',
+    'TagsInputItemDelete',
+    'TagsInputClear'
   ],
+  textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
+  toast: ['Toaster'],
   toolbar: [
     'ToolbarRoot',
     'ToolbarButton',

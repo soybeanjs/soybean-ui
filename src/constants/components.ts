@@ -63,9 +63,16 @@ export const components = {
   table: ['STable', 'STableRow', 'STableCell'],
   tabs: ['STabs'],
   tag: ['STag'],
-  tagsInput: ['STagsInput', 'STagsInputInput', 'STagsInputItem', 'STagsInputItemText', 'STagsInputItemDelete', 'STagsInputClear'],
+  tagsInput: [
+    'STagsInput',
+    'STagsInputInput',
+    'STagsInputItem',
+    'STagsInputItemText',
+    'STagsInputItemDelete',
+    'STagsInputClear'
+  ],
   textarea: ['STextarea'],
-  toast: ['SToast', 'SToastAction', 'SToastClose'],
+  toast: ['SToaster'],
   toolbar: [
     'SToolbar',
     'SToolbarButton',
