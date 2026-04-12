@@ -159,7 +159,7 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      await wrapper.get('button').trigger('click');
+      await wrapper.get('button[aria-label="Sort by Age"]').trigger('click');
 
       expect(wrapper.emitted('update:sortState')?.[0]?.[0]).toEqual({ key: 'age', order: 'asc' });
       expect(wrapper.findAll('tbody tr')[0].text()).toContain('Linus');

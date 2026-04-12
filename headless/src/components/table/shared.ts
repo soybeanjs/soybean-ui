@@ -215,9 +215,9 @@ export function getNextTableFilterState(state: TableFilterState, key: string, va
 }
 
 export function getTableDefaultSortCompare(a: unknown, b: unknown) {
-  if (a == null && b == null) return 0;
-  if (a == null) return 1;
-  if (b == null) return -1;
+  if ((a === null || a === undefined) && (b === null || b === undefined)) return 0;
+  if (a === null || a === undefined) return 1;
+  if (b === null || b === undefined) return -1;
 
   if (typeof a === 'number' && typeof b === 'number') {
     return a - b;
