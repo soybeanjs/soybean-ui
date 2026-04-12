@@ -322,23 +322,16 @@ import {
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
-  ToastAction,
-  ToastClose,
-  ToastDescription,
-  ToastPortal,
-  ToastProvider,
-  ToastRoot,
-  ToastTitle,
-  ToastViewport,
+  Toaster,
+  Toggle,
+  ToggleGroupItem,
+  ToggleGroupRoot,
   ToolbarButton,
   ToolbarLink,
   ToolbarRoot,
   ToolbarSeparator,
   ToolbarToggleGroup,
   ToolbarToggleItem,
-  Toggle,
-  ToggleGroupItem,
-  ToggleGroupRoot,
   TooltipArrow,
   TooltipPopup,
   TooltipPortal,
@@ -1219,23 +1212,9 @@ export const Textarea = {
 };
 
 export const Toast = {
-  Provider: ToastProvider,
-  Root: ToastRoot,
-  Viewport: ToastViewport,
-  Portal: ToastPortal,
-  Action: ToastAction,
-  Title: ToastTitle,
-  Description: ToastDescription,
-  Close: ToastClose
+  Toaster: Toaster
 } as {
-  Provider: typeof ToastProvider;
-  Root: typeof ToastRoot;
-  Viewport: typeof ToastViewport;
-  Portal: typeof ToastPortal;
-  Action: typeof ToastAction;
-  Title: typeof ToastTitle;
-  Description: typeof ToastDescription;
-  Close: typeof ToastClose;
+  Toaster: typeof Toaster;
 };
 
 export const Toolbar = {

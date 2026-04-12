@@ -29,6 +29,9 @@ importers:
       '@soybeanjs/shadcn-theme':
         specifier: ^0.3.1
         version: 0.3.1
+      '@soybeanjs/utils':
+        specifier: ^0.0.5
+        version: 0.0.5
       '@vueuse/core':
         specifier: ^14.2.1
         version: 14.2.1(vue@3.5.32(typescript@6.0.2))
@@ -98,7 +101,7 @@ importers:
         version: 2.13.1
       tsdown:
         specifier: 0.21.7
-        version: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2))
+        version: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@tsdown/css@0.21.7)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2))
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -301,7 +304,7 @@ importers:
         version: 4.4.2
       tsdown:
         specifier: 0.21.7
-        version: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2))
+        version: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@tsdown/css@0.21.7)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2))
       typescript:
         specifier: 6.0.2
         version: 6.0.2
@@ -2475,6 +2478,9 @@ packages:
   '@soybeanjs/unocss-shadcn@0.3.4':
     resolution: {integrity: sha512-qUJDuYQZ7+TbDyoZxIwI0TAgVRh+a9Dm8karf4zLWEgh/zdgufBu3qnWt40zsRPIpsXSMttDgPFlBTy6M2QBug==}
 
+  '@soybeanjs/utils@0.0.5':
+    resolution: {integrity: sha512-DInVRQcAC7BHa+LqSaznk2D02M3jiPAY7RSnT+K3B9wcjUdVNWi/3ZdGWpIYw2jX5nj9US2WkG8rpJBMsblXLw==}
+
   '@speed-highlight/core@1.2.15':
     resolution: {integrity: sha512-BMq1K3DsElxDWawkX6eLg9+CKJrTVGCBAWVuHXVUV2u0s2711qiChLSId6ikYPfxhdYocLNt3wWwSvDiTvFabw==}
 
@@ -2491,6 +2497,28 @@ packages:
     resolution: {integrity: sha512-b5jPluAR6U3eOq6GWAYSpj3ugnAIZgGR0e6aGAgyRse0Yu6MVQQ0ZWm9SArSXWtageogn6bkVD8D//c4IjW3xQ==}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
+
+  '@tsdown/css@0.21.7':
+    resolution: {integrity: sha512-kydfZ109LIXwoBDrdIeEVi+PtM8375X9d/6UtYtjhj6TS94J25gJVUXw9AyJE6THEqB6OdGKM5MLqJPutO4kkA==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      postcss: ^8.4.0
+      postcss-import: ^16.0.0
+      postcss-modules: ^6.0.0
+      sass: '*'
+      sass-embedded: '*'
+      tsdown: 0.21.7
+    peerDependenciesMeta:
+      postcss:
+        optional: true
+      postcss-import:
+        optional: true
+      postcss-modules:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -4840,6 +4868,24 @@ packages:
     engines: {node: ^18.12.0 || ^20.9.0 || >=22.0}
     peerDependencies:
       postcss: ^8.4.32
+
+  postcss-load-config@6.0.1:
+    resolution: {integrity: sha512-oPtTM4oerL+UXmx+93ytZVN82RrlY/wPUV8IeDxFrzIjXOLF1pN+EmKPLbubvKHT2HC20xXsCAH2Z+CKV6Oz/g==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      jiti: '>=1.21.0'
+      postcss: '>=8.0.9'
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      jiti:
+        optional: true
+      postcss:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
 
   postcss-merge-longhand@7.0.5:
     resolution: {integrity: sha512-Kpu5v4Ys6QI59FxmxtNB/iHUVDn9Y9sYw66D6+SZoIk4QTz1prC4aYkhIESu+ieG1iylod1f8MILMs1Em3mmIw==}
@@ -8033,6 +8079,8 @@ snapshots:
       - '@unocss/webpack'
       - vite
 
+  '@soybeanjs/utils@0.0.5': {}
+
   '@speed-highlight/core@1.2.15': {}
 
   '@standard-schema/spec@1.1.0': {}
@@ -8047,6 +8095,22 @@ snapshots:
     dependencies:
       '@tanstack/virtual-core': 3.13.23
       vue: 3.5.32(typescript@6.0.2)
+
+  '@tsdown/css@0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(jiti@2.6.1)(postcss@8.5.8)(tsdown@0.21.7)(tsx@4.21.0)(yaml@2.8.3)':
+    dependencies:
+      lightningcss: 1.32.0
+      postcss-load-config: 6.0.1(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(yaml@2.8.3)
+      rolldown: 1.0.0-rc.12(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
+      tsdown: 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@tsdown/css@0.21.7)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2))
+    optionalDependencies:
+      postcss: 8.5.8
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
+      - jiti
+      - tsx
+      - yaml
+    optional: true
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
@@ -10957,6 +11021,16 @@ snapshots:
     dependencies:
       postcss: 8.5.8
 
+  postcss-load-config@6.0.1(jiti@2.6.1)(postcss@8.5.8)(tsx@4.21.0)(yaml@2.8.3):
+    dependencies:
+      lilconfig: 3.1.3
+    optionalDependencies:
+      jiti: 2.6.1
+      postcss: 8.5.8
+      tsx: 4.21.0
+      yaml: 2.8.3
+    optional: true
+
   postcss-merge-longhand@7.0.5(postcss@8.5.8):
     dependencies:
       postcss: 8.5.8
@@ -11626,7 +11700,7 @@ snapshots:
     dependencies:
       typescript: 6.0.2
 
-  tsdown@0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2)):
+  tsdown@0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@tsdown/css@0.21.7)(typescript@6.0.2)(vue-tsc@3.2.6(typescript@6.0.2)):
     dependencies:
       ansis: 4.2.0
       cac: 7.0.0
@@ -11645,6 +11719,7 @@ snapshots:
       unconfig-core: 7.5.0
       unrun: 0.2.34(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)
     optionalDependencies:
+      '@tsdown/css': 0.21.7(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(jiti@2.6.1)(postcss@8.5.8)(tsdown@0.21.7)(tsx@4.21.0)(yaml@2.8.3)
       typescript: 6.0.2
     transitivePeerDependencies:
       - '@emnapi/core'

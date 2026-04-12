@@ -1,4 +1,6 @@
+import { readFileSync } from 'node:fs';
 import { defineConfig } from 'tsdown';
+import type { RolldownPluginOption } from 'rolldown';
 import unpluginVue from 'unplugin-vue/rolldown';
 import unpluginVueJsx from 'unplugin-vue-jsx/rolldown';
 import pkg from './package.json' with { type: 'json' };
@@ -21,7 +23,25 @@ export default defineConfig({
     vue: true
   },
   unbundle: true,
-  plugins: [unpluginVue({ isProduction: true }), unpluginVueJsx()],
+  plugins: [cssRawPlugin(), unpluginVue({ isProduction: true }), unpluginVueJsx()],
   sourcemap: false,
   minify: true
 });
+
+function cssRawPlugin(): RolldownPluginOption {
+  const rawCssQueryRE = /\.css\?raw$/;
+
+  const plugin: RolldownPluginOption = {
+    name: 'raw-css-loader',
+    load(id) {
+      if (!rawCssQueryRE.test(id)) return null;
+
+      const filePath = id.replace(/\?raw$/, '');
+      const css = readFileSync(filePath, 'utf8');
+
+      return `export default ${JSON.stringify(css)};`;
+    }
+  };
+
+  return plugin;
+}

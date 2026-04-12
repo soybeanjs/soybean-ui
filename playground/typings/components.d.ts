@@ -12,6 +12,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SAffix: typeof import('@soybeanjs/ui')['SAffix']
@@ -29,6 +30,7 @@ declare module 'vue' {
 
 // For TSX support
 declare global {
+  const DirectionToggler: typeof import('./../components/direction-toggler.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
   const SAffix: typeof import('@soybeanjs/ui')['SAffix']
