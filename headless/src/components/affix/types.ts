@@ -1,6 +1,9 @@
-import type { HTMLAttributes, ShallowRef } from 'vue';
+import type { ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
+import type { UiClass } from '../../types';
 
 export type AffixTarget = string | Window | HTMLElement | (() => HTMLElement);
+
+export type AffixState = 'fixed' | 'static';
 
 export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onChange'> {
   /**
@@ -21,9 +24,25 @@ export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 
   target?: AffixTarget | null;
 }
 
+export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export type AffixRootEmits = {
   change: [affixed: boolean];
 };
+
+export interface AffixRootContext {
+  affixed: ShallowRef<boolean>;
+  affixStyle: ShallowRef<Record<string, string> | undefined>;
+  placeholderStyle: ShallowRef<Record<string, string> | undefined>;
+  dataState: ComputedRef<AffixState>;
+  updatePosition: () => void;
+}
+
+export type AffixUiSlot = 'root' | 'placeholder' | 'content';
+
+export type AffixUi = UiClass<AffixUiSlot>;
 
 export interface AffixRootExposed {
   affixed: ShallowRef<boolean>;

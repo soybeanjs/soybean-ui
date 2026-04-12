@@ -4,6 +4,8 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixContent,
+  AffixPlaceholder,
   AffixRoot,
   AlertClose,
   AlertContent,
@@ -372,9 +374,13 @@ export const Accordion = {
 };
 
 export const Affix = {
-  Root: AffixRoot
+  Root: AffixRoot,
+  Placeholder: AffixPlaceholder,
+  Content: AffixContent
 } as {
   Root: typeof AffixRoot;
+  Placeholder: typeof AffixPlaceholder;
+  Content: typeof AffixContent;
 };
 
 export const Alert = {

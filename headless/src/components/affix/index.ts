@@ -1,3 +1,16 @@
 export { default as AffixRoot } from './affix-root.vue';
+export { default as AffixPlaceholder } from './affix-placeholder.vue';
+export { default as AffixContent } from './affix-content.vue';
 
-export type { AffixRootProps, AffixRootEmits, AffixRootExposed, AffixTarget } from './types';
+export { provideAffixUi } from './context';
+
+export type {
+  AffixRootProps,
+  AffixPlaceholderProps,
+  AffixContentProps,
+  AffixRootEmits,
+  AffixRootExposed,
+  AffixTarget,
+  AffixUiSlot,
+  AffixUi
+} from './types';

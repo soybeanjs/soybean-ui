@@ -1,35 +1,27 @@
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useAttrs, watch } from 'vue';
-import { useEventListener, useResizeObserver } from '@vueuse/core';
-import {
-  createRafThrottle,
-  getDefaultTarget,
-  getFixedBottom,
-  getFixedTop,
-  getTargetRect,
-  isZeroRect,
-  resolveAffixTarget
-} from './shared';
-import type { AffixRootEmits, AffixRootProps } from './types';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, watch, onWatcherCleanup } from 'vue';
+import { useEventListener, useRafFn, useResizeObserver } from '@vueuse/core';
+import { useForwardElement } from '../../composables';
+import { getDefaultTarget, getFixedBottom, getFixedTop, getTargetRect, isZeroRect, resolveAffixTarget } from './shared';
+import { provideAffixRootContext, useAffixUi } from './context';
+import type { AffixRootProps, AffixRootEmits, AffixState } from './types';
 
 defineOptions({
-  name: 'AffixRoot',
-  inheritAttrs: false
+  name: 'AffixRoot'
 });
 
 const props = defineProps<AffixRootProps>();
 
 const emit = defineEmits<AffixRootEmits>();
 
-const attrs = useAttrs();
+const cls = useAffixUi('root');
 
-const placeholderElement = shallowRef<HTMLDivElement>();
-const fixedElement = shallowRef<HTMLDivElement>();
+const [rootElement, setRootElement] = useForwardElement<HTMLDivElement>();
 const affixed = shallowRef(false);
 const affixStyle = shallowRef<Record<string, string> | undefined>();
 const placeholderStyle = shallowRef<Record<string, string> | undefined>();
 
-const dataState = computed(() => (affixed.value ? 'fixed' : 'static'));
+const dataState = computed<AffixState>(() => (affixed.value ? 'fixed' : 'static'));
 
 const resolvedTarget = shallowRef(resolveAffixTarget(props.target));
 
@@ -64,7 +56,7 @@ function measurePosition() {
     return;
   }
 
-  const placeholder = placeholderElement.value;
+  const placeholder = rootElement.value;
   const target = resolvedTarget.value;
 
   if (!placeholder || !target) {
@@ -120,10 +112,21 @@ function measurePosition() {
   placeholderStyle.value = nextPlaceholderStyle;
 }
 
-const updatePosition = createRafThrottle(measurePosition);
+const { pause: cancelUpdatePosition, resume: updatePosition } = useRafFn(measurePosition, {
+  immediate: false,
+  once: true
+});
+
+const { contentElement } = provideAffixRootContext({
+  affixed,
+  affixStyle,
+  placeholderStyle,
+  dataState,
+  updatePosition
+});
 
 watch(
-  [resolvedTarget, () => props.offsetTop, () => props.offsetBottom],
+  [() => props.target, () => props.offsetTop, () => props.offsetBottom],
   async () => {
     syncResolvedTarget();
     await nextTick();
@@ -132,15 +135,33 @@ watch(
   { immediate: true }
 );
 
-useEventListener(resolvedTarget, 'scroll', updatePosition);
-useEventListener(resolvedTarget, 'touchstart', updatePosition);
-useEventListener(resolvedTarget, 'touchmove', updatePosition);
-useEventListener(resolvedTarget, 'touchend', updatePosition);
+watch(
+  resolvedTarget,
+  target => {
+    if (!target) {
+      return;
+    }
+
+    const stopScrollListener = useEventListener(target, 'scroll', updatePosition);
+    const stopTouchStartListener = useEventListener(target, 'touchstart', updatePosition);
+    const stopTouchMoveListener = useEventListener(target, 'touchmove', updatePosition);
+    const stopTouchEndListener = useEventListener(target, 'touchend', updatePosition);
+
+    onWatcherCleanup(() => {
+      stopScrollListener();
+      stopTouchStartListener();
+      stopTouchMoveListener();
+      stopTouchEndListener();
+    });
+  },
+  { immediate: true }
+);
+
 useEventListener(getDefaultTarget, 'load', updatePosition);
 useEventListener(getDefaultTarget, 'pageshow', updatePosition);
 useEventListener(getDefaultTarget, 'resize', updatePosition);
-useResizeObserver(placeholderElement, updatePosition);
-useResizeObserver(fixedElement, updatePosition);
+useResizeObserver(rootElement, updatePosition);
+useResizeObserver(contentElement, updatePosition);
 
 onMounted(async () => {
   await nextTick();
@@ -149,7 +170,7 @@ onMounted(async () => {
 });
 
 onBeforeUnmount(() => {
-  updatePosition.cancel();
+  cancelUpdatePosition();
 });
 
 defineExpose({
@@ -159,10 +180,7 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="placeholderElement">
-    <div v-if="affixed" aria-hidden="true" role="presentation" :style="placeholderStyle" />
-    <div ref="fixedElement" v-bind="attrs" :style="affixStyle" :data-state="dataState">
-      <slot :affixed="affixed" />
-    </div>
+  <div :ref="setRootElement" :class="cls">
+    <slot :affixed="affixed" />
   </div>
 </template>

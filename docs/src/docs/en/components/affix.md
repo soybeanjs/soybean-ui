@@ -4,6 +4,8 @@
 
 Affix keeps content pinned to the top or bottom edge of the viewport or a custom scroll container while the target area is scrolling.
 
+> Note: In addition to SAffix, the headless layer also exports AffixRoot, AffixPlaceholder, AffixContent, and provideAffixUi for custom composition and style injection.
+
 ## Usage
 
 ```vue
@@ -32,10 +34,13 @@ custom-styling
 ### Props
 
 <DataTable preset="props" :data="[
-  { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class for the affixed container' },
+  { name: 'class', type: 'ClassValue', default: '-', description: 'Custom class for the affixed content element' },
   { name: 'offsetTop', type: 'number', default: '0', description: 'Offset from the top edge before the content becomes affixed' },
   { name: 'offsetBottom', type: 'number', default: '-', description: 'Offset from the bottom edge before the content becomes affixed' },
-  { name: 'target', type: 'AffixTarget', default: 'window', description: 'Function that returns the scroll container to observe' },
+  { name: 'target', type: 'AffixTarget', default: 'window', description: 'Scroll target to observe. Accepts a selector, element, window, or a function returning an element' },
+  { name: 'ui', type: 'Partial<AffixUi>', default: '{}', description: 'Inject classes into the root, placeholder, and content elements' },
+  { name: 'placeholderProps', type: 'AffixPlaceholderProps', default: '-', description: 'Native props forwarded to the placeholder element' },
+  { name: 'contentProps', type: 'AffixContentProps', default: '-', description: 'Native props forwarded to the content element' },
 ]"/>
 
 ### Events
@@ -55,9 +60,44 @@ custom-styling
 <TypeTable :data="[
   {
     name: 'AffixTarget',
-    description: 'Factory used to resolve the scroll container',
+    description: 'Target type used to resolve the scroll container',
     fields: [
-      { name: '()', type: 'string | Window | HTMLElement | (() => HTMLElement)', description: 'Returns the target container' },
+      { name: 'value', type: 'string | Window | HTMLElement | (() => HTMLElement)', description: 'Selector, window, element instance, or a function returning an element' },
+    ],
+  },
+  {
+    name: 'AffixUi',
+    description: 'Custom classes for each Affix element',
+    fields: [
+      { name: 'root', type: 'ClassValue', description: 'Class for the root element' },
+      { name: 'placeholder', type: 'ClassValue', description: 'Class for the placeholder element' },
+      { name: 'content', type: 'ClassValue', description: 'Class for the content element' },
     ],
   }
 ]"/>
+
+## Headless Composition
+
+When you need separate control over the root, placeholder, and content elements, you can compose the headless exports directly:
+
+```vue
+<script setup lang="ts">
+import { computed } from 'vue';
+import { AffixContent, AffixPlaceholder, AffixRoot, provideAffixUi } from '@soybeanjs/headless';
+
+const ui = computed(() => ({
+  content: 'data-[state=fixed]:z-50'
+}));
+
+provideAffixUi(ui);
+</script>
+
+<template>
+  <AffixRoot :offset-top="24">
+    <AffixPlaceholder />
+    <AffixContent>
+      <button type="button">Back to top</button>
+    </AffixContent>
+  </AffixRoot>
+</template>
+```

@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
+import { AffixContent, AffixPlaceholder, AffixRoot } from '@soybeanjs/headless/affix';
 import type { AffixRootExposed } from '@soybeanjs/headless/affix';
 import SAffix from '../../../src/components/affix/affix.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -144,6 +145,53 @@ describe('SAffix', () => {
       wrapper.unmount();
     });
 
+    it('updates when the target prop changes', async () => {
+      let firstTargetTop = 0;
+      let secondTargetTop = 0;
+      const firstTarget = document.createElement('div');
+      const secondTarget = document.createElement('div');
+
+      document.body.appendChild(firstTarget);
+      document.body.appendChild(secondTarget);
+
+      const wrapper = mount(SAffix, {
+        props: { offsetTop: 16, target: firstTarget },
+        slots: { default: 'Pinned content' },
+        attachTo: document.body
+      });
+
+      mockRect(wrapper.element as HTMLElement, () =>
+        createRect({ top: 40, bottom: 80, left: 12, width: 120, height: 40, right: 132 })
+      );
+      mockRect(firstTarget, () =>
+        createRect({ top: firstTargetTop, bottom: firstTargetTop + 300, width: 400, height: 300 })
+      );
+      mockRect(secondTarget, () =>
+        createRect({ top: secondTargetTop, bottom: secondTargetTop + 300, width: 400, height: 300 })
+      );
+
+      getAffixRoot(wrapper).updatePosition();
+      await waitForAffixUpdate();
+
+      expect(wrapper.find('[data-state]').attributes('data-state')).toBe('static');
+
+      await wrapper.setProps({ target: secondTarget });
+      await waitForAffixUpdate();
+
+      secondTargetTop = 50;
+      secondTarget.dispatchEvent(new Event('scroll'));
+      await waitForAffixUpdate();
+
+      const fixed = wrapper.find('[data-state]');
+
+      expect(fixed.attributes('data-state')).toBe('fixed');
+      expect(fixed.attributes('style')).toContain('top: 66px');
+
+      wrapper.unmount();
+      firstTarget.remove();
+      secondTarget.remove();
+    });
+
     it('affixes to the top when the offset threshold is reached', async () => {
       let targetTop = 0;
       const target = document.createElement('div');
@@ -214,6 +262,55 @@ describe('SAffix', () => {
 
       expect(fixed.attributes('data-state')).toBe('fixed');
       expect(fixed.attributes('style')).toContain(`bottom: ${expectedBottom}px`);
+
+      wrapper.unmount();
+      target.remove();
+    });
+
+    it('supports headless composition with placeholder and content', async () => {
+      let targetTop = 0;
+      const target = document.createElement('div');
+
+      document.body.appendChild(target);
+
+      const wrapper = mount(
+        {
+          components: {
+            AffixContent,
+            AffixPlaceholder,
+            AffixRoot
+          },
+          setup() {
+            return { target };
+          },
+          template: `
+            <AffixRoot class="headless-affix-class" :offset-top="16" :target="target">
+              <AffixPlaceholder />
+              <AffixContent>Pinned content</AffixContent>
+            </AffixRoot>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      const affixRoot = wrapper.findComponent({ name: 'AffixRoot' });
+
+      mockRect(affixRoot.element as HTMLElement, () =>
+        createRect({ top: 40, bottom: 80, left: 12, width: 120, height: 40, right: 132 })
+      );
+      mockRect(target, () => createRect({ top: targetTop, bottom: targetTop + 300, width: 400, height: 300 }));
+
+      getAffixRoot(wrapper).updatePosition();
+      await waitForAffixUpdate();
+
+      targetTop = 50;
+      target.dispatchEvent(new Event('scroll'));
+      await waitForAffixUpdate();
+
+      expect(wrapper.find('[data-state]').classes()).toContain('headless-affix-class');
+      expect(wrapper.find('[role="presentation"]').exists()).toBe(true);
 
       wrapper.unmount();
       target.remove();

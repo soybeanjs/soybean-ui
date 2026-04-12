@@ -1,6 +1,13 @@
 // @unocss-include
 import { tv } from 'tailwind-variants';
+import type { VariantProps } from 'tailwind-variants';
 
 export const affixVariants = tv({
-  base: 'data-[state=fixed]:z-50'
+  slots: {
+    root: '',
+    placeholder: '',
+    content: 'data-[state=fixed]:z-50'
+  }
 });
+
+export type AffixVariantProps = VariantProps<typeof affixVariants>;

@@ -1,43 +1,6 @@
 import { toValue } from 'vue';
 import type { AffixTarget } from './types';
 
-export interface RafThrottle {
-  (): void;
-  cancel: () => void;
-}
-
-export function createRafThrottle(fn: () => void): RafThrottle {
-  let frameId: number | undefined;
-
-  const throttled = () => {
-    if (typeof window === 'undefined') {
-      fn();
-
-      return;
-    }
-
-    if (frameId !== undefined) {
-      return;
-    }
-
-    frameId = window.requestAnimationFrame(() => {
-      frameId = undefined;
-      fn();
-    });
-  };
-
-  throttled.cancel = () => {
-    if (frameId === undefined || typeof window === 'undefined') {
-      return;
-    }
-
-    window.cancelAnimationFrame(frameId);
-    frameId = undefined;
-  };
-
-  return throttled;
-}
-
 export function getDefaultTarget(): Window | null {
   return typeof window === 'undefined' ? null : window;
 }
