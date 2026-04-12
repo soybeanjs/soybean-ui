@@ -1,6 +1,6 @@
 import { shallowRef, watch } from 'vue';
 import { useTable as _useTable } from '@soybeanjs/hooks';
-import { getTableColumnKey } from '@soybeanjs/headless/table';
+import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
 import type { TableColumn, TableColumnType } from './types';
 
@@ -83,8 +83,8 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   const cols: TableColumnCheck[] = [];
 
   columns.forEach(col => {
-    if (Array.isArray(col.children) && col.children.length > 0) {
-      cols.push(...getColumnChecks(col.children as T[]));
+    if (isTableGroupColumn(col)) {
+      cols.push(...getColumnChecks(col.children));
       return;
     }
 
@@ -131,8 +131,8 @@ function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColum
       return acc;
     }
 
-    if (Array.isArray(column.children) && column.children.length > 0) {
-      const nextChildren = getColumns(column.children as T[], checks);
+    if (isTableGroupColumn(column)) {
+      const nextChildren = getColumns(column.children, checks);
 
       if (nextChildren.length > 0) {
         acc.push({

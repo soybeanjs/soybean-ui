@@ -40,7 +40,7 @@ export function getTableRowValueByDataIndex<T extends BaseTableData, K extends P
 }
 
 export function getTableColumnKey<T extends BaseTableData>(column: TableColumn<T>) {
-  return column.key ?? column.dataIndex ?? (column.type ? `__${column.type}` : column.title ?? '__group');
+  return column.key ?? column.dataIndex ?? (column.type ? `__${column.type}` : `__group-${column.title ?? 'column'}`);
 }
 
 export function isTableGroupColumn<T extends BaseTableData>(column: TableColumn<T>): column is TableGroupColumn<T> {

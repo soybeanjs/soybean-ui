@@ -57,7 +57,7 @@ describe('STable', () => {
     it('renders column headers and cell values', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as any,
+          columns: columns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -74,7 +74,7 @@ describe('STable', () => {
     it('renders grouped headers within a single semantic table', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: groupedColumns as any,
+          columns: groupedColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -90,7 +90,7 @@ describe('STable', () => {
     it('forwards custom cell slots to the headless data table', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: columns as any,
+          columns: columns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -114,16 +114,14 @@ describe('STable', () => {
     it('emits update:selected when a row checkbox is clicked', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as any,
+          columns: selectionColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },
         attachTo: document.body
       });
 
-      const controls = wrapper.findAll('[role="checkbox"]');
-
-      await controls[1].trigger('click');
+      await wrapper.get('[aria-label="Select row Ada"]').trigger('click');
 
       expect(wrapper.emitted('update:selected')).toBeTruthy();
       expect(wrapper.emitted('update:selected')?.[0]?.[0]).toEqual([1]);
@@ -133,7 +131,7 @@ describe('STable', () => {
     it('uses pressed button semantics for single-selection controls', () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as any,
+          columns: selectionColumns as TableColumn[],
           data,
           rowKey: row => row.id,
           multiple: false,
@@ -154,7 +152,7 @@ describe('STable', () => {
     it('sorts rows when a sortable header is activated', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: sortableColumns as any,
+          columns: sortableColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -171,7 +169,7 @@ describe('STable', () => {
     it('filters rows when a filterable header input changes', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: filterableColumns as any,
+          columns: filterableColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -192,7 +190,7 @@ describe('STable', () => {
     it('emits update:expanded and renders expanded row content', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: expandableColumns as any,
+          columns: expandableColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },
@@ -219,7 +217,7 @@ describe('STable', () => {
     it('has no a11y violations', async () => {
       const wrapper = mount(STable, {
         props: {
-          columns: selectionColumns as any,
+          columns: selectionColumns as TableColumn[],
           data,
           rowKey: row => row.id
         },

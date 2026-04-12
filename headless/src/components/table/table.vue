@@ -83,8 +83,8 @@ const forwardedRootProps = useOmitProps(props, [
 ]);
 
 const uncontrolledExpanded = shallowRef(getDefaultExpanded());
-const uncontrolledSortState = shallowRef<TableSortState | undefined>(props.defaultSortState);
-const uncontrolledFilterState = shallowRef<TableFilterState>(props.defaultFilterState ?? {});
+const uncontrolledSortState = shallowRef<TableSortState | undefined>(getDefaultSortState());
+const uncontrolledFilterState = shallowRef<TableFilterState>(getDefaultFilterState());
 
 watch(
   () => props.expanded,
@@ -239,6 +239,14 @@ function getDefaultExpanded() {
   return props.defaultExpanded ?? [];
 }
 
+function getDefaultSortState() {
+  return props.defaultSortState;
+}
+
+function getDefaultFilterState() {
+  return props.defaultFilterState ?? {};
+}
+
 function toggleExpand(key: R) {
   const index = expanded.value.indexOf(key);
 
@@ -272,7 +280,7 @@ function getRowLabel(row: T) {
 }
 
 function getColumnSlotName(column: TableProps<T, R, M>['columns'][number]) {
-  return column.dataIndex ?? column.key ?? column.type ?? getTableColumnKey(column);
+  return getTableColumnKey(column);
 }
 
 function isColumnSortable(column: TableProps<T, R, M>['columns'][number]): column is TableDataColumn<T> {
@@ -308,6 +316,21 @@ function getColumnSortIndicator(column: TableProps<T, R, M>['columns'][number]) 
   if (order === 'desc') return '↓';
 
   return '↕';
+}
+
+function getColumnSortButtonLabel(column: TableProps<T, R, M>['columns'][number]) {
+  const columnLabel = column.title ?? getColumnSlotName(column);
+  const order = getColumnSortOrder(column);
+
+  if (order === 'asc') {
+    return `Sort by ${columnLabel}, currently ascending`;
+  }
+
+  if (order === 'desc') {
+    return `Sort by ${columnLabel}, currently descending`;
+  }
+
+  return `Sort by ${columnLabel}`;
 }
 
 function getColumnFilterValue(column: TableProps<T, R, M>['columns'][number]) {
@@ -414,6 +437,7 @@ function getHeaderAriaSort(column: TableProps<T, R, M>['columns'][number]) {
                       v-if="isColumnSortable(headerCell.column)"
                       type="button"
                       :class="tableUi.sortTrigger"
+                      :aria-label="getColumnSortButtonLabel(headerCell.column)"
                       @click="toggleColumnSort(headerCell.column)"
                     >
                       <span>{{ headerCell.column.title }}</span>
