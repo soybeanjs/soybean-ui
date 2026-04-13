@@ -2,7 +2,7 @@
 
 ## 概述
 
-用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开、虚拟滚动等功能。
+用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开、树形行、虚拟滚动等功能。
 
 ## 用法
 
@@ -45,6 +45,7 @@ bordered
 striped
 grouped-sort-filter
 fixed-resizable
+tree
 virtualized
 single-selection
 multiple-selection
@@ -67,6 +68,8 @@ sizes
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: '默认筛选状态（非受控）。' },
   { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: '当前列宽状态（受控）。' },
   { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: '默认列宽状态（非受控）。' },
+  { name: 'getChildren', type: '(row: T) => T[] | undefined', default: 'row => row.children', description: '返回树形表格的子节点数据。' },
+  { name: 'indent', type: 'number', default: '16', description: '每一级树形缩进的像素值。' },
   { name: 'virtual', type: 'boolean', default: 'false', description: '是否启用虚拟行渲染。' },
   { name: 'height', type: 'number | string', default: '-', description: '启用虚拟滚动时的视口高度。' },
   { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: '虚拟滚动的行高预估值。' },
@@ -106,14 +109,14 @@ sizes
 <DataTable preset="slots" :data="[
   { name: 'header', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: '自定义任意表头单元格渲染。' },
   { name: 'header-[key]', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: '自定义指定表头单元格渲染，支持 dataIndex、type 或自定义 key。' },
-  { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any }', description: '自定义单元格渲染。' },
+  { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }', description: '自定义单元格渲染。' },
   { name: 'header-index', parameters: '{ column: TableColumn<T> }', description: '自定义索引列头。' },
-  { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T }', description: '自定义索引单元格。' },
+  { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean }', description: '自定义索引单元格。' },
   { name: 'header-selection', parameters: '{ column: TableColumn<T>; multiple: boolean }', description: '自定义选择列头。' },
-  { name: 'selection', parameters: '{ index: number; column: TableColumn<T>; row: T; multiple: boolean }', description: '自定义选择单元格。' },
+  { name: 'selection', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void; multiple: boolean }', description: '自定义选择单元格。' },
   { name: 'header-expand', parameters: '{ column: TableColumn<T> }', description: '自定义展开列头。' },
-  { name: 'expand', parameters: '{ index: number; column: TableColumn<T>; row: T; expanded: boolean; toggleExpand: () => void }', description: '自定义展开单元格。' },
-  { name: 'expanded-row', parameters: '{ index: number; row: T }', description: '自定义展开行内容。' },
+  { name: 'expand', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }', description: '自定义展开单元格。' },
+  { name: 'expanded-row', parameters: '{ index: number; row: T; level: number; hasChildren: boolean }', description: '自定义展开行内容。' },
   { name: 'footer', parameters: '{ columnSize: number }', description: '自定义表尾内容。' }
 ]"/>
 
@@ -157,6 +160,9 @@ sizes
   { name: 'sortTrigger', type: 'string', description: '排序触发器类名。' },
   { name: 'filterInput', type: 'string', description: '筛选输入框类名。' },
   { name: 'resizeHandle', type: 'string', description: '列宽调整手柄类名。' },
+  { name: 'treeCell', type: 'string', description: '树形单元格内容类名。' },
+  { name: 'treeToggle', type: 'string', description: '树形展开按钮类名。' },
+  { name: 'treeTogglePlaceholder', type: 'string', description: '树形按钮占位类名。' },
   { name: 'selection', type: 'string', description: '选择框类名。' }
 ]"/>
 

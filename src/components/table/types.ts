@@ -7,6 +7,8 @@ import {
   TableColumnType,
   TableEmits,
   TableProps as HeadlessTableProps,
+  TableRowChildrenResolver,
+  TableRowValue,
   TableSortOrder,
   TableSortState,
   TableSlots,
@@ -47,6 +49,8 @@ export type {
   TableColumnWidthState,
   TableEmits,
   TableFilterState,
+  TableRowChildrenResolver,
+  TableRowValue,
   TableSlots,
   TableSortOrder,
   TableSortState

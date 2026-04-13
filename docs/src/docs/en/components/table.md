@@ -2,7 +2,7 @@
 
 ## Overview
 
-A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, virtualization, and more.
+A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, tree rows, virtualization, and more.
 
 ## Usage
 
@@ -46,6 +46,7 @@ bordered
 striped
 grouped-sort-filter
 fixed-resizable
+tree
 virtualized
 single-selection
 multiple-selection
@@ -66,6 +67,8 @@ footer
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: 'Default filter state (uncontrolled).' },
   { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: 'Current column width state (controlled).' },
   { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: 'Default column width state (uncontrolled).' },
+  { name: 'getChildren', type: '(row: T) => T[] | undefined', default: 'row => row.children', description: 'Returns nested child rows for tree tables.' },
+  { name: 'indent', type: 'number', default: '16', description: 'Indent size in pixels for each tree level.' },
   { name: 'virtual', type: 'boolean', default: 'false', description: 'Enables virtual row rendering.' },
   { name: 'height', type: 'number | string', default: '-', description: 'Scrollable viewport height when virtualization is enabled.' },
   { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: 'Estimated row height for the virtualizer.' },
@@ -105,14 +108,14 @@ footer
 <DataTable preset="slots" :data="[
   { name: 'header', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: 'Custom rendering for any header cell.' },
   { name: 'header-[key]', parameters: '{ column: TableColumn<T>; sortable: boolean; sortOrder?: TableSortOrder; filterValue: string }', description: 'Custom rendering for a specific header cell, using a dataIndex, type, or explicit key.' },
-  { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any }', description: 'Custom cell rendering.' },
+  { name: '[dataIndex]', parameters: '{ index: number; column: TableColumn<T>; row: T; value: any; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }', description: 'Custom cell rendering.' },
   { name: 'header-index', parameters: '{ column: TableColumn<T> }', description: 'Custom index column header.' },
-  { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T }', description: 'Custom index cell.' },
+  { name: 'index', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean }', description: 'Custom index cell.' },
   { name: 'header-selection', parameters: '{ column: TableColumn<T>; multiple: boolean }', description: 'Custom selection column header.' },
-  { name: 'selection', parameters: '{ index: number; column: TableColumn<T>; row: T; multiple: boolean }', description: 'Custom selection cell.' },
+  { name: 'selection', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void; multiple: boolean }', description: 'Custom selection cell.' },
   { name: 'header-expand', parameters: '{ column: TableColumn<T> }', description: 'Custom expand column header.' },
-  { name: 'expand', parameters: '{ index: number; column: TableColumn<T>; row: T; expanded: boolean; toggleExpand: () => void }', description: 'Custom expand cell.' },
-  { name: 'expanded-row', parameters: '{ index: number; row: T }', description: 'Custom expanded row content.' },
+  { name: 'expand', parameters: '{ index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean; expanded: boolean; toggleExpand: () => void }', description: 'Custom expand cell.' },
+  { name: 'expanded-row', parameters: '{ index: number; row: T; level: number; hasChildren: boolean }', description: 'Custom expanded row content.' },
   { name: 'footer', parameters: '{ columnSize: number }', description: 'Custom footer content.' }
 ]"/>
 
@@ -156,6 +159,9 @@ Custom styling classes.
   { name: 'sortTrigger', type: 'string', description: 'Sort trigger class.' },
   { name: 'filterInput', type: 'string', description: 'Filter input class.' },
   { name: 'resizeHandle', type: 'string', description: 'Resize handle class.' },
+  { name: 'treeCell', type: 'string', description: 'Tree cell content class.' },
+  { name: 'treeToggle', type: 'string', description: 'Tree toggle button class.' },
+  { name: 'treeTogglePlaceholder', type: 'string', description: 'Tree toggle placeholder class.' },
   { name: 'selection', type: 'string', description: 'Selection checkbox class.' }
 ]"/>
 

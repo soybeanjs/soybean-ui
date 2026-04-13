@@ -8,12 +8,16 @@
   "
 >
 import { useEventListener, useResizeObserver } from '@vueuse/core';
-import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId, useSlots, watch } from 'vue';
 import type { ComponentPublicInstance, CSSProperties } from 'vue';
 import type { CheckedState } from '../../types';
 import { useOmitProps, useSelection } from '../../composables';
 import {
+  buildTableTree,
+  collectTableTreeExpandableKeys,
+  filterTableTree,
   filterTableColumns,
+  flattenTableTree,
   getTableColumnWidthValue,
   getNextTableFilterState,
   getTableAriaSort,
@@ -23,11 +27,12 @@ import {
   getTableLeafColumns,
   getTableRowLabel,
   getTableRowValueByDataIndex,
+  hasTableTreeChildren,
   isTableDataColumn,
   isTableGroupColumn,
   matchesTableColumnFilter,
   parseTableColumnWidth,
-  sortTableData,
+  sortTableTree,
   toggleTableSortState
 } from './shared';
 import TableBody from './table-body.vue';
@@ -48,6 +53,7 @@ import type {
   TableProps,
   TableSlots,
   TableSortState,
+  TableTreeRow,
   TableVirtualMeasurement
 } from './types';
 
@@ -56,13 +62,15 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<TableProps<T, R, M>>(), {
-  multiple: true as any
+  multiple: true as any,
+  indent: 16
 });
 
 const emit = defineEmits<TableEmits<R, M>>();
 
 defineSlots<TableSlots<T>>();
 
+const slots = useSlots();
 const tableUi = useTableUi();
 
 const forwardedRootProps = useOmitProps(props, [
@@ -75,6 +83,8 @@ const forwardedRootProps = useOmitProps(props, [
   'filterState',
   'defaultColumnWidths',
   'columnWidths',
+  'getChildren',
+  'indent',
   'virtual',
   'height',
   'estimateSize',
@@ -258,8 +268,14 @@ const fixedColumnStates = computed(() => {
   };
 });
 
-const displayData = computed(() => {
-  const filtered = props.data.filter(row => {
+const sourceTree = computed(() => buildTableTree(props.data, props.rowKey, props.getChildren));
+
+const hasTreeRows = computed(() => hasTableTreeChildren(sourceTree.value));
+
+const hasExpandedRowSlot = computed(() => Boolean(slots['expanded-row']));
+
+const processedTree = computed(() => {
+  const filtered = filterTableTree(sourceTree.value, row => {
     return Object.entries(filterState.value).every(([key, keyword]) => {
       const column = columnMap.value.get(key);
 
@@ -281,7 +297,27 @@ const displayData = computed(() => {
     return filtered;
   }
 
-  return sortTableData(filtered, column, sortState.value);
+  return sortTableTree(filtered, column, sortState.value);
+});
+
+const isFiltering = computed(() => Object.keys(filterState.value).length > 0);
+
+const visibleExpandedKeys = computed(() => {
+  if (!hasTreeRows.value || !isFiltering.value) {
+    return expanded.value;
+  }
+
+  return [...new Set([...expanded.value, ...collectTableTreeExpandableKeys(processedTree.value)])];
+});
+
+const displayRows = computed(() => flattenTableTree(processedTree.value, visibleExpandedKeys.value));
+
+const visibleRowKeys = computed(() => displayRows.value.map(row => row.key));
+
+const treeColumnKey = computed(() => {
+  const column = leafColumns.value.find(isTableDataColumn);
+
+  return column ? getTableColumnKey(column) : undefined;
 });
 
 const virtualOverscan = computed(() => props.virtualizerOptions?.overscan ?? 8);
@@ -334,8 +370,8 @@ function findVirtualStartIndex(
 const virtualMeasurements = computed(() => {
   let start = 0;
 
-  return displayData.value.map((row, index) => {
-    const size = getEstimatedRowSize(index, row);
+  return displayRows.value.map((item, index) => {
+    const size = getEstimatedRowSize(index, item.row);
     const measurement = {
       index,
       start,
@@ -352,7 +388,7 @@ const virtualRange = computed(() => {
   if (!isVirtual.value) {
     return {
       startIndex: 0,
-      endIndex: displayData.value.length - 1
+      endIndex: displayRows.value.length - 1
     };
   }
 
@@ -405,7 +441,7 @@ const virtualPaddingEnd = computed(() => {
 
 const visibleRows = computed(() => {
   if (!isVirtual.value) {
-    return displayData.value.map((item, index) => ({
+    return displayRows.value.map((item, index) => ({
       index,
       item
     }));
@@ -417,7 +453,7 @@ const visibleRows = computed(() => {
     return [];
   }
 
-  return displayData.value.slice(startIndex, endIndex + 1).map((item, offset) => ({
+  return displayRows.value.slice(startIndex, endIndex + 1).map((item, offset) => ({
     index: startIndex + offset,
     item
   }));
@@ -427,24 +463,23 @@ const hasExpandColumn = computed(() => {
   return leafColumns.value.some(column => column.type === 'expand');
 });
 
-const isHeaderSelectionDisabled = computed(() => displayData.value.length === 0);
+const isHeaderSelectionDisabled = computed(() => displayRows.value.length === 0);
 
 const headerSelection = computed<CheckedState>(() => {
   const selectedValues = selected.value;
 
-  if (!Array.isArray(selectedValues) || displayData.value.length === 0) {
+  if (!Array.isArray(selectedValues) || displayRows.value.length === 0) {
     return false;
   }
 
-  const visibleRowKeys = displayData.value.map(item => props.rowKey(item));
   const selectedValuesSet = new Set(selectedValues);
-  const selectedCount = visibleRowKeys.filter(value => selectedValuesSet.has(value)).length;
+  const selectedCount = visibleRowKeys.value.filter(value => selectedValuesSet.has(value)).length;
 
   if (selectedCount === 0) {
     return false;
   }
 
-  if (selectedCount === visibleRowKeys.length) {
+  if (selectedCount === visibleRowKeys.value.length) {
     return true;
   }
 
@@ -455,7 +490,10 @@ const singleSelectionName = `data-table-selection-${useId()}`;
 
 function getDefaultExpanded() {
   if (props.defaultExpandAll) {
-    return props.data.map(item => props.rowKey(item));
+    return collectTableTreeExpandableKeys(
+      buildTableTree(props.data, props.rowKey, props.getChildren),
+      Boolean(slots['expanded-row'])
+    );
   }
 
   return props.defaultExpanded ?? [];
@@ -532,7 +570,7 @@ function updateHeaderChecked(state: CheckedState | null) {
   }
 
   if (state === true) {
-    setSelected(displayData.value.map(item => props.rowKey(item)));
+    setSelected(visibleRowKeys.value);
     return;
   }
 
@@ -540,11 +578,37 @@ function updateHeaderChecked(state: CheckedState | null) {
 }
 
 function isRowExpanded(key: R) {
-  return expanded.value.includes(key);
+  return visibleExpandedKeys.value.includes(key);
 }
 
 function getRowLabel(row: T) {
   return getTableRowLabel(row, props.rowKey);
+}
+
+function isTreeColumn(column: TableProps<T, R, M>['columns'][number]) {
+  return isTableDataColumn(column) && hasTreeRows.value && getTableColumnKey(column) === treeColumnKey.value;
+}
+
+function shouldShowInlineTreeToggle(column: TableProps<T, R, M>['columns'][number]) {
+  return isTreeColumn(column) && !hasExpandColumn.value;
+}
+
+function getTreeCellStyle(row: TableTreeRow<T, R>) {
+  if (!hasTreeRows.value) {
+    return undefined;
+  }
+
+  return {
+    paddingInlineStart: `${Math.max(row.level - 1, 0) * props.indent}px`
+  } satisfies CSSProperties;
+}
+
+function canExpandRow(row: TableTreeRow<T, R>) {
+  return row.hasChildren || hasExpandedRowSlot.value;
+}
+
+function shouldRenderExpandedRow(row: TableTreeRow<T, R>) {
+  return hasExpandColumn.value && hasExpandedRowSlot.value && !row.hasChildren && isRowExpanded(row.key);
 }
 
 function getColumnSlotName(column: TableProps<T, R, M>['columns'][number]) {
@@ -834,7 +898,7 @@ watch([leafColumns, columnWidths], () => {
   nextTick(syncMeasuredColumnWidths);
 }, { deep: true, flush: 'post' });
 
-watch([displayData, isVirtual], () => {
+watch([displayRows, isVirtual], () => {
   nextTick(() => {
     virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
   });
@@ -979,8 +1043,8 @@ onBeforeUnmount(() => {
         <TableRow v-if="isVirtual && virtualPaddingStart > 0" aria-hidden="true">
           <td :colspan="Math.max(leafColumns.length, 1)" :style="getSpacerCellStyle(virtualPaddingStart)" />
         </TableRow>
-        <template v-for="{ item, index } in visibleRows" :key="rowKey(item)">
-          <TableRow v-bind="rowProps" data-row>
+        <template v-for="{ item, index } in visibleRows" :key="item.key">
+          <TableRow v-bind="rowProps" data-row :data-level="item.level">
             <template v-for="column in leafColumns" :key="getTableColumnKey(column)">
               <TableCell
                 v-if="column.dataIndex"
@@ -995,10 +1059,34 @@ onBeforeUnmount(() => {
                   :name="column.dataIndex"
                   :index="index"
                   :column="column"
-                  :row="item"
-                  :value="getTableRowValueByDataIndex(item, column.dataIndex)"
+                  :row="item.row"
+                  :value="getTableRowValueByDataIndex(item.row, column.dataIndex)"
+                  :level="item.level"
+                  :has-children="item.hasChildren"
+                  :expanded="isRowExpanded(item.key)"
+                  :toggle-expand="() => toggleExpand(item.key)"
                 >
-                  {{ getTableRowValueByDataIndex(item, column.dataIndex) }}
+                  <div v-if="isTreeColumn(column)" :class="tableUi.treeCell" :style="getTreeCellStyle(item)">
+                    <button
+                      v-if="shouldShowInlineTreeToggle(column) && item.hasChildren"
+                      type="button"
+                      :class="tableUi.treeToggle"
+                      :aria-expanded="isRowExpanded(item.key)"
+                      :aria-label="isRowExpanded(item.key) ? `Collapse row ${getRowLabel(item.row)}` : `Expand row ${getRowLabel(item.row)}`"
+                      @click="toggleExpand(item.key)"
+                    >
+                      <span aria-hidden="true">{{ isRowExpanded(item.key) ? '▾' : '▸' }}</span>
+                    </button>
+                    <span
+                      v-else-if="shouldShowInlineTreeToggle(column)"
+                      :class="tableUi.treeTogglePlaceholder"
+                      aria-hidden="true"
+                    />
+                    <span>{{ getTableRowValueByDataIndex(item.row, column.dataIndex) }}</span>
+                  </div>
+                  <template v-else>
+                    {{ getTableRowValueByDataIndex(item.row, column.dataIndex) }}
+                  </template>
                 </slot>
               </TableCell>
               <TableCell
@@ -1010,7 +1098,15 @@ onBeforeUnmount(() => {
                 :data-fixed="Boolean(getLeafCellFixedState(column)) || undefined"
                 :data-fixed-side="getLeafCellFixedState(column)?.side"
               >
-                <slot v-if="column.type === 'index'" name="index" :index="index" :column="column" :row="item">
+                <slot
+                  v-if="column.type === 'index'"
+                  name="index"
+                  :index="index"
+                  :column="column"
+                  :row="item.row"
+                  :level="item.level"
+                  :has-children="item.hasChildren"
+                >
                   {{ index + 1 }}
                 </slot>
                 <slot
@@ -1018,25 +1114,29 @@ onBeforeUnmount(() => {
                   name="selection"
                   :index="index"
                   :column="column"
-                  :row="item"
+                  :row="item.row"
+                  :level="item.level"
+                  :has-children="item.hasChildren"
+                  :expanded="isRowExpanded(item.key)"
+                  :toggle-expand="() => toggleExpand(item.key)"
                   :multiple="isMultiple"
-                  :checked="isValueSelected(rowKey(item))"
-                  :toggle-select="() => onSelectedChange(rowKey(item))"
+                  :checked="isValueSelected(item.key)"
+                  :toggle-select="() => onSelectedChange(item.key)"
                 >
                   <input
                     v-if="isMultiple"
                     type="checkbox"
-                    :checked="isValueSelected(rowKey(item))"
-                    :aria-label="`Select row ${getRowLabel(item)}`"
-                    @change="onSelectedChange(rowKey(item))"
+                    :checked="isValueSelected(item.key)"
+                    :aria-label="`Select row ${getRowLabel(item.row)}`"
+                    @change="onSelectedChange(item.key)"
                   >
                   <input
                     v-else
                     type="radio"
                     :name="singleSelectionName"
-                    :checked="isValueSelected(rowKey(item))"
-                    :aria-label="`Select row ${getRowLabel(item)}`"
-                    @click="onSelectedChange(rowKey(item))"
+                    :checked="isValueSelected(item.key)"
+                    :aria-label="`Select row ${getRowLabel(item.row)}`"
+                    @click="onSelectedChange(item.key)"
                   >
                 </slot>
                 <slot
@@ -1044,25 +1144,28 @@ onBeforeUnmount(() => {
                   name="expand"
                   :index="index"
                   :column="column"
-                  :row="item"
-                  :expanded="isRowExpanded(rowKey(item))"
-                  :toggle-expand="() => toggleExpand(rowKey(item))"
+                  :row="item.row"
+                  :level="item.level"
+                  :has-children="item.hasChildren"
+                  :expanded="isRowExpanded(item.key)"
+                  :toggle-expand="() => toggleExpand(item.key)"
                 >
                   <button
+                    v-if="canExpandRow(item)"
                     type="button"
-                    :aria-expanded="isRowExpanded(rowKey(item))"
-                    :aria-label="isRowExpanded(rowKey(item)) ? 'Collapse row' : 'Expand row'"
-                    @click="toggleExpand(rowKey(item))"
+                    :aria-expanded="isRowExpanded(item.key)"
+                    :aria-label="isRowExpanded(item.key) ? `Collapse row ${getRowLabel(item.row)}` : `Expand row ${getRowLabel(item.row)}`"
+                    @click="toggleExpand(item.key)"
                   >
-                    {{ isRowExpanded(rowKey(item)) ? '−' : '+' }}
+                    {{ isRowExpanded(item.key) ? '−' : '+' }}
                   </button>
                 </slot>
               </TableCell>
             </template>
           </TableRow>
-          <TableRow v-if="hasExpandColumn && isRowExpanded(rowKey(item))" v-bind="rowProps" data-expanded-row>
+          <TableRow v-if="shouldRenderExpandedRow(item)" v-bind="rowProps" data-expanded-row :data-level="item.level">
             <TableCell v-bind="cellProps" :colspan="leafColumns.length">
-              <slot name="expanded-row" :index="index" :row="item" />
+              <slot name="expanded-row" :index="index" :row="item.row" :level="item.level" :has-children="item.hasChildren" />
             </TableCell>
           </TableRow>
         </template>

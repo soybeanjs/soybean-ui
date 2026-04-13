@@ -10,6 +10,7 @@ interface TableRowData {
   id: number;
   name: string;
   age: number;
+  children?: TableRowData[];
 }
 
 const columns: TableColumn<TableRowData>[] = [
@@ -68,6 +69,19 @@ const virtualizedData: TableRowData[] = Array.from({ length: 100 }, (_, index) =
   name: `User ${index + 1}`,
   age: 20 + (index % 10)
 }));
+
+const treeData: TableRowData[] = [
+  {
+    id: 1,
+    name: 'Ada',
+    age: 32,
+    children: [
+      { id: 11, name: 'Ada Child', age: 8 },
+      { id: 12, name: 'Ada Child 2', age: 6 }
+    ]
+  },
+  { id: 2, name: 'Linus', age: 28 }
+];
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
   Object.defineProperty(element, 'getBoundingClientRect', {
@@ -370,11 +384,54 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      await wrapper.find('[aria-label="Expand row"]').trigger('click');
+      await wrapper.find('[aria-label="Expand row Ada"]').trigger('click');
 
       expect(wrapper.emitted('update:expanded')).toBeTruthy();
       expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual([1]);
       expect(wrapper.find('[data-testid="expanded-1"]').text()).toContain('Expanded Ada');
+      wrapper.unmount();
+    });
+  });
+
+  describe('tree rows', () => {
+    it('renders nested rows and toggles children from the first data column', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: columns as TableColumn[],
+          data: treeData,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      expect(wrapper.text()).toContain('Ada');
+      expect(wrapper.text()).not.toContain('Ada Child');
+
+      await wrapper.get('[aria-label="Expand row Ada"]').trigger('click');
+
+      expect(wrapper.emitted('update:expanded')?.[0]?.[0]).toEqual([1]);
+      expect(wrapper.text()).toContain('Ada Child');
+      expect(wrapper.get('tbody tr[data-level="2"]').text()).toContain('Ada Child');
+
+      wrapper.unmount();
+    });
+
+    it('keeps ancestor rows visible when filtering matches descendants', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: filterableColumns as TableColumn[],
+          data: treeData,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('input[aria-label="Filter Name"]').setValue('Child 2');
+
+      expect(wrapper.text()).toContain('Ada');
+      expect(wrapper.text()).toContain('Ada Child 2');
+      expect(wrapper.text()).not.toContain('Linus');
+
       wrapper.unmount();
     });
   });

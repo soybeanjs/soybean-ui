@@ -30,6 +30,12 @@ export const tableVariants = tv({
       'focus-visible:outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
       'after:absolute after:bottom-0 after:start-1/2 after:top-0 after:w-px after:-translate-x-1/2 after:rounded-full after:content-[""]'
     ],
+    treeCell: 'flex min-w-0 items-center gap-1',
+    treeToggle: [
+      'text-foreground inline-flex size-5 shrink-0 items-center justify-center rounded border-none bg-transparent p-0',
+      'transition-colors hover:bg-accent focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2'
+    ],
+    treeTogglePlaceholder: 'inline-block size-5 shrink-0',
     selection: 'text-foreground',
     radioRoot: [
       'peer relative shrink-0 rounded-full border border-solid shadow cursor-pointer transition-all-150',

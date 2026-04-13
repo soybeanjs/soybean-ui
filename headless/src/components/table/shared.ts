@@ -6,8 +6,12 @@ import type {
   TableDataColumn,
   TableFilterState,
   TableGroupColumn,
+  TableRowChildrenResolver,
+  TableRowValue,
   TableSortOrder,
-  TableSortState
+  TableSortState,
+  TableTreeNode,
+  TableTreeRow
 } from './types';
 
 const tableColumnFallbackKeys = new WeakMap<object, string>();
@@ -29,19 +33,142 @@ export function getTableRowLabel<T extends BaseTableData, R extends string | num
   return String(rowKey(row));
 }
 
-export function getTableRowValueByDataIndex<T extends BaseTableData, K extends Path<T>>(row: T, dataIndex: K): PathValue<T, K> {
+export function getTableRowChildren<T extends BaseTableData>(row: T, getChildren?: TableRowChildrenResolver<T>) {
+  if (getChildren) {
+    return getChildren(row) ?? [];
+  }
+
+  return Array.isArray(row.children) ? (row.children as T[]) : [];
+}
+
+export function buildTableTree<T extends BaseTableData, R extends string | number>(
+  rows: T[],
+  rowKey: (row: T) => R,
+  getChildren?: TableRowChildrenResolver<T>,
+  level: number = 1,
+  parentKey?: R
+): TableTreeNode<T, R>[] {
+  return rows.map(row => {
+    const key = rowKey(row);
+    const children = buildTableTree(getTableRowChildren(row, getChildren), rowKey, getChildren, level + 1, key);
+
+    return {
+      key,
+      row,
+      level,
+      parentKey,
+      children,
+      hasChildren: children.length > 0
+    };
+  });
+}
+
+export function flattenTableTree<T extends BaseTableData, R extends string | number>(
+  nodes: TableTreeNode<T, R>[],
+  expandedKeys: R[]
+): TableTreeRow<T, R>[] {
+  const expandedKeySet = new Set(expandedKeys);
+  const rows: TableTreeRow<T, R>[] = [];
+
+  function walk(items: TableTreeNode<T, R>[]) {
+    items.forEach(item => {
+      rows.push({
+        key: item.key,
+        row: item.row,
+        level: item.level,
+        parentKey: item.parentKey,
+        hasChildren: item.hasChildren
+      });
+
+      if (item.hasChildren && expandedKeySet.has(item.key)) {
+        walk(item.children);
+      }
+    });
+  }
+
+  walk(nodes);
+
+  return rows;
+}
+
+export function filterTableTree<T extends BaseTableData, R extends string | number>(
+  nodes: TableTreeNode<T, R>[],
+  predicate: (row: T) => boolean
+): TableTreeNode<T, R>[] {
+  return nodes.reduce<TableTreeNode<T, R>[]>((acc, node) => {
+    const children = filterTableTree(node.children, predicate);
+    const matched = predicate(node.row);
+
+    if (!matched && children.length === 0) {
+      return acc;
+    }
+
+    acc.push({
+      ...node,
+      children,
+      hasChildren: children.length > 0
+    });
+
+    return acc;
+  }, []);
+}
+
+export function sortTableTree<T extends BaseTableData, R extends string | number>(
+  nodes: TableTreeNode<T, R>[],
+  column: TableDataColumn<T>,
+  sortState: TableSortState | undefined
+): TableTreeNode<T, R>[] {
+  const sorted = [...nodes].sort((current, next) => {
+    const compareResult =
+      typeof column.sorter === 'function'
+        ? column.sorter(current.row, next.row)
+        : getTableDefaultSortCompare(
+            getTableRowValueByDataIndex(current.row, column.dataIndex),
+            getTableRowValueByDataIndex(next.row, column.dataIndex)
+          );
+
+    return sortState?.order === 'desc' ? compareResult * -1 : compareResult;
+  });
+
+  return sorted.map(node => ({
+    ...node,
+    children: sortTableTree(node.children, column, sortState)
+  }));
+}
+
+export function collectTableTreeExpandableKeys<T extends BaseTableData, R extends string | number>(
+  nodes: TableTreeNode<T, R>[],
+  includeLeaves: boolean = false
+): R[] {
+  return nodes.flatMap(node => {
+    const keys = includeLeaves || node.hasChildren ? [node.key] : [];
+
+    return [...keys, ...collectTableTreeExpandableKeys(node.children, includeLeaves)];
+  });
+}
+
+export function hasTableTreeChildren<T extends BaseTableData, R extends string | number>(
+  nodes: TableTreeNode<T, R>[]
+): boolean {
+  return nodes.some(node => node.hasChildren || hasTableTreeChildren(node.children));
+}
+
+export function getTableRowValueByDataIndex<T extends BaseTableData, K extends Path<TableRowValue<T>>>(
+  row: T,
+  dataIndex: K
+): PathValue<TableRowValue<T>, K> {
   const keys = dataIndex.split('.');
   let value: any = row;
 
   for (const key of keys) {
     if (value == null) {
-      return undefined as PathValue<T, K>;
+      return undefined as PathValue<TableRowValue<T>, K>;
     }
 
     value = value[key];
   }
 
-  return value as PathValue<T, K>;
+  return value as PathValue<TableRowValue<T>, K>;
 }
 
 export function getTableColumnKey<T extends BaseTableData>(column: TableColumn<T>) {

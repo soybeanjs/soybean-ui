@@ -90,17 +90,17 @@ function getRowLabel(row: T) {
       />
     </template>
 
-    <template v-if="!slots.expand" #expand="{ expanded, toggleExpand }">
+    <template v-if="!slots.expand" #expand="{ expanded, toggleExpand, row, hasChildren }">
       <SButtonIcon
-        v-if="expanded"
+        v-if="(hasChildren || slots['expanded-row']) && expanded"
         icon="lucide:chevron-down"
-        aria-label="Collapse row"
+        :aria-label="`Collapse row ${getRowLabel(row)}`"
         @click="toggleExpand()"
       />
       <SButtonIcon
-        v-else
+        v-else-if="hasChildren || slots['expanded-row']"
         icon="lucide:chevron-right"
-        aria-label="Expand row"
+        :aria-label="`Expand row ${getRowLabel(row)}`"
         @click="toggleExpand()"
       />
     </template>

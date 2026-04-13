@@ -10,6 +10,7 @@ import DemoTableGroupedSortFilter from './grouped-sort-filter.vue';
 import DemoTableMultipleSelection from './multiple-selection.vue';
 import DemoTableSingleSelection from './single-selection.vue';
 import DemoTableSizes from './sizes.vue';
+import DemoTableTree from './tree.vue';
 import DemoTableVirtualized from './virtualized.vue';
 </script>
 
@@ -18,6 +19,7 @@ import DemoTableVirtualized from './virtualized.vue';
     <DemoTableBase />
     <DemoTableGroupedSortFilter />
     <DemoTableFixedResizable />
+    <DemoTableTree />
     <DemoTableVirtualized />
     <DemoTableExpandable />
     <DemoTableBordered />
