@@ -300,6 +300,7 @@ import {
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
+  TableCompact,
   TableRoot,
   TableContent,
   TableHeader,
@@ -1145,6 +1146,7 @@ export const Switch = {
 };
 
 export const Table = {
+  Compact: TableCompact,
   Root: TableRoot,
   Content: TableContent,
   Header: TableHeader,
@@ -1154,6 +1156,7 @@ export const Table = {
   Head: TableHead,
   Cell: TableCell
 } as {
+  Compact: typeof TableCompact;
   Root: typeof TableRoot;
   Content: typeof TableContent;
   Header: typeof TableHeader;
