@@ -336,6 +336,7 @@ describe('STable', () => {
       expect(wrapper.text()).toContain('User 1');
       expect(wrapper.text()).not.toContain('User 100');
       expect(wrapper.findAll('tbody tr').length).toBeLessThan(virtualizedData.length);
+      expect(wrapper.find('tbody tr[aria-hidden="true"] td').attributes('style')).toContain('height: 2610px;');
 
       root.scrollTop = 900;
       root.dispatchEvent(new Event('scroll'));
@@ -344,6 +345,7 @@ describe('STable', () => {
       await nextTick();
 
       expect(wrapper.text()).toContain('User 30');
+      expect(wrapper.find('tbody tr[aria-hidden="true"] td').attributes('style')).toContain('height: 660px;');
 
       wrapper.unmount();
       cleanup();

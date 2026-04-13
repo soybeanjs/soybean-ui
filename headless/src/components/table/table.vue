@@ -47,7 +47,8 @@ import type {
   TableColumnWidthState,
   TableProps,
   TableSlots,
-  TableSortState
+  TableSortState,
+  TableVirtualMeasurement
 } from './types';
 
 defineOptions({
@@ -307,6 +308,29 @@ function getEstimatedRowSize(index: number, row: T) {
   return props.estimateSize ?? 40;
 }
 
+function findVirtualStartIndex(
+  measurements: TableVirtualMeasurement[],
+  scrollTop: number
+) {
+  let low = 0;
+  let high = measurements.length - 1;
+  let result = measurements.length - 1;
+
+  while (low <= high) {
+    const middle = Math.floor((low + high) / 2);
+    const measurement = measurements[middle];
+
+    if (measurement.end > scrollTop) {
+      result = middle;
+      high = middle - 1;
+    } else {
+      low = middle + 1;
+    }
+  }
+
+  return result;
+}
+
 const virtualMeasurements = computed(() => {
   let start = 0;
 
@@ -343,11 +367,7 @@ const virtualRange = computed(() => {
     };
   }
 
-  let startIndex = measurements.findIndex(measurement => measurement.end > scrollTop);
-
-  if (startIndex < 0) {
-    startIndex = Math.max(measurements.length - 1, 0);
-  }
+  let startIndex = findVirtualStartIndex(measurements, scrollTop);
 
   let endIndex = startIndex;
 

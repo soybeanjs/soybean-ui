@@ -53,6 +53,12 @@ export type TableFilterState = Record<string, string>;
 
 export type TableColumnWidthState = Record<string, string>;
 
+export interface TableVirtualMeasurement {
+  index: number;
+  start: number;
+  end: number;
+}
+
 export interface TableColumnFilter<T = BaseTableData> {
   placeholder?: string;
   match?: (params: { keyword: string; row: T; value: unknown; column: TableDataColumn<T> }) => boolean;
