@@ -1,5 +1,5 @@
-import { Comment, Fragment, computed, getCurrentInstance } from 'vue';
-import type { ComponentPublicInstance, VNode } from 'vue';
+import { Comment, Fragment, computed, getCurrentInstance, toValue } from 'vue';
+import type { ComponentPublicInstance, MaybeRefOrGetter, VNode } from 'vue';
 import { PatchFlags } from '@vue/shared';
 import type { PropsToContext, VNodeRef } from '../types';
 
@@ -66,3 +66,15 @@ export function isFormControl(el?: HTMLElement | null) {
 
   return el.classList.contains('form');
 }
+
+type RefToValue<T extends MaybeRefOrGetter> = T extends MaybeRefOrGetter<infer V> ? V : never;
+
+export const getMergedRefsValue = <T extends Record<string, MaybeRefOrGetter>>(refs: T) => {
+  const merged = {} as { [K in keyof T]: RefToValue<T[K]> };
+
+  for (const key in refs) {
+    merged[key] = toValue(refs[key]);
+  }
+
+  return merged;
+};

@@ -1,4 +1,6 @@
-import { useUiContext } from '../../composables';
-import type { TableUiSlot } from './types';
+import { useContext, useUiContext } from '../../composables';
+import type { TableCompactContext, TableUiSlot } from './types';
+
+export const [provideTableCompactContext, useTableCompactContext] = useContext<TableCompactContext>('TableCompact');
 
 export const [provideTableUi, useTableUi] = useUiContext<TableUiSlot>('Table');

@@ -155,7 +155,6 @@ sizes
   { name: 'row', type: 'string', description: '行类名。' },
   { name: 'head', type: 'string', description: '表头单元格类名。' },
   { name: 'cell', type: 'string', description: '单元格类名。' },
-  { name: 'headContent', type: 'string', description: '表头内容容器类名。' },
   { name: 'fixed', type: 'string', description: '固定列附加类名。' },
   { name: 'sortTrigger', type: 'string', description: '排序触发器类名。' },
   { name: 'filterInput', type: 'string', description: '筛选输入框类名。' },

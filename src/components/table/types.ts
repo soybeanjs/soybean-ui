@@ -1,57 +1,88 @@
 import {
-  BaseTableData,
+  TableBaseData,
   TableColumn,
   TableColumnFilter,
-  TableColumnWidthState,
-  TableFilterState,
+  TableColumnFilterOption,
+  TableColumnFilterValue,
   TableColumnType,
-  TableEmits,
-  TableProps as HeadlessTableProps,
-  TableRowChildrenResolver,
-  TableRowValue,
+  TableCompactProps,
+  TableCompactEmits,
+  TableCompactSlots,
+  TableHeaderFilterSlotProps,
+  TableUnifiedKey,
   TableSortOrder,
-  TableSortState,
-  TableSlots,
-  TableUi
+  TableUiSlot
 } from '@soybeanjs/headless/table';
 import type { ClassValue, UiClass } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 
-export type TableExtraUiSlot = 'selection';
+export type TableExtraUiSlot =
+  | 'selection'
+  | 'filterTrigger'
+  | 'filterPopup'
+  | 'filterSearch'
+  | 'filterOptions'
+  | 'filterOption'
+  | 'filterOptionLabel'
+  | 'filterFooter'
+  | 'filterCount'
+  | 'filterAction'
+  | 'filterEmpty';
 
-export type TableExtendedUi = UiClass<keyof TableUi | TableExtraUiSlot>;
+export type TableExtendedUi = UiClass<TableUiSlot | TableExtraUiSlot>;
 
 export interface TableProps<
-  T extends BaseTableData = BaseTableData,
+  T extends TableBaseData = TableBaseData,
   R extends string | number = string | number,
   M extends boolean = false
-> extends HeadlessTableProps<T, R, M> {
+> extends TableCompactProps<T, R, M> {
   /**
    * Additional class names to apply to the table.
    */
   class?: ClassValue;
-  ui?: Partial<TableExtendedUi>;
   size?: ThemeSize;
+  ui?: Partial<TableExtendedUi>;
   bordered?: boolean | 'all';
   striped?: boolean;
 }
+
+export type TableEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = TableCompactEmits<
+  R,
+  M
+>;
+
+export type TableSlots<T extends TableBaseData = TableBaseData> = TableCompactSlots<T>;
 
 export interface TableRadioProps {
   size?: ThemeSize;
   checked?: boolean;
 }
 
+export interface TableFilterPopoverColumnMeta {
+  title?: string;
+  key?: string;
+  dataIndex?: string;
+}
+
+export interface TableFilterPopoverOption {
+  label: string;
+  value: string;
+  disabled?: boolean;
+}
+
+export interface TableFilterPopoverProps<
+  T extends TableBaseData = TableBaseData
+> extends TableHeaderFilterSlotProps<T> {
+  size?: ThemeSize;
+  ui: TableExtendedUi;
+}
+
 export type {
-  BaseTableData,
+  TableBaseData,
   TableColumn,
   TableColumnFilter,
+  TableColumnFilterOption,
+  TableColumnFilterValue,
   TableColumnType,
-  TableColumnWidthState,
-  TableEmits,
-  TableFilterState,
-  TableRowChildrenResolver,
-  TableRowValue,
-  TableSlots,
-  TableSortOrder,
-  TableSortState
+  TableSortOrder
 };

@@ -154,7 +154,6 @@ Custom styling classes.
   { name: 'row', type: 'string', description: 'Row class.' },
   { name: 'head', type: 'string', description: 'Header cell class.' },
   { name: 'cell', type: 'string', description: 'Cell class.' },
-  { name: 'headContent', type: 'string', description: 'Header content container class.' },
   { name: 'fixed', type: 'string', description: 'Fixed column class.' },
   { name: 'sortTrigger', type: 'string', description: 'Sort trigger class.' },
   { name: 'filterInput', type: 'string', description: 'Filter input class.' },

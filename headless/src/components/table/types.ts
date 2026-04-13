@@ -1,6 +1,12 @@
-import { HTMLAttributes, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue';
-import type { UiClass } from '../../types';
-import type { CheckedState, Path, PathValue } from '../../types';
+import type {
+  ShallowRef,
+  ComputedRef,
+  HTMLAttributes,
+  TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes
+} from 'vue';
+import type { CheckedState, Path, PathValue, PropsToContext, UiClass } from '../../types';
 import type { VirtualizerOptions } from '../virtualizer/types';
 
 export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {}
@@ -28,7 +34,6 @@ export type TableUiSlot =
   | 'row'
   | 'head'
   | 'cell'
-  | 'headContent'
   | 'fixed'
   | 'sortTrigger'
   | 'filterInput'
@@ -39,9 +44,9 @@ export type TableUiSlot =
 
 export type TableUi = UiClass<TableUiSlot>;
 
-export type BaseTableData = Record<string, any>;
+export type TableBaseData = Record<string, any>;
 
-export type TableRowValue<T extends BaseTableData = BaseTableData> = Omit<T, 'children'>;
+export type TableRowValue<T extends TableBaseData = TableBaseData> = Omit<T, 'children'>;
 
 export type TableAlign = 'left' | 'center' | 'right';
 
@@ -49,16 +54,25 @@ export type TableColumnType = 'index' | 'selection' | 'expand';
 
 export type TableSortOrder = 'asc' | 'desc';
 
+export type TableUnifiedKey = string | number;
+
 export interface TableSortState {
   key: string;
   order: TableSortOrder;
 }
 
-export type TableFilterState = Record<string, string>;
+export interface TableColumnFilterValue {
+  keyword?: string;
+  values?: string[];
+}
+
+export type TableFilterValue = string | TableColumnFilterValue;
+
+export type TableFilterState = Record<string, TableFilterValue>;
 
 export type TableColumnWidthState = Record<string, string>;
 
-export type TableRowChildrenResolver<T extends BaseTableData = BaseTableData> = (row: T) => T[] | undefined;
+export type TableRowChildrenResolver<T extends TableBaseData = TableBaseData> = (row: T) => T[] | undefined;
 
 export interface TableVirtualMeasurement {
   index: number;
@@ -66,10 +80,12 @@ export interface TableVirtualMeasurement {
   end: number;
 }
 
-export interface TableTreeNode<
-  T extends BaseTableData = BaseTableData,
-  R extends string | number = string | number
-> {
+export interface TableVirtualRange {
+  startIndex: number;
+  endIndex: number;
+}
+
+export interface TableTreeNode<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
   key: R;
   row: T;
   level: number;
@@ -78,10 +94,7 @@ export interface TableTreeNode<
   hasChildren: boolean;
 }
 
-export interface TableTreeRow<
-  T extends BaseTableData = BaseTableData,
-  R extends string | number = string | number
-> {
+export interface TableTreeRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
   key: R;
   row: T;
   level: number;
@@ -89,9 +102,30 @@ export interface TableTreeRow<
   hasChildren: boolean;
 }
 
-export interface TableColumnFilter<T extends BaseTableData = BaseTableData> {
+export interface TableVisibleRow<T extends TableBaseData = TableBaseData, R extends TableUnifiedKey = TableUnifiedKey> {
+  index: number;
+  item: TableTreeRow<T, R>;
+}
+
+export interface TableColumnFilter<T extends TableBaseData = TableBaseData> {
   placeholder?: string;
-  match?: (params: { keyword: string; row: T; value: unknown; column: TableDataColumn<T> }) => boolean;
+  options?:
+    | TableColumnFilterOption[]
+    | ((params: { rows: T[]; column: TableDataColumn<T> }) => TableColumnFilterOption[]);
+  match?: (params: {
+    filterValue: TableColumnFilterValue;
+    keyword: string;
+    values: string[];
+    row: T;
+    value: unknown;
+    column: TableDataColumn<T>;
+  }) => boolean;
+}
+
+export interface TableColumnFilterOption {
+  label: string;
+  value: string;
+  disabled?: boolean;
 }
 
 export interface TableColumnBase {
@@ -106,7 +140,7 @@ export interface TableColumnBase {
   resizable?: boolean;
 }
 
-export interface TableTypeColumn<_T extends BaseTableData = BaseTableData> extends TableColumnBase {
+export interface TableTypeColumn extends TableColumnBase {
   type: TableColumnType;
   dataIndex?: never;
   children?: never;
@@ -114,7 +148,7 @@ export interface TableTypeColumn<_T extends BaseTableData = BaseTableData> exten
   filter?: never;
 }
 
-export interface TableDataColumn<T extends BaseTableData = BaseTableData> extends TableColumnBase {
+export interface TableDataColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
   dataIndex: Path<TableRowValue<T>>;
   type?: never;
   children?: never;
@@ -122,7 +156,7 @@ export interface TableDataColumn<T extends BaseTableData = BaseTableData> extend
   filter?: boolean | TableColumnFilter<T>;
 }
 
-export interface TableGroupColumn<T extends BaseTableData = BaseTableData> extends TableColumnBase {
+export interface TableGroupColumn<T extends TableBaseData = TableBaseData> extends TableColumnBase {
   children: TableColumn<T>[];
   type?: never;
   dataIndex?: never;
@@ -130,20 +164,179 @@ export interface TableGroupColumn<T extends BaseTableData = BaseTableData> exten
   filter?: never;
 }
 
-export type TableColumn<T extends BaseTableData = BaseTableData> = TableTypeColumn<T> | TableDataColumn<T> | TableGroupColumn<T>;
+export type TableColumn<T extends TableBaseData = TableBaseData> =
+  | TableTypeColumn
+  | TableDataColumn<T>
+  | TableGroupColumn<T>;
 
-export interface TableSelectionProps<R extends string | number = string | number, M extends boolean = false> {
+export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
+  key: string;
+  column: TableColumn<T>;
+  colSpan: number;
+  rowSpan: number;
+}
+
+export interface TableFixedState {
+  side: 'left' | 'right';
+  offset: number;
+}
+
+export interface TableFixedColumnOffsets {
+  leftOffsets: Record<string, number>;
+  rightOffsets: Record<string, number>;
+}
+
+export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {
   defaultSelected?: M extends true ? R[] : R;
   selected?: M extends true ? R[] : R;
   multiple?: M;
 }
 
-export interface TableProps<
-  T extends BaseTableData = BaseTableData,
-  R extends string | number = string | number,
+export interface TableCompactCellProps {
+  column: TableColumn;
+  row: TableTreeRow;
+  index: number;
+}
+
+export interface TableCompactExpandedRowProps {
+  row: TableTreeRow;
+  index: number;
+  colspan: number;
+}
+
+export interface TableCompactHeadProps extends TableHeaderCell {}
+
+export interface TableCompactRowProps {
+  row: TableTreeRow;
+  index: number;
+  leafColumns: TableColumn[];
+}
+
+export type TableCompactCellSlots<T extends TableBaseData> = {
+  [K in Path<TableRowValue<T>>]?: (props: TableDataCellSlotProps<T, K>) => any;
+} & {
+  index?: (props: TableIndexSlotProps<T>) => any;
+  selection?: (props: TableSelectionSlotProps<T>) => any;
+  expand?: (props: TableExpandSlotProps<T>) => any;
+  'tree-toggle'?: (props: TableTreeToggleSlotProps<T>) => any;
+};
+
+export interface TableHeaderSlotProps<T extends TableBaseData = TableBaseData> {
+  column: TableColumn<T>;
+  colSpan: number;
+  rowSpan: number;
+  sortable: boolean;
+  filterable: boolean;
+  filtered: boolean;
+  resizable: boolean;
+  sortOrder?: TableSortOrder;
+  multiple?: boolean;
+  checked?: CheckedState;
+  disabled?: boolean;
+  updateChecked?: (value: CheckedState | null) => void;
+  toggleSort: () => void;
+  filterValue: string;
+  filterValues: string[];
+  filterState?: TableFilterValue;
+  filterOptions: TableColumnFilterOption[];
+  setFilterValue: (value: string) => void;
+  setFilterValues: (values: string[]) => void;
+  setFilterState: (value: TableFilterValue | undefined) => void;
+  toggleFilterOption: (value: string) => void;
+  isFilterOptionSelected: (value: string) => boolean;
+  clearFilter: () => void;
+}
+
+export interface TableHeaderSelectionSlotProps<T extends TableBaseData = TableBaseData> {
+  column: TableColumn<T>;
+  multiple: boolean;
+  checked: CheckedState;
+  disabled: boolean;
+  updateChecked: (value: CheckedState | null) => void;
+}
+
+export interface TableHeaderFilterSlotProps<T extends TableBaseData = TableBaseData> extends Pick<
+  TableHeaderSlotProps<T>,
+  | 'column'
+  | 'filterValue'
+  | 'filterValues'
+  | 'filterState'
+  | 'filtered'
+  | 'filterOptions'
+  | 'setFilterValue'
+  | 'setFilterValues'
+  | 'setFilterState'
+  | 'toggleFilterOption'
+  | 'isFilterOptionSelected'
+  | 'clearFilter'
+> {}
+
+export interface TableHeaderSortSlotProps<T extends TableBaseData = TableBaseData> {
+  ariaLabel: string;
+  column: TableColumn<T>;
+  sortOrder?: TableSortOrder;
+  toggleSort: () => void;
+}
+
+export interface TableHeaderResizeSlotProps<T extends TableBaseData = TableBaseData> {
+  column: TableColumn<T>;
+  resizing: boolean;
+  ariaLabel: string;
+  onPointerdown: (event: PointerEvent) => void;
+  onKeydown: (event: KeyboardEvent) => void;
+}
+
+export interface TableIndexSlotProps<T extends TableBaseData = TableBaseData> {
+  index: number;
+  column: TableColumn<T>;
+  row: T;
+  level: number;
+  hasChildren: boolean;
+}
+
+export interface TableCellSlotProps<T extends TableBaseData = TableBaseData> {
+  index: number;
+  column: TableColumn<T>;
+  row: T;
+  level: number;
+  hasChildren: boolean;
+  expanded: boolean;
+  toggleExpand: () => void;
+}
+
+export interface TableSelectionSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
+  multiple: boolean;
+  checked: boolean;
+  ariaLabel: string;
+  toggleSelect: () => void;
+}
+
+export interface TableExpandSlotProps<T extends TableBaseData = TableBaseData> extends TableCellSlotProps<T> {
+  ariaLabel: string;
+}
+
+export type TableTreeToggleSlotProps<T extends TableBaseData = TableBaseData> = TableExpandSlotProps<T>;
+
+export interface TableExpandedRowSlotProps<T extends TableBaseData = TableBaseData> {
+  index: number;
+  row: T;
+  level: number;
+  hasChildren: boolean;
+}
+
+export interface TableDataCellSlotProps<
+  T extends TableBaseData = TableBaseData,
+  K extends Path<TableRowValue<T>> = Path<TableRowValue<T>>
+> extends TableCellSlotProps<T> {
+  value: PathValue<TableRowValue<T>, K>;
+}
+
+export interface TableCompactProps<
+  T extends TableBaseData = TableBaseData,
+  R extends TableUnifiedKey = TableUnifiedKey,
   M extends boolean = false
-> extends TableRootProps,
-    TableSelectionProps<R, M> {
+>
+  extends TableRootProps, TableSelectionProps<R, M> {
   columns: TableColumn<T>[];
   data: T[];
   rowKey: (row: T) => R;
@@ -171,7 +364,7 @@ export interface TableProps<
   cellProps?: TableCellProps;
 }
 
-export type TableEmits<R extends string | number, M extends boolean = false> = {
+export type TableCompactEmits<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> = {
   'update:sortState': [state: TableSortState | undefined];
   'update:filterState': [state: TableFilterState];
   'update:columnWidths': [state: TableColumnWidthState];
@@ -179,69 +372,53 @@ export type TableEmits<R extends string | number, M extends boolean = false> = {
   'update:selected': [selected: M extends true ? R[] : R | undefined];
 };
 
-export type TableSlots<T extends BaseTableData> = {
-  [K in `header-${string}`]?: (props: TableHeaderSlotProps<T>) => any;
+export type TableCompactSlots<T extends TableBaseData> = {
+  [K in `header-${Path<TableRowValue<T>>}`]?: (props: TableHeaderSlotProps<T>) => any;
 } & {
-  [K in Path<TableRowValue<T>>]?: (props: {
-    index: number;
-    column: TableColumn<T>;
-    row: T;
-    value: PathValue<TableRowValue<T>, K>;
-    level: number;
-    hasChildren: boolean;
-    expanded: boolean;
-    toggleExpand: () => void;
-  }) => any;
+  [K in Path<TableRowValue<T>>]?: (props: TableDataCellSlotProps<T, K>) => any;
 } & {
   header?: (props: TableHeaderSlotProps<T>) => any;
   'header-index'?: (props: { column: TableColumn<T> }) => any;
-  'header-selection'?: (props: {
-    column: TableColumn<T>;
-    multiple: boolean;
-    checked: CheckedState;
-    disabled: boolean;
-    updateChecked: (value: CheckedState | null) => void;
-  }) => any;
+  'header-selection'?: (props: TableHeaderSelectionSlotProps<T>) => any;
   'header-expand'?: (props: { column: TableColumn<T> }) => any;
-  index?: (props: { index: number; column: TableColumn<T>; row: T; level: number; hasChildren: boolean }) => any;
-  selection?: (props: {
-    index: number;
-    column: TableColumn<T>;
-    row: T;
-    level: number;
-    hasChildren: boolean;
-    expanded: boolean;
-    toggleExpand: () => void;
-    multiple: boolean;
-    checked: boolean;
-    toggleSelect: () => void;
-  }) => any;
-  expand?: (props: {
-    index: number;
-    column: TableColumn<T>;
-    row: T;
-    level: number;
-    hasChildren: boolean;
-    expanded: boolean;
-    toggleExpand: () => void;
-  }) => any;
-  'expanded-row'?: (props: { index: number; row: T; level: number; hasChildren: boolean }) => any;
+  'header-filter'?: (props: TableHeaderFilterSlotProps<T>) => any;
+  'header-sort'?: (props: TableHeaderSortSlotProps<T>) => any;
+  'header-resize'?: (props: TableHeaderResizeSlotProps<T>) => any;
+  index?: (props: TableIndexSlotProps<T>) => any;
+  selection?: (props: TableSelectionSlotProps<T>) => any;
+  expand?: (props: TableExpandSlotProps<T>) => any;
+  'expanded-row'?: (props: TableExpandedRowSlotProps<T>) => any;
+  'tree-toggle'?: (props: TableTreeToggleSlotProps<T>) => any;
   footer?: (props: { columnSize: number }) => any;
 };
 
-export interface TableHeaderSlotProps<T extends BaseTableData> {
-  column: TableColumn<T>;
-  colSpan: number;
-  rowSpan: number;
-  sortable: boolean;
-  resizable: boolean;
-  sortOrder?: TableSortOrder;
-  multiple?: boolean;
-  checked?: CheckedState;
-  disabled?: boolean;
-  updateChecked?: (value: CheckedState | null) => void;
-  toggleSort: () => void;
-  filterValue: string;
-  setFilterValue: (value: string) => void;
-  clearFilter: () => void;
+export interface TableCompactContext extends PropsToContext<
+  TableCompactProps,
+  'indent' | 'headProps' | 'rowProps' | 'cellProps'
+> {
+  rowKey: (row: TableBaseData) => TableUnifiedKey;
+  expanded: ShallowRef<TableUnifiedKey[]>;
+  sortState: ShallowRef<TableSortState | undefined>;
+  filterState: ShallowRef<TableFilterState>;
+  columnWidths: ShallowRef<TableColumnWidthState>;
+  selected: ShallowRef<TableUnifiedKey[] | TableUnifiedKey | undefined>;
+  onSelectedChange: (value: TableUnifiedKey) => void;
+  setSelected: (value: TableUnifiedKey[] | TableUnifiedKey | undefined) => void;
+  resetSelected: () => void;
+  isValueSelected: (value: TableUnifiedKey) => boolean;
+  multiple: ComputedRef<boolean>;
+  leafColumns: ComputedRef<TableColumn[]>;
+  sourceRows: ComputedRef<TableBaseData[]>;
+  hasTreeRows: ComputedRef<boolean>;
+  treeColumnKey: ComputedRef<string | undefined>;
+  hasExpandColumn: ComputedRef<boolean>;
+  hasExpandedRowSlot: ComputedRef<boolean>;
+  visibleExpandedKeys: ComputedRef<TableUnifiedKey[]>;
+  visibleRowKeys: ComputedRef<TableUnifiedKey[]>;
+  isHeaderSelectionDisabled: ComputedRef<boolean>;
+  headerSelection: ComputedRef<CheckedState>;
+  fixedColumnStates: ComputedRef<TableFixedColumnOffsets>;
+  resizingColumnKey: ShallowRef<string | null>;
+  measuredColumnWidths: ShallowRef<Record<string, number>>;
+  headCellElements: Record<string, HTMLElement | null>;
 }

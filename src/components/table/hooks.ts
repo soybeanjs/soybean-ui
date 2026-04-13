@@ -2,14 +2,16 @@ import { shallowRef, watch } from 'vue';
 import { useTable as _useTable } from '@soybeanjs/hooks';
 import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
-import type { BaseTableData, TableColumn, TableColumnType } from './types';
+import type { TableBaseData, TableColumn, TableColumnType } from './types';
 
-export type UseTableOptions<ResponseData, ApiData extends BaseTableData, Pagination extends boolean> = Omit<
+export type UseTableOptions<ResponseData, ApiData extends TableBaseData, Pagination extends boolean> = Omit<
   _UseTableOptions<ResponseData, ApiData, TableColumn<ApiData>, Pagination>,
   'pagination' | 'getColumnChecks' | 'getColumns'
 >;
 
-export function useTable<ResponseData, ApiData extends BaseTableData>(options: UseTableOptions<ResponseData, ApiData, false>) {
+export function useTable<ResponseData, ApiData extends TableBaseData>(
+  options: UseTableOptions<ResponseData, ApiData, false>
+) {
   const result = _useTable<ResponseData, ApiData, TableColumn<ApiData>, false>({
     ...options,
     getColumnChecks,
@@ -19,7 +21,7 @@ export function useTable<ResponseData, ApiData extends BaseTableData>(options: U
   return result;
 }
 
-export type UsePaginatedTableOptions<ResponseData, ApiData extends BaseTableData> = UseTableOptions<
+export type UsePaginatedTableOptions<ResponseData, ApiData extends TableBaseData> = UseTableOptions<
   ResponseData,
   ApiData,
   true
@@ -38,7 +40,7 @@ export type UsePaginatedTableOptions<ResponseData, ApiData extends BaseTableData
   fetchOnPaginationChange?: boolean;
 };
 
-export function usePaginatedTable<ResponseData, ApiData extends BaseTableData>(
+export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
   options: UsePaginatedTableOptions<ResponseData, ApiData>
 ) {
   const { page: _page = 1, pageSize: _pageSize = 10, fetchOnPaginationChange = true, onFetched } = options;

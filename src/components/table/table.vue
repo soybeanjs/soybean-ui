@@ -2,21 +2,22 @@
   setup
   lang="ts"
   generic="
-    T extends BaseTableData = BaseTableData,
+    T extends TableBaseData = TableBaseData,
     R extends string | number = string | number,
     M extends boolean = boolean
   "
 >
 import { computed, useSlots } from 'vue';
-import { getTableRowLabel, provideTableUi, Table as HeadlessTable } from '@soybeanjs/headless/table';
+import { provideTableUi, TableCompact } from '@soybeanjs/headless';
+import type { TableSortOrder } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
+import TableFilterPopover from './table-filter-popover.vue';
 import TableRadio from './table-radio.vue';
-import type { TableProps as HeadlessTableProps } from '@soybeanjs/headless/table';
-import type { BaseTableData, TableEmits, TableProps, TableSlots } from './types';
 import { tableVariants } from './variants';
+import type { TableBaseData, TableEmits, TableProps, TableSlots } from './types';
 
 defineOptions({
   name: 'STable'
@@ -29,15 +30,12 @@ const emit = defineEmits<TableEmits<R, M>>();
 defineSlots<TableSlots<T>>();
 
 const slots = useSlots();
-const forwardedSlotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
-// `useOmitProps` preserves a computed wrapper, so narrow it back to the headless table props for template binding.
-const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']) as unknown as HeadlessTableProps<
-  T,
-  R,
-  M
->;
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']);
+
 const listeners = useForwardListeners(emit);
+
+const slotNames = computed(() => Object.keys(slots) as Array<keyof TableSlots<T>>);
 
 const ui = computed(() => {
   const variants = tableVariants({
@@ -51,14 +49,14 @@ const ui = computed(() => {
 
 provideTableUi(ui);
 
-function getRowLabel(row: T) {
-  return getTableRowLabel(row, props.rowKey);
-}
+const getOrderIcon = (sortOrder?: TableSortOrder) => {
+  return sortOrder === 'asc' ? 'lucide:arrow-up' : sortOrder === 'desc' ? 'lucide:arrow-down' : 'lucide:arrow-up-down';
+};
 </script>
 
 <template>
-  <HeadlessTable v-bind="forwardedProps" v-on="listeners">
-    <template v-for="slotName in forwardedSlotNames" :key="slotName" #[slotName]="slotProps">
+  <TableCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
       <slot :name="slotName" v-bind="slotProps" />
     </template>
 
@@ -73,36 +71,63 @@ function getRowLabel(row: T) {
       />
     </template>
 
-    <template v-if="!slots.selection" #selection="{ checked, multiple, row, toggleSelect }">
+    <template v-if="!slots.selection" #selection="{ checked, multiple, ariaLabel, toggleSelect }">
       <SCheckbox
         v-if="multiple"
         :class="ui.selection"
         :model-value="checked"
-        :control-props="{ 'aria-label': `Select row ${getRowLabel(row)}` }"
+        :control-props="{ 'aria-label': ariaLabel }"
         @update:model-value="toggleSelect()"
       />
-      <TableRadio
-        v-else
-        :size="size"
-        :checked="checked"
-        :aria-label="`Select row ${getRowLabel(row)}`"
-        @click="toggleSelect()"
+      <TableRadio v-else :size="size" :checked="checked" :aria-label="ariaLabel" @click="toggleSelect()" />
+    </template>
+
+    <template v-if="!slots['header-sort']" #header-sort="{ sortOrder, ariaLabel, toggleSort }">
+      <SButtonIcon
+        :icon="getOrderIcon(sortOrder)"
+        :class="ui.sortTrigger"
+        :aria-label="ariaLabel"
+        :data-sorted="sortOrder ? '' : undefined"
+        @click="toggleSort()"
       />
     </template>
 
-    <template v-if="!slots.expand" #expand="{ expanded, toggleExpand, row, hasChildren }">
-      <SButtonIcon
-        v-if="(hasChildren || slots['expanded-row']) && expanded"
-        icon="lucide:chevron-down"
-        :aria-label="`Collapse row ${getRowLabel(row)}`"
-        @click="toggleExpand()"
+    <template v-if="!slots['header-filter']" #header-filter="slotProps">
+      <TableFilterPopover v-bind="slotProps" :ui="ui" :size="size" />
+    </template>
+
+    <template v-if="!slots['header-resize']" #header-resize="{ resizing, ariaLabel, onPointerdown, onKeydown }">
+      <button
+        type="button"
+        :class="ui.resizeHandle"
+        :aria-label="ariaLabel"
+        :aria-pressed="resizing"
+        :data-resizing="resizing || undefined"
+        @pointerdown="onPointerdown"
+        @keydown="onKeydown"
       />
+    </template>
+
+    <template v-if="!slots['tree-toggle']" #tree-toggle="{ expanded, ariaLabel, toggleExpand }">
       <SButtonIcon
-        v-else-if="hasChildren || slots['expanded-row']"
-        icon="lucide:chevron-right"
-        :aria-label="`Expand row ${getRowLabel(row)}`"
+        :class="ui.treeToggle"
+        :aria-expanded="expanded"
+        :aria-label="ariaLabel"
+        :icon="expanded ? 'lucide:chevron-down' : 'lucide:chevron-right'"
         @click="toggleExpand()"
       />
     </template>
-  </HeadlessTable>
+
+    <template v-if="!slots.expand" #expand="{ expanded, ariaLabel, hasChildren, toggleExpand }">
+      <SButtonIcon
+        v-if="hasChildren || slots['expanded-row']"
+        :icon="expanded ? 'lucide:chevron-down' : 'lucide:chevron-right'"
+        :class="ui.treeToggle"
+        :aria-expanded="expanded"
+        :aria-label="ariaLabel"
+        :data-expanded="expanded ? '' : undefined"
+        @click="toggleExpand()"
+      />
+    </template>
+  </TableCompact>
 </template>

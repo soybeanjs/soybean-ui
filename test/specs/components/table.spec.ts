@@ -49,15 +49,9 @@ const resizableColumns: TableColumn<TableRowData>[] = [
   { title: 'Age', dataIndex: 'age', align: 'center', width: '96px' }
 ];
 
-const selectionColumns = [
-  { type: 'selection' as const, width: '48px' },
-  ...columns
-];
+const selectionColumns = [{ type: 'selection' as const, width: '48px' }, ...columns];
 
-const expandableColumns = [
-  { type: 'expand' as const, width: '48px' },
-  ...columns
-];
+const expandableColumns = [{ type: 'expand' as const, width: '48px' }, ...columns];
 
 const data: TableRowData[] = [
   { id: 1, name: 'Ada', age: 32 },
@@ -102,6 +96,42 @@ function mockRect(element: Element, rect: { x?: number; y?: number; width?: numb
 
 function dispatchPointerEvent(target: EventTarget, type: string, init: PointerEventInit) {
   target.dispatchEvent(new PointerEvent(type, { bubbles: true, ...init }));
+}
+
+async function openTableFilter(wrapper: ReturnType<typeof mount>, columnLabel: string) {
+  await wrapper.get(`button[aria-label="Filter ${columnLabel}"]`).trigger('click');
+  await nextTick();
+}
+
+async function setTeleportedInputValue(label: string, value: string) {
+  const input = document.body.querySelector(`input[aria-label="${label}"]`) as HTMLInputElement | null;
+
+  expect(input).toBeTruthy();
+
+  if (!input) {
+    return;
+  }
+
+  input.value = value;
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+  input.dispatchEvent(new Event('change', { bubbles: true }));
+
+  await nextTick();
+  await nextTick();
+}
+
+async function clickTeleportedControl(label: string) {
+  const labeledControl = document.body.querySelector(`[aria-label="${label}"]`) as HTMLElement | null;
+  const textControl = Array.from(document.body.querySelectorAll('button')).find(
+    button => button.textContent?.trim() === label
+  );
+  const control = labeledControl ?? textControl ?? null;
+
+  expect(control).toBeTruthy();
+
+  control?.click();
+  await nextTick();
+  await nextTick();
 }
 
 describe('STable', () => {
@@ -163,6 +193,22 @@ describe('STable', () => {
   });
 
   describe('selection state', () => {
+    it('uses the UI header-selection slot to toggle all visible rows', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: selectionColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[aria-label="Select all rows"]').trigger('click');
+
+      expect(wrapper.emitted('update:selected')?.[0]?.[0]).toEqual([1, 2]);
+      wrapper.unmount();
+    });
+
     it('emits update:selected when a row checkbox is clicked', async () => {
       const wrapper = mount(STable, {
         props: {
@@ -201,6 +247,42 @@ describe('STable', () => {
   });
 
   describe('sorting and filtering', () => {
+    it('forwards custom sort slots with live sort state', async () => {
+      const customSortSlots: Record<string, (props: any) => any> = {
+        'header-sort': (props: { sortOrder?: 'asc' | 'desc'; ariaLabel?: string; toggleSort?: () => void }) => {
+          const { sortOrder, ariaLabel, toggleSort } = props;
+
+          return h(
+            'button',
+            {
+              type: 'button',
+              'data-testid': 'sort-trigger',
+              'aria-label': ariaLabel,
+              onClick: () => toggleSort?.()
+            },
+            [h('span', { 'data-testid': 'sort-indicator' }, sortOrder ?? 'none')]
+          );
+        }
+      };
+
+      const wrapper = mount(STable, {
+        props: {
+          columns: sortableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        slots: customSortSlots,
+        attachTo: document.body
+      });
+
+      expect(wrapper.get('[data-testid="sort-indicator"]').text()).toBe('none');
+
+      await wrapper.get('[data-testid="sort-trigger"]').trigger('click');
+
+      expect(wrapper.get('[data-testid="sort-indicator"]').text()).toBe('asc');
+      wrapper.unmount();
+    });
+
     it('sorts rows when a sortable header is activated', async () => {
       const wrapper = mount(STable, {
         props: {
@@ -218,7 +300,27 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
-    it('filters rows when a filterable header input changes', async () => {
+    it('emits undefined when clearing sort state after cycling the sortable header', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: sortableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const sortTrigger = wrapper.get('button[aria-label="Sort by Age"]');
+
+      await sortTrigger.trigger('click');
+      await sortTrigger.trigger('click');
+      await sortTrigger.trigger('click');
+
+      expect(wrapper.emitted('update:sortState')?.[2]?.[0]).toBeUndefined();
+      wrapper.unmount();
+    });
+
+    it('filters rows when using the floating filter search input', async () => {
       const wrapper = mount(STable, {
         props: {
           columns: filterableColumns as TableColumn[],
@@ -228,12 +330,109 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      await wrapper.get('input[aria-label="Filter Name"]').setValue('Lin');
+      await openTableFilter(wrapper, 'Name');
+      await setTeleportedInputValue('Search filter options for Name', 'Lin');
 
       expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({ name: 'Lin' });
       expect(wrapper.findAll('tbody tr')).toHaveLength(1);
-      expect(wrapper.text()).toContain('Linus');
-      expect(wrapper.text()).not.toContain('Ada');
+      expect(wrapper.get('tbody').text()).toContain('Linus');
+      expect(wrapper.get('tbody').text()).not.toContain('Ada');
+      wrapper.unmount();
+    });
+
+    it('filters rows when selecting options from the floating filter panel', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: filterableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await openTableFilter(wrapper, 'Name');
+      await clickTeleportedControl('Select Linus');
+
+      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({
+        name: {
+          values: ['Linus']
+        }
+      });
+      expect(wrapper.findAll('tbody tr')).toHaveLength(1);
+      expect(wrapper.get('tbody').text()).toContain('Linus');
+      expect(wrapper.get('tbody').text()).not.toContain('Ada');
+      wrapper.unmount();
+    });
+
+    it('clears floating filter selections when clicking clear', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          columns: filterableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      await openTableFilter(wrapper, 'Name');
+      await clickTeleportedControl('Select Linus');
+      await clickTeleportedControl('Clear');
+
+      expect(wrapper.emitted('update:filterState')?.at(-1)?.[0]).toEqual({});
+      expect(wrapper.findAll('tbody tr')).toHaveLength(2);
+      expect(wrapper.get('tbody').text()).toContain('Ada');
+      expect(wrapper.get('tbody').text()).toContain('Linus');
+      wrapper.unmount();
+    });
+
+    it('supports custom filter slots with option toggles', async () => {
+      const customFilterSlots = {
+        'header-filter': (props: {
+          filterOptions: Array<{ label: string; value: string }>;
+          toggleFilterOption: (value: string) => void;
+          isFilterOptionSelected: (value: string) => boolean;
+        }) => {
+          const { filterOptions, toggleFilterOption, isFilterOptionSelected } = props;
+
+          return h(
+            'div',
+            { 'data-testid': 'custom-filter' },
+            filterOptions.map(option =>
+              h(
+                'button',
+                {
+                  type: 'button',
+                  'data-testid': `filter-option-${option.value}`,
+                  'data-selected': isFilterOptionSelected(option.value),
+                  onClick: () => toggleFilterOption(option.value)
+                },
+                option.label
+              )
+            )
+          );
+        }
+      } as any;
+
+      const wrapper = mount(STable, {
+        props: {
+          columns: filterableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        slots: customFilterSlots,
+        attachTo: document.body
+      });
+
+      await wrapper.get('[data-testid="filter-option-Linus"]').trigger('click');
+
+      expect(wrapper.emitted('update:filterState')?.[0]?.[0]).toEqual({
+        name: {
+          values: ['Linus']
+        }
+      });
+      expect(wrapper.findAll('tbody tr')).toHaveLength(1);
+      expect(wrapper.get('tbody').text()).toContain('Linus');
+      expect(wrapper.get('tbody').text()).not.toContain('Ada');
       wrapper.unmount();
     });
   });
@@ -297,10 +496,7 @@ describe('STable', () => {
         }
       }
 
-      const cleanup = setupMock(
-        'ResizeObserver',
-        TestResizeObserver as unknown as typeof ResizeObserver
-      );
+      const cleanup = setupMock('ResizeObserver', TestResizeObserver as unknown as typeof ResizeObserver);
       const wrapper = mount(STable, {
         props: {
           virtual: true,
@@ -426,7 +622,8 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      await wrapper.get('input[aria-label="Filter Name"]').setValue('Child 2');
+      await openTableFilter(wrapper, 'Name');
+      await setTeleportedInputValue('Search filter options for Name', 'Child 2');
 
       expect(wrapper.text()).toContain('Ada');
       expect(wrapper.text()).toContain('Ada Child 2');
