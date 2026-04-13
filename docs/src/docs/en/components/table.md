@@ -2,7 +2,7 @@
 
 ## Overview
 
-A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, and more.
+A data table component for displaying row and column data. Supports grouped headers, sorting, filtering, selection, expansion, virtualization, and more.
 
 ## Usage
 
@@ -46,6 +46,7 @@ bordered
 striped
 grouped-sort-filter
 fixed-resizable
+virtualized
 single-selection
 multiple-selection
 footer
@@ -65,6 +66,10 @@ footer
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: 'Default filter state (uncontrolled).' },
   { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: 'Current column width state (controlled).' },
   { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: 'Default column width state (uncontrolled).' },
+  { name: 'virtual', type: 'boolean', default: 'false', description: 'Enables virtual row rendering.' },
+  { name: 'height', type: 'number | string', default: '-', description: 'Scrollable viewport height when virtualization is enabled.' },
+  { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: 'Estimated row height for the virtualizer.' },
+  { name: 'virtualizerOptions', type: 'VirtualizerOptions', default: '{}', description: 'Additional TanStack virtualizer options such as overscan.' },
   { name: 'size', type: 'ThemeSize', default: 'md', description: 'Table size.' },
   { name: 'bordered', type: `'all' | boolean`, default: 'false', description: 'Whether to show borders.' },
   { name: 'striped', type: 'boolean', default: 'false', description: 'Whether to show striped rows.' },

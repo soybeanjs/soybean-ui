@@ -1,6 +1,7 @@
 import { HTMLAttributes, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from 'vue';
 import type { UiClass } from '../../types';
 import type { CheckedState, Path, PathValue } from '../../types';
+import type { VirtualizerOptions } from '../virtualizer/types';
 
 export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {}
 
@@ -116,6 +117,10 @@ export interface TableProps<
   filterState?: TableFilterState;
   defaultColumnWidths?: TableColumnWidthState;
   columnWidths?: TableColumnWidthState;
+  virtual?: boolean;
+  height?: number | string;
+  estimateSize?: number | ((index: number, row: T) => number);
+  virtualizerOptions?: VirtualizerOptions;
   defaultExpanded?: R[];
   expanded?: R[];
   defaultExpandAll?: boolean;

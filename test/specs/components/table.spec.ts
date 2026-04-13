@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
 import STable from '../../../src/components/table/table.vue';
 import type { TableColumn } from '../../../src/components/table/types';
+import { MockResizeObserver, createMockResizeObserverEntry, delay, setupMock } from '../../shared';
 import { getA11yViolations } from '../../shared/a11y';
 
 interface TableRowData {
@@ -61,6 +62,12 @@ const data: TableRowData[] = [
   { id: 1, name: 'Ada', age: 32 },
   { id: 2, name: 'Linus', age: 28 }
 ];
+
+const virtualizedData: TableRowData[] = Array.from({ length: 100 }, (_, index) => ({
+  id: index + 1,
+  name: `User ${index + 1}`,
+  age: 20 + (index % 10)
+}));
 
 function mockRect(element: Element, rect: { x?: number; y?: number; width?: number; height?: number }) {
   Object.defineProperty(element, 'getBoundingClientRect', {
@@ -262,6 +269,84 @@ describe('STable', () => {
       expect(wrapper.emitted('update:columnWidths')?.at(-1)?.[0]).toEqual({ name: '180px' });
       expect(head.attributes('style')).toContain('width: 180px;');
       wrapper.unmount();
+    });
+  });
+
+  describe('virtualized rows', () => {
+    it('renders a virtualized subset and updates on scroll', async () => {
+      class TestResizeObserver extends MockResizeObserver {
+        static instance: MockResizeObserver | null = null;
+
+        constructor(callback: ResizeObserverCallback) {
+          super(callback);
+          TestResizeObserver.instance = this;
+        }
+      }
+
+      const cleanup = setupMock(
+        'ResizeObserver',
+        TestResizeObserver as unknown as typeof ResizeObserver
+      );
+      const wrapper = mount(STable, {
+        props: {
+          virtual: true,
+          height: 120,
+          estimateSize: 30,
+          columns: columns as TableColumn[],
+          data: virtualizedData,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const root = wrapper.element as HTMLElement;
+      let scrollTop = 0;
+
+      Object.defineProperties(root, {
+        clientHeight: { configurable: true, value: 120 },
+        scrollHeight: { configurable: true, value: 3000 },
+        scrollTop: {
+          configurable: true,
+          get: () => scrollTop,
+          set: value => {
+            scrollTop = value;
+          }
+        },
+        getBoundingClientRect: {
+          configurable: true,
+          value: () => ({
+            x: 0,
+            y: 0,
+            top: 0,
+            left: 0,
+            right: 400,
+            bottom: 120,
+            width: 400,
+            height: 120,
+            toJSON: () => ({})
+          })
+        }
+      });
+
+      TestResizeObserver.instance?.trigger([createMockResizeObserverEntry(root, { width: 400, height: 120 })]);
+
+      await delay(30);
+      await nextTick();
+
+      expect(wrapper.text()).toContain('User 1');
+      expect(wrapper.text()).not.toContain('User 100');
+      expect(wrapper.findAll('tbody tr').length).toBeLessThan(virtualizedData.length);
+
+      root.scrollTop = 900;
+      root.dispatchEvent(new Event('scroll'));
+
+      await delay(30);
+      await nextTick();
+
+      expect(wrapper.text()).toContain('User 30');
+
+      wrapper.unmount();
+      cleanup();
     });
   });
 

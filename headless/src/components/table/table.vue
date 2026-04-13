@@ -7,7 +7,7 @@
     M extends boolean = boolean
   "
 >
-import { useResizeObserver } from '@vueuse/core';
+import { useEventListener, useResizeObserver } from '@vueuse/core';
 import { computed, nextTick, onBeforeUnmount, onMounted, shallowRef, useId, watch } from 'vue';
 import type { ComponentPublicInstance, CSSProperties } from 'vue';
 import type { CheckedState } from '../../types';
@@ -74,6 +74,10 @@ const forwardedRootProps = useOmitProps(props, [
   'filterState',
   'defaultColumnWidths',
   'columnWidths',
+  'virtual',
+  'height',
+  'estimateSize',
+  'virtualizerOptions',
   'defaultExpanded',
   'expanded',
   'defaultExpandAll',
@@ -93,9 +97,12 @@ const uncontrolledExpanded = shallowRef(getDefaultExpanded());
 const uncontrolledSortState = shallowRef<TableSortState | undefined>(getDefaultSortState());
 const uncontrolledFilterState = shallowRef<TableFilterState>(getDefaultFilterState());
 const uncontrolledColumnWidths = shallowRef<TableColumnWidthState>(getDefaultColumnWidths());
+const tableRootTarget = shallowRef<HTMLElement | null>(null);
 const tableContentTarget = shallowRef<HTMLElement | null>(null);
 const measuredColumnWidths = shallowRef<Record<string, number>>({});
 const resizingColumnKey = shallowRef<string | null>(null);
+const virtualViewportHeight = shallowRef(0);
+const virtualScrollTop = shallowRef(0);
 const headCellElements: Record<string, HTMLElement | null> = {};
 
 watch(
@@ -176,6 +183,18 @@ const columnWidths = computed({
 
     emit('update:columnWidths', value);
   }
+});
+
+const isVirtual = computed(() => Boolean(props.virtual && props.height !== undefined));
+
+const tableRootStyle = computed<CSSProperties>(() => {
+  if (!isVirtual.value) {
+    return {};
+  }
+
+  return {
+    height: typeof props.height === 'number' ? `${props.height}px` : props.height
+  };
 });
 
 const {
@@ -264,6 +283,126 @@ const displayData = computed(() => {
   return sortTableData(filtered, column, sortState.value);
 });
 
+const virtualOverscan = computed(() => props.virtualizerOptions?.overscan ?? 8);
+
+const resolvedVirtualHeight = computed(() => {
+  if (virtualViewportHeight.value > 0) {
+    return virtualViewportHeight.value;
+  }
+
+  if (typeof props.height === 'number') {
+    return props.height;
+  }
+
+  const parsedHeight = Number.parseFloat(props.height ?? '');
+
+  return Number.isFinite(parsedHeight) ? parsedHeight : 0;
+});
+
+function getEstimatedRowSize(index: number, row: T) {
+  if (typeof props.estimateSize === 'function') {
+    return props.estimateSize(index, row);
+  }
+
+  return props.estimateSize ?? 40;
+}
+
+const virtualMeasurements = computed(() => {
+  let start = 0;
+
+  return displayData.value.map((row, index) => {
+    const size = getEstimatedRowSize(index, row);
+    const measurement = {
+      index,
+      start,
+      end: start + size
+    };
+
+    start += size;
+
+    return measurement;
+  });
+});
+
+const virtualRange = computed(() => {
+  if (!isVirtual.value) {
+    return {
+      startIndex: 0,
+      endIndex: displayData.value.length - 1
+    };
+  }
+
+  const viewportHeight = resolvedVirtualHeight.value;
+  const scrollTop = virtualScrollTop.value;
+  const measurements = virtualMeasurements.value;
+
+  if (measurements.length === 0) {
+    return {
+      startIndex: 0,
+      endIndex: -1
+    };
+  }
+
+  let startIndex = measurements.findIndex(measurement => measurement.end > scrollTop);
+
+  if (startIndex < 0) {
+    startIndex = Math.max(measurements.length - 1, 0);
+  }
+
+  let endIndex = startIndex;
+
+  while (endIndex < measurements.length && measurements[endIndex].start < scrollTop + viewportHeight) {
+    endIndex += 1;
+  }
+
+  startIndex = Math.max(0, startIndex - virtualOverscan.value);
+  endIndex = Math.min(measurements.length - 1, endIndex + virtualOverscan.value);
+
+  return {
+    startIndex,
+    endIndex
+  };
+});
+
+const virtualPaddingStart = computed(() => {
+  if (!isVirtual.value || virtualRange.value.startIndex < 0) {
+    return 0;
+  }
+
+  return virtualMeasurements.value[virtualRange.value.startIndex]?.start ?? 0;
+});
+
+const virtualPaddingEnd = computed(() => {
+  if (!isVirtual.value || virtualRange.value.endIndex < 0) {
+    return 0;
+  }
+
+  const totalSize = virtualMeasurements.value.at(-1)?.end ?? 0;
+  const end = virtualMeasurements.value[virtualRange.value.endIndex]?.end ?? 0;
+
+  return Math.max(totalSize - end, 0);
+});
+
+const visibleRows = computed(() => {
+  if (!isVirtual.value) {
+    return displayData.value.map((item, index) => ({
+      index,
+      item
+    }));
+  }
+
+  const { startIndex, endIndex } = virtualRange.value;
+
+  if (endIndex < startIndex) {
+    return [];
+  }
+
+  return displayData.value.slice(startIndex, endIndex + 1).map((item, offset) => ({
+    index: startIndex + offset,
+    item
+  }));
+});
+
 const hasExpandColumn = computed(() => {
   return leafColumns.value.some(column => column.type === 'expand');
 });
@@ -332,6 +471,12 @@ function resolveElement(element: Element | ComponentPublicInstance | null | unde
 
 function setTableContentRef(element: Element | ComponentPublicInstance | null) {
   tableContentTarget.value = resolveElement(element);
+}
+
+function setTableRootRef(element: Element | ComponentPublicInstance | null) {
+  tableRootTarget.value = resolveElement(element);
+  virtualViewportHeight.value = tableRootTarget.value?.clientHeight ?? 0;
+  virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
 }
 
 function setHeadCellRef(key: string, element: Element | ComponentPublicInstance | null) {
@@ -573,6 +718,16 @@ function getBodyCellStyle(column: TableProps<T, R, M>['columns'][number]) {
   return style;
 }
 
+function getSpacerCellStyle(height: number) {
+  const style: CSSProperties = {
+    height: `${height}px`,
+    padding: 0,
+    border: 0
+  };
+
+  return style;
+}
+
 function updateColumnWidth(key: string, width: number) {
   const nextWidth = `${Math.round(width)}px`;
 
@@ -659,12 +814,34 @@ watch([leafColumns, columnWidths], () => {
   nextTick(syncMeasuredColumnWidths);
 }, { deep: true, flush: 'post' });
 
+watch([displayData, isVirtual], () => {
+  nextTick(() => {
+    virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
+  });
+}, { deep: true, flush: 'post' });
+
 useResizeObserver(tableContentTarget, () => {
   syncMeasuredColumnWidths();
 });
 
+useResizeObserver(tableRootTarget, entries => {
+  virtualViewportHeight.value = entries[0]?.contentRect.height ?? tableRootTarget.value?.clientHeight ?? 0;
+});
+
+useEventListener(tableRootTarget, 'scroll', event => {
+  const target = event.target;
+
+  if (target instanceof HTMLElement) {
+    virtualScrollTop.value = target.scrollTop;
+  }
+});
+
 onMounted(() => {
-  nextTick(syncMeasuredColumnWidths);
+  nextTick(() => {
+    syncMeasuredColumnWidths();
+    virtualViewportHeight.value = tableRootTarget.value?.clientHeight ?? resolvedVirtualHeight.value;
+    virtualScrollTop.value = tableRootTarget.value?.scrollTop ?? 0;
+  });
 });
 
 onBeforeUnmount(() => {
@@ -673,7 +850,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <TableRoot v-bind="forwardedRootProps">
+  <TableRoot :ref="setTableRootRef" v-bind="forwardedRootProps" :style="tableRootStyle">
     <TableContent :ref="setTableContentRef" v-bind="contentProps">
       <TableHeader v-bind="headerProps">
         <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
@@ -779,7 +956,10 @@ onBeforeUnmount(() => {
         </TableRow>
       </TableHeader>
       <TableBody v-bind="bodyProps">
-        <template v-for="(item, index) in displayData" :key="rowKey(item)">
+        <TableRow v-if="isVirtual && virtualPaddingStart > 0" aria-hidden="true">
+          <td :colspan="Math.max(leafColumns.length, 1)" :style="getSpacerCellStyle(virtualPaddingStart)" />
+        </TableRow>
+        <template v-for="{ item, index } in visibleRows" :key="rowKey(item)">
           <TableRow v-bind="rowProps" data-row>
             <template v-for="column in leafColumns" :key="getTableColumnKey(column)">
               <TableCell
@@ -866,6 +1046,9 @@ onBeforeUnmount(() => {
             </TableCell>
           </TableRow>
         </template>
+        <TableRow v-if="isVirtual && virtualPaddingEnd > 0" aria-hidden="true">
+          <td :colspan="Math.max(leafColumns.length, 1)" :style="getSpacerCellStyle(virtualPaddingEnd)" />
+        </TableRow>
       </TableBody>
       <TableFooter v-if="$slots.footer" v-bind="footerProps">
         <slot name="footer" :column-size="leafColumns.length" />

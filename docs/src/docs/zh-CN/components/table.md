@@ -2,7 +2,7 @@
 
 ## 概述
 
-用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开等功能。
+用于展示行列数据的数据表格组件。支持分组表头、排序、筛选、选择、展开、虚拟滚动等功能。
 
 ## 用法
 
@@ -45,6 +45,7 @@ bordered
 striped
 grouped-sort-filter
 fixed-resizable
+virtualized
 single-selection
 multiple-selection
 expandable
@@ -66,6 +67,10 @@ sizes
   { name: 'defaultFilterState', type: 'TableFilterState', default: '-', description: '默认筛选状态（非受控）。' },
   { name: 'columnWidths', type: 'TableColumnWidthState', default: '-', description: '当前列宽状态（受控）。' },
   { name: 'defaultColumnWidths', type: 'TableColumnWidthState', default: '-', description: '默认列宽状态（非受控）。' },
+  { name: 'virtual', type: 'boolean', default: 'false', description: '是否启用虚拟行渲染。' },
+  { name: 'height', type: 'number | string', default: '-', description: '启用虚拟滚动时的视口高度。' },
+  { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: '虚拟滚动的行高预估值。' },
+  { name: 'virtualizerOptions', type: 'VirtualizerOptions', default: '{}', description: '额外的 TanStack 虚拟滚动配置，例如 overscan。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '表格尺寸。' },
   { name: 'bordered', type: `'all' | boolean`, default: `false`, description: '是否显示边框。' },
   { name: 'striped', type: 'boolean', default: 'false', description: '是否显示斑马纹。' },
