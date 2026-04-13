@@ -1,14 +1,17 @@
 import { shallowRef, watch } from 'vue';
 import { useTable as _useTable } from '@soybeanjs/hooks';
+import { getTableColumnKey, isTableGroupColumn } from '@soybeanjs/headless/table';
 import type { UseTableOptions as _UseTableOptions, TableColumnCheck } from '@soybeanjs/hooks';
-import type { TableColumn, TableColumnType } from './types';
+import type { TableBaseData, TableColumn, TableColumnType } from './types';
 
-export type UseTableOptions<ResponseData, ApiData, Pagination extends boolean> = Omit<
+export type UseTableOptions<ResponseData, ApiData extends TableBaseData, Pagination extends boolean> = Omit<
   _UseTableOptions<ResponseData, ApiData, TableColumn<ApiData>, Pagination>,
   'pagination' | 'getColumnChecks' | 'getColumns'
 >;
 
-export function useTable<ResponseData, ApiData>(options: UseTableOptions<ResponseData, ApiData, false>) {
+export function useTable<ResponseData, ApiData extends TableBaseData>(
+  options: UseTableOptions<ResponseData, ApiData, false>
+) {
   const result = _useTable<ResponseData, ApiData, TableColumn<ApiData>, false>({
     ...options,
     getColumnChecks,
@@ -18,7 +21,11 @@ export function useTable<ResponseData, ApiData>(options: UseTableOptions<Respons
   return result;
 }
 
-export type UsePaginatedTableOptions<ResponseData, ApiData> = UseTableOptions<ResponseData, ApiData, true> & {
+export type UsePaginatedTableOptions<ResponseData, ApiData extends TableBaseData> = UseTableOptions<
+  ResponseData,
+  ApiData,
+  true
+> & {
   page?: number;
   pageSize?: number;
   /**
@@ -33,7 +40,9 @@ export type UsePaginatedTableOptions<ResponseData, ApiData> = UseTableOptions<Re
   fetchOnPaginationChange?: boolean;
 };
 
-export function usePaginatedTable<ResponseData, ApiData>(options: UsePaginatedTableOptions<ResponseData, ApiData>) {
+export function usePaginatedTable<ResponseData, ApiData extends TableBaseData>(
+  options: UsePaginatedTableOptions<ResponseData, ApiData>
+) {
   const { page: _page = 1, pageSize: _pageSize = 10, fetchOnPaginationChange = true, onFetched } = options;
 
   const page = shallowRef(_page);
@@ -82,11 +91,17 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
   const cols: TableColumnCheck[] = [];
 
   columns.forEach(col => {
-    const { type, dataIndex, title, hidden } = col;
+    if (isTableGroupColumn(col)) {
+      cols.push(...getColumnChecks(col.children));
+      return;
+    }
 
-    if (type) return;
+    const { type, title, hidden } = col;
 
-    const key = dataIndex as string;
+    // Group columns are flattened above, so only leaf data columns participate in visibility checks.
+    if (type || !col.dataIndex) return;
+
+    const key = getTableColumnKey(col);
 
     const column: TableColumnCheck = {
       key,
@@ -103,37 +118,47 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
 }
 
 function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
-  const columnsMap = new Map<string, T>();
-
   const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
+  const checksMap = new Map(checks.map(check => [check.key, check]));
 
   columns.forEach((column, index) => {
     if (column.type) {
       typeColumnsMap.set(column.type, { column: column, index });
       return;
-    } else if (column.dataIndex) {
-      columnsMap.set(column.dataIndex, column);
     }
   });
 
-  const result: T[] = [];
+  return columns.reduce<T[]>((acc, column, index) => {
+    if (column.type) {
+      const typeColumn = typeColumnsMap.get(column.type);
 
-  checks
-    .filter(check => check.checked)
-    .forEach(check => {
-      const column = columnsMap.get(check.key);
-      if (column) {
-        result.push(column);
+      if (!typeColumn || typeColumn.index !== index) {
+        return acc;
       }
-    });
 
-  typeColumnsMap.forEach(({ column, index }) => {
-    if (index >= result.length) {
-      result.push(column);
-    } else {
-      result.splice(index, 0, column);
+      acc.push(column);
+      return acc;
     }
-  });
 
-  return result;
+    if (isTableGroupColumn(column)) {
+      const nextChildren = getColumns(column.children, checks);
+
+      if (nextChildren.length > 0) {
+        acc.push({
+          ...column,
+          children: nextChildren
+        });
+      }
+
+      return acc;
+    }
+
+    const check = checksMap.get(getTableColumnKey(column));
+
+    if (check?.checked !== false) {
+      acc.push(column);
+    }
+
+    return acc;
+  }, []);
 }

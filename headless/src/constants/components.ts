@@ -263,7 +263,7 @@ export const components = {
   ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: [
-    'Table',
+    'TableCompact',
     'TableRoot',
     'TableContent',
     'TableHeader',
