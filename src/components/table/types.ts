@@ -42,7 +42,7 @@ export interface TableProps<
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<TableExtendedUi>;
-  bordered?: boolean | 'all';
+  bordered?: boolean;
   striped?: boolean;
 }
 

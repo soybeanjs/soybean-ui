@@ -81,7 +81,7 @@ function updateKeyword(value: string | number | undefined) {
         v-for="option in filteredOptions"
         :key="option.value"
         :class="ui.filterOption"
-        :size="size"
+        :size="miniSize"
         :disabled="option.disabled"
         :model-value="isFilterOptionSelected(option.value)"
         :label="option.label"

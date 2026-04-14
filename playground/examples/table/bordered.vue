@@ -27,6 +27,5 @@ const data: TableData[] = [
   <div>
     <h3 class="playground-title">Bordered</h3>
     <STable :columns="columns" :data="data" :row-key="row => row.id" bordered />
-    <STable :columns="columns" :data="data" :row-key="row => row.id" bordered="all" class="mt-2" />
   </div>
 </template>

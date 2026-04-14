@@ -4,25 +4,28 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const tableVariants = tv({
   slots: {
-    root: 'relative overflow-auto rounded-md',
+    root: 'relative overflow-auto rounded-md bg-accent',
     content: 'min-w-full w-max border-spacing-0',
-    header: 'sticky top-0 left-0 z-10 bg-accent',
-    body: '',
-    footer: 'bg-accent font-medium',
-    row: 'bg-background data-[row]:hover:bg-accent transition-colors',
-    head: 'box-border text-foreground relative font-medium whitespace-nowrap bg-accent',
+    header: 'sticky top-0 left-0 z-10 [&>tr:last-child]:border-b-0',
+    body: [
+      '[&>tr:first-child>td:first-child]:rounded-tl-md [&>tr:first-child>td:last-child]:rounded-tr-md',
+      '[&>tr:last-child>td:first-child]:rounded-bl-md [&>tr:last-child>td:last-child]:rounded-br-md'
+    ],
+    footer: 'font-medium [&>tr:last-child]:border-b-0',
+    row: 'bg-background border-b hover:bg-primary-foreground transition-colors',
+    head: 'box-border bg-accent text-foreground relative font-medium whitespace-nowrap',
     cell: 'box-border whitespace-nowrap data-[fixed]:bg-background',
     fixed: [
       'relative',
-      'data-[fixed-side=left]:after:pointer-events-none data-[fixed-side=left]:after:absolute data-[fixed-side=left]:after:bottom-0 data-[fixed-side=left]:after:end-0 data-[fixed-side=left]:after:top-0 data-[fixed-side=left]:after:w-4 data-[fixed-side=left]:after:translate-x-full data-[fixed-side=left]:after:bg-gradient-to-r data-[fixed-side=left]:after:from-foreground/8 data-[fixed-side=left]:after:to-transparent data-[fixed-side=left]:after:content-[""]',
-      'data-[fixed-side=right]:before:pointer-events-none data-[fixed-side=right]:before:absolute data-[fixed-side=right]:before:bottom-0 data-[fixed-side=right]:before:start-0 data-[fixed-side=right]:before:top-0 data-[fixed-side=right]:before:w-4 data-[fixed-side=right]:before:-translate-x-full data-[fixed-side=right]:before:bg-gradient-to-l data-[fixed-side=right]:before:from-foreground/8 data-[fixed-side=right]:before:to-transparent data-[fixed-side=right]:before:content-[""]'
+      'data-[fixed-side=left]:after:pointer-events-none data-[fixed-side=left]:after:absolute data-[fixed-side=left]:after:bottom-0 data-[fixed-side=left]:after:end-0 data-[fixed-side=left]:after:top-0 data-[fixed-side=left]:after:w-4 data-[fixed-side=left]:after:translate-x-full data-[fixed-side=left]:after:bg-gradient-to-r data-[fixed-side=left]:after:from-foreground/8 data-[fixed-side=left]:after:to-transparent data-[fixed-side=left]:after:content-empty',
+      'data-[fixed-side=right]:before:pointer-events-none data-[fixed-side=right]:before:absolute data-[fixed-side=right]:before:bottom-0 data-[fixed-side=right]:before:start-0 data-[fixed-side=right]:before:top-0 data-[fixed-side=right]:before:w-4 data-[fixed-side=right]:before:-translate-x-full data-[fixed-side=right]:before:bg-gradient-to-l data-[fixed-side=right]:before:from-foreground/8 data-[fixed-side=right]:before:to-transparent data-[fixed-side=right]:before:content-empty'
     ],
     resizeHandle: [
-      'absolute end-0 top-1/2 h-[calc(100%-0.75rem)] w-3 -translate-y-1/2 rounded bg-transparent',
-      'cursor-col-resize border-none p-0 touch-none select-none',
+      'absolute end-0 top-1/2 w-3 h-2/3 -translate-y-1/2 rounded bg-transparent',
+      'cursor-col-resize border-none touch-none select-none',
       'after:bg-border hover:after:bg-primary data-[resizing]:after:bg-primary focus-visible:after:bg-primary',
       'focus-visible:outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
-      'after:absolute after:bottom-0 after:end-0 after:top-0 after:w-px after:rounded-full after:content-[""]'
+      'after:absolute after:bottom-0 after:end-0 after:top-0 after:w-px after:rounded-full after:content-empty'
     ],
     treeCell: 'flex min-w-0 items-center gap-1',
     treeToggle: '',
@@ -53,7 +56,7 @@ export const tableVariants = tv({
   variants: {
     size: {
       xs: {
-        root: 'text-2xs',
+        root: 'px-0.75 pb-0.75 text-2xs',
         caption: 'py-2',
         head: 'h-8 px-1.5',
         cell: 'p-1.5',
@@ -67,7 +70,7 @@ export const tableVariants = tv({
         filterCount: 'text-3xs leading-4'
       },
       sm: {
-        root: 'text-xs',
+        root: 'px-0.875 pb-0.875 text-xs',
         caption: 'py-2.5',
         head: 'h-9 px-1.75',
         cell: 'p-1.75',
@@ -81,7 +84,7 @@ export const tableVariants = tv({
         filterCount: 'text-2xs leading-5'
       },
       md: {
-        root: 'text-sm',
+        root: 'px-1 pb-1 text-sm',
         caption: 'py-3',
         head: 'h-10 px-2',
         cell: 'p-2',
@@ -95,7 +98,7 @@ export const tableVariants = tv({
         filterCount: 'text-xs leading-6'
       },
       lg: {
-        root: 'text-base',
+        root: 'px-1.25 pb-1.25 text-base',
         caption: 'py-3.5',
         head: 'h-12 px-2.5',
         cell: 'p-2.5',
@@ -109,7 +112,7 @@ export const tableVariants = tv({
         filterCount: 'text-sm leading-7'
       },
       xl: {
-        root: 'text-lg',
+        root: 'px-1.5 pb-1.5 text-lg',
         caption: 'py-4',
         head: 'h-14 px-3',
         cell: 'p-3',
@@ -123,7 +126,7 @@ export const tableVariants = tv({
         filterCount: 'text-base leading-8'
       },
       '2xl': {
-        root: 'text-xl',
+        root: 'px-2 pb-2 text-xl',
         caption: 'py-4.5',
         head: 'h-16 px-3.5',
         cell: 'p-3.5',
@@ -138,21 +141,8 @@ export const tableVariants = tv({
       }
     },
     bordered: {
-      all: {
-        root: 'border border-border',
-        header: '[&>tr:first-child>th]:border-t-0',
-        body: '[&>tr:last-child>td]:border-b-0',
-        footer: '[&>tr:last-child>td]:border-b-0',
-        head: 'border border-border first:border-l-0 last:border-r-0',
-        cell: 'border border-border first:border-l-0 last:border-r-0'
-      },
       true: {
-        root: 'border border-border',
-        row: 'border-b last:border-b-0'
-      },
-      false: {
-        footer: '[&>tr]:last:border-b-0 border-t',
-        row: 'border-b'
+        cell: 'border-l border-border first:border-l-0'
       }
     },
     striped: {
@@ -163,7 +153,6 @@ export const tableVariants = tv({
   },
   defaultVariants: {
     size: 'md',
-    bordered: false,
     striped: false
   }
 });
