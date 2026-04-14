@@ -27,10 +27,10 @@ const data: TableData[] = [
   <div>
     <h3 class="playground-title">Sizes</h3>
     <div class="space-y-4">
-      <STable size="xs" :columns="columns" :data="data" :row-key="row => row.id" bordered="all" />
-      <STable size="sm" :columns="columns" :data="data" :row-key="row => row.id" bordered="all" />
-      <STable size="md" :columns="columns" :data="data" :row-key="row => row.id" bordered="all" />
-      <STable size="lg" :columns="columns" :data="data" :row-key="row => row.id" bordered="all" />
+      <STable size="xs" :columns="columns" :data="data" :row-key="row => row.id" />
+      <STable size="sm" :columns="columns" :data="data" :row-key="row => row.id" />
+      <STable size="md" :columns="columns" :data="data" :row-key="row => row.id" />
+      <STable size="lg" :columns="columns" :data="data" :row-key="row => row.id" />
     </div>
   </div>
 </template>

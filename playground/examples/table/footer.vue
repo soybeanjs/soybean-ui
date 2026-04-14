@@ -26,7 +26,7 @@ const data: TableData[] = [
 <template>
   <div>
     <h3 class="playground-title">With Footer</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id" bordered="all">
+    <STable :columns="columns" :data="data" :row-key="row => row.id">
       <template #footer="{ columnSize }">
         <STableRow>
           <STableCell :colspan="columnSize" align="center">
