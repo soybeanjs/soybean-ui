@@ -13,16 +13,19 @@ describe('SProgress', () => {
 
   describe('rendering', () => {
     it('renders progressbar semantics and custom class', () => {
-      const wrapper = mount({
-        components: { SConfigProvider, SProgress },
-        template: `
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SProgress },
+          template: `
           <SConfigProvider>
             <SProgress class="my-progress" :model-value="45" />
           </SConfigProvider>
         `
-      }, {
-        attachTo: document.body
-      });
+        },
+        {
+          attachTo: document.body
+        }
+      );
 
       const progressbar = wrapper.get('[role="progressbar"]');
 
@@ -34,16 +37,19 @@ describe('SProgress', () => {
 
   describe('accessibility', () => {
     it('has no a11y violations', async () => {
-      const wrapper = mount({
-        components: { SConfigProvider, SProgress },
-        template: `
+      const wrapper = mount(
+        {
+          components: { SConfigProvider, SProgress },
+          template: `
           <SConfigProvider>
             <SProgress :model-value="45" />
           </SConfigProvider>
         `
-      }, {
-        attachTo: document.body
-      });
+        },
+        {
+          attachTo: document.body
+        }
+      );
 
       const violations = await getA11yViolations(wrapper.element);
 
@@ -61,16 +67,19 @@ describe('useLoadingBar', () => {
   it('shows the loading bar on start and hides it after finish', async () => {
     vi.useFakeTimers();
 
-    const wrapper = mount({
-      components: { SConfigProvider },
-      template: `
+    const wrapper = mount(
+      {
+        components: { SConfigProvider },
+        template: `
         <SConfigProvider>
           <div />
         </SConfigProvider>
       `
-    }, {
-      attachTo: document.body
-    });
+      },
+      {
+        attachTo: document.body
+      }
+    );
 
     const loadingBar = useLoadingBar();
 
@@ -99,16 +108,19 @@ describe('useLoadingBar', () => {
   it('switches to the error color when error is called', async () => {
     vi.useFakeTimers();
 
-    const wrapper = mount({
-      components: { SConfigProvider },
-      template: `
+    const wrapper = mount(
+      {
+        components: { SConfigProvider },
+        template: `
         <SConfigProvider>
           <div />
         </SConfigProvider>
       `
-    }, {
-      attachTo: document.body
-    });
+      },
+      {
+        attachTo: document.body
+      }
+    );
 
     const loadingBar = useLoadingBar();
 

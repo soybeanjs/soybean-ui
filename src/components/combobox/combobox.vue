@@ -74,7 +74,8 @@ const inputProps = computed(() => ({
   ...props.inputProps,
   controlProps: {
     ...props.inputProps?.controlProps,
-    'aria-label': props.inputProps?.controlProps?.['aria-label'] ?? props.searchPlaceholder ?? props.placeholder ?? 'Search'
+    'aria-label':
+      props.inputProps?.controlProps?.['aria-label'] ?? props.searchPlaceholder ?? props.placeholder ?? 'Search'
   },
   placeholder: props.searchPlaceholder ?? props.inputProps?.placeholder,
   autofocus: props.inputProps?.autofocus ?? true
@@ -98,12 +99,7 @@ provideComboboxUi(ui);
   <ComboboxRoot v-bind="forwardedProps" v-on="listeners">
     <ComboboxTrigger v-bind="triggerProps">
       <slot name="trigger-leading" />
-      <slot
-        name="trigger-value"
-        :model-value="modelValue"
-        :selected-labels="selectedLabels"
-        :slot-text="triggerText"
-      >
+      <slot name="trigger-value" :model-value="modelValue" :selected-labels="selectedLabels" :slot-text="triggerText">
         <span class="grow truncate text-left">{{ triggerText }}</span>
       </slot>
       <slot name="trigger-trailing" />
@@ -112,7 +108,14 @@ provideComboboxUi(ui);
       </slot>
     </ComboboxTrigger>
     <ComboboxPortal v-bind="portalProps">
-      <ComboboxContent v-bind="contentProps" @close-auto-focus="emit('closeAutoFocus', $event)" @escape-key-down="emit('escapeKeyDown', $event)" @pointer-down-outside="emit('pointerDownOutside', $event)" @focus-outside="emit('focusOutside', $event)" @interact-outside="emit('interactOutside', $event)">
+      <ComboboxContent
+        v-bind="contentProps"
+        @close-auto-focus="emit('closeAutoFocus', $event)"
+        @escape-key-down="emit('escapeKeyDown', $event)"
+        @pointer-down-outside="emit('pointerDownOutside', $event)"
+        @focus-outside="emit('focusOutside', $event)"
+        @interact-outside="emit('interactOutside', $event)"
+      >
         <ComboboxInput v-bind="inputProps">
           <template #leading="slotProps">
             <slot name="input-leading" v-bind="slotProps">

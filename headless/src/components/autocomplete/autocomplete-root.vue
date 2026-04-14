@@ -24,10 +24,7 @@ const props = withDefaults(defineProps<AutocompleteRootProps>(), {
 const emit = defineEmits<AutocompleteRootEmits>();
 
 defineSlots<{
-  default?: (props: {
-    open: boolean | undefined;
-    modelValue: string | undefined;
-  }) => any;
+  default?: (props: { open: boolean | undefined; modelValue: string | undefined }) => any;
 }>();
 
 const modelValue = useControllableState(

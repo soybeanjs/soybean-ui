@@ -5,11 +5,7 @@ import { useArrowNavigation, useControllableState, useForwardElement } from '../
 import { isFormControl, removeAt, transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { VisuallyHiddenInput } from '../visually-hidden';
-import {
-  provideCollectionContext,
-  provideTagsInputRootContext,
-  useTagsInputUi
-} from './context';
+import { provideCollectionContext, provideTagsInputRootContext, useTagsInputUi } from './context';
 import type { TagsInputAcceptableValue, TagsInputRootEmits, TagsInputRootProps } from './types';
 
 defineOptions({
@@ -139,8 +135,10 @@ const onInputKeydown = (event: KeyboardEvent) => {
 
   const lastElement = elements.at(-1);
   const cursorAtStart = target.selectionStart === 0 && target.selectionEnd === 0;
-  const isArrowRight = (event.key === 'ArrowRight' && dir.value === 'ltr') || (event.key === 'ArrowLeft' && dir.value === 'rtl');
-  const isArrowLeft = (event.key === 'ArrowLeft' && dir.value === 'ltr') || (event.key === 'ArrowRight' && dir.value === 'rtl');
+  const isArrowRight =
+    (event.key === 'ArrowRight' && dir.value === 'ltr') || (event.key === 'ArrowLeft' && dir.value === 'rtl');
+  const isArrowLeft =
+    (event.key === 'ArrowLeft' && dir.value === 'ltr') || (event.key === 'ArrowRight' && dir.value === 'rtl');
 
   switch (event.key) {
     case 'Delete':
@@ -153,7 +151,10 @@ const onInputKeydown = (event: KeyboardEvent) => {
       if (selectedElement.value) {
         const items = getItems();
         const index = items.findIndex(item => item.element === selectedElement.value);
-        const nextElement = selectedElement.value === lastElement ? elements.at(elements.indexOf(selectedElement.value) - 1) : elements.at(elements.indexOf(selectedElement.value) + 1);
+        const nextElement =
+          selectedElement.value === lastElement
+            ? elements.at(elements.indexOf(selectedElement.value) - 1)
+            : elements.at(elements.indexOf(selectedElement.value) + 1);
         onRemoveValue(index);
         selectedElement.value = nextElement;
         event.preventDefault();
@@ -231,6 +232,12 @@ provideTagsInputRootContext({
   >
     <slot :model-value="modelValue" />
 
-    <VisuallyHiddenInput v-if="formControl && name" :name="name" :value="modelValue" :required="required" :disabled="disabled" />
+    <VisuallyHiddenInput
+      v-if="formControl && name"
+      :name="name"
+      :value="modelValue"
+      :required="required"
+      :disabled="disabled"
+    />
   </div>
 </template>

@@ -2,14 +2,7 @@
 import { SSpinner } from '@soybeanjs/ui';
 import type { ThemeSize } from '@soybeanjs/ui';
 
-const sizes = [
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-  '2xl'
-] satisfies ThemeSize[];
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] satisfies ThemeSize[];
 </script>
 
 <template>

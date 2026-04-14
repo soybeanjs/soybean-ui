@@ -21,7 +21,7 @@ const forwardedProps = useOmitProps(props, ['opts', 'plugins', 'orientation', 'd
 const cls = useCarouselUi('root');
 const dir = useDirection(() => props.dir);
 const orientation = computed(() => props.orientation);
-const ariaLabel = computed(() => (props['aria-labelledby'] ? undefined : props['aria-label'] ?? 'Carousel'));
+const ariaLabel = computed(() => (props['aria-labelledby'] ? undefined : (props['aria-label'] ?? 'Carousel')));
 const resolvedTabindex = computed(() => props.tabindex ?? 0);
 const emblaOptions = shallowRef<CarouselOptions>({});
 const emblaPlugins = shallowRef<CarouselPlugins>([]);

@@ -1,9 +1,4 @@
-import type {
-  ClassValue,
-  CarouselRootEmits,
-  CarouselRootProps,
-  CarouselUi
-} from '@soybeanjs/headless';
+import type { ClassValue, CarouselRootEmits, CarouselRootProps, CarouselUi } from '@soybeanjs/headless';
 
 export interface CarouselProps extends Omit<CarouselRootProps, 'class'> {
   class?: ClassValue;

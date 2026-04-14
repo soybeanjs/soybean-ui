@@ -24,7 +24,14 @@ const emit = defineEmits<SplitterPanelEmits>();
 
 const cls = useSplitterUi('panel');
 
-const forwardedProps = useOmitProps(props, ['defaultSize', 'collapsible', 'collapsedSize', 'maxSize', 'minSize', 'order']);
+const forwardedProps = useOmitProps(props, [
+  'defaultSize',
+  'collapsible',
+  'collapsedSize',
+  'maxSize',
+  'minSize',
+  'order'
+]);
 
 const panelId = `soybean-splitter-panel-${useId()}`;
 
@@ -50,7 +57,9 @@ const order = computed(() => props.order);
 
 const style = computed(() => getPanelStyle(panelId));
 const size = computed(() => getPanelSize(panelId));
-const dataState = computed(() => (collapsible.value ? (isPanelCollapsed(panelId) ? 'collapsed' : 'expanded') : undefined));
+const dataState = computed(() =>
+  collapsible.value ? (isPanelCollapsed(panelId) ? 'collapsed' : 'expanded') : undefined
+);
 const isCollapsed = computed(() => isPanelCollapsed(panelId));
 const isExpanded = computed(() => !isCollapsed.value);
 
@@ -111,6 +120,12 @@ defineExpose({
     :data-panel-collapsible="collapsible || undefined"
     :data-state="dataState"
   >
-    <slot :is-collapsed="isCollapsed" :is-expanded="isExpanded" :collapse="collapse" :expand="expand" :resize="resize" />
+    <slot
+      :is-collapsed="isCollapsed"
+      :is-expanded="isExpanded"
+      :collapse="collapse"
+      :expand="expand"
+      :resize="resize"
+    />
   </Primitive>
 </template>

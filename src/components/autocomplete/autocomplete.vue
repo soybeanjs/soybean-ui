@@ -106,9 +106,15 @@ const fuseOptions = computed(() =>
 
 const searchItems = computed(() => getAutocompleteSearchOptions(props.items));
 
-const { results } = useFuse(computed(() => modelValue.value), searchItems, fuseOptions);
+const { results } = useFuse(
+  computed(() => modelValue.value),
+  searchItems,
+  fuseOptions
+);
 
-const filteredItems = computed(() => getAutocompleteItemOptions(results.value.map(result => result.item as AutocompleteSearchOptionData)));
+const filteredItems = computed(() =>
+  getAutocompleteItemOptions(results.value.map(result => result.item as AutocompleteSearchOptionData))
+);
 
 const ui = computed(() => {
   const variants = autocompleteVariants({

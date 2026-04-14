@@ -126,11 +126,7 @@ describe('SStepper', () => {
     it('prevents interaction when a step is disabled', async () => {
       const wrapper = mount(SStepper, {
         props: {
-          items: [
-            { title: 'Account' },
-            { title: 'Profile', disabled: true },
-            { title: 'Review' }
-          ],
+          items: [{ title: 'Account' }, { title: 'Profile', disabled: true }, { title: 'Review' }],
           modelValue: 1,
           linear: false
         },

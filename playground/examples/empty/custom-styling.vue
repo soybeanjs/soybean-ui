@@ -13,7 +13,7 @@ import { SButton, SEmpty } from '@soybeanjs/ui';
       media-variant="icon"
       :ui="{
         media: 'bg-primary/10 text-primary',
-        title: 'text-primary',
+        title: 'text-primary'
       }"
     >
       <SButton>Start activity</SButton>

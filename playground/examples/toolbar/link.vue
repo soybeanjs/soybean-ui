@@ -9,7 +9,9 @@ import { SToolbar, SToolbarButton, SToolbarLink, SToolbarSeparator } from '@soyb
       <SToolbarButton>Back</SToolbarButton>
       <SToolbarSeparator />
       <SToolbarLink href="https://soybeanjs.cn" target="_blank" rel="noopener noreferrer">Website</SToolbarLink>
-      <SToolbarLink href="https://github.com/soybeanjs/soybean-ui" target="_blank" rel="noopener noreferrer">GitHub</SToolbarLink>
+      <SToolbarLink href="https://github.com/soybeanjs/soybean-ui" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </SToolbarLink>
     </SToolbar>
   </div>
 </template>

@@ -47,6 +47,10 @@ export interface HoverCardRootContext extends HoverCardRootContextParams {
   onDismiss: () => void;
 }
 
-export type { PopperArrowProps as HoverCardArrowProps, PopperUiSlot as HoverCardUiSlot, PopperUi as HoverCardUi } from '../popper/types';
+export type {
+  PopperArrowProps as HoverCardArrowProps,
+  PopperUiSlot as HoverCardUiSlot,
+  PopperUi as HoverCardUi
+} from '../popper/types';
 export type { PortalProps as HoverCardPortalProps } from '../portal/types';
 export type { PopperAnchorProps as HoverCardTriggerProps } from '../popper/types';

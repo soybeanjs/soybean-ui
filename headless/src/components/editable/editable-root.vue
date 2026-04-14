@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
-import { useControllableState, useFocusOutside, useForwardElement, useOmitProps, usePointerdownOutside } from '../../composables';
+import {
+  useControllableState,
+  useFocusOutside,
+  useForwardElement,
+  useOmitProps,
+  usePointerdownOutside
+} from '../../composables';
 import { isFormControl, transformPropsToContext } from '../../shared';
 import { useDirection } from '../config-provider/context';
 import { Primitive } from '../primitive';
@@ -123,12 +129,20 @@ function handleDismiss() {
   cancel();
 }
 
-const pointerDownOutside = usePointerdownOutside(rootElement, () => {
-  handleDismiss();
-}, isEditing);
-const focusOutside = useFocusOutside(rootElement, () => {
-  handleDismiss();
-}, isEditing);
+const pointerDownOutside = usePointerdownOutside(
+  rootElement,
+  () => {
+    handleDismiss();
+  },
+  isEditing
+);
+const focusOutside = useFocusOutside(
+  rootElement,
+  () => {
+    handleDismiss();
+  },
+  isEditing
+);
 
 const { dataDisabled, dataReadonly, dataState } = provideEditableRootContext({
   ...transformPropsToContext(props, [

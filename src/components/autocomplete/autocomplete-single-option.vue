@@ -3,7 +3,11 @@ import { AutocompleteItem, AutocompleteItemIndicator, AutocompleteSeparator } fr
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import Icon from '../icon/icon.vue';
 import { useAutocompleteExtraUi } from './context';
-import type { AutocompleteSingleOptionData, AutocompleteSingleOptionEmits, AutocompleteSingleOptionProps } from './types';
+import type {
+  AutocompleteSingleOptionData,
+  AutocompleteSingleOptionEmits,
+  AutocompleteSingleOptionProps
+} from './types';
 
 defineOptions({
   name: 'SAutocompleteSingleOption',
@@ -20,7 +24,12 @@ const ui = useAutocompleteExtraUi();
 </script>
 
 <template>
-  <AutocompleteItem v-bind="forwardedProps" :value="item.value" :disabled="item.disabled" @select="emit('select', item)">
+  <AutocompleteItem
+    v-bind="forwardedProps"
+    :value="item.value"
+    :disabled="item.disabled"
+    @select="emit('select', item)"
+  >
     <slot name="item-leading" :item="item">
       <Icon v-if="item.icon" :icon="item.icon" :class="ui?.itemIcon" />
     </slot>

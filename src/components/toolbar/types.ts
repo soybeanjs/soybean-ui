@@ -1,8 +1,4 @@
-import type {
-  ClassValue,
-  ToolbarRootProps as HeadlessToolbarRootProps,
-  ToolbarUi
-} from '@soybeanjs/headless';
+import type { ClassValue, ToolbarRootProps as HeadlessToolbarRootProps, ToolbarUi } from '@soybeanjs/headless';
 
 export interface ToolbarProps extends HeadlessToolbarRootProps {
   class?: ClassValue;

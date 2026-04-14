@@ -11,9 +11,7 @@ import { SButton, SEmpty, SIcon } from '@soybeanjs/ui';
           <SIcon class="size-6" icon="lucide:search-x" />
         </div>
       </template>
-      <template #description>
-        Try broadening the criteria or resetting the filters to see more results.
-      </template>
+      <template #description>Try broadening the criteria or resetting the filters to see more results.</template>
       <SButton variant="outline">Reset filters</SButton>
     </SEmpty>
   </div>

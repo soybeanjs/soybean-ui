@@ -2,7 +2,12 @@ import { nextTick, ref } from 'vue';
 import { mount } from '@vue/test-utils';
 import type { VueWrapper } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import { ScrollAreaRoot, ScrollAreaScrollbar, ScrollAreaThumb, ScrollAreaViewport } from '@soybeanjs/headless/scroll-area';
+import {
+  ScrollAreaRoot,
+  ScrollAreaScrollbar,
+  ScrollAreaThumb,
+  ScrollAreaViewport
+} from '@soybeanjs/headless/scroll-area';
 import { getScrollPosition, setViewportScroll } from '../../../headless/src/components/scroll-area/shared';
 import SScrollArea from '../../../src/components/scroll-area/scroll-area.vue';
 import { getA11yViolations } from '../../shared/a11y';

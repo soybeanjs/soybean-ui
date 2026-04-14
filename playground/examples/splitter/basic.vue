@@ -4,7 +4,9 @@
     <div class="h-48 rd-md border">
       <SSplitterGroup>
         <SSplitterPanel :default-size="25">
-          <div class="flex h-full items-center justify-center bg-muted/40 text-sm text-muted-foreground">Navigation</div>
+          <div class="flex h-full items-center justify-center bg-muted/40 text-sm text-muted-foreground">
+            Navigation
+          </div>
         </SSplitterPanel>
         <SSplitterResizeHandle with-handle aria-label="Resize navigation and content panels" />
         <SSplitterPanel :default-size="50">

@@ -15,8 +15,16 @@ const props = defineProps<ComboboxItemProps>();
 const emit = defineEmits<ComboboxItemEmits>();
 
 const { isMultiple } = useListboxRootContext('ComboboxItem');
-const { filterSearch, filterState, ignoreFilter, inputElement, onOpenChange, allItems, allGroups, resetSearchTermOnSelect } =
-  useComboboxRootContext('ComboboxItem');
+const {
+  filterSearch,
+  filterState,
+  ignoreFilter,
+  inputElement,
+  onOpenChange,
+  allItems,
+  allGroups,
+  resetSearchTermOnSelect
+} = useComboboxRootContext('ComboboxItem');
 const groupContext = useListboxGroupContext();
 
 const itemId = `soybean-combobox-item-${useId()}`;

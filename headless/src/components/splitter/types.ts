@@ -106,7 +106,10 @@ export interface SplitterPanelRecord {
 
 export type SplitterPanelRegistration = Omit<SplitterPanelRecord, 'registrationIndex'>;
 
-export interface SplitterGroupContext extends PropsToContext<SplitterGroupProps, 'direction' | 'dir' | 'keyboardResizeBy'> {
+export interface SplitterGroupContext extends PropsToContext<
+  SplitterGroupProps,
+  'direction' | 'dir' | 'keyboardResizeBy'
+> {
   groupId: string;
   layout: ShallowRef<number[]>;
   rootElement: ShallowRef<HTMLElement | undefined>;

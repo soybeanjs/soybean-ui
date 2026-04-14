@@ -9,13 +9,7 @@
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import {
-  STagsInput,
-  STagsInputInput,
-  STagsInputItem,
-  STagsInputItemDelete,
-  STagsInputItemText
-} from '@soybeanjs/ui';
+import { STagsInput, STagsInputInput, STagsInputItem, STagsInputItemDelete, STagsInputItemText } from '@soybeanjs/ui';
 
 const tags = ref(['Vue', 'TypeScript']);
 </script>

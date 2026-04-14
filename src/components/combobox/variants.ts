@@ -19,7 +19,8 @@ export const comboboxVariants = tv({
     ],
     viewport: 'overflow-x-hidden overflow-y-auto',
     inputRoot: 'group flex items-center border-b',
-    inputControl: 'flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+    inputControl:
+      'flex w-full rounded-md bg-transparent outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
     group: 'overflow-hidden text-foreground',
     groupLabel: 'font-medium text-muted-foreground',
     item: [

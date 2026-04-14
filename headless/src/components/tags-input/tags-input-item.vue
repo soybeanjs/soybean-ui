@@ -2,12 +2,7 @@
 import { computed, shallowRef } from 'vue';
 import { useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
-import {
-  provideTagsInputItemContext,
-  useCollectionItem,
-  useTagsInputRootContext,
-  useTagsInputUi
-} from './context';
+import { provideTagsInputItemContext, useCollectionItem, useTagsInputRootContext, useTagsInputUi } from './context';
 import type { TagsInputAcceptableValue, TagsInputItemProps } from './types';
 
 defineOptions({
@@ -21,7 +16,9 @@ const props = withDefaults(defineProps<TagsInputItemProps<T>>(), {
 const cls = useTagsInputUi('item');
 
 const { selectedElement, disabled: rootDisabled, displayValue } = useTagsInputRootContext('TagsInputItem');
-const { itemElement, itemProps, setItemElement } = useCollectionItem(() => ({ value: props.value as TagsInputAcceptableValue }));
+const { itemElement, itemProps, setItemElement } = useCollectionItem(() => ({
+  value: props.value as TagsInputAcceptableValue
+}));
 
 const forwardedProps = useOmitProps(props, ['value', 'disabled'], itemProps);
 

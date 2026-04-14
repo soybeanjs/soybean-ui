@@ -1,4 +1,12 @@
-import type { PropsToContext, ClassValue, ProgressIndicatorProps, ProgressRootEmits, ProgressRootProps, ProgressState, ProgressUi } from '@soybeanjs/headless';
+import type {
+  PropsToContext,
+  ClassValue,
+  ProgressIndicatorProps,
+  ProgressRootEmits,
+  ProgressRootProps,
+  ProgressState,
+  ProgressUi
+} from '@soybeanjs/headless';
 import type { ShallowRef } from 'vue';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
@@ -43,7 +51,8 @@ export interface LoadingBarProviderContext extends Pick<UseLoadingBarReturn, 'cl
   color: ShallowRef<ThemeColor>;
 }
 
-export interface LoadingBarProviderContextParams
-  extends PropsToContext<Required<Pick<LoadingBarProviderProps, 'color' | 'errorColor'>>> {}
+export interface LoadingBarProviderContextParams extends PropsToContext<
+  Required<Pick<LoadingBarProviderProps, 'color' | 'errorColor'>>
+> {}
 
 export type { ProgressState };

@@ -121,13 +121,13 @@ const handleClick = () => {
 
 ### `useLoadingBar` Methods
 
-| Method | Description |
-| --- | --- |
-| `start()` | Show the loading bar and start the automatic trickle animation. |
+| Method       | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| `start()`    | Show the loading bar and start the automatic trickle animation. |
 | `set(value)` | Update the loading progress with a value between `0` and `100`. |
-| `finish()` | Complete the loading bar with the provider color, then hide it. |
-| `error()` | Complete the loading bar with the error color, then hide it. |
-| `clear()` | Hide the loading bar immediately and reset its state. |
+| `finish()`   | Complete the loading bar with the provider color, then hide it. |
+| `error()`    | Complete the loading bar with the error color, then hide it.    |
+| `clear()`    | Hide the loading bar immediately and reset its state.           |
 
 ### `SLoadingBar` Props
 

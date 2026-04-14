@@ -9,7 +9,8 @@ export const emptyVariants = tv({
     media: 'mb-2 flex shrink-0 items-center justify-center [&_svg]:pointer-events-none [&_svg]:shrink-0',
     content: 'flex w-full min-w-0 max-w-sm flex-col items-center gap-4 text-balance text-sm',
     title: 'm-0 text-lg font-medium tracking-tight',
-    description: 'm-0 text-sm/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary'
+    description:
+      'm-0 text-sm/relaxed text-muted-foreground [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary'
   },
   variants: {
     mediaVariant: {

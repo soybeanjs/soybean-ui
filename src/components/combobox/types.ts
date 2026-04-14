@@ -90,6 +90,4 @@ export interface ComboboxProps<M extends boolean = false> extends ComboboxRootPr
   separatorProps?: ComboboxSeparatorProps;
 }
 
-export type ComboboxEmits<M extends boolean = false> = ComboboxRootEmits<M> &
-  ComboboxContentEmits &
-  ComboboxItemEmits;
+export type ComboboxEmits<M extends boolean = false> = ComboboxRootEmits<M> & ComboboxContentEmits & ComboboxItemEmits;

@@ -70,8 +70,10 @@ export type TagsInputCollectionItemData = {
   value: TagsInputAcceptableValue;
 };
 
-export interface TagsInputRootContext
-  extends PropsToContext<TagsInputRootProps, 'id' | 'addOnPaste' | 'addOnTab' | 'addOnBlur' | 'disabled' | 'delimiter' | 'max'> {
+export interface TagsInputRootContext extends PropsToContext<
+  TagsInputRootProps,
+  'id' | 'addOnPaste' | 'addOnTab' | 'addOnBlur' | 'disabled' | 'delimiter' | 'max'
+> {
   modelValue: ShallowRef<TagsInputAcceptableValue[]>;
   selectedElement: ShallowRef<HTMLElement | undefined>;
   isInvalidInput: ShallowRef<boolean>;

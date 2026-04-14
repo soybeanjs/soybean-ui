@@ -6,12 +6,10 @@ import type { ComputedRef, HTMLAttributes, Ref, ShallowRef } from 'vue';
 import type { DataOrientation, Direction, UiClass } from '../../types';
 
 export type CarouselApi = NonNullable<EmblaCarouselVueType[1]['value']>;
-export type CarouselOptions = NonNullable<Parameters<typeof emblaCarouselVue>[0]> extends MaybeRef<infer Value>
-  ? Value
-  : never;
-export type CarouselPlugins = NonNullable<Parameters<typeof emblaCarouselVue>[1]> extends MaybeRef<infer Value>
-  ? Value
-  : never;
+export type CarouselOptions =
+  NonNullable<Parameters<typeof emblaCarouselVue>[0]> extends MaybeRef<infer Value> ? Value : never;
+export type CarouselPlugins =
+  NonNullable<Parameters<typeof emblaCarouselVue>[1]> extends MaybeRef<infer Value> ? Value : never;
 
 export interface CarouselRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 'onSelect'> {
   opts?: CarouselOptions;

@@ -13,11 +13,7 @@ import {
   DialogTrigger,
   provideDialogUi
 } from '@soybeanjs/headless';
-import {
-  useControllableState,
-  useForwardListeners,
-  useOmitProps
-} from '@soybeanjs/headless/composables';
+import { useControllableState, useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants, provideSizeContext } from '@/theme';
 import { bottomSheetVariants } from './variants';
 import type { BottomSheetEmits, BottomSheetProps } from './types';
@@ -93,8 +89,8 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { content: props.class });
 });
 
-const hasHeader = computed(
-  () => Boolean(slots.header || slots.title || slots.description || props.title || props.description)
+const hasHeader = computed(() =>
+  Boolean(slots.header || slots.title || slots.description || props.title || props.description)
 );
 
 const dragPointerId = shallowRef<number>();
@@ -112,9 +108,7 @@ const contentStyle = computed<CSSProperties | undefined>(() => {
   return {
     transform: `translate3d(0, ${dragOffset.value}px, 0)`,
     userSelect: 'none',
-    transition: isDragging.value
-      ? 'none'
-      : `transform ${DRAG_RESET_DURATION}ms cubic-bezier(0.32, 0.72, 0, 1)`
+    transition: isDragging.value ? 'none' : `transform ${DRAG_RESET_DURATION}ms cubic-bezier(0.32, 0.72, 0, 1)`
   };
 });
 
@@ -248,8 +242,8 @@ function onPointerUp(event: PointerEvent) {
   const height = contentElement?.getBoundingClientRect().height ?? 0;
   const timeElapsed = Math.max(Date.now() - dragStartTime.value, MINIMUM_DRAG_DURATION);
   const velocity = dragOffset.value / timeElapsed;
-  const shouldClose = height > 0
-    && (dragOffset.value >= height * props.closeThreshold || velocity >= VELOCITY_CLOSE_THRESHOLD);
+  const shouldClose =
+    height > 0 && (dragOffset.value >= height * props.closeThreshold || velocity >= VELOCITY_CLOSE_THRESHOLD);
 
   finishDrag(shouldClose);
 }

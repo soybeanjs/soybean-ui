@@ -16,9 +16,7 @@ export interface EditablePlaceholder {
 }
 
 export interface EditableRootProps
-  extends PrimitiveProps,
-    FormFieldCommonProps,
-    /** @vue-ignore */ Omit<HTMLAttributes, 'onSubmit' | 'placeholder'> {
+  extends PrimitiveProps, FormFieldCommonProps, /** @vue-ignore */ Omit<HTMLAttributes, 'onSubmit' | 'placeholder'> {
   /** The default value of the editable field. */
   defaultValue?: string;
   /** The controlled value of the editable field. */
@@ -104,13 +102,6 @@ export interface EditableRootContext extends Omit<EditableRootContextParams, 'di
   dataState: ComputedRef<EditableViewState>;
 }
 
-export type EditableUiSlot =
-  | 'root'
-  | 'area'
-  | 'preview'
-  | 'input'
-  | 'editTrigger'
-  | 'submitTrigger'
-  | 'cancelTrigger';
+export type EditableUiSlot = 'root' | 'area' | 'preview' | 'input' | 'editTrigger' | 'submitTrigger' | 'cancelTrigger';
 
 export type EditableUi = UiClass<EditableUiSlot>;

@@ -115,7 +115,12 @@ initInputId();
 </script>
 
 <template>
-  <InputRoot v-slot="{ clear }" v-bind="forwardedProps" :model-value="modelValue" @update:model-value="onUpdateModelValue">
+  <InputRoot
+    v-slot="{ clear }"
+    v-bind="forwardedProps"
+    :model-value="modelValue"
+    @update:model-value="onUpdateModelValue"
+  >
     <slot name="leading" :clear="clear" />
     <InputControl
       v-bind="controlProps"

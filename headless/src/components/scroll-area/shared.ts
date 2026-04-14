@@ -73,10 +73,13 @@ function detectRtlScrollType(doc: Document) {
   dummy.appendChild(child);
   doc.body.appendChild(dummy);
 
-  const rtlScrollType: RtlScrollType = dummy.scrollLeft > 0 ? 'default' : (() => {
-    dummy.scrollLeft = 1;
-    return dummy.scrollLeft === 0 ? 'negative' : 'reverse';
-  })();
+  const rtlScrollType: RtlScrollType =
+    dummy.scrollLeft > 0
+      ? 'default'
+      : (() => {
+          dummy.scrollLeft = 1;
+          return dummy.scrollLeft === 0 ? 'negative' : 'reverse';
+        })();
 
   doc.body.removeChild(dummy);
   rtlScrollTypeCache.set(doc, rtlScrollType);

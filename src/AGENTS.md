@@ -29,6 +29,7 @@ src/
 ## VARIANTS
 
 `tailwind-variants` `tv()` definitions per component:
+
 - `base` / `slots` — default classes
 - `variants` — `color`, `size`, `variant` axes
 - `compoundVariants` — conditional combos

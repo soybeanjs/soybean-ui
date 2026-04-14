@@ -8,13 +8,7 @@ Carousel is built on top of Embla Carousel and lets users browse a sequence of c
 
 ```vue
 <script setup lang="ts">
-import {
-  SCarousel,
-  SCarouselContent,
-  SCarouselItem,
-  SCarouselNext,
-  SCarouselPrevious
-} from '@soybeanjs/ui';
+import { SCarousel, SCarouselContent, SCarouselItem, SCarouselNext, SCarouselPrevious } from '@soybeanjs/ui';
 </script>
 
 <template>

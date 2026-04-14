@@ -15,15 +15,8 @@ defineOptions({
 
 defineProps<HoverCardPopupProps>();
 
-const {
-  dataState,
-  hasSelectionRef,
-  isPointerDownOnPopupRef,
-  onDismiss,
-  onOpen,
-  onPopupElementChange,
-  triggerElement
-} = useHoverCardRootContext('HoverCardPopup');
+const { dataState, hasSelectionRef, isPointerDownOnPopupRef, onDismiss, onOpen, onPopupElementChange, triggerElement } =
+  useHoverCardRootContext('HoverCardPopup');
 
 const [popupElement, setPopupElement] = useForwardElement(onPopupElementChange);
 

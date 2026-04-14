@@ -2,11 +2,7 @@
 import type { SelectEvent } from '@soybeanjs/headless';
 import { ComboboxGroup, ComboboxGroupLabel, ComboboxSeparator } from '@soybeanjs/headless';
 import SComboboxSingleOption from './combobox-single-option.vue';
-import type {
-  ComboboxGroupOptionEmits,
-  ComboboxGroupOptionProps,
-  ComboboxSingleOptionData
-} from './types';
+import type { ComboboxGroupOptionEmits, ComboboxGroupOptionProps, ComboboxSingleOptionData } from './types';
 
 defineOptions({
   name: 'SComboboxGroupOption'

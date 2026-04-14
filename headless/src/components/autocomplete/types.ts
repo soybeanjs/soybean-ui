@@ -45,8 +45,10 @@ export type AutocompleteRootEmits = {
   highlight: [payload?: AutocompleteHighlightPayload];
 };
 
-export interface AutocompleteRootContext
-  extends PropsToContext<AutocompleteRootProps, 'dir' | 'disabled' | 'highlightOnHover' | 'openOnClick' | 'openOnFocus'> {
+export interface AutocompleteRootContext extends PropsToContext<
+  AutocompleteRootProps,
+  'dir' | 'disabled' | 'highlightOnHover' | 'openOnClick' | 'openOnFocus'
+> {
   modelValue: ShallowRef<string | undefined>;
   open: ShallowRef<boolean | undefined>;
   inputElement: ShallowRef<HTMLInputElement | undefined>;
@@ -102,6 +104,4 @@ export type AutocompleteUiSlot =
 
 export type AutocompleteUi = UiClass<AutocompleteUiSlot>;
 
-export type {
-  PortalProps as AutocompletePortalProps
-};
+export type { PortalProps as AutocompletePortalProps };

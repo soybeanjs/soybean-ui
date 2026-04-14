@@ -12,9 +12,8 @@ withDefaults(defineProps<HoverCardTriggerProps>(), {
   as: 'button'
 });
 
-const { dataState, isPointerInTransitRef, onTriggerElementChange, onOpen, onClose } = useHoverCardRootContext(
-  'HoverCardTrigger'
-);
+const { dataState, isPointerInTransitRef, onTriggerElementChange, onOpen, onClose } =
+  useHoverCardRootContext('HoverCardTrigger');
 
 const [_, setTriggerElement] = useForwardElement(onTriggerElementChange);
 

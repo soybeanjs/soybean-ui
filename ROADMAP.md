@@ -41,7 +41,7 @@ English | [中文](#中文版)
 | PinInput         | shadcn-vue (InputOTP)                                 |
 | Menubar          | shadcn-vue, Radix Vue                                 |
 | Toggle           | shadcn-vue, Radix Vue                                 |
-| ToggleGroup      | ✅ shadcn-vue, Radix Vue                               |
+| ToggleGroup      | ✅ shadcn-vue, Radix Vue                              |
 | Table (UI layer) | headless exists; `src/components/table` still missing |
 | DataTable        | shadcn-vue (TanStack Table integration)               |
 | ColorPicker      | Element Plus, Naive UI                                |
@@ -209,7 +209,7 @@ Current: Zod + Valibot validation supported, but missing advanced patterns.
 | PinInput       | shadcn-vue（InputOTP）                     |
 | Menubar        | shadcn-vue、Radix Vue                      |
 | Toggle         | shadcn-vue、Radix Vue                      |
-| ToggleGroup    | ✅ shadcn-vue、Radix Vue                    |
+| ToggleGroup    | ✅ shadcn-vue、Radix Vue                   |
 | Table（UI 层） | headless 已有，`src/components/table` 仍缺 |
 | DataTable      | shadcn-vue（集成 TanStack Table）          |
 | ColorPicker    | Element Plus、Naive UI                     |

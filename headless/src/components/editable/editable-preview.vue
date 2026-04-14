@@ -12,8 +12,18 @@ const props = withDefaults(defineProps<EditablePreviewProps>(), {
   as: 'span'
 });
 
-const { activationMode, dataDisabled, dataReadonly, dataState, disabled, edit, isEditing, isEmpty, modelValue, placeholder } =
-  useEditableRootContext('EditablePreview');
+const {
+  activationMode,
+  dataDisabled,
+  dataReadonly,
+  dataState,
+  disabled,
+  edit,
+  isEditing,
+  isEmpty,
+  modelValue,
+  placeholder
+} = useEditableRootContext('EditablePreview');
 
 const cls = useEditableUi('preview');
 

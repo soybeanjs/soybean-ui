@@ -15,9 +15,7 @@ import { SScrollArea } from '@soybeanjs/ui';
       }"
     >
       <div class="grid gap-3 p-4 pr-7 sm:grid-cols-2">
-        <div v-for="index in 16" :key="index" class="rounded-lg bg-muted p-3 text-sm">
-          Custom block {{ index }}
-        </div>
+        <div v-for="index in 16" :key="index" class="rounded-lg bg-muted p-3 text-sm">Custom block {{ index }}</div>
       </div>
     </SScrollArea>
   </div>

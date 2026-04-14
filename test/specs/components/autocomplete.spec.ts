@@ -109,7 +109,9 @@ describe('SAutocomplete', () => {
       });
       await nextTick();
 
-      const option = Array.from(document.body.querySelectorAll('[role="option"]')).find(node => node.textContent?.includes('Banana'));
+      const option = Array.from(document.body.querySelectorAll('[role="option"]')).find(node =>
+        node.textContent?.includes('Banana')
+      );
       expect(option).toBeTruthy();
       await new DOMWrapper(option as Element).trigger('click');
       await flushPromises();

@@ -41,12 +41,14 @@ export interface ToolbarLinkProps extends LinkProps {}
 
 export interface ToolbarSeparatorProps extends Omit<SeparatorRootProps, 'orientation'> {}
 
-export interface ToolbarToggleGroupProps<M extends boolean = false, T extends DefinedValue = string>
-  extends BaseToggleGroupRootProps<M, T> {}
+export interface ToolbarToggleGroupProps<
+  M extends boolean = false,
+  T extends DefinedValue = string
+> extends BaseToggleGroupRootProps<M, T> {}
 
-export type ToolbarToggleGroupEmits<M extends boolean = false, T extends DefinedValue = string> = BaseToggleGroupRootEmits<
-  M,
-  T
->;
+export type ToolbarToggleGroupEmits<
+  M extends boolean = false,
+  T extends DefinedValue = string
+> = BaseToggleGroupRootEmits<M, T>;
 
 export interface ToolbarToggleItemProps<T extends DefinedValue = string> extends BaseToggleGroupItemProps<T> {}

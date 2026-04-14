@@ -3,14 +3,17 @@ import { useContext, useUiContext } from '../../composables';
 import { useDirection } from '../config-provider/context';
 import type { StepperItemContext, StepperItemContextParams, StepperRootContext, StepperUiSlot } from './types';
 
-export const [provideStepperRootContext, useStepperRootContext] = useContext('StepperRoot', (params: StepperRootContext) => {
-  const dir = useDirection(params.dir);
+export const [provideStepperRootContext, useStepperRootContext] = useContext(
+  'StepperRoot',
+  (params: StepperRootContext) => {
+    const dir = useDirection(params.dir);
 
-  return {
-    ...params,
-    dir
-  };
-});
+    return {
+      ...params,
+      dir
+    };
+  }
+);
 
 export const [provideStepperItemContext, useStepperItemContext] = useContext(
   'StepperItem',

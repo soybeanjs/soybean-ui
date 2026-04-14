@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useAttrs } from 'vue';
-import {
-  ComboboxItem,
-  ComboboxItemIndicator,
-  ComboboxSeparator
-} from '@soybeanjs/headless';
+import { ComboboxItem, ComboboxItemIndicator, ComboboxSeparator } from '@soybeanjs/headless';
 import Icon from '../icon/icon.vue';
 import type { ComboboxSingleOptionEmits, ComboboxSingleOptionProps } from './types';
 

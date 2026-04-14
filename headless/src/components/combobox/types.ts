@@ -13,9 +13,7 @@ import type { PrimitiveProps } from '../primitive/types';
 import type { PopoverPositionerProps, PopoverPositionerEmits, PopoverPopupProps } from '../popover/types';
 
 export interface ComboboxRootProps<M extends boolean = false>
-  extends Omit<ListboxRootProps<M>, 'orientation'>,
-    SelectionProps<M>,
-    /** @vue-ignore */ HTMLAttributes {
+  extends Omit<ListboxRootProps<M>, 'orientation'>, SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {
   open?: boolean;
   defaultOpen?: boolean;
   dir?: Direction;

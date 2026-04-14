@@ -41,24 +41,22 @@ const style = computed<CSSProperties>(() => ({
 const contentStyle = computed<CSSProperties>(() => ({
   minWidth: scrollbarXEnabled.value ? 'fit-content' : undefined
 }));
-
 </script>
 
 <template>
-  <div :ref="setViewportElement" data-soybean-scroll-area-viewport="" v-bind="viewportProps" :class="cls" :style="style">
+  <div
+    :ref="setViewportElement"
+    data-soybean-scroll-area-viewport=""
+    v-bind="viewportProps"
+    :class="cls"
+    :style="style"
+  >
     <Primitive :ref="setContentElement" :as="as" :as-child="asChild" :style="contentStyle">
       <slot />
     </Primitive>
   </div>
   <Primitive as="style" :nonce="nonce">
-    [data-soybean-scroll-area-viewport] {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    -webkit-overflow-scrolling: touch;
-    }
-
-    [data-soybean-scroll-area-viewport]::-webkit-scrollbar {
-    display: none;
-    }
+    [data-soybean-scroll-area-viewport] { scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling:
+    touch; } [data-soybean-scroll-area-viewport]::-webkit-scrollbar { display: none; }
   </Primitive>
 </template>

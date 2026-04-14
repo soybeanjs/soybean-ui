@@ -14,8 +14,18 @@ const props = withDefaults(defineProps<TagsInputInputProps>(), {
 
 const cls = useTagsInputUi('input');
 
-const { id, addOnPaste, addOnBlur, addOnTab, delimiter, disabled, isInvalidInput, onAddValue, onInputKeydown, selectedElement } =
-  useTagsInputRootContext('TagsInputInput');
+const {
+  id,
+  addOnPaste,
+  addOnBlur,
+  addOnTab,
+  delimiter,
+  disabled,
+  isInvalidInput,
+  onAddValue,
+  onInputKeydown,
+  selectedElement
+} = useTagsInputRootContext('TagsInputInput');
 
 const isComposing = ref(false);
 const isNativeInput = computed(() => !props.asChild && (props.as === undefined || props.as === 'input'));
@@ -82,7 +92,8 @@ const handlePaste = (event: ClipboardEvent) => {
 
   const value = clipboardData.getData('text');
   const delimiterValue = delimiter.value ?? ',';
-  const values = typeof delimiterValue === 'string' ? value.split(delimiterValue) : value.split(new RegExp(delimiterValue));
+  const values =
+    typeof delimiterValue === 'string' ? value.split(delimiterValue) : value.split(new RegExp(delimiterValue));
 
   values.forEach(item => {
     const normalizedValue = item.trim();

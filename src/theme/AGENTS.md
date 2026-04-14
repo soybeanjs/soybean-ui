@@ -4,14 +4,14 @@ Design tokens, class merging, and size context for the styled layer.
 
 ## FILES
 
-| File | Role |
-|---|---|
-| `types.ts` | `ThemeColor` (8 colors: primary, destructive, success, warning, info, carbon, secondary, accent) and `ThemeSize` (xs, sm, md, lg, xl, 2xl) |
-| `merge.ts` | `cn(...inputs)` = `twMerge(clsx(inputs))` — the universal class merge utility |
-| `config.ts` | `themeSizeMap` (px values per size), `themeSizeRatio` (relative to md=16px) |
-| `context.ts` | `provideSizeContext` / `useSizeContext` — inject size from `ConfigProvider` down to children |
-| `shared.ts` | `mergeSlotVariants(variants, ...uis)` — merges tv() output with UI context classes; `mergeUi(target, ...sources)` — merges class maps |
-| `index.ts` | Barrel re-export |
+| File         | Role                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `types.ts`   | `ThemeColor` (8 colors: primary, destructive, success, warning, info, carbon, secondary, accent) and `ThemeSize` (xs, sm, md, lg, xl, 2xl) |
+| `merge.ts`   | `cn(...inputs)` = `twMerge(clsx(inputs))` — the universal class merge utility                                                              |
+| `config.ts`  | `themeSizeMap` (px values per size), `themeSizeRatio` (relative to md=16px)                                                                |
+| `context.ts` | `provideSizeContext` / `useSizeContext` — inject size from `ConfigProvider` down to children                                               |
+| `shared.ts`  | `mergeSlotVariants(variants, ...uis)` — merges tv() output with UI context classes; `mergeUi(target, ...sources)` — merges class maps      |
+| `index.ts`   | Barrel re-export                                                                                                                           |
 
 ## KEY CONCEPTS
 

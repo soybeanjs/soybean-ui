@@ -90,12 +90,20 @@ export type AutocompleteOptionEmits<T extends AutocompleteSingleOptionData = Aut
   select: [item: T];
 };
 
-export type AutocompleteExtraUiSlot = 'inputIcon' | 'inputClearable' | 'triggerIcon' | 'itemText' | 'itemIcon' | 'empty';
+export type AutocompleteExtraUiSlot =
+  | 'inputIcon'
+  | 'inputClearable'
+  | 'triggerIcon'
+  | 'itemText'
+  | 'itemIcon'
+  | 'empty';
 
 export type AutocompleteUi = UiClass<AutocompleteUiSlot | AutocompleteExtraUiSlot>;
 
-export interface AutocompleteProps<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData>
-  extends Omit<AutocompleteRootProps, 'defaultValue' | 'modelValue'> {
+export interface AutocompleteProps<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> extends Omit<
+  AutocompleteRootProps,
+  'defaultValue' | 'modelValue'
+> {
   /** Root class. */
   class?: ClassValue;
   size?: ThemeSize;
@@ -123,9 +131,10 @@ export interface AutocompleteProps<T extends AutocompleteSingleOptionData = Auto
   separatorProps?: AutocompleteSeparatorProps;
 }
 
-export type AutocompleteEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> = AutocompleteRootEmits & {
-  select: [item: T];
-};
+export type AutocompleteEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
+  AutocompleteRootEmits & {
+    select: [item: T];
+  };
 
 export type {
   AutocompleteRootProps,

@@ -3,7 +3,15 @@ import { computed, shallowRef, useId } from 'vue';
 import { useForwardElement, useOmitProps } from '../../composables';
 import { Primitive } from '../primitive';
 import { provideSplitterGroupContext, useSplitterUi } from './context';
-import { areLayoutsEqual, getDefaultLayout, getPanelBounds, getPanelState, normalizeLayout, resizeLayoutPair, sortPanels } from './shared';
+import {
+  areLayoutsEqual,
+  getDefaultLayout,
+  getPanelBounds,
+  getPanelState,
+  normalizeLayout,
+  resizeLayoutPair,
+  sortPanels
+} from './shared';
 import type { SplitterGroupEmits, SplitterGroupProps, SplitterPanelRecord, SplitterPanelRegistration } from './types';
 
 defineOptions({
@@ -91,9 +99,10 @@ function setLayout(nextLayout: number[]) {
 
 function refreshLayout() {
   const currentSizesById = layout.value.length === orderedPanels.value.length ? getLayoutByPanelId() : undefined;
-  const fallbackLayout = props.defaultLayout?.length === orderedPanels.value.length
-    ? props.defaultLayout
-    : getDefaultLayout(orderedPanels.value, currentSizesById);
+  const fallbackLayout =
+    props.defaultLayout?.length === orderedPanels.value.length
+      ? props.defaultLayout
+      : getDefaultLayout(orderedPanels.value, currentSizesById);
   const nextLayout = normalizeLayout(fallbackLayout, orderedPanels.value);
 
   setLayout(nextLayout);

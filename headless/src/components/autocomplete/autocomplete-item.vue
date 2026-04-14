@@ -26,13 +26,7 @@ const onSelect = (event: SelectEvent<string>) => {
 </script>
 
 <template>
-  <ListboxItem
-    :as="as"
-    :as-child="asChild"
-    :value="value"
-    :disabled="disabled"
-    @select="onSelect"
-  >
+  <ListboxItem :as="as" :as-child="asChild" :value="value" :disabled="disabled" @select="onSelect">
     <slot />
   </ListboxItem>
 </template>

@@ -7,7 +7,9 @@
           <div class="flex h-full items-center justify-center bg-muted/40 text-sm text-muted-foreground">Inspector</div>
         </SSplitterPanel>
         <SSplitterResizeHandle aria-label="Resize inspector and editor panels">
-          <div class="bg-background z-10 flex h-5 w-5 items-center justify-center rounded-full border border-border shadow-sm">
+          <div
+            class="bg-background z-10 flex h-5 w-5 items-center justify-center rounded-full border border-border shadow-sm"
+          >
             <span class="i-lucide-grip-vertical text-xs text-muted-foreground" aria-hidden="true" />
           </div>
         </SSplitterResizeHandle>

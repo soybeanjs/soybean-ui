@@ -1,11 +1,7 @@
 <script setup lang="ts" generic="T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData">
 import { AutocompleteGroup, AutocompleteGroupLabel, AutocompleteSeparator } from '@soybeanjs/headless';
 import SAutocompleteSingleOption from './autocomplete-single-option.vue';
-import type {
-  AutocompleteGroupOptionEmits,
-  AutocompleteGroupOptionProps,
-  AutocompleteSingleOptionData
-} from './types';
+import type { AutocompleteGroupOptionEmits, AutocompleteGroupOptionProps, AutocompleteSingleOptionData } from './types';
 
 defineOptions({
   name: 'SAutocompleteGroupOption'

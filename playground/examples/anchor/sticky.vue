@@ -17,7 +17,12 @@ const sections = createAnchorSections('sticky-');
       <div class="grid items-start gap-4 lg:grid-cols-[240px_minmax(0,1fr)]">
         <SAnchor :items="items" :get-container="getContainer" :offset-top="16" />
         <div class="space-y-6">
-          <section v-for="section in sections" :id="section.id" :key="section.id" class="min-h-56 rounded-lg border border-border/80 bg-card p-4">
+          <section
+            v-for="section in sections"
+            :id="section.id"
+            :key="section.id"
+            class="min-h-56 rounded-lg border border-border/80 bg-card p-4"
+          >
             <h4 class="text-base font-medium">{{ section.title }}</h4>
             <p class="mt-2 text-sm text-muted-foreground">The anchor stays pinned inside the scrolling container.</p>
           </section>

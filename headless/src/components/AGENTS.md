@@ -4,12 +4,12 @@
 
 ## ANATOMY (per component dir)
 
-| File | Role |
-|---|---|
-| `types.ts` | Props/emits interfaces. Extends from `../types/` globals. |
+| File         | Role                                                                                             |
+| ------------ | ------------------------------------------------------------------------------------------------ |
+| `types.ts`   | Props/emits interfaces. Extends from `../types/` globals.                                        |
 | `context.ts` | `useContext()` call → `[provideX, injectX]`. Optional `useUiContext()` → `[provideXUi, useXUi]`. |
-| `*.vue` | SFCs: `<ComponentName>Root`, `<ComponentName>Trigger`, `<ComponentName>Content`, etc. |
-| `index.ts` | Barrel: re-exports SFCs + types. Named exports only, no default. |
+| `*.vue`      | SFCs: `<ComponentName>Root`, `<ComponentName>Trigger`, `<ComponentName>Content`, etc.            |
+| `index.ts`   | Barrel: re-exports SFCs + types. Named exports only, no default.                                 |
 
 ## NAMING
 
@@ -20,6 +20,7 @@
 ## STATE SHARING
 
 Components use `provide`/`inject` via `useContext` factory:
+
 - Root provides state → children inject
 - `injectX('ChildName')` throws if used outside provider (enforces nesting)
 - UI token injection: `provideXUi(ui)` from styled layer → `useXUi('slot')` in headless
