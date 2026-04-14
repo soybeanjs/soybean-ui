@@ -11,7 +11,7 @@ import { computed, useSlots } from 'vue';
 import { provideTableUi, TableCompact } from '@soybeanjs/headless';
 import type { TableSortOrder } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
+import { mergeSlotVariants, miniSizeMap } from '@/theme';
 import SButtonIcon from '../button/button-icon.vue';
 import SCheckbox from '../checkbox/checkbox.vue';
 import TableFilterPopover from './table-filter-popover.vue';
@@ -47,11 +47,13 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
-provideTableUi(ui);
+const miniSize = computed(() => miniSizeMap[props.size ?? 'md']);
 
 const getOrderIcon = (sortOrder?: TableSortOrder) => {
   return sortOrder === 'asc' ? 'lucide:arrow-up' : sortOrder === 'desc' ? 'lucide:arrow-down' : 'lucide:arrow-up-down';
 };
+
+provideTableUi(ui);
 </script>
 
 <template>
@@ -86,6 +88,7 @@ const getOrderIcon = (sortOrder?: TableSortOrder) => {
       <SButtonIcon
         :icon="getOrderIcon(sortOrder)"
         :class="ui.sortTrigger"
+        :size="miniSize"
         :aria-label="ariaLabel"
         :data-sorted="sortOrder ? '' : undefined"
         @click="toggleSort()"
@@ -111,6 +114,7 @@ const getOrderIcon = (sortOrder?: TableSortOrder) => {
     <template v-if="!slots['tree-toggle']" #tree-toggle="{ expanded, ariaLabel, toggleExpand }">
       <SButtonIcon
         :class="ui.treeToggle"
+        :size="miniSize"
         :aria-expanded="expanded"
         :aria-label="ariaLabel"
         :icon="expanded ? 'lucide:chevron-down' : 'lucide:chevron-right'"
@@ -123,6 +127,7 @@ const getOrderIcon = (sortOrder?: TableSortOrder) => {
         v-if="hasChildren || slots['expanded-row']"
         :icon="expanded ? 'lucide:chevron-down' : 'lucide:chevron-right'"
         :class="ui.treeToggle"
+        :size="miniSize"
         :aria-expanded="expanded"
         :aria-label="ariaLabel"
         :data-expanded="expanded ? '' : undefined"

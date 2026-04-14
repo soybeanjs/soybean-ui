@@ -39,6 +39,6 @@ const data: TableData[] = [
 <template>
   <div>
     <h3 class="playground-title">Grouped Headers, Sorting and Filtering</h3>
-    <STable :columns="columns" :data="data" :row-key="row => row.id" bordered />
+    <STable :columns="columns" :data="data" :row-key="row => row.id" />
   </div>
 </template>

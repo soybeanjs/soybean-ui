@@ -204,7 +204,7 @@ export interface TableCompactExpandedRowProps {
   colspan: number;
 }
 
-export interface TableCompactHeadProps extends TableHeaderCell {}
+export interface TableCompactHeadProps extends Omit<TableHeaderCell, 'key'> {}
 
 export interface TableCompactRowProps {
   row: TableTreeRow;

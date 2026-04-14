@@ -458,6 +458,52 @@ describe('STable', () => {
       wrapper.unmount();
     });
 
+    it('uses measured widths when calculating offsets for multiple left fixed columns', async () => {
+      class TestResizeObserver extends MockResizeObserver {
+        static instance: MockResizeObserver | null = null;
+
+        constructor(callback: ResizeObserverCallback) {
+          super(callback);
+          TestResizeObserver.instance = this;
+        }
+      }
+
+      const measuredFixedColumns: TableColumn<TableRowData>[] = [
+        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'left' },
+        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'left' },
+        { title: 'Id', dataIndex: 'id', width: '120px' }
+      ];
+
+      const cleanup = setupMock('ResizeObserver', TestResizeObserver as unknown as typeof ResizeObserver);
+      const wrapper = mount(STable, {
+        props: {
+          columns: measuredFixedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const heads = wrapper.findAll('th');
+      const table = wrapper.get('table').element;
+
+      mockRect(heads[0].element, { x: 0, y: 0, width: 176, height: 40 });
+      mockRect(heads[1].element, { x: 176, y: 0, width: 108, height: 40 });
+      mockRect(heads[2].element, { x: 284, y: 0, width: 120, height: 40 });
+
+      TestResizeObserver.instance?.trigger([createMockResizeObserverEntry(table, { width: 404, height: 120 })]);
+
+      await delay(30);
+      await nextTick();
+
+      expect(heads[0].attributes('style')).toContain('left: 0px;');
+      expect(heads[1].attributes('style')).toContain('left: 176px;');
+      expect(wrapper.findAll('td[data-fixed-side="left"]')[1]?.attributes('style')).toContain('left: 176px;');
+
+      wrapper.unmount();
+      cleanup();
+    });
+
     it('updates column widths when a resize handle is dragged', async () => {
       const wrapper = mount(STable, {
         props: {

@@ -571,7 +571,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
     });
 
     return mergeProps(
-      { ...headProps },
+      { ...headProps.value },
       {
         class: fixedState ? ui.value.fixed : undefined,
         align: column.value.align ?? (column.value.type ? 'center' : 'left'),

@@ -5,20 +5,24 @@ import type { VariantProps } from 'tailwind-variants';
 export const tableVariants = tv({
   slots: {
     root: 'relative overflow-auto rounded-md',
-    content: 'w-full',
+    content: 'min-w-full w-max border-spacing-0',
     header: 'sticky top-0 left-0 z-10 bg-accent',
     body: '',
     footer: 'bg-accent font-medium',
-    row: 'data-[row]:hover:bg-accent transition-colors',
-    head: 'text-foreground relative font-medium whitespace-nowrap bg-accent data-[fixed]:bg-accent',
-    cell: 'whitespace-nowrap data-[fixed]:bg-background',
-    fixed: 'shadow-[inset_0_0_0_1px_hsl(var(--border))]',
+    row: 'bg-background data-[row]:hover:bg-accent transition-colors',
+    head: 'box-border text-foreground relative font-medium whitespace-nowrap bg-accent',
+    cell: 'box-border whitespace-nowrap data-[fixed]:bg-background',
+    fixed: [
+      'relative',
+      'data-[fixed-side=left]:after:pointer-events-none data-[fixed-side=left]:after:absolute data-[fixed-side=left]:after:bottom-0 data-[fixed-side=left]:after:end-0 data-[fixed-side=left]:after:top-0 data-[fixed-side=left]:after:w-4 data-[fixed-side=left]:after:translate-x-full data-[fixed-side=left]:after:bg-gradient-to-r data-[fixed-side=left]:after:from-foreground/8 data-[fixed-side=left]:after:to-transparent data-[fixed-side=left]:after:content-[""]',
+      'data-[fixed-side=right]:before:pointer-events-none data-[fixed-side=right]:before:absolute data-[fixed-side=right]:before:bottom-0 data-[fixed-side=right]:before:start-0 data-[fixed-side=right]:before:top-0 data-[fixed-side=right]:before:w-4 data-[fixed-side=right]:before:-translate-x-full data-[fixed-side=right]:before:bg-gradient-to-l data-[fixed-side=right]:before:from-foreground/8 data-[fixed-side=right]:before:to-transparent data-[fixed-side=right]:before:content-[""]'
+    ],
     resizeHandle: [
-      'absolute end-0 top-1/2 z-10 h-[calc(100%-0.75rem)] w-3 -translate-y-1/2 translate-x-1/2 rounded bg-transparent',
+      'absolute end-0 top-1/2 h-[calc(100%-0.75rem)] w-3 -translate-y-1/2 rounded bg-transparent',
       'cursor-col-resize border-none p-0 touch-none select-none',
       'after:bg-border hover:after:bg-primary data-[resizing]:after:bg-primary focus-visible:after:bg-primary',
       'focus-visible:outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
-      'after:absolute after:bottom-0 after:start-1/2 after:top-0 after:w-px after:-translate-x-1/2 after:rounded-full after:content-[""]'
+      'after:absolute after:bottom-0 after:end-0 after:top-0 after:w-px after:rounded-full after:content-[""]'
     ],
     treeCell: 'flex min-w-0 items-center gap-1',
     treeToggle: '',

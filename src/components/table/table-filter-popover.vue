@@ -62,6 +62,7 @@ function updateKeyword(value: string | number | undefined) {
         icon="lucide:funnel"
         :data-filtered="props.filtered ? '' : undefined"
         :class="ui.filterTrigger"
+        :size="miniSize"
         :aria-label="triggerLabel"
         :aria-pressed="filtered || undefined"
       />
@@ -80,7 +81,7 @@ function updateKeyword(value: string | number | undefined) {
         v-for="option in filteredOptions"
         :key="option.value"
         :class="ui.filterOption"
-        :size="miniSize"
+        :size="size"
         :disabled="option.disabled"
         :model-value="isFilterOptionSelected(option.value)"
         :label="option.label"

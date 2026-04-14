@@ -140,7 +140,13 @@ provideTableCompactContext({
     <TableContent :ref="setTableContentRef" v-bind="contentProps">
       <TableHeader v-bind="headerProps">
         <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
-          <TableCompactHead v-for="headerCell in headerRow" v-bind="headerCell" :key="headerCell.key">
+          <TableCompactHead
+            v-for="headerCell in headerRow"
+            :key="headerCell.key"
+            :column="headerCell.column"
+            :col-span="headerCell.colSpan"
+            :row-span="headerCell.rowSpan"
+          >
             <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
               <slot :name="slotName" v-bind="slotProps" />
             </template>

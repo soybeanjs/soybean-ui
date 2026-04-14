@@ -792,8 +792,9 @@ export function getTableMeasuredColumnWidth<T extends TableBaseData>(
   const key = getTableColumnKey(column);
   const parsedWidth = parseTableColumnWidth(getTableColumnWidthValue(column, columnWidths));
   const measuredWidth = measuredColumnWidths[key];
+  const resolvedMeasuredWidth = measuredWidth > 0 ? measuredWidth : undefined;
 
-  return parsedWidth ?? measuredWidth ?? fallbackWidth;
+  return resolvedMeasuredWidth ?? parsedWidth ?? fallbackWidth;
 }
 
 export function getTableMeasuredColumnWidths<T extends TableBaseData>(
@@ -808,10 +809,11 @@ export function getTableMeasuredColumnWidths<T extends TableBaseData>(
     const key = getTableColumnKey(column);
     const parsedWidth = parseTableColumnWidth(getTableColumnWidthValue(column, params.columnWidths));
     const measuredWidth = params.headCellElements[key]?.getBoundingClientRect().width;
+    const resolvedMeasuredWidth = measuredWidth && measuredWidth > 0 ? measuredWidth : undefined;
 
     acc[key] =
+      resolvedMeasuredWidth ??
       parsedWidth ??
-      measuredWidth ??
       getTableMeasuredColumnWidth(column, params.columnWidths, params.measuredColumnWidths);
 
     return acc;
