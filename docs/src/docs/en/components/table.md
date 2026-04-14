@@ -74,7 +74,7 @@ footer
   { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: 'Estimated row height for the virtualizer.' },
   { name: 'virtualizerOptions', type: 'VirtualizerOptions', default: '{}', description: 'Additional TanStack virtualizer options such as overscan.' },
   { name: 'size', type: 'ThemeSize', default: 'md', description: 'Table size.' },
-  { name: 'bordered', type: `'all' | boolean`, default: 'false', description: 'Whether to show borders.' },
+  { name: 'bordered', type: 'boolean', default: 'false', description: 'Whether to show borders.' },
   { name: 'striped', type: 'boolean', default: 'false', description: 'Whether to show striped rows.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether to allow multiple selection.' },
   { name: 'selected', type: 'R | R[]', default: '-', description: 'Selected row key (controlled).' },

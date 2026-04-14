@@ -75,7 +75,7 @@ sizes
   { name: 'estimateSize', type: 'number | ((index: number, row: T) => number)', default: '40', description: '虚拟滚动的行高预估值。' },
   { name: 'virtualizerOptions', type: 'VirtualizerOptions', default: '{}', description: '额外的 TanStack 虚拟滚动配置，例如 overscan。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '表格尺寸。' },
-  { name: 'bordered', type: `'all' | boolean`, default: `false`, description: '是否显示边框。' },
+  { name: 'bordered', type: 'boolean', default: `false`, description: '是否显示边框。' },
   { name: 'striped', type: 'boolean', default: 'false', description: '是否显示斑马纹。' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许多选。' },
   { name: 'selected', type: 'R | R[]', default: '-', description: '选中的行键值（受控）。' },
