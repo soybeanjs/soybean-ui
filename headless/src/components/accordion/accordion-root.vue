@@ -1,7 +1,8 @@
 <script setup lang="ts" generic="M extends boolean = false">
-import { computed, shallowRef } from 'vue';
+import { shallowRef } from 'vue';
 import { useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { provideAccordionRootContext, useAccordionUi } from './context';
 import type { AccordionRootEmits, AccordionRootProps } from './types';
 
@@ -18,27 +19,28 @@ const props = withDefaults(defineProps<AccordionRootProps<M>>(), {
 
 const emit = defineEmits<AccordionRootEmits<M>>();
 
-const ui = useAccordionUi();
-
-const cls = computed(() => ui?.value?.root);
+const cls = useAccordionUi('root');
 
 const rootElement = shallowRef<HTMLElement>();
+
+const dir = useDirection(() => props.dir);
 
 const { modelValue, isMultiple, onModelValueChange } = useSelection(props, value => {
   emit('update:modelValue', value);
 });
 
 provideAccordionRootContext({
+  dir,
   rootElement,
   modelValue,
   isMultiple,
   onModelValueChange,
-  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'dir', 'unmountOnHide'])
+  ...transformPropsToContext(props, ['collapsible', 'disabled', 'orientation', 'unmountOnHide'])
 });
 </script>
 
 <template>
-  <div ref="rootElement" :class="cls">
+  <div ref="rootElement" :class="cls" :dir="dir" data-slot="root">
     <slot :model-value="modelValue" />
   </div>
 </template>

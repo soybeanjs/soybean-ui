@@ -66,6 +66,7 @@ defineExpose({
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
+    data-slot="item"
     @keydown="onKeydown"
   >
     <slot :open="open" />

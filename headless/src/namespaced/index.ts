@@ -1,4 +1,5 @@
 import {
+  AccordionCompact,
   AccordionContent,
   AccordionHeader,
   AccordionItem,
@@ -360,12 +361,14 @@ import {
 } from '../index';
 
 export const Accordion = {
+  Compact: AccordionCompact,
   Root: AccordionRoot,
   Item: AccordionItem,
   Trigger: AccordionTrigger,
   Header: AccordionHeader,
   Content: AccordionContent
 } as {
+  Compact: typeof AccordionCompact;
   Root: typeof AccordionRoot;
   Item: typeof AccordionItem;
   Trigger: typeof AccordionTrigger;

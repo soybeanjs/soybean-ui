@@ -1,49 +1,28 @@
 import type {
-  AccordionContentProps,
-  AccordionHeaderProps,
-  AccordionItemProps,
-  AccordionRootEmits,
-  AccordionRootProps,
-  AccordionTriggerProps,
-  AccordionUiSlot,
-  ClassValue,
-  UiClass
+  AccordionCompactProps,
+  AccordionCompactEmits,
+  AccordionCompactSlots,
+  AccordionOptionData,
+  AccordionUi,
+  ClassValue
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
-import type { IconValue } from '../icon/types';
-
-export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
-  /** The title of the accordion item. */
-  title?: string;
-  /** The description of the accordion content. */
-  description?: string;
-  /**
-   * The icon of the accordion item.
-   *
-   * if it is a string, it will be used as the icon name of the iconify.
-   */
-  icon?: IconValue;
-}
-
-export type AccordionExtraUiSlot = 'triggerLeadingIcon' | 'triggerIcon';
-
-export type AccordionExtendedUi = UiClass<AccordionUiSlot | AccordionExtraUiSlot>;
 
 export interface AccordionProps<
   T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
-> extends AccordionRootProps<M> {
+> extends AccordionCompactProps<T, M> {
   /**
    * root class
    */
   class?: ClassValue;
   size?: ThemeSize;
-  ui?: Partial<AccordionExtendedUi>;
-  items: T[];
-  itemProps?: AccordionItemProps;
-  headerProps?: AccordionHeaderProps;
-  triggerProps?: AccordionTriggerProps;
-  contentProps?: AccordionContentProps;
+  ui?: Partial<AccordionUi>;
 }
 
-export type AccordionEmits<M extends boolean = false> = AccordionRootEmits<M>;
+export type AccordionEmits<M extends boolean = false> = AccordionCompactEmits<M>;
+
+export type AccordionSlots<
+  T extends AccordionOptionData = AccordionOptionData,
+  M extends boolean = false
+> = AccordionCompactSlots<T, M>;

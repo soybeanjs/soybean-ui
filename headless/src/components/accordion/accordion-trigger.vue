@@ -31,12 +31,13 @@ initTriggerId();
     :ref="setTriggerElement"
     :as="as"
     :as-child="asChild"
-    data-soybean-collection-item
     :aria-disabled="disabled || undefined"
     :aria-expanded="open || false"
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
+    data-soybean-collection-item
+    data-slot="trigger"
     :disabled="disabled"
     @click="onClick"
   >

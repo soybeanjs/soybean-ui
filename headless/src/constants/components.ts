@@ -1,5 +1,12 @@
 export const components = {
-  accordion: ['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent'],
+  accordion: [
+    'AccordionRoot',
+    'AccordionItem',
+    'AccordionTrigger',
+    'AccordionHeader',
+    'AccordionContent',
+    'AccordionCompact'
+  ],
   affix: ['AffixRoot', 'AffixPlaceholder', 'AffixContent'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
   autocomplete: [

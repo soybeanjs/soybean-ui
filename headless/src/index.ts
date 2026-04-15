@@ -72,6 +72,7 @@ export * from './components/tree-menu';
 export * from './components/virtualizer';
 export * from './components/visually-hidden';
 
+export type { IconValue } from './components/icon';
 export type {
   ClassValue,
   UiClass,

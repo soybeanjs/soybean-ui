@@ -6,6 +6,7 @@ export type {
   AccordionItemProps,
   AccordionTriggerProps,
   AccordionHeaderProps,
-  AccordionContentProps
+  AccordionContentProps,
+  AccordionOptionData
 } from '@soybeanjs/headless/accordion';
 export type * from './types';

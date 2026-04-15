@@ -1,18 +1,12 @@
 <script setup lang="ts" generic="T extends AccordionOptionData = AccordionOptionData, M extends boolean = false">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import {
-  AccordionContent,
-  AccordionHeader,
-  AccordionItem,
-  AccordionRoot,
-  AccordionTrigger,
-  provideAccordionUi
-} from '@soybeanjs/headless';
+import { AccordionCompact, provideAccordionUi } from '@soybeanjs/headless';
+import type { AccordionOptionData } from '@soybeanjs/headless';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
 import { accordionVariants } from './variants';
-import type { AccordionEmits, AccordionOptionData, AccordionProps } from './types';
+import type { AccordionEmits, AccordionProps, AccordionSlots } from './types';
 
 defineOptions({
   name: 'SAccordion'
@@ -22,18 +16,13 @@ const props = defineProps<AccordionProps<T, M>>();
 
 const emit = defineEmits<AccordionEmits<M>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'items',
-  'itemProps',
-  'headerProps',
-  'triggerProps',
-  'contentProps'
-]);
+const slots = defineSlots<AccordionSlots<T, M>>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = accordionVariants({
@@ -47,28 +36,9 @@ provideAccordionUi(ui);
 </script>
 
 <template>
-  <AccordionRoot v-bind="forwardedProps" v-on="listeners">
-    <template v-for="item in items" :key="item.value">
-      <slot name="item" :item="item" :model-value="modelValue">
-        <AccordionItem v-slot="{ open }" v-bind="itemProps" :value="item.value" :disabled="item.disabled">
-          <AccordionHeader v-bind="headerProps">
-            <AccordionTrigger v-bind="triggerProps">
-              <slot name="leading" :item="item" :model-value="modelValue" :open="open">
-                <Icon :icon="item.icon" :class="ui.triggerLeadingIcon" />
-              </slot>
-              <slot name="title" :item="item" :model-value="modelValue" :open="open">{{ item.title }}</slot>
-              <slot name="trigger-icon" :item="item" :model-value="modelValue" :open="open">
-                <Icon icon="lucide:chevron-down" :class="ui.triggerIcon" />
-              </slot>
-            </AccordionTrigger>
-          </AccordionHeader>
-          <AccordionContent v-bind="contentProps">
-            <slot name="content" :item="item" :model-value="modelValue" :open="open">
-              <p :class="ui.description">{{ item.description }}</p>
-            </slot>
-          </AccordionContent>
-        </AccordionItem>
-      </slot>
+  <AccordionCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps as any" />
     </template>
-  </AccordionRoot>
+  </AccordionCompact>
 </template>

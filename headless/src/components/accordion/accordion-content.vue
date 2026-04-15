@@ -31,6 +31,7 @@ const style: CSSProperties = {
     :data-disabled="dataDisabled"
     :data-orientation="orientation"
     :data-state="dataState"
+    data-slot="content"
     :style="style"
   >
     <slot />
