@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, watchEffect } from 'vue';
+import { watch, watchEffect, h } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
@@ -7,6 +7,8 @@ import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import { themeSizes } from '@/constants/common';
+import Icon from '../icon/icon.vue';
+import type { IconValue } from '../icon/types';
 import DialogProvider from '../alert-dialog/dialog-provider.vue';
 import LoadingBar from '../progress/loading-bar.vue';
 import Toaster from '../toast/toaster.vue';
@@ -27,9 +29,22 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, ['theme', 'size', 'iconify', 'loadingBar', 'toast', 'customToast']);
+const forwardedProps = useOmitProps(props, [
+  'iconRender',
+  'theme',
+  'size',
+  'iconify',
+  'loadingBar',
+  'toast',
+  'customToast'
+]);
 
-provideConfigProviderContext(transformPropsToContext(props));
+const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon }));
+
+provideConfigProviderContext({
+  ...transformPropsToContext(props),
+  iconRender
+});
 
 const { getCss } = createShadcnTheme(props.theme);
 
@@ -58,7 +73,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <ConfigProvider v-bind="forwardedProps">
+  <ConfigProvider v-bind="forwardedProps" :icon-render="iconRender">
     <Primitive id="__SoybeanUI_themeVars" as="style">
       {{ cssVars }}
     </Primitive>

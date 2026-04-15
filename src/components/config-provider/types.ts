@@ -38,6 +38,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   customToast?: boolean;
 }
 
-export interface ConfigProviderContext extends PropsToContext<ConfigProviderProps> {}
+export interface ConfigProviderContext
+  extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}
 
 export type { ThemeOptions };

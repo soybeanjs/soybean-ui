@@ -17,7 +17,10 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   nuxt: false
 });
 
-provideConfigProviderContext(transformPropsToContext(props));
+provideConfigProviderContext({
+  ...transformPropsToContext(props),
+  iconRender: props.iconRender
+});
 
 const dir = useTextDirection();
 

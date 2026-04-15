@@ -1,5 +1,7 @@
+import type { VNode } from 'vue';
 import type { Direction, PropsToContext } from '../../types';
 import type { TooltipProviderProps } from '../tooltip/types';
+import type { IconValue } from '../icon/types';
 
 export interface ConfigProviderProps {
   /**
@@ -32,6 +34,13 @@ export interface ConfigProviderProps {
    * @type boolean
    */
   nuxt?: boolean;
+  /**
+   * A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.
+   *
+   * @param icon The icon to be rendered. It can be a string, a VNode, or a Component.
+   */
+  iconRender?: (icon: IconValue) => VNode;
 }
 
-export interface ConfigProviderContext extends PropsToContext<ConfigProviderProps> {}
+export interface ConfigProviderContext
+  extends PropsToContext<Omit<ConfigProviderProps, 'iconRender'>>, Pick<ConfigProviderProps, 'iconRender'> {}

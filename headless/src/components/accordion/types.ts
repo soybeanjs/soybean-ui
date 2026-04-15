@@ -8,6 +8,7 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
+import type { CollapsibleContentProps, CollapsibleTriggerProps } from '../collapsible/types';
 import type { CollapsibleRootProps } from '../collapsible/types';
 
 export interface AccordionRootProps<M extends boolean = false>
@@ -50,10 +51,16 @@ export type AccordionRootEmits<M extends boolean = false> = SelectionEmits<M>;
 
 export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
 
+export interface AccordionContentProps extends CollapsibleContentProps {}
+
+export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
+
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** Value of the accordion item. All items within an accordion should use a unique value. */
   value: string;
 }
+
+export interface AccordionCompactProps extends AccordionRootProps {}
 
 export interface AccordionRootContextParams extends PropsToContext<
   AccordionRootProps,
@@ -73,8 +80,3 @@ export interface AccordionItemContextParams extends PropsToContext<AccordionItem
 export type AccordionUiSlot = 'root' | 'item' | 'header' | 'trigger' | 'content';
 
 export type AccordionUi = UiClass<AccordionUiSlot>;
-
-export type {
-  CollapsibleContentProps as AccordionContentProps,
-  CollapsibleTriggerProps as AccordionTriggerProps
-} from '../collapsible/types';
