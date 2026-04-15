@@ -33,8 +33,8 @@ const data: TableData[] = [
             <div class="flex justify-between items-center p-4">
               <span>Total: {{ data.length }} items</span>
               <div class="flex gap-2">
-                <SButton size="sm" variant="outline">Previous</SButton>
-                <SButton size="sm" variant="outline">Next</SButton>
+                <SButton size="sm" variant="pure">Previous</SButton>
+                <SButton size="sm" variant="pure">Next</SButton>
               </div>
             </div>
           </STableCell>

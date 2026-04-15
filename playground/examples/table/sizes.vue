@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { STable } from '@soybeanjs/ui';
 import type { TableColumn } from '@soybeanjs/ui';
+import { themeSizeOptions } from '../../constants/theme';
 
 interface TableData {
   id: number;
@@ -27,10 +28,14 @@ const data: TableData[] = [
   <div>
     <h3 class="playground-title">Sizes</h3>
     <div class="space-y-4">
-      <STable size="xs" :columns="columns" :data="data" :row-key="row => row.id" />
-      <STable size="sm" :columns="columns" :data="data" :row-key="row => row.id" />
-      <STable size="md" :columns="columns" :data="data" :row-key="row => row.id" />
-      <STable size="lg" :columns="columns" :data="data" :row-key="row => row.id" />
+      <STable
+        v-for="size in themeSizeOptions"
+        :key="size.value"
+        :size="size.value"
+        :columns="columns"
+        :data="data"
+        :row-key="row => row.id"
+      />
     </div>
   </div>
 </template>

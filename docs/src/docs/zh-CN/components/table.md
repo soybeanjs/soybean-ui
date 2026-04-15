@@ -41,10 +41,13 @@ const data: TableData[] = [
 
 ```playground
 base
+grouped
+sorting
+filtering
+fixed
+resizable
 bordered
 striped
-grouped-sort-filter
-fixed-resizable
 tree
 virtualized
 single-selection
@@ -59,6 +62,7 @@ sizes
 ### 属性
 
 <DataTable preset="props" :data="[
+  { name: 'dir', type: 'Direction', default: 'ltr', description: '表格文本方向，影响对齐和固定行为。' },
   { name: 'columns', type: 'TableColumn<T>[]', default: '-', description: '列配置数组。', required: true },
   { name: 'data', type: 'T[]', default: '-', description: '表格数据数组。', required: true },
   { name: 'rowKey', type: '(row: T) => R', default: '-', description: '行数据的唯一键生成函数。', required: true },
@@ -131,10 +135,10 @@ sizes
   { name: 'type', type: `'index' | 'selection' | 'expand'`, default: '-', description: '特殊列类型。' },
   { name: 'dataIndex', type: 'string', default: '-', description: '数据字段路径，支持嵌套如 `user.name`。' },
   { name: 'title', type: 'string', default: '-', description: '列标题。' },
-  { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: '对齐方式。' },
+  { name: 'align', type: `'start' | 'center' | 'end'`, default: `'start'`, description: '逻辑对齐方式。推荐使用 `start` 和 `end` 自动适配 RTL。' },
   { name: 'width', type: 'string', default: '-', description: '列宽度。' },
   { name: 'minWidth', type: 'string', default: '-', description: '列最小宽度。' },
-  { name: 'fixed', type: `'left' | 'right'`, default: '-', description: '固定列方向。' },
+  { name: 'fixed', type: `'start' | 'end'`, default: '-', description: '逻辑固定方向。使用 `start` 和 `end` 后，sticky 定位会自动适配 RTL。' },
   { name: 'resizable', type: 'boolean', default: 'false', description: '是否启用列宽拖拽调整。' },
   { name: 'children', type: 'TableColumn<T>[]', default: '-', description: '分组表头的子列。' },
   { name: 'sorter', type: 'boolean | ((a, b) => number)', default: '-', description: '是否启用排序，或提供自定义排序函数。' },

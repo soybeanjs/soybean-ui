@@ -6,10 +6,12 @@ import type {
   TdHTMLAttributes,
   ThHTMLAttributes
 } from 'vue';
-import type { CheckedState, Path, PathValue, PropsToContext, UiClass } from '../../types';
+import type { CheckedState, Direction, Path, PathValue, PropsToContext, UiClass } from '../../types';
 import type { VirtualizerOptions } from '../virtualizer/types';
 
-export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {}
+export interface TableRootProps extends /** @vue-ignore */ HTMLAttributes {
+  dir?: Direction;
+}
 
 export interface TableContentProps extends /** @vue-ignore */ TableHTMLAttributes {}
 
@@ -48,7 +50,7 @@ export type TableBaseData = Record<string, any>;
 
 export type TableRowValue<T extends TableBaseData = TableBaseData> = Omit<T, 'children'>;
 
-export type TableAlign = 'left' | 'center' | 'right';
+export type TableAlign = 'start' | 'center' | 'end';
 
 export type TableColumnType = 'index' | 'selection' | 'expand';
 
@@ -136,7 +138,7 @@ export interface TableColumnBase {
   width?: string;
   minWidth?: string;
   hidden?: boolean;
-  fixed?: 'left' | 'right';
+  fixed?: 'start' | 'end';
   resizable?: boolean;
 }
 
@@ -177,13 +179,13 @@ export interface TableHeaderCell<T extends TableBaseData = TableBaseData> {
 }
 
 export interface TableFixedState {
-  side: 'left' | 'right';
+  side: 'start' | 'end';
   offset: number;
 }
 
 export interface TableFixedColumnOffsets {
-  leftOffsets: Record<string, number>;
-  rightOffsets: Record<string, number>;
+  startOffsets: Record<string, number>;
+  endOffsets: Record<string, number>;
 }
 
 export interface TableSelectionProps<R extends TableUnifiedKey = TableUnifiedKey, M extends boolean = false> {
@@ -377,6 +379,7 @@ export type TableCompactSlots<T extends TableBaseData> = {
 } & {
   [K in Path<TableRowValue<T>>]?: (props: TableDataCellSlotProps<T, K>) => any;
 } & {
+  bottom?: () => any;
   header?: (props: TableHeaderSlotProps<T>) => any;
   'header-index'?: (props: { column: TableColumn<T> }) => any;
   'header-selection'?: (props: TableHeaderSelectionSlotProps<T>) => any;
@@ -396,6 +399,7 @@ export interface TableCompactContext extends PropsToContext<
   TableCompactProps,
   'indent' | 'headProps' | 'rowProps' | 'cellProps'
 > {
+  dir: ComputedRef<Direction>;
   rowKey: (row: TableBaseData) => TableUnifiedKey;
   expanded: ShallowRef<TableUnifiedKey[]>;
   sortState: ShallowRef<TableSortState | undefined>;

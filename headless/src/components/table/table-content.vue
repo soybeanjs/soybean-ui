@@ -12,7 +12,7 @@ const cls = useTableUi('content');
 </script>
 
 <template>
-  <table :class="cls">
+  <table :class="cls" role="table">
     <slot />
   </table>
 </template>

@@ -40,8 +40,8 @@ const filterableColumns: TableColumn<TableRowData>[] = [
 ];
 
 const fixedColumns: TableColumn<TableRowData>[] = [
-  { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'left' },
-  { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'right' }
+  { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
+  { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'end' }
 ];
 
 const resizableColumns: TableColumn<TableRowData>[] = [
@@ -188,6 +188,38 @@ describe('STable', () => {
 
       expect(wrapper.findAll('[data-testid="age-cell"]')).toHaveLength(2);
       expect(wrapper.text()).toContain('Age: 32');
+      wrapper.unmount();
+    });
+
+    it('uses dir on the root element and css text-align for logical alignment', () => {
+      const alignedColumns: TableColumn<TableRowData>[] = [
+        { title: 'Name', dataIndex: 'name' },
+        { title: 'Age', dataIndex: 'age', align: 'end' },
+        { title: 'Index', type: 'index', width: '48px' }
+      ];
+
+      const wrapper = mount(STable, {
+        props: {
+          dir: 'rtl',
+          columns: alignedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const heads = wrapper.findAll('th');
+      const cells = wrapper.findAll('td');
+
+      expect(wrapper.get('div[dir="rtl"]')).toBeTruthy();
+      expect(heads[0].attributes('style')).toContain('text-align: start;');
+      expect(heads[1].attributes('style')).toContain('text-align: end;');
+      expect(heads[2].attributes('style')).toContain('text-align: center;');
+      expect(heads[0].attributes('align')).toBeUndefined();
+      expect(cells[0].attributes('style')).toContain('text-align: start;');
+      expect(cells[1].attributes('style')).toContain('text-align: end;');
+      expect(cells[2].attributes('style')).toContain('text-align: center;');
+
       wrapper.unmount();
     });
   });
@@ -448,13 +480,34 @@ describe('STable', () => {
         attachTo: document.body
       });
 
-      const leftHead = wrapper.get('th[data-fixed-side="left"]');
-      const rightHead = wrapper.get('th[data-fixed-side="right"]');
+      const startHead = wrapper.get('th[data-fixed-side="start"]');
+      const endHead = wrapper.get('th[data-fixed-side="end"]');
 
-      expect(leftHead.attributes('style')).toContain('position: sticky;');
-      expect(leftHead.attributes('style')).toContain('left: 0px;');
-      expect(rightHead.attributes('style')).toContain('right: 0px;');
-      expect(wrapper.get('td[data-fixed-side="left"]').attributes('style')).toContain('left: 0px;');
+      expect(startHead.attributes('style')).toContain('position: sticky;');
+      expect(startHead.attributes('style')).toContain('inset-inline-start: 0px;');
+      expect(endHead.attributes('style')).toContain('inset-inline-end: 0px;');
+      expect(wrapper.get('td[data-fixed-side="start"]').attributes('style')).toContain('inset-inline-start: 0px;');
+      wrapper.unmount();
+    });
+
+    it('keeps logical fixed sides in rtl and lets css mirror them', () => {
+      const wrapper = mount(STable, {
+        props: {
+          dir: 'rtl',
+          columns: fixedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const startHead = wrapper.get('th[data-fixed-side="start"]');
+      const endHead = wrapper.get('th[data-fixed-side="end"]');
+
+      expect(startHead.attributes('style')).toContain('inset-inline-start: 0px;');
+      expect(endHead.attributes('style')).toContain('inset-inline-end: 0px;');
+      expect(wrapper.get('td[data-fixed-side="start"]').attributes('style')).toContain('inset-inline-start: 0px;');
+
       wrapper.unmount();
     });
 
@@ -469,8 +522,8 @@ describe('STable', () => {
       }
 
       const measuredFixedColumns: TableColumn<TableRowData>[] = [
-        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'left' },
-        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'left' },
+        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
+        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
         { title: 'Id', dataIndex: 'id', width: '120px' }
       ];
 
@@ -496,12 +549,90 @@ describe('STable', () => {
       await delay(30);
       await nextTick();
 
-      expect(heads[0].attributes('style')).toContain('left: 0px;');
-      expect(heads[1].attributes('style')).toContain('left: 176px;');
-      expect(wrapper.findAll('td[data-fixed-side="left"]')[1]?.attributes('style')).toContain('left: 176px;');
+      expect(heads[0].attributes('style')).toContain('inset-inline-start: 0px;');
+      expect(heads[1].attributes('style')).toContain('inset-inline-start: 176px;');
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('style')).toContain(
+        'inset-inline-start: 176px;'
+      );
 
       wrapper.unmount();
       cleanup();
+    });
+
+    it('uses logical start offsets for multiple fixed columns in rtl', async () => {
+      class TestResizeObserver extends MockResizeObserver {
+        static instance: MockResizeObserver | null = null;
+
+        constructor(callback: ResizeObserverCallback) {
+          super(callback);
+          TestResizeObserver.instance = this;
+        }
+      }
+
+      const measuredFixedColumns: TableColumn<TableRowData>[] = [
+        { title: 'Name', dataIndex: 'name', width: '140px', fixed: 'start' },
+        { title: 'Age', dataIndex: 'age', width: '96px', align: 'center', fixed: 'start' },
+        { title: 'Id', dataIndex: 'id', width: '120px' }
+      ];
+
+      const cleanup = setupMock('ResizeObserver', TestResizeObserver as unknown as typeof ResizeObserver);
+      const wrapper = mount(STable, {
+        props: {
+          dir: 'rtl',
+          columns: measuredFixedColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const heads = wrapper.findAll('th');
+      const table = wrapper.get('table').element;
+
+      mockRect(heads[0].element, { x: 0, y: 0, width: 176, height: 40 });
+      mockRect(heads[1].element, { x: 176, y: 0, width: 108, height: 40 });
+      mockRect(heads[2].element, { x: 284, y: 0, width: 120, height: 40 });
+
+      TestResizeObserver.instance?.trigger([createMockResizeObserverEntry(table, { width: 404, height: 120 })]);
+
+      await delay(30);
+      await nextTick();
+
+      expect(heads[0].attributes('style')).toContain('inset-inline-start: 0px;');
+      expect(heads[1].attributes('style')).toContain('inset-inline-start: 176px;');
+      expect(wrapper.findAll('td[data-fixed-side="start"]')[1]?.attributes('style')).toContain(
+        'inset-inline-start: 176px;'
+      );
+
+      wrapper.unmount();
+      cleanup();
+    });
+
+    it('adapts pointer resizing to rtl logical direction', async () => {
+      const wrapper = mount(STable, {
+        props: {
+          dir: 'rtl',
+          columns: resizableColumns as TableColumn[],
+          data,
+          rowKey: row => row.id
+        },
+        attachTo: document.body
+      });
+
+      const head = wrapper.get('th');
+      const handle = wrapper.get('button[aria-label="Resize Name column"]');
+
+      mockRect(head.element, { x: 0, y: 0, width: 140, height: 40 });
+
+      dispatchPointerEvent(handle.element, 'pointerdown', { clientX: 140, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointermove', { clientX: 100, clientY: 20, pointerId: 1 });
+      dispatchPointerEvent(document, 'pointerup', { clientX: 100, clientY: 20, pointerId: 1 });
+
+      await nextTick();
+
+      expect(wrapper.emitted('update:columnWidths')?.at(-1)?.[0]).toEqual({ name: '180px' });
+      expect(head.attributes('style')).toContain('width: 180px;');
+      wrapper.unmount();
     });
 
     it('updates column widths when a resize handle is dragged', async () => {

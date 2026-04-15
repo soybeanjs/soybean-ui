@@ -129,7 +129,7 @@ html.dark .shiki span {
     --uno: my-0;
   }
 
-  table {
+  table:not([role='table']) {
     --uno: w-full border-none text-sm;
 
     tr {

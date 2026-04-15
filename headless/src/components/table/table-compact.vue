@@ -11,6 +11,7 @@ import { computed, useSlots } from 'vue';
 import { transformPropsToContext } from '../../shared';
 import { provideTableCompactContext } from './context';
 import { useTableCompactData, useTableCompactResize, useTableCompactState, useTableCompactVirtual } from './hooks';
+import { useDirection } from '../config-provider/context';
 import TableBody from './table-body.vue';
 import TableCompactRow from './table-compact-row.vue';
 import TableCompactHead from './table-compact-head.vue';
@@ -47,6 +48,8 @@ const slotNames = computed(() => Object.keys(slots) as Array<keyof TableCompactS
 const hasExpandedRowSlot = computed(() => Boolean(slots['expanded-row']));
 
 const contextProps = props as TableCompactProps;
+
+const dir = useDirection(() => props.dir);
 
 const {
   expanded,
@@ -107,6 +110,7 @@ const { isVirtual, setTableRootRef, tableRootStyle, virtualPaddingStart, virtual
 
 provideTableCompactContext({
   ...transformPropsToContext(props, ['indent', 'headProps', 'cellProps', 'rowProps']),
+  dir,
   rowKey: props.rowKey as (row: TableBaseData) => TableUnifiedKey,
   expanded,
   sortState,
@@ -136,7 +140,7 @@ provideTableCompactContext({
 </script>
 
 <template>
-  <TableRoot :ref="setTableRootRef" :style="tableRootStyle">
+  <TableRoot :ref="setTableRootRef" :dir="dir" :style="tableRootStyle">
     <TableContent :ref="setTableContentRef" v-bind="contentProps">
       <TableHeader v-bind="headerProps">
         <TableRow v-for="(headerRow, headerRowIndex) in headerRows" :key="headerRowIndex" v-bind="rowProps">
@@ -177,5 +181,6 @@ provideTableCompactContext({
         <slot name="footer" :column-size="leafColumns.length" />
       </TableFooter>
     </TableContent>
+    <slot name="bottom" />
   </TableRoot>
 </template>

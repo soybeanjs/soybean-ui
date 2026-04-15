@@ -6,7 +6,7 @@ export const tableVariants = tv({
   slots: {
     root: 'relative overflow-auto rounded-md bg-accent',
     content: 'min-w-full w-max border-spacing-0',
-    header: 'sticky top-0 left-0 z-10 [&>tr:last-child]:border-b-0',
+    header: 'sticky top-0 start-0 z-10 [&>tr:last-child]:border-b-0',
     body: [
       '[&>tr:first-child>td:first-child]:rounded-tl-md [&>tr:first-child>td:last-child]:rounded-tr-md',
       '[&>tr:last-child>td:first-child]:rounded-bl-md [&>tr:last-child>td:last-child]:rounded-br-md'
@@ -17,8 +17,8 @@ export const tableVariants = tv({
     cell: 'box-border whitespace-nowrap data-[fixed]:bg-background',
     fixed: [
       'relative',
-      'data-[fixed-side=left]:after:pointer-events-none data-[fixed-side=left]:after:absolute data-[fixed-side=left]:after:bottom-0 data-[fixed-side=left]:after:end-0 data-[fixed-side=left]:after:top-0 data-[fixed-side=left]:after:w-4 data-[fixed-side=left]:after:translate-x-full data-[fixed-side=left]:after:bg-gradient-to-r data-[fixed-side=left]:after:from-foreground/8 data-[fixed-side=left]:after:to-transparent data-[fixed-side=left]:after:content-empty',
-      'data-[fixed-side=right]:before:pointer-events-none data-[fixed-side=right]:before:absolute data-[fixed-side=right]:before:bottom-0 data-[fixed-side=right]:before:start-0 data-[fixed-side=right]:before:top-0 data-[fixed-side=right]:before:w-4 data-[fixed-side=right]:before:-translate-x-full data-[fixed-side=right]:before:bg-gradient-to-l data-[fixed-side=right]:before:from-foreground/8 data-[fixed-side=right]:before:to-transparent data-[fixed-side=right]:before:content-empty'
+      'data-[fixed-side=start]:after:pointer-events-none data-[fixed-side=start]:after:absolute data-[fixed-side=start]:after:bottom-0 data-[fixed-side=start]:after:end-0 data-[fixed-side=start]:after:top-0 data-[fixed-side=start]:after:w-4 data-[fixed-side=start]:after:bg-gradient-to-l data-[fixed-side=start]:after:from-foreground/8 data-[fixed-side=start]:after:to-transparent data-[fixed-side=start]:after:content-empty',
+      'data-[fixed-side=end]:before:pointer-events-none data-[fixed-side=end]:before:absolute data-[fixed-side=end]:before:bottom-0 data-[fixed-side=end]:before:start-0 data-[fixed-side=end]:before:top-0 data-[fixed-side=end]:before:w-4 data-[fixed-side=end]:before:bg-gradient-to-r data-[fixed-side=end]:before:from-foreground/8 data-[fixed-side=end]:before:to-transparent data-[fixed-side=end]:before:content-empty'
     ],
     resizeHandle: [
       'absolute end-0 top-1/2 w-3 h-2/3 -translate-y-1/2 rounded bg-transparent',

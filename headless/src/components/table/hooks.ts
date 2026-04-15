@@ -56,6 +56,7 @@ import {
   getNextTableKeyboardResizeWidth,
   getNextTablePointerResizeWidth,
   getTableColumnResizeMinWidth,
+  getTableAlign,
   getTableRootStyle,
   isTableColumnResizable,
   isTableFilterOptionSelected,
@@ -433,6 +434,7 @@ export function useTableCompactVirtual(options: UseTableCompactVirtualOptions) {
 
 export function useTableCompactHead(options: PropsToContext<TableCompactHeadProps>) {
   const {
+    dir,
     headProps,
     headCellElements,
     columnWidths,
@@ -566,6 +568,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
     const headCellStyle = getTableCellStyle({
       width: getTableColumnWidthValue(column.value, columnWidths.value),
       minWidth: column.value.minWidth,
+      textAlign: getTableAlign(column.value),
       fixedState,
       zIndex: 3
     });
@@ -574,12 +577,11 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
       { ...headProps.value },
       {
         class: fixedState ? ui.value.fixed : undefined,
-        align: column.value.align ?? (column.value.type ? 'center' : 'left'),
         style: headCellStyle,
         colspan: colSpan.value,
         rowspan: rowSpan.value,
         'aria-sort': headerAriaSort.value,
-        'data-fixed': Boolean(fixedState) || undefined,
+        'data-fixed': fixedState ? '' : undefined,
         'data-fixed-side': fixedState?.side
       }
     );
@@ -680,7 +682,7 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
     resizingColumnKey.value = key;
 
     const handlePointerMove = (pointerEvent: PointerEvent) => {
-      const nextWidth = getNextTablePointerResizeWidth(startWidth, startX, pointerEvent.clientX, minWidth);
+      const nextWidth = getNextTablePointerResizeWidth(startWidth, startX, pointerEvent.clientX, minWidth, dir.value);
 
       columnWidths.value = getNextTableColumnWidths(columnWidths.value, key, nextWidth);
     };
@@ -717,7 +719,8 @@ export function useTableCompactHead(options: PropsToContext<TableCompactHeadProp
     const nextWidth = getNextTableKeyboardResizeWidth(
       currentWidth,
       event.key === 'ArrowRight' ? 'increase' : 'decrease',
-      getTableColumnResizeMinWidth(column.value.minWidth)
+      getTableColumnResizeMinWidth(column.value.minWidth),
+      dir.value
     );
 
     columnWidths.value = getNextTableColumnWidths(columnWidths.value, key, nextWidth);
@@ -794,6 +797,7 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
     const bodyCellStyle = getTableCellStyle({
       width: getTableColumnWidthValue(column.value, columnWidths.value),
       minWidth: column.value.minWidth,
+      textAlign: getTableAlign(column.value),
       fixedState,
       zIndex: 2
     });
@@ -802,7 +806,6 @@ export function useTableCompactCell(options: PropsToContext<TableCompactCellOpti
       { ...cellProps.value },
       {
         class: fixedState ? ui.value.fixed : undefined,
-        align: column.value.align ?? (column.value.type ? 'center' : 'left'),
         style: bodyCellStyle,
         'data-fixed': fixedState ? '' : undefined,
         'data-fixed-side': fixedState?.side

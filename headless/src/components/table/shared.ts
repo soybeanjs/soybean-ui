@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'vue';
-import type { CheckedState, Path, PathValue } from '../../types';
+import type { CheckedState, Direction, Path, PathValue } from '../../types';
 import type {
   TableBaseData,
   TableColumn,
@@ -664,34 +664,34 @@ export function getTableFixedColumnOffsets<T extends TableBaseData>(
   leafColumns: TableColumn<T>[],
   getWidth: (column: TableColumn<T>) => number
 ): TableFixedColumnOffsets {
-  const leftOffsets: Record<string, number> = {};
-  const rightOffsets: Record<string, number> = {};
-  let accumulatedLeft = 0;
-  let accumulatedRight = 0;
+  const startOffsets: Record<string, number> = {};
+  const endOffsets: Record<string, number> = {};
+  let accumulatedStart = 0;
+  let accumulatedEnd = 0;
 
   leafColumns.forEach(column => {
-    if (column.fixed !== 'left') {
+    if (column.fixed !== 'start') {
       return;
     }
 
     const key = getTableColumnKey(column);
-    leftOffsets[key] = accumulatedLeft;
-    accumulatedLeft += getWidth(column);
+    startOffsets[key] = accumulatedStart;
+    accumulatedStart += getWidth(column);
   });
 
   [...leafColumns].reverse().forEach(column => {
-    if (column.fixed !== 'right') {
+    if (column.fixed !== 'end') {
       return;
     }
 
     const key = getTableColumnKey(column);
-    rightOffsets[key] = accumulatedRight;
-    accumulatedRight += getWidth(column);
+    endOffsets[key] = accumulatedEnd;
+    accumulatedEnd += getWidth(column);
   });
 
   return {
-    leftOffsets,
-    rightOffsets
+    startOffsets,
+    endOffsets
   };
 }
 
@@ -701,17 +701,17 @@ export function getTableLeafFixedState<T extends TableBaseData>(
 ): TableFixedState | undefined {
   const key = getTableColumnKey(column);
 
-  if (column.fixed === 'left') {
+  if (column.fixed === 'start') {
     return {
-      side: 'left',
-      offset: offsets.leftOffsets[key] ?? 0
+      side: 'start',
+      offset: offsets.startOffsets[key] ?? 0
     };
   }
 
-  if (column.fixed === 'right') {
+  if (column.fixed === 'end') {
     return {
-      side: 'right',
-      offset: offsets.rightOffsets[key] ?? 0
+      side: 'end',
+      offset: offsets.endOffsets[key] ?? 0
     };
   }
 
@@ -728,14 +728,14 @@ export function getTableHeaderFixedState<T extends TableBaseData>(
 
   const leaves = getTableLeafColumns([column]);
   const fixedSides = [
-    ...new Set(leaves.map(leaf => leaf.fixed).filter((side): side is 'left' | 'right' => Boolean(side)))
+    ...new Set(leaves.map(leaf => leaf.fixed).filter((side): side is 'start' | 'end' => Boolean(side)))
   ];
 
   if (fixedSides.length !== 1) {
     return undefined;
   }
 
-  const boundaryColumn = fixedSides[0] === 'left' ? leaves[0] : leaves.at(-1);
+  const boundaryColumn = fixedSides[0] === 'start' ? leaves[0] : leaves.at(-1);
 
   if (!boundaryColumn) {
     return undefined;
@@ -747,15 +747,17 @@ export function getTableHeaderFixedState<T extends TableBaseData>(
 export function getTableCellStyle(params: {
   width?: string;
   minWidth?: string;
+  textAlign?: CSSProperties['textAlign'];
   fixedState?: TableFixedState;
   zIndex?: number;
 }): CSSProperties {
   return {
     width: params.width,
     minWidth: params.minWidth,
+    textAlign: params.textAlign,
     position: params.fixedState ? 'sticky' : undefined,
-    left: params.fixedState?.side === 'left' ? `${params.fixedState.offset}px` : undefined,
-    right: params.fixedState?.side === 'right' ? `${params.fixedState.offset}px` : undefined,
+    insetInlineStart: params.fixedState?.side === 'start' ? `${params.fixedState.offset}px` : undefined,
+    insetInlineEnd: params.fixedState?.side === 'end' ? `${params.fixedState.offset}px` : undefined,
     zIndex: params.fixedState ? params.zIndex : undefined
   };
 }
@@ -872,18 +874,24 @@ export function getNextTablePointerResizeWidth(
   startWidth: number,
   startX: number,
   currentX: number,
-  minWidth: number
+  minWidth: number,
+  dir: Direction = 'ltr'
 ): number {
-  return Math.max(minWidth, startWidth + (currentX - startX));
+  const delta = currentX - startX;
+  const resolvedDelta = dir === 'rtl' ? -delta : delta;
+
+  return Math.max(minWidth, startWidth + resolvedDelta);
 }
 
 export function getNextTableKeyboardResizeWidth(
   currentWidth: number,
   direction: 'decrease' | 'increase',
   minWidth: number,
+  dir: Direction = 'ltr',
   step: number = 16
 ): number {
-  const delta = direction === 'increase' ? step : -step;
+  const resolvedDirection = dir === 'rtl' ? (direction === 'increase' ? 'decrease' : 'increase') : direction;
+  const delta = resolvedDirection === 'increase' ? step : -step;
 
   return Math.max(minWidth, currentWidth + delta);
 }
@@ -1136,4 +1144,12 @@ export function getTableColumnWidthValue<T extends TableBaseData>(
   const key = getTableColumnKey(column);
 
   return columnWidths?.[key] ?? column.width;
+}
+
+export function getTableAlign(column: TableColumn): CSSProperties['textAlign'] {
+  if (!column.align) {
+    return column.type ? 'center' : 'start';
+  }
+
+  return column.align;
 }

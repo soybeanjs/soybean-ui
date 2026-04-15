@@ -15,7 +15,7 @@ interface TableData {
 
 const columns: TableColumn<TableData>[] = [
   { type: 'index', width: '50px' },
-  { title: 'Name', dataIndex: 'name', sorter: true },
+  { title: 'Name', dataIndex: 'name' },
   { title: 'Age', dataIndex: 'age', align: 'center' },
   { title: 'Address', dataIndex: 'address' },
   { title: 'Details', dataIndex: 'details.description' }

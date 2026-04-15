@@ -41,11 +41,14 @@ const data: TableData[] = [
 
 ```playground
 base
+grouped
+sorting
+filtering
+fixed
+resizable
 expandable
 bordered
 striped
-grouped-sort-filter
-fixed-resizable
 tree
 virtualized
 single-selection
@@ -58,6 +61,7 @@ footer
 ### Props
 
 <DataTable preset="props" :data="[
+  { name: 'dir', type: 'Direction', default: 'ltr', description: 'Table text direction, affects alignment and fixed behavior.' },
   { name: 'columns', type: 'TableColumn<T>[]', default: '-', description: 'Array of column definitions.', required: true },
   { name: 'data', type: 'T[]', default: '-', description: 'Array of table data.', required: true },
   { name: 'rowKey', type: '(row: T) => R', default: '-', description: 'Function to generate unique key for each row.', required: true },
@@ -130,10 +134,10 @@ Column definition interface.
   { name: 'type', type: `'index' | 'selection' | 'expand'`, default: '-', description: 'Special column type.' },
   { name: 'dataIndex', type: 'string', default: '-', description: 'Data field path, supports nesting like `user.name`.' },
   { name: 'title', type: 'string', default: '-', description: 'Column title.' },
-  { name: 'align', type: `'left' | 'center' | 'right' | 'justify' | 'char'`, default: `'left'`, description: 'Alignment.' },
+  { name: 'align', type: `'start' | 'center' | 'end'`, default: `'start'`, description: 'Logical alignment. Use `start` and `end` for automatic RTL adaptation.' },
   { name: 'width', type: 'string', default: '-', description: 'Column width.' },
   { name: 'minWidth', type: 'string', default: '-', description: 'Minimum column width.' },
-  { name: 'fixed', type: `'left' | 'right'`, default: '-', description: 'Fixed column side.' },
+  { name: 'fixed', type: `'start' | 'end'`, default: '-', description: 'Logical fixed side. Use `start` and `end` so sticky positioning adapts automatically in RTL.' },
   { name: 'resizable', type: 'boolean', default: 'false', description: 'Enables column resizing.' },
   { name: 'children', type: 'TableColumn<T>[]', default: '-', description: 'Child columns for grouped headers.' },
   { name: 'sorter', type: 'boolean | ((a, b) => number)', default: '-', description: 'Enables sorting or provides a custom sort function.' },
