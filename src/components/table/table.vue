@@ -7,7 +7,7 @@
     M extends boolean = boolean
   "
 >
-import { computed, useSlots } from 'vue';
+import { computed } from 'vue';
 import { provideTableUi, TableCompact } from '@soybeanjs/headless';
 import type { TableSortOrder } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
@@ -27,9 +27,7 @@ const props = defineProps<TableProps<T, R, M>>();
 
 const emit = defineEmits<TableEmits<R, M>>();
 
-defineSlots<TableSlots<T>>();
-
-const slots = useSlots();
+const slots = defineSlots<TableSlots<T>>();
 
 const forwardedProps = useOmitProps(props, ['class', 'ui', 'size', 'bordered', 'striped']);
 
