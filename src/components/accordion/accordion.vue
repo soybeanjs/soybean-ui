@@ -22,7 +22,7 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
-const slotNames = computed(() => keysOf(slots));
+const slotNames = computed(() => keysOf(slots).filter(name => name !== 'item'));
 
 const ui = computed(() => {
   const variants = accordionVariants({
@@ -37,8 +37,11 @@ provideAccordionUi(ui);
 
 <template>
   <AccordionCompact v-bind="forwardedProps" v-on="listeners">
+    <template #item="slotProps">
+      <slot name="item" v-bind="slotProps" />
+    </template>
     <template v-for="slotName in slotNames" #[slotName]="slotProps">
-      <slot :name="slotName" v-bind="slotProps as any" />
+      <slot :name="slotName" v-bind="slotProps" />
     </template>
   </AccordionCompact>
 </template>
