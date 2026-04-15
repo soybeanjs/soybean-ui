@@ -10,6 +10,9 @@
 - [ ] 消费必有值的 context 时直接解构所需状态；只有可选 context 才保留整体对象
 - [ ] `context.ts` 导出 `provide{Name}Ui`（`use{Name}Ui` 仅内部用，不导出）
 - [ ] 所有 SFC 通过 `use{Name}Ui('root')` 或 `use{Name}Ui()` 获取类名，绑定到 `:class`
+- [ ] 数据驱动且结构稳定的多 slot 组件已在 headless 层新增 `{Name}Compact`，未把聚合逻辑留在 UI wrapper
+- [ ] 每个 headless 分片组件的根元素都带有正确的 `data-slot="{slotName}"`
+- [ ] 聚合组件中的默认图标通过 headless `IconRender` 渲染，并由 `ConfigProvider.iconRender` 驱动
 - [ ] 受控/非受控 state 通过 `useControllableState` 处理
 - [ ] 无任何 `<style>` 块、无 UnoCSS 类名、无内联样式
 - [ ] 无 `@soybeanjs/ui` 导入（循环依赖）
@@ -39,6 +42,7 @@
 - [ ] props 转发策略是有意选择的：props 多或需要拆分子集时用 `useOmitProps` / `usePickProps`；基于 `Primitive` 且本层额外处理 prop <= 3 时优先直接显式绑定
 - [ ] `useOmitProps(props, ['class', 'color', 'size', 'ui', ...])` 包含所有 UI 专属 prop（含 `class`）
 - [ ] 多 slot：`mergeSlotVariants(variants, props.ui, { root: props.class })`
+- [ ] 如果 headless 已提供 `{Name}Compact`，UI wrapper 直接渲染它，不再自己遍历 `items` 或拼装默认 icon/title/content
 - [ ] 单类名：`cn(variants({...}), props.class)`
 - [ ] `defineOptions({ name: 'S{Name}' })` ← S 前缀
 - [ ] 无业务逻辑、无 ARIA 状态
@@ -58,10 +62,10 @@
 
 - [ ] `headless/src/index.ts` 已添加 re-export
 - [ ] `src/index.ts` 已添加 re-export
-- [ ] `headless/src/constants/components.ts` 已按字母顺序添加条目（camelCase key + 无 S 前缀的 PascalCase 组件名数组）
+- [ ] `headless/src/constants/components.ts` 已按字母顺序添加条目（camelCase key + 无 S 前缀的 PascalCase 组件名数组，存在聚合入口时包含 `{Name}Compact`）
 - [ ] `src/constants/components.ts` 已按字母顺序添加条目（camelCase key + S 前缀组件名数组）
-- [ ] `headless/src/namespaced/index.ts` 顶部 import 块已按字母顺序添加所有子组件
-- [ ] `headless/src/namespaced/index.ts` 底部已按字母顺序添加 Namespace 对象导出（`as { ... }` 类型标注）
+- [ ] `headless/src/namespaced/index.ts` 顶部 import 块已按字母顺序添加所有子组件（存在聚合入口时包含 `Compact`）
+- [ ] `headless/src/namespaced/index.ts` 底部已按字母顺序添加 Namespace 对象导出（`as { ... }` 类型标注；存在聚合入口时包含 `Compact`）
 
 ## TypeScript
 

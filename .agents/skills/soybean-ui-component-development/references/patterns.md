@@ -193,7 +193,88 @@ const forwardedOptionsProps = usePickProps(props, ['items', 'itemProps', 'groupP
 
 ---
 
-## 10. Vue SFC script setup 顺序
+## 10. Headless 聚合组件（`{Name}Compact`）
+
+当一个组件是“列表数据 + 稳定结构 + UI 层只是在重复拼装 headless 分片”时，把聚合逻辑下沉到 headless，新增 `{Name}Compact`。
+
+```vue
+<script setup lang="ts">
+import { useForwardListeners, useOmitProps } from '../../composables';
+import AccordionContent from './accordion-content.vue';
+import AccordionHeader from './accordion-header.vue';
+import AccordionItem from './accordion-item.vue';
+import AccordionRoot from './accordion-root.vue';
+import AccordionTrigger from './accordion-trigger.vue';
+import IconRender from '../icon/icon-render.vue';
+
+const forwardedProps = useOmitProps(props, ['items', 'itemProps', 'triggerProps', 'contentProps']);
+const listeners = useForwardListeners(emit);
+</script>
+
+<template>
+  <AccordionRoot v-bind="forwardedProps" v-on="listeners">
+    <template v-for="(item, index) in items" :key="item.value">
+      <AccordionItem v-slot="{ open }" :value="item.value" :disabled="item.disabled">
+        <AccordionHeader>
+          <AccordionTrigger>
+            <IconRender v-if="item.icon" :icon="item.icon" />
+            {{ item.title }}
+            <IconRender icon="lucide:chevron-down" />
+          </AccordionTrigger>
+        </AccordionHeader>
+        <AccordionContent>
+          {{ item.description }}
+        </AccordionContent>
+      </AccordionItem>
+    </template>
+  </AccordionRoot>
+</template>
+```
+
+UI wrapper 此时只做 `variants`、`mergeSlotVariants`、`provide{Name}Ui` 和 slots 透传。
+
+---
+
+## 11. 分片组件根元素的 `data-slot`
+
+每个 headless 分片组件的根元素都应暴露稳定的 `data-slot`，用于调试、测试和 UI 侧选择器约定。
+
+```vue
+<template>
+  <button :class="cls" data-slot="trigger">
+    <slot />
+  </button>
+</template>
+```
+
+```vue
+<template>
+  <div :class="cls" data-slot="content">
+    <slot />
+  </div>
+</template>
+```
+
+---
+
+## 12. 通过 `IconRender` 对接 `ConfigProvider.iconRender`
+
+headless 需要默认图标时，优先使用 `IconRender`，让图标节点由上下文中的 `iconRender` 决定，而不是把图标渲染逻辑留给 UI wrapper。
+
+```vue
+<script setup lang="ts">
+import IconRender from '../icon/icon-render.vue';
+</script>
+
+<template>
+  <IconRender v-if="item.icon" :icon="item.icon" :class="ui.triggerLeadingIcon" />
+  <IconRender icon="lucide:chevron-down" :class="ui.triggerIcon" />
+</template>
+```
+
+---
+
+## 13. Vue SFC script setup 顺序
 
 推荐把 `script setup` 组织成稳定的阅读顺序：
 
@@ -234,7 +315,7 @@ defineExpose({ visible });
 
 ---
 
-## 11. 访问必有值的 context
+## 14. 访问必有值的 context
 
 当 `useXContext('ConsumerName')` 代表“当前组件必须被对应 provider 包裹”时，直接解构所需字段。
 

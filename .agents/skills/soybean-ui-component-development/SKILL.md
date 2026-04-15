@@ -36,7 +36,8 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 两种组件模式：
 
-- **多 slot 组件**（accordion、badge 等）：有 `UiSlot` + `UiClass`，使用 `mergeSlotVariants`
+- **多 slot 基础组件**（badge 等）：headless 暴露各个分片组件，有 `UiSlot` + `UiClass`
+- **多 slot 聚合组件**（accordion 等）：在基础分片之上额外提供 `{Name}Compact`，由 headless 负责结构聚合、默认内容和图标渲染，UI wrapper 只保留样式相关逻辑
 - **单类名组件**（button 等）：无 UiContext，直接用 `cn(variants, props.class)`
 
 > **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。
@@ -78,6 +79,42 @@ export interface {Name}RootContext {
 export type {Name}UiSlot = 'root' | 'trigger' | 'content';
 
 export type {Name}Ui = UiClass<{Name}UiSlot>;
+```
+
+**聚合组件（`{Name}Compact`）模式**
+
+当组件满足“数据驱动 + 结构稳定 + UI 层只是重复拼装 headless 分片”这三个条件时，优先把聚合逻辑下沉到 headless，新增 `{Name}Compact`：
+
+- `{Name}Compact` 负责遍历 `items`、组合 `Root/Item/Header/Trigger/Content` 等分片组件。
+- 默认标题、描述、leading icon、trigger icon 等内容在 `{Name}Compact` 内实现，而不是留在 UI wrapper。
+- UI 层只保留 `variants.ts`、`mergeSlotVariants`、`provide{Name}Ui(ui)`、props/listeners 转发、slots 透传。
+
+```typescript
+export interface {Name}OptionData {
+  value: string;
+  disabled?: boolean;
+  title?: string;
+  description?: string;
+  icon?: IconValue;
+}
+
+export interface {Name}CompactProps<
+  T extends {Name}OptionData = {Name}OptionData,
+  M extends boolean = false
+> extends {Name}RootProps<M> {
+  items: T[];
+  itemProps?: {Name}ItemProps;
+  triggerProps?: {Name}TriggerProps;
+  contentProps?: {Name}ContentProps;
+}
+
+export type {Name}CompactSlots<T extends {Name}OptionData = {Name}OptionData, M extends boolean = false> = {
+  item?: (props: { item: T; index: number; modelValue: string | string[] | undefined }) => any;
+  leading?: (props: { item: T; index: number; modelValue: string | string[] | undefined; open: boolean }) => any;
+  title?: (props: { item: T; index: number; modelValue: string | string[] | undefined; open: boolean }) => any;
+  'trigger-icon'?: (props: { item: T; index: number; modelValue: string | string[] | undefined; open: boolean }) => any;
+  content?: (props: { item: T; index: number; modelValue: string | string[] | undefined; open: boolean }) => any;
+};
 ```
 
 **关键类型速查**（来自 `headless/src/types/`）：
@@ -278,16 +315,67 @@ provide{Name}RootContext({
 </template>
 ```
 
+**分片组件必须暴露稳定的 `data-slot`**
+
+headless 层的每个单独部分组件都要在自己的根元素上绑定 `data-slot="{slotName}"`。这既是调试锚点，也是 UI 侧定向选择器、测试选择器和文档约定的一部分。
+
+```vue
+<template>
+  <button :class="cls" data-slot="trigger">
+    <slot />
+  </button>
+</template>
+```
+
+```vue
+<template>
+  <div :class="cls" data-slot="content">
+    <slot />
+  </div>
+</template>
+```
+
+**聚合组件中的图标渲染放在 headless**
+
+如果聚合组件需要默认图标，不要让 UI wrapper 再去拼图标节点。统一在 headless 中使用 `IconRender` 组件，它会读取 `ConfigProvider` 注入的 `iconRender`：
+
+```vue
+<script setup lang="ts">
+import IconRender from '../icon/icon-render.vue';
+</script>
+
+<template>
+  <slot name="leading" :item="item" :index="index" :open="open">
+    <IconRender v-if="item.icon" :icon="item.icon" :class="ui.triggerLeadingIcon" />
+  </slot>
+
+  <slot name="trigger-icon" :item="item" :index="index" :open="open">
+    <IconRender icon="lucide:chevron-down" :class="ui.triggerIcon" />
+  </slot>
+</template>
+```
+
+这类默认图标属于“结构默认值”，应与聚合逻辑一起下沉到 headless，而不是留在 UI 层。
+
 ### 4. index.ts
 
 ```typescript
+export { default as {Name}Compact } from './{component}-compact.vue';
 export { default as {Name}Root } from './{component}-root.vue';
 export { default as {Name}Trigger } from './{component}-trigger.vue';
 
 // 只导出 provideXUi（不导出 useXUi，后者仅供内部子组件使用）
 export { provide{Name}Ui } from './context';
 
-export type { {Name}RootProps, {Name}RootEmits, {Name}UiSlot, {Name}Ui } from './types';
+export type {
+  {Name}CompactProps,
+  {Name}CompactEmits,
+  {Name}CompactSlots,
+  {Name}RootProps,
+  {Name}RootEmits,
+  {Name}UiSlot,
+  {Name}Ui
+} from './types';
 ```
 
 然后在 `headless/src/index.ts` 中 re-export：
@@ -496,7 +584,7 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant']
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { {Name}Root, provide{Name}Ui } from '@soybeanjs/headless';
+import { {Name}Compact, provide{Name}Ui } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
 import { {component}Variants } from './variants';
 import type { {Name}Emits, {Name}Props } from './types';
@@ -520,11 +608,19 @@ provide{Name}Ui(ui);
 </script>
 
 <template>
-  <{Name}Root v-bind="forwardedProps" v-on="listeners">
+  <{Name}Compact v-bind="forwardedProps" v-on="listeners">
     <slot />
-  </{Name}Root>
+  </{Name}Compact>
 </template>
 ```
+
+当 headless 已提供 `{Name}Compact` 时，UI wrapper 不再负责：
+
+- 遍历 `items`
+- 组合 `Root/Item/Header/Trigger/Content`
+- 默认标题、描述、图标渲染
+
+这些逻辑都属于结构和交互默认值，应放在 headless。UI 层只保留样式计算、UiContext 注入和 slots 透传。
 
 **单类名组件（无 UiContext，如 Button）**：
 
@@ -790,7 +886,7 @@ export * from './components/{component}';
 // key = camelCase，值 = headless 导出的 PascalCase 组件名（无 S 前缀）
 export const components = {
   // ...existing...
-  {componentCamelCase}: ['{Name}Root', '{Name}Item', '{Name}Content'],
+  {componentCamelCase}: ['{Name}Compact', '{Name}Root', '{Name}Item', '{Name}Content'],
   // ...existing...
 };
 
@@ -807,7 +903,7 @@ export const components = {
 
 **Headless 值**：该组件所有对外导出的 headless 子组件名，例如：
 
-- `accordion` → `['AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent']`
+- `accordion` → `['AccordionCompact', 'AccordionRoot', 'AccordionItem', 'AccordionTrigger', 'AccordionHeader', 'AccordionContent']`
 - `button` → `['Button']`（单组件时只有一个）
 
 **UI 值**：`S{Name}` 以及所有变体组件（`SButtonLoading`、`SButtonIcon` 等）。
@@ -822,6 +918,7 @@ export const components = {
 // headless/src/namespaced/index.ts — 顶部大 import 块（按字母顺序）
 import {
   // ...existing...
+  {Name}Compact,
   {Name}Content,
   {Name}Item,
   {Name}Root,
@@ -835,11 +932,13 @@ import {
 ```typescript
 // 按字母顺序，每个组件对应一个 const 导出
 export const {Name} = {
+  Compact: {Name}Compact,
   Root: {Name}Root,
   Item: {Name}Item,
   Trigger: {Name}Trigger,
   Content: {Name}Content
 } as {
+  Compact: typeof {Name}Compact;
   Root: typeof {Name}Root;
   Item: typeof {Name}Item;
   Trigger: typeof {Name}Trigger;
@@ -847,7 +946,7 @@ export const {Name} = {
 };
 ```
 
-> 字段与 headless `index.ts` 导出的子组件一一对应；单组件（如 Button）只有一个 `Root` 字段。
+> 字段与 headless `index.ts` 导出的子组件一一对应；若存在聚合入口，同步暴露 `Compact`；单组件（如 Button）只有一个 `Root` 字段。
 
 ---
 
@@ -1206,6 +1305,33 @@ const wrapper = mount(
 | `{state} state`  | modelValue 反映到 aria-\* / data-state，emit 时机   |
 | `disabled state` | 禁用渲染方式（见上表）、禁用时不触发 emit           |
 | `accessibility`  | `getA11yViolations` 返回空数组，覆盖主要使用场景    |
+
+---
+
+## 旧组件迁移指南（聚合组件模式）
+
+适用场景：旧实现中 UI 层负责遍历 `items`、拼装多个 headless 分片组件、渲染默认标题/描述/图标。Accordion 已改成这种新模式，后续类似组件按相同思路迁移。
+
+**迁移目标**
+
+- 在 headless 层新增 `{Name}Compact`，承接原先 UI 层的结构聚合逻辑。
+- UI 层 `.vue` 文件只保留样式相关逻辑：variant 计算、`mergeSlotVariants`、`provide{Name}Ui(ui)`、props/listeners 转发、slot 透传。
+
+**迁移步骤**
+
+1. 在 `headless/src/components/{component}/types.ts` 新增 `{Name}CompactProps`、`{Name}CompactEmits`、`{Name}CompactSlots`。
+2. 在 `headless/src/components/{component}/` 新增 `{component}-compact.vue`，把 `items` 遍历、`Root/Item/Header/Trigger/Content` 组装、默认 title/content/icon 渲染都迁移到这里。
+3. 各个 headless 分片组件的根元素补齐 `data-slot="{slotName}"`。
+4. 默认图标改用 headless `IconRender`，通过 `ConfigProvider.iconRender` 驱动，不再由 UI 层自行渲染。
+5. 更新 `headless` 的 `index.ts`、`headless/src/constants/components.ts`、`headless/src/namespaced/index.ts`，把 `Compact` 作为正式公开 API 导出。
+6. 将 UI wrapper 改为渲染 `{Name}Compact`，删除原本在 UI 层的循环、默认文案和图标逻辑。
+
+**迁移边界**
+
+- 保留在 UI 层：`variants.ts`、`ui` 扩展、主题尺寸/颜色变体、`props.class` 合并。
+- 下沉到 headless：结构组合、默认 slot 内容、交互语义、图标渲染、`data-slot` 暴露。
+
+如果迁移后 UI wrapper 里还保留了 items 循环或默认 icon/title/content 拼装，说明边界还没切干净。
 
 ---
 
