@@ -42,6 +42,8 @@ SoybeanUI 采用严格的**双层分离**设计：
 
 **数据流严格单向**：`headless` → `src`。样式层不会导入 headless 的内部实现，而是通过 `provideXUi(computedUi)` 注入样式 token，headless 组件再通过 `useUiContext()` 读取。
 
+部分多插槽 headless 组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。它们把条目遍历以及默认内容 / 图标组合放在 headless 层完成，而 UI 层只负责样式和 props 转发。
+
 ### 样式注入机制
 
 每个多橪位的 headless 组件都有对应的 `provide{Name}Ui` 函数。样式层通过 `tailwind-variants` 计算类名后注入：
@@ -150,6 +152,8 @@ export default defineNuxtConfig({
 
 Headless 组件提供功能但不包含样式。
 
+对于数据驱动的多插槽场景，如果组件提供了 `Compact` 版本，优先使用它。它是 headless 层的约定式组合入口，而基础分片仍然保留给需要完全手动拼装的场景。
+
 ```vue
 <script setup>
 import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from '@soybeanjs/headless';
@@ -183,142 +187,3 @@ import { AccordionRoot, AccordionItem, AccordionTrigger, AccordionContent } from
 - [shadcn/ui](https://github.com/shadcn/ui)
 - [nuxt-ui](https://github.com/nuxt/ui)
 - [unocss](https://github.com/unocss/unocss)
-
-## 🗺️ 路线图
-
-### 组件
-
-✅: 已完成 ✨: 已实现
-
-✅ 49 / 总计: 108
-
-| No  | Priority | Name            | Status       | Alias                    | 📝 Note                  |
-| --- | -------- | --------------- | ------------ | ------------------------ | ------------------------ |
-| 1   | 1        | Accordion       | ✅ Completed |                          |                          |
-| 2   | 1        | Alert           | ✅ Completed |                          |                          |
-| 3   | 1        | AlertDialog     | ✅ Completed |                          |                          |
-| 4   | 1        | Arrow           | ✅ Completed |                          |                          |
-| 5   | 1        | AspectRatio     | ✅ Completed |                          |                          |
-| 6   | 1        | Avatar          | ✅ Completed |                          |                          |
-| 7   | 1        | Badge           | ✅ Completed | Chip                     |                          |
-| 8   | 1        | Breadcrumb      | ✅ Completed |                          |                          |
-| 9   | 1        | Button          | ✅ Completed |                          | ✨ support loading       |
-| 10  | 1        | Card            | ✅ Completed |                          |                          |
-| 11  | 1        | Checkbox        | ✅ Completed |                          | ✨ support checkbox card |
-| 12  | 1        | Collapsible     | ✅ Completed |                          |                          |
-| 13  | 1        | Command         | ✅ Completed |                          |                          |
-| 14  | 1        | ConfigProvider  | ✅ Completed |                          |                          |
-| 15  | 1        | ContextMenu     | ✅ Completed |                          |                          |
-| 16  | 1        | Dialog          | ✅ Completed |                          |                          |
-| 17  | 1        | Drawer          | ✅ Completed | Sheet                    |                          |
-| 18  | 1        | DropdownMenu    | ✅ Completed |                          | ✨ support hover trigger |
-| 19  | 1        | Form            | ✅ Completed |                          |                          |
-| 20  | 1        | Icon            | ✅ Completed |                          | ✨ based on iconify      |
-| 21  | 1        | Input           | ✅ Completed |                          |                          |
-| 22  | 1        | InputNumber     | ✅ Completed | NumberField, NumberInput |                          |
-| 23  | 1        | Kbd             | ✅ Completed |                          |                          |
-| 24  | 1        | Label           | ✅ Completed |                          |                          |
-| 25  | 1        | Layout          | ✅ Completed |                          |                          |
-| 26  | 1        | Link            | ✅ Completed |                          |                          |
-| 27  | 1        | List            | ✅ Completed |                          |                          |
-| 28  | 1        | Listbox         | ✅ Completed |                          |                          |
-| 29  | 1        | Menu            | ✅ Completed |                          |                          |
-| 30  | 1        | NavigationMenu  | ✅ Completed |                          |                          |
-| 31  | 1        | Pagination      | ✅ Completed |                          |                          |
-| 32  | 1        | Password        | ✅ Completed |                          |                          |
-| 33  | 1        | Popover         | ✅ Completed |                          |                          |
-| 34  | 1        | RadioGroup      | ✅ Completed |                          | ✨ support radio card    |
-| 35  | 1        | Segment         | ✅ Completed |                          |                          |
-| 36  | 1        | Select          | ✅ Completed |                          |                          |
-| 37  | 1        | Separator       | ✅ Completed | Divider                  |                          |
-| 38  | 1        | Switch          | ✅ Completed |                          | ✨ support switch card   |
-| 39  | 1        | Tabs            | ✅ Completed |                          |                          |
-| 40  | 1        | Tag             | ✅ Completed | Badge(shadcn-ui)         |                          |
-| 41  | 1        | Textarea        | ✅ Completed |                          | ✨ support auto size     |
-| 42  | 1        | Toast           | ✅ Completed | Sonner                   | migrate from vue-sonner  |
-| 43  | 1        | Tooltip         | ✅ Completed |                          |                          |
-| 44  | 1        | Tree            | ✅ Completed |                          | ✨ support virtualized   |
-| 45  | 1        | TreeMenu        | ✅ Completed |                          |                          |
-| 46  | 1        | Virtualizer     | ✅ Completed |                          |                          |
-| 47  | 1        | VisuallyHidden  | ✅ Completed |                          |                          |
-| 48  | 2        | PageTabs        | ✅ Completed |                          |                          |
-| 49  | 2        | Popconfirm      | ✅ Completed |                          |                          |
-| 50  | 2        | ColorPicker     |              |                          |                          |
-| 51  | 2        | Combobox        |              |                          | support virtualized      |
-| 52  | 2        | DataTable       |              |                          | support virtualized      |
-| 53  | 2        | Menubar         |              |                          |                          |
-| 54  | 2        | PinInput        |              | InputOPT, OPTInput       |                          |
-| 55  | 2        | Progress        |              |                          | include circle           |
-| 56  | 2        | ScrollArea      |              |                          |                          |
-| 57  | 2        | Skeleton        | ✅ Completed |                          |                          |
-| 58  | 2        | Slider          |              |                          |                          |
-| 59  | 2        | Table           |              |                          |                          |
-| 60  | 2        | Toggle          |              |                          |                          |
-| 61  | 2        | ToggleGroup     | ✅ Completed |                          |                          |
-| 62  | 3        | BottomSheet     |              | Drawer(shadcn-ui)        |                          |
-| 63  | 3        | Calendar        |              |                          | v-calendar               |
-| 64  | 3        | Carousel        |              |                          |                          |
-| 65  | 3        | DateField       |              |                          |                          |
-| 66  | 3        | DatePicker      |              |                          |                          |
-| 67  | 3        | DateRangeField  |              |                          |                          |
-| 68  | 3        | DateRangePicker |              |                          |                          |
-| 69  | 3        | Editable        |              |                          |                          |
-| 70  | 3        | HoverCard       |              |                          |                          |
-| 71  | 3        | RangeCalendar   |              |                          | v-calendar               |
-| 72  | 3        | Resizable       |              |                          |                          |
-| 73  | 3        | Splitter        |              |                          |                          |
-| 74  | 3        | Stepper         |              |                          |                          |
-| 75  | 3        | TagsInput       |              |                          |                          |
-| 76  | 3        | TimeField       |              |                          |                          |
-| 77  | 3        | Timeline        |              |                          | ui things                |
-| 78  | 3        | TimePicker      |              |                          | element-plus             |
-| 79  | 3        | Toolbar         |              |                          |                          |
-| 80  | 4        | Affix           |              |                          |                          |
-| 81  | 4        | Anchor          |              |                          |                          |
-| 82  | 4        | AutoComplete    |              |                          | support virtualized      |
-| 83  | 4        | Backtop         |              |                          |                          |
-| 84  | 4        | Cascader        |              |                          | support virtualized      |
-| 85  | 4        | Clipboard       |              |                          |                          |
-| 86  | 4        | Code            |              |                          |                          |
-| 87  | 4        | Comment         |              |                          |                          |
-| 88  | 4        | Countdown       |              |                          |                          |
-| 89  | 4        | CurrencyInput   |              |                          |                          |
-| 90  | 4        | Descriptions    |              |                          |                          |
-| 91  | 4        | Ellipsis        |              |                          |                          |
-| 92  | 4        | Empty           |              |                          |                          |
-| 93  | 4        | Equation        |              |                          | based on katex           |
-| 94  | 4        | InfiniteScroll  |              |                          |                          |
-| 95  | 4        | Mention         |              |                          | element-plus             |
-| 96  | 4        | Navbar          |              |                          |                          |
-| 97  | 4        | NumberAnimation |              |                          | naive-ui                 |
-| 98  | 4        | QRCode          |              |                          |                          |
-| 99  | 4        | Rating          |              | Rate                     | element-plus             |
-| 100 | 4        | Result          |              |                          |                          |
-| 101 | 4        | Spinner         |              | Loader, Spin             | github ldrs              |
-| 102 | 4        | Statistic       |              |                          |                          |
-| 103 | 4        | Tour            |              |                          |                          |
-| 104 | 4        | Transfer        |              |                          |                          |
-| 105 | 4        | TreeSelect      |              |                          |                          |
-| 106 | 4        | Typography      |              |                          | shadcn-ui                |
-| 107 | 4        | Upload          |              | FileUpload, Dropfile     |                          |
-| 108 | 4        | Watermark       |              |                          |                          |
-
-### Utilities
-
-✅ 13 / 总计: 13
-
-| No. | Priority | Name                | Status       | 📝 Note        |
-| --- | -------- | ------------------- | ------------ | -------------- |
-| 1   | 1        | Popper              | ✅ Completed |                |
-| 2   | 1        | Portal              | ✅ Completed | alias Teleport |
-| 3   | 1        | Primitive           | ✅ Completed |                |
-| 4   | 1        | RovingFocus         | ✅ Completed |                |
-| 5   | 1        | Slot                | ✅ Completed |                |
-| 6   | 1        | useCollection       | ✅ Completed |                |
-| 7   | 1        | useDismissableLayer | ✅ Completed |                |
-| 8   | 1        | useFocusGuards      | ✅ Completed |                |
-| 9   | 1        | useFocusScope       | ✅ Completed |                |
-| 10  | 1        | usePresence         | ✅ Completed |                |
-| 11  | 1        | useDialog           | ✅ Completed |                |
-| 12  | 1        | useToast            | ✅ Completed |                |
-| 13  | 2        | useLoadingBar       | ✅ Completed |                |

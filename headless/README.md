@@ -11,6 +11,8 @@ A collection of unstyled, accessible UI primitives for Vue 3.
 
 `@soybeanjs/headless` provides the core logic and accessibility features for UI components, without any styles. It is designed for developers who want to build their own design systems with full control over the visual appearance.
 
+Some multi-slot components also expose `Compact` aggregators, such as `AccordionCompact` and `TableCompact`. These headless entry points own item iteration and default content/icon composition, while styled wrappers stay focused on classes and prop forwarding.
+
 ## 📦 Installation
 
 ```bash

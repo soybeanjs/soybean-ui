@@ -11,6 +11,8 @@
 
 `@soybeanjs/headless` 为 UI 组件提供了核心逻辑和可访问性功能，但不包含任何样式。它专为希望构建自己的设计系统并完全控制视觉外观的开发者而设计。
 
+部分多插槽组件还会暴露 `Compact` 聚合层，例如 `AccordionCompact` 和 `TableCompact`。这些 headless 入口负责条目遍历以及默认内容 / 图标组合，而样式包装层只专注于类名和 props 转发。
+
 ## 📦 安装
 
 ```bash
