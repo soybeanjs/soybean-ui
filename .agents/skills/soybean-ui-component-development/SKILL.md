@@ -23,6 +23,21 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 - 做 soybean-ui 组件开发时，以本 skill 作为主入口，不再依赖“跨 skill 引入规范”。
 - 如果任务只是独立的 TypeScript 重构而不是完整组件开发，再单独使用 `typescript-functional-style` skill。
+- 开始写代码前，必须先查看至少一个同模式的 headless 组件和一个 UI 组件，按现有实现落地，不要凭空生成“通用 Vue 组件模板”。
+- 除非用户明确缩小范围，否则“开发 soybean-ui 组件”默认表示交付完整集成结果，而不是只生成局部骨架。
+- 新建组件时，默认需要同时检查并补齐：headless 组件目录、UI 组件目录、`headless/src/index.ts`、`src/index.ts`、两侧 `constants/components.ts`、`headless/src/namespaced/index.ts`、playground、docs、tests。
+- 为现有组件加功能或修 bug 时，必须同步更新所有受影响层和注册文件，不要只改当前打开的文件或单一 package。
+- `checklist.md` 是完成门槛，不是可选阅读材料；结束前必须对照相关条目自检。
+- 结束前至少运行与改动相匹配的验证（`pnpm typecheck`、`pnpm lint`、相关 `pnpm test` / 定向测试）；如果无法运行，必须明确说明阻塞原因。
+
+## 任务闭环
+
+执行 soybean-ui 组件任务时，按下面顺序推进：
+
+1. **先判模式**：先判断当前是“多 slot 基础组件”“Compact 聚合组件”还是“单类名组件”，再决定目录结构和文件清单。
+2. **先找参照**：从现有源码中找最近似实现，优先复用已验证模式，而不是从零组织 API、slots 和文件命名。
+3. **做完整集成**：除非用户明确限制范围，否则把组件接入 barrel、constants、namespaced、playground、docs、tests 等出口面。
+4. **再做收尾校验**：对照 checklist 检查结构、a11y、RTL、导出、文档、测试和验证命令是否闭环。
 
 ## 架构概览
 
@@ -33,10 +48,10 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 
 **数据流**：`headless` → `src`（严禁反向）。样式通过 `provideXUi(ui)` 注入，headless 通过 `useUiContext` 读取。
 
-两种组件模式：
+三种组件模式：
 
 - **多 slot 基础组件**（badge 等）：headless 暴露各个分片组件，有 `UiSlot` + `UiClass`
-- **多 slot 聚合组件**（accordion 等）：在基础分片之上额外提供 `{Name}Compact`，由 headless 负责结构聚合、默认内容和图标渲染，UI wrapper 只保留样式相关逻辑
+- **Compact 聚合组件**（accordion、table 等）：在基础分片之上额外提供 `{Name}Compact`，由 headless 负责结构聚合、默认内容和图标渲染，UI wrapper 只保留样式相关逻辑
 - **单类名组件**（button 等）：无 UiContext，直接用 `cn(variants, props.class)`
 
 > **本地开发准备**：首次开发前运行 `pnpm stub`，将包源码链接到 `dist/`，使 `@soybeanjs/headless` 和 `@soybeanjs/ui` 的别名指向本地源码而非构建产物。

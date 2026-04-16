@@ -80,7 +80,7 @@ pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
 - **Multi-slot**: `provide{Name}Ui(ui)` pattern; only export `provide`, not `use`
 - **Compact aggregations**: For stable, data-driven composites (currently `AccordionCompact`, `TableCompact`), headless owns iteration, default content, and internal composition; UI wrappers stay thin and only handle variants, class injection, and prop/slot forwarding
 - **Single-class**: No UiContext; use `cn(variants({...}), props.class)` directly
-- **index.ts re-exports**: UI layer imports headless types from sub-path `@soybeanjs/headless/{component}`; component barrels can re-export both base parts and `*Compact`
+- **index.ts re-exports**: UI component barrels re-export headless types from sub-path `@soybeanjs/headless/{component}`; `types.ts` should follow the established import style of neighboring components instead of mixing arbitrary paths
 
 ## ANTI-PATTERNS
 

@@ -2,6 +2,14 @@
 
 完成组件开发后逐项确认。
 
+## 任务闭环
+
+- [ ] 开始实现前，已查看至少一个同模式的 headless 组件和一个 UI 组件，未凭空发明目录结构或 API
+- [ ] 已明确当前任务属于“多 slot 基础组件”/“Compact 聚合组件”/“单类名组件”之一，并按该模式实现
+- [ ] 新建组件时，除非用户明确缩小范围，否则已补齐 barrel、constants、namespaced、playground、docs、tests
+- [ ] 为现有组件新增功能或修 bug 时，已同步更新所有受影响层和注册文件，而不是只改单个目录
+- [ ] 结束前已运行与改动匹配的验证，或明确记录无法运行的原因
+
 ## Headless 层 (`headless/src/components/{component}/`)
 
 - [ ] `types.ts` 使用 `UiClass<{Name}UiSlot>` 定义 `{Name}Ui`（非 `Record<..., ClassValue>`）
@@ -37,7 +45,7 @@
 - [ ] `.vue` 文件的 `script setup` 顺序符合 `imports → defineOptions → props/emits type → defineProps/defineEmits → hooks/composables → 业务逻辑 → init → provider → watch → lifecycle → defineExpose`
 - [ ] `<template>` 中直接使用 prop 名，不写 `props.xxx`
 - [ ] Props 用 `interface`（非 `type`），包含 `class?: ClassValue`
-- [ ] `types.ts` 中 headless 类型从 `@soybeanjs/headless`（根路径）导入；`index.ts` 中 re-export 使用 `@soybeanjs/headless/{component}`（子路径）
+- [ ] `types.ts` 中 headless 类型导入方式与同模式现有组件保持一致，不在同一组件内随意混用路径；`index.ts` 中 re-export 使用 `@soybeanjs/headless/{component}`（子路径）
 - [ ] UI 层新增的额外结构元素如果也需要 `ui` 样式，已扩展 `ExtraUiSlot` / `ExtendedUi`（参考 `src/components/accordion/types.ts`）
 - [ ] props 转发策略是有意选择的：props 多或需要拆分子集时用 `useOmitProps` / `usePickProps`；基于 `Primitive` 且本层额外处理 prop <= 3 时优先直接显式绑定
 - [ ] `useOmitProps(props, ['class', 'color', 'size', 'ui', ...])` 包含所有 UI 专属 prop（含 `class`）
