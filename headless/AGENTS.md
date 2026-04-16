@@ -1,12 +1,12 @@
 # HEADLESS PACKAGE — @soybeanjs/headless
 
 **Package:** `headless/` → publishes as `@soybeanjs/headless`
-**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero styles.
+**Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper.
 
 ## EXPORTS
 
 Dev mode resolves to `./src/...` (source); publishConfig switches to `./dist/...`.
-Three sub-path exports: root, `/composables`, `/shared` — each has own barrel.
+Core exports include root, `/constants`, `/composables`, `/shared`, `/nuxt`, `/resolver`, `/namespaced`, plus per-component sub-paths under `./*`.
 
 ## KEY PATTERNS
 
@@ -14,12 +14,13 @@ Three sub-path exports: root, `/composables`, `/shared` — each has own barrel.
 - **useUiContext**: Bridge to UI layer. Returns `[provideXUi, useUi]`. Headless reads class tokens injected by UI layer. Only file with `@ts-expect-error`.
 - **useControllableState**: Controlled/uncontrolled prop pattern. If initial prop is `undefined`, uses internal `shallowRef`; otherwise returns computed proxy.
 - **useForwardElement**: Exposes inner DOM element via `defineExpose`. Prefer over direct DOM access.
+- **Compact components**: Stable, data-driven compositions can live in headless as `{Name}Compact`, reusing base parts while centralizing iteration, slot props, and default content. Current examples: `AccordionCompact`, `TableCompact`.
 
 ## STRUCTURE
 
 ```
 headless/src/
-├── components/   # 50 primitives (one dir each). See components/AGENTS.md
+├── components/   # 74 component dirs. Base primitives plus Compact aggregations. See components/AGENTS.md
 ├── composables/  # 26 reusable hooks. See composables/AGENTS.md
 ├── shared/       # Pure TS utilities (no Vue). See shared/AGENTS.md
 ├── constants/    # ARIA attrs, collection markers, component constants
@@ -33,3 +34,4 @@ headless/src/
 - **NO styles** — not even `hidden`, `sr-only`, or inline styles
 - **NO presentation logic** — colors, sizing, spacing belong in UI layer
 - **NO direct DOM mutation** — use Vue refs + `useForwardElement`
+- **NO UI-side reimplementation of stable aggregate structure** — if a data-driven composite is reusable, prefer a headless `*Compact`
