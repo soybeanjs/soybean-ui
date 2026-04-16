@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, onUnmounted } from 'vue';
 import { provideListboxGroupContext, useListboxUi } from '../listbox/context';
 import { useComboboxRootContext } from './context';
 import type { ComboboxGroupProps } from './types';
@@ -11,7 +11,7 @@ defineOptions({
 defineProps<ComboboxGroupProps>();
 
 const { id } = provideListboxGroupContext();
-const { filterSearch, ignoreFilter, filterState } = useComboboxRootContext('ComboboxGroup');
+const { filterSearch, ignoreFilter, filterState, allGroups } = useComboboxRootContext('ComboboxGroup');
 const cls = useListboxUi('group');
 
 const visible = computed(() => {
@@ -21,10 +21,20 @@ const visible = computed(() => {
 
   return filterState.value.groups.has(id);
 });
+
+onMounted(() => {
+  if (!allGroups.value.has(id)) {
+    allGroups.value.set(id, new Set());
+  }
+});
+
+onUnmounted(() => {
+  allGroups.value.delete(id);
+});
 </script>
 
 <template>
-  <div v-if="visible" :aria-labelledby="id" role="group" :class="cls">
+  <div :aria-labelledby="id" role="group" :class="cls" :hidden="visible ? undefined : true" data-slot="group">
     <slot />
   </div>
 </template>

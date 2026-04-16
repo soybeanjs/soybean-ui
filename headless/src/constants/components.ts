@@ -56,9 +56,13 @@ export const components = {
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   combobox: [
     'ComboboxRoot',
+    'ComboboxCompact',
+    'ComboboxAnchor',
     'ComboboxTrigger',
+    'ComboboxCancel',
     'ComboboxPortal',
     'ComboboxContent',
+    'ComboboxArrow',
     'ComboboxViewport',
     'ComboboxInput',
     'ComboboxGroup',
@@ -66,7 +70,8 @@ export const components = {
     'ComboboxItem',
     'ComboboxItemIndicator',
     'ComboboxEmpty',
-    'ComboboxSeparator'
+    'ComboboxSeparator',
+    'ComboboxVirtualizer'
   ],
   colorArea: ['ColorAreaRoot', 'ColorAreaArea', 'ColorAreaThumb'],
   colorField: ['ColorFieldRoot', 'ColorFieldInput'],

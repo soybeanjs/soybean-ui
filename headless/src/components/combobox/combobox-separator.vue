@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Primitive } from '../primitive';
 import { useComboboxUi } from './context';
 import type { ComboboxSeparatorProps } from './types';
 
@@ -13,7 +12,7 @@ const cls = useComboboxUi('separator');
 </script>
 
 <template>
-  <Primitive as="div" role="separator" :class="cls">
+  <div :class="cls" role="separator" aria-orientation="horizontal" data-slot="separator">
     <slot />
-  </Primitive>
+  </div>
 </template>

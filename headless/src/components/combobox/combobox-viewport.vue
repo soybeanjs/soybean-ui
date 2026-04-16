@@ -27,7 +27,7 @@ const css = `
 </script>
 
 <template>
-  <ListboxContent v-bind="attrs" data-soybean-combobox-viewport>
+  <ListboxContent v-bind="attrs" data-slot="viewport" data-soybean-combobox-viewport>
     <slot />
   </ListboxContent>
   <Primitive as="style" :nonce="nonce">{{ css }}</Primitive>
