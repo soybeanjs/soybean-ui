@@ -22,7 +22,6 @@ argument-hint: '可选：组件名，例如 button、dialog、select'
 执行约定：
 
 - 做 soybean-ui 组件开发时，以本 skill 作为主入口，不再依赖“跨 skill 引入规范”。
-- `.github/instructions/` 可以继续保留为自动触发层，但本 skill 已内置对应规范镜像，便于集中查阅和维护。
 - 如果任务只是独立的 TypeScript 重构而不是完整组件开发，再单独使用 `typescript-functional-style` skill。
 
 ## 架构概览

@@ -4,7 +4,6 @@
 
 ## 推荐组织方式
 
-- 把 .github/instructions 继续保留为 workspace 级自动规范层，用于广义、持续生效的规则。
 - 把组件开发 skill 作为任务工作流入口，内置与该工作流强相关的规范摘要和 reference。
 - 不把规范拆成多个再被其他 skill “引入”的 skill，因为当前 skill 体系没有原生的嵌套 import 机制。
 - 如果某份规范本身就是一个独立工作流，例如“只做 TypeScript 重构”，可以保留一个独立 skill 作为发现入口，但内容应与这里保持一致。
