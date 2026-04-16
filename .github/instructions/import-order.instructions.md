@@ -1,3 +1,7 @@
+---
+applyTo: '**/*.{ts,tsx,js,jsx,vue}'
+---
+
 # Import 顺序
 
 修改 TypeScript、JavaScript、Vue 文件时，import 必须按以下分组顺序排列：

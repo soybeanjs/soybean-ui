@@ -1,3 +1,7 @@
+---
+applyTo: '**/*.{md}'
+---
+
 # Git Commit 规范
 
 编写 commit message、准备 changelog 或 release summary 时，使用 Conventional Commits，格式必须为：

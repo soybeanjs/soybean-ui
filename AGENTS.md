@@ -95,7 +95,7 @@ pnpm stub             # tsx scripts/stub.ts — link src to dist for local dev
 
 ## COMPONENT DEVELOPMENT
 
-**Skill**: `skill(name="soybean-ui-component-development")` — loads full workflow guide with templates.
+组件开发规范入口：`.github/copilot-instructions.md` + `.github/instructions/*.instructions.md`。
 
 Minimal flow: headless types → headless context → headless base SFCs → optional Compact SFCs/hooks → UI variants → UI wrapper → barrel exports.
 

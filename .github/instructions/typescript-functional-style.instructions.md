@@ -1,6 +1,10 @@
+---
+applyTo: '**/*.{ts,tsx,js,jsx,vue}'
+---
+
 # TypeScript 函数式风格
 
-这份规范用于 soybean-ui 组件开发中的 TypeScript、Vue script、composable、shared helper 实现。
+这份规范用于 soybean-ui 代码库中的 TypeScript、Vue script、composable、shared helper 实现。
 
 ## 目标
 
@@ -61,10 +65,12 @@
 - 仅当前组件族使用的纯逻辑，优先放同级 `shared.ts`。
 - 跨模块可复用的纯逻辑，优先放项目全局 shared 目录。
 - 没必要时不要引入 watcher。
+- 在新增 helper、composable 或类型之前，先检查仓库现有实现是否已满足。
+- 如果仓库里没有合适的 composable，优先检查 `@vueuse/core`，不要直接从 0 到 1 重写常见能力。
 
 ## Import 顺序
 
-- import 顺序同时遵循 [import-order.md](./import-order.md)。
+- import 顺序同时遵循同目录 `import-order.instructions.md`。
 - value import 顺序为：builtin、external、internal、parent、sibling、index。
 - 同模块的 `import type` 紧跟在对应 value import 下方。
 - parent 组内更远的父路径排在更近的父路径前。
@@ -76,7 +82,7 @@
 - 能否用 early return 减少缩进？
 - 能否消除重复状态？
 - 能否删掉只转手一次的中间变量？
-- import 顺序是否符合 [import-order.md](./import-order.md)？
+- import 顺序是否符合同目录 `import-order.instructions.md`？
 - 导出 API 的参数和返回值是否足够明确？
 - 代码是否在更短之后仍然更容易读？
 

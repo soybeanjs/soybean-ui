@@ -1,6 +1,10 @@
+---
+applyTo: '**/*.vue'
+---
+
 # Vue SFC 结构规范
 
-这份规范用于 soybean-ui 组件开发中的 `.vue` 文件，重点约束 `script setup` 的组织顺序与职责分层。
+这份规范用于 soybean-ui 代码库中的 `.vue` 文件，重点约束 `script setup` 的组织顺序与职责分层。
 
 ## 目标
 
@@ -30,13 +34,13 @@
 
 ### 1. import statements
 
-- import 顺序遵循 [import-order.md](./import-order.md)。
+- import 顺序遵循同目录 `import-order.instructions.md`。
 - value import 在前，`import type` 紧跟对应模块。
 
 ### 2. defineOptions
 
 - `defineOptions` 尽量靠前，通常紧跟 imports 后。
-- UI 组件名称必须保留 `S` 前缀，例如 `SButton`、`SDialog`, Headless 层组件名称则不带 `S` 前缀，例如 `Button`、`Dialog`。
+- UI 组件名称必须保留 `S` 前缀，例如 `SButton`、`SDialog`，Headless 层组件名称则不带 `S` 前缀，例如 `Button`、`Dialog`。
 
 ### 3. props 类型定义
 
@@ -198,7 +202,7 @@ defineExpose({
 
 ## 检查问题
 
-- import 是否符合 [import-order.md](./import-order.md)？
+- import 是否符合同目录 `import-order.instructions.md`？
 - `defineOptions` 是否足够靠前？
 - props / emits 类型与 `defineProps` / `defineEmits` 是否成对且顺序稳定？
 - hooks 初始化、业务逻辑、provider、watch、生命周期是否分层清楚？
