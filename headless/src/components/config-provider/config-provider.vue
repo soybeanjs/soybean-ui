@@ -22,7 +22,9 @@ provideConfigProviderContext({
   iconRender: props.iconRender
 });
 
-const dir = useTextDirection();
+const dir = useTextDirection({
+  initialValue: props.dir
+});
 
 watchEffect(() => {
   if (dir.value !== props.dir) {

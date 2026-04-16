@@ -224,6 +224,25 @@ import {
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
+  MenubarArrow,
+  MenubarCheckboxGroup,
+  MenubarCheckboxItem,
+  MenubarCompact,
+  MenubarContent,
+  MenubarGroup,
+  MenubarGroupLabel,
+  MenubarItem,
+  MenubarItemIndicator,
+  MenubarMenu,
+  MenubarPortal,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarRoot,
+  MenubarSeparator,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
@@ -944,6 +963,48 @@ export const Menu = {
   Separator: typeof MenuSeparator;
   CheckboxGroup: typeof MenuCheckboxGroup;
   RadioGroup: typeof MenuRadioGroup;
+};
+
+export const Menubar = {
+  Compact: MenubarCompact,
+  Root: MenubarRoot,
+  Menu: MenubarMenu,
+  Trigger: MenubarTrigger,
+  Portal: MenubarPortal,
+  Content: MenubarContent,
+  Arrow: MenubarArrow,
+  Group: MenubarGroup,
+  GroupLabel: MenubarGroupLabel,
+  Item: MenubarItem,
+  ItemIndicator: MenubarItemIndicator,
+  CheckboxItem: MenubarCheckboxItem,
+  RadioItem: MenubarRadioItem,
+  Sub: MenubarSub,
+  SubTrigger: MenubarSubTrigger,
+  SubContent: MenubarSubContent,
+  Separator: MenubarSeparator,
+  CheckboxGroup: MenubarCheckboxGroup,
+  RadioGroup: MenubarRadioGroup
+} as {
+  Compact: typeof MenubarCompact;
+  Root: typeof MenubarRoot;
+  Menu: typeof MenubarMenu;
+  Trigger: typeof MenubarTrigger;
+  Portal: typeof MenubarPortal;
+  Content: typeof MenubarContent;
+  Arrow: typeof MenubarArrow;
+  Group: typeof MenubarGroup;
+  GroupLabel: typeof MenubarGroupLabel;
+  Item: typeof MenubarItem;
+  ItemIndicator: typeof MenubarItemIndicator;
+  CheckboxItem: typeof MenubarCheckboxItem;
+  RadioItem: typeof MenubarRadioItem;
+  Sub: typeof MenubarSub;
+  SubTrigger: typeof MenubarSubTrigger;
+  SubContent: typeof MenubarSubContent;
+  Separator: typeof MenubarSeparator;
+  CheckboxGroup: typeof MenubarCheckboxGroup;
+  RadioGroup: typeof MenubarRadioGroup;
 };
 
 export const NavigationMenu = {
