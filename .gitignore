@@ -40,4 +40,4 @@ coverage
 # Misc
 .fleet
 .idea
-.omx
+.omx/
