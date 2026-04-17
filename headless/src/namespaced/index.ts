@@ -178,6 +178,10 @@ import {
   InputNumberDecrement,
   InputNumberIncrement,
   InputNumberRoot,
+  InputOtpCompact,
+  InputOtpInput,
+  InputOtpPositioner,
+  InputOtpRoot,
   Kbd,
   Label,
   LayoutFooter,
@@ -855,6 +859,18 @@ export const InputNumber = {
   Control: typeof InputNumberControl;
   Increment: typeof InputNumberIncrement;
   Decrement: typeof InputNumberDecrement;
+};
+
+export const InputOtp = {
+  Root: InputOtpRoot,
+  Positioner: InputOtpPositioner,
+  Input: InputOtpInput,
+  Compact: InputOtpCompact
+} as {
+  Root: typeof InputOtpRoot;
+  Positioner: typeof InputOtpPositioner;
+  Input: typeof InputOtpInput;
+  Compact: typeof InputOtpCompact;
 };
 
 export { Kbd };

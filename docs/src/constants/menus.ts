@@ -51,6 +51,7 @@ export const menuData: MenuData[] = [
       'label',
       'input',
       'inputNumber',
+      'inputOtp',
       'password',
       'textarea',
       'checkbox',

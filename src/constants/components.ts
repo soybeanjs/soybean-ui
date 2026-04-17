@@ -35,6 +35,7 @@ export const components = {
   hoverCard: ['SHoverCard'],
   input: ['SInput'],
   inputNumber: ['SInputNumber'],
+  inputOtp: ['SInputOtp'],
   icon: ['SIcon'],
   kbd: ['SKbd'],
   label: ['SLabel'],
