@@ -4,7 +4,7 @@ import IconRender from '../icon/icon-render.vue';
 import type { IconValue } from '../icon/types';
 
 interface Props {
-  icon: IconValue;
+  icon?: IconValue;
   label: string;
 }
 
