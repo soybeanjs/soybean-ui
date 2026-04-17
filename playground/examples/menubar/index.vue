@@ -2,11 +2,13 @@
 import { SCard } from '@soybeanjs/ui';
 import DemoMenubarBasic from './basic.vue';
 import DemoMenubarControlled from './controlled.vue';
+import DemoMenubarRtl from './rtl.vue';
 </script>
 
 <template>
   <SCard title="Menubar" split :ui="{ content: 'flex-c gap-4' }">
     <DemoMenubarBasic />
     <DemoMenubarControlled />
+    <DemoMenubarRtl />
   </SCard>
 </template>

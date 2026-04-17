@@ -16,7 +16,9 @@ const props = withDefaults(defineProps<MenubarTriggerProps>(), {
   as: 'button'
 });
 
-const { modelValue, onMenuOpen, onMenuToggle, setTriggerLink } = useMenubarRootContext('MenubarTrigger');
+const { isLinkTriggerHovered, modelValue, onMenuOpen, onMenuToggle, setTriggerLink } = useMenubarRootContext(
+  'MenubarTrigger'
+);
 const {
   value,
   triggerId,
@@ -36,9 +38,15 @@ const [triggerElement, setTriggerElement] = useForwardElement(element => {
 });
 
 const isFocused = shallowRef(false);
+const isCurrentTriggerLink = () => isTriggerLink(triggerElement.value);
 
 const onPointerDown = (event: PointerEvent) => {
   if (props.disabled || event.button !== 0 || event.ctrlKey) {
+    return;
+  }
+
+  if (isCurrentTriggerLink()) {
+    setTriggerLink();
     return;
   }
 
@@ -52,9 +60,9 @@ const onPointerDown = (event: PointerEvent) => {
 };
 
 const onPointerEnter = () => {
-  if (!modelValue.value || open.value) return;
+  if ((!modelValue.value && !isLinkTriggerHovered.value) || open.value) return;
 
-  if (isTriggerLink(String(value.value))) {
+  if (isCurrentTriggerLink()) {
     setTriggerLink();
   } else {
     onMenuOpen(value.value);
@@ -72,7 +80,7 @@ const onBlur = () => {
 };
 
 const onKeyDown = (event: KeyboardEvent) => {
-  if (props.disabled || isTriggerLink(String(value.value))) return;
+  if (props.disabled || isCurrentTriggerLink()) return;
 
   if (['Enter', ' '].includes(event.key)) {
     onMenuToggle(value.value);

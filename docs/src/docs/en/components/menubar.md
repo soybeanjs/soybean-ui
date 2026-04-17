@@ -14,7 +14,7 @@ const items = [
   {
     value: 'file',
     label: 'File',
-    items: [
+    children: [
       { value: 'new-tab', label: 'New Tab', shortcut: '⌘T' },
       { value: 'share', label: 'Share', children: [{ value: 'mail', label: 'Email Link' }] }
     ]
@@ -22,7 +22,7 @@ const items = [
   {
     value: 'edit',
     label: 'Edit',
-    items: [
+    children: [
       { value: 'undo', label: 'Undo' },
       { value: 'redo', label: 'Redo' }
     ]
@@ -48,7 +48,7 @@ rtl
 ### SMenubar Props
 
 <DataTable preset="props" :data="[
-  { name: 'items', type: 'MenubarMenuData[]', default: '-', description: 'Top-level menubar sections.', required: true },
+  { name: 'items', type: 'MenuOptionData[]', default: '-', description: 'Top-level menubar sections.', required: true },
   { name: 'modelValue', type: 'string', default: '-', description: 'Controlled open menu value.' },
   { name: 'defaultValue', type: 'string', default: '-', description: 'Initially open menu value.' },
   { name: 'dir', type: 'Direction', default: '`ltr`', description: 'Reading direction.' },
@@ -60,10 +60,10 @@ rtl
   { name: 'showArrow', type: 'boolean', default: 'false', description: 'Whether to show the popup arrow.' },
   { name: 'placement', type: 'Placement', default: '-', description: 'Preferred popup placement.' },
   { name: 'triggerProps', type: 'MenubarTriggerProps', default: '{}', description: 'Props forwarded to each trigger.' },
-  { name: 'portalProps', type: 'MenubarPortalProps', default: '{}', description: 'Props forwarded to top-level and nested portals.' },
+  { name: 'portalProps', type: 'MenuPortalProps', default: '{}', description: 'Props forwarded to top-level and nested portals.' },
   { name: 'contentProps', type: 'MenubarContentProps', default: '{}', description: 'Props forwarded to each top-level popup.' },
-  { name: 'popupProps', type: 'MenubarPopupProps', default: '{}', description: 'Props forwarded to the popup surface.' },
-  { name: 'arrowProps', type: 'MenubarArrowProps', default: '{}', description: 'Props forwarded to the popup arrow.' },
+  { name: 'popupProps', type: 'MenuPopupProps', default: '{}', description: 'Props forwarded to the popup surface.' },
+  { name: 'arrowProps', type: 'MenuArrowProps', default: '{}', description: 'Props forwarded to the popup arrow.' },
   { name: 'groupProps', type: 'MenuGroupProps', default: '{}', description: 'Props forwarded to option groups.' },
   { name: 'groupLabelProps', type: 'MenuGroupLabelProps', default: '{}', description: 'Props forwarded to group labels.' },
   { name: 'itemProps', type: 'MenuItemProps', default: '{}', description: 'Props forwarded to menu items.' },
@@ -85,7 +85,7 @@ rtl
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '{ item: MenubarMenuData }', description: 'Custom trigger content.' },
+  { name: 'trigger', parameters: '{ item: MenuOptionData }', description: 'Custom trigger content.' },
   { name: 'item', parameters: '{ item: MenuOptionData, isTrigger?: boolean }', description: 'Custom item content.' },
   { name: 'item-leading', parameters: '{ item: MenuOptionData }', description: 'Leading item content.' },
   { name: 'item-trailing', parameters: '{ item: MenuOptionData }', description: 'Trailing item content.' },
@@ -97,13 +97,13 @@ rtl
 
 <TypeTable :data="[
   {
-    name: 'MenubarMenuData',
+    name: 'MenuOptionData',
     description: 'Top-level menubar section data.',
     fields: [
       { name: 'value', type: 'string', description: 'Unique menu value.' },
       { name: 'label', type: 'string', description: 'Trigger label.' },
       { name: 'disabled', type: 'boolean', description: 'Whether the trigger is disabled.' },
-      { name: 'items', type: 'MenuOptionData[]', description: 'Content items rendered inside the popup.' }
+      { name: 'children', type: 'MenuOptionData[]', description: 'Content items rendered inside the popup.' }
     ]
   },
   {

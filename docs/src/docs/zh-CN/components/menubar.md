@@ -14,7 +14,7 @@ const items = [
   {
     value: 'file',
     label: 'File',
-    items: [
+    children: [
       { value: 'new-tab', label: 'New Tab', shortcut: '⌘T' },
       { value: 'share', label: 'Share', children: [{ value: 'mail', label: 'Email Link' }] }
     ]
@@ -22,7 +22,7 @@ const items = [
   {
     value: 'edit',
     label: 'Edit',
-    items: [
+    children: [
       { value: 'undo', label: 'Undo' },
       { value: 'redo', label: 'Redo' }
     ]
@@ -48,7 +48,7 @@ rtl
 ### SMenubar 属性
 
 <DataTable preset="props" :data="[
-  { name: 'items', type: 'MenubarMenuData[]', default: '-', description: '顶层菜单栏分区数据。', required: true },
+  { name: 'items', type: 'MenuOptionData[]', default: '-', description: '顶层菜单栏分区数据。', required: true },
   { name: 'modelValue', type: 'string', default: '-', description: '受控的当前打开菜单值。' },
   { name: 'defaultValue', type: 'string', default: '-', description: '初始打开的菜单值。' },
   { name: 'dir', type: 'Direction', default: '`ltr`', description: '阅读方向。' },
@@ -60,10 +60,10 @@ rtl
   { name: 'showArrow', type: 'boolean', default: 'false', description: '是否显示弹层箭头。' },
   { name: 'placement', type: 'Placement', default: '-', description: '首选弹层位置。' },
   { name: 'triggerProps', type: 'MenubarTriggerProps', default: '{}', description: '透传给每个 trigger 的属性。' },
-  { name: 'portalProps', type: 'MenubarPortalProps', default: '{}', description: '透传给顶层和子菜单 portal 的属性。' },
+  { name: 'portalProps', type: 'MenuPortalProps', default: '{}', description: '透传给顶层和子菜单 portal 的属性。' },
   { name: 'contentProps', type: 'MenubarContentProps', default: '{}', description: '透传给顶层弹层内容的属性。' },
-  { name: 'popupProps', type: 'MenubarPopupProps', default: '{}', description: '透传给 popup 表面的属性。' },
-  { name: 'arrowProps', type: 'MenubarArrowProps', default: '{}', description: '透传给箭头的属性。' },
+  { name: 'popupProps', type: 'MenuPopupProps', default: '{}', description: '透传给 popup 表面的属性。' },
+  { name: 'arrowProps', type: 'MenuArrowProps', default: '{}', description: '透传给箭头的属性。' },
   { name: 'groupProps', type: 'MenuGroupProps', default: '{}', description: '透传给选项分组的属性。' },
   { name: 'groupLabelProps', type: 'MenuGroupLabelProps', default: '{}', description: '透传给分组标题的属性。' },
   { name: 'itemProps', type: 'MenuItemProps', default: '{}', description: '透传给菜单项的属性。' },
@@ -85,7 +85,7 @@ rtl
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'trigger', parameters: '{ item: MenubarMenuData }', description: '自定义 trigger 内容。' },
+  { name: 'trigger', parameters: '{ item: MenuOptionData }', description: '自定义 trigger 内容。' },
   { name: 'item', parameters: '{ item: MenuOptionData, isTrigger?: boolean }', description: '自定义菜单项内容。' },
   { name: 'item-leading', parameters: '{ item: MenuOptionData }', description: '菜单项前置内容。' },
   { name: 'item-trailing', parameters: '{ item: MenuOptionData }', description: '菜单项后置内容。' },
@@ -97,13 +97,13 @@ rtl
 
 <TypeTable :data="[
   {
-    name: 'MenubarMenuData',
+    name: 'MenuOptionData',
     description: '顶层菜单分区数据。',
     fields: [
       { name: 'value', type: 'string', description: '唯一菜单值。' },
       { name: 'label', type: 'string', description: 'trigger 文案。' },
       { name: 'disabled', type: 'boolean', description: '是否禁用 trigger。' },
-      { name: 'items', type: 'MenuOptionData[]', description: '弹层内渲染的内容项。' }
+      { name: 'children', type: 'MenuOptionData[]', description: '弹层内渲染的内容项。' }
     ]
   },
   {

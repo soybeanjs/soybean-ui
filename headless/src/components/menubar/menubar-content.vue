@@ -63,7 +63,8 @@ const onArrowNavigation = (event: KeyboardEvent) => {
 
   if (!isPreviousKey && targetIsSubTrigger) return;
 
-  const candidateValues = getOrderedItems().map(item => item.data.value);
+  const orderedItems = getOrderedItems();
+  const candidateValues = orderedItems.map(item => item.data.value);
 
   if (isPreviousKey) {
     candidateValues.reverse();
@@ -74,15 +75,15 @@ const onArrowNavigation = (event: KeyboardEvent) => {
     ? wrapArray(candidateValues, currentIndex + 1)
     : candidateValues.slice(currentIndex + 1);
   const nextValue = nextValues[0];
+  const nextItem = orderedItems.find(item => item.data.value === nextValue);
 
-  if (!nextValue) return;
+  if (!nextValue || !nextItem) return;
 
-  if (!isTriggerLink(String(nextValue))) {
+  if (!isTriggerLink(nextItem.element)) {
     onMenuOpen(nextValue);
   } else {
     setTriggerLink();
-    const el = document.getElementById(String(nextValue));
-    el?.focus();
+    nextItem.element.focus();
   }
 };
 </script>

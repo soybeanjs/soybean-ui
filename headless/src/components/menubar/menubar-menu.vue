@@ -13,7 +13,7 @@ defineOptions({
 const props = defineProps<MenubarMenuProps>();
 
 const { dir, onMenuClose, modelValue, loop, onMenuOpen } = useMenubarRootContext('MenubarMenu');
-const { getOrderedItems } = useMenubarCollectionContext('MenubarSubContent');
+const { getOrderedItems } = useMenubarCollectionContext('MenubarMenu');
 
 const generatedValue = `soybean-menubar-menu-${useId()}`;
 const menuValue = computed(() => props.value ?? generatedValue);

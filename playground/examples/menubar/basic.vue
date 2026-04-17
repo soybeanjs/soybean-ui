@@ -48,7 +48,7 @@ const items: MenuOptionData<string>[] = [
   },
   {
     value: 'github',
-    label: 'Github',
+    label: 'GitHub',
     href: 'https://github.com/soybeanjs/soybean-ui'
   }
 ];

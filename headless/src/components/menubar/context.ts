@@ -1,3 +1,4 @@
+import { shallowRef } from 'vue';
 import { useCollection, useContext, useUiContext } from '../../composables';
 import { DefinedValue } from '../../types';
 import { useDirection } from '../config-provider/context';
@@ -21,28 +22,34 @@ export const [provideMenubarRootContext, useMenubarRootContext] = useContext(
     const { modelValue, currentTabStopId } = params;
 
     const dir = useDirection(params.dir);
+    const isLinkTriggerHovered = shallowRef(false);
 
     const onMenuOpen = (value: DefinedValue) => {
+      isLinkTriggerHovered.value = false;
       modelValue.value = value;
       currentTabStopId.value = String(value);
     };
 
     const onMenuClose = () => {
+      isLinkTriggerHovered.value = false;
       modelValue.value = '';
     };
 
     const onMenuToggle = (value: DefinedValue) => {
+      isLinkTriggerHovered.value = false;
       modelValue.value = modelValue.value ? '' : value;
       currentTabStopId.value = String(value);
     };
 
     const setTriggerLink = () => {
-      modelValue.value = '__MENUBAR_TRIGGER_LINK__';
+      isLinkTriggerHovered.value = true;
+      modelValue.value = '';
     };
 
     return {
       ...params,
       dir,
+      isLinkTriggerHovered,
       onMenuOpen,
       onMenuClose,
       onMenuToggle,

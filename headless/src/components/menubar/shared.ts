@@ -1,6 +1,5 @@
-export function isTriggerLink(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return false;
+export function isTriggerLink(element: HTMLElement | null | undefined) {
+  if (!element) return false;
 
-  return el.hasAttribute('href');
+  return element.tagName === 'A' || element.hasAttribute('href');
 }
