@@ -62,6 +62,8 @@ export type HorizontalSide = Extract<Side, 'left' | 'right'>;
 
 export type Align = 'start' | 'center' | 'end';
 
+export type AlignSide = Extract<Align, 'start' | 'end'>;
+
 export type Placement =
   | 'top'
   | 'right'

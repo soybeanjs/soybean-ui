@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useControllableState, useIsUsingKeyboard } from '../../composables';
 import { transformPropsToContext } from '../../shared';
+import { useDirection } from '../config-provider/context';
 import { PopperRoot } from '../popper';
 import { provideMenuContext, provideMenuRootContext } from './context';
 import type { MenuRootEmits, MenuRootProps } from './types';
@@ -25,6 +26,8 @@ const open = useControllableState(
   props.defaultOpen
 );
 
+const dir = useDirection(() => props.dir);
+
 const isUsingKeyboard = useIsUsingKeyboard();
 
 const onClose = () => {
@@ -37,7 +40,8 @@ provideMenuContext({
 });
 
 provideMenuRootContext({
-  ...transformPropsToContext(props, ['modal', 'dir']),
+  ...transformPropsToContext(props, ['modal']),
+  dir,
   onClose,
   isUsingKeyboard
 });

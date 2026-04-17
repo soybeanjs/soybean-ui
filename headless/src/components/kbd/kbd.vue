@@ -7,7 +7,9 @@ defineOptions({
   name: 'Kbd'
 });
 
-const props = defineProps<KbdProps>();
+const props = withDefaults(defineProps<KbdProps>(), {
+  symbolize: true
+});
 
 const { getKeyboardKey } = useKbd();
 

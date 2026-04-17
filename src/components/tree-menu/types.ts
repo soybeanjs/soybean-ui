@@ -24,7 +24,7 @@ import type { IconValue } from '../icon/types';
 import type { TooltipProps } from '../tooltip/types';
 import type { BadgeProps } from '../badge/types';
 import type { TagProps } from '../tag/types';
-import type { MenuOptionData } from '../menu/types';
+import type { MenuOptionData } from '../menu';
 import type { DropdownMenuProps } from '../dropdown-menu/types';
 
 export interface TreeMenuBaseOptionData extends TreeMenuBaseItemProps, LinkBaseProps {

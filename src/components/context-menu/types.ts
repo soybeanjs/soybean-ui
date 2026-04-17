@@ -1,93 +1,46 @@
 import type {
   AcceptableBooleanValue,
-  ClassValue,
-  ContextMenuArrowProps,
-  ContextMenuContentEmits,
-  ContextMenuContentProps,
-  ContextMenuPopupProps,
-  ContextMenuPortalProps,
-  ContextMenuRootEmits,
-  ContextMenuRootProps,
-  ContextMenuTriggerProps,
-  DefinedValue
+  DefinedValue,
+  ContextMenuWrapperCompactProps,
+  ContextMenuWrapperCompactEmits,
+  ContextMenuCompactProps,
+  ContextMenuCompactEmits,
+  ContextMenuCompactSlots,
+  ContextMenuCheckboxCompactProps,
+  ContextMenuCheckboxCompactEmits,
+  ContextMenuCheckboxCompactSlots,
+  ContextMenuRadioCompactProps,
+  ContextMenuRadioCompactEmits,
+  ContextMenuRadioCompactSlots
 } from '@soybeanjs/headless';
-import type { ThemeSize } from '@/theme';
-import type {
-  MenuCheckboxOptionData,
-  MenuCheckboxOptionsEmits,
-  MenuCheckboxOptionsProps,
-  MenuExtendedUi,
-  MenuOptionData,
-  MenuOptionsEmits,
-  MenuOptionsProps,
-  MenuRadioOptionData,
-  MenuRadioOptionsEmits,
-  MenuRadioOptionsProps
-} from '../menu/types';
+import type { MenuUiBaseProps } from '../menu/types';
 
-// Menu Wrapper
-export interface ContextMenuWrapperProps extends ContextMenuRootProps {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-  size?: ThemeSize;
-  ui?: Partial<MenuExtendedUi>;
-  disabled?: boolean;
-  indicatorPosition?: 'start' | 'end';
-  showArrow?: boolean;
-  triggerProps?: ContextMenuTriggerProps;
-  portalProps?: ContextMenuPortalProps;
-  contentProps?: ContextMenuContentProps;
-  popupProps?: ContextMenuPopupProps;
-  arrowProps?: ContextMenuArrowProps;
-}
+export interface ContextMenuWrapperProps extends MenuUiBaseProps, ContextMenuWrapperCompactProps {}
 
-export type ContextMenuWrapperEmits = ContextMenuRootEmits & ContextMenuContentEmits;
+export type ContextMenuWrapperEmits = ContextMenuWrapperCompactEmits;
 
 // Menu
-export interface ContextMenuProps<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuOptionData<T> = MenuOptionData<T>
->
-  extends Omit<ContextMenuWrapperProps, 'indicatorPosition'>, MenuOptionsProps<T, S> {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-}
-export type ContextMenuEmits<T extends MenuOptionData = MenuOptionData> = ContextMenuWrapperEmits & MenuOptionsEmits<T>;
+export type ContextMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
+  ContextMenuCompactProps<T>;
+
+export type ContextMenuEmits<T extends DefinedValue = DefinedValue> = ContextMenuCompactEmits<T>;
+
+export type ContextMenuSlots<T extends DefinedValue = DefinedValue> = ContextMenuCompactSlots<T>;
 
 // Menu Checkbox
-export interface ContextMenuCheckboxProps<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
->
-  extends ContextMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-}
+export type ContextMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
+  ContextMenuCheckboxCompactProps<T>;
 
-export type ContextMenuCheckboxEmits<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> = ContextMenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
+export type ContextMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactEmits<T>;
+
+export type ContextMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = ContextMenuCheckboxCompactSlots<T>;
 
 // Menu Radio
-export interface ContextMenuRadioProps<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
->
-  extends ContextMenuWrapperProps, MenuRadioOptionsProps<T, S> {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-}
+export type ContextMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
+  ContextMenuRadioCompactProps<T>;
 
-export type ContextMenuRadioEmits<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-> = ContextMenuWrapperEmits & MenuRadioOptionsEmits<T, S>;
+export type ContextMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
+  ContextMenuRadioCompactEmits<T>;
+
+export type ContextMenuRadioSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
+  ContextMenuRadioCompactSlots<T>;

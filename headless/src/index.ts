@@ -93,6 +93,7 @@ export type {
   SwipeDirection,
   HorizontalSide,
   Align,
+  AlignSide,
   Placement,
   Path,
   PathValue,

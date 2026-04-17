@@ -32,3 +32,5 @@ export const SUB_CLOSE_KEYS: Record<Direction, string[]> = {
   ltr: ['ArrowLeft'],
   rtl: ['ArrowRight']
 };
+
+export const COMMON_SLOTS = ['item', 'item-leading', 'item-trailing'];

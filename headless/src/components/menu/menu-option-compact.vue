@@ -1,53 +1,46 @@
 <script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
-import {
-  MenuGroup,
-  MenuGroupLabel,
-  MenuItem,
-  MenuPortal,
-  MenuSeparator,
-  MenuSub,
-  MenuSubContent,
-  MenuSubTrigger
-} from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import Link from '../link/link.vue';
-import Icon from '../icon/icon.vue';
+import { keysOf } from '@soybeanjs/utils';
+import { useForwardListeners, useOmitProps } from '../../composables';
+import type { DefinedValue } from '../../types';
+import Icon from '../icon/icon-render.vue';
 import Kbd from '../kbd/kbd.vue';
-import SMenuItemSlot from './menu-item-slot.vue';
-import { useCommonSlotKeys } from './shared';
-import { useMenuExtraUi, useMenuOptionsContext } from './context';
-import type { MenuOptionData, MenuOptionEmits, MenuOptionProps } from './types';
+import Link from '../link/link.vue';
+import MenuSeparator from '../separator/separator-root.vue';
+import { useMenuOptionsCompactContext, useMenuUi } from './context';
+import { useCommonSlotNames } from './hooks';
+import MenuGroup from './menu-group.vue';
+import MenuGroupLabel from './menu-group-label.vue';
+import MenuItem from './menu-item.vue';
+import MenuItemSlotCompact from './menu-item-slot-compact.vue';
+import MenuPortal from '../portal/portal.vue';
+import MenuSub from './menu-sub.vue';
+import MenuSubContent from './menu-sub-content.vue';
+import MenuSubTrigger from './menu-sub-trigger.vue';
+import type { MenuOptionCompactProps, MenuOptionCompactEmits, MenuOptionCompactSlots } from './types';
 
 defineOptions({
-  name: 'SMenuOption',
+  name: 'MenuOptionCompact',
   inheritAttrs: false
 });
 
-const props = defineProps<MenuOptionProps<T>>();
+const props = defineProps<MenuOptionCompactProps<T>>();
 
-const emit = defineEmits<MenuOptionEmits<MenuOptionData<T>>>();
-
-type Slots = {
-  item: (props: { item: MenuOptionData<T>; isTrigger?: boolean }) => any;
-  'item-leading': (props: { item: MenuOptionData<T> }) => any;
-  'item-trailing': (props: { item: MenuOptionData<T> }) => any;
-  'item-trigger-icon': (props: { item: MenuOptionData<T> }) => any;
-  'item-link-icon': (props: { item: MenuOptionData<T> }) => any;
-};
-
-const slots = defineSlots<Slots>();
-
-const forwardedItemProps = useOmitProps(props, ['item']);
+const emit = defineEmits<MenuOptionCompactEmits<T>>();
 
 const forwardedListeners = useForwardListeners(emit);
 
-const commonSlotKeys = useCommonSlotKeys(slots);
+const slots = defineSlots<MenuOptionCompactSlots<T>>();
 
-const ui = useMenuExtraUi();
+const forwardedItemProps = useOmitProps(props, ['item']);
 
-const { activeValue, activePaths } = useMenuOptionsContext('MenuOption');
+const slotNames = computed(() => keysOf(slots));
+
+const commonSlotNames = useCommonSlotNames(slots);
+
+const ui = useMenuUi();
+
+const { activeValue, activePaths } = useMenuOptionsCompactContext('MenuOptionCompact');
 
 const dataActive = computed(() => activeValue.value === props.item.value);
 
@@ -56,11 +49,11 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
 
 <template>
   <MenuGroupLabel v-if="item.isGroupLabel" v-bind="groupLabelProps">
-    <SMenuItemSlot :icon="item.icon" :label="item.label">
-      <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-        <slot :name="slotKey" :item="item" />
+    <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+      <template v-for="slotName in commonSlotNames">
+        <slot :name="slotName" :item="item" />
       </template>
-    </SMenuItemSlot>
+    </MenuItemSlotCompact>
   </MenuGroupLabel>
   <MenuItem
     v-else-if="item.to || item.href"
@@ -80,16 +73,16 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
       :target="item.target"
       :external="item.external"
     >
-      <SMenuItemSlot :icon="item.icon" :label="item.label">
-        <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" :item="item" />
+      <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+        <template v-for="slotName in commonSlotNames">
+          <slot :name="slotName" :item="item" />
         </template>
         <template v-if="isHref" #link-icon>
           <slot name="item-link-icon" :item="item">
             <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
           </slot>
         </template>
-      </SMenuItemSlot>
+      </MenuItemSlotCompact>
     </Link>
   </MenuItem>
   <MenuItem
@@ -100,14 +93,14 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
     :data-active="dataActive"
     @select="emit('select', item, $event)"
   >
-    <SMenuItemSlot :icon="item.icon" :label="item.label">
-      <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-        <slot :name="slotKey" :item="item" />
+    <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+      <template v-for="slotName in commonSlotNames">
+        <slot :name="slotName" :item="item" />
       </template>
       <template #shortcut>
         <Kbd v-if="item.shortcut" v-bind="shortcutProps" :value="item.shortcut" :class="ui.shortcut" />
       </template>
-    </SMenuItemSlot>
+    </MenuItemSlotCompact>
   </MenuItem>
   <MenuSub v-else v-bind="subProps" @update:open="emit('update:open', $event)">
     <MenuSubTrigger
@@ -116,31 +109,35 @@ const childActive = computed(() => activePaths.value.includes(props.item.value))
       :text-value="item.textValue"
       :data-child-active="childActive ? '' : undefined"
     >
-      <SMenuItemSlot :icon="item.icon" :label="item.label">
-        <template v-for="slotKey in commonSlotKeys" :key="slotKey" #[slotKey]>
-          <slot :name="slotKey" :item="item" :is-trigger="true" />
+      <MenuItemSlotCompact :icon="item.icon" :label="item.label">
+        <template v-for="slotName in commonSlotNames">
+          <slot :name="slotName" :item="item" />
         </template>
         <template #trigger-icon>
           <slot name="item-trigger-icon" :item="item">
             <Icon icon="lucide:chevron-right" :class="ui.subTriggerIcon" />
           </slot>
         </template>
-      </SMenuItemSlot>
+      </MenuItemSlotCompact>
     </MenuSubTrigger>
     <MenuSeparator v-if="item.separator" v-bind="separatorProps" />
     <MenuPortal v-bind="portalProps">
       <MenuSubContent v-bind="subContentProps" v-on="forwardedListeners">
         <MenuGroup v-bind="groupProps">
-          <SMenuOption
+          <MenuOptionCompact
             v-for="child in item.children"
             :key="child.value"
             v-bind="forwardedItemProps"
             :item="child"
             v-on="forwardedListeners"
-          />
+          >
+            <template v-for="slotName in slotNames" #[slotName]="slotProps">
+              <slot :name="slotName" v-bind="slotProps" />
+            </template>
+          </MenuOptionCompact>
         </MenuGroup>
       </MenuSubContent>
     </MenuPortal>
   </MenuSub>
-  <MenuSeparator v-if="item.separator && !item.children" v-bind="separatorProps" />
+  <MenuSeparator v-if="item.separator && !item.children?.length" v-bind="separatorProps" />
 </template>

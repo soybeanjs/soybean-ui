@@ -101,14 +101,17 @@ import {
   ConfigProvider,
   ContextMenuAnchor,
   ContextMenuArrow,
+  ContextMenuCheckboxCompact,
   ContextMenuCheckboxGroup,
   ContextMenuCheckboxItem,
+  ContextMenuCompact,
   ContextMenuContent,
   ContextMenuGroup,
   ContextMenuGroupLabel,
   ContextMenuItem,
   ContextMenuItemIndicator,
   ContextMenuPortal,
+  ContextMenuRadioCompact,
   ContextMenuRadioGroup,
   ContextMenuRadioItem,
   ContextMenuRoot,
@@ -117,6 +120,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
+  ContextMenuWrapperCompact,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -203,14 +207,18 @@ import {
   MenuArrow,
   MenuCheckboxGroup,
   MenuCheckboxItem,
+  MenuCheckboxOptionsCompact,
   MenuContent,
   MenuGroup,
   MenuGroupLabel,
   MenuItem,
   MenuItemIndicator,
+  MenuOptionCompact,
+  MenuOptionsCompact,
   MenuPortal,
   MenuRadioGroup,
   MenuRadioItem,
+  MenuRadioOptionsCompact,
   MenuRoot,
   MenuSeparator,
   MenuSub,
@@ -637,6 +645,10 @@ export const ColorSwatchPicker = {
 export { ConfigProvider };
 
 export const ContextMenu = {
+  WrapperCompact: ContextMenuWrapperCompact,
+  Compact: ContextMenuCompact,
+  CheckboxCompact: ContextMenuCheckboxCompact,
+  RadioCompact: ContextMenuRadioCompact,
   Root: ContextMenuRoot,
   Trigger: ContextMenuTrigger,
   Portal: ContextMenuPortal,
@@ -656,6 +668,10 @@ export const ContextMenu = {
   CheckboxGroup: ContextMenuCheckboxGroup,
   RadioGroup: ContextMenuRadioGroup
 } as {
+  WrapperCompact: typeof ContextMenuWrapperCompact;
+  Compact: typeof ContextMenuCompact;
+  CheckboxCompact: typeof ContextMenuCheckboxCompact;
+  RadioCompact: typeof ContextMenuRadioCompact;
   Root: typeof ContextMenuRoot;
   Trigger: typeof ContextMenuTrigger;
   Portal: typeof ContextMenuPortal;
@@ -885,6 +901,10 @@ export const Listbox = {
 };
 
 export const Menu = {
+  OptionCompact: MenuOptionCompact,
+  OptionsCompact: MenuOptionsCompact,
+  CheckboxOptionsCompact: MenuCheckboxOptionsCompact,
+  RadioOptionsCompact: MenuRadioOptionsCompact,
   Root: MenuRoot,
   Portal: MenuPortal,
   Content: MenuContent,
@@ -903,6 +923,10 @@ export const Menu = {
   CheckboxGroup: MenuCheckboxGroup,
   RadioGroup: MenuRadioGroup
 } as {
+  OptionCompact: typeof MenuOptionCompact;
+  OptionsCompact: typeof MenuOptionsCompact;
+  CheckboxOptionsCompact: typeof MenuCheckboxOptionsCompact;
+  RadioOptionsCompact: typeof MenuRadioOptionsCompact;
   Root: typeof MenuRoot;
   Portal: typeof MenuPortal;
   Content: typeof MenuContent;

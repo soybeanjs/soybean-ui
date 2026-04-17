@@ -1,91 +1,46 @@
 import type {
   AcceptableBooleanValue,
-  ClassValue,
   DefinedValue,
-  DropdownMenuArrowProps,
-  DropdownMenuContentEmits,
-  DropdownMenuContentProps,
-  DropdownMenuPopupProps,
-  DropdownMenuPortalProps,
-  DropdownMenuRootEmits,
-  DropdownMenuRootProps,
-  DropdownMenuTriggerProps,
-  Placement
+  DropdownMenuWrapperCompactProps,
+  DropdownMenuWrapperCompactEmits,
+  DropdownMenuCompactProps,
+  DropdownMenuCompactEmits,
+  DropdownMenuCompactSlots,
+  DropdownMenuCheckboxCompactProps,
+  DropdownMenuCheckboxCompactEmits,
+  DropdownMenuCheckboxCompactSlots,
+  DropdownMenuRadioCompactProps,
+  DropdownMenuRadioCompactEmits,
+  DropdownMenuRadioCompactSlots
 } from '@soybeanjs/headless';
-import type { ThemeSize } from '@/theme';
-import type {
-  MenuCheckboxOptionData,
-  MenuCheckboxOptionsEmits,
-  MenuCheckboxOptionsProps,
-  MenuExtendedUi,
-  MenuOptionData,
-  MenuOptionsEmits,
-  MenuOptionsProps,
-  MenuRadioOptionData,
-  MenuRadioOptionsEmits,
-  MenuRadioOptionsProps
-} from '../menu/types';
+import type { MenuUiBaseProps } from '../menu/types';
 
-// Menu Wrapper
-export interface DropdownMenuWrapperProps extends DropdownMenuRootProps {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-  size?: ThemeSize;
-  ui?: Partial<MenuExtendedUi>;
-  disabled?: boolean;
-  placement?: Placement;
-  indicatorPosition?: 'start' | 'end';
-  showArrow?: boolean;
-  triggerProps?: DropdownMenuTriggerProps;
-  portalProps?: DropdownMenuPortalProps;
-  contentProps?: DropdownMenuContentProps;
-  popupProps?: DropdownMenuPopupProps;
-  arrowProps?: DropdownMenuArrowProps;
-}
+export interface DropdownMenuWrapperProps extends MenuUiBaseProps, DropdownMenuWrapperCompactProps {}
 
-export type DropdownMenuWrapperEmits = DropdownMenuRootEmits & DropdownMenuContentEmits;
+export type DropdownMenuWrapperEmits = DropdownMenuWrapperCompactEmits;
 
 // Menu
-export interface DropdownMenuProps<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuOptionData<T> = MenuOptionData<T>
->
-  extends Omit<DropdownMenuWrapperProps, 'indicatorPosition'>, MenuOptionsProps<T, S> {}
-export type DropdownMenuEmits<T extends MenuOptionData = MenuOptionData> = DropdownMenuWrapperEmits &
-  MenuOptionsEmits<T>;
+export type DropdownMenuProps<T extends DefinedValue = DefinedValue> = Omit<MenuUiBaseProps, 'indicatorPosition'> &
+  DropdownMenuCompactProps<T>;
+
+export type DropdownMenuEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCompactEmits<T>;
+
+export type DropdownMenuSlots<T extends DefinedValue = DefinedValue> = DropdownMenuCompactSlots<T>;
 
 // Menu Checkbox
-export interface DropdownMenuCheckboxProps<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
->
-  extends DropdownMenuWrapperProps, MenuCheckboxOptionsProps<T, S> {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-}
+export type DropdownMenuCheckboxProps<T extends DefinedValue = DefinedValue> = MenuUiBaseProps &
+  DropdownMenuCheckboxCompactProps<T>;
 
-export type DropdownMenuCheckboxEmits<
-  T extends DefinedValue = DefinedValue,
-  S extends MenuCheckboxOptionData<T> = MenuCheckboxOptionData<T>
-> = DropdownMenuWrapperEmits & MenuCheckboxOptionsEmits<T, S>;
+export type DropdownMenuCheckboxEmits<T extends DefinedValue = DefinedValue> = DropdownMenuCheckboxCompactEmits<T>;
+
+export type DropdownMenuCheckboxSlots<T extends DefinedValue = DefinedValue> = DropdownMenuCheckboxCompactSlots<T>;
 
 // Menu Radio
-export interface DropdownMenuRadioProps<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
->
-  extends DropdownMenuWrapperProps, MenuRadioOptionsProps<T, S> {
-  /**
-   * class of menu popup
-   */
-  class?: ClassValue;
-}
+export type DropdownMenuRadioProps<T extends AcceptableBooleanValue = AcceptableBooleanValue> = MenuUiBaseProps &
+  DropdownMenuRadioCompactProps<T>;
 
-export type DropdownMenuRadioEmits<
-  T extends AcceptableBooleanValue = AcceptableBooleanValue,
-  S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-> = DropdownMenuWrapperEmits & MenuRadioOptionsEmits<T, S>;
+export type DropdownMenuRadioEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
+  DropdownMenuRadioCompactEmits<T>;
+
+export type DropdownMenuRadioSlots<T extends AcceptableBooleanValue = AcceptableBooleanValue> =
+  DropdownMenuRadioCompactSlots<T>;

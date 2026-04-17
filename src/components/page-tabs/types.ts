@@ -8,7 +8,7 @@ import type {
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { IconValue } from '../icon/types';
-import type { MenuOptionData } from '../menu/types';
+import type { MenuOptionData } from '../menu';
 import type { PageTabsVariant } from './variants';
 
 export interface PageTabsOptionData extends PageTabsItemProps {
