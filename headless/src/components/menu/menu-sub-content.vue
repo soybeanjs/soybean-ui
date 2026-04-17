@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, shallowRef } from 'vue';
+import { computed, shallowRef, mergeProps } from 'vue';
 import { useForwardListeners, usePresence } from '../../composables';
 import type { FocusOutsideEvent, HorizontalSide } from '../../types';
-import { useMenuContext, useMenuRootContext } from './context';
+import { useMenuContext, useMenuRootContext, useMenuSubAttributeContext } from './context';
 import MenuContentImpl from './menu-content-impl.vue';
 import type { MenuSubContentEmits, MenuSubContentProps } from './types';
 import { SUB_CLOSE_KEYS } from './shared';
@@ -20,6 +20,9 @@ const emit = defineEmits<MenuSubContentEmits>();
 const listeners = useForwardListeners(emit);
 const { open, popupElement, triggerId, triggerElement, onOpenChange } = useMenuContext('MenuSubContent');
 const { dir, isUsingKeyboard, onClose } = useMenuRootContext('MenuSubContent');
+const attrContext = useMenuSubAttributeContext();
+
+const mergedProps = computed(() => mergeProps(props, { ...attrContext?.subContent?.value }));
 
 const isPresent = props.forceMount ? shallowRef(true) : usePresence(popupElement, open);
 
@@ -66,7 +69,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 <template>
   <MenuContentImpl
     v-if="isPresent"
-    v-bind="props"
+    v-bind="mergedProps"
     :trap-focus="false"
     :disable-outside-pointer-events="false"
     :aria-labelledby="triggerId"

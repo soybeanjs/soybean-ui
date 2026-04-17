@@ -314,6 +314,11 @@ export interface MenuItemIndicatorContext {
   modelValue: ComputedRef<CheckedState | undefined>;
 }
 
+export interface MenuSubAttributeContext {
+  subTrigger: ComputedRef<Record<string, any>>;
+  subContent: ComputedRef<Record<string, any>>;
+}
+
 export interface MenuOptionsCompactContext<T extends DefinedValue = DefinedValue> {
   activeValue: ComputedRef<T | undefined>;
   activePaths: ComputedRef<T[]>;

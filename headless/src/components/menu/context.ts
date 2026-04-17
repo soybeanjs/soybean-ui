@@ -12,6 +12,7 @@ import type {
   MenuOptionsCompactContext,
   MenuRadioGroupContextParams,
   MenuRootContext,
+  MenuSubAttributeContext,
   MenuUiSlot
 } from './types';
 
@@ -171,3 +172,6 @@ export const [provideMenuUi, useMenuUi] = useUiContext<MenuUiSlot>('MenuUi', ui 
 
   return ui;
 });
+
+export const [provideMenuSubAttributeContext, useMenuSubAttributeContext] =
+  useContext<MenuSubAttributeContext>('MenuSubAttribute');

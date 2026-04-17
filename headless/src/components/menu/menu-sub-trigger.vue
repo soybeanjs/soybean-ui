@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { nextTick } from 'vue';
+import { nextTick, mergeProps, computed } from 'vue';
 import { useForwardElement } from '../../composables';
 import { isMouseEvent } from '../../shared';
 import type { HorizontalSide } from '../../types';
 import { PopperAnchor } from '../popper';
-import { useMenuContentContext, useMenuContext, useMenuRootContext, useMenuUi } from './context';
+import {
+  useMenuContentContext,
+  useMenuContext,
+  useMenuRootContext,
+  useMenuUi,
+  useMenuSubAttributeContext
+} from './context';
 import { SUB_OPEN_KEYS } from './shared';
 import MenuItemImpl from './menu-item-impl.vue';
 import type { MenuSubTriggerProps } from './types';
@@ -14,6 +20,7 @@ const props = defineProps<MenuSubTriggerProps>();
 const { open, dataState, popupElement, popupId, triggerId, onTriggerElementChange, initTriggerId, onOpenChange } =
   useMenuContext('MenuSubTrigger');
 const { dir } = useMenuRootContext('MenuSubTrigger');
+const attrContext = useMenuSubAttributeContext();
 const {
   pointerGraceTimer,
   searchRef,
@@ -23,6 +30,8 @@ const {
   onTriggerLeave
 } = useMenuContentContext('MenuSubTrigger');
 const [_, setSubTriggerElement] = useForwardElement(onTriggerElementChange);
+
+const mergedProps = computed(() => mergeProps(props, { ...attrContext?.subTrigger?.value }));
 
 const cls = useMenuUi('subTrigger');
 
@@ -124,7 +133,7 @@ initTriggerId();
 <template>
   <PopperAnchor as-child>
     <MenuItemImpl
-      v-bind="props"
+      v-bind="mergedProps"
       :id="triggerId"
       :ref="setSubTriggerElement"
       :class="cls"
