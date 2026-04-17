@@ -68,7 +68,7 @@ const { pointerEvents } = useDismissableLayer(popupElement, {
   }
 });
 
-const { onKeydown: onFocusScopeKeydown } = useFocusScope(positionerElement, {
+const { onKeydown: onFocusScopeKeydown } = useFocusScope(popupElement, {
   trapped: () => props.trapFocus,
   onOpenAutoFocus: event => {
     emit('openAutoFocus', event);
@@ -204,22 +204,15 @@ watchEffect(() => {
 </script>
 
 <template>
-  <RovingFocusGroup
-    ref="rovingFocusGroupRef"
-    v-model:current-tab-stop-id="currentItemId"
-    as-child
-    orientation="vertical"
-    :dir="dir"
-    :loop="loop"
-    @entry-focus="onEntryFocus"
-  >
-    <PopperPositioner
-      v-bind="forwardedProps"
-      :ref="setPositionerElement"
-      :class="cls"
-      @keydown="onKeyDown"
-      @blur="onBlur"
-      @pointermove="onPointerMove"
+  <PopperPositioner v-bind="forwardedProps" :ref="setPositionerElement" :class="cls">
+    <RovingFocusGroup
+      ref="rovingFocusGroupRef"
+      v-model:current-tab-stop-id="currentItemId"
+      as-child
+      orientation="vertical"
+      :dir="dir"
+      :loop="loop"
+      @entry-focus="onEntryFocus"
     >
       <PopperPopup
         v-bind="popupProps"
@@ -234,9 +227,12 @@ watchEffect(() => {
         role="menu"
         tabindex="-1"
         :style="popupStyle"
+        @keydown="onKeyDown"
+        @blur="onBlur"
+        @pointermove="onPointerMove"
       >
         <slot />
       </PopperPopup>
-    </PopperPositioner>
-  </RovingFocusGroup>
+    </RovingFocusGroup>
+  </PopperPositioner>
 </template>
