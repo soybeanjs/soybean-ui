@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watchEffect, onWatcherCleanup, useAttrs } from 'vue';
-import { useForwardElement } from '../../composables';
+import { useForwardElement, useOmitProps } from '../../composables';
 import type { Point } from '../../types';
 import { Primitive } from '../primitive';
 import { MenuAnchor } from '../menu';
@@ -16,14 +16,16 @@ const props = withDefaults(defineProps<ContextMenuTriggerProps>(), {
   as: 'span'
 });
 
+const attrs = useAttrs();
+
+const forwardedProps = useOmitProps(props, ['reference'], attrs);
+
 const { dataState, pressOpenDelay, onOpenChange, onTriggerElementChange } =
   useContextMenuRootContext('ContextMenuTrigger');
 
 const [_, setTriggerElement] = useForwardElement(el => {
   onTriggerElementChange(el);
 });
-
-const attrs = useAttrs();
 
 const dataDisabled = computed(() => (props.disabled ? '' : undefined));
 
@@ -120,7 +122,7 @@ watchEffect(() => {
   <Primitive
     v-if="!reference"
     :ref="setTriggerElement"
-    v-bind="{ ...props, ...attrs }"
+    v-bind="forwardedProps"
     :data-disabled="dataDisabled"
     :data-state="dataState"
     :style="{

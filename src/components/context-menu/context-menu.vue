@@ -1,70 +1,40 @@
-<script
-  setup
-  lang="ts"
-  generic="T extends DefinedValue = DefinedValue, S extends MenuOptionData<T> = MenuOptionData<T>"
->
+<script setup lang="ts" generic="T extends DefinedValue = DefinedValue">
 import { computed } from 'vue';
+import { ContextMenuCompact } from '@soybeanjs/headless';
 import type { DefinedValue } from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
-import SMenuOptions from '../menu/menu-options.vue';
-import type { MenuOptionData } from '../menu/types';
-import SContextMenuWrapper from './context-menu-wrapper.vue';
-import type { ContextMenuEmits, ContextMenuProps } from './types';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { provideMenuUi } from '../menu/context';
+import type { ContextMenuProps, ContextMenuEmits, ContextMenuSlots } from './types';
 
 defineOptions({
   name: 'SContextMenu'
 });
 
-const props = withDefaults(defineProps<ContextMenuProps<T, S>>(), {
+const props = withDefaults(defineProps<ContextMenuProps<T>>(), {
   modal: true
 });
 
-const emit = defineEmits<ContextMenuEmits<S>>();
+const emit = defineEmits<ContextMenuEmits<T>>();
 
-type Slots = {
-  trigger: () => any;
-  item: (props: MenuOptionData<T>) => any;
-  'item-leading': (props: MenuOptionData<T>) => any;
-  'item-trailing': (props: MenuOptionData<T>) => any;
-  'item-trigger': (props: MenuOptionData<T>) => any;
-  'item-trigger-icon': (props: MenuOptionData<T>) => any;
-};
+const slots = defineSlots<ContextMenuSlots<T>>();
 
-const slots = defineSlots<Slots>();
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
-const propKeys = [
-  'class',
-  'dir',
-  'modal',
-  'size',
-  'ui',
-  'disabled',
-  'showArrow',
-  'triggerProps',
-  'portalProps',
-  'contentProps',
-  'popupProps',
-  'arrowProps'
-] as const;
+const listeners = useForwardListeners(emit);
 
-const forwardedWrapperProps = usePickProps(props, [...propKeys]);
+const slotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger'));
 
-const forwardedOptionsProps = useOmitProps(props, [...propKeys]);
-
-const forwardedListeners = useForwardListeners(emit);
-
-const slotKeys = computed(() => Object.keys(slots).filter(key => key !== 'trigger') as (keyof Slots)[]);
+provideMenuUi(() => props);
 </script>
 
 <template>
-  <SContextMenuWrapper v-bind="forwardedWrapperProps" v-on="forwardedListeners">
+  <ContextMenuCompact v-bind="forwardedProps" v-on="listeners">
     <template #trigger>
       <slot name="trigger" />
     </template>
-    <SMenuOptions v-bind="forwardedOptionsProps" :portal-props="portalProps" v-on="forwardedListeners">
-      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
-        <slot :name="slotKey" v-bind="slotProps" />
-      </template>
-    </SMenuOptions>
-  </SContextMenuWrapper>
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </ContextMenuCompact>
 </template>

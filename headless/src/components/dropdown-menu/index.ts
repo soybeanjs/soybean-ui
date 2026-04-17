@@ -16,6 +16,10 @@ export { MenuSubContent as DropdownMenuSubContent } from '../menu';
 export { MenuSeparator as DropdownMenuSeparator } from '../menu';
 export { MenuCheckboxGroup as DropdownMenuCheckboxGroup } from '../menu';
 export { MenuRadioGroup as DropdownMenuRadioGroup } from '../menu';
+export { default as DropdownMenuCompact } from './dropdown-menu-compact.vue';
+export { default as DropdownMenuCheckboxCompact } from './dropdown-menu-checkbox-compact.vue';
+export { default as DropdownMenuRadioCompact } from './dropdown-menu-radio-compact.vue';
+export { default as DropdownMenuWrapperCompact } from './dropdown-menu-wrapper-compact.vue';
 
 export type {
   DropdownMenuRootProps,
@@ -23,7 +27,18 @@ export type {
   DropdownMenuContentEmits,
   DropdownMenuContentProps,
   DropdownMenuTriggerType,
-  DropdownMenuTriggerProps
+  DropdownMenuTriggerProps,
+  DropdownMenuWrapperCompactEmits,
+  DropdownMenuWrapperCompactProps,
+  DropdownMenuCompactEmits,
+  DropdownMenuCompactProps,
+  DropdownMenuCompactSlots,
+  DropdownMenuCheckboxCompactEmits,
+  DropdownMenuCheckboxCompactProps,
+  DropdownMenuCheckboxCompactSlots,
+  DropdownMenuRadioCompactEmits,
+  DropdownMenuRadioCompactProps,
+  DropdownMenuRadioCompactSlots
 } from './types';
 export type {
   MenuPopupProps as DropdownMenuPopupProps,

@@ -2,16 +2,16 @@ import { computed, ref, shallowRef, useId } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import { getDisclosureState, isPointerInGraceArea } from '../../shared';
 import type { AcceptableBooleanValue, DefinedValue, GraceIntent, HorizontalSide } from '../../types';
-import { useDirection } from '../config-provider/context';
 import { providePopperUi } from '../popper/context';
 import { provideSeparatorUi } from '../separator/context';
 import type {
   MenuCheckboxGroupContextParams,
   MenuContentContextParams,
   MenuContextParams,
-  MenuItemIndicatorContextParams,
+  MenuItemIndicatorContext,
+  MenuOptionsCompactContext,
   MenuRadioGroupContextParams,
-  MenuRootContextParams,
+  MenuRootContext,
   MenuUiSlot
 } from './types';
 
@@ -67,14 +67,7 @@ export const [provideMenuContext, useMenuContext] = useContext('Menu', (params: 
   };
 });
 
-export const [provideMenuRootContext, useMenuRootContext] = useContext('MenuRoot', (params: MenuRootContextParams) => {
-  const dir = useDirection(params.dir);
-
-  return {
-    ...params,
-    dir
-  };
-});
+export const [provideMenuRootContext, useMenuRootContext] = useContext<MenuRootContext>('MenuRoot');
 
 export const [provideMenuContentContext, useMenuContentContext] = useContext(
   'MenuContent',
@@ -163,10 +156,11 @@ export const [provideMenuRadioGroupContext, useMenuRadioGroupContext] = useConte
   }
 );
 
-export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] = useContext(
-  'MenuItemIndicator',
-  (params: MenuItemIndicatorContextParams) => params
-);
+export const [provideMenuItemIndicatorContext, useMenuItemIndicatorContext] =
+  useContext<MenuItemIndicatorContext>('MenuItemIndicator');
+
+export const [provideMenuOptionsCompactContext, useMenuOptionsCompactContext] =
+  useContext<MenuOptionsCompactContext>('MenuOptionsCompact');
 
 export const [provideMenuUi, useMenuUi] = useUiContext<MenuUiSlot>('MenuUi', ui => {
   const popperUi = computed(() => ({ arrow: ui.value?.arrow }));

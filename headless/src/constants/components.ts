@@ -81,6 +81,10 @@ export const components = {
   ],
   configProvider: ['ConfigProvider'],
   contextMenu: [
+    'ContextMenuWrapperCompact',
+    'ContextMenuCompact',
+    'ContextMenuCheckboxCompact',
+    'ContextMenuRadioCompact',
     'ContextMenuRoot',
     'ContextMenuTrigger',
     'ContextMenuPortal',
@@ -180,6 +184,10 @@ export const components = {
     'ListboxVirtualizer'
   ],
   menu: [
+    'MenuOptionCompact',
+    'MenuOptionsCompact',
+    'MenuCheckboxOptionsCompact',
+    'MenuRadioOptionsCompact',
     'MenuRoot',
     'MenuPortal',
     'MenuContent',

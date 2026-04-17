@@ -1,19 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import {
-  ContextMenuArrow,
-  ContextMenuContent,
-  ContextMenuPortal,
-  ContextMenuRoot,
-  ContextMenuTrigger,
-  Slot,
-  provideMenuUi
-} from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants } from '@/theme';
-import { provideMenuExtraUi } from '../menu/context';
-import { menuVariants } from '../menu/variants';
-import type { ContextMenuWrapperEmits, ContextMenuWrapperProps } from './types';
+import { ContextMenuWrapperCompact } from '@soybeanjs/headless';
+import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
+import { provideMenuUi } from '../menu/context';
+import type { ContextMenuWrapperProps, ContextMenuWrapperEmits } from './types';
 
 defineOptions({
   name: 'SContextMenuWrapper'
@@ -25,54 +14,18 @@ const props = withDefaults(defineProps<ContextMenuWrapperProps>(), {
 
 const emit = defineEmits<ContextMenuWrapperEmits>();
 
-const forwardedRootProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'disabled',
-  'indicatorPosition',
-  'showArrow',
-  'triggerProps',
-  'portalProps',
-  'contentProps',
-  'popupProps',
-  'arrowProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'indicatorPosition']);
 
-const forwardedListeners = useForwardListeners(emit);
+const listeners = useForwardListeners(emit);
 
-const contentProps = computed(() => {
-  return {
-    ...props.contentProps,
-    popupProps: props.popupProps ?? props.contentProps?.popupProps
-  };
-});
-
-const ui = computed(() => {
-  const variants = menuVariants({
-    size: props.size,
-    indicatorPosition: props.indicatorPosition
-  });
-
-  return mergeSlotVariants(variants, props.ui, { popup: props.class });
-});
-
-provideMenuUi(ui);
-provideMenuExtraUi(ui);
+provideMenuUi(() => props);
 </script>
 
 <template>
-  <ContextMenuRoot v-bind="forwardedRootProps" @update:open="emit('update:open', $event)">
-    <ContextMenuTrigger v-bind="triggerProps" as-child :disabled="disabled">
-      <Slot :size="size">
-        <slot name="trigger" />
-      </Slot>
-    </ContextMenuTrigger>
-    <ContextMenuPortal v-bind="portalProps">
-      <ContextMenuContent v-bind="contentProps" v-on="forwardedListeners">
-        <slot />
-        <ContextMenuArrow v-if="showArrow" v-bind="arrowProps" />
-      </ContextMenuContent>
-    </ContextMenuPortal>
-  </ContextMenuRoot>
+  <ContextMenuWrapperCompact v-bind="forwardedProps" v-on="listeners">
+    <template #trigger>
+      <slot name="trigger" />
+    </template>
+    <slot />
+  </ContextMenuWrapperCompact>
 </template>

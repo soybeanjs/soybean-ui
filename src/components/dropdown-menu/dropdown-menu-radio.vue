@@ -1,81 +1,42 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableBooleanValue = AcceptableBooleanValue,
-    S extends MenuRadioOptionData<T> = MenuRadioOptionData<T>
-  "
->
+<script setup lang="ts" generic="T extends AcceptableBooleanValue = AcceptableBooleanValue">
 import { computed } from 'vue';
+import { DropdownMenuRadioCompact } from '@soybeanjs/headless';
 import type { AcceptableBooleanValue } from '@soybeanjs/headless';
-import { useForwardListeners, useOmitProps, usePickProps } from '@soybeanjs/headless/composables';
-import SMenuRadioOptions from '../menu/menu-radio-options.vue';
-import type { MenuRadioOptionData } from '../menu/types';
-import SDropdownMenuWrapper from './dropdown-menu-wrapper.vue';
-import type { DropdownMenuRadioEmits, DropdownMenuRadioProps } from './types';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
+import { provideMenuUi } from '../menu/context';
+import type { DropdownMenuRadioProps, DropdownMenuRadioEmits, DropdownMenuRadioSlots } from './types';
 
 defineOptions({
   name: 'SDropdownMenuRadio'
 });
 
-const props = withDefaults(defineProps<DropdownMenuRadioProps<T, S>>(), {
+const props = withDefaults(defineProps<DropdownMenuRadioProps<T>>(), {
   open: undefined,
   modal: true,
   modelValue: undefined
 });
 
-const emit = defineEmits<DropdownMenuRadioEmits<T, S>>();
+const emit = defineEmits<DropdownMenuRadioEmits<T>>();
 
-type Slots = {
-  trigger: () => any;
-  item: (props: S) => any;
-  'item-leading': (props: S) => any;
-  'item-trailing': (props: S) => any;
-  'item-indicator-icon': (props: S) => any;
-};
+const slots = defineSlots<DropdownMenuRadioSlots<T>>();
 
-const slots = defineSlots<Slots>();
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'indicatorPosition']);
 
-const propKeys = [
-  'defaultOpen',
-  'open',
-  'dir',
-  'modal',
-  'trigger',
-  'delayDuration',
-  'skipDelayDuration',
-  'size',
-  'ui',
-  'disabled',
-  'placement',
-  'indicatorPosition',
-  'showArrow',
-  'triggerProps',
-  'portalProps',
-  'contentProps',
-  'popupProps',
-  'arrowProps'
-] as const;
+const listeners = useForwardListeners(emit);
 
-const forwardedWrapperProps = usePickProps(props, [...propKeys]);
+const slotNames = computed(() => keysOf(slots).filter(key => key !== 'trigger'));
 
-const forwardedOptionsProps = useOmitProps(props, [...propKeys]);
-
-const forwardedListeners = useForwardListeners(emit);
-
-const slotKeys = computed(() => Object.keys(slots).filter(key => key !== 'trigger') as (keyof Slots)[]);
+provideMenuUi(() => props);
 </script>
 
 <template>
-  <SDropdownMenuWrapper v-bind="forwardedWrapperProps" v-on="forwardedListeners">
+  <DropdownMenuRadioCompact v-bind="forwardedProps" v-on="listeners">
     <template #trigger>
       <slot name="trigger" />
     </template>
-    <!-- @vue-expect-error ignore items type error -->
-    <SMenuRadioOptions v-bind="forwardedOptionsProps" :portal-props="portalProps" v-on="forwardedListeners">
-      <template v-for="slotKey in slotKeys" :key="slotKey" #[slotKey]="slotProps">
-        <slot :name="slotKey" v-bind="slotProps" />
-      </template>
-    </SMenuRadioOptions>
-  </SDropdownMenuWrapper>
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]="slotProps">
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </DropdownMenuRadioCompact>
 </template>

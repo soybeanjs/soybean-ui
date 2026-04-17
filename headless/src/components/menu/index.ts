@@ -15,6 +15,10 @@ export { default as MenuSubContent } from './menu-sub-content.vue';
 export { default as MenuSeparator } from '../separator/separator-root.vue';
 export { default as MenuCheckboxGroup } from './menu-checkbox-group.vue';
 export { default as MenuRadioGroup } from './menu-radio-group.vue';
+export { default as MenuOptionCompact } from './menu-option-compact.vue';
+export { default as MenuOptionsCompact } from './menu-options-compact.vue';
+export { default as MenuCheckboxOptionsCompact } from './menu-checkbox-options-compact.vue';
+export { default as MenuRadioOptionsCompact } from './menu-radio-options-compact.vue';
 
 export { provideMenuUi, useMenuUi } from './context';
 
@@ -37,14 +41,33 @@ export type {
   MenuGroupLabelProps,
   MenuItemProps,
   MenuItemEmits,
+  MenuOptionData,
+  MenuShortcutProps,
+  MenuOptionCompactProps,
+  MenuOptionCompactSelectEmits,
+  MenuOptionCompactEmits,
+  MenuOptionCompactSlots,
+  MenuOptionsCompactProps,
+  MenuOptionsCompactEmits,
+  MenuOptionsCompactSlots,
   MenuCheckboxGroupProps,
   MenuCheckboxGroupEmits,
+  MenuCheckboxOptionData,
   MenuCheckboxItemProps,
   MenuCheckboxItemEmits,
+  MenuCheckboxOptionsCompactProps,
+  MenuCheckboxOptionsCompactSelectEmits,
+  MenuCheckboxOptionsCompactEmits,
+  MenuCheckboxOptionsCompactSlots,
   MenuRadioGroupProps,
   MenuRadioGroupEmits,
+  MenuRadioOptionData,
   MenuRadioItemProps,
   MenuRadioItemEmits,
+  MenuRadioOptionsCompactProps,
+  MenuRadioOptionsCompactSelectEmits,
+  MenuRadioOptionsCompactEmits,
+  MenuRadioOptionsCompactSlots,
   MenuItemIndicatorProps,
   MenuUiSlot,
   MenuUi

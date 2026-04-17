@@ -16,13 +16,28 @@ export { MenuSubContent as ContextMenuSubContent } from '../menu';
 export { MenuSeparator as ContextMenuSeparator } from '../menu';
 export { MenuCheckboxGroup as ContextMenuCheckboxGroup } from '../menu';
 export { MenuRadioGroup as ContextMenuRadioGroup } from '../menu';
+export { default as ContextMenuCompact } from './context-menu-compact.vue';
+export { default as ContextMenuCheckboxCompact } from './context-menu-checkbox-compact.vue';
+export { default as ContextMenuRadioCompact } from './context-menu-radio-compact.vue';
+export { default as ContextMenuWrapperCompact } from './context-menu-wrapper-compact.vue';
 
 export type {
   ContextMenuRootProps,
   ContextMenuRootEmits,
   ContextMenuContentProps,
   ContextMenuContentEmits,
-  ContextMenuTriggerProps
+  ContextMenuTriggerProps,
+  ContextMenuWrapperCompactProps,
+  ContextMenuWrapperCompactEmits,
+  ContextMenuCompactProps,
+  ContextMenuCompactEmits,
+  ContextMenuCompactSlots,
+  ContextMenuCheckboxCompactProps,
+  ContextMenuCheckboxCompactEmits,
+  ContextMenuCheckboxCompactSlots,
+  ContextMenuRadioCompactProps,
+  ContextMenuRadioCompactEmits,
+  ContextMenuRadioCompactSlots
 } from './types';
 export type {
   MenuAnchorProps as ContextMenuAnchorProps,
