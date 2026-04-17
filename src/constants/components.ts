@@ -42,6 +42,7 @@ export const components = {
   link: ['SLink'],
   list: ['SList', 'SListItem'],
   menu: ['SMenuOption', 'SMenuOptions', 'SMenuCheckboxOptions', 'SMenuRadioOptions'],
+  menubar: ['SMenubar'],
   navigationMenu: ['SNavigationMenu'],
   pageTabs: ['SPageTabs'],
   pagination: ['SPagination'],

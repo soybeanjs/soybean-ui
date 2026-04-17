@@ -1,6 +1,5 @@
 import {
   computed,
-  nextTick,
   onBeforeUnmount,
   onMounted,
   onWatcherCleanup,
@@ -287,14 +286,17 @@ export function useFocusOutside(
 ) {
   let isFocusInsideDOMTree = false;
 
-  const handleFocus = async (event: FocusEvent) => {
-    await nextTick();
-
+  const handleFocus = (event: FocusEvent) => {
     if (!node.value) return;
 
-    isFocusInsideDOMTree = isInsideDOMTree(node.value, event.target as HTMLElement);
+    if (isFocusInsideDOMTree) return;
 
-    if (event.target && !isFocusInsideDOMTree) {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    isFocusInsideDOMTree = isInsideDOMTree(node.value, target);
+
+    if (!isFocusInsideDOMTree) {
       const eventDetail = { originalEvent: event };
       handleAndDispatchCustomEvent(FOCUS_OUTSIDE_EVENT, onFocusOutside, eventDetail);
     }

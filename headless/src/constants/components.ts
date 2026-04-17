@@ -206,6 +206,27 @@ export const components = {
     'MenuCheckboxGroup',
     'MenuRadioGroup'
   ],
+  menubar: [
+    'MenubarCompact',
+    'MenubarRoot',
+    'MenubarMenu',
+    'MenubarTrigger',
+    'MenubarPortal',
+    'MenubarContent',
+    'MenubarArrow',
+    'MenubarGroup',
+    'MenubarGroupLabel',
+    'MenubarItem',
+    'MenubarItemIndicator',
+    'MenubarCheckboxItem',
+    'MenubarRadioItem',
+    'MenubarSub',
+    'MenubarSubTrigger',
+    'MenubarSubContent',
+    'MenubarSeparator',
+    'MenubarCheckboxGroup',
+    'MenubarRadioGroup'
+  ],
   navigationMenu: [
     'NavigationMenuRoot',
     'NavigationMenuList',
