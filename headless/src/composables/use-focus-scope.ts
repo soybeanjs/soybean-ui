@@ -126,11 +126,16 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
       const previouslyFocusedElement = getActiveElement();
       const hasFocusedCandidate = container.contains(previouslyFocusedElement);
 
+      if (onOpenAutoFocus) {
+        container.addEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
+      }
+
+      if (onCloseAutoFocus) {
+        container.addEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
+      }
+
       if (!hasFocusedCandidate) {
         const mountEvent = new CustomEvent(AUTOFOCUS_ON_OPEN, AUTOFOCUS_EVENT_OPTIONS);
-        if (onOpenAutoFocus) {
-          container.addEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
-        }
         container.dispatchEvent(mountEvent);
 
         if (!mountEvent.defaultPrevented) {
@@ -146,10 +151,21 @@ export function useFocusScope(elRef: Ref<HTMLElement | undefined>, options?: Use
         if (onOpenAutoFocus) {
           container.removeEventListener(AUTOFOCUS_ON_OPEN, onOpenAutoFocus);
         }
-        if (onCloseAutoFocus) {
-          container.removeEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
-        }
-        focusScopesStack.remove(focusScope);
+
+        const closeEvent = new CustomEvent(AUTOFOCUS_ON_CLOSE, AUTOFOCUS_EVENT_OPTIONS);
+        container.dispatchEvent(closeEvent);
+
+        window.setTimeout(() => {
+          if (!closeEvent.defaultPrevented) {
+            focus(previouslyFocusedElement ?? document.body, { select: true });
+          }
+
+          if (onCloseAutoFocus) {
+            container.removeEventListener(AUTOFOCUS_ON_CLOSE, onCloseAutoFocus);
+          }
+
+          focusScopesStack.remove(focusScope);
+        }, 0);
       });
     });
   }
