@@ -9,6 +9,12 @@ applyTo: 'src/components/**/*.{ts,vue}'
 - UI 层只负责样式包装、variants 计算、UiContext 注入和 props/listeners 转发
 - 禁止在 UI 层放 ARIA 属性、键盘逻辑或状态语义
 
+## 与 A11y / RTL 规范的关系
+
+- 本文件只约束 UI 层如何承接 headless 已有的状态、方向和值，不重新定义组件语义。
+- `role`、`aria-*`、`tabindex`、键盘交互、焦点管理都以 `soybean-ui-accessibility-rtl.instructions.md` 为准，并继续留在 headless。
+- UI 层应消费 headless 已暴露的 `data-state`、`dir`、slot 结构来做样式表达，而不是在 wrapper 中重新生成语义属性。
+
 ## 场景补充
 
 ### 场景 A：从 0 到 1
@@ -40,6 +46,7 @@ headless 稳定后，再按下面顺序做 UI：
 - 第一行必须是 `// @unocss-include`
 - `slots` key 必须与 headless `{Name}UiSlot` 完全一致
 - 组件有自定义 CSS 变量时，统一使用 `--soybean-` 前缀
+- 方向相关样式遵循 `soybean-ui-accessibility-rtl.instructions.md`：优先逻辑属性与逻辑对齐类，只有无法表达时才用 `rtl:` 修饰符
 
 ## Step 2：types.ts
 
@@ -53,6 +60,7 @@ headless 稳定后，再按下面顺序做 UI：
 - `defineOptions({ name: 'S{Name}' })`
 - 模板里直接使用 prop 名，不写 `props.xxx`
 - `script setup` 顺序遵循 `vue-sfc.instructions.md`
+- wrapper 只承接样式注入与 props/listeners 转发，不在这里补写 `aria-*`、键盘逻辑，也不要吞掉需要继续下传给 headless 的 `dir`、`data-*` 或其他语义相关输入
 
 ### 3.1 Props 转发策略
 
@@ -80,7 +88,9 @@ headless 稳定后，再按下面顺序做 UI：
 
 - 计算 `ui = computed(() => mergeSlotVariants(variants, props.ui, { root: props.class }))`
 - 调用 `provide{Name}Ui(ui)`
-- 如果 headless 已提供 `{Name}Compact`，直接渲染它，不再自己遍历 `items` 或拼装默认 icon/title/content
+- 如果 headless 已提供 `{Name}Compact`，直接渲染它，不再自己遍历 `items`、拼装默认 icon/title/content，也不再为 Compact 额外编排任何非样式逻辑
+
+若 wrapper 仍然需要为了 Compact 写条件分支、默认内容决策、slot 选择、事件包装、结构切换或其它非样式逻辑，应回到 headless 完成下沉，而不是继续堆在 UI 层。
 
 #### 单类名组件
 

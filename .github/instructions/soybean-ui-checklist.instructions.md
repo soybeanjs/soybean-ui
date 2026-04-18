@@ -6,25 +6,39 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue,md}'
 
 仅在组件开发任务收尾阶段应用本文件。
 
+如果当前还在判模式、找参照、拆分层或补主体实现，这份文件只可作为预览清单，不作为当前阶段的执行顺序。
+
 收尾时按“实现顺序的逆序”检查：先看验证结果，再看 tests/docs/playground，再看出口面，再回看 headless 与 UI 分层是否干净。
 
 如果某一层还没通过，就不要继续往后勾选下一层。
 
-## 场景判断
+开始收尾前，组件模式、开发场景、完整交付范围与实现顺序应已按 `soybean-ui-component-overview.instructions.md` 完成判定；本文件不重复承担这些前置决策。
 
-- 已明确本轮属于场景 A：从 0 到 1 新建组件，或场景 B：迁入外部代码后规范化，或场景 C：现有组件规范对齐
-- 场景 B 中，已先梳理需要保留的行为、状态模型、公开 API、a11y 语义
-- 场景 C 中，已先整理当前组件与 instructions 的差距清单
+## 验证
 
-## 任务闭环
+- 已运行 `pnpm typecheck`
+- 已运行 `pnpm lint`
+- 已运行相关 `pnpm test` 或定向组件测试
+- 若有未运行项，已明确记录原因
+- 场景 B 与场景 C 中，已额外验证结构调整没有带来行为回退
 
-- 开始实现前，已查看至少一个同模式的 headless 组件和一个 UI 组件
-- 已明确当前任务属于多 slot 基础组件、Compact 聚合组件、单类名组件之一
-- 开始写新函数、新类型前，已检查 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/` 是否已有可复用实现
-- 若仓库内没有合适 composable，已先检查 `@vueuse/core`
-- 新建组件时，已检查 barrel、constants、namespaced、playground、docs、tests
+## Playground / Docs / Tests
+
+- playground 示例可以说明主要公开能力
+- 中英文文档结构同步
+- `docs/src/constants/menus.ts` 已更新
+- 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
+- 场景 B 中，即使外部代码没有自带 docs / tests，也已按仓库规范补齐
+- 场景 C 中，只要本轮改动影响公开行为或结构语义，就已同步更新 docs / tests
+
+## 集成出口
+
+- `headless/src/index.ts` 与 `src/index.ts` 已更新
+- 两侧 `constants/components.ts` 已按字母顺序更新
+- `headless/src/namespaced/index.ts` 已同步更新
+
+- 新建组件时，已检查并补齐完整交付面的其余入口
 - 为现有组件加功能或修 bug 时，已同步更新所有受影响层和出口面
-- 已运行与改动匹配的验证，或明确记录无法运行的原因
 
 ## Headless
 
@@ -51,28 +65,6 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue,md}'
 - ARIA、role、键盘交互都在 headless
 - 状态对外正确反映到 `aria-*` 与 `data-state`
 - 方向性组件已补齐 `dir` 透传与 RTL 样式翻转
-
-## 集成出口
-
-- `headless/src/index.ts` 与 `src/index.ts` 已更新
-- 两侧 `constants/components.ts` 已按字母顺序更新
-- `headless/src/namespaced/index.ts` 已同步更新
-
-## Playground / Docs / Tests
-
-- playground 示例可以说明主要公开能力
-- 中英文文档结构同步
-- `docs/src/constants/menus.ts` 已更新
-- 组件测试覆盖 rendering、state、disabled、accessibility 核心场景
-- 场景 B 中，即使外部代码没有自带 docs / tests，也已按仓库规范补齐
-- 场景 C 中，只要本轮改动影响公开行为或结构语义，就已同步更新 docs / tests
-
-## 验证
-
-- `pnpm typecheck`
-- `pnpm lint`
-- 相关 `pnpm test`
-- 场景 B 与场景 C 中，已额外验证结构调整没有带来行为回退
 
 ## 结果说明
 

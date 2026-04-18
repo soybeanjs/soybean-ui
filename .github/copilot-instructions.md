@@ -23,6 +23,9 @@
 - `.github/instructions/import-order.instructions.md`
 - `.github/instructions/typescript-functional-style.instructions.md`
 - `.github/instructions/vue-sfc.instructions.md`
+
+如果任务涉及 commit message、changelog 或 release summary，再额外遵循：
+
 - `.github/instructions/git-commit-convention.instructions.md`
 
 ## 组件任务
@@ -49,34 +52,11 @@
 - `.github/instructions/soybean-ui-testing.instructions.md`
 - `.github/instructions/soybean-ui-checklist.instructions.md`
 
-## 新组件 0 到 1 执行顺序
+## 组件任务执行原则
 
-1. 先在 `soybean-ui-component-overview.instructions.md` 中判断组件模式与交付面
-2. 先查看一个同模式的 headless 组件和一个 UI 组件
-3. 先实现 headless：`types.ts`、`context.ts`、基础分片组件，必要时新增 `{Name}Compact`
-4. 再实现 UI：`variants.ts`、`types.ts`、wrapper `.vue`、`index.ts`
-5. 再接入出口面：barrel、constants、namespaced
-6. 再补 playground、docs、tests
-7. 最后运行验证并按 checklist 收尾
-
-## 其它组件开发场景
-
-### 场景 1：从 0 到 1 新建组件
-
-- 直接按上面的 0 到 1 顺序推进
-- 默认要求完整交付面
-
-### 场景 2：迁入其它仓库现有代码后规范化
-
-- 先确认需要保留的行为、状态模型、公开 API 与交互语义
-- 再把代码按 SoybeanUI 的 headless / UI 分层拆开，不要直接整块照搬
-- 先保证逻辑完整和行为不回退，再把目录结构、类型、导出、样式注入、a11y、docs、tests 对齐到仓库规范
-
-### 场景 3：对现有组件做规范对齐
-
-- 先做差距检查，再开始改代码
-- 优先修复分层边界、导出面、a11y、RTL、测试和文档缺口
-- 不要为了追求形式统一而改坏已有稳定行为
+- 组件模式判断、开发场景、阶段顺序、完整交付面统一以 `soybean-ui-component-overview.instructions.md` 为准
+- headless、UI、a11y、playground、docs、testing 分别看对应细分 instructions，不在本文件重复展开
+- `soybean-ui-checklist.instructions.md` 只在实现完成后的收尾阶段使用
 
 ## Source Of Truth
 

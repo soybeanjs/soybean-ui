@@ -11,6 +11,12 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - 禁止从 `@soybeanjs/ui` 导入
 - 写新逻辑前，先检查 `headless/src/composables/`、`headless/src/shared/`、`headless/src/types/` 是否已有可复用实现
 
+## 与 A11y / RTL 规范的关系
+
+- 本文件关注 a11y 与方向能力在 headless 层“落到哪里、怎么组织”，不重复列举每一种组件模式的 WAI-ARIA 细则。
+- 凡 `role`、`aria-*`、`tabindex`、键盘交互、焦点管理、`aria-labelledby` / `aria-controls`、`dir` 这些语义要求，以 `soybean-ui-accessibility-rtl.instructions.md` 为准；headless 的职责是把它们落实到 `types.ts`、`context.ts` 与分片 SFC 中。
+- UI 只消费 headless 暴露出来的状态与方向，不应回填或改写这些语义。
+
 ## 场景补充
 
 ### 场景 A：从 0 到 1
@@ -54,6 +60,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - 直接来自 props 的字段优先使用 `transformPropsToContext` 或 `PropsToContext`
 - 需要新的 composable 或状态工具时，先检查 `headless/src/composables/` 是否已有对应能力
 - 如果 `headless/src/composables/` 没有，再检查 `@vueuse/core` 是否已有可直接使用的 composable
+- 方向敏感组件的 `dir` 解析与下发也放在这里，具体约束遵循 `soybean-ui-accessibility-rtl.instructions.md`
 - 只在 provider 之外也需要消费的派生值放在组件里先算好，再传给 `provideXContext`
 - 只供子组件消费的基础设施状态，如 element ref、生成的 id，可放在 `useContext` 的回调里派生
 - 消费必有值的 context 时直接解构所需状态；只有可选 context 才保留整体对象
@@ -63,6 +70,7 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - 分片组件通过 `use{Name}Ui('root')` 或 `use{Name}Ui()` 获取类名
 - 每个 headless 分片组件根元素都要暴露稳定的 `data-slot="{slotName}"`
 - 需要暴露 DOM 句柄时使用 `useForwardElement`
+- `role`、`aria-*`、`tabindex`、键盘事件、焦点相关属性都应落在这些 headless 可交互元素上，而不是留给 UI wrapper 兜底
 - 状态通过 `data-state` 等 `data-*` 属性暴露，不要用 class 传状态
 
 ## Step 4：UI Context
@@ -77,14 +85,23 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 
 - 输入是列表数据
 - 结构稳定
-- UI 层只是重复拼装现有 headless 分片
+- UI 层只需要做样式注入、variants 计算、`ui` 合并与 props/listeners 转发，不再承担任何额外逻辑
+
+只要 UI 层还需要添加除了样式以外的任何逻辑，就说明这部分聚合还没有真正完成下沉，应继续在 headless 中实现，而不是把逻辑残留在 UI wrapper。
 
 此时应：
 
 - 在 headless 新增 `{Name}CompactProps`、`{Name}CompactEmits`、`{Name}CompactSlots`
 - 新增 `{component}-compact.vue`
-- 把 `items` 遍历、`Root/Item/Header/Trigger/Content` 组合、默认标题/描述/图标渲染下沉到 headless
+- 把 `items` 遍历、`Root/Item/Header/Trigger/Content` 组合、默认标题/描述/图标渲染，以及任何仍会影响结构、状态、插槽决策、默认内容、事件编排、条件分支的非样式逻辑，一并下沉到 headless
 - 默认图标通过 headless `IconRender` 渲染，并由 `ConfigProvider.iconRender` 驱动
+
+典型应下沉到 headless 的内容包括：
+
+- 根据数据决定渲染哪些分片、以什么顺序渲染
+- 组装默认标题、描述、图标、空态或 fallback 内容
+- 处理与 `items` 相关的条件分支、事件分发、slot 选择与结构切换
+- 为内部子组件补充额外 props、派生状态或上下文值
 
 ## Step 6：常用实现模式
 
@@ -109,3 +126,4 @@ applyTo: 'headless/src/components/**/*.{ts,vue}'
 - 在 context 中存非响应式原始值
 - 对外导出 `use{Name}Ui`
 - 把稳定聚合结构继续留在 UI wrapper 层
+- 在 `{Name}Compact` 已经成立的前提下，仍把任何非样式逻辑留在 UI wrapper 层

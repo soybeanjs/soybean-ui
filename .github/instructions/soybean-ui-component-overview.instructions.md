@@ -6,13 +6,15 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue,md}'
 
 仅在任务属于 SoybeanUI 组件开发、扩展、修复、补文档、补测试或补 playground 时应用本文件。
 
+如果当前任务不是围绕组件能力本身，而只是普通页面、脚本、配置或基础设施代码编辑，即使文件路径命中广泛模式，也忽略本文件，回到通用 instructions。
+
 ## Source Of Truth
 
 - 组件开发规范只维护在 `.github/copilot-instructions.md` 和 `.github/instructions/*.instructions.md`
 
 ## 目标
 
-这个文件负责先判断当前属于哪一种组件开发场景，再给出对应的执行顺序，并把细节分发到对应的 instructions。
+这个文件只负责判断组件任务场景、确定执行顺序，并把细节分发到对应的 instructions；不要在这里重复 headless、UI、docs、testing 文件已经明确的低层细则。
 
 ## 三种组件开发场景
 
@@ -73,9 +75,11 @@ applyTo: '**/*.{ts,tsx,js,jsx,vue,md}'
 
 ### Compact 聚合组件
 
-- 适合“数据驱动 + 结构稳定 + UI 层只是重复拼装分片”的场景
-- headless 负责 `{Name}Compact`、默认标题/描述/图标、`items` 遍历与结构组合
+- 适合“数据驱动 + 结构稳定 + UI 层不应再承担任何非样式逻辑”的场景
+- headless 负责 `{Name}Compact`、默认标题/描述/图标、`items` 遍历与结构组合，以及所有仍会影响结构、状态、默认内容或事件编排的非样式逻辑
 - UI wrapper 只保留 variants、`mergeSlotVariants`、props/listeners 转发和 slots 透传
+
+如果 UI 层还需要为了 Compact 额外写条件分支、数据编排、默认内容决策、slot 选择、事件包装或其它非样式逻辑，就说明这部分实现还应继续下沉到 headless，而不是停在 UI wrapper。
 
 ### 单类名组件
 
@@ -228,25 +232,11 @@ headless 稳定后，再完成 UI 层。默认顺序：
 - UI 侧常量值使用带 `S` 前缀的组件名数组
 - `headless/src/namespaced/index.ts` 的 import 和 namespace 对象都按字母顺序维护；存在聚合入口时同步暴露 `Compact`
 
-## 开发前提
+## 结果说明
 
-- 首次本地开发前运行 `pnpm stub`
-- 不要凭空生成通用模板；优先复用仓库中已验证实现
-- headless 类型导入风格、UI re-export 风格跟随邻近同模式组件
+- 如果本轮新增了新的 composable、shared helper 或类型，而不是复用仓库已有能力或 `@vueuse/core`，必须在结果总结中明确写出新增原因。
 
-## 验证要求
-
-结束前至少运行与改动匹配的验证：
-
-- `pnpm typecheck`
-- `pnpm lint`
-- 相关 `pnpm test` 或定向组件测试
-
-如果未运行任何一项，必须明确写出原因。
-
-场景 B 与场景 C 中，如果本轮是迁移或规范对齐，不仅要验证“代码能跑”，还要验证“行为没有被结构调整破坏”。
-
-如果本轮新增了新的 composable、shared helper 或类型，而不是复用仓库已有能力或 `@vueuse/core`，必须在结果总结中明确写出新增原因。
+`soybean-ui-checklist.instructions.md` 只在实现完成后的收尾阶段使用；不要在任务刚开始时把 checklist 当成实现顺序文档。
 
 ## 相关细分规范
 

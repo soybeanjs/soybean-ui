@@ -197,8 +197,35 @@ defineExpose({
 - Headless SFC 中，ARIA 状态、context 注入、受控状态逻辑优先靠近对应逻辑块组织。
 - UI SFC 中，`useOmitProps` / `usePickProps`、variant 计算、`provideXUi(ui)` 一般会落在“hooks / composables 初始化”与“业务逻辑 / provider”之间。
 - 模板统一直接使用 prop 名；如果和局部变量冲突，优先调整局部变量命名，不回退到 `props.xxx`。
+- template 中绑定到事件、插槽参数回调或属性的函数实现，必须写在 `script setup` 里，或从外部显式导入后再在 template 中引用。
+- 不要在 template 里直接写内联箭头函数、匿名函数或承载业务逻辑的函数实现；template 只负责绑定已经在脚本中定义好的函数。
+- 允许在 template 中给脚本内已定义的函数传参，例如 `@click="handleSelect(item.id)"`；不允许直接写 `@click="() => handleSelect(item.id)"` 这类内联实现。
 - 在 soybean-ui 组件里，如果状态值不需要深层响应式，优先 `shallowRef`；这与仓库里大量 headless context、受控状态和元素引用的写法保持一致。
 - 若组件非常简单，不必为了凑顺序硬塞空分区；顺序是为了增强可读性，不是制造样板代码。
+
+```vue
+<template>
+  <button @click="handleClick">Save</button>
+  <button @click="handleSelect(item.id)">Select</button>
+</template>
+
+<script setup lang="ts">
+function handleClick() {
+  // ...
+}
+
+function handleSelect(id: string) {
+  // ...
+}
+</script>
+```
+
+```vue
+<template>
+  <button @click="() => handleClick()">Save</button>
+  <button @click="value => emit('select', value)">Select</button>
+</template>
+```
 
 ## 检查问题
 
@@ -206,5 +233,6 @@ defineExpose({
 - `defineOptions` 是否足够靠前？
 - props / emits 类型与 `defineProps` / `defineEmits` 是否成对且顺序稳定？
 - hooks 初始化、业务逻辑、provider、watch、生命周期是否分层清楚？
+- template 中绑定的函数是否都已经在 `script setup` 中定义或导入，而不是写成内联实现？
 - 不需要深层响应式的状态是否优先使用了 `shallowRef`？
 - 是否为了形式保留了不必要的 `init`、watch、`defineExpose`？

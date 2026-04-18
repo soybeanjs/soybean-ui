@@ -40,7 +40,7 @@ applyTo: 'docs/src/docs/**/*.md'
 - `DataTable preset="props"` 要包含所有公开 props，尤其是 `class`、`ui`
 - `DataTable preset="emits"` 要包含所有公开事件
 - `DataTable preset="slots"` 要包含所有公开插槽
-- `TypeTable` 中的 `Ui` 字段必须与 `{Name}UiSlot` 一一对应
+- 多 slot 组件或存在 `ExtendedUi` 的组件，`TypeTable` 中的 `Ui` 字段必须与 `{Name}UiSlot` 一一对应；单类名组件不必为了文档形式额外制造不存在的 `Ui` 槽位
 
 ## 菜单注册
 

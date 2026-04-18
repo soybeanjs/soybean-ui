@@ -10,6 +10,12 @@ applyTo: '**/*.{ts,vue}'
 
 在 headless 阶段先完成 a11y 语义，在 UI 阶段再检查 RTL 呈现，不要倒过来做。
 
+## 与其它 instructions 的分工
+
+- 本文件只定义跨组件共享的 a11y 与 RTL 底线，不重复说明 headless 的目录拆分、context 组织或 UI wrapper 的 props 转发写法。
+- 语义上“必须满足什么”以本文件为准；具体把这些要求落到 `types.ts`、`context.ts`、headless SFC、`variants.ts`、wrapper 的方式，分别看 `soybean-ui-headless.instructions.md` 与 `soybean-ui-ui-layer.instructions.md`。
+- 简单说：headless 负责落地语义、状态与方向值，UI 负责承接这些状态与方向做样式表达。
+
 ## A11y 原则
 
 - 所有 ARIA、role、tabindex、键盘交互都属于 headless 层职责
@@ -40,10 +46,8 @@ applyTo: '**/*.{ts,vue}'
 
 方向相关组件必须同时处理 headless 与 UI 两层：
 
-- `types.ts` 添加 `dir?: Direction`
-- `context.ts` 通过 `useDirection(params.dir)` 解析方向
-- 根元素绑定 `:dir="dir"`
-- UI 层在 `variants.ts` 中默认优先使用 UnoCSS 逻辑属性和逻辑对齐类，如 `start-*`、`end-*`、`ms-*`、`me-*`、`ps-*`、`pe-*`、`text-start`、`text-end`
+- headless 侧：`types.ts` 添加 `dir?: Direction`，`context.ts` 通过 `useDirection(params.dir)` 解析方向，并保证最终 DOM 根节点能绑定 `:dir="dir"`
+- UI 侧：在 `variants.ts` 中默认优先使用 UnoCSS 逻辑属性和逻辑对齐类，如 `start-*`、`end-*`、`ms-*`、`me-*`、`ps-*`、`pe-*`、`text-start`、`text-end`
 - 只有在逻辑属性无法表达的场景下，才补充 `rtl:` 修饰符
 
 ## 默认写法
