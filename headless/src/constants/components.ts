@@ -158,6 +158,7 @@ export const components = {
   ],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
+  inputOtp: ['InputOtpRoot', 'InputOtpPositioner', 'InputOtpInput', 'InputOtpCompact'],
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [

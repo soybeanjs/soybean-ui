@@ -35,6 +35,7 @@ export * from './components/hover-card';
 export * from './components/icon';
 export * from './components/input';
 export * from './components/input-number';
+export * from './components/input-otp';
 export * from './components/kbd';
 export * from './components/label';
 export * from './components/layout';
