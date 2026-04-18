@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.15.0-beta.2](https://github.com/soybeanjs/soybean-ui/compare/v0.15.0-beta.1...v0.15.0-beta.2) (2026-04-18)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **form**: update form input and output types for schema validation &nbsp;-&nbsp; by @soybeanjs [<samp>(3b792)</samp>](https://github.com/soybeanjs/soybean-ui/commit/3b792d13)
+
+### &nbsp;&nbsp;&nbsp;❤️ Contributors
+
+[![soybeanjs](https://github.com/soybeanjs.png?size=48)](https://github.com/soybeanjs)&nbsp;&nbsp;
+
 ## [v0.15.0-beta.1](https://github.com/soybeanjs/soybean-ui/compare/v0.14.0...v0.15.0-beta.1) (2026-04-18)
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
