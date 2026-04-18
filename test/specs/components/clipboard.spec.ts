@@ -1,6 +1,7 @@
-import { nextTick } from 'vue';
+import { h, nextTick } from 'vue';
 import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import SClipboard from '../../../src/components/clipboard/clipboard.vue';
 import type { ClipboardProps } from '../../../src/components/clipboard/types';
 import { getA11yViolations } from '../../shared/a11y';
@@ -13,7 +14,7 @@ const createPermissionStatus = () => ({
   removeEventListener: vi.fn()
 });
 
-type ClipboardTestSlotValue = string | ((props: { copied: boolean }) => string);
+type ClipboardTestSlotValue = string | ((props: Record<string, unknown>) => string);
 
 type ClipboardTestSlots = Record<string, ClipboardTestSlotValue> & {
   leading?: ClipboardTestSlotValue;
@@ -63,21 +64,31 @@ beforeEach(() => {
 
 describe('SClipboard', () => {
   describe('rendering', () => {
-    it('renders default slot content and updates copied slot props', async () => {
-      const wrapper = mountClipboard(
-        {},
+    it('renders default icon/text content from the headless layer', () => {
+      const wrapper = mount(
         {
-          default: ({ copied }: { copied: boolean }) => (copied ? 'Copied' : 'Copy')
+          components: {
+            SClipboard,
+            SConfigProvider
+          },
+          setup() {
+            return {
+              iconRender: (icon: string) => h('span', { 'data-testid': 'icon' }, icon)
+            };
+          },
+          template: `
+            <SConfigProvider :icon-render="iconRender">
+              <SClipboard value="soybean-ui" />
+            </SConfigProvider>
+          `
+        },
+        {
+          attachTo: document.body
         }
       );
 
       expect(wrapper.text()).toContain('Copy');
-
-      await wrapper.find('button').trigger('click');
-      await Promise.resolve();
-      await nextTick();
-
-      expect(wrapper.text()).toContain('Copied');
+      expect(wrapper.find('[data-testid="icon"]').text()).toBe('lucide:copy');
       wrapper.unmount();
     });
 
@@ -102,11 +113,25 @@ describe('SClipboard', () => {
       expect(wrapper.find('[data-testid="trailing"]').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('allows overriding the default icon and text via slots', () => {
+      const wrapper = mountClipboard(
+        {},
+        {
+          leading: '<span data-testid="leading">override-icon</span>',
+          default: 'override-text'
+        }
+      );
+
+      expect(wrapper.find('[data-testid="leading"]').text()).toBe('override-icon');
+      expect(wrapper.text()).toContain('override-text');
+      wrapper.unmount();
+    });
   });
 
   describe('copied state', () => {
     it('copies the value and reflects copied state', async () => {
-      const wrapper = mountClipboard({}, { default: 'Copy' });
+      const wrapper = mountClipboard();
 
       expect(wrapper.find('button').attributes('data-state')).toBe('ready');
 
@@ -115,6 +140,7 @@ describe('SClipboard', () => {
       await nextTick();
 
       expect(wrapper.find('button').attributes('data-state')).toBe('copied');
+      expect(wrapper.text()).toContain('Copied');
       expect(wrapper.emitted('copied')?.[0]).toEqual(['soybean-ui']);
       wrapper.unmount();
     });

@@ -11,11 +11,11 @@ const value = 'custom-styling-example';
     variant="ghost"
     class="border border-dashed border-info/40 bg-info/8 text-info hover:bg-info/12 active:bg-info/18"
   >
-    <template #leading="{ copied }">
-      <SIcon :icon="copied ? 'lucide:check' : 'lucide:copy'" />
+    <template #leading="{ icon }">
+      <SIcon :icon="icon" class="text-info" />
     </template>
-    <template #default="{ copied }">
-      {{ copied ? 'Copied custom style' : 'Custom style copy action' }}
+    <template #default="{ text }">
+      {{ `${text} custom style action` }}
     </template>
   </SClipboard>
 </template>

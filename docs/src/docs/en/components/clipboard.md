@@ -8,26 +8,20 @@ A clipboard action component for copying text values with accessible button sema
 
 ```vue
 <script setup lang="ts">
-import { SClipboard, SIcon } from '@soybeanjs/ui';
+import { SClipboard } from '@soybeanjs/ui';
 
 const value = 'pnpm add @soybeanjs/ui';
 </script>
 
 <template>
-  <SClipboard :value="value" color="accent" variant="soft">
-    <template #leading="{ copied }">
-      <SIcon :icon="copied ? 'lucide:check' : 'lucide:copy'" />
-    </template>
-    <template #default="{ copied }">
-      {{ copied ? 'Copied' : 'Copy command' }}
-    </template>
-  </SClipboard>
+  <SClipboard :value="value" color="accent" variant="soft" copy-text="Copy command" copied-text="Copied" />
 </template>
 ```
 
 ## Features
 
 - 📋 Copies a required text value on click
+- 🧩 Ships with built-in icon/text content that can still be overridden by slots
 - ✅ Exposes ready, copied, and unsupported states
 - 🎨 Supports the same color, size, variant, and shape tokens as button
 - ♿ Keeps button semantics and disabled behavior in the headless layer
@@ -58,6 +52,10 @@ custom-styling
   { name: 'value', type: 'string', default: '-', required: true, description: 'Text value to copy' },
   { name: 'copiedDuration', type: 'number', default: '2000', description: 'Copied-state duration in milliseconds' },
   { name: 'legacy', type: 'boolean', default: 'true', description: 'Enable legacy `execCommand` fallback when available' },
+  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: 'Icon shown before copying' },
+  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: 'Icon shown after copying' },
+  { name: 'copyText', type: 'string', default: `'Copy'`, description: 'Text shown before copying' },
+  { name: 'copiedText', type: 'string', default: `'Copied'`, description: 'Text shown after copying' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable interaction' },
   { name: 'as', type: 'string | Component', default: `'button'`, description: 'Rendered element/component' },
   { name: 'asChild', type: 'boolean', default: 'false', description: 'Merge props/behavior into the child element' },
@@ -95,6 +93,10 @@ custom-styling
       { name: 'value', type: 'string', required: true, description: 'Text value to copy.' },
       { name: 'copiedDuration', type: 'number', description: 'Copied-state duration in milliseconds.' },
       { name: 'legacy', type: 'boolean', description: 'Enable legacy copy fallback.' },
+      { name: 'copyIcon', type: 'IconValue', description: 'Icon shown before copying.' },
+      { name: 'copiedIcon', type: 'IconValue', description: 'Icon shown after copying.' },
+      { name: 'copyText', type: 'string', description: 'Text shown before copying.' },
+      { name: 'copiedText', type: 'string', description: 'Text shown after copying.' },
       { name: 'disabled', type: 'boolean', description: 'Disable interaction.' },
       { name: 'as', type: 'string | Component', description: 'Rendered element/component.' },
       { name: 'asChild', type: 'boolean', description: 'Merge into child element.' },
@@ -106,8 +108,10 @@ custom-styling
     fields: [
       { name: 'copied', type: 'boolean', description: 'Whether the latest copy action is within the copied state duration.' },
       { name: 'disabled', type: 'boolean', description: 'Whether the clipboard action is disabled.' },
+      { name: 'icon', type: 'IconValue', description: 'Resolved default icon for the current state.' },
       { name: 'supported', type: 'boolean', description: 'Whether the current environment supports clipboard writing.' },
       { name: 'state', type: 'ClipboardState', description: 'Current clipboard state.' },
+      { name: 'text', type: 'string', description: 'Resolved default text for the current state.' },
       { name: 'copy', type: '() => Promise<void>', description: 'Manually trigger the copy action.' },
     ]
   }
@@ -124,3 +128,5 @@ custom-styling
 <UnionType name="ClipboardShape" description="Clipboard shape" type="'auto' | 'rounded' | 'square' | 'circle'" />
 
 <UnionType name="ClipboardState" description="Clipboard state" type="'ready' | 'copied' | 'unsupported'" />
+
+<UnionType name="IconValue" description="Icon value type" type="VNode | Component | string | null | undefined" />

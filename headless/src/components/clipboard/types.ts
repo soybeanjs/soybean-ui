@@ -1,4 +1,5 @@
 import type { ButtonProps as _ButtonProps } from '../button/types';
+import type { IconValue } from '../icon/types';
 
 export type ClipboardState = 'ready' | 'copied' | 'unsupported';
 
@@ -19,13 +20,39 @@ export interface ClipboardProps extends _ButtonProps {
    * @defaultValue true
    */
   legacy?: boolean;
+  /**
+   * The icon to display before copying.
+   *
+   * @defaultValue 'lucide:copy'
+   */
+  copyIcon?: IconValue;
+  /**
+   * The icon to display after copying.
+   *
+   * @defaultValue 'lucide:check'
+   */
+  copiedIcon?: IconValue;
+  /**
+   * The text to display before copying.
+   *
+   * @defaultValue 'Copy'
+   */
+  copyText?: string;
+  /**
+   * The text to display after copying.
+   *
+   * @defaultValue 'Copied'
+   */
+  copiedText?: string;
 }
 
 export interface ClipboardSlotProps {
   copied: boolean;
   disabled: boolean;
+  icon: IconValue;
   supported: boolean;
   state: ClipboardState;
+  text: string;
   copy: () => Promise<void>;
 }
 

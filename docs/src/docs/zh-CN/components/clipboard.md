@@ -8,26 +8,20 @@
 
 ```vue
 <script setup lang="ts">
-import { SClipboard, SIcon } from '@soybeanjs/ui';
+import { SClipboard } from '@soybeanjs/ui';
 
 const value = 'pnpm add @soybeanjs/ui';
 </script>
 
 <template>
-  <SClipboard :value="value" color="accent" variant="soft">
-    <template #leading="{ copied }">
-      <SIcon :icon="copied ? 'lucide:check' : 'lucide:copy'" />
-    </template>
-    <template #default="{ copied }">
-      {{ copied ? '已复制' : '复制命令' }}
-    </template>
-  </SClipboard>
+  <SClipboard :value="value" color="accent" variant="soft" copy-text="复制命令" copied-text="已复制" />
 </template>
 ```
 
 ## 特性
 
 - 📋 点击即可复制必填文本值
+- 🧩 内置默认图标和文本展示，同时仍然可以通过插槽覆盖
 - ✅ 暴露 ready、copied、unsupported 三种状态
 - 🎨 支持与按钮一致的 color、size、variant、shape 主题能力
 - ♿ 在 headless 层保留按钮语义和禁用行为
@@ -58,6 +52,10 @@ custom-styling
   { name: 'value', type: 'string', default: '-', required: true, description: '要复制的文本值' },
   { name: 'copiedDuration', type: 'number', default: '2000', description: '已复制状态持续时间（毫秒）' },
   { name: 'legacy', type: 'boolean', default: 'true', description: '可用时启用 `execCommand` 旧版回退' },
+  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: '复制前显示的图标' },
+  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: '复制后显示的图标' },
+  { name: 'copyText', type: 'string', default: `'Copy'`, description: '复制前显示的文本' },
+  { name: 'copiedText', type: 'string', default: `'Copied'`, description: '复制后显示的文本' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '禁用交互' },
   { name: 'as', type: 'string | Component', default: `'button'`, description: '渲染的元素/组件' },
   { name: 'asChild', type: 'boolean', default: 'false', description: '将属性/行为合并到子元素中' },
@@ -95,6 +93,10 @@ custom-styling
       { name: 'value', type: 'string', required: true, description: '要复制的文本值。' },
       { name: 'copiedDuration', type: 'number', description: '已复制状态持续时间（毫秒）。' },
       { name: 'legacy', type: 'boolean', description: '启用旧版复制回退。' },
+      { name: 'copyIcon', type: 'IconValue', description: '复制前显示的图标。' },
+      { name: 'copiedIcon', type: 'IconValue', description: '复制后显示的图标。' },
+      { name: 'copyText', type: 'string', description: '复制前显示的文本。' },
+      { name: 'copiedText', type: 'string', description: '复制后显示的文本。' },
       { name: 'disabled', type: 'boolean', description: '禁用交互。' },
       { name: 'as', type: 'string | Component', description: '渲染的元素/组件。' },
       { name: 'asChild', type: 'boolean', description: '合并到子元素。' },
@@ -106,8 +108,10 @@ custom-styling
     fields: [
       { name: 'copied', type: 'boolean', description: '最近一次复制是否仍处于已复制状态时长内。' },
       { name: 'disabled', type: 'boolean', description: '剪贴板动作是否被禁用。' },
+      { name: 'icon', type: 'IconValue', description: '当前状态下解析得到的默认图标。' },
       { name: 'supported', type: 'boolean', description: '当前环境是否支持写入剪贴板。' },
       { name: 'state', type: 'ClipboardState', description: '当前剪贴板状态。' },
+      { name: 'text', type: 'string', description: '当前状态下解析得到的默认文本。' },
       { name: 'copy', type: '() => Promise<void>', description: '手动触发复制动作。' },
     ]
   }
@@ -124,3 +128,5 @@ custom-styling
 <UnionType name="ClipboardShape" description="剪贴板形状" type="'auto' | 'rounded' | 'square' | 'circle'" />
 
 <UnionType name="ClipboardState" description="剪贴板状态" type="'ready' | 'copied' | 'unsupported'" />
+
+<UnionType name="IconValue" description="图标值类型" type="VNode | Component | string | null | undefined" />
