@@ -20,7 +20,15 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
     const [rootElement, setRootElement] = useForwardElement();
     const { getOrderedItems, getOrderedElements } = provideCollectionContext();
     const { handleTypeaheadSearch } = useTypeahead();
-    const { modelValue, orientation, selectionBehavior, isMultiple, onHighlight, onEntryFocus } = params;
+    const {
+      modelValue,
+      orientation,
+      selectionBehavior,
+      isMultiple,
+      onModelValueChange: _onModelValueChange,
+      onHighlight,
+      onEntryFocus
+    } = params;
     const dir = useDirection(params.dir);
 
     const firstValue = shallowRef<string>();
@@ -36,26 +44,12 @@ export const [provideListboxRootContext, useListboxRootContext] = useContext(
 
     const onModelValueChange = (value: string) => {
       isUserAction.value = true;
-      if (isMultiple.value) {
-        const updated = Array.isArray(modelValue.value) ? [...modelValue.value] : [];
-        const index = updated.findIndex(i => i === value);
-        if (selectionBehavior.value === 'toggle') {
-          if (index === -1) {
-            updated.push(value);
-          } else {
-            updated.splice(index, 1);
-          }
 
-          modelValue.value = updated;
-        } else {
-          modelValue.value = [value];
-          firstValue.value = value;
-        }
-      } else if (selectionBehavior.value === 'toggle') {
-        modelValue.value = modelValue.value === value ? undefined : value;
-      } else {
-        modelValue.value = value;
+      if (isMultiple.value && selectionBehavior.value === 'replace') {
+        firstValue.value = value;
       }
+      _onModelValueChange(value);
+
       setTimeout(() => {
         isUserAction.value = false;
       }, 1);

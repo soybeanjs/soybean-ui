@@ -13,14 +13,15 @@ defineOptions({
 const props = withDefaults(defineProps<ListboxRootProps<M>>(), {
   modelValue: undefined,
   selectionBehavior: 'toggle',
-  orientation: 'vertical'
+  orientation: 'vertical',
+  clearable: true
 });
 
 const emit = defineEmits<ListboxRootEmits<M>>();
 
 const cls = useListboxUi('root');
 
-const { modelValue, isMultiple } = useSelection(props, value => {
+const { modelValue, isMultiple, onModelValueChange } = useSelection(props, value => {
   emit('update:modelValue', value);
 });
 
@@ -37,6 +38,7 @@ const {
   ...transformPropsToContext(props, ['dir', 'orientation', 'disabled', 'highlightOnHover', 'selectionBehavior']),
   modelValue,
   isMultiple,
+  onModelValueChange,
   onHighlight(item) {
     emit('highlight', item);
   },

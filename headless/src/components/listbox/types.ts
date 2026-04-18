@@ -26,12 +26,6 @@ export interface ListboxRootProps<M extends boolean = false>
   dir?: Direction;
   /** When `true`, prevents the user from interacting with listbox */
   disabled?: boolean;
-  /**
-   * How multiple selection should behave in the collection.
-   *
-   * @defaultValue 'toggle'
-   */
-  selectionBehavior?: 'toggle' | 'replace';
   /** When `true`, hover over item will trigger highlight */
   highlightOnHover?: boolean;
 }
@@ -108,6 +102,7 @@ export interface ListboxRootContextParams extends PropsToContext<
   'dir' | 'orientation' | 'disabled' | 'highlightOnHover' | 'selectionBehavior'
 > {
   modelValue: ShallowRef<MaybeArray<string> | undefined>;
+  onModelValueChange: (value: string) => void;
   isMultiple: ComputedRef<boolean>;
   onHighlight: (item: CollectionItemData<ListboxCollectionItemData> | undefined) => void;
   onEntryFocus: (event: CustomEvent<unknown>) => void;
