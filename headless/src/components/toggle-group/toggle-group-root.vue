@@ -18,7 +18,8 @@ const props = withDefaults(defineProps<ToggleGroupRootProps<M, T>>(), {
   rovingFocus: true,
   disabled: false,
   orientation: 'horizontal',
-  loop: true
+  loop: true,
+  clearable: true
 });
 
 const emit = defineEmits<ToggleGroupRootEmits<M, T>>();

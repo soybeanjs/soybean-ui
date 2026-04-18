@@ -179,7 +179,7 @@ export interface SelectBubbleSelectProps {
 
 export interface SelectRootContextParams extends PropsToContext<
   SelectRootProps,
-  'dir' | 'autocomplete' | 'disabled' | 'required' | 'singleClearable'
+  'dir' | 'autocomplete' | 'disabled' | 'required' | 'clearable'
 > {
   open: ShallowRef<boolean | undefined>;
   modelValue: ShallowRef<MaybeArray<DefinedValue> | undefined>;
