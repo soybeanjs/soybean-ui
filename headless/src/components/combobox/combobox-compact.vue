@@ -57,7 +57,7 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const getInputDisplayValue = (modelValue: MaybeArray<string> | undefined) => {
-  return !props.multiple ? getDisplayValue(modelValue, props.items) : undefined;
+  return !props.multiple ? getDisplayValue(modelValue, props.items) : '';
 };
 
 const ariaLabel = computed(

@@ -16,6 +16,7 @@ const props = defineProps<ComboboxInputProps>();
 const emit = defineEmits<ComboboxInputEmits>();
 
 const {
+  modelValue: selectedValue,
   open,
   openOnFocus,
   openOnClick,
@@ -35,7 +36,7 @@ const { highlightFirstItem } = useListboxRootContext('ComboboxInput');
 
 const forwardedProps = useOmitProps(props, ['displayValue']);
 
-const modelValue = useControllableState(
+const inputValue = useControllableState(
   () => props.modelValue,
   value => {
     emit('update:modelValue', value ?? '');
@@ -109,19 +110,19 @@ const onClick = () => {
 };
 
 const resetSearchTerm = () => {
-  const currentValue = modelValue.value;
+  const currentValue = selectedValue.value;
 
   if (props.displayValue) {
-    modelValue.value = props.displayValue(currentValue);
+    inputValue.value = props.displayValue(currentValue);
     return;
   }
 
   if (!isMultiple.value && typeof currentValue === 'string') {
-    modelValue.value = currentValue;
+    inputValue.value = currentValue;
     return;
   }
 
-  modelValue.value = '';
+  inputValue.value = '';
 };
 
 onResetSearchTerm(() => {
@@ -138,7 +139,7 @@ const controlProps = computed<InputControlProps>(() =>
       role: 'combobox',
       'aria-autocomplete': 'list',
       autocomplete: 'off',
-      'aria-controls': contentId.value,
+      'aria-controls': contentId.value || undefined,
       'aria-expanded': open.value ?? false,
       onBlur,
       onClick,
@@ -150,7 +151,7 @@ const controlProps = computed<InputControlProps>(() =>
 );
 
 watch(
-  modelValue,
+  selectedValue,
   () => {
     if (!isUserInputted.value && resetSearchTermOnSelect.value) {
       resetSearchTerm();
@@ -176,7 +177,7 @@ onMounted(() => {
 <template>
   <ListboxFilter
     v-bind="forwardedProps"
-    v-model="modelValue"
+    v-model="inputValue"
     data-slot="input-root"
     :control-props="controlProps"
     :input-ref="inputRef"

@@ -44,7 +44,7 @@ custom-styling
   { name: 'modelValue', type: 'string | string[]', default: '-', description: '当前选中的值。' },
   { name: 'placeholder', type: 'string', default: '-', description: '触发器占位文本。' },
   { name: 'searchPlaceholder', type: 'string', default: '-', description: '搜索输入框占位文本。' },
-  { name: 'clearable', type: 'boolean', default: 'false', description: '是否显示清空按钮。' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: '是否显示清空按钮。' },
   { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: '清空按钮的可访问名称。' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许多选。' },
   { name: 'resetModelValueOnClear', type: 'boolean', default: 'false', description: '点击清空按钮时是否同时清空选中值。' },

@@ -36,6 +36,21 @@ describe('SCombobox', () => {
       expect(wrapper.get('button').classes()).toContain('my-combobox');
       wrapper.unmount();
     });
+
+    it('shows empty slot when there are no options', async () => {
+      const wrapper = mount(SCombobox, {
+        props: {
+          items: [],
+          emptyLabel: 'Nothing here'
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('button').trigger('click');
+
+      expect(document.body.textContent).toContain('Nothing here');
+      wrapper.unmount();
+    });
   });
 
   describe('selection state', () => {
@@ -161,6 +176,7 @@ describe('SCombobox', () => {
       expect(wrapper.emitted('update:open')).toBeFalsy();
       wrapper.unmount();
     });
+
   });
 
   describe('accessibility', () => {

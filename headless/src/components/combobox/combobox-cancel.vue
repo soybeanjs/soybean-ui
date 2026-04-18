@@ -14,17 +14,25 @@ const props = withDefaults(defineProps<ComboboxCancelProps>(), {
 
 const cls = useComboboxUi('cancel');
 
-const { inputElement, filterSearch, resetModelValueOnClear, resetModelValue } =
+const { disabled: rootDisabled, inputElement, filterSearch, resetModelValueOnClear, resetModelValue } =
   useComboboxRootContext('ComboboxCancel');
 
+const disabled = computed(() => props.disabled || rootDisabled.value || false);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 
 const onClick = () => {
+  if (disabled.value) {
+    return;
+  }
+
   filterSearch.value = '';
 
-  if (inputElement.value) {
-    inputElement.value.value = '';
-    inputElement.value.focus();
+  const input = inputElement.value;
+
+  if (input) {
+    input.value = '';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.focus();
   }
 
   if (resetModelValueOnClear.value) {
@@ -34,7 +42,18 @@ const onClick = () => {
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :class="cls" :type="tag" tabindex="-1" data-slot="cancel" @click="onClick">
+  <Primitive
+    :as="as"
+    :as-child="asChild"
+    :class="cls"
+    :type="tag"
+    :aria-disabled="disabled || undefined"
+    :data-disabled="disabled ? '' : undefined"
+    :disabled="disabled"
+    :tabindex="disabled ? -1 : undefined"
+    data-slot="cancel"
+    @click="onClick"
+  >
     <slot />
   </Primitive>
 </template>

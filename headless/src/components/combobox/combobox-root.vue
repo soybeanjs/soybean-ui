@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="M extends boolean = false">
-import { computed, nextTick, shallowRef, useId, useTemplateRef, useAttrs } from 'vue';
+import { computed, nextTick, onUnmounted, shallowRef, useId, useTemplateRef, useAttrs } from 'vue';
 import { createEventHook } from '@vueuse/core';
 import { useControllableState, useOmitProps, useSelection } from '../../composables';
 import { transformPropsToContext } from '../../shared';
@@ -82,6 +82,7 @@ const resetSearchTerm = createEventHook<undefined>();
 const filterSearch = shallowRef('');
 const allItems = shallowRef<Map<string, string>>(new Map());
 const allGroups = shallowRef<Map<string, Set<string>>>(new Map());
+let resetSearchTermTimer: ReturnType<typeof setTimeout> | undefined;
 
 const filterState = computed<{
   count: number;
@@ -128,6 +129,11 @@ const filterState = computed<{
 });
 
 const onOpenChange = async (value: boolean) => {
+  if (resetSearchTermTimer) {
+    clearTimeout(resetSearchTermTimer);
+    resetSearchTermTimer = undefined;
+  }
+
   open.value = value;
   filterSearch.value = '';
 
@@ -142,12 +148,18 @@ const onOpenChange = async (value: boolean) => {
 
   isUserInputted.value = false;
 
-  setTimeout(() => {
-    if (!value && props.resetSearchTermOnBlur) {
+  resetSearchTermTimer = setTimeout(() => {
+    if (!open.value && props.resetSearchTermOnBlur) {
       resetSearchTerm.trigger(undefined);
     }
   }, 1);
 };
+
+onUnmounted(() => {
+  if (resetSearchTermTimer) {
+    clearTimeout(resetSearchTermTimer);
+  }
+});
 
 provideComboboxRootContext({
   ...transformPropsToContext(props, [

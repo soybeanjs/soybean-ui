@@ -14,13 +14,9 @@ const props = withDefaults(defineProps<ComboboxEmptyProps>(), {
 
 const cls = useComboboxUi('empty');
 
-const { allItems, filterState, ignoreFilter, filterSearch } = useComboboxRootContext('ComboboxEmpty');
+const { allItems, filterState, ignoreFilter } = useComboboxRootContext('ComboboxEmpty');
 
 const visible = computed(() => {
-  if (!filterSearch.value.trim()) {
-    return false;
-  }
-
   if (ignoreFilter.value) {
     return allItems.value.size === 0;
   }

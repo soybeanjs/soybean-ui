@@ -124,7 +124,9 @@ export interface ComboboxEmptyProps extends PrimitiveProps, /** @vue-ignore */ H
 
 export interface ComboboxSeparatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface ComboboxCancelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
+export interface ComboboxCancelProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  disabled?: boolean;
+}
 
 export interface ComboboxArrowProps extends PopperArrowProps {}
 

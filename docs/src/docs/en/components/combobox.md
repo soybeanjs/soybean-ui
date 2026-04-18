@@ -44,7 +44,7 @@ custom-styling
   { name: 'modelValue', type: 'string | string[]', default: '-', description: 'Current selected value.' },
   { name: 'placeholder', type: 'string', default: '-', description: 'Trigger placeholder text.' },
   { name: 'searchPlaceholder', type: 'string', default: '-', description: 'Search input placeholder text.' },
-  { name: 'clearable', type: 'boolean', default: 'false', description: 'Whether to show the clear button.' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: 'Whether to show the clear button.' },
   { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: 'Accessible label for the clear button.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether multiple selection is allowed.' },
   { name: 'resetModelValueOnClear', type: 'boolean', default: 'false', description: 'Whether clearing should also reset the selected value.' },
