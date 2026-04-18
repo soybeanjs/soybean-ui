@@ -52,8 +52,8 @@ custom-styling
   { name: 'value', type: 'string', default: '-', required: true, description: '要复制的文本值' },
   { name: 'copiedDuration', type: 'number', default: '2000', description: '已复制状态持续时间（毫秒）' },
   { name: 'legacy', type: 'boolean', default: 'true', description: '可用时启用 `execCommand` 旧版回退' },
-  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: '复制前显示的图标' },
-  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: '复制后显示的图标' },
+  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: '复制前显示的图标；支持 Iconify 字符串名称或任意受支持的 `IconValue`' },
+  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: '复制后显示的图标；支持 Iconify 字符串名称或任意受支持的 `IconValue`' },
   { name: 'copyText', type: 'string', default: `'Copy'`, description: '复制前显示的文本' },
   { name: 'copiedText', type: 'string', default: `'Copied'`, description: '复制后显示的文本' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '禁用交互' },
@@ -72,7 +72,7 @@ custom-styling
 ### 插槽
 
 <DataTable preset="slots" :data="[
-  { name: 'leading', parameters: 'ClipboardSlotProps', description: '主内容前的前导内容' },
+  { name: 'leading', parameters: 'ClipboardSlotProps', description: '主内容前的前导内容；如果自定义内容只是装饰用途，请按需添加 `aria-hidden`' },
   { name: 'default', parameters: 'ClipboardSlotProps', description: '主剪贴板内容' },
   { name: 'trailing', parameters: 'ClipboardSlotProps', description: '主内容后的尾随内容' },
 ]"/>

@@ -92,6 +92,39 @@ describe('SClipboard', () => {
       wrapper.unmount();
     });
 
+    it('uses custom icon props when provided', async () => {
+      const wrapper = mount(
+        {
+          components: {
+            SClipboard,
+            SConfigProvider
+          },
+          setup() {
+            return {
+              iconRender: (icon: string) => h('span', { 'data-testid': 'icon' }, icon)
+            };
+          },
+          template: `
+            <SConfigProvider :icon-render="iconRender">
+              <SClipboard value="soybean-ui" copy-icon="lucide:clipboard" copied-icon="lucide:badge-check" />
+            </SConfigProvider>
+          `
+        },
+        {
+          attachTo: document.body
+        }
+      );
+
+      expect(wrapper.find('[data-testid="icon"]').text()).toBe('lucide:clipboard');
+
+      await wrapper.find('button').trigger('click');
+      await Promise.resolve();
+      await nextTick();
+
+      expect(wrapper.find('[data-testid="icon"]').text()).toBe('lucide:badge-check');
+      wrapper.unmount();
+    });
+
     it('applies custom class', () => {
       const wrapper = mountClipboard({ class: 'my-clipboard-class' }, { default: 'Copy' });
 

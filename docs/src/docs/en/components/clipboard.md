@@ -52,8 +52,8 @@ custom-styling
   { name: 'value', type: 'string', default: '-', required: true, description: 'Text value to copy' },
   { name: 'copiedDuration', type: 'number', default: '2000', description: 'Copied-state duration in milliseconds' },
   { name: 'legacy', type: 'boolean', default: 'true', description: 'Enable legacy `execCommand` fallback when available' },
-  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: 'Icon shown before copying' },
-  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: 'Icon shown after copying' },
+  { name: 'copyIcon', type: 'IconValue', default: `'lucide:copy'`, description: 'Icon shown before copying; accepts Iconify string names or any supported `IconValue`' },
+  { name: 'copiedIcon', type: 'IconValue', default: `'lucide:check'`, description: 'Icon shown after copying; accepts Iconify string names or any supported `IconValue`' },
   { name: 'copyText', type: 'string', default: `'Copy'`, description: 'Text shown before copying' },
   { name: 'copiedText', type: 'string', default: `'Copied'`, description: 'Text shown after copying' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Disable interaction' },
@@ -72,7 +72,7 @@ custom-styling
 ### Slots
 
 <DataTable preset="slots" :data="[
-  { name: 'leading', parameters: 'ClipboardSlotProps', description: 'Leading content before the main slot' },
+  { name: 'leading', parameters: 'ClipboardSlotProps', description: 'Leading content before the main slot; mark purely decorative custom content as `aria-hidden` when appropriate' },
   { name: 'default', parameters: 'ClipboardSlotProps', description: 'Main clipboard content' },
   { name: 'trailing', parameters: 'ClipboardSlotProps', description: 'Trailing content after the main slot' },
 ]"/>

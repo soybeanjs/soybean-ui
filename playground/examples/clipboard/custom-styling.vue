@@ -9,13 +9,15 @@ const value = 'custom-styling-example';
   <SClipboard
     :value="value"
     variant="ghost"
+    copy-text="Copy custom style action"
+    copied-text="Copied custom style action"
     class="border border-dashed border-info/40 bg-info/8 text-info hover:bg-info/12 active:bg-info/18"
   >
     <template #leading="{ icon }">
       <SIcon :icon="icon" class="text-info" />
     </template>
     <template #default="{ text }">
-      {{ `${text} custom style action` }}
+      {{ text }}
     </template>
   </SClipboard>
 </template>
