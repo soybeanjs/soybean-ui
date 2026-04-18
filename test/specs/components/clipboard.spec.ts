@@ -114,7 +114,24 @@ describe('SClipboard', () => {
       await Promise.resolve();
       await nextTick();
 
-      expect(writeText.mock.calls.length + execCommand.mock.calls.length).toBeGreaterThan(0);
+      expect(wrapper.find('button').attributes('data-state')).toBe('copied');
+      expect(wrapper.emitted('copied')?.[0]).toEqual(['soybean-ui']);
+      wrapper.unmount();
+    });
+
+    it('falls back to legacy copy when clipboard writing is unavailable', async () => {
+      Object.defineProperty(window.navigator, 'clipboard', {
+        configurable: true,
+        value: undefined
+      });
+
+      const wrapper = mountClipboard({}, { default: 'Copy' });
+
+      await wrapper.find('button').trigger('click');
+      await Promise.resolve();
+      await nextTick();
+
+      expect(execCommand).toHaveBeenCalledWith('copy');
       expect(wrapper.find('button').attributes('data-state')).toBe('copied');
       expect(wrapper.emitted('copied')?.[0]).toEqual(['soybean-ui']);
       wrapper.unmount();
