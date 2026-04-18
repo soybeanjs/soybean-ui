@@ -16,7 +16,7 @@ const props = defineProps<ComboboxInputProps>();
 const emit = defineEmits<ComboboxInputEmits>();
 
 const {
-  modelValue: selectedValue,
+  modelValue: selectedModelValue,
   open,
   openOnFocus,
   openOnClick,
@@ -110,7 +110,7 @@ const onClick = () => {
 };
 
 const resetSearchTerm = () => {
-  const currentValue = selectedValue.value;
+  const currentValue = selectedModelValue.value;
 
   if (props.displayValue) {
     inputValue.value = props.displayValue(currentValue);
@@ -151,7 +151,7 @@ const controlProps = computed<InputControlProps>(() =>
 );
 
 watch(
-  selectedValue,
+  selectedModelValue,
   () => {
     if (!isUserInputted.value && resetSearchTermOnSelect.value) {
       resetSearchTerm();
