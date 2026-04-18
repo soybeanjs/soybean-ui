@@ -6,6 +6,10 @@ export type InferStandardSchemaInput<S extends StandardSchemaV1<FormValues, Form
   S['~standard']['types']
 >['input'];
 
+export type InferStandardSchemaOutput<S extends StandardSchemaV1<FormValues, FormValues>> = NonNullable<
+  S['~standard']['types']
+>['output'];
+
 export type FormValidateMode = 'blur' | 'input' | 'change' | 'submit';
 
 export type FormValues = Record<string, any>;
@@ -93,10 +97,10 @@ export interface UseFormOptions<S extends StandardSchemaV1<FormValues, FormValue
   reValidateMode?: FormValidateMode;
   validateOnMounted?: boolean;
   onSubmit?: (
-    values: InferStandardSchemaInput<S>,
-    helper: FormSubmitHelper<InferStandardSchemaInput<S>>
+    values: InferStandardSchemaOutput<S>,
+    helper: FormSubmitHelper<InferStandardSchemaOutput<S>>
   ) => Promise<any>;
-  onInvalid?: (errors: FormErrors<InferStandardSchemaInput<S>>) => void;
+  onInvalid?: (errors: FormErrors<InferStandardSchemaOutput<S>>) => void;
 }
 
 export type FormFieldValidator<Value> = (value: Value) => MaybePromise<string | undefined>;
