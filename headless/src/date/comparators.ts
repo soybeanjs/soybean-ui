@@ -143,17 +143,14 @@ export function areAllDaysBetweenValid(
   }
 
   let current = start.add({ days: 1 });
-
-  if ((isDisabled?.(current) || isUnavailable?.(current)) && !isHighlightable?.(current)) {
-    return false;
-  }
+  const isInvalidDay = (date: DateValue) => (isDisabled?.(date) || isUnavailable?.(date)) && !isHighlightable?.(date);
 
   while (current.compare(end) < 0) {
-    current = current.add({ days: 1 });
-
-    if ((isDisabled?.(current) || isUnavailable?.(current)) && !isHighlightable?.(current)) {
+    if (isInvalidDay(current)) {
       return false;
     }
+
+    current = current.add({ days: 1 });
   }
 
   return true;

@@ -19,6 +19,8 @@ export type WeekDayFormat = 'narrow' | 'short' | 'long';
 
 export type WeekStartsOn = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
+export const DEFAULT_DATE_LOCALE = 'en-US';
+
 export interface CreateSelectProps {
   dateObj: DateValue;
 }
@@ -93,18 +95,19 @@ export function startOfDecade(dateObj: DateValue) {
 }
 
 export function endOfDecade(dateObj: DateValue) {
-  return endOfYear(
-    dateObj.add({ years: Math.ceil((dateObj.year + 1) / 10) * 10 - dateObj.year - 1 }).set({ day: 35, month: 12 })
-  );
+  return endOfYear(startOfDecade(dateObj).add({ years: 9 }));
 }
 
 export function createDecade(props: SetDecadeProps): DateValue[] {
   const { dateObj, startIndex, endIndex } = props;
-  const decadeArray = Array.from({ length: Math.abs(startIndex ?? 0) + endIndex }, (_, index) =>
-    index <= Math.abs(startIndex ?? 0)
-      ? dateObj.subtract({ years: index }).set({ day: 1, month: 1 })
-      : dateObj.add({ years: index - endIndex }).set({ day: 1, month: 1 })
-  );
+  const previousYears = Math.abs(startIndex ?? 0);
+  const decadeArray = Array.from({ length: previousYears + endIndex }, (_, index) => {
+    if (index <= previousYears) {
+      return dateObj.subtract({ years: index }).set({ day: 1, month: 1 });
+    }
+
+    return dateObj.add({ years: index - endIndex }).set({ day: 1, month: 1 });
+  });
 
   decadeArray.sort((a, b) => a.year - b.year);
 
@@ -222,7 +225,11 @@ export function getWeekStartsOn(locale: string): WeekStartsOn {
   return ((1 - dayOfWeek + 7) % 7) as WeekStartsOn;
 }
 
-export function getWeekNumber(date: DateValue, locale: string = 'en-US', firstDayOfWeek?: DayOfWeek): number {
+export function getWeekNumber(
+  date: DateValue,
+  locale: string = DEFAULT_DATE_LOCALE,
+  firstDayOfWeek?: DayOfWeek
+): number {
   const jan1 = new CalendarDate(date.year, 1, 1);
   const usesISOWeek = jan1.toDate('UTC').getUTCDay() !== getDayOfWeek(jan1, locale);
   const weekStartsOn = firstDayOfWeek ?? (usesISOWeek ? 'mon' : 'sun');

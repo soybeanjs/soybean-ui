@@ -1,6 +1,4 @@
 import { CalendarDate, CalendarDateTime, parseDate } from '@internationalized/date';
-import { describe, expect, it } from 'vitest';
-
 import {
   areAllDaysBetweenValid,
   compareYearMonth,
@@ -11,7 +9,8 @@ import {
   getWeekStartsOn,
   isMonthBetweenInclusive,
   parseStringToDateValue
-} from '../../../headless/src/date';
+} from '@soybeanjs/headless/date';
+import { describe, expect, it } from 'vitest';
 
 describe('shared date helpers', () => {
   it('creates a fixed six-week month grid', () => {
@@ -77,6 +76,7 @@ describe('shared date helpers', () => {
     const yearGrid = createYearGrid({ dateObj: new CalendarDate(2026, 4, 18) });
 
     expect(yearGrid.rows).toHaveLength(3);
+    // createYearGrid is decade-aligned by default, so a 2026 date renders the 2020-2031 page.
     expect(yearGrid.cells[0]?.year).toBe(2020);
     expect(yearGrid.cells.at(-1)?.year).toBe(2031);
   });
