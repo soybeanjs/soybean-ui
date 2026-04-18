@@ -40,7 +40,7 @@ vertical
   { name: 'modelValue', type: 'string | string[]', default: '-', description: 'Controlled selected value(s).' },
   { name: 'defaultValue', type: 'string | string[]', default: '-', description: 'Initial selected value(s).' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether multiple items can be active at the same time.' },
-  { name: 'singleClearable', type: 'boolean', default: 'true', description: 'Whether the active item can be cleared in single mode.' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: 'Whether the active item can be cleared in single mode.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the whole group is disabled.' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: 'Group orientation.' },
   { name: 'rovingFocus', type: 'boolean', default: 'true', description: 'Whether arrow-key roving focus is enabled.' },

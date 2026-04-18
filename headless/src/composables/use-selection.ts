@@ -12,7 +12,7 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
 
   const isMultiple = computed(() => getVueBooleanCasting(propsRef.value.multiple));
 
-  const clearable = computed(() => getVueBooleanCasting(propsRef.value.clearable ?? true));
+  const clearable = computed(() => getVueBooleanCasting(propsRef.value.clearable));
 
   const isToggle = computed(() => (propsRef.value.selectionBehavior ?? 'toggle') === 'toggle');
 

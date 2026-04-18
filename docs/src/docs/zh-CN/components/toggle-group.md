@@ -40,7 +40,7 @@ vertical
   { name: 'modelValue', type: 'string | string[]', default: '-', description: '受控选中值。' },
   { name: 'defaultValue', type: 'string | string[]', default: '-', description: '初始选中值。' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许同时激活多个选项。' },
-  { name: 'singleClearable', type: 'boolean', default: 'true', description: '单选模式下是否允许取消当前选中项。' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: '单选模式下是否允许取消当前选中项。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用整个分组。' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: `'horizontal'`, description: '分组方向。' },
   { name: 'rovingFocus', type: 'boolean', default: 'true', description: '是否启用方向键焦点漫游。' },

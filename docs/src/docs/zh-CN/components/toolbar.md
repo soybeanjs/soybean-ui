@@ -84,7 +84,7 @@ vertical
   { name: 'modelValue', type: 'string | string[]', default: '-', description: '受控选中值' },
   { name: 'defaultValue', type: 'string | string[]', default: '-', description: '初始选中值' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否支持多选' },
-  { name: 'singleClearable', type: 'boolean', default: 'true', description: '单选模式下是否允许取消当前值' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: '单选模式下是否允许取消当前值' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用整个切换组' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: '继承工具栏方向', description: '切换组方向' }
 ]"/>

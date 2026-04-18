@@ -84,7 +84,7 @@ vertical
   { name: 'modelValue', type: 'string | string[]', default: '-', description: 'Controlled selected value(s).' },
   { name: 'defaultValue', type: 'string | string[]', default: '-', description: 'Initial selected value(s).' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether multiple items can be active.' },
-  { name: 'singleClearable', type: 'boolean', default: 'true', description: 'Whether single mode can clear the active item.' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: 'Whether single mode can clear the active item.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the group is disabled.' },
   { name: 'orientation', type: `'horizontal' | 'vertical'`, default: 'inherits toolbar orientation', description: 'Toggle group orientation.' }
 ]"/>

@@ -35,7 +35,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<SelectProps<T, M>>(), {
   open: undefined,
-  singleClearable: true
+  clearable: true
 });
 
 const emit = defineEmits<SelectEmits<T, M>>();

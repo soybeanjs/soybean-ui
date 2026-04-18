@@ -115,8 +115,6 @@ export interface SelectionProps<M extends boolean = false, N extends DefinedValu
   multiple?: M;
   /**
    * Whether selected item can be cleared when `multiple` is false.
-   *
-   * @defaultValue `true`
    */
   clearable?: boolean;
   /**
