@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<BacktopProps>(), {
 
 const emit = defineEmits<BacktopEmits>();
 
-const forwardedProps = useOmitProps(props, ['disabled', 'duration', 'target', 'visibilityHeight']);
+const forwardedProps = useOmitProps(props, ['duration', 'target', 'visibilityHeight']);
 
 const visible = shallowRef(false);
 const resolvedTarget = shallowRef<Window | HTMLElement | null>(null);
