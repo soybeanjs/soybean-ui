@@ -78,6 +78,7 @@ export const menuData: MenuData[] = [
       'empty',
       'list',
       'avatar',
+      'backtop',
       'badge',
       'kbd',
       'progress',
