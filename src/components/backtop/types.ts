@@ -1,10 +1,10 @@
 import type { ClassValue } from '@soybeanjs/headless';
-import type { BacktopRootEmits, BacktopRootProps } from '@soybeanjs/headless/backtop';
+import type { BacktopEmits as _BacktopEmits, BacktopProps as _BacktopProps } from '@soybeanjs/headless/backtop';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { IconProps } from '../icon/types';
 import type { ButtonShadow, ButtonShape, ButtonVariant } from '../button/types';
 
-export interface BacktopProps extends BacktopRootProps {
+export interface BacktopProps extends _BacktopProps {
   class?: ClassValue;
   color?: ThemeColor;
   size?: ThemeSize;
@@ -28,4 +28,4 @@ export interface BacktopProps extends BacktopRootProps {
   iconProps?: Partial<IconProps>;
 }
 
-export type BacktopEmits = BacktopRootEmits;
+export type BacktopEmits = _BacktopEmits;

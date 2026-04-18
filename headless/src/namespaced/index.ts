@@ -42,7 +42,7 @@ import {
   AvatarFallback,
   AvatarImage,
   AvatarRoot,
-  BacktopRoot,
+  Backtop,
   BadgeContent,
   BadgeRoot,
   BreadcrumbEllipsis,
@@ -511,11 +511,7 @@ export const Avatar = {
   Fallback: typeof AvatarFallback;
 };
 
-export const Backtop = {
-  Root: BacktopRoot
-} as {
-  Root: typeof BacktopRoot;
-};
+export { Backtop };
 
 export const Badge = {
   Root: BadgeRoot,

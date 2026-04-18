@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { BacktopRoot } from '@soybeanjs/headless/backtop';
+import { Backtop } from '@soybeanjs/headless/backtop';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import Icon from '../icon/icon.vue';
@@ -55,9 +55,9 @@ const cls = computed(() => {
 </script>
 
 <template>
-  <BacktopRoot v-bind="forwardedProps" :class="cls" v-on="listeners">
+  <Backtop v-bind="forwardedProps" :class="cls" v-on="listeners">
     <slot>
       <Icon v-bind="iconProps" :icon="icon" :class="iconClass" />
     </slot>
-  </BacktopRoot>
+  </Backtop>
 </template>

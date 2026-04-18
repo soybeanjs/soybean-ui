@@ -4,20 +4,20 @@ import { useEventListener, useRafFn } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
 import { Button } from '../button';
 import { easeInOutCubic, getScrollTop, prefersReducedMotion, resolveBacktopTarget, setScrollTop } from './shared';
-import type { BacktopRootProps, BacktopRootEmits, BacktopRootExposed, BacktopState } from './types';
+import type { BacktopProps, BacktopEmits, BacktopExposed, BacktopState } from './types';
 
 defineOptions({
-  name: 'BacktopRoot'
+  name: 'Backtop'
 });
 
-const props = withDefaults(defineProps<BacktopRootProps>(), {
+const props = withDefaults(defineProps<BacktopProps>(), {
   as: 'button',
   type: 'button',
   duration: 300,
   visibilityHeight: 400
 });
 
-const emit = defineEmits<BacktopRootEmits>();
+const emit = defineEmits<BacktopEmits>();
 
 const forwardedProps = useOmitProps(props, ['disabled', 'duration', 'target', 'visibilityHeight']);
 
@@ -158,7 +158,7 @@ onBeforeUnmount(() => {
   cancelScrollToTop();
 });
 
-defineExpose<BacktopRootExposed>({
+defineExpose<BacktopExposed>({
   visible,
   scrollToTop,
   updateVisibility

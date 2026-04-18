@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
-import { BacktopRoot } from '@soybeanjs/headless/backtop';
-import type { BacktopRootExposed } from '@soybeanjs/headless/backtop';
+import { Backtop } from '@soybeanjs/headless/backtop';
+import type { BacktopExposed } from '@soybeanjs/headless/backtop';
 import SBacktop from '../../../src/components/backtop/backtop.vue';
 import { getA11yViolations } from '../../shared/a11y';
 
@@ -60,8 +60,8 @@ async function waitForBacktopUpdate() {
   await nextTick();
 }
 
-function getBacktopRoot(wrapper: ReturnType<typeof mount>) {
-  return wrapper.findComponent({ name: 'BacktopRoot' }).vm as BacktopRootExposed;
+function getBacktop(wrapper: ReturnType<typeof mount>) {
+  return wrapper.findComponent({ name: 'Backtop' }).vm as BacktopExposed;
 }
 
 describe('SBacktop', () => {
@@ -104,15 +104,15 @@ describe('SBacktop', () => {
       const wrapper = mount(
         {
           components: {
-            BacktopRoot
+            Backtop
           },
           setup() {
             return { target };
           },
           template: `
-            <BacktopRoot :target="target" :visibility-height="100" class="headless-backtop">
+            <Backtop :target="target" :visibility-height="100" class="headless-backtop">
               Headless
-            </BacktopRoot>
+            </Backtop>
           `
         },
         {
@@ -146,7 +146,7 @@ describe('SBacktop', () => {
         attachTo: document.body
       });
 
-      getBacktopRoot(wrapper).updateVisibility();
+      getBacktop(wrapper).updateVisibility();
       await waitForBacktopUpdate();
 
       const button = wrapper.find('button');
@@ -178,7 +178,7 @@ describe('SBacktop', () => {
         attachTo: document.body
       });
 
-      getBacktopRoot(wrapper).updateVisibility();
+      getBacktop(wrapper).updateVisibility();
       await waitForBacktopUpdate();
 
       await wrapper.find('button').trigger('click');
@@ -206,7 +206,7 @@ describe('SBacktop', () => {
         attachTo: document.body
       });
 
-      getBacktopRoot(wrapper).updateVisibility();
+      getBacktop(wrapper).updateVisibility();
       await waitForBacktopUpdate();
 
       const button = wrapper.find('button');

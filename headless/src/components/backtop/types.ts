@@ -6,7 +6,7 @@ export type BacktopTarget = AffixTarget;
 
 export type BacktopState = 'visible' | 'hidden';
 
-export interface BacktopRootProps extends /** @vue-ignore */ Omit<ButtonProps, 'onChange'> {
+export interface BacktopProps extends /** @vue-ignore */ Omit<ButtonProps, 'onChange'> {
   /**
    * Scroll distance that must be reached before the Backtop button becomes visible.
    *
@@ -27,12 +27,12 @@ export interface BacktopRootProps extends /** @vue-ignore */ Omit<ButtonProps, '
   duration?: number;
 }
 
-export type BacktopRootEmits = {
+export type BacktopEmits = {
   change: [visible: boolean];
   click: [event: MouseEvent];
 };
 
-export interface BacktopRootExposed {
+export interface BacktopExposed {
   visible: ShallowRef<boolean>;
   /**
    * Scroll the target container back to the start position.

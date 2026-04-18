@@ -4,7 +4,7 @@
 
 Backtop 会在滚动目标超过阈值后显示一个浮动按钮，并在触发时将目标容器滚动回起始位置。
 
-> 注意：除了 SBacktop，headless 层还导出了 BacktopRoot，可用于自定义组合。
+> 注意：除了 SBacktop，headless 层还导出了 Backtop，可用于自定义组合。
 
 ## 用法
 

@@ -1,3 +1,3 @@
-export { default as BacktopRoot } from './backtop-root.vue';
+export { default as Backtop } from './backtop.vue';
 
-export type { BacktopRootProps, BacktopRootEmits, BacktopRootExposed, BacktopTarget } from './types';
+export type { BacktopProps, BacktopEmits, BacktopExposed, BacktopTarget } from './types';

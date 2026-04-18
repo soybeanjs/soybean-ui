@@ -39,7 +39,7 @@ export const components = {
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
-  backtop: ['BacktopRoot'],
+  backtop: ['Backtop'],
   badge: ['BadgeRoot', 'BadgeContent'],
   breadcrumb: [
     'BreadcrumbRoot',
