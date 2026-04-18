@@ -80,6 +80,11 @@ const viewportProps = computed(() => ({
   'aria-label': props.viewportProps?.['aria-label'] ?? props.placeholder ?? 'Options'
 }));
 
+const anchorProps = computed(() => ({
+  ...props.anchorProps,
+  asChild: props.anchorProps?.asChild ?? true
+}));
+
 const getItemKey = (item: ComboboxOptionData, index: number) => {
   if (isGroupOption(item)) {
     return `group-${item.label}-${index}`;

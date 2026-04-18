@@ -4,7 +4,7 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const comboboxVariants = tv({
   slots: {
-    anchor: 'block w-full',
+    anchor: '',
     trigger: [
       'flex w-full items-center justify-between rounded-md border border-input bg-background transition-all-150',
       'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50',
