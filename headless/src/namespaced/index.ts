@@ -65,6 +65,18 @@ import {
   BreadcrumbRoot,
   BreadcrumbSeparator,
   Button,
+  CalendarCell,
+  CalendarCellTrigger,
+  CalendarGrid,
+  CalendarGridBody,
+  CalendarGridHead,
+  CalendarGridRow,
+  CalendarHeadCell,
+  CalendarHeader,
+  CalendarHeading,
+  CalendarNext,
+  CalendarPrev,
+  CalendarRoot,
   CardCollapsibleTrigger,
   CardContent,
   CardDescription,
@@ -610,6 +622,34 @@ export const Breadcrumb = {
 };
 
 export { Button };
+
+export const Calendar = {
+  Root: CalendarRoot,
+  Header: CalendarHeader,
+  Heading: CalendarHeading,
+  Prev: CalendarPrev,
+  Next: CalendarNext,
+  Grid: CalendarGrid,
+  GridHead: CalendarGridHead,
+  GridBody: CalendarGridBody,
+  GridRow: CalendarGridRow,
+  HeadCell: CalendarHeadCell,
+  Cell: CalendarCell,
+  CellTrigger: CalendarCellTrigger
+} as {
+  Root: typeof CalendarRoot;
+  Header: typeof CalendarHeader;
+  Heading: typeof CalendarHeading;
+  Prev: typeof CalendarPrev;
+  Next: typeof CalendarNext;
+  Grid: typeof CalendarGrid;
+  GridHead: typeof CalendarGridHead;
+  GridBody: typeof CalendarGridBody;
+  GridRow: typeof CalendarGridRow;
+  HeadCell: typeof CalendarHeadCell;
+  Cell: typeof CalendarCell;
+  CellTrigger: typeof CalendarCellTrigger;
+};
 
 export const Card = {
   Root: CardRoot,

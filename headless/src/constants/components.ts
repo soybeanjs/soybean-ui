@@ -60,6 +60,20 @@ export const components = {
     'BreadcrumbEllipsis'
   ],
   button: ['Button'],
+  calendar: [
+    'CalendarRoot',
+    'CalendarHeader',
+    'CalendarHeading',
+    'CalendarPrev',
+    'CalendarNext',
+    'CalendarGrid',
+    'CalendarGridHead',
+    'CalendarGridBody',
+    'CalendarGridRow',
+    'CalendarHeadCell',
+    'CalendarCell',
+    'CalendarCellTrigger'
+  ],
   card: [
     'CardRoot',
     'CardHeader',
@@ -70,7 +84,7 @@ export const components = {
     'CardFooter',
     'CardCollapsibleTrigger'
   ],
-  carousel: ['CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious', 'CarouselRoot'],
+  carousel: ['CarouselRoot', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext'],
   checkbox: [
     'CheckboxCompact',
     'CheckboxCardCompact',

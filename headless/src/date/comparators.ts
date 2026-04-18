@@ -3,7 +3,10 @@ import type { DateValue } from '@internationalized/date';
 import type { Matcher } from './types';
 
 import {
+  CalendarDate,
   CalendarDateTime,
+  createCalendar,
+  DateFormatter,
   getDayOfWeek,
   getLocalTimeZone,
   parseDate,
@@ -12,6 +15,7 @@ import {
   toCalendar,
   ZonedDateTime
 } from '@internationalized/date';
+import type { CalendarIdentifier } from '@internationalized/date';
 
 export function parseStringToDateValue(dateStr: string, referenceValue: DateValue): DateValue {
   let dateValue: DateValue;
@@ -62,6 +66,32 @@ export function getDaysInMonth(date: Date | DateValue) {
   return date.set({ day: 100 }).day;
 }
 
+export function getDefaultDate(props: {
+  defaultValue?: DateValue | DateValue[];
+  defaultPlaceholder?: DateValue;
+  locale?: string;
+}): DateValue {
+  const { defaultValue, defaultPlaceholder, locale = 'en' } = props;
+
+  if (Array.isArray(defaultValue) && defaultValue.length) {
+    return defaultValue.at(-1)!.copy();
+  }
+
+  if (defaultValue && !Array.isArray(defaultValue)) {
+    return defaultValue.copy();
+  }
+
+  if (defaultPlaceholder) {
+    return defaultPlaceholder.copy();
+  }
+
+  const now = new Date();
+  const formatter = new DateFormatter(locale);
+  const calendar = createCalendar(formatter.resolvedOptions().calendar as CalendarIdentifier);
+
+  return toCalendar(new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate()), calendar);
+}
+
 export function isBefore(dateToCompare: DateValue, referenceDate: DateValue) {
   return dateToCompare.compare(referenceDate) < 0;
 }
@@ -86,11 +116,7 @@ export function isBetween(date: DateValue, start: DateValue, end: DateValue) {
   return isAfter(date, start) && isBefore(date, end);
 }
 
-export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
+export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
   const day = getDayOfWeek(date, locale, 'sun');
 
   if (firstDayOfWeek > day) {
@@ -104,11 +130,7 @@ export function getLastFirstDayOfWeek<T extends DateValue = DateValue>(
   return date.subtract({ days: day - firstDayOfWeek }) as T;
 }
 
-export function getNextLastDayOfWeek<T extends DateValue = DateValue>(
-  date: T,
-  firstDayOfWeek: number,
-  locale: string
-): T {
+export function getNextLastDayOfWeek<T extends DateValue = DateValue>(date: T, firstDayOfWeek: number, locale: string): T {
   const day = getDayOfWeek(date, locale, 'sun');
   const lastDayOfWeek = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
 
