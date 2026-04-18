@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Clipboard } from '@soybeanjs/headless';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { cn } from '@/theme';
 import { clipboardVariants } from './variants';
 import type { ClipboardEmits, ClipboardProps } from './types';
@@ -14,6 +14,7 @@ const props = defineProps<ClipboardProps>();
 
 const emit = defineEmits<ClipboardEmits>();
 
+const listeners = useForwardListeners(emit);
 const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'variant', 'shape', 'fitContent']);
 
 const cls = computed(() =>
@@ -34,9 +35,7 @@ const cls = computed(() =>
   <Clipboard
     v-bind="forwardedProps"
     :class="cls"
-    @click="emit('click', $event)"
-    @copied="emit('copied', $event)"
-    @copy-error="emit('copyError', $event)"
+    v-on="listeners"
   >
     <template #leading="slotProps">
       <slot name="leading" v-bind="slotProps" />
