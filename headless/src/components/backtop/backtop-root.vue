@@ -24,7 +24,7 @@ const forwardedProps = useOmitProps(props, ['disabled', 'duration', 'target', 'v
 const visible = shallowRef(false);
 const resolvedTarget = shallowRef<Window | HTMLElement | null>(null);
 
-let scrollAnimationFrame = 0;
+let scrollAnimationFrameId: number | null = null;
 
 const dataState = computed<BacktopState>(() => (visible.value ? 'visible' : 'hidden'));
 const ariaLabel = computed(() => props['aria-label'] ?? 'Back to top');
@@ -60,12 +60,12 @@ const { pause: cancelVisibilityUpdate, resume: updateVisibility } = useRafFn(mea
 });
 
 function cancelScrollToTop() {
-  if (!scrollAnimationFrame) {
+  if (scrollAnimationFrameId === null) {
     return;
   }
 
-  cancelAnimationFrame(scrollAnimationFrame);
-  scrollAnimationFrame = 0;
+  cancelAnimationFrame(scrollAnimationFrameId);
+  scrollAnimationFrameId = null;
 }
 
 function scrollToTop() {
@@ -101,17 +101,17 @@ function scrollToTop() {
     setScrollTop(target, nextTop);
 
     if (progress < 1 && nextTop > 0) {
-      scrollAnimationFrame = requestAnimationFrame(step);
+      scrollAnimationFrameId = requestAnimationFrame(step);
 
       return;
     }
 
     setScrollTop(target, 0);
-    scrollAnimationFrame = 0;
+    scrollAnimationFrameId = null;
     updateVisibility();
   };
 
-  scrollAnimationFrame = requestAnimationFrame(step);
+  scrollAnimationFrameId = requestAnimationFrame(step);
 }
 
 function onClick(event: MouseEvent) {

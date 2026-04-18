@@ -51,6 +51,8 @@ function createMockScrollTarget(initialScrollTop = 0): MockScrollTarget {
 }
 
 async function waitForBacktopUpdate() {
+  // Backtop schedules visibility updates with requestAnimationFrame, so the extra ticks keep the assertions aligned with
+  // the component's async update cycle.
   await nextTick();
   await new Promise<void>(resolve => {
     requestAnimationFrame(() => resolve());

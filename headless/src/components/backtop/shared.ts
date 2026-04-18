@@ -40,7 +40,7 @@ export function getScrollTop(target: Window | HTMLElement) {
 
   const scrollingElement = target.document.scrollingElement ?? target.document.documentElement;
 
-  return target.scrollY || target.pageYOffset || scrollingElement?.scrollTop || target.document.body?.scrollTop || 0;
+  return target.scrollY || scrollingElement?.scrollTop || target.document.body?.scrollTop || 0;
 }
 
 export function setScrollTop(target: Window | HTMLElement, top: number) {
