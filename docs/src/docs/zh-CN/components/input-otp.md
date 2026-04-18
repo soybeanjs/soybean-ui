@@ -42,7 +42,7 @@ disabled
   { name: 'readonly', type: 'boolean', default: 'false', description: '是否只读。' },
   { name: 'autocomplete', type: 'string', default: '`one-time-code`', description: '传递给原生 input 的 autocomplete 值。' },
   { name: 'inputmode', type: 'InputOtpInputMode', default: '`numeric`', description: '移动端虚拟键盘模式。' },
-  { name: 'textAlign', type: 'InputOtpTextAlign', default: '`left`', description: '隐藏原生 input 使用的文本对齐方式。' },
+  { name: 'align', type: 'Align', default: '`start`', description: '隐藏原生 input 使用的文本对齐方式，可选值为 `start`、`center`、`end`。' },
   { name: 'pattern', type: 'string | RegExp', default: '-', description: '用于校验完整 OTP 字符串的模式。' },
   { name: 'pasteTransformer', type: '(pasted: string | undefined) => string', default: '-', description: '粘贴前对剪贴板文本做转换。' },
   { name: 'pushPasswordManagerStrategy', type: 'InputOtpPushPasswordManagerStrategy', default: '`increase-width`', description: '密码管理器徽章处理策略。' },
@@ -115,6 +115,6 @@ disabled
 
 <UnionType name="InputOtpInputMode" description="输入模式类型" type="'numeric' | 'text'" />
 
-<UnionType name="InputOtpTextAlign" description="输入文本对齐类型" type="'left' | 'center' | 'right'" />
+<UnionType name="Align" description="输入文本对齐类型" type="'start' | 'center' | 'end'" />
 
 <UnionType name="InputOtpPushPasswordManagerStrategy" description="密码管理器徽章处理策略" type="'increase-width' | 'none'" />

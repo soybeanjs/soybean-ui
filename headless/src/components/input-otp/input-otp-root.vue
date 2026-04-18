@@ -356,6 +356,12 @@ watch(
     });
 
     onCleanup(() => {
+      const window = defaultWindow;
+
+      if (!window) {
+        return;
+      }
+
       timers.forEach(timer => window.clearTimeout(timer));
     });
   },

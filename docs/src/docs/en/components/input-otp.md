@@ -42,7 +42,7 @@ disabled
   { name: 'readonly', type: 'boolean', default: 'false', description: 'Whether the OTP input is read-only.' },
   { name: 'autocomplete', type: 'string', default: '`one-time-code`', description: 'Autocomplete value passed to the native input.' },
   { name: 'inputmode', type: 'InputOtpInputMode', default: '`numeric`', description: 'Virtual keyboard mode for mobile devices.' },
-  { name: 'textAlign', type: 'InputOtpTextAlign', default: '`left`', description: 'Text alignment used by the hidden native input.' },
+  { name: 'align', type: 'Align', default: '`start`', description: 'Text alignment used by the hidden native input.' },
   { name: 'pattern', type: 'string | RegExp', default: '-', description: 'Pattern used to validate the whole OTP string.' },
   { name: 'pasteTransformer', type: '(pasted: string | undefined) => string', default: '-', description: 'Transforms clipboard text before insertion.' },
   { name: 'pushPasswordManagerStrategy', type: 'InputOtpPushPasswordManagerStrategy', default: '`increase-width`', description: 'How to handle password manager badges.' },
@@ -115,6 +115,6 @@ disabled
 
 <UnionType name="InputOtpInputMode" description="Input mode type" type="'numeric' | 'text'" />
 
-<UnionType name="InputOtpTextAlign" description="Input text alignment type" type="'left' | 'center' | 'right'" />
+<UnionType name="Align" description="Input text alignment type" type="'start' | 'center' | 'end'" />
 
 <UnionType name="InputOtpPushPasswordManagerStrategy" description="Password manager badge handling strategy" type="'increase-width' | 'none'" />

@@ -4,10 +4,10 @@ import { tv } from 'tailwind-variants';
 export const inputOtpVariants = tv({
   slots: {
     root: [
-      'relative inline-flex w-full cursor-text select-none pointer-events-none',
+      'relative inline-flex w-full cursor-text select-none',
       'data-[disabled]:cursor-default data-[disabled]:opacity-50'
     ],
-    positioner: 'absolute inset-0 pointer-events-none',
+    positioner: 'absolute inset-0',
     group: 'grid w-full gap-2 grid-cols-[repeat(var(--columns),minmax(0,1fr))]',
     input: [
       'absolute inset-0 h-full w-full border-0 bg-transparent p-0 outline-none shadow-none opacity-0',
