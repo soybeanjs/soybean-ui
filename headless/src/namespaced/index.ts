@@ -72,6 +72,10 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  ComboboxAnchor,
+  ComboboxArrow,
+  ComboboxCancel,
+  ComboboxCompact,
   ComboboxContent,
   ComboboxEmpty,
   ComboboxGroup,
@@ -83,6 +87,7 @@ import {
   ComboboxRoot,
   ComboboxSeparator,
   ComboboxTrigger,
+  ComboboxVirtualizer,
   ComboboxViewport,
   ColorAreaArea,
   ColorAreaRoot,
@@ -591,9 +596,13 @@ export const Collapsible = {
 
 export const Combobox = {
   Root: ComboboxRoot,
+  Compact: ComboboxCompact,
+  Anchor: ComboboxAnchor,
   Trigger: ComboboxTrigger,
+  Cancel: ComboboxCancel,
   Portal: ComboboxPortal,
   Content: ComboboxContent,
+  Arrow: ComboboxArrow,
   Viewport: ComboboxViewport,
   Input: ComboboxInput,
   Group: ComboboxGroup,
@@ -601,12 +610,17 @@ export const Combobox = {
   Item: ComboboxItem,
   ItemIndicator: ComboboxItemIndicator,
   Empty: ComboboxEmpty,
-  Separator: ComboboxSeparator
+  Separator: ComboboxSeparator,
+  Virtualizer: ComboboxVirtualizer
 } as {
   Root: typeof ComboboxRoot;
+  Compact: typeof ComboboxCompact;
+  Anchor: typeof ComboboxAnchor;
   Trigger: typeof ComboboxTrigger;
+  Cancel: typeof ComboboxCancel;
   Portal: typeof ComboboxPortal;
   Content: typeof ComboboxContent;
+  Arrow: typeof ComboboxArrow;
   Viewport: typeof ComboboxViewport;
   Input: typeof ComboboxInput;
   Group: typeof ComboboxGroup;
@@ -615,6 +629,7 @@ export const Combobox = {
   ItemIndicator: typeof ComboboxItemIndicator;
   Empty: typeof ComboboxEmpty;
   Separator: typeof ComboboxSeparator;
+  Virtualizer: typeof ComboboxVirtualizer;
 };
 
 export const ColorArea = {

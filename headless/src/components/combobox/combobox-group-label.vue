@@ -6,11 +6,11 @@ defineOptions({
   name: 'ComboboxGroupLabel'
 });
 
-defineProps<ComboboxGroupLabelProps>();
+const props = defineProps<ComboboxGroupLabelProps>();
 </script>
 
 <template>
-  <ListboxGroupLabel>
+  <ListboxGroupLabel v-bind="props" data-slot="group-label">
     <slot />
   </ListboxGroupLabel>
 </template>

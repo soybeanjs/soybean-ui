@@ -12,7 +12,7 @@ withDefaults(defineProps<ComboboxItemIndicatorProps>(), {
 </script>
 
 <template>
-  <ListboxItemIndicator :as="as" :as-child="asChild">
+  <ListboxItemIndicator :as="as" :as-child="asChild" data-slot="item-indicator">
     <slot />
   </ListboxItemIndicator>
 </template>

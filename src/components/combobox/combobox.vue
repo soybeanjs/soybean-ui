@@ -1,22 +1,11 @@
 <script setup lang="ts" generic="M extends boolean = false">
 import { computed } from 'vue';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import {
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxPortal,
-  ComboboxRoot,
-  ComboboxTrigger,
-  ComboboxViewport,
-  provideComboboxUi
-} from '@soybeanjs/headless';
+import { ComboboxCompact, provideComboboxUi } from '@soybeanjs/headless';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
-import SComboboxOption from './combobox-option.vue';
-import { getSelectedLabels } from './shared';
 import { comboboxVariants } from './variants';
-import type { ComboboxEmits, ComboboxProps } from './types';
+import type { ComboboxEmits, ComboboxProps, ComboboxSlots } from './types';
 
 defineOptions({
   name: 'SCombobox'
@@ -24,34 +13,18 @@ defineOptions({
 
 const props = withDefaults(defineProps<ComboboxProps<M>>(), {
   open: undefined,
-  defaultOpen: false,
-  emptyLabel: 'No results found.'
+  clearable: true
 });
 
 const emit = defineEmits<ComboboxEmits<M>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'items',
-  'placeholder',
-  'searchPlaceholder',
-  'emptyLabel',
-  'triggerProps',
-  'portalProps',
-  'contentProps',
-  'viewportProps',
-  'inputProps',
-  'emptyProps',
-  'groupProps',
-  'groupLabelProps',
-  'itemProps',
-  'itemIndicatorProps',
-  'separatorProps'
-]);
+const slots = defineSlots<ComboboxSlots<M>>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
+
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = comboboxVariants({
@@ -61,104 +34,14 @@ const ui = computed(() => {
   return mergeSlotVariants(variants, props.ui, { trigger: props.class });
 });
 
-const selectedLabels = computed(() => getSelectedLabels(props.modelValue, props.items));
-const triggerText = computed(() => {
-  if (!selectedLabels.value.length) {
-    return props.placeholder;
-  }
-
-  return selectedLabels.value.join(', ');
-});
-
-const inputProps = computed(() => ({
-  ...props.inputProps,
-  controlProps: {
-    ...props.inputProps?.controlProps,
-    'aria-label':
-      props.inputProps?.controlProps?.['aria-label'] ?? props.searchPlaceholder ?? props.placeholder ?? 'Search'
-  },
-  placeholder: props.searchPlaceholder ?? props.inputProps?.placeholder,
-  autofocus: props.inputProps?.autofocus ?? true
-}));
-
-const viewportProps = computed(() => ({
-  ...props.viewportProps,
-  'aria-label': props.viewportProps?.['aria-label'] ?? props.placeholder ?? 'Options'
-}));
-
-const triggerProps = computed(() => ({
-  ...props.triggerProps,
-  'aria-label': props.triggerProps?.['aria-label'] ?? triggerText.value,
-  'data-placeholder': !selectedLabels.value.length ? '' : undefined
-}));
-
 provideComboboxUi(ui);
 </script>
 
 <template>
-  <ComboboxRoot v-bind="forwardedProps" v-on="listeners">
-    <ComboboxTrigger v-bind="triggerProps">
-      <slot name="trigger-leading" />
-      <slot name="trigger-value" :model-value="modelValue" :selected-labels="selectedLabels" :slot-text="triggerText">
-        <span class="grow truncate text-left">{{ triggerText }}</span>
-      </slot>
-      <slot name="trigger-trailing" />
-      <slot name="trigger-icon">
-        <Icon icon="lucide:chevrons-up-down" :class="ui.triggerIcon" :aria-hidden="true" />
-      </slot>
-    </ComboboxTrigger>
-    <ComboboxPortal v-bind="portalProps">
-      <ComboboxContent
-        v-bind="contentProps"
-        @close-auto-focus="emit('closeAutoFocus', $event)"
-        @escape-key-down="emit('escapeKeyDown', $event)"
-        @pointer-down-outside="emit('pointerDownOutside', $event)"
-        @focus-outside="emit('focusOutside', $event)"
-        @interact-outside="emit('interactOutside', $event)"
-      >
-        <ComboboxInput v-bind="inputProps">
-          <template #leading="slotProps">
-            <slot name="input-leading" v-bind="slotProps">
-              <Icon icon="lucide:search" class="mr-2 shrink-0 opacity-50" :aria-hidden="true" />
-            </slot>
-          </template>
-          <template #trailing="slotProps">
-            <slot name="input-trailing" v-bind="slotProps" />
-          </template>
-        </ComboboxInput>
-        <ComboboxEmpty v-bind="emptyProps">
-          <slot name="empty">{{ emptyLabel }}</slot>
-        </ComboboxEmpty>
-        <ComboboxViewport v-bind="viewportProps">
-          <SComboboxOption
-            v-for="item in items"
-            :key="'items' in item ? `group-${item.label}` : item.value"
-            :item="item"
-            :group-props="groupProps"
-            :group-label-props="groupLabelProps"
-            :item-props="itemProps"
-            :item-indicator-props="itemIndicatorProps"
-            :separator-props="separatorProps"
-            @item-select="emit('select', $event)"
-          >
-            <template #group-label="slotProps">
-              <slot name="group-label" v-bind="slotProps" />
-            </template>
-            <template #item-leading="slotProps">
-              <slot name="item-leading" v-bind="slotProps" />
-            </template>
-            <template #item-text="slotProps">
-              <slot name="item-text" v-bind="slotProps" />
-            </template>
-            <template #item-trailing="slotProps">
-              <slot name="item-trailing" v-bind="slotProps" />
-            </template>
-            <template #item-indicator="slotProps">
-              <slot name="item-indicator" v-bind="slotProps" />
-            </template>
-          </SComboboxOption>
-        </ComboboxViewport>
-      </ComboboxContent>
-    </ComboboxPortal>
-  </ComboboxRoot>
+  <ComboboxCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" #[slotName]="slotProps">
+      <!-- @vue-expect-error ignore vue slot props type -->
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </ComboboxCompact>
 </template>

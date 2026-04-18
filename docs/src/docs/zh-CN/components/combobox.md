@@ -2,7 +2,7 @@
 
 ## 概述
 
-用于搜索并从选项列表中快速选择值的组合框组件。
+用于搜索并从选项列表中快速选择值的组合框组件，支持显式锚点包装、可清空输入以及更完整的弹层/过滤交互。
 
 ## 用法
 
@@ -28,6 +28,7 @@ const items = [
 
 ```playground
 basic
+clearable
 disabled
 group
 multiple
@@ -43,10 +44,15 @@ custom-styling
   { name: 'modelValue', type: 'string | string[]', default: '-', description: '当前选中的值。' },
   { name: 'placeholder', type: 'string', default: '-', description: '触发器占位文本。' },
   { name: 'searchPlaceholder', type: 'string', default: '-', description: '搜索输入框占位文本。' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: '是否显示清空按钮。' },
+  { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: '清空按钮的可访问名称。' },
   { name: 'multiple', type: 'boolean', default: 'false', description: '是否允许多选。' },
+  { name: 'resetModelValueOnClear', type: 'boolean', default: 'false', description: '点击清空按钮时是否同时清空选中值。' },
   { name: 'disabled', type: 'boolean', default: 'false', description: '是否禁用。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '尺寸。' },
   { name: 'class', type: 'ClassValue', default: '-', description: '触发器自定义类名。' },
+  { name: 'anchorProps', type: 'ComboboxAnchorProps', default: '-', description: '锚点包装组件的属性。' },
+  { name: 'cancelProps', type: 'ComboboxCancelProps', default: '-', description: '清空按钮组件的属性。' },
   { name: 'ui', type: 'Ui', default: '{}', description: '内部元素自定义类名。' }
 ]"/>
 
@@ -103,8 +109,11 @@ custom-styling
     fields: [
       { name: 'trigger', type: 'string', description: '触发器类名。' },
       { name: 'triggerIcon', type: 'string', description: '触发器图标类名。' },
+      { name: 'anchor', type: 'string', description: '锚点容器类名。' },
+      { name: 'cancel', type: 'string', description: '清空按钮类名。' },
       { name: 'positioner', type: 'string', description: '定位容器类名。' },
       { name: 'popup', type: 'string', description: '弹层容器类名。' },
+      { name: 'arrow', type: 'string', description: '弹层箭头类名。' },
       { name: 'viewport', type: 'string', description: '选项列表类名。' },
       { name: 'inputRoot', type: 'string', description: '输入框根节点类名。' },
       { name: 'inputControl', type: 'string', description: '输入框控件类名。' },
@@ -113,7 +122,8 @@ custom-styling
       { name: 'item', type: 'string', description: '选项类名。' },
       { name: 'itemIndicator', type: 'string', description: '选中指示器类名。' },
       { name: 'empty', type: 'string', description: '空状态类名。' },
-      { name: 'separator', type: 'string', description: '分隔线类名。' }
+      { name: 'separator', type: 'string', description: '分隔线类名。' },
+      { name: 'virtualizer', type: 'string', description: '虚拟列表容器类名。' }
     ]
   }
 ]"/>

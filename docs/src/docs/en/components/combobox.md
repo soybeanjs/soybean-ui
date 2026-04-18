@@ -2,7 +2,7 @@
 
 ## Overview
 
-A combobox component for searching and selecting values from an option list.
+A combobox component for searching and selecting values from an option list, with explicit anchor composition, clearable input support, and more complete popup and filtering behavior.
 
 ## Usage
 
@@ -28,6 +28,7 @@ const items = [
 
 ```playground
 basic
+clearable
 disabled
 group
 multiple
@@ -43,10 +44,15 @@ custom-styling
   { name: 'modelValue', type: 'string | string[]', default: '-', description: 'Current selected value.' },
   { name: 'placeholder', type: 'string', default: '-', description: 'Trigger placeholder text.' },
   { name: 'searchPlaceholder', type: 'string', default: '-', description: 'Search input placeholder text.' },
+  { name: 'clearable', type: 'boolean', default: 'true', description: 'Whether to show the clear button.' },
+  { name: 'clearLabel', type: 'string', default: `'Clear input'`, description: 'Accessible label for the clear button.' },
   { name: 'multiple', type: 'boolean', default: 'false', description: 'Whether multiple selection is allowed.' },
+  { name: 'resetModelValueOnClear', type: 'boolean', default: 'false', description: 'Whether clearing should also reset the selected value.' },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the combobox is disabled.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Component size.' },
   { name: 'class', type: 'ClassValue', default: '-', description: 'Custom trigger class name.' },
+  { name: 'anchorProps', type: 'ComboboxAnchorProps', default: '-', description: 'Props forwarded to the anchor wrapper.' },
+  { name: 'cancelProps', type: 'ComboboxCancelProps', default: '-', description: 'Props forwarded to the clear button.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names for internal elements.' }
 ]"/>
 
@@ -103,8 +109,11 @@ custom-styling
     fields: [
       { name: 'trigger', type: 'string', description: 'Trigger class name.' },
       { name: 'triggerIcon', type: 'string', description: 'Trigger icon class name.' },
+      { name: 'anchor', type: 'string', description: 'Anchor wrapper class name.' },
+      { name: 'cancel', type: 'string', description: 'Clear button class name.' },
       { name: 'positioner', type: 'string', description: 'Positioner class name.' },
       { name: 'popup', type: 'string', description: 'Popup container class name.' },
+      { name: 'arrow', type: 'string', description: 'Popup arrow class name.' },
       { name: 'viewport', type: 'string', description: 'Options list class name.' },
       { name: 'inputRoot', type: 'string', description: 'Input root class name.' },
       { name: 'inputControl', type: 'string', description: 'Input control class name.' },
@@ -113,7 +122,8 @@ custom-styling
       { name: 'item', type: 'string', description: 'Option class name.' },
       { name: 'itemIndicator', type: 'string', description: 'Selected indicator class name.' },
       { name: 'empty', type: 'string', description: 'Empty state class name.' },
-      { name: 'separator', type: 'string', description: 'Separator class name.' }
+      { name: 'separator', type: 'string', description: 'Separator class name.' },
+      { name: 'virtualizer', type: 'string', description: 'Virtualized list container class name.' }
     ]
   }
 ]"/>

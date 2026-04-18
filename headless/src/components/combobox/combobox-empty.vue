@@ -8,15 +8,25 @@ defineOptions({
   name: 'ComboboxEmpty'
 });
 
-defineProps<ComboboxEmptyProps>();
+const props = withDefaults(defineProps<ComboboxEmptyProps>(), {
+  as: 'div'
+});
 
-const { filterState } = useComboboxRootContext('ComboboxEmpty');
 const cls = useComboboxUi('empty');
-const visible = computed(() => filterState.value.count === 0);
+
+const { allItems, filterState, ignoreFilter } = useComboboxRootContext('ComboboxEmpty');
+
+const visible = computed(() => {
+  if (ignoreFilter.value) {
+    return allItems.value.size === 0;
+  }
+
+  return filterState.value.count === 0;
+});
 </script>
 
 <template>
-  <Primitive v-if="visible" as="div" :class="cls">
+  <Primitive v-if="visible" v-bind="props" :class="cls" data-slot="empty">
     <slot />
   </Primitive>
 </template>
