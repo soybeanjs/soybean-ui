@@ -99,28 +99,29 @@ export function endOfDecade(dateObj: DateValue) {
 }
 
 export function createDecade(props: SetDecadeProps): DateValue[] {
-  const { dateObj, startIndex, endIndex } = props;
-  const previousYears = Math.abs(startIndex ?? 0);
-  const decadeArray = Array.from({ length: previousYears + endIndex }, (_, index) => {
-    if (index <= previousYears) {
-      return dateObj.subtract({ years: index }).set({ day: 1, month: 1 });
-    }
+  const { dateObj, startIndex = 0, endIndex } = props;
+  const decadeLength = endIndex - startIndex + 1;
 
-    return dateObj.add({ years: index - endIndex }).set({ day: 1, month: 1 });
-  });
+  if (decadeLength <= 0) {
+    return [];
+  }
 
-  decadeArray.sort((a, b) => a.year - b.year);
-
-  return decadeArray;
+  return Array.from({ length: decadeLength }, (_, index) =>
+    dateObj.add({ years: startIndex + index }).set({ day: 1, month: 1 })
+  );
 }
 
 export function createYear(props: SetYearProps): DateValue[] {
   const { dateObj, numberOfMonths = 1, pagedNavigation = false } = props;
 
   if (numberOfMonths && pagedNavigation) {
-    return Array.from({ length: Math.floor(12 / numberOfMonths) }, (_, index) =>
-      startOfMonth(dateObj.set({ month: index * numberOfMonths + 1 }))
-    );
+    const months: DateValue[] = [];
+
+    for (let month = 1; month <= 12; month += numberOfMonths) {
+      months.push(startOfMonth(dateObj.set({ month })));
+    }
+
+    return months;
   }
 
   return Array.from({ length: 12 }, (_, index) => startOfMonth(dateObj.set({ month: index + 1 })));
