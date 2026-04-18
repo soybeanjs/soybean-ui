@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import SClipboard from '../../../src/components/clipboard/clipboard.vue';
-import type { ClipboardProps } from '../../../src/components/clipboard/types';
+import type { ClipboardProps, ClipboardSlotProps } from '../../../src/components/clipboard/types';
 import { getA11yViolations } from '../../shared/a11y';
 
 const writeText = vi.fn(async () => undefined);
@@ -14,7 +14,7 @@ const createPermissionStatus = () => ({
   removeEventListener: vi.fn()
 });
 
-type ClipboardTestSlotValue = string | ((props: Record<string, unknown>) => string);
+type ClipboardTestSlotValue = string | ((props: ClipboardSlotProps) => string);
 
 type ClipboardTestSlots = Record<string, ClipboardTestSlotValue> & {
   leading?: ClipboardTestSlotValue;
