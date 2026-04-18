@@ -8,6 +8,7 @@ export const components = {
   arrow: ['SArrow'],
   aspectRatio: ['SAspectRatio'],
   avatar: ['SAvatar'],
+  backtop: ['SBacktop'],
   badge: ['SBadge'],
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
   bottomSheet: ['SBottomSheet', 'SBottomSheetClose'],
