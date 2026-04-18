@@ -1,5 +1,16 @@
 # DOCUMENTATION SITE — @soybeanjs/ui-docs
 
+## AI ASSISTANT BRIDGE
+
+For any AI assistant editing files under `docs/`:
+
+1. Read `.github/assistant-rules.md`.
+2. Follow `.github/copilot-instructions.md`.
+3. Apply the relevant files from `.github/instructions/`, especially the docs-related rules.
+4. For `docs/src/docs/**`, the nearer `docs/src/docs/AGENTS.md` narrows the exact markdown rule set.
+
+The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
+
 **Package:** `docs/` → NOT published to npm
 **Stack:** Vite + vite-ssg + unplugin-vue-markdown (NOT VitePress)
 

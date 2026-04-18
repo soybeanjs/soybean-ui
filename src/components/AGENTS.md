@@ -1,6 +1,6 @@
-# HEADLESS COMPONENTS
+# UI COMPONENTS
 
-This scoped AGENTS file is a routing bridge for assistants editing `headless/src/components/**`.
+This scoped AGENTS file is a routing bridge for assistants editing `src/components/**`.
 
 Before editing files here, read and obey these `.github` sources:
 
@@ -10,7 +10,7 @@ Before editing files here, read and obey these `.github` sources:
 4. `.github/instructions/typescript-functional-style.instructions.md`
 5. `.github/instructions/vue-sfc.instructions.md` for `.vue` files
 6. `.github/instructions/soybean-ui-component-overview.instructions.md`
-7. `.github/instructions/soybean-ui-headless.instructions.md`
+7. `.github/instructions/soybean-ui-ui-layer.instructions.md`
 8. `.github/instructions/soybean-ui-accessibility-rtl.instructions.md`
 
 If the task affects public delivery surfaces, also apply the relevant docs, playground, testing, and checklist files under `.github/instructions/`.

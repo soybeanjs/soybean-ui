@@ -1,11 +1,14 @@
-# Copilot Instructions
+# GitHub Copilot Instructions
 
-这是当前仓库里 Copilot 的顶层大脑文件。
+这是当前仓库里 GitHub Copilot 的兼容入口文件。
+
+assistant-neutral 的总入口是 `.github/assistant-rules.md`；本文件保留用于 GitHub Copilot 兼容和仓库既有入口习惯。
 
 ## 读取优先级
 
-1. 先遵循本文件
-2. 再遵循 `.github/instructions/` 下与当前任务和文件匹配的 instruction 文件
+1. 先遵循 `.github/assistant-rules.md`
+2. 再遵循本文件
+3. 最后遵循 `.github/instructions/` 下与当前任务和文件匹配的 instruction 文件
 
 ## 仓库基线
 
@@ -60,5 +63,7 @@
 
 ## Source Of Truth
 
-- 本仓库的 AI 组件开发规范只维护在本文件与 `.github/instructions/` 中
+- assistant-neutral 的规范入口维护在 `.github/assistant-rules.md`
+- GitHub Copilot 的兼容入口维护在本文件
+- 本仓库的 AI 组件开发规范正文维护在 `.github/assistant-rules.md`、本文件与 `.github/instructions/` 中
 - 组件开发过程、分层边界、交付面与验证要求都以 instructions 为准

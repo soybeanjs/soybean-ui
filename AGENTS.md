@@ -1,5 +1,26 @@
 # PROJECT KNOWLEDGE BASE
 
+## AI ASSISTANT ENTRYPOINT
+
+This repository keeps the normative AI coding rules under `.github/`.
+
+For any AI assistant working in this repository:
+
+1. Read `.github/assistant-rules.md` first.
+2. Then follow `.github/copilot-instructions.md` and the relevant files under `.github/instructions/`.
+3. If multiple `AGENTS.md` files apply, the nearest scoped file only narrows which `.github` rules to read for the current path.
+4. If any bridge file conflicts with `.github`, `.github` wins.
+
+The remaining content in this file is repository knowledge and project context. It is informative, but the rule source of truth stays in `.github/`.
+
+### Scoped AGENTS map
+
+- `headless/src/components/AGENTS.md` routes headless component work to the relevant `.github` rules
+- `src/components/AGENTS.md` routes styled wrapper work to the relevant `.github` rules
+- `playground/examples/AGENTS.md` routes playground demo work to the relevant `.github` rules
+- `docs/src/docs/AGENTS.md` routes component docs work to the relevant `.github` rules
+- `test/specs/components/AGENTS.md` routes component test work to the relevant `.github` rules
+
 **Generated:** 2026-04-16
 **Version:** 0.14.0
 **Monorepo:** pnpm workspaces (`headless/`, `docs/`; root = `@soybeanjs/ui`)

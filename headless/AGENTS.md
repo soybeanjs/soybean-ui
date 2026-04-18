@@ -1,5 +1,16 @@
 # HEADLESS PACKAGE — @soybeanjs/headless
 
+## AI ASSISTANT BRIDGE
+
+For any AI assistant editing files under `headless/`:
+
+1. Read `.github/assistant-rules.md`.
+2. Follow `.github/copilot-instructions.md`.
+3. Apply the relevant files from `.github/instructions/`, especially the common TypeScript/Vue rules.
+4. For `headless/src/components/**`, the nearer `headless/src/components/AGENTS.md` narrows the exact component-rule set.
+
+The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
+
 **Package:** `headless/` → publishes as `@soybeanjs/headless`
 **Role:** Logic layer. State, a11y, keyboard nav, focus management. Zero styles. Also hosts Compact aggregations when structure belongs in headless rather than the UI wrapper.
 

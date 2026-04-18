@@ -1,5 +1,16 @@
 # UI STYLED LAYER — @soybeanjs/ui
 
+## AI ASSISTANT BRIDGE
+
+For any AI assistant editing files under `src/`:
+
+1. Read `.github/assistant-rules.md`.
+2. Follow `.github/copilot-instructions.md`.
+3. Apply the relevant files from `.github/instructions/`, especially the common TypeScript/Vue rules.
+4. For `src/components/**`, the nearer `src/components/AGENTS.md` narrows the exact UI-component rule set.
+
+The remaining content in this file is package knowledge and local context. Normative rules still live in `.github/`.
+
 **Package:** `src/` → publishes as `@soybeanjs/ui`
 **Role:** Styled wrappers over headless primitives. UnoCSS + tailwind-variants.
 
