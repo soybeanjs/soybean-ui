@@ -27,6 +27,7 @@
     "./constants": "./src/constants/index.ts",
     "./composables": "./src/composables/index.ts",
     "./shared": "./src/shared/index.ts",
+    "./date": "./src/date/index.ts",
     "./nuxt": "./src/nuxt/index.ts",
     "./resolver": "./src/resolver/index.ts",
     "./namespaced": "./src/namespaced/index.ts",
@@ -53,6 +54,11 @@
         "types": "./dist/shared/index.d.ts",
         "import": "./dist/shared/index.js",
         "require": "./dist/shared/index.js"
+      },
+      "./date": {
+        "types": "./dist/date/index.d.ts",
+        "import": "./dist/date/index.js",
+        "require": "./dist/date/index.js"
       },
       "./nuxt": {
         "types": "./dist/nuxt/index.d.ts",
