@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useExposedElement } from '../../composables';
 import { Primitive } from '../primitive';
 import { useComboboxRootContext, useComboboxUi } from './context';
@@ -27,7 +27,9 @@ const [_, setTriggerElement] = useExposedElement(onTriggerElementChange);
 const cls = useComboboxUi('trigger');
 const triggerIconCls = useComboboxUi('triggerIcon');
 
-initContentId();
+onMounted(() => {
+  initContentId();
+});
 
 const disabled = computed(() => props.disabled || rootDisabled.value || false);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
