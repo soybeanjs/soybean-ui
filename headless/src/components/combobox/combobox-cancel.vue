@@ -19,6 +19,13 @@ const { disabled: rootDisabled, inputElement, filterSearch, resetModelValueOnCle
 
 const disabled = computed(() => props.disabled || rootDisabled.value || false);
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
+const tabindex = computed(() => {
+  if (disabled.value) {
+    return -1;
+  }
+
+  return props.as === 'button' ? undefined : 0;
+});
 
 const onClick = () => {
   if (disabled.value) {
@@ -51,7 +58,7 @@ const onClick = () => {
     :aria-disabled="disabled || undefined"
     :data-disabled="disabled ? '' : undefined"
     :disabled="disabled"
-    :tabindex="disabled ? -1 : undefined"
+    :tabindex="tabindex"
     data-slot="cancel"
     @click="onClick"
   >
