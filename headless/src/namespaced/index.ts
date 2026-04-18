@@ -69,6 +69,7 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
   CheckboxRoot,
+  Clipboard,
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
@@ -537,6 +538,8 @@ export const Breadcrumb = {
 };
 
 export { Button };
+
+export { Clipboard };
 
 export const Card = {
   Root: CardRoot,

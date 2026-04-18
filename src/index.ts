@@ -14,6 +14,7 @@ export * from './components/button';
 export * from './components/card';
 export * from './components/carousel';
 export * from './components/checkbox';
+export * from './components/clipboard';
 export * from './components/collapsible';
 export * from './components/combobox';
 export * from './components/color-area';
