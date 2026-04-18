@@ -1,6 +1,6 @@
 import { computed, toValue } from 'vue';
 import type { MaybeRefOrGetter } from 'vue';
-import { isNullish } from '../shared';
+import { isNullish, getVueBooleanCasting } from '../shared';
 import type { DefinedValue, SelectionProps } from '../types';
 import { useControllableState } from './use-controllable-state';
 
@@ -10,10 +10,11 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
 ) {
   const propsRef = computed(() => toValue(props));
 
-  // @ts-expect-error ignore type: Vue props Boolean Casting [https://vuejs.org/guide/components/props.html#boolean-casting]
-  const isMultiple = computed(() => Boolean(propsRef.value.multiple) || propsRef.value.multiple === '');
+  const isMultiple = computed(() => getVueBooleanCasting(propsRef.value.multiple));
 
-  const singleClearable = computed(() => propsRef.value.singleClearable ?? true);
+  const clearable = computed(() => getVueBooleanCasting(propsRef.value.clearable ?? true));
+
+  const isToggle = computed(() => (propsRef.value.selectionBehavior ?? 'toggle') === 'toggle');
 
   const modelValue = useControllableState(
     () => propsRef.value.modelValue,
@@ -47,9 +48,14 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
 
   const onModelValueChange = (value: N) => {
     if (!isMultiple.value) {
+      if (!isToggle.value) {
+        modelValue.value = value as SelectionProps<M, N>['modelValue'];
+        return;
+      }
+
       const updated = modelValue.value === value ? undefined : value;
 
-      if (updated === undefined && !singleClearable.value) {
+      if (updated === undefined && !clearable.value) {
         return;
       }
 
@@ -62,15 +68,21 @@ export function useSelection<M extends boolean = false, N extends DefinedValue =
       return;
     }
 
-    let values = [...((modelValue.value ?? []) as N[])];
+    if (isToggle.value) {
+      let values = [...((modelValue.value ?? []) as N[])];
 
-    if (values.includes(value)) {
-      values = values.filter(v => v !== value);
-    } else {
-      values = [...values, value];
+      if (values.includes(value)) {
+        values = values.filter(v => v !== value);
+      } else {
+        values = [...values, value];
+      }
+
+      modelValue.value = values as SelectionProps<M, N>['modelValue'];
+
+      return;
     }
 
-    modelValue.value = values as SelectionProps<M, N>['modelValue'];
+    modelValue.value = [value] as SelectionProps<M, N>['modelValue'];
   };
 
   const setModelValue = (value: N[] | N | undefined) => {

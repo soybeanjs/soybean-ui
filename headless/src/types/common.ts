@@ -92,6 +92,8 @@ export interface GraceIntent {
   side: HorizontalSide;
 }
 
+export type SelectionBehavior = 'toggle' | 'replace';
+
 export interface SelectionProps<M extends boolean = false, N extends DefinedValue = string> {
   /**
    * The controlled value of the selected item(s).
@@ -113,8 +115,16 @@ export interface SelectionProps<M extends boolean = false, N extends DefinedValu
   multiple?: M;
   /**
    * Whether selected item can be cleared when `multiple` is false.
+   *
+   * @defaultValue `true`
    */
-  singleClearable?: boolean;
+  clearable?: boolean;
+  /**
+   * How multiple selection should behave in the collection.
+   *
+   * @defaultValue 'toggle'
+   */
+  selectionBehavior?: SelectionBehavior;
 }
 
 export type SelectionEmits<M extends boolean = false, N extends DefinedValue = string> = {

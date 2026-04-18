@@ -78,3 +78,7 @@ export const getMergedRefsValue = <T extends Record<string, MaybeRefOrGetter>>(r
 
   return merged;
 };
+
+export const getVueBooleanCasting = (value?: boolean | '') => {
+  return Boolean(value) || value === '';
+};
