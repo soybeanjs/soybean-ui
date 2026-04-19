@@ -155,6 +155,7 @@ export const components = {
     'ContextMenuRadioCompact',
     'ContextMenuWrapperCompact'
   ],
+  dateField: ['DateFieldRoot', 'DateFieldInput'],
   dialog: [
     'DialogCompact',
     'DialogProvider',
