@@ -310,6 +310,9 @@ import {
   MonthPickerPopup,
   MonthPickerRoot,
   MonthPickerTrigger,
+  MonthRangePickerPopup,
+  MonthRangePickerRoot,
+  MonthRangePickerTrigger,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
@@ -1260,6 +1263,16 @@ export const MonthPicker = {
   Root: typeof MonthPickerRoot;
   Trigger: typeof MonthPickerTrigger;
   Popup: typeof MonthPickerPopup;
+};
+
+export const MonthRangePicker = {
+  Root: MonthRangePickerRoot,
+  Trigger: MonthRangePickerTrigger,
+  Popup: MonthRangePickerPopup
+} as {
+  Root: typeof MonthRangePickerRoot;
+  Trigger: typeof MonthRangePickerTrigger;
+  Popup: typeof MonthRangePickerPopup;
 };
 
 export const NavigationMenu = {
