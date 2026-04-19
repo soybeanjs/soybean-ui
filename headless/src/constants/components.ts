@@ -296,6 +296,7 @@ export const components = {
     'MenubarRadioGroup',
     'MenubarCompact'
   ],
+  monthPicker: ['MonthPickerRoot', 'MonthPickerTrigger', 'MonthPickerPopup'],
   navigationMenu: [
     'NavigationMenuCompact',
     'NavigationMenuRoot',
