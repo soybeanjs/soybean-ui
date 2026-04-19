@@ -446,5 +446,7 @@ export const components = {
     'TreeMenuSub'
   ],
   virtualizer: ['VirtualizerRoot', 'VirtualizerContent', 'VirtualizerItem'],
-  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput']
+  visuallyHidden: ['VisuallyHidden', 'VisuallyHiddenInput'],
+  yearPicker: ['YearPickerRoot', 'YearPickerTrigger', 'YearPickerPopup'],
+  yearRangePicker: ['YearRangePickerRoot', 'YearRangePickerTrigger', 'YearRangePickerPopup']
 };
