@@ -1,6 +1,7 @@
 import type { DateValue } from '@internationalized/date';
+import type { CalendarIdentifier } from '@internationalized/date';
 
-import type { Matcher } from './types';
+import type { Granularity, Matcher } from './types';
 
 import {
   CalendarDate,
@@ -12,10 +13,12 @@ import {
   parseDate,
   parseDateTime,
   parseZonedDateTime,
+  Time,
   toCalendar,
   ZonedDateTime
 } from '@internationalized/date';
-import type { CalendarIdentifier } from '@internationalized/date';
+
+export type TimeValue = Time | CalendarDateTime | ZonedDateTime;
 
 export function parseStringToDateValue(dateStr: string, referenceValue: DateValue): DateValue {
   let dateValue: DateValue;
@@ -69,9 +72,10 @@ export function getDaysInMonth(date: Date | DateValue) {
 export function getDefaultDate(props: {
   defaultValue?: DateValue | DateValue[];
   defaultPlaceholder?: DateValue;
+  granularity?: Granularity;
   locale?: string;
 }): DateValue {
-  const { defaultValue, defaultPlaceholder, locale = 'en' } = props;
+  const { defaultValue, defaultPlaceholder, granularity = 'day', locale = 'en' } = props;
 
   if (Array.isArray(defaultValue) && defaultValue.length) {
     return defaultValue.at(-1)!.copy();
@@ -88,8 +92,25 @@ export function getDefaultDate(props: {
   const now = new Date();
   const formatter = new DateFormatter(locale);
   const calendar = createCalendar(formatter.resolvedOptions().calendar as CalendarIdentifier);
+  const timeGranularities = ['hour', 'minute', 'second'];
+
+  if (timeGranularities.includes(granularity)) {
+    return toCalendar(new CalendarDateTime(now.getFullYear(), now.getMonth() + 1, now.getDate(), 0, 0, 0), calendar);
+  }
 
   return toCalendar(new CalendarDate(now.getFullYear(), now.getMonth() + 1, now.getDate()), calendar);
+}
+
+export function getDefaultTime(props: { defaultValue?: TimeValue; defaultPlaceholder?: TimeValue }): TimeValue {
+  if (props.defaultValue) {
+    return props.defaultValue.copy();
+  }
+
+  if (props.defaultPlaceholder) {
+    return props.defaultPlaceholder.copy();
+  }
+
+  return new Time(0, 0, 0);
 }
 
 export function isBefore(dateToCompare: DateValue, referenceDate: DateValue) {

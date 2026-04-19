@@ -77,7 +77,6 @@ import {
   CalendarNext,
   CalendarPrev,
   CalendarRoot,
-  CardCollapsibleTrigger,
   CardCompact,
   CardContent,
   CardDescription,
@@ -86,6 +85,7 @@ import {
   CardRoot,
   CardTitle,
   CardTitleRoot,
+  CardCollapsibleTrigger,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -159,6 +159,8 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
   ContextMenuWrapperCompact,
+  DateFieldInput,
+  DateFieldRoot,
   DialogCancel,
   DialogClose,
   DialogCompact,
@@ -894,6 +896,14 @@ export const Dialog = {
   Close: typeof DialogClose;
   Cancel: typeof DialogCancel;
   Confirm: typeof DialogConfirm;
+};
+
+export const DateField = {
+  Root: DateFieldRoot,
+  Input: DateFieldInput
+} as {
+  Root: typeof DateFieldRoot;
+  Input: typeof DateFieldInput;
 };
 
 export const DropdownMenu = {
