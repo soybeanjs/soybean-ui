@@ -156,6 +156,7 @@ export const components = {
   ],
   dateField: ['DateFieldRoot', 'DateFieldInput'],
   datePicker: ['DatePickerRoot', 'DatePickerTrigger', 'DatePickerPopup'],
+  dateRangeField: ['DateRangeFieldRoot', 'DateRangeFieldInput'],
   dialog: [
     'DialogCompact',
     'DialogProvider',
