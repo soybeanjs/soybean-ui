@@ -138,25 +138,21 @@
 [data-slot='toast'][data-rich-color='true'][data-type='success'] {
   background-color: hsl(var(--success-100));
   border-color: hsl(var(--success));
-  color: hsl(var(--success-foreground));
 }
 
 [data-slot='toast'][data-rich-color='true'][data-type='info'] {
   background-color: hsl(var(--info-100));
   border-color: hsl(var(--info));
-  color: hsl(var(--info-foreground));
 }
 
 [data-slot='toast'][data-rich-color='true'][data-type='warning'] {
   background-color: hsl(var(--warning-100));
   border-color: hsl(var(--warning));
-  color: hsl(var(--warning-foreground));
 }
 
 [data-slot='toast'][data-rich-color='true'][data-type='error'] {
   background-color: hsl(var(--destructive-100));
   border-color: hsl(var(--destructive));
-  color: hsl(var(--destructive-foreground));
 }
 
 [data-slot='toast'][data-inverted='true'] {

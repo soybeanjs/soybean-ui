@@ -12,6 +12,7 @@ import {
   VIEWPORT_OFFSET,
   GAP,
   TOAST_LIFETIME,
+  ICONS,
   toasterCssVars,
   isModifierHotkey,
   isToastDismiss,
@@ -53,6 +54,8 @@ const { toasts, allToasts, filtered, heights, allHeights, allPositions, position
   id: () => props.id,
   position: () => props.position
 });
+
+const icons = computed(() => ({ ...ICONS, ...props.icons }));
 
 const expandedPosition = shallowRef<ToastPosition | null>(null);
 const interactingPosition = shallowRef<ToastPosition | null>(null);
@@ -205,8 +208,7 @@ provideToasterContext({
   allHeights,
   interactingPosition,
   expandedPosition,
-  iconRender: props.iconRender,
-  buttonRender: props.buttonRender,
+  icons,
   ...transformPropsToContext(props, [
     'gap',
     'duration',
@@ -215,7 +217,6 @@ provideToasterContext({
     'swipeDirections',
     'showIcon',
     'showClose',
-    'icons',
     'toastProps',
     'wrapperProps',
     'contentProps',

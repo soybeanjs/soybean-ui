@@ -3,6 +3,8 @@ import { computed, shallowRef, useTemplateRef, watch, watchEffect, onWatcherClea
 import type { CSSProperties } from 'vue';
 import { useMounted, useDocumentVisibility, useElementSize } from '@vueuse/core';
 import type { Point, SwipeDirection } from '../../types';
+import IconRender from '../icon/icon-render.vue';
+import Button from '../button/button.vue';
 import { useToasterContext, useToastUi } from './context';
 import {
   toastCssVars,
@@ -11,9 +13,7 @@ import {
   getDefaultSwipeDirections,
   getSwipeAmount,
   setSwipeAmount,
-  resetSwipeAmount,
-  getIconNode,
-  getButtonNode
+  resetSwipeAmount
 } from './shared';
 import ToastRender from './toast-render.vue';
 import type { ToastEmits, ToastProps, ToastType } from './types';
@@ -40,8 +40,6 @@ const {
   showIcon,
   showClose,
   icons,
-  iconRender,
-  buttonRender,
   toastProps,
   wrapperProps,
   contentProps,
@@ -81,20 +79,20 @@ const icon = computed(() => {
   if (!showIcon.value) return undefined;
 
   if (props.toast.icon) {
-    return getIconNode(props.toast.icon, iconRender);
+    return props.toast.icon;
   }
 
   if (toastType.value && toastType.value !== 'default') {
-    return getIconNode(icons.value?.[toastType.value], iconRender);
+    return icons.value[toastType.value];
   }
 
   if (props.toast.promise) {
-    return getIconNode(icons.value?.loading, iconRender);
+    return icons.value.loading;
   }
 
   return undefined;
 });
-const closeIcon = computed(() => getIconNode(props.toast.close ?? icons.value?.close, iconRender));
+
 const front = computed(() => props.index === 0);
 const visible = computed(() => props.index + 1 <= visibleCounts.value);
 const disabled = computed(() => toastType.value === 'loading');
@@ -134,17 +132,6 @@ const toastStyle = computed<CSSProperties>(() => ({
   [toastCssVars.offset]: `${removed.value ? offsetBeforeRemove.value : offset.value}px`,
   [toastCssVars.initialHeight]: defaultExpanded.value ? 'auto' : `${initialHeight.value}px`
 }));
-
-const actionNode = computed(() => {
-  if (!props.toast.action) return undefined;
-
-  return getButtonNode(props.toast.action, 'action', buttonRender);
-});
-const cancelNode = computed(() => {
-  if (!props.toast.cancel) return undefined;
-
-  return getButtonNode(props.toast.cancel, 'cancel', buttonRender);
-});
 
 const removeToast = () => {
   removed.value = true;
@@ -408,7 +395,7 @@ watchEffect(() => {
       <component :is="toast.custom" v-if="toast.custom" />
       <template v-else>
         <h3 v-bind="titleProps" :class="[ui.title, toast.ui?.title]" data-slot="title">
-          <component v-bind="iconProps" :is="icon" v-if="icon" :class="[ui.icon, toast.ui?.icon]" />
+          <IconRender v-if="icon" v-bind="iconProps" :icon="icon" :class="[ui.icon, toast.ui?.icon]" />
           <ToastRender :is="toast.title" />
         </h3>
         <p
@@ -432,32 +419,36 @@ watchEffect(() => {
           :class="[ui.footer, toast.ui?.footer]"
           data-slot="footer"
         >
-          <component
-            :is="cancelNode"
+          <Button
+            v-if="toast.cancel"
             v-bind="cancelProps"
             :class="[ui.cancel, toast.ui?.cancel]"
             data-slot="cancel"
             @click="onCancel"
-          />
-          <component
-            :is="actionNode"
+          >
+            <ToastRender :is="toast.cancel" />
+          </Button>
+          <Button
+            v-if="toast.action"
             v-bind="actionProps"
             :class="[ui.action, toast.ui?.action]"
             data-slot="action"
             @click="onAction"
-          />
+          >
+            <ToastRender :is="toast.action" />
+          </Button>
         </div>
       </template>
     </div>
 
-    <button
-      v-if="closeVisible && closeIcon"
+    <Button
+      v-if="closeVisible && icons?.close"
       v-bind="closeProps"
       :class="[ui.close, toast.ui?.close]"
       data-slot="close"
       @click="onCloseToast"
     >
-      <component :is="closeIcon" />
-    </button>
+      <IconRender :icon="icons?.close" />
+    </Button>
   </li>
 </template>

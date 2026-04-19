@@ -24,11 +24,7 @@ export const toastVariants = tv({
     footer: 'flex justify-end items-center',
     action: '',
     cancel: '',
-    close: [
-      'absolute w-fit rounded-md bg-transparent text-accent-foreground hover:bg-accent-foreground/10 active:bg-accent-foreground/20',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-accent-foreground/20',
-      'group-data-[inverted=true]:text-accent group-data-[inverted=true]:hover:bg-accent/15'
-    ]
+    close: 'absolute group-data-[inverted=true]:text-accent group-data-[inverted=true]:hover:bg-accent/15'
   },
   variants: {
     size: {
@@ -38,7 +34,7 @@ export const toastVariants = tv({
         wrapper: 'gap-1',
         title: 'gap-1.25',
         footer: 'gap-1.25',
-        close: 'top-1 end-1 p-0.75'
+        close: 'top-1 end-1'
       },
       sm: {
         toaster: 'w-85 text-xs',
@@ -46,7 +42,7 @@ export const toastVariants = tv({
         wrapper: 'gap-1.25',
         title: 'gap-1.5',
         footer: 'gap-1.5',
-        close: 'top-1.25 end-1.25 p-0.875'
+        close: 'top-1.25 end-1.25'
       },
       md: {
         toaster: 'w-90 text-sm',
@@ -54,7 +50,7 @@ export const toastVariants = tv({
         wrapper: 'gap-1.5',
         title: 'gap-2',
         footer: 'gap-2',
-        close: 'top-1.5 end-1.5 p-1'
+        close: 'top-1.5 end-1.5'
       },
       lg: {
         toaster: 'w-95 text-base',
@@ -62,7 +58,7 @@ export const toastVariants = tv({
         wrapper: 'gap-1.75',
         title: 'gap-2.5',
         footer: 'gap-2.5',
-        close: 'top-1.75 end-1.75 p-1.25'
+        close: 'top-1.75 end-1.75'
       },
       xl: {
         toaster: 'w-100 text-lg',
@@ -70,7 +66,7 @@ export const toastVariants = tv({
         wrapper: 'gap-2',
         title: 'gap-3',
         footer: 'gap-3',
-        close: 'top-2 end-2 p-1.5'
+        close: 'top-2 end-2'
       },
       '2xl': {
         toaster: 'w-110 text-xl',
@@ -78,7 +74,7 @@ export const toastVariants = tv({
         wrapper: 'gap-2.5',
         title: 'gap-4',
         footer: 'gap-4',
-        close: 'top-2.5 end-2.5 p-1.75'
+        close: 'top-2.5 end-2.5'
       }
     }
   },

@@ -1,8 +1,8 @@
-import { h } from 'vue';
-import type { CSSProperties, VNode } from 'vue';
+import type { CSSProperties } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import type { Side, Point, SwipeDirection } from '../../types';
-import type { ToasterProps, ToastPosition, ToastOrDismiss, ToastDismiss, ToastOffset } from './types';
+import type { IconValue } from '../icon/types';
+import type { ToastPosition, ToastOrDismiss, ToastDismiss, ToastOffset, ToastIconType } from './types';
 
 export const toasterCssVars = {
   gap: '--gap',
@@ -37,6 +37,14 @@ export const TOAST_WIDTH = 356;
 export const GAP = 12;
 export const SWIPE_THRESHOLD = 45;
 export const TIME_BEFORE_UNMOUNT = 200;
+export const ICONS: Record<ToastIconType, IconValue> = {
+  info: 'lucide:info',
+  success: 'lucide:circle-check',
+  warning: 'lucide:circle-alert',
+  error: 'lucide:circle-x',
+  close: 'lucide:x',
+  loading: 'svg-spinners:270-ring'
+};
 
 export const ALL_TOAST_POSITIONS: ToastPosition[] = [
   'top-right',
@@ -128,24 +136,3 @@ type ModifierKey = 'altKey' | 'ctrlKey' | 'metaKey' | 'shiftKey';
 
 export const isModifierHotkey = (key: string): key is ModifierKey =>
   ['altKey', 'ctrlKey', 'metaKey', 'shiftKey'].includes(key);
-
-export const getIconNode = (icon?: VNode | string, iconRender?: ToasterProps['iconRender']) => {
-  if (!icon) return undefined;
-  if (typeof icon === 'string') {
-    return iconRender?.(icon) ?? h('span', icon);
-  }
-
-  return icon;
-};
-
-export const getButtonNode = (
-  label: string | VNode,
-  type: 'action' | 'cancel',
-  buttonRender?: ToasterProps['buttonRender']
-) => {
-  if (typeof label === 'string') {
-    return buttonRender?.(label, type) ?? h('button', label);
-  }
-
-  return label;
-};
