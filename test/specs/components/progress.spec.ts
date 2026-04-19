@@ -80,6 +80,7 @@ describe('getProgressIndicatorStyle', () => {
 
 describe('useLoadingBar', () => {
   afterEach(() => {
+    // Reset the singleton observer so each test starts from a clean pre-mount state.
     useLoadingBar().clear();
     vi.useRealTimers();
   });

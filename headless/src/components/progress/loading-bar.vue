@@ -4,7 +4,7 @@ import { Primitive } from '../primitive';
 import { useDirection } from '../config-provider/context';
 import { useProgressUi } from './context';
 import { DEFAULT_MAX, getProgressIndicatorStyle, getValueLabel } from './shared';
-import { loadingBarState } from './state';
+import { loadingBarObserver } from './state';
 import type { ProgressState } from './types';
 
 defineOptions({
@@ -14,7 +14,7 @@ defineOptions({
 const dir = useDirection();
 const ui = useProgressUi();
 
-const snapshot = shallowRef(loadingBarState.getSnapshot());
+const snapshot = shallowRef(loadingBarObserver.getSnapshot());
 
 const progressState = computed<ProgressState>(() => (snapshot.value.modelValue >= DEFAULT_MAX ? 'complete' : 'loading'));
 
@@ -23,7 +23,7 @@ const ariaValueText = computed(() => getValueLabel(snapshot.value.modelValue, DE
 const indicatorStyle = computed(() => getProgressIndicatorStyle(snapshot.value.modelValue, dir.value));
 
 watchEffect(() => {
-  const unsubscribe = loadingBarState.subscribe(nextSnapshot => {
+  const unsubscribe = loadingBarObserver.subscribe(nextSnapshot => {
     snapshot.value = nextSnapshot;
   });
 
