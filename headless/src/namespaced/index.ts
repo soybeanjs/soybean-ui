@@ -161,6 +161,9 @@ import {
   ContextMenuWrapperCompact,
   DateFieldInput,
   DateFieldRoot,
+  DatePickerPopup,
+  DatePickerRoot,
+  DatePickerTrigger,
   DialogCancel,
   DialogClose,
   DialogCompact,
@@ -864,6 +867,24 @@ export const ContextMenu = {
   WrapperCompact: typeof ContextMenuWrapperCompact;
 };
 
+export const DateField = {
+  Root: DateFieldRoot,
+  Input: DateFieldInput
+} as {
+  Root: typeof DateFieldRoot;
+  Input: typeof DateFieldInput;
+};
+
+export const DatePicker = {
+  Root: DatePickerRoot,
+  Trigger: DatePickerTrigger,
+  Popup: DatePickerPopup
+} as {
+  Root: typeof DatePickerRoot;
+  Trigger: typeof DatePickerTrigger;
+  Popup: typeof DatePickerPopup;
+};
+
 export const Dialog = {
   Compact: DialogCompact,
   Provider: DialogProvider,
@@ -896,14 +917,6 @@ export const Dialog = {
   Close: typeof DialogClose;
   Cancel: typeof DialogCancel;
   Confirm: typeof DialogConfirm;
-};
-
-export const DateField = {
-  Root: DateFieldRoot,
-  Input: DateFieldInput
-} as {
-  Root: typeof DateFieldRoot;
-  Input: typeof DateFieldInput;
 };
 
 export const DropdownMenu = {
