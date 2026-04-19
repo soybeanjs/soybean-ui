@@ -58,7 +58,7 @@ custom-styling
   { name: 'size', type: 'ThemeSize', default: '`md`', description: 'Default visual size.' },
   { name: 'separator', type: 'string', default: '`–`', description: 'Separator text between start and end time segments.' },
   { name: 'ui', type: 'Partial<TimeRangeFieldUi>', default: '{}', description: 'Override internal slot classes.' },
-  { name: 'inputProps', type: '`Omit<TimeRangeFieldInputProps, 'part' | 'type'>`', default: '{}', description: 'Props forwarded to every visible segment item.' }
+  { name: 'inputProps', type: `Omit<TimeRangeFieldInputProps, 'part' | 'type'>`, default: '{}', description: 'Props forwarded to every visible segment item.' }
 ]"/>
 
 ### Emits

@@ -58,7 +58,7 @@ custom-styling
   { name: 'size', type: 'ThemeSize', default: '`md`', description: '默认视觉尺寸。' },
   { name: 'separator', type: 'string', default: '`–`', description: '开始和结束时间分段之间的分隔文本。' },
   { name: 'ui', type: 'Partial<TimeRangeFieldUi>', default: '{}', description: '覆盖内部 slot 类名。' },
-  { name: 'inputProps', type: '`Omit<TimeRangeFieldInputProps, 'part' | 'type'>`', default: '{}', description: '透传给每个可见分段项的 props。' }
+  { name: 'inputProps', type: `Omit<TimeRangeFieldInputProps, 'part' | 'type'>`, default: '{}', description: '透传给每个可见分段项的 props。' }
 ]"/>
 
 ### 事件
