@@ -337,6 +337,20 @@ export const components = {
     'RadioGroupIndicator',
     'RadioGroupLabel'
   ],
+  rangeCalendar: [
+    'RangeCalendarRoot',
+    'RangeCalendarHeader',
+    'RangeCalendarHeading',
+    'RangeCalendarPrev',
+    'RangeCalendarNext',
+    'RangeCalendarGrid',
+    'RangeCalendarGridHead',
+    'RangeCalendarGridBody',
+    'RangeCalendarGridRow',
+    'RangeCalendarHeadCell',
+    'RangeCalendarCell',
+    'RangeCalendarCellTrigger'
+  ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
   segment: ['SegmentRoot', 'SegmentList', 'SegmentTrigger', 'SegmentIndicator', 'SegmentCompact'],

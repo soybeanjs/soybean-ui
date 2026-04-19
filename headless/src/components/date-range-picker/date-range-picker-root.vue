@@ -57,7 +57,7 @@ const formatter = useDateFormatter(locale.value, {
 });
 
 const modelValue = useControllableState<DateRange>(
-  () => props.modelValue ?? {},
+  () => props.modelValue as DateRange,
   value => {
     emit('update:modelValue', value);
     emit('update:startValue', value.start);

@@ -17,6 +17,7 @@ export const components = {
   datePicker: ['SDatePicker'],
   dateRangeField: ['SDateRangeField'],
   dateRangePicker: ['SDateRangePicker'],
+  rangeCalendar: ['SRangeCalendar'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],

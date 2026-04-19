@@ -353,6 +353,18 @@ import {
   RadioGroupItem,
   RadioGroupLabel,
   RadioGroupRoot,
+  RangeCalendarCell,
+  RangeCalendarCellTrigger,
+  RangeCalendarGrid,
+  RangeCalendarGridBody,
+  RangeCalendarGridHead,
+  RangeCalendarGridRow,
+  RangeCalendarHeadCell,
+  RangeCalendarHeader,
+  RangeCalendarHeading,
+  RangeCalendarNext,
+  RangeCalendarPrev,
+  RangeCalendarRoot,
   RovingFocusGroup,
   RovingFocusItem,
   ScrollAreaCorner,
@@ -1351,6 +1363,34 @@ export const RadioGroup = {
   Control: typeof RadioGroupControl;
   Indicator: typeof RadioGroupIndicator;
   Label: typeof RadioGroupLabel;
+};
+
+export const RangeCalendar = {
+  Root: RangeCalendarRoot,
+  Header: RangeCalendarHeader,
+  Heading: RangeCalendarHeading,
+  Prev: RangeCalendarPrev,
+  Next: RangeCalendarNext,
+  Grid: RangeCalendarGrid,
+  GridHead: RangeCalendarGridHead,
+  GridBody: RangeCalendarGridBody,
+  GridRow: RangeCalendarGridRow,
+  HeadCell: RangeCalendarHeadCell,
+  Cell: RangeCalendarCell,
+  CellTrigger: RangeCalendarCellTrigger
+} as {
+  Root: typeof RangeCalendarRoot;
+  Header: typeof RangeCalendarHeader;
+  Heading: typeof RangeCalendarHeading;
+  Prev: typeof RangeCalendarPrev;
+  Next: typeof RangeCalendarNext;
+  Grid: typeof RangeCalendarGrid;
+  GridHead: typeof RangeCalendarGridHead;
+  GridBody: typeof RangeCalendarGridBody;
+  GridRow: typeof RangeCalendarGridRow;
+  HeadCell: typeof RangeCalendarHeadCell;
+  Cell: typeof RangeCalendarCell;
+  CellTrigger: typeof RangeCalendarCellTrigger;
 };
 
 export const RovingFocus = {
