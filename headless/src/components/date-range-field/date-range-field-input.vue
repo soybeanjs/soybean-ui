@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DateValue } from '../../date';
+
 import { computed, ref } from 'vue';
 
 import { useDateField } from '../../date';
@@ -42,7 +44,7 @@ const { attributes, handleSegmentClick, handleSegmentFocusOut, handleSegmentKeyd
   focusNext: () => rootContext.focusNext(props.type),
   modelValue: computed({
     get: () => props.type === 'start' ? rootContext.modelValue.value.start : rootContext.modelValue.value.end,
-    set: (value) => {
+    set: (value: DateValue | undefined) => {
       if (props.type === 'start') {
         rootContext.modelValue.value = { ...rootContext.modelValue.value, start: value };
       } else {
