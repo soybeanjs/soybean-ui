@@ -8,7 +8,7 @@ defineOptions({
   name: 'DatePickerPopup'
 });
 
-const props = withDefaults(defineProps<DatePickerPopupProps>(), {
+withDefaults(defineProps<DatePickerPopupProps>(), {
   as: 'div'
 });
 
@@ -18,9 +18,10 @@ const rootContext = useDatePickerRootContext('DatePickerPopup');
 
 <template>
   <Primitive
-    v-if="rootContext.open"
+    v-if="rootContext.open.value"
     :as="as"
     :as-child="asChild"
+    aria-label="Date picker"
     :class="cls"
     data-slot="popup"
     role="dialog"

@@ -8,7 +8,7 @@ defineOptions({
   name: 'DateRangePickerTrigger'
 });
 
-const props = withDefaults(defineProps<DateRangePickerTriggerProps>(), {
+withDefaults(defineProps<DateRangePickerTriggerProps>(), {
   as: 'button'
 });
 
@@ -28,11 +28,11 @@ const handleClick = () => {
   <Primitive
     :as="as"
     :as-child="asChild"
-    :aria-disabled="rootContext.disabled ? true : undefined"
-    :aria-expanded="rootContext.open ? true : false"
+    :aria-disabled="rootContext.disabled.value ? true : undefined"
+    :aria-expanded="rootContext.open.value ? true : false"
     :class="cls"
-    :data-disabled="rootContext.disabled ? '' : undefined"
-    :data-state="rootContext.open ? 'open' : 'closed'"
+    :data-disabled="rootContext.disabled.value ? '' : undefined"
+    :data-state="rootContext.open.value ? 'open' : 'closed'"
     data-slot="trigger"
     type="button"
     @click="handleClick"

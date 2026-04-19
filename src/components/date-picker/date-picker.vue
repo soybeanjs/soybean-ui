@@ -2,7 +2,6 @@
 import { computed } from 'vue';
 
 import { DatePickerPopup, DatePickerRoot, DatePickerTrigger, provideDatePickerUi } from '@soybeanjs/headless/date-picker';
-import { CalendarRoot } from '@soybeanjs/headless/calendar';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 
 import { mergeSlotVariants } from '@/theme';
