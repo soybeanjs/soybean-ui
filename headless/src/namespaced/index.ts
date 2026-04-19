@@ -165,6 +165,9 @@ import {
   DatePickerTrigger,
   DateRangeFieldRoot,
   DateRangeFieldInput,
+  DateRangePickerPopup,
+  DateRangePickerRoot,
+  DateRangePickerTrigger,
   DialogCancel,
   DialogClose,
   DialogCompact,
@@ -884,6 +887,16 @@ export const DateRangeField = {
 } as {
   Root: typeof DateRangeFieldRoot;
   Input: typeof DateRangeFieldInput;
+};
+
+export const DateRangePicker = {
+  Root: DateRangePickerRoot,
+  Trigger: DateRangePickerTrigger,
+  Popup: DateRangePickerPopup
+} as {
+  Root: typeof DateRangePickerRoot;
+  Trigger: typeof DateRangePickerTrigger;
+  Popup: typeof DateRangePickerPopup;
 };
 
 export const Dialog = {
