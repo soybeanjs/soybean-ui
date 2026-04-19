@@ -60,6 +60,7 @@ export const menuData: MenuData[] = [
       'inputOtp',
       'password',
       'textarea',
+      'timeField',
       'checkbox',
       'radioGroup',
       'segment',

@@ -441,6 +441,8 @@ import {
   TextareaControl,
   TextareaCounter,
   TextareaRoot,
+  TimeFieldInput,
+  TimeFieldRoot,
   Toaster,
   ToastProvider,
   Toggle,
@@ -1595,6 +1597,14 @@ export const Textarea = {
   Root: typeof TextareaRoot;
   Control: typeof TextareaControl;
   Counter: typeof TextareaCounter;
+};
+
+export const TimeField = {
+  Input: TimeFieldInput,
+  Root: TimeFieldRoot
+} as {
+  Input: typeof TimeFieldInput;
+  Root: typeof TimeFieldRoot;
 };
 
 export const Toast = {

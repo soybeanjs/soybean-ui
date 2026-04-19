@@ -1,6 +1,7 @@
-import type { CalendarDateTime, DateFields, DateValue, TimeFields } from '@internationalized/date';
+import type { CalendarDateTime, DateFields, DateValue, Time, TimeFields } from '@internationalized/date';
 import type { Ref } from 'vue';
 
+import type { TimeValue } from './comparators';
 import type { Formatter } from './formatter';
 import type { AnyExceptLiteral, DateStep, HourCycle, SegmentPart, SegmentValueObj } from './types';
 
@@ -15,7 +16,7 @@ type SegmentAttrProps = {
   disabled: boolean;
   segmentValues: SegmentValueObj;
   hourCycle: HourCycle;
-  placeholder: DateValue;
+  placeholder: DateValue | TimeValue;
   formatter: Formatter;
 };
 
@@ -30,15 +31,34 @@ const commonSegmentAttrs = (props: SegmentAttrProps) => ({
   style: 'caret-color: transparent;'
 });
 
+const uses12HourFormat = (hourCycle: HourCycle, locale: string) => {
+  if (hourCycle !== undefined) {
+    return hourCycle === 12;
+  }
+
+  const resolvedHourCycle = new DateFormatter(locale, { hour: 'numeric' }).resolvedOptions().hourCycle;
+  return resolvedHourCycle === 'h11' || resolvedHourCycle === 'h12';
+};
+
+const getAccessibleHourValue = (props: SegmentAttrProps) => {
+  const rawHour = 'hour' in props.placeholder ? props.placeholder.hour : 0;
+
+  if (!uses12HourFormat(props.hourCycle, props.formatter.getLocale())) {
+    return rawHour;
+  }
+
+  return rawHour % 12 || 12;
+};
+
 const segmentBuilders = {
   day: {
     attrs: (props: SegmentAttrProps) => ({
       ...commonSegmentAttrs(props),
       'aria-label': 'day,',
       'aria-valuemin': 1,
-      'aria-valuemax': getDaysInMonth(props.placeholder),
-      'aria-valuenow': props.placeholder.day,
-      'aria-valuetext': props.segmentValues.day === null ? 'Empty' : `${props.placeholder.day}`,
+      'aria-valuemax': getDaysInMonth(props.placeholder as DateValue),
+      'aria-valuenow': (props.placeholder as DateValue).day,
+      'aria-valuetext': props.segmentValues.day === null ? 'Empty' : `${(props.placeholder as DateValue).day}`,
       'data-placeholder': props.segmentValues.day === null ? '' : undefined
     })
   },
@@ -48,8 +68,8 @@ const segmentBuilders = {
       'aria-label': 'month, ',
       'aria-valuemin': 1,
       'aria-valuemax': 12,
-      'aria-valuenow': props.placeholder.month,
-      'aria-valuetext': props.segmentValues.month === null ? 'Empty' : `${props.placeholder.month} - ${props.formatter.fullMonth(props.placeholder.toDate('UTC'))}`,
+      'aria-valuenow': (props.placeholder as DateValue).month,
+      'aria-valuetext': props.segmentValues.month === null ? 'Empty' : `${(props.placeholder as DateValue).month} - ${props.formatter.fullMonth((props.placeholder as DateValue).toDate('UTC'))}`,
       'data-placeholder': props.segmentValues.month === null ? '' : undefined
     })
   },
@@ -59,23 +79,68 @@ const segmentBuilders = {
       'aria-label': 'year, ',
       'aria-valuemin': 1,
       'aria-valuemax': 9999,
-      'aria-valuenow': props.placeholder.year,
-      'aria-valuetext': props.segmentValues.year === null ? 'Empty' : `${props.placeholder.year}`,
+      'aria-valuenow': (props.placeholder as DateValue).year,
+      'aria-valuetext': props.segmentValues.year === null ? 'Empty' : `${(props.placeholder as DateValue).year}`,
       'data-placeholder': props.segmentValues.year === null ? '' : undefined
     })
   },
-  hour: { attrs: (props: SegmentAttrProps) => commonSegmentAttrs(props) },
-  minute: { attrs: (props: SegmentAttrProps) => commonSegmentAttrs(props) },
-  second: { attrs: (props: SegmentAttrProps) => commonSegmentAttrs(props) },
-  dayPeriod: { attrs: (props: SegmentAttrProps) => ({ ...commonSegmentAttrs(props), inputmode: 'text' }) },
+  hour: {
+    attrs: (props: SegmentAttrProps) => ({
+      ...commonSegmentAttrs(props),
+      'aria-label': 'hour, ',
+      'aria-valuemin': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 1 : 0,
+      'aria-valuemax': uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 12 : 23,
+      'aria-valuenow': getAccessibleHourValue(props),
+      'aria-valuetext': 'hour' in props.segmentValues && props.segmentValues.hour === null ? 'Empty' : `${getAccessibleHourValue(props)}`,
+      'data-placeholder': 'hour' in props.segmentValues && props.segmentValues.hour === null ? '' : undefined
+    })
+  },
+  minute: {
+    attrs: (props: SegmentAttrProps) => ({
+      ...commonSegmentAttrs(props),
+      'aria-label': 'minute, ',
+      'aria-valuemin': 0,
+      'aria-valuemax': 59,
+      'aria-valuenow': 'minute' in props.placeholder ? props.placeholder.minute : 0,
+      'aria-valuetext': 'minute' in props.segmentValues && props.segmentValues.minute === null ? 'Empty' : `${'minute' in props.placeholder ? props.placeholder.minute : 0}`,
+      'data-placeholder': 'minute' in props.segmentValues && props.segmentValues.minute === null ? '' : undefined
+    })
+  },
+  second: {
+    attrs: (props: SegmentAttrProps) => ({
+      ...commonSegmentAttrs(props),
+      'aria-label': 'second, ',
+      'aria-valuemin': 0,
+      'aria-valuemax': 59,
+      'aria-valuenow': 'second' in props.placeholder ? props.placeholder.second : 0,
+      'aria-valuetext': 'second' in props.segmentValues && props.segmentValues.second === null ? 'Empty' : `${'second' in props.placeholder ? props.placeholder.second : 0}`,
+      'data-placeholder': 'second' in props.segmentValues && props.segmentValues.second === null ? '' : undefined
+    })
+  },
+  dayPeriod: {
+    attrs: (props: SegmentAttrProps) => ({
+      ...commonSegmentAttrs(props),
+      inputmode: 'text',
+      'aria-label': 'AM/PM, ',
+      'aria-valuetext': 'dayPeriod' in props.segmentValues && props.segmentValues.dayPeriod === null ? 'Empty' : 'dayPeriod' in props.segmentValues ? props.segmentValues.dayPeriod : undefined
+    })
+  },
   literal: { attrs: () => ({ 'aria-hidden': true, 'data-segment': 'literal' }) },
-  timeZoneName: { attrs: (props: SegmentAttrProps) => ({ role: 'textbox', tabindex: props.disabled ? undefined : 0, 'data-readonly': true, style: 'caret-color: transparent;' }) }
+  timeZoneName: {
+    attrs: (props: SegmentAttrProps) => ({
+      role: 'textbox',
+      tabindex: props.disabled ? undefined : 0,
+      'aria-label': 'time zone, ',
+      'data-readonly': true,
+      style: 'caret-color: transparent;'
+    })
+  }
 } as const;
 
 export type UseDateFieldProps = {
   hasLeftFocus: Ref<boolean>;
   lastKeyZero: Ref<boolean>;
-  placeholder: Ref<DateValue>;
+  placeholder: Ref<DateValue | TimeValue>;
   hourCycle: HourCycle;
   step: Ref<DateStep>;
   formatter: Formatter;
@@ -83,7 +148,7 @@ export type UseDateFieldProps = {
   disabled: Ref<boolean>;
   readonly: Ref<boolean>;
   part: SegmentPart;
-  modelValue: Ref<DateValue | undefined>;
+  modelValue: Ref<DateValue | TimeValue | undefined>;
   focusNext: () => void;
 };
 
@@ -114,7 +179,7 @@ export function useDateField(props: UseDateFieldProps) {
   const cycleValue = (
     event: KeyboardEvent,
     part: keyof Omit<DateFields, 'era'> | keyof TimeFields,
-    dateRef: DateValue,
+    dateRef: DateValue | TimeValue,
     prevValue: number | null,
     max = 59
   ) => {
@@ -125,28 +190,25 @@ export function useDateField(props: UseDateFieldProps) {
       return sign > 0 ? 0 : max;
     }
 
-    return (dateRef as CalendarDateTime).set({ [part]: prevValue }).cycle(part as keyof TimeFields, sign)[part as keyof TimeFields] as number;
+    return (dateRef as CalendarDateTime | Time).set({ [part]: prevValue }).cycle(part as keyof TimeFields, sign)[part as keyof TimeFields] as number;
   };
 
-  const uses12HourFormat = (locale: string) => {
-    const hourCycle = new DateFormatter(locale, { hour: 'numeric' }).resolvedOptions().hourCycle;
-    return hourCycle === 'h11' || hourCycle === 'h12';
-  };
+  const updateNumericSegment = (part: Exclude<SegmentPart, 'literal' | 'timeZoneName' | 'dayPeriod'>, event: KeyboardEvent) => {
+    const segmentValues = props.segmentValues.value as Record<string, number | 'AM' | 'PM' | null>;
+    const current = segmentValues[part] as number | null;
 
-        const updateNumericSegment = (part: Exclude<SegmentPart, 'literal' | 'timeZoneName' | 'dayPeriod'>, event: KeyboardEvent) => {
-          const segmentValues = props.segmentValues.value as Record<string, number | 'AM' | 'PM' | null>;
-          const current = segmentValues[part] as number | null;
+    if (event.key === 'Backspace') {
+      segmentValues[part] = deleteValue(current);
+      return;
+    }
 
-          if (event.key === 'Backspace') {
-            segmentValues[part] = deleteValue(current);
-            return;
-          }
-
-          if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
-            const max = part === 'month' ? 12 : part === 'day' ? 31 : part === 'year' ? 9999 : 59;
-            segmentValues[part] = cycleValue(event, part as keyof TimeFields, props.placeholder.value, current, max);
-            return;
-          }
+      if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+        const max = part === 'month' ? 12 : part === 'day' ? 31 : part === 'year' ? 9999 : part === 'hour'
+          ? (uses12HourFormat(props.hourCycle, props.formatter.getLocale()) ? 12 : 23)
+          : 59;
+        segmentValues[part] = cycleValue(event, part as keyof TimeFields, props.placeholder.value, current, max);
+        return;
+    }
 
     if (!isNumberString(event.key)) {
       return;
@@ -156,19 +218,19 @@ export function useDateField(props: UseDateFieldProps) {
     const previous = props.hasLeftFocus.value ? null : current;
     props.hasLeftFocus.value = false;
 
-    let nextValue = previous === null ? input : Number.parseInt(`${previous}${input}`);
+      let nextValue = previous === null ? input : Number.parseInt(`${previous}${input}`);
 
-    if (part === 'hour') {
-      const is12Hour = props.hourCycle !== undefined ? props.hourCycle === 12 : uses12HourFormat(props.formatter.getLocale());
-      const maxHour = is12Hour ? 12 : 23;
-      if (nextValue > maxHour) {
-        nextValue = input;
+      if (part === 'hour') {
+        const is12Hour = uses12HourFormat(props.hourCycle, props.formatter.getLocale());
+        const maxHour = is12Hour ? 12 : 23;
+        if (nextValue > maxHour) {
+          nextValue = input;
       }
     } else if (part === 'month' && nextValue > 12) {
       nextValue = input;
     } else if (part === 'day') {
       const month = props.segmentValues.value.month ?? 1;
-      const maxDay = getDaysInMonth(props.placeholder.value.set({ month }));
+      const maxDay = getDaysInMonth((props.placeholder.value as DateValue).set({ month }));
       if (nextValue > maxDay) {
         nextValue = input;
       }
@@ -182,7 +244,7 @@ export function useDateField(props: UseDateFieldProps) {
       nextValue = snapValueToStep(nextValue, 0, 59, props.step.value.second);
     }
 
-          segmentValues[part] = nextValue;
+    segmentValues[part] = nextValue;
 
     if (previous !== null) {
       props.focusNext();

@@ -411,6 +411,7 @@ export const components = {
     'TagsInputClear'
   ],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
+  timeField: ['TimeFieldRoot', 'TimeFieldInput'],
   toast: ['Toaster', 'ToastProvider'],
   toolbar: [
     'ToolbarRoot',

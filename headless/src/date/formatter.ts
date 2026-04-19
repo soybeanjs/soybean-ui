@@ -1,5 +1,7 @@
 import type { DateValue, ZonedDateTime } from '@internationalized/date';
 
+import type { TimeValue } from './comparators';
+
 import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date';
 import { ref } from 'vue';
 
@@ -13,14 +15,14 @@ export interface Formatter {
   getLocale: () => string;
   setLocale: (newLocale: string) => void;
   custom: (date: Date, options: DateFormatterOptions) => string;
-  selectedDate: (date: DateValue, includeTime?: boolean) => string;
+  selectedDate: (date: DateValue | TimeValue, includeTime?: boolean) => string;
   dayOfWeek: (date: Date, length?: DateFormatterOptions['weekday']) => string;
   fullMonthAndYear: (date: Date, options?: DateFormatterOptions) => string;
   fullMonth: (date: Date, options?: DateFormatterOptions) => string;
   fullYear: (date: Date, options?: DateFormatterOptions) => string;
   dayPeriod: (date: Date) => string;
-  part: (dateObj: DateValue, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string;
-  toParts: (date: DateValue, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[];
+  part: (dateObj: DateValue | TimeValue, type: Intl.DateTimeFormatPartTypes, options?: DateFormatterOptions) => string;
+  toParts: (date: DateValue | TimeValue, options?: DateFormatterOptions) => Intl.DateTimeFormatPart[];
   getMonths: () => { label: string; value: number }[];
 }
 
@@ -39,7 +41,7 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     return new DateFormatter(locale.value, { ...opts, ...options }).format(date);
   }
 
-  function selectedDate(date: DateValue, includeTime = true) {
+  function selectedDate(date: DateValue | TimeValue, includeTime = true) {
     if (hasTime(date) && includeTime) {
       return custom(toDate(date), {
         dateStyle: 'long',
@@ -71,7 +73,7 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     return new DateFormatter(locale.value, { ...opts, year: 'numeric', ...options }).format(date);
   }
 
-  function toParts(date: DateValue, options?: DateFormatterOptions) {
+  function toParts(date: DateValue | TimeValue, options?: DateFormatterOptions) {
     if (isZonedDateTime(date)) {
       return new DateFormatter(locale.value, {
         ...opts,
@@ -95,7 +97,7 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     }).formatToParts(date);
     const value = parts.find(item => item.type === 'dayPeriod')?.value;
 
-    if (value === 'PM' || value === 'pm' || value === 'p.m.') {
+    if (value === 'PM' || value == 'pm' || value === 'p.m.') {
       return 'PM';
     }
 
@@ -111,7 +113,7 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     second: 'numeric'
   };
 
-  function part(dateObj: DateValue, type: Intl.DateTimeFormatPartTypes, options: DateFormatterOptions = {}) {
+  function part(dateObj: DateValue | TimeValue, type: Intl.DateTimeFormatPartTypes, options: DateFormatterOptions = {}) {
     const parts = toParts(dateObj, { ...defaultPartOptions, ...options });
     const segment = parts.find(item => item.type === type);
 
