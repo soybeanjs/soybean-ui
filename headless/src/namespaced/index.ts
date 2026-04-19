@@ -449,8 +449,14 @@ import {
   TextareaRoot,
   TimeFieldInput,
   TimeFieldRoot,
+  TimePickerPopup,
+  TimePickerRoot,
+  TimePickerTrigger,
   TimeRangeFieldRoot,
   TimeRangeFieldInput,
+  TimeRangePickerPopup,
+  TimeRangePickerRoot,
+  TimeRangePickerTrigger,
   Toaster,
   ToastProvider,
   Toggle,
@@ -1641,12 +1647,32 @@ export const TimeField = {
   Root: typeof TimeFieldRoot;
 };
 
+export const TimePicker = {
+  Root: TimePickerRoot,
+  Trigger: TimePickerTrigger,
+  Popup: TimePickerPopup
+} as {
+  Root: typeof TimePickerRoot;
+  Trigger: typeof TimePickerTrigger;
+  Popup: typeof TimePickerPopup;
+};
+
 export const TimeRangeField = {
   Root: TimeRangeFieldRoot,
   Input: TimeRangeFieldInput
 } as {
   Root: typeof TimeRangeFieldRoot;
   Input: typeof TimeRangeFieldInput;
+};
+
+export const TimeRangePicker = {
+  Root: TimeRangePickerRoot,
+  Trigger: TimeRangePickerTrigger,
+  Popup: TimeRangePickerPopup
+} as {
+  Root: typeof TimeRangePickerRoot;
+  Trigger: typeof TimeRangePickerTrigger;
+  Popup: typeof TimeRangePickerPopup;
 };
 
 export const Toast = {

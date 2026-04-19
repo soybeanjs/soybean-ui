@@ -414,7 +414,9 @@ export const components = {
   ],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
   timeField: ['TimeFieldRoot', 'TimeFieldInput'],
+  timePicker: ['TimePickerRoot', 'TimePickerTrigger', 'TimePickerPopup'],
   timeRangeField: ['TimeRangeFieldRoot', 'TimeRangeFieldInput'],
+  timeRangePicker: ['TimeRangePickerRoot', 'TimeRangePickerTrigger', 'TimeRangePickerPopup'],
   toast: ['Toaster', 'ToastProvider'],
   toolbar: [
     'ToolbarRoot',
