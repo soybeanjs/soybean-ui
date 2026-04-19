@@ -8,6 +8,7 @@ export type { DateValue };
 export type DayOfWeek = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat';
 
 export type Matcher = (date: DateValue) => boolean;
+export type TimeMatcher = (time: TimeValue) => boolean;
 
 export interface DateRange {
   start?: DateValue;
@@ -58,5 +59,6 @@ export type SegmentValueObj = DateSegmentObj | DateAndTimeSegmentObj;
 export type SegmentContentObj = Record<EditableSegmentPart, string>;
 
 export type DateInputType = 'date' | 'datetime-local';
+export type TimeInputType = 'time';
 export type Granularity = 'day' | 'hour' | 'minute' | 'second';
 export type TimeGranularity = 'hour' | 'minute' | 'second';
