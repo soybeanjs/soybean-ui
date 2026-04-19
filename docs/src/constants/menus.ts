@@ -50,6 +50,7 @@ export const menuData: MenuData[] = [
       'dateField',
       'datePicker',
       'dateRangeField',
+      'dateRangePicker',
       'editable',
       'form',
       'label',
