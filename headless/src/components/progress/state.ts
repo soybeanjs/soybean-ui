@@ -163,14 +163,14 @@ class LoadingBarObserver {
   }
 }
 
-export const LoadingBarState = new LoadingBarObserver();
+export const loadingBarState = new LoadingBarObserver();
 
 const loadingBar: UseLoadingBarReturn = {
-  start: () => LoadingBarState.start(),
-  finish: () => LoadingBarState.finish(),
-  error: () => LoadingBarState.error(),
-  set: value => LoadingBarState.set(value),
-  clear: () => LoadingBarState.clear()
+  start: () => loadingBarState.start(),
+  finish: () => loadingBarState.finish(),
+  error: () => loadingBarState.error(),
+  set: value => loadingBarState.set(value),
+  clear: () => loadingBarState.clear()
 };
 
 export const useLoadingBar = (): UseLoadingBarReturn => loadingBar;

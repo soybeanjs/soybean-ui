@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { nextTick } from 'vue';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { getProgressIndicatorStyle } from '../../../headless/src/components/progress/shared';
 import SConfigProvider from '../../../src/components/config-provider/config-provider.vue';
 import SProgress from '../../../src/components/progress/progress.vue';
 import { useLoadingBar } from '../../../src/components/progress/context';
@@ -55,6 +56,24 @@ describe('SProgress', () => {
 
       expect(violations).toHaveLength(0);
       wrapper.unmount();
+    });
+  });
+});
+
+describe('getProgressIndicatorStyle', () => {
+  it('returns undefined for null progress', () => {
+    expect(getProgressIndicatorStyle(null)).toBeUndefined();
+  });
+
+  it('returns the LTR transform for determinate progress', () => {
+    expect(getProgressIndicatorStyle(60, 'ltr')).toEqual({
+      transform: 'translateX(-40%)'
+    });
+  });
+
+  it('returns the RTL transform for determinate progress', () => {
+    expect(getProgressIndicatorStyle(60, 'rtl')).toEqual({
+      transform: 'translateX(40%)'
     });
   });
 });
