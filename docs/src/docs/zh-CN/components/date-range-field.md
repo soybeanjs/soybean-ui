@@ -58,7 +58,7 @@ custom-styling
   { name: 'size', type: 'ThemeSize', default: '`md`', description: '默认视觉尺寸。' },
   { name: 'separator', type: 'string', default: '`–`', description: '开始和结束日期段之间的分隔符文本。' },
   { name: 'ui', type: 'Partial<DateRangeFieldUi>', default: '{}', description: '覆盖内部插槽类名。' },
-  { name: 'inputProps', type: '`Omit<DateRangeFieldInputProps, \\'part\\' | \\'type\\'>`', default: '{}', description: '转发给每个可见段项的属性。' }
+  { name: 'inputProps', type: `Omit<DateRangeFieldInputProps, 'part' | 'type'>`, default: '{}', description: '转发给每个可见段项的属性。' }
 ]"/>
 
 ### Emits
