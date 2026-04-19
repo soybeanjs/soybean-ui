@@ -8,15 +8,15 @@ import {
   createContent,
   getDefaultTime,
   getSegmentElements,
+  getTimeInputType,
+  isBefore,
+  isEqualValue,
   normalizeDateStep,
   normalizeHourCycle,
-      normalizeTimeInputValue,
-      getTimeInputType,
-      syncTimeSegmentValues,
-      useDateFormatter,
-      isBefore,
-      isEqualValue
-    } from '../../date';
+  normalizeTimeInputValue,
+  syncTimeSegmentValues,
+  useDateFormatter
+} from '../../date';
 import { isNullish } from '../../shared';
 import { useDirection, useLocale } from '../config-provider/context';
 import { Primitive } from '../primitive';
@@ -104,10 +104,7 @@ const isInvalid = computed(() => {
 const segmentValues = shallowRef(
   modelValue.value
     ? { ...syncTimeSegmentValues({ value: modelValue.value, formatter }) }
-    : ({ ...syncTimeSegmentValues({
-	value: placeholder.value,
-	formatter
-}) })
+    : { ...syncTimeSegmentValues({ value: placeholder.value, formatter }) }
 );
 
 const segmentContents = computed(() => createContent({
