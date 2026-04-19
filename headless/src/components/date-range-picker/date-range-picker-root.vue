@@ -6,7 +6,6 @@ import { computed, shallowRef, watch } from 'vue';
 import { useControllableState, useForwardElement } from '../../composables';
 import {
   getDefaultDate,
-  hasTime,
   isBefore,
   normalizeDateStep,
   normalizeHourCycle,
@@ -80,23 +79,17 @@ const placeholder = useControllableState<DateValue>(
   props.defaultPlaceholder ?? defaultDate.copy()
 );
 
-const open = useControllableState<boolean>(
-  () => props.open ?? false,
-  value => emit('update:open', value),
+const open = useControllableState(
+  () => props.open,
+  value => {
+    emit('update:open', value ?? false);
+  },
   props.defaultOpen
 );
 
 const hoveredDate = shallowRef<DateValue | undefined>();
 
 const step = computed(() => normalizeDateStep(props));
-
-const inferredGranularity = computed(() => {
-  if (props.granularity) {
-    return hasTime(placeholder.value) ? props.granularity : 'day';
-  }
-
-  return hasTime(placeholder.value) ? 'minute' : 'day';
-});
 
 const isInvalid = computed(() => {
   const { start, end } = modelValue.value;
@@ -294,6 +287,6 @@ provideDateRangePickerRootContext({
     :dir="dir"
     data-slot="root"
   >
-    <slot :model-value="modelValue" :open="open" />
+    <slot :model-value="modelValue" :open="Boolean(open)" />
   </Primitive>
 </template>

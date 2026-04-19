@@ -54,7 +54,7 @@ export interface DatePickerRootContext extends PropsToContext<DatePickerRootProp
   formatter: Formatter;
   hourCycle: HourCycle;
   step: ComputedRef<DateStep>;
-  open: ShallowRef<boolean>;
+  open: ShallowRef<boolean | undefined>;
   isPlaceholderFocusable: ComputedRef<boolean>;
   hasSelectedDate: ComputedRef<boolean>;
   isSelectedDateDisabled: ComputedRef<boolean>;

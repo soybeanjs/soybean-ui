@@ -55,7 +55,7 @@ export interface DateRangePickerRootContext extends PropsToContext<DateRangePick
   formatter: Formatter;
   hourCycle: HourCycle;
   step: ComputedRef<DateStep>;
-  open: ShallowRef<boolean>;
+  open: ShallowRef<boolean | undefined>;
   isPlaceholderFocusable: ComputedRef<boolean>;
   hasSelectedRange: ComputedRef<boolean>;
   isStartDateDisabled: ComputedRef<boolean>;
