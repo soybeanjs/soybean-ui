@@ -412,6 +412,7 @@ export const components = {
   ],
   textarea: ['TextareaRoot', 'TextareaControl', 'TextareaCounter'],
   timeField: ['TimeFieldRoot', 'TimeFieldInput'],
+  timeRangeField: ['TimeRangeFieldRoot', 'TimeRangeFieldInput'],
   toast: ['Toaster', 'ToastProvider'],
   toolbar: [
     'ToolbarRoot',

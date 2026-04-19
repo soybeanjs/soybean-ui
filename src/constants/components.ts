@@ -18,6 +18,7 @@ export const components = {
   dateRangeField: ['SDateRangeField'],
   dateRangePicker: ['SDateRangePicker'],
   timeField: ['STimeField'],
+  timeRangeField: ['STimeRangeField'],
   rangeCalendar: ['SRangeCalendar'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],

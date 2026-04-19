@@ -443,6 +443,8 @@ import {
   TextareaRoot,
   TimeFieldInput,
   TimeFieldRoot,
+  TimeRangeFieldRoot,
+  TimeRangeFieldInput,
   Toaster,
   ToastProvider,
   Toggle,
@@ -1605,6 +1607,14 @@ export const TimeField = {
 } as {
   Input: typeof TimeFieldInput;
   Root: typeof TimeFieldRoot;
+};
+
+export const TimeRangeField = {
+  Root: TimeRangeFieldRoot,
+  Input: TimeRangeFieldInput
+} as {
+  Root: typeof TimeRangeFieldRoot;
+  Input: typeof TimeRangeFieldInput;
 };
 
 export const Toast = {

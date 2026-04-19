@@ -61,6 +61,7 @@ export const menuData: MenuData[] = [
       'password',
       'textarea',
       'timeField',
+      'timeRangeField',
       'checkbox',
       'radioGroup',
       'segment',
