@@ -307,6 +307,9 @@ import {
   MenuSub,
   MenuSubContent,
   MenuSubTrigger,
+  MonthPickerPopup,
+  MonthPickerRoot,
+  MonthPickerTrigger,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
@@ -1247,6 +1250,16 @@ export const Menubar = {
   CheckboxGroup: typeof MenubarCheckboxGroup;
   RadioGroup: typeof MenubarRadioGroup;
   Compact: typeof MenubarCompact;
+};
+
+export const MonthPicker = {
+  Root: MonthPickerRoot,
+  Trigger: MonthPickerTrigger,
+  Popup: MonthPickerPopup
+} as {
+  Root: typeof MonthPickerRoot;
+  Trigger: typeof MonthPickerTrigger;
+  Popup: typeof MonthPickerPopup;
 };
 
 export const NavigationMenu = {

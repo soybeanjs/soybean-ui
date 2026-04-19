@@ -17,6 +17,7 @@ export const components = {
   datePicker: ['SDatePicker'],
   dateRangeField: ['SDateRangeField'],
   dateRangePicker: ['SDateRangePicker'],
+  monthPicker: ['SMonthPicker'],
   timeField: ['STimeField'],
   timeRangeField: ['STimeRangeField'],
   rangeCalendar: ['SRangeCalendar'],
