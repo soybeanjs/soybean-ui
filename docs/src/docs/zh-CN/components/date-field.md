@@ -53,7 +53,7 @@ custom-styling
   { name: 'required', type: 'boolean', default: 'false', description: '隐藏原生输入是否必填。' },
   { name: 'size', type: 'ThemeSize', default: '`md`', description: '默认视觉尺寸。' },
   { name: 'ui', type: 'Partial<DateFieldUi>', default: '{}', description: '覆盖内部 slot 类名。' },
-  { name: 'inputProps', type: '`Omit<DateFieldInputProps, \\'part\\'>`', default: '{}', description: '透传给每个可见片段项的 props。' }
+  { name: 'inputProps', type: `Omit<DateFieldInputProps, 'part'>`, default: '{}', description: '透传给每个可见片段项的 props。' }
 ]"/>
 
 ### 事件

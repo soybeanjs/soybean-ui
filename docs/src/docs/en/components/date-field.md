@@ -53,7 +53,7 @@ custom-styling
   { name: 'required', type: 'boolean', default: 'false', description: 'Whether the hidden native input is required.' },
   { name: 'size', type: 'ThemeSize', default: '`md`', description: 'Default visual size.' },
   { name: 'ui', type: 'Partial<DateFieldUi>', default: '{}', description: 'Override internal slot classes.' },
-  { name: 'inputProps', type: '`Omit<DateFieldInputProps, \\'part\\'>`', default: '{}', description: 'Props forwarded to every visible segment item.' }
+  { name: 'inputProps', type: `Omit<DateFieldInputProps, 'part'>`, default: '{}', description: 'Props forwarded to every visible segment item.' }
 ]"/>
 
 ### Emits
