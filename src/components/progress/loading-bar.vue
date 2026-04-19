@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount } from 'vue';
-import { transformPropsToContext } from '@soybeanjs/headless/shared';
+import { LoadingBar, provideProgressUi } from '@soybeanjs/headless/progress';
 import { mergeUi } from '@/theme';
-import SProgress from './progress.vue';
-import { provideLoadingBarProviderContext } from './context';
+import { useLoadingBar } from './context';
+import { progressVariants } from './variants';
 import type { LoadingBarProviderProps } from './types';
 
 defineOptions({
@@ -17,23 +17,53 @@ const props = withDefaults(defineProps<LoadingBarProviderProps>(), {
   ui: () => ({})
 });
 
-const defaultUi = {
-  root: 'pointer-events-none fixed inset-x-0 top-0 z-100 rounded-none bg-transparent shadow-none',
-  indicator: 'rounded-none shadow-sm transition-[transform,width] duration-200 ease-out'
+const indicatorColorClasses = {
+  primary: 'bg-primary',
+  destructive: 'bg-destructive',
+  success: 'bg-success',
+  warning: 'bg-warning',
+  info: 'bg-info',
+  carbon: 'bg-carbon',
+  secondary: 'bg-secondary-foreground/20',
+  accent: 'bg-accent-foreground/20'
 };
 
-const { clear, color, modelValue, visible } = provideLoadingBarProviderContext(
-  transformPropsToContext(props, ['color', 'errorColor'])
-);
+const indicatorErrorColorClasses = {
+  primary: 'data-[status=error]:bg-primary',
+  destructive: 'data-[status=error]:bg-destructive',
+  success: 'data-[status=error]:bg-success',
+  warning: 'data-[status=error]:bg-warning',
+  info: 'data-[status=error]:bg-info',
+  carbon: 'data-[status=error]:bg-carbon',
+  secondary: 'data-[status=error]:bg-secondary-foreground/20',
+  accent: 'data-[status=error]:bg-accent-foreground/20'
+};
 
-const ui = computed(() => mergeUi(defaultUi, props.ui));
+const ui = computed(() => {
+  const variants = progressVariants({
+    size: props.size
+  });
+
+  return mergeUi(
+    {
+      root: `${variants.root()} pointer-events-none fixed inset-x-0 top-0 z-100 rounded-none bg-transparent shadow-none`,
+      indicator: `${variants.indicator()} rounded-none shadow-sm transition-[transform,width] duration-200 ease-out ${
+        indicatorColorClasses[props.color]
+      } ${indicatorErrorColorClasses[props.errorColor]}`
+    },
+    props.ui
+  );
+});
+
+provideProgressUi(ui);
 
 onBeforeUnmount(() => {
-  clear();
+  useLoadingBar().clear();
 });
 </script>
 
 <template>
-  <SProgress v-if="visible" :model-value="modelValue" :color="color" :size="size" :ui="ui" aria-label="Loading" />
-  <slot />
+  <LoadingBar>
+    <slot />
+  </LoadingBar>
 </template>

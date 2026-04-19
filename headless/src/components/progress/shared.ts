@@ -1,4 +1,5 @@
 import { isNullish } from '../../shared';
+import type { Direction } from '../../types';
 import type { ProgressState } from './types';
 
 export const DEFAULT_MAX = 100;
@@ -53,6 +54,16 @@ export function getValidModelValue(value: number | null | undefined, maxValue: n
   }
 
   return value;
+}
+
+export function getProgressIndicatorStyle(valuePercent: number | null, direction: Direction = 'ltr') {
+  if (valuePercent === null) {
+    return undefined;
+  }
+
+  return {
+    transform: `translateX(${direction === 'rtl' ? 100 - valuePercent : -(100 - valuePercent)}%)`
+  };
 }
 
 export function getValidProgressCircleStrokeWidth(value: number | undefined) {

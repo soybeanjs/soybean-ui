@@ -33,6 +33,24 @@ export interface ProgressRootContext {
   valuePercent: ComputedRef<number | null>;
 }
 
+export type LoadingBarStatus = 'default' | 'error';
+
+export interface UseLoadingBarReturn {
+  start: () => void;
+  finish: () => void;
+  error: () => void;
+  set: (value: number) => void;
+  clear: () => void;
+}
+
+export interface LoadingBarSnapshot {
+  visible: boolean;
+  modelValue: number;
+  status: LoadingBarStatus;
+}
+
+export type LoadingBarSubscriber = (snapshot: LoadingBarSnapshot) => void;
+
 export type ProgressUiSlot = 'root' | 'indicator' | 'circle' | 'track' | 'label';
 
 export type ProgressUi = UiClass<ProgressUiSlot>;

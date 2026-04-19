@@ -97,7 +97,7 @@ import { SProgressCircle } from '@soybeanjs/ui';
 
 ## Loading Bar
 
-`useLoadingBar` controls a top loading bar built on `SProgress`. When your app is wrapped with `SConfigProvider`, the loading bar provider is mounted automatically. `SLoadingBar` is also exported for scoped usage inside an existing `SConfigProvider` tree when needed.
+`useLoadingBar` controls a top loading bar through a toast-style global headless state, so it can be called outside `setup`. When your app is wrapped with `SConfigProvider`, the loading bar view is mounted automatically. `SLoadingBar` is also exported for scoped usage inside an existing `SConfigProvider` tree when needed.
 
 ```vue
 <script setup lang="ts">

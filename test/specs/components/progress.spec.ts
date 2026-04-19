@@ -61,6 +61,7 @@ describe('SProgress', () => {
 
 describe('useLoadingBar', () => {
   afterEach(() => {
+    useLoadingBar().clear();
     vi.useRealTimers();
   });
 
@@ -105,6 +106,46 @@ describe('useLoadingBar', () => {
     wrapper.unmount();
   });
 
+  it('can be used before the loading bar provider mounts', async () => {
+    vi.useFakeTimers();
+
+    const loadingBar = useLoadingBar();
+
+    loadingBar.start();
+
+    const wrapper = mount(
+      {
+        components: { SConfigProvider },
+        template: `
+        <SConfigProvider>
+          <div />
+        </SConfigProvider>
+      `
+      },
+      {
+        attachTo: document.body
+      }
+    );
+
+    await nextTick();
+
+    const progressbar = document.body.querySelector('[role="progressbar"]');
+
+    expect(progressbar).not.toBeNull();
+    expect(progressbar?.getAttribute('aria-valuenow')).toBe('8');
+
+    loadingBar.finish();
+    await nextTick();
+
+    expect(progressbar?.getAttribute('aria-valuenow')).toBe('100');
+
+    await vi.advanceTimersByTimeAsync(200);
+    await nextTick();
+
+    expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
+    wrapper.unmount();
+  });
+
   it('switches to the error color when error is called', async () => {
     vi.useFakeTimers();
 
@@ -127,7 +168,11 @@ describe('useLoadingBar', () => {
     loadingBar.error();
     await nextTick();
 
-    expect(document.body.querySelector('.bg-destructive')).not.toBeNull();
+    const indicator = document.body.querySelector('[data-slot="indicator"]');
+
+    expect(indicator).not.toBeNull();
+    expect(indicator?.getAttribute('class')).toContain('data-[status=error]:bg-destructive');
+    expect(document.body.querySelector('[data-status="error"]')).not.toBeNull();
 
     await vi.advanceTimersByTimeAsync(200);
     await nextTick();

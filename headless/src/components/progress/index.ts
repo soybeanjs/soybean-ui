@@ -1,10 +1,16 @@
 export { default as ProgressRoot } from './progress-root.vue';
 export { default as ProgressIndicator } from './progress-indicator.vue';
 export { default as ProgressCircle } from './progress-circle.vue';
+export { default as LoadingBar } from './loading-bar.vue';
+
+export { useLoadingBar } from './state';
 
 export { provideProgressUi } from './context';
 
 export type {
+  LoadingBarSnapshot,
+  LoadingBarStatus,
+  LoadingBarSubscriber,
   ProgressRootProps,
   ProgressRootEmits,
   ProgressIndicatorProps,
@@ -12,5 +18,6 @@ export type {
   ProgressRootContext,
   ProgressState,
   ProgressUiSlot,
-  ProgressUi
+  ProgressUi,
+  UseLoadingBarReturn
 } from './types';
