@@ -13,6 +13,6 @@ const value = shallowRef({
 <template>
   <div class="flex-c gap-3">
     <h3 class="playground-title">Basic</h3>
-    <SMonthRangePicker v-model="value" aria-label="Billing quarter" />
+    <SMonthRangePicker v-model="value" class="w-90 lt-md:w-auto" aria-label="Billing quarter" />
   </div>
 </template>

@@ -5,6 +5,6 @@ import { SDateRangePicker } from '@soybeanjs/ui';
 <template>
   <div>
     <h3 class="playground-title">Disabled</h3>
-    <SDateRangePicker disabled />
+    <SDateRangePicker class="w-90 lt-md:w-auto" disabled />
   </div>
 </template>

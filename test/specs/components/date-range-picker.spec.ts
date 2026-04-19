@@ -138,14 +138,24 @@ describe('SDateRangePicker', () => {
   describe('modelValue', () => {
     it('emits update:modelValue when range changes', async () => {
       const wrapper = mount(SDateRangePicker, {
+        props: {
+          defaultPlaceholder: new CalendarDate(2026, 4, 18)
+        },
         attachTo: document.body
       });
 
       const trigger = wrapper.find('[data-slot="trigger"]');
 
       await trigger.trigger('click');
+      await wrapper.get('[data-value="2026-04-18"]').trigger('click');
+      await wrapper.get('[data-value="2026-04-20"]').trigger('click');
 
-      expect(wrapper.emitted('update:modelValue')).toBeFalsy();
+      const emitted = wrapper.emitted('update:modelValue');
+
+      expect(emitted).toBeTruthy();
+      expect(((emitted as NonNullable<typeof emitted>)[0][0] as { start?: CalendarDate; end?: CalendarDate }).start?.toString()).toBe('2026-04-18');
+      expect(((emitted as NonNullable<typeof emitted>)[1][0] as { start?: CalendarDate; end?: CalendarDate }).end?.toString()).toBe('2026-04-20');
+      expect(wrapper.find('[data-slot="popup"]').exists()).toBe(false);
 
       wrapper.unmount();
     });

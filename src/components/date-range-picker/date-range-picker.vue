@@ -7,6 +7,7 @@ import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composabl
 import { mergeSlotVariants } from '@/theme';
 
 import Icon from '../icon/icon.vue';
+import SRangeCalendar from '../range-calendar/range-calendar.vue';
 
 import { dateRangePickerVariants } from './variants';
 import type { DateRangePickerEmits, DateRangePickerProps, DateRangePickerSlots } from './types';
@@ -53,10 +54,22 @@ const formatDateRange = (range: { start?: any; end?: any }) => {
       </slot>
     </DateRangePickerTrigger>
     <DateRangePickerPopup v-bind="popupProps">
-      <slot name="calendar" :model-value="slotProps.modelValue">
-        <div :class="ui.calendar" data-slot="calendar">
-          {{ formatDateRange(slotProps.modelValue) ?? 'Pick a start and end date' }}
-        </div>
+      <slot name="calendar" :model-value="slotProps.modelValue" :placeholder="slotProps.placeholder">
+        <SRangeCalendar
+          :class="ui.calendar"
+          :model-value="slotProps.modelValue"
+          :placeholder="slotProps.placeholder"
+          :locale="forwardedProps.locale"
+          :dir="forwardedProps.dir"
+          :disabled="forwardedProps.disabled"
+          :readonly="forwardedProps.readonly"
+          :min-value="forwardedProps.minValue"
+          :max-value="forwardedProps.maxValue"
+          :is-date-unavailable="forwardedProps.isDateUnavailable"
+          data-slot="calendar"
+          @update:model-value="slotProps.setRange"
+          @update:placeholder="slotProps.setPlaceholder"
+        />
       </slot>
     </DateRangePickerPopup>
     <slot v-bind="slotProps" />

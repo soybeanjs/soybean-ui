@@ -15,6 +15,7 @@ const value = shallowRef({
     <h3 class="playground-title">Custom styling</h3>
     <SYearRangePicker
       v-model="value"
+      class="w-90 lt-md:w-auto"
       aria-label="Styled project year range"
       :ui="{
         trigger: 'border-primary/40 bg-primary/4',

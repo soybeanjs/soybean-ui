@@ -12,6 +12,6 @@ const value = shallowRef({
 <template>
   <div class="flex-c gap-3">
     <h3 class="playground-title">Basic</h3>
-    <STimeRangeField v-model="value" aria-label="Working hours" />
+    <STimeRangeField v-model="value" class="w-90 lt-md:w-auto" aria-label="Working hours" />
   </div>
 </template>

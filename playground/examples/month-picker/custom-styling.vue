@@ -12,6 +12,7 @@ const value = shallowRef(new CalendarDate(2026, 10, 1));
     <h3 class="playground-title">Custom styling</h3>
     <SMonthPicker
       v-model="value"
+      class="w-60 lt-md:w-auto"
       aria-label="Styled billing month"
       :ui="{
         trigger: 'border-primary/40 bg-primary/4',

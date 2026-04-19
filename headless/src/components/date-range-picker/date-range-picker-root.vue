@@ -40,12 +40,15 @@ const props = withDefaults(defineProps<DateRangePickerRootProps>(), {
 
 const emit = defineEmits<DateRangePickerRootEmits>();
 
-defineSlots<{
-  default?: (props: {
-    modelValue: DateRange;
-    open: boolean;
-  }) => any;
-}>();
+ defineSlots<{
+   default?: (props: {
+     modelValue: DateRange;
+     placeholder: DateValue;
+     setPlaceholder: (date: DateValue) => void;
+     setRange: (range: DateRange) => void;
+     open: boolean;
+   }) => any;
+ }>();
 
 const cls = useDateRangePickerUi('root');
 const [_, setRootElement] = useForwardElement();
@@ -287,6 +290,12 @@ provideDateRangePickerRootContext({
     :dir="dir"
     data-slot="root"
   >
-    <slot :model-value="modelValue" :open="Boolean(open)" />
+    <slot
+      :model-value="modelValue"
+      :open="Boolean(open)"
+      :placeholder="placeholder"
+      :set-placeholder="onPlaceholderChange"
+      :set-range="onRangeChange"
+    />
   </Primitive>
 </template>

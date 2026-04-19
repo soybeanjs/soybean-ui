@@ -10,6 +10,6 @@ const selectedDate = ref<any>();
 <template>
   <div>
     <h3 class="playground-title">Disabled</h3>
-    <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" disabled />
+    <SDatePicker v-model="selectedDate" class="w-60 lt-md:w-auto" :default-placeholder="new CalendarDate(2024, 1, 1)" disabled />
   </div>
 </template>

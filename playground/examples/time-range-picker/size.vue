@@ -14,7 +14,7 @@ const sizes = ['xs', 'sm', 'md', 'lg'] as const;
   <div class="flex-c gap-3">
     <h3 class="playground-title">Size</h3>
     <div class="flex flex-wrap gap-3">
-      <STimeRangePicker v-for="size in sizes" :key="size" :default-value="value" :size="size" aria-label="Working hours" />
+      <STimeRangePicker v-for="size in sizes" :key="size" class="w-90 lt-md:w-auto" :default-value="value" :size="size" aria-label="Working hours" />
     </div>
   </div>
 </template>

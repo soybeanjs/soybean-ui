@@ -14,6 +14,7 @@ const value = shallowRef({
     <h3 class="playground-title">Custom styling</h3>
     <STimeRangeField
       v-model="value"
+      class="w-90 lt-md:w-auto"
       aria-label="Styled time range"
       :ui="{
         root: 'rounded-xl border-primary/40 bg-primary/4',

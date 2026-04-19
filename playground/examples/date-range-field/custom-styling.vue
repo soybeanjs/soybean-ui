@@ -14,8 +14,8 @@ const value = shallowRef({
     <h3 class="playground-title">Custom Styling</h3>
     <SDateRangeField
       v-model="value"
+      class="w-100 lt-md:w-auto"
       size="lg"
-      class="max-w-100"
       separator="→"
       aria-label="Styled date range"
       :ui="{

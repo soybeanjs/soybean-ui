@@ -6,12 +6,12 @@ import { SDateRangePicker } from '@soybeanjs/ui';
   <div>
     <h3 class="playground-title">Size</h3>
     <div class="flex flex-col gap-4">
-      <SDateRangePicker size="xs" />
-      <SDateRangePicker size="sm" />
-      <SDateRangePicker size="md" />
-      <SDateRangePicker size="lg" />
-      <SDateRangePicker size="xl" />
-      <SDateRangePicker size="2xl" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="xs" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="sm" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="md" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="lg" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="xl" />
+      <SDateRangePicker class="w-90 lt-md:w-auto" size="2xl" />
     </div>
   </div>
 </template>

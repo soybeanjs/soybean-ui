@@ -66,6 +66,30 @@ describe('SCalendar', () => {
       expect(((emitted as NonNullable<typeof emitted>)[0][0] as CalendarDate).toString()).toBe('2026-04-20');
       wrapper.unmount();
     });
+
+    it('updates multiple selection when a date is clicked', async () => {
+      const wrapper = mount(SCalendar, {
+        props: {
+          multiple: true,
+          defaultPlaceholder: new CalendarDate(2026, 4, 18),
+          modelValue: [new CalendarDate(2026, 4, 18), new CalendarDate(2026, 4, 21)]
+        },
+        attachTo: document.body
+      });
+
+      await wrapper.get('[data-value="2026-04-20"]').trigger('click');
+
+      const emitted = wrapper.emitted('update:modelValue');
+
+      expect(emitted).toBeTruthy();
+      expect(((emitted as NonNullable<typeof emitted>)[0][0] as CalendarDate[]).map(date => date.toString())).toEqual([
+        '2026-04-18',
+        '2026-04-21',
+        '2026-04-20'
+      ]);
+
+      wrapper.unmount();
+    });
   });
 
   describe('disabled state', () => {

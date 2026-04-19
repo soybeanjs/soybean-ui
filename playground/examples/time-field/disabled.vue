@@ -8,6 +8,6 @@ const value = new Time(8, 0, 0);
 <template>
   <div class="flex-c gap-3">
     <h3 class="playground-title">Disabled</h3>
-    <STimeField :model-value="value" disabled aria-label="Disabled time" />
+    <STimeField class="w-60 lt-md:w-auto" :model-value="value" disabled aria-label="Disabled time" />
   </div>
 </template>
