@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { DateValue } from '@internationalized/date';
 
-import { computed, shallowRef, watch } from 'vue';
+import { computed, watch } from 'vue';
 
 import { useControllableState, useForwardElement } from '../../composables';
 import {
   getDefaultDate,
-  hasTime,
   isBefore,
   normalizeDateStep,
   normalizeHourCycle,
@@ -49,7 +48,7 @@ defineSlots<{
 }>();
 
 const cls = useDatePickerUi('root');
-const [rootElement, setRootElement] = useForwardElement();
+const [_, setRootElement] = useForwardElement();
 
 const locale = useLocale(() => props.locale);
 const dir = useDirection(() => props.dir);
@@ -76,21 +75,15 @@ const placeholder = useControllableState<DateValue>(
   props.defaultPlaceholder ?? defaultDate.copy()
 );
 
-const open = useControllableState<boolean>(
-  () => props.open ?? false,
-  value => emit('update:open', value),
+const open = useControllableState(
+  () => props.open,
+  value => {
+    emit('update:open', value ?? false);
+  },
   props.defaultOpen
 );
 
 const step = computed(() => normalizeDateStep(props));
-
-const inferredGranularity = computed(() => {
-  if (props.granularity) {
-    return hasTime(placeholder.value) ? props.granularity : 'day';
-  }
-
-  return hasTime(placeholder.value) ? 'minute' : 'day';
-});
 
 const isInvalid = computed(() => {
   if (!modelValue.value) {
@@ -218,6 +211,6 @@ provideDatePickerRootContext({
     :dir="dir"
     data-slot="root"
   >
-    <slot :model-value="modelValue" :open="open" />
+    <slot :model-value="modelValue" :open="Boolean(open)" />
   </Primitive>
 </template>
