@@ -18,36 +18,15 @@ const props = withDefaults(defineProps<LoadingBarProviderProps>(), {
 });
 
 const indicatorColorClasses = {
-  primary: 'bg-primary',
-  destructive: 'bg-destructive',
-  success: 'bg-success',
-  warning: 'bg-warning',
-  info: 'bg-info',
-  carbon: 'bg-carbon',
-  secondary: 'bg-secondary-foreground/20',
-  accent: 'bg-accent-foreground/20'
+  primary: ['bg-primary', 'data-[status=error]:bg-primary'],
+  destructive: ['bg-destructive', 'data-[status=error]:bg-destructive'],
+  success: ['bg-success', 'data-[status=error]:bg-success'],
+  warning: ['bg-warning', 'data-[status=error]:bg-warning'],
+  info: ['bg-info', 'data-[status=error]:bg-info'],
+  carbon: ['bg-carbon', 'data-[status=error]:bg-carbon'],
+  secondary: ['bg-secondary-foreground/20', 'data-[status=error]:bg-secondary-foreground/20'],
+  accent: ['bg-accent-foreground/20', 'data-[status=error]:bg-accent-foreground/20']
 };
-
-function getIndicatorErrorColorClass(color: keyof typeof indicatorColorClasses) {
-  switch (color) {
-    case 'primary':
-      return 'data-[status=error]:bg-primary';
-    case 'destructive':
-      return 'data-[status=error]:bg-destructive';
-    case 'success':
-      return 'data-[status=error]:bg-success';
-    case 'warning':
-      return 'data-[status=error]:bg-warning';
-    case 'info':
-      return 'data-[status=error]:bg-info';
-    case 'carbon':
-      return 'data-[status=error]:bg-carbon';
-    case 'secondary':
-      return 'data-[status=error]:bg-secondary-foreground/20';
-    case 'accent':
-      return 'data-[status=error]:bg-accent-foreground/20';
-  }
-}
 
 const ui = computed(() => {
   const variants = progressVariants({
@@ -60,8 +39,8 @@ const ui = computed(() => {
       indicator: [
         variants.indicator(),
         'rounded-none shadow-sm transition-[transform,width] duration-200 ease-out',
-        indicatorColorClasses[props.color],
-        getIndicatorErrorColorClass(props.errorColor)
+        indicatorColorClasses[props.color][0],
+        indicatorColorClasses[props.errorColor][1]
       ].join(' ')
     },
     props.ui

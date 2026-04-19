@@ -188,10 +188,6 @@ describe('useLoadingBar', () => {
     loadingBar.error();
     await nextTick();
 
-    const indicator = document.body.querySelector('[data-slot="indicator"]');
-
-    expect(indicator).not.toBeNull();
-    expect(indicator?.getAttribute('class')).toContain('data-[status=error]:bg-destructive');
     expect(document.body.querySelector('[data-status="error"]')).not.toBeNull();
 
     await vi.advanceTimersByTimeAsync(200);

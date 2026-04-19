@@ -30,140 +30,146 @@ function createSnapshot(snapshot: LoadingBarSnapshot = INITIAL_LOADING_BAR_SNAPS
   };
 }
 
-class LoadingBarObserver {
-  private subscribers: LoadingBarSubscriber[] = [];
-  private snapshot: LoadingBarSnapshot = createSnapshot();
-  private trickleTimerId: ReturnType<typeof setInterval> | undefined;
-  private resetTimerId: ReturnType<typeof setTimeout> | undefined;
+function createLoadingBarObserver() {
+  let subscribers: LoadingBarSubscriber[] = [];
+  let snapshot: LoadingBarSnapshot = createSnapshot();
+  let trickleTimerId: ReturnType<typeof setInterval> | undefined;
+  let resetTimerId: ReturnType<typeof setTimeout> | undefined;
 
-  subscribe = (subscriber: LoadingBarSubscriber) => {
-    this.subscribers.push(subscriber);
+  const subscribe = (subscriber: LoadingBarSubscriber) => {
+    subscribers.push(subscriber);
 
     return () => {
-      const index = this.subscribers.indexOf(subscriber);
+      const index = subscribers.indexOf(subscriber);
 
       if (index >= 0) {
-        this.subscribers.splice(index, 1);
+        subscribers.splice(index, 1);
       }
     };
   };
 
-  getSnapshot = () => createSnapshot(this.snapshot);
+  const getSnapshot = () => createSnapshot(snapshot);
 
-  start = () => {
-    this.clearResetTimer();
-    this.setSnapshot({
-      visible: true,
-      status: 'default',
-      modelValue: Math.max(this.snapshot.modelValue, START_VALUE)
-    });
-    this.startTrickling();
+  const publish = () => {
+    const nextSnapshot = getSnapshot();
+
+    subscribers.forEach(subscriber => subscriber(nextSnapshot));
   };
 
-  finish = () => {
-    this.clearTrickleTimer();
-    this.clearResetTimer();
-    this.setSnapshot({
+  const setSnapshot = (nextSnapshot: Partial<LoadingBarSnapshot>) => {
+    snapshot = {
+      ...snapshot,
+      ...nextSnapshot
+    };
+    publish();
+  };
+
+  const clearTrickleTimer = () => {
+    if (!trickleTimerId) return;
+
+    clearInterval(trickleTimerId);
+    trickleTimerId = undefined;
+  };
+
+  const clearResetTimer = () => {
+    if (!resetTimerId) return;
+
+    clearTimeout(resetTimerId);
+    resetTimerId = undefined;
+  };
+
+  const clearTimers = () => {
+    clearTrickleTimer();
+    clearResetTimer();
+  };
+
+  const reset = () => {
+    clearTimers();
+    snapshot = createSnapshot();
+    publish();
+  };
+
+  const scheduleReset = () => {
+    clearResetTimer();
+    resetTimerId = setTimeout(() => {
+      resetTimerId = undefined;
+      reset();
+    }, RESET_DELAY);
+  };
+
+  const startTrickling = () => {
+    clearTrickleTimer();
+
+    trickleTimerId = setInterval(() => {
+      if (snapshot.modelValue >= MAX_TRICKLE_VALUE) {
+        clearTrickleTimer();
+        return;
+      }
+
+      setSnapshot({
+        modelValue: clampValue(snapshot.modelValue + getStep(snapshot.modelValue))
+      });
+    }, TRICKLE_INTERVAL);
+  };
+
+  const start = () => {
+    clearResetTimer();
+    setSnapshot({
+      visible: true,
+      status: 'default',
+      modelValue: Math.max(snapshot.modelValue, START_VALUE)
+    });
+    startTrickling();
+  };
+
+  const finish = () => {
+    clearTrickleTimer();
+    clearResetTimer();
+    setSnapshot({
       visible: true,
       status: 'default',
       modelValue: 100
     });
-    this.scheduleReset();
+    scheduleReset();
   };
 
-  error = () => {
-    this.clearTrickleTimer();
-    this.clearResetTimer();
-    this.setSnapshot({
+  const error = () => {
+    clearTrickleTimer();
+    clearResetTimer();
+    setSnapshot({
       visible: true,
       status: 'error',
       modelValue: 100
     });
-    this.scheduleReset();
+    scheduleReset();
   };
 
-  set = (value: number) => {
-    this.clearResetTimer();
-    this.clearTrickleTimer();
-    this.setSnapshot({
+  const set = (value: number) => {
+    clearResetTimer();
+    clearTrickleTimer();
+    setSnapshot({
       visible: true,
       status: 'default',
       modelValue: clampValue(value)
     });
 
-    if (this.snapshot.modelValue >= 100) {
-      this.scheduleReset();
+    if (snapshot.modelValue >= 100) {
+      scheduleReset();
     }
   };
 
-  clear = () => {
-    this.reset();
+  return {
+    subscribe,
+    getSnapshot,
+    start,
+    finish,
+    error,
+    set,
+    clear: reset
   };
-
-  private publish() {
-    const snapshot = this.getSnapshot();
-
-    this.subscribers.forEach(subscriber => subscriber(snapshot));
-  }
-
-  private setSnapshot(snapshot: Partial<LoadingBarSnapshot>) {
-    this.snapshot = {
-      ...this.snapshot,
-      ...snapshot
-    };
-    this.publish();
-  }
-
-  private reset() {
-    this.clearTimers();
-    this.snapshot = createSnapshot();
-    this.publish();
-  }
-
-  private clearTrickleTimer() {
-    if (!this.trickleTimerId) return;
-
-    clearInterval(this.trickleTimerId);
-    this.trickleTimerId = undefined;
-  }
-
-  private clearResetTimer() {
-    if (!this.resetTimerId) return;
-
-    clearTimeout(this.resetTimerId);
-    this.resetTimerId = undefined;
-  }
-
-  private clearTimers() {
-    this.clearTrickleTimer();
-    this.clearResetTimer();
-  }
-
-  private scheduleReset() {
-    this.clearResetTimer();
-    this.resetTimerId = setTimeout(() => {
-      this.resetTimerId = undefined;
-      this.reset();
-    }, RESET_DELAY);
-  }
-
-  private startTrickling() {
-    this.clearTrickleTimer();
-
-    this.trickleTimerId = setInterval(() => {
-      if (this.snapshot.modelValue >= MAX_TRICKLE_VALUE) {
-        this.clearTrickleTimer();
-        return;
-      }
-
-      this.setSnapshot({
-        modelValue: clampValue(this.snapshot.modelValue + getStep(this.snapshot.modelValue))
-      });
-    }, TRICKLE_INTERVAL);
-  }
 }
 
-export const loadingBarObserver = new LoadingBarObserver();
+export const loadingBarObserver = createLoadingBarObserver();
 
 const loadingBar: UseLoadingBarReturn = {
   start: () => loadingBarObserver.start(),
