@@ -252,7 +252,7 @@ watch(
       </button>
       <div :id="headingId" :class="headingCls" data-slot="heading">
         <slot name="heading" :heading-value="rootContext.headingValue.value">
-          {{ rootContext.headingValue.value }}
+          {{ rootContext.headingValue }}
         </slot>
       </div>
       <button
