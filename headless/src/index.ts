@@ -74,6 +74,7 @@ export * from './components/tabs';
 export * from './components/tag';
 export * from './components/tags-input';
 export * from './components/time-field';
+export * from './components/time-range-field';
 export * from './components/textarea';
 export * from './components/toast';
 export * from './components/toolbar';
