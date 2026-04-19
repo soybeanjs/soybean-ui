@@ -156,6 +156,7 @@ export const components = {
     'ContextMenuWrapperCompact'
   ],
   dateField: ['DateFieldRoot', 'DateFieldInput'],
+  datePicker: ['DatePickerRoot', 'DatePickerTrigger', 'DatePickerPopup'],
   dialog: [
     'DialogCompact',
     'DialogProvider',

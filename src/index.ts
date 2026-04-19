@@ -13,6 +13,7 @@ export * from './components/breadcrumb';
 export * from './components/button';
 export * from './components/calendar';
 export * from './components/date-field';
+export * from './components/date-picker';
 export * from './components/card';
 export * from './components/carousel';
 export * from './components/checkbox';
