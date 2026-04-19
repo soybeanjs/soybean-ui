@@ -4,16 +4,16 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const dateRangePickerVariants = tv({
   slots: {
-    root: 'relative inline-flex w-full flex-col gap-2',
+    root: 'inline-flex w-full flex-col gap-2',
     trigger: [
-      'inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-3 transition-all-150',
-      'hover:bg-accent hover:text-accent-foreground',
+      'inline-flex w-full items-center justify-start gap-2 rounded-md border border-input bg-background px-3 py-0 text-start font-normal shadow-xs transition-[background-color,color,box-shadow]',
+      'hover:bg-accent/50 hover:text-accent-foreground',
       'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
       'data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none',
-      'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground'
+      'data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground'
     ],
     popup: [
-      'z-50 rounded-md border border-border bg-popover p-3 text-popover-foreground shadow-lg',
+      'z-50 overflow-hidden rounded-lg border border-border bg-popover p-0 text-popover-foreground shadow-md',
       'data-[state=open]:animate-in data-[state=closed]:animate-out',
       'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95'
@@ -24,7 +24,7 @@ export const dateRangePickerVariants = tv({
       'data-[segment=literal]:min-w-0 data-[segment=literal]:px-0 data-[segment=literal]:text-muted-foreground',
       'data-[segment=timeZoneName]:min-w-fit data-[segment=timeZoneName]:px-1 data-[segment=timeZoneName]:text-muted-foreground',
       'data-[placeholder]:text-muted-foreground',
-      'focus-visible:bg-accent/60 focus-visible:ring-2 focus-visible:ring-primary/20',
+      'focus-visible:bg-accent focus-visible:text-accent-foreground focus-visible:ring-2 focus-visible:ring-primary/20',
       'data-[disabled]:cursor-not-allowed data-[readonly]:cursor-default'
     ],
     calendar: ''

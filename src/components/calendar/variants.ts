@@ -3,31 +3,33 @@ import { tv } from 'tailwind-variants';
 
 export const calendarVariants = tv({
   slots: {
-    root: 'inline-flex flex-col gap-4 text-sm',
-    header: 'grid grid-cols-[auto_1fr_auto] items-center gap-2',
+    root: 'inline-flex flex-col gap-4 p-3 text-sm',
+    header: 'grid grid-cols-[auto_1fr_auto] items-center gap-1',
     heading: 'text-center font-medium',
     prev: [
-      'inline-flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors',
-      'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/30',
+      'inline-flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-foreground transition-colors',
+      'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
     next: [
-      'inline-flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background text-foreground transition-colors',
-      'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/30',
+      'inline-flex h-8 w-8 items-center justify-center rounded-md border border-transparent bg-transparent text-foreground transition-colors',
+      'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
     grid: 'inline-table border-collapse me-4 last:me-0',
     gridHead: '',
     gridBody: '',
     gridRow: '',
-    headCell: 'h-9 w-9 p-0 text-center text-xs font-normal text-muted-foreground',
-    cell: 'h-9 w-9 p-0 text-center align-middle',
+    headCell: 'h-9 w-9 rounded-md p-0 text-center text-xs font-normal text-muted-foreground',
+    cell: 'h-9 w-9 flex-1 p-0 text-center align-middle text-sm focus-within:relative focus-within:z-20 [&:has([data-selected])]:rounded-md [&:has([data-selected])]:bg-accent',
     cellTrigger: [
-      'inline-flex h-9 w-9 items-center justify-center rounded-md text-sm transition-colors',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/30',
-      'data-[selected]:bg-primary data-[selected]:font-medium data-[selected]:text-primary-foreground',
-      'data-[today]:font-semibold data-[outside-view]:text-muted-foreground',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md p-0 text-sm font-normal transition-colors',
+      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
+      '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
+      'data-[selected]:bg-primary data-[selected]:font-medium data-[selected]:text-primary-foreground data-[selected]:opacity-100',
+      '[&[data-selected]:hover]:bg-primary data-[selected]:hover:text-primary-foreground data-[selected]:focus-visible:bg-primary data-[selected]:focus-visible:text-primary-foreground',
+      'hover:bg-accent hover:text-accent-foreground data-[outside-view]:text-muted-foreground',
+      'data-[disabled]:pointer-events-none data-[disabled]:text-muted-foreground data-[disabled]:opacity-50',
       'data-[unavailable]:line-through'
     ]
   },

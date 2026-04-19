@@ -4,24 +4,29 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const timeRangePickerVariants = tv({
   slots: {
-    root: 'relative inline-flex w-full flex-col gap-2',
+    root: 'inline-flex w-full flex-col gap-2',
     trigger: [
-      'inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-3 transition-all-150',
-      'hover:bg-accent hover:text-accent-foreground',
+      'inline-flex w-full items-center justify-start gap-2 rounded-md border border-input bg-background px-3 py-0 text-start font-normal shadow-xs transition-[background-color,color,box-shadow]',
+      'hover:bg-accent/50 hover:text-accent-foreground',
       'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
       'data-[disabled]:pointer-events-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-60',
-      'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground'
+      'data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground'
     ],
-    popup: 'z-50 w-72 rounded-md border border-border bg-popover p-2 text-popover-foreground shadow-lg',
+    popup: [
+      'z-50 w-72 overflow-hidden rounded-lg border border-border bg-popover p-2 text-popover-foreground shadow-md',
+      'data-[state=open]:animate-in data-[state=closed]:animate-out',
+      'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+      'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95'
+    ],
     list: 'max-h-72 flex flex-col gap-1 overflow-y-auto',
     cellTrigger: [
-      'inline-flex min-h-8 items-center rounded-md px-3 text-start text-sm font-medium transition-colors',
+      'inline-flex min-h-8 w-full cursor-pointer items-center rounded-md px-3 text-start text-sm font-normal transition-colors',
       'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
-      'data-[selected]:bg-primary/12 data-[selected]:text-primary',
+      'data-[selected]:bg-accent data-[selected]:text-foreground',
       'data-[range-start]:bg-primary data-[range-start]:text-primary-foreground',
       'data-[range-end]:bg-primary data-[range-end]:text-primary-foreground',
-      'data-[highlighted]:bg-primary/8 data-[highlighted]:text-foreground',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-40',
+      'data-[highlighted]:bg-accent/80 data-[highlighted]:text-foreground',
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'data-[focused]:ring-2 data-[focused]:ring-primary/20'
     ]
   },
