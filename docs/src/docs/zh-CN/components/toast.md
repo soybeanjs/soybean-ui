@@ -69,7 +69,7 @@ position
   { name: 'position', type: 'ToastPosition', default: '继承 `Toaster.position`', description: '单条通知的显示位置覆盖。' },
   { name: 'duration', type: 'number', default: '继承 `Toaster.duration`', description: '自动关闭时长，单位为毫秒。设置为 `0` 或 `Infinity` 可禁用自动关闭。' },
   { name: 'description', type: 'VNode | string', default: '-', description: '显示在标题下方的辅助说明内容。' },
-  { name: 'icon', type: 'VNode | string', default: '-', description: '自定义前置图标。字符串值会通过 `iconRender` 解析。' },
+  { name: 'icon', type: 'IconValue', default: '-', description: '自定义前置图标。字符串值会通过 `iconRender` 解析。' },
   { name: 'content', type: 'VNode', default: '-', description: '在内置布局中追加渲染的自定义内容。' },
   { name: 'action', type: 'VNode | string', default: '-', description: '页脚主操作。字符串值会通过 `buttonRender` 解析。' },
   { name: 'cancel', type: 'VNode | string', default: '-', description: '页脚次操作。字符串值会通过 `buttonRender` 解析。' },
@@ -77,7 +77,6 @@ position
   { name: 'onCancel', type: '(event: MouseEvent) => void', default: '-', description: '点击 cancel 按钮时触发。' },
   { name: 'dismissible', type: 'boolean', default: 'true', description: '是否允许滑动关闭和手动关闭。' },
   { name: 'showClose', type: 'boolean', default: '继承 `Toaster.showClose`', description: '是否为当前通知显示关闭按钮。' },
-  { name: 'close', type: 'VNode | string', default: '-', description: '自定义关闭图标或节点。' },
   { name: 'richColor', type: 'boolean', default: 'false', description: '为 info、success、warning、error 通知启用语义化填充色样式。' },
   { name: 'inverted', type: 'boolean', default: 'false', description: '使用反色通知样式。' },
   { name: 'ui', type: 'Partial<ToastUi>', default: '-', description: '覆盖当前通知各个 slot 的类名。' },
@@ -116,9 +115,7 @@ position
   { name: 'swipeDirections', type: 'SwipeDirection[]', default: '根据位置自动推断', description: '允许用于关闭通知的滑动方向。' },
   { name: 'showIcon', type: 'boolean', default: '`true`', description: '内置通知是否默认显示类型图标。' },
   { name: 'showClose', type: 'boolean', default: '`true`', description: '内置通知是否默认显示关闭按钮。' },
-  { name: 'icons', type: 'Partial<Record<ToastIconType, VNode | string>>', default: '内置图标映射', description: '覆盖 `info`、`success`、`warning`、`error`、`loading` 和 `close` 的默认图标。' },
-  { name: 'iconRender', type: '(name: string) => VNode', default: '渲染 `SIcon`', description: '将字符串图标值转换为实际渲染节点。' },
-  { name: 'buttonRender', type: '(label: string, type: \`action\` | \`cancel\`) => VNode', default: '渲染 `SButton`', description: '将字符串形式的 `action` 和 `cancel` 转换为按钮节点。' },
+  { name: 'icons', type: 'Partial<Record<ToastIconType, IconValue>>', default: '内置图标映射', description: '覆盖 `info`、`success`、`warning`、`error`、`loading` 和 `close` 的默认图标。' },
   { name: 'toastProps / wrapperProps / contentProps / titleProps / descriptionProps / iconProps / footerProps / actionProps / cancelProps / closeProps', type: 'HTMLAttributes / LiHTMLAttributes', default: '-', description: '透传给内置通知各个 slot 的属性。' }
 ]"/>
 

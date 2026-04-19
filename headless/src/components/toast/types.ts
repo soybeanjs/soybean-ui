@@ -1,5 +1,6 @@
 import type { VNode, OlHTMLAttributes, LiHTMLAttributes, HTMLAttributes, ShallowRef, ComputedRef } from 'vue';
 import type { Direction, Side, SwipeDirection, PropsToContext, UiClass } from '../../types';
+import type { IconValue } from '../icon/types';
 
 export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
 
@@ -29,13 +30,12 @@ export interface ToastT {
   dismissible?: boolean;
   title?: VNode | string;
   description?: VNode | string;
-  icon?: VNode | string;
+  icon?: IconValue;
   content?: VNode;
   action?: VNode | string;
   cancel?: VNode | string;
   onAction?: (event: MouseEvent) => void;
   onCancel?: (event: MouseEvent) => void;
-  close?: VNode | string;
   showClose?: boolean;
   delete?: boolean;
   custom?: VNode;
@@ -98,23 +98,7 @@ export interface ToasterProps extends /** @vue-ignore */ OlHTMLAttributes {
    * @default true
    */
   showClose?: boolean;
-  icons?: Partial<Record<ToastIconType, VNode | string>>;
-  /**
-   * When provide string value for icon, the `iconRender` function will be called to get the icon node.
-   *
-   * [当图标提供字符串值时，将调用 `iconRender` 函数以获取图标节点。]
-   *
-   * @param name The name of the icon, which is the string value provided for the icon. [图标的名称，即为提供给图标的字符串值。]
-   */
-  iconRender?: (name: string) => VNode;
-  /**
-   * When `action` or `cancel` is a string, the `buttonRender` function will be called to get the node for them.
-   *
-   * [当 `action` 或 `cancel` 是字符串时，将调用 `buttonRender` 函数以获取它们的节点。]
-   * @param label The label of the button. [按钮的标签。]
-   * @param type The type of the button, either 'action' or 'cancel'. [按钮的类型，'action' 或 'cancel'。]
-   */
-  buttonRender?: (label: string, type: 'action' | 'cancel') => VNode;
+  icons?: Partial<Record<ToastIconType, IconValue>>;
   toastProps?: LiHTMLAttributes;
   wrapperProps?: HTMLAttributes;
   contentProps?: HTMLAttributes;
@@ -150,31 +134,28 @@ export type ToastPromiseData<ToastData = any> = Omit<ToastExternal, 'description
   finally?: () => void | Promise<void>;
 };
 
-export interface ToasterContext
-  extends
-    PropsToContext<
-      ToasterProps & Required<Pick<ToasterProps, 'gap' | 'duration' | 'visibleCounts'>>,
-      | 'dir'
-      | 'gap'
-      | 'duration'
-      | 'visibleCounts'
-      | 'defaultExpanded'
-      | 'swipeDirections'
-      | 'showIcon'
-      | 'showClose'
-      | 'icons'
-      | 'toastProps'
-      | 'wrapperProps'
-      | 'contentProps'
-      | 'titleProps'
-      | 'descriptionProps'
-      | 'iconProps'
-      | 'footerProps'
-      | 'actionProps'
-      | 'cancelProps'
-      | 'closeProps'
-    >,
-    Pick<ToasterProps, 'iconRender' | 'buttonRender'> {
+export interface ToasterContext extends PropsToContext<
+  ToasterProps & Required<Pick<ToasterProps, 'gap' | 'duration' | 'visibleCounts'>>,
+  | 'dir'
+  | 'gap'
+  | 'duration'
+  | 'visibleCounts'
+  | 'defaultExpanded'
+  | 'swipeDirections'
+  | 'showIcon'
+  | 'showClose'
+  | 'toastProps'
+  | 'wrapperProps'
+  | 'contentProps'
+  | 'titleProps'
+  | 'descriptionProps'
+  | 'iconProps'
+  | 'footerProps'
+  | 'actionProps'
+  | 'cancelProps'
+  | 'closeProps'
+> {
+  icons: ComputedRef<Record<ToastIconType, IconValue>>;
   allToasts: ComputedRef<Record<ToastPosition, ToastT[]>>;
   allHeights: ComputedRef<Record<ToastPosition, ToastHeight[]>>;
   interactingPosition: ShallowRef<ToastPosition | null>;

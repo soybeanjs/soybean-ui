@@ -69,7 +69,7 @@ position
   { name: 'position', type: 'ToastPosition', default: 'inherits `Toaster.position`', description: 'Per-toast viewport position override.' },
   { name: 'duration', type: 'number', default: 'inherits `Toaster.duration`', description: 'Auto close duration in milliseconds. Use `0` or `Infinity` to disable auto dismiss.' },
   { name: 'description', type: 'VNode | string', default: '-', description: 'Secondary content shown below the title.' },
-  { name: 'icon', type: 'VNode | string', default: '-', description: 'Custom leading icon. String values are resolved through `iconRender`.' },
+  { name: 'icon', type: 'IconValue', default: '-', description: 'Custom leading icon. String values are resolved through `iconRender`.' },
   { name: 'content', type: 'VNode', default: '-', description: 'Extra content rendered inside the built-in layout.' },
   { name: 'action', type: 'VNode | string', default: '-', description: 'Primary footer action. String values are resolved through `buttonRender`.' },
   { name: 'cancel', type: 'VNode | string', default: '-', description: 'Secondary footer action. String values are resolved through `buttonRender`.' },
@@ -77,7 +77,6 @@ position
   { name: 'onCancel', type: '(event: MouseEvent) => void', default: '-', description: 'Called when the cancel button is clicked.' },
   { name: 'dismissible', type: 'boolean', default: 'true', description: 'Whether swipe and close interactions are allowed.' },
   { name: 'showClose', type: 'boolean', default: 'inherits `Toaster.showClose`', description: 'Whether to show the close button for this toast.' },
-  { name: 'close', type: 'VNode | string', default: '-', description: 'Custom close icon or node.' },
   { name: 'richColor', type: 'boolean', default: 'false', description: 'Apply semantic filled color styles for info, success, warning, and error toasts.' },
   { name: 'inverted', type: 'boolean', default: 'false', description: 'Use the inverted toast palette.' },
   { name: 'ui', type: 'Partial<ToastUi>', default: '-', description: 'Override slot class names for the current toast.' },
@@ -116,9 +115,7 @@ position
   { name: 'swipeDirections', type: 'SwipeDirection[]', default: 'inferred from position', description: 'Allowed swipe directions for dismissing toasts.' },
   { name: 'showIcon', type: 'boolean', default: '`true`', description: 'Whether built-in toasts render type icons by default.' },
   { name: 'showClose', type: 'boolean', default: '`true`', description: 'Whether built-in toasts render the close button by default.' },
-  { name: 'icons', type: 'Partial<Record<ToastIconType, VNode | string>>', default: 'built-in icon map', description: 'Override built-in icons for `info`, `success`, `warning`, `error`, `loading`, and `close`.' },
-  { name: 'iconRender', type: '(name: string) => VNode', default: 'renders `SIcon`', description: 'Convert string icon values into rendered icon nodes.' },
-  { name: 'buttonRender', type: '(label: string, type: \`action\` | \`cancel\`) => VNode', default: 'renders `SButton`', description: 'Convert string `action` and `cancel` values into rendered buttons.' },
+  { name: 'icons', type: 'Partial<Record<ToastIconType, IconValue>>', default: 'built-in icon map', description: 'Override built-in icons for `info`, `success`, `warning`, `error`, `loading`, and `close`.' },
   { name: 'toastProps / wrapperProps / contentProps / titleProps / descriptionProps / iconProps / footerProps / actionProps / cancelProps / closeProps', type: 'HTMLAttributes / LiHTMLAttributes', default: '-', description: 'Pass-through props for built-in toast slots.' }
 ]"/>
 

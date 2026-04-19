@@ -10,10 +10,9 @@ function openInvertToast() {
 }
 
 function openCustomIconToast() {
-  toast('Custom icon + close icon', {
+  toast('Custom icon', {
     description: 'Overrides the content icon for this toast while keeping the shared close button style.',
     icon: 'lucide:rocket',
-    close: 'lucide:crosshair',
     ui: {
       icon: 'text-primary'
     },
