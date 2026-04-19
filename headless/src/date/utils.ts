@@ -1,4 +1,6 @@
-import type { DateStep, DateValue, Granularity, HourCycle } from './types';
+import type { DateStep, DateValue, Granularity, HourCycle, TimeGranularity, TimeInputType } from './types';
+
+import type { TimeValue } from './comparators';
 
 export function chunk<T>(array: T[], size: number): T[][] {
   if (size <= 0) {
@@ -132,4 +134,25 @@ export function normalizeInputValue(date: DateValue | undefined, granularity: Gr
   }
 
   return `${year}-${month}-${day}T${hour}:${minute}`;
+}
+
+
+export function getTimeInputType(_granularity: TimeGranularity): TimeInputType {
+  return 'time';
+}
+
+export function normalizeTimeInputValue(time: TimeValue | undefined, granularity: TimeGranularity): string {
+  if (!time) {
+    return '';
+  }
+
+  const hour = String(time.hour).padStart(2, '0');
+  const minute = String(time.minute).padStart(2, '0');
+
+  if (granularity === 'second') {
+    const second = String(time.second).padStart(2, '0');
+    return `${hour}:${minute}:${second}`;
+  }
+
+  return `${hour}:${minute}`;
 }
