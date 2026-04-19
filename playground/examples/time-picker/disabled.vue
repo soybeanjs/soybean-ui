@@ -9,6 +9,6 @@ const value = new Time(9, 30, 0);
 <template>
   <div class="flex-c gap-3">
     <h3 class="playground-title">Disabled</h3>
-    <STimePicker :model-value="value" disabled aria-label="Disabled meeting time" />
+    <STimePicker class="w-60 lt-md:w-auto" :model-value="value" disabled aria-label="Disabled meeting time" />
   </div>
 </template>

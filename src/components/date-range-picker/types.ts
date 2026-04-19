@@ -1,4 +1,4 @@
-import type { DateRange } from '@soybeanjs/headless/date';
+import type { DateRange, DateValue } from '@soybeanjs/headless/date';
 
 import type {
   ClassValue,
@@ -22,6 +22,12 @@ export type DateRangePickerEmits = DateRangePickerRootEmits;
 
 export interface DateRangePickerSlots {
   trigger?: (props: { open: boolean }) => any;
-  default?: (props: { modelValue: DateRange; open: boolean }) => any;
-  calendar?: (props: { modelValue: DateRange }) => any;
+  default?: (props: {
+    modelValue: DateRange;
+    open: boolean;
+    placeholder: DateValue;
+    setPlaceholder: (date: DateValue) => void;
+    setRange: (range: DateRange) => void;
+  }) => any;
+  calendar?: (props: { modelValue: DateRange; placeholder: DateValue }) => any;
 }

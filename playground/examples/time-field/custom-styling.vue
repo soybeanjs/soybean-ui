@@ -11,6 +11,7 @@ const value = shallowRef(new Time(18, 15, 0));
     <h3 class="playground-title">Custom styling</h3>
     <STimeField
       v-model="value"
+      class="w-60 lt-md:w-auto"
       aria-label="Styled time"
       :ui="{
         root: 'rounded-xl border-primary/40 bg-primary/4',

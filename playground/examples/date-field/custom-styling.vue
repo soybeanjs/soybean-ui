@@ -12,6 +12,7 @@ const value = shallowRef(new CalendarDate(2026, 4, 19));
     <div class="w-72 lt-md:w-auto">
       <SDateField
         v-model="value"
+        class="w-60 lt-md:w-auto"
         aria-label="Custom styled date"
         :ui="{
           root: 'rounded-xl border-primary/50 bg-primary/5',

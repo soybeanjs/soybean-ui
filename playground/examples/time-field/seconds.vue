@@ -9,6 +9,6 @@ const value = shallowRef(new Time(14, 45, 30));
 <template>
   <div class="flex-c gap-3">
     <h3 class="playground-title">With seconds</h3>
-    <STimeField v-model="value" granularity="second" aria-label="Precise time" />
+    <STimeField v-model="value" class="w-90 lt-md:w-auto" granularity="second" aria-label="Precise time" />
   </div>
 </template>
