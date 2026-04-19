@@ -14,6 +14,7 @@ export const components = {
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   calendar: ['SCalendar'],
   dateField: ['SDateField'],
+  datePicker: ['SDatePicker'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
   checkbox: ['SCheckboxGroup', 'SCheckbox', 'SCheckboxCardGroup', 'SCheckboxCard'],
