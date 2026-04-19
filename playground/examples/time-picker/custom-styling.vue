@@ -12,6 +12,7 @@ const value = shallowRef(new Time(14, 0, 0));
     <h3 class="playground-title">Custom styling</h3>
     <STimePicker
       v-model="value"
+      class="w-60 lt-md:w-auto"
       aria-label="Styled meeting time"
       :ui="{
         trigger: 'border-primary/40 bg-primary/4',

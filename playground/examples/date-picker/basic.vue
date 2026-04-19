@@ -10,7 +10,7 @@ const selectedDate = ref<any>();
 <template>
   <div>
     <h3 class="playground-title">Basic</h3>
-    <SDatePicker v-model="selectedDate" :default-placeholder="new CalendarDate(2024, 1, 1)" />
+    <SDatePicker v-model="selectedDate" class="w-60 lt-md:w-auto" :default-placeholder="new CalendarDate(2024, 1, 1)" />
     <p v-if="selectedDate" class="mt-2 text-sm text-muted-foreground">Selected: {{ selectedDate.toString() }}</p>
   </div>
 </template>

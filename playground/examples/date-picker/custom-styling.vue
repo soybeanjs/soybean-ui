@@ -12,6 +12,7 @@ const selectedDate = ref<any>();
     <h3 class="playground-title">Custom Styling</h3>
     <SDatePicker
       v-model="selectedDate"
+      class="w-60 lt-md:w-auto"
       :default-placeholder="new CalendarDate(2024, 1, 1)"
       :ui="{
         trigger: 'border-primary/50 bg-primary/5 hover:bg-primary/10',
