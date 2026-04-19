@@ -97,7 +97,7 @@ export function useDateFormatter(initialLocale: string, opts: DateFormatterOptio
     }).formatToParts(date);
     const value = parts.find(item => item.type === 'dayPeriod')?.value;
 
-    if (value === 'PM' || value == 'pm' || value === 'p.m.') {
+    if (value === 'PM' || value === 'pm' || value === 'p.m.') {
       return 'PM';
     }
 
