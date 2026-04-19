@@ -18,6 +18,8 @@ export * from './components/date-range-field';
 export * from './components/date-range-picker';
 export * from './components/month-picker';
 export * from './components/month-range-picker';
+export * from './components/year-picker';
+export * from './components/year-range-picker';
 export * from './components/range-calendar';
 export * from './components/card';
 export * from './components/carousel';

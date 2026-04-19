@@ -484,7 +484,13 @@ import {
   VirtualizerItem,
   VirtualizerRoot,
   VisuallyHidden,
-  VisuallyHiddenInput
+  VisuallyHiddenInput,
+  YearPickerPopup,
+  YearPickerRoot,
+  YearPickerTrigger,
+  YearRangePickerPopup,
+  YearRangePickerRoot,
+  YearRangePickerTrigger
 } from '../index';
 
 export const Accordion = {
@@ -1736,3 +1742,23 @@ export const Virtualizer = {
 };
 
 export { VisuallyHidden, VisuallyHiddenInput };
+
+export const YearPicker = {
+  Root: YearPickerRoot,
+  Trigger: YearPickerTrigger,
+  Popup: YearPickerPopup
+} as {
+  Root: typeof YearPickerRoot;
+  Trigger: typeof YearPickerTrigger;
+  Popup: typeof YearPickerPopup;
+};
+
+export const YearRangePicker = {
+  Root: YearRangePickerRoot,
+  Trigger: YearRangePickerTrigger,
+  Popup: YearRangePickerPopup
+} as {
+  Root: typeof YearRangePickerRoot;
+  Trigger: typeof YearRangePickerTrigger;
+  Popup: typeof YearRangePickerPopup;
+};

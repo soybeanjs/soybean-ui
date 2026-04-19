@@ -19,6 +19,8 @@ export const components = {
   dateRangePicker: ['SDateRangePicker'],
   monthPicker: ['SMonthPicker'],
   monthRangePicker: ['SMonthRangePicker'],
+  yearPicker: ['SYearPicker'],
+  yearRangePicker: ['SYearRangePicker'],
   timeField: ['STimeField'],
   timeRangeField: ['STimeRangeField'],
   rangeCalendar: ['SRangeCalendar'],
