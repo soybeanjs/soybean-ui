@@ -4,38 +4,38 @@ import type { VariantProps } from 'tailwind-variants';
 
 export const monthPickerVariants = tv({
   slots: {
-    root: 'relative inline-flex w-full flex-col gap-2',
+    root: 'inline-flex w-full flex-col gap-2',
     trigger: [
-      'inline-flex items-center justify-center gap-2 rounded-md border border-input bg-background px-3 transition-all-150',
-      'hover:bg-accent hover:text-accent-foreground',
+      'inline-flex w-full items-center justify-start gap-2 rounded-md border border-input bg-background px-3 py-0 text-start font-normal shadow-xs transition-[background-color,color,box-shadow]',
+      'hover:bg-accent/50 hover:text-accent-foreground',
       'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
       'data-[disabled]:opacity-60 data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none',
-      'data-[state=open]:bg-accent data-[state=open]:text-accent-foreground'
+      'data-[state=open]:bg-accent/50 data-[state=open]:text-accent-foreground'
     ],
     popup: [
-      'z-50 rounded-md border border-border bg-popover p-3 text-popover-foreground shadow-lg',
+      'z-50 overflow-hidden rounded-lg border border-border bg-popover p-3 text-popover-foreground shadow-md',
       'data-[state=open]:animate-in data-[state=closed]:animate-out',
       'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
       'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95'
     ],
-    header: 'mb-3 flex items-center justify-between gap-2',
+    header: 'mb-3 grid grid-cols-[auto_1fr_auto] items-center gap-1',
     heading: 'font-medium text-foreground text-center',
     prev: [
-      'inline-flex size-8 items-center justify-center rounded-md border border-transparent transition-colors',
+      'inline-flex size-8 items-center justify-center rounded-md border border-transparent bg-transparent transition-colors',
       'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
     next: [
-      'inline-flex size-8 items-center justify-center rounded-md border border-transparent transition-colors',
+      'inline-flex size-8 items-center justify-center rounded-md border border-transparent bg-transparent transition-colors',
       'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50'
     ],
-    grid: 'grid grid-cols-3 gap-2',
+    grid: 'grid grid-cols-3 gap-1',
     cellTrigger: [
-      'inline-flex h-9 items-center justify-center rounded-md border border-transparent px-3 text-sm font-medium transition-colors',
+      'inline-flex h-9 cursor-pointer items-center justify-center rounded-md border border-transparent bg-transparent px-3 text-sm font-normal transition-colors',
       'hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30',
       'data-[selected]:bg-primary data-[selected]:text-primary-foreground',
-      'data-[disabled]:pointer-events-none data-[disabled]:opacity-40',
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'data-[focused]:ring-2 data-[focused]:ring-primary/20'
     ]
   },
