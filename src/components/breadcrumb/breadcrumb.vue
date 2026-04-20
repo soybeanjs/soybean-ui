@@ -35,10 +35,10 @@ provideBreadcrumbUi(ui);
 </script>
 
 <template>
-  <BreadcrumbCompact v-bind="forwardedProps" v-on="listeners">
-    <template v-for="slotName in slotNames" #[slotName]="slotProps">
-      <!-- @vue-expect-error ignore vue slot props type -->
-      <slot :name="slotName" v-bind="slotProps" />
-    </template>
-  </BreadcrumbCompact>
+    <BreadcrumbCompact v-bind="forwardedProps" v-on="listeners">
+      <template v-for="slotName in slotNames" #[slotName]="slotProps">
+        <!-- @vue-ignore ignore vue slot props type -->
+        <slot :name="slotName" v-bind="slotProps" />
+      </template>
+    </BreadcrumbCompact>
 </template>

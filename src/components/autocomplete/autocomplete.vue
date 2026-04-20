@@ -48,7 +48,7 @@ provideAutocompleteUi(ui);
 <template>
   <AutocompleteCompact v-bind="forwardedProps" :items="items" v-on="listeners">
     <template v-for="slotName in slotNames" #[slotName]="slotProps">
-      <!-- @vue-expect-error ignore vue slot props type -->
+      <!-- @vue-ignore ignore vue slot props type -->
       <slot :name="slotName" v-bind="slotProps" />
     </template>
   </AutocompleteCompact>
