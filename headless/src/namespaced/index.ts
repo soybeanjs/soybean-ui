@@ -15,6 +15,7 @@ import {
   AlertTitle,
   AnchorLink,
   AnchorRoot,
+  AutocompleteCompact,
   AutocompleteAnchor,
   AutocompleteContent,
   AutocompleteGroup,
@@ -449,6 +450,7 @@ export const Anchor = {
 export { Arrow };
 
 export const Autocomplete = {
+  Compact: AutocompleteCompact,
   Root: AutocompleteRoot,
   Anchor: AutocompleteAnchor,
   Input: AutocompleteInput,
@@ -462,6 +464,7 @@ export const Autocomplete = {
   ItemIndicator: AutocompleteItemIndicator,
   Separator: AutocompleteSeparator
 } as {
+  Compact: typeof AutocompleteCompact;
   Root: typeof AutocompleteRoot;
   Anchor: typeof AutocompleteAnchor;
   Input: typeof AutocompleteInput;

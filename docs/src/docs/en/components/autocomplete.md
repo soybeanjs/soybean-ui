@@ -22,6 +22,8 @@ const items = [
 </template>
 ```
 
+> `SAutocomplete` now delegates its filtering and option aggregation to headless `AutocompleteCompact`. For unstyled, data-driven composition, import `AutocompleteCompact` from `@soybeanjs/headless/autocomplete`.
+
 ## Demos
 
 ```playground

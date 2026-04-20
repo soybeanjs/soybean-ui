@@ -10,6 +10,7 @@ export const components = {
   affix: ['AffixRoot', 'AffixPlaceholder', 'AffixContent'],
   alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
   autocomplete: [
+    'AutocompleteCompact',
     'AutocompleteRoot',
     'AutocompleteAnchor',
     'AutocompleteInput',
