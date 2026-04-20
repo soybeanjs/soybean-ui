@@ -57,7 +57,7 @@ const ellipsisItems = computed(() => {
   return props.items.slice(start, end);
 });
 
-const onItemClick = (item: T) => {
+const handleItemClick = (item: T) => {
   emit('click', item);
 };
 </script>
@@ -80,7 +80,7 @@ const onItemClick = (item: T) => {
             </slot>
           </BreadcrumbSeparator>
         </template>
-        <BreadcrumbItem v-bind="itemProps" @click="onItemClick(item)">
+        <BreadcrumbItem v-bind="itemProps" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item" :index="index">
             <Icon v-if="item.icon" :icon="item.icon" />
           </slot>
