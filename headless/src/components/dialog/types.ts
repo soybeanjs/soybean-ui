@@ -132,9 +132,10 @@ export interface DialogCompactProps extends DialogRootProps {
    */
   confirmText?: string;
   /**
-   * Whether to show the cancel button when the dialog is an alert dialog.
+   * Whether to show the cancel button.
    *
-   * When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog. When set to `true`, the cancel button will always be shown.
+   * When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`.
+   * When set to `true`, the cancel button will always be shown.
    *
    * @defaultValue 'onlyWarning'
    */

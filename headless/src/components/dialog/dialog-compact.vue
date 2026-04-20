@@ -37,7 +37,18 @@ const forwardedProps = useOmitProps(props, [
   'title',
   'description',
   'showClose',
+  'showCancel',
+  'showConfirm',
+  'alertType',
+  'cancelText',
+  'confirmText',
+  'icon',
+  'pure',
   'triggerProps',
+  'popupProps',
+  'closeProps',
+  'cancelProps',
+  'confirmProps',
   'contentProps',
   'headerProps',
   'footerProps',
@@ -85,9 +96,15 @@ const icon = computed(() => {
 });
 
 const showConfirm = computed(() => {
-  if (props.showConfirm) return true;
+  if (props.showConfirm !== undefined) return props.showConfirm;
 
   return props.isAlert;
+});
+
+const showCancel = computed(() => {
+  if (typeof props.showCancel === 'boolean') return props.showCancel;
+
+  return props.isAlert === true && props.alertType === 'warning';
 });
 
 const showFooter = computed(() => {
@@ -95,7 +112,7 @@ const showFooter = computed(() => {
 
   if (slots.footer) return true;
 
-  return props.showCancel || showConfirm.value;
+  return showCancel.value || showConfirm.value;
 });
 
 provideDialogCompactContext({

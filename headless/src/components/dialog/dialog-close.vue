@@ -21,8 +21,11 @@ const { onOpenChange } = useDialogRootContext('DialogClose');
 const onClose = async (event: MouseEvent) => {
   if (event.defaultPrevented) return;
 
-  onOpenChange(false);
   emit('close', event);
+
+  if (event.defaultPrevented) return;
+
+  onOpenChange(false);
 };
 </script>
 

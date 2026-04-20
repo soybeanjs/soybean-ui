@@ -26,7 +26,7 @@ const open = useControllableState(
   props.defaultOpen ?? false
 ) as ShallowRef<boolean>;
 
-const modal = computed(() => props.isAlert ?? props.modal);
+const modal = computed(() => (props.isAlert === true ? true : props.modal));
 
 const { onOpenChange } = provideDialogRootContext({
   open,

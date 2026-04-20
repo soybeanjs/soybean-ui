@@ -5,6 +5,10 @@ import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
 import { buttonVariants } from '../button/variants';
 import { dialogVariants } from './variants';
 
+defineOptions({
+  name: 'SDialogProvider'
+});
+
 const ui = computed(() => {
   const size = 'md';
 
