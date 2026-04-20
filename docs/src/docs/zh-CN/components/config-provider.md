@@ -49,7 +49,7 @@ import { SConfigProvider } from '@soybeanjs/ui';
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: '全局主题配置（颜色、圆角）' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: '全局组件尺寸' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'SIcon 的默认配置' },
-  { name: 'loadingBar', type: 'LoadingBarProviderProps', default: '-', description: '全局顶部加载条配置' },
+  { name: 'progress', type: 'ProgressProviderProps', default: '-', description: '全局顶部进度条配置' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: '全局通知配置' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: '文本方向' }
 ]"/>

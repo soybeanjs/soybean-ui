@@ -51,7 +51,7 @@ You can fully customize the theme using the `theme` prop. more details can be fo
   { name: 'theme', type: 'ThemeOptions', default: '{}', description: 'Global theme configuration (colors, radius)' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Global component size' },
   { name: 'iconify', type: '{ width?: string; height?: string }', default: '-', description: 'Default configuration for SIcon' },
-  { name: 'loadingBar', type: 'LoadingBarProviderProps', default: '-', description: 'Global loading bar configuration' },
+  { name: 'progress', type: 'ProgressProviderProps', default: '-', description: 'Global top progress configuration' },
   { name: 'toast', type: 'ToastProviderProps', default: '-', description: 'Global toast configuration' },
   { name: 'dir', type: `'ltr' \| 'rtl'`, default: `'ltr'`, description: 'Text direction' },
   { name: 'locale', type: 'string', default: `'en'`, description: 'Locale identifier' },
