@@ -11,16 +11,6 @@ import {
   AlertClose,
   AlertContent,
   AlertDescription,
-  AlertDialogClose,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  AlertDialogPortal,
-  AlertDialogRoot,
-  AlertDialogTitle,
-  AlertDialogTrigger,
   AlertRoot,
   AlertTitle,
   AnchorLink,
@@ -128,13 +118,18 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
   ContextMenuWrapperCompact,
+  DialogCancel,
   DialogClose,
+  DialogCompact,
+  DialogConfirm,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogOverlay,
+  DialogPopup,
   DialogPortal,
+  DialogProvider,
   DialogRoot,
   DialogTitle,
   DialogTrigger,
@@ -438,30 +433,6 @@ export const Alert = {
   Close: typeof AlertClose;
 };
 
-export const AlertDialog = {
-  Root: AlertDialogRoot,
-  Trigger: AlertDialogTrigger,
-  Portal: AlertDialogPortal,
-  Overlay: AlertDialogOverlay,
-  Content: AlertDialogContent,
-  Header: AlertDialogHeader,
-  Title: AlertDialogTitle,
-  Description: AlertDialogDescription,
-  Footer: AlertDialogFooter,
-  Close: AlertDialogClose
-} as {
-  Root: typeof AlertDialogRoot;
-  Trigger: typeof AlertDialogTrigger;
-  Portal: typeof AlertDialogPortal;
-  Overlay: typeof AlertDialogOverlay;
-  Content: typeof AlertDialogContent;
-  Header: typeof AlertDialogHeader;
-  Title: typeof AlertDialogTitle;
-  Description: typeof AlertDialogDescription;
-  Footer: typeof AlertDialogFooter;
-  Close: typeof AlertDialogClose;
-};
-
 export const Anchor = {
   Root: AnchorRoot,
   Link: AnchorLink
@@ -737,27 +708,37 @@ export const ContextMenu = {
 };
 
 export const Dialog = {
+  Compact: DialogCompact,
+  Provider: DialogProvider,
   Root: DialogRoot,
   Trigger: DialogTrigger,
   Portal: DialogPortal,
   Overlay: DialogOverlay,
+  Popup: DialogPopup,
   Content: DialogContent,
   Header: DialogHeader,
   Title: DialogTitle,
   Description: DialogDescription,
   Footer: DialogFooter,
-  Close: DialogClose
+  Close: DialogClose,
+  Cancel: DialogCancel,
+  Confirm: DialogConfirm
 } as {
+  Compact: typeof DialogCompact;
+  Provider: typeof DialogProvider;
   Root: typeof DialogRoot;
   Trigger: typeof DialogTrigger;
   Portal: typeof DialogPortal;
   Overlay: typeof DialogOverlay;
+  Popup: typeof DialogPopup;
   Content: typeof DialogContent;
   Header: typeof DialogHeader;
   Title: typeof DialogTitle;
   Description: typeof DialogDescription;
   Footer: typeof DialogFooter;
   Close: typeof DialogClose;
+  Cancel: typeof DialogCancel;
+  Confirm: typeof DialogConfirm;
 };
 
 export const DropdownMenu = {

@@ -1,32 +1,35 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { Primitive } from '../primitive';
-import { useDialogRootContext } from './context';
+import Button from '../button/button.vue';
+import Icon from '../icon/icon-render.vue';
+import { useDialogRootContext, useDialogUi } from './context';
 import type { DialogCloseProps, DialogCloseEmits } from './types';
 
 defineOptions({
   name: 'DialogClose'
 });
 
-const props = defineProps<DialogCloseProps>();
+const props = withDefaults(defineProps<DialogCloseProps>(), {
+  as: 'button'
+});
 
 const emit = defineEmits<DialogCloseEmits>();
 
+const cls = useDialogUi('close');
+
 const { onOpenChange } = useDialogRootContext('DialogClose');
 
-const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
-
-const onClose = async () => {
-  const result = await props.beforeClose?.();
-  if (result === false) return;
+const onClose = async (event: MouseEvent) => {
+  if (event.defaultPrevented) return;
 
   onOpenChange(false);
-  emit('close');
+  emit('close', event);
 };
 </script>
 
 <template>
-  <Primitive :as="as" :as-child="asChild" :type="tag" @click="onClose">
-    <slot />
-  </Primitive>
+  <Button v-bind="props" :class="cls" @click="onClose">
+    <slot>
+      <Icon icon="lucide:x" />
+    </slot>
+  </Button>
 </template>

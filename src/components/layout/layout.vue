@@ -73,7 +73,7 @@ const ui = computed(() => {
     {
       ...variants,
       mobileDrawer: () => {
-        const base = drawer.content();
+        const base = drawer.popup();
         const current = variants.mobileDrawer();
         return `${base} ${current}`;
       }

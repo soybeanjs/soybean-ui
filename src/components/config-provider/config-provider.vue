@@ -7,9 +7,9 @@ import { isClient, transformPropsToContext } from '@soybeanjs/headless/shared';
 import { createShadcnTheme } from '@soybeanjs/shadcn-theme';
 import type { ThemeSize } from '@/theme';
 import { themeSizes } from '@/constants/common';
+import DialogProvider from '../dialog/dialog-provider.vue';
 import Icon from '../icon/icon.vue';
 import type { IconValue } from '../icon/types';
-import DialogProvider from '../alert-dialog/dialog-provider.vue';
 import LoadingBar from '../progress/loading-bar.vue';
 import Toaster from '../toast/toaster.vue';
 import { provideConfigProviderContext } from './context';
@@ -77,11 +77,10 @@ watchEffect(() => {
     <Primitive id="__SoybeanUI_themeVars" as="style">
       {{ cssVars }}
     </Primitive>
-    <DialogProvider>
-      <LoadingBar v-bind="loadingBar">
-        <slot />
-      </LoadingBar>
-    </DialogProvider>
+    <LoadingBar v-bind="loadingBar">
+      <slot />
+    </LoadingBar>
     <Toaster v-if="!props.customToast" v-bind="props.toast" />
+    <DialogProvider />
   </ConfigProvider>
 </template>

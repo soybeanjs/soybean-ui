@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { SButton, SDialogPure } from '@soybeanjs/ui';
+import { SButton, SDialog } from '@soybeanjs/ui';
 </script>
 
 <template>
   <div>
     <h3 class="playground-title">Pure Dialog</h3>
-    <SDialogPure>
+    <SDialog pure>
       <template #trigger>
         <SButton variant="pure">Open</SButton>
       </template>
@@ -14,6 +14,6 @@ import { SButton, SDialogPure } from '@soybeanjs/ui';
         <p>no Header and Footer</p>
         <p>no Title and Description</p>
       </div>
-    </SDialogPure>
+    </SDialog>
   </div>
 </template>

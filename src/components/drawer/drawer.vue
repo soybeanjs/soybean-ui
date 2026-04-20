@@ -1,24 +1,13 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
-import {
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
-  provideDialogUi
-} from '@soybeanjs/headless';
+import { computed } from 'vue';
+import { DialogCompact, provideDialogUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
-import { mergeSlotVariants, provideSizeContext } from '@/theme';
+import { keysOf } from '@soybeanjs/utils';
+import { mergeSlotVariants, mergeBaseVariants, miniSizeMap } from '@/theme';
+import { buttonVariants } from '../button/variants';
 import { dialogVariants } from '../dialog/variants';
-import ButtonIcon from '../button/button-icon.vue';
 import { drawerVariants } from './variants';
-import type { DrawerEmits, DrawerProps } from './types';
+import type { DrawerEmits, DrawerProps, DrawerSlots } from './types';
 
 defineOptions({
   name: 'SDrawer'
@@ -26,85 +15,62 @@ defineOptions({
 
 const props = withDefaults(defineProps<DrawerProps>(), {
   open: undefined,
-  defaultOpen: false,
   modal: true,
-  closable: true
+  showClose: true
 });
-
-const forwardedProps = useOmitProps(props, [
-  'size',
-  'ui',
-  'side',
-  'title',
-  'description',
-  'closable',
-  'triggerProps',
-  'contentProps',
-  'headerProps',
-  'footerProps',
-  'titleProps',
-  'descriptionProps',
-  'overlayProps',
-  'portalProps'
-]);
 
 const emit = defineEmits<DrawerEmits>();
 
-const slots = useSlots();
+const slots = defineSlots<DrawerSlots>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui']);
 
 const listeners = useForwardListeners(emit);
 
+const slotNames = computed(() => keysOf(slots));
+
 const ui = computed(() => {
-  const variants = dialogVariants({
-    size: props.size
+  const baseVariants = dialogVariants({
+    size: props.size,
+    pure: props.pure
   });
 
-  const dVariants = drawerVariants({
+  const currentVariants = drawerVariants({
     size: props.size,
     side: props.side
   });
 
-  return mergeSlotVariants(
-    {
-      ...variants,
-      ...dVariants
-    },
-    props.ui
-  );
+  baseVariants.popup = currentVariants.popup;
+
+  const variants = mergeBaseVariants(baseVariants, {
+    cancel: buttonVariants({
+      variant: 'pure',
+      size: miniSizeMap[props.size ?? 'md']
+    }),
+    confirm: buttonVariants({
+      variant: 'solid',
+      size: miniSizeMap[props.size ?? 'md']
+    }),
+    close: buttonVariants({
+      variant: 'ghost',
+      color: 'accent',
+      size: miniSizeMap[props.size ?? 'md'],
+      shape: 'square',
+      fitContent: true
+    })
+  });
+
+  return mergeSlotVariants(variants, props.ui, { popup: props.class });
 });
 
 provideDialogUi(ui);
-provideSizeContext(() => props.size);
 </script>
 
 <template>
-  <DialogRoot v-slot="slotProps" v-bind="forwardedProps" @update:open="emit('update:open', $event)">
-    <DialogTrigger v-bind="triggerProps" :size="size" as-child>
-      <slot name="trigger" />
-    </DialogTrigger>
-    <DialogPortal v-bind="portalProps">
-      <DialogOverlay v-bind="overlayProps" />
-      <DialogContent v-bind="contentProps" v-on="listeners">
-        <DialogHeader v-bind="headerProps">
-          <DialogTitle v-bind="titleProps">
-            <slot name="title" v-bind="slotProps">{{ title }}</slot>
-          </DialogTitle>
-          <DialogDescription v-if="slots.description || description" v-bind="descriptionProps">
-            <slot name="description" v-bind="slotProps">{{ description }}</slot>
-          </DialogDescription>
-          <DialogClose v-if="closable" :class="ui.closable" as-child>
-            <slot name="close">
-              <ButtonIcon :size="size" icon="lucide:x" />
-            </slot>
-          </DialogClose>
-        </DialogHeader>
-        <div :class="ui.main">
-          <slot v-bind="slotProps" />
-        </div>
-        <DialogFooter v-if="slots.footer" v-bind="footerProps">
-          <slot name="footer" v-bind="slotProps" />
-        </DialogFooter>
-      </DialogContent>
-    </DialogPortal>
-  </DialogRoot>
+  <DialogCompact v-bind="forwardedProps" v-on="listeners">
+    <template v-for="slotName in slotNames" #[slotName]="slotProps">
+      <!-- @vue-expect-error ignore slot prop types -->
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </DialogCompact>
 </template>
