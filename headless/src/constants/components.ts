@@ -30,6 +30,7 @@ export const components = {
   backtop: ['Backtop'],
   badge: ['BadgeRoot', 'BadgeContent'],
   breadcrumb: [
+    'BreadcrumbCompact',
     'BreadcrumbRoot',
     'BreadcrumbList',
     'BreadcrumbItem',

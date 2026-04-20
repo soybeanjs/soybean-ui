@@ -35,6 +35,7 @@ import {
   Backtop,
   BadgeContent,
   BadgeRoot,
+  BreadcrumbCompact,
   BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -498,6 +499,7 @@ export const Badge = {
 };
 
 export const Breadcrumb = {
+  Compact: BreadcrumbCompact,
   Root: BreadcrumbRoot,
   List: BreadcrumbList,
   Item: BreadcrumbItem,
@@ -506,6 +508,7 @@ export const Breadcrumb = {
   Separator: BreadcrumbSeparator,
   Ellipsis: BreadcrumbEllipsis
 } as {
+  Compact: typeof BreadcrumbCompact;
   Root: typeof BreadcrumbRoot;
   List: typeof BreadcrumbList;
   Item: typeof BreadcrumbItem;

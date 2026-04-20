@@ -18,6 +18,8 @@ const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/comp
 </template>
 ```
 
+> `SBreadcrumb` delegates its list aggregation to headless `BreadcrumbCompact`. For unstyled, data-driven composition, import `BreadcrumbCompact` from `@soybeanjs/headless/breadcrumb`.
+
 ## Demos
 
 ```playground
@@ -34,6 +36,7 @@ ellipsis-dropdown
 
 <DataTable preset="props" :data="[
   { name: 'items', type: 'BreadcrumbOptionData[]', default: '-', description: 'Data array for breadcrumb items.', required: true },
+  { name: 'class', type: 'ClassValue', default: '-', description: 'Additional class for the breadcrumb root.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Breadcrumb size.' },
   { name: 'ellipsis', type: 'boolean | [number, number]', default: 'false', description: 'Enable ellipsis for long paths. True collapses middle items. Array specifies start/end count.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' },
@@ -54,11 +57,14 @@ ellipsis-dropdown
 ### Slots
 
 <DataTable preset="slots" :data="[
+  { name: 'default', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Custom item content wrapper.' },
   { name: 'separator', parameters: '-', description: 'Custom separator content.' },
   { name: 'ellipsis', parameters: '{ ellipsisItems: BreadcrumbOptionData[] }', description: 'Custom ellipsis content.' },
-  { name: 'item-leading', parameters: '{ item: BreadcrumbOptionData }', description: 'Content before item label.' },
-  { name: 'item-label', parameters: '{ item: BreadcrumbOptionData }', description: 'Custom label content.' },
-  { name: 'item-trailing', parameters: '{ item: BreadcrumbOptionData }', description: 'Content after item label.' }
+  { name: 'ellipsis-icon', parameters: '-', description: 'Custom default icon rendered inside the built-in ellipsis trigger.' },
+  { name: 'item-leading', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Content before item label.' },
+  { name: 'item-link', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Custom link label content.' },
+  { name: 'item-label', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Custom current-page label content.' },
+  { name: 'item-trailing', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Content after item label.' }
 ]"/>
 
 ### Types
