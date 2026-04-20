@@ -285,6 +285,10 @@ import {
   PopperRoot,
   Portal,
   Primitive,
+  ProgressCircle,
+  ProgressIndicator,
+  ProgressProvider,
+  ProgressRoot,
   RadioGroupControl,
   RadioGroupIndicator,
   RadioGroupItem,
@@ -1116,6 +1120,18 @@ export const Popper = {
 export { Portal };
 
 export { Primitive };
+
+export const Progress = {
+  Provider: ProgressProvider,
+  Root: ProgressRoot,
+  Indicator: ProgressIndicator,
+  Circle: ProgressCircle
+} as {
+  Provider: typeof ProgressProvider;
+  Root: typeof ProgressRoot;
+  Indicator: typeof ProgressIndicator;
+  Circle: typeof ProgressCircle;
+};
 
 export const RadioGroup = {
   Root: RadioGroupRoot,

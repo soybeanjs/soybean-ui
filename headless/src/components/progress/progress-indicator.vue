@@ -24,6 +24,7 @@ const { max, modelValue, progressState } = useProgressRootContext('ProgressIndic
     :data-state="progressState"
     :data-value="modelValue ?? undefined"
     :data-max="max"
+    data-slot="indicator"
   >
     <slot />
   </Primitive>

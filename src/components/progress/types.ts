@@ -1,13 +1,12 @@
 import type {
-  PropsToContext,
-  ClassValue,
   ProgressIndicatorProps,
+  ProgressProviderProps as _ProgressProviderProps,
   ProgressRootEmits,
   ProgressRootProps,
   ProgressState,
   ProgressUi
-} from '@soybeanjs/headless';
-import type { ShallowRef } from 'vue';
+} from '@soybeanjs/headless/progress';
+import type { ClassValue } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 
 export interface ProgressProps extends ProgressRootProps {
@@ -26,33 +25,14 @@ export interface ProgressCircleProps extends ProgressRootProps {
   strokeWidth?: number;
 }
 
-export interface LoadingBarProviderProps {
+export interface ProgressProviderProps extends _ProgressProviderProps {
   color?: ThemeColor;
-  errorColor?: ThemeColor;
   size?: ThemeSize;
+  class?: ClassValue;
   ui?: Partial<ProgressUi>;
 }
 
 export type ProgressEmits = ProgressRootEmits;
 export type ProgressCircleEmits = ProgressRootEmits;
-
-export interface UseLoadingBarReturn {
-  start: () => void;
-  finish: () => void;
-  error: () => void;
-  set: (value: number) => void;
-  clear: () => void;
-}
-
-export interface LoadingBarProviderContext extends Pick<UseLoadingBarReturn, 'clear'> {
-  useLoadingBar: UseLoadingBarReturn;
-  visible: ShallowRef<boolean>;
-  modelValue: ShallowRef<number>;
-  color: ShallowRef<ThemeColor>;
-}
-
-export interface LoadingBarProviderContextParams extends PropsToContext<
-  Required<Pick<LoadingBarProviderProps, 'color' | 'errorColor'>>
-> {}
 
 export type { ProgressState };

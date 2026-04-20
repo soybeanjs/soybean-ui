@@ -263,6 +263,7 @@ export const components = {
   popper: ['PopperRoot', 'PopperAnchor', 'PopperPopup', 'PopperArrow', 'PopperPositioner'],
   portal: ['Portal'],
   primitive: ['Primitive'],
+  progress: ['ProgressProvider', 'ProgressRoot', 'ProgressIndicator', 'ProgressCircle'],
   radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],

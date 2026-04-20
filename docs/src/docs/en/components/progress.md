@@ -25,7 +25,7 @@ color
 state
 slot
 circle
-loading-bar
+provider
 ```
 
 ## Progress API
@@ -48,6 +48,13 @@ loading-bar
 
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '{ modelValue, max, progressState, valuePercent }', description: 'Custom indicator content.' },
+]"/>
+
+### Emits
+
+<DataTable preset="emits" :data="[
+  { name: 'update:modelValue', type: '(value: number | null | undefined) => void', description: 'Emitted when the progress value changes.' },
+  { name: 'update:max', type: '(value: number) => void', description: 'Emitted when the maximum value is normalized.' },
 ]"/>
 
 ### Types
@@ -95,45 +102,68 @@ import { SProgressCircle } from '@soybeanjs/ui';
   { name: 'strokeWidth', type: 'number', default: '8', description: 'Stroke width of the circular indicator.' },
 ]"/>
 
-## Loading Bar
+## Progress Provider
 
-`useLoadingBar` controls a top loading bar built on `SProgress`. When your app is wrapped with `SConfigProvider`, the loading bar provider is mounted automatically. `SLoadingBar` is also exported for scoped usage inside an existing `SConfigProvider` tree when needed.
+Mount `SProgressProvider` once near your app root before calling the imperative `progress(...)` API. `SConfigProvider` mounts it automatically, so most applications can call `progress` directly.
 
 ```vue
 <script setup lang="ts">
-import { SButton, useLoadingBar } from '@soybeanjs/ui';
-
-const loadingBar = useLoadingBar();
+import { SButton, SProgressProvider, progress } from '@soybeanjs/ui';
 
 const handleClick = () => {
-  loadingBar.start();
+  progress.start();
 
   window.setTimeout(() => {
-    loadingBar.finish();
+    progress.done();
   }, 1200);
 };
 </script>
 
 <template>
+  <SProgressProvider />
   <SButton @click="handleClick">Start loading</SButton>
 </template>
 ```
 
-### `useLoadingBar` Methods
+### `progress` Methods
 
 | Method       | Description                                                     |
 | ------------ | --------------------------------------------------------------- |
-| `start()`    | Show the loading bar and start the automatic trickle animation. |
-| `set(value)` | Update the loading progress with a value between `0` and `100`. |
-| `finish()`   | Complete the loading bar with the provider color, then hide it. |
-| `error()`    | Complete the loading bar with the error color, then hide it.    |
-| `clear()`    | Hide the loading bar immediately and reset its state.           |
+| `start()`    | Show the progress bar and start the automatic trickle animation. |
+| `set(value)` | Set the raw progress value between `minimum` and `maximum`.      |
+| `inc()`      | Increment the current progress value.                            |
+| `dec()`      | Decrement the current progress value.                            |
+| `trickle()`  | Apply one automatic increment step.                              |
+| `done()`     | Complete the progress bar and hide it after the configured delay. |
+| `configure()` | Update the shared progress options.                             |
+| `pause()`    | Pause automatic trickling.                                       |
+| `resume()`   | Resume automatic trickling.                                      |
+| `remove()`   | Hide the progress bar immediately.                               |
+| `reset()`    | Reset the shared progress state and options.                     |
+| `isStarted()` | Check whether the progress flow is active.                      |
+| `isRendered()` | Check whether a progress provider is currently mounted.        |
+| `promise()`  | Bind the progress lifecycle to a promise or promise factory.     |
 
-### `SLoadingBar` Props
+### `SProgressProvider` Props
 
 <DataTable preset="props" :data="[
-  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: 'Default loading bar color.' },
-  { name: 'errorColor', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'destructive'`, description: 'Color used by `error()`.' },
-  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: 'Loading bar thickness.' },
-  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: 'Custom classes for the loading bar slots.' },
+  { name: 'minimum', type: 'number', default: '0.08', description: 'Minimum raw progress value used by `progress.start()`.' },
+  { name: 'maximum', type: 'number', default: '1', description: 'Maximum raw progress value used by the provider.' },
+  { name: 'easing', type: 'string', default: `'linear'`, description: 'Transition easing used by the provider indicator.' },
+  { name: 'speed', type: 'number', default: '200', description: 'Transition duration and auto-hide delay in milliseconds.' },
+  { name: 'trickle', type: 'boolean', default: 'true', description: 'Whether `progress.start()` should keep incrementing automatically.' },
+  { name: 'trickleSpeed', type: 'number', default: '200', description: 'Delay between automatic trickle steps.' },
+  { name: 'direction', type: `'ltr' | 'rtl'`, default: `'ltr'`, description: 'Direction used to position the top progress indicator.' },
+  { name: 'indeterminate', type: 'boolean', default: 'false', description: 'Render the provider in indeterminate mode.' },
+  { name: 'class', type: 'string', default: '-', description: 'Root container class name.' },
+  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: 'Top progress indicator color.' },
+  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: 'Top progress thickness.' },
+  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: 'Custom classes for the provider slots.' },
+  { name: 'indicatorProps', type: 'HTMLAttributes', default: '{}', description: 'Props forwarded to the internal indicator element.' },
+]"/>
+
+### `SProgressProvider` Slots
+
+<DataTable preset="slots" :data="[
+  { name: 'default', parameters: '-', description: 'Content rendered after the provider.' },
 ]"/>

@@ -25,7 +25,7 @@ color
 state
 slot
 circle
-loading-bar
+provider
 ```
 
 ## Progress API
@@ -48,6 +48,13 @@ loading-bar
 
 <DataTable preset="slots" :data="[
   { name: 'default', parameters: '{ modelValue, max, progressState, valuePercent }', description: '自定义指示器内容。' },
+]"/>
+
+### 事件
+
+<DataTable preset="emits" :data="[
+  { name: 'update:modelValue', type: '(value: number | null | undefined) => void', description: '进度值变化时触发。' },
+  { name: 'update:max', type: '(value: number) => void', description: '最大值被规范化时触发。' },
 ]"/>
 
 ### 类型
@@ -95,45 +102,68 @@ import { SProgressCircle } from '@soybeanjs/ui';
   { name: 'strokeWidth', type: 'number', default: '8', description: '环形指示器的描边宽度。' },
 ]"/>
 
-## 顶部加载条
+## 进度条 Provider
 
-`useLoadingBar` 基于 `SProgress` 提供顶部加载条能力。应用被 `SConfigProvider` 包裹时会自动挂载加载条 provider；如有需要，也可以在已有 `SConfigProvider` 树内单独挂载 `SLoadingBar`。
+在调用命令式 `progress(...)` API 之前，需要在应用根部附近挂载一次 `SProgressProvider`。`SConfigProvider` 会自动挂载它，因此大多数场景下可以直接调用 `progress`。
 
 ```vue
 <script setup lang="ts">
-import { SButton, useLoadingBar } from '@soybeanjs/ui';
-
-const loadingBar = useLoadingBar();
+import { SButton, SProgressProvider, progress } from '@soybeanjs/ui';
 
 const handleClick = () => {
-  loadingBar.start();
+  progress.start();
 
   window.setTimeout(() => {
-    loadingBar.finish();
+    progress.done();
   }, 1200);
 };
 </script>
 
 <template>
+  <SProgressProvider />
   <SButton @click="handleClick">开始加载</SButton>
 </template>
 ```
 
-### `useLoadingBar` 方法
+### `progress` 方法
 
 | 方法         | 说明                                     |
 | ------------ | ---------------------------------------- |
-| `start()`    | 显示加载条并启动自动递增动画。           |
-| `set(value)` | 将加载进度更新为 `0` 到 `100` 之间的值。 |
-| `finish()`   | 使用默认颜色完成加载并自动隐藏。         |
-| `error()`    | 使用错误颜色完成加载并自动隐藏。         |
-| `clear()`    | 立即隐藏加载条并重置状态。               |
+| `start()`    | 显示进度条并启动自动递增动画。           |
+| `set(value)` | 将原始进度值设置到 `minimum` 到 `maximum` 之间。 |
+| `inc()`      | 增加当前进度值。                         |
+| `dec()`      | 减少当前进度值。                         |
+| `trickle()`  | 执行一次自动递增步进。                   |
+| `done()`     | 完成进度条并在配置延迟后隐藏。           |
+| `configure()` | 更新共享进度配置。                      |
+| `pause()`    | 暂停自动递增。                           |
+| `resume()`   | 恢复自动递增。                           |
+| `remove()`   | 立即隐藏进度条。                         |
+| `reset()`    | 重置共享进度状态与配置。                 |
+| `isStarted()` | 检查进度流程是否已启动。                |
+| `isRendered()` | 检查当前是否已挂载进度 provider。      |
+| `promise()`  | 将进度生命周期绑定到 Promise 或 Promise 工厂。 |
 
-### `SLoadingBar` 属性
+### `SProgressProvider` 属性
 
 <DataTable preset="props" :data="[
-  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: '默认加载条颜色。' },
-  { name: 'errorColor', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'destructive'`, description: '`error()` 使用的颜色。' },
-  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: '加载条粗细。' },
-  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: '为加载条插槽添加自定义类名。' },
+  { name: 'minimum', type: 'number', default: '0.08', description: '`progress.start()` 使用的最小原始进度值。' },
+  { name: 'maximum', type: 'number', default: '1', description: 'provider 使用的最大原始进度值。' },
+  { name: 'easing', type: 'string', default: `'linear'`, description: 'provider 指示器使用的过渡缓动。' },
+  { name: 'speed', type: 'number', default: '200', description: '过渡时长与自动隐藏延迟（毫秒）。' },
+  { name: 'trickle', type: 'boolean', default: 'true', description: '`progress.start()` 是否持续自动递增。' },
+  { name: 'trickleSpeed', type: 'number', default: '200', description: '自动递增步进之间的延迟。' },
+  { name: 'direction', type: `'ltr' | 'rtl'`, default: `'ltr'`, description: '顶部进度条指示器的方向。' },
+  { name: 'indeterminate', type: 'boolean', default: 'false', description: '是否以不确定状态渲染 provider。' },
+  { name: 'class', type: 'string', default: '-', description: '根容器类名。' },
+  { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: '顶部进度条颜色。' },
+  { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: '顶部进度条粗细。' },
+  { name: 'ui', type: 'Partial<Ui>', default: '{}', description: '为 provider 插槽添加自定义类名。' },
+  { name: 'indicatorProps', type: 'HTMLAttributes', default: '{}', description: '传递给内部指示器元素的属性。' },
+]"/>
+
+### `SProgressProvider` 插槽
+
+<DataTable preset="slots" :data="[
+  { name: 'default', parameters: '-', description: '在 provider 之后渲染的内容。' },
 ]"/>

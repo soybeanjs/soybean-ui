@@ -6,7 +6,7 @@ import DemoProgressColor from './color.vue';
 import DemoProgressState from './state.vue';
 import DemoProgressSlot from './slot.vue';
 import DemoProgressCircle from './circle.vue';
-import DemoProgressLoadingBar from './loading-bar.vue';
+import DemoProgressProvider from './provider.vue';
 </script>
 
 <template>
@@ -17,6 +17,6 @@ import DemoProgressLoadingBar from './loading-bar.vue';
     <DemoProgressState />
     <DemoProgressSlot />
     <DemoProgressCircle />
-    <DemoProgressLoadingBar />
+    <DemoProgressProvider />
   </SCard>
 </template>
