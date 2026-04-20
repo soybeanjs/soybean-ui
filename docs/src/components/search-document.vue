@@ -79,7 +79,7 @@ function handleSelect(item: SelectEvent<string>) {
 </script>
 
 <template>
-  <SDialogPure v-model:open="searchOpen">
+  <SDialog v-model:open="searchOpen" pure :show-close="false">
     <template #trigger>
       <div
         v-bind="attrs"
@@ -109,5 +109,5 @@ function handleSelect(item: SelectEvent<string>) {
         </div>
       </template>
     </SCommand>
-  </SDialogPure>
+  </SDialog>
 </template>

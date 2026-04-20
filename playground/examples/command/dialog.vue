@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, shallowRef, watch } from 'vue';
 import { useMagicKeys } from '@vueuse/core';
-import { SCommand, SDialogPure, SKbd } from '@soybeanjs/ui';
+import { SCommand, SDialog, SKbd } from '@soybeanjs/ui';
 import type { CommandOptionData } from '@soybeanjs/ui';
 
 const keys = useMagicKeys();
@@ -81,13 +81,13 @@ watch(CmdJ, v => {
   <div>
     <h3 class="playground-title">Dialog</h3>
     <SKbd :value="['command', 'j']" />
-    <SDialogPure v-model:open="open">
+    <SDialog v-model:open="open" pure>
       <SCommand
         class="border rounded-lg shadow-md"
         :items="items"
         :input-props="{ placeholder: 'Type a command or search...' }"
         empty-label="No command founded, please try again"
       />
-    </SDialogPure>
+    </SDialog>
   </div>
 </template>

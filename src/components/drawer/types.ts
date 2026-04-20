@@ -1,13 +1,10 @@
-import type { Side, UiClass } from '@soybeanjs/headless';
-import type { DialogEmits, DialogExtendedUiSlot, DialogProps } from '../dialog/types';
-
-export type DrawerExtraUiSlot = 'main';
-
-export type DrawerExtendedUi = UiClass<DialogExtendedUiSlot | DrawerExtraUiSlot>;
+import type { Side } from '@soybeanjs/headless';
+import type { DialogEmits, DialogProps, DialogSlots } from '../dialog/types';
 
 export interface DrawerProps extends DialogProps {
   side?: Side;
-  ui?: Partial<DrawerExtendedUi>;
 }
 
 export type DrawerEmits = DialogEmits;
+
+export type DrawerSlots = DialogSlots;

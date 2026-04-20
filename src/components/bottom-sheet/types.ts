@@ -1,6 +1,6 @@
 import type {
   ClassValue,
-  DialogContentEmits,
+  DialogPopupEmits,
   DialogContentProps,
   DialogDescriptionProps,
   DialogFooterProps,
@@ -44,4 +44,4 @@ export interface BottomSheetProps extends DialogRootProps {
   portalProps?: DialogPortalProps;
 }
 
-export type BottomSheetEmits = DialogRootEmits & DialogContentEmits;
+export type BottomSheetEmits = DialogRootEmits & DialogPopupEmits;

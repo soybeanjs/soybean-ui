@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, shallowRef, useSlots, watch } from 'vue';
 import type { CSSProperties } from 'vue';
 import {
-  DialogContent,
+  DialogPopup,
   DialogDescription,
   DialogFooter,
   DialogHeader,
@@ -276,7 +276,7 @@ onBeforeUnmount(() => {
     </DialogTrigger>
     <DialogPortal v-bind="portalProps">
       <DialogOverlay v-bind="overlayProps" />
-      <DialogContent
+      <DialogPopup
         v-bind="contentProps"
         :style="contentStyle"
         :data-dragging="isDragging || isResetting ? 'true' : undefined"
@@ -305,7 +305,7 @@ onBeforeUnmount(() => {
         <DialogFooter v-if="$slots.footer" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps" />
         </DialogFooter>
-      </DialogContent>
+      </DialogPopup>
     </DialogPortal>
   </DialogRoot>
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ShallowRef } from 'vue';
+import { computed } from 'vue';
 import { useControllableState } from '../../composables';
 import { transformPropsToContext } from '../../shared';
 import { provideDialogRootContext } from './context';
@@ -11,7 +13,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<DialogRootProps>(), {
   open: undefined,
-  defaultOpen: false,
   modal: true
 });
 
@@ -20,15 +21,17 @@ const emit = defineEmits<DialogRootEmits>();
 const open = useControllableState(
   () => props.open,
   value => {
-    if (value === undefined) return;
-    emit('update:open', value);
+    emit('update:open', value ?? false);
   },
-  props.defaultOpen
-);
+  props.defaultOpen ?? false
+) as ShallowRef<boolean>;
+
+const modal = computed(() => props.isAlert === true || props.modal);
 
 const { onOpenChange } = provideDialogRootContext({
   open,
-  ...transformPropsToContext(props, ['modal'])
+  modal,
+  ...transformPropsToContext(props, ['isAlert', 'alertType'])
 });
 
 const close = () => {

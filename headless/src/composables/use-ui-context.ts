@@ -3,7 +3,7 @@ import type { ComputedRef } from 'vue';
 import type { ClassValue, UiClass } from '../types';
 import { useContext } from './use-context';
 
-type UseUiConsumer<UiSlot extends string> = <S extends UiSlot | undefined = undefined>(
+export type UseUiConsumer<UiSlot extends string> = <S extends UiSlot | undefined = undefined>(
   slot?: S
 ) => S extends UiSlot ? ComputedRef<ClassValue> : ComputedRef<Partial<UiClass<UiSlot>>>;
 

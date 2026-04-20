@@ -10,7 +10,7 @@ defineOptions({
 
 const props = defineProps<DialogTriggerProps>();
 
-const { open, onOpenToggle, dataState, contentId, setTriggerElement } = useDialogRootContext('DialogTrigger');
+const { open, onOpenToggle, dataState, popupId, setTriggerElement } = useDialogRootContext('DialogTrigger');
 
 const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
 </script>
@@ -23,7 +23,7 @@ const tag = computed(() => (props.as === 'button' ? 'button' : undefined));
     :type="tag"
     aria-haspopup="dialog"
     :aria-expanded="open || false"
-    :aria-controls="open ? contentId : undefined"
+    :aria-controls="open ? popupId : undefined"
     :data-state="dataState"
     @click="onOpenToggle"
   >

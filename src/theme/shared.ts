@@ -50,3 +50,20 @@ export function mergeUi<T extends Record<string, ClassValue>, S extends Record<k
     return acc;
   }, {} as T);
 }
+
+export function mergeBaseVariants<T extends Record<string, () => string>, B extends Partial<Record<keyof T, string>>>(
+  variants: T,
+  baseVariants: B
+): Record<keyof T, () => string> {
+  return Object.entries(variants).reduce(
+    (acc, [$key, variant]) => {
+      const key = $key as keyof T;
+      const base = baseVariants[key];
+
+      acc[key] = () => `${base ?? ''} ${variant()}`.trim();
+
+      return acc;
+    },
+    {} as Record<keyof T, () => string>
+  );
+}

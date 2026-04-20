@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SButton, SDialog, SDialogClose } from '@soybeanjs/ui';
+import { SButton, SDialog } from '@soybeanjs/ui';
 </script>
 
 <template>
@@ -14,12 +14,6 @@ import { SButton, SDialog, SDialogClose } from '@soybeanjs/ui';
         <SButton variant="pure">Open</SButton>
       </template>
       <div>Dialog Content</div>
-      <template #footer>
-        <SDialogClose as-child>
-          <SButton variant="plain">Cancel</SButton>
-        </SDialogClose>
-        <SButton>Confirm</SButton>
-      </template>
     </SDialog>
   </div>
 </template>

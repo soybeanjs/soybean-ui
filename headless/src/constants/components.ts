@@ -23,18 +23,6 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  alertDialog: [
-    'AlertDialogRoot',
-    'AlertDialogTrigger',
-    'AlertDialogPortal',
-    'AlertDialogOverlay',
-    'AlertDialogContent',
-    'AlertDialogHeader',
-    'AlertDialogTitle',
-    'AlertDialogDescription',
-    'AlertDialogFooter',
-    'AlertDialogClose'
-  ],
   anchor: ['AnchorRoot', 'AnchorLink'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
@@ -113,16 +101,21 @@ export const components = {
   ],
   dataTable: ['DataTableRoot'],
   dialog: [
+    'DialogCompact',
+    'DialogProvider',
     'DialogRoot',
     'DialogTrigger',
     'DialogPortal',
     'DialogOverlay',
+    'DialogPopup',
     'DialogContent',
     'DialogHeader',
     'DialogTitle',
     'DialogDescription',
     'DialogFooter',
-    'DialogClose'
+    'DialogClose',
+    'DialogCancel',
+    'DialogConfirm'
   ],
   dropdownMenu: [
     'DropdownMenuRoot',

@@ -7,7 +7,7 @@ const open = ref(false);
 
 <template>
   <div>
-    <h3 class="playground-title">State</h3>
+    <h3 class="playground-title">State: {{ open }}</h3>
     <SDialog v-model:open="open" title="Dialog Title">
       <template #trigger>
         <SButton variant="pure">Open</SButton>
