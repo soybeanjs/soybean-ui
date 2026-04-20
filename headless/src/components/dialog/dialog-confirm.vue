@@ -18,8 +18,6 @@ const cls = useDialogUi('confirm');
 const { onOpenChange } = useDialogRootContext('DialogConfirm');
 
 const onConfirm = async (event: MouseEvent) => {
-  if (event.defaultPrevented) return;
-
   emit('confirm', event);
 
   if (event.defaultPrevented) return;

@@ -120,18 +120,6 @@ export interface DialogCompactProps extends DialogRootProps {
    */
   pure?: boolean;
   /**
-   * The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.
-   *
-   * @defaultValue 'Cancel'
-   */
-  cancelText?: string;
-  /**
-   * The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.
-   *
-   * @defaultValue 'Confirm'
-   */
-  confirmText?: string;
-  /**
    * Whether to show the cancel button.
    *
    * When set to `onlyWarning`, the cancel button will only be shown when the dialog is an alert dialog with `alertType="warning"`.
@@ -141,20 +129,32 @@ export interface DialogCompactProps extends DialogRootProps {
    */
   showCancel?: 'onlyWarning' | boolean;
   /**
+   * The text of the cancel button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `cancel` slot is not provided.
+   *
+   * @defaultValue 'Cancel'
+   */
+  cancelText?: string;
+  /**
    * Whether to show the confirm button when the dialog is an alert dialog.
    *
    * The default value is `true` when the dialog is an alert dialog.
    */
   showConfirm?: boolean;
+  /**
+   * The text of the confirm button. This is used for accessibility purposes and will be rendered in the footer of the dialog if the `confirm` slot is not provided.
+   *
+   * @defaultValue 'Confirm'
+   */
+  confirmText?: string;
   triggerProps?: DialogTriggerProps;
+  overlayProps?: DialogOverlayProps;
+  portalProps?: DialogPortalProps;
   popupProps?: DialogPopupProps;
   headerProps?: DialogHeaderProps;
   contentProps?: DialogContentProps;
   footerProps?: DialogFooterProps;
   titleProps?: DialogTitleProps;
   descriptionProps?: DialogDescriptionProps;
-  overlayProps?: DialogOverlayProps;
-  portalProps?: DialogPortalProps;
   closeProps?: DialogCloseProps;
   cancelProps?: DialogCancelProps;
   confirmProps?: DialogConfirmProps;

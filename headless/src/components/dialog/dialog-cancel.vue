@@ -18,8 +18,6 @@ const cls = useDialogUi('cancel');
 const { setCancelElement, onOpenChange } = useDialogRootContext('DialogCancel');
 
 const onCancel = async (event: MouseEvent) => {
-  if (event.defaultPrevented) return;
-
   emit('cancel', event);
 
   if (event.defaultPrevented) return;

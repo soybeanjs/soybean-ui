@@ -34,28 +34,27 @@ const props = withDefaults(defineProps<DialogCompactProps>(), {
 });
 
 const forwardedProps = useOmitProps(props, [
-  'alertType',
-  'cancelProps',
-  'cancelText',
-  'closeProps',
-  'confirmProps',
-  'confirmText',
-  'contentProps',
+  'title',
   'description',
-  'descriptionProps',
-  'footerProps',
-  'headerProps',
   'icon',
-  'overlayProps',
-  'popupProps',
-  'portalProps',
+  'showClose',
   'pure',
   'showCancel',
-  'showClose',
+  'cancelText',
   'showConfirm',
-  'title',
-  'titleProps',
+  'confirmText',
   'triggerProps',
+  'overlayProps',
+  'portalProps',
+  'popupProps',
+  'headerProps',
+  'contentProps',
+  'footerProps',
+  'titleProps',
+  'descriptionProps',
+  'closeProps',
+  'cancelProps',
+  'confirmProps'
 ]);
 
 const emit = defineEmits<DialogCompactEmits>();
@@ -95,16 +94,10 @@ const icon = computed(() => {
   return null;
 });
 
-const showConfirm = computed(() => {
-  if (typeof props.showConfirm === 'boolean') return props.showConfirm;
-
-  return props.isAlert;
-});
+const showConfirm = computed(() => props.showConfirm ?? props.isAlert);
 
 const showCancel = computed(() => {
-  if (props.showCancel === true) return true;
-
-  if (props.showCancel === false) return false;
+  if (typeof props.showCancel === 'boolean') return props.showCancel;
 
   return props.isAlert === true && props.alertType === 'warning';
 });
