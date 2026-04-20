@@ -1,21 +1,50 @@
 <script setup lang="ts">
+import { onBeforeUnmount } from 'vue';
 import { SButton, progress } from '@soybeanjs/ui';
 
-const start = () => {
+const SET_DURATION = 480;
+let stopTimer: ReturnType<typeof setTimeout> | undefined;
+
+function clearStopTimer() {
+  if (!stopTimer) {
+    return;
+  }
+
+  clearTimeout(stopTimer);
+  stopTimer = undefined;
+}
+
+function start() {
+  progress.reset();
   progress.start();
 
-  window.setTimeout(() => {
+  clearStopTimer();
+  stopTimer = setTimeout(() => {
+    stopTimer = undefined;
     progress.done();
-  }, 1200);
-};
+  }, 1000);
+}
 
-const increment = () => {
-  progress.inc();
-};
+function stop() {
+  clearStopTimer();
+  progress.done();
+}
 
-const set = () => {
-  progress.set(0.6);
-};
+function increment() {
+  progress.inc(0.12);
+}
+
+function set() {
+  progress.animate(0.6, {
+    duration: SET_DURATION,
+    easing: 'ease-in-out'
+  });
+}
+
+onBeforeUnmount(() => {
+  clearStopTimer();
+  progress.reset();
+});
 </script>
 
 <template>
@@ -23,6 +52,7 @@ const set = () => {
     <h3 class="playground-title">Progress API</h3>
     <div class="flex flex-wrap gap-3">
       <SButton @click="start">Start</SButton>
+      <SButton variant="outline" @click="stop">Stop</SButton>
       <SButton variant="outline" @click="increment">Increment</SButton>
       <SButton variant="outline" @click="set">Set 60%</SButton>
     </div>

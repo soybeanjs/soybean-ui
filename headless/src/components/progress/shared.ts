@@ -6,8 +6,13 @@ import type { ProgressOptions, ProgressState } from './types';
 export const DEFAULT_MAX = 100;
 export const DEFAULT_PROGRESS_MINIMUM = 0.08;
 export const DEFAULT_PROGRESS_MAXIMUM = 1;
+export const DEFAULT_PROGRESS_START_POSITION = 0.3;
+export const DEFAULT_PROGRESS_DELAY = 100;
+export const DEFAULT_PROGRESS_STOP_DELAY = 300;
+export const DEFAULT_PROGRESS_FORCED_STOP_DELAY = 0;
 export const DEFAULT_PROGRESS_SPEED = 200;
 export const DEFAULT_PROGRESS_TRICKLE_SPEED = 200;
+export const DEFAULT_PROGRESS_TRICKLE_RATE = 0.02;
 export const DEFAULT_PROGRESS_EASING = 'linear';
 
 export const PROGRESS_CIRCLE_VIEWBOX_SIZE = 100;
@@ -27,6 +32,10 @@ const MAX_PROGRESS_CIRCLE_STROKE_WIDTH = PROGRESS_CIRCLE_VIEWBOX_SIZE / 4;
 export const defaultProgressOptions: Required<ProgressOptions> = {
   minimum: DEFAULT_PROGRESS_MINIMUM,
   maximum: DEFAULT_PROGRESS_MAXIMUM,
+  startPosition: DEFAULT_PROGRESS_START_POSITION,
+  delay: DEFAULT_PROGRESS_DELAY,
+  stopDelay: DEFAULT_PROGRESS_STOP_DELAY,
+  forcedStopDelay: DEFAULT_PROGRESS_FORCED_STOP_DELAY,
   easing: DEFAULT_PROGRESS_EASING,
   speed: DEFAULT_PROGRESS_SPEED,
   trickle: true,
@@ -54,6 +63,14 @@ export function normalizeProgressOptions(options: Partial<Required<ProgressOptio
   return {
     minimum,
     maximum,
+    startPosition: isValidNonNegativeNumber(options.startPosition)
+      ? clampProgressValue(options.startPosition, 0, maximum)
+      : DEFAULT_PROGRESS_START_POSITION,
+    delay: isValidNonNegativeNumber(options.delay) ? options.delay : DEFAULT_PROGRESS_DELAY,
+    stopDelay: isValidNonNegativeNumber(options.stopDelay) ? options.stopDelay : DEFAULT_PROGRESS_STOP_DELAY,
+    forcedStopDelay: isValidNonNegativeNumber(options.forcedStopDelay)
+      ? options.forcedStopDelay
+      : DEFAULT_PROGRESS_FORCED_STOP_DELAY,
     easing: options.easing || DEFAULT_PROGRESS_EASING,
     speed: isValidPositiveNumber(options.speed) ? options.speed : DEFAULT_PROGRESS_SPEED,
     trickle: options.trickle ?? true,
@@ -179,6 +196,10 @@ export function getProgressDecrementAmount(value: number) {
   }
 
   return 0.01;
+}
+
+export function getProgressTrickleAmount(maximum: number) {
+  return Math.random() * DEFAULT_PROGRESS_TRICKLE_RATE * maximum;
 }
 
 export function getProgressIndicatorStyle(

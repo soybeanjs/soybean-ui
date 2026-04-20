@@ -7,6 +7,9 @@ export { provideProgressUi } from './context';
 export { progress } from './state';
 
 export type {
+  ProgressAnimateEasing,
+  ProgressAnimateEasingName,
+  ProgressAnimateOptions,
   ProgressOptions,
   ProgressRootProps,
   ProgressRootEmits,

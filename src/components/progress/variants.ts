@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 
 export const progressVariants = tv({
   slots: {
-    root: 'relative w-full overflow-hidden rounded-full bg-muted',
+    root: 'w-full overflow-hidden rounded-full bg-muted',
     indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`,
     circle: '',
     track: '',
@@ -55,11 +55,21 @@ export const progressVariants = tv({
       '2xl': {
         root: 'h-4'
       }
+    },
+    isFixed: {
+      true: {
+        root: 'fixed pointer-events-none inset-x-0 top-0 z-100 rounded-none bg-transparent shadow-none transition-opacity data-[state=complete]:opacity-0',
+        indicator: 'rounded-none shadow-sm'
+      },
+      false: {
+        root: 'relative'
+      }
     }
   },
   defaultVariants: {
     color: 'primary',
-    size: 'md'
+    size: 'md',
+    isFixed: false
   }
 });
 

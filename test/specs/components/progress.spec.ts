@@ -69,6 +69,8 @@ describe('SProgressProvider', () => {
 
   describe('rendering', () => {
     it('renders the provider progressbar with the configured class', async () => {
+      vi.useFakeTimers();
+
       const wrapper = mount(SProgressProvider, {
         attachTo: document.body,
         props: {
@@ -77,6 +79,7 @@ describe('SProgressProvider', () => {
       });
 
       progress.start();
+      await vi.advanceTimersByTimeAsync(100);
       await nextTick();
 
       const progressbar = document.body.querySelector('[role="progressbar"]');
@@ -88,39 +91,39 @@ describe('SProgressProvider', () => {
   });
 
   describe('state', () => {
-    it('shows the top progress bar on start and hides it after done', async () => {
+    it('shows the top progress bar after the default start delay and hides it after stop', async () => {
       vi.useFakeTimers();
 
-      const wrapper = mount(
-        {
-          components: { SConfigProvider },
-          template: `
-            <SConfigProvider :progress="{ speed: 10 }">
-              <div />
-            </SConfigProvider>
-          `
-        },
-        {
-          attachTo: document.body
-        }
-      );
+      const wrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
 
       progress.start();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
+
+      await vi.advanceTimersByTimeAsync(100);
       await nextTick();
 
       const started = document.body.querySelector('[role="progressbar"]');
 
       expect(started).not.toBeNull();
-      expect(started?.getAttribute('aria-valuenow')).toBe('0.08');
+      expect(started?.getAttribute('aria-valuenow')).toBe('0.3');
 
-      progress.done();
+      progress.stop();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="progressbar"]')?.getAttribute('aria-valuenow')).toBe('0.3');
+
+      await vi.advanceTimersByTimeAsync(300);
       await nextTick();
 
       const finished = document.body.querySelector('[role="progressbar"]');
 
       expect(finished?.getAttribute('aria-valuenow')).toBe('1');
 
-      await vi.advanceTimersByTimeAsync(10);
+      await vi.advanceTimersByTimeAsync(200);
       await nextTick();
 
       expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
@@ -128,11 +131,14 @@ describe('SProgressProvider', () => {
     });
 
     it('can start again after remove clears a paused progress state', async () => {
+      vi.useFakeTimers();
+
       const wrapper = mount(SProgressProvider, {
         attachTo: document.body
       });
 
       progress.start();
+      await vi.advanceTimersByTimeAsync(100);
       await nextTick();
 
       progress.pause();
@@ -142,6 +148,7 @@ describe('SProgressProvider', () => {
       expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
 
       progress.start();
+      await vi.advanceTimersByTimeAsync(100);
       await nextTick();
 
       expect(document.body.querySelector('[role="progressbar"]')).not.toBeNull();
@@ -149,6 +156,8 @@ describe('SProgressProvider', () => {
     });
 
     it('keeps the shared progress state active when one of multiple providers unmounts', async () => {
+      vi.useFakeTimers();
+
       const firstWrapper = mount(SProgressProvider, {
         attachTo: document.body
       });
@@ -157,6 +166,7 @@ describe('SProgressProvider', () => {
       });
 
       progress.start();
+      await vi.advanceTimersByTimeAsync(100);
       await nextTick();
 
       expect(document.body.querySelectorAll('[role="progressbar"]')).toHaveLength(2);
@@ -178,6 +188,8 @@ describe('SProgressProvider', () => {
       progress.configure({
         maximum: 0,
         minimum: 2,
+        delay: 0,
+        startPosition: 0.3,
         trickleSpeed: 10
       });
       progress.start();
@@ -186,7 +198,7 @@ describe('SProgressProvider', () => {
       const started = document.body.querySelector('[role="progressbar"]');
 
       expect(started?.getAttribute('aria-valuemax')).toBe('1');
-      expect(started?.getAttribute('aria-valuenow')).toBe('0.08');
+      expect(started?.getAttribute('aria-valuenow')).toBe('0.3');
 
       progress.configure({ trickle: false, indeterminate: true });
 
@@ -199,6 +211,72 @@ describe('SProgressProvider', () => {
       expect(updated?.hasAttribute('aria-valuenow')).toBe(false);
       wrapper.unmount();
     });
+
+    it('uses small trickle increments instead of large fixed jumps', async () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      vi.useFakeTimers();
+
+      const wrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+
+      progress.start();
+      await vi.advanceTimersByTimeAsync(100);
+      await nextTick();
+
+      const started = document.body.querySelector('[role="progressbar"]');
+
+      expect(started?.getAttribute('aria-valuenow')).toBe('0.3');
+
+      progress.trickle();
+      await nextTick();
+
+      const trickled = document.body.querySelector('[role="progressbar"]');
+
+      expect(trickled?.getAttribute('aria-valuenow')).toBe('0.31');
+      wrapper.unmount();
+    });
+
+    it('animates to the target value over the provided duration', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+
+      progress.animate(1, {
+        from: 0,
+        duration: 64,
+        easing: 'linear'
+      });
+      await nextTick();
+
+      const started = document.body.querySelector('[role="progressbar"]');
+
+      expect(started?.getAttribute('aria-valuenow')).toBe('0');
+
+      await vi.advanceTimersByTimeAsync(32);
+      await nextTick();
+
+      const animated = document.body.querySelector('[role="progressbar"]');
+      const animatedValue = Number(animated?.getAttribute('aria-valuenow'));
+
+      expect(animatedValue).toBeGreaterThan(0);
+      expect(animatedValue).toBeLessThan(1);
+
+      await vi.advanceTimersByTimeAsync(32);
+      await nextTick();
+
+      const completed = document.body.querySelector('[role="progressbar"]');
+
+      expect(completed?.getAttribute('aria-valuenow')).toBe('1');
+
+      await vi.advanceTimersByTimeAsync(16);
+      await nextTick();
+
+      expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
@@ -207,7 +285,7 @@ describe('SProgressProvider', () => {
         attachTo: document.body
       });
 
-      progress.start();
+      progress.start(0.3, 0);
       await nextTick();
 
       const progressbar = document.body.querySelector('[role="progressbar"]');

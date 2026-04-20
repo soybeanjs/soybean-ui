@@ -18,7 +18,21 @@ const attrs = useAttrs();
 
 const forwardedProps = useOmitProps(
   props,
-  ['minimum', 'maximum', 'easing', 'speed', 'trickle', 'trickleSpeed', 'direction', 'indeterminate', 'indicatorProps'],
+  [
+    'minimum',
+    'maximum',
+    'startPosition',
+    'delay',
+    'stopDelay',
+    'forcedStopDelay',
+    'easing',
+    'speed',
+    'trickle',
+    'trickleSpeed',
+    'direction',
+    'indeterminate',
+    'indicatorProps'
+  ],
   attrs
 );
 
@@ -51,6 +65,10 @@ watchEffect(() => {
   ProgressState.configure({
     minimum: props.minimum,
     maximum: props.maximum,
+    startPosition: props.startPosition,
+    delay: props.delay,
+    stopDelay: props.stopDelay,
+    forcedStopDelay: props.forcedStopDelay,
     easing: props.easing,
     speed: props.speed,
     trickle: props.trickle,
@@ -76,11 +94,7 @@ onBeforeUnmount(() => {
     :aria-label="ariaLabel"
     data-slot="root"
   >
-    <ProgressIndicator
-      v-bind="indicatorProps"
-      :style="[indicatorProps?.style, indicatorStyle]"
-      data-slot="indicator"
-    />
+    <ProgressIndicator v-bind="indicatorProps" :style="[indicatorProps?.style, indicatorStyle]" data-slot="indicator" />
   </ProgressRoot>
   <slot />
 </template>

@@ -7,12 +7,26 @@ export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 export interface ProgressOptions {
   minimum?: number;
   maximum?: number;
+  startPosition?: number;
+  delay?: number;
+  stopDelay?: number;
+  forcedStopDelay?: number;
   easing?: string;
   speed?: number;
   trickle?: boolean;
   trickleSpeed?: number;
   direction?: Direction;
   indeterminate?: boolean;
+}
+
+export type ProgressAnimateEasingName = 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
+
+export type ProgressAnimateEasing = ProgressAnimateEasingName | ((value: number) => number);
+
+export interface ProgressAnimateOptions {
+  from?: number;
+  duration?: number;
+  easing?: ProgressAnimateEasing;
 }
 
 export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
