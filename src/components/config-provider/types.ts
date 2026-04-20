@@ -26,7 +26,7 @@ export interface ConfigProviderProps extends _ConfigProviderProps {
   };
   /** The global progress configuration of your application. This will be inherited by the top progress provider. */
   progress?: ProgressProviderProps;
-  /** @deprecated Use `progress` instead. */
+  /** @deprecated since v0.15.0-beta.2 - Use `progress` instead. This alias will be removed in the next major release. */
   loadingBar?: ProgressProviderProps;
   /** The global toast configuration of your application. This will be inherited by the related components. */
   toast?: Partial<ToasterProps>;

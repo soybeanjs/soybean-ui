@@ -293,6 +293,11 @@ class ProgressObserver {
 
 export const ProgressState = new ProgressObserver();
 
+/**
+ * Shared imperative progress controller.
+ *
+ * Calling `progress()` is equivalent to `progress.start()`.
+ */
 export const progress = Object.assign(ProgressState.start, {
   configure: ProgressState.configure,
   reset: ProgressState.reset,
