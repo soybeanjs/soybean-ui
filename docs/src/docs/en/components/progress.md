@@ -159,7 +159,7 @@ const handleClick = () => {
   { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: 'Top progress indicator color.' },
   { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: 'Top progress thickness.' },
   { name: 'ui', type: 'Partial<Ui>', default: '{}', description: 'Custom classes for the provider slots.' },
-  { name: 'indicatorProps', type: 'HTMLAttributes', default: '{}', description: 'Props forwarded to the internal indicator element.' },
+  { name: 'indicatorProps', type: 'ProgressIndicatorProps', default: '{}', description: 'Props forwarded to the internal indicator element.' },
 ]"/>
 
 ### `SProgressProvider` Slots

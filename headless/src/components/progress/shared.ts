@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue';
 import { isNullish } from '../../shared';
 import type { Direction } from '../../types';
-import type { ProgressState } from './types';
+import type { ProgressOptions, ProgressState } from './types';
 
 export const DEFAULT_MAX = 100;
 export const DEFAULT_PROGRESS_MINIMUM = 0.08;
@@ -24,7 +24,7 @@ const INDETERMINATE_PROGRESS_CIRCLE_OFFSET_RATIO = 0.25;
 
 const MAX_PROGRESS_CIRCLE_STROKE_WIDTH = PROGRESS_CIRCLE_VIEWBOX_SIZE / 4;
 
-export const defaultProgressOptions = {
+export const defaultProgressOptions: Required<ProgressOptions> = {
   minimum: DEFAULT_PROGRESS_MINIMUM,
   maximum: DEFAULT_PROGRESS_MAXIMUM,
   easing: DEFAULT_PROGRESS_EASING,
@@ -35,8 +35,32 @@ export const defaultProgressOptions = {
   indeterminate: false
 } as const;
 
+function isValidNonNegativeNumber(value: number | undefined): value is number {
+  return typeof value === 'number' && !Number.isNaN(value) && value >= 0;
+}
+
 function isValidPositiveNumber(value: number | undefined): value is number {
   return typeof value === 'number' && !Number.isNaN(value) && value > 0;
+}
+
+export function normalizeProgressOptions(options: Partial<Required<ProgressOptions>>) {
+  const maximum = isValidPositiveNumber(options.maximum) ? options.maximum : DEFAULT_PROGRESS_MAXIMUM;
+
+  const minimumCandidate = isValidNonNegativeNumber(options.minimum) ? options.minimum : DEFAULT_PROGRESS_MINIMUM;
+
+  const minimum =
+    minimumCandidate < maximum ? minimumCandidate : maximum > DEFAULT_PROGRESS_MINIMUM ? DEFAULT_PROGRESS_MINIMUM : 0;
+
+  return {
+    minimum,
+    maximum,
+    easing: options.easing || DEFAULT_PROGRESS_EASING,
+    speed: isValidPositiveNumber(options.speed) ? options.speed : DEFAULT_PROGRESS_SPEED,
+    trickle: options.trickle ?? true,
+    trickleSpeed: isValidPositiveNumber(options.trickleSpeed) ? options.trickleSpeed : DEFAULT_PROGRESS_TRICKLE_SPEED,
+    direction: options.direction ?? 'ltr',
+    indeterminate: options.indeterminate ?? false
+  };
 }
 
 export function getValueLabel(value: number | null | undefined, max: number): string | undefined {

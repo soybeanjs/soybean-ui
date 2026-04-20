@@ -3,7 +3,8 @@ import {
   clampProgressValue,
   defaultProgressOptions,
   getProgressDecrementAmount,
-  getProgressIncrementAmount
+  getProgressIncrementAmount,
+  normalizeProgressOptions
 } from './shared';
 
 class ProgressObserver {
@@ -35,6 +36,10 @@ class ProgressObserver {
 
     return () => {
       this.mountedCount = Math.max(0, this.mountedCount - 1);
+
+      if (this.mountedCount === 0) {
+        this.remove();
+      }
     };
   };
 
@@ -47,16 +52,22 @@ class ProgressObserver {
   };
 
   configure = (options: ProgressOptions = {}) => {
-    this.settings = {
+    this.settings = normalizeProgressOptions({
       ...this.settings,
       ...Object.fromEntries(Object.entries(options).filter(([, value]) => value !== undefined))
-    };
+    });
 
     if (typeof this.status === 'number') {
       const nextValue = clampProgressValue(this.status, this.settings.minimum, this.settings.maximum);
 
       this.status = nextValue === this.settings.maximum ? null : nextValue;
       this.value = nextValue;
+    }
+
+    this.clearTrickleTimer();
+
+    if (this.settings.trickle && !this.settings.indeterminate && this.isStarted() && !this.isPaused) {
+      this.startTrickling();
     }
 
     this.publish();
@@ -201,6 +212,7 @@ class ProgressObserver {
     this.status = null;
     this.value = null;
     this.visible = false;
+    this.isPaused = false;
     this.publish();
 
     return this;

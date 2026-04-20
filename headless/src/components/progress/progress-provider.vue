@@ -63,7 +63,6 @@ watchEffect(() => {
 onBeforeUnmount(() => {
   stopSubscribe();
   stopMount();
-  ProgressState.remove();
 });
 </script>
 

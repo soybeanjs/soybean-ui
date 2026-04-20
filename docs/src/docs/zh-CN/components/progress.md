@@ -159,7 +159,7 @@ const handleClick = () => {
   { name: 'color', type: `'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'`, default: `'primary'`, description: '顶部进度条颜色。' },
   { name: 'size', type: `'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`, default: `'xs'`, description: '顶部进度条粗细。' },
   { name: 'ui', type: 'Partial<Ui>', default: '{}', description: '为 provider 插槽添加自定义类名。' },
-  { name: 'indicatorProps', type: 'HTMLAttributes', default: '{}', description: '传递给内部指示器元素的属性。' },
+  { name: 'indicatorProps', type: 'ProgressIndicatorProps', default: '{}', description: '传递给内部指示器元素的属性。' },
 ]"/>
 
 ### `SProgressProvider` 插槽

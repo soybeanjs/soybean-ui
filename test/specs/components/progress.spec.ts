@@ -126,6 +126,79 @@ describe('SProgressProvider', () => {
       expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
       wrapper.unmount();
     });
+
+    it('can start again after remove clears a paused progress state', async () => {
+      const wrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+
+      progress.start();
+      await nextTick();
+
+      progress.pause();
+      progress.remove();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="progressbar"]')).toBeNull();
+
+      progress.start();
+      await nextTick();
+
+      expect(document.body.querySelector('[role="progressbar"]')).not.toBeNull();
+      wrapper.unmount();
+    });
+
+    it('keeps the shared progress state active when one of multiple providers unmounts', async () => {
+      const firstWrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+      const secondWrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+
+      progress.start();
+      await nextTick();
+
+      expect(document.body.querySelectorAll('[role="progressbar"]')).toHaveLength(2);
+
+      firstWrapper.unmount();
+      await nextTick();
+
+      expect(document.body.querySelectorAll('[role="progressbar"]')).toHaveLength(1);
+      secondWrapper.unmount();
+    });
+
+    it('normalizes invalid config values and stops trickling when disabled', async () => {
+      vi.useFakeTimers();
+
+      const wrapper = mount(SProgressProvider, {
+        attachTo: document.body
+      });
+
+      progress.configure({
+        maximum: 0,
+        minimum: 2,
+        trickleSpeed: 10
+      });
+      progress.start();
+      await nextTick();
+
+      const started = document.body.querySelector('[role="progressbar"]');
+
+      expect(started?.getAttribute('aria-valuemax')).toBe('1');
+      expect(started?.getAttribute('aria-valuenow')).toBe('0.08');
+
+      progress.configure({ trickle: false, indeterminate: true });
+
+      await vi.advanceTimersByTimeAsync(30);
+      await nextTick();
+
+      const updated = document.body.querySelector('[role="progressbar"]');
+
+      expect(updated?.getAttribute('aria-valuemax')).toBe('1');
+      expect(updated?.hasAttribute('aria-valuenow')).toBe(false);
+      wrapper.unmount();
+    });
   });
 
   describe('accessibility', () => {
