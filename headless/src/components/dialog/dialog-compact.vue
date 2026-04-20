@@ -134,22 +134,22 @@ provideDialogCompactContext({
             <slot name="description" v-bind="slotProps">{{ description }}</slot>
           </DialogDescription>
           <DialogClose v-if="!isAlert && showClose" @close="emit('close', $event)">
-            <slot name="close" />
+            <slot name="close" v-bind="slotProps" />
           </DialogClose>
         </DialogHeader>
         <DialogContent v-bind="contentProps">
           <slot v-bind="slotProps" />
         </DialogContent>
         <DialogClose v-if="pure && !isAlert && showClose" @close="emit('close', $event)">
-          <slot name="close" />
+          <slot name="close" v-bind="slotProps" />
         </DialogClose>
         <DialogFooter v-if="showFooter" v-bind="footerProps">
           <slot name="footer" v-bind="slotProps">
             <DialogCancel v-if="showCancel" v-bind="cancelProps" @cancel="emit('cancel', $event)">
-              <slot name="cancel">{{ cancelText }}</slot>
+              <slot name="cancel" v-bind="slotProps">{{ cancelText }}</slot>
             </DialogCancel>
             <DialogConfirm v-if="showConfirm" v-bind="confirmProps" @confirm="emit('confirm', $event)">
-              <slot name="confirm">{{ confirmText }}</slot>
+              <slot name="confirm" v-bind="slotProps">{{ confirmText }}</slot>
             </DialogConfirm>
           </slot>
         </DialogFooter>

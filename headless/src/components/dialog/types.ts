@@ -176,10 +176,10 @@ export type DialogCompactSlots = {
   trigger?: (props: DialogCompactBaseSlotProps) => any;
   title?: (props: DialogCompactBaseSlotProps) => any;
   description?: (props: DialogCompactBaseSlotProps) => any;
-  close?: () => any;
+  close?: (props: DialogCompactBaseSlotProps) => any;
   footer?: (props: DialogCompactBaseSlotProps) => any;
-  cancel?: () => any;
-  confirm?: () => any;
+  cancel?: (props: DialogCompactBaseSlotProps) => any;
+  confirm?: (props: DialogCompactBaseSlotProps) => any;
 };
 
 export interface DialogRootContextParams extends PropsToContext<DialogRootProps, 'modal' | 'isAlert' | 'alertType'> {

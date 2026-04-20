@@ -62,7 +62,6 @@ provideDialogUi(ui);
 <template>
   <DialogCompact v-bind="forwardedProps" v-on="listeners">
     <template v-for="slotName in slotNames" #[slotName]="slotProps">
-      <!-- @vue-expect-error ignore slot prop types -->
       <slot :name="slotName" v-bind="slotProps" />
     </template>
   </DialogCompact>
