@@ -292,6 +292,7 @@ import {
   ProgressIndicator,
   ProgressProvider,
   ProgressRoot,
+  RadioGroupCompact,
   RadioGroupControl,
   RadioGroupIndicator,
   RadioGroupItem,
@@ -1150,12 +1151,14 @@ export const Progress = {
 };
 
 export const RadioGroup = {
+  Compact: RadioGroupCompact,
   Root: RadioGroupRoot,
   Item: RadioGroupItem,
   Control: RadioGroupControl,
   Indicator: RadioGroupIndicator,
   Label: RadioGroupLabel
 } as {
+  Compact: typeof RadioGroupCompact;
   Root: typeof RadioGroupRoot;
   Item: typeof RadioGroupItem;
   Control: typeof RadioGroupControl;

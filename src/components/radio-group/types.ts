@@ -1,14 +1,17 @@
 import type {
   AcceptableBooleanValue,
-  ClassValue,
+  ClassValue
+} from '@soybeanjs/headless';
+import type {
+  RadioGroupCompactEmits,
+  RadioGroupCompactProps,
   RadioGroupControlProps,
   RadioGroupIndicatorProps,
   RadioGroupItemProps,
   RadioGroupLabelProps,
-  RadioGroupRootEmits,
-  RadioGroupRootProps,
+  RadioGroupOptionData,
   RadioGroupUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/radio-group';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { RadioGroupVariant } from './variants';
 
@@ -19,29 +22,18 @@ export interface RadioProps extends RadioGroupItemProps {
   labelProps?: RadioGroupLabelProps;
 }
 
-export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
-  value: NonNullable<T>;
-  label: string;
-  disabled?: boolean;
-}
-
 export interface RadioGroupProps<
   T extends AcceptableBooleanValue = AcceptableBooleanValue,
   S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
-> extends RadioGroupRootProps<T> {
+> extends RadioGroupCompactProps<T, S> {
   class?: ClassValue;
   ui?: Partial<RadioGroupUi>;
   variant?: RadioGroupVariant;
   color?: ThemeColor;
   size?: ThemeSize;
-  items: S[];
-  itemProps?: RadioGroupItemProps;
-  controlProps?: RadioGroupControlProps;
-  indicatorProps?: RadioGroupIndicatorProps;
-  labelProps?: RadioGroupLabelProps;
 }
 
-export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
+export type RadioGroupEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupCompactEmits<T>;
 
 export type RadioGroupCardUiSlot = 'content' | 'textContent' | 'icon' | 'description';
 
@@ -69,3 +61,5 @@ export interface RadioCardGroupProps<
 }
 
 export type RadioGroupCardEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupEmits<T>;
+
+export type { RadioGroupOptionData } from '@soybeanjs/headless/radio-group';

@@ -267,7 +267,14 @@ export const components = {
   portal: ['Portal'],
   primitive: ['Primitive'],
   progress: ['ProgressProvider', 'ProgressRoot', 'ProgressIndicator', 'ProgressCircle'],
-  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
+  radioGroup: [
+    'RadioGroupCompact',
+    'RadioGroupRoot',
+    'RadioGroupItem',
+    'RadioGroupControl',
+    'RadioGroupIndicator',
+    'RadioGroupLabel'
+  ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
   select: [

@@ -67,6 +67,25 @@ export interface RadioGroupControlProps extends /** @vue-ignore */ ButtonHTMLAtt
 
 export interface RadioGroupIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
+export interface RadioGroupOptionData<T extends AcceptableBooleanValue = AcceptableBooleanValue> {
+  value: NonNullable<T>;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface RadioGroupCompactProps<
+  T extends AcceptableBooleanValue = AcceptableBooleanValue,
+  S extends RadioGroupOptionData<T> = RadioGroupOptionData<T>
+> extends RadioGroupRootProps<T> {
+  items: S[];
+  itemProps?: RadioGroupItemProps;
+  controlProps?: RadioGroupControlProps;
+  indicatorProps?: RadioGroupIndicatorProps;
+  labelProps?: RadioGroupLabelProps;
+}
+
+export type RadioGroupCompactEmits<T extends AcceptableBooleanValue = AcceptableBooleanValue> = RadioGroupRootEmits<T>;
+
 export type RadioGroupItemContextParams = PropsToContext<
   Pick<RadioGroupItemProps, 'name' | 'required' | 'value' | 'disabled'>
 > &

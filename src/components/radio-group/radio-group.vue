@@ -7,13 +7,12 @@
   "
 >
 import { computed } from 'vue';
-import { RadioGroupRoot, provideRadioGroupUi } from '@soybeanjs/headless';
-import type { AcceptableBooleanValue, RadioGroupRootEmits } from '@soybeanjs/headless';
+import { RadioGroupCompact, provideRadioGroupUi } from '@soybeanjs/headless';
+import type { AcceptableBooleanValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { radioGroupVariants } from './variants';
-import Radio from './radio.vue';
-import type { RadioGroupOptionData, RadioGroupProps } from './types';
+import type { RadioGroupEmits, RadioGroupOptionData, RadioGroupProps } from './types';
 
 defineOptions({
   name: 'SRadioGroup'
@@ -21,20 +20,21 @@ defineOptions({
 
 const props = defineProps<RadioGroupProps<T, S>>();
 
-const emit = defineEmits<RadioGroupRootEmits<T>>();
+const emit = defineEmits<RadioGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
   'class',
   'ui',
   'variant',
   'color',
-  'size',
-  'items',
-  'itemProps',
-  'controlProps',
-  'indicatorProps',
-  'labelProps'
+  'size'
 ]);
+
+const compactItems = computed(() => props.items as RadioGroupOptionData<T>[]);
+
+const handleModelValueChange = (value: NonNullable<T>) => {
+  emit('update:modelValue', value);
+};
 
 const ui = computed(() => {
   const variants = radioGroupVariants({
@@ -50,19 +50,6 @@ provideRadioGroupUi(ui);
 </script>
 
 <template>
-  <RadioGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <Radio
-      v-for="item in items"
-      :key="String(item.value)"
-      v-bind="itemProps"
-      :color="color"
-      :size="size"
-      :value="item.value"
-      :label="item.label"
-      :disabled="disabled || item.disabled"
-      :control-props="controlProps"
-      :indicator-props="indicatorProps"
-      :label-props="labelProps"
-    />
-  </RadioGroupRoot>
+  <!-- @vue-ignore generic props are validated by RadioGroupProps/RadioGroupCompactProps -->
+  <RadioGroupCompact v-bind="forwardedProps" :items="compactItems" @update:model-value="handleModelValueChange" />
 </template>
