@@ -1,9 +1,4 @@
 import type {
-  CheckboxControlProps,
-  CheckboxGroupRootEmits,
-  CheckboxGroupRootProps,
-  CheckboxIndicatorProps,
-  CheckboxLabelProps,
   CheckboxRootEmits,
   CheckboxRootProps,
   CheckboxUi,
@@ -12,6 +7,17 @@ import type {
   DefinedValue,
   UiClass
 } from '@soybeanjs/headless';
+import type {
+  CheckboxCardGroupCompactEmits,
+  CheckboxCardGroupCompactProps,
+  CheckboxCardGroupOptionData,
+  CheckboxControlProps,
+  CheckboxGroupCompactEmits,
+  CheckboxGroupCompactProps,
+  CheckboxGroupOptionData,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps
+} from '@soybeanjs/headless/checkbox';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { CheckboxShape } from './variants';
 
@@ -40,41 +46,33 @@ export interface CheckboxCardProps extends CheckboxProps {
 
 export type CheckboxCardEmits = CheckboxEmits;
 
-export interface CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> {
-  value: T;
-  label: string;
-  disabled?: boolean;
-}
-
 export interface CheckboxGroupProps<
   T extends DefinedValue = DefinedValue,
   S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
-> extends CheckboxGroupRootProps<T> {
+> extends CheckboxGroupCompactProps<T, S> {
+  class?: ClassValue;
   ui?: Partial<CheckboxUi>;
   color?: ThemeColor;
   size?: ThemeSize;
   shape?: CheckboxShape;
-  items: S[];
-  rootProps?: CheckboxRootProps;
-  controlProps?: CheckboxControlProps;
-  indicatorProps?: CheckboxIndicatorProps;
-  labelProps?: CheckboxLabelProps;
 }
 
-export type CheckboxGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupRootEmits<T>;
-
-export interface CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> extends CheckboxGroupOptionData<T> {
-  icon?: string;
-  description?: string;
-}
+export type CheckboxGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupCompactEmits<T>;
 
 export interface CheckboxCardGroupProps<
   T extends DefinedValue = DefinedValue,
   S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
-> extends CheckboxGroupProps<T, S> {
+> extends Omit<
+    CheckboxCardGroupCompactProps<T, S>,
+    'contentClass' | 'textContentClass' | 'iconClass' | 'descriptionClass'
+  > {
   class?: ClassValue;
   ui?: Partial<CheckboxCardUi>;
-  items: S[];
+  color?: ThemeColor;
+  size?: ThemeSize;
+  shape?: CheckboxShape;
 }
 
-export type CheckboxCardGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupEmits<T>;
+export type CheckboxCardGroupEmits<T extends DefinedValue = DefinedValue> = CheckboxCardGroupCompactEmits<T>;
+
+export type { CheckboxCardGroupOptionData, CheckboxGroupOptionData } from '@soybeanjs/headless/checkbox';

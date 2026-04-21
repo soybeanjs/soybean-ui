@@ -4,12 +4,11 @@
   generic="T extends DefinedValue = DefinedValue, S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>"
 >
 import { computed } from 'vue';
-import { CheckboxGroupRoot } from '@soybeanjs/headless';
+import { CheckboxGroupCompact, provideCheckboxUi } from '@soybeanjs/headless';
 import type { DefinedValue } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { checkboxVariants } from './variants';
-import Checkbox from './checkbox.vue';
 import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
 
 defineOptions({
@@ -21,43 +20,38 @@ const props = defineProps<CheckboxGroupProps<T, S>>();
 const emit = defineEmits<CheckboxGroupEmits<T>>();
 
 const forwardedProps = useOmitProps(props, [
+  'class',
   'ui',
   'color',
   'size',
-  'shape',
-  'items',
-  'rootProps',
-  'controlProps',
-  'indicatorProps',
-  'labelProps'
+  'shape'
 ]);
 
 const ui = computed(() => {
-  const variants = checkboxVariants();
+  const variants = checkboxVariants({
+    color: props.color,
+    size: props.size,
+    shape: props.shape,
+    orientation: props.orientation
+  });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { groupRoot: props.class });
 });
+
+const compactItems = computed(() => props.items as CheckboxGroupOptionData<T>[]);
+
+const handleModelValueChange = (value: DefinedValue[]) => {
+  emit('update:modelValue', value as T[]);
+};
+
+provideCheckboxUi(ui);
 </script>
 
 <template>
-  <CheckboxGroupRoot
+  <!-- @vue-ignore generic props are validated by CheckboxGroupProps/CheckboxGroupCompactProps -->
+  <CheckboxGroupCompact
     v-bind="forwardedProps"
-    :class="ui.groupRoot"
-    @update:model-value="emit('update:modelValue', $event)"
-  >
-    <Checkbox
-      v-for="(item, index) in items"
-      :key="index"
-      v-bind="rootProps"
-      :color="color"
-      :size="size"
-      :shape="shape"
-      :label="item.label"
-      :value="item.value"
-      :disabled="disabled || item.disabled"
-      :control-props="controlProps"
-      :indicator-props="indicatorProps"
-      :label-props="labelProps"
-    />
-  </CheckboxGroupRoot>
+    :items="compactItems"
+    @update:model-value="handleModelValueChange"
+  />
 </template>

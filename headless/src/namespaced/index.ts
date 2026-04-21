@@ -57,7 +57,9 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
+  CheckboxCardGroupCompact,
   CheckboxControl,
+  CheckboxGroupCompact,
   CheckboxGroupRoot,
   CheckboxIndicator,
   CheckboxLabel,
@@ -563,12 +565,16 @@ export const Carousel = {
 };
 
 export const Checkbox = {
+  CardGroupCompact: CheckboxCardGroupCompact,
+  GroupCompact: CheckboxGroupCompact,
   GroupRoot: CheckboxGroupRoot,
   Root: CheckboxRoot,
   Control: CheckboxControl,
   Indicator: CheckboxIndicator,
   Label: CheckboxLabel
 } as {
+  CardGroupCompact: typeof CheckboxCardGroupCompact;
+  GroupCompact: typeof CheckboxGroupCompact;
   GroupRoot: typeof CheckboxGroupRoot;
   Root: typeof CheckboxRoot;
   Control: typeof CheckboxControl;
