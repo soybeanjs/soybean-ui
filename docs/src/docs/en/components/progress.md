@@ -114,7 +114,7 @@ const handleClick = () => {
   progress.start();
 
   window.setTimeout(() => {
-    progress.stop();
+    progress.done();
   }, 1200);
 };
 </script>
@@ -130,8 +130,6 @@ const handleClick = () => {
 | Method                    | Description                                                                            |
 | ------------------------- | -------------------------------------------------------------------------------------- |
 | `start()`                 | Show the progress bar with the default start position and delay, then start trickling. |
-| `stop()`                  | Complete the progress bar using the default stop delay and hide it.                    |
-| `animate(value, options)` | Animate the progress bar to a target value over a fixed duration.                      |
 | `set(value)`              | Set the raw progress value between `minimum` and `maximum`.                            |
 | `inc()`                   | Increment the current progress value.                                                  |
 | `dec()`                   | Decrement the current progress value.                                                  |

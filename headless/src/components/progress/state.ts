@@ -1,5 +1,5 @@
 import { defu } from 'defu';
-import { clamp } from '../../shared';
+import { clamp, isClient } from '../../shared';
 import type { Direction } from '../../types';
 import type { ProgressOptions } from './types';
 
@@ -21,6 +21,7 @@ class ProgressObserver {
   // Queue for animation functions
   private static pending: Array<(next: () => void) => void> = [];
   private static isPaused: boolean = false;
+  private static trickleTimer: ReturnType<typeof setTimeout> | undefined;
 
   // Reset the progress
   static reset(): typeof ProgressObserver {
@@ -28,6 +29,7 @@ class ProgressObserver {
     this.isPaused = false;
     this.pending = [];
     this.options = defaultOptions;
+    this.clearTrickleTimer();
     return this;
   }
 
@@ -42,6 +44,14 @@ class ProgressObserver {
     return typeof this.status === 'number';
   }
 
+  static isRendered(): boolean {
+    if (!isClient) {
+      return false;
+    }
+
+    return document.querySelector('[data-soybean-progress]') !== null;
+  }
+
   /**
    * Set the progress status.
    * This method updates the progress status for every progress element present in the DOM.
@@ -49,13 +59,17 @@ class ProgressObserver {
    * If the template is null, it relies on user-inserted elements.
    */
   static set(n: number): typeof ProgressObserver {
-    if (this.isPaused) return this;
+    if (!isClient || this.isPaused) return this;
 
     const started = this.isStarted();
     // Clamp n between minimum and maximum
     n = clamp(n, this.options.minimum, this.options.maximum);
     // Reset status if maximum is reached
     this.status = n === this.options.maximum ? null : n;
+
+    if (this.status === null) {
+      this.clearTrickleTimer();
+    }
 
     const progressElements = this.render(!started);
     const speed = this.options.speed;
@@ -107,24 +121,17 @@ class ProgressObserver {
 
   // Start the progress bar
   static start(): typeof ProgressObserver {
+    if (!isClient) return this;
     if (!this.status) this.set(0);
 
-    const work = () => {
-      if (this.isPaused) return;
-      setTimeout(() => {
-        if (!this.status) return;
-        this.trickle();
-        work();
-      }, this.options.trickleSpeed);
-    };
-
-    if (this.options.trickle) work();
+    if (this.options.trickle) this.startTrickling();
 
     return this;
   }
 
   // Complete the progress
   static done(force?: boolean): typeof ProgressObserver {
+    if (!isClient) return this;
     if (!force && !this.status) return this;
     return this.inc(0.3 + 0.5 * Math.random()).set(1);
   }
@@ -187,24 +194,45 @@ class ProgressObserver {
     return this.inc();
   }
 
-  // Handle jQuery promises (for compatibility)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  static promise($promise: any): typeof ProgressObserver {
-    if (!$promise || $promise.state() === 'resolved') {
+  static promise(input: any): typeof ProgressObserver {
+    const resolved = typeof input === 'function' ? input() : input;
+
+    if (!resolved) {
       return this;
     }
 
-    let initial = 0,
-      current = 0;
-
-    if (current === 0) {
+    if (typeof resolved.then === 'function') {
       this.start();
+
+      Promise.resolve(resolved).then(
+        () => {
+          this.done();
+        },
+        () => {
+          this.done(true);
+        }
+      );
+
+      return this;
     }
 
+    if (typeof resolved.state !== 'function' || typeof resolved.always !== 'function') {
+      return this;
+    }
+
+    if (resolved.state() === 'resolved') {
+      return this;
+    }
+
+    let initial = 0;
+    let current = 0;
+
+    this.start();
     initial++;
     current++;
 
-    $promise.always(() => {
+    resolved.always(() => {
       current--;
       if (current === 0) {
         initial = 0;
@@ -224,6 +252,10 @@ class ProgressObserver {
    * When using indeterminate mode with a custom template, the template should include the indeterminate element.
    */
   static render(fromStart: boolean = false): HTMLElement[] {
+    if (!isClient) {
+      return [];
+    }
+
     const progressElements: HTMLElement[] = Array.from(
       document.querySelectorAll('[data-soybean-progress]')
     ) as HTMLElement[];
@@ -246,6 +278,12 @@ class ProgressObserver {
           percent
         })
       );
+
+      if (typeof this.status === 'number') {
+        progress.setAttribute('aria-valuenow', `${this.status}`);
+      } else {
+        progress.removeAttribute('aria-valuenow');
+      }
     });
 
     return progressElements;
@@ -259,6 +297,12 @@ class ProgressObserver {
    * is hidden instead of being removed.
    */
   static remove(progressElement?: HTMLElement): void {
+    if (!isClient) {
+      return;
+    }
+
+    this.clearTrickleTimer();
+
     if (progressElement) {
       // For user-provided templates, hide the element instead of removing it.
       progressElement.style.display = 'none';
@@ -276,6 +320,7 @@ class ProgressObserver {
   static pause(): typeof ProgressObserver {
     if (!this.isStarted()) return this;
     this.isPaused = true;
+    this.clearTrickleTimer();
     return this;
   }
 
@@ -287,20 +332,7 @@ class ProgressObserver {
     // Set isPaused to false to allow progress updates
     this.isPaused = false;
 
-    // If trickle is enabled, restart the trickle loop only once
-    if (this.options.trickle) {
-      // Avoid starting multiple loops by checking if one is already running could be implemented here.
-      const work = () => {
-        if (this.isPaused) return;
-        setTimeout(() => {
-          // Ensure that progress is still active before trickling
-          if (!this.status) return;
-          this.trickle();
-          work();
-        }, this.options.trickleSpeed);
-      };
-      work();
-    }
+    if (this.options.trickle) this.startTrickling();
 
     return this;
   }
@@ -318,6 +350,35 @@ class ProgressObserver {
     if (fn) {
       fn(this.next.bind(this));
     }
+  }
+
+  private static clearTrickleTimer(): void {
+    if (this.trickleTimer) {
+      clearTimeout(this.trickleTimer);
+      this.trickleTimer = undefined;
+    }
+  }
+
+  private static startTrickling(): void {
+    if (this.trickleTimer || this.isPaused || !this.isStarted()) {
+      return;
+    }
+
+    const tick = () => {
+      this.trickleTimer = undefined;
+
+      if (this.isPaused || !this.isStarted()) {
+        return;
+      }
+
+      this.trickle();
+
+      if (!this.isPaused && this.isStarted()) {
+        this.trickleTimer = setTimeout(tick, this.options.trickleSpeed);
+      }
+    };
+
+    this.trickleTimer = setTimeout(tick, this.options.trickleSpeed);
   }
 
   // Compute the CSS for positioning the bar

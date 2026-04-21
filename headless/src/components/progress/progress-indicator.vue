@@ -19,7 +19,14 @@ const { dir, max, modelValue, progressState, valuePercent } = useProgressRootCon
 
 const style = computed(() => {
   const value = getValuePercent(valuePercent.value, dir.value);
-  return value !== undefined ? { '--progress-indicator-value': `${value}%` } : {};
+  if (value === undefined) {
+    return {};
+  }
+
+  return {
+    '--progress-indicator-value': `${value}%`,
+    transform: `translateX(${value}%)`
+  };
 });
 </script>
 

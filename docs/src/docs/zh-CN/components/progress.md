@@ -114,7 +114,7 @@ const handleClick = () => {
   progress.start();
 
   window.setTimeout(() => {
-    progress.stop();
+    progress.done();
   }, 1200);
 };
 </script>
@@ -130,8 +130,6 @@ const handleClick = () => {
 | 方法                      | 说明                                                 |
 | ------------------------- | ---------------------------------------------------- |
 | `start()`                 | 按默认起点和启动延迟显示进度条，并启动自动递增动画。 |
-| `stop()`                  | 按默认收尾延迟完成进度条并隐藏。                     |
-| `animate(value, options)` | 在指定时长内以缓动动画推进到目标值。                 |
 | `set(value)`              | 将原始进度值设置到 `minimum` 到 `maximum` 之间。     |
 | `inc()`                   | 增加当前进度值。                                     |
 | `dec()`                   | 减少当前进度值。                                     |

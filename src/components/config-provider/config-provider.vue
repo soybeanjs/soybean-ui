@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, ['iconRender', 'theme', 'size', 'iconify', 'toast', 'customToast']);
+const forwardedProps = useOmitProps(props, ['iconRender', 'theme', 'size', 'iconify', 'progress', 'toast', 'customToast']);
 
 const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon }));
 
@@ -70,7 +70,7 @@ watchEffect(() => {
       {{ cssVars }}
     </Primitive>
     <slot />
-    <ProgressProvider />
+    <ProgressProvider v-bind="props.progress" />
     <Toaster v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />
   </ConfigProvider>

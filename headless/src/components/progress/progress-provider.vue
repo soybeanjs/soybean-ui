@@ -18,7 +18,15 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div :class="ui.root" style="display: none" data-soybean-progress>
+  <div
+    :class="ui.root"
+    role="progressbar"
+    aria-label="Loading"
+    aria-valuemin="0"
+    aria-valuemax="1"
+    style="display: none"
+    data-soybean-progress
+  >
     <div :class="ui.indicator" data-soybean-progress-bar></div>
   </div>
 </template>

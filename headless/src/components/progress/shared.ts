@@ -1,5 +1,5 @@
 import { isNullish } from '../../shared';
-import { Direction } from '../../types';
+import type { Direction } from '../../types';
 import type { ProgressState } from './types';
 
 export const DEFAULT_MAX = 100;
