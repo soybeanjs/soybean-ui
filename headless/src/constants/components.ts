@@ -270,6 +270,7 @@ export const components = {
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
   select: [
+    'SelectCompact',
     'SelectRoot',
     'SelectTrigger',
     'SelectPortal',

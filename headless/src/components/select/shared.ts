@@ -1,5 +1,6 @@
 import { isNullish } from '../../shared';
 import type { DefinedValue, MaybeArray } from '../../types';
+import type { SelectGroupOptionData, SelectOptionData } from './types';
 
 export const selectCssVars = {
   popupTransformOrigin: '--soybean-select-popup-transform-origin',
@@ -17,4 +18,10 @@ export const SELECT_EVENT = 'select.select';
 
 export function shouldShowPlaceholder(value?: MaybeArray<DefinedValue> | undefined): boolean {
   return isNullish(value) || value === '' || (Array.isArray(value) && value.length === 0);
+}
+
+export function isGroupOption<T extends DefinedValue = DefinedValue>(
+  item: SelectOptionData<T>
+): item is SelectGroupOptionData<T> {
+  return 'items' in item;
 }

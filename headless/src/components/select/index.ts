@@ -1,4 +1,5 @@
 export { default as SelectRoot } from './select-root.vue';
+export { default as SelectCompact } from './select-compact.vue';
 export { default as SelectTrigger } from './select-trigger.vue';
 export { default as SelectPortal } from '../portal/portal.vue';
 export { default as SelectContent } from './select-content.vue';
@@ -19,6 +20,9 @@ export { provideSelectUi } from './context';
 
 export type { PortalProps as SelectPortalProps } from '../portal/types';
 export type {
+  SelectCompactProps,
+  SelectCompactEmits,
+  SelectCompactSlots,
   SelectRootProps,
   SelectRootEmits,
   SelectArrowProps,
@@ -39,6 +43,9 @@ export type {
   SelectScrollUpButtonProps,
   SelectScrollDownButtonProps,
   SelectItemEvent,
+  SelectSingleOptionData,
+  SelectGroupOptionData,
+  SelectOptionData,
   SelectPosition,
   SelectUiSlot,
   SelectUi

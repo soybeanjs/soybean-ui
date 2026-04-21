@@ -304,6 +304,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
   SelectArrow,
+  SelectCompact,
   SelectContent,
   SelectGroup,
   SelectGroupLabel,
@@ -1176,6 +1177,7 @@ export const ScrollArea = {
 };
 
 export const Select = {
+  Compact: SelectCompact,
   Root: SelectRoot,
   Trigger: SelectTrigger,
   Portal: SelectPortal,
@@ -1193,6 +1195,7 @@ export const Select = {
   Separator: SelectSeparator,
   Arrow: SelectArrow
 } as {
+  Compact: typeof SelectCompact;
   Root: typeof SelectRoot;
   Trigger: typeof SelectTrigger;
   Portal: typeof SelectPortal;
