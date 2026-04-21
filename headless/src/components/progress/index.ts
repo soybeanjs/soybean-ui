@@ -3,21 +3,18 @@ export { default as ProgressRoot } from './progress-root.vue';
 export { default as ProgressIndicator } from './progress-indicator.vue';
 export { default as ProgressCircle } from './progress-circle.vue';
 
-export { provideProgressUi } from './context';
+export { provideProgressUi, provideProgressProviderUi } from './context';
 export { progress } from './state';
 
 export type {
-  ProgressOptions,
   ProgressRootProps,
   ProgressRootEmits,
   ProgressIndicatorProps,
-  ProgressProviderProps,
   ProgressCircleProps,
   ProgressRootContext,
-  ProgressRenderState,
-  ProgressPromise,
   ProgressState,
-  ProgressSubscriber,
+  ProgressProviderProps,
+  ProgressOptions,
   ProgressUiSlot,
   ProgressUi
 } from './types';

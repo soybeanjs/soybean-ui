@@ -3,6 +3,7 @@ import { computed, useAttrs, watch } from 'vue';
 import { useControllableState, useOmitProps } from '../../composables';
 import { isNullish } from '../../shared';
 import { Primitive } from '../primitive';
+import { useDirection } from '../config-provider/context';
 import { provideProgressRootContext, useProgressUi } from './context';
 import { DEFAULT_MAX, getValueLabel, getValidMax, getValidModelValue } from './shared';
 import type { ProgressRootEmits, ProgressRootProps, ProgressState } from './types';
@@ -38,6 +39,8 @@ const max = useControllableState(
   },
   DEFAULT_MAX
 );
+
+const dir = useDirection(() => props.dir);
 
 const normalizedMax = computed(() => getValidMax(max.value));
 
@@ -109,6 +112,7 @@ watch(
 );
 
 provideProgressRootContext({
+  dir,
   modelValue: normalizedModelValue,
   max: normalizedMax,
   progressState,

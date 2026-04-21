@@ -1,6 +1,6 @@
 import type {
+  ProgressProviderProps,
   ProgressIndicatorProps,
-  ProgressProviderProps as _ProgressProviderProps,
   ProgressRootEmits,
   ProgressRootProps,
   ProgressState,
@@ -25,20 +25,7 @@ export interface ProgressCircleProps extends ProgressRootProps {
   strokeWidth?: number;
 }
 
-/**
- * Styled progress provider props.
- *
- * Inherits all headless provider props such as `minimum`, `maximum`, `speed`, `trickle`, and `direction`,
- * then adds UI-only styling props like `class`, `color`, `size`, and `ui`.
- */
-export interface ProgressProviderProps extends _ProgressProviderProps {
-  color?: ThemeColor;
-  size?: ThemeSize;
-  class?: ClassValue;
-  ui?: Partial<ProgressUi>;
-}
-
 export type ProgressEmits = ProgressRootEmits;
 export type ProgressCircleEmits = ProgressRootEmits;
 
-export type { ProgressState };
+export type { ProgressState, ProgressProviderProps };

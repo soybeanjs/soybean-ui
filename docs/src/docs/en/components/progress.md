@@ -127,28 +127,32 @@ const handleClick = () => {
 
 ### `progress` Methods
 
-| Method       | Description                                                     |
-| ------------ | --------------------------------------------------------------- |
-| `start()`    | Show the progress bar and start the automatic trickle animation. |
-| `set(value)` | Set the raw progress value between `minimum` and `maximum`.      |
-| `inc()`      | Increment the current progress value.                            |
-| `dec()`      | Decrement the current progress value.                            |
-| `trickle()`  | Apply one automatic increment step.                              |
-| `done()`     | Complete the progress bar and hide it after the configured delay. |
-| `configure()` | Update the shared progress options.                             |
-| `pause()`    | Pause automatic trickling.                                       |
-| `resume()`   | Resume automatic trickling.                                      |
-| `remove()`   | Hide the progress bar immediately.                               |
-| `reset()`    | Reset the shared progress state and options.                     |
-| `isStarted()` | Check whether the progress flow is active.                      |
-| `isRendered()` | Check whether a progress provider is currently mounted.        |
-| `promise()`  | Bind the progress lifecycle to a promise or promise factory.     |
+| Method                    | Description                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------- |
+| `start()`                 | Show the progress bar with the default start position and delay, then start trickling. |
+| `set(value)`              | Set the raw progress value between `minimum` and `maximum`.                            |
+| `inc()`                   | Increment the current progress value.                                                  |
+| `dec()`                   | Decrement the current progress value.                                                  |
+| `trickle()`               | Apply one automatic increment step.                                                    |
+| `done()`                  | Complete the progress bar and hide it after the configured delay.                      |
+| `configure()`             | Update the shared progress options.                                                    |
+| `pause()`                 | Pause automatic trickling.                                                             |
+| `resume()`                | Resume automatic trickling.                                                            |
+| `remove()`                | Hide the progress bar immediately.                                                     |
+| `reset()`                 | Reset the shared progress state and options.                                           |
+| `isStarted()`             | Check whether the progress flow is active.                                             |
+| `isRendered()`            | Check whether a progress provider is currently mounted.                                |
+| `promise()`               | Bind the progress lifecycle to a promise or promise factory.                           |
 
 ### `SProgressProvider` Props
 
 <DataTable preset="props" :data="[
   { name: 'minimum', type: 'number', default: '0.08', description: 'Minimum raw progress value used by `progress.start()`.' },
   { name: 'maximum', type: 'number', default: '1', description: 'Maximum raw progress value used by the provider.' },
+  { name: 'startPosition', type: 'number', default: '0.3', description: 'Default starting progress value used by `progress.start()` for page transitions.' },
+  { name: 'delay', type: 'number', default: '100', description: 'Default start delay used by `progress.start()` to avoid flashes on fast navigations.' },
+  { name: 'stopDelay', type: 'number', default: '300', description: 'Default completion delay used by `progress.stop()`.' },
+  { name: 'forcedStopDelay', type: 'number', default: '0', description: 'Additional delay applied before `progress.stop()` starts its completion delay.' },
   { name: 'easing', type: 'string', default: `'linear'`, description: 'Transition easing used by the provider indicator.' },
   { name: 'speed', type: 'number', default: '200', description: 'Transition duration and auto-hide delay in milliseconds.' },
   { name: 'trickle', type: 'boolean', default: 'true', description: 'Whether `progress.start()` should keep incrementing automatically.' },

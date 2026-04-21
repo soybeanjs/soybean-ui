@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, h, watch, watchEffect } from 'vue';
+import { h, watch, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { ConfigProvider, Primitive } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
@@ -29,16 +29,7 @@ const props = withDefaults(defineProps<ConfigProviderProps>(), {
   })
 });
 
-const forwardedProps = useOmitProps(props, [
-  'iconRender',
-  'theme',
-  'size',
-  'iconify',
-  'progress',
-  'loadingBar',
-  'toast',
-  'customToast'
-]);
+const forwardedProps = useOmitProps(props, ['iconRender', 'theme', 'size', 'iconify', 'progress', 'toast', 'customToast']);
 
 const iconRender = props.iconRender ?? ((icon: IconValue) => h(Icon, { icon }));
 
@@ -52,8 +43,6 @@ const { getCss } = createShadcnTheme(props.theme);
 const generateCss = () => getCss(props.theme, props.theme.radius);
 
 const cssVars = useStorage('__SoybeanUI_themeVars', generateCss());
-
-const progressProps = computed(() => props.progress ?? props.loadingBar);
 
 function addSizeClass(size: ThemeSize) {
   if (!isClient) return;
@@ -80,9 +69,8 @@ watchEffect(() => {
     <Primitive id="__SoybeanUI_themeVars" as="style">
       {{ cssVars }}
     </Primitive>
-    <ProgressProvider v-bind="progressProps">
-      <slot />
-    </ProgressProvider>
+    <slot />
+    <ProgressProvider v-bind="props.progress" />
     <Toaster v-if="!props.customToast" v-bind="props.toast" />
     <DialogProvider />
   </ConfigProvider>

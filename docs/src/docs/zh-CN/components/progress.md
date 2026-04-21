@@ -127,28 +127,32 @@ const handleClick = () => {
 
 ### `progress` 方法
 
-| 方法         | 说明                                     |
-| ------------ | ---------------------------------------- |
-| `start()`    | 显示进度条并启动自动递增动画。           |
-| `set(value)` | 将原始进度值设置到 `minimum` 到 `maximum` 之间。 |
-| `inc()`      | 增加当前进度值。                         |
-| `dec()`      | 减少当前进度值。                         |
-| `trickle()`  | 执行一次自动递增步进。                   |
-| `done()`     | 完成进度条并在配置延迟后隐藏。           |
-| `configure()` | 更新共享进度配置。                      |
-| `pause()`    | 暂停自动递增。                           |
-| `resume()`   | 恢复自动递增。                           |
-| `remove()`   | 立即隐藏进度条。                         |
-| `reset()`    | 重置共享进度状态与配置。                 |
-| `isStarted()` | 检查进度流程是否已启动。                |
-| `isRendered()` | 检查当前是否已挂载进度 provider。      |
-| `promise()`  | 将进度生命周期绑定到 Promise 或 Promise 工厂。 |
+| 方法                      | 说明                                                 |
+| ------------------------- | ---------------------------------------------------- |
+| `start()`                 | 按默认起点和启动延迟显示进度条，并启动自动递增动画。 |
+| `set(value)`              | 将原始进度值设置到 `minimum` 到 `maximum` 之间。     |
+| `inc()`                   | 增加当前进度值。                                     |
+| `dec()`                   | 减少当前进度值。                                     |
+| `trickle()`               | 执行一次自动递增步进。                               |
+| `done()`                  | 完成进度条并在配置延迟后隐藏。                       |
+| `configure()`             | 更新共享进度配置。                                   |
+| `pause()`                 | 暂停自动递增。                                       |
+| `resume()`                | 恢复自动递增。                                       |
+| `remove()`                | 立即隐藏进度条。                                     |
+| `reset()`                 | 重置共享进度状态与配置。                             |
+| `isStarted()`             | 检查进度流程是否已启动。                             |
+| `isRendered()`            | 检查当前是否已挂载进度 provider。                    |
+| `promise()`               | 将进度生命周期绑定到 Promise 或 Promise 工厂。       |
 
 ### `SProgressProvider` 属性
 
 <DataTable preset="props" :data="[
   { name: 'minimum', type: 'number', default: '0.08', description: '`progress.start()` 使用的最小原始进度值。' },
   { name: 'maximum', type: 'number', default: '1', description: 'provider 使用的最大原始进度值。' },
+  { name: 'startPosition', type: 'number', default: '0.3', description: '`progress.start()` 默认使用的起始进度值，更适合页面切换过渡。' },
+  { name: 'delay', type: 'number', default: '100', description: '`progress.start()` 的默认启动延迟，避免过快切换时闪烁。' },
+  { name: 'stopDelay', type: 'number', default: '300', description: '`progress.stop()` 的默认收尾延迟。' },
+  { name: 'forcedStopDelay', type: 'number', default: '0', description: '`progress.stop()` 在收尾延迟前额外等待的时间。' },
   { name: 'easing', type: 'string', default: `'linear'`, description: 'provider 指示器使用的过渡缓动。' },
   { name: 'speed', type: 'number', default: '200', description: '过渡时长与自动隐藏延迟（毫秒）。' },
   { name: 'trickle', type: 'boolean', default: 'true', description: '`progress.start()` 是否持续自动递增。' },

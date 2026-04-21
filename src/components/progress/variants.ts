@@ -4,7 +4,7 @@ import { tv } from 'tailwind-variants';
 export const progressVariants = tv({
   slots: {
     root: 'relative w-full overflow-hidden rounded-full bg-muted',
-    indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`,
+    indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 transform-gpu will-change-transform data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`,
     circle: '',
     track: '',
     label: ''
@@ -122,5 +122,12 @@ export const circleProgressVariants = tv({
   defaultVariants: {
     color: 'primary',
     size: 'md'
+  }
+});
+
+export const progressProviderVariants = tv({
+  slots: {
+    root: 'fixed z-99999 w-0 h-0 pointer-events-none',
+    indicator: `fixed top-0 start-0 w-full h-0.75 bg-primary`
   }
 });
