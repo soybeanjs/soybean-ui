@@ -315,7 +315,7 @@ export const components = {
     'TableHead',
     'TableCell'
   ],
-  tabs: ['TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
+  tabs: ['SegmentCompact', 'TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   tagsInput: [
     'TagsInputRoot',

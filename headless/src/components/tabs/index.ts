@@ -3,6 +3,7 @@ export { default as TabsList } from './tabs-list.vue';
 export { default as TabsTrigger } from './tabs-trigger.vue';
 export { default as TabsContent } from './tabs-content.vue';
 export { default as TabsIndicator } from './tabs-indicator.vue';
+export { default as SegmentCompact } from './segment-compact.vue';
 export { default as TabsCompact } from './tabs-compact.vue';
 
 export { provideTabsUi } from './context';
@@ -23,3 +24,11 @@ export type {
   TabsUiSlot,
   TabsUi
 } from './types';
+
+export type {
+  SegmentCompactProps,
+  SegmentCompactEmits,
+  SegmentOptionData,
+  SegmentCompactItemSlotProps,
+  SegmentCompactSlots
+} from './segment-types';

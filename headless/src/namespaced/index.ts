@@ -351,6 +351,7 @@ import {
   TableRow,
   TableHead,
   TableCell,
+  SegmentCompact,
   TabsContent,
   TabsCompact,
   TabsIndicator,
@@ -1308,6 +1309,7 @@ export const Table = {
 
 export const Tabs = {
   Compact: TabsCompact,
+  Segment: SegmentCompact,
   Root: TabsRoot,
   List: TabsList,
   Trigger: TabsTrigger,
@@ -1315,6 +1317,7 @@ export const Tabs = {
   Indicator: TabsIndicator
 } as {
   Compact: typeof TabsCompact;
+  Segment: typeof SegmentCompact;
   Root: typeof TabsRoot;
   List: typeof TabsList;
   Trigger: typeof TabsTrigger;
