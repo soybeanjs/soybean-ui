@@ -1,7 +1,5 @@
-import type { FuseResult, FuseResultMatch } from 'fuse.js';
 import type {
   CommandGroupOptionData,
-  CommandHighlightSearchOptionData,
   CommandOptionData,
   CommandSearchOptionData,
   CommandSingleOptionData
@@ -28,23 +26,11 @@ export function getCommandSearchOptions<T extends CommandSingleOptionData = Comm
   });
 }
 
-export function getCommandHighlightSearchOption<T extends CommandSingleOptionData = CommandSingleOptionData>(
-  item: CommandSearchOptionData<T>,
-  searchTerm: string
-) {
-  const searchOption: CommandHighlightSearchOptionData<T> = {
-    ...item,
-    labelHtml: highlightCommandOption(item, searchTerm, 'label')
-  };
-
-  return searchOption;
-}
-
 export function getCommandItemOptions<T extends CommandSingleOptionData = CommandSingleOptionData>(
-  options: CommandHighlightSearchOptionData<T>[]
+  options: CommandSearchOptionData<T>[]
 ) {
-  type HighlightGroup = CommandGroupOptionData<CommandHighlightSearchOptionData<T>>;
-  type HighlightOption = CommandHighlightSearchOptionData<T> | HighlightGroup;
+  type SearchGroup = CommandGroupOptionData<CommandSearchOptionData<T>>;
+  type SearchOption = CommandSearchOptionData<T> | SearchGroup;
 
   const itemsByGroup = options.reduce(
     (acc, item) => {
@@ -57,101 +43,18 @@ export function getCommandItemOptions<T extends CommandSingleOptionData = Comman
             label: groupLabel ?? groupValue,
             separator: groupSeparator,
             items: []
-          } satisfies HighlightGroup;
+          } satisfies SearchGroup;
         }
 
-        (acc[groupValue] as HighlightGroup).items.push(rest as CommandHighlightSearchOptionData<T>);
+        (acc[groupValue] as SearchGroup).items.push(rest as CommandSearchOptionData<T>);
       } else {
-        acc[`item-${item.value}`] = rest as CommandHighlightSearchOptionData<T>;
+        acc[`item-${item.value}`] = rest as CommandSearchOptionData<T>;
       }
 
       return acc;
     },
-    {} as Record<string, HighlightOption>
+    {} as Record<string, SearchOption>
   );
 
   return Object.values(itemsByGroup);
-}
-
-function truncateHTMLFromStart(html: string, maxLength: number) {
-  let truncated = '';
-  let totalLength = 0;
-  let insideTag = false;
-
-  for (let index = html.length - 1; index >= 0; index -= 1) {
-    if (html[index] === '>') {
-      insideTag = true;
-    } else if (html[index] === '<') {
-      insideTag = false;
-      truncated = html[index] + truncated;
-      continue;
-    }
-
-    if (!insideTag) {
-      totalLength += 1;
-    }
-
-    if (totalLength <= maxLength) {
-      truncated = html[index] + truncated;
-    } else {
-      truncated = `...${truncated}`;
-      break;
-    }
-  }
-
-  return truncated;
-}
-
-export function highlightCommandOption<T>(
-  item: T & { matches?: FuseResult<T>['matches'] },
-  searchTerm: string,
-  forceKey?: string,
-  omitKeys?: string[]
-) {
-  function generateHighlightedText(value: FuseResultMatch['value'], indices: FuseResultMatch['indices'] = []) {
-    let content = '';
-    let nextUnHighlightedRegionStartingIndex = 0;
-
-    value ||= '';
-
-    indices.forEach(region => {
-      if (region.length === 2 && region[0] === region[1]) {
-        return;
-      }
-
-      const lastIndicNextIndex = region[1] + 1;
-      const isMatched = lastIndicNextIndex - region[0] >= searchTerm.length;
-
-      content += [
-        value.substring(nextUnHighlightedRegionStartingIndex, region[0]),
-        isMatched && '<mark>',
-        value.substring(region[0], lastIndicNextIndex),
-        isMatched && '</mark>'
-      ]
-        .filter(Boolean)
-        .join('');
-
-      nextUnHighlightedRegionStartingIndex = lastIndicNextIndex;
-    });
-
-    content += value.substring(nextUnHighlightedRegionStartingIndex);
-
-    const markIndex = content.indexOf('<mark>');
-
-    if (markIndex !== -1) {
-      content = truncateHTMLFromStart(content, content.length - markIndex);
-    }
-
-    return content;
-  }
-
-  const validMatch = item?.matches?.find(
-    match => (!forceKey || match.key === forceKey) && !omitKeys?.includes(match.key!)
-  );
-
-  if (validMatch) {
-    return generateHighlightedText(validMatch.value, validMatch.indices);
-  }
-
-  return undefined;
 }

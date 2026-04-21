@@ -44,11 +44,6 @@ export type CommandSearchOptionData<T extends CommandSingleOptionData = CommandS
   groupSeparator?: boolean;
 };
 
-export type CommandHighlightSearchOptionData<T extends CommandSingleOptionData = CommandSingleOptionData> =
-  CommandSearchOptionData<T> & {
-  labelHtml?: string;
-};
-
 export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export type CommandUiSlot =

@@ -98,12 +98,12 @@ const inputProps = computed(() => ({
   placeholder: props.placeholder ?? props.inputProps?.placeholder
 }));
 
-const getItemKey = (item: (typeof filteredItems.value)[number], index: number) => {
+const getItemKey = (item: (typeof filteredItems.value)[number]) => {
   if (isGroupOption(item)) {
-    return `group-${item.label}-${index}`;
+    return `group-${item.label}`;
   }
 
-  return `item-${item.value}-${index}`;
+  return `item-${item.value}`;
 };
 
 const handleSelect = (item: T) => {
@@ -151,7 +151,7 @@ const handleSelect = (item: T) => {
           <div v-if="!filteredItems.length" :class="ui.empty">
             <slot name="empty">{{ emptyLabel }}</slot>
           </div>
-          <template v-for="(item, index) in filteredItems" :key="getItemKey(item, index)">
+          <template v-for="item in filteredItems" :key="getItemKey(item)">
             <template v-if="isGroupOption(item)">
               <AutocompleteGroup v-bind="groupProps">
                 <AutocompleteGroupLabel v-bind="groupLabelProps">

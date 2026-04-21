@@ -77,12 +77,12 @@ const contentProps = computed(() => ({
   popupProps: props.popupProps ?? props.contentProps?.popupProps
 }));
 
-const getItemKey = (item: SelectOptionData<T>, index: number) => {
+const getItemKey = (item: SelectOptionData<T>) => {
   if (isGroupOption(item)) {
-    return `group-${item.label}-${index}`;
+    return `group-${item.label}`;
   }
 
-  return `item-${String(item.value)}-${index}`;
+  return `item-${String(item.value)}`;
 };
 
 const getTriggerValueSlotProps = (slotProps: {
@@ -129,7 +129,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
           </slot>
         </SelectScrollUpButton>
         <SelectViewport v-bind="viewportProps">
-          <template v-for="(item, index) in items" :key="getItemKey(item, index)">
+          <template v-for="item in items" :key="getItemKey(item)">
             <template v-if="isGroupOption(item)">
               <SelectGroup v-bind="groupProps">
                 <SelectGroupLabel v-bind="groupLabelProps">

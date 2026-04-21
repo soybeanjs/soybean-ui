@@ -16,15 +16,8 @@ import {
 } from '../listbox';
 import SeparatorRoot from '../separator/separator-root.vue';
 import { useCommandUi } from './context';
-import { getCommandHighlightSearchOption, getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
-import type {
-  CommandCompactEmits,
-  CommandCompactProps,
-  CommandCompactSlots,
-  CommandHighlightSearchOptionData,
-  CommandOptionData,
-  CommandSingleOptionData
-} from './types';
+import { getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
+import type { CommandCompactEmits, CommandCompactProps, CommandCompactSlots, CommandOptionData, CommandSingleOptionData } from './types';
 
 defineOptions({
   name: 'CommandCompact'
@@ -79,11 +72,7 @@ const searchItems = computed(() => getCommandSearchOptions(props.items));
 
 const { results } = useFuse(searchTerm, searchItems, fuseOptions);
 
-const filteredItems = computed<CommandOptionData<CommandHighlightSearchOptionData<T>>[]>(() => {
-  const highlightOptions = results.value.map(result => getCommandHighlightSearchOption(result.item, searchTerm.value));
-
-  return getCommandItemOptions(highlightOptions);
-});
+const filteredItems = computed<CommandOptionData<T>[]>(() => getCommandItemOptions(results.value.map(result => result.item)));
 
 const inputProps = computed(() => ({
   ...props.inputProps,
@@ -97,12 +86,12 @@ const listProps = computed(() => ({
 
 const ui = useCommandUi();
 
-const getItemKey = (item: CommandOptionData<T>, index: number) => {
+const getItemKey = (item: CommandOptionData<T>) => {
   if (isGroupOption(item)) {
-    return `group-${item.value}-${index}`;
+    return `group-${item.value}`;
   }
 
-  return `item-${item.value}-${index}`;
+  return `item-${item.value}`;
 };
 </script>
 
@@ -129,7 +118,7 @@ const getItemKey = (item: CommandOptionData<T>, index: number) => {
       <div v-if="!filteredItems.length" v-bind="emptyProps" :class="ui.empty">
         <slot name="empty">{{ emptyLabel }}</slot>
       </div>
-      <template v-for="(item, index) in filteredItems" :key="getItemKey(item, index)">
+      <template v-for="item in filteredItems" :key="getItemKey(item)">
         <template v-if="isGroupOption(item)">
           <ListboxGroup v-bind="groupProps">
             <ListboxGroupLabel v-bind="groupLabelProps">{{ item.label }}</ListboxGroupLabel>

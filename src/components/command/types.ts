@@ -6,7 +6,6 @@ import type {
   CommandGroupLabelProps,
   CommandGroupOptionData,
   CommandGroupProps,
-  CommandHighlightSearchOptionData,
   CommandInputProps,
   CommandItemEmits,
   CommandItemLabelProps,
@@ -56,6 +55,5 @@ export type {
   CommandSingleOptionData,
   CommandGroupOptionData,
   CommandOptionData,
-  CommandSearchOptionData,
-  CommandHighlightSearchOptionData
+  CommandSearchOptionData
 } from '@soybeanjs/headless/command';

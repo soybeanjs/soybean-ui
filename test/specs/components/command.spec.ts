@@ -140,7 +140,7 @@ describe('SCommand', () => {
           template: `
             <div>
               <label for="command-input">Command</label>
-              <SCommand :items="items" :input-props="{ controlProps: { id: 'command-input', 'aria-label': 'Command' } }" />
+              <SCommand :items="items" :input-props="{ controlProps: { id: 'command-input' } }" />
             </div>
           `
         },

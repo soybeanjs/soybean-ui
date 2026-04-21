@@ -22,7 +22,6 @@ export type {
   CommandGroupOptionData,
   CommandOptionData,
   CommandSearchOptionData,
-  CommandHighlightSearchOptionData,
   CommandUiSlot,
   CommandUi
 } from './types';
