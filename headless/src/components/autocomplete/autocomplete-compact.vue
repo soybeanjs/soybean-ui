@@ -12,7 +12,7 @@ import AutocompleteGroupLabel from './autocomplete-group-label.vue';
 import AutocompleteInput from './autocomplete-input.vue';
 import AutocompleteItem from './autocomplete-item.vue';
 import AutocompleteItemIndicator from './autocomplete-item-indicator.vue';
-import { Portal as AutocompletePortal } from '../portal';
+import { Portal } from '../portal';
 import AutocompleteRoot from './autocomplete-root.vue';
 import AutocompleteSeparator from './autocomplete-separator.vue';
 import AutocompleteTrigger from './autocomplete-trigger.vue';
@@ -103,7 +103,7 @@ const getItemKey = (item: (typeof filteredItems.value)[number], index: number) =
     return `group-${item.label}-${index}`;
   }
 
-  return item.value;
+  return `item-${item.value}-${index}`;
 };
 
 const handleSelect = (item: T) => {
@@ -145,7 +145,7 @@ const handleSelect = (item: T) => {
         </slot>
       </AutocompleteTrigger>
     </AutocompleteAnchor>
-    <AutocompletePortal v-bind="portalProps">
+    <Portal v-bind="portalProps">
       <AutocompleteContent v-bind="contentProps">
         <AutocompleteViewport v-bind="viewportProps">
           <div v-if="!filteredItems.length" :class="ui.empty">
@@ -202,6 +202,6 @@ const handleSelect = (item: T) => {
           </template>
         </AutocompleteViewport>
       </AutocompleteContent>
-    </AutocompletePortal>
+    </Portal>
   </AutocompleteRoot>
 </template>

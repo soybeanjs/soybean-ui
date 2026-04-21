@@ -10,7 +10,7 @@ import SelectGroupLabel from './select-group-label.vue';
 import SelectItem from './select-item.vue';
 import SelectItemIndicator from './select-item-indicator.vue';
 import SelectItemText from './select-item-text.vue';
-import { Portal as SelectPortal } from '../portal';
+import { Portal } from '../portal';
 import SelectRoot from './select-root.vue';
 import SelectScrollDownButton from './select-scroll-down-button.vue';
 import SelectScrollUpButton from './select-scroll-up-button.vue';
@@ -82,7 +82,7 @@ const getItemKey = (item: SelectOptionData<T>, index: number) => {
     return `group-${item.label}-${index}`;
   }
 
-  return item.value;
+  return `item-${String(item.value)}-${index}`;
 };
 
 const getTriggerValueSlotProps = (slotProps: {
@@ -116,7 +116,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
         </slot>
       </SelectTriggerIcon>
     </SelectTrigger>
-    <SelectPortal v-bind="portalProps">
+    <Portal v-bind="portalProps">
       <SelectContent
         v-bind="contentProps"
         @close-auto-focus="emit('closeAutoFocus', $event)"
@@ -193,6 +193,6 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
         </SelectScrollDownButton>
         <SelectArrow v-if="showArrow" v-bind="arrowProps" />
       </SelectContent>
-    </SelectPortal>
+    </Portal>
   </SelectRoot>
 </template>
