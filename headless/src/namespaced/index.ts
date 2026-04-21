@@ -352,6 +352,7 @@ import {
   TableHead,
   TableCell,
   TabsContent,
+  TabsCompact,
   TabsIndicator,
   TabsList,
   TabsRoot,
@@ -1306,12 +1307,14 @@ export const Table = {
 };
 
 export const Tabs = {
+  Compact: TabsCompact,
   Root: TabsRoot,
   List: TabsList,
   Trigger: TabsTrigger,
   Content: TabsContent,
   Indicator: TabsIndicator
 } as {
+  Compact: typeof TabsCompact;
   Root: typeof TabsRoot;
   List: typeof TabsList;
   Trigger: typeof TabsTrigger;

@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import { describe, expect, it } from 'vitest';
 import STabs from '../../../src/components/tabs/tabs.vue';
 import { getA11yViolations } from '../../shared/a11y';
@@ -37,6 +38,33 @@ describe('STabs', () => {
         attachTo: document.body
       });
       expect(wrapper.find('[role="tablist"]').exists()).toBe(true);
+      wrapper.unmount();
+    });
+
+    it('forwards custom trigger and content slots', async () => {
+      const wrapper = mount(
+        {
+          components: { STabs },
+          data() {
+            return { items };
+          },
+          template: `
+            <STabs :items="items" model-value="tab-1">
+              <template #trigger="{ label, active }">
+                <span :data-test="'custom-trigger-' + label">{{ active ? 'active' : 'idle' }}-{{ label }}</span>
+              </template>
+              <template #content="{ value, active }">
+                <div :data-test="'custom-content-' + value">{{ active }}-{{ value }}</div>
+              </template>
+            </STabs>
+          `
+        },
+        { attachTo: document.body }
+      );
+
+      await nextTick();
+      expect(wrapper.find('[data-test="custom-trigger-Account"]').exists()).toBe(true);
+      expect(wrapper.find('[data-test="custom-content-tab-1"]').exists()).toBe(true);
       wrapper.unmount();
     });
   });

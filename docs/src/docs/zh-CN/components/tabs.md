@@ -27,6 +27,8 @@ const items = [
 </template>
 ```
 
+> `STabs` 现在会把条目遍历、默认 trigger/content 组合与 indicator 渲染委托给 headless `TabsCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/tabs` 直接导入 `TabsCompact`。
+
 ## 演示
 
 ```playground
@@ -81,12 +83,13 @@ custom
     description: '自定义样式类。',
     fields: [
       { name: 'root', type: 'string', description: '根容器类名。' },
-      { name: 'list', type: 'string', description: 'Tab list container class.' },
-      { name: 'trigger', type: 'string', description: 'Tab trigger class.' },
-      { name: 'indicator', type: 'string', description: 'Active indicator class.' },
-      { name: 'content', type: 'string', description: 'Tab content container class.' },
-    ]
-  }
+       { name: 'list', type: 'string', description: 'Tab list container class.' },
+       { name: 'trigger', type: 'string', description: 'Tab trigger class.' },
+       { name: 'indicator', type: 'string', description: 'Active indicator class.' },
+       { name: 'indicatorContent', type: 'string', description: '激活指示器内容类名。' },
+       { name: 'content', type: 'string', description: 'Tab content container class.' },
+     ]
+   }
 ]"/>
 
 <UnionType name="ThemeSize" description="主题尺寸类型" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
