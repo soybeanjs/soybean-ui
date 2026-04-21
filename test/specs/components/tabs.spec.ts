@@ -46,10 +46,10 @@ describe('STabs', () => {
         {
           components: { STabs },
           data() {
-            return { items };
+            return { currentValue: 'tab-1', items };
           },
           template: `
-            <STabs :items="items" model-value="tab-1">
+            <STabs v-model="currentValue" :items="items">
               <template #trigger="{ label, active }">
                 <span :data-test="'custom-trigger-' + label">{{ active ? 'active' : 'idle' }}-{{ label }}</span>
               </template>
@@ -67,6 +67,12 @@ describe('STabs', () => {
       expect(wrapper.find('[data-test="custom-content-tab-1"]').exists()).toBe(true);
       expect(wrapper.find('[data-test="custom-trigger-Account"]').text()).toBe('active-Account');
       expect(wrapper.find('[data-test="custom-content-tab-1"]').text()).toBe('true-tab-1');
+
+      await wrapper.findAll('[role="tab"]')[1].trigger('mousedown', { button: 0 });
+      await nextTick();
+
+      expect(wrapper.find('[data-test="custom-trigger-Security"]').text()).toBe('active-Security');
+      expect(wrapper.find('[data-test="custom-content-tab-2"]').text()).toBe('true-tab-2');
       wrapper.unmount();
     });
   });

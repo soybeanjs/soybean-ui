@@ -51,7 +51,7 @@ const forwardedProps = useOmitProps(props, [
 const searchTerm = useControllableState(
   () => props.searchTerm,
   value => {
-    emit('update:searchTerm', value || '');
+    emit('update:searchTerm', value ?? '');
   },
   props.inputProps?.defaultValue || ''
 ) as ShallowRef<string>;
