@@ -1,29 +1,38 @@
 import type { FuseResult, FuseResultMatch } from 'fuse.js';
-import type { CommandHighlightSearchOptionData, CommandOptionData, CommandSearchOptionData } from './types';
+import type {
+  CommandGroupOptionData,
+  CommandHighlightSearchOptionData,
+  CommandOptionData,
+  CommandSearchOptionData,
+  CommandSingleOptionData
+} from './types';
 
-export function getCommandSearchOptions(items: CommandOptionData[]) {
-  const searchOptions = items.flatMap(item => {
-    if (!item.items) {
-      return [item as CommandSearchOptionData];
-    }
-
-    return item.items.map(gItems => {
-      const searchOption: CommandSearchOptionData = {
-        groupValue: item.value,
-        groupLabel: item.label,
-        groupSeparator: item.separator,
-        ...gItems
-      };
-
-      return searchOption;
-    });
-  });
-
-  return searchOptions;
+export function isGroupOption<T extends CommandSingleOptionData = CommandSingleOptionData>(
+  item: CommandOptionData<T>
+): item is CommandGroupOptionData<T> {
+  return 'items' in item;
 }
 
-export function getCommandHighlightSearchOption(item: CommandSearchOptionData, searchTerm: string) {
-  const searchOption: CommandHighlightSearchOptionData = {
+export function getCommandSearchOptions<T extends CommandSingleOptionData = CommandSingleOptionData>(items: CommandOptionData<T>[]) {
+  return items.flatMap(item => {
+    if (!isGroupOption(item)) {
+      return [item as CommandSearchOptionData<T>];
+    }
+
+    return item.items.map(groupItem => ({
+      groupValue: item.value,
+      groupLabel: item.label,
+      groupSeparator: item.separator,
+      ...groupItem
+    }));
+  });
+}
+
+export function getCommandHighlightSearchOption<T extends CommandSingleOptionData = CommandSingleOptionData>(
+  item: CommandSearchOptionData<T>,
+  searchTerm: string
+) {
+  const searchOption: CommandHighlightSearchOptionData<T> = {
     ...item,
     labelHtml: highlightCommandOption(item, searchTerm, 'label')
   };
@@ -31,7 +40,12 @@ export function getCommandHighlightSearchOption(item: CommandSearchOptionData, s
   return searchOption;
 }
 
-export function getCommandItemOptions(options: CommandHighlightSearchOptionData[]) {
+export function getCommandItemOptions<T extends CommandSingleOptionData = CommandSingleOptionData>(
+  options: CommandHighlightSearchOptionData<T>[]
+) {
+  type HighlightGroup = CommandGroupOptionData<CommandHighlightSearchOptionData<T>>;
+  type HighlightOption = CommandHighlightSearchOptionData<T> | HighlightGroup;
+
   const itemsByGroup = options.reduce(
     (acc, item) => {
       const { groupValue, groupLabel, groupSeparator, ...rest } = item;
@@ -41,22 +55,19 @@ export function getCommandItemOptions(options: CommandHighlightSearchOptionData[
           acc[groupValue] = {
             value: groupValue,
             label: groupLabel ?? groupValue,
-            separator: groupSeparator
-          };
+            separator: groupSeparator,
+            items: []
+          } satisfies HighlightGroup;
         }
 
-        if (!acc[groupValue].items) {
-          acc[groupValue].items = [];
-        }
-
-        acc[groupValue].items.push(rest);
+        (acc[groupValue] as HighlightGroup).items.push(rest as CommandHighlightSearchOptionData<T>);
       } else {
-        acc[item.label] = rest;
+        acc[`item-${item.value}`] = rest as CommandHighlightSearchOptionData<T>;
       }
 
       return acc;
     },
-    {} as Record<string, CommandOptionData>
+    {} as Record<string, HighlightOption>
   );
 
   return Object.values(itemsByGroup);
@@ -67,26 +78,22 @@ function truncateHTMLFromStart(html: string, maxLength: number) {
   let totalLength = 0;
   let insideTag = false;
 
-  // Iterate through the HTML string in reverse order
-  for (let i = html.length - 1; i >= 0; i--) {
-    if (html[i] === '>') {
+  for (let index = html.length - 1; index >= 0; index -= 1) {
+    if (html[index] === '>') {
       insideTag = true;
-    } else if (html[i] === '<') {
+    } else if (html[index] === '<') {
       insideTag = false;
-      truncated = html[i] + truncated;
-      // eslint-disable-next-line no-continue
+      truncated = html[index] + truncated;
       continue;
     }
 
     if (!insideTag) {
-      totalLength++;
+      totalLength += 1;
     }
 
     if (totalLength <= maxLength) {
-      truncated = html[i] + truncated;
+      truncated = html[index] + truncated;
     } else {
-      // If we've reached the max length, we break out of the loop
-      // to prevent further processing of the string
       truncated = `...${truncated}`;
       break;
     }
@@ -102,13 +109,12 @@ export function highlightCommandOption<T>(
   omitKeys?: string[]
 ) {
   function generateHighlightedText(value: FuseResultMatch['value'], indices: FuseResultMatch['indices'] = []) {
-    // eslint-disable-next-line no-param-reassign
-    value ||= '';
     let content = '';
     let nextUnHighlightedRegionStartingIndex = 0;
 
+    value ||= '';
+
     indices.forEach(region => {
-      // skip if region is a single character
       if (region.length === 2 && region[0] === region[1]) {
         return;
       }
@@ -118,7 +124,7 @@ export function highlightCommandOption<T>(
 
       content += [
         value.substring(nextUnHighlightedRegionStartingIndex, region[0]),
-        isMatched && `<mark>`,
+        isMatched && '<mark>',
         value.substring(region[0], lastIndicNextIndex),
         isMatched && '</mark>'
       ]
@@ -131,6 +137,7 @@ export function highlightCommandOption<T>(
     content += value.substring(nextUnHighlightedRegionStartingIndex);
 
     const markIndex = content.indexOf('<mark>');
+
     if (markIndex !== -1) {
       content = truncateHTMLFromStart(content, content.length - markIndex);
     }

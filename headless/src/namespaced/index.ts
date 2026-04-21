@@ -97,6 +97,7 @@ import {
   ColorSwatchPickerItemIndicator,
   ColorSwatchPickerItemSwatch,
   ColorSwatchPickerRoot,
+  CommandCompact,
   ConfigProvider,
   ContextMenuAnchor,
   ContextMenuArrow,
@@ -666,6 +667,12 @@ export const ColorSwatchPicker = {
   Item: typeof ColorSwatchPickerItem;
   ItemIndicator: typeof ColorSwatchPickerItemIndicator;
   ItemSwatch: typeof ColorSwatchPickerItemSwatch;
+};
+
+export const Command = {
+  Compact: CommandCompact
+} as {
+  Compact: typeof CommandCompact;
 };
 
 export { ConfigProvider };

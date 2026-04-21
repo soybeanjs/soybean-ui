@@ -76,6 +76,7 @@ export const components = {
     'ColorSwatchPickerItemIndicator',
     'ColorSwatchPickerItemSwatch'
   ],
+  command: ['CommandCompact'],
   configProvider: ['ConfigProvider'],
   contextMenu: [
     'ContextMenuWrapperCompact',
