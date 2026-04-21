@@ -7,8 +7,8 @@ export const components = {
     'AccordionContent',
     'AccordionCompact'
   ],
-  affix: ['AffixRoot', 'AffixPlaceholder', 'AffixContent'],
-  alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
+  alert: ['AlertCompact', 'AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
   autocomplete: [
     'AutocompleteCompact',
     'AutocompleteRoot',
@@ -24,7 +24,7 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  anchor: ['AnchorRoot', 'AnchorLink'],
+  anchor: ['AnchorCompact', 'AnchorRoot', 'AnchorLink'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],

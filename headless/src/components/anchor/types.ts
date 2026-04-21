@@ -12,6 +12,11 @@ export interface AnchorSection {
   top: number;
 }
 
+export interface AnchorItemData extends Pick<AnchorLinkProps, 'disabled' | 'href' | 'target'> {
+  children?: AnchorItemData[];
+  title?: string;
+}
+
 export interface AnchorRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
   bounds?: number;
   dir?: Direction;
@@ -35,6 +40,25 @@ export interface AnchorLinkProps
   href: string;
 }
 
+export interface AnchorCompactItemProps extends /** @vue-ignore */ HTMLAttributes {
+  modelValue?: string;
+  item: AnchorItemData;
+  linkProps?: AnchorLinkProps;
+  indicatorProps?: HTMLAttributes;
+  titleProps?: HTMLAttributes;
+  subProps?: HTMLAttributes;
+}
+
+export interface AnchorCompactProps extends AnchorRootProps {
+  items: AnchorItemData[];
+  linkProps?: AnchorLinkProps;
+  indicatorProps?: HTMLAttributes;
+  titleProps?: HTMLAttributes;
+  subProps?: HTMLAttributes;
+}
+
+export type AnchorCompactEmits = AnchorRootEmits;
+
 export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps, 'dir'> {
   activeHref: ShallowRef<string | undefined>;
   onLinkClick: (event: MouseEvent, payload: { href: string }) => void;
@@ -43,6 +67,6 @@ export interface AnchorRootContextParams extends PropsToContext<AnchorRootProps,
   unregisterLink: (href: string) => void;
 }
 
-export type AnchorUiSlot = 'root' | 'link';
+export type AnchorUiSlot = 'root' | 'link' | 'sub' | 'item' | 'indicator' | 'title';
 
 export type AnchorUi = UiClass<AnchorUiSlot>;

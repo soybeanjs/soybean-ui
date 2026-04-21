@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { CSSProperties } from 'vue';
-import { AnchorRoot, provideAnchorUi } from '@soybeanjs/headless';
+import { AnchorCompact, provideAnchorUi } from '@soybeanjs/headless';
 import { useOmitProps, useForwardListeners } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { provideExtraAnchorUi } from './context';
-import AnchorItem from './anchor-item.vue';
 import { anchorVariants } from './variants';
 import type { AnchorEmits, AnchorProps } from './types';
 
@@ -25,12 +23,7 @@ const forwardedProps = useOmitProps(props, [
   'size',
   'ui',
   'class',
-  'items',
-  'sticky',
-  'linkProps',
-  'indicatorProps',
-  'titleProps',
-  'subProps'
+  'sticky'
 ]);
 
 const events = useForwardListeners(emit);
@@ -51,21 +44,8 @@ const ui = computed(() => {
 });
 
 provideAnchorUi(ui);
-provideExtraAnchorUi(ui);
 </script>
 
 <template>
-  <AnchorRoot v-slot="{ modelValue }" v-bind="forwardedProps" :style="style" v-on="events">
-    <AnchorItem
-      v-for="item in items"
-      :key="item.href"
-      :item="item"
-      :link-props="linkProps"
-      :indicator-props="indicatorProps"
-      :title-props="titleProps"
-      :sub-props="subProps"
-      :model-value="modelValue"
-      :ui="ui"
-    />
-  </AnchorRoot>
+  <AnchorCompact v-bind="forwardedProps" :items="items" :style="style" v-on="events" />
 </template>

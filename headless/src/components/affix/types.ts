@@ -32,6 +32,13 @@ export type AffixRootEmits = {
   change: [affixed: boolean];
 };
 
+export interface AffixCompactProps extends AffixRootProps {
+  placeholderProps?: AffixPlaceholderProps;
+  contentProps?: AffixContentProps;
+}
+
+export type AffixCompactEmits = AffixRootEmits;
+
 export interface AffixRootContext {
   affixed: ShallowRef<boolean>;
   affixStyle: ShallowRef<Record<string, string> | undefined>;

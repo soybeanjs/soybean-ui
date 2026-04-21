@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AnchorLink } from '@soybeanjs/headless';
-import { useExtraAnchorUi } from './context';
-import type { AnchorItemProps, AnchorItemData } from './types';
+import AnchorLink from './anchor-link.vue';
+import { useAnchorUi } from './context';
+import type { AnchorCompactItemProps, AnchorItemData } from './types';
 
 defineOptions({
-  name: 'SAnchorItem'
+  name: 'AnchorCompactItem'
 });
 
-const props = defineProps<AnchorItemProps>();
+const props = defineProps<AnchorCompactItemProps>();
 
-const ui = useExtraAnchorUi();
+const ui = useAnchorUi();
 
 function hasActiveChild(item: AnchorItemData, modelValue: string): boolean {
   if (item.href === modelValue) {
@@ -30,7 +30,7 @@ const dataState = computed(() => (hasActiveChild(props.item, props.modelValue ??
       <span v-bind="titleProps" :class="ui.title">{{ item.title || item.href }}</span>
     </AnchorLink>
     <div v-if="item.children?.length" v-bind="subProps" :class="ui.sub">
-      <AnchorItem
+      <AnchorCompactItem
         v-for="child in item.children"
         :key="child.href"
         :model-value="modelValue"

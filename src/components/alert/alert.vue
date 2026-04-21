@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
-import { AlertClose, AlertContent, AlertDescription, AlertRoot, AlertTitle, provideAlertUi } from '@soybeanjs/headless';
+import { computed } from 'vue';
+import { AlertCompact, provideAlertUi } from '@soybeanjs/headless';
+import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import ButtonIcon from '../button/button-icon.vue';
-import Icon from '../icon/icon.vue';
 import { alertVariants } from './variants';
 import type { AlertEmits, AlertProps } from './types';
 
@@ -17,7 +16,11 @@ const props = withDefaults(defineProps<AlertProps>(), {
 
 const emit = defineEmits<AlertEmits>();
 
-const slots = useSlots();
+const forwardedProps = useOmitProps(props, ['class', 'size', 'color', 'variant', 'ui']);
+
+const handleOpenChange = (value: boolean) => {
+  emit('update:open', value);
+};
 
 const ui = computed(() => {
   const variants = alertVariants({
@@ -33,24 +36,22 @@ provideAlertUi(ui);
 </script>
 
 <template>
-  <AlertRoot :open="open" @update:open="value => emit('update:open', value)">
-    <slot name="leading">
-      <Icon :icon="icon" :class="ui.icon" />
-    </slot>
-    <AlertContent v-bind="contentProps">
-      <AlertTitle v-if="slots.title || title" v-bind="titleProps">
-        <slot name="title">{{ title }}</slot>
-      </AlertTitle>
-      <AlertDescription v-if="slots.description || description" v-bind="descriptionProps">
-        <slot name="description">{{ description }}</slot>
-      </AlertDescription>
-      <slot />
-    </AlertContent>
-    <slot name="trailing" />
-    <AlertClose v-if="closable" v-bind="closeProps" as-child>
-      <slot name="close">
-        <ButtonIcon icon="lucide:x" :size="size" />
-      </slot>
-    </AlertClose>
-  </AlertRoot>
+  <AlertCompact v-bind="forwardedProps" @update:open="handleOpenChange">
+    <template v-if="$slots.leading" #leading>
+      <slot name="leading" />
+    </template>
+    <template v-if="$slots.title" #title>
+      <slot name="title" />
+    </template>
+    <template v-if="$slots.description" #description>
+      <slot name="description" />
+    </template>
+    <slot />
+    <template v-if="$slots.trailing" #trailing>
+      <slot name="trailing" />
+    </template>
+    <template v-if="$slots.close" #close>
+      <slot name="close" />
+    </template>
+  </AlertCompact>
 </template>

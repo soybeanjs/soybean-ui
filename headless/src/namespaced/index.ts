@@ -5,14 +5,17 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixCompact,
   AffixContent,
   AffixPlaceholder,
   AffixRoot,
+  AlertCompact,
   AlertClose,
   AlertContent,
   AlertDescription,
   AlertRoot,
   AlertTitle,
+  AnchorCompact,
   AnchorLink,
   AnchorRoot,
   AutocompleteCompact,
@@ -423,22 +426,26 @@ export const Accordion = {
 };
 
 export const Affix = {
+  Compact: AffixCompact,
   Root: AffixRoot,
   Placeholder: AffixPlaceholder,
   Content: AffixContent
 } as {
+  Compact: typeof AffixCompact;
   Root: typeof AffixRoot;
   Placeholder: typeof AffixPlaceholder;
   Content: typeof AffixContent;
 };
 
 export const Alert = {
+  Compact: AlertCompact,
   Root: AlertRoot,
   Title: AlertTitle,
   Description: AlertDescription,
   Content: AlertContent,
   Close: AlertClose
 } as {
+  Compact: typeof AlertCompact;
   Root: typeof AlertRoot;
   Title: typeof AlertTitle;
   Description: typeof AlertDescription;
@@ -447,9 +454,11 @@ export const Alert = {
 };
 
 export const Anchor = {
+  Compact: AnchorCompact,
   Root: AnchorRoot,
   Link: AnchorLink
 } as {
+  Compact: typeof AnchorCompact;
   Root: typeof AnchorRoot;
   Link: typeof AnchorLink;
 };

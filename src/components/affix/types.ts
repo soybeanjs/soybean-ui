@@ -1,20 +1,16 @@
 import type {
-  AffixRootEmits,
-  AffixRootProps,
-  AffixPlaceholderProps,
-  AffixContentProps,
+  AffixCompactEmits,
+  AffixCompactProps,
   AffixUi,
-  ClassValue
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/affix';
+import type { ClassValue } from '@soybeanjs/headless';
 
-export interface AffixProps extends AffixRootProps {
+export interface AffixProps extends AffixCompactProps {
   /**
    * Additional class names to apply to the content element.
    */
   class?: ClassValue;
   ui?: Partial<AffixUi>;
-  placeholderProps?: AffixPlaceholderProps;
-  contentProps?: AffixContentProps;
 }
 
-export type AffixEmits = AffixRootEmits;
+export type AffixEmits = AffixCompactEmits;
