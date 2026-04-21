@@ -3,8 +3,6 @@ import { computed } from 'vue';
 import { ProgressIndicator, ProgressRoot, provideProgressUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import { useConfigProvider } from '../config-provider';
-import { getProgressIndicatorStyle } from './shared';
 import { progressVariants } from './variants';
 import type { ProgressEmits, ProgressProps } from './types';
 
@@ -20,10 +18,6 @@ const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui', 'ind
 
 const listeners = useForwardListeners(emit);
 
-const { dir } = useConfigProvider('Progress');
-
-const getIndicatorStyle = (valuePercent: number | null) => getProgressIndicatorStyle(valuePercent, dir.value);
-
 const ui = computed(() => {
   const variants = progressVariants({
     color: props.color,
@@ -38,7 +32,7 @@ provideProgressUi(ui);
 
 <template>
   <ProgressRoot v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
-    <ProgressIndicator v-bind="indicatorProps" :style="getIndicatorStyle(slotProps.valuePercent)">
+    <ProgressIndicator v-bind="indicatorProps">
       <slot v-bind="slotProps" />
     </ProgressIndicator>
   </ProgressRoot>

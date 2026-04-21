@@ -4,32 +4,8 @@ import type { PrimitiveProps } from '../primitive/types';
 
 export type ProgressState = 'indeterminate' | 'loading' | 'complete';
 
-export interface ProgressOptions {
-  minimum?: number;
-  maximum?: number;
-  startPosition?: number;
-  delay?: number;
-  stopDelay?: number;
-  forcedStopDelay?: number;
-  easing?: string;
-  speed?: number;
-  trickle?: boolean;
-  trickleSpeed?: number;
-  direction?: Direction;
-  indeterminate?: boolean;
-}
-
-export type ProgressAnimateEasingName = 'linear' | 'ease-in' | 'ease-out' | 'ease-in-out';
-
-export type ProgressAnimateEasing = ProgressAnimateEasingName | ((value: number) => number);
-
-export interface ProgressAnimateOptions {
-  from?: number;
-  duration?: number;
-  easing?: ProgressAnimateEasing;
-}
-
 export interface ProgressRootProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {
+  dir?: Direction;
   /** The controlled progress value. Can be bind as `v-model`. */
   modelValue?: number | null;
   /** The maximum progress value. */
@@ -47,31 +23,34 @@ export type ProgressRootEmits = {
 
 export interface ProgressIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface ProgressProviderProps extends Omit<ProgressRootProps, 'max' | 'modelValue'>, ProgressOptions {
-  indicatorProps?: ProgressIndicatorProps;
-}
-
 export interface ProgressCircleProps extends /** @vue-ignore */ SVGAttributes {
   strokeWidth?: number;
 }
 
+export interface ProgressProviderProps extends ProgressOptions {}
+
 export interface ProgressRootContext {
+  dir: ComputedRef<Direction>;
   modelValue: ComputedRef<number | null | undefined>;
   max: ComputedRef<number>;
   progressState: ComputedRef<ProgressState>;
   valuePercent: ComputedRef<number | null>;
 }
 
-export interface ProgressRenderState {
-  visible: boolean;
-  value: number | null;
-  settings: Required<ProgressOptions>;
-}
-
 export type ProgressUiSlot = 'root' | 'indicator' | 'circle' | 'track' | 'label';
 
 export type ProgressUi = UiClass<ProgressUiSlot>;
 
-export type ProgressPromise<Data = unknown> = PromiseLike<Data> | (() => PromiseLike<Data>);
+export type ProgressProviderUiSlot = 'root' | 'indicator';
 
-export type ProgressSubscriber = (state: ProgressRenderState) => void;
+export type ProgressProviderUi = UiClass<ProgressProviderUiSlot>;
+
+export interface ProgressOptions {
+  direction?: Direction;
+  minimum?: number;
+  maximum?: number;
+  easing?: string;
+  speed?: number;
+  trickle?: boolean;
+  trickleSpeed?: number;
+}

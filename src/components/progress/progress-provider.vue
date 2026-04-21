@@ -1,37 +1,25 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ProgressProvider, provideProgressUi } from '@soybeanjs/headless';
-import { useOmitProps } from '@soybeanjs/headless/composables';
+import { ProgressProvider, provideProgressProviderUi } from '@soybeanjs/headless';
 import { mergeSlotVariants } from '@/theme';
-import { progressVariants } from './variants';
+import { progressProviderVariants } from './variants';
 import type { ProgressProviderProps } from './types';
 
 defineOptions({
   name: 'SProgressProvider'
 });
 
-const props = withDefaults(defineProps<ProgressProviderProps>(), {
-  color: 'primary',
-  size: 'xs'
-});
-
-const forwardedProps = useOmitProps(props, ['class', 'color', 'size', 'ui']);
+const props = defineProps<ProgressProviderProps>();
 
 const ui = computed(() => {
-  const variants = progressVariants({
-    color: props.color,
-    size: props.size,
-    isFixed: true
-  });
+  const variants = progressProviderVariants();
 
-  return mergeSlotVariants(variants, props.ui, { root: props.class });
+  return mergeSlotVariants(variants);
 });
 
-provideProgressUi(ui);
+provideProgressProviderUi(ui);
 </script>
 
 <template>
-  <ProgressProvider v-bind="forwardedProps">
-    <slot />
-  </ProgressProvider>
+  <ProgressProvider v-bind="props" />
 </template>

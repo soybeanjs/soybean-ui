@@ -3,8 +3,8 @@ import { tv } from 'tailwind-variants';
 
 export const progressVariants = tv({
   slots: {
-    root: 'w-full overflow-hidden rounded-full bg-muted',
-    indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`,
+    root: 'relative w-full overflow-hidden rounded-full bg-muted',
+    indicator: `h-full w-full flex-1 rounded-full transition-[transform,width] duration-300 transform-gpu will-change-transform data-[state=indeterminate]:w-2/5 data-[state=indeterminate]:opacity-80`,
     circle: '',
     track: '',
     label: ''
@@ -55,21 +55,11 @@ export const progressVariants = tv({
       '2xl': {
         root: 'h-4'
       }
-    },
-    isFixed: {
-      true: {
-        root: 'fixed pointer-events-none inset-x-0 top-0 z-100 rounded-none bg-transparent shadow-none transition-opacity data-[state=complete]:opacity-0',
-        indicator: 'rounded-none shadow-sm'
-      },
-      false: {
-        root: 'relative'
-      }
     }
   },
   defaultVariants: {
     color: 'primary',
-    size: 'md',
-    isFixed: false
+    size: 'md'
   }
 });
 
@@ -132,5 +122,12 @@ export const circleProgressVariants = tv({
   defaultVariants: {
     color: 'primary',
     size: 'md'
+  }
+});
+
+export const progressProviderVariants = tv({
+  slots: {
+    root: 'w-0 h-0 pointer-events-none z-99999',
+    indicator: `fixed top-0 start-0 w-full h-0.75 bg-primary`
   }
 });
