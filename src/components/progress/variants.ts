@@ -127,7 +127,7 @@ export const circleProgressVariants = tv({
 
 export const progressProviderVariants = tv({
   slots: {
-    root: 'w-0 h-0 pointer-events-none z-99999',
+    root: 'fixed z-99999 w-0 h-0 pointer-events-none',
     indicator: `fixed top-0 start-0 w-full h-0.75 bg-primary`
   }
 });
