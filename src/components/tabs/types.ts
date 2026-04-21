@@ -12,6 +12,7 @@ export interface TabsProps<
 > extends TabsCompactProps<T, S> {
   class?: ClassValue;
   size?: ThemeSize;
+  /** Styled tabs ui slots, including `indicatorContent` for the compact indicator body. */
   ui?: Partial<TabsUi>;
   fill?: TabsFill;
 }

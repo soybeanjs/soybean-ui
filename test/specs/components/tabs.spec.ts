@@ -65,6 +65,8 @@ describe('STabs', () => {
       await nextTick();
       expect(wrapper.find('[data-test="custom-trigger-Account"]').exists()).toBe(true);
       expect(wrapper.find('[data-test="custom-content-tab-1"]').exists()).toBe(true);
+      expect(wrapper.find('[data-test="custom-trigger-Account"]').text()).toBe('active-Account');
+      expect(wrapper.find('[data-test="custom-content-tab-1"]').text()).toBe('true-tab-1');
       wrapper.unmount();
     });
   });

@@ -40,6 +40,7 @@ const forwardedProps = useOmitProps(props, [
 
 const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
+// `@vue-ignore` is still required on `<TabsCompact>` because `vue-tsc` loses the generic relation between `T` and `S` in template inference.
 const compactItems = computed(() => props.items as TabsOptionData<NonNullable<T>>[]);
 
 const ui = computed(() => {
