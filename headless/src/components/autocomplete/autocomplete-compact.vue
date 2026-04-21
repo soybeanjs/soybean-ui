@@ -12,7 +12,7 @@ import AutocompleteGroupLabel from './autocomplete-group-label.vue';
 import AutocompleteInput from './autocomplete-input.vue';
 import AutocompleteItem from './autocomplete-item.vue';
 import AutocompleteItemIndicator from './autocomplete-item-indicator.vue';
-import AutocompletePortal from '../portal/portal.vue';
+import { Portal as AutocompletePortal } from '../portal';
 import AutocompleteRoot from './autocomplete-root.vue';
 import AutocompleteSeparator from './autocomplete-separator.vue';
 import AutocompleteTrigger from './autocomplete-trigger.vue';

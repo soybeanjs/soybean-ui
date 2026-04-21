@@ -10,7 +10,7 @@ import SelectGroupLabel from './select-group-label.vue';
 import SelectItem from './select-item.vue';
 import SelectItemIndicator from './select-item-indicator.vue';
 import SelectItemText from './select-item-text.vue';
-import SelectPortal from '../portal/portal.vue';
+import { Portal as SelectPortal } from '../portal';
 import SelectRoot from './select-root.vue';
 import SelectScrollDownButton from './select-scroll-down-button.vue';
 import SelectScrollUpButton from './select-scroll-up-button.vue';
@@ -137,13 +137,13 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
                 </SelectGroupLabel>
                 <SelectSeparator v-if="item.separator" v-bind="separatorProps" />
                 <template v-for="child in item.items" :key="String(child.value)">
-                    <SelectItem
-                      v-bind="itemProps"
-                      :value="child.value"
-                      :text-value="child.textValue"
-                      :disabled="child.disabled"
-                      @select="handleSelect($event)"
-                    >
+                  <SelectItem
+                    v-bind="itemProps"
+                    :value="child.value"
+                    :text-value="child.textValue"
+                    :disabled="child.disabled"
+                    @select="handleSelect($event)"
+                  >
                     <slot name="item-leading" :item="child">
                       <IconRender v-if="child.icon" :icon="child.icon" />
                     </slot>
