@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<CheckboxProps>(), {
 
 const emit = defineEmits<CheckboxEmits>();
 
-const forwardedProps = useOmitProps(props, ['ui', 'color', 'size', 'label']);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
 const ui = computed(() => {
   const variants = checkboxVariants({
