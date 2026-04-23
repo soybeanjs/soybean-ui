@@ -7,7 +7,7 @@ const slides = ['Slide 1', 'Slide 2', 'Slide 3'];
 <template>
   <div>
     <h3 class="playground-title">Basic</h3>
-    <SCarousel aria-label="Basic carousel" class="mx-auto w-full max-w-xs">
+    <SCarousel aria-label="Basic carousel" class="mx-auto w-full max-w-xs" :opts="{ loop: true }">
       <SCarouselContent>
         <SCarouselItem v-for="slide in slides" :key="slide">
           <div class="p-1">

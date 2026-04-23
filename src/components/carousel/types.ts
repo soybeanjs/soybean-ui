@@ -1,6 +1,6 @@
 import type { ClassValue, CarouselRootEmits, CarouselRootProps, CarouselUi } from '@soybeanjs/headless';
 
-export interface CarouselProps extends Omit<CarouselRootProps, 'class'> {
+export interface CarouselProps extends CarouselRootProps {
   class?: ClassValue;
   ui?: Partial<CarouselUi>;
 }
