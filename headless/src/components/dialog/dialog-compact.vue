@@ -27,6 +27,7 @@ const props = withDefaults(defineProps<DialogCompactProps>(), {
   open: undefined,
   modal: true,
   showClose: true,
+  showConfirm: true,
   alertType: 'default',
   showCancel: 'onlyWarning',
   cancelText: 'Cancel',
