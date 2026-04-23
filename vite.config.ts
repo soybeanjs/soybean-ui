@@ -7,7 +7,7 @@ import VueRouter from 'vue-router/vite';
 import MetaLayouts from 'vite-plugin-vue-meta-layouts';
 import Components from 'unplugin-vue-components/vite';
 import VueDevtools from 'vite-plugin-vue-devtools';
-import UiResolver from './src/resolver/index.ts';
+import UiResolver from './src/resolver/index';
 
 export default defineConfig({
   resolve: {
