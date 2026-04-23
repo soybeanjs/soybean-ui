@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { SEditable } from '@soybeanjs/ui';
-import type { ThemeSize } from '@soybeanjs/ui';
-
-const sizes: ThemeSize[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+import { themeSizeOptions } from '../../constants/theme';
 </script>
 
 <template>
   <div>
     <h3 class="playground-title">Size</h3>
-    <div class="flex-c gap-3">
+    <div class="flex-c gap-3 w-100 lt-md:w-auto">
       <SEditable
-        v-for="size in sizes"
-        :key="size"
-        :size="size"
-        :default-value="`Editable ${size}`"
-        :placeholder="`Editable ${size}`"
+        v-for="item in themeSizeOptions"
+        :key="item.value"
+        :size="item.value"
+        :default-value="`Editable ${item.label}`"
+        :placeholder="`Editable ${item.label}`"
       />
     </div>
   </div>
