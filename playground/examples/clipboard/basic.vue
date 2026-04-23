@@ -6,5 +6,14 @@ const value = 'pnpm add @soybeanjs/ui';
 
 <template>
   <h3 class="playground-title">Basic</h3>
-  <SClipboard :value="value" color="accent" variant="soft" copy-text="Copy install command" copied-text="Copied install command" />
+  <div>
+    <SClipboard
+      :value="value"
+      color="accent"
+      variant="soft"
+      copy-text="Copy install command"
+      copied-text="Copied install command"
+      class="w-fit"
+    />
+  </div>
 </template>

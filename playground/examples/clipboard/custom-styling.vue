@@ -6,18 +6,21 @@ const value = 'custom-styling-example';
 
 <template>
   <h3 class="playground-title">Custom Styling</h3>
-  <SClipboard
-    :value="value"
-    variant="ghost"
-    copy-text="Copy custom style action"
-    copied-text="Copied custom style action"
-    class="border border-dashed border-info/40 bg-info/8 text-info hover:bg-info/12 active:bg-info/18"
-  >
-    <template #leading="{ icon }">
-      <SIcon :icon="icon" class="text-info" />
-    </template>
-    <template #default="{ text }">
-      {{ text }}
-    </template>
-  </SClipboard>
+  <div>
+    <SClipboard
+      :value="value"
+      variant="outline"
+      color="info"
+      copy-text="Copy custom style action"
+      copied-text="Copied custom style action"
+      class="border-dashed"
+    >
+      <template #leading="{ icon }">
+        <SIcon :icon="icon" class="text-info" />
+      </template>
+      <template #default="{ text }">
+        {{ text }}
+      </template>
+    </SClipboard>
+  </div>
 </template>
