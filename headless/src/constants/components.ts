@@ -9,6 +9,7 @@ export const components = {
   ],
   affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
   alert: ['AlertCompact', 'AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  anchor: ['AnchorCompact', 'AnchorRoot', 'AnchorLink'],
   autocomplete: [
     'AutocompleteCompact',
     'AutocompleteRoot',
@@ -24,7 +25,6 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  anchor: ['AnchorCompact', 'AnchorRoot', 'AnchorLink'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
@@ -44,6 +44,8 @@ export const components = {
   card: ['CardRoot', 'CardHeader', 'CardTitle', 'CardTitleRoot', 'CardDescription', 'CardContent', 'CardFooter'],
   carousel: ['CarouselRoot', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext'],
   checkbox: [
+    'CheckboxCompact',
+    'CheckboxCardCompact',
     'CheckboxGroupCompact',
     'CheckboxCardGroupCompact',
     'CheckboxGroupRoot',
@@ -285,6 +287,7 @@ export const components = {
   ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
+  segment: ['SegmentCompact', 'SegmentRoot', 'SegmentItem', 'SegmentTrigger', 'SegmentIndicator'],
   select: [
     'SelectCompact',
     'SelectRoot',
@@ -330,7 +333,7 @@ export const components = {
     'TableHead',
     'TableCell'
   ],
-  tabs: ['SegmentCompact', 'TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
+  tabs: ['TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   tagsInput: [
     'TagsInputRoot',

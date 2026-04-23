@@ -60,6 +60,8 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
+  CheckboxCompact,
+  CheckboxCardCompact,
   CheckboxCardGroupCompact,
   CheckboxControl,
   CheckboxGroupCompact,
@@ -310,6 +312,11 @@ import {
   ScrollAreaScrollbar,
   ScrollAreaThumb,
   ScrollAreaViewport,
+  SegmentCompact,
+  SegmentList,
+  SegmentIndicator,
+  SegmentRoot,
+  SegmentTrigger,
   SelectArrow,
   SelectCompact,
   SelectContent,
@@ -357,7 +364,6 @@ import {
   TableRow,
   TableHead,
   TableCell,
-  SegmentCompact,
   TabsContent,
   TabsCompact,
   TabsIndicator,
@@ -574,6 +580,8 @@ export const Carousel = {
 };
 
 export const Checkbox = {
+  Compact: CheckboxCompact,
+  CardCompact: CheckboxCardCompact,
   CardGroupCompact: CheckboxCardGroupCompact,
   GroupCompact: CheckboxGroupCompact,
   GroupRoot: CheckboxGroupRoot,
@@ -1203,6 +1211,20 @@ export const ScrollArea = {
   Corner: typeof ScrollAreaCorner;
 };
 
+export const Segment = {
+  Compact: SegmentCompact,
+  Root: SegmentRoot,
+  List: SegmentList,
+  Trigger: SegmentTrigger,
+  Indicator: SegmentIndicator
+} as {
+  Compact: typeof SegmentCompact;
+  Root: typeof SegmentRoot;
+  List: typeof SegmentList;
+  Trigger: typeof SegmentTrigger;
+  Indicator: typeof SegmentIndicator;
+};
+
 export const Select = {
   Compact: SelectCompact,
   Root: SelectRoot,
@@ -1327,7 +1349,6 @@ export const Table = {
 
 export const Tabs = {
   Compact: TabsCompact,
-  Segment: SegmentCompact,
   Root: TabsRoot,
   List: TabsList,
   Trigger: TabsTrigger,
@@ -1335,7 +1356,6 @@ export const Tabs = {
   Indicator: TabsIndicator
 } as {
   Compact: typeof TabsCompact;
-  Segment: typeof SegmentCompact;
   Root: typeof TabsRoot;
   List: typeof TabsList;
   Trigger: typeof TabsTrigger;
