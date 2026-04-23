@@ -15,7 +15,7 @@ const color = ref('oklch(62% 0.22 312)');
         format="oklch"
         x-channel="chroma"
         y-channel="lightness"
-        class="size-50"
+        class="w-50 h-40"
       />
       <div class="flex items-center gap-2 text-sm text-muted-foreground">
         <SColorSwatch :color="color" />
