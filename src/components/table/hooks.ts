@@ -107,8 +107,7 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
       key,
       title: title || key,
       checked: true,
-      hidden,
-      fixed: false
+      hidden
     };
 
     cols.push(column);
