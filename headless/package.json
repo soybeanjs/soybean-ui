@@ -94,7 +94,7 @@
     "@soybeanjs/colord": "^0.5.0",
     "@standard-schema/spec": "^1.1.0",
     "@tanstack/vue-virtual": "^3.13.24",
-    "@vue/shared": "^3.5.32",
+    "@vue/shared": "^3.5.33",
     "@vueuse/core": "^14.2.1",
     "@vueuse/integrations": "^14.2.1",
     "@vueuse/router": "^14.2.1",
@@ -108,13 +108,13 @@
   "devDependencies": {
     "@nuxt/kit": "^4.4.2",
     "@nuxt/schema": "^4.4.2",
-    "tsdown": "0.21.9",
+    "tsdown": "0.21.10",
     "typescript": "6.0.3",
     "unplugin-vue": "7.1.1",
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "0.8.1",
-    "vue": "3.5.32",
-    "vue-router": "5.0.4"
+    "vue": "3.5.33",
+    "vue-router": "5.0.6"
   },
   "peerDependencies": {
     "@nuxt/kit": "^4.3.0",
@@ -135,5 +135,5 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }

@@ -75,7 +75,7 @@
     "@iconify/vue": "^5.0.0",
     "@soybeanjs/colord": "^0.5.0",
     "@soybeanjs/headless": "workspace:^",
-    "@soybeanjs/hooks": "^0.1.0",
+    "@soybeanjs/hooks": "^0.2.0",
     "@soybeanjs/shadcn-theme": "^0.3.1",
     "@soybeanjs/utils": "^0.1.0",
     "@vueuse/core": "^14.2.1",
@@ -93,16 +93,16 @@
     "@soybeanjs/unocss-shadcn": "^0.3.4",
     "@types/node": "^25.6.0",
     "@unocss/cli": "^66.6.8",
-    "@vitest/coverage-v8": "^4.1.4",
+    "@vitest/coverage-v8": "^4.1.5",
     "@vue/test-utils": "^2.4.6",
     "axe-core": "^4.11.3",
     "eslint": "^10.2.1",
     "happy-dom": "^20.9.0",
     "lint-staged": "^16.4.0",
-    "oxfmt": "^0.45.0",
-    "oxlint": "^1.60.0",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
     "simple-git-hooks": "^2.13.1",
-    "tsdown": "0.21.9",
+    "tsdown": "0.21.10",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
     "unocss": "^66.6.8",
@@ -111,13 +111,13 @@
     "unplugin-vue": "^7.1.1",
     "unplugin-vue-components": "^32.0.0",
     "unplugin-vue-jsx": "^0.8.1",
-    "vite": "^8.0.8",
+    "vite": "^8.0.10",
     "vite-plugin-vue-devtools": "^8.1.1",
     "vite-plugin-vue-meta-layouts": "^0.6.1",
-    "vitest": "^4.1.4",
-    "vue": "^3.5.32",
-    "vue-router": "^5.0.4",
-    "vue-tsc": "^3.2.6"
+    "vitest": "^4.1.5",
+    "vue": "^3.5.33",
+    "vue-router": "^5.0.6",
+    "vue-tsc": "^3.2.7"
   },
   "simple-git-hooks": {
     "commit-msg": "pnpm soy git-commit-verify",
@@ -126,7 +126,7 @@
   "lint-staged": {
     "*": "oxlint . --fix && oxfmt"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "overrides": {
       "vite-ssg>jsdom": "27.0.1"
