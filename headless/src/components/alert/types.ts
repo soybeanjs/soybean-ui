@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
 import type { UiClass } from '../../types';
+import type { IconValue } from '../icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {
@@ -23,10 +24,32 @@ export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
+export interface AlertCompactProps extends AlertRootProps {
+  title?: string;
+  description?: string;
+  icon?: IconValue;
+  closable?: boolean;
+  contentProps?: AlertContentProps;
+  titleProps?: AlertTitleProps;
+  descriptionProps?: AlertDescriptionProps;
+  closeProps?: AlertCloseProps;
+}
+
+export type AlertCompactEmits = AlertRootEmits;
+
+export type AlertCompactSlots = {
+  default?: () => any;
+  leading?: () => any;
+  title?: () => any;
+  description?: () => any;
+  trailing?: () => any;
+  close?: () => any;
+};
+
 export interface AlertRootContextParams {
   open: ShallowRef<boolean | undefined>;
 }
 
-export type AlertUiSlot = 'root' | 'title' | 'description' | 'content' | 'close';
+export type AlertUiSlot = 'root' | 'icon' | 'title' | 'description' | 'content' | 'close';
 
 export type AlertUi = UiClass<AlertUiSlot>;

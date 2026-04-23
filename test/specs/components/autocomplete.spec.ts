@@ -11,6 +11,17 @@ const items = [
   { value: 'blueberry', label: 'Blueberry' }
 ];
 
+const groupedItems = [
+  {
+    label: 'Berries',
+    items: [{ value: 'blueberry', label: 'Blueberry' }]
+  },
+  {
+    label: 'Tropical',
+    items: [{ value: 'banana', label: 'Banana' }]
+  }
+];
+
 const mockHTMLElementProp = <K extends keyof HTMLElement>(property: K, value: HTMLElement[K]) => {
   const descriptor = Object.getOwnPropertyDescriptor(window.HTMLElement.prototype, property);
 
@@ -63,6 +74,21 @@ describe('SAutocomplete', () => {
         attachTo: document.body
       });
       expect(wrapper.html()).toContain('my-autocomplete');
+      wrapper.unmount();
+    });
+
+    it('renders grouped options when provided', async () => {
+      const wrapper = mount(SAutocomplete, {
+        props: { items: groupedItems, open: true },
+        attachTo: document.body
+      });
+      await nextTick();
+
+      expect(document.body.textContent).toContain('Berries');
+      expect(document.body.textContent).toContain('Tropical');
+      expect(document.body.textContent).toContain('Blueberry');
+      expect(document.body.textContent).toContain('Banana');
+
       wrapper.unmount();
     });
   });

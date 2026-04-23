@@ -12,8 +12,10 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
+import type { IconValue } from '../icon/types';
 import type { PrimitiveProps } from '../primitive/types';
-import type { PopperAnchorProps, PopperPositionerProps } from '../popper/types';
+import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
+import type { PortalProps } from '../portal/types';
 
 // SelectRoot
 export interface SelectRootProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
@@ -142,6 +144,83 @@ export type SelectItemAlignedPositionEmits = {
   placed: [];
 };
 
+export interface SelectSingleOptionData<T extends DefinedValue = DefinedValue> extends Pick<
+  SelectItemProps,
+  'disabled' | 'textValue'
+> {
+  value: T;
+  icon?: IconValue;
+  label: string;
+  separator?: boolean;
+}
+
+export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue> extends Pick<
+  SelectSingleOptionData<T>,
+  'label' | 'separator'
+> {
+  items: SelectSingleOptionData<T>[];
+}
+
+export type SelectOptionData<T extends DefinedValue = DefinedValue> = SelectSingleOptionData<T> | SelectGroupOptionData<T>;
+
+export interface SelectCompactProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
+  extends SelectRootProps<T, M> {
+  items: SelectOptionData<T>[];
+  showArrow?: boolean;
+  triggerProps?: SelectTriggerProps;
+  triggerIconProps?: SelectTriggerIconProps;
+  placeholder?: string;
+  valueProps?: SelectValueProps;
+  portalProps?: PortalProps;
+  contentProps?: SelectContentProps;
+  placement?: PopperPositionerProps['placement'];
+  popupProps?: SelectPopupProps;
+  viewportProps?: SelectViewportProps;
+  scrollDownButtonProps?: SelectScrollDownButtonProps;
+  scrollUpButtonProps?: SelectScrollUpButtonProps;
+  groupProps?: SelectGroupProps;
+  groupLabelProps?: SelectGroupLabelProps;
+  itemProps?: SelectItemProps;
+  itemTextProps?: SelectItemTextProps;
+  itemIndicatorProps?: SelectItemIndicatorProps;
+  separatorProps?: SelectSeparatorProps;
+  arrowProps?: PopperArrowProps;
+}
+
+export type SelectCompactEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectRootEmits<T, M> &
+  SelectContentEmits &
+  SelectItemEmits<T>;
+
+type SelectCompactModelValue<T extends DefinedValue = DefinedValue, M extends boolean = false> = (M extends true ? T[] : T) | undefined;
+
+export interface SelectCompactTriggerValueSlotProps<T extends DefinedValue = DefinedValue, M extends boolean = false> {
+  modelValue: SelectCompactModelValue<T, M>;
+  selectedLabel: string[];
+  slotText: string;
+}
+
+export interface SelectCompactGroupLabelSlotProps<T extends DefinedValue = DefinedValue> {
+  item: SelectGroupOptionData<T>;
+}
+
+export interface SelectCompactItemSlotProps<T extends DefinedValue = DefinedValue> {
+  item: SelectSingleOptionData<T>;
+}
+
+export type SelectCompactSlots<T extends DefinedValue = DefinedValue, M extends boolean = false> = {
+  'trigger-leading'?: () => any;
+  'trigger-value'?: (props: SelectCompactTriggerValueSlotProps<T, M>) => any;
+  'trigger-trailing'?: () => any;
+  'trigger-icon'?: () => any;
+  'scroll-up-button'?: () => any;
+  'scroll-down-button'?: () => any;
+  'group-label'?: (props: SelectCompactGroupLabelSlotProps<T>) => any;
+  'item-text'?: (props: SelectCompactItemSlotProps<T>) => any;
+  'item-leading'?: (props: SelectCompactItemSlotProps<T>) => any;
+  'item-trailing'?: (props: SelectCompactItemSlotProps<T>) => any;
+  'item-indicator'?: (props: SelectCompactItemSlotProps<T>) => any;
+};
+
 // SelectValue
 export interface SelectValueProps extends /** @vue-ignore */ HTMLAttributes {
   /** The content that will be rendered inside the `SelectValue` when no `value` or `defaultValue` is set. */
@@ -230,3 +309,4 @@ export type SelectUiSlot =
 export type SelectUi = UiClass<SelectUiSlot>;
 
 export type { PopperArrowProps as SelectArrowProps } from '../popper/types';
+export type { PortalProps as SelectPortalProps } from '../portal/types';

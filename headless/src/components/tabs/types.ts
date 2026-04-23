@@ -51,6 +51,29 @@ export interface TabsTriggerProps extends PrimitiveProps, /** @vue-ignore */ HTM
 
 export interface TabsIndicatorProps extends PrimitiveProps, /** @vue-ignore */ HTMLAttributes {}
 
+export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
+  value: T;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> extends TabsRootProps<T['value'] | null> {
+  items: T[];
+  enableIndicator?: boolean;
+  listProps?: TabsListProps;
+  triggerProps?: TabsTriggerProps;
+  contentProps?: TabsContentProps;
+  indicatorProps?: TabsIndicatorProps;
+}
+
+export type TabsCompactEmits<T extends AcceptableValue = AcceptableValue> = TabsRootEmits<T>;
+
+export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
+  trigger?: (props: T & { active: boolean }) => any;
+  content?: (props: T & { active: boolean }) => any;
+  indicator?: () => any;
+};
+
 export interface TabsRootContextParams extends PropsToContext<
   TabsRootProps,
   'orientation' | 'dir' | 'loop' | 'unmountOnHide' | 'activationMode'
@@ -58,6 +81,6 @@ export interface TabsRootContextParams extends PropsToContext<
   modelValue: ShallowRef<AcceptableValue>;
 }
 
-export type TabsUiSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator';
+export type TabsUiSlot = 'root' | 'list' | 'trigger' | 'content' | 'indicator' | 'indicatorContent';
 
 export type TabsUi = UiClass<TabsUiSlot>;

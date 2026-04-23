@@ -1,7 +1,9 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
+import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { CollectionItemData } from '../../composables';
 import type { Direction, ForceMountProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
+import type { IconValue } from '../icon/types';
 import type {
   ListboxCollectionItemData,
   ListboxContentProps,
@@ -88,19 +90,98 @@ export interface AutocompleteItemIndicatorProps extends ListboxItemIndicatorProp
 
 export interface AutocompleteSeparatorProps extends SeparatorRootProps {}
 
+export interface AutocompleteSingleOptionData extends Pick<AutocompleteItemProps, 'disabled' | 'value'> {
+  /** Display label in the option list. */
+  label?: string;
+  /** Icon displayed before the option text. */
+  icon?: IconValue;
+  /** Additional keywords used for filtering. */
+  keywords?: string[];
+  /** Whether to show a separator after this option. */
+  separator?: boolean;
+}
+
+export interface AutocompleteGroupOptionData<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> {
+  /** Group label in the option list. */
+  label: string;
+  /** Whether to show a separator after this group. */
+  separator?: boolean;
+  items: T[];
+}
+
+export type AutocompleteOptionData<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
+  | T
+  | AutocompleteGroupOptionData<T>;
+
+export interface AutocompleteSearchOptionData extends AutocompleteSingleOptionData {
+  groupLabel?: string;
+  groupValue?: string;
+  groupSeparator?: boolean;
+}
+
+export interface AutocompleteCompactProps<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> extends Omit<
+  AutocompleteRootProps,
+  'defaultValue' | 'modelValue' | 'onSelect'
+> {
+  /** The controlled value of the autocomplete input. */
+  modelValue?: string;
+  /** The initial value of the autocomplete input. */
+  defaultValue?: string;
+  items: AutocompleteOptionData<T>[];
+  placeholder?: string;
+  clearable?: boolean;
+  clearLabel?: string;
+  emptyLabel?: string;
+  fuseOptions?: UseFuseOptions<AutocompleteSearchOptionData>;
+  anchorProps?: AutocompleteAnchorProps;
+  inputProps?: AutocompleteInputProps;
+  triggerProps?: AutocompleteTriggerProps;
+  portalProps?: PortalProps;
+  contentProps?: AutocompleteContentProps;
+  viewportProps?: AutocompleteViewportProps;
+  groupProps?: AutocompleteGroupProps;
+  groupLabelProps?: AutocompleteGroupLabelProps;
+  itemProps?: Omit<AutocompleteItemProps, 'disabled' | 'value'>;
+  itemIndicatorProps?: AutocompleteItemIndicatorProps;
+  separatorProps?: AutocompleteSeparatorProps;
+}
+
+export type AutocompleteCompactEmits<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> =
+  AutocompleteRootEmits & {
+    select: [item: T];
+  };
+
+export type AutocompleteCompactSlots<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> = {
+  'input-leading'?: () => any;
+  'input-trailing'?: () => any;
+  'trigger-icon'?: () => any;
+  empty?: () => any;
+  'group-label'?: (props: { item: Extract<AutocompleteOptionData<T>, { items: T[] }> }) => any;
+  'item-leading'?: (props: { item: T }) => any;
+  'item-label'?: (props: { item: T }) => any;
+  'item-trailing'?: (props: { item: T }) => any;
+  'item-indicator'?: (props: { item: T }) => any;
+};
+
 export type AutocompleteUiSlot =
   | 'root'
   | 'anchor'
   | 'inputRoot'
   | 'inputControl'
+  | 'inputIcon'
+  | 'inputClearable'
   | 'trigger'
+  | 'triggerIcon'
   | 'content'
   | 'viewport'
   | 'group'
   | 'groupLabel'
   | 'item'
+  | 'itemText'
+  | 'itemIcon'
   | 'itemIndicator'
-  | 'separator';
+  | 'separator'
+  | 'empty';
 
 export type AutocompleteUi = UiClass<AutocompleteUiSlot>;
 

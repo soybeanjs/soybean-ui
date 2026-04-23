@@ -1,63 +1,35 @@
-<script
-  setup
-  lang="ts"
-  generic="T extends DefinedValue = DefinedValue, S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>"
->
+<script setup lang="ts" generic="T extends CheckboxGroupOptionData = CheckboxGroupOptionData">
 import { computed } from 'vue';
-import { CheckboxGroupRoot } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { CheckboxGroupCompact, provideCheckboxUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { checkboxVariants } from './variants';
-import Checkbox from './checkbox.vue';
 import type { CheckboxGroupEmits, CheckboxGroupOptionData, CheckboxGroupProps } from './types';
 
 defineOptions({
   name: 'SCheckboxGroup'
 });
 
-const props = defineProps<CheckboxGroupProps<T, S>>();
+const props = defineProps<CheckboxGroupProps<T>>();
 
-const emit = defineEmits<CheckboxGroupEmits<T>>();
+const emit = defineEmits<CheckboxGroupEmits<T['value']>>();
 
-const forwardedProps = useOmitProps(props, [
-  'ui',
-  'color',
-  'size',
-  'shape',
-  'items',
-  'rootProps',
-  'controlProps',
-  'indicatorProps',
-  'labelProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
 const ui = computed(() => {
-  const variants = checkboxVariants();
+  const variants = checkboxVariants({
+    color: props.color,
+    size: props.size,
+    shape: props.shape,
+    orientation: props.orientation
+  });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { groupRoot: props.class });
 });
+
+provideCheckboxUi(ui);
 </script>
 
 <template>
-  <CheckboxGroupRoot
-    v-bind="forwardedProps"
-    :class="ui.groupRoot"
-    @update:model-value="emit('update:modelValue', $event)"
-  >
-    <Checkbox
-      v-for="(item, index) in items"
-      :key="index"
-      v-bind="rootProps"
-      :color="color"
-      :size="size"
-      :shape="shape"
-      :label="item.label"
-      :value="item.value"
-      :disabled="disabled || item.disabled"
-      :control-props="controlProps"
-      :indicator-props="indicatorProps"
-      :label-props="labelProps"
-    />
-  </CheckboxGroupRoot>
+  <CheckboxGroupCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)" />
 </template>

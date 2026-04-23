@@ -1,24 +1,16 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends SegmentOptionData<NonNullable<T>> = SegmentOptionData<NonNullable<T>>
-  "
->
+<script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
 import { computed } from 'vue';
-import { TabsIndicator, TabsList, TabsRoot, TabsTrigger, provideTabsUi } from '@soybeanjs/headless';
-import type { AcceptableValue, TabsRootEmits } from '@soybeanjs/headless';
+import { SegmentCompact, provideTabsUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tabsVariants } from '../tabs/variants';
-import type { SegmentOptionData, SegmentProps } from './types';
+import type { SegmentEmits, SegmentProps, SegmentSlots, SegmentOptionData } from './types';
 
 defineOptions({
   name: 'SSegment'
 });
 
-const props = withDefaults(defineProps<SegmentProps<T, S>>(), {
+const props = withDefaults(defineProps<SegmentProps<T>>(), {
   modelValue: undefined,
   unmountOnHide: true,
   loop: true,
@@ -26,19 +18,11 @@ const props = withDefaults(defineProps<SegmentProps<T, S>>(), {
   enableIndicator: true
 });
 
-const emit = defineEmits<TabsRootEmits<T>>();
+const emit = defineEmits<SegmentEmits<T['value']>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'items',
-  'fill',
-  'enableIndicator',
-  'listProps',
-  'triggerProps',
-  'indicatorProps'
-]);
+defineSlots<SegmentSlots<T>>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 
 const listeners = useForwardListeners(emit);
 
@@ -58,21 +42,12 @@ provideTabsUi(ui);
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" v-on="listeners">
-    <TabsList v-bind="listProps">
-      <TabsTrigger
-        v-for="item in items"
-        v-bind="triggerProps"
-        :key="String(item.value)"
-        v-slot="slotProps"
-        :value="item.value"
-        :disabled="item.disabled"
-      >
-        <slot name="item" v-bind="{ ...item, ...slotProps }">{{ item.label }}</slot>
-      </TabsTrigger>
-      <TabsIndicator v-if="enableIndicator" v-bind="indicatorProps">
-        <div :class="ui.indicatorContent" />
-      </TabsIndicator>
-    </TabsList>
-  </TabsRoot>
+  <SegmentCompact v-bind="forwardedProps" v-on="listeners">
+    <template #item="slotProps">
+      <slot name="item" v-bind="slotProps" />
+    </template>
+    <template #indicator>
+      <slot name="indicator" />
+    </template>
+  </SegmentCompact>
 </template>

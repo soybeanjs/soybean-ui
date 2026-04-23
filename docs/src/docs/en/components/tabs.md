@@ -27,6 +27,8 @@ const items = [
 </template>
 ```
 
+> `STabs` now delegates item iteration, default trigger/content composition, and indicator rendering to headless `TabsCompact`. For unstyled, data-driven usage, import `TabsCompact` from `@soybeanjs/headless/tabs`.
+
 ## Demos
 
 ```playground
@@ -81,12 +83,13 @@ custom
     description: 'Custom styling classes.',
     fields: [
       { name: 'root', type: 'string', description: 'Root container class.' },
-      { name: 'list', type: 'string', description: 'Tab list container class.' },
-      { name: 'trigger', type: 'string', description: 'Tab trigger class.' },
-      { name: 'indicator', type: 'string', description: 'Active indicator class.' },
-      { name: 'content', type: 'string', description: 'Tab content container class.' },
-    ]
-  }
+       { name: 'list', type: 'string', description: 'Tab list container class.' },
+       { name: 'trigger', type: 'string', description: 'Tab trigger class.' },
+       { name: 'indicator', type: 'string', description: 'Active indicator class.' },
+       { name: 'indicatorContent', type: 'string', description: 'Active indicator content class.' },
+       { name: 'content', type: 'string', description: 'Tab content container class.' },
+     ]
+   }
 ]"/>
 
 <UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />

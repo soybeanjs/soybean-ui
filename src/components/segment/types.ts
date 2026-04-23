@@ -1,36 +1,25 @@
 import type {
   AcceptableValue,
   ClassValue,
-  DefinedValue,
-  TabsIndicatorProps,
-  TabsListProps,
-  TabsRootProps,
-  TabsTriggerProps
+  SegmentCompactEmits,
+  SegmentCompactProps,
+  SegmentCompactSlots,
+  SegmentUi,
+  SegmentOptionData
 } from '@soybeanjs/headless';
 import type { ThemeSize } from '@/theme';
 import type { TabsFill as SegmentFill, TabsShape as SegmentShape } from '../tabs/variants';
-import type { TabsExtendedUi } from '../tabs/types';
 
-export interface SegmentOptionData<T extends DefinedValue = DefinedValue> {
-  value: T;
-  label: string;
-  disabled?: boolean;
-}
-
-export type SegmentExtendedUi = TabsExtendedUi;
-
-export interface SegmentProps<
-  T extends AcceptableValue,
-  S extends SegmentOptionData<NonNullable<T>> = SegmentOptionData<NonNullable<T>>
-> extends TabsRootProps<T> {
+export interface SegmentProps<T extends SegmentOptionData> extends SegmentCompactProps<T> {
   class?: ClassValue;
-  ui?: Partial<SegmentExtendedUi>;
+  ui?: Partial<SegmentUi>;
   size?: ThemeSize;
   shape?: SegmentShape;
-  items: S[];
   fill?: SegmentFill;
-  enableIndicator?: boolean;
-  listProps?: TabsListProps;
-  triggerProps?: TabsTriggerProps;
-  indicatorProps?: TabsIndicatorProps;
 }
+
+export type SegmentEmits<T extends AcceptableValue = AcceptableValue> = SegmentCompactEmits<T>;
+
+export type SegmentSlots<T extends SegmentOptionData = SegmentOptionData> = SegmentCompactSlots<T>;
+
+export type { SegmentOptionData, SegmentFill, SegmentShape };

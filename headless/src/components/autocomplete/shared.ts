@@ -1,9 +1,4 @@
-import type {
-  AutocompleteGroupOptionData,
-  AutocompleteOptionData,
-  AutocompleteSearchOptionData,
-  AutocompleteSingleOptionData
-} from './types';
+import type { AutocompleteGroupOptionData, AutocompleteOptionData, AutocompleteSearchOptionData, AutocompleteSingleOptionData } from './types';
 
 export function isGroupOption<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData>(
   item: AutocompleteOptionData<T>

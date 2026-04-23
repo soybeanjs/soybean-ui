@@ -5,16 +5,20 @@ import {
   AccordionItem,
   AccordionRoot,
   AccordionTrigger,
+  AffixCompact,
   AffixContent,
   AffixPlaceholder,
   AffixRoot,
+  AlertCompact,
   AlertClose,
   AlertContent,
   AlertDescription,
   AlertRoot,
   AlertTitle,
+  AnchorCompact,
   AnchorLink,
   AnchorRoot,
+  AutocompleteCompact,
   AutocompleteAnchor,
   AutocompleteContent,
   AutocompleteGroup,
@@ -35,6 +39,7 @@ import {
   Backtop,
   BadgeContent,
   BadgeRoot,
+  BreadcrumbCompact,
   BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
@@ -55,7 +60,9 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
+  CheckboxCardGroupCompact,
   CheckboxControl,
+  CheckboxGroupCompact,
   CheckboxGroupRoot,
   CheckboxIndicator,
   CheckboxLabel,
@@ -95,6 +102,7 @@ import {
   ColorSwatchPickerItemIndicator,
   ColorSwatchPickerItemSwatch,
   ColorSwatchPickerRoot,
+  CommandCompact,
   ConfigProvider,
   ContextMenuAnchor,
   ContextMenuArrow,
@@ -289,6 +297,7 @@ import {
   ProgressIndicator,
   ProgressProvider,
   ProgressRoot,
+  RadioGroupCompact,
   RadioGroupControl,
   RadioGroupIndicator,
   RadioGroupItem,
@@ -302,6 +311,7 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
   SelectArrow,
+  SelectCompact,
   SelectContent,
   SelectGroup,
   SelectGroupLabel,
@@ -347,7 +357,9 @@ import {
   TableRow,
   TableHead,
   TableCell,
+  SegmentCompact,
   TabsContent,
+  TabsCompact,
   TabsIndicator,
   TabsList,
   TabsRoot,
@@ -414,22 +426,26 @@ export const Accordion = {
 };
 
 export const Affix = {
+  Compact: AffixCompact,
   Root: AffixRoot,
   Placeholder: AffixPlaceholder,
   Content: AffixContent
 } as {
+  Compact: typeof AffixCompact;
   Root: typeof AffixRoot;
   Placeholder: typeof AffixPlaceholder;
   Content: typeof AffixContent;
 };
 
 export const Alert = {
+  Compact: AlertCompact,
   Root: AlertRoot,
   Title: AlertTitle,
   Description: AlertDescription,
   Content: AlertContent,
   Close: AlertClose
 } as {
+  Compact: typeof AlertCompact;
   Root: typeof AlertRoot;
   Title: typeof AlertTitle;
   Description: typeof AlertDescription;
@@ -438,9 +454,11 @@ export const Alert = {
 };
 
 export const Anchor = {
+  Compact: AnchorCompact,
   Root: AnchorRoot,
   Link: AnchorLink
 } as {
+  Compact: typeof AnchorCompact;
   Root: typeof AnchorRoot;
   Link: typeof AnchorLink;
 };
@@ -448,6 +466,7 @@ export const Anchor = {
 export { Arrow };
 
 export const Autocomplete = {
+  Compact: AutocompleteCompact,
   Root: AutocompleteRoot,
   Anchor: AutocompleteAnchor,
   Input: AutocompleteInput,
@@ -461,6 +480,7 @@ export const Autocomplete = {
   ItemIndicator: AutocompleteItemIndicator,
   Separator: AutocompleteSeparator
 } as {
+  Compact: typeof AutocompleteCompact;
   Root: typeof AutocompleteRoot;
   Anchor: typeof AutocompleteAnchor;
   Input: typeof AutocompleteInput;
@@ -498,6 +518,7 @@ export const Badge = {
 };
 
 export const Breadcrumb = {
+  Compact: BreadcrumbCompact,
   Root: BreadcrumbRoot,
   List: BreadcrumbList,
   Item: BreadcrumbItem,
@@ -506,6 +527,7 @@ export const Breadcrumb = {
   Separator: BreadcrumbSeparator,
   Ellipsis: BreadcrumbEllipsis
 } as {
+  Compact: typeof BreadcrumbCompact;
   Root: typeof BreadcrumbRoot;
   List: typeof BreadcrumbList;
   Item: typeof BreadcrumbItem;
@@ -552,12 +574,16 @@ export const Carousel = {
 };
 
 export const Checkbox = {
+  CardGroupCompact: CheckboxCardGroupCompact,
+  GroupCompact: CheckboxGroupCompact,
   GroupRoot: CheckboxGroupRoot,
   Root: CheckboxRoot,
   Control: CheckboxControl,
   Indicator: CheckboxIndicator,
   Label: CheckboxLabel
 } as {
+  CardGroupCompact: typeof CheckboxCardGroupCompact;
+  GroupCompact: typeof CheckboxGroupCompact;
   GroupRoot: typeof CheckboxGroupRoot;
   Root: typeof CheckboxRoot;
   Control: typeof CheckboxControl;
@@ -659,6 +685,12 @@ export const ColorSwatchPicker = {
   Item: typeof ColorSwatchPickerItem;
   ItemIndicator: typeof ColorSwatchPickerItemIndicator;
   ItemSwatch: typeof ColorSwatchPickerItemSwatch;
+};
+
+export const Command = {
+  Compact: CommandCompact
+} as {
+  Compact: typeof CommandCompact;
 };
 
 export { ConfigProvider };
@@ -1134,12 +1166,14 @@ export const Progress = {
 };
 
 export const RadioGroup = {
+  Compact: RadioGroupCompact,
   Root: RadioGroupRoot,
   Item: RadioGroupItem,
   Control: RadioGroupControl,
   Indicator: RadioGroupIndicator,
   Label: RadioGroupLabel
 } as {
+  Compact: typeof RadioGroupCompact;
   Root: typeof RadioGroupRoot;
   Item: typeof RadioGroupItem;
   Control: typeof RadioGroupControl;
@@ -1170,6 +1204,7 @@ export const ScrollArea = {
 };
 
 export const Select = {
+  Compact: SelectCompact,
   Root: SelectRoot,
   Trigger: SelectTrigger,
   Portal: SelectPortal,
@@ -1187,6 +1222,7 @@ export const Select = {
   Separator: SelectSeparator,
   Arrow: SelectArrow
 } as {
+  Compact: typeof SelectCompact;
   Root: typeof SelectRoot;
   Trigger: typeof SelectTrigger;
   Portal: typeof SelectPortal;
@@ -1290,12 +1326,16 @@ export const Table = {
 };
 
 export const Tabs = {
+  Compact: TabsCompact,
+  Segment: SegmentCompact,
   Root: TabsRoot,
   List: TabsList,
   Trigger: TabsTrigger,
   Content: TabsContent,
   Indicator: TabsIndicator
 } as {
+  Compact: typeof TabsCompact;
+  Segment: typeof SegmentCompact;
   Root: typeof TabsRoot;
   List: typeof TabsList;
   Trigger: typeof TabsTrigger;

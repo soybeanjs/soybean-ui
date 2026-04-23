@@ -1,42 +1,24 @@
+import type { AcceptableValue, ClassValue } from '@soybeanjs/headless';
 import type {
-  AcceptableValue,
-  ClassValue,
-  DefinedValue,
-  TabsContentProps,
-  TabsIndicatorProps,
-  TabsListProps,
-  TabsRootEmits,
-  TabsRootProps,
-  TabsTriggerProps,
+  TabsCompactEmits,
+  TabsCompactProps,
+  TabsCompactSlots,
+  TabsOptionData,
   TabsUi
-} from '@soybeanjs/headless';
+} from '@soybeanjs/headless/tabs';
 import type { ThemeSize } from '@/theme';
 import type { TabsFill } from './variants';
 
-export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
-  value: T;
-  label: string;
-  disabled?: boolean;
-}
-
-export type TabsExtraUiSlot = 'indicatorContent';
-
-export type TabsExtendedUi = TabsUi & Record<TabsExtraUiSlot, ClassValue>;
-
-export interface TabsProps<
-  T extends AcceptableValue,
-  S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-> extends TabsRootProps<T> {
+export interface TabsProps<T extends TabsOptionData = TabsOptionData> extends TabsCompactProps<T> {
   class?: ClassValue;
   size?: ThemeSize;
-  ui?: Partial<TabsExtendedUi>;
-  items: S[];
+  /** Styled tabs ui slots, including `indicatorContent` for the compact indicator body. */
+  ui?: Partial<TabsUi>;
   fill?: TabsFill;
-  enableIndicator?: boolean;
-  listProps?: TabsListProps;
-  triggerProps?: TabsTriggerProps;
-  contentProps?: TabsContentProps;
-  indicatorProps?: TabsIndicatorProps;
 }
 
-export type TabsEmits<T = AcceptableValue> = TabsRootEmits<T>;
+export type TabsEmits<T extends AcceptableValue = AcceptableValue> = TabsCompactEmits<T>;
+
+export type TabsSlots<T extends TabsOptionData = TabsOptionData> = TabsCompactSlots<T>;
+
+export type { TabsOptionData } from '@soybeanjs/headless/tabs';

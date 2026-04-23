@@ -1,140 +1,39 @@
-import type { HTMLAttributes } from 'vue';
-import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type {
-  ClassValue,
-  ListboxGroupLabelProps as CommandGroupLabelProps,
-  ListboxGroupProps as CommandGroupProps,
-  ListboxFilterProps as CommandInputProps,
-  ListboxItemEmits as CommandItemEmits,
-  ListboxItemProps as CommandItemProps,
-  ListboxContentProps as CommandListProps,
-  ListboxRootEmits as CommandRootEmits,
-  ListboxRootProps as CommandRootProps,
-  KbdProps,
-  KbdValue,
-  ListboxUiSlot,
-  SeparatorRootProps,
-  UiClass
-} from '@soybeanjs/headless';
-import type { ThemeSize } from '@/theme';
-import type { IconValue } from '../icon/types';
-
-export interface CommandBaseOptionData extends Pick<CommandItemProps, 'value' | 'disabled'> {
-  /**
-   * The icon of the command item.
-   *
-   * if it is a string, it will be used as the icon name of the iconify.
-   */
-  icon?: IconValue;
-  /** The label to display in the command item. */
-  label: string;
-  /** whether to show a separator above this option */
-  separator?: boolean;
-  /** The shortcut of the command item. */
-  shortcut?: KbdValue | KbdValue[];
-}
-
-export type CommandOptionData<T extends CommandBaseOptionData = CommandBaseOptionData> = T & {
-  /**
-   * The group option data. only the first level can be a group.
-   */
-  items?: T[];
-};
-
-export interface CommandItemLabelProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface CommandShortcutProps extends Omit<KbdProps, 'value'> {}
-
-export interface CommandSeparatorProps extends SeparatorRootProps {}
-
-export interface CommandSingleOptionProps extends Omit<CommandItemProps, 'value' | 'disabled'> {
-  item: CommandBaseOptionData;
-  itemLabelProps?: CommandItemLabelProps;
-  shortcutProps?: CommandShortcutProps;
-  separatorProps?: CommandSeparatorProps;
-}
-
-export type CommandSingleOptionEmits = CommandItemEmits;
-
-export interface CommandGroupOptionProps extends Omit<CommandGroupProps, 'onSelect'> {
-  item: CommandOptionData;
-  groupLabelProps?: CommandGroupLabelProps;
-  itemProps?: CommandItemProps;
-  itemLabelProps?: CommandItemLabelProps;
-  shortcutProps?: CommandShortcutProps;
-  separatorProps?: CommandSeparatorProps;
-}
-
-export type CommandGroupOptionEmits = CommandItemEmits;
-
-export interface CommandOptionProps {
-  item: CommandOptionData;
-  groupProps?: CommandGroupProps;
-  groupLabelProps?: CommandGroupLabelProps;
-  itemProps?: CommandItemProps;
-  itemLabelProps?: CommandItemLabelProps;
-  shortcutProps?: CommandShortcutProps;
-  separatorProps?: CommandSeparatorProps;
-}
-
-export type CommandOptionEmits = CommandItemEmits;
-
-export interface CommandSearchOptionData extends CommandBaseOptionData {
-  groupValue?: string;
-  groupLabel?: string;
-  groupSeparator?: boolean;
-}
-
-export interface CommandHighlightSearchOptionData extends CommandSearchOptionData {
-  labelHtml?: string;
-}
-
-export interface CommandEmptyProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export type CommandUiSlot =
-  | Extract<ListboxUiSlot, 'root' | 'item' | 'group' | 'groupLabel'>
-  | 'list'
-  | 'inputRoot'
-  | 'inputControl';
-
-export type CommandExtraUiSlot = 'inputClearable' | 'itemLabel' | 'shortcut' | 'separator' | 'empty';
-
-export type CommandExtraUi = UiClass<CommandExtraUiSlot>;
-
-export type CommandUi = UiClass<CommandUiSlot | CommandExtraUiSlot>;
-
-export interface CommandProps<T extends CommandBaseOptionData = CommandBaseOptionData> extends Omit<
+  CommandCompactEmits,
+  CommandCompactProps,
+  CommandCompactSlots,
+  CommandEmptyProps,
+  CommandGroupLabelProps,
+  CommandGroupOptionData,
+  CommandGroupProps,
+  CommandInputProps,
+  CommandItemEmits,
+  CommandItemLabelProps,
+  CommandItemProps,
+  CommandListProps,
+  CommandOptionData,
+  CommandRootEmits,
   CommandRootProps,
-  'onSelect'
-> {
-  /**
-   * root class
-   */
+  CommandSearchOptionData,
+  CommandSeparatorProps,
+  CommandShortcutProps,
+  CommandSingleOptionData,
+  CommandUi as HeadlessCommandUi
+} from '@soybeanjs/headless/command';
+import type { ClassValue } from '@soybeanjs/headless';
+import type { ThemeSize } from '@/theme';
+export type CommandUi = HeadlessCommandUi;
+
+export interface CommandProps<T extends CommandSingleOptionData = CommandSingleOptionData> extends CommandCompactProps<T> {
+  /** Root class. */
   class?: ClassValue;
   size?: ThemeSize;
   ui?: Partial<CommandUi>;
-  items: CommandOptionData<T>[];
-  placeholder?: string;
-  searchTerm?: string;
-  clearable?: boolean;
-  fuseOptions?: UseFuseOptions<CommandSearchOptionData>;
-  listProps?: CommandListProps;
-  itemProps?: CommandItemProps;
-  itemLabelProps?: CommandItemLabelProps;
-  groupProps?: CommandGroupProps;
-  groupLabelProps?: CommandGroupLabelProps;
-  shortcutProps?: CommandShortcutProps;
-  separatorProps?: CommandSeparatorProps;
-  inputProps?: CommandInputProps;
-  emptyProps?: CommandEmptyProps;
-  emptyLabel?: string;
 }
 
-export type CommandSearchTermEmits = {
-  'update:searchTerm': [value: string];
-};
+export type CommandEmits = CommandCompactEmits;
 
-export type CommandEmits = CommandRootEmits & CommandOptionEmits & CommandSearchTermEmits;
+export type CommandSlots<T extends CommandSingleOptionData = CommandSingleOptionData> = CommandCompactSlots<T>;
 
 export type {
   CommandRootProps,
@@ -144,5 +43,17 @@ export type {
   CommandGroupLabelProps,
   CommandGroupProps,
   CommandItemProps,
-  CommandItemEmits
+  CommandItemEmits,
+  CommandItemLabelProps,
+  CommandShortcutProps,
+  CommandSeparatorProps,
+  CommandEmptyProps,
+  HeadlessCommandUi
 };
+
+export type {
+  CommandSingleOptionData,
+  CommandGroupOptionData,
+  CommandOptionData,
+  CommandSearchOptionData
+} from '@soybeanjs/headless/command';

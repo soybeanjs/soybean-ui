@@ -4,7 +4,7 @@
 
 Affix keeps content pinned to the top or bottom edge of the viewport or a custom scroll container while the target area is scrolling.
 
-> Note: In addition to SAffix, the headless layer also exports AffixRoot, AffixPlaceholder, AffixContent, and provideAffixUi for custom composition and style injection.
+> Note: In addition to SAffix, the headless layer also exports AffixCompact for the default placeholder/content structure, plus AffixRoot, AffixPlaceholder, AffixContent, and provideAffixUi for fully custom composition and style injection.
 
 ## Usage
 
@@ -78,7 +78,7 @@ custom-styling
 
 ## Headless Composition
 
-When you need separate control over the root, placeholder, and content elements, you can compose the headless exports directly:
+When the default placeholder/content structure is enough, import `AffixCompact` from `@soybeanjs/headless/affix`. If you need separate control over the root, placeholder, and content elements, compose the headless primitives directly:
 
 ```vue
 <script setup lang="ts">

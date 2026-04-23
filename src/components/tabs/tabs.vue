@@ -1,24 +1,17 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-  "
->
+<script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
 import { computed } from 'vue';
-import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger, provideTabsUi } from '@soybeanjs/headless';
-import type { AcceptableValue } from '@soybeanjs/headless';
+import { TabsCompact, provideTabsUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { tabsVariants } from './variants';
-import type { TabsEmits, TabsOptionData, TabsProps } from './types';
+import type { TabsEmits, TabsProps, TabsSlots, TabsOptionData } from './types';
 
 defineOptions({
   name: 'STabs'
 });
 
-const props = withDefaults(defineProps<TabsProps<T, S>>(), {
+const props = withDefaults(defineProps<TabsProps<T>>(), {
   modelValue: undefined,
   unmountOnHide: true,
   fill: 'full',
@@ -26,23 +19,14 @@ const props = withDefaults(defineProps<TabsProps<T, S>>(), {
   enableIndicator: true
 });
 
-const emit = defineEmits<TabsEmits<T>>();
+const emit = defineEmits<TabsEmits<T['value']>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'items',
-  'fill',
-  'loop',
-  'enableIndicator',
-  'listProps',
-  'triggerProps',
-  'contentProps',
-  'indicatorProps'
-]);
+const slots = defineSlots<TabsSlots<T>>();
+
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 
 const listeners = useForwardListeners(emit);
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = tabsVariants({
@@ -59,30 +43,10 @@ provideTabsUi(ui);
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" v-on="listeners">
-    <TabsList v-bind="listProps">
-      <TabsTrigger
-        v-for="item in items"
-        v-bind="triggerProps"
-        :key="String(item.value)"
-        v-slot="slotProps"
-        :value="item.value"
-        :disabled="item.disabled"
-      >
-        <slot name="trigger" v-bind="{ ...item, ...slotProps }">{{ item.label }}</slot>
-      </TabsTrigger>
-      <TabsIndicator v-if="enableIndicator" v-bind="indicatorProps">
-        <div :class="ui.indicatorContent" />
-      </TabsIndicator>
-    </TabsList>
-    <TabsContent
-      v-for="item in items"
-      v-slot="slotProps"
-      v-bind="contentProps"
-      :key="String(item.value)"
-      :value="item.value"
-    >
-      <slot name="content" v-bind="{ ...item, ...slotProps }" />
-    </TabsContent>
-  </TabsRoot>
+  <TabsCompact v-bind="forwardedProps" :items="items" v-on="listeners">
+    <template v-for="slotName in slotNames" #[slotName]="slotProps">
+      <!-- @vue-ignore ignore vue slot props type -->
+      <slot :name="slotName" v-bind="slotProps" />
+    </template>
+  </TabsCompact>
 </template>

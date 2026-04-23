@@ -22,6 +22,8 @@ const items = [
 </template>
 ```
 
+> `SAutocomplete` 现在会把筛选与选项聚合逻辑委托给 headless `AutocompleteCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/autocomplete` 直接导入 `AutocompleteCompact`。
+
 ## 演示
 
 ```playground

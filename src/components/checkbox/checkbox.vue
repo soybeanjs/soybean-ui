@@ -1,15 +1,8 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue';
-import {
-  CheckboxControl,
-  CheckboxIndicator,
-  CheckboxLabel,
-  CheckboxRoot,
-  provideCheckboxUi
-} from '@soybeanjs/headless';
+import { computed } from 'vue';
+import { CheckboxCompact, provideCheckboxUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
-import Icon from '../icon/icon.vue';
 import { checkboxVariants } from './variants';
 import type { CheckboxEmits, CheckboxProps } from './types';
 
@@ -23,19 +16,7 @@ const props = withDefaults(defineProps<CheckboxProps>(), {
 
 const emit = defineEmits<CheckboxEmits>();
 
-const forwardedProps = useOmitProps(props, [
-  'color',
-  'size',
-  'ui',
-  'label',
-  'controlProps',
-  'indicatorProps',
-  'labelProps'
-]);
-
-const defaultId = useId();
-
-const checkboxId = computed(() => props.id || `checkbox-${defaultId}`);
+const forwardedProps = useOmitProps(props, ['ui', 'color', 'size', 'label']);
 
 const ui = computed(() => {
   const variants = checkboxVariants({
@@ -44,25 +25,14 @@ const ui = computed(() => {
     shape: props.shape
   });
 
-  return mergeSlotVariants(variants, props.ui);
+  return mergeSlotVariants(variants, props.ui, { root: props.class });
 });
 
 provideCheckboxUi(ui);
 </script>
 
 <template>
-  <CheckboxRoot v-slot="slotProps" v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
-    <CheckboxControl v-bind="controlProps" :id="checkboxId">
-      <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
-        <CheckboxIndicator v-bind="indicatorProps">
-          <slot name="indicator" v-bind="slotProps">
-            <Icon :icon="slotProps.state === 'indeterminate' ? 'lucide:minus' : 'lucide:check'" class="size-full" />
-          </slot>
-        </CheckboxIndicator>
-      </Transition>
-    </CheckboxControl>
-    <CheckboxLabel v-if="$slots.default || label" v-bind="labelProps" :for="checkboxId">
-      <slot v-bind="slotProps" :id="checkboxId">{{ label }}</slot>
-    </CheckboxLabel>
-  </CheckboxRoot>
+  <CheckboxCompact v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <slot />
+  </CheckboxCompact>
 </template>

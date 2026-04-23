@@ -1,69 +1,41 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends DefinedValue = DefinedValue,
-    S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
-  "
->
+<script setup lang="ts" generic="T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData">
 import { computed } from 'vue';
-import { CheckboxGroupRoot } from '@soybeanjs/headless';
-import type { DefinedValue } from '@soybeanjs/headless';
+import { CheckboxCardGroupCompact, provideCheckboxCardUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { checkboxCardVariants } from './variants';
-import CheckboxCard from './checkbox-card.vue';
 import type { CheckboxCardGroupEmits, CheckboxCardGroupOptionData, CheckboxCardGroupProps } from './types';
 
 defineOptions({
   name: 'SCheckboxCardGroup'
 });
 
-const props = defineProps<CheckboxCardGroupProps<T, S>>();
+const props = defineProps<CheckboxCardGroupProps<T>>();
 
-const emit = defineEmits<CheckboxCardGroupEmits<T>>();
+const emit = defineEmits<CheckboxCardGroupEmits<T['value']>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'ui',
-  'color',
-  'size',
-  'shape',
-  'items',
-  'rootProps',
-  'controlProps',
-  'indicatorProps',
-  'labelProps'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'ui', 'color', 'size', 'shape']);
 
 const ui = computed(() => {
-  const variants = checkboxCardVariants();
+  const variants = checkboxCardVariants({
+    color: props.color,
+    size: props.size,
+    shape: props.shape
+  });
 
   return mergeSlotVariants(variants, props.ui, { groupRoot: props.class });
 });
+
+provideCheckboxCardUi(ui);
 </script>
 
 <template>
-  <CheckboxGroupRoot
+  <CheckboxCardGroupCompact
     v-bind="forwardedProps"
-    :class="ui.groupRoot"
+    :content-class="ui.content"
+    :text-content-class="ui.textContent"
+    :icon-class="ui.icon"
+    :description-class="ui.description"
     @update:model-value="emit('update:modelValue', $event)"
-  >
-    <CheckboxCard
-      v-for="(item, index) in items"
-      :key="index"
-      v-bind="rootProps"
-      :color="color"
-      :size="size"
-      :shape="shape"
-      :label="item.label"
-      :value="item.value"
-      :icon="item.icon"
-      :description="item.description"
-      :disabled="disabled || item.disabled"
-      :control-props="controlProps"
-      :indicator-props="indicatorProps"
-      :label-props="labelProps"
-    />
-  </CheckboxGroupRoot>
+  />
 </template>

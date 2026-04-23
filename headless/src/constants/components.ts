@@ -7,9 +7,10 @@ export const components = {
     'AccordionContent',
     'AccordionCompact'
   ],
-  affix: ['AffixRoot', 'AffixPlaceholder', 'AffixContent'],
-  alert: ['AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
+  affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
+  alert: ['AlertCompact', 'AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
   autocomplete: [
+    'AutocompleteCompact',
     'AutocompleteRoot',
     'AutocompleteAnchor',
     'AutocompleteInput',
@@ -23,13 +24,14 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  anchor: ['AnchorRoot', 'AnchorLink'],
+  anchor: ['AnchorCompact', 'AnchorRoot', 'AnchorLink'],
   arrow: ['Arrow'],
   aspectRatio: ['AspectRatio'],
   avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
   backtop: ['Backtop'],
   badge: ['BadgeRoot', 'BadgeContent'],
   breadcrumb: [
+    'BreadcrumbCompact',
     'BreadcrumbRoot',
     'BreadcrumbList',
     'BreadcrumbItem',
@@ -41,7 +43,15 @@ export const components = {
   button: ['Button'],
   card: ['CardRoot', 'CardHeader', 'CardTitle', 'CardTitleRoot', 'CardDescription', 'CardContent', 'CardFooter'],
   carousel: ['CarouselRoot', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext'],
-  checkbox: ['CheckboxGroupRoot', 'CheckboxRoot', 'CheckboxControl', 'CheckboxIndicator', 'CheckboxLabel'],
+  checkbox: [
+    'CheckboxGroupCompact',
+    'CheckboxCardGroupCompact',
+    'CheckboxGroupRoot',
+    'CheckboxRoot',
+    'CheckboxControl',
+    'CheckboxIndicator',
+    'CheckboxLabel'
+  ],
   clipboard: ['Clipboard'],
   collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
   combobox: [
@@ -74,6 +84,7 @@ export const components = {
     'ColorSwatchPickerItemIndicator',
     'ColorSwatchPickerItemSwatch'
   ],
+  command: ['CommandCompact'],
   configProvider: ['ConfigProvider'],
   contextMenu: [
     'ContextMenuWrapperCompact',
@@ -264,10 +275,18 @@ export const components = {
   portal: ['Portal'],
   primitive: ['Primitive'],
   progress: ['ProgressProvider', 'ProgressRoot', 'ProgressIndicator', 'ProgressCircle'],
-  radioGroup: ['RadioGroupRoot', 'RadioGroupItem', 'RadioGroupControl', 'RadioGroupIndicator', 'RadioGroupLabel'],
+  radioGroup: [
+    'RadioGroupCompact',
+    'RadioGroupRoot',
+    'RadioGroupItem',
+    'RadioGroupControl',
+    'RadioGroupIndicator',
+    'RadioGroupLabel'
+  ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
   select: [
+    'SelectCompact',
     'SelectRoot',
     'SelectTrigger',
     'SelectPortal',
@@ -311,7 +330,7 @@ export const components = {
     'TableHead',
     'TableCell'
   ],
-  tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
+  tabs: ['SegmentCompact', 'TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
   tag: ['Tag'],
   tagsInput: [
     'TagsInputRoot',

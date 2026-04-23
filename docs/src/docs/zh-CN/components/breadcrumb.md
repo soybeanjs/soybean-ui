@@ -18,6 +18,8 @@ const items = [{ label: 'Home', link: '/' }, { label: 'Components', link: '/comp
 </template>
 ```
 
+> `SBreadcrumb` 现在会把列表聚合逻辑委托给 headless `BreadcrumbCompact`。如果需要无样式、数据驱动的组合入口，可从 `@soybeanjs/headless/breadcrumb` 直接导入 `BreadcrumbCompact`。
+
 ## 演示
 
 ```playground
@@ -34,6 +36,7 @@ ellipsis-dropdown
 
 <DataTable preset="props" :data="[
   { name: 'items', type: 'BreadcrumbOptionData[]', default: '-', description: 'Data array for breadcrumb items.', required: true },
+  { name: 'class', type: 'ClassValue', default: '-', description: '追加到面包屑根节点的类名。' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Breadcrumb size.' },
   { name: 'ellipsis', type: 'boolean | [number, number]', default: 'false', description: 'Enable ellipsis for long paths. True collapses middle items. Array specifies start/end count.' },
   { name: 'ui', type: 'Ui', default: '{}', description: '自定义类名。' },
@@ -54,11 +57,14 @@ ellipsis-dropdown
 ### 插槽
 
 <DataTable preset="slots" :data="[
+  { name: 'default', parameters: '{ item: BreadcrumbOptionData, index: number }', description: '自定义条目主体内容。' },
   { name: 'separator', parameters: '-', description: 'Custom separator content.' },
   { name: 'ellipsis', parameters: '{ ellipsisItems: BreadcrumbOptionData[] }', description: 'Custom ellipsis content.' },
-  { name: 'item-leading', parameters: '{ item: BreadcrumbOptionData }', description: 'Content before item label.' },
-  { name: 'item-label', parameters: '{ item: BreadcrumbOptionData }', description: 'Custom label content.' },
-  { name: 'item-trailing', parameters: '{ item: BreadcrumbOptionData }', description: 'Content after item label.' }
+  { name: 'ellipsis-icon', parameters: '-', description: '自定义内置省略入口中的默认图标。' },
+  { name: 'item-leading', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Content before item label.' },
+  { name: 'item-link', parameters: '{ item: BreadcrumbOptionData, index: number }', description: '自定义链接条目内容。' },
+  { name: 'item-label', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Custom label content.' },
+  { name: 'item-trailing', parameters: '{ item: BreadcrumbOptionData, index: number }', description: 'Content after item label.' }
 ]"/>
 
 ### 类型

@@ -1,3 +1,4 @@
+export { default as AlertCompact } from './alert-compact.vue';
 export { default as AlertRoot } from './alert-root.vue';
 export { default as AlertTitle } from './alert-title.vue';
 export { default as AlertDescription } from './alert-description.vue';
@@ -9,6 +10,9 @@ export { provideAlertUi } from './context';
 export type {
   AlertRootProps,
   AlertRootEmits,
+  AlertCompactProps,
+  AlertCompactEmits,
+  AlertCompactSlots,
   AlertTitleProps,
   AlertDescriptionProps,
   AlertContentProps,

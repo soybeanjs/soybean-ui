@@ -8,6 +8,8 @@ When the active item changes while scrolling, the hash in the address bar is als
 
 If the current URL already contains a hash on initial render, Anchor will scroll to the matching section after mount. When a custom scroll container becomes available later, Anchor will re-sync once that container is ready.
 
+> `SAnchor` now delegates recursive item rendering to headless `AnchorCompact`. The same six `ui` slots are available from both `SAnchor` and `@soybeanjs/headless/anchor`.
+
 ## Usage
 
 ```vue
@@ -114,7 +116,7 @@ custom-styling
 
 ## Custom Node Styling
 
-In addition to the headless root and link slots, the UI layer exposes four extra slots: item, indicator, title, and sub. Use them when you need separate styling control over the item wrapper, active indicator, title text, and nested child container.
+`AnchorCompact` and `SAnchor` share the same six `ui` slots: root, link, item, indicator, title, and sub. Use them when you need separate styling control over the item wrapper, active indicator, title text, and nested child container.
 
 <UnionType name="ThemeSize" description="Theme size type" type="'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'" />
 <UnionType name="ThemeColor" description="Theme color type" type="'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'" />

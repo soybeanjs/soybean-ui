@@ -4,7 +4,7 @@
 
 Affix 可以在页面或自定义滚动容器滚动时，将内容固定在顶部或底部边缘。
 
-> 注意：除了 SAffix，headless 层还导出了 AffixRoot、AffixPlaceholder、AffixContent 和 provideAffixUi，可用于自定义组合与样式注入。
+> 注意：除了 SAffix，headless 层现在还导出了用于默认占位/内容结构组合的 AffixCompact，同时也保留了 AffixRoot、AffixPlaceholder、AffixContent 和 provideAffixUi，便于完全自定义组合与样式注入。
 
 ## 用法
 
@@ -78,7 +78,7 @@ custom-styling
 
 ## Headless 组合
 
-当你需要分别控制根节点、占位节点和内容节点时，可以直接组合 headless 组件：
+当默认的占位/内容结构已经满足需求时，可以直接从 `@soybeanjs/headless/affix` 使用 `AffixCompact`。如果你需要分别控制根节点、占位节点和内容节点，则可以直接组合 headless 原语组件：
 
 ```vue
 <script setup lang="ts">

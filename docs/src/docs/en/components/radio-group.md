@@ -23,6 +23,8 @@ const items = [
 </template>
 ```
 
+> `SRadioGroup` now delegates item iteration and default radio composition to headless `RadioGroupCompact`. For unstyled, data-driven usage, import `RadioGroupCompact` from `@soybeanjs/headless/radio-group`.
+
 ## Demos
 
 ```playground
@@ -40,8 +42,11 @@ card
   { name: 'modelValue', type: 'string', default: '-', description: 'Selected value.', required: true },
   { name: 'items', type: 'RadioGroupOptionData[]', default: '-', description: 'Options data.', required: true },
   { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the group is disabled.' },
+  { name: 'orientation', type: `'horizontal' \| 'vertical'`, default: '-', description: 'Group orientation.' },
+  { name: 'variant', type: 'RadioGroupVariant', default: `'default'`, description: 'Visual variant.' },
   { name: 'color', type: 'ThemeColor', default: `'primary'`, description: 'Theme color.' },
   { name: 'size', type: 'ThemeSize', default: `'md'`, description: 'Size.' },
+  { name: 'class', type: 'ClassValue', default: '-', description: 'Additional root class names.' },
   { name: 'ui', type: 'Ui', default: '{}', description: 'Custom class names.' }
 ]"/>
 
@@ -75,6 +80,7 @@ card
     fields: [
       { name: 'root', type: 'string', description: 'Root container class.' },
       { name: 'item', type: 'string', description: 'Item wrapper class.' },
+      { name: 'control', type: 'string', description: 'Radio control class.' },
       { name: 'indicator', type: 'string', description: 'Selected indicator class.' },
       { name: 'label', type: 'string', description: 'Label text class.' },
     ]

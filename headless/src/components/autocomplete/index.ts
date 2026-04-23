@@ -1,4 +1,5 @@
 export { default as AutocompleteRoot } from './autocomplete-root.vue';
+export { default as AutocompleteCompact } from './autocomplete-compact.vue';
 export { default as AutocompleteAnchor } from './autocomplete-anchor.vue';
 export { default as AutocompleteInput } from './autocomplete-input.vue';
 export { default as AutocompleteTrigger } from './autocomplete-trigger.vue';
@@ -14,6 +15,9 @@ export { default as AutocompleteSeparator } from './autocomplete-separator.vue';
 export { provideAutocompleteUi } from './context';
 
 export type {
+  AutocompleteCompactProps,
+  AutocompleteCompactEmits,
+  AutocompleteCompactSlots,
   AutocompleteRootProps,
   AutocompleteRootEmits,
   AutocompleteHighlightPayload,
@@ -30,6 +34,10 @@ export type {
   AutocompleteItemEmits,
   AutocompleteItemIndicatorProps,
   AutocompleteSeparatorProps,
+  AutocompleteSingleOptionData,
+  AutocompleteGroupOptionData,
+  AutocompleteOptionData,
+  AutocompleteSearchOptionData,
   AutocompleteUiSlot,
   AutocompleteUi
 } from './types';
