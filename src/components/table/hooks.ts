@@ -119,34 +119,31 @@ function getColumnChecks<T extends TableColumn<any>>(columns: T[]) {
 function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColumnCheck[]) {
   const typeColumnsMap = new Map<TableColumnType, { column: T; index: number }>();
   const checksMap = new Map(checks.map(check => [check.key, check]));
+  const checksOrderMap = new Map(checks.map((check, i) => [check.key, i]));
 
   columns.forEach((column, index) => {
     if (column.type) {
-      typeColumnsMap.set(column.type, { column: column, index });
-      return;
+      typeColumnsMap.set(column.type, { column, index });
     }
   });
 
-  return columns.reduce<T[]>((acc, column, index) => {
-    if (column.type) {
-      const typeColumn = typeColumnsMap.get(column.type);
-
-      if (!typeColumn || typeColumn.index !== index) {
-        return acc;
-      }
-
-      acc.push(column);
-      return acc;
+  function getMinCheckOrder(column: TableColumn<any>): number {
+    if (isTableGroupColumn(column)) {
+      const childOrders = column.children.map(child => getMinCheckOrder(child));
+      return childOrders.length > 0 ? Math.min(...childOrders) : Infinity;
     }
+    return checksOrderMap.get(getTableColumnKey(column)) ?? Infinity;
+  }
 
+  const nonTypeColumns = columns.filter(col => !col.type);
+  const sortedNonType = [...nonTypeColumns].sort((a, b) => getMinCheckOrder(a) - getMinCheckOrder(b));
+
+  const result = sortedNonType.reduce<T[]>((acc, column) => {
     if (isTableGroupColumn(column)) {
       const nextChildren = getColumns(column.children, checks);
 
       if (nextChildren.length > 0) {
-        acc.push({
-          ...column,
-          children: nextChildren
-        });
+        acc.push({ ...column, children: nextChildren });
       }
 
       return acc;
@@ -160,4 +157,14 @@ function getColumns<T extends TableColumn<any>>(columns: T[], checks: TableColum
 
     return acc;
   }, []);
+
+  typeColumnsMap.forEach(({ column, index }) => {
+    if (index >= result.length) {
+      result.push(column);
+    } else {
+      result.splice(index, 0, column);
+    }
+  });
+
+  return result;
 }
