@@ -3,7 +3,8 @@ import { computed } from 'vue';
 import { CommandCompact, provideCommandUi } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeBaseVariants, mergeSlotVariants } from '@/theme';
+import { kbdVariants } from '../kbd/variants';
 import { commandVariants } from './variants';
 import type { CommandEmits, CommandProps, CommandSingleOptionData, CommandSlots } from './types';
 
@@ -24,8 +25,14 @@ const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = commandVariants({
+  const cVariants = commandVariants({
     size: props.size
+  });
+
+  const variants = mergeBaseVariants(cVariants, {
+    shortcut: kbdVariants({
+      size: props.size
+    })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });

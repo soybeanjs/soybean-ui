@@ -1,25 +1,17 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-  "
->
+<script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
 import { computed } from 'vue';
 import { TabsCompact, provideTabsUi } from '@soybeanjs/headless';
-import type { AcceptableValue } from '@soybeanjs/headless';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { tabsVariants } from './variants';
-import type { TabsEmits, TabsOptionData, TabsProps, TabsSlots } from './types';
+import type { TabsEmits, TabsProps, TabsSlots, TabsOptionData } from './types';
 
 defineOptions({
   name: 'STabs'
 });
 
-const props = withDefaults(defineProps<TabsProps<T, S>>(), {
+const props = withDefaults(defineProps<TabsProps<T>>(), {
   modelValue: undefined,
   unmountOnHide: true,
   fill: 'full',
@@ -27,21 +19,14 @@ const props = withDefaults(defineProps<TabsProps<T, S>>(), {
   enableIndicator: true
 });
 
-const emit = defineEmits<TabsEmits<T>>();
+const emit = defineEmits<TabsEmits<T['value']>>();
 
-const slots = defineSlots<TabsSlots<S>>();
+const slots = defineSlots<TabsSlots<T>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'fill'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 
 const listeners = useForwardListeners(emit);
 const slotNames = computed(() => keysOf(slots));
-// `@vue-ignore` is still required on `<TabsCompact>` because `vue-tsc` loses the generic relation between `T` and `S` in template inference.
-const compactItems = computed(() => props.items as TabsOptionData<NonNullable<T>>[]);
 
 const ui = computed(() => {
   const variants = tabsVariants({
@@ -58,8 +43,7 @@ provideTabsUi(ui);
 </script>
 
 <template>
-  <!-- @vue-ignore generic props are validated by TabsProps/TabsCompactProps -->
-  <TabsCompact v-bind="forwardedProps" :items="compactItems" v-on="listeners">
+  <TabsCompact v-bind="forwardedProps" :items="items" v-on="listeners">
     <template v-for="slotName in slotNames" #[slotName]="slotProps">
       <!-- @vue-ignore ignore vue slot props type -->
       <slot :name="slotName" v-bind="slotProps" />

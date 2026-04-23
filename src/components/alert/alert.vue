@@ -2,9 +2,10 @@
 import { computed } from 'vue';
 import { AlertCompact, provideAlertUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
+import { keysOf } from '@soybeanjs/utils';
 import { mergeSlotVariants } from '@/theme';
 import { alertVariants } from './variants';
-import type { AlertEmits, AlertProps } from './types';
+import type { AlertEmits, AlertProps, AlertSlots } from './types';
 
 defineOptions({
   name: 'SAlert'
@@ -16,11 +17,11 @@ const props = withDefaults(defineProps<AlertProps>(), {
 
 const emit = defineEmits<AlertEmits>();
 
+const slots = defineSlots<AlertSlots>();
+
 const forwardedProps = useOmitProps(props, ['class', 'size', 'color', 'variant', 'ui']);
 
-const handleOpenChange = (value: boolean) => {
-  emit('update:open', value);
-};
+const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
   const variants = alertVariants({
@@ -36,22 +37,9 @@ provideAlertUi(ui);
 </script>
 
 <template>
-  <AlertCompact v-bind="forwardedProps" @update:open="handleOpenChange">
-    <template v-if="$slots.leading" #leading>
-      <slot name="leading" />
-    </template>
-    <template v-if="$slots.title" #title>
-      <slot name="title" />
-    </template>
-    <template v-if="$slots.description" #description>
-      <slot name="description" />
-    </template>
-    <slot />
-    <template v-if="$slots.trailing" #trailing>
-      <slot name="trailing" />
-    </template>
-    <template v-if="$slots.close" #close>
-      <slot name="close" />
+  <AlertCompact v-bind="forwardedProps" @update:open="emit('update:open', $event)">
+    <template v-for="slotName in slotNames" :key="slotName" #[slotName]>
+      <slot :name="slotName" />
     </template>
   </AlertCompact>
 </template>

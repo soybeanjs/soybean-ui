@@ -28,7 +28,7 @@ provideAffixUi(ui);
 </script>
 
 <template>
-  <AffixCompact v-bind="forwardedProps" v-on="listeners">
-    <slot />
+  <AffixCompact v-slot="slotProps" v-bind="forwardedProps" v-on="listeners">
+    <slot v-bind="slotProps" />
   </AffixCompact>
 </template>

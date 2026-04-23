@@ -37,14 +37,14 @@ export interface AlertCompactProps extends AlertRootProps {
 
 export type AlertCompactEmits = AlertRootEmits;
 
-export interface AlertCompactSlots {
+export type AlertCompactSlots = {
   default?: () => any;
   leading?: () => any;
   title?: () => any;
   description?: () => any;
   trailing?: () => any;
   close?: () => any;
-}
+};
 
 export interface AlertRootContextParams {
   open: ShallowRef<boolean | undefined>;

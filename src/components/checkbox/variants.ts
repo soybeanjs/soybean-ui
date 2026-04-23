@@ -11,6 +11,7 @@ export const checkboxVariants = tv({
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'w-full h-full flex items-center justify-center text-current',
+    'indicator-icon': 'size-full',
     label: ''
   },
   variants: {
@@ -111,7 +112,8 @@ export const checkboxCardVariants = tv({
       'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
-    indicator: 'w-full h-full flex items-center justify-center text-current'
+    indicator: 'w-full h-full flex items-center justify-center text-current',
+    'indicator-icon': 'size-full'
   },
   variants: {
     color: {

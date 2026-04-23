@@ -1,20 +1,7 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends DefinedValue = DefinedValue,
-    S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
-  "
->
-import { useId } from 'vue';
+<script setup lang="ts" generic="T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData">
 import { useOmitProps } from '../../composables';
-import type { DefinedValue } from '../../types';
-import IconRender from '../icon/icon-render.vue';
-import CheckboxControl from './checkbox-control.vue';
+import CheckboxCardCompact from './checkbox-card-compact.vue';
 import CheckboxGroupRoot from './checkbox-group-root.vue';
-import CheckboxIndicator from './checkbox-indicator.vue';
-import CheckboxLabel from './checkbox-label.vue';
-import CheckboxRoot from './checkbox-root.vue';
 import type {
   CheckboxCardGroupCompactEmits,
   CheckboxCardGroupCompactProps,
@@ -25,61 +12,26 @@ defineOptions({
   name: 'CheckboxCardGroupCompact'
 });
 
-const props = defineProps<CheckboxCardGroupCompactProps<T, S>>();
+const props = defineProps<CheckboxCardGroupCompactProps<T>>();
 
-const emit = defineEmits<CheckboxCardGroupCompactEmits<T>>();
+const emit = defineEmits<CheckboxCardGroupCompactEmits<T['value']>>();
 
-const forwardedProps = useOmitProps(props, [
-  'items',
-  'rootProps',
-  'controlProps',
-  'indicatorProps',
-  'labelProps',
-  'contentClass',
-  'textContentClass',
-  'iconClass',
-  'descriptionClass'
-]);
-
-const defaultId = useId();
-
-const getItemKey = (item: S, index: number) => `${String(item.value)}-${index}`;
-
-const getItemId = (index: number) => `${props.rootProps?.id || `checkbox-${defaultId}`}-${index}`;
-
-const handleModelValueChange = (value: DefinedValue[]) => {
-  emit('update:modelValue', value as T[]);
-};
+const forwardedProps = useOmitProps(props, ['items', 'rootProps', 'controlProps', 'indicatorProps', 'labelProps']);
 </script>
 
 <template>
-  <CheckboxGroupRoot v-bind="forwardedProps" @update:model-value="handleModelValueChange">
-    <CheckboxRoot
-      v-for="(item, index) in items"
-      :key="getItemKey(item, index)"
-      v-slot="slotProps"
-      v-bind="rootProps"
+  <CheckboxGroupRoot v-bind="forwardedProps" @update:model-value="emit('update:modelValue', $event)">
+    <CheckboxCardCompact
+      v-for="item in items"
+      :key="item.value"
+      :label="item.label"
+      :icon="item.icon"
+      :description="item.description"
       :value="item.value"
       :disabled="disabled || item.disabled"
-    >
-      <div :class="contentClass">
-        <IconRender v-if="item.icon" :icon="item.icon" :class="iconClass" />
-        <div :class="textContentClass">
-          <CheckboxLabel v-bind="labelProps" :for="getItemId(index)">
-            {{ item.label }}
-          </CheckboxLabel>
-          <p v-if="item.description" :class="descriptionClass">
-            {{ item.description }}
-          </p>
-        </div>
-      </div>
-      <CheckboxControl v-bind="controlProps" :id="getItemId(index)">
-        <Transition enter-active-class="transition-50" enter-from-class="opacity-0 scale-0">
-          <CheckboxIndicator v-bind="indicatorProps">
-            <IconRender :icon="slotProps.state === 'indeterminate' ? 'lucide:minus' : 'lucide:check'" />
-          </CheckboxIndicator>
-        </Transition>
-      </CheckboxControl>
-    </CheckboxRoot>
+      :control-props="controlProps"
+      :indicator-props="indicatorProps"
+      :label-props="labelProps"
+    />
   </CheckboxGroupRoot>
 </template>

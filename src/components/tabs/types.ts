@@ -1,15 +1,15 @@
+import type { AcceptableValue, ClassValue } from '@soybeanjs/headless';
 import type {
-  AcceptableValue,
-  ClassValue
-} from '@soybeanjs/headless';
-import type { TabsCompactEmits, TabsCompactProps, TabsCompactSlots, TabsOptionData, TabsUi } from '@soybeanjs/headless/tabs';
+  TabsCompactEmits,
+  TabsCompactProps,
+  TabsCompactSlots,
+  TabsOptionData,
+  TabsUi
+} from '@soybeanjs/headless/tabs';
 import type { ThemeSize } from '@/theme';
 import type { TabsFill } from './variants';
 
-export interface TabsProps<
-  T extends AcceptableValue,
-  S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-> extends TabsCompactProps<T, S> {
+export interface TabsProps<T extends TabsOptionData = TabsOptionData> extends TabsCompactProps<T> {
   class?: ClassValue;
   size?: ThemeSize;
   /** Styled tabs ui slots, including `indicatorContent` for the compact indicator body. */
@@ -17,8 +17,8 @@ export interface TabsProps<
   fill?: TabsFill;
 }
 
-export type TabsEmits<T = AcceptableValue> = TabsCompactEmits<T>;
+export type TabsEmits<T extends AcceptableValue = AcceptableValue> = TabsCompactEmits<T>;
 
-export type TabsSlots<S extends TabsOptionData = TabsOptionData> = TabsCompactSlots<S>;
+export type TabsSlots<T extends TabsOptionData = TabsOptionData> = TabsCompactSlots<T>;
 
 export type { TabsOptionData } from '@soybeanjs/headless/tabs';

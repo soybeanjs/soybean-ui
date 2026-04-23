@@ -1,25 +1,16 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends SegmentOptionData<NonNullable<T>> = SegmentOptionData<NonNullable<T>>
-  "
->
+<script setup lang="ts" generic="T extends SegmentOptionData = SegmentOptionData">
 import { computed } from 'vue';
 import { SegmentCompact, provideTabsUi } from '@soybeanjs/headless';
-import type { AcceptableValue } from '@soybeanjs/headless';
-import type { SegmentCompactItemSlotProps } from '@soybeanjs/headless/tabs';
 import { useForwardListeners, useOmitProps } from '@soybeanjs/headless/composables';
 import { mergeSlotVariants } from '@/theme';
 import { tabsVariants } from '../tabs/variants';
-import type { SegmentEmits, SegmentOptionData, SegmentProps, SegmentSlots } from './types';
+import type { SegmentEmits, SegmentProps, SegmentSlots, SegmentOptionData } from './types';
 
 defineOptions({
   name: 'SSegment'
 });
 
-const props = withDefaults(defineProps<SegmentProps<T, S>>(), {
+const props = withDefaults(defineProps<SegmentProps<T>>(), {
   modelValue: undefined,
   unmountOnHide: true,
   loop: true,
@@ -27,24 +18,13 @@ const props = withDefaults(defineProps<SegmentProps<T, S>>(), {
   enableIndicator: true
 });
 
-const emit = defineEmits<SegmentEmits<T>>();
+const emit = defineEmits<SegmentEmits<T['value']>>();
 
-const slots = defineSlots<SegmentSlots<S>>();
+defineSlots<SegmentSlots<T>>();
 
-const forwardedProps = useOmitProps(props, [
-  'class',
-  'size',
-  'ui',
-  'fill'
-]);
+const forwardedProps = useOmitProps(props, ['class', 'size', 'ui', 'fill']);
 
 const listeners = useForwardListeners(emit);
-const hasItemSlot = computed(() => Boolean(slots.item));
-// `@vue-ignore` is still required on `<SegmentCompact>` because `vue-tsc` loses the generic relation between `T` and `S` in template inference.
-const compactItems = computed(() => props.items as SegmentOptionData<NonNullable<T>>[]);
-const getItemSlotProps = (slotProps: SegmentCompactItemSlotProps<SegmentOptionData<NonNullable<T>>>) => {
-  return slotProps as SegmentCompactItemSlotProps<S>;
-};
 
 const ui = computed(() => {
   const variants = tabsVariants({
@@ -62,10 +42,12 @@ provideTabsUi(ui);
 </script>
 
 <template>
-  <!-- @vue-ignore generic props are validated by SegmentProps/SegmentCompactProps -->
-  <SegmentCompact v-bind="forwardedProps" :items="compactItems" v-on="listeners">
-    <template v-if="hasItemSlot" #item="slotProps">
-      <slot name="item" v-bind="getItemSlotProps(slotProps)" />
+  <SegmentCompact v-bind="forwardedProps" v-on="listeners">
+    <template #item="slotProps">
+      <slot name="item" v-bind="slotProps" />
+    </template>
+    <template #indicator>
+      <slot name="indicator" />
     </template>
   </SegmentCompact>
 </template>

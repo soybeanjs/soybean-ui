@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, ComputedRef, HTMLAttributes, ShallowRef } from 'vue';
 import type {
-  ClassValue,
   CheckedState,
   DefinedValue,
   ForceMountProps,
@@ -10,9 +9,11 @@ import type {
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
+import type { IconValue } from '../icon/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {
+  id?: string;
   /** The controlled value of the checkbox. Can be bound with v-model. */
   modelValue?: CheckedState | null;
   /** The value of the checkbox when it is initially rendered. Use when you do not need to control its value. */
@@ -43,16 +44,16 @@ export interface CheckboxControlProps extends /** @vue-ignore */ ButtonHTMLAttri
 
 export interface CheckboxIndicatorProps extends PrimitiveProps, ForceMountProps, /** @vue-ignore */ HTMLAttributes {}
 
-export interface CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> {
+export type CheckboxGroupOptionData<T extends DefinedValue = DefinedValue> = {
   value: T;
   label: string;
   disabled?: boolean;
-}
+};
 
-export interface CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> extends CheckboxGroupOptionData<T> {
+export type CheckboxCardGroupOptionData<T extends DefinedValue = DefinedValue> = CheckboxGroupOptionData<T> & {
   icon?: string;
   description?: string;
-}
+};
 
 export interface CheckboxGroupRootProps<T extends DefinedValue = DefinedValue>
   extends
@@ -84,11 +85,26 @@ export type CheckboxGroupRootEmits<T extends DefinedValue = DefinedValue> = {
   'update:modelValue': [value: T[]];
 };
 
+export interface CheckboxCompactProps extends CheckboxRootProps {
+  label?: string;
+  controlProps?: CheckboxControlProps;
+  indicatorProps?: CheckboxIndicatorProps;
+  labelProps?: CheckboxLabelProps;
+}
+
+export type CheckboxCompactEmits = CheckboxRootEmits;
+
+export interface CheckboxCardCompactProps extends CheckboxCompactProps {
+  icon?: IconValue;
+  description?: string;
+}
+
+export type CheckboxCardCompactEmits = CheckboxCompactEmits;
+
 export interface CheckboxGroupCompactProps<
-  T extends DefinedValue = DefinedValue,
-  S extends CheckboxGroupOptionData<T> = CheckboxGroupOptionData<T>
-> extends CheckboxGroupRootProps<T> {
-  items: S[];
+  T extends CheckboxGroupOptionData = CheckboxGroupOptionData
+> extends CheckboxGroupRootProps<T['value']> {
+  items: T[];
   rootProps?: CheckboxRootProps;
   controlProps?: CheckboxControlProps;
   indicatorProps?: CheckboxIndicatorProps;
@@ -96,14 +112,8 @@ export interface CheckboxGroupCompactProps<
 }
 
 export interface CheckboxCardGroupCompactProps<
-  T extends DefinedValue = DefinedValue,
-  S extends CheckboxCardGroupOptionData<T> = CheckboxCardGroupOptionData<T>
-> extends CheckboxGroupCompactProps<T, S> {
-  contentClass?: ClassValue;
-  textContentClass?: ClassValue;
-  iconClass?: ClassValue;
-  descriptionClass?: ClassValue;
-}
+  T extends CheckboxCardGroupOptionData = CheckboxCardGroupOptionData
+> extends CheckboxGroupCompactProps<T> {}
 
 export type CheckboxGroupCompactEmits<T extends DefinedValue = DefinedValue> = CheckboxGroupRootEmits<T>;
 
@@ -121,8 +131,12 @@ export type CheckboxRootContextParams = PropsToContext<
   state: ComputedRef<CheckedState>;
 };
 
-export type CheckboxUiSlot = 'root' | 'indicator' | 'groupRoot' | 'label' | 'control';
+export type CheckboxUiSlot = 'groupRoot' | 'root' | 'indicator' | 'indicator-icon' | 'label' | 'control';
+
+export type CheckboxCardUiSlot = CheckboxUiSlot | 'content' | 'icon' | 'textContent' | 'description';
 
 export type CheckboxUi = UiClass<CheckboxUiSlot>;
+
+export type CheckboxCardUi = UiClass<CheckboxCardUiSlot>;
 
 export type { CheckboxLabelProps };

@@ -1,11 +1,4 @@
-<script
-  setup
-  lang="ts"
-  generic="
-    T extends AcceptableValue = AcceptableValue,
-    S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-  "
->
+<script setup lang="ts" generic="T extends TabsOptionData = TabsOptionData">
 import { useOmitProps } from '../../composables';
 import type { AcceptableValue } from '../../types';
 import TabsContent from './tabs-content.vue';
@@ -14,29 +7,22 @@ import TabsList from './tabs-list.vue';
 import TabsRoot from './tabs-root.vue';
 import TabsTrigger from './tabs-trigger.vue';
 import { useTabsUi } from './context';
-import type {
-  TabsCompactContentSlotProps,
-  TabsCompactEmits,
-  TabsCompactProps,
-  TabsCompactSlots,
-  TabsCompactTriggerSlotProps,
-  TabsOptionData
-} from './types';
+import type { TabsCompactEmits, TabsCompactProps, TabsCompactSlots, TabsOptionData } from './types';
 
 defineOptions({
   name: 'TabsCompact'
 });
 
-const props = withDefaults(defineProps<TabsCompactProps<T, S>>(), {
+const props = withDefaults(defineProps<TabsCompactProps<T>>(), {
   modelValue: undefined,
   unmountOnHide: true,
   loop: true,
   enableIndicator: true
 });
 
-const emit = defineEmits<TabsCompactEmits<T>>();
+const emit = defineEmits<TabsCompactEmits<T['value']>>();
 
-defineSlots<TabsCompactSlots<S>>();
+defineSlots<TabsCompactSlots<T>>();
 
 const forwardedProps = useOmitProps(props, [
   'items',
@@ -49,33 +35,23 @@ const forwardedProps = useOmitProps(props, [
 
 const ui = useTabsUi();
 
-const getItemKey = (item: S) => String(item.value);
-
-const getTriggerSlotProps = (item: S, slotProps: { active: boolean }) => {
-  return { ...item, ...slotProps } as TabsCompactTriggerSlotProps<S>;
-};
-
-const getContentSlotProps = (item: S, slotProps: { active: boolean }) => {
-  return { ...item, ...slotProps } as TabsCompactContentSlotProps<S>;
-};
-
-const handleModelValueChange = (value: AcceptableValue) => {
-  emit('update:modelValue', value as NonNullable<T>);
+const onUpdateModelValue = (value: NonNullable<AcceptableValue>) => {
+  emit('update:modelValue', value as T['value']);
 };
 </script>
 
 <template>
-  <TabsRoot v-bind="forwardedProps" @update:model-value="handleModelValueChange">
+  <TabsRoot v-bind="forwardedProps" @update:model-value="onUpdateModelValue">
     <TabsList v-bind="listProps">
       <TabsTrigger
         v-for="item in items"
-        :key="getItemKey(item)"
+        :key="item.value"
         v-bind="triggerProps"
         v-slot="slotProps"
         :value="item.value"
         :disabled="item.disabled"
       >
-        <slot name="trigger" v-bind="getTriggerSlotProps(item, slotProps)">{{ item.label }}</slot>
+        <slot name="trigger" v-bind="{ ...item, ...slotProps }">{{ item.label }}</slot>
       </TabsTrigger>
       <TabsIndicator v-if="enableIndicator" v-bind="indicatorProps">
         <slot name="indicator">
@@ -83,14 +59,8 @@ const handleModelValueChange = (value: AcceptableValue) => {
         </slot>
       </TabsIndicator>
     </TabsList>
-    <TabsContent
-      v-for="item in items"
-      :key="getItemKey(item)"
-      v-bind="contentProps"
-      v-slot="slotProps"
-      :value="item.value"
-    >
-      <slot name="content" v-bind="getContentSlotProps(item, slotProps)" />
+    <TabsContent v-for="item in items" :key="item.value" v-bind="contentProps" v-slot="slotProps" :value="item.value">
+      <slot name="content" v-bind="{ ...item, ...slotProps }" />
     </TabsContent>
   </TabsRoot>
 </template>

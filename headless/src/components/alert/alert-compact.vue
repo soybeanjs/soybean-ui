@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue';
+import { useSlots } from 'vue';
 import { useOmitProps } from '../../composables';
 import IconRender from '../icon/icon-render.vue';
 import AlertClose from './alert-close.vue';
@@ -36,20 +36,10 @@ const forwardedProps = useOmitProps(props, [
 ]);
 
 const ui = useAlertUi();
-
-const resolvedCloseProps = computed(() => ({
-  ...props.closeProps,
-  as: props.closeProps?.as ?? 'button',
-  'aria-label': props.closeProps?.['aria-label'] ?? 'Close alert'
-}));
-
-const handleOpenChange = (value: boolean) => {
-  emit('update:open', value);
-};
 </script>
 
 <template>
-  <AlertRoot v-bind="forwardedProps" @update:open="handleOpenChange">
+  <AlertRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
     <slot name="leading">
       <IconRender v-if="icon" :icon="icon" :class="ui.icon" />
     </slot>
@@ -63,7 +53,7 @@ const handleOpenChange = (value: boolean) => {
       <slot />
     </AlertContent>
     <slot name="trailing" />
-    <AlertClose v-if="closable" v-bind="resolvedCloseProps">
+    <AlertClose v-if="closable" v-bind="closeProps">
       <slot name="close">
         <IconRender icon="lucide:x" />
       </slot>

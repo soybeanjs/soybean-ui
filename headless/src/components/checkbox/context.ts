@@ -1,7 +1,12 @@
 import { computed, shallowRef } from 'vue';
 import { useContext, useUiContext } from '../../composables';
 import { getCheckedState, isIndeterminate } from '../../shared';
-import type { CheckboxGroupRootContextParams, CheckboxRootContextParams, CheckboxUiSlot } from './types';
+import type {
+  CheckboxGroupRootContextParams,
+  CheckboxRootContextParams,
+  CheckboxUiSlot,
+  CheckboxCardUiSlot
+} from './types';
 
 export const [provideCheckboxGroupRootContext, useCheckboxGroupRootContext] = useContext(
   'CheckboxGroupRoot',
@@ -43,3 +48,9 @@ export const [provideCheckboxRootContext, useCheckboxRootContext] = useContext(
 );
 
 export const [provideCheckboxUi, useCheckboxUi] = useUiContext<CheckboxUiSlot>('CheckboxUi');
+
+export const [provideCheckboxCardUi, useCheckboxCardUi] = useUiContext<CheckboxCardUiSlot>('CheckboxCardUi', ui => {
+  provideCheckboxUi(ui);
+
+  return ui;
+});

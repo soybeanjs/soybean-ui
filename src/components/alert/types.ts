@@ -1,5 +1,5 @@
 import type { AlertUi } from '@soybeanjs/headless/alert';
-import type { AlertCompactEmits, AlertCompactProps } from '@soybeanjs/headless/alert';
+import type { AlertCompactEmits, AlertCompactProps, AlertCompactSlots } from '@soybeanjs/headless/alert';
 import type { ClassValue } from '@soybeanjs/headless';
 import type { ThemeColor, ThemeSize } from '@/theme';
 import type { AlertVariant } from './variants';
@@ -18,5 +18,7 @@ export interface AlertProps extends AlertCompactProps {
 }
 
 export type AlertEmits = AlertCompactEmits;
+
+export type AlertSlots = AlertCompactSlots;
 
 export type { AlertVariant };

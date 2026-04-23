@@ -23,8 +23,8 @@ const handleChange = (affixed: boolean) => {
 <template>
   <AffixRoot v-bind="forwardedProps" @change="handleChange">
     <AffixPlaceholder v-bind="placeholderProps" />
-    <AffixContent v-bind="contentProps">
-      <slot />
+    <AffixContent v-slot="slotProps" v-bind="contentProps">
+      <slot v-bind="slotProps" />
     </AffixContent>
   </AffixRoot>
 </template>

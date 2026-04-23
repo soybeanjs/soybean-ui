@@ -57,11 +57,8 @@ export interface TabsOptionData<T extends DefinedValue = DefinedValue> {
   disabled?: boolean;
 }
 
-export interface TabsCompactProps<
-  T extends AcceptableValue = AcceptableValue,
-  S extends TabsOptionData<NonNullable<T>> = TabsOptionData<NonNullable<T>>
-> extends TabsRootProps<T> {
-  items: S[];
+export interface TabsCompactProps<T extends TabsOptionData = TabsOptionData> extends TabsRootProps<T['value'] | null> {
+  items: T[];
   enableIndicator?: boolean;
   listProps?: TabsListProps;
   triggerProps?: TabsTriggerProps;
@@ -69,19 +66,11 @@ export interface TabsCompactProps<
   indicatorProps?: TabsIndicatorProps;
 }
 
-export type TabsCompactEmits<T = AcceptableValue> = TabsRootEmits<T>;
+export type TabsCompactEmits<T extends AcceptableValue = AcceptableValue> = TabsRootEmits<T>;
 
-export type TabsCompactTriggerSlotProps<S extends TabsOptionData = TabsOptionData> = S & {
-  active: boolean;
-};
-
-export type TabsCompactContentSlotProps<S extends TabsOptionData = TabsOptionData> = S & {
-  active: boolean;
-};
-
-export type TabsCompactSlots<S extends TabsOptionData = TabsOptionData> = {
-  trigger?: (props: TabsCompactTriggerSlotProps<S>) => any;
-  content?: (props: TabsCompactContentSlotProps<S>) => any;
+export type TabsCompactSlots<T extends TabsOptionData = TabsOptionData> = {
+  trigger?: (props: T & { active: boolean }) => any;
+  content?: (props: T & { active: boolean }) => any;
   indicator?: () => any;
 };
 
