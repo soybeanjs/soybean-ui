@@ -3,8 +3,9 @@ import { computed } from 'vue';
 import { AlertCompact, provideAlertUi } from '@soybeanjs/headless';
 import { useOmitProps } from '@soybeanjs/headless/composables';
 import { keysOf } from '@soybeanjs/utils';
-import { mergeSlotVariants } from '@/theme';
+import { mergeBaseVariants, mergeSlotVariants, miniSizeMap } from '@/theme';
 import { alertVariants } from './variants';
+import { buttonVariants } from '../button/variants';
 import type { AlertEmits, AlertProps, AlertSlots } from './types';
 
 defineOptions({
@@ -24,10 +25,20 @@ const forwardedProps = useOmitProps(props, ['class', 'size', 'color', 'variant',
 const slotNames = computed(() => keysOf(slots));
 
 const ui = computed(() => {
-  const variants = alertVariants({
+  const baseVariants = alertVariants({
     size: props.size,
     color: props.color,
     variant: props.variant
+  });
+
+  const variants = mergeBaseVariants(baseVariants, {
+    close: buttonVariants({
+      variant: 'ghost',
+      color: 'accent',
+      size: miniSizeMap[props.size ?? 'md'],
+      shape: 'square',
+      fitContent: true
+    })
   });
 
   return mergeSlotVariants(variants, props.ui, { root: props.class });

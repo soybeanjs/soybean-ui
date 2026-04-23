@@ -8,7 +8,9 @@ defineOptions({
   name: 'AlertClose'
 });
 
-const props = defineProps<AlertCloseProps>();
+const props = withDefaults(defineProps<AlertCloseProps>(), {
+  as: 'button'
+});
 
 const attrs = useAttrs();
 
