@@ -1,0 +1,249 @@
+{
+  "component": "list",
+  "symbols": {
+    "List": {
+      "props": {
+        "kind": "props",
+        "name": "ListProps",
+        "type": "Interface ListProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<ListUi> }",
+        "description": "",
+        "sourcePath": "src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ListUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListContent": {
+      "props": {
+        "kind": "props",
+        "name": "ListContentProps",
+        "type": "Interface ListContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListDescription": {
+      "props": {
+        "kind": "props",
+        "name": "ListDescriptionProps",
+        "type": "Interface ListDescriptionProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListItem": {
+      "props": {
+        "kind": "props",
+        "name": "ListItemProps",
+        "type": "Interface ListItemProps",
+        "resolvedType": "{ title?: string; description?: string; contentProps?: ListContentProps; titleProps?: ListTitleProps; descriptionProps?: ListDescriptionProps }",
+        "description": "",
+        "sourcePath": "src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "ListContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListContentProps",
+                "kind": "interface",
+                "type": "ListContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "ListTitleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListTitleProps",
+                "kind": "interface",
+                "type": "ListTitleProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "ListDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/list/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ListDescriptionProps",
+                "kind": "interface",
+                "type": "ListDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/list/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ListRootProps",
+        "type": "Interface ListRootProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ListTitle": {
+      "props": {
+        "kind": "props",
+        "name": "ListTitleProps",
+        "type": "Interface ListTitleProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/list/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

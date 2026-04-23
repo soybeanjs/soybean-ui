@@ -1,0 +1,838 @@
+{
+  "component": "popover",
+  "symbols": {
+    "PopconfirmClose": {
+      "props": {
+        "kind": "props",
+        "name": "PopconfirmCloseProps",
+        "type": "Interface PopconfirmCloseProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopconfirmPopup": {
+      "props": {
+        "kind": "props",
+        "name": "PopconfirmPopupProps",
+        "type": "Interface PopconfirmPopupProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopconfirmPositioner": {
+      "props": {
+        "kind": "props",
+        "name": "PopconfirmPositionerProps",
+        "type": "Interface PopconfirmPositionerProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PopconfirmPositionerEmits",
+        "type": "TypeAlias PopconfirmPositionerEmits: PopoverPositionerImplEmits",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopconfirmRoot": {
+      "props": {
+        "kind": "props",
+        "name": "PopconfirmRootProps",
+        "type": "Interface PopconfirmRootProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PopconfirmRootEmits",
+        "type": "TypeAlias PopconfirmRootEmits: DialogRootEmits",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PopconfirmTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "PopconfirmTriggerProps",
+        "type": "Interface PopconfirmTriggerProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "Popover": {
+      "props": {
+        "kind": "props",
+        "name": "PopoverProps",
+        "type": "Interface PopoverProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<PopperUi>; placement?: Placement; showArrow?: boolean; positionerProps?: PopoverPositionerProps; popupProps?: PopoverPopupProps; triggerProps?: PopoverTriggerProps; closeProps?: PopoverCloseProps; portalProps?: PopoverPortalProps; arrowProps?: PopoverArrowProps; open?: boolean; defaultOpen?: boolean; modal?: boolean; isAlert?: boolean; alertType?: DialogAlertType }",
+        "description": "",
+        "sourcePath": "src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "class of popup",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<PopperUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperUi",
+                "kind": "typeAlias",
+                "type": "{ popup: ClassValue; positioner: ClassValue; arrow: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "placement",
+            "type": "Placement",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Placement",
+                "kind": "typeAlias",
+                "type": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "resolvedType": "'top' | 'right' | 'bottom' | 'left' | 'top-start' | 'top-end' | 'right-start' | 'right-end' | 'bottom-start' | 'bottom-end' | 'left-start' | 'left-end'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showArrow",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "positionerProps",
+            "type": "PopoverPositionerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopoverPositionerProps",
+                "kind": "interface",
+                "type": "PopoverPositionerProps",
+                "resolvedType": "{ placement?: Placement; side?: Side; sideOffset?: number; sideFlip?: boolean; align?: Align; alignOffset?: number; alignFlip?: boolean; avoidCollisions?: boolean; collisionBoundary?: Element | (Element | null)[] | null; collisionPadding?: Padding; arrowPadding?: number; hideShiftedArrow?: boolean; sticky?: 'partial' | 'always'; hideWhenDetached?: boolean; positionStrategy?: 'fixed' | 'absolute'; updatePositionStrategy?: 'always' | 'optimized'; disableUpdateOnLayoutShift?: boolean; prioritizePosition?: boolean; reference?: ReferenceElement; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/popover/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "placement",
+                    "type": "Placement",
+                    "required": false,
+                    "description": "The placement of the floating element.\n\nIf used, it will override the `side` and `align` props.",
+                    "default": "undefined",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "side",
+                    "type": "Side",
+                    "required": false,
+                    "description": "The preferred side of the trigger to render against when open. Will be reversed when collisions occur and\navoidCollisions is enabled.",
+                    "default": "'bottom'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "The distance in pixels from the trigger.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sideFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip to the opposite side when colliding with boundary.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "align",
+                    "type": "Align",
+                    "required": false,
+                    "description": "The preferred alignment against the trigger. May change when collisions occur.",
+                    "default": "'center'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignOffset",
+                    "type": "number",
+                    "required": false,
+                    "description": "An offset in pixels from the `start` or `end` alignment options.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "alignFlip",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Flip alignment when colliding with boundary.\nMay only occur when `prioritizePosition` is true.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "avoidCollisions",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, overrides the side and align preferences to prevent collisions with boundary edges.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionBoundary",
+                    "type": "Element | (Element | null)[] | null",
+                    "required": false,
+                    "description": "The element used as the collision boundary. By default this is the viewport, though you can provide additional\nelement(s) to be included in this check.",
+                    "default": "[ ]",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "collisionPadding",
+                    "type": "Padding",
+                    "required": false,
+                    "description": "The distance in pixels from the boundary edges where collision detection should occur. Accepts a number (same for\nall sides), or a partial padding object, for example: { top: 20, left: 20 }.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "arrowPadding",
+                    "type": "number",
+                    "required": false,
+                    "description": "The padding between the arrow and the edges of the content. If your content has border-radius, this will prevent it\nfrom overflowing the corners.",
+                    "default": "0",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideShiftedArrow",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, hides the arrow when it cannot be centered\nto the reference element.",
+                    "default": "true",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "sticky",
+                    "type": "'partial' | 'always'",
+                    "required": false,
+                    "description": "The sticky behavior on the align axis. `partial` will keep the content in the boundary as long as the trigger is at\nleast partially in the boundary whilst \"always\" will keep the content in the boundary regardless.",
+                    "default": "'partial'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hideWhenDetached",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to hide the content when the trigger becomes fully occluded.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "positionStrategy",
+                    "type": "'fixed' | 'absolute'",
+                    "required": false,
+                    "description": "The type of CSS position property to use.",
+                    "default": "'fixed'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "updatePositionStrategy",
+                    "type": "'always' | 'optimized'",
+                    "required": false,
+                    "description": "Strategy to update the position of the floating element on every animation frame.",
+                    "default": "'optimized'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disableUpdateOnLayoutShift",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether to disable the update position for the content when the layout shifted.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prioritizePosition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Force content to be position within the viewport. Might overlap the reference element, which may not be desired.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "reference",
+                    "type": "ReferenceElement",
+                    "required": false,
+                    "description": "The custom element or virtual element that will be set as the reference to position the floating element. If\nprovided, it will replace the default anchor element.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/popper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "popupProps",
+            "type": "PopoverPopupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopoverPopupProps",
+                "kind": "interface",
+                "type": "PopoverPopupProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/popover/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "PopoverTriggerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopoverTriggerProps",
+                "kind": "interface",
+                "type": "PopoverTriggerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/popover/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "closeProps",
+            "type": "PopoverCloseProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopoverCloseProps",
+                "kind": "interface",
+                "type": "PopoverCloseProps",
+                "resolvedType": "{ beforeClose?: (() => MaybePromise<boolean | void>); asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/popover/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "beforeClose",
+                    "type": "(() => MaybePromise<boolean | void>) | undefined",
+                    "parameters": "(() => MaybePromise<boolean | void>) | undefined",
+                    "required": false,
+                    "description": "",
+                    "sourcePath": "headless/src/components/popover/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "portalProps",
+            "type": "PopoverPortalProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PortalProps",
+                "kind": "interface",
+                "type": "PopoverPortalProps",
+                "resolvedType": "{ to?: string | HTMLElement; disabled?: boolean; defer?: boolean; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/portal/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | HTMLElement",
+                    "required": false,
+                    "description": "Vue native teleport component prop `:to`\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#basic-usage}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Disable teleport and render the component inline\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#disabling-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defer",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Defer the resolving of a Teleport target until other parts of the application have mounted (requires Vue 3.5.0+)\n\n{@link https://vuejs.org/guide/built-ins/teleport.html#deferred-teleport}",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/portal/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "arrowProps",
+            "type": "PopoverArrowProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/popover/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PopperArrowProps",
+                "kind": "interface",
+                "type": "PopoverArrowProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/popper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "The controlled open state of the dialog. Can be bound with `v-model:open`.",
+            "default": "undefined",
+            "inheritedFrom": "open",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultOpen",
+            "type": "boolean",
+            "required": false,
+            "description": "The open state of the dialog when it is initially rendered. Use when you do not need to control its open state.",
+            "default": "false",
+            "inheritedFrom": "defaultOpen",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modal",
+            "type": "boolean",
+            "required": false,
+            "description": "The modality of the dialog. When set to `true`, interaction with outside elements will be disabled and only dialog\ncontent will be visible to screen readers.",
+            "default": "true",
+            "inheritedFrom": "modal",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isAlert",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the dialog is an alert dialog. An alert dialog is a dialog that interrupts the user's workflow to communicate an important message and requires a response.\n\nWhen set to `true`, the dialog will have `role=\"alertdialog\"` and will require a `DialogTitle` to be provided. This is used for accessibility purposes.",
+            "default": "false",
+            "inheritedFrom": "isAlert",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "alertType",
+            "type": "DialogAlertType",
+            "required": false,
+            "description": "The alert type of the dialog, which determines the default icon and styles when the dialog is an alert dialog.",
+            "default": null,
+            "inheritedFrom": "alertType",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DialogAlertType",
+                "kind": "typeAlias",
+                "type": "'success' | 'warning' | 'info' | 'error' | 'default'",
+                "resolvedType": "'success' | 'warning' | 'info' | 'error' | 'default'",
+                "description": "",
+                "sourcePath": "headless/src/components/dialog/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PopoverEmits",
+        "type": "TypeAlias PopoverEmits: PopconfirmRootEmits & PopconfirmPositionerEmits",
+        "resolvedType": "{ \"update:open\": [value: boolean]; escapeKeyDown: [event: KeyboardEvent]; pointerDownOutside: [event: PointerDownOutsideEvent]; focusOutside: [event: FocusOutsideEvent]; interactOutside: [event: PointerDownOutsideEvent | FocusOutsideEvent]; openAutoFocus: [event: Event]; closeAutoFocus: [event: Event] }",
+        "description": "",
+        "sourcePath": "src/components/popover/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "Event handler called when the open state of the dialog changes.",
+            "sourcePath": "headless/src/components/dialog/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "escapeKeyDown",
+            "type": "[event: KeyboardEvent]",
+            "parameters": "event: KeyboardEvent",
+            "required": true,
+            "description": "Event handler called when the escape key is down. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pointerDownOutside",
+            "type": "[event: PointerDownOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent",
+            "required": true,
+            "description": "Event handler called when a `pointerdown` event happens outside of the `DismissableLayer`. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "focusOutside",
+            "type": "[event: FocusOutsideEvent]",
+            "parameters": "event: FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when the focus moves outside of the `DismissableLayer`. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "interactOutside",
+            "type": "[event: PointerDownOutsideEvent | FocusOutsideEvent]",
+            "parameters": "event: PointerDownOutsideEvent | FocusOutsideEvent",
+            "required": true,
+            "description": "Event handler called when an interaction happens outside the `DismissableLayer`. Specifically, when a `pointerdown`\nevent happens outside or focus moves outside of it. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": [
+              {
+                "name": "FocusOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: FocusEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PointerDownOutsideEvent",
+                "kind": "typeAlias",
+                "type": "CustomEvent<{ originalEvent: PointerEvent; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/event.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "openAutoFocus",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when auto-focusing on open. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "closeAutoFocus",
+            "type": "[event: Event]",
+            "parameters": "event: Event",
+            "required": true,
+            "description": "Event handler called when auto-focusing on close. Can be prevented.",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

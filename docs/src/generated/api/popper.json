@@ -1,0 +1,33 @@
+{
+  "component": "popper",
+  "symbols": {
+    "HoverCardArrow": {
+      "props": {
+        "kind": "props",
+        "name": "HoverCardArrowProps",
+        "type": "Interface HoverCardArrowProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "HoverCardTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "HoverCardTriggerProps",
+        "type": "Interface HoverCardTriggerProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/popper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

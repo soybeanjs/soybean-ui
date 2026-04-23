@@ -7,5 +7,5 @@
     },
     "types": ["vite/client", "vite-plugin-vue-meta-layouts/client"]
   },
-  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*"]
+  "include": ["src/**/*", "headless/**/*", "playground/**/*", "test/**/*", "scripts/*", "vite.config.ts"]
 }

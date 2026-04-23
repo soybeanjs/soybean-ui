@@ -1,0 +1,222 @@
+{
+  "component": "skeleton",
+  "symbols": {
+    "Skeleton": {
+      "props": {
+        "kind": "props",
+        "name": "SkeletonProps",
+        "type": "Interface SkeletonProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; animated?: boolean; shape?: SkeletonShape; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "src/components/skeleton/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/skeleton/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/skeleton/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "animated",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the skeleton should have an animation effect. Defaults to `true`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/skeleton/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "shape",
+            "type": "SkeletonShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/skeleton/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SkeletonShape",
+                "kind": "typeAlias",
+                "type": "'auto' | 'rounded'",
+                "resolvedType": "'auto' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/skeleton/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "_SkeletonProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "_SkeletonProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

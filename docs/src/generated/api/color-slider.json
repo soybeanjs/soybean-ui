@@ -1,0 +1,1965 @@
+{
+  "component": "color-slider",
+  "symbols": {
+    "ColorSlider": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSliderProps",
+        "type": "Interface ColorSliderProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<ColorSliderUi>; trackProps?: ColorSliderTrackProps; thumbProps?: ColorSliderThumbProps; modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<ColorSliderUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSliderUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; thumb: ClassValue; track: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "trackProps",
+            "type": "ColorSliderTrackProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSliderTrackProps",
+                "kind": "interface",
+                "type": "ColorSliderTrackProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "ColorSliderThumbProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSliderThumbProps",
+                "kind": "interface",
+                "type": "ColorSliderThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AnyColor",
+                "kind": "typeAlias",
+                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CmykColor",
+                "kind": "typeAlias",
+                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HwbColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PartialAlpha",
+                "kind": "typeAlias",
+                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [
+                  "O"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "XyzColor",
+                "kind": "typeAlias",
+                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AnyColor",
+                "kind": "typeAlias",
+                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CmykColor",
+                "kind": "typeAlias",
+                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HwbColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PartialAlpha",
+                "kind": "typeAlias",
+                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [
+                  "O"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "XyzColor",
+                "kind": "typeAlias",
+                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "colorSpace",
+            "type": "ColorSpace",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "colorSpace",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSpace",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'hsv' | 'oklch'",
+                "resolvedType": "'hsl' | 'hsv' | 'oklch'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "channel",
+            "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "channel",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorChannel",
+                "kind": "typeAlias",
+                "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "resolvedType": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "type": "ColorFormat",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "format",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorFormat",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "resolvedType": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inverted",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "inverted",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "step",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ColorSliderEmits",
+        "type": "TypeAlias ColorSliderEmits: ColorSliderRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
+        "description": "",
+        "sourcePath": "src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:color",
+            "type": "[value: NormalizedColor]",
+            "parameters": "value: NormalizedColor",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "NormalizedColor",
+                "kind": "typeAlias",
+                "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "change",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "changeEnd",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "ColorSliderRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; 'update:color': [value: import(\"@soybeanjs/headless/shared\").NormalizedColor]; change: [value: string]; changeEnd: [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:color",
+                "type": "[value: NormalizedColor]",
+                "parameters": "value: NormalizedColor",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "change",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "changeEnd",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/color-slider/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ColorSliderRoot": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSliderRootProps",
+        "type": "Interface ColorSliderRootProps",
+        "resolvedType": "{ modelValue?: import(\"@soybeanjs/colord\").AnyColor; defaultValue?: import(\"@soybeanjs/colord\").AnyColor; colorSpace?: ColorSpace; channel: 'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'; format?: ColorFormat; orientation?: DataOrientation; dir?: Direction; inverted?: boolean; disabled?: boolean; step?: number; asChild?: boolean; as?: AsTag | Component; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "modelValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AnyColor",
+                "kind": "typeAlias",
+                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CmykColor",
+                "kind": "typeAlias",
+                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HwbColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PartialAlpha",
+                "kind": "typeAlias",
+                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [
+                  "O"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "XyzColor",
+                "kind": "typeAlias",
+                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "import(\"@soybeanjs/colord\").AnyColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AnyColor",
+                "kind": "typeAlias",
+                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "CmykColor",
+                "kind": "typeAlias",
+                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HwbColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "LchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklabColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PartialAlpha",
+                "kind": "typeAlias",
+                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [
+                  "O"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "XyzColor",
+                "kind": "typeAlias",
+                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "colorSpace",
+            "type": "ColorSpace",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorSpace",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'hsv' | 'oklch'",
+                "resolvedType": "'hsl' | 'hsv' | 'oklch'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "channel",
+            "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorChannel",
+                "kind": "typeAlias",
+                "type": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "resolvedType": "'alpha' | 'hue' | 'saturation' | 'lightness' | 'brightness' | 'red' | 'green' | 'blue' | 'chroma'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "format",
+            "type": "ColorFormat",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ColorFormat",
+                "kind": "typeAlias",
+                "type": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "resolvedType": "'hsl' | 'oklch' | 'hex' | 'rgb'",
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inverted",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "ColorSliderRootEmits",
+        "type": "TypeAlias ColorSliderRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:color\": [value: NormalizedColor]; change: [value: string]; changeEnd: [value: string] }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:color",
+            "type": "[value: NormalizedColor]",
+            "parameters": "value: NormalizedColor",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HslColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "HsvColor",
+                "kind": "typeAlias",
+                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "NormalizedColor",
+                "kind": "typeAlias",
+                "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/shared/color.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "OklchColor",
+                "kind": "typeAlias",
+                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RgbColor",
+                "kind": "typeAlias",
+                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "change",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "changeEnd",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/color-slider/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "ColorSliderThumb": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSliderThumbProps",
+        "type": "Interface ColorSliderThumbProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "ColorSliderTrack": {
+      "props": {
+        "kind": "props",
+        "name": "ColorSliderTrackProps",
+        "type": "Interface ColorSliderTrackProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/color-slider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

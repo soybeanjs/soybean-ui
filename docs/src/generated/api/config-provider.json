@@ -1,0 +1,260 @@
+{
+  "component": "config-provider",
+  "symbols": {
+    "ConfigProvider": {
+      "props": {
+        "kind": "props",
+        "name": "ConfigProviderProps",
+        "type": "Interface ConfigProviderProps",
+        "resolvedType": "{ theme?: ThemeOptions; size?: ThemeSize; iconify?: { width?: string; height?: string; }; progress?: Partial<ProgressProviderProps>; toast?: Partial<ToasterProps>; customToast?: boolean; dir?: Direction; locale?: string; nonce?: string; tooltip?: Partial<TooltipProviderProps>; nuxt?: boolean; iconRender?: ((icon: IconValue) => VNode) }",
+        "description": "",
+        "sourcePath": "src/components/config-provider/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "theme",
+            "type": "ThemeOptions",
+            "required": false,
+            "description": "The theme options.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeOptions",
+                "kind": "interface",
+                "type": "ThemeOptions",
+                "resolvedType": null,
+                "description": "theme options",
+                "sourcePath": "node_modules/.pnpm/@soybeanjs+shadcn-theme@0.3.1/node_modules/@soybeanjs/shadcn-theme/dist/index.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "The size options.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "iconify",
+            "type": "{ width?: string; height?: string; }",
+            "required": false,
+            "description": "The iconify options.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ width?: string; height?: string; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/config-provider/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "progress",
+            "type": "Partial<ProgressProviderProps>",
+            "required": false,
+            "description": "The global top progress configuration of your application.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ProgressProviderProps",
+                "kind": "interface",
+                "type": "ProgressProviderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/progress/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "toast",
+            "type": "Partial<ToasterProps>",
+            "required": false,
+            "description": "The global toast configuration of your application. This will be inherited by the related components.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ToasterProps",
+                "kind": "interface",
+                "type": "ToasterProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/toast/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "customToast",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to use custom toast rendering. If set to `true`, the `Toaster` will not render the default toast UI, and you can import `Toaster` component to render custom toast UI.\n\n[是否使用自定义吐司渲染。如果设置为 `true`，`Toaster` 将不会渲染默认的吐司 UI，你可以导入 `Toaster` 组件来渲染自定义的吐司 UI。]",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The global reading direction of your application. This will be inherited by all components.",
+            "default": "'ltr'",
+            "inheritedFrom": "_ConfigProviderProps.dir",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "The global locale of your application. This will be inherited by all components.",
+            "default": "'en'",
+            "inheritedFrom": "_ConfigProviderProps.locale",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "nonce",
+            "type": "string",
+            "required": false,
+            "description": "The global `nonce` value of your application. This will be inherited by the related components.",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.nonce",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "tooltip",
+            "type": "Partial<TooltipProviderProps>",
+            "required": false,
+            "description": "The global tooltip configuration of your application. This will be inherited by the related components.",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.tooltip",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TooltipProviderProps",
+                "kind": "interface",
+                "type": "TooltipProviderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tooltip/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nuxt",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the application is running in Nuxt.",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.nuxt",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "iconRender",
+            "type": "((icon: IconValue) => VNode)",
+            "required": false,
+            "description": "A function to render the icon. This is useful when you want to use a custom icon library or want to wrap the icon with a custom component.",
+            "default": null,
+            "inheritedFrom": "_ConfigProviderProps.iconRender",
+            "sourcePath": "headless/src/components/config-provider/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "VNode",
+                "kind": "interface",
+                "type": "VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "HostNode = RendererNode",
+                  "HostElement = RendererElement",
+                  "ExtraProps = {\n    [key: string]: any;\n}"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

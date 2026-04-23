@@ -1,0 +1,505 @@
+{
+  "component": "input-number",
+  "symbols": {
+    "InputNumber": {
+      "props": {
+        "kind": "props",
+        "name": "InputNumberProps",
+        "type": "Interface InputNumberProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<InputNumberUi>; center?: boolean; clearable?: boolean; inputRef?: ((el: HTMLInputElement) => void); controlProps?: InputNumberControlProps; incrementProps?: InputNumberIncrementProps; decrementProps?: InputNumberDecrementProps; defaultValue?: number; modelValue?: number | null; min?: number; max?: number; step?: number; stepSnapping?: boolean; focusOnChange?: boolean; formatOptions?: Intl.NumberFormatOptions; locale?: string; disableWheelChange?: boolean; invertWheelChange?: boolean; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; pattern?: string; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/input-number/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<InputNumberUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputNumberUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; control: ClassValue; increment: ClassValue; decrement: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/input-number/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "center",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to center the input.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the clear icon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inputRef",
+            "type": "((el: HTMLInputElement) => void)",
+            "required": false,
+            "description": "The function to set the input element.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "controlProps",
+            "type": "InputNumberControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputNumberControlProps",
+                "kind": "interface",
+                "type": "InputNumberControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/input-number/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "incrementProps",
+            "type": "InputNumberIncrementProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputNumberIncrementProps",
+                "kind": "interface",
+                "type": "InputNumberIncrementProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/input-number/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input-number/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decrementProps",
+            "type": "InputNumberDecrementProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/input-number/types.ts",
+            "referencedTypes": [
+              {
+                "name": "InputNumberDecrementProps",
+                "kind": "interface",
+                "type": "InputNumberDecrementProps",
+                "resolvedType": "{ disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/input-number/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/input-number/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "number",
+            "required": false,
+            "description": "The default value of the input",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.defaultValue",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "number | null",
+            "required": false,
+            "description": "The controlled value of the input",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "min",
+            "type": "number",
+            "required": false,
+            "description": "The smallest value allowed for the input.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.min",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "max",
+            "type": "number",
+            "required": false,
+            "description": "The largest value allowed for the input.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.max",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "step",
+            "type": "number",
+            "required": false,
+            "description": "The amount that the input value changes with each increment or decrement \"tick\".",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.step",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "stepSnapping",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false`, prevents the value from snapping to the nearest increment of the step value",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.stepSnapping",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "focusOnChange",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input will be focused when the value changes.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.focusOnChange",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "formatOptions",
+            "type": "Intl.NumberFormatOptions",
+            "required": false,
+            "description": "Formatting options for the value displayed in the number field. This also affects what characters are allowed to be\ntyped by the user.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.formatOptions",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "locale",
+            "type": "string",
+            "required": false,
+            "description": "The locale to use for formatting dates",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.locale",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disableWheelChange",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the value from changing on wheel scroll.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.disableWheelChange",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "invertWheelChange",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, inverts the direction of the wheel change.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.invertWheelChange",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the input element",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.id",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is auto-focused.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.autofocus",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the input.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.disabled",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the input",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.maxlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the input",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.minlength",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pattern",
+            "type": "string",
+            "required": false,
+            "description": "The pattern attribute of the input",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.pattern",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the input",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.placeholder",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the input is read-only.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.readonly",
+            "sourcePath": "headless/src/components/input/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "InputNumberRootProps.required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "InputNumberEmits",
+        "type": "TypeAlias InputNumberEmits: InputNumberRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [val: number] }",
+        "description": "",
+        "sourcePath": "src/components/input-number/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[val: number]",
+            "parameters": "val: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "InputNumberRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [val: number]; }",
+            "resolvedType": "{ \"update:modelValue\": [val: number] }",
+            "description": "",
+            "sourcePath": "headless/src/components/input-number/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[val: number]",
+                "parameters": "val: number",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/input-number/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

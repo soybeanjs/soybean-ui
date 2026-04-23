@@ -1,0 +1,467 @@
+{
+  "component": "segment",
+  "symbols": {
+    "Segment": {
+      "props": {
+        "kind": "props",
+        "name": "SegmentProps",
+        "type": "Interface SegmentProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SegmentUi>; size?: ThemeSize; shape?: SegmentShape; fill?: SegmentFill; items: T[]; enableIndicator?: boolean; listProps?: SegmentListProps; triggerProps?: SegmentTriggerProps; indicatorProps?: SegmentIndicatorProps; modelValue?: T['value'] | null; defaultValue?: T['value'] | null; activationMode?: TabsActivationMode; unmountOnHide?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation }",
+        "description": "",
+        "sourcePath": "src/components/segment/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<SegmentUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SegmentUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; trigger: ClassValue; indicator: ClassValue; list: ClassValue; indicatorContent: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "SegmentShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/tabs/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fill",
+            "type": "SegmentFill",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsFill",
+                "kind": "typeAlias",
+                "type": "'auto' | 'full'",
+                "resolvedType": "'auto' | 'full'",
+                "description": "",
+                "sourcePath": "src/components/tabs/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.items",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "enableIndicator",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.enableIndicator",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "SegmentListProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.listProps",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsListProps",
+                "kind": "interface",
+                "type": "SegmentListProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "SegmentTriggerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.triggerProps",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsTriggerProps",
+                "kind": "interface",
+                "type": "SegmentTriggerProps",
+                "resolvedType": "{ value: string | number; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string | number",
+                    "required": true,
+                    "description": "A unique value that associates the trigger with a content.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the tab.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tabs/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "SegmentIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.indicatorProps",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsIndicatorProps",
+                "kind": "interface",
+                "type": "SegmentIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The controlled value of the tab to activate. Can be bind as `v-model`.",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.modelValue",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T['value'] | null",
+            "required": false,
+            "description": "The value of the tab that should be active when initially rendered. Use when you do not need to control the state\nof the tabs",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.defaultValue",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activationMode",
+            "type": "TabsActivationMode",
+            "required": false,
+            "description": "Whether a tab is activated automatically (on focus) or manually (on click).",
+            "default": "automatic",
+            "inheritedFrom": "SegmentCompactProps.activationMode",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TabsActivationMode",
+                "kind": "typeAlias",
+                "type": "'automatic' | 'manual'",
+                "resolvedType": "'automatic' | 'manual'",
+                "description": "",
+                "sourcePath": "headless/src/components/tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "unmountOnHide",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the element will be unmounted on closed state.",
+            "default": "`true`",
+            "inheritedFrom": "SegmentCompactProps.unmountOnHide",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "default": "false",
+            "inheritedFrom": "SegmentCompactProps.loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "default": null,
+            "inheritedFrom": "SegmentCompactProps.orientation",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SegmentEmits",
+        "type": "TypeAlias SegmentEmits<T>: SegmentCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "",
+        "sourcePath": "src/components/segment/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value changes",
+            "sourcePath": "headless/src/components/tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "SegmentSlots",
+        "type": "TypeAlias SegmentSlots<T>: SegmentCompactSlots<T>",
+        "resolvedType": "{ item?: ((props: T & { active: boolean; }) => any); indicator?: (() => any) }",
+        "description": "",
+        "sourcePath": "src/components/segment/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "item",
+            "type": "((props: T & { active: boolean; }) => any) | undefined",
+            "parameters": "((props: T & { active: boolean; }) => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ active: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/segment/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicator",
+            "type": "(() => any) | undefined",
+            "parameters": "(() => any) | undefined",
+            "required": false,
+            "description": "",
+            "sourcePath": "headless/src/components/segment/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

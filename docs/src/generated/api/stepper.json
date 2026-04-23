@@ -1,0 +1,1698 @@
+{
+  "component": "stepper",
+  "symbols": {
+    "Stepper": {
+      "props": {
+        "kind": "props",
+        "name": "StepperProps",
+        "type": "Interface StepperProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<StepperExtendedUi>; items: StepperOptionData[]; itemProps?: StepperItemProps; triggerProps?: StepperTriggerProps; indicatorProps?: StepperIndicatorProps; separatorProps?: import(\"@soybeanjs/headless\").ContextMenuSeparatorProps; titleProps?: StepperTitleProps; descriptionProps?: StepperDescriptionProps; defaultValue?: number; modelValue?: number; orientation?: DataOrientation; dir?: Direction; linear?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<StepperExtendedUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperExtendedUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; trigger: ClassValue; description: ClassValue; title: ClassValue; indicator: ClassValue; separator: ClassValue; itemContent: ClassValue; indicatorIcon: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "StepperOptionData[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "StepperItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperItemProps",
+                "kind": "interface",
+                "type": "StepperItemProps",
+                "resolvedType": "{ step: number; disabled?: boolean; completed?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "step",
+                    "type": "number",
+                    "required": true,
+                    "description": "The step index, starting from `1`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/stepper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the step.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/stepper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "completed",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Shows whether the step is completed.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/stepper/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "triggerProps",
+            "type": "StepperTriggerProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperTriggerProps",
+                "kind": "interface",
+                "type": "StepperTriggerProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "StepperIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperIndicatorProps",
+                "kind": "interface",
+                "type": "StepperIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "separatorProps",
+            "type": "import(\"@soybeanjs/headless\").ContextMenuSeparatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorRootProps",
+                "kind": "interface",
+                "type": "import(\"@soybeanjs/headless\").ContextMenuSeparatorProps",
+                "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "orientation",
+                    "type": "DataOrientation",
+                    "required": false,
+                    "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "decorative",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/separator/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "StepperTitleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperTitleProps",
+                "kind": "interface",
+                "type": "StepperTitleProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "StepperDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "StepperDescriptionProps",
+                "kind": "interface",
+                "type": "StepperDescriptionProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "number",
+            "required": false,
+            "description": "The value of the step that should be active when initially rendered.",
+            "default": "1",
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the step to activate. Can be bind as `v-model`.",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the stepper.",
+            "default": "'horizontal'",
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the stepper.",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linear",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the steps must be completed in order.",
+            "default": "true",
+            "inheritedFrom": "linear",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "StepperEmits",
+        "type": "TypeAlias StepperEmits: StepperRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [payload: number] }",
+        "description": "",
+        "sourcePath": "src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: number]",
+            "parameters": "payload: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "StepperRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [payload: number]; }",
+            "resolvedType": "{ \"update:modelValue\": [payload: number] }",
+            "description": "",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[payload: number]",
+                "parameters": "payload: number",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/stepper/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "StepperDescription": {
+      "props": {
+        "kind": "props",
+        "name": "StepperDescriptionProps",
+        "type": "Interface StepperDescriptionProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StepperIndicator": {
+      "props": {
+        "kind": "props",
+        "name": "StepperIndicatorProps",
+        "type": "Interface StepperIndicatorProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StepperItem": {
+      "props": {
+        "kind": "props",
+        "name": "StepperItemProps",
+        "type": "Interface StepperItemProps",
+        "resolvedType": "{ step: number; disabled?: boolean; completed?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "step",
+            "type": "number",
+            "required": true,
+            "description": "The step index, starting from `1`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the step.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "completed",
+            "type": "boolean",
+            "required": false,
+            "description": "Shows whether the step is completed.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StepperRoot": {
+      "emits": {
+        "kind": "emits",
+        "name": "StepperRootEmits",
+        "type": "TypeAlias StepperRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [payload: number] }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: number]",
+            "parameters": "payload: number",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "StepperRootProps",
+        "type": "Interface StepperRootProps",
+        "resolvedType": "{ defaultValue?: number; modelValue?: number; orientation?: DataOrientation; dir?: Direction; linear?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "defaultValue",
+            "type": "number",
+            "required": false,
+            "description": "The value of the step that should be active when initially rendered.",
+            "default": "1",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the step to activate. Can be bind as `v-model`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the stepper.",
+            "default": "'horizontal'",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The reading direction of the stepper.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linear",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the steps must be completed in order.",
+            "default": "true",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/stepper/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StepperSeparator": {
+      "props": {
+        "kind": "props",
+        "name": "StepperSeparatorProps",
+        "type": "TypeAlias StepperSeparatorProps: SeparatorRootProps",
+        "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decorative",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": [
+          {
+            "name": "SeparatorRootProps",
+            "kind": "interface",
+            "type": "SeparatorRootProps",
+            "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+            "description": "",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [
+              {
+                "name": "orientation",
+                "type": "DataOrientation",
+                "required": false,
+                "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+                "default": null,
+                "inheritedFrom": null,
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "decorative",
+                "type": "boolean",
+                "required": false,
+                "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+                "default": null,
+                "inheritedFrom": null,
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "referencedTypes": []
+              }
+            ],
+            "callables": []
+          }
+        ]
+      }
+    },
+    "StepperTitle": {
+      "props": {
+        "kind": "props",
+        "name": "StepperTitleProps",
+        "type": "Interface StepperTitleProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "StepperTrigger": {
+      "props": {
+        "kind": "props",
+        "name": "StepperTriggerProps",
+        "type": "Interface StepperTriggerProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/stepper/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

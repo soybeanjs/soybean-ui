@@ -1,0 +1,603 @@
+{
+  "component": "switch",
+  "symbols": {
+    "Switch": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchProps",
+        "type": "Interface SwitchProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<SwitchUi>; color?: ThemeColor; size?: ThemeSize; shape?: SwitchShape; controlProps?: SwitchControlProps; thumbProps?: SwitchThumbProps; defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "description": "",
+        "sourcePath": "src/components/switch/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<SwitchUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; control: ClassValue; thumb: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "SwitchShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/switch/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "SwitchControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchControlProps",
+                "kind": "interface",
+                "type": "SwitchControlProps",
+                "resolvedType": "{ id?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/switch/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "thumbProps",
+            "type": "SwitchThumbProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/switch/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SwitchThumbProps",
+                "kind": "interface",
+                "type": "SwitchThumbProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/switch/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled state of the switch. Can be bind as `v-model`.",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the switch.",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": null,
+            "inheritedFrom": "value",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trueValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "true",
+            "inheritedFrom": "trueValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "falseValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "false",
+            "inheritedFrom": "falseValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SwitchEmits",
+        "type": "TypeAlias SwitchEmits<T>: SwitchRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "",
+        "sourcePath": "src/components/switch/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value of the switch changes.",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SwitchControl": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchControlProps",
+        "type": "Interface SwitchControlProps",
+        "resolvedType": "{ id?: string }",
+        "description": "",
+        "sourcePath": "headless/src/components/switch/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SwitchRoot": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchRootProps",
+        "type": "Interface SwitchRootProps<T>",
+        "resolvedType": "{ defaultValue?: NonNullable<T>; modelValue?: T; disabled?: boolean; value?: string; name?: string; required?: boolean; trueValue?: NonNullable<T>; falseValue?: NonNullable<T> }",
+        "description": "",
+        "sourcePath": "headless/src/components/switch/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "defaultValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The state of the switch when it is initially rendered. Use when you do not need to control its state.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "T",
+            "required": false,
+            "description": "The controlled state of the switch. Can be bind as `v-model`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the switch.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trueValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "true",
+            "inheritedFrom": "SwitchValueConfig.trueValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "falseValue",
+            "type": "NonNullable<T>",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "false",
+            "inheritedFrom": "SwitchValueConfig.falseValue",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "SwitchRootEmits",
+        "type": "TypeAlias SwitchRootEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [payload: NonNullable<T>] }",
+        "description": "",
+        "sourcePath": "headless/src/components/switch/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[payload: NonNullable<T>]",
+            "parameters": "payload: NonNullable<T>",
+            "required": true,
+            "description": "Event handler called when the value of the switch changes.",
+            "sourcePath": "headless/src/components/switch/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "SwitchThumb": {
+      "props": {
+        "kind": "props",
+        "name": "SwitchThumbProps",
+        "type": "Interface SwitchThumbProps",
+        "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/switch/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "PrimitiveProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "PrimitiveProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

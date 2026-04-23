@@ -1,0 +1,19 @@
+{
+  "component": "portal",
+  "symbols": {
+    "AutocompletePortal": {
+      "props": {
+        "kind": "props",
+        "name": "AutocompletePortalProps",
+        "type": "Interface AutocompletePortalProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/portal/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

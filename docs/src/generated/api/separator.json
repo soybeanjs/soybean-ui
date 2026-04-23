@@ -1,0 +1,263 @@
+{
+  "component": "separator",
+  "symbols": {
+    "Separator": {
+      "props": {
+        "kind": "props",
+        "name": "SeparatorProps",
+        "type": "Interface SeparatorProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<SeparatorUi>; align?: Align; border?: SeparatorBorder; label?: string; labelProps?: SeparatorLabelProps; orientation?: DataOrientation; decorative?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/separator/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<SeparatorUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; label: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "align",
+            "type": "Align",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Align",
+                "kind": "typeAlias",
+                "type": "'start' | 'center' | 'end'",
+                "resolvedType": "'start' | 'center' | 'end'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "border",
+            "type": "SeparatorBorder",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorBorder",
+                "kind": "typeAlias",
+                "type": "'solid' | 'dashed' | 'dotted'",
+                "resolvedType": "'solid' | 'dashed' | 'dotted'",
+                "description": "",
+                "sourcePath": "src/components/separator/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "SeparatorLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "SeparatorLabelProps",
+                "kind": "interface",
+                "type": "SeparatorLabelProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/separator/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decorative",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+            "default": null,
+            "inheritedFrom": "decorative",
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SeparatorLabel": {
+      "props": {
+        "kind": "props",
+        "name": "SeparatorLabelProps",
+        "type": "Interface SeparatorLabelProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/separator/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "SeparatorRoot": {
+      "props": {
+        "kind": "props",
+        "name": "SeparatorRootProps",
+        "type": "Interface SeparatorRootProps",
+        "resolvedType": "{ orientation?: DataOrientation; decorative?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/separator/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "Orientation of the component.\n\nEither `vertical` or `horizontal`. Defaults to `horizontal`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "decorative",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes are updated so\nthat that the rendered element is removed from the accessibility tree.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/separator/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

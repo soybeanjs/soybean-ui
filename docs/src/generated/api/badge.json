@@ -1,0 +1,284 @@
+{
+  "component": "badge",
+  "symbols": {
+    "Badge": {
+      "props": {
+        "kind": "props",
+        "name": "BadgeProps",
+        "type": "Interface BadgeProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; color?: ThemeColor; size?: ThemeSize; ui?: Partial<BadgeUi>; position?: BadgePosition; content?: string; contentProps?: BadgeContentProps; open?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<BadgeUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BadgeUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; content: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/badge/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "position",
+            "type": "BadgePosition",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BadgePosition",
+                "kind": "typeAlias",
+                "type": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left'",
+                "resolvedType": "'top-right' | 'bottom-right' | 'top-left' | 'bottom-left'",
+                "description": "",
+                "sourcePath": "src/components/badge/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "content",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "contentProps",
+            "type": "BadgeContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/badge/types.ts",
+            "referencedTypes": [
+              {
+                "name": "BadgeContentProps",
+                "kind": "interface",
+                "type": "BadgeContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/badge/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "open",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BadgeEmits",
+        "type": "TypeAlias BadgeEmits: BadgeRootEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "",
+        "sourcePath": "src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "BadgeRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:open': [open: boolean]; }",
+            "resolvedType": "{ \"update:open\": [open: boolean] }",
+            "description": "",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:open",
+                "type": "[open: boolean]",
+                "parameters": "open: boolean",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/badge/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "BadgeContent": {
+      "props": {
+        "kind": "props",
+        "name": "BadgeContentProps",
+        "type": "Interface BadgeContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "BadgeRoot": {
+      "props": {
+        "kind": "props",
+        "name": "BadgeRootProps",
+        "type": "Interface BadgeRootProps",
+        "resolvedType": "{ open?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "open",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "BadgeRootEmits",
+        "type": "TypeAlias BadgeRootEmits",
+        "resolvedType": "{ \"update:open\": [open: boolean] }",
+        "description": "",
+        "sourcePath": "headless/src/components/badge/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:open",
+            "type": "[open: boolean]",
+            "parameters": "open: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/badge/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

@@ -1,0 +1,2951 @@
+{
+  "component": "tree-menu",
+  "symbols": {
+    "TreeMenu": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuProps",
+        "type": "Interface TreeMenuProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TreeMenuExtendedUi>; side?: HorizontalSide; collapsedWidth?: number; indent?: number; modelValue?: string; defaultValue?: string; expanded?: string[]; defaultExpanded?: string[]; collapsed?: boolean; defaultCollapsed?: boolean; items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<TreeMenuExtendedUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExtendedUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; button: ClassValue; sub: ClassValue; group: ClassValue; groupLabel: ClassValue; groupRoot: ClassValue; itemLabel: ClassValue; itemLinkIcon: ClassValue; subItem: ClassValue; subButton: ClassValue; collapsibleRoot: ClassValue; collapsibleTrigger: ClassValue; collapsibleContent: ClassValue; itemAbsolute: ClassValue; itemBadge: ClassValue; itemTag: ClassValue; itemAction: ClassValue; collapsibleIcon: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "side",
+            "type": "HorizontalSide",
+            "required": false,
+            "description": "The side of the tree menu.",
+            "default": "'left'",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "HorizontalSide",
+                "kind": "typeAlias",
+                "type": "'right' | 'left'",
+                "resolvedType": "'right' | 'left'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsedWidth",
+            "type": "number",
+            "required": false,
+            "description": "The width of the sidebar menu when it's collapsed.",
+            "default": "50",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "indent",
+            "type": "number",
+            "required": false,
+            "description": "The width of the indent.",
+            "default": "16",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "the active value of the tree menu. can be bound-with with `v-model`.",
+            "default": null,
+            "inheritedFrom": "TreeMenuRootProps.modelValue",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "the value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
+            "default": null,
+            "inheritedFrom": "TreeMenuRootProps.defaultValue",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "expanded",
+            "type": "string[]",
+            "required": false,
+            "description": "the expanded value of the tree menu. can be bound-with with `v-model`.",
+            "default": null,
+            "inheritedFrom": "TreeMenuRootProps.expanded",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultExpanded",
+            "type": "string[]",
+            "required": false,
+            "description": "the expanded value of the tree menu when initially rendered. use when you do not need to control the state of the tree.",
+            "default": null,
+            "inheritedFrom": "TreeMenuRootProps.defaultExpanded",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "collapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the tree menu is collapsed.",
+            "default": "false",
+            "inheritedFrom": "TreeMenuRootProps.collapsed",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultCollapsed",
+            "type": "boolean",
+            "required": false,
+            "description": "The value of the tree menu when it's collapsed.",
+            "default": null,
+            "inheritedFrom": "TreeMenuRootProps.defaultCollapsed",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "items",
+            "type": "TreeMenuOptionData<T>[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "items",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "groupRootProps",
+            "type": "TreeMenuGroupRootProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "groupRootProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupRootProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupRootProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "TreeMenuGroupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "groupProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "TreeMenuGroupLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "groupLabelProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupLabelProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupLabelProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showGroupIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the group icon.",
+            "default": "false",
+            "inheritedFrom": "showGroupIcon",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "TreeMenuItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuItemProps",
+                "kind": "interface",
+                "type": "TreeMenuItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "LinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "linkProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LinkProps",
+                "kind": "interface",
+                "type": "LinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledActive?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledActive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the item.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsibleProps",
+            "type": "TreeMenuCollapsibleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "collapsibleProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuCollapsibleProps",
+                "kind": "interface",
+                "type": "TreeMenuCollapsibleProps",
+                "resolvedType": "{ disabledCollapsible?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledCollapsible",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the collapsible trigger.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeMenuEmits",
+        "type": "TypeAlias TreeMenuEmits: TreeMenuRootEmits & TreeMenuOptionEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string]; \"update:expanded\": [value: string[]]; \"update:collapsed\": [value: boolean]; selectDropdown: [value: string] }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:expanded",
+            "type": "[value: string[]]",
+            "parameters": "value: string[]",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:collapsed",
+            "type": "[value: boolean]",
+            "parameters": "value: boolean",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "selectDropdown",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuOption": {
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "TreeMenuOptionSlotProps",
+        "type": "Interface TreeMenuOptionSlotProps",
+        "resolvedType": "{ showLinkIcon?: boolean; as?: AsTag; item: TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }; itemProps?: TreeMenuItemProps; buttonProps?: TreeMenuButtonProps; linkProps?: LinkProps; collapsibleProps?: TreeMenuCollapsibleProps; subProps?: TreeMenuSubProps }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "showLinkIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "as",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AsTag",
+                "kind": "typeAlias",
+                "type": "'a' | 'button' | 'div' | 'form' | 'h2' | 'h3' | 'img' | 'input' | 'label' | 'li' | 'nav' | 'ol' | 'p' | 'span' | 'svg' | 'ul' | 'template' | ({} & string)",
+                "resolvedType": "'a' | 'button' | 'div' | 'form' | 'h2' | 'h3' | 'img' | 'input' | 'label' | 'li' | 'nav' | 'ol' | 'p' | 'span' | 'svg' | 'ul' | 'template' | ({} & string)",
+                "description": "",
+                "sourcePath": "headless/src/components/primitive/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item",
+            "type": "TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "item",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuBaseOptionData",
+                "kind": "interface",
+                "type": "TreeMenuBaseOptionData",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TreeMenuOptionData",
+                "kind": "typeAlias",
+                "type": "TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }",
+                "resolvedType": "{ isGroup?: boolean; label: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; hidden?: boolean; badge?: string; badgeProps?: Omit<BadgeProps, 'content'>; tag?: string; tagProps?: Omit<TagProps, 'content'>; tooltipProps?: TooltipProps; dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>; actions?: MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]; actionMenuProps?: Omit<DropdownMenuProps, 'items'>; onActionSelect?: ((action: MenuOptionData) => void); value: string; disabled?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; external?: boolean; children?: TreeMenuOptionData<T>[] }",
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [
+                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
+                ],
+                "external": false,
+                "members": [
+                  {
+                    "name": "isGroup",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the option is a group. only the first-level options can be groups.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "label",
+                    "type": "string",
+                    "required": true,
+                    "description": "The label of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "icon",
+                    "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+                    "required": false,
+                    "description": "The icon of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hidden",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the option is hidden.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "badge",
+                    "type": "string",
+                    "required": false,
+                    "description": "The badge of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "badgeProps",
+                    "type": "Omit<BadgeProps, 'content'>",
+                    "required": false,
+                    "description": "The badge props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tag",
+                    "type": "string",
+                    "required": false,
+                    "description": "The tag of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tagProps",
+                    "type": "Omit<TagProps, 'content'>",
+                    "required": false,
+                    "description": "The tag props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tooltipProps",
+                    "type": "TooltipProps",
+                    "required": false,
+                    "description": "The tooltip props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dropdownMenuProps",
+                    "type": "Omit<DropdownMenuProps, 'items'>",
+                    "required": false,
+                    "description": "The dropdown menu props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "actions",
+                    "type": "MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]",
+                    "required": false,
+                    "description": "The actions of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "actionMenuProps",
+                    "type": "Omit<DropdownMenuProps, 'items'>",
+                    "required": false,
+                    "description": "The action menu props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "children",
+                    "type": "TreeMenuOptionData<T>[]",
+                    "required": false,
+                    "description": "The children of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "onActionSelect",
+                    "type": "((action: MenuOptionData) => void) | undefined",
+                    "parameters": "((action: MenuOptionData) => void) | undefined",
+                    "required": false,
+                    "description": "The callback function when an action is selected.",
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "TreeMenuItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuItemProps",
+                "kind": "interface",
+                "type": "TreeMenuItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledActive?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledActive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the item.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "LinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "linkProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LinkProps",
+                "kind": "interface",
+                "type": "LinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsibleProps",
+            "type": "TreeMenuCollapsibleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "collapsibleProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuCollapsibleProps",
+                "kind": "interface",
+                "type": "TreeMenuCollapsibleProps",
+                "resolvedType": "{ disabledCollapsible?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledCollapsible",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the collapsible trigger.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuOptionProps",
+        "type": "Interface TreeMenuOptionProps",
+        "resolvedType": "{ as?: AsTag; item: TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }; itemProps?: TreeMenuItemProps; buttonProps?: TreeMenuButtonProps; linkProps?: LinkProps; collapsibleProps?: TreeMenuCollapsibleProps; subProps?: TreeMenuSubProps }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "as",
+            "type": "AsTag",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AsTag",
+                "kind": "typeAlias",
+                "type": "'a' | 'button' | 'div' | 'form' | 'h2' | 'h3' | 'img' | 'input' | 'label' | 'li' | 'nav' | 'ol' | 'p' | 'span' | 'svg' | 'ul' | 'template' | ({} & string)",
+                "resolvedType": "'a' | 'button' | 'div' | 'form' | 'h2' | 'h3' | 'img' | 'input' | 'label' | 'li' | 'nav' | 'ol' | 'p' | 'span' | 'svg' | 'ul' | 'template' | ({} & string)",
+                "description": "",
+                "sourcePath": "headless/src/components/primitive/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "item",
+            "type": "TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuBaseOptionData",
+                "kind": "interface",
+                "type": "TreeMenuBaseOptionData",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "TreeMenuOptionData",
+                "kind": "typeAlias",
+                "type": "TreeMenuBaseOptionData & { children?: TreeMenuOptionData<TreeMenuBaseOptionData>[] | undefined; }",
+                "resolvedType": "{ isGroup?: boolean; label: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; hidden?: boolean; badge?: string; badgeProps?: Omit<BadgeProps, 'content'>; tag?: string; tagProps?: Omit<TagProps, 'content'>; tooltipProps?: TooltipProps; dropdownMenuProps?: Omit<DropdownMenuProps, 'items'>; actions?: MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]; actionMenuProps?: Omit<DropdownMenuProps, 'items'>; onActionSelect?: ((action: MenuOptionData) => void); value: string; disabled?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; href?: string; external?: boolean; children?: TreeMenuOptionData<T>[] }",
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [
+                  "T extends TreeMenuBaseOptionData = TreeMenuBaseOptionData"
+                ],
+                "external": false,
+                "members": [
+                  {
+                    "name": "isGroup",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the option is a group. only the first-level options can be groups.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "label",
+                    "type": "string",
+                    "required": true,
+                    "description": "The label of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "icon",
+                    "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+                    "required": false,
+                    "description": "The icon of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "hidden",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the option is hidden.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "badge",
+                    "type": "string",
+                    "required": false,
+                    "description": "The badge of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "badgeProps",
+                    "type": "Omit<BadgeProps, 'content'>",
+                    "required": false,
+                    "description": "The badge props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tag",
+                    "type": "string",
+                    "required": false,
+                    "description": "The tag of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tagProps",
+                    "type": "Omit<TagProps, 'content'>",
+                    "required": false,
+                    "description": "The tag props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "tooltipProps",
+                    "type": "TooltipProps",
+                    "required": false,
+                    "description": "The tooltip props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "dropdownMenuProps",
+                    "type": "Omit<DropdownMenuProps, 'items'>",
+                    "required": false,
+                    "description": "The dropdown menu props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "actions",
+                    "type": "MenuOptionData<import(\"@soybeanjs/headless\").DefinedValue>[]",
+                    "required": false,
+                    "description": "The actions of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "actionMenuProps",
+                    "type": "Omit<DropdownMenuProps, 'items'>",
+                    "required": false,
+                    "description": "The action menu props of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "children",
+                    "type": "TreeMenuOptionData<T>[]",
+                    "required": false,
+                    "description": "The children of the option.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": [
+                  {
+                    "name": "onActionSelect",
+                    "type": "((action: MenuOptionData) => void) | undefined",
+                    "parameters": "((action: MenuOptionData) => void) | undefined",
+                    "required": false,
+                    "description": "The callback function when an action is selected.",
+                    "sourcePath": "src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "itemProps",
+            "type": "TreeMenuItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuItemProps",
+                "kind": "interface",
+                "type": "TreeMenuItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledActive?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledActive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the item.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "LinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LinkProps",
+                "kind": "interface",
+                "type": "LinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsibleProps",
+            "type": "TreeMenuCollapsibleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuCollapsibleProps",
+                "kind": "interface",
+                "type": "TreeMenuCollapsibleProps",
+                "resolvedType": "{ disabledCollapsible?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledCollapsible",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the collapsible trigger.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeMenuOptionEmits",
+        "type": "TypeAlias TreeMenuOptionEmits",
+        "resolvedType": "{ selectDropdown: [value: string] }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "selectDropdown",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "TreeMenuOptions": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuOptionsProps",
+        "type": "Interface TreeMenuOptionsProps<T>",
+        "resolvedType": "{ items: TreeMenuOptionData<T>[]; groupRootProps?: TreeMenuGroupRootProps; groupProps?: TreeMenuGroupProps; groupLabelProps?: TreeMenuGroupLabelProps; showGroupIcon?: boolean; itemProps?: TreeMenuItemProps; linkProps?: LinkProps; subProps?: TreeMenuSubProps; buttonProps?: TreeMenuButtonProps; collapsibleProps?: TreeMenuCollapsibleProps }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "items",
+            "type": "TreeMenuOptionData<T>[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "groupRootProps",
+            "type": "TreeMenuGroupRootProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupRootProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupRootProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupProps",
+            "type": "TreeMenuGroupProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "groupLabelProps",
+            "type": "TreeMenuGroupLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuGroupLabelProps",
+                "kind": "interface",
+                "type": "TreeMenuGroupLabelProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "showGroupIcon",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the group icon.",
+            "default": "false",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "itemProps",
+            "type": "TreeMenuItemProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "itemProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuItemProps",
+                "kind": "interface",
+                "type": "TreeMenuItemProps",
+                "resolvedType": "{ value: string; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "string",
+                    "required": true,
+                    "description": "The unique value of the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the item.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "linkProps",
+            "type": "LinkProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "linkProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LinkProps",
+                "kind": "interface",
+                "type": "LinkProps",
+                "resolvedType": "{ to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "to",
+                    "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+                    "required": false,
+                    "description": "Route Location the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "replace",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Calls `router.replace` instead of `router.push`.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "href",
+                    "type": "string",
+                    "required": false,
+                    "description": "The URL the link should navigate to when clicked on.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, the link is disabled.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "activeClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "exactActiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "Class to apply when the link is exact active",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inactiveClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "The class to apply to the link when it is inactive.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchedClass",
+                    "type": "string",
+                    "required": false,
+                    "description": "A class to apply to links that have been prefetched.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "external",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ariaCurrentValue",
+                    "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+                    "required": false,
+                    "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+                    "default": "`'page'`",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "viewTransition",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "target",
+                    "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+                    "required": false,
+                    "description": "Where to display the linked URL, as the name for a browsing context.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "rel",
+                    "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+                    "required": false,
+                    "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+                    "default": "'noopener noreferrer'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noRel",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "If set to true, no rel attribute will be added to the link",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "prefetchOn",
+                    "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+                    "required": false,
+                    "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "noPrefetch",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Escape hatch to disable `prefetch` attribute.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "trailingSlash",
+                    "type": "'append' | 'remove'",
+                    "required": false,
+                    "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/link/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "subProps",
+            "type": "TreeMenuSubProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "subProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuSubProps",
+                "kind": "interface",
+                "type": "TreeMenuSubProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "buttonProps",
+            "type": "TreeMenuButtonProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "buttonProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuButtonProps",
+                "kind": "interface",
+                "type": "TreeMenuButtonProps",
+                "resolvedType": "{ disabledActive?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledActive",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the item.",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "collapsibleProps",
+            "type": "TreeMenuCollapsibleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "collapsibleProps",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuCollapsibleProps",
+                "kind": "interface",
+                "type": "TreeMenuCollapsibleProps",
+                "resolvedType": "{ disabledCollapsible?: boolean; asChild?: boolean; as?: AsTag | Component }",
+                "description": "",
+                "sourcePath": "headless/src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "disabledCollapsible",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from activating the collapsible trigger.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/tree-menu/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TreeMenuOptionsEmits",
+        "type": "TypeAlias TreeMenuOptionsEmits: TreeMenuOptionEmits",
+        "resolvedType": "{ selectDropdown: [value: string] }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "selectDropdown",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TreeMenuOptionEmits",
+            "kind": "typeAlias",
+            "type": "{ selectDropdown: [value: string]; }",
+            "resolvedType": "{ selectDropdown: [value: string] }",
+            "description": "",
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "selectDropdown",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "TreeMenuStyledItem": {
+      "props": {
+        "kind": "props",
+        "name": "TreeMenuStyledItemProps",
+        "type": "Interface TreeMenuStyledItemProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>> }",
+        "description": "",
+        "sourcePath": "src/components/tree-menu/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<Pick<TreeMenuExtendedUi, 'item' | 'button'>>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/tree-menu/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TreeMenuExtendedUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; button: ClassValue; sub: ClassValue; group: ClassValue; groupLabel: ClassValue; groupRoot: ClassValue; itemLabel: ClassValue; itemLinkIcon: ClassValue; subItem: ClassValue; subButton: ClassValue; collapsibleRoot: ClassValue; collapsibleTrigger: ClassValue; collapsibleContent: ClassValue; itemAbsolute: ClassValue; itemBadge: ClassValue; itemTag: ClassValue; itemAction: ClassValue; collapsibleIcon: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/tree-menu/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

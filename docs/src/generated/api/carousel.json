@@ -1,0 +1,702 @@
+{
+  "component": "carousel",
+  "symbols": {
+    "Carousel": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselProps",
+        "type": "Interface CarouselProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CarouselUi>; opts?: Partial<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreatePluginType<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]; orientation?: DataOrientation; dir?: Direction }",
+        "description": "",
+        "sourcePath": "src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CarouselUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CarouselUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; content: ClassValue; container: ClassValue; previous: ClassValue; next: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "opts",
+            "type": "Partial<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "opts",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "OptionsType",
+                "kind": "typeAlias",
+                "type": "{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; } & { active: boolean; breakpoints: { [key: string]: Omit<Partial<import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreateOptionsType<{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; }>>, 'breakpoints'>; }; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreatePluginType<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "plugins",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "orientation",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "dir",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CarouselEmits",
+        "type": "TypeAlias CarouselEmits: CarouselRootEmits",
+        "resolvedType": "{ initApi: [api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType] }",
+        "description": "",
+        "sourcePath": "src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "initApi",
+            "type": "[api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType]",
+            "parameters": "api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "{ canScrollNext: () => boolean; canScrollPrev: () => boolean; containerNode: () => HTMLElement; internalEngine: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EngineType; destroy: () => void; off: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['off']; on: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['on']; emit: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['emit']; plugins: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginsType; previousScrollSnap: () => number; reInit: (options?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaOptionsType, plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginType[]) => void; rootNode: () => HTMLElement; scrollNext: (jump?: boolean) => void; scrollPrev: (jump?: boolean) => void; scrollProgress: () => number; scrollSnapList: () => number[]; scrollTo: (index: number, jump?: boolean) => void; selectedScrollSnap: () => number; slideNodes: () => HTMLElement[]; slidesInView: () => number[]; slidesNotInView: () => number[]; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CarouselRootEmits",
+            "kind": "typeAlias",
+            "type": "{ initApi: [api: import(\"@soybeanjs/headless\").CarouselApi]; }",
+            "resolvedType": "{ initApi: [api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType] }",
+            "description": "",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "initApi",
+                "type": "[api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType]",
+                "parameters": "api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/carousel/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "CarouselContent": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselContentProps",
+        "type": "Interface CarouselContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CarouselItem": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselItemProps",
+        "type": "Interface CarouselItemProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CarouselNext": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselNextProps",
+        "type": "Interface CarouselNextProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CarouselPrevious": {
+      "props": {
+        "kind": "props",
+        "name": "CarouselPreviousProps",
+        "type": "Interface CarouselPreviousProps",
+        "resolvedType": "{ type?: ButtonType; disabled?: boolean; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "type",
+            "type": "ButtonType",
+            "required": false,
+            "description": "The type of the button element. Can be one of 'button', 'submit', or 'reset'. [按钮元素的类型。可以是 'button'、'submit' 或 'reset' 之一。]",
+            "default": "'button'",
+            "inheritedFrom": "ButtonProps.type",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ButtonType",
+                "kind": "typeAlias",
+                "type": "'button' | 'submit' | 'reset'",
+                "resolvedType": "'button' | 'submit' | 'reset'",
+                "description": "",
+                "sourcePath": "headless/src/components/button/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "ButtonProps.disabled",
+            "sourcePath": "headless/src/components/button/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "ButtonProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "ButtonProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CarouselRoot": {
+      "emits": {
+        "kind": "emits",
+        "name": "CarouselRootEmits",
+        "type": "TypeAlias CarouselRootEmits",
+        "resolvedType": "{ initApi: [api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType] }",
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "initApi",
+            "type": "[api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType]",
+            "parameters": "api: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaCarouselType",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmblaCarouselType",
+                "kind": "typeAlias",
+                "type": "{ canScrollNext: () => boolean; canScrollPrev: () => boolean; containerNode: () => HTMLElement; internalEngine: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EngineType; destroy: () => void; off: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['off']; on: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['on']; emit: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['emit']; plugins: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginsType; previousScrollSnap: () => number; reInit: (options?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaOptionsType, plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginType[]) => void; rootNode: () => HTMLElement; scrollNext: (jump?: boolean) => void; scrollPrev: (jump?: boolean) => void; scrollProgress: () => number; scrollSnapList: () => number[]; scrollTo: (index: number, jump?: boolean) => void; selectedScrollSnap: () => number; slideNodes: () => HTMLElement[]; slidesInView: () => number[]; slidesNotInView: () => number[]; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      },
+      "props": {
+        "kind": "props",
+        "name": "CarouselRootProps",
+        "type": "Interface CarouselRootProps",
+        "resolvedType": "{ opts?: Partial<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options\").OptionsType>; plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreatePluginType<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]; orientation?: DataOrientation; dir?: Direction }",
+        "description": "",
+        "sourcePath": "headless/src/components/carousel/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "opts",
+            "type": "Partial<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options\").OptionsType>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "OptionsType",
+                "kind": "typeAlias",
+                "type": "{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; } & { active: boolean; breakpoints: { [key: string]: Omit<Partial<import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreateOptionsType<{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; }>>, 'breakpoints'>; }; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreatePluginType<import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Plugins\").LoosePluginType, {}>[]",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/carousel/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

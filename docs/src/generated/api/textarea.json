@@ -1,0 +1,606 @@
+{
+  "component": "textarea",
+  "symbols": {
+    "Textarea": {
+      "props": {
+        "kind": "props",
+        "name": "TextareaProps",
+        "type": "Interface TextareaProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<TextareaExtendedUi>; resize?: TextareaResize; clearable?: boolean; showCounter?: boolean; textareaRef?: ((el: HTMLTextAreaElement) => void); controlProps?: TextareaControlProps; counterProps?: TextareaCounterProps; defaultValue?: string; modelValue?: string; autosize?: boolean | TextareaAutosizeOptions; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<TextareaExtendedUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaExtendedUi",
+                "kind": "typeAlias",
+                "type": "TextareaUi & Record<'clearable', ClassValue>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/textarea/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "resize",
+            "type": "TextareaResize",
+            "required": false,
+            "description": "The resize of the textarea\n\nif autosize is true, the resize will be ignored",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaResize",
+                "kind": "typeAlias",
+                "type": "boolean | 'vertical' | 'horizontal'",
+                "resolvedType": "boolean | 'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "src/components/textarea/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "clearable",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the clear icon",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showCounter",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the counter",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "textareaRef",
+            "type": "((el: HTMLTextAreaElement) => void)",
+            "required": false,
+            "description": "The function to set the textarea element.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "controlProps",
+            "type": "TextareaControlProps",
+            "required": false,
+            "description": "The props of the textarea extra props.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaControlProps",
+                "kind": "interface",
+                "type": "TextareaControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/textarea/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "counterProps",
+            "type": "TextareaCounterProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaCounterProps",
+                "kind": "interface",
+                "type": "TextareaCounterProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/textarea/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the textarea",
+            "default": null,
+            "inheritedFrom": "defaultValue",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the textarea",
+            "default": null,
+            "inheritedFrom": "modelValue",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autosize",
+            "type": "boolean | TextareaAutosizeOptions",
+            "required": false,
+            "description": "When `true` or an options object, enables auto-resizing based on content",
+            "default": null,
+            "inheritedFrom": "autosize",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaAutosizeOptions",
+                "kind": "interface",
+                "type": "TextareaAutosizeOptions",
+                "resolvedType": "{ minRows?: number; maxRows?: number }",
+                "description": "",
+                "sourcePath": "headless/src/components/textarea/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "minRows",
+                    "type": "number",
+                    "required": false,
+                    "description": "The minimum number of rows to display",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/textarea/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "maxRows",
+                    "type": "number",
+                    "required": false,
+                    "description": "The maximum number of rows to display",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/textarea/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the textarea element",
+            "default": null,
+            "inheritedFrom": "id",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the textarea is auto-focused.",
+            "default": null,
+            "inheritedFrom": "autofocus",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the textarea.",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the textarea",
+            "default": null,
+            "inheritedFrom": "maxlength",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the textarea",
+            "default": null,
+            "inheritedFrom": "minlength",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the textarea",
+            "default": null,
+            "inheritedFrom": "placeholder",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the textarea is read-only.",
+            "default": null,
+            "inheritedFrom": "readonly",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TextareaEmits",
+        "type": "TypeAlias TextareaEmits: TextareaRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "",
+        "sourcePath": "src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "TextareaRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: string]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: string] }",
+            "description": "",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: string]",
+                "parameters": "value: string",
+                "required": true,
+                "description": "",
+                "sourcePath": "headless/src/components/textarea/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "TextareaControl": {
+      "props": {
+        "kind": "props",
+        "name": "TextareaControlProps",
+        "type": "Interface TextareaControlProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TextareaCounter": {
+      "props": {
+        "kind": "props",
+        "name": "TextareaCounterProps",
+        "type": "Interface TextareaCounterProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "TextareaRoot": {
+      "props": {
+        "kind": "props",
+        "name": "TextareaRootProps",
+        "type": "Interface TextareaRootProps",
+        "resolvedType": "{ defaultValue?: string; modelValue?: string; autosize?: boolean | TextareaAutosizeOptions; id?: string; autofocus?: boolean; disabled?: boolean; maxlength?: number; minlength?: number; placeholder?: string; readonly?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "defaultValue",
+            "type": "string",
+            "required": false,
+            "description": "The default value of the textarea",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The controlled value of the textarea",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autosize",
+            "type": "boolean | TextareaAutosizeOptions",
+            "required": false,
+            "description": "When `true` or an options object, enables auto-resizing based on content",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": [
+              {
+                "name": "TextareaAutosizeOptions",
+                "kind": "interface",
+                "type": "TextareaAutosizeOptions",
+                "resolvedType": "{ minRows?: number; maxRows?: number }",
+                "description": "",
+                "sourcePath": "headless/src/components/textarea/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "minRows",
+                    "type": "number",
+                    "required": false,
+                    "description": "The minimum number of rows to display",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/textarea/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "maxRows",
+                    "type": "number",
+                    "required": false,
+                    "description": "The maximum number of rows to display",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/textarea/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "Id of the textarea element",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.id",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "autofocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the textarea is auto-focused.",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.autofocus",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the textarea.",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.disabled",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "maxlength",
+            "type": "number",
+            "required": false,
+            "description": "The maximum number of characters allowed in the textarea",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.maxlength",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "minlength",
+            "type": "number",
+            "required": false,
+            "description": "The minimum number of characters allowed in the textarea",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.minlength",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "placeholder",
+            "type": "string",
+            "required": false,
+            "description": "The placeholder of the textarea",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.placeholder",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "readonly",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the textarea is read-only.",
+            "default": null,
+            "inheritedFrom": "TextareaBaseProps.readonly",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "TextareaRootEmits",
+        "type": "TypeAlias TextareaRootEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: string] }",
+        "description": "",
+        "sourcePath": "headless/src/components/textarea/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: string]",
+            "parameters": "value: string",
+            "required": true,
+            "description": "",
+            "sourcePath": "headless/src/components/textarea/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

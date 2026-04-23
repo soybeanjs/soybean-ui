@@ -1,0 +1,663 @@
+{
+  "component": "pagination",
+  "symbols": {
+    "Pagination": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationProps",
+        "type": "Interface PaginationProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<PaginationUi>; size?: ThemeSize; variant?: PaginationVariant; shape?: PaginationShape; actionAsSelected?: boolean; showFirstOrLast?: boolean; listProps?: PaginationListProps; listItemProps?: PaginationListItemProps; ellipsisProps?: PaginationEllipsisProps; firstProps?: PaginationButtonProps; prevProps?: PaginationButtonProps; nextProps?: PaginationButtonProps; lastProps?: PaginationButtonProps; page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<PaginationUi>",
+            "required": false,
+            "description": "The custom ui class names",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; list: ClassValue; ellipsis: ClassValue; next: ClassValue; listItem: ClassValue; first: ClassValue; prev: ClassValue; last: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "The size of the pagination",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "PaginationVariant",
+            "required": false,
+            "description": "The variant of the pagination",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationVariant",
+                "kind": "typeAlias",
+                "type": "'solid' | 'soft' | 'pure' | 'outline'",
+                "resolvedType": "'solid' | 'soft' | 'pure' | 'outline'",
+                "description": "",
+                "sourcePath": "src/components/pagination/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "PaginationShape",
+            "required": false,
+            "description": "The shape of the pagination",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/pagination/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "actionAsSelected",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to apply the selected state to the action button",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showFirstOrLast",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether to show the first and last buttons",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "listProps",
+            "type": "PaginationListProps",
+            "required": false,
+            "description": "The props for the list component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListProps",
+                "kind": "interface",
+                "type": "PaginationListProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "listItemProps",
+            "type": "PaginationListItemProps",
+            "required": false,
+            "description": "The props for the list item component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationListItemProps",
+                "kind": "interface",
+                "type": "PaginationListItemProps",
+                "resolvedType": "{ value: number }",
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "required": true,
+                    "description": "Value for the page",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/pagination/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ellipsisProps",
+            "type": "PaginationEllipsisProps",
+            "required": false,
+            "description": "The props for the ellipsis component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationEllipsisProps",
+                "kind": "interface",
+                "type": "PaginationEllipsisProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "firstProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "The props for the first button component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "prevProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "The props for the previous button component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "nextProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "The props for the next button component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "lastProps",
+            "type": "PaginationButtonProps",
+            "required": false,
+            "description": "The props for the last button component",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/pagination/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PaginationButtonProps",
+                "kind": "interface",
+                "type": "PaginationButtonProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the current page. Can be bound as `v-model:page`.",
+            "default": null,
+            "inheritedFrom": "page",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPage",
+            "type": "number",
+            "required": false,
+            "description": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
+            "default": null,
+            "inheritedFrom": "defaultPage",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "required": false,
+            "description": "Number of items per page",
+            "default": null,
+            "inheritedFrom": "pageSize",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "required": false,
+            "description": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
+            "default": "10",
+            "inheritedFrom": "defaultPageSize",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "required": false,
+            "description": "Number of items in your list",
+            "default": null,
+            "inheritedFrom": "total",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "siblingCount",
+            "type": "number",
+            "required": false,
+            "description": "Number of sibling should be shown around the current page",
+            "default": null,
+            "inheritedFrom": "siblingCount",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with item",
+            "default": null,
+            "inheritedFrom": "disabled",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showEdges",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, always show first page, last page, and ellipsis",
+            "default": null,
+            "inheritedFrom": "showEdges",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PaginationEmits",
+        "type": "TypeAlias PaginationEmits: PaginationRootEmits",
+        "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+        "description": "",
+        "sourcePath": "src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:page",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page value changes",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:pageSize",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page size value changes",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "PaginationRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:page': [value: number]; 'update:pageSize': [value: number]; }",
+            "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+            "description": "",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:page",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page value changes",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              },
+              {
+                "name": "update:pageSize",
+                "type": "[value: number]",
+                "parameters": "value: number",
+                "required": true,
+                "description": "Event handler called when the page size value changes",
+                "sourcePath": "headless/src/components/pagination/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "PaginationButton": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationButtonProps",
+        "type": "Interface PaginationButtonProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationEllipsis": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationEllipsisProps",
+        "type": "Interface PaginationEllipsisProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationList": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationListProps",
+        "type": "Interface PaginationListProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationListItem": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationListItemProps",
+        "type": "Interface PaginationListItemProps",
+        "resolvedType": "{ value: number }",
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "value",
+            "type": "number",
+            "required": true,
+            "description": "Value for the page",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "PaginationRoot": {
+      "props": {
+        "kind": "props",
+        "name": "PaginationRootProps",
+        "type": "Interface PaginationRootProps",
+        "resolvedType": "{ page?: number; defaultPage?: number; pageSize?: number; defaultPageSize?: number; total?: number; siblingCount?: number; disabled?: boolean; showEdges?: boolean }",
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "page",
+            "type": "number",
+            "required": false,
+            "description": "The controlled value of the current page. Can be bound as `v-model:page`.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPage",
+            "type": "number",
+            "required": false,
+            "description": "The value of the page that should be active when initially rendered. Use when you do not need to control the value\nstate.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "pageSize",
+            "type": "number",
+            "required": false,
+            "description": "Number of items per page",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultPageSize",
+            "type": "number",
+            "required": false,
+            "description": "The default value of `pageSize` when initially rendered. Use when you do not need to control the value state.",
+            "default": "10",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "total",
+            "type": "number",
+            "required": false,
+            "description": "Number of items in your list",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "siblingCount",
+            "type": "number",
+            "required": false,
+            "description": "Number of sibling should be shown around the current page",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with item",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "showEdges",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, always show first page, last page, and ellipsis",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PaginationRootEmits",
+        "type": "TypeAlias PaginationRootEmits",
+        "resolvedType": "{ \"update:page\": [value: number]; \"update:pageSize\": [value: number] }",
+        "description": "",
+        "sourcePath": "headless/src/components/pagination/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:page",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page value changes",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "update:pageSize",
+            "type": "[value: number]",
+            "parameters": "value: number",
+            "required": true,
+            "description": "Event handler called when the page size value changes",
+            "sourcePath": "headless/src/components/pagination/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

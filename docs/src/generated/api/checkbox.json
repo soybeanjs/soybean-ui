@@ -1,0 +1,1827 @@
+{
+  "component": "checkbox",
+  "symbols": {
+    "Checkbox": {
+      "props": {
+        "kind": "props",
+        "name": "CheckboxProps",
+        "type": "Interface CheckboxProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "the class of root element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CheckboxUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "CheckboxShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/checkbox/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.label",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "controlProps",
+            "type": "CheckboxControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.controlProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxControlProps",
+                "kind": "interface",
+                "type": "CheckboxControlProps",
+                "resolvedType": "{ id?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "CheckboxIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.indicatorProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxIndicatorProps",
+                "kind": "interface",
+                "type": "CheckboxIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "CheckboxLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.labelProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LabelProps",
+                "kind": "interface",
+                "type": "CheckboxLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/label/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.id",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "CheckedState | null",
+            "required": false,
+            "description": "The controlled value of the checkbox. Can be bound with v-model.",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.modelValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "CheckedState",
+            "required": false,
+            "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.defaultValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckedState",
+                "kind": "typeAlias",
+                "type": "boolean | 'indeterminate'",
+                "resolvedType": "boolean | 'indeterminate'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "type": "DefinedValue",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "on",
+            "inheritedFrom": "CheckboxCompactProps.value",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DefinedValue",
+                "kind": "typeAlias",
+                "type": "string | number",
+                "resolvedType": "string | number",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the checkbox",
+            "default": "false",
+            "inheritedFrom": "CheckboxCompactProps.disabled",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "CheckboxCompactProps.required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CheckboxEmits",
+        "type": "TypeAlias CheckboxEmits: CheckboxCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: CheckedState | null] }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: CheckedState | null]",
+            "parameters": "value: CheckedState | null",
+            "required": true,
+            "description": "Event handler called when the value of the checkbox changes.",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CheckboxRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: import(\"@soybeanjs/headless\").CheckedState | null]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: CheckedState | null] }",
+            "description": "",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: CheckedState | null]",
+                "parameters": "value: CheckedState | null",
+                "required": true,
+                "description": "Event handler called when the value of the checkbox changes.",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "CheckboxCard": {
+      "props": {
+        "kind": "props",
+        "name": "CheckboxCardProps",
+        "type": "Interface CheckboxCardProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; icon?: string; description?: string; label?: string; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "the class of root element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CheckboxCardUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxCardUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; textContent: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "CheckboxShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/checkbox/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "icon",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.label",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "controlProps",
+            "type": "CheckboxControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.controlProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxControlProps",
+                "kind": "interface",
+                "type": "CheckboxControlProps",
+                "resolvedType": "{ id?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "CheckboxIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.indicatorProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxIndicatorProps",
+                "kind": "interface",
+                "type": "CheckboxIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "CheckboxLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.labelProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LabelProps",
+                "kind": "interface",
+                "type": "CheckboxLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/label/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.id",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "modelValue",
+            "type": "CheckedState | null",
+            "required": false,
+            "description": "The controlled value of the checkbox. Can be bound with v-model.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.modelValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "CheckedState",
+            "required": false,
+            "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.defaultValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckedState",
+                "kind": "typeAlias",
+                "type": "boolean | 'indeterminate'",
+                "resolvedType": "boolean | 'indeterminate'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "value",
+            "type": "DefinedValue",
+            "required": false,
+            "description": "The value given as data when submitted with a `name`.",
+            "default": "on",
+            "inheritedFrom": "CheckboxCardCompactProps.value",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DefinedValue",
+                "kind": "typeAlias",
+                "type": "string | number",
+                "resolvedType": "string | number",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the checkbox",
+            "default": "false",
+            "inheritedFrom": "CheckboxCardCompactProps.disabled",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardCompactProps.required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CheckboxCardEmits",
+        "type": "TypeAlias CheckboxCardEmits: CheckboxCardCompactEmits",
+        "resolvedType": "{ \"update:modelValue\": [value: CheckedState | null] }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: CheckedState | null]",
+            "parameters": "value: CheckedState | null",
+            "required": true,
+            "description": "Event handler called when the value of the checkbox changes.",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "CheckboxRootEmits",
+            "kind": "typeAlias",
+            "type": "{ 'update:modelValue': [value: import(\"@soybeanjs/headless\").CheckedState | null]; }",
+            "resolvedType": "{ \"update:modelValue\": [value: CheckedState | null] }",
+            "description": "",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "update:modelValue",
+                "type": "[value: CheckedState | null]",
+                "parameters": "value: CheckedState | null",
+                "required": true,
+                "description": "Event handler called when the value of the checkbox changes.",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "CheckboxCardGroup": {
+      "props": {
+        "kind": "props",
+        "name": "CheckboxCardGroupProps",
+        "type": "Interface CheckboxCardGroupProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxCardUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "the class of group root element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CheckboxCardUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxCardUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; content: ClassValue; description: ClassValue; label: ClassValue; icon: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; textContent: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "CheckboxShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/checkbox/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.items",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rootProps",
+            "type": "CheckboxRootProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.rootProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxRootProps",
+                "kind": "interface",
+                "type": "CheckboxRootProps",
+                "resolvedType": "{ id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "modelValue",
+                    "type": "CheckedState | null",
+                    "required": false,
+                    "description": "The controlled value of the checkbox. Can be bound with v-model.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultValue",
+                    "type": "CheckedState",
+                    "required": false,
+                    "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "value",
+                    "type": "DefinedValue",
+                    "required": false,
+                    "description": "The value given as data when submitted with a `name`.",
+                    "default": "on",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the checkbox",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "CheckboxControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.controlProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxControlProps",
+                "kind": "interface",
+                "type": "CheckboxControlProps",
+                "resolvedType": "{ id?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "CheckboxIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.indicatorProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxIndicatorProps",
+                "kind": "interface",
+                "type": "CheckboxIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "CheckboxLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.labelProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LabelProps",
+                "kind": "interface",
+                "type": "CheckboxLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/label/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "T['value'][]",
+            "required": false,
+            "description": "The controlled value of the checkbox. Can be bound with v-model.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.modelValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T['value'][]",
+            "required": false,
+            "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.defaultValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rovingFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false`, navigating through the items using arrow keys will be disabled.",
+            "default": "true",
+            "inheritedFrom": "CheckboxCardGroupCompactProps.rovingFocus",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the checkboxes",
+            "default": "false",
+            "inheritedFrom": "CheckboxCardGroupCompactProps.disabled",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "default": "false",
+            "inheritedFrom": "CheckboxCardGroupCompactProps.loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.orientation",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "CheckboxCardGroupCompactProps.required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CheckboxCardGroupEmits",
+        "type": "TypeAlias CheckboxCardGroupEmits<T>: CheckboxCardGroupCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: T[]]",
+            "parameters": "value: T[]",
+            "required": true,
+            "description": "Event handler called when the value of the checkbox group changes.",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "CheckboxGroup": {
+      "props": {
+        "kind": "props",
+        "name": "CheckboxGroupProps",
+        "type": "Interface CheckboxGroupProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<CheckboxUi>; color?: ThemeColor; size?: ThemeSize; shape?: CheckboxShape; items: T[]; rootProps?: CheckboxRootProps; controlProps?: CheckboxControlProps; indicatorProps?: CheckboxIndicatorProps; labelProps?: CheckboxLabelProps; modelValue?: T['value'][]; defaultValue?: T['value'][]; rovingFocus?: boolean; disabled?: boolean; dir?: Direction; loop?: boolean; orientation?: DataOrientation; name?: string; required?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "the class of group root element",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<CheckboxUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; label: ClassValue; indicator: ClassValue; groupRoot: ClassValue; \"indicator-icon\": ClassValue; control: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "color",
+            "type": "ThemeColor",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeColor",
+                "kind": "typeAlias",
+                "type": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "resolvedType": "'primary' | 'destructive' | 'success' | 'warning' | 'info' | 'carbon' | 'secondary' | 'accent'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "shape",
+            "type": "CheckboxShape",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxShape",
+                "kind": "typeAlias",
+                "type": "'square' | 'rounded'",
+                "resolvedType": "'square' | 'rounded'",
+                "description": "",
+                "sourcePath": "src/components/checkbox/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.items",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rootProps",
+            "type": "CheckboxRootProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.rootProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxRootProps",
+                "kind": "interface",
+                "type": "CheckboxRootProps",
+                "resolvedType": "{ id?: string; modelValue?: CheckedState | null; defaultValue?: CheckedState; value?: DefinedValue; disabled?: boolean; name?: string; required?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "modelValue",
+                    "type": "CheckedState | null",
+                    "required": false,
+                    "description": "The controlled value of the checkbox. Can be bound with v-model.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "defaultValue",
+                    "type": "CheckedState",
+                    "required": false,
+                    "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "value",
+                    "type": "DefinedValue",
+                    "required": false,
+                    "description": "The value given as data when submitted with a `name`.",
+                    "default": "on",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "disabled",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, prevents the user from interacting with the checkbox",
+                    "default": "false",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": false,
+                    "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "required",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "CheckboxControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.controlProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxControlProps",
+                "kind": "interface",
+                "type": "CheckboxControlProps",
+                "resolvedType": "{ id?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "id",
+                    "type": "string",
+                    "required": false,
+                    "description": "Id of the element",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/checkbox/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "indicatorProps",
+            "type": "CheckboxIndicatorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.indicatorProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "CheckboxIndicatorProps",
+                "kind": "interface",
+                "type": "CheckboxIndicatorProps",
+                "resolvedType": "{ asChild?: boolean; as?: AsTag | Component; forceMount?: boolean }",
+                "description": "",
+                "sourcePath": "headless/src/components/checkbox/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "asChild",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "as",
+                    "type": "AsTag | Component",
+                    "required": false,
+                    "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+                    "default": "'div'",
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/primitive/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "forceMount",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Used to force mounting when more control is needed.\n\nUseful when controlling animation with Vue animation libraries.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/types/component.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "CheckboxLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.labelProps",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": [
+              {
+                "name": "LabelProps",
+                "kind": "interface",
+                "type": "CheckboxLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/label/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "T['value'][]",
+            "required": false,
+            "description": "The controlled value of the checkbox. Can be bound with v-model.",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.modelValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "defaultValue",
+            "type": "T['value'][]",
+            "required": false,
+            "description": "The value of the checkbox when it is initially rendered. Use when you do not need to control its value.",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.defaultValue",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rovingFocus",
+            "type": "boolean",
+            "required": false,
+            "description": "When `false`, navigating through the items using arrow keys will be disabled.",
+            "default": "true",
+            "inheritedFrom": "CheckboxGroupCompactProps.rovingFocus",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, prevents the user from interacting with the checkboxes",
+            "default": "false",
+            "inheritedFrom": "CheckboxGroupCompactProps.disabled",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "dir",
+            "type": "Direction",
+            "required": false,
+            "description": "The direction of navigation between items.",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.dir",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "Direction",
+                "kind": "typeAlias",
+                "type": "'ltr' | 'rtl'",
+                "resolvedType": "'ltr' | 'rtl'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "loop",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether keyboard navigation should loop around",
+            "default": "false",
+            "inheritedFrom": "CheckboxGroupCompactProps.loop",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "orientation",
+            "type": "DataOrientation",
+            "required": false,
+            "description": "The orientation of the group. Mainly so arrow navigation is done accordingly (left & right vs. up & down)",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.orientation",
+            "sourcePath": "headless/src/components/roving-focus/types.ts",
+            "referencedTypes": [
+              {
+                "name": "DataOrientation",
+                "kind": "typeAlias",
+                "type": "'vertical' | 'horizontal'",
+                "resolvedType": "'vertical' | 'horizontal'",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "description": "The name of the field. Submitted with its owning form as part of a name/value pair.",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.name",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "required",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, indicates that the user must set the value before the owning form can be submitted.",
+            "default": null,
+            "inheritedFrom": "CheckboxGroupCompactProps.required",
+            "sourcePath": "headless/src/types/component.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CheckboxGroupEmits",
+        "type": "TypeAlias CheckboxGroupEmits<T>: CheckboxGroupCompactEmits<T>",
+        "resolvedType": "{ \"update:modelValue\": [value: T[]] }",
+        "description": "",
+        "sourcePath": "src/components/checkbox/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [
+          {
+            "name": "update:modelValue",
+            "type": "[value: T[]]",
+            "parameters": "value: T[]",
+            "required": true,
+            "description": "Event handler called when the value of the checkbox group changes.",
+            "sourcePath": "headless/src/components/checkbox/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "referencedTypes": []
+      }
+    }
+  }
+}

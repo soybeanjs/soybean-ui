@@ -1,0 +1,384 @@
+{
+  "component": "link",
+  "symbols": {
+    "Link": {
+      "props": {
+        "kind": "props",
+        "name": "LinkProps",
+        "type": "Interface LinkProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; to?: string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric; replace?: boolean; href?: string; disabled?: boolean; activeClass?: string; exactActiveClass?: string; inactiveClass?: string; prefetchedClass?: string; external?: boolean; ariaCurrentValue?: 'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'; viewTransition?: boolean; target?: '_blank' | '_parent' | '_self' | '_top' | (string & {}) | null; rel?: (string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null; noRel?: boolean; prefetch?: boolean; prefetchOn?: 'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>; noPrefetch?: boolean; trailingSlash?: 'append' | 'remove'; asChild?: boolean; as?: AsTag | Component }",
+        "description": "",
+        "sourcePath": "src/components/link/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "to",
+            "type": "string | import(\"vue-router\").RouteLocationAsRelativeGeneric | import(\"vue-router\").RouteLocationAsPathGeneric",
+            "required": false,
+            "description": "Route Location the link should navigate to when clicked on.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.to",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "RouteLocationAsPathGeneric",
+                "kind": "interface",
+                "type": "import(\"vue-router\").RouteLocationAsPathGeneric",
+                "resolvedType": null,
+                "description": "Generic version of {@link RouteLocationAsPath}. It is used when no {@link RouteMap} is provided.",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "RouteLocationAsRelativeGeneric",
+                "kind": "interface",
+                "type": "import(\"vue-router\").RouteLocationAsRelativeGeneric",
+                "resolvedType": null,
+                "description": "Generic version of {@link RouteLocationAsRelative}. It is used when no {@link RouteMap} is provided.",
+                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "replace",
+            "type": "boolean",
+            "required": false,
+            "description": "Calls `router.replace` instead of `router.push`.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.replace",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "href",
+            "type": "string",
+            "required": false,
+            "description": "The URL the link should navigate to when clicked on.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.href",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "disabled",
+            "type": "boolean",
+            "required": false,
+            "description": "When `true`, the link is disabled.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.disabled",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "activeClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is active",
+            "default": null,
+            "inheritedFrom": "_LinkProps.activeClass",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "exactActiveClass",
+            "type": "string",
+            "required": false,
+            "description": "Class to apply when the link is exact active",
+            "default": null,
+            "inheritedFrom": "_LinkProps.exactActiveClass",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "inactiveClass",
+            "type": "string",
+            "required": false,
+            "description": "The class to apply to the link when it is inactive.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.inactiveClass",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchedClass",
+            "type": "string",
+            "required": false,
+            "description": "A class to apply to links that have been prefetched.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.prefetchedClass",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "external",
+            "type": "boolean",
+            "required": false,
+            "description": "Forces the link to be considered as external (true) or internal (false). This is helpful to handle edge-cases",
+            "default": null,
+            "inheritedFrom": "_LinkProps.external",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ariaCurrentValue",
+            "type": "'true' | 'false' | 'page' | 'step' | 'location' | 'date' | 'time'",
+            "required": false,
+            "description": "Value passed to the attribute `aria-current` when the link is exact active.",
+            "default": "`'page'`",
+            "inheritedFrom": "ariaCurrentValue",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "viewTransition",
+            "type": "boolean",
+            "required": false,
+            "description": "Pass the returned promise of `router.push()` to `document.startViewTransition()` if supported.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.viewTransition",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "target",
+            "type": "'_blank' | '_parent' | '_self' | '_top' | (string & {}) | null",
+            "required": false,
+            "description": "Where to display the linked URL, as the name for a browsing context.",
+            "default": null,
+            "inheritedFrom": "target",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "rel",
+            "type": "(string & {}) | 'noopener' | 'noreferrer' | 'nofollow' | 'sponsored' | 'ugc' | null",
+            "required": false,
+            "description": "A rel attribute value to apply on the link. Defaults to \"noopener noreferrer\" for external links.",
+            "default": "'noopener noreferrer'",
+            "inheritedFrom": "rel",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "noRel",
+            "type": "boolean",
+            "required": false,
+            "description": "If set to true, no rel attribute will be added to the link",
+            "default": null,
+            "inheritedFrom": "_LinkProps.noRel",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "When enabled will prefetch middleware, layouts and payloads of links in the viewport.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.prefetch",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "prefetchOn",
+            "type": "'visibility' | 'interaction' | Partial<{ visibility: boolean; interaction: boolean; }>",
+            "required": false,
+            "description": "Allows controlling when to prefetch links. By default, prefetch is triggered only on visibility.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.prefetchOn",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": [
+              {
+                "name": "__type",
+                "kind": "typeLiteral",
+                "type": "{ visibility: boolean; interaction: boolean; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/link/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "noPrefetch",
+            "type": "boolean",
+            "required": false,
+            "description": "Escape hatch to disable `prefetch` attribute.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.noPrefetch",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "trailingSlash",
+            "type": "'append' | 'remove'",
+            "required": false,
+            "description": "An option to either add or remove trailing slashes in the `href` for this specific link.\nOverrides the global `trailingSlash` option if provided.",
+            "default": null,
+            "inheritedFrom": "trailingSlash",
+            "sourcePath": "headless/src/components/link/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "asChild",
+            "type": "boolean",
+            "required": false,
+            "description": "Change the default rendered element for the one passed as a child, merging their props and behavior.",
+            "default": null,
+            "inheritedFrom": "_LinkProps.asChild",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "as",
+            "type": "AsTag | Component",
+            "required": false,
+            "description": "The element or component this component should render as. Can be overwrite by `asChild`",
+            "default": "'div'",
+            "inheritedFrom": "_LinkProps.as",
+            "sourcePath": "headless/src/components/primitive/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ComponentOptions",
+                "kind": "typeAlias",
+                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "Props = {}",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = any",
+                  "M extends MethodOptions = any",
+                  "Mixin extends ComponentOptionsMixin = any",
+                  "Extends extends ComponentOptionsMixin = any",
+                  "E extends EmitsOptions = any",
+                  "EE extends string = string",
+                  "Defaults = {}",
+                  "I extends ComponentInjectOptions = {}",
+                  "II extends string = string",
+                  "S extends SlotsType = {}",
+                  "LC extends Record<string, Component> = {}",
+                  "Directives extends Record<string, Directive> = {}",
+                  "Exposed extends string = string",
+                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentProvideOptions",
+                "kind": "typeAlias",
+                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComponentPublicInstanceConstructor",
+                "kind": "typeAlias",
+                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
+                  "Props = any",
+                  "RawBindings = any",
+                  "D = any",
+                  "C extends ComputedOptions = ComputedOptions",
+                  "M extends MethodOptions = MethodOptions"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "ComputedOptions",
+                "kind": "typeAlias",
+                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "FunctionalComponent",
+                "kind": "interface",
+                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [
+                  "P = {}",
+                  "E extends EmitsOptions | Record<string, any[]> = {}",
+                  "S extends Record<string, any> = any",
+                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                ],
+                "external": true,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "MethodOptions",
+                "kind": "interface",
+                "type": "import(\"vue\").MethodOptions",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

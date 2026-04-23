@@ -1,0 +1,342 @@
+{
+  "component": "avatar",
+  "symbols": {
+    "Avatar": {
+      "props": {
+        "kind": "props",
+        "name": "AvatarProps",
+        "type": "Interface AvatarProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<AvatarUi>; src: string; delayMs?: number; fallbackLabel?: string; imageProps?: Omit<AvatarImageProps, 'src'>; fallbackProps?: Omit<AvatarFallbackProps, 'delayMs'> }",
+        "description": "",
+        "sourcePath": "src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "root class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<AvatarUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AvatarUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; image: ClassValue; fallback: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/avatar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "type": "string",
+            "required": true,
+            "description": "The image source URL",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "delayMs",
+            "type": "number",
+            "required": false,
+            "description": "Useful for delaying rendering so it only appears for those with slower connections.",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fallbackLabel",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "imageProps",
+            "type": "Omit<AvatarImageProps, 'src'>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AvatarImageProps",
+                "kind": "interface",
+                "type": "AvatarImageProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/avatar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fallbackProps",
+            "type": "Omit<AvatarFallbackProps, 'delayMs'>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "AvatarFallbackProps",
+                "kind": "interface",
+                "type": "AvatarFallbackProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/avatar/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AvatarEmits",
+        "type": "TypeAlias AvatarEmits: AvatarImageEmits",
+        "resolvedType": "{ loadingStatusChange: [status: ImageLoadingStatus] }",
+        "description": "",
+        "sourcePath": "src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "loadingStatusChange",
+            "type": "[status: ImageLoadingStatus]",
+            "parameters": "status: ImageLoadingStatus",
+            "required": true,
+            "description": "Event handler called when the image loading status changes. This is useful for controlling what to render as the\nimage is loading.",
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ImageLoadingStatus",
+                "kind": "typeAlias",
+                "type": "'loading' | 'idle' | 'loaded' | 'error'",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/dom.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": [
+          {
+            "name": "AvatarImageEmits",
+            "kind": "typeAlias",
+            "type": "{ loadingStatusChange: [status: import(\"@soybeanjs/headless\").ImageLoadingStatus]; }",
+            "resolvedType": "{ loadingStatusChange: [status: ImageLoadingStatus] }",
+            "description": "",
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "typeParameters": [],
+            "external": false,
+            "members": [],
+            "callables": [
+              {
+                "name": "loadingStatusChange",
+                "type": "[status: ImageLoadingStatus]",
+                "parameters": "status: ImageLoadingStatus",
+                "required": true,
+                "description": "Event handler called when the image loading status changes. This is useful for controlling what to render as the\nimage is loading.",
+                "sourcePath": "headless/src/components/avatar/types.ts",
+                "referencedTypes": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "AvatarFallback": {
+      "props": {
+        "kind": "props",
+        "name": "AvatarFallbackProps",
+        "type": "Interface AvatarFallbackProps",
+        "resolvedType": "{ delayMs?: number }",
+        "description": "",
+        "sourcePath": "headless/src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "delayMs",
+            "type": "number",
+            "required": false,
+            "description": "Useful for delaying rendering so it only appears for those with slower connections.",
+            "default": "undefined",
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "AvatarImage": {
+      "props": {
+        "kind": "props",
+        "name": "AvatarImageProps",
+        "type": "Interface AvatarImageProps",
+        "resolvedType": "{ src: string; referrerpolicy?: ('' | 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin' | 'unsafe-url'); crossorigin?: '' | 'anonymous' | 'use-credentials' }",
+        "description": "",
+        "sourcePath": "headless/src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "src",
+            "type": "string",
+            "required": true,
+            "description": "The image source URL",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "referrerpolicy",
+            "type": "('' | 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin' | 'unsafe-url')",
+            "required": false,
+            "description": "The referrer policy for the image",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "crossorigin",
+            "type": "'' | 'anonymous' | 'use-credentials'",
+            "required": false,
+            "description": "The cross-origin setting for the image",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "AvatarImageEmits",
+        "type": "TypeAlias AvatarImageEmits",
+        "resolvedType": "{ loadingStatusChange: [status: ImageLoadingStatus] }",
+        "description": "",
+        "sourcePath": "headless/src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [
+          {
+            "name": "loadingStatusChange",
+            "type": "[status: ImageLoadingStatus]",
+            "parameters": "status: ImageLoadingStatus",
+            "required": true,
+            "description": "Event handler called when the image loading status changes. This is useful for controlling what to render as the\nimage is loading.",
+            "sourcePath": "headless/src/components/avatar/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ImageLoadingStatus",
+                "kind": "typeAlias",
+                "type": "'loading' | 'idle' | 'loaded' | 'error'",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/dom.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "referencedTypes": []
+      }
+    },
+    "AvatarRoot": {
+      "props": {
+        "kind": "props",
+        "name": "AvatarRootProps",
+        "type": "Interface AvatarRootProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/avatar/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

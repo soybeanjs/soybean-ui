@@ -1,0 +1,206 @@
+{
+  "component": "page-tabs",
+  "symbols": {
+    "PageTabs": {
+      "props": {
+        "kind": "props",
+        "name": "PageTabsProps",
+        "type": "Interface PageTabsProps<T>",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; variant?: PageTabsVariant; ui?: Partial<PageTabsExtendedUi>; items: T[]; menuFactory?: ((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[]); beforeClose?: ((value: string) => MaybePromise<boolean | void>); modelValue?: string; middleClickClose?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/page-tabs/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "root element class",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "variant",
+            "type": "PageTabsVariant",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsVariant",
+                "kind": "typeAlias",
+                "type": "'slider' | 'chrome' | 'card'",
+                "resolvedType": "'slider' | 'chrome' | 'card'",
+                "description": "",
+                "sourcePath": "src/components/page-tabs/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<PageTabsExtendedUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsExtendedUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; item: ClassValue; close: ClassValue; itemText: ClassValue; pin: ClassValue; sliderIndicator: ClassValue; chromeBgLeft: ClassValue; chromeBgRight: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/page-tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "T[]",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "menuFactory",
+            "type": "((tab: T, state: PageTabsState) => PageTabsContextMenuOptionData[])",
+            "required": false,
+            "description": "A factory function to generate context menu options for each tab.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "PageTabsState",
+                "kind": "interface",
+                "type": "PageTabsState",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "src/components/page-tabs/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "beforeClose",
+            "type": "((value: string) => MaybePromise<boolean | void>)",
+            "required": false,
+            "description": "Callback invoked before closing the tab. Return `false` or a promise that resolves to `false` to prevent closing.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/page-tabs/types.ts",
+            "referencedTypes": [
+              {
+                "name": "MaybePromise",
+                "kind": "typeAlias",
+                "type": "boolean | void | Promise<boolean | void>",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [
+                  "T"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "modelValue",
+            "type": "string",
+            "required": false,
+            "description": "The active tab value.",
+            "default": null,
+            "inheritedFrom": "PageTabsRootProps.modelValue",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "middleClickClose",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether middle-clicking a tab closes it.",
+            "default": null,
+            "inheritedFrom": "PageTabsRootProps.middleClickClose",
+            "sourcePath": "headless/src/components/page-tabs/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "PageTabsEmits",
+        "type": "TypeAlias PageTabsEmits<T>: PageTabsRootEmits & { (e: \"update:items\", items: T[]): void; (e: \"click\", tab: T): void; (e: \"close\", tab: T): void; (e: \"pin\", tab: T): void; (e: \"contextmenu\", tab: T): void; (e: \"selectContextMenu\", menu: PageTabsContextMenuOptionData, tab: T): void }",
+        "resolvedType": "(e: 'update:modelValue', value: string) => void | (e: 'update:items', items: T[]) => void | (e: 'click', tab: T) => void | (e: 'close', tab: T) => void | (e: 'pin', tab: T) => void | (e: 'contextmenu', tab: T) => void | (e: 'selectContextMenu', menu: PageTabsContextMenuOptionData, tab: T) => void",
+        "description": "",
+        "sourcePath": "src/components/page-tabs/types.ts",
+        "typeParameters": [
+          "TypeParameter T"
+        ],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

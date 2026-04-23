@@ -1,0 +1,117 @@
+{
+  "component": "listbox",
+  "symbols": {
+    "CommandGroup": {
+      "props": {
+        "kind": "props",
+        "name": "CommandGroupProps",
+        "type": "Interface CommandGroupProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandGroupLabel": {
+      "props": {
+        "kind": "props",
+        "name": "CommandGroupLabelProps",
+        "type": "Interface CommandGroupLabelProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandInput": {
+      "props": {
+        "kind": "props",
+        "name": "CommandInputProps",
+        "type": "Interface CommandInputProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandItem": {
+      "props": {
+        "kind": "props",
+        "name": "CommandItemProps",
+        "type": "Interface CommandItemProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CommandItemEmits",
+        "type": "TypeAlias CommandItemEmits",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandList": {
+      "props": {
+        "kind": "props",
+        "name": "CommandListProps",
+        "type": "Interface CommandListProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "CommandRoot": {
+      "props": {
+        "kind": "props",
+        "name": "CommandRootProps",
+        "type": "Interface CommandRootProps<M>",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [
+          "TypeParameter M"
+        ],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "emits": {
+        "kind": "emits",
+        "name": "CommandRootEmits",
+        "type": "TypeAlias CommandRootEmits<M>: SelectionEmits<M> & { entryFocus: [event: CustomEvent]; highlight: [payload?: CollectionItemData<ListboxCollectionItemData>]; leave: [event: Event] }",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/listbox/types.ts",
+        "typeParameters": [
+          "TypeParameter M"
+        ],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

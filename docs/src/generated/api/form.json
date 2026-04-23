@@ -1,0 +1,1433 @@
+{
+  "component": "form",
+  "symbols": {
+    "Form": {
+      "props": {
+        "kind": "props",
+        "name": "FormProps",
+        "type": "Interface FormProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormFieldUi>; inline?: boolean; fieldProps?: FormFieldBaseProps; fieldArrayProps?: FormFieldBaseProps; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<FormFieldUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldUi",
+                "kind": "typeAlias",
+                "type": "{ description: ClassValue; label: ClassValue; error: ClassValue; control: ClassValue; field: ClassValue; fieldArray: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inline",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the label is inline with the control.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "fieldProps",
+            "type": "FormFieldBaseProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldBaseProps",
+                "kind": "interface",
+                "type": "FormFieldBaseProps",
+                "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormFieldUi>; inline?: boolean; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; error?: string; isFieldArray?: boolean }",
+                "description": "",
+                "sourcePath": "src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "class",
+                    "type": "string | Record<string, boolean> | ClassValue[] | null",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "ThemeSize",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ui",
+                    "type": "Partial<FormFieldUi>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inline",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the label is inline with the control.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "label",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "labelProps",
+                    "type": "FormLabelProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "controlProps",
+                    "type": "FormControlProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "descriptionProps",
+                    "type": "FormDescriptionProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "errorProps",
+                    "type": "FormErrorProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "fieldArrayProps",
+            "type": "FormFieldBaseProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldBaseProps",
+                "kind": "interface",
+                "type": "FormFieldBaseProps",
+                "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormFieldUi>; inline?: boolean; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; error?: string; isFieldArray?: boolean }",
+                "description": "",
+                "sourcePath": "src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "class",
+                    "type": "string | Record<string, boolean> | ClassValue[] | null",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "size",
+                    "type": "ThemeSize",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "ui",
+                    "type": "Partial<FormFieldUi>",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "inline",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "Whether the label is inline with the control.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "label",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "labelProps",
+                    "type": "FormLabelProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "controlProps",
+                    "type": "FormControlProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "descriptionProps",
+                    "type": "FormDescriptionProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "errorProps",
+                    "type": "FormErrorProps",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "error",
+                    "type": "string",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  },
+                  {
+                    "name": "isFieldArray",
+                    "type": "boolean",
+                    "required": false,
+                    "description": "",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/form/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormDescription": {
+      "props": {
+        "kind": "props",
+        "name": "FormDescriptionProps",
+        "type": "Interface FormDescriptionProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormError": {
+      "props": {
+        "kind": "props",
+        "name": "FormErrorProps",
+        "type": "Interface FormErrorProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormField": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldProps",
+        "type": "Interface FormFieldProps<Values, Name>",
+        "resolvedType": "{ name: Name; description?: string; class?: string | Record<string, boolean> | ClassValue[] | null; label?: string; size?: ThemeSize; inline?: boolean; ui?: Partial<FormFieldUi>; isFieldArray?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [
+          "TypeParameter Values",
+          "TypeParameter Name"
+        ],
+        "members": [
+          {
+            "name": "name",
+            "type": "Name",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "description",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "class",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "label",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "size",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inline",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the label is inline with the control.",
+            "default": null,
+            "inheritedFrom": "inline",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ui",
+            "type": "Partial<FormFieldUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "ui",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldUi",
+                "kind": "typeAlias",
+                "type": "{ description: ClassValue; label: ClassValue; error: ClassValue; control: ClassValue; field: ClassValue; fieldArray: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "isFieldArray",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "Omit.isFieldArray",
+            "sourcePath": "headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "labelProps",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "controlProps",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "descriptionProps",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "errorProps",
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "validate",
+            "type": "FormFieldValidator<PathValue<Values, Name>>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "FormRegisterOptions.validate",
+            "sourcePath": "headless/src/components/form/core/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldValidator",
+                "kind": "typeAlias",
+                "type": "(value: Value) => MaybePromise<string | undefined>",
+                "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
+                "description": "",
+                "sourcePath": "headless/src/components/form/core/types.ts",
+                "typeParameters": [
+                  "Value"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PathValue",
+                "kind": "typeAlias",
+                "type": "Values extends any ? Name extends `${infer Key}.${infer Rest}` ? Key extends keyof Values ? Rest extends Path<Values[Key]> ? PathValue<Values[Key], Rest> : never : Key extends `${number}` ? Values extends readonly (infer V)[] ? PathValue<V, Rest & Path<V>> : never : never : Name extends keyof Values ? Values[Name] : Name extends `${number}` ? Values extends readonly (infer V)[] ? V : never : never : never",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/path.ts",
+                "typeParameters": [
+                  "T",
+                  "P extends Path<T> | ArrayPath<T>"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "reset",
+            "type": "(() => void)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "FormRegisterOptions.reset",
+            "sourcePath": "headless/src/components/form/core/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldSlots",
+        "type": "TypeAlias FormFieldSlots<Values, Name>: SlotsType<{ default: (props: FormFieldState<Values, Name>) => any; description: (props: FormFieldState<Values, Name>) => any; label: (props: FormFieldState<Values, Name>) => any }>",
+        "resolvedType": "{ [SlotSymbol]?: { default: (props: FormFieldState<Values, Name>) => any; label: (props: FormFieldState<Values, Name>) => any; description: (props: FormFieldState<Values, Name>) => any; } | undefined; }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [
+          "TypeParameter Values",
+          "TypeParameter Name"
+        ],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormFieldArray": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldArrayProps",
+        "type": "TypeAlias FormFieldArrayProps<Values, Name>: FormFieldProps<Values, Name>",
+        "resolvedType": "{ name: Name; description?: string; class?: string | Record<string, boolean> | ClassValue[] | null; label?: string; size?: ThemeSize; inline?: boolean; ui?: Partial<FormFieldUi>; isFieldArray?: boolean; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; validate?: FormFieldValidator<PathValue<Values, Name>>; reset?: (() => void) }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [
+          "TypeParameter Values",
+          "TypeParameter Name"
+        ],
+        "members": [
+          {
+            "name": "name",
+            "type": "Name",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inline",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the label is inline with the control.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ui",
+            "type": "Partial<FormFieldUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldUi",
+                "kind": "typeAlias",
+                "type": "{ description: ClassValue; label: ClassValue; error: ClassValue; control: ClassValue; field: ClassValue; fieldArray: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "isFieldArray",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "validate",
+            "type": "FormFieldValidator<PathValue<Values, Name>>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/form/core/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldValidator",
+                "kind": "typeAlias",
+                "type": "(value: Value) => MaybePromise<string | undefined>",
+                "resolvedType": "(value: Value) => string | Promise<string | undefined> | undefined",
+                "description": "",
+                "sourcePath": "headless/src/components/form/core/types.ts",
+                "typeParameters": [
+                  "Value"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              },
+              {
+                "name": "PathValue",
+                "kind": "typeAlias",
+                "type": "Values extends any ? Name extends `${infer Key}.${infer Rest}` ? Key extends keyof Values ? Rest extends Path<Values[Key]> ? PathValue<Values[Key], Rest> : never : Key extends `${number}` ? Values extends readonly (infer V)[] ? PathValue<V, Rest & Path<V>> : never : never : Name extends keyof Values ? Values[Name] : Name extends `${number}` ? Values extends readonly (infer V)[] ? V : never : never : never",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/types/path.ts",
+                "typeParameters": [
+                  "T",
+                  "P extends Path<T> | ArrayPath<T>"
+                ],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "reset",
+            "type": "(() => void)",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "headless/src/components/form/core/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slots": {
+        "kind": "slots",
+        "name": "FormFieldArraySlots",
+        "type": "TypeAlias FormFieldArraySlots<Values, Name>: SlotsType<{ default: (props: FormFieldArrayStates<Values, Name>) => any; description: (props: FormFieldArrayStates<Values, Name>) => any; label: (props: FormFieldArrayStates<Values, Name>) => any }>",
+        "resolvedType": "{ [SlotSymbol]?: { default: (props: FormFieldArrayStates<Values, Name>) => any; label: (props: FormFieldArrayStates<Values, Name>) => any; description: (props: FormFieldArrayStates<Values, Name>) => any; } | undefined; }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [
+          "TypeParameter Values",
+          "TypeParameter Name"
+        ],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormFieldBase": {
+      "props": {
+        "kind": "props",
+        "name": "FormFieldBaseProps",
+        "type": "Interface FormFieldBaseProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; size?: ThemeSize; ui?: Partial<FormFieldUi>; inline?: boolean; label?: string; description?: string; labelProps?: FormLabelProps; controlProps?: FormControlProps; descriptionProps?: FormDescriptionProps; errorProps?: FormErrorProps; error?: string; isFieldArray?: boolean }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "size",
+            "type": "ThemeSize",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ThemeSize",
+                "kind": "typeAlias",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "resolvedType": "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
+                "description": "",
+                "sourcePath": "src/theme/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<FormFieldUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormFieldUi",
+                "kind": "typeAlias",
+                "type": "{ description: ClassValue; label: ClassValue; error: ClassValue; control: ClassValue; field: ClassValue; fieldArray: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "inline",
+            "type": "boolean",
+            "required": false,
+            "description": "Whether the label is inline with the control.",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "label",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "labelProps",
+            "type": "FormLabelProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormLabelProps",
+                "kind": "interface",
+                "type": "FormLabelProps",
+                "resolvedType": "{ for?: string }",
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [
+                  {
+                    "name": "for",
+                    "type": "string",
+                    "required": false,
+                    "description": "The id of the element the label is associated with.",
+                    "default": null,
+                    "inheritedFrom": null,
+                    "sourcePath": "headless/src/components/label/types.ts",
+                    "referencedTypes": []
+                  }
+                ],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "controlProps",
+            "type": "FormControlProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormControlProps",
+                "kind": "interface",
+                "type": "FormControlProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "FormDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormDescriptionProps",
+                "kind": "interface",
+                "type": "FormDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "errorProps",
+            "type": "FormErrorProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": [
+              {
+                "name": "FormErrorProps",
+                "kind": "interface",
+                "type": "FormErrorProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/form/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "error",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "Omit.error",
+            "sourcePath": "headless/src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "isFieldArray",
+            "type": "boolean",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": "Omit.isFieldArray",
+            "sourcePath": "headless/src/components/form/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      },
+      "slotProps": {
+        "kind": "slotProps",
+        "name": "FormFieldBaseSlotProps",
+        "type": "Interface FormFieldBaseSlotProps",
+        "resolvedType": "{ formFieldId: string; ariaDescribedBy: string; ariaInvalid: boolean }",
+        "description": "",
+        "sourcePath": "src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "formFieldId",
+            "type": "string",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ariaDescribedBy",
+            "type": "string",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "ariaInvalid",
+            "type": "boolean",
+            "required": true,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/form/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "FormLabel": {
+      "props": {
+        "kind": "props",
+        "name": "FormLabelProps",
+        "type": "Interface FormLabelProps",
+        "resolvedType": "{ for?: string }",
+        "description": "",
+        "sourcePath": "headless/src/components/form/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "for",
+            "type": "string",
+            "required": false,
+            "description": "The id of the element the label is associated with.",
+            "default": null,
+            "inheritedFrom": "for",
+            "sourcePath": "headless/src/components/label/types.ts",
+            "referencedTypes": []
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

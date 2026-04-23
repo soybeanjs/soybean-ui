@@ -1,0 +1,331 @@
+{
+  "component": "empty",
+  "symbols": {
+    "Empty": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyProps",
+        "type": "Interface EmptyProps",
+        "resolvedType": "{ class?: string | Record<string, boolean> | ClassValue[] | null; ui?: Partial<EmptyUi>; title?: string; description?: string; icon?: string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null; mediaVariant?: EmptyMediaVariant; headerProps?: EmptyHeaderProps; mediaProps?: EmptyMediaProps; contentProps?: EmptyContentProps; titleProps?: EmptyTitleProps; descriptionProps?: EmptyDescriptionProps }",
+        "description": "",
+        "sourcePath": "src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [
+          {
+            "name": "class",
+            "type": "string | Record<string, boolean> | ClassValue[] | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "ClassValue",
+                "kind": "typeAlias",
+                "type": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "resolvedType": "string | Record<string, boolean> | ClassValue[] | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/types/common.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "ui",
+            "type": "Partial<EmptyUi>",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyUi",
+                "kind": "typeAlias",
+                "type": "{ root: ClassValue; header: ClassValue; content: ClassValue; description: ClassValue; title: ClassValue; media: ClassValue; }",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": []
+          },
+          {
+            "name": "icon",
+            "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "IconValue",
+                "kind": "typeAlias",
+                "type": "string | import(\"vue\").Component | import(\"vue\").VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "resolvedType": "string | Component | VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }> | null | undefined",
+                "description": "",
+                "sourcePath": "headless/src/components/icon/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mediaVariant",
+            "type": "EmptyMediaVariant",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyMediaVariant",
+                "kind": "typeAlias",
+                "type": "'icon' | 'default'",
+                "resolvedType": "'icon' | 'default'",
+                "description": "",
+                "sourcePath": "src/components/empty/variants.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "headerProps",
+            "type": "EmptyHeaderProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyHeaderProps",
+                "kind": "interface",
+                "type": "EmptyHeaderProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "mediaProps",
+            "type": "EmptyMediaProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyMediaProps",
+                "kind": "interface",
+                "type": "EmptyMediaProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "contentProps",
+            "type": "EmptyContentProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyContentProps",
+                "kind": "interface",
+                "type": "EmptyContentProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "titleProps",
+            "type": "EmptyTitleProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyTitleProps",
+                "kind": "interface",
+                "type": "EmptyTitleProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          },
+          {
+            "name": "descriptionProps",
+            "type": "EmptyDescriptionProps",
+            "required": false,
+            "description": "",
+            "default": null,
+            "inheritedFrom": null,
+            "sourcePath": "src/components/empty/types.ts",
+            "referencedTypes": [
+              {
+                "name": "EmptyDescriptionProps",
+                "kind": "interface",
+                "type": "EmptyDescriptionProps",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "headless/src/components/empty/types.ts",
+                "typeParameters": [],
+                "external": false,
+                "members": [],
+                "callables": []
+              }
+            ]
+          }
+        ],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyContent": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyContentProps",
+        "type": "Interface EmptyContentProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyDescription": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyDescriptionProps",
+        "type": "Interface EmptyDescriptionProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyHeader": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyHeaderProps",
+        "type": "Interface EmptyHeaderProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyMedia": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyMediaProps",
+        "type": "Interface EmptyMediaProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyRoot": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyRootProps",
+        "type": "Interface EmptyRootProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    },
+    "EmptyTitle": {
+      "props": {
+        "kind": "props",
+        "name": "EmptyTitleProps",
+        "type": "Interface EmptyTitleProps",
+        "resolvedType": null,
+        "description": "",
+        "sourcePath": "headless/src/components/empty/types.ts",
+        "typeParameters": [],
+        "members": [],
+        "callables": [],
+        "referencedTypes": []
+      }
+    }
+  }
+}

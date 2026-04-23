@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@soybeanjs/ui": ["./src/index.ts"]
+    },
+    "skipLibCheck": true,
+    "types": ["vite/client", "vite-plugin-vue-meta-layouts/client"]
+  },
+  "include": ["src/**/*", "headless/**/*", "typedoc-shims.d.ts"],
+  "exclude": ["docs/**/*", "playground/**/*", "test/**/*"]
+}
