@@ -12,7 +12,7 @@ export const toggleGroupVariants = tv({
     ],
     item: [
       'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-all-150',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-background',
+      'outline-none focus-visible:ring-3 focus-visible:ring-primary/30 focus-visible:ring-offset-background',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
     ]

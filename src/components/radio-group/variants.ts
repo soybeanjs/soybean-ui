@@ -8,7 +8,7 @@ export const radioGroupVariants = tv({
     item: 'flex items-center',
     control: [
       'peer relative shrink-0 rounded-full border border-solid shadow transition-all-150',
-      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
+      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     indicator: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 rounded-full',
     label: ''
@@ -182,7 +182,7 @@ export const radioCardGroupVariants = tv({
     description: 'text-muted-foreground',
     control: [
       'peer shrink-0 inline-flex items-start justify-start rounded-full border border-solid shadow',
-      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
+      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50',
       'order-1 after:absolute after:inset-0 after:content-empty'
     ],
     indicator: 'relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex size-1/2 rounded-full'

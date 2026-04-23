@@ -7,7 +7,7 @@ export const stepperVariants = tv({
     item: 'group flex min-w-0 flex-1 items-center gap-2',
     trigger: [
       'inline-flex rounded-md p-1 transition-colors',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30',
       'group-data-[disabled]:pointer-events-none'
     ],
     indicator: [

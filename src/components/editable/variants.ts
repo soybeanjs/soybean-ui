@@ -7,7 +7,7 @@ export const editableVariants = tv({
     root: 'w-full',
     area: [
       'grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-md border border-solid border-input bg-background transition-all-150',
-      'focus-within:outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
+      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     preview: [
@@ -23,17 +23,17 @@ export const editableVariants = tv({
     editTrigger: [
       'inline-flex items-center justify-center rounded-md text-muted-foreground transition-colors',
       'hover:bg-accent hover:text-accent-foreground',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
+      'outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
     ],
     submitTrigger: [
       'inline-flex items-center justify-center rounded-md text-muted-foreground transition-colors',
       'hover:bg-accent hover:text-success',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
+      'outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
     ],
     cancelTrigger: [
       'inline-flex items-center justify-center rounded-md text-muted-foreground transition-colors',
       'hover:bg-accent hover:text-destructive',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
+      'outline-none focus-visible:ring-2 focus-visible:ring-primary/30'
     ]
   },
   variants: {

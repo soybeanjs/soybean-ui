@@ -24,7 +24,7 @@ export const tableVariants = tv({
       'absolute end-0 top-1/2 w-3 h-2/3 -translate-y-1/2 rounded bg-transparent',
       'cursor-col-resize border-none touch-none select-none',
       'after:bg-border hover:after:bg-primary data-[resizing]:after:bg-primary focus-visible:after:bg-primary',
-      'focus-visible:outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
+      'outline-none focus-visible:ring-ring/40 focus-visible:ring-2',
       'after:absolute after:bottom-0 after:end-0 after:top-0 after:w-px after:rounded-full after:content-empty'
     ],
     treeCell: 'flex min-w-0 items-center gap-1',
@@ -42,14 +42,14 @@ export const tableVariants = tv({
     filterCount: 'text-muted-foreground',
     filterAction: [
       'text-xs font-medium text-primary rounded-md border-none bg-transparent px-2 py-1',
-      'transition-colors hover:bg-accent focus-visible:ring-ring focus-visible:outline-none focus-visible:ring-2'
+      'transition-colors hover:bg-accent focus-visible:ring-ring outline-none focus-visible:ring-2'
     ],
     filterEmpty: 'text-muted-foreground py-6 text-center text-xs',
     selection: 'text-foreground',
     radioRoot: [
       'peer relative shrink-0 rounded-full border border-solid shadow cursor-pointer transition-all-150',
       'border-primary focus-visible:ring-primary/30',
-      'focus-visible:outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
+      'outline-none focus-visible:ring-3  focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50'
     ],
     radioIndicator: 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-1/2 bg-primary rounded-full'
   },

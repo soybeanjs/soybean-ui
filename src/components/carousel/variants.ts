@@ -9,13 +9,13 @@ export const carouselVariants = tv({
     item: 'min-w-0 shrink-0 grow-0 basis-full pl-4 rtl:pl-0 rtl:pr-4',
     previous: [
       'absolute z-1 size-8 inline-flex items-center justify-center rounded-full border bg-background shadow-sm transition-colors',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50',
+      'outline-none focus-visible:ring-3 focus-visible:ring-ring/50',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'top-1/2 -left-12 -translate-y-1/2 rtl:left-auto rtl:-right-12'
     ],
     next: [
       'absolute z-1 size-8 inline-flex items-center justify-center rounded-full border bg-background shadow-sm transition-colors',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50',
+      'outline-none focus-visible:ring-3 focus-visible:ring-ring/50',
       'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       'top-1/2 -right-12 -translate-y-1/2 rtl:right-auto rtl:-left-12'
     ]

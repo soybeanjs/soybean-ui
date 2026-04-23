@@ -12,7 +12,7 @@ export const colorAreaVariants = tv({
     thumb: [
       'absolute block rounded-full border-2 border-white bg-transparent shadow-lg',
       'ring-1 ring-black/20 transition-[transform,box-shadow] duration-150',
-      'hover:scale-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25'
+      'hover:scale-105 outline-none focus-visible:ring-4 focus-visible:ring-primary/25'
     ]
   },
   variants: {

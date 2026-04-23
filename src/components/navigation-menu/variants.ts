@@ -27,9 +27,9 @@ export const navigationMenuVariants = tv({
     subItem: `list-none m-0`,
     itemIcon: 'shrink-0 text-muted-foreground',
     trigger: [
-      `group inline-flex items-center rounded-md bg-background font-medium transition-colors-200 decoration-none`,
+      `group inline-flex items-center rounded-md bg-background font-medium transition-colors-200 decoration-none outline-none`,
       `hover:bg-accent hover:text-accent-foreground`,
-      `focus:bg-accent focus:text-accent-foreground focus:outline-none`,
+      `focus:bg-accent focus:text-accent-foreground`,
       `disabled:pointer-events-none disabled:opacity-50`,
       `data-[active]:bg-accent/50`,
       `data-[state=open]:bg-accent/50`

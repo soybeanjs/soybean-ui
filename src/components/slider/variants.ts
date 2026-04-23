@@ -14,7 +14,7 @@ export const sliderVariants = tv({
     range: 'absolute data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
     thumb: [
       'absolute block shrink-0 rounded-full bg-background shadow-sm transition-[color,box-shadow]',
-      'hover:ring-3 focus-visible:outline-none focus-visible:ring-3 data-[disabled]:cursor-not-allowed'
+      'hover:ring-3 outline-none focus-visible:ring-3 data-[disabled]:cursor-not-allowed'
     ]
   },
   variants: {

@@ -5,7 +5,7 @@ import type { VariantProps } from 'tailwind-variants';
 export const toggleVariants = tv({
   base: [
     'inline-flex items-center justify-center rounded-md whitespace-nowrap font-medium transition-all-150',
-    'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background',
+    'outline-none focus-visible:ring-3 focus-visible:ring-offset-background',
     'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50',
     '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4'
   ],

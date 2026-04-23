@@ -6,7 +6,7 @@ export const autocompleteVariants = tv({
     root: 'flex w-full flex-col',
     anchor: [
       'group flex w-full items-center rounded-md border border-input bg-background text-foreground shadow-xs transition-all-150',
-      'focus-within:outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
+      'outline-none focus-within:ring-3 focus-within:ring-offset-background focus-within:ring-primary/30',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ],
     inputRoot: 'flex min-w-0 grow items-center gap-2 bg-transparent',

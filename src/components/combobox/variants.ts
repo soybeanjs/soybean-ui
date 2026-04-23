@@ -7,13 +7,13 @@ export const comboboxVariants = tv({
     anchor: '',
     trigger: [
       'flex w-full items-center justify-between rounded-md border border-input bg-background transition-all-150',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-primary/30 focus:ring-3 focus:ring-offset-background focus:ring-primary/30 disabled:pointer-events-none disabled:opacity-50',
       'data-[placeholder]:text-muted-foreground'
     ],
     triggerIcon: 'shrink-0 text-muted-foreground opacity-70',
     cancel: [
       'flex shrink-0 items-center justify-center rounded-md bg-transparent text-accent-foreground hover:bg-accent-foreground/10 active:bg-accent-foreground/20',
-      'focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-accent-foreground/20',
+      'outline-none focus-visible:ring-3 focus-visible:ring-offset-background focus-visible:ring-accent-foreground/20',
       'disabled:cursor-not-allowed disabled:opacity-40'
     ],
     positioner: '',

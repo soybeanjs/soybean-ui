@@ -5,7 +5,7 @@ export const inputVariants = tv({
   slots: {
     root: [
       `group flex items-center w-full rounded-md border border-solid border-input bg-background transition-all-150`,
-      `focus-within:outline-none focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30`
+      `outline-none focus-within:ring-3  focus-within:ring-offset-background focus-within:ring-primary/30`
     ],
     control: [
       'grow bg-transparent outline-none',

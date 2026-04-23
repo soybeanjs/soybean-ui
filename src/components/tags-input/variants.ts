@@ -18,7 +18,7 @@ export const tagsInputVariants = tv({
     itemText: 'rounded bg-transparent',
     itemDelete: [
       'inline-flex items-center justify-center rounded bg-transparent text-muted-foreground transition-colors',
-      'hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
+      'hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
     ],
     input: [
       'min-w-24 flex-1 bg-transparent text-foreground outline-none',
@@ -26,7 +26,7 @@ export const tagsInputVariants = tv({
     ],
     clear: [
       'inline-flex items-center justify-center rounded-md text-muted-foreground transition-colors',
-      'hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'hover:text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
       'data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50'
     ]
   },
