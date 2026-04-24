@@ -9,7 +9,6 @@ export * from './components/backtop';
 export * from './components/autocomplete';
 export * from './components/badge';
 export * from './components/breadcrumb';
-export * from './components/bottom-sheet';
 export * from './components/button';
 export * from './components/card';
 export * from './components/carousel';

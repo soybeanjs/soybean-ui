@@ -10,7 +10,6 @@ export const components = {
   backtop: ['SBacktop'],
   badge: ['SBadge'],
   breadcrumb: ['SBreadcrumb', 'SBreadcrumbPage', 'SBreadcrumbEllipsis'],
-  bottomSheet: ['SBottomSheet', 'SBottomSheetClose'],
   button: ['SButton', 'SButtonLoading', 'SButtonIcon', 'SButtonLink', 'SButtonGroup'],
   card: ['SCard', 'SCardCollapsibleTrigger'],
   carousel: ['SCarousel', 'SCarouselContent', 'SCarouselItem', 'SCarouselPrevious', 'SCarouselNext'],
