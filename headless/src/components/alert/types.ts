@@ -16,11 +16,11 @@ export type AlertRootEmits = {
   'update:open': [open: boolean];
 };
 
+export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
+
 export interface AlertTitleProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AlertDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AlertContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AlertCloseProps extends PrimitiveProps, /** @vue-ignore */ ButtonHTMLAttributes {}
 
