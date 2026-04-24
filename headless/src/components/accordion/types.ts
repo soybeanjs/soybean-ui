@@ -50,18 +50,18 @@ export interface AccordionRootProps<M extends boolean = false>
 
 export type AccordionRootEmits<M extends boolean = false> = SelectionEmits<M>;
 
-export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AccordionContentProps extends CollapsibleContentProps {}
-
-export interface AccordionDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
-
 export interface AccordionItemProps extends Omit<CollapsibleRootProps, 'open' | 'defaultOpen' | 'onOpenChange'> {
   /** Value of the accordion item. All items within an accordion should use a unique value. */
   value: string;
 }
+
+export interface AccordionHeaderProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface AccordionTriggerProps extends CollapsibleTriggerProps {}
+
+export interface AccordionContentProps extends CollapsibleContentProps {}
+
+export interface AccordionDescriptionProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AccordionOptionData extends Pick<AccordionItemProps, 'value' | 'disabled'> {
   /** The title of the accordion item. */
@@ -88,7 +88,7 @@ export interface AccordionCompactProps<
 
 export type AccordionCompactEmits<M extends boolean = false> = AccordionRootEmits<M>;
 
-export interface AccordionCompactBaseSlotProps<
+export interface AccordionCompactSlotProps<
   T extends AccordionOptionData = AccordionOptionData,
   M extends boolean = false
 > {
@@ -99,11 +99,11 @@ export interface AccordionCompactBaseSlotProps<
 }
 
 export type AccordionCompactSlots<T extends AccordionOptionData = AccordionOptionData, M extends boolean = false> = {
-  item?: (props: Omit<AccordionCompactBaseSlotProps<T, M>, 'open'>) => any;
-  leading?: (props: AccordionCompactBaseSlotProps<T, M>) => any;
-  title?: (props: AccordionCompactBaseSlotProps<T, M>) => any;
-  'trigger-icon'?: (props: AccordionCompactBaseSlotProps<T, M>) => any;
-  content?: (props: AccordionCompactBaseSlotProps<T, M>) => any;
+  item?: (props: AccordionCompactSlotProps<T, M>) => any;
+  leading?: (props: AccordionCompactSlotProps<T, M>) => any;
+  title?: (props: AccordionCompactSlotProps<T, M>) => any;
+  'trigger-icon'?: (props: AccordionCompactSlotProps<T, M>) => any;
+  content?: (props: AccordionCompactSlotProps<T, M>) => any;
 };
 
 export interface AccordionRootContext extends PropsToContext<

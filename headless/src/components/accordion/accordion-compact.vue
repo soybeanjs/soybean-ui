@@ -1,12 +1,13 @@
 <script setup lang="ts" generic="T extends AccordionOptionData = AccordionOptionData, M extends boolean = false">
 import { useForwardListeners, useOmitProps } from '../../composables';
-import { useAccordionUi } from './context';
-import AccordionContent from './accordion-content.vue';
-import AccordionHeader from './accordion-header.vue';
-import AccordionItem from './accordion-item.vue';
-import AccordionRoot from './accordion-root.vue';
-import AccordionTrigger from './accordion-trigger.vue';
 import Icon from '../_icon/icon.vue';
+import { useAccordionUi } from './context';
+import AccordionRoot from './accordion-root.vue';
+import AccordionItem from './accordion-item.vue';
+import AccordionHeader from './accordion-header.vue';
+import AccordionTrigger from './accordion-trigger.vue';
+import AccordionContent from './accordion-content.vue';
+import AccordionDescription from './accordion-description.vue';
 import type { AccordionCompactProps, AccordionCompactEmits, AccordionCompactSlots, AccordionOptionData } from './types';
 
 defineOptions({
@@ -29,8 +30,8 @@ const ui = useAccordionUi();
 <template>
   <AccordionRoot v-bind="forwardedProps" v-on="listeners">
     <template v-for="(item, index) in items" :key="item.value">
-      <slot name="item" :item="item" :index="index" :model-value="modelValue">
-        <AccordionItem v-slot="{ open }" v-bind="itemProps" :value="item.value" :disabled="item.disabled">
+      <AccordionItem v-slot="{ open }" v-bind="itemProps" :value="item.value" :disabled="item.disabled">
+        <slot name="item" :item="item" :index="index" :model-value="modelValue" :open="open">
           <AccordionHeader v-bind="headerProps">
             <AccordionTrigger v-bind="triggerProps">
               <slot name="leading" :item="item" :index="index" :model-value="modelValue" :open="open">
@@ -46,11 +47,11 @@ const ui = useAccordionUi();
           </AccordionHeader>
           <AccordionContent v-bind="contentProps">
             <slot name="content" :item="item" :index="index" :model-value="modelValue" :open="open">
-              <p :class="ui.description">{{ item.description }}</p>
+              <AccordionDescription v-bind="descriptionProps">{{ item.description }}</AccordionDescription>
             </slot>
           </AccordionContent>
-        </AccordionItem>
-      </slot>
+        </slot>
+      </AccordionItem>
     </template>
   </AccordionRoot>
 </template>
