@@ -78,7 +78,7 @@ export * from './components/virtualizer';
 export * from './components/visually-hidden';
 export * from './date';
 
-export type { IconValue } from './components/icon';
+export type { IconValue } from './components/_icon';
 export type {
   ClassValue,
   UiClass,

@@ -57,6 +57,7 @@
     "lint": "oxlint --fix && eslint --fix .",
     "fmt": "oxfmt",
     "gen:api": "tsx scripts/api.ts",
+    "gen:headless": "tsx scripts/headless.ts && oxfmt headless/src/constants/components.ts headless/src/namespaced/index.ts",
     "prepare": "simple-git-hooks",
     "preview": "vite preview",
     "preview:docs": "pnpm --filter @soybeanjs/ui-docs preview",

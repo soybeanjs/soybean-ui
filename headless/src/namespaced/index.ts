@@ -9,8 +9,8 @@ import {
   AffixContent,
   AffixPlaceholder,
   AffixRoot,
-  AlertCompact,
   AlertClose,
+  AlertCompact,
   AlertContent,
   AlertDescription,
   AlertRoot,
@@ -18,8 +18,10 @@ import {
   AnchorCompact,
   AnchorLink,
   AnchorRoot,
-  AutocompleteCompact,
+  Arrow,
+  AspectRatio,
   AutocompleteAnchor,
+  AutocompleteCompact,
   AutocompleteContent,
   AutocompleteGroup,
   AutocompleteGroupLabel,
@@ -31,8 +33,6 @@ import {
   AutocompleteSeparator,
   AutocompleteTrigger,
   AutocompleteViewport,
-  Arrow,
-  AspectRatio,
   AvatarFallback,
   AvatarImage,
   AvatarRoot,
@@ -48,6 +48,7 @@ import {
   BreadcrumbRoot,
   BreadcrumbSeparator,
   Button,
+  CardCollapsibleTrigger,
   CardContent,
   CardDescription,
   CardFooter,
@@ -60,9 +61,9 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
-  CheckboxCompact,
   CheckboxCardCompact,
   CheckboxCardGroupCompact,
+  CheckboxCompact,
   CheckboxControl,
   CheckboxGroupCompact,
   CheckboxGroupRoot,
@@ -73,6 +74,20 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  ColorAreaArea,
+  ColorAreaRoot,
+  ColorAreaThumb,
+  ColorFieldInput,
+  ColorFieldRoot,
+  ColorPickerRoot,
+  ColorSliderRoot,
+  ColorSliderThumb,
+  ColorSliderTrack,
+  ColorSwatch,
+  ColorSwatchPickerItem,
+  ColorSwatchPickerItemIndicator,
+  ColorSwatchPickerItemSwatch,
+  ColorSwatchPickerRoot,
   ComboboxAnchor,
   ComboboxArrow,
   ComboboxCancel,
@@ -88,22 +103,8 @@ import {
   ComboboxRoot,
   ComboboxSeparator,
   ComboboxTrigger,
-  ComboboxVirtualizer,
   ComboboxViewport,
-  ColorAreaArea,
-  ColorAreaRoot,
-  ColorAreaThumb,
-  ColorFieldInput,
-  ColorFieldRoot,
-  ColorPickerRoot,
-  ColorSliderRoot,
-  ColorSliderThumb,
-  ColorSliderTrack,
-  ColorSwatch,
-  ColorSwatchPickerItem,
-  ColorSwatchPickerItemIndicator,
-  ColorSwatchPickerItemSwatch,
-  ColorSwatchPickerRoot,
+  ComboboxVirtualizer,
   CommandCompact,
   ConfigProvider,
   ContextMenuAnchor,
@@ -145,14 +146,17 @@ import {
   DialogTrigger,
   DropdownMenuAnchor,
   DropdownMenuArrow,
+  DropdownMenuCheckboxCompact,
   DropdownMenuCheckboxGroup,
   DropdownMenuCheckboxItem,
+  DropdownMenuCompact,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuGroupLabel,
   DropdownMenuItem,
   DropdownMenuItemIndicator,
   DropdownMenuPortal,
+  DropdownMenuRadioCompact,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuRoot,
@@ -161,6 +165,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  DropdownMenuWrapperCompact,
   EditableArea,
   EditableCancelTrigger,
   EditableEditTrigger,
@@ -174,6 +179,7 @@ import {
   EmptyMedia,
   EmptyRoot,
   EmptyTitle,
+  FormControl,
   FormDescription,
   FormError,
   FormField,
@@ -185,7 +191,6 @@ import {
   HoverCardRoot,
   HoverCardTrigger,
   InputControl,
-  InputRoot,
   InputNumberControl,
   InputNumberDecrement,
   InputNumberIncrement,
@@ -194,8 +199,10 @@ import {
   InputOtpInput,
   InputOtpPositioner,
   InputOtpRoot,
+  InputRoot,
   Kbd,
   Label,
+  LayoutContent,
   LayoutFooter,
   LayoutHeader,
   LayoutMain,
@@ -206,11 +213,6 @@ import {
   LayoutTab,
   LayoutTrigger,
   Link,
-  ListContent,
-  ListDescription,
-  ListItem,
-  ListRoot,
-  ListTitle,
   ListboxContent,
   ListboxFilter,
   ListboxGroup,
@@ -219,27 +221,13 @@ import {
   ListboxItemIndicator,
   ListboxRoot,
   ListboxVirtualizer,
+  ListContent,
+  ListDescription,
+  ListItem,
+  ListRoot,
+  ListTitle,
   MenuAnchor,
   MenuArrow,
-  MenuCheckboxGroup,
-  MenuCheckboxItem,
-  MenuCheckboxOptionsCompact,
-  MenuContent,
-  MenuGroup,
-  MenuGroupLabel,
-  MenuItem,
-  MenuItemIndicator,
-  MenuOptionCompact,
-  MenuOptionsCompact,
-  MenuPortal,
-  MenuRadioGroup,
-  MenuRadioItem,
-  MenuRadioOptionsCompact,
-  MenuRoot,
-  MenuSeparator,
-  MenuSub,
-  MenuSubContent,
-  MenuSubTrigger,
   MenubarArrow,
   MenubarCheckboxGroup,
   MenubarCheckboxItem,
@@ -259,6 +247,25 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
+  MenuCheckboxGroup,
+  MenuCheckboxItem,
+  MenuCheckboxOptionsCompact,
+  MenuContent,
+  MenuGroup,
+  MenuGroupLabel,
+  MenuItem,
+  MenuItemIndicator,
+  MenuOptionCompact,
+  MenuOptionsCompact,
+  MenuPortal,
+  MenuRadioGroup,
+  MenuRadioItem,
+  MenuRadioOptionsCompact,
+  MenuRoot,
+  MenuSeparator,
+  MenuSub,
+  MenuSubContent,
+  MenuSubTrigger,
   NavigationMenuContent,
   NavigationMenuIndicator,
   NavigationMenuItem,
@@ -268,10 +275,10 @@ import {
   NavigationMenuSubList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-  PageTabsRoot,
-  PageTabsItem,
   PageTabsClose,
+  PageTabsItem,
   PageTabsPin,
+  PageTabsRoot,
   PaginationEllipsis,
   PaginationFirst,
   PaginationLast,
@@ -313,8 +320,8 @@ import {
   ScrollAreaThumb,
   ScrollAreaViewport,
   SegmentCompact,
-  SegmentList,
   SegmentIndicator,
+  SegmentList,
   SegmentRoot,
   SegmentTrigger,
   SelectArrow,
@@ -337,14 +344,14 @@ import {
   SeparatorLabel,
   SeparatorRoot,
   Skeleton,
-  SplitterGroup,
-  SplitterPanel,
-  SplitterResizeHandle,
   SliderRange,
   SliderRoot,
   SliderThumb,
   SliderTrack,
   Slot,
+  SplitterGroup,
+  SplitterPanel,
+  SplitterResizeHandle,
   StepperDescription,
   StepperIndicator,
   StepperItem,
@@ -355,17 +362,17 @@ import {
   SwitchControl,
   SwitchRoot,
   SwitchThumb,
-  TableCompact,
-  TableRoot,
-  TableContent,
-  TableHeader,
   TableBody,
-  TableFooter,
-  TableRow,
-  TableHead,
   TableCell,
-  TabsContent,
+  TableCompact,
+  TableContent,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRoot,
+  TableRow,
   TabsCompact,
+  TabsContent,
   TabsIndicator,
   TabsList,
   TabsRoot,
@@ -461,45 +468,15 @@ export const Alert = {
 
 export const Anchor = {
   Compact: AnchorCompact,
-  Root: AnchorRoot,
-  Link: AnchorLink
+  Link: AnchorLink,
+  Root: AnchorRoot
 } as {
   Compact: typeof AnchorCompact;
-  Root: typeof AnchorRoot;
   Link: typeof AnchorLink;
+  Root: typeof AnchorRoot;
 };
 
 export { Arrow };
-
-export const Autocomplete = {
-  Compact: AutocompleteCompact,
-  Root: AutocompleteRoot,
-  Anchor: AutocompleteAnchor,
-  Input: AutocompleteInput,
-  Trigger: AutocompleteTrigger,
-  Portal: AutocompletePortal,
-  Content: AutocompleteContent,
-  Viewport: AutocompleteViewport,
-  Group: AutocompleteGroup,
-  GroupLabel: AutocompleteGroupLabel,
-  Item: AutocompleteItem,
-  ItemIndicator: AutocompleteItemIndicator,
-  Separator: AutocompleteSeparator
-} as {
-  Compact: typeof AutocompleteCompact;
-  Root: typeof AutocompleteRoot;
-  Anchor: typeof AutocompleteAnchor;
-  Input: typeof AutocompleteInput;
-  Trigger: typeof AutocompleteTrigger;
-  Portal: typeof AutocompletePortal;
-  Content: typeof AutocompleteContent;
-  Viewport: typeof AutocompleteViewport;
-  Group: typeof AutocompleteGroup;
-  GroupLabel: typeof AutocompleteGroupLabel;
-  Item: typeof AutocompleteItem;
-  ItemIndicator: typeof AutocompleteItemIndicator;
-  Separator: typeof AutocompleteSeparator;
-};
 
 export { AspectRatio };
 
@@ -515,6 +492,36 @@ export const Avatar = {
 
 export { Backtop };
 
+export const Autocomplete = {
+  Root: AutocompleteRoot,
+  Compact: AutocompleteCompact,
+  Anchor: AutocompleteAnchor,
+  Input: AutocompleteInput,
+  Trigger: AutocompleteTrigger,
+  Portal: AutocompletePortal,
+  Content: AutocompleteContent,
+  Viewport: AutocompleteViewport,
+  Group: AutocompleteGroup,
+  GroupLabel: AutocompleteGroupLabel,
+  Item: AutocompleteItem,
+  ItemIndicator: AutocompleteItemIndicator,
+  Separator: AutocompleteSeparator
+} as {
+  Root: typeof AutocompleteRoot;
+  Compact: typeof AutocompleteCompact;
+  Anchor: typeof AutocompleteAnchor;
+  Input: typeof AutocompleteInput;
+  Trigger: typeof AutocompleteTrigger;
+  Portal: typeof AutocompletePortal;
+  Content: typeof AutocompleteContent;
+  Viewport: typeof AutocompleteViewport;
+  Group: typeof AutocompleteGroup;
+  GroupLabel: typeof AutocompleteGroupLabel;
+  Item: typeof AutocompleteItem;
+  ItemIndicator: typeof AutocompleteItemIndicator;
+  Separator: typeof AutocompleteSeparator;
+};
+
 export const Badge = {
   Root: BadgeRoot,
   Content: BadgeContent
@@ -524,8 +531,8 @@ export const Badge = {
 };
 
 export const Breadcrumb = {
-  Compact: BreadcrumbCompact,
   Root: BreadcrumbRoot,
+  Compact: BreadcrumbCompact,
   List: BreadcrumbList,
   Item: BreadcrumbItem,
   Link: BreadcrumbLink,
@@ -533,8 +540,8 @@ export const Breadcrumb = {
   Separator: BreadcrumbSeparator,
   Ellipsis: BreadcrumbEllipsis
 } as {
-  Compact: typeof BreadcrumbCompact;
   Root: typeof BreadcrumbRoot;
+  Compact: typeof BreadcrumbCompact;
   List: typeof BreadcrumbList;
   Item: typeof BreadcrumbItem;
   Link: typeof BreadcrumbLink;
@@ -545,8 +552,6 @@ export const Breadcrumb = {
 
 export { Button };
 
-export { Clipboard };
-
 export const Card = {
   Root: CardRoot,
   Header: CardHeader,
@@ -554,7 +559,8 @@ export const Card = {
   TitleRoot: CardTitleRoot,
   Description: CardDescription,
   Content: CardContent,
-  Footer: CardFooter
+  Footer: CardFooter,
+  CollapsibleTrigger: CardCollapsibleTrigger
 } as {
   Root: typeof CardRoot;
   Header: typeof CardHeader;
@@ -563,35 +569,38 @@ export const Card = {
   Description: typeof CardDescription;
   Content: typeof CardContent;
   Footer: typeof CardFooter;
+  CollapsibleTrigger: typeof CardCollapsibleTrigger;
 };
 
 export const Carousel = {
-  Root: CarouselRoot,
   Content: CarouselContent,
   Item: CarouselItem,
+  Next: CarouselNext,
   Previous: CarouselPrevious,
-  Next: CarouselNext
+  Root: CarouselRoot
 } as {
-  Root: typeof CarouselRoot;
   Content: typeof CarouselContent;
   Item: typeof CarouselItem;
-  Previous: typeof CarouselPrevious;
   Next: typeof CarouselNext;
+  Previous: typeof CarouselPrevious;
+  Root: typeof CarouselRoot;
 };
 
 export const Checkbox = {
   Compact: CheckboxCompact,
   CardCompact: CheckboxCardCompact,
-  CardGroupCompact: CheckboxCardGroupCompact,
   GroupCompact: CheckboxGroupCompact,
+  CardGroupCompact: CheckboxCardGroupCompact,
   GroupRoot: CheckboxGroupRoot,
   Root: CheckboxRoot,
   Control: CheckboxControl,
   Indicator: CheckboxIndicator,
   Label: CheckboxLabel
 } as {
-  CardGroupCompact: typeof CheckboxCardGroupCompact;
+  Compact: typeof CheckboxCompact;
+  CardCompact: typeof CheckboxCardCompact;
   GroupCompact: typeof CheckboxGroupCompact;
+  CardGroupCompact: typeof CheckboxCardGroupCompact;
   GroupRoot: typeof CheckboxGroupRoot;
   Root: typeof CheckboxRoot;
   Control: typeof CheckboxControl;
@@ -599,14 +608,16 @@ export const Checkbox = {
   Label: typeof CheckboxLabel;
 };
 
+export { Clipboard };
+
 export const Collapsible = {
   Root: CollapsibleRoot,
-  Trigger: CollapsibleTrigger,
-  Content: CollapsibleContent
+  Content: CollapsibleContent,
+  Trigger: CollapsibleTrigger
 } as {
   Root: typeof CollapsibleRoot;
-  Trigger: typeof CollapsibleTrigger;
   Content: typeof CollapsibleContent;
+  Trigger: typeof CollapsibleTrigger;
 };
 
 export const Combobox = {
@@ -665,11 +676,7 @@ export const ColorField = {
   Input: typeof ColorFieldInput;
 };
 
-export const ColorPicker = {
-  Root: ColorPickerRoot
-} as {
-  Root: typeof ColorPickerRoot;
-};
+export { ColorPickerRoot };
 
 export const ColorSlider = {
   Root: ColorSliderRoot,
@@ -695,19 +702,11 @@ export const ColorSwatchPicker = {
   ItemSwatch: typeof ColorSwatchPickerItemSwatch;
 };
 
-export const Command = {
-  Compact: CommandCompact
-} as {
-  Compact: typeof CommandCompact;
-};
+export { CommandCompact };
 
 export { ConfigProvider };
 
 export const ContextMenu = {
-  WrapperCompact: ContextMenuWrapperCompact,
-  Compact: ContextMenuCompact,
-  CheckboxCompact: ContextMenuCheckboxCompact,
-  RadioCompact: ContextMenuRadioCompact,
   Root: ContextMenuRoot,
   Trigger: ContextMenuTrigger,
   Portal: ContextMenuPortal,
@@ -725,12 +724,12 @@ export const ContextMenu = {
   SubContent: ContextMenuSubContent,
   Separator: ContextMenuSeparator,
   CheckboxGroup: ContextMenuCheckboxGroup,
-  RadioGroup: ContextMenuRadioGroup
+  RadioGroup: ContextMenuRadioGroup,
+  Compact: ContextMenuCompact,
+  CheckboxCompact: ContextMenuCheckboxCompact,
+  RadioCompact: ContextMenuRadioCompact,
+  WrapperCompact: ContextMenuWrapperCompact
 } as {
-  WrapperCompact: typeof ContextMenuWrapperCompact;
-  Compact: typeof ContextMenuCompact;
-  CheckboxCompact: typeof ContextMenuCheckboxCompact;
-  RadioCompact: typeof ContextMenuRadioCompact;
   Root: typeof ContextMenuRoot;
   Trigger: typeof ContextMenuTrigger;
   Portal: typeof ContextMenuPortal;
@@ -749,6 +748,10 @@ export const ContextMenu = {
   Separator: typeof ContextMenuSeparator;
   CheckboxGroup: typeof ContextMenuCheckboxGroup;
   RadioGroup: typeof ContextMenuRadioGroup;
+  Compact: typeof ContextMenuCompact;
+  CheckboxCompact: typeof ContextMenuCheckboxCompact;
+  RadioCompact: typeof ContextMenuRadioCompact;
+  WrapperCompact: typeof ContextMenuWrapperCompact;
 };
 
 export const Dialog = {
@@ -759,8 +762,8 @@ export const Dialog = {
   Portal: DialogPortal,
   Overlay: DialogOverlay,
   Popup: DialogPopup,
-  Content: DialogContent,
   Header: DialogHeader,
+  Content: DialogContent,
   Title: DialogTitle,
   Description: DialogDescription,
   Footer: DialogFooter,
@@ -775,8 +778,8 @@ export const Dialog = {
   Portal: typeof DialogPortal;
   Overlay: typeof DialogOverlay;
   Popup: typeof DialogPopup;
-  Content: typeof DialogContent;
   Header: typeof DialogHeader;
+  Content: typeof DialogContent;
   Title: typeof DialogTitle;
   Description: typeof DialogDescription;
   Footer: typeof DialogFooter;
@@ -803,7 +806,11 @@ export const DropdownMenu = {
   SubContent: DropdownMenuSubContent,
   Separator: DropdownMenuSeparator,
   CheckboxGroup: DropdownMenuCheckboxGroup,
-  RadioGroup: DropdownMenuRadioGroup
+  RadioGroup: DropdownMenuRadioGroup,
+  Compact: DropdownMenuCompact,
+  CheckboxCompact: DropdownMenuCheckboxCompact,
+  RadioCompact: DropdownMenuRadioCompact,
+  WrapperCompact: DropdownMenuWrapperCompact
 } as {
   Root: typeof DropdownMenuRoot;
   Trigger: typeof DropdownMenuTrigger;
@@ -823,24 +830,28 @@ export const DropdownMenu = {
   Separator: typeof DropdownMenuSeparator;
   CheckboxGroup: typeof DropdownMenuCheckboxGroup;
   RadioGroup: typeof DropdownMenuRadioGroup;
+  Compact: typeof DropdownMenuCompact;
+  CheckboxCompact: typeof DropdownMenuCheckboxCompact;
+  RadioCompact: typeof DropdownMenuRadioCompact;
+  WrapperCompact: typeof DropdownMenuWrapperCompact;
 };
 
 export const Editable = {
-  Root: EditableRoot,
   Area: EditableArea,
-  Preview: EditablePreview,
-  Input: EditableInput,
+  CancelTrigger: EditableCancelTrigger,
   EditTrigger: EditableEditTrigger,
-  SubmitTrigger: EditableSubmitTrigger,
-  CancelTrigger: EditableCancelTrigger
+  Input: EditableInput,
+  Preview: EditablePreview,
+  Root: EditableRoot,
+  SubmitTrigger: EditableSubmitTrigger
 } as {
-  Root: typeof EditableRoot;
   Area: typeof EditableArea;
-  Preview: typeof EditablePreview;
-  Input: typeof EditableInput;
-  EditTrigger: typeof EditableEditTrigger;
-  SubmitTrigger: typeof EditableSubmitTrigger;
   CancelTrigger: typeof EditableCancelTrigger;
+  EditTrigger: typeof EditableEditTrigger;
+  Input: typeof EditableInput;
+  Preview: typeof EditablePreview;
+  Root: typeof EditableRoot;
+  SubmitTrigger: typeof EditableSubmitTrigger;
 };
 
 export const Empty = {
@@ -862,11 +873,13 @@ export const Empty = {
 export const Form = {
   Field: FormField,
   Label: FormLabel,
+  Control: FormControl,
   Description: FormDescription,
   Error: FormError
 } as {
   Field: typeof FormField;
   Label: typeof FormLabel;
+  Control: typeof FormControl;
   Description: typeof FormDescription;
   Error: typeof FormError;
 };
@@ -908,15 +921,15 @@ export const InputNumber = {
 };
 
 export const InputOtp = {
-  Root: InputOtpRoot,
-  Positioner: InputOtpPositioner,
+  Compact: InputOtpCompact,
   Input: InputOtpInput,
-  Compact: InputOtpCompact
+  Positioner: InputOtpPositioner,
+  Root: InputOtpRoot
 } as {
-  Root: typeof InputOtpRoot;
-  Positioner: typeof InputOtpPositioner;
-  Input: typeof InputOtpInput;
   Compact: typeof InputOtpCompact;
+  Input: typeof InputOtpInput;
+  Positioner: typeof InputOtpPositioner;
+  Root: typeof InputOtpRoot;
 };
 
 export { Kbd };
@@ -925,27 +938,27 @@ export { Label };
 
 export const Layout = {
   Root: LayoutRoot,
-  Header: LayoutHeader,
-  Main: LayoutMain,
   Sidebar: LayoutSidebar,
-  Footer: LayoutFooter,
   Rail: LayoutRail,
-  Mobile: LayoutMobile,
+  Main: LayoutMain,
+  Header: LayoutHeader,
   Tab: LayoutTab,
+  Content: LayoutContent,
+  Footer: LayoutFooter,
+  Mobile: LayoutMobile,
   Trigger: LayoutTrigger
 } as {
   Root: typeof LayoutRoot;
-  Header: typeof LayoutHeader;
-  Main: typeof LayoutMain;
   Sidebar: typeof LayoutSidebar;
-  Footer: typeof LayoutFooter;
   Rail: typeof LayoutRail;
-  Mobile: typeof LayoutMobile;
+  Main: typeof LayoutMain;
+  Header: typeof LayoutHeader;
   Tab: typeof LayoutTab;
+  Content: typeof LayoutContent;
+  Footer: typeof LayoutFooter;
+  Mobile: typeof LayoutMobile;
   Trigger: typeof LayoutTrigger;
 };
-
-export { Link };
 
 export const List = {
   Root: ListRoot,
@@ -981,11 +994,9 @@ export const Listbox = {
   Virtualizer: typeof ListboxVirtualizer;
 };
 
+export { Link };
+
 export const Menu = {
-  OptionCompact: MenuOptionCompact,
-  OptionsCompact: MenuOptionsCompact,
-  CheckboxOptionsCompact: MenuCheckboxOptionsCompact,
-  RadioOptionsCompact: MenuRadioOptionsCompact,
   Root: MenuRoot,
   Portal: MenuPortal,
   Content: MenuContent,
@@ -1002,12 +1013,12 @@ export const Menu = {
   SubContent: MenuSubContent,
   Separator: MenuSeparator,
   CheckboxGroup: MenuCheckboxGroup,
-  RadioGroup: MenuRadioGroup
+  RadioGroup: MenuRadioGroup,
+  OptionCompact: MenuOptionCompact,
+  OptionsCompact: MenuOptionsCompact,
+  CheckboxOptionsCompact: MenuCheckboxOptionsCompact,
+  RadioOptionsCompact: MenuRadioOptionsCompact
 } as {
-  OptionCompact: typeof MenuOptionCompact;
-  OptionsCompact: typeof MenuOptionsCompact;
-  CheckboxOptionsCompact: typeof MenuCheckboxOptionsCompact;
-  RadioOptionsCompact: typeof MenuRadioOptionsCompact;
   Root: typeof MenuRoot;
   Portal: typeof MenuPortal;
   Content: typeof MenuContent;
@@ -1025,10 +1036,13 @@ export const Menu = {
   Separator: typeof MenuSeparator;
   CheckboxGroup: typeof MenuCheckboxGroup;
   RadioGroup: typeof MenuRadioGroup;
+  OptionCompact: typeof MenuOptionCompact;
+  OptionsCompact: typeof MenuOptionsCompact;
+  CheckboxOptionsCompact: typeof MenuCheckboxOptionsCompact;
+  RadioOptionsCompact: typeof MenuRadioOptionsCompact;
 };
 
 export const Menubar = {
-  Compact: MenubarCompact,
   Root: MenubarRoot,
   Menu: MenubarMenu,
   Trigger: MenubarTrigger,
@@ -1046,9 +1060,9 @@ export const Menubar = {
   SubContent: MenubarSubContent,
   Separator: MenubarSeparator,
   CheckboxGroup: MenubarCheckboxGroup,
-  RadioGroup: MenubarRadioGroup
+  RadioGroup: MenubarRadioGroup,
+  Compact: MenubarCompact
 } as {
-  Compact: typeof MenubarCompact;
   Root: typeof MenubarRoot;
   Menu: typeof MenubarMenu;
   Trigger: typeof MenubarTrigger;
@@ -1067,6 +1081,7 @@ export const Menubar = {
   Separator: typeof MenubarSeparator;
   CheckboxGroup: typeof MenubarCheckboxGroup;
   RadioGroup: typeof MenubarRadioGroup;
+  Compact: typeof MenubarCompact;
 };
 
 export const NavigationMenu = {
@@ -1146,15 +1161,15 @@ export const Popover = {
 export const Popper = {
   Root: PopperRoot,
   Anchor: PopperAnchor,
+  Positioner: PopperPositioner,
   Popup: PopperPopup,
-  Arrow: PopperArrow,
-  Positioner: PopperPositioner
+  Arrow: PopperArrow
 } as {
   Root: typeof PopperRoot;
   Anchor: typeof PopperAnchor;
+  Positioner: typeof PopperPositioner;
   Popup: typeof PopperPopup;
   Arrow: typeof PopperArrow;
-  Positioner: typeof PopperPositioner;
 };
 
 export { Portal };
@@ -1174,15 +1189,15 @@ export const Progress = {
 };
 
 export const RadioGroup = {
-  Compact: RadioGroupCompact,
   Root: RadioGroupRoot,
+  Compact: RadioGroupCompact,
   Item: RadioGroupItem,
   Control: RadioGroupControl,
   Indicator: RadioGroupIndicator,
   Label: RadioGroupLabel
 } as {
-  Compact: typeof RadioGroupCompact;
   Root: typeof RadioGroupRoot;
+  Compact: typeof RadioGroupCompact;
   Item: typeof RadioGroupItem;
   Control: typeof RadioGroupControl;
   Indicator: typeof RadioGroupIndicator;
@@ -1212,22 +1227,22 @@ export const ScrollArea = {
 };
 
 export const Segment = {
-  Compact: SegmentCompact,
   Root: SegmentRoot,
   List: SegmentList,
   Trigger: SegmentTrigger,
-  Indicator: SegmentIndicator
+  Indicator: SegmentIndicator,
+  Compact: SegmentCompact
 } as {
-  Compact: typeof SegmentCompact;
   Root: typeof SegmentRoot;
   List: typeof SegmentList;
   Trigger: typeof SegmentTrigger;
   Indicator: typeof SegmentIndicator;
+  Compact: typeof SegmentCompact;
 };
 
 export const Select = {
-  Compact: SelectCompact,
   Root: SelectRoot,
+  Compact: SelectCompact,
   Trigger: SelectTrigger,
   Portal: SelectPortal,
   Content: SelectContent,
@@ -1244,8 +1259,8 @@ export const Select = {
   Separator: SelectSeparator,
   Arrow: SelectArrow
 } as {
-  Compact: typeof SelectCompact;
   Root: typeof SelectRoot;
+  Compact: typeof SelectCompact;
   Trigger: typeof SelectTrigger;
   Portal: typeof SelectPortal;
   Content: typeof SelectContent;
@@ -1326,7 +1341,6 @@ export const Switch = {
 };
 
 export const Table = {
-  Compact: TableCompact,
   Root: TableRoot,
   Content: TableContent,
   Header: TableHeader,
@@ -1334,9 +1348,9 @@ export const Table = {
   Footer: TableFooter,
   Row: TableRow,
   Head: TableHead,
-  Cell: TableCell
+  Cell: TableCell,
+  Compact: TableCompact
 } as {
-  Compact: typeof TableCompact;
   Root: typeof TableRoot;
   Content: typeof TableContent;
   Header: typeof TableHeader;
@@ -1345,22 +1359,23 @@ export const Table = {
   Row: typeof TableRow;
   Head: typeof TableHead;
   Cell: typeof TableCell;
+  Compact: typeof TableCompact;
 };
 
 export const Tabs = {
-  Compact: TabsCompact,
   Root: TabsRoot,
   List: TabsList,
   Trigger: TabsTrigger,
   Content: TabsContent,
-  Indicator: TabsIndicator
+  Indicator: TabsIndicator,
+  Compact: TabsCompact
 } as {
-  Compact: typeof TabsCompact;
   Root: typeof TabsRoot;
   List: typeof TabsList;
   Trigger: typeof TabsTrigger;
   Content: typeof TabsContent;
   Indicator: typeof TabsIndicator;
+  Compact: typeof TabsCompact;
 };
 
 export { Tag };
@@ -1391,11 +1406,7 @@ export const Textarea = {
   Counter: typeof TextareaCounter;
 };
 
-export const Toast = {
-  Toaster: Toaster
-} as {
-  Toaster: typeof Toaster;
-};
+export { Toaster };
 
 export const Toolbar = {
   Root: ToolbarRoot,

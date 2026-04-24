@@ -1,18 +1,22 @@
 export const components = {
   accordion: [
+    'AccordionCompact',
     'AccordionRoot',
     'AccordionItem',
     'AccordionTrigger',
     'AccordionHeader',
-    'AccordionContent',
-    'AccordionCompact'
+    'AccordionContent'
   ],
   affix: ['AffixCompact', 'AffixRoot', 'AffixPlaceholder', 'AffixContent'],
   alert: ['AlertCompact', 'AlertRoot', 'AlertTitle', 'AlertDescription', 'AlertContent', 'AlertClose'],
-  anchor: ['AnchorCompact', 'AnchorRoot', 'AnchorLink'],
+  anchor: ['AnchorCompact', 'AnchorLink', 'AnchorRoot'],
+  arrow: ['Arrow'],
+  aspectRatio: ['AspectRatio'],
+  avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
+  backtop: ['Backtop'],
   autocomplete: [
-    'AutocompleteCompact',
     'AutocompleteRoot',
+    'AutocompleteCompact',
     'AutocompleteAnchor',
     'AutocompleteInput',
     'AutocompleteTrigger',
@@ -25,14 +29,10 @@ export const components = {
     'AutocompleteItemIndicator',
     'AutocompleteSeparator'
   ],
-  arrow: ['Arrow'],
-  aspectRatio: ['AspectRatio'],
-  avatar: ['AvatarRoot', 'AvatarImage', 'AvatarFallback'],
-  backtop: ['Backtop'],
   badge: ['BadgeRoot', 'BadgeContent'],
   breadcrumb: [
-    'BreadcrumbCompact',
     'BreadcrumbRoot',
+    'BreadcrumbCompact',
     'BreadcrumbList',
     'BreadcrumbItem',
     'BreadcrumbLink',
@@ -41,8 +41,17 @@ export const components = {
     'BreadcrumbEllipsis'
   ],
   button: ['Button'],
-  card: ['CardRoot', 'CardHeader', 'CardTitle', 'CardTitleRoot', 'CardDescription', 'CardContent', 'CardFooter'],
-  carousel: ['CarouselRoot', 'CarouselContent', 'CarouselItem', 'CarouselPrevious', 'CarouselNext'],
+  card: [
+    'CardRoot',
+    'CardHeader',
+    'CardTitle',
+    'CardTitleRoot',
+    'CardDescription',
+    'CardContent',
+    'CardFooter',
+    'CardCollapsibleTrigger'
+  ],
+  carousel: ['CarouselContent', 'CarouselItem', 'CarouselNext', 'CarouselPrevious', 'CarouselRoot'],
   checkbox: [
     'CheckboxCompact',
     'CheckboxCardCompact',
@@ -55,7 +64,7 @@ export const components = {
     'CheckboxLabel'
   ],
   clipboard: ['Clipboard'],
-  collapsible: ['CollapsibleRoot', 'CollapsibleTrigger', 'CollapsibleContent'],
+  collapsible: ['CollapsibleRoot', 'CollapsibleContent', 'CollapsibleTrigger'],
   combobox: [
     'ComboboxRoot',
     'ComboboxCompact',
@@ -89,10 +98,6 @@ export const components = {
   command: ['CommandCompact'],
   configProvider: ['ConfigProvider'],
   contextMenu: [
-    'ContextMenuWrapperCompact',
-    'ContextMenuCompact',
-    'ContextMenuCheckboxCompact',
-    'ContextMenuRadioCompact',
     'ContextMenuRoot',
     'ContextMenuTrigger',
     'ContextMenuPortal',
@@ -110,9 +115,12 @@ export const components = {
     'ContextMenuSubContent',
     'ContextMenuSeparator',
     'ContextMenuCheckboxGroup',
-    'ContextMenuRadioGroup'
+    'ContextMenuRadioGroup',
+    'ContextMenuCompact',
+    'ContextMenuCheckboxCompact',
+    'ContextMenuRadioCompact',
+    'ContextMenuWrapperCompact'
   ],
-  dataTable: ['DataTableRoot'],
   dialog: [
     'DialogCompact',
     'DialogProvider',
@@ -121,8 +129,8 @@ export const components = {
     'DialogPortal',
     'DialogOverlay',
     'DialogPopup',
-    'DialogContent',
     'DialogHeader',
+    'DialogContent',
     'DialogTitle',
     'DialogDescription',
     'DialogFooter',
@@ -148,19 +156,23 @@ export const components = {
     'DropdownMenuSubContent',
     'DropdownMenuSeparator',
     'DropdownMenuCheckboxGroup',
-    'DropdownMenuRadioGroup'
+    'DropdownMenuRadioGroup',
+    'DropdownMenuCompact',
+    'DropdownMenuCheckboxCompact',
+    'DropdownMenuRadioCompact',
+    'DropdownMenuWrapperCompact'
   ],
   editable: [
-    'EditableRoot',
     'EditableArea',
-    'EditablePreview',
-    'EditableInput',
+    'EditableCancelTrigger',
     'EditableEditTrigger',
-    'EditableSubmitTrigger',
-    'EditableCancelTrigger'
+    'EditableInput',
+    'EditablePreview',
+    'EditableRoot',
+    'EditableSubmitTrigger'
   ],
   empty: ['EmptyRoot', 'EmptyHeader', 'EmptyMedia', 'EmptyContent', 'EmptyTitle', 'EmptyDescription'],
-  form: ['FormField', 'FormLabel', 'FormDescription', 'FormError', 'FormFieldArray'],
+  form: ['FormField', 'FormLabel', 'FormControl', 'FormDescription', 'FormError'],
   hoverCard: [
     'HoverCardRoot',
     'HoverCardTrigger',
@@ -171,21 +183,21 @@ export const components = {
   ],
   input: ['InputRoot', 'InputControl'],
   inputNumber: ['InputNumberRoot', 'InputNumberControl', 'InputNumberIncrement', 'InputNumberDecrement'],
-  inputOtp: ['InputOtpRoot', 'InputOtpPositioner', 'InputOtpInput', 'InputOtpCompact'],
+  inputOtp: ['InputOtpCompact', 'InputOtpInput', 'InputOtpPositioner', 'InputOtpRoot'],
   kbd: ['Kbd'],
   label: ['Label'],
   layout: [
     'LayoutRoot',
-    'LayoutHeader',
-    'LayoutMain',
     'LayoutSidebar',
-    'LayoutFooter',
     'LayoutRail',
-    'LayoutMobile',
+    'LayoutMain',
+    'LayoutHeader',
     'LayoutTab',
+    'LayoutContent',
+    'LayoutFooter',
+    'LayoutMobile',
     'LayoutTrigger'
   ],
-  link: ['Link'],
   list: ['ListRoot', 'ListItem', 'ListTitle', 'ListDescription', 'ListContent'],
   listbox: [
     'ListboxRoot',
@@ -197,11 +209,8 @@ export const components = {
     'ListboxFilter',
     'ListboxVirtualizer'
   ],
+  link: ['Link'],
   menu: [
-    'MenuOptionCompact',
-    'MenuOptionsCompact',
-    'MenuCheckboxOptionsCompact',
-    'MenuRadioOptionsCompact',
     'MenuRoot',
     'MenuPortal',
     'MenuContent',
@@ -218,10 +227,13 @@ export const components = {
     'MenuSubContent',
     'MenuSeparator',
     'MenuCheckboxGroup',
-    'MenuRadioGroup'
+    'MenuRadioGroup',
+    'MenuOptionCompact',
+    'MenuOptionsCompact',
+    'MenuCheckboxOptionsCompact',
+    'MenuRadioOptionsCompact'
   ],
   menubar: [
-    'MenubarCompact',
     'MenubarRoot',
     'MenubarMenu',
     'MenubarTrigger',
@@ -239,7 +251,8 @@ export const components = {
     'MenubarSubContent',
     'MenubarSeparator',
     'MenubarCheckboxGroup',
-    'MenubarRadioGroup'
+    'MenubarRadioGroup',
+    'MenubarCompact'
   ],
   navigationMenu: [
     'NavigationMenuRoot',
@@ -273,13 +286,13 @@ export const components = {
     'PopoverArrow',
     'PopoverClose'
   ],
-  popper: ['PopperRoot', 'PopperAnchor', 'PopperPopup', 'PopperArrow', 'PopperPositioner'],
+  popper: ['PopperRoot', 'PopperAnchor', 'PopperPositioner', 'PopperPopup', 'PopperArrow'],
   portal: ['Portal'],
   primitive: ['Primitive'],
   progress: ['ProgressProvider', 'ProgressRoot', 'ProgressIndicator', 'ProgressCircle'],
   radioGroup: [
-    'RadioGroupCompact',
     'RadioGroupRoot',
+    'RadioGroupCompact',
     'RadioGroupItem',
     'RadioGroupControl',
     'RadioGroupIndicator',
@@ -287,10 +300,10 @@ export const components = {
   ],
   rovingFocus: ['RovingFocusGroup', 'RovingFocusItem'],
   scrollArea: ['ScrollAreaRoot', 'ScrollAreaViewport', 'ScrollAreaScrollbar', 'ScrollAreaThumb', 'ScrollAreaCorner'],
-  segment: ['SegmentCompact', 'SegmentRoot', 'SegmentItem', 'SegmentTrigger', 'SegmentIndicator'],
+  segment: ['SegmentRoot', 'SegmentList', 'SegmentTrigger', 'SegmentIndicator', 'SegmentCompact'],
   select: [
-    'SelectCompact',
     'SelectRoot',
+    'SelectCompact',
     'SelectTrigger',
     'SelectPortal',
     'SelectContent',
@@ -323,7 +336,6 @@ export const components = {
   ],
   switch: ['SwitchRoot', 'SwitchControl', 'SwitchThumb'],
   table: [
-    'TableCompact',
     'TableRoot',
     'TableContent',
     'TableHeader',
@@ -331,9 +343,10 @@ export const components = {
     'TableFooter',
     'TableRow',
     'TableHead',
-    'TableCell'
+    'TableCell',
+    'TableCompact'
   ],
-  tabs: ['TabsCompact', 'TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator'],
+  tabs: ['TabsRoot', 'TabsList', 'TabsTrigger', 'TabsContent', 'TabsIndicator', 'TabsCompact'],
   tag: ['Tag'],
   tagsInput: [
     'TagsInputRoot',
