@@ -24,13 +24,13 @@ export interface AffixRootProps extends /** @vue-ignore */ Omit<HTMLAttributes, 
   target?: AffixTarget | null;
 }
 
-export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
-
-export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
-
 export type AffixRootEmits = {
   change: [affixed: boolean];
 };
+
+export interface AffixPlaceholderProps extends /** @vue-ignore */ HTMLAttributes {}
+
+export interface AffixContentProps extends /** @vue-ignore */ HTMLAttributes {}
 
 export interface AffixCompactProps extends AffixRootProps {
   placeholderProps?: AffixPlaceholderProps;
@@ -50,11 +50,3 @@ export interface AffixRootContext {
 export type AffixUiSlot = 'root' | 'placeholder' | 'content';
 
 export type AffixUi = UiClass<AffixUiSlot>;
-
-export interface AffixRootExposed {
-  affixed: ShallowRef<boolean>;
-  /**
-   * Schedule a position update on the next animation frame.
-   */
-  updatePosition: () => void;
-}

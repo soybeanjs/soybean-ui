@@ -6,14 +6,14 @@ export { default as AffixContent } from './affix-content.vue';
 export { provideAffixUi } from './context';
 
 export type {
-  AffixRootProps,
   AffixCompactProps,
+  AffixCompactEmits,
+  AffixRootProps,
+  AffixRootEmits,
   AffixPlaceholderProps,
   AffixContentProps,
-  AffixRootEmits,
-  AffixCompactEmits,
-  AffixRootExposed,
   AffixTarget,
+  AffixState,
   AffixUiSlot,
   AffixUi
 } from './types';
