@@ -349,6 +349,10 @@ function getTypeDeclaration(symbol: ts.Symbol | undefined): ts.Declaration | und
   );
 }
 
+function getResolvedSymbol(symbol: ts.Symbol, checker: ts.TypeChecker): ts.Symbol {
+  return symbol.flags & ts.SymbolFlags.Alias ? checker.getAliasedSymbol(symbol) : symbol;
+}
+
 function getTypedocMemberReflections(reflection: DeclarationReflection): Map<string, DeclarationReflection> {
   const memberReflections = new Map<string, DeclarationReflection>();
 
@@ -604,6 +608,31 @@ function createTypeKey(typeName: string, sourcePath: string | null): string {
   return `${sourcePath ?? 'unknown'}:${typeName}`;
 }
 
+function createApiTypeReference(
+  symbol: ts.Symbol,
+  declaration: ts.Declaration,
+  type: ts.Type,
+  checker: ts.TypeChecker,
+  contextNode: ts.Node,
+  typeText: string = getTsTypeText(type, checker, contextNode),
+  name: string = symbol.name
+): ApiTypeReference {
+  const sourcePath = getDeclarationSourcePath(declaration);
+
+  return {
+    name,
+    kind: getTsDeclarationKind(declaration),
+    type: typeText,
+    resolvedType: null,
+    description: getSymbolDescription(symbol, checker),
+    sourcePath,
+    typeParameters: getTsDeclarationTypeParameters(declaration),
+    external: isDependencySourcePath(sourcePath),
+    members: [],
+    callables: []
+  };
+}
+
 function mergeReferencedTypes(...referencedTypeGroups: ApiTypeReference[][]): ApiTypeReference[] {
   const merged = new Map<string, ApiTypeReference>();
 
@@ -614,6 +643,72 @@ function mergeReferencedTypes(...referencedTypeGroups: ApiTypeReference[][]): Ap
   }
 
   return Array.from(merged.values()).sort((left, right) => left.name.localeCompare(right.name));
+}
+
+function getReferenceTypeName(typeName: ts.EntityName): string {
+  if (ts.isIdentifier(typeName)) {
+    return typeName.text;
+  }
+
+  return typeName.right.text;
+}
+
+function collectDirectDependencyReferencedTypes(
+  typeNode: ts.TypeNode,
+  checker: ts.TypeChecker,
+  seen: Set<string>
+): ApiTypeReference[] {
+  const collected = new Map<string, ApiTypeReference>();
+
+  function addDirectReference(currentTypeNode: ts.TypeReferenceNode): void {
+    const symbol = checker.getSymbolAtLocation(currentTypeNode.typeName);
+
+    if (!symbol) {
+      return;
+    }
+
+    const resolvedSymbol = getResolvedSymbol(symbol, checker);
+    const declaration = getTypeDeclaration(resolvedSymbol);
+    const sourcePath = getDeclarationSourcePath(declaration);
+    const referenceName = getReferenceTypeName(currentTypeNode.typeName);
+    const key = createTypeKey(referenceName, sourcePath);
+
+    if (
+      !declaration ||
+      !isDependencySourcePath(sourcePath) ||
+      seen.has(key) ||
+      builtInTypeNames.has(referenceName) ||
+      referenceName.startsWith('__')
+    ) {
+      return;
+    }
+
+    seen.add(key);
+    collected.set(
+      key,
+      createApiTypeReference(
+        resolvedSymbol,
+        declaration,
+        checker.getTypeAtLocation(currentTypeNode),
+        checker,
+        currentTypeNode,
+        currentTypeNode.getText(),
+        referenceName
+      )
+    );
+  }
+
+  function visit(node: ts.Node): void {
+    if (ts.isTypeReferenceNode(node)) {
+      addDirectReference(node);
+    }
+
+    ts.forEachChild(node, visit);
+  }
+
+  visit(typeNode);
+
+  return Array.from(collected.values()).sort((left, right) => left.name.localeCompare(right.name));
 }
 
 function collectReferencedTypes(
@@ -641,12 +736,17 @@ function collectReferencedTypes(
 
     if (symbol && declaration) {
       const sourcePath = getDeclarationSourcePath(declaration);
+      const external = isDependencySourcePath(sourcePath);
 
-      if (symbol.name.startsWith('__') && isDependencySourcePath(sourcePath)) {
+      if (symbol.name.startsWith('__') && external) {
         return;
       }
 
       if (sourcePath?.includes('/typescript/lib/')) {
+        return;
+      }
+
+      if (external) {
         return;
       }
 
@@ -655,25 +755,9 @@ function collectReferencedTypes(
       if (!seen.has(key) && !builtInTypeNames.has(symbol.name)) {
         seen.add(key);
 
-        const external = isDependencySourcePath(sourcePath);
-        const detail: ApiTypeReference = {
-          name: symbol.name,
-          kind: getTsDeclarationKind(declaration),
-          type: getTsTypeText(currentType, checker, contextNode),
-          resolvedType: null,
-          description: getSymbolDescription(symbol, checker),
-          sourcePath,
-          typeParameters: getTsDeclarationTypeParameters(declaration),
-          external,
-          members: [],
-          callables: []
-        };
+        const detail = createApiTypeReference(symbol, declaration, currentType, checker, contextNode);
 
-        if (
-          !external &&
-          currentDepth < 1 &&
-          (ts.isInterfaceDeclaration(declaration) || ts.isTypeAliasDeclaration(declaration))
-        ) {
+        if (currentDepth < 1 && (ts.isInterfaceDeclaration(declaration) || ts.isTypeAliasDeclaration(declaration))) {
           const nestedContext = createNestedTsTypeContext(declaration, checker);
           const symbols = getSectionPropertySymbols(nestedContext);
 
@@ -789,6 +873,23 @@ function getDeclarationTypeNode(declaration: ts.Declaration | undefined): ts.Typ
   return declaration.type as ts.TypeNode;
 }
 
+function collectDeclarationReferencedTypes(
+  declaration: ts.Declaration | undefined,
+  checker: ts.TypeChecker,
+  seen: Set<string>
+): ApiTypeReference[] {
+  const typeNode = getDeclarationTypeNode(declaration);
+
+  if (!typeNode) {
+    return [];
+  }
+
+  return mergeReferencedTypes(
+    collectDirectDependencyReferencedTypes(typeNode, checker, new Set(seen)),
+    collectReferencedTypes(checker.getTypeAtLocation(typeNode), checker, typeNode, new Set(seen))
+  );
+}
+
 function toApiMember(
   symbol: ts.Symbol,
   context: TsTypeContext,
@@ -811,14 +912,7 @@ function toApiMember(
     referencedTypes: includeReferencedTypes
       ? mergeReferencedTypes(
           collectReferencedTypes(type, context.checker, declaration ?? context.declaration, new Set(seen)),
-          getDeclarationTypeNode(declaration)
-            ? collectReferencedTypes(
-                context.checker.getTypeAtLocation(getDeclarationTypeNode(declaration)!),
-                context.checker,
-                getDeclarationTypeNode(declaration)!,
-                new Set(seen)
-              )
-            : []
+          collectDeclarationReferencedTypes(declaration, context.checker, seen)
         )
       : []
   };
@@ -844,14 +938,7 @@ function toApiCallable(
     referencedTypes: includeReferencedTypes
       ? mergeReferencedTypes(
           collectReferencedTypes(type, context.checker, declaration ?? context.declaration, new Set(seen)),
-          getDeclarationTypeNode(declaration)
-            ? collectReferencedTypes(
-                context.checker.getTypeAtLocation(getDeclarationTypeNode(declaration)!),
-                context.checker,
-                getDeclarationTypeNode(declaration)!,
-                new Set(seen)
-              )
-            : []
+          collectDeclarationReferencedTypes(declaration, context.checker, seen)
         )
       : []
   };

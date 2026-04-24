@@ -571,7 +571,20 @@
             "required": true,
             "description": "Event handler called when the escape key is down. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "pointerDownOutside",
@@ -680,7 +693,7 @@
               {
                 "name": "Side",
                 "kind": "typeAlias",
-                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "type": "Side",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
@@ -772,7 +785,20 @@
             "default": "[ ]",
             "inheritedFrom": "HoverCardPositionerImplProps.collisionBoundary",
             "sourcePath": "headless/src/components/popper/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Element",
+                "kind": "interface",
+                "type": "Element",
+                "resolvedType": null,
+                "description": "**`Element`** is the most general base class from which all element objects (i.e., objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collisionPadding",
@@ -786,7 +812,7 @@
               {
                 "name": "Padding",
                 "kind": "typeAlias",
-                "type": "number | { top?: number | undefined; right?: number | undefined; bottom?: number | undefined; left?: number | undefined; }",
+                "type": "Padding",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
@@ -889,21 +915,9 @@
               {
                 "name": "ReferenceElement",
                 "kind": "typeAlias",
-                "type": "Element | import(\"@floating-ui/dom\").VirtualElement",
+                "type": "ReferenceElement",
                 "resolvedType": null,
                 "description": "",
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "VirtualElement",
-                "kind": "interface",
-                "type": "import(\"@floating-ui/dom\").VirtualElement",
-                "resolvedType": null,
-                "description": "Custom positioning reference element.",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
@@ -943,7 +957,20 @@
             "required": true,
             "description": "Event handler called when the escape key is down. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "pointerDownOutside",

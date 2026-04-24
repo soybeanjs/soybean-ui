@@ -176,154 +176,7 @@
             "default": null,
             "inheritedFrom": "modelValue",
             "sourcePath": "headless/src/components/color-area/types.ts",
-            "referencedTypes": [
-              {
-                "name": "AnyColor",
-                "kind": "typeAlias",
-                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "CmykColor",
-                "kind": "typeAlias",
-                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HwbColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "PartialAlpha",
-                "kind": "typeAlias",
-                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [
-                  "O"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "XyzColor",
-                "kind": "typeAlias",
-                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "defaultValue",
@@ -333,154 +186,7 @@
             "default": null,
             "inheritedFrom": "defaultValue",
             "sourcePath": "headless/src/components/color-area/types.ts",
-            "referencedTypes": [
-              {
-                "name": "AnyColor",
-                "kind": "typeAlias",
-                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "CmykColor",
-                "kind": "typeAlias",
-                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HwbColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "PartialAlpha",
-                "kind": "typeAlias",
-                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [
-                  "O"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "XyzColor",
-                "kind": "typeAlias",
-                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "colorSpace",
@@ -624,103 +330,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -779,30 +403,6 @@
             "sourcePath": "headless/src/components/color-area/types.ts",
             "referencedTypes": [
               {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
                 "name": "NormalizedColor",
                 "kind": "typeAlias",
                 "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
@@ -811,30 +411,6 @@
                 "sourcePath": "headless/src/shared/color.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
                 "members": [],
                 "callables": []
               }
@@ -942,103 +518,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1068,154 +562,7 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/color-area/types.ts",
-            "referencedTypes": [
-              {
-                "name": "AnyColor",
-                "kind": "typeAlias",
-                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "CmykColor",
-                "kind": "typeAlias",
-                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HwbColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "PartialAlpha",
-                "kind": "typeAlias",
-                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [
-                  "O"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "XyzColor",
-                "kind": "typeAlias",
-                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "defaultValue",
@@ -1225,154 +572,7 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/color-area/types.ts",
-            "referencedTypes": [
-              {
-                "name": "AnyColor",
-                "kind": "typeAlias",
-                "type": "string | ((Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HslColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HsvColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").HwbColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").XyzColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").LchColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"../../../node_modules/@soybeanjs/colord/dist/types-CqJOx44_\").n, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklabColor, 'alpha'> & { alpha?: number; }) | (Omit<import(\"@soybeanjs/colord\").OklchColor, 'alpha'> & { alpha?: number; }))",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "CmykColor",
-                "kind": "typeAlias",
-                "type": "{ c: number; m: number; y: number; k: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HwbColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; w: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "LchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklabColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; a: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "PartialAlpha",
-                "kind": "typeAlias",
-                "type": "Omit<import(\"@soybeanjs/colord\").RgbColor, 'alpha'> & { alpha?: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [
-                  "O"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "XyzColor",
-                "kind": "typeAlias",
-                "type": "{ x: number; y: number; z: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "colorSpace",
@@ -1516,103 +716,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1671,30 +789,6 @@
             "sourcePath": "headless/src/components/color-area/types.ts",
             "referencedTypes": [
               {
-                "name": "HslColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; l: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "HsvColor",
-                "kind": "typeAlias",
-                "type": "{ h: number; s: number; v: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
                 "name": "NormalizedColor",
                 "kind": "typeAlias",
                 "type": "import(\"@soybeanjs/colord\").RgbColor | import(\"@soybeanjs/colord\").HslColor | import(\"@soybeanjs/colord\").HsvColor | import(\"@soybeanjs/colord\").OklchColor",
@@ -1703,30 +797,6 @@
                 "sourcePath": "headless/src/shared/color.ts",
                 "typeParameters": [],
                 "external": false,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "OklchColor",
-                "kind": "typeAlias",
-                "type": "{ l: number; c: number; h: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RgbColor",
-                "kind": "typeAlias",
-                "type": "{ r: number; g: number; b: number; } & { alpha: number; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@soybeanjs+colord@0.5.0/node_modules/@soybeanjs/colord/dist/types-CqJOx44_.d.ts",
-                "typeParameters": [],
-                "external": true,
                 "members": [],
                 "callables": []
               }
@@ -1784,103 +854,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []

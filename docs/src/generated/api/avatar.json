@@ -272,7 +272,20 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/avatar/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "ImgHTMLAttributes",
+                "kind": "interface",
+                "type": "ImgHTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "crossorigin",
@@ -282,7 +295,20 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/avatar/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "ImgHTMLAttributes",
+                "kind": "interface",
+                "type": "ImgHTMLAttributes",
+                "resolvedType": null,
+                "description": "",
+                "sourcePath": "node_modules/.pnpm/@vue+runtime-dom@3.5.33/node_modules/@vue/runtime-dom/dist/runtime-dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "callables": [],

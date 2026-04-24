@@ -347,7 +347,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "select",
@@ -356,7 +369,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "focus",
@@ -365,7 +391,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "blur",
@@ -374,7 +413,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseover",
@@ -383,7 +435,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseleave",
@@ -392,7 +457,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "paste",
@@ -401,7 +479,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "The **`ClipboardEvent`** interface of the Clipboard API represents events providing information related to modification of the clipboard, that is cut, copy, and paste events.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": [
@@ -667,7 +758,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "select",
@@ -676,7 +780,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "focus",
@@ -685,7 +802,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "blur",
@@ -694,7 +824,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseover",
@@ -703,7 +846,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseleave",
@@ -712,7 +868,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "paste",
@@ -721,7 +890,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "The **`ClipboardEvent`** interface of the Clipboard API represents events providing information related to modification of the clipboard, that is cut, copy, and paste events.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": [
@@ -1148,7 +1330,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "select",
@@ -1157,7 +1352,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "focus",
@@ -1166,7 +1374,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "blur",
@@ -1175,7 +1396,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "FocusEvent",
+                "kind": "interface",
+                "type": "FocusEvent",
+                "resolvedType": null,
+                "description": "The **`FocusEvent`** interface represents focus-related events, including focus, blur, focusin, and focusout.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/FocusEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseover",
@@ -1184,7 +1418,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "mouseleave",
@@ -1193,7 +1440,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "MouseEvent",
+                "kind": "interface",
+                "type": "MouseEvent",
+                "resolvedType": null,
+                "description": "The **`MouseEvent`** interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include click, dblclick, mouseup, mousedown.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/MouseEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "paste",
@@ -1202,7 +1462,20 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/input-otp/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "ClipboardEvent",
+                "kind": "interface",
+                "type": "ClipboardEvent",
+                "resolvedType": null,
+                "description": "The **`ClipboardEvent`** interface of the Clipboard API represents events providing information related to modification of the clipboard, that is cut, copy, and paste events.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/ClipboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           }
         ],
         "referencedTypes": []

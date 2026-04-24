@@ -65,20 +65,7 @@
             "default": null,
             "inheritedFrom": "opts",
             "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": [
-              {
-                "name": "OptionsType",
-                "kind": "typeAlias",
-                "type": "{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; } & { active: boolean; breakpoints: { [key: string]: Omit<Partial<import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreateOptionsType<{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; }>>, 'breakpoints'>; }; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "plugins",
@@ -157,20 +144,7 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": [
-              {
-                "name": "EmblaCarouselType",
-                "kind": "typeAlias",
-                "type": "{ canScrollNext: () => boolean; canScrollPrev: () => boolean; containerNode: () => HTMLElement; internalEngine: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EngineType; destroy: () => void; off: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['off']; on: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['on']; emit: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['emit']; plugins: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginsType; previousScrollSnap: () => number; reInit: (options?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaOptionsType, plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginType[]) => void; rootNode: () => HTMLElement; scrollNext: (jump?: boolean) => void; scrollPrev: (jump?: boolean) => void; scrollProgress: () => number; scrollSnapList: () => number[]; scrollTo: (index: number, jump?: boolean) => void; selectedScrollSnap: () => number; slideNodes: () => HTMLElement[]; slidesInView: () => number[]; slidesNotInView: () => number[]; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           }
         ],
         "referencedTypes": [
@@ -290,103 +264,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -461,103 +353,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -587,20 +397,7 @@
             "required": true,
             "description": "",
             "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": [
-              {
-                "name": "EmblaCarouselType",
-                "kind": "typeAlias",
-                "type": "{ canScrollNext: () => boolean; canScrollPrev: () => boolean; containerNode: () => HTMLElement; internalEngine: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EngineType; destroy: () => void; off: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['off']; on: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['on']; emit: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EventHandler\").EventHandlerType['emit']; plugins: () => import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginsType; previousScrollSnap: () => number; reInit: (options?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaOptionsType, plugins?: import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").EmblaPluginType[]) => void; rootNode: () => HTMLElement; scrollNext: (jump?: boolean) => void; scrollPrev: (jump?: boolean) => void; scrollProgress: () => number; scrollSnapList: () => number[]; scrollTo: (index: number, jump?: boolean) => void; selectedScrollSnap: () => number; slideNodes: () => HTMLElement[]; slidesInView: () => number[]; slidesNotInView: () => number[]; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/EmblaCarousel.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           }
         ],
         "referencedTypes": []
@@ -622,20 +419,7 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "headless/src/components/carousel/types.ts",
-            "referencedTypes": [
-              {
-                "name": "OptionsType",
-                "kind": "typeAlias",
-                "type": "{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; } & { active: boolean; breakpoints: { [key: string]: Omit<Partial<import(\".pnpm/embla-carousel@8.6.0/node_modules/embla-carousel\").CreateOptionsType<{ align: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Alignment\").AlignmentOptionType; axis: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisOptionType; container: string | HTMLElement | null; slides: string | HTMLElement[] | NodeListOf<HTMLElement> | null; containScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ScrollContain\").ScrollContainOptionType; direction: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Axis\").AxisDirectionOptionType; slidesToScroll: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesToScroll\").SlidesToScrollOptionType; dragFree: boolean; dragThreshold: number; inViewThreshold: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesInView\").SlidesInViewOptionsType; loop: boolean; skipSnaps: boolean; duration: number; startIndex: number; watchDrag: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/DragHandler\").DragHandlerOptionType; watchResize: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/ResizeHandler\").ResizeHandlerOptionType; watchSlides: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlidesHandler\").SlidesHandlerOptionType; watchFocus: import(\"../../../../node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/SlideFocus\").FocusHandlerOptionType; }>>, 'breakpoints'>; }; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/embla-carousel@8.6.0/node_modules/embla-carousel/esm/components/Options.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              }
-            ]
+            "referencedTypes": []
           },
           {
             "name": "plugins",

@@ -236,7 +236,7 @@
               {
                 "name": "VNode",
                 "kind": "interface",
-                "type": "VNode<import(\"vue\").RendererNode, import(\"vue\").RendererElement, { [key: string]: any; }>",
+                "type": "VNode",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",

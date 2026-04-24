@@ -1349,7 +1349,20 @@
             "required": true,
             "description": "Event handler called when the escape key is down. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "pointerDownOutside",
@@ -1436,7 +1449,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on open. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "closeAutoFocus",
@@ -1445,7 +1471,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on close. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "placed",
@@ -1735,21 +1774,9 @@
               {
                 "name": "ReferenceElement",
                 "kind": "typeAlias",
-                "type": "Element | import(\"@floating-ui/dom\").VirtualElement",
+                "type": "ReferenceElement",
                 "resolvedType": null,
                 "description": "",
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "VirtualElement",
-                "kind": "interface",
-                "type": "import(\"@floating-ui/dom\").VirtualElement",
-                "resolvedType": null,
-                "description": "Custom positioning reference element.",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
@@ -1778,103 +1805,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -1926,103 +1871,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -2096,7 +1959,20 @@
             "required": true,
             "description": "Event handler called when the escape key is down. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "pointerDownOutside",
@@ -2183,7 +2059,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on open. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "closeAutoFocus",
@@ -2192,7 +2081,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on close. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "placed",
@@ -3695,7 +3597,20 @@
             "required": true,
             "description": "Event handler called when the escape key is down. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "KeyboardEvent",
+                "kind": "interface",
+                "type": "KeyboardEvent",
+                "resolvedType": null,
+                "description": "**`KeyboardEvent`** objects describe a user interaction with the keyboard; each event describes a single interaction between the user and a key (or combination of a key with modifier keys) on the keyboard. The event type (keydown, keypress, or keyup) identifies what kind of keyboard activity occurred.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/KeyboardEvent)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "pointerDownOutside",
@@ -3782,7 +3697,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on open. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "closeAutoFocus",
@@ -3791,7 +3719,20 @@
             "required": true,
             "description": "Event handler called when auto-focusing on close. Can be prevented.",
             "sourcePath": "headless/src/types/component.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Event",
+                "kind": "interface",
+                "type": "Event",
+                "resolvedType": null,
+                "description": "The **`Event`** interface represents an event which takes place on an EventTarget.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "placed",
@@ -3981,7 +3922,7 @@
               {
                 "name": "Side",
                 "kind": "typeAlias",
-                "type": "'top' | 'right' | 'bottom' | 'left'",
+                "type": "Side",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
@@ -4073,7 +4014,20 @@
             "default": "[ ]",
             "inheritedFrom": "ComboboxContentImplProps.collisionBoundary",
             "sourcePath": "headless/src/components/popper/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "Element",
+                "kind": "interface",
+                "type": "Element",
+                "resolvedType": null,
+                "description": "**`Element`** is the most general base class from which all element objects (i.e., objects that represent elements) in a Document inherit. It only has methods and properties common to all kinds of elements. More specific classes inherit from Element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "collisionPadding",
@@ -4087,7 +4041,7 @@
               {
                 "name": "Padding",
                 "kind": "typeAlias",
-                "type": "number | { top?: number | undefined; right?: number | undefined; bottom?: number | undefined; left?: number | undefined; }",
+                "type": "Padding",
                 "resolvedType": null,
                 "description": "",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.d.mts",
@@ -4190,21 +4144,9 @@
               {
                 "name": "ReferenceElement",
                 "kind": "typeAlias",
-                "type": "Element | import(\"@floating-ui/dom\").VirtualElement",
+                "type": "ReferenceElement",
                 "resolvedType": null,
                 "description": "",
-                "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "VirtualElement",
-                "kind": "interface",
-                "type": "import(\"@floating-ui/dom\").VirtualElement",
-                "resolvedType": null,
-                "description": "Custom positioning reference element.",
                 "sourcePath": "node_modules/.pnpm/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.d.mts",
                 "typeParameters": [],
                 "external": true,
@@ -4278,103 +4220,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -4487,7 +4347,20 @@
             "default": null,
             "inheritedFrom": "inputRef",
             "sourcePath": "headless/src/components/listbox/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "HTMLInputElement",
+                "kind": "interface",
+                "type": "HTMLInputElement",
+                "resolvedType": null,
+                "description": "The **`HTMLInputElement`** interface provides special properties and methods for manipulating the options, layout, and presentation of <input> elements.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "controlProps",
@@ -4734,103 +4607,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -4872,103 +4663,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5267,103 +4976,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -5415,103 +5042,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []

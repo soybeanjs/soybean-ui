@@ -98,7 +98,20 @@
             "default": null,
             "inheritedFrom": null,
             "sourcePath": "src/components/input/types.ts",
-            "referencedTypes": []
+            "referencedTypes": [
+              {
+                "name": "HTMLInputElement",
+                "kind": "interface",
+                "type": "HTMLInputElement",
+                "resolvedType": null,
+                "description": "The **`HTMLInputElement`** interface provides special properties and methods for manipulating the options, layout, and presentation of <input> elements.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement)",
+                "sourcePath": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.dom.d.ts",
+                "typeParameters": [],
+                "external": true,
+                "members": [],
+                "callables": []
+              }
+            ]
           },
           {
             "name": "controlProps",

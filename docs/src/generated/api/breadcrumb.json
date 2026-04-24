@@ -695,25 +695,15 @@
             "sourcePath": "headless/src/components/link/types.ts",
             "referencedTypes": [
               {
-                "name": "RouteLocationAsPathGeneric",
-                "kind": "interface",
-                "type": "import(\"vue-router\").RouteLocationAsPathGeneric",
+                "name": "RouteLocationRaw",
+                "kind": "typeAlias",
+                "type": "RouteLocationRaw",
                 "resolvedType": null,
-                "description": "Generic version of {@link RouteLocationAsPath}. It is used when no {@link RouteMap} is provided.",
+                "description": "Route location that can be passed to `router.push()` and other user-facing APIs.",
                 "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "RouteLocationAsRelativeGeneric",
-                "kind": "interface",
-                "type": "import(\"vue-router\").RouteLocationAsRelativeGeneric",
-                "resolvedType": null,
-                "description": "Generic version of {@link RouteLocationAsRelative}. It is used when no {@link RouteMap} is provided.",
-                "sourcePath": "node_modules/.pnpm/vue-router@5.0.6_@vue+compiler-sfc@3.5.33_pinia@3.0.4_typescript@6.0.3_vue@3.5.33_types_5291f2364aa3c25c31ad23c437ad644c/node_modules/vue-router/dist/index-D_VEAp3P.d.ts",
-                "typeParameters": [],
+                "typeParameters": [
+                  "Name extends keyof RouteMap = keyof RouteMap"
+                ],
                 "external": true,
                 "members": [],
                 "callables": []
@@ -923,103 +913,21 @@
             "sourcePath": "headless/src/components/primitive/types.ts",
             "referencedTypes": [
               {
-                "name": "ComponentOptions",
+                "name": "Component",
                 "kind": "typeAlias",
-                "type": "import(\"vue\").ComponentOptionsBase<any, any, any, import(\"vue\").ComputedOptions, import(\"vue\").MethodOptions, any, any, any, string, {}, {}, string, {}, {}, {}, string, import(\"vue\").ComponentProvideOptions> & ThisType<any>",
+                "type": "Component",
                 "resolvedType": null,
-                "description": "",
+                "description": "A type used in public APIs where a component type is expected.\nThe constructor type is an artificial type returned by defineComponent().",
                 "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
                 "typeParameters": [
-                  "Props = {}",
-                  "RawBindings = any",
-                  "D = any",
-                  "C extends ComputedOptions = any",
-                  "M extends MethodOptions = any",
-                  "Mixin extends ComponentOptionsMixin = any",
-                  "Extends extends ComponentOptionsMixin = any",
-                  "E extends EmitsOptions = any",
-                  "EE extends string = string",
-                  "Defaults = {}",
-                  "I extends ComponentInjectOptions = {}",
-                  "II extends string = string",
-                  "S extends SlotsType = {}",
-                  "LC extends Record<string, Component> = {}",
-                  "Directives extends Record<string, Directive> = {}",
-                  "Exposed extends string = string",
-                  "Provide extends ComponentProvideOptions = ComponentProvideOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentProvideOptions",
-                "kind": "typeAlias",
-                "type": "Function | { [x: string]: unknown; [x: symbol]: unknown; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComponentPublicInstanceConstructor",
-                "kind": "typeAlias",
-                "type": "{ new (...args: any[]): any; __isFragment?: never; __isTeleport?: never; __isSuspense?: never; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "T extends ComponentPublicInstance<Props, RawBindings, D, C, M> = ComponentPublicInstance<any>",
-                  "Props = any",
+                  "PropsOrInstance = any",
                   "RawBindings = any",
                   "D = any",
                   "C extends ComputedOptions = ComputedOptions",
-                  "M extends MethodOptions = MethodOptions"
-                ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "ComputedOptions",
-                "kind": "typeAlias",
-                "type": "{ [x: string]: import(\"vue\").ComputedGetter<any> | import(\"vue\").WritableComputedOptions<any, any>; }",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "FunctionalComponent",
-                "kind": "interface",
-                "type": "import(\"vue\").FunctionalComponent<any, {}, any, {}>",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [
-                  "P = {}",
+                  "M extends MethodOptions = MethodOptions",
                   "E extends EmitsOptions | Record<string, any[]> = {}",
-                  "S extends Record<string, any> = any",
-                  "EE extends EmitsOptions = ShortEmitsToObject<E>"
+                  "S extends Record<string, any> = any"
                 ],
-                "external": true,
-                "members": [],
-                "callables": []
-              },
-              {
-                "name": "MethodOptions",
-                "kind": "interface",
-                "type": "import(\"vue\").MethodOptions",
-                "resolvedType": null,
-                "description": "",
-                "sourcePath": "node_modules/.pnpm/@vue+runtime-core@3.5.33/node_modules/@vue/runtime-core/dist/runtime-core.d.ts",
-                "typeParameters": [],
                 "external": true,
                 "members": [],
                 "callables": []
