@@ -10,7 +10,7 @@ import type {
 } from '../../types';
 import type { CollapsibleContentProps, CollapsibleTriggerProps } from '../collapsible/types';
 import type { CollapsibleRootProps } from '../collapsible/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 
 export interface AccordionRootProps<M extends boolean = false>
   extends SelectionProps<M>, /** @vue-ignore */ HTMLAttributes {

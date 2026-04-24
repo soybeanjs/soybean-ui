@@ -2,7 +2,7 @@
 import { useOmitProps } from '../../composables';
 import type { AcceptableBooleanValue } from '../../types';
 import MenuSeparator from '../separator/separator-root.vue';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import { useMenuUi } from './context';
 import { useCommonSlotNames } from './hooks';
@@ -59,7 +59,7 @@ const ui = useMenuUi();
           <template #indicator>
             <MenuItemIndicator v-bind="indicatorProps">
               <slot name="item-indicator-icon" v-bind="item">
-                <IconRender icon="icon-park-outline:dot" />
+                <Icon icon="icon-park-outline:dot" />
               </slot>
             </MenuItemIndicator>
           </template>

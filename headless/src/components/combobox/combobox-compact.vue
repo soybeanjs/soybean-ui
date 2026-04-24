@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import type { MaybeArray } from '../../types';
 import { useOmitProps } from '../../composables';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import ComboboxAnchor from './combobox-anchor.vue';
 import ComboboxCancel from './combobox-cancel.vue';
 import ComboboxContent from './combobox-content.vue';
@@ -135,7 +135,7 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
         </slot>
         <slot name="trigger-trailing" />
         <slot name="trigger-icon">
-          <IconRender icon="lucide:chevrons-up-down" :class="triggerIconClass" />
+          <Icon icon="lucide:chevrons-up-down" :class="triggerIconClass" />
         </slot>
       </ComboboxTrigger>
     </ComboboxAnchor>
@@ -151,12 +151,12 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
         <ComboboxInput v-bind="inputProps">
           <template #leading="slotProps">
             <slot name="input-leading" v-bind="slotProps">
-              <IconRender icon="lucide:search" />
+              <Icon icon="lucide:search" />
             </slot>
           </template>
           <template #trailing="slotProps">
             <ComboboxCancel v-if="clearable" v-bind="cancelProps" :aria-label="clearLabel">
-              <IconRender icon="lucide:x" />
+              <Icon icon="lucide:x" />
             </ComboboxCancel>
             <slot name="input-trailing" v-bind="slotProps" />
           </template>
@@ -182,13 +182,13 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
                     @select="emit('select', $event)"
                   >
                     <slot name="item-leading" :item="child">
-                      <IconRender v-if="child.icon" :icon="child.icon" />
+                      <Icon v-if="child.icon" :icon="child.icon" />
                     </slot>
                     <slot name="item-text" :item="child">{{ child.label }}</slot>
                     <slot name="item-trailing" :item="child" />
                     <ComboboxItemIndicator v-bind="itemIndicatorProps">
                       <slot name="item-indicator" :item="child">
-                        <IconRender icon="lucide:check" />
+                        <Icon icon="lucide:check" />
                       </slot>
                     </ComboboxItemIndicator>
                   </ComboboxItem>
@@ -205,13 +205,13 @@ const getTriggerProps = (modelValue: MaybeArray<string> | undefined) => ({
                 @select="emit('select', $event)"
               >
                 <slot name="item-leading" :item="item">
-                  <IconRender v-if="item.icon" :icon="item.icon" />
+                  <Icon v-if="item.icon" :icon="item.icon" />
                 </slot>
                 <slot name="item-text" :item="item">{{ item.label }}</slot>
                 <slot name="item-trailing" :item="item" />
                 <ComboboxItemIndicator v-bind="itemIndicatorProps">
                   <slot name="item-indicator" :item="item">
-                    <IconRender icon="lucide:check" />
+                    <Icon icon="lucide:check" />
                   </slot>
                 </ComboboxItemIndicator>
               </ComboboxItem>

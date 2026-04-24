@@ -6,7 +6,7 @@ import AccordionHeader from './accordion-header.vue';
 import AccordionItem from './accordion-item.vue';
 import AccordionRoot from './accordion-root.vue';
 import AccordionTrigger from './accordion-trigger.vue';
-import Icon from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import type { AccordionCompactProps, AccordionCompactEmits, AccordionCompactSlots, AccordionOptionData } from './types';
 
 defineOptions({

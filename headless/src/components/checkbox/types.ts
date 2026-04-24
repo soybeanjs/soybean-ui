@@ -9,7 +9,7 @@ import type {
 } from '../../types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { LabelProps as CheckboxLabelProps } from '../label/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { RovingFocusGroupProps } from '../roving-focus/types';
 
 export interface CheckboxRootProps extends FormFieldCommonProps, /** @vue-ignore */ HTMLAttributes {

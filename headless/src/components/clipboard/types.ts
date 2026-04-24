@@ -1,5 +1,5 @@
 import type { ButtonProps as _ButtonProps } from '../button/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 
 export type ClipboardState = 'ready' | 'copied' | 'unsupported';
 

@@ -12,7 +12,7 @@ import type {
   TrapFocusProps,
   UiClass
 } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
 import type { PortalProps as MenuPortalProps } from '../portal/types';

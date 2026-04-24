@@ -9,7 +9,7 @@ import type {
   UiClass
 } from '../../types';
 import type { ButtonProps } from '../button/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { PortalProps as DialogPortalProps } from '../portal/types';
 import type { PrimitiveProps } from '../primitive/types';
 

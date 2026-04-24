@@ -4,20 +4,19 @@ import type { ShallowRef } from 'vue';
 import { useFuse } from '@vueuse/integrations/useFuse';
 import { defu } from 'defu';
 import { useControllableState, useOmitProps } from '../../composables';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
-import {
-  ListboxContent,
-  ListboxFilter,
-  ListboxGroup,
-  ListboxGroupLabel,
-  ListboxItem,
-  ListboxRoot
-} from '../listbox';
+import { ListboxContent, ListboxFilter, ListboxGroup, ListboxGroupLabel, ListboxItem, ListboxRoot } from '../listbox';
 import SeparatorRoot from '../separator/separator-root.vue';
 import { useCommandUi } from './context';
 import { getCommandItemOptions, getCommandSearchOptions, isGroupOption } from './shared';
-import type { CommandCompactEmits, CommandCompactProps, CommandCompactSlots, CommandOptionData, CommandSingleOptionData } from './types';
+import type {
+  CommandCompactEmits,
+  CommandCompactProps,
+  CommandCompactSlots,
+  CommandOptionData,
+  CommandSingleOptionData
+} from './types';
 
 defineOptions({
   name: 'CommandCompact'
@@ -72,7 +71,9 @@ const searchItems = computed(() => getCommandSearchOptions(props.items));
 
 const { results } = useFuse(searchTerm, searchItems, fuseOptions);
 
-const filteredItems = computed<CommandOptionData<T>[]>(() => getCommandItemOptions(results.value.map(result => result.item)));
+const filteredItems = computed<CommandOptionData<T>[]>(() =>
+  getCommandItemOptions(results.value.map(result => result.item))
+);
 
 const inputProps = computed(() => ({
   ...props.inputProps,
@@ -106,11 +107,11 @@ const getItemKey = (item: CommandOptionData<T>) => {
     <ListboxFilter v-bind="inputProps" v-model="searchTerm" autofocus>
       <template #leading="{ clear }">
         <slot name="input-leading" :clear="clear">
-          <IconRender icon="lucide:search" />
+          <Icon icon="lucide:search" />
         </slot>
       </template>
       <template #trailing="{ clear }">
-        <IconRender v-if="clearable" icon="lucide:x" :class="ui.inputClearable" @click="clear" />
+        <Icon v-if="clearable" icon="lucide:x" :class="ui.inputClearable" @click="clear" />
         <slot name="input-trailing" :clear="clear" />
       </template>
     </ListboxFilter>
@@ -131,7 +132,7 @@ const getItemKey = (item: CommandOptionData<T>) => {
               @select="emit('select', $event)"
             >
               <slot name="item-leading" :item="child">
-                <IconRender v-if="child.icon" :icon="child.icon" />
+                <Icon v-if="child.icon" :icon="child.icon" />
               </slot>
               <span :class="ui.itemLabel" v-bind="itemLabelProps">
                 <slot name="item-label" :item="child">
@@ -145,9 +146,14 @@ const getItemKey = (item: CommandOptionData<T>) => {
           <SeparatorRoot v-if="item.separator" v-bind="separatorProps" decorative :class="ui.separator" />
         </template>
         <template v-else>
-          <ListboxItem v-bind="itemProps" :value="item.value" :disabled="item.disabled" @select="emit('select', $event)">
+          <ListboxItem
+            v-bind="itemProps"
+            :value="item.value"
+            :disabled="item.disabled"
+            @select="emit('select', $event)"
+          >
             <slot name="item-leading" :item="item">
-              <IconRender v-if="item.icon" :icon="item.icon" />
+              <Icon v-if="item.icon" :icon="item.icon" />
             </slot>
             <span :class="ui.itemLabel" v-bind="itemLabelProps">
               <slot name="item-label" :item="item">

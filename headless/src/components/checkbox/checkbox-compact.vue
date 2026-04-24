@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, useId } from 'vue';
 import { useOmitProps } from '../../composables';
-import Icon from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import { useCheckboxUi } from './context';
 import CheckboxRoot from './checkbox-root.vue';
 import CheckboxControl from './checkbox-control.vue';

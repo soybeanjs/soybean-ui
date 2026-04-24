@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { useForwardListeners, useOmitProps } from '../../composables';
 import type { DefinedValue } from '../../types';
-import Icon from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import Kbd from '../kbd/kbd.vue';
 import Link from '../link/link.vue';
 import MenuSeparator from '../separator/separator-root.vue';

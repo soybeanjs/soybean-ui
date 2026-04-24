@@ -12,7 +12,7 @@ import type {
   SelectionProps,
   UiClass
 } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 import type { PopperAnchorProps, PopperArrowProps, PopperPositionerProps } from '../popper/types';
 import type { PortalProps } from '../portal/types';
@@ -161,10 +161,14 @@ export interface SelectGroupOptionData<T extends DefinedValue = DefinedValue> ex
   items: SelectSingleOptionData<T>[];
 }
 
-export type SelectOptionData<T extends DefinedValue = DefinedValue> = SelectSingleOptionData<T> | SelectGroupOptionData<T>;
+export type SelectOptionData<T extends DefinedValue = DefinedValue> =
+  | SelectSingleOptionData<T>
+  | SelectGroupOptionData<T>;
 
-export interface SelectCompactProps<T extends DefinedValue = DefinedValue, M extends boolean = false>
-  extends SelectRootProps<T, M> {
+export interface SelectCompactProps<
+  T extends DefinedValue = DefinedValue,
+  M extends boolean = false
+> extends SelectRootProps<T, M> {
   items: SelectOptionData<T>[];
   showArrow?: boolean;
   triggerProps?: SelectTriggerProps;
@@ -187,11 +191,16 @@ export interface SelectCompactProps<T extends DefinedValue = DefinedValue, M ext
   arrowProps?: PopperArrowProps;
 }
 
-export type SelectCompactEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectRootEmits<T, M> &
+export type SelectCompactEmits<T extends DefinedValue = DefinedValue, M extends boolean = false> = SelectRootEmits<
+  T,
+  M
+> &
   SelectContentEmits &
   SelectItemEmits<T>;
 
-type SelectCompactModelValue<T extends DefinedValue = DefinedValue, M extends boolean = false> = (M extends true ? T[] : T) | undefined;
+type SelectCompactModelValue<T extends DefinedValue = DefinedValue, M extends boolean = false> =
+  | (M extends true ? T[] : T)
+  | undefined;
 
 export interface SelectCompactTriggerValueSlotProps<T extends DefinedValue = DefinedValue, M extends boolean = false> {
   modelValue: SelectCompactModelValue<T, M>;

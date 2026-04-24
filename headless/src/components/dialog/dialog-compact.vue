@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue';
 import { useForwardListeners, useOmitProps } from '../../composables';
-import Icon from '../icon/icon-render.vue';
-import type { IconValue } from '../icon/types';
+import Icon from '../_icon/icon.vue';
+import type { IconValue } from '../_icon/types';
 import DialogPortal from '../portal/portal.vue';
 import { useDialogUi, useDialogProviderContext, provideDialogCompactContext } from './context';
 import DialogClose from './dialog-close.vue';

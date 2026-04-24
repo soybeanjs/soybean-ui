@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSlots } from 'vue';
 import { useOmitProps } from '../../composables';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import AlertClose from './alert-close.vue';
 import AlertContent from './alert-content.vue';
 import AlertDescription from './alert-description.vue';
@@ -41,7 +41,7 @@ const ui = useAlertUi();
 <template>
   <AlertRoot v-bind="forwardedProps" @update:open="emit('update:open', $event)">
     <slot name="leading">
-      <IconRender v-if="icon" :icon="icon" :class="ui.icon" />
+      <Icon v-if="icon" :icon="icon" :class="ui.icon" />
     </slot>
     <AlertContent v-bind="contentProps">
       <AlertTitle v-if="slots.title || title" v-bind="titleProps">
@@ -55,7 +55,7 @@ const ui = useAlertUi();
     <slot name="trailing" />
     <AlertClose v-if="closable" v-bind="closeProps">
       <slot name="close">
-        <IconRender icon="lucide:x" />
+        <Icon icon="lucide:x" />
       </slot>
     </AlertClose>
   </AlertRoot>

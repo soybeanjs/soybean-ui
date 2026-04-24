@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useMenuUi } from './context';
-import IconRender from '../icon/icon-render.vue';
-import type { IconValue } from '../icon/types';
+import Icon from '../_icon/icon.vue';
+import type { IconValue } from '../_icon/types';
 
 interface Props {
   icon?: IconValue;
@@ -33,7 +33,7 @@ defineSlots<Slots>();
   <slot name="indicator" />
   <slot name="item">
     <slot name="item-leading">
-      <IconRender v-if="icon" :icon="icon" :class="ui.itemIcon" />
+      <Icon v-if="icon" :icon="icon" :class="ui.itemIcon" />
     </slot>
     <span>{{ label }}</span>
     <slot name="link-icon" />

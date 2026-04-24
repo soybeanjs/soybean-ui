@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import { usePickProps, useForwardListeners } from '../../composables';
 import type { DefinedValue } from '../../types';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import Link from '../link/link.vue';
 import { MenuPortal, MenuOptionsCompact } from '../menu';
 import { useMenuUi } from '../menu/context';
@@ -77,11 +77,11 @@ const contentProps = computed(() => {
         >
           <slot name="trigger" :item="item">
             <slot name="item-leading" :item="item">
-              <IconRender v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+              <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
             </slot>
             <span>{{ item.label }}</span>
             <slot v-if="isHref" name="item-link-icon" :item="item">
-              <IconRender icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
+              <Icon icon="lucide:arrow-up-right" :class="ui.itemLinkIcon" />
             </slot>
             <slot name="item-trailing" :item="item" />
           </slot>
@@ -91,7 +91,7 @@ const contentProps = computed(() => {
         <MenubarTrigger v-bind="triggerProps">
           <slot name="trigger" :item="item">
             <slot name="item-leading" :item="item">
-              <IconRender v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
+              <Icon v-if="item.icon" :icon="item.icon" :class="ui.itemIcon" />
             </slot>
             <span>{{ item.label }}</span>
             <slot name="item-trailing" :item="item" />

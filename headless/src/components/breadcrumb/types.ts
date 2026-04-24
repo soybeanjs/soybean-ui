@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'vue';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { LinkBaseProps, LinkProps } from '../link/types';
 import type { UiClass } from '../../types';
 
@@ -28,8 +28,10 @@ export interface BreadcrumbOptionData extends LinkBaseProps {
   disabled?: boolean;
 }
 
-export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = BreadcrumbOptionData>
-  extends Omit<BreadcrumbRootProps, 'onClick'> {
+export interface BreadcrumbCompactProps<T extends BreadcrumbOptionData = BreadcrumbOptionData> extends Omit<
+  BreadcrumbRootProps,
+  'onClick'
+> {
   items: T[];
   /**
    * The range of items to show ellipsis.

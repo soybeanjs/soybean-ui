@@ -3,7 +3,7 @@ import { computed, shallowRef, useTemplateRef, watch, watchEffect, onWatcherClea
 import type { CSSProperties } from 'vue';
 import { useMounted, useDocumentVisibility, useElementSize } from '@vueuse/core';
 import type { Point, SwipeDirection } from '../../types';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import Button from '../button/button.vue';
 import { useToasterContext, useToastUi } from './context';
 import {
@@ -395,7 +395,7 @@ watchEffect(() => {
       <component :is="toast.custom" v-if="toast.custom" />
       <template v-else>
         <h3 v-bind="titleProps" :class="[ui.title, toast.ui?.title]" data-slot="title">
-          <IconRender v-if="icon" v-bind="iconProps" :icon="icon" :class="[ui.icon, toast.ui?.icon]" />
+          <Icon v-if="icon" v-bind="iconProps" :icon="icon" :class="[ui.icon, toast.ui?.icon]" />
           <ToastRender :is="toast.title" />
         </h3>
         <p
@@ -448,7 +448,7 @@ watchEffect(() => {
       data-slot="close"
       @click="onCloseToast"
     >
-      <IconRender :icon="icons?.close" />
+      <Icon :icon="icons?.close" />
     </Button>
   </li>
 </template>

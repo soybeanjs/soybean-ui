@@ -1,6 +1,6 @@
 import type { VNode, OlHTMLAttributes, LiHTMLAttributes, HTMLAttributes, ShallowRef, ComputedRef } from 'vue';
 import type { Direction, Side, SwipeDirection, PropsToContext, UiClass } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 
 export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
 

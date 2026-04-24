@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import type { MaybeArray } from '../../types';
 import type { DefinedValue } from '../../types';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import SelectArrow from './select-arrow.vue';
 import SelectContent from './select-content.vue';
 import SelectGroup from './select-group.vue';
@@ -103,7 +103,11 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
 </script>
 
 <template>
-  <SelectRoot v-bind="forwardedProps" @update:model-value="handleModelValueChange" @update:open="emit('update:open', $event)">
+  <SelectRoot
+    v-bind="forwardedProps"
+    @update:model-value="handleModelValueChange"
+    @update:open="emit('update:open', $event)"
+  >
     <SelectTrigger v-bind="triggerProps">
       <slot name="trigger-leading" />
       <SelectValue v-slot="slotProps" v-bind="valueProps">
@@ -112,7 +116,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
       <slot name="trigger-trailing" />
       <SelectTriggerIcon v-bind="triggerIconProps">
         <slot name="trigger-icon">
-          <IconRender icon="lucide:chevrons-up-down" />
+          <Icon icon="lucide:chevrons-up-down" />
         </slot>
       </SelectTriggerIcon>
     </SelectTrigger>
@@ -125,7 +129,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
       >
         <SelectScrollUpButton v-bind="scrollUpButtonProps">
           <slot name="scroll-up-button">
-            <IconRender icon="lucide:chevron-up" />
+            <Icon icon="lucide:chevron-up" />
           </slot>
         </SelectScrollUpButton>
         <SelectViewport v-bind="viewportProps">
@@ -145,7 +149,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
                     @select="handleSelect($event)"
                   >
                     <slot name="item-leading" :item="child">
-                      <IconRender v-if="child.icon" :icon="child.icon" />
+                      <Icon v-if="child.icon" :icon="child.icon" />
                     </slot>
                     <SelectItemText v-bind="itemTextProps">
                       <slot name="item-text" :item="child">{{ child.label }}</slot>
@@ -153,7 +157,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
                     <slot name="item-trailing" :item="child" />
                     <SelectItemIndicator v-bind="itemIndicatorProps">
                       <slot name="item-indicator" :item="child">
-                        <IconRender icon="lucide:check" />
+                        <Icon icon="lucide:check" />
                       </slot>
                     </SelectItemIndicator>
                   </SelectItem>
@@ -170,7 +174,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
                 @select="handleSelect($event)"
               >
                 <slot name="item-leading" :item="item">
-                  <IconRender v-if="item.icon" :icon="item.icon" />
+                  <Icon v-if="item.icon" :icon="item.icon" />
                 </slot>
                 <SelectItemText v-bind="itemTextProps">
                   <slot name="item-text" :item="item">{{ item.label }}</slot>
@@ -178,7 +182,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
                 <slot name="item-trailing" :item="item" />
                 <SelectItemIndicator v-bind="itemIndicatorProps">
                   <slot name="item-indicator" :item="item">
-                    <IconRender icon="lucide:check" />
+                    <Icon icon="lucide:check" />
                   </slot>
                 </SelectItemIndicator>
               </SelectItem>
@@ -188,7 +192,7 @@ const handleSelect = (event: SelectItemEvent<DefinedValue>) => {
         </SelectViewport>
         <SelectScrollDownButton v-bind="scrollDownButtonProps">
           <slot name="scroll-down-button">
-            <IconRender icon="lucide:chevron-down" />
+            <Icon icon="lucide:chevron-down" />
           </slot>
         </SelectScrollDownButton>
         <SelectArrow v-if="showArrow" v-bind="arrowProps" />

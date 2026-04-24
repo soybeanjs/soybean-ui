@@ -1,7 +1,7 @@
 import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { HTMLAttributes } from 'vue';
 import type { UiClass } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { KbdProps, KbdValue } from '../kbd/types';
 import type {
   ListboxContentProps as CommandListProps,
@@ -23,8 +23,10 @@ export interface CommandSingleOptionData extends Pick<CommandItemProps, 'value' 
   shortcut?: KbdValue | KbdValue[];
 }
 
-export interface CommandGroupOptionData<T extends CommandSingleOptionData = CommandSingleOptionData>
-  extends Pick<CommandSingleOptionData, 'value' | 'label' | 'separator'> {
+export interface CommandGroupOptionData<T extends CommandSingleOptionData = CommandSingleOptionData> extends Pick<
+  CommandSingleOptionData,
+  'value' | 'label' | 'separator'
+> {
   items: T[];
 }
 
@@ -59,8 +61,10 @@ export type CommandUiSlot =
 
 export type CommandUi = UiClass<CommandUiSlot>;
 
-export interface CommandCompactProps<T extends CommandSingleOptionData = CommandSingleOptionData>
-  extends Omit<CommandRootProps, 'onSelect'> {
+export interface CommandCompactProps<T extends CommandSingleOptionData = CommandSingleOptionData> extends Omit<
+  CommandRootProps,
+  'onSelect'
+> {
   items: CommandOptionData<T>[];
   placeholder?: string;
   searchTerm?: string;

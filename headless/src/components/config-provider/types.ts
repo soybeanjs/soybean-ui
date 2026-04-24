@@ -1,7 +1,7 @@
 import type { VNode } from 'vue';
 import type { Direction, PropsToContext } from '../../types';
 import type { TooltipProviderProps } from '../tooltip/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 
 export interface ConfigProviderProps {
   /**

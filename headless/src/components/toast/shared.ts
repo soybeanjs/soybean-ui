@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'vue';
 import { keysOf } from '@soybeanjs/utils';
 import type { Side, Point, SwipeDirection } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { ToastPosition, ToastOrDismiss, ToastDismiss, ToastOffset, ToastIconType } from './types';
 
 export const toasterCssVars = {

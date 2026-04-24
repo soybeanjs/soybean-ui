@@ -3,7 +3,7 @@ import type { UseFuseOptions } from '@vueuse/integrations/useFuse';
 import type { CollectionItemData } from '../../composables';
 import type { Direction, ForceMountProps, FormFieldCommonProps, PropsToContext, UiClass } from '../../types';
 import type { InputControlProps, InputRootEmits, InputRootProps } from '../input/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type {
   ListboxCollectionItemData,
   ListboxContentProps,
@@ -119,10 +119,9 @@ export interface AutocompleteSearchOptionData extends AutocompleteSingleOptionDa
   groupSeparator?: boolean;
 }
 
-export interface AutocompleteCompactProps<T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData> extends Omit<
-  AutocompleteRootProps,
-  'defaultValue' | 'modelValue' | 'onSelect'
-> {
+export interface AutocompleteCompactProps<
+  T extends AutocompleteSingleOptionData = AutocompleteSingleOptionData
+> extends Omit<AutocompleteRootProps, 'defaultValue' | 'modelValue' | 'onSelect'> {
   /** The controlled value of the autocomplete input. */
   modelValue?: string;
   /** The initial value of the autocomplete input. */

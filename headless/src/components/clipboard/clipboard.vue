@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useClipboard } from '@vueuse/core';
 import { useOmitProps } from '../../composables';
 import { Button } from '../button';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import type { ClipboardEmits, ClipboardProps, ClipboardSlotProps, ClipboardState } from './types';
 
 defineOptions({
@@ -85,7 +85,7 @@ const onClick = async (event: MouseEvent) => {
   <Button v-bind="forwardedProps" :disabled="disabled" :data-state="dataState" @click="onClick">
     <slot name="leading" v-bind="slotProps">
       <span aria-hidden="true">
-        <IconRender :icon="displayIcon" />
+        <Icon :icon="displayIcon" />
       </span>
     </slot>
     <slot v-bind="slotProps">{{ displayText }}</slot>

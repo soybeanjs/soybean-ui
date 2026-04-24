@@ -26,7 +26,7 @@ import type {
   PopperPositionerEmits,
   PopperPositionerProps
 } from '../popper/types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { PortalProps } from '../portal/types';
 
 export interface ComboboxRootProps<M extends boolean = false> extends Omit<

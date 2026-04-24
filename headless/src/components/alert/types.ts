@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ShallowRef } from 'vue';
 import type { UiClass } from '../../types';
-import type { IconValue } from '../icon/types';
+import type { IconValue } from '../_icon/types';
 import type { PrimitiveProps } from '../primitive/types';
 
 export interface AlertRootProps extends /** @vue-ignore */ HTMLAttributes {

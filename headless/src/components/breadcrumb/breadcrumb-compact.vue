@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T extends BreadcrumbOptionData = BreadcrumbOptionData">
 import { computed } from 'vue';
 import { useOmitProps } from '../../composables';
-import IconRender from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import BreadcrumbEllipsis from './breadcrumb-ellipsis.vue';
 import BreadcrumbItem from './breadcrumb-item.vue';
 import BreadcrumbLink from './breadcrumb-link.vue';
@@ -10,7 +10,12 @@ import BreadcrumbPage from './breadcrumb-page.vue';
 import BreadcrumbRoot from './breadcrumb-root.vue';
 import BreadcrumbSeparator from './breadcrumb-separator.vue';
 import { getEllipsisRange } from './shared';
-import type { BreadcrumbCompactEmits, BreadcrumbCompactProps, BreadcrumbCompactSlots, BreadcrumbOptionData } from './types';
+import type {
+  BreadcrumbCompactEmits,
+  BreadcrumbCompactProps,
+  BreadcrumbCompactSlots,
+  BreadcrumbOptionData
+} from './types';
 
 defineOptions({
   name: 'BreadcrumbCompact'
@@ -70,19 +75,19 @@ const handleItemClick = (item: T) => {
           <slot name="ellipsis" :ellipsis-items="ellipsisItems">
             <BreadcrumbEllipsis v-bind="ellipsisProps">
               <slot name="ellipsis-icon">
-                <IconRender icon="lucide:ellipsis" />
+                <Icon icon="lucide:ellipsis" />
               </slot>
             </BreadcrumbEllipsis>
           </slot>
           <BreadcrumbSeparator v-bind="separatorProps">
             <slot name="separator">
-              <IconRender icon="lucide:chevron-right" />
+              <Icon icon="lucide:chevron-right" />
             </slot>
           </BreadcrumbSeparator>
         </template>
         <BreadcrumbItem v-bind="itemProps" @click="handleItemClick(item)">
           <slot name="item-leading" :item="item" :index="index">
-            <IconRender v-if="item.icon" :icon="item.icon" />
+            <Icon v-if="item.icon" :icon="item.icon" />
           </slot>
           <slot :item="item" :index="index">
             <BreadcrumbLink
@@ -104,7 +109,7 @@ const handleItemClick = (item: T) => {
         </BreadcrumbItem>
         <BreadcrumbSeparator v-if="index < visibleItems.length - 1" v-bind="separatorProps">
           <slot name="separator">
-            <IconRender icon="lucide:chevron-right" />
+            <Icon icon="lucide:chevron-right" />
           </slot>
         </BreadcrumbSeparator>
       </template>

@@ -5,7 +5,7 @@ import CheckboxRoot from './checkbox-root.vue';
 import CheckboxControl from './checkbox-control.vue';
 import CheckboxIndicator from './checkbox-indicator.vue';
 import CheckboxLabel from './checkbox-label.vue';
-import Icon from '../icon/icon-render.vue';
+import Icon from '../_icon/icon.vue';
 import { useCheckboxCardUi } from './context';
 import type { CheckboxCardCompactProps, CheckboxCardCompactEmits } from './types';
 

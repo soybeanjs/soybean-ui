@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useConfigProvider } from '../config-provider/context';
-import type { IconRenderProps } from './types';
+import type { IconProps } from './types';
 
 defineOptions({
-  name: 'IconRender'
+  name: 'Icon'
 });
 
-const props = defineProps<IconRenderProps>();
+const props = defineProps<IconProps>();
 
 const config = useConfigProvider();
 
